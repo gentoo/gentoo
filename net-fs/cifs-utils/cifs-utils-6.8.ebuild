@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils linux-info multilib pam
+inherit autotools eutils linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -24,15 +24,11 @@ RDEPEND="
 	)
 	caps? ( !caps-ng? ( sys-libs/libcap ) )
 	caps? ( caps-ng? ( sys-libs/libcap-ng ) )
-	creds? ( sys-apps/keyutils )
 	pam? ( virtual/pam )
 "
 DEPEND="${RDEPEND}"
 PDEPEND="
-	acl? ( || (
-		=net-fs/samba-3.6*[winbind]
-		>=net-fs/samba-4.0.0_alpha1
-	) )
+	acl? ( >=net-fs/samba-4.0.0_alpha1 )
 "
 
 REQUIRED_USE="acl? ( ads )"
@@ -54,16 +50,29 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	if has_version app-crypt/heimdal ; then
+		# https://bugs.gentoo.org/612584
+		eapply "${FILESDIR}/${PN}-6.7-heimdal.patch"
+	fi
+
+	eautoreconf
+}
+
 src_configure() {
-	ROOTSBINDIR="${EPREFIX}"/sbin \
-	econf \
-		$(use_enable acl cifsacl cifsidmap) \
-		$(use_enable ads cifsupcall) \
-		$(use caps && use_with !caps-ng libcap || echo --without-libcap) \
-		$(use caps && use_with caps-ng libcap-ng || echo --without-libcap-ng) \
-		$(use_enable creds cifscreds) \
-		$(use_enable pam) \
+	local myeconfargs=(
+		$(use_enable acl cifsacl cifsidmap)
+		$(use_enable ads cifsupcall)
+		$(use caps && use_with !caps-ng libcap || echo --without-libcap)
+		$(use caps && use_with caps-ng libcap-ng || echo --without-libcap-ng)
+		$(use_enable creds cifscreds)
+		$(use_enable pam)
 		$(use_with pam pamdir $(getpam_mod_dir))
+	)
+	ROOTSBINDIR="${EPREFIX}"/sbin \
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools flag-o-matic multilib-minimal
+inherit cmake-multilib flag-o-matic xdg-utils
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
@@ -23,7 +23,7 @@ else
 fi
 
 SLOT="0"
-IUSE="+asm debug jack mp3 pulseaudio theora vorbis vpx x264"
+IUSE="+asm jack mp3 pulseaudio theora vorbis vpx x264"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -46,8 +46,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
-
-PATCHES=( "${FILESDIR}/${P}-qtbindir.patch" )
 
 pkg_setup() {
 	if [[ ${ABI} == amd64 ]]; then
@@ -72,30 +70,34 @@ pkg_setup() {
 	append-flags -fPIC
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 multilib_src_configure() {
-	local myconf=(
-		$(multilib_native_use_enable debug assert)
-		$(multilib_native_use_with pulseaudio)
-		$(multilib_native_use_with jack)
-		$(use_enable asm x86-asm)
+	local mycmakeargs=(
+		-DENABLE_32BIT_GLINJECT="$(usex abi_x86_32)"
+		-DENABLE_X86_ASM="$(usex asm)"
+		-DWITH_PULSEAUDIO="$(multilib_native_usex pulseaudio)"
+		-DWITH_JACK="$(multilib_native_usex jack)"
+		-DWITH_GLINJECT="true"
 	)
 
 	# libav doesn't have AVFrame::channels
 	# https://github.com/MaartenBaert/ssr/issues/195#issuecomment-45646159
-	if has_version media-video/libav; then
-		myconf+=( --disable-ffmpeg-versions )
+	if has_version media-video/libav ; then
+		mycmakeargs+=( -DENABLE_FFMPEG_VERSIONS="false" )
 	fi
 
 	if multilib_is_native_abi ; then
-		myconf+=( --with-qt5 )
+		mycmakeargs+=( -DWITH_QT5="true" )
 	else
-		myconf+=( --disable-ssrprogram )
+		mycmakeargs+=( -DWITH_SIMPLESCREENRECORDER="false" )
 	fi
 
-	ECONF_SOURCE="${S}" econf "${myconf[@]}"
+	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
