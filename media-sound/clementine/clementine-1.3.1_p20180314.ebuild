@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	GIT_ECLASS="git-r3"
 else
-	COMMIT=4273c0313298c2f7cb6f1b02cb5461fb66865c30
+	COMMIT=2d7894915dfc9043da9282d216775ef75041c773
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -100,7 +100,10 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( Changelog README.md )
 
-PATCHES=( "${FILESDIR}"/${PN}-fts3-tokenizer.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-fts3-tokenizer.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
+)
 
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
