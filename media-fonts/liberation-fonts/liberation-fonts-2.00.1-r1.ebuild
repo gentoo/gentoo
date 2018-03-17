@@ -12,7 +12,7 @@ HOMEPAGE="https://pagure.io/liberation-fonts"
 SRC_URI="!fontforge? ( https://releases.pagure.org/liberation-fonts/${PN}/${PN}-ttf-${PV}.tar.gz )
 fontforge? ( https://releases.pagure.org/liberation-fonts/${PN}/${P}.tar.gz )"
 
-KEYWORDS="amd64 arm arm64 ia64 ppc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x64-solaris"
 SLOT="0"
 LICENSE="OFL-1.1"
 IUSE="fontforge X"
