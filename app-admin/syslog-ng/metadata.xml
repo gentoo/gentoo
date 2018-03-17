@@ -5,12 +5,17 @@
 		<email>hydrapolic@gmail.com</email>
 		<name>Tomáš Mózes</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>holgersson@posteo.de</email>
+		<name>Nils Freydank</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="amqp">Enable support for AMQP destinations</flag>
+		<flag name='extra-filecaps'>Permit more Linux filecapabilities, e.g. to listen on ports less than 1024</flag>
 		<flag name="http">Enable support for HTTP destinations</flag>
 		<flag name="json">Enable support for JSON template formatting via <pkg>dev-libs/json-c</pkg></flag>
 		<flag name="mongodb">Enable support for mongodb destinations</flag>

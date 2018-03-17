@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit autotools python-single-r1 eutils multilib systemd versionator
+inherit autotools eutils fcaps multilib python-single-r1 systemd versionator
 
 MY_PV=${PV/_/}
 MY_PV_MM=$(get_version_component_range 1-2)
@@ -15,8 +15,12 @@ SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="amqp caps dbi geoip http ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="amqp caps dbi extra-filecaps geoip http ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd"
+REQUIRED_USE="
+	extra-filecaps? ( filecaps )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	caps? ( !filecaps )
+"
 RESTRICT="test"
 
 RDEPEND="
@@ -55,6 +59,10 @@ S=${WORKDIR}/${PN}-${MY_PV}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+	if use caps; then
+		ewarn "\"caps\" USE flag is only useful for limiting privileges when running syslog-ng as root."
+		ewarn "If you prefer running syslog-ng as a non-root user use \"filecaps\" instead."
+	fi
 }
 
 src_prepare() {
@@ -140,7 +148,6 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${T}/syslog-ng.logrotate" syslog-ng
-
 	newinitd "${FILESDIR}/${MY_PV_MM}/syslog-ng.rc" syslog-ng
 	newconfd "${FILESDIR}/${MY_PV_MM}/syslog-ng.confd" syslog-ng
 	keepdir /etc/syslog-ng/patterndb.d /var/lib/syslog-ng
@@ -150,6 +157,34 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use filecaps; then
+		enewuser syslog-ng
+
+		# Capabilities, see 'man capabilities 7' for more info:
+		#
+		# 'cap_syslog' is required to read /proc/kmsg, if disabled syslog-ng fails with these errors:
+		# 	Error opening file for reading; filename='/proc/kmsg', error='Operation not permitted (1)'
+		# 	Error initializing message pipeline;
+		#
+		# 'cap_dac_override' is required to read /dev/log, if disabled syslog-ng fails with these errors:
+		# 	Error binding socket; addr='AF_UNIX(/dev/log)', error='Address already in use (98)'
+		# 	Error initializing message pipeline;
+		#
+		# 'cap_chown' is required to change owners of logs
+
+		# enable minimal required for standalone logger capabilities
+		logger_caps='cap_chown,cap_dac_override,cap_syslog'
+
+		if use pacct; then
+			logger_caps+='cap_pacct'
+		fi
+		# enable all capabilities from syslog-ng/main.c BASE_CAPS
+		use extra-filecaps && logger_caps+='cap_dac_read_search,cap_net_bind_service,cap_net_broadcast,cap_net_raw'
+
+		chown root:syslog-ng "${EROOT}"/usr/sbin/syslog-ng || die
+		fcaps -o root -g syslog-ng -m 4710 -M 0710 "${logger_caps}+ep" /usr/sbin/syslog-ng
+	fi
+
 	# bug #355257
 	if ! has_version app-admin/logrotate ; then
 		echo
