@@ -20,6 +20,7 @@ DEPEND="test? ( >=dev-cpp/catch-1.11.0 )"
 
 PATCHES=(
 	"${FILESDIR}/ms-gsl-0_pre20180108-use_system_catch-636828.patch"
+	"${FILESDIR}/ms-gsl-0_pre20180304-disable_Werror-644042.patch"
 )
 
 src_configure() {
