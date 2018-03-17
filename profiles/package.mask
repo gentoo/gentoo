@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (17 Mar 2018)
+# Dead. Unlikely to be of any use today. Removal in 30 days.
+# Bug #415611
+x11-misc/Xorgautoconfig
+
 # Lars Wendler <polynomial-c@gentoo.org> (17 Mar 2018)
 # Dead upstream. Authors not reachable. Unclear license situation.
 # Masked for removal in 30 days. See bug #650746
