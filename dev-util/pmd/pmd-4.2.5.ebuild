@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -27,7 +27,6 @@ DEPEND=">=virtual/jdk-1.5
 	app-arch/unzip
 	test? (
 		dev-java/ant-junit4
-		dev-java/ant-trax
 	)
 	${COMMON_DEPEND}"
 
@@ -50,7 +49,7 @@ EANT_BUILD_XML="bin/build.xml"
 src_test() {
 	# junit does not like collisions
 	rm lib/ant.jar
-	ANT_TASKS="ant-junit4 ant-trax" eant -f bin/build.xml test -DoutputTestResultsToFile=true
+	ANT_TASKS="ant-junit4 ant-core" eant -f bin/build.xml test -DoutputTestResultsToFile=true
 }
 
 src_install() {
