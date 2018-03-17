@@ -6210,7 +6210,7 @@ dev-util/obs-service-source_validator 0.3: Open Build Service client module - so
 dev-util/obs-service-tar_scm 0.3.1: Open Build Service client module - tar_scm service
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
 dev-util/oprofile 1.1.0-r1: A transparent low-overhead system-wide profiler
-dev-util/osc 0.148.2 0.152.0: Command line tool for Open Build Service
+dev-util/osc 0.152.0: Command line tool for Open Build Service
 dev-util/patchbin 20160208: Apply binary patches without git
 dev-util/patchelf 0.8: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
@@ -6247,7 +6247,7 @@ dev-util/source-highlight 3.1.7-r2 3.1.8: Generate highlighted source code as an
 dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming mistakes
 dev-util/strace 4.20: A useful diagnostic, instructional, and debugging tool
 dev-util/stubgen 2.08: a member function stub generator for C++
-dev-util/suse-build 2014.09.18 2015.11.05: Script to build SUSE Linux RPMs
+dev-util/suse-build 2015.11.05: Script to build SUSE Linux RPMs
 dev-util/sysprof 3.24.1: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 3.1-r1: A linux trace/probe tool
 dev-util/tkdiff 4.2: Graphical front end to the diff program
