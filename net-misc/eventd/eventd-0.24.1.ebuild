@@ -111,9 +111,7 @@ src_configure() {
 }
 
 src_test() {
-	# Drop LC_NUMERIC=C on next verbump.
-	# https://github.com/sardemff7/eventd/issues/39
-	LC_NUMERIC=C EVENTD_TESTS_TMP_DIR="${T}" meson_src_test
+	EVENTD_TESTS_TMP_DIR="${T}" meson_src_test
 }
 
 pkg_postinst() {
