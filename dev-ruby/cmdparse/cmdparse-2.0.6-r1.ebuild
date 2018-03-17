@@ -15,7 +15,7 @@ inherit ruby-fakegem
 IUSE=""
 
 DESCRIPTION="Advanced command line parser supporting commands"
-HOMEPAGE="http://cmdparse.gettalong.org/"
+HOMEPAGE="https://cmdparse.gettalong.org/"
 
 KEYWORDS="amd64 ppc64 x86"
 LICENSE="LGPL-3"
