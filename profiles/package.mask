@@ -166,11 +166,6 @@ dev-java/jad-bin
 games-puzzle/shaaft
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Security vulnerable, it seems it won't be fixed ever (#623150). Removal in
-# a month.
-app-forensics/rkhunter
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Not buildable (#625668, #649378). Removal in a month.
 games-server/cyphesis
 
