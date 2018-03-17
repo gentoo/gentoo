@@ -7,7 +7,9 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="MessagePack (de)serializer for Python"
-HOMEPAGE="http://msgpack.org https://github.com/msgpack/msgpack-python/ https://pypi.python.org/pypi/msgpack/"
+HOMEPAGE="https://msgpack.org
+	https://github.com/msgpack/msgpack-python/
+	https://pypi.python.org/pypi/msgpack/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
