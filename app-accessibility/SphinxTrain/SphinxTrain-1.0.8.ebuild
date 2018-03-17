@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit multilib python-single-r1
 
 DESCRIPTION="Speech Recognition (Training Module)"
-HOMEPAGE="http://cmusphinx.sourceforge.net/html/cmusphinx.php"
+HOMEPAGE="https://cmusphinx.github.io"
 SRC_URI="mirror://sourceforge/cmusphinx/sphinxtrain-${PV}.tar.gz"
 
 LICENSE="BSD-with-attribution"
@@ -35,5 +35,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "Detailed usage and training instructions can be found at"
-	elog "http://cmusphinx.sourceforge.net/wiki/"
+	elog "https://cmusphinx.github.io/wiki/"
 }
