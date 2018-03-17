@@ -11,7 +11,7 @@ SRC_URI="http://www.speech.cs.cmu.edu/${PN}/${P}-beta.tar.gz"
 
 LICENSE="BSD-with-attribution"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 DEPEND="app-accessibility/sphinx2
