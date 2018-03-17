@@ -16,7 +16,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="templates"
 inherit ruby-fakegem
 
 DESCRIPTION="Documentation generation tool for the Ruby programming language"
-HOMEPAGE="http://yardoc.org/"
+HOMEPAGE="https://yardoc.org/"
 
 # The gem lakes the gemspec file needed to pass tests.
 SRC_URI="https://github.com/lsegal/yard/archive/v${PV}.tar.gz -> ${P}-git.tgz"
