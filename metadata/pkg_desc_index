@@ -9838,7 +9838,7 @@ sys-auth/elogind 235.2-r2: The systemd project's logind, extracted to a standalo
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.0-r1: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2: library to add support for consumer fingerprint readers
-sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
+sys-auth/libnss-mysql 1.5_p20060915-r3: NSS MySQL Library
 sys-auth/libyubikey 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.10-r3: Name Service Switch module for Multicast DNS
