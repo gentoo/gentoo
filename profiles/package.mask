@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (17 Mar 2018)
+# Dead upstream. Authors not reachable. Unclear license situation.
+# Masked for removal in 30 days. See bug #650746
+x11-themes/icewm-themes
+
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Not buildable for a long time (#556928, #586258, #601130). Removal in a
 # month.
