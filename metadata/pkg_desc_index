@@ -30,7 +30,7 @@ app-accessibility/yasr 0.6.9-r1: general-purpose console screen reader
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.4.2.0 2.4.3.0: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.34 2.4.27: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.34 2.4.27 2.4.29: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 1.8.1 1.10.1: A library for changing configuration files
@@ -619,7 +619,7 @@ app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
-app-emacs/ebuild-mode 1.38 1.42: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.42: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
@@ -1677,7 +1677,7 @@ app-xemacs/dictionary 1.16: Interface to RFC2229 dictionary servers
 app-xemacs/dired 1.17 1.20: Manage file systems
 app-xemacs/docbookide 0.08: DocBook editing support
 app-xemacs/easypg 1.03-r1: GnuPG interface for Emacs
-app-xemacs/ebuild-mode 1.38 1.42: Emacs modes for editing ebuilds and other Gentoo specific files
+app-xemacs/ebuild-mode 1.42: Emacs modes for editing ebuilds and other Gentoo specific files
 app-xemacs/ecrypto 0.20 0.21: Crypto functionality in Emacs Lisp
 app-xemacs/edebug 1.22: An Emacs Lisp debugger
 app-xemacs/edict 1.16 1.17: MULE: Lisp Interface to EDICT, Kanji Dictionary
@@ -8416,7 +8416,7 @@ net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.
 net-firewall/ebtables 2.0.10.4: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.3 3.1.4: iptables firewall generator
-net-firewall/firewalld 0.4.3.3: A firewall daemon with D-BUS interface providing a dynamic firewall
+net-firewall/firewalld 0.4.3.3 0.5.1-r2: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/ipset 6.29: IPset tool for iptables, successor to ippool
@@ -10487,7 +10487,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
-www-servers/apache 2.2.34 2.4.27-r1: The Apache Web Server
+www-servers/apache 2.2.34 2.4.27-r1 2.4.29-r1: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.42 1.4.45: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
