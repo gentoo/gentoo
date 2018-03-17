@@ -59,7 +59,7 @@ java_prepare() {
 
 EANT_EXTRA_ARGS="-Ddynlink.native=true"
 
-EANT_TEST_ANT_TASKS="ant-junit ant-nodeps ant-trax"
+EANT_TEST_ANT_TASKS="ant-junit ant-core"
 src_test() {
 	local sysprops=""
 
