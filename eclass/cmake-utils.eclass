@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-utils.eclass
@@ -58,7 +58,7 @@ _CMAKE_UTILS_ECLASS=1
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
 # Specify the minimum required CMake version.
-: ${CMAKE_MIN_VERSION:=3.7.2}
+: ${CMAKE_MIN_VERSION:=3.9.6}
 
 # @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES
 # @DESCRIPTION:
@@ -109,8 +109,12 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit toolchain-funcs multilib ninja-utils flag-o-matic eutils \
-	multiprocessing versionator xdg-utils
+inherit toolchain-funcs ninja-utils flag-o-matic multiprocessing versionator xdg-utils
+
+case ${EAPI} in
+	7) ;;
+	*) inherit eutils multilib ;;
+esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
@@ -568,10 +572,10 @@ cmake-utils_src_configure() {
 			# When cross-compiling with a sysroot (e.g. with crossdev's emerge wrappers)
 			# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
 			cat >> "${toolchain_file}" <<- _EOF_ || die
-				set(CMAKE_FIND_ROOT_PATH "${SYSROOT}")
-				set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-				set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-				set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+				SET (CMAKE_FIND_ROOT_PATH "${SYSROOT}")
+				SET (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+				SET (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+				SET (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 			_EOF_
 		fi
 	fi
@@ -587,11 +591,11 @@ cmake-utils_src_configure() {
 
 			ELSE ()
 
-			SET(CMAKE_PREFIX_PATH "${EPREFIX}/usr" CACHE STRING "" FORCE)
-			SET(CMAKE_MACOSX_RPATH ON CACHE BOOL "" FORCE)
-			SET(CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
-			SET(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
-			SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
+			SET (CMAKE_PREFIX_PATH "${EPREFIX}/usr" CACHE STRING "" FORCE)
+			SET (CMAKE_MACOSX_RPATH ON CACHE BOOL "" FORCE)
+			SET (CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
+			SET (CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
+			SET (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
 
 			ENDIF (NOT APPLE)
 		_EOF_
@@ -604,8 +608,8 @@ cmake-utils_src_configure() {
 		SET (CMAKE_GENTOO_BUILD ON CACHE BOOL "Indicate Gentoo package build")
 		SET (LIB_SUFFIX ${libdir/lib} CACHE STRING "library path suffix" FORCE)
 		SET (CMAKE_INSTALL_LIBDIR ${libdir} CACHE PATH "Output directory for libraries")
-		set (CMAKE_INSTALL_INFODIR "${EPREFIX}/usr/share/info" CACHE PATH "")
-		set (CMAKE_INSTALL_MANDIR "${EPREFIX}/usr/share/man" CACHE PATH "")
+		SET (CMAKE_INSTALL_INFODIR "${EPREFIX}/usr/share/info" CACHE PATH "")
+		SET (CMAKE_INSTALL_MANDIR "${EPREFIX}/usr/share/man" CACHE PATH "")
 	_EOF_
 	[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}"
 
