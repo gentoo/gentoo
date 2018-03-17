@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils cmake-utils gnome2-utils git-r3
+inherit cmake-utils gnome2-utils git-r3
 
 DESCRIPTION="An open-source reimplementation of the popular UFO: Enemy Unknown"
 HOMEPAGE="http://openxcom.org/"
@@ -21,18 +21,7 @@ RDEPEND=">=dev-cpp/yaml-cpp-0.5.1
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
-src_prepare() {
-	cmake-utils_src_prepare
-	sed -i -e '/\/res\//d' CMakeLists.txt || die
-}
-
-src_configure() {
-	cmake-utils_src_configure
-}
+DOCS=( README.md )
 
 src_compile() {
 	use doc && cmake-utils_src_compile doxygen
@@ -40,13 +29,8 @@ src_compile() {
 }
 
 src_install() {
-	DOCS="README.md" \
-		cmake-utils_src_install
+	cmake-utils_src_install
 	use doc && dodoc -r "${CMAKE_BUILD_DIR}"/docs/html/*
-	doicon -s scalable res/linux/icons/openxcom.svg
-	newicon -s 48 res/linux/icons/openxcom_48x48.png openxcom.png
-	newicon -s 128 res/linux/icons/openxcom_128x128.png openxcom.png
-	domenu res/linux/openxcom.desktop
 }
 
 pkg_preinst() {
