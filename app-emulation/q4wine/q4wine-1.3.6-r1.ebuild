@@ -10,7 +10,7 @@ inherit cmake-utils gnome2-utils xdg-utils
 MY_P=${PN}-${PV/_p/-r}
 
 DESCRIPTION="Qt GUI configuration tool for Wine"
-HOMEPAGE="http://q4wine.brezblock.org.ua/"
+HOMEPAGE="https://q4wine.brezblock.org.ua/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
