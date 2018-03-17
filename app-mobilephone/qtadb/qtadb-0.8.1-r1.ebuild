@@ -26,7 +26,10 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 "
 
-PATCHES=( "${FILESDIR}"/${P}-qt5.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-qt5.patch
+	"${FILESDIR}"/${P}-qt5-5.11.patch
+)
 
 S="${WORKDIR}/michalmotyczko-${PN}-${COMMIT}"
 
