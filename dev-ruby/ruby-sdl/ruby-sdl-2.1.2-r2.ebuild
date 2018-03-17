@@ -10,7 +10,7 @@ RELEASE="rel-${PV//./-}"
 RUBY_S="rubysdl-${RELEASE}"
 
 DESCRIPTION="Ruby/SDL: Ruby bindings for SDL"
-HOMEPAGE="http://www.kmc.gr.jp/~ohai/rubysdl.en.html"
+HOMEPAGE="https://www.kmc.gr.jp/~ohai/rubysdl.en.html"
 SRC_URI="https://github.com/ohai/rubysdl/archive/${RELEASE}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
