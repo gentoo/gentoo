@@ -1015,7 +1015,7 @@ app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.24.3: Memorization aid based on the Leitner flashcard system
 app-misc/iguanaIR 1.0.1-r1: library for Irman control of Unix software
 app-misc/inputlircd 0.0.1_pre11 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
-app-misc/interceptty 0.6: a program that can sit between a serial port and an application
+app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
 app-misc/jail 2.0 2.0-r1: Builds a chroot and configures all the required files, directories and libraries
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
