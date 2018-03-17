@@ -3,7 +3,7 @@
 
 # @ECLASS: obs-download.eclass
 # @MAINTAINER:
-# suse@gentoo.org
+# maintainer-needed@gentoo.org
 # @BLURB: Simplifies downloading from openSUSE Build Service.
 # @DESCRIPTION:
 # This eclass constructs OBS_URI based on provided project in openSUSE Build
