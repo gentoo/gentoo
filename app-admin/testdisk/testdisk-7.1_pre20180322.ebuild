@@ -1,11 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
 COMMIT=9eb2aa12ce051d8d3d31e6b440389d5abf5efaf1
-inherit autotools-utils flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
 HOMEPAGE="https://www.cgsecurity.org/wiki/TestDisk"
@@ -52,15 +51,18 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="!static? ( ${COMMON_DEPEND} )"
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
 DOCS=( )
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	local myeconfargs=(
 		--enable-sudo
-		--docdir="${ROOT}/usr/share/doc/${P}"
 		$(use_with ewf)
 		$(use_with jpeg)
 		$(use_with ntfs)
