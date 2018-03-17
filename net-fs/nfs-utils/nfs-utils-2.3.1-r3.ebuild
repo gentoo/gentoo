@@ -81,22 +81,23 @@ src_configure() {
 	export libsqlite3_cv_is_recent=yes # Our DEPEND forces this.
 	export ac_cv_header_keyutils_h=$(usex nfsidmap)
 	local myeconfargs=(
-		--with-statedir="${EPREFIX}"/var/lib/nfs
+		--with-statedir="${EPREFIX%/}"/var/lib/nfs
 		--enable-tirpc
-		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
-		--with-pluginpath="${EPREFIX}"/usr/$(get_libdir)/libnfsidmap
+		--with-tirpcinclude="${EPREFIX%/}"/usr/include/tirpc/
+		--with-pluginpath="${EPREFIX%/}"/usr/$(get_libdir)/libnfsidmap
 		--with-systemd="$(systemd_get_systemunitdir)"
+		--without-gssglue
+		$(use_enable caps)
+		$(use_enable ipv6)
+		$(use_enable kerberos gss)
+		$(use_enable kerberos svcgss)
+		$(use_enable ldap)
 		$(use_enable libmount libmount-mount)
-		$(use_with tcpd tcp-wrappers)
 		$(use_enable nfsdcld nfsdcltrack)
 		$(use_enable nfsv4)
 		$(use_enable nfsv41)
-		$(use_enable ipv6)
-		$(use_enable caps)
 		$(use_enable uuid)
-		$(use_enable kerberos gss)
-		$(use_enable kerberos svcgss)
-		--without-gssglue
+		$(use_with tcpd tcp-wrappers)
 	)
 	econf "${myeconfargs[@]}"
 }
