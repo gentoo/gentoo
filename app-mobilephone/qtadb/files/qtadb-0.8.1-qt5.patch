@@ -1,0 +1,100 @@
+--- a/QtADB.pro	2018-03-17 12:44:50.933918102 -0400
++++ b/QtADB.pro	2018-03-17 12:46:04.896502772 -0400
+@@ -14,11 +14,13 @@
+ #   limitations under the License.
+ #
+ #   @author Jakub Motyczko
+ # -------------------------------------------------
+ QT += network
+-QT += declarative
++QT += widgets
++QT += qml
++QT += quick
+ TARGET = QtADB
+ 
+ TEMPLATE = app
+ SOURCES += main.cpp \
+     ./dialogs/mainwindow.cpp \
+--- a/widgets/messagewidget.h	2018-03-17 12:48:28.691864775 -0400
++++ b/widgets/messagewidget.h	2018-03-17 12:49:55.190870634 -0400
+@@ -21,12 +21,13 @@
+ #ifndef MESSAGEWIDGET_H
+ #define MESSAGEWIDGET_H
+ 
+ #include <QtGui>
+ #include <QtNetwork>
++#include <QtWidgets>
++#include <QQmlContext>
++#include <QQuickView>
+-#include <QDeclarativeView>
+-#include <QDeclarativeContext>
+ 
+ #include "../classes/models/messagethreadmodel.h"
+ #include "../classes/models/contactmodel.h"
+ 
+ 
+@@ -46,12 +49,12 @@
+ protected:
+     void changeEvent(QEvent *e);
+ 
+ private:
+     Ui::MessageWidget *ui;
+-    QDeclarativeView *qmlView;
+-    QDeclarativeContext *qmlViewCtx;
++    QQuickView *qmlView;
++    QQmlContext *qmlViewCtx;
+ 
+     MessageModel messageModel;
+     MessageThreadModel messageThreadModel;
+     ContactModel contactModel;
+     QSortFilterProxyModel sortModel;
+--- a/widgets/appwidget.h	2018-03-17 12:58:56.731870593 -0400
++++ b/widgets/appwidget.h	2018-03-17 13:03:39.366822784 -0400
+@@ -20,10 +20,11 @@
+ 
+ #ifndef APPWIDGET_H
+ #define APPWIDGET_H
+ 
+ #include <QtGui>
++#include <QtWidgets>
+ 
+ #include "../classes/phone.h"
+ #include "../classes/computer.h"
+ #include "../dialogs/appinfo.h"
+ #include "../dialogs/appdialog.h"
+--- a/widgets/messagewidget.cpp	2018-03-17 16:34:54.003310530 -0400
++++ b/widgets/messagewidget.cpp	2018-03-17 16:34:14.545124690 -0400
+@@ -51,11 +51,11 @@
+     this->sortContactModel.setSortRole(ContactModel::NameRole);
+     this->sortContactModel.sort(0, Qt::AscendingOrder);
+ 
+     this->messageCount=0;
+ 
+-    this->qmlView =  new QDeclarativeView;
++    this->qmlView =  new QQuickView;
+     this->qmlViewCtx = this->qmlView->rootContext();
+     if (QFile::exists("qml/messageView.qml"))
+         this->qmlView->setSource(QUrl::fromLocalFile("qml/messageView.qml"));
+     else
+         //this->qmlView->setSource(QUrl::fromLocalFile("../messages/qml/messageView.qml"));
+@@ -63,15 +63,17 @@
+     this->qmlViewCtx->setContextProperty("threadModel", &sortThreadModel);
+     this->qmlViewCtx->setContextProperty("contactModel", &sortContactModel);
+     this->qmlViewCtx->setContextProperty("messageModel", &sortModel);
+     this->qmlViewCtx->setContextProperty("myNickname", "Me");
+     this->qmlViewCtx->setContextProperty("contactDefault", "qrc:/icons/contactDefault.png");
+-    qmlView->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+-
++    qmlView->setResizeMode(QQuickView::SizeRootObjectToView);
++    
+     this->qmlViewCtx->setContextProperty("messageWidget", this);
++    QWidget *container = QWidget::createWindowContainer(qmlView, this);
++    container->setFocusPolicy(Qt::TabFocus);
+ 
+-    ui->layoutMessages->addWidget(this->qmlView,1,1);
++    ui->layoutMessages->addWidget(container);
+ 
+     //QSettings settings;
+     //this->sdk = settings.value("sdkPath").toString();
+     this->tcpServer.listen(QHostAddress::Any,4445);
+ 
