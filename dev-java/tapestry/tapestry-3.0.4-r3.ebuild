@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Dynamic, robust, highly scalable web framework in Java"
-HOMEPAGE="http://tapestry.apache.org/"
+HOMEPAGE="https://tapestry.apache.org/"
 SRC_URI="mirror://apache/${PN}/Tapestry-${PV}-src.zip"
 
 IUSE="${JAVA_PKG_IUSE}"
