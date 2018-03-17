@@ -104,7 +104,7 @@ src_prepare() {
 
 	# avoid building unused support libraries
 	if ! use clangcodemodel; then
-		sed -i -e '/clangbackendipc/d' src/libs/libs.pro || die
+		sed -i -e '/clangsupport/d' src/libs/libs.pro || die
 	fi
 	if ! use glsl; then
 		sed -i -e '/glsl/d' src/libs/libs.pro || die
