@@ -249,9 +249,6 @@ sys-power/pm-utils -video_cards_intel -video_cards_radeon
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
 
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-app-text/enchant -zemberek
-
 x11-terms/eterm cpu_flags_x86_sse2
 
 # Steve Dibb <beandog@gentoo.org> (29 Sept 2008)
