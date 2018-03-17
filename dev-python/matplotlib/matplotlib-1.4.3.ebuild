@@ -10,7 +10,7 @@ PYTHON_REQ_USE='tk?,threads(+)'
 inherit distutils-r1 eutils flag-o-matic virtualx toolchain-funcs
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
-HOMEPAGE="http://matplotlib.org/"
+HOMEPAGE="https://matplotlib.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 SLOT="0"
