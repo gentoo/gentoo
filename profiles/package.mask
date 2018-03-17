@@ -157,10 +157,6 @@ app-laptop/powerprefs
 dev-java/jad-bin
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Fails to build for a long time (#620270). Removal in a month.
-games-engines/openxcom
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Fails to build (#620276, #636000). Removal in a month.
 games-puzzle/shaaft
 
