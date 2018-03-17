@@ -3542,12 +3542,6 @@ developers and volunteer mentors.</description>
     </member>
   </project>
   <project>
-    <email>suse@gentoo.org</email>
-    <name>SUSE</name>
-    <url>https://wiki.gentoo.org/wiki/Project:SUSE</url>
-    <description>This project manages all various rpm based tools for working with OBS and rpmbuild</description>
-  </project>
-  <project>
     <email>samba@gentoo.org</email>
     <name>Samba</name>
     <url>https://wiki.gentoo.org/wiki/Project:Samba</url>
