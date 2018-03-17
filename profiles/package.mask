@@ -29,6 +29,153 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not buildable for a long time (#556928, #586258, #601130). Removal in a
+# month.
+www-client/w3mmee
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not needed for a long time since fbsd kernel 10 (#586344). Removal in a
+# month.
+sys-freebsd/virtio-kmod
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Doesn't build (#591918, #587392). Removal in a month.
+games-fps/alephone
+games-fps/alephone-infinity
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Broken for a long time (#587806). Removal in a month.
+app-text/zemberek-server
+app-text/zpspell
+ 
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Hans de Graaff <graaff@gentoo.org> (1 Jun 2014)
+# Mask new rubinius version for testing. This needs more work
+# to fully integrate it in our Gentoo ruby handling. Volunteers
+# welcome.
+# Removal in a month (#588102)
+dev-lang/rubinius
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Dead since 2002, many alternatives better maintained in the tree
+# (#590056). Removal in a month.
+x11-terms/hanterm
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Obsoleted by sys-cluster/drbd-utils many time ago (#590872). Removal in a
+# month.
+sys-cluster/drbd
+sys-cluster/drbd-kernel
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not buildable for a long time (#592066), wrong license (#638454). Removal
+# in a month.
+media-plugins/vdr-graphtft
+x11-themes/vdrgraphtft-avp
+x11-themes/vdrgraphtft-deepblue
+x11-themes/vdrgraphtft-deeppurple
+x11-themes/vdrgraphtft-poetter
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Branch unmaintained for a long time (#593878). Migrate to dev-python/rtslib-fb
+# and sys-block/targetcli-fb. Removal in a month.
+dev-python/rtslib
+sys-block/targetcli
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Fails to build (#594190, #649224). Removal in a month.
+games-puzzle/ngstar
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Multiple build failures (#514348, #594908). Removal in a month.
+sys-fabric/mstflint
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Cannot reach upstream, fails at runtime (#594986). Removal in a month.
+dev-vcs/bzr-git
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Unable to bump, fails to build (#601208). Removal in a month.
+games-board/freedoko
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Obsolete and with security vulnerabilities for a long time (#603760).
+# Removal in a month.
+www-apps/sugarcrm
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Version in the tree really old, multiple build failures (#604556, #604580,
+# #604586). Removal in a month.
+net-misc/pavuk
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Doesn't use pludev group properly (#396571), buggy (#503214), upstream
+# dead, fails to build (#608780). Removal in a month.
+app-misc/cwiid
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# ebuild needs fixing (#612916), upstream dead since 2006. Removal in a
+# month.
+mail-filter/anomy-sanitizer
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# ebuild needs fixing (#612998), our version is completely outdated
+# (#592836). Removal in a month.
+dev-util/bluej
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Many build issues (#576612, #605318, #605320, #608772, #613824), doesn't
+# use python eclasses (#615946). Removal in a month.
+media-gfx/k3d
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not buildable for a long time (#614498). Removal in a month.
+games-strategy/maxr
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not compatible with current NetworkManager versions, use net-misc/networkmanager-libreswan
+# instead (#615142). Removal in a month.
+net-misc/networkmanager-openswan
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Dead for years, many alternatives in the tree (#616146). Removal in a
+# month.
+net-firewall/gshield
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not buildable (#616674). Removal in a month.
+app-laptop/powerprefs
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Security vulnerable (#619770). Removal in a month.
+dev-java/jad-bin
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Fails to build for a long time (#620270). Removal in a month.
+games-engines/openxcom
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Fails to build (#620276, #636000). Removal in a month.
+games-puzzle/shaaft
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Security vulnerable, it seems it won't be fixed ever (#623150). Removal in
+# a month.
+app-forensics/rkhunter
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not buildable (#625668, #649378). Removal in a month.
+games-server/cyphesis
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Not buildable (#627102, #630850). Removal in a month.
+dev-games/crystalspace
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Dead for years, nothing needs it (#627464). Removal in a month.
+dev-java/commons-betwixt
+
 # Fabian Groffen <grobian@gentoo.org> (16 Mar 2018)
 # Exim release candidates, use at your own risk
 =mail-mta/exim-4.91_rc*
@@ -866,12 +1013,6 @@ games-strategy/smac
 # Mikle Kolyada <zlogene@gentoo.org> (27 Jun 2014)
 # Masked for proper testing. (Major updates in the code).
 ~dev-perl/PortageXS-0.2.12
-
-# Hans de Graaff <graaff@gentoo.org> (1 Jun 2014)
-# Mask new rubinius version for testing. This needs more work
-# to fully integrate it in our Gentoo ruby handling. Volunteers
-# welcome.
-=dev-lang/rubinius-3*
 
 # Matti Bickel <mabi@gentoo.org> (22 Apr 2014)
 # Masked slotted lua for testing
