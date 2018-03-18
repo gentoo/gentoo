@@ -21,9 +21,9 @@ sys-devel/gcc vanilla
 sci-electronics/gtkwave judy
 
 # Christian Faulhammer <fauli@gentoo.org> (09 Jan 2010)
-# hesiod and m17n-lib are not available in Prefix
-app-editors/emacs-vcs hesiod m17n-lib
-app-editors/emacs hesiod m17n-lib
+# m17n-lib is not available in Prefix
+app-editors/emacs-vcs m17n-lib
+app-editors/emacs m17n-lib
 
 # Jeremy Olexa <darkside@gentoo.org> (30 Sep 2009)
 # berkdb has hardcoded paths all over, breaks on linux at least. Use flag

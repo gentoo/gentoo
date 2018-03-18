@@ -181,11 +181,6 @@ app-emulation/libvirt openvz
 # until upstream fixes it properly.
 sys-devel/clang z3
 
-# Ulrich Müller <ulm@gentoo.org> (26 Jul 2017)
-# Disable hesiod support due to security vulnerability, bug #626242.
-app-editors/emacs hesiod
-app-editors/emacs-vcs hesiod
-
 # Brian Evans <grknight@gentoo.org> (21 Jul 2017)
 # Mask USE flag which has limited keywords for app-crypt/argon2
 dev-lang/php argon2
