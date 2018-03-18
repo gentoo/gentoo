@@ -25,7 +25,8 @@ DEPEND="${RDEPEND}
 	x11-libs/libXfont2
 	x11-misc/gccmakedep
 	x11-misc/imake
-	x11-proto/inputproto"
+	x11-proto/inputproto
+	x11-proto/xextproto"
 
 S="${WORKDIR}/nx-libs-${PV}"
 
