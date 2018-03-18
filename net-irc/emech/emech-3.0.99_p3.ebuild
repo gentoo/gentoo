@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils readme.gentoo-r1 toolchain-funcs
+inherit readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="UNIX compatible IRC bot programmed in the C language"
 HOMEPAGE="http://www.energymech.net/"
@@ -19,7 +19,7 @@ S="${WORKDIR}/${P/_/}"
 DOC_CONTENTS="You can find a compressed sample config file at /usr/share/doc/${PF}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-buildfix.patch"
+	eapply "${FILESDIR}/${P}-buildfix.patch"
 
 	sed -i \
 		-e 's: "help/":"/usr/share/energymech/help/":' \
