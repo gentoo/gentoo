@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Fast, simple object-to-object and broadcast signaling"
-HOMEPAGE="http://discorporate.us/projects/Blinker/ https://pypi.python.org/pypi/blinker"
+HOMEPAGE="https://pythonhosted.org/blinker/ https://pypi.python.org/pypi/blinker"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
