@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (18 Mar 2018)
+# Many unkeyworded rails deps, bug #650642
+net-analyzer/wireshark doc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (18 Mar 2018)
 # unkeyworded deps, bug #552330
 app-portage/g-sorcery bson
 
