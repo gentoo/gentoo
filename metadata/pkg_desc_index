@@ -2928,7 +2928,7 @@ dev-libs/dietlibc 0.34_pre20140729 0.34_pre20140729-r1: A libc optimized for sma
 dev-libs/ding-libs 0.4.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3 1.3-r1: dot.conf configuration file parser
-dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary conversion routines for IEEE doubles
+dev-libs/double-conversion 2.0.1 3.0.0: Binary-decimal and decimal-binary conversion routines for IEEE doubles
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.17.0-r1: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.169-r1 0.170-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
@@ -7217,7 +7217,7 @@ media-gfx/jpeginfo 1.6.1: Prints information and tests integrity of JPEG/JFIF fi
 media-gfx/jpegoptim 1.4.3: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/kgraphviewer 2.4.2: Graphviz dot graph file viewer
-media-gfx/kphotoalbum 5.2: Tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 5.2 5.3: Tool for indexing, searching, and viewing images
 media-gfx/krita 3.3.3: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/librecad 2.1.3-r2: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
@@ -8938,9 +8938,9 @@ net-nntp/pan 0.142: A newsreader for GNOME
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/tin 2.0.1-r1 2.2.1 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/amule 2.3.2-r1: aMule, the all-platform eMule p2p client
-net-p2p/bitcoin-cli 0.13.1 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
-net-p2p/bitcoin-qt 0.13.1-r1 0.15.1: An end-user Qt GUI for the Bitcoin crypto-currency
-net-p2p/bitcoind 0.13.1 0.15.1: Original Bitcoin crypto-currency wallet for automated services
+net-p2p/bitcoin-cli 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
+net-p2p/bitcoin-qt 0.15.1: An end-user Qt GUI for the Bitcoin crypto-currency
+net-p2p/bitcoind 0.15.1: Original Bitcoin crypto-currency wallet for automated services
 net-p2p/bitflu 1.50: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4: TheShad0w's experimental BitTorrent client
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
