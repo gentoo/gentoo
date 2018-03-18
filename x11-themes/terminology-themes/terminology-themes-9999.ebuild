@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3
+inherit git-r3 xdg-utils
 
 DESCRIPTION="Color schemes for the Terminology terminal emulator"
 HOMEPAGE="https://charlesmilette.net/terminology-themes/"
@@ -18,6 +18,11 @@ IUSE=""
 
 DEPEND="dev-libs/efl"
 RDEPEND="x11-terms/terminology"
+
+src_prepare() {
+	default
+	xdg_environment_reset
+}
 
 src_compile() {
 	emake -j1
