@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ MOZCONFIG_OPTIONAL_WIFI=1
 inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.52 pax-utils xdg-utils autotools virtualx mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="http://www.mozilla.com/firefox"
+HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
 
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
