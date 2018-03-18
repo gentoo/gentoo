@@ -29,6 +29,215 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Unresolved security issues (#606652), tests fail (#628622, #337249).
+# Removal in a month.
+net-dns/hesiod
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Depends on gstreamer:0.10 and many more dead libs (#629174), upstream dead
+# for ages (#634490). Removal in a month.
+games-arcade/monkey-bubble
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Fails to build (#629622, #614576, #627408). Removal in a month.
+app-shells/scsh-install-lib
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Upstream dead, not compatible with MariaDB (#629902). Removal in a month.
+dev-db/mysql-udf-infusion
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Doesn't build (#630252). Removal in a month.
+dev-python/visual
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Version bump pending for a long time, depends in QT4 (#630476). Removal in
+# a month.
+x11-misc/treeline
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Security vulnerable (#630954, #635548). Removal in a month. 
+media-sound/mp3gain
+media-sound/aacgain
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Security vulnerable (#631602). Removal in a month.
+net-proxy/httpush
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Security vulnerable (#631720), dead since 2008, uses doman with compressed
+# man pages (#619952). Removal in a month.
+mail-filter/p3scan
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Doesn't build (#634116), use games-action/dxx-rebirth instead. Removal in
+# a month.
+games-action/d2x-rebirth
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Fails at runtime (#634258). Removal in a month.
+net-irc/savirc
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Fails to build (#634662), version bump long time pending (#596162).
+# Removal in a month.
+games-emulation/sdlmame
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Multiple vulnerabilities (#635598). Removal in a month.
+www-apps/b2evolution
+ 
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Superseeded by adwaita-icon-theme for years, also having both installed at
+# the same time causes some apps to use old icons over new ones (#638142).
+# Removal in a month.
+x11-themes/gnome-icon-theme
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Completely dead and unmaintained for years, multiple alternatives in the
+# tree (#638812). Removal in a month.
+media-gfx/pornview
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Not installable (#639130), version bump long time pending (#489156),
+# restricts userpriv (#516578). Removal in a month.
+mail-filter/qmail-scanner
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Fail to fetch (#640544, #640596, #640602). Removal in a month.
+games-emulation/mastergear-bin
+media-video/vcdgear
+net-misc/yangcli-pro
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Outdated and useless (#642158). Removal in a month.
+app-i18n/man-pages-ro
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Forces the usage of obsolete dev-python/mysql-python (#643502). Dead since
+# 2013. Removal in a month.
+app-backup/holland-lib-mysql
+app-backup/holland-backup-mysqldump
+app-backup/holland-backup-mysql-meta
+app-backup/holland-backup-mysql-lvm
+app-backup/holland-backup-mysqlhotcopy
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Forces downgrade of mock (#643506). Removal in a month.
+dev-python/django-social-auth
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Requires old dev-python/oauth2client (#643534), tests fail (#527608).
+# Removal in a month.
+net-misc/gsutil
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Requires old psycopg (#643614). Removal in a month.
+dev-python/adodb-py
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Requires old whoosh (#643690). Removal in a month.
+dev-python/flask-whooshalchemy
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Requires old redis-py and gevent (#643692). Removal in a month.
+dev-python/pyzor
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Requires old leveldb, live ebuild, dead since 2013 (#644310). Removal in a
+# month.
+net-p2p/datacoin-hp
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Dead since 2011, relies on dead libraries (#644322, #644326, #644330, #644332
+# #644340, #647600, #647608, #647698, #647700, #648998). Removal in a month.
+dev-util/alleyoop
+gnome-extra/gnome-color-chooser
+media-sound/neutrino
+media-video/camorama
+www-misc/gurlchecker
+games-board/gnome-mastermind
+media-sound/quark
+app-office/gtimelog
+x11-libs/libdesktop-agnostic
+x11-misc/dockmanager
+games-arcade/monster-masher
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Relies on dead QT4 (#644422), build issues (#629728). Removal in a month.
+media-video/videocut
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Depends on dead QT4 (#644480). Removal in a month.
+sci-electronics/plcedit
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Tests fail, package has no reverse deps and is not really needed at
+# present time (#645166). Removal in a month.
+dev-python/jenkins-autojobs
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Dead since 2004, doesn't run (#645512). Removal in a month.
+media-video/cpdvd
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# No reverse deps, not working properly with python3 (#646718). Removal in a
+# month.
+dev-python/async
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Relies on dead libs, upstream dead for ages, buggy (#647486). Removal in a
+# month.
+gnome-extra/gpointing-device-settings
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Relies on dead libraries, not really useful at present time, upstream is
+# dead for ages (#647598). Removal in a month.
+app-mobilephone/gnome-phone-manager
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Doesn't honor LINGUAS (#402681), no reverse deps, unmaintained, dead for a
+# long time (#647840). Removal in a month.
+app-editors/cooledit
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Dead for years, not really useful at present time (#647842). Removal in a
+# month.
+app-mobilephone/ringtonetools
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Dead for years, probably not needed anymore at present time (#648102).
+# Removal in a month.
+app-laptop/lphdisk
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Dead for a long time, broken with current kernels (#648392). Removal in a
+# month.
+net-dialup/hcfpcimodem
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Not useful anymore without warsow (#648676). Removal in a month.
+games-fps/warsow-community-map-pack
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Needs QT4, fails to build (#648706, #650640). Removal in a month.
+media-sound/qarecord
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Library dead for years, finally nothing in the tree requires it anymore
+# (#648996). Removal in a month.
+dev-cpp/libgnomemm
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Dead for years (#650390), buggy (#504728). Removal in a month.
+www-apps/collectd-web
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# Dead for ages, ebuild needs to be cleaned and updated if you still need
+# this old themes (#650744). Removal in a month.
+media-gfx/qingy-themes
+
 # Matt Turner <mattst88@gentoo.org> (17 Mar 2018)
 # Dead. Unlikely to be of any use today. Removal in 30 days.
 # Bug #415611

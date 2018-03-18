@@ -7,6 +7,26 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# app-backup/holland-lib-mysql will be removed (#643502)
+app-backup/holland mysql
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# media-sound/mp3gain and media-sound/aacgain will be removed (#630954).
+media-sound/abcde lame
+media-sound/split2flac mp3 mp4
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# dev-python/visual will be removed (#630252)
+net-analyzer/scapy visual
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# net-dns/hesiod will be removed (#606652)
+app-editors/emacs hesiod
+app-editors/emacs-vcs hesiod
+net-mail/fetchmail hesiod
+sys-freebsd/freebsd-lib hesiod
+
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # dev-java/jad-bin will be removed (#619770)
 dev-lisp/abcl jad
