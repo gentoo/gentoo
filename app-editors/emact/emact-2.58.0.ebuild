@@ -21,6 +21,6 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTALL="${D}"/usr install
+	emake INSTALL="${ED%/}"/usr install
 	#dodoc README
 }
