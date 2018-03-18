@@ -30,7 +30,7 @@ DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
 	amd64? ( ${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
 	x86? ( ${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
-HOMEPAGE="http://www.mozilla.com/firefox"
+HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
 RESTRICT="strip mirror"
 
 KEYWORDS="-* amd64 x86"
