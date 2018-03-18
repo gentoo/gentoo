@@ -7121,6 +7121,7 @@ media-fonts/symbola 8.00 9.17: Unicode font for Latin, IPA Extensions, Greek, Cy
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
 media-fonts/terminus-font 4.39-r1 4.40: A clean fixed font for the console and X11
+media-fonts/tex-gyre 2.005: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
 media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
 media-fonts/tibetan-machine-font 1.901: Fonts for the Tibetan and Himalayan languages
@@ -7368,7 +7369,7 @@ media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image proces
 media-libs/gexiv2 0.10.3 0.10.3-r1 0.10.8: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.1.4: Library to handle, display and manipulate GIF images
-media-libs/glew 1.10.0-r2 1.13.0: The OpenGL Extension Wrangler Library
+media-libs/glew 1.10.0-r2 1.13.0 2.1.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.6.1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
@@ -7944,7 +7945,7 @@ media-sound/kid3 3.5.1: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.99.5-r1 3.100-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
-media-sound/lilypond 2.18.2-r3: GNU Music Typesetter
+media-sound/lilypond 2.18.2-r3 2.19.80-r1: GNU Music Typesetter
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
 media-sound/mac 4.11.4.5.7: Monkey's Audio Codecs
 media-sound/madplay 0.15.2b-r1: The MAD audio player
@@ -8425,7 +8426,7 @@ net-firewall/shorewall 5.1.12.3: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.2: Kernel based automounter
-net-fs/cifs-utils 6.4: Tools for Managing Linux CIFS Client Filesystems
+net-fs/cifs-utils 6.4 6.7: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/libnfs 1.9.5 1.9.7 2.0.0: Client library for accessing NFS shares over a network
@@ -10700,7 +10701,7 @@ x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.3 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
-x11-libs/motif 2.3.7: The Motif user interface component toolkit
+x11-libs/motif 2.3.7 2.3.8-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.12 1.40.14: Internationalized text layout and rendering library
@@ -10959,7 +10960,7 @@ x11-plugins/gkrellweather 2.0.8-r1: GKrellM2 Plugin that monitors a METAR statio
 x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for pidgin
 x11-plugins/hexchat-javascript 0.3.1: Javascript interface for HexChat
 x11-plugins/i8krellm 2.5-r2: GKrellM2 Plugin for the Dell Inspiron and Latitude notebooks
-x11-plugins/pidgin-birthday-reminder 1.7: Plugin for Pidgin that reminds you of your buddies birthdays
+x11-plugins/pidgin-birthday-reminder 1.7-r1: Plugin for Pidgin that reminds you of your buddies birthdays
 x11-plugins/pidgin-encryption 3.1: Pidgin IM Encryption PlugIn
 x11-plugins/pidgin-extprefs 0.7-r1: Extra preferences that are desired but are not worthy for Pidgin
 x11-plugins/pidgin-gnome-keyring 2.0: Integrates Pidgin (and libpurple) with the system keyring
