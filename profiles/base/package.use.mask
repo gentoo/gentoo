@@ -7,6 +7,26 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# dev-java/jad-bin will be removed (#619770)
+dev-lisp/abcl jad
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# app-misc/cwiid will be removed (#608780)
+media-sound/supercollider wiimote
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# sys-fabric/mstflint will be removed (#594908)
+sys-fabric/ofed mstflint
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# x11-themes/vdrgraphtft-avp is being removed (#592066)
+media-plugins/vdr-music graphtft
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# app-text/zemberek-server is being removed (#587806)
+app-text/enchant zemberek
+
 # Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
 # no active upstream anymore.

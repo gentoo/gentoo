@@ -260,9 +260,6 @@ media-libs/imlib2 cpu_flags_x86_mmx
 # bad comment heading. see bug #246144
 media-video/mplayer -cpudetection
 
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-app-text/enchant -zemberek
-
 # assembler-section
 
 # Oct 23th 2006; blubb@gentoo.org

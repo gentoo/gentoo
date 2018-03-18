@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -22,7 +22,7 @@ DEPEND=">=virtual/jdk-1.6
 	doc? ( app-text/docbook-xsl-stylesheets:0 )
 	test? (
 		dev-java/ant-junit:0
-		dev-java/ant-trax:0
+		dev-java/ant-core:0
 	)
 	${CDEPEND}"
 
@@ -33,11 +33,11 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="junit"
 
 EANT_DOC_TARGET="users-guide-html javadocs"
-EANT_ANT_TASKS="ant-trax"
+EANT_ANT_TASKS="ant-core"
 EANT_EXTRA_ARGS="-Ddb5.xsl=/usr/share/sgml/docbook/xsl-stylesheets"
 
 src_test() {
-	ANT_TASKS="ant-junit ant-trax" eant test
+	ANT_TASKS="ant-junit ant-core" eant test
 }
 
 src_install() {
