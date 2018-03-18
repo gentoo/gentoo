@@ -4,6 +4,10 @@
 # PPC Specific use flags
 #
 
+# Sergei Trofimovich <slyfox@gentoo.org> (18 Mar 20180)
+# mongodb is not keyworded on ppc/ppc64 (broken)
+mongodb
+
 # David Seifert <soap@gentoo.org> (08 Jul 2017)
 # Games are not keyworded anymore on ppc
 capslib

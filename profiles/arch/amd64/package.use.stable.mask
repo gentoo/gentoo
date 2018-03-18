@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (18 Mar 2018)
+# Pulls too much unstable ruby deps (some are not even keyworded)
+net-misc/chrony html
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependeny is not stable
 sci-libs/gdal oracle
