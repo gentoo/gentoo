@@ -9,4 +9,4 @@ LICENSE=GPL-2+ BSD
 RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 )
 SLOT=0
 SRC_URI=mirror://sourceforge/emact/emact-2.58.0.tar.gz
-_md5_=39ebbd5860559b7aeab7ebbbddad3250
+_md5_=123412a5810a1953cd70f52a51d3a40a
