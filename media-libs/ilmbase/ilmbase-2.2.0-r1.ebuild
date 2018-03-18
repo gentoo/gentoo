@@ -18,6 +18,9 @@ DEPEND="virtual/pkgconfig[${MULTILIB_USEDEP}]"
 DOCS=( AUTHORS ChangeLog NEWS README )
 MULTILIB_WRAPPED_HEADERS=( /usr/include/OpenEXR/IlmBaseConfig.h )
 
+# https://bugs.gentoo.org/632259
+RESTRICT="test"
+
 PATCHES=( "${FILESDIR}/${P}-Remove-register-keyword.patch" )
 
 multilib_src_configure() {
