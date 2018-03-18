@@ -31,6 +31,7 @@ COMMON_DEPS="
 	media-libs/fontconfig
 	x11-libs/libXcursor
 	x11-libs/libXrandr
+	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libxkbcommon[X]
 	wayland? (
