@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="MIT"
 IUSE="badfiles bpd chroma convert doc discogs flac gstreamer lastgenre lastimport mpdstats ogg opus replaygain test thumbnails web"
+REQUIRED_USE="replaygain? ( gstreamer )"
 
 RDEPEND=">=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]
 	dev-python/jellyfish[${PYTHON_USEDEP}]
@@ -44,7 +45,6 @@ RDEPEND=">=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]
 			ogg? ( media-plugins/gst-plugins-ogg )
 			flac? ( media-plugins/gst-plugins-flac:1.0 )
 			opus? ( media-plugins/gst-plugins-opus:1.0 ) )
-		!gstreamer? ( || ( media-sound/mp3gain media-sound/aacgain ) )
 		)
 	thumbnails? (
 		dev-python/pyxdg[${PYTHON_USEDEP}]
