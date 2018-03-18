@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/0.0.7"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
 IUSE="static-libs"
 
 DOCS=( Changes.md )
