@@ -13,7 +13,7 @@ DESCRIPTION="Database connectivity and creation framework for various vendors"
 LICENSE="LGPL-2+"
 SLOT="5/4"
 KEYWORDS="~amd64 ~x86"
-IUSE="mysql postgres sqlite"
+IUSE="debug mysql postgres sqlite"
 
 RDEPEND="
 	$(add_frameworks_dep kcoreaddons)
@@ -40,6 +40,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DKDB_DEBUG_GUI=$(usex debug)
 		$(cmake-utils_use_find_package mysql MySQL)
 		$(cmake-utils_use_find_package postgres PostgreSQL)
 		$(cmake-utils_use_find_package sqlite Sqlite)
