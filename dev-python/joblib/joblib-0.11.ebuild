@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Tools to provide lightweight pipelining in Python"
-HOMEPAGE="http://packages.python.org/joblib/"
+HOMEPAGE="https://pythonhosted.org/joblib/
+	https://github.com/joblib/joblib"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
