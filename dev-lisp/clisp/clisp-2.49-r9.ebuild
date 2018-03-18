@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="http://clisp.sourceforge.net/"
@@ -61,6 +61,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-bits_ipctypes_to_sys_ipc.patch
 	epatch "${FILESDIR}"/${P}-get_hostname.patch
 	epatch "${FILESDIR}"/${P}-tinfo.patch
+
+	xdg_environment_reset
 }
 
 src_configure() {
