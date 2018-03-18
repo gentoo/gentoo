@@ -11,7 +11,7 @@ SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="dbus doc elibc_FreeBSD gnome luajit"
 
 RDEPEND="
