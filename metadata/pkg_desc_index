@@ -8515,7 +8515,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/savirc 1.99-r1: User friendly IRC client with unicode support and tcl/tk scripting
 net-irc/scrollz 2.1 2.2 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
-net-irc/sic 1.2 1.2-r1: An extremly simple IRC client
+net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 3.2.10.7: An advanced Internet Relay Chat daemon
 net-irc/weechat 1.9.1: Portable and multi-interface IRC client
@@ -9657,7 +9657,7 @@ sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/bleachbit 1.12: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.25.1 1.28.0: Utilities for rescue and embedded systems
-sys-apps/cciss_vol_status 1.03 1.09-r1 1.10 1.11: Shows status of logical drives attached to HP SmartArray controllers
+sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/checkpolicy 2.6 2.7: SELinux policy compiler
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
@@ -11115,7 +11115,7 @@ x11-themes/fvwm-themes-extra 0.7.0: Extra themes for fvwm-themes
 x11-themes/fvwm_icons 1.0: Icons for use with FVWM
 x11-themes/fvwm_sounds 1.0: Sounds for use with FVWM
 x11-themes/gartoon 0.5-r2: Gartoon SVG icon theme
-x11-themes/geany-themes 1.22.2: A collection of colour schemes for Geany
+x11-themes/geany-themes 1.22.2-r1: A collection of colour schemes for Geany
 x11-themes/gentoo-artwork 0.4.2-r1: A collection of miscellaneous Gentoo Linux logos and artwork
 x11-themes/gentoo-artwork-livecd 2006.1 2007.0: A collection of Gentoo Linux wallpapers for the LiveCD
 x11-themes/gentoo-xcursors 0.3.1: A high quality set of animated mouse cursors
