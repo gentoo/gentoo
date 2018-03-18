@@ -878,7 +878,6 @@ app-i18n/man-pages-it 2.80-r1: A somewhat comprehensive collection of Italian Li
 app-i18n/man-pages-ja 20171215: A collection of manual pages translated into Japanese
 app-i18n/man-pages-nl 0.13.3: A somewhat comprehensive collection of Dutch Linux man pages
 app-i18n/man-pages-pl 0_pre20070628-r2: A collection of Polish translations of Linux manual pages
-app-i18n/man-pages-ro 0.2: A somewhat comprehensive collection of Romanian Linux man pages
 app-i18n/man-pages-ru 4.08.2329.2329.20170422: A collection of Russian translations of Linux manual pages
 app-i18n/man-pages-zh_CN 1.5: A somewhat comprehensive collection of Chinese Linux man pages
 app-i18n/mozc 2.20.2673.102: Mozc - Japanese input method editor
@@ -1130,7 +1129,6 @@ app-mobilephone/dfu-util 0.9: implements the Host (PC) side of the USB DFU (Devi
 app-mobilephone/gammu 1.33.0-r1 1.38.5: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnokii 0.6.31-r1: User space driver and tools for use with mobile phones
-app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
 app-mobilephone/lightblue 0.4-r1: API for Python which provides simple access to Bluetooth operations
 app-mobilephone/obexftp 0.24-r1: File transfer over OBEX for mobile phones
 app-mobilephone/sobexsrv 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
@@ -1147,7 +1145,6 @@ app-office/glabels 3.4.0: Program for creating labels and business cards
 app-office/gnucash 2.7.4-r1: A personal finance manager
 app-office/gnumeric 1.12.35: The GNOME Spreadsheet
 app-office/grisbi 1.0.0-r1: Grisbi is a personal accounting application for Linux
-app-office/gtimelog 0.8.1: A small Gtk+ application for keeping track of your time
 app-office/homebank 4.6.3 5.0.9 5.1.3: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
@@ -1808,7 +1805,6 @@ dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.2_pre20160820-r1: C++ client library for the CMIS interface
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
-dev-cpp/libgnomemm 2.30.0-r1: C++ bindings for libgnome
 dev-cpp/libmcpp 2.7.2-r2: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/lucene++ 3.0.7: C++ port of Lucene library, a high-performance, full-featured text search engine
@@ -4536,7 +4532,6 @@ dev-python/SaltTesting 2015.7.10: Required testing tools needed in the several S
 dev-python/WSME 0.8.0 0.9.1 0.9.2: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
-dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.5.1-r1: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiotest 0.3: Test suite for an implementation of asyncio (PEP 3156)
 dev-python/alabaster 0.7.9: A configurable sidebar-enabled Sphinx theme
@@ -4544,7 +4539,7 @@ dev-python/alembic 0.9.3: database migrations tool, written by the author of SQL
 dev-python/amqplib 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
 dev-python/aniso8601 1.2.0: A library for parsing ISO 8601 strings
 dev-python/ansi2html 1.1.1 1.2.0: Convert text with ANSI color codes to HTML
-dev-python/ansicolor 0.2.4: Produce ansi color output and colored highlighting and diffing
+dev-python/ansicolor 0.2.4 0.2.6: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
 dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
 dev-python/aodhclient 0.8.0: A client for the OpenStack Aodh API
@@ -4563,7 +4558,6 @@ dev-python/astor 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.4.8: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.2.1: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.2: Helpers for Astropy and Affiliated packages
-dev-python/async 0.6.2: Async Framework
 dev-python/atom 0.3.10: Memory efficient Python objects
 dev-python/attrs 16.3.0-r1: Attributes without boilerplate
 dev-python/authres 0.800: Authentication Results Header Module
@@ -4723,7 +4717,6 @@ dev-python/django-recaptcha 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 1.0: An extensible user-registration application for Django
 dev-python/django-select2 4.2.2: A Django integration of Select2
 dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing via setup.py
-dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
 dev-python/django-tastypie 0.9.15: A flexible and capable API layer for django utilising serialisers
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
@@ -4808,7 +4801,6 @@ dev-python/flask-sqlalchemy 2.1: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
-dev-python/flask-whooshalchemy 0.8: Whoosh extension to Flask/SQLAlchemy
 dev-python/flask-wtf 0.14.2: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1: Pure Python toolkit for creating GUI's using web technology
@@ -5386,7 +5378,6 @@ dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
 dev-python/pyxml 0.8.4-r3: A collection of libraries to process XML with Python
 dev-python/pyyaml 3.12: YAML parser and emitter for Python
 dev-python/pyzmq 16.0.2: Lightweight and super-fast messaging library built on top of the ZeroMQ library
-dev-python/pyzor 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.1-r1: Python bindings for Qscintilla
@@ -5578,7 +5569,6 @@ dev-python/vine 1.1.3: Python Promises
 dev-python/virtualenv 15.1.0: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.7.1: Set of extensions to Ian Bicking's virtualenv tool
-dev-python/visual 5.74-r1: Real-time 3D graphics library for Python
 dev-python/vobject 0.9.3: Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.9.3 0.10.5: A Python data validation library.
 dev-python/waitress 1.0.1 1.0.2: A pure-Python WSGI server
@@ -6067,7 +6057,6 @@ dev-texlive/texlive-pstricks 2015 2016 2017: TeXLive PSTricks
 dev-texlive/texlive-publishers 2015 2016 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-science 2012-r1 2014 2015: TeXLive Natural and computer sciences
 dev-texlive/texlive-xetex 2015 2016 2017: TeXLive XeTeX and packages
-dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/android-studio 3.0.1.0.171.4443003: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
@@ -6419,7 +6408,6 @@ gnome-extra/gnome-user-docs 3.24.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.24.0: A weather application for GNOME
-gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 9.0.2 9.0.4: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4-r2: GNOME database access library
@@ -6939,7 +6927,6 @@ mail-filter/postgrey 1.34-r3 1.36-r1: Postgrey is a Postfix policy server implem
 mail-filter/procmail 3.22-r10: Mail delivery agent/filter
 mail-filter/procmail-lib 20081108: Procmail Module Library is a collection of modules for Procmail
 mail-filter/pypolicyd-spf 2.0.1: Python-based policy daemon for Postfix SPF verification
-mail-filter/qmail-scanner 1.25-r1 2.05 2.08: E-Mail virus scanner for qmail
 mail-filter/razor 2.85-r2: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
@@ -7262,7 +7249,6 @@ media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngrewrite 1.3.0: A utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
-media-gfx/pornview 0.2.2: Image viewer/manager with optional support for MPEG movies
 media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.14 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
@@ -7270,7 +7256,6 @@ media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.9: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
-media-gfx/qingy-themes 20050816: Collection of qingy themes
 media-gfx/qrencode 3.4.4-r1: C library for encoding data in a QR Code symbol
 media-gfx/quat 1.20 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/raw-thumbnailer 0.2.1 0.2.1-r1: A lightweight and fast raw image thumbnailer
@@ -7852,7 +7837,6 @@ media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.15: An amateur radio logging program
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
-media-sound/aacgain 1.9-r2: AACGain normalizes the volume of music files using the Replay Gain algorithm
 media-sound/abcde 2.5.4-r1: A command line CD encoder
 media-sound/abcm2ps 8.12.9: A program to convert abc files to Postscript files
 media-sound/adplay 1.7: A console player for AdLib music
@@ -7927,7 +7911,7 @@ media-sound/gtick 0.5.0: a metronome application supporting different meters and
 media-sound/guayadeque 0.4.5_p20170110: Music management program designed for all music enthusiasts
 media-sound/herrie 2.2 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14: Opensource software organ
-media-sound/hydrogen 0.9.5-r1: Advanced drum machine
+media-sound/hydrogen 1.0.0_pre20180301-r1: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
 media-sound/id3 0.15: changes the id3 tag in an mp3 file
 media-sound/id3ed 1.10.4: ID3 tag editor for mp3 files
@@ -7964,7 +7948,6 @@ media-sound/mp3asm 0.1.3-r2: A command line tool to clean and edit mp3 files
 media-sound/mp3blaster 3.2.6: Text console based program for playing audio files
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3check 0.8.4 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
-media-sound/mp3gain 1.5.2: A program to analyze and adjust MP3 files to same volume
 media-sound/mp3info 0.8.5a: An MP3 technical info viewer and ID3 1.x tag editor
 media-sound/mp3splt 2.6.1a: a command line utility to split mp3 and ogg files without decoding
 media-sound/mp3splt-gtk 0.9.2 0.9.2-r1: a GTK+ based utility to split mp3 and ogg files without decoding
@@ -8010,14 +7993,12 @@ media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes you
 media-sound/pulseaudio 11.1: A networked sound server with an advanced plugin system
 media-sound/pulseeffects 3.1.6: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
-media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.1.7-r1: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.4.4: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
-media-sound/quark 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.7.1 3.8.1-r1: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
@@ -8109,14 +8090,12 @@ media-video/binkplayer 1.99w: Bink Video! Player
 media-video/bino 1.6.6: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7-r1: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10: Themes for blinkensim
-media-video/camorama 0.19-r2: A webcam application featuring various image filters
 media-video/ccextractor 0.59: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
 media-video/cheese 3.24.0: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 2.3: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
-media-video/cpdvd 1.10-r1: transfer a DVD title to your harddisk with ease on Linux
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
 media-video/dirac 1.0.2-r1: Open Source video codec
 media-video/dvbsnoop 1.4.50-r1: DVB/MPEG stream analyzer program
@@ -8189,7 +8168,6 @@ media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and a
 media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing commercials
 media-video/ushare 1.1a-r6: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/vamps 0.99.2: Very fast requantisizing tool for backup DVDs
-media-video/vcdgear 1.76-r2: extract MPEG streams from CD images, convert VCD files to MPEG, correct MPEG errors, and more
 media-video/vcdimager 0.7.24: GNU VCDimager
 media-video/vdr 2.0.6-r1 2.2.0-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
@@ -8386,7 +8364,6 @@ net-dns/dnsmasq 2.78: Small forwarding DNS server
 net-dns/dnssec-root 20150403: The DNSSEC root key(s)
 net-dns/dnstop 20140915: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
-net-dns/hesiod 3.1.0: DNS functionality to access to DB of information that changes infrequently
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/ldns-utils 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33 1.33-r1 1.33-r2: Internationalized Domain Names (IDN) implementation
@@ -8513,7 +8490,6 @@ net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.24.2: An IRC client for Gnome
 net-irc/quassel 0.12.4: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
-net-irc/savirc 1.99-r1: User friendly IRC client with unicode support and tcl/tk scripting
 net-irc/scrollz 2.1 2.2 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
 net-irc/sic 1.2-r1: An extremly simple IRC client
@@ -9208,7 +9184,6 @@ sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for
 sci-electronics/magic 7.5.202-r1: The VLSI design CAD tool
 sci-electronics/oregano 0.69.1-r1: Application for the schematic capturing and simulation of electrical circuits
 sci-electronics/pcb 0_p20140316: GPL Electronic Design Automation: Printed Circuit Board editor
-sci-electronics/plcedit 2.2.1: Qt4 notepad for PLC programming
 sci-electronics/qelectrotech 0.50: Qt5 application to design electric diagrams
 sci-electronics/spice 3.5.5-r1: general-purpose circuit simulation program
 sci-electronics/voacapl 0.6.7: HF propagation prediction tool
@@ -10416,10 +10391,8 @@ www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 5.1.11 5.1.12: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
-www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgit 0.12: a fast web-interface for git repositories
-www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data collected by collectd
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
@@ -10464,7 +10437,6 @@ www-client/uget 1.8.0 1.10.3: Download manager using gtk+ and libcurl
 www-client/w3m 0.5.3-r9: Text based WWW browser, supports tables and frames
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
 www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
-www-misc/gurlchecker 0.13.1-r2: Gnome tool that checks links on web pages/sites
 www-misc/htdig 3.2.0_beta6-r3 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.9.0 3.10.0-r1: A lightweight system monitoring tool
@@ -10674,7 +10646,6 @@ x11-libs/libXxf86vm 1.1.3 1.1.4: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
 x11-libs/libast 0.7: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
-x11-libs/libdesktop-agnostic 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
 x11-libs/libdrm 2.4.82 2.4.88: X.Org libdrm library
@@ -10755,7 +10726,6 @@ x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
 x11-misc/devilspie 0.23: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.42: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dmenu 4.6: a generic, highly customizable, and efficient menu for the X Window System
-x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
 x11-misc/driconf 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
 x11-misc/dunst 1.1.0: customizable and lightweight notification-daemon
 x11-misc/dzen 0.9.5-r1: a general purpose messaging, notification and menuing program for X11
@@ -10854,7 +10824,6 @@ x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 
 x11-misc/touchcal 0.80: Touchscreen calibration utility
 x11-misc/trayer 1.0-r2: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.6-r1: trayer fork with multi monitor support and cleaned up codebase
-x11-misc/treeline 1.4.1-r1 2.0.2: TreeLine is a structured information storage program
 x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
 x11-misc/urxvt-font-size 1.1: Perl extension for rxvt-unicode to change the font size on the fly
 x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
@@ -11126,7 +11095,6 @@ x11-themes/gkrellm-themes 0.1: A pack of ~200 themes for GKrellM
 x11-themes/gnome-backgrounds 3.24.0: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
-x11-themes/gnome-icon-theme 3.12.0-r1: GNOME default icon theme
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
 x11-themes/gnome-icon-theme-symbolic 3.10.1 3.12.0: Symbolic icons for GNOME default icon theme
 x11-themes/gnome-themes-standard 3.22.3: Standard Themes for GNOME Applications
