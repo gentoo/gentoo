@@ -5812,7 +5812,7 @@ dev-ruby/rgen 0.8.0: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/rmagick 2.15.4 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
-dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0: Ruby bindings for rrdtool
+dev-ruby/rrdtool-bindings 1.6.0: Ruby bindings for rrdtool
 dev-ruby/rspec 2.99.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-core 2.99.2-r2 3.5.4: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.99.2 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
@@ -8287,7 +8287,7 @@ net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
 net-analyzer/prometheus-node_exporter 0.15.2: Prometheus exporter for machine metrics
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/ripe-atlas-tools 1.2.2 1.2.3-r1: The official command-line client for RIPE Atlas
-net-analyzer/rrdtool 1.4.8-r1 1.5.5 1.6.0-r1: A system to store and display time-series data
+net-analyzer/rrdtool 1.6.0-r1: A system to store and display time-series data
 net-analyzer/sarg 2.3.10: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanssh 2.1: network scanner that gathers info on SSH protocols and versions
