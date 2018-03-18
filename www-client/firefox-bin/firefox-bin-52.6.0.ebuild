@@ -22,7 +22,7 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
-MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+MOZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
 inherit eutils pax-utils xdg-utils gnome2-utils mozlinguas-v2 nsplugins
 
