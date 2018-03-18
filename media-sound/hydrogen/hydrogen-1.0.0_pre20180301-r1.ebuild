@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}-music/${PN}/archive/${COMMIT}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="alsa +archive jack ladspa lash osc oss portaudio portmidi pulseaudio"
 
 REQUIRED_USE="lash? ( alsa )"

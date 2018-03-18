@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,21 +11,25 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="A media library management system for obsessive-compulsive music geeks"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://beets.radbox.org/ https://pypi.python.org/pypi/beets"
+HOMEPAGE="http://beets.io/ https://pypi.python.org/pypi/beets"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="MIT"
-IUSE="bpd chroma convert doc discogs flac gstreamer lastgenre mpdstats
-	ogg opus replaygain test web"
+IUSE="badfiles bpd chroma convert doc discogs flac gstreamer lastgenre lastimport mpdstats ogg opus replaygain test thumbnails web"
+REQUIRED_USE="replaygain? ( gstreamer )"
 
 RDEPEND=">=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]
 	dev-python/jellyfish[${PYTHON_USEDEP}]
 	dev-python/munkres[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/requests-oauthlib[${PYTHON_USEDEP}]
 	>=dev-python/python-musicbrainz-ngs-0.4[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/unidecode[${PYTHON_USEDEP}]
-	>=media-libs/mutagen-1.27[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9[${PYTHON_USEDEP}]
+	>=media-libs/mutagen-1.33[${PYTHON_USEDEP}]
+	badfiles? ( media-sound/mp3val media-libs/flac )
 	bpd? ( dev-python/bluelet[${PYTHON_USEDEP}] )
 	chroma? ( dev-python/pyacoustid[${PYTHON_USEDEP}] )
 	convert? ( media-video/ffmpeg:0[encode] )
@@ -33,6 +37,7 @@ RDEPEND=">=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	mpdstats? ( dev-python/python-mpd[${PYTHON_USEDEP}] )
 	lastgenre? ( dev-python/pylast[${PYTHON_USEDEP}] )
+	lastimport? ( dev-python/pylast[${PYTHON_USEDEP}] )
 	replaygain? (
 		gstreamer? ( media-libs/gstreamer:1.0[introspection]
 			media-libs/gst-plugins-good:1.0
@@ -40,20 +45,21 @@ RDEPEND=">=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]
 			ogg? ( media-plugins/gst-plugins-ogg )
 			flac? ( media-plugins/gst-plugins-flac:1.0 )
 			opus? ( media-plugins/gst-plugins-opus:1.0 ) )
-		!gstreamer? ( || ( media-sound/mp3gain
-			media-sound/aacgain ) ) )
-	web? ( dev-python/flask[${PYTHON_USEDEP}] )"
+		)
+	thumbnails? (
+		dev-python/pyxdg[${PYTHON_USEDEP}]
+		dev-python/pathlib[${PYTHON_USEDEP}]
+		|| ( dev-python/pillow[${PYTHON_USEDEP}] media-gfx/imagemagick )
+		)
+	web? ( dev-python/flask[${PYTHON_USEDEP}] dev-python/flask-cors[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	# requires removed package pyechonest, bug #587976
-	rm beetsplug/echonest.py || die
-
 	# remove plugins that do not have appropriate dependencies installed
-	for flag in bpd chroma convert discogs lastgenre mpdstats replaygain web; do
+	for flag in bpd chroma convert discogs lastgenre lastimport mpdstats replaygain thumbnails web; do
 		if ! use ${flag}; then
 			rm -r beetsplug/${flag}.py || \
 			rm -r beetsplug/${flag}/ ||
