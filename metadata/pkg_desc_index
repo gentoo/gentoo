@@ -6845,7 +6845,7 @@ kde-plasma/user-manager 5.11.5: Simple system settings module to manage the user
 lxde-base/lxappearance 0.5.5 0.6.2 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxde-common 0.5.5-r3 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0 0.5.0-r1: nuoveXT2 iconset
-lxde-base/lxde-meta 0.5.5-r4 0.5.5-r5: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
+lxde-base/lxde-meta 0.5.5-r5: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.4.1-r9 0.5.3-r1: LXDE Display Manager
 lxde-base/lxinput 0.3.2 0.3.5: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
