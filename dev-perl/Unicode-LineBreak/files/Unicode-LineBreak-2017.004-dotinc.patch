@@ -1,0 +1,232 @@
+From fd36408d8e59381c0ea217166a244222adbd5ec9 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 18 Mar 2018 22:02:48 +1300
+Subject: Fix tests for '.' in @INC removal on Perl 5.26+
+
+---
+ t/01break.t    | 2 +-
+ t/02hangul.t   | 2 +-
+ t/03ns.t       | 2 +-
+ t/04fold.t     | 2 +-
+ t/05urgent.t   | 2 +-
+ t/06context.t  | 2 +-
+ t/07sea.t      | 2 +-
+ t/08partial.t  | 2 +-
+ t/09uri.t      | 2 +-
+ t/11format.t   | 2 +-
+ t/12fold2.t    | 2 +-
+ t/13flowedsp.t | 2 +-
+ t/14sea_al.t   | 2 +-
+ t/15array.t    | 2 +-
+ t/16regex.t    | 2 +-
+ t/17prop.t     | 2 +-
+ t/18currency.t | 2 +-
+ 17 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/t/01break.t b/t/01break.t
+index a7676bc..4d80758 100644
+--- a/t/01break.t
++++ b/t/01break.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 13 }
+ 
+diff --git a/t/02hangul.t b/t/02hangul.t
+index 5140636..027f418 100644
+--- a/t/02hangul.t
++++ b/t/02hangul.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 2 }
+ 
+diff --git a/t/03ns.t b/t/03ns.t
+index 8d515dd..43b50f7 100644
+--- a/t/03ns.t
++++ b/t/03ns.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 2 }
+ 
+diff --git a/t/04fold.t b/t/04fold.t
+index 8eb9624..50287cb 100644
+--- a/t/04fold.t
++++ b/t/04fold.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lf.pl";
++require "./t/lf.pl";
+ 
+ BEGIN { plan tests => 15 + 2 }
+ 
+diff --git a/t/05urgent.t b/t/05urgent.t
+index e5f27c7..0ae4c66 100644
+--- a/t/05urgent.t
++++ b/t/05urgent.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 5 }
+ 
+diff --git a/t/06context.t b/t/06context.t
+index 4de9f4e..e8ac3f7 100644
+--- a/t/06context.t
++++ b/t/06context.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 2 }
+ 
+diff --git a/t/07sea.t b/t/07sea.t
+index 8446e96..da4d49a 100644
+--- a/t/07sea.t
++++ b/t/07sea.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN {
+     require Unicode::LineBreak;
+diff --git a/t/08partial.t b/t/08partial.t
+index e94f0a0..5baa894 100644
+--- a/t/08partial.t
++++ b/t/08partial.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 15 }
+ 
+diff --git a/t/09uri.t b/t/09uri.t
+index 333e1cf..edb4d25 100644
+--- a/t/09uri.t
++++ b/t/09uri.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 2 }
+ 
+diff --git a/t/11format.t b/t/11format.t
+index 62167cc..d4ebd5b 100644
+--- a/t/11format.t
++++ b/t/11format.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 6 }
+ 
+diff --git a/t/12fold2.t b/t/12fold2.t
+index c9a64ef..d9fd4e8 100644
+--- a/t/12fold2.t
++++ b/t/12fold2.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lf.pl";
++require "./t/lf.pl";
+ 
+ BEGIN { plan tests => 2 }
+ 
+diff --git a/t/13flowedsp.t b/t/13flowedsp.t
+index 4454e6b..d4b96b8 100644
+--- a/t/13flowedsp.t
++++ b/t/13flowedsp.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lf.pl";
++require "./t/lf.pl";
+ 
+ BEGIN { plan tests => 1 }
+ 
+diff --git a/t/14sea_al.t b/t/14sea_al.t
+index 5a45574..2990333 100644
+--- a/t/14sea_al.t
++++ b/t/14sea_al.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 1 }
+ 
+diff --git a/t/15array.t b/t/15array.t
+index 5ab75c2..51d79ab 100644
+--- a/t/15array.t
++++ b/t/15array.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ BEGIN { plan tests => 19 }
+ 
+diff --git a/t/16regex.t b/t/16regex.t
+index 4a7f0db..e85e203 100644
+--- a/t/16regex.t
++++ b/t/16regex.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require "t/lb.pl";
++require "./t/lb.pl";
+ 
+ my $splitre;
+ BEGIN {
+diff --git a/t/17prop.t b/t/17prop.t
+index 55b9944..7f5b68c 100644
+--- a/t/17prop.t
++++ b/t/17prop.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require 't/lb.pl';
++require './t/lb.pl';
+ 
+ BEGIN { plan tests => 12 }
+ 
+diff --git a/t/18currency.t b/t/18currency.t
+index e280ddd..4d6feef 100644
+--- a/t/18currency.t
++++ b/t/18currency.t
+@@ -1,6 +1,6 @@
+ use strict;
+ use Test::More;
+-require 't/lb.pl';
++require './t/lb.pl';
+ 
+ BEGIN { plan tests => 96 }
+ 
+-- 
+2.16.2
+
