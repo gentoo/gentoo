@@ -23,7 +23,7 @@ else
 	# KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	SRC_URI+=" https://dev.gentoo.org/~chutzpah/distfiles/${P}-patches-r0.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -31,8 +31,8 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt
-	glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
+IUSE="accessibility +aio alsa bluetooth bzip2 capstone +caps +curl debug
+	+fdt glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl sdl2 selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
@@ -71,7 +71,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
-# when available rather than always using the extranl library.
+# when available rather than always using the external library.
 ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
@@ -209,6 +209,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.0-glibc-2.27.patch
+	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${WORKDIR}"/patches
 )
 
@@ -436,6 +437,7 @@ qemu_src_configure() {
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
 		$(conf_notuser bluetooth bluez)
+		$(conf_notuser capstone)
 		$(conf_notuser caps cap-ng)
 		$(conf_notuser curl)
 		$(conf_notuser fdt)
@@ -530,9 +532,6 @@ qemu_src_configure() {
 	else
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
-
-	#bug #647570
-	conf_opts+=( --disable-capstone )
 
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
