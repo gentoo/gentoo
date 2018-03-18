@@ -106,7 +106,6 @@ mail-filter/qmail-scanner
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Fail to fetch (#640544, #640596, #640602). Removal in a month.
-games-emulation/mastergear-bin
 media-video/vcdgear
 net-misc/yangcli-pro
 
