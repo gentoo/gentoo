@@ -9,7 +9,7 @@ SRC_URI="mirror://github/codebrainz/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-2.1 BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-util/geany-${PV:0:4}"
