@@ -22,8 +22,6 @@ net-analyzer/scapy visual
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # net-dns/hesiod will be removed (#606652)
-app-editors/emacs hesiod
-app-editors/emacs-vcs hesiod
 net-mail/fetchmail hesiod
 sys-freebsd/freebsd-lib hesiod
 
