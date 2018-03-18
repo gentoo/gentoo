@@ -11,7 +11,7 @@ if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
 else
 	SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa x86"
 fi
 
 DESCRIPTION="GNU Music Typesetter"
