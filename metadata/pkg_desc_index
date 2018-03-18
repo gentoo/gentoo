@@ -823,6 +823,7 @@ app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and c
 app-forensics/foremost 1.5.7-r2: A console program to recover files based on their headers and footers
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
+app-forensics/rkhunter 1.4.2: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/sleuthkit 4.0.2 4.5.0: A collection of file system and media management forensic analysis tools
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/bidiv 1.5-r1: A BiDirectional Text Viewer
