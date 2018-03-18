@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="http://clisp.sourceforge.net/"
@@ -60,6 +60,8 @@ src_prepare() {
 	fi
 	eapply "${FILESDIR}"/"${P}"-after_glibc_cfree_bdb.patch
 	eapply_user
+
+	xdg_environment_reset
 }
 
 src_configure() {

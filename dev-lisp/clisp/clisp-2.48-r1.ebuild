@@ -3,7 +3,7 @@
 
 EAPI="2"
 
-inherit flag-o-matic eutils toolchain-funcs multilib
+inherit flag-o-matic eutils toolchain-funcs multilib xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="http://clisp.sourceforge.net/"
@@ -61,6 +61,7 @@ src_prepare() {
 	if use alpha || use ia64; then
 		sed -i -e 's/-O2//g' src/makemake.in || die
 	fi
+	xdg_environment_reset
 }
 
 src_configure() {
