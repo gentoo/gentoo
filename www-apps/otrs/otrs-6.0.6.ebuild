@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit user systemd
+inherit systemd user
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
 HOMEPAGE="https://www.otrs.com/"
@@ -76,12 +76,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -r "${S}/scripts"/auto_* || die
+	rm -r "scripts"/auto_* || die
 
 	pushd Kernel >/dev/null || die
 	local i
 	for i in *.dist; do
-		cp "${i}" $(basename "${i}" .dist) || die
+		cp "${i}" "${i}" .dist || die
 	done
 	popd >/dev/null || die
 
@@ -137,7 +137,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Setting correct permissions ..."
-	/usr/bin/env perl "${EROOT%/}${OTRS_HOME}"/bin/otrs.SetPermissions.pl "${EROOT%/}${OTRS_HOME}" \
+	perl "${EROOT%/}${OTRS_HOME}"/bin/otrs.SetPermissions.pl "${EROOT%/}${OTRS_HOME}" \
 		--otrs-user=otrs \
 		--web-group=apache \
 		|| die "Could not set permissions"
