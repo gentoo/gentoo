@@ -22,7 +22,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	SRC_URI+=" https://dev.gentoo.org/~chutzpah/distfiles/${P}-patches-r0.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -529,6 +529,9 @@ qemu_src_configure() {
 	else
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
+
+	#bug #647570
+	conf_opts+=( --disable-capstone )
 
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"

@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Matthias Maier <tamiko@gentoo.org> (18 Mar 2018)
+# dev-libs/capstone hasn't been stabilized yet
+app-emulation/qemu capstone
+
 # Zac Medico <zmedico@gentoo.org> (9 Mar 2018)
 # The rsync-verify support is not really stable yet.
 # Bugs #649276, #647964
