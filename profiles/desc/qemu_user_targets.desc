@@ -28,6 +28,8 @@ ppc64abi32 - userspace emulation target
 ppc64le - PowerPC 64-bit little endian userspace emulation target
 ppc64 - PowerPC 64-bit big endian userspace emulation target
 ppc - PowerPC 32-bit big endian userspace emulation target
+riscv32 - userspace emulation target
+riscv64 - userspace emulation target
 s390x - userspace emulation target
 sh4eb - userspace emulation target
 sh4 - userspace emulation target
@@ -36,3 +38,5 @@ sparc64 - userspace emulation target
 sparc - userspace emulation target
 tilegx - TILE-Gx 64-bit userspace emulation target
 x86_64 - userspace emulation target
+xtensaeb - userspace emulation target
+xtensa - userspace emulation target
