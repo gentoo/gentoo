@@ -9,7 +9,7 @@ SRC_URI="https://github.com/stevedonovan/LDoc/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 IUSE=""
 
 RDEPEND="dev-lua/penlight"
