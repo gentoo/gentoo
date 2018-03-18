@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc64 ~x86"
 IUSE="
 	adns androiddump bcg729 +capinfos +caps +captype ciscodump
 	cpu_flags_x86_sse4_2 +dftest doc +dumpcap +editcap gtk kerberos libssh
