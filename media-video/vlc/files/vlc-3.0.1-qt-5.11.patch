@@ -1,0 +1,10 @@
+--- a/modules/gui/qt/components/simple_preferences.cpp	2018-01-25 17:57:40.000000000 +0100
++++ b/modules/gui/qt/components/simple_preferences.cpp	2018-03-18 21:08:51.212556781 +0100
+@@ -33,6 +33,7 @@
+ #include <vlc_config_cat.h>
+ #include <vlc_configuration.h>
+ 
++#include <QButtonGroup>
+ #include <QString>
+ #include <QFont>
+ #include <QToolButton>

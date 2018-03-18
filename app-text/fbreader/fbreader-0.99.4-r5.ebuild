@@ -11,7 +11,7 @@ SRC_URI="http://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 IUSE="debug"
 
 RDEPEND="
