@@ -20,7 +20,7 @@ HOMEPAGE="http://www.rubyonrails.org"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
 
 IUSE=""
 
