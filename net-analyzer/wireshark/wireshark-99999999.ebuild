@@ -271,7 +271,7 @@ pkg_postinst() {
 	# Add group for users allowed to sniff.
 	enewgroup wireshark
 
-	if use pcap; then
+	if use dumpcap && use pcap; then
 		fcaps -o 0 -g wireshark -m 4710 -M 0710 \
 			cap_dac_read_search,cap_net_raw,cap_net_admin \
 			"${EROOT}"/usr/bin/dumpcap
