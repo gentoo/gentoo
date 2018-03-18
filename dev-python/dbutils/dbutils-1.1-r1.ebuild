@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,8 +10,10 @@ MY_PN="DBUtils"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Database connections for multi-threaded environments"
-HOMEPAGE="http://www.webwareforpython.org/DBUtils https://pypi.python.org/pypi/DBUtils"
-SRC_URI="http://www.webwareforpython.org/downloads/DBUtils/${MY_P}.tar.gz"
+HOMEPAGE="https://cito.github.io/DBUtils/
+	https://github.com/Cito/DBUtils
+	https://pypi.python.org/pypi/DBUtils"
+SRC_URI="mirror://pypi/${P:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="OSL-2.0"
 SLOT="0"
