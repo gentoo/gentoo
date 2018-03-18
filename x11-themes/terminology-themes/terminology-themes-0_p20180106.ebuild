@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit xdg-utils
+
 EGIT_COMMIT_HASH="ba7b71ffd290cbce4bf87d47276fa516c6563345"
 
 DESCRIPTION="Color schemes for the Terminology terminal emulator"
@@ -18,6 +20,11 @@ DEPEND="dev-libs/efl"
 RDEPEND="x11-terms/terminology"
 
 S="${WORKDIR}/${PN}-${EGIT_COMMIT_HASH}"
+
+src_prepare() {
+	default
+	xdg_environment_reset
+}
 
 src_compile() {
 	emake -j1
