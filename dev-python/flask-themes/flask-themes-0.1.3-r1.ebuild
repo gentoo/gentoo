@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,8 @@ MY_PN="Flask-Themes"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Infrastructure for theming support in Flask applications"
-HOMEPAGE="http://packages.python.org/Flask-Themes/ https://pypi.python.org/pypi/Flask-Themes"
+HOMEPAGE="https://pythonhosted.org/Flask-Themes/
+	https://pypi.python.org/pypi/Flask-Themes"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
