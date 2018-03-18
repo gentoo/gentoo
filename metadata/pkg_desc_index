@@ -1321,7 +1321,7 @@ app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
 app-text/evince 3.24.2: Simple document viewer for GNOME
-app-text/fbreader 0.99.4-r3: E-Book Reader. Supports many e-book formats
+app-text/fbreader 0.99.4-r3 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/flpsed 0.7.0: Pseudo PostScript editor
 app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
 app-text/ghostscript-gpl 9.21: Ghostscript is an interpreter for the PostScript language and for PDF
@@ -3129,6 +3129,7 @@ dev-libs/libtermkey 0.20: Library for easy processing of keyboard entry from ter
 dev-libs/libtommath 0.42.0-r1: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
+dev-libs/libunibreak 4.0: Line and word breaking library
 dev-libs/libunicode 0.4-r2: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.5 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
