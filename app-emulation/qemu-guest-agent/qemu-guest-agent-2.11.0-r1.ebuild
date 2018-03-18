@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,9 +20,9 @@ LICENSE="GPL-2 BSD-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=dev-libs/glib-2.22
-	!<app-emulation/qemu-1.1.1-r1
-	!<sys-apps/sysvinit-2.88-r5"
+RDEPEND="dev-libs/glib
+	x11-libs/pixman"
+
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
