@@ -8,7 +8,7 @@ PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
-FIRMWARE_ABI_VERSION="2.9.0-r52"
+FIRMWARE_ABI_VERSION="2.11.1-r50"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
@@ -27,20 +27,21 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt
-	glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
+IUSE="accessibility +aio alsa bluetooth bzip2 capstone +caps +curl debug
+	+fdt glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl sdl2 selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
-	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc
-	sparc64 x86_64"
+	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
+	sh4 sh4eb sparc sparc64 x86_64 xtensa xtensaeb"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS}
-	lm32 moxie ppcemb tricore unicore32 xtensa xtensaeb"
+	lm32 moxie ppcemb tricore unicore32"
 IUSE_USER_TARGETS="${COMMON_TARGETS}
-	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
+	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus
+	tilegx"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
@@ -67,7 +68,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
-# when available rather than always using the extranl library.
+# when available rather than always using the external library.
 ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
@@ -153,10 +154,10 @@ SOFTMMU_TOOLS_DEPEND="
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
-		~sys-firmware/ipxe-1.0.0_p20160620
-		~sys-firmware/seabios-1.10.2[binary,seavgabios]
-		~sys-firmware/sgabios-0.1_pre8
+		~sys-firmware/edk2-ovmf-2017_p20180211[binary]
+		~sys-firmware/ipxe-1.0.0_p20180211[binary]
+		~sys-firmware/seabios-1.11.0[binary,seavgabios]
+		~sys-firmware/sgabios-0.1_pre8[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/edk2-ovmf
@@ -166,7 +167,7 @@ X86_FIRMWARE_DEPEND="
 	)"
 PPC64_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.10.2[binary,seavgabios]
+		~sys-firmware/seabios-1.11.0[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
 		>=sys-firmware/seabios-1.10.2[seavgabios]
@@ -202,8 +203,9 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.11.9999-cflags.patch
+	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
+	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 )
 
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
@@ -430,6 +432,7 @@ qemu_src_configure() {
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
 		$(conf_notuser bluetooth bluez)
+		$(conf_notuser capstone)
 		$(conf_notuser caps cap-ng)
 		$(conf_notuser curl)
 		$(conf_notuser fdt)
@@ -524,9 +527,6 @@ qemu_src_configure() {
 	else
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
-
-	#bug #647570
-	conf_opts+=( --disable-capstone )
 
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
