@@ -1,0 +1,212 @@
+From c52295c8dc90b964d26567d6750f46fd202145ae Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 18 Mar 2018 11:56:57 +0100
+Subject: [PATCH] Fix build with Qt 5.11 (missing headers)
+
+---
+ libs/widgets/KoCsvImportDialog.cpp                         | 1 +
+ libs/widgets/KoPageLayoutWidget.cpp                        | 2 ++
+ plan/src/kptview.h                                         | 1 +
+ plan/src/kptviewlist.cpp                                   | 1 +
+ plan/src/libs/ui/kptaccountseditor.cpp                     | 1 +
+ plan/src/libs/ui/kptdocumentspanel.h                       | 1 +
+ plan/src/libs/ui/kptitemviewsettup.cpp                     | 2 +-
+ plan/src/libs/ui/kpttaskeditor.cpp                         | 1 +
+ plan/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp | 1 +
+ plan/src/libs/widgets/KoPageLayoutWidget.cpp               | 2 ++
+ plugins/chartshape/dialogs/TableEditorDialog.cpp           | 1 +
+ plugins/formulashape/FormulaToolWidget.cpp                 | 1 +
+ sheets/dialogs/LayoutDialog.cpp                            | 1 +
+ words/part/dialogs/KWAnchoringProperties.cpp               | 1 +
+ words/part/dialogs/KWRunAroundProperties.cpp               | 2 ++
+ 15 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/libs/widgets/KoCsvImportDialog.cpp b/libs/widgets/KoCsvImportDialog.cpp
+index 0ffdcf62a70..cdca006dc62 100644
+--- a/libs/widgets/KoCsvImportDialog.cpp
++++ b/libs/widgets/KoCsvImportDialog.cpp
+@@ -21,6 +21,7 @@
+ #include "KoCsvImportDialog.h"
+ 
+ // Qt
++#include <QButtonGroup>
+ #include <QTextCodec>
+ #include <QTextStream>
+ 
+diff --git a/libs/widgets/KoPageLayoutWidget.cpp b/libs/widgets/KoPageLayoutWidget.cpp
+index f91555ca262..2b9d04450b3 100644
+--- a/libs/widgets/KoPageLayoutWidget.cpp
++++ b/libs/widgets/KoPageLayoutWidget.cpp
+@@ -19,6 +19,8 @@
+ 
+ #include "KoPageLayoutWidget.h"
+ 
++#include <QButtonGroup>
++
+ #include <ui_KoPageLayoutWidget.h>
+ 
+ #include <KoUnit.h>
+diff --git a/plan/src/kptview.h b/plan/src/kptview.h
+index 44d11935e71..a98e55342db 100644
+--- a/plan/src/kptview.h
++++ b/plan/src/kptview.h
+@@ -28,6 +28,7 @@
+ #include "kptcontext.h"
+ #include "kptviewbase.h"
+ 
++#include <QActionGroup>
+ #include <QDockWidget>
+ #include <QMap>
+ 
+diff --git a/plan/src/kptviewlist.cpp b/plan/src/kptviewlist.cpp
+index f34e702e055..0e6db7b2ffe 100644
+--- a/plan/src/kptviewlist.cpp
++++ b/plan/src/kptviewlist.cpp
+@@ -25,6 +25,7 @@
+ #include <QStyle>
+ #include <QBrush>
+ #include <QContextMenuEvent>
++#include <QHeaderView>
+ #include <QMenu>
+ 
+ #include <kmessagebox.h>
+diff --git a/plan/src/libs/ui/kptaccountseditor.cpp b/plan/src/libs/ui/kptaccountseditor.cpp
+index 7991fafd779..54e3a87c94f 100644
+--- a/plan/src/libs/ui/kptaccountseditor.cpp
++++ b/plan/src/libs/ui/kptaccountseditor.cpp
+@@ -40,6 +40,7 @@
+ #include <QContextMenuEvent>
+ #include <QMenu>
+ #include <QAction>
++#include <QHeaderView>
+ 
+ #include <KLocalizedString>
+ #include <kactioncollection.h>
+diff --git a/plan/src/libs/ui/kptdocumentspanel.h b/plan/src/libs/ui/kptdocumentspanel.h
+index 00ea3af80b2..491cb1ebb86 100644
+--- a/plan/src/libs/ui/kptdocumentspanel.h
++++ b/plan/src/libs/ui/kptdocumentspanel.h
+@@ -26,6 +26,7 @@
+ 
+ #include "kptdocuments.h"
+ 
++#include <QModelIndexList>
+ #include <QWidget>
+ #include <kundo2qstack.h>
+ 
+diff --git a/plan/src/libs/ui/kptitemviewsettup.cpp b/plan/src/libs/ui/kptitemviewsettup.cpp
+index d1c3b1fc157..7c97a070b9a 100644
+--- a/plan/src/libs/ui/kptitemviewsettup.cpp
++++ b/plan/src/libs/ui/kptitemviewsettup.cpp
+@@ -25,9 +25,9 @@
+ 
+ #include "KoPageLayoutWidget.h"
+ 
++#include <QHeaderView>
+ #include <QPushButton>
+ 
+-
+ namespace KPlato
+ {
+ 
+diff --git a/plan/src/libs/ui/kpttaskeditor.cpp b/plan/src/libs/ui/kpttaskeditor.cpp
+index 5f79abfd917..d08d7f231f4 100644
+--- a/plan/src/libs/ui/kpttaskeditor.cpp
++++ b/plan/src/libs/ui/kpttaskeditor.cpp
+@@ -45,6 +45,7 @@
+ #include <QVBoxLayout>
+ #include <QDragMoveEvent>
+ #include <QAction>
++#include <QHeaderView>
+ #include <QMenu>
+ 
+ #include <kactionmenu.h>
+diff --git a/plan/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp b/plan/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp
+index 344ebc2b599..9146f06ab8c 100644
+--- a/plan/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp
++++ b/plan/src/libs/ui/reportsgenerator/ReportsGeneratorView.cpp
+@@ -31,6 +31,7 @@
+ #include <KFile>
+ 
+ #include <QAction>
++#include <QHeaderView>
+ #include <QTreeView>
+ #include <QStandardItemModel>
+ #include <QModelIndex>
+diff --git a/plan/src/libs/widgets/KoPageLayoutWidget.cpp b/plan/src/libs/widgets/KoPageLayoutWidget.cpp
+index c9e17b748a9..3abc81b939e 100644
+--- a/plan/src/libs/widgets/KoPageLayoutWidget.cpp
++++ b/plan/src/libs/widgets/KoPageLayoutWidget.cpp
+@@ -21,6 +21,8 @@
+ 
+ #include <ui_KoPageLayoutWidget.h>
+ 
++#include <QButtonGroup>
++
+ #include <KoUnit.h>
+ 
+ class Q_DECL_HIDDEN KoPageLayoutWidget::Private
+diff --git a/plugins/chartshape/dialogs/TableEditorDialog.cpp b/plugins/chartshape/dialogs/TableEditorDialog.cpp
+index c0d5136f09e..d2a772e83c2 100644
+--- a/plugins/chartshape/dialogs/TableEditorDialog.cpp
++++ b/plugins/chartshape/dialogs/TableEditorDialog.cpp
+@@ -24,6 +24,7 @@
+ 
+ // Qt
+ #include <QAbstractItemModel>
++#include <QAction>
+ 
+ // Calligra
+ #include <KoIcon.h>
+diff --git a/plugins/formulashape/FormulaToolWidget.cpp b/plugins/formulashape/FormulaToolWidget.cpp
+index ed109192cc5..8f521779617 100644
+--- a/plugins/formulashape/FormulaToolWidget.cpp
++++ b/plugins/formulashape/FormulaToolWidget.cpp
+@@ -30,6 +30,7 @@
+ #include <QWidgetAction>
+ #include <QTableWidget>
+ #include <QAction>
++#include <QHeaderView>
+ #include <QMenu>
+ 
+ FormulaToolWidget::FormulaToolWidget( KoFormulaTool* tool, QWidget* parent )
+diff --git a/sheets/dialogs/LayoutDialog.cpp b/sheets/dialogs/LayoutDialog.cpp
+index a0a9832ddfc..7d7db53823b 100644
+--- a/sheets/dialogs/LayoutDialog.cpp
++++ b/sheets/dialogs/LayoutDialog.cpp
+@@ -36,6 +36,7 @@
+ #include <math.h>
+ 
+ #include <QIntValidator>
++#include <QButtonGroup>
+ #include <QCheckBox>
+ #include <QFrame>
+ #include <QLabel>
+diff --git a/words/part/dialogs/KWAnchoringProperties.cpp b/words/part/dialogs/KWAnchoringProperties.cpp
+index d64208cbdb6..bfddb3a03f5 100644
+--- a/words/part/dialogs/KWAnchoringProperties.cpp
++++ b/words/part/dialogs/KWAnchoringProperties.cpp
+@@ -35,6 +35,7 @@
+ 
+ #include <kundo2command.h>
+ 
++#include <QButtonGroup>
+ #include <QComboBox>
+ 
+ const int KWAnchoringProperties::vertRels[4][20] = {
+diff --git a/words/part/dialogs/KWRunAroundProperties.cpp b/words/part/dialogs/KWRunAroundProperties.cpp
+index e38599a06d7..d96df6405a5 100644
+--- a/words/part/dialogs/KWRunAroundProperties.cpp
++++ b/words/part/dialogs/KWRunAroundProperties.cpp
+@@ -17,6 +17,8 @@
+  * Boston, MA 02110-1301, USA.
+  */
+ 
++#include <QButtonGroup>
++
+ #include "KWRunAroundProperties.h"
+ #include "KWFrameDialog.h"
+ #include "KWDocument.h"
+-- 
+2.16.2
+
