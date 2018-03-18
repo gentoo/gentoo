@@ -8,8 +8,10 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A logging replacement for Python"
-HOMEPAGE="http://packages.python.org/Logbook/ https://pypi.python.org/pypi/Logbook"
-SRC_URI="https://github.com/mitsuhiko/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://logbook.readthedocs.io/en/stable/
+	https://github.com/getlogbook/logbook
+	https://pypi.python.org/pypi/Logbook"
+SRC_URI="https://github.com/getlogbook/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
