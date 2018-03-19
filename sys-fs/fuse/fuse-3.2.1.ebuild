@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit meson multilib-minimal
+inherit meson multilib-minimal flag-o-matic
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
@@ -21,6 +21,9 @@ DOCS=( AUTHORS ChangeLog.rst README.md doc/README.NFS doc/kernel.txt )
 
 src_prepare() {
 	default
+
+	# lto not supported yet -- https://github.com/libfuse/libfuse/issues/198
+	filter-flags -flto
 
 	# passthough_ll is broken on systems with 32-bit pointers
 	cat /dev/null > example/meson.build || die
