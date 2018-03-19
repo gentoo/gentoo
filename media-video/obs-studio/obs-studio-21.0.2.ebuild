@@ -21,7 +21,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack pulseaudio truetype v4l"
+IUSE="+alsa fdk imagemagick jack nvenc pulseaudio truetype v4l"
 
 COMMON_DEPEND="
 	>=dev-libs/jansson-2.5
@@ -36,6 +36,7 @@ COMMON_DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-video/ffmpeg:=[x264]
+	nvenc? ( media-video/ffmpeg:=[nvenc] )
 	net-misc/curl
 	x11-libs/libXcomposite
 	x11-libs/libXinerama
