@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils xdg-utils gnome2-utils
 
 DESCRIPTION="GPS mapping utility"
 HOMEPAGE="https://bitbucket.org/maproom/qmapshack/wiki/Home"
@@ -17,10 +17,24 @@ RDEPEND="dev-qt/qtwebkit:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtdbus:5
 	dev-qt/qttest:5
+	dev-qt/designer:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-libs/quazip
 	>=sci-geosciences/routino-3.1.1
 	sci-libs/gdal
-	sci-libs/proj"
+	sci-libs/proj
+	sci-libs/alglib"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	gnome2_icon_cache_update
+}
