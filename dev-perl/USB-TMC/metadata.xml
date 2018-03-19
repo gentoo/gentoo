@@ -9,4 +9,8 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">USB-TMC</remote-id>
+    <remote-id type="cpan-module">USB::TMC</remote-id>
+  </upstream>
 </pkgmetadata>
