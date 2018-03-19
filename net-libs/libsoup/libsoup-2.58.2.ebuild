@@ -44,6 +44,11 @@ DEPEND="${RDEPEND}
 #		net-misc/curl
 #		net-libs/glib-networking[ssl])"
 
+PATCHES=(
+	# https://bugs.gentoo.org/630516
+	"${FILESDIR}/${PN}-2.58.2-sparc-unaligned.patch"
+)
+
 src_prepare() {
 	if ! use test; then
 		# don't waste time building tests (bug #226271)
