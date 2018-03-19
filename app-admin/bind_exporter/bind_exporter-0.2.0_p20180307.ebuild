@@ -9,7 +9,7 @@ EXPORTER_COMMIT="38ef3a6caa68e8c42a08e72d51e90b00333e6894"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EXPORTER_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="Elasticsearch stats exporter for Prometheus"
+DESCRIPTION="Prometheus exporter for BIND"
 HOMEPAGE="https://github.com/digitalocean/bind_exporter"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="Apache-2.0"
