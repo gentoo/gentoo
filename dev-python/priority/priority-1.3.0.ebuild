@@ -7,7 +7,9 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="A pure-Python implementation of the HTTP/2 priority tree"
-HOMEPAGE="http://python-hyper.org/priority https://github.com/python-hyper/priority https://pypi.python.org/pypi/priority"
+HOMEPAGE="https://python-hyper.org/priority/en/latest/
+	https://github.com/python-hyper/priority
+	https://pypi.python.org/pypi/priority"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
