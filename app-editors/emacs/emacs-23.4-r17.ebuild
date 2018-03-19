@@ -196,10 +196,6 @@ src_configure() {
 		myconf+=" --without-x --without-ns"
 	fi
 
-	# Save version information in the Emacs binary. It will be available
-	# in variable "system-configuration-options".
-	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
-
 	# According to configure, this option is only used for GNU/Linux
 	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
 	# out the location because $(get_libdir) does not necessarily return
