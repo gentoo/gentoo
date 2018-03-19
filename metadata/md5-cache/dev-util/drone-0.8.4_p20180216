@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup test unpack
+DEPEND=dev-go/go-bindata dev-go/go-bindata-assetfs:= >=dev-lang/go-1.8
+DESCRIPTION=A Continuous Delivery platform built on Docker, written in Go
+EAPI=6
+HOMEPAGE=https://github.com/drone/drone
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/drone/drone/archive/ce3855812bb00dbf1993d8663b6100b272e104dd.tar.gz -> drone-0.8.4_p20180216.tar.gz https://github.com/drone/drone-ui/archive/cc079b1279f70e54f64cf0c14e1e531b6689232b.tar.gz -> github.com-drone-drone-ui-cc079b1279f70e54f64cf0c14e1e531b6689232b.tar.gz https://github.com/golang/protobuf/archive/bbd03ef6da3a115852eaf24c8a1c46aeb39aa175.tar.gz -> github.com-golang-protobuf-bbd03ef6da3a115852eaf24c8a1c46aeb39aa175.tar.gz https://github.com/golang/net/archive/92b859f39abd2d91a854c9f9c4621b2f5054a92d.tar.gz -> github.com-golang-net-92b859f39abd2d91a854c9f9c4621b2f5054a92d.tar.gz
+_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=52b85846a619965692b540c7cc26fb93
