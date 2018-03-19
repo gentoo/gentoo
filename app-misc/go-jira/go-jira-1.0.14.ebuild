@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ EGO_PN="gopkg.in/Netflix-Skunkworks/go-jira.v1"
 
 inherit golang-build golang-vcs-snapshot
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="A simple JIRA commandline client in Go"
 HOMEPAGE="https://github.com/Netflix-Skunkworks/go-jira"
