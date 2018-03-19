@@ -723,7 +723,7 @@ app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using
 app-emulation/cloud-init 0.7.6-r1 0.7.8-r2 0.7.9: cloud initialisation magic
 app-emulation/containerd 0.2.9_p20170917: A daemon to control runC
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 2.10.1: Golden Disk Image builder.
+app-emulation/diskimage-builder 2.10.1 2.11.0: Golden Disk Image builder.
 app-emulation/docker 17.09.1: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-proxy 0.8.0_p20161111 0.8.0_p20170917: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20170917: runc container cli tools (docker fork)
@@ -1337,7 +1337,7 @@ app-text/gtkspell 2.0.16 3.0.9: Spell checking widget for GTK
 app-text/gtranslator 2.91.7-r1: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
-app-text/highlight 3.17 3.42-r1: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
+app-text/highlight 3.42-r1: Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 7.1: A number of simple utilities for manipulating HTML and XML files
