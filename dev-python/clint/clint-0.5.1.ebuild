@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,10 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	if use examples; then
+		insinto /usr/share/doc/${PF}
+		doins -r examples
+	fi
 
 	distutils-r1_python_install_all
 }
