@@ -1,18 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit savedconfig
 
 if [[ ${PV} == 99999999* ]]; then
-	inherit git-2
+	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
-	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
+	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 else
-	GIT_COMMIT="e39f0e3e6897ad865b3704f61218ae83f98a85da"
-	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+	GIT_COMMIT="4c0bf113a55975d702673e57c5542f150807ad66"
+	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz
+		mirror://gentoo/microcode_amd_fam17h.tar.gz
+		https://dev.gentoo.org/~whissi/dist/${PN}/microcode_amd_fam17h.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -64,9 +66,11 @@ RDEPEND="!savedconfig? (
 	)"
 #add anything else that collides to this
 
+QA_PREBUILT="lib/firmware/*"
+
 src_unpack() {
 	if [[ ${PV} == 99999999* ]]; then
-		git-2_src_unpack
+		git-r3_src_unpack
 	else
 		default
 		# rename directory from git snapshot tarball
@@ -76,6 +80,9 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	mv "${WORKDIR}"/microcode_amd_fam17h.bin "${S}"/amd-ucode || die
+
 	echo "# Remove files that shall not be installed from this list." > ${PN}.conf
 	find * \( \! -type d -and \! -name ${PN}.conf \) >> ${PN}.conf
 
