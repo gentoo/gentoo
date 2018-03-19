@@ -97,6 +97,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake-openssl.patch
 	"${FILESDIR}"/${P}-poppler-0.58.patch
 	"${FILESDIR}"/${P}-x86-fpic.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
 )
 
 src_prepare() {
