@@ -66,6 +66,10 @@ if [[ ${PV} == 9999 ]]; then
 	DEPEND+=" sys-devel/gnuconfig"
 fi
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.15.1-e2fsprogs-1.44.0.patch"
+)
+
 src_prepare() {
 	default
 	if [[ ${PV} == 9999 ]]; then
