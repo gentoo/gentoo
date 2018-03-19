@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-06">
+  <title>Oracle JDK/JRE: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Oracle's JDK and JRE
+    software suites, the worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">oracle-jdk-bin,oracle-jre-bin</product>
+  <announced>2018-03-19</announced>
+  <revised count="1">2018-03-19</revised>
+  <bug>645268</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/oracle-jdk-bin" auto="yes" arch="*">
+      <unaffected range="ge" slot="1.8">1.8.0.162</unaffected>
+      <vulnerable range="lt" slot="1.8">1.8.0.162</vulnerable>
+    </package>
+    <package name="dev-java/oracle-jre-bin" auto="yes" arch="*">
+      <unaffected range="ge" slot="1.8">1.8.0.162</unaffected>
+      <vulnerable range="lt" slot="1.8">1.8.0.162</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Java Platform, Standard Edition (Java SE) lets you develop and deploy
+      Java applications on desktops and servers, as well as in today’s
+      demanding embedded environments. Java offers the rich user interface,
+      performance, versatility, portability, and security that today’s
+      applications require.
+    </p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Oracle’s Java SE.
+      Please review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, gain access to information, or cause a Denial
+      of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Oracle JDK users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jdk-bin-1.8.0.162:1.8"
+    </code>
+    
+    <p>All Oracle JRE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-java/oracle-jre-bin-1.8.0.162:1.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2579">CVE-2018-2579</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2581">CVE-2018-2581</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2582">CVE-2018-2582</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2588">CVE-2018-2588</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2599">CVE-2018-2599</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2602">CVE-2018-2602</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2603">CVE-2018-2603</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2618">CVE-2018-2618</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2627">CVE-2018-2627</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2629">CVE-2018-2629</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2633">CVE-2018-2633</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2634">CVE-2018-2634</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2637">CVE-2018-2637</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2638">CVE-2018-2638</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2639">CVE-2018-2639</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2641">CVE-2018-2641</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2663">CVE-2018-2663</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-15T22:00:47Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-03-19T00:51:13Z">chrisadr</metadata>
+</glsa>
