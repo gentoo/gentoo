@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit meson udev
+inherit meson udev flag-o-matic
 
 DESCRIPTION="Common files for multiple slots of sys-fs/fuse"
 HOMEPAGE="https://github.com/libfuse/libfuse"
@@ -17,6 +17,13 @@ DEPEND="virtual/pkgconfig"
 RDEPEND="!<sys-fs/fuse-2.9.7-r1:0"
 
 S=${WORKDIR}/fuse-${PV}
+
+src_prepare() {
+	default
+
+	# lto not supported yet -- https://github.com/libfuse/libfuse/issues/198
+	filter-flags -flto
+}
 
 src_install() {
 	newsbin "${BUILD_DIR}"/util/mount.fuse3 mount.fuse
