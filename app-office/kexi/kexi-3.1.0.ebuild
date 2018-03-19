@@ -62,6 +62,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/calligra-l10n:4[calligra_features_kexi(+)]
 "
 
+PATCHES=( "${FILESDIR}"/${P}-qt-5.11.patch )
+
 src_prepare() {
 	if ! use webkit; then
 		punt_bogus_dep Qt5 WebKit
