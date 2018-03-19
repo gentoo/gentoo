@@ -14,6 +14,7 @@
   <use>
     <flag name="fdk">Enable libfdk support for AAC encoding.</flag>
     <flag name="imagemagick">Use ImageMagick for image loading instead of FFmpeg.</flag>
+    <flag name="nvenc">Enable NVENC encoding for nVidia video cards</flag>
   </use>
   <upstream>
     <remote-id type="github">jp9000/obs-studio</remote-id>
