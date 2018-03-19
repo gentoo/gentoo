@@ -18,6 +18,9 @@ RDEPEND="!<sys-fs/fuse-2.9.7-r1:0"
 
 S=${WORKDIR}/fuse-${PV}
 
+# tests run in sys-fs/fuse
+RESTRICT="test"
+
 src_prepare() {
 	default
 
