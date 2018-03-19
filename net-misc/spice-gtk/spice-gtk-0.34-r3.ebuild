@@ -13,8 +13,8 @@ HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-g
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-gtk.git"
-KEYWORDS=""
+SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.bz2"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="dbus gstaudio gstvideo +gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
 
 REQUIRED_USE="?? ( pulseaudio gstaudio )"
@@ -63,7 +63,7 @@ RDEPEND="
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	=app-emulation/spice-protocol-9999
+	>=app-emulation/spice-protocol-0.12.13
 	dev-perl/Text-CSV
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40.0
@@ -71,6 +71,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}"/${P}-openssl11.patch
+)
 
 src_prepare() {
 	# bug 558558
@@ -138,7 +143,7 @@ src_compile() {
 src_install() {
 	default
 
-	dodoc AUTHORS NEWS README TODO
+	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
 
 	# Remove .la files if they're not needed
 	use static-libs || prune_libtool_files
