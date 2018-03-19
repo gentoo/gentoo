@@ -4,8 +4,10 @@ Date:   Fri Nov 17 20:30:00 2017 +0100
 Respect CFLAGS, CPPFLAGS etc. This patch is inspired
 by hasufell’s patch.
 
---- a/Makefile  2017-03-31 11:08:58.419210817 +0200
-+++ b/Makefile	2017-11-17 20:30:00.000000000 +0100
+Edit 2018-03-19: Now with server support!
+
+--- a/Makefile	2018-03-19 11:00:00.000000000 +0100
++++ b/Makefile	2018-03-19 11:00:00.000000001 +0100
 @@ -223,7 +223,7 @@
  ifndef USE_ALTGAMMA
    # Clearskies - X11-based gamma for Linux
@@ -61,7 +63,7 @@ by hasufell’s patch.
      HAVE_VM_COMPILED=true
    endif
    ifeq ($(ARCH),armv7l)
-@@ -1124,7 +1123,7 @@
+@@ -1130,12 +1129,12 @@
  
  define DO_CC
  $(echo_cmd) "CC $<"
@@ -70,4 +72,28 @@ by hasufell’s patch.
  endef
  
  define DO_REF_CC
+ $(echo_cmd) "REF_CC $<"
+-$(Q)$(CC) $(SHLIBCFLAGS) $(CFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
++$(Q)$(CC) $(SHLIBCFLAGS) $(CFLAGS) $(CPPFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
+ endef
+ 
+ define DO_REF_STR
+@@ -1148,7 +1147,7 @@
+ 
+ define DO_BOT_CC
+ $(echo_cmd) "BOT_CC $<"
+-$(Q)$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) $(BOTCFLAGS) $(OPTIMIZE) -DBOTLIB -o $@ -c $<
++$(Q)$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) $(CPPFLAGS) $(BOTCFLAGS) $(OPTIMIZE) -DBOTLIB -o $@ -c $<
+ endef
+ 
+ ifeq ($(GENERATE_DEPENDENCIES),1)
+@@ -1162,7 +1161,7 @@
+ 
+ define DO_DED_CC
+ $(echo_cmd) "DED_CC $<"
+-$(Q)$(CC) $(NOTSHLIBCFLAGS) -DDEDICATED $(CFLAGS) $(SERVER_CFLAGS) $(OPTIMIZE) -o $@ -c $<
++$(Q)$(CC) $(NOTSHLIBCFLAGS) -DDEDICATED $(CFLAGS) $(CPPFLAGS) $(SERVER_CFLAGS) $(OPTIMIZE) -o $@ -c $<
+ endef
+ 
+ define DO_WINDRES
 
