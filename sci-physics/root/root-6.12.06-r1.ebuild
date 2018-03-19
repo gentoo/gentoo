@@ -16,7 +16,7 @@ DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
-IUSE="+X avahi aqua +asimage davix emacs +examples fits fftw fortran +gdml
+IUSE="+X avahi aqua +asimage +davix emacs +examples fits fftw fortran +gdml
 	graphviz +gsl http jemalloc kerberos ldap libcxx +math memstat +minuit
 	mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python qt4
 	R +roofit root7 shadow sqlite ssl table +tbb test +threads +tiff +tmva
@@ -42,6 +42,7 @@ CDEPEND="
 	app-arch/xz-utils
 	fortran? ( dev-lang/cfortran )
 	dev-libs/libpcre:3=
+	dev-libs/xxhash
 	media-fonts/dejavu
 	media-libs/freetype:2=
 	media-libs/libpng:0=
@@ -70,6 +71,7 @@ CDEPEND="
 		>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
 	) )
 	avahi? ( net-dns/avahi[mdnsresponder-compat] )
+	davix? ( net-libs/davix )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:0= )
 	graphviz? ( media-gfx/graphviz:0= )
@@ -168,18 +170,20 @@ src_configure() {
 		-Dbuiltin_llvm=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
-		-Dbuiltin_davix=$(usex davix) # not in Gentoo yet
+		-Dbuiltin_davix=OFF
 		-Dbuiltin_fftw3=OFF
 		-Dbuiltin_freetype=OFF
 		-Dbuiltin_ftgl=OFF
 		-Dbuiltin_glew=OFF
 		-Dbuiltin_gsl=OFF
+		-Dbuiltin_lz4=OFF
 		-Dbuiltin_lzma=OFF
 		-Dbuiltin_pcre=OFF
 		-Dbuiltin_tbb=OFF
 		-Dbuiltin_unuran=OFF
 		-Dbuiltin_vc=OFF
 		-Dbuiltin_xrootd=OFF
+		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
 		-Dx11=$(usex X)
 		-Dxft=$(usex X)
