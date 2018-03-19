@@ -25,17 +25,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README )
+PATCHES=( "${FILESDIR}"/${P}-disable-tests.patch )
 
 src_prepare() {
 	default
-
-	# skip failing tests
-	sed -i \
-		-e '/test_listview\.sh/d' \
-		-e '/test_view_colors\.sh/d' \
-		-e '/test_sql\.sh/d' \
-		test/Makefile.am || die
-
 	eautoreconf
 }
 
