@@ -245,10 +245,14 @@ pkg_postinst() {
 	fi
 
 	for x in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.4 ${v}; then
+		if ! version_is_at_least 2.4 ${x}; then
 			ewarn "After updating ${EROOT}etc/profile, please run"
-			ewarn "env-update and . /etc/profile"
-			break
+			ewarn "env-update && . /etc/profile"
+		fi
+
+		if ! version_is_at_least 2.5 ${x}; then
+			ewarn "Please run env-update then log out and back in to"
+			ewarn "update your path."
 		fi
 	done
 
