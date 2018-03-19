@@ -1255,7 +1255,7 @@ app-shells/sash 3.8: A small (static) UNIX Shell
 app-shells/scsh 0.6.7-r2: Unix shell embedded in Scheme
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/zsh 5.2 5.3.1: UNIX Shell similar to the Korn shell
+app-shells/zsh 5.3.1: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.27.0: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
@@ -4597,8 +4597,8 @@ dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
 dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.41.0: Amazon Web Services API
-dev-python/boto3 1.4.7: The AWS SDK for Python
-dev-python/botocore 1.7.39: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.4.7 1.5.27: The AWS SDK for Python
+dev-python/botocore 1.7.39 1.8.41: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.16: Syntax highlighting and autocompletion for the Python interpreter
@@ -7963,8 +7963,8 @@ media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for 
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.17 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
-media-sound/murmur 1.2.17: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/murmur 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.24: A ncurses client for the Music Player Daemon (MPD)
