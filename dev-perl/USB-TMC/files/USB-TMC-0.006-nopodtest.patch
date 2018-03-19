@@ -1,0 +1,80 @@
+From 41dbe34a7cd28e3841ac71184753f9e22cdf425d Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 19 Mar 2018 18:59:30 +1300
+Subject: Relocate t/pod.t to be an author only test
+
+This avoids end users needlessly running the POD tests if they just
+happen to have Test::Pod installed, and also avoids the resulting
+unneeded dependency on Module::Load
+
+Bug: https://github.com/lab-measurement/USB-TMC/pull/1
+---
+ MANIFEST               | 2 +-
+ META.json              | 1 -
+ META.yml               | 1 -
+ Makefile.PL            | 2 --
+ {t => xt/author}/pod.t | 0
+ 5 files changed, 1 insertion(+), 5 deletions(-)
+ rename {t => xt/author}/pod.t (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index ba36c09..850b6ca 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -12,4 +12,4 @@ lib/USB/TMC.pm
+ scripts/load.pl
+ scripts/test.pl
+ t/USB-TMC.t
+-t/pod.t
++xt/author/pod.t
+diff --git a/META.json b/META.json
+index 8c1f927..159b1e8 100644
+--- a/META.json
++++ b/META.json
+@@ -33,7 +33,6 @@
+       },
+       "test" : {
+          "requires" : {
+-            "Module::Load" : "0",
+             "Test::More" : "0"
+          }
+       }
+diff --git a/META.yml b/META.yml
+index a5ee3a1..ecc78b8 100644
+--- a/META.yml
++++ b/META.yml
+@@ -3,7 +3,6 @@ abstract: 'Perl interface to USB Test & Measurement (USBTMC) backend.'
+ author:
+   - 'Simon Reinhardt <simon.reinhardt@stud.uni-regensburg.de>'
+ build_requires:
+-  Module::Load: '0'
+   Test::More: '0'
+ configure_requires:
+   ExtUtils::MakeMaker: '0'
+diff --git a/Makefile.PL b/Makefile.PL
+index ae75f3e..b29c441 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -26,7 +26,6 @@ my %WriteMakefileArgs = (
+     "warnings" => 0
+   },
+   "TEST_REQUIRES" => {
+-    "Module::Load" => 0,
+     "Test::More" => 0
+   },
+   "VERSION" => "0.006",
+@@ -39,7 +38,6 @@ my %WriteMakefileArgs = (
+ my %FallbackPrereqs = (
+   "Carp" => 0,
+   "Data::Dumper" => 0,
+-  "Module::Load" => 0,
+   "Moose" => 0,
+   "MooseX::Params::Validate" => 0,
+   "Test::More" => 0,
+diff --git a/t/pod.t b/xt/author/pod.t
+similarity index 100%
+rename from t/pod.t
+rename to xt/author/pod.t
+-- 
+2.16.2
+
