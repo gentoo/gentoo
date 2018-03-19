@@ -1116,7 +1116,8 @@ app-admin/amazon-ec2-init
 
 # Tim Harder <radhermit@gentoo.org> (03 Nov 2016)
 # Masked for testing
-=sys-fs/fuse-3.0.0*
+=sys-fs/fuse-3*
+=net-fs/sshfs-3*
 
 # Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
 # Masked for testing, see bug #588894.
