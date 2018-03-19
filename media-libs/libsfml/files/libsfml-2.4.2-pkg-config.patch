@@ -1,0 +1,217 @@
+commit 5fe5e5d6d7792e37685a437551ffa8ed5161fcc1
+Author: Rafael Kitover <rkitover@gmail.com>
+Date:   Mon Dec 19 13:16:07 2016 -0800
+
+    packaging support improvements
+
+    This grew out of my work creating an sfml port for macports, but should
+    be helpful for package maintainers of various distributions:
+
+    * add an SFML_USE_SYSTEM_DEPS option to ignore everything in extlibs/
+      except for headers/stb_image, and use the system versions
+
+    * install pkg-config files if a pkg-config program is found
+      and either lib/pkgconfig or libdata/pkgconfig exists under the
+      INSTALL_PREFIX, or the SFML_INSTALL_PKGCONFIG_FILES flag is set
+      explicitly
+
+    * install pkg-config files for static libs too, add the necessary
+      Requires.private and Libs.private entries to the .pc files to support
+      static linking
+
+    * on OS X, honor all INSTALL_NAME and RPATH related cmake variables and
+      only set the INSTALL_NAME_DIR to "@rpath" if none of them is set, this
+      preserves the default behavior of using @rpath but also allows
+      overriding by the usual cmake mechanisms
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e7914ac9..419d56d7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,9 @@ sfml_set_option(CMAKE_BUILD_TYPE Release STRING "Choose the type of build (Debug
+ # Suppress Cygwin legacy warning
+ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
+ 
++# Suppress Mac OS X RPATH warnings and adopt new related behaviors
++cmake_policy(SET CMP0042 NEW)
++
+ # set Android specific options
+ 
+ # define the minimum API level to be used
+@@ -130,6 +133,39 @@ if(NOT BUILD_SHARED_LIBS)
+     add_definitions(-DSFML_STATIC)
+ endif()
+ 
++# allow not using bundled dependencies with a switch
++# (except for stb_image)
++# yes this is horrible, but GLOB_RECURSE sucks
++sfml_set_option(SFML_USE_SYSTEM_DEPS FALSE BOOL "TRUE to use system dependencies, FALSE to use the bundled ones.")
++if(SFML_USE_SYSTEM_DEPS)
++    if(SFML_INSTALL_XCODE_TEMPLATES)
++        message(FATAL_ERROR "XCode templates installation cannot be used with the SFML_USE_SYSTEM_DEPS option (the bundled frameworks are required.)")
++    endif()
++
++    file(GLOB_RECURSE DEP_LIBS    "${CMAKE_SOURCE_DIR}/extlibs/libs*/*")
++    file(GLOB_RECURSE DEP_BINS    "${CMAKE_SOURCE_DIR}/extlibs/bin*/*")
++    file(GLOB_RECURSE DEP_HEADERS "${CMAKE_SOURCE_DIR}/extlibs/headers/*")
++
++    foreach(DEP_FILE ${DEP_LIBS} ${DEP_BINS} ${DEP_HEADERS})
++        get_filename_component(DEP_DIR ${DEP_FILE} PATH)
++
++        if(NOT DEP_DIR MATCHES "/stb_image(/|$)")
++            set(CMAKE_IGNORE_PATH ${CMAKE_IGNORE_PATH} ${DEP_DIR})
++        endif()
++
++        get_filename_component(DEP_PARENT_DIR ${DEP_DIR} PATH)
++        while(NOT DEP_PARENT_DIR STREQUAL "${CMAKE_SOURCE_DIR}/extlibs")
++            if(NOT DEP_DIR MATCHES "/stb_image(/|$)")
++                set(CMAKE_IGNORE_PATH ${CMAKE_IGNORE_PATH} ${DEP_PARENT_DIR})
++            endif()
++
++            get_filename_component(DEP_PARENT_DIR ${DEP_PARENT_DIR} PATH)
++        endwhile()
++    endforeach()
++
++    list(REMOVE_DUPLICATES CMAKE_IGNORE_PATH)
++endif()
++
+ # Visual C++: remove warnings regarding SL security and algorithms on pointers
+ if(SFML_COMPILER_MSVC)
+     # add an option to choose whether PDB debug symbols should be generated (defaults to true when possible)
+@@ -202,30 +238,6 @@ if(SFML_OS_MACOSX)
+     set(XCODE_TEMPLATES_ARCH "\$(NATIVE_ARCH_ACTUAL)")
+ endif()
+ 
+-if(SFML_OS_LINUX OR SFML_OS_FREEBSD)
+-    set(PKGCONFIG_DIR lib${LIB_SUFFIX}/pkgconfig)
+-    if(SFML_OS_FREEBSD)
+-        set(PKGCONFIG_DIR libdata/pkgconfig)
+-    endif()
+-    if(BUILD_SHARED_LIBS)
+-        sfml_set_option(SFML_INSTALL_PKGCONFIG_FILES FALSE BOOL "TRUE to automatically install pkg-config files so other projects can find SFML")
+-        if(SFML_INSTALL_PKGCONFIG_FILES)
+-            foreach(sfml_module IN ITEMS all system window graphics audio network)
+-                CONFIGURE_FILE(
+-                    "tools/pkg-config/sfml-${sfml_module}.pc.in"
+-                    "tools/pkg-config/sfml-${sfml_module}.pc"
+-                    @ONLY)
+-                INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/tools/pkg-config/sfml-${sfml_module}.pc"
+-                    DESTINATION "${CMAKE_INSTALL_PREFIX}/${PKGCONFIG_DIR}")
+-            endforeach()
+-        endif()
+-    else()
+-        if(SFML_INSTALL_PKGCONFIG_FILES)
+-            message(WARNING "No pkg-config files are provided for the static SFML libraries (SFML_INSTALL_PKGCONFIG_FILES will be ignored).")
+-        endif()
+-    endif()
+-endif()
+-
+ # enable project folders
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMake")
+@@ -239,6 +251,19 @@ if(SFML_BUILD_DOC)
+     add_subdirectory(doc)
+ endif()
+ 
++sfml_set_option(SFML_INSTALL_PKGCONFIG_FILES FALSE BOOL "TRUE to automatically install pkg-config files so other projects can find SFML")
++
++if(SFML_OS_SUPPORTS_PKGCONFIG OR SFML_INSTALL_PKGCONFIG_FILES)
++    foreach(sfml_module IN ITEMS all system window graphics audio network)
++        CONFIGURE_FILE(
++            "tools/pkg-config/sfml-${sfml_module}.pc.in"
++            "tools/pkg-config/sfml-${sfml_module}.pc"
++            @ONLY)
++        INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/tools/pkg-config/sfml-${sfml_module}.pc"
++            DESTINATION "${CMAKE_INSTALL_PREFIX}/${SFML_OS_PKGCONFIG_DIR}")
++    endforeach()
++endif()
++
+ # setup the install rules
+ if(NOT SFML_BUILD_FRAMEWORKS)
+     install(DIRECTORY include
+diff --git a/cmake/Config.cmake b/cmake/Config.cmake
+index cff54d00..c447113a 100644
+--- a/cmake/Config.cmake
++++ b/cmake/Config.cmake
+@@ -73,6 +73,19 @@ else()
+     return()
+ endif()
+ 
++# check if OS or package system supports pkg-config
++# this could be e.g. macports on mac or msys2 on windows etc.
++find_package(PkgConfig QUIET)
++if(PKG_CONFIG_EXECUTABLE)
++    if(EXISTS "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/pkgconfig")
++        set(SFML_OS_SUPPORTS_PKGCONFIG ON)
++        set(SFML_OS_PKGCONFIG_DIR "/lib${LIB_SUFFIX}/pkgconfig")
++    elseif(EXISTS "${CMAKE_INSTALL_PREFIX}/libdata/pkgconfig")
++        set(SFML_OS_SUPPORTS_PKGCONFIG ON)
++        set(SFML_OS_PKGCONFIG_DIR "/libdata/pkgconfig")
++    endif()
++endif()
++
+ # detect the compiler and its version
+ # Note: on some platforms (OS X), CMAKE_COMPILER_IS_GNUCXX is true
+ # even when CLANG is used, therefore the Clang test is done first
+diff --git a/cmake/Macros.cmake b/cmake/Macros.cmake
+index cd2ca8fc..0f316034 100644
+--- a/cmake/Macros.cmake
++++ b/cmake/Macros.cmake
+@@ -105,9 +105,17 @@ macro(sfml_add_library target)
+         endif()
+ 
+         # adapt install directory to allow distributing dylibs/frameworks in user's frameworks/application bundle
+-        set_target_properties(${target} PROPERTIES
+-                              BUILD_WITH_INSTALL_RPATH 1
+-                              INSTALL_NAME_DIR "@rpath")
++        # but only if cmake rpath options aren't set
++        if(NOT CMAKE_SKIP_RPATH AND NOT CMAKE_SKIP_INSTALL_RPATH AND NOT CMAKE_INSTALL_RPATH AND NOT CMAKE_INSTALL_RPATH_USE_LINK_PATH AND NOT CMAKE_INSTALL_NAME_DIR)
++            if(CMAKE_SKIP_BUILD_RPATH)
++                set_target_properties(${target} PROPERTIES
++                                      INSTALL_NAME_DIR "@rpath")
++            else()
++                set_target_properties(${target} PROPERTIES
++                                      BUILD_WITH_INSTALL_RPATH 1
++                                      INSTALL_NAME_DIR "@rpath")
++            endif()
++        endif()
+     endif()
+ 
+     # enable automatic reference counting on iOS
+diff --git a/tools/pkg-config/sfml-audio.pc.in b/tools/pkg-config/sfml-audio.pc.in
+index 7456daaa..0d7a3ce1 100644
+--- a/tools/pkg-config/sfml-audio.pc.in
++++ b/tools/pkg-config/sfml-audio.pc.in
+@@ -8,5 +8,8 @@ Description: The Simple and Fast Multimedia Library, audio module.
+ URL: http://www.sfml-dev.org
+ Version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
+ Requires: sfml-system
++Requires.private: openal, vorbisenc, vorbisfile, vorbis, ogg, flac
+ Libs: -L${libdir} -lsfml-audio
++# openal may be a system framework
++Libs.private: @OPENAL_LIBRARY@
+ Cflags: -I${includedir}
+diff --git a/tools/pkg-config/sfml-graphics.pc.in b/tools/pkg-config/sfml-graphics.pc.in
+index d0a88a13..a96b72c9 100644
+--- a/tools/pkg-config/sfml-graphics.pc.in
++++ b/tools/pkg-config/sfml-graphics.pc.in
+@@ -8,5 +8,8 @@ Description: The Simple and Fast Multimedia Library, graphics module.
+ URL: http://www.sfml-dev.org
+ Version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
+ Requires: sfml-window
++Requires.private: sfml-system, freetype2
+ Libs: -L${libdir} -lsfml-graphics
++# gl and jpeg may not be in pkg-config
++Libs.private: @OPENGL_gl_LIBRARY@ @OPENGL_glu_LIBRARY@ @JPEG_LIBRARY@
+ Cflags: -I${includedir}
+diff --git a/tools/pkg-config/sfml-window.pc.in b/tools/pkg-config/sfml-window.pc.in
+index b0266e67..93bf344c 100644
+--- a/tools/pkg-config/sfml-window.pc.in
++++ b/tools/pkg-config/sfml-window.pc.in
+@@ -9,4 +9,6 @@ URL: http://www.sfml-dev.org
+ Version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
+ Requires: sfml-system
+ Libs: -L${libdir} -lsfml-window
++# gl may not be in pkg-config
++Libs.private: @OPENGL_gl_LIBRARY@ @OPENGL_glu_LIBRARY@
+ Cflags: -I${includedir}
