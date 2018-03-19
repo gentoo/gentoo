@@ -23,6 +23,13 @@ SLOT="0"
 IUSE="+alsa +dbus debug g15 libressl +opus oss pch portaudio pulseaudio speech zeroconf"
 
 RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	>=dev-libs/protobuf-2.2.0:=
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	|| (
@@ -33,15 +40,6 @@ RDEPEND="
 		<media-libs/speex-1.2.0
 	)
 	sys-apps/lsb-release
-	x11-libs/libX11
-	x11-libs/libXi
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
 	x11-libs/libX11
 	x11-libs/libXi
 	alsa? ( media-libs/alsa-lib )
