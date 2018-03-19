@@ -23,6 +23,7 @@ S="${WORKDIR}/RHash-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/unquote-cc.patch
+	"${FILESDIR}"/${P}-no_echon.patch
 )
 
 src_prepare() {
@@ -60,6 +61,9 @@ multilib_src_install() {
 	emake DESTDIR="${D}" -j1 \
 		  install{,-lib-so-link,-pkg-config} \
 		  $(use nls && echo install-gmo)
+
+	emake DESTDIR="${D}" -j1 \
+		  -C lib${PN} install-headers
 }
 
 multilib_src_test() {
