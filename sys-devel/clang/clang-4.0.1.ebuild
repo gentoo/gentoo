@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -161,6 +161,12 @@ multilib_src_configure() {
 	else
 		mycmakeargs+=(
 			-DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD=OFF
+		)
+	fi
+
+	if [[ -n ${EPREFIX} ]]; then
+		mycmakeargs+=(
+			-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
 		)
 	fi
 

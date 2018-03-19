@@ -165,6 +165,12 @@ multilib_src_configure() {
 		)
 	fi
 
+	if [[ -n ${EPREFIX} ]]; then
+		mycmakeargs+=(
+			-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
+		)
+	fi
+
 	if tc-is-cross-compiler; then
 		[[ -x "/usr/bin/clang-tblgen" ]] \
 			|| die "/usr/bin/clang-tblgen not found or usable"
