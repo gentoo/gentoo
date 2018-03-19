@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-07">
+  <title>JabberD 2.x: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Gentoo's JabberD 2.x
+    ebuild, the worst of which allows local attackers to escalate privileges.
+  </synopsis>
+  <product type="ebuild">jabberd2</product>
+  <announced>2018-03-19</announced>
+  <revised count="1">2018-03-19</revised>
+  <bug>623806</bug>
+  <bug>629412</bug>
+  <bug>631068</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-im/jabberd2" auto="yes" arch="*">
+      <vulnerable range="le">2.6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>JabberD 2.x is an open source Jabber server written in C.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Gentoo’s JabberD 2.x
+      ebuild. Please review the referenced CVE identifiers for details.
+    </p>
+    
+  </description>
+  <impact type="high">
+    <p>An attacker could possibly escalate privileges by owning system binaries
+      in trusted locations, cause a Denial of Service condition by manipulating
+      the PID file from jabberd2 services, bypass security via SASL ANONYMOUS
+      connections or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for JabberD 2.x and recommends that
+      users unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "net-im/jabberd2"
+    </code>
+    
+    <p>As an alternative, users may want to upgrade their systems to use
+      net-im/prosody instead of net-im/jabberd2.
+    </p>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10807">CVE-2017-10807</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18225">CVE-2017-18225</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18226">CVE-2017-18226</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-03T17:23:32Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-03-19T00:59:10Z">chrisadr</metadata>
+</glsa>

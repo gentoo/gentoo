@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-08">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">flash</product>
+  <announced>2018-03-19</announced>
+  <revised count="1">2018-03-19</revised>
+  <bug>646724</bug>
+  <bug>650424</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">29.0.0.113</unaffected>
+      <vulnerable range="lt">29.0.0.113</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-29.0.0.113"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4871">CVE-2018-4871</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4877">CVE-2018-4877</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4878">CVE-2018-4878</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4919">CVE-2018-4919</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4920">CVE-2018-4920</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-13T18:13:28Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-03-19T01:08:30Z">whissi</metadata>
+</glsa>
