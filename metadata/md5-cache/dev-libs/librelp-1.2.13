@@ -4,10 +4,10 @@ DESCRIPTION=An easy to use library for the RELP protocol
 EAPI=6
 HOMEPAGE=http://www.librelp.com/
 IUSE=debug doc +ssl static-libs
-KEYWORDS=amd64 arm ~arm64 ~hppa ~sparc x86
+KEYWORDS=amd64 arm ~arm64 hppa ~sparc x86
 LICENSE=GPL-3+ doc? ( FDL-1.3 )
 RDEPEND=ssl? ( >=net-libs/gnutls-3.3.17.1:0= )
 SLOT=0/0.2.0
 SRC_URI=http://download.rsyslog.com/librelp/librelp-1.2.13.tar.gz
 _eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=0ab78169eafe33b786a68509c5958c0a
+_md5_=72729826a54cadf0c555b38bd6dec256
