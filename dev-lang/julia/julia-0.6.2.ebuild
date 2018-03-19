@@ -41,7 +41,7 @@ RDEPEND+="
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
 	>=sys-libs/libunwind-1.1:7=
-	<sys-libs/libunwind-1.2.1
+	!~sys-libs/libunwind-1.2.1
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	>=virtual/blas-3.6
@@ -55,8 +55,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.0-fix_build_system.patch
 )
-
-S="${WORKDIR}/julia"
 
 src_prepare() {
 	mv "${WORKDIR}"/bundled/UnicodeData.txt doc || die
