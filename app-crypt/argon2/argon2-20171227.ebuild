@@ -23,5 +23,5 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LIBRARY_REL="$(get_libdir)" install || die
+	emake DESTDIR="${ED}" LIBRARY_REL="$(get_libdir)" install || die
 }
