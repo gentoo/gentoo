@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,7 +14,7 @@ LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 # subslot = soname version
 SLOT="0/0.2.0"
 
-KEYWORDS="amd64 arm ~arm64 ~hppa ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 hppa ~sparc x86"
 IUSE="debug doc +ssl static-libs"
 
 RDEPEND="
