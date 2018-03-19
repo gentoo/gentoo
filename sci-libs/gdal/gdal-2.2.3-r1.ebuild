@@ -154,6 +154,7 @@ src_configure() {
 		--with-geotiff \
 		--with-grib \
 		--with-hide-internal-symbols \
+		--with-libjson-c="${EPREFIX}/usr/" \
 		--with-libtiff \
 		--with-libtool \
 		--with-libz="${EPREFIX}/usr/" \
