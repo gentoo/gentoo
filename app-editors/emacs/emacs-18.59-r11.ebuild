@@ -32,7 +32,7 @@ src_prepare() {
 	default
 
 	# Do not use the sandbox, or the dumped Emacs will be twice as large
-	sed -i -e 's:\./temacs.*dump:env SANDBOX_ON=0 LD_PRELOAD= &:' \
+	sed -i -e 's:\./temacs.*dump:SANDBOX_ON=0 LD_PRELOAD= env &:' \
 		src/ymakefile || die
 }
 

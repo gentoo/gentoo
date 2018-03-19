@@ -226,7 +226,7 @@ src_compile() {
 	emake CC="$(tc-getCC)" \
 		AR="$(tc-getAR) cq" \
 		RANLIB="$(tc-getRANLIB)" \
-		RUN_TEMACS="env SANDBOX_ON=0 LD_PRELOAD= ./temacs"
+		RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
 src_install () {
