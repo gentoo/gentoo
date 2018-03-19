@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+}
+
+start() {
+	ebegin "Starting fuse"
+	if ! kldstat -q -m fuse; then
+		kldload fuse >/dev/null 2>&1 || eerror $? "Error loading fuse module"
+	fi
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping fuse"
+	if kldstat -q -m fuse; then
+		kldunload fuse >/dev/null 2>&1 || eerror $? "Error unloading fuse module"
+	fi
+	eend ${?}
+}
