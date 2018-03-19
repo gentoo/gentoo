@@ -15,7 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.bz2"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="dbus gstaudio gstvideo gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
+IUSE="dbus gstaudio gstvideo +gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
 
 REQUIRED_USE="?? ( pulseaudio gstaudio )"
 
