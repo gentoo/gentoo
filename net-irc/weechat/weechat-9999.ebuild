@@ -40,7 +40,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:* )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
+	ruby? ( || ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
@@ -59,7 +59,7 @@ DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.ado
 # tests need to be fixed to not use system plugins if weechat is already installed
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2-tinfo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.1-tinfo.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

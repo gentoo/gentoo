@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="amd64 x86 ~x64-macos"
+	KEYWORDS="~amd64 ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -21,9 +21,9 @@ LICENSE="GPL-3"
 SLOT="0"
 
 NETWORKS="+irc"
-PLUGINS="+alias +buflist +charset +exec +fifo +logger +relay +scripts +spell +trigger +xfer"
+PLUGINS="+alias +buflist +charset +exec +fset +fifo +logger +relay +scripts +spell +trigger +xfer"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
-SCRIPT_LANGS="guile lua +perl +python ruby tcl"
+SCRIPT_LANGS="guile lua +perl php +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
 IUSE="doc nls +ssl test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -38,8 +38,9 @@ RDEPEND="
 	lua? ( dev-lang/lua:0[deprecated] )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
+	php? ( >=dev-lang/php-7.0:* )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
+	ruby? ( || ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
@@ -58,7 +59,7 @@ DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.ado
 # tests need to be fixed to not use system plugins if weechat is already installed
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2-tinfo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.1-tinfo.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -117,6 +118,7 @@ src_configure() {
 		-DENABLE_BUFLIST=$(usex buflist)
 		-DENABLE_CHARSET=$(usex charset)
 		-DENABLE_EXEC=$(usex exec)
+		-DENABLE_FSET=$(usex fset)
 		-DENABLE_FIFO=$(usex fifo)
 		-DENABLE_IRC=$(usex irc)
 		-DENABLE_LOGGER=$(usex logger)
@@ -124,6 +126,7 @@ src_configure() {
 		-DENABLE_SCRIPT=$(usex scripts)
 		-DENABLE_SCRIPTS=$(usex scripts)
 		-DENABLE_PERL=$(usex perl)
+		-DENABLE_PHP=$(usex php)
 		-DENABLE_PYTHON=$(usex python)
 		-DENABLE_RUBY=$(usex ruby)
 		-DENABLE_LUA=$(usex lua)
