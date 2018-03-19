@@ -1,0 +1,18 @@
+--- libexplain-1.4.D001.orig/libexplain/buffer/file_inode_flags.c
++++ libexplain-1.4.D001/libexplain/buffer/file_inode_flags.c
+@@ -28,6 +28,14 @@
+
+ #if defined(FS_IOC_GETFLAGS) || defined(FS_IOC32_GETFLAGS)
+
++#ifndef FS_ECOMPR_FL
++#define FS_ECOMPR_FL                    0x00000800 /* Compression error */
++#endif
++
++#ifndef FS_DIRECTIO_FL
++#define FS_DIRECTIO_FL                  0x00100000 /* Use direct i/o */
++#endif
++
+ void
+ explain_buffer_file_inode_flags(explain_string_buffer_t *sb, int value)
+ {
+
