@@ -17,6 +17,7 @@ IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
+	dev-lang/orc[static-libs(+)?]
 	>=dev-libs/glib-2.22:2[static-libs(+)?]
 	media-libs/opus[static-libs(+)?]
 	sys-libs/zlib[static-libs(+)?]
