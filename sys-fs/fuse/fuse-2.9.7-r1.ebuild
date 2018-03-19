@@ -1,24 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils libtool linux-info udev toolchain-funcs
-
-MY_P=${P/_/}
+inherit ltprune libtool linux-info udev toolchain-funcs
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
-SRC_URI="https://github.com/libfuse/libfuse/releases/download/${MY_P}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/libfuse/libfuse/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="examples kernel_linux kernel_FreeBSD static-libs"
 
 PDEPEND="kernel_FreeBSD? ( sys-fs/fuse4bsd )"
 DEPEND="virtual/pkgconfig"
-
-S=${WORKDIR}/${MY_P}
+RDEPEND="sys-fs/fuse-common"
 
 pkg_setup() {
 	if use kernel_linux ; then
@@ -32,6 +29,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=( "${FILESDIR}"/${PN}-2.9.3-kernel-types.patch )
 	# sandbox violation with mtab writability wrt #438250
 	# don't sed configure.in without eautoreconf because of maintainer mode
 	sed -i 's:umount --fake:true --fake:' configure || die
@@ -50,7 +48,7 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( AUTHORS README.md doc/README.NFS doc/kernel.txt )
+	local DOCS=( AUTHORS ChangeLog README.md README.NFS NEWS doc/how-fuse-works doc/kernel.txt )
 	default
 
 	if use examples ; then
@@ -58,29 +56,18 @@ src_install() {
 		dodoc example/*
 	fi
 
-	if use kernel_linux ; then
-		newinitd "${FILESDIR}"/fuse.init fuse
-	elif use kernel_FreeBSD ; then
+	if use kernel_FreeBSD ; then
 		insinto /usr/include/fuse
 		doins include/fuse_kernel.h
-		newinitd "${FILESDIR}"/fuse-fbsd.init fuse
-	else
-		die "We don't know what init code install for your kernel, please file a bug."
 	fi
 
 	prune_libtool_files
-	rm -rf "${D}"/dev
 
-	dodir /etc
-	cat > "${ED}"/etc/fuse.conf <<-EOF
-		# Set the maximum number of FUSE mounts allowed to non-root users.
-		# The default is 1000.
-		#
-		#mount_max = 1000
+	# installed via fuse-common
+	rm -r "${ED%/}"/{etc,lib} || die
+	rm "${ED%/}"/usr/share/man/man8/mount.fuse.* || die
+	rm "${ED%/}"/sbin/mount.fuse || die
 
-		# Allow non-root users to specify the 'allow_other' or 'allow_root'
-		# mount options.
-		#
-		#user_allow_other
-	EOF
+	# handled by the device manager
+	rm -r "${ED%/}"/dev || die
 }
