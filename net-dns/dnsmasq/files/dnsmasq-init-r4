@@ -1,8 +1,8 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
 
-extra_started_commands="reload"
+extra_started_commands="reload rotate"
 
 pidfile="/var/run/dnsmasq.pid"
 command="/usr/sbin/dnsmasq"
@@ -16,14 +16,14 @@ depend() {
 	use logger
 }
 
-start_pre() {
-	checkpath --owner dnsmasq:dnsmasq \
-		--mode 0644 \
-		--file /var/lib/misc/dnsmasq.leases
-}
-
 reload() {
 	ebegin "Reloading ${RC_SVCNAME}"
-	kill -HUP "$(cat "${pidfile}")"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
+
+rotate() {
+	ebegin "Reopening ${RC_SVCNAME} log file"
+	start-stop-daemon --signal USR2 --pidfile "${pidfile}"
 	eend $?
 }

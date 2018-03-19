@@ -22,6 +22,13 @@ DEPEND="${RDEPEND}
 	sys-kernel/linux-headers
 	python? ( >=dev-lang/swig-2 )"
 
+src_prepare() {
+	default
+	if use prefix ; then
+		sed -i "s@cat /usr@cat ${EPREFIX}/usr@" bindings/python*/Makefile.am || die
+	fi
+}
+
 src_configure() {
 	use sparc && replace-flags -O? -O0
 

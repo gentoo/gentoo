@@ -240,10 +240,6 @@ src_configure() {
 		myconf+=" --without-x --without-ns"
 	fi
 
-	# Save version information in the Emacs binary. It will be available
-	# in variable "system-configuration-options".
-	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
-
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
@@ -272,7 +268,7 @@ src_configure() {
 
 src_compile() {
 	# Disable sandbox when dumping. For the unbelievers, see bug #131505
-	emake RUN_TEMACS="env SANDBOX_ON=0 LD_PRELOAD= ./temacs"
+	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
 src_install () {
