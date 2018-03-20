@@ -30,6 +30,7 @@ COMMON_DEPEND_LIBS="
 	readline? ( sys-libs/readline:0= )
 	smartcard? ( usb? ( virtual/libusb:0 ) )
 	tofu? ( >=dev-db/sqlite-3.7 )
+	virtual/mta
 	"
 COMMON_DEPEND_BINS="app-crypt/pinentry
 	!app-crypt/dirmngr"
