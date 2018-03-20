@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit multilib-minimal toolchain-funcs eutils
+inherit autotools multilib-minimal toolchain-funcs
 
 DESCRIPTION="Transport Independent RPC library (SunRPC replacement)"
 HOMEPAGE="http://libtirpc.sourceforge.net/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0/3" # subslot matches SONAME major
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="ipv6 kerberos static-libs"
 
 RDEPEND="kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )"
@@ -21,21 +21,23 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}/${P}-CVE-2017-8779.patch"
+	"${FILESDIR}/${PN}-1.0.2-bcopy-to-memmove.patch"
 )
 
 src_prepare() {
 	cp -r "${WORKDIR}"/tirpc "${S}"/ || die
-	epatch "${PATCHES[@]}"
-	epatch_user
+	default
+	eapply_user
+	eautoreconf
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		$(use_enable ipv6) \
-		$(use_enable kerberos gssapi) \
+	local myeconfargs=(
+		$(use_enable ipv6)
+		$(use_enable kerberos gssapi)
 		$(use_enable static-libs static)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install() {
@@ -56,5 +58,7 @@ multilib_src_install_all() {
 
 	# makes sure that the linking order for nfs-utils is proper, as
 	# libtool would inject a libgssglue dependency in the list.
-	use static-libs || prune_libtool_files
+	if ! use static-libs ; then
+		find "${ED}" -name "*.la" -delete || die
+	fi
 }
