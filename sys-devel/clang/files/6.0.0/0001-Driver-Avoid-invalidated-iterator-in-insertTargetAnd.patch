@@ -1,0 +1,55 @@
+From 99418eabfbe5378d7a751444856c6c5c656519c4 Mon Sep 17 00:00:00 2001
+From: Serge Pavlov <sepavloff@gmail.com>
+Date: Mon, 19 Mar 2018 16:13:43 +0000
+Subject: [PATCH 1/2] [Driver] Avoid invalidated iterator in
+ insertTargetAndModeArgs
+
+Doing an .insert() can potentially invalidate iterators by reallocating the
+vector's storage. When all the stars align just right, this causes segfaults
+or glibc aborts.
+
+Gentoo Linux bug (crashes while building Chromium): https://bugs.gentoo.org/650082.
+
+Patch by Hector Martin!
+
+Differential Revision: https://reviews.llvm.org/D44607
+
+
+git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@327863 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ tools/driver/driver.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/tools/driver/driver.cpp b/tools/driver/driver.cpp
+index fa757da953..1b614accb2 100644
+--- a/tools/driver/driver.cpp
++++ b/tools/driver/driver.cpp
+@@ -212,20 +212,21 @@ static void insertTargetAndModeArgs(const ParsedClangName &NameParts,
+   // Put target and mode arguments at the start of argument list so that
+   // arguments specified in command line could override them. Avoid putting
+   // them at index 0, as an option like '-cc1' must remain the first.
+-  auto InsertionPoint = ArgVector.begin();
+-  if (InsertionPoint != ArgVector.end())
++  int InsertionPoint = 0;
++  if (ArgVector.size() > 0)
+     ++InsertionPoint;
+ 
+   if (NameParts.DriverMode) {
+     // Add the mode flag to the arguments.
+-    ArgVector.insert(InsertionPoint,
++    ArgVector.insert(ArgVector.begin() + InsertionPoint,
+                      GetStableCStr(SavedStrings, NameParts.DriverMode));
+   }
+ 
+   if (NameParts.TargetIsValid) {
+     const char *arr[] = {"-target", GetStableCStr(SavedStrings,
+                                                   NameParts.TargetPrefix)};
+-    ArgVector.insert(InsertionPoint, std::begin(arr), std::end(arr));
++    ArgVector.insert(ArgVector.begin() + InsertionPoint,
++                     std::begin(arr), std::end(arr));
+   }
+ }
+ 
+-- 
+2.16.2
+
