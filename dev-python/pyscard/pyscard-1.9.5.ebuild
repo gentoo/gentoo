@@ -8,7 +8,9 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Smart cards support in python"
-HOMEPAGE="http://pyscard.sourceforge.net/ https://pypi.python.org/pypi/pyscard"
+HOMEPAGE="https://pyscard.sourceforge.io/
+	https://github.com/LudovicRousseau/pyscard
+	https://pypi.python.org/pypi/pyscard"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
