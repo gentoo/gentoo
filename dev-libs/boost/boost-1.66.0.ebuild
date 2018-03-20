@@ -141,6 +141,42 @@ src_configure() {
 		-d+2
 	)
 
+	case ${KERNEL} in
+		AIX)
+			OPTIONS+=( target-os=aix )
+			;;
+		Darwin)
+			OPTIONS+=( target-os=darwin )
+			;;
+		FreeBSD)
+			OPTIONS+=( target-os=freebsd )
+			;;
+		linux)
+			OPTIONS+=( target-os=linux )
+			;;
+		HPUX)
+			OPTIONS+=( target-os=hpux )
+			;;
+		NetBSD)
+			OPTIONS+=( target-os=netbsd )
+			;;
+		OpenBSD)
+			OPTIONS+=( target-os=netbsd )
+			;;
+		Winnt)
+			OPTIONS+=( target-os=windows )
+			;;
+	esac
+
+	case ${ARCH} in
+		alpha*|amd64*|arm64*|ia64*|ppc64*|sparc64*|x64*)
+			OPTIONS+=( address-model=64 )
+			;;
+		*)
+			OPTIONS+=( address-model=32 )
+			;;
+	esac
+
 	if [[ ${CHOST} == *-darwin* ]]; then
 		# We need to add the prefix, and in two cases this exceeds, so prepare
 		# for the largest possible space allocation.
