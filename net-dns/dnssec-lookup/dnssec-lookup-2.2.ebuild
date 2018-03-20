@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ inherit qt4-r2
 MY_PN=${PN/dnssec-/}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="DNS lookup utility that supports DNSSEC validation"
-HOMEPAGE="http://www.dnssec-tools.org"
-SRC_URI="http://www.dnssec-tools.org/download/${MY_P}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.dnssec-tools.org"
+SRC_URI="https://www.dnssec-tools.org/download/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
