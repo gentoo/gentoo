@@ -10674,7 +10674,7 @@ x11-libs/libxcb 1.12-r2: X C-language Bindings library
 x11-libs/libxkbcommon 0.6.0 0.7.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
-x11-libs/libxklavier 5.3 5.4: A library for the X Keyboard Extension (high-level API)
+x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
 x11-libs/motif 2.3.7 2.3.8-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
