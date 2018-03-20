@@ -25,7 +25,7 @@ src_prepare() {
 	default
 
 	# lto not supported yet -- https://github.com/libfuse/libfuse/issues/198
-	filter-flags -flto
+	filter-flags -flto*
 }
 
 src_install() {
