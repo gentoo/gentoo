@@ -1,6 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
+# @DEAD
+# Removal on 2018-04-19.
+#
 # @ECLASS: bitcoincore.eclass
 # @MAINTAINER:
 # Luke Dashjr <luke_gentoo_bitcoin@dashjr.org>
