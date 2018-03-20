@@ -35,6 +35,7 @@ RDEPEND="
 	lirc? ( app-misc/lirc:= )
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
 	virtual/pkgconfig
 "
