@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (20 Mar 2018)
+# Poorly tested version bump followed by a series of quick hacks
+# that do not make it any more working. Bug #651030.
+>=sys-devel/distcc-3.3
+
 # Brian Evans <grknight@gentoo.org (20 Mar 2018)
 # These PEAR packages are unmaintained upstream and
 # are difficult to test or have no tests.
