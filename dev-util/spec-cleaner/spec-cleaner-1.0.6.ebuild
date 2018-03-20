@@ -20,7 +20,7 @@ IUSE="test"
 
 DEPEND="
 	test? (
-		dev-python/pytest
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
