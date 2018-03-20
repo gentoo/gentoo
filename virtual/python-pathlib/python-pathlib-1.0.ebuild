@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="A virtual for Python pathlib module"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ia64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ia64 ~ppc ppc64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
