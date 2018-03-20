@@ -6,10 +6,10 @@ EAPI=6
 DESCRIPTION="Object-oriented graphing library for PHP"
 HOMEPAGE="http://jpgraph.net/"
 # Upstream didn't have a stable download URL when this was packaged.
-SRC_URI="https://dev.gentoo.org/~mjo/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~grknight/distfiles/${P}.tar.gz"
 LICENSE="QPL-1.0"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE="truetype examples"
 
 DEPEND=""
