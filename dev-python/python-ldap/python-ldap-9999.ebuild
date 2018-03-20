@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,8 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1 git-2 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
-HOMEPAGE="http://www.python-ldap.org https://pypi.python.org/pypi/python-ldap"
+HOMEPAGE="https://www.python-ldap.org/en/latest/
+	https://pypi.python.org/pypi/python-ldap"
 EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
 
 LICENSE="PSF-2"
