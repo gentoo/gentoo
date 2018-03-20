@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) seccomp? ( sys-libs/libseccomp ) html? ( dev-ruby/asciidoctor ) pps? ( net-misc/pps-tools ) virtual/pkgconfig
+DESCRIPTION=NTP client and server programs
+EAPI=6
+HOMEPAGE=https://chrony.tuxfamily.org/
+IUSE=caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc seccomp selinux +adns
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) seccomp? ( sys-libs/libseccomp ) selinux? ( sec-policy/selinux-chronyd )
+REQUIRED_USE=?? ( libedit readline )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://download.tuxfamily.org/chrony/chrony-3.3-pre1.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=3df716d109138cbeaca71c42c3709822
