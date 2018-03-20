@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
 
-inherit distutils-r1 readme.gentoo-r1 xdg-utils
+inherit distutils-r1 gnome2-utils readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="A cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
@@ -70,8 +70,10 @@ Picard's settings:
 pkg_postinst() {
 	readme.gentoo_print_elog
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
