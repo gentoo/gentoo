@@ -7,7 +7,6 @@ inherit multilib versionator prefix
 
 DESCRIPTION="Filesystem baselayout and init scripts"
 HOMEPAGE="https://www.gentoo.org/"
-
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
 	inherit git-r3
@@ -18,7 +17,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="usrmerge kernel_linux"
+IUSE="build kernel_FreeBSD kernel_linux usrmerge"
+
+pkg_setup() {
+	multilib_layout
+}
 
 # Create our multilib dirs - the Makefile has no knowledge of this
 multilib_layout() {
@@ -27,13 +30,12 @@ multilib_layout() {
 	libdirs=$(get_all_libdirs)
 	: ${libdirs:=lib}	# it isn't that we don't trust multilib.eclass...
 
-	[ -z "${def_libdir}" ] &&
-		die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
+	[ -z "${def_libdir}" ] && die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
 
 	# figure out which paths should be symlinks and which should be directories
 	local dirs syms exp d
 	for libdir in ${libdirs} ; do
-		if ! use usrmerge; then
+		if ! use usrmerge ; then
 			exp=( {,usr/,usr/local/}${libdir} )
 		else
 			exp=( {usr/,usr/local/}${libdir} )
@@ -60,7 +62,7 @@ multilib_layout() {
 	# setup symlinks and dirs where we expect them to be; do not migrate
 	# data ... just fall over in that case.
 	local prefix prefix_lst
-	if ! use usrmerge; then
+	if ! use usrmerge ; then
 		prefix_lst="${EROOT}"{,usr/,usr/local/}
 	else
 		prefix_lst="${EROOT}"{usr/,usr/local/}
@@ -123,7 +125,7 @@ multilib_layout() {
 			fi
 		fi
 	done
-	if use usrmerge; then
+	if use usrmerge ; then
 		for libdir in ${libdirs}; do
 			if [[ ! -e "${EROOT}${libdir}" ]]; then
 				ln -s usr/"${libdir}" "${EROOT}${libdir}"
@@ -132,15 +134,24 @@ multilib_layout() {
 	fi
 }
 
-pkg_setup() {
-	multilib_layout
-}
-
 pkg_preinst() {
 	# This is written in src_install (so it's in CONTENTS), but punt all
 	# pending updates to avoid user having to do etc-update (and make the
 	# pkg_postinst logic simpler).
 	rm -f "${EROOT}"/etc/._cfg????_gentoo-release
+
+	# We need to install directories and maybe some dev nodes when building
+	# stages, but they cannot be in CONTENTS.
+	# Also, we cannot reference $S as binpkg will break so we do this.
+	multilib_layout
+	if use build ; then
+		if ! use usrmerge ; then
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
+		else
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
+		fi
+	fi
+	rm -f "${ED}"/usr/share/${PN}/Makefile
 }
 
 src_prepare() {
@@ -170,22 +181,15 @@ src_prepare() {
 }
 
 src_install() {
-	if ! use usrmerge; then
-		emake \
-			OS=$(usex kernel_FreeBSD BSD Linux) \
-			DESTDIR="${ED}" \
-			layout
-	else
-		emake \
-			OS=$(usex kernel_FreeBSD BSD Linux) \
-			DESTDIR="${ED}" \
-			layout-usrmerge
-	fi
 	emake \
 		OS=$(usex kernel_FreeBSD BSD Linux) \
 		DESTDIR="${ED}" \
 		install
 	dodoc ChangeLog
+
+	# need the makefile in pkg_preinst
+	insinto /usr/share/${PN}
+	doins Makefile
 }
 
 pkg_postinst() {
