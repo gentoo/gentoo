@@ -35,6 +35,7 @@ src_prepare() {
 
 	sed -i 's/-D_FORTIFY_SOURCE=2 //g' GNUmakefile || die
 	sed -i 's/\<FEATURES\>/SSLSPLIT_FEATURES/g' GNUmakefile version.c || die
+	sed -i '/opts_suite/d' main.t.c || die
 }
 
 src_install() {
