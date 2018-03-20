@@ -8,7 +8,7 @@ inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-
 INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
 
 DESCRIPTION="A high-quality and portable font engine"
-HOMEPAGE="http://www.freetype.org/"
+HOMEPAGE="https://www.freetype.org/"
 SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
 	mirror://nongnu/freetype/${P/_/}.tar.bz2
 	utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2

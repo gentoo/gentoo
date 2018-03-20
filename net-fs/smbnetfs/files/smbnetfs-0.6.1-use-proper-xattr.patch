@@ -1,0 +1,25 @@
+From 398e8169ea6d3d854af0173b1e66bf13c124f901 Mon Sep 17 00:00:00 2001
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@gmail.com>
+Date: Thu, 1 Feb 2018 11:55:41 +0300
+Subject: [PATCH] use proper xattr
+
+---
+ src/function.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/function.c b/src/function.c
+index 9728eae..3e88f42 100644
+--- a/src/function.c
++++ b/src/function.c
+@@ -8,7 +8,7 @@
+ #include <dirent.h>
+ #include <sys/statvfs.h>
+ #include <sys/types.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <time.h>
+ #include <pthread.h>
+ #include <libsmbclient.h>
+-- 
+2.16.2
+

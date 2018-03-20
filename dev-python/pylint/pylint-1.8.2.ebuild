@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 eutils
 
 DESCRIPTION="Python code static checker"
-HOMEPAGE="http://www.logilab.org/project/pylint
+HOMEPAGE="https://www.logilab.org/project/pylint
 	https://pypi.python.org/pypi/pylint
 	https://github.com/pycqa/pylint"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
@@ -20,7 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-lin
 IUSE="doc examples test"
 
 RDEPEND="
-	>=dev-python/astroid-1.5.1[${PYTHON_USEDEP}]
+	>=dev-python/astroid-1.6.0[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/isort-4.2.5[${PYTHON_USEDEP}]
 	dev-python/mccabe[${PYTHON_USEDEP}]

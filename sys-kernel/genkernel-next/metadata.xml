@@ -5,10 +5,6 @@
 		<email>mudler@gentoo.org</email>
 		<name>Ettore Di Giacinto</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>lxnay@gentoo.org</email>
-		<name>Fabio Erculiani</name>
-	</maintainer>
 	<use>
 		<flag name="cryptsetup">Enable support for Luks disk enrcyption using <pkg>sys-fs/cryptsetup</pkg></flag>
 		<flag name="dmraid">Enable support for DMRAID (include dmraid dependency)</flag>

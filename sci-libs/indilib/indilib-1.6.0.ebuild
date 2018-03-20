@@ -31,10 +31,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers
-	test? (
-		dev-cpp/gmock
-		dev-cpp/gtest
-	)
+	test? ( >=dev-cpp/gtest-1.8.0 )
 "
 
 DOCS=( AUTHORS ChangeLog COPYRIGHT README TODO )

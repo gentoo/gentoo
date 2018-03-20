@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils multilib-minimal
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="AudioProcessing library from the webrtc.org code base"
 HOMEPAGE="https://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/"
@@ -19,6 +19,11 @@ DOCS=( AUTHORS NEWS README.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3-proper_detection_cxxabi_execinfo.patch
 )
+
+src_prepare() {
+	eautoreconf
+	default
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \

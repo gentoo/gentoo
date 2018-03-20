@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,13 +10,12 @@ DESCRIPTION="a set of tools for updating gentoo config files"
 HOMEPAGE="https://sourceforge.net/projects/etc-proposals.berlios/"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
 
-IUSE="gtk qt4"
+IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 
-DEPEND="gtk? ( >=dev-python/pygtk-2.10 )
-		qt4? ( >=dev-python/PyQt4-4.1.1[X] )"
+DEPEND=">=dev-python/pygtk-2.10"
 RDEPEND="${DEPEND}"
 
 python_install_all() {
@@ -27,9 +26,8 @@ python_install_all() {
 	mv "${ED%/}/usr/bin/etc-proposals" "${ED%/}/usr/sbin/etc-proposals" || die
 	rmdir "${ED%/}/usr/bin" || die
 
-	# Bug 308725: Filter out the "PreferedFrontends" based on USE Flags:
-	use qt4 || sed -i -e '/^PreferedFrontends=/ s/qt4,//' "${D}"/etc/etc-proposals.conf
-	use gtk || sed -i -e '/^PreferedFrontends=/ s/gtk2,//' "${D}"/etc/etc-proposals.conf
+	# Package has PyQt4 support no one ported to PyQt5 so far, bug #634956
+	sed -i -e '/^PreferedFrontends=/ s/qt4,//' "${D}"/etc/etc-proposals.conf
 }
 
 pkg_postinst() {

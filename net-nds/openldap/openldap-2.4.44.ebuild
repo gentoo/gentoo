@@ -43,7 +43,7 @@ for _slot in $BDB_SLOTS; do BDB_PKGS="${BDB_PKGS} sys-libs/db:${_slot}" ; done
 CDEPEND="
 	ssl? (
 		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 		)
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
 		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
@@ -59,7 +59,7 @@ CDEPEND="
 		slp? ( net-libs/openslp )
 		perl? ( dev-lang/perl:=[-build(-)] )
 		samba? (
-			!libressl? ( dev-libs/openssl:0 )
+			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl )
 		)
 		berkdb? (
@@ -67,7 +67,7 @@ CDEPEND="
 			|| ( ${BDB_PKGS} )
 			)
 		smbkrb5passwd? (
-			!libressl? ( dev-libs/openssl:0 )
+			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl )
 			kerberos? ( app-crypt/heimdal )
 			)

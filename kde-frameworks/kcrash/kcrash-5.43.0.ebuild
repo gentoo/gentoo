@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for intercepting and handling application crashes"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="nls"
 
 # requires running kde environment

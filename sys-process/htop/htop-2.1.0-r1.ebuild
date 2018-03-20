@@ -28,7 +28,6 @@ DOCS=( ChangeLog README )
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.1.0-MakeHeader-python3.patch" #646880
 
 	# Fixes from upstream (can usually be removed with next version bump)
 	"${FILESDIR}/${P}-sysmacros.patch"
@@ -54,6 +53,8 @@ src_prepare() {
 	rm missing || die
 
 	default
+	use python_single_target_python2_7 || \
+		eapply "${FILESDIR}/${PN}-2.1.0-MakeHeader-python3.patch" #646880
 	eautoreconf
 	python_fix_shebang scripts/MakeHeader.py
 }

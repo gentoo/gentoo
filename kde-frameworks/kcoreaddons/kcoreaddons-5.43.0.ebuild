@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Framework for solving common problems such as caching, randomisation, and more"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="fam nls"
 
 RDEPEND="
@@ -29,8 +29,11 @@ src_configure() {
 }
 
 src_test() {
-	# bug: 619656
-	local myctestargs=( -j1 )
+	# bugs: 619656, 632398, 647414
+	local myctestargs=(
+		-j1
+		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest)"
+	)
 
 	kde5_src_test
 }

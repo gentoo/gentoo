@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -84,7 +84,7 @@ src_prepare() {
 	sed -e "s/7/${PV}/" \
 		< "${FILESDIR}"/FLTKConfig.cmake \
 		> CMake/FLTKConfig.cmake || die
-	sed -e 's:-Os::g' -i configure.in || die
+	sed -e 's:-Os::g' -i configure.ac || die
 
 	# also in Makefile:config.guess config.sub:
 	cp misc/config.{guess,sub} . || die

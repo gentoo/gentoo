@@ -1,0 +1,14 @@
+--- a/t/primary-prefix-invalid-couples.tap
++++ b/t/primary-prefix-invalid-couples.tap
+@@ -186,8 +186,10 @@ grep -v 'dir.* not a legitimate directory' stderr && exit 1
+ # Check that the same failures are present without the '--add-missing'
+ # option.
+ mv stderr stderr.old
++cat stderr.old | sort > a
+ AUTOMAKE_fails -d "automake error out on mismatched prefix/primary couples"
++cat stderr | sort > b
+ command_ok_ "... and with the same diagnostic of 'automake -a'" \
+-            diff stderr.old stderr
++            diff a b
+ 
+ :

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,8 @@ PYTHON_COMPAT=(python2_7)
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for the LZMA compression library"
-HOMEPAGE="http://www.joachim-bauch.de/projects/python/pylzma/ https://pypi.python.org/pypi/pylzma"
+HOMEPAGE="https://www.joachim-bauch.de/projects/pylzma/
+	https://pypi.python.org/pypi/pylzma"
 # pypi tarball does not include test data
 SRC_URI="https://github.com/fancycode/pylzma/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 

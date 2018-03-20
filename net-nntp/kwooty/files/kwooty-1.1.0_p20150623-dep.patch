@@ -1,0 +1,24 @@
+From 4def0398b312ff3f4d769ef39897a12516a52a83 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Sat, 3 Mar 2018 10:13:10 +1100
+Subject: [PATCH] Remove unused dependency.
+
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6200c66..e40df79 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,6 @@ include(ECMAddAppIcon)
+ set(KF5_VERSION "5.9.0")
+ find_package(KF5Wallet ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5KDELibs4Support ${KF5_VERSION} CONFIG REQUIRED)
+-find_package(KF5NotifyConfig ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Config ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Service ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5DBusAddons ${KF5_VERSION} CONFIG REQUIRED)
+-- 
+2.16.1
+

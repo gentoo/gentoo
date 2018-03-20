@@ -62,14 +62,12 @@ DEPEND="${RDEPEND}
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
 		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 		dev-python/pyjade[${PYTHON_USEDEP}]
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
@@ -82,6 +80,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
+
+if [[ ${PV} != *9999 ]]; then
+	PATCHES=(
+		"${FILESDIR}/Remove-distro-version-test.patch"
+	)
+fi
 
 pkg_setup() {
 	enewuser buildbot

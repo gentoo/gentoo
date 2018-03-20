@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,7 +7,7 @@
+ AM_INIT_AUTOMAKE
+ AM_MAINTAINER_MODE
+ dnl AC_CONFIG_SRCDIR([acconfig.h])
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ AC_LANG(C++)
+ 
+ # Variables used by the FAM source.

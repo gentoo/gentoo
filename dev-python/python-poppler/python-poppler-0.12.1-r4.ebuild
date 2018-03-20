@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S=${WORKDIR}/pypoppler-${PV}
 
 RDEPEND="${PYTHON_DEPS}
-	>=app-text/poppler-0.15.0:=[cairo]
+	>=app-text/poppler-0.15.0[cairo]
 	>=dev-python/pycairo-1.8.4[${PYTHON_USEDEP}]
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]"

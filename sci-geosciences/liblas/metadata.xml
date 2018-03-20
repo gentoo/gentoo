@@ -12,8 +12,6 @@
 <use>
 	<flag name="gdal">Add support for the <pkg>sci-libs/gdal</pkg> geospatial
 	raster library</flag>
-	<flag name="geotiff">Add support for geo-tagged TIFF files with
-	<pkg>sci-libs/libgeotiff</pkg></flag>
 </use>
 <longdescription lang="en">
 A C/C++ library for reading and writing the very common LAS LiDAR format.

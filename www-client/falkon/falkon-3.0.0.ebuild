@@ -56,3 +56,9 @@ src_configure() {
 	)
 	kde5_src_configure
 }
+
+pkg_postinst() {
+	kde5_pkg_postinst
+	elog "If you were previously using QupZilla, you can manually migrate your profiles"
+	elog "by moving the config directory from ~/.config/qupzilla to ~/.config/falkon"
+}

@@ -11,7 +11,7 @@ FPCVER="2.6.0"
 
 SLOT="0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi"
 HOMEPAGE="https://www.lazarus-ide.org/"
 IUSE="minimal"

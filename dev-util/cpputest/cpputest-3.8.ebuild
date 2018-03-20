@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,10 +13,7 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 
 DEPEND="
-	test? (
-		dev-cpp/gmock
-		dev-cpp/gtest
-	)
+	test? ( >=dev-cpp/gtest-1.8.0 )
 "
 
 DOCS=( AUTHORS README.md README_CppUTest_for_C.txt )

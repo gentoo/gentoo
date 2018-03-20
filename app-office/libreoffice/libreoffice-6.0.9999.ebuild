@@ -12,12 +12,12 @@ PYTHON_REQ_USE="threads,xml"
 DEV_URI="
 	https://dev-builds.libreoffice.org/pre-releases/src
 	https://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
-	https://download.documentfoundation.org/libreoffice/old/${PV}/
+	https://downloadarchive.documentfoundation.org/libreoffice/old/${PV}/src
 "
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
-PATCHSET="${PN}-6.0.0.3-patchset-01.tar.xz"
+PATCHSET="${PN}-6.0.2.1-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
 inherit multiprocessing autotools bash-completion-r1 check-reqs gnome2-utils java-pkg-opt-2 pax-utils python-single-r1 toolchain-funcs flag-o-matic versionator xdg-utils qmake-utils ${SCM_ECLASS}
@@ -185,7 +185,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/libertine
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
-	kde? ( kde-frameworks/oxygen-icons:* )
+	kde? ( kde-frameworks/breeze-icons:* )
 	vlc? ( media-video/vlc )
 "
 
@@ -311,6 +311,11 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# sandbox violations on many systems, we don't need it. Bug #646406
+	sed -i \
+		-e "/KF5_CONFIG/s/kf5-config/no/" \
+		configure.ac || die "Failed to disable kf5-config"
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh

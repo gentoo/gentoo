@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>alunduil@gentoo.org</email>
-		<name>Alex Brandt</name>
+		<email>ikelos@gentoo.org</email>
+		<name>Mike Auty</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">JukkaL/mypy</remote-id>

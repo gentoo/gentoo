@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="vim plugin: A tree explorer plugin for navigating the filesystem"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1658 https://github.com/scrooloose/nerdtree"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1658 https://github.com/scrooloose/nerdtree"
 LICENSE="WTFPL-2"
 
 VIM_PLUGIN_HELPFILES="NERD_tree"

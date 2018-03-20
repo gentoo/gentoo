@@ -5,6 +5,10 @@
 		<email>wschlich@gentoo.org</email>
 		<name>Wolfram Schlich</name>		
 	</maintainer>
+	<maintainer type="person">
+		<email>maksbotan@gentoo.org</email>
+		<name>Maxim Koltsov</name>
+	</maintainer>
 	<use>
 		<flag name="system-wine">Use <pkg>virtual/wine</pkg> instead of bundled wine.</flag>
 	</use>

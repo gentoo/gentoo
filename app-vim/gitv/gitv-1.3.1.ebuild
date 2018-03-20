@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="vim plugin: gitk for vim"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3574 https://github.com/gregsexton/gitv/"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3574 https://github.com/gregsexton/gitv/"
 LICENSE="vim"
 
 VIM_PLUGIN_HELPFILES="gitv"

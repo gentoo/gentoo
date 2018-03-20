@@ -18,5 +18,9 @@ IUSE=""
 RDEPEND="dev-python/prometheus_client[${PYTHON_USEDEP}]
 	dev-util/buildbot[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pip[${PYTHON_USEDEP}]
 	${RDEPEND}"
+
+python_prepare_all() {
+	sed -i -e "/^install_reqs.*$/d" -e "/^from pip.*$/d" -e "s/requires = .*/requires = ['buildbot', 'prometheus_client']/" setup.py || die
+	distutils-r1_python_prepare_all
+}

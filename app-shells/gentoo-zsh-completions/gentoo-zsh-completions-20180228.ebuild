@@ -17,8 +17,7 @@ HOMEPAGE="https://github.com/gentoo/gentoo-zsh-completions"
 LICENSE="ZSH"
 SLOT="0"
 
-RDEPEND=">=app-shells/zsh-4.3.5
-	!<sys-apps/openrc-0.35"
+RDEPEND=">=app-shells/zsh-4.3.5"
 
 src_install() {
 	insinto /usr/share/zsh/site-functions

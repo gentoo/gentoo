@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 eutils
 
 DESCRIPTION="Python code static checker"
-HOMEPAGE="http://www.logilab.org/project/pylint
+HOMEPAGE="https://www.logilab.org/project/pylint
 	https://pypi.python.org/pypi/pylint
 	https://github.com/pycqa/pylint"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

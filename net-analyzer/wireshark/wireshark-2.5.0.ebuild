@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
 IUSE="
 	adns androiddump bcg729 +capinfos +caps +captype ciscodump
 	cpu_flags_x86_sse4_2 +dftest doc doc-pdf +dumpcap +editcap geoip gtk
@@ -267,7 +267,7 @@ pkg_postinst() {
 	# Add group for users allowed to sniff.
 	enewgroup wireshark
 
-	if use pcap; then
+	if use dumpcap && use pcap; then
 		fcaps -o 0 -g wireshark -m 4710 -M 0710 \
 			cap_dac_read_search,cap_net_raw,cap_net_admin \
 			"${EROOT}"/usr/bin/dumpcap

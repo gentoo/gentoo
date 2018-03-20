@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>binki@gentoo.org</email>
-		<name>Nathan Phillip Brink</name>
+		<email>kensington@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="class-nofakelag">Enable an unsupported class::options flag called “nofakelag” allowing you to grant fakelag exemption to normal user (instead of just opers).</flag>

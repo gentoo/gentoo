@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
+# Expose SVGA backend for x86 users
+app-emulation/fuse -backend-svga
+
 # Thomas Deutschmann <whissi@gentoo.org> (10 Feb 2018)
 # Requires dev-db/mongodb which has dropped x86 support
 >=dev-libs/mongo-c-driver-1.8.2 test
@@ -244,9 +248,6 @@ sys-power/pm-utils -video_cards_intel -video_cards_radeon
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
-
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-app-text/enchant -zemberek
 
 x11-terms/eterm cpu_flags_x86_sse2
 

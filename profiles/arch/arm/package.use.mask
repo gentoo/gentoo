@@ -1,6 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2018)
+# Requires unkeyworded deps
+>=dev-python/ipython-5.4.1 notebook qt5 smp
+
+# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
+# net-libs/libmicrodns not yet keyworded for arm
+media-video/vlc microdns
+
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Feb 2018)
 # Depends on not yet keyworded dev-python/geoip-python. Bug #636860
 net-p2p/deluge geoip
@@ -18,11 +26,6 @@ media-tv/tvheadend hdhomerun
 # Michał Górny <mgorny@gentoo.org> (21 Dec 2017)
 # clang is not currently supported on Gentoo ARM profiles.
 sys-devel/llvm clang lldb
-
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Nov 2017)
-# kde-plasma/plasma-vault is not keyworded, which depends on also
-# not yet keyworded sys-fs/{encfs,cryfs}: bugs #630486 and #633882
-kde-plasma/plasma-meta crypt
 
 # Michał Górny <mgorny@gentoo.org> (29 Nov 2017)
 # All current clang versions are broken on ARM.
@@ -460,7 +463,7 @@ app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_ex
 
 # Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
 # No java on ARM
-net-analyzer/wireshark doc-pdf
+net-analyzer/wireshark doc-pdf bcg729
 
 # Markus Meier <maekke@gentoo.org> (25 Jul 2012)
 # no stable media-video/vlc yet, bug #401313

@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 WX_GTK_VER="3.0"
 
-inherit eutils autotools wxwidgets
+inherit eutils gnome2-utils xdg-utils autotools wxwidgets
 
 DESCRIPTION="MediaInfo supplies technical and tag information about media files"
 HOMEPAGE="https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfo"
@@ -34,8 +34,8 @@ src_prepare() {
 
 	local target
 	for target in ${TARGETS}; do
-		cd "${S}"/Project/GNU/${target}
-		sed -i -e "s:-O2::" configure.ac
+		cd "${S}"/Project/GNU/${target} || die
+		sed -i -e "s:-O2::" configure.ac || die
 		eautoreconf
 	done
 }
@@ -43,7 +43,7 @@ src_prepare() {
 src_configure() {
 	local target
 	for target in ${TARGETS}; do
-		cd "${S}"/Project/GNU/${target}
+		cd "${S}"/Project/GNU/${target} || die
 		local args=""
 		[[ ${target} == "GUI" ]] && args="--with-wxwidgets --with-wx-gui"
 		econf ${args}
@@ -53,19 +53,25 @@ src_configure() {
 src_compile() {
 	local target
 	for target in ${TARGETS}; do
-		cd "${S}"/Project/GNU/${target}
+		cd "${S}"/Project/GNU/${target} || die
 		default
 	done
 }
 src_install() {
 	local target
 	for target in ${TARGETS}; do
-		cd "${S}"/Project/GNU/${target}
+		cd "${S}"/Project/GNU/${target} || die
 		default
 		dodoc "${S}"/History_${target}.txt
-		if [[ ${target} == "GUI" ]]; then
-			newicon "${S}"/Source/Resource/Image/MediaInfo.png ${PN}.png
-			make_desktop_entry ${PN}-gui MediaInfo ${PN} "AudioVideo;GTK"
-		fi
 	done
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

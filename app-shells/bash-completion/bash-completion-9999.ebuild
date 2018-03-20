@@ -60,6 +60,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
 	eapply_user
+
 	eautoreconf
 }
 

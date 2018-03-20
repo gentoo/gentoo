@@ -24,12 +24,12 @@ REQUIRED_USE="gost? ( !libressl ssl )"
 
 CDEPEND="
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)
-	gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] )
+	gost? ( >=dev-libs/openssl-1.0.0:0=[-bindist] )
 	xml? ( dev-libs/libxml2 )
-	idn? ( net-dns/idnkit )
+	idn? ( <net-dns/idnkit-2:= )
 	gssapi? ( virtual/krb5 )
 	readline? ( sys-libs/readline:0= )
 	seccomp? ( sys-libs/libseccomp )"

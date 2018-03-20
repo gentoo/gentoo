@@ -7,9 +7,69 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# app-backup/holland-lib-mysql will be removed (#643502)
+app-backup/holland mysql
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# media-sound/mp3gain and media-sound/aacgain will be removed (#630954).
+media-sound/abcde lame
+media-sound/split2flac mp3 mp4
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# dev-python/visual will be removed (#630252)
+net-analyzer/scapy visual
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# net-dns/hesiod will be removed (#606652)
+net-mail/fetchmail hesiod
+sys-freebsd/freebsd-lib hesiod
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# dev-java/jad-bin will be removed (#619770)
+dev-lisp/abcl jad
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# app-misc/cwiid will be removed (#608780)
+media-sound/supercollider wiimote
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# sys-fabric/mstflint will be removed (#594908)
+sys-fabric/ofed mstflint
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# x11-themes/vdrgraphtft-avp is being removed (#592066)
+media-plugins/vdr-music graphtft
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# app-text/zemberek-server is being removed (#587806)
+app-text/enchant zemberek
+
+# Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
+# Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
+# no active upstream anymore.
+net-fs/samba dmapi
+
+# Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
+# Mask local USE flag to satisfy repoman
+app-emulation/fuse backend-svga
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# libewf is going to be removed, bug #547418
+app-admin/testdisk ewf
+app-forensics/sleuthkit ewf
+
+# Patrick McLean <chutzpah@gentoo.org> (6 Mar 2018)
+# Requires dev-libs/boost-1.66 that is unkeyworded/masked
+>=sys-cluster/ceph-12.2.4 system-boost
+
+# Brian Evans <grknight@gentoo.org> (5 Mar 2018)
+# Mask embedded USE on virtual/mysql to transition it to be obsolete
+>=virtual/mysql-5.6-r11 embedded
+
 # Brian Evans <grknight@gentoo.org> (28 Feb 2018)
 # Mask client-libs USE to force users to install alternative standard pacakges
->=dev-db/mariadb-10.3 client-libs
+>=dev-db/mariadb-10.2.13 client-libs
 >=dev-db/mysql-5.7 client-libs
 >=dev-db/percona-server-5.7 client-libs
 
@@ -120,11 +180,6 @@ app-emulation/libvirt openvz
 # The Z3 backend is unstable and causes assertion failures. Mask it
 # until upstream fixes it properly.
 sys-devel/clang z3
-
-# Ulrich Müller <ulm@gentoo.org> (26 Jul 2017)
-# Disable hesiod support due to security vulnerability, bug #626242.
-app-editors/emacs hesiod
-app-editors/emacs-vcs hesiod
 
 # Brian Evans <grknight@gentoo.org> (21 Jul 2017)
 # Mask USE flag which has limited keywords for app-crypt/argon2
