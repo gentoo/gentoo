@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit libtool ltprune multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="A complete ODBC driver manager"
 HOMEPAGE="http://www.unixodbc.org/"
@@ -57,5 +57,5 @@ multilib_src_install_all() {
 	fi
 
 	use prefix && dodoc README*
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
