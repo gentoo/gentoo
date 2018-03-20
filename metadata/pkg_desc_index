@@ -10003,7 +10003,7 @@ sys-fs/extundelete 0.2.0-r1 0.2.4: A utility to undelete files from an ext3 or e
 sys-fs/f2fs-tools 1.6.1: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.4.2: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fuse 2.9.7: An interface for filesystems implemented in userspace
-sys-fs/fuse-exfat 1.2.4 1.2.8: exFAT filesystem FUSE module
+sys-fs/fuse-exfat 1.2.8: exFAT filesystem FUSE module
 sys-fs/fuseiso 20070708-r2: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
 sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
