@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-libs/boost-1.56:=[python,threads,${PYTHON_USEDEP}]
 	media-libs/freealut
 	media-libs/freetype
-	media-libs/glew:*
+	media-libs/glew:=
 	media-libs/libsdl2
 	>=media-libs/libogg-1.1.3
 	media-libs/libpng:0
