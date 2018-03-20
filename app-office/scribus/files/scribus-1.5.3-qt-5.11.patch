@@ -1,0 +1,59 @@
+From ed5bb7e205e10a2855b2f55d6de9d5702f81633f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Mon, 19 Mar 2018 23:52:49 +0100
+Subject: [PATCH] Fix build with Qt 5.11 (missing headers)
+
+---
+ .../plugins/tools/2geomtools/meshdistortion/meshdistortiondialog.cpp   | 3 ++-
+ scribus/plugins/tools/lenseffects/lensdialog.cpp                       | 1 +
+ scribus/sclistboxpixmap.h                                              | 2 ++
+ 3 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/scribus/plugins/tools/2geomtools/meshdistortion/meshdistortiondialog.cpp b/scribus/plugins/tools/2geomtools/meshdistortion/meshdistortiondialog.cpp
+index 3f0d916b7..645aec8d1 100644
+--- a/scribus/plugins/tools/2geomtools/meshdistortion/meshdistortiondialog.cpp
++++ b/scribus/plugins/tools/2geomtools/meshdistortion/meshdistortiondialog.cpp
+@@ -26,8 +26,9 @@ for which a new license (GPL+exception) is in place.
+ 
+ #include "meshdistortiondialog.h"
+ 
+-#include <QPainterPath>
+ #include <QGraphicsItem>
++#include <QPainterPath>
++#include <QStyleOptionGraphicsItem>
+ 
+ #include "commonstrings.h"
+ #include "fpointarray.h"
+diff --git a/scribus/plugins/tools/lenseffects/lensdialog.cpp b/scribus/plugins/tools/lenseffects/lensdialog.cpp
+index cfabc4091..bed8305dc 100644
+--- a/scribus/plugins/tools/lenseffects/lensdialog.cpp
++++ b/scribus/plugins/tools/lenseffects/lensdialog.cpp
+@@ -27,6 +27,7 @@ for which a new license (GPL+exception) is in place.
+ #include "lensdialog.h"
+ #include <cmath>
+ #include <QRadialGradient>
++#include <QStyleOptionGraphicsItem>
+ #include "iconmanager.h"
+ #include "selection.h"
+ #include "sccolorengine.h"
+diff --git a/scribus/sclistboxpixmap.h b/scribus/sclistboxpixmap.h
+index a067b7912..ebdae272c 100644
+--- a/scribus/sclistboxpixmap.h
++++ b/scribus/sclistboxpixmap.h
+@@ -9,11 +9,13 @@ for which a new license (GPL+exception) is in place.
+ 
+ #include <memory>
+ 
++#include <QAbstractItemDelegate>
+ #include <QApplication>
+ #include <QDebug>
+ #include <QPainter>
+ #include <QPixmap>
+ #include <QScopedPointer>
++#include <QStyleOptionMenuItem>
+ #include <QVariant>
+ 
+ #include "scguardedptr.h"
+-- 
+2.16.2
+
