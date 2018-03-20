@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{5,6} )
 
-inherit autotools flag-o-matic python-single-r1 systemd toolchain-funcs user xdg-utils
+inherit flag-o-matic python-single-r1 systemd toolchain-funcs user xdg-utils prefix
 
 MY_P="${P/_}"
 DESCRIPTION="Distribute compilation of C code across several machines on a network"
@@ -74,8 +74,7 @@ src_prepare() {
 		-e "s:@libdir@:/usr/$(get_libdir):" \
 		"${FILESDIR}/3.2/distcc-config" > "${T}/distcc-config" || die
 
-	eaclocal -Im4 --output=aclocal.m4
-	eautoconf
+	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
 }
 
 src_configure() {
@@ -177,7 +176,7 @@ pkg_postinst() {
 	elog
 	elog "***SECURITY NOTICE***"
 	elog "Since distcc-3.3, whitelist is used for what distccd could execute. The whilelist"
-	elog "has to be generated manually by invoking `update-distcc-symlinks`.  To revert"
+	elog "has to be generated manually by invoking \`update-distcc-symlinks\`.  To revert"
 	elog "to the old behavior, you need to pass --make-me-a-botnet to distccd in"
 	elog "/etc/conf.d/distccd.  Cf. https://github.com/distcc/distcc/pull/243."
 }
