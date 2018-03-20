@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org (20 Mar 2018)
+# These PEAR packages are unmaintained upstream and
+# are difficult to test or have no tests.
+# PHP team no longer wants to maintain these for PHP7 and beyond
+# Removal in 30 days. Bug 650988
+dev-php/PEAR-File_Passwd
+dev-php/PEAR-HTML_QuickForm
+dev-php/PEAR-HTML_QuickForm_Controller
+dev-php/PEAR-HTML_QuickForm_advmultiselect
+dev-php/PEAR-HTML_Select
+dev-php/PEAR-I18Nv2
+
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Unresolved security issues (#606652), tests fail (#628622, #337249).
 # Removal in a month.
