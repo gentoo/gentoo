@@ -88,7 +88,7 @@ app-admin/lsat 0.9.7.1-r2: The Linux Security Auditing Tool
 app-admin/lsyncd 2.2.0: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/mcelog 154: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.11.3 2.11.4: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.11.4: Framework to build server orchestration or parallel job execution systems
 app-admin/metalog 3-r2: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
@@ -5083,7 +5083,7 @@ dev-python/oslo-rootwrap 5.9.2: Allows fine filtering of shell commands to run a
 dev-python/oslo-serialization 2.20.2-r1: Oslo Serialization library
 dev-python/oslo-service 1.25.1: Library for running OpenStack services
 dev-python/oslo-sphinx 4.15.2: OpenStack Sphinx Extensions and Theme
-dev-python/oslo-utils 3.28.1: Oslo Utility library
+dev-python/oslo-utils 3.28.2: Oslo Utility library
 dev-python/oslo-versionedobjects 1.26.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.23.1: Oslo VMware library for OpenStack projects
 dev-python/oslotest 2.17.1: Oslo test framework
