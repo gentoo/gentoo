@@ -18,9 +18,9 @@ IUSE="ocl-icd ocl20"
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/beignet.git"
-	KEYWORDS=""
+	KEYWORDS="amd64"
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://01.org/sites/default/files/${P}-source.tar.gz"
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
