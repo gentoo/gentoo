@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Cluster-aware Caching for Java"
 HOMEPAGE="http://swarmcache.sourceforge.net"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 LICENSE="LGPL-2"
 SLOT="0"
 
