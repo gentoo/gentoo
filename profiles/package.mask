@@ -695,12 +695,6 @@ app-emacs/emacs-wiki-blog
 # Requires dead Qt4 (bug #645420). Removal in 30 days
 media-gfx/qiviewer
 
-# Kristian Fiskerstrand <k_f@gentoo.org> (11 Feb 2018)
-# Lastrite: app-crypt/monkeysign . Please use caff from 
-# app-crypt/signing-party instead. Removal in 30 days.
-# Bug: #647352
-app-crypt/monkeysign
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
