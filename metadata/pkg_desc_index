@@ -211,7 +211,7 @@ app-arch/tar 1.29-r1 1.29-r3: Use this to make tarballs :)
 app-arch/tardy 1.28: A tar post-processor
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/torrentzip 0.9: Create identical zip archives over multiple systems
-app-arch/unace 2.5-r3: ACE unarchiver
+app-arch/unace 2.5-r3 2.5-r5: ACE unarchiver
 app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.1: unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
@@ -729,7 +729,7 @@ app-emulation/docker-proxy 0.8.0_p20170917: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20170917 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/e-uae 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
-app-emulation/free42 2.0.10: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.10 2.0.17: An HP-42S Calculator Simulator
 app-emulation/ganeti 2.15.2-r5: Ganeti is a virtual server management software tool
 app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation problems on Ganeti 2.0 clusters
 app-emulation/ganeti-instance-debootstrap 0.11: Scripts to build Ganeti VMs with debootstrap
@@ -2422,7 +2422,7 @@ dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generato
 dev-java/bytelist 1.0.10: JRuby support library
 dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
-dev-java/cdegroot-db 0.08-r1: OO database written in Java
+dev-java/cdegroot-db 0.08-r1 0.08-r2: OO database written in Java
 dev-java/cdi-api 1.2: Contexts and Dependency Injection for the Java EE platform
 dev-java/cglib 3.1: cglib is a powerful, high performance and quality Code Generation Library
 dev-java/classmate 0.9.0-r1: Zero-dependency Java library for accurately introspecting type information
@@ -2592,6 +2592,7 @@ dev-java/jflex 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jfreechart 1.0.19-r1: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
 dev-java/jgoodies-animation 1.2.0: JGoodies Animation Library
+dev-java/jgoodies-binding 1.1.2-r2: Bind object properties with UI components
 dev-java/jgoodies-common 1.8.0: JGoodies Common Library
 dev-java/jgoodies-forms 1.3.0-r1: JGoodies library
 dev-java/jgoodies-looks 1.2.2-r2 2.3.1-r1 2.6.0: JGoodies Looks Library
@@ -2771,13 +2772,13 @@ dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/sun-dtdparser 1.0: Sun DTDParser
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
 dev-java/sun-jacc-api 20070102: Java Authorization Contract for Containers
-dev-java/sun-jaf 1.1.1: Sun's JavaBeans Activation Framework (JAF)
+dev-java/sun-jaf 1.1.1 1.1.1-r1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
 dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
-dev-java/swarmcache 1.0_pre20050106-r1: SwarmCache is a simple but effective distributed cache
+dev-java/swarmcache 1.0_pre20050106-r1 1.0_pre20050106-r2: Cluster-aware Caching for Java
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swt 3.7.2-r2 3.8.2-r2: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
@@ -2899,7 +2900,7 @@ dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line 
 dev-libs/atf 0.21: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.22.0 2.24.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
-dev-libs/beignet 1.3.1: OpenCL implementation for Intel GPUs
+dev-libs/beignet 1.3.1 1.3.2: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
@@ -2962,7 +2963,7 @@ dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib t
 dev-libs/hashit 0.9.7-r1: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.13.3: Minimalistic C client library for the Redis database
-dev-libs/http-fetcher 1.1.0: Library for downloading files via HTTP using the GET method
+dev-libs/http-fetcher 1.1.0 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyphen 2.8.8: ALTLinux hyphenation library
 dev-libs/icu 58.1-r1 58.2-r1: International Components for Unicode
 dev-libs/icu-layoutex 58.1 58.2: External layout part of International Components for Unicode
@@ -6222,6 +6223,7 @@ dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/scala-ide 4.1.0: The Scala IDE
 dev-util/schroot 1.6.10-r3: Utility to execute commands in a chroot environment
 dev-util/scons 2.4.1: Extensible Python-based build utility
+dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2: simple command-line tool to talk to serial devices
 dev-util/shc 3.8.9: A (shell-) script compiler/scrambler
 dev-util/shelltestrunner 1.3.5-r1: A tool for testing command-line programs
@@ -6253,7 +6255,7 @@ dev-util/xdelta 1.1.4-r1 3.0.11: Computes changes between binary or text files a
 dev-util/xfce4-dev-tools 4.12.0 4.12.0-r1: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
-dev-util/xxdiff 4.0_beta1_p20110426-r1: A graphical file and directories comparator and merge tool
+dev-util/xxdiff 4.0_beta1_p20110426-r1 4.0.1_p20170622: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-vcs/bzr 2.5.1-r1 2.7.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
@@ -8739,7 +8741,7 @@ net-misc/curl 7.57.0 7.58.0 7.59.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.11.3 6.11.5: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.11.3 6.11.5 7.0.1: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
@@ -9758,7 +9760,7 @@ sys-apps/proot 3.2.2-r1: User-space implementation of chroot, mount --bind, and 
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qingy 1.0.0-r2 1.0.0-r3: A DirectFB getty replacement
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
-sys-apps/rename 1.3: tool for easily renaming files
+sys-apps/rename 1.3 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.29 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restorecond 2.7: Daemon to watch for creation and set default SELinux fcontexts
@@ -9770,7 +9772,7 @@ sys-apps/secilc 2.6 2.7: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.2: Super-useful stream editor
 sys-apps/selinux-python 2.7: SELinux core utilities
 sys-apps/semodule-utils 2.7: SELinux policy module utilities
-sys-apps/setserial 2.17-r4: Configure your serial ports with it
+sys-apps/setserial 2.17-r4 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.40 1.42: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.4-r2 4.5: Utilities to deal with user accounts
 sys-apps/smartmontools 6.4 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
@@ -10046,7 +10048,7 @@ sys-fs/udiskie 1.1.1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r2 2.1.8 2.7.4-r1: Daemon providing interfaces to work with storage devices
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
-sys-fs/xfsdump 3.1.6: xfs dump/restore utilities
+sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.9.0 4.14.0: xfs filesystem utilities
 sys-kernel/bliss-initramfs 7.1.2: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
@@ -10820,7 +10822,7 @@ x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sselp 0.2-r1: Simple X selection printer
 x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
-x11-misc/synergy 1.6.3: Lets you easily share a single mouse and keyboard between multiple computers
+x11-misc/synergy 1.6.3 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tint2 0.12.12: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/touchcal 0.80: Touchscreen calibration utility
@@ -11192,7 +11194,7 @@ x11-wm/muffin 2.8.5 3.0.5: Compositing window manager forked from Mutter for use
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/openbox 3.5.2-r1 3.6.1: A standards compliant, fast, light-weight, extensible window manager
-x11-wm/oroborus 2.0.20: Small and fast window manager
+x11-wm/oroborus 2.0.20 2.0.20-r1: Small and fast window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/ratpoison 1.4.8-r1: window manager without mouse dependency
 x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting language
