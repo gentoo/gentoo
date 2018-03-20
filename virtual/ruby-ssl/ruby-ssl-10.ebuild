@@ -19,7 +19,7 @@ RDEPEND="
 
 pkg_setup() { :; }
 src_unpack() { :; }
-src_prepare() { :; }
+src_prepare() { eapply_user; }
 src_compile() { :; }
 src_install() { :; }
 pkg_preinst() { :; }
