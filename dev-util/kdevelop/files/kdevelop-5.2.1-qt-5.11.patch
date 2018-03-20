@@ -1,0 +1,52 @@
+From a5ec6847bad98d1fc45f5b8c1cc289f3fcc84b72 Mon Sep 17 00:00:00 2001
+From: Andras Mantia <andras@kdab.com>
+Date: Mon, 12 Feb 2018 17:52:15 +0200
+Subject: Add includes to build with Qt 5.11
+
+(cherry picked from commit 0e361a5184bda61796162830ecff88b41c1b305b)
+---
+ plugins/debuggercommon/widgets/disassemblewidget.h | 1 +
+ plugins/externalscript/editexternalscript.cpp      | 1 +
+ plugins/git/gitnameemaildialog.cpp                 | 2 ++
+ 3 files changed, 4 insertions(+)
+
+diff --git a/plugins/debuggercommon/widgets/disassemblewidget.h b/plugins/debuggercommon/widgets/disassemblewidget.h
+index e8d32ef..543b69f 100644
+--- a/plugins/debuggercommon/widgets/disassemblewidget.h
++++ b/plugins/debuggercommon/widgets/disassemblewidget.h
+@@ -26,6 +26,7 @@
+ 
+ #include "mi/mi.h"
+ 
++#include <QActionGroup>
+ #include <QTreeWidget>
+ #include <QUrl>
+ 
+diff --git a/plugins/externalscript/editexternalscript.cpp b/plugins/externalscript/editexternalscript.cpp
+index 5ec756b..2c0de28 100644
+--- a/plugins/externalscript/editexternalscript.cpp
++++ b/plugins/externalscript/editexternalscript.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include "externalscriptitem.h"
+ 
++#include <QAction>
+ #include <QDialogButtonBox>
+ #include <QPushButton>
+ 
+diff --git a/plugins/git/gitnameemaildialog.cpp b/plugins/git/gitnameemaildialog.cpp
+index ba24a70..ddba09c 100644
+--- a/plugins/git/gitnameemaildialog.cpp
++++ b/plugins/git/gitnameemaildialog.cpp
+@@ -27,6 +27,8 @@
+ 
+ #include <QDialog>
+ #include <QPushButton>
++#include <QRegularExpression>
++#include <QValidator>
+ 
+ using namespace KDevelop;
+ 
+-- 
+cgit v0.11.2
+
