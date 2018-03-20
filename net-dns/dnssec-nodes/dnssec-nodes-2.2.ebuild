@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils qt4-r2
 
 DESCRIPTION="graphically depicts the DNSSEC results from a lookup via logfiles"
-HOMEPAGE="http://www.dnssec-tools.org"
-SRC_URI="http://www.dnssec-tools.org/download/${P}.tar.gz"
+HOMEPAGE="https://www.dnssec-tools.org"
+SRC_URI="https://www.dnssec-tools.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
