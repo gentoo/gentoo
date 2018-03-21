@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,10 @@ DEPEND="dev-lang/perl
 		dev-perl/TermReadKey
 		dev-perl/Shell-EnvImporter"
 RDEPEND="${DEPEND}
-		sys-apps/portage"
+		|| (
+			sys-apps/portage
+			sys-apps/portage-mgorny
+		)"
 
 src_prepare() {
 	# Fix path for new make.conf location
