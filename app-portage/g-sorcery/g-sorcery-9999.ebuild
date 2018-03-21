@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,10 @@ IUSE="bson git"
 
 DEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	git? ( dev-vcs/git )
-	sys-apps/portage[${PYTHON_USEDEP}]"
+	|| (
+		sys-apps/portage[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)"
 RDEPEND="${DEPEND}"
 PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
 
