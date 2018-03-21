@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ MY_PN="PasteDeploy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Load, configure, and compose WSGI applications and servers"
-HOMEPAGE="http://pythonpaste.org/deploy/ https://pypi.python.org/pypi/PasteDeploy"
+HOMEPAGE="https://pypi.python.org/pypi/PasteDeploy"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
