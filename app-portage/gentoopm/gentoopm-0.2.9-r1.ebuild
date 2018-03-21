@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,6 +18,7 @@ IUSE="doc"
 RDEPEND="|| (
 		sys-apps/pkgcore
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
 		>=sys-apps/paludis-0.64.2[python-bindings] )"
 DEPEND="doc? ( dev-python/epydoc )"
 PDEPEND="app-eselect/eselect-package-manager"
