@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MY_PN="Tempita"
 MY_P="${MY_PN}-${PV}dev"
 
 DESCRIPTION="A very small text templating language"
-HOMEPAGE="http://pythonpaste.org/tempita https://pypi.python.org/pypi/Tempita"
+HOMEPAGE="https://pypi.python.org/pypi/Tempita"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
