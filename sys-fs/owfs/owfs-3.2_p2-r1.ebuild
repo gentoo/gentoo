@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 ltprune linux-info perl-functions systemd user
+inherit autotools distutils-r1 ltprune linux-info perl-functions systemd user versionator
 
 MY_P=${P/_/}
 
@@ -15,12 +15,13 @@ SRC_URI="mirror://sourceforge/owfs/${MY_P}.tar.gz"
 HOMEPAGE="http://owfs.org/ https://sourceforge.net/projects/owfs/"
 
 KEYWORDS="~amd64 ~arm ~x86"
-SLOT="0/4.0.0"
+# Upstream uses crazy SONAME, https://github.com/owfs/owfs/commit/c696fa9b9b44f49c96b9f1c2b3159d277e0c1273
+SLOT="0/${PV}"
 LICENSE="GPL-2"
 
 RDEPEND="
 	ftdi? ( dev-embedded/libftdi:0 )
-	fuse? ( sys-fs/fuse:0 )
+	fuse? ( sys-fs/fuse:0= )
 	perl? ( dev-lang/perl:= )
 	parport? ( sys-kernel/linux-headers )
 	php? ( dev-lang/php:=[cli] )
