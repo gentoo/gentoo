@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,4 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
+RDEPEND="
+	|| (
+		sys-apps/portage[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)"
