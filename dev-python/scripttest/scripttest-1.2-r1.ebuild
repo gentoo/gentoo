@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,8 @@ MY_PN="ScriptTest"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A very small text templating language"
-HOMEPAGE="http://pythonpaste.org/scripttest/ https://pypi.python.org/pypi/ScriptTest"
+HOMEPAGE="https://pypi.python.org/pypi/ScriptTest
+	https://github.com/pypa/scripttest"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
