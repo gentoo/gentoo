@@ -10,7 +10,7 @@ MY_PN="PasteDeploy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Load, configure, and compose WSGI applications and servers"
-HOMEPAGE="http://pythonpaste.org/deploy/ https://pypi.python.org/pypi/PasteDeploy"
+HOMEPAGE="https://pypi.python.org/pypi/PasteDeploy"
 # pypi tarball does not include tests
 SRC_URI="https://bitbucket.org/ianb/pastedeploy/get/${PV}.tar.gz -> ${P}-r1.tar.gz"
 
