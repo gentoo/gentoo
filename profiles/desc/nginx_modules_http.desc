@@ -25,6 +25,7 @@ fastcgi - This module allows Nginx to interact with FastCGI processes and contro
 flv - This module provides the ability to seek within FLV (Flash) files using time-based offsets.
 geo - This module creates variables, whose values depend on the IP-address of the client.
 geoip - This module creates variables based on the IP-address of the client matched against the MaxMind GeoIP binary files.
+grpc - This module provides gRPC support.
 gunzip - Permits to decompress gzip'ed files on-the-fly for clients not supporting the gzip encoding method.
 gzip - This module allows for on-the-fly gzip compression.
 gzip_static - Before serving a file from disk to a gzip-enabled client, this module will look for a precompressed file in the same location.

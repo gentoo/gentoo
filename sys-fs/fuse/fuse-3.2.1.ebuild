@@ -30,7 +30,7 @@ src_prepare() {
 	default
 
 	# lto not supported yet -- https://github.com/libfuse/libfuse/issues/198
-	filter-flags -flto
+	filter-flags -flto*
 
 	# passthough_ll is broken on systems with 32-bit pointers
 	cat /dev/null > example/meson.build || die
