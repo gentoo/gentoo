@@ -12,7 +12,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="sys-apps/portage"
+DEPEND="
+	|| (
+		sys-apps/portage
+		sys-apps/portage-mgorny
+	)"
 
 S=${WORKDIR}
 
