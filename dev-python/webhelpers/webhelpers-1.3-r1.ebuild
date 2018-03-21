@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,8 @@ MY_PN="WebHelpers"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Web Helpers"
-HOMEPAGE="http://webhelpers.groovie.org/ https://pypi.python.org/pypi/WebHelpers"
+HOMEPAGE="https://docs.pylonsproject.org/projects/webhelpers/en/latest/
+	https://pypi.python.org/pypi/WebHelpers"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
