@@ -1473,7 +1473,7 @@ app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to somethi
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapian-omega 1.2.24 1.4.4: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1: Utility for viewing Compiled HTML Help (CHM) files
-app-text/xdvik 22.87.03: DVI previewer for X Window System
+app-text/xdvik 22.87.03-r1: DVI previewer for X Window System
 app-text/xfbib 0.0.2-r1 0.0.2-r2: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r5: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xindy 2.4-r1: A Flexible Indexing System
@@ -9324,7 +9324,7 @@ sci-mathematics/mathomatic 15.8.5: Automatic algebraic manipulator
 sci-mathematics/maxima 5.38.1: Free computer algebra environment based on Macsyma
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
-sci-mathematics/octave 4.2.1: High-level interactive language for numerical computations
+sci-mathematics/octave 4.2.1 4.2.2: High-level interactive language for numerical computations
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/pari 2.3.5: A software package for computer-aided number theory
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library
@@ -9856,7 +9856,7 @@ sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape dri
 sys-block/nbd 3.11 3.15.3: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.872-r2 2.0.873 2.0.873-r1: A performant, transport independent, multi-platform implementation of RFC3720
-sys-block/parted 3.2 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
+sys-block/parted 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 3.3.1: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
