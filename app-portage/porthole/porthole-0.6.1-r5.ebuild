@@ -18,7 +18,11 @@ KEYWORDS="amd64 arm ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="nls"
 LANGS="de pl ru vi it fr tr"
 
-RDEPEND=">=sys-apps/portage-2.1[${PYTHON_USEDEP}]
+RDEPEND="
+	|| (
+		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	gnome-base/libglade:2.0
 	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
