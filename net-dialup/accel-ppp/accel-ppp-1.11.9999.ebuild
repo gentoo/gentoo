@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,7 +42,6 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i  -e "/mkdir/d" \
-		-e "/echo/d" \
 		-e "s: RENAME accel-ppp.conf.dist::" accel-pppd/CMakeLists.txt || die 'sed on accel-pppd/CMakeLists.txt failed'
 
 	# Do not install kernel modules like that - breaks sandbox!
@@ -60,17 +59,18 @@ src_configure() {
 	local libdir="$(get_libdir)"
 	# There must be also dev-libs/tomcrypt (TOMCRYPT) as crypto alternative to OpenSSL
 	local mycmakeargs=(
-		-DLIB_PATH_SUFFIX="${libdir#lib}"
+		-DLIB_SUFFIX="${libdir#lib}"
 		-DBUILD_IPOE_DRIVER="$(usex ipoe)"
 		-DBUILD_PPTP_DRIVER=no
 		-DBUILD_VLAN_MON_DRIVER="$(usex ipoe)"
 		-DCRYPTO=OPENSSL
 		-DLOG_PGSQL="$(usex postgres)"
+		-DLUA="$(usex lua)"
 		-DMEMDEBUG="$(usex debug)"
 		-DNETSNMP="$(usex snmp)"
 		-DRADIUS="$(usex radius)"
 		-DSHAPER="$(usex shaper)"
-		-DVALGRIND="$(usex valgrind)"
+		$(use debug && echo "-DVALGRIND=$(usex valgrind)")
 	)
 	cmake-utils_src_configure
 }
