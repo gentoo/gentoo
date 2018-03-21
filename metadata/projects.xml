@@ -2123,6 +2123,11 @@
       <name>Chema Alonso Josa</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>ulm@gentoo.org</email>
+      <name>Ulrich Müller</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>livecd@gentoo.org</email>
