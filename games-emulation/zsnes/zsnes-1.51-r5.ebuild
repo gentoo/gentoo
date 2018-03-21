@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,8 +22,7 @@ RDEPEND="
 	png? ( media-libs/libpng:0[abi_x86_32(-)] )"
 DEPEND="${RDEPEND}
 	dev-lang/nasm
-	debug? ( virtual/pkgconfig )
-	amd64? ( >=sys-apps/portage-2.1 )"
+	debug? ( virtual/pkgconfig )"
 
 S=${WORKDIR}/${PN}_${PV//./_}/src
 
