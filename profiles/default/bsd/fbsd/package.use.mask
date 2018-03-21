@@ -114,3 +114,4 @@ media-libs/mesa openmax
 # Naohiro Aota <naota@gentoo.org> (07 Jul 2014)
 # xattr support is not available on BSD #501534
 sys-apps/portage xattr
+sys-apps/portage-mgorny xattr

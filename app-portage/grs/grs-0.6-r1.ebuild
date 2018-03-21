@@ -6,16 +6,12 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1 linux-info
 
-ISO="ISO-1.tar.gz"
-
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/grss.git"
-	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${ISO}"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz
-	https://dev.gentoo.org/~blueness/${PN}/${ISO}"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Suite to build Gentoo Reference Systems"
@@ -57,8 +53,4 @@ src_install() {
 	distutils-r1_src_install
 	echo "CONFIG_PROTECT=\"/etc/grs/systems.conf\"" > "${T}"/20grs
 	doenvd "${T}"/20grs
-	if use server; then
-		mkdir ${D}/usr/share/${PN}
-		cp "${DISTDIR}"/${ISO} ${D}/usr/share/${PN}
-	fi
 }
