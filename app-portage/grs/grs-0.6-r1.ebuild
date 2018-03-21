@@ -23,7 +23,10 @@ IUSE="server"
 
 DEPEND=""
 RDEPEND="
-	sys-apps/portage
+	|| (
+		sys-apps/portage
+		sys-apps/portage-mgorny
+	)
 	server? (
 		app-arch/tar[xattr]
 		app-crypt/md5deep
