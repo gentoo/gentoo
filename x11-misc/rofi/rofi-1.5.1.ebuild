@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,6 +36,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.12-Werror.patch
+	"${FILESDIR}"/${PN}-1.5.0-gtk-settings-test.patch
 )
 
 src_prepare() {
