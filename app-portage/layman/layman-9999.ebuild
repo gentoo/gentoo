@@ -36,8 +36,18 @@ RDEPEND="
 		)
 	)
 	gpg? ( >=dev-python/pyGPG-0.2 )
-	sync-plugin-portage?  ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
-	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
+	sync-plugin-portage? (
+		|| (
+			>=sys-apps/portage-2.2.16[${PYTHON_USEDEP}]
+			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+		)
+	)
+	!sync-plugin-portage? (
+		|| (
+			sys-apps/portage[${PYTHON_USEDEP}]
+			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+		)
+	)
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 	"
 
