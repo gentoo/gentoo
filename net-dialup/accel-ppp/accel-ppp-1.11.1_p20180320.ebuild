@@ -3,16 +3,15 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://git.code.sf.net/p/accel-ppp/code"
-inherit cmake-utils flag-o-matic git-r3 linux-info linux-mod
+inherit cmake-utils flag-o-matic linux-info linux-mod
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
 HOMEPAGE="http://accel-ppp.sourceforge.net/"
-SRC_URI=""
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc ipoe lua postgres radius shaper snmp valgrind"
 
 RDEPEND="lua? ( dev-lang/lua:0 )
@@ -29,6 +28,12 @@ DOCS=( README )
 CONFIG_CHECK="~L2TP ~PPPOE ~PPTP"
 
 REQUIRED_USE="valgrind? ( debug )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.11.1-socklen.patch"
+)
+
+S="${WORKDIR}"
 
 pkg_setup() {
 	if use ipoe; then
