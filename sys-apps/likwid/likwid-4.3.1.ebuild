@@ -19,7 +19,7 @@ IUSE="fortran"
 RDEPEND="dev-lang/perl"
 
 DEPEND="${RDEPEND}
-	fortran? ( sys-devel/gcc:*[fortran] )
+	fortran? ( virtual/fortran )
 	dev-lang/lua:0"
 
 CONFIG_CHECK="~X86_MSR"
@@ -38,11 +38,12 @@ PATCHES=(
 
 src_prepare() {
 	# Set PREFIX path to include sandbox path
-	sed -e 's:^PREFIX = .*:PREFIX = '${D}'/usr:' -i config.mk || \
+	sed -e 's:^PREFIX = .*:PREFIX = '${D}'/usr:' \
+		-e 's:$(get_libdir):'$(get_libdir)':' -i config.mk ||
 		die "Failed to set correct prefix path"
 
 	# Set the path to library directory.
-	sed -e 's:$(get_libdir):'$(get_libdir)':' -i config.mk || \
+	sed -e 's:$(get_libdir):'$(get_libdir)':' -i config.mk ||
 		die "Cannot set library path!"
 
 	# Set correct LDFLAGS
@@ -50,7 +51,7 @@ src_prepare() {
 		-i make/include_GCC.mk || die "Failed to set correct LDFLAGS"
 
 	# Insert date and version info man pages
-	sed -e 's/<DATE>/21.08.2015/g' \
+	sed -e 's/<DATE>/20.03.2018/g' \
 		-e "s/VERSION/${PV}/g" \
 		-i doc/*.1 || die "Failed to insert date into man pages"
 
@@ -63,7 +64,6 @@ src_prepare() {
 	        -i make/config_defines.mk || die "Failed to set nonexecstack"
 
 	if use fortran; then
-
 		# If fortran USE is enabled, enable the fortran interfaces
 		sed -i 's:^FORTRAN_INTERFACE = false:FORTRAN_INTERFACE = likwid.mod:' \
 			config.mk || die "Enabling of fortran failed"
@@ -88,8 +88,7 @@ src_prepare() {
 src_install () {
 	default
 	if use fortran; then
-		insinto /usr/include
-		doins likwid.mod
+		doheader likwid.mod
 	fi
 
 	doman doc/*.1
