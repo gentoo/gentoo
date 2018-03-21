@@ -67,6 +67,7 @@ dev-lang/python-exec python_targets_pypy3
 # bug #315615, and makes subshell die support more robust
 # (so that repoman's ebuild.nesteddie check is irrelevant).
 sys-apps/portage ipc
+sys-apps/portage-mgorny ipc
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
 # Python should use wide Unicode implementation by default.

@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Brian Dolbec <dolsen@gentoo.org> (17 Sep 2014)
 # mask pypy for several utilities due to incompatibility with libselinux
 sys-apps/portage python_targets_pypy python_targets_pypy3
+sys-apps/portage-mgorny python_targets_pypy python_targets_pypy3
 app-portage/gentoolkit python_targets_pypy python_targets_pypy3
 app-portage/layman python_targets_pypy python_targets_pypy3
 app-admin/webapp-config python_targets_pypy python_targets_pypy3
