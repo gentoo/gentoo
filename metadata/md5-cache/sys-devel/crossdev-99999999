@@ -4,7 +4,7 @@ DESCRIPTION=Gentoo Cross-toolchain generator
 EAPI=6
 HOMEPAGE=https://www.gentoo.org/
 LICENSE=GPL-2
-RDEPEND=>=sys-apps/portage-2.1 >=app-portage/portage-utils-0.55 app-shells/bash sys-apps/gentoo-functions !sys-devel/crossdev-wrappers
+RDEPEND=|| ( >=sys-apps/portage-2.1 sys-apps/portage-mgorny ) >=app-portage/portage-utils-0.55 app-shells/bash sys-apps/gentoo-functions !sys-devel/crossdev-wrappers
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a
-_md5_=afef57e35a6cd0488e59993ca7977293
+_md5_=c70e9832eedc7e0766e1dc9fa1ae6269

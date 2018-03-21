@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=dev-lang/perl >=dev-perl/PortageXS-0.02.10-r3 virtual/perl-Term-ANSIColor dev-perl/TermReadKey dev-perl/Shell-EnvImporter
+DESCRIPTION=demerge - revert to previous installation states
+EAPI=6
+HOMEPAGE=http://download.mpsna.de/opensource/demerge/
+KEYWORDS=alpha amd64 arm ia64 ppc ~ppc64 ~sh sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl >=dev-perl/PortageXS-0.02.10-r3 virtual/perl-Term-ANSIColor dev-perl/TermReadKey dev-perl/Shell-EnvImporter || ( sys-apps/portage sys-apps/portage-mgorny )
+SLOT=0
+SRC_URI=http://download.mpsna.de/opensource/demerge/demerge-0.047.tar.gz
+_md5_=6e1ea22d0c04ae4830ebb3b6c8e5f5a9

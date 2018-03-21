@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=app-portage/elt-patches-20170422
+DESCRIPTION=A repository commit helper
+EAPI=4
+HOMEPAGE=https://bitbucket.org/gentoo/repo-commit/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=|| ( >=sys-apps/portage-2.2.0_alpha86 ( >=sys-apps/portage-2.1.10.30 <sys-apps/portage-2.2.0_alpha ) sys-apps/portage-mgorny ( sys-apps/portage app-portage/gentoolkit-dev ) )
+SLOT=0
+SRC_URI=https://www.bitbucket.org/gentoo/repo-commit/downloads/repo-commit-0.4.1.tar.bz2
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1cb19388ad8269d01c21f64c1b45a460

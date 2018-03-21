@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Introspection and Upgrade Assistance tools for Gentoo Perl
+EAPI=6
+HOMEPAGE=https://github.com/gentoo-perl/gentoo-perl-helpers
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=app-portage/portage-utils-0.60 || ( sys-apps/portage sys-apps/portage-mgorny )
+SLOT=0
+SRC_URI=https://github.com/gentoo-perl/gentoo-perl-helpers/releases/download/0.3.1/gentoo-perl-helpers-0.3.1.tar.xz mirror://gentoo/gentoo-perl-helpers-0.3.1.tar.xz https://dev.gentoo.org/~kentnl/distfiles/gentoo-perl-helpers-0.3.1.tar.xz
+_md5_=7dad2a785280e052ae83af8e01c3400d

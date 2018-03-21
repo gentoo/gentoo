@@ -96,7 +96,7 @@ app-admin/mongo-tools 3.0.14 3.2.17 3.4.10: A high-performance, open source, sch
 app-admin/monit 5.23.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
-app-admin/packagekit-base 1.0.11 1.1.5-r2 1.1.7: Manage packages in a secure way using a cross-distro and cross-architecture API
+app-admin/packagekit-base 1.0.11 1.1.5-r2 1.1.7-r1: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-qt 1.0.0: Qt PackageKit backend library
 app-admin/pass 1.7.1: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
@@ -145,7 +145,7 @@ app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
-app-admin/webapp-config 1.52-r1 1.53-r2 1.55: Gentoo's installer for web-based applications
+app-admin/webapp-config 1.52-r1 1.53-r2 1.55-r1: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.5: Displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
@@ -1192,33 +1192,33 @@ app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
 app-portage/cpuid2cpuflags 1 5: Tool to guess CPU_FLAGS_X86 flags for the host
-app-portage/demerge 0.047-r2: demerge - revert to previous installation states
+app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/eclass-manpages 20180119 20180302: Collection of Gentoo eclass manpages
 app-portage/eix 0.32.9: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1: Curses based utility to parse the contents of elogs created by Portage
-app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.7: Elog viewer for Gentoo
+app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.7-r1: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.6.2 3.7.2-r1: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.3: A simple portage wrapper which works like other package managers
-app-portage/esearch 1.3-r1: Replacement for 'emerge --search' with search-index
+app-portage/esearch 1.3-r2: Replacement for 'emerge --search' with search-index
 app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config files
-app-portage/euscan 0.1.1-r1: Ebuild upstream scan utility
+app-portage/euscan 0.1.1-r2: Ebuild upstream scan utility
 app-portage/euses 2.5.9: look up USE flag descriptions fast
-app-portage/flaggie 0.2.1: A smart CLI mangler for package.* files
-app-portage/g-cpan 0.16.5 0.16.9: Autogenerate and install ebuilds for CPAN modules
+app-portage/flaggie 0.2.1-r1: A smart CLI mangler for package.* files
+app-portage/g-cpan 0.16.5 0.16.9-r1: Autogenerate and install ebuilds for CPAN modules
 app-portage/genlop 0.30.9-r1: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0: Collection of developer scripts for Gentoo
-app-portage/gentoopm 0.2.9: A common interface to Gentoo package managers
-app-portage/grs 0.5 0.6: Suite to build Gentoo Reference Systems
-app-portage/layman 2.0.0-r1 2.0.0-r3 2.4.2: Tool to manage Gentoo overlays
+app-portage/gentoopm 0.2.9-r1: A common interface to Gentoo package managers
+app-portage/grs 0.5 0.6-r1: Suite to build Gentoo Reference Systems
+app-portage/layman 2.0.0-r1 2.0.0-r3 2.4.2-r1: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.5: metadata.xml generator for ebuilds
 app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 2.2.3: Tool to help select distfiles mirrors for Gentoo
-app-portage/overlint 0.5.3: Simple tool for static analysis of overlays
+app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
-app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
+app-portage/pfl 2.4-r5: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.62 0.64: small and fast portage helper tools written in C
-app-portage/porthole 0.6.1-r4: A GTK+-based frontend to Portage
+app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.21 2.1.25: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/repoman 2.3.0-r1 2.3.3 2.3.6: Repoman is a Quality Assurance tool for Gentoo ebuilds
@@ -1227,7 +1227,7 @@ app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.4 0.5: arch testing tool
 app-portage/ufed 0.91 0.92: Gentoo Linux USE flags editor
 app-portage/unsandbox 2: The Sandbox escapist tool
-app-portage/unsymlink-lib 12: Convert your system to SYMLINK_LIB=no
+app-portage/unsymlink-lib 12-r1: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r1 4.4_p12: The standard GNU Bourne again shell
 app-shells/bash-completion 2.4-r1: Programmable Completion for bash
@@ -2548,7 +2548,7 @@ dev-java/japitools 0.9.7-r4: Java API compatibility testing tools
 dev-java/jarbundler 1.8.1-r2: Jar Bundler Ant Task
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
-dev-java/java-config 2.2.0-r3: Java environment configuration query tool
+dev-java/java-config 2.2.0-r4: Java environment configuration query tool
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-sdk-docs 1.8.0.162: Oracle's documentation bundle (including API) for Java SE
@@ -10238,7 +10238,7 @@ virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
 virtual/opencl 0-r4: Virtual for OpenCL implementations
 virtual/opengl 7.0 7.0-r1: Virtual for OpenGL implementation
 virtual/os-headers 0: Virtual for operating system headers
-virtual/package-manager 0: Virtual for the package manager
+virtual/package-manager 1: Virtual for the package manager
 virtual/pager 0: Virtual for command-line pagers
 virtual/pam 0 0-r1: Virtual for PAM (Pluggable Authentication Modules)
 virtual/perl-Archive-Tar 2.40.100_rc-r5: Virtual for Archive-Tar
