@@ -1,0 +1,16 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1560,11 +1560,11 @@ if test $check_magick = yes; then
+   MAGICK_LIBS=
+ 
+   PKG_CHECK_EXISTS([$magick++], [
+-    ## Make sure we only get -I, -L, and -l flags.  Some Graphics/ImageMagick++
++    ## Make sure we only get -I, -D, -L, and -l flags.  Some Graphics/ImageMagick++
+     ## packages add extra flags that are useful when building
+     ## Graphics/ImageMagick++ extentions.  These extra flags break the
+     ## Octave build.
+-    MAGICK_CPPFLAGS="$($PKG_CONFIG --cflags-only-I $magick++ | $SED -e 's/^ *$//')"
++    MAGICK_CPPFLAGS="$($PKG_CONFIG --cflags-only-I $magick++ | $SED -e 's/^ *$//' | $SED -e 's/\(-@<:@DI@:>@@<:@^ \t@:>@*\)\|\(-@<:@^ \t@:>@*\)/\1/g')"
+     MAGICK_LDFLAGS="$($PKG_CONFIG --libs-only-L $magick++ | $SED -e 's/^ *$//')"
+     MAGICK_LIBS="$($PKG_CONFIG --libs-only-l $magick++ | $SED -e 's/^ *$//')"
+ 
