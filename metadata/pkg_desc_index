@@ -3097,7 +3097,7 @@ dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.4: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
-dev-libs/libpcre 8.40-r1 8.41 8.41-r1: Perl-compatible regular expression library
+dev-libs/libpcre 8.41-r1: Perl-compatible regular expression library
 dev-libs/libpcre2 10.30: Perl-compatible regular expression library
 dev-libs/libpeas 1.20.0-r1: A GObject plugins library
 dev-libs/libpipeline 1.4.0 1.4.2: a pipeline manipulation library
@@ -4281,7 +4281,6 @@ dev-perl/Variable-Magic 0.610.0: Associate user-defined magic to variables from 
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
-dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugzilla
 dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
 dev-perl/WWW-Form-UrlEncoded 0.240.0: parser and builder for application/x-www-form-urlencoded
 dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-www-form-urlencoded
