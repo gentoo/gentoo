@@ -96,7 +96,7 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-apps/kapptemplate-16.04.0
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt.5.11.patch" )
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 RESTRICT+=" test"
 # see bug 366471
