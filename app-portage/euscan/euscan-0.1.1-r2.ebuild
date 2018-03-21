@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,11 @@ IUSE=""
 
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
-DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
+DEPEND="
+	|| (
+		sys-apps/portage[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)"
 RDEPEND="${DEPEND}
 	>=app-portage/gentoolkit-0.2.8[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
