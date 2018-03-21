@@ -23,7 +23,7 @@ IUSE="fuse nls static-libs elibc_FreeBSD"
 
 RDEPEND="~sys-libs/${PN}-libs-${PV}
 	>=sys-apps/util-linux-2.16
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0 )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
