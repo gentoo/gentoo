@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Thomas Beierlein <tomjbe@gentoo.org> (21 Mar 2018)
+# ~app-backup/bacula-9.0.6 does not compile with USE=libressl (bug #641492)
+~app-backup/bacula-9.0.6 libressl
+
 # Matthias Maier <tamiko@gentoo.org> (18 Mar 2018)
 # dev-libs/capstone hasn't been stabilized yet
 app-emulation/qemu capstone

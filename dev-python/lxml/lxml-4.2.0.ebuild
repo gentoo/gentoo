@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
-inherit distutils-r1 eutils flag-o-matic toolchain-funcs
+inherit distutils-r1 eutils toolchain-funcs
 
 DESCRIPTION="A Pythonic binding for the libxml2 and libxslt libraries"
 HOMEPAGE="http://lxml.de/ https://pypi.python.org/pypi/lxml/ https://github.com/lxml/lxml"
@@ -18,7 +18,7 @@ IUSE="doc examples +threads test"
 
 # Note: lib{xml2,xslt} are used as C libraries, not Python modules.
 RDEPEND="
-	>=dev-libs/libxml2-2.9.2
+	>=dev-libs/libxml2-2.9.5
 	>=dev-libs/libxslt-1.1.28"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -29,12 +29,6 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5.0-cross-compile.patch
-
-	# This patch removes a testcase that fails because of issues
-	# in libxml2.
-	#
-	# Upstream bug: https://bugs.launchpad.net/lxml/+bug/1608479
-	"${FILESDIR}"/${PN}-3.6.4-fix-test_xmlschema.patch
 )
 
 python_prepare_all() {
@@ -45,9 +39,8 @@ python_prepare_all() {
 }
 
 python_compile() {
-	if [[ ${EPYTHON} != python3* ]]; then
-		local -x CFLAGS="${CFLAGS}"
-		append-cflags -fno-strict-aliasing
+	if ! python_is_python3; then
+		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	fi
 	tc-export PKG_CONFIG
 	distutils-r1_python_compile
@@ -63,12 +56,11 @@ python_test() {
 
 python_install_all() {
 	if use doc; then
-		local DOCS=( *.txt doc/*.txt )
+		local DOCS=( README.rst *.txt doc/*.txt )
 		local HTML_DOCS=( doc/html/. )
 	fi
 	if use examples; then
-		docinto examples
-		dodoc -r samples/.
+		dodoc -r samples
 	fi
 
 	distutils-r1_python_install_all
