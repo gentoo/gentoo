@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,10 @@ IUSE="+network-cron"
 DEPEND=""
 RDEPEND="${DEPEND}
 	net-misc/curl
-	sys-apps/portage[${PYTHON_USEDEP}]"
+	|| (
+		sys-apps/portage[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)"
 
 src_prepare() {
 	epatch "${FILESDIR}"/e-file-20110906-http-response.patch \
