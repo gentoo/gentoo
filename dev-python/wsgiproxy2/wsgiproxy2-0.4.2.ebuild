@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN="WSGIProxy2"
 
 DESCRIPTION="HTTP proxying tools for WSGI apps"
-HOMEPAGE="http://pythonpaste.org/wsgiproxy/"
+HOMEPAGE="https://pypi.python.org/pypi/WSGIProxy2"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip"
 
 LICENSE="MIT"
