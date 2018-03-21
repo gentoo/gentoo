@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit meson multilib-minimal flag-o-matic python-single-r1
+inherit meson multilib-minimal flag-o-matic python-any-r1
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
@@ -14,17 +14,23 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="virtual/pkgconfig
 	test? (
 		${PYTHON_DEPS}
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-		"
+		$(python_gen_any_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
+	)"
 RDEPEND="sys-fs/fuse-common"
 
 DOCS=( AUTHORS ChangeLog.rst README.md doc/README.NFS doc/kernel.txt )
+
+python_check_deps() {
+	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -45,7 +51,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	python3 -m pytest test || die
+	${EPYTHON} -m pytest test || die
 }
 
 multilib_src_install() {
