@@ -154,6 +154,7 @@ multilib_src_compile() {
 
 	local makeargs=(
 		CC="$(tc-getCC)"
+		CCC="$(tc-getCXX)"
 		AR="$(tc-getAR) rc \$@"
 		RANLIB="$(tc-getRANLIB)"
 		OPTIMIZER=
