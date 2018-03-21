@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,10 +14,11 @@ LICENSE="GPL-2"
 IUSE="motif neXt Xaw3d emacs"
 
 RDEPEND="media-libs/freetype:2
+	x11-libs/libX11
 	x11-libs/libXi
 	x11-libs/libXmu
-	x11-libs/libXp
 	x11-libs/libXpm
+	x11-libs/libXt
 	motif? ( >=x11-libs/motif-2.3:0 )
 	!motif? (
 		neXt? ( x11-libs/neXtaw )
