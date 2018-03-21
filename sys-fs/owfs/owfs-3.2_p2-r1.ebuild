@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 ltprune linux-info perl-functions systemd user versionator
+inherit autotools distutils-r1 ltprune linux-info perl-functions systemd user
 
 MY_P=${P/_/}
 
