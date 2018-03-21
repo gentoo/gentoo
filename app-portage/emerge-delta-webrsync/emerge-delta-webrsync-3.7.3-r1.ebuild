@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,10 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	app-shells/bash
-	>=sys-apps/portage-2.1.10
+	|| (
+		>=sys-apps/portage-2.1.10
+		sys-apps/portage-mgorny
+	)
 	>=dev-util/diffball-0.6.5"
 
 S=${WORKDIR}
