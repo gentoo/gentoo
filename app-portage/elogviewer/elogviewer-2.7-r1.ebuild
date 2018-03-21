@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,10 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/PyQt4[${PYTHON_USEDEP},X]
 		dev-python/pyside[${PYTHON_USEDEP},X]
 	)
-	>=sys-apps/portage-2.1
+	|| (
+		>=sys-apps/portage-2.1
+		sys-apps/portage-mgorny
+	)
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
 	!dev-python/PyQt5[-gui]
 	!dev-python/PyQt5[-widgets]
