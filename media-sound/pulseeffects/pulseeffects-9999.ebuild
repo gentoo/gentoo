@@ -43,6 +43,7 @@ DEPEND="
 	>=media-plugins/gst-plugins-ladspa-1.12.0:1.0
 	>=media-plugins/gst-plugins-lv2-1.12.0:1.0
 	>=media-plugins/gst-plugins-pulse-1.12.0:1.0
+	media-libs/rubberband
 "
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio[equalizer]
