@@ -1,19 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
-inherit git-r3 python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Convert your system to SYMLINK_LIB=no"
 HOMEPAGE="https://github.com/mgorny/unsymlink-lib"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/unsymlink-lib.git"
+SRC_URI="https://github.com/mgorny/unsymlink-lib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

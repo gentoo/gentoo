@@ -1,14 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/gentoo/${PN}.git"
-
-inherit git-r3
-#endif
+EAPI=4
 
 inherit autotools-utils
 
@@ -30,8 +23,3 @@ RDEPEND="
 		( sys-apps/portage
 			app-portage/gentoolkit-dev )
 	)"
-#if LIVE
-
-KEYWORDS=
-SRC_URI=
-#endif
