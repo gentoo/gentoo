@@ -30,6 +30,7 @@ S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-7.patch
 	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${P}-gcc-6-uchar.patch
 )
 
 src_prepare() {
