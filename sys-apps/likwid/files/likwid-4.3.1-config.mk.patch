@@ -1,0 +1,36 @@
+--- likwid-likwid-4.3.1/config.mk.org	2018-02-26 14:24:43.221679289 +0800
++++ likwid-likwid-4.3.1/config.mk	2018-02-26 14:26:57.622007751 +0800
+@@ -38,9 +38,9 @@
+ COLOR = BLUE#NO SPACE
+ 
+ # Some path definitions
+-MANPREFIX = $(PREFIX)/man#NO SPACE
++MANPREFIX = ${D}/usr/share/man#NO SPACE
+ BINPREFIX = $(PREFIX)/bin#NO SPACE
+-LIBPREFIX = $(PREFIX)/lib#NO SPACE
++LIBPREFIX = $(PREFIX)/$(get_libdir)#NO SPACE
+ 
+ # These paths are hardcoded into executables and libraries. Usually
+ # they'll be the same as above, but package maintainers may want to
+@@ -49,9 +49,9 @@
+ # Keep in mind that the access and setFreq daemon need enough
+ # privileges that may be deleted when copying the files to
+ # the INTSTALLED_PREFIX
+-INSTALLED_PREFIX = $(PREFIX)#NO SPACE
++INSTALLED_PREFIX=/usr#NO SPACE
+ INSTALLED_BINPREFIX = $(INSTALLED_PREFIX)/bin#NO SPACE
+-INSTALLED_LIBPREFIX = $(INSTALLED_PREFIX)/lib#NO SPACE
++INSTALLED_LIBPREFIX = $(INSTALLED_PREFIX)/$(get_libdir)#NO SPACE
+ 
+ # For the daemon based secure msr/pci access configure
+ # the absolute path to the msr daemon executable.
+@@ -122,7 +122,7 @@
+ # The pinning library is put in LD_PRELOAD when using LIKIWD for thread/process
+ # pinning. The library overloads the pthread_create function to pin threads
+ # directly after their creation
+-LIBLIKWIDPIN = $(abspath $(INSTALLED_LIBPREFIX)/liblikwidpin.so.$(VERSION).$(RELEASE))
++LIBLIKWIDPIN = $(abspath $(PREFIX)/$(get_libdir)/liblikwidpin.so)
+ 
+ # Some tools (likwid-perfctr and likwid-topology) provide the export of their
+ # output to a file. LIKWID tries to format the file based on the file suffix.
+
