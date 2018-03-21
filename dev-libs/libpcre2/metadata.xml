@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
+    <maintainer type="person">
 	<email>polynomial-c@gentoo.org</email>
 	<name>Lars Wendler</name>
-</maintainer>
-<use>
+    </maintainer>
+    <maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+    </maintainer>
+    <use>
 	<flag name="bzip2">
 		Add support for pcregrep command to search within
 		bzip2-compressed files (via <pkg>app-arch/bzip2</pkg>).
@@ -24,9 +28,9 @@
 		Add support for pcregrep command to search within
 		gzip-compressed files (via <pkg>sys-libs/zlib</pkg>).
 	</flag>
-</use>
-<upstream>
+    </use>
+    <upstream>
 	<remote-id type="cpe">cpe:/a:pcre:pcre</remote-id>
 	<remote-id type="sourceforge">pcre</remote-id>
-</upstream>
+    </upstream>
 </pkgmetadata>
