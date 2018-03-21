@@ -6,20 +6,14 @@ inherit cmake-multilib
 
 DESCRIPTION="Abstraction layer for filesystem and archive access"
 HOMEPAGE="http://icculus.org/physfs/"
-if [[ ${PV} == *9999* ]]; then
-	EHG_REPO_URI="https://hg.icculus.org/icculus/physfs"
-	inherit mercurial
-else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86 ~x86-fbsd"
-	SRC_URI="http://icculus.org/physfs/downloads/${P}.tar.bz2"
-fi
+SRC_URI="http://icculus.org/physfs/downloads/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86 ~x86-fbsd"
 IUSE="7zip doc grp hog iso mvl qpak slb static-libs vdf wad +zip"
 
-RDEPEND=""
-DEPEND=""
+DEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( docs/CHANGELOG.txt docs/CREDITS.txt docs/TODO.txt )
 
