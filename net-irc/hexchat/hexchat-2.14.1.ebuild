@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit gnome2-utils meson mono-env python-single-r1 xdg-utils
 
