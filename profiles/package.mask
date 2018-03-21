@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (21 Mar 2018)
+# Not usable with versions of Bugzilla shipped by Gentoo since 2013,
+# Dead upstream. Use dev-perl/BZ-Client instead.
+# Removal in 30 days. Bug 651056
+dev-perl/WWW-Bugzilla
+
 # Michał Górny <mgorny@gentoo.org> (20 Mar 2018)
 # Poorly tested version bump followed by a series of quick hacks
 # that do not make it any more working. Bug #651030.
