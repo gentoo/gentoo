@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,9 +50,11 @@ RDEPEND="${CDEPEND}
 	app-crypt/qca:2[ssl]
 "
 
-DOCS=( AUTHORS ChangeLog README.md )
-
-PATCHES=( "${FILESDIR}/${PN}-liblastfm-cmake.patch" )
+src_prepare() {
+	kde5_src_prepare
+	has_version "media-libs/liblastfm[qt5]" &&
+		eapply "${FILESDIR}/${PN}-liblastfm-cmake.patch"
+}
 
 src_configure() {
 	local mycmakeargs=(
