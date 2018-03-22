@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 inherit toolchain-funcs
 
 MY_P="${PN}_${PV}"
@@ -28,6 +28,7 @@ src_prepare() {
 		-e 's:make:$(MAKE):g' \
 		Makefile_start > Makefile \
 		|| die "Failed to set up Makefile"
+	eapply_user
 }
 
 src_install() {
