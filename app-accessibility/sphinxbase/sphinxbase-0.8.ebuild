@@ -1,13 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
-AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils distutils-r1
+inherit autotools distutils-r1
 
 DESCRIPTION="Support library required by the Sphinx Speech Recognition Engine"
 HOMEPAGE="http://cmusphinx.sourceforge.net/"
@@ -31,9 +30,15 @@ DEPEND="${RDEPEND}
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
 PATCHES=(
-	"${FILESDIR}"/${P}-unbundle-lapack.patch
-	"${FILESDIR}"/${P}-automake113.patch
+	"${FILESDIR}"/${PN}-0.8-unbundle-lapack.patch
+	"${FILESDIR}"/${PN}-0.8-automake113.patch
 )
+
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
@@ -43,7 +48,7 @@ src_configure() {
 		# so disable the ugly wrapper
 		--without-python
 	)
-	autotools-utils_src_configure
+	default
 }
 
 run_distutils() {
@@ -55,8 +60,7 @@ run_distutils() {
 }
 
 src_compile() {
-	autotools-utils_src_compile
-
+	default
 	run_distutils ${FUNCNAME}
 }
 
@@ -66,8 +70,7 @@ python_test() {
 }
 
 src_test() {
-	autotools-utils_src_test
-
+	default
 	run_distutils ${FUNCNAME}
 }
 
@@ -75,5 +78,5 @@ src_install() {
 	run_distutils ${FUNCNAME}
 
 	use doc && local HTML_DOCS=( doc/html/. )
-	autotools-utils_src_install
+	default
 }
