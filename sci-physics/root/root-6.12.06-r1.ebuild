@@ -114,6 +114,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.00.01-dotfont.patch
 	"${FILESDIR}"/${PN}-6.11.02-hsimple.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
+	"${FILESDIR}"/${PN}-6.12.04-no-opengl.patch
 	"${FILESDIR}"/${PN}-6.12.04-z3.patch
 )
 
