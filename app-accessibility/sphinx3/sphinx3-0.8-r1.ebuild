@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # disable automatic phase exports and deps
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils distutils-r1 prefix eutils
+inherit distutils-r1 prefix
 
 DESCRIPTION="CMU Speech Recognition engine"
 HOMEPAGE="http://cmusphinx.sourceforge.net/"
@@ -27,14 +27,18 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # Due to generated Python setup.py.
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.8-heap-fix.patch"
+	"${FILESDIR}/${PN}-0.8-libutil.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}_heap_fix.patch" \
-		"${FILESDIR}/${P}-libutil.patch"
 	eprefixify 'python/setup.py'
+	default
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	default
 
 	if use python; then
 		cd python || die
@@ -44,11 +48,10 @@ src_compile() {
 
 src_install() {
 	local DOCS=( AUTHORS ChangeLog NEWS README )
-	autotools-utils_src_install
+	default
 
 	if use doc; then
-		cd doc || die
-		dohtml -r -x CVS s3* s3 *.html
+		HTML_DOCS="doc/s3 doc/*.html doc/s3* doc/*.gif" einstalldocs
 	fi
 
 	if use python; then
@@ -57,4 +60,6 @@ src_install() {
 		cd "${S}"/python || die
 		distutils-r1_src_install
 	fi
+
+	rm -rf "${ED}"usr/share/sphinx3/doc || die # duplicate of html dir
 }

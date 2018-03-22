@@ -1,6 +1,5 @@
-diff -uNr sphinx3-0.8.orig/python/setup.py sphinx3-0.8/python/setup.py
---- sphinx3-0.8.orig/python/setup.py	2008-12-31 23:20:08.000000000 -0500
-+++ sphinx3-0.8/python/setup.py	2011-11-17 09:46:57.000000000 -0500
+--- a/python/setup.py
++++ b/python/setup.py
 @@ -8,15 +8,10 @@
      define_macros = []
  
@@ -20,9 +19,8 @@ diff -uNr sphinx3-0.8.orig/python/setup.py sphinx3-0.8/python/setup.py
  				'../lib/debug',
  				],
                     libraries = ['sphinxbase', 's3decoder'],
-diff -uNr sphinx3-0.8.orig/src/libs3decoder/libsearch/vithist.c sphinx3-0.8/src/libs3decoder/libsearch/vithist.c
---- sphinx3-0.8.orig/src/libs3decoder/libsearch/vithist.c	2008-12-31 13:27:56.000000000 -0500
-+++ sphinx3-0.8/src/libs3decoder/libsearch/vithist.c	2011-11-17 09:46:24.000000000 -0500
+--- a/src/libs3decoder/libsearch/vithist.c
++++ b/src/libs3decoder/libsearch/vithist.c
 @@ -647,7 +647,7 @@
  {
      int32 se, fe, filler_done, th;
