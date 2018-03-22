@@ -16,7 +16,7 @@ SRC_PATH="stable"
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~axs/samba-4.6.7-disable-python-patches.tar.xz"
 [[ ${PV} = *_rc* ]] || \
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="http://www.samba.org/"
