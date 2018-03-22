@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Polish speech synthesizer based on rsynth"
 HOMEPAGE="http://kadu.net/index.php?page=download&lang=en"
@@ -16,9 +16,9 @@ IUSE=""
 
 S=${WORKDIR}/${PN}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-dsp-handle-fix.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0-dsp-handle-fix.patch
+)
 
 src_compile() {
 	emake -f Makefile_plain LDLIBS="-lm" CFLAGS="${CFLAGS}" DEFS="" CC=$(tc-getCC)
