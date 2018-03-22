@@ -58,6 +58,7 @@
 		<flag name="shout">Enable libshout output</flag>
 		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay</pkg>:2</flag>
 		<flag name="skins">Enable support for the skins2 interface</flag>
+		<flag name="soxr">Enable SoX Resampler support via <pkg>media-libs/soxr</pkg></flag>
 		<flag name="swscale">Enable image scaling and conversion via libswscale (part of FFmpeg)</flag>
 		<flag name="tremor">Enable tremor, a fixed-point version of the Ogg Vorbis decoder</flag>
 		<flag name="twolame">Enable twolame support (MPEG Audio Layer 2 encoder)</flag>
