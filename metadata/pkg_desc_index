@@ -8266,7 +8266,7 @@ net-analyzer/netwatch 1.3.0.1-r3: Ethernet/PPP IP Packet Monitor
 net-analyzer/nfdump 1.6.14-r1: A set of tools to collect and process netflow data
 net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 7.40: A utility for network discovery and security auditing
+net-analyzer/nmap 7.40 7.70: A utility for network discovery and security auditing
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nrpe 2.15-r3: Nagios Remote Plugin Executor
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
