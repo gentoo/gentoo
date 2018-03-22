@@ -18,7 +18,7 @@ HOMEPAGE="http://haml-lang.com/"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 arm ~arm64 ppc ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 arm ~arm64 ~hppa ppc ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 IUSE="doc test"
 
