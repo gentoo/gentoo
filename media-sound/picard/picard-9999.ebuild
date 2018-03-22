@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
 
 EGIT_REPO_URI="https://github.com/metabrainz/picard"
-inherit distutils-r1 git-r3 readme.gentoo-r1 xdg-utils
+inherit distutils-r1 git-r3 gnome2-utils readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="A cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
@@ -67,8 +67,10 @@ Picard's settings:
 pkg_postinst() {
 	readme.gentoo_print_elog
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
