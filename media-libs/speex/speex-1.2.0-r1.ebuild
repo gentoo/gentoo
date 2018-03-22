@@ -42,10 +42,13 @@ multilib_src_configure() {
 	append-lfs-flags
 
 	local \
+		FIXED_ARG=--disable-fixed-point \
 		ARM4_ARG=--disable-arm4-asm \
 		ARM5_ARG=--disable-arm5e-asm
 
 	if use arm && ! use cpu_flags_arm_v6; then
+		FIXED_ARG=--enable-fixed-point
+
 		if use cpu_flags_arm_v5; then
 			ARM5_ARG=--enable-arm5e-asm
 		elif use cpu_flags_arm_v4; then
@@ -53,15 +56,13 @@ multilib_src_configure() {
 		fi
 	fi
 
-	# Can also be configured without floating point
-	# --enable-fixed-point
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable static-libs static) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable vbr) \
 		$(use_with utils speexdsp) \
 		$(use_enable utils binaries) \
-		${ARM4_ARG} ${ARM5_ARG}
+		${FIXED_ARG} ${ARM4_ARG} ${ARM5_ARG}
 }
 
 multilib_src_install_all() {
