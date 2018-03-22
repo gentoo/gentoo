@@ -18,7 +18,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby-core/archive/v${PV}.tar.gz ->
 RUBY_S="cucumber-ruby-core-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~x86"
 SLOT="3.1"
 IUSE="test"
 
