@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit eutils python-r1
+inherit python-r1
 
 DESCRIPTION="Speech synthesis interface"
 HOMEPAGE="http://www.freebsoft.org/speechd"
@@ -72,7 +72,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 	dodoc ANNOUNCE AUTHORS BUGS FAQ NEWS README*
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 
 	if use python; then
 		installation() {

@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python3_4 python3_5 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit eutils python-r1
+inherit python-r1
 
 DESCRIPTION="Speech synthesis interface"
 HOMEPAGE="http://www.freebsoft.org/speechd"
@@ -29,10 +29,12 @@ COMMON_DEPEND="python? ( ${PYTHON_DEPS} )
 	flite? ( app-accessibility/flite )
 	nas? ( media-libs/nas )
 	pulseaudio? ( media-sound/pulseaudio )"
+
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.40.0
 	virtual/pkgconfig"
-	RDEPEND="${COMMON_DEPEND}
+
+RDEPEND="${COMMON_DEPEND}
 	dev-python/pyxdg"
 
 src_configure() {
@@ -69,7 +71,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 	dodoc ANNOUNCE AUTHORS BUGS ChangeLog FAQ NEWS README*
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 
 	if use python; then
 		installation() {
