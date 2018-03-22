@@ -9,7 +9,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit cmake-utils elisp-common eutils fortran-2 gnome2-utils \
+inherit cmake-utils elisp-common eutils fortran-2 gnome2-utils prefix \
 	python-single-r1 toolchain-funcs user versionator xdg-utils
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
@@ -150,6 +150,8 @@ src_prepare() {
 	rm -r core/lzma/src/*.tar.gz || die
 	LANG=C LC_ALL=C find core/zip -type f -name "[a-z]*" -print0 | xargs -0 rm || die
 
+	hprefixify build/CMakeLists.txt core/clingutils/CMakeLists.txt
+
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
 }
@@ -163,6 +165,9 @@ src_configure() {
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/${MY_PREFIX}"
+		-DDEFAULT_SYSROOT="${EPREFIX}"
+		-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
+		-DC_INCLUDE_DIRS="${EPREFIX}/usr/local/include:${EPREFIX}/include:${EPREFIX}/usr/include"
 		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
