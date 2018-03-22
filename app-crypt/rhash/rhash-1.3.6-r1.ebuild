@@ -34,6 +34,7 @@ src_prepare() {
 multilib_src_configure() {
 	set -- \
 		./configure \
+		--target="${CHOST}" \
 		--cc="$(tc-getCC)" \
 		--ar="$(tc-getAR)" \
 		--extra-cflags="${CFLAGS}" \
@@ -59,8 +60,9 @@ multilib_src_configure() {
 multilib_src_install() {
 	# -j1 needed due to race condition.
 	emake DESTDIR="${D}" -j1 \
-		  install{,-lib-so-link,-pkg-config} \
-		  $(use nls && echo install-gmo)
+		  install{,-pkg-config} \
+		  $(use nls && echo install-gmo) \
+		  $(use kernel_Winnt || echo install-lib-so-link)
 
 	emake DESTDIR="${D}" -j1 \
 		  -C lib${PN} install-headers
