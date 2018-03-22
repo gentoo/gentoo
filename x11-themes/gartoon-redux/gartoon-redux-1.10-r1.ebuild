@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils
+EAPI=6
+inherit gnome2-utils
 
 DESCRIPTION="A massively improved variant of the well-known Gartoon theme"
 HOMEPAGE="http://gnome-look.org/content/show.php/?content=74841"
@@ -20,9 +20,9 @@ DEPEND="
 
 RESTRICT="binchecks strip"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.10-rsvg-convert.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.10-rsvg-convert.patch
+)
 
 src_configure() {
 	# perl script, not autotools based
