@@ -1,7 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="C/Migemo -- Migemo library implementation in C"
 HOMEPAGE="http://www.kaoriya.net/#CMIGEMO"
@@ -17,14 +17,17 @@ DEPEND="app-i18n/qkc
 RDEPEND="app-dicts/migemo-dict
 	emacs? ( >=app-text/migemo-0.40-r1 )"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch "${FILESDIR}"/${PN}-1.2-migemo-dict.diff
-	touch ${S}/dict/SKK-JISYO.L
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2-migemo-dict.patch
+)
+
+src_prepare() {
+	eapply "${PATCHES[@]}"
+	touch dict/SKK-JISYO.L
 
 	# Bug #246953
 	sed -i -e "s:-Wl,-rpath[^ ]*::" compile/Make_gcc.mak || die
+	eapply_user
 }
 
 src_compile() {
@@ -33,12 +36,13 @@ src_compile() {
 
 src_install() {
 	make \
-		prefix=${D}/usr \
-		docdir=${D}/usr/share/doc/${P} \
+		prefix="${D}/usr" \
+		libdir="${D}/usr/$(get_libdir)" \
+		docdir="${D}/usr/share/doc/${P}" \
 		gcc-install || die
 
-	mv ${D}/usr/share/migemo/euc-jp/*.dat ${D}/usr/share/migemo
-	rm -rf ${D}/usr/share/migemo/{cp932,euc-jp}
+	mv "${D}"/usr/share/migemo/euc-jp/*.dat "${D}"/usr/share/migemo
+	rm -rf "${D}"/usr/share/migemo/{cp932,euc-jp}
 
 	if has_version 'app-editors/vim-core' ; then
 		insinto /usr/share/vim/vimfiles/plugin

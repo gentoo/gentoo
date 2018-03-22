@@ -1,6 +1,5 @@
-diff -urN cmigemo-1.2.ORIG/tools/migemo.vim cmigemo-1.2/tools/migemo.vim
---- cmigemo-1.2.ORIG/tools/migemo.vim	2003-01-07 22:57:59.000000000 +0900
-+++ cmigemo-1.2/tools/migemo.vim	2004-03-13 17:25:31.944190968 +0900
+--- a/tools/migemo.vim
++++ b/tools/migemo.vim
 @@ -20,7 +20,7 @@
      let dict = globpath(path, "migemo-dict")
    endif
