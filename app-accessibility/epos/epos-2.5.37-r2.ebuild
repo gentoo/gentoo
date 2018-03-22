@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="language independent text-to-speech system"
 HOMEPAGE="http://epos.ure.cas.cz/"
@@ -18,14 +18,18 @@ DEPEND=">=app-text/sgmltools-lite-3.0.3-r9
 	dev-util/byacc"
 RDEPEND=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch \
-		"${FILESDIR}"/${P}-gcc45.patch \
-		"${FILESDIR}"/${P}-gcc47.patch \
-		"${FILESDIR}"/${P}-disable-tests.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.37-gcc43.patch
+	"${FILESDIR}"/${PN}-2.5.37-gcc45.patch
+	"${FILESDIR}"/${PN}-2.5.37-gcc47.patch
+	"${FILESDIR}"/${PN}-2.5.37-disable-tests.patch
+)
 
+src_prepare() {
+	eapply "${PATCHES[@]}"
 	sed -i -e "s/CCC/#CCC/" configure.ac || die
 
+	eapply_user
 	eautoreconf
 }
 
