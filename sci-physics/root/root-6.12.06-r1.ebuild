@@ -9,7 +9,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit cmake-utils elisp-common eutils fortran-2 gnome2-utils prefix \
+inherit cmake-utils elisp-common eutils fortran-2 gnome2-utils \
 	python-single-r1 toolchain-funcs user versionator xdg-utils
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
@@ -115,7 +115,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.11.02-hsimple.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
 	"${FILESDIR}"/${PN}-6.12.04-z3.patch
-	"${FILESDIR}"/${PN}-6.12.06-disable-ftgl.patch
 )
 
 pkg_setup() {
@@ -152,8 +151,6 @@ src_prepare() {
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
-
-	hprefixify build/CMakeLists.txt core/clingutils/CMakeLists.txt
 }
 
 # Note: ROOT uses bundled LLVM, because it is patched and API-incompatible with system LLVM.
@@ -165,7 +162,6 @@ src_configure() {
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/${MY_PREFIX}"
-		-DDEFAULT_SYSROOT="${EPREFIX}" # for llvm system headers
 		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
