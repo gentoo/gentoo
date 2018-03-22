@@ -74,7 +74,7 @@ DOCS=( AUTHORS ChangeLog README.md )
 REQUIRED_USE="
 	|| ( X server monolithic )
 	crypt? ( || ( server monolithic ) )
-	kde? ( || ( X monolithic ) )
+	kde? ( || ( X monolithic ) dbus )
 	ldap? ( || ( server monolithic ) )
 	monolithic? ( || ( breeze oxygen ) )
 	postgres? ( || ( server monolithic ) )
@@ -105,6 +105,7 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=ON
 		$(cmake-utils_use_find_package crypt QCA2-QT5)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
+		$(cmake-utils_use_find_package dbus Qt5DBus)
 		-DWITH_KDE=$(usex kde)
 		-DWITH_LDAP=$(usex ldap)
 		-DWANT_MONO=$(usex monolithic)
