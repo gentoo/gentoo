@@ -55,7 +55,7 @@ COMMON_DEPEND="
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
-	lastfm? ( >=media-libs/liblastfm-1[qt5(+)] )
+	lastfm? ( >=media-libs/liblastfm-1.1.0_pre20150206 )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
@@ -115,14 +115,6 @@ src_prepare() {
 		sed -e "/find_package.*Qt5/s:\ Test::" -i CMakeLists.txt || die
 		cmake_comment_add_subdirectory tests
 	fi
-
-	# Fix clementine relying on downstream renaming of lastfm header dir
-	sed -i -e "/^#include/s/lastfm5/lastfm/" \
-		tests/albumcoverfetcher_test.cpp \
-		src/internet/lastfm/lastfm{settingspage.cpp,service.cpp,compat.h} \
-		src/core/song.cpp || die "Failed to sed lastfm header suffix"
-	sed -e "/^find_path.*LASTFM5/s/lastfm5/lastfm/" \
-		-i CMakeLists.txt || die "Failed to sed lastfm header suffix"
 }
 
 src_configure() {
@@ -168,10 +160,6 @@ src_configure() {
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
 	virtx emake test
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	GIT_ECLASS="git-r3"
 else
-	COMMIT=2d7894915dfc9043da9282d216775ef75041c773
+	COMMIT=804168edc74d7230a84e8937e2ea9a3b1ad2e9c2
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -43,8 +43,6 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
@@ -57,7 +55,7 @@ COMMON_DEPEND="
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
-	lastfm? ( >=media-libs/liblastfm-1[qt5(+)] )
+	lastfm? ( >=media-libs/liblastfm-1.1.0_pre20150206 )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
@@ -84,6 +82,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
 	dev-qt/linguist-tools:5
 	dev-qt/qtopengl:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
@@ -100,10 +100,7 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( Changelog README.md )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-fts3-tokenizer.patch
-	"${FILESDIR}"/${P}-qt-5.11.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-fts3-tokenizer.patch )
 
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
@@ -118,14 +115,6 @@ src_prepare() {
 		sed -e "/find_package.*Qt5/s:\ Test::" -i CMakeLists.txt || die
 		cmake_comment_add_subdirectory tests
 	fi
-
-	# Fix clementine relying on downstream renaming of lastfm header dir
-	sed -i -e "/^#include/s/lastfm5/lastfm/" \
-		tests/albumcoverfetcher_test.cpp \
-		src/internet/lastfm/lastfm{settingspage.cpp,service.cpp,compat.h} \
-		src/core/song.cpp || die "Failed to sed lastfm header suffix"
-	sed -e "/^find_path.*LASTFM5/s/lastfm5/lastfm/" \
-		-i CMakeLists.txt || die "Failed to sed lastfm header suffix"
 }
 
 src_configure() {
@@ -171,10 +160,6 @@ src_configure() {
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
 	virtx emake test
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
