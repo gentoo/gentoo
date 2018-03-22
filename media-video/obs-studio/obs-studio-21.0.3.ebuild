@@ -3,9 +3,12 @@
 
 EAPI=6
 
-inherit cmake-utils gnome2-utils
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+CMAKE_MIN_VERSION=3.9.6
 
-if [[ ${PV} == "9999" ]]; then
+inherit cmake-utils gnome2-utils python-any-r1
+
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jp9000/obs-studio.git"
 	EGIT_SUBMODULES=()
@@ -19,7 +22,8 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack pulseaudio truetype v4l"
+IUSE="+alsa fdk imagemagick jack luajit pulseaudio python truetype v4l"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
 	>=dev-libs/jansson-2.5
@@ -42,7 +46,9 @@ COMMON_DEPEND="
 	fdk? ( media-libs/fdk-aac:= )
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
+	luajit? ( dev-lang/luajit:2 )
 	pulseaudio? ( media-sound/pulseaudio )
+	python? ( ${PYTHON_DEPS} )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -50,15 +56,8 @@ COMMON_DEPEND="
 	v4l? ( media-libs/libv4l )
 "
 DEPEND="${COMMON_DEPEND}
-	imagemagick? (
-		|| (
-			<media-gfx/imagemagick-7
-			(
-				>=media-gfx/imagemagick-7
-				>=dev-util/cmake-3.9
-			)
-		)
-	)
+	luajit? ( dev-lang/swig )
+	python? ( dev-lang/swig )
 "
 RDEPEND="${COMMON_DEPEND}"
 
@@ -78,6 +77,13 @@ src_configure() {
 		-DOBS_VERSION_OVERRIDE=${PV}
 		-DUNIX_STRUCTURE=1
 	)
+
+	if use luajit || use python; then
+		mycmakeargs+=( -DENABLE_SCRIPTING=yes )
+	else
+		mycmakeargs+=( -DENABLE_SCRIPTING=no )
+	fi
+
 	cmake-utils_src_configure
 }
 
