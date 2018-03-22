@@ -1,4 +1,4 @@
-# Copyright 2004-2017 Gentoo Foundation
+# Copyright 2004-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-ant-2.eclass
@@ -357,40 +357,6 @@ java-ant_rewrite-classpath() {
 	if [[ -n "${JAVA_PKG_DEBUG}" ]]; then
 		diff -NurbB "${file}.orig" "${file}"
 	fi
-}
-
-# @FUNCTION: java-ant_remove-taskdefs
-# @USAGE: [--name NAME] [path/to/build.xml]
-# @DESCRIPTION:
-# Removes (named) taskdef elements from the build.xml file.
-# When --name NAME is specified, only remove taskdef with name NAME. Otherwise,
-# all taskdefs are removed.
-# The file to rewrite defaults to build.xml when not specified.
-java-ant_remove-taskdefs() {
-	debug-print-function ${FUNCNAME} $*
-
-	die "${FUNCNAME} has been banned, see bug #479838."
-
-	local task_name
-	if [[ "${1}" == --name ]]; then
-		task_name="${2}"
-		shift 2
-	fi
-	local file="${1:-build.xml}"
-	echo "Removing taskdefs from ${file}"
-	python <<EOF
-import sys
-from xml.dom.minidom import parse
-dom = parse("${file}")
-for elem in dom.getElementsByTagName('taskdef'):
-	if (len("${task_name}") == 0 or elem.getAttribute("name") == "${task_name}"):
-		elem.parentNode.removeChild(elem)
-		elem.unlink()
-f = open("${file}", "w")
-dom.writexml(f)
-f.close()
-EOF
-	[[ $? != 0 ]] && die "Removing taskdefs failed"
 }
 
 # @FUNCTION: java-ant_ignore-system-classes
