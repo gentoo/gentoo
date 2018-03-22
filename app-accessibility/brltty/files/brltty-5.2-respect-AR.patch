@@ -1,6 +1,5 @@
-diff -Naur brltty-5.2/Programs/Makefile.in brltty-5.2-new/Programs/Makefile.in
---- brltty-5.2/Programs/Makefile.in	2014-11-06 07:28:41.000000000 -0800
-+++ brltty-5.2-new/Programs/Makefile.in	2014-11-20 05:41:57.144219093 -0800
+--- a/Programs/Makefile.in
++++ b/Programs/Makefile.in
 @@ -434,7 +434,7 @@
  	[ ! -f lib.def ] || mv lib.def $(API_DEF)
  
