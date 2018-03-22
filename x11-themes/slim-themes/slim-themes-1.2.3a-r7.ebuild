@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 DESCRIPTION="SLiM (Simple Login Manager) themes pack"
 HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
@@ -40,9 +39,9 @@ RESTRICT="strip binchecks"
 
 S="${WORKDIR}"
 
-src_prepare() {
-	epatch "${FILESDIR}/slim-theme-flat.diff"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.3a-r7-flat.patch
+)
 
 src_compile() {
 	:
