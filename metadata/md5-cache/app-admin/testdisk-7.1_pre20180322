@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=static? ( sys-apps/util-linux[static-libs] sys-fs/e2fsprogs[static-libs] sys-libs/ncurses:0[static-libs] jpeg? ( virtual/jpeg:0[static-libs] ) ntfs? ( sys-fs/ntfs3g[static-libs] ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] ) zlib? ( sys-libs/zlib[static-libs] ) !arm? ( ewf? ( app-forensics/libewf:=[static-libs] ) ) ) !static? ( sys-apps/util-linux sys-fs/e2fsprogs sys-libs/ncurses:0= jpeg? ( virtual/jpeg:0 ) ntfs? ( sys-fs/ntfs3g ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 ) zlib? ( sys-libs/zlib ) !arm? ( ewf? ( app-forensics/libewf:= ) ) ) qt5? ( dev-qt/linguist-tools:5 ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Checks and undeletes partitions + PhotoRec, signature based recovery tool
+EAPI=6
+HOMEPAGE=https://www.cgsecurity.org/wiki/TestDisk
+IUSE=ewf jpeg ntfs qt5 reiserfs static zlib
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( static? ( sys-apps/util-linux[static-libs] sys-fs/e2fsprogs[static-libs] sys-libs/ncurses:0[static-libs] jpeg? ( virtual/jpeg:0[static-libs] ) ntfs? ( sys-fs/ntfs3g[static-libs] ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] ) zlib? ( sys-libs/zlib[static-libs] ) !arm? ( ewf? ( app-forensics/libewf:=[static-libs] ) ) ) !static? ( sys-apps/util-linux sys-fs/e2fsprogs sys-libs/ncurses:0= jpeg? ( virtual/jpeg:0 ) ntfs? ( sys-fs/ntfs3g ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 ) zlib? ( sys-libs/zlib ) !arm? ( ewf? ( app-forensics/libewf:= ) ) ) )
+REQUIRED_USE=static? ( !qt5 )
+SLOT=0
+SRC_URI=https://git.cgsecurity.org/cgit/testdisk/snapshot/testdisk-9eb2aa12ce051d8d3d31e6b440389d5abf5efaf1.tar.gz -> testdisk-7.1_pre20180322.tar.gz
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=a60b62d90406aa318d4a69c80b9f28b2
