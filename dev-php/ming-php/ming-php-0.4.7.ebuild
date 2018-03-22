@@ -6,7 +6,7 @@ EAPI=6
 PHP_EXT_NAME=ming
 MY_P="${PHP_EXT_NAME}-${PV//./_}"
 USE_PHP="php5-6"
-PHP_EXT_S="libming-${MY_P}/php_ext"
+PHP_EXT_S="${WORKDIR}/libming-${MY_P}/php_ext"
 inherit flag-o-matic php-ext-source-r3
 
 DESCRIPTION="PHP extension for the ming Flash movie generation library"
@@ -22,22 +22,19 @@ RDEPEND="media-libs/ming"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/libming-${MY_P}"
+PATCHES=( "${FILESDIR}/ming-php-54.patch" )
 
 src_prepare() {
-	local slot orig_s="${PHP_EXT_S}" libdir=$(get_libdir)
-	for slot in $(php_get_slots); do
-		cp "${FILESDIR}/php_ext-config.m4" "${WORKDIR}/${slot}/config.m4" || \
-			die "Failed to copy config.m4 to target"
-		rm "${WORKDIR}/${slot}/Makefile.am" || die "Failed to remove Makefile.am for ${slot}"
-		# Fix for SYMYLINK_LIB=no
-		[[ ${libdir} != 'lib' ]] && \
-		sed -i -e "s~PHP_LIBDIR=lib~PHP_LIBDIR=${libdir}~" "${WORKDIR}/${slot}/config.m4" \
+	local libdir=$(get_libdir)
+	cp "${FILESDIR}/php_ext-config.m4" "${PHP_EXT_S}/config.m4" || \
+		die "Failed to copy config.m4 to target"
+	rm "${PHP_EXT_S}/Makefile.am" || die "Failed to remove Makefile.am for ${slot}"
+	# Fix for SYMYLINK_LIB=no
+	if [[ ${libdir} != 'lib' ]] ; then
+		sed -i -e "s~PHP_LIBDIR=lib~PHP_LIBDIR=${libdir}~" "${PHP_EXT_S}/config.m4" \
 			|| die "Failed to update lib directory"
-		php_init_slot_env ${slot}
-		eapply -p0 "${FILESDIR}/ming-php-54.patch"
-		eapply_user
-		php-ext-source-r3_phpize
-	done
+	fi
+	php-ext-source-r3_src_prepare
 }
 
 src_configure() {
