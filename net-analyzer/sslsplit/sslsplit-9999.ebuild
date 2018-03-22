@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.roe.ch/SSLsplit"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="test"
+IUSE="elibc_musl test"
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
@@ -35,6 +35,7 @@ src_prepare() {
 
 	sed -i 's/-D_FORTIFY_SOURCE=2 //g' GNUmakefile || die
 	sed -i 's/\<FEATURES\>/SSLSPLIT_FEATURES/g' GNUmakefile build.c || die
+	sed -i '/opts_suite/d' main.t.c || die
 }
 
 src_install() {
