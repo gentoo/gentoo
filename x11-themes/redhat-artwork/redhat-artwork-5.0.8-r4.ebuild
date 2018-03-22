@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils rpm
+EAPI=6
+inherit autotools rpm
 
 MY_R=${PR/r/}
 DESCRIPTION="RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus"
@@ -24,13 +24,17 @@ DEPEND="
 
 RESTRICT="test"
 
+PATCHES=(
+	"${WORKDIR}"/redhat-artwork-5.0.5-add-dirs-to-bluecurve-theme-index.patch
+	"${WORKDIR}"/redhat-artwork-5.0.8-echo.patch
+)
+
 src_unpack() {
 	rpm_src_unpack
 }
 
 src_prepare() {
-	epatch "${WORKDIR}"/redhat-artwork-5.0.5-add-dirs-to-bluecurve-theme-index.patch
-	epatch "${WORKDIR}"/redhat-artwork-5.0.8-echo.patch
+	eapply "${PATCHES[@]}"
 
 	# dies if LANG has UTF-8
 	export LANG=C
@@ -66,11 +70,13 @@ src_prepare() {
 		art/icon/Makefile.am \
 		art/icon/Bluecurve/sheets/Makefile.am || die
 
+	mv configure.{in,ac}
 	eautoreconf
 
 	intltoolize --force || die
 
 	sed -i -e 's|GtkStyle|4|' art/qt/Bluecurve/bluecurve.cpp || die
+	eapply_user
 }
 
 src_compile() {
