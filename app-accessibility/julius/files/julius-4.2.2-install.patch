@@ -2,8 +2,8 @@ From: Julian Ospald <hasufell@gentoo.org>
 Date: Sun Mar 31 20:38:49 UTC 2013
 Subject: respect DESTDIR
 
---- julius-4.2.2/libsent/Makefile.in
-+++ julius-4.2.2/libsent/Makefile.in
+--- a/libsent/Makefile.in
++++ b/libsent/Makefile.in
 @@ -144,16 +144,16 @@
  install: install.lib install.include install.bin
  
@@ -27,8 +27,8 @@ Subject: respect DESTDIR
  
  clean:
  	$(RM) *~ src/*/*~ src/*/*.o src/*/*/*.o src/*/*/*/*.o src/*/*/*/*/*.o include/sent/*~ 
---- julius-4.2.2/libjulius/Makefile.in
-+++ julius-4.2.2/libjulius/Makefile.in
+--- a/libjulius/Makefile.in
++++ b/libjulius/Makefile.in
 @@ -90,16 +90,16 @@
  install: install.lib install.include install.bin
  
@@ -52,8 +52,8 @@ Subject: respect DESTDIR
  
  depend:
  	makedepend -- $(CFLAGS) -- $(OBJSENT)
---- julius-4.2.2/julius/Makefile.in
-+++ julius-4.2.2/julius/Makefile.in
+--- a/julius/Makefile.in
++++ b/julius/Makefile.in
 @@ -61,8 +61,8 @@
  install: install.bin
  
@@ -65,8 +65,8 @@ Subject: respect DESTDIR
  
  depend:
  	makedepend -- $(CFLAGS) -- $(OBJSENT)
---- julius-4.2.2/mkbingram/Makefile.in
-+++ julius-4.2.2/mkbingram/Makefile.in
+--- a/mkbingram/Makefile.in
++++ b/mkbingram/Makefile.in
 @@ -32,8 +32,8 @@
  install: install.bin
  
@@ -78,8 +78,8 @@ Subject: respect DESTDIR
  
  clean:
  	$(RM) $(OBJ)
---- julius-4.2.2/mkbinhmm/Makefile.in
-+++ julius-4.2.2/mkbinhmm/Makefile.in
+--- a/mkbinhmm/Makefile.in
++++ b/mkbinhmm/Makefile.in
 @@ -32,8 +32,8 @@
  install: install.bin
  
@@ -91,8 +91,8 @@ Subject: respect DESTDIR
  
  clean:
  	$(RM) mkbinhmm.o mkbinhmmlist.o
---- julius-4.2.2/adinrec/Makefile.in
-+++ julius-4.2.2/adinrec/Makefile.in
+--- a/adinrec/Makefile.in
++++ b/adinrec/Makefile.in
 @@ -36,8 +36,8 @@
  install: install.bin
  
@@ -104,8 +104,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/adintool/Makefile.in
-+++ julius-4.2.2/adintool/Makefile.in
+--- a/adintool/Makefile.in
++++ b/adintool/Makefile.in
 @@ -36,8 +36,8 @@
  install: install.bin
  
@@ -117,8 +117,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/mkgshmm/Makefile.in
-+++ julius-4.2.2/mkgshmm/Makefile.in
+--- a/mkgshmm/Makefile.in
++++ b/mkgshmm/Makefile.in
 @@ -23,8 +23,8 @@
  install: install.bin
  
@@ -130,8 +130,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/mkss/Makefile.in
-+++ julius-4.2.2/mkss/Makefile.in
+--- a/mkss/Makefile.in
++++ b/mkss/Makefile.in
 @@ -36,8 +36,8 @@
  install: install.bin
  
@@ -143,8 +143,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/jcontrol/Makefile.in
-+++ julius-4.2.2/jcontrol/Makefile.in
+--- a/jcontrol/Makefile.in
++++ b/jcontrol/Makefile.in
 @@ -31,19 +31,19 @@
  install: install.bin
  
@@ -169,8 +169,8 @@ Subject: respect DESTDIR
 +	$(RM) $(TARGET) $(TARGET).exe jucontrol
  	$(RM) config.status
  	$(RM) Makefile
---- julius-4.2.2/gramtools/accept_check/Makefile.in
-+++ julius-4.2.2/gramtools/accept_check/Makefile.in
+--- a/gramtools/accept_check/Makefile.in
++++ b/gramtools/accept_check/Makefile.in
 @@ -36,8 +36,8 @@
  install: install.bin
  
@@ -182,8 +182,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/gramtools/dfa_determinize/Makefile.in
-+++ julius-4.2.2/gramtools/dfa_determinize/Makefile.in
+--- a/gramtools/dfa_determinize/Makefile.in
++++ b/gramtools/dfa_determinize/Makefile.in
 @@ -35,8 +35,8 @@
  install: install.bin
  
@@ -195,8 +195,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/gramtools/dfa_minimize/Makefile.in
-+++ julius-4.2.2/gramtools/dfa_minimize/Makefile.in
+--- a/gramtools/dfa_minimize/Makefile.in
++++ b/gramtools/dfa_minimize/Makefile.in
 @@ -34,8 +34,8 @@
  install: install.bin
  
@@ -208,8 +208,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/gramtools/generate/Makefile.in
-+++ julius-4.2.2/gramtools/generate/Makefile.in
+--- a/gramtools/generate/Makefile.in
++++ b/gramtools/generate/Makefile.in
 @@ -35,8 +35,8 @@
  install: install.bin
  
@@ -221,8 +221,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/gramtools/gram2sapixml/Makefile.in
-+++ julius-4.2.2/gramtools/gram2sapixml/Makefile.in
+--- a/gramtools/gram2sapixml/Makefile.in
++++ b/gramtools/gram2sapixml/Makefile.in
 @@ -17,8 +17,8 @@
  install: install.bin
  
@@ -234,8 +234,8 @@ Subject: respect DESTDIR
  
  clean:
  	echo nothing to do
---- julius-4.2.2/gramtools/mkdfa/Makefile.in
-+++ julius-4.2.2/gramtools/mkdfa/Makefile.in
+--- a/gramtools/mkdfa/Makefile.in
++++ b/gramtools/mkdfa/Makefile.in
 @@ -18,13 +18,13 @@
  
  install:
@@ -254,8 +254,8 @@ Subject: respect DESTDIR
  
  clean:
  	(cd $(SUBDIR); $(MAKE) clean)
---- julius-4.2.2/gramtools/mkdfa/mkfa-1.44-flex/Makefile.in
-+++ julius-4.2.2/gramtools/mkdfa/mkfa-1.44-flex/Makefile.in
+--- a/gramtools/mkdfa/mkfa-1.44-flex/Makefile.in
++++ b/gramtools/mkdfa/mkfa-1.44-flex/Makefile.in
 @@ -43,8 +43,8 @@
  install: install.bin
  
@@ -267,8 +267,8 @@ Subject: respect DESTDIR
  
  clean:
  	$(RM) *.o *~ core
---- julius-4.2.2/gramtools/nextword/Makefile.in
-+++ julius-4.2.2/gramtools/nextword/Makefile.in
+--- a/gramtools/nextword/Makefile.in
++++ b/gramtools/nextword/Makefile.in
 @@ -36,8 +36,8 @@
  install: install.bin
  
@@ -280,8 +280,8 @@ Subject: respect DESTDIR
  
  ############################################################
  
---- julius-4.2.2/gramtools/yomi2voca/Makefile.in
-+++ julius-4.2.2/gramtools/yomi2voca/Makefile.in
+--- a/gramtools/yomi2voca/Makefile.in
++++ b/gramtools/yomi2voca/Makefile.in
 @@ -17,8 +17,8 @@
  install: install.bin
  
@@ -293,8 +293,8 @@ Subject: respect DESTDIR
  
  clean:
  	echo nothing to do
---- julius-4.2.2/generate-ngram/Makefile.in
-+++ julius-4.2.2/generate-ngram/Makefile.in
+--- a/generate-ngram/Makefile.in
++++ b/generate-ngram/Makefile.in
 @@ -33,8 +33,8 @@
  install: install.bin
  
@@ -306,8 +306,8 @@ Subject: respect DESTDIR
  
  clean:
  	$(RM) $(OBJ) *~ core
---- julius-4.2.2/jclient-perl/Makefile.in
-+++ julius-4.2.2/jclient-perl/Makefile.in
+--- a/jclient-perl/Makefile.in
++++ b/jclient-perl/Makefile.in
 @@ -17,8 +17,8 @@
  install: install.bin
  
@@ -319,8 +319,8 @@ Subject: respect DESTDIR
  
  clean:
  	echo nothing to do
---- julius-4.2.2/man/Makefile.in
-+++ julius-4.2.2/man/Makefile.in
+--- a/man/Makefile.in
++++ b/man/Makefile.in
 @@ -19,16 +19,16 @@
  install: install.man install.man.ja
  
