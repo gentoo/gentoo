@@ -4029,7 +4029,7 @@ dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
 dev-perl/Path-Class 0.360.0: Cross-platform path specification manipulation
 dev-perl/Path-Tiny 0.104.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
-dev-perl/Perl-Critic 1.123 1.130.0: Critique Perl source code for best-practices
+dev-perl/Perl-Critic 1.130.0: Critique Perl source code for best-practices
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Tags 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
 dev-perl/Perl-Tidy 20160302.0.0: Perl script indenter and beautifier
