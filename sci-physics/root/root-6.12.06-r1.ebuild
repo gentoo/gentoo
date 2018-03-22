@@ -138,18 +138,6 @@ pkg_setup() {
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# make sure we use system libs and headers
-	rm montecarlo/eg/inc/cfortran.h README/cfortran.doc || die
-	rm -r graf2d/asimage/src/libAfterImage || die
-	rm -r graf3d/ftgl/{inc,src} || die
-	rm -r graf2d/freetype/src || die
-	rm -r graf3d/gl/src/gl2ps* || die
-	rm -r graf3d/glew/{inc,src} || die
-	rm -r core/pcre/src || die
-	rm -r math/unuran/src/unuran-*.tar.gz || die
-	rm -r core/lzma/src/*.tar.gz || die
-	LANG=C LC_ALL=C find core/zip -type f -name "[a-z]*" -print0 | xargs -0 rm || die
-
 	hprefixify build/CMakeLists.txt core/clingutils/CMakeLists.txt
 
 	# CSS should use local images
