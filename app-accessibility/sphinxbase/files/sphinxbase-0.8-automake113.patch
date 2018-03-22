@@ -1,6 +1,5 @@
-diff -Naur sphinxbase-0.8/test/regression/Makefile.am sphinxbase-0.8.new/test/regression/Makefile.am
---- sphinxbase-0.8/test/regression/Makefile.am	2012-12-05 06:05:39.000000000 -0800
-+++ sphinxbase-0.8.new/test/regression/Makefile.am	2013-10-08 13:05:15.498853962 -0700
+--- a/test/regression/Makefile.am
++++ b/test/regression/Makefile.am
 @@ -33,9 +33,19 @@
  
  # Disable sphinx_fe tests for now if fixed-point due to imprecision
