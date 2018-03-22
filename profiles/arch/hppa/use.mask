@@ -3,6 +3,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Jeroen Roovers <jer@gentoo.org> (22 Mar 2018)
+# sys-cluster/ceph is not supported
+ceph
+
 # Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
 # sys-block/open-iscsi has not been tested on HPPA
 iscsi
