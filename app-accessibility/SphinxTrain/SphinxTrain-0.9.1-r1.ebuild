@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Speech Recognition (Training Module)"
 HOMEPAGE="http://cmusphinx.sourceforge.net/html/cmusphinx.php"
@@ -19,10 +19,15 @@ DEPEND="app-accessibility/sphinx2
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
+HTML_DOCS=( doc/mc.html doc/sphinxtrain.sgml doc/tinydoc.txt )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1-gcc.patch
+	"${FILESDIR}"/${PN}-0.9.1-gcc34.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/gcc.patch
-	epatch "${FILESDIR}"/gcc34.patch
+	default
 	tc-export CC AR RANLIB
 }
 
@@ -31,7 +36,7 @@ src_install() {
 	find bin.* -mindepth 1 -maxdepth 1 -type f -exec dobin '{}' \; || die
 
 	dodoc README etc/*cfg
-	dohtml doc/*{txt,html,sgml}
+	einstalldocs
 }
 
 pkg_postinst() {

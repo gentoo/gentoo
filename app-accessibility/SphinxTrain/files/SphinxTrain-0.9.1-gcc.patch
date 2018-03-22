@@ -1,0 +1,34 @@
+--- a/src/programs/count_3phone/quit.c
++++ b/src/programs/count_3phone/quit.c
+@@ -74,17 +74,14 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ 
+-int quit (status,fmt,va_alist)
+-    int status;
+-    char *fmt;
+-    va_dcl
++int quit (int status, char *fmt, ...)
+ {
+ 	va_list args;
+ 
+ 	fflush(stdout);
+-	va_start(args);
++	va_start(args, fmt);
+ 	(void) vfprintf(stderr, fmt, args);
+ 	va_end(args);
+ 	exit(status);
+--- a/src/programs/count_3phone/wrec.h
++++ b/src/programs/count_3phone/wrec.h
+@@ -44,7 +44,7 @@
+ #define WREC_H
+ 
+ #include "phrec.h"
+-#include <varargs.h>
++#include <stdarg.h>
+ 
+ int quit (int status, char *fmt, ...);
+ 
