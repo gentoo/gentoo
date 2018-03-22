@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/tilt requires dev-ruby/coffee-script which requires net-libs/nodejs
+# which has not been ported to HPPA
+dev-ruby/tilt test
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (4 Oct 2017)
 # -fstack-protector is not supported for hppa, bug 630702
 >=sys-devel/gcc-6.0 ssp
