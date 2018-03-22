@@ -72,7 +72,7 @@ REQUIRED_USE="
 	|| ( X server monolithic )
 	crypt? ( || ( server monolithic ) )
 	dbus? ( || ( X monolithic ) )
-	kde? ( || ( X monolithic ) phonon )
+	kde? ( || ( X monolithic ) dbus phonon )
 	phonon? ( || ( X monolithic ) )
 	postgres? ( || ( server monolithic ) )
 	snorenotify? ( || ( X monolithic ) )
@@ -97,6 +97,7 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=ON
 		$(cmake-utils_use_find_package crypt QCA2-QT5)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
+		$(cmake-utils_use_find_package dbus Qt5DBus)
 		-DWITH_KDE=$(usex kde)
 		-DWITH_OXYGEN=$(usex !kde)
 		-DWANT_MONO=$(usex monolithic)
