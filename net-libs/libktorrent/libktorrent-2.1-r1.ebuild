@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep solid)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtxml)
-	app-crypt/qca:2[qt5]
+	app-crypt/qca:2[qt5(+)]
 	>=dev-libs/gmp-6.0.0a:0=
 	dev-libs/libgcrypt:0=
 "
