@@ -5,6 +5,11 @@
 # request bug for the hppa arch.
 
 # Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/haml depends on dev-ruby/action* which lost their keywords, so that
+# kills the fun
+dev-ruby/haml test
+
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
 # dev-ruby/tilt requires dev-ruby/coffee-script which requires net-libs/nodejs
 # which has not been ported to HPPA
 dev-ruby/tilt test
