@@ -226,7 +226,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch # bug #593460
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
-	"${FILESDIR}"/${PN}-3.0.1-qt-5.11.patch # TODO upstream
+	"${FILESDIR}"/${P}-qt-5.11.patch # TODO upstream
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
