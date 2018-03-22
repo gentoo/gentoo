@@ -1,7 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="A collection of FluxBox themes from FluxMod"
 HOMEPAGE="http://tenr.de/styles/"
@@ -21,6 +21,7 @@ src_prepare() {
 		sed -i "{}" -e 's-^\(rootcommand\)-!!! \1-i' \;
 	# weird tarball...
 	find . -exec chmod a+r '{}' \;
+	eapply_user
 }
 
 src_install() {
