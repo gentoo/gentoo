@@ -14,6 +14,5 @@ tool.
 <use>
 	<flag name="pm-utils">Installs the pm-utils hooks for suspend/resume and
 		requires <pkg>sys-power/pm-utils</pkg></flag>
-	<flag name="qt4">Installs a qt UI. Requires <pkg>dev-python/pyside</pkg></flag>
 </use>
 </pkgmetadata>
