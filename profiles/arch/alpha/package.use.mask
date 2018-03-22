@@ -1,6 +1,26 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tobias Klausmann <klausman@gentoo.org> (22 Mar 2018)
+# Masked due to missing deps. Some *could* have their deps keyworded,
+# but we're trying to keep the maintenance load low.
+app-admin/collectd collectd_plugins_amqp
+app-admin/collectd collectd_plugins_gmond
+app-admin/collectd collectd_plugins_gps
+app-admin/collectd collectd_plugins_ipmi
+app-admin/collectd collectd_plugins_modbus
+app-admin/collectd collectd_plugins_nut
+app-admin/collectd collectd_plugins_onewire
+app-admin/collectd collectd_plugins_oracle
+app-admin/collectd collectd_plugins_routeros
+app-admin/collectd collectd_plugins_sigrok
+app-admin/collectd collectd_plugins_tokyotyrant
+app-admin/collectd collectd_plugins_varnish
+app-admin/collectd collectd_plugins_virt
+app-admin/collectd collectd_plugins_write_kafka
+app-admin/collectd collectd_plugins_xencpu
+app-admin/collectd collectd_plugins_java
+
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs-vcs mailutils
