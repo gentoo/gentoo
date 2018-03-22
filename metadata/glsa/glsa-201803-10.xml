@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-10">
+  <title>collectd: Multiple vulnerabilities</title>
+  <synopsis>Gentoo's collectd package contains multiple vulnerabilities, the
+    worst of which may allow local attackers to escalate privileges.
+  </synopsis>
+  <product type="ebuild">collectd</product>
+  <announced>2018-03-22</announced>
+  <revised count="1">2018-03-22</revised>
+  <bug>628540</bug>
+  <bug>637538</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-admin/collectd" auto="yes" arch="*">
+      <unaffected range="ge">5.7.2-r1</unaffected>
+      <vulnerable range="lt">5.7.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>collectd is a daemon which collects system and application performance
+      metrics periodically and provides mechanisms to store the values in a
+      variety of ways, for example in RRD files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Gentoo’s collectd package.
+      Please review the referenced CVE identifiers and bug entries for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker, who either is already collectd’s system user or
+      belongs to collectd’s group, could potentially gain root privileges and
+      cause a Denial of Service condition.
+    </p>
+    
+    <p>Remote attackers could cause a Denial of Service condition via specially
+      crafted SNMP responses.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All collectd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/collectd-5.7.2-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-16820">
+      CVE-2017-16820
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-18240">
+      CVE-2017-18240
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-03T16:45:48Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-03-22T00:14:20Z">whissi</metadata>
+</glsa>

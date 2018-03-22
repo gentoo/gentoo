@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-11">
+  <title>WebKitGTK+: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, the worst
+    of which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">WebKitGTK+</product>
+  <announced>2018-03-22</announced>
+  <revised count="1">2018-03-22</revised>
+  <bug>645686</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.18.6</unaffected>
+      <vulnerable range="lt">2.18.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary commands via maliciously crafted web
+      content.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebKitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.18.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13884">CVE-2017-13884</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13885">CVE-2017-13885</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7153">CVE-2017-7153</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7160">CVE-2017-7160</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7161">CVE-2017-7161</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7165">CVE-2017-7165</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4088">CVE-2018-4088</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4089">CVE-2018-4089</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4096">CVE-2018-4096</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-19T02:23:57Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-03-22T00:24:32Z">jmbailey</metadata>
+</glsa>
