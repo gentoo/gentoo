@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,19 +12,21 @@ SRC_URI="https://github.com/bcgsc/abyss/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="abyss"
 SLOT="0"
-IUSE="misc-haskell mpi openmp sqlite"
+IUSE="boost bwa minimal misc-haskell mpi mpich openmp sparsehash sqlite"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-cpp/sparsehash
-	dev-libs/boost:=
-	sqlite? ( dev-db/sqlite:3 )
+	!minimal? (
+		sparsehash? ( dev-cpp/sparsehash )
+		boost? ( dev-libs/boost:= )
+		sqlite? ( dev-db/sqlite:3 )
+		mpi? ( sys-cluster/openmpi )
+		bwa? ( sci-biology/bwa )
+	)
 	misc-haskell? (
 		dev-libs/gmp:0=
 		virtual/libffi:0=
-	)
-	mpi? ( sys-cluster/openmpi )
-	sci-biology/bwa"
+	)"
 DEPEND="${RDEPEND}
 	misc-haskell? (
 		dev-lang/ghc
@@ -33,7 +35,8 @@ DEPEND="${RDEPEND}
 
 # todo: --enable-maxk=N configure option, supported values must be
 #       multiple of 32, i.e. 32, 64, 96, 128, etc., configure of
-#		version 2.0.2 shows default value is 128 these days
+#		version 2.0.2 shows default value is 128 these days,
+#		version 2.0.3 has default 144
 # todo: fix automagic mpi toggling
 
 pkg_pretend() {
@@ -52,20 +55,18 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
 	# disable building haskell tool Misc/samtobreak
 	# unless request by user: bug #534412
 	use misc-haskell || export ac_cv_prog_ac_ct_GHC=
 
-	if ! use sqlite; then
-		myconf="${myconf} --without-sqlite"
-	fi
-
-	if ! use mpi; then
-		myconf="${myconf} --without-mpi"
-	fi
-	# bug #646478
+	# bug #646478 , also where is mpich2 switch?
 	#  --enable-mpich          use MPICH (default is to use Open MPI)
 	#  --enable-lammpi         use LAM/MPI (default is to use Open MPI)
-	econf $(use_enable openmp) --enable-maxk=128 ${myconf}
+	econf $(use_enable openmp) \
+		$(use_enable mpich) \
+		$(use_with sqlite) \
+		$(use_with mpi) \
+		$(use_with boost) \
+		$(use_with sparsehash ) \
+		--enable-maxk=192
 }
