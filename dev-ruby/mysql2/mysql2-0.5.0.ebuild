@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/brianmario/mysql2"
 
 LICENSE="MIT"
 SLOT="0.5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="${DEPEND} virtual/libmysqlclient"
