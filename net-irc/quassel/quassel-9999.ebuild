@@ -130,8 +130,8 @@ src_install() {
 		fowners "${QUASSEL_USER}":"${QUASSEL_USER}" "${QUASSEL_DIR}"
 
 		# init scripts & systemd unit
-		newinitd "${FILESDIR}"/quasselcore.init quasselcore
-		newconfd "${FILESDIR}"/quasselcore.conf quasselcore
+		newinitd "${FILESDIR}"/quasselcore.init-r1 quasselcore
+		newconfd "${FILESDIR}"/quasselcore.conf-r1 quasselcore
 		systemd_dounit "${FILESDIR}"/quasselcore.service
 
 		# logrotate
