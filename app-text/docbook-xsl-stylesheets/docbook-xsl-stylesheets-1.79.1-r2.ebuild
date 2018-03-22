@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 inherit ruby-single
 
