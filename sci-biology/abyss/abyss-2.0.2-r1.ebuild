@@ -1,34 +1,42 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit autotools toolchain-funcs
 
-DESCRIPTION="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
-HOMEPAGE="http://www.bcgsc.ca/platform/bioinfo/software/abyss/"
+DESCRIPTION="Assembler/scaffolder for paired-end and mate-pair reads"
+HOMEPAGE="http://www.bcgsc.ca/platform/bioinfo/software/abyss
+	https://github.com/bcgsc/abyss"
 SRC_URI="https://github.com/bcgsc/abyss/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="abyss"
 SLOT="0"
-IUSE="+mpi openmp misc-haskell"
+IUSE="boost bwa minimal misc-haskell mpi mpich openmp sparsehash sqlite"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-cpp/sparsehash
-	dev-libs/boost:=
+	!minimal? (
+		sparsehash? ( dev-cpp/sparsehash )
+		boost? ( dev-libs/boost:= )
+		sqlite? ( dev-db/sqlite:3 )
+		mpi? ( sys-cluster/openmpi )
+		bwa? ( sci-biology/bwa )
+	)
 	misc-haskell? (
 		dev-libs/gmp:0=
 		virtual/libffi:0=
-	)
-	mpi? ( sys-cluster/openmpi )"
+	)"
 DEPEND="${RDEPEND}
 	misc-haskell? (
 		dev-lang/ghc
 		dev-haskell/mmap
 	)"
 
-# todo: --enable-maxk=N configure option
+# todo: --enable-maxk=N configure option, supported values must be
+#       multiple of 32, i.e. 32, 64, 96, 128, etc., configure of
+#		version 2.0.2 shows default value is 128 these days,
+#		version 2.0.3 has default 144
 # todo: fix automagic mpi toggling
 
 pkg_pretend() {
@@ -51,5 +59,14 @@ src_configure() {
 	# unless request by user: bug #534412
 	use misc-haskell || export ac_cv_prog_ac_ct_GHC=
 
-	econf $(use_enable openmp)
+	# bug #646478 , also where is mpich2 switch?
+	#  --enable-mpich          use MPICH (default is to use Open MPI)
+	#  --enable-lammpi         use LAM/MPI (default is to use Open MPI)
+	econf $(use_enable openmp) \
+		$(use_enable mpich) \
+		$(use_with sqlite) \
+		$(use_with mpi) \
+		$(use_with boost) \
+		$(use_with sparsehash ) \
+		--enable-maxk=192
 }
