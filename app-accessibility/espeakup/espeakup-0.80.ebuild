@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ pkg_setup() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install
+	emake DESTDIR="${ED}" PREFIX="${EPREFIX}"usr install
 	einstalldocs
 	newconfd "${FILESDIR}"/espeakup.confd espeakup
 	newinitd "${FILESDIR}"/espeakup.rc espeakup
