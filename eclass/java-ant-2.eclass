@@ -56,12 +56,10 @@ if [[ $? != 0 ]]; then
 	die "java-pkg_ant-tasks-depend() failed"
 fi
 
-# We need some tools from javatoolkit. We also need portage 2.1 for phase hooks
-# and ant dependencies constructed above. Python is there for
-# java-ant_remove-taskdefs
+# We need some tools from javatoolkit. We also need ant dependencies
+# constructed above.
 JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND}
 	   ${ANT_TASKS_DEPEND}
-	   ${JAVA_PKG_PORTAGE_DEP}
 	   >=dev-java/javatoolkit-0.3.0-r2"
 
 # this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
