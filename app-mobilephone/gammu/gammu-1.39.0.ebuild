@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils eutils
+inherit cmake-utils
 
 DESCRIPTION="A tool to handle your cellular phone"
 HOMEPAGE="https://wammu.eu/gammu/"
@@ -35,10 +35,6 @@ RDEPEND="
 	dev-util/dialog
 	virtual/libiconv
 "
-PATCHES=(
-	"${FILESDIR}/${P}-smsd.patch"
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_BLUETOOTH=$(usex bluetooth)
@@ -59,5 +55,5 @@ src_configure() {
 
 src_test() {
 	addwrite "/run/lock/LCK..bar"
-	MAKEOPTS+=" -j1" LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake-utils_src_test
+	LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake-utils_src_test -j1
 }
