@@ -1070,6 +1070,10 @@ do_src_test() {
 }
 
 src_test() {
+	if just_headers ; then
+		return
+	fi
+
 	# Give tests more time to complete.
 	export TIMEOUTFACTOR=5
 
