@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,11 +19,6 @@ DEPEND="${RDEPEND} virtual/pkgconfig"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/mkoppanen/php-zmq.git"
 EGIT_CHECKOUT_DIR="${PHP_EXT_S}"
-
-src_unpack() {
-	git-r3_src_unpack
-	php-ext-source-r3_src_unpack
-}
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=( $(use_with czmq) )
