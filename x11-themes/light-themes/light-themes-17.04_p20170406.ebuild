@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 MY_PN=ubuntu-themes
 MY_PV=16.10+${PV/_p/.}
@@ -41,12 +40,19 @@ src_prepare() {
 		Ambiance-Gentoo/gtk-3.*/gtk-main.css \
 		Radiance-Gentoo/gtk-3.*/gtk-main.css || die
 
-	cp -f "${WORKDIR}"/Gentoo-Buttons/*.png "${S}"/Ambiance-Gentoo/metacity-1/. || die
-	cp -f "${WORKDIR}"/Gentoo-Buttons/*.png "${S}"/Radiance-Gentoo/metacity-1/. || die
-	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png "${S}"/Ambiance-Gentoo/gtk-3.0/assets/. || die
-	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png "${S}"/Ambiance-Gentoo/gtk-3.20/assets/. || die
-	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png "${S}"/Radiance-Gentoo/gtk-3.0/assets/. || die
-	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png "${S}"/Radiance-Gentoo/gtk-3.20/assets/. || die
+	cp -f "${WORKDIR}"/Gentoo-Buttons/*.png \
+		"${S}"/Ambiance-Gentoo/metacity-1/. || die
+	cp -f "${WORKDIR}"/Gentoo-Buttons/*.png \
+		"${S}"/Radiance-Gentoo/metacity-1/. || die
+	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png \
+		"${S}"/Ambiance-Gentoo/gtk-3.0/assets/. || die
+	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png \
+		"${S}"/Ambiance-Gentoo/gtk-3.20/assets/. || die
+	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png \
+		"${S}"/Radiance-Gentoo/gtk-3.0/assets/. || die
+	cp -f "${WORKDIR}"/Gentoo-Buttons/assets/*.png \
+		"${S}"/Radiance-Gentoo/gtk-3.20/assets/. || die
+	eapply_user
 }
 
 src_compile() {
