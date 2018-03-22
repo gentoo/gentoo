@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (22 Mar 2018)
+# EOL. No longer receives bug or security fixes. Recommended to update
+# to latest available.
+# Removal in 30 days (21 Apr 2018). Bug 634028.
+<dev-db/postgresql-9.3
+
 # Kent Fredric <kentnl@gentoo.org> (21 Mar 2018)
 # Not usable with versions of Bugzilla shipped by Gentoo since 2013,
 # Dead upstream. Use dev-perl/BZ-Client instead.
