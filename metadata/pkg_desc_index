@@ -1134,7 +1134,6 @@ app-mobilephone/lightblue 0.4-r1: API for Python which provides simple access to
 app-mobilephone/obexftp 0.24-r1: File transfer over OBEX for mobile phones
 app-mobilephone/sobexsrv 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
-app-mobilephone/wammu 0.40: Front-end for gammu to access mobile phones easily
 app-office/abiword 3.0.2-r1: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.1 3.0.2: Fully featured yet light and fast cross platform word processor documentation
 app-office/calcurse 4.2.1: a text-based calendar and scheduling application
@@ -1864,7 +1863,7 @@ dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.7-r1 4.7.8: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.3.15 9.3.20 9.3.21 9.3.22 9.4.10 9.4.15 9.4.16 9.4.17 9.5.5 9.5.10 9.5.11 9.5.12 9.6.6 9.6.7 9.6.8 10.1 10.2 10.3: PostgreSQL RDBMS
+dev-db/postgresql 9.3.20 9.3.22 9.4.15 9.4.17 9.5.10 9.5.12 9.6.6 9.6.7 9.6.8 10.1 10.3: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
@@ -11176,7 +11175,7 @@ x11-wm/cwm 5.1 5.6: OpenBSD fork of calmwm, a clean and lightweight window manag
 x11-wm/dwm 6.1: a dynamic window manager for X11
 x11-wm/enlightenment 0.20.5 1.0.17: Enlightenment Window Manager (e16)
 x11-wm/evilwm 1.0.1-r1: A minimalist, no frills window manager for X
-x11-wm/fluxbox 1.3.7-r3: Fluxbox is an X11 window manager featuring tabs and an iconbar
+x11-wm/fluxbox 1.3.7-r3: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/herbstluftwm 0.7.0: A manual tiling window manager for X
 x11-wm/i3 4.13-r1: An improved dynamic tiling window manager
