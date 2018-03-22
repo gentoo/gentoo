@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ src_prepare() {
 	local PATCHES=( "${FILESDIR}"/${PN}-2016.05.05-docs.patch )
 	default
 
-	rm configure makefile || die
+	rm configure Makefile || die
 	sed -i "s:-O2::" configure.ac || die
 
 	eautoreconf
