@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
+
 inherit ruby-ng
 
 DESCRIPTION="A Linux editor for the masses"
@@ -15,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-USE_RUBY=${USE_RUBY/ruby20/} ruby_add_rdepend "dev-ruby/curses"
+ruby_add_rdepend "dev-ruby/curses"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )
 	test? ( dev-ruby/bacon )"
