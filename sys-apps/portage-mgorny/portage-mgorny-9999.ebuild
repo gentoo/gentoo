@@ -54,6 +54,16 @@ PDEPEND="
 	)"
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
+pkg_pretend() {
+	if has_version sys-apps/portage; then
+		ewarn "If you are migrating from sys-apps/portage to sys-apps/portage-mgorny,"
+		ewarn "please note that Portage will abort upon having to unmerge itself."
+		ewarn "However, sys-apps/portage-mgorny will already be installed at this"
+		ewarn "point, so you simply have to restart emerge and it will successfully"
+		ewarn "clean the old package afterwards."
+	fi
+}
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
