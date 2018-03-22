@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools eutils multilib-minimal
 
 DESCRIPTION="Flite text to speech engine"
@@ -18,6 +18,14 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${P}-release
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4-tempfile.patch
+	"${FILESDIR}"/${PN}-1.4-fix-parallel-builds.patch
+	"${FILESDIR}"/${PN}-1.4-respect-destdir.patch
+	"${FILESDIR}"/${PN}-1.4-ldflags.patch
+	"${FILESDIR}"/${PN}-1.4-audio-interface.patch
+)
+
 get_audio() {
 	if use alsa; then
 		echo alsa
@@ -29,14 +37,12 @@ get_audio() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tempfile.patch
-	epatch "${FILESDIR}"/${P}-fix-parallel-builds.patch
-	epatch "${FILESDIR}"/${P}-respect-destdir.patch
-	epatch "${FILESDIR}"/${P}-ldflags.patch
-	epatch "${FILESDIR}"/${P}-audio-interface.patch
+	eapply "${PATCHES[@]}"
+
 	sed -i main/Makefile \
 		-e '/-rpath/s|$(LIBDIR)|$(INSTALLLIBDIR)|g' \
 		|| die
+	eapply_user
 	eautoreconf
 
 	# custom makefiles
