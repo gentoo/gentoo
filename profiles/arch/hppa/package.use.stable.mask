@@ -50,8 +50,3 @@ dev-libs/boost mpi
 media-gfx/exiv2 webready
 media-video/ffmpeg ssh
 net-analyzer/wireshark ciscodump libssh sshdump
-
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Aug 2017)
-# Mask pptx support for dev-libs/libzip stabilisation timeout
-# (bug 622044)
-media-gfx/pstoedit pptx
