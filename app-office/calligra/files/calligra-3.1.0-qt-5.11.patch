@@ -1,8 +1,13 @@
-From c52295c8dc90b964d26567d6750f46fd202145ae Mon Sep 17 00:00:00 2001
+From f53805bdc108b608e40f217e6a78e7e4df4284f2 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
 Date: Sun, 18 Mar 2018 11:56:57 +0100
 Subject: [PATCH] Fix build with Qt 5.11 (missing headers)
 
+Reviewers: #calligra:_3.0
+
+Tags: #calligra:_3.0
+
+Differential Revision: https://phabricator.kde.org/D11454
 ---
  libs/widgets/KoCsvImportDialog.cpp                         | 1 +
  libs/widgets/KoPageLayoutWidget.cpp                        | 2 ++
@@ -34,18 +39,18 @@ index 0ffdcf62a70..cdca006dc62 100644
  #include <QTextStream>
  
 diff --git a/libs/widgets/KoPageLayoutWidget.cpp b/libs/widgets/KoPageLayoutWidget.cpp
-index f91555ca262..2b9d04450b3 100644
+index f91555ca262..a3816f96d8a 100644
 --- a/libs/widgets/KoPageLayoutWidget.cpp
 +++ b/libs/widgets/KoPageLayoutWidget.cpp
-@@ -19,6 +19,8 @@
+@@ -23,6 +23,8 @@
  
- #include "KoPageLayoutWidget.h"
+ #include <KoUnit.h>
  
 +#include <QButtonGroup>
 +
- #include <ui_KoPageLayoutWidget.h>
- 
- #include <KoUnit.h>
+ class Q_DECL_HIDDEN KoPageLayoutWidget::Private
+ {
+ public:
 diff --git a/plan/src/kptview.h b/plan/src/kptview.h
 index 44d11935e71..a98e55342db 100644
 --- a/plan/src/kptview.h
@@ -110,7 +115,7 @@ index d1c3b1fc157..7c97a070b9a 100644
  {
  
 diff --git a/plan/src/libs/ui/kpttaskeditor.cpp b/plan/src/libs/ui/kpttaskeditor.cpp
-index 5f79abfd917..d08d7f231f4 100644
+index 21546118d33..91db5acbb18 100644
 --- a/plan/src/libs/ui/kpttaskeditor.cpp
 +++ b/plan/src/libs/ui/kpttaskeditor.cpp
 @@ -45,6 +45,7 @@
@@ -134,18 +139,18 @@ index 344ebc2b599..9146f06ab8c 100644
  #include <QStandardItemModel>
  #include <QModelIndex>
 diff --git a/plan/src/libs/widgets/KoPageLayoutWidget.cpp b/plan/src/libs/widgets/KoPageLayoutWidget.cpp
-index c9e17b748a9..3abc81b939e 100644
+index c9e17b748a9..b67e9848807 100644
 --- a/plan/src/libs/widgets/KoPageLayoutWidget.cpp
 +++ b/plan/src/libs/widgets/KoPageLayoutWidget.cpp
-@@ -21,6 +21,8 @@
+@@ -23,6 +23,8 @@
  
- #include <ui_KoPageLayoutWidget.h>
+ #include <KoUnit.h>
  
 +#include <QButtonGroup>
 +
- #include <KoUnit.h>
- 
  class Q_DECL_HIDDEN KoPageLayoutWidget::Private
+ {
+ public:
 diff --git a/plugins/chartshape/dialogs/TableEditorDialog.cpp b/plugins/chartshape/dialogs/TableEditorDialog.cpp
 index c0d5136f09e..d2a772e83c2 100644
 --- a/plugins/chartshape/dialogs/TableEditorDialog.cpp
@@ -195,18 +200,18 @@ index d64208cbdb6..bfddb3a03f5 100644
  
  const int KWAnchoringProperties::vertRels[4][20] = {
 diff --git a/words/part/dialogs/KWRunAroundProperties.cpp b/words/part/dialogs/KWRunAroundProperties.cpp
-index e38599a06d7..d96df6405a5 100644
+index e38599a06d7..7e8b2d51ef9 100644
 --- a/words/part/dialogs/KWRunAroundProperties.cpp
 +++ b/words/part/dialogs/KWRunAroundProperties.cpp
-@@ -17,6 +17,8 @@
-  * Boston, MA 02110-1301, USA.
-  */
+@@ -28,6 +28,8 @@
+ 
+ #include <kundo2command.h>
  
 +#include <QButtonGroup>
 +
- #include "KWRunAroundProperties.h"
- #include "KWFrameDialog.h"
- #include "KWDocument.h"
+ KWRunAroundProperties::KWRunAroundProperties(FrameConfigSharedState *state)
+         : m_state(state)
+ {
 -- 
 2.16.2
 
