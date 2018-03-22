@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -76,7 +76,7 @@ src_install() {
 		AUDIO="$(get_audio)" \
 		install
 
-	cd ..
+	cd .. || die
 	insinto /usr/share/espeak-data
 	doins -r dictsource
 	dodoc ChangeLog.txt ReadMe

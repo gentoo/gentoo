@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${P}-source"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="portaudio pulseaudio"
 
-COMMON_DEPEND=" portaudio? ( >=media-libs/portaudio-19_pre20071207 )
+COMMON_DEPEND="portaudio? ( >=media-libs/portaudio-19_pre20071207 )
 	pulseaudio? ( media-sound/pulseaudio )"
 
 DEPEND="${COMMON_DEPEND}
@@ -38,6 +38,7 @@ get_audio() {
 }
 
 src_prepare() {
+	default
 	# gentoo uses portaudio 19.
 	mv -f portaudio19.h portaudio.h
 }
@@ -73,11 +74,11 @@ src_install() {
 		AUDIO="$(get_audio)" \
 		install
 
-	cd ..
+	cd .. || die
 	insinto /usr/share/espeak-data
 	doins -r dictsource
 	dodoc ChangeLog.txt ReadMe
-	dohtml -r docs/*
+	HTML_DOCS="docs/*" einstalldocs
 }
 
 pkg_preinst() {
