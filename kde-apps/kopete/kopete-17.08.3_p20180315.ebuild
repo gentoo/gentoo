@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT=059df228e4e08da83a528dfcc6ace2f1231b7382
+COMMIT=4e49e339bd12182c0f0a35b961f89b0706e32d85
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
 inherit kde5 vcs-snapshot
@@ -94,7 +94,7 @@ COMMONDEPEND="
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
 	gadu? ( >=net-libs/libgadu-1.8.0[threads] )
-	groupwise? ( app-crypt/qca:2[qt5] )
+	groupwise? ( app-crypt/qca:2[qt5(+)] )
 	jingle? (
 		dev-libs/expat
 		dev-libs/openssl:0
@@ -112,7 +112,7 @@ COMMONDEPEND="
 		dev-libs/libxslt
 	)
 	xmpp? (
-		app-crypt/qca:2[qt5]
+		app-crypt/qca:2[qt5(+)]
 		net-dns/libidn
 		sys-libs/zlib
 	)

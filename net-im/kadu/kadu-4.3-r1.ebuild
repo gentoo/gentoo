@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -103,6 +103,7 @@ word_fix
 PATCHES=(
 	"${FILESDIR}/${PN}-4.3-do-not-force-ccache.patch"
 	"${FILESDIR}/${PN}-4.3-fix-plugins-rpath.patch"
+	"${FILESDIR}/${PN}-4.3-gcc7.patch"
 )
 
 src_configure() {
