@@ -34,6 +34,8 @@ PATCHES=(
 		"${FILESDIR}"/${P}-uio.patch
 )
 
+REQUIRED_USE="test? ( tools )"
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
