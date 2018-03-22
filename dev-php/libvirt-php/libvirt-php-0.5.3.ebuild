@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,6 +6,7 @@ EAPI=6
 PHP_EXT_NAME="libvirt-php"
 PHP_EXT_SKIP_PHPIZE="yes"
 USE_PHP="php5-6 php7-0 php7-1"
+PHP_EXT_ECONF_ARGS=()
 
 inherit php-ext-source-r3 autotools
 
@@ -27,6 +28,9 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 DOCS=( AUTHORS ChangeLog NEWS README )
+# Remove the insane check for pecl-imagick which is only used in examples
+# and is not called upon in any build
+PATCHES=( "${FILESDIR}/remove-imagick-check.patch" )
 
 src_unpack() {
 	default
@@ -34,20 +38,13 @@ src_unpack() {
 	# create the default modules directory to be able
 	# to use the php-ext-source-r3 eclass to configure/build
 	ln -s src "${S}/modules"
-
-	for slot in $(php_get_slots); do
-		cp -r "${S}" "${WORKDIR}/${slot}"
-	done
 }
 
 src_prepare() {
-	# Remove the insane check for pecl-imagick which is only used in examples
-	# and is not called upon in any build
+	php-ext-source-r3_src_prepare
 	local slot
 	for slot in $(php_get_slots); do
 		php_init_slot_env "${slot}"
-		eapply "${FILESDIR}/remove-imagick-check.patch"
-		eapply_user
 		eautoreconf
 	done
 }
