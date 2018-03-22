@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 DESCRIPTION="A pack of ~200 themes for GKrellM"
 HOMEPAGE="http://www.muhri.net/gkrellm"
 THEME_URI="http://www.muhri.net/gkrellm"
@@ -224,10 +224,8 @@ src_compile() { :; }
 src_install() {
 	dodir /usr/share/gkrellm2/themes/
 	keepdir /usr/share/gkrellm2/themes/
-	cd "${S}"
-	ewarn "Please ignore any errors that may appear!"
-	chmod -R g-sw+rx *
-	chmod -R o-sw+rx *
-	chmod -R u-s+rwx *
-	cp -pR * "${D}"/usr/share/gkrellm2/themes/
+	cd "${S}" || die
+	find . -type d -exec chmod 755 {} ';'
+	find . -type f -exec chmod 644 {} ';'
+	cp -pR * "${D}"/usr/share/gkrellm2/themes/ || die
 }
