@@ -2,8 +2,8 @@ Fixing build with gcc 4.5
 
 http://bugs.gentoo.org/show_bug.cgi?id=318585
 
---- src/nnet/neural_parse.yy
-+++ src/nnet/neural_parse.yy
+--- a/src/nnet/neural_parse.yy
++++ b/src/nnet/neural_parse.yy
 @@ -255,7 +255,7 @@
  
  int yyerror (char *s)
