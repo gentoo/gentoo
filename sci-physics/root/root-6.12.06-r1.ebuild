@@ -107,15 +107,10 @@ RDEPEND="${CDEPEND}
 	xinetd? ( sys-apps/xinetd )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.28.00b-glibc212.patch
-	"${FILESDIR}"/${PN}-5.32.00-afs.patch
-	"${FILESDIR}"/${PN}-5.32.00-cfitsio.patch
-	"${FILESDIR}"/${PN}-5.32.00-chklib64.patch
-	"${FILESDIR}"/${PN}-6.00.01-dotfont.patch
 	"${FILESDIR}"/${PN}-6.11.02-hsimple.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
+	"${FILESDIR}"/${PN}-6.12.04-no-opengl.patch
 	"${FILESDIR}"/${PN}-6.12.04-z3.patch
-	"${FILESDIR}"/${PN}-6.12.06-disable-ftgl.patch
 )
 
 pkg_setup() {
@@ -138,22 +133,10 @@ pkg_setup() {
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# make sure we use system libs and headers
-	rm montecarlo/eg/inc/cfortran.h README/cfortran.doc || die
-	rm -r graf2d/asimage/src/libAfterImage || die
-	rm -r graf3d/ftgl/{inc,src} || die
-	rm -r graf2d/freetype/src || die
-	rm -r graf3d/gl/src/gl2ps* || die
-	rm -r graf3d/glew/{inc,src} || die
-	rm -r core/pcre/src || die
-	rm -r math/unuran/src/unuran-*.tar.gz || die
-	rm -r core/lzma/src/*.tar.gz || die
-	LANG=C LC_ALL=C find core/zip -type f -name "[a-z]*" -print0 | xargs -0 rm || die
+	hprefixify build/CMakeLists.txt core/clingutils/CMakeLists.txt
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
-
-	hprefixify build/CMakeLists.txt core/clingutils/CMakeLists.txt
 }
 
 # Note: ROOT uses bundled LLVM, because it is patched and API-incompatible with system LLVM.
@@ -165,7 +148,9 @@ src_configure() {
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/${MY_PREFIX}"
-		-DDEFAULT_SYSROOT="${EPREFIX}" # for llvm system headers
+		-DDEFAULT_SYSROOT="${EPREFIX}"
+		-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
+		-DC_INCLUDE_DIRS="${EPREFIX}/usr/local/include:${EPREFIX}/include:${EPREFIX}/usr/include"
 		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
@@ -178,88 +163,100 @@ src_configure() {
 		-Dbuiltin_fftw3=OFF
 		-Dbuiltin_freetype=OFF
 		-Dbuiltin_ftgl=OFF
+		-Dbuiltin_gl2ps=OFF
 		-Dbuiltin_glew=OFF
 		-Dbuiltin_gsl=OFF
 		-Dbuiltin_lz4=OFF
 		-Dbuiltin_lzma=OFF
+		-Dbuiltin_openssl=OFF
 		-Dbuiltin_pcre=OFF
 		-Dbuiltin_tbb=OFF
 		-Dbuiltin_unuran=OFF
 		-Dbuiltin_vc=OFF
+		-Dbuiltin_vdt=OFF
+		-Dbuiltin_veccore=OFF
 		-Dbuiltin_xrootd=OFF
 		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
 		-Dx11=$(usex X)
 		-Dxft=$(usex X)
-		# -Dafs=$(usex afs) # option not implemented
+		-Dafdsmgrd=OFF
+		-Dafs=OFF # option not implemented
+		-Dalien=OFF
 		-Dasimage=$(usex asimage)
 		-Dastiff=$(usex tiff)
 		-Dbonjour=$(usex avahi)
-		-Dlibcxx=$(usex libcxx) # default OFF
 		-Dccache=OFF # use ccache via portage
-		-Dcastor=OFF # default ON
-		-Dchirp=OFF # default ON
-		# -Dcling=$(usex cling) # default ON
-		-Dcocoa=$(usex aqua) # default *
-		-Dcxx14=$(usex root7) # default OFF
-		-Ddavix=$(usex davix) # default *
-		-Ddcache=OFF # $(usex dcache) # default ON
-		-Dfftw3=$(usex fftw) # default ON
-		-Dfitsio=$(usex fits) # default ON
-		-Dfortran=$(usex fortran) # default *
-		-Dgdml=$(usex gdml) # default *
+		-Dcastor=OFF
+		-Dchirp=OFF
+		# -Dcling=ON # cling=OFF is broken
+		-Dcocoa=$(usex aqua)
+		-Dcxx14=$(usex root7)
+		# -Dcxxmodules=OFF # use clang C++ modules
+		-Ddavix=$(usex davix)
+		-Ddcache=OFF # not in Gentoo
+		-Dfftw3=$(usex fftw)
+		-Dfitsio=$(usex fits)
+		-Dfortran=$(usex fortran)
+		-Dftgl=$(usex opengl)
+		-Dgdml=$(usex gdml)
+		-Dgl2ps=$(usex opengl)
 		-Dgeocad=OFF # default OFF
 		-Dgenvector=$(usex math) # default ON
-		-Dgfal=OFF # $(usex gfal) # default ON
-		-Dglite=OFF #$(usex glite) # default ON (unimplemented option)
-		-Dglobus=OFF #$(usex globus) # default OFF
-		-Dgminimal=OFF # default OFF
-		-Dgnuinstall=OFF # default OFF
-		-Dgsl_shared=$(usex gsl) # default OFF
-		-Dgviz=$(usex graphviz) # default ON
-		-Dhdfs=OFF # $(usex hdfs) # default ON
-		-Dhttp=$(usex http) # default *
-		-Dimt=$(usex tbb) # default OFF
-		-Djemalloc=$(usex jemalloc) # default OFF
-		-Dkrb5=$(usex kerberos) # default ON
-		-Dldap=$(usex ldap) # default ON
-		-Dmathmore=$(usex math) # default ON
-		-Dmemstat=$(usex memstat) # default *
+		-Dgfal=OFF # not in Gentoo
+		-Dglite=OFF # option not implemented
+		-Dglobus=OFF
+		-Dgminimal=OFF
+		-Dgnuinstall=OFF
+		-Dgsl_shared=$(usex gsl)
+		-Dgviz=$(usex graphviz)
+		-Dhdfs=OFF # deps not in Gentoo
+		-Dhttp=$(usex http)
+		-Dimt=$(usex tbb)
+		-Djemalloc=$(usex jemalloc)
+		-Dkrb5=$(usex kerberos)
+		-Dldap=$(usex ldap)
+		-Dlibcxx=$(usex libcxx)
+		-Dmathmore=$(usex math)
+		-Dmemstat=$(usex memstat)
 		#-Dminimal=$(usex minimal) # default OFF
 		-Dminuit=$(usex minuit)
-		-Dminuit2=$(usex minuit) # default * (broken)
-		-Dmonalisa=OFF # default ON
-		-Dmysql=$(usex mysql) # default ON
-		-Dodbc=$(usex odbc) # default ON
-		-Dopengl=$(usex opengl) # default ON
-		-Doracle=$(usex oracle) # default ON
-		-Dpgsql=$(usex postgres) # default ON
-		-Dpythia6=$(usex pythia6) # default ON
-		-Dpythia8=$(usex pythia8) # default ON
-		-Dpython=$(usex python) # default ON
-		-Dqt=$(usex qt4) # default Qt
-		-Dqtgsi=$(usex qt4) # default *
-		-Droofit=$(usex roofit) # default *
-		-Droot7=$(usex root7) # default OFF
-		-Droottest=OFF # default OFF
-		-Druby=OFF # default OFF
-		-Dr=$(usex R) # default OFF
-		-Drfio=OFF # default ON
-		-Drpath=$(usex prefix) # default OFF
-		-Dsapdb=OFF # default ON
-		-Dshadowpw=$(usex shadow) # default ON
-		-Dsqlite=$(usex sqlite) # default ON
-		-Dsrp=OFF # default ON (unimplemented option)
-		-Dssl=$(usex ssl) # default ON
-		-Dtbb=$(usex tbb) # default OFF
-		-Dtable=$(usex table) # default *
-		-Dtcmalloc=OFF # $(usex tcmalloc) # default OFF
-		-Dtesting=$(usex test) # default OFF
-		-Dthread=$(usex threads) # default ON
-		-Dtmva=$(usex tmva) # default ON
-		-Dunuran=$(usex unuran) # default *
-		-Dvc=$(usex vc) # default *
-		-Dvdt=OFF # $(usex math) # default ON
+		-Dminuit2=$(usex minuit)
+		-Dmonalisa=OFF # not in Gentoo
+		-Dmysql=$(usex mysql)
+		-Dodbc=$(usex odbc)
+		-Dopengl=$(usex opengl)
+		-Doracle=$(usex oracle)
+		# -Dpch=$(usex pch) # needs cling
+		-Dpgsql=$(usex postgres)
+		-Dpythia6=$(usex pythia6)
+		-Dpythia8=$(usex pythia8)
+		-Dpython=$(usex python)
+		-Dqt=$(usex qt4)
+		-Dqtgsi=$(usex qt4)
+		-Dr=$(usex R) # requires Rcpp and RInside
+		-Drfio=OFF
+		-Droofit=$(usex roofit)
+		-Droot7=$(usex root7) # requires C++14
+		-Droottest=OFF # requires network
+		-Drpath=$(usex prefix)
+		-Druby=OFF # unmantained upstream
+		# -Druntime_cxxmodules=OFF # use clang C++ modules
+		-Dsapdb=OFF # option not implemented
+		-Dshadowpw=$(usex shadow)
+		-Dsqlite=$(usex sqlite)
+		-Dsrp=OFF # option not implemented
+		-Dssl=$(usex ssl)
+		-Dtable=$(usex table)
+		-Dtbb=$(usex tbb)
+		-Dtcmalloc=OFF
+		-Dtesting=$(usex test)
+		-Dthread=$(usex threads)
+		-Dtmva=$(usex tmva)
+		-Dunuran=$(usex unuran)
+		-Dvc=$(usex vc)
+		-Dvdt=OFF # not in Gentoo
+		# -Dveccore=OFF # not in Gentoo
 		-Dxml=$(usex xml) # default ON
 		-Dxrootd=$(usex xrootd) # default ON
 		${EXTRA_ECONF}

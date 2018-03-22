@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 
 inherit eutils multilib pax-utils versionator toolchain-funcs
 
@@ -25,13 +25,10 @@ IUSE="lua52compat"
 
 S="${WORKDIR}/${MY_P}"
 
-HTML_DOCS=( doc/. )
-
 src_prepare(){
 	if [[ -n ${HOTFIX} ]]; then
 		epatch "${DISTDIR}/${HOTFIX}"
 	fi
-	default
 }
 
 _emake() {
@@ -59,5 +56,6 @@ src_install(){
 
 	pax-mark m "${ED}usr/bin/luajit-${MY_PV}"
 
-	default
+	cd "${S}"/doc
+	dohtml -r *
 }
