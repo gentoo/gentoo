@@ -21,7 +21,7 @@ DEPEND="
 	>=dev-libs/libxslt-1.1"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/pgadmin3-{desktop,gcc6-null-pointer}.patch )
+PATCHES=( "${FILESDIR}"/pgadmin3-{desktop-r1,gcc6-null-pointer}.patch )
 
 src_configure() {
 	WX_GTK_VER="3.0"

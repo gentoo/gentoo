@@ -63,7 +63,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--enable-sudo
- 		--without-ntfs
+		--without-ntfs
 		$(use_with ewf)
 		$(use_with jpeg)
 		$(use_with ntfs ntfs3g)
