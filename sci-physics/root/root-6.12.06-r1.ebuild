@@ -107,11 +107,6 @@ RDEPEND="${CDEPEND}
 	xinetd? ( sys-apps/xinetd )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.28.00b-glibc212.patch
-	"${FILESDIR}"/${PN}-5.32.00-afs.patch
-	"${FILESDIR}"/${PN}-5.32.00-cfitsio.patch
-	"${FILESDIR}"/${PN}-5.32.00-chklib64.patch
-	"${FILESDIR}"/${PN}-6.00.01-dotfont.patch
 	"${FILESDIR}"/${PN}-6.11.02-hsimple.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-opengl.patch
