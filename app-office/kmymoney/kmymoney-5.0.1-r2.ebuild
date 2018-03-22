@@ -93,7 +93,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
 pkg_setup() {
-	use weboob && python-setup
+	use weboob && python_setup
 	kde5_pkg_setup
 }
 
