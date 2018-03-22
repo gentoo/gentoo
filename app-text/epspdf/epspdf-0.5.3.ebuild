@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit texlive-common eutils
+inherit texlive-common
 
 DESCRIPTION="GUI and command-line converter for [e]ps and pdf"
 HOMEPAGE="http://tex.aanhet.net/epspdf/"
@@ -44,7 +44,7 @@ src_install() {
 	dodoc doc/Changelog
 	if use doc ; then
 		dodoc doc/epspdf.pdf
-		dohtml -r doc
+		HTML_DOCS="doc/" einstalldocs
 	fi
 
 	# give it a .desktop
