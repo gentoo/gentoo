@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils gnustep-2
+inherit gnustep-2 vcs-clean
 
 DESCRIPTION="GNUstep theme closely following the original NeXT look and feel"
 HOMEPAGE="http://gap.nongnu.org/themes/index.html"
@@ -20,6 +20,7 @@ RESTRICT="binchecks strip"
 
 src_prepare() {
 	ecvs_clean
+	eapply_user
 }
 
 src_compile() { :; }
