@@ -35,9 +35,9 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
 	macosx-qtkit matroska microdns modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
 	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp
-	run-as-root samba schroedinger sdl-image sftp shout sid skins speex ssl svg taglib
-	theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx wayland
-	wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex ssl svg
+	taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx
+	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -170,6 +170,7 @@ RDEPEND="
 		x11-libs/libXinerama:0
 		x11-libs/libXpm:0
 	)
+	soxr? ( media-libs/soxr )
 	speex? (
 		>=media-libs/speex-1.2.0:0
 		media-libs/speexdsp:0
@@ -361,6 +362,7 @@ src_configure() {
 		$(use_enable shout)
 		$(use_enable sid)
 		$(use_enable skins skins2)
+		$(use_enable soxr)
 		$(use_enable speex)
 		$(use_enable ssl gnutls)
 		$(use_enable svg)
