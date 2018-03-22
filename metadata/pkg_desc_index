@@ -3196,7 +3196,7 @@ dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524: Library for Japanese pTeX prov
 dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/qcustomplot 1.3.2: Qt C++ widget for plotting and data visualization
 dev-libs/qjson 0.9.0: Library for mapping JSON data to QVariant objects
-dev-libs/qoauth 2.0.1_pre20160315-r2: Qt-based library for OAuth support
+dev-libs/qoauth 2.0.1_pre20160315-r3: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qtkeychain 0.8.0: Qt API for storing passwords securely
@@ -6781,7 +6781,7 @@ kde-frameworks/syntax-highlighting 5.43.0: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.43.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49a_p20170225-r1: A DropDrawers clone. Multiple information organizer
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
-kde-misc/kdeconnect 1.2.1-r1: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 1.2.1-r2: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kio-gdrive 1.2.1-r1: KIO Slave for Google Drive service
@@ -8437,7 +8437,7 @@ net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1: Very Secure FTP Daemon written with speed, 
 net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
 net-im/bitlbee 3.5.1: irc to IM gateway that support multiple IM protocols
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
-net-im/choqok 1.6.0: Free/Open Source micro-blogging client by KDE
+net-im/choqok 1.6.0-r1: Free/Open Source micro-blogging client by KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/dianara 1.3.7-r1: Qt-based client for the pump.io distributed social network
 net-im/ejabberd 16.09: Robust, scalable and extensible XMPP server
@@ -8479,7 +8479,7 @@ net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 1.0.4 1.0.5 1.0.6: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
-net-irc/konversation 1.7.4: A user friendly IRC Client
+net-irc/konversation 1.7.4-r1: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20171001143427 5.0_pre20171211100641 5.0_pre20180209140255: Advanced IRC Client
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/ngircd 23-r1 24: An IRC server written from scratch
@@ -8548,7 +8548,7 @@ net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0: iscsi client library and utilities
-net-libs/libktorrent 2.1: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmicrohttpd 0.9.52 0.9.55: Small C library to run an HTTP server as part of another application
