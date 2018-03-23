@@ -6287,7 +6287,7 @@ dev-vcs/rcs 5.8.2 5.9.3: Revision Control System
 dev-vcs/stgit 0.16-r2: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.9.7-r1: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
-dev-vcs/tig 2.2.2: text mode interface for git
+dev-vcs/tig 2.2.2 2.3.3: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9: A different patch queue manager
 dev-vcs/tortoisehg 4.4.1-r1: Set of graphical tools for Mercurial
@@ -7251,7 +7251,7 @@ media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.14 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.9: powerful GTK 3 based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.10.2: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qrencode 3.4.4-r1: C library for encoding data in a QR Code symbol
@@ -9003,7 +9003,7 @@ net-proxy/privoxy 3.0.26: A web proxy with advanced filtering capabilities for e
 net-proxy/squid 3.5.26 3.5.27-r1: A full-featured web proxy cache
 net-proxy/squidclamav 6.8: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
-net-proxy/sshuttle 0.78.3: Transparent proxy server that works as a poor man's VPN using ssh
+net-proxy/sshuttle 0.78.3-r2: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2-r1: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r4: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0: Use most socks-friendly applications with Tor
