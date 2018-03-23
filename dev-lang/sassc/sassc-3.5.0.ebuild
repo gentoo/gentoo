@@ -20,7 +20,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=dev-libs/libsass-3.4:="
+RDEPEND=">=dev-libs/libsass-3.5:="
 DEPEND="${RDEPEND}"
 
 DOCS=( Readme.md )
