@@ -6,6 +6,8 @@
   </maintainer>
   <use>
     <flag name="lz4">add support for LZ4 compressed transport</flag>
+	<flag name="pcre2">use <pkg>dev-libs/libpcre2</pkg> as regex implementation</flag>
+	<flag name="oniguruma">use <pkg>dev-libs/oniguruma</pkg> as regex implementation</flag>
   </use>
   <upstream>
     <remote-id type="github">grobian/carbon-c-relay</remote-id>
