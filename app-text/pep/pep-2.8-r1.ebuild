@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="General purpose filter and file cleaning program"
 HOMEPAGE="http://hannemyr.com/enjoy/pep.html"
@@ -19,12 +19,15 @@ RDEPEND=""
 
 S=${WORKDIR}
 
+# pep does not come with autconf so here's a patch to configure
+# Makefile with the correct path
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8-gentoo.patch
+	"${FILESDIR}"/${PN}-2.8-include.patch
+)
+
 src_prepare() {
-	# pep does not come with autconf so here's a patch to configure
-	# Makefile with the correct path
-	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-include.patch
+	default
 	# Darwin lacks stricmp and DIRCHAR
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e '/^OBJS/s/^\(.*\)$/\1 bdmg.o/' Makefile
