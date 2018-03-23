@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit autotools eutils toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_P="${PN}${PV//./}"
 
@@ -16,18 +16,24 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0=
 	!app-editors/levee"
 DEPEND="${RDEPEND}
 	dev-lang/perl"
+
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.51-gentoo.patch
+	"${FILESDIR}"/${PN}-4.51-xz.patch
+	"${FILESDIR}"/${PN}-4.51-tinfo.patch
+	"${FILESDIR}"/${PN}-4.51-protos.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	epatch "${FILESDIR}"/${P}-xz.diff
-	epatch "${FILESDIR}"/${P}-tinfo.patch
-	epatch "${FILESDIR}"/${P}-protos.patch
-	cd "${S}"/src
+	default
+
+	cd src
 	eautoreconf
 }
 
@@ -42,5 +48,5 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc README hello.sample
-	dohtml index.html relnote.html hello.sample.gif
+	HTML_DOCS="index.html relnote.html hello.sample.gif" einstalldocs
 }
