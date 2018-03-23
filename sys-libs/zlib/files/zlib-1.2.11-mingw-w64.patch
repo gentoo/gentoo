@@ -1,0 +1,103 @@
+--- a/configure
++++ b/configure
+@@ -60,6 +60,13 @@ if "${CROSS_PREFIX}ranlib" --version >/d
+ else
+     RANLIB=${RANLIB-"ranlib"}
+ fi
++if "${CROSS_PREFIX}windres" --version > /dev/null 2>/dev/null || test $? -lt 126; then
++    RC=${RC-"${CROSS_PREFIX}windres"}
++    RCFLAGS="--define GCC_WINDRES"
++    test -n "${CROSS_PREFIX}" && echo Using ${RC} | tee -a configure.log
++else
++    RC=${RC-"windres"}
++fi
+ if "${CROSS_PREFIX}nm" --version >/dev/null 2>/dev/null || test $? -lt 126; then
+     NM=${NM-"${CROSS_PREFIX}nm"}
+     test -n "${CROSS_PREFIX}" && echo Using ${NM} | tee -a configure.log
+@@ -89,8 +96,8 @@ warn=0
+ debug=0
+ old_cc="$CC"
+ old_cflags="$CFLAGS"
+-OBJC='$(OBJZ) $(OBJG)'
+-PIC_OBJC='$(PIC_OBJZ) $(PIC_OBJG)'
++OBJC='$(OBJZ) $(OBJG) $(OBJR)'
++PIC_OBJC='$(PIC_OBJZ) $(PIC_OBJG) $(PIC_OBJR)'
+ 
+ # leave this script, optionally in a bad way
+ leave()
+@@ -217,9 +224,12 @@ if test "$gcc" -eq 1 && ($cc -c $test.c)
+   MINGW* | mingw*)
+ # temporary bypass
+         rm -f $test.[co] $test $test$shared_ext
+-        echo "Please use win32/Makefile.gcc instead." | tee -a configure.log
+-        leave 1
+-        LDSHARED=${LDSHARED-"$cc -shared"}
++	shared_ext='.dll'
++        LDSHARED=${LDSHARED-"$cc -shared -Wl,--out-implib,libz.dll.a"}
++	PIC_OBJR=zlibrc.lo
++	SHAREDLIBM=zlib$shared_ext
++	SHAREDLIBV=zlib$VER1$shared_ext
++	SHAREDLIB=zlib$VER$shared_ext
+         LDSHAREDLIBC=""
+         EXE='.exe' ;;
+   QNX*)  # This is for QNX6. I suppose that the QNX rule below is for QNX2,QNX4
+@@ -874,6 +884,8 @@ sed < ${SRCDIR}Makefile.in "
+ /^AR *=/s#=.*#=$AR#
+ /^ARFLAGS *=/s#=.*#=$ARFLAGS#
+ /^RANLIB *=/s#=.*#=$RANLIB#
++/^RC *=/s#=.*#=$RC#
++/^RCFLAGS *=/s#=.*#=$RCFLAGS#
+ /^LDCONFIG *=/s#=.*#=$LDCONFIG#
+ /^LDSHAREDLIBC *=/s#=.*#=$LDSHAREDLIBC#
+ /^EXE *=/s#=.*#=$EXE#
+@@ -887,7 +899,9 @@ sed < ${SRCDIR}Makefile.in "
+ /^includedir *=/s#=.*#=$includedir#
+ /^mandir *=/s#=.*#=$mandir#
+ /^OBJC *=/s#=.*#= $OBJC#
++/^OBJR *=/s#=.*#= $OBJR#
+ /^PIC_OBJC *=/s#=.*#= $PIC_OBJC#
++/^PIC_OBJR *=/s#=.*#= $PIC_OBJR#
+ /^all: */s#:.*#: $ALL#
+ /^test: */s#:.*#: $TEST#
+ " > Makefile
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -39,6 +39,8 @@ LIBS=$(STATICLIB) $(SHAREDLIBV)
+ AR=ar
+ ARFLAGS=rc
+ RANLIB=ranlib
++RC=
++RCFLAGS=
+ LDCONFIG=ldconfig
+ LDSHAREDLIBC=-lc
+ TAR=tar
+@@ -59,11 +61,13 @@ ZINCOUT=-I.
+ 
+ OBJZ = adler32.o crc32.o deflate.o infback.o inffast.o inflate.o inftrees.o trees.o zutil.o
+ OBJG = compress.o uncompr.o gzclose.o gzlib.o gzread.o gzwrite.o
+-OBJC = $(OBJZ) $(OBJG)
++OBJR =
++OBJC = $(OBJZ) $(OBJG) $(OBJR)
+ 
+ PIC_OBJZ = adler32.lo crc32.lo deflate.lo infback.lo inffast.lo inflate.lo inftrees.lo trees.lo zutil.lo
+ PIC_OBJG = compress.lo uncompr.lo gzclose.lo gzlib.lo gzread.lo gzwrite.lo
+-PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
++PIC_OBJR =
++PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG) $(PIC_OBJR)
+ 
+ # to use the asm code: make OBJA=match.o, PIC_OBJA=match.lo
+ OBJA =
+@@ -277,8 +281,12 @@ gzwrite.lo: $(SRCDIR)gzwrite.c
+ 	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/gzwrite.o $(SRCDIR)gzwrite.c
+ 	-@mv objs/gzwrite.o $@
+ 
++zlibrc.lo: $(SRCDIR)win32/zlib1.rc
++	-@mkdir objs 2>/dev/null | test -d objs
++	$(RC) $(RCFLAGS) -o $@ $(SRCDIR)win32/zlib1.rc
++	-@mv objs/zlibrc.o $@
+ 
+-placebo $(SHAREDLIBV): $(PIC_OBJS) libz.a
++placebo $(SHAREDLIBV): $(PIC_OBJS) $(PIC_OBJR) libz.a
+ 	$(LDSHARED) $(SFLAGS) -o $@ $(PIC_OBJS) $(LDSHAREDLIBC) $(LDFLAGS)
+ 	rm -f $(SHAREDLIB) $(SHAREDLIBM)
+ 	ln -s $@ $(SHAREDLIB)
