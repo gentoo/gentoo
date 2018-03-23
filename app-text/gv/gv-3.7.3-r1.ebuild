@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=6
+inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Viewer for PostScript and PDF documents using Ghostscript"
 HOMEPAGE="https://www.gnu.org/software/gv/"
@@ -29,9 +29,9 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.7.3-libXaw3d-1.6.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.7.3-libXaw3d-1.6.patch
+)
 
 src_configure() {
 	# Grab -DXAW_INTERNATIONALIZATION if needed
