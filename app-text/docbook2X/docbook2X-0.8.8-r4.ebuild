@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 AUTOTOOLS_AUTORECONF=1 #290284
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Tools to convert docbook to man and info"
 SRC_URI="mirror://sourceforge/docbook2x/${P}.tar.gz"
@@ -36,8 +36,8 @@ PATCHES=(
 )
 src_prepare() {
 	sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac || die 'sed on configure.ac failed'
-
-	autotools-utils_src_prepare
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -46,11 +46,11 @@ src_configure() {
 		--with-xslt-processor=libxslt
 		--program-transform-name='/^docbook2/s,$,.pl,'
 	)
-	autotools-utils_src_configure
+	default
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 	dosym docbook2man.pl /usr/bin/docbook2x-man
 	dosym docbook2texi.pl /usr/bin/docbook2x-texi
 }
