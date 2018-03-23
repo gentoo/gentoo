@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pure python memcached client"
 HOMEPAGE="
-	http://www.tummy.com/Community/software/python-memcached/
+	https://www.tummy.com/Community/software/python-memcached/
 	https://pypi.python.org/pypi/python-memcached"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
