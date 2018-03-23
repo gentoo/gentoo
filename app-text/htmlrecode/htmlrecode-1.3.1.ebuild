@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Recodes HTML file using a new character set"
 HOMEPAGE="http://bisqwit.iki.fi/source/htmlrecode.html"
@@ -17,8 +17,12 @@ IUSE=""
 DEPEND=">=sys-apps/sed-4"
 RDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.1-ar.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-ar.patch"
+	default
 	touch .depend argh/.depend
 }
 
@@ -40,5 +44,5 @@ src_compile() {
 
 src_install() {
 	dobin htmlrecode
-	dohtml README.html
+	HTML_DOCS="README.html" einstalldocs
 }
