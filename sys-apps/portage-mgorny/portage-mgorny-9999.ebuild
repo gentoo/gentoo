@@ -26,7 +26,7 @@ RDEPEND="
 	>=app-arch/tar-1.27
 	!build? (
 		>=app-admin/eselect-1.2
-		app-crypt/gentoo-keys
+		app-crypt/openpgp-keys-gentoo-release
 		>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		>=app-portage/gemato-10
 		app-shells/bash:0[readline]
