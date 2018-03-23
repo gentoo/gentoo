@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit base flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="RTF to HTML converter"
 HOMEPAGE="http://rtf2html.sourceforge.net/"
@@ -26,7 +26,7 @@ src_prepare() {
 	sed -i -e '/CFLAGS=$(echo $CFLAGS/d' configure || die 'sed on configure failed'
 	use !debug && filter-flags "-g*"
 
-	base_src_prepare
+	default
 }
 
 src_configure() {
