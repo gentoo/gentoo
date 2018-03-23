@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit meson multilib-minimal flag-o-matic python-any-r1
+inherit meson multilib-minimal flag-o-matic udev python-any-r1
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
@@ -62,7 +62,7 @@ multilib_src_install_all() {
 	einstalldocs
 
 	# installed via fuse-common
-	rm -r "${ED%/}"/{etc,lib} || die
+	rm -r "${ED%/}"/{etc,$(get_udevdir)} || die
 	rm "${ED%/}"/usr/sbin/mount.fuse3 || die
 
 	# handled by the device manager
