@@ -73,18 +73,30 @@ CDEPEND="
 
 RDEPEND="${CDEPEND}
 	gpg? ( app-crypt/gnupg )
-	mediawiki? (
-		dev-perl/DateTime-Format-ISO8601
-		dev-perl/HTML-Tree
-		dev-perl/MediaWiki-API
+	perl? (
+		dev-perl/Error
+		dev-perl/Net-SMTP-SSL
+		dev-perl/Authen-SASL
+		cgi? (
+			dev-perl/CGI
+			highlight? ( app-text/highlight )
+		)
+		cvs? (
+			>=dev-vcs/cvsps-2.1:0
+			dev-perl/DBI
+			dev-perl/DBD-SQLite
+		)
+		mediawiki? (
+			dev-perl/DateTime-Format-ISO8601
+			dev-perl/HTML-Tree
+			dev-perl/MediaWiki-API
+		)
+		subversion? (
+			dev-vcs/subversion[-dso,perl]
+			dev-perl/libwww-perl
+			dev-perl/TermReadKey
+		)
 	)
-	perl? ( dev-perl/Error
-			dev-perl/Net-SMTP-SSL
-			dev-perl/Authen-SASL
-			cgi? ( dev-perl/CGI highlight? ( app-text/highlight ) )
-			cvs? ( >=dev-vcs/cvsps-2.1:0 dev-perl/DBI dev-perl/DBD-SQLite )
-			subversion? ( dev-vcs/subversion[-dso,perl] dev-perl/libwww-perl dev-perl/TermReadKey )
-			)
 	python? ( ${PYTHON_DEPS} )
 "
 
@@ -108,7 +120,7 @@ if [[ ${PV} == *9999 ]]; then
 		app-text/asciidoc"
 fi
 
-SITEFILE=50${PN}-gentoo.el
+SITEFILE="50${PN}-gentoo.el"
 S="${WORKDIR}/${MY_P}"
 
 REQUIRED_USE="
@@ -124,11 +136,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	# bug #350330 - automagic CVS when we don't want it is bad.
-	"${FILESDIR}"/git-2.12.0-optional-cvs.patch
-
-	# install mediawiki perl modules also in vendor_dir
-	# hack, needs better upstream solution
-	"${FILESDIR}"/git-1.8.5-mw-vendor.patch
+	"${FILESDIR}"/git-2.17.0_rc1-optional-cvs.patch
 
 	"${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
 
@@ -150,111 +158,110 @@ pkg_setup() {
 # This is needed because for some obscure reasons future calls to make don't
 # pick up these exports if we export them in src_unpack()
 exportmakeopts() {
-	local myopts
+	local myopts=(
+		ASCIIDOC_NO_ROFF=YesPlease
+		$(usex cvs '' NO_CVS=YesPlease)
+		$(usex elibc_musl NO_REGEX=YesPlease '')
+		$(usex iconv '' NO_ICONV=YesPlease)
+		$(usex nls '' NO_GETTEXT=YesPlease)
+		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
+		$(usex python '' NO_PYTHON=YesPlease)
+		$(usex subversion '' NO_SVN_TESTS=YesPlease)
+		$(usex threads THREADED_DELTA_SEARCH=YesPlease NO_PTHREAD=YesPlease)
+		$(usex tk '' NO_TCLTK=YesPlease)
+	)
 
 	if use blksha1 ; then
-		myopts+=" BLK_SHA1=YesPlease"
+		myopts+=( BLK_SHA1=YesPlease )
 	elif use ppcsha1 ; then
-		myopts+=" PPC_SHA1=YesPlease"
+		myopts+=( PPC_SHA1=YesPlease )
 	fi
 
 	if use curl ; then
-		use webdav || myopts+=" NO_EXPAT=YesPlease"
+		use webdav || myopts+=( NO_EXPAT=YesPlease )
 	else
-		myopts+=" NO_CURL=YesPlease"
+		myopts+=( NO_CURL=YesPlease )
 	fi
 
 	# broken assumptions, because of static build system ...
-	myopts+=" NO_FINK=YesPlease NO_DARWIN_PORTS=YesPlease"
-	myopts+=" INSTALL=install TAR=tar"
-	myopts+=" SHELL_PATH=${EPREFIX}/bin/sh"
-	myopts+=" SANE_TOOL_PATH="
-	myopts+=" OLD_ICONV="
-	myopts+=" NO_EXTERNAL_GREP="
+	myopts+=(
+		NO_FINK=YesPlease
+		NO_DARWIN_PORTS=YesPlease
+		INSTALL=install
+		TAR=tar
+		SHELL_PATH="${EPREFIX}/bin/sh"
+		SANE_TOOL_PATH=
+		OLD_ICONV=
+		NO_EXTERNAL_GREP=
+	)
 
 	# For svn-fe
 	extlibs="-lz -lssl ${S}/xdiff/lib.a $(usex threads -lpthread '')"
 
 	# can't define this to null, since the entire makefile depends on it
-	sed -i -e '/\/usr\/local/s/BASIC_/#BASIC_/' Makefile
+	sed -i -e '/\/usr\/local/s/BASIC_/#BASIC_/' Makefile || die
 
-	use iconv \
-		|| myopts+=" NO_ICONV=YesPlease"
-	use nls \
-		|| myopts+=" NO_GETTEXT=YesPlease"
-	use tk \
-		|| myopts+=" NO_TCLTK=YesPlease"
 	if use pcre; then
 		if use pcre-jit; then
-			myopts+=" USE_LIBPCRE2=YesPlease"
+			myopts+=( USE_LIBPCRE2=YesPlease )
 			extlibs+=" -lpcre2-8"
 		else
-			myopts+=" USE_LIBPCRE1=YesPlease"
-			myopts+=" NO_LIBPCRE1_JIT=YesPlease"
+			myopts+=(
+				USE_LIBPCRE1=YesPlease
+				NO_LIBPCRE1_JIT=YesPlease
+			)
 			extlibs+=" -lpcre"
 		fi
 	fi
-	use perl \
-		&& myopts+=" INSTALLDIRS=vendor" \
-		|| myopts+=" NO_PERL=YesPlease"
-	use python \
-		|| myopts+=" NO_PYTHON=YesPlease"
-	use subversion \
-		|| myopts+=" NO_SVN_TESTS=YesPlease"
-	use threads \
-		&& myopts+=" THREADED_DELTA_SEARCH=YesPlease" \
-		|| myopts+=" NO_PTHREADS=YesPlease"
-	use cvs \
-		|| myopts+=" NO_CVS=YesPlease"
-	use elibc_musl \
-		&& myopts+=" NO_REGEX=YesPlease"
 # Disabled until ~m68k-mint can be keyworded again
 #	if [[ ${CHOST} == *-mint* ]] ; then
-#		myopts+=" NO_MMAP=YesPlease"
-#		myopts+=" NO_IPV6=YesPlease"
-#		myopts+=" NO_STRLCPY=YesPlease"
-#		myopts+=" NO_MEMMEM=YesPlease"
-#		myopts+=" NO_MKDTEMP=YesPlease"
-#		myopts+=" NO_MKSTEMPS=YesPlease"
+#		myopts+=(
+#			NO_MMAP=YesPlease
+#			NO_IPV6=YesPlease
+#			NO_STRLCPY=YesPlease
+#			NO_MEMMEM=YesPlease
+#			NO_MKDTEMP=YesPlease
+#			NO_MKSTEMPS=YesPlease
+#		)
 #	fi
 	if [[ ${CHOST} == ia64-*-hpux* ]]; then
-		myopts+=" NO_NSEC=YesPlease"
+		myopts+=( NO_NSEC=YesPlease )
 	fi
 	if [[ ${CHOST} == *-*-aix* ]]; then
-		myopts+=" NO_FNMATCH_CASEFOLD=YesPlease"
+		myopts+=( NO_FNMATCH_CASEFOLD=YesPlease )
 	fi
 	if [[ ${CHOST} == *-solaris* ]]; then
-		myopts+=" NEEDS_LIBICONV=YesPlease"
-		myopts+=" HAVE_CLOCK_MONOTONIC=1"
+		myopts+=(
+			NEEDS_LIBICONV=YesPlease
+			HAVE_CLOCK_MONOTONIC=1
+		)
 		grep -q getdelim "${ROOT}"/usr/include/stdio.h && \
-			myopts+=" HAVE_GETDELIM=1"
+			myopts+=( HAVE_GETDELIM=1 )
 	fi
 
 	has_version '>=app-text/asciidoc-8.0' \
-		&& myopts+=" ASCIIDOC8=YesPlease"
-	myopts+=" ASCIIDOC_NO_ROFF=YesPlease"
+		&& myopts+=( ASCIIDOC8=YesPlease )
 
 	# Bug 290465:
 	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
 	[[ "${CHOST}" == *-uclibc* ]] && \
-		myopts+=" NO_NSEC=YesPlease"
+		myopts+=( NO_NSEC=YesPlease )
 
-	export MY_MAKEOPTS="${myopts}"
+	export MY_MAKEOPTS="${myopts[@]}"
 	export EXTLIBS="${extlibs}"
 }
 
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then
 		unpack ${MY_P}.tar.${SRC_URI_SUFFIX}
-		cd "${S}"
 		unpack ${PN}-manpages-${DOC_VER}.tar.${SRC_URI_SUFFIX}
-		use doc && \
-			cd "${S}"/Documentation && \
+		if use doc ; then
+			pushd "${S}"/Documentation &>/dev/null || die
 			unpack ${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
-		cd "${S}"
+			popd &>/dev/null || die
+		fi
 	else
 		git-r3_src_unpack
-		cd "${S}"
 		#cp "${FILESDIR}"/GIT-VERSION-GEN .
 	fi
 
@@ -280,41 +287,37 @@ src_prepare() {
 		-e 's:^\(AR[[:space:]]* =\).*$:\1$(OPTAR):' \
 		-e "s:\(PYTHON_PATH[[:space:]]\+=[[:space:]]\+\)\(.*\)$:\1${EPREFIX}\2:" \
 		-e "s:\(PERL_PATH[[:space:]]\+=[[:space:]]\+\)\(.*\)$:\1${EPREFIX}\2:" \
-		Makefile contrib/svn-fe/Makefile || die "sed failed"
-
-	# Never install the private copy of Error.pm (bug #296310)
-	sed -i \
-		-e '/private-Error.pm/s,^,#,' \
-		perl/Makefile.PL
+		Makefile contrib/svn-fe/Makefile || die
 
 	# Fix docbook2texi command
 	sed -r -i 's/DOCBOOK2X_TEXI[[:space:]]*=[[:space:]]*docbook2x-texi/DOCBOOK2X_TEXI = docbook2texi.pl/' \
-		Documentation/Makefile || die "sed failed"
+		Documentation/Makefile || die
 
 	# Fix git-subtree missing DESTDIR
 	sed -i \
 		-e '/$(INSTALL)/s/ $(libexecdir)/ $(DESTDIR)$(libexecdir)/g' \
 		-e '/$(INSTALL)/s/ $(man1dir)/ $(DESTDIR)$(man1dir)/g'  \
-		contrib/subtree/Makefile
+		contrib/subtree/Makefile || die
 }
 
 git_emake() {
 	# bug #320647: PYTHON_PATH
-	PYTHON_PATH=""
+	local PYTHON_PATH=""
 	use python && PYTHON_PATH="${PYTHON}"
 	emake ${MY_MAKEOPTS} \
-		DESTDIR="${D}" \
-		OPTCFLAGS="${CFLAGS}" \
-		OPTLDFLAGS="${LDFLAGS}" \
-		OPTCC="$(tc-getCC)" \
-		OPTAR="$(tc-getAR)" \
 		prefix="${EPREFIX}"/usr \
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
+		perllibdir="$(perl_get_raw_vendorlib)" \
 		sysconfdir="${EPREFIX}"/etc \
-		PYTHON_PATH="${PYTHON_PATH}" \
+		DESTDIR="${D}" \
+		GIT_TEST_OPTS="--no-color" \
+		OPTAR="$(tc-getAR)" \
+		OPTCC="$(tc-getCC)" \
+		OPTCFLAGS="${CFLAGS}" \
+		OPTLDFLAGS="${LDFLAGS}" \
 		PERL_PATH="${EPREFIX}/usr/bin/perl" \
 		PERL_MM_OPT="" \
-		GIT_TEST_OPTS="--no-color" \
+		PYTHON_PATH="${PYTHON_PATH}" \
 		V=1 \
 		"$@"
 }
@@ -324,10 +327,6 @@ src_configure() {
 }
 
 src_compile() {
-	if use perl ; then
-	git_emake perl/PM.stamp || die "emake perl/PM.stamp failed"
-	git_emake perl/perl.mak || die "emake perl/perl.mak failed"
-	fi
 	git_emake || die "emake failed"
 
 	if use emacs ; then
@@ -341,12 +340,13 @@ src_compile() {
 	fi
 
 	if [[ ${CHOST} == *-darwin* ]]; then
-		cd "${S}"/contrib/credential/osxkeychain || die
+		pushd contrib/credential/osxkeychain &>/dev/null || die
 		git_emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" \
 			|| die "emake credential-osxkeychain"
+		popd &>/dev/null || die
 	fi
 
-	cd "${S}"/Documentation
+	pushd Documentation &>/dev/null || die
 	if [[ ${PV} == *9999 ]] ; then
 		git_emake man \
 			|| die "emake man failed"
@@ -360,9 +360,10 @@ src_compile() {
 				|| die "emake info html failed"
 		fi
 	fi
+	popd &>/dev/null || die
 
 	if use subversion ; then
-		cd "${S}"/contrib/svn-fe
+		pushd contrib/svn-fe &>/dev/null || die
 		# by defining EXTLIBS we override the detection for libintl and
 		# libiconv, bug #516168
 		local nlsiconv=
@@ -372,24 +373,29 @@ src_compile() {
 		if use doc ; then
 			git_emake svn-fe.{1,html} || die "emake svn-fe.1 svn-fe.html failed"
 		fi
-		cd "${S}"
+		popd &>/dev/null || die
 	fi
 
 	if use gnome-keyring ; then
-		cd "${S}"/contrib/credential/libsecret
+		pushd contrib/credential/libsecret &>/dev/null || die
 		git_emake || die "emake git-credential-libsecret failed"
+		popd &>/dev/null || die
 	fi
 
-	cd "${S}"/contrib/subtree || die
+	pushd contrib/subtree &>/dev/null || die
 	git_emake
 	use doc && git_emake doc
+	popd &>/dev/null || die
 
-	cd "${S}"/contrib/diff-highlight || die
+	pushd contrib/diff-highlight &>/dev/null || die
 	git_emake
+	popd &>/dev/null || die
 
 	if use mediawiki ; then
-		cd "${S}"/contrib/mw-to-git
+		pushd contrib/mw-to-git &>/dev/null || die
 		git_emake
+		popd &>/dev/null || die
+
 	fi
 }
 
@@ -444,19 +450,19 @@ src_install() {
 	newexe contrib/git-resurrect.sh git-resurrect
 
 	# git-subtree
-	cd "${S}"/contrib/subtree
+	pushd contrib/subtree &>/dev/null || die
 	git_emake install || die "Failed to emake install git-subtree"
 	if use doc ; then
 		git_emake install-man install-doc || die "Failed to emake install-doc install-mangit-subtree"
 	fi
 	newdoc README README.git-subtree
 	dodoc git-subtree.txt
-	cd "${S}"
+	popd &>/dev/null || die
 
 	if use mediawiki ; then
-		cd "${S}"/contrib/mw-to-git
+		pushd contrib/mw-to-git &>/dev/null || die
 		git_emake install
-		cd "${S}"
+		popd &>/dev/null || die
 	fi
 
 	# diff-highlight
@@ -474,12 +480,13 @@ src_install() {
 	dodoc contrib/contacts/git-contacts.txt
 
 	if use gnome-keyring ; then
-		cd "${S}"/contrib/credential/libsecret
+		pushd contrib/credential/libsecret &>/dev/null || die
 		dobin git-credential-libsecret
+		popd &>/dev/null || die
 	fi
 
 	if use subversion ; then
-		cd "${S}"/contrib/svn-fe
+		pushd contrib/svn-fe &>/dev/null || die
 		dobin svn-fe
 		dodoc svn-fe.txt
 		if use doc ; then
@@ -487,7 +494,7 @@ src_install() {
 			docinto html
 			dodoc svn-fe.html
 		fi
-		cd "${S}"
+		popd &>/dev/null || die
 	fi
 
 	dodir /usr/share/${PN}/contrib
@@ -518,7 +525,7 @@ src_install() {
 	for i in "${contrib_objects[@]}" ; do
 		cp -rf \
 			"${S}"/contrib/${i} \
-			"${ED}"/usr/share/${PN}/contrib \
+			"${ED%/}"/usr/share/${PN}/contrib \
 			|| die "Failed contrib ${i}"
 	done
 
@@ -534,16 +541,17 @@ src_install() {
 		newdoc  "${S}"/gitweb/INSTALL INSTALL.gitweb
 		newdoc  "${S}"/gitweb/README README.gitweb
 
-		find "${ED}"/usr/lib64/perl5/ \
+		find "${ED%/}"/usr/lib64/perl5/ \
 			-name .packlist \
-			-exec rm \{\} \;
+			-delete \
+			|| die
 	else
-		rm -rf "${ED}"/usr/share/gitweb
+		rm -rf "${ED%/}"/usr/share/gitweb
 	fi
 
 	if ! use subversion ; then
-		rm -f "${ED}"/usr/libexec/git-core/git-svn \
-			"${ED}"/usr/share/man/man1/git-svn.1*
+		rm -f "${ED%/}"/usr/libexec/git-core/git-svn \
+			"${ED%/}"/usr/share/man/man1/git-svn.1*
 	fi
 
 	if use xinetd ; then
@@ -564,111 +572,118 @@ src_install() {
 	# we could remove sources in src_prepare, but install does not
 	# handle missing locale dir well
 	rm_loc() {
-		if [[ -e "${ED}/usr/share/locale/${1}" ]]; then
-			rm -r "${ED}/usr/share/locale/${1}" || die
+		if [[ -e "${ED%/}/usr/share/locale/${1}" ]]; then
+			rm -r "${ED%/}/usr/share/locale/${1}" || die
 		fi
 	}
 	l10n_for_each_disabled_locale_do rm_loc
 }
 
 src_test() {
-	local disabled=""
-	local tests_cvs="t9200-git-cvsexportcommit.sh \
-					t9400-git-cvsserver-server.sh \
-					t9401-git-cvsserver-crlf.sh \
-					t9402-git-cvsserver-refs.sh \
-					t9600-cvsimport.sh \
-					t9601-cvsimport-vendor-branch.sh \
-					t9602-cvsimport-branches-tags.sh \
-					t9603-cvsimport-patchsets.sh \
-					t9604-cvsimport-timestamps.sh"
-	local tests_perl="t3701-add-interactive.sh \
-					t5502-quickfetch.sh \
-					t5512-ls-remote.sh \
-					t5520-pull.sh \
-					t7106-reset-unborn-branch.sh \
-					t7501-commit.sh"
+	local disabled=()
+	local tests_cvs=(
+		t9200-git-cvsexportcommit.sh
+		t9400-git-cvsserver-server.sh
+		t9401-git-cvsserver-crlf.sh
+		t9402-git-cvsserver-refs.sh
+		t9600-cvsimport.sh
+		t9601-cvsimport-vendor-branch.sh
+		t9602-cvsimport-branches-tags.sh
+		t9603-cvsimport-patchsets.sh
+		t9604-cvsimport-timestamps.sh
+	)
+	local tests_perl=(
+		t3701-add-interactive.sh
+		t5502-quickfetch.sh
+		t5512-ls-remote.sh
+		t5520-pull.sh
+		t7106-reset-unborn-branch.sh
+		t7501-commit.sh
+	)
 	# Bug #225601 - t0004 is not suitable for root perm
 	# Bug #219839 - t1004 is not suitable for root perm
 	# t0001-init.sh - check for init notices EPERM*  fails
-	local tests_nonroot="t0001-init.sh \
-		t0004-unwritable.sh \
-		t0070-fundamental.sh \
-		t1004-read-tree-m-u-wf.sh \
-		t3700-add.sh \
-		t7300-clean.sh"
+	local tests_nonroot=(
+		t0001-init.sh
+		t0004-unwritable.sh
+		t0070-fundamental.sh
+		t1004-read-tree-m-u-wf.sh
+		t3700-add.sh
+		t7300-clean.sh
+	)
 	# t9100 still fails with symlinks in SVN 1.7
-	local test_svn="t9100-git-svn-basic.sh"
+	local test_svn=( t9100-git-svn-basic.sh )
 
 	# Unzip is used only for the testcase code, not by any normal parts of Git.
 	if ! has_version app-arch/unzip ; then
 		einfo "Disabling tar-tree tests"
-		disabled+=" t5000-tar-tree.sh"
+		disabled+=( t5000-tar-tree.sh )
 	fi
 
-	cvs=0
-	use cvs && let cvs=$cvs+1
+	local cvs=0
+	use cvs && let cvs=${cvs}+1
 	if [[ ${EUID} -eq 0 ]]; then
-		if [[ $cvs -eq 1 ]]; then
+		if [[ ${cvs} -eq 1 ]]; then
 			ewarn "Skipping CVS tests because CVS does not work as root!"
 			ewarn "You should retest with FEATURES=userpriv!"
-			disabled+=" ${tests_cvs}"
+			disabled+=( ${tests_cvs[@]} )
 		fi
 		einfo "Skipping other tests that require being non-root"
-		disabled+=" ${tests_nonroot}"
+		disabled+=( ${tests_nonroot[@]} )
 	else
-		[[ $cvs -gt 0 ]] && \
+		[[ ${cvs} -gt 0 ]] && \
 			has_version dev-vcs/cvs && \
-			let cvs=$cvs+1
-		[[ $cvs -gt 1 ]] && \
+			let cvs=${cvs}+1
+		[[ ${cvs} -gt 1 ]] && \
 			has_version "dev-vcs/cvs[server]" && \
-			let cvs=$cvs+1
-		if [[ $cvs -lt 3 ]]; then
+			let cvs=${cvs}+1
+		if [[ ${cvs} -lt 3 ]]; then
 			einfo "Disabling CVS tests (needs dev-vcs/cvs[USE=server])"
-			disabled+=" ${tests_cvs}"
+			disabled+=( ${tests_cvs[@]} )
 		fi
 	fi
 
 	if ! use perl ; then
 		einfo "Disabling tests that need Perl"
-		disabled+=" ${tests_perl}"
+		disabled+=( ${tests_perl[@]} )
 	fi
 
 	einfo "Disabling tests that fail with SVN 1.7"
-	disabled+=" ${test_svn}"
+	disabled+=( ${test_svn[@]} )
 
 	# Reset all previously disabled tests
-	cd "${S}/t"
+	pushd t &>/dev/null || die
+	local i
 	for i in *.sh.DISABLED ; do
 		[[ -f "${i}" ]] && mv -f "${i}" "${i%.DISABLED}"
 	done
 	einfo "Disabled tests:"
-	for i in ${disabled} ; do
-		[[ -f "${i}" ]] && mv -f "${i}" "${i}.DISABLED" && einfo "Disabled $i"
+	for i in ${disabled[@]} ; do
+		[[ -f "${i}" ]] && mv -f "${i}" "${i}.DISABLED" && einfo "Disabled ${i}"
 	done
 
 	# Avoid the test system removing the results because we want them ourselves
 	sed -e '/^[[:space:]]*$(MAKE) clean/s,^,#,g' \
-		-i "${S}"/t/Makefile
+		-i Makefile || die
 
 	# Clean old results first, must always run
-	cd "${S}/t"
 	nonfatal git_emake clean
+	popd &>/dev/null || die
 
 	# Now run the tests, keep going if we hit an error, and don't terminate on
 	# failure
-	cd "${S}"
+	local rc
 	einfo "Start test run"
 	#MAKEOPTS=-j1
 	nonfatal git_emake --keep-going test
 	rc=$?
 
 	# Display nice results, now print the results
-	cd "${S}/t"
+	pushd t &>/dev/null || die
 	nonfatal git_emake aggregate-results
 
 	# And bail if there was a problem
-	[ $rc -eq 0 ] || die "tests failed. Please file a bug."
+	[ ${rc} -eq 0 ] || die "tests failed. Please file a bug."
 }
 
 showpkgdeps() {
