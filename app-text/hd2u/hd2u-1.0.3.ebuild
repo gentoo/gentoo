@@ -1,9 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Dos2Unix like text file converter"
 HOMEPAGE="http://www.megaloman.com/~hany/software/hd2u/"
@@ -19,6 +17,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!app-text/dos2unix"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.3-build.patch
+)
