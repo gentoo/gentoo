@@ -254,6 +254,7 @@ exportmakeopts() {
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then
 		unpack ${MY_P}.tar.${SRC_URI_SUFFIX}
+		cd "${S}" || die
 		unpack ${PN}-manpages-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 		if use doc ; then
 			pushd "${S}"/Documentation &>/dev/null || die
