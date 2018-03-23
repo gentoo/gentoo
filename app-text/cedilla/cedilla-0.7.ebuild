@@ -14,7 +14,9 @@ LICENSE="GPL-2"
 DEPEND="dev-lisp/clisp"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/cedilla-gentoo-r1.patch )
+PATCHES=(
+	"${FILESDIR}"/cedilla-gentoo-r1.patch
+)
 
 src_compile() {
 	./compile-cedilla || die "Compile failed."

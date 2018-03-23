@@ -1,9 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="UTF-8 to postscript converter"
 HOMEPAGE="http://www.pps.jussieu.fr/~jch/software/cedilla/"
@@ -17,17 +15,19 @@ IUSE=""
 DEPEND="dev-lisp/clisp"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/cedilla-gentoo-r1.patch
-}
+PATCHES=(
+	"${FILESDIR}"/cedilla-gentoo-r1.patch
+)
 
 src_compile() {
 	./compile-cedilla || die "Compile failed."
 }
 
 src_install() {
-	sed -i "s#${ED%/}##g" cedilla || die "sed failed"
-	newman cedilla.man cedilla.1
+	sed "s#${ED%/}##g" -i cedilla || die "sed failed"
+	dodir /usr/share/man/man1/
+
 	./install-cedilla || die "Install failed."
-	dodoc NEWS README
+
+	einstalldocs
 }
