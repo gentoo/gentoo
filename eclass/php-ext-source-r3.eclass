@@ -154,9 +154,9 @@ DEPEND="${DEPEND}
 
 # @FUNCTION: php-ext-source-r3_src_prepare
 # @DESCRIPTION:
-# For each PHP slot, we initialize the environment, run the default
-# src_prepare() for PATCHES/eapply_user support, and then call
-# php-ext-source-r3_phpize.
+# Runs the default src_prepare() for PATCHES/eapply_user() support (optional),
+# and for each PHP slot, makes a copy of sources, initializes the environment,
+# and calls php-ext-source-r3_phpize().
 php-ext-source-r3_src_prepare() {
 	local slot orig_s="${PHP_EXT_S}"
 	if [[ "${PHP_EXT_SKIP_PATCHES}" != 'yes' ]] ; then
