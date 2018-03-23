@@ -1,8 +1,7 @@
 See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=556379
 
-diff -r fd7eb0d70970 unac-1.8.0/unac.c
---- a/unac-1.8.0/unac.c	Fri Sep 17 10:35:14 2010 +0200
-+++ b/unac-1.8.0/unac.c	Fri Sep 17 10:36:07 2010 +0200
+--- a/unac.c
++++ b/unac.c
 @@ -13873,9 +13873,9 @@
      *out_lengthp = 0;
    } else {
@@ -15,9 +14,8 @@ diff -r fd7eb0d70970 unac-1.8.0/unac.c
    
      if(convert(charset, utf16be(), in, in_length, &utf16, &utf16_length) < 0) {
        return -1;
-diff -r fd7eb0d70970 unac-1.8.0/unaccent.c
---- a/unac-1.8.0/unaccent.c	Fri Sep 17 10:35:14 2010 +0200
-+++ b/unac-1.8.0/unaccent.c	Fri Sep 17 10:40:34 2010 +0200
+--- a/unaccent.c
++++ b/unaccent.c
 @@ -90,7 +90,7 @@
      const char* charset = argv[optind++];
  
