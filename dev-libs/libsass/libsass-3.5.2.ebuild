@@ -17,7 +17,7 @@ fi
 DESCRIPTION="A C/C++ implementation of a Sass CSS compiler"
 HOMEPAGE="https://github.com/sass/libsass"
 LICENSE="MIT"
-SLOT="0/0" # libsass soname
+SLOT="0/1" # libsass soname
 IUSE="static-libs"
 
 RDEPEND=""
