@@ -18,3 +18,5 @@ RDEPEND="
 	~dev-qt/qtcore-${PV}
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-5.9.4-nogui.patch" )
