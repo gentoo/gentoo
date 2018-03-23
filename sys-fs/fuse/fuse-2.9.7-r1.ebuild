@@ -64,7 +64,7 @@ src_install() {
 	prune_libtool_files
 
 	# installed via fuse-common
-	rm -r "${ED%/}"/{etc,lib} || die
+	rm -r "${ED%/}"/{etc,$(get_udevdir)} || die
 	rm "${ED%/}"/usr/share/man/man8/mount.fuse.* || die
 	rm "${ED%/}"/sbin/mount.fuse || die
 
