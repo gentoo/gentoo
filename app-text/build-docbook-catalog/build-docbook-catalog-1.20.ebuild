@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="DocBook XML catalog auto-updater"
 HOMEPAGE="https://sources.gentoo.org/gentoo-src/build-docbook-catalog/"
@@ -27,6 +27,7 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e "/^EPREFIX=/s:=.*:='${EPREFIX}':" build-docbook-catalog || die
 	has_version sys-apps/util-linux || sed -i -e '/^GETOPT=/s/getopt/&-long/' build-docbook-catalog || die
+	default
 }
 
 pkg_postinst() {
