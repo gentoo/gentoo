@@ -1,20 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-ESVN_REPO_URI="https://svn.code.sf.net/p/pspdftool/code/trunk"
-ESVN_PROJECT="pspdftool"
+inherit autotools
 
-[[ "${PV}" == "9999" ]] && EXTRA_ECLASS="subversion"
-inherit autotools ${EXTRA_ECLASS}
-unset EXTRA_ECLASS
+if [[ ${PV} == "9999" ]]; then
+	ESVN_REPO_URI="https://svn.code.sf.net/p/pspdftool/code/trunk"
+	inherit subversion
+else
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="Tool for prepress preparation of PDF and PostScript documents"
 HOMEPAGE="https://sourceforge.net/projects/pspdftool"
-[[ "${PV}" == "9999" ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-[[ "${PV}" == "9999" ]] || \
-KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,6 +24,7 @@ DEPEND="zlib? ( sys-libs/zlib ) "
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
