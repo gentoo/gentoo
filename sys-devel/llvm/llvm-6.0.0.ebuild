@@ -172,7 +172,10 @@ multilib_src_configure() {
 
 	# workaround BMI bug in gcc-7 (fixed in 7.4)
 	# https://bugs.gentoo.org/649880
-	if tc-is-gcc && [[ $(gcc-major-version) -eq 7 && $(gcc-minor-version) -lt 4 ]]; then
+	# apply only to x86, https://bugs.gentoo.org/650506
+	if tc-is-gcc && [[ ${MULTILIB_ABI_FLAG} == abi_x86* ]] &&
+			[[ $(gcc-major-version) -eq 7 && $(gcc-minor-version) -lt 4 ]]
+	then
 		local CFLAGS="${CFLAGS} -mno-bmi"
 		local CXXFLAGS="${CXXFLAGS} -mno-bmi"
 	fi
