@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="sourceforge">rnv</remote-id>
 	</upstream>
+	<use>
+		<flag name="scm">Support for scm scheme implementation</flag>
+	</use>
 </pkgmetadata>

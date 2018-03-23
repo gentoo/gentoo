@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -i -e "/^AR/s/ar/$(tc-getAR)/" Makefile.in || die 'sed on Makefile.in failed'
+	default
 }
 
 src_install() {
