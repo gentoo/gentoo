@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="A library for rendering Postscript documents"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libspectre"
@@ -24,10 +24,11 @@ RESTRICT="test"
 DOCS="NEWS README TODO"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.2.0-interix.patch
+	eapply "${FILESDIR}"/${PN}-0.2.0-interix.patch
 	has_version \>=app-text/ghostscript-gpl-9.18 \
-		&& epatch "${FILESDIR}"/${PN}-0.2.7-gs918.patch
+		&& eapply "${FILESDIR}"/${PN}-0.2.7-gs918.patch
 	eautoreconf # need new libtool for interix
+	default
 }
 
 src_configure() {
@@ -47,6 +48,6 @@ src_compile() {
 
 src_install() {
 	default
-	use doc && dohtml -r doc/html/*
-	find "${D}" -name '*.la' -exec rm -f {} +
+	use doc && HTML_DOCS="doc/html/." einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 }

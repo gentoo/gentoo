@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="A library for rendering Postscript documents"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libspectre"
@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 
 # does not actually test anything, see bug 362557
 RESTRICT="test"
+
+DOCS="AUTHORS ChangeLog NEWS README TODO"
 
 src_prepare() {
 	default
@@ -45,6 +47,6 @@ src_compile() {
 
 src_install() {
 	default
-	use doc && dohtml -r doc/html/*
-	prune_libtool_files
+	use doc && HTML_DOCS="doc/html/." einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 }
