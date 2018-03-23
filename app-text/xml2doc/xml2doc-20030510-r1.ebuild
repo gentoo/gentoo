@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)"
 
@@ -21,15 +21,19 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
 
-src_prepare() {
 	# Fix pointer-related bug detected by a QA notice.
-	epatch "${FILESDIR}/${PN}-pointer_fix.patch"
+PATCHES=(
+	"${FILESDIR}/${PN}-pointer_fix.patch"
+)
 
+src_prepare() {
+	eapply "${PATCHES[@]}"
 	# Don't strip symbols from binary (bug #152266)
 	sed -i -e '/^\s*strip/d' \
 		-e 's/^\t$(CC) $(LFLAGS).*/\t$(LINK.o) $(L_PDF) $^ -lxml2 -o $(BIN)/' \
 		-e '/^\t$(CC) $(CFLAGS) /d' \
 		src/Makefile.in
+	eapply_user
 }
 
 src_configure() {
