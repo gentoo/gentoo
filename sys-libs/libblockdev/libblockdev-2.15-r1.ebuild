@@ -20,6 +20,7 @@ IUSE="bcache +cryptsetup dmraid doc lvm kbd test"
 CDEPEND="
 	>=dev-libs/glib-2.42.2
 	dev-libs/libbytesize
+	>=sys-apps/kmod-19
 	>=sys-apps/util-linux-2.27
 	>=sys-block/parted-3.1
 	cryptsetup? (
@@ -35,7 +36,6 @@ CDEPEND="
 		sys-fs/lvm2
 		virtual/udev
 	)
-	kbd? ( >=sys-apps/kmod-19 )
 	${PYTHON_DEPS}
 "
 
