@@ -28,12 +28,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-python_prepare_all() {
-	# Fix pkgconfig path
-	sed -i -e "/libdir =/s:\"lib\":\"$(get_libdir)\":" setup.py || die
-	distutils-r1_python_prepare_all
-}
-
 python_compile_all() {
 	use doc && emake -C docs
 }
