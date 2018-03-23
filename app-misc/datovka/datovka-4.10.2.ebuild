@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit qmake-utils gnome2-utils
+inherit gnome2-utils qmake-utils
 
 DESCRIPTION="GUI to access the Czech eGov system of Datove schranky"
-HOMEPAGE="https://labs.nic.cz/cs/datovka.html"
+HOMEPAGE="https://www.datovka.cz/"
 SRC_URI="https://secure.nic.cz/files/datove_schranky/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
@@ -36,8 +36,8 @@ DEPEND="
 DOCS=( ChangeLog README )
 
 src_configure() {
-	lrelease datovka.pro
-	eqmake5 PREFIX="/usr" DISABLE_VERSION_CHECK_BY_DEFAULT=1 TEXT_FILES_INST_DIR="/usr/share/${PN}/"
+	lrelease datovka.pro || die
+	eqmake5 PREFIX="/usr" DISABLE_VERSION_NOTIFICATION=1 TEXT_FILES_INST_DIR="/usr/share/${PN}/"
 }
 
 src_install() {

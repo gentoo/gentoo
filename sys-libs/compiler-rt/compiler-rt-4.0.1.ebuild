@@ -20,13 +20,13 @@ SLOT="${PV%_*}"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="+clang test"
 
-LLVM_MAX_SLOT=${SLOT%%.*}
+CLANG_SLOT=${SLOT%%.*}
 RDEPEND="!=sys-libs/compiler-rt-${SLOT}*:0"
 # llvm-4 needed for --cmakedir
 DEPEND="
 	>=sys-devel/llvm-4
 	clang? ( sys-devel/clang )
-	test? ( =sys-devel/clang-${PV%_*}*:${LLVM_MAX_SLOT} )
+	test? ( =sys-devel/clang-${PV%_*}*:${CLANG_SLOT} )
 	${PYTHON_DEPS}"
 
 S=${WORKDIR}/${P/_/}.src
@@ -88,9 +88,9 @@ src_test() {
 	# prepare a test compiler
 	# copy clang over since resource_dir is located relatively to binary
 	# therefore, we can put our new libraries in it
-	mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAX_SLOT}{/bin,$(get_libdir)},clang/${SLOT}/include} || die
-	cp "${EPREFIX}"/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang{,++} \
-		"${BUILD_DIR}"/lib/llvm/${LLVM_MAX_SLOT}/bin/ || die
+	mkdir -p "${BUILD_DIR}"/lib/{llvm/${CLANG_SLOT}{/bin,$(get_libdir)},clang/${SLOT}/include} || die
+	cp "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/bin/clang{,++} \
+		"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/bin/ || die
 	cp "${EPREFIX}/usr/lib/clang/${SLOT}/include"/*.h \
 		"${BUILD_DIR}/lib/clang/${SLOT}/include/" || die
 
@@ -128,7 +128,7 @@ src_test() {
 		einfo "Running tests for ABI=${ABI}"
 		# use -k to run all tests even if some fail
 		emake -k \
-			CC="${BUILD_DIR}/lib/llvm/${LLVM_MAX_SLOT}/bin/clang" \
+			CC="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang" \
 			CFLAGS="$(get_abi_CFLAGS)" \
 			CPPFLAGS='-I../../../lib/builtins' \
 			LDFLAGS='-rtlib=compiler-rt' \

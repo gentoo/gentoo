@@ -32,7 +32,7 @@ src_install() {
 
 	einfo "Installing agendavcli utility"
 	sed -i -e '/__DIR__/s:/web/:/:' agendavcli || die
-	sed -i -e '/migrations_directory/s:web/::' || die
+	sed -i -e '/migrations_directory/s:web/::' migrations.yml || die
 	doins migrations.yml
 	exeinto "${MY_HOSTROOTDIR}/${PN}"
 	doexe agendavcli
