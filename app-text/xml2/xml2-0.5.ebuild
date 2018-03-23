@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="These tools are used to convert XML and HTML to and from a line-oriented format"
 HOMEPAGE="http://dan.egnor.name/xml2"
