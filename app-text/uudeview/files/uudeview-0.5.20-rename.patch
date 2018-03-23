@@ -5,10 +5,8 @@
 ...
 + -- Chris Hanson <cph@debian.org>  Sun, 7 Sep 2003 01:05:07 -0400
 
-Index: uudeview-0.5.20/uulib/uulib.c
-===================================================================
---- uudeview-0.5.20.orig/uulib/uulib.c
-+++ uudeview-0.5.20/uulib/uulib.c
+--- a/uulib/uulib.c
++++ b/uulib/uulib.c
 @@ -872,7 +872,10 @@ UUDecodeToTemp (uulist *thefile)
  }
  
