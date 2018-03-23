@@ -1,0 +1,78 @@
+[PATCH] conf: avoid reporting errors when network driver is disabled
+
+In previous releases all these methods were a no-op if the network
+driver is disabled. These helper methods are called unconditionally for
+all types of network interface, so must be no-ops if missing. Other code
+will already generate an error if the network driver is disabled and a
+NIC with type=network is used.
+
+Signed-off-by: Daniel P. Berrangé <berrange redhat com>
+---
+ src/conf/domain_conf.c | 23 +++++++++--------------
+ 1 file changed, 9 insertions(+), 14 deletions(-)
+
+diff --git a/src/conf/domain_conf.c b/src/conf/domain_conf.c
+index c8d051fa9f..79d6bd378e 100644
+--- a/src/conf/domain_conf.c
++++ b/src/conf/domain_conf.c
+@@ -28979,10 +28979,13 @@ int
+ virDomainNetAllocateActualDevice(virDomainDefPtr dom,
+                                  virDomainNetDefPtr iface)
+ {
++    /* Just silently ignore if network driver isn't present. If something
++     * has tried to use a NIC with type=network, other code will already
++     * cause an error. This ensures type=bridge doesn't break when
++     * network driver is compiled out.
++     */
+     if (!netAllocate) {
+-        virReportError(VIR_ERR_NO_SUPPORT, "%s",
+-                       _("Network device allocation not available"));
+-        return -1;
++        return 0;
+     }
+ 
+     return netAllocate(dom, iface);
+@@ -28993,8 +28996,6 @@ virDomainNetNotifyActualDevice(virDomainDefPtr dom,
+                                virDomainNetDefPtr iface)
+ {
+     if (!netNotify) {
+-        virReportError(VIR_ERR_NO_SUPPORT, "%s",
+-                       _("Network device notification not available"));
+         return;
+     }
+ 
+@@ -29007,9 +29008,7 @@ virDomainNetReleaseActualDevice(virDomainDefPtr dom,
+                                 virDomainNetDefPtr iface)
+ {
+     if (!netRelease) {
+-        virReportError(VIR_ERR_NO_SUPPORT, "%s",
+-                       _("Network device release not available"));
+-        return -1;
++        return 0;
+     }
+ 
+     return netRelease(dom, iface);
+@@ -29020,9 +29019,7 @@ virDomainNetBandwidthChangeAllowed(virDomainNetDefPtr iface,
+                                    virNetDevBandwidthPtr newBandwidth)
+ {
+     if (!netBandwidthChangeAllowed) {
+-        virReportError(VIR_ERR_NO_SUPPORT, "%s",
+-                       _("Network device bandwidth change query not available"));
+-        return -1;
++        return 0;
+     }
+ 
+     return netBandwidthChangeAllowed(iface, newBandwidth);
+@@ -29033,9 +29030,7 @@ virDomainNetBandwidthUpdate(virDomainNetDefPtr iface,
+                             virNetDevBandwidthPtr newBandwidth)
+ {
+     if (!netBandwidthUpdate) {
+-        virReportError(VIR_ERR_NO_SUPPORT, "%s",
+-                       _("Network device bandwidth update not available"));
+-        return -1;
++        return 0;
+     }
+ 
+     return netBandwidthUpdate(iface, newBandwidth);
+-- 
+2.14.3
