@@ -126,6 +126,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch # bug #609488
+	"${FILESDIR}"/${P}-unbreak_my_bridge.patch # bug 650660
 )
 
 pkg_setup() {
@@ -238,12 +239,6 @@ src_prepare() {
 }
 
 src_configure() {
-	#
-	# With 4.1.0 we should always enable networking support - otherwise not
-	# even minimal networking is available. Yes, this degrades
-	# USE=virt-network to a mere runtime-dep USE flag. But let's keep it
-	# for compatibility and convenience.
-	#
 	local myeconfargs=(
 		$(use_with apparmor)
 		$(use_with apparmor apparmor-profiles)
@@ -277,14 +272,13 @@ src_configure() {
 		$(use_with udev)
 		$(use_with uml)
 		$(use_with vepa virtualport)
+		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
 		$(use_with xen)
 		$(use_with xen xen-inotify)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
-
-		--with-network
 
 		--without-hal
 		--without-netcf
