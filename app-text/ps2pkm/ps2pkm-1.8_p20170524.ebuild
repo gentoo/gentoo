@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Tool that converts a PostScript type1 font into a corresponding TeX PK font"
 HOMEPAGE="http://tug.org/texlive/"
