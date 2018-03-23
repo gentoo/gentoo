@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 WX_GTK_VER="3.0-gtk3"
 
-inherit fdo-mime wxwidgets
+inherit wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="http://xchm.sourceforge.net/"
@@ -19,7 +19,9 @@ DEPEND=">=dev-libs/chmlib-0.36
 	x11-libs/wxGTK:${WX_GTK_VER}[X]"
 RDEPEND=${DEPEND}
 
-PATCHES=( "${FILESDIR}"/${P}-wx3.0-compat.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.23-wx3.0-compat.patch
+)
 
 src_prepare() {
 	setup-wxwidgets
@@ -41,11 +43,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
