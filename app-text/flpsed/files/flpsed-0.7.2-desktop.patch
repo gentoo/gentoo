@@ -1,5 +1,5 @@
---- flpsed-0.7.2/flpsed.desktop
-+++ flpsed-0.7.2/flpsed.desktop
+--- a/flpsed.desktop
++++ b/flpsed.desktop
 @@ -11,4 +11,4 @@
  StartupNotify=true
  Categories=Graphics;

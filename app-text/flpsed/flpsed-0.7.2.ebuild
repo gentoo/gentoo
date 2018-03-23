@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils
+inherit desktop
 
 DESCRIPTION="Pseudo PostScript editor"
 HOMEPAGE="http://flpsed.org/flpsed.html"
@@ -21,9 +21,9 @@ RDEPEND="x11-libs/libX11
 	app-text/ghostscript-gpl[X]"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-desktop.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.2-desktop.patch
+)
 
 src_install() {
 	default
