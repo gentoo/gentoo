@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Text Encoding Conversion toolkit"
 HOMEPAGE="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&cat_id=TECkit"
@@ -18,8 +18,12 @@ RDEPEND="sys-libs/zlib
 	dev-libs/expat"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.1-mixcflagscxxflags.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.5.1-mixcflagscxxflags.patch"
+	default
 	rm -f configure
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
 	eautoreconf
