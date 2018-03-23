@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils bash-completion-r1
+inherit bash-completion-r1
 
 DESCRIPTION="Script for unpacking various file formats"
 HOMEPAGE="https://packages.qa.debian.org/u/unp.html"
@@ -22,9 +22,9 @@ DEPEND="nls? ( sys-devel/gettext )"
 RDEPEND="${DEPEND}
 	dev-lang/perl"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-remove-deprecated-have.diff"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-remove-deprecated-have.diff"
+)
 
 src_compile() {
 	if use nls; then
