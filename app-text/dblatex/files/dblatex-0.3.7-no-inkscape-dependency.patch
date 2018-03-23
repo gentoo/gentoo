@@ -1,6 +1,5 @@
-diff -Naur dblatex-0.3.7-orig/lib/dbtexmf/core/imagedata.py dblatex-0.3.7/lib/dbtexmf/core/imagedata.py
---- dblatex-0.3.7-orig/lib/dbtexmf/core/imagedata.py	2015-08-07 10:47:53.000000000 +0100
-+++ dblatex-0.3.7/lib/dbtexmf/core/imagedata.py	2015-11-08 22:36:41.771457222 +0000
+--- a/lib/dbtexmf/core/imagedata.py
++++ b/lib/dbtexmf/core/imagedata.py
 @@ -66,7 +66,7 @@
  
  class SvgConverter(ImageConverter):
