@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A file sorting program which uses the bogosort algorithm"
 HOMEPAGE="http://www.lysator.liu.se/~qha/bogosort/"
@@ -17,11 +17,10 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/xmalloc.patch \
-		"${FILESDIR}"/${P}-glibc-2.10.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.2-xmalloc.patch
+	"${FILESDIR}"/${PN}-0.4.2-glibc-2.10.patch
+)
 
 src_configure() {
 	tc-export CC
