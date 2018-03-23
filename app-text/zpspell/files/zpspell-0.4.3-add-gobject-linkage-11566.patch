@@ -1,7 +1,5 @@
-Index: zpspell-0.4.3/CMakeLists.txt
-===================================================================
---- zpspell-0.4.3.orig/CMakeLists.txt
-+++ zpspell-0.4.3/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -101,5 +101,5 @@ include_directories(${DBUS_INCLUDE_DIR})
  include_directories(${GLIB2_INCLUDE_DIR})
  include_directories(${GLIB_CONFIG_DIR})

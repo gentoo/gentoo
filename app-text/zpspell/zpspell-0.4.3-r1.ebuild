@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 inherit cmake-utils
 
@@ -17,7 +17,10 @@ DEPEND="dev-libs/dbus-glib"
 RDEPEND="${DEPEND}
 	app-text/zemberek-server"
 
-PATCHES=( "${FILESDIR}/add-gobject-linkage-11566.diff" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.3-add-gobject-linkage-11566.patch
+)
+
 DOCS=( AUTHORS README )
 
 pkg_postinst() {
