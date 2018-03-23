@@ -7,8 +7,6 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers.git"
 	inherit git-r3
-
-	PATCHES=( "${FILESDIR}/${P}-no-external-sources.patch" )
 else
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers/archive/sdk-${PV}.tar.gz -> ${P}.tar.gz"

@@ -1,0 +1,45 @@
+From 6332a429ed415187599ecce7d8a169ee19f0bbe5 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 4 Mar 2018 17:34:33 -0500
+Subject: [PATCH 1/1] scripts/pyzor: read stdin as binary in _get_input_msg().
+
+Reading stdin in python-3.x is done as text, with a best-guess
+encoding. But this can go awry: for example, if an iso-8859-1 message
+is passed in and if python guesses the "utf-8" encoding, then read()
+will fail with a UnicodeDecodeError on non-ASCII characters. For
+example, the "copyright" symbol is a single byte 0xa9 in iso-8859-1,
+and the utf-8 decoder can't handle it:
+
+  UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa9... invalid
+  start byte
+
+Instead -- and as was done in python-2.x -- we can read stdin as
+binary using the new get_binary_stdin() function. Afterwards, we use
+email.message_from_bytes() instead of the email.message_from_file()
+constructor to parse the byte data. The resulting function is able to
+correctly parse these messages.
+
+Closes: https://github.com/SpamExperts/pyzor/issues/64
+---
+ scripts/pyzor | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/pyzor b/scripts/pyzor
+index 567a7f9..1ba632f 100755
+--- a/scripts/pyzor
++++ b/scripts/pyzor
+@@ -171,7 +171,10 @@ def _get_input_digests(dummy):
+ 
+ 
+ def _get_input_msg(digester):
+-    msg = email.message_from_file(sys.stdin)
++    # Read and process stdin as bytes because we don't know its
++    # encoding. Python-3.x will try to guess -- and can sometimes
++    # guess wrong -- leading to decoding errors in read().
++    msg = email.message_from_bytes(get_binary_stdin().read())
+     digested = digester(msg).value
+     yield digested
+ 
+-- 
+2.13.6
+
