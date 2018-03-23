@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="static-libs"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.0.2-ppc_ppc64.patch
+	epatch "${FILESDIR}"/${PN}-2.0.2-ppc_ppc64_sparc.patch
 	[[ ${PV} == *9999 ]] && eautoreconf
 	autotools-multilib_src_prepare
 }
