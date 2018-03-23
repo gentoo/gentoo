@@ -1,5 +1,5 @@
---- a/rfc-3.2.3/rfc-3.2.3
-+++ b/rfc-3.2.3/rfc-3.2.3
+--- a/rfc-3.2.3
++++ b/rfc-3.2.3
 @@ -36,8 +36,8 @@
  
  # These make it avail for all users if you can't 
