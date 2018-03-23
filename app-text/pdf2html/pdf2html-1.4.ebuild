@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="Converts pdf files to html files"
 HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~clock/twibright/pdf2html/"
@@ -19,11 +19,10 @@ RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
 	>=media-gfx/imagemagick-6"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-libpng15.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4-gentoo.patch \
+	"${FILESDIR}"/${PN}-1.4-libpng15.patch
+)
 
 src_compile() {
 	tc-export CC
