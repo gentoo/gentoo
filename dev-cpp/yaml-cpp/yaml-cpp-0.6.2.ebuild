@@ -14,12 +14,14 @@ SLOT="0/06"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
+DEPEND="test? ( dev-cpp/gtest )"
+
 # (sic!)
 S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-cve-2017-5950.patch"
-	"${FILESDIR}/${P}-externalize-googletest-project.patch" )
+	"${FILESDIR}/${P}-CVE-2017-5950.patch"
+	"${FILESDIR}/${P}-unbundle-googletest-project.patch" )
 
 src_prepare() {
 	sed -i \
