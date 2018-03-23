@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,8 +9,8 @@ inherit distutils-r1
 MY_P="Sancho-${PV}"
 
 DESCRIPTION="Sancho is a unit testing framework"
-HOMEPAGE="http://www.mems-exchange.org/software/sancho/"
-SRC_URI="http://www.mems-exchange.org/software/files/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.mems-exchange.org/software/sancho/"
+SRC_URI="https://www.mems-exchange.org/software/files/${PN}/${MY_P}.tar.gz"
 
 LICENSE="CNRI"
 SLOT="0"
