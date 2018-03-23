@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,12 +27,8 @@ HTML_DOCS=( html )
 
 WX_GTK_VER=3.0
 
+PATCHES="${FILESDIR}/${PV}-suffix.patch"
+
 pkg_setup() {
 	setup-wxwidgets
-}
-
-src_prepare() {
-# Fix syntax file in makefile
-	eapply_user
-	epatch "${FILESDIR}/${PV}-suffix.patch"
 }
