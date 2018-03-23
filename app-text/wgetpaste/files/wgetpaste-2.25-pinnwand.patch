@@ -1,5 +1,5 @@
---- /var/tmp/portage/app-text/wgetpaste-2.25-r1/work/wgetpaste-2.25/wgetpaste	2014-05-23 20:51:44.000000000 +0400
-+++ /usr/bin/wgetpaste	2014-09-14 16:46:21.345261294 +0400
+--- a/wgetpaste
++++ b/wgetpaste
 @@ -16,8 +16,10 @@
  ### services
  SERVICES="bpaste ca codepad dpaste gists poundpython"
