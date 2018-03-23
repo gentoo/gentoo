@@ -15,7 +15,7 @@
 		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name="http">Enable support for the JSON-RPC and REST HTTP server (builtin net-p2p/bitcoind)</flag>
 		<flag name="knots">Build enhanced Bitcoin Knots version, rather than Bitcoin Core</flag>
-		<flag name="libevent">Use dev-libs/libevent</flag>
+		<flag name="libevent">Use dev-libs/libevent (needed for JSON-RPC, REST, and Tor auto-configuration</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
 		<flag name="tor">Enable automatic configuration of a Tor hidden service</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
