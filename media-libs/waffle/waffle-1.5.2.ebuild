@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,10 +15,10 @@ DESCRIPTION="Library that allows selection of GL API and of window system at run
 HOMEPAGE="https://people.freedesktop.org/~chadversary/waffle/"
 
 if [[ $PV = 9999* ]]; then
-	KEYWORDS=""
+	KEYWORDS="~ppc64"
 else
 	SRC_URI="https://people.freedesktop.org/~chadversary/${PN}/files/release/${P}/${P}.tar.xz"
-	KEYWORDS="amd64 arm x86"
+	KEYWORDS="amd64 arm ~ppc64 x86"
 fi
 
 LICENSE="BSD-2"
