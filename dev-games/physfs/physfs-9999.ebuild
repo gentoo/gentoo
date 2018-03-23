@@ -47,10 +47,9 @@ multilib_src_compile() {
 	multilib_is_native_abi && use doc && cmake-utils_src_compile docs
 }
 
-multilib_src_install() {
-	cmake-utils_src_install
-
-	if multilib_is_native_abi && use doc ; then
+multilib_src_install_all() {
+	einstalldocs
+	if use doc ; then
 		docinto html
 		dodoc -r "${CMAKE_BUILD_DIR}"/docs/html/*
 	fi
