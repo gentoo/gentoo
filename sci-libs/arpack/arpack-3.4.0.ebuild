@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit autotools eutils fortran-2 toolchain-funcs
 MY_P="${PN}-ng_${PV}"
 
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
-HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ http://forge.scilab.org/index.php/p/arpack-ng/"
+HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
 SRC_URI="
 	https://github.com/opencollab/${PN}-ng/archive/${PV}.tar.gz -> ${P}.tar.gz
 	doc? (
