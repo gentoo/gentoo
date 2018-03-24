@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit distutils-r1 flag-o-matic versionator
 
 MY_PV="$(replace_all_version_separators  '_' )"
 DESCRIPTION="Python bindings for Network Security Services (NSS)"
-HOMEPAGE="http://www.mozilla.org/projects/security/pki/python-nss/"
+HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Python_binding_for_NSS"
 SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/security/${PN}/releases/PYNSS_RELEASE_${MY_PV}/src/${P}.tar.bz2"
 
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2 )"
