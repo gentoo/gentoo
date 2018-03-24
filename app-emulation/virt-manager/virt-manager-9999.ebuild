@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit gnome2 distutils-r1
@@ -69,9 +69,6 @@ src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
 
 	distutils-r1_src_install
-
-	python_fix_shebang \
-		"${ED}"/usr/share/virt-manager/virt-{clone,convert,install,manager}
 }
 
 pkg_preinst() {
