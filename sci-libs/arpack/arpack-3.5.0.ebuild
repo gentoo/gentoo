@@ -5,8 +5,6 @@ EAPI=6
 
 inherit autotools eutils fortran-2 toolchain-funcs
 
-MY_P="${PN}-ng_${PV}"
-
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
 SRC_URI="
