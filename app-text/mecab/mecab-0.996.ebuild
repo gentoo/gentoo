@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Yet Another Part-of-Speech and Morphological Analyzer"
 HOMEPAGE="http://mecab.sourceforge.net/"
@@ -22,12 +22,17 @@ PDEPEND="|| (
 		app-dicts/mecab-naist-jdic[unicode=]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.98-iconv.patch"
+)
+
 src_prepare() {
 	sed -i \
 		-e "/CFLAGS/s/-O3/${CFLAGS}/" \
 		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
 		configure.in || die
-	epatch "${FILESDIR}/${PN}-0.98-iconv.patch"
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -40,7 +45,7 @@ src_configure() {
 src_install() {
 	default
 	dodoc AUTHORS README
-	dohtml -r doc/*
+	HTML_DOCS="doc/." einstalldocs
 
 	use static-libs || find "${ED}" -name '*.la' -delete
 }

@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Command-line interface to various pastebins"
 HOMEPAGE="http://wgetpaste.zlin.dk/"
@@ -17,10 +15,14 @@ IUSE=""
 DEPEND=""
 RDEPEND="net-misc/wget"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.25-pinnwand.patch
+	"${FILESDIR}"/${PN}-2.25-pinnwand-raw.patch
+)
+
 src_prepare() {
 	sed -i -e "s:/etc:\"${EPREFIX}\"/etc:g" wgetpaste || die
-	epatch "${FILESDIR}"/wgetpaste-2.25-pinnwand.patch
-	epatch "${FILESDIR}"/wgetpaste-2.25-pinnwand-raw.patch
+	default
 }
 
 src_install() {

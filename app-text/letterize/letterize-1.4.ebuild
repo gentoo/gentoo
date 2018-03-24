@@ -1,7 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -16,6 +16,7 @@ IUSE=""
 
 src_prepare() {
 	tc-export CC
+	eapply_user
 }
 
 src_install() {

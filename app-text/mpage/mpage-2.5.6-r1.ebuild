@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs
+EAPI=6
+inherit epatch toolchain-funcs
 
 DESCRIPTION="Many to one page printing utility"
 HOMEPAGE="http://www.mesa.nl/"
@@ -22,6 +22,7 @@ src_prepare() {
 	EPATCH_SOURCE="${WORKDIR}/${P}-gentoo-patchset" epatch \
 		01_previous_changes.patch 10_bts354935_fix_fontdefs.patch \
 		20_bts416573_manpage_fixes.patch 30_bts443280_libdir_manpage.patch
+	eapply_user
 }
 
 src_compile() {

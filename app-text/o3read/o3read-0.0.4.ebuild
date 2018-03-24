@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -23,6 +23,7 @@ src_prepare() {
 		-e '/^CFLAGS/g' \
 		-i Makefile || die
 	tc-export CC
+	eapply_user
 }
 
 src_install() {

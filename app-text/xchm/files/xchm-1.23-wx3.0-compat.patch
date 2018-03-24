@@ -4,8 +4,8 @@ Description: Fix code to compile with wxwidgets 3.0
 Author: Olly Betts <olly@survex.com>
 Last-Update: 2014-03-07
 
---- xchm-1.23.orig/src/chmframe.cpp
-+++ xchm-1.23/src/chmframe.cpp
+--- a/src/chmframe.cpp
++++ b/src/chmframe.cpp
 @@ -265,11 +265,7 @@ void CHMFrame::OnChangeFonts(wxCommandEv
  		enu.EnumerateFacenames();
  		_normalFonts = new wxArrayString;

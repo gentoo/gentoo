@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r1
 
 DESCRIPTION="Transform DocBook using TeX macros"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -28,11 +28,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.3.7-no-inkscape-dependency.patch"
+	"${FILESDIR}/${PN}-path-logging.patch"
+	"${FILESDIR}/${PN}-setup.patch"
+)
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-	epatch "${FILESDIR}/${P}-no-inkscape-dependency.patch"
-	epatch "${FILESDIR}/${PN}-path-logging.patch"
-	epatch "${FILESDIR}/${PN}-setup.patch"
 }
 
 python_install_all() {

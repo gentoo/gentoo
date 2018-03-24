@@ -1,6 +1,5 @@
-diff -Naur dblatex-0.3.7-orig/scripts/dblatex dblatex-0.3.7/scripts/dblatex
---- dblatex-0.3.7-orig/scripts/dblatex	2015-08-07 10:47:53.000000000 +0100
-+++ dblatex-0.3.7/scripts/dblatex	2015-11-08 22:30:50.362571505 +0000
+--- a/scripts/dblatex
++++ b/scripts/dblatex
 @@ -1,8 +1,10 @@
  #! /usr/bin/env python
  import sys

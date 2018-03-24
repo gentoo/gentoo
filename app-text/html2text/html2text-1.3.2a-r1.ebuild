@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A HTML to text converter"
 HOMEPAGE="http://www.mbayer.de/html2text/"
@@ -16,18 +16,16 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
-src_unpack() {
-	unpack ${P}.tar.gz
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.2a-compiler.patch"
+	"${FILESDIR}/${PN}-1.3.2a-urlistream-get.patch"
+	"${DISTDIR}/patch-utf8-${PN}-1.3.2a.diff"
+	"${DISTDIR}/patch-amd64-${PN}-1.3.2a.diff"
+)
 
 src_prepare() {
 	tc-export CXX
-	epatch \
-		"${FILESDIR}/${P}-compiler.patch" \
-		"${FILESDIR}/${P}-urlistream-get.patch" \
-		"${DISTDIR}/patch-utf8-${P}.diff" \
-		"${DISTDIR}/patch-amd64-${P}.diff"
-	epatch_user
+	default
 }
 
 src_compile() {

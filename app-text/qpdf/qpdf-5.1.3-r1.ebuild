@@ -1,9 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Command-line tool for structural, content-preserving transformation of PDF files"
 HOMEPAGE="http://qpdf.sourceforge.net/"
@@ -30,6 +28,7 @@ DOCS=( ChangeLog README TODO )
 src_prepare() {
 	# manually install docs
 	sed -i "/docdir/d" make/libtool.mk || die
+	default
 }
 
 src_configure() {
@@ -48,12 +47,12 @@ src_install() {
 
 	if use doc ; then
 		dodoc doc/qpdf-manual.pdf
-		dohtml doc/*
+		HTML_DOCS="doc/qpdf-manual.html doc/stylesheet.css" einstalldocs
 	fi
 
 	if use examples ; then
 		dobin examples/build/.libs/*
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -9,10 +9,8 @@
 
 + -- Chris Hanson <cph@debian.org>  Tue, 15 Aug 2006 00:40:50 -0400
 
-Index: uudeview-0.5.20/unix/uudeview.c
-===================================================================
---- uudeview-0.5.20.orig/unix/uudeview.c
-+++ uudeview-0.5.20/unix/uudeview.c
+--- a/unix/uudeview.c
++++ b/unix/uudeview.c
 @@ -657,9 +657,6 @@ work_comline (int argc, char *argv[])
      else switch (*(argv[number] + 1)) {
      case '\0':
@@ -44,10 +42,8 @@ Index: uudeview-0.5.20/unix/uudeview.c
  
    return 1;
  }
-Index: uudeview-0.5.20/uulib/uunconc.c
-===================================================================
---- uudeview-0.5.20.orig/uulib/uunconc.c
-+++ uudeview-0.5.20/uulib/uunconc.c
+--- a/uulib/uunconc.c
++++ b/uulib/uunconc.c
 @@ -1437,6 +1437,9 @@ UUDecode (uulist *data)
  	res = UURET_IOERR;
  	break;
@@ -58,10 +54,8 @@ Index: uudeview-0.5.20/uulib/uunconc.c
        _FP_strncpy (uugen_fnbuffer, iter->data->sfname, 1024);
      }
  
-Index: uudeview-0.5.20/uulib/uuscan.c
-===================================================================
---- uudeview-0.5.20.orig/uulib/uuscan.c
-+++ uudeview-0.5.20/uulib/uuscan.c
+--- a/uulib/uuscan.c
++++ b/uulib/uuscan.c
 @@ -387,10 +387,10 @@ ParseValue (char *attribute)
  	   *attribute != '(' && *attribute != ')' &&
  	   *attribute != '<' && *attribute != '>' &&
@@ -77,10 +71,8 @@ Index: uudeview-0.5.20/uulib/uuscan.c
  	   *attribute != '=' && length < 255) {
        *ptr++ = *attribute++;
        length++;
-Index: uudeview-0.5.20/uulib/uustring.c
-===================================================================
---- uudeview-0.5.20.orig/uulib/uustring.c
-+++ uudeview-0.5.20/uulib/uustring.c
+--- a/uulib/uustring.c
++++ b/uulib/uustring.c
 @@ -107,6 +107,7 @@ static stringmap messages[] = {
    { S_MIME_B_NOT_FOUND, "Boundary expected on Multipart message but found EOF" },
    { S_MIME_MULTI_DEPTH, "Multipart message nested too deep" },
@@ -89,10 +81,8 @@ Index: uudeview-0.5.20/uulib/uustring.c
  
    { 0, "" }
  };
-Index: uudeview-0.5.20/uulib/uustring.h
-===================================================================
---- uudeview-0.5.20.orig/uulib/uustring.h
-+++ uudeview-0.5.20/uulib/uustring.h
+--- a/uulib/uustring.h
++++ b/uulib/uustring.h
 @@ -36,3 +36,4 @@
  #define S_MIME_B_NOT_FOUND    35
  #define S_MIME_MULTI_DEPTH    36

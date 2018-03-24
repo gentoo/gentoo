@@ -9,10 +9,8 @@
 ...
 +	* Corrected some manpages
 
-Index: uudeview-0.5.20/man/uudeview.1
-===================================================================
---- uudeview-0.5.20.orig/man/uudeview.1
-+++ uudeview-0.5.20/man/uudeview.1
+--- a/man/uudeview.1
++++ b/man/uudeview.1
 @@ -164,6 +164,16 @@ delivered in have different subject line
  verbosity. Normally, the program prints some status messages
  while reading the input files, which can be very helpful if something
@@ -30,10 +28,8 @@ Index: uudeview-0.5.20/man/uudeview.1
  .TP
  .B -n
  No progress bars. Normally, UUDeview prints ASCII bars crawling up
-Index: uudeview-0.5.20/man/uuwish.1
-===================================================================
---- /dev/null
-+++ uudeview-0.5.20/man/uuwish.1
+--- a/man/uuwish.1
++++ b/man/uuwish.1
 @@ -0,0 +1,45 @@
 +.\" Copyright (c) 1999  Roland Rosenfeld <roland@spinnaker.de>
 +.\" changes Copyright (c) 2001  Chris Hanson <cph@debian.org>
@@ -80,10 +76,8 @@ Index: uudeview-0.5.20/man/uuwish.1
 +.PP
 +This manual page was written by Roland Rosenfeld <roland@debian.org>,
 +for the Debian GNU/Linux system (but may be used by others).
-Index: uudeview-0.5.20/configure.in
-===================================================================
---- uudeview-0.5.20.orig/configure.in
-+++ uudeview-0.5.20/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -607,7 +607,7 @@ if test "x$have_minews" = "xyes" ; then
  fi
  if test "x$have_tk" != "xno" ; then

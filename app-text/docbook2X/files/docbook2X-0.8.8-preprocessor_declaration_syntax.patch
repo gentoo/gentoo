@@ -13,9 +13,8 @@
 ## DP: <URL:http://lists.gnu.org/archive/html/groff/2007-11/msg00023.html>
 
 @DPATCH@
-diff -urNad trunk~/perl/db2x_manxml.pl trunk/perl/db2x_manxml.pl
---- trunk~/perl/db2x_manxml.pl	2006-04-22 17:21:32.000000000 +0200
-+++ trunk/perl/db2x_manxml.pl	2007-11-24 01:27:37.000000000 +0100
+--- a/perl/db2x_manxml.pl
++++ b/perl/db2x_manxml.pl
 @@ -342,6 +342,25 @@
      $self->{line_start} = 1;
  }
@@ -67,9 +66,8 @@ diff -urNad trunk~/perl/db2x_manxml.pl trunk/perl/db2x_manxml.pl
      
      # Define escapes for switching to and from monospace fonts (groff only)
      $self->{rw}->request(qw{ .if \n(.g .ds T< \\\\FC});
-diff -urNad trunk~/xslt/backend/db2x_manxml.xsl trunk/xslt/backend/db2x_manxml.xsl
---- trunk~/xslt/backend/db2x_manxml.xsl	2006-04-23 16:44:52.000000000 +0200
-+++ trunk/xslt/backend/db2x_manxml.xsl	2007-11-24 01:27:37.000000000 +0100
+--- a/xslt/backend/db2x_manxml.xsl
++++ b/xslt/backend/db2x_manxml.xsl
 @@ -528,7 +528,7 @@
        <exslt:document method="text" 
                        encoding="{$encoding}" 

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Expander is a utility that acts as a filter for text editors"
 HOMEPAGE="http://www.nedit.org"
@@ -16,9 +16,9 @@ IUSE=""
 
 S=${WORKDIR}/${PN}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.5-gentoo.patch
+)
 
 src_compile() {
 	emake -C src CC=$(tc-getCC)

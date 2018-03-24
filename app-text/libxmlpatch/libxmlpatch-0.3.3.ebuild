@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="A set of tools to create and apply patch to XML files using XPath"
 HOMEPAGE="http://xmlpatch.sourceforge.net/"
@@ -20,8 +20,13 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.3-gentoo.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -36,5 +41,5 @@ DOCS=( LEGAL_NOTICE README TODO ChangeLog )
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete
+	find "${ED}" -name '*.la' -delete || die
 }

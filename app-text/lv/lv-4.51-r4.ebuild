@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_P="${PN}${PV//./}"
 
@@ -27,10 +27,10 @@ DOCS=(README hello.sample)
 HTML_DOCS=(index.html relnote.html hello.sample.gif)
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-xz.diff
-	"${FILESDIR}"/${P}-tinfo.patch
-	"${FILESDIR}"/${P}-protos.patch
+	"${FILESDIR}"/${PN}-4.51-gentoo.patch
+	"${FILESDIR}"/${PN}-4.51-xz.patch
+	"${FILESDIR}"/${PN}-4.51-tinfo.patch
+	"${FILESDIR}"/${PN}-4.51-protos.patch
 )
 
 src_prepare() {

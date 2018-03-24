@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils prefix
+inherit prefix
 
 MY_PN="rfc"
 MY_P="${MY_PN}-${PV}"
@@ -21,10 +21,13 @@ IUSE=""
 RDEPEND="dev-lang/perl
 	|| ( www-client/lynx virtual/w3m )"
 
+PATCHES=(
+	"${FILESDIR}"/${MY_P}-paths.patch
+	"${FILESDIR}"/${MY_P}-index.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${MY_P}-paths.patch \
-		"${FILESDIR}"/${MY_P}-index.patch
+	default
 	eprefixify ${MY_P}
 }
 

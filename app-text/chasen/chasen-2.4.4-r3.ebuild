@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="Japanese Morphological Analysis System, ChaSen"
 HOMEPAGE="http://chasen-legacy.sourceforge.jp/"
@@ -19,9 +19,9 @@ RDEPEND="${DEPEND}
 	perl? ( !dev-perl/Text-ChaSen )"
 PDEPEND=">=app-dicts/ipadic-2.7.0"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-cve-2011-4000.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4.4-cve-2011-4000.patch
+)
 
 src_configure() {
 	econf $(use_enable static-libs static)
@@ -56,5 +56,5 @@ src_install () {
 		newdoc README README.perl
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

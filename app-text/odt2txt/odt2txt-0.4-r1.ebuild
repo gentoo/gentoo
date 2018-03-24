@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A simple converter from OpenDocument Text to plain text"
 HOMEPAGE="http://stosberg.net/odt2txt/"
@@ -23,9 +23,9 @@ DEPEND="${RDEPEND}
 	sys-apps/groff
 "
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-darwin_iconv.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4-darwin_iconv.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"

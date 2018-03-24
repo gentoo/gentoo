@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="uu, xx, base64, binhex decoder"
 HOMEPAGE="http://www.fpx.de/fp/Software/UUDeview/"
@@ -20,20 +20,20 @@ DEPEND="${RDEPEND}"
 DOCS=( HISTORY INSTALL README )
 
 PATCHES=(
-	"${FILESDIR}/${P}-bugfixes.patch"
-	"${FILESDIR}/${P}-CVE-2004-2265.patch"
-	"${FILESDIR}/${P}-CVE-2008-2266.patch"
-	"${FILESDIR}/${P}-man.patch"
-	"${FILESDIR}/${P}-rename.patch"
-	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${PN}-0.5.20-bugfixes.patch"
+	"${FILESDIR}/${PN}-0.5.20-CVE-2004-2265.patch"
+	"${FILESDIR}/${PN}-0.5.20-CVE-2008-2266.patch"
+	"${FILESDIR}/${PN}-0.5.20-man.patch"
+	"${FILESDIR}/${PN}-0.5.20-rename.patch"
+	"${FILESDIR}/${PN}-0.5.20-makefile.patch"
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	eapply "${PATCHES[@]}"
 
 	mv configure.in configure.ac || die
 
-	epatch_user
+	eapply_user
 	eautoreconf
 }
 

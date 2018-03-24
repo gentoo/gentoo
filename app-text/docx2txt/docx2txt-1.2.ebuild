@@ -1,9 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Convert MS Office docx files to plain text"
 HOMEPAGE="http://docx2txt.sourceforge.net/"
@@ -17,9 +15,9 @@ IUSE=""
 RDEPEND="app-arch/unzip
 	dev-lang/perl"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.1-paragraph-newline.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-paragraph-newline.patch
+)
 
 src_compile() { :; }
 

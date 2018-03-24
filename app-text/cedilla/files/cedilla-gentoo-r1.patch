@@ -1,6 +1,5 @@
-diff -Naur cedilla-0.3.orig/cedilla-config cedilla-0.3/cedilla-config
---- cedilla-0.3.orig/cedilla-config	2002-02-18 11:53:39.000000000 +0000
-+++ cedilla-0.3/cedilla-config	2003-06-02 20:36:44.000000000 +0000
+--- a/cedilla-config
++++ b/cedilla-config
 @@ -2,14 +2,14 @@
  CLISP=/usr/bin/clisp
  

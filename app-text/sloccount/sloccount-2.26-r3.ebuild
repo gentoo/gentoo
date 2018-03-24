@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tools for counting Source Lines of Code (SLOC) for a large number of languages"
 HOMEPAGE="http://www.dwheeler.com/sloccount/"
@@ -18,12 +18,15 @@ RDEPEND="dev-lang/perl
 		app-shells/bash"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-libexec.patch
-	epatch "${FILESDIR}"/${P}-coreutils-tail-n-fix.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-libexec.patch
+	"${FILESDIR}"/${P}-coreutils-tail-n-fix.patch
 	# support for .ebuild and #!/sbin/openrc-run:
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+)
 
+src_prepare() {
+	default
 	sed -i \
 		-e 's|^CC=gcc|CFLAGS+=|g' \
 		-e 's|$(CC)|& $(CFLAGS) $(LDFLAGS)|g' \
@@ -46,5 +49,5 @@ src_test() {
 
 src_install() {
 	emake PREFIX="${ED}/usr" DOC_DIR="${ED}/usr/share/doc/${PF}/" install
-	dohtml *html
+	HTML_DOCS="sloccount.html table.html" einstalldocs
 }

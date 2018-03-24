@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit flag-o-matic eutils libtool
+EAPI=6
+inherit flag-o-matic libtool
 
 DESCRIPTION="A thesaurus lib, tool and database"
 HOMEPAGE="https://sourceforge.net/projects/aiksaurus"
@@ -17,9 +17,12 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch #214248
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.1-gcc43.patch #214248
+)
 
+src_prepare() {
+	default
 	# Needed to make relink work on FreeBSD, without it won't install.
 	# Also needed for a sane .so versionning there.
 	elibtoolize
@@ -32,5 +35,6 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die
+	find "${ED}" -name '*.la' -delete || die
 	dodoc AUTHORS README* ChangeLog
 }

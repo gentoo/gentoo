@@ -1,7 +1,5 @@
-Index: libxmlpatch-0.3.3/tests/check_diff.c
-===================================================================
---- libxmlpatch-0.3.3.orig/tests/check_diff.c
-+++ libxmlpatch-0.3.3/tests/check_diff.c
+--- a/tests/check_diff.c
++++ b/tests/check_diff.c
 @@ -259,7 +259,13 @@ static struct {
  static void
  add_test (TCase *tc, int i)
@@ -17,10 +15,8 @@ Index: libxmlpatch-0.3.3/tests/check_diff.c
  }
  
  static void
-Index: libxmlpatch-0.3.3/configure.in
-===================================================================
---- libxmlpatch-0.3.3.orig/configure.in
-+++ libxmlpatch-0.3.3/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -74,7 +74,13 @@ fi
  
  PKG_CHECK_MODULES(DEPS_XML, libxml-2.0)
@@ -36,10 +32,8 @@ Index: libxmlpatch-0.3.3/configure.in
  
  AC_SUBST(DEPS_XML_CFLAGS)
  AC_SUBST(DEPS_XML_LIBS)
-Index: libxmlpatch-0.3.3/tests/Makefile.am
-===================================================================
---- libxmlpatch-0.3.3.orig/tests/Makefile.am
-+++ libxmlpatch-0.3.3/tests/Makefile.am
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
 @@ -1,10 +1,11 @@
 +if TESTS
  TESTS = test-diff

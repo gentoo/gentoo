@@ -1,6 +1,5 @@
-diff -Naur lv451.orig/src/Makefile.in lv451/src/Makefile.in
---- lv451.orig/src/Makefile.in	2004-01-06 16:22:17.000000000 +0900
-+++ lv451/src/Makefile.in	2008-10-08 00:20:13.000000000 +0900
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -25,6 +25,7 @@
  LDFLAGS=@LDFLAGS@
  INSTALL=@INSTALL@

@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils flag-o-matic multilib toolchain-funcs
+EAPI=6
+inherit flag-o-matic multilib toolchain-funcs
 
 MY_P="${P}-MIT"
 DESCRIPTION="C/Migemo -- Migemo library implementation in C"
@@ -22,8 +22,12 @@ RDEPEND=">=app-dicts/migemo-dict-200812[unicode=]
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2-migemo-dict.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.2-migemo-dict.diff"
+	eapply "${PATCHES[@]}"
 	touch dict/SKK-JISYO.L
 	if use unicode ; then
 		sed -i -e "/gcc:/s/euc-jp/utf-8/" dict/dict.mak || die
@@ -31,6 +35,7 @@ src_prepare() {
 
 	# Bug #246953
 	sed -i -e "s:-Wl,-rpath[^ ]*::" compile/Make_gcc.mak || die
+	eapply_user
 }
 
 src_compile() {
@@ -43,6 +48,7 @@ src_install() {
 	emake -j1 \
 		prefix="${D}/usr" \
 		libdir="${D}/usr/$(get_libdir)" \
+		docdir="${D}/usr/share/doc/${P}" \
 		gcc-install || die
 
 	local encoding

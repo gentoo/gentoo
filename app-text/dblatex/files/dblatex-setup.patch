@@ -1,5 +1,5 @@
---- dblatex-0.3.7-orig/setup.py	2015-08-07 10:47:53.000000000 +0100
-+++ dblatex-0.3.7/setup.py	2015-11-08 22:39:03.076213227 +0000
+--- a/setup.py
++++ b/setup.py
 @@ -23,7 +23,6 @@
  from distutils import log
  from subprocess import Popen, PIPE

@@ -1,8 +1,5 @@
-Files sloccount-2.26.orig/.makefile.swp and sloccount-2.26/.makefile.swp differ
-Files sloccount-2.26.orig/.sloccount.swp and sloccount-2.26/.sloccount.swp differ
-diff -ruN sloccount-2.26.orig/makefile sloccount-2.26/makefile
---- sloccount-2.26.orig/makefile	2005-02-20 21:26:00.000000000 +0100
-+++ sloccount-2.26/makefile	2005-02-20 21:32:58.000000000 +0100
+--- a/makefile
++++ b/makefile
 @@ -70,6 +70,7 @@
  ARCH=i386
  VERSIONEDNAME=$(NAME)-$(VERSION)
@@ -66,9 +63,8 @@ diff -ruN sloccount-2.26.orig/makefile sloccount-2.26/makefile
  
  
  clean:
-diff -ruN sloccount-2.26.orig/sloccount sloccount-2.26/sloccount
---- sloccount-2.26.orig/sloccount	2005-02-20 21:26:00.000000000 +0100
-+++ sloccount-2.26/sloccount	2005-02-20 21:33:25.000000000 +0100
+--- a/sloccount
++++ b/sloccount
 @@ -39,6 +39,9 @@
  
  startingdir=`pwd`

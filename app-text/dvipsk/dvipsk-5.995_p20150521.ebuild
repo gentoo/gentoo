@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 #TL_UPSTREAM_PATCHLEVEL="1"
 
-inherit texlive-common eutils
+inherit texlive-common
 
 DESCRIPTION="DVI-to-PostScript translator"
 HOMEPAGE="http://tug.org/texlive/"
