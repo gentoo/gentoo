@@ -1,45 +1,85 @@
-From 6332a429ed415187599ecce7d8a169ee19f0bbe5 Mon Sep 17 00:00:00 2001
+From 66225b32d2774cf37fa7f702f7eb26cd94094482 Mon Sep 17 00:00:00 2001
 From: Michael Orlitzky <michael@orlitzky.com>
-Date: Sun, 4 Mar 2018 17:34:33 -0500
-Subject: [PATCH 1/1] scripts/pyzor: read stdin as binary in _get_input_msg().
+Date: Sun, 4 Mar 2018 17:27:01 -0500
+Subject: [PATCH 1/1] scripts/pyzor: replace the client with the git (+ issue
+ 64 fix) version.
 
-Reading stdin in python-3.x is done as text, with a best-guess
-encoding. But this can go awry: for example, if an iso-8859-1 message
-is passed in and if python guesses the "utf-8" encoding, then read()
-will fail with a UnicodeDecodeError on non-ASCII characters. For
-example, the "copyright" symbol is a single byte 0xa9 in iso-8859-1,
-and the utf-8 decoder can't handle it:
-
-  UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa9... invalid
-  start byte
-
-Instead -- and as was done in python-2.x -- we can read stdin as
-binary using the new get_binary_stdin() function. Afterwards, we use
-email.message_from_bytes() instead of the email.message_from_file()
-constructor to parse the byte data. The resulting function is able to
-correctly parse these messages.
-
-Closes: https://github.com/SpamExperts/pyzor/issues/64
 ---
- scripts/pyzor | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ scripts/pyzor | 33 +++++++++++++++++++++++++++------
+ 1 file changed, 27 insertions(+), 6 deletions(-)
 
 diff --git a/scripts/pyzor b/scripts/pyzor
-index 567a7f9..1ba632f 100755
+index 19b1d21..86c6f7d 100755
 --- a/scripts/pyzor
 +++ b/scripts/pyzor
-@@ -171,7 +171,10 @@ def _get_input_digests(dummy):
+@@ -17,9 +17,9 @@ import tempfile
+ import threading
+ 
+ try:
+-    import ConfigParser
+-except ImportError:
+     import configparser as ConfigParser
++except ImportError:
++    import ConfigParser
+ 
+ import pyzor.digest
+ import pyzor.client
+@@ -110,7 +110,7 @@ def load_configuration():
+     config = ConfigParser.ConfigParser()
+     # Set the defaults.
+     config.add_section("client")
+-    for key, value in defaults.iteritems():
++    for key, value in defaults.items():
+         config.set("client", key, value)
+     # Override with the configuration.
+     config.read(os.path.join(options.homedir, "config"))
+@@ -171,14 +171,35 @@ def _get_input_digests(dummy):
  
  
  def _get_input_msg(digester):
 -    msg = email.message_from_file(sys.stdin)
-+    # Read and process stdin as bytes because we don't know its
-+    # encoding. Python-3.x will try to guess -- and can sometimes
-+    # guess wrong -- leading to decoding errors in read().
 +    msg = email.message_from_bytes(get_binary_stdin().read())
      digested = digester(msg).value
      yield digested
  
+ 
++def _is_binary_reader(stream, default=False):
++    try:
++        return isinstance(stream.read(0), bytes)
++    except Exception:
++        return default
++
++
++def get_binary_stdin():
++    # sys.stdin might or might not be binary in some extra cases.  By
++    # default it's obviously non binary which is the core of the
++    # problem but the docs recommend changing it to binary for such
++    # cases so we need to deal with it.
++    is_binary = _is_binary_reader(sys.stdin, False)
++    if is_binary:
++        return sys.stdin
++    buf = getattr(sys.stdin, 'buffer', None)
++    if buf is not None and _is_binary_reader(buf, True):
++        return buf
++    raise RuntimeError('Did not manage to get binary stdin')
++
++
+ def _get_input_mbox(digester):
+     tfile = tempfile.NamedTemporaryFile()
+-    tfile.write(sys.stdin.read().encode("utf8"))
++    tfile.write(get_binary_stdin().read())
+     tfile.seek(0)
+     mbox = mailbox.mbox(tfile.name)
+     for msg in mbox:
+@@ -372,7 +393,7 @@ def genkey(client, servers, config, hash_func=hashlib.sha1):
+         return False
+     # pylint: disable-msg=W0612
+     salt = "".join([chr(random.randint(0, 255))
+-                    for unused in xrange(hash_func(b"").digest_size)])
++                    for unused in range(hash_func(b"").digest_size)])
+     if sys.version_info >= (3, 0):
+         salt = salt.encode("utf8")
+     salt_digest = hash_func(salt)
 -- 
 2.13.6
 
