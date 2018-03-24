@@ -9,9 +9,11 @@ GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib
 
+MY_P=${P/_/-}
+
 DESCRIPTION="A system to store and display time-series data"
-HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
-SRC_URI="http://oss.oetiker.ch/rrdtool/pub/${P/_/-}.tar.gz"
+HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
+SRC_URI="${HOMEPAGE}pub/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/8.0.0"
@@ -48,8 +50,7 @@ RDEPEND="
 PDEPEND="
 	ruby? ( ~dev-ruby/rrdtool-bindings-${PV} )
 "
-
-S=${WORKDIR}/${P/_/-}
+S=${WORKDIR}/${MY_P}
 
 python_compile() {
 	cd bindings/python || die
