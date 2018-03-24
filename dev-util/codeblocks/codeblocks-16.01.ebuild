@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,8 @@ RDEPEND="app-arch/zip
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
 
 src_configure() {
 	touch "${S}"/revision.m4 -r "${S}"/acinclude.m4
