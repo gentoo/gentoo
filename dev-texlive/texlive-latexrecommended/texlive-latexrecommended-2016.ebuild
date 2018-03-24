@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="anysize  booktabs breqn caption cite cmap crop ctable eso-pic euenc euler extsizes fancybox fancyref fancyvrb float fontspec fp index jknapltx koma-script l3experimental l3kernel l3packages lineno listings mathspec mathtools mdwtools memoir metalogo microtype ms ntgclass parskip pdfpages polyglossia powerdot psfrag rcs sansmath section seminar sepnum setspace subfig textcase thumbpdf typehtml underscore unicode-math  xkeyval xltxtra xunicode collection-latexrecommended
 "

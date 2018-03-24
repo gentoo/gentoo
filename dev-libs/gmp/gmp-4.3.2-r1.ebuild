@@ -3,7 +3,7 @@
 
 # this ebuild is only for the libgmp.so.3 ABI SONAME
 
-EAPI="5"
+EAPI=5
 
 inherit eutils libtool toolchain-funcs multilib-minimal
 

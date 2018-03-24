@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="A GUI front-end to dd/dc3dd"
 HOMEPAGE="http://air-imager.sourceforge.net/"

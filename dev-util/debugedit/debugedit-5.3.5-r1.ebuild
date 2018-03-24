@@ -6,7 +6,7 @@
 # The files are in tools/
 # Or see $FILESDIR/update.sh
 
-EAPI="5"
+EAPI=5
 
 inherit toolchain-funcs eutils
 

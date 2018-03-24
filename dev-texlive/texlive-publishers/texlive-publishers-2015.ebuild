@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="IEEEconf IEEEtran aastex abntex2 acmconf active-conf adfathesis afparticle afthesis aguplus aiaa ametsoc anufinalexam aomart apa apa6 apa6e arsclassica articleingud asaetr ascelike bangorcsthesis beamer-FUBerlin bgteubner br-lex brandeis-dissertation cascadilla chem-journal classicthesis cmpj confproc dccpaper dithesis ebook ebsthesis ejpecp ekaia elbioimp elsarticle elteikthesis erdc estcpmm fbithesis fcltxdoc gaceta gatech-thesis gsemthesis gzt har2nat hobete icsv ieeepes ijmart imac imtekda jmlr jpsj kdgdocs kluwer lps matc3 matc3mem mcmthesis mentis mnras msu-thesis mugsthesis musuos muthesis nature nddiss ndsu-thesis nih nostarch nrc onrannual opteng philosophersimprint pittetd pkuthss powerdot-FUBerlin pracjourn procIAGssymp proposal ptptex psu-thesis resphilosophica resumecls revtex revtex4 ryethesis sageep sapthesis scrjrnl schule sduthesis seuthesis soton sphdthesis spie sr-vorl stellenbosch suftesi sugconf tabriz-thesis texilikechaps texilikecover thesis-ekf thesis-titlepage-fhac thuthesis toptesi tudscr tugboat tugboat-plain turabian tui uaclasses uadocs uafthesis ucbthesis ucdavisthesis ucthesis uestcthesis uiucredborder uiucthesis ulthese umthesis umich-thesis unamth-template unamthesis unswcover uothesis urcls uowthesis uowthesistitlepage uspatent ut-thesis uwthesis vancouver wsemclassic xcookybooky yathesis york-thesis collection-publishers
 "

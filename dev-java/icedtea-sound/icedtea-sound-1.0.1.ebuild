@@ -3,7 +3,7 @@
 
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
-EAPI="5"
+EAPI=5
 
 inherit eutils java-pkg-2 prefix
 

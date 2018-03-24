@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="aichej ajl amsrefs apacite apalike2 archaeologie beebe besjournals bestpapers bibarts biber bibexport bibhtml  biblatex-abnt biblatex-anonymous biblatex-apa biblatex-bookinarticle biblatex-bookinother biblatex-bwl biblatex-caspervector biblatex-chem biblatex-chicago biblatex-claves biblatex-dw biblatex-fiwi biblatex-gb7714-2015 biblatex-gost biblatex-historian biblatex-ieee biblatex-ijsra biblatex-iso690 biblatex-juradiss biblatex-lni biblatex-luh-ipw biblatex-manuscripts-philology biblatex-mla biblatex-morenames biblatex-multiple-dm biblatex-musuos biblatex-nature biblatex-nejm biblatex-nottsclassic biblatex-opcit-booktitle biblatex-philosophy biblatex-phys biblatex-publist biblatex-realauthor biblatex-sbl biblatex-science biblatex-source-division biblatex-subseries biblatex-swiss-legal biblatex-trad biblatex-true-citepages-omit biblist bibtexperllibs bibtopic bibtopicprefix bibunits biolett-bst bookdb breakcites cell chbibref chicago chicago-annote chembst chscite citeall collref compactbib crossrefware custom-bib din1505 dk-bib doipubmed ecobiblatex economic fbs figbib footbib francais-bst geschichtsfrkl harvard harvmac historische-zeitschrift ietfbibs ijqc inlinebib iopart-num jneurosci jurabib ksfh_nat listbib logreq margbib multibib multibibliography munich nar nmbib notes2bib notex-bst oscola perception pnas2009 rsc showtags sort-by-letters splitbib turabian-formatting uni-wtal-ger uni-wtal-lin urlbst usebib vak xcite collection-bibtexextra
 "

@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 MY_P="Yapsy-${PV}"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )

@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Scripts to convert regular ASCII text to man pages"
 HOMEPAGE="https://github.com/mvertes/txt2man"

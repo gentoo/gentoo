@@ -3,7 +3,7 @@
 
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
-EAPI="6"
+EAPI=6
 SLOT="8"
 
 inherit check-reqs gnome2-utils java-pkg-2 java-vm-2 multiprocessing pax-utils prefix versionator

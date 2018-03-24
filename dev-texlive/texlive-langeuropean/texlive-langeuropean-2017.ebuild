@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="armtex babel-albanian babel-bosnian babel-breton babel-croatian babel-danish babel-dutch babel-estonian babel-finnish babel-friulan babel-hungarian babel-icelandic babel-irish babel-kurmanji babel-latin babel-latvian babel-macedonian babel-norsk babel-occitan babel-piedmontese babel-romanian babel-romansh babel-samin babel-scottish babel-slovenian babel-swedish babel-turkish babel-welsh finbib gloss-occitan hrlatex hyphen-croatian hyphen-danish hyphen-dutch hyphen-estonian hyphen-finnish hyphen-friulan hyphen-hungarian hyphen-icelandic hyphen-irish hyphen-kurmanji hyphen-latin hyphen-latvian hyphen-lithuanian hyphen-norwegian hyphen-occitan hyphen-piedmontese hyphen-romanian hyphen-romansh hyphen-slovenian hyphen-swedish hyphen-turkish hyphen-uppersorbian hyphen-welsh lithuanian lshort-dutch lshort-estonian lshort-finnish lshort-slovenian lshort-turkish nevelok swebib turkmen collection-langeuropean
 "

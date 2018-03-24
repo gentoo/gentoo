@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Display a multi-line message large, fullscreen, black on white"
 HOMEPAGE="http://www.joachim-breitner.de/projects#screen-message"

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="edmac eplain  lollipop mltex psizzl startex texsis  xmltexconfig aleph antomega lambda mxedruli omega omegaware otibet collection-formatsextra
 "

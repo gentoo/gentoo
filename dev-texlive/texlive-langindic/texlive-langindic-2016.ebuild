@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="bangtex latexbangla bengali burmese ebong hyphen-indic hyphen-sanskrit sanskrit sanskrit-t1 velthuis wnri wnri-latex xetex-devanagari collection-langindic
 "

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="DocBook XML catalog auto-updater"
 HOMEPAGE="https://sources.gentoo.org/gentoo-src/build-docbook-catalog/"

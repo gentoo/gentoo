@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="context jmn context-account context-algorithmic context-animation context-annotation context-bnf context-chromato context-construction-plan context-cyrillicnumbers context-degrade context-fancybreak context-filter context-fixme context-french context-fullpage context-games context-gantt context-gnuplot context-letter context-lettrine context-lilypond context-mathsets context-notes-zh-cn context-rst context-ruby context-simplefonts context-simpleslides context-title context-transliterator context-typearea context-typescripts context-vim context-visualcounter collection-context
 "

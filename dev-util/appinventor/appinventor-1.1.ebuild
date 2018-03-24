@@ -1,7 +1,7 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 MY_P="${PN}-setup_${PV}"
 DESCRIPTION="MIT App Inventor Setup package"

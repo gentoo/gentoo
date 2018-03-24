@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 # We don't support the egg.recent bindings that are also provided - they are
 # deprecated, have deps we don't really want and there are no users in-tree.

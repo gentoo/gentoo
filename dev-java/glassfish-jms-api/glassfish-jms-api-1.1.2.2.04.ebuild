@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 JAVA_PKG_IUSE="doc source"
 
 inherit versionator java-pkg-2 java-ant-2

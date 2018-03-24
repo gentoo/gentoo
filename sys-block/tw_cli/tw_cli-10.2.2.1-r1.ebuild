@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 DESCRIPTION="3ware SATA/PATA/SAS RAID controller Command Line Interface tool"
 HOMEPAGE="http://www.lsi.com/products/raid-controllers/pages/3ware-sas-9750-8i.aspx"

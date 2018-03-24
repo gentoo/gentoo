@@ -3,7 +3,7 @@
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
-EAPI="5"
+EAPI=5
 inherit eutils flag-o-matic savedconfig toolchain-funcs multilib
 
 DESCRIPTION="Utilities for rescue and embedded systems"

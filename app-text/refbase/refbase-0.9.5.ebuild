@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 inherit depend.apache webapp
 
 DESCRIPTION="Web-based solution for managing scientific literature, references and citations"

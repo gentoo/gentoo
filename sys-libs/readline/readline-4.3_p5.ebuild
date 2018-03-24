@@ -3,7 +3,7 @@
 
 # This version is just for the ABI .4 library
 
-EAPI="5"
+EAPI=5
 
 inherit eutils multilib-minimal flag-o-matic
 

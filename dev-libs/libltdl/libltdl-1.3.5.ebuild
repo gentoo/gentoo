@@ -3,7 +3,7 @@
 
 # This ebuild provides libltdl.so.0.
 
-EAPI="4"
+EAPI=4
 
 inherit multilib-minimal
 

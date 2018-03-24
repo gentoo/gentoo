@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="avantgar bookman charter cm-super cmextra courier ec euro euro-ce eurosym fpl helvetic lm lm-math marvosym mathpazo manfnt-font mflogo-font ncntrsbk palatino pxfonts rsfs symbol tex-gyre tex-gyre-math times tipa txfonts utopia wasy wasy2-ps wasysym zapfchan zapfding collection-fontsrecommended
 "

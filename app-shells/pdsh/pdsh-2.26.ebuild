@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 
 DESCRIPTION="A high-performance, parallel remote shell utility"
 HOMEPAGE="https://computing.llnl.gov/linux/pdsh.html"

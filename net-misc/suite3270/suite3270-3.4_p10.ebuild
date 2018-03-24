@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 MY_PV=${PV/_p/ga}
 MY_P=${PN}-${MY_PV}

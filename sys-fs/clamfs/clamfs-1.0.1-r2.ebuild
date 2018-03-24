@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 inherit eutils linux-info
 
 DESCRIPTION="A FUSE-based user-space file system with on-access anti-virus file scanning"

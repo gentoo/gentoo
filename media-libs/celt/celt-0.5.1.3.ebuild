@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 
 DESCRIPTION="CELT is a very low delay audio codec designed for high-quality communications"
 HOMEPAGE="http://www.celt-codec.org/"

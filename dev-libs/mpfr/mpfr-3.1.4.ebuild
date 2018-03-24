@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 # NOTE: we cannot depend on autotools here starting with gcc-4.3.x
 inherit eutils libtool multilib-minimal

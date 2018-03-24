@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="aobs-tikz askmaps asyfig asypictureb autoarea bardiag beamerswitch binarytree blochsphere bloques blox bodegraph bondgraph bondgraphs braids bxeepic cachepic celtic chemfig combinedgraphics circuitikz curve curve2e curves dcpic diagmac2 doc-pictex dottex  dratex drs duotenzor ecgdraw eepic ellipse  epspdfconversion esk fast-diagram fig4latex fitbox flowchart forest genealogytree getmap gincltex gnuplottex gradientframe grafcet graphviz harveyballs here hf-tikz hobby hvfloat knitting knittingpattern lapdf latex-make lpic lroundrect makeshape mathspic miniplot mkpic modiagram neuralnetwork numericplots pb-diagram petri-nets  pgf-blur pgf-soroban pgf-spectra pgf-umlcd pgf-umlsd pgfgantt pgfkeyx pgfmolbio pgfopts pgfornament pgfplots picinpar pict2e pictex pictex2 pinlabel pmgraph prerex productbox pxpgfmark qcircuit qrcode randbild randomwalk reotex rviewport sa-tikz schemabloc scsnowman setdeck signchart smartdiagram spath3 swimgraf table-fct texdraw ticollege tipfr tikz-3dplot tikz-bayesnet tikz-cd tikz-dependency tikz-dimline tikz-feynman tikz-inet tikz-opm tikz-optics tikz-page tikz-palattice tikz-qtree tikz-timing tikzinclude tikzmark tikzorbital tikzpagenodes tikzpfeile tikzpeople tikzposter tikzscale tikzsymbols timing-diagrams tqft tkz-base tkz-berge tkz-doc tkz-euclide tkz-fct tkz-graph tkz-kiviat tkz-linknodes tkz-orm tkz-tab tsemlines tufte-latex venndiagram visualpstricks xpicture xypic collection-pictures
 "

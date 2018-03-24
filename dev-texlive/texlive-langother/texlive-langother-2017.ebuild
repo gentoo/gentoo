@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="amsldoc-vn aramaic-serto hyphen-armenian babel-azerbaijani babel-esperanto babel-georgian babel-hebrew babel-indonesian babel-interlingua babel-malay babel-sorbian babel-thai babel-vietnamese bangtex bengali burmese cjhebrew ctib ebong ethiop ethiop-t1 fc fonts-tlwg hyphen-afrikaans hyphen-coptic hyphen-esperanto hyphen-ethiopic hyphen-georgian hyphen-indic hyphen-indonesian hyphen-interlingua hyphen-sanskrit hyphen-thai hyphen-turkmen latexbangla lshort-thai lshort-vietnamese ntheorem-vn padauk sanskrit sanskrit-t1 thaienum velthuis vntex wnri wnri-latex xetex-devanagari collection-langother
 "

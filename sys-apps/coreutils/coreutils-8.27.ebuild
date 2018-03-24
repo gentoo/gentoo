@@ -7,7 +7,7 @@
 # cd ..
 # tar cf - coreutils-*/man/*.[0-9] | xz > coreutils-<ver>-man.tar.xz
 
-EAPI="5"
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs
 

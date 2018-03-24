@@ -3,7 +3,7 @@
 
 # Note: Keep version bumps in sync with dev-libs/libintl.
 
-EAPI="5"
+EAPI=5
 
 inherit epatch epunt-cxx ltprune mono-env libtool java-pkg-opt-2 multilib-minimal
 

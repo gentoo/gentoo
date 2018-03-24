@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="ae amscls amsmath babel babel-english babelbib carlisle colortbl fancyhdr fix2col geometry graphics hyperref latex latex-bin latex-fonts latexconfig ltxmisc mfnfss mptopdf natbib oberdiek pdftex-def pslatex psnfss pspicture tools url collection-latex
 "

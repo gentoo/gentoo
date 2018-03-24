@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 VALA_USE_DEPEND="vapigen"
 # FIXME: Claims to works with python3 but appears to be wishful thinking
 PYTHON_COMPAT=( python2_7 )

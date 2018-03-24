@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="abbr abstyles barr bitelist borceux c-pascal catcodes chronosys colorsep dinat dirtree docbytex dowith eijkhout encxvlna epigram fenixpar fltpoint fntproof gates ifetex iftex insbox lambda-lists langcode lecturer librarian mathdots metatex midnight navigator ofs pdf-trans plainpkg schemata shade systeme tabto-generic termmenu tracklang texapi upca xlop yax collection-genericextra
 "

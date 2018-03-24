@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="12many SIstyle SIunits alg algorithm2e algorithmicx algorithms amstex apxproof autobreak axodraw2 backnaur begriff binomexp biocon bitpattern bohr boldtensors bosisio bpchem bropd bytefield calculation ccfonts chemarrow chemcompounds chemcono chemexec chemformula chemgreek chemmacros chemnum chemschemex chemstyle clrscode clrscode3e commath complexity computational-complexity concmath concrete conteq correctmathalign cryptocode delim delimset delimseasy diffcoeff digiconfigs drawmatrix drawstack dyntree ebproof econometrics eltex emf endiagram engtlc eqnarray extarrows extpfeil faktor fnspe fouridx functan galois gastex gene-logic ghsystem gotoh grundgesetze gu hep hepnames hepparticles hepthesis hepunits interval ionumbers isomath karnaugh karnaugh-map karnaughmap logicproof longdivision lpform lplfitch lstbayes mathcomp mathpartir mathpunctspace matlab-prettifier mattens mgltex mhchem mhequ miller multiobjective mychemistry natded nath nuc nucleardata objectz oplotsymbl ot-tableau oubraces perfectcut physics prftree proba prooftrees pseudocode pygmentex pythonhighlight rec-thy revquantum ribbonproofs rmathbr sasnrdisplay sciposter sclang-prettifier sesamanuel sfg shuffle simpler-wick simplewick siunitx skmath spalign stanli statex statex2 steinmetz stmaryrd struktex substances subsupscripts susy syllogism sympytexpackage synproof t-angles tablor tensor tex-ewd textgreek textopo thmbox turnstile ulqda unitsdef venn xymtex yhmath youngtab ytableau collection-mathscience
 "

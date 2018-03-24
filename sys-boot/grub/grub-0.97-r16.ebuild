@@ -15,7 +15,7 @@
 # qtbz2 -s -j ${PKGDIR}/${CAT}/${PF}.tbz2 && \
 # mv ${PF}.tar.bz2 ${DISTDIR}/grub-static-${PVR}.tar.bz2
 
-EAPI="5"
+EAPI=5
 
 inherit eutils mount-boot toolchain-funcs linux-info flag-o-matic autotools pax-utils
 

@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="IPv6 address calculator"
 HOMEPAGE="http://www.deepspace6.net/projects/ipv6calc.html"

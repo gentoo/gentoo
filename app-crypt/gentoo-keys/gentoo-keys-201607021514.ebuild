@@ -1,7 +1,7 @@
 # Copyright 2014-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 DESCRIPTION="A Openpgp/gpg keyring of official Gentoo release media gpg keys"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Gentoo-keys"

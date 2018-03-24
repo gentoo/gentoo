@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="A collection of useful, independent include files for C/Assembler developers"
 HOMEPAGE="http://openwince.sourceforge.net/include/"

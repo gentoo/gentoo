@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 MY_PV="ff8b3892d0cfc53e744631ff5c6b34f13421edce"
 PHP_EXT_S="${WORKDIR}/${PN}-${MY_PV}/extension"

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="Configuration for freetype-infinality subpixel hinting"
 HOMEPAGE="http://www.infinality.net/blog/infinality-freetype-patches/"

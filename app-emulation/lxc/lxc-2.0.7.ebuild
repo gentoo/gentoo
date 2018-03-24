@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 MY_P="${P/_/-}"
 PYTHON_COMPAT=( python{3_4,3_5} )

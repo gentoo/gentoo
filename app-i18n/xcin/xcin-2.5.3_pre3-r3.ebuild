@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 inherit multilib eutils autotools libtool
 
 MY_P=${PN}_2.5.2.99.pre2+cvs20030224

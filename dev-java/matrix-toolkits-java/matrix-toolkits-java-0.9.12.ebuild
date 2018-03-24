@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 
 JAVA_PKG_IUSE="doc test"
 #WANT_ANT_TASKS="ant-junit"

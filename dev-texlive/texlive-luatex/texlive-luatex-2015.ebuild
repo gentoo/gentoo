@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="checkcites chickenize cloze enigma interpreter lua-check-hyphen lua-visual-debug lua2dox luabibentry luabidi luacode luaindex luainputenc luaintro lualatex-doc lualatex-math lualibs luamplib luaotfload luasseq luatexbase luatexko luatextra luatodonotes luaxml odsfile placeat selnolig showhyphens spelling ucharcat collection-luatex
 "

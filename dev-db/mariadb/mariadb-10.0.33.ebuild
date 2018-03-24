@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 MY_EXTRAS_VER="20170926-1321Z"
 SUBSLOT="18"
 MYSQL_PV_MAJOR="5.6"

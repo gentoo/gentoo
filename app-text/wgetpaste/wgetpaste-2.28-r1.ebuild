@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Command-line interface to various pastebins"
 HOMEPAGE="http://wgetpaste.zlin.dk/"

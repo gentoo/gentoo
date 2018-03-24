@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="babel-german bibleref-german booktabs-de csquotes-de dehyph-exptl dhua einfuehrung etdipa etoolbox-de fifinddo-info geometry-de german germbib germkorr hausarbeit-jura hyphen-german koma-script-examples l2picfaq l2tabu latex-bib-ex latex-referenz latex-tabellen latexcheat-de lshort-german lualatex-doc-de microtype-de presentations pstricks-examples r_und_s templates-fenn templates-sommer texlive-de tipa-de translation-arsclassica-de translation-biblatex-de translation-chemsym-de translation-ecv-de translation-enumitem-de translation-europecv-de translation-filecontents-de translation-moreverb-de udesoftec umlaute voss-mathcol collection-langgerman
 "

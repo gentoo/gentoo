@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Meta package for dev-util/molecule-core and dev-util/molecule-plugins"
 HOMEPAGE="http://www.sabayon.org"

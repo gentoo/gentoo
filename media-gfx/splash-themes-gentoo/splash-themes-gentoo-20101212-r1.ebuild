@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 DESCRIPTION="A collection of Gentoo themes for splashutils"
 HOMEPAGE="https://dev.gentoo.org/~spock/"

@@ -1,7 +1,7 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 
 DESCRIPTION="MPlayer wrapper script to save/resume playback position"
 HOMEPAGE="http://www.spaceparanoids.org/trac/bend/wiki/mplayer-resume"

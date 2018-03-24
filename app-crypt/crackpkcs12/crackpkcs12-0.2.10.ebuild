@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 DESCRIPTION="multithreaded program to crack PKCS#12 files"
 HOMEPAGE="http://crackpkcs12.sourceforge.net/"

@@ -4,7 +4,7 @@
 # Remember: we cannot leverage autotools in this ebuild in order
 #           to avoid circular deps with autotools
 
-EAPI="4"
+EAPI=4
 
 inherit eutils multilib toolchain-funcs libtool multilib-minimal
 

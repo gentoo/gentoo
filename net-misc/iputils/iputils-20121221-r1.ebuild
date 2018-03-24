@@ -6,7 +6,7 @@
 # building stages, and when the jade/sgml packages are broken (which
 # seems to be more common than would be nice).
 
-EAPI="4"
+EAPI=4
 
 inherit flag-o-matic eutils toolchain-funcs fcaps
 if [[ ${PV} == "99999999" ]] ; then

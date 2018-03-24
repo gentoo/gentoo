@@ -1,7 +1,7 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems"
 HOMEPAGE="http://libfat.sourceforge.net"

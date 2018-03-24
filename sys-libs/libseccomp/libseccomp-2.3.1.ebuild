@@ -3,7 +3,7 @@
 
 # TODO: Add python support.
 
-EAPI="5"
+EAPI=5
 
 inherit eutils multilib-minimal
 
