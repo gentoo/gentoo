@@ -6,6 +6,6 @@
     <name>Gilberto</name>
   </maintainer>
   <upstream>
-      <remote-id type="github">Aaronepower/tokei<p/remote-id>
+      <remote-id type="github">Aaronepowertokei</remote-id>
   </upstream>
 </pkgmetadata>
