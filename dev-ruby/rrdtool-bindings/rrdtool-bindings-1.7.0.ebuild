@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,8 +10,8 @@ MY_P=${P/-bindings}
 MY_P=${MY_P/_/-}
 
 DESCRIPTION="Ruby bindings for rrdtool"
-HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
-SRC_URI="http://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
+HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
+SRC_URI="${HOMEPAGE}pub/${MY_P}.tar.gz"
 RUBY_S="$MY_P"/bindings/ruby
 
 LICENSE="GPL-2"
