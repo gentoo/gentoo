@@ -35,7 +35,10 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 just_headers() {
-	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	is_crosscompile && use headers-only
+}
+alt_prefix() {
+	is_crosscompile && echo /usr/${CTARGET}
 }
 crt_with() {
 	just_headers && echo --without-$1 || echo --with-$1
@@ -74,9 +77,9 @@ src_configure() {
 	fi
 
 	CHOST=${CTARGET} econf \
-		--prefix="${EPREFIX}"/usr/${CTARGET} \
-		--includedir="${EPREFIX}"/usr/${CTARGET}/usr/include \
-		--libdir="${EPREFIX}"/usr/${CTARGET}/usr/lib \
+		--prefix="${EPREFIX}"$(alt_prefix) \
+		--includedir="${EPREFIX}"$(alt_prefix)/usr/include \
+		--libdir="${EPREFIX}"$(alt_prefix)/usr/lib \
 		--with-headers \
 		--enable-sdk \
 		$(crt_with crt) \
