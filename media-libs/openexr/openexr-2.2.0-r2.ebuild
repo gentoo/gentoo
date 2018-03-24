@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="ILM's OpenEXR high dynamic-range image file format libraries"
 HOMEPAGE="http://openexr.com/"
@@ -43,6 +43,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Fails to build with lto, https://bugs.gentoo.org/650876
+	filter-flags -flto*
+
 	ECONF_SOURCE="${S}" econf \
 		--enable-threading \
 		$(use_enable cpu_flags_x86_avx avx) \
