@@ -338,9 +338,7 @@ src_install() {
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var/cache
-	rm -rf "${D}"/var/run
-	rm -rf "${D}"/var/log
+	rm -rf "${D}"/var
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
