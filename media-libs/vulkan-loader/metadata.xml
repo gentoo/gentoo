@@ -10,5 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="demos">Build vulkan demos and vulkaninfo</flag>
+		<flag name="layers">Build the vulkan layers</flag>
 	</use>
 </pkgmetadata>
