@@ -13,8 +13,8 @@ MY_P=${P/-bindings}
 MY_P=${MY_P/_/-}
 
 DESCRIPTION="Ruby bindings for rrdtool"
-HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
-SRC_URI="http://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
+HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
+SRC_URI="${HOMEPAGE}pub/${MY_P}.tar.gz"
 RUBY_S="$MY_P"/bindings/ruby
 
 LICENSE="GPL-2"
