@@ -1,0 +1,38 @@
+Adapted from https://src.fedoraproject.org/cgit/rpms/gmrun.git/plain/gmrun-0.9.2-f12.patch
+
+diff -ur gmrun-0.9.2/src/gtkcompletionline.cc gmrun-0.9.2.new/src/gtkcompletionline.cc
+--- gmrun-0.9.2/src/gtkcompletionline.cc	2010-01-11 12:22:35.097644540 +0200
++++ gmrun-0.9.2.new/src/gtkcompletionline.cc	2010-01-11 12:22:45.686644030 +0200
+@@ -79,9 +79,9 @@
+ on_scroll(GtkCompletionLine *cl, GdkEventScroll *event, gpointer data);
+ 
+ /* get_type */
+-guint gtk_completion_line_get_type(void)
++GtkType gtk_completion_line_get_type(void)
+ {
+-  static guint type = 0;
++  static GtkType type = 0;
+   if (type == 0)
+   {
+     GtkTypeInfo type_info =
+ 
+diff -ur gmrun-0.9.2/src/gtkcompletionline.h gmrun-0.9.2.new/src/gtkcompletionline.h
+--- gmrun-0.9.2/src/gtkcompletionline.h	2003-11-16 12:43:32.000000000 +0200
++++ gmrun-0.9.2.new/src/gtkcompletionline.h	2010-01-11 12:22:45.686644030 +0200
+@@ -14,6 +14,7 @@
+ #define __GTKCOMPLETIONLINE_H__
+ 
+ #include <gtk/gtkentry.h>
++#include <gtk/gtktypeutils.h>
+ 
+ #include <string>
+ 
+@@ -76,7 +77,7 @@
+     void (* cancel)(GtkCompletionLine *cl);
+   };
+ 
+-  guint gtk_completion_line_get_type(void);
++  GtkType gtk_completion_line_get_type(void);
+   GtkWidget *gtk_completion_line_new();
+ 
+   void gtk_completion_line_last_history_item(GtkCompletionLine*);

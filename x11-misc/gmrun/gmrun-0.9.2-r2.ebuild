@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="A GTK-2 based launcher box with bash style auto completion!"
@@ -29,7 +29,10 @@ src_prepare() {
 		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-sysconfdir.patch \
 		"${FILESDIR}"/${P}-glibc210.patch \
-		"${FILESDIR}"/${P}-stlport.patch
+		"${FILESDIR}"/${P}-stlport.patch \
+		"${FILESDIR}"/${P}-segfault.patch
+
+	eapply_user
 
 	eautoreconf
 }
