@@ -76,7 +76,7 @@ src_install() {
 	# hacks to find/install generated files
 	BUILD_DIR=$(dirname $(find target/release -name rg.1))
 	doman "${BUILD_DIR}"/rg.1
-	dobashcomp "${BUILD_DIR}"/rg.bash
+	newbashcomp "${BUILD_DIR}"/rg.bash rg
 
 	dodoc CHANGELOG.md README.md
 
