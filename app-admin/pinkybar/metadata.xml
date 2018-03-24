@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>a@b.com</email>
+		<name>pinky-bar</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">su8/pinky-bar</remote-id>
+	</upstream>
+	<use>
+		<flag name="x11">Enable it if you are using dwm.</flag>
+		<flag name="alsa">To get the sound volume level.</flag>
+		<flag name="net">Enable the internet related options</flag>
+		<flag name="libnl">Enable the wifi related options regarding chipsets supporting the cfg80211,mac80211 modules</flag>
+		<flag name="pci">To get the NIC vendor and model names</flag>
+		<flag name="dvd">To get the cdrom dvdrom vendor and model names</flag>
+		<flag name="sensors">Alternative way to obtain data from the sensors</flag>
+		<flag name="ncurses">Output the data to the terminal using the ncurses library</flag>
+		<flag name="colours">Colorize the output data</flag>
+		<flag name="weather">The temperature outside</flag>
+		<flag name="mpd">To see the currently played song name</flag>
+		<flag name="drivetemp">Read the drive temperature from S.M.A.R.T</flag>
+		<flag name="drivetemp-light">Read the drive temperature from S.M.A.R.T light version</flag>
+		<flag name="smartemp">Read the drive temperature from S.M.A.R.T</flag>
+		<flag name="perl">Extend pinkybar with your own crafted scripts written in perl, stored in /usr/share/pinkysc/pinky.pl</flag>
+		<flag name="python2">Extend pinkybar with your own crafted scripts written in python, stored in /usr/share/pinkysc/pinky.py</flag>
+		<flag name="ruby">Extend pinkybar with your own crafted scripts written in ruby, stored in /usr/share/pinkysc/pinky.rb</flag>
+		<flag name="r">Extend pinkybar with your own crafted scripts written in R, stored in /usr/share/pinkysc/pinky.R</flag>
+		<flag name="lisp">Extend pinkybar with your own crafted scripts written in lisp, stored in /usr/share/pinkysc/pinky.lisp</flag>
+		<flag name="slang">Extend pinkybar with your own crafted scripts written in slang, stored in /usr/share/pinkysc/pinky.sl</flag>
+		<flag name="tcl">Extend pinkybar with your own crafted scripts written in tcl, stored in /usr/share/pinkysc/pinky.tcl</flag>
+		<flag name="cpp">Extend pinkybar with cpp</flag>
+	</use>
+</pkgmetadata>
