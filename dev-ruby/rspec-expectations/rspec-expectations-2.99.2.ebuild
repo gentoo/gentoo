@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -52,7 +52,7 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	case ${RUBY} in
-		*ruby24)
+		*ruby24|*ruby25)
 			sed -i -e 's/of Fixnum/of Integer/' spec/rspec/expectations/expectation_target_spec.rb spec/rspec/matchers/be_instance_of_spec.rb || die
 			;;
 	esac
