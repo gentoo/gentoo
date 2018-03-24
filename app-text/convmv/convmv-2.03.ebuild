@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="convert filenames to utf8 or any other charset"
-HOMEPAGE="http://j3e.de/linux/convmv"
-SRC_URI="http://j3e.de/linux/${PN}/${P}.tar.gz"
+HOMEPAGE="https://j3e.de/linux/convmv"
+SRC_URI="https://j3e.de/linux/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
