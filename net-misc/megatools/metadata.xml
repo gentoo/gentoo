@@ -12,6 +12,9 @@ a command line of your desktop or server.
 Mega website can be found at http://mega.co.nz.
 </longdescription>
 	<use>
+		<!--
+			this should be dropped when megatools-1.9.97.ebuild gets removed
+		-->
 		<flag name="fuse">
 		Enables support for the filesystem in userspace plugin through <pkg>sys-fs/fuse</pkg>.
 		</flag>
