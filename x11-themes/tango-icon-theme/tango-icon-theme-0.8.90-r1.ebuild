@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 inherit gnome2-utils
 
 DESCRIPTION="SVG and PNG icon theme from the Tango project"
@@ -37,6 +37,7 @@ src_prepare() {
 		addpredict "${cards}"
 	fi
 	shopt -u nullglob
+	eapply_user
 }
 
 src_configure() {

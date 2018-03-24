@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Gentoo - 10 Years Compiling Background Artwork"
 HOMEPAGE="https://www.gentoo.org/inside-gentoo/artwork/"
@@ -21,6 +21,7 @@ SLOT="0"
 
 src_prepare() {
 	sed -i -e "s:/usr/:${EPREFIX}/usr/:" *.xml || die
+	eapply_user
 }
 
 src_compile() { :; }

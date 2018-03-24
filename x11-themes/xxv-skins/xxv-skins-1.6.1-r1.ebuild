@@ -1,9 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Additional skins for XXV"
 HOMEPAGE="http://projects.vdr-developer.org/projects/xxv"
@@ -20,7 +18,7 @@ RDEPEND="~www-misc/xxv-${PV}"
 SKINROOT=/usr/share/xxv/skins
 
 src_compile() {
-:
+	:
 }
 
 src_install() {

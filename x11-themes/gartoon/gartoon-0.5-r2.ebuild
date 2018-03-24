@@ -1,7 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Gartoon SVG icon theme"
 HOMEPAGE="https://www.gentoo.org"
@@ -23,6 +23,7 @@ src_prepare() {
 	sed -i \
 		-e "s:\(^pixmap_path\) \(\".*\"$\):\1 \"${mydest}/scalable/stock\":" \
 		scalable/stock/iconrc || die
+	eapply_user
 }
 
 src_install() {

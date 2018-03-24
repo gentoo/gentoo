@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 AUTOTOOLS_AUTO_DEPEND=no
 inherit autotools gnome2-utils
 
@@ -42,6 +42,7 @@ src_prepare() {
 	if [[ ${CHOST} == *-interix* ]] || ! use gtk; then
 		eautoreconf
 	fi
+	eapply_user
 }
 
 src_configure() {

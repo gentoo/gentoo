@@ -1,5 +1,5 @@
---- flat/slim.theme.orig	2010-01-15 14:10:18.000000000 -0200
-+++ flat/slim.theme	2010-01-15 14:25:10.000000000 -0200
+--- a/flat/slim.theme
++++ b/flat/slim.theme
 @@ -20,9 +20,9 @@
  input_pass_y            163
  

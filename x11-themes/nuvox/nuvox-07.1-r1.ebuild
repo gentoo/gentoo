@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MY_P=nuvoX_${PV}
 
@@ -23,6 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	sed -i -e '/rm -fr/d' -e '/tar cf/d' buildset || die
+	eapply_user
 }
 
 src_compile() {

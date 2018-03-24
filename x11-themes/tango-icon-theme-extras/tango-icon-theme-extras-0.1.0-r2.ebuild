@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils gnome2-utils
+EAPI=6
+inherit autotools gnome2-utils
 
 DESCRIPTION="Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP"
 HOMEPAGE="http://tango.freedesktop.org"
@@ -24,10 +24,15 @@ RESTRICT="binchecks strip"
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.1.0-graphicsmagick.patch
+	"${FILESDIR}"/${PN}-0.1.0-MKDIR_P.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-graphicsmagick.patch
-	epatch "${FILESDIR}"/${P}-MKDIR_P.patch
+	eapply "${PATCHES[@]}"
 	sed -i -e '/svgconvert_prog/s:rsvg:&-convert:' configure{,.ac} || die #413183
+	eapply_user
 	eautoreconf
 }
 

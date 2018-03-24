@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/314423
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -39,9 +39,6 @@
  AM_CONDITIONAL(ENABLE_ICON_FRAMING, test x$enable_framing = xyes)
  

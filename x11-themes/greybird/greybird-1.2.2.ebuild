@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 MY_PN=${PN/g/G}
 
@@ -18,11 +18,7 @@ RDEPEND=">=x11-themes/gtk-engines-murrine-0.90"
 DEPEND=""
 
 RESTRICT="binchecks strip"
-
-src_unpack() {
-	unpack ${A}
-	mv ${MY_PN}-* "${S}" || die
-}
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	dodoc README
