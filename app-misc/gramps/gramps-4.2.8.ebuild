@@ -33,16 +33,17 @@ RDEPEND="
 	rcs? ( dev-vcs/rcs )
 "
 
-python_configure_all() {
-	mydistutilsargs=( --resourcepath=/usr/share )
-}
-
 python_prepare_all() {
 	# Install documentation to the proper location. This can't be done
 	# easily with a patch because we substitute in the $PF variable,
 	# and that changes with every revision.
 	sed -i "s:share/doc/gramps:share/doc/${PF}:g" setup.py || die
+	eapply "${FILESDIR}/${P}-uncompressed-docs.patch"
 	distutils-r1_python_prepare_all
+}
+
+python_configure_all() {
+	mydistutilsargs=( --resourcepath=/usr/share )
 }
 
 pkg_postinst() {
