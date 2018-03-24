@@ -11,7 +11,7 @@ MY_PV=${PV/_/-}
 MY_P="FileZilla_${MY_PV}"
 
 DESCRIPTION="FTP client with lots of useful features and an intuitive interface"
-HOMEPAGE="http://filezilla-project.org/"
+HOMEPAGE="https://filezilla-project.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}_src.tar.bz2"
 
 LICENSE="GPL-2"
