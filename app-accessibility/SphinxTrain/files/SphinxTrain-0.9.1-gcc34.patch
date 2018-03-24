@@ -1,0 +1,11 @@
+--- a/src/programs/count_3phone/phone_word_io.c
++++ b/src/programs/count_3phone/phone_word_io.c
+@@ -70,8 +70,6 @@ struct sorted_phone *Sorted_Phone;
+ 
+ #ifdef __alpha
+ void *malloc();
+-#else
+-char *malloc();
+ #endif
+ 
+ extern int      Num_Phones, Num_Words;

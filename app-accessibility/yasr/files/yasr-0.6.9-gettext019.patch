@@ -1,5 +1,3 @@
-diff --git a/configure.in b/configure.in
-index c26f577..d78e8b2 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -57,7 +57,7 @@ fi
@@ -7,7 +5,7 @@ index c26f577..d78e8b2 100644
  
  AM_GNU_GETTEXT(external)
 -AM_GNU_GETTEXT_VERSION([0.17])
-+AM_GNU_GETTEXT_VERSION([0.18.1])
++AM_GNU_GETTEXT_VERSION([0.19])
  
  AC_OUTPUT([ m4/Makefile 
  Makefile

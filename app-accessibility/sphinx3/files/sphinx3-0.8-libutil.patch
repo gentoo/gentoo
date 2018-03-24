@@ -1,5 +1,5 @@
---- src/libs3decoder/libsearch/fsg_history.c
-+++ src/libs3decoder/libsearch/fsg_history.c
+--- a/src/libs3decoder/libsearch/fsg_history.c
++++ b/src/libs3decoder/libsearch/fsg_history.c
 @@ -55,7 +55,6 @@
  #include <kb.h>
  /*#include <phone.h>*/
@@ -8,8 +8,8 @@
  
  
  #define __FSG_DBG__	0
---- src/libs3decoder/libcfg/s3_cfg_convert.c
-+++ src/libs3decoder/libcfg/s3_cfg_convert.c
+--- a/src/libs3decoder/libcfg/s3_cfg_convert.c
++++ b/src/libs3decoder/libcfg/s3_cfg_convert.c
 @@ -1,5 +1,4 @@
  
 -#include <libutil.h>
