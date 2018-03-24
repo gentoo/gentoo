@@ -7349,7 +7349,7 @@ media-libs/freeverb3 3.1.2_pre20151102-r1: Reverb and Impulse Response Convoluti
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.1: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
-media-libs/gd 2.2.4: A graphics library for fast image creation
+media-libs/gd 2.2.4 2.2.5: A graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image processing framework
 media-libs/gexiv2 0.10.3 0.10.3-r1 0.10.8: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
@@ -7383,7 +7383,7 @@ media-libs/jasper 2.0.12: Implementation of the codec specified in the JPEG-2000
 media-libs/jbig2dec 0.13-r4: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
-media-libs/jpeg 6b-r12 8d-r1: Library to load, handle and manipulate images in the JPEG format
+media-libs/jpeg 6b-r12 8d-r1 9c: Library to load, handle and manipulate images in the JPEG format
 media-libs/kvazaar 1.0.0 1.1.0: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r2: The Linux Audio Developer's Simple Plugin API
@@ -9762,7 +9762,7 @@ sys-apps/rescan-scsi-bus 1.29 1.57-r1: Script to rescan the SCSI bus without reb
 sys-apps/restorecond 2.7: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/rng-tools 5-r2: Daemon to use hardware random number generators
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
-sys-apps/sandbox 2.12: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.12 2.13: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.6 2.7: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.2: Super-useful stream editor
