@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=sys-libs/zlib >=media-libs/libzen-0.4.37 ~media-libs/libmediainfo-18.03[curl=,mms=] wxwidgets? ( x11-libs/wxGTK:3.0[X] ) virtual/pkgconfig >=sys-apps/sed-4 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=MediaInfo supplies technical and tag information about media files
+EAPI=6
+HOMEPAGE=https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfo
+IUSE=curl mms wxwidgets
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-libs/zlib >=media-libs/libzen-0.4.37 ~media-libs/libmediainfo-18.03[curl=,mms=] wxwidgets? ( x11-libs/wxGTK:3.0[X] )
+SLOT=0
+SRC_URI=https://mediaarea.net/download/source/mediainfo/18.03/mediainfo_18.03.tar.xz
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	02908f00f002f0f07c5b74783d778325	gnome2-utils	4d211d7614f303710fca59db6ec12c88	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=192464ab6738f01edeefdf1853aeea2a

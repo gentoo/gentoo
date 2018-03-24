@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare setup unpack
+DEPEND=virtual/blas virtual/lapack mpi? ( virtual/mpi[fortran] ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Arnoldi package library to solve large scale eigenvalue problems
+EAPI=6
+HOMEPAGE=http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng
+IUSE=examples mpi static-libs
+LICENSE=BSD
+RDEPEND=virtual/blas virtual/lapack mpi? ( virtual/mpi[fortran] ) virtual/fortran
+SLOT=0
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	git-r3	fec09a83ae965b041b47f5ff7c8ba29a	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=5a51b2ba3ef2b4791f834c2e50e422a4
