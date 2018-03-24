@@ -7249,7 +7249,7 @@ media-gfx/pngrewrite 1.3.0: A utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
 media-gfx/postr 0.13.1: Flickr uploader for GNOME
-media-gfx/potrace 1.14 1.15: Transforming bitmaps into vector graphics
+media-gfx/potrace 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.10.2: powerful GTK 3 based command-line image viewer with a minimal UI
@@ -7558,7 +7558,7 @@ media-libs/openexr 1.7.0 2.1.0 2.2.0-r2: ILM's OpenEXR high dynamic-range image 
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openh264 1.7.0-r1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openimageio 1.6.13: A library for reading and writing images
-media-libs/openjpeg 1.5.2 2.1.1_p20160922 2.2.0 2.3.0: An open-source JPEG 2000 library
+media-libs/openjpeg 1.5.2 2.3.0: An open-source JPEG 2000 library
 media-libs/opus 1.1.3-r1 1.2.1: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6: A high-level decoding and seeking API for .opus files
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
@@ -8712,7 +8712,7 @@ net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aria2 1.30.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
-net-misc/asterisk 11.25.1 11.25.3 13.19.0-r1: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.25.3 13.19.0-r1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
 net-misc/asterisk-moh-opsound 2.03: asterisk moh music
