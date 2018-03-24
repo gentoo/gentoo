@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 # Classifier: Programming Language :: Python :: 2 :: Only
 # py3 fails one test, pypy anpother.

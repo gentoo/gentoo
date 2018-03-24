@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="accfonts afm2pl dosepsbin epstopdf fontware lcdftypetools metatype1 ps2pk pstools psutils dvipsconfig fontinst fontools mf2pt1 t1utils collection-fontutils
 "

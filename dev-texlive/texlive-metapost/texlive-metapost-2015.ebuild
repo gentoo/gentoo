@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="automata bbcard blockdraw_mp bpolynomial cmarrows drv dviincl emp epsincl expressg exteps featpost feynmp-auto garrigues gmp hatching latexmp mcf2graph metago metaobj metaplot metapost metauml mfpic mfpic4ode mp3d mpcolornames mpattern mpgraphics piechartmp repere roex slideshow splines suanpan textpath threeddice collection-metapost
 "

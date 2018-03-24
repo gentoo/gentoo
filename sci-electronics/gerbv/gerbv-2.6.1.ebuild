@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 inherit autotools eutils gnome2-utils xdg-utils
 
 DESCRIPTION="A RS-274X (Gerber) and NC drill (Excellon) file viewer"

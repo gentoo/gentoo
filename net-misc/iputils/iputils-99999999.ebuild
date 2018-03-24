@@ -7,7 +7,7 @@
 # To regenerate man/html pages emerge iputils-99999999[doc] with
 # EGIT_COMMIT set to release tag and tar ${S}/doc folder.
 
-EAPI="6"
+EAPI=6
 
 inherit flag-o-matic toolchain-funcs fcaps
 

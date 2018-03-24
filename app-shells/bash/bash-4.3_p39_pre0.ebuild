@@ -5,7 +5,7 @@
 # We use the bundled versions of readline & termcap to avoid external deps
 # (which in turn would require those packages to keep an old EAPI version).
 
-EAPI="2"
+EAPI=2
 
 inherit eutils flag-o-matic toolchain-funcs
 

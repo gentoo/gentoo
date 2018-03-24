@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 # Don't depend on itself.
 JAVA_ANT_DISABLE_ANT_CORE_DEP="true"

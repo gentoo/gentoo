@@ -5,7 +5,7 @@
 # virtual/texi2dvi package to pull in all the right deps.  The tool is not
 # usable out-of-the-box because it requires the large tex packages.
 
-EAPI="5"
+EAPI=5
 
 inherit flag-o-matic
 

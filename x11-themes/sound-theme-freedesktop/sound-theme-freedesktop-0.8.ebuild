@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 DESCRIPTION="Default freedesktop.org sound theme following the XDG theming specification"
 HOMEPAGE="https://www.freedesktop.org/wiki/Specifications/sound-theme-spec"

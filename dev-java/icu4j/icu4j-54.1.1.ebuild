@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 # testdata.jar, icudata.jar and icutzdata.jar do not contain *.class files
 # but *.res files. These *.res data files are needed to build the final jar.

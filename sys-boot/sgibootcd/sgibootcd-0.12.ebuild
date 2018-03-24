@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Creates burnable CD images for SGI LiveCDs"

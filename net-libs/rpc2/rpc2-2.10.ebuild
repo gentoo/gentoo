@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="Remote procedure call package for IP/UDP (used by Coda)"
 HOMEPAGE="http://www.coda.cs.cmu.edu/"

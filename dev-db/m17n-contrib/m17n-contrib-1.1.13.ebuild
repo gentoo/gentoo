@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Contribution database for the m17n library"
 HOMEPAGE="https://savannah.nongnu.org/projects/m17n"

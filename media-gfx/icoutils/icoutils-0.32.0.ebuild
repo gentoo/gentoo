@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 inherit autotools flag-o-matic
 
 DESCRIPTION="Tools to extract and convert images in icon and cursor files (.ico, .cur)"

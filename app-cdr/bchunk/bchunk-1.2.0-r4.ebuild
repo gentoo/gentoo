@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Convert CD images from bin/cue to iso+wav/cdr"
 HOMEPAGE="http://he.fi/bchunk/"

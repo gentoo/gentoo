@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="arphic arphic-ttf asymptote-by-example-zh-cn asymptote-faq-zh-cn asymptote-manual-zh-cn cns ctex ctex-faq fandol hyphen-chinese impatient-cn latex-notes-zh-cn lshort-chinese texlive-zh-cn texproposal xpinyin zhmetrics zhmetrics-uptex zhnumber zhspacing collection-langchinese
 "

@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="babel-belarusian babel-bulgarian babel-russian babel-serbian babel-serbianc babel-ukrainian churchslavonic cmcyr cyrillic cyrillic-bin cyrplain disser eskd eskdx gost hyphen-bulgarian hyphen-churchslavonic hyphen-mongolian hyphen-russian hyphen-serbian hyphen-ukrainian lcyw lh lhcyr lshort-bulgarian lshort-mongol lshort-russian lshort-ukr mongolian-babel montex mpman-ru pst-eucl-translation-bg ruhyphen russ serbian-apostrophe serbian-date-lat serbian-def-cyr serbian-lig t2 texlive-ru texlive-sr ukrhyph collection-langcyrillic
 "

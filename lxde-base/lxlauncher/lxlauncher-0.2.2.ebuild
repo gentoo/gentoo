@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="An open source clone of the Asus launcher for EeePC"
 HOMEPAGE="http://lxde.sf.net/"

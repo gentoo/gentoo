@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="aeguill apprends-latex babel-basque babel-french basque-book basque-date bib-fr bibleref-french booktabs-fr droit-fr e-french epslatex-fr facture formation-latex-ul frletter hyphen-basque hyphen-french impatient-fr impnattypo l2tabu-french latex2e-help-texinfo-fr lshort-french mafr tabvar tdsfrmath texlive-fr translation-array-fr translation-dcolumn-fr translation-natbib-fr translation-tabbing-fr variations visualtikz collection-langfrench
 "

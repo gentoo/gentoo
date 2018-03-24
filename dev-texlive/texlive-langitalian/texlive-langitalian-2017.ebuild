@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="amsldoc-it amsmath-it amsthdoc-it babel-italian codicefiscaleitaliano fancyhdr-it fixltxhyph frontespizio hyphen-italian itnumpar l2tabu-italian latex4wp-it layaureo lshort-italian psfrag-italian texlive-it collection-langitalian
 "

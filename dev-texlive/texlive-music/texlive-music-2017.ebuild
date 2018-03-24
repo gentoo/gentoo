@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="abc autosp bagpipe figbas gchords gregoriotex gtrcrd guitar guitarchordschemes harmony leadsheets lilyglyphs m-tx musixguit musixtex musixtex-fonts musixtnt piano pmx pmxchords songbook songs xpiano collection-music
 "

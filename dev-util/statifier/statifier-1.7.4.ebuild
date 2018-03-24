@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Statifier is a tool for creating portable, self-containing Linux executables"
 HOMEPAGE="http://statifier.sourceforge.net"

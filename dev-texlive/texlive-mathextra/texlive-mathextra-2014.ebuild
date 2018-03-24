@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="12many amstex backnaur begriff binomexp boldtensors bosisio bropd ccfonts commath concmath concrete conteq eqnarray extarrows extpfeil faktor grundgesetze interval ionumbers isomath logicproof lpform lplfitch mathcomp mattens mhequ multiobjective natded nath ot-tableau oubraces proba rec-thy ribbonproofs shuffle skmath statex statex2 stmaryrd subsupscripts susy syllogism sympytexpackage synproof tablor tensor tex-ewd thmbox turnstile unicode-math venn yhmath ytableau collection-mathextra
 "

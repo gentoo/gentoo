@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="arabxetex awesomebox bidi-atbegshi bidicontour bidipagegrid bidishadowtext bidipresentation fixlatvian font-change-xetex fontbook fontwrap interchar philokalia ptext quran realscripts simple-resume-cv simple-thesis-dissertation ucharclasses unicode-bidi unisugar xebaposter xecjk xecolor xecyr xeindex xesearch xespotcolor xetex xetex-itrans xetex-pstricks xetex-tibetan xetexconfig xetexfontinfo xetexko xevlna collection-xetex
 "

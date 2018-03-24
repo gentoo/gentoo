@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="SIstyle SIunits alg algorithm2e algorithmicx algorithms biocon bohr bpchem bytefield chemarrow chemcompounds chemcono chemexec chemmacros chemnum chemstyle clrscode complexity computational-complexity digiconfigs drawstack dyntree eltex endiagram engtlc fouridx functan galois gastex gene-logic gu hep hepnames hepparticles hepthesis hepunits karnaugh mhchem miller mychemistry nuc objectz physics physymb pseudocode sasnrdisplay sciposter sfg siunitx steinmetz struktex substances t-angles textopo ulqda unitsdef youngtab collection-science
 "

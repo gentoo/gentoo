@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="Base files for Enlightenment epplets and some epplets"
 HOMEPAGE="https://www.enlightenment.org/"

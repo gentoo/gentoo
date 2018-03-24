@@ -13,7 +13,7 @@
 # Use curl to find the answer:
 #  curl -q https://dl.google.com/linux/chrome-remote-desktop/deb/dists/stable/main/binary-amd64/Packages | grep ^Filename
 
-EAPI="5"
+EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PLOCALES="am ar bg bn ca cs da de el en_GB en es_419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr sv sw ta te th tr uk vi zh_CN zh_TW"

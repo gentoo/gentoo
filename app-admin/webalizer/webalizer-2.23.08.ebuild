@@ -4,7 +4,7 @@
 # uses webapp.eclass to create directories with right permissions
 # probably slight overkill but works well
 
-EAPI="5"
+EAPI=5
 
 inherit versionator eutils webapp db-use
 

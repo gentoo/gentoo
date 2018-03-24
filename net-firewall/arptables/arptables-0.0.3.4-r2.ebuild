@@ -1,7 +1,7 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 inherit versionator eutils
 
 MY_P=${PN}-v$(replace_version_separator 3 - )

@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 
 inherit eutils versionator toolchain-funcs flag-o-matic user
 MY_PV="$(replace_version_separator 3 -)"

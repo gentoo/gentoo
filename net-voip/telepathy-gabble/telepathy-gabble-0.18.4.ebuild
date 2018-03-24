@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 # Python is used during build for some scripted source files generation (and twisted tests)
 PYTHON_COMPAT=( python2_7 )
 

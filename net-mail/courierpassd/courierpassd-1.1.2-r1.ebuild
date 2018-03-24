@@ -1,7 +1,7 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 inherit eutils
 
 DESCRIPTION="Courierpassd is a utility for changing a user's password from across a network"

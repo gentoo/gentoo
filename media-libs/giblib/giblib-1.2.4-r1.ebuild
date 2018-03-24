@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 inherit epunt-cxx libtool
 
 DESCRIPTION="a graphics library built on top of imlib2"

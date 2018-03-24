@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
-EAPI="5"
+EAPI=5
 
 #//------------------------------------------------------------------------------
 

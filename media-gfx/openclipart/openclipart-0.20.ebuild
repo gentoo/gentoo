@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 
 DESCRIPTION="Open Clip Art Library (openclipart.org)"
 HOMEPAGE="http://www.openclipart.org/"

@@ -3,7 +3,7 @@
 
 # Note: Keep version bumps in sync with sys-devel/gettext.
 
-EAPI="5"
+EAPI=5
 
 MY_P="gettext-${PV}"
 

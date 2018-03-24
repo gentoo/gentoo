@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="bxbase bxcjkjatype bxjscls convbkmk ipaex japanese japanese-otf japanese-otf-uptex jfontmaps jsclasses lshort-japanese luatexja ptex ptex2pdf pxbase pxchfon pxcjkcat pxjahyper pxrubrica uptex wadalab zxjafbfont zxjatype collection-langjapanese
 "

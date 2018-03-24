@@ -1,7 +1,7 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=3
 
 # for updating the texmf database, id est latex-package_rehash
 inherit latex-package

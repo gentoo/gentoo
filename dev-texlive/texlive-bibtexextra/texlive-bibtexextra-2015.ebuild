@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="aichej ajl amsrefs apacite apalike2 beebe besjournals bibarts biber bibexport bibhtml  biblatex-anonymous biblatex-apa biblatex-bookinarticle biblatex-bwl biblatex-caspervector biblatex-chem biblatex-chicago biblatex-dw biblatex-fiwi biblatex-gost biblatex-historian biblatex-ieee biblatex-juradiss biblatex-luh-ipw biblatex-manuscripts-philology biblatex-mla biblatex-multiple-dm biblatex-musuos biblatex-nature biblatex-nejm biblatex-opcit-booktitle biblatex-philosophy biblatex-phys biblatex-publist biblatex-realauthor biblatex-science biblatex-source-division biblatex-subseries biblatex-swiss-legal biblatex-trad biblatex-true-citepages-omit biblist bibtopic bibtopicprefix bibunits bookdb breakcites cell chbibref chicago chicago-annote chembst chscite citeall collref compactbib crossrefware custom-bib din1505 dk-bib doipubmed economic fbs figbib footbib francais-bst geschichtsfrkl harvard harvmac historische-zeitschrift ijqc inlinebib iopart-num jneurosci jurabib ksfh_nat listbib logreq margbib multibib multibibliography munich notes2bib oscola perception pnas2009 rsc showtags sort-by-letters splitbib turabian-formatting uni-wtal-ger uni-wtal-lin urlbst usebib vak xcite collection-bibtexextra
 "

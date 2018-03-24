@@ -4,7 +4,7 @@
 # Note: xemacs currently does not work with position independent code
 # so the build forces the use of the -no-pie option
 
-EAPI="5"
+EAPI=5
 
 WANT_AUTOCONF="2.1"
 inherit autotools eutils flag-o-matic toolchain-funcs xdg-utils

@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 WX_GTK_VER="2.8"
 
 inherit autotools eutils subversion wxwidgets

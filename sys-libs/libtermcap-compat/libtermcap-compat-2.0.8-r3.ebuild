@@ -4,7 +4,7 @@
 # we only want this for binary-only packages, so we will only be installing
 # the lib used at runtime; no headers and no files to link against
 
-EAPI="4"
+EAPI=4
 
 inherit eutils multilib toolchain-funcs
 

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="adtrees bibleref bibleref-lds bibleref-mouth bibleref-parse covington diadia dramatist dvgloss ecltree edfnotes ednotes eledform eledmac expex gb4e gmverse jura juraabbrev juramisc jurarsp ledmac leipzig lexikon lexref ling-macros linguex liturg metrix parallel parrun phonrule plari play poemscol poetrytex qobitree qtree reledmac rrgtrees rtklage screenplay screenplay-pkg sides stage textglos thalie tree-dvips verse xyling collection-humanities
 "

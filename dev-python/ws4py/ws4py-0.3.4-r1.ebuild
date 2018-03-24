@@ -6,7 +6,7 @@
 # Same for www-servers/tornado and USE=client ... so why not???
 # pypy is viable but better with a cutdown set of deps
 
-EAPI="5"
+EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads?"
 

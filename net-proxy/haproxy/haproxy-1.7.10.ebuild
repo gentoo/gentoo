@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
 inherit user versionator toolchain-funcs flag-o-matic systemd linux-info $SCM

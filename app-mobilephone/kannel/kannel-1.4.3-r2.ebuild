@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=2
 WANT_AUTOMAKE=none
 
 inherit eutils autotools flag-o-matic ssl-cert user

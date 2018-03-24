@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 # Upstream only installs a static library. The original antlr ebuild
 # built a shared library manually, which isn't so great either. This

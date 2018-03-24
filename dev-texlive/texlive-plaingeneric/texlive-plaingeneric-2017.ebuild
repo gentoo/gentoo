@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="abbr abstyles apnum autoaligne barr bitelist borceux c-pascal catcodes chronosys colorsep dinat dirtree docbytex dowith eijkhout encxvlna epigram epsf epsf-dvipdfmx fenixpar figflow fixpdfmag fltpoint fntproof font-change fontch fontname gates genmisc getoptk gfnotation gobble graphics-pln gtl hlist hyplain ifetex iftex insbox js-misc kastrup lambda-lists langcode lecturer librarian listofitems mathdots metatex midnight mkpattern multido navigator newsletr ofs olsak-misc path pdf-trans pitex placeins-plain plainpkg plipsum plnfss plstmary present randomlist resumemac schemata shade systeme tabto-generic termmenu tex-ps tex4ht texapi texinfo timetable tracklang treetex trigonometry ulem upca varisize xii xlop yax collection-plaingeneric
 "

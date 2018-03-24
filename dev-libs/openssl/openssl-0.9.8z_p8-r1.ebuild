@@ -3,7 +3,7 @@
 
 # this ebuild is only for the libcrypto.so.0.9.8 and libssl.so.0.9.8 SONAME for ABI compat
 
-EAPI="6"
+EAPI=6
 
 inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 

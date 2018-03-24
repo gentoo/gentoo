@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 # http://issues.apache.org/bugzilla/show_bug.cgi?id=37985
 RESTRICT="test"

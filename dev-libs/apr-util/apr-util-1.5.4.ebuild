@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 # Usually apr-util has the same PV as apr, but in case of security fixes, this may change.
 # APR_PV="${PV}"

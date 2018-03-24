@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 # Seems we don't need to depend on jmf-bin, the classes ant imports are in J2SE
 # API since version 1.3.

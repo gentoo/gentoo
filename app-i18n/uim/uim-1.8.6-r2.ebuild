@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 inherit autotools eutils multilib elisp-common gnome2-utils
 
 DESCRIPTION="Simple, secure and flexible input method library"

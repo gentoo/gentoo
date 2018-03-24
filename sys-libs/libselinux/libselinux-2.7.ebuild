@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 USE_RUBY="ruby22 ruby23"
 

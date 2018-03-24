@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="auto-pst-pdf bclogo dsptricks makeplot pdftricks pdftricks2 pedigree-perl psbao pst-2dplot pst-3d pst-3dplot pst-abspos pst-am pst-asr pst-bar pst-barcode pst-bezier pst-blur pst-bspline pst-calendar pst-circ pst-coil pst-cox pst-dbicons pst-diffraction pst-electricfield pst-eps pst-eucl pst-exa pst-fill pst-fit pst-fr3d pst-fractal pst-fun pst-func pst-gantt pst-geo pst-ghsb pst-gr3d pst-grad pst-graphicx pst-infixplot pst-intersect pst-jtree pst-knot pst-labo pst-layout pst-lens pst-light3d pst-magneticfield pst-math pst-mirror pst-node pst-ob3d pst-ode pst-optexp pst-optic pst-osci pst-ovl pst-pad pst-pdgr pst-perspective pst-platon pst-plot pst-poly pst-pulley pst-qtree pst-rubans pst-sigsys pst-slpe pst-solarsystem pst-solides3d pst-soroban pst-spectra pst-spirograph pst-stru pst-support pst-text pst-thick pst-tools pst-tree pst-tvz pst-uml pst-vectorian pst-vowel pst-vue3d pst2pdf pstricks pstricks-add pstricks_calcnotes uml vaucanson-g vocaltract collection-pstricks
 "

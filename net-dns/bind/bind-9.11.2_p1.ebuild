@@ -10,7 +10,7 @@
 # Because of this BIND MUST only run with a single thread when
 # using the MySQL driver.
 
-EAPI="5"
+EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 

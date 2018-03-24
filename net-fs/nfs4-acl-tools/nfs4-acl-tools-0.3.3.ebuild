@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="Commandline and GUI tools that deal directly with NFSv4 ACLs"
 HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux/"

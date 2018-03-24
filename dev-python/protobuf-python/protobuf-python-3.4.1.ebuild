@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 # pypy fails tests; pypy3 fails even running tests
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 

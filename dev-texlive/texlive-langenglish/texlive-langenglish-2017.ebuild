@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="hyphen-english FAQ-en MemoirChapStyles Type1fonts amslatex-primer around-the-bend ascii-chart biblatex-cheatsheet components-of-TeX comprehensive dickimaw docsurvey dtxtut first-latex-doc forest-quickstart gentle guide-to-latex happy4th impatient intro-scientific knuth l2tabu-english latex-brochure latex-course latex-doc-ptr latex-graphics-companion latex-veryshortguide latex-web-companion latex2e-help-texinfo latex4wp latexcheat latexcourse-rug latexfileinfo-pkgs lshort-english macros2e math-e math-into-latex-4 maths-symbols memdesign metafont-beginners metapost-examples patgen2-tutorial pictexsum plain-doc presentations-en simplified-latex svg-inkscape tabulars-e tamethebeast tds tex-font-errors-cheatsheet tex-overview tex-refs texbytopic titlepages tlc2 undergradmath visualfaq webguide xetexref collection-langenglish
 "

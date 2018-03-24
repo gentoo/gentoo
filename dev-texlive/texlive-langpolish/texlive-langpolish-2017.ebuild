@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="babel-polish bredzenie cc-pl gustlib gustprog hyphen-polish lshort-polish mex mwcls pl polski przechlewski-book qpxqtx tap tex-virtual-academy-pl texlive-pl utf8mex collection-langpolish
 "

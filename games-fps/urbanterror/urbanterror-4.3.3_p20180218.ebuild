@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 inherit eapi7-ver flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"

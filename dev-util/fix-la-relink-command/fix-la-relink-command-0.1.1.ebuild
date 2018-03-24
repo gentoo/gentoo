@@ -1,7 +1,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 
 DESCRIPTION="Helps prevent .la files from relinking to libraries outside a build tree"
 HOMEPAGE="https://dev.gentoo.org/~tetromino/distfiles/${PN}"

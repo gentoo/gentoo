@@ -3,7 +3,7 @@
 
 # There's already a "hexedit" package in the tree, so name this one differently
 
-EAPI="5"
+EAPI=5
 
 inherit toolchain-funcs eutils autotools
 

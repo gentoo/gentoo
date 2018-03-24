@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 # repoman gives LIVEVCS.unmasked even with EGIT_COMMIT, so create snapshot
 inherit eutils java-pkg-2 # git-r3

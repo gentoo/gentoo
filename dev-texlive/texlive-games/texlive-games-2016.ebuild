@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 TEXLIVE_MODULE_CONTENTS="bartel-chess-fonts chess chess-problem-diagrams chessboard chessfss crossword crosswrd egameps gamebook go hanoi havannah hexgame horoscop labyrinth logicpuzzle othello othelloboard pas-crosswords psgo reverxii rubik schwalbe-chess sgame skak skaknew soup sudoku sudokubundle xq xskak collection-games
 "

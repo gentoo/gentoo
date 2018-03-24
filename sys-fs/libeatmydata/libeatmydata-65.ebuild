@@ -1,7 +1,7 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 inherit eutils
 
 DESCRIPTION="LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP"

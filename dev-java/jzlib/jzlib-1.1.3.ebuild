@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=4
 JAVA_PKG_IUSE="examples source test"
 
 inherit java-pkg-2 java-pkg-simple
