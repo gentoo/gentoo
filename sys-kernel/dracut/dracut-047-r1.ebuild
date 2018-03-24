@@ -46,12 +46,14 @@ DEPEND="${COMMON_DEPEND}
 	"
 
 DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
-	README.testsuite TODO dracut.html )
+	README.testsuite TODO )
 
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
 	"${FILESDIR}/045-systemdutildir.patch"
+	"${FILESDIR}/047-all-fix-issues-found-by-shellcheck.patch"
+	"${FILESDIR}/047-plymouth-fix-detection-of-plymouth-directory.patch"
 )
 
 src_configure() {
@@ -84,6 +86,9 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins dracut.logrotate dracut
+
+	docinto html
+	dodoc dracut.html
 }
 
 pkg_postinst() {
