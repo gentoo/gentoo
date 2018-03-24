@@ -1,5 +1,5 @@
---- samba-4.5.1/source4/heimdal_build/wscript_configure
-+++ samba-4.5.1/source4/heimdal_build/wscript_configure
+--- a/source4/heimdal_build/wscript_configure
++++ b/source4/heimdal_build/wscript_configure
 @@ -258,7 +258,11 @@
  
  # With the proper checks in place we should be able to build against the system libtommath.

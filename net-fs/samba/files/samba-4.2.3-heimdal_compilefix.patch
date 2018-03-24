@@ -6,8 +6,8 @@ Samba uses the build in implementation of heimdal from year 2011.
 The ebuild uses the portage version of heimdal.
 I got it fixed to patch samba kdc_init function.
 
---- samba-4.2.3/source4/kdc/kdc.c
-+++ samba-4.2.3/source4/kdc/kdc.c
+--- a/source4/kdc/kdc.c
++++ b/source4/kdc/kdc.c
 @@ -967,9 +967,9 @@
  	 * The old behavior in the _kdc_get_preferred_key()
  	 * function is use_strongest_server_key=TRUE.

@@ -131,9 +131,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.7.4-no_ads.patch"
 )
 
-#CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
-CONFDIR="${FILESDIR}/4.4"
-
 WAF_BINARY="${S}/buildtools/bin/waf"
 
 SHAREDMODS=""
@@ -168,7 +165,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# when specifying libs for samba build you must append NONE to the end to 
+	# when specifying libs for samba build you must append NONE to the end to
 	# stop it automatically including things
 	local bundled_libs="NONE"
 	if ! use system-heimdal && ! use system-mitkrb5 ; then
@@ -284,8 +281,8 @@ multilib_src_install() {
 			-i "${ED%/}"/etc/samba/smb.conf.default || die
 
 		# Install init script and conf.d file
-		newinitd "${CONFDIR}/samba4.initd-r1" samba
-		newconfd "${CONFDIR}/samba4.confd" samba
+		newinitd "${FILESDIR}/samba4.initd" samba
+		newconfd "${FILESDIR}/samba4.confd" samba
 
 		systemd_dotmpfilesd "${FILESDIR}"/samba.conf
 		systemd_dounit "${FILESDIR}"/nmbd.service

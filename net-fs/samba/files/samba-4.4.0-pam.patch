@@ -1,5 +1,5 @@
---- samba-4.4.0rc2/source3/wscript
-+++ samba-4.4.0rc2/source3/wscript
+--- a/source3/wscript
++++ b/source3/wscript
 @@ -870,7 +870,7 @@
          if conf.env.with_iconv:
              conf.DEFINE('HAVE_ICONV', 1)

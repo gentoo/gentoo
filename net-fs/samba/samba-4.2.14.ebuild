@@ -94,8 +94,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-glibc-2.26-no_rpc.patch" #637320
 )
 
-CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
-
 WAF_BINARY="${S}/buildtools/bin/waf"
 
 SHAREDMODS=""
@@ -227,8 +225,8 @@ multilib_src_install() {
 		doins examples/smb.conf.default
 
 		# Install init script and conf.d file
-		newinitd "${CONFDIR}/samba4.initd-r1" samba
-		newconfd "${CONFDIR}/samba4.confd" samba
+		newinitd "${FILESDIR}/samba4.initd" samba
+		newconfd "${FILESDIR}/samba4.confd" samba
 
 		systemd_dotmpfilesd "${FILESDIR}"/samba.conf
 		systemd_dounit "${FILESDIR}"/nmbd.service
