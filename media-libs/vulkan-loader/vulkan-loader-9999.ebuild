@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,22 +20,28 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="demos wayland X"
+IUSE="demos layers wayland X"
 
 RDEPEND=""
 DEPEND="${PYTHON_DEPS}
 	demos? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
+	layers? (
+			dev-util/glslang:=[${MULTILIB_USEDEP}]
+			>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
+		)
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)"
 
+PATCHES=( "${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch" )
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
 		-DBUILD_TESTS=False
-		-DBUILD_LAYERS=False
+		-DBUILD_LAYERS=$(usex layers)
 		-DBUILD_DEMOS=$(usex demos)
 		-DBUILD_VKJSON=False
 		-DBUILD_LOADER=True
