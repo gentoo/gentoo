@@ -10,7 +10,7 @@ inherit eutils linux-mod user
 
 MY_P=vbox-kernel-module-src-${PV}
 DESCRIPTION="Kernel Modules for Virtualbox"
-HOMEPAGE="http://www.virtualbox.org/"
+HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
