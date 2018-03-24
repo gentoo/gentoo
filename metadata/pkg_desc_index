@@ -3778,7 +3778,7 @@ dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sort
 dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IO-AIO 4.330.0: Asynchronous Input/Output
-dev-perl/IO-All 0.860.0 0.870.0: unified IO operations
+dev-perl/IO-All 0.870.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r1: Perl module that implements a line-buffered select interface
 dev-perl/IO-CaptureOutput 1.110.400: Capture STDOUT and STDERR from Perl code, subprocesses or XS
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
