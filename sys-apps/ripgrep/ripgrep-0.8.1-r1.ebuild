@@ -14,6 +14,9 @@ clap-2.30.0
 crossbeam-0.3.2
 encoding_rs-0.7.2
 fnv-1.0.6
+fuchsia-zircon-0.3.3
+fuchsia-zircon-sys-0.3.3
+glob-0.2.11
 globset-0.3.0
 grep-0.1.8
 ignore-0.4.1
@@ -23,13 +26,17 @@ log-0.4.1
 memchr-2.0.1
 memmap-0.6.2
 num_cpus-1.8.0
+rand-0.3.22
+rand-0.4.2
 redox_syscall-0.1.37
 redox_termios-0.1.1
 regex-0.2.6
 regex-syntax-0.4.2
+ripgrep-0.8.1
 same-file-1.0.2
 simd-0.2.1
 strsim-0.7.0
+tempdir-0.3.5
 termcolor-0.3.5
 termion-1.5.1
 textwrap-0.9.0
@@ -49,8 +56,7 @@ inherit cargo bash-completion-r1
 
 DESCRIPTION="a search tool that combines the usability of ag with the raw speed of grep"
 HOMEPAGE="https://github.com/BurntSushi/ripgrep"
-SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	$(cargo_crate_uris ${CRATES})"
+SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
@@ -60,15 +66,6 @@ IUSE=""
 DEPEND=">=virtual/rust-1.20
 	app-text/asciidoc"
 
-PATCHES=( "${FILESDIR}"/${P}-bundled-deps.patch )
-
-src_prepare() {
-	# remove bundled libs
-	rm -r globset grep ignore termcolor wincolor || die
-
-	default
-}
-
 src_test() {
 	cargo test || die "tests failed"
 }
@@ -77,7 +74,7 @@ src_install() {
 	cargo_src_install
 
 	# hacks to find/install generated files
-	BUILD_DIR=$(dirname $(find target -name rg.1))
+	BUILD_DIR=$(dirname $(find target/release -name rg.1))
 	doman "${BUILD_DIR}"/rg.1
 	dobashcomp "${BUILD_DIR}"/rg.bash
 
