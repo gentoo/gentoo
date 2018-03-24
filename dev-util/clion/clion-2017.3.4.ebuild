@@ -3,18 +3,16 @@
 
 EAPI=6
 
-inherit desktop
-inherit eutils
+inherit desktop eutils
 
-SLOT="0"
-
-SRC_URI="http://download.jetbrains.com/cpp/CLion-${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A complete toolset for C and C++ development"
 HOMEPAGE="http://www.jetbrains.com/clion"
+SRC_URI="http://download.jetbrains.com/cpp/CLion-${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 # RDEPENDS may cause false positives in repoman.
 # clion requires cmake and gdb at runtime to build and debug C/C++ projects
@@ -57,6 +55,6 @@ src_install() {
 	make_desktop_entry "${PN}" "clion" "${PN}" "Development;IDE;"
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
-	mkdir -p "${D}/etc/sysctl.d/" || die
-	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
+	dodir /usr/lib/sysctl.d/
+	echo "fs.inotify.max_user_watches = 524288" > "${D}/usr/lib/sysctl.d/30-clion-inotify-watches.conf" || die
 }
