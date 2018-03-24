@@ -14,11 +14,7 @@ IUSE=""
 
 DEPEND="sys-kernel/dracut"
 RDEPEND="${DEPEND}
+	net-misc/dhcp
 	net-misc/dropbear"
 
 DOCS=("README.md")
-
-pkg_postinst() {
-	elog "If you want to use DHCP in the initramfs during boot,"
-	elog "dracut will require dhclient provided by net-misc/dhcp."
-}
