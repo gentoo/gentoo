@@ -24,7 +24,7 @@ SRC_URI="${BASE_URI}/${PV_FULL}qt-everywhere-documentation.7z
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 IUSE="charts datavis networkauth script speech virtualkeyboard webengine"
 
