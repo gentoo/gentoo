@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (24 Mar 2018)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-67
+
 # Aaron W. Swenson <titanofold@gentoo.org> (22 Mar 2018)
 # EOL. No longer receives bug or security fixes. Recommended to update
 # to latest available.
@@ -546,11 +551,6 @@ media-gfx/photivo
 # Dead upstream, depends on deprecated Qt4.
 # Masked for removal in 30 days. Bug 644404
 net-fs/smbtatools
-
-# Mike Gilbert <floppym@gentoo.org> (04 Mar 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-66
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Mar 2018)
 # Dead upstream, depends on deprecated Qt4. media-sound/cantata
