@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils pax-utils
+inherit cmake-utils eutils pax-utils versionator
 
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="https://awesomewm.org/"
@@ -11,17 +11,18 @@ SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="dbus doc elibc_FreeBSD gnome luajit"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+IUSE="dbus doc elibc_FreeBSD gnome luajit test"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0
+	luajit? ( dev-lang/luajit:2 )
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.8
 	x11-libs/cairo[xcb]
 	x11-libs/gdk-pixbuf:2
-	>=x11-libs/libxcb-1.6
+	>=x11-libs/libxcb-1.6[xkb]
 	>=x11-libs/pango-1.19.3[introspection]
 	>=x11-libs/startup-notification-0.10_p20110426
 	>=x11-libs/xcb-util-0.3.8
@@ -33,7 +34,8 @@ RDEPEND="
 	x11-libs/libxkbcommon[X]
 	>=x11-libs/libX11-1.3.99.901
 	dbus? ( >=sys-apps/dbus-1 )
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )"
+	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
+"
 
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 DEPEND="${RDEPEND}
@@ -45,9 +47,19 @@ DEPEND="${RDEPEND}
 	>=x11-proto/xcb-proto-1.5
 	>=x11-proto/xproto-7.0.15
 	doc? ( dev-lua/ldoc )
-	luajit? ( dev-lang/luajit:2 )"
+	test? (
+		app-shells/zsh
+		x11-base/xorg-server[xvfb]
+	)
+"
+# Uncomment when these are keyworded on ppc/ppc64 (automagic deps)
+#		dev-lua/busted
+#		dev-lua/luacheck
+#	)
+#"
 
-DOCS=( docs/{00-authors,01-readme,02-contributing}.md )
+# Skip installation of README.md by einstalldocs, which leads to broken symlink
+DOCS=()
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0-convert-path.patch"  # bug #408025
 	"${FILESDIR}/${PN}-xsession.patch"          # bug #408025
@@ -55,10 +67,13 @@ PATCHES=(
 )
 
 src_configure() {
+	# Compression of manpages is handled by portage
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
+		-DCOMPRESS_MANPAGES=OFF
 		-DWITH_DBUS=$(usex dbus)
-		-DWITH_GENERATE_DOC=$(usex doc $(usex doc) n)
+		-DGENERATE_DOC=$(usex doc)
+		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 	)
 	if use luajit; then
 		mycmakeargs+=("-DLUA_INCLUDE_DIR=${EPREFIX}/usr/include/luajit-2.0")
@@ -67,8 +82,14 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_test() {
+	# awesome's test suite starts Xvfb by itself, no need for virtualx eclass
+	HEADLESS=1 cmake-utils_src_make check -j1
+}
+
 src_install() {
 	cmake-utils_src_install
+	rm "${ED}"/usr/share/doc/${PF}/LICENSE || die
 
 	pax-mark m "${ED%/}"/usr/bin/awesome
 
@@ -88,6 +109,9 @@ src_install() {
 		insinto /usr/share/xsessions
 		doins "${FILESDIR}"/${PN}-gnome-xsession.desktop
 	fi
+
+	# This directory contains SVG images which we don't want to compress
+	use doc && touch "${ED}"/usr/share/doc/${PF}/doc/images.ecompress.skip
 }
 
 pkg_postinst() {
@@ -109,4 +133,12 @@ pkg_postinst() {
 	elog "and setting the WM name to LG3D."
 	elog "For more info visit"
 	elog "  https://bugs.gentoo.org/show_bug.cgi?id=440724"
+
+	for v in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version ${v})" = "3" ]; then
+			elog "Awesome-4 introduced breaking changes. For release notes and porting guide see"
+			elog "https://awesomewm.org/apidoc/documentation/89-NEWS.md.html#v4 and"
+			elog "https://awesomewm.org/apidoc/documentation/17-porting-tips.md.html#v4"
+		fi
+	done
 }

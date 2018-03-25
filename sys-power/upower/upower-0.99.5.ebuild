@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune systemd
+inherit ltprune systemd xdg-utils
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
 HOMEPAGE="https://upower.freedesktop.org/"
@@ -76,6 +76,7 @@ src_configure() {
 		$(use_enable introspection)
 		$(use_with ios idevice)
 	)
+	xdg_environment_reset
 	econf "${myeconfargs[@]}"
 }
 

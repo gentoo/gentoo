@@ -15,7 +15,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="static"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.48-sysmacros.patch #580052
 	"${FILESDIR}"/${PN}-9.51-build.patch
 )
 
