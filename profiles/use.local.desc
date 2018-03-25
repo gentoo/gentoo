@@ -846,7 +846,6 @@ app-text/texlive:jadetex - Add support for app-text/jadetex (for processing tex 
 app-text/texlive:luatex - Add extra support for luatex
 app-text/texlive:metapost - Add support for metapost: A tool for creating graphics in scalable PostScript
 app-text/texlive:music - Add support for music typesetting (dev-texlive/texlive-music)
-app-text/texlive:omega - Add omega packages (dev-texlive/texlive-omega)
 app-text/texlive:pdfannotextractor - Add dev-tex/pdfannotextractor support, for extracting annotations from PDF files
 app-text/texlive:pstricks - Add pstricks packages (dev-texlive/texlive-pstricks)
 app-text/texlive:publishers - Add support for publishers (dev-texlive/texlive-publishers)

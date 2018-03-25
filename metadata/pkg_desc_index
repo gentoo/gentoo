@@ -1448,7 +1448,7 @@ app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimi
 app-text/teckit 2.5.6: Text Encoding Conversion toolkit
 app-text/tesseract 3.05.01: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2016 2017: A complete TeX distribution
+app-text/texlive 2017: A complete TeX distribution
 app-text/texlive-core 2015-r1 2016-r5 2016-r6 2017-r3: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
@@ -6026,13 +6026,12 @@ dev-texlive/texlive-langarabic 2015 2016 2017: TeXLive Arabic
 dev-texlive/texlive-langchinese 2015 2016 2017: TeXLive Chinese
 dev-texlive/texlive-langcjk 2015 2016 2017: TeXLive Chinese/Japanese/Korean (base)
 dev-texlive/texlive-langcyrillic 2015 2016 2017: TeXLive Cyrillic
-dev-texlive/texlive-langczechslovak 2015-r1 2016 2017: TeXLive Czech/Slovak
-dev-texlive/texlive-langenglish 2015 2016 2017: TeXLive US and UK English
-dev-texlive/texlive-langeuropean 2014 2015 2016 2017: TeXLive Other European languages
-dev-texlive/texlive-langfrench 2015 2016 2017: TeXLive French
-dev-texlive/texlive-langgerman 2015 2016 2017: TeXLive German
-dev-texlive/texlive-langgreek 2015 2016 2017: TeXLive Greek
-dev-texlive/texlive-langindic 2015 2016: TeXLive Indic scripts
+dev-texlive/texlive-langczechslovak 2017: TeXLive Czech/Slovak
+dev-texlive/texlive-langenglish 2017: TeXLive US and UK English
+dev-texlive/texlive-langeuropean 2017: TeXLive Other European languages
+dev-texlive/texlive-langfrench 2017: TeXLive French
+dev-texlive/texlive-langgerman 2017: TeXLive German
+dev-texlive/texlive-langgreek 2017: TeXLive Greek
 dev-texlive/texlive-langitalian 2015 2016 2017: TeXLive Italian
 dev-texlive/texlive-langjapanese 2015 2016 2017: TeXLive Japanese
 dev-texlive/texlive-langkorean 2015 2016 2017: TeXLive Korean
