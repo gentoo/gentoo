@@ -11,7 +11,7 @@ SRC_URI="https://haible.de/bruno/gnu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2/8"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib"
 # "jit" disabled ATM
 
