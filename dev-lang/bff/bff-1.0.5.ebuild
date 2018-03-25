@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/apankrat/bff"
 SRC_URI="https://github.com/apankrat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86"
+KEYWORDS="amd64 ~arm ~hppa ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh x86"
 IUSE="test"
 
 DEPEND=""
