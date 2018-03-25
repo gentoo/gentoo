@@ -9,12 +9,12 @@ LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk 
 NOSHORTLANGS="en_GB zh_CN zh_TW"
 
 DESCRIPTION="GTK+ based fast and lightweight IDE"
-HOMEPAGE="http://www.geany.org"
+HOMEPAGE="https://www.geany.org"
 if [[ "${PV}" = 9999* ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/geany/geany.git"
 else
-	SRC_URI="http://download.geany.org/${P}.tar.bz2"
+	SRC_URI="https://download.geany.org/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 LICENSE="GPL-2+ HPND"
