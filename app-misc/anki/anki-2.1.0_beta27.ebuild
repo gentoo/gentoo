@@ -33,7 +33,10 @@ RDEPEND="${PYTHON_DEPS}
 		media-sound/lame
 		>=dev-python/pyaudio-0.2.4[${PYTHON_USEDEP}]
 	)
-	sound? ( media-video/mplayer )
+	sound? ( || (
+		media-video/mpv
+		media-video/mplayer
+	) )
 	latex? (
 		app-text/texlive
 		app-text/dvipng
