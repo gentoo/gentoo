@@ -3001,7 +3001,7 @@ dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Servi
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
-dev-libs/libbsd 0.8.3 0.8.6: An library to provide useful functions commonly found on BSD systems
+dev-libs/libbsd 0.8.6: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 1.8.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.8-r2: Open-source library for reading, mastering and writing optical discs
