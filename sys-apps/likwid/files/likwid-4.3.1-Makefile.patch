@@ -1,0 +1,21 @@
+--- likwid-likwid-4.3.1/Makefile.org	2018-02-26 13:59:28.421504363 +0800
++++ likwid-likwid-4.3.1/Makefile	2018-02-26 14:00:00.423690936 +0800
+@@ -32,7 +32,6 @@
+ FILTER_DIR  = ./filters
+ MAKE_DIR    = ./make
+ 
+-Q         ?= @
+ 
+ #DO NOT EDIT BELOW
+ 
+@@ -551,7 +550,7 @@
+ 		sed -i -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" -e "s/<RELEASE>/$(RELEASE)/g" -e "s/<GITCOMMIT>/$(GITCOMMIT)/g" -e "s/<MINOR>/$(MINOR)/g" -e "s+$(PREFIX)/bin/likwid-lua+$(PWD)/ext/lua/lua+" -e "s+$(PREFIX)/share/lua/?.lua+$(PWD)/?.lua+" -e "s+$(PREFIX)/bin/likwid-pin+$(PWD)/likwid-pin+" -e "s+$(PREFIX)/bin/likwid-perfctr+$(PWD)/likwid-perfctr+" $$APP; \
+ 		chmod +x $$APP; \
+ 	done
+-	@sed -i -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" -e "s/<RELEASE>/$(RELEASE)/g" -e "s+$(PREFIX)/lib+$(PWD)+g" -e "s+$(PREFIX)/share/likwid/perfgroups+$(PWD)/groups+g" -e "s/<GITCOMMIT>/$(GITCOMMIT)/g" -e "s/<MINOR>/$(MINOR)/g" likwid.lua;
++	@sed -i -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" -e "s/<RELEASE>/$(RELEASE)/g" -e "s+$(PREFIX)/+$(PWD)+g" -e "s+$(PREFIX)/share/likwid/perfgroups+$(PWD)/groups+g" -e "s/<GITCOMMIT>/$(GITCOMMIT)/g" -e "s/<MINOR>/$(MINOR)/g" likwid.lua;
+ 	@ln -sf liblikwid.so liblikwid.so.$(VERSION)
+ 	@ln -sf ext/hwloc/liblikwid-hwloc.so liblikwid-hwloc.so.$(VERSION)
+ 	@ln -sf ext/lua/liblikwid-lua.so liblikwid-lua.so.$(VERSION)
+
+
