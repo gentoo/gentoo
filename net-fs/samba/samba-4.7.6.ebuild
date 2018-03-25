@@ -47,6 +47,7 @@ CDEPEND="
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
+	net-libs/libnsl
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	>=sys-libs/ldb-1.2.3[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
