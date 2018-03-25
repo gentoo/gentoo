@@ -39,7 +39,10 @@ REQUIRED_USE="pyzord? ( || ( gdbm mysql redis ) )
 	test? ( gdbm mysql redis )"
 S="${WORKDIR}/${PN}-release-${MY_PV}"
 
-PATCHES=( "${FILESDIR}/read-stdin-as-binary-in-get_input_msg.patch" )
+PATCHES=(
+	"${FILESDIR}/read-stdin-as-binary-in-get_input_msg.patch"
+	"${FILESDIR}/unfix-configparser-compat-for-2to3.patch"
+)
 
 python_test() {
 	# The suite is py2 friendly only

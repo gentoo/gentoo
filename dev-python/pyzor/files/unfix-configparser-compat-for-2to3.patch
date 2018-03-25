@@ -1,0 +1,41 @@
+From e4f06e21f697b863fa45a50e535ff0c6e3621a60 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 25 Mar 2018 10:14:21 -0400
+Subject: [PATCH 1/1] scripts/pyzor: undo ConfigParser python-3.x
+ compatibility.
+
+The build system for pyzor-1.0.0 still runs the 2to3 utility on the
+scripts to be installed. As an unintended side-effect, the python-3.x
+"try... import... except" compatibility block for the ConfigParser <->
+configparser module gets modified (the module name gets mistakenly
+lowercased).
+
+This commit puts back the python-2.x "import ConfigParser" line
+unconditionally, and we'll have to rely on 2to3 to fix it when run
+under python-3.x. In newer versions of pyzor, the automatic 2to3 will
+not happen.
+
+Bug: https://bugs.gentoo.org/643692
+---
+ scripts/pyzor | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/scripts/pyzor b/scripts/pyzor
+index 86c6f7d..2750d92 100755
+--- a/scripts/pyzor
++++ b/scripts/pyzor
+@@ -16,10 +16,7 @@ import optparse
+ import tempfile
+ import threading
+ 
+-try:
+-    import configparser as ConfigParser
+-except ImportError:
+-    import ConfigParser
++import ConfigParser
+ 
+ import pyzor.digest
+ import pyzor.client
+-- 
+2.16.1
+
