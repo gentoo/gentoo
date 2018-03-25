@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,4 +31,5 @@ DOCS=( AUTHORS ChangeLog README README.LIN )
 PATCHES=(
 	"${FILESDIR}/${P}-fix-pointer-conversion-warning.diff"
 	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/${P}-gcc7.patch"
 )
