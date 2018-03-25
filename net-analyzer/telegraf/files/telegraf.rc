@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+configdir="/etc/telegraf/telegraf.d"
+configfile="/etc/telegraf/telegraf.conf"
+error_log="${logfile:-/var/log/telegraf/telegraf.log}"
+command=/usr/bin/telegraf
+command_args="-config ${configfile} -config-directory ${configdir}
+	${telegraf_opts}"
+command_background=yes
+command_user=telegraf:telegraf
+make_pidfile=yes
+pidfile=/var/run/telegraf.pid
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${PIDFILE}"
+	eend $?
+}
