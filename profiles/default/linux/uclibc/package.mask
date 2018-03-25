@@ -79,6 +79,7 @@ games-action/hotline-miami
 games-action/intrusion2
 games-action/solar2
 games-action/swordandsworcery
+games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/dynamitejack
 games-arcade/thinktanks-demo
