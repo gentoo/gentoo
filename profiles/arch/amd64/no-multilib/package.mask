@@ -61,6 +61,7 @@ games-action/shadowgrounds-survivor-bin
 games-action/solar2
 games-action/spacetripper-demo
 games-action/swordandsworcery
+games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/aquaria
 games-arcade/barbarian-bin
