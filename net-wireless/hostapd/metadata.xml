@@ -14,4 +14,8 @@
 		<flag name="sqlite">Adding sqlite support</flag>
 		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
 	</use>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
 </pkgmetadata>

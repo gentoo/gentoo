@@ -5,7 +5,7 @@ EAPI=6
 
 inherit toolchain-funcs flag-o-matic versionator
 
-DESCRIPTION="The rEFInd UEFI Boot Manager by Rod Smith"
+DESCRIPTION="The UEFI Boot Manager by Rod Smith"
 HOMEPAGE="https://www.rodsbooks.com/refind/"
 
 SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz"
