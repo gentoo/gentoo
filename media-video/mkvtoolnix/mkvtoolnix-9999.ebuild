@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator multiprocessing xdg-utils qmake-utils
+inherit toolchain-funcs versionator multiprocessing xdg-utils qmake-utils gnome2-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
@@ -113,9 +113,11 @@ src_install() {
 pkg_postrm() {
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postinst() {
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
