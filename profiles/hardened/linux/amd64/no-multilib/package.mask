@@ -8,6 +8,7 @@ dev-lang/rebol-bin
 
 games-action/brutal-legend
 games-action/hotline-miami
+games-action/trine-enchanted-edition
 games-action/trine2
 games-action/swordandsworcery
 games-action/beathazardultra
