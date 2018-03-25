@@ -3,9 +3,9 @@ DEPEND=>=dev-libs/lzo-2
 DESCRIPTION=Utility for fast (even real-time) compression/decompression
 EAPI=6
 HOMEPAGE=http://www.lzop.org/
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/lzo-2
 SLOT=0
 SRC_URI=http://www.lzop.org/download/lzop-1.04.tar.gz
-_md5_=fcfd11b7b13ad3962cd3578803f6eebc
+_md5_=96a29e8d318a2a97415d944571e2224b
