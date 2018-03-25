@@ -1028,10 +1028,14 @@ dev-games/openscenegraph:openinventor - Build OpenInventor plugin
 dev-games/openscenegraph:osgapps - Build osg applications
 dev-games/openscenegraph:sdl2 - Use media-libs/libsdl2 additionally to media-libs/libsdl
 dev-games/openscenegraph:xrandr - Enable support for the X xrandr extension
+dev-games/physfs:7zip - Enable 7zip/lzma archive support
 dev-games/physfs:grp - Enable Build Engine GRP archive support
 dev-games/physfs:hog - Enable Descent I/II HOG archive support
+dev-games/physfs:iso - Enable ISO9660 file support
 dev-games/physfs:mvl - Enable Descent I/II MVL archive support
 dev-games/physfs:qpak - Enable Quake I/II QPAK archive support
+dev-games/physfs:slb - Enable Independence War SLB archive support
+dev-games/physfs:vdf - Enable Gothic/Gothic II VDF archive support
 dev-games/physfs:wad - Enable Doom WAD archive support
 dev-games/physfs:zip - Enable ZIP archive support
 dev-games/simgear:dns - Enable DNS resolver via net-libs/udns
