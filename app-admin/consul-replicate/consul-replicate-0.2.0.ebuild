@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,7 +29,6 @@ SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/hashicorp/serf/archive/64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz -> serf-64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz
 	https://github.com/mitchellh/mapstructure/archive/281073eb9eb092240d33ef253c404f1cca550309.tar.gz -> mapstructure-281073eb9eb092240d33ef253c404f1cca550309.tar.gz"
 
-STRIP_MASK="*.a"
 S="${WORKDIR}/src/${EGO_PN%/*}"
 
 get_archive_go_package() {
