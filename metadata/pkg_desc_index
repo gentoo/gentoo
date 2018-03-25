@@ -1525,7 +1525,7 @@ app-vim/ctrlp 1.80: vim plugin: fuzzy file, buffer, mru, tag, ... finder with re
 app-vim/ctx 1.17-r1: vim plugin: display current scope context in a C file
 app-vim/curcmdmode 1.0-r1: vim plugin: library for extending vim's mode() function
 app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
-app-vim/dbext 25.0: vim plugin: easy access to databases
+app-vim/dbext 26.00: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/diffchar 7.01: vim plugin: highlight the exact differences, based on characters and words
@@ -1547,14 +1547,14 @@ app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
 app-vim/gentoo-syntax 20160530 20170225: vim plugin: Gentoo and Portage syntax highlighting
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.3: vim plugin: interact with gists (gist.github.com)
-app-vim/gitgutter 20170222: vim plugin: shows a git diff in the sign column and stages/reverts hunks
+app-vim/gitgutter 20171101: vim plugin: shows a git diff in the sign column and stages/reverts hunks
 app-vim/gitlog 5.1.0: vim plugin: git log and diff plugin for vim
 app-vim/gitolite-syntax 20111225: vim plugin: gitolite syntax highlighting
 app-vim/gitv 1.3.1: vim plugin: gitk for vim
 app-vim/gnupg 2.6: transparent editing of gpg encrypted files
 app-vim/greputils 2.8-r1: vim plugin: interface with grep, find and id-utils
 app-vim/gtk-syntax 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xlib, Gimp, Gnome, and more
-app-vim/gundo 2.6.1: vim plugin: visualize your vim undo tree
+app-vim/gundo 2.6.2: vim plugin: visualize your vim undo tree
 app-vim/help-extra-syntax 20050106-r1: vim plugin: extra syntax highlighting for help files
 app-vim/increment 1.1-r1: vim plugin: easily create sequences of incremented values
 app-vim/indentpython 0.3: vim plugin: Indent Python code according to PEP8
