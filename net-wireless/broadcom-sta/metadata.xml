@@ -10,6 +10,10 @@
 		<name>Nick Sarnie</name>
 		<description>Proxy co-maintainer</description>
 	</maintainer>
+	<maintainer type="person">
+		<email>eva@gentoo.org</email>
+		<name>Gilles Dartiguelongue</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
