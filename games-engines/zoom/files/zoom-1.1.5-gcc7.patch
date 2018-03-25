@@ -1,0 +1,53 @@
+Bug: https://bugs.gentoo.org/617808
+Upstream commit: https://github.com/Logicalshift/zoom/commit/6b0ad57dd2c125c9126e9b7913560ad25709a36f
+
+From 6b0ad57dd2c125c9126e9b7913560ad25709a36f Mon Sep 17 00:00:00 2001
+From: Andrew Hunter <andrew@logicalshift.co.uk>
+Date: Sat, 3 Mar 2012 16:31:35 +0000
+Subject: [PATCH] Inline functions need to be marked as static in order to
+ compile with LLVM
+
+---
+ src/interp.c   | 4 ++--
+ src/tokenise.c | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/interp.c b/src/interp.c
+index a5fa8fe..3d446fa 100644
+--- a/src/interp.c
++++ b/src/interp.c
+@@ -232,7 +232,7 @@ ZFrame* call_routine(ZDWord* pc, ZStack* stack, ZDWord start)
+   return newframe;
+ }
+ 
+-inline void store(ZStack* stack, int var, ZWord value)
++static inline void store(ZStack* stack, int var, ZWord value)
+ {
+ #ifdef DEBUG
+   printf_debug("Storing %i in Variable #%x\n", value, var);
+@@ -253,7 +253,7 @@ inline void store(ZStack* stack, int var, ZWord value)
+     }
+ }
+ 
+-inline void store_nopush(ZStack* stack, int var, ZWord value)
++static inline void store_nopush(ZStack* stack, int var, ZWord value)
+ {
+ #ifdef DEBUG
+     printf_debug("Storing %i in Variable #%x\n", value, var);
+diff --git a/src/tokenise.c b/src/tokenise.c
+index 5925169..fb442d0 100644
+--- a/src/tokenise.c
++++ b/src/tokenise.c
+@@ -154,9 +154,9 @@ ZDictionary* dictionary_cache(const ZUWord dict_pos)
+ 
+ int cache = 1;
+ 
+-inline ZUWord lookup_word(unsigned int*  word,
+-			  int            wordlen,
+-			  ZUWord         dct)
++static inline ZUWord lookup_word(unsigned int*  word,
++                                 int            wordlen,
++                                 ZUWord         dct)
+ {
+   ZByte packed[12];
+   int zscii_len;
