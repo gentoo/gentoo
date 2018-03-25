@@ -11028,7 +11028,7 @@ x11-proto/randrproto 1.4.0-r1 1.5.0 1.5.0-r1: X.Org Randr protocol headers
 x11-proto/recordproto 1.14.2-r1 1.14.2-r2: X.Org Record protocol headers
 x11-proto/renderproto 0.11.1-r1 0.11.1-r2: X.Org Render protocol headers
 x11-proto/resourceproto 1.2.0 1.2.0-r1: X.Org Resource protocol headers
-x11-proto/scrnsaverproto 1.2.2-r1: X.Org ScrnSaver protocol headers
+x11-proto/scrnsaverproto 1.2.2-r1 1.2.2-r2: X.Org ScrnSaver protocol headers
 x11-proto/trapproto 3.4.3 3.4.3-r1: X.Org Trap protocol headers
 x11-proto/videoproto 2.3.2 2.3.3 2.3.3-r1: X.Org Video protocol headers
 x11-proto/xcb-proto 1.12-r2 1.13: X C-language Bindings protocol headers
