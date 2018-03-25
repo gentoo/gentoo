@@ -24,7 +24,7 @@ games-action/descent3
 games-action/descent3-demo
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
-games-action/trine-bin
+games-action/trine
 games-arcade/marbleblastgold-demo
 games-fps/enemy-territory
 games-fps/enemy-territory-etpro

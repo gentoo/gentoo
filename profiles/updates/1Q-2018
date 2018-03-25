@@ -6,3 +6,4 @@ move app-admin/restart_services app-admin/restart-services
 move dev-libs/purpose kde-frameworks/purpose
 move kde-misc/plasma-applet-redshift-control kde-misc/plasma-redshift-control
 move x11-proto/xorgproto x11-base/xorg-proto
+move games-action/trine-bin games-action/trine
