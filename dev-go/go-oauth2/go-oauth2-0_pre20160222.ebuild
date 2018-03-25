@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,6 @@ DEPEND="dev-go/go-tools"
 RDEPEND=""
 
 EGIT_CHECKOUT_DIR="${S}"
-STRIP_MASK="*.a"
 
 get_archive_go_package() {
 	local archive=${1} uri x
