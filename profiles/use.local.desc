@@ -4159,7 +4159,6 @@ net-libs/telepathy-qt:farstream - Enable support for audio/video calls via farst
 net-libs/udns:tools - Build and install dnsget, ex-rdns and rblcheck tools
 net-libs/webkit-gtk:coverage - Enable code coverage support
 net-libs/webkit-gtk:egl - Enable EGL support
-net-libs/webkit-gtk:geoloc - Enable geolocation support through app-misc/geoclue
 net-libs/webkit-gtk:geolocation - Enable geolocation support through app-misc/geoclue
 net-libs/webkit-gtk:gles2 - Enable GLESv2 support
 net-libs/webkit-gtk:nsplugin - Enable full nsplugin support (GTK2 plugins)

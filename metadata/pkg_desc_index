@@ -9631,7 +9631,7 @@ sys-apps/baselayout 2.4.1-r2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/bleachbit 1.12: Clean junk to free disk space and to maintain privacy
-sys-apps/busybox 1.25.1 1.28.0: Utilities for rescue and embedded systems
+sys-apps/busybox 1.28.0: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/checkpolicy 2.6 2.7: SELinux policy compiler
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
@@ -11030,7 +11030,7 @@ x11-proto/resourceproto 1.2.0 1.2.0-r1: X.Org Resource protocol headers
 x11-proto/scrnsaverproto 1.2.2-r1 1.2.2-r2: X.Org ScrnSaver protocol headers
 x11-proto/trapproto 3.4.3 3.4.3-r1: X.Org Trap protocol headers
 x11-proto/videoproto 2.3.2 2.3.3 2.3.3-r1: X.Org Video protocol headers
-x11-proto/xcb-proto 1.12-r2 1.13: X C-language Bindings protocol headers
+x11-proto/xcb-proto 1.12-r2: X C-language Bindings protocol headers
 x11-proto/xcmiscproto 1.2.2 1.2.2-r1: X.Org XCMisc protocol headers
 x11-proto/xextproto 7.3.0 7.3.0-r1: X.Org XExt protocol headers
 x11-proto/xf86bigfontproto 1.2.0-r1 1.2.0-r2: X.Org XF86BigFont protocol headers
