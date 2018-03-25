@@ -649,12 +649,6 @@ sys-cluster/ganglia-web
 net-libs/webkit-gtk:2
 net-libs/webkit-gtk:3
 
-# Mart Raudsepp <leio@gentoo.org> (23 Feb 2018)
-# Older versions of GnuCash use security vulnerable old webkit-gtk slot.
-# Use gnucash-2.7.4 or newer instead, but pay attention to the news item:
-# https://www.gentoo.org/support/news-items/2018-01-14-gnucash.html
-<app-office/gnucash-2.7
-
 # Steve Dibb <beandog@gentoo.org> (22 Feb 2018)
 # Very old project of mine, hasn't worked in years, no plans to
 # support, and mpv can provide resume playback by default.
