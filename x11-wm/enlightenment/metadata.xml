@@ -5,6 +5,14 @@
 	<email>enlightenment@gentoo.org</email>
 	<name>Project Enlightenment</name>
 </maintainer>
+<maintainer type="person">
+	<email>bertrand@jacquin.bzh</email>
+	<name>Bertrand Jacquin</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
 <use>
 	<flag name="pango">Enable pango font rendering</flag>
 	<flag name="xrandr">Enable support for the X xrandr extension</flag>
@@ -69,7 +77,7 @@
 	<flag name="enlightenment_modules_conf-window-remembers">Delete existing window remembers</flag>
 </use>
 <longdescription>
-Enlightenment is a completely themeable, highly configurable Window Manager for 
+Enlightenment is a completely themeable, highly configurable Window Manager for
 the X Window System, traditionally used in Unix environments.
 
 Enlightenment Features:

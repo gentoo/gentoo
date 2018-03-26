@@ -1,0 +1,64 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
+
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+
+MY_P=${P/_/-}
+
+if [[ "${PV}" == "9999" ]]; then
+	EGIT_SUB_PROJECT="bindings/python"
+	EGIT_URI_APPEND="${PN}"
+	EGIT_REPO_URI="https://git.enlightenment.org/${EGIT_SUB_PROJECT}/${EGIT_URI_APPEND}.git"
+	inherit git-r3
+else
+	SRC_URI="https://download.enlightenment.org/rel/bindings/python/${MY_P}.tar.xz"
+fi
+
+inherit distutils-r1
+
+DESCRIPTION="Python bindings for Enlightenment Fundation Libraries"
+HOMEPAGE="https://www.enlightenment.org"
+
+LICENSE="|| ( GPL-3 LGPL-3 )"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc examples"
+
+RDEPEND=">=dev-libs/efl-${PV}
+	>dev-python/dbus-python-0.83[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.21[${PYTHON_USEDEP}]
+	doc? (
+		media-gfx/graphviz
+		>=dev-python/sphinx-1.1[${PYTHON_USEDEP}]
+	)"
+
+python_compile_all() {
+	if use doc; then
+		# Point sphinx to right location with built sources
+		sed -i 's|"../build/"+d|"'"${BUILD_DIR}"'/lib"|g' doc/conf.py || die
+		esetup.py build_doc --build-dir "${S}"/build/doc/
+	fi
+}
+
+python_test() {
+	cd "${S}"/tests || die
+	# violates sandbox
+	rm -f ecore/test_09_file_download.py || die
+	sed -i 's:verbosity=1:verbosity=3:' 00_run_all_tests.py || die
+	${PYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
+}
+
+python_install_all() {
+	use doc && DOCS+=( build/doc/html )
+	if use examples ; then
+		insinto /usr/share/doc/${P}
+		dodoc -r examples
+	fi
+
+	distutils-r1_python_install_all
+}
