@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="A framework for managing DNS information"
-HOMEPAGE="http://roy.marples.name/projects/openresolv"
-SRC_URI="http://roy.marples.name/downloads/${PN}/${P}.tar.xz"
+HOMEPAGE="https://roy.marples.name/projects/openresolv"
+SRC_URI="https://roy.marples.name/downloads/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
