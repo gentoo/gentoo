@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit cmake-utils vcs-snapshot python-single-r1
 
 DESCRIPTION="A library for particle IO and manipulation"
-HOMEPAGE="http://www.disneyanimation.com/technology/partio.html"
+HOMEPAGE="https://www.disneyanimation.com/technology/partio.html"
 
 MY_GIT_COMMIT="2774ef3958da46d9f8a4230ebda9e04b1aa8f4e5"
 SRC_URI="https://github.com/wdas/${PN}/archive/${MY_GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
