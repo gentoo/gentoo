@@ -319,9 +319,6 @@ clvm
 # virtual/opencl is not keyworded
 opencl
 
-# Unmask once sys-libs/libunwind gets keyworded.
-unwind
-
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # please remove when keyworded
 qt5
