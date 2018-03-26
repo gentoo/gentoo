@@ -17,7 +17,7 @@ DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.github.com/"
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="0/26"
+SLOT="0/27"
 IUSE="+curl examples gssapi libressl +ssh test +threads trace"
 
 RDEPEND="
