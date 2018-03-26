@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ inherit flag-o-matic vdr-plugin-2
 VERSION="1312" # every bump, new version
 
 DESCRIPTION="VDR plugin: make osd menu configurable via config-file"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-menuorg"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-menuorg"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tar.gz"
 
 LICENSE="GPL-2"
