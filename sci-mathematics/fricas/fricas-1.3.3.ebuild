@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}"
 RESTRICT="strip"
 
 src_configure() {
-	local LISP n
+	local LISP n GMP
 	LISP=sbcl
 	n=${#LISPS[*]}
 	for ((n--; n > 0; n--)); do
@@ -64,8 +64,14 @@ src_configure() {
 	done
 	einfo "Using lisp: ${LISP}"
 
+	# bug #650788
+	if [[ ${LISP} = sbcl || ${LISP} = ccl ]]
+	then GMP=$(use_with gmp)
+	else GMP=''
+	fi
+
 	# aldor is not yet in portage
-	econf --disable-aldor --with-lisp=${LISP} $(use_with X x) $(use_with gmp)
+	econf --disable-aldor --with-lisp=${LISP} $(use_with X x) ${GMP}
 }
 
 src_compile() {

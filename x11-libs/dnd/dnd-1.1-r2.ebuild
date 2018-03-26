@@ -10,7 +10,7 @@ HOMEPAGE="http://leb.net/offix"
 SRC_URI="http://leb.net/offix/${PN}.${PV}.tgz"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	x11-libs/libXt
