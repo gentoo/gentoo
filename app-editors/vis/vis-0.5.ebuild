@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-MY_PTV=0.2
+MY_PTV=0.3
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
 HOMEPAGE="https://github.com/martanne/vis"
-SRC_URI="https://github.com/martanne/vis/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	test? ( https://github.com/martanne/vis-test/archive/v${MY_PTV}.tar.gz -> vis-test-${MY_PTV}.tar.gz )"
+SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/vis-v${PV}.tar.gz -> ${P}.tar.gz
+	test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz -> vis-test-${MY_PTV}.tar.gz )"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -21,6 +21,8 @@ DEPEND="dev-libs/libtermkey
 	tre? ( dev-libs/tre:= )"
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
+
+S="${WORKDIR}/vis-v${PV}"
 
 src_prepare() {
 	if use test; then

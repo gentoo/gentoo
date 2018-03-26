@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Large Vocabulary Continuous Speech Recognition Engine"
 HOMEPAGE="http://julius.sourceforge.jp/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge.jp/julius/56549/${P}.tar.gz"
 LICENSE="julius"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+alsa oss portaudio pulseaudio sndfile"
+IUSE="+alsa l10n_ja oss portaudio pulseaudio sndfile"
 REQUIRED_USE="^^ ( alsa oss portaudio pulseaudio )"
 
 RDEPEND="
@@ -27,13 +27,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/flex"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.2.2-install.patch
+	"${FILESDIR}"/${PN}-4.2.2-ldflags.patch
+)
+
 pkg_setup() {
 	tc-export CC CXX
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-install.patch \
-		"${FILESDIR}"/${P}-ldflags.patch
 }
 
 src_configure() {
@@ -49,7 +49,7 @@ src_configure() {
 
 src_install() {
 	default
-	if ! has ja ${LINGUAS} ; then
+	if ! use l10n_ja ; then
 		rm -r "${ED}"/usr/share/man/ja || die
 	fi
 }
