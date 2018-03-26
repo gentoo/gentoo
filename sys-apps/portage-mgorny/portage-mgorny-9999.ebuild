@@ -55,6 +55,20 @@ PDEPEND="
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
 pkg_pretend() {
+	if [[ -f ${EROOT%/}/etc/make.conf ]]; then
+		eerror "You seem to be using /etc/make.conf. Please migrate to the new"
+		eerror "/etc/portage/make.conf location before upgrading."
+		if [[ ! -f ${EROOT%/}/etc/portage/make.conf ]]; then
+			eerror
+			eerror "  mv ${EROOT%/}/etc/make.conf ${EROOT%/}/etc/portage/make.conf"
+		else
+			ewarn
+			ewarn "WARNING: You seem to have make.conf in both locations. Please take"
+			ewarn "care not to accientally overwrite one with the other."
+		fi
+		die "${EROOT%/}/etc/make.conf present"
+	fi
+
 	if has_version sys-apps/portage; then
 		ewarn "If you are migrating from sys-apps/portage to sys-apps/portage-mgorny,"
 		ewarn "please note that Portage will abort upon having to unmerge itself."
