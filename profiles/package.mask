@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Tony Vroon <chainsaw@gentoo.org> (24 Mar 2018)
+# This is a vulnerable version of Asterisk and should not be used except
+# to troubleshoot a purported memory leak in the 11.25.3 release.
+# Bug 629682.
+=net-misc/asterisk-11.25.1
+
 # Mike Gilbert <floppym@gentoo.org> (24 Mar 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
