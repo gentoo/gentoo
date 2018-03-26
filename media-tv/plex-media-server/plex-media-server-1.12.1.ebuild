@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit eutils user systemd unpacker pax-utils python-single-r1
 
-MINOR_VERSION="4602-f54242b6b"
+MINOR_VERSION="4885-1046ba85f"
 
 _APPNAME="plexmediaserver"
 _USERNAME="plex"
@@ -21,7 +21,7 @@ SRC_URI="amd64? ( ${URI}/${_FULL_VERSION}/plexmediaserver_${_FULL_VERSION}_amd64
 SLOT="0"
 LICENSE="Plex"
 RESTRICT="bindist strip"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
@@ -74,11 +74,13 @@ src_install() {
 	local LOGGING_DIR="/var/log/pms"
 	dodir "${LOGGING_DIR}"
 	chown "${_USERNAME}":"${_USERNAME}" "${ED%/}/${LOGGING_DIR}" || die
+	keepdir "${LOGGING_DIR}"
 
 	# Create default library folder with correct permissions
 	local DEFAULT_LIBRARY_DIR="/var/lib/${_APPNAME}"
 	dodir "${DEFAULT_LIBRARY_DIR}"
 	chown "${_USERNAME}":"${_USERNAME}" "${ED%/}/${DEFAULT_LIBRARY_DIR}" || die
+	keepdir "${DEFAULT_LIBRARY_DIR}"
 
 	# Install the OpenRC init/conf files
 	doinitd "${FILESDIR}/init.d/${PN}"
@@ -88,7 +90,7 @@ src_install() {
 	#_handle_multilib
 
 	# Mask Plex libraries so that revdep-rebuild doesn't try to rebuild them.
-	# Plex has it's own precompiled libraries.
+	# Plex has its own precompiled libraries.
 	_mask_plex_libraries_revdep
 
 	# Install systemd service file
