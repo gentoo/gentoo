@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.9-gcc-5.patch" #545114
 	"${FILESDIR}/${PN}-6.0-ticlib.patch" #557360
 	"${FILESDIR}/${PN}-6.0-cppflags-cross.patch" #601426
+	"${FILESDIR}/${PN}-6.1-st07_terminfo_typo.patch" #651494
 )
 
 src_prepare() {

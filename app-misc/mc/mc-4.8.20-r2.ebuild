@@ -67,7 +67,7 @@ src_configure() {
 		--enable-charset
 		--enable-vfs
 		--with-homedir=$(usex xdg 'XDG' '.mc')
-		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w')")
+		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w' '')")
 		$(use_enable kernel_linux vfs-undelfs)
 		$(use_enable mclib)
 		$(use_enable nls)
