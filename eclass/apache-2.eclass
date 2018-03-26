@@ -27,10 +27,6 @@ case $(get_version_component_range 1-2) in
 		CDEPEND=">=dev-libs/apr-1.5.1:=
 			!www-apache/mod_macro" #492578 #477702
 	;;
-	2.2)
-		DEFAULT_MPM_THREADED="worker"
-		CDEPEND=">=dev-libs/apr-1.4.5:=" #368651
-	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
 	;;
@@ -47,14 +43,14 @@ esac
 # If you want to override this in an ebuild, use:
 # ORIG_PR="(revision of Gentoo stuff you want)"
 # GENTOO_PATCHNAME="gentoo-${PN}-${PV}${ORIG_PR:+-${ORIG_PR}}"
-[[ -n "$GENTOO_PATCHNAME" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
+[[ -n "${GENTOO_PATCHNAME}" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
 
 # @ECLASS-VARIABLE: GENTOO_PATCHDIR
 # @DESCRIPTION:
 # This internal variable contains the working directory where patches and config
 # files are located.
 # Defaults to the patchset name appended to the working directory.
-[[ -n "$GENTOO_PATCHDIR" ]] || GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
+[[ -n "${GENTOO_PATCHDIR}" ]] || GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
 
 # @VARIABLE: GENTOO_DEVELOPER
 # @DESCRIPTION:
@@ -70,7 +66,7 @@ esac
 # @DESCRIPTION:
 # This variable should contain the entire filename of patch tarball.
 # Defaults to the name of the patchset, with a datestamp.
-[[ -n "$GENTOO_PATCH_A" ]] || GENTOO_PATCH_A="${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
+[[ -n "${GENTOO_PATCH_A}" ]] || GENTOO_PATCH_A="${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
 
 SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 	https://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
@@ -332,7 +328,7 @@ setup_modules() {
 # This internal function generates the LoadModule lines for httpd.conf based on
 # the current module selection and MODULE_DEFINES
 generate_load_module() {
-	local endit=0 mod_lines= mod_dir="${ED}/usr/$(get_libdir)/apache2/modules"
+	local endit=0 mod_lines= mod_dir="${ED%/}/usr/$(get_libdir)/apache2/modules"
 
 	if use static; then
 		sed -i -e "/%%LOAD_MODULE%%/d" \
@@ -534,24 +530,25 @@ apache-2_src_configure() {
 
 	# econf overwrites the stuff from config.layout, so we have to put them into
 	# our myconf line too
+	MY_CONF+=(
+		--includedir="${EPREFIX}"/usr/include/apache2
+		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/apache2/modules
+		--datadir="${EPREFIX}"/var/www/localhost
+		--sysconfdir="${EPREFIX}"/etc/apache2
+		--localstatedir="${EPREFIX}"/var
+		--with-mpm=${MY_MPM}
+		--with-apr="${SYSROOT}${EPREFIX}"/usr
+		--with-apr-util="${SYSROOT}${EPREFIX}"/usr
+		--with-pcre="${T}"/pcre-config
+		--with-z="${EPREFIX}"/usr
+		--with-port=80
+		--with-program-name=apache2
+		--enable-layout=Gentoo
+	)
 	ac_cv_path_PKGCONFIG=${PKG_CONFIG} \
-	econf \
-		--includedir="${EPREFIX}"/usr/include/apache2 \
-		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/apache2/modules \
-		--datadir="${EPREFIX}"/var/www/localhost \
-		--sysconfdir="${EPREFIX}"/etc/apache2 \
-		--localstatedir="${EPREFIX}"/var \
-		--with-mpm=${MY_MPM} \
-		--with-apr="${SYSROOT}${EPREFIX}"/usr \
-		--with-apr-util="${SYSROOT}${EPREFIX}"/usr \
-		--with-pcre="${T}"/pcre-config \
-		--with-z="${EPREFIX}"/usr \
-		--with-port=80 \
-		--with-program-name=apache2 \
-		--enable-layout=Gentoo \
-		"${MY_CONF[@]}"
+	econf "${MY_CONF[@]}"
 
-	sed -i -e 's:apache2\.conf:httpd.conf:' include/ap_config_auto.h
+	sed -i -e 's:apache2\.conf:httpd.conf:' include/ap_config_auto.h || die
 }
 
 # @FUNCTION: apache-2_src_install
@@ -575,15 +572,15 @@ apache-2_src_install() {
 
 	# generate a sane default APACHE2_OPTS
 	APACHE2_OPTS="-D DEFAULT_VHOST -D INFO"
-	use doc && APACHE2_OPTS="${APACHE2_OPTS} -D MANUAL"
-	use ssl && APACHE2_OPTS="${APACHE2_OPTS} -D SSL -D SSL_DEFAULT_VHOST"
-	use suexec && APACHE2_OPTS="${APACHE2_OPTS} -D SUEXEC"
+	use doc && APACHE2_OPTS+=" -D MANUAL"
+	use ssl && APACHE2_OPTS+=" -D SSL -D SSL_DEFAULT_VHOST"
+	use suexec && APACHE2_OPTS+=" -D SUEXEC"
 	if has negotiation ${APACHE2_MODULES} && use apache2_modules_negotiation; then
-		APACHE2_OPTS="${APACHE2_OPTS} -D LANGUAGE"
+		APACHE2_OPTS+=" -D LANGUAGE"
 	fi
 
 	sed -i -e "s:APACHE2_OPTS=\".*\":APACHE2_OPTS=\"${APACHE2_OPTS}\":" \
-		"${GENTOO_PATCHDIR}"/init/apache2.confd || die "sed failed"
+		"${GENTOO_PATCHDIR}"/init/apache2.confd || die
 
 	newconfd "${GENTOO_PATCHDIR}"/init/apache2.confd apache2
 	newinitd "${GENTOO_PATCHDIR}"/init/apache2.initd apache2
@@ -605,19 +602,19 @@ apache-2_src_install() {
 
 	# drop in a convenient link to the manual
 	if use doc ; then
-		sed -i -e "s:VERSION:${PVR}:" "${ED}/etc/apache2/modules.d/00_apache_manual.conf"
+		sed -i -e "s:VERSION:${PVR}:" "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf"
 		docompress -x /usr/share/doc/${PF}/manual # 503640
 	else
-		rm -f "${ED}/etc/apache2/modules.d/00_apache_manual.conf"
-		rm -Rf "${ED}/usr/share/doc/${PF}/manual"
+		rm -f "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf"
+		rm -Rf "${ED%/}/usr/share/doc/${PF}/manual"
 	fi
 
 	# the default icons and error pages get stored in
 	# /usr/share/apache2/{error,icons}
 	dodir /usr/share/apache2
-	mv -f "${ED}/var/www/localhost/error" "${ED}/usr/share/apache2/error"
-	mv -f "${ED}/var/www/localhost/icons" "${ED}/usr/share/apache2/icons"
-	rm -rf "${ED}/var/www/localhost/"
+	mv -f "${ED%/}/var/www/localhost/error" "${ED%/}/usr/share/apache2/error"
+	mv -f "${ED%/}/var/www/localhost/icons" "${ED%/}/usr/share/apache2/icons"
+	rm -rf "${ED%/}/var/www/localhost/"
 	eend $?
 
 	# set some sane permissions for suexec
