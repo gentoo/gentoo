@@ -69,6 +69,22 @@ pkg_pretend() {
 		die "${EROOT%/}/etc/make.conf present"
 	fi
 
+	if [[ -f ${EROOT%/}/etc/portage/package.keywords ]]; then
+		eerror "You seem to be using /etc/portage/package.keywords. Please migrate"
+		eerror "to the new /etc/portage/package.accept_keywords location before"
+		eerror "upgrading."
+		eerror
+		if [[ -d ${EROOT%/}/etc/portage/package.accept_keywords ]]; then
+			eerror "  mv ${EROOT%/}/etc/portage/package.keywords ${EROOT%/}/etc/portage/package.accept_keywords/99old"
+		else
+			if [[ -f ${EROOT%/}/etc/portage/package.accept_keywords ]]; then
+				eerror "  cat ${EROOT%/}/etc/portage/package.accept_keywords >> ${EROOT%/}/etc/portage/package.keywords"
+			fi
+			eerror "  mv ${EROOT%/}/etc/portage/package.keywords ${EROOT%/}/etc/portage/package.accept_keywords"
+		fi
+		die "${EROOT%/}/etc/portage/package.keywords present"
+	fi
+
 	if has_version sys-apps/portage; then
 		ewarn "If you are migrating from sys-apps/portage to sys-apps/portage-mgorny,"
 		ewarn "please note that Portage will abort upon having to unmerge itself."
