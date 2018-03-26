@@ -292,7 +292,6 @@ app-editors/gedit-plugins:git - Shows document changes related to git's HEAD
 app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
 app-editors/gedit-plugins:zeitgeist - Build the plugin to inject events to zeitgeist
 app-editors/gvim:gtk3 - Enable GTK+3 interface
-app-editors/gvim:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-editors/gvim:netbeans - Include netbeans external editor integration support
 app-editors/gvim:racket - Enable support for Scheme using dev-scheme/racket
 app-editors/jasspa-microemacs:nanoemacs - Build NanoEmacs instead of MicroEmacs
@@ -310,7 +309,6 @@ app-editors/tea:aspell - Enable spellchecking using app-text/aspell
 app-editors/tea:hunspell - Enable spellchecking using app-text/hunspell
 app-editors/tea:qml - Enable support for plugins using QML
 app-editors/vim:X - Link console vim against X11 libraries to enable title and clipboard features in xterm
-app-editors/vim:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-editors/vim:racket - Enable support for Scheme using dev-scheme/racket
 app-editors/vim:terminal - Enable terminal emulation support
 app-editors/vim:vim-pager - Install vimpager and vimmanpager links
@@ -745,7 +743,6 @@ app-shells/bash:mem-scramble - Build with custom malloc/free overwriting allocat
 app-shells/bash:net - Enable /dev/tcp/host/port redirection
 app-shells/bash:plugins - Add support for loading builtins at runtime via 'enable'
 app-shells/dash:vanilla - Support echo -n, and enable echo -e all the time (unsupported)
-app-shells/mpv-bash-completion:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-shells/pdsh:rsh - This allows the use of rsh (remote shell) and rcp (remote copy) for authoring websites. sftp is a much more secure protocol and is preferred.
 app-text/asciidoc:highlight - Enable source code highlighting
 app-text/atril:caja - Enable property page extension in mate-base/caja
@@ -954,7 +951,6 @@ dev-db/postgresql:server - Disable to build and install the clients and librarie
 dev-db/postgresql:uuid - Enable server side UUID generation (via dev-libs/ossp-uuid).
 dev-db/psqlodbc:iodbc - Use dev-db/libiodbc. Disable to use dev-db/unixODBC.
 dev-db/redis:jemalloc - Use dev-libs/jemalloc for allocations.
-dev-db/redis:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
 dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/spatialite:proj - Add the sci-libs/proj library for reprojection features
@@ -1612,14 +1608,9 @@ dev-lisp/ecls:precisegc - Use type information during garbage collection (experi
 dev-lisp/gcl:ansi - Build a GCL with ANSI support (else build a traditional CLtL1 image)
 dev-lisp/gcl:athena - Build xgcl - an interface to x11-libs/libXaw
 dev-lisp/sbcl:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
-dev-lua/lpeg:luajit - Use dev-lang/luajit instead of dev-lang/lua
-dev-lua/luafilesystem:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
 dev-lua/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
-dev-lua/luassert:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-lua/luvit:bundled-libs - Use bundled versions of some libraries.
-dev-lua/mpack:luajit - Use dev-lang/luajit instead of dev-lang/lua
-dev-lua/say:luajit - Use dev-lang/luajit instead of dev-lang/lua
 dev-ml/cairo-ocaml:pango - Enable support for x11-libs/pango
 dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
@@ -3465,7 +3456,6 @@ media-video/mpv:jpeg - Enable support for saving screenshots in JPEG format
 media-video/mpv:libass - Enable OSD (On Screen Display) and subtitles support via media-libs/libass
 media-video/mpv:libmpv - Build mpv shared library
 media-video/mpv:lua - Enable Lua scripting, OSC (On Screen Controller) GUI and net-misc/youtube-dl hook-script
-media-video/mpv:luajit - Use dev-lang/luajit instead of dev-lang/lua
 media-video/mpv:opengl - Enable the recommended 'opengl' video output
 media-video/mpv:raspberry-pi - Enable support for the Raspberry Pi
 media-video/mpv:rubberband - Enable high quality pitch correction via media-libs/rubberband
@@ -3476,7 +3466,6 @@ media-video/mpv:vf-dlopen - Install additional video filters to be used with -vf
 media-video/noad:libmpeg2 - Support for libmpeg2 library
 media-video/nvidia_video_sdk:tools - Build and install example tools.
 media-video/parole:clutter - Compile in Clutter GTK+ support
-media-video/rtmpdump:gnutls - Use GnuTLS library instead of the default OpenSSL
 media-video/smplayer:autoshutdown - Enable the option to shutdown your computer after finishing the playlist. This requires dev-qt/qtdbus as dependency.
 media-video/smplayer:mpris - Enable support for MPRIS2 (Media Player Remote Interfacing Specification, version 2), a DBus interface for remote control, which requires dev-qt/qtdbus as dependency.
 media-video/subtitlecomposer:mpv - Build mpv backend support
@@ -3798,7 +3787,6 @@ net-dns/nsd:ratelimit - Enables ratelimiting, based on query name, type and sour
 net-dns/nsd:root-server - Configure NSD as a root server
 net-dns/nsd:runtime-checks - Enable runtime checks, this could lead to a reduced service level
 net-dns/pdns:botan - Make it possible to use the dev-libs/botan library for crypto-related stuff (like DNSSec) which can be significantly faster than PolarSSL.
-net-dns/pdns:luajit - Enable support for dev-lang/luajit
 net-dns/pdns:mydns - Making it possible to use a MyDNS MySQL database with PowerDNS (not recommended for new deployments).
 net-dns/pdns:opendbx - Use a database supported by dev-db/opendbx as backend.
 net-dns/pdns:protobuf - Enable support for dev-libs/protobuf.
@@ -3806,7 +3794,6 @@ net-dns/pdns:remote - Use a generic socket or pipe as a backend (via JSON RPC re
 net-dns/pdns:sodium - Use dev-libs/libsodium for cryptography
 net-dns/pdns:tinydns - Use a TinyDNS CDB database as backend.
 net-dns/pdns:tools - Build optional tools (dnsscan, dnsscope, etc..).
-net-dns/pdns-recursor:luajit - Enable support for dev-lang/luajit.
 net-dns/pdns-recursor:protobuf - Enable support for dev-libs/protobuf.
 net-dns/pdns-recursor:sodium - Use dev-libs/libsodium for cryptography
 net-dns/pdnsd:isdn - Linux-only: check status of ippp interfaces with ISDN-specific system calls.
@@ -6033,7 +6020,6 @@ x11-themes/zuki-themes:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-themes/zuki-themes:mate - Install Metacity theme for mate-base/mate
 x11-themes/zuki-themes:xfce - Install theme for xfce-base/xfwm4
 x11-themes/zukitwo:gnome-shell - Install theme for gnome-base/gnome-shell
-x11-wm/awesome:luajit - Use dev-lang/luajit instead of dev-lang/lua
 x11-wm/enlightenment:enlightenment_modules_appmenu - Gadget that hold the toolbar of the foreground application
 x11-wm/enlightenment:enlightenment_modules_backlight - Backlight control slider gadget
 x11-wm/enlightenment:enlightenment_modules_battery - A gadget to visualize your battery status

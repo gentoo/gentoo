@@ -187,7 +187,7 @@ app-arch/lrzip 0.614 0.621: Long Range ZIP or Lzma RZIP optimized for compressin
 app-arch/lz4 0_p131 1.7.5-r1 1.8.0: Extremely Fast Compression algorithm
 app-arch/lzip 1.18: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.17: Lziprecover is a data recovery tool and decompressor for lzip compressed files
-app-arch/lzop 1.03: Utility for fast (even real-time) compression/decompression
+app-arch/lzop 1.03 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3: control magnetic tape drive operation
@@ -233,7 +233,7 @@ app-backup/backintime 1.1.24: Backup system inspired by TimeVault and FlyBack, w
 app-backup/backup-manager 0.7.14: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 7.4.4-r2: Featureful client/server network backup suite
+app-backup/bacula 7.4.4-r2 9.0.6-r2: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.3-r1: Deduplicating backup program with compression and authenticated encryption
 app-backup/btrbk 0.24.0-r1 0.25.1-r1: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.0.54: Network backup and restore client and server for Unix and Windows
@@ -802,7 +802,7 @@ app-eselect/eselect-python 20160516: Eselect module for management of multiple P
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
-app-eselect/eselect-repository 2: Manage repos.conf via eselect
+app-eselect/eselect-repository 2 3: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20161226 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -3125,7 +3125,7 @@ dev-libs/libspt 1.1-r2: Library for handling root privilege
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r3 1.2.20-r4: C library for manipulating tar archives
-dev-libs/libtasn1 4.12-r1: ASN.1 library
+dev-libs/libtasn1 4.12-r1 4.13: ASN.1 library
 dev-libs/libtecla 1.6.1-r2: Tecla command-line editing library
 dev-libs/libtermkey 0.20: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtommath 0.42.0-r1: Optimized and portable routines for integer theoretic applications
@@ -10459,7 +10459,7 @@ www-servers/spawn-fcgi 1.6.3-r1: A FCGI spawner for lighttpd and cherokee and ot
 www-servers/thttpd 2.27.1: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.82 8.0.48 8.5.24: Tomcat Servlet-3.1/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1: Python web framework and asynchronous networking library
-www-servers/uwsgi 2.0.15-r2: uWSGI server for Python web applications
+www-servers/uwsgi 2.0.15-r2 2.0.17: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3: Varnish is a state-of-the-art, high-performance HTTP accelerator
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.4 1.0.5: list X application resource database
