@@ -1,5 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
+
+inherit readme.gentoo-r1
 
 MY_P="5507-Golden-XCursors-3D-${PV}"
 DESCRIPTION="A high quality set of Xfree 4.3.0 animated mouse cursors"
@@ -14,31 +18,38 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
+S="${WORKDIR}/${MY_P:5}"
+
+DOC_CONTENTS="To use this set of cursors, edit or create the file ~/.Xdefaults
+and add the following line:
+Xcursor.theme: Gold
+
+You can change the size by adding a line like:
+Xcursor.size: 48
+
+Also, to globally use this set of mouse cursors edit the file:
+	  /usr/share/cursors/xorg-x11/default/index.theme
+and change the line:
+	Inherits=[current setting]
+to
+	Inherits=Gold
+
+Note this will be overruled by a user's ~/.Xdefaults file."
+
 src_install() {
-	dodir /usr/share/cursors/xorg-x11/Gold/cursors/
-	cp -R "${WORKDIR}"/${MY_P:5}/Gold/cursors "${D}"/usr/share/cursors/xorg-x11/Gold/ || die
-	dodoc "${WORKDIR}"/${MY_P:5}/README
+	insinto /usr/share/cursors/xorg-x11/Gold
+	doins -r Gold/cursors
+	einstalldocs
+
+	DISABLE_AUTOFORMATTING="yes"
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	einfo "To use this set of cursors, edit or create the file ~/.Xdefaults"
-	einfo "and add the following line:"
-	einfo "Xcursor.theme: Gold"
-	einfo ""
-	einfo "You can change the size by adding a line like:"
-	einfo "Xcursor.size: 48"
-	einfo ""
-	einfo "Also, to globally use this set of mouse cursors edit the file:"
-	einfo "   /usr/share/cursors/xorg-x11/default/index.theme"
-	einfo "and change the line:"
-	einfo "    Inherits=[current setting]"
-	einfo "to"
-	einfo "    Inherits=Gold"
-	einfo ""
-	einfo "Note this will be overruled by a user's ~/.Xdefaults file."
-	einfo ""
+	DISABLE_AUTOFORMATTING="yes"
+	readme.gentoo_print_elog
+
 	ewarn "If you experience flickering, try setting the following line in"
-	ewarn ""
 	ewarn "the Device section of your xorg.conf file:"
-	ewarn "    Option  \"HWCursor\"  \"false\""
+	ewarn "    Option \"HWCursor\" \"false\""
 }
