@@ -10,4 +10,4 @@ RDEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) brotli? ( app-arch/brotli
 SLOT=0
 SRC_URI=https://github.com/rkd77/felinks/archive/0dd3aaabe61fbc5ed0d9a74915678d11d00c2a1c.tar.gz -> elinks-0.13_pre_pre20180225.tar.gz
 _eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=e402bfa70ae445f02ba696000224a608
+_md5_=e346964a2726ebdbb96c85015a9ab43b
