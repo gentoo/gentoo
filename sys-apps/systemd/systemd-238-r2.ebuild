@@ -150,6 +150,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/238-0001-sd-bus-do-not-try-to-close-already-closed-fd-8392.patch"
 		"${FILESDIR}/238-0002-core-do-not-free-heap-allocated-strings-8391.patch"
+		"${FILESDIR}/238-libmount-include.patch"
 		"${FILESDIR}/238-0003-udev-net-id-Fix-check-for-address-to-keep-interface-8458.patch"
 	)
 
