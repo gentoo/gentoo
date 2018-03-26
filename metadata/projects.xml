@@ -3683,7 +3683,7 @@ developers and volunteer mentors.</description>
       <name>Sean Amoss</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
       <role>Team lead</role>
@@ -3693,7 +3693,7 @@ developers and volunteer mentors.</description>
       <name>Aaron Bauman</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>chrisadr@gentoo.org</email>
       <name>Christopher Díaz Riveros</name>
       <role>GLSA Coordinator</role>
@@ -3703,7 +3703,7 @@ developers and volunteer mentors.</description>
       <name>Chris Reffett</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
       <role>GLSA Coordinator</role>

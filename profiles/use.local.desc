@@ -1375,6 +1375,7 @@ dev-libs/cyrus-sasl:sample - Enable sample client and server
 dev-libs/cyrus-sasl:srp - Enable SRP authentication
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/efl:bmp - Enable WBMP image loader
+dev-libs/efl:dds - Enable DDS image loader
 dev-libs/efl:drm - Enable DRM engine
 dev-libs/efl:eet - Enable Eet image loader
 dev-libs/efl:egl - Enable EGL rendering
@@ -1382,8 +1383,12 @@ dev-libs/efl:fribidi - Enable bidirectional text support
 dev-libs/efl:gles - Enable the OpenGL ES GL implementation
 dev-libs/efl:glib - Enable dev-libs/glib support
 dev-libs/efl:harfbuzz - Enable complex text shaping and layout support
+dev-libs/efl:hyphen - Enable text hyphenation support
 dev-libs/efl:ibus - Enable Intelligent Input Bus
 dev-libs/efl:ico - Enable Ico image loader
+dev-libs/efl:ivi - Enable ivi-shell support
+dev-libs/efl:libuv - Enable dev-libs/libuv support
+dev-libs/efl:luajit - USE dev-lang/lua instead of dev-lang/luajit
 dev-libs/efl:oldlua - USE dev-lang/lua instead of dev-lang/luajit
 dev-libs/efl:physics - Enable Bullet physics effects and support
 dev-libs/efl:pixman - Enable PixMan for software rendering
@@ -1391,11 +1396,15 @@ dev-libs/efl:ppm - Enable PMAPS image loader
 dev-libs/efl:psd - Enable PSD image loader
 dev-libs/efl:scim - Enable Smart Common Input Method
 dev-libs/efl:tga - Enable Tga image loader
+dev-libs/efl:tgv - Enable TGV image loader
 dev-libs/efl:tslib - Enable x11-libs/tslib for touchscreen events
 dev-libs/efl:unwind - Enable debug support via sys-libs/libunwind
 dev-libs/efl:valgrind - Enable usage of dev-util/valgrind in debug
+dev-libs/efl:vlc - Enable media-video/vlc support
 dev-libs/efl:webp - Enable WebP image loader
+dev-libs/efl:xcf - Enable XCF image loader
 dev-libs/efl:xim - Enable X Input Method
+dev-libs/efl:xpresent - Enable x11-libs/libXpresent support
 dev-libs/elfutils:lzma - Support automatic decompression of LZMA-compressed files and kernel images
 dev-libs/elfutils:threads - Build the libraries with thread safe support
 dev-libs/elfutils:utils - Install command-line utilities (all the eu-* programs)
