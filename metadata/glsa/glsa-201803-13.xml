@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-13">
+  <title>PLIB: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in PLIB may allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">plib</product>
+  <announced>2018-03-26</announced>
+  <revised count="1">2018-03-26</revised>
+  <bug>440762</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/plib" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5-r1</unaffected>
+      <vulnerable range="lt">1.8.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PLIB includes sound effects, music, a complete 3D engine, font
+      rendering, a simple Windowing library, a game scripting language, a GUI,
+      networking, 3D math library and a collection of handy utility functions.
+    </p>
+  </background>
+  <description>
+    <p>A stack-based buffer overflow within the error function of
+      ssg/ssgParser.cxx was discovered in PLIB.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a specially crafted 3d
+      model file, could possibly execute arbitrary code with the privileges of
+      the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PLIB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/plib-1.8.5-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2012-4552">CVE-2012-4552</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-25T20:13:40Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-03-26T16:27:43Z">b-man</metadata>
+</glsa>
