@@ -8,7 +8,7 @@ inherit desktop gnome2-utils qt5-build
 DESCRIPTION="Graphical tool that lets you introspect D-Bus objects and messages"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~hppa ~ppc64 x86 ~amd64-fbsd"
+	KEYWORDS="amd64 ~arm ~hppa ppc64 x86 ~amd64-fbsd"
 fi
 
 IUSE=""
