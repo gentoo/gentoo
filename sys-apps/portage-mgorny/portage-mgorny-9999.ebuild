@@ -61,6 +61,12 @@ pkg_pretend() {
 		ewarn "However, sys-apps/portage-mgorny will already be installed at this"
 		ewarn "point, so you simply have to restart emerge and it will successfully"
 		ewarn "clean the old package afterwards."
+		ewarn
+		ewarn "If you did not use '--dynamic-deps n' in Portage, your VDB dependency"
+		ewarn "graph is probably broken. You may need to use '--changed-deps y'"
+		ewarn "for your first @world upgrade to resolve the conflicts. Afterwards,"
+		ewarn "--changed-deps should no longer be necessary and any conflicts"
+		ewarn "introduced afterwards should be reported to bugs.gentoo.org."
 	fi
 }
 
