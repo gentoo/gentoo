@@ -27,6 +27,10 @@ case $(get_version_component_range 1-2) in
 		CDEPEND=">=dev-libs/apr-1.5.1:=
 			!www-apache/mod_macro" #492578 #477702
 	;;
+	2.2)
+		DEFAULT_MPM_THREADED="worker"
+		CDEPEND=">=dev-libs/apr-1.4.5:=" #368651
+	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
 	;;
