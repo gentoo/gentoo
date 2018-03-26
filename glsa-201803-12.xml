@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-12">
+  <title>BusyBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BusyBox, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">busybox</product>
+  <announced>2018-03-26</announced>
+  <revised count="1">2018-03-26</revised>
+  <bug>563756</bug>
+  <bug>635392</bug>
+  <bug>638258</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/busybox" auto="yes" arch="*">
+      <unaffected range="ge">1.28.0</unaffected>
+      <vulnerable range="lt">1.28.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BusyBox is a set of tools for embedded systems and is a replacement for
+      GNU Coreutils.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BusyBox. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or have
+      other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BusyBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/busybox-1.28.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15873">CVE-2017-15873</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15874">CVE-2017-15874</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16544">CVE-2017-16544</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-13T17:58:35Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-03-26T16:24:01Z">b-man</metadata>
+</glsa>
