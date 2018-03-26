@@ -43,7 +43,8 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-parallel-make.patch
-	)
+	"${FILESDIR}"/${PN}-0.13-ruby.patch
+)
 
 src_prepare() {
 	default
