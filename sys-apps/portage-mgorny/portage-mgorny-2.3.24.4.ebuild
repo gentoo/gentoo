@@ -26,7 +26,7 @@ RDEPEND="
 	>=app-arch/tar-1.27
 	!build? (
 		>=app-admin/eselect-1.2
-		app-crypt/gentoo-keys
+		app-crypt/openpgp-keys-gentoo-release
 		>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		>=app-portage/gemato-10
 		app-shells/bash:0[readline]
@@ -55,12 +55,48 @@ PDEPEND="
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
 pkg_pretend() {
+	if [[ -f ${EROOT%/}/etc/make.conf ]]; then
+		eerror "You seem to be using /etc/make.conf. Please migrate to the new"
+		eerror "/etc/portage/make.conf location before upgrading."
+		if [[ ! -f ${EROOT%/}/etc/portage/make.conf ]]; then
+			eerror
+			eerror "  mv ${EROOT%/}/etc/make.conf ${EROOT%/}/etc/portage/make.conf"
+		else
+			ewarn
+			ewarn "WARNING: You seem to have make.conf in both locations. Please take"
+			ewarn "care not to accientally overwrite one with the other."
+		fi
+		die "${EROOT%/}/etc/make.conf present"
+	fi
+
+	if [[ -f ${EROOT%/}/etc/portage/package.keywords ]]; then
+		eerror "You seem to be using /etc/portage/package.keywords. Please migrate"
+		eerror "to the new /etc/portage/package.accept_keywords location before"
+		eerror "upgrading."
+		eerror
+		if [[ -d ${EROOT%/}/etc/portage/package.accept_keywords ]]; then
+			eerror "  mv ${EROOT%/}/etc/portage/package.keywords ${EROOT%/}/etc/portage/package.accept_keywords/99old"
+		else
+			if [[ -f ${EROOT%/}/etc/portage/package.accept_keywords ]]; then
+				eerror "  cat ${EROOT%/}/etc/portage/package.accept_keywords >> ${EROOT%/}/etc/portage/package.keywords"
+			fi
+			eerror "  mv ${EROOT%/}/etc/portage/package.keywords ${EROOT%/}/etc/portage/package.accept_keywords"
+		fi
+		die "${EROOT%/}/etc/portage/package.keywords present"
+	fi
+
 	if has_version sys-apps/portage; then
 		ewarn "If you are migrating from sys-apps/portage to sys-apps/portage-mgorny,"
 		ewarn "please note that Portage will abort upon having to unmerge itself."
 		ewarn "However, sys-apps/portage-mgorny will already be installed at this"
 		ewarn "point, so you simply have to restart emerge and it will successfully"
 		ewarn "clean the old package afterwards."
+		ewarn
+		ewarn "If you did not use '--dynamic-deps n' in Portage, your VDB dependency"
+		ewarn "graph is probably broken. You may need to use '--changed-deps y'"
+		ewarn "for your first @world upgrade to resolve the conflicts. Afterwards,"
+		ewarn "--changed-deps should no longer be necessary and any conflicts"
+		ewarn "introduced afterwards should be reported to bugs.gentoo.org."
 	fi
 }
 

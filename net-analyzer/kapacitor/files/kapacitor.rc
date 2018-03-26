@@ -9,11 +9,15 @@ make_pidfile=yes
 command_user="kapacitor:kapacitor"
 
 # Logging
-error_log="${error_log:-/var/log/influxdb/influxd.log}"
+error_log="${error_log:-/var/log/kapacitor/kapacitor.err}"
 output_log="${output_log:-/dev/null}"
 
 # Max open files
 rc_ulimit="-n 65536"
+
+depend() {
+	after net
+}
 
 start_pre() {
 	# Check if config file exist
