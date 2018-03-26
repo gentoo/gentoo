@@ -388,10 +388,6 @@ dev-util/bluej
 media-gfx/k3d
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Not buildable for a long time (#614498). Removal in a month.
-games-strategy/maxr
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Not compatible with current NetworkManager versions, use net-misc/networkmanager-libreswan
 # instead (#615142). Removal in a month.
 net-misc/networkmanager-openswan
