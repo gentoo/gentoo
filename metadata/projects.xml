@@ -3686,7 +3686,7 @@ developers and volunteer mentors.</description>
     <member>
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
-      <role>Team lead</role>
+      <role>GLSA Coordinator</role>
     </member>
     <member>
       <email>bman@gentoo.org</email>
@@ -3696,7 +3696,7 @@ developers and volunteer mentors.</description>
     <member is-lead="1">
       <email>chrisadr@gentoo.org</email>
       <name>Christopher Díaz Riveros</name>
-      <role>GLSA Coordinator</role>
+      <role>Team lead</role>
     </member>
     <member>
       <email>creffett@gentoo.org</email>
@@ -3706,7 +3706,7 @@ developers and volunteer mentors.</description>
     <member is-lead="1">
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
-      <role>GLSA Coordinator</role>
+      <role>Team lead</role>
     </member>
     <member>
       <email>pinkbyte@gentoo.org</email>

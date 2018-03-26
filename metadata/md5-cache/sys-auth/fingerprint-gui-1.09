@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare
+DEPEND=app-crypt/qca[qt5(+)] dev-qt/qtcore:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtx11extras:5 sys-auth/libfprint sys-auth/polkit-qt[qt5(+)] sys-libs/pam x11-libs/libX11 x11-proto/xproto x11-libs/libfakekey dev-libs/libusb !sys-auth/thinkfinger virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Use Fingerprint Devices with Linux
+EAPI=6
+HOMEPAGE=http://www.ullrich-online.cc/fingerprint/ https://github.com/maksbotan/fingerprint-gui
+IUSE=+upekbsapi
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-crypt/qca[qt5(+)] dev-qt/qtcore:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtx11extras:5 sys-auth/libfprint sys-auth/polkit-qt[qt5(+)] sys-libs/pam x11-libs/libX11 x11-proto/xproto x11-libs/libfakekey dev-libs/libusb !sys-auth/thinkfinger
+SLOT=0
+SRC_URI=https://github.com/maksbotan/fingerprint-gui/archive/v1.09-qt5.tar.gz -> fingerprint-gui-1.09.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	udev	d91cac2c73b94629cad2daea66e0d182	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=c848f2941ca87405a04110135b931034
