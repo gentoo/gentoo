@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit font
 
-DESCRIPTION="Slender typeface for code, from code."
+DESCRIPTION="Slender typeface for code, from code"
 HOMEPAGE="http://be5invis.github.io/Iosevka"
 SRC_URI="https://github.com/be5invis/${PN}/releases/download/v${PV}/01-${P}.zip
 https://github.com/be5invis/${PN}/releases/download/v${PV}/02-${PN}-term-${PV}.zip"
