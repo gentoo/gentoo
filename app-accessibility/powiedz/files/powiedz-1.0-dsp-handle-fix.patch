@@ -1,6 +1,5 @@
-diff -urN aaa/powiedz/aufile.c powiedz/aufile.c
---- aaa/powiedz/aufile.c	2003-08-30 20:57:37.000000000 +0200
-+++ powiedz/aufile.c	2003-08-31 14:02:42.000000000 +0200
+--- a/aufile.c
++++ b/aufile.c
 @@ -217,8 +217,7 @@
  audio_open(int samp_rate,int disp)
  {
