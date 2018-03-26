@@ -1,8 +1,6 @@
 # /etc/conf.d/prometheus-mysqld_exporter
 
 # PID file
-# If you should ever change this, remember to update
-# "/etc/logrotate.d/rsyslog", too.
 #EXPORTER_PIDFILE="/run/${RC_SVCNAME}.pid"
 
 # The termination timeout (start-stop-daemon parameter "retry") ensures
