@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# Matt Turner <mattst88@gentoo.org> (25 Mar 2018)
+# Unmask systemd since it is keyworded here.
+-systemd
+
 # Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
 # dev-util/valgrind is not keyworded here yet,
 # though the MIPS platform is supported upstream
