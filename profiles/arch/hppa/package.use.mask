@@ -143,10 +143,6 @@ xfce-extra/xfce4-taskmanager gksu
 # needs app-arch/innoextract (bug #492326)
 games-fps/duke3d-data gog
 
-# Jeroen Roovers <jer@gentoo.org> (25 Oct 2013)
-# Building against libatomic_ops fails (bug #453704)
-sys-libs/libunwind libatomic
-
 # Jeroen Roovers <jer@gentoo.org> (23 Jul 2013)
 # graphite is not implemented on HPPA
 sys-devel/gcc graphite
