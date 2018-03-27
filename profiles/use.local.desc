@@ -1795,6 +1795,11 @@ dev-python/pyudev:pyside - Install PySide bindings
 dev-python/pyudev:qt4 - Install PyQt4 bindings
 dev-python/pyudev:qt5 - Install PyQt5 bindings
 dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
+dev-python/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
+dev-python/pyzor:gevent - Use dev-python/gevent to enable asynchronous operation
+dev-python/pyzor:mysql - Enables the MySQL back-end database engine for pyzord through dev-python/mysql-python. Only works with python-2.x!
+dev-python/pyzor:pyzord - Enable the pyzord server daemon
+dev-python/pyzor:redis - Enables the redis back-end database engine for pyzord through dev-python/redis-py
 dev-python/rarfile:compressed - Enables the module to support compressed v3 archives by calling the app-arch/unrar.
 dev-python/rdflib:redland - enable support for Redland triplestore
 dev-python/restkit:cli - Install the restcli command line interface/tool, based on dev-python/ipython
