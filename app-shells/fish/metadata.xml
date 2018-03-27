@@ -9,4 +9,12 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<longdescription lang="en">
+		Smart and user-friendly command line shell for macOS, Linux, and the rest of the family.
+		It includes features like syntax highlighting, autosuggest-as-you-type,
+		and fancy tab completions that just work, with no configuration required.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fish-shell/fish-shell</remote-id>
+	</upstream>
 </pkgmetadata>
