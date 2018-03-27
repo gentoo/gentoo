@@ -186,10 +186,6 @@ dev-python/adodb-py
 dev-python/flask-whooshalchemy
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Requires old redis-py and gevent (#643692). Removal in a month.
-dev-python/pyzor
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Requires old leveldb, live ebuild, dead since 2013 (#644310). Removal in a
 # month.
 net-p2p/datacoin-hp
