@@ -41,39 +41,25 @@ DRIVER_NAME="${PN}-${SLOT}"
 PATCHES=(
 	"${FILESDIR}/${MAJOR}-cmake-doc-path.patch"
 	"${FILESDIR}/5.3.10-cxxlinkage.patch"
-#	"${FILESDIR}/${MAJOR}-mariadb-dynamic-array.patch"
-	"${FILESDIR}/5.2.7-my_malloc.patch"
 	"${FILESDIR}/5.3.10-mariadb.patch"
 )
 
 src_prepare() {
-	# Fix undefined references due to standards change
-#	append-cflags -std=gnu89
-
 	# Remove Tests
 	sed -i -e "s/ADD_SUBDIRECTORY(test)//" \
 		"${S}/CMakeLists.txt"
 
 	# Fix as-needed on the installer binary
-	echo "TARGET_LINK_LIBRARIES(myodbc-installer odbc)" >> "${S}/installer/CMakeLists.txt"
+#	echo "TARGET_LINK_LIBRARIES(myodbc-installer odbc)" >> "${S}/installer/CMakeLists.txt"
 
 	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {
-#	local clientlib
-#	for clientlib in "mariadb" "perconaclient" "mysqlclient" "notfound" ; do
-#		[[ -x "${EPREFIX}/usr/$(get_libdir)/lib${clientlib}.so" ]] && break
-#	done
-#	[[ "${clientlib}x" == "notfoundx" ]] && \
-#		die "Installed client library name could not be determined"
-
 	# MYSQL_CXX_LINKAGE expects "mysql_config --cxxflags" which doesn't exist on MariaDB
 	mycmakeargs+=(
 		-DMYSQL_CXX_LINKAGE=0
 		-DWITH_UNIXODBC=1
-#		-DMYSQLCLIENT_LIB_NAME="${clientlib}"
-#		-DMYSQLCLIENT_LIB_NAME="mysqlclient"
 		-DWITH_DOCUMENTATION_INSTALL_PATH=/usr/share/doc/${PF}
 		-DMYSQL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DLIB_SUBDIR="$(get_libdir)/${PN}-${MAJOR}"
