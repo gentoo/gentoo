@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (27 Mar 2018)
+# Breaks a couple of revdeps. See tracker bug at
+# https://bugs.gentoo.org/651698
+=dev-libs/icu-61.1
+=dev-libs/icu-layoutex-61.1
+
 # Tony Vroon <chainsaw@gentoo.org> (24 Mar 2018)
 # This is a vulnerable version of Asterisk and should not be used except
 # to troubleshoot a purported memory leak in the 11.25.3 release.
