@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils
 
 DESCRIPTION="A really tiny cross-platform proxy servers set"
-HOMEPAGE="http://www.3proxy.ru/"
-SRC_URI="http://3proxy.ru/${PV}/${P}.tgz"
+HOMEPAGE="https://www.3proxy.ru/"
+SRC_URI="https://3proxy.ru/${PV}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc"
