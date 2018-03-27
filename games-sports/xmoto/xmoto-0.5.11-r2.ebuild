@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit autotools eutils flag-o-matic
 
 LVL_PV="0.7.0" #they unfortunately don't release both at the same time, why ~ as separator :(
 LVL="inksmoto-${LVL_PV}"
-DEB_PV=6
+DEB_PV=7
 DESCRIPTION="A challenging 2D motocross platform game"
 HOMEPAGE="http://xmoto.tuxfamily.org"
 SRC_URI="http://download.tuxfamily.org/xmoto/xmoto/${PV}/${P}-src.tar.gz
@@ -16,12 +16,12 @@ SRC_URI="http://download.tuxfamily.org/xmoto/xmoto/${PV}/${P}-src.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="editor nls"
+IUSE="double-precision editor nls"
 
 RDEPEND="
 	app-arch/bzip2
 	dev-db/sqlite:3
-	dev-games/ode
+	dev-games/ode[double-precision=]
 	dev-lang/lua:0[deprecated]
 	dev-libs/libxdg-basedir
 	dev-libs/libxml2
@@ -53,15 +53,11 @@ src_prepare() {
 		po/Makefile.in.in || die
 	mv configure.{in,ac} || die
 	eautoreconf
+
+	rm -r "${S}"/src/ode || die
 }
 
 src_configure() {
-	# bug #289792
-	filter-flags -DdDOUBLE -DdSINGLE
-
-	# bug #569624 - ode-0.13 needs one or the other defined
-	append-cppflags -Dd$(has_version 'dev-games/ode[double-precision]' && echo DOUBLE || echo SINGLE)
-
 	econf \
 		--enable-threads=posix \
 		$(use_enable nls) \
@@ -75,8 +71,8 @@ src_install() {
 	default
 
 	rm -f "${D}/usr/share/xmoto"/Textures/Fonts/DejaVu*.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSans.ttf /usr/share/xmoto/Textures/Fonts/DejaVuSans.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSansMono.ttf /usr/share/xmoto/Textures/Fonts/DejaVuSansMono.ttf
+	dosym ../../../fonts/dejavu/DejaVuSans.ttf /usr/share/xmoto/Textures/Fonts/DejaVuSans.ttf
+	dosym ../../../fonts/dejavu/DejaVuSansMono.ttf /usr/share/xmoto/Textures/Fonts/DejaVuSansMono.ttf
 	doicon extra/xmoto.xpm
 	make_desktop_entry xmoto Xmoto
 

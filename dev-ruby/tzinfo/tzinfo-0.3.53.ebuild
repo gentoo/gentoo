@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGES README"
 inherit ruby-fakegem
 
 DESCRIPTION="Daylight-savings aware timezone library"
-HOMEPAGE="http://tzinfo.github.io/"
+HOMEPAGE="https://tzinfo.github.io/"
 
 LICENSE="MIT"
 SLOT="0"
