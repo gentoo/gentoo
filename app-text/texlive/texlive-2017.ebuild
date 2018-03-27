@@ -14,9 +14,9 @@ IUSE="cjk context detex dvi2tty extra epspdf games graphics
 humanities jadetex luatex metapost music pdfannotextractor png pstricks publishers
 science tex4ht texi2html truetype xetex xindy xml X"
 
-LANGS="af ar as bg bn br ca cs cy da de el en en-GB eo es et eu fa fi fr ga gl
-	gu he hi hr hsb hu hy ia id is it ja ko kn la lo lt lv ml mn mr nb nl nn no
-	or pa pl pt rm ro ru sa sco sk sl sq sr sv ta te th tk tr uk vi zh"
+LANGS="af ar as bg bn br ca cs cy da de el en eo es et eu fa fi fr ga gl gu he
+	hi hr hsb hu hy ia id is it ja ko kn la lo lt lv ml mn mr nb nl nn no or pa
+	pl pt rm ro ru sa sco sk sl sq sr sv ta te th tk tr uk vi zh"
 
 for X in ${LANGS}; do
 	IUSE="${IUSE} l10n_${X}"
@@ -87,8 +87,7 @@ RDEPEND="${DEPEND}
 		app-text/passivetex
 	)
 	jadetex? ( >=app-text/jadetex-3.13-r2 )
-	l10n_af?    ( >=${TEXLIVE_CAT}/texlive-langother-${PV}
-	              >=${TEXLIVE_CAT}/texlive-langother-${PV} )
+	l10n_af?    ( >=${TEXLIVE_CAT}/texlive-langother-${PV} )
 	l10n_ar?    ( >=${TEXLIVE_CAT}/texlive-langarabic-${PV} )
 	l10n_fa?    ( >=${TEXLIVE_CAT}/texlive-langarabic-${PV} )
 	l10n_hy?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
@@ -105,7 +104,6 @@ RDEPEND="${DEPEND}
 	l10n_da?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_nl?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_en?    ( >=${TEXLIVE_CAT}/texlive-langenglish-${PV} )
-	l10n_en-GB? ( >=${TEXLIVE_CAT}/texlive-langenglish-${PV} )
 	l10n_fi?    ( >=${TEXLIVE_CAT}/texlive-langeuropean-${PV} )
 	l10n_eu?    ( >=${TEXLIVE_CAT}/texlive-langfrench-${PV} )
 	l10n_fr?    ( >=${TEXLIVE_CAT}/texlive-langfrench-${PV} )
