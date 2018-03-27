@@ -14,7 +14,7 @@ SRC_URI="mirror://github/tDOM/${PN}/${MY_P}.tgz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="static-libs threads"
 
 DEPEND="
