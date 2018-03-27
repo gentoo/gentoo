@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mpeterv/luacheck/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 IUSE="doc luajit test"
 
 RDEPEND="
