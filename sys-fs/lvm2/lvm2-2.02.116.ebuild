@@ -35,7 +35,6 @@ RDEPEND="${DEPEND_COMMON}
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 DEPEND="${DEPEND_COMMON}
 	virtual/pkgconfig
-	>=sys-devel/binutils-2.20.1-r1
 	static? (
 		selinux? ( sys-libs/libselinux[static-libs] )
 		udev? ( >=virtual/libudev-208:=[static-libs] )

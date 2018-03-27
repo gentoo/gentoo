@@ -23,8 +23,7 @@ DEPEND=">=dev-libs/elfutils-0.100[static-libs(+)]
 	!dev-libs/libelf
 	sys-libs/binutils-libs
 	>=sys-libs/glibc-2.8"
-RDEPEND="${DEPEND}
-	>=sys-devel/binutils-2.18"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
 

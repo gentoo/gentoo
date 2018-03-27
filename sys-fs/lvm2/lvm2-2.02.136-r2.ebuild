@@ -44,7 +44,6 @@ RDEPEND="${DEPEND_COMMON}
 # USE 'static' currently only works with eudev, bug 520450
 DEPEND="${DEPEND_COMMON}
 	virtual/pkgconfig
-	>=sys-devel/binutils-2.20.1-r1
 	static? (
 		selinux? ( sys-libs/libselinux[static-libs] )
 		udev? ( >=sys-fs/eudev-3.1.2[static-libs] )

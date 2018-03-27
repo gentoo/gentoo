@@ -169,7 +169,6 @@ fi
 
 DEPEND="app-arch/zip
 	app-arch/unzip
-	>=sys-devel/binutils-2.16.1
 	sys-apps/findutils
 	pulseaudio? ( media-sound/pulseaudio )
 	>=virtual/rust-1.19.0

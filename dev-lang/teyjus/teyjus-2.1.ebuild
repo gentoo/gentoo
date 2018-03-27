@@ -14,9 +14,7 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 IUSE="emacs examples +ocamlopt"
 
-RDEPEND=">=sys-devel/binutils-2.17:*
-	>=sys-devel/gcc-2.95.3:*
-	>=dev-lang/ocaml-3.10[ocamlopt?]
+RDEPEND="=dev-lang/ocaml-3.10[ocamlopt?]
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
 	dev-util/omake"
