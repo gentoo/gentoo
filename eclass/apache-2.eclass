@@ -110,8 +110,18 @@ _apache2_set_mpms() {
 				REQUIRED_USE="${REQUIRED_USE} !apache2_mpms_${ompm}"
 			fi
 		done
+
+		if has ${mpm} ${IUSE_MPMS_FORK} ; then
+			REQUIRED_USE="${REQUIRED_USE} !threads"
+		else
+			REQUIRED_USE="${REQUIRED_USE} threads"
+		fi
 		REQUIRED_USE="${REQUIRED_USE} )"
 	done
+
+	if [[ "${PV}" != 2.2* ]] ; then
+		REQUIRED_USE="${REQUIRED_USE} apache2_mpms_prefork? ( !apache2_modules_http2 )"
+	fi
 }
 _apache2_set_mpms
 unset -f _apache2_set_mpms
@@ -188,20 +198,6 @@ setup_mpm() {
 			elog "Selected default MPM: ${MY_MPM}"
 			elog
 		fi
-	fi
-
-	if has ${MY_MPM} ${IUSE_MPMS_THREAD} && ! use threads ; then
-		eerror "You have selected a threaded MPM but USE=threads is disabled"
-		die "invalid use flag combination"
-	fi
-
-	if has ${MY_MPM} ${IUSE_MPMS_FORK} && use threads ; then
-		eerror "You have selected a non-threaded MPM but USE=threads is enabled"
-		die "invalid use flag combination"
-	fi
-
-	if [[ "${PV}" != 2.2* ]] && [[ "${MY_MPM}" = *prefork* ]] && use apache2_modules_http2 ; then
-		die "http2 does not work with prefork MPM."
 	fi
 }
 
