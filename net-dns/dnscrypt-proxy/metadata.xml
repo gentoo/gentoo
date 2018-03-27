@@ -5,10 +5,6 @@
 		<email>ya@sysdump.net</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -16,8 +12,8 @@
 	<longdescription lang="en">
 		dnscrypt-proxy provides local service which can be used directly as your
 		local resolver or as a DNS forwarder, encrypting and authenticating
-		requests using the DNSCrypt protocol and passing them to an upstream
-		server.
+		requests using the DNSCrypt protocol and passing them to upstream
+		servers.
 	</longdescription>
 	<use>
 		<flag name="plugins">Enable plugin support to inspect and modify
@@ -25,4 +21,7 @@
 		<flag name="systemd">Use systemd's socket activation instead of
 			creating the sockets itself</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jedisct1/dnscrypt-proxy</remote-id>
+	</upstream>
 </pkgmetadata>
