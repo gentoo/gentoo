@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib toolchain-funcs flag-o-matic
+inherit multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="A free stand-alone ini file parsing library"
 HOMEPAGE="https://github.com/ndevilla/iniparser"
@@ -19,11 +19,6 @@ RDEPEND=""
 
 DOCS=( AUTHORS README.md )
 
-PATCHES=(
-	"${FILESDIR}"/${P}-cflags.patch
-	"${FILESDIR}"/${P}-soname.patch
-)
-
 _newlib_so_with_symlinks() {
 	local source="${1}" base="${2}" current="${3}" revision="${4}" age="${5}"
 	local libdir="$(get_libdir)"
@@ -35,8 +30,8 @@ _newlib_so_with_symlinks() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
 	rm -R html || die
+	eapply_user
 }
 
 src_configure() {
@@ -44,7 +39,10 @@ src_configure() {
 }
 
 _emake() {
-	emake CC="$(tc-getCC)" AR="$(tc-getAR)" V=1 "$@"
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" V=1 \
+		SO_TARGET=lib${PN}${SLOT}.so.1 \
+		ADDITIONAL_CFLAGS= \
+		"$@"
 }
 
 src_compile() {
@@ -57,14 +55,14 @@ src_test() {
 
 src_install() {
 	use static-libs && newlib.a lib${PN}.a lib${PN}${SLOT}.a
-	_newlib_so_with_symlinks lib${PN}.so lib${PN}${SLOT} 1 0 0
+	_newlib_so_with_symlinks lib${PN}${SLOT}.so.1 lib${PN}${SLOT} 1 0 0
 
 	insinto /usr/include/${PN}${SLOT}
 	doins src/*.h
 
 	if use doc; then
 		emake -C doc
-		dohtml -r html/*
+		HTML_DOCS=html/
 	fi
 
 	if use examples ; then
@@ -74,5 +72,5 @@ src_install() {
 		docompress -x "${examplesdir}"
 	fi
 
-	dodoc "${DOCS[@]}"
+	einstalldocs
 }
