@@ -27,8 +27,6 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	S="${WORKDIR}/${MY_P}/core"
 fi
 
-# TODO: Package QtAV http://www.qtav.org/
-# video? ( media-video/qtav )
 COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
