@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-inherit distutils-r1
+inherit distutils-r1 eapi7-ver
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -20,8 +20,7 @@ HOMEPAGE="https://github.com/diafygi/acme-tiny"
 
 LICENSE="MIT"
 SLOT="0"
-
-IUSE="minimal"
+IUSE=""
 
 DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 RDEPEND="dev-libs/openssl:0"
@@ -33,11 +32,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if ! use minimal; then
-		local PATCHES=(
-			"${FILESDIR}/${PN}-PR87-readmefix.patch"
-			"${FILESDIR}/${PN}-4.0.0-PR101-contactinfo.patch"
-		)
-	fi
+	sed -i 's|#!/usr/bin/sh|#!/bin/sh|g' README.md || die
+
 	distutils-r1_src_prepare
+}
+
+pkg_postinst() {
+	for v in ${REPLACING_VERSIONS}; do
+		if ver_test "$v" "-lt" "4.0.3" || ver_test "$v" "-ge" "9999"; then
+			einfo "The --account-email flag has been changed to --contact and"
+			einfo "has different syntax."
+			einfo "Please update your scripts accordingly"
+		fi
+	done
 }
