@@ -14,3 +14,4 @@ move app-admin/nginx-vts-exporter app-metrics/nginx-vts-exporter
 move app-admin/prom2json app-metrics/prom2json
 move net-analyzer/prometheus app-metrics/prometheus
 move net-analyzer/prometheus-alertmanager app-metrics/alertmanager
+move dev-util/buildbot-prometheus app-metrics/buildbot-prometheus
