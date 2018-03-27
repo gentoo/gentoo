@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby22"
 
 inherit autotools eutils python-r1 ruby-single
 

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 # git-r3 goes after ruby-ng so that it overrides src_unpack properly
 inherit cmake-utils eutils multilib ruby-ng

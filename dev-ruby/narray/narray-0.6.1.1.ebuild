@@ -4,7 +4,7 @@
 EAPI=5
 
 # jruby → native extension
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby22"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""

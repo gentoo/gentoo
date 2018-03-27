@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 # The specs require a number of gems to be installed in a temporary
 # directory, but this requires network access. They also don't work

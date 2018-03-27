@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 DISTUTILS_OPTIONAL=1
 
 inherit autotools distutils-r1 ruby-single

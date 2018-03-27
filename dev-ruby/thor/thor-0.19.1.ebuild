@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
@@ -25,7 +25,7 @@ IUSE="doc"
 # fakeweb is not compatible with ruby22. Upstream has switched to
 # webmock but leads to circular dependencies via childlabor's
 # dependencies, so skip tests for ruby22 for now.
-USE_RUBY="ruby20 ruby21" ruby_add_bdepend "
+USE_RUBY="ruby21" ruby_add_bdepend "
 	test? (
 		>=dev-ruby/fakeweb-1.3
 		dev-ruby/childlabor

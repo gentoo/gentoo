@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
@@ -25,7 +25,7 @@ ruby_add_rdepend "dev-ruby/rake"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec:2 )"
 
-USE_RUBY="ruby21 ruby22" ruby_add_bdepend "test? ( dev-util/cucumber )"
+USE_RUBY="ruby22" ruby_add_bdepend "test? ( dev-util/cucumber )"
 
 all_ruby_prepare() {
 	# Make sure the right rspec version is used in cucumber.
@@ -35,7 +35,7 @@ all_ruby_prepare() {
 each_ruby_test() {
 	# Skip cucumber for ruby23 (not ready yet)
 	case ${RUBY} in
-		*ruby21|*ruby22)
+		*ruby22)
 			ruby-ng_rspec
 			ruby-ng_cucumber
 			;;

@@ -4,7 +4,7 @@
 EAPI=5
 
 #*** Using highline effectively in JRuby requires manually installing the ffi-ncurses gem.
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
