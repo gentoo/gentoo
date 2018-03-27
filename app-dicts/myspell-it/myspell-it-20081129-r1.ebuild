@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MYSPELL_DICT=(
 	"it_IT.aff"
@@ -29,6 +29,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-
 IUSE=""
 
 src_prepare() {
+	default
 	# remove useless license files.
 	rm -rf agpl3-en.txt gpl3-en.txt it_IT_license.txt \
 		lgpl3-en.txt th_it_IT_copyright_licenza.txt \
