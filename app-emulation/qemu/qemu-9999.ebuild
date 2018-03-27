@@ -675,7 +675,6 @@ src_install() {
 
 		if use kernel_linux; then
 			udev_newrules "${FILESDIR}"/65-kvm.rules-r1 65-kvm.rules
-			udev_newrules "${FILESDIR}"/65-vfio.rules 65-vfio.rules
 		fi
 
 		if use python; then
