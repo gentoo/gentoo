@@ -8,6 +8,7 @@
     <email>proxy-maint@gentoo.org</email>
   </maintainer>
   <use>
+    <flag name="custom-optimization">Use user-defined compiler optimization level</flag>
     <flag name="update-check">Enable automatic checking for updates and security vulnerabilities</flag>
   </use>
   <longdescription>Encrypted FUSE filesystem that conceals metadata</longdescription>
