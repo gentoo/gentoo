@@ -4,12 +4,12 @@
 EAPI=6
 
 DESCRIPTION="convert filenames to utf8 or any other charset"
-HOMEPAGE="https://j3e.de/linux/convmv"
-SRC_URI="https://j3e.de/linux/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.j3e.de/linux/convmv/"
+SRC_URI="https://www.j3e.de/linux/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"
@@ -28,6 +28,6 @@ src_install() {
 src_test() {
 	unpack ./testsuite.tar
 
-	cd "${S}"/suite
+	cd "${S}"/suite || die
 	./dotests.sh || die "Tests failed"
 }
