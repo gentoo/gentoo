@@ -17,7 +17,8 @@ HOMEPAGE="https://github.com/Oblomov/clinfo"
 LICENSE="CC0-1.0"
 SLOT="0"
 
-DEPEND="virtual/opencl"
+DEPEND=">=app-eselect/eselect-opencl-1.1.0-r4
+	virtual/opencl"
 RDEPEND="${DEPEND}"
 
 src_install() {
