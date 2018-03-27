@@ -8319,7 +8319,6 @@ net-analyzer/tptest 3.1.7-r2: Internet bandwidth tester
 net-analyzer/traceroute 2.0.20: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1: Traceroute with AS lookup, TOS support, MTU discovery and other features
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
-net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/w3af 1.1-r1: Web Application Attack and Audit Framework
