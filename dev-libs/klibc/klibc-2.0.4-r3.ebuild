@@ -178,7 +178,8 @@ src_compile() {
 	append-ldflags -z noexecstack
 	append-flags -nostdlib
 
-	emake \
+	# Parallel build intermittantly fails when doing `LIST usr/klibc/syscalls/klib.list'
+	emake -j1 \
 		EXTRA_KLIBCAFLAGS="-Wa,--noexecstack" \
 		EXTRA_KLIBCLDFLAGS="-z noexecstack" \
 		HOSTLDFLAGS="-z noexecstack" \
