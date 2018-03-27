@@ -1,0 +1,2 @@
+SUBSYSTEM=="vfio", OWNER="root", GROUP="kvm"
+KERNEL=="vfio", OWNER="root", GROUP="kvm", MODE="0660"
