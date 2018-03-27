@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -60,6 +60,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/4.0.1/0001-test-Fix-finding-LLDB-tools-when-building-stand-alon.patch
 	# fix compatibility with new libedit
 	eapply "${FILESDIR}"/4.0.1/0002-Fix-bug-28898.patch
+	# fix building with GCC-7
+	eapply "${FILESDIR}"/4.0.1/0003-gcc7.patch
 
 	eapply_user
 }
