@@ -8,7 +8,7 @@ EGO_PN="k8s.io/kubernetes"
 ARCHIVE_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="Kubernetes Controller Manager"
+DESCRIPTION="Kubernetes Scheduler"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
 SRC_URI="${ARCHIVE_URI}"
 
@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_compile() {
-	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -j1 -C src/${EGO_PN} WHAT=plugin/cmd/${PN} GOFLAGS=-v
+	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -j1 -C src/${EGO_PN} WHAT=cmd/${PN} GOFLAGS=-v
 }
 
 src_install() {
