@@ -29,7 +29,7 @@ RDEPEND="
 	>=sci-libs/gdal-1.10.0
 	address-standardizer? ( dev-libs/libpcre )
 	gtk? ( x11-libs/gtk+:2 )
-	mapbox? ( dev-libs/protobuf )
+	mapbox? ( dev-libs/protobuf-c )
 "
 
 DEPEND="${RDEPEND}
