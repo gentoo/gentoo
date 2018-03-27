@@ -97,9 +97,24 @@ for module in ${IUSE_MODULES} ; do
 	IUSE="${IUSE} apache2_modules_${module}"
 done
 
-for mpm in ${IUSE_MPMS} ; do
-	IUSE="${IUSE} apache2_mpms_${mpm}"
-done
+_apache2_set_mpms() {
+	local mpm
+	local ompm
+
+	for mpm in ${IUSE_MPMS} ; do
+		IUSE="${IUSE} apache2_mpms_${mpm}"
+
+		REQUIRED_USE="${REQUIRED_USE} apache2_mpms_${mpm}? ("
+		for ompm in ${IUSE_MPMS} ; do
+			if [[ "${mpm}" != "${ompm}" ]] ; then
+				REQUIRED_USE="${REQUIRED_USE} !apache2_mpms_${ompm}"
+			fi
+		done
+		REQUIRED_USE="${REQUIRED_USE} )"
+	done
+}
+_apache2_set_mpms
+unset -f _apache2_set_mpms
 
 DEPEND="${CDEPEND}
 	dev-lang/perl
@@ -152,16 +167,12 @@ setup_mpm() {
 	MY_MPM=""
 	for x in ${IUSE_MPMS} ; do
 		if use apache2_mpms_${x} ; then
-			if [[ -z "${MY_MPM}" ]] ; then
-				MY_MPM=${x}
-				elog
-				elog "Selected MPM: ${MY_MPM}"
-				elog
-			else
-				eerror "You have selected more then one mpm USE-flag."
-				eerror "Only one MPM is supported."
-				die "more then one mpm was specified"
-			fi
+			# there can at most be one MPM selected because of REQUIRED_USE constraints
+			MY_MPM=${x}
+			elog
+			elog "Selected MPM: ${MY_MPM}"
+			elog
+			break
 		fi
 	done
 
