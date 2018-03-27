@@ -32,10 +32,8 @@ CDEPEND="
 		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
 	)
 	xinetd? ( sys-apps/xinetd )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+"
+
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
 	virtual/yacc
