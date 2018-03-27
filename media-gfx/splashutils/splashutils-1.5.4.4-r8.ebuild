@@ -36,6 +36,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
+	elibc_musl? ( sys-libs/queue )
 	gpm? ( sys-libs/gpm[static-libs(+)] )
 	truetype? (
 		>=media-libs/freetype-2[static-libs]
