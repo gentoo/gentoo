@@ -996,7 +996,7 @@ app-misc/g15macro 1.0.3-r1: Macro recording plugin to G15daemon
 app-misc/gcal 3.6.3: The GNU Calendar - a replacement for cal
 app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
-app-misc/geneweb 6.07: Genealogy software program with a Web interface
+app-misc/geneweb 6.08-r1: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/geoclue 0.12.99 2.4.7: A geoinformation D-Bus service
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
