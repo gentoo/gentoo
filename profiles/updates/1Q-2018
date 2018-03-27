@@ -9,3 +9,4 @@ move x11-proto/xorgproto x11-base/xorg-proto
 move games-action/trine-bin games-action/trine
 move app-admin/bind_exporter app-metrics/bind_exporter
 move app-admin/elasticsearch_exporter app-metrics/elasticsearch_exporter
+move app-admin/mongodb_exporter app-metrics/mongodb_exporter
