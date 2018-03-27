@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit linux-info
+inherit autotools linux-info
 
 MY_P="${P/_*/}"
 PATCHSET="${P/*_p/}"
@@ -40,7 +40,12 @@ ERROR_VIRTIO_CONSOLE="VirtIO console/serial device support (VIRTIO_CONSOLE) is r
 
 PATCHES=(
 	"${WORKDIR}"/patches
-	)
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local opt=()
