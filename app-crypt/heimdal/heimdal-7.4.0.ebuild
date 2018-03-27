@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,10 +34,6 @@ CDEPEND="
 	X? ( x11-libs/libX11
 		x11-libs/libXau
 		x11-libs/libXt )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 	!!app-crypt/mit-krb5
 	!!app-crypt/mit-krb5-appl"
 
