@@ -17,7 +17,7 @@ LICENSE="IDEA
 
 QA_PREBUILT="opt/${P}/*"
 
-S=${WORKDIR}/GoLand-${PV%.*}
+S=${WORKDIR}/GoLand-${PV}
 
 RDEPEND="dev-lang/go"
 
