@@ -14,7 +14,7 @@ SRC_URI="ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/${MY_P}.tar.bz2
 
 LICENSE="lsof"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples ipv6 rpc selinux static"
 
 RDEPEND="rpc? ( net-libs/libtirpc )
@@ -26,6 +26,7 @@ S="${WORKDIR}/${MY_P}/${MY_P}_src"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.85-cross.patch #432120
+	"${FILESDIR}"/${PN}-4.90-darwin-cppfix.patch #648084
 )
 
 src_unpack() {
@@ -66,6 +67,15 @@ src_configure() {
 	append-cppflags $(use rpc && $(tc-getPKG_CONFIG) libtirpc --cflags || echo "-DHASNOTRPC -DHASNORPC_H")
 	append-cppflags $(usex ipv6 -{D,U}HASIPv6)
 	[[ ${CHOST} == *-solaris2.11 ]] && append-cppflags -DHAS_PAD_MUTEX
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# make sys/proc_info.h available in ${T} because of LSOF_INCLUDE
+		# dummy location -- Darwin needs this for a Configure check to
+		# succeed
+		if [[ -e /usr/include/sys/proc_info.h ]] ; then
+			mkdir -p "${T}"/sys || die
+			( cd "${T}"/sys && ln -s /usr/include/sys/proc_info.h ) || die
+		fi
+	fi
 
 	export LSOF_CFGL="${CFLAGS} ${LDFLAGS} \
 		$(use rpc && $(tc-getPKG_CONFIG) libtirpc --libs)"
