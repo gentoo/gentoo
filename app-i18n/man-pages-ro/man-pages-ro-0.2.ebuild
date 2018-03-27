@@ -1,5 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="A somewhat comprehensive collection of Romanian Linux man pages"
 HOMEPAGE="http://www.rolix.org/man/arhiva/"
@@ -14,9 +16,7 @@ RDEPEND="virtual/man"
 
 S=${WORKDIR}/man-ro
 
-src_compile() { :; }
-
 src_install() {
 	insinto /usr/share/man/ro/man1
-	doins man1/*.1 || die "doins"
+	doins man1/*.1
 }
