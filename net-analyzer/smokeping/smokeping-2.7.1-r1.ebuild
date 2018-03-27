@@ -105,7 +105,7 @@ src_install() {
 		"${D}/etc/${PN}/basepage.html" || die
 
 	sed -i \
-		-e 's/$FindBin::Bin\/..\/etc\/config/\/etc\/smokeping\/config/g' \
+		-e 's/$FindBin::RealBin\/..\/etc\/config/\/etc\/smokeping\/config/g' \
 		"${D}/usr/bin/smokeping" "${D}/usr/bin/smokeping_cgi" || die
 
 	sed -i \
