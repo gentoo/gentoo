@@ -8,6 +8,7 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	KDE_TEST="true"
 fi
 CMAKE_MAKEFILE_GENERATOR="emake"
+KDE_APPS_MINIMAL="17.12.0"
 inherit kde5 toolchain-funcs
 
 DESCRIPTION="Digital photo management application"
@@ -17,7 +18,7 @@ LICENSE="GPL-2"
 IUSE="addressbook calendar gphoto2 jpeg2k +kipi +lensfun marble mediaplayer semantic-desktop mysql opengl openmp +panorama scanner X"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	MY_PV=${PV/_/-}
 	MY_P=${PN}-${MY_PV}
 	SRC_BRANCH=stable
@@ -61,7 +62,7 @@ COMMON_DEPEND="
 		$(add_kdeapps_dep akonadi-contacts)
 		$(add_kdeapps_dep kcontacts)
 	)
-	calendar? ( <kde-apps/kcalcore-17.11.80:5 )
+	calendar? ( $(add_kdeapps_dep kcalcore) )
 	gphoto2? ( media-libs/libgphoto2:= )
 	jpeg2k? ( media-libs/jasper:= )
 	kipi? ( $(add_kdeapps_dep libkipi '' '16.03.80') )
@@ -103,8 +104,6 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT=test
 # bug 366505
-
-PATCHES=( "${FILESDIR}/${P}-qt-5.9.3.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
