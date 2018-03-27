@@ -11,3 +11,4 @@ move app-admin/bind_exporter app-metrics/bind_exporter
 move app-admin/elasticsearch_exporter app-metrics/elasticsearch_exporter
 move app-admin/mongodb_exporter app-metrics/mongodb_exporter
 move app-admin/nginx-vts-exporter app-metrics/nginx-vts-exporter
+move app-admin/prom2json app-metrics/prom2json
