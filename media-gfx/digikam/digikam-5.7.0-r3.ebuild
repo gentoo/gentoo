@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,8 +27,6 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	S="${WORKDIR}/${MY_P}/core"
 fi
 
-# TODO: Package QtAV http://www.qtav.org/
-# video? ( media-video/qtav )
 COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
