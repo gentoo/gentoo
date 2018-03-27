@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( README )
 
-USE_PHP="php5-6 php7-0"
+USE_PHP="php5-6 php7-0 php7-1 php7-2"
 
 inherit php-ext-pecl-r3 pam
 
@@ -26,10 +26,7 @@ PATCHES=( "${FILESDIR}/${PV}-php7.patch" )
 
 src_prepare() {
 	#Fix DOS line endings
-	for slot in $(php_get_slots); do
-		php_init_slot_env "${slot}"
-		sed -i 's/\r$//' -- pam.c || die
-	done
+	sed -i 's/\r$//' -- pam.c || die
 	php-ext-source-r3_src_prepare
 }
 
