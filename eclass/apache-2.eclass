@@ -119,6 +119,23 @@ PDEPEND="~app-admin/apache-tools-${PV}"
 
 S="${WORKDIR}/httpd-${PV}"
 
+# @VARIABLE: MODULE_DEPENDS
+# @DESCRIPTION:
+# This variable needs to be set in the ebuild and contains a space-separated
+# list of dependency tokens each with a module and the module it depends on
+# separated by a colon
+
+# now extend REQUIRED_USE to reflect the module dependencies to portage
+_apache2_set_module_depends() {
+	local dep
+
+	for dep in ${MODULE_DEPENDS} ; do
+		REQUIRED_USE="${REQUIRED_USE} apache2_modules_${dep%:*}? ( apache2_modules_${dep#*:} )"
+	done
+}
+_apache2_set_module_depends
+unset -f _apache2_set_module_depends
+
 # ==============================================================================
 # INTERNAL FUNCTIONS
 # ==============================================================================
@@ -207,35 +224,6 @@ check_module_critical() {
 	fi
 }
 
-# @VARIABLE: MODULE_DEPENDS
-# @DESCRIPTION:
-# This variable needs to be set in the ebuild and contains a space-separated
-# list of dependency tokens each with a module and the module it depends on
-# separated by a colon
-
-# @FUNCTION: check_module_depends
-# @DESCRIPTION:
-# This internal function makes sure that all inter-module dependencies are
-# satisfied with the current module selection
-check_module_depends() {
-	local err=0
-
-	for m in ${MY_MODS[@]} ; do
-		for dep in ${MODULE_DEPENDS} ; do
-			if [[ "${m}" == "${dep%:*}" ]] ; then
-				if ! use apache2_modules_${dep#*:} ; then
-					eerror "Module '${m}' depends on '${dep#*:}'"
-					err=1
-				fi
-			fi
-		done
-	done
-
-	if [[ ${err} -ne 0 ]] ; then
-		die "invalid use flag combination"
-	fi
-}
-
 # @ECLASS-VARIABLE: MY_CONF
 # @DESCRIPTION:
 # This internal variable contains the econf options for the current module
@@ -316,7 +304,6 @@ setup_modules() {
 
 	# sort and uniquify MY_MODS
 	MY_MODS=( $(echo ${MY_MODS[@]} | tr ' ' '\n' | sort -u) )
-	check_module_depends
 	check_module_critical
 }
 
