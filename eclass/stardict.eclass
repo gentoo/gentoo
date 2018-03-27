@@ -36,15 +36,15 @@ DEPEND="|| ( >=app-text/stardict-2.4.2
 	gzip? ( app-arch/gzip
 		app-text/dictd )"
 
-S=${WORKDIR}/${DICT_P}
+S="${WORKDIR}/${DICT_P}"
 
 stardict_src_compile() {
 	if use gzip; then
 		for file in *.idx; do
-			[[ -f $file ]] && gzip ${file}
+			[[ -f "$file" ]] && gzip "${file}"
 		done
 		for file in *.dict; do
-			[[ -f $file ]] && dictzip ${file}
+			[[ -f "$file" ]] && dictzip "${file}"
 		done
 	fi
 }
