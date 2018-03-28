@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools libtool ltprune multilib-minimal
+inherit autotools libtool multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -69,5 +69,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
