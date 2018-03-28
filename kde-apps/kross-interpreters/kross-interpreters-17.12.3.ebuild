@@ -27,6 +27,11 @@ pkg_setup() {
 	kde5_pkg_setup
 }
 
+src_prepare() {
+	sed -i -e "/find_package(PythonLibs/s/REQUIRED//" CMakeLists.txt || die
+	kde5_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_python=$(usex python)
