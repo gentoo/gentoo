@@ -31,10 +31,8 @@ RDEPEND="
 	~sys-devel/clang-${PV}[xml]
 	~sys-devel/llvm-${PV}
 	!<sys-devel/llvm-4.0"
-# swig-3.0.9+ generates invalid wrappers, #598708
-# upstream: https://github.com/swig/swig/issues/769
 DEPEND="${RDEPEND}
-	python? ( <dev-lang/swig-3.0.9 )
+	python? ( >=dev-lang/swig-3.0.11 )
 	test? ( ~dev-python/lit-${PV}[${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}"
 
