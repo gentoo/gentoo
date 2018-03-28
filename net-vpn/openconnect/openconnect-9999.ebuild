@@ -10,14 +10,14 @@ inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo-r1
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/${PN}.git"
+	VPNC_PV=${PV}
 	inherit git-r3 autotools
 else
-	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
+	VPNC_PV=20160829
+	SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz
+		ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-VPNC_VER=20160829
-SRC_URI="${ARCHIVE_URI}
-	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
 HOMEPAGE="http://www.infradead.org/openconnect.html"
@@ -65,6 +65,10 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+		unset EGIT_BRANCH EGIT_COMMIT
+		EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/vpnc-scripts.git"
+		EGIT_CHECKOUT_DIR="${WORKDIR}/vpnc-scripts-${VPNC_PV}"
 		git-r3_src_unpack
 	fi
 	default
@@ -142,7 +146,7 @@ src_install() {
 	insinto /etc/openconnect
 	newconfd "${FILESDIR}"/openconnect.conf.in openconnect
 	exeinto /etc/openconnect
-	newexe "${WORKDIR}"/vpnc-scripts-${VPNC_VER}/vpnc-script openconnect.sh
+	newexe "${WORKDIR}"/vpnc-scripts-${VPNC_PV}/vpnc-script openconnect.sh
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openconnect.logrotate openconnect
 	keepdir /var/log/openconnect
