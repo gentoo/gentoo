@@ -1251,10 +1251,6 @@ www-plugins/chrome-binary-plugins:unstable
 # Masked to ensure users are aware before they install.
 app-text/cuneiform
 
-# Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2011)
-# Masked for security bug #294253, use only at your own risk!
-=media-libs/fmod-3*
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
 # These packages are not supposed to be merged directly, instead
 # please use sys-devel/crossdev to install them.
