@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5
+DESCRIPTION=2D animation and drawing program based on Qt5
+EAPI=6
+HOMEPAGE=https://www.pencil2d.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5
+SLOT=0
+SRC_URI=https://github.com/pencil2d/pencil/archive/v0.6.1-rc1.tar.gz -> pencil-0.6.1_rc1.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b8e0056a3f71c32a65e7d9b5ee1ebf94
