@@ -145,9 +145,6 @@ src_install() {
 	doman clisp.1 || die
 	dodoc SUMMARY README* NEWS MAGIC.add ANNOUNCE || die
 	fperms a+x /usr/$(get_libdir)/clisp-${PV/_*/}/clisp-link || die
-	# stripping them removes common symbols (defined but uninitialised variables)
-	# which are then needed to build modules...
-	export STRIP_MASK="*/usr/$(get_libdir)/clisp-${PV}/*/*"
 	popd
 	dohtml doc/impnotes.{css,html} doc/regexp.html doc/clisp.png || die
 	dodoc doc/{CLOS-guide,LISP-tutorial}.txt || die

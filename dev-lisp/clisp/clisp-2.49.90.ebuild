@@ -136,9 +136,6 @@ src_install() {
 	make DESTDIR="${D}" prefix="${EPREFIX}"/usr install-bin || die "Installation failed"
 	doman clisp.1
 	dodoc ../SUMMARY README* ../src/NEWS ../unix/MAGIC.add ../ANNOUNCE
-	# stripping them removes common symbols (defined but uninitialised variables)
-	# which are then needed to build modules...
-	export STRIP_MASK="*${EPREFIX}/usr/$(get_libdir)/clisp-${PV}/*/*"
 	popd
 	dohtml doc/impnotes.{css,html} doc/regexp.html doc/clisp.png
 	dodoc doc/{CLOS-guide,LISP-tutorial}.txt
