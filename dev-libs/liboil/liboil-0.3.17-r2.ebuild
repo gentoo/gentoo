@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic multilib autotools-multilib
+EAPI=6
+
+inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="Library of simple functions that are optimized for various CPUs"
 HOMEPAGE="https://liboil.freedesktop.org/"
@@ -13,9 +14,7 @@ SLOT="0.3"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="+examples static-libs test"
 
-RDEPEND="examples? ( dev-libs/glib:2 )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r9
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND="examples? ( dev-libs/glib:2 )"
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	virtual/pkgconfig"
@@ -32,11 +31,12 @@ src_prepare() {
 			-i Makefile.am Makefile.in || die
 	fi
 
-	epatch "${FILESDIR}/${P}-amd64-cpuid.patch"
-	has x32 $(get_all_abis) && epatch "${FILESDIR}"/${PN}-0.3.17-x32.patch
+	eapply "${FILESDIR}/${P}-amd64-cpuid.patch"
+	has x32 $(get_all_abis) && eapply "${FILESDIR}"/${PN}-0.3.17-x32.patch
+	default
 }
 
-src_configure() {
+multilib_src_configure() {
 	strip-flags
 	filter-flags -O?
 	append-flags -O2
@@ -44,7 +44,7 @@ src_configure() {
 	# For use with Clang, which is the only compiler on OSX, bug #576646
 	[[ ${CHOST} == *-darwin* ]] && append-flags -fheinous-gnu-extensions
 
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" econf
 }
 
 pkg_postinst() {
