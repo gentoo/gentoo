@@ -2,8 +2,8 @@ The version taken from GnuPG 1.4 assumes any cross-compiled package have
 prefixed underscores, which is not the case; by using libtool's own macro,
 we can avoid the whole issue.
 
---- libgcrypt-1.6.1/configure.ac
-+++ libgcrypt-1.6.1/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -1022,7 +1022,7 @@
  # Check whether underscores in symbols are required.  This needs to be
  # done before setting up the assembler stuff.
@@ -13,8 +13,8 @@ we can avoid the whole issue.
  
  
  #################################
---- libgcrypt-1.6.1/mpi/config.links
-+++ libgcrypt-1.6.1/mpi/config.links
+--- a/mpi/config.links
++++ b/mpi/config.links
 @@ -362,7 +362,7 @@
  
  # Make sysdep.h
