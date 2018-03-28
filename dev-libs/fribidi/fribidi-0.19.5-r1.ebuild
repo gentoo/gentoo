@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="A free implementation of the unicode bidirectional algorithm"
 HOMEPAGE="https://fribidi.org/"
@@ -19,13 +20,15 @@ RDEPEND=">=dev-libs/glib-2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS="AUTHORS NEWS README ChangeLog THANKS TODO"
+DOCS=( AUTHORS NEWS README ChangeLog THANKS TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19.2-nodoc.patch
+	"${FILESDIR}"/${PN}-0.19.5-signedwarning.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-0.19.2-nodoc.patch \
-		"${FILESDIR}"/${P}-signedwarning.patch
-
+	default
 	# Fix compability with dev-libs/glib >= 2.31
 	sed -i \
 		-e '/include/s:<glib/gstrfuncs.h>:<glib.h>:' \
@@ -45,5 +48,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

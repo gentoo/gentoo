@@ -1,6 +1,5 @@
-diff -ur fribidi-0.19.6.old/lib/common.h fribidi-0.19.6/lib/common.h
---- fribidi-0.19.6.old/lib/common.h	2012-12-30 00:12:59.000000000 +0000
-+++ fribidi-0.19.6/lib/common.h	2014-05-03 11:04:19.969727962 +0100
+--- a/lib/common.h
++++ b/lib/common.h
 @@ -130,14 +130,8 @@
  /* FRIBIDI_CHUNK_SIZE is the number of bytes in each chunk of memory being
   * allocated for data structure pools. */
