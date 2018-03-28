@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
-inherit autotools distutils-r1 eutils git-r3 libtool multilib multilib-minimal
+inherit autotools distutils-r1 eutils git-r3 multilib-minimal
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
@@ -16,13 +16,7 @@ SLOT="3"
 KEYWORDS=""
 IUSE="static-libs python utils"
 
-RDEPEND="
-	python? ( ${PYTHON_DEPS} )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r5
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
-"
+RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="
 	${RDEPEND}
 	python? ( dev-lang/swig )
@@ -98,5 +92,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }

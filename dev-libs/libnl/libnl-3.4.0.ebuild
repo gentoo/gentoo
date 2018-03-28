@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
-inherit distutils-r1 eutils libtool multilib multilib-minimal
+inherit distutils-r1 libtool multilib-minimal
 
 LIBNL_P=${P/_/-}
 LIBNL_DIR=${PV/_/}
@@ -20,22 +20,18 @@ SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs python utils"
 
-RDEPEND="
-	python? ( ${PYTHON_DEPS} )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r5
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
-"
+RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="
 	${RDEPEND}
 	python? ( dev-lang/swig )
 	sys-devel/bison
 	sys-devel/flex
 "
+
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
+
 DOCS=(
 	ChangeLog
 )
@@ -102,5 +98,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }

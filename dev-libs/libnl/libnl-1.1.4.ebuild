@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils multilib toolchain-funcs
+EAPI=6
+
+inherit multilib toolchain-funcs
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/"
@@ -15,11 +16,14 @@ IUSE="doc static-libs"
 DEPEND="doc? ( app-doc/doxygen )"
 DOCS=( ChangeLog )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-vlan-header.patch
+	"${FILESDIR}"/${PN}-1.1-flags.patch
+	"${FILESDIR}"/${PN}-1.1.3-offsetof.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.1-vlan-header.patch \
-		"${FILESDIR}"/${PN}-1.1-flags.patch \
-		"${FILESDIR}"/${PN}-1.1.3-offsetof.patch
+	default
 	sed -i \
 		-e '/@echo/d' \
 		Makefile.rules {lib,src,tests}/Makefile || die
@@ -44,10 +48,6 @@ src_compile() {
 }
 
 src_install() {
+	use doc && HTML_DOCS="doc/html/."
 	default
-
-	if use doc ; then
-		cd "${S}/doc"
-		dohtml -r html/*
-	fi
 }
