@@ -51,17 +51,6 @@ dev-php/PEAR-Text_Password test
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
-# Requires unstable dependency dev-qt/qtspeech.
-kde-apps/kanagram speech
-kde-apps/kdepim-runtime speech
-kde-apps/konqueror speech
-kde-apps/kpimtextedit speech
-kde-apps/ktp-text-ui speech
-kde-apps/okular speech
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
-
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependeny is not stable
 sci-libs/gdal mdb
