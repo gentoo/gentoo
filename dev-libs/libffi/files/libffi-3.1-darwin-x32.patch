@@ -2,8 +2,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=513428
 https://bugs.gentoo.org/show_bug.cgi?id=536764
 https://trac.macports.org/ticket/44170
 
---- libffi-3.2.1/src/x86/win32.S
-+++ libffi-3.2.1/src/x86/win32.S
+--- a/src/x86/win32.S
++++ b/src/x86/win32.S
 @@ -1184,7 +1184,6 @@
  
  #if defined(X86_WIN32) && !defined(__OS2__)
