@@ -13,7 +13,7 @@ SRC_URI="https://releases.pagure.org/SSSD/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="acl augeas autofs +locator netlink nfsv4 nls +manpages python samba selinux sudo ssh test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
