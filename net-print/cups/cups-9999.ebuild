@@ -21,7 +21,8 @@ if [[ ${PV} == *9999 ]]; then
 		EGIT_BRANCH=branch-${PV/.9999}
 	fi
 else
-	SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/apple/cups/releases/download/v${PV}/${P}-source.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
 fi
 
@@ -56,10 +57,6 @@ CDEPEND="
 	X? ( x11-misc/xdg-utils )
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 "
 
 DEPEND="${CDEPEND}
@@ -153,13 +150,11 @@ multilib_src_configure() {
 
 	einfo LINGUAS=\"${LINGUAS}\"
 
-	local myeconfargs=()
-
 	# explicitly specify compiler wrt bug 524340
 	#
 	# need to override KRB5CONFIG for proper flags
 	# https://github.com/apple/cups/issues/4423
-	myeconfargs+=(
+	local myeconfargs=(
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"
 		KRB5CONFIG="${EPREFIX}"/usr/bin/${CHOST}-krb5-config
@@ -209,10 +204,12 @@ multilib_src_configure() {
 	sed -i -e "s:cups_serverbin=.*:cups_serverbin=\"${EPREFIX}/usr/libexec/cups\":" cups-config || die
 
 	# additional path corrections needed for prefix, see bug 597728
-	sed -i -e "s:ICONDIR.*:ICONDIR = ${EPREFIX}/usr/share/icons:" Makedefs || die
-	sed -i -e "s:INITDIR.*:INITDIR = ${EPREFIX}/etc:" Makedefs || die
-	sed -i -e "s:DBUSDIR.*:DBUSDIR = ${EPREFIX}/etc/dbus-1:" Makedefs || die
-	sed -i -e "s:MENUDIR.*:MENUDIR = ${EPREFIX}/usr/share/applications:" Makedefs || die
+	sed \
+		-e "s:ICONDIR.*:ICONDIR = ${EPREFIX}/usr/share/icons:" \
+		-e "s:INITDIR.*:INITDIR = ${EPREFIX}/etc:" \
+		-e "s:DBUSDIR.*:DBUSDIR = ${EPREFIX}/etc/dbus-1:" \
+		-e "s:MENUDIR.*:MENUDIR = ${EPREFIX}/usr/share/applications:" \
+		-i Makedefs || die
 }
 
 multilib_src_compile() {
@@ -240,11 +237,11 @@ multilib_src_install_all() {
 	dodoc {CHANGES,CREDITS,README}.md
 
 	# move the default config file to docs
-	dodoc "${ED}"/etc/cups/cupsd.conf.default
-	rm -f "${ED}"/etc/cups/cupsd.conf.default
+	dodoc "${ED%/}"/etc/cups/cupsd.conf.default
+	rm -f "${ED%/}"/etc/cups/cupsd.conf.default
 
 	# clean out cups init scripts
-	rm -rf "${ED}"/etc/{init.d/cups,rc*,pam.d/cups}
+	rm -rf "${ED%/}"/etc/{init.d/cups,rc*,pam.d/cups}
 
 	# install our init script
 	local neededservices
@@ -253,7 +250,7 @@ multilib_src_install_all() {
 	[[ -n ${neededservices} ]] && neededservices="need${neededservices}"
 	cp "${FILESDIR}"/cupsd.init.d-r3 "${T}"/cupsd || die
 	sed -i \
-		-e "s/@neededservices@/$neededservices/" \
+		-e "s/@neededservices@/${neededservices}/" \
 		"${T}"/cupsd || die
 	doinitd "${T}"/cupsd
 
@@ -264,16 +261,16 @@ multilib_src_install_all() {
 		# correct path
 		sed -i \
 			-e "s:server = .*:server = /usr/libexec/cups/daemon/cups-lpd:" \
-			"${ED}"/etc/xinetd.d/cups-lpd || die
+			"${ED%/}"/etc/xinetd.d/cups-lpd || die
 		# it is safer to disable this by default, bug #137130
-		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
-			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die ; }
+		grep -w 'disable' "${ED%/}"/etc/xinetd.d/cups-lpd || \
+			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED%/}"/etc/xinetd.d/cups-lpd || die ; }
 		# write permission for file owner (root), bug #296221
 		fperms u+w /etc/xinetd.d/cups-lpd || die "fperms failed"
 	else
 		# always configure with --with-xinetd= and clean up later,
 		# bug #525604
-		rm -rf "${ED}"/etc/xinetd.d
+		rm -rf "${ED%/}"/etc/xinetd.d
 	fi
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
@@ -281,24 +278,26 @@ multilib_src_install_all() {
 
 	keepdir /etc/cups/{interfaces,ppd,ssl}
 
-	use X || rm -r "${ED}"/usr/share/applications
+	if ! use X ; then
+		rm -r "${ED%/}"/usr/share/applications || die
+	fi
 
 	# create /etc/cups/client.conf, bug #196967 and #266678
-	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED}"/etc/cups/client.conf
+	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED%/}"/etc/cups/client.conf
 
 	# the following file is now provided by cups-filters:
-	rm -r "${ED}"/usr/share/cups/banners || die
+	rm -r "${ED%/}"/usr/share/cups/banners || die
 
 	# the following are created by the init script
-	rm -r "${ED}"/var/cache/cups || die
-	rm -r "${ED}"/run || die
+	rm -r "${ED%/}"/var/cache/cups || die
+	rm -r "${ED%/}"/run || die
 
 	# for the special case of running lprng and cups together, bug 467226
 	if use lprng-compat ; then
-		rm -fv "${ED}"/usr/bin/{lp*,cancel}
-		rm -fv "${ED}"/usr/sbin/lp*
-		rm -fv "${ED}"/usr/share/man/man1/{lp*,cancel*}
-		rm -fv "${ED}"/usr/share/man/man8/lp*
+		rm -fv "${ED%/}"/usr/bin/{lp*,cancel}
+		rm -fv "${ED%/}"/usr/sbin/lp*
+		rm -fv "${ED%/}"/usr/share/man/man1/{lp*,cancel*}
+		rm -fv "${ED%/}"/usr/share/man/man8/lp*
 		ewarn "Not installing lp... binaries, since the lprng-compat useflag is set."
 		ewarn "Unless you plan to install an exotic server setup, you most likely"
 		ewarn "do not want this. Disable the useflag then and all will be fine."
