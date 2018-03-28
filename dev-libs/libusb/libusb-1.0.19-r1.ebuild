@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs multilib-minimal
+EAPI=6
+
+inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Userspace access to USB devices"
 HOMEPAGE="http://libusb.info/"
@@ -13,11 +14,7 @@ SLOT="1"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 -x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc examples static-libs test udev"
 
-RDEPEND="udev? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP},static-libs?] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r7
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="udev? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP},static-libs?] )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	!udev? ( virtual/os-headers )"
@@ -57,7 +54,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	dodoc AUTHORS ChangeLog NEWS PORTING README TODO
 
