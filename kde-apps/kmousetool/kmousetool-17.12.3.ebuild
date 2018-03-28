@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KDE program that clicks the mouse for you"
 HOMEPAGE="https://www.kde.org/applications/utilities/kmousetool/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="

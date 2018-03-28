@@ -9,7 +9,7 @@ DESCRIPTION="Plasma Telepathy client"
 HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-2.1 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gstreamer"
 
 RDEPEND="

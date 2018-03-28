@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

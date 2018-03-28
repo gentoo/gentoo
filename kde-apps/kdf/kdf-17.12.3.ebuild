@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KDE free disk space utility"
 HOMEPAGE="https://utils.kde.org/projects/kdf"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

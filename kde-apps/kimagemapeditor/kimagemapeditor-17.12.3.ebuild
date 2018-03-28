@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Generator of HTML image maps"
 HOMEPAGE="https://www.kde.org/applications/development/kimagemapeditor/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

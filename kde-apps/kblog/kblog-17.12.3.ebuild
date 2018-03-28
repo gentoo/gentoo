@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Library providing client-side support for web application remote blogging APIs"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

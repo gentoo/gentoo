@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="KDE Development Utilities"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
