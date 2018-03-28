@@ -3,10 +3,10 @@ DEPEND=~sci-mathematics/pari-2.3.5 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Perl interface to PARI
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Math-Pari/
-KEYWORDS=alpha amd64 hppa ~mips sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 hppa sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-2 )
 RDEPEND=~sci-mathematics/pari-2.3.5 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IL/ILYAZ/modules/Math-Pari-2.01080605.tar.gz http://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.3.5.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=26eaf6f1da5712f2f2b7e0388d4dc754
+_md5_=772a32bc596b200a25767b7f1ce844a9
