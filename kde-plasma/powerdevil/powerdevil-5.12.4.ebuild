@@ -51,7 +51,6 @@ RDEPEND="${DEPEND}
 	>=sys-power/upower-0.9.23
 	consolekit? (
 		>=sys-auth/consolekit-1.0.1
-		sys-auth/polkit-pkla-compat
 		sys-power/pm-utils
 	)
 	!kde-plasma/powerdevil:4
@@ -66,17 +65,4 @@ src_configure() {
 	)
 
 	kde5_src_configure
-}
-
-src_install() {
-	kde5_src_install
-
-	if use consolekit ; then
-		insinto /etc/polkit-1/localauthority/10-vendor.d/
-		doins "${FILESDIR}"/10-org.freedesktop.upower.pkla
-		doins "${FILESDIR}"/20-org.freedesktop.consolekit.system.stop-multiple-users.pkla
-		doins "${FILESDIR}"/30-org.freedesktop.consolekit.system.restart-multiple-users.pkla
-		doins "${FILESDIR}"/40-org.freedesktop.consolekit.system.suspend-multiple-users.pkla
-		doins "${FILESDIR}"/50-org.freedesktop.consolekit.system.hibernate-multiple-users.pkla
-	fi
 }

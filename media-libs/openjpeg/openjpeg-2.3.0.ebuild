@@ -55,7 +55,6 @@ multilib_src_configure() {
 		mycmakeargs=(
 			-DOPENJPEG_INSTALL_LIB_DIR="$(get_libdir)"
 			-DBUILD_TESTING="$(usex test)"
-			-DBUILD_SHARED_LIBS=OFF
 			-DBUILD_CODEC="$(usex test)"
 			)
 		BUILD_DIR=${BUILD_DIR}_static cmake-utils_src_configure
