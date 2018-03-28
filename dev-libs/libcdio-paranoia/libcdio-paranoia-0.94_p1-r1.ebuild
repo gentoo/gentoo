@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 MY_P=${PN}-10.2+${PV/_p/+}
 
 inherit eutils autotools multilib-minimal flag-o-matic
@@ -21,8 +22,8 @@ IUSE="+cxx static-libs test"
 RDEPEND="app-eselect/eselect-cdparanoia
 	>=dev-libs/libcdio-0.94:0=[${MULTILIB_USEDEP}]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r10
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+"
+
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -35,8 +36,8 @@ DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
 PATCHES=("${FILESDIR}"/${PN}-0.90-oos-tests.patch)
 
 src_prepare() {
-	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	default
+	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	eautoreconf
 
 	[[ ${CC} == *clang* ]] && append-flags -std=gnu89
