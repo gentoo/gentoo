@@ -1,5 +1,3 @@
-diff --git a/libusb/usb.h b/libusb/usb.h
-index b7af749..c9726ed 100644
 --- a/libusb/usb.h
 +++ b/libusb/usb.h
 @@ -27,8 +27,10 @@
