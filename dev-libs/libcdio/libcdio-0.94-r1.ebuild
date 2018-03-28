@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils libtool multilib-minimal
+
+inherit libtool multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -19,13 +20,15 @@ RDEPEND="
 		cddb? ( >=media-libs/libcddb-1.3.2 )
 	)
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r10
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+"
+
 DEPEND="${RDEPEND}
 	sys-apps/sed
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( dev-lang/perl )"
+	test? ( dev-lang/perl )
+"
+
 DOCS="AUTHORS ChangeLog NEWS README* THANKS TODO"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -35,6 +38,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	default
+
 	sed \
 		-e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs ncurses):g" \
 		-i configure || die
@@ -64,5 +68,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
