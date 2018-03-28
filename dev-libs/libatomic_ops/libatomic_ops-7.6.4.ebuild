@@ -17,3 +17,8 @@ IUSE=""
 multilib_src_configure() {
 	ECONF_SOURCE=${S} econf
 }
+
+multilib_src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
