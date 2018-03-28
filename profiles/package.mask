@@ -612,11 +612,6 @@ x11-libs/motif:2.2
 # Masked for removal in 30 days.
 dev-tex/qtexengine
 
-# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
-# Depends on deprecated Qt4, no Qt5 work found. No maintainer.
-# Masked for removal in 30 days. Bug #644534
-app-text/searchmonkey
-
 # Anthony G. Basile <blueness@gentoo.org> (25 Feb 2018)
 # Upstream has been dead since 2012.  Migrate to uclibc-ng.
 # See https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
