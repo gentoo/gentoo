@@ -10,7 +10,7 @@ DESCRIPTION="A simple video player"
 HOMEPAGE="https://www.kde.org/applications/multimedia/dragonplayer"
 
 LICENSE="GPL-2+ || ( GPL-2 GPL-3 ) handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

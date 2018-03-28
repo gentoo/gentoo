@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Library providing utility functions for the handling of calendar data"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

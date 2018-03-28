@@ -30,10 +30,6 @@ DOCS=(
 	doc/keepalived.conf.SYNOPSIS doc/NOTE_vrrp_vmac.txt
 )
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-no-sorry-segfault.patch"
-)
-
 src_prepare() {
 	default
 
