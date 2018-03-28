@@ -1,0 +1,199 @@
+From 0a903118389029fd25fbf4eddd20f60c8856ab4e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Wed, 28 Mar 2018 20:48:58 +0200
+Subject: [PATCH] Fix build with Qt-5.11 (missing headers)
+
+---
+ src/app/layout/qgslayoutpolylinewidget.cpp                | 2 ++
+ src/app/layout/qgslayoutscalebarwidget.cpp                | 1 +
+ src/app/layout/qgslayoutscalebarwidget.h                  | 2 ++
+ src/app/qgslabelinggui.cpp                                | 2 ++
+ src/app/qgsrulebasedlabelingwidget.cpp                    | 1 +
+ src/gui/layout/qgslayoutitemwidget.cpp                    | 2 ++
+ src/gui/layout/qgslayoutnewitempropertiesdialog.cpp       | 2 ++
+ src/gui/qgscompoundcolorwidget.cpp                        | 1 +
+ src/gui/qgsextentgroupbox.cpp                             | 1 +
+ src/gui/qgsgradientcolorrampdialog.cpp                    | 1 +
+ src/gui/qgsgroupwmsdatadialog.cpp                         | 1 +
+ src/gui/qgstextformatwidget.cpp                           | 2 ++
+ src/gui/symbology/qgssymbollayerwidget.cpp                | 1 +
+ src/providers/arcgisrest/qgsarcgisservicesourceselect.cpp | 1 +
+ 14 files changed, 20 insertions(+)
+
+diff --git a/src/app/layout/qgslayoutpolylinewidget.cpp b/src/app/layout/qgslayoutpolylinewidget.cpp
+index 178968917a..28d5d25a4d 100644
+--- a/src/app/layout/qgslayoutpolylinewidget.cpp
++++ b/src/app/layout/qgslayoutpolylinewidget.cpp
+@@ -21,6 +21,8 @@
+ #include "qgslayoutitemregistry.h"
+ #include "qgslayout.h"
+ #include "qgslayoutundostack.h"
++
++#include <QButtonGroup>
+ #include <QFileDialog>
+ 
+ QgsLayoutPolylineWidget::QgsLayoutPolylineWidget( QgsLayoutItemPolyline *polyline )
+diff --git a/src/app/layout/qgslayoutscalebarwidget.cpp b/src/app/layout/qgslayoutscalebarwidget.cpp
+index c1b8ad1509..569a4e0573 100644
+--- a/src/app/layout/qgslayoutscalebarwidget.cpp
++++ b/src/app/layout/qgslayoutscalebarwidget.cpp
+@@ -19,6 +19,7 @@
+ #include "qgslayoutitemscalebar.h"
+ #include "qgslayout.h"
+ #include "qgsguiutils.h"
++
+ #include <QColorDialog>
+ #include <QFontDialog>
+ #include <QWidget>
+diff --git a/src/app/layout/qgslayoutscalebarwidget.h b/src/app/layout/qgslayoutscalebarwidget.h
+index a60b777bfa..ec7cc46cca 100644
+--- a/src/app/layout/qgslayoutscalebarwidget.h
++++ b/src/app/layout/qgslayoutscalebarwidget.h
+@@ -20,6 +20,8 @@
+ #include "ui_qgslayoutscalebarwidgetbase.h"
+ #include "qgslayoutitemwidget.h"
+ 
++#include <QButtonGroup>
++
+ class QgsLayoutItemScaleBar;
+ 
+ /**
+diff --git a/src/app/qgslabelinggui.cpp b/src/app/qgslabelinggui.cpp
+index e5cf8ff626..4d6a83700d 100644
+--- a/src/app/qgslabelinggui.cpp
++++ b/src/app/qgslabelinggui.cpp
+@@ -24,6 +24,8 @@
+ #include "qgsauxiliarystorage.h"
+ #include "qgsnewauxiliarylayerdialog.h"
+ 
++#include <QButtonGroup>
++
+ QgsExpressionContext QgsLabelingGui::createExpressionContext() const
+ {
+   QgsExpressionContext expContext;
+diff --git a/src/app/qgsrulebasedlabelingwidget.cpp b/src/app/qgsrulebasedlabelingwidget.cpp
+index 6f1f77ef9a..57b7d34799 100644
+--- a/src/app/qgsrulebasedlabelingwidget.cpp
++++ b/src/app/qgsrulebasedlabelingwidget.cpp
+@@ -26,6 +26,7 @@
+ #include "qgsvectorlayerlabeling.h"
+ #include "qgslogger.h"
+ 
++#include <QAction>
+ #include <QClipboard>
+ #include <QMessageBox>
+ 
+diff --git a/src/gui/layout/qgslayoutitemwidget.cpp b/src/gui/layout/qgslayoutitemwidget.cpp
+index 1d3d4f8171..d68799234b 100644
+--- a/src/gui/layout/qgslayoutitemwidget.cpp
++++ b/src/gui/layout/qgslayoutitemwidget.cpp
+@@ -21,6 +21,8 @@
+ #include "qgsprintlayout.h"
+ #include "qgslayoutatlas.h"
+ 
++#include <QButtonGroup>
++
+ //
+ // QgsLayoutConfigObject
+ //
+diff --git a/src/gui/layout/qgslayoutnewitempropertiesdialog.cpp b/src/gui/layout/qgslayoutnewitempropertiesdialog.cpp
+index 9fa5f98358..c53d002acb 100644
+--- a/src/gui/layout/qgslayoutnewitempropertiesdialog.cpp
++++ b/src/gui/layout/qgslayoutnewitempropertiesdialog.cpp
+@@ -19,6 +19,8 @@
+ #include "qgslayoutpagecollection.h"
+ #include "qgsgui.h"
+ 
++#include <QButtonGroup>
++
+ QgsLayoutItemPropertiesDialog::QgsLayoutItemPropertiesDialog( QWidget *parent, Qt::WindowFlags flags )
+   : QDialog( parent, flags )
+ {
+diff --git a/src/gui/qgscompoundcolorwidget.cpp b/src/gui/qgscompoundcolorwidget.cpp
+index a7dbb77501..48032a2456 100644
+--- a/src/gui/qgscompoundcolorwidget.cpp
++++ b/src/gui/qgscompoundcolorwidget.cpp
+@@ -20,6 +20,7 @@
+ #include "qgsapplication.h"
+ #include "qgssettings.h"
+ 
++#include <QHeaderView>
+ #include <QPushButton>
+ #include <QMenu>
+ #include <QToolButton>
+diff --git a/src/gui/qgsextentgroupbox.cpp b/src/gui/qgsextentgroupbox.cpp
+index ffc8ab7195..d5d77db6a0 100644
+--- a/src/gui/qgsextentgroupbox.cpp
++++ b/src/gui/qgsextentgroupbox.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <QMenu>
+ #include <QAction>
++#include <QDoubleValidator>
+ 
+ QgsExtentGroupBox::QgsExtentGroupBox( QWidget *parent )
+   : QgsCollapsibleGroupBox( parent )
+diff --git a/src/gui/qgsgradientcolorrampdialog.cpp b/src/gui/qgsgradientcolorrampdialog.cpp
+index fcc93d74fb..317f373423 100644
+--- a/src/gui/qgsgradientcolorrampdialog.cpp
++++ b/src/gui/qgsgradientcolorrampdialog.cpp
+@@ -22,6 +22,7 @@
+ #include "qgssettings.h"
+ 
+ #include <QColorDialog>
++#include <QHeaderView>
+ #include <QInputDialog>
+ #include <QPainter>
+ #include <QTableWidget>
+diff --git a/src/gui/qgsgroupwmsdatadialog.cpp b/src/gui/qgsgroupwmsdatadialog.cpp
+index 456c813f5f..f9bb15ab6d 100644
+--- a/src/gui/qgsgroupwmsdatadialog.cpp
++++ b/src/gui/qgsgroupwmsdatadialog.cpp
+@@ -16,6 +16,7 @@
+ #include "qgsapplication.h"
+ #include "qgsgroupwmsdatadialog.h"
+ 
++#include <QRegExpValidator>
+ 
+ QgsGroupWmsDataDialog::QgsGroupWmsDataDialog( QWidget *parent, Qt::WindowFlags fl )
+   : QDialog( parent, fl )
+diff --git a/src/gui/qgstextformatwidget.cpp b/src/gui/qgstextformatwidget.cpp
+index 8c3c67d8e9..9005a40081 100644
+--- a/src/gui/qgstextformatwidget.cpp
++++ b/src/gui/qgstextformatwidget.cpp
+@@ -29,6 +29,8 @@
+ #include "qgseffectstack.h"
+ #include "qgspainteffectregistry.h"
+ 
++#include <QButtonGroup>
++
+ QgsTextFormatWidget::QgsTextFormatWidget( const QgsTextFormat &format, QgsMapCanvas *mapCanvas, QWidget *parent )
+   : QWidget( parent )
+   , mMapCanvas( mapCanvas )
+diff --git a/src/gui/symbology/qgssymbollayerwidget.cpp b/src/gui/symbology/qgssymbollayerwidget.cpp
+index 3a5f3c5314..da599a27ae 100644
+--- a/src/gui/symbology/qgssymbollayerwidget.cpp
++++ b/src/gui/symbology/qgssymbollayerwidget.cpp
+@@ -43,6 +43,7 @@
+ #include "qgsauxiliarystorage.h"
+ 
+ #include <QAbstractButton>
++#include <QButtonGroup>
+ #include <QColorDialog>
+ #include <QCursor>
+ #include <QDir>
+diff --git a/src/providers/arcgisrest/qgsarcgisservicesourceselect.cpp b/src/providers/arcgisrest/qgsarcgisservicesourceselect.cpp
+index 4cc3e8b301..d377d718b7 100644
+--- a/src/providers/arcgisrest/qgsarcgisservicesourceselect.cpp
++++ b/src/providers/arcgisrest/qgsarcgisservicesourceselect.cpp
+@@ -29,6 +29,7 @@
+ #include "qgssettings.h"
+ #include "qgsmapcanvas.h"
+ 
++#include <QButtonGroup>
+ #include <QListWidgetItem>
+ #include <QMessageBox>
+ #include <QFileDialog>
+-- 
+2.16.3
+
