@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib libtool flag-o-matic toolchain-funcs multilib-minimal
+inherit libtool flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
@@ -77,14 +77,14 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		$(multilib_is_native_abi || echo "bin_PROGRAMS= dist_html_DATA=") \
 		install
 	gen_usr_ldscript -a pcre
 }
 
 multilib_src_install_all() {
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
