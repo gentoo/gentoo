@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-multilib eutils
+inherit autotools multilib-minimal
 
 DESCRIPTION="Disassembler library for the x86/-64 architecture sets"
 HOMEPAGE="http://udis86.sourceforge.net/"
@@ -20,19 +19,23 @@ DEPEND="test? (
 		x86? ( dev-lang/yasm )
 		x86-fbsd? ( dev-lang/yasm )
 	)"
-RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-yasm.patch
 )
 
-src_configure() {
+src_prepare() {
+	default
+	eautoreconf
+}
+
+multilib_src_configure() {
 	local myeconfargs=(
 		--disable-static
 		--enable-shared
 		--with-pic
 	)
 
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
