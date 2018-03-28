@@ -1,5 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="A somewhat comprehensive collection of Dutch Linux man pages"
 HOMEPAGE="http://doc.nl.linux.org/MANPAGE/"
@@ -13,8 +15,3 @@ IUSE=""
 RDEPEND="virtual/man"
 
 S=${WORKDIR}/manpages-nl-${PV}
-
-src_install() {
-	make install DESTDIR="${D}" || die
-	dodoc AUTHORS ChangeLog NEWS README TODO
-}

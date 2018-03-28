@@ -104,10 +104,6 @@ lapack
 blas
 
 # Alexander Færøy <eroyf@gentoo.org>
-# ldap -- untested, masking for now.
-ldap
-
-# Alexander Færøy <eroyf@gentoo.org>
 # Clamav -- untested, masking for now.
 clamav
 
