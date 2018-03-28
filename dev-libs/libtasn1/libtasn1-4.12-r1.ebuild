@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal libtool ltprune
+inherit multilib-minimal libtool
 
 DESCRIPTION="ASN.1 library"
 HOMEPAGE="https://www.gnu.org/software/libtasn1/"
@@ -17,12 +17,7 @@ IUSE="doc static-libs valgrind"
 DEPEND=">=dev-lang/perl-5.6
 	sys-apps/help2man
 	virtual/yacc"
-RDEPEND="
-	valgrind? ( dev-util/valgrind )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r16
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="valgrind? ( dev-util/valgrind )"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
@@ -50,5 +45,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
