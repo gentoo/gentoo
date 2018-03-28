@@ -27,11 +27,6 @@ DEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	default
-	find -name Makefile.in -exec sed -i 's:\<ar\>:$(AR):' {} +
-}
-
 src_configure() {
 	econf \
 		$(use_with tcpd libwrap) \
