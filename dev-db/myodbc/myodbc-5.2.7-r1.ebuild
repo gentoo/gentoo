@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit cmake-multilib eutils flag-o-matic versionator
+EAPI=6
+inherit cmake-multilib flag-o-matic versionator
 
 MAJOR="$(get_version_component_range 1-2 $PV)"
 MY_PN="mysql-connector-odbc"
@@ -21,9 +21,6 @@ IUSE=""
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
 	>=virtual/mysql-5.5[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-	)
 "
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
@@ -32,6 +29,7 @@ S=${WORKDIR}/${MY_P}
 DRIVER_NAME="${PN}-${SLOT}"
 
 src_prepare() {
+	default
 	# Remove Tests
 	sed -i -e "s/ADD_SUBDIRECTORY(test)//" \
 		"${S}/CMakeLists.txt"
@@ -40,7 +38,7 @@ src_prepare() {
 	echo "TARGET_LINK_LIBRARIES(myodbc-installer odbc)" >> "${S}/installer/CMakeLists.txt"
 
 	# Patch document path so it doesn't install files to /usr
-	epatch "${FILESDIR}/cmake-doc-path.patch" \
+	eapply "${FILESDIR}/cmake-doc-path.patch" \
 		"${FILESDIR}/${PVR}-cxxlinkage.patch" \
 		"${FILESDIR}/${PV}-mariadb-dynamic-array.patch"
 
@@ -72,12 +70,12 @@ multilib_src_install_all() {
 			-e "s,__PN__,${DRIVER_NAME},g" \
 			-e "s,__PF__,${MAJOR},g" \
 			-e "s,libmyodbc3.so,libmyodbc${SLOT:0:1}a.so,g" \
-			>"${D}"/usr/share/${PN}-${SLOT}/${i} \
+			>"${ED}"/usr/share/${PN}-${SLOT}/${i} \
 			<"${FILESDIR}"/${i}.m4 \
 			|| die "Failed to build $i"
 	done;
-	mv "${D}/usr/bin/myodbc-installer" \
-		"${D}/usr/bin/myodbc-installer-${MAJOR}" || die "failed to move slotted binary"
+	mv "${ED}/usr/bin/myodbc-installer" \
+		"${ED}/usr/bin/myodbc-installer-${MAJOR}" || die "failed to move slotted binary"
 }
 
 pkg_config() {

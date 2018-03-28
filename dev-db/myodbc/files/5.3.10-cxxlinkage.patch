@@ -1,6 +1,5 @@
-diff -aurN a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
---- a/cmake/FindMySQL.cmake	2016-11-29 07:40:13.000000000 -0500
-+++ b/cmake/FindMySQL.cmake	2017-02-17 13:59:18.115389096 -0500
+--- a/cmake/FindMySQL.cmake
++++ b/cmake/FindMySQL.cmake
 @@ -747,7 +747,7 @@
      endif()
  
@@ -10,9 +9,8 @@ diff -aurN a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
          _mysql_conf(MYSQL_CXXFLAGS "--cxxflags")
          set(MYSQL_CXX_LINKAGE 1)
        else()
-diff -aurN a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2018-02-10 21:41:13.161553751 -0500
-+++ b/CMakeLists.txt	2018-02-10 21:45:20.038398824 -0500
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -379,10 +379,9 @@
  SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
  SET(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib")

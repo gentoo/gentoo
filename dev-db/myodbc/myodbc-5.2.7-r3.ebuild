@@ -22,9 +22,6 @@ IUSE=""
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
 	~virtual/libmysqlclient-18[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-	)
 	!dev-db/mysql-connector-c
 	!>=dev-db/mariadb-10.2.0
 "
@@ -85,12 +82,12 @@ multilib_src_install_all() {
 			-e "s,__PF__,${MAJOR},g" \
 			-e "s,libmyodbc3.so,libmyodbc${SLOT:0:1}a.so,g" \
 			-e "s,lib/libmyodbc,$(get_libdir)/${DRIVER_NAME}/libmyodbc,g" \
-			>"${D}"/usr/share/${PN}-${SLOT}/${i} \
+			>"${ED}"/usr/share/${PN}-${SLOT}/${i} \
 			<"${FILESDIR}"/${i}.m4 \
 			|| die "Failed to build $i"
 	done;
-	mv "${D}/usr/bin/myodbc-installer" \
-		"${D}/usr/bin/myodbc-installer-${MAJOR}" || die "failed to move slotted binary"
+	mv "${ED}/usr/bin/myodbc-installer" \
+		"${ED}/usr/bin/myodbc-installer-${MAJOR}" || die "failed to move slotted binary"
 }
 
 pkg_config() {

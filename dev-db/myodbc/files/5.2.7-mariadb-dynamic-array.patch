@@ -1,6 +1,5 @@
-diff -aurN a/driver/catalog_no_i_s.c b/driver/catalog_no_i_s.c
---- a/driver/catalog_no_i_s.c	2014-06-18 18:50:16.000000000 -0400
-+++ b/driver/catalog_no_i_s.c	2014-08-20 14:08:33.997339096 -0400
+--- a/driver/catalog_no_i_s.c
++++ b/driver/catalog_no_i_s.c
 @@ -1093,7 +1093,11 @@
    unsigned long *lengths;
    SQLRETURN rc= SQL_SUCCESS;
@@ -13,9 +12,8 @@ diff -aurN a/driver/catalog_no_i_s.c b/driver/catalog_no_i_s.c
  
    /* Get the list of tables that match szCatalog and szTable */
    pthread_mutex_lock(&stmt->dbc->lock);
-diff -aurN a/driver/desc.c b/driver/desc.c
---- a/driver/desc.c	2014-06-18 18:50:16.000000000 -0400
-+++ b/driver/desc.c	2014-08-20 14:07:37.409169269 -0400
+--- a/driver/desc.c
++++ b/driver/desc.c
 @@ -63,8 +63,12 @@
       but in desc_get_rec we manually get a pointer to it. This avoids
       having to call set_dynamic after modifying the DESCREC.
@@ -45,9 +43,8 @@ diff -aurN a/driver/desc.c b/driver/desc.c
    {
      return set_desc_error(dest, "HY001",
                "Memory allocation error",
-diff -aurN a/driver/handle.c b/driver/handle.c
---- a/driver/handle.c	2014-06-18 18:50:16.000000000 -0400
-+++ b/driver/handle.c	2014-08-20 14:05:00.364248403 -0400
+--- a/driver/handle.c
++++ b/driver/handle.c
 @@ -403,7 +403,11 @@
      }
    }
@@ -60,9 +57,8 @@ diff -aurN a/driver/handle.c b/driver/handle.c
    memset((*param_bind)->buffer, 0, sizeof(MYSQL_BIND) *
  											(*param_bind)->max_element);
  
-diff -aurN a/driver/parse.c b/driver/parse.c
---- a/driver/parse.c	2014-06-18 18:50:16.000000000 -0400
-+++ b/driver/parse.c	2014-08-20 14:03:54.336383876 -0400
+--- a/driver/parse.c
++++ b/driver/parse.c
 @@ -129,8 +129,13 @@
  
      /* TODO: Store offsets rather than ptrs. In this case we will be fine

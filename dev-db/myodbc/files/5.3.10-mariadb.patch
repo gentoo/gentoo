@@ -1,5 +1,5 @@
---- a/include/sys_main.h	2018-01-19 05:36:38.000000000 -0500
-+++ b/include/sys_main.h	2018-03-01 11:40:04.554713079 -0500
+--- a/include/sys_main.h
++++ b/include/sys_main.h
 @@ -20,6 +20,8 @@
  extern "C" {
  #endif
@@ -9,8 +9,8 @@
  #define MY_FAE		8	/* Fatal if any error */
  #define MY_WME		16	/* Write message on error */
  #define MY_ZEROFILL	32	/* my_malloc(), fill array with zero */
---- a/driver/connect.c	2018-01-19 05:36:38.000000000 -0500
-+++ b/driver/connect.c	2018-03-01 11:39:51.458676373 -0500
+--- a/driver/connect.c
++++ b/driver/connect.c
 @@ -179,7 +179,7 @@
    /* Set other connection options */
  

@@ -1,6 +1,6 @@
 === modified file 'CMakeLists.txt'
---- a/CMakeLists.txt	2013-03-09 09:51:06 +0000
-+++ b/CMakeLists.txt	2013-03-09 11:05:27 +0000
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -33,6 +33,12 @@
  
  INCLUDE(version.cmake)

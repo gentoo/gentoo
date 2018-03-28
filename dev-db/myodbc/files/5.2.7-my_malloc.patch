@@ -1,6 +1,5 @@
-diff -Brau a/util/odbcinstw.c b/util/odbcinstw.c
---- a/util/odbcinstw.c	2014-04-23 21:54:40.000000000 +0200
-+++ b/util/odbcinstw.c	2015-05-08 15:29:09.400568356 +0200
+--- a/util/odbcinstw.c
++++ b/util/odbcinstw.c
 @@ -68,13 +68,7 @@
  
    if (lpszRetBuffer && cbRetBuffer)
