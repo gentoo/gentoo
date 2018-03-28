@@ -1,7 +1,5 @@
-Index: libelf-0.8.13/aclocal.m4
-===================================================================
---- libelf-0.8.13.orig/aclocal.m4
-+++ libelf-0.8.13/aclocal.m4
+--- a/aclocal.m4
++++ b/aclocal.m4
 @@ -235,7 +235,7 @@ AC_DEFUN(mr_ENABLE_SHARED, [
      AC_REQUIRE([AC_PROG_CC])
      AC_PATH_PROG(LD, ld, ld)
@@ -11,10 +9,8 @@ Index: libelf-0.8.13/aclocal.m4
  	if test "$GCC" = yes; then
  	  mr_TARGET_ELF
  	  if test "$mr_cv_target_elf" = yes; then
-Index: libelf-0.8.13/lib/Makefile.in
-===================================================================
---- libelf-0.8.13.orig/lib/Makefile.in
-+++ libelf-0.8.13/lib/Makefile.in
+--- a/lib/Makefile.in
++++ b/lib/Makefile.in
 @@ -158,7 +158,7 @@ libelf.a: $(OBJS) $(LIBOBJS)
  
  $(SHLIB): libelf.a
