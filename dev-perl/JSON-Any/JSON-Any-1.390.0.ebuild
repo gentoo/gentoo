@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Wrapper Class for the various JSON classes (DEPRECATED)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x64-macos ~x86-solaris"
+KEYWORDS="~amd64 ~mips ~x86 ~x64-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
