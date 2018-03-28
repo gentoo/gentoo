@@ -11,11 +11,11 @@ SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="perl rpc selinux tcpd"
+IUSE="perl selinux tcpd"
 
 DEPEND="
 	selinux? ( sys-libs/libselinux )
-	rpc? ( net-libs/libtirpc:= )
+	kernel_linux? ( net-libs/libtirpc:= )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )
 "
 RDEPEND="
@@ -33,14 +33,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export AR PKG_CONFIG
-	if use rpc ; then
-		append-cflags $(${PKG_CONFIG} --cflags libtirpc)
-	else
-		append-cppflags -DNO_RPC
-		export ac_cv_header_{rpc_{rpc,rpcent,pmap_clnt},netdb}_h=no
-	fi
-	LIBS=$(${PKG_CONFIG} --libs libtirpc) \
 	econf \
 		$(use_with tcpd libwrap) \
 		$(use_with selinux labeled-networking) \
