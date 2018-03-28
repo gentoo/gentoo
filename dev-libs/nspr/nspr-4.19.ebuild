@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils multilib toolchain-funcs versionator multilib-minimal
+inherit autotools multilib-minimal toolchain-funcs versionator
 
 MIN_PV="$(get_version_component_range 2)"
 
@@ -100,19 +100,19 @@ multilib_src_configure() {
 multilib_src_install() {
 	# Their build system is royally confusing, as usual
 	MINOR_VERSION=${MIN_PV} # Used for .so version
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 
 	einfo "removing static libraries as upstream has requested!"
-	rm "${ED%/}"/usr/$(get_libdir)/*.a || die "failed to remove static libraries."
+	rm -f "${ED}"usr/$(get_libdir)/*.a || die "failed to remove static libraries."
 
 	# install nspr-config
 	dobin config/nspr-config
 
 	# Remove stupid files in /usr/bin
-	rm "${ED%/}"/usr/bin/prerr.properties || die
+	rm "${ED}"usr/bin/prerr.properties || die
 
 	# This is used only to generate prerr.c and prerr.h at build time.
 	# No other projects use it, and we don't want to depend on perl.
 	# Talked to upstream and they agreed w/punting.
-	rm "${ED%/}"/usr/bin/compile-et.pl || die
+	rm "${ED}"usr/bin/compile-et.pl || die
 }
