@@ -3,7 +3,7 @@
 
 # This ebuild provides libltdl.so.3.
 
-EAPI="4"
+EAPI=6
 
 inherit multilib-minimal
 
@@ -32,7 +32,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install-exec
+	emake DESTDIR="${ED}" install-exec
 	# basically we just install ABI libs for old packages
-	rm "${ED}"/usr/$(get_libdir)/libltdl.{la,so} || die
+	rm "${ED}"usr/$(get_libdir)/libltdl.{la,so} || die
 }

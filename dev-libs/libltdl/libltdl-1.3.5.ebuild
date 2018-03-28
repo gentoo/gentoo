@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This ebuild provides libltdl.so.0.
 
-EAPI="4"
+EAPI=6
 
 inherit multilib-minimal
 
@@ -36,7 +36,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake -C libltdl DESTDIR="${D}" install-exec
+	emake -C libltdl DESTDIR="${ED}" install-exec
 	# basically we just install ABI libs for old packages
-	rm "${ED}"/usr/$(get_libdir)/libltdl.{la,so} || die
+	rm "${ED}"usr/$(get_libdir)/libltdl.{la,so} || die
 }

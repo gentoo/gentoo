@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit multilib-minimal
 
@@ -18,11 +18,7 @@ IUSE="static-libs"
 # libltdl doesn't have a testsuite.
 RESTRICT="test"
 
-RDEPEND="!<sys-devel/libtool-2.4.3-r2:2
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140406-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="!<sys-devel/libtool-2.4.3-r2:2"
 DEPEND="app-arch/xz-utils"
 
 S="${WORKDIR}/${MY_P}/libltdl"
@@ -35,7 +31,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 
 	# While the libltdl.la file is not used directly, the m4 ltdl logic
 	# keys off of its existence when searching for ltdl support. #293921
