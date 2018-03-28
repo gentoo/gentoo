@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atapromise? ( sys-apps/pciutils ) atavia? ( sys-apps/pciutils ) ch341a_spi? ( virtual/libusb:0 ) dediprog? ( virtual/libusb:0 ) drkaiser? ( sys-apps/pciutils ) ft2232_spi? ( dev-embedded/libftdi:= ) gfxnvidia? ( sys-apps/pciutils ) it8212? ( sys-apps/pciutils ) internal? ( sys-apps/pciutils ) nic3com? ( sys-apps/pciutils ) nicintel? ( sys-apps/pciutils ) nicintel_eeprom? ( sys-apps/pciutils ) nicintel_spi? ( sys-apps/pciutils ) nicnatsemi? ( sys-apps/pciutils ) nicrealtek? ( sys-apps/pciutils ) ogp_spi? ( sys-apps/pciutils ) pickit2_spi? ( virtual/libusb:0 ) rayer_spi? ( sys-apps/pciutils ) satamv? ( sys-apps/pciutils ) satasii? ( sys-apps/pciutils ) usbblaster_spi? ( dev-embedded/libftdi:= ) ) !internal_dmi? ( sys-apps/dmidecode )
 SLOT=0
 _eclasses_=git-r3	fec09a83ae965b041b47f5ff7c8ba29a	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=cee30793126baf9991e87f20277384fd
+_md5_=aec3a8c53ffc0f8d33f112043bd28e03
