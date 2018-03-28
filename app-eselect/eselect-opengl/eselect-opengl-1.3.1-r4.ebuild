@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils multilib
+EAPI=6
 
 DESCRIPTION="Utility to change the OpenGL interface being used"
 HOMEPAGE="https://www.gentoo.org/"
@@ -39,7 +37,7 @@ RDEPEND=">=app-admin/eselect-1.2.4
 		 !=x11-base/xorg-server-1.17.1
 		 !<x11-drivers/ati-drivers-14.9-r2
 		 !=x11-drivers/ati-drivers-14.12
-		 !<=app-emulation/emul-linux-x86-opengl-20140508"
+"
 
 S=${WORKDIR}
 
@@ -66,6 +64,7 @@ pkg_postinst() {
 }
 
 src_prepare() {
+	default
 	# don't die on Darwin users
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/libGL\.so/libGL.dylib/' opengl.eselect-${PV} || die
