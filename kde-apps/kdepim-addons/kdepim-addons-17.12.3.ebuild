@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="Plugins for KDE Personal Information Management Suite"
 HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 LICENSE="GPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="importwizard"
 

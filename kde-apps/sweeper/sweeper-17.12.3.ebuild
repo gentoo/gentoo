@@ -10,7 +10,7 @@ DESCRIPTION="Privacy settings widget to clean unwanted traces on the system"
 HOMEPAGE="https://www.kde.org/applications/utilities/sweeper
 https://utils.kde.org/projects/sweeper"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

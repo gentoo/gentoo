@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KDE screen magnifier"
 HOMEPAGE="https://www.kde.org/applications/utilities/kmag/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="keyboardfocus"
 
 DEPEND="

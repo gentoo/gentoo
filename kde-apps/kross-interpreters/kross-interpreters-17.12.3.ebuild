@@ -8,7 +8,7 @@ USE_RUBY="ruby23"
 inherit kde5 python-single-r1 ruby-single
 
 DESCRIPTION="Kross interpreter plugins for programming languages"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+python ruby"
 
 REQUIRED_USE="|| ( python ruby ) python? ( ${PYTHON_REQUIRED_USE} )"

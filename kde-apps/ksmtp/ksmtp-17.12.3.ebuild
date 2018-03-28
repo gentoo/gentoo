@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Job-based library to send email through an SMTP server"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

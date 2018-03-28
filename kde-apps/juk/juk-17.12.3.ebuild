@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Jukebox and music manager by KDE"
 HOMEPAGE="https://www.kde.org/applications/multimedia/juk/"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
