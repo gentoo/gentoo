@@ -11,7 +11,7 @@ HOMEPAGE="https://www.libssh.org/"
 SRC_URI="https://red.libssh.org/attachments/download/218/${MY_P}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 SLOT="0/4" # subslot = soname major version
 IUSE="debug doc examples gcrypt gssapi libressl pcap server +sftp ssh1 static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
