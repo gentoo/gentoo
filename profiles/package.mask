@@ -1168,10 +1168,6 @@ sys-fs/bedup
 ~net-misc/iputils-20160308
 ~net-misc/iputils-20161105
 
-# Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
-# Upcoming, too young to go into testing unmasked
-dev-libs/iniparser:4
-
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
 # No upstream support anymore
