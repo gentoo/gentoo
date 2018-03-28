@@ -10029,7 +10029,7 @@ sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs 
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
 sys-fs/quota 4.03: Linux quota tools
 sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
-sys-fs/reiserfsprogs 3.6.24 3.6.25: Reiserfs Utilities
+sys-fs/reiserfsprogs 3.6.25: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
 sys-fs/shake 0.999: defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.1 0.3.0: Simple MTP fuse filesystem driver
