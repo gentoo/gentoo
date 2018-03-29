@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ VERSION="1783" #every bump, new version
 DVDARCHIVE="dvdarchive-2.3-beta.sh"
 
 DESCRIPTION="VDR Plugin: Extended recordings menu"
-HOMEPAGE="http://projects.vdr-developer.org/projects/show/plg-extrecmenu"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-extrecmenu"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz
 	mirror://gentoo/${DVDARCHIVE}.gz"
 
