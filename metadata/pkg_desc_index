@@ -7152,7 +7152,7 @@ media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
-media-gfx/digikam 5.7.0-r1: Digital photo management application
+media-gfx/digikam 5.7.0-r3: Digital photo management application
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
@@ -7648,7 +7648,7 @@ media-plugins/emotion_generic_players 1.17.0: Provides external applications as 
 media-plugins/evas_generic_loaders 1.17.0: Provides external applications as generic loaders for Evas
 media-plugins/fil-plugins 0.3.0: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/frei0r-plugins 1.5.0: A minimalistic plugin API for video effects
-media-plugins/gimp-lqr 0.7.1 0.7.2: Content-aware resizing for the GIMP
+media-plugins/gimp-lqr 0.7.2: Content-aware resizing for the GIMP
 media-plugins/gkrellmpc 0.1_beta10: A gkrellm plugin to control the MPD (Music Player Daemon)
 media-plugins/gmpc-alarm 11.8.16: This plugin can start/stop/pause your music at a preset time
 media-plugins/gmpc-albumview 11.8.16: This plugin shows your music collection in albums
@@ -8080,7 +8080,7 @@ media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: Small utils for DVB to scan, zap, v
 media-tv/plex-media-server 1.11.3: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
-media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
+media-tv/v4l-dvb-saa716x 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/xmltv 0.5.57: Set of utilities to manage TV listings stored in the XMLTV format
@@ -9801,7 +9801,7 @@ sys-apps/which 2.21: Prints out location of specified executables that are in yo
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
-sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
+sys-auth/bioapi 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
 sys-auth/elogind 235.2-r2: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
@@ -10387,7 +10387,7 @@ www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process
 www-apache/mod_wsgi 4.5.13: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
-www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
+www-apache/modsecurity-crs 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 5.1.11 5.1.12: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
