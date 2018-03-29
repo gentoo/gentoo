@@ -173,11 +173,6 @@ app-backup/holland-backup-mysqlhotcopy
 dev-python/django-social-auth
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Requires old dev-python/oauth2client (#643534), tests fail (#527608).
-# Removal in a month.
-net-misc/gsutil
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Requires old psycopg (#643614). Removal in a month.
 dev-python/adodb-py
 
