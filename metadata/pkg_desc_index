@@ -6891,7 +6891,7 @@ mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.7 1.3.4: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.5.1 3.6.0: A lightweight email client and newsreader
-mail-client/thunderbird 45.8.0 52.5.2 52.6.0-r1: Thunderbird Mail Client
+mail-client/thunderbird 45.8.0 52.5.2 52.6.0-r1 52.7.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.7.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
@@ -10430,7 +10430,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/pybugz 0.12.1 0.13: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.1.2 2.2.5: A cross-platform web browser using QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.49.5.0_p0: Seamonkey Web Browser
+www-client/seamonkey 2.49.7.0_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
