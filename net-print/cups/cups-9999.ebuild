@@ -9,10 +9,9 @@ inherit autotools gnome2-utils flag-o-matic linux-info xdg-utils \
 	multilib multilib-minimal pam python-single-r1 user versionator \
 	java-pkg-opt-2 systemd toolchain-funcs
 
-MY_P=${P/_rc/rc}
-MY_P=${MY_P/_beta/b}
-MY_PV=${PV/_rc/rc}
-MY_PV=${MY_PV/_beta/b}
+MY_PV="${PV/_rc/rc}"
+MY_PV="${MY_PV/_beta/b}"
+MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -22,14 +21,16 @@ if [[ ${PV} == *9999 ]]; then
 	fi
 else
 	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI="https://github.com/apple/cups/releases/download/v${PV}/${P}-source.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
+	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
+	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
+	fi
 fi
 
 DESCRIPTION="The Common Unix Printing System"
 HOMEPAGE="https://www.cups.org/"
 
-LICENSE="GPL-2"
+LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="acl dbus debug java kerberos lprng-compat pam
 	python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
@@ -89,6 +90,8 @@ PATCHES=(
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/cups-config
 )
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup lp
