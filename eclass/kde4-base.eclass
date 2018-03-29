@@ -158,7 +158,7 @@ CPPUNIT_REQUIRED="${CPPUNIT_REQUIRED:-never}"
 # @DESCRIPTION:
 # Is kde required? Possible values are 'always', 'optional' and 'never'.
 # This variable must be set before inheriting any eclasses. Defaults to 'always'
-# If set to 'always' or 'optional', KDE_MINIMAL may be overriden as well.
+# If set to 'always' or 'optional', KDE_MINIMAL may be overridden as well.
 # Note that for kde-base packages this variable is fixed to 'always'.
 KDE_REQUIRED="${KDE_REQUIRED:-always}"
 
