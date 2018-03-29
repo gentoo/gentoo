@@ -19,12 +19,14 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="sys-libs/ncurses:0=[unicode]"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
+COMMON_DEPEND="sys-libs/ncurses:0=[unicode]"
+RDEPEND="${COMMON_DEPEND}
 	!>=sys-libs/ncurses-6.1
 "
+DEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig
+"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15-gentoo.patch
 )
