@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 
-PATCH_SET="openssl-1.0.2-patches-1.1"
+PATCH_SET="openssl-1.0.2-patches-1.2"
 MY_P=${P/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
