@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="OpenStack Cinder brick library for managing local volume attaches"
 HOMEPAGE="https://github.com/openstack/os-vif"
-SRC_URI="mirror://pypi/${PN:0:1}/os_vif/os_vif-${PV}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/os_vif-${PV}.tar.gz"
 S="${WORKDIR}/os_vif-${PV}"
 
 LICENSE="Apache-2.0"
