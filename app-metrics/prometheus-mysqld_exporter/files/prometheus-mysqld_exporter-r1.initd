@@ -59,10 +59,15 @@ configtest() {
 
 depend() {
 	after net
+	use mysql
 }
 
 start_pre() {
 	if [ "${RC_CMD}" != "restart" ]; then
 		configtest || return 1
 	fi
+}
+
+start_post() {
+	service_set_value retry "${EXPORTER_TERMTIMEOUT}"
 }
