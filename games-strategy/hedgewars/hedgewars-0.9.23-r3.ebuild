@@ -79,9 +79,6 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-
-	doicon misc/hedgewars.png
-	make_desktop_entry ${PN} Hedgewars
 	doman man/${PN}.6
 }
 
