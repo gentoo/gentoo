@@ -36,7 +36,7 @@ RDEPEND="
 	>=dev-python/retrying-1.2.3[${PYTHON_USEDEP}]
 	!~dev-python/retrying-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/os-win-2.0.0[${PYTHON_USEDEP}]"
+	>=dev-python/os-win-3.0.0[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
