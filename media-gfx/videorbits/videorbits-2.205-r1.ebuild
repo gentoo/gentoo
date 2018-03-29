@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.201-libpng15.patch"
 	"${FILESDIR}/${P}-qa-implicit-declarations.patch"
 	"${FILESDIR}/${P}-fix-buildsystem.patch"
+	"${FILESDIR}/${P}-remove-bits-nan.patch"
 )
 DOCS=( AUTHORS README README.MORE )
 
