@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,8 @@ SLOT="0"
 IUSE="unicode"
 
 DEPEND="sys-libs/ncurses:0=[unicode?]"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}
+	!>=sys-libs/ncurses-6.1"
 
 src_prepare() {
 	sed -i \

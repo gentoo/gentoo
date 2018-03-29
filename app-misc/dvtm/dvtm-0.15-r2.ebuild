@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,11 +19,14 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="sys-libs/ncurses:0=[unicode]"
-DEPEND="
-	${RDEPEND}
+COMMON_DEPEND="sys-libs/ncurses:0=[unicode]"
+RDEPEND="${COMMON_DEPEND}
+	!>=sys-libs/ncurses-6.1
+"
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15-gentoo.patch
 )
