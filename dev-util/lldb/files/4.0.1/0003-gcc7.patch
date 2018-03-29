@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/620410
+
+--- a/include/lldb/Utility/TaskPool.h
++++ b/include/lldb/Utility/TaskPool.h
+@@ -28,6 +28,7 @@
+ 
+ #include <cassert>
+ #include <cstdint>
++#include <functional>
+ #include <future>
+ #include <list>
+ #include <queue>
