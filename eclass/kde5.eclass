@@ -19,7 +19,7 @@
 # of this eclass's API.
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
-# any phase functions are overriden the version here should also be called.
+# any phase functions are overridden the version here should also be called.
 
 if [[ -z ${_KDE5_ECLASS} ]]; then
 _KDE5_ECLASS=1
