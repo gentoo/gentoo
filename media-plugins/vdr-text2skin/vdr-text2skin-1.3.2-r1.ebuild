@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ inherit vdr-plugin-2
 VERSION="783" # changes with every version / new file :-(
 
 DESCRIPTION="VDR text2skin PlugIn"
-HOMEPAGE="http://projects.vdr-developer.org/projects/show/plg-text2skin"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-text2skin"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 SLOT="0"
