@@ -32,13 +32,13 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix mysqld_exporter || die
+	GOPATH="${S}" promu build -v --prefix bin || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin mysqld_exporter/mysqld_exporter
+	dobin bin/mysqld_exporter
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
 	popd || die
 
@@ -46,7 +46,7 @@ src_install() {
 	fowners ${PN}:${PN} /var/lib/mysqld_exporter /var/log/mysqld_exporter
 	fperms 0770 /var/lib/mysqld_exporter
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}-r1.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	insinto /etc/logrotate.d/
