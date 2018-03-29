@@ -1,4 +1,4 @@
-/var/log/rspamd/rspamd.log{
+/var/log/rspamd/rspamd.log {
        daily
        rotate 4
        delaycompress
@@ -6,7 +6,7 @@
        notifempty
        missingok
        postrotate
-          service rspamd reopenlog >/dev/null 2>&1 || true
+	  test -r /run/rspamd/rspamd.pid && kill -USR1 $(cat /run/rspamd/rspamd.pid) &>/dev/null
        endscript
 }
 
