@@ -20,12 +20,12 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND=">=sys-libs/ncurses-6.1:0=[unicode]"
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-gentoo.patch
+	"${FILESDIR}"/${PN}-0.15-gentoo.patch
 	"${FILESDIR}"/${PN}-0.15-stop-installing-terminfo.patch
 )
 
