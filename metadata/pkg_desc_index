@@ -342,7 +342,7 @@ app-crypt/mcrypt 2.6.8-r3: replacement of the old unix crypt(1)
 app-crypt/md5deep 4.3: Expanded md5sum program with recursive and comparison options
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
-app-crypt/mit-krb5 1.15.2 1.15.2-r1: MIT Kerberos V
+app-crypt/mit-krb5 1.15.2 1.15.2-r1 1.16: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.37: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/openpgp-keys-gentoo-mirror 20180203: OpenPGP key used to sign gentoo-mirror commits
@@ -824,7 +824,7 @@ app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and c
 app-forensics/foremost 1.5.7-r2: A console program to recover files based on their headers and footers
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
-app-forensics/rkhunter 1.4.2: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
+app-forensics/rkhunter 1.4.2 1.4.6: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/sleuthkit 4.0.2 4.5.0: A collection of file system and media management forensic analysis tools
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/bidiv 1.5-r1: A BiDirectional Text Viewer
@@ -7330,7 +7330,7 @@ media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT
 media-libs/elementary 1.17.0: Basic widget set, based on EFL for mobile touch-screen devices
 media-libs/elles_icc_profiles 20160501.0932: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
-media-libs/exempi 2.2.1 2.4.2: Exempi is a port of the Adobe XMP SDK to work on UNIX
+media-libs/exempi 2.2.1 2.4.2 2.4.5: Exempi is a port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 10.79: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
@@ -7509,7 +7509,7 @@ media-libs/libqaccessibilityclient 0.2.0: Library for writing accessibility clie
 media-libs/libquicktime 1.2.4-r2: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.21-r1 0.4.21-r2 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
-media-libs/libraw 0.18.4: LibRaw is a library for reading RAW files obtained from digital photo cameras
+media-libs/libraw 0.18.4 0.18.8: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/libsamplerate 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.1 2.0.2: A library for high quality time and pitch scale modification
