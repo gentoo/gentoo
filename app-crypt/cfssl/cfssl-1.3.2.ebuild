@@ -21,7 +21,7 @@ RESTRICT="test"
 
 src_compile() {
 	pushd src || die
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${S}" go install github.com/cloudflare/cfssl/cmd/... || die
+	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${S}" go install -v github.com/cloudflare/cfssl/cmd/... || die
 	popd || die
 }
 
