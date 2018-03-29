@@ -19,7 +19,7 @@ SRC_URI="https://www.libraw.org/data/${MY_P}.tar.gz
 
 LICENSE="LGPL-2.1 CDDL demosaic? ( GPL-2 GPL-3 )"
 SLOT="0/16" # subslot = libraw soname version
-KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="demosaic examples jpeg jpeg2k +lcms openmp"
 
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )

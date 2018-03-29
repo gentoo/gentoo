@@ -9,9 +9,8 @@ PYTHON_REQ_USE='bzip2(+),threads(+)'
 inherit distutils-r1
 
 DESCRIPTION="Fork of Portage focused on cleaning up and useful features"
-HOMEPAGE="https://github.com/mgorny/portage"
-SRC_URI="https://github.com/mgorny/portage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S=${WORKDIR}/portage-${PV}
+HOMEPAGE="https://github.com/mgorny/portage-mgorny"
+SRC_URI="https://github.com/mgorny/portage-mgorny/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
