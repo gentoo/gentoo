@@ -236,7 +236,7 @@ fi
 # 1. ${mydistutilsargs[@]}
 # 2. additional arguments passed to the esetup.py function.
 #
-# Please note that setup.py will respect defaults (unless overriden
+# Please note that setup.py will respect defaults (unless overridden
 # via command-line options) from setup.cfg that is created
 # in distutils-r1_python_compile and in distutils-r1_python_install.
 #
@@ -390,7 +390,7 @@ _distutils-r1_create_setup_cfg() {
 		#
 		# note: due to some packages (wxpython) relying on separate
 		# platlib & purelib dirs, we do not set --build-lib (which
-		# can not be overriden with --build-*lib)
+		# can not be overridden with --build-*lib)
 		build-platlib = %(build-base)s/lib
 		build-purelib = %(build-base)s/lib
 

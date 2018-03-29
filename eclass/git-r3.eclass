@@ -145,7 +145,7 @@ fi
 # The branch name to check out. If unset, the upstream default (HEAD)
 # will be used.
 #
-# It can be overriden via env using ${PN}_LIVE_BRANCH variable.
+# It can be overridden via env using ${PN}_LIVE_BRANCH variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT
 # @DEFAULT_UNSET
@@ -155,7 +155,7 @@ fi
 # not on HEAD branch, EGIT_BRANCH needs to be set to a branch on which
 # the commit is available.
 #
-# It can be overriden via env using ${PN}_LIVE_COMMIT variable.
+# It can be overridden via env using ${PN}_LIVE_COMMIT variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT_DATE
 # @DEFAULT_UNSET
@@ -171,7 +171,7 @@ fi
 # will be considered alike a single commit with date corresponding
 # to the merge commit date.
 #
-# It can be overriden via env using ${PN}_LIVE_COMMIT_DATE variable.
+# It can be overridden via env using ${PN}_LIVE_COMMIT_DATE variable.
 
 # @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
 # @DESCRIPTION:
