@@ -54,13 +54,12 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare() {
+	cmake-utils_src_prepare
 	python_setup
 	export PYTHON_INCLUDE_DIRS="$(python_get_includedir)" \
 	       PYTHON_INCLUDE_PATH="$(python_get_library_path)"\
 	       PYTHON_CFLAGS="$(python_get_CFLAGS)"\
 	       PYTHON_LIBS="$(python_get_LIBS)"
-
-	eapply_user
 }
 
 src_configure() {

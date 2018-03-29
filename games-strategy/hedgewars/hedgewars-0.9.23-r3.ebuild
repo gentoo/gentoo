@@ -52,6 +52,7 @@ S="${WORKDIR}"/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.22-rpath-fix.patch
 	"${FILESDIR}"/${P}-qt5-{1,2}.patch # bug 645504
+	"${FILESDIR}"/${P}-settings-saving.patch # bug 651810
 )
 
 src_configure() {
@@ -78,9 +79,6 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-
-	doicon misc/hedgewars.png
-	make_desktop_entry ${PN} Hedgewars
 	doman man/${PN}.6
 }
 

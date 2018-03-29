@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 IUSE="addressbook calendar gphoto2 jpeg2k +kipi +lensfun marble mediaplayer semantic-desktop mysql opengl openmp +panorama scanner X"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	MY_PV=${PV/_/-}
 	MY_P=${PN}-${MY_PV}
 	SRC_BRANCH=stable
