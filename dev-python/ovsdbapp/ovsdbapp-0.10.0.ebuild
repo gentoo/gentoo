@@ -22,5 +22,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RDEPEND="${CDEPEND}
 	>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
-	>=dev-python/ovs-2.7.0[${PYTHON_USEDEP}]
+	>=dev-python/ovs-2.8.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]"
