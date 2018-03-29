@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-util/osc dev-util/suse-build
 SLOT=0
 SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-cpanspec/cpanspec -> cpanspec-20130318 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-cpanspec/cpanspec.service -> cpanspec-20130318.service
-_eclasses_=obs-download	575c8eb73105c04de03ffdd4f426a554	obs-service	165dda862c81ee0013948ebe7c8d8b78
+_eclasses_=obs-download	dee642b7a40967b3fee1c026a6ba33dd	obs-service	165dda862c81ee0013948ebe7c8d8b78
 _md5_=80c06e1e254bebfcec0d5a02fd6c9ecf
