@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit autotools gnome2-utils flag-o-matic linux-info xdg-utils \
 	multilib multilib-minimal pam python-single-r1 user versionator \
-	java-pkg-opt-2 systemd toolchain-funcs
+	systemd toolchain-funcs
 
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
@@ -32,8 +32,7 @@ HOMEPAGE="https://www.cups.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug java kerberos lprng-compat pam
-	python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
+IUSE="acl dbus debug kerberos lprng-compat pam python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
 CDEPEND="
 	app-text/libpaper
@@ -45,7 +44,6 @@ CDEPEND="
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jre-1.6:* )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
 	pam? ( virtual/pam )
@@ -176,7 +174,6 @@ multilib_src_configure() {
 		$(use_enable debug)
 		$(use_enable debug debug-guards)
 		$(use_enable debug debug-printfs)
-		$(multilib_native_use_with java)
 		$(use_enable kerberos gssapi)
 		$(multilib_native_use_enable pam)
 		$(multilib_native_use_with python python "${PYTHON}")
@@ -187,8 +184,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable usb libusb)
 		$(use_enable zeroconf avahi)
 		--disable-dnssd
-		--without-perl
-		--without-php
 		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
 	)
 
