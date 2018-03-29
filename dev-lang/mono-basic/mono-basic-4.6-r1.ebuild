@@ -11,3 +11,6 @@ HOMEPAGE="https://www.mono-project.com/docs/about-mono/languages/visualbasic/"
 KEYWORDS="-* ~amd64 ~x86"
 LICENSE="LGPL-2 MIT"
 SLOT="0"
+
+RDEPEND="dev-lang/mono"
+DEPEND="${RDEPEND}"
