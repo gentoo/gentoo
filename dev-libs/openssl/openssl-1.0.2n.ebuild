@@ -190,7 +190,7 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	emake INSTALL_PREFIX="${D}" install
+	emake -j1 INSTALL_PREFIX="${D}" install
 }
 
 multilib_src_install_all() {
