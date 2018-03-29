@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 
 inherit savedconfig toolchain-funcs
 
@@ -13,41 +13,50 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="git://repo.or.cz/dvtm.git"
 else
 	SRC_URI="http://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 arm x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="unicode"
 
-RDEPEND="sys-libs/ncurses:0=[unicode]"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.15-gentoo.patch
-)
+DEPEND="sys-libs/ncurses:0=[unicode?]"
+RDEPEND="${DEPEND}
+	!>=sys-libs/ncurses-6.1"
 
 src_prepare() {
-	default
+	sed -i \
+		-e 's|FLAGS =|FLAGS +=|' \
+		-e 's|-I/usr/local/include||' \
+		-e 's|-L/usr/local/lib||' \
+		-e 's|-Os||' \
+		config.mk || die "sed config.mk failed"
+	use unicode || {
+		sed -i \
+			-e 's|-lncursesw|-lncurses|' \
+			config.mk || die "sed config.mk failed"
+	}
+	sed -i \
+		-e '/strip/d' \
+		-e 's:@tic :@tic -o ${DESTDIR}${PREFIX}/share/terminfo :g' \
+		Makefile || die "sed Makefile failed"
 
 	restore_config config.h
 }
 
 src_compile() {
-	tc-export PKG_CONFIG
 	local msg=""
 	use savedconfig && msg=", please check the configfile"
 	emake CC=$(tc-getCC) ${PN} || die "emake failed${msg}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" STRIP=true install
+	emake DESTDIR="${D}" PREFIX="/usr" install
 
 	insinto /usr/share/${PN}
 	newins config.h ${PF}.config.h
 
-	dodoc README.md
+	dodoc README
 
 	save_config config.h
 }
