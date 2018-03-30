@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ MY_PN="PackageKit"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Gtk3 PackageKit backend library"
-HOMEPAGE="http://www.packagekit.org/"
+HOMEPAGE="https://www.freedesktop.org/software/PackageKit/"
 SRC_URI="https://www.freedesktop.org/software/${MY_PN}/releases/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
