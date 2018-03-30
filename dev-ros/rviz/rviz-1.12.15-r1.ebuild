@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
 	dev-cpp/eigen:3
-	dev-cpp/yaml-cpp
+	dev-cpp/yaml-cpp:=
 	dev-libs/urdfdom:=
 	dev-libs/tinyxml:=
 
