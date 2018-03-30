@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit eutils toolchain-funcs python-r1 versionator gnome2-utils games distutils-r1
 
 DESCRIPTION="Visual novel engine written in python"
-HOMEPAGE="http://www.renpy.org"
-SRC_URI="http://www.renpy.org/dl/${PV}/${P}-source.tar.bz2"
+HOMEPAGE="https://www.renpy.org"
+SRC_URI="https://www.renpy.org/dl/${PV}/${P}-source.tar.bz2"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
