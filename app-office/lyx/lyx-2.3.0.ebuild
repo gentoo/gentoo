@@ -143,10 +143,6 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	font_pkg_postinst
 	gnome2_icon_cache_update
