@@ -30,7 +30,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e "s/{{.Revision}}/${BLACBOX_EXPORTER_COMMIT}/" src/${EGO_PN}/.promu.yml || die
+	sed -i -e "s/{{.Revision}}/${BLACKBOX_EXPORTER_COMMIT}/" src/${EGO_PN}/.promu.yml || die
 }
 
 src_compile() {
