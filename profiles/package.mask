@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (30 Mar 2018)
+# GStreamer mp3 decoder plugin based on libmad is removed with gstreamer-1.12.
+# media-plugins/gst-plugins-mpg123 is the suggested replacement.
+# Masked for removal in 30 days. Bug 631128
+media-plugins/gst-plugins-mad:1.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Mar 2018)
 # Package moved to kde-frameworks. Masked for removal in 30 days.
 kde-apps/kholidays
