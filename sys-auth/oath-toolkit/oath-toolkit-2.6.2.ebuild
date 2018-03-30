@@ -20,7 +20,11 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxml2 )
 	dev-util/gtk-doc-am"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
+
 src_prepare() {
+	default
+
 	# These tests need git/cvs and don't reflect anything in the final app
 	sed -i -r \
 		-e '/TESTS/s,test-vc-list-files-(git|cvs).sh,,g' \
@@ -30,7 +34,6 @@ src_prepare() {
 		-e '/AM_INIT_AUTOMAKE/ s:-Wall:\0 -Wno-portability:' \
 		{liboath,libpskc}/configure.ac
 	eautoreconf
-	default
 }
 
 src_configure() {

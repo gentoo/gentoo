@@ -11,7 +11,7 @@ SRC_URI="http://satoru-takeuchi.org/dev/${PN}/download/${P}.tar.gz"
 
 LICENSE="GPL-1+"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86"
 
 RDEPEND="dev-util/quilt"
 

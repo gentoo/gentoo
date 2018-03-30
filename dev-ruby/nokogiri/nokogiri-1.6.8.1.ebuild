@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="ext"
 inherit ruby-fakegem eutils multilib
 
 DESCRIPTION="Nokogiri is an HTML, XML, SAX, and Reader parser"
-HOMEPAGE="http://nokogiri.org/"
+HOMEPAGE="https://www.nokogiri.org/"
 LICENSE="MIT"
 SRC_URI="https://github.com/sparklemotion/nokogiri/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 

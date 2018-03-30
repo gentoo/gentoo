@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Use a PVR* card as input device"
-HOMEPAGE="http://projects.vdr-developer.org/projects/show/plg-pvrinput"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-pvrinput"
 SRC_URI="mirror://gentoo/vdr-pvrinput-2011.09.17.tgz"
 
 LICENSE="GPL-2"

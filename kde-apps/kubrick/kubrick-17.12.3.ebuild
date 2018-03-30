@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Game based on the \"Rubik's Cube\" puzzle by KDE"
 HOMEPAGE="https://www.kde.org/applications/games/kubrick/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

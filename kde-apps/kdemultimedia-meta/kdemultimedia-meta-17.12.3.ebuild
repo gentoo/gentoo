@@ -10,7 +10,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/multimedia/
 	https://multimedia.kde.org/
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+cdrom +ffmpeg"
 
 RDEPEND="

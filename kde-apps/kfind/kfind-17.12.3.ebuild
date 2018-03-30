@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="File finder utility based on KDE Frameworks"
 HOMEPAGE="https://www.kde.org/applications/utilities/kfind/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

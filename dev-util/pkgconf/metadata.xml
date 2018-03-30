@@ -5,6 +5,9 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<slots>
+		<subslots>SONAME version of libpkgconf</subslots>
+	</slots>
 	<use>
 		<flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
 	</use>

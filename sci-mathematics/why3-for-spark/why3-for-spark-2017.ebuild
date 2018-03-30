@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip"
+RESTRICT=strip
 
 DEPEND=">=dev-lang/ocaml-4.02.3[ocamlopt?]
 	dev-ml/menhir
@@ -65,10 +66,6 @@ src_compile() {
 	default
 	if use ocamlopt; then
 		emake byte
-	else
-		# If using bytecode we dont want to strip the binary as it would remove
-		# the bytecode and only leave ocamlrun...
-		export STRIP_MASK="*/bin/*"
 	fi
 	use doc && emake doc
 }

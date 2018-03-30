@@ -945,7 +945,7 @@ qt5_regenerate_global_configs() {
 			done
 
 			# check all items from the original qtcore qmodule.pri,
-			# and add them to the appropriate list if not overriden
+			# and add them to the appropriate list if not overridden
 			# elsewhere
 			for x in ${qprivateconfig_orig_enabled}; do
 				if ! has "${x}" ${new_qprivateconfig_enabled} ${new_qprivateconfig_disabled}; then

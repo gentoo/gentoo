@@ -186,6 +186,7 @@ lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
 lm_sensors - Add linux lm_sensors (hardware sensors) support
 lua - Enable Lua scripting support
+luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
 lzma - Support for LZMA (de)compression algorithm
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support

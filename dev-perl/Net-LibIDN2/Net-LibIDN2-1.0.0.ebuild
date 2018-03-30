@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl bindings for GNU Libidn2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="net-dns/libidn2"

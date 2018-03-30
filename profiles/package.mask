@@ -29,6 +29,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (27 Mar 2018)
+# Breaks a couple of revdeps. See tracker bug at
+# https://bugs.gentoo.org/651698
+=dev-libs/icu-61.1
+=dev-libs/icu-layoutex-61.1
+
+# Tony Vroon <chainsaw@gentoo.org> (24 Mar 2018)
+# This is a vulnerable version of Asterisk and should not be used except
+# to troubleshoot a purported memory leak in the 11.25.3 release.
+# Bug 629682.
+=net-misc/asterisk-11.25.1
+
+# Mike Gilbert <floppym@gentoo.org> (24 Mar 2018)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-67
+
 # Aaron W. Swenson <titanofold@gentoo.org> (22 Mar 2018)
 # EOL. No longer receives bug or security fixes. Recommended to update
 # to latest available.
@@ -156,21 +173,12 @@ app-backup/holland-backup-mysqlhotcopy
 dev-python/django-social-auth
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Requires old dev-python/oauth2client (#643534), tests fail (#527608).
-# Removal in a month.
-net-misc/gsutil
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Requires old psycopg (#643614). Removal in a month.
 dev-python/adodb-py
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Requires old whoosh (#643690). Removal in a month.
 dev-python/flask-whooshalchemy
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Requires old redis-py and gevent (#643692). Removal in a month.
-dev-python/pyzor
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Requires old leveldb, live ebuild, dead since 2013 (#644310). Removal in a
@@ -377,10 +385,6 @@ dev-util/bluej
 media-gfx/k3d
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Not buildable for a long time (#614498). Removal in a month.
-games-strategy/maxr
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Not compatible with current NetworkManager versions, use net-misc/networkmanager-libreswan
 # instead (#615142). Removal in a month.
 net-misc/networkmanager-openswan
@@ -454,12 +458,6 @@ sys-power/phc-k8
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Fails to build for a long time (#515734, 649840). Removal in a month.
 sys-fs/gfs2-utils
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Dead driver and with many incompatibilities with current kernels (#517250,
-# #523356, #551834, #646106). Removal in a month. Possible alternative
-# #device/driver: https://bugs.gentoo.org/517250#c5
-net-wireless/broadcom-sta
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Not buildable for a long time (#531586), pending many version bumps.
@@ -547,11 +545,6 @@ media-gfx/photivo
 # Masked for removal in 30 days. Bug 644404
 net-fs/smbtatools
 
-# Mike Gilbert <floppym@gentoo.org> (04 Mar 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-66
-
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Mar 2018)
 # Dead upstream, depends on deprecated Qt4. media-sound/cantata
 # is an actively developed alternative based on Qt5.
@@ -609,51 +602,19 @@ dev-python/sepolgen
 # Masked for removal in 90 days. Bug #649080.
 x11-libs/motif:2.2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2018)
-# Dead upstream, depends on dead Qt4.
-# Masked for removal in 30 days.
-dev-tex/qtexengine
-
-# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
-# Depends on deprecated Qt4, no Qt5 work found. No maintainer.
-# Masked for removal in 30 days. Bug #644534
-app-text/searchmonkey
-
-# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
-# Depends on deprecated Qt4. No maintainer, needs someone to bump to Qt5.
-# Masked for removal in 30 days. Bug #602042
-media-gfx/pencil
-
-# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
-# Dead upstream, google-code-down, depends on deprecated Qt4.
-# Masked for removal in 30 days. Bug #626664
-media-video/abby
-
 # Anthony G. Basile <blueness@gentoo.org> (25 Feb 2018)
 # Upstream has been dead since 2012.  Migrate to uclibc-ng.
 # See https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
 sys-libs/uclibc
 
-# Thomas Deutschmann <whissi@gentoo.org> (23 Feb 2018)
-# Unmaintained in Gentoo, known critical vulnerabilities like
-# auth bypass. Removal in 30 days. Bugs #559658, #592080.
-sys-cluster/ganglia-web
-
 # Mart Raudsepp <leio@gentoo.org> (23 Feb 2018)
 # Old net-libs/webkit-gtk SLOTs have hundreds of known security issues.
 # Use the security safe net-libs webkit-gtk SLOT=4 instead via
 # libraries and applications ported to gtk3 and webkit2gtk API.
-# Masked for removal in 30 days. Bug #577068.
 # Please keep this package.mask entry until at least 25th May 2018 for
-# extra notification of the security vulnerabilities.
+# extra notification of the security vulnerabilities. Bug #577068.
 net-libs/webkit-gtk:2
 net-libs/webkit-gtk:3
-
-# Mart Raudsepp <leio@gentoo.org> (23 Feb 2018)
-# Older versions of GnuCash use security vulnerable old webkit-gtk slot.
-# Use gnucash-2.7.4 or newer instead, but pay attention to the news item:
-# https://www.gentoo.org/support/news-items/2018-01-14-gnucash.html
-<app-office/gnucash-2.7
 
 # Steve Dibb <beandog@gentoo.org> (22 Feb 2018)
 # Very old project of mine, hasn't worked in years, no plans to
@@ -682,12 +643,6 @@ dev-php/ZendFramework
 # Depends on vulnerable gstreamer:0.10.
 # Masked for removal in 30 days. Bug #629184.
 media-sound/moodbar
-
-# Mart Raudsepp <leio@gentoo.org> (22 Feb 2018)
-# This package was renamed to dev-libs/libgnome-games-support without
-# a pkgmove; everything in tree uses it now instead of libgames-support.
-# Masked for removal in 30 days. Bug #648468.
-dev-libs/libgames-support
 
 # Ulrich Müller <ulm@gentoo.org> (21 Feb 2018)
 # Homepage is dead. Apparently the last release was in 2012
@@ -1183,10 +1138,6 @@ sys-fs/bedup
 ~net-misc/iputils-20160308
 ~net-misc/iputils-20161105
 
-# Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
-# Upcoming, too young to go into testing unmasked
-dev-libs/iniparser:4
-
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
 # No upstream support anymore
@@ -1265,10 +1216,6 @@ www-plugins/chrome-binary-plugins:unstable
 # but should not be fed untrusted input (eg from strangers).
 # Masked to ensure users are aware before they install.
 app-text/cuneiform
-
-# Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2011)
-# Masked for security bug #294253, use only at your own risk!
-=media-libs/fmod-3*
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
 # These packages are not supposed to be merged directly, instead

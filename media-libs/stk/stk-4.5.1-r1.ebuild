@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils autotools
 
 DESCRIPTION="Synthesis ToolKit in C++"
-HOMEPAGE="http://ccrma.stanford.edu/software/stk/"
-SRC_URI="http://ccrma.stanford.edu/software/stk/release/${P}.tar.gz"
+HOMEPAGE="https://ccrma.stanford.edu/software/stk/"
+SRC_URI="https://ccrma.stanford.edu/software/stk/release/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

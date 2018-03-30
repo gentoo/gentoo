@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="Reimplementation of Bourne shell based on pdksh"
 HOMEPAGE="https://salsa.debian.org/clint/posh"
 SRC_URI="mirror://debian/pool/main/p/posh/${P/-/_}.tar.xz"
@@ -15,6 +17,12 @@ IUSE=""
 DEPEND="app-arch/xz-utils"
 
 S=${WORKDIR}/posh
+
+src_prepare() {
+	default
+	# the tarball apparently contains outdated files
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=(

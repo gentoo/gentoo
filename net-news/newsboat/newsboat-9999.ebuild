@@ -30,22 +30,21 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-text/asciidoc
-	dev-lang/perl
 	virtual/pkgconfig
 	sys-devel/gettext
-	test? (
-		dev-libs/boost
-		sys-devel/bc
-	)
+	test? ( >=dev-cpp/catch-2 )
 "
 
-# tests require network access
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.11-flags.patch
+)
 
 src_prepare() {
 	default
 
-	sed -e 's:-ggdb::' -e 's:-Werror::' -i Makefile || die
+	# use system catch
+	sed -i 's#"3rd-party/catch.hpp"#<catch/catch.hpp>#' test/*.cpp || die
+	rm 3rd-party/catch.hpp || die
 }
 
 src_configure() {
@@ -53,10 +52,15 @@ src_configure() {
 }
 
 src_compile() {
+	# update object build deps to use system catch
+	echo > mk/mk.deps || die
+	emake depslist
+
 	emake prefix="/usr" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 }
 
 src_test() {
+	# tests require UTF-8 locale
 	emake test
 	# Tests fail if in ${S} rather than in ${S}/test
 	cd "${S}"/test || die

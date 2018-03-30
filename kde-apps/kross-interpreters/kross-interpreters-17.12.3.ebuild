@@ -8,7 +8,7 @@ USE_RUBY="ruby23"
 inherit kde5 python-single-r1 ruby-single
 
 DESCRIPTION="Kross interpreter plugins for programming languages"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+python ruby"
 
 REQUIRED_USE="|| ( python ruby ) python? ( ${PYTHON_REQUIRED_USE} )"
@@ -25,6 +25,11 @@ RDEPEND="${DEPEND}"
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	kde5_pkg_setup
+}
+
+src_prepare() {
+	sed -i -e "/find_package(PythonLibs/s/REQUIRED//" CMakeLists.txt || die
+	kde5_src_prepare
 }
 
 src_configure() {

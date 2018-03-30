@@ -1,0 +1,25 @@
+--- a/cpio/cpio.c
++++ b/cpio/cpio.c
+@@ -91,9 +91,9 @@
+ #include <sfile.h>
+ #include <atoll.h>
+ 
+-#ifdef	_AIX
++#if defined (_AIX) || defined (__GLIBC__)
+ #include <sys/sysmacros.h>
+-#endif	/* _AIX */
++#endif	/* _AIX || __GLIBC__ */
+ 
+ #ifndef	major
+ #include <sys/mkdev.h>
+--- a/ls/ls.c
++++ b/ls/ls.c
+@@ -119,7 +119,7 @@
+ #include <termcap.h>
+ #endif	/* USE_TERMCAP */
+ 
+-#ifdef	_AIX
++#if defined (_AIX) || defined (__GLIBC__)
+ #include <sys/sysmacros.h>
+ #endif
+ 

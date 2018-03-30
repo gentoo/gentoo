@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~floppym/dist/${P}-patches-2.tar.gz"
-	KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 x86"
+	KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -148,6 +148,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/238-libmount-include.patch"
 	)
 
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )

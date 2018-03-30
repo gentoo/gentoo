@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Library for interacting with IMAP servers"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # TODO: Convince upstream not to install stuff with tests

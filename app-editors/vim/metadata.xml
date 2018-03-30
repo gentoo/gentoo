@@ -6,7 +6,6 @@
     <name>Gentoo Vim Project</name>
   </maintainer>
   <use>
-    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
     <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
     <flag name="terminal">Enable terminal emulation support</flag>
     <flag name="vim-pager">Install vimpager and vimmanpager links</flag>

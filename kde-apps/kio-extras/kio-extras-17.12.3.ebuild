@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://cgit.kde.org/kio-extras.git"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="activities htmlthumbs +man mtp openexr phonon samba +sftp slp taglib"
 
 COMMON_DEPEND="

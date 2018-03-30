@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -150,6 +150,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/238-0001-sd-bus-do-not-try-to-close-already-closed-fd-8392.patch"
 		"${FILESDIR}/238-0002-core-do-not-free-heap-allocated-strings-8391.patch"
+		"${FILESDIR}/238-libmount-include.patch"
 	)
 
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )

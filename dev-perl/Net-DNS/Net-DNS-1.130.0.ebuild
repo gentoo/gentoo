@@ -11,7 +11,7 @@ inherit toolchain-funcs perl-module
 DESCRIPTION="Perl Interface to the Domain Name System"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+ipv6 test minimal"
 
 PDEPEND="!minimal? ( >=dev-perl/Net-DNS-SEC-1.10.0 )"

@@ -5,9 +5,9 @@
 		<email>ya@sysdump.net</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>	
 	<longdescription lang="en">
 		Simple, fast and user-friendly alternative to find.

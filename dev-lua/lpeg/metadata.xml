@@ -13,8 +13,4 @@
     <email>lluixhi@gmail.com</email>
     <name>Aric Belsito</name>
   </maintainer>
-  <use>
-    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of
-      <pkg>dev-lang/lua</pkg></flag>
-  </use>
 </pkgmetadata>
