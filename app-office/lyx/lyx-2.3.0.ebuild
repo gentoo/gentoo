@@ -76,7 +76,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 
-PATCHES=( "${FILESDIR}"/${P}-python.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-python.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
+)
 
 S="${WORKDIR}/${MY_P}"
 
