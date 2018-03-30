@@ -6541,7 +6541,6 @@ kde-apps/kde-apps-meta 17.12.3: Meta package for the KDE Applications collection
 kde-apps/kde-dev-scripts 17.12.3: KDE Development Scripts
 kde-apps/kde-dev-utils 17.12.3: KDE Development Utilities
 kde-apps/kde-meta 17.12.3: Merge this to pull in all KDE Plasma and Applications packages
-kde-apps/kde4-l10n 17.08.3: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 17.12.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 17.12.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdebase-meta 17.12.3: Transitional package to pull in plasma-meta plus basic applications
@@ -6577,7 +6576,6 @@ kde-apps/kgoldrunner 17.12.3: Game of action and puzzle solving by KDE
 kde-apps/kgpg 17.12.3: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 17.12.3: Classical hangman game by KDE
 kde-apps/khelpcenter 17.12.3: The KDE Help Center
-kde-apps/kholidays 17.08.3: Library to determine holidays and other special events for a geographical region
 kde-apps/kidentitymanagement 17.12.3: Library for managing identitites
 kde-apps/kig 17.12.3: KDE Interactive Geometry tool
 kde-apps/kigo 17.12.3: Go game by KDE
