@@ -8,7 +8,7 @@ ESVN_PROJECT="kuroo4"
 inherit cmake-utils subversion
 
 DESCRIPTION="Graphical Portage frontend based on KDE Frameworks"
-HOMEPAGE="http://kuroo.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/kuroo/"
 
 LICENSE="GPL-2"
 KEYWORDS=""
