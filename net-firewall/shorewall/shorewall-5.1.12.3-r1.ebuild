@@ -156,8 +156,11 @@ src_prepare() {
 	# This allows us to use patches from upstream and keeps epatch_user working
 
 	einfo "Preparing shorewallrc ..."
-	cp "${FILESDIR}"/shorewallrc-r1 "${S}"/shorewallrc.gentoo || die "Copying shorewallrc failed"
+	cp "${FILESDIR}"/shorewallrc-r2 "${S}"/shorewallrc.gentoo || die "Copying shorewallrc failed"
 	eprefixify "${S}"/shorewallrc.gentoo
+	sed -i \
+		-e "s|SERVICEDIR=tbs|SERVICEDIR=$(systemd_get_systemunitdir)|" \
+		"${S}"/shorewallrc.gentoo || die "Failed to update shorewallrc"
 
 	# shorewall-core
 	mv "${S}"/${MY_P_CORE} "${S}"/${MY_PN_CORE} || die "Failed to move '${S}/${MY_P_CORE}' to '${S}/${MY_PN_CORE}'"
