@@ -450,6 +450,7 @@ setup_env() {
 		# and fall back on CFLAGS.
 		local VAR=CFLAGS_${CTARGET//[-.]/_}
 		CFLAGS=${!VAR-${CFLAGS}}
+		einfo " $(printf '%15s' 'Manual CFLAGS:')   ${CFLAGS}"
 	fi
 
 	setup_flags
@@ -463,6 +464,7 @@ setup_env() {
 	# top of each other.
 	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET_OPT:-${CTARGET}})}
 	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
+	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 }
 
 foreach_abi() {
@@ -1022,11 +1024,20 @@ glibc_headers_configure() {
 
 	# Nothing is compiled here which would affect the headers for the target.
 	# So forcing CC/CFLAGS is sane.
+	local headers_only_CC=$(tc-getBUILD_CC)
+	local headers_only_CFLAGS="-O1 -pipe"
+	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE"
+	local headers_only_LDFLAGS=""
 	set -- "${S}"/configure "${myconf[@]}"
-	echo "$@"
-	CC="$(tc-getBUILD_CC)" \
-	CFLAGS="-O1 -pipe" \
-	CPPFLAGS="-U_FORTIFY_SOURCE" \
+	echo \
+		"CC=${headers_only_CC}" \
+		"CFLAGS=${headers_only_CFLAGS}" \
+		"CPPFLAGS=${headers_only_CPPFLAGS}" \
+		"LDFLAGS=${headers_only_LDFLAGS}" \
+		"$@"
+	CC=${headers_only_CC} \
+	CFLAGS=${headers_only_CFLAGS} \
+	CPPFLAGS=${headers_only_CPPFLAGS} \
 	LDFLAGS="" \
 	"$@" || die "failed to configure glibc"
 }
