@@ -1237,7 +1237,7 @@ app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C lang
 app-shells/dash 0.5.8.2 0.5.9.1-r3: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
-app-shells/fish 2.6.0: fish is the Friendly Interactive SHell
+app-shells/fish 2.6.0 2.7.1: fish is the Friendly Interactive SHell
 app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20150103: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/hstr 1.23: Shell history suggest box
@@ -1278,7 +1278,7 @@ app-text/blahtexml 0.9: TeX-to-MathML converter
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 2.78.0: Ebook management application
+app-text/calibre 2.78.0 3.15.0: Ebook management application
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.7: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
@@ -4867,6 +4867,7 @@ dev-python/hiredis 0.2.0: Python extension that wraps hiredis
 dev-python/hiro 0.2: Time manipulation utilities for python
 dev-python/hpack 2.3.0-r1: Pure-Python HPACK header compression
 dev-python/html2text 2016.5.29: Turn HTML into equivalent Markdown-structured text
+dev-python/html5-parser 0.4.4-r1: Fast C based HTML 5 parsing for python
 dev-python/html5lib 0.9999999: HTML parser based on the HTML5 specification
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
