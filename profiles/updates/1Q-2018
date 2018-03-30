@@ -16,3 +16,4 @@ move net-analyzer/prometheus app-metrics/prometheus
 move net-analyzer/prometheus-alertmanager app-metrics/alertmanager
 move dev-util/buildbot-prometheus app-metrics/buildbot-prometheus
 move net-analyzer/prometheus-node_exporter app-metrics/node_exporter
+move net-analyzer/prometheus-blackbox_exporter app-metrics/blackbox_exporter
