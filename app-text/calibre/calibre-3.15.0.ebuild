@@ -32,7 +32,7 @@ LICENSE="
 	PSF-2
 	unRAR
 "
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 SLOT="0"
 IUSE="ios +udisks"
 
