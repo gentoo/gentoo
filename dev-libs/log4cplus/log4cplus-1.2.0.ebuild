@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}-stable/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 BSD-2 )"
 SLOT="0/1.2-5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="iconv qt5 threads working-locale working-c-locale"
 REQUIRED_USE="?? ( iconv working-locale working-c-locale )"
 
