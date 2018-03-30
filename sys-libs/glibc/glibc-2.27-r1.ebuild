@@ -457,6 +457,13 @@ setup_env() {
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
 
+	if use headers-only ; then
+		# Avoid mixing host's CC and target's CFLAGS_${ABI}:
+		# At this bootstrap stage we have only binutils for
+		# target but not compiler yet.
+		einfo "Skip CC ABI injection. We can't use (cross-)compiler yet."
+		return 0
+	fi
 	local VAR=CFLAGS_${ABI}
 	# We need to export CFLAGS with abi information in them because glibc's
 	# configure script checks CFLAGS for some targets (like mips).  Keep
