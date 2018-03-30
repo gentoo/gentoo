@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/boost:=
 	media-libs/sdl-image
-	>=dev-cpp/yaml-cpp-0.5
+	>=dev-cpp/yaml-cpp-0.5:=
 	sci-physics/bullet:=
 "
 DEPEND="${RDEPEND}
