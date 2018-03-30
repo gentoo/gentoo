@@ -20,6 +20,14 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	static? ( dev-libs/iniparser:0[static-libs] )"
 
+src_prepare() {
+	default
+	# bug #638970, caused by gemato writing Manifest.gz files in
+	# metadata/md5-cache dir, unlike hashgen
+	sed -i -e '/find [.] -mindepth/s/-type f/-type f ! -name "Manifest.*"/' \
+		tests/atom_explode/dotest || die
+}
+
 src_configure() {
 	# Avoid slow configure+gnulib+make if on an up-to-date Linux system
 	if use prefix || ! use kernel_linux || \
