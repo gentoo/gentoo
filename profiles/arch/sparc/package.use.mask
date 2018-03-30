@@ -1,6 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (30 Mar 2018)
+# Mask USE=mp3 for media-plugins/gst-plugins-meta:1.0 since
+# media-plugins/gst-plugins-mpg123 is not keyworded (bug #635466)
+media-plugins/gst-plugins-meta:1.0 mp3
+
 # Sergei Trofimovich <slyfox@gentoo.org> (20 Dec 2017)
 # Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
 # keyworded (bug #597174)
