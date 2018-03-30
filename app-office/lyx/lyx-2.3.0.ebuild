@@ -4,13 +4,10 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit gnome2-utils xdg-utils flag-o-matic font python-single-r1 qmake-utils toolchain-funcs multilib desktop
 
 MY_P="${P/_}"
+inherit desktop gnome2-utils flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
-S="${WORKDIR}/${MY_P}"
-FONT_S="${S}/lib/fonts"
-FONT_SUFFIX="ttf"
 DESCRIPTION="WYSIWYM frontend for LaTeX, DocBook, etc."
 HOMEPAGE="https://www.lyx.org/"
 SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/${MY_P}.tar.xz
@@ -80,6 +77,11 @@ DEPEND="${RDEPEND}
 DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 
 PATCHES=( "${FILESDIR}"/${P}-python.patch )
+
+S="${WORKDIR}/${MY_P}"
+
+FONT_S="${S}/lib/fonts"
+FONT_SUFFIX="ttf"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
