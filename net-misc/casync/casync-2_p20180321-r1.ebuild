@@ -15,6 +15,11 @@ KEYWORDS="~amd64"
 IUSE="+fuse +udev man selinux test"
 
 RDEPEND="
+	app-arch/xz-utils
+	app-arch/zstd
+	dev-libs/openssl:0
+	net-misc/curl
+	virtual/acl
 	fuse? ( sys-fs/fuse:0 )
 	selinux? ( sys-libs/libselinux )
 	udev? ( virtual/libudev )
