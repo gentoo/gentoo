@@ -3516,7 +3516,7 @@ dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interf
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.500.0 1.540.0-r1: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.41.0: MySQL driver for the Perl5 Database Interface (DBI)
+dev-perl/DBD-mysql 4.41.0 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
