@@ -25,7 +25,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=sys-apps/portage-2.3.25[${PYTHON_USEDEP}]
+	>=sys-apps/portage-2.3.27[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
