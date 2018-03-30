@@ -4,9 +4,9 @@ Documentation=https://prometheus.io/docs/instrumenting/pushing/
 After=network-online.target
 
 [Service]
-User=prometheus-pushgateway
+User=pushgateway
 Restart=on-failure
-Environment=PUSHGATEWAY_ARGS="-web.listen-address localhost:9091 --persistence.file=/var/lib/prometheus-pushgateway/persistence.gob"
+Environment=PUSHGATEWAY_ARGS="-web.listen-address localhost:9091 --persistence.file=/var/lib/pushgateway/persistence.gob"
 ExecStart=/usr/bin/pushgateway $PUSHGATEWAY_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
 TimeoutStopSec=20s
