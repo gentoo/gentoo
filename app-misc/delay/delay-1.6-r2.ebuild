@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils toolchain-funcs
+inherit autotools
 
 DESCRIPTION="Sleeplike program that counts down the number of seconds specified"
-HOMEPAGE="http://onegeek.org/~tom/software/delay/"
-SRC_URI="http://onegeek.org/~tom/software/delay/dl/${P}.tar.gz"
+HOMEPAGE="https://onegeek.org/~tom/software/delay/"
+SRC_URI="https://onegeek.org/~tom/software/delay/dl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,11 +20,12 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch \
+	eapply \
 		"${FILESDIR}"/${P}-headers.patch \
 		"${FILESDIR}"/${P}-tinfo.patch
 
 	mv configure.in configure.ac || die
 
+	default
 	eautoreconf
 }
