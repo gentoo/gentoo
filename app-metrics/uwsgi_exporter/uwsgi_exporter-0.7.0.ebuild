@@ -32,13 +32,13 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix uwsgi_exporter || die
+	GOPATH="${S}" promu build -v --prefix bin || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin uwsgi_exporter/uwsgi_exporter
+	dobin bin/uwsgi_exporter
 	dodoc README.md
 	popd || die
 	local dir
