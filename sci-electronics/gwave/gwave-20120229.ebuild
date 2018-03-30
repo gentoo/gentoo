@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 HOMEPAGE="http://gwave.sourceforge.net"
 SRC_URI="https://sourceforge.net/code-snapshots/svn/g/gw/gwave/code/gwave-code-${rev}-trunk.zip"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE="gnuplot plotutils"
 SLOT="0"
 
