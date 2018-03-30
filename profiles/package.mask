@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (30 Mar 2018)
+# Fails to build (bug 408463). EAPI=3 (bug 648452).
+# Masked for removal in 30 days.
+dev-scheme/ikarus
+
 # Mart Raudsepp <leio@gentoo.org> (30 Mar 2018)
 # GStreamer mp3 decoder plugin based on libmad is removed with gstreamer-1.12.
 # media-plugins/gst-plugins-mpg123 is the suggested replacement.
