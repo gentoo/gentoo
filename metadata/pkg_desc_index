@@ -1168,7 +1168,7 @@ app-office/sc 7.16-r1: Spreadsheet Calculator
 app-office/scribus 1.5.3-r1: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.11.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
-app-office/texmacs 1.99.2-r1: Wysiwyg text processor with high-quality maths
+app-office/texmacs 1.99.2-r1 1.99.6-r2: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.5-r2: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r1: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.7: Convert between document formats supported by Libreoffice
