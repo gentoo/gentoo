@@ -32,13 +32,13 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix snmp_exporter || die
+	GOPATH="${S}" promu build -v --prefix bin || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin snmp_exporter/snmp_exporter
+	dobin bin/snmp_exporter
 	dodoc {README,CONTRIBUTING}.md
 	insinto /etc/snmp_exporter
 	newins snmp.yml snmp.yml.example
