@@ -1034,7 +1034,7 @@ app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/linux-logo 5.11-r3 5.11-r4: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/lirc 0.9.0-r6: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.2 2.3: Gentoo LiveCD tools for autoconfiguration of hardware
-app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
+app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
@@ -6845,7 +6845,7 @@ kde-plasma/systemsettings 5.11.5: System settings utility
 kde-plasma/user-manager 5.11.5: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxde-common 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
-lxde-base/lxde-icon-theme 0.5.0 0.5.0-r1: nuoveXT2 iconset
+lxde-base/lxde-icon-theme 0.5.0-r1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r5: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.4.1-r9 0.5.3-r1: LXDE Display Manager
 lxde-base/lxinput 0.3.5: LXDE keyboard and mouse configuration tool
@@ -7210,7 +7210,7 @@ media-gfx/imageworsener 1.3.2: Utility for image scaling and processing
 media-gfx/inkscape 0.91-r3 0.92.2: A SVG based generic vector-drawing program
 media-gfx/iscan 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.22.0.1 1.36.0.1: Image Scan! for Linux data files
-media-gfx/iscan-plugin-gt-f720 0.0.1 0.0.1.2: Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend
+media-gfx/iscan-plugin-gt-f720 0.0.1.2: Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend
 media-gfx/jhead 2.97: Exif Jpeg camera setting parser and thumbnail remover
 media-gfx/jigl 2.0.1: Jason's Image Gallery
 media-gfx/jp2a 1.0.6-r1: JPEG image to ASCII art converter
