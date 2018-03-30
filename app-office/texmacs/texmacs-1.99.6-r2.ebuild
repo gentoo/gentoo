@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.texmacs.org/pub/TeXmacs/tmftp/source/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="jpeg netpbm sqlite svg spell"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-text/ghostscript-gpl
