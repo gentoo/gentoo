@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -78,6 +78,8 @@ src_prepare() {
 	#epatch "${FILESDIR}/systemweb3.patch"
 	#epatch "${FILESDIR}/fix-for-GitExtensions-issue-2710-another-resolution.patch"
 	#epatch "${FILESDIR}/fix-for-bug36724.patch"
+
+	epatch "${FILESDIR}/${P}-x86_32.patch"
 
 	default
 	#eapply_user
