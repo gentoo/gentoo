@@ -14,7 +14,7 @@ MY_PN="PackageKit"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Manage packages in a secure way using a cross-distro and cross-architecture API"
-HOMEPAGE="http://www.packagekit.org/"
+HOMEPAGE="https://www.freedesktop.org/software/PackageKit/"
 SRC_URI="https://www.freedesktop.org/software/${MY_PN}/releases/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
