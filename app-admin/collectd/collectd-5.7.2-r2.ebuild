@@ -500,7 +500,7 @@ pkg_postinst() {
 			elog "  ${caps_str}+EP"
 			elog
 
-			local systemd_unit="${EROOT}usr/lib/systemd/system/collectd.service"
+			local systemd_unit="$(systemd_get_systemunitdir)/collectd.service"
 			if [[ -e "${systemd_unit}" ]]; then
 				caps_str="${caps[*]}"
 				sed -i -e "s:^CapabilityBoundingSet=.*:CapabilityBoundingSet=${caps_str}:" "${systemd_unit}" || \
@@ -509,6 +509,12 @@ pkg_postinst() {
 				elog "CapabilityBoundingSet in '${systemd_unit}'"
 				elog "updated to match capabilities set above."
 				elog
+			else
+				if has_version "sys-apps/systemd"; then
+					# Bug 596852
+					ewarn "Failed to update CapabilityBondingSet in '${systemd_unit}'"
+					ewarn "because unit was not found. Please file a bug about this."
+				fi
 			fi
 		fi
 	fi
