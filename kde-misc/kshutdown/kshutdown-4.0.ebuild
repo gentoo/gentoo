@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_P=${PN}-source-${PV/_}
 inherit kde5
 
 DESCRIPTION="Shutdown manager for desktop environments like KDE Plasma"
-HOMEPAGE="http://kshutdown.sourceforge.net"
+HOMEPAGE="https://kshutdown.sourceforge.io"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="GPL-2+"
