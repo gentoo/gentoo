@@ -10769,7 +10769,7 @@ x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
 x11-misc/imake 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/kdocker 5.0-r1: Helper to dock any application into the system tray
-x11-misc/kronometer 2.1.5: Stopwatch application
+x11-misc/kronometer 2.1.5 2.2.1: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/lightdm 1.18.3-r1: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.1-r1: LightDM GTK+ Greeter
