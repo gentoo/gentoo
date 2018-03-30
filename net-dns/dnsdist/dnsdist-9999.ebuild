@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ fi
 inherit eutils flag-o-matic user ${ADDITIONAL_ECLASSES}
 
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
-HOMEPAGE="http://dnsdist.org"
+HOMEPAGE="https://dnsdist.org"
 
 if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
