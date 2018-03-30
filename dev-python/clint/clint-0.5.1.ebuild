@@ -12,7 +12,7 @@ SRC_URI="https://github.com/kennethreitz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="amd64 ~x86"
 IUSE="doc examples test"
 
 DEPEND="
