@@ -18,3 +18,4 @@ move dev-util/buildbot-prometheus app-metrics/buildbot-prometheus
 move net-analyzer/prometheus-node_exporter app-metrics/node_exporter
 move net-analyzer/prometheus-blackbox_exporter app-metrics/blackbox_exporter
 move net-analyzer/prometheus-snmp_exporter app-metrics/snmp_exporter
+move net-analyzer/prometheus-redis_exporter app-metrics/redis_exporter
