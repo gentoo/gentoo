@@ -31,6 +31,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	sed 's:FileNotFoundError:EnvironmentError:' -i pym/repoman/config.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	esetup.py test
 }
