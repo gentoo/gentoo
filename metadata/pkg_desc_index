@@ -183,7 +183,7 @@ app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
 app-arch/libarchive 3.3.1: BSD tar command
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
-app-arch/lrzip 0.614 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
+app-arch/lrzip 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p131 1.7.5-r1 1.8.0: Extremely Fast Compression algorithm
 app-arch/lzip 1.18: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.17: Lziprecover is a data recovery tool and decompressor for lzip compressed files
@@ -259,7 +259,7 @@ app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
 app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark suite
 app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
-app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
+app-benchmarks/cpuburn 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r1: A better i7 (and now i3, i5) reporting tool for Linux
@@ -2870,7 +2870,7 @@ dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/ocaml 4.04.2: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.27 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
-dev-lang/perl 5.24.3: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.24.3 5.24.3-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.33 5.6.34 7.0.27 7.0.28 7.1.13 7.1.15: The PHP language runtime engine
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
