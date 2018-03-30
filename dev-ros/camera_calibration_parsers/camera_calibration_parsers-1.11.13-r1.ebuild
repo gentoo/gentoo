@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-ros/rosconsole
-	>=dev-cpp/yaml-cpp-0.5
+	>=dev-cpp/yaml-cpp-0.5:=
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
