@@ -1,7 +1,0 @@
-/var/log/prometheus-uwsgi_exporter/prometheus-uwsgi_exporter.log {
-	missingok
-	size 5M
-	rotate 3
-	compress
-	copytruncate
-}
