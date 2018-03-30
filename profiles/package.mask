@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Mar 2018)
+# Package moved to kde-frameworks. Masked for removal in 30 days.
+kde-apps/kholidays
+
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Mar 2018)
+# Depends on deprecated Qt4, no revdeps left.
+# Masked for removal in 30 days.
+kde-apps/kscd
+kde-apps/kde4-l10n
+
 # Lars Wendler <polynomial-c@gentoo.org> (27 Mar 2018)
 # Breaks a couple of revdeps. See tracker bug at
 # https://bugs.gentoo.org/651698
