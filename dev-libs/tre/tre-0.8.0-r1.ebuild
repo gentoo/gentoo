@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit multilib
 
 DESCRIPTION="Lightweight, robust, and efficient POSIX compliant regexp matching library"
-HOMEPAGE="http://laurikari.net/tre/ https://github.com/laurikari/tre/"
-SRC_URI="http://laurikari.net/tre/${P}.tar.bz2"
+HOMEPAGE="https://laurikari.net/tre/ https://github.com/laurikari/tre/"
+SRC_URI="https://laurikari.net/tre/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
