@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils multilib-minimal
 
 DESCRIPTION="Free version of the SSL/TLS protocol forked from OpenSSL"
-HOMEPAGE="http://www.libressl.org/"
-SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz"
+HOMEPAGE="https://www.libressl.org/"
+SRC_URI="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz"
 
 LICENSE="ISC openssl"
 # Reflects ABI of libcrypto.so and libssl.so.  Since these can differ,
