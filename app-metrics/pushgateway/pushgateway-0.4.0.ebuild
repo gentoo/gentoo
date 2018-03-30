@@ -32,13 +32,13 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix pushgateway || die
+	GOPATH="${S}" promu build -v --prefix bin || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin pushgateway/pushgateway
+	dobin bin/pushgateway
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
 	popd || die
 	keepdir /var/lib/${PN} /var/log/${PN}
