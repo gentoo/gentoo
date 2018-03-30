@@ -29,10 +29,6 @@ sys-kernel/mips-sources -ip27 -ip28 -ip30
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
-# Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm_sensors
-
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.
@@ -62,10 +58,6 @@ app-portage/g-sorcery bson
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
 # dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
 dev-python/twisted conch crypt http2 soap test
-
-# Felix Janda <felix.janda@posteo.de> (24 Sep 2016)
-# net-libs/libnetfilter_conntrack is not keyworded on mips
-net-dns/dnsmasq conntrack
 
 # Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
 # net-libs/openpgm is not keyworded on mips
@@ -119,20 +111,6 @@ x11-libs/wxGTK webkit
 # Perl is heavily unkeyworded on MIPS. See 497068
 dev-vcs/git mediawiki mediawiki-experimental
 
-# Sergey Popov <pinkbyte@gentoo.org> (02 Sep 2013)
-# Not tested
-media-libs/leptonica	webp
-app-text/tesseract	webp
-
-# Pacho Ramos <pacho@gentoo.org> (01 Sep 2013)
-# CONFIG_AUDITSYSCALL=y is not implemented, bug #438368
-sys-auth/consolekit pam
-sys-auth/pambase consolekit
-
-# Kacper Kowalik <xarthisius@gentoo.org> (20 May 2011)
-# depends on dev-libs/dmalloc which is not keyworded
-net-nds/ypbind debug
-
 # Richard Brown <rbrown@gentoo.org> (21 Jan 2008)
 # Needs dev-ruby/builder, which isn't keyworded
 dev-ruby/rubygems server
@@ -176,25 +154,13 @@ games-strategy/freeciv auth
 # and is not tested yet
 net-fs/samba ads cluster
 
-# Matt Turner <mattst88@gentoo.org> (06 Dec 2010)
-# dev-db/tokyocabinet not keyworded
-mail-client/mutt tokyocabinet
-
 # Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
 # dev-lang/spidermonkey not keyworded
 www-client/elinks javascript
 
-# Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
-# media-gfx/ufraw not keyworded
-media-gfx/imagemagick raw
-
 # Matt Turner <mattst88@gentoo.org> (12 Jun 2011)
 # dev-python/mysql-python not keyworded
 dev-vcs/mercurial bugzilla
-
-# Matt Turner <mattst88@gentoo.org> (09 Feb 2012)
-# dev-vcs/git[cgi] requires app-text/highlight which requires boost
-dev-vcs/git cgi
 
 # Matt Turner <mattst88@gentoo.org> (09 Feb 2012)
 # mips only use flags

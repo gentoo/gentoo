@@ -50,11 +50,6 @@ ayatana
 luajittex
 
 # Markos Chandras <hwoarang@gentoo.org>
-# app-arch/lz4 does not seem to build on MIPS
-# Original bug report: #501600
-lz4
-
-# Markos Chandras <hwoarang@gentoo.org>
 # Profiles are ISA agnostic so these
 # should be masked on per user basis
 # See #498082
@@ -75,25 +70,6 @@ lpsol
 # cblas-external as virtual/cblas is also masked
 cblas-external
 
-# Samuli Suominen <ssuominen@gentoo.org>
-# Media cannot be tested for MIPS at the moment.
-# media-libs/libmpeg3
-# media-libs/portaudio
-# dev-libs/libcdio
-# media-libs/musicbrainz
-# media-libs/openexr
-mpeg
-portaudio
-cdio
-cdda
-musicbrainz
-openexr
-
-# Ryan Hill <dirtyepic@gentoo.org>
-# Various Gnome flags
-gtkhtml
-gnome
-
 # Peter Volkov <pva@gentoo.org> MPI was never tested on mips, but
 # some programs with this useflag are useful, e.g #227631
 mpi
@@ -107,16 +83,9 @@ blas
 # Clamav -- untested, masking for now.
 clamav
 
-# Untested on mips, masking for now.
-cdb
-
 # Until someone actually needs fuse, we'll mask it as
 # it holds up stablizing ntfsprogs
 fuse
-
-# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures lacking direct rendering
-dri
 
 # Available on for mips.
 -video_cards_newport
@@ -142,15 +111,6 @@ input_devices_joystick
 video_cards_glint
 video_cards_nvidia
 video_cards_voodoo
-
-# Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_amdgpu
-video_cards_r100
-video_cards_r200
-video_cards_r300
-video_cards_r600
-video_cards_radeonsi
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
@@ -264,10 +224,6 @@ qdbm
 # see bug #162205 comment 10.
 smartcard
 openct
-
-# kumba (02 Jun 2007)
-# pulseaudio hasn't been tested on mips; maybe someday
-pulseaudio
 
 # kumba (01 Nov 2007)
 # mask ladspa USE
