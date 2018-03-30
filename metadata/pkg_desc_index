@@ -726,6 +726,7 @@ app-emulation/containerd 0.2.9_p20170917 1.0.1: A daemon to control runC
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 2.10.1 2.11.0: Golden Disk Image builder.
 app-emulation/docker 17.09.1 17.12.1: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker-compose 1.18.0: Multi-container orchestration for Docker
 app-emulation/docker-proxy 0.8.0_p20170917: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20170917 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
@@ -1026,6 +1027,7 @@ app-misc/joy2key 1.6.3-r1: An application that translates joystick events to key
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
+app-misc/khard 0.12.2: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
@@ -2982,7 +2984,7 @@ dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Stora
 dev-libs/json-c 0.12: A JSON implementation in C
 dev-libs/json-glib 1.2.8: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.8.1: C++ JSON reader and writer
-dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads easy on different platforms
+dev-libs/jthread 1.3.1 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5 1.0.5-r2: A C library that implements a dynamic array
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
@@ -4550,7 +4552,8 @@ dev-python/apptools 4.2.1: Enthought Tool Suite: Application tools
 dev-python/apsw 3.19.3_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 1.4.1: Bash tab completion for argparse
-dev-python/argh 0.26.2: A simple argparse wrapper
+dev-python/argh 0.26.2 0.26.2-r1: A simple argparse wrapper
+dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
 dev-python/asn1crypto 0.22.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
@@ -4560,6 +4563,7 @@ dev-python/astroid 1.4.8: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.2.1: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.2: Helpers for Astropy and Affiliated packages
 dev-python/atom 0.3.10: Memory efficient Python objects
+dev-python/atomicwrites 1.1.5-r2: Atomic file writes
 dev-python/attrs 16.3.0-r1: Attributes without boilerplate
 dev-python/authres 0.800: Authentication Results Header Module
 dev-python/autobahn 17.5.1-r2: WebSocket and WAMP for Twisted and Asyncio
@@ -4607,6 +4611,7 @@ dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/bz2file 0.98: Replacement for bz2.BZ2File with features from newest CPython
+dev-python/cached-property 1.3.1: A cached-property for decorating methods in classes
 dev-python/cachetools 1.1.5 2.0.0 2.0.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.7.2 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
@@ -4636,6 +4641,7 @@ dev-python/click 6.6 6.7: A Python package for creating beautiful command line i
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
 dev-python/cliff 2.8.0: Command Line Interface Formulation Framework
 dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output for the cliff framework
+dev-python/clint 0.5.1: Python Command-line Application Tools
 dev-python/cloudpickle 0.3.1: Extended pickling support for Python objects
 dev-python/cmd2 0.7.5: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
@@ -4724,6 +4730,7 @@ dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
 dev-python/docker-py 2.4.2 2.7.0: Python client for Docker
 dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
+dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.12 0.13.1: Python Documentation Utilities
@@ -4733,6 +4740,8 @@ dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expen
 dev-python/doit 0.23.0-r1 0.29.0: Automation tool
 dev-python/doit-py 0.4.0: doit tasks for python stuff
 dev-python/dominate 2.2.1: Library for creating and manipulating HTML documents using an elegant DOM API
+dev-python/doublex 1.8.1: Python test doubles
+dev-python/doublex-expects 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7.1: Python library for communicating with HTTP 1.1 servers
@@ -4764,6 +4773,7 @@ dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards 
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
 dev-python/eventlet 0.18.4 0.20.1-r1: Highly concurrent networking library
 dev-python/execnet 1.4.1: Rapid multi-Python deployment
+dev-python/expects 0.8.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
@@ -4810,6 +4820,7 @@ dev-python/fonttools 3.0: Library for manipulating TrueType, OpenType, AFM and T
 dev-python/foolscap 0.7.0: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
+dev-python/freezegun 0.3.9: Let your Python tests travel through time
 dev-python/frozen-flask 0.11-r1: Freezes a Flask application into a set of static files
 dev-python/fudge 0.9.6-r1 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6: Recursive descent parsing library based on functional combinators
@@ -4892,7 +4903,7 @@ dev-python/incremental 16.10.1: Incremental is a small library that versions you
 dev-python/inflect 0.2.5: Correctly inflect words and numbers
 dev-python/iniparse 0.4-r2: Better INI parser for Python
 dev-python/into 0.2.2: Data migration utilities
-dev-python/iocapture 0.1.2: Capture stdout,stderr easily
+dev-python/iocapture 0.1.2 0.1.2-r1: Capture stdout,stderr easily
 dev-python/ioflo 1.5.0: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.1.11-r1: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.18: IPv4/IPv6 manipulation library, backport of the ipaddress module
@@ -4981,6 +4992,7 @@ dev-python/lz4 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.24.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/mako 1.0.3: A Python templating language
+dev-python/mamba 0.8.6: ... testing tool ... Born under the banner of Behavior Driven Development
 dev-python/mantissa 0.7.0-r1: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.8.0: Manuel lets you build tested documentation
 dev-python/markdown 2.6.5 2.6.8: Python implementation of the markdown markup language
@@ -5104,7 +5116,8 @@ dev-python/pastescript 2.0.2-r1: A pluggable command-line frontend, including co
 dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/path-py 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
-dev-python/pathtools 0.1.2-r1: Pattern matching and various utilities for file systems paths
+dev-python/pathlib2 2.3.0: Fork of pathlib aiming to support the full stdlib Python API
+dev-python/pathtools 0.1.2-r1 0.1.2-r2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
@@ -5216,6 +5229,7 @@ dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtkhelpers 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
+dev-python/pyhamcrest 1.9.0: Hamcrest framework for matcher objects
 dev-python/pyicu 1.9.5 2.0.2: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
@@ -5424,6 +5438,8 @@ dev-python/rsa 3.2.3-r1: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtslib-fb 2.1.62 2.1.66: A Python object API for managing the Linux LIO kernel target
+dev-python/ruamel-std-pathlib 0.6.3: Ruamel enhancements to pathlib and pathlib2
+dev-python/ruamel-yaml 0.15.35: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ryu 4.14: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.1.11: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
@@ -5511,7 +5527,7 @@ dev-python/testrepository 0.0.18-r1: A repository of test results
 dev-python/testresources 0.2.7-r2: A pyunit extension for managing expensive test resources
 dev-python/testscenarios 0.5.0: A pyunit extension for dependency injection
 dev-python/testtools 0.9.36 1.8.0: Extensions to the Python standard library unit testing framework
-dev-python/texttable 0.8.3: module for creating simple ASCII tables
+dev-python/texttable 0.8.3 0.9.1: module for creating simple ASCII tables
 dev-python/theano 0.7.0: Define and optimize multi-dimensional arrays mathematical expressions
 dev-python/thunarx-python 0.3.0-r2: Python bindings for the Thunar file manager
 dev-python/timelib 0.2.4-r1: parse english textual date descriptions
@@ -5572,11 +5588,11 @@ dev-python/vine 1.1.3: Python Promises
 dev-python/virtualenv 15.1.0: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.7.1: Set of extensions to Ian Bicking's virtualenv tool
-dev-python/vobject 0.9.3: Python package for parsing and generating vCard and vCalendar files
+dev-python/vobject 0.9.3 0.9.5: Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.9.3 0.10.5: A Python data validation library.
 dev-python/waitress 1.0.1 1.0.2: A pure-Python WSGI server
 dev-python/warlock 1.1.0: Python object model built on JSON schema and JSON patch
-dev-python/watchdog 0.8.3-r1: Python API and shell utilities to monitor file system events
+dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.9: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.7 0.1.7-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weakrefmethod 1.0.3: Backport of WeakMethod from Python 3.4 to Python 2.6+
@@ -6277,7 +6293,7 @@ dev-vcs/giggle 0.7-r2: GTK+ Frontend for GIT
 dev-vcs/git 2.16.1: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
-dev-vcs/git-flow 1.10.2: Git extensions to provide high-level repository operations
+dev-vcs/git-flow 1.10.2 1.11.0: Git extensions to provide high-level repository operations
 dev-vcs/gitg 3.26.0: git repository viewer for GNOME
 dev-vcs/gitolite 2.3.1-r1 3.6 3.6.3 3.6.6: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
@@ -7488,7 +7504,7 @@ media-libs/libmpdclient 2.9 2.10: A library for interfacing Music Player Daemon 
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.13: An implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.13 1.1.14: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.0.9: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.6 2.2.7: a C library and API for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnut 661: Library and tools to create NUT multimedia files
@@ -11054,7 +11070,7 @@ x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
 x11-terms/guake 0.8.8: Drop-down terminal for GTK+ desktops
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/mate-terminal 1.12.1: The MATE Terminal
-x11-terms/mlterm 3.8.0: A multi-lingual terminal emulator
+x11-terms/mlterm 3.8.0 3.8.4: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: rxvt compatible terminal emulator with transparency and tab support
 x11-terms/qterminal 0.7.1: Qt-based multitab terminal emulator
