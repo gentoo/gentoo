@@ -32,7 +32,7 @@ RDEPEND="
 	dev-ros/tf2_ros
 	dev-ros/xmlrpcpp
 	dev-libs/boost:=
-	dev-cpp/yaml-cpp
+	dev-cpp/yaml-cpp:=
 	dev-ros/nodelet
 	dev-libs/console_bridge:=
 "
