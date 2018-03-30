@@ -123,9 +123,9 @@ src_install() {
 		doins "${T}"/hebrew.bind
 	fi
 
-	newicon -s 32 "${S}/development/Win32/packaging/icons/lyx_32x32.png" ${PN}.png
-	doicon -s 48 "${S}/lib/images/lyx.png"
-	doicon -s scalable "${S}/lib/images/lyx.svg"
+	newicon -s 32 "development/Win32/packaging/icons/lyx_32x32.png" ${PN}.png
+	doicon -s 48 "lib/images/lyx.png"
+	doicon -s scalable "lib/images/lyx.svg"
 
 	# fix for bug 91108
 	if use latex ; then
