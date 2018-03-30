@@ -975,7 +975,7 @@ app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filena
 app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
 app-misc/digitemp 3.5.0-r2: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
 app-misc/dnetc 2.9108.517: distributed.net client
-app-misc/dtach 0.8-r1: Emulates the detach feature of screen
+app-misc/dtach 0.8-r1 0.9: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14-r1: Dynamic virtual terminal manager
@@ -1160,7 +1160,7 @@ app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microso
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openoffice-bin 4.1.4: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
-app-office/pinpoint 0.1.8: A tool for making hackers do excellent presentations
+app-office/pinpoint 0.1.8 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
@@ -1230,7 +1230,7 @@ app-portage/unsandbox 2: The Sandbox escapist tool
 app-portage/unsymlink-lib 12-r1: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r1 4.4_p12: The standard GNU Bourne again shell
-app-shells/bash-completion 2.4-r1: Programmable Completion for bash
+app-shells/bash-completion 2.4-r1 2.7-r3: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
@@ -1247,7 +1247,7 @@ app-shells/mksh 52: MirBSD KSH Shell
 app-shells/mpv-bash-completion 3.3.16: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1: A high-performance, parallel remote shell utility
-app-shells/posh 0.12.6: Reimplementation of Bourne shell based on pdksh
+app-shells/posh 0.12.6 0.13.1: Reimplementation of Bourne shell based on pdksh
 app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rrs 1.70-r2: Reverse Remote Shell
@@ -3158,7 +3158,7 @@ dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4cpp 1.1: C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
-dev-libs/lzo 2.09: An extremely fast compression and decompression library
+dev-libs/lzo 2.09 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.6.4 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5-r1: Mike's Arbitrary Precision Math Library
@@ -4997,7 +4997,7 @@ dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in 
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.1-r1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.0.20170509 2.0.20171212: Python bindings for UPnP client library
+dev-python/miniupnpc 2.0.20170509 2.0.20171212 2.0.20180222: Python bindings for UPnP client library
 dev-python/mistune 0.7.2: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.15.3: Project documentation with Markdown.
 dev-python/mkdocs-bootstrap 0.1.1: Bootstrap theme for MkDocs
@@ -5631,7 +5631,7 @@ dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapack
 dev-qt/qt3support 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.7.1 5.9.4: Bluetooth support library for the Qt5 framework
-dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
+dev-qt/qtchooser 0_p20151008 0_p20170803: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.7.1 5.9.4: Multi-threading concurrence support library for the Qt5 framework
 dev-qt/qtcore 4.8.7-r4 5.7.1-r4 5.9.4-r2: Cross-platform application development framework
 dev-qt/qtdbus 4.8.7 5.7.1 5.9.4: Qt5 module for inter-process communication over the D-Bus protocol
@@ -6219,7 +6219,7 @@ dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/scala-ide 4.1.0: The Scala IDE
 dev-util/schroot 1.6.10-r3: Utility to execute commands in a chroot environment
-dev-util/scons 2.4.1: Extensible Python-based build utility
+dev-util/scons 2.4.1 2.5.1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2: simple command-line tool to talk to serial devices
 dev-util/shc 3.8.9: A (shell-) script compiler/scrambler
@@ -8601,7 +8601,7 @@ net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail RES
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1: Lightweight C Jabber library
 net-libs/mbedtls 2.6.0 2.7.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.0.20170509 2.0.20171212: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.0.20170509 2.0.20171212 2.0.20180222: UPnP client library and a simple UPnP client
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
 net-libs/neon 0.30.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14 1.3.14-r1 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
