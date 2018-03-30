@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~hppa ~ppc ~ppc64 sparc x86 ~x64-macos ~x64-solaris"
 IUSE="X elibc_glibc"
 
-DEPEND="
+RDEPEND="
 	!elibc_glibc? ( virtual/libiconv )
 	X? (
 		x11-libs/libICE
@@ -23,7 +23,10 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/libXt
 	)"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	sys-apps/texinfo"
+# texinfo is required because we patch mtools.texi
+# drop it when mtools-4.0.18-locking.patch is no longer applied
 
 src_prepare() {
 	# Don't throw errors on existing directories
