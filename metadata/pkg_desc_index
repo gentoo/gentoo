@@ -929,6 +929,7 @@ app-laptop/thinkfan 0.9.3: simple fan control program for thinkpads
 app-laptop/tp_smapi 0.42-r1: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-leechcraft/liblaretz 0.1.0: Shared library to be used by the Laretz sync server and its clients
+app-metrics/node_exporter 0.15.2: Prometheus exporter for machine metrics
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/asciinema 1.4.0: Command line recorder for asciinema.org service
@@ -8287,7 +8288,6 @@ net-analyzer/pmacct 1.5.1: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.24 0.6.25-r2 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
-net-analyzer/prometheus-node_exporter 0.15.2: Prometheus exporter for machine metrics
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/ripe-atlas-tools 1.2.2 1.2.3-r1: The official command-line client for RIPE Atlas
 net-analyzer/rrdtool 1.6.0-r1: A system to store and display time-series data
