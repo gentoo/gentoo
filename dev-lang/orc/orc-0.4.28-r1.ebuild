@@ -20,6 +20,8 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
 
+DOCS=( README RELEASE )
+
 src_prepare() {
 	default
 
