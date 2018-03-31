@@ -6,11 +6,11 @@ EAPI=4
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Japanese Kanji X Terminal"
-SRC_URI="ftp://ftp.x.org/contrib/applications/${P}.tar.gz
-	http://www.asahi-net.or.jp/~hc3j-tkg/kterm/${P}-wpi.patch.gz
-	http://www.st.rim.or.jp/~hanataka/${P}.ext02.patch.gz"
-# until someone who reads japanese can find a better place
-HOMEPAGE="http://www.asahi-net.or.jp/~hc3j-tkg/kterm/"
+#HOMEPAGE="http://www.asahi-net.or.jp/~hc3j-tkg/kterm/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz
+	mirror://gentoo/${P}-wpi.patch.gz
+	mirror://gentoo/${P}.ext02.patch.gz"
 
 LICENSE="MIT HPND XC"
 SLOT="0"
