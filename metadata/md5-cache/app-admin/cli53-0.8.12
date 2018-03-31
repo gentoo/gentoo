@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install test unpack
-DEPEND=>=dev-lang/go-1.8
+DEPEND=>=dev-lang/go-1.9
 DESCRIPTION=Command line tool for Amazon Route 53
 EAPI=6
 HOMEPAGE=https://github.com/barnybug/cli53
@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/barnybug/cli53/archive/0.8.12.tar.gz -> cli53-0.8.12.tar.gz
-_eclasses_=golang-base	51a1f13e065f1cff4507685d9cc268c7	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_eclasses_=golang-base	928887539e385bb489681b292f6b862f	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
 _md5_=60df1e9a4fd49892b05c301aa5cb4f97
