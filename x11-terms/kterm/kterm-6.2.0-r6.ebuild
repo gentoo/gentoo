@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Japanese Kanji X Terminal"
 #HOMEPAGE="http://www.asahi-net.or.jp/~hc3j-tkg/kterm/"
@@ -14,52 +14,62 @@ SRC_URI="mirror://gentoo/${P}.tar.gz
 
 LICENSE="MIT HPND XC"
 SLOT="0"
-KEYWORDS="-alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="-alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="Xaw3d"
 
 RDEPEND="app-text/rman
-	sys-libs/ncurses
+	sys-libs/ncurses:=
+	x11-libs/libXaw
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libxkbfile
-	x11-libs/libXaw
-	x11-libs/libXp
 	Xaw3d? ( x11-libs/libXaw3d )"
 DEPEND="${RDEPEND}
 	x11-misc/gccmakedep
 	x11-misc/imake"
 
+PATCHES=(
+	"${WORKDIR}"/${P}-wpi.patch		# wallpaper patch
+	"${WORKDIR}"/${P}.ext02.patch		# JIS 0213 support
+	"${FILESDIR}"/${PN}-openpty.patch
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-ad-gentoo.patch
+	"${FILESDIR}"/${PN}-underline.patch
+)
+
 src_prepare(){
-	epatch "${WORKDIR}"/${P}-wpi.patch		# wallpaper patch
-	epatch "${WORKDIR}"/${P}.ext02.patch		# JIS 0213 support
-	epatch "${FILESDIR}"/${PN}-openpty.patch
-	epatch "${FILESDIR}"/${PN}-gentoo.patch
-	epatch "${FILESDIR}"/${PN}-ad-gentoo.patch
-	epatch "${FILESDIR}"/${PN}-underline.patch
-	use Xaw3d && epatch "${FILESDIR}"/${PN}-Xaw3d.patch
+	default
+	use Xaw3d && eapply "${FILESDIR}"/${PN}-Xaw3d.patch
+}
+
+src_configure() {
+	xmkmf -a || die
 }
 
 src_compile(){
-	PKG_CONFIG=$(tc-getPKG_CONFIG)
-	xmkmf -a || die
-	emake CC="$(tc-getCC)" CDEBUGFLAGS="${CFLAGS}" \
-		LOCAL_LDFLAGS="${LDFLAGS} $($PKG_CONFIG --libs ncurses)" \
-		XAPPLOADDIR="${EPREFIX}"/usr/share/X11/app-defaults
+	emake \
+		CC="$(tc-getCC)" \
+		CDEBUGFLAGS="${CFLAGS}" \
+		LOCAL_LDFLAGS="${LDFLAGS} $("$(tc-getPKG_CONFIG)" --libs ncurses)" \
+		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults"
 }
 
 src_install(){
-	emake DESTDIR="${D}" BINDIR="${EPREFIX}"/usr/bin XAPPLOADDIR="${EPREFIX}"/usr/share/X11/app-defaults install
+	emake \
+		BINDIR="${EPREFIX}/usr/bin" \
+		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults" \
+		DESTDIR="${D}" \
+		install
+	einstalldocs
 
 	# install man pages
-	newman kterm.man kterm.1
+	newman ${PN}.man ${PN}.1
 	insinto /usr/share/man/ja/man1
-	iconv -f ISO-2022-JP -t EUC-JP kterm.jman > kterm.ja.1
-	newins kterm.ja.1 kterm.1
+	iconv -f ISO-2022-JP -t UTF-8 ${PN}.jman > ${PN}.ja.1
+	newins ${PN}.ja.1 ${PN}.1
 
 	# Remove link to avoid collision
 	rm -f "${ED}"/usr/lib/X11/app-defaults
-
-	dodoc README.kt
 }
 
 pkg_postinst() {
@@ -68,7 +78,7 @@ pkg_postinst() {
 	elog "In order to use this feature,"
 	elog "you need specify favourite xpm file with -wp option"
 	elog
-	elog "\t% kterm -wp filename.xpm"
+	elog "\t% ${PN} -wp filename.xpm"
 	elog
 	elog "or set it with X resource"
 	elog

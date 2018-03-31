@@ -1,5 +1,5 @@
---- KTerm.ad.orig	2004-01-07 06:25:15.000000000 +0900
-+++ KTerm.ad	2004-01-07 06:27:43.550017672 +0900
+--- a/KTerm.ad
++++ b/KTerm.ad
 @@ -125,3 +125,18 @@
  
  *VT100*translations: #override  Shift<Key>space: \
