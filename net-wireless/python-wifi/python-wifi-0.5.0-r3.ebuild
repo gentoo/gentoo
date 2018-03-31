@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions"
+DESCRIPTION="Provides r/w access to a wireless network card's capabilities"
 HOMEPAGE="https://pypi.python.org/pypi/python-wifi"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.bz2"
 
