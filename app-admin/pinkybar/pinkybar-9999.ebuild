@@ -14,8 +14,8 @@ HOMEPAGE="https://github.com/su8/pinky-bar"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+alsa colours cpp drivetemp drivetemp-light dvd libnl lisp lua mpd ncurses
-	+net +pci perl python2 r ruby sensors slang smartemp tcl weather x11"
+IUSE="+alsa colors drivetemp drivetemp-light dvd dwm libnl lisp lua mpd
+	ncurses +net +pci perl python2 r ruby sensors slang smartemp tcl weather"
 
 DEPEND="
 	sys-devel/autoconf
@@ -44,34 +44,33 @@ RDEPEND="
 	smartemp? ( sys-apps/smartmontools )
 	tcl? ( dev-lang/tcl )
 	weather? ( net-misc/curl app-arch/gzip )
-	x11? ( x11-libs/libX11 )
+	dwm? ( x11-libs/libX11 )
 
 "
 REQUIRED_USE="
 	drivetemp? ( !smartemp )
 	drivetemp-light? ( !smartemp )
-	ncurses? ( !x11 )
+	ncurses? ( !dwm )
 	smartemp? ( !drivetemp !drivetemp-light )
-	x11? ( !ncurses )
+	dwm? ( !ncurses )
 "
 
 src_prepare() {
 	default
 
-	elog 'Generating Makefiles'
+	einfo 'Generating Makefiles'
 	perl set.pl 'gentoo' || die
-	eautoreconf -if
+	eautoreconf
 }
 
 src_configure() {
-
-	CONFIGURE_OPTS=(
+	local myconf=(
 		$(use_with alsa)
-		$(use_with colours)
-		$(use_with cpp)
+		$(use_with colors)
 		$(use_with drivetemp)
 		$(use_with drivetemp-light)
 		$(use_with dvd)
+		$(use_with dwm)
 		$(use_with libnl)
 		$(use_with lisp)
 		$(use_with lua)
@@ -88,11 +87,10 @@ src_configure() {
 		$(use_with smartemp)
 		$(use_with tcl)
 		$(use_with weather)
-		$(use_with x11)
 		api_key='28459ae16e4b3a7e5628ff21f4907b6f'
 		icons='/usr/share/icons/xbm_icons'
 	)
-	econf "${CONFIGURE_OPTS[@]}"
+	econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -100,32 +98,21 @@ src_compile() {
 }
 
 src_install() {
-	scripts_path="${S}/extra/scripts"
+	local scripts_path="${S}/extra/scripts"
 
-	if use colours && ! use x11 && ! use ncurses
+	if use colors && ! use dwm && ! use ncurses
 	then
 		insinto /usr/share/icons
-		doins -r /extra/xbm_icons
+		doins -r extra/xbm_icons
 	fi
 
-	if use lisp || use lua || use perl || use python2 ||
-		use r || use ruby || use slang || use tcl
-	then
-		insinto /usr/share/pinkysc
-	fi
-
+	insinto /usr/share/pinkysc
 	use lua && doins "${scripts_path}/pinky.lua"
-
 	use perl && doins "${scripts_path}/pinky.pl"
-
 	use python2 && doins "${scripts_path}/pinky.py"
-
 	use r && doins "${scripts_path}/pinky.R"
-
 	use ruby && doins "${scripts_path}/pinky.rb"
-
 	use slang && doins "${scripts_path}/pinky.sl"
-
 	use tcl && doins "${scripts_path}/pinky.tcl"
 
 	emake DESTDIR="${D}" install || die
