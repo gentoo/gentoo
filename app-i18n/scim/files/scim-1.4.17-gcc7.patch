@@ -1,0 +1,26 @@
+Bug: https://bugs.gentoo.org/638368
+Upstream commit: https://github.com/scim-im/scim/commit/b32c2f93292a8145a23c35034bcc96d92fe79046
+
+From b32c2f93292a8145a23c35034bcc96d92fe79046 Mon Sep 17 00:00:00 2001
+From: Marguerite Su <i@marguerite.su>
+Date: Mon, 31 Jul 2017 02:38:23 +0000
+Subject: [PATCH] FTBFS with GCC-7: invalid conversion from 'char' to 'const
+ void*'. fixed debian#854654 opensuse#1041268
+
+---
+ extras/immodules/agent/scim-bridge-agent-signal-listener.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extras/immodules/agent/scim-bridge-agent-signal-listener.cpp b/extras/immodules/agent/scim-bridge-agent-signal-listener.cpp
+index 88c5d34..c0ba7fd 100644
+--- a/extras/immodules/agent/scim-bridge-agent-signal-listener.cpp
++++ b/extras/immodules/agent/scim-bridge-agent-signal-listener.cpp
+@@ -64,7 +64,7 @@ static void sig_quit (int sig)
+ {
+     if (!signal_occurred) {
+         signal_occurred = true;
+-        send (pipe_in, '\0', sizeof (char), MSG_NOSIGNAL);
++        send (pipe_in, "", sizeof (char), MSG_NOSIGNAL);
+     }
+ }
+ 
