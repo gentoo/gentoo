@@ -13,7 +13,7 @@ SRC_URI="http://www.cdegroot.com/software/db/download/com.${P/-/.}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 IUSE="doc source"
 
 DEPEND=">=virtual/jdk-1.4"
