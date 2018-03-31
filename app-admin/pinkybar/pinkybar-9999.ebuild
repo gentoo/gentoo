@@ -100,52 +100,33 @@ src_compile() {
 }
 
 src_install() {
+	scripts_path="${S}/extra/scripts"
+
 	if use colours && ! use x11 && ! use ncurses
 	then
 		insinto /usr/share/icons
 		doins -r /extra/xbm_icons
 	fi
 
-	if use lisp
+	if use lisp || use lua || use perl || use python2 ||
+		use r || use ruby || use slang || use tcl
 	then
 		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.lisp
 	fi
-	if use lua
-	then
-		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.lua
-	fi
-	if use perl
-	then
-		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.pl
-	fi
-	if use python2
-	then
-		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.py
-	fi
-	if use r
-	then
-		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.R
-	fi
-	if use ruby
-	then
-		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.rb
-	fi
-	if use slang
-	then
-		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.sl
-	fi
-	if use tcl
-	then
-		insinto /usr/share/pinkysc
-		doins "${S}"/extra/scripts/pinky.tcl
-	fi
+
+	use lua && doins "${scripts_path}/pinky.lua"
+
+	use perl && doins "${scripts_path}/pinky.pl"
+
+	use python2 && doins "${scripts_path}/pinky.py"
+
+	use r && doins "${scripts_path}/pinky.R"
+
+	use ruby && doins "${scripts_path}/pinky.rb"
+
+	use slang && doins "${scripts_path}/pinky.sl"
+
+	use tcl && doins "${scripts_path}/pinky.tcl"
 
 	emake DESTDIR="${D}" install || die
 }
@@ -153,8 +134,8 @@ src_install() {
 pkg_postinst() {
 	use ncurses && elog 'You can combine the output from this program with pinky-curses'
 
-	if use perl || use python2 || use lua ||
-		use r || use ruby || use tcl || use slang || use lisp
+	if use lisp || use lua || use perl || use python2 ||
+		use r || use ruby || use slang || use tcl
 	then
 		elog 'The script(s) resides in /usr/share/pinkysc/'
 	fi
