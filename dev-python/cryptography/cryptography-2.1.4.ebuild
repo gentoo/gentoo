@@ -14,14 +14,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x64-solaris"
 IUSE="libressl test"
 
-	#!libressl? ( dev-libs/openssl:0= ( || ( dev-libs/openssl:0[-bindist(-)]
-	#									=dev-libs/openssl-1.0.2l-r1:0
-	#									>=dev-libs/openssl-1.1.0g-r1:0 ) ) )
 RDEPEND="
-	!libressl? ( >=dev-libs/openssl-1.0.2:0=[-bindist(-)] )
+	!libressl? ( dev-libs/openssl:0= ( || ( dev-libs/openssl:0[-bindist(-)]
+										=dev-libs/openssl-1.0.2l-r1:0
+										>=dev-libs/openssl-1.1.0g-r1:0 ) ) )
 	libressl? ( dev-libs/libressl )
 	$(python_gen_cond_dep '>=dev-python/cffi-1.7:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 pypy{,3})
