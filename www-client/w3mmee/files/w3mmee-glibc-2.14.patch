@@ -1,5 +1,3 @@
-diff --git a/istream.c b/istream.c
-index de5fbd3..6718b41 100644
 --- a/istream.c
 +++ b/istream.c
 @@ -132,7 +132,7 @@ newFileStream(FILE *f, void (*closep)())
@@ -11,8 +9,6 @@ index de5fbd3..6718b41 100644
    stream->handle.file->f = f;
  
    if (closep)
-diff --git a/istream.h b/istream.h
-index 168882f..3e7132f 100644
 --- a/istream.h
 +++ b/istream.h
 @@ -20,7 +20,7 @@ struct stream_buffer {

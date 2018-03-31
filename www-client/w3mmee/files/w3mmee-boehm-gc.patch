@@ -1,5 +1,3 @@
-diff --git a/configure b/configure
-index 32afb35..3be66fd 100755
 --- a/configure
 +++ b/configure
 @@ -1503,7 +1503,7 @@ if [ -n "$gclib" -a -n "$gcinclude" ]; then
