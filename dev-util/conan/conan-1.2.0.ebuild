@@ -35,6 +35,7 @@ RDEPEND="
 	>=dev-python/astroid-1.6[${PYTHON_USEDEP}]
 	>=dev-python/pluginbase-0.5[${PYTHON_USEDEP}]
 	>=dev-python/bottle-0.12.8[${PYTHON_USEDEP}]
+	~dev-python/deprecation-2.0[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
