@@ -10,7 +10,7 @@ DESCRIPTION="minuscule client library for the Github API"
 HOMEPAGE="https://magit.vc/manual/ghub"
 SRC_URI="https://github.com/magit/ghub/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
