@@ -12,7 +12,7 @@ SRC_URI="http://www.issihosts.com/haveged/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-IUSE="selinux"
+IUSE="selinux static-libs"
 
 DEPEND=""
 RDEPEND="!<sys-apps/openrc-0.11.8
@@ -22,9 +22,9 @@ RDEPEND="!<sys-apps/openrc-0.11.8
 # we should add $(use_enable threads)
 src_configure() {
 	econf \
+		$(use_enable static-libs static) \
 		--bindir=/usr/sbin \
 		--enable-nistest \
-		--disable-static \
 		--disable-threads
 }
 
