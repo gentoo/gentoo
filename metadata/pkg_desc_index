@@ -9075,7 +9075,7 @@ net-wireless/iw 3.17 4.9: nl80211-based configuration utility for wireless devic
 net-wireless/kismet 2016.07.1-r1: IEEE 802.11 wireless LAN sniffer
 net-wireless/lorcon 0.0_p20150109: A generic library for injecting 802.11 frames
 net-wireless/ndiswrapper 1.61: Wrapper for using Windows drivers for some wireless cards
-net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
+net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities
 net-wireless/rfkill 0.5-r2: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/spectools 2011.08.1-r2 2016.01.1: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/wavemon 0.7.6: Ncurses based monitor for IEEE 802.11 wireless LAN cards
