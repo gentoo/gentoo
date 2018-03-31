@@ -306,11 +306,6 @@ x11-misc/Xorgautoconfig
 x11-themes/icewm-themes
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Not buildable for a long time (#556928, #586258, #601130). Removal in a
-# month.
-www-client/w3mmee
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Not needed for a long time since fbsd kernel 10 (#586344). Removal in a
 # month.
 sys-freebsd/virtio-kmod
