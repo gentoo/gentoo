@@ -1,0 +1,46 @@
+From 450ac607a3568f8c991df1681155de6fa7f5a5cb Mon Sep 17 00:00:00 2001
+From: Luke Dashjr <luke-jr+git@utopios.org>
+Date: Fri, 23 Mar 2018 20:30:11 +0000
+Subject: [PATCH] Bugfix: GUI/MempoolStats: Avoid dereferencing NULL
+
+---
+ src/qt/mempoolstats.cpp | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/src/qt/mempoolstats.cpp b/src/qt/mempoolstats.cpp
+index ebc72e95d0..50a3ef71ab 100644
+--- a/src/qt/mempoolstats.cpp
++++ b/src/qt/mempoolstats.cpp
+@@ -79,13 +79,9 @@ void MempoolStats::setClientModel(ClientModel *model)
+ 
+ void MempoolStats::drawChart()
+ {
+-    if (!isVisible())
++    if (!(isVisible() && clientModel))
+         return;
+ 
+-    const bool drawTxCount = cbShowNumTxns->isChecked();
+-    const bool drawMinFee = cbShowMinFeerate->isChecked();
+-    const bool drawDynMemUsage = cbShowMemUsage->isChecked();
+-
+     if (!titleItem)
+     {
+         // create labels (only once)
+@@ -349,11 +345,11 @@ void MempoolStats::drawChart()
+     QPen linePenRed(QColor(188,49,62, 250), 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+     QPen linePenGreen(QColor(49,188,62, 250), 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+ 
+-    if (drawTxCount)
++    if (cbShowNumTxns->isChecked())
+         redrawItems.append(scene->addPath(txCountPath, linePenRed));
+-    if (drawMinFee)
++    if (cbShowMinFeerate->isChecked())
+         redrawItems.append(scene->addPath(minFeePath, linePenGreen));
+-    if (drawDynMemUsage)
++    if (cbShowMemUsage->isChecked())
+     {
+         redrawItems.append(scene->addPath(dynMemUsagePath, linePenBlue));
+         redrawItems.append(scene->addPath(dynMemUsagePathFill, QPen(Qt::NoPen), graBru));
+-- 
+2.16.1
+
