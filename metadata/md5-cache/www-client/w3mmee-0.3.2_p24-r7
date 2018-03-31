@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/ncurses-5.2-r3 >=sys-libs/zlib-1.1.3-r2 >=dev-libs/boehm-gc-7
 SLOT=0
 SRC_URI=http://pub.ks-and-ks.ne.jp/prog/pub/w3mmee-p24-22.tar.gz
 _eclasses_=alternatives	6c575717515f030736d1b718d507d2f9	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=e3f0ece6e161b73ff299d49abb3f6352
+_md5_=49faee6ad2bf9a0de8253920c91673be
