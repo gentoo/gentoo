@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.37-gcc45.patch
 	"${FILESDIR}"/${PN}-2.5.37-gcc47.patch
 	"${FILESDIR}"/${PN}-2.5.37-disable-tests.patch
+	"${FILESDIR}"/${PN}-2.5.37-gcc7.patch
 )
 
 src_prepare() {
