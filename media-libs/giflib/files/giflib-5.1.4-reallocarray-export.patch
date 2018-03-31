@@ -1,4 +1,4 @@
-From 9805c76d4f76c77aad9f285e81f4090cdf661fac Mon Sep 17 00:00:00 2001
+From dfba2b34d35ddfd47233293f2f28978e8acfc87c Mon Sep 17 00:00:00 2001
 From: Sebastian Pipping <sebastian@pipping.org>
 Date: Wed, 14 Mar 2018 21:18:14 +0100
 Subject: [PATCH] Address clash of export reallocarray with glibc
@@ -6,8 +6,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-.. by not exporting that internal symbol any more,
-and renaming the function in code and where it's used
+.. by renaming the exported symbol and the related
+function in code and where it's used.
 
 Bug: https://bugs.gentoo.org/637438
 
@@ -21,10 +21,10 @@ Compile error was:
  extern void *reallocarray (void *__ptr, size_t __nmemb, size_t __size)
 ---
  lib/dgif_lib.c             |  4 ++--
- lib/gif_lib.h              |  3 ---
+ lib/gif_lib.h              |  2 +-
  lib/gifalloc.c             | 10 +++++-----
  lib/openbsd-reallocarray.c |  2 +-
- 4 files changed, 8 insertions(+), 11 deletions(-)
+ 4 files changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/lib/dgif_lib.c b/lib/dgif_lib.c
 index 66a1d6a..f0e0385 100644
@@ -49,19 +49,18 @@ index 66a1d6a..f0e0385 100644
  
                if (sp->RasterBits == NULL) {
 diff --git a/lib/gif_lib.h b/lib/gif_lib.h
-index 078930c..7914a69 100644
+index 078930c..cefc3bb 100644
 --- a/lib/gif_lib.h
 +++ b/lib/gif_lib.h
-@@ -244,9 +244,6 @@ extern ColorMapObject *GifUnionColorMap(const ColorMapObject *ColorIn1,
-                                      GifPixelType ColorTransIn2[]);
+@@ -245,7 +245,7 @@ extern ColorMapObject *GifUnionColorMap(const ColorMapObject *ColorIn1,
  extern int GifBitSize(int n);
  
--extern void *
+ extern void *
 -reallocarray(void *optr, size_t nmemb, size_t size);
--
++openbsd_reallocarray(void *optr, size_t nmemb, size_t size);
+ 
  /******************************************************************************
   Support for the in-core structures allocation (slurp mode).              
- ******************************************************************************/
 diff --git a/lib/gifalloc.c b/lib/gifalloc.c
 index 3b51868..1394cfa 100644
 --- a/lib/gifalloc.c
@@ -125,5 +124,5 @@ index aa70686..b922b01 100644
  	if ((nmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW) &&
  	    nmemb > 0 && SIZE_MAX / nmemb < size) {
 -- 
-2.16.2
+2.17.0.rc2
 
