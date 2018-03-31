@@ -8,10 +8,10 @@ WEBAPP_OPTIONAL="yes"
 inherit flag-o-matic webapp java-pkg-opt-2 user systemd toolchain-funcs
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
-HOMEPAGE="http://www.zabbix.com/"
+HOMEPAGE="https://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
-SRC_URI="http://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
+SRC_URI="https://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
