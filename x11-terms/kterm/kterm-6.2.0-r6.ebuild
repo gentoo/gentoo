@@ -21,7 +21,6 @@ RDEPEND="app-text/rman
 	sys-libs/ncurses:=
 	x11-libs/libXaw
 	x11-libs/libXmu
-	x11-libs/libXp
 	x11-libs/libXpm
 	x11-libs/libxkbfile
 	Xaw3d? ( x11-libs/libXaw3d )"
