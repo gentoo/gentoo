@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${PN}-2.11-flags.patch
 )
 
 src_prepare() {
