@@ -22,7 +22,7 @@ if [[ -z ${_GOLANG_BASE} ]]; then
 
 _GOLANG_BASE=1
 
-DEPEND=">=dev-lang/go-1.8"
+DEPEND=">=dev-lang/go-1.9"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
