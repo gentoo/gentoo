@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit font
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/wqy/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 # Only installs fonts
