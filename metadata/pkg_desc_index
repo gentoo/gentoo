@@ -4666,7 +4666,7 @@ dev-python/coverage 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.17: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 2.0.2-r1 2.1.4: Library providing cryptographic recipes and primitives
+dev-python/cryptography 1.7.1 2.0.2-r1: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.7.1 2.0.2 2.1.4: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
@@ -5264,7 +5264,7 @@ dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
 dev-python/pyopencl 2016.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
-dev-python/pyopenssl 16.2.0 17.2.0 17.5.0: Python interface to the OpenSSL library
+dev-python/pyopenssl 16.2.0 17.2.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
