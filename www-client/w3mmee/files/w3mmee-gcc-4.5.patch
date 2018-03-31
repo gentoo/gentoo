@@ -4,8 +4,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=317815
 
 Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
 
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -2636,7 +2636,7 @@
  fi
  

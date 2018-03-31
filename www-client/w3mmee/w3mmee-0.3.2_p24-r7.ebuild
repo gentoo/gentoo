@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit alternatives eutils toolchain-funcs multilib
@@ -33,11 +33,12 @@ S=${WORKDIR}/${MY_P}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-w3mman-gentoo.diff \
-		"${FILESDIR}"/${PN}-gcc4{4,5}.patch \
-		"${FILESDIR}"/${P}-glibc214.patch \
-		"${FILESDIR}"/${P}-tinfo.patch \
-		"${FILESDIR}"/${P}-boehm-gc.patch
+	epatch "${FILESDIR}"/${PN}-boehm-gc.patch
+	epatch "${FILESDIR}"/${PN}-gcc-4.4.patch
+	epatch "${FILESDIR}"/${PN}-gcc-4.5.patch
+	epatch "${FILESDIR}"/${PN}-glibc-2.14.patch
+	epatch "${FILESDIR}"/${PN}-tinfo.patch
+	epatch "${FILESDIR}"/${PN}-w3mman-gentoo.patch
 	sed -ie "/^AR=/s:ar:$(tc-getAR):" XMakefile || die
 }
 
