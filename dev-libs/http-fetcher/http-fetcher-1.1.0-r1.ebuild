@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~x86"
+KEYWORDS="alpha amd64 ~ppc ~x86"
 IUSE="debug"
 
 S="${WORKDIR}/${MY_P}"
