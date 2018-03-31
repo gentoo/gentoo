@@ -1,6 +1,5 @@
-diff -ur w3mmee-p24-22.orig/indep.c w3mmee-p24-22/indep.c
---- w3mmee-p24-22.orig/indep.c	2002-11-27 16:35:37.000000000 +0200
-+++ w3mmee-p24-22/indep.c	2009-07-25 23:06:52.000000000 +0300
+--- a/indep.c
++++ b/indep.c
 @@ -14,7 +14,7 @@
  {
  #ifdef HAVE_STRTOLL

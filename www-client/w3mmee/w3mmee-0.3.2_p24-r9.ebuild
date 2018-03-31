@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -36,12 +36,13 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-w3mman-gentoo.diff \
-		"${FILESDIR}"/${PN}-gcc4{4,5}.patch \
-		"${FILESDIR}"/${P}-glibc214.patch \
-		"${FILESDIR}"/${P}-tinfo.patch \
-		"${FILESDIR}"/${P}-boehm-gc.patch
-	sed -ie "/^AR=/s:ar:$(tc-getAR):" XMakefile || die
+	epatch "${FILESDIR}"/${PN}-boehm-gc.patch
+	epatch "${FILESDIR}"/${PN}-gcc-4.4.patch
+	epatch "${FILESDIR}"/${PN}-gcc-4.5.patch
+	epatch "${FILESDIR}"/${PN}-glibc-2.14.patch
+	epatch "${FILESDIR}"/${PN}-tinfo.patch
+	epatch "${FILESDIR}"/${PN}-w3mman-gentoo.patch
+	sed -i "/^AR=/s:ar:$(tc-getAR):" XMakefile
 }
 
 src_compile() {
