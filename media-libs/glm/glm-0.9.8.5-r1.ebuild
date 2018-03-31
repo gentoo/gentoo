@@ -18,6 +18,7 @@ RDEPEND="virtual/opengl"
 
 PATCHES=(
 	"${FILESDIR}/glm-gcc73.patch"
+	"${FILESDIR}/${P}-gcc7_tests.patch"
 )
 
 src_configure() {
