@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="XML::LibXML based XML::Simple clone"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 
 RDEPEND="
