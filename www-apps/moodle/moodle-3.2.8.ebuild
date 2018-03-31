@@ -9,8 +9,8 @@ AVC=( $(get_version_components) )
 MY_BRANCH="stable${AVC[0]}${AVC[1]}"
 
 DESCRIPTION="The Moodle Course Management System"
-HOMEPAGE="http://moodle.org"
-SRC_URI="http://download.moodle.org/${MY_BRANCH}/${P}.tgz"
+HOMEPAGE="https://moodle.org"
+SRC_URI="https://download.moodle.org/${MY_BRANCH}/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
