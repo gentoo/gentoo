@@ -11,11 +11,12 @@ MY_P=${P/_/}
 
 DESCRIPTION="A SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2"
+SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2
+https://dev.gentoo.org/~jstein/dist/inkscape-0.92.1-poppler.patch"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="cdr dia dbus exif gnome imagemagick openmp postscript inkjar jpeg latex"
 IUSE+=" lcms nls spell static-libs visio wpg"
 
@@ -93,13 +94,12 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.91_pre3-automagic.patch"
+	"${FILESDIR}/${PN}-0.92.1-automagic.patch"
 	"${FILESDIR}/${PN}-0.91_pre3-cppflags.patch"
-	"${FILESDIR}/${PN}-0.91_pre3-desktop.patch"
+	"${FILESDIR}/${PN}-0.92.1-desktop.patch"
 	"${FILESDIR}/${PN}-0.91_pre3-exif.patch"
 	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
-	"${FILESDIR}/${PN}-0.91-fix-gtkmm-2.48.patch"
 )
 
 S=${WORKDIR}/${MY_P}
@@ -127,10 +127,6 @@ src_prepare() {
 src_configure() {
 	# aliasing unsafe wrt #310393
 	append-flags -fno-strict-aliasing
-	# enable c++11 as needed for sigc++-2.6, #566318
-	# remove it when upstream solves the issue
-	# https://bugs.launchpad.net/inkscape/+bug/1488079
-	append-cxxflags -std=c++11
 
 	econf \
 		$(use_enable static-libs static) \
