@@ -267,7 +267,7 @@ app-benchmarks/iozone 3.397: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
-app-benchmarks/siege 3.0.6: A HTTP regression testing and benchmarking utility
+app-benchmarks/siege 3.0.6 3.1.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/sysbench 1.0.7 1.0.10: System performance benchmark
@@ -308,6 +308,7 @@ app-cdr/poweriso 1.3: Utility to extract, list and convert PowerISO DAA image fi
 app-cdr/sync2cd 1.3-r1: An incremental archiving tool to CD/DVD
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
+app-cdr/xbiso 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.5.5: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
@@ -589,7 +590,7 @@ app-editors/vim 8.0.0386 8.0.1298: Vim, an improved vi-style text editor
 app-editors/vim-core 8.0.0386 8.0.1298: vim and gvim shared files
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r: VI Like Emacs -- yet another full-featured vi clone
-app-editors/yudit 2.9.2: Free (Y)unicode text editor for all unices
+app-editors/yudit 2.9.2 2.9.6: Free (Y)unicode text editor for all unices
 app-editors/zile 2.3.24-r2 2.4.11: Zile is a small Emacs clone
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
@@ -8545,6 +8546,7 @@ net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients
 net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
 net-libs/enet 1.2.2-r1 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.1.2-r2 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
+net-libs/ftplib 3.1.1: A set of routines that implement the FTP protocol
 net-libs/glib-networking 2.50.0: Network-related giomodules for glib
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.24.4: GNOME framework for accessing online accounts
@@ -9710,7 +9712,7 @@ sys-apps/grep 2.27-r1 3.0: GNU regular expression matcher
 sys-apps/groff 1.22.2: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2: Hard disk drive health inspection tool
-sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
+sys-apps/haveged 1.9.1 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hdparm 9.51 9.52: Utility to change hard drive performance parameters
 sys-apps/help2man 1.46.6 1.47.4: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
@@ -10678,7 +10680,7 @@ x11-libs/libXxf86dga 1.1.4: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.3-r1: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.3 1.1.4: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
-x11-libs/libast 0.7: LIBrary of Assorted Spiffy Things
+x11-libs/libast 0.7 0.7-r1: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
@@ -10708,7 +10710,7 @@ x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
 x11-libs/motif 2.3.7 2.3.8-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
-x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
+x11-libs/neXtaw 0.15.1-r1 0.15.1-r2: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.12 1.40.14: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0: Low-level pixel manipulation routines
@@ -10716,7 +10718,7 @@ x11-libs/qscintilla 2.10.1: A Qt port of Neil Hodgson's Scintilla C++ editor cla
 x11-libs/qtermwidget 0.7.1: Qt terminal emulator widget
 x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtpolar 1.1.1-r1: Library for displaying values on a polar coordinate system
-x11-libs/rep-gtk 0.90.8.1: A GTK+/libglade/GNOME language binding for the librep Lisp environment
+x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
