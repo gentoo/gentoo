@@ -1,0 +1,100 @@
+From ac188879ebf7cab5631213305f289bec4ab25613 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Apr 2018 13:36:48 +0200
+Subject: [PATCH 1/2] Cleanup CMakeLists.txt
+
+Cleanup duplicate find Qt5 and move all below #Dependencies block.
+Sort dependencies.
+KF5Sane is not an actual framework, so separate it from KF5 modules.
+---
+ CMakeLists.txt | 30 +++++++++++++-----------------
+ 1 file changed, 13 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d05fb37..6aacfb9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,44 +17,40 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+ include(KDECMakeSettings)
+ include(GenerateExportHeader)
+ 
+-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets)
+-
+ # be not so strict with the poor developer who just wants to use strings
+ remove_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+ remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
+ 
+-set(KF5_VERSION "5.1.0")
++set(REQUIRED_QT_VERSION "5.2.0")
++set(KF5_MIN_VERSION "5.1.0")
+ 
+ ecm_setup_version(
+-  ${KF5_VERSION}
++  ${KF5_MIN_VERSION}
+   VARIABLE_PREFIX SKANLITE
+   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/skanlite_version.h"
+   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/src/version.h.cmake"
+ )
+ 
++set(SKANLITE_VERSION_STRING "2.1.0")
++
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/src/version.h)
++
+ # Dependencies
+-set(REQUIRED_QT_VERSION "5.2.0")
++find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Widgets)
+ 
+-# Required Qt5 components to build this framework
+-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core)
+ find_package(PNG REQUIRED)
+-
+ include_directories(${PNG_INCLUDE_DIRS})
+ 
+-set(SKANLITE_VERSION_STRING "2.1.0")
+-
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/src/version.h)
+-
+-find_package(KF5 ${KF5_VERSION} REQUIRED
+-    COMPONENTS # alias to find_package(KFGuiAddons ${KF5_VERSION} REQUIRED)
++find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+         CoreAddons # KAboutData
++        DocTools # yields kdoctools_create_handbook
+         I18n
+-        XmlGui # KAboutApplicationDialog
+         KIO # contains the KIOWidgets which we use in target_link_libraries
+-        DocTools # yields kdoctools_create_handbook
+-        Sane # will find KF5Sane
++        XmlGui # KAboutApplicationDialog
+ )
+ 
++find_package(KF5Sane ${KF5_MIN_VERSION} REQUIRED)
++
+ add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+ 
+ # Subdirectories
+-- 
+2.16.3
+
+
+From 8bcc7e4fb701d2e95b8024df86830b9eeb6c97de Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Apr 2018 13:50:34 +0200
+Subject: [PATCH 2/2] Make use of FeatureSummary
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6aacfb9..1736bff 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,3 +58,5 @@ add_subdirectory(src)
+ add_subdirectory(doc)
+ add_subdirectory(autotests)
+ add_subdirectory(tests)
++
++feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.16.3
+
