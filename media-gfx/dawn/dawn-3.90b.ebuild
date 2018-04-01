@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -27,6 +27,7 @@ S="${WORKDIR}/${MYP}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-interactive.patch
+	epatch "${FILESDIR}"/${P}-gcc7.patch
 	sed -i -e "s/\$(LIB_DIR)/\$(LDFLAGS) &/" \
 		-e '/strip/d' Makefile*in || die
 }
