@@ -1,0 +1,46 @@
+From 4d8c7c1b3a5feebca948a3b8663f5be887b57731 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 30 Mar 2018 11:00:17 -0400
+Subject: [PATCH] units: initctl: move the fifo to /run/initctl to match
+ sysvinit
+
+The fifo location was moved in sysvinit-2.89.
+
+http://git.savannah.nongnu.org/cgit/sysvinit.git/commit/?id=80dbcf3de3c1b83aeaa713a8fe5b8d35d8649af2
+---
+ units/systemd-initctl.service.in | 2 +-
+ units/systemd-initctl.socket     | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/units/systemd-initctl.service.in b/units/systemd-initctl.service.in
+index 6cfed3da11f..2b4b957dce3 100644
+--- a/units/systemd-initctl.service.in
++++ b/units/systemd-initctl.service.in
+@@ -8,7 +8,7 @@
+ #  (at your option) any later version.
+ 
+ [Unit]
+-Description=/dev/initctl Compatibility Daemon
++Description=initctl Compatibility Daemon
+ Documentation=man:systemd-initctl.service(8)
+ DefaultDependencies=no
+ 
+diff --git a/units/systemd-initctl.socket b/units/systemd-initctl.socket
+index 61f877ba7d2..9d975799081 100644
+--- a/units/systemd-initctl.socket
++++ b/units/systemd-initctl.socket
+@@ -8,12 +8,12 @@
+ #  (at your option) any later version.
+ 
+ [Unit]
+-Description=/dev/initctl Compatibility Named Pipe
++Description=initctl Compatibility Named Pipe
+ Documentation=man:systemd-initctl.service(8)
+ DefaultDependencies=no
+ Before=sockets.target
+ 
+ [Socket]
+-ListenFIFO=/run/systemd/initctl/fifo
++ListenFIFO=/run/initctl
+ Symlinks=/dev/initctl
+ SocketMode=0600

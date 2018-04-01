@@ -154,6 +154,7 @@ src_prepare() {
 
 	PATCHES+=(
 		"${FILESDIR}/238-libmount-include.patch"
+		"${FILESDIR}/238-initctl.patch"
 	)
 
 	if ! use vanilla; then
