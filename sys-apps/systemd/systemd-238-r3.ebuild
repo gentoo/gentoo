@@ -7,7 +7,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz
+		https://dev.gentoo.org/~floppym/dist/${P}-patches-0.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
@@ -147,13 +148,12 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Do NOT add patches here
 	local PATCHES=()
 
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
-	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}/238-libmount-include.patch"
 	)
 
 	if ! use vanilla; then
