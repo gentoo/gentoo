@@ -42,7 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-glibc-2.14.patch
 	"${FILESDIR}"/${PN}-time.patch
 	"${FILESDIR}"/${PN}-tinfo.patch
-	"${FILESDIR}"/${PN}-w3mman-gentoo.patch
+	"${FILESDIR}"/${PN}-w3mman.patch
 )
 DOCS=( ChangeLog NEWS{,.mee} README )
 HTML_DOCS=( 00INCOMPATIBLE.html )

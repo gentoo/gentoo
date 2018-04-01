@@ -1,8 +1,6 @@
-Fixing build with gcc-4.5
+https://bugs.gentoo.org/317815
 
-https://bugs.gentoo.org/show_bug.cgi?id=317815
-
-Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
+Author: Kacper Kowalik <xarthisius.kk@gmail.com>
 
 --- a/configure
 +++ b/configure
