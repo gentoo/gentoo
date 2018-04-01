@@ -17,7 +17,7 @@ else
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
-	SRC_URI="https://download.schedmd.com/slurm/${MY_P}.tar.bz2"
+	SRC_URI="https://www.schedmd.com/download/latest/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
@@ -35,6 +35,7 @@ DEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
 	!net-analyzer/sinfo
+	!sys-cluster/pmix[pmi]
 	mysql? ( virtual/mysql )
 	munge? ( sys-auth/munge )
 	pam? ( virtual/pam )
@@ -54,7 +55,6 @@ RESTRICT="primaryuri test"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-disable-sview.patch
-	"${FILESDIR}"/${P}-buffer.patch
 )
 
 src_unpack() {
@@ -179,11 +179,6 @@ src_install() {
 	# Install logrotate file
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/logrotate" slurm
-
-	newbashcomp contribs/slurm_completion_help/slurm_completion.sh ${PN}
-	bashcomp_alias \
-		sreport sacctmgr scontrol squeue scancel sshare sbcast sinfo \
-		sprio sacct salloc sbatch srun sattach sdiag sstat
 }
 
 pkg_preinst() {
