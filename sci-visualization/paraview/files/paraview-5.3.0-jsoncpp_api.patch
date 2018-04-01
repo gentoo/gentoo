@@ -1,0 +1,32 @@
+diff --git a/Documentation/release/dev/jsoncpp-1.8.4.md b/Documentation/release/dev/jsoncpp-1.8.4.md
+new file mode 100644
+index 0000000..06cf899
+--- /dev/null
++++ b/Documentation/release/dev/jsoncpp-1.8.4.md
+@@ -0,0 +1,10 @@
++# jsoncpp-1.8.4
++
++
++* There was a recent API change in jsoncpp-1.8.4, which changed all
++  `removeMember()` methods of `Json::Value` to either return `bool`
++  or being `void` type. The now used overloaded `removeMember()`
++  method is available since jsoncpp-0.8.0 and returns the removed
++  value in a pre-allocated buffer instead of returning a new created
++  `Json::Value` object. The underlying semantics of the lifetime and
++  memory allocation of the used buffer are kept the same way as before.
+diff --git a/ParaViewCore/ServerManager/Core/vtkSMSettings.cxx b/ParaViewCore/ServerManager/Core/vtkSMSettings.cxx
+index b6e2b55..d27ad9d 100644
+--- a/ParaViewCore/ServerManager/Core/vtkSMSettings.cxx
++++ b/ParaViewCore/ServerManager/Core/vtkSMSettings.cxx
+@@ -788,7 +788,10 @@ public:
+           this->GetSettingBelowPriority(propertySettingCString, highestPriority);
+         if (lowerPriorityValue.isNull())
+         {
+-          if (!proxyValue.removeMember(property->GetXMLName()).isNull())
++          // Allocated as done in Json::Value removeMember(const char* key).
++          Json::Value removedValue;
++          if (proxyValue.removeMember(property->GetXMLName(), &removedValue) &&
++            !removedValue.isNull())
+           {
+             this->Modified();
+           }
