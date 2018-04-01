@@ -8905,7 +8905,7 @@ net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written 
 net-misc/sshpass 1.05: Tool for noninteractively performing password authentication with ssh
 net-misc/sslh 1.18-r2: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneling Protocol (SSTP)
-net-misc/ssvnc 1.0.29-r1: VNC viewer that adds encryption security to VNC connections
+net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connections
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.36: TLS/SSL - Port Wrapper
