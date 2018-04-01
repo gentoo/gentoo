@@ -4,10 +4,10 @@ DESCRIPTION=Lua Assertions Extension
 EAPI=6
 HOMEPAGE=http://olivinelabs.com/busted/
 IUSE=luajit test
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) >=dev-lua/say-1.2_p1[luajit=]
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/luassert/archive/v1.7.10.tar.gz -> luassert-1.7.10.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=685bced1c50031eddc7dc3bd62d2a7f9
+_md5_=43f527b9e910b7f08b4045e4f867b39f
