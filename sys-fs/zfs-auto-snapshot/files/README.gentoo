@@ -1,0 +1,22 @@
+Use com.sun:auto-snapshot attribute to enable snapshots for datasets
+the syntax is:
+
+zfs set com.sun:auto-snapshot=[true|false]
+
+or:
+
+zfs set com.sun:auto-snapshot:<frequent|hourly|daily|weekly|monthly>=[true|false]
+
+for example:
+
+# zfs set com.sun:auto-snapshot=false zroot
+Will disalbe all snapshots for zroot and all nested datasets will inherit the property.
+
+# zfs set com.sun:auto-snapshot=true zroot/ROOT/default
+Will enable all types of snapshots for given dataset.
+
+# zfs set com.sun:auto-snapshot:weekly=true pool/var
+Will enable only weekly snapshots for given dataset.
+
+for details please visit:
+https://docs.oracle.com/cd/E19120-01/open.solaris/817-2271/ghzuk/index.html
