@@ -1848,7 +1848,7 @@ dev-db/mysql-connector-c++ 1.1.3 1.1.6: MySQL database connector for C++ (mimics
 dev-db/mysql-init-scripts 2.2-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r3: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 6.3.4-r1: MySQL Workbench
-dev-db/mysqltuner 1.2.0: MySQLTuner is a high-performance MySQL tuning script
+dev-db/mysqltuner 1.2.0 1.6.18: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.6-r4: mytop - a top clone for mysql
 dev-db/opendbx 1.4.5-r1: OpenDBX - A database abstraction layer
 dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.3 11.2.0.4: Oracle 11g Instant Client with SDK
@@ -2983,7 +2983,7 @@ dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0: Jemalloc is a general-purpose scalable c
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12: A JSON implementation in C
 dev-libs/json-glib 1.2.8: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 1.8.1: C++ JSON reader and writer
+dev-libs/jsoncpp 1.8.1 1.8.4: C++ JSON reader and writer
 dev-libs/jthread 1.3.1 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.4 1.0.5 1.0.5-r2: A C library that implements a dynamic array
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
@@ -5405,7 +5405,7 @@ dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.1-r1: Python bindings for Qscintilla
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
-dev-python/rarfile 2.8: Module for RAR archive reading
+dev-python/rarfile 2.8 3.0: Module for RAR archive reading
 dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
@@ -8740,7 +8740,7 @@ net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/aria2 1.30.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.30.0 1.33.1: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/asterisk 11.25.3 13.19.0-r1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
@@ -9774,7 +9774,7 @@ sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
 sys-apps/paludis 3.0.0_pre20170808: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/pciutils 3.4.1: Various utilities dealing with the PCI bus
-sys-apps/pcmciautils 018_p8: PCMCIA userspace utilities for Linux
+sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.20 1.8.22: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7: SELinux core utilities
@@ -9809,7 +9809,7 @@ sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 6.1 6.3: The GNU info program and utilities
 sys-apps/the_silver_searcher 2.0.0: A code-searching tool similar to ack, but faster
-sys-apps/timer_entropyd 0.2: A timer-based entropy generator
+sys-apps/timer_entropyd 0.2 0.3: A timer-based entropy generator
 sys-apps/uam 0.3.2: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99: proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.94-r1: Command-line tools for building SSL client-server applications
@@ -10122,7 +10122,7 @@ sys-libs/libselinux 2.6 2.7: SELinux userland library
 sys-libs/libsemanage 2.6 2.7: SELinux kernel and policy management library
 sys-libs/libsepol 2.6 2.7: SELinux binary policy representation library
 sys-libs/libsmbios 2.3.2: Provide access to (SM)BIOS information
-sys-libs/libstatgrab 0.17: A tool to provide access to statistics about the system on which it's run
+sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r1: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3: Compatibility package for old termcap-based programs
 sys-libs/libunwind 1.1-r1 1.2.1: Portable and efficient API to determine the call-chain of a program
@@ -11215,7 +11215,7 @@ x11-wm/i3 4.13-r1: An improved dynamic tiling window manager
 x11-wm/icewm 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2: Very fast and lightweight still powerful window manager for X
 x11-wm/lumina 1.3.0_p1: Lumina desktop environment
-x11-wm/lwm 1.2.2: The ultimate lightweight window manager
+x11-wm/lwm 1.2.2 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.12.1: MATE default window manager
 x11-wm/muffin 2.8.5 3.0.5: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
