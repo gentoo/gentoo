@@ -12,7 +12,7 @@ SRC_URI="http://opendx.sdsc.edu/source/${MYP}.tar.gz"
 
 LICENSE="IBM"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="hdf cdf netcdf tiff imagemagick szip smp"
 
 RDEPEND="x11-libs/libXmu
