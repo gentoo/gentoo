@@ -3922,7 +3922,7 @@ dev-perl/Module-Locate 1.800.0: Locate modules in the same fashion as require an
 dev-perl/Module-Manifest 1.80.0-r1: Parse and examine a Perl distribution MANIFEST file
 dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to have plugins
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
-dev-perl/Module-Runtime 0.14.0 0.16.0: Runtime module handling
+dev-perl/Module-Runtime 0.16.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
 dev-perl/Module-ScanDeps 1.230.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.790.0: Module signature file manipulation
@@ -4373,7 +4373,7 @@ dev-perl/gtk2-spell 1.40.0-r1: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r1: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1: Perl bindings for EggTrayManager
 dev-perl/indirect 0.360.0: Lexically warn about using the indirect method call syntax
-dev-perl/libintl-perl 1.200.0-r1 1.240.0 1.240.0-r2: High-Level Interface to Uniforum Message Translation
+dev-perl/libintl-perl 1.240.0-r2: High-Level Interface to Uniforum Message Translation
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
 dev-perl/libwww-perl 6.150.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=sys-devel/automake sys-devel/autoconf ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Open Source File Integrity Checker and IDS
+EAPI=6
+HOMEPAGE=http://www.tripwire.org/
+IUSE=libressl selinux ssl static +tools
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+PDEPEND=tools? ( app-admin/mktwpol )
+RDEPEND=virtual/cron virtual/mta selinux? ( sec-policy/selinux-tripwire ) ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=https://github.com/Tripwire/tripwire-open-source/archive/2.4.3.7.tar.gz -> tripwire-2.4.3.7.tar.gz
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	02908f00f002f0f07c5b74783d778325	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=bc64aebaaef0238aa967e64739e093da
