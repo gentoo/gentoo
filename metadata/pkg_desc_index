@@ -8910,7 +8910,7 @@ net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/stunnel 5.36: TLS/SSL - Port Wrapper
 net-misc/suite3270 3.4_p10 3.5_p10: Complete 3270 access package
-net-misc/taylor-uucp 1.07-r2: Taylor UUCP
+net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2: Bandwidth limiting pipe
@@ -9959,7 +9959,7 @@ sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel b
 sys-devel/binutils 2.29.1-r1: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/boost-m4 0.4: Another set of autoconf macros for compiling against boost
+sys-devel/boost-m4 0.4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 3.9.1-r100 4.0.1 5.0.1: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.1 4.0.1 5.0.1: Meta-ebuild for clang runtime libraries
 sys-devel/crossdev 20171230: Gentoo Cross-toolchain generator
