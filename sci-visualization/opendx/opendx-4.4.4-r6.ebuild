@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-open.patch"
 	"${FILESDIR}/${P}-szip.patch"
 	"${FILESDIR}/${P}-null.patch"
+	"${FILESDIR}/${P}-invalid-conversion.patch"
 	"${WORKDIR}/${PN}-4.4.4_p20160917-fix-c++14.patch"
 )
 
