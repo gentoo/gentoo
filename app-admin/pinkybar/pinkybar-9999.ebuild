@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/su8/pinky-bar"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+alsa colors drivetemp drivetemp-light dvd dwm libnl lisp lua mpd
+IUSE="+alsa colors drivetemp drivetemp-light dvd dwm keyboard libnl lisp lua mpd
 	ncurses +net +pci perl python2 r ruby sensors slang smartemp tcl weather"
 
 DEPEND="
@@ -29,6 +29,7 @@ RDEPEND="
 	drivetemp? ( net-misc/curl app-admin/hddtemp )
 	drivetemp-light? ( app-admin/hddtemp )
 	dvd? ( dev-libs/libcdio )
+	dwm? || keyboard? ( x11-libs/libX11 )
 	libnl? ( >=dev-libs/libnl-3.2.27 virtual/pkgconfig )
 	lisp? ( dev-lisp/ecls )
 	lua? ( dev-lang/lua )
@@ -44,15 +45,14 @@ RDEPEND="
 	smartemp? ( sys-apps/smartmontools )
 	tcl? ( dev-lang/tcl )
 	weather? ( net-misc/curl app-arch/gzip )
-	dwm? ( x11-libs/libX11 )
 
 "
 REQUIRED_USE="
 	drivetemp? ( !smartemp )
 	drivetemp-light? ( !smartemp )
+	dwm? ( !ncurses )
 	ncurses? ( !dwm )
 	smartemp? ( !drivetemp !drivetemp-light )
-	dwm? ( !ncurses )
 "
 
 src_prepare() {
@@ -71,6 +71,7 @@ src_configure() {
 		$(use_with drivetemp-light)
 		$(use_with dvd)
 		$(use_with dwm)
+		$(use_with keyboard)
 		$(use_with libnl)
 		$(use_with lisp)
 		$(use_with lua)

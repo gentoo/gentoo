@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sacewe@emailure.net</email>
+		<email>wifiextender@yandex.com</email>
 		<name>Aaron Caffrey</name>
 	</maintainer>
 	<maintainer type="project">
@@ -19,12 +19,16 @@
 		<flag name="drivetemp-light">Read the drive temperature from S.M.A.R.T
 			light version.</flag>
 		<flag name="dvd">To get the cdrom or dvdrom vendor and model names.</flag>
-		<flag name="dwm">Output the data to the root window. Enable it if you are using dwm.</flag>
+		<flag name="dwm">Output the data to the root window. Enable it if you are
+			using dwm.</flag>
+		<flag name="keyboard">Query xorg and show the currently used keyboard
+			layout.</flag>
 		<flag name="libnl">Enable the wifi related options regarding chipsets
 			supporting the cfg80211,mac80211 modules</flag>
 		<flag name="lisp">Extend pinkybar with your own crafted script written
 			in lisp, stored in /usr/share/pinkysc/pinky.lisp</flag>
-		<flag name="mpd">To see the currently played song name, date, artist(s), title.</flag>
+		<flag name="mpd">To see the currently played song name, date, artist(s),
+			title.</flag>
 		<flag name="ncurses">Output the data to the terminal using the ncurses
 			library.</flag>
 		<flag name="net">Enable the internet related options.</flag>
