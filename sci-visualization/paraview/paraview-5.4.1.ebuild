@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit eutils cmake-utils multilib python-single-r1 toolchain-funcs versionator
@@ -25,21 +25,26 @@ REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
 	mysql? ( sqlite )" # "vtksqlite, needed by vtkIOSQL" and "vtkIOSQL, needed by vtkIOMySQL"
 
 RDEPEND="
+	app-arch/lz4
 	dev-libs/expat
 	dev-libs/jsoncpp
 	dev-libs/libxml2:2
 	dev-libs/protobuf
+	dev-libs/pugixml
 	media-libs/freetype
+	media-libs/glew:0
 	media-libs/libpng:0
 	media-libs/libtheora
 	media-libs/tiff:0=
+	sci-libs/cgnslib
 	sci-libs/hdf5[mpi=]
 	>=sci-libs/netcdf-4.2[hdf5]
 	>=sci-libs/netcdf-cxx-4.2:3
+	sci-libs/xdmf2
 	sys-libs/zlib
+	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
-	virtual/glu
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXmu
@@ -55,10 +60,14 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	python? (
 		${PYTHON_DEPS}
+		dev-python/constantly[${PYTHON_USEDEP}]
+		dev-python/incremental[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/sip[${PYTHON_USEDEP}]
-		dev-python/twisted-core
+		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/twisted-core[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 		mpi? ( dev-python/mpi4py )
 		qt5? ( dev-python/PyQt5[opengl,webkit,${PYTHON_USEDEP}] )
@@ -86,6 +95,8 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch
+	"${FILESDIR}"/${PN}-5.3.0-fix_buildsystem.patch
+	"${FILESDIR}"/${P}-jsoncpp_1.8.4.patch
 )
 
 pkg_pretend() {
@@ -102,7 +113,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	default
 
 	# lib64 fixes
 	sed -i \
@@ -114,13 +125,10 @@ src_prepare() {
 	sed -i \
 		-e "s:lib/paraview-:$(get_libdir)/paraview-:g" \
 		CMakeLists.txt \
-		Plugins/SciberQuestToolKit/CMakeLists.txt \
 		ParaViewConfig.cmake.in \
 		CoProcessing/PythonCatalyst/vtkCPPythonScriptPipeline.cxx \
 		ParaViewCore/ClientServerCore/Core/vtkProcessModuleInitializePython.h \
-		ParaViewCore/ClientServerCore/Core/vtkPVPluginTracker.cxx \
-		Plugins/SciberQuestToolKit/ParaViewPlugin/CMakeLists.txt \
-		Plugins/SciberQuestToolKit/SciberQuest/CMakeLists.txt || die
+		ParaViewCore/ClientServerCore/Core/vtkPVPluginTracker.cxx || die
 
 	# no proper switch
 	if ! use nvcontrol; then
@@ -135,8 +143,6 @@ src_configure() {
 		export QT_SELECT=qt5
 	fi
 
-	# VTK_USE_SYSTEM_QTTESTING
-	# PARAVIEW_USE_SYSTEM_AUTOBAHN
 	local mycmakeargs=(
 		-DPV_INSTALL_LIB_DIR="${PVLIBDIR}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"/usr
@@ -148,24 +154,33 @@ src_configure() {
 		-DCMAKE_COLOR_MAKEFILE=TRUE
 		-DCMAKE_USE_PTHREADS=ON
 		-DCMAKE_VERBOSE_MAKEFILE=ON
-		-DPARAVIEW_USE_SYSTEM_MPI4PY=ON
-		-DPROTOC_LOCATION=$(type -P protoc)
 		-DVTK_Group_StandAlone=ON
 		-DVTK_RENDERING_BACKEND=OpenGL2
 		-DVTK_USE_FFMPEG_ENCODER=OFF
 		-DVTK_USE_OFFSCREEN=TRUE
+		# -DVTK_USE_SYSTEM_AUTOBAHN once we transitioned to Python 3...
+		-DVTK_USE_SYSTEM_CGNS=ON
+		-DVTK_USE_SYSTEM_PUGIXML=ON
+		-DVTK_USE_SYSTEM_PYGMENTS=ON
 		-DVTK_USE_SYSTEM_EXPAT=ON
 		-DVTK_USE_SYSTEM_FREETYPE=ON
-		-DVTK_USE_SYSTEM_GL2PS=OFF
+		-DVTK_USE_SYSTEM_GL2PS=OFF # doesn't compile, requires modified sources
+		-DVTK_USE_SYSTEM_GLEW=ON
 		-DVTK_USE_SYSTEM_HDF5=ON
+		-DVTK_USE_SYSTEM_INCREMENTAL=ON
 		-DVTK_USE_SYSTEM_JPEG=ON
 		-DVTK_USE_SYSTEM_JSONCPP=ON
+		-DVTK_USE_SYSTEM_LIBHARU=OFF # doesn't compile, requires modified sources
 		-DVTK_USE_SYSTEM_LIBXML2=ON
+		-DVTK_USE_SYSTEM_LZ4=ON
+		-DVTK_USE_SYSTEM_MPI4PY=ON
 		-DVTK_USE_SYSTEM_NETCDF=ON
 		-DVTK_USE_SYSTEM_OGGTHEORA=ON
 		-DVTK_USE_SYSTEM_PNG=ON
 		-DVTK_USE_SYSTEM_PROTOBUF=ON
+		-DVTK_USE_SYSTEM_SIX=ON
 		-DVTK_USE_SYSTEM_TIFF=ON
+		-DVTK_USE_SYSTEM_XDMF2=ON
 		-DVTK_USE_SYSTEM_TWISTED=ON
 		-DVTK_USE_SYSTEM_XDMF2=OFF
 		-DVTK_USE_SYSTEM_ZLIB=ON
@@ -175,95 +190,82 @@ src_configure() {
 		-DModule_vtkUtilitiesProcessXML=ON
 		)
 
-	# TODO: XDMF_USE_MYSQL?
-	# VTK_WRAP_JAVA
 	mycmakeargs+=(
-		$(cmake-utils_use development PARAVIEW_INSTALL_DEVELOPMENT_FILES)
-		$(cmake-utils_use qt5 PARAVIEW_BUILD_QT_GUI)
+		-DPARAVIEW_INSTALL_DEVELOPMENT_FILES="$(usex development)"
+
+		-DModule_vtkGUISupportQtOpenGL="$(usex qt5)"
+		-DModule_vtkGUISupportQtSQL="$(usex qt5)"
+		-DModule_vtkGUISupportQtWebkit="$(usex qt5)"
+		-DModule_vtkRenderingQt="$(usex qt5)"
+		-DModule_vtkViewsQt="$(usex qt5)"
+		-DPARAVIEW_BUILD_QT_GUI="$(usex qt5)"
+		-DVTK_Group_ParaViewQt="$(usex qt5)"
+		-DVTK_Group_Qt="$(usex qt5)"
+		-DModule_pqPython="$(usex qt5 "$(usex python)" "off")"
 		$(usex qt5 "-DPARAVIEW_QT_VERSION=5" "")
-		$(cmake-utils_use qt5 Module_vtkGUISupportQtOpenGL)
-		$(cmake-utils_use qt5 Module_vtkGUISupportQtSQL)
-		$(cmake-utils_use qt5 Module_vtkGUISupportQtWebkit)
-		$(cmake-utils_use qt5 Module_vtkRenderingQt)
-		$(cmake-utils_use qt5 Module_vtkViewsQt)
-		$(cmake-utils_use qt5 VTK_Group_ParaViewQt)
-		$(cmake-utils_use qt5 VTK_Group_Qt)
-		$(cmake-utils_use !qt5 PQWIDGETS_DISABLE_QTWEBKIT)
-		$(cmake-utils_use boost Module_vtkInfovisBoost)
-		$(cmake-utils_use boost Module_vtkInfovisBoostGraphAlg)
-		$(cmake-utils_use mpi PARAVIEW_USE_MPI)
-		$(cmake-utils_use mpi PARAVIEW_USE_MPI_SSEND)
-		$(cmake-utils_use mpi PARAVIEW_USE_ICE_T)
-		$(cmake-utils_use mpi VTK_Group_MPI)
-		$(cmake-utils_use mpi VTK_XDMF_USE_MPI)
-		$(cmake-utils_use mpi XDMF_BUILD_MPI)
-		$(cmake-utils_use python PARAVIEW_ENABLE_PYTHON)
-		$(cmake-utils_use python VTK_Group_ParaViewPython)
-		$(cmake-utils_use python XDMF_WRAP_PYTHON)
-		$(cmake-utils_use python Module_vtkPython)
-		$(cmake-utils_use python Module_pqPython)
-		$(cmake-utils_use python Module_vtkWrappingPythonCore)
-		$(cmake-utils_use python Module_vtkPVPythonSupport)
-		$(cmake-utils_use python Module_AutobahnPython)
-		$(cmake-utils_use python Module_Twisted)
-		$(cmake-utils_use python Module_ZopeInterface)
-		$(cmake-utils_use python Module_vtkmpi4py)
-		$(usex qt5 "$(cmake-utils_use python Module_pqPython)" "-DModule_pqPython=OFF")
-		$(cmake-utils_use doc BUILD_DOCUMENTATION)
-		$(cmake-utils_use doc PARAVIEW_BUILD_WEB_DOCUMENTATION)
-		$(cmake-utils_use examples BUILD_EXAMPLES)
-		$(cmake-utils_use cg VTK_USE_CG_SHADERS)
-		$(cmake-utils_use mysql Module_vtkIOMySQL)
-		$(cmake-utils_use sqlite Module_vtksqlite)
-		$(cmake-utils_use coprocessing PARAVIEW_ENABLE_CATALYST)
-		$(cmake-utils_use ffmpeg PARAVIEW_ENABLE_FFMPEG)
-		$(cmake-utils_use ffmpeg VTK_USE_FFMPEG_ENCODER)
-		$(cmake-utils_use ffmpeg Module_vtkIOFFMPEG)
-		$(cmake-utils_use tk VTK_Group_Tk)
-		$(cmake-utils_use tk VTK_USE_TK)
-		$(cmake-utils_use tk Module_vtkRenderingTk)
-		$(cmake-utils_use tcl Module_vtkTclTk)
-		$(cmake-utils_use tcl Module_vtkWrappingTcl)
-		$(cmake-utils_use test BUILD_TESTING)
+
+		-DModule_vtkInfovisBoost="$(usex boost)"
+
+		-DPARAVIEW_USE_ICE_T="$(usex mpi)"
+		-DPARAVIEW_USE_MPI_SSEND="$(usex mpi)"
+		-DPARAVIEW_USE_MPI="$(usex mpi)"
+		-DVTK_Group_MPI="$(usex mpi)"
+		-DVTK_XDMF_USE_MPI="$(usex mpi)"
+		-DXDMF_BUILD_MPI="$(usex mpi)"
+
+		-DModule_AutobahnPython="$(usex python)"
+		-DModule_pqPython="$(usex python)"
+		-DModule_Twisted="$(usex python)"
+		-DModule_vtkmpi4py="$(usex python)"
+		-DModule_vtkPython="$(usex python)"
+		-DModule_vtkWrappingPythonCore="$(usex python)"
+		-DModule_ZopeInterface="$(usex python)"
+		-DPARAVIEW_ENABLE_PYTHON="$(usex python)"
+		-DXDMF_WRAP_PYTHON="$(usex python)"
+
+		-DBUILD_DOCUMENTATION="$(usex doc)"
+
+		-DBUILD_EXAMPLES="$(usex examples)"
+
+		-DModule_vtkIOMySQL="$(usex mysql)"
+
+		-DModule_vtksqlite="$(usex sqlite)"
+
+		-DPARAVIEW_ENABLE_CATALYST="$(usex coprocessing)"
+
+		-DPARAVIEW_ENABLE_FFMPEG="$(usex ffmpeg)"
+		-DVTK_USE_FFMPEG_ENCODER="$(usex ffmpeg)"
+		-DModule_vtkIOFFMPEG="$(usex ffmpeg)"
+
+		-DVTK_Group_Tk="$(usex tk)"
+		-DVTK_USE_TK="$(usex tk)"
+		-DModule_vtkRenderingTk="$(usex tk)"
+		-DModule_vtkTclTk="$(usex tcl)"
+		-DModule_vtkWrappingTcl="$(usex tcl)"
+		-DBUILD_TESTING="$(usex test)"
 		)
 
 	if use openmp; then
 		mycmakeargs+=( -DVTK_SMP_IMPLEMENTATION_TYPE=OpenMP )
 	fi
 
-	if use qt5 ; then
-		mycmakeargs+=( -DVTK_INSTALL_QT_DIR=/${PVLIBDIR}/plugins/designer )
-		if use python ; then
-			# paraview cannot guess sip directory properly
-			mycmakeargs+=( -DSIP_INCLUDE_DIR="${EPREFIX}$(python_get_includedir)" )
-		fi
-	fi
-
 	# TODO: MantaView VaporPlugin VRPlugin
 	mycmakeargs+=(
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_AdiosReader)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_AnalyzeNIfTIIO)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_ArrowGlyph)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_EyeDomeLighting)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_ForceTime)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_GMVReader)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_H5PartReader)
-		$(cmake-utils_use plugins RAVIEW_BUILD_PLUGIN_MobileRemoteControl)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_Moments)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_NonOrthogonalSource)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_PacMan)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_PointSprite)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_PrismPlugin)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_QuadView)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_SLACTools)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_SciberQuestToolKit)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_SierraPlotTools)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_StreamingParticles)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_SurfaceLIC)
-		$(cmake-utils_use plugins PARAVIEW_BUILD_PLUGIN_UncertaintyRendering)
+		-DPARAVIEW_BUILD_PLUGIN_AdiosReader="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_AnalyzeNIfTIIO="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_ArrowGlyph="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_EyeDomeLighting="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_GMVReader="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_Moments="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_NonOrthogonalSource="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_PacMan="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_SierraPlotTools="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_SLACTools="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_StreamingParticles="$(usex plugins)"
+		-DPARAVIEW_BUILD_PLUGIN_SurfaceLIC="$(usex plugins)"
 		# these are always needed for plugins
-		$(cmake-utils_use plugins Module_vtkFiltersFlowPaths)
-		$(cmake-utils_use plugins Module_vtkPVServerManagerApplication)
+		-DModule_vtkFiltersFlowPaths="$(usex plugins)"
+		-DModule_vtkPVServerManagerApplication="$(usex plugins)"
 		)
 
 	cmake-utils_src_configure
