@@ -25,7 +25,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MYP}"
 
-PATCHES=( "${FILESDIR}"/${P}-no-interactive.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-no-interactive.patch
+	"${FILESDIR}"/${P}-gcc7.patch
+)
 
 src_prepare() {
 	default
