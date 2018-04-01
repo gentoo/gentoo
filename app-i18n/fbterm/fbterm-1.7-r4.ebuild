@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,11 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="gpm video_cards_vesa"
 
-RDEPEND="media-libs/fontconfig
+COMMON_DEPEND="media-libs/fontconfig
 	media-libs/freetype:2
 	gpm? ( sys-libs/gpm )
 	video_cards_vesa? ( dev-libs/libx86 )"
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}
+	!>=sys-libs/ncurses-6.1"
+DEPEND="${COMMON_DEPEND}
 	sys-libs/ncurses
 	virtual/pkgconfig"
 
