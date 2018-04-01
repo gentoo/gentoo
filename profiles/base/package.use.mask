@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mart Raudsepp <leio@gentoo.org> (1 Apr 2018)
+# rust[extended] file collides with dev-util/cargo, while everything
+# in tree uses the latter at the moment (#645562)
+dev-lang/rust extended
+
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # app-backup/holland-lib-mysql will be removed (#643502)
 app-backup/holland mysql
