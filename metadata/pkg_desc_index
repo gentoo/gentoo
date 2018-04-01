@@ -5804,7 +5804,7 @@ dev-ruby/net-ssh 2.10.0: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-telnet 0.1.1-r1: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
-dev-ruby/nokogiri 1.6.8.1 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/ox 2.8.2: A fast XML parser and Object marshaller
