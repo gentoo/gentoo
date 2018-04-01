@@ -4020,7 +4020,7 @@ dev-perl/Package-Constants 0.60.0: List all constants declared in a package
 dev-perl/Package-DeprecationManager 0.150.0: Manage deprecation warnings for your distribution
 dev-perl/Package-Stash 0.370.0: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.280.0: Faster and more correct implementation of the Package::Stash API
-dev-perl/PadWalker 2.200.0 2.300.0: play with other peoples' lexical variables
+dev-perl/PadWalker 2.300.0: play with other peoples' lexical variables
 dev-perl/Palm 1.12.0-r1: Perl Module for Palm Pilots
 dev-perl/Pango 1.227.0: Layout and render international text
 dev-perl/Parallel-ForkManager 1.170.0: A simple parallel processing fork manager
@@ -4028,7 +4028,7 @@ dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.220.0: Flexible system for validation of method/function call parameters
-dev-perl/Parse-RecDescent 1.967.13 1.967.15: Generate Recursive-Descent Parsers
+dev-perl/Parse-RecDescent 1.967.15: Generate Recursive-Descent Parsers
 dev-perl/Parse-Syslog 1.100.0-r1: Parse::Syslog - Parse Unix syslog files
 dev-perl/Parse-Yapp 1.50.0-r1: Compiles yacc-like LALR grammars to generate Perl OO parser modules
 dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
@@ -4128,7 +4128,7 @@ dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
 dev-perl/Sub-Quote 2.3.1: efficient generation of subroutines via string eval
-dev-perl/Sub-Uplevel 0.250.0 0.280.0: Apparently run a function in a higher stack frame
+dev-perl/Sub-Uplevel 0.280.0: Apparently run a function in a higher stack frame
 dev-perl/Switch 2.170.0: A switch statement for Perl
 dev-perl/Symbol-Global-Name 0.50.0: Finds name and type of a global variable
 dev-perl/Sys-CPU 0.610.0: Access CPU info. number, etc on Win and UNIX
@@ -4200,7 +4200,7 @@ dev-perl/Test-Script 1.100.0: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.350.0: fork test
 dev-perl/Test-Spec 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
-dev-perl/Test-TCP 2.60.0 2.170.0 2.190.0-r1: Testing TCP program
+dev-perl/Test-TCP 2.190.0-r1: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
 dev-perl/Test-Time 0.40.0: Overrides the time() and sleep() core functions for testing
 dev-perl/Test-Trap 0.2.2-r1: Trap exit codes, exceptions, output, etc
@@ -4333,7 +4333,7 @@ dev-perl/XML-RSS-LibXML 0.310.500: XML::RSS with XML::LibXML
 dev-perl/XML-RSS-Parser 4.0.0-r1: A liberal object-oriented parser for RSS feeds
 dev-perl/XML-RegExp 0.40.0-r1: Regular expressions for XML tokens
 dev-perl/XML-SAX 0.990.0-r1: Perl module for using and building Perl SAX2 XML parsers, filters, and drivers
-dev-perl/XML-SAX-Base 1.80.0-r1 1.90.0: Base class SAX Drivers and Filters
+dev-perl/XML-SAX-Base 1.90.0: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-Writer 0.560.0: SAX2 Writer
 dev-perl/XML-Simple 2.200.0-r1 2.220.0: An API for simple XML files
