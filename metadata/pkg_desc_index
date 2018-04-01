@@ -590,7 +590,7 @@ app-editors/vim-core 8.0.0386 8.0.1298: vim and gvim shared files
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2: Free (Y)unicode text editor for all unices
-app-editors/zile 2.3.24-r2 2.4.11 2.4.13: Zile is a small Emacs clone
+app-editors/zile 2.3.24-r2 2.4.11: Zile is a small Emacs clone
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1: A Portable Emacs Library is a library for making portable Emacs Lisp programs
@@ -739,7 +739,7 @@ app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based 
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
-app-emulation/libvirt 4.1.0: C toolkit to manipulate virtual machines
+app-emulation/libvirt 4.1.0 4.1.0-r3: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/lxc 1.0.8 2.0.7 2.0.9: LinuX Containers userspace utilities
 app-emulation/lxd 2.14-r1 2.21: Fast, dense and secure container management
@@ -1073,7 +1073,7 @@ app-misc/ranger 1.8.1: A vim-inspired file manager for the console
 app-misc/realpath 1.17: Return the canonicalized absolute pathname
 app-misc/recoll 1.23.3: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
-app-misc/regionset 0.1-r1: Sets the region on DVD drives
+app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2: A utility to attach a running program to a new terminal
 app-misc/rioutil 1.5.0-r2: Tool for transfering mp3s to and from a Rio 600, 800, Riot, and Nike PSA/Play
@@ -1202,7 +1202,7 @@ app-portage/elogv 0.7.6.1-r1: Curses based utility to parse the contents of elog
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.7-r1: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.6.2 3.7.2-r1: emerge-webrsync using patches to minimize bandwidth
-app-portage/epkg 0.3: A simple portage wrapper which works like other package managers
+app-portage/epkg 0.3 0.4-r1: A simple portage wrapper which works like other package managers
 app-portage/esearch 1.3-r2: Replacement for 'emerge --search' with search-index
 app-portage/etc-proposals 1.4.3-r3: a set of tools for updating gentoo config files
 app-portage/euscan 0.1.1-r2: Ebuild upstream scan utility
@@ -9803,7 +9803,7 @@ sys-apps/shadow 4.4-r2 4.5: Utilities to deal with user accounts
 sys-apps/smartmontools 6.4 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 233-r6 236-r5: System and service manager for Linux
+sys-apps/systemd 236-r5: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
@@ -10075,6 +10075,8 @@ sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEm
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.9.0 4.14.0: xfs filesystem utilities
+sys-fs/zfs 0.7.7: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs-kmod 0.7.7: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/bliss-initramfs 7.1.3: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2: Gentoo automatic kernel building scripts
@@ -10082,6 +10084,7 @@ sys-kernel/genkernel-next 66 68: Gentoo automatic kernel building scripts, reloa
 sys-kernel/gentoo-sources 4.4.87-r1 4.4.111 4.4.111-r1 4.9.49-r1 4.9.72 4.9.76-r1: Full sources including the Gentoo patchset for the 4.9 kernel tree
 sys-kernel/linux-firmware 20180103-r1: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13: Linux system headers
+sys-kernel/spl 0.7.7: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.25.1-r2 2.27 2.28.1 2.29.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 4.0.1 5.0.1: Compiler runtime library for clang (built-in part)
