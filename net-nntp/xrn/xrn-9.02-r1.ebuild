@@ -9,7 +9,7 @@ SRC_URI="ftp://sipb.mit.edu/pub/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="
