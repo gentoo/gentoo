@@ -7,8 +7,9 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz
+		https://dev.gentoo.org/~floppym/dist/${P}-patches-0.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -56,7 +57,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	pam? ( virtual/pam:=[${MULTILIB_USEDEP}] )
 	pcre? ( dev-libs/libpcre2 )
 	qrcode? ( media-gfx/qrencode:0= )
-	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
+	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
 	selinux? ( sys-libs/libselinux:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
@@ -147,11 +148,14 @@ src_unpack() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/237-0001-networkctl-display-type.patch"
-	)
+	local PATCHES=()
 
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
+
+	PATCHES+=(
+		"${FILESDIR}/238-libmount-include.patch"
+		"${FILESDIR}/238-initctl.patch"
+	)
 
 	if ! use vanilla; then
 		PATCHES+=(
@@ -301,17 +305,12 @@ multilib_src_install_all() {
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
-	if use sysv-utils; then
-		local app
-		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym ../bin/systemctl /sbin/${app}
-		done
-		dosym ../lib/systemd/systemd /sbin/init
-	else
-		# we just keep sysvinit tools, so no need for the mans
-		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
-			|| die
+	if ! use sysv-utils; then
+		local rootprefix=$(usex usrmerge /usr '')
+		rm "${ED%/}${rootprefix}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
+		rmdir "${ED%/}${rootprefix}"/sbin || die
 		rm "${ED%/}"/usr/share/man/man1/init.1 || die
+		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 || die
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008

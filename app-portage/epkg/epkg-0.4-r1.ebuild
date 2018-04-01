@@ -9,7 +9,7 @@ SRC_URI="https://github.com/jdhore/${PN}/archive/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${PN}-${P}"

@@ -9,7 +9,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="amd64"
 	SLOT="0"
 else
 	# Versions with 4 numbers are stable updates:
@@ -18,7 +18,7 @@ else
 	else
 		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
