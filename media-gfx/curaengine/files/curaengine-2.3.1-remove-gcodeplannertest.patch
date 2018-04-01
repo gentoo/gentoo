@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 47dcd2d1..c2316d68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,9 +125,6 @@ set(engine_SRCS # Except main.cpp.
+ )
+ 
+ # List of tests. For each test there must be a file tests/${NAME}.cpp and a file tests/${NAME}.h.
+-set(engine_TEST
+-    GCodePlannerTest
+-)
+ set(engine_TEST_INFILL
+ )
+ set(engine_TEST_UTILS
