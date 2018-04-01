@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 	MY_P="FreeRDP-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 x86"
+	KEYWORDS="alpha amd64 ~arm ~ppc ~ppc64 x86"
 else
 	inherit git-r3
 	SRC_URI=""
