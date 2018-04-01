@@ -38,6 +38,8 @@ DOCS=(
 	docs/scim.cfg
 )
 
+PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
+
 src_prepare() {
 	default
 	eautoreconf
