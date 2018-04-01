@@ -1,0 +1,21 @@
+diff -Naur Electrum-3.1.2.orig/electrum.desktop Electrum-3.1.2/electrum.desktop
+--- Electrum-3.1.2.orig/electrum.desktop	2018-03-24 06:42:16.000000000 -0400
++++ Electrum-3.1.2/electrum.desktop	2018-04-01 08:37:43.362027638 -0400
+@@ -3,7 +3,7 @@
+ 
+ [Desktop Entry]
+ Comment=Lightweight Bitcoin Client
+-Exec=sh -c 'PATH="$HOME/.local/bin:$PATH" electrum %u'
++Exec=electrum %u
+ GenericName[en_US]=Bitcoin Wallet
+ GenericName=Bitcoin Wallet
+ Icon=electrum
+@@ -14,8 +14,4 @@
+ Terminal=false
+ Type=Application
+ MimeType=x-scheme-handler/bitcoin;
+-Actions=Testnet;
+ 
+-[Desktop Action Testnet]
+-Exec=sh -c 'PATH="$HOME/.local/bin:$PATH" electrum --testnet %u'
+-Name=Testnet mode
