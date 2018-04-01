@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,11 +56,7 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
-		x11-libs/libXaw
 		x11-libs/libXext
-		x11-libs/libXmu
-		x11-libs/libXp
-		x11-libs/libXpm
 		x11-libs/libXt
 	)"
 
@@ -71,8 +67,7 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	X? (
 		dev-lang/swig
-		x11-proto/xextproto
-		x11-proto/xproto
+		x11-base/xorg-proto
 	)"
 
 S="${WORKDIR}/${MY_P}"
