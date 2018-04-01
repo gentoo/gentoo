@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gcc-4.4.patch
 	"${FILESDIR}"/${PN}-gcc-4.5.patch
 	"${FILESDIR}"/${PN}-glibc-2.14.patch
+	"${FILESDIR}"/${PN}-rc_name.patch
 	"${FILESDIR}"/${PN}-time.patch
 	"${FILESDIR}"/${PN}-tinfo.patch
 	"${FILESDIR}"/${PN}-w3mman.patch
