@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,30 +17,32 @@ else
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
-	SRC_URI="https://www.schedmd.com/download/latest/${MY_P}.tar.bz2"
+	SRC_URI="https://download.schedmd.com/slurm/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
-inherit autotools eutils pam perl-module prefix user ${INHERIT_GIT}
+inherit autotools bash-completion-r1 eutils pam perl-module prefix user ${INHERIT_GIT}
 
 DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug lua multiple-slurmd +munge mysql pam perl ssl static-libs torque"
+IUSE="debug lua multiple-slurmd +munge mysql pam perl ssl static-libs torque X"
 
 DEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
 	!net-analyzer/sinfo
+	sys-cluster/pmix[-pmi]
 	mysql? ( virtual/mysql )
 	munge? ( sys-auth/munge )
 	pam? ( virtual/pam )
 	ssl? ( dev-libs/openssl:0= )
 	lua? ( dev-lang/lua:0= )
 	!lua? ( !dev-lang/lua )
+	X? ( net-libs/libssh2 )
 	>=sys-apps/hwloc-1.1.1-r1"
 RDEPEND="${DEPEND}
 	dev-libs/libcgroup"
@@ -103,6 +105,7 @@ src_configure() {
 	use mysql || myconf+=( --without-mysql_config )
 	econf "${myconf[@]}" \
 		$(use_enable pam) \
+		$(use_enable X x11) \
 		$(use_with ssl) \
 		$(use_with munge) \
 		$(use_enable static-libs static) \
@@ -178,6 +181,11 @@ src_install() {
 	# Install logrotate file
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/logrotate" slurm
+
+	newbashcomp contribs/slurm_completion_help/slurm_completion.sh scontrol
+	bashcomp_alias scontrol \
+		sreport sacctmgr squeue scancel sshare sbcast sinfo \
+		sprio sacct salloc sbatch srun sattach sdiag sstat
 }
 
 pkg_preinst() {
