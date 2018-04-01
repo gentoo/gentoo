@@ -7,7 +7,7 @@ DIST_NAME=AcePerl
 DIST_AUTHOR=LDS
 DIST_VERSION=1.92
 DIST_EXAMPLES=("examples/*")
-inherit perl-module
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="Object-Oriented Access to ACEDB Databases"
 
@@ -23,18 +23,20 @@ RDEPEND="virtual/perl-Digest-MD5
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed -i 's/", "1")/", "3")/' "${S}/Makefile.PL" || die "Can't patch config"
+	eapply "${FILESDIR}/${PN}-1.92-rpcxs.patch"
+	eapply "${FILESDIR}/${PN}-1.92-gcc-nonvoid.patch"
+
 	cat > "${S}/acelib/wmake/DARWIN_DEF" <<EOF
 NAME = DARWIN
-COMPILER = clang -fwritable-strings -DACEDB4 -DPOSIX
-LINKER = clang
+COMPILER = $(tc-getCC) -fwritable-strings -DACEDB4 -DPOSIX
+LINKER = $(tc-getLD)
 
 LIBS = -lm
 
 EOF
 
 	if use elibc_glibc ; then
-		sed -i -e 's:^USEROPTS=:USEROPTS=-I/usr/include/tirpc :g' -e 's:^LIBS =:LIBS = -ltirpc:g' "${S}/acelib/wmake/LINUX_DEF"
+		eapply "${FILESDIR}/${PN}-1.92-glibc26.patch"
 		export LIBS="-ltirpc"
 	fi
 
