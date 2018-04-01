@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.joedog.org/siege-home/"
 SRC_URI="http://download.joedog.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~hppa ~mips ~ppc ~x86 ~x64-macos"
 SLOT="0"
 IUSE="libressl ssl"
 
