@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,10 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="hdf cdf netcdf tiff imagemagick szip smp"
 
-RDEPEND="x11-libs/libXmu
-	x11-libs/libXi
-	x11-libs/libXp
+RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXmu
 	x11-libs/libXpm
+	x11-libs/libXt
 	>=x11-libs/motif-2.3:0
 	virtual/opengl
 	virtual/glu
