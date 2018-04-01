@@ -1098,7 +1098,7 @@ app-misc/supercat 0.5.5-r2: A text file colorizer using powerful regular express
 app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
-app-misc/tdfsb 0.0.10: SDL based graphical file browser
+app-misc/tdfsb 0.0.10 0.0.10-r1: SDL based graphical file browser
 app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1 1.1-r1: A text filtering pipe that marks each line with a timestamp
@@ -1280,7 +1280,7 @@ app-text/bibletime 2.11.0: Qt Bible study application using the SWORD library
 app-text/bibus 1.5.2-r3: Bibliographic and reference management software, integrates with LO and MS Word
 app-text/blahtexml 0.9: TeX-to-MathML converter
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
-app-text/build-docbook-catalog 1.19.1: DocBook XML catalog auto-updater
+app-text/build-docbook-catalog 1.19.1 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
 app-text/calibre 2.78.0 3.15.0: Ebook management application
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
@@ -8484,7 +8484,7 @@ net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/openfire 4.1.0: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.12.0: GTK Instant Messenger client
 net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
-net-im/purple-events 0.2: Allows a fine-grained control over libpurple events
+net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/sendxmpp 1.23: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
@@ -8968,6 +8968,7 @@ net-nntp/nzbget 14.1: A command-line based binary newsgrabber supporting .nzb fi
 net-nntp/pan 0.142: A newsreader for GNOME
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/tin 2.0.1-r1 2.2.1 2.4.2: A threaded NNTP and spool based UseNet newsreader
+net-nntp/xrn 9.02-r1: A small and fast news reader for X
 net-p2p/amule 2.3.2-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.15.1: An end-user Qt GUI for the Bitcoin crypto-currency
@@ -10981,7 +10982,7 @@ x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with 
 x11-plugins/pidgin-sipe 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
-x11-plugins/purple-libnotify-plus 1.99.2: Provide libnotify interface to Pidgin and Finch
+x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/vicious 2.1.3 2.3.1: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r2: WMaker DockApp: A Calendar clock with antialiased text
