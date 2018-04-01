@@ -21,14 +21,10 @@ RDEPEND="sys-libs/zlib
 	net-misc/stunnel
 	java? ( virtual/jre:* )
 	x11-terms/xterm
-	x11-libs/libICE
-	x11-libs/libSM
 	x11-libs/libXaw
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libXp
-	x11-libs/libXpm
 	x11-libs/libXt"
 DEPEND="${RDEPEND}
 	java? ( virtual/jdk )"
