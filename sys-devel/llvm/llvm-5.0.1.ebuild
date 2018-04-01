@@ -83,6 +83,9 @@ src_prepare() {
 	# Copy the new binary file (we don't support git binary patches)
 	cp {"${WORKDIR}/${P}-patchset",.}/test/tools/llvm-symbolizer/Inputs/print_context.o || die
 
+	# Fix appending -Wl,-rpath-link on non-Linux (-> FreeBSD).
+	eapply "${FILESDIR}"/6.0.9999/0001-cmake-Append-Wl-rpath-link-conditionally-to-GNULD.patch
+
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
