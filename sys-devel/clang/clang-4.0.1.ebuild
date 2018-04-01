@@ -101,7 +101,7 @@ src_prepare() {
 	cd tools/extra || die
 	# fix stand-alone test build for extra tools
 	eapply "${FILESDIR}"/4.0.1/extra/0001-test-Fix-test-dependencies-when-using-installed-tool.patch
-	eapply "${FILESDIR}"/5.0.1/extra/0002-test-Fix-clang-library-dir-in-LD_LIBRARY_PATH-For-st.patch
+	eapply "${FILESDIR}"/4.0.1/extra/0002-test-Fix-clang-library-dir-in-LD_LIBRARY_PATH-For-st.patch
 	cd - >/dev/null || die
 
 	# User patches
