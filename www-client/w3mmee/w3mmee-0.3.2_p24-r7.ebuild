@@ -38,7 +38,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${PN}-gcc-4.5.patch
 	epatch "${FILESDIR}"/${PN}-glibc-2.14.patch
 	epatch "${FILESDIR}"/${PN}-tinfo.patch
-	epatch "${FILESDIR}"/${PN}-w3mman-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-w3mman.patch
 	sed -ie "/^AR=/s:ar:$(tc-getAR):" XMakefile || die
 }
 
