@@ -17,7 +17,7 @@ SLOT="0"
 
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=sci-visualization/opendx-4.4.4-r2"
