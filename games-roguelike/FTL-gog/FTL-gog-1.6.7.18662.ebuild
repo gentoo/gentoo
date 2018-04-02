@@ -7,7 +7,7 @@ inherit desktop unpacker
 
 DESCRIPTION="Top-down roguelike space ship simulator"
 HOMEPAGE="https://www.gog.com/game/faster_than_light"
-SRC_URI="ftl_advanced_edition_en_1_6_3_17917.sh"
+SRC_URI="ftl_advanced_edition_en_${PV//./_}.sh"
 RESTRICT="bindist fetch mirror strip test"
 
 LICENSE="GOG-EULA"
@@ -47,7 +47,14 @@ src_prepare() {
 src_install() {
 	insinto /opt/gog/FTL
 	doins -r .
-	fperms 755 /opt/gog/FTL/{start.sh,game/{FTL,data/FTL*}}
+	fperms +x /opt/gog/FTL/{start.sh,game/FTL}
+
+	if use x86; then
+		fperms +x /opt/gog/FTL/game/data/FTL.x86
+	fi
+	if use amd64; then
+		fperms +x /opt/gog/FTL/game/data/FTL.amd64
+	fi
 
 	make_desktop_entry "/opt/gog/FTL/start.sh" "FTL: Advanced Edition" FTL
 	newicon support/icon.png FTL.png
