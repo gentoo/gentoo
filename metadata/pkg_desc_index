@@ -197,6 +197,7 @@ app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.7.3: A PAR-2.0 file verification and repair tool
 app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12: Parallel bzip2 (de)compressor using libbz2
+app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
 app-arch/pigz 2.3.4: A parallel implementation of gzip
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression utility
@@ -753,7 +754,7 @@ app-emulation/spectemu 0.99.3: 48k ZX Spectrum Emulator
 app-emulation/spice 0.13.3-r2 0.14.0-r1: SPICE server
 app-emulation/spice-protocol 0.12.12 0.12.13: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0 0.17.0_p20180319-r1: SPICE VD Linux Guest Agent
-app-emulation/spim 8.0-r2: MIPS Simulator
+app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/vice 3.1: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.3: A graphical tool for administering virtual machines
@@ -9389,7 +9390,7 @@ sci-visualization/gnuplot 5.0.1-r1 5.0.6 5.0.7: Command-line driven interactive 
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer
-sci-visualization/opendx 4.4.4-r5: 3D data visualization tool
+sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/pyxplot 0.9.2-r1: Gnuplot like graphing program publication-quality figures
 sci-visualization/quickplot 0.10.6: A fast interactive 2D plotter
 sec-policy/selinux-abrt 2.20170204-r2 2.20170204-r3 2.20170204-r4 2.20170805-r2 2.20170805-r3 2.20180114-r1: SELinux policy for abrt
@@ -11081,7 +11082,7 @@ x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency su
 x11-terms/eterm 0.9.5 0.9.6-r1: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
 x11-terms/guake 0.8.8: Drop-down terminal for GTK+ desktops
-x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
+x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/mate-terminal 1.12.1: The MATE Terminal
 x11-terms/mlterm 3.8.0 3.8.4: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
