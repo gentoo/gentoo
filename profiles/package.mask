@@ -1091,14 +1091,6 @@ dev-java/jcs
 # the suggested replacement for the meantime.
 sys-fs/bedup
 
-# Mike Pagano <mpagano@gentoo.org> (2 Oct 2015)
-# A regression in kernel 4.1.9 could lead to a system
-# lockup.  This has been fixed in gentoo-sources-4.1.9-r1
-# and the hope is that this patch will make it to 4.1.10
-# Expires (2 Oct 2017)
-=sys-kernel/vanilla-sources-4.1.9
-=sys-kernel/gentoo-sources-4.1.9
-
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Releases are not from original upstream but from a fork.
 # Masked as requested by vapier.
