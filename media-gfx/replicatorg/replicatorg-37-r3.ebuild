@@ -13,11 +13,13 @@ SRC_URI="https://replicatorg.googlecode.com/files/${MY_P}-linux.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="dev-java/oracle-jre-bin:*"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	gnome-base/gsettings-desktop-schemas
+"
 DEPEND="${COMMON_DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
