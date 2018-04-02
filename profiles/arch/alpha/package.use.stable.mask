@@ -30,7 +30,6 @@ dev-util/geany-plugins gtkspell
 gnome-base/gvfs google
 media-plugins/gst-plugins-meta modplug
 >=x11-libs/gtk+-3.12.2 cloudprint
->=net-libs/webkit-gtk-2.4 geoloc
 x11-libs/gksu gnome
 
 # sufficiently recent wayland is not stable yet, bug #559062
