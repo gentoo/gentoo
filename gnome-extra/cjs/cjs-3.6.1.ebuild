@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,9 +34,23 @@ RDEPEND="${RDEPEND}
 	!<gnome-extra/cinnamon-2.4
 "
 
+RESTRICT="test"
+
 src_prepare() {
 	eautoreconf
 	gnome2_src_prepare
+	sed -ie "s/gjs-console/cjs-console/g" \
+		"${S}"/installed-tests/scripts/testCommandLine.sh \
+		"${S}"/installed-tests/scripts/testWarnings.sh || die
+
+	sed -ie "s/Gjs-WARNING/Cjs-WARNING/g" \
+		"${S}"/installed-tests/scripts/testCommandLine.sh || die
+
+	sed -ie "s/'Gjs'/'Cjs'/g" \
+		"${S}"/installed-tests/js/testExceptions.js \
+		"${S}"/installed-tests/js/testSignals.js \
+		"${S}"/installed-tests/js/testGDBus.js \
+		"${S}"/installed-tests/js/testEverythingBasic.js || die
 }
 
 src_configure() {
