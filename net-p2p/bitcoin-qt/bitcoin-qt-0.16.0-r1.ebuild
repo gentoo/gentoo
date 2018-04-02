@@ -95,6 +95,8 @@ src_prepare() {
 		eapply "${FILESDIR}/${P}-fix_mempoolstats.patch"
 	fi
 
+	eapply "${FILESDIR}/${P}-fix_memory_include.patch"
+
 	eapply_user
 
 	if ! use bitcoin_policy_rbf; then
