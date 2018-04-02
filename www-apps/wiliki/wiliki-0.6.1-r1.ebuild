@@ -1,15 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
-inherit webapp eutils
+inherit webapp
 
 MY_PN="WiLiKi"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme"
-HOMEPAGE="http://practical-scheme.net/wiliki/"
+HOMEPAGE="https://practical-scheme.net/wiliki/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
@@ -28,10 +28,10 @@ WEBAPP_MANUAL_SLOT="yes"
 
 S="${WORKDIR}"/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-po-gentoo.patch
-	epatch "${FILESDIR}"/${P}-cgi-gentoo.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-po-gentoo.patch
+	"${FILESDIR}"/${P}-cgi-gentoo.patch
+)
 
 src_install() {
 	webapp_src_preinst
