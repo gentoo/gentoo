@@ -99,8 +99,6 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.rc ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf.d ${PN}
-
-	dosym /etc/opt/chrome/native-messaging-hosts /etc/chromium/native-messaging-hosts #581754
 }
 
 pkg_postinst() {
