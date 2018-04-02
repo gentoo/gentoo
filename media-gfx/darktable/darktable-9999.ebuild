@@ -15,7 +15,7 @@ SLOT="0"
 #KEYWORDS="~amd64 ~x86"
 LANGS=" ca cs da de es fr he hu it ja nl pl ru sk sl sv uk"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
-IUSE="colord cups cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kwallet libsecret
+IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
 nls opencl openmp openexr pax_kernel webp
 ${LANGS// / l10n_}"
 
@@ -44,11 +44,11 @@ CDEPEND="
 	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
-	geo? ( >=sci-geosciences/osm-gps-map-1.1.0 )
+	geolocation? ( >=sci-geosciences/osm-gps-map-1.1.0 )
+	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	gphoto2? ( media-libs/libgphoto2:= )
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	jpeg2k? ( media-libs/openjpeg:0 )
-	libsecret? ( >=app-crypt/libsecret-0.18 )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:0= )
 	webp? ( media-libs/libwebp:0= )"
@@ -81,9 +81,9 @@ src_configure() {
 		-DUSE_FLICKR=$(usex flickr)
 		-DUSE_GRAPHICSMAGICK=$(usex graphicsmagick)
 		-DUSE_KWALLET=$(usex kwallet)
-		-DUSE_LIBSECRET=$(usex libsecret)
+		-DUSE_LIBSECRET=$(usex gnome-keyring)
 		-DUSE_LUA=OFF
-		-DUSE_MAP=$(usex geo)
+		-DUSE_MAP=$(usex geolocation)
 		-DUSE_NLS=$(usex nls)
 		-DUSE_OPENCL=$(usex opencl)
 		-DUSE_OPENEXR=$(usex openexr)
