@@ -46,6 +46,8 @@ RDEPEND="app-admin/sudo
 	sys-devel/gcc
 	sys-libs/glibc
 	sys-libs/pam
+	x11-apps/xdpyinfo
+	x11-apps/setxkbmap
 	x11-libs/cairo
 	x11-libs/gtk+:2
 	x11-libs/libX11
