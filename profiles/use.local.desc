@@ -2645,9 +2645,8 @@ media-gfx/blender:valgrind - Add support for memory debugging using dev-util/val
 media-gfx/comix:rar - Pulls app-arch/unrar for rar file support
 media-gfx/darktable:colord - Support color management using x11-misc/colord
 media-gfx/darktable:flickr - Add support for uploading photos to flickr
-media-gfx/darktable:geo - Enable geotagging support
+media-gfx/darktable:geolocation - Enable geotagging support
 media-gfx/darktable:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
-media-gfx/darktable:libsecret - Enable libsecret support to store login credentials
 media-gfx/darktable:opencl - Enable opencl support
 media-gfx/darktable:pax_kernel - Triggers paxmarking of main darktable binary
 media-gfx/darktable:webp - Enable WebP export support
