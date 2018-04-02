@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ~x86"
 IUSE="pygobject qt5 pyside test"
 REQUIRED_USE="pygobject? ( || ( $(python_gen_useflags 'python2*') ) )"
 
