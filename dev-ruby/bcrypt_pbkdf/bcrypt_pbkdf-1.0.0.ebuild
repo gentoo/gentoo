@@ -30,6 +30,9 @@ all_ruby_prepare() {
 
 each_ruby_configure() {
 	${RUBY} -Cext/mri extconf.rb || die
+
+	# Some methods may not be inlined on x86 but they are not defined either, bug 629164
+	sed -i -e 's:-Wl,--no-undefined::' ext/mri/Makefile || die
 }
 
 each_ruby_compile() {
