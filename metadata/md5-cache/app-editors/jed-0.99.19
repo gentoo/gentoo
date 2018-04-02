@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install
-DEPEND=>=sys-libs/slang-2 gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 xft? ( >=media-libs/freetype-2 x11-libs/libXft ) ) X? ( x11-libs/libXt x11-proto/xproto )
+DEPEND=>=sys-libs/slang-2 gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 xft? ( >=media-libs/freetype-2 x11-libs/libXft ) ) X? ( x11-libs/libXt x11-base/xorg-proto )
 DESCRIPTION=Console S-Lang-based editor
 EAPI=4
 HOMEPAGE=http://www.jedsoft.org/jed/
@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/slang-2 gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 xft? ( >=m
 SLOT=0
 SRC_URI=ftp://space.mit.edu/pub/davis/jed/v0.99/jed-0.99-19.tar.bz2
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=53741a248b7e75cb7f381d098cb936f1
+_md5_=c7b7cf056662d8b5a6a45e204aae2de3
