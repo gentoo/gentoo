@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit elisp-common eutils xdg-utils gnome2-utils readme.gentoo-r1 user
+inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1 user
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
