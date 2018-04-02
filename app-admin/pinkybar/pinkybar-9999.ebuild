@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/su8/pinky-bar"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+alsa colors drivetemp drivetemp-light dvd dwm keyboard libnl lisp lua mpd
-	ncurses +net +pci perl python2 r ruby sensors slang smartemp tcl weather"
+	ncurses +net +pci perl python2 r ruby sensors slang smartemp tcl"
 
 DEPEND="
 	sys-devel/autoconf
@@ -45,7 +45,6 @@ RDEPEND="
 	slang? ( sys-libs/slang )
 	smartemp? ( sys-apps/smartmontools )
 	tcl? ( dev-lang/tcl )
-	weather? ( net-misc/curl app-arch/gzip )
 
 "
 REQUIRED_USE="
@@ -88,8 +87,6 @@ src_configure() {
 		$(use_with slang)
 		$(use_with smartemp)
 		$(use_with tcl)
-		$(use_with weather)
-		api_key='28459ae16e4b3a7e5628ff21f4907b6f'
 		icons='/usr/share/icons/xbm_icons'
 	)
 	econf "${myconf[@]}"

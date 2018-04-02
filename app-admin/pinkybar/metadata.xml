@@ -47,6 +47,5 @@
 		<flag name="smartemp">Read the drive temperature from S.M.A.R.T.</flag>
 		<flag name="tcl">Extend pinkybar with your own crafted scripts written
 			in tcl, stored in /usr/share/pinkysc/pinky.tcl</flag>
-		<flag name="weather">Show the temperature outside and wind speed.</flag>
 	</use>
 </pkgmetadata>
