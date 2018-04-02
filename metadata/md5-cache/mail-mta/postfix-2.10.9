@@ -4,11 +4,11 @@ DESCRIPTION=A fast and secure drop-in replacement for sendmail
 EAPI=5
 HOMEPAGE=http://www.postfix.org/
 IUSE=+berkdb cdb doc dovecot-sasl hardened ldap ldap-bind memcached mbox mysql nis pam postgres sasl selinux sqlite ssl vda ssl
-KEYWORDS=~mips ~s390
+KEYWORDS=~s390
 LICENSE=IBM
 RDEPEND=>=dev-libs/libpcre-3.4 dev-lang/perl berkdb? ( >=sys-libs/db-3.2:* ) cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r1 ) ) ldap? ( net-nds/openldap ) ldap-bind? ( net-nds/openldap[sasl] ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:* ) sasl? ( >=dev-libs/cyrus-sasl-2 ) sqlite? ( dev-db/sqlite:3 ) ssl? ( dev-libs/openssl:0 ) dovecot-sasl? ( net-mail/dovecot ) memcached? ( net-misc/memcached ) net-mail/mailbase selinux? ( sec-policy/selinux-postfix ) !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] !net-mail/fastforward
 REQUIRED_USE=ldap-bind? ( ldap sasl )
 SLOT=0
 SRC_URI=ftp://ftp.porcupine.org/mirrors/postfix-release/official/postfix-2.10.9.tar.gz vda? ( http://vda.sourceforge.net/VDA/postfix-vda-v13-2.10.0.patch )
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	ssl-cert	b5e85f9a834c71d8bd532de477fe4ce2	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=0a3b6774c4d242893208f1f67ee91d97
+_md5_=61c65bbe5595cbcbf201f66710f75c19
