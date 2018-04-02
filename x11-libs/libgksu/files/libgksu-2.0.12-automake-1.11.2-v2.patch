@@ -1,26 +1,61 @@
-Due to the following change, pkglib_PROGRAMS is invalid:
-    http://git.savannah.gnu.org/cgit/automake.git/commit/?id=9ca632642b006ac6b0fc4ce0ae5b34023faa8cbf
+From 8137cbfa13954b10cf349eb392166c677cb78ff6 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Mon, 2 Apr 2018 18:27:33 +0200
+Subject: [PATCH] Fix build with automake 1.11+
 
-https://savannah.nongnu.org/bugs/index.php?35241
-https://bugs.gentoo.org/397411
-https://bugs.gentoo.org/640772
+Initial patch from AlphatPC at gmail dot com.
+
+Due to a change in automake [1], pkglib_PROGRAMS is invalid and we must now
+use pkglibexec_PROGRAMS. Fix hardcoded location to gksu-run-helper to reflect
+this.
+
+[1] http://git.savannah.gnu.org/cgit/automake.git/commit/?id=9ca632642b006ac6b0fc4ce0ae5b34023faa8cbf
+
+Gentoo-Bug-URL: https://bugs.gentoo.org/397411
+Gentoo-Bug-URL: https://bugs.gentoo.org/640772
+Project-Bug-URL: https://savannah.nongnu.org/bugs/index.php?35241
+Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
 
 ---
- libgksu/Makefile.am |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ libgksu/Makefile.am | 5 ++---
+ libgksu/libgksu.c   | 2 +-
+ 2 files changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/libgksu/Makefile.am b/libgksu/Makefile.am
-index 49362f9..3cb1090 100644
+index 4a37305..3ddde5b 100644
 --- a/libgksu/Makefile.am
 +++ b/libgksu/Makefile.am
-@@ -22,8 +22,8 @@ includedir = ${prefix}/include/${PACKAGE}
+@@ -1,6 +1,6 @@
+ AM_CFLAGS = -g -O2 -Wall
+ INCLUDES = ${LIBGKSU_CFLAGS}
+-AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\" -DDATA_DIR=\"$(datadir)\" -DPREFIX=\"$(prefix)\"
++AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\" -DDATA_DIR=\"$(datadir)\" -DPREFIX=\"$(prefix)\" -DLIBEXECDIR=\"$(libexecdir)\"
+ 
+ lib_LTLIBRARIES = libgksu2.la
+ libgksu2_la_SOURCES = libgksu.c libgksu.h
+@@ -22,8 +22,7 @@ includedir = ${prefix}/include/${PACKAGE}
  pkgconfigdir = ${libdir}/pkgconfig
  pkgconfig_DATA = libgksu2.pc
  
 -pkglibdir = ${libdir}/${PACKAGE}
 -pkglib_PROGRAMS = gksu-run-helper
-+pkglibexecdir = ${libexecdir}/${PACKAGE}
 +pkglibexec_PROGRAMS = gksu-run-helper
  gksu_run_helper_LDADD = ${GLIB_LIBS} 
  gksu_run_helper_SOURCES = gksu-run-helper.c
  
+diff --git a/libgksu/libgksu.c b/libgksu/libgksu.c
+index 7203549..612e712 100644
+--- a/libgksu/libgksu.c
++++ b/libgksu/libgksu.c
+@@ -1937,7 +1937,7 @@ gksu_su_fuller (GksuContext *context,
+   GQuark gksu_quark;
+   int i = 0;
+ 
+-  gchar auxcommand[] = PREFIX "/lib/" PACKAGE "/gksu-run-helper";
++  gchar auxcommand[] = LIBEXECDIR "/" PACKAGE "/gksu-run-helper";
+ 
+   int fdpty;
+   pid_t pid;
+-- 
+2.16.2
+
