@@ -665,25 +665,6 @@ dev-php/ZendFramework
 # Masked for removal in 30 days. Bug #629184.
 media-sound/moodbar
 
-# Ulrich Müller <ulm@gentoo.org> (21 Feb 2018)
-# Homepage is dead. Apparently the last release was in 2012
-# and it does not work with Emacs 25 and later.
-# Masked for removal in 30 days. Bug #590400.
-app-emacs/mcomplete
-
-# Ulrich Müller <ulm@gentoo.org> (21 Feb 2018)
-# Obsolete predecessor of js-mode, which is included
-# with Emacs since version 23. Homepage is dead.
-# Masked for removal in 30 days. Bug #648150.
-app-emacs/javascript
-
-# Ulrich Müller <ulm@gentoo.org> (21 Feb 2018)
-# Last release in 2006. Homepage is dead. Upstream says
-# that app-emacs/muse should be used as replacement.
-# Masked for removal in 30 days. Bug #619194.
-app-emacs/emacs-wiki
-app-emacs/emacs-wiki-blog
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
