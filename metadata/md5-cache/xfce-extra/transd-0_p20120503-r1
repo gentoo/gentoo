@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=x11-libs/libX11 >=xfce-base/libxfce4util-4.8 dev-util/intltool virtual/pkgconfig
+DESCRIPTION=A small daemon to watch for window creation and set window transparency values
+EAPI=6
+HOMEPAGE=http://spuriousinterrupt.org/projects/transd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/libX11 >=xfce-base/libxfce4util-4.8
+SLOT=0
+SRC_URI=mirror://gentoo/transd-0_p20120503.tar.xz
+_md5_=436a4974af6342d4b0069346e773d91b
