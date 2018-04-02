@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime git-r3 pax-utils eutils versionator
+inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils xdg-utils git-r3 pax-utils eutils versionator
 
 EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
 
@@ -35,9 +35,8 @@ CDEPEND="
 	media-libs/tiff:0
 	net-libs/libsoup:2.4
 	net-misc/curl
+	sys-libs/zlib:=
 	virtual/jpeg:0
-	virtual/glu
-	virtual/opengl
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.14:3
 	x11-libs/pango
@@ -48,7 +47,7 @@ CDEPEND="
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	gphoto2? ( media-libs/libgphoto2:= )
 	graphicsmagick? ( media-gfx/graphicsmagick )
-	jpeg2k? ( media-libs/openjpeg:0 )
+	jpeg2k? ( media-libs/openjpeg:2= )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:0= )
 	webp? ( media-libs/libwebp:0= )"
@@ -57,7 +56,11 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	opencl? (
+		>=sys-devel/clang-4
+		>=sys-devel/llvm-4
+	)"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -91,11 +94,13 @@ src_configure() {
 		-DUSE_OPENMP=$(usex openmp)
 		-DUSE_WEBP=$(usex webp)
 	)
+	CMAKE_BUILD_TYPE="RELWITHDEBINFO"
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
+	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
 	for lang in ${LANGS} ; do
 		use l10n_${lang} || rm -r "${ED}"/usr/share/locale/${lang/-/_}
@@ -117,10 +122,10 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
