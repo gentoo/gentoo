@@ -1,0 +1,38 @@
+Patch from Debian fixing typo that appears in man page.
+
+
+diff --git a/examples/testd.c b/examples/testd.c
+index 6557dff..f734173 100644
+--- a/examples/testd.c
++++ b/examples/testd.c
+@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
+ 
+         /* Wait for 20 seconds for the return value passed from the daemon process */
+         if ((ret = daemon_retval_wait(20)) < 0) {
+-            daemon_log(LOG_ERR, "Could not recieve return value from daemon process: %s", strerror(errno));
++            daemon_log(LOG_ERR, "Could not receive return value from daemon process: %s", strerror(errno));
+             return 255;
+         }
+ 
+diff --git a/libdaemon/dsignal.h b/libdaemon/dsignal.h
+index 1719784..4030e41 100644
+--- a/libdaemon/dsignal.h
++++ b/libdaemon/dsignal.h
+@@ -34,7 +34,7 @@ extern "C" {
+  * wish to handle with select() in your main loop with
+  * daemon_signal_init() or daemon_signal_install(). After that you
+  * should sleep on the file descriptor returned by daemon_signal_fd()
+- * and get the next signal recieved with daemon_signal_next(). You
++ * and get the next signal received with daemon_signal_next(). You
+  * should call daemon_signal_done() before exiting.
+  */
+ 
+@@ -54,7 +54,7 @@ int daemon_signal_install(int s);
+  */
+ void daemon_signal_done(void);
+ 
+-/** Return the next signal recieved. This function will not
++/** Return the next signal received. This function will not
+  * block. Instead it returns 0 if no signal is queued.
+  * @return The next queued signal if one is queued, zero if none is
+  * queued, negative on failure.
