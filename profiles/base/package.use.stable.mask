@@ -144,10 +144,6 @@ dev-lang/go gccgo
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
 
-# Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
-# Unmask stable-masked implementations for python-exec
-dev-lang/python-exec -python_targets_python3_6
-
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
