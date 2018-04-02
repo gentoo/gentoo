@@ -22,7 +22,6 @@ REQUIRED_USE="
 	doc? ( python_targets_python2_7 )"
 
 RDEPEND="
-	>=dev-libs/dbus-glib-0.108:=
 	>=sys-apps/dbus-1.8:=
 	>=dev-libs/glib-2.40
 	${PYTHON_DEPS}"
@@ -32,6 +31,7 @@ DEPEND="${RDEPEND}
 		dev-python/docutils[python_targets_python2_7?]
 		=dev-python/epydoc-3*[python_targets_python2_7?] )
 	test? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )"
+# TODO: Half the tests require tap.py from PyPI now, which we didn't have packaged; those tests just get skipped then though
 
 src_prepare() {
 	default
