@@ -14,8 +14,8 @@ HOMEPAGE="https://github.com/su8/pinky-bar"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+alsa colors drivetemp drivetemp-light dvd dwm keyboard libnl lisp lua mpd
-	ncurses +net +pci perl python2 r ruby sensors slang smartemp tcl"
+IUSE="+alsa colors drivetemp drivetemp-light dvd dwm ip keyboard libnl lisp lua
+	mpd ncurses +net +pci perl python2 r ruby sensors slang smartemp tcl"
 
 DEPEND="
 	sys-devel/autoconf
