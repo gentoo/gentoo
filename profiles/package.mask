@@ -684,10 +684,6 @@ app-emacs/javascript
 app-emacs/emacs-wiki
 app-emacs/emacs-wiki-blog
 
-# Sergey Popov <pinkbyte@gentoo.org> (13 Feb 2018)
-# Requires dead Qt4 (bug #645420). Removal in 30 days
-media-gfx/qiviewer
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
@@ -725,38 +721,6 @@ media-fonts/fontawesome:0/5
 # testing has been conducted.
 =sys-apps/acl-2.2.52-r2
 
-# Alice Ferrazzi <alicef@gentoo.org> (05 Jan 2018)
-# kernel: Meltdown and Spectre - Processor flaw. (#643228)
-# Please upgrade for Intel processor flaw workaround
-# (currently KPTI patch are 64bit only), 
-# also excluding AMD from the fix as not affected.
-# Please unmask your kernel version if you want to
-# continue to use your kernel with AMD.
-# Removal in a month.
-=sys-kernel/gentoo-sources-4.14.8-r1
-=sys-kernel/gentoo-sources-4.14.9
-=sys-kernel/gentoo-sources-4.14.10
-=sys-kernel/gentoo-sources-4.14.10-r1
-=sys-kernel/gentoo-sources-4.14.11
-
-# Alice Ferrazzi <alicef@gentoo.org> (30 Dec 2017)
-# Masked for removal in 30 days.
-# Upstream is no more backporting security fixes for 4.12.
-# For a more stable kernel please downgrade to 4.9 
-# or move to 4.14(unstable) if it works for you.
-=sys-kernel/gentoo-sources-4.12.14
-=sys-kernel/gentoo-sources-4.12.13
-=sys-kernel/gentoo-sources-4.12.12
-
-# Alice Ferrazzi <alicef@gentoo.org> (27 Dec 2017)
-# Masked for removal in 30 days.
-# This kernel doesn't boot on hardened profiles.
-# vanilla-sources also dosen't make prepare
-# (bug #642268) (bug #642664)
-=sys-kernel/gentoo-sources-4.14.9
-=sys-kernel/gentoo-sources-4.14.10
-=sys-kernel/vanilla-sources-4.14.10
-
 # Matthias Maier <tamiko@gentoo.org> (26 Dec 2017)
 # gcc depends on mpfr and this version changes soname. Spare users with
 # FEATURES=-preserve-libs from completely frying their system.
@@ -768,13 +732,6 @@ media-fonts/fontawesome:0/5
 # pcb-0_pyyyymmdd and mask >=pcb-20000000.
 # Do not remove the mask until newer version gets stable
 >=sci-electronics/pcb-20000000
-
-# Alice Ferrazzi <alicef@gentoo.org> (22 Dec 2017)
-# Masked for removal in 30 days.
-# Linux kernel 4.13 can break various laptops.
-# (bug #642026)
-=sys-kernel/gentoo-sources-4.13.15
-=sys-kernel/gentoo-sources-4.13.16
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
 # Masked for testing
@@ -813,17 +770,6 @@ games-kids/crayon-physics
 # Breaks several reverse dependencies.
 # https://bugs.gentoo.org/635934
 >=dev-util/scons-3.0.0
-
-# James Le Cuirot <chewi@gentoo.org> (05 Nov 2017)
-# Java 7 is old and we are no longer able to support it. The ability
-# to build against Java 7 may return when we update the eclasses for
-# Java 9 but the runtime will not return. If you need it then source
-# ebuilds will continue to be maintained by gnu_andrew in java-overlay
-# for a few years. Removal in 30 days.
-<=dev-java/icedtea-7.2.6.11:7
-dev-java/icedtea-bin:7
-virtual/jdk:1.7
-virtual/jre:1.7
 
 # Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
 # Missing dependencies.
