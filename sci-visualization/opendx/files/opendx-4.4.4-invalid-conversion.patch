@@ -1,0 +1,13 @@
+diff --git a/src/uipp/dxuilib/EditorWindow.C b/src/uipp/dxuilib/EditorWindow.C
+index c406cc1..d6c0765 100644
+--- a/src/uipp/dxuilib/EditorWindow.C
++++ b/src/uipp/dxuilib/EditorWindow.C
+@@ -5997,7 +5997,7 @@ char msg[128];
+     //
+     const char *tmpdir = theDXApplication->getTmpDirectory();
+     int tmpdirlen = STRLEN(tmpdir);
+-    if (!tmpdirlen) return FALSE;
++    if (!tmpdirlen) return (char*)FALSE;
+     if (tmpdir[tmpdirlen-1] == '/') {
+ 	sprintf(netfilename, "%sdx%d.net", tmpdir, getpid());
+ 	sprintf(cfgfilename, "%sdx%d.cfg", tmpdir, getpid());

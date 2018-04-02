@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,13 +14,14 @@ SRC_URI="http://opendx.sdsc.edu/source/${MYP}.tar.gz
 
 LICENSE="IBM"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="hdf cdf netcdf tiff imagemagick szip smp"
 
-RDEPEND="x11-libs/libXmu
-	x11-libs/libXi
-	x11-libs/libXp
+RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXmu
 	x11-libs/libXpm
+	x11-libs/libXt
 	>=x11-libs/motif-2.3:0
 	virtual/opengl
 	virtual/glu
@@ -46,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-open.patch"
 	"${FILESDIR}/${P}-szip.patch"
 	"${FILESDIR}/${P}-null.patch"
+	"${FILESDIR}/${P}-invalid-conversion.patch"
 	"${WORKDIR}/${PN}-4.4.4_p20160917-fix-c++14.patch"
 )
 
