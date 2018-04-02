@@ -79,6 +79,7 @@ DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 PATCHES=(
 	"${FILESDIR}"/${P}-python.patch
 	"${FILESDIR}"/${P}-qt-5.11.patch
+	"${FILESDIR}"/${P}-autotools.patch
 )
 
 S="${WORKDIR}/${MY_P}"
