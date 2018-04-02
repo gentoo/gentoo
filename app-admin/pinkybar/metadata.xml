@@ -20,6 +20,7 @@
 			light version.</flag>
 		<flag name="dvd">To get the cdrom or dvdrom vendor and model names.</flag>
 		<flag name="dwm">Output the data to the root window. Enable it if you are
+		<flag name="ip">Fetch and display your external (ipv4) IP address.</flag>
 			using dwm.</flag>
 		<flag name="keyboard">Query xorg and show the currently used keyboard
 			layout.</flag>
