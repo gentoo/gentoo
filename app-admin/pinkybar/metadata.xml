@@ -28,6 +28,7 @@
 			supporting the cfg80211,mac80211 modules</flag>
 		<flag name="lisp">Extend pinkybar with your own crafted script written
 			in lisp, stored in /usr/share/pinkysc/pinky.lisp</flag>
+		<flag name="mouse">Query xorg and get the mouse speed in percentage.</flag>
 		<flag name="mpd">To see the currently played song name, date, artist(s),
 			title.</flag>
 		<flag name="ncurses">Output the data to the terminal using the ncurses
