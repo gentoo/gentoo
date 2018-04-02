@@ -2,20 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ps@twin.jikos.cz</email>
-		<name>Pavel Sanda</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>cjk@gentoo.org</email>
