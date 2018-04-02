@@ -33,6 +33,8 @@
 			title.</flag>
 		<flag name="ncurses">Output the data to the terminal using the ncurses
 			library.</flag>
+		<flag name="numcapslock">Query xorg to get the current state of numlock
+			and capslock.</flag>
 		<flag name="net">Enable the internet related options.</flag>
 		<flag name="pci">To get the NIC vendor and model names.</flag>
 		<flag name="perl">Extend pinkybar with your own crafted script written
