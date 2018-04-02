@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-notests.patch
 
 	# Fix automake-1.11.2 compatibility, bug #397411
+	# Fix gksu-run-helper path, bug #640772
 	"${FILESDIR}"/${P}-automake-1.11.2-v2.patch
 	"${FILESDIR}"/${P}-missing-libs.patch
 
@@ -67,9 +68,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-g_markup_escape_text_for_command.patch
 	"${FILESDIR}"/${P}-sudo_keep_env.patch
 	"${FILESDIR}"/${P}-correct_colormap_get.patch
-
-	# Fix gksu-run-helper path
-	"${FILESDIR}"/${P}-gksu-run-helper_path.patch
 )
 
 src_prepare() {
