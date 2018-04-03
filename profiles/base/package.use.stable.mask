@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
+# Depends on unstable dependencies; qt3d bug #652046
+sci-geosciences/qgis 3d grass
+
 # Thomas Beierlein <tomjbe@gentoo.org> (21 Mar 2018)
 # ~app-backup/bacula-9.0.6 does not compile with USE=libressl (bug #641492)
 ~app-backup/bacula-9.0.6 libressl
@@ -74,11 +78,6 @@ net-dns/dnsmasq libidn2
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Feb 2017)
-# Requires not yet stabilised sci-geosciences/grass,
-# which probably needs bump to solve several issues.
-sci-geosciences/qgis grass
 
 # Brian Dolbec <dolsen@gentoo.org> (14 Feb 2017)
 # This is stable masked as g-sorcery is being not actively developed.
