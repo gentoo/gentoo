@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/patches/${PN}-3.14.1-fix-tls-client.patch"
+	"${FILESDIR}/patches/${PN}-3.14.1-fix-automake-1.16-build.patch"
 )
 
 DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunOS,doc}
