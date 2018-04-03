@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils cmake-utils fdo-mime
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="A fast text editor supporting folding, syntax highlighting, etc."
 HOMEPAGE="https://github.com/lanurmi/efte"
@@ -32,8 +32,8 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build gpm)
-		$(cmake-utils_use_build X)
+		-DUSE_GPM=$(usex gpm)
+		-DBUILD_X=$(usex X )
 	)
 	cmake-utils_src_configure
 }
@@ -45,9 +45,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
