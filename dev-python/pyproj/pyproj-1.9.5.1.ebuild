@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -24,12 +24,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	einfo "Testruns do not have regular unittest type tests, instead for test.py,"
-	einfo "the output need be compared with a separate file, sample.out."
-	"${PYTHON}" test/test.py || die
-
-	einfo ""; einfo "Now the file test2.py is run to test pickling"; einfo ""
-	"${PYTHON}" test/test2.py || die
+	"${EPYTHON}" unittest/test.py || die
 }
 
 python_install_all() {
