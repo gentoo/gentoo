@@ -1,5 +1,3 @@
-diff --git a/html.h b/html.h
-index c490655..2a9a431 100644
 --- a/html.h
 +++ b/html.h
 @@ -8,6 +8,8 @@

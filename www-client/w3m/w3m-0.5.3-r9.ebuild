@@ -40,10 +40,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-underlinking.patch"
-	"${FILESDIR}/${P}-fix-missing-time.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-time.patch" )
 
 src_prepare() {
 	default
