@@ -4142,7 +4142,7 @@ dev-perl/Sys-Virt 1.1.2: Sys::Virt provides an API for using the libvirt library
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.310.0 3.330.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Task-Weaken 1.40.0-r1: Ensure that a platform has weaken support
-dev-perl/Template-DBI 2.650.0-r1 2.650.0-r2: DBI plugin for the Template Toolkit
+dev-perl/Template-DBI 2.650.0-r2: DBI plugin for the Template Toolkit
 dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Latex 3.60.0: LaTeX support for the Template Toolkit
 dev-perl/Template-Toolkit 2.260.0 2.270.0-r1: The Template Toolkit
