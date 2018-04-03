@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils linux-info mono-env flag-o-matic pax-utils versionator multilib-minimal
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
-HOMEPAGE="http://www.mono-project.com/Main_Page"
-SRC_URI="http://download.mono-project.com/sources/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.mono-project.com/Main_Page"
+SRC_URI="https://download.mono-project.com/sources/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 SLOT="0"
