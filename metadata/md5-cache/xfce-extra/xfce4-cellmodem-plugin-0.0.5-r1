@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=sys-apps/pciutils virtual/libusb:0 >=xfce-base/libxfcegui4-4.8 >=xfce-base/xfce4-panel-4.8 dev-util/intltool dev-util/xfce4-dev-tools virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-cellmodem-plugin
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/pciutils virtual/libusb:0 >=xfce-base/libxfcegui4-4.8 >=xfce-base/xfce4-panel-4.8
+SLOT=0
+SRC_URI=mirror://xfce/src/panel-plugins/xfce4-cellmodem-plugin/0.0/xfce4-cellmodem-plugin-0.0.5.tar.gz
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=cd10e09367874fae186358495d75b074
