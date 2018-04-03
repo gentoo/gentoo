@@ -24,14 +24,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+glfw qt4 wxwidgets"
+IUSE="+glfw wxwidgets"
 
-RDEPEND="qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-	)
-	>=net-wireless/gnuradio-3.7_rc:0=[qt4?,wxwidgets?,${PYTHON_USEDEP}]
+RDEPEND="
+	>=net-wireless/gnuradio-3.7_rc:0=[wxwidgets?,${PYTHON_USEDEP}]
 	media-libs/freetype
 	dev-libs/boost:=
 	glfw? ( >=media-libs/glfw-3 )
@@ -56,9 +52,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DENABLE_GLFW="$(usex glfw)"
-		-DENABLE_QT="$(usex qt4)"
+		-DENABLE_QT=OFF
 		-DENABLE_WX="$(usex wxwidgets)"
 		-DENABLE_PYTHON=ON
 	)
+	# re-enable Qt if port to Qt5 is ever finished
 	cmake-utils_src_configure
 }
