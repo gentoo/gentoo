@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>tomboy64@sina.cn</email>
-        <name>M.B.</name>
-    </maintainer>
-    <maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
-    </maintainer>
+<!-- maintainer-needed -->
     <use>
         <flag name="nanotimestamp">Enable timestamps with nano-second resolution</flag>
     </use>
