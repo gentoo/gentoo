@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="debug seccomp test"
 RDEPEND="sys-libs/pinktrace:=
 	debug? ( sys-libs/libunwind:= )"
 DEPEND="${RDEPEND}
-	test? ( app-portage/unsandbox )"
+	test? ( !<sys-apps/sandbox-2.13 )"
 
 src_configure() {
 	local myconf=(
@@ -27,6 +27,9 @@ src_configure() {
 }
 
 src_test() {
-	# two sandboxes are never a good idea ;-)
-	unsandbox emake check
+	# unload the Gentoo sandbox
+	local -x SANDBOX_ON=0
+	local -x LD_PRELOAD=
+
+	emake check
 }
