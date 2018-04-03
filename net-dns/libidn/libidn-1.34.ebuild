@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/libidn/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3 LGPL-3 java? ( Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc emacs java mono nls static-libs"
 
 DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS TODO )
@@ -38,9 +38,6 @@ RDEPEND="${COMMON_DEPEND}
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.33-CVE-2017-14062.patch
-)
 
 pkg_setup() {
 	mono-env_pkg_setup
@@ -52,9 +49,6 @@ src_prepare() {
 
 	# bundled, with wrong bytecode
 	rm "${S}/java/${P}.jar" || die
-
-	# prevent triggering doc updates after punycode.c patch
-	touch doc/texi/punycode* doc/man/punycode* doc/libidn.info || die
 
 	elibtoolize  # for Solaris shared objects
 }
@@ -108,8 +102,9 @@ multilib_src_install_all() {
 	fi
 
 	einstalldocs
+
 	if use doc ; then
-		dohtml -r doc/reference/html/.
+		dodoc -r doc/reference/html/
 	fi
 
 	prune_libtool_files
