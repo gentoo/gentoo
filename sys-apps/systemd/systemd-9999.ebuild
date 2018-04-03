@@ -20,7 +20,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -68,6 +68,7 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	sysv-utils? ( !sys-apps/sysvinit )
 	!sysv-utils? ( sys-apps/sysvinit )
+	resolvconf? ( !net-dns/openresolv )
 	!build? ( || (
 		sys-apps/util-linux[kill(-)]
 		sys-process/procps[kill(+)]
@@ -298,14 +299,19 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	local rootprefix=$(usex usrmerge /usr '')
+
 	# meson doesn't know about docdir
 	mv "${ED%/}"/usr/share/doc/{systemd,${PF}} || die
 
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
+	if ! use resolvconf; then
+		rm -f "${ED%/}${rootprefix}"/sbin/resolvconf || die
+	fi
+
 	if ! use sysv-utils; then
-		local rootprefix=$(usex usrmerge /usr '')
 		rm "${ED%/}${rootprefix}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
 		rmdir "${ED%/}${rootprefix}"/sbin || die
 		rm "${ED%/}"/usr/share/man/man1/init.1 || die

@@ -23,6 +23,7 @@
 		<flag name="lz4">Enable lz4 compression for the journal</flag>
 		<flag name="nat">Enable support for network address translation in networkd</flag>
 		<flag name="qrcode">Enable qrcode output support in journal</flag>
+		<flag name="resolvconf">Install resolvconf symlink for systemd-resolve</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>
 		<flag name="usrmerge">Enable /usr merge (experimental)</flag>
 		<flag name="vanilla">Disable Gentoo-specific behavior and compatibility quirks</flag>
