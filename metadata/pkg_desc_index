@@ -3332,7 +3332,7 @@ dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
-dev-perl/Acme-Damn 0.60.0: Module, that 'unblesses' Perl objects
+dev-perl/Acme-Damn 0.60.0 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-Dependency 1.110.0-r2: Toolkit for implementing dependency systems
@@ -3341,20 +3341,21 @@ dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment p
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
-dev-perl/Any-Moose 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
-dev-perl/AnyEvent 7.120.0: Provides a uniform interface to various event loops
-dev-perl/AnyEvent-HTTP 2.220.0: Simple but non-blocking HTTP/HTTPS client
+dev-perl/Any-Moose 0.260.0-r1 0.270.0: Use Moose or Mouse modules (DEPRECATED)
+dev-perl/AnyEvent 7.120.0 7.140.0: Provides a uniform interface to various event loops
+dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
-dev-perl/Apache-AuthCookie 3.230.0: Perl Authentication and Authorization via cookies
-dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
+dev-perl/Apache-AuthCookie 3.230.0 3.270.0: Perl Authentication and Authorization via cookies
+dev-perl/Apache-DBI 1.120.0-r1 1.120.0-r2: Authentication and Authorization via Perl's DBI
 dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string to perl-code
-dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
+dev-perl/Apache-Reload 0.130.0 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
-dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1: Test.pm wrapper with helpers for testing Apache
-dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
-dev-perl/App-cpanminus 1.703.900: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.780.0: Manage perl installations in your $HOME
+dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
+dev-perl/Apache2-AuthenNTLM 0.20.0-r1 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
+dev-perl/App-cpanminus 1.703.900 1.704.300: Get, unpack, build and install modules from CPAN
+dev-perl/App-perlbrew 0.780.0 0.820.0: Manage perl installations in your $HOME
+dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.100: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.720.0: Generic archive extracting mechanism
@@ -3411,7 +3412,7 @@ dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
 dev-perl/CPAN-Checksums 2.80.0-r1: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11: Create a minimal mirror of CPAN
-dev-perl/CPAN-Perl-Releases 2.340.0 3.0.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 3.0.0 3.380.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/Cache 2.40.0-r1 2.110.0: the Cache interface
@@ -3687,7 +3688,7 @@ dev-perl/File-Sync 0.110.0: Perl access to fsync() and sync() function calls
 dev-perl/File-Tail 1.200.0: Perl extension for reading from continously updated files
 dev-perl/File-Tempdir 0.20.0-r1: This module provide an object interface to tempdir() from File::Temp
 dev-perl/File-Type 0.220.0-r1: Determine file type using magic
-dev-perl/File-Which 1.90.0-r1: Perl module implementing 'which' internally
+dev-perl/File-Which 1.90.0-r1 1.220.0: Perl module implementing 'which' internally
 dev-perl/File-chdir 0.101.0: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0: Implements symbolic and ls chmod modes
 dev-perl/File-pushd 1.3.0-r1: Change directory temporarily for a limited scope
@@ -4240,7 +4241,7 @@ dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into 
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-Wrapper 1.50.0: Word wrap text by breaking long lines
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
-dev-perl/TheSchwartz 1.120.0: Reliable job queue
+dev-perl/TheSchwartz 1.120.0 1.120.0-r1: Reliable job queue
 dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
 dev-perl/Throwable 0.200.11 0.200.13: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
