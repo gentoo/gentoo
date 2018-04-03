@@ -15,7 +15,7 @@ SRC_URI="https://github.com/tats/${PN}/archive/v${PV}+${MY_REL}.tar.gz -> ${MY_P
 LICENSE="w3m"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
-IUSE="X fbcon gpm gtk imlib l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
+IUSE="X fbcon gpm gtk imlib l10n_de l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
 
 # We cannot build w3m with gtk+2 w/o X because gtk+2 ebuild doesn't
 # allow us to build w/o X, so we have to give up framebuffer w3mimg....
@@ -111,6 +111,14 @@ src_install() {
 	newdoc Bonus/README.eng README.Bonus
 	docinto html/en
 	dodoc doc/*.html
+	if use l10n_de; then
+		docinto de
+		dodoc doc-de/README*
+		docinto html/de
+		dodoc doc-de/*.html
+	else
+		rm -rf "${ED}"/usr/share/man/de
+	fi
 	if use l10n_ja; then
 		docinto ja
 		dodoc doc-jp/{HISTORY,README,keymap,menu}*
