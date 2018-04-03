@@ -6,6 +6,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
+		<flag name="gdk-pixbuf">Enable support for <pkg>x11-libs/gdk-pixbuf</pkg></flag>
 		<flag name="lynxkeymap">If you prefer Lynx-like key binding</flag>
 	</use>
 	<upstream>
