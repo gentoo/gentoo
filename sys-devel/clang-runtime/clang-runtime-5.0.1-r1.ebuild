@@ -10,9 +10,8 @@ HOMEPAGE="https://clang.llvm.org/"
 SRC_URI=""
 
 LICENSE="metapackage"
-# Note: keep it matching clang-9999 version
-SLOT="6.0.0"
-KEYWORDS=""
+SLOT="${PV%_*}"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+compiler-rt crt libcxx openmp +sanitize"
 
 RDEPEND="
