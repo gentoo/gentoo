@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -26,10 +26,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
-	|| (
-		>=dev-db/m17n-db-1.7
-		dev-db/m17n-contrib
-	)"
+	>=dev-db/m17n-db-1.7"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
