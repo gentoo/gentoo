@@ -5,16 +5,16 @@ EAPI="6"
 
 inherit autotools prefix vcs-snapshot
 
-MY_REL="git20161120"
-MY_P="${P}.${MY_REL}"
+MY_P="${P/_p/+git}"
+MY_PV="${PV/_p/+git}"
 
 DESCRIPTION="Text based WWW browser, supports tables and frames"
 HOMEPAGE="https://github.com/tats/w3m"
-SRC_URI="https://github.com/tats/${PN}/archive/v${PV}+${MY_REL}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/tats/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="w3m"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="X fbcon gdk-pixbuf gpm imlib l10n_de l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
 
 RDEPEND="dev-libs/boehm-gc:=
@@ -41,10 +41,7 @@ S="${WORKDIR}/${MY_P}"
 REQUIRED_USE="X? ( ?? ( gdk-pixbuf imlib ) )
 	fbcon? ( ?? ( gdk-pixbuf imlib ) )"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-img-fb.patch"
-	"${FILESDIR}/${PN}-time.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-img-fb.patch" )
 
 src_prepare() {
 	default
