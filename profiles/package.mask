@@ -572,11 +572,6 @@ net-fs/smbtatools
 # Masked for removal in 30 days. Bug 644412
 media-sound/qmpdclient
 
-# Andreas Sturmlechner <asturm@gentoo.org> (04 Mar 2018)
-# Dead upstream, depends on deprecated Qt4.
-# Masked for removal in 30 days. Bug 645436
-sci-chemistry/massxpert
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
 # Fails to build without rpc support in glibc (bug 631044);
 # no maintainer, requires obsolete hardware. Removal in
