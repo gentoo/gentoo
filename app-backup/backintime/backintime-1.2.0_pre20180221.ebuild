@@ -5,15 +5,16 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit python-single-r1 gnome2-utils git-r3
+COMMIT=45ec81c185789b2dbafd7348d1af039b5183c9ff
+inherit python-single-r1 gnome2-utils vcs-snapshot
 
 DESCRIPTION="Backup system inspired by TimeVault and FlyBack"
 HOMEPAGE="https://backintime.readthedocs.io/ https://github.com/bit-team/backintime/"
-EGIT_REPO_URI="https://github.com/bit-team/backintime/"
+SRC_URI="https://github.com/bit-team/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="qt5"
 
 DEPEND="${PYTHON_DEPS}
