@@ -15,22 +15,20 @@ SRC_URI="https://github.com/tats/${PN}/archive/v${PV}+${MY_REL}.tar.gz -> ${MY_P
 LICENSE="w3m"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
-IUSE="X fbcon gpm gtk imlib l10n_de l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
+IUSE="X fbcon gdk-pixbuf gpm imlib l10n_de l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
 
-# We cannot build w3m with gtk+2 w/o X because gtk+2 ebuild doesn't
-# allow us to build w/o X, so we have to give up framebuffer w3mimg....
-RDEPEND=">=dev-libs/boehm-gc-6.2:=
-	>=sys-libs/ncurses-5.2-r3:0=
-	>=sys-libs/zlib-1.1.3-r2
+RDEPEND="dev-libs/boehm-gc:=
+	sys-libs/ncurses:0=
+	sys-libs/zlib
 	X? (
 		x11-libs/libXdmcp
 		x11-libs/libXext
 	)
-	gtk? ( x11-libs/gdk-pixbuf )
-	!gtk? (
-		imlib? ( >=media-libs/imlib2-1.1.0[X] )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[X?] )
+	!gdk-pixbuf? (
+		imlib? ( media-libs/imlib2[X?] )
 	)
-	gpm? ( >=sys-libs/gpm-1.19.3-r5 )
+	gpm? ( sys-libs/gpm )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -40,7 +38,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-time.patch" )
+REQUIRED_USE="X? ( ?? ( gdk-pixbuf imlib ) )
+	fbcon? ( ?? ( gdk-pixbuf imlib ) )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-img-fb.patch"
+	"${FILESDIR}/${PN}-time.patch"
+)
 
 src_prepare() {
 	default
@@ -53,14 +57,14 @@ src_configure() {
 	local myconf=()
 	local image imagelib
 
-	if use gtk; then
+	if use gdk-pixbuf; then
 		imagelib="gtk2"
 	elif use imlib; then
 		imagelib="imlib2"
 	fi
 	if [[ -n "${imagelib}" ]]; then
-		use X              && image="${image}${image:+,}x11"
-		use X && use fbcon && image="${image}${image:+,}fb"
+		use X     && image="${image}${image:+,}x11"
+		use fbcon && image="${image}${image:+,}fb"
 	fi
 	# emacs-w3m doesn't like "--enable-m17n --disable-unicode,"
 	# so we better enable or disable both. Default to enable
