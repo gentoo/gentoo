@@ -1165,7 +1165,7 @@ app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microso
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openoffice-bin 4.1.4: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
-app-office/pinpoint 0.1.8 0.1.8-r1: A tool for making hackers do excellent presentations
+app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
