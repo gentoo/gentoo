@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (3 Apr 2018)
+# Merged into >=dev-db/m17n-db-1.7.0.
+# Masked for removal in 30 days.
+dev-db/m17n-contrib
+
 # Aaron Bauman <bman@gentoo.org> (1 Apr 2018)
 # Unmaintained upstream. Relies on old PHP. EAPI=0.
 # Masked for removal in 30 days.
