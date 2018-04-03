@@ -8075,7 +8075,7 @@ media-sound/timidity-freepats 20060219-r1: Free and open set of instrument patch
 media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
-media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
+media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
@@ -8189,7 +8189,6 @@ media-video/smplayer 17.11.2: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 17.5.0-r1: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
-media-video/subdownloader 2.0.18-r1: GUI application for automatic downloading/uploading of subtitles for videofiles
 media-video/subliminal 2.0.5-r1: Python library to search and download subtitles
 media-video/subtitlecomposer 0.6.4: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
