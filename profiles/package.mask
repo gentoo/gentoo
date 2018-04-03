@@ -29,6 +29,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthias Maier <tamiko@gentoo.org> (3 Apr 2018)
+# Remove old Intel C/C++/Fortran compiler ebuilds. These packages require
+# to acquire a non-commercial license by Intel and download "Intel Parallel
+# Studio" in ancient versions (3+ years old). Current versions (as of 2018)
+# can be found in the ::science overlay.
+#
+# Corresponding eclass/intel-sdp eclass slated for removal as well.
+#
+# Masked for removal in 30 days.
+<dev-lang/icc-18
+<dev-lang/ifc-18
+dev-lang/idb
+<dev-libs/intel-common-18
+<sci-libs/ipp-18
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (3 Apr 2018)
 # Merged into >=dev-db/m17n-db-1.7.0.
 # Masked for removal in 30 days.
