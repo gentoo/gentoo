@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/boehm-gc-7.2 dev-libs/libmoe dev-lang/perl sys-libs/ncurses:0
 SLOT=0
 SRC_URI=http://pub.ks-and-ks.ne.jp/prog/pub/w3mmee-p24-22.tar.gz
 _eclasses_=alternatives	6c575717515f030736d1b718d507d2f9	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=10ee102c5a3838aca569e61bb8e405b9
+_md5_=e386791130cb5cf2678a32bca2852b06
