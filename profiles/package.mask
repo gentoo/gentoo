@@ -49,6 +49,7 @@ app-portage/unsandbox
 dev-lang/idb
 <dev-libs/intel-common-18
 <sci-libs/ipp-18
+sci-chemistry/cyana
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (3 Apr 2018)
 # Merged into >=dev-db/m17n-db-1.7.0.
