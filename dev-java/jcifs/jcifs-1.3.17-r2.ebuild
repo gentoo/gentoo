@@ -13,7 +13,7 @@ HOMEPAGE="https://jcifs.samba.org/"
 LICENSE="LGPL-2.1"
 SLOT="1.1"
 
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 
 CDEPEND="java-virtuals/servlet-api:3.0"
 
