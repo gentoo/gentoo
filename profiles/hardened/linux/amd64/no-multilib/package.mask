@@ -141,7 +141,6 @@ net-print/cndrvcups-lb
 sci-biology/foldingathome
 sci-electronics/eagle
 sci-chemistry/cara-bin
-sci-chemistry/cyana
 sci-chemistry/mars
 sci-chemistry/xdsstat-bin
 sci-libs/ipp
