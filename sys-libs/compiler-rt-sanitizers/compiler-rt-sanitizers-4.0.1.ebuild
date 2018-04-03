@@ -28,7 +28,7 @@ DEPEND="
 	>=sys-devel/llvm-4
 	clang? ( sys-devel/clang )
 	test? (
-		app-portage/unsandbox
+		!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT} )
@@ -108,7 +108,7 @@ src_configure() {
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-			-DLIT_COMMAND="${EPREFIX}/usr/bin/unsandbox;${EPREFIX}/usr/bin/lit"
+			-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 
 			# they are created during src_test()
 			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang"
@@ -149,6 +149,10 @@ src_configure() {
 src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
+	# disable sandbox to have it stop clobbering LD_PRELOAD
+	local -x SANDBOX_ON=0
+	# wipe LD_PRELOAD to make ASAN happy
+	local -x LD_PRELOAD=
 
 	cmake-utils_src_make check-all
 }
