@@ -11,7 +11,7 @@ inherit distutils-r1 gnome2-utils readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="A cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
-SRC_URI="https://github.com/metabrainz/${PN}/archive/${PV/_beta2/dev5}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/metabrainz/${PN}/archive/${PV/_beta3/dev6}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -28,8 +28,7 @@ DEPEND="
 
 RESTRICT="test" # doesn't work with ebuilds
 
-# upstream quickly renamed to dev4 after buildsystem and runtime(!) were broken by 'beta1'
-S="${WORKDIR}/${P/_beta2/dev5}"
+S="${WORKDIR}/${P/_beta3/dev6}"
 
 python_compile() {
 	local build_args=(

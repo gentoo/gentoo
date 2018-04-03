@@ -9,10 +9,6 @@
 		<email>luke-jr+gentoobugs@utopios.org</email>
 		<name>Luke Dashjr</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>maksverver@geocities.com</email>
-		<name>Maks Verver</name>
-	</maintainer>
 	<use>
 		<flag name="cli">Enables the CLI interface</flag>
 		<flag name="audio_modem">Enable plugin to support Audio Modem</flag>
