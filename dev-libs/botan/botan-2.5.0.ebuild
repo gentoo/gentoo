@@ -13,7 +13,7 @@ HOMEPAGE="http://botan.randombit.net/"
 SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-SLOT="2/3" # soname version
+SLOT="2/5" # soname version
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
 
