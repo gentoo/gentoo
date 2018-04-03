@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>qt@gentoo.org</email>
-		<name>Gentoo Qt Project</name>
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
