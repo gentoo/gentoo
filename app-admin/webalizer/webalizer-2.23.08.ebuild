@@ -27,7 +27,7 @@ SRC_URI="ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
 	${GEODB_URL}/webalizer-geodb-${GEODB_DATE}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="bzip2 xtended geoip nls"
 SLOT="0"
 
