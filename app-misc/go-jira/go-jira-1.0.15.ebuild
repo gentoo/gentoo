@@ -7,7 +7,7 @@ EGO_PN="gopkg.in/Netflix-Skunkworks/go-jira.v1"
 
 inherit golang-build golang-vcs-snapshot
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="A simple JIRA commandline client in Go"
 HOMEPAGE="https://github.com/Netflix-Skunkworks/go-jira"
