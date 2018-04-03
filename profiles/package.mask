@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
+# Dead upstream, depends on dead PyQt4.
+# Masked for removal in 30 days. Bugs #649118, #510066
+media-video/subdownloader
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
+# Build issues, depends on dead Qt4, no port to Qt5 (or far from ready).
+# Masked for removal in 30 days. Bugs #620474, #624740, #648668
+sci-electronics/qucs
+
 # Michał Górny (03 Apr 2018)
 # Starting with sys-apps/sandbox-2.13+, unloading is possible via
 # disabling (SANDBOX_ON=0) + wiping LD_PRELOAD. This renders the tool
@@ -49,6 +59,7 @@ app-portage/unsandbox
 dev-lang/idb
 <dev-libs/intel-common-18
 <sci-libs/ipp-18
+sci-chemistry/cyana
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (3 Apr 2018)
 # Merged into >=dev-db/m17n-db-1.7.0.

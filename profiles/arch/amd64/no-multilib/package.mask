@@ -150,7 +150,6 @@ net-print/cndrvcups-common-lb
 net-print/cndrvcups-lb
 sci-biology/foldingathome
 sci-chemistry/cara-bin
-sci-chemistry/cyana
 sci-chemistry/mars
 sci-electronics/eagle
 sci-libs/ipp

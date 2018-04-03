@@ -115,7 +115,6 @@ net-misc/ps3mediaserver
 sci-biology/foldingathome
 sci-electronics/eagle
 sci-chemistry/cara-bin
-sci-chemistry/cyana
 sci-chemistry/mars
 sci-libs/ipp
 sys-libs/lib-compat-loki
