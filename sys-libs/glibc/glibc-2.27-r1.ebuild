@@ -762,6 +762,23 @@ src_prepare() {
 			sed -i '/CPPFLAGS=.*-mabi/s|.*|:|' ports/sysdeps/mips/preconfigure || die
 			find ports/sysdeps/mips/ -name Makefile -exec sed -i '/^CC.*-mabi=/s:-mabi=.*:-D_MIPS_SZPTR=32:' {} +
 		fi
+		if [[ -e sysdeps/riscv/preconfigure ]] ; then
+			# RISC-V interrogates the compiler to determine which target to
+			# build.  If building the headers then we don't strictly need a
+			# RISC-V compiler, so the built-in definitions that are provided
+			# along with all RISC-V compiler might not exist.  This causes
+			# glibc's RISC-V preconfigure script to blow up.  Since we're just
+			# building the headers any value will actually work here, so just
+			# pick the standard one (rv64g/lp64d) to make the build scripts
+			# happy for now -- the headers are all the same anyway so it
+			# doesn't matter.
+			sed -i 's/^    xlen=.*/    xlen=64/g' sysdeps/riscv/preconfigure || die
+			sed -i 's/^    flen=.*/    flen=64/g' sysdeps/riscv/preconfigure || die
+			sed -i 's/^    float_abi=.*/    float_abi=double/g' sysdeps/riscv/preconfigure || die
+			sed -i 's/^    atomic=.*/    atomic=__riscv_atomic/g' sysdeps/riscv/preconfigure || die
+			sed -i 's/^libc_cv_riscv_float_abi=no/libc_cv_riscv_float_abi=d/g' sysdeps/unix/sysv/linux/riscv/configure.ac || die
+			sed -i 's/^libc_cv_riscv_float_abi=no/libc_cv_riscv_float_abi=d/g' sysdeps/unix/sysv/linux/riscv/configure || die
+		fi
 	fi
 
 	default
