@@ -85,9 +85,17 @@ src_configure() {
 	fi
 
 	if use test; then
-		mycmakeargs+=(
-			-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		if has_version '>=sys-devel/llvm-6'; then
+			mycmakeargs+=(
+				-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			)
+		else
+			mycmakeargs+=(
+				-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			)
+		fi
 
+		mycmakeargs+=(
 			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang"
 			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++"
 		)
