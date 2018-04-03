@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny (03 Apr 2018)
+# Starting with sys-apps/sandbox-2.13+, unloading is possible via
+# disabling (SANDBOX_ON=0) + wiping LD_PRELOAD. This renders the tool
+# obsolete. Removal in 30 days.
+app-portage/unsandbox
+
 # Matthias Maier <tamiko@gentoo.org> (3 Apr 2018)
 # Remove old Intel C/C++/Fortran compiler ebuilds. These packages require
 # to acquire a non-commercial license by Intel and download "Intel Parallel
