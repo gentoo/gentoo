@@ -9777,7 +9777,7 @@ sys-apps/paludis 3.0.0_pre20170808: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/pciutils 3.4.1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.20 1.8.22: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.22: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7: SELinux core utilities
 sys-apps/portage 2.3.8 2.3.13-r1 2.3.19-r1 2.3.24-r1: Portage is the package management and distribution system for Gentoo
