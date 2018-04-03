@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Software to manage quotes and invoices in small enterprises"
 HOMEPAGE="http://www.volle-kraft-voraus.de/"
-SRC_URI="https://github.com/dragotin/${PN}/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dragotin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="pim"
@@ -36,6 +36,8 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( AUTHORS Changes.txt README.md Releasenotes.txt TODO )
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 S="${WORKDIR}/${PN}-${PV/_/}"
 
