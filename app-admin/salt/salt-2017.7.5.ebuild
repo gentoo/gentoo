@@ -51,7 +51,10 @@ RDEPEND="sys-apps/pciutils
 	)
 	zeromq? (
 		>=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
+		|| (
+			dev-python/pycryptodome[${PYTHON_USEDEP}]
+			>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
+		)
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
