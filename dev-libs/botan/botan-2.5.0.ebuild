@@ -1,20 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit multilib python-r1 toolchain-funcs
-inherit git-r3
 
+MY_PN="Botan"
+MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A C++ crypto library"
 HOMEPAGE="http://botan.randombit.net/"
-EGIT_REPO_URI="https://github.com/randombit/botan"
+SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 SLOT="2/3" # soname version
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
+
+S="${WORKDIR}/${MY_P}"
 
 RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 	zlib? ( >=sys-libs/zlib-1.2.3 )
@@ -28,11 +31,6 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 DEPEND="${RDEPEND}
 	dev-lang/python:*
 	doc? ( dev-python/sphinx )"
-
-src_prepare() {
-	default
-	use python && python_copy_sources
-}
 
 src_configure() {
 	local disable_modules=()
