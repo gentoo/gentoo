@@ -1,6 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# Removal on 2018-05-03.
 # @ECLASS: kde4-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
