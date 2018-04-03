@@ -56,7 +56,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		-locale_dir=$(usex nls "${EPREFIX}/usr/share/locale" '(NONE)' )
+		-locale_dir=$(usex nls "${EPREFIX}/usr/share/locale" '(NONE)')
 	)
 	local myuse=(
 		display_code=E
