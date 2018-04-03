@@ -33,6 +33,9 @@ src_install() {
 	doins -r config/.
 	rm -rv config || die
 
+	fowners root:${PN} /etc/${PN}
+	fperms 2750 /etc/${PN}
+
 	insinto /usr/share/${PN}
 	doins -r .
 
