@@ -5446,14 +5446,6 @@ sys-firmware/seabios:binary - Use official upstream pre-built binaries
 sys-firmware/seabios:seavgabios - Include SeaVGABIOS binaries (replacement for vgabios)
 sys-firmware/sgabios:binary - Use pre-built binaries
 sys-firmware/vgabios:binary - Use official upstream pre-built binaries (only default and cirrus images)
-sys-fs/aufs3:debug - Enable additional debugging support
-sys-fs/aufs3:fuse - Enable fuse support
-sys-fs/aufs3:hfs - Enable hfs support
-sys-fs/aufs3:inotify - Enable inotify support
-sys-fs/aufs3:kernel-patch - Patch the current kernel for aufs3 support
-sys-fs/aufs3:nfs - Enable support for nfs export
-sys-fs/aufs3:pax_kernel - Apply patch needed for pax enabled kernels
-sys-fs/aufs3:ramfs - Enable initramfs/rootfs support
 sys-fs/btrfs-progs:convert - Build ext2 conversion utility (btrfs-convert)
 sys-fs/btrfs-progs:reiserfs - Enable reiserfs support in btrfs-convert tool.
 sys-fs/btrfs-progs:static - Build static binaries in addition to the dynamic ones
