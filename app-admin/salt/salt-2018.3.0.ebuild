@@ -27,7 +27,9 @@ IUSE+=" openssl portage profile redis selinux test timelib raet +zeromq vim-synt
 
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.3[${PYTHON_USEDEP}]
+	<dev-python/msgpack-0.5.5[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
@@ -50,7 +52,10 @@ RDEPEND="sys-apps/pciutils
 	)
 	zeromq? (
 		>=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
+		|| (
+			dev-python/pycryptodome[${PYTHON_USEDEP}]
+			>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
+		)
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
@@ -75,9 +80,10 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pytest-salt[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-catchlog[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
+		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/timelib[${PYTHON_USEDEP}]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
 		!x86? ( >=dev-python/boto3-1.2.1[${PYTHON_USEDEP}] )
@@ -98,10 +104,12 @@ PATCHES=(
 )
 
 python_prepare() {
+	# remove tests with external dependencies that may not be available
 	rm tests/unit/{test_zypp_plugins.py,utils/test_extend.py} || die
 	rm tests/unit/modules/test_boto_{vpc,secgroup,elb}.py || die
 	rm tests/unit/states/test_boto_vpc.py || die
-	rm tests/unit/modules/test_kubernetes.py || die
+	rm tests/unit/modules/test_{kubernetes,vsphere}.py || die
+
 	# allow the use of the renamed msgpack
 	sed -i '/^msgpack/d' requirements/base.txt || die
 }
