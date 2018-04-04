@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=app-arch/bzip2 >=sys-apps/file-5.04 sys-apps/util-linux >=sys-fs/e2fsprogs-1.41.9 sys-libs/zlib
+DESCRIPTION=Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/ext4magic/
+IUSE=debug +expert-mode file-attr
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 >=sys-apps/file-5.04 sys-apps/util-linux >=sys-fs/e2fsprogs-1.41.9 sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/ext4magic/ext4magic-0.3.2.tar.gz
+_md5_=fd58a5dcc7274bc6373dfccd124d54bb
