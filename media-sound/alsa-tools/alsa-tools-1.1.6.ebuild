@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic gnome2-utils xdg-utils
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="https://alsa-project.org/"
@@ -147,4 +147,14 @@ src_install() {
 
 	# Punt at least /usr/lib/liblo10k1.la (last checked, 1.0.27)
 	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
