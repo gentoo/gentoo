@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils fdo-mime gnome2-utils python-r1
+inherit gnome2-utils python-r1 xdg-utils
 
 MY_PN="Sunflower"
 DESCRIPTION="Small and highly customizable twin-panel file manager with plugin-support"
@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}/${MY_PN}
 
 src_prepare() {
+	default
 	find "${S}" -name "*.py[co]" -delete || die
 	find "${S}"/translations -name "*.po" -delete || die
 	rm "${S}"/translations/${PN}.pot || die
@@ -76,7 +77,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 
 	# TODO: better description
@@ -87,6 +88,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
