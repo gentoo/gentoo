@@ -113,7 +113,7 @@ COMMON_DEPEND="
 		!gd? (
 			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
 	)
-	unicode? ( dev-libs/oniguruma:= )
+	unicode? ( <dev-libs/oniguruma-6.8.0:= )
 	vpx? ( media-libs/libvpx:0= )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
 	xml? ( >=dev-libs/libxml2-2.6.8 )
