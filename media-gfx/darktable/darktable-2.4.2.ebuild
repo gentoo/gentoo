@@ -5,7 +5,7 @@ EAPI=6
 
 inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils xdg-utils pax-utils eutils
 
-DOC_PV="2.2.0"
+DOC_PV="2.4.0"
 MY_PV="${PV/_/}"
 MY_P="${P/_/.}"
 
