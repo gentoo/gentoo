@@ -1,4 +1,4 @@
-# /etc/conf.d/prometheus-mysqld_exporter
+# /etc/conf.d/mysqld_exporter
 
 # PID file
 #EXPORTER_PIDFILE="/run/${RC_SVCNAME}.pid"
@@ -9,10 +9,10 @@
 #EXPORTER_TERMTIMEOUT="TERM/60/KILL/5"
 
 # User to run exporter as
-#EXPORTER_USER="prometheus-mysqld_exporter"
+#EXPORTER_USER="mysqld_exporter"
 
 # User group to run exporter as
-#EXPORTER_GROUP="prometheus-mysqld_exporter"
+#EXPORTER_GROUP="mysqld_exporter"
 
 # You can use this configuration option to pass additional options to the
 # start-stop-daemon, see start-stop-daemon(8) for more details.
@@ -21,6 +21,6 @@
 #EXPORTER_SSDARGS="--wait 1000"
 
 # Exporter flags
-# See `prometheus-mysqld-exporter --help` for more details
+# See `mysqld_exporter --help` for more details
 EXPORTER_FLAGS="-log.level=info"
 #EXPORTER_FLAGS="${EXPORTER_FLAGS} -yourAdditionalFlag"
