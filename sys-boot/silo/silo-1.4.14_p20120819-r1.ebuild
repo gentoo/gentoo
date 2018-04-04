@@ -18,7 +18,7 @@ HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="-* ~sparc"
+KEYWORDS="-* sparc"
 IUSE=""
 
 DEPEND="sys-fs/e2fsprogs
