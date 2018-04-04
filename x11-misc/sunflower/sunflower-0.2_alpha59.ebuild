@@ -72,10 +72,6 @@ src_install() {
 	newmenu ${MY_PN}.desktop ${PN}.desktop
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
