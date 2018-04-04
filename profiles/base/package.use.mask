@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Göktürk Yüksek <gokturk@gentoo.org> (4 Apr 2018)
+# libewf is getting treecleaned (#547418).
+# Starting with sleuthkit-4.6.0, we statically link sleuthkit to a
+# locally compiled libewf. Mask the prior versions.
+<app-forensics/sleuthkit-4.6.0 ewf
+
 # Mart Raudsepp <leio@gentoo.org> (1 Apr 2018)
 # rust[extended] file collides with dev-util/cargo, while everything
 # in tree uses the latter at the moment (#645562)
@@ -62,7 +68,6 @@ app-emulation/fuse backend-svga
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # libewf is going to be removed, bug #547418
 app-admin/testdisk ewf
-app-forensics/sleuthkit ewf
 
 # Patrick McLean <chutzpah@gentoo.org> (6 Mar 2018)
 # Requires dev-libs/boost-1.66 that is unkeyworded/masked
