@@ -146,7 +146,7 @@ src_configure() {
 }
 
 python_compile() {
-	distutils-r1_python_compile build_ext -I ../ -L ../${PN}
+	distutils-r1_python_compile build_ext -I.. -L../lxc/.libs --no-pkg-config
 }
 
 src_compile() {
