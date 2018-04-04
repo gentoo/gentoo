@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201803-14">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Thunderbird,
+    the worst of which could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">thunderbird,thunderbird-bin</product>
+  <announced>2018-03-28</announced>
+  <revised count="1">2018-03-28</revised>
+  <bug>627376</bug>
+  <bug>639048</bug>
+  <bug>643842</bug>
+  <bug>645812</bug>
+  <bug>645820</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">52.6.0</unaffected>
+      <vulnerable range="lt">52.6.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">52.6.0</unaffected>
+      <vulnerable range="lt">52.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Thunderbird.
+      Please review the referenced Mozilla Foundation Security Advisories and
+      CVE identifiers below for details.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code, cause a Denial
+      of Service condition, obtain sensitive information, conduct URL
+      hijacking, or conduct cross-site scripting (XSS).
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-52.6.0"
+    </code>
+    
+    <p>All Thunderbird binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-52.6.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7753">
+      CVE-2017-7753
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7779">
+      CVE-2017-7779
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7784">
+      CVE-2017-7784
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7785">
+      CVE-2017-7785
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7786">
+      CVE-2017-7786
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7787">
+      CVE-2017-7787
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7791">
+      CVE-2017-7791
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7792">
+      CVE-2017-7792
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7793">
+      CVE-2017-7793
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7800">
+      CVE-2017-7800
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7801">
+      CVE-2017-7801
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7802">
+      CVE-2017-7802
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7803">
+      CVE-2017-7803
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7805">
+      CVE-2017-7805
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7807">
+      CVE-2017-7807
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7809">
+      CVE-2017-7809
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7810">
+      CVE-2017-7810
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7814">
+      CVE-2017-7814
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7818">
+      CVE-2017-7818
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7819">
+      CVE-2017-7819
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7823">
+      CVE-2017-7823
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7824">
+      CVE-2017-7824
+    </uri>
+    <uri link="https://nvd.nist.gov/nvd.cfm?cvename=CVE-2017-7825">
+      CVE-2017-7825
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7826">CVE-2017-7826</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7828">CVE-2017-7828</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7829">CVE-2017-7829</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7830">CVE-2017-7830</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7846">CVE-2017-7846</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7847">CVE-2017-7847</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7848">CVE-2017-7848</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5089">CVE-2018-5089</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5095">CVE-2018-5095</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5096">CVE-2018-5096</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5097">CVE-2018-5097</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5098">CVE-2018-5098</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5099">CVE-2018-5099</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5102">CVE-2018-5102</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5103">CVE-2018-5103</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5104">CVE-2018-5104</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5117">CVE-2018-5117</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2017-20/">
+      Mozilla Foundation Security Advisory 2017-20
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2017-23/">
+      Mozilla Foundation Security Advisory 2017-23
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2017-26/">
+      Mozilla Foundation Security Advisory 2017-26
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2017-30/">
+      Mozilla Foundation Security Advisory 2017-30
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2018-04/">
+      Mozilla Foundation Security Advisory 2018-04
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-10-05T15:42:10Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-03-28T18:24:10Z">chrisadr</metadata>
+</glsa>
