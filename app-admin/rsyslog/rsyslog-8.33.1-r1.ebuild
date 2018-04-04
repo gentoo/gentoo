@@ -69,7 +69,7 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 	mdblookup? ( dev-libs/libmaxminddb:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:= )
-	mysql? ( virtual/mysql )
+	mysql? ( virtual/libmysqlclient:= )
 	normalize? (
 		>=dev-libs/libee-0.4.0
 		>=dev-libs/liblognorm-2.0.3:=
