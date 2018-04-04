@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils fdo-mime gnome2-utils
+EAPI=6
+
+inherit gnome2-utils xdg-utils
 
 DESCRIPTION="A simple GTK2 text editor"
 HOMEPAGE="http://tarot.freeshell.org/leafpad/"
@@ -22,11 +23,10 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-fdo.patch \
-		"${FILESDIR}"/${P}-format-security.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.18.1-fdo.patch
+	"${FILESDIR}"/${PN}-0.8.18.1-format-security.patch
+)
 
 src_configure() {
 	econf \
@@ -40,11 +40,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
