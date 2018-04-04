@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,5 +17,5 @@ SLOT="0"
 
 DEPEND="
 	net-misc/rabbitmq-server
-	app-admin/collectd[collectd_plugins_python]
+	app-metrics/collectd[collectd_plugins_python]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
