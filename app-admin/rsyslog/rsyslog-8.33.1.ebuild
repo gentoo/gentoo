@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit autotools eutils linux-info python-any-r1 systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
-HOMEPAGE="http://www.rsyslog.com/"
+HOMEPAGE="https://www.rsyslog.com/"
 
 BRANCH="8-stable"
 
@@ -44,8 +44,8 @@ else
 	fi
 
 	SRC_URI="
-		http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
-		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
+		https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
+		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
 fi
 
