@@ -8075,7 +8075,7 @@ media-sound/timidity-freepats 20060219-r1: Free and open set of instrument patch
 media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
-media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
+media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
