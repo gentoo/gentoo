@@ -17,11 +17,6 @@ app-accessibility/orca:braille - Enable braille support
 app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engine
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
 app-accessibility/speechd-el:brltty - brltty support
-app-admin/collectd:contrib - Install user-contributed files in the doc directory
-app-admin/collectd:filecaps - When set collectd daemon will have set required capabilities to run most plugins even if run as unprivileged user
-app-admin/collectd:java - Must be set (workaround for java-pkg-opt-2 eclass limitation) when you want java or genericjmx plugin
-app-admin/collectd:udev - Enable optional udev usage in disk plugin; Required for smart plugin
-app-admin/collectd:xfs - Enable optional capability to filter on XFS file system in df plugin; Requires XFS headers from sys-fs/xfsprogs
 app-admin/conky:apcupsd - Enable support for sys-power/apcupsd
 app-admin/conky:audacious - Enable monitoring of music played by media-sound/audacious
 app-admin/conky:cmus - Enable monitoring of music played by media-sound/cmus
@@ -96,6 +91,7 @@ app-admin/rsyslog:grok - Build the grok modify module (requires dev-libs/grok)
 app-admin/rsyslog:jemalloc - Use dev-libs/jemalloc for allocations.
 app-admin/rsyslog:kafka - Build the Apache Kafka input/output module (requires dev-libs/librdkafka)
 app-admin/rsyslog:kerberos - Build the GSSAPI input and output module (requires virtual/krb5)
+app-admin/rsyslog:kubernetes - Build the kubernetes modify plugin (requires net-misc/curl)
 app-admin/rsyslog:libressl - Use dev-libs/libressl for building the rfc5424hmac modify module (requires rfc5424hmac USE flag)
 app-admin/rsyslog:mdblookup - Build the MaxMind DB lookup message modify plugin using dev-libs/libmaxminddb
 app-admin/rsyslog:mongodb - Build the MongoDB output module (requires dev-libs/libmongo-client)
@@ -527,6 +523,11 @@ app-i18n/uim:skk - Enable support for app-i18n/skk-jisyo
 app-laptop/hdapsd:libconfig - Require dev-libs/libconfig to allow the daemon to read a configuration file at startup
 app-laptop/thinkfan:atasmart - include libatasmart support to get disc temperature
 app-laptop/tp_smapi:hdaps - Install a compatible HDAPS module
+app-metrics/collectd:contrib - Install user-contributed files in the doc directory
+app-metrics/collectd:filecaps - When set collectd daemon will have set required capabilities to run most plugins even if run as unprivileged user
+app-metrics/collectd:java - Must be set (workaround for java-pkg-opt-2 eclass limitation) when you want java or genericjmx plugin
+app-metrics/collectd:udev - Enable optional udev usage in disk plugin; Required for smart plugin
+app-metrics/collectd:xfs - Enable optional capability to filter on XFS file system in df plugin; Requires XFS headers from sys-fs/xfsprogs
 app-misc/binwalk:graph - Enable support for generating entropy graphs
 app-misc/byobu:screen - Use app-misc/screen as the default backend
 app-misc/ca-certificates:cacert - Include root certificates from CAcert (http://www.cacert.org/) and Software in the Public Interest (http://www.spi-inc.org/)
