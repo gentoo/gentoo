@@ -4648,7 +4648,7 @@ dev-python/cloudpickle 0.3.1: Extended pickling support for Python objects
 dev-python/cmd2 0.7.5 0.7.9: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.3.1: A simple schema-based serialization and deserialization library
-dev-python/collectd-rabbitmq 1.19.0: Collectd plugin to gather statistics from RabbitMQ
+dev-python/collectd-rabbitmq 1.19.0-r1: Collectd plugin to gather statistics from RabbitMQ
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorlog 2.7.0: Log formatting with colors
