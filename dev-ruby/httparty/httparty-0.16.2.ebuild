@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -22,7 +22,7 @@ IUSE=""
 
 ruby_add_rdepend '>=dev-ruby/multi_xml-0.5.2'
 
-ruby_add_bdepend 'test? ( dev-ruby/fakeweb )'
+ruby_add_bdepend 'test? ( dev-ruby/webmock )'
 
 all_ruby_prepare() {
 	# Remove bundler
