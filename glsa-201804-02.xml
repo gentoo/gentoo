@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-02">
+  <title>glibc: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in glibc, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>2018-04-04</announced>
+  <revised count="1">2018-04-04</revised>
+  <bug>632556</bug>
+  <bug>634920</bug>
+  <bug>635118</bug>
+  <bug>641644</bug>
+  <bug>644278</bug>
+  <bug>646490</bug>
+  <bug>646492</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.25-r11</unaffected>
+      <vulnerable range="lt">2.25-r11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>glibc is a package that contains the GNU C library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in glibc. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly execute arbitrary code, escalate privileges,
+      cause a Denial of Service condition, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All glibc users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.25-r11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14062">CVE-2017-14062</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15670">CVE-2017-15670</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15671">CVE-2017-15671</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15804">CVE-2017-15804</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16997">CVE-2017-16997</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000001">
+      CVE-2018-1000001
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6485">CVE-2018-6485</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6551">CVE-2018-6551</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-12T23:08:50Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-04-04T01:53:52Z">b-man</metadata>
+</glsa>
