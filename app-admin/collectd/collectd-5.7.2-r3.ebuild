@@ -99,7 +99,7 @@ COMMON_DEPEND="
 	collectd_plugins_memcachec?		( dev-libs/libmemcached )
 	collectd_plugins_modbus?		( dev-libs/libmodbus )
 	collectd_plugins_mqtt?			( app-misc/mosquitto )
-	collectd_plugins_mysql?			( >=virtual/mysql-5.0 )
+	collectd_plugins_mysql?			( virtual/libmysqlclient:= )
 	collectd_plugins_netlink?		( net-libs/libmnl )
 	collectd_plugins_nginx?			( net-misc/curl:0= )
 	collectd_plugins_notify_desktop?	( x11-libs/libnotify )
