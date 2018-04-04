@@ -145,6 +145,8 @@ REQUIRED_USE="
 	mysql? ( || ( mysqli pdo ) )
 "
 
+PATCHES=( "${FILESDIR}/mbstring-oniguruma-6.8.patch" )
+
 PHP_MV="$(get_major_version)"
 
 php_install_ini() {
