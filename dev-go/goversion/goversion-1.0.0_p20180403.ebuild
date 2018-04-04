@@ -5,7 +5,7 @@ EAPI=6
 
 EGO_PN="rsc.io/goversion"
 
-EGIT_COMMIT="04f0b81a96346cb33d48044cbffd24c8f57785ad"
+EGIT_COMMIT="38f6ce479a8bd51821a711abdc8343164d820be4"
 
 inherit golang-build golang-vcs-snapshot bash-completion-r1
 ARCHIVE_URI="https://github.com/rsc/goversion/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
