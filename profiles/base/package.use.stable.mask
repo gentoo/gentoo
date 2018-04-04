@@ -19,7 +19,7 @@ app-emulation/qemu capstone
 # Zac Medico <zmedico@gentoo.org> (9 Mar 2018)
 # The rsync-verify support is not really stable yet.
 # Bugs #649276, #647964
-sys-apps/portage rsync-verify
+<sys-apps/portage-2.3.28 rsync-verify
 
 # Kent Fredric <kentnl@gentoo.org> (3 Mar 2018)
 # Not an officially supported configuration, as it causes unpredictable
