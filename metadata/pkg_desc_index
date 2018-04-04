@@ -1431,7 +1431,7 @@ app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/rfcutil 3.2.3-r2: return all related RFCs based upon a number or a search string
 app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
-app-text/rnv 1.7.11: A lightweight Relax NG Compact Syntax validator
+app-text/rnv 1.7.11 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
