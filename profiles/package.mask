@@ -599,11 +599,6 @@ media-gfx/qosmic
 # Bug 649764 Removal in 30 days.
 dev-db/maxscale
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Mar 2018)
-# Maintainer not responding, depends on deprecated Qt4.
-# Masked for removal in 30 days. Bug 598651, 635192, 644396
-media-gfx/photivo
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
 # Fails to build without rpc support in glibc (bug 631044);
 # no maintainer, requires obsolete hardware. Removal in
