@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 inherit cmake-utils fortran-2 toolchain-funcs flag-o-matic
 
 DESCRIPTION="Parallel matrix preconditioners library"
-HOMEPAGE="http://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods"
+HOMEPAGE="https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods"
 SRC_URI="${HOMEPAGE}/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
