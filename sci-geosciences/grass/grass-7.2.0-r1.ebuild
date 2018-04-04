@@ -78,6 +78,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${PN}"-7.0.1-declare-inespg.patch
+	"${FILESDIR}/${P}"-gcc7.patch
 )
 
 pkg_setup() {
