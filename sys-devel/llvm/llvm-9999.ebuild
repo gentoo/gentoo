@@ -246,3 +246,12 @@ _EOF_
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }
+
+pkg_postinst() {
+	elog "You can find additional opt-viewer utility scripts in:"
+	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/opt-viewer"
+	elog "To use these scripts, you will need Python 2.7 along with the following"
+	elog "packages:"
+	elog "  dev-python/pygments (for opt-viewer)"
+	elog "  dev-python/pyyaml (for all of them)"
+}
