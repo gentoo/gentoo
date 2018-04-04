@@ -983,7 +983,7 @@ app-misc/dnetc 2.9108.517: distributed.net client
 app-misc/dtach 0.8-r1 0.9: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
-app-misc/dvtm 0.14-r1: Dynamic virtual terminal manager
+app-misc/dvtm 0.14-r1 0.15-r3: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/emelfm2 0.9.1-r1: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
