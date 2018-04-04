@@ -1,0 +1,326 @@
+From 40d2204abb0c3ef3c4ea42492309282006cdb03b Mon Sep 17 00:00:00 2001
+From: Hleb Valoshka <375gnu@gmail.com>
+Date: Sat, 24 Feb 2018 15:37:47 +0300
+Subject: [PATCH] update for newer automake
+
+---
+ configure.in => configure.ac | 19 ++++++++++---------
+ po/Makefile.in.in            |  1 +
+ po/be.po                     |  8 ++++----
+ po2/Makefile.in.in           |  1 +
+ src/Makefile.am              |  2 +-
+ src/cel3ds/Makefile.am       |  2 +-
+ src/celengine/Makefile.am    | 10 +++++-----
+ src/celephem/Makefile.am     |  2 +-
+ src/celestia/Makefile.am     |  2 +-
+ src/celestia/gtk/Makefile.am |  2 +-
+ src/celestia/kde/Makefile.am |  2 +-
+ src/celestia/qt/Makefile.am  |  2 +-
+ src/celmath/Makefile.am      |  2 +-
+ src/celmodel/Makefile.am     |  2 +-
+ src/celtxf/Makefile.am       |  2 +-
+ src/celutil/Makefile.am      |  2 +-
+ 16 files changed, 32 insertions(+), 29 deletions(-)
+ rename configure.in => configure.ac (97%)
+
+diff --git a/configure.in b/configure.ac
+similarity index 97%
+rename from configure.in
+rename to configure.ac
+index 0b70581e..c9e722a1 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -4,8 +4,9 @@ dnl Process this file with autoconf to make a configure script
+ dnl
+ 
+ AC_PREREQ(2.57)
+-AC_INIT([celestia], [1.6.0], [celestia-developers@lists.sf.net])
++AC_INIT([celestia], [1.7.0], [celestia-developers@lists.sf.net])
+ AC_CONFIG_SRCDIR(acinclude.m4)
++AC_CONFIG_MACRO_DIRS([macros])
+ 
+ dnl The following section confirms that the user provided necessary option
+ dnl BEFORE anything is checked.
+@@ -19,7 +20,7 @@ ui_qt="no"
+ AC_ARG_WITH([glut],
+             AC_HELP_STRING([--with-glut], [Use Glut for the UI]),
+             ui_glut="yes")
+-			
++
+ AC_ARG_WITH([gtk],
+             AC_HELP_STRING([--with-gtk], [Use Gtk for an enhanced GUI]),
+             ui_gtk="yes")
+@@ -79,7 +80,7 @@ AC_CANONICAL_SYSTEM
+ dnl Perform program name transformation
+ AC_ARG_PROGRAM
+ 
+-AM_INIT_AUTOMAKE([-Wno-portability])
++AM_INIT_AUTOMAKE([-Wno-portability subdir-objects])
+ AM_CONFIG_HEADER(config.h)
+ 
+ AM_PO_SUBDIRS
+@@ -152,7 +153,7 @@ dnl
+ 
+ AC_ARG_WITH([cspice-dir],
+             AC_HELP_STRING([--with-cspice-dir=DIR], [Specify SPICE directory location]),
+-            SPICE_CFLAGS="-I$withval/include -DUSE_SPICE"; 
++            SPICE_CFLAGS="-I$withval/include -DUSE_SPICE";
+             SPICE_LIBS="$withval/lib/cspice.a")
+ 
+ AC_SUBST(SPICE_CFLAGS)
+@@ -386,11 +387,11 @@ if (test "$enable_lua" != "no"); then
+ 	LUA_VER=0
+ 	PKG_CHECK_MODULES(LUA, lua5.2 >= 5.2.0, LUA_VER=0x050200, [
+ 	PKG_CHECK_MODULES(LUA, lua >= 5.2.0, LUA_VER=0x050200, [
+-	PKG_CHECK_MODULES(LUA, lua5.1 >= 5.1.0, LUA_VER=0x050100, 
+-		[ PKG_CHECK_MODULES(LUA, lua >= 5.1.0, LUA_VER=0x050100, 
++	PKG_CHECK_MODULES(LUA, lua5.1 >= 5.1.0, LUA_VER=0x050100,
++		[ PKG_CHECK_MODULES(LUA, lua >= 5.1.0, LUA_VER=0x050100,
+ 		  [ PKG_CHECK_MODULES(LUA, lua50 >= 5.0.0 lua50 < 5.1.0, LUA_VER=0x050000,
+-		    [ PKG_CHECK_MODULES(LUA, lua >= 5.0.0 lua < 5.1.0, LUA_VER=0x050000, AC_MSG_RESULT([no])) ] 
+-		    ) ] 
++		    [ PKG_CHECK_MODULES(LUA, lua >= 5.0.0 lua < 5.1.0, LUA_VER=0x050000, AC_MSG_RESULT([no])) ]
++		    ) ]
+ 		) ]
+ 	) ] ) ] )
+ 	if (test "$LUA_VER" = "0x050000"); then
+@@ -512,7 +513,7 @@ AC_MSG_RESULT([Use Lua: $enable_lua]);
+ 
+ if (test "$LUA_VER" = "0x050000"); then
+ 	AC_MSG_RESULT([    Warning: Lua 5.1 is not available on your system, Lua 5.0 will be used
+-    instead but it may not be fully compatible with existing CELX scripts. 
++    instead but it may not be fully compatible with existing CELX scripts.
+     It is recommanded that you install Lua 5.0 and rerun configure.]);
+ fi
+ 
+diff --git a/po/Makefile.in.in b/po/Makefile.in.in
+index 5b7a5d5c..58c96720 100644
+--- a/po/Makefile.in.in
++++ b/po/Makefile.in.in
+@@ -31,6 +31,7 @@ gettextsrcdir = $(datadir)/gettext/po
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+ mkinstalldirs = $(SHELL) @install_sh@ -d
++MKDIR_P = @MKDIR_P@
+ mkdir_p = @mkdir_p@
+ 
+ GMSGFMT_ = @GMSGFMT@
+diff --git a/po/be.po b/po/be.po
+index 171bf786..a229f43d 100644
+--- a/po/be.po
++++ b/po/be.po
+@@ -6,7 +6,7 @@ msgstr ""
+ "PO-Revision-Date: \n"
+ "Last-Translator: Hleb Valoshka <375gnu@gmail.com>\n"
+ "Language-Team: belarusian <i18n@mova.org>\n"
+-"Language: \n"
++"Language: belarusian\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+@@ -28,7 +28,7 @@ msgstr "STD"
+ 
+ #: src/celengine/dsodb.cpp:387
+ msgid "Loaded "
+-msgstr "Загружаны"
++msgstr "Загружана "
+ 
+ #: src/celengine/dsodb.cpp:387
+ msgid " deep space objects"
+@@ -110,7 +110,7 @@ msgstr " прымітываў, "
+ 
+ #: src/celengine/meshmanager.cpp:165
+ msgid " materials "
+-msgstr " матар'ялаў"
++msgstr " матар'ялаў "
+ 
+ #: src/celengine/meshmanager.cpp:166
+ msgid " unique)\n"
+@@ -739,7 +739,7 @@ msgstr "Трымаць "
+ 
+ #: src/celestia/celestiacore.cpp:3592
+ msgid "Follow "
+-msgstr "Ісьці ўсьлед "
++msgstr "Ідзём за аб'ектам: "
+ 
+ #: src/celestia/celestiacore.cpp:3597
+ msgid "Sync Orbit "
+diff --git a/po2/Makefile.in.in b/po2/Makefile.in.in
+index 5b7a5d5c..58c96720 100644
+--- a/po2/Makefile.in.in
++++ b/po2/Makefile.in.in
+@@ -31,6 +31,7 @@ gettextsrcdir = $(datadir)/gettext/po
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+ mkinstalldirs = $(SHELL) @install_sh@ -d
++MKDIR_P = @MKDIR_P@
+ mkdir_p = @mkdir_p@
+ 
+ GMSGFMT_ = @GMSGFMT@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index a929ca4d..64aad4a3 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,7 +2,7 @@ SUBDIRS = celutil celmath cel3ds celtxf celengine celephem celmodel celestia
+ 
+ DEFS = -DHIP_DATA_DIR='"$(HIPDIR)"' @DEFS@
+ 
+-INCLUDES = -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
++AM_CPPFLAGS = -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
+ 
+ buildstardb_SOURCES = buildstardb.cpp
+ EXTRA_DIST = packdb.cpp packnames.cpp readstars.cpp
+diff --git a/src/cel3ds/Makefile.am b/src/cel3ds/Makefile.am
+index efd9030d..a573c06b 100644
+--- a/src/cel3ds/Makefile.am
++++ b/src/cel3ds/Makefile.am
+@@ -1,7 +1,7 @@
+ noinst_LIBRARIES = libcel3ds.a
+ noinst_HEADERS = $(wildcard *.h)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
+ 
+ libcel3ds_a_SOURCES = \
+ 	3dsmodel.cpp \
+diff --git a/src/celengine/Makefile.am b/src/celengine/Makefile.am
+index a540b098..77d909b7 100644
+--- a/src/celengine/Makefile.am
++++ b/src/celengine/Makefile.am
+@@ -1,10 +1,11 @@
+ noinst_LIBRARIES = libcelengine.a
+ noinst_HEADERS = $(wildcard *.h)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/curveplot/include \
+-	-I$(top_srcdir)/thirdparty/glew/include
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/curveplot/include
+ 
+-libcelengine_a_CXXFLAGS = $(LUA_CFLAGS) $(SPICE_CFLAGS)
++libcelengine_a_CXXFLAGS = $(LUA_CFLAGS) $(SPICE_CFLAGS) $(GLEW_CFLAGS)
++
++AM_LDFLAGS = $(LUA_LDFLAGS) $(GLEW_LDFLAGS)
+ 
+ libcelengine_a_SOURCES = \
+ 	asterism.cpp \
+@@ -74,5 +75,4 @@ libcelengine_a_SOURCES = \
+ 	vertexprog.cpp \
+ 	virtualtex.cpp \
+ 	visibleregion.cpp \
+-	$(top_srcdir)/thirdparty/glew/src/glew.c \
+-	$(top_srcdir)/thirdparty/curveplot/src/curveplot.cpp
++	../../thirdparty/curveplot/src/curveplot.cpp
+diff --git a/src/celephem/Makefile.am b/src/celephem/Makefile.am
+index 0b9aed16..8d6f25e4 100644
+--- a/src/celephem/Makefile.am
++++ b/src/celephem/Makefile.am
+@@ -1,7 +1,7 @@
+ noinst_LIBRARIES = libcelephem.a
+ noinst_HEADERS = $(wildcard *.h)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
+ 
+ if ENABLE_SPICE
+ SPICESOURCES = spiceinterface.cpp spiceorbit.cpp spicerotation.cpp
+diff --git a/src/celestia/Makefile.am b/src/celestia/Makefile.am
+index 95ba9ab6..25eb7d64 100644
+--- a/src/celestia/Makefile.am
++++ b/src/celestia/Makefile.am
+@@ -1,7 +1,7 @@
+ SUBDIRS = 
+ 
+ bin_PROGRAMS = celestia
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
+ 
+ DEFS = -DCONFIG_DATA_DIR='"$(PKGDATADIR)"' -DLOCALEDIR='"$(datadir)/locale"' @DEFS@
+ 
+diff --git a/src/celestia/gtk/Makefile.am b/src/celestia/gtk/Makefile.am
+index a77e000a..a32237e6 100644
+--- a/src/celestia/gtk/Makefile.am
++++ b/src/celestia/gtk/Makefile.am
+@@ -1,6 +1,6 @@
+ SUBDIRS = data
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
+ 
+ DEFS = -DCONFIG_DATA_DIR='"$(PKGDATADIR)"' -DLOCALEDIR='"$(datadir)/locale"' @DEFS@
+ 
+diff --git a/src/celestia/kde/Makefile.am b/src/celestia/kde/Makefile.am
+index 07ec12d1..4f034994 100644
+--- a/src/celestia/kde/Makefile.am
++++ b/src/celestia/kde/Makefile.am
+@@ -30,7 +30,7 @@ if ENABLE_KDE
+ noinst_LIBRARIES = libkdegui.a
+ noinst_HEADERS = $(wildcard *.h)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include $(QT_INCLUDES) $(KDE_INCLUDES)
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include $(QT_AM_CPPFLAGS) $(KDE_AM_CPPFLAGS)
+ 
+ libkdegui_a_CXXFLAGS = $(LUA_CFLAGS) $(THEORA_CFLAGS)
+ 
+diff --git a/src/celestia/qt/Makefile.am b/src/celestia/qt/Makefile.am
+index fb43c487..8cd73b65 100644
+--- a/src/celestia/qt/Makefile.am
++++ b/src/celestia/qt/Makefile.am
+@@ -76,7 +76,7 @@ if ENABLE_QT
+ noinst_LIBRARIES = libqtgui.a
+ noinst_HEADERS = $(QT_HEADERS)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen -I$(top_srcdir)/thirdparty/glew/include
+ 
+ BUILT_SOURCES = $(MOC_CPP_FILES) $(QRC_CPP_FILES) $(UI_H_FILES)
+ 
+diff --git a/src/celmath/Makefile.am b/src/celmath/Makefile.am
+index 2173112e..efb63bc8 100644
+--- a/src/celmath/Makefile.am
++++ b/src/celmath/Makefile.am
+@@ -1,7 +1,7 @@
+ noinst_LIBRARIES = libcelmath.a
+ noinst_HEADERS = $(wildcard *.h)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
+ 
+ libcelmath_a_SOURCES = \
+ 	frustum.cpp \
+diff --git a/src/celmodel/Makefile.am b/src/celmodel/Makefile.am
+index 39219eb0..9a619279 100644
+--- a/src/celmodel/Makefile.am
++++ b/src/celmodel/Makefile.am
+@@ -1,7 +1,7 @@
+ noinst_LIBRARIES = libcelmodel.a
+ noinst_HEADERS = $(wildcard *.h)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/Eigen
+ 
+ libcelmodel_a_SOURCES = \
+ 	material.cpp \
+diff --git a/src/celtxf/Makefile.am b/src/celtxf/Makefile.am
+index 75c1ef89..938d4f04 100644
+--- a/src/celtxf/Makefile.am
++++ b/src/celtxf/Makefile.am
+@@ -1,7 +1,7 @@
+ noinst_LIBRARIES = libceltxf.a
+ noinst_HEADERS = $(wildcard *.h)
+ 
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/glew/include
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/thirdparty/glew/include
+ 
+ libceltxf_a_SOURCES = \
+ 	texturefont.cpp
+diff --git a/src/celutil/Makefile.am b/src/celutil/Makefile.am
+index 27361d8b..6c956a1e 100644
+--- a/src/celutil/Makefile.am
++++ b/src/celutil/Makefile.am
+@@ -18,6 +18,6 @@ WINSOURCES = \
+ 	winutil.cpp \
+         windirectory.cpp
+ 
+-INCLUDES = -I$(top_srcdir)/thirdparty/Eigen
++AM_CPPFLAGS = -I$(top_srcdir)/thirdparty/Eigen
+ 
+ EXTRA_libcelutil_a_SOURCES= $(WINSOURCES)
