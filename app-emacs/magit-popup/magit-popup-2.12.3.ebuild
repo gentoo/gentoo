@@ -20,4 +20,5 @@ DOCS="README.md"
 
 CDEPEND=">=app-emacs/dash-2.13.0"
 DEPEND="${CDEPEND} sys-apps/texinfo"
-RDEPEND="!!<app-emacs/magit-2.13.0 $CDEPEND"
+RDEPEND="!!<app-emacs/magit-2.12.1
+	${CDEPEND}"
