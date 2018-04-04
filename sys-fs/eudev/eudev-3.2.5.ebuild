@@ -170,7 +170,7 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
