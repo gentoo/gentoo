@@ -47,6 +47,7 @@ src_prepare() {
 	kernel_is ge 4 14 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.14.0-fix-compile.patch"
 	kernel_is ge 4 15 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.15-fix-autorepeat.patch"
 	kernel_is ge 4 15 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.15-fix-timers.patch"
+	kernel_is ge 4 16 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.16-fix-compile.patch"
 }
 
 src_compile() {
