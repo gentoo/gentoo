@@ -1,11 +1,11 @@
 DEFINED_PHASES=install
-DEPEND=app-text/dictd
 DESCRIPTION=Freedict for language translation from French to English
 EAPI=6
-HOMEPAGE=http://www.freedict.de
+HOMEPAGE=http://freedict.sourceforge.net/
 KEYWORDS=alpha ~amd64 ~hppa ~mips ppc sparc x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
+RDEPEND=app-text/dictd
 SLOT=0
 SRC_URI=http://freedict.sourceforge.net/download/linux/fra-eng.tar.gz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	freedict	14704eb3fb7a3bb4f8132df44039f3c0	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=freedict	2bc659a64b6743fb2efcb7d2cea78f22
 _md5_=af42562528271e26d87b4507ac5fde02
