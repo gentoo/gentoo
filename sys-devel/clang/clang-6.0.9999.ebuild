@@ -280,6 +280,13 @@ pkg_postinst() {
 	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow update all
 	fi
+
+	elog "You can find additional utility scripts in:"
+	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/clang"
+	elog "To use these scripts, you will need Python 2.7. Some of them are vim"
+	elog "integration scripts (with instructions inside). The run-clang-tidy.py"
+	elog "scripts requires the following additional package:"
+	elog "  dev-python/pyyaml"
 }
 
 pkg_postrm() {
