@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 inherit autotools eutils linux-info systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
-HOMEPAGE="http://www.rsyslog.com/"
+HOMEPAGE="https://www.rsyslog.com/"
 
 BRANCH="8-stable"
 
@@ -39,12 +39,12 @@ else
 		unset _tmp_last_index
 		unset _tmp_suffix
 	else
-		KEYWORDS="amd64 ~arm ~arm64 hppa x86"
+		KEYWORDS="hppa"
 	fi
 
 	SRC_URI="
-		http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
-		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
+		https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
+		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
 
 	PATCHES=( "${FILESDIR}"/8-stable/${PN}-8.27.0-fix-mmnormalize-tests.patch )
