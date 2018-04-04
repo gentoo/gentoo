@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-01">
+  <title>libxslt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were discovered in libxslt, the worst of
+    which may allow a remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libxslt</product>
+  <announced>2018-04-04</announced>
+  <revised count="1">2018-04-04</revised>
+  <bug>598204</bug>
+  <bug>612194</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libxslt" auto="yes" arch="*">
+      <unaffected range="ge">1.1.30</unaffected>
+      <vulnerable range="lt">1.1.30</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libxslt is the XSLT C library developed for the GNOME project. XSLT is
+      an XML language to define transformations for XML.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libxslt. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, via a crafted HTML page, could possibly execute
+      arbitrary code, cause a Denial of Service condition or leak information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxslt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libxslt-1.1.30"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-4738">CVE-2016-4738</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5029">CVE-2017-5029</uri>
+  </references>
+  <metadata tag="requester" timestamp="2017-04-19T05:20:01Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2018-04-04T01:51:21Z">b-man</metadata>
+</glsa>
