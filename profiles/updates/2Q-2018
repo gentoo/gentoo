@@ -1,0 +1,1 @@
+move app-admin/collectd app-metrics/collectd
