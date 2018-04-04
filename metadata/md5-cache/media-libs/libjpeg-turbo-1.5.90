@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=!media-libs/jpeg:0 !media-libs/jpeg:62 amd64? ( || ( dev-lang/nasm dev-lang/yasm ) ) x86? ( || ( dev-lang/nasm dev-lang/yasm ) ) amd64-fbsd? ( || ( dev-lang/nasm dev-lang/yasm ) ) x86-fbsd? ( || ( dev-lang/nasm dev-lang/yasm ) ) amd64-linux? ( || ( dev-lang/nasm dev-lang/yasm ) ) x86-linux? ( || ( dev-lang/nasm dev-lang/yasm ) ) x64-macos? ( || ( dev-lang/nasm dev-lang/yasm ) ) x64-cygwin? ( || ( dev-lang/nasm dev-lang/yasm ) ) java? ( >=virtual/jdk-1.5 ) sys-devel/make >=dev-util/cmake-3.9.6 java? ( >=dev-java/java-config-2.2.0-r3 ) >=app-portage/elt-patches-20170422
+DESCRIPTION=MMX, SSE, and SSE2 SIMD accelerated JPEG library
+EAPI=6
+HOMEPAGE=https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/
+IUSE=java static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64 elibc_FreeBSD java
+LICENSE=BSD IJG
+RDEPEND=!media-libs/jpeg:0 !media-libs/jpeg:62 java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0-r3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/libjpeg-turbo/libjpeg-turbo-1.5.90.tar.gz mirror://gentoo/libjpeg8_8d-2.debian.tar.gz
+_eclasses_=cmake-multilib	7bc2cc09a4a5082b915541d447be8e5e	cmake-utils	d2f8cff68b90b869ef9d460c6f3c4e2e	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	02908f00f002f0f07c5b74783d778325	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	0ee72667014428e01a01df2345244cf3	libtool	0081a71a261724730ec4c248494f044d	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=cf0941a5f9bc327685441cf7ac91a83a
