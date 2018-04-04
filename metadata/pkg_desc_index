@@ -21,7 +21,7 @@ app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring yo
 app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/speech-dispatcher 0.8.1 0.8.7: Speech synthesis interface
-app-accessibility/speech-tools 2.1-r2: Speech tools for Festival Text to Speech engine
+app-accessibility/speech-tools 2.1-r2 2.1-r4: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
@@ -8773,6 +8773,7 @@ net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
+net-misc/drive 0.3.9.1: Google Drive client for the commandline
 net-misc/dropbear 2016.74 2017.75: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 45.3.88: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
