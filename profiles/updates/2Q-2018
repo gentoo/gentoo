@@ -1,1 +1,2 @@
 move app-admin/collectd app-metrics/collectd
+move app-metrics/prometheus-mysqld_exporter app-metrics/mysqld_exporter
