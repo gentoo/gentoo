@@ -635,7 +635,7 @@ dev-python/sepolgen
 # Depends on x11-libs/libXp which is on its way out.
 # If you still need this for third-party binaries, try the
 # workaround outlined in https://bugs.gentoo.org/210021#c19.
-# Masked for removal in 90 days. Bug #649080.
+# Masked for removal in 30 days. Bug #649080.
 x11-libs/motif:2.2
 
 # Anthony G. Basile <blueness@gentoo.org> (25 Feb 2018)
