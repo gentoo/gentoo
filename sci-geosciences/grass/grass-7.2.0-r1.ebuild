@@ -79,6 +79,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}/${PN}"-7.0.1-declare-inespg.patch
 	"${FILESDIR}/${P}"-gcc7.patch
+	"${FILESDIR}/${P}"-glibc-2.26-{1,2}.patch
 )
 
 pkg_setup() {
