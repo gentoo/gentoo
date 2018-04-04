@@ -51,6 +51,7 @@ RDEPEND="${RDEPEND}
 	!<sys-devel/llvm-4.0.0_rc:0
 	!sys-devel/clang:0"
 PDEPEND="
+	sys-devel/clang-common
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
 	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
