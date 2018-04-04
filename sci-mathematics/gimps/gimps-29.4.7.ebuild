@@ -6,7 +6,7 @@ EAPI=6
 inherit pax-utils systemd readme.gentoo-r1 versionator
 
 DESCRIPTION="The Great Internet Mersenne Prime Search"
-HOMEPAGE="http://mersenne.org/"
+HOMEPAGE="https://www.mersenne.org/"
 
 # The author has finally caved in to the pressure of putting the build
 # number in the package name. Some dark magic necessary to get to the
