@@ -2,13 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit toolchain-funcs versionator
 
-MYP=${PN}_$(replace_version_separator 1 _)
+MY_P=${PN}_$(replace_version_separator 1 _)
 
 DESCRIPTION="3D geometrical postscript renderer"
 HOMEPAGE="http://geant4.kek.jp/~tanaka/DAWN/About_DAWN.html"
-SRC_URI="http://geant4.kek.jp/~tanaka/src/${MYP}.tgz"
+SRC_URI="http://geant4.kek.jp/~tanaka/src/${MY_P}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -17,18 +18,20 @@ KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE="doc opengl X"
 
 RDEPEND="dev-lang/tk:*
-	X? ( x11-libs/libX11 )
-	opengl? ( virtual/opengl )"
+	opengl? ( virtual/opengl )
+	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	app-shells/tcsh
 	doc? ( virtual/latex-base )"
 
-S="${WORKDIR}/${MYP}"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-no-interactive.patch
 	"${FILESDIR}"/${P}-gcc7.patch
 )
+
+DOCS=( README.txt )
 
 src_prepare() {
 	default
@@ -37,7 +40,7 @@ src_prepare() {
 		-e '/strip/d' Makefile*in || die
 
 	if use X; then
-		mv -f "${S}"/configure_xwin "${S}"/configure || die
+		mv -f configure_xwin configure || die
 	fi
 
 	tc-export CXX
@@ -48,7 +51,7 @@ src_install() {
 
 	if use doc; then
 		pdflatex DOC/G4PRIM_FORMAT_24.tex || die "pdf generation failed"
-		DOCS=( README.txt DOC/*.pdf )
+		DOCS+=( DOC/*.pdf )
 		HTML_DOCS=( DOC/*.html )
 	fi
 
