@@ -1,7 +1,7 @@
 imagecapture.cpp:184:40: error: ‘Z_BEST_COMPRESSION’ was not declared in this scope
 
---- src/celestia/imagecapture.cpp
-+++ src/celestia/imagecapture.cpp
+--- a/src/celestia/imagecapture.cpp
++++ b/src/celestia/imagecapture.cpp
 @@ -31,6 +31,9 @@
  #include "png.h"
  #endif
