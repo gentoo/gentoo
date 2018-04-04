@@ -3,9 +3,9 @@
 
 EAPI=6
 
-inherit toolchain-funcs versionator
+inherit eapi7-ver toolchain-funcs
 
-MY_P=${PN}_$(replace_version_separator 1 _)
+MY_P=${PN}_$(ver_rs 1 _)
 
 DESCRIPTION="3D geometrical postscript renderer"
 HOMEPAGE="http://geant4.kek.jp/~tanaka/DAWN/About_DAWN.html"
