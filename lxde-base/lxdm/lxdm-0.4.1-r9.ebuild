@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -7,7 +7,7 @@ WANT_AUTOMAKE="1.12" #493996
 inherit eutils autotools systemd
 
 DESCRIPTION="LXDE Display Manager"
-HOMEPAGE="http://lxde.org"
+HOMEPAGE="https://lxde.org"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.gz"
 
 LICENSE="GPL-3"

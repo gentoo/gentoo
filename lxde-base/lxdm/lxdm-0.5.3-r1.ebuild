@@ -7,7 +7,7 @@ EAPI=6
 inherit eutils autotools systemd
 
 DESCRIPTION="LXDE Display Manager"
-HOMEPAGE="http://lxde.org"
+HOMEPAGE="https://lxde.org"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
