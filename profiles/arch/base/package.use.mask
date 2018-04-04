@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
@@ -42,7 +42,7 @@ dev-libs/libsecp256k1 asm
 
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Dependency is only keyworded on amd64 and x86
-app-admin/collectd collectd_plugins_mqtt
+app-metrics/collectd collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # It's only supported on amd64, ia64, powerpc and x86

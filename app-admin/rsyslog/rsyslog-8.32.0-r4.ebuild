@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit autotools eutils linux-info python-any-r1 systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
-HOMEPAGE="http://www.rsyslog.com/"
+HOMEPAGE="https://www.rsyslog.com/"
 
 BRANCH="8-stable"
 
@@ -40,13 +40,15 @@ else
 		unset _tmp_last_index
 		unset _tmp_suffix
 	else
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+		KEYWORDS="amd64 arm ~arm64 ~hppa x86"
 	fi
 
 	SRC_URI="
-		http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
-		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
+		https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
+		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
+
+	PATCHES=( "${FILESDIR}"/8-stable/${PN}-8.32.0-fix-building-without-curl-r3.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -69,7 +71,7 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 	mdblookup? ( dev-libs/libmaxminddb:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:= )
-	mysql? ( virtual/mysql )
+	mysql? ( virtual/libmysqlclient:= )
 	normalize? (
 		>=dev-libs/libee-0.4.0
 		>=dev-libs/liblognorm-2.0.3:=

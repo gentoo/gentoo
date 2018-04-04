@@ -1,12 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools eutils linux-info systemd
+inherit autotools eutils linux-info python-any-r1 systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
-HOMEPAGE="http://www.rsyslog.com/"
+HOMEPAGE="https://www.rsyslog.com/"
 
 BRANCH="8-stable"
 
@@ -23,9 +24,9 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	# Upstream URL schema:
-	# RC:      http://www.rsyslog.com/files/download/rsyslog/rc/rsyslog-8.18.0.tar.gz
-	#          http://www.rsyslog.com/files/download/rsyslog/rc2/rsyslog-8.18.0.tar.gz
-	# Release: http://www.rsyslog.com/files/download/rsyslog/rsyslog-8.18.0.tar.gz
+	# RC:      https://www.rsyslog.com/files/download/rsyslog/rc/rsyslog-8.18.0.tar.gz
+	#          https://www.rsyslog.com/files/download/rsyslog/rc2/rsyslog-8.18.0.tar.gz
+	# Release: https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.18.0.tar.gz
 
 	MY_URL_PREFIX=
 	if [[ ${PV} = *_rc* ]]; then
@@ -39,32 +40,28 @@ else
 		unset _tmp_last_index
 		unset _tmp_suffix
 	else
-		KEYWORDS="amd64 ~arm ~arm64 ~hppa x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 	fi
 
 	SRC_URI="
-		http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
-		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
+		https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
+		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
 
-	PATCHES=(
-		"${FILESDIR}"/8-stable/${PN}-8.26.0-fix-zmq3-format-security.patch
-		"${FILESDIR}"/8-stable/${PN}-8.27.0-fix-librdkafka-detection.patch
-		"${FILESDIR}"/8-stable/${PN}-8.27.0-fix-hostname-detection-when-getaddrinfo-fails.patch
-		"${FILESDIR}"/8-stable/${PN}-8.27.0-fix-mmnormalize-tests.patch
-	)
+	PATCHES=( "${FILESDIR}"/${BRANCH}/${PN}-8.34.0-fix-issue2612.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mdblookup mongodb mysql normalize omhttpfs"
-IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid zeromq"
+IUSE="curl dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos kubernetes libressl mdblookup mongodb mysql"
+IUSE+=" normalize omhttpfs omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid zeromq"
 
 RDEPEND="
-	>=dev-libs/libfastjson-0.99.3:=
+	>=dev-libs/libfastjson-0.99.8:=
 	>=dev-libs/libestr-0.1.9
 	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
+	curl? ( >=net-misc/curl-7.35.0 )
 	dbi? ( >=dev-db/libdbi-0.8.3 )
 	elasticsearch? ( >=net-misc/curl-7.35.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:= )
@@ -72,9 +69,10 @@ RDEPEND="
 	jemalloc? ( >=dev-libs/jemalloc-3.3.1:= )
 	kafka? ( >=dev-libs/librdkafka-0.9.0.99:= )
 	kerberos? ( virtual/krb5 )
+	kubernetes? ( >=net-misc/curl-7.35.0 )
 	mdblookup? ( dev-libs/libmaxminddb:= )
-	mongodb? ( >=dev-libs/libmongo-client-0.1.4 )
-	mysql? ( virtual/mysql )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:= )
+	mysql? ( virtual/libmysqlclient:= )
 	normalize? (
 		>=dev-libs/libee-0.4.0
 		>=dev-libs/liblognorm-2.0.3:=
@@ -84,7 +82,7 @@ RDEPEND="
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
 	redis? ( >=dev-libs/hiredis-0.11.0:= )
-	relp? ( >=dev-libs/librelp-1.2.12:= )
+	relp? ( >=dev-libs/librelp-1.2.14:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
 		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
@@ -92,16 +90,21 @@ RDEPEND="
 	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	ssl? ( >=net-libs/gnutls-2.12.23:0= )
-	systemd? ( >=sys-apps/systemd-208 )
+	systemd? ( >=sys-apps/systemd-234 )
 	uuid? ( sys-apps/util-linux:0= )
 	zeromq? (
-		>=net-libs/zeromq-4.1.1:=
-		>=net-libs/czmq-3.0.0
+		>=net-libs/czmq-3.0.2
 	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
-	test? ( sys-libs/libfaketime )"
+	test? (
+		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
+		!jemalloc? ( sys-libs/libfaketime )
+		${PYTHON_DEPS}
+	)"
+
+REQUIRED_USE="kubernetes? ( normalize )"
 
 if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
@@ -112,6 +115,10 @@ fi
 
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
@@ -173,6 +180,7 @@ src_configure() {
 		--disable-generate-man-pages
 		--without-valgrind-testbench
 		$(use_enable test testbench)
+		$(use_enable curl libcurl)
 		# Input Plugins without depedencies
 		--enable-imdiag
 		--enable-imfile
@@ -213,12 +221,14 @@ src_configure() {
 		$(use_enable debug rtinst)
 		$(use_enable debug valgrind)
 		# Misc
+		$(use_enable curl fmhttp)
 		$(use_enable elasticsearch)
 		$(use_enable gcrypt libgcrypt)
 		$(use_enable jemalloc)
 		$(use_enable kafka imkafka)
 		$(use_enable kafka omkafka)
 		$(use_enable kerberos gssapi-krb5)
+		$(use_enable kubernetes mmkubernetes)
 		$(use_enable normalize mmnormalize)
 		$(use_enable mdblookup mmdblookup)
 		$(use_enable grok mmgrok)
@@ -236,9 +246,7 @@ src_configure() {
 		$(use_enable usertools)
 		$(use_enable uuid)
 		$(use_enable zeromq imczmq)
-		$(use_enable zeromq imzmq3)
 		$(use_enable zeromq omczmq)
-		$(use_enable zeromq omzmq3)
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 
@@ -306,7 +314,7 @@ src_install() {
 	newins "${FILESDIR}/${BRANCH}/${PN}.conf" ${PN}.conf
 
 	insinto /etc/rsyslog.d/
-	doins "${FILESDIR}/${BRANCH}/50-default.conf"
+	newins "${FILESDIR}/${BRANCH}/50-default-r1.conf" 50-default.conf
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}/${BRANCH}/${PN}.logrotate" ${PN}
@@ -452,5 +460,5 @@ pkg_config() {
 
 	echo
 	einfo "Here is the documentation on how to encrypt your log traffic:"
-	einfo " http://www.rsyslog.com/doc/rsyslog_tls.html"
+	einfo " https://www.rsyslog.com/doc/rsyslog_tls.html"
 }

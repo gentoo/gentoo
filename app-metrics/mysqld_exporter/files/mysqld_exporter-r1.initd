@@ -5,8 +5,8 @@
 description="Prometheus exporter for MySQL server metrics"
 
 EXPORTER_FLAGS=${EXPORTER_FLAGS:-""}
-EXPORTER_USER=${EXPORTER_USER:-"prometheus-mysqld_exporter"}
-EXPORTER_GROUP=${EXPORTER_GROUP:-prometheus-mysqld_exporter}
+EXPORTER_USER=${EXPORTER_USER:-"mysqld_exporter"}
+EXPORTER_GROUP=${EXPORTER_GROUP:-"mysqld_exporter"}
 EXPORTER_PIDFILE=${EXPORTER_PIDFILE:-"/run/${RC_SVCNAME}.pid"}
 EXPORTER_SSDARGS=${EXPORTER_SSDARGS:-"--wait 1000"}
 EXPORTER_TERMTIMEOUT=${EXPORTER_TERMTIMEOUT:-"TERM/60/KILL/5"}
