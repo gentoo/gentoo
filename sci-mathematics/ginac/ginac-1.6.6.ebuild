@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit autotools-utils
 
 DESCRIPTION="C++ library and tools for symbolic calculations"
 SRC_URI="http://www.ginac.de/${P}.tar.bz2"
-HOMEPAGE="http://www.ginac.de/"
+HOMEPAGE="https://www.ginac.de/"
 
 LICENSE="GPL-2"
 SLOT="0"
