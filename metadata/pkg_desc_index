@@ -3355,18 +3355,18 @@ dev-perl/App-cpanminus 1.703.900 1.704.300: Get, unpack, build and install modul
 dev-perl/App-perlbrew 0.780.0 0.820.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
-dev-perl/Archive-Any 0.94.100: Single interface to deal with file archives
-dev-perl/Archive-Extract 0.720.0: Generic archive extracting mechanism
-dev-perl/Archive-Zip 1.590.0: A wrapper that lets you read Zip archive members as if they were files
-dev-perl/Array-Compare 2.20.0-r1: Perl extension for comparing arrays
+dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
+dev-perl/Archive-Extract 0.720.0 0.800.0: Generic archive extracting mechanism
+dev-perl/Archive-Zip 1.590.0 1.600.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Array-Compare 2.20.0-r1 3.0.0: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0: Interface to FITS headers
-dev-perl/AtExit 2.10.0-r1: atexit() function to register exit-callbacks
-dev-perl/Audio-CD-disc-cover 0.05-r1: Perl Module needed for app-cdr/disc-cover
-dev-perl/Audio-DSP 0.20.0-r1: Perl interface to *NIX digital audio device
+dev-perl/AtExit 2.10.0-r1 2.30.0: atexit() function to register exit-callbacks
+dev-perl/Audio-CD-disc-cover 0.05-r1 0.05-r2: Perl Module needed for app-cdr/disc-cover
+dev-perl/Audio-DSP 0.20.0-r1 0.20.0-r2: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1: Access to FLAC audio metadata
-dev-perl/Audio-Mixer 0.700.0-r1: Perl extension for Sound Mixer control
+dev-perl/Audio-Mixer 0.700.0-r1 0.700.0-r2: Perl extension for Sound Mixer control
 dev-perl/Audio-Wav 0.140.0: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
