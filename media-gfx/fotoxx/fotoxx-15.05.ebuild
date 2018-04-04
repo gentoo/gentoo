@@ -15,19 +15,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	x11-libs/gtk+:3
 	media-libs/libpng
 	media-libs/tiff
-	media-libs/lcms:2"
+	media-libs/lcms:2
+	x11-libs/gtk+:3"
 RDEPEND="${DEPEND}
-	media-libs/exiftool
 	media-gfx/ufraw[gtk]
 	media-gfx/dcraw
+	media-libs/exiftool
 	x11-misc/xdg-utils"
 
-PATCHES=(
-	"${FILESDIR}"/${PF}.patch
-)
+PATCHES=( "${FILESDIR}"/${P}.patch )
 
 src_compile() {
 	tc-export CXX
@@ -39,7 +37,7 @@ src_install() {
 	# and README, changelog, translations, edit-menus, KB-shortcuts must not be compressed
 	emake DESTDIR="${D}" install
 	newmenu desktop ${PN}.desktop
-	rm -f "${D}"/usr/share/doc/${PF}/*.man
+	rm -f "${D}"/usr/share/doc/${PF}/*.man || die
 	docompress -x /usr/share/doc
 }
 
