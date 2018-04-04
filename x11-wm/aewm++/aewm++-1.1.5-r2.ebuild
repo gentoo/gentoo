@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="A window manager with more modern features than aewm"
 HOMEPAGE="https://github.com/frankhale/aewmpp"
@@ -19,16 +19,11 @@ DEPEND="${RDEPEND}
 	x11-proto/xextproto
 	x11-proto/xproto"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch \
-		"${FILESDIR}"/${P}-makefile.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc43.patch
+	"${FILESDIR}"/${P}-makefile.patch
+)
 
 src_compile() {
 	emake CXX="$(tc-getCXX)"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc ChangeLog README
 }
