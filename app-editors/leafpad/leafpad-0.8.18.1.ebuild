@@ -21,11 +21,9 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-DOCS="AUTHORS ChangeLog NEWS README"
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.8.18.1-fdo.patch
-	"${FILESDIR}"/${PN}-0.8.18.1-format-security.patch
+	"${FILESDIR}"/${P}-fdo.patch
+	"${FILESDIR}"/${P}-format-security.patch
 )
 
 src_configure() {
@@ -33,10 +31,6 @@ src_configure() {
 		--enable-chooser \
 		--enable-print \
 		$(use_enable emacs)
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
