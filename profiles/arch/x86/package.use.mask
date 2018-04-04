@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires >=portage-2.1.1
@@ -76,7 +76,7 @@ app-emulation/libvirt zfs
 
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Enable MQTT support on supported architectures
-app-admin/collectd -collectd_plugins_mqtt
+app-metrics/collectd -collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures

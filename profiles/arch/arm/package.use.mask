@@ -92,7 +92,7 @@ dev-java/oracle-jdk-bin visualvm
 
 # Patrice Clement <monsieurp@gentoo.org> (09 Apr 2017)
 # Enable MQTT support on supported architectures
-app-admin/collectd -collectd_plugins_mqtt
+app-metrics/collectd -collectd_plugins_mqtt
 
 # Michael Weber <xmw@gentoo.org> (15 Mar 2017)
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
@@ -160,15 +160,15 @@ sys-cluster/ceph test
 # Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
 # for the proxy-maintainers project
 # Unkeyworded deps, bug #564274
-app-admin/collectd collectd_plugins_gmond
-app-admin/collectd collectd_plugins_ipmi
-app-admin/collectd collectd_plugins_modbus
-app-admin/collectd collectd_plugins_oracle
-app-admin/collectd collectd_plugins_routeros
-app-admin/collectd collectd_plugins_sigrok
-app-admin/collectd collectd_plugins_tokyotyrant
-app-admin/collectd collectd_plugins_varnish
-app-admin/collectd collectd_plugins_virt
+app-metrics/collectd collectd_plugins_gmond
+app-metrics/collectd collectd_plugins_ipmi
+app-metrics/collectd collectd_plugins_modbus
+app-metrics/collectd collectd_plugins_oracle
+app-metrics/collectd collectd_plugins_routeros
+app-metrics/collectd collectd_plugins_sigrok
+app-metrics/collectd collectd_plugins_tokyotyrant
+app-metrics/collectd collectd_plugins_varnish
+app-metrics/collectd collectd_plugins_virt
 
 # Markus Meier <maekke@gentoo.org> (02 Mar 2016)
 # unkeyworded deps for bug #573324
