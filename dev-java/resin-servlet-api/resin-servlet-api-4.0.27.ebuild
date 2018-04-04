@@ -13,7 +13,7 @@ SRC_URI="http://www.caucho.com/download/resin-${PV}-src.zip"
 
 LICENSE="GPL-2"
 SLOT="3.0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 
 IUSE=""
 
