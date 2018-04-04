@@ -38,6 +38,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-include-sysmacros.patch
+)
+
 src_configure() {
 	econf \
 		--htmldir=/usr/share/doc/${PF}/html \
