@@ -14,15 +14,29 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="elibc_glibc"
 
-RDEPEND="media-libs/freetype:2
-	>=media-libs/libpng-1.2.8:*
+RDEPEND="
+	dev-libs/libxml2
+	>=media-libs/libpng-1.2.8:0=
 	>=sys-libs/zlib-1.2.3
-	virtual/jpeg:*"
+	virtual/jpeg:*
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXdmcp
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXfont2
+	x11-libs/libXinerama
+	x11-libs/libXpm
+	x11-libs/libXrandr
+	x11-libs/libXrender
+	x11-libs/libXtst
+	x11-libs/pixman
+"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-libs/libfontenc
-	x11-libs/libXfont2
 	x11-misc/gccmakedep
 	x11-misc/imake
 	x11-proto/inputproto
@@ -38,14 +52,15 @@ src_prepare() {
 	sed 's@which quilt@false@' -i mesa-quilt || die
 
 	# run autoreconf in all needed folders
-	for i in nxcomp nx-X11/lib nxcompshad nxproxy ; do
-		pushd ${i} || die
+	local subdir
+	for subdir in nxcomp nx-X11/lib nxcompshad nxproxy ; do
+		pushd ${subdir} || die
 		eautoreconf
 		popd || die
 	done
 
 	# From xorg-x11-6.9.0-r3.ebuild
-	pushd nx-X11  || die
+	pushd nx-X11 || die
 	HOSTCONF="config/cf/host.def"
 	echo "#define CcCmd $(tc-getCC)" >> ${HOSTCONF}
 	echo "#define OptimizedCDebugFlags ${CFLAGS} GccAliasingArgs" >> ${HOSTCONF}
@@ -58,8 +73,9 @@ src_prepare() {
 }
 
 src_configure() {
-	for i in nxcomp nxcompshad nxproxy ; do
-		pushd ${i} || die
+	local subdir
+	for subdir in nxcomp nxcompshad nxproxy ; do
+		pushd ${subdir} || die
 		econf
 		popd || die
 	done
