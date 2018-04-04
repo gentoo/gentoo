@@ -26,21 +26,19 @@ RDEPEND="dev-libs/glib:2
 	virtual/freedesktop-icon-theme
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	gtk2? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
-	!gtk2? ( x11-libs/gtk+:3 )
 	x11-libs/pango
 	x11-libs/libX11
 	x11-misc/shared-mime-info
-	video-thumbnails? ( media-video/ffmpegthumbnailer )
-	startup-notification? ( x11-libs/startup-notification )"
+	gtk2? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
+	!gtk2? ( x11-libs/gtk+:3 )
+	startup-notification? ( x11-libs/startup-notification )
+	video-thumbnails? ( media-video/ffmpegthumbnailer )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
-	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-include-sysmacros.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-9999-include-sysmacros.patch )
 
 src_configure() {
 	econf \
@@ -51,10 +49,6 @@ src_configure() {
 		--enable-inotify \
 		--disable-pixmaps \
 		$(use_with gtk3 gtk3 "yes")
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

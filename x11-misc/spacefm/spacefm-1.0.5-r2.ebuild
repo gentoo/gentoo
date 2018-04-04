@@ -32,9 +32,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-include-sysmacros.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-include-sysmacros.patch )
 
 src_configure() {
 	econf \
@@ -45,10 +43,6 @@ src_configure() {
 		--enable-inotify \
 		--disable-pixmaps \
 		$(use_with gtk3 gtk3 "yes")
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
