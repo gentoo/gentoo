@@ -4,7 +4,7 @@
 EAPI="6"
 
 DESCRIPTION="Meta ebuild for LXDE, the Lightweight X11 Desktop Environment"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://lxde.org/"
 
 LICENSE="metapackage"
 SLOT="0"
