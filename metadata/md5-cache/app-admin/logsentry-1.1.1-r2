@@ -3,10 +3,10 @@ DEPEND=>=sys-apps/sed-4
 DESCRIPTION=Automatically monitor system logs and mail security violations
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/sentrytools/
-KEYWORDS=amd64 arm ~mips ~ppc ~s390 ~sh sparc x86
+KEYWORDS=amd64 arm ~mips ppc ~s390 ~sh sparc x86
 LICENSE=GPL-2
 RDEPEND=virtual/mailx
 SLOT=0
 SRC_URI=mirror://gentoo/logsentry-1.1.1.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=077bb089d4e437f9f587afdbbd122081
+_md5_=1ea176a3d6f6bf77ccc92fcc0e90e4e7
