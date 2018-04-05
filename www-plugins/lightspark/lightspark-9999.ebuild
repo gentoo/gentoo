@@ -28,7 +28,6 @@ RDEPEND="app-arch/xz-utils:0=
 	>=sys-devel/llvm-3.4:=
 	sys-libs/zlib:0=
 	x11-libs/cairo:0=
-	x11-libs/gtk+:2=
 	x11-libs/libX11:0=
 	x11-libs/pango:0=
 	virtual/jpeg:0=
