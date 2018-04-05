@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Authentication and Authorization via Perl's DBI"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 ~ppc ~ppc64 x86"
 IUSE="test"
 
 RDEPEND=">=dev-perl/Digest-SHA1-2.10.0
