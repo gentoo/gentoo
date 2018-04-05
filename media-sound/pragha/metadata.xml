@@ -9,6 +9,7 @@
     <flag name="glyr">Enable music metadata searchengine support using <pkg>media-libs/glyr</pkg></flag>
     <flag name="grilo">Play songs on DLNA servers using <pkg>media-libs/grilo</pkg></flag>
     <flag name="keybinder">Enable shortcut support using <pkg>dev-libs/keybinder</pkg></flag>
+    <flag name="koel">Append music on Koel server</flag>
     <flag name="lastfm">Enable last.fm support using <pkg>media-libs/libclastfm</pkg></flag>
     <flag name="peas">Enable various plugins that will pull in <pkg>dev-libs/libpeas</pkg> as a dependency</flag>
     <flag name="playlist">Enable enhanced playlist support using <pkg>dev-libs/totem-pl-parser</pkg></flag>
