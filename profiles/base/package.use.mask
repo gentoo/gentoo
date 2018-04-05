@@ -79,9 +79,9 @@ app-admin/testdisk ewf
 
 # Brian Evans <grknight@gentoo.org> (28 Feb 2018)
 # Mask client-libs USE to force users to install alternative standard pacakges
->=dev-db/mariadb-10.2.13 client-libs
->=dev-db/mysql-5.7 client-libs
->=dev-db/percona-server-5.7 client-libs
+dev-db/mariadb client-libs
+dev-db/mysql client-libs
+dev-db/percona-server client-libs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2018)
 # Depends on obsolete media-libs/phonon[qt4]
