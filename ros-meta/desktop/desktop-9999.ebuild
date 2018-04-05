@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,12 @@ IUSE=""
 RDEPEND="
 	ros-meta/robot
 	ros-meta/viz
+	dev-ros/angles
+	ros-meta/common_tutorials
+	ros-meta/geometry_tutorials
+	ros-meta/ros_tutorials
 	dev-ros/roslint
+	dev-ros/urdf_tutorial
 	ros-meta/visualization_tutorials
 "
 DEPEND="${RDEPEND}"
