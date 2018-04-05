@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
-PATCHES=( "${FILESDIR}"/config-full-paths-r3.patch )
+PATCHES=( "${FILESDIR}"/config-full-paths-r8.patch )
 
 pkg_setup() {
 	enewgroup dnscrypt
