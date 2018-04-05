@@ -13,7 +13,7 @@ HOMEPAGE="https://zanshin.kde.org/"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 # FIXME: bundles libkdepim
