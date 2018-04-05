@@ -581,11 +581,6 @@ dev-lisp/asdf-binary-locations
 # Masked for removal in 30 days. Bug #648448
 dev-lisp/gentoo-init
 
-# Michael Palimaka <kensington@gentoo.org> (07 Mar 2018)
-# Depends on deprecated Qt 4. Dead upstream.
-# Masked for removal in 30 days. Bug #649116.
-media-video/qt-recordmydesktop
-
 # Brian Evans <grknight@gentoo.org> (06 Mar 2018)
 # MariaDB MaxScale 1.x depends on the deprecated libmysqld
 # Newer versions bundle software that require git access
