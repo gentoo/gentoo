@@ -2872,7 +2872,7 @@ dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/ocaml 4.04.2: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.27 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3 5.24.3-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.33 5.6.34 7.0.27 7.0.28 7.1.13 7.1.15: The PHP language runtime engine
+dev-lang/php 5.6.33 5.6.34 5.6.35-r1 7.0.27 7.0.28 7.0.29 7.1.13 7.1.15 7.1.16: The PHP language runtime engine
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0-r1: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -7176,7 +7176,7 @@ media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle com
 media-gfx/cropgui 0.1.1-r3: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5: A virtual lighttable and darkroom for photographers
-media-gfx/dawn 3.90b: 3D geometrical postscript renderer
+media-gfx/dawn 3.90b 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.7.0-r3: Digital photo management application
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
