@@ -7,7 +7,7 @@ inherit apache-module depend.apache
 
 DESCRIPTION="Look up Apache ~user directories in an LDAP directory"
 HOMEPAGE="https://www.horde.net/~jwm/software/mod_ldap_userdir/"
-SRC_URI="http://horde.net/~jwm/software/${PN}/${P}.tar.gz"
+SRC_URI="https://horde.net/~jwm/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"
