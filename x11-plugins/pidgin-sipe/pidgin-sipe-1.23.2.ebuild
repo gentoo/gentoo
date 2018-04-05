@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Pidgin Plug-in SIPE (Sip Exchange Protocol)"
 HOMEPAGE="http://sipe.sourceforge.net/"
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug kerberos ocs2005-message-hack openssl telepathy voice"
+IUSE="dbus debug kerberos ocs2005-message-hack openssl telepathy voice"
 
 RDEPEND="
 	dev-libs/gmime:2.6
@@ -25,13 +25,12 @@ RDEPEND="
 		>=dev-libs/glib-2.28.0
 		>=net-libs/libnice-0.1.0
 		media-libs/gstreamer:1.0
-		>=net-im/pidgin-2.8.0
 		net-libs/farstream:0.2
 	)
 	!voice? (
 		>=dev-libs/glib-2.12.0:2
-		net-im/pidgin
 	)
+	net-im/pidgin[dbus?]
 	telepathy? (
 		>=sys-apps/dbus-1.1.0
 		>=dev-libs/dbus-glib-0.61
@@ -57,6 +56,7 @@ src_configure() {
 		$(use_enable telepathy) \
 		$(use_enable debug) \
 		$(use_enable ocs2005-message-hack) \
+		$(use_with dbus) \
 		$(use_with kerberos krb5) \
 		$(use_with voice vv) \
 		$(use_enable !openssl nss) \
