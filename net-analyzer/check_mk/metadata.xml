@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>morlix@morlix.de</email>
-		<name>Timo Eissler</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+<!-- maintainer-needed -->
 	<longdescription lang="en">
 		General purpose Nagios/Icinga plugin for retrieving data.
-		Check_MK is a collection of extensions for the IT-Monitoring-Kernel of Nagios/Icinga
-		and together with this, and ideally also with PNP4Nagios and NagVis constitutes
-		a complete IT-Monitoring-System.
+		Check_MK is a collection of extensions for the IT-Monitoring-Kernel 
+		of Nagios/Icinga and together with this, and ideally also with 
+		PNP4Nagios and NagVis constitutes a complete IT-Monitoring-System.
 	</longdescription>
 	<use>
 		<flag name="agent-only">Install only the check_mk agent.</flag>
