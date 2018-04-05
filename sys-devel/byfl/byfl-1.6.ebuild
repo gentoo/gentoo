@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic
+inherit flag-o-matic llvm
 
 if [ "${PV}" = "9999" ]; then
 	LLVM_VERSION="6.0.0"
