@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Object and functions to work with International Standard Serial Numbers"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 
 DEPEND="
