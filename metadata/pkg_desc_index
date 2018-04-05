@@ -6169,6 +6169,7 @@ dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for 
 dev-util/gertty 1.5.0: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.20.2: A user interface designer for GTK+ and GNOME
 dev-util/global 6.3.1: tag system to find an object location in various sources
+dev-util/gnome-builder 3.24.2: Builder attempts to be an IDE for writing software for GNOME
 dev-util/gnome-devel-docs 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/google-perftools 2.0-r2 2.6.2: Fast, multi-threaded malloc() and nifty performance analysis tools
@@ -6412,7 +6413,6 @@ gnome-extra/evolution-data-server 3.22.7 3.24.7: Evolution groupware backend
 gnome-extra/evolution-ews 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.24.0: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-builder 3.24.2: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.24.0: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.24.3: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.24.0: Unicode character map viewer and library
