@@ -31,13 +31,13 @@ DEPEND="
 	tbb? ( dev-cpp/tbb )
 	vtk? ( || ( sci-libs/vtk[imaging] sci-libs/vtk[rendering] sci-libs/vtk[views] sci-libs/vtk[all-modules] ) )"
 RDEPEND="${DEPEND}"
-
 CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch
 	"${FILESDIR}"/${PN}-6.9.1-vtk-configure.patch
+	"${FILESDIR}"/${PN}-6.9.1-vtk-7.1.patch
 )
 
 pkg_setup() {
