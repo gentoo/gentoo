@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,15 +26,16 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	#challenge response could be optional but that seems horribly dangerous to me
-	econf \
-		--with-cr \
-		$(use_with ldap) \
+	local myeconfargs=(
+		--with-cr
 		--with-pam-dir=/$(get_libdir)/security
+		$(use_with ldap)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 	dodoc doc/*
-	#prune_libtool_files #why doesn't this work?
 	find "${D}" -name '*.la' -delete || die
 }
