@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="cpu_flags_x86_sse2 curl ffmpeg gles libav nsplugin ppapi profile rtmp"
 
-# Note: code-wise llvm-4.0 is fine but due to CMake bug it can't work:
-# https://gitlab.kitware.com/cmake/cmake/issues/16606
 RDEPEND="app-arch/xz-utils:0=
 	dev-cpp/glibmm:2=
 	>=dev-libs/boost-1.42:0=
@@ -27,7 +25,7 @@ RDEPEND="app-arch/xz-utils:0=
 	media-libs/libsdl2:0=
 	media-libs/sdl2-mixer:0=
 	>=sys-devel/gcc-4.6.0:*[cxx]
-	>=sys-devel/llvm-3.4:0=
+	>=sys-devel/llvm-3.4:=
 	sys-libs/zlib:0=
 	x11-libs/cairo:0=
 	x11-libs/gtk+:2=
