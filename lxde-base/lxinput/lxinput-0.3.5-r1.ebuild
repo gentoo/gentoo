@@ -12,7 +12,7 @@ PLOCALE_BACKUP="en_GB"
 inherit l10n
 
 DESCRIPTION="LXDE keyboard and mouse configuration tool"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://lxde.org/"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"

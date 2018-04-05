@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 DESCRIPTION="Meta ebuild for LXDE, the Lightweight X11 Desktop Environment"
-HOMEPAGE="https://lxde.org/"
+HOMEPAGE="https://wiki.lxde.org/en/Status_of_LXDE_components"
 
 LICENSE="metapackage"
 SLOT="0"
@@ -20,7 +20,7 @@ RDEPEND=">=lxde-base/menu-cache-0.3.3
 	>=lxde-base/lxpanel-0.5.10
 	>=lxde-base/lxrandr-0.1.2
 	>=lxde-base/lxsession-0.5.2
-	|| ( >=x11-libs/libfm-1.2.0 =lxde-base/lxshortcut-0.1* )
+	>=x11-libs/libfm-1.2.0
 	>=lxde-base/lxtask-0.1.6
 	>=lxde-base/lxterminal-0.1.11
 	media-gfx/gpicview
