@@ -12,8 +12,8 @@ if [ "${PV}" = "9999" ]; then
 	inherit autotools git-r3
 	KEYWORDS=""
 else
-	LLVM_VERSION="5.0.1"
-	LLVM_SLOT=5
+	LLVM_VERSION="6.0.0"
+	LLVM_SLOT=6
 	MY_P="${P}-llvm-${LLVM_VERSION}"
 	SRC_URI="https://github.com/lanl/Byfl/releases/download/v${MY_P#${PN}-}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~amd64-linux"
