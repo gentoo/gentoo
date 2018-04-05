@@ -1,0 +1,54 @@
+Subject: [PATCH] Fix switchToGreeter not available without logind
+From: Alexander Miller <alex.miller@gmx.de>
+
+Seats can't be created until SeatManager's signals are
+connected to the DisplayManager, or the latter won't see
+them and switchToGreeter doesn't work. So split SeatManager
+initialization from its constructor and call initialize it
+only after all connections have been set up in DaemonApp's
+constructor.
+
+With logind there may have been enough delay before seats
+got actually added so things would work, but it's still
+cleaner to fix the order.
+
+Fixes: https://bugs.gentoo.org/644718
+Fixes: https://github.com/sddm/sddm/issues/824
+
+--- a/src/daemon/SeatManager.h
++++ b/src/daemon/SeatManager.h
+@@ -31,8 +31,9 @@ namespace SDDM {
+     class SeatManager : public QObject {
+         Q_OBJECT
+     public:
+-        explicit SeatManager(QObject *parent = 0);
++        explicit SeatManager(QObject *parent = 0) {}
+ 
++        void initialize();
+         void createSeat(const QString &name);
+         void removeSeat(const QString &name);
+         void switchToGreeter(const QString &seat);
+--- a/src/daemon/SeatManager.cpp
++++ b/src/daemon/SeatManager.cpp
+@@ -93,8 +93,7 @@ namespace SDDM {
+         }
+     }
+ 
+-    SeatManager::SeatManager(QObject *parent) : QObject(parent) {
+-
++    void SeatManager::initialize() {
+         if (DaemonApp::instance()->testing() || !Logind::isAvailable()) {
+             //if we don't have logind/CK2, just create a single seat immediately and don't do any other connections
+             createSeat(QStringLiteral("seat0"));
+--- a/src/daemon/DaemonApp.cpp
++++ b/src/daemon/DaemonApp.cpp
+@@ -75,6 +75,9 @@ namespace SDDM {
+ 
+         // log message
+         qDebug() << "Starting...";
++
++        // initialize seats only after signals are connected
++        m_seatManager->initialize();
+     }
+ 
+     bool DaemonApp::testing() const {
