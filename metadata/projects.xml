@@ -1216,10 +1216,6 @@
       <name>Gilles Dartiguelongue</name>
     </member>
     <member>
-      <email>kensington@gentoo.org</email>
-      <name>Michael Palimaka</name>
-    </member>
-    <member>
       <email>mrueg@gentoo.org</email>
       <name>Manuel Rüger</name>
     </member>
@@ -1437,10 +1433,6 @@
       <name>Göktürk Yüksek</name>
       <role>Lead</role>
     </member>
-    <member>
-      <email>kensington@gentoo.org</email>
-      <name>Michael Palimaka</name>
-    </member>
   </project>
   <project>
     <email>sci-geosciences@gentoo.org</email>
@@ -1471,7 +1463,7 @@
     <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
-      <role>Member</role>
+      <role>Administrator</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
@@ -2509,6 +2501,7 @@ developers and volunteer mentors.</description>
     <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
+      <role>Git</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
@@ -2935,11 +2928,6 @@ developers and volunteer mentors.</description>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
       <role>Deputy lead</role>
-    </member>
-    <member>
-      <email>kensington@gentoo.org</email>
-      <name>Michael Palimaka</name>
-      <role>Member</role>
     </member>
     <member>
       <email>k_f@gentoo.org</email>
@@ -3973,11 +3961,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>kensington@gentoo.org</email>
-      <name>Michael Palimaka</name>
       <role>Member</role>
     </member>
     <member>
