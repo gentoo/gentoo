@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 EGIT_REPO_URI="https://github.com/openSUSE/spec-cleaner.git"
 inherit distutils-r1
 [[ ${PV} == 9999 ]] && inherit git-r3
@@ -14,19 +14,24 @@ HOMEPAGE="https://github.com/openSUSE/spec-cleaner"
 
 LICENSE="BSD"
 SLOT="0"
-[[ ${PV} != 9999 ]] && \
+[[ ${PV} != 9999 ]] &&
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
 	${PYTHON_DEPS}
+	>=app-arch/rpm-4.11.0.1
 "
+
+PATCHES=(
+	# pytest-runner is only needed in test scenario
+	"${FILESDIR}/${PN}-1.0.6-pytest-runner.patch"
+)
 
 [[ ${PV} != 9999 ]] && S="${WORKDIR}/${PN}-${P}"
 
@@ -39,5 +44,5 @@ src_prepare() {
 }
 
 python_test() {
-	nosetests
+	esetup.py test
 }
