@@ -24,7 +24,6 @@ RDEPEND="
 	>=dev-qt/qtgui-5.6:5
 	>=dev-qt/qtnetwork-5.6:5
 	>=x11-base/xorg-server-1.15.1
-	x11-libs/libXau
 	x11-libs/libxcb[xkb]
 	consolekit? ( >=sys-auth/consolekit-0.9.4 )
 	elogind? ( sys-auth/elogind )
@@ -43,7 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch" # fix for flags handling and bug 563108
 	"${FILESDIR}/${PN}-0.16.0-Xsession.patch" # bug 611210
 	"${FILESDIR}/${PN}-0.16.0-ck2-revert.patch" # bug 633920
-	# not yet upstream, fixing issues caused by hostname changes
+	# TODO: not yet upstream
 	"${FILESDIR}/${P}-switchtogreeter.patch" # bugs 644718, 649888
 )
 
