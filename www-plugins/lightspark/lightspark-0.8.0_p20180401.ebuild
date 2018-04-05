@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils git-r3 gnome2-utils nsplugins toolchain-funcs xdg-utils
+inherit cmake-utils gnome2-utils nsplugins toolchain-funcs xdg-utils
 
+EGIT_COMMIT="f6ed8284810ad91c277ed5d0835b215e7329450e"
 DESCRIPTION="High performance flash player"
 HOMEPAGE="http://lightspark.github.io/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/lightspark/lightspark"
+SRC_URI="https://github.com/lightspark/lightspark/archive/${EGIT_COMMIT}.tar.gz -> ${PN}-${EGIT_COMMIT}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 curl ffmpeg gles libav nsplugin ppapi profile rtmp"
 
 RDEPEND="app-arch/xz-utils:0=
@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 	x86? ( dev-lang/nasm )
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${P/_rc*/}
+S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 
 src_configure() {
 	local mycmakeargs=(

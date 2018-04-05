@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple Database Abstraction"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~x86-solaris"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-solaris"
 IUSE="test"
 
 RDEPEND=">=dev-perl/Class-Data-Inheritable-0.20.0

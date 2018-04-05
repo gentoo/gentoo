@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use Moose or Mouse modules (DEPRECATED)"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE="test"
 PERL_RM_FILES=(
 	"t/001-basic-mouse.t"

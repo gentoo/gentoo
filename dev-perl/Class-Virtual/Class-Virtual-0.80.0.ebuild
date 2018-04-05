@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Base class for virtual base classes"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~sparc ~x86 ~x86-solaris"
+KEYWORDS="amd64 ~ia64 ~ppc ~sparc x86 ~x86-solaris"
 IUSE="test"
 
 RDEPEND=">=dev-perl/Class-Data-Inheritable-0.20.0

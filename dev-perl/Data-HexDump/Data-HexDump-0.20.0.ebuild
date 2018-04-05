@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Simple Hexadecial Dumper"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 IUSE=""
 
 PATCHES=(
