@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perform Microsoft NTLM and Basic User Authentication"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="virtual/perl-MIME-Base64
