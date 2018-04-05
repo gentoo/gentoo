@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Parse and generate Cisco configuration files"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/perl-Scalar-List-Utils-1.70.0"
