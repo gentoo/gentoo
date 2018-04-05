@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Interface to PAM library"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86"
 IUSE="examples"
 
 RDEPEND="virtual/pam"
