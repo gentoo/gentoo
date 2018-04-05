@@ -942,7 +942,7 @@ app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy
 app-misc/away 0.9.5-r1 0.9.5-r2: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
 app-misc/beanstalkd 1.10: A simple, fast work queue
-app-misc/beep 1.3-r2: The advanced PC speaker beeper
+app-misc/beep 1.3-r2 1.3-r3: The advanced PC speaker beeper
 app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bijiben 3.24.2: Note editor designed to remain simple to use
@@ -2560,7 +2560,7 @@ dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to ins
 dev-java/javacc 5.0-r3: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
-dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
+dev-java/javahelp 2.0.05_p63 2.0.05_p20170719: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2: Dependency injection for Java (JSR-330)
@@ -2753,7 +2753,7 @@ dev-java/sac 1.3-r2: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
 dev-java/sat4j-pseudo 2.2.0: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r3: SAX: Simple API for XML in Java
-dev-java/saxon 6.5.5-r2 9.2.0.6: A XSLT and XQuery Processor
+dev-java/saxon 6.5.5-r2 9.2.0.6 9.2.0.6-r2: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary objects
@@ -3372,15 +3372,15 @@ dev-perl/Audio-Wav 0.140.0: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
 dev-perl/Authen-NTLM 1.90.0-r1: An NTLM authentication module
-dev-perl/Authen-PAM 0.160.0-r1: Interface to PAM library
-dev-perl/Authen-Radius 0.220.0-r1: Communicate with a Radius server from Perl
+dev-perl/Authen-PAM 0.160.0-r1 0.160.0-r2: Interface to PAM library
+dev-perl/Authen-Radius 0.220.0-r1 0.260.0: Communicate with a Radius server from Perl
 dev-perl/Authen-SASL 2.160.0-r1: A Perl SASL interface
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
-dev-perl/B-Hooks-EndOfScope 0.200.0: Execute code after a scope finished compilation
-dev-perl/B-Hooks-OP-Check 0.210.0: Wrap OP check callbacks
-dev-perl/B-Keywords 1.140.0: Lists of reserved barewords and symbol names
+dev-perl/B-Hooks-EndOfScope 0.200.0 0.210.0: Execute code after a scope finished compilation
+dev-perl/B-Hooks-OP-Check 0.210.0 0.220.0: Wrap OP check callbacks
+dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.291.100: Perl module for BSD process resource limit and priority functions
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
@@ -3390,17 +3390,17 @@ dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
 dev-perl/Business-Hours 0.120.0-r1: Calculate business hours in a time period
-dev-perl/Business-ISBN 2.90.200_rc: Work with ISBN as objects
+dev-perl/Business-ISBN 2.90.200_rc 3.4.0: Work with ISBN as objects
 dev-perl/Business-ISBN-Data 20140910.3.0: Data pack for Business::ISBN
-dev-perl/Business-ISMN 1.130.0: International Standard Music Numbers
-dev-perl/Business-ISSN 0.910.0-r1: Object and functions to work with International Standard Serial Numbers
+dev-perl/Business-ISMN 1.130.0 1.131.0: International Standard Music Numbers
+dev-perl/Business-ISSN 0.910.0-r1 1.2.0: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
-dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
+dev-perl/CDDB 1.222.0-r1 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.220.0: Simple Common Gateway Interface Class
-dev-perl/CGI-Compile 0.210.0: Compile .cgi scripts to a code reference like ModPerl::Registry
-dev-perl/CGI-Emulate-PSGI 0.220.0: PSGI adapter for CGI
+dev-perl/CGI 4.220.0 4.360.0: Simple Common Gateway Interface Class
+dev-perl/CGI-Compile 0.210.0 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
+dev-perl/CGI-Emulate-PSGI 0.220.0 0.230.0: PSGI adapter for CGI
 dev-perl/CGI-Fast 2.100.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r1: The Perl CGI::FastTemplate Module
 dev-perl/CGI-FormBuilder 3.90.0: Extremely fast, reliable form generation and processing module
@@ -3420,11 +3420,11 @@ dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
-dev-perl/Canary-Stability 2006: Canary to check perl compatibility for schmorp's modules
-dev-perl/Capture-Tiny 0.360.0: Capture STDOUT and STDERR from Perl, XS or external programs
+dev-perl/Canary-Stability 2006 2012.0.0: Canary to check perl compatibility for schmorp's modules
+dev-perl/Capture-Tiny 0.360.0 0.460.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
-dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
+dev-perl/Carp-Assert-More 1.140.0 1.160.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.60.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r2: Implements an algorithm to find good values for chart axis
@@ -3540,7 +3540,7 @@ dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-FormValidator 4.860.0-r1: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
-dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
+dev-perl/Data-HexDump 0.02-r1 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
@@ -4357,9 +4357,9 @@ dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
 dev-perl/autobox 2.850.0: Call methods on native types
-dev-perl/autovivification 0.160.0: Lexically disable autovivification
+dev-perl/autovivification 0.160.0 0.170.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.5.0: Disables bareword filehandles
-dev-perl/boolean 0.450.0: Boolean support for Perl
+dev-perl/boolean 0.450.0 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
