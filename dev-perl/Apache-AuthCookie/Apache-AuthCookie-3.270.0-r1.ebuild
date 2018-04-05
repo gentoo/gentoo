@@ -20,6 +20,7 @@ RDEPEND="
 	virtual/perl-Encode
 	dev-perl/HTTP-Body
 	dev-perl/Hash-MultiValue
+	dev-perl/WWW-Form-UrlEncoded
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
