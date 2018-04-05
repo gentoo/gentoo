@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Create a minimal mirror of CPAN"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~ppc-aix"
+KEYWORDS="amd64 x86 ~ppc-aix"
 IUSE="test"
 
 RDEPEND="
