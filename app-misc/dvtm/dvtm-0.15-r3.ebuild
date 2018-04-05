@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="git://repo.or.cz/dvtm.git"
 else
 	SRC_URI="http://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 LICENSE="MIT"
