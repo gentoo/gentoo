@@ -482,6 +482,8 @@ src_configure() {
 			myeconfargs+=( --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar) )
 	fi
 
+	is-flagq "-flto*" && myeconfargs+=( --enable-lto )
+
 	econf "${myeconfargs[@]}"
 }
 
