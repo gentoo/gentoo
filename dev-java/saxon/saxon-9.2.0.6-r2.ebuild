@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}he${MY_PV}source.zip"
 
 LICENSE="MPL-1.0"
 SLOT="9"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 CDEPEND="
 	dev-java/xom:0
