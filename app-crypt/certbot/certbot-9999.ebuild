@@ -21,13 +21,14 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
 
-CDEPEND=">=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
+CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	${CDEPEND}
-	~app-crypt/acme-${PV}[${PYTHON_USEDEP}]
+	>app-crypt/acme-0.21.1[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.2[${PYTHON_USEDEP}]
+	dev-python/josepy[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	>=dev-python/parsedatetime-1.3[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]

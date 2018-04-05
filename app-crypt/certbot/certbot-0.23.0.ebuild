@@ -9,7 +9,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 fi
 
 inherit distutils-r1
@@ -21,19 +21,18 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
 
-CDEPEND=">=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
+CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	${CDEPEND}
-	~app-crypt/acme-${PV}[${PYTHON_USEDEP}]
+	>app-crypt/acme-0.21.1[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.2[${PYTHON_USEDEP}]
+	dev-python/josepy[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	>=dev-python/parsedatetime-1.3[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 DEPEND="
