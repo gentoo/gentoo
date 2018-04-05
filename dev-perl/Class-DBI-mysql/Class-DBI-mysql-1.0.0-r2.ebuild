@@ -11,7 +11,7 @@ DESCRIPTION="Extensions to Class::DBI for MySQL"
 
 LICENSE="|| ( GPL-3 GPL-2 )" # GPL-2+
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-perl/Class-DBI
