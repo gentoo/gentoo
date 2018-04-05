@@ -13,7 +13,7 @@ SRC_URI="mirror://kde/stable/${KMNAME}/${PV}/src/${KMNAME}-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/7"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
