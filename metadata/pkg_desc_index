@@ -5940,7 +5940,7 @@ dev-scheme/gambit 4.8.8-r1: Gambit-C is a native Scheme to C compiler and interp
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-cairo 1.4.0: Wraps the Cairo graphics library for Guile Scheme
-dev-scheme/guile-gnome-platform 2.16.1 2.16.2: Guile Scheme code that wraps the GNOME developer platform
+dev-scheme/guile-gnome-platform 2.16.2: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-lib 0.1.9: An accumulation place for pure-scheme Guile modules
 dev-scheme/guile-www 2.34: Guile Scheme modules to facilitate HTTP, URL and CGI programming
 dev-scheme/net-http 0.3.1-r1: Library for doing HTTP client-side programming in Guile
