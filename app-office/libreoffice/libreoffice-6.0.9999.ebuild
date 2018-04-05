@@ -142,7 +142,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		gnome-extra/evolution-data-server
 	)
-	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1 )
+	firebird? ( >=dev-db/firebird-3.0.2.32703.0-r1[server] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
