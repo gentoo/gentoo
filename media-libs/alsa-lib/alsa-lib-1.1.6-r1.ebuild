@@ -3,8 +3,7 @@
 
 EAPI=6
 
-# no support for python3_2 or above yet wrt #471326
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit autotools multilib multilib-minimal python-single-r1
 
@@ -22,6 +21,10 @@ DEPEND="${RDEPEND}
 	doc? ( >=app-doc/doxygen-1.2.6 )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-missing_files.patch" #652422
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
