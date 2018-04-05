@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 VALA_MIN_API_VERSION="0.30"
 VALA_USE_DEPEND="vapigen"
 DISABLE_AUTOFORMATTING=1
@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Builder"
 # FIXME: Review licenses at some point
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="clang +git sysprof vala webkit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -74,7 +74,7 @@ that are currently available with packages include:
 * dev-util/ctags with exuberant-ctags selected via "eselect ctags" for
   C, C++, Python, JavaScript, CSS, HTML and Ruby autocompletion, semantic
   highlighting and symbol resolving support.
-* dev-python/jedi and dev-python/lxml for more accurate Python
+* dev-python/jedi-0.10.x and dev-python/lxml for more accurate Python
   autocompletion support.
 * dev-util/valgrind for integration with valgrind.
 * dev-util/meson for integration with the Meson build system.
@@ -86,6 +86,8 @@ that are currently available with packages include:
 # rust language server via rls
 # autotools stuff for autotools plugin; gtkmm/autoconf-archive for C++ template
 # mono/PHPize stuff
+
+PATCHES=( "${FILESDIR}"/${PV}-jedi-fixes-{1,2,3}.patch ) # jedi-0.10+ compatibility from 3.25.9x; remove 0.10 specific mention from DOC_CONTENTS once compat with 0.11+
 
 pkg_setup() {
 	python-single-r1_pkg_setup
