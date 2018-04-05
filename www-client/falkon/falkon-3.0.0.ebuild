@@ -5,6 +5,7 @@ EAPI=6
 
 KDE_TEST="true"
 QT_MINIMAL="5.9.2"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Cross-platform web browser using QtWebEngine"
