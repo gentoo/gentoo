@@ -507,7 +507,7 @@ app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5: The GNU Emacs Lisp Reference Manual
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
-app-doc/halibut 1.0 1.2: yet another free document preparation system
+app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.1 4.0.4: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
@@ -6873,7 +6873,7 @@ kde-plasma/user-manager 5.11.5: Simple system settings module to manage the user
 lxde-base/lxappearance 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxde-common 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0-r1: nuoveXT2 iconset
-lxde-base/lxde-meta 0.5.5-r5: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
+lxde-base/lxde-meta 0.5.5-r5 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.4.1-r9 0.5.3-r1: LXDE Display Manager
 lxde-base/lxinput 0.3.5: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC

@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install prepare setup
 DEPEND=sci-libs/superlu:0= virtual/blas virtual/lapack mpi? ( virtual/mpi ) virtual/pkgconfig fortran? ( virtual/fortran )
 DESCRIPTION=Parallel matrix preconditioners library
 EAPI=5
-HOMEPAGE=http://acts.nersc.gov/hypre/
+HOMEPAGE=https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
 IUSE=doc examples fortran mpi
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
@@ -10,4 +10,4 @@ RDEPEND=sci-libs/superlu:0= virtual/blas virtual/lapack mpi? ( virtual/mpi ) for
 SLOT=0/2.9.0b
 SRC_URI=https://computation.llnl.gov/casc/hypre/download/hypre-2.9.0b.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=85b74909848863cbc4f7ed61dbe5711f
+_md5_=28e7fcb70eb27fa7e90fafa6257e7d39
