@@ -15,14 +15,15 @@ IUSE="alsa ao backend-fbcon backend-sdl backend-svga backend-X gpm joystick meml
 # Only one UI back-end can be enabled at a time
 REQUIRED_USE="?? ( backend-fbcon backend-sdl backend-svga backend-X )"
 
-RDEPEND=">=app-emulation/libspectrum-1.4.1
+RDEPEND="
+	>=app-emulation/libspectrum-1.4.1
+	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	backend-sdl? ( media-libs/libsdl )
 	backend-svga? ( media-libs/svgalib )
 	backend-X? ( x11-libs/libX11 x11-libs/libXext )
 	!backend-fbcon? ( !backend-sdl? ( !backend-svga? ( !backend-X? ( x11-libs/gtk+:3 ) ) ) )
-	dev-libs/glib:2
 	gpm? ( sys-libs/gpm )
 	joystick? ( media-libs/libjsw )
 	png? ( media-libs/libpng:0= sys-libs/zlib )
