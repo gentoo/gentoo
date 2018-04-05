@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/gerbera/gerbera"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic mysql protocol-extensions systemd +taglib"
+IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic mysql protocol-extensions systemd +taglib"
 
 DEPEND="
 	!!net-misc/mediatomb
@@ -33,6 +33,7 @@ DEPEND="
 	taglib? ( >=media-libs/taglib-1.11 )
 	lastfm? ( >=media-libs/lastfmlib-0.4 )
 	exif? ( media-libs/libexif )
+	exiv2? ( media-gfx/exiv2 )
 	ffmpeg? (
 		libav? ( >=media-video/libav-10:0= )
 		!libav? ( >=media-video/ffmpeg-2.2:0= )
@@ -58,9 +59,9 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_CURL="$(usex curl)" \
-		-DWITH_LOGGING=1 \
-		-DWITH_DEBUG_LOGGING="$(usex debug)" \
+		-DWITH_DEBUG="$(usex debug)" \
 		-DWITH_EXIF="$(usex exif)" \
+		-DWITH_EXIV2="$(usex exiv2)" \
 		-DWITH_AVCODEC="$(usex ffmpeg)" \
 		-DWITH_FFMPEGTHUMBNAILER="$(usex ffmpegthumbnailer)" \
 		-DWITH_JS="$(usex javascript)" \
