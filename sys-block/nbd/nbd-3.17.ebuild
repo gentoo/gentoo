@@ -14,8 +14,9 @@ IUSE="debug zlib"
 
 # gnutls is an automagic dep.
 RDEPEND="
-	>=dev-libs/glib-2.0
+	>=dev-libs/glib-2.26.0
 	>=net-libs/gnutls-2.12.0
+	>=dev-libs/libnl-3.1
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
