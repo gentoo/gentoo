@@ -3178,6 +3178,7 @@ media-sound/patchage:session - Include experimental Jack session management (sav
 media-sound/pragha:glyr - Enable music metadata searchengine support using media-libs/glyr
 media-sound/pragha:grilo - Play songs on DLNA servers using media-libs/grilo
 media-sound/pragha:keybinder - Enable shortcut support using dev-libs/keybinder
+media-sound/pragha:koel - Append music on Koel server
 media-sound/pragha:lastfm - Enable last.fm support using media-libs/libclastfm
 media-sound/pragha:peas - Enable various plugins that will pull in dev-libs/libpeas as a dependency
 media-sound/pragha:playlist - Enable enhanced playlist support using dev-libs/totem-pl-parser
