@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="cPanel fork of JSON::XS, fast and correct serializing"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="test"
 
 RDEPEND=""
