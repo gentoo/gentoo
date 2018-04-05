@@ -25,8 +25,8 @@ IUSE=""
 
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
-	>=app-crypt/certbot-0.21.1[${PYTHON_USEDEP}]
-	>=app-crypt/acme-0.21.1[${PYTHON_USEDEP}]
+	>app-crypt/acme-0.21.1[${PYTHON_USEDEP}]
+	>app-crypt/certbot-0.21.1[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
