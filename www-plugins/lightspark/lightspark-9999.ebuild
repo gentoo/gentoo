@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils git-r3 nsplugins toolchain-funcs
+inherit cmake-utils git-r3 gnome2-utils nsplugins toolchain-funcs xdg-utils
 
 DESCRIPTION="High performance flash player"
 HOMEPAGE="http://lightspark.github.io/"
@@ -76,6 +76,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+
 	if use nsplugin && ! has_version www-plugins/gnash; then
 		elog "Lightspark now supports gnash fallback for its browser plugin."
 		elog "Install www-plugins/gnash to take advantage of it."
@@ -86,4 +89,9 @@ pkg_postinst() {
 		elog "USE flag for either gnash or lightspark. For details, see"
 		elog "https://bugzilla.mozilla.org/show_bug.cgi?id=581848"
 	fi
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
