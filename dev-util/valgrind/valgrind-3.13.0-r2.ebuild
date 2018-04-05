@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DEPEND="mpi? ( virtual/mpi )"
@@ -36,6 +36,15 @@ src_prepare() {
 
 	# Fix --xml-socket command line option (qt-creator), bug #641790
 	eapply "${FILESDIR}"/${P}-xml-socket.patch
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# upstream doesn't support this, but we don't build with
+		# Sun/Oracle ld, we have a GNU toolchain, so get some things
+		# working the Linux/GNU way
+		find "${S}" -name "Makefile.am" -o -name "Makefile.tool.am" | xargs \
+			sed -i -e 's:-M,/usr/lib/ld/map.noexstk:-z,noexecstack:' || die
+		cp "${S}"/coregrind/link_tool_exe_{linux,solaris}.in
+	fi
 
 	# Allow users to test their own patches
 	eapply_user
