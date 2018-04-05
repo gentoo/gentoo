@@ -114,3 +114,12 @@ src_configure() {
 	)
 	kde5_src_configure
 }
+
+src_test() {
+	# bug: 652636
+	local myctestargs=(
+		-E "(reports-chart-test)"
+	)
+
+	kde5_src_test
+}
