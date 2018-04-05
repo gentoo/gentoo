@@ -1,5 +1,5 @@
---- dnscrypt-proxy-2.0.6/dnscrypt-proxy/example-dnscrypt-proxy.toml	2018-03-03 13:43:28.733466923 -0800
-+++ dnscrypt-proxy-2.0.6/dnscrypt-proxy/dnscrypt-proxy.toml	2018-03-03 13:46:19.666853492 -0800
+--- dnscrypt-proxy-2.0.8/dnscrypt-proxy/example-dnscrypt-proxy.toml	2018-04-04 17:23:33.607326639 -0700
++++ dnscrypt-proxy-2.0.8/dnscrypt-proxy/dnscrypt-proxy.toml	2018-04-04 17:26:18.174044063 -0700
 @@ -86,7 +86,7 @@
  
  ## log file for the application
@@ -9,25 +9,7 @@
  
  
  ## Use the system logger (syslog on Unix, Event Log on Windows)
-@@ -153,7 +153,7 @@
- ## example.com 9.9.9.9
- ## example.net 9.9.9.9,8.8.8.8
- 
--# forwarding_rules = 'forwarding-rules.txt'
-+# forwarding_rules = '/etc/dnscrypt-proxy/forwarding-rules.txt'
- 
- 
- 
-@@ -169,7 +169,7 @@
- ## example.com     10.1.1.1
- ## www.google.com  forcesafesearch.google.com
- 
--# cloaking_rules = 'cloaking-rules.txt'
-+# cloaking_rules = '/etc/dnscrypt-proxy/cloaking-rules.txt'
- 
- 
- 
-@@ -213,7 +213,7 @@
+@@ -215,7 +215,7 @@
  
    ## Path to the query log file (absolute, or relative to the same directory as the executable file)
  
@@ -36,7 +18,7 @@
  
  
    ## Query log format (currently supported: tsv and ltsv)
-@@ -239,7 +239,7 @@
+@@ -241,7 +241,7 @@
  
    ## Path to the query log file (absolute, or relative to the same directory as the executable file)
  
@@ -45,7 +27,7 @@
  
  
    ## Query log format (currently supported: tsv and ltsv)
-@@ -268,12 +268,12 @@
+@@ -270,12 +270,12 @@
  
    ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
  
@@ -60,13 +42,7 @@
  
  
    ## Optional log format: tsv or ltsv (default: tsv)
-@@ -296,12 +296,12 @@
- 
-   ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
- 
--  # blacklist_file = 'ip-blacklist.txt'
-+  # blacklist_file = '/etc/dnscrypt-proxy/ip-blacklist.txt'
- 
+@@ -303,7 +303,7 @@
  
    ## Optional path to a file logging blocked queries
  
@@ -75,19 +51,19 @@
  
  
    ## Optional log format: tsv or ltsv (default: tsv)
-@@ -371,7 +371,7 @@
+@@ -373,7 +373,7 @@
  
    [sources.'public-resolvers']
-   url = 'https://download.dnscrypt.info/resolvers-list/v2/public-resolvers.md'
+   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v2/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v2/public-resolvers.md']
 -  cache_file = 'public-resolvers.md'
 +  cache_file = '/var/cache/dnscrypt-proxy/public-resolvers.md'
    minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
    refresh_delay = 72
    prefix = ''
-@@ -381,7 +381,7 @@
+@@ -383,7 +383,7 @@
  
    #  [sources.'parental-control']
-   #  url = 'https://download.dnscrypt.info/resolvers-list/v2/parental-control.md'
+   #  urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v2/parental-control.md', 'https://download.dnscrypt.info/resolvers-list/v2/parental-control.md']
 -  #  cache_file = 'parental-control.md'
 +  #  cache_file = '/var/cache/dnscrypt-proxy/parental-control.md'
    #  minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
