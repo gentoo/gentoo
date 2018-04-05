@@ -11,7 +11,7 @@ SRC_URI="http://www.vanheusden.com/te/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips x86"
 IUSE="debug selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-entropyd )"
