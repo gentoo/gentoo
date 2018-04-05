@@ -31,6 +31,15 @@ src_prepare() {
 	# Respect CFLAGS, LDFLAGS
 	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# upstream doesn't support this, but we don't build with
+		# Sun/Oracle ld, we have a GNU toolchain, so get some things
+		# working the Linux/GNU way
+		find "${S}" -name "Makefile.am" -o -name "Makefile.tool.am" | xargs \
+			sed -i -e 's:-M,/usr/lib/ld/map.noexstk:-z,noexecstack:' || die
+		cp "${S}"/coregrind/link_tool_exe_{linux,solaris}.in
+	fi
+
 	# Allow users to test their own patches
 	eapply_user
 

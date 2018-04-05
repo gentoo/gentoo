@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit xdg-utils
 
 DESCRIPTION="A graphical Audio CD ripper and encoder with support for many output formats"
 HOMEPAGE="http://littlesvr.ca/asunder/"
@@ -32,4 +34,12 @@ RDEPEND="${COMMON_DEPEND}
 src_prepare() {
 	default
 	sed -i -e 's:cd syslogng && $(MAKE) install:true:' Makefile.in || die
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
