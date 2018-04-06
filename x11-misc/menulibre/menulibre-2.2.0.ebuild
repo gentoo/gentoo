@@ -35,6 +35,7 @@ python_prepare_all() {
 	# too many categories
 	sed -i \
 		-e 's/X-GNOME-Settings-Panel;X-GNOME-PersonalSettings;DesktopSettings;X-XFCE;//' \
+		-e '/^OnlyShowIn/d' \
 		menulibre.desktop.in || die
 
 	local i
