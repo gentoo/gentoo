@@ -28,7 +28,7 @@ src_compile() {
 
 src_install() {
 	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
-	dodoc ChangeLog README TODO
+	einstalldocs
 }
 
 pkg_preinst() {
