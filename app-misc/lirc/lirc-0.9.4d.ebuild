@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python3_4 python3_5 )
 
-inherit eutils flag-o-matic python-single-r1 systemd xdg-utils
+inherit autotools eutils flag-o-matic python-single-r1 systemd xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
 HOMEPAGE="http://www.lirc.org/"
@@ -70,6 +70,11 @@ PATCHES=(
 	# https://bugs.gentoo.org/show_bug.cgi?id=589246 https://sourceforge.net/p/lirc/tickets/214/
 	"${FILESDIR}"/lirc-0.9.4-doc-path-fix.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	xdg_environment_reset
