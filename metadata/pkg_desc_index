@@ -577,7 +577,7 @@ app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
 app-editors/pluma 1.12.2-r1: Pluma text editor for the MATE desktop
-app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
+app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
 app-editors/retext 7.0.0: Simple editor for Markdown and reStructuredText
 app-editors/scite 3.5.5 4.0.2: A very powerful, highly configurable, small editor with syntax coloring.
@@ -6917,7 +6917,7 @@ mail-client/geary 0.12.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.7.2: A small but very powerful text-based mail client
+mail-client/mutt 1.7.2 1.9.4-r1: A small but very powerful text-based mail client
 mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.2.7 1.3.4: A browser-based multilingual IMAP client with an application-like user interface
