@@ -17,7 +17,7 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	GIT_COMMIT="9af21218a87572bd4ab8d8d660c11f6295144f97"
+	GIT_COMMIT="c51b9a9b58a645f820883e6d99982277fc58aac5"
 	SRC_URI="https://codeload.github.com/peak3d/inputstream.adaptive/tar.gz/${GIT_COMMIT} -> ${P}.tar.gz"
 	S="${WORKDIR}/inputstream.adaptive-${GIT_COMMIT}"
 	;;
