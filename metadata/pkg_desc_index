@@ -1432,7 +1432,7 @@ app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/rfcutil 3.2.3-r2: return all related RFCs based upon a number or a search string
 app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
-app-text/rnv 1.7.11 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
+app-text/rnv 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
@@ -10986,7 +10986,7 @@ x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private convers
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
-x11-plugins/pidgin-xmpp-receipts 0.6 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
+x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
