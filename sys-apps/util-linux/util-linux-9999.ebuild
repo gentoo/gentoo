@@ -167,29 +167,12 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-multilib_src_compile() {
-	if multilib_is_native_abi; then
-		default
-	else
-		# build libraries only
-		emake -f Makefile -f - mylibs \
-			<<< 'mylibs: $(usrlib_exec_LTLIBRARIES) $(pkgconfig_DATA)'
-	fi
-}
-
 multilib_src_test() {
 	multilib_is_native_abi && emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
 }
 
 multilib_src_install() {
-	if multilib_is_native_abi; then
-		default
-	else
-		emake DESTDIR="${D}" install-usrlib_execLTLIBRARIES \
-			install-pkgconfigDATA install-uuidincHEADERS \
-			install-nodist_blkidincHEADERS install-nodist_mountincHEADERS \
-			install-nodist_smartcolsincHEADERS install-nodist_fdiskincHEADERS
-	fi
+	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi; then
 		# need the libs in /
