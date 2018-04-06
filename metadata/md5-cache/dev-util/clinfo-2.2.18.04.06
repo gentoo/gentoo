@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=app-eselect/eselect-opencl-1.1.0-r4 virtual/opencl
+DESCRIPTION=A tool to display info about the system's OpenCL capabilities
+EAPI=6
+HOMEPAGE=https://github.com/Oblomov/clinfo
+KEYWORDS=~amd64
+LICENSE=CC0-1.0
+RDEPEND=>=app-eselect/eselect-opencl-1.1.0-r4 virtual/opencl
+SLOT=0
+SRC_URI=https://github.com/Oblomov/clinfo/archive/2.2.18.04.06.tar.gz -> clinfo-2.2.18.04.06.tar.gz
+_md5_=5c7f85382c06fc156aed219cc3948351
