@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-mpir-types.patch
+)
+
 python_prepare_all() {
 	# rm non std test file
 	rm test*/gmpy_test_thr.py || die
