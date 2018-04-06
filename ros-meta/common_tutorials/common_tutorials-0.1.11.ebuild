@@ -2,22 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-
-ROS_REPO_URI="https://github.com/ros/metapackages"
+ROS_REPO_URI="https://github.com/ros/common_tutorials"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Metapackage for ROS complete desktop install"
+DESCRIPTION="Metapackage that contains common tutorials"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	ros-meta/desktop
-	ros-meta/perception
-	ros-meta/simulators
-	dev-ros/urdf_sim_tutorial
+	dev-ros/actionlib_tutorials
+	dev-ros/nodelet_tutorial_math
+	dev-ros/pluginlib_tutorials
+	dev-ros/turtle_actionlib
 "
 DEPEND="${RDEPEND}"

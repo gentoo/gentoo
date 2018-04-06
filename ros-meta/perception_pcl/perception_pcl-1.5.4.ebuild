@@ -2,22 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-
-ROS_REPO_URI="https://github.com/ros/metapackages"
-KEYWORDS="~amd64"
+ROS_REPO_URI="https://github.com/ros-perception/perception_pcl"
+KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Metapackage for ROS complete desktop install"
+DESCRIPTION="PCL (Point Cloud Library) ROS interface stack"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	ros-meta/desktop
-	ros-meta/perception
-	ros-meta/simulators
-	dev-ros/urdf_sim_tutorial
+	dev-ros/pcl_ros
 "
 DEPEND="${RDEPEND}"

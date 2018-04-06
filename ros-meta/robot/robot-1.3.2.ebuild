@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,18 +18,15 @@ RDEPEND="
 	ros-meta/ros_base
 	dev-ros/control_msgs
 	ros-meta/diagnostics
+	ros-meta/executive_smach
 	dev-ros/filters
 	ros-meta/geometry
-	ros-meta/robot_model
+	dev-ros/joint_state_publisher
+	dev-ros/kdl_parser
+	dev-ros/kdl_parser_py
 	dev-ros/robot_state_publisher
+	dev-ros/urdf
+	dev-ros/urdf_parser_plugin
 	dev-ros/xacro
-	ros-meta/executive_smach
-	dev-ros/actionlib
-	ros-meta/bond_core
-	dev-ros/class_loader
-	dev-ros/dynamic_reconfigure
-	ros-meta/common_tutorials
-	ros-meta/nodelet_core
-	dev-ros/pluginlib
 "
 DEPEND="${RDEPEND}"
