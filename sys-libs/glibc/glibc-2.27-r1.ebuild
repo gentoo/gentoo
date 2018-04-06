@@ -754,26 +754,6 @@ src_prepare() {
 		einfo "Done."
 	fi
 
-	if just_headers ; then
-		if [[ -e sysdeps/riscv/preconfigure ]] ; then
-			# RISC-V interrogates the compiler to determine which target to
-			# build.  If building the headers then we don't strictly need a
-			# RISC-V compiler, so the built-in definitions that are provided
-			# along with all RISC-V compiler might not exist.  This causes
-			# glibc's RISC-V preconfigure script to blow up.  Since we're just
-			# building the headers any value will actually work here, so just
-			# pick the standard one (rv64g/lp64d) to make the build scripts
-			# happy for now -- the headers are all the same anyway so it
-			# doesn't matter.
-			sed -i 's/^    xlen=.*/    xlen=64/g' sysdeps/riscv/preconfigure || die
-			sed -i 's/^    flen=.*/    flen=64/g' sysdeps/riscv/preconfigure || die
-			sed -i 's/^    float_abi=.*/    float_abi=double/g' sysdeps/riscv/preconfigure || die
-			sed -i 's/^    atomic=.*/    atomic=__riscv_atomic/g' sysdeps/riscv/preconfigure || die
-			sed -i 's/^libc_cv_riscv_float_abi=no/libc_cv_riscv_float_abi=d/g' sysdeps/unix/sysv/linux/riscv/configure.ac || die
-			sed -i 's/^libc_cv_riscv_float_abi=no/libc_cv_riscv_float_abi=d/g' sysdeps/unix/sysv/linux/riscv/configure || die
-		fi
-	fi
-
 	default
 
 	gnuconfig_update
@@ -1009,6 +989,8 @@ glibc_headers_configure() {
 		export ${v}
 	done
 
+	local headers_only_arch_CPPFLAGS=()
+
 	# Blow away some random CC settings that screw things up. #550192
 	if [[ -d ${S}/sysdeps/mips ]]; then
 		pushd "${S}"/sysdeps/mips >/dev/null
@@ -1024,6 +1006,25 @@ glibc_headers_configure() {
 
 		popd >/dev/null
 	fi
+
+	case ${CTARGET} in
+	riscv*)
+		# RISC-V interrogates the compiler to determine which target to
+		# build.  If building the headers then we don't strictly need a
+		# RISC-V compiler, so the built-in definitions that are provided
+		# along with all RISC-V compiler might not exist.  This causes
+		# glibc's RISC-V preconfigure script to blow up.  Since we're just
+		# building the headers any value will actually work here, so just
+		# pick the standard one (rv64g/lp64d) to make the build scripts
+		# happy for now -- the headers are all the same anyway so it
+		# doesn't matter.
+		headers_only_arch_CPPFLAGS+=(
+			-D__riscv_xlen=64
+			-D__riscv_flen=64
+			-D__riscv_float_abi_double=1
+			-D__riscv_atomic=1
+		) ;;
+	esac
 
 	local myconf=()
 	myconf+=(
@@ -1043,7 +1044,7 @@ glibc_headers_configure() {
 	# So forcing CC/CFLAGS is sane.
 	local headers_only_CC=$(tc-getBUILD_CC)
 	local headers_only_CFLAGS="-O1 -pipe"
-	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE"
+	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE ${headers_only_arch_CPPFLAGS[*]}"
 	local headers_only_LDFLAGS=""
 	set -- "${S}"/configure "${myconf[@]}"
 	echo \
