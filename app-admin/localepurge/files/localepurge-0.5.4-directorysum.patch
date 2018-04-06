@@ -1,5 +1,5 @@
---- localepurge.orig	2012-12-04 23:15:29.422756767 +0100
-+++ localepurge	2012-12-04 23:16:13.313756491 +0100
+--- a/localepurge
++++ b/localepurge
 @@ -198,7 +198,7 @@
  
          if [ "$SHOWFREEDSPACE" = "enabled" ]; then
