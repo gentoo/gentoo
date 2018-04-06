@@ -18,7 +18,7 @@ EGIT_REPO_URI="https://github.com/pydata/pandas.git"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS=""
-IUSE="doc -minimal full-support test X"
+IUSE="doc full-support minimal test X"
 
 MINIMAL_DEPEND="
 	>dev-python/numpy-1.7[${PYTHON_USEDEP}]
