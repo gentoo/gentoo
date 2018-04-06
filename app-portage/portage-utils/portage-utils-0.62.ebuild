@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="m68k"
+KEYWORDS="m68k s390"
 IUSE="nls static"
 
 RDEPEND="dev-libs/iniparser:0"
