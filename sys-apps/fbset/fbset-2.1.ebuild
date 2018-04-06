@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit toolchain-funcs flag-o-matic eutils
 
@@ -16,10 +18,10 @@ DEPEND="sys-devel/bison
 	sys-devel/flex"
 RDEPEND=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${P}-build.patch"
+	epatch "${FILESDIR}/${P}-add-linux-types-h.patch"
+	default
 }
 
 src_compile() {
