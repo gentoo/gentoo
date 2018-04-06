@@ -23,7 +23,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( >=dev-python/pytest-2.6.4[${PYTHON_USEDEP}] )
+	test? ( >=dev-python/hypothesis-3.27.0[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.2.1[${PYTHON_USEDEP}] )
 "
 
 src_prepare() {
