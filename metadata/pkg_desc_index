@@ -3446,7 +3446,7 @@ dev-perl/Class-ErrorHandler 0.30.0 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r1 1.700.0-r2: Provide utility methods for factory classes
 dev-perl/Class-ISA 0.36-r1 0.360.0: Report the search path thru an ISA tree
 dev-perl/Class-Inspector 1.310.0 1.320.0: Provides information about Classes
-dev-perl/Class-Load 0.200.0-r1 0.230.0: A working (require q{Class::Name}) and more
+dev-perl/Class-Load 0.200.0-r1 0.230.0 0.240.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.60.0-r1 0.100.0: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
@@ -3520,7 +3520,7 @@ dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/Curses 1.320.0 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
-dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
+dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.500.0 1.540.0-r1: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.41.0 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
@@ -3657,6 +3657,7 @@ dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
 dev-perl/Feed-Find 0.70.0-r1: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r1: Festival-Async - Non-blocking interface to a Festival server
 dev-perl/File-BaseDir 0.30.0-r1: Use the Freedesktop.org base directory specification
+dev-perl/File-Copy-Link 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
 dev-perl/File-DesktopEntry 0.40.0-r1: Object to handle .desktop files
 dev-perl/File-Find-Rule 0.330.0-r1: Alternative interface to File::Find
@@ -10455,6 +10456,7 @@ www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired 
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
 www-client/epiphany 3.24.5: GNOME webbrowser based on Webkit
+www-client/falkon 3.0.0: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.4.0 52.6.0: Firefox Web Browser
 www-client/firefox-bin 52.7.3: Firefox Web Browser
