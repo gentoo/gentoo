@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,6 +45,7 @@ OPTIONAL_DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8.1[${PYTHON_USEDEP}]
+	dev-python/xarray[${PYTHON_USEDEP}]
 	dev-python/xlrd[${PYTHON_USEDEP}]
 	dev-python/xlwt[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
@@ -66,6 +67,7 @@ DEPEND="${MINIMAL_DEPEND}
 	>=dev-python/cython-0.23[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
+		app-text/pandoc
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
@@ -101,13 +103,11 @@ RDEPEND="
 
 python_prepare_all() {
 	# Prevent un-needed download during build
-	sed \
-		-e "/^              'sphinx.ext.intersphinx',/d" \
+	sed -e "/^              'sphinx.ext.intersphinx',/d" \
 		-i doc/source/conf.py || die
 
 	# https://github.com/pydata/pandas/issues/11299
-	sed \
-		-e 's:testOdArray:disable:g' \
+	sed -e 's:testOdArray:disable:g' \
 		-i pandas/tests/io/json/test_ujson.py || die
 
 	distutils-r1_python_prepare_all
