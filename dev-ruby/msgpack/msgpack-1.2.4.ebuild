@@ -3,9 +3,9 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
-RUBY_FAKEGEM_TASK_DOC="doc"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="README.rdoc"
 
@@ -18,8 +18,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x86-fbsd"
 IUSE="doc"
-
-ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die
