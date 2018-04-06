@@ -1,0 +1,20 @@
+From: Goldwyn Rodrigues <rgoldwyn@suse.com>
+Subject: Allow signal mediation while for apparmor profile
+
+Allows docker processes under docker-default ot receive all signals.
+
+Signed-off-by: Goldwyn Rodrigues <rgoldwyn@suse.com>
+---
+ components/engine/profiles/apparmor/template.go |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/components/engine/profiles/apparmor/template.go
++++ b/components/engine/profiles/apparmor/template.go
+@@ -17,6 +17,7 @@ profile {{.Name}} flags=(attach_disconne
+   capability,
+   file,
+   umount,
++  signal (receive) peer=unconfined,
+ 
+   deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
+   # deny write to files not in /proc/<number>/** or /proc/sys/**
