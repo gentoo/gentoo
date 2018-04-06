@@ -755,13 +755,6 @@ src_prepare() {
 	fi
 
 	if just_headers ; then
-		if [[ -e ports/sysdeps/mips/preconfigure ]] ; then
-			# mips peeps like to screw with us.  if building headers,
-			# we don't have a real compiler, so we can't let them
-			# insert -mabi on us.
-			sed -i '/CPPFLAGS=.*-mabi/s|.*|:|' ports/sysdeps/mips/preconfigure || die
-			find ports/sysdeps/mips/ -name Makefile -exec sed -i '/^CC.*-mabi=/s:-mabi=.*:-D_MIPS_SZPTR=32:' {} +
-		fi
 		if [[ -e sysdeps/riscv/preconfigure ]] ; then
 			# RISC-V interrogates the compiler to determine which target to
 			# build.  If building the headers then we don't strictly need a
