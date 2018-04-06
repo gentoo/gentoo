@@ -34,11 +34,17 @@ OPTIONAL_DEPEND="
 	dev-python/blosc[${PYTHON_USEDEP}]
 	dev-python/boto[${PYTHON_USEDEP}]
 	>=dev-python/google-api-python-client-1.2.0[$(python_gen_usedep python2_7 pypy)]
-	|| ( dev-python/html5lib[${PYTHON_USEDEP}] dev-python/lxml[${PYTHON_USEDEP}] )
+	|| (
+		dev-python/html5lib[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+	)
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	|| ( >=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}] dev-python/xlsxwriter[${PYTHON_USEDEP}] )
+	|| (
+		>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
+		dev-python/xlsxwriter[${PYTHON_USEDEP}]
+	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
 	dev-python/python-gflags[$(python_gen_usedep python2_7 pypy)]
 	dev-python/rpy[${PYTHON_USEDEP}]
