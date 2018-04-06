@@ -25,7 +25,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode"
+IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -72,6 +72,13 @@ src_prepare() {
 	sed -i \
 		-e "s|UUIDD_SOCKET=\"\$(mktemp -u \"\${TS_OUTDIR}/uuiddXXXXXXXXXXXXX\")\"|UUIDD_SOCKET=\"\$(mktemp -u \"${T}/uuiddXXXXXXXXXXXXX.sock\")\"|g" \
 		tests/ts/uuid/uuidd || die "Failed to fix uuidd test"
+
+	if ! use userland_GNU; then
+		# test runner is using GNU-specific xargs call
+		sed -i -e 's:xargs:gxargs:' tests/run.sh || die
+		# test requires util-linux uuidgen (which we don't build)
+		rm tests/ts/uuid/oids || die
+	fi
 
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
@@ -128,7 +135,8 @@ multilib_src_configure() {
 		$(use_with selinux)
 		$(usex ncurses '' '--without-tinfo')
 	)
-	if multilib_is_native_abi; then
+	# build programs only on GNU, on *BSD we want libraries only
+	if multilib_is_native_abi && use userland_GNU; then
 		myeconfargs+=(
 			--disable-chfn-chsh
 			--disable-login
@@ -156,13 +164,18 @@ multilib_src_configure() {
 			--disable-all-programs
 			--disable-bash-completion
 			--without-systemdsystemunitdir
-			# build all libraries
+			# build libraries
 			--enable-libuuid
 			--enable-libblkid
-			--enable-libmount
 			--enable-libsmartcols
 			--enable-libfdisk
 		)
+		if use userland_GNU; then
+			# those libraries don't work on *BSD
+			myeconfargs+=(
+				--enable-libmount
+			)
+		fi
 	fi
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
@@ -174,7 +187,7 @@ multilib_src_test() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
-	if multilib_is_native_abi; then
+	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
 		gen_usr_ldscript -a blkid mount smartcols uuid
 
@@ -187,6 +200,12 @@ multilib_src_install_all() {
 
 	# e2fsprogs-libs didnt install .la files, and .pc work fine
 	find "${ED}" -name "*.la" -delete || die
+
+	if ! use userland_GNU; then
+		# manpage collisions
+		# TODO: figure out a good way to keep them
+		rm "${ED%/}"/usr/share/man/man3/uuid* || die
+	fi
 
 	if use pam; then
 		newpamd "${FILESDIR}/runuser.pamd" runuser
