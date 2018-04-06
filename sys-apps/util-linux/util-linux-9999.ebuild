@@ -168,7 +168,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	multilib_is_native_abi && emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
+	emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
 }
 
 multilib_src_install() {
