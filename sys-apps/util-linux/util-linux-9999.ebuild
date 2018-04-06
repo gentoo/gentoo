@@ -110,30 +110,11 @@ multilib_src_configure() {
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
 
 	local myeconfargs=(
-		--disable-chfn-chsh
-		--disable-login
-		--disable-nologin
-		--disable-su
-		--enable-agetty
-		--enable-bash-completion
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
-		--enable-line
-		--enable-partx
-		--enable-raw
-		--enable-rename
-		--enable-rfkill
-		--enable-schedutils
 		--with-bashcompletiondir="$(get_bashcompdir)"
-		--with-systemdsystemunitdir=$(multilib_native_usex systemd "$(systemd_get_systemunitdir)" "no")
-		$(multilib_native_use_enable caps setpriv)
-		$(multilib_native_use_enable cramfs)
-		$(multilib_native_use_enable fdformat)
 		$(multilib_native_use_enable nls)
 		$(multilib_native_use_enable suid makeinstall-chown)
 		$(multilib_native_use_enable suid makeinstall-setuid)
-		$(multilib_native_use_enable tty-helpers mesg)
-		$(multilib_native_use_enable tty-helpers wall)
-		$(multilib_native_use_enable tty-helpers write)
 		$(multilib_native_use_with python)
 		$(multilib_native_use_with readline)
 		$(multilib_native_use_with slang)
@@ -143,11 +124,46 @@ multilib_src_configure() {
 		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
 		$(tc-has-tls || echo --disable-tls)
 		$(use_enable unicode widechar)
-		$(use_enable kill)
 		$(use_enable static-libs static)
 		$(use_with selinux)
 		$(usex ncurses '' '--without-tinfo')
 	)
+	if multilib_is_native_abi; then
+		myeconfargs+=(
+			--disable-chfn-chsh
+			--disable-login
+			--disable-nologin
+			--disable-su
+			--enable-agetty
+			--enable-bash-completion
+			--enable-line
+			--enable-partx
+			--enable-raw
+			--enable-rename
+			--enable-rfkill
+			--enable-schedutils
+			--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+			$(use_enable caps setpriv)
+			$(use_enable cramfs)
+			$(use_enable fdformat)
+			$(use_enable tty-helpers mesg)
+			$(use_enable tty-helpers wall)
+			$(use_enable tty-helpers write)
+			$(use_enable kill)
+		)
+	else
+		myeconfargs+=(
+			--disable-all-programs
+			--disable-bash-completion
+			--without-systemdsystemunitdir
+			# build all libraries
+			--enable-libuuid
+			--enable-libblkid
+			--enable-libmount
+			--enable-libsmartcols
+			--enable-libfdisk
+		)
+	fi
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
