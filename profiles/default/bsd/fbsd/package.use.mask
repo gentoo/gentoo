@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (06 Apr 2018)
+# We are building only minimal util-linux, so program flags
+# are irrelevant to us.
+sys-apps/util-linux build cramfs fdformat kill ncurses pam readline
+sys-apps/util-linux slang suid tty-helpers
+
 # Brian Evans <grknight@gentoo.org> (2 Mar 2018)
 # php incorrectly looks for libacl when it is built-in on FreeBSD
 dev-lang/php acl
