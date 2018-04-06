@@ -4,10 +4,10 @@ DESCRIPTION=Perl UI framework based on the curses library
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Curses-UI/
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~hppa ~ppc ~ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Curses dev-perl/TermReadKey dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MD/MDXI/Curses-UI-0.9609.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=2af1663f5731de608fff9db8941db219
+_md5_=e4df5e173dd734dbe3ac6da9d0d1e4f8

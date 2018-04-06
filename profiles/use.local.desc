@@ -5907,10 +5907,6 @@ x11-libs/libdrm:valgrind - Compile in valgrind memory hints
 x11-libs/libfm:automount - Use gnome-base/gvfs for automounting
 x11-libs/libfm:udisks - Use libfm's udisks-based volume monitor implementation instead of using the one from gvfs
 x11-libs/libfm:vala - Support custom actions in menus
-x11-libs/libqxt:berkdb - Build the QxtBerkeley module
-x11-libs/libqxt:sql - Build the QxtSql module
-x11-libs/libqxt:web - Build the QxtWeb module
-x11-libs/libqxt:zeroconf - Build the QxtZeroconf module
 x11-libs/libva:drm - Enables VA/DRM API support.
 x11-libs/libva:egl - Enables EGL support.
 x11-libs/libva:utils - Install VA-API utility programs.

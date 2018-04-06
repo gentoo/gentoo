@@ -1156,9 +1156,9 @@ app-office/homebank 5.1.3: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/kexi 3.0.2: Visual database applications creator
-app-office/kmymoney 4.8.1.1-r1 5.0.1-r2: Personal finance manager based on KDE Frameworks
+app-office/kmymoney 5.0.1-r2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
-app-office/libalkimia 5.0.0 7.0.1: Library with common classes and functionality used by KDE finance applications
+app-office/libalkimia 7.0.1: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 5.4.5.1: A full office productivity suite
 app-office/libreoffice-l10n 5.4.5.1: Translations for the Libreoffice suite
 app-office/lyx 2.2.3-r4: WYSIWYM frontend for LaTeX, DocBook, etc.
@@ -3494,7 +3494,7 @@ dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-DES 2.70.0 2.70.0-r1: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
-dev-perl/Crypt-DH 0.70.0-r1: Diffie-Hellman key exchange system
+dev-perl/Crypt-DH 0.70.0-r1 0.70.0-r2: Diffie-Hellman key exchange system
 dev-perl/Crypt-DH-GMP 0.0.120: Crypt::DH Using GMP Directly
 dev-perl/Crypt-DSA 1.170.0: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
@@ -3503,22 +3503,22 @@ dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.190.0: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3: Crypt::OpenSSL::RSA module for perl
-dev-perl/Crypt-OpenSSL-Random 0.40.0-r2: Crypt::OpenSSL::Random module for perl
+dev-perl/Crypt-OpenSSL-Random 0.40.0-r2 0.110.0: OpenSSL/LibreSSL pseudo-random number generator access
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-Primes 0.500.0-r1: Provable Prime Number Generator suitable for Cryptographic Applications
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
-dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
+dev-perl/Crypt-RIPEMD160 0.50.0-r1 0.60.0: Perl extension for the RIPEMD-160 Hash function
 dev-perl/Crypt-RSA 1.990.0-r1: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.250.0-r1: Cryptographically Secure, True Random Number Generator
-dev-perl/Crypt-Random-Source 0.70.0-r1: Get weak or strong random data from pluggable sources
+dev-perl/Crypt-Random-Source 0.70.0-r1 0.120.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.130.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SSLeay 0.720.0-r1: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
-dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
+dev-perl/Crypt-SmbHash 0.120.0-r1 0.120.0-r2: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/Curses 1.320.0 1.360.0: Curses interface modules for Perl
-dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
+dev-perl/Curses-UI 0.960.900-r1 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
@@ -3530,7 +3530,7 @@ dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Safe 1.2.5-r1: Safer access to your database through a DBI database handle
 dev-perl/DBIx-SearchBuilder 1.660.0-r1: Encapsulate SQL queries and rows in simple Perl objects
-dev-perl/Daemon-Generic 0.840.0: Framework to provide start/stop/reload for a daemon
+dev-perl/Daemon-Generic 0.840.0 0.850.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
@@ -3538,7 +3538,7 @@ dev-perl/Data-Compare 1.250.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
-dev-perl/Data-FormValidator 4.860.0-r1: Validates user input (usually from an HTML form) based on input profile
+dev-perl/Data-FormValidator 4.860.0-r1 4.880.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
@@ -5109,6 +5109,7 @@ dev-python/oslotest 2.17.1 3.2.0: Oslo test framework
 dev-python/osprofiler 1.11.0 1.15.2: OpenStack Profiler Library
 dev-python/ovs 2.7.0 2.8.1: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0 0.10.0: A library for creating OVSDB applications
+dev-python/owslib 0.16.0: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 16.8: Core utilities for Python packages
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
@@ -5281,6 +5282,7 @@ dev-python/pypgsql 2.5.1-r1: Python Interface to PostgreSQL
 dev-python/pyphen 0.9.4: Python module for hyphenation using hunspell dictionaries
 dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.6 1.1.10: Python binding for the PowerVM REST API
+dev-python/pyproj 1.9.5.1: Python interface to PROJ.4 library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
@@ -7561,7 +7563,7 @@ media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.1: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.6: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
-media-libs/libvorbis 1.3.5: The Ogg Vorbis sound file format library
+media-libs/libvorbis 1.3.5 1.3.6: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.5.0: WebM VP8 Codec SDK
 media-libs/libwebp 0.5.2: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r6: library for converting WMF files
@@ -7574,7 +7576,7 @@ media-libs/lilv 0.20.0 0.24.2 0.24.2-r2: Library to make the use of LV2 plugins 
 media-libs/lv2 1.10.0-r1 1.14.0 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.8.2 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 17.1.10 17.2.8: OpenGL-like graphic library for Linux
+media-libs/mesa 17.1.10 17.2.8 17.3.8: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r6: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -9243,7 +9245,7 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
-sci-geosciences/qgis 2.18.12: User friendly Geographic Information System
+sci-geosciences/qgis 2.18.12 3.0.1: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3: GPS mapping utility
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
@@ -10103,7 +10105,7 @@ sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.13-r2: Standard GNU database libraries
 sys-libs/glibc 2.25-r9 2.25-r10 2.25-r11: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 4.15.3 4.19.0-r1: A multi-platform helper library for other libraries
+sys-libs/gwenhywfar 4.19.0-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.3.0: Library for managing partitions
 sys-libs/ldb 1.1.26 1.1.29-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6: library required by reiser4progs
@@ -10688,7 +10690,7 @@ x11-libs/libast 0.7 0.7-r1: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.82 2.4.88: X.Org libdrm library
+x11-libs/libdrm 2.4.82 2.4.88 2.4.89: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r3: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
@@ -10699,7 +10701,6 @@ x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.4: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
-x11-libs/libqxt 0.6.2-r2: Extension library providing cross-platform utility classes for the Qt toolkit
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libva 1.7.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.7.3: HW video decode support for Intel integrated graphics
