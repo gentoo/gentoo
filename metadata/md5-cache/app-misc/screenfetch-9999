@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=curl? ( net-misc/curl ) X? ( media-gfx/scrot x11-apps/xdpyinfo )
 SLOT=0
 _eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
-_md5_=13e89cd70629346270e1f74cdf72926d
+_md5_=4577b37575227d8df78d40a8e3a7530d
