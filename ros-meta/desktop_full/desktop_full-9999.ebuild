@@ -18,6 +18,6 @@ RDEPEND="
 	ros-meta/desktop
 	ros-meta/perception
 	ros-meta/simulators
-	dev-ros/urdf_sim_tutorial
+	dev-ros/urdf_tutorial
 "
 DEPEND="${RDEPEND}"
