@@ -20,15 +20,10 @@ LICENSE="BSD"
 KEYWORDS=""
 IUSE="doc full-support minimal test X"
 
-MINIMAL_DEPEND="
-	>dev-python/numpy-1.7[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-2.0[${PYTHON_USEDEP}]
-	dev-python/pytz[${PYTHON_USEDEP}]
-	!<dev-python/numexpr-2.1[${PYTHON_USEDEP}]
-	!~dev-python/openpyxl-1.9.0[${PYTHON_USEDEP}]"
 RECOMMENDED_DEPEND="
 	dev-python/bottleneck[${PYTHON_USEDEP}]
-	>=dev-python/numexpr-2.1[${PYTHON_USEDEP}]"
+	>=dev-python/numexpr-2.1[${PYTHON_USEDEP}]
+"
 OPTIONAL_DEPEND="
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/blosc[${PYTHON_USEDEP}]
@@ -66,9 +61,13 @@ OPTIONAL_DEPEND="
 			x11-misc/xsel
 		)
 	)
-	"
-
-DEPEND="${MINIMAL_DEPEND}
+"
+COMMON_DEPEND="
+	>dev-python/numpy-1.7[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-2.0[${PYTHON_USEDEP}]
+	dev-python/pytz[${PYTHON_USEDEP}]
+"
+DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.23[${PYTHON_USEDEP}]
 	doc? (
@@ -99,13 +98,16 @@ DEPEND="${MINIMAL_DEPEND}
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		x11-misc/xclip
 		x11-misc/xsel
-	)"
+	)
+"
 # dev-python/statsmodels invokes a circular dep
 #  hence rm from doc? ( ), again
-RDEPEND="
-	${MINIMAL_DEPEND}
+RDEPEND="${COMMON_DEPEND}
+	!<dev-python/numexpr-2.1[${PYTHON_USEDEP}]
+	!~dev-python/openpyxl-1.9.0[${PYTHON_USEDEP}]
 	!minimal? ( ${RECOMMENDED_DEPEND} )
-	full-support? ( ${OPTIONAL_DEPEND} )"
+	full-support? ( ${OPTIONAL_DEPEND} )
+"
 
 python_prepare_all() {
 	# Prevent un-needed download during build
