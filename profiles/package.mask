@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (09 Apr 2018)
+# Obsolete dev-texlive/* cleanup. Masked for removal in 30 days.
+dev-texlive/texlive-documentation-base
+dev-texlive/texlive-genericextra
+dev-texlive/texlive-genericrecommended
+dev-texlive/texlive-langafrican
+dev-texlive/texlive-mathextra
+dev-texlive/texlive-omega
+dev-texlive/texlive-plainextra
+dev-texlive/texlive-science
+
 # Andreas Sturmlechner <asturm@gentoo.org> (08 Apr 2018)
 # Depends on dead Qt4. Masked for removal in 30 days. Bug #649124
 dev-python/PyFoam
