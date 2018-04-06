@@ -6,15 +6,15 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit bash-completion-r1 eutils flag-o-matic git-r3 pax-utils python-single-r1 toolchain-funcs
+inherit bash-completion-r1 eutils flag-o-matic pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-EGIT_REPO_URI="https://github.com/nodejs/node"
+SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -27,8 +27,7 @@ RDEPEND="
 	>=net-libs/nghttp2-1.29.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-61.1:= )
-	npm? ( ${PYTHON_DEPS} )
-	ssl? ( >=dev-libs/openssl-1.0.2g:0=[-bindist] )
+	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
 "
 DEPEND="
 	${RDEPEND}
@@ -36,6 +35,7 @@ DEPEND="
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
 "
+S="${WORKDIR}/node-v${PV}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-global-npm-config.patch
 )
