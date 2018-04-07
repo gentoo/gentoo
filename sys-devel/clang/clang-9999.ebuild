@@ -219,19 +219,19 @@ src_install() {
 	# Apply CHOST and version suffix to clang tools
 	# note: we use two version components here (vs 3 in runtime path)
 	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(ver_cut 1-2 "${llvm_version}")
+	local clang_version=$(ver_cut 1 "${llvm_version}")
 	local clang_full_version=$(ver_cut 1-3 "${llvm_version}")
 	local clang_tools=( clang clang++ clang-cl clang-cpp )
 	local abi i
 
 	# cmake gives us:
-	# - clang-X.Y
-	# - clang -> clang-X.Y
+	# - clang-X
+	# - clang -> clang-X
 	# - clang++, clang-cl, clang-cpp -> clang
 	# we want to have:
-	# - clang-X.Y
-	# - clang++-X.Y, clang-cl-X.Y, clang-cpp-X.Y -> clang-X.Y
-	# - clang, clang++, clang-cl, clang-cpp -> clang*-X.Y
+	# - clang-X
+	# - clang++-X, clang-cl-X, clang-cpp-X -> clang-X
+	# - clang, clang++, clang-cl, clang-cpp -> clang*-X
 	# also in CHOST variant
 	for i in "${clang_tools[@]:1}"; do
 		rm "${ED%/}/usr/lib/llvm/${SLOT}/bin/${i}" || die
