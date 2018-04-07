@@ -95,7 +95,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	# nasty prefix hacks for fltk:1 and qt4 linking
+	# nasty prefix hacks for fltk:1 linking
 	if use prefix; then
 		use opengl && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/fltk-1"
 	fi
