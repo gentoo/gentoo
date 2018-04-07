@@ -5,10 +5,10 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils multilib python-single-r1 virtualx
+inherit cmake-utils python-single-r1 virtualx
 
 DESCRIPTION="Library for chemistry applications"
-HOMEPAGE="http://www.chemkit.org/"
+HOMEPAGE="https://github.com/kylelutz/chemkit"
 SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 
 SLOT="0"
