@@ -7,7 +7,7 @@ WANT_AUTOMAKE="1.12" #493996
 inherit eutils autotools systemd
 
 DESCRIPTION="LXDE Display Manager"
-HOMEPAGE="https://lxde.org"
+HOMEPAGE="https://wiki.lxde.org/en/LXDM"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.gz"
 
 LICENSE="GPL-3"
