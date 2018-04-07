@@ -20,13 +20,3 @@ RDEPEND="sys-apps/pciutils
 		media-libs/imlib2
 		media-gfx/imagemagick
 	)"
-
-pkg_postinst() {
-	ewarn "A lot of things have changed in neofetch 3.0, and we cannot"
-	ewarn "guarantee that your config will work in neofetch 3.0. As such,"
-	ewarn "we recommend you to use a new config. You can delete your current"
-	ewarn "config from $HOME/.config/neofetch"
-
-	einfo "The system-wide config has been moved from /usr/share/neofetch/config"
-	einfo "to /etc/neofetch/config."
-}
