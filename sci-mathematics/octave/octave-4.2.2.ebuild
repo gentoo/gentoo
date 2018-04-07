@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic fortran-2 java-pkg-opt-2 pax-utils toolchain-funcs xdg-utils
+inherit autotools flag-o-matic fortran-2 gnome2-utils java-pkg-opt-2 pax-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="High-level interactive language for numerical computations"
 LICENSE="GPL-3"
@@ -177,11 +177,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 }
