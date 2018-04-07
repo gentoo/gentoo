@@ -64,7 +64,7 @@ src_prepare() {
 	use python && python_fix_shebang .
 
 	# remove bundled libs
-	rm -rv lib/ivykis modules/afmongodb/mongo-c-driver modules/afamqp/rabbitmq-c || die
+	rm -r lib/ivykis modules/afmongodb/mongo-c-driver modules/afamqp/rabbitmq-c || die
 
 	# drop scl modules requiring json
 	if use !json; then
