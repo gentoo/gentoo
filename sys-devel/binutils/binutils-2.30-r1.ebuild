@@ -390,7 +390,7 @@ pkg_postrm() {
 # Note [slotting support]
 # -----------------------
 # Gentoo's layout for binutils files is non-standard as Gentoo
-# supports slotted installation for binutils. But many tools
+# supports slotted installation for binutils. Many tools
 # still expect binutils to reside in known locations.
 # binutils-config package restores symlinks into known locations,
 # like:
@@ -400,10 +400,11 @@ pkg_postrm() {
 #
 # Note [tooldir hack for ldscripts]
 # ---------------------------------
-# Build system does not ./configure to tweak evey location we need
-# for slotting binutils. This note is about SCRIPTDIR define.
+# Build system does not allow ./configure to tweak every location
+# we need for slotting binutils hence annd the shuffling in
+# src_install(). This note is about SCRIPTDIR define handling.
 #
-# SCRIPDIR defines 'ldscripts/' directory location. SCRIPDIR value
+# SCRIPTDIR defines 'ldscripts/' directory location. SCRIPTDIR value
 # is set at build-time in ld/Makefile.am as: 'scriptdir = $(tooldir)/lib'
 # and hardcoded as -DSCRIPTDIR='"$(scriptdir)"' at compile time.
 # Thus we can't just move files around after compilation finished.
