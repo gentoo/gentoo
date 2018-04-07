@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Create a Fake ShareDir for your modules for testing."
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~mips ~x86"
+KEYWORDS="~amd64 ~arm64 ~mips ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="virtual/perl-Carp
