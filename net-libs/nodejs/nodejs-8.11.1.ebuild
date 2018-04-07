@@ -24,7 +24,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/libuv-1.19.1:=
-	>=net-libs/http-parser-2.7.0:=
+	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.25.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-60.1:= )
