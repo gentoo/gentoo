@@ -577,7 +577,7 @@ app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
 app-editors/pluma 1.12.2-r1: Pluma text editor for the MATE desktop
-app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
+app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
 app-editors/retext 7.0.0: Simple editor for Markdown and reStructuredText
 app-editors/scite 3.5.5 4.0.2: A very powerful, highly configurable, small editor with syntax coloring.
