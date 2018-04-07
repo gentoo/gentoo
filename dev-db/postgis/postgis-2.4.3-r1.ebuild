@@ -18,7 +18,7 @@ SRC_URI="http://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="address-standardizer doc gtk static-libs mapbox test topology"
+IUSE="address-standardizer doc gtk sfcgal static-libs mapbox test topology"
 
 RDEPEND="
 	${POSTGRES_DEP}
@@ -30,6 +30,7 @@ RDEPEND="
 	address-standardizer? ( dev-libs/libpcre )
 	gtk? ( x11-libs/gtk+:2 )
 	mapbox? ( dev-libs/protobuf-c )
+	sfcgal?	( sci-geosciences/sfcgal )
 "
 
 DEPEND="${RDEPEND}
@@ -78,6 +79,7 @@ src_configure() {
 	use address-standardizer || myargs+=" --without-address-standardizer"
 	use mapbox               || myargs+=" --without-protobuf"
 	use topology             || myargs+=" --without-topology"
+	use sfcgal               || myargs+=" --without-sfcgal"
 
 	postgres-multi_foreach econf ${myargs}
 }
