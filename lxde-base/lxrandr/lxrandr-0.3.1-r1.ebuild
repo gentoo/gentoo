@@ -12,7 +12,7 @@ PLOCALE_BACKUP="en_GB"
 inherit l10n
 
 DESCRIPTION="LXDE GUI interface to RandR extention"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://wiki.lxde.org/en/LXRandR"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
