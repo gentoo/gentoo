@@ -11215,7 +11215,7 @@ x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/afterstep 2.2.12: A feature rich NeXTish window manager
 x11-wm/awesome 3.5.6-r2 3.5.9-r2: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
-x11-wm/ctwm 3.7 3.8a-r1 4.0.1: A clean, light window manager
+x11-wm/ctwm 3.7 4.0.1: A clean, light window manager
 x11-wm/cwm 5.1 5.6: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1: a dynamic window manager for X11
 x11-wm/enlightenment 0.20.5 1.0.17: Enlightenment Window Manager (e16)
