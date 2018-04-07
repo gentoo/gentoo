@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/kdl_parser
 	dev-cpp/eigen:3
-	sci-libs/orocos_kdl
+	sci-libs/orocos_kdl:=
 	dev-ros/roscpp
 	dev-ros/rosconsole
 	dev-ros/rostime
