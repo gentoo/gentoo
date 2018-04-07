@@ -7,7 +7,7 @@ inherit autotools flag-o-matic fortran-2 gnome2-utils java-pkg-opt-2 pax-utils t
 
 DESCRIPTION="High-level interactive language for numerical computations"
 LICENSE="GPL-3"
-HOMEPAGE="http://www.octave.org/"
+HOMEPAGE="https://www.gnu.org/software/octave/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 SLOT="0/${PV}"
