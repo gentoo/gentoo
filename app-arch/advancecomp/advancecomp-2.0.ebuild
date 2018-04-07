@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils
 
 DESCRIPTION="Recompress ZIP, PNG and MNG, considerably improving compression"
 HOMEPAGE="http://www.advancemame.it/comp-readme.html"

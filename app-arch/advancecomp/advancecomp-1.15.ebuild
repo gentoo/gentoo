@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Recompress ZIP, PNG and MNG, considerably improving compression"
 HOMEPAGE="http://advancemame.sourceforge.net/comp-readme.html"
@@ -19,10 +18,10 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="test" #282441
 
-src_prepare() {
+PATCHES=(
 	# bzip2 support wont compile, here's a quick patch.
-	epatch "${FILESDIR}"/${PN}-1.13-bzip2-compile-plz-k-thx.diff
-}
+	"${FILESDIR}"/${PN}-1.13-bzip2-compile-plz-k-thx.diff
+)
 
 src_configure() {
 	econf --enable-bzip2
