@@ -22,7 +22,7 @@ fi
 DESCRIPTION="Kinematics and Dynamics Library (KDL)"
 HOMEPAGE="http://www.orocos.org/kdl"
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/14"
 IUSE="doc test examples models"
 
 RDEPEND="dev-cpp/eigen:3"
