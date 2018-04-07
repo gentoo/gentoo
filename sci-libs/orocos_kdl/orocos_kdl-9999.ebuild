@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ fi
 DESCRIPTION="Kinematics and Dynamics Library (KDL)"
 HOMEPAGE="http://www.orocos.org/kdl"
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/14"
 IUSE="doc test examples models"
 
 RDEPEND="dev-cpp/eigen:3"
