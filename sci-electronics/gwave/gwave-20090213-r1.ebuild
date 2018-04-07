@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 HOMEPAGE="http://gwave.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="gnuplot plotutils"
 SLOT="0"
 
