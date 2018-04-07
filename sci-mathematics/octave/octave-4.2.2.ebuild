@@ -27,6 +27,13 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	glpk? ( sci-mathematics/glpk:0= )
 	gnuplot? ( sci-visualization/gnuplot )
+	gui? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtopengl:5
+		>=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)]
+	)
 	hdf5? ( sci-libs/hdf5:0= )
 	imagemagick? (
 		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
@@ -36,9 +43,9 @@ RDEPEND="
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
+		virtual/glu
 		>=x11-libs/fltk-1.3:1=[opengl,xft]
 		x11-libs/gl2ps:0=
-		virtual/glu
 	)
 	openssl? ( dev-libs/openssl:0= )
 	portaudio? ( media-libs/portaudio )
@@ -49,13 +56,6 @@ RDEPEND="
 	)
 	qhull? ( media-libs/qhull:0= )
 	qrupdate? ( sci-libs/qrupdate:0= )
-	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtopengl:5
-		>=x11-libs/qscintilla-2.9.3-r2:=[qt5(+)]
-	)
 	readline? ( sys-libs/readline:0= )
 	sndfile? ( media-libs/libsndfile )
 	sparse? (
@@ -69,19 +69,19 @@ RDEPEND="
 	)
 	X? ( x11-libs/libX11:0= )"
 DEPEND="${RDEPEND}
-	gui? ( dev-qt/linguist-tools:5 )
-	qrupdate? ( app-misc/pax-utils )
-	sparse? ( app-misc/pax-utils )
-	java? ( >=virtual/jdk-1.6.0 )
+	dev-util/gperf
+	sys-apps/texinfo
+	virtual/pkgconfig
 	doc? (
-		virtual/latex-base
 		dev-texlive/texlive-fontsrecommended
 		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
 		dev-texlive/texlive-metapost
+		virtual/latex-base
 	)
-	sys-apps/texinfo
-	dev-util/gperf
-	virtual/pkgconfig"
+	gui? ( dev-qt/linguist-tools:5 )
+	java? ( >=virtual/jdk-1.6.0 )
+	qrupdate? ( app-misc/pax-utils )
+	sparse? ( app-misc/pax-utils )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.0-texi.patch
