@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/tf2
 	dev-ros/tf2_ros
 	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
-	sci-libs/orocos_kdl
+	sci-libs/orocos_kdl:=
 	dev-ros/tf2_msgs[${PYTHON_USEDEP}]
 	dev-ros/cmake_modules
 "

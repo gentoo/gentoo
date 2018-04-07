@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/tf2
 	dev-ros/tf2_ros
 	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
-	sci-libs/orocos_kdl
+	sci-libs/orocos_kdl:=
 	dev-ros/tf2_msgs[${PYTHON_USEDEP}]
 	dev-ros/cmake_modules
 "
