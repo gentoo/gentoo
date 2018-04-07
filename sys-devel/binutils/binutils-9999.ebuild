@@ -398,7 +398,7 @@ pkg_postrm() {
 # Note [tooldir hack for ldscripts]
 # ---------------------------------
 # Build system does not allow ./configure to tweak every location
-# we need for slotting binutils hence annd the shuffling in
+# we need for slotting binutils hence all the shuffling in
 # src_install(). This note is about SCRIPTDIR define handling.
 #
 # SCRIPTDIR defines 'ldscripts/' directory location. SCRIPTDIR value
