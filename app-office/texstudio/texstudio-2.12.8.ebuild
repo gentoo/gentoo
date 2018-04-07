@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit gnome2-utils prefix qmake-utils xdg-utils
 
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="http://texstudio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/TeXstudio%20${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/texstudio-org/texstudio/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
-	dev-qt/qtsingleapplication[qt5,X]
+	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsvg:5
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
@@ -42,11 +42,10 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}${PV}
-
 src_prepare() {
 	default
-	find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
+#	This line causes errors in version 2.12.8
+# 	find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
 
 	if use video; then
 		sed "/^PHONON/s:$:true:g" -i ${PN}.pro || die
