@@ -599,7 +599,6 @@ app-i18n/libguess
 # Obsolete package
 # Masked for removal in 30 days. Bug #646742
 dev-lisp/common-lisp-controller
-dev-lisp/asdf-binary-locations
 
 # Brian Evans <grknight@gentoo.org> (06 Mar 2018)
 # MariaDB MaxScale 1.x depends on the deprecated libmysqld
