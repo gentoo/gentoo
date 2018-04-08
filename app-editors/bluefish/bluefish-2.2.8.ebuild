@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils gnome2-utils python-single-r1 xdg-utils
+inherit gnome2-utils python-single-r1 xdg-utils
 
 MY_P=${P/_/-}
 
@@ -71,7 +71,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
