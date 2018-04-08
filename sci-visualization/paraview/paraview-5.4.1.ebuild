@@ -114,6 +114,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	cmake-utils_src_prepare
 
 	# lib64 fixes
 	sed -i \
@@ -152,7 +153,6 @@ src_configure() {
 		-DOPENGL_glu_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libGLU.so
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_COLOR_MAKEFILE=TRUE
-		-DCMAKE_USE_PTHREADS=ON
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DVTK_Group_StandAlone=ON
 		-DVTK_RENDERING_BACKEND=OpenGL2
@@ -161,7 +161,6 @@ src_configure() {
 		# -DVTK_USE_SYSTEM_AUTOBAHN once we transitioned to Python 3...
 		-DVTK_USE_SYSTEM_CGNS=ON
 		-DVTK_USE_SYSTEM_PUGIXML=ON
-		-DVTK_USE_SYSTEM_PYGMENTS=ON
 		-DVTK_USE_SYSTEM_EXPAT=ON
 		-DVTK_USE_SYSTEM_FREETYPE=ON
 		-DVTK_USE_SYSTEM_GL2PS=OFF # doesn't compile, requires modified sources
@@ -173,18 +172,14 @@ src_configure() {
 		-DVTK_USE_SYSTEM_LIBHARU=OFF # doesn't compile, requires modified sources
 		-DVTK_USE_SYSTEM_LIBXML2=ON
 		-DVTK_USE_SYSTEM_LZ4=ON
-		-DVTK_USE_SYSTEM_MPI4PY=ON
 		-DVTK_USE_SYSTEM_NETCDF=ON
 		-DVTK_USE_SYSTEM_OGGTHEORA=ON
 		-DVTK_USE_SYSTEM_PNG=ON
 		-DVTK_USE_SYSTEM_PROTOBUF=ON
-		-DVTK_USE_SYSTEM_SIX=ON
 		-DVTK_USE_SYSTEM_TIFF=ON
 		-DVTK_USE_SYSTEM_XDMF2=ON
-		-DVTK_USE_SYSTEM_TWISTED=ON
 		-DVTK_USE_SYSTEM_XDMF2=OFF
 		-DVTK_USE_SYSTEM_ZLIB=ON
-		-DVTK_USE_SYSTEM_ZOPE=ON
 		# force this module due to incorrect build system deps
 		# wrt bug 460528
 		-DModule_vtkUtilitiesProcessXML=ON
