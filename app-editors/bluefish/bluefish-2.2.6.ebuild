@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils gnome2-utils python-single-r1 xdg-utils
+inherit gnome2-utils python-single-r1 xdg-utils
 
 MY_P=${P/_/-}
 
@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 		dev-util/intltool
 	)"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 # there actually is just some broken manpage checkup -> not bother
 RESTRICT="test"
@@ -60,7 +60,7 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
