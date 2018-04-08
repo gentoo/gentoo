@@ -15,8 +15,9 @@ SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
 IUSE="berkdb crypt debug doc gdbm gnutls gpg gpgme +hcache idn +imap kerberos libressl +lmdb mbox nls nntp notmuch pgp_classic pop qdbm +sasl selinux slang smime smime_classic +smtp +ssl tokyocabinet vanilla prefix"
+# hcache: allow multiple, bug #607360
 REQUIRED_USE="
-	hcache?           ( ^^ ( berkdb gdbm lmdb qdbm tokyocabinet ) )
+	hcache?           ( || ( berkdb gdbm lmdb qdbm tokyocabinet ) )
 	imap?             ( ssl )
 	pop?              ( ssl )
 	nntp?             ( ssl )
@@ -28,6 +29,8 @@ REQUIRED_USE="
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+# yes, we overdepend on the backend impls here, hopefully one day we can
+# have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="
 	app-misc/mime-types
 
@@ -171,13 +174,15 @@ src_configure() {
 		myconf+=( "--without-wc-funcs" )
 	fi
 
-	# REQUIRED_USE should have selected only one of these
+	# note: REQUIRED_USE should have selected only one of these, but for
+	# bug #607360 we're forced to allow multiple.  For that reason, this
+	# list is ordered to preference, and only the first is taken.
 	local hcaches=(
-		"berkdb:bdb"
-		"gdbm"
 		"lmdb"
 		"qdbm"
 		"tokyocabinet"
+		"gdbm"
+		"berkdb:bdb"
 	)
 	local ucache hcache lcache
 	for hcache in "${hcaches[@]}" ; do
