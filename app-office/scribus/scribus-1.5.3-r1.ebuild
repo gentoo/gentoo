@@ -92,12 +92,12 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-docdir.patch
-	"${FILESDIR}"/${P}-fpic.patch
-	"${FILESDIR}"/${P}-cmake-openssl.patch
-	"${FILESDIR}"/${P}-poppler-0.58.patch
-	"${FILESDIR}"/${P}-x86-fpic.patch
-	"${FILESDIR}"/${P}-qt-5.11.patch
+	"${FILESDIR}"/${PN}-1.5.3-docdir.patch
+	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
+	"${FILESDIR}"/${PN}-1.5.3-cmake-openssl.patch
+	"${FILESDIR}"/${PN}-1.5.3-poppler-0.58.patch
+	"${FILESDIR}"/${PN}-1.5.3-x86-fpic.patch
+	"${FILESDIR}"/${PN}-1.5.3-qt-5.11.patch
 )
 
 src_prepare() {

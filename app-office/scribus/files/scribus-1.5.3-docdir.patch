@@ -1,8 +1,3 @@
- CMakeLists.txt | 28 +++++++++++++++-------------
- 1 file changed, 15 insertions(+), 13 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 29d66f3..1c08cdd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -244,19 +244,21 @@ else()

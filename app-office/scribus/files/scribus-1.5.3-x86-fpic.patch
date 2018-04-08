@@ -1,5 +1,5 @@
---- a/CMakeLists.txt	2017-05-28 11:10:27.000000000 +0200
-+++ b/CMakeLists.txt	2018-01-09 14:26:14.494922353 +0100
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -155,11 +155,11 @@
  	set(ARCH_HPPA 1)
  endif()
