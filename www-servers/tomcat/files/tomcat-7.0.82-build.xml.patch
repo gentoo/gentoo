@@ -1,6 +1,5 @@
-diff -Naur apache-tomcat-7.0.63-src.orig/build.xml apache-tomcat-7.0.63-src/build.xml
---- apache-tomcat-7.0.63-src.orig/build.xml	2015-06-30 09:15:44.000000000 +0100
-+++ apache-tomcat-7.0.63-src/build.xml	2015-08-22 21:13:12.453038827 +0100
+--- a/build.xml
++++ b/build.xml
 @@ -660,12 +660,14 @@
        </fileset>
      </copy>

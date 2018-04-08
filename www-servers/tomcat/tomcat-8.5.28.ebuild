@@ -52,7 +52,7 @@ src_prepare() {
 	# Remove bundled servlet-api
 	rm -rv java/javax/{el,servlet} || die
 
-	epatch "${FILESDIR}/${P}-build.xml.patch"
+	epatch "${FILESDIR}/${PN}-8.5.27-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
