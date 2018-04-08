@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README )
 
-PATCHES=( "${FILESDIR}"/"${P}-tinfo.patch" )
+PATCHES=( "${FILESDIR}"/"${PN}-4.2.1-tinfo.patch" )
 
 src_prepare() {
 	default
