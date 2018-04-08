@@ -10,8 +10,8 @@
 		<name>Virgil Dupras</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<longdescription>
 		By combining the speed and density of containers with
