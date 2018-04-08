@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs eutils systemd
+inherit toolchain-funcs eutils systemd savedconfig
 
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="http://hostap.epitest.fi"
@@ -48,6 +48,12 @@ src_prepare() {
 
 src_configure() {
 	local CONFIG="${S}/.config"
+
+	restore_config "${CONFIG}"
+	if [[ -f "${CONFIG}" ]]; then
+		default_src_configure
+		return 0
+	fi
 
 	# toolchain setup
 	echo "CC = $(tc-getCC)" > ${CONFIG}
@@ -194,6 +200,8 @@ src_install() {
 		exeinto /etc/log.d/scripts/services/
 		doexe logwatch/${PN}
 	fi
+
+	save_config .config
 }
 
 pkg_postinst() {
