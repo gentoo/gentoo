@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java-based STUN implementation"
-HOMEPAGE="http://jstun.javawi.de/"
-SRC_URI="http://${PN}.javawi.de/${P}.src.tar.gz"
+HOMEPAGE="https://jstun.javawi.de/"
+SRC_URI="https://${PN}.javawi.de/${P}.src.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"

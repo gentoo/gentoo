@@ -11,7 +11,7 @@ MY_PV="${PV}a"
 MY_P="${PN}-${PN}-${MY_PV}"
 
 DESCRIPTION="Java HTML parser that makes sense of real-world HTML soup"
-HOMEPAGE="http://jsoup.org/"
+HOMEPAGE="https://jsoup.org/"
 SRC_URI="https://github.com/jhy/${PN}/archive/${PN}-${MY_PV}.zip"
 
 LICENSE="MIT"
