@@ -1,19 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit flag-o-matic
 
+MAJOR="2.2"
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
 SRC_URI="mirror://gnu/guile/${P}.tar.gz"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-LICENSE="LGPL-3+"
-IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstream recommended +networking +nls
-# emacs useflag removal not working
 
-# workaround for bug 596322
-REQUIRED_USE="regex"
+LICENSE="LGPL-3+"
+SLOT="12/2.2-1" # libguile-2.2.so.1 => 2.2-1
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstream recommended +networking +nls
+REQUIRED_USE="regex" # workaround for bug 596322
+RESTRICT="strip"
 
 RDEPEND="
 	>=dev-libs/boehm-gc-7.0:=[threads?]
@@ -29,13 +31,8 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	sys-devel/gettext"
 
-SLOT="12/2.2-1" # libguile-2.2.so.1 => 2.2-1
-MAJOR="2.2"
-STRIP_MASK="*.go"
-
-DOCS=( GUILE-VERSION HACKING README )
-
 PATCHES=( "${FILESDIR}/${P}-gentoo-sandbox.patch" )
+DOCS=( GUILE-VERSION HACKING README )
 
 src_configure() {
 	# see bug #178499
