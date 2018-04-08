@@ -552,7 +552,7 @@ app-editors/gedit 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/gummi 0.6.6-r1: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.0386 8.0.1298: GUI version of the Vim text editor
+app-editors/gvim 8.0.1298: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -587,7 +587,7 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208 4.0.15_p20180117: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.0386 8.0.1298: Vim, an improved vi-style text editor
+app-editors/vim 8.0.1298: Vim, an improved vi-style text editor
 app-editors/vim-core 8.0.0386 8.0.1298: vim and gvim shared files
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r: VI Like Emacs -- yet another full-featured vi clone
