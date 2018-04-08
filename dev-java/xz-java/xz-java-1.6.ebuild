@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ JAVA_PKG_IUSE="doc examples source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Implementation of xz data compression in pure java"
-HOMEPAGE="http://tukaani.org/xz/java.html"
-SRC_URI="http://tukaani.org/xz/${P}.zip"
+HOMEPAGE="https://tukaani.org/xz/java.html"
+SRC_URI="https://tukaani.org/xz/${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
