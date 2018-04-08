@@ -1,0 +1,94 @@
+diff -Nuar a/doc/slime.texi b/doc/slime.texi
+--- a/doc/slime.texi	2017-08-28 13:51:57.000000000 +0200
++++ b/doc/slime.texi	2018-04-08 17:21:16.004697168 +0200
+@@ -1219,7 +1219,8 @@
+ Describe the slot at point.
+ 
+ @kbditem{e, slime-inspector-eval}
+-Evaluate an expression in the context of the inspected object.
++Evaluate an expression in the context of the inspected object.  The
++variable @code{*} will be bound to the inspected object.
+ 
+ @kbditem{v, slime-inspector-toggle-verbose}
+ Toggle between verbose and terse mode. Default is determined by
+@@ -1250,8 +1251,7 @@
+ Store the value under point in the variable `*'.  This can
+ then be used to access the object in the REPL.
+ 
+-@kbditempair{TAB, S-TAB, slime-inspector-next-inspectable-object,
+-slime-inspector-previous-inspectable-object}
++@kbditempair{TAB, S-TAB, slime-inspector-next-inspectable-object, slime-inspector-previous-inspectable-object}
+ 
+ Jump to the next and previous inspectable object respectively.
+ 
+@@ -2016,7 +2016,7 @@
+ On the emacs side you will use something like
+ @example
+ (setq slime-net-coding-system 'utf-8-unix)
+-(slime-connect "127.0.0.1" 4005))
++(slime-connect "localhost" 4005))
+ @end example
+ to connect to this lisp image from the same machine.
+ 
+@@ -2028,7 +2028,7 @@
+ remote machine.
+ 
+ @example
+-ssh -L4005:127.0.0.1:4005 username@@remote.example.com
++ssh -L4005:localhost:4005 username@@remote.example.com
+ @end example
+ 
+ That ssh invocation creates an ssh tunnel between the port 4005 on our
+@@ -2044,9 +2044,9 @@
+ @end example
+ 
+ The @kbd{RET RET} sequence just means that we want to use the default
+-host (@code{127.0.0.1}) and the default port (@code{4005}). Even
++host (@code{localhost}) and the default port (@code{4005}). Even
+ though we're connecting to a remote machine the ssh tunnel fools Emacs
+-into thinking it's actually @code{127.0.0.1}.
++into thinking it's actually @code{localhost}.
+ 
+ @c -----------------------
+ @node Setting up pathname translations
+@@ -2323,8 +2323,7 @@
+ 
+ @table @kbd
+ 
+-@kbditempair{C-<up>, C-<down>,
+-             slime-repl-forward-input, slime-repl-backward-input}
++@kbditempair{C-<up>, C-<down>, slime-repl-forward-input, slime-repl-backward-input}
+ Go to the next/previous history item.
+ 
+ @kbditempair{M-n, M-p, slime-repl-next-input, slime-repl-previous-input}
+@@ -2333,16 +2332,14 @@
+ a row, the second invocation uses the same search pattern (even if the
+ current input has changed).
+ 
+-@kbditempair{M-s, M-r,
+-slime-repl-next-matching-input, slime-repl-previous-matching-input}
++@kbditempair{M-s, M-r, slime-repl-next-matching-input, slime-repl-previous-matching-input}
+ Search forward/reverse through command history with regex
+ 
+ @c @code{slime-repl-@{next,previous@}-input}@*
+ @c @code{slime-repl-@{next,previous@}-matching-input}@*
+ @c @code{comint}-style input history commands.
+ 
+-@kbditempair{C-c C-n, C-c C-p,
+-slime-repl-next-prompt, slime-repl-previous-prompt}
++@kbditempair{C-c C-n, C-c C-p, slime-repl-next-prompt, slime-repl-previous-prompt}
+ Move between the current and previous prompts in the @REPL{} buffer.
+ Pressing RET on a line with old input copies that line to the newest
+ prompt.
+@@ -2655,6 +2652,11 @@
+ If @code{slime-autodoc-use-multiline-p} is set to non-nil,
+ allow long autodoc messages to resize echo area display.
+ 
++@vindex slime-autodoc-mode-string
++@code{slime-autodoc-mode-string} is a string that will be displayed in
++the mode line when autodoc-mode is enabled, or nil, if you prefer no
++indication. You can customize this variable.
++
+ @node ASDF
+ @section ASDF
+ 

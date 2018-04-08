@@ -512,7 +512,7 @@ pkg_postinst() {
 			else
 				if has_version "sys-apps/systemd"; then
 					# Bug 596852
-					ewarn "Failed to update CapabilityBondingSet in '${systemd_unit}'"
+					ewarn "Failed to update CapabilityBoundingSet in '${systemd_unit}'"
 					ewarn "because unit was not found. Please file a bug about this."
 				fi
 			fi
