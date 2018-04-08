@@ -134,7 +134,7 @@ src_prepare() {
 		done
 
 		# gentoo patch (by gienah) to stop it calling git log in the build
-		eapply "${FILESDIR}/${P}-no-git.patch"
+		eapply "${FILESDIR}/${PN}-2.12.4-no-git.patch"
 
 		local SBT_PVR="$(java-config --query=PVR --package=sbt)"
 		sed -e "s@sbt.version=0.13.11@sbt.version=${SBT_PVR}@" \
