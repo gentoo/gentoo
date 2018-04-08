@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils fdo-mime flag-o-matic
+inherit eutils flag-o-matic xdg-utils
 
 MY_P="${PN}libre-${PV#*_p}"
 
@@ -53,11 +53,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_mime_database_update
+	xdg_mimeinfo_database_update
 	has_version app-text/djview || \
 		optfeature "For djviewer or browser plugin" app-text/djview
 }
 
 pkg_postrm() {
-	fdo-mime_mime_database_update
+	xdg_mimeinfo_database_update
 }
