@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1
@@ -16,6 +16,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-libs/libxml2[python,${PYTHON_USEDEP}]')
 	dev-libs/libxslt
 	sys-devel/gettext
 "
