@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 # I don't want gnome2 eclass
-inherit autotools eutils fdo-mime gnome2-utils
+inherit autotools eutils gnome2-utils xdg-utils
 
 DESCRIPTION="Quark is the Anti-GUI Music Player with a cool Docklet!"
 HOMEPAGE="https://hsgg.github.com/quark/"
@@ -54,12 +54,12 @@ pkg_postinst() {
 		gnome2_gconf_install
 		gnome2_schemas_update
 	fi
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	use gnome && gnome2_schemas_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
