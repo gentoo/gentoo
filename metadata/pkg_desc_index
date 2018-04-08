@@ -697,7 +697,7 @@ app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completi
 app-emacs/semi 1.14.6-r2: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.3a: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
-app-emacs/slime 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
+app-emacs/slime 2.15 2.20: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
 app-emacs/stripes 0.2-r1: An Emacs mode that alternates the background color of lines

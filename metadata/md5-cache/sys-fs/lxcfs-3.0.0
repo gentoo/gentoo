@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst preinst prepare unpack
+DEPEND=sys-apps/help2man dev-libs/glib:2 sys-fs/fuse:0 virtual/pkgconfig
+DESCRIPTION=FUSE filesystem for LXC
+EAPI=6
+HOMEPAGE=https://linuxcontainers.org/lxcfs/introduction/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/glib:2 sys-fs/fuse:0
+SLOT=0
+SRC_URI=https://github.com/lxc/lxcfs/archive/lxcfs-3.0.0.tar.gz -> lxcfs-3.0.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b	versionator	ce21313503c41896ebcd7d58b0607e37
+_md5_=0c53d5234d70af537fcbc1d8c1f25c2d
