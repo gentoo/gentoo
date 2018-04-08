@@ -215,5 +215,5 @@ app-emulation/xen-tools ocaml
 media-gfx/imagemagick opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
-# No stable sci-chemistry/avogadro yet but we want kde-4.10 to go stable
->=kde-apps/kalzium-4.10.0 editor
+# Depends on unstable sci-libs/avogadrolibs
+kde-apps/kalzium editor
