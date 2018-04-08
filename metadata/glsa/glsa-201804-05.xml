@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-05">
+  <title>ISC DHCP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ISC DHCP, the worst of
+    which could allow for the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">dhcp</product>
+  <announced>2018-04-08</announced>
+  <revised count="1">2018-04-08</revised>
+  <bug>644708</bug>
+  <bug>649010</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dhcp" auto="yes" arch="*">
+      <unaffected range="ge">4.3.6_p1</unaffected>
+      <vulnerable range="lt">4.3.6_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ISC DHCP is a Dynamic Host Configuration Protocol (DHCP) client/server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ISC DHCP. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary code, cause a Denial of Service
+      condition, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There are no known workarounds at this time for CVE-2018-5732 or
+      CVE-2018-5733.
+    </p>
+    
+    <p>In accordance with upstream documentation, the recommended workaround
+      for CVE-2017-3144 is, “to disallow access to the OMAPI control port
+      from unauthorized clients (in accordance with best practices for server
+      operation).”
+    </p>
+  </workaround>
+  <resolution>
+    <p>All DHCP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dhcp-4.3.6_p1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-3144">CVE-2017-3144</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5732">CVE-2018-5732</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5733">CVE-2018-5733</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-03-13T18:06:24Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-04-08T16:46:04Z">b-man</metadata>
+</glsa>
