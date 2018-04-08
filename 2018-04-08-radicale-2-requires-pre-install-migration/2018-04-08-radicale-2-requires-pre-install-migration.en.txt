@@ -1,0 +1,26 @@
+Title: Radicale 2 requires pre-install migration
+Author: Christopher Head <chead@chead.ca>
+Posted: 2018-04-02
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: <www-apps/radicale-2
+
+Radicale version 2 uses a new storage format and is not able to read
+databases created by version 1. Version 1 releases starting from 1.1.3
+include a --export-storage option which can be used to export their
+databases in a format that Radicale 2 can use; you must do this before
+upgrading to version 2.
+
+If you have kept the Gentoo-default database configuration, this will
+work:
+1. Stop any running instance of Radicale.
+2. Run `radicale --export-storage ~/radicale-exported`.
+3. Run `chown -R radicale: ~/radicale-exported`
+4. Run `mv /var/lib/radicale /var/lib/radicale.old`.
+5. Install Radicale version 2.
+6. Run `mv ~/radicale-exported /var/lib/radicale/collections`.
+
+For more details, or if you are have a more complex configuration,
+please see the migration guide: http://radicale.org/1to2/
+If you do a custom migration, please ensure the database is cleaned out
+of /var/lib/radicale, including the hidden .props file.
