@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 MY_PN=pdfbox
 
 DESCRIPTION="An open source Java library for parsing font files"
-HOMEPAGE="http://pdfbox.apache.org/"
+HOMEPAGE="https://pdfbox.apache.org/"
 SRC_URI="mirror://apache/${MY_PN}/${PV}/${MY_PN}-${PV}-src.zip"
 
 LICENSE="BSD"
