@@ -54,7 +54,7 @@ FLTK_GAMES="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-share.patch
-	"${FILESDIR}"/${PN}-1.3.9999-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
 )
