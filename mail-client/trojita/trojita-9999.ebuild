@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
-inherit cmake-utils fdo-mime gnome2-utils virtualx
+inherit cmake-utils gnome2-utils virtualx xdg-utils
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="A Qt IMAP e-mail client"
@@ -16,7 +16,7 @@ fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-IUSE="+crypt debug +dbus +password test +zlib"
+IUSE="+crypt +dbus debug +password test +zlib"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -73,11 +73,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
