@@ -37,10 +37,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	rm -f configure || die #274361
 	rm -R iniparser-2.17 || die
 }
-
-src_configure() { :; } #274361
 
 src_compile() {
 	tc-export CC
