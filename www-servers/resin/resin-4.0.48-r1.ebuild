@@ -50,7 +50,7 @@ EANT_GENTOO_CLASSPATH="
 "
 
 PATCHES=(
-	"${FILESDIR}"/"${PV}"/build.xml.patch
+	"${FILESDIR}"/${PN}-4.0.48-build.xml.patch
 )
 
 pkg_setup() {
@@ -112,8 +112,8 @@ src_install() {
 	dodoc README "${S}"/conf/*.xml
 
 	einfo "Installing init.d script ..."
-	newinitd "${FILESDIR}/${PV}/resin.init" resin
-	newconfd "${FILESDIR}/${PV}/resin.conf" resin
+	newinitd "${FILESDIR}/${PN}-4.0.48.init" resin
+	newconfd "${FILESDIR}/${PN}-4.0.48.conf" resin
 
 	sed -i -e "s,__RESIN_HOME__,${RESIN_HOME},g" "${D}/etc/init.d/resin" || die
 

@@ -1,5 +1,5 @@
---- build.xml.orig	2015-08-12 23:14:20.302000000 +0000
-+++ build.xml	2015-08-12 23:14:47.909000000 +0000
+--- a/build.xml
++++ b/build.xml
 @@ -12,7 +12,7 @@
    <property name="eclipse.home" value="${user.home}/eclipse"/>
  
