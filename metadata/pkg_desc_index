@@ -508,7 +508,7 @@ app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
-app-doc/jargon 4.4.7 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
+app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.1 4.0.4: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1: the Linkers and Loaders book
@@ -939,7 +939,7 @@ app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/asciinema 1.4.0: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r2 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
-app-misc/away 0.9.5-r1 0.9.5-r2: Terminal locking program with few additional features
+app-misc/away 0.9.5-r2: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
 app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r2 1.3-r3: The advanced PC speaker beeper
@@ -971,7 +971,7 @@ app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r3: An ISO 3166 country code finder
 app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
-app-misc/dailystrips 1.0.28-r2 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
+app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
 app-misc/datovka 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
@@ -1067,7 +1067,7 @@ app-misc/pdfpc 3.1.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
-app-misc/pipeworks 0.4 0.4-r1: A small utility that measures throughput between stdin and stdout
+app-misc/pipeworks 0.4-r1: A small utility that measures throughput between stdin and stdout
 app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activities
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISPs
@@ -1448,7 +1448,7 @@ app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellcheckin
 app-text/stardict 3.0.6-r3: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.7.4-r1: Library for Bible reading software
 app-text/t1utils 1.39: Type 1 Font utilities
-app-text/tabler 2 2-r1: A utility to create text art tables from delimited input
+app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.6: Text Encoding Conversion toolkit
 app-text/tesseract 3.05.01: An OCR Engine, orginally developed at HP, now open source.
