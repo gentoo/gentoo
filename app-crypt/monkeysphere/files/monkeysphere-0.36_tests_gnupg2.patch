@@ -1,6 +1,5 @@
-diff -r c13f4b11061e tests/keytrans
---- a/tests/keytrans	Sun Feb 16 19:24:08 2014 +0100
-+++ b/tests/keytrans	Sun Feb 16 19:27:42 2014 +0100
+--- a/tests/keytrans
++++ b/tests/keytrans
 @@ -131,9 +131,9 @@
  cat >"$TEMPDIR"/expectedout <<EOF
  pub:u:1024:1:$KEYID:$timestamp:::u:::scSC:

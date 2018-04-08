@@ -1,6 +1,5 @@
-diff -r 5f7ee764ec1f src/share/common
---- a/src/share/common	Mon Oct 07 19:22:36 2013 +0200
-+++ b/src/share/common	Mon Oct 07 19:22:58 2013 +0200
+--- a/src/share/common
++++ b/src/share/common
 @@ -863,6 +863,10 @@
  		    ;;
  		('known_hosts')

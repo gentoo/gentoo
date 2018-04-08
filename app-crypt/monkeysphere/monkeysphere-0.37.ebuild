@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,8 +39,8 @@ pkg_setup()
 
 src_prepare()
 {
-	epatch "${FILESDIR}/${P}_default_shell.patch"\
-	       "${FILESDIR}/${P}_hd_od.patch"
+	epatch "${FILESDIR}/${PN}-0.36_default_shell.patch"\
+	       "${FILESDIR}/${PN}-0.36_hd_od.patch"
 
 	sed -i "s#share/doc/monkeysphere#share/doc/${PF}#" Makefile || die
 }

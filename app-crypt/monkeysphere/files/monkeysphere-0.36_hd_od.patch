@@ -1,6 +1,5 @@
-diff -r 6150774ec7f4 tests/keytrans
---- a/tests/keytrans	Sun Feb 16 20:11:02 2014 +0100
-+++ b/tests/keytrans	Sun Feb 16 20:11:40 2014 +0100
+--- a/tests/keytrans
++++ b/tests/keytrans
 @@ -104,8 +104,8 @@
      <(gpg --list-packets < "$TEMPDIR"/converted.secret.key)
  
