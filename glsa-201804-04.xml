@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-04">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2018-04-08</announced>
+  <revised count="1">2018-04-08</revised>
+  <bug>645698</bug>
+  <bug>650056</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.59.0</unaffected>
+      <vulnerable range="lt">7.59.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A command line tool and library for transferring data with URLs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause a Denial of Service condition, obtain
+      sensitive information, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.59.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000005">
+      CVE-2018-1000005
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000007">
+      CVE-2018-1000007
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000120">
+      CVE-2018-1000120
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000121">
+      CVE-2018-1000121
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000122">
+      CVE-2018-1000122
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-08T14:02:46Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-08T14:28:57Z">b-man</metadata>
+</glsa>
