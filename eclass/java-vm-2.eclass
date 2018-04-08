@@ -14,7 +14,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-inherit fdo-mime multilib pax-utils prefix
+inherit multilib pax-utils prefix xdg-utils
 
 EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
 
@@ -86,7 +86,7 @@ java-vm-2_pkg_postinst() {
 		fi
 	fi
 
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 
@@ -112,7 +112,7 @@ java-vm-2_pkg_prerm() {
 # Update mime database.
 
 java-vm-2_pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 
