@@ -504,7 +504,7 @@ app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs L
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.13-r1: Documentation system for most programming languages
 app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
-app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5: The GNU Emacs Lisp Reference Manual
+app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.15: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
