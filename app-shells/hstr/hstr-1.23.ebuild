@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DEPEND="
 	virtual/pkgconfig"
 
 DOCS=( CONFIGURATION.md README.md )
-PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.23-tinfo.patch" )
 
 src_prepare() {
 	default
