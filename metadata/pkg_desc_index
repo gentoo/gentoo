@@ -3122,7 +3122,7 @@ dev-libs/libsass 3.4.7: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.1: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
-dev-libs/libsigsegv 2.11: Library for handling page faults in user mode
+dev-libs/libsigsegv 2.11 2.12: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.11 1.0.15: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with a cleaner API
