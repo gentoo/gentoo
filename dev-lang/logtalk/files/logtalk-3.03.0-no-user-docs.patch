@@ -1,5 +1,5 @@
---- logtalk-3.03.0.orig/scripts/logtalk_user_setup.sh	2016-02-16 22:09:02.000000000 +0100
-+++ logtalk-3.03.0/scripts/logtalk_user_setup.sh	2016-02-20 09:49:34.000000000 +0100
+--- a/scripts/logtalk_user_setup.sh
++++ b/scripts/logtalk_user_setup.sh
 @@ -110,14 +110,12 @@
  
  echo "Copying Logtalk files and directories..."
