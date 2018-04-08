@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,8 +12,8 @@ MY_PV="${PV/_p/-}"
 MY_P="${MY_PN}-${MY_PV}.src"
 
 DESCRIPTION="JDBC Driver for PostgreSQL"
-SRC_URI="http://jdbc.postgresql.org/download/${MY_P}.tar.gz"
-HOMEPAGE="http://jdbc.postgresql.org/"
+SRC_URI="https://jdbc.postgresql.org/download/${MY_P}.tar.gz"
+HOMEPAGE="https://jdbc.postgresql.org/"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
