@@ -8,17 +8,21 @@ inherit cmake-utils
 
 DESCRIPTION="Advanced molecule editor and visualizer 2 - libraries"
 HOMEPAGE="https://www.openchemistry.org/"
-SRC_URI="https://github.com/OpenChemistry/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OpenChemistry/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
+	vtk? ( https://github.com/psavery/genXrdPattern/releases/download/1.0-static/linux64-genXrdPattern )"
 
 SLOT="0"
 LICENSE="BSD GPL-2+"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="archive doc hdf5 qt5 static-plugins test vtk"
 
+REQUIRED_USE="vtk? ( qt5 )"
+
 # TODO: Not yet packaged:
 # sci-libs/libmsym (https://github.com/mcodev31/libmsym)
 # sci-libs/spglib (https://atztogo.github.io/spglib/)
 RDEPEND="
+	dev-libs/jsoncpp:=
 	>=sci-chemistry/molequeue-0.7
 	archive? ( app-arch/libarchive )
 	hdf5? ( sci-libs/hdf5:= )
@@ -29,8 +33,9 @@ RDEPEND="
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 		media-libs/glew:0=
+		virtual/opengl
 	)
-	vtk? ( sci-libs/vtk )
+	vtk? ( sci-libs/vtk[qt5] )
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
@@ -41,7 +46,16 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.2-6464.patch
 	"${FILESDIR}/"${P}-underlinking.patch
+	"${FILESDIR}/"${P}-unbundle-jsoncpp.patch
+	"${FILESDIR}/"${P}-bundled-genxrdpattern.patch
 )
+
+src_unpack() {
+	unpack ${P}.tar.gz
+	if use vtk; then
+		cp "${DISTDIR}"/linux64-genXrdPattern "${WORKDIR}/genXrdPattern" || die
+	fi
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -60,12 +74,9 @@ src_configure() {
 		-DENABLE_TESTING=$(usex test)
 		-DUSE_VTK=$(usex vtk)
 	)
+	use vtk && mycmakeargs+=(
+		-DBUNDLED_GENXRDPATTERN="${WORKDIR}/genXrdPattern"
+	)
+
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	# TODO: bundles jsoncpp
-	rm "${ED%/}"/usr/lib64/libjsoncpp.a || die
 }
