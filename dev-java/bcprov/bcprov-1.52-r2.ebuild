@@ -11,7 +11,7 @@ MY_P="${PN}-jdk15on-${PV/./}"
 
 DESCRIPTION="Java cryptography APIs"
 HOMEPAGE="http://www.bouncycastle.org/java.html"
-SRC_URI="http://www.bouncycastle.org/download/${MY_P}.tar.gz"
+SRC_URI="http://polydistortion.net/bc/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
