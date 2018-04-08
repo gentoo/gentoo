@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="Graphical CD image editor for reading, modifying and writing ISO images"
 HOMEPAGE="http://littlesvr.ca/isomaster"
@@ -33,8 +33,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	rm -R iniparser-4.1 || die
-	eapply_user
 }
 
 src_configure() { :; } #274361
