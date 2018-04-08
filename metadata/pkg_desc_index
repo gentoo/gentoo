@@ -6888,7 +6888,7 @@ lxde-base/lxsession 0.5.2: LXDE session manager
 lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.8: LXDE Task manager
-lxde-base/lxterminal 0.1.11 0.3.1: Lightweight vte-based tabbed terminal emulator for LXDE
+lxde-base/lxterminal 0.3.1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.0.2: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.11.0-r1: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.3.2: A Qt-based interface to system statistics
@@ -8239,7 +8239,7 @@ net-analyzer/cryptcat 1.2.1-r1 1.2.1-r2: netcat clone extended with twofish encr
 net-analyzer/cutter 1.03-r1: TCP/IP Connection cutting on Linux Firewalls and Routers
 net-analyzer/darkstat 3.0.719: Network traffic analyzer with cute web interface
 net-analyzer/dhcpdump 1.8: DHCP Packet Analyzer/tcpdump postprocessor
-net-analyzer/dnstracer 1.9-r1 1.9-r2: Determines where a given nameserver gets its information from
+net-analyzer/dnstracer 1.9-r2: Determines where a given nameserver gets its information from
 net-analyzer/driftnet 0.1.6_p20090401-r1: A program which listens to network traffic and picks out images from TCP streams it observes
 net-analyzer/dsniff 2.4_beta1-r4: A collection of tools for network auditing and penetration testing
 net-analyzer/echoping 6.0.2_p434-r2: Small program to test performances of remote servers
