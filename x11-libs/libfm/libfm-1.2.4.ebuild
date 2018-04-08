@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools fdo-mime multilib vala
+inherit autotools multilib vala xdg-utils
 
 MY_PV=${PV/_/}
 MY_P="${PN}-${MY_PV}"
@@ -121,9 +121,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_mime_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_mime_database_update
+	xdg_mimeinfo_database_update
 }
