@@ -1670,7 +1670,6 @@ dev-php/pecl-memcached:json - Enable support for json serialization
 dev-php/pecl-redis:igbinary - Enables igbinary serialisation support
 dev-python/Kivy:camera - Install libraries needed to support camera
 dev-python/Kivy:garden - Install garden tool to manage user maintained widgets
-dev-python/PyFoam:extras - Enable optional dependencies
 dev-python/PyQt4:X - Build bindings for the QtGui module
 dev-python/PyQt4:compat - Install the deprecated pyqtconfig module for backward compatibility
 dev-python/PyQt4:dbus - Build bindings for the QtDBus module

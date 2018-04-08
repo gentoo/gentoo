@@ -4528,7 +4528,6 @@ dev-python/Flask-KVSession 0.6.1: Transparent server-side session support for fl
 dev-python/Kivy 1.9.1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/PyContracts 1.7.9: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.5.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.28: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt4 4.12.1: Python bindings for the Qt framework
