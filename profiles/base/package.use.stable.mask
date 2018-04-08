@@ -63,10 +63,6 @@ sci-libs/gdal mdb
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
 
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Aug 2017)
-# Not operational, bug #619534
->=kde-apps/cantor-17.04.3 R
-
 # Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
@@ -215,5 +211,5 @@ app-emulation/xen-tools ocaml
 media-gfx/imagemagick opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
-# No stable sci-chemistry/avogadro yet but we want kde-4.10 to go stable
->=kde-apps/kalzium-4.10.0 editor
+# Depends on unstable sci-libs/avogadrolibs
+kde-apps/kalzium editor
