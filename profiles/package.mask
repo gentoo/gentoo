@@ -595,11 +595,6 @@ net-p2p/tribler
 # Dead upstream, no revdeps left. Bug #639358
 app-i18n/libguess
 
-# José María Alonso <nimiux@gentoo.org> (09 Mar 2018)
-# Obsolete package
-# Masked for removal in 30 days. Bug #646742
-dev-lisp/common-lisp-controller
-
 # Brian Evans <grknight@gentoo.org> (06 Mar 2018)
 # MariaDB MaxScale 1.x depends on the deprecated libmysqld
 # Newer versions bundle software that require git access
