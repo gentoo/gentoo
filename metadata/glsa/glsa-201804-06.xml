@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-06">
+  <title>mailx: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were discovered in mailx, the worst of
+    which may allow a remote attacker to execute arbitrary commands.
+  </synopsis>
+  <product type="ebuild">mailx</product>
+  <announced>2018-04-08</announced>
+  <revised count="1">2018-04-08</revised>
+  <bug>533208</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/mailx" auto="yes" arch="*">
+      <unaffected range="ge">8.1.2.20160123</unaffected>
+      <vulnerable range="lt">8.1.2.20160123</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A utility program for sending and receiving mail, also known as a Mail
+      User Agent program.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in mailx. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary commands.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mailx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/mailx-8.1.2.20160123"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2004-2771">CVE-2004-2771</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2014-7844">CVE-2014-7844</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-08T17:41:56Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-04-08T23:25:59Z">b-man</metadata>
+</glsa>

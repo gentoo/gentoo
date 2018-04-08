@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-07">
+  <title>libvirt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in libvirt, the worst
+    of which may result in the execution of arbitrary commands.
+  </synopsis>
+  <product type="ebuild">libvirt</product>
+  <announced>2018-04-08</announced>
+  <revised count="1">2018-04-08</revised>
+  <bug>647338</bug>
+  <bug>650018</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/libvirt" auto="yes" arch="*">
+      <unaffected range="ge">4.1.0</unaffected>
+      <vulnerable range="lt">4.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libvirt is a C toolkit for manipulating virtual machines.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libvirt. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local privileged attacker could execute arbitrary commands or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libvirt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/libvirt-4.1.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5748">CVE-2018-5748</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6764">CVE-2018-6764</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-08T17:45:31Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-04-08T23:28:32Z">b-man</metadata>
+</glsa>

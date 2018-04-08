@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-09">
+  <title>SPICE VDAgent: Arbitrary command injection</title>
+  <synopsis>A vulnerability in SPICE VDAgent could allow local attackers to
+    execute arbitrary commands.
+  </synopsis>
+  <product type="ebuild">spice,vdagent</product>
+  <announced>2018-04-08</announced>
+  <revised count="1">2018-04-08</revised>
+  <bug>650020</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/spice-vdagent" auto="yes" arch="*">
+      <unaffected range="ge">0.17.0_p20180319</unaffected>
+      <vulnerable range="lt">0.17.0_p20180319</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Provides a complete open source solution for remote access to virtual
+      machines in a seamless way so you can play videos, record audio, share
+      USB devices and share folders without complications.
+    </p>
+  </background>
+  <description>
+    <p>SPICE VDAgent does not properly escape save directory before passing to
+      shell.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could execute arbitrary commands.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SPICE VDAgent users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/spice-vdagent-0.17.0_p20180319"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15108">CVE-2017-15108</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-08T17:31:09Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-08T23:32:55Z">b-man</metadata>
+</glsa>
