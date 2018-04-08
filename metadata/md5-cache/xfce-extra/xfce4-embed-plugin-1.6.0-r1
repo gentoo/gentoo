@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.10:= dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=A plug-in for embedding arbitrary application windows into the Xfce panel
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-embed-plugin
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2
+RDEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11:= >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.10:=
+SLOT=0
+SRC_URI=mirror://xfce/src/panel-plugins/xfce4-embed-plugin/1.6/xfce4-embed-plugin-1.6.0.tar.bz2
+_md5_=e2d6198e04e8b8663381d8d4240c0b72
