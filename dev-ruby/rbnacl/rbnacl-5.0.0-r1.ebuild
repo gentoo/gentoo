@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/cryptosphere/rbnacl"
 
 LICENSE="MIT"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND+=" dev-libs/libsodium"
