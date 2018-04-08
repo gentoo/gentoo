@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 JAVA_PKG_IUSE="doc source"
@@ -9,7 +9,7 @@ MY_PN=${PN##*-}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Ivy is a free java based dependency manager"
-HOMEPAGE="http://jayasoft.org/ivy"
+HOMEPAGE="https://ant.apache.org/ivy/"
 SRC_URI="http://jayasoft.org/downloads/ivy/1.3.1/${MY_P}-src.zip"
 
 LICENSE="BSD"

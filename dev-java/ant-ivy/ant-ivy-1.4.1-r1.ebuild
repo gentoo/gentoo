@@ -17,7 +17,7 @@ MY_PN="${PN##*-}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Ivy is a free java based dependency manager"
-HOMEPAGE="http://ant.apache.org/ivy"
+HOMEPAGE="https://ant.apache.org/ivy/"
 SRC_URI="http://www.jaya.free.fr/downloads/ivy/${PV}/${MY_P}-src.zip"
 
 LICENSE="Apache-2.0"
