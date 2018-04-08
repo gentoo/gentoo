@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils fdo-mime
+inherit eutils xdg-utils
 
 DESCRIPTION="Open source object-oriented logic programming language"
 HOMEPAGE="http://logtalk.org"
@@ -100,7 +100,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	ewarn "The following integration scripts are installed"
 	ewarn "for running logtalk with selected Prolog compilers:"
@@ -126,5 +126,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
