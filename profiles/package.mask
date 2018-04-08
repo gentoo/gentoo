@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason Zaman <perfinion@gentoo.org> (08 Apr 2018)
+# Dead upstream, for an old version of Xfce
+# Masked for removal in 30 days.
+xfce-extra/xfce-theme-manager
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Apr 2018)
 # Dead upstream, depends on dead Qt4.
 # Masked for removal in 30 days. Bugs #644478
