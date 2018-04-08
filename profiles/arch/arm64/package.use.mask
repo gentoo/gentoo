@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (08 Apr 2018)
+# Tests fail for bundled luajit, USE=luajit is globally
+# masked too (no-one has tested it yet).
+app-text/texlive-core luajittex
+dev-texlive/texlive-basic luajittex
+
 # Michał Górny <mgorny@gentoo.org> (03 Apr 2018)
 # Requires unported sys-libs/netbsd-csu.
 sys-devel/clang-runtime crt
