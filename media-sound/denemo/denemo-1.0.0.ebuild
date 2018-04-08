@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils fdo-mime
+inherit eutils xdg-utils
 
 DESCRIPTION="A music notation editor"
 HOMEPAGE="http://www.denemo.org/"
@@ -60,5 +60,5 @@ src_configure() {
 		--enable-x11
 }
 
-pkg_postinst() { fdo-mime_desktop_database_update; }
-pkg_postrm() { fdo-mime_desktop_database_update; }
+pkg_postinst() { xdg_desktop_database_update; }
+pkg_postrm() { xdg_desktop_database_update; }
