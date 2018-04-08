@@ -41,3 +41,5 @@ RDEPEND="${DEPEND}
 
 # requires running kde environment
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-remote-dir-selection.patch" )
