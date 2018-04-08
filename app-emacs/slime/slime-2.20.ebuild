@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit elisp eutils
+inherit elisp
 
 DESCRIPTION="SLIME, the Superior Lisp Interaction Mode (Extended)"
 HOMEPAGE="http://common-lisp.net/project/slime/"
@@ -25,22 +25,26 @@ CLPACKAGE=swank
 CLSYSTEMS=swank
 SITEFILE=70${PN}-gentoo.el
 
+PATCHES=(
+	# Should be fixed in >=app-emacs/slime-2.20
+	"${FILESDIR}/${PN}-2.20-fix-doc-build.patch"
+)
+
 src_prepare() {
+	default
 	# Remove xref.lisp (which is non-free) unless USE flag is set
 	use xref || rm -f xref.lisp
-	eapply_user
 }
 
 src_compile() {
 	elisp-compile *.el || die
 	BYTECOMPFLAGS="${BYTECOMPFLAGS} -L contrib -l slime" \
 		elisp-compile contrib/*.el lib/*.el || die
-	emake -j1 -C doc slime.info || die "Cannot build info docs"
 
-	#if use doc; then
-	#	VARTEXFONTS="${T}"/fonts \
-	#		emake -j1 -C doc slime.pdf || die "emake doc failed"
-	#fi
+	if use doc ; then
+		VARTEXFONTS="${T}"/fonts \
+			emake -C doc all
+	fi
 }
 
 src_install() {
