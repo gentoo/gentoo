@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	net-libs/libnetfilter_queue
 	net-libs/libnfnetlink
 	dbus? ( sys-apps/dbus )
-	qt5? ( sys-auth/polkit-qt[qt5(+)]
+	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
