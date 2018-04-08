@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-08">
+  <title>QEMU: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in QEMU, the worst of
+    which may allow an attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>2018-04-08</announced>
+  <revised count="1">2018-04-08</revised>
+  <bug>629348</bug>
+  <bug>638506</bug>
+  <bug>643432</bug>
+  <bug>646814</bug>
+  <bug>649616</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">2.11.1-r1</unaffected>
+      <vulnerable range="lt">2.11.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in QEMU. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary code, cause a Denial of Service
+      condition, or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-2.11.1-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13672">CVE-2017-13672</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15124">CVE-2017-15124</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16845">CVE-2017-16845</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17381">CVE-2017-17381</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18030">CVE-2017-18030</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18043">CVE-2017-18043</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5715">CVE-2017-5715</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5683">CVE-2018-5683</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5748">CVE-2018-5748</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7550">CVE-2018-7550</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-08T17:31:53Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-04-08T23:30:08Z">b-man</metadata>
+</glsa>
