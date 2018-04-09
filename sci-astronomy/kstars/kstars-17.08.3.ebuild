@@ -7,9 +7,13 @@ KDE_HANDBOOK="forceoptional"
 PYTHON_COMPAT=( python2_7 )
 inherit kde5 python-single-r1
 
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/applications/${PV}/src/${P}.tar.xz"
+	KEYWORDS="amd64 x86"
+fi
+
 DESCRIPTION="Desktop Planetarium"
 HOMEPAGE="https://www.kde.org/applications/education/kstars https://edu.kde.org/kstars"
-KEYWORDS="amd64 x86"
 IUSE="fits indi raw wcs xplanet"
 
 REQUIRED_USE="indi? ( fits ) ${PYTHON_REQUIRED_USE}"
