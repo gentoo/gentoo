@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="GNU VCDimager"
 HOMEPAGE="https://www.gnu.org/software/vcdimager/"
@@ -20,10 +20,12 @@ RDEPEND="
 	xml? ( dev-libs/libxml2:2 )
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 
 DOCS=( AUTHORS BUGS ChangeLog FAQ HACKING NEWS README THANKS TODO )
+
+PATCHES=("${FILESDIR}/${P}-pkg-config.patch")
 
 src_prepare() {
 	default
@@ -32,10 +34,12 @@ src_prepare() {
 	sed -i \
 		-e 's/check_PROGRAMS =/check_PROGRAMS +=/' \
 		-e 's/noinst_PROGRAMS =/check_PROGRAMS =/' \
-		test/Makefile.in || die
+		test/Makefile.am || die
 	sed -i \
 		-e 's/noinst_PROGRAMS =/check_PROGRAMS =/' \
-		example/Makefile.in || die
+		example/Makefile.am || die
+
+	eautoreconf
 }
 
 multilib_src_configure() {
