@@ -5,7 +5,7 @@ EAPI=5
 inherit bsdmk
 
 DESCRIPTION="pidof(1) utility for *BSD"
-HOMEPAGE="http://people.freebsd.org/~novel/pidof.html"
+HOMEPAGE="https://people.freebsd.org/~novel/pidof.html"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
