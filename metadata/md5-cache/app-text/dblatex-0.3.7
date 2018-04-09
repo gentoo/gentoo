@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=app-text/texlive dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended || ( dev-texlive/texlive-mathscience dev-texlive/texlive-mathextra ) dev-texlive/texlive-pictures dev-texlive/texlive-xetex dev-libs/libxslt app-text/docbook-xml-dtd:4.5 gnome-base/librsvg python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=app-text/texlive dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience dev-texlive/texlive-pictures dev-texlive/texlive-xetex dev-libs/libxslt app-text/docbook-xml-dtd:4.5 gnome-base/librsvg python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Transform DocBook using TeX macros
 EAPI=5
 HOMEPAGE=http://dblatex.sourceforge.net/
 IUSE=python_targets_python2_7
 KEYWORDS=amd64 arm x86
 LICENSE=GPL-2
-RDEPEND=app-text/texlive dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended || ( dev-texlive/texlive-mathscience dev-texlive/texlive-mathextra ) dev-texlive/texlive-pictures dev-texlive/texlive-xetex dev-libs/libxslt app-text/docbook-xml-dtd:4.5 gnome-base/librsvg python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=app-text/texlive dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience dev-texlive/texlive-pictures dev-texlive/texlive-xetex dev-libs/libxslt app-text/docbook-xml-dtd:4.5 gnome-base/librsvg python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://sourceforge/dblatex/dblatex-0.3.7.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	distutils-r1	c25bafd988acc946bfa457eac09621d8	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=1da9ce58e77e950957501c27e63ecd52
+_md5_=c87ccdf82f2c4a9a0efa18f10b769639
