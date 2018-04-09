@@ -1,5 +1,5 @@
---- Makefile-libbz2_so
-+++ Makefile-libbz2_so
+--- a/Makefile-libbz2_so
++++ b/Makefile-libbz2_so
 @@ -35,8 +35,8 @@
        bzlib.o
  
