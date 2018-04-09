@@ -17,6 +17,6 @@ IUSE="latex"
 
 DEPEND=""
 RDEPEND=">=dev-python/pyx-0.14[${PYTHON_USEDEP}]
-	latex? ( || ( dev-texlive/texlive-mathscience dev-texlive/texlive-science ) )"
+	latex? ( dev-texlive/texlive-mathscience )"
 
 PATCHES=( "${FILESDIR}"/${P}.patch )
