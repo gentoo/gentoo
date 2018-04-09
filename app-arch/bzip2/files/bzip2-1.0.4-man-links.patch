@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/172986
 
---- bzip2-1.0.4/Makefile
-+++ bzip2-1.0.4/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -85,4 +85,7 @@
  	cp -f bzip2.1 $(PREFIX)/share/man/man1
  	chmod a+r $(PREFIX)/share/man/man1/bzip2.1
