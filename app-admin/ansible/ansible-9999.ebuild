@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit distutils-r1 git-r3 eutils
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
-HOMEPAGE="http://ansible.com/"
+HOMEPAGE="https://ansible.com/"
 EGIT_REPO_URI="https://github.com/ansible/ansible.git"
 EGIT_BRANCH="devel"
 
