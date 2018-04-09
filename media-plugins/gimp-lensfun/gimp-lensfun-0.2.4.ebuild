@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,8 +7,8 @@ inherit eutils toolchain-funcs
 
 MY_PN="GIMP-Lensfun"
 
-DESCRIPTION="Lensfun plugin for GIMP"
-HOMEPAGE="http://seebk.github.io/GIMP-Lensfun/"
+DESCRIPTION="A Gimp plugin to correct lens distortions"
+HOMEPAGE="https://seebk.github.io/GIMP-Lensfun/"
 SRC_URI="https://github.com/seebk/GIMP-Lensfun/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
