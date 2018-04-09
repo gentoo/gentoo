@@ -1324,7 +1324,7 @@ src_strip() {
 	# if user has stripping enabled and does not have split debug turned on,
 	# then leave the debugging sections in libpthread.
 	if ! has nostrip ${FEATURES} && ! has splitdebug ${FEATURES} ; then
-		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"/*/libpthread-*.so
+		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"$(alt_prefix)/*/libpthread-*.so
 	fi
 }
 
