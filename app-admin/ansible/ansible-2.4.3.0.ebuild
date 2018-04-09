@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit distutils-r1 eutils versionator
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
-HOMEPAGE="http://ansible.com/"
-SRC_URI="http://releases.ansible.com/${PN}/${P}.tar.gz"
+HOMEPAGE="https://ansible.com/"
+SRC_URI="https://releases.ansible.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
