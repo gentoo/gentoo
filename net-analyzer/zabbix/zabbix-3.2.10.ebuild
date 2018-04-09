@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
@@ -169,7 +169,7 @@ src_install() {
 	if use server; then
 		insinto /etc/zabbix
 		doins "${FILESDIR}/3.0"/zabbix_server.conf
-		doinitd "${FILESDIR}/3.0"/init.d/zabbix-server
+		doinitd "${FILESDIR}"/${PN}-2.2.16-server.init zabbix-server
 		dosbin src/zabbix_server/zabbix_server
 		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
@@ -180,10 +180,13 @@ src_install() {
 	fi
 
 	if use proxy; then
-		doinitd "${FILESDIR}/3.0"/init.d/zabbix-proxy
-		dosbin src/zabbix_proxy/zabbix_proxy
+		doinitd \
+			"${FILESDIR}"/${PN}-2.2.16-proxy.init zabbix-proxy
+		dosbin \
+			src/zabbix_proxy/zabbix_proxy
 		insinto /etc/zabbix
-		doins "${FILESDIR}/3.0"/zabbix_proxy.conf
+		doins \
+			"${FILESDIR}/3.0"/zabbix_proxy.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/
 		systemd_dounit "${FILESDIR}/zabbix-proxy.service"
@@ -192,14 +195,18 @@ src_install() {
 
 	if use agent; then
 		insinto /etc/zabbix
-		doins "${FILESDIR}/3.0"/zabbix_agentd.conf
-		doinitd "${FILESDIR}/3.0"/init.d/zabbix-agentd
-		dosbin src/zabbix_agent/zabbix_agentd
+		doins \
+			"${FILESDIR}/3.0"/zabbix_agentd.conf
+		doinitd "${FILESDIR}/"${PN}-2.2.16-agentd.init zabbix-agentd
+		dosbin \
+			src/zabbix_agent/zabbix_agentd
 		dobin \
 			src/zabbix_sender/zabbix_sender \
 			src/zabbix_get/zabbix_get
-		fowners zabbix:zabbix /etc/zabbix/zabbix_agentd.conf
-		fperms 0640 /etc/zabbix/zabbix_agentd.conf
+		fowners zabbix:zabbix \
+			/etc/zabbix/zabbix_agentd.conf
+		fperms 0640 \
+			/etc/zabbix/zabbix_agentd.conf
 		systemd_dounit "${FILESDIR}/zabbix-agentd.service"
 		systemd_newtmpfilesd "${FILESDIR}/zabbix-agentd.tmpfiles" zabbix-agentd.conf
 	fi
@@ -253,9 +260,9 @@ src_install() {
 			src/zabbix_java/lib/logback.xml \
 			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
 			src/zabbix_java/lib/slf4j-api-1.6.1.jar
+		doinitd "${FILESDIR}"/${PN}-3.2.9-jmx-proxy.init zabbix-jmx-proxy
+		doconfd "${FILESDIR}"/${PN}-3.2.9-jmx-proxy.conf zabbix-jmx-proxy
 		fowners -R zabbix:zabbix /${ZABBIXJAVA_BASE}
-		doinitd "${FILESDIR}"/3.0/init.d/zabbix-jmx-proxy
-		doconfd "${FILESDIR}"/3.0/conf.d/zabbix-jmx-proxy
 	fi
 }
 
@@ -268,7 +275,7 @@ pkg_postinst() {
 
 		zabbix_homedir=$(egethome zabbix)
 		if [ -n "${zabbix_homedir}" ] && \
-		   [ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
+			[ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
 			ewarn
 			ewarn "The user 'zabbix' should have his homedir changed"
 			ewarn "to /var/lib/zabbix/home if you want to use"
@@ -299,10 +306,10 @@ pkg_postinst() {
 	elog
 	elog "You may need to add these lines to /etc/services:"
 	elog
-	elog "zabbix-agent     10050/tcp Zabbix Agent"
-	elog "zabbix-agent     10050/udp Zabbix Agent"
-	elog "zabbix-trapper   10051/tcp Zabbix Trapper"
-	elog "zabbix-trapper   10051/udp Zabbix Trapper"
+	elog "zabbix-agent		10050/tcp Zabbix Agent"
+	elog "zabbix-agent		10050/udp Zabbix Agent"
+	elog "zabbix-trapper	10051/tcp Zabbix Trapper"
+	elog "zabbix-trapper	10051/udp Zabbix Trapper"
 	elog
 
 	if use server || use proxy ; then

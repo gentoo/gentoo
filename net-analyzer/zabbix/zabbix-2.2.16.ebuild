@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
@@ -167,7 +167,7 @@ src_install() {
 	if use server; then
 		insinto /etc/zabbix
 		doins "${FILESDIR}/2.2"/zabbix_server.conf
-		doinitd "${FILESDIR}/2.2"/init.d/zabbix-server
+		doinitd "${FILESDIR}"/${PN}-2.2.16-server.init zabbix-server
 		dosbin src/zabbix_server/zabbix_server
 		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
@@ -179,7 +179,7 @@ src_install() {
 
 	if use proxy; then
 		doinitd \
-			"${FILESDIR}/2.2"/init.d/zabbix-proxy
+			"${FILESDIR}"/${PN}-2.2.16-proxy.init zabbix-proxy
 		dosbin \
 			src/zabbix_proxy/zabbix_proxy
 		insinto /etc/zabbix
@@ -194,9 +194,9 @@ src_install() {
 	if use agent; then
 		insinto /etc/zabbix
 		doins \
-			"${FILESDIR}/2.2"/zabbix_agent.conf \
+			"${FILESDIR}"/zabbix_agent.conf \
 			"${FILESDIR}/2.2"/zabbix_agentd.conf
-		doinitd "${FILESDIR}/2.2"/init.d/zabbix-agentd
+		doinitd "${FILESDIR}/"${PN}-2.2.16-agentd.init zabbix-agentd
 		dosbin \
 			src/zabbix_agent/zabbix_agent \
 			src/zabbix_agent/zabbix_agentd
@@ -248,27 +248,27 @@ src_install() {
 	fi
 
 	if use java; then
-	   dodir \
-	   	/${ZABBIXJAVA_BASE} \
-		/${ZABBIXJAVA_BASE}/bin \
-		/${ZABBIXJAVA_BASE}/lib
-	   keepdir /${ZABBIXJAVA_BASE}
-	   exeinto /${ZABBIXJAVA_BASE}/bin
-	   doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
-	   exeinto /${ZABBIXJAVA_BASE}/lib
-	   doexe \
-	   	src/zabbix_java/lib/logback-classic-0.9.27.jar \
-		src/zabbix_java/lib/logback-console.xml \
-		src/zabbix_java/lib/logback-core-0.9.27.jar \
-		src/zabbix_java/lib/logback.xml \
-		src/zabbix_java/lib/android-json-4.3_r3.1.jar \
-		src/zabbix_java/lib/slf4j-api-1.6.1.jar
-	   exeinto /${ZABBIXJAVA_BASE}/
-	   doexe \
-	   	src/zabbix_java/settings.sh \
-		src/zabbix_java/startup.sh \
-		src/zabbix_java/shutdown.sh
-	   fowners -R zabbix:zabbix /${ZABBIXJAVA_BASE}
+		dodir \
+			/${ZABBIXJAVA_BASE} \
+			/${ZABBIXJAVA_BASE}/bin \
+			/${ZABBIXJAVA_BASE}/lib
+		keepdir /${ZABBIXJAVA_BASE}
+		exeinto /${ZABBIXJAVA_BASE}/bin
+		doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
+		exeinto /${ZABBIXJAVA_BASE}/lib
+		doexe \
+			src/zabbix_java/lib/logback-classic-0.9.27.jar \
+			src/zabbix_java/lib/logback-console.xml \
+			src/zabbix_java/lib/logback-core-0.9.27.jar \
+			src/zabbix_java/lib/logback.xml \
+			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
+			src/zabbix_java/lib/slf4j-api-1.6.1.jar
+		exeinto /${ZABBIXJAVA_BASE}/
+		doexe \
+			src/zabbix_java/settings.sh \
+			src/zabbix_java/startup.sh \
+			src/zabbix_java/shutdown.sh
+		fowners -R zabbix:zabbix /${ZABBIXJAVA_BASE}
 	fi
 }
 
@@ -281,7 +281,7 @@ pkg_postinst() {
 
 		zabbix_homedir=$(egethome zabbix)
 		if [ -n "${zabbix_homedir}" ] && \
-		   [ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
+			[ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
 			ewarn
 			ewarn "The user 'zabbix' should have his homedir changed"
 			ewarn "to /var/lib/zabbix/home if you want to use"
@@ -312,10 +312,10 @@ pkg_postinst() {
 	elog
 	elog "You may need to add these lines to /etc/services:"
 	elog
-	elog "zabbix-agent     10050/tcp Zabbix Agent"
-	elog "zabbix-agent     10050/udp Zabbix Agent"
-	elog "zabbix-trapper   10051/tcp Zabbix Trapper"
-	elog "zabbix-trapper   10051/udp Zabbix Trapper"
+	elog "zabbix-agent		10050/tcp Zabbix Agent"
+	elog "zabbix-agent		10050/udp Zabbix Agent"
+	elog "zabbix-trapper	10051/tcp Zabbix Trapper"
+	elog "zabbix-trapper	10051/udp Zabbix Trapper"
 	elog
 
 	if use server || use proxy ; then
