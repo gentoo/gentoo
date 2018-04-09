@@ -7,6 +7,7 @@
 
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
+app-editors/emacs mailutils
 app-editors/emacs-vcs mailutils
 
 # Davide Pesavento <pesa@gentoo.org> (19 Dec 2016)

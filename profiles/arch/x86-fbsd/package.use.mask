@@ -23,6 +23,7 @@ net-misc/wget idn uuid
 
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
+app-editors/emacs mailutils
 app-editors/emacs-vcs mailutils
 
 # Thomas Deutschmann <whissi@gentoo.org> (09 Jun 2017)
