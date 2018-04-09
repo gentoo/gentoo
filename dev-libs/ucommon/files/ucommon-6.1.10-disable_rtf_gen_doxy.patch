@@ -1,5 +1,5 @@
---- Doxyfile.orig	2014-06-26 23:56:45.724303475 +0300
-+++ Doxyfile	2014-06-26 23:57:12.875021734 +0300
+--- a/Doxyfile
++++ b/Doxyfile
 @@ -40,7 +40,7 @@
  GENERATE_HTMLHELP = YES
  GENERATE_TREEVIEW = NO
