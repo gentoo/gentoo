@@ -6,6 +6,7 @@
     <name>Bernard Cafarelli</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">jflesch/libpillowfight</remote-id>
+    <remote-id type="pypi">pypillowfight</remote-id>
+    <remote-id type="github">openpaperwork/libpillowfight</remote-id>
   </upstream>
 </pkgmetadata>
