@@ -1454,7 +1454,7 @@ app-text/teckit 2.5.6: Text Encoding Conversion toolkit
 app-text/tesseract 3.05.01: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2017: A complete TeX distribution
-app-text/texlive-core 2016-r5 2016-r6 2017-r3: A complete TeX distribution
+app-text/texlive-core 2016-r6 2017-r3: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
@@ -6656,7 +6656,6 @@ kde-apps/ksmtp 17.12.3: Job-based library to send email through an SMTP server
 kde-apps/ksnakeduel 17.12.3: KDE Tron game
 kde-apps/kspaceduel 17.12.3: Space Game by KDE
 kde-apps/ksquares 17.12.3: KDE clone of the game squares
-kde-apps/kstars 17.08.3: Desktop Planetarium
 kde-apps/ksudoku 17.12.3: Logic-based symbol placement puzzle by KDE
 kde-apps/ksystemlog 17.12.3: System log viewer by KDE
 kde-apps/kteatime 17.12.3: KDE timer for making a fine cup of tea
@@ -9099,6 +9098,7 @@ perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand an
 perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/erfa 1.2.0: Essential Routines for Fundamental Astronomy
+sci-astronomy/kstars 17.08.3: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/stellarium 0.14.3: 3D photo-realistic skies in real time
