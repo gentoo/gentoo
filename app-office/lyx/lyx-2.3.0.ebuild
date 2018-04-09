@@ -49,8 +49,8 @@ RDEPEND="${PYTHON_DEPS}
 		dev-tex/dvipost
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-mathscience
 		dev-texlive/texlive-pictures
-		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
 		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )
 		|| (
 			dev-tex/hevea
