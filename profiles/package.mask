@@ -553,11 +553,6 @@ sys-power/phc-k8
 sys-fs/gfs2-utils
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Not buildable for a long time (#531586), pending many version bumps.
-# Removal in a month.
-media-sound/mup
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Many other ident daemons in the tree over this completely dead and
 # unmaintained (since 2003) implementation (#535868). Removal in a month.
 net-misc/linux-identd
