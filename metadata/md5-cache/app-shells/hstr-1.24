@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/dvorka/hstr/archive/1.24.tar.gz -> hstr-1.24.tar.gz
 _eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=4cda714dc3638694bc1bb656760ce286
+_md5_=1ea3a78d37152c7cc7556d425a30605f
