@@ -599,14 +599,6 @@ net-p2p/tribler
 # Dead upstream, no revdeps left. Bug #639358
 app-i18n/libguess
 
-# Brian Evans <grknight@gentoo.org> (06 Mar 2018)
-# MariaDB MaxScale 1.x depends on the deprecated libmysqld
-# Newer versions bundle software that require git access
-# and modify system libraries for their own purposes making
-# it exteremely difficult to package.
-# Bug 649764 Removal in 30 days.
-dev-db/maxscale
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
 # Fails to build without rpc support in glibc (bug 631044);
 # no maintainer, requires obsolete hardware. Removal in
