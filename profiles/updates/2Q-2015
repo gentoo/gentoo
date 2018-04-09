@@ -116,7 +116,6 @@ move kde-base/ksirk kde-apps/ksirk
 move kde-base/ksnakeduel kde-apps/ksnakeduel
 move kde-base/kspaceduel kde-apps/kspaceduel
 move kde-base/ksquares kde-apps/ksquares
-move kde-base/kstars kde-apps/kstars
 move kde-base/ksudoku kde-apps/ksudoku
 move kde-base/ksystemlog kde-apps/ksystemlog
 move kde-base/kteatime kde-apps/kteatime
