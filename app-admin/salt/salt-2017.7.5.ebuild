@@ -28,7 +28,7 @@ IUSE+=" openssl portage profile redis selinux test timelib raet +zeromq vim-synt
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.3[${PYTHON_USEDEP}]
-	<dev-python/msgpack-0.5.5[${PYTHON_USEDEP}]
+	!=dev-python/msgpack-0.5.5[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
