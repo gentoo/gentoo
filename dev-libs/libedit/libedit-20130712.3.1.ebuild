@@ -9,8 +9,8 @@ MY_PV=$(get_major_version)-$(get_after_major_version)
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="BSD replacement for libreadline"
-HOMEPAGE="http://www.thrysoee.dk/editline/"
-SRC_URI="http://www.thrysoee.dk/editline/${MY_P}.tar.gz"
+HOMEPAGE="https://thrysoee.dk/editline/"
+SRC_URI="https://thrysoee.dk/editline/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
