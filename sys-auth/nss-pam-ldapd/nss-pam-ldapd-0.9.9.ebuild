@@ -7,8 +7,8 @@ PYTHON_COMPAT=(python2_7)
 inherit eutils prefix user python-r1 multilib multilib-minimal systemd s6
 
 DESCRIPTION="NSS module for name lookups using LDAP"
-HOMEPAGE="http://arthurdejong.org/nss-pam-ldapd/"
-SRC_URI="http://arthurdejong.org/${PN}/${P}.tar.gz"
+HOMEPAGE="https://arthurdejong.org/nss-pam-ldapd/"
+SRC_URI="https://arthurdejong.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
