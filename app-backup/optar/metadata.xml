@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>draget-gentoo@speciesm.net</email>
+		<name>Michael Gajda</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">colindean/optar</remote-id>
+	</upstream>
+	<longdescription>Optar stands for OPTical ARchiver. It's a codec for encoding data on paper or free software 2D barcode in other words. Optar fits 200kB on an A4 page, then you print it with a laser printer. If you want to read the recording, scan it with a scanner and feed into the decoder program. A practical level of reliability is ensured using forward error correction code (FEC). Automated processing of page batches facilitates storage of files larger than 200kB.</longdescription>
+	<use>
+		<flag name="pgm2ps">Enable converting pgm output to postscript using ImageMagic.</flag>
+	</use>
+</pkgmetadata>
