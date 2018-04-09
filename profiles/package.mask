@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Richard Yao <ryao@gentoo.org> (08 Apr 2018)
+# Potential data loss regression reported upstream. Masking until solved.
+# Bug #652828
+=sys-kernel/spl-0.7.7
+=sys-fs/zfs-kmod-0.7.7
+=sys-fs/zfs-0.7.7
+
 # Andreas Sturmlechner <asturm@gentoo.org> (08 Apr 2018)
 # Depends on dead Qt4. Masked for removal in 30 days. Bug #649124
 dev-python/PyFoam
