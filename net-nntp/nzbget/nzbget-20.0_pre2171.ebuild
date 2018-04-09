@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}-src.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="debug gnutls ncurses parcheck ssl test zlib"
+IUSE="debug gnutls ncurses +parcheck ssl test zlib"
 
-RDEPEND="dev-libs/libxml2
+RDEPEND="dev-libs/libxml2:=
 	ncurses? ( sys-libs/ncurses:0= )
 	ssl? (
 		gnutls? (
@@ -26,8 +26,14 @@ RDEPEND="dev-libs/libxml2
 		)
 		!gnutls? ( dev-libs/openssl:0=[-bindist] )
 	)
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib:= )"
 DEPEND="${RDEPEND}
+	test? (
+		|| (
+			=app-arch/rar-5*
+			=app-arch/unrar-5*
+		)
+	)
 	virtual/pkgconfig"
 DOCS=( ChangeLog README nzbget.conf )
 
