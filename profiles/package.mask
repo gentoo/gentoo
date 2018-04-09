@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (09 Apr 2018)
+# Obsolete dev-texlive/* cleanup. Content moved into other packages.
+dev-texlive/texlive-documentation-base
+dev-texlive/texlive-mathextra
+dev-texlive/texlive-science
+
 # Richard Yao <ryao@gentoo.org> (08 Apr 2018)
 # Potential data loss regression reported upstream. Masking until solved.
 # Bug #652828
