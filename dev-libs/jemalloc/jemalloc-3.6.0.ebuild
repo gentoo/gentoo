@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools-multilib eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Jemalloc is a general-purpose scalable concurrent allocator"
-HOMEPAGE="http://http://jemalloc.net/ https://github.com/jemalloc/jemalloc"
+HOMEPAGE="http://jemalloc.net/ https://github.com/jemalloc/jemalloc"
 SRC_URI="https://github.com/jemalloc/jemalloc/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
