@@ -8,12 +8,11 @@
   </synopsis>
   <product type="ebuild">zendframework</product>
   <announced>2018-04-09</announced>
-  <revised count="1">2018-04-09</revised>
+  <revised count="2">2018-04-09</revised>
   <bug>604182</bug>
   <access>remote</access>
   <affected>
     <package name="dev-php/ZendFramework" auto="yes" arch="*">
-      <unaffected range="ge"></unaffected>
       <vulnerable range="le">1.12.9</vulnerable>
     </package>
   </affected>
@@ -52,5 +51,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-6233">CVE-2016-6233</uri>
   </references>
   <metadata tag="requester" timestamp="2018-04-09T00:33:10Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2018-04-09T15:59:52Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-09T17:05:49Z">b-man</metadata>
 </glsa>
