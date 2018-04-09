@@ -37,6 +37,7 @@ src_configure() {
 	econf \
 		--enable-charsets \
 		--disable-portaudio \
+		CXXFLAGS=-fno-delete-null-pointer-checks \
 		YACC=byacc
 }
 
