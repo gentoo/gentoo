@@ -1,4 +1,3 @@
-diff --git a/Makefile.am b/Makefile.am
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -8,6 +8,8 @@
@@ -10,7 +9,6 @@ diff --git a/Makefile.am b/Makefile.am
  EXTRA_DIST = autogen.sh README* *.pc.in *.spec.in *.spec *-config.in \
      *-config.1 Doxyfile cmodel.sh BUILDS SUPPORT COPYING* COPYRIGHT \
      CMakeLists.txt ucommon-config.cmake ucommon.pc.cmake cmake-abi.sh \
-diff --git a/configure.ac b/configure.ac
 --- a/configure.ac
 +++ b/configure.ac
 @@ -40,6 +40,9 @@
@@ -32,7 +30,6 @@ diff --git a/configure.ac b/configure.ac
          SECURE="gnutls"
      fi
      ;;
-diff --git a/utils/Makefile.am b/utils/Makefile.am
 --- a/utils/Makefile.am
 +++ b/utils/Makefile.am
 @@ -9,9 +9,9 @@

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -29,9 +29,11 @@ DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
 DOCS=(README NEWS SUPPORT ChangeLog AUTHORS)
-PATCHES=( "${FILESDIR}"/disable_rtf_gen_doxy.patch
-		  "${FILESDIR}"/install_gcrypt.m4_file.patch
-		  "${FILESDIR}"/gcrypt_autotools.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.0.3-disable_rtf_gen_doxy.patch
+	"${FILESDIR}"/${PN}-6.0.3-install_gcrypt.m4_file.patch
+	"${FILESDIR}"/${PN}-6.0.3-gcrypt_autotools.patch
+)
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 

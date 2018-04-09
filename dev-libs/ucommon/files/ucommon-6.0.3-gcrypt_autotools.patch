@@ -1,4 +1,3 @@
-diff --git a/Makefile.am b/Makefile.am
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -8,6 +8,8 @@
@@ -10,7 +9,6 @@ diff --git a/Makefile.am b/Makefile.am
  AUTOMAKE_OPTIONS = no-dependencies dist-zip
  EXTRA_DIST = autogen.sh README* *.pc.in *.spec.in *.spec *-config.in \
      *-config.1 Doxyfile cmodel.sh BUILDS SUPPORT COPYING* COPYRIGHT \
-diff --git a/configure.ac b/configure.ac
 --- a/configure.ac
 +++ b/configure.ac
 @@ -37,8 +37,12 @@
@@ -36,7 +34,6 @@ diff --git a/configure.ac b/configure.ac
          SECURE="gnutls"
      fi
      ;;
-diff --git a/utils/Makefile.am b/utils/Makefile.am
 --- a/utils/Makefile.am
 +++ b/utils/Makefile.am
 @@ -9,9 +9,9 @@
