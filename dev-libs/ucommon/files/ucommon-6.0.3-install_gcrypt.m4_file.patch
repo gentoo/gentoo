@@ -1,5 +1,3 @@
-diff --git a/m4/libgcrypt.m4 b/m4/libgcrypt.m4
-new file mode 100644
 --- /dev/null
 +++ m4/libgcrypt.m4
 @@ -0,0 +1,123 @@
