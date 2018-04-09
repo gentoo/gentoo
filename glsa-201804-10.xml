@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-10">
+  <title>Zend Framework: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Zend Framework, the
+    worst of which could allow attackers to remotely execute arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">zendframework</product>
+  <announced>2018-04-09</announced>
+  <revised count="1">2018-04-09</revised>
+  <bug>604182</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-php/ZendFramework" auto="yes" arch="*">
+      <unaffected range="ge"></unaffected>
+      <vulnerable range="le">1.12.9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Zend Framework is a high quality and open source framework for
+      developing Web Applications.
+    </p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Zend Framework that
+      have remain unaddressed. Please review the referenced CVE identifiers for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary commands or conduct SQL
+      injection attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Zend Framework and recommends that
+      users unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "dev-php/ZendFramework"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-10034">CVE-2016-10034</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-4861">CVE-2016-4861</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-6233">CVE-2016-6233</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-09T00:33:10Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-09T15:59:52Z">b-man</metadata>
+</glsa>
