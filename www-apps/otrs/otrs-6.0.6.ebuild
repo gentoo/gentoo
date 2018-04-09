@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit user systemd
+inherit systemd user
 
 DESCRIPTION="OTRS is an Open source Ticket Request System"
 HOMEPAGE="https://www.otrs.com/"
@@ -30,6 +30,8 @@ RDEPEND="dev-perl/Apache-Reload
 	dev-perl/Template-Toolkit
 	dev-perl/Text-CSV_XS
 	dev-perl/TimeDate
+	dev-perl/DateTime
+	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-Parser
 	dev-perl/YAML-LibYAML
 	apache2? (
@@ -74,31 +76,23 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -r "${S}/scripts"/auto_* || die
 
 	pushd Kernel >/dev/null || die
 	local i
 	for i in *.dist; do
-		cp "${i}" $(basename "${i}" .dist) || die
+		cp "${i}" "${i%.dist}" || die
 	done
 	popd >/dev/null || die
 
-	# Fix broken png file (and see pngfix help for exit codes)
-	pngfix -q --out=out.png "${S}/var/httpd/htdocs/skins/Agent/default/img/otrs-verify.png"
-	if [[ $? -gt 15 ]]; then
-		die "pngfix failed"
-	fi
-	mv -f out.png "${S}/var/httpd/htdocs/skins/Agent/default/img/otrs-verify.png" || die
+	sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" "${S}"/Kernel/Config.pm
+	assert "sed failed"
 
-	sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" "${S}"/Kernel/Config.pm \
-		|| die "sed failed"
+	sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" "${S}"/Kernel/Config/Defaults.pm
+	assert "sed failed"
 
-	sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" "${S}"/Kernel/Config/Defaults.pm \
-		|| die "sed failed"
-
-	grep -lR "/opt" "${S}"/scripts | \
-		xargs sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" \
-		|| die "sed failed"
+	grep -lR "/opt" "${S}"/scripts |
+	xargs sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g"
+	assert "sed failed"
 
 	echo "CONFIG_PROTECT=\"${EPREFIX%/}${OTRS_HOME}/Kernel/Config.pm \
 		${EPREFIX%/}${OTRS_HOME}/Kernel/Config/GenericAgent.pm\"" > "${T}/50${PN}" || die
@@ -135,7 +129,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Setting correct permissions ..."
-	/usr/bin/env perl "${EROOT%/}${OTRS_HOME}"/bin/otrs.SetPermissions.pl "${EROOT%/}${OTRS_HOME}" \
+	perl "${EROOT%/}${OTRS_HOME}"/bin/otrs.SetPermissions.pl "${EROOT%/}${OTRS_HOME}" \
 		--otrs-user=otrs \
 		--web-group=apache \
 		|| die "Could not set permissions"
