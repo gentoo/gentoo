@@ -42,7 +42,7 @@ src_prepare() {
 
 	# rename enum keywords because javadoc hates them
 	# even with -source 1.4, bummer
-	epatch "${FILESDIR}/${P}-enum.patch"
+	eapply "${FILESDIR}/${P}-enum.patch"
 }
 
 src_compile() {
