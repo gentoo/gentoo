@@ -43,9 +43,9 @@ DOCS=( RELEASE-NOTES.txt PROPOSAL.html )
 src_prepare() {
 	default
 
-	epatch "${FILESDIR}/${P}-gentoo.patch"
+	eapply "${FILESDIR}/${P}-gentoo.patch"
 	# patch to make the build.xml respect no servletapi
-	epatch "${FILESDIR}/${P}-servletapi.patch"
+	eapply "${FILESDIR}/${P}-servletapi.patch"
 
 	# bug #208098
 	echo "jdk.1.4.present=true" > build.properties || die
