@@ -35,7 +35,7 @@ RDEPEND="
 		media-libs/glew:0=
 		virtual/opengl
 	)
-	vtk? ( sci-libs/vtk[qt5] )
+	vtk? ( sci-libs/vtk[qt5,views] )
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
