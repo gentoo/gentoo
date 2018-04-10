@@ -68,6 +68,10 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	eapply "${FILESDIR}"/${P}-add-missing-lintl.patch
+	touch -r "${S}"/configure "${S}"/libsmartcols/src/Makemodule.am || die
+	touch -r "${S}"/configure "${S}"/libuuid/src/Makemodule.am || die
+
 	# Prevent uuidd test failure due to socket path limit. #593304
 	sed -i \
 		-e "s|UUIDD_SOCKET=\"\$(mktemp -u \"\${TS_OUTDIR}/uuiddXXXXXXXXXXXXX\")\"|UUIDD_SOCKET=\"\$(mktemp -u \"${T}/uuiddXXXXXXXXXXXXX.sock\")\"|g" \
