@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils fdo-mime gnome2-utils toolchain-funcs
+
+inherit autotools eutils gnome2-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="RAW Image format viewer and GIMP plugin"
 HOMEPAGE="http://ufraw.sourceforge.net/"
@@ -65,15 +66,15 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if use gnome; then
-		fdo-mime_mime_database_update
-		fdo-mime_desktop_database_update
+		xdg_mimeinfo_database_update
+		xdg_desktop_database_update
 		gnome2_gconf_install
 	fi
 }
 
 pkg_postrm() {
 	if use gnome; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 	fi
 }
