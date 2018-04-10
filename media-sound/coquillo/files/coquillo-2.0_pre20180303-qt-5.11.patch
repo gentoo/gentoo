@@ -1,0 +1,24 @@
+From 03a1b15c2c364368d801da4ebe89ae1083d68b4d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Tue, 10 Apr 2018 10:15:33 +0200
+Subject: [PATCH] Fix build with Qt 5.11
+
+---
+ src/processor/parserwidget.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/processor/parserwidget.cpp b/src/processor/parserwidget.cpp
+index 10320e2..94d60c3 100644
+--- a/src/processor/parserwidget.cpp
++++ b/src/processor/parserwidget.cpp
+@@ -1,6 +1,7 @@
+ 
+ #include <QDebug>
+ #include <QDir>
++#include <QItemSelectionModel>
+ 
+ #include "tags/tagdataroles.hpp"
+ #include "parserwidget.hpp"
+-- 
+2.17.0
+
