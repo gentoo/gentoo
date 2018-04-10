@@ -23,6 +23,7 @@ src_prepare() {
 		-e "/COMPILER =/s/gcc/$(tc-getCC)/" \
 		-e "/CXX =/s/g++/$(tc-getCXX)/" \
 		-i INSTALL.im || die
+	sed -i "s/g++/$(tc-getCXX)/" verbinsert/icmconf || die
 
 	sed -e "s/ar r /$(tc-getAR) r /" \
 		-e "s/ranlib/$(tc-getRANLIB)/" \
