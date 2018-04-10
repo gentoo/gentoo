@@ -59,7 +59,7 @@ EGO_VENDOR=( "github.com/BurntSushi/toml a368813c5e648fee92e5f6c30e3944ff9d5e889
 inherit golang-build golang-vcs-snapshot bash-completion-r1
 
 EGO_PN="github.com/gohugoio/hugo"
-GIT_COMMIT="f414966b942b5aad75565bee6c644782a07f0658"
+GIT_COMMIT="712c0fdfe6e76920a96ec493e5ce6f78bcaa4b20"
 ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
