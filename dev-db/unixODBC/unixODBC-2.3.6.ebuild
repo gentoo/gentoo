@@ -49,7 +49,7 @@ multilib_src_install_all() {
 	einstalldocs
 
 	if use odbcmanual ; then
-		# We could simply run "make install-html" if we'd not had 
+		# We could simply run "make install-html" if we'd not had
 		# out-of-source builds here.
 		docinto html
 		dodoc -r doc/.
