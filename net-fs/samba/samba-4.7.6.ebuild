@@ -172,7 +172,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# when specifying libs for samba build you must append NONE to the end to 
+	# when specifying libs for samba build you must append NONE to the end to
 	# stop it automatically including things
 	local bundled_libs="NONE"
 	if ! use system-heimdal && ! use system-mitkrb5 ; then
