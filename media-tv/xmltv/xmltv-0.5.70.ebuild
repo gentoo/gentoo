@@ -164,6 +164,7 @@ src_install() {
 
 	perl-module_src_install
 
+	local i
 	for i in $(grep -rl "${D}" "${D}"); do
 		sed -e "s:${D}::g" -i "${i}" || die
 	done
