@@ -30,7 +30,7 @@ all_ruby_prepare() {
 	sed -e '/test_easy_http_verbs_must_respond_to_str/,/^  end/ s:^:#:' \
 		-i tests/tc_curl_easy.rb || die
 
-	# avoid failing tests where failure condition seems weird, no 
+	# avoid failing tests where failure condition seems weird, no
 	# upstream travis so not clear if the test is indeed broken.
 	sed -i -e '/test_multi_easy_http/,/^  end/ s:^:#:' tests/tc_curl_multi.rb || die
 }
