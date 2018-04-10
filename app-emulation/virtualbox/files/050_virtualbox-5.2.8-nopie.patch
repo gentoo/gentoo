@@ -1,0 +1,147 @@
+diff -Naur VirtualBox-5.1.24/Config.kmk VirtualBox-5.1.24/Config.kmk
+--- VirtualBox-5.1.24/Config.kmk	2017-07-26 13:55:27.803972185 -0400
++++ VirtualBox-5.1.24/Config.kmk	2017-07-26 13:53:10.700974328 -0400
+@@ -2601,6 +2601,7 @@
+ 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-overlength-strings?= $(call VBOX_GCC_CHECK_CC,-Wno-overlength-strings,)'
+ 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-overloaded-virtual?= $(call VBOX_GCC_CHECK_CXX,-Wno-overloaded-virtual,)'
+ 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_fno-stack-protector   ?= $(call VBOX_GCC_CHECK_CC,-fno-stack-protector,)'
++	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_nopie                 ?= $(call VBOX_GCC_CHECK_CC,-nopie,)'
+ 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_fno-dwarf2-cfi-asm    ?= $(call VBOX_GCC_CHECK_CC,-fno-dwarf2-cfi-asm,)'
+ 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_m64                   ?= $(call VBOX_GCC_CHECK_CC,-m64,)'
+ 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_no-pie                ?= $(call VBOX_GCC_CHECK_CC,-no-pie,)'
+@@ -3843,8 +3844,8 @@
+ 
+  ifeq ($(VBOX_LDR_FMT32),elf)
+  TEMPLATE_VBoxRc_TOOL                = $(VBOX_GCC32_TOOL)
+- TEMPLATE_VBoxRc_CXXFLAGS            = -fno-pie -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC32_Wno-variadic-macros) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-strict-aliasing $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_fvisibility-hidden) $(VBOX_GCC_fvisibility-inlines-hidden) -fno-rtti $(VBOX_GCC_IPRT_FMT_CHECK)
+- TEMPLATE_VBoxRc_CFLAGS              = -fno-pie -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C)   $(VBOX_GCC32_Wno-variadic-macros) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-strict-aliasing $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_fvisibility-hidden) $(VBOX_GCC_IPRT_FMT_CHECK)
++ TEMPLATE_VBoxRc_CXXFLAGS            = -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC32_Wno-variadic-macros) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-strict-aliasing $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) $(VBOX_GCC_fvisibility-hidden) $(VBOX_GCC_fvisibility-inlines-hidden) -fno-rtti $(VBOX_GCC_IPRT_FMT_CHECK)
++ TEMPLATE_VBoxRc_CFLAGS              = -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C)   $(VBOX_GCC32_Wno-variadic-macros) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-strict-aliasing $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) $(VBOX_GCC_fvisibility-hidden) $(VBOX_GCC_IPRT_FMT_CHECK)
+   ifeq ($(KBUILD_TARGET),solaris)
+    TEMPLATE_VBoxRc_LDFLAGS           = -r
+   else
+@@ -3864,8 +3865,8 @@
+  ifeq ($(VBOX_LDR_FMT32),macho)
+  TEMPLATE_VBoxRc_TOOL                = $(VBOX_GCC_TOOL)
+  TEMPLATE_VBoxRc_DEFS               += $(VBOX_DARWIN_DEF_SDK_DEFS)
+- TEMPLATE_VBoxRc_CXXFLAGS            = $(VBOX_DARWIN_DEF_SDK_CXXFLAGS) -m32 -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC32_Wno-variadic-macros) -fno-common -msoft-float -static $(VBOX_GCC_fno-stack-protector) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -fno-strict-aliasing -fno-rtti
+- TEMPLATE_VBoxRc_CFLAGS              = $(VBOX_DARWIN_DEF_SDK_CFLAGS)   -m32 -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C)   $(VBOX_GCC32_Wno-variadic-macros) -fno-common -msoft-float -static $(VBOX_GCC_fno-stack-protector) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -fno-strict-aliasing
++ TEMPLATE_VBoxRc_CXXFLAGS            = $(VBOX_DARWIN_DEF_SDK_CXXFLAGS) -m32 -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC32_Wno-variadic-macros) -fno-common -msoft-float -static $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -fno-strict-aliasing -fno-rtti
++ TEMPLATE_VBoxRc_CFLAGS              = $(VBOX_DARWIN_DEF_SDK_CFLAGS)   -m32 -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C)   $(VBOX_GCC32_Wno-variadic-macros) -fno-common -msoft-float -static $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) -fno-exceptions $(VBOX_GCC_GC_OPT) $(VBOX_GCC_GC_FP) -fno-strict-aliasing
+  TEMPLATE_VBoxRc_LDFLAGS             = $(VBOX_DARWIN_DEF_SDK_LDFLAGS)  -m32 -nostdlib
+  #TEMPLATE_VBoxRc_LDFLAGS.release     = -Wl,-S ???
+  endif
+@@ -3903,9 +3904,9 @@
+  endif
+ 
+  ifeq ($(VBOX_LDR_FMT32),elf)
+-  TEMPLATE_VBoxRcExe_CFLAGS   = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CFLAGS)) -O0
+-  TEMPLATE_VBoxRcExe_CXXFLAGS = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CXXFLAGS)) -O0
+-  TEMPLATE_VBoxRcExe_LDFLAGS  = -g
++  TEMPLATE_VBoxRcExe_CFLAGS   = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CFLAGS)) -O0 $(VBOX_GCC_nopie)
++  TEMPLATE_VBoxRcExe_CXXFLAGS = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CXXFLAGS)) -O0 $(VBOX_GCC_nopie)
++  TEMPLATE_VBoxRcExe_LDFLAGS  = -g $(VBOX_GCC_nopie)
+   TEMPLATE_VBoxRcExe_LDFLAGS.dbgopt = -g
+   TEMPLATE_VBoxRcExe_LDFLAGS.strict = -g
+   TEMPLATE_VBoxRcExe_LDFLAGS.release = -g
+@@ -3984,8 +3985,8 @@
+ 
+ ifeq ($(VBOX_LDR_FMT),elf)
+ TEMPLATE_VBoxR0_TOOL                = $(VBOX_GCC_TOOL)
+-TEMPLATE_VBoxR0_CFLAGS              = -fno-pie -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C)   $(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-exceptions $(VBOX_GCC_fno-stack-protector) -fno-common $(VBOX_GCC_fvisibility-hidden) -std=gnu99 $(VBOX_GCC_IPRT_FMT_CHECK)
+-TEMPLATE_VBoxR0_CXXFLAGS            = -fno-pie -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-exceptions $(VBOX_GCC_fno-stack-protector) -fno-common $(VBOX_GCC_fvisibility-inlines-hidden) $(VBOX_GCC_fvisibility-hidden) -fno-rtti $(VBOX_GCC_IPRT_FMT_CHECK)
++TEMPLATE_VBoxR0_CFLAGS              = -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C)   $(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-exceptions $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) -fno-common $(VBOX_GCC_fvisibility-hidden) -std=gnu99 $(VBOX_GCC_IPRT_FMT_CHECK)
++TEMPLATE_VBoxR0_CXXFLAGS            = -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-exceptions $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) -fno-common $(VBOX_GCC_fvisibility-inlines-hidden) $(VBOX_GCC_fvisibility-hidden) -fno-rtti $(VBOX_GCC_IPRT_FMT_CHECK)
+ TEMPLATE_VBoxR0_CFLAGS.amd64        = -m64 -mno-red-zone -mcmodel=kernel -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-asynchronous-unwind-tables -ffreestanding
+ TEMPLATE_VBoxR0_CXXFLAGS.amd64      = -m64 -mno-red-zone -mcmodel=kernel -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -fno-asynchronous-unwind-tables
+ ifeq ($(KBUILD_TARGET),solaris)
+@@ -4018,12 +4019,12 @@
+ TEMPLATE_VBoxR0_DEFS               += $(VBOX_DARWIN_DEF_SDK_DEFS)
+ TEMPLATE_VBoxR0_CXXFLAGS            = $(VBOX_DARWIN_DEF_SDK_CXXFLAGS) -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC_Wno-variadic-macros) \
+ 	-fno-common -msoft-float -static -fno-rtti -fno-exceptions $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing \
+-	-mno-sse -mno-mmx -mno-sse2 -mno-3dnow $(VBOX_GCC_fno-stack-protector)
++	-mno-sse -mno-mmx -mno-sse2 -mno-3dnow $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie)
+ TEMPLATE_VBoxR0_CXXFLAGS.amd64      = -m64 -mno-red-zone -mno-sse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2  -mno-sse4a -fno-unwind-tables
+ TEMPLATE_VBoxR0_CXXFLAGS.x86        = -m32
+ TEMPLATE_VBoxR0_CFLAGS              = $(VBOX_DARWIN_DEF_SDK_CFLAGS)   -nostdinc -g $(VBOX_GCC_pipe) $(VBOX_GCC_WERR) $(VBOX_GCC_PEDANTIC_C)   $(VBOX_GCC_Wno-variadic-macros) \
+ 	-fno-common -msoft-float -static -fno-exceptions $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing \
+-	-mno-sse -mno-mmx -mno-sse2 -mno-3dnow $(VBOX_GCC_fno-stack-protector)
++	-mno-sse -mno-mmx -mno-sse2 -mno-3dnow $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie)
+ TEMPLATE_VBoxR0_CFLAGS.amd64        = -m64 -mno-red-zone -mno-sse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2  -mno-sse4a -fno-unwind-tables
+ TEMPLATE_VBoxR0_CFLAGS.x86          = -m32
+ TEMPLATE_VBoxR0_LDFLAGS             = $(VBOX_DARWIN_DEF_SDK_LDFLAGS) -nostdlib
+@@ -4259,7 +4260,7 @@
+ 	-Wstrict-prototypes -Wmissing-prototypes -Wstrict-prototypes \
+ 	-Wimplicit-function-declaration -Werror-implicit-function-declaration \
+ 	-O2 -ffreestanding -fno-strict-aliasing -fno-common -finline-limit=8000 \
+-	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
++	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
+ 	-nostdinc -std=c99
+ TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -m32 -mno-align-long-strings -mpreferred-stack-boundary=2 -mno-mmx -mno-3dnow -mno-sse -mno-sse2
+ TEMPLATE_VBOXR0DRV_CFLAGS.amd64        = -m64 --param inline-unit-growth=100 --param large-function-growth=1000 \
+@@ -4268,7 +4269,7 @@
+ TEMPLATE_VBOXR0DRV_CXXFLAGS            = -fno-exceptions -fno-rtti \
+ 	$(VBOX_GCC_WARN) -Wpointer-arith -Winline \
+ 	-O2 -fno-strict-aliasing -fno-common -finline-limit=8000 \
+-	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
++	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
+ 	-nostdinc
+ TEMPLATE_VBOXR0DRV_CXXFLAGS.x86        = $(TEMPLATE_VBOXR0DRV_CFLAGS.x86)
+ TEMPLATE_VBOXR0DRV_CXXFLAGS.amd64      = $(TEMPLATE_VBOXR0DRV_CFLAGS.amd64)
+@@ -4341,7 +4342,7 @@
+ 	-Wstrict-prototypes -Wmissing-prototypes -Wstrict-prototypes \
+ 	-Wimplicit-function-declaration -Werror-implicit-function-declaration \
+ 	-O2 -ffreestanding -fno-strict-aliasing -fno-common -finline-limit=8000 \
+-	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
++	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
+ 	-nostdinc -std=c99 -msoft-float
+ TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -m32 \
+     -mpreferred-stack-boundary=2 -mno-mmx -mno-sse -mno-avx \
+@@ -4353,7 +4354,7 @@
+ TEMPLATE_VBOXR0DRV_CXXFLAGS            = -fno-exceptions -fno-rtti \
+ 	$(VBOX_GCC_WARN) -Wpointer-arith -Winline \
+ 	-O2 -fno-strict-aliasing -fno-common -finline-limit=8000 \
+-	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
++	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) \
+ 	-nostdinc -msoft-float
+ TEMPLATE_VBOXR0DRV_CXXFLAGS.x86        = $(TEMPLATE_VBOXR0DRV_CFLAGS.x86)
+ TEMPLATE_VBOXR0DRV_CXXFLAGS.amd64      = $(TEMPLATE_VBOXR0DRV_CFLAGS.amd64)
+@@ -4394,7 +4395,7 @@
+ TEMPLATE_VBOXR0DRV_LDFLAGS             = -shared -no-undefined -dc -dy -lroot -rpath-link /boot/system/develop/lib/x86 --no-add-needed /boot/system/develop/lib/_KERNEL_ --no-add-needed /boot/system/develop/lib/haiku_version_glue.o
+ TEMPLATE_VBOXR0DRV_CFLAGS              = -fno-PIC \
+ 	$(VBOX_GCC_WARN) -Wstrict-prototypes $(VBOX_GCC_Wno-pointer-sign) -Wno-sign-compare \
+-	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration
++	$(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie) $(VBOX_GCC_R0_OPT) $(VBOX_GCC_R0_FP) -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration
+ TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -mno-sse -mno-mmx -mno-sse2 -mno-3dnow
+ TEMPLATE_VBOXR0DRV_CFLAGS.x86          = -m32 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow
+ TEMPLATE_VBOXR0DRV_CFLAGS.amd64        = -m64 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow \
+@@ -5210,8 +5211,8 @@
+  TEMPLATE_VBoxNoCrtGccLib_TOOL             = $(VBOX_GCC_TOOL)
+  TEMPLATE_VBoxNoCrtGccLib_ASTOOL           = $(VBOX_ASTOOL)
+  TEMPLATE_VBoxNoCrtGccLib_ASFLAGS          = $(VBOX_ASFLAGS)
+- TEMPLATE_VBoxNoCrtGccLib_CFLAGS          += $(VBOX_GCC_fno-stack-protector)
+- TEMPLATE_VBoxNoCrtGccLib_CXXFLAGS        += $(VBOX_GCC_fno-stack-protector)
++ TEMPLATE_VBoxNoCrtGccLib_CFLAGS          += $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie)
++ TEMPLATE_VBoxNoCrtGccLib_CXXFLAGS        += $(VBOX_GCC_fno-stack-protector) $(VBOX_GCC_nopie)
+  ifeq ($(KBUILD_TARGET_ARCH),amd64)
+   # in 64-bit mode we'll build a sys-module (VBoxREM2).
+   if1of ($(KBUILD_TARGET), darwin solaris)
+diff -Naur VirtualBox-5.1.24/src/VBox/Devices/PC/ipxe/Makefile.kmk VirtualBox-5.1.24/src/VBox/Devices/PC/ipxe/Makefile.kmk
+--- VirtualBox-5.1.24/src/VBox/Devices/PC/ipxe/Makefile.kmk	2017-07-26 13:55:27.746972186 -0400
++++ VirtualBox-5.1.24/src/VBox/Devices/PC/ipxe/Makefile.kmk	2017-07-26 13:53:10.641974329 -0400
+@@ -132,6 +132,7 @@
+ 	-W \
+ 	-Wformat-nonliteral \
+ 	$(VBOX_GCC_fno-stack-protector) \
++	$(VBOX_GCC_nopie) \
+ 	$(VBOX_GCC_fno-dwarf2-cfi-asm) \
+ 	$(VBOX_GCC_Wno-address)
+  TEMPLATE_iPxe_ASFLAGS = \
+@@ -155,6 +156,7 @@
+ 	-W \
+ 	-Wformat-nonliteral \
+ 	$(VBOX_GCC_fno-stack-protector) \
++	$(VBOX_GCC_nopie) \
+ 	$(VBOX_GCC_fno-dwarf2-cfi-asm) \
+ 	$(VBOX_GCC_Wno-address) \
+ 	-DASSEMBLY

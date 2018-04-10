@@ -185,12 +185,12 @@ src_prepare() {
 
 	# Only add nopie patch when we're on hardened
 	if  gcc-specs-pie ; then
-		eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
+		eapply "${FILESDIR}/050_virtualbox-5.2.8-nopie.patch"
 	fi
 
 	# Only add paxmark patch when we're on pax_kernel
 	if use pax_kernel ; then
-		eapply "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch
+		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
 	eapply "${WORKDIR}/patches"
