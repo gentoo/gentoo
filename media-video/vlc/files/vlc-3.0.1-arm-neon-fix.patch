@@ -1,0 +1,65 @@
+From: Janne Grunau <janne-vlc@jannau.net>
+Date: Mon, 19 Feb 2018 00:47:53 +0100
+Subject: arm: make the assembler functions compatible with non ELF/gas
+ platforms
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Allow assembling arm neon functions for IOS and arm windows.
+
+Signed-off-by: Martin Storsjö <martin@martin.st>
+(cherry picked from commit ec4d9649d1c03fe8f578db38b41dccdf5e11b005)
+Signed-off-by: Thomas Guillem <thomas@gllm.fr>
+
+[Add modules/arm_neon/asm.S missing from orig tarball.]
+---
+ modules/arm_neon/asm.S | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
+ create mode 100644 modules/arm_neon/asm.S
+
+diff --git a/modules/arm_neon/asm.S b/modules/arm_neon/asm.S
+new file mode 100644
+index 0000000..728391e
+--- /dev/null
++++ b/modules/arm_neon/asm.S
+@@ -0,0 +1,39 @@
++/*
++ * Copyright (c) 2018 Janne Grunau <janne-libav@jannau.net>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++ */
++
++#ifdef __APPLE__
++#   define EXTERN_ASM _
++#else
++#   define EXTERN_ASM
++#endif
++
++#if defined(__APPLE__) || defined(_WIN32)
++#   define HAVE_AS_ARCH_DIRECTIVE 0
++#   define HAVE_AS_FPU_DIRECTIVE  0
++#else
++#   define HAVE_AS_ARCH_DIRECTIVE 1
++#   define HAVE_AS_FPU_DIRECTIVE  1
++#endif
++
++.macro  function name
++	.globl  EXTERN_ASM\name
++#ifdef __ELF__
++	.type   EXTERN_ASM\name, %function
++#endif
++EXTERN_ASM\name:
++.endm
