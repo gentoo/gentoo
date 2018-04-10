@@ -4,7 +4,7 @@
 EAPI=6
 
 FRAMEWORKS_MINIMAL="5.42.0"
-KDE_HANDBOOK="optional"
+KDE_HANDBOOK="forceoptional"
 KDE_TEST="true"
 KMNAME="${PN}-kde"
 KDE_SELINUX_MODULE="${PN}"
@@ -55,12 +55,14 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-no-wayland.patch" )
+
 src_prepare() {
+	kde5_src_prepare
+
 	sed \
 		-e 's#${LIBEXEC_INSTALL_DIR}#@KDE_INSTALL_FULL_LIBEXECDIR@#' \
 		-i daemon/kdeconnectd.desktop.cmake || die
-
-	kde5_src_prepare
 }
 
 src_configure() {
