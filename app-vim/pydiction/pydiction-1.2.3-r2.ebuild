@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ src_install() {
 	# Rename pydiction script.
 	mv "${PN}.py" "${PN}" || die
 
-	# We're going to remove those files in a second 
+	# We're going to remove those files in a second
 	# otherwise they're installed by Portage.
 	local pyfiles=( complete-dict "${PN}" )
 	insinto "/usr/share/${P}"
