@@ -1,0 +1,14 @@
+--- a/Makerules
++++ b/Makerules
+@@ -108,9 +108,8 @@
+ SYS_PTHREAD_CFLAGS :=
+ SYS_PTHREAD_LIBS := -lpthread
+
+-HAVE_GLUT := yes
+-SYS_GLUT_CFLAGS :=
+-SYS_GLUT_LIBS := -lglut -lGL
++SYS_GLUT_CFLAGS = $(shell pkg-config --cflags freeglut gl)
++SYS_GLUT_LIBS = $(shell pkg-config --libs freeglut gl)
+
+ WANT_OPENSSL ?= yes
+ ifeq "$(WANT_OPENSSL)" "yes"
