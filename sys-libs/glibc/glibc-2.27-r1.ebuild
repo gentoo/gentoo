@@ -116,8 +116,8 @@ alt_prefix() {
 	is_crosscompile && echo /usr/${CTARGET}
 }
 
-# We need to be able to set alternative headers for compiling for non-native 
-# platform. Will also become useful for testing kernel-headers without screwing 
+# We need to be able to set alternative headers for compiling for non-native
+# platform. Will also become useful for testing kernel-headers without screwing
 # up the whole system.
 alt_headers() {
 	echo ${ALT_HEADERS:=$(alt_prefix)/usr/include}
