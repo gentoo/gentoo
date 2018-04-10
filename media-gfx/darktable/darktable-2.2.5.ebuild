@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
+inherit cmake-utils eutils flag-o-matic gnome2-utils pax-utils toolchain-funcs xdg-utils
 
 DOC_PV="2.2.0"
 MY_PV="${PV/_/}"
@@ -124,7 +124,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	elog "when updating from the currently stable 1.6 series,"
 	elog "please bear in mind that your edits will be preserved during this process,"
@@ -135,5 +135,5 @@ pkg_postinst() {
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
