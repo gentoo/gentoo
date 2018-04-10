@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gen2brain@gmail.com</email>
+		<name>Milan Nikolic</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		raylib is a simple and easy-to-use library to learn videogames programming.
+
+		raylib is highly inspired by Borland BGI graphics lib and by XNA framework. Allegro and SDL have also been used as reference.
+		raylib could be useful for prototyping, tools development, graphic applications, embedded systems and education.
+
+		NOTE for ADVENTURERS: raylib is a programming library to learn videogames programming;
+		no fancy interface, no visual helpers, no auto-debugging... just coding in the most pure spartan-programmers way.
+	</longdescription>
+	<use>
+		<flag name='games'>Installs the games examples</flag>
+		<flag name='system-glfw'>Use <pkg>media-libs/glfw</pkg> instead of bundled code</flag>
+	</use>
+</pkgmetadata>
