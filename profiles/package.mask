@@ -603,10 +603,6 @@ net-p2p/tribler
 # Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
 >=x11-base/xorg-server-1.19.7
 
-# Andreas Sturmlechner <asturm@gentoo.org> (11 Mar 2018)
-# Dead upstream, no revdeps left. Bug #639358
-app-i18n/libguess
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
 # Fails to build without rpc support in glibc (bug 631044);
 # no maintainer, requires obsolete hardware. Removal in
