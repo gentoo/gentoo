@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,20 +16,6 @@ KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux"
 IUSE="ar ch_search dk dtvla es_laguiatv eu_dotmedia eu_egon eu_epg fi fi_sv
 fr fr_kazer hr huro il is it na_dd na_dtv na_tvmedia nl no_gf pt pt_meo se_swedb
 se_tvzon tr uk_atlas uk_bleb uk_rt uk_tvguide tv_check tv_combiner tv_pick_cgi"
-
-# NOTE: you can customize the xmltv installation by
-#       defining USE FLAGS (custom ones in
-#	/etc/portage/package.use for example).
-#
-#	Do "equery u media-tv/xmltv" for the complete
-#	list of the flags you can set, with description.
-
-# EXAMPLES:
-# enable just North American grabber
-#  in /etc/portage/package.use : media-tv/xmltv na_dd
-#
-# enable graphical front-end, Italy grabber
-#  in /etc/portage/package.use : media-tv/xmltv tv_check it
 
 RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Parser-2.34
@@ -193,17 +179,18 @@ src_install() {
 
 	perl-module_src_install
 
-	for i in `grep -rl "${D}" "${D}"` ; do
+	local i
+	for i in $(grep -rl "${D}" "${D}"); do
 		sed -e "s:${D}::g" -i "${i}" || die
 	done
 
-	if use tv_pick_cgi ; then
+	if use tv_pick_cgi; then
 		dobin choose/tv_pick/tv_pick_cgi
 	fi
 }
 
 pkg_postinst() {
-	if use tv_pick_cgi ; then
+	if use tv_pick_cgi; then
 		elog "To use tv_pick_cgi, please link it from /usr/bin/tv_pick_cgi"
 		elog "to where the ScriptAlias directive is configured."
 	fi
