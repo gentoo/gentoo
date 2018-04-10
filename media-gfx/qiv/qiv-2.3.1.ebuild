@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit toolchain-funcs eutils fdo-mime gnome2-utils
+inherit eutils gnome2-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Quick Image Viewer"
 HOMEPAGE="http://spiegl.de/qiv/"
@@ -53,11 +53,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
