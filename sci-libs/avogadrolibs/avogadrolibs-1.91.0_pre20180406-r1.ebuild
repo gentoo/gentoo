@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/"${P}-underlinking.patch
 	"${FILESDIR}/"${P}-unbundle-jsoncpp.patch
 	"${FILESDIR}/"${P}-bundled-genxrdpattern.patch
+	"${FILESDIR}/"${P}-qt-5.11.patch
 )
 
 src_unpack() {
