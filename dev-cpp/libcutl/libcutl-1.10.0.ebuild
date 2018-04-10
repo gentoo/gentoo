@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools flag-o-matic versionator
 
 DESCRIPTION="A collection of C++ libraries (successor of libcult)"
-HOMEPAGE="http://www.codesynthesis.com/projects/libcutl/"
-SRC_URI="http://www.codesynthesis.com/download/${PN}/$(get_version_component_range 1-2)/${P}.tar.bz2"
+HOMEPAGE="https://www.codesynthesis.com/projects/libcutl/"
+SRC_URI="https://www.codesynthesis.com/download/${PN}/$(get_version_component_range 1-2)/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
