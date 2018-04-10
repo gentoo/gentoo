@@ -284,7 +284,7 @@ pkg_postinst() {
 		ewarn
 	fi
 
-	# check and fix file permissions 
+	# check and fix file permissions
 	"${EROOT}"/usr/sbin/postfix set-permissions 2>/dev/null
 
 	# configure tls
