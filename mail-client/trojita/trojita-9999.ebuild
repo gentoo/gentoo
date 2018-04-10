@@ -27,8 +27,8 @@ RDEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	crypt? (
-		dev-libs/mimetic
 		>=app-crypt/gpgme-1.8.0[cxx,qt5]
+		dev-libs/mimetic
 	)
 	dbus? ( dev-qt/qtdbus:5 )
 	password? ( dev-libs/qtkeychain[qt5(+)] )
@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	zlib? ( virtual/pkgconfig )
 "
 
-DOCS="README LICENSE"
+DOCS=( README LICENSE )
 
 src_prepare() {
 	cmake-utils_src_prepare
