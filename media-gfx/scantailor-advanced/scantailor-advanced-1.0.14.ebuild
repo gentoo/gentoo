@@ -30,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/boost
 	dev-qt/linguist-tools:5
-	!media-gfx/scantailor:4
+	!media-gfx/scantailor
 "
 
 PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
