@@ -45,8 +45,8 @@ STRIP_COMPLETIONS=(
 	# Now-dead symlinks to deprecated completions
 	hd ncal
 
-	# Installed by sys-apps/util-linux-2.28
-	mount umount mount.linux umount.linux
+	# Installed by sys-apps/util-linux-2.28 (and now deprecated)
+	_mount _umount _mount.linux _umount.linux
 
 	# Deprecated in favor of sys-apps/util-linux-2.31
 	_rfkill
@@ -95,7 +95,8 @@ src_install() {
 
 	local file
 	for file in "${STRIP_COMPLETIONS[@]}"; do
-		rm "${ED}"/usr/share/bash-completion/completions/${file} || die
+		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
+			die "stripping ${file} failed"
 	done
 	# remove deprecated completions (moved to other packages)
 	rm "${ED}"/usr/share/bash-completion/completions/_* || die

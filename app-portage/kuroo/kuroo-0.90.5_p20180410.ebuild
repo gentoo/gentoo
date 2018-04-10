@@ -41,6 +41,8 @@ DEPEND="${COMMON_DEPEND}
 	kde-frameworks/extra-cmake-modules:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+
 pkg_postinst() {
 	if ! has_version app-admin/logrotate ; then
 		elog "Installing app-admin/logrotate is recommended to keep"
