@@ -179,17 +179,18 @@ src_install() {
 
 	perl-module_src_install
 
-	for i in `grep -rl "${D}" "${D}"` ; do
+	local i
+	for i in $(grep -rl "${D}" "${D}"); do
 		sed -e "s:${D}::g" -i "${i}" || die
 	done
 
-	if use tv_pick_cgi ; then
+	if use tv_pick_cgi; then
 		dobin choose/tv_pick/tv_pick_cgi
 	fi
 }
 
 pkg_postinst() {
-	if use tv_pick_cgi ; then
+	if use tv_pick_cgi; then
 		elog "To use tv_pick_cgi, please link it from /usr/bin/tv_pick_cgi"
 		elog "to where the ScriptAlias directive is configured."
 	fi
