@@ -9,8 +9,8 @@ inherit multilib python-r1 toolchain-funcs
 MY_PN="Botan"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A C++ crypto library"
-HOMEPAGE="http://botan.randombit.net/"
-SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
+HOMEPAGE="https://botan.randombit.net/"
+SRC_URI="https://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~ppc-macos"
 SLOT="2/5" # soname version
