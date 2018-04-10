@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools multilib-minimal readme.gentoo-r1 eapi7-ver
 
 DESCRIPTION="A library for configuring and customizing font access"
-HOMEPAGE="http://fontconfig.org/"
+HOMEPAGE="https://fontconfig.org/"
 SRC_URI="http://fontconfig.org/release/${P}.tar.bz2"
 
 LICENSE="MIT"
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.12.3-latin-update.patch # 130466 + make liberation default
 	"${FILESDIR}"/${P}-locale.patch #650332
 	"${FILESDIR}"/${P}-names.patch #650370
+	"${FILESDIR}"/${P}-add-missing-lintl.patch #652674
 )
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/fc-cache$(get_exeext) )
