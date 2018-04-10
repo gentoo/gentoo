@@ -29,7 +29,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README )
 
-PATCHES=( "${FILESDIR}/${P}-qscintilla-2.10.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qscintilla-2.10.patch"
+	"${FILESDIR}/${P}-qt-5.11.patch"
+)
 
 src_prepare() {
 	# Upstream version outdated/dysfunctional and CRLF terminated
