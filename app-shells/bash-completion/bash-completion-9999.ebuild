@@ -95,7 +95,8 @@ src_install() {
 
 	local file
 	for file in "${STRIP_COMPLETIONS[@]}"; do
-		rm "${ED}"/usr/share/bash-completion/completions/${file} || die
+		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
+			die "stripping ${file} failed"
 	done
 	# remove deprecated completions (moved to other packages)
 	rm "${ED}"/usr/share/bash-completion/completions/_* || die
