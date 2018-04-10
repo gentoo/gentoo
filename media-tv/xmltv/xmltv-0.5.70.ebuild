@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="Set of utilities to manage TV listings stored in the XMLTV format"
 HOMEPAGE="http://xmltv.org"
