@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Apr 2018)
+# Depends on dead Qt4. Switch to media-gfx/scantailor-advanced instead.
+# Masked for removal in 30 days. Bug #633386
+media-gfx/scantailor
+
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Apr 2018)
 # Obsolete dev-texlive/* cleanup. Content moved into other packages.
 dev-texlive/texlive-documentation-base
@@ -602,10 +607,6 @@ net-p2p/tribler
 # Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
 # Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
 >=x11-base/xorg-server-1.19.7
-
-# Andreas Sturmlechner <asturm@gentoo.org> (11 Mar 2018)
-# Dead upstream, no revdeps left. Bug #639358
-app-i18n/libguess
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
 # Fails to build without rpc support in glibc (bug 631044);
