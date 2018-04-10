@@ -335,6 +335,7 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable macosx-qtkit)
+		$(use_enable matroska)
 		$(use_enable microdns)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mad)

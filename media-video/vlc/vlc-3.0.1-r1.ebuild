@@ -226,6 +226,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch # bug #593460
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
+	"${FILESDIR}"/${P}-arm-neon-fix.patch # bug 649798
 	"${FILESDIR}"/${P}-qt-5.11.patch # TODO upstream
 )
 
@@ -335,6 +336,7 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable macosx-qtkit)
+		$(use_enable matroska)
 		$(use_enable microdns)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mad)
