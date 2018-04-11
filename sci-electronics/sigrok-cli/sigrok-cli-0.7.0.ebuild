@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,12 +11,12 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
 	inherit git-r3 autotools
 else
-	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
+	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Command-line client for the sigrok logic analyzer software"
-HOMEPAGE="http://sigrok.org/wiki/Sigrok-cli"
+HOMEPAGE="https://sigrok.org/wiki/Sigrok-cli"
 
 LICENSE="GPL-3"
 SLOT="0"
