@@ -6,7 +6,7 @@ EAPI=6
 inherit java-pkg-2 java-ant-2 gnome2-utils
 
 DESCRIPTION="An open-source AVR electronics prototyping platform"
-HOMEPAGE="http://arduino.cc/"
+HOMEPAGE="https://arduino.cc/ https://github.com/arduino/"
 
 ARDUINO_LIBRARIES=(
 	"Firmata 2.5.6"
