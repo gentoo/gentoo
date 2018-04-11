@@ -20,7 +20,7 @@ X509_VER="11.3.1" X509_PATCH="${PARCH}-x509-${X509_VER}.patch.xz"
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
-	${SCTP_PATCH:+https://dev.gentoo.org/~whissi/dist/openssh/${SCTP_PATCH}}
+	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~whissi/dist/openssh/${SCTP_PATCH} )}
 	${HPN_PATCH:+hpn? ( https://dev.gentoo.org/~whissi/dist/openssh/${HPN_PATCH} )}
 	${LDAP_PATCH:+ldap? ( https://dev.gentoo.org/~whissi/dist/openssh/${LDAP_PATCH} )}
 	${X509_PATCH:+X509? ( https://dev.gentoo.org/~whissi/dist/openssh/${X509_PATCH} )}
@@ -114,6 +114,14 @@ src_prepare() {
 
 	if use X509 ; then
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
+
+		# We need to patch package version or any X.509 sshd will reject our ssh client
+		# with "userauth_pubkey: could not parse key: string is too large [preauth]"
+		# error
+		einfo "Patching package version for X.509 patch set ..."
+		sed -i \
+			-e "s/^AC_INIT(\[OpenSSH\], \[Portable\]/AC_INIT([OpenSSH], [${X509_VER}]/" \
+			"${S}"/configure.ac || die "Failed to patch package version for X.509 patch"
 
 		einfo "Patching version.h to expose X.509 patch set ..."
 		sed -i \
@@ -209,6 +217,8 @@ src_prepare() {
 			"${S}"/version.h || die "Failed to patch SSH_RELEASE (version.h)"
 	fi
 
+	eapply_user #473004
+
 	tc-export PKG_CONFIG
 	local sed_args=(
 		-e "s:-lcrypto:$(${PKG_CONFIG} --libs openssl):"
@@ -228,8 +238,6 @@ src_prepare() {
 		-e 's/-D_XOPEN_SOURCE//'
 	)
 	sed -i "${sed_args[@]}" configure{.ac,} || die
-
-	eapply_user #473004
 
 	eautoreconf
 }
