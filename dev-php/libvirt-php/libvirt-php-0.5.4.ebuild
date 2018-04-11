@@ -8,15 +8,15 @@ PHP_EXT_SKIP_PHPIZE="yes"
 USE_PHP="php5-6 php7-0 php7-1 php7-2"
 PHP_EXT_ECONF_ARGS=()
 
-inherit php-ext-source-r3 git-r3 autotools
+inherit php-ext-source-r3 autotools
 
 DESCRIPTION="PHP bindings for libvirt"
 HOMEPAGE="http://libvirt.org/php/"
-EGIT_REPO_URI="git://libvirt.org/libvirt-php.git"
+SRC_URI="http://libvirt.org/sources/php/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="doc"
 
 RDEPEND="app-emulation/libvirt
@@ -27,13 +27,14 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/xhtml1 )"
 
 RESTRICT="test"
-DOCS=( ChangeLog NEWS README )
+# ChangeLog and NEWS are empty files
+DOCS=( AUTHORS README )
 # Remove the insane check for pecl-imagick which is only used in examples
 # and is not called upon in any build
 PATCHES=( "${FILESDIR}/remove-imagick-check.patch" )
 
 src_unpack() {
-	git-r3_src_unpack
+	default
 
 	# create the default modules directory to be able
 	# to use the php-ext-source-r3 eclass to configure/build
