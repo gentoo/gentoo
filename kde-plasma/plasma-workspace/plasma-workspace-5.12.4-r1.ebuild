@@ -125,6 +125,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4-startkde-script.patch"
 	"${FILESDIR}/${PN}-5.10-startplasmacompositor-script.patch"
 	"${FILESDIR}/${PN}-5.10.4-unused-dep.patch"
+	"${FILESDIR}/${P}-bbc-weather.patch"
 )
 
 RESTRICT+=" test"
