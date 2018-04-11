@@ -15,11 +15,10 @@ RESTRICT="mirror"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="jad"
+IUSE=""
 
 DEPEND=">=virtual/jdk-1.5"
-RDEPEND=">=virtual/jre-1.5
-	jad? ( dev-java/jad-bin )"
+RDEPEND=">=virtual/jre-1.5"
 
 S="${WORKDIR}"/${MY_P}
 
