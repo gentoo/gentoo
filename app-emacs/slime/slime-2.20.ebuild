@@ -41,6 +41,7 @@ src_compile() {
 	BYTECOMPFLAGS="${BYTECOMPFLAGS} -L contrib -l slime" \
 		elisp-compile contrib/*.el lib/*.el || die
 
+	emake -C doc slime.info || die
 	if use doc ; then
 		VARTEXFONTS="${T}"/fonts \
 			emake -C doc all
