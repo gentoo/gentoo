@@ -13,7 +13,5 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/joint_state_publisher
-"
+RDEPEND=""
 DEPEND="${RDEPEND}"
