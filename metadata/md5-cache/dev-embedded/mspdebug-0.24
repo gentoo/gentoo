@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install prepare
 DEPEND=readline? ( sys-libs/readline:0= ) virtual/libusb:0
 DESCRIPTION=A free debugger for use with MSP430 MCUs
 EAPI=6
-HOMEPAGE=http://dlbeer.co.nz/mspdebug/ https://github.com/dlbeer/mspdebug
+HOMEPAGE=https://dlbeer.co.nz/mspdebug/ https://github.com/dlbeer/mspdebug
 IUSE=readline
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
@@ -10,4 +10,4 @@ RDEPEND=readline? ( sys-libs/readline:0= ) virtual/libusb:0
 SLOT=0
 SRC_URI=https://github.com/dlbeer/mspdebug/archive/v0.24.tar.gz -> mspdebug-0.24.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=f6b9b3600ec614fb090d0f05ce2d630c
+_md5_=1d0a80edf5f7861d29014bedad0d8492
