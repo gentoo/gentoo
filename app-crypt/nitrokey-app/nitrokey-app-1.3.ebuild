@@ -4,7 +4,7 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-inherit cmake-utils
+inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Cross platform personalization tool for the Nitrokey"
 HOMEPAGE="https://github.com/Nitrokey/nitrokey-app"
@@ -32,4 +32,13 @@ RDEPEND="
 	dev-qt/qtwidgets:5"
 DEPEND="
 	${RDEPEND}
+	dev-libs/cppcodec
 	virtual/pkgconfig"
+
+pkg_postinst(){
+	gnome2_icon_cache_update
+}
+
+pkg_postrm(){
+	gnome2_icon_cache_update
+}
