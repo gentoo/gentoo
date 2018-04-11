@@ -65,10 +65,6 @@ src_configure() {
 			--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
 }
 
-src_compile() {
-	default
-}
-
 src_install() {
 	keepdir /var/log/sa
 
