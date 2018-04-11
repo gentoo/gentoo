@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Lars Wendler <polynomial-c@gentoo.org> (11 Apr 2018)
+# Masked until we have a working ldap patch again.
+# See https://bugs.gentoo.org/652438
+>=net-misc/openssh-7.7_p1 ldap
+
 # Göktürk Yüksek <gokturk@gentoo.org> (4 Apr 2018)
 # libewf is getting treecleaned (#547418).
 # Starting with sleuthkit-4.6.0, we statically link sleuthkit to a
