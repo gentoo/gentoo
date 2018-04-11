@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,12 +9,12 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
 	inherit git-r3 autotools
 else
-	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
+	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="basic hardware drivers for logic analyzers and input/output file format support"
-HOMEPAGE="http://sigrok.org/wiki/Libsigrok"
+HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0/2"
