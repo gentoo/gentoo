@@ -1,0 +1,174 @@
+From 558a29efc4c9f055799d23ee6c75464e24489e5a Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Fri, 30 Mar 2018 17:10:32 +0200
+Subject: [weather dataengine] Fix BBC provider to adapt to change RSS feed
+
+Summary:
+The urls of the BBC weather feeds seem to have changed, resulting in the
+dataengine to use no longer existing urls.
+
+I could not find the change documented somewhere and also do not know about
+a contact person with BBC, so done based on examples on website, trial &
+error.
+There are some data issues visible in the new data feeds, so chance is the
+feeds might see more rework and might break things again. But without any
+contract or formal agreement we can just play catch-up.
+
+BUG: 392510
+
+Test Plan:
+Existing configured weather applets using a location from a BBC weather
+service work again.
+Newly configured weather applets using a BBC weather service also work.
+
+Reviewers: #plasma, jriddell, cfeck
+
+Reviewed By: cfeck
+
+Subscribers: cfeck, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D11808
+---
+ dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp | 47 +++++++++++++---------
+ dataengines/weather/ions/bbcukmet/ion_bbcukmet.h   |  4 +-
+ 2 files changed, 31 insertions(+), 20 deletions(-)
+
+diff --git a/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp b/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp
+index 6acaa9b..fcf0bae 100644
+--- a/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp
++++ b/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp
+@@ -266,7 +266,19 @@ bool UKMETIon::updateIonSource(const QString& source)
+                 setData(source, QStringLiteral("validate"), QStringLiteral("bbcukmet|malformed"));
+                 return true;
+             }
+-            m_place[QStringLiteral("bbcukmet|") +sourceAction[2]].XMLurl = sourceAction[3];
++
++            XMLMapInfo& place = m_place[QStringLiteral("bbcukmet|") + sourceAction[2]];
++
++            // backward compatibility after rss feed url change in 2018/03
++            place.sourceExtraArg = sourceAction[3];
++            if (place.sourceExtraArg.startsWith(QLatin1String("http://open.live.bbc.co.uk/"))) {
++                // Old data source id stored the full (now outdated) observation feed url
++                // http://open.live.bbc.co.uk/weather/feeds/en/STATIOID/observations.rss
++                // as extra argument, so extract the id from that
++                place.stationId = place.sourceExtraArg.section(QLatin1Char('/'), -2, -2);
++            } else {
++                place.stationId = place.sourceExtraArg;
++            }
+             getXMLData(sourceAction[0] + QLatin1Char('|') + sourceAction[2]);
+             return true;
+         }
+@@ -288,7 +300,7 @@ void UKMETIon::getXMLData(const QString& source)
+         }
+     }
+ 
+-    const QUrl url(m_place[source].XMLurl);
++    const QUrl url(QStringLiteral("https://weather-broker-cdn.api.bbci.co.uk/en/observation/rss/") + m_place[source].stationId);
+ 
+     KIO::TransferJob* getJob = KIO::get(url, KIO::Reload, KIO::HideProgressInfo);
+     getJob->addMetaData(QStringLiteral("cookies"), QStringLiteral("none")); // Disable displaying cookies
+@@ -328,13 +340,8 @@ void UKMETIon::findPlace(const QString& place, const QString& source)
+ void UKMETIon::getFiveDayForecast(const QString& source)
+ {
+     XMLMapInfo& place = m_place[source];
+-    QUrl xmlMap(place.forecastHTMLUrl);
+-
+-    const QString stationID = xmlMap.path().section(QLatin1Char('/'), -1);
+-
+-    place.XMLforecastURL = QStringLiteral("http://open.live.bbc.co.uk/weather/feeds/en/") + stationID + QStringLiteral("/3dayforecast.rss") + xmlMap.query();
+ 
+-    const QUrl url(place.XMLforecastURL);
++    const QUrl url(QStringLiteral("https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/") + place.stationId);
+ 
+     KIO::TransferJob* getJob = KIO::get(url, KIO::Reload, KIO::HideProgressInfo);
+     getJob->addMetaData(QStringLiteral("cookies"), QStringLiteral("none")); // Disable displaying cookies
+@@ -362,8 +369,6 @@ void UKMETIon::readSearchHTMLData(const QString& source, const QByteArray& html)
+             const QString fullName = result.value(QStringLiteral("fullName")).toString();
+ 
+             if (!id.isEmpty() && !fullName.isEmpty()) {
+-                const QString url = QStringLiteral("http://open.live.bbc.co.uk/weather/feeds/en/") + id + QStringLiteral("/observations.rss");
+-
+                 QString tmp = QStringLiteral("bbcukmet|") + fullName;
+ 
+                 // Duplicate places can exist
+@@ -372,7 +377,7 @@ void UKMETIon::readSearchHTMLData(const QString& source, const QByteArray& html)
+                     counter++;
+                 }
+                 XMLMapInfo& place = m_place[tmp];
+-                place.XMLurl = url;
++                place.stationId = id;
+                 place.place = fullName;
+                 m_locations.append(tmp);
+             }
+@@ -561,6 +566,9 @@ void UKMETIon::parseWeatherForecast(const QString& source, QXmlStreamReader& xml
+         if (xml.isStartElement()) {
+             if (elementName == QLatin1String("item")) {
+                 parseFiveDayForecast(source, xml);
++            } else if (elementName == QLatin1String("link") &&
++                       xml.namespaceUri().isEmpty()) {
++                m_place[source].forecastHTMLUrl = xml.readElementText();
+             } else {
+                 parseUnknownElement(xml);
+             }
+@@ -644,9 +652,6 @@ void UKMETIon::parseWeatherObservation(const QString& source, WeatherData& data,
+                     }
+                 }
+ 
+-            } else if (elementName == QLatin1String("link")) {
+-                m_place[source].forecastHTMLUrl = xml.readElementText();
+-
+             } else if (elementName == QLatin1String("description")) {
+                 QString observeString = xml.readElementText();
+                 const QStringList observeData = observeString.split(QLatin1Char(':'));
+@@ -871,7 +876,7 @@ void UKMETIon::validate(const QString& source)
+     QString placeList;
+     for (const QString& place : qAsConst(m_locations)) {
+         const QString p = place.section(QLatin1Char('|'), 1, 1);
+-        placeList.append(QStringLiteral("|place|") + p + QStringLiteral("|extra|") + m_place[place].XMLurl);
++        placeList.append(QStringLiteral("|place|") + p + QStringLiteral("|extra|") + m_place[place].stationId);
+     }
+     if (m_locations.count() > 1) {
+         setData(source, QStringLiteral("validate"),
+@@ -897,12 +902,18 @@ void UKMETIon::updateWeather(const QString& source)
+     QString weatherSource = source;
+     // TODO: why the replacement here instead of just a new string?
+     weatherSource.replace(QStringLiteral("bbcukmet|"), QStringLiteral("bbcukmet|weather|"));
+-    weatherSource.append(QLatin1Char('|') + place.XMLurl);
++    weatherSource.append(QLatin1Char('|') + place.sourceExtraArg);
+ 
+     Plasma::DataEngine::Data data;
+ 
+-    data.insert(QStringLiteral("Place"), weatherData.stationName);
+-    data.insert(QStringLiteral("Station"), weatherData.stationName);
++    // work-around for buggy observation RSS feed missing the station name
++    QString stationName = weatherData.stationName;
++    if (stationName.isEmpty() || stationName == QLatin1String(",")) {
++        stationName = source.section(QLatin1Char('|'), 1, 1);
++    }
++
++    data.insert(QStringLiteral("Place"), stationName);
++    data.insert(QStringLiteral("Station"), stationName);
+     if (weatherData.observationDateTime.isValid()) {
+         data.insert(QStringLiteral("Observation Timestamp"), weatherData.observationDateTime);
+     }
+diff --git a/dataengines/weather/ions/bbcukmet/ion_bbcukmet.h b/dataengines/weather/ions/bbcukmet/ion_bbcukmet.h
+index a1026f4..d9d3ad3 100644
+--- a/dataengines/weather/ions/bbcukmet/ion_bbcukmet.h
++++ b/dataengines/weather/ions/bbcukmet/ion_bbcukmet.h
+@@ -155,10 +155,10 @@ private:
+ 
+ private:
+     struct XMLMapInfo {
++        QString stationId;
+         QString place;
+-        QString XMLurl;
+         QString forecastHTMLUrl;
+-        QString XMLforecastURL;
++        QString sourceExtraArg;
+     };
+ 
+     // Key dicts
+-- 
+cgit v0.11.2
