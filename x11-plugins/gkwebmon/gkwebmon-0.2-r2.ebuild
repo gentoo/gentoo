@@ -6,7 +6,7 @@ EAPI=6
 inherit gkrellm-plugin toolchain-funcs
 
 DESCRIPTION="A web monitor plugin for GKrellM2"
-HOMEPAGE="http://${PN}.sourceforge.net/"
+HOMEPAGE="http://gkwebmon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
