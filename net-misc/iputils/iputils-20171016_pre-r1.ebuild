@@ -42,7 +42,7 @@ LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 			!gcrypt? (
 				nettle? ( dev-libs/nettle[static-libs(+)] )
 				!nettle? (
-					libressl? ( dev-libs/libressl[static-libs(+)] )
+					libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 					!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
 				)
 			)
