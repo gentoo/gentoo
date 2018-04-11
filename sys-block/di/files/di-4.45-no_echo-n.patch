@@ -62,7 +62,15 @@ https://www.in-ulm.de/%7Emascheck/various/echo+printf/
  }
 --- di-4.45/mkconfig/mkconfig.sh
 +++ di-4.45/mkconfig/mkconfig.sh
-@@ -154,7 +154,7 @@
+@@ -28,7 +28,6 @@
+ . ${_MKCONFIG_DIR}/bin/shellfuncs.sh
+ 
+ doshelltest $0 $@
+-setechovars
+ 
+ LOG="mkconfig.log"
+ _MKCONFIG_TMP="_tmp_mkconfig"
+@@ -154,7 +153,7 @@
    tlabel=$2
  
    echo "   $ifleveldisp[${tname}] ${tlabel} ... " >&9
@@ -71,6 +79,16 @@ https://www.in-ulm.de/%7Emascheck/various/echo+printf/
  }
  
  _doexport () {
+--- di-4.45/mkconfig/mkc.sh
++++ di-4.45/mkconfig/mkc.sh
+@@ -16,7 +16,6 @@
+ . ${_MKCONFIG_DIR}/bin/shellfuncs.sh
+ 
+ doshelltest $0 $@
+-setechovars
+ 
+ rc=0
+ args=$@
 --- di-4.45/mkconfig/units/c-main.sh
 +++ di-4.45/mkconfig/units/c-main.sh
 @@ -559,7 +559,7 @@
