@@ -5,8 +5,8 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit autotools python-single-r1 vala
 
-DESCRIPTION="Ccnet is a framework for writing networked applications in C"
-HOMEPAGE="https://github.com/haiwen/ccnet http://seafile.com/"
+DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
+HOMEPAGE="https://github.com/haiwen/seafile/ http://www.seafile.com/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
@@ -17,16 +17,19 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	net-libs/libsearpc[${PYTHON_USEDEP}]
-	>=dev-libs/glib-2.16.0:2
-	>=dev-libs/libevent-2.0
-	dev-libs/openssl:0=
+	=net-libs/ccnet-${PV}[${PYTHON_USEDEP}]
+	dev-libs/glib:2
+	dev-libs/libevent:0
+	dev-libs/jansson
+	sys-libs/zlib:0
+	net-misc/curl
+	dev-libs/openssl:0
 	dev-db/sqlite:3"
 DEPEND="${RDEPEND}
 	$(vala_depend)"
 
 src_prepare() {
 	default
-	sed -i -e "s/(DESTDIR)//" libccnet.pc.in || die
 	sed -i -e 's/valac /${VALAC} /' lib/Makefile.am || die
 	eautoreconf
 	vala_src_prepare
@@ -36,4 +39,5 @@ src_install() {
 	default
 	# Remove unnecessary .la files, as recommended by ltprune.eclass
 	find "${ED}" -name '*.la' -delete || die
+	python_fix_shebang "${ED}"usr/bin
 }

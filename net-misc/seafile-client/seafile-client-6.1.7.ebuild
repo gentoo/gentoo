@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils
+inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Seafile desktop client"
 HOMEPAGE="https://github.com/haiwen/seafile-client/ http://www.seafile.com/"
@@ -16,11 +16,10 @@ IUSE="shibboleth test"
 RDEPEND="net-libs/libsearpc
 	=net-libs/ccnet-${PV}
 	=net-misc/seafile-${PV}
-	>=dev-libs/libevent-2.0
-	>=dev-libs/jansson-2.0
-	dev-libs/openssl:0=
+	dev-libs/libevent
+	dev-libs/jansson
+	dev-libs/openssl:0
 	dev-db/sqlite:3
-
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
@@ -47,4 +46,12 @@ src_configure() {
 		-DBUILD_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
