@@ -185,6 +185,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	#652958
+	local sudo_db="${EROOT}/var/db/sudo"
+	if [[ "$(stat -c %a "${sudo_db}")" -ne 711 ]] ; then
+		chmod 711 "${sudo_db}" || die
+	fi
+
 	if use ldap ; then
 		ewarn
 		ewarn "sudo uses the /etc/ldap.conf.sudo file for ldap configuration."
