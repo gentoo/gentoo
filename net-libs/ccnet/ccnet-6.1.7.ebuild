@@ -17,9 +17,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	net-libs/libsearpc[${PYTHON_USEDEP}]
-	>=dev-libs/glib-2.16.0:2
-	>=dev-libs/libevent-2.0
-	dev-libs/openssl:0=
+	dev-libs/glib:2
+	dev-libs/libevent:0
+	dev-libs/openssl:0
 	dev-db/sqlite:3"
 DEPEND="${RDEPEND}
 	$(vala_depend)"
