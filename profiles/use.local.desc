@@ -1600,8 +1600,6 @@ dev-libs/xmlsec:gnutls - Install xmlsec-gnutls library
 dev-libs/xmlsec:nss - Install xmlsec-nss library
 dev-libs/xmlsec:openssl - Install xmlsec-openssl library
 dev-libs/yaz:ziffy - Install ziffy, a promiscuous Z39.50 APDU sniffer
-dev-lisp/abcl:clisp - Build Armed Bear Common Lisp using GNU CLISP
-dev-lisp/abcl:cmucl - Build Armed Bear Common Lisp using CMU Common Lisp
 dev-lisp/abcl:jad - Enable support for disassembling compiled code using JAD
 dev-lisp/clisp:hyperspec - Use local hyperspec instead of online version
 dev-lisp/clisp:new-clx - Build CLISP with support for the NEW-CLX module which is a -C binding to the Xorg libraries

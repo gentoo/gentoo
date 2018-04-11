@@ -2905,7 +2905,7 @@ dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line 
 dev-libs/atf 0.21: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.22.0 2.24.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
-dev-libs/beignet 1.3.1 1.3.2: OpenCL implementation for Intel GPUs
+dev-libs/beignet 1.3.2: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
@@ -7571,7 +7571,7 @@ media-libs/lilv 0.20.0 0.24.2 0.24.2-r2: Library to make the use of LV2 plugins 
 media-libs/lv2 1.10.0-r1 1.14.0 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.8.2 2.9.0-r1 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 17.1.10 17.2.8 17.3.8: OpenGL-like graphic library for Linux
+media-libs/mesa 17.2.8 17.3.8: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.4.1-r6: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -9964,7 +9964,7 @@ sys-devel/binutils 2.29.1-r1: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4 0.4_p20160328: Another set of autoconf macros for compiling against boost
-sys-devel/clang 3.9.1-r100 4.0.1 5.0.1: C language family frontend for LLVM
+sys-devel/clang 4.0.1 5.0.1: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.1 4.0.1 5.0.1: Meta-ebuild for clang runtime libraries
 sys-devel/crossdev 20171230: Gentoo Cross-toolchain generator
 sys-devel/dev86 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
@@ -9976,7 +9976,7 @@ sys-devel/gdb 7.10.1 7.12.1: GNU debugger
 sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20161104 20170101: Updated config.sub and config.guess file from GNU
 sys-devel/libtool 2.4.6-r3: A shared library tool for developers
-sys-devel/llvm 3.9.1-r1 4.0.1-r1 5.0.1: Low Level Virtual Machine
+sys-devel/llvm 4.0.1-r1 5.0.1: Low Level Virtual Machine
 sys-devel/llvm-common 4.0.1 5.0.1: Common files shared between multiple slots of LLVM
 sys-devel/llvmgold 4 5: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17: GNU macro processor
