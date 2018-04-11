@@ -464,7 +464,7 @@ app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_ex
 
 # Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
 # No java on ARM
-net-analyzer/wireshark doc-pdf bcg729
+net-analyzer/wireshark doc-pdf bcg729 maxminddb
 
 # Markus Meier <maekke@gentoo.org> (25 Jul 2012)
 # no stable media-video/vlc yet, bug #401313
