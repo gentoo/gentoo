@@ -9,4 +9,4 @@ RDEPEND=app-admin/gkrellm:2[X] dev-libs/openssl:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/gkwebmon/gkwebmon-0.2.tgz
 _eclasses_=gkrellm-plugin	e3548dfd06a50087a45520f52934a39c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=cde177de4f05bba32e3cb6dc1f6a085b
+_md5_=3bc8ea564f8ded9b61202328227ed669
