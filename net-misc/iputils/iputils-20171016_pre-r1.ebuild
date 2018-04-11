@@ -36,17 +36,19 @@ IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SEC
 
 LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 	idn? ( net-dns/libidn[static-libs(+)] )
-	ipv6? ( ssl? (
-		gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
-		!gcrypt? (
-			nettle? ( dev-libs/nettle[static-libs(+)] )
-			!nettle? (
-				libressl? ( dev-libs/libressl:0[static-libs(+)] )
-				!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
+	ipv6? (
+		ssl? (
+			gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
+			!gcrypt? (
+				nettle? ( dev-libs/nettle[static-libs(+)] )
+				!nettle? (
+					libressl? ( dev-libs/libressl[static-libs(+)] )
+					!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
+				)
 			)
 		)
 	)
-)"
+"
 RDEPEND="arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
 	traceroute? ( !net-analyzer/traceroute )
@@ -94,7 +96,7 @@ src_configure() {
 
 	if use ipv6 && use ssl ; then
 		myconf=(
-			USE_CRYPTO=$(usex openssl)
+			USE_CRYPTO=yes
 			USE_GCRYPT=$(usex gcrypt)
 			USE_NETTLE=$(usex nettle)
 		)
