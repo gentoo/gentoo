@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="General purpose crypto library based on the code used in GnuPG"
 HOMEPAGE="http://www.gnupg.org/"
@@ -15,11 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
-	!dev-libs/libgcrypt:0/11
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r19
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
-	)"
+	!dev-libs/libgcrypt:0/11"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -53,12 +49,12 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 
-	rm -r "${ED%/}"/usr/{bin,include,lib*/*.so,share} || die
+	rm -r "${ED}"usr/{bin,include,lib*/*.so,share} || die
 }
 
 multilib_src_install_all() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

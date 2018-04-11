@@ -8,10 +8,8 @@ Signed-Off-By: Nitin A Kamble <nitin.a.kamble@intel.com>
 2011/12/01
 
 
-Index: liboil-0.3.17/liboil/amd64/wavelet.c
-===================================================================
---- liboil-0.3.17.orig/liboil/amd64/wavelet.c
-+++ liboil-0.3.17/liboil/amd64/wavelet.c
+--- a/liboil/amd64/wavelet.c
++++ b/liboil/amd64/wavelet.c
 @@ -21,14 +21,14 @@ deinterleave2_asm (int16_t *d1, int16_t 
    asm volatile ("\n"
        "  sub $2, %%rcx\n"

@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit bash-completion-r1 eutils multilib-minimal
+EAPI=6
+
+inherit bash-completion-r1 multilib-minimal
 
 DESCRIPTION="D-Bus bindings for glib"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -22,22 +23,13 @@ DEPEND="${CDEPEND}
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
-RDEPEND="${CDEPEND}
-	abi_x86_32? (
-		!<app-emulation/emul-linux-x86-baselibs-20131008-r8
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
-"
+RDEPEND="${CDEPEND}"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README )
 
 set_TBD() {
 	# out of sources build dir for make check
 	export TBD="${BUILD_DIR}-tests"
-}
-
-src_prepare() {
-	epatch_user
 }
 
 multilib_src_configure() {
@@ -90,5 +82,5 @@ multilib_src_install_all() {
 	newbashcomp "${ED}"/etc/bash_completion.d/dbus-bash-completion.sh dbus-send
 	rm -rf "${ED}"/etc/bash_completion.d || die
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

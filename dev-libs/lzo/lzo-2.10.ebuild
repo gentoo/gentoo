@@ -22,7 +22,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 	gen_usr_ldscript -a lzo2
 }
 

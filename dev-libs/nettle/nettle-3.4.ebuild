@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools multilib-build multilib-minimal multilib toolchain-funcs
+inherit autotools multilib-minimal toolchain-funcs
 
 DESCRIPTION="Low-level cryptographic library"
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
@@ -15,11 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="doc +gmp neon static-libs test cpu_flags_x86_aes"
 
 DEPEND="gmp? ( >=dev-libs/gmp-5.0:0=[${MULTILIB_USEDEP}] )"
-RDEPEND="${DEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r17
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="${DEPEND}"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/nettle/nettle-stdint.h

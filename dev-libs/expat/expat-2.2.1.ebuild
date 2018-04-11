@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils libtool multilib toolchain-funcs multilib-minimal
+
+inherit autotools multilib-minimal toolchain-funcs
 
 DESCRIPTION="Stream-oriented XML parser library"
 HOMEPAGE="https://libexpat.github.io/"
@@ -12,16 +13,19 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="elibc_FreeBSD examples static-libs unicode"
-RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r6
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+RDEPEND=""
 
 DOCS=( AUTHORS Changes README )
+HTML_DOCS="doc/expat.png doc/reference.html doc/style.css doc/valid-xhtml10.png"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.1-getrandom-detection.patch
+	"${FILESDIR}"/${PN}-2.2.1-posix-shell.patch
+	"${FILESDIR}"/${PN}-2.2.1-gentoo-dash.patch  # bug 622360
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-getrandom-detection.patch
-	epatch "${FILESDIR}"/${P}-posix-shell.patch
-	epatch "${FILESDIR}"/${P}-gentoo-dash.patch  # bug 622360
-	eapply_user
+	default
 	eautoreconf
 }
 
@@ -50,11 +54,11 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake install DESTDIR="${D}"
+	emake install DESTDIR="${ED}"
 
 	if use unicode; then
 		pushd "${BUILD_DIR}"w >/dev/null
-		emake installlib DESTDIR="${D}" LIBRARY=libexpatw.la
+		emake installlib DESTDIR="${ED}" LIBRARY=libexpatw.la
 		popd >/dev/null
 
 		pushd "${ED}"/usr/$(get_libdir)/pkgconfig >/dev/null
@@ -73,14 +77,10 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 
-	# Note: Use of HTML_DOCS would add unwanted "doc" subfolder
-	docinto html
-	dodoc doc/*.{css,html,png}
-
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
 		doins examples/*.c
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

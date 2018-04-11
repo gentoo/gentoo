@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit libtool ltprune multilib-minimal toolchain-funcs
+inherit libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
 HOMEPAGE="http://www.gnupg.org/related_software/libgpg-error"
@@ -14,11 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp nls static-libs"
 
-RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r12
-	)"
+RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
@@ -47,5 +43,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

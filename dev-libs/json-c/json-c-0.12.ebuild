@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-multilib
+inherit autotools multilib-minimal
 
 DESCRIPTION="A JSON implementation in C"
 HOMEPAGE="https://github.com/json-c/json-c/wiki"
@@ -16,29 +14,31 @@ SLOT="0/2"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc static-libs"
 
-RDEPEND="
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140406-r3
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND=""
 
 # tests break otherwise
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
 src_prepare() {
+	default
 	sed -i -e "s:-Werror::" Makefile.am.inc || die
-	autotools-multilib_src_prepare
+	eautoreconf
+
+	# tests break otherwise
+	multilib_copy_sources
 }
 
-src_test() {
+multilib_src_test() {
 	export USE_VALGRIND=0 VERBOSE=1
-	autotools-multilib_src_test
+	default
 }
 
-src_install() {
-	use doc && HTML_DOCS=( "${S}"/doc/html )
-	autotools-multilib_src_install
+multilib_src_install_all() {
+	use doc && HTML_DOCS=( "${S}"/doc/html/. )
+	einstalldocs
 
 	# add symlink for projects not using pkgconfig
 	dosym ../json-c /usr/include/json-c/json
+
+	find "${ED}" -name '*.la' -delete || die
 }
