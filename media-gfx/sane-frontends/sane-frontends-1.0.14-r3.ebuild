@@ -5,8 +5,7 @@ EAPI=6
 
 DESCRIPTION="Scanner Access Now Easy"
 HOMEPAGE="http://www.sane-project.org"
-SRC_URI="ftp://ftp.sane-project.org/pub/sane/${P}/${P}.tar.gz
-	ftp://ftp.sane-project.org/pub/sane/old-versions/${P}/${P}.tar.gz"
+SRC_URI="https://alioth.debian.org/frs/download.php/file/1140/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
