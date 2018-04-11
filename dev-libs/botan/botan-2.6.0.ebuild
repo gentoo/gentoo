@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit multilib python-r1 toolchain-funcs
+inherit multilib python-r1 toolchain-funcs versionator
 
 MY_PN="Botan"
 MY_P="${MY_PN}-${PV}"
@@ -13,7 +13,7 @@ HOMEPAGE="https://botan.randombit.net/"
 SRC_URI="https://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-SLOT="2/5" # soname version
+SLOT="2/$(get_version_component_range 2)" # soname version
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
 
