@@ -189,7 +189,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
-		gen_usr_ldscript -a blkid mount smartcols uuid
+		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
 
 		use python && python_optimize
 	fi
