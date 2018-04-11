@@ -10117,7 +10117,7 @@ sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6: Library to query devices usi
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: C++ Template math library, for symbolic and numeric calculus applications
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
-sys-libs/libomp 3.9.1 4.0.1 5.0.1: OpenMP runtime library for LLVM/clang compiler
+sys-libs/libomp 4.0.1 5.0.1: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.0.0-r1: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1: library that provides direct access to the IEEE 1394 bus
 sys-libs/libseccomp 2.3.0 2.3.2: high level interface to Linux seccomp filter
@@ -10130,7 +10130,7 @@ sys-libs/libstdc++-v3 3.3.6-r1: Compatibility package for binaries linked agains
 sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3: Compatibility package for old termcap-based programs
 sys-libs/libunwind 1.1-r1 1.2.1: Portable and efficient API to determine the call-chain of a program
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
-sys-libs/llvm-libunwind 3.9.1 4.0.1 5.0.1: C++ runtime stack unwinder from LLVM
+sys-libs/llvm-libunwind 4.0.1 5.0.1: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.2: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.18 1.1.19: Light, fast and simple C library focused on standards-conformance and safety
