@@ -21,7 +21,7 @@ else
 fi
 
 DESCRIPTION="Various useful Linux utilities"
-HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
+HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/karelzak/util-linux"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
@@ -32,6 +32,7 @@ IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux 
 RDEPEND="caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
+	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
@@ -123,7 +124,6 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
 		--with-bashcompletiondir="$(get_bashcompdir)"
-		$(multilib_native_use_enable nls)
 		$(multilib_native_use_enable suid makeinstall-chown)
 		$(multilib_native_use_enable suid makeinstall-setuid)
 		$(multilib_native_use_with python)
@@ -134,6 +134,7 @@ multilib_src_configure() {
 		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
 		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
 		$(tc-has-tls || echo --disable-tls)
+		$(use_enable nls)
 		$(use_enable unicode widechar)
 		$(use_enable static-libs static)
 		$(use_with selinux)
@@ -193,7 +194,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
-		gen_usr_ldscript -a blkid mount smartcols uuid
+		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
 
 		use python && python_optimize
 	fi
