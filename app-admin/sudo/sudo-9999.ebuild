@@ -175,12 +175,13 @@ src_install() {
 
 	pamd_mimic system-auth sudo auth account session
 
-	keepdir /var/db/sudo
-	fperms 0700 /var/db/sudo
+	keepdir /var/db/sudo/lectured
+	fperms 0700 /var/db/sudo/lectured
+	fperms 0711 /var/db/sudo #652958
 
 	# Don't install into /var/run as that is a tmpfs most of the time
 	# (bug #504854)
-	rm -rf "${D}"/var/run
+	rm -rf "${ED}"/var/run
 }
 
 pkg_postinst() {
