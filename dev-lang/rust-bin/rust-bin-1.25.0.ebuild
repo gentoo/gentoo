@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,6 +27,7 @@ QA_PREBUILT="
 	opt/${P}/bin/rustdoc-bin-${PV}
 	opt/${P}/lib/*.so
 	opt/${P}/lib/rustlib/*/lib/*.so
+	opt/${P}/lib/rustlib/*/lib/*.rlib*
 "
 
 src_unpack() {
@@ -58,9 +59,9 @@ src_install() {
 	mv "${D}/opt/${P}/bin/rustdoc" "${D}/opt/${P}/bin/${rustdoc}" || die
 	mv "${D}/opt/${P}/bin/rust-gdb" "${D}/opt/${P}/bin/${rustgdb}" || die
 
-	dosym "/opt/${P}/bin/${rustc}" "/usr/bin/${rustc}"
-	dosym "/opt/${P}/bin/${rustdoc}" "/usr/bin/${rustdoc}"
-	dosym "/opt/${P}/bin/${rustgdb}" "/usr/bin/${rustgdb}"
+	dosym "../../opt/${P}/bin/${rustc}" "/usr/bin/${rustc}"
+	dosym "../../opt/${P}/bin/${rustdoc}" "/usr/bin/${rustdoc}"
+	dosym "../../opt/${P}/bin/${rustgdb}" "/usr/bin/${rustgdb}"
 
 	cat <<-EOF > "${T}"/50${P}
 	LDPATH="/opt/${P}/lib"
