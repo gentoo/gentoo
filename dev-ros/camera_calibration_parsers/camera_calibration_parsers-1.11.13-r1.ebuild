@@ -19,6 +19,8 @@ RDEPEND="
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-ros/rosconsole
 	>=dev-cpp/yaml-cpp-0.5:=
+	dev-ros/roscpp
+	dev-ros/roscpp_serialization
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
