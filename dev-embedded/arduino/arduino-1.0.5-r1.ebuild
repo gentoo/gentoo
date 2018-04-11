@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc examples"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="An open-source AVR electronics prototyping platform"
-HOMEPAGE="http://arduino.cc/ https://arduino.googlecode.com/"
+HOMEPAGE="https://arduino.cc/ https://github.com/arduino/"
 SRC_URI="https://${PN}.googlecode.com/files/${P}-src.tar.gz
 mirror://gentoo/arduino-icons.tar.bz2"
 LICENSE="GPL-2 GPL-2+ LGPL-2 CC-BY-SA-3.0"
