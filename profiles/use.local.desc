@@ -3705,7 +3705,6 @@ net-analyzer/wireshark:bcg729 - Use media-plugins/mediastreamer-bcg729 to play G
 net-analyzer/wireshark:capinfos - Install capinfos, to print information about capture files
 net-analyzer/wireshark:captype - Install captype, to print the file types of capture files
 net-analyzer/wireshark:ciscodump - Install ciscodump, extcap interface to capture from a remote Cisco router
-net-analyzer/wireshark:crypt - Use dev-libs/libgcrypt to decrypt traffic
 net-analyzer/wireshark:dftest - Install dftest, to display filter byte-code, for debugging dfilter routines
 net-analyzer/wireshark:doc-pdf - Build documentation in pdf format (US and a4 paper sizes)
 net-analyzer/wireshark:dumpcap - Install dumpcap, to dump network traffic from inside wireshark
