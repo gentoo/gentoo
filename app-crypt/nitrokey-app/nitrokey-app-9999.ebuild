@@ -25,8 +25,10 @@ SLOT="0"
 
 RDEPEND="
 	app-crypt/libnitrokey:=
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5"
 DEPEND="
 	${RDEPEND}
