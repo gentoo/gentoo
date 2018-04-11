@@ -5452,6 +5452,7 @@ sys-fs/btrfs-progs:reiserfs - Enable reiserfs support in btrfs-convert tool.
 sys-fs/btrfs-progs:static - Build static binaries in addition to the dynamic ones
 sys-fs/btrfs-progs:zstd - Enable zstd compression support.
 sys-fs/btrfsmaintenance:systemd - Enable systemd services and timers instead of cron timers
+sys-fs/cryfs:custom-optimization - Use user-defined compiler optimization level
 sys-fs/cryfs:update-check - Enable automatic checking for updates and security vulnerabilities
 sys-fs/cryptsetup:argon2 - Enable password hashing algorithm from app-crypt/argon2
 sys-fs/cryptsetup:gcrypt - Use dev-libs/libgcrypt crypto backend
