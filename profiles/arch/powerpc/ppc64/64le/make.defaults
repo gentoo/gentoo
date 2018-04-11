@@ -6,3 +6,6 @@ CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
+
+CHOST_ppc64="powerpc64le-unknown-linux-gnu"
+CHOST_ppc="powerpcle-unknown-linux-gnu"
