@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ MY_P="${P}-Source"
 inherit cmake-utils
 
 DESCRIPTION="Provides cmake helper macros and targets for linux, especially fedora developers"
-HOMEPAGE="https://fedorahosted.org/cmake-fedora/#Getcmake-fedora"
-SRC_URI="https://fedorahosted.org/releases/c/m/cmake-fedora/${MY_P}.tar.gz"
+HOMEPAGE="https://pagure.io/cmake-fedora"
+SRC_URI="https://releases.pagure.org/cmake-fedora/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
