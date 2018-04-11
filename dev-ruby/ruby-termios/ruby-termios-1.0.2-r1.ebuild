@@ -7,7 +7,7 @@ USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md termios.rd"
 
-# There are no tests in the gem, and the upstream tests only work 
+# There are no tests in the gem, and the upstream tests only work
 # with a normal TTY, bug 340575.
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
