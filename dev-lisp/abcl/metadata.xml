@@ -14,8 +14,6 @@
 		Lisp that runs in a Java virtual machine.
 	</longdescription>
 	<use>
-	<flag name="clisp">Build Armed Bear Common Lisp using GNU CLISP</flag>
-	<flag name="cmucl">Build Armed Bear Common Lisp using CMU Common Lisp</flag>
 	<flag name="jad">Enable support for disassembling compiled code using JAD</flag>
 	</use>
 </pkgmetadata>
