@@ -15,7 +15,7 @@ SRC_URI="mirror://gentoo/binding-${MY_V}.zip -> ${P}.zip"
 
 LICENSE="BSD"
 SLOT="1.0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"
