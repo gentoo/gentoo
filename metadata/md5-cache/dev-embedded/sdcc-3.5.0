@@ -4,7 +4,7 @@ DESCRIPTION=Small device C compiler (for various microprocessors)
 EAPI=5
 HOMEPAGE=http://sdcc.sourceforge.net/
 IUSE=mcs51 z80 z180 r2k r3ka gbz80 tlcs90 ds390 ds400 pic14 pic16 hc08 s08 stm8 ucsim device-lib packihx +sdcpp sdcdb sdbinutils non-free +boehm-gc doc
-KEYWORDS=amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2 ZLIB non-free? ( MicroChip-SDCC ) packihx? ( public-domain )
 RDEPEND=dev-libs/boost:= sys-libs/ncurses:= sys-libs/readline:0= >=dev-embedded/gputils-0.13.7 boehm-gc? ( dev-libs/boehm-gc:= ) !dev-embedded/sdcc-svn
 REQUIRED_USE=mcs51? ( sdbinutils ) ds390? ( sdbinutils ) ds400? ( sdbinutils ) hc08? ( sdbinutils ) s08? ( sdbinutils )
@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/sdcc/sdcc-src-3.5.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-3.5.0.tar.bz2 )
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=7e68d9ca4f246eb67d3f3fa4f0bd7831
+_md5_=0e03f5f78c2d38f8f2bb8a09fdcd2c24
