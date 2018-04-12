@@ -6,28 +6,9 @@ Subject: [weather dataengine] Fix BBC provider to adapt to change RSS feed
 Summary:
 The urls of the BBC weather feeds seem to have changed, resulting in the
 dataengine to use no longer existing urls.
-
-I could not find the change documented somewhere and also do not know about
-a contact person with BBC, so done based on examples on website, trial &
-error.
-There are some data issues visible in the new data feeds, so chance is the
-feeds might see more rework and might break things again. But without any
-contract or formal agreement we can just play catch-up.
-
+...
 BUG: 392510
-
-Test Plan:
-Existing configured weather applets using a location from a BBC weather
-service work again.
-Newly configured weather applets using a BBC weather service also work.
-
-Reviewers: #plasma, jriddell, cfeck
-
-Reviewed By: cfeck
-
-Subscribers: cfeck, plasma-devel
-
-Tags: #plasma
+...
 
 Differential Revision: https://phabricator.kde.org/D11808
 ---
