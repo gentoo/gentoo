@@ -12,7 +12,7 @@ SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="bzip2 clamdtop iconv ipv6 libressl milter metadata-analysis-api selinux static-libs system-libmspack test uclibc"
+IUSE="bzip2 doc clamdtop iconv ipv6 libressl milter metadata-analysis-api selinux static-libs system-libmspack test uclibc"
 
 CDEPEND="bzip2? ( app-arch/bzip2 )
 	clamdtop? ( sys-libs/ncurses:0 )
@@ -36,7 +36,9 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-clamav )"
 
-DOCS=( AUTHORS BUGS ChangeLog FAQ INSTALL NEWS README UPGRADE )
+DOCS=( docs/clamdoc.pdf docs/phishsigs_howto.pdf docs/signatures.pdf )
+HTML_DOCS=( docs/html )
+
 PATCHES=(
 	"${FILESDIR}/${P}_autotools.patch"
 )
@@ -119,7 +121,7 @@ src_install() {
 	if use milter ; then
 		# MilterSocket one to include ' /' because there is a 2nd line for
 		# inet: which we want to leave
-		dodoc "${FILESDIR}"/clamav-milter.README.gentoo
+		##dodoc "${FILESDIR}"/clamav-milter.README.gentoo
 		sed -i -e "s:^\(Example\):\# \1:" \
 			-e "s:.*\(PidFile\) .*:\1 ${EPREFIX}/var/run/clamav/clamav-milter.pid:" \
 			-e "s+^\#\(ClamdSocket\) .*+\1 unix:${EPREFIX}/var/run/clamav/clamd.sock+" \
@@ -134,6 +136,11 @@ src_install() {
 		EOF
 
 		systemd_newunit "${FILESDIR}/clamav-milter.service-r1" clamav-milter.service
+	fi
+
+	if use doc; then
+	   einstalldocs
+	   doman docs/man/*.[1-8]	    
 	fi
 
 	for i in clamd freshclam clamav-milter
