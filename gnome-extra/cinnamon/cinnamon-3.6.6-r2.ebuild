@@ -28,7 +28,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( $(python_gen_useflags 'python3*') )
 "
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-accessibility/at-spi2-atk:2
