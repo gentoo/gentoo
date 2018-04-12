@@ -303,7 +303,7 @@ app-cdr/isomaster 1.3.13: Graphical CD image editor for reading, modifying and w
 app-cdr/kcdemu 0.7.2: Frontend to cdemu daemon based on KDE Frameworks
 app-cdr/mirage2iso 0.4.2: CD/DVD image converter using libmirage
 app-cdr/multicd 1.7.5-r1: Tool for making direct copies of your files to multiple cd's
-app-cdr/nrg2iso 0.4-r1 0.4-r2: Convert CD images from nrg (Nero) to iso
+app-cdr/nrg2iso 0.4-r2: Convert CD images from nrg (Nero) to iso
 app-cdr/poweriso 1.3: Utility to extract, list and convert PowerISO DAA image files
 app-cdr/sync2cd 1.3-r1: An incremental archiving tool to CD/DVD
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
@@ -5407,7 +5407,7 @@ dev-python/pyzmq 16.0.2: Lightweight and super-fast messaging library built on t
 dev-python/pyzor 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.10.1-r1 2.10.3: Python bindings for Qscintilla
+dev-python/qscintilla-python 2.10.3: Python bindings for Qscintilla
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rarfile 2.8 3.0: Module for RAR archive reading
@@ -6281,7 +6281,7 @@ dev-util/xdelta 1.1.4-r1 3.0.11: Computes changes between binary or text files a
 dev-util/xfce4-dev-tools 4.12.0-r1: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
-dev-util/xxdiff 4.0_beta1_p20110426-r1 4.0.1_p20170622: A graphical file and directories comparator and merge tool
+dev-util/xxdiff 4.0.1_p20170622: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-vcs/bzr 2.5.1-r1 2.7.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
@@ -7611,7 +7611,7 @@ media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Rendere
 media-libs/quvi 0.2.19 0.4.2 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.14: The RDF Parser Toolkit
 media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
-media-libs/resid 0.16_p2 0.16_p2-r1: C++ library to emulate the C64 SID chip
+media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rtaudio 4.0.12-r1: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.8.1-r1: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sampleicc 1.6.6: C++ library for reading, writing, manipulating, and applying ICC profiles
@@ -9241,7 +9241,7 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
-sci-geosciences/qgis 2.18.12 3.0.1: User friendly Geographic Information System
+sci-geosciences/qgis 3.0.1: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3: GPS mapping utility
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
@@ -10715,7 +10715,7 @@ x11-libs/pixman 0.34.0: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.10.1 2.10.3: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1: Qt terminal emulator widget
 x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
-x11-libs/qwtpolar 1.1.1-r1 1.1.1-r2: Library for displaying values on a polar coordinate system
+x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
