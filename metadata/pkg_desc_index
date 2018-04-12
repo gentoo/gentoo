@@ -588,7 +588,7 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208 4.0.15_p20180117: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.0.1298: Vim, an improved vi-style text editor
-app-editors/vim-core 8.0.0386 8.0.1298: vim and gvim shared files
+app-editors/vim-core 8.0.1298: vim and gvim shared files
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2 2.9.6: Free (Y)unicode text editor for all unices
