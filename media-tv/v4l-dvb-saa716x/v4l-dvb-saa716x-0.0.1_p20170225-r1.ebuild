@@ -16,7 +16,7 @@ SRC_URI="https://bitbucket.org/powARman/v4l-dvb-saa716x/get/${HG_REVISION}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="+firmware"
 
 DEPEND=""
