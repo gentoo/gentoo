@@ -50,6 +50,7 @@ RDEPEND="
 	voip? (
 		media-libs/opencv[-qt4(-)]
 		media-libs/speex
+		media-libs/speexdsp
 		virtual/ffmpeg[encode]
 	)"
 DEPEND="${RDEPEND}
