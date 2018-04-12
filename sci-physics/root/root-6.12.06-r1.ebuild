@@ -149,8 +149,6 @@ src_configure() {
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/${MY_PREFIX}"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
-		-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
-		-DC_INCLUDE_DIRS="${EPREFIX}/usr/local/include:${EPREFIX}/include:${EPREFIX}/usr/include"
 		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
