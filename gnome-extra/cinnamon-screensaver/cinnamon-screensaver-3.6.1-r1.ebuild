@@ -14,7 +14,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug doc pam systemd xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]
