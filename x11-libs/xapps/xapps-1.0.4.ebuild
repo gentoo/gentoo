@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/linuxmint/xapps/"
 LICENSE="GPL-3"
 
 SRC_URI="https://github.com/linuxmint/xapps/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 SLOT="0"
 IUSE="introspection static-libs"
