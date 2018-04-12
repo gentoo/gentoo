@@ -7,10 +7,10 @@ inherit flag-o-matic multilib-minimal toolchain-funcs
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-7.0-patches/
-PLEVEL=${PV##*_p}
-MY_PV=${PV/_p*}
-MY_PV=${MY_PV/_/-}
-MY_P=${PN}-${MY_PV}
+PLEVEL="${PV##*_p}"
+MY_PV="${PV/_p*}"
+MY_PV="${MY_PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 [[ ${PV} != *_p* ]] && PLEVEL=0
 patches() {
 	[[ ${PLEVEL} -eq 0 ]] && return 1
@@ -29,9 +29,14 @@ patches() {
 
 DESCRIPTION="Another cute console display library"
 HOMEPAGE="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
+
 case ${PV} in
-*_alpha*|*_beta*|*_rc*) SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz" ;;
-*) SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)" ;;
+	*_alpha*|*_beta*|*_rc*)
+		SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+	;;
+	*)
+		SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)"
+	;;
 esac
 
 LICENSE="GPL-3"
@@ -52,6 +57,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-missing-echo-proto.patch
 	"${FILESDIR}"/${PN}-7.0-mingw.patch
 )
+
+# Needed because we don't want the patches being unpacked
+# (which emits annoying and useless error messages)
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+}
 
 src_prepare() {
 	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
@@ -103,18 +114,18 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		--cache-file="${BUILD_DIR}"/config.cache \
-		--docdir='$(datarootdir)'/doc/${PF} \
-		--with-curses \
+	local myeconfargs=(
+		--cache-file="${BUILD_DIR}"/config.cache
+		--with-curses
 		$(use_enable static-libs static)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	if use utils && multilib_is_native_abi && ! tc-is-cross-compiler ; then
 		# code is full of AC_TRY_RUN()
 		mkdir -p examples/rlfe || die
 		cd examples/rlfe || die
-		ECONF_SOURCE=${S}/examples/rlfe \
+		ECONF_SOURCE="${S}"/examples/rlfe \
 		econf --cache-file="${BUILD_DIR}"/config.cache
 	fi
 }
@@ -128,7 +139,7 @@ multilib_src_compile() {
 		local l
 		for l in readline history ; do
 			ln -s ../../shlib/lib${l}$(get_libname)* lib${l}$(get_libname) || die
-			ln -sf ../../lib${l}.a lib${l}.a || die
+			ln -s ../../lib${l}.a lib${l}.a || die
 		done
 		emake
 	fi
