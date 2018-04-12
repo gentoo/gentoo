@@ -7,6 +7,25 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (4 Apr 2018)
+# Qt4 is dead and going away.
+# Bug #525884
+net-dns/avahi qt4
+# Bug #641920
+media-gfx/zbar qt4
+# Bug #634952
+dev-python/matplotlib qt4 test
+# Bug #635072
+app-i18n/fcitx qt4
+<app-i18n/fcitx-unikey-0.2.7 macro-editor
+app-i18n/scim qt4
+app-i18n/scim-bridge qt4
+app-i18n/uim qt4
+# Bug #596714
+<dev-python/ipython-4 qt4 test
+# Bug #623382
+dev-python/pyudev qt4
+
 # Göktürk Yüksek <gokturk@gentoo.org> (4 Apr 2018)
 # libewf is getting treecleaned (#547418).
 # Starting with sleuthkit-4.6.0, we statically link sleuthkit to a
