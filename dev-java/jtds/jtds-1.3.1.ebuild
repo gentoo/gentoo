@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
 HOMEPAGE="http://jtds.sourceforge.net"
 LICENSE="LGPL-2.1"
 SLOT="1.3"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="test" # Needs a running server
 
 CDEPEND="dev-java/jcifs:1.1"

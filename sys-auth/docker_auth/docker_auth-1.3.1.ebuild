@@ -37,7 +37,7 @@ EGO_VENDOR=(
 inherit user golang-build golang-vcs-snapshot
 EGIT_COMMIT="509a03a9622f460ded806a2c7b7b27717b3cb1f5"
 SHORT_COMMIT=${EGIT_COMMIT:0:7}
-SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 KEYWORDS="~amd64"
 
