@@ -13,7 +13,4 @@
 		Armed Bear Common Lisp (ABCL) is an implementation of ANSI Common
 		Lisp that runs in a Java virtual machine.
 	</longdescription>
-	<use>
-	<flag name="jad">Enable support for disassembling compiled code using JAD</flag>
-	</use>
 </pkgmetadata>
