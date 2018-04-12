@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/sidplay2/${P/_p/-p}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc sparc x86"
+KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE="static-libs"
 
 S=${WORKDIR}/${PN}-${MY_MAJ}
