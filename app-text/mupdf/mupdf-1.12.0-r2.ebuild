@@ -46,7 +46,7 @@ PATCHES=(
 		"${FILESDIR}"/${PN}-1.12-CFLAGS.patch
 		"${FILESDIR}"/${PN}-1.9a-debug-build.patch
 		"${FILESDIR}"/${PN}-1.10a-add-desktop-pc-xpm-files.patch
-		"${FILESDIR}"/${PN}-1.11-openssl-curl-x11.patch
+		"${FILESDIR}"/${PN}-1.11-openssl-curl-x11-r1.patch
 		"${FILESDIR}"/${PN}-1.11-drop-libmupdfthird.patch
 )
 
