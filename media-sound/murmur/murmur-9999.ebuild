@@ -92,11 +92,9 @@ src_install() {
 	dodoc -r scripts/server
 	docompress -x /usr/share/doc/${PF}/scripts
 
-	local dir
+	local dir=release
 	if use debug; then
 		dir=debug
-	else
-		dir=release
 	fi
 
 	dobin "${dir}"/murmurd
