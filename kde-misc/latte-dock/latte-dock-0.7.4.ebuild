@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
+DEPEND="
 	$(add_frameworks_dep kactivities)
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kconfig)
@@ -43,8 +43,6 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libxcb
 "
-DEPEND="${RDEPEND}
-	$(add_frameworks_dep extra-cmake-modules)
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( CHANGELOG.md README.md TRANSLATORS )
