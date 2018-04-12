@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="Holland MySQL Library"
+DESCRIPTION="Holland Core Library"
 HOMEPAGE="http://www.hollandbackup.org/"
 
 MY_P="${P%%-*}-${P##*-}"
@@ -16,26 +16,10 @@ SRC_URI="http://hollandbackup.org/releases/stable/${PV%.*}/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
+IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-# MariaDB 10.1 blocked due to
-# https://github.com/holland-backup/holland/issues/125
-RDEPEND="
-	~app-backup/holland-lib-common-${PV}[${PYTHON_USEDEP}]
-	<dev-python/mysql-python-1.2.5[${PYTHON_USEDEP}]
-	!>=dev-db/mariadb-10.1
-"
+RDEPEND=""
 PDEPEND="~app-backup/holland-${PV}[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}/plugins/${PN//-/.}"
-
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/build/html/. )
-
-	distutils-r1_python_install_all
-}

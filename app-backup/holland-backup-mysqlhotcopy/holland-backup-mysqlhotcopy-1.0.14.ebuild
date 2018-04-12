@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="Holland MySQL Library"
+DESCRIPTION="Holland MySQL (MyISAM) Hotcopy Plugin"
 HOMEPAGE="http://www.hollandbackup.org/"
 
 MY_P="${P%%-*}-${P##*-}"
@@ -19,23 +19,28 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-# MariaDB 10.1 blocked due to
-# https://github.com/holland-backup/holland/issues/125
 RDEPEND="
 	~app-backup/holland-lib-common-${PV}[${PYTHON_USEDEP}]
-	<dev-python/mysql-python-1.2.5[${PYTHON_USEDEP}]
-	!>=dev-db/mariadb-10.1
+	~app-backup/holland-lib-mysql-${PV}[${PYTHON_USEDEP}]
 "
 PDEPEND="~app-backup/holland-${PV}[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}/plugins/${PN//-/.}"
 
-python_compile_all() {
-	use doc && emake -C docs html
-}
-
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/build/html/. )
+	use doc && local DOCS=( README docs/man/holland-mysqlhotcopy.rst )
 
 	distutils-r1_python_install_all
+
+	keepdir /etc/holland
+	keepdir /etc/holland/backupsets
+	keepdir /etc/holland/providers
+
+	insinto /etc/holland/backupsets
+	doins "${S}"/../../config/backupsets/examples/${PN##*-}.conf
+
+	insinto /etc/holland/providers
+	doins "${S}"/../../config/providers/${PN##*-}.conf
+
+	doman docs/man/holland-mysqlhotcopy.5
 }
