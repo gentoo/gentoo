@@ -140,7 +140,7 @@ src_install() {
 
 	if use doc; then
 	   einstalldocs
-	   doman docs/man/*.[1-8]	    
+	   doman docs/man/*.[1-8]
 	fi
 
 	for i in clamd freshclam clamav-milter
