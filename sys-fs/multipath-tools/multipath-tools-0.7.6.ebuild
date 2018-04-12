@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -31,7 +31,9 @@ DEPEND="
 
 CONFIG_CHECK="~DM_MULTIPATH"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.7.4-respect-flags.patch )
+RESTRICT="test"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.7.5-respect-flags.patch )
 
 get_systemd_pv() {
 	use systemd && \
@@ -49,19 +51,15 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Fix for bug #624884
-	if grep -qF DM_TABLE_STATE kpartx/kpartx.rules ; then
-		sed '/DM_TABLE_STATE/d' -i kpartx/kpartx.rules || die
-	else
-		elog "DM_TABLE_STATE sed hack is no longer necessary."
-	fi
-
 	# The upstream lacks any way to configure the build at present
 	# and ceph is a huge dependency, so we're using sed to make it
-	# optional until the upstream has a proer configure system
+	# optional until the upstream has a proper configure system
 	if ! use rbd ; then
-		sed -i -e "s/libcheckrbd.so/# libcheckrbd.so/" libmultipath/checkers/Makefile
-		sed -i -e "s/-lrados//" libmultipath/checkers/Makefile
+		sed \
+			-e "s/libcheckrbd.so/# libcheckrbd.so/" \
+			-e "s/-lrados//" \
+			-i libmultipath/checkers/Makefile \
+			|| die
 	fi
 }
 
