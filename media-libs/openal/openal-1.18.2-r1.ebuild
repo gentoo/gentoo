@@ -38,6 +38,10 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( alsoftrc.sample docs/env-vars.txt docs/hrtf.txt ChangeLog README )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.18.2-dont-specify-macros-as-arguments.patch
+)
+
 src_configure() {
 	# -DEXAMPLES=OFF to avoid FFmpeg dependency wrt #481670
 	my_configure() {
