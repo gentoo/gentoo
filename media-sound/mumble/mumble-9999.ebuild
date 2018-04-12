@@ -105,11 +105,9 @@ src_install() {
 	newdoc README.Linux README
 	dodoc CHANGES
 
-	local dir
+	local dir=release
 	if use debug; then
 		dir=debug
-	else
-		dir=release
 	fi
 
 	dobin "${dir}"/mumble
@@ -120,8 +118,7 @@ src_install() {
 
 	domenu scripts/mumble.desktop
 
-	insinto /usr/share/icons/hicolor/scalable/apps
-	doins icons/mumble.svg
+	doicon -s scalable icons/mumble.svg
 
 	doman man/mumble-overlay.1
 	doman man/mumble.1
