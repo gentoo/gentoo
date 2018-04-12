@@ -481,6 +481,7 @@ src_install-libs() {
 			"libnvidia-fbc.so.${NV_SOVER}"
 			"libnvidia-glcore.so.${NV_SOVER}"
 			"libnvidia-glsi.so.${NV_SOVER}"
+			"libnvidia-glvkspirv.so.${NV_SOVER}"
 			"libnvidia-ifr.so.${NV_SOVER}"
 			"libnvidia-opencl.so.${NV_SOVER}"
 			"libnvidia-ptxjitcompiler.so.${NV_SOVER}"
