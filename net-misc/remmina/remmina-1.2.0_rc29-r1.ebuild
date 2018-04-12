@@ -18,6 +18,7 @@ IUSE="ayatana crypt rdp gnome-keyring nls spice ssh telepathy vnc zeroconf"
 
 CDEPEND="
 	dev-libs/glib:2
+	dev-libs/json-glib
 	dev-libs/openssl:0
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3
