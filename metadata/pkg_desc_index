@@ -1414,7 +1414,7 @@ app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, 
 app-text/pdftk 2.02: A tool for manipulating PDF documents
 app-text/pelican 3.6.0 3.7.0: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
-app-text/po4a 0.45-r3 0.47-r1: Tools for helping translation of documentation
+app-text/po4a 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.62.0-r1: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
@@ -3260,7 +3260,7 @@ dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
-dev-lisp/abcl 0.20.0 0.20.0-r1: Common Lisp implementation for the JVM
+dev-lisp/abcl 0.20.0-r1: Common Lisp implementation for the JVM
 dev-lisp/asdf 3.1.5: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
