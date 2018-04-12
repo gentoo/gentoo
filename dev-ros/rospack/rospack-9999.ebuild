@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	dev-libs/boost:=
-	dev-libs/tinyxml2:=
+	>=dev-libs/tinyxml2-5:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	>=dev-ros/cmake_modules-0.4.1
