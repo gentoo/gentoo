@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Cross-platform web browser using QtWebEngine"
-HOMEPAGE="https://www.qupzilla.com/"
+HOMEPAGE="https://www.falkon.org/"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV%.0}/src/${P}.tar.xz"
 fi
