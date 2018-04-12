@@ -5,14 +5,17 @@ EAPI=6
 
 inherit kde5
 
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="Elegant dock, based on KDE Frameworks"
 HOMEPAGE="https://store.kde.org/p/1169519/
 	https://github.com/psifidotos/Latte-Dock"
-[[ ${KDE_BUILD_TYPE} = release ]] && SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
