@@ -582,7 +582,6 @@ media-sound/denemo
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Hard to bump (#547418), build issues (#600308). Removal in a month.
-app-forensics/libewf
 app-forensics/rdd
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
