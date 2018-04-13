@@ -8426,7 +8426,6 @@ net-firewall/iptables 1.4.21-r1 1.6.1-r3: Linux kernel (2.4+) firewall, NAT and 
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
 net-firewall/nftables 0.8-r3: Linux kernel (3.13+) firewall, NAT and packet mangling tools
-net-firewall/pglinux 2.3.1: Privacy oriented firewall application
 net-firewall/psad 2.2.5: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/shorewall 5.1.12.3-r1: A high-level tool for configuring Netfilter
