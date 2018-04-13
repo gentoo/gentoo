@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="EditorConfig plugin for Geany"
-HOMEPAGE="https://github.com/editorconfig/${PN}/"
+HOMEPAGE="https://github.com/editorconfig/editorconfig-geany/"
 EGIT_COMMIT="9dce3bb476728a8f4124aefe12e0a4ffc8567dff"
 SRC_URI="https://github.com/editorconfig/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
