@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit elisp-common eutils toolchain-funcs
 MY_P="QuantLib-${PV}"
 
 DESCRIPTION="A comprehensive software framework for quantitative finance"
-HOMEPAGE="http://quantlib.org/"
+HOMEPAGE="https://quantlib.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
