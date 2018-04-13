@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python unittest Utilities"
-HOMEPAGE="https://pypi.python.org/pypi/${PN} https://github.com/celery/${PN}"
+HOMEPAGE="https://pypi.python.org/pypi/case https://github.com/celery/case"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
