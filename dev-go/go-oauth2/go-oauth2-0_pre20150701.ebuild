@@ -9,8 +9,8 @@ MY_PN=${PN##*-}
 GO_PN=golang.org/x/${MY_PN}
 EGIT_COMMIT="8914e5017ca260f2a3a1575b1e6868874050d95e"
 
-HOMEPAGE="https://godoc.org/${GO_PN}"
 DESCRIPTION="Go client implementation for OAuth 2.0 spec"
+HOMEPAGE="https://godoc.org/golang.org/x/oauth2"
 SRC_URI="
 	https://github.com/golang/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	https://github.com/GoogleCloudPlatform/gcloud-golang/archive/e34a32f9b0ecbc0784865fb2d47f3818c09521d4.tar.gz -> gcloud-golang-e34a32f9b0ecbc0784865fb2d47f3818c09521d4.tar.gz"
