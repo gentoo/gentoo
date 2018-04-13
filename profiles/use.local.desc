@@ -483,6 +483,11 @@ app-forensics/afflib:s3 - Enable support for Amazon S3
 app-forensics/aide:e2fs - Enable support for checking file attributes on ext2/ext3/ext4 filesystems
 app-forensics/aide:prelink - Bypass prelinking when calculating checksums
 app-forensics/chkrootkit:cron - Install cron script for weekly rootkit scans
+app-forensics/libewf:bfio - Enables libbfio for chaining file in file handling
+app-forensics/libewf:ewf - Enables the v1 API
+app-forensics/libewf:fuse - Enable fuse support for ewfmount
+app-forensics/libewf:rawio - Enables raw IO handling
+app-forensics/libewf:uuid - Enable UUID support in the ewftools
 app-forensics/sleuthkit:aff - Enable extra aff formats
 app-forensics/sleuthkit:ewf - Enable libewf support
 app-i18n/anthy:canna-2ch - Enable support for app-dicts/canna-2ch
