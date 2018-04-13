@@ -1,0 +1,19 @@
+# /etc/conf.d/dnsmasq: config file for /etc/init.d/dnsmasq
+
+# You can set the user and group. The default value is "dnsmasq"
+#DNSMASQ_USER="dnsmasq"
+#DNSMASQ_GROUP="dnsmasq"
+
+# Any other options might be set here.
+# See the dnsmasq(8) man page for possible options to use.
+#DNSMASQ_OPTS=""
+
+# For multi-instance service don't forget to create the config file and use the
+# instance name in uppercase for any configuration variables in this files.
+
+# So for example if you have dnsmasq.eth1, don't forget to create
+# /etc/dnsmasq.eth1.conf (or append `--conf-file=/path/to/your/file` to options)
+# and to set the options for that dnsmasq process, use:
+#DNSMASQ_ETH1_USER="dnsmasq"
+#DNSMASQ_ETH1_GROUP="dnsmasq"
+#DNSMASQ_ETH1_OPTS=""
