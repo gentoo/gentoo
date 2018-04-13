@@ -117,7 +117,6 @@ app-admin/sagan:pcap - Add support for network packet capture via net-libs/libpc
 app-admin/sagan:smtp - Build witch SMTP (E-Mail) support
 app-admin/sagan:snort - Add support to interact with Snort IDE using net-analyzer/snortsam'
 app-admin/sagan-rules:lognorm - Install normalize rules support with dev-libs/liblognorm
-app-admin/sshguard:ipfilter - Enable ipfilter firewall support (only for *bsd)
 app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's internal SHA2
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password
 app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2
