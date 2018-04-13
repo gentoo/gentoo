@@ -2969,7 +2969,7 @@ dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib t
 dev-libs/hashit 0.9.7-r1: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.13.3: Minimalistic C client library for the Redis database
-dev-libs/http-fetcher 1.1.0 1.1.0-r1: Library for downloading files via HTTP using the GET method
+dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyphen 2.8.8: ALTLinux hyphenation library
 dev-libs/icu 58.2-r1: International Components for Unicode
 dev-libs/icu-layoutex 58.2: External layout part of International Components for Unicode
@@ -5820,7 +5820,7 @@ dev-ruby/pg 0.17.1-r1 0.18.4-r1: Ruby extension library providing an API to Post
 dev-ruby/pkg-config 1.1.7 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1: Shows each value of variables and method calls in the expression
 dev-ruby/puppetdb-termini 5.0.1 5.1.3: Library needed to connect puppet to puppetdb
-dev-ruby/racc 1.4.11 1.4.14: A LALR(1) parser generator for Ruby
+dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.7 2.0.3: A modular Ruby webserver interface
 dev-ruby/rack-cache 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-protection 1.5.3-r1: This gem protects against typical web attacks
@@ -5835,7 +5835,7 @@ dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and
 dev-ruby/rb-inotify 0.9.10: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rcairo 1.15.10: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8: Implementation of John Gruber's Markdown
-dev-ruby/rdoc 4.2.0 4.3.0: An extended version of the RDoc library from Ruby 1.8
+dev-ruby/rdoc 4.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/redcloth 4.3.2: A module for using Textile in Ruby
 dev-ruby/rest-client 1.8.0-r3: Simple Simple HTTP and REST client for Ruby
@@ -5932,7 +5932,7 @@ dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form suppor
 dev-ruby/unf_ext 0.0.7.4: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
-dev-ruby/webmock 1.20.3 1.24.6: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 1.24.6: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
@@ -10381,7 +10381,7 @@ virtual/python-singledispatch 0: A virtual for the Python functools.singledispat
 virtual/python-typing 0: A virtual for the Python typing module
 virtual/qmail 1.03: Virtual for qmail
 virtual/ruby-ffi 4: Virtual ebuild for the Ruby ffi library
-virtual/ruby-ssl 8: Virtual ebuild for the Ruby OpenSSL bindings
+virtual/ruby-ssl 10: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 11: Virtual ebuild for rubygems
 virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
