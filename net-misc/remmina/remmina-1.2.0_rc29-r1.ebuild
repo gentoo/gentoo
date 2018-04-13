@@ -14,12 +14,11 @@ SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${MY_PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ayatana crypt rdp gnome-keyring nls spice ssh telepathy vnc zeroconf"
+IUSE="ayatana crypt rdp gnome-keyring libressl nls spice ssh telepathy vnc zeroconf"
 
 CDEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib
-	dev-libs/openssl:0
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3
 	x11-libs/libX11
@@ -28,6 +27,8 @@ CDEPEND="
 	crypt? ( dev-libs/libgcrypt:0= )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0 )
 	gnome-keyring? ( app-crypt/libsecret )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	spice? ( net-misc/spice-gtk[gtk3] )
 	ssh? ( net-libs/libssh[sftp]
 		x11-libs/vte:2.91 )
