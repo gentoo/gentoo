@@ -16,7 +16,7 @@ IUSE="libressl nls"
 RDEPEND="
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
-	dev-libs/tinyxml2:0/3
+	dev-libs/tinyxml2:0=
 	sys-fs/fuse:=
 	sys-libs/zlib"
 DEPEND="
