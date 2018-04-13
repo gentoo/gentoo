@@ -93,7 +93,6 @@ src_configure() {
 		$(use_enable seccomp) \
 		$(use_with ssl openssl) \
 		$(use_with xml libxml2) \
-		$(use_with readline) \
 		$(use_with gssapi) \
 		$(use_with readline) \
 		$(use_with gost) \
