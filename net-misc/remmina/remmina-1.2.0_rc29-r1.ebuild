@@ -38,6 +38,7 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	dev-util/intltool
+	net-libs/libsoup
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
