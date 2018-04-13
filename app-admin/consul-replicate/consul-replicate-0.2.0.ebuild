@@ -8,7 +8,7 @@ inherit golang-base
 KEYWORDS="~amd64"
 DESCRIPTION="Consul cross-DC KV replication daemon"
 EGO_PN="github.com/hashicorp/${PN}/..."
-HOMEPAGE="http://${EGO_PN%/*}"
+HOMEPAGE="https://github.com/hashicorp/consul-replicate"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="test"
