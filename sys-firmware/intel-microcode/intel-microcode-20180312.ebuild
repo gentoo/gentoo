@@ -24,7 +24,7 @@ RDEPEND="!<sys-apps/microcode-ctl-1.17-r2" #268586
 
 S=${WORKDIR}
 
-# TODO: 
+# TODO:
 # Blacklist bad microcode here.
 DEFAULT_MICROCODE_SIGNATURES=""
 
