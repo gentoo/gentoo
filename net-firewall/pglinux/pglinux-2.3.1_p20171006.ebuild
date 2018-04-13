@@ -13,7 +13,7 @@ HOMEPAGE="https://sourceforge.net/projects/peerguardian/"
 SRC_URI="https://sourceforge.net/code-snapshots/git/p/pe/peerguardian/code.git/peerguardian-code-${COMMIT}.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="cron dbus logrotate networkmanager qt5 zlib"
 REQUIRED_USE="qt5? ( dbus )"
