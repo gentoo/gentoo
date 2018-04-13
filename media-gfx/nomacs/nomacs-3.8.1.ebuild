@@ -45,6 +45,8 @@ S="${WORKDIR}/${P}/ImageLounge"
 
 DOCS=( src/changelog.txt )
 
+PATCHES=( "${FILESDIR}"/${P}-qt-5.11.patch )
+
 src_prepare() {
 	cmake-utils_src_prepare
 
