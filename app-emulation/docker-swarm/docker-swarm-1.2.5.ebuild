@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://${EGO_PN%/*}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/airbrake/gobrake/archive/v2.0.8.tar.gz -> gobrake-2.0.8.tar.gz
 	https://github.com/Sirupsen/logrus/archive/v0.11.0.tar.gz -> logrus-0.11.0.tar.gz"
 DESCRIPTION="A Docker-native clustering system"
-HOMEPAGE="https://docs.docker.com/${PN##*-}/"
+HOMEPAGE="https://docs.docker.com/swarm"
 LICENSE="Apache-2.0 CC-BY-SA-4.0"
 SLOT="0"
 IUSE=""
