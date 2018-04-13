@@ -1,0 +1,190 @@
+From 2670e33c418acdf6c08fd0cf5d238a4d93cc12e6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 13 Apr 2018 22:35:30 +0200
+Subject: [PATCH] Fix cmake with Qt 5.11_beta3 (dropping qt5_use_modules)
+
+---
+ declarative/CMakeLists.txt          | 10 ++++-----
+ demos/metadatareader/CMakeLists.txt |  7 ++++--
+ demos/phota/CMakeLists.txt          |  7 ++++--
+ demos/simplecapture/CMakeLists.txt  |  7 ++++--
+ demos/simpleplayer/CMakeLists.txt   |  7 ++++--
+ designer/CMakeLists.txt             | 10 ++++-----
+ phonon/CMakeLists.txt               | 33 +++++++++++++++++------------
+ phonon/experimental/CMakeLists.txt  |  9 ++++++--
+ 9 files changed, 57 insertions(+), 58 deletions(-)
+
+diff --git a/declarative/CMakeLists.txt b/declarative/CMakeLists.txt
+index da2d2eb9..cdc1b842 100644
+--- a/declarative/CMakeLists.txt
++++ b/declarative/CMakeLists.txt
+@@ -19,11 +19,11 @@ set(declarative_SRCS
+ 
+ phonon_add_declarative_plugin(phononqmlplugin ${declarative_SRCS})
+ 
+-target_link_libraries(phononqmlplugin
+-    ${PHONON_LIBS}
+-)
+-
+-qt5_use_modules(phononqmlplugin Core Gui Declarative)
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(phononqmlplugin Qt5::Core Qt5::Gui Qt5::Declarative ${PHONON_LIBS})
++else()
++    target_link_libraries(phononqmlplugin ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTDECLARATIVE_LIBRARY} ${PHONON_LIBS})
++endif()
+ 
+ install(TARGETS phononqmlplugin DESTINATION ${PHONON_QT_IMPORTS_INSTALL_DIR}/Phonon)
+ install(FILES ${phonon_QMLS} DESTINATION ${PHONON_QT_IMPORTS_INSTALL_DIR}/Phonon)
+diff --git a/demos/metadatareader/CMakeLists.txt b/demos/metadatareader/CMakeLists.txt
+index a307c071..69e2b3a6 100644
+--- a/demos/metadatareader/CMakeLists.txt
++++ b/demos/metadatareader/CMakeLists.txt
+@@ -13,5 +13,8 @@ set(metadatareader_SRCS
+ 
+ phonon_add_executable(metadatareader ${metadatareader_SRCS})
+ 
+-qt5_use_modules(metadatareader Core Widgets)
+-target_link_libraries(metadatareader ${PHONON_LIBRARY})
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(metadatareader Qt5::Core Qt5::Widgets ${PHONON_LIBRARY})
++else()
++    target_link_libraries(metadatareader ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBRARY})
++endif()
+diff --git a/demos/phota/CMakeLists.txt b/demos/phota/CMakeLists.txt
+index e9a4ee34..aa70cf39 100644
+--- a/demos/phota/CMakeLists.txt
++++ b/demos/phota/CMakeLists.txt
+@@ -17,5 +17,8 @@ qt5_wrap_ui(phota_SRCS videoeffects.ui)
+ 
+ phonon_add_executable(phota ${phota_SRCS})
+ 
+-qt5_use_modules(phota Core Widgets)
+-target_link_libraries(phota ${PHONON_LIBRARY})
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(phota Qt5::Core Qt5::Widgets ${PHONON_LIBRARY})
++else()
++    target_link_libraries(phota ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBRARY})
++endif()
+diff --git a/demos/simplecapture/CMakeLists.txt b/demos/simplecapture/CMakeLists.txt
+index cd910707..811d29c6 100644
+--- a/demos/simplecapture/CMakeLists.txt
++++ b/demos/simplecapture/CMakeLists.txt
+@@ -13,5 +13,8 @@ set(simplecapture_SRCS
+ 
+ phonon_add_executable(simplecapture ${simplecapture_SRCS})
+ 
+-qt5_use_modules(simplecapture Core Widgets)
+-target_link_libraries(simplecapture ${PHONON_LIBRARY})
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(simplecapture Qt5::Core Qt5::Widgets ${PHONON_LIBRARY})
++else()
++    target_link_libraries(simplecapture ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBRARY})
++endif()
+diff --git a/demos/simpleplayer/CMakeLists.txt b/demos/simpleplayer/CMakeLists.txt
+index 3d66c74e..f759224f 100644
+--- a/demos/simpleplayer/CMakeLists.txt
++++ b/demos/simpleplayer/CMakeLists.txt
+@@ -13,5 +13,8 @@ set(simpleplayer_SRCS
+ 
+ phonon_add_executable(simpleplayer ${simpleplayer_SRCS})
+ 
+-qt5_use_modules(simpleplayer Core Widgets)
+-target_link_libraries(simpleplayer ${PHONON_LIBRARY})
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(simpleplayer Qt5::Core Qt5::Widgets ${PHONON_LIBRARY})
++else()
++    target_link_libraries(simpleplayer ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBRARY})
++endif()
+diff --git a/designer/CMakeLists.txt b/designer/CMakeLists.txt
+index 9d437547..e9d2e982 100644
+--- a/designer/CMakeLists.txt
++++ b/designer/CMakeLists.txt
+@@ -11,10 +11,10 @@ set(phononwidgetsplugin_SRCS
+ 
+ phonon_add_designer_plugin(phononwidgets phononwidgets.qrc ${phononwidgetsplugin_SRCS})
+ 
+-qt5_use_modules(phononwidgets Core Gui Widgets Designer)
+-
+-target_link_libraries(phononwidgets
+-    ${PHONON_LIBS}
+-)
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(phononwidgets Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Designer ${PHONON_LIBS})
++else()
++    target_link_libraries(phononwidgets ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTDESIGNER_LIBRARY} ${PHONON_LIBS})
++endif()
+ 
+ install(TARGETS phononwidgets DESTINATION ${PHONON_QT_PLUGIN_INSTALL_DIR})
+diff --git a/phonon/CMakeLists.txt b/phonon/CMakeLists.txt
+index f9ae09e5..b80c96d8 100644
+--- a/phonon/CMakeLists.txt
++++ b/phonon/CMakeLists.txt
+@@ -137,25 +137,32 @@ add_definitions(-DPHONON_LIBRARY_PATH="${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_
+ add_definitions(-DPHONON_BACKEND_DIR_SUFFIX="/${PHONON_LIB_SONAME}_backend/")
+ 
+ add_library(${PHONON_LIB_SONAME} SHARED ${phonon_LIB_SRCS})
+-qt5_use_modules(${PHONON_LIB_SONAME} Core Widgets)
+ 
+-if(QT_QTDBUS_FOUND AND NOT PHONON_NO_DBUS)
+-    qt5_use_modules(${PHONON_LIB_SONAME} DBus)
+-endif(QT_QTDBUS_FOUND AND NOT PHONON_NO_DBUS)
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(${PHONON_LIB_SONAME} Qt5::Core Qt5::Widgets)
++    if(QT_QTDBUS_FOUND AND NOT PHONON_NO_DBUS)
++        target_link_libraries(${PHONON_LIB_SONAME} Qt5::DBus)
++    endif(QT_QTDBUS_FOUND AND NOT PHONON_NO_DBUS)
++    if(NOT PHONON_NO_GRAPHICSVIEW)
++        target_link_libraries(${PHONON_LIB_SONAME} Qt5::OpenGL ${OPENGL_gl_LIBRARY})
++    endif()
++else()
++    target_link_libraries(${PHONON_LIB_SONAME} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
++    if(QT_QTDBUS_FOUND AND NOT PHONON_NO_DBUS)
++        target_link_libraries(${PHONON_LIB_SONAME} ${QT_QTDBUS_LIBRARY})
++    endif(QT_QTDBUS_FOUND AND NOT PHONON_NO_DBUS)
++    if(NOT PHONON_NO_GRAPHICSVIEW)
++        target_link_libraries(${PHONON_LIB_SONAME} ${QT_QTOPENGL_LIBRARY} ${OPENGL_gl_LIBRARY})
++    endif()
++    if (QZEITGEIST_FOUND)
++        target_link_libraries(${PHONON_LIB_SONAME} ${QZEITGEIST_LIBRARY})
++    endif(QZEITGEIST_FOUND)
++endif()
+ 
+ if (PHONON_PULSESUPPORT)
+     target_link_libraries(${PHONON_LIB_SONAME} ${GOBJECT_LIBRARIES} ${PULSEAUDIO_LIBRARY} ${PULSEAUDIO_MAINLOOP_LIBRARY})
+ endif (PHONON_PULSESUPPORT)
+ 
+-if(NOT PHONON_NO_GRAPHICSVIEW)
+-    qt5_use_modules(${PHONON_LIB_SONAME} OpenGL)
+-    target_link_libraries(${PHONON_LIB_SONAME} ${OPENGL_gl_LIBRARY})
+-endif()
+-
+-if (QZEITGEIST_FOUND)
+-    target_link_libraries(${PHONON_LIB_SONAME} ${QZEITGEIST_LIBRARY})
+-endif(QZEITGEIST_FOUND)
+-
+ if (${CMAKE_SYSTEM_NAME} MATCHES "SunOS")
+   # We need to explicitly link libm to phonon in Solaris
+   target_link_libraries(${PHONON_LIB_SONAME} m)
+diff --git a/phonon/experimental/CMakeLists.txt b/phonon/experimental/CMakeLists.txt
+index e44cb7ac..13101ec9 100644
+--- a/phonon/experimental/CMakeLists.txt
++++ b/phonon/experimental/CMakeLists.txt
+@@ -20,8 +20,13 @@ set(phononexperimental_LIB_SRCS
+     ../abstractvideooutput_p.cpp
+    )
+ add_library(${PHONON_LIB_SONAME}experimental SHARED ${phononexperimental_LIB_SRCS})
+-qt5_use_modules(${PHONON_LIB_SONAME}experimental Core Widgets)
+-target_link_libraries(${PHONON_LIB_SONAME}experimental ${PHONON_LIBS})
++
++if(PHONON_BUILD_PHONON4QT5)
++    target_link_libraries(${PHONON_LIB_SONAME}experimental Qt5::Core Qt5::Widgets ${PHONON_LIBS})
++else()
++    target_link_libraries(${PHONON_LIB_SONAME}experimental ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${PHONON_LIBS})
++endif()
++
+ set_target_properties(${PHONON_LIB_SONAME}experimental PROPERTIES
+                                          VERSION ${PHONON_LIB_VERSION}
+                                          SOVERSION ${PHONON_LIB_SOVERSION}
+-- 
+2.17.0
+
