@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_PN="socketIO-client"
 REPO_PN="socketIO_client"
 DESCRIPTION="A socket.io client library for Python"
-HOMEPAGE="https://github.com/invisibleroads/${MY_PN}/ https://pypi.python.org/pypi/${MY_PN}"
+HOMEPAGE="https://github.com/invisibleroads/socketIO-client/ https://pypi.python.org/pypi/socketIO-client"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${REPO_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
