@@ -1106,7 +1106,7 @@ app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1 1.1-r1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
-app-misc/tmux 2.2 2.3-r1 2.6: Terminal multiplexer
+app-misc/tmux 2.6: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 2.2.2: tmux-based terminal divider
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
@@ -1829,7 +1829,7 @@ dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading cons
 dev-db/couchdb 1.7.1: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/freetds 1.00.41: Tabular Datastream Library
-dev-db/henplus 0.9.8 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
+dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
 dev-db/kdb 3.0.2: Database connectivity and creation framework for various vendors
 dev-db/kyotocabinet 1.2.76-r1: A straightforward implementation of DBM
@@ -1877,7 +1877,7 @@ dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.8-r2 3.2.8-r5 4.0.2-r1: A persistent cachi
 dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management System
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
-dev-db/sqldeveloper 4.0.2.15.21 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
+dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.19.3 3.20.1-r1 3.21.0 3.22.0: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.9.1-r1 3.10.1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
@@ -2407,7 +2407,7 @@ dev-java/aspectj 1.7.4: A seamless aspect-oriented extension to the Java program
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.1.5-r1 4.2.0-r1: Avalon Framework
 dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
-dev-java/backport-util-concurrent 3.1 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
+dev-java/backport-util-concurrent 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/balloontip 1.2.1: A balloon tip component to spice up your Java Swing applications
 dev-java/batik 1.9: Java based SVG toolkit
 dev-java/bcel 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
@@ -2453,7 +2453,7 @@ dev-java/commons-httpclient 3.1-r1: The Jakarta Commons HttpClient library
 dev-java/commons-io 2.4: Utility classes, stream implementations, file filters, and endian classes
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r3: Applies XPath expressions to graphs of objects of all kinds
-dev-java/commons-lang 2.0-r2 2.0-r3 2.6-r1: Commons components to manipulate core java classes
+dev-java/commons-lang 2.0-r3 2.6-r1: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
 dev-java/commons-logging 1.2-r1: An ultra-thin bridge between different Java logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
@@ -2575,7 +2575,7 @@ dev-java/jboss-marshalling 1.3.0: Compatible alternative to the JDK serializatio
 dev-java/jboss-modules 1.3.3: JBoss modular classloading system
 dev-java/jcalendar 1.4: Java date chooser bean for graphically picking a date
 dev-java/jchardet 1.1-r1: Java port of Mozilla's Automatic Charset Detection algorithm
-dev-java/jcifs 1.3.17-r1 1.3.17-r2: Library that implements the CIFS/SMB networking protocol in Java
+dev-java/jcifs 1.3.17-r2: Library that implements the CIFS/SMB networking protocol in Java
 dev-java/jclasslib 3.1: Java bytecode viewer
 dev-java/jcmdline 1.0.2-r2 2.0.0: Library for parsing/handling of command line parameters
 dev-java/jcodings 1.0.4 1.0.5 1.0.11: Byte-based encoding support library for Java
@@ -2656,10 +2656,10 @@ dev-java/jtidy 1.0: Java port of HTML Tidy, an HTML syntax checker and pretty pr
 dev-java/jtreemap 1.1.0-r1: Java library for treemapping data
 dev-java/juel 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
 dev-java/jump 0.5-r1: Java-based extensible high-precision math library
-dev-java/jung 1.7.6 1.7.6-r1: The Java Universal Network/Graph Framework
+dev-java/jung 1.7.6-r1: The Java Universal Network/Graph Framework
 dev-java/junit 3.8.2-r1 4.12-r1: Simple framework to write repeatable tests
 dev-java/junitperf 1.9.1-r2: Simple framework to write repeatable tests
-dev-java/jupidator 0.6.0 0.6.0-r1: Jupidator is a library/tool in Java for automatic updating of applications
+dev-java/jupidator 0.6.0-r1: Jupidator is a library/tool in Java for automatic updating of applications
 dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvyaml 0.2.1-r2: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
@@ -2741,7 +2741,7 @@ dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
 dev-java/reflectasm 1.11.0: High performance Java reflection
 dev-java/relaxng-datatype 1.0-r2: Interface between RELAX NG validators and datatype libraries
 dev-java/relaxngcc 1.12-r3: RELAX NG Compiler Compiler
-dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27: Resin Servlet API 3.0/JSP API 2.1 implementation
+dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.27: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20100718-r1: RNGOM is an open-source Java library for parsing RELAX NG grammars
 dev-java/rome 0.9-r3: Java framework for RSS and Atom feeds
@@ -6874,7 +6874,7 @@ lxde-base/lxappearance 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxde-common 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0-r1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r5 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
-lxde-base/lxdm 0.4.1-r9 0.5.3-r1: LXDE Display Manager
+lxde-base/lxdm 0.5.3-r1: LXDE Display Manager
 lxde-base/lxinput 0.3.5: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
