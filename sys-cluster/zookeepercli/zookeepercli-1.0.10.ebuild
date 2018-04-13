@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 https://github.com/outbrain/golib/archive/2418949ac30d9933e7412ccce41f1aa2ae8d5ae8.tar.gz -> golib-2418949ac30d9933e7412ccce41f1aa2ae8d5ae8.tar.gz
 https://github.com/samuel/go-zookeeper/archive/218e9c81c0dd8b3b18172b2bbfad92cc7d6db55f.tar.gz -> go-zookeeper-218e9c81c0dd8b3b18172b2bbfad92cc7d6db55f.tar.gz"
 DESCRIPTION="Simple, lightweight, dependable CLI for ZooKeeper"
-HOMEPAGE="https://${EGO_PN%/*}"
+HOMEPAGE="https://github.com/outbrain/zookeepercli"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
