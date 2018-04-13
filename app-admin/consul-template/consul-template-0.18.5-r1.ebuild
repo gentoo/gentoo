@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit golang-vcs-snapshot systemd user
 KEYWORDS="~amd64"
 DESCRIPTION="Generic template rendering and notifications with Consul"
 EGO_PN="github.com/hashicorp/${PN}"
-HOMEPAGE="http://${EGO_PN}"
+HOMEPAGE="https://github.com/hashicorp/consul-template"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE=""
