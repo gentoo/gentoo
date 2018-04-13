@@ -38,7 +38,7 @@ RDEPEND="app-arch/bzip2:0=
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	tk? (
 		>=dev-lang/tcl-8.0:0=
@@ -68,6 +68,7 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
 		"${FILESDIR}/3.6.5-disable-nis.patch"
+		"${FILESDIR}/python-3.6.5-libressl-compatibility.patch"
 	)
 
 	default
