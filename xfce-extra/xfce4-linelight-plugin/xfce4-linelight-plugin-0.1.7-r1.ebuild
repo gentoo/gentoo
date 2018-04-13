@@ -26,10 +26,10 @@ DEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	eapply -p0 "${FILESDIR}"/${P}-port-to-xfcerc.patch
+	AT_M4DIR=${EPREFIX}/usr/share/xfce4/dev-tools/m4macros eautoreconf
 	default
 }
 
 src_configure() {
-	AT_M4DIR=${EPREFIX}/usr/share/xfce4/dev-tools/m4macros eautoreconf
 	econf --libexecdir="${EPREFIX}"/usr/$(get_libdir)
 }
