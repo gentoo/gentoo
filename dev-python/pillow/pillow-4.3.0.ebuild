@@ -43,10 +43,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-src_compile() {
+src_configure(){
 	# raqm not in portage yet
-	distutils-r1_src_compile \
+	mydistutilsargs=( build_ext \
 		--disable-raqm \
+		--disable-platform-guessing \
 		$(use_enable truetype freetype) \
 		$(use_enable jpeg2k jpeg2000) \
 		$(use_enable lcms) \
@@ -54,7 +55,7 @@ src_compile() {
 		$(use_enable imagequant) \
 		$(use_enable webp) \
 		$(use_enable webp webpmux) \
-		$(use_enable zlib)
+		$(use_enable zlib))
 }
 
 python_compile_all() {
