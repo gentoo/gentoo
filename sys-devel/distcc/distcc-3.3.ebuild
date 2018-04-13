@@ -74,7 +74,7 @@ src_prepare() {
 		-e "s:@libdir@:/usr/$(get_libdir):" \
 		"${FILESDIR}/3.2/distcc-config" > "${T}/distcc-config" || die
 
-	hprefixify -e "s,/lib/,/$(get_libdir)/," update-distcc-symlinks.py src/{serve,daemon}.c
+	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
 }
 
 src_configure() {
