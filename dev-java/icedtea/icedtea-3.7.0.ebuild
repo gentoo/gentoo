@@ -139,6 +139,7 @@ DEPEND="${COMMON_DEP} ${ALSA_COMMON_DEP} ${CUPS_COMMON_DEP} ${X_COMMON_DEP} ${X_
 		dev-java/icedtea-bin:7
 		dev-java/icedtea:8
 		dev-java/icedtea:7
+		dev-java/oracle-jdk-bin:1.8
 	)
 	app-arch/cpio
 	app-arch/unzip
@@ -197,7 +198,8 @@ pkg_setup() {
 
 	JAVA_PKG_WANT_BUILD_VM="
 		icedtea-8 icedtea-bin-8
-		icedtea-7 icedtea-bin-7"
+		icedtea-7 icedtea-bin-7
+		oracle-jdk-bin-1.8"
 	JAVA_PKG_WANT_SOURCE="1.5"
 	JAVA_PKG_WANT_TARGET="1.5"
 
