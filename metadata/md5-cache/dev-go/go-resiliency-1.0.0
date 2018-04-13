@@ -8,4 +8,4 @@ LICENSE=MIT
 SLOT=0/1.0.0
 SRC_URI=https://github.com/eapache/go-resiliency/archive/v1.0.0.tar.gz -> go-resiliency-1.0.0.tar.gz
 _eclasses_=golang-base	928887539e385bb489681b292f6b862f	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
-_md5_=8d6d52e9bd2ccefa6b36e37e0727b8fb
+_md5_=5b577942014abf9d5139518b8c4ee372
