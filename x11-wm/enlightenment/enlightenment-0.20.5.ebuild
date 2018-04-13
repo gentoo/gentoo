@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ else
 	EKEY_STATE="snap"
 fi
 
-inherit enlightenment
+inherit enlightenment xdg-utils
 
 DESCRIPTION="Enlightenment DR17 window manager"
 
@@ -57,7 +57,10 @@ RDEPEND="
 	>=dev-libs/efl-1.17[X]
 	>=media-libs/elementary-1.17
 	x11-libs/xcb-util-keysyms"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	sys-devel/automake:1.15
+"
 
 S=${WORKDIR}/${MY_P}
 
@@ -91,7 +94,9 @@ check_modules() {
 }
 
 src_configure() {
-	check_modules
+	# sanity check fails after commit e25cf18ca19463a7d05519aa843cc76a189ab75c
+	# see #648896. Can be restored with future release
+	# check_modules
 
 	E_ECONF=(
 		--disable-install-sysactions
@@ -124,4 +129,14 @@ src_install() {
 	enlightenment_src_install
 	insinto /etc/enlightenment
 	newins "${FILESDIR}"/gentoo-sysactions.conf sysactions.conf
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
