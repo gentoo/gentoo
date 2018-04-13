@@ -69,6 +69,7 @@ src_configure() {
 		-DENABLE_TIFF=$(usex tiff)
 		-DENABLE_QUAZIP=$(usex zip)
 		-DUSE_SYSTEM_QUAZIP=ON
+		-DENABLE_TRANSLATIONS=ON
 	)
 	cmake-utils_src_configure
 }
