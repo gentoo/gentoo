@@ -8,8 +8,8 @@ MY_PV=${PV/./-}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="BSD replacement for libreadline"
-HOMEPAGE="http://thrysoee.dk/editline/"
-SRC_URI="http://thrysoee.dk/editline/${MY_P}.tar.gz"
+HOMEPAGE="https://thrysoee.dk/editline/"
+SRC_URI="https://thrysoee.dk/editline/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
