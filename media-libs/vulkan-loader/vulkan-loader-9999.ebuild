@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="demos wayland X"
+REQUIRED_USE="demos? ( X )"
 
 RDEPEND=""
 DEPEND="${PYTHON_DEPS}
