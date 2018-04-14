@@ -37,7 +37,10 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
 
-	echo 'QT_QPA_PLATFORMTHEME=qt5ct' > "${T}"/98${PN} || die
+	cat <<- EOF > "${T}"/98${PN} || die
+		QT_QPA_PLATFORMTHEME=qt5ct
+		QT_LOGGING_RULES="qt5ct.debug=false;"
+	EOF
 	doenvd "${T}"/98${PN}
 }
 
