@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils games
+EAPI=6
+inherit autotools
 
-DESCRIPTION="a cute and addictive action-puzzle game, similar to tetris"
+DESCRIPTION="A cute and addictive action-puzzle game, similar to tetris"
 HOMEPAGE="http://www.emma-soft.com/games/amoebax/"
 SRC_URI="http://www.emma-soft.com/games/amoebax/download/${P}.tar.bz2"
 
@@ -19,7 +19,9 @@ DEPEND="media-libs/libsdl[sound,joystick,video]
 RDEPEND=${DEPEND}
 
 src_prepare() {
-	epatch \
+	default
+
+	eapply \
 		"${FILESDIR}"/${P}-aclocal.patch \
 		"${FILESDIR}"/${P}-compile.patch
 
@@ -35,9 +37,4 @@ src_prepare() {
 		-e '/Icon/s/.svg//' \
 		data/amoebax.desktop || die
 	AT_M4DIR=m4 eautoreconf
-}
-
-src_install() {
-	default
-	prepgamesdirs
 }

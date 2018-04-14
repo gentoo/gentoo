@@ -1,5 +1,5 @@
---- makefile
-+++ makefile
+--- a/makefile
++++ b/makefile
 @@ -4,7 +4,7 @@
  # To execute the game you need the runtimes of SDL, SDL_mixer and SDL_image.
  

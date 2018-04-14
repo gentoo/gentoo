@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Logic game with arcade and tactics modes"
 HOMEPAGE="http://biniax.com/"
@@ -17,24 +17,26 @@ DEPEND="media-libs/libsdl
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[mod]"
 RDEPEND="${DEPEND}"
-S=${WORKDIR}
+
+S="${WORKDIR}"
 
 src_prepare() {
+	default
+
 	rm -f data/Thumbs.db
 	sed -i \
-		-e "s:data/:${GAMES_DATADIR}/${PN}/:" \
+		-e "s:data/:/usr/share/${PN}/:" \
 		desktop/{gfx,snd}.c \
 		|| die
-	epatch \
+	eapply \
 		"${FILESDIR}"/${P}-build.patch \
 		"${FILESDIR}"/${P}-dotfiles.patch
 }
 
 src_install() {
-	dogamesbin ${PN}
-	insinto "${GAMES_DATADIR}"/${PN}
+	dobin ${PN}
+	insinto "/usr/share/${PN}"
 	doins -r data/*
 	doicon "${FILESDIR}"/${PN}.xpm
 	make_desktop_entry ${PN} Biniax-2
-	prepgamesdirs
 }

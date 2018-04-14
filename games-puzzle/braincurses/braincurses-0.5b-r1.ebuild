@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
 
 DESCRIPTION="An ncurses-based mastermind clone"
 HOMEPAGE="http://freshmeat.net/projects/braincurses/"
@@ -15,9 +14,13 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch \
+	default
+
+	eapply "${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-as-needed.patch
+
 	# fix buffer overflow (bug #301033)
 	sed -i \
 		-e 's/guessLabel\[2/guessLabel[3/' \
@@ -26,7 +29,6 @@ src_prepare() {
 }
 
 src_install() {
-	dogamesbin braincurses
-	dodoc README THANKS Changelog
-	prepgamesdirs
+	dobin braincurses
+	einstalldocs
 }
