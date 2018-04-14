@@ -27,9 +27,9 @@ IUSE="gnome-keyring gtk policykit sasl"
 
 RDEPEND="!app-emulation/virtinst
 	${PYTHON_DEPS}
+	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	dev-libs/libxml2[python,${PYTHON_USEDEP}]
-	dev-python/configparser[${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -37,7 +37,7 @@ RDEPEND="!app-emulation/virtinst
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
 		gnome-base/dconf
-		>=net-libs/gtk-vnc-0.3.8[gtk3,introspection,python,${PYTHON_USEDEP}]
+		>=net-libs/gtk-vnc-0.3.8[gtk3(+),introspection]
 		net-misc/spice-gtk[usbredir,gtk3,introspection,sasl?]
 		net-misc/x11-ssh-askpass
 		x11-libs/gtk+:3[introspection]
