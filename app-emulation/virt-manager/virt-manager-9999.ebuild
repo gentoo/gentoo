@@ -27,6 +27,7 @@ IUSE="gnome-keyring gtk policykit sasl"
 
 RDEPEND="!app-emulation/virtinst
 	${PYTHON_DEPS}
+	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	dev-libs/libxml2[python,${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]
