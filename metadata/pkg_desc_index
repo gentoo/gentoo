@@ -1384,7 +1384,7 @@ app-text/libwpd 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.8: Microsoft Works file word processor format import filter library
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 26b: graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 26b 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r3: Powerful Multilingual File Viewer
 app-text/manpager 1: Enable colorization of man pages
@@ -1491,13 +1491,13 @@ app-text/xmlstarlet 1.4.2 1.5.0 1.6.1: A set of tools to transform, query, valid
 app-text/xmlto 0.0.26-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
-app-text/zathura 0.3.7: A highly customizable and functional document viewer
-app-text/zathura-cb 0.1.6: Comic book plug-in for zathura with 7zip, rar, tar and zip support
-app-text/zathura-djvu 0.2.6: DjVu plug-in for zathura
+app-text/zathura 0.3.7 0.3.8: A highly customizable and functional document viewer
+app-text/zathura-cb 0.1.6 0.1.7: Comic book plug-in for zathura with 7zip, rar, tar and zip support
+app-text/zathura-djvu 0.2.6 0.2.7: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
-app-text/zathura-pdf-mupdf 0.3.1: PDF plug-in for zathura
-app-text/zathura-pdf-poppler 0.2.7: PDF plug-in for zathura
-app-text/zathura-ps 0.2.4: PostScript plug-in for zathura
+app-text/zathura-pdf-mupdf 0.3.1 0.3.2: PDF plug-in for zathura
+app-text/zathura-pdf-poppler 0.2.7 0.2.8: PDF plug-in for zathura
+app-text/zathura-ps 0.2.4 0.2.5: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
 app-vim/airline 0.8: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
@@ -2955,7 +2955,7 @@ dev-libs/gdl 3.22.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.2.7: UI library that focuses on simplicity and minimalism
+dev-libs/girara 0.2.7 0.2.8: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.46.0 1.48.7: Javascript bindings for GNOME
 dev-libs/glib 2.50.3-r1 2.52.3: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.0.5: Utilities for creating and parsing messages using MIME
@@ -3002,7 +3002,7 @@ dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libassuan 2.4.3-r1 2.5.1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
-dev-libs/libatomic_ops 1.2-r1 7.2d 7.4.2 7.6.0: Implementation for atomic memory update operations
+dev-libs/libatomic_ops 1.2-r1 7.2d 7.4.2 7.6.0 7.6.4: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
@@ -9312,7 +9312,7 @@ sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighb
 sci-libs/netcdf 4.3.2-r1: Scientific library and interface for array oriented data access
 sci-libs/netcdf-cxx 4.2-r300: C++ library for netCDF
 sci-libs/nlopt 2.4.2-r1: Non-linear optimization library
-sci-libs/ogdi 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
+sci-libs/ogdi 3.2.0_beta2 3.2.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openfoam 2.3.1-r1: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/parmetis 3.2.0: Parallel graph partitioner
 sci-libs/parmgridgen 1.0-r1: Software for parallel (mpi) generating coarse grids
@@ -9320,7 +9320,7 @@ sci-libs/pastix 5.2.2.22-r1: Parallel solver for very large sparse linear system
 sci-libs/pgplot 5.2.2-r6: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
 sci-libs/primegen 0.97-r1: Small, fast library to generate primes in order
-sci-libs/proj 4.8.0: Proj.4 cartographic projection software with updated NAD27 grids
+sci-libs/proj 4.8.0 4.9.2: Proj.4 cartographic projection software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pymmlib 1.2.1: Toolkit and library for the analysis and manipulation of macromolecular models
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
@@ -10457,7 +10457,7 @@ www-client/firefox 52.4.0 52.6.0: Firefox Web Browser
 www-client/firefox-bin 52.7.3: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
-www-client/lynx 2.8.9_pre11: An excellent console-based web browser with ssl support
+www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/pybugz 0.12.1 0.13: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.2.5: A cross-platform web browser using QtWebEngine
