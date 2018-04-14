@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="doc static-libs socks +cxx debug ssl gnutls"
 
 RDEPEND="ssl? (
-		!gnutls? ( dev-libs/openssl )
+		!gnutls? ( dev-libs/openssl:0= )
 		gnutls? (
 			net-libs/gnutls
 			dev-libs/libgcrypt:0
