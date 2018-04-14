@@ -24,8 +24,7 @@ fi
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
 
-LICENSE="IDEA
-	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
+LICENSE="Apache-2.0 BSD CDDL MIT-with-advertising"
 IUSE="-custom-jdk"
 
 DEPEND="!dev-util/${PN}:14
