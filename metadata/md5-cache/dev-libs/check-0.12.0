@@ -10,4 +10,4 @@ RDEPEND=subunit? ( >=dev-python/subunit-0.0.10-r1[abi_x86_32(-)?,abi_x86_64(-)?,
 SLOT=0
 SRC_URI=https://github.com/libcheck/check/archive/0.12.0.tar.gz -> check-0.12.0-github.tar.gz
 _eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	8ffb5e2112a70fef5f37fcacad308726	multilib-minimal	9139c3a57e077cb8e0d0f73ceb080b89	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=709cd3a23cefd9b08258cef193f5432f
+_md5_=380f6f227ad44fe83f5cef5e1f3b8794
