@@ -804,7 +804,7 @@ app-eselect/eselect-postgresql 2.2 2.3: Utility to select the default PostgreSQL
 app-eselect/eselect-python 20160516: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
-app-eselect/eselect-renpy 0.6 0.7: Manages renpy symlink
+app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 2 3: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20161226 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
