@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="demos layers wayland X"
+REQUIRED_USE="demos? ( X )"
 
 RDEPEND=""
 DEPEND="${PYTHON_DEPS}
