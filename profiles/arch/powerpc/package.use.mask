@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Anthony G. Basile <blueness@gentoo.org> (14 Apr 2018)
+# net-vpn/tor, tests are broken on ppc/ppc64, bug #653098
+net-vpn/tor test
+
 # Sergei Trofimovich <slyfox@gentoo.org> (27 Mar 2018)
 # dev-qt/qtwebengine is not ported to powerpc
 www-client/otter webengine
