@@ -1,5 +1,5 @@
---- braincurses.h
-+++ braincurses.h
+--- a/braincurses.h
++++ b/braincurses.h
 @@ -12,6 +12,7 @@
  #include <cstddef>
  #include <cstdlib>
