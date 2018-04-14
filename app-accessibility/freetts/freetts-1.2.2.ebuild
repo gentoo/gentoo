@@ -19,7 +19,7 @@ DEPEND=">=virtual/jdk-1.4
 	jsapi? ( app-arch/sharutils )
 	app-arch/unzip"
 
-LICENSE="jsapi? ( sun-bcla-jsapi ) freetts"
+LICENSE="jsapi? ( sun-bcla ) freetts"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 

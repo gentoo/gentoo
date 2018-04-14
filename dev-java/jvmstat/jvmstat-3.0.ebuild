@@ -8,7 +8,7 @@ DESCRIPTION="Monitoring APIs and tools for monitoring the performance of the JVM
 HOMEPAGE="http://java.sun.com/performance/jvmstat/"
 SRC_URI="jvmstat-${MY_PV}.zip"
 
-LICENSE="sun-bcla-jvmstat"
+LICENSE="sun-bcla"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"

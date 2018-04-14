@@ -19,7 +19,7 @@ DESCRIPTION="Collection of sun templates for various countries"
 HOMEPAGE="http://ooo.itc.hu/oxygenoffice/download/libreoffice/"
 SRC_URI="${URI_EXTENSIONS}"
 
-LICENSE="sun-bcla-j2me"
+LICENSE="sun-bcla"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""

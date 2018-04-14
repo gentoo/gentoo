@@ -13,7 +13,7 @@ SRC_URI="
 	!amd64? ( ${BASE}/${MY_P}-lib-linux-i586.tar.gz )
 	amd64? ( ${BASE}/${MY_P}-lib-linux-amd64.tar.gz )"
 
-LICENSE="sun-bcla-jai"
+LICENSE="sun-bcla"
 SLOT="0"
 KEYWORDS="amd64"
 DEPEND=""

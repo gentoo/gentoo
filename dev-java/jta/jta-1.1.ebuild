@@ -10,7 +10,7 @@ inherit java-pkg-2
 DESCRIPTION="The Java Transaction API"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javaee/jta/index.html"
 SRC_URI="${JTA_ZIP}"
-LICENSE="sun-bcla-jta"
+LICENSE="sun-bcla"
 SLOT=0
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 
