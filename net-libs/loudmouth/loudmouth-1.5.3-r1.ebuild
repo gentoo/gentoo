@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit autotools
 
 DESCRIPTION="Lightweight C Jabber library"
@@ -20,7 +19,7 @@ RDEPEND="
 	>=dev-libs/glib-2.16:2
 	net-dns/libidn
 	ssl? (
-		!openssl? ( >=net-libs/gnutls-1.4.0 )
+		!openssl? ( >=net-libs/gnutls-1.4.0:0= )
 		openssl? ( dev-libs/openssl:0= )
 	)
 	asyncns? ( >=net-libs/libasyncns-0.3 )
