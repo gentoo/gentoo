@@ -21,7 +21,7 @@ dev-libs/libgit2 libressl
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
-net-fs/samba ads
+net-fs/samba ads cluster
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Some more unkeyworded dependencies.
@@ -262,7 +262,7 @@ app-portage/g-sorcery bson
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # Unkeyworded depedencies
-app-admin/rsyslog grok kafka mongodb normalize rabbitmq
+app-admin/rsyslog grok kafka kubernetes mongodb normalize rabbitmq
 
 # Michael Weber <xmw@gentoo.org> (01 Mar 2017)
 # untested dependencies
