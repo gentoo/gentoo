@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 MY_EXAMPLES_DIR=/usr/share/doc/${PF}/examples
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.14-gcc7.patch
+
 	sed -i \
 		-e "s:\$.*/drawstuff/textures:${MY_EXAMPLES_DIR}:" \
 		drawstuff/src/Makefile.am \
