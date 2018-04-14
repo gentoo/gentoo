@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -33,9 +33,11 @@ DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
 DOCS=(README NEWS SUPPORT ChangeLog AUTHORS)
-PATCHES=( "${FILESDIR}"/6.1/disable_rtf_gen_doxy.patch
-		  "${FILESDIR}"/6.1/install_gcrypt.m4_file.patch
-		  "${FILESDIR}"/6.1/gcrypt_autotools.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.1.10-disable_rtf_gen_doxy.patch
+	"${FILESDIR}"/${PN}-6.0.3-install_gcrypt.m4_file.patch
+	"${FILESDIR}"/${PN}-6.1.10-gcrypt_autotools.patch
+)
 
 # Needed for doxygen, bug #526726
 AUTOTOOLS_IN_SOURCE_BUILD=1
