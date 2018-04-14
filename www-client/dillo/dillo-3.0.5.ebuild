@@ -5,8 +5,8 @@ EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
-HOMEPAGE="http://www.dillo.org/"
-SRC_URI="http://www.dillo.org/download/${P}.tar.bz2
+HOMEPAGE="https://www.dillo.org/"
+SRC_URI="https://www.dillo.org/download/${P}.tar.bz2
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-3"
