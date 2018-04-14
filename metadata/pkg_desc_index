@@ -8626,7 +8626,7 @@ net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
-net-libs/loudmouth 1.4.3-r2 1.5.2-r1: Lightweight C Jabber library
+net-libs/loudmouth 1.5.2-r1: Lightweight C Jabber library
 net-libs/mbedtls 2.6.0 2.7.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.0.20170509 2.0.20171212 2.0.20180222: UPnP client library and a simple UPnP client
