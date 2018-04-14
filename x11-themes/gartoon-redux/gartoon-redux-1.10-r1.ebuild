@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils gnome2-utils
 
 DESCRIPTION="A massively improved variant of the well-known Gartoon theme"
-HOMEPAGE="http://gnome-look.org/content/show.php/?content=74841"
+HOMEPAGE="https://gnome-look.org/content/show.php/?content=74841"
 SRC_URI="http://tweenk.artfx.pl/gartoon/source/${P}.tar.gz"
 
 LICENSE="GPL-2"
