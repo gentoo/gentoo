@@ -1399,7 +1399,7 @@ app-text/namazu 2.0.21: Namazu is a full-text search engine
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.22: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.4-r1: A simple converter from OpenDocument Text to plain text
-app-text/openjade 1.3.2-r6 1.3.2-r7: Jade is an implementation of DSSSL for formatting SGML and XML documents
+app-text/openjade 1.3.2-r7: Jade is an implementation of DSSSL for formatting SGML and XML documents
 app-text/opensp 1.5.2-r3: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.15.0.6 1.19.2.1-r1: Conversion between markup formats
@@ -2456,7 +2456,7 @@ dev-java/commons-jxpath 1.3-r3: Applies XPath expressions to graphs of objects o
 dev-java/commons-lang 2.0-r3 2.6-r1: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
 dev-java/commons-logging 1.2-r1: An ultra-thin bridge between different Java logging libraries
-dev-java/commons-math 2.1-r1 2.1-r2 3.2: Lightweight, self-contained mathematics and statistics components
+dev-java/commons-math 2.1-r2 3.2: Lightweight, self-contained mathematics and statistics components
 dev-java/commons-net 3.2: Java library emulating the client side of many basic Internet protocols
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
 dev-java/commons-primitives 1.0-r3: The Jakarta-Commons Primitives Component
@@ -2754,7 +2754,7 @@ dev-java/sac 1.3-r2: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
 dev-java/sat4j-pseudo 2.2.0: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r3: SAX: Simple API for XML in Java
-dev-java/saxon 6.5.5-r2 9.2.0.6 9.2.0.6-r2: A XSLT and XQuery Processor
+dev-java/saxon 6.5.5-r2 9.2.0.6-r2: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary objects
@@ -9881,7 +9881,7 @@ sys-block/hpacucli 9.40.12.0: HP Array Config Utility Command Line Interface (HP
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
-sys-block/mbuffer 20150412: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20150412 20171011: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r2: LSI MegaRAID control utility
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
@@ -10012,7 +10012,7 @@ sys-fs/aufs-util 4.0_p20150420: Utilities are always necessary for aufs
 sys-fs/avfs 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/btrfs-progs 4.4.1 4.10.2: Btrfs filesystem utilities
-sys-fs/btrfsmaintenance 0.3.1: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
+sys-fs/btrfsmaintenance 0.3.1 0.4: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.7: Encrypted FUSE filesystem that conceals metadata
