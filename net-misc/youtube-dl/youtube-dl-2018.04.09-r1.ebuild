@@ -34,12 +34,12 @@ python_prepare_all() {
 			eroprofile extremetube foxgay goshgay hellporno hentaistigma
 			hornbunny keezmovies lovehomeporn mofosex myvidster porn91 porncom
 			pornflip pornhd pornotube pornovoisines pornoxo ruleporn sexu
-			slutload spankbang spankwire sunporno thisav tube8 vporn
-			watchindianporn xbef xnxx xtube xvideos xxxymovies youjizz youporn
+			slutload spankbang spankwire sunporno thisav vporn watchindianporn
+			xbef xnxx xtube xvideos xxxymovies youjizz youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
-			drtuber fourtube motherless pornhub redtube tnaflix xhamster
+			drtuber fourtube motherless pornhub redtube tnaflix tube8 xhamster
 		)
 		# do single line imports
 		sed -i \
