@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare
 DEPEND=>=dev-libs/libpcre-8.13 dev-libs/expat sys-libs/zlib mysql? ( virtual/mysql ) odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) ) ssl? ( dev-libs/openssl ) sqlite? ( dev-db/sqlite:3 )
 DESCRIPTION=C++ libraries for building network-based applications
 EAPI=5
-HOMEPAGE=http://pocoproject.org/
+HOMEPAGE=https://pocoproject.org/
 IUSE=doc examples iodbc mysql odbc sqlite ssl test
 KEYWORDS=amd64 arm x86
 LICENSE=Boost-1.0
 RDEPEND=>=dev-libs/libpcre-8.13 dev-libs/expat sys-libs/zlib mysql? ( virtual/mysql ) odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) ) ssl? ( dev-libs/openssl ) sqlite? ( dev-db/sqlite:3 )
 SLOT=0
-SRC_URI=http://pocoproject.org/releases/poco-1.4.6/poco-1.4.6p4-all.tar.bz2 doc? ( mirror://sourceforge/poco/poco-1.4.6-all-doc.zip )
+SRC_URI=https://pocoproject.org/releases/poco-1.4.6/poco-1.4.6p4-all.tar.bz2 doc? ( mirror://sourceforge/poco/poco-1.4.6-all-doc.zip )
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	02908f00f002f0f07c5b74783d778325	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	ce21313503c41896ebcd7d58b0607e37
-_md5_=f35e2d9f75e9abd574766d656503f8e7
+_md5_=3a437a235a517c062c3641ec0c4c7ac4
