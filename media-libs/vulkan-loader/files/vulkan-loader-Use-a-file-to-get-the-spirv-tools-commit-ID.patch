@@ -1,0 +1,42 @@
+From 58299a001068a28f5d5f6985c2066b7c4caa7b18 Mon Sep 17 00:00:00 2001
+From: Nick Sarnie <commendsarnex@gmail.com>
+Date: Fri, 23 Mar 2018 20:23:54 -0400
+Subject: [PATCH] Use a file to get the spirv-tools commit ID
+
+Signed-off-by: Nick Sarnie <commendsarnex@gmail.com>
+---
+ CMakeLists.txt | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c9f73ce9..c3e200b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -349,6 +349,14 @@ macro(run_external_revision_generate source_dir symbol_name output)
+     )
+ endmacro()
+ 
++macro(run_external_revision_generate_spirv_tools source_dir symbol_name output)
++    add_custom_command(OUTPUT ${output}
++    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/external_revision_generator.py --rev_file ${source_dir}/spirv-tools-commit.h -s ${symbol_name} -o ${output}
++    DEPENDS ${SCRIPTS_DIR}/external_revision_generator.py ${source_dir}/spirv-tools-commit.h
++    )
++endmacro()
++
++
+ # Custom target for generated vulkan helper file dependencies
+ set(generate_helper_files_DEPENDS)
+ if(BUILD_LAYERS)
+@@ -377,7 +385,7 @@ run_vk_xml_generate(helper_file_generator.py vk_object_types.h)
+ run_vk_xml_generate(helper_file_generator.py vk_extension_helper.h)
+ run_vk_xml_generate(helper_file_generator.py vk_typemap_helper.h)
+ if(BUILD_LAYERS)
+-    run_external_revision_generate(${EXTERNAL_SOURCE_ROOT}/glslang/External/spirv-tools SPIRV_TOOLS_COMMIT_ID spirv_tools_commit_id.h)
++    run_external_revision_generate_spirv_tools(/usr/include/spirv-tools SPIRV_TOOLS_COMMIT_ID spirv_tools_commit_id.h)
+ endif()
+ 
+ 
+-- 
+2.16.3
+
+
