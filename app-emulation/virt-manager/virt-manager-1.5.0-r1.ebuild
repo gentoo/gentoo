@@ -37,7 +37,7 @@ RDEPEND="!app-emulation/virtinst
 	gtk? (
 		x11-libs/gtk+:3[introspection]
 		gnome-base/dconf
-		>=net-libs/gtk-vnc-0.3.8[gtk3,introspection,python,${PYTHON_USEDEP}]
+		>=net-libs/gtk-vnc-0.3.8[gtk3(+),introspection]
 		net-misc/spice-gtk[usbredir,gtk3,introspection,sasl?]
 		net-misc/x11-ssh-askpass
 		x11-libs/vte:2.91[introspection]
