@@ -11,7 +11,7 @@ SRC_URI="https://distfiles.gentoo.org/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+ocamlopt static"
 
 LIB_DEPEND=">=app-text/mupdf-1.12.0:0=[static-libs]
