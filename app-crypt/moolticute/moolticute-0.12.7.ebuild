@@ -27,6 +27,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qttest:5
+	dev-qt/qttranslations:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 "
