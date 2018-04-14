@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils flag-o-matic gnome2-utils cmake-utils qt4-r2
 
 DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple computers"
-HOMEPAGE="http://synergy-project.org/ https://github.com/synergy/synergy"
+HOMEPAGE="http://synergy-project.org/ https://github.com/symless/synergy-core"
 SRC_URI="
 	https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}.png
