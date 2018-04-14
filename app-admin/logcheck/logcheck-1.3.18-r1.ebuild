@@ -5,7 +5,7 @@ EAPI=6
 inherit readme.gentoo-r1 user
 
 DESCRIPTION="Mails anomalies in the system logfiles to the administrator"
-HOMEPAGE="http://packages.debian.org/sid/logcheck"
+HOMEPAGE="https://packages.debian.org/sid/logcheck"
 SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2"
