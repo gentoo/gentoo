@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools multilib-minimal
 
 DESCRIPTION="Open source PAM library"
-HOMEPAGE="http://www.openpam.org/"
+HOMEPAGE="https://www.openpam.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

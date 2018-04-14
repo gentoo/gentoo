@@ -92,7 +92,7 @@ check_modules() {
 }
 
 src_configure() {
-	# sanity check fails after commit e25cf18ca19463a7d05519aa843cc76a189ab75c 
+	# sanity check fails after commit e25cf18ca19463a7d05519aa843cc76a189ab75c
 	# see #648896. Can be restored with future release
 	# check_modules
 

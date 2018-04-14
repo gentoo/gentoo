@@ -5,7 +5,7 @@ EAPI=6
 
 MY_COMMIT="803a4595658f28decd236c6f8660841abc336cea"
 # ^^ because upstream refuses to tag commits with version numbers
-# 2.3.56 is the last version with no tagged release. 
+# 2.3.56 is the last version with no tagged release.
 # It is also the last bash-based release.
 
 DESCRIPTION="The CLI inxi collects and prints hardware and system information"

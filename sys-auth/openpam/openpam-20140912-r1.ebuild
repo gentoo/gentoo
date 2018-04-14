@@ -9,7 +9,7 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 inherit multilib autotools-multilib
 
 DESCRIPTION="Open source PAM library"
-HOMEPAGE="http://www.openpam.org/"
+HOMEPAGE="https://www.openpam.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

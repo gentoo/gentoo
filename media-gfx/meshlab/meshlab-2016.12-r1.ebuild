@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,7 +43,7 @@ PATCHES=(
 		"${FILESDIR}/${PV}/0001-disable-filter-ssynth.patch"
 		#this has been fixed in the tree
 		"${FILESDIR}/${PV}/0001-disable-edit-quality.patch"
-		#this causes segfaults 
+		#this causes segfaults
 		"${FILESDIR}/${PV}/0001-disable-filter-layer.patch"
 		#for when we use minimal
 		"${FILESDIR}/${PV}/0001-compile-server.patch"

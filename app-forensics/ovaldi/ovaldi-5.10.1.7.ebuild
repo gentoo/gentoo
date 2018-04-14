@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -73,7 +73,7 @@ src_prepare() {
 	# respect CXXFLAGS and CXX
 	sed -i -e '/^CPPFLAGS/s/$(INCDIRS)/$(CXXFLAGS) \0/' project/linux/Makefile || die
 
-	# no such library on linux 
+	# no such library on linux
 	sed -i 's,-lxalanMsg,,' project/linux/Makefile || die
 	tc-export CXX
 }
