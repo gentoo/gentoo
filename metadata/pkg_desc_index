@@ -2456,7 +2456,7 @@ dev-java/commons-jxpath 1.3-r3: Applies XPath expressions to graphs of objects o
 dev-java/commons-lang 2.0-r3 2.6-r1: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
 dev-java/commons-logging 1.2-r1: An ultra-thin bridge between different Java logging libraries
-dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
+dev-java/commons-math 2.1-r1 2.1-r2 3.2: Lightweight, self-contained mathematics and statistics components
 dev-java/commons-net 3.2: Java library emulating the client side of many basic Internet protocols
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
 dev-java/commons-primitives 1.0-r3: The Jakarta-Commons Primitives Component
@@ -7952,7 +7952,7 @@ media-sound/id3ted 1.0_beta3: A Command-line ID3 Tag Editor
 media-sound/id3tool 1.2a: A command line utility for easy manipulation of the ID3 tags present in MPEG Layer 3 audio files
 media-sound/id3v2 0.1.12: A command line editor for id3v2 tags
 media-sound/jaaa 0.8.4: JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
-media-sound/jack-audio-connection-kit 0.121.3-r1: A low-latency audio server
+media-sound/jack-audio-connection-kit 0.121.3-r1 0.125.0: A low-latency audio server
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
@@ -8627,7 +8627,7 @@ net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/loudmouth 1.5.2-r1: Lightweight C Jabber library
-net-libs/mbedtls 2.6.0 2.7.1: Cryptographic library for embedded systems
+net-libs/mbedtls 2.6.0 2.7.1 2.7.2: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.0.20170509 2.0.20171212 2.0.20180222: UPnP client library and a simple UPnP client
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
@@ -9379,7 +9379,7 @@ sci-physics/hepmc 2.06.09-r1: Event Record for Monte Carlo Generators
 sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
 sci-physics/lammps 20150210 20150515 20150810 20151207 20170109: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1: Les Houches Parton Density Function unified library
-sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
+sci-physics/lightspeed 1.2a-r1 1.2a-r3: OpenGL interactive relativistic simulator
 sci-physics/paw 2.14.04-r4: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 8.1.86: Lund Monte Carlo high-energy physics event generator
 sci-physics/root 5.34.36: C++ data analysis framework and interpreter from CERN
