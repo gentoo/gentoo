@@ -18,7 +18,7 @@ RDEPEND=">=app-emulation/libvirt-0.10.0[sasl?]
 	>=dev-libs/libxml2-2.6
 	x11-libs/gtk+:3
 	spice? ( >=net-misc/spice-gtk-0.33[sasl?,gtk3] )
-	vnc? ( >=net-libs/gtk-vnc-0.5.0[sasl?,gtk3] )"
+	vnc? ( >=net-libs/gtk-vnc-0.5.0[sasl?,gtk3(+)] )"
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	>=dev-util/intltool-0.35.0
