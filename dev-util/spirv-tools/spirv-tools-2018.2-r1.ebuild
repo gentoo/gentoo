@@ -32,5 +32,5 @@ multilib_src_install() {
 	default
 	echo "${UPSTREAM_COMMIT}" > "${PN}-commit.h" || die
 	insinto /usr/include/"${PN}"
-	doins  "${PN}-commit.h" || die
+	doins  "${PN}-commit.h"
 }
