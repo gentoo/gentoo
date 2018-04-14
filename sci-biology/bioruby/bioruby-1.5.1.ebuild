@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_NAME="bio"
 
@@ -17,6 +17,6 @@ HOMEPAGE="http://bioruby.org/"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 ruby_add_rdepend "dev-ruby/libxml"
