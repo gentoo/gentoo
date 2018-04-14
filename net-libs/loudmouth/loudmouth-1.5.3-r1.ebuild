@@ -1,14 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Lightweight C Jabber library"
 HOMEPAGE="https://github.com/mcabber/loudmouth"
 SRC_URI="https://github.com/mcabber/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-#SRC_URI="https://mcabber.com/files/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -22,7 +21,7 @@ RDEPEND="
 	net-dns/libidn
 	ssl? (
 		!openssl? ( >=net-libs/gnutls-1.4.0 )
-		openssl? ( dev-libs/openssl:0 )
+		openssl? ( dev-libs/openssl:0= )
 	)
 	asyncns? ( >=net-libs/libasyncns-0.3 )
 "
@@ -33,8 +32,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1
 "
 
+PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc7.patch
+	default
 	eautoreconf
 }
 
