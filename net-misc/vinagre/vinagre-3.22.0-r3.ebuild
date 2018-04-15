@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.9.6:3
 	app-crypt/libsecret
 	>=dev-libs/libxml2-2.6.31:2
-	>=net-libs/gtk-vnc-0.4.3[gtk3]
+	>=net-libs/gtk-vnc-0.4.3[gtk3(+)]
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
 	x11-themes/hicolor-icon-theme
@@ -28,7 +28,7 @@ RDEPEND="
 	ssh? ( >=x11-libs/vte-0.20:2.91 )
 	spice? (
 		app-emulation/spice-protocol
-		>=net-misc/spice-gtk-0.5[gtk3] )
+		>=net-misc/spice-gtk-0.5[gtk3(+)] )
 	telepathy? (
 		dev-libs/dbus-glib
 		>=net-libs/telepathy-glib-0.11.6 )
