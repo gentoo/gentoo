@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils fdo-mime toolchain-funcs
+EAPI=6
+
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="Graphical CD image editor for reading, modifying and writing ISO images"
 HOMEPAGE="http://littlesvr.ca/isomaster"
@@ -19,6 +20,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.1 )"  # bug 512448
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.9-iniparser-3.0.0.patch #399629
+)
+
 pkg_setup() {
 	myisoconf=(
 		DEFAULT_EDITOR=leafpad
@@ -31,11 +36,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.3.9-iniparser-3.0.0.patch #399629
+	default
+	rm -f configure || die #274361
 	rm -R iniparser-2.17 || die
 }
-
-src_configure() { :; } #274361
 
 src_compile() {
 	tc-export CC
@@ -60,9 +64,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
