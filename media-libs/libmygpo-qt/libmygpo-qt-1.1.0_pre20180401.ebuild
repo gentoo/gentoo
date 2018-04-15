@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT=28c492b6b789ba1c3c292995a52fe4e456268182
+COMMIT=b84549b8803033b803f7d4dc14d5dcd7a5c344b7
 inherit cmake-utils vcs-snapshot
 
 DESCRIPTION="Qt/C++ library wrapping the gpodder.net webservice"
@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-qt/qttest:5 )
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11b3.patch" )
 
 src_configure() {
 	local mycmakeargs=(

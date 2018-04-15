@@ -1,0 +1,196 @@
+From 5d6ef4c27804a43b26dffcb46d6b27523a1ca340 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 15 Apr 2018 21:31:14 +0200
+Subject: [PATCH] Fix build with Qt 5.11_beta3 (drop qt5_use_modules)
+
+---
+ CMakeLists.txt                 |  3 --
+ src/CMakeLists.txt             | 63 +++++++++++++++++++---------------
+ src/fingerprint/CMakeLists.txt | 20 ++++++-----
+ tests/lastfm_add_test.cmake    | 16 +++++----
+ 4 files changed, 55 insertions(+), 47 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index be88967..57da635 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,9 +56,6 @@ if(Qt5Core_DIR)
+ #     endmacro()
+ else()
+     find_package(Qt4 COMPONENTS QtCore QtNetwork QtXml REQUIRED)
+-
+-    macro(qt5_use_modules)
+-    endmacro()
+ endif()
+ 
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0f872fb..22ce506 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,16 +3,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/global.h.in ${CMAKE_CURRENT_BINARY_DI
+ 
+ add_definitions(${QT_DEFINITIONS})
+ include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
+-set(liblastfm_LIBRARIES
+-    ${QT_QTCORE_LIBRARY}
+-    ${QT_QTNETWORK_LIBRARY}
+-    ${QT_QTXML_LIBRARY}
+-)
+-
+-list(APPEND liblastfm_QT5_MODULES
+-    Xml
+-    Network
+-)
+ 
+ set(liblastfm_SOURCES
+         ws.cpp
+@@ -49,15 +39,11 @@ if(WIN32)
+     if(NOT MINGW)
+         add_definitions("-D_ATL_DLL -D_CRT_SECURE_NO_WARNINGS")
+ 
+-        list(APPEND liblastfm_SOURCES
++        set(liblastfm_SOURCES ${liblastfm_SOURCES}
+             win/WNetworkConnectionMonitor_win.cpp
+             win/WmiSink.cpp
+             win/NdisEvents.cpp
+         )
+-        list(APPEND liblastfm_LIBRARIES
+-            winhttp
+-            wbemuuid
+-        )
+     endif()
+ endif()
+ 
+@@ -67,30 +53,51 @@ if(APPLE)
+     #set(CMAKE_OSX_DEPLOYMENT_TARGET 10.5)
+     #set(CMAKE_OSX_SYSROOT "/Developer/SDKs/MacOSX${CMAKE_OSX_DEPLOYMENT_TARGET}.sdk")
+ 
+-    list(APPEND liblastfm_SOURCES
++    set(liblastfm_SOURCES ${liblastfm_SOURCES}
+         mac/MNetworkConnectionMonitor_mac.cpp
+     )
+-
+-    find_library(SYSTEMCONFIGURATION_LIBRARY SystemConfiguration)
+-    find_library(COREFOUNDATION_LIBRARY CoreFoundation)
+-    list(APPEND liblastfm_LIBRARIES
+-        ${COREFOUNDATION_LIBRARY}
+-        ${SYSTEMCONFIGURATION_LIBRARY}
+-    )
+ endif()
+ 
+ if(UNIX AND NOT APPLE)
+-    list(APPEND liblastfm_SOURCES
++    set(liblastfm_SOURCES ${liblastfm_SOURCES}
+         linux/LNetworkConnectionMonitor_linux.cpp
+     )
+-    list(APPEND liblastfm_LIBRARIES ${QT_QTDBUS_LIBRARY})
+-    list(APPEND liblastfm_QT5_MODULES DBus)
+ endif()
+ 
+ add_library(${LASTFM_LIB_TARGET_NAME} SHARED ${liblastfm_SOURCES})
+-qt5_use_modules(${LASTFM_LIB_TARGET_NAME} ${liblastfm_QT5_MODULES})
+ 
+-target_link_libraries(${LASTFM_LIB_TARGET_NAME} ${liblastfm_LIBRARIES})
++if(Qt5Core_DIR)
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME} Qt5::Network Qt5::Xml)
++    if(UNIX AND NOT APPLE)
++        target_link_libraries(${LASTFM_LIB_TARGET_NAME} Qt5::DBus)
++    endif()
++else()
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME}
++        ${QT_QTCORE_LIBRARY}
++        ${QT_QTNETWORK_LIBRARY}
++        ${QT_QTXML_LIBRARY}
++    )
++    if(UNIX AND NOT APPLE)
++        target_link_libraries(${LASTFM_LIB_TARGET_NAME} ${QT_QTDBUS_LIBRARY})
++    endif()
++endif()
++
++if(WIN32 AND NOT MINGW)
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME}
++        winhttp
++        wbemuuid
++    )
++endif()
++
++if(APPLE)
++    find_library(SYSTEMCONFIGURATION_LIBRARY SystemConfiguration)
++    find_library(COREFOUNDATION_LIBRARY CoreFoundation)
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME}
++        ${COREFOUNDATION_LIBRARY}
++        ${SYSTEMCONFIGURATION_LIBRARY}
++    )
++endif()
++
+ set_target_properties(${LASTFM_LIB_TARGET_NAME} PROPERTIES
+     VERSION ${LASTFM_VERSION_STRING}
+     SOVERSION ${LASTFM_SOVERSION}
+diff --git a/src/fingerprint/CMakeLists.txt b/src/fingerprint/CMakeLists.txt
+index 126f8d9..4a74e0d 100644
+--- a/src/fingerprint/CMakeLists.txt
++++ b/src/fingerprint/CMakeLists.txt
+@@ -26,21 +26,23 @@ set(lastfm_fingerprint_HEADERS
+ 
+ add_library(${FINGERPRINT_LIB_TARGET_NAME} SHARED ${lastfm_fingerprint_SOURCES})
+ 
+-target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME}
+-    ${LASTFM_LIB_TARGET_NAME}
+-    ${QT_QTSQL_LIBRARY}
+-    ${QT_QTCORE_LIBRARY}
+-    ${LIBSAMPLERATE_LIBRARY}
+-    ${LIBFFTW3_LIBRARY}
+-)
+-
+ set_target_properties(${FINGERPRINT_LIB_TARGET_NAME} PROPERTIES
+     COMPILE_DEFINITIONS LASTFM_FINGERPRINT_LIB
+     VERSION ${LASTFM_VERSION_STRING}
+     SOVERSION ${LASTFM_SOVERSION}
+ )
+ 
+-qt5_use_modules(${FINGERPRINT_LIB_TARGET_NAME} Network Sql Xml)
++target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME}
++    ${LASTFM_LIB_TARGET_NAME}
++    ${LIBSAMPLERATE_LIBRARY}
++    ${LIBFFTW3_LIBRARY}
++)
++
++if(Qt5Core_DIR)
++    target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME} Qt5::Network Qt5::Sql Qt5::Xml)
++else()
++    target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME} ${QT_QTCORE_LIBRARY} ${QT_QTSQL_LIBRARY})
++endif()
+ 
+ install(TARGETS ${FINGERPRINT_LIB_TARGET_NAME}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+diff --git a/tests/lastfm_add_test.cmake b/tests/lastfm_add_test.cmake
+index a4a1686..2f0664d 100644
+--- a/tests/lastfm_add_test.cmake
++++ b/tests/lastfm_add_test.cmake
+@@ -6,13 +6,15 @@ macro(lastfm_add_test test_class)
+     configure_file(Test${LASTFM_TEST_CLASS}.h Test${LASTFM_TEST_CLASS}.h)
+     add_executable(${LASTFM_TEST_CLASS}Test Test${LASTFM_TEST_CLASS}.cpp)
+ 
+-    qt5_use_modules(${LASTFM_TEST_CLASS}Test Core Test Xml Network)
+-
+-    target_link_libraries(${LASTFM_TEST_CLASS}Test
+-        ${LASTFM_LIB_TARGET_NAME}
+-        ${QT_QTTEST_LIBRARY}
+-        ${QT_QTCORE_LIBRARY}
+-    )
++    if(Qt5Core_DIR)
++        target_link_libraries(${LASTFM_TEST_CLASS}Test Qt5::Core Qt5::Test Qt5::Xml Qt5::Network
++            ${LASTFM_LIB_TARGET_NAME}
++        )
++    else()
++        target_link_libraries(${LASTFM_TEST_CLASS}Test ${QT_QTCORE_LIBRARY} ${QT_QTTEST_LIBRARY}
++            ${LASTFM_LIB_TARGET_NAME}
++        )
++    endif()
+ 
+     add_test(NAME ${LASTFM_TEST_CLASS}Test COMMAND ${LASTFM_TEST_CLASS}Test)
+ endmacro()
+-- 
+2.17.0
+

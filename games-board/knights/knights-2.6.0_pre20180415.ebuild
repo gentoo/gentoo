@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-COMMIT=4c0a1f61c23d632b2d9bf9f4c5c74ba021633147
+COMMIT=56762d582d8a8543f50c293ff54d5ac5e546c2d9
 KDE_HANDBOOK="forceoptional"
 KDE_SELINUX_MODULE="games"
 inherit kde5 vcs-snapshot
