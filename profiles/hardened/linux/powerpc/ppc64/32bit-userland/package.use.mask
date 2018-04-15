@@ -3,7 +3,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unresolved dependencies.
-app-admin/conky apcupsd xmms2
+app-admin/conky apcupsd hddtemp xmms2
 app-admin/gkrellm hddtemp
 media-video/ffmpeg celt frei0r
 media-video/gpac dvb
