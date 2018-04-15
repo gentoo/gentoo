@@ -287,6 +287,7 @@ src_configure() {
 		--disable-svga --disable-svgalib_helper
 		--disable-ass-internal
 		--disable-arts
+		--disable-directfb
 		--disable-kai
 		--disable-libopus
 		--disable-libilbc
