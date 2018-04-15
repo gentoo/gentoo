@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unkeyworded deps.
+net-misc/curl curl_ssl_axtls
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded dep masks moved from default/linux/ia64 tree.
 mail-client/mutt notmuch
 mail-mta/exim redis
