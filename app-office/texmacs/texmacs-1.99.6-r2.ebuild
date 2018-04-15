@@ -51,6 +51,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.99-remove-new-declaration.patch
 
 	"${FILESDIR}"/${PN}-1.99.6-math_util.patch
+
+	# fix build failure on 32-bit systems, bug #652054
+	"${FILESDIR}"/${PN}-1.99.6-guile-size_t.patch
 )
 
 src_configure() {
