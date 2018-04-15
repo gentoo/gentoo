@@ -819,7 +819,7 @@ app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.4: Library that implements the AFF image standard
-app-forensics/aide 0.16: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
+app-forensics/aide 0.16 0.16-r1: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.51: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
@@ -10831,7 +10831,7 @@ x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.17: Visual process manager - Qt version of ps/top
-x11-misc/qt5ct 0.31: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 0.31 0.35: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1: A BBS client for Linux
 x11-misc/qtfm 5.9-r1: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/read-edid 1.4.2 3.0.2: Program that can get information from a PnP monitor
