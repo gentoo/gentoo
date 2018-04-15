@@ -33,6 +33,7 @@ SLOT="0"
 RDEPEND="elibc_FreeBSD? ( >=dev-libs/libpthread-stubs-0.4:=[${MULTILIB_USEDEP}] )
 	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
+	>=dev-util/meson-0.43.0
 	valgrind? ( dev-util/valgrind )"
 
 src_unpack() {
