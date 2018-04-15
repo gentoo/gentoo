@@ -20,7 +20,10 @@ RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
+"
 PDEPEND="dev-python/matplotlib[${PYTHON_USEDEP}]"
 
 # tests need extra files not distributed
