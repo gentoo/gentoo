@@ -11,7 +11,7 @@ MY_P_AMD64="${P}-linux-x86_64"
 MY_P_X86="${P}-linux-i486"
 
 DESCRIPTION="Research management tool for desktop and web"
-HOMEPAGE="http://www.mendeley.com/"
+HOMEPAGE="https://www.mendeley.com/"
 SRC_URI="
 	amd64? ( ${MY_P_AMD64}.tar.bz2 )
 	x86? ( ${MY_P_X86}.tar.bz2 )
