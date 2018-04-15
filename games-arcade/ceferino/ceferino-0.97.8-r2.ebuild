@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils games
+EAPI=6
+inherit autotools desktop
 
 DESCRIPTION="Super-Pang clone (destroy bouncing balloons with your grapnel)"
 HOMEPAGE="http://www.loosersjuegos.com.ar/juegos/ceferino"
@@ -13,16 +13,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-RDEPEND=">=media-libs/libsdl-1.2[video]
+RDEPEND="
+	>=media-libs/libsdl-1.2[video]
 	>=media-libs/sdl-image-1.2
 	>=media-libs/sdl-mixer-1.2
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+"
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
-S=${WORKDIR}/${P}+svn37
+S="${WORKDIR}/${P}+svn37"
 
 src_prepare() {
+	default
+	eapply "${FILESDIR}"/${P}-latin1.patch
 	sed -i \
 		-e '/^INCLUDES/s:\$(datadir)/locale:/usr/share/locale:' \
 		src/Makefile.am || die
@@ -30,18 +35,16 @@ src_prepare() {
 }
 
 src_configure() {
-	egamesconf $(use_enable nls)
+	econf $(use_enable nls)
 }
 
 src_install() {
 	default
 	newicon data/ima/icono.png ${PN}.png
 	make_desktop_entry ceferino "Don Ceferino Hazaña"
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	if ! has_version "media-libs/sdl-mixer[mod]" ; then
 		ewarn
 		ewarn "To hear music, you will have to rebuild media-libs/sdl-mixer"

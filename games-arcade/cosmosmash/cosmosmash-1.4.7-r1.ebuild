@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools games
+EAPI=6
+inherit autotools
 
 DESCRIPTION="A space rock shooting video game"
 HOMEPAGE="http://perso.b2b2c.ca/sarrazip/dev/cosmosmash.html"
@@ -16,9 +16,11 @@ RESTRICT="test" # uses the sound card which portage user might not be available.
 
 RDEPEND=">=dev-games/flatzebra-0.1.6"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
+	default
 	sed -i \
 		-e "/^pkgsounddir/ s:sounds.*:\$(PACKAGE)/sounds:" \
 		-e "/^desktopentrydir/ s:=.*:=/usr/share/applications:" \
@@ -30,7 +32,6 @@ src_prepare() {
 
 src_install() {
 	emake -C src DESTDIR="${D}" install
+	einstalldocs
 	doman doc/${PN}.6
-	dodoc AUTHORS NEWS README THANKS
-	prepgamesdirs
 }

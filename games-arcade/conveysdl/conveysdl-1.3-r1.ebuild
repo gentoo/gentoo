@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs games
+EAPI=6
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Guide the blob along the conveyer belt collecting the red blobs"
 HOMEPAGE="http://www.cloudsprinter.com/software/conveysdl/"
@@ -17,9 +17,11 @@ DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-mixer"
 RDEPEND=${DEPEND}
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_prepare() {
+	default
+
 	# Incomplete readme
 	sed -i \
 		-e 's:I k:use -nosound to disable sound\n\nI k:' \
@@ -29,7 +31,7 @@ src_prepare() {
 		-e 's:SDL_Mi:SDL_mi:' \
 		main.c || die
 
-	epatch \
+	eapply \
 		"${FILESDIR}"/${P}-arrays.patch \
 		"${FILESDIR}"/${P}-speed.patch
 }
@@ -38,17 +40,16 @@ src_compile() {
 	emake main \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} $(sdl-config --cflags) \
-			-DDATA_PREFIX=\\\"${GAMES_DATADIR}/${PN}/\\\" \
+			-DDATA_PREFIX=\\\"/usr/share/${PN}/\\\" \
 			-DENABLE_SOUND" \
 		LDLIBS="-lSDL_mixer $(sdl-config --libs)"
 }
 
 src_install() {
-	newgamesbin main ${PN}
-	insinto "${GAMES_DATADIR}"/${PN}
+	newbin main ${PN}
+	insinto /usr/share/${PN}
 	doins -r gfx sounds levels
 	newicon gfx/jblob.bmp ${PN}.bmp
 	make_desktop_entry ${PN} Convey /usr/share/pixmaps/${PN}.bmp
-	dodoc readme
-	prepgamesdirs
+	einstalldocs
 }

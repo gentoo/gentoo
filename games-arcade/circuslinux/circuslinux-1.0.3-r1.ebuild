@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="clone of the Atari 2600 game \"Circus Atari\""
 SRC_URI="ftp://ftp.sonic.net/pub/users/nbs/unix/x/circus-linux/${P}.tar.gz"
@@ -19,6 +19,7 @@ DEPEND="media-libs/libsdl
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i \
 		-e "/^install-data-am/d" \
 		Makefile.in \
@@ -30,9 +31,7 @@ src_prepare() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install
+	default
 	newicon data/images/${PN}-icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "Circus Linux!"
-	dodoc *.txt
-	prepgamesdirs
 }

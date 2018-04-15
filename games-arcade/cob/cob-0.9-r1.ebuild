@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Cruising on Broadway: a painting-type game"
 HOMEPAGE="http://www.autismuk.freeserve.co.uk/"
@@ -14,15 +14,14 @@ KEYWORDS="~alpha ~amd64 ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="media-libs/libsdl[joystick,sound,video]"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gcc43.patch \
-		"${FILESDIR}"/${P}-gcc44.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc43.patch
+	"${FILESDIR}"/${P}-gcc44.patch
+)
 
 src_install() {
 	default
-	prepgamesdirs
+	make_desktop_entry ${PN} "Cruising on Broadway"
 }

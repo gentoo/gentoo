@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Addictive OpenGL-based block game"
 HOMEPAGE="http://www.nongnu.org/crack-attack/"
@@ -13,15 +13,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~x86"
 IUSE="gtk sdl"
 
-RDEPEND="media-libs/freeglut
+RDEPEND="
+	media-libs/freeglut
 	sdl? ( media-libs/libsdl
 		media-libs/sdl-mixer )
-	gtk? ( >=x11-libs/gtk+-2.6:2 )"
+	gtk? ( >=x11-libs/gtk+-2.6:2 )
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
-	epatch \
+	default
+	eapply \
 		"${FILESDIR}"/${P}-glut.patch \
 		"${FILESDIR}"/${P}-gcc43.patch
 	sed -i 's/-lXmu//' src/gtk-gui/Makefile.in src/Makefile.in || die
@@ -29,16 +33,15 @@ src_prepare() {
 }
 
 src_configure() {
-	egamesconf \
+	econf \
 		--disable-binreloc \
 		$(use_enable sdl sound) \
 		$(use_enable gtk)
 }
 
 src_install() {
+	HTML_DOCS="doc/*"
 	default
-	dohtml -A xpm doc/*
 	doicon data/crack-attack.xpm
 	make_desktop_entry crack-attack Crack-attack
-	prepgamesdirs
 }

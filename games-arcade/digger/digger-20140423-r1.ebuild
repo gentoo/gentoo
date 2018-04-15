@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Digger Remastered"
 HOMEPAGE="http://www.digger.org/"
@@ -16,15 +16,12 @@ DEPEND="media-libs/libsdl[X,video]
 	x11-libs/libX11"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}-${PN}
+S="${WORKDIR}/${PN}-${PN}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-ldflags.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
 
 src_install() {
-	dogamesbin digger
+	dobin digger
 	dodoc digger.txt
 	make_desktop_entry digger Digger
-	prepgamesdirs
 }
