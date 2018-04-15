@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-MY_P=${PN}${PV}
+MY_P=${PN}${PV:1:2}
 DESCRIPTION="A Hacker magazine by the community, for the community"
 HOMEPAGE="http://www.phrack.org/"
 SRC_URI="http://www.phrack.org/archives/tgz/${MY_P}.tar.gz"
