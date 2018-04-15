@@ -17,6 +17,10 @@ IUSE="doc"
 
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.7-BE-test.patch
+)
+
 python_compile_all() {
 	use doc && emake -C docs html
 }
