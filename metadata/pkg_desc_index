@@ -3143,7 +3143,7 @@ dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance appl
 dev-libs/libunistring 0.9.5 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
-dev-libs/libuv 1.10.2: Cross-platform asychronous I/O
+dev-libs/libuv 1.10.2 1.20.0: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5 0.2.5-r1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvterm 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
@@ -3332,7 +3332,7 @@ dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
-dev-perl/Acme-Damn 0.60.0 0.80.0: Module, that 'unblesses' Perl objects
+dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-Dependency 1.110.0-r2: Toolkit for implementing dependency systems
@@ -3341,40 +3341,40 @@ dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment p
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
-dev-perl/Any-Moose 0.260.0-r1 0.270.0: Use Moose or Mouse modules (DEPRECATED)
+dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.120.0 7.140.0: Provides a uniform interface to various event loops
-dev-perl/AnyEvent-HTTP 2.220.0 2.230.0: Simple but non-blocking HTTP/HTTPS client
+dev-perl/AnyEvent-HTTP 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
-dev-perl/Apache-AuthCookie 3.230.0 3.270.0-r1: Perl Authentication and Authorization via cookies
-dev-perl/Apache-DBI 1.120.0-r1 1.120.0-r2: Authentication and Authorization via Perl's DBI
+dev-perl/Apache-AuthCookie 3.270.0-r1: Perl Authentication and Authorization via cookies
+dev-perl/Apache-DBI 1.120.0-r2: Authentication and Authorization via Perl's DBI
 dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string to perl-code
-dev-perl/Apache-Reload 0.130.0 0.130.0-r1: Automatically reload changed modules without restarting Apache
+dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
-dev-perl/Apache2-AuthenNTLM 0.20.0-r1 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
-dev-perl/App-cpanminus 1.703.900 1.704.300: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.780.0 0.820.0: Manage perl installations in your $HOME
+dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
+dev-perl/App-cpanminus 1.704.300: Get, unpack, build and install modules from CPAN
+dev-perl/App-perlbrew 0.820.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
-dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
-dev-perl/Archive-Extract 0.720.0 0.800.0: Generic archive extracting mechanism
+dev-perl/Archive-Any 0.94.500: Single interface to deal with file archives
+dev-perl/Archive-Extract 0.800.0: Generic archive extracting mechanism
 dev-perl/Archive-Zip 1.590.0 1.600.0: A wrapper that lets you read Zip archive members as if they were files
-dev-perl/Array-Compare 2.20.0-r1 3.0.0: Perl extension for comparing arrays
+dev-perl/Array-Compare 3.0.0: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0: Interface to FITS headers
-dev-perl/AtExit 2.10.0-r1 2.30.0: atexit() function to register exit-callbacks
-dev-perl/Audio-CD-disc-cover 0.05-r1 0.05-r2: Perl Module needed for app-cdr/disc-cover
-dev-perl/Audio-DSP 0.20.0-r1 0.20.0-r2: Perl interface to *NIX digital audio device
+dev-perl/AtExit 2.30.0: atexit() function to register exit-callbacks
+dev-perl/Audio-CD-disc-cover 0.05-r2: Perl Module needed for app-cdr/disc-cover
+dev-perl/Audio-DSP 0.20.0-r2: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1: Access to FLAC audio metadata
-dev-perl/Audio-Mixer 0.700.0-r1 0.700.0-r2: Perl extension for Sound Mixer control
+dev-perl/Audio-Mixer 0.700.0-r2: Perl extension for Sound Mixer control
 dev-perl/Audio-Wav 0.140.0: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
 dev-perl/Authen-NTLM 1.90.0-r1: An NTLM authentication module
 dev-perl/Authen-PAM 0.160.0-r1 0.160.0-r2: Interface to PAM library
-dev-perl/Authen-Radius 0.220.0-r1 0.260.0: Communicate with a Radius server from Perl
+dev-perl/Authen-Radius 0.260.0: Communicate with a Radius server from Perl
 dev-perl/Authen-SASL 2.160.0-r1: A Perl SASL interface
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
@@ -3391,31 +3391,31 @@ dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
 dev-perl/Business-Hours 0.120.0-r1: Calculate business hours in a time period
-dev-perl/Business-ISBN 2.90.200_rc 3.4.0: Work with ISBN as objects
+dev-perl/Business-ISBN 3.4.0: Work with ISBN as objects
 dev-perl/Business-ISBN-Data 20140910.3.0: Data pack for Business::ISBN
-dev-perl/Business-ISMN 1.130.0 1.131.0: International Standard Music Numbers
-dev-perl/Business-ISSN 0.910.0-r1 1.2.0: Object and functions to work with International Standard Serial Numbers
+dev-perl/Business-ISMN 1.131.0: International Standard Music Numbers
+dev-perl/Business-ISSN 1.2.0: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
 dev-perl/CDDB 1.222.0-r1 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.360.0: Simple Common Gateway Interface Class
-dev-perl/CGI-Compile 0.210.0 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
-dev-perl/CGI-Emulate-PSGI 0.220.0 0.230.0: PSGI adapter for CGI
+dev-perl/CGI-Compile 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
+dev-perl/CGI-Emulate-PSGI 0.230.0: PSGI adapter for CGI
 dev-perl/CGI-Fast 2.100.0 2.120.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r1 1.90.0-r2: High Performance Templates and Variable Interpolation
-dev-perl/CGI-FormBuilder 3.90.0 3.100.0: Extremely fast, reliable form generation and processing module
+dev-perl/CGI-FormBuilder 3.100.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r1: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
-dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
-dev-perl/CPAN-Meta-Check 0.12.0 0.13.0 0.14.0: Verify requirements in a CPAN::Meta object
-dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
-dev-perl/CPAN-Perl-Releases 2.340.0 3.0.0 3.380.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Checksums 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
+dev-perl/CPAN-Meta-Check 0.13.0 0.14.0: Verify requirements in a CPAN::Meta object
+dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
+dev-perl/CPAN-Perl-Releases 3.380.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
-dev-perl/Cache 2.40.0-r1 2.110.0: the Cache interface
+dev-perl/Cache 2.110.0: the Cache interface
 dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
 dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
@@ -3430,7 +3430,7 @@ dev-perl/Carp-Clan 6.60.0: Report errors from perspective of caller of a clan of
 dev-perl/Chart 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r2: Implements an algorithm to find good values for chart axis
 dev-perl/Chatbot-Eliza 1.60.0 1.80.0: A clone of the classic Eliza program
-dev-perl/Cisco-Reconfig 0.911.0 0.912.0: Parse and generate Cisco configuration files
+dev-perl/Cisco-Reconfig 0.912.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120: Lets you build groups of accessors
@@ -3440,7 +3440,7 @@ dev-perl/Class-C3 0.310.0 0.330.0: A pragma to use the C3 method resolution orde
 dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r1 0.120.0-r2: Glue object frameworks together transparently
 dev-perl/Class-DBI 3.0.17-r1 3.0.17-r2: Simple Database Abstraction
-dev-perl/Class-DBI-mysql 1.0.0-r1 1.0.0-r2: Extensions to Class::DBI for MySQL
+dev-perl/Class-DBI-mysql 1.0.0-r2: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Inheritable 0.80.0-r1 0.80.0-r2: Inheritable, overridable class data
 dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
 dev-perl/Class-ErrorHandler 0.30.0 0.40.0: Automated accessor generation
@@ -3453,7 +3453,7 @@ dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
 dev-perl/Class-Method-Modifiers 2.120.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.240.0: Create generic methods for OO Perl
-dev-perl/Class-Mix 0.5.0-r1 0.6.0: dynamic class mixing
+dev-perl/Class-Mix 0.6.0: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
 dev-perl/Class-Trigger 0.140.0-r1: Mixin to add / call inheritable triggers
@@ -3468,9 +3468,9 @@ dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color l
 dev-perl/Compress-Bzip2 2.260.0: Interface to Bzip2 compression library
 dev-perl/Config-Any 0.290.0 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
-dev-perl/Config-AutoConf 0.313.0 0.315.0: A module to implement some of AutoConf macros in pure perl
+dev-perl/Config-AutoConf 0.315.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
-dev-perl/Config-General 2.600.0 2.630.0: Config file parser module
+dev-perl/Config-General 2.630.0: Config file parser module
 dev-perl/Config-Grammar 1.100.0-r1 1.120.0: A grammar-based, user-friendly config parser
 dev-perl/Config-IniFiles 2.880.0 2.940.0: A module for reading .ini-style configuration files
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
@@ -3480,13 +3480,13 @@ dev-perl/Const-Fast 0.14.0-r1: Facility for creating read-only scalars, arrays, 
 dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
-dev-perl/Convert-BinHex 1.123.0-r1 1.124.0 1.125.0: Extract data from Macintosh BinHex files
+dev-perl/Convert-BinHex 1.124.0 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.780.0-r1: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1: A Perl interface to the uulib library
-dev-perl/Cookie-Baker 0.60.0 0.80.0: Cookie string generator / parser
+dev-perl/Cookie-Baker 0.80.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0: Accelerate Cookie::Baker's crush_cookie
 dev-perl/Cpanel-JSON-XS 3.23.300 3.23.900: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
@@ -3518,7 +3518,7 @@ dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r1 0.120.0-r2: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/Curses 1.320.0 1.360.0: Curses interface modules for Perl
+dev-perl/Curses 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
@@ -3528,7 +3528,7 @@ dev-perl/DBD-mysql 4.41.0 4.44.0: MySQL driver for the Perl5 Database Interface 
 dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
-dev-perl/DBIx-DBSchema 0.400.0-r1 0.450.0: Database-independent schema objects
+dev-perl/DBIx-DBSchema 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Safe 1.2.5-r1: Safer access to your database through a DBI database handle
 dev-perl/DBIx-SearchBuilder 1.660.0-r1: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/Daemon-Generic 0.840.0 0.850.0: Framework to provide start/stop/reload for a daemon
@@ -3541,12 +3541,12 @@ dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-FormValidator 4.860.0-r1 4.880.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
-dev-perl/Data-HexDump 0.02-r1 0.20.0: A Simple Hexadecial Dumper
+dev-perl/Data-HexDump 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
 dev-perl/Data-ObjectDriver 0.150.0: Simple, transparent data interface, with caching
-dev-perl/Data-OptList 0.109.0 0.110.0: parse and validate simple name/value option pairs
+dev-perl/Data-OptList 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
 dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
@@ -3559,7 +3559,7 @@ dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GU
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.110.0: Domain and host name validation
-dev-perl/Data-Validate-IP 0.240.0 0.270.0: Lightweight IPv4 and IPv6 validation module
+dev-perl/Data-Validate-IP 0.270.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.50.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
@@ -3605,7 +3605,7 @@ dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
 dev-perl/Digest-Nilsimsa 0.60.0-r1: Digest::Nilsimsa - Perl version of Nilsimsa code
 dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
-dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
+dev-perl/Dist-CheckConflicts 0.110.0: Declare version conflicts for your dist
 dev-perl/EV 4.220.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Email-Abstract 3.7.0: unified interface to mail representations
 dev-perl/Email-Address 1.907.0: RFC 2822 Address Parsing and Creation
@@ -4360,11 +4360,11 @@ dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
 dev-perl/autobox 2.850.0: Call methods on native types
-dev-perl/autovivification 0.160.0 0.170.0: Lexically disable autovivification
+dev-perl/autovivification 0.170.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.5.0: Disables bareword filehandles
-dev-perl/boolean 0.450.0 0.460.0: Boolean support for Perl
+dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
-dev-perl/common-sense 3.740.0 3.740.0-r1: Save a tree AND a kitten, use common::sense!
+dev-perl/common-sense 3.740.0-r1: Save a tree AND a kitten, use common::sense!
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.325.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
@@ -8558,7 +8558,7 @@ net-libs/gtk-vnc 0.7.1: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
-net-libs/http-parser 2.6.2: Http request/response parser for C
+net-libs/http-parser 2.6.2 2.8.1: Http request/response parser for C
 net-libs/ldns 1.7.0-r2: a library with the aim to simplify DNS programming in C
 net-libs/libaccounts-glib 1.23: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasr 1.0.1: Async Resolver Library from OpenBSD/OpenSMTPD

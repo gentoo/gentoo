@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses:0 virtual/pkgconfig
+DESCRIPTION=Space invaders clone, using ncurses library
+EAPI=6
+HOMEPAGE=https://packages.gentoo.org/package/games-arcade/ascii-invaders
+KEYWORDS=~alpha ~amd64 ~mips ~ppc64 ~x86 ~x86-fbsd ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0
+SLOT=0
+SRC_URI=mirror://gentoo/invaders0.1b.tgz
+_md5_=06e31bf7144ebfb3ee5988b150f0fc4b

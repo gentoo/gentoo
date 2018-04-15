@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[video]
+DESCRIPTION=Fly a hot air balloon and try to blow the other player out of the screen
+EAPI=6
+HOMEPAGE=http://makegho.mbnet.fi/c/bchase/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[video]
+SLOT=0
+SRC_URI=http://makegho.mbnet.fi/c/bchase/balloonchase-0.9.6.tar.bz2
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=1b835598566c112f11445778d80ade2d
