@@ -5,6 +5,10 @@
 		<email>gentoo@retornaz.com</email>
 		<name>Quentin Retornaz</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
 	<use>
 		<flag name="stubby">Add Stubby DNS Privacy Deamon</flag>
 		<flag name="getdns_query">Add getdns_query tool</flag>
