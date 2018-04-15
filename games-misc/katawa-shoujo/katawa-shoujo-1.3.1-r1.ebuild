@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=6
 inherit eutils gnome2-utils
 
 DESCRIPTION="Bishoujo-style visual novel by Four Leaf Studios"
@@ -12,15 +11,19 @@ SRC_URI="http://dl.katawa-shoujo.com/gold_1.3.1/%5B4ls%5D_katawa_shoujo_1.3.1-%5
 	https://dev.gentoo.org/~hasufell/distfiles/katawa-shoujo-256.png"
 
 # bundled renpy includes licenses of all libraries
-LICENSE="CC-BY-NC-ND-3.0
-	!system-renpy? ( MIT PSF-2 LGPL-2.1 || ( FTL GPL-2+ ) IJG libpng ZLIB BZIP2 )"
+LICENSE="
+	CC-BY-NC-ND-3.0
+	!system-renpy? ( MIT PSF-2 LGPL-2.1 || ( FTL GPL-2+ ) IJG libpng ZLIB BZIP2 )
+"
+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
 IUSE="doc +system-renpy"
-
-RDEPEND="system-renpy? ( games-engines/renpy )"
-
 REQUIRED_USE="!system-renpy? ( || ( amd64 x86 ) )"
+
+RDEPEND="system-renpy? ( games-engines/renpy:6.99 )"
+DEPEND=""
 
 # Binaries are built extremely weirdly, resulting in errors like:
 # BFD: Not enough room for program headers, try linking with -N
@@ -37,7 +40,6 @@ src_install() {
 	if use system-renpy; then
 		insinto "/usr/share/${PN}"
 		doins -r game/.
-
 		make_wrapper ${PN} "renpy '/usr/share/${PN}'"
 	else
 		insinto "/opt/${PN}"
