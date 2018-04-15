@@ -7,7 +7,7 @@ inherit desktop eutils gnome2-utils unpacker
 
 TIMESTAMP="${PV:4:2}${PV:6:2}${PV:0:4}"
 DESCRIPTION="A minimal action game by Terry Cavanagh, with music by Chipzel"
-HOMEPAGE="http://www.superhexagon.com/"
+HOMEPAGE="https://www.superhexagon.com/"
 SRC_URI="superhexagon-${TIMESTAMP}-bin"
 
 LICENSE="all-rights-reserved"
