@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Redir is a port redirector
+EAPI=6
+HOMEPAGE=http://sammy.net/~sammy/hacks/
+KEYWORDS=~alpha ~amd64 ~hppa ~mips ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://sammy.net/~sammy/hacks/redir-2.2.1.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=0757feaddbfccd302e40af1ab5935b8a
