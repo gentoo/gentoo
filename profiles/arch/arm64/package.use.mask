@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unkeyworded dependencies.
+app-admin/syslog-ng mongodb
+
 # Mart Raudsepp <leio@gentoo.org> (08 Apr 2018)
 # Tests fail for bundled luajit, USE=luajit is globally
 # masked too (no-one has tested it yet).
@@ -307,6 +311,7 @@ net-misc/tlsdate seccomp
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
+dev-python/pycurl curl_ssl_libressl
 net-misc/curl curl_ssl_axtls curl_ssl_libressl metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
