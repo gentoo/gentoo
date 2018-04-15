@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit apache-module
 
 DESCRIPTION="Specify access controls based on DNSBL zones"
-HOMEPAGE="http://www.apacheconsultancy.com/modules/${PN}/"
+HOMEPAGE="http://www.apacheconsultancy.com/modules/mod_access_dnsbl/"
 SRC_URI="http://www.apacheconsultancy.com/modules/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
