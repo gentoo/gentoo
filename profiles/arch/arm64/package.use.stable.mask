@@ -6,6 +6,7 @@
 app-admin/syslog-ng spoof-source
 app-portage/layman cvs subversion test
 app-text/asciidoc graphviz
+app-text/xmlto latex
 dev-util/patchutils test
 net-dns/avahi bookmarks gtk3 qt4 utils
 net-misc/openssh X

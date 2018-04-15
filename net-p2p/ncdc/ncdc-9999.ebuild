@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools git-r3 toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
-HOMEPAGE="http://dev.yorhel.nl/ncdc"
+HOMEPAGE="https://dev.yorhel.nl/ncdc"
 EGIT_REPO_URI="git://g.blicky.net/ncdc.git"
 
 LICENSE="MIT"

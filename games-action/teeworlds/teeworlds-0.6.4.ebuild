@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit eutils multiprocessing python-any-r1 toolchain-funcs versionator
 REVISION="b177-rff25472"
 
 DESCRIPTION="Online multi-player platform 2D shooter"
-HOMEPAGE="http://www.teeworlds.com/"
+HOMEPAGE="https://www.teeworlds.com/"
 SRC_URI="https://downloads.teeworlds.com/${P}-src.tar.gz"
 
 LICENSE="ZLIB"

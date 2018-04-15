@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils flag-o-matic autotools
 
 DESCRIPTION="3D tank combat simulator game"
-HOMEPAGE="http://www.bzflag.org/"
+HOMEPAGE="https://www.bzflag.org/"
 SRC_URI="https://download.bzflag.org/bzflag/source/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
