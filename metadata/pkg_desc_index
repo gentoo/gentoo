@@ -7313,7 +7313,7 @@ media-gfx/tic98 1.01-r3: compressor for black-and-white images, in particular sc
 media-gfx/transfig 3.2.5e: A set of tools for creating TeX documents with graphics
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
-media-gfx/ufraw 0.22 0.22-r1 0.22-r2: RAW Image format viewer and GIMP plugin
+media-gfx/ufraw 0.22 0.22-r2: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Convert vector graphic file formats like .cdr, .svg, wmf and more.
 media-gfx/viewnior 1.6: Fast and simple image viewer
 media-gfx/wings 2.1.5: Wings 3D is an advanced subdivision modeler
@@ -7591,7 +7591,7 @@ media-libs/openh264 1.7.0-r1: Cisco OpenH264 library and Gecko Media Plugin for 
 media-libs/openimageio 1.6.13 1.7.17: A library for reading and writing images
 media-libs/openjpeg 1.5.2 2.3.0: An open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.0: An Open-Source subdivision surface library
-media-libs/opus 1.1.3-r1 1.2.1: Open codec designed for internet transmission of interactive speech and audio
+media-libs/opus 1.2.1: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
 media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
@@ -10186,7 +10186,7 @@ sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
 sys-process/fcron 3.2.1-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0: Monitor open files and filesystems
-sys-process/glances 2.7.1: CLI curses based monitoring tool
+sys-process/glances 2.11.1: CLI curses based monitoring tool
 sys-process/htop 2.0.2: interactive process viewer
 sys-process/incron 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
