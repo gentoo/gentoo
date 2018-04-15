@@ -16,7 +16,7 @@ REQUIRED_USE="
 	srs? ( exiscan-acl )
 "
 
-COMM_URI="ftp://ftp.exim.org/pub/exim/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
+COMM_URI="https://downloads.exim.org/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
 
 DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
 SRC_URI="${COMM_URI}/${P//rc/RC}.tar.xz
@@ -519,7 +519,7 @@ src_install () {
 	systemd_newunit "${FILESDIR}"/exim-submission_at.service 'exim-submission@.service'
 
 	diropts -m 0750 -o ${MAILUSER} -g ${MAILGROUP}
-	dodir /var/log/${PN}
+	keepdir /var/log/${PN}
 }
 
 pkg_postinst() {
