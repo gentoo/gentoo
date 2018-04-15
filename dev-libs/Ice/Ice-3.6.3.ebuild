@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby22"
+USE_RUBY="ruby23"
 
 PHP_EXT_NAME="IcePHP"
 PHP_EXT_INI="yes"
@@ -41,7 +41,7 @@ RDEPEND=">=dev-libs/expat-2.0.1
 	)
 	dev-cpp/libmcpp
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( $(ruby_implementation_depend ruby22) )
+	ruby? ( $(ruby_implementation_depend ruby23) )
 	mono? ( dev-lang/mono )
 	php? ( dev-lang/php:7.0 )
 	!dev-python/IcePy
@@ -173,13 +173,13 @@ src_configure() {
 	fi
 
 	if use ruby; then
-		SITERUBY="$(ruby22 -r rbconfig -e 'print RbConfig::CONFIG[\"sitelibdir\"]')"
+		SITERUBY="$(ruby23 -r rbconfig -e 'print RbConfig::CONFIG[\"sitelibdir\"]')"
 		MAKE_RULES_RUBY=(
 			"install_rubydir=\"${ED%/}/${SITERUBY}\""
 			"install_libdir=\"${ED%/}/${SITERUBY}\""
 		)
 
-		# make it use ruby22 only
+		# make it use ruby23 only
 		sed -i \
 			-e 's|RUBY = ruby|\022|' \
 			ruby/config/Make.rules || die "sed failed"
