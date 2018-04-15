@@ -1,12 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 GITHUB_AUTHOR="hollow"
 GITHUB_PROJECT="mod_fastcgi_handler"
 GITHUB_COMMIT="c5e075b"
-
 inherit apache-module
 
 DESCRIPTION="A simple FastCGI handler module"
@@ -17,9 +16,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 S="${WORKDIR}"/${GITHUB_AUTHOR}-${GITHUB_PROJECT}-${GITHUB_COMMIT}
 
