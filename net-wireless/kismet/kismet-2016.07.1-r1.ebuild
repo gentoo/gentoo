@@ -10,7 +10,7 @@ MY_P=${MY_P/./-R}
 S=${WORKDIR}/${MY_P}
 
 SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
-KEYWORDS="amd64 arm arm64 ~ppc x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc x86"
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
 HOMEPAGE="http://www.kismetwireless.net/"
