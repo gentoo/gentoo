@@ -15,7 +15,7 @@ HOMEPAGE="http://java.sun.com/products/jmi/"
 SRC_URI="mirror://gentoo/${JMI_ZIP}
 		 mirror://gentoo/${MOF_XML}"
 
-LICENSE="sun-bcla-jmi"
+LICENSE="sun-bcla"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
