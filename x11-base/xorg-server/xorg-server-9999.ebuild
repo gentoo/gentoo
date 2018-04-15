@@ -161,8 +161,9 @@ src_configure() {
 		$(use_with doc xmlto)
 		$(use_with systemd systemd-daemon)
 		$(use_enable systemd systemd-logind)
+		$(use_enable systemd suid-wrapper)
+		$(use_enable !systemd install-setuid)
 		--enable-libdrm
-		--enable-suid-wrapper
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
 		--with-fontrootdir="${EPREFIX}"/usr/share/fonts
