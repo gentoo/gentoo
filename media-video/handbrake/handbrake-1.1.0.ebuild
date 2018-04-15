@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 else
 	MY_P="HandBrake-${PV}"
-	SRC_URI="http://handbrake.fr/rotation.php?file=${MY_P}.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="https://download2.handbrake.fr/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
