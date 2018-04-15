@@ -23,7 +23,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	thirdparty? ( dev-python/requests )
-	media-sound/mpd
+	media-sound/mpd[curl]
 "
 
 pkg_setup() {
