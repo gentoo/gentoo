@@ -18,7 +18,7 @@ else
 	else
 		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -122,7 +122,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.1.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-4.2.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
 	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch # bug #609488
@@ -337,9 +337,7 @@ src_install() {
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var/cache
-	rm -rf "${D}"/var/run
-	rm -rf "${D}"/var/log
+	rm -rf "${D}"/var
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
