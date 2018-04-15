@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-12">
+  <title>Go: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Go allows remote attackers to execute arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">go</product>
+  <announced>2018-04-15</announced>
+  <revised count="1">2018-04-15</revised>
+  <bug>650014</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/go" auto="yes" arch="*">
+      <unaffected range="ge">1.10.1</unaffected>
+      <vulnerable range="lt">1.10.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Go is an open source programming language that makes it easy to build
+      simple, reliable, and efficient software.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability in Go was discovered which does not validate the import
+      path of remote repositories.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to import from a crafted website,
+      could execute arbitrary commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Go users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/go-1.10.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7187">CVE-2018-7187</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-14T16:24:01Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-15T23:23:53Z">b-man</metadata>
+</glsa>
