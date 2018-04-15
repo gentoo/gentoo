@@ -21,7 +21,7 @@ dev-libs/libgit2 libressl
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
-net-fs/samba ads cluster python test
+net-fs/samba addc addns ads cluster python test
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Some more unkeyworded dependencies.
