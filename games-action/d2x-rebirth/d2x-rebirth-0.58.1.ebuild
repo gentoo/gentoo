@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,11 +8,11 @@ inherit eutils scons-utils games
 DV=2
 MY_P=dxx-rebirth-${PV}-d2x
 DESCRIPTION="Descent Rebirth - enhanced Descent ${DV} engine"
-HOMEPAGE="http://www.dxx-rebirth.com/"
+HOMEPAGE="https://www.dxx-rebirth.com/"
 SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/0.58.1-d2x.tar.gz -> ${P}.tar.gz
-	opl3-musicpack? ( http://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-opl3-music.zip )
-	sc55-musicpack? ( http://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-sc55-music.zip )
-	l10n_de? ( http://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-briefings-ger.zip )"
+	opl3-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-opl3-music.zip )
+	sc55-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-sc55-music.zip )
+	l10n_de? ( https://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-briefings-ger.zip )"
 
 LICENSE="D1X GPL-2 public-domain"
 SLOT="0"
