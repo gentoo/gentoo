@@ -1,6 +1,15 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Non-stable dependencies.
+app-admin/syslog-ng spoof-source
+app-portage/layman cvs subversion
+app-text/asciidoc graphviz
+dev-util/patchutils test
+net-dns/avahi bookmarks gtk3 qt4
+net-misc/openssh X
+
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
 net-dns/avahi howl-compat python
