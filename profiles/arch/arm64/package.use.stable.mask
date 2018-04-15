@@ -4,11 +4,17 @@
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
-app-portage/layman cvs subversion
+app-portage/layman cvs subversion test
 app-text/asciidoc graphviz
 dev-util/patchutils test
-net-dns/avahi bookmarks gtk3 qt4
+net-dns/avahi bookmarks gtk3 qt4 utils
 net-misc/openssh X
+sys-apps/dbus test
+sys-apps/man-pages l10n_fr
+sys-auth/pambase consolekit pam_krb5 pam_ssh passwdqc
+sys-block/thin-provisioning-tools test
+sys-devel/distcc gssapi
+sys-devel/gettext cvs
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
