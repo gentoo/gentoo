@@ -33,6 +33,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-libs/cppcodec
+	dev-qt/qttranslations:5
 	virtual/pkgconfig"
 
 pkg_postinst(){
