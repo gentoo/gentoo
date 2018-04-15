@@ -1327,7 +1327,7 @@ app-text/enchant 1.6.1: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
-app-text/evince 3.24.2: Simple document viewer for GNOME
+app-text/evince 3.24.2 3.24.2-r1: Simple document viewer for GNOME
 app-text/fbreader 0.99.4-r3 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/flpsed 0.7.0: Pseudo PostScript editor
 app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
