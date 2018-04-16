@@ -57,5 +57,5 @@ multilib_src_configure() {
 multilib_src_install() {
 	keepdir /etc/vulkan/icd.d
 
-	default
+	cmake-utils_src_install
 }
