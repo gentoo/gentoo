@@ -134,6 +134,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	hprefixify build/CMakeLists.txt core/clingutils/CMakeLists.txt
+	eapply "${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
