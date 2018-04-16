@@ -533,40 +533,9 @@ dev-java/commons-betwixt
 =net-dns/dnscrypt-proxy-1.9.5-r1
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Tests need network, nothing requires this old lib anymore and upstream is
-# dead for a long time (#335233). Removal in a month.
-net-libs/netembryo
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Fails to build (#371401, #642676). Removal in a month.
-net-misc/netkit-rwall
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Incomplete and unclear LICENSE, missing files in SRC_URI (#472602).
-# Removal in a month.
-sci-electronics/balsa
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Upstream dead for a long time, requires obsolete gstreamer and other old
 # libs (#629192), buggy (#490344). Removal in a month.
 media-tv/me-tv
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Doesn't build for a long time (#514432). Removal in a month.
-sci-biology/beast-mcmc
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Fails to build (#514632, #585606, #588710). Removal in a month.
-sys-power/phc-k8
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Fails to build for a long time (#515734, 649840). Removal in a month.
-sys-fs/gfs2-utils
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Many other ident daemons in the tree over this completely dead and
-# unmaintained (since 2003) implementation (#535868). Removal in a month.
-net-misc/linux-identd
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Major version bump pending (#540322), current version in the tree is
@@ -599,23 +568,6 @@ net-p2p/tribler
 # Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
 # Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
 >=x11-base/xorg-server-1.19.7
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
-# Fails to build without rpc support in glibc (bug 631044);
-# no maintainer, requires obsolete hardware. Removal in
-# 30 days.
-app-pda/p3nfs
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
-# Fails to build without rpc support in glibc (bug 377867);
-# fails to build with libtirpc; apparently functionality is
-# now included in libtirpc. No consumers. Removal in 30 days.
-net-libs/librpcsecgss
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (03 Mar 2018)
-# Marked obsolete on CTAN. EAPI=3 ebuild. No consumers.
-# Masked for removal in 30 days. Bug 644258
-app-text/noweb
 
 # Tim Harder <radhermit@gentoo.org> (01 Mar 2018)
 # Masked for testing.
