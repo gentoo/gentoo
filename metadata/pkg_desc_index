@@ -263,7 +263,7 @@ app-benchmarks/cpuburn 1.4a-r1: Designed to heavily load CPU chips [testing purp
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r1: A better i7 (and now i3, i5) reporting tool for Linux
-app-benchmarks/iozone 3.397: Filesystem benchmarking program
+app-benchmarks/iozone 3.397 3.471: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
@@ -8825,7 +8825,7 @@ net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/mobile-broadband-provider-info 20170310: Database of mobile broadband service providers
 net-misc/modemmanager 1.6.4: Modem and mobile broadband management libraries
-net-misc/mosh 1.2.6: Mobile shell that supports roaming and intelligent local echo
+net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ndisc6 0.9.9: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
