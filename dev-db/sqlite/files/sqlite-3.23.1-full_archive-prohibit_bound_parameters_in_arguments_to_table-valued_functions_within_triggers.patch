@@ -1,0 +1,24 @@
+https://sqlite.org/src/info/b7178209152452e8
+
+--- /src/attach.c
++++ /src/attach.c
+@@ -502,6 +502,9 @@
+     if( sqlite3FixSelect(pFix, pItem->pSelect) ) return 1;
+     if( sqlite3FixExpr(pFix, pItem->pOn) ) return 1;
+ #endif
++    if( pItem->fg.isTabFunc && sqlite3FixExprList(pFix, pItem->u1.pFuncArg) ){
++      return 1;
++    }
+   }
+   return 0;
+ }
+--- /test/triggerE.test
++++ /test/triggerE.test
+@@ -57,6 +57,7 @@
+   7 { BEFORE DELETE ON t1 BEGIN SELECT * FROM t2 ORDER BY ?; END; }
+   8 { BEFORE UPDATE ON t1 BEGIN UPDATE t2 SET c = ?; END; }
+   9 { BEFORE UPDATE ON t1 BEGIN UPDATE t2 SET c = 1 WHERE d = ?; END; }
++ 10 { AFTER INSERT ON t1 BEGIN SELECT * FROM pragma_stats(?); END; }
+ } {
+   catchsql {drop trigger tr1}
+   do_catchsql_test 1.1.$tn "CREATE TRIGGER tr1 $defn" [list 1 $errmsg]
