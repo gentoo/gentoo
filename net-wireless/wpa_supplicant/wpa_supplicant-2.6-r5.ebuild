@@ -13,7 +13,7 @@ LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="ap dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl p2p privsep ps3 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
-REQUIRED_USE="fasteap? ( !ssl ) smartcard? ( ssl )"
+REQUIRED_USE="smartcard? ( ssl )"
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	kernel_linux? (
@@ -38,7 +38,7 @@ CDEPEND="dbus? ( sys-apps/dbus )
 			net-libs/gnutls:=
 		)
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
+			!libressl? ( >=dev-libs/openssl-1.0.2k:0= )
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)
