@@ -895,7 +895,7 @@ app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.35: Data resources for Rime Input Method Engine
-app-i18n/scim 1.4.14 1.4.17: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
+app-i18n/scim 1.4.17: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
 app-i18n/scim-anthy 1.2.7-r1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-hangul 0.4.0: Hangul IMEngine for SCIM ported from imhangul
 app-i18n/scim-input-pad 0.1.3: Input pad for SCIM used to input symbols and special characters
@@ -1838,7 +1838,7 @@ dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for li
 dev-db/libiodbc 3.52.8-r2: ODBC Interface for Linux
 dev-db/libzdb 2.11.1 2.12 3.1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.18: An ultra-fast, ultra-compact key-value embedded data store
-dev-db/m17n-db 1.6.3 1.6.4 1.7.0: Database for the m17n library
+dev-db/m17n-db 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
 dev-db/mariadb 10.0.30-r1 10.0.33 10.0.34 10.1.24-r1 10.1.29 10.1.31-r1: An enhanced, drop-in replacement for MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -1878,7 +1878,7 @@ dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.19.3 3.20.1-r1 3.21.0 3.22.0: A SQL Database Engine in a C Library
+dev-db/sqlite 3.20.1-r1 3.21.0 3.22.0 3.23.1: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.9.1-r1 3.10.1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
@@ -3166,7 +3166,7 @@ dev-libs/log4cpp 1.1: C++ classes for flexible logging to files, syslog and othe
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.09 2.10: An extremely fast compression and decompression library
-dev-libs/m17n-lib 1.6.4 1.7.0: Multilingual Library for Unix/Linux
+dev-libs/m17n-lib 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5-r1: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
@@ -3184,7 +3184,7 @@ dev-libs/nspr 4.13.1: Netscape Portable Runtime
 dev-libs/nss 3.29.5: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 9.3.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11: Alternative to vendor specific OpenCL ICD loaders
-dev-libs/oniguruma 5.9.5 6.6.1 6.7.1: Regular expression library for different character encodings
+dev-libs/oniguruma 6.6.1 6.7.1: Regular expression library for different character encodings
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0: Libraries and applications to access smartcards
@@ -10143,7 +10143,7 @@ sys-libs/openipmi 2.0.22: Library interface to IPMI
 sys-libs/pam 1.2.1-r2: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.3_p8-r3 7.0_p3: Another cute console display library
-sys-libs/slang 2.3.0 2.3.2: Multi-platform library designed to allow a developer to create robust software
+sys-libs/slang 2.3.2: Multi-platform library designed to allow a developer to create robust software
 sys-libs/talloc 2.1.5 2.1.9: Samba talloc library
 sys-libs/tdb 1.3.8 1.3.13: A simple database API
 sys-libs/tevent 0.9.28 0.9.31-r1: Samba tevent library
@@ -10394,7 +10394,7 @@ virtual/texi2dvi 0-r1: Virtual for texi2dvi (and texi2pdf)
 virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
-virtual/w3m 0-r1: Virtual for the w3m web browser
+virtual/w3m 0: Virtual for the w3m web browser
 virtual/wine 0-r5: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
@@ -10469,7 +10469,7 @@ www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, H
 www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3: Download manager using gtk+ and libcurl
-www-client/w3m 0.5.3-r9 0.5.3_p20180125: Text based WWW browser, supports tables and frames
+www-client/w3m 0.5.3_p20180125: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
 www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
