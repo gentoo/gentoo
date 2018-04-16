@@ -9742,7 +9742,7 @@ sys-apps/kexec-tools 2.0.4-r2 2.0.14: Load another kernel from the currently exe
 sys-apps/keyutils 1.5.9-r1 1.5.9-r4: Linux Key Management Utilities
 sys-apps/kmod 24: library and tools for managing linux kernel modules
 sys-apps/less 487 529: Excellent text file viewer
-sys-apps/lm_sensors 3.4.0_p20160725 3.4.0_p20170901: Hardware Monitoring user-space utilities
+sys-apps/lm_sensors 3.4.0_p20170901: Hardware Monitoring user-space utilities
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
 sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
