@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: enlightenment.eclass
 # @MAINTAINER:
-# enlightenment@gentoo.org
+# maintainer-needed@gentoo.org
 # @BLURB: simplify enlightenment package management
 
 if [[ -z ${_ENLIGHTENMENT_ECLASS} ]]; then
