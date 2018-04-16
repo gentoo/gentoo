@@ -7143,7 +7143,7 @@ media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
 media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
 media-fonts/tibetan-machine-font 1.901: Fonts for the Tibetan and Himalayan languages
 media-fonts/ttf-bitstream-vera 1.10-r3: Bitstream Vera font family
-media-fonts/ubuntu-font-family 0.80: A set of matching libre/open fonts funded by Canonical
+media-fonts/ubuntu-font-family 0.80 0.83-r1: A set of matching libre/open fonts funded by Canonical
 media-fonts/umeplus-fonts 20130511 20131109 20160402: UmePlus fonts are modified Ume and M+ fonts for Japanese
 media-fonts/unfonts 1.0.2_pre080608-r1: Korean Un fonts collection
 media-fonts/unfonts-extra 1.0.2_pre080608-r1: Korean Un fonts extras collection
