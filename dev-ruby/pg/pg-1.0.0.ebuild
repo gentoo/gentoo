@@ -15,15 +15,13 @@ DESCRIPTION="Ruby extension library providing an API to PostgreSQL"
 HOMEPAGE="https://bitbucket.org/ged/ruby-pg/"
 
 LICENSE="|| ( GPL-2 Ruby )"
-SLOT="0"
+SLOT="1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND+=" dev-db/postgresql:*"
 DEPEND+=" dev-db/postgresql
 	test? ( >=dev-db/postgresql-9.4[server,threads] )"
-
-PATCHES=( "${FILESDIR}/postgresql10-tests.patch" )
 
 all_ruby_prepare() {
 	# hack the Rakefile to make it sure that it doesn't load

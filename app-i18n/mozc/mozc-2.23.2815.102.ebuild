@@ -12,10 +12,10 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/google/mozc"
 	EGIT_SUBMODULES=(src/third_party/japanese_usage_dictionary)
 else
-	MOZC_GIT_REVISION=""
-	JAPANESE_USAGE_DICTIONARY_GIT_REVISION=""
-	JAPANESE_USAGE_DICTIONARY_DATE=""
-	FCITX_PATCH_VERSION=""
+	MOZC_GIT_REVISION="afb03ddfe72dde4cf2409863a3bfea160f7a66d8"
+	JAPANESE_USAGE_DICTIONARY_GIT_REVISION="e5b3425575734c323e1d947009dd74709437b684"
+	JAPANESE_USAGE_DICTIONARY_DATE="20120416091336"
+	FCITX_PATCH_VERSION="2.23.2815.102.1"
 fi
 
 DESCRIPTION="Mozc - Japanese input method editor"
@@ -34,7 +34,7 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )"
 
@@ -166,6 +166,7 @@ src_configure() {
 	fi
 
 	gyp_arguments+=(-D use_fcitx=$(usex fcitx4 YES NO))
+	gyp_arguments+=(-D use_fcitx5=NO)
 	gyp_arguments+=(-D use_libgtest=$(usex test 1 0))
 	gyp_arguments+=(-D use_libibus=$(usex ibus 1 0))
 	gyp_arguments+=(-D use_libjsoncpp=$(usex test 1 0))
