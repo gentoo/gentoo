@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
+AUTOTOOLS_AUTORECONF=true
 inherit eutils autotools
 
 DESCRIPTION="A library for high quality time and pitch scale modification"
@@ -11,13 +12,13 @@ SRC_URI="mirror://sourceforge/sbsms/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 x86"
+KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse static-libs"
 
+PATCHES=( "${FILESDIR}/${P}-cflags.patch" )
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-2.0.0-cflags.patch \
-		"${FILESDIR}"/${PN}-2.0.1-includes.patch
+	default
 	eautoreconf
 }
 
