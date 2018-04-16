@@ -49,6 +49,7 @@ CONFIG_CHECK="~TUN"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-external-cmocka.patch"
+	"${FILESDIR}/${P}-libressl-macro-fix.patch"
 )
 
 pkg_setup()  {
