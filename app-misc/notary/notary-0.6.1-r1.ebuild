@@ -39,4 +39,8 @@ src_install() {
 	doins -r migrations fixtures
 	fowners -R ${PN}:${PN} /var/lib/notary
 	fperms -R 0600 /var/lib/notary/fixtures/database/
+	newinitd "${FILESDIR}"/notary-signer.initd notary-signer
+	newconfd "${FILESDIR}"/notary-signer.confd notary-signer
+	newinitd "${FILESDIR}"/notary-server.initd notary-server
+	newconfd "${FILESDIR}"/notary-server.confd notary-server
 }

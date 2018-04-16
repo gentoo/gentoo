@@ -8,7 +8,7 @@ inherit linux-info systemd toolchain-funcs multilib-minimal
 DESCRIPTION="Hardware Monitoring user-space utilities"
 HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/groeck/lm-sensors"
 
-COMMIT="45ffa15cf02e63f70ff3b85c23e22dfbab7e8f9c"
+COMMIT="6d970e5eb196061605c138c9dcbc833b052c4f3a"
 MY_PN="${PN/_/-}"
 
 #SRC_URI="http://dl.lm-sensors.org/lm-sensors/releases/${P}.tar.bz2"
@@ -19,8 +19,8 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/4.4.0"
 
-KEYWORDS="alpha amd64 arm ~arm64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="sensord static-libs"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+IUSE="contrib sensord static-libs"
 
 COMMON_DEPS="
 	sensord? (
@@ -161,6 +161,11 @@ multilib_src_install_all() {
 
 	docinto developers
 	dodoc doc/developers/applications
+
+	if use contrib; then
+		insinto /usr/share/${PN}
+		doins -r "${S}"/configs
+	fi
 }
 
 pkg_postinst() {
