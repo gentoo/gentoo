@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Richard Yao <ryao@gentoo.org> (16 Apr 2018)
+# sys-fs/zfs is keyworded on amd64
+sys-cluster/ceph -zfs
+sys-boot/grub -libzfs
+
 # Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
 # [cuda] is unmasked in this profiles.
 media-libs/opencv -contrib_xfeatures2d
