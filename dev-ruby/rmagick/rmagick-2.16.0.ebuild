@@ -39,7 +39,8 @@ all_ruby_prepare() {
 	# Avoid some tests that seem to be very dependent on specific
 	# imagemagick versions. color defs?
 	sed -i -e '/test_\(gray\|compress_colormap\)/,/^  end/ s:^:#:' test/Image2.rb || die
-	sed -i -e '/test_optimize_layers/,/^  end/ s:^:#:' test/ImageList2.rb || die
+	sed -i -e '/test_iterations/,/^    end/ s:^:#:' test/ImageList1.rb || die
+	sed -i -e '/test_\(optimize_layers\|montage\)/,/^  end/ s:^:#:' test/ImageList2.rb || die
 	sed -i -e '/test_\(background_color\|border_color\|image_type\)/,/^  end/ s:^:#:' test/Image_attributes.rb || die
 }
 
