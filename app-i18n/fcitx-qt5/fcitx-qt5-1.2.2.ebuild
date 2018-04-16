@@ -38,3 +38,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=()
+
+src_prepare() {
+	# https://github.com/fcitx/fcitx-qt5/issues/34
+	# https://github.com/fcitx/fcitx-qt5/commit/af033e3d5305108eecc568adff7f8b2da5831ed6
+	sed -e "/^#include \"batchdialog.h\"$/i\\#include <QIcon>" -i quickphrase-editor/batchdialog.cpp || die
+
+	cmake-utils_src_prepare
+}
