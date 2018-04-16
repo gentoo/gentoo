@@ -18,11 +18,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm"
 IUSE="igbinary +session"
 
-DEPEND="igbinary? (
-	php_targets_php5-6? ( dev-php/igbinary[php_targets_php5-6] )
-	php_targets_php7-0? ( dev-php/igbinary[php_targets_php7-0] )
-	php_targets_php7-1? ( dev-php/igbinary[php_targets_php7-1] )
-	php_targets_php7-2? ( dev-php/igbinary[php_targets_php7-2] ) ) "
+DEPEND="
+	php_targets_php5-6? ( dev-lang/php:5.6[session?] igbinary? ( dev-php/igbinary[php_targets_php5-6] ) )
+	php_targets_php7-0? ( dev-lang/php:7.0[session?] igbinary? ( dev-php/igbinary[php_targets_php7-0] ) )
+	php_targets_php7-1? ( dev-lang/php:7.1[session?] igbinary? ( dev-php/igbinary[php_targets_php7-1] ) )
+	php_targets_php7-2? ( dev-lang/php:7.2[session?] igbinary? ( dev-php/igbinary[php_targets_php7-2] ) )
+"
 RDEPEND="${DEPEND} !dev-php/pecl-redis:7"
 
 # The test suite requires network access.
