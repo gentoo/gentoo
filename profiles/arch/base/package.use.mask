@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Richard Yao <ryao@gentoo.org> (16 Apr 2018)
+# sys-fs/zfs is not available everywhere.
+sys-cluster/ceph zfs
+
 # Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
 # Moved from use.mask since it is a flag local to one package:
 # Joseph Jezak <josejx@gentoo.org> (11 Mar 2007)
@@ -155,6 +159,10 @@ net-libs/gnutls dane
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # fontconfig-infinality dependency not yet keyworded on most arches
 media-libs/freetype infinality
+
+# Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
+# sys-fs/zfs is not available everywhere.
+sys-boot/grub libzfs
 
 # Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
 # JIT compilation in libzpaq generates code for x86/amd64.

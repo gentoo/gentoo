@@ -86,12 +86,12 @@ src_unpack() {
 	for lib in "${ARDUINO_LIBRARIES[@]}"; do
 		lib=( $lib )
 		local destfolder=${lib[3]:-build/}
-		cp "${DISTDIR}/${P}-${lib[0]}-${lib[1]}.zip" "${S}/${destfolder}/${lib[0]}-${lib[1]}.zip"
+		cp "${DISTDIR}/${P}-${lib[0]}-${lib[1]}.zip" "${S}/${destfolder}/${lib[0]}-${lib[1]}.zip" || die
 	done
 	if use doc; then
 		local docname
 		for docname in "${ARDUINO_DOCS[@]}"; do
-			cp "${DISTDIR}/${P}-${docname}.zip" "${S}/build/shared/${docname}.zip"
+			cp "${DISTDIR}/${P}-${docname}.zip" "${S}/build/shared/${docname}.zip" || die
 		done
 	fi
 }
@@ -122,7 +122,7 @@ src_install() {
 	java-pkg_dolauncher ${PN} \
 		--pwd "${SHARE}" \
 		--main "processing.app.Base" \
-		--java_args "-DAPP_DIR=${SHARE}"
+		--java_args "-DAPP_DIR=${SHARE} -Djava.library.path=${EPREFIX}/usr/$(get_libdir)"
 
 	# Install libraries
 	insinto "${SHARE}"
