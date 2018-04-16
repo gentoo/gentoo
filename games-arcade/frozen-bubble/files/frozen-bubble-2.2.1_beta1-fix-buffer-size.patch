@@ -1,0 +1,69 @@
+From aa2ce32185b4477e659ed7c70d09c440610ef67b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 2 Feb 2018 12:44:15 +0100
+Subject: [PATCH] Fix buffer size when formatting current date
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+gcc-8 and glibc-2.26.9000 reports this error:
+
+server/log.c:64:54: error: '%03d' directive output may be truncated writing between 3 and 11 bytes into a region of size between 0 and 49 [-Werror=format-truncation=]
+     snprintf(current_date, sizeof(current_date), "%s.%03d", buf, (int)(1000 * (time-seconds)));
+                                                      ^~~~
+
+This patch fixes two mistakes in the get_current_date() function:
+
+First strftime() can fail and then buf content is undefined. The patch
+makes sure the buf content is properly null-termited.
+
+Second if strftime() uses up the the whole buf array, no space will be
+left for appending miliseconds to current_date value in the subsequent
+snprintf() call. The patch increases current_data size so that things
+will always fit.
+
+In reality, all this should not matter because sane strftime() will
+return fixed-lenght string. But for all the cases and for sake of the
+compiler check this patch should be applied.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ server/log.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/server/log.c b/server/log.c
+index 2fe7b7c..f696752 100644
+--- a/server/log.c
++++ b/server/log.c
+@@ -52,15 +52,17 @@ double get_current_time_exact(void)
+     return (double) now.tv_sec + now.tv_usec / 1e6;  // bad bad idea to use float as precision is not down to the seconds then
+ }
+ 
+-char current_date[50];
++char current_date[70];
+ char* get_current_date(void) 
+ {
+     struct tm * lt;
+     char buf[50];
+     double time = get_current_time_exact();
+     time_t seconds = (time_t)time;
++    size_t length;
+     lt = localtime(&seconds);
+-    strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", lt);
++    length = strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", lt);
++    buf[length] = '\0';
+     snprintf(current_date, sizeof(current_date), "%s.%03d", buf, (int)(1000 * (time-seconds)));
+     return current_date;
+ }
+diff -up frozen-bubble-2.2.1-beta1/server/log.h~ frozen-bubble-2.2.1-beta1/server/log.h
+--- frozen-bubble-2.2.1-beta1/server/log.h~	2010-08-07 15:36:27.000000000 +0200
++++ frozen-bubble-2.2.1-beta1/server/log.h	2018-02-08 14:09:52.472451694 +0100
+@@ -23,7 +23,7 @@
+ time_t get_current_time(void);
+ double get_current_time_exact(void);
+ 
+-extern char current_date[50];
++extern char current_date[70];
+ char* get_current_date(void);
+ 
+ enum output_types { OUTPUT_TYPE_DEBUG, OUTPUT_TYPE_CONNECT, OUTPUT_TYPE_INFO, OUTPUT_TYPE_ERROR };
