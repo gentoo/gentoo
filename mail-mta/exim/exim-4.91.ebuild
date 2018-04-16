@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs multilib pam systemd
+inherit db-use eutils toolchain-funcs multilib pam systemd
 
 IUSE="arc dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd +tpda X"
 REQUIRED_USE="
@@ -196,9 +196,11 @@ src_configure() {
 
 	# use the "native" interfaces to the DBM and CDB libraries, support
 	# passwd and directory lookups by default
+	local DB_VERS="5.3 5.1 4.8 4.7 4.6 4.5 4.4 4.3 4.2 3.2"
 	cat >> Makefile <<- EOC
 		USE_DB=yes
-		DBMLIB=-ldb
+		CFLAGS+=-I$(db_includedir ${DB_VERS})
+		DBMLIB=-l$(db_libname ${DB_VERS})
 		LOOKUP_CDB=yes
 		LOOKUP_PASSWD=yes
 		LOOKUP_DSEARCH=yes
