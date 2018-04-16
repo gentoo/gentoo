@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic games
+EAPI=6
+inherit desktop flag-o-matic
 
 DESCRIPTION="Xjump clone with added features"
 HOMEPAGE="http://gnujump.es.gnu.org"
@@ -17,19 +17,19 @@ DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]
 	virtual/opengl
-	x11-libs/libX11"
-RDEPEND=${DEPEND}
+	x11-libs/libX11
+"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	append-libs -lm
 }
 
 src_install() {
-	DOCS=( AUTHORS ChangeLog README )
 	default
+	einstalldocs
 
 	newicon skins/xjump/hero1.0.png ${PN}.png
 	make_desktop_entry ${PN} "GNUjump"
-
-	prepgamesdirs
 }

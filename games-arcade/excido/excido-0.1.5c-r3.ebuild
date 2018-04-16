@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="A fast paced action game"
 HOMEPAGE="http://icculus.org/excido/"
@@ -20,23 +20,21 @@ DEPEND="dev-games/physfs
 	media-libs/sdl-image[png]
 	media-libs/openal
 	media-libs/freealut"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-freealut.patch \
-		"${FILESDIR}"/${P}-build.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-freealut.patch
+	"${FILESDIR}"/${P}-build.patch
+)
 
 src_compile() {
-	emake DATADIR="${GAMES_DATADIR}"/${PN}/
+	emake DATADIR=/usr/share/${PN}/
 }
 
 src_install() {
-	dogamesbin ${PN}
-	insinto "${GAMES_DATADIR}"/${PN}
+	dobin ${PN}
+	insinto /usr/share/${PN}
 	doins data/*
 	dodoc BUGS CHANGELOG HACKING README TODO \
 		keyguide.txt data/CREDITS data/*.txt
-	prepgamesdirs
 }

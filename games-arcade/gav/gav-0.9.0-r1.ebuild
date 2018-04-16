@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="GPL Arcade Volleyball"
 HOMEPAGE="http://gav.sourceforge.net/"
@@ -27,19 +27,17 @@ DEPEND="media-libs/sdl-image[jpeg,png]
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	local d
 
-	epatch "${FILESDIR}"/${P}-ldflags.patch
+	eapply "${FILESDIR}"/${P}-ldflags.patch
 
 	for d in . automa menu net ; do
 		cp ${d}/Makefile.Linux ${d}/Makefile || die "cp ${d}/Makefile failed"
 	done
 
-	epatch "${FILESDIR}"/${P}-gcc43.patch
-	sed -i \
-		-e "s:/usr/bin:${GAMES_BINDIR}:" \
-		Makefile \
-		|| die "sed failed"
+	eapply "${FILESDIR}"/${P}-gcc43.patch
 	sed -i \
 		-e "/^CXXFLAGS=/s: -g : ${CXXFLAGS} :" CommonHeader \
 		|| die "sed failed"
@@ -60,10 +58,9 @@ src_compile() {
 }
 
 src_install() {
-	dodir "${GAMES_BINDIR}"
+	dodir /usr/bin
 	emake ROOT="${D}" install
-	insinto "${GAMES_DATADIR}"/${PN}
+	insinto /usr/share/${PN}
 	doins -r sounds
-	dodoc CHANGELOG README
-	prepgamesdirs
+	einstalldocs
 }

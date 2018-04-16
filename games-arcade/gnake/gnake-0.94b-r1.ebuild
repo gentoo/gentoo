@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games
+EAPI=6
 
 DESCRIPTION="An ncurses-based Nibbles clone"
 HOMEPAGE="http://lightless.org/gnake"
@@ -15,16 +14,16 @@ IUSE=""
 
 RDEPEND="sys-libs/ncurses:0"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 src_compile() {
 	emake LDLIBS="$(pkg-config ncurses --libs)" gnake
 }
 
 src_install() {
-	dogamesbin gnake
-	dodoc README
-	prepgamesdirs
+	dobin gnake
+	einstalldocs
 }

@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils gnome2-utils python-single-r1 games
+
+inherit eutils gnome2-utils python-single-r1
 
 DESCRIPTION="A side scrolling shooter game starring a steamboat on the sea"
 HOMEPAGE="http://funnyboat.sourceforge.net/"
@@ -21,32 +22,26 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	app-arch/unzip"
 
-S=${WORKDIR}/${PN}
-
-pkg_setup() {
-	python-single-r1_pkg_setup
-	games_pkg_setup
-}
+S="${WORKDIR}/${PN}"
 
 src_install() {
-	insinto "${GAMES_DATADIR}"/${PN}
+	insinto /usr/share/${PN}
 	doins -r data *.py
-	python_optimize "${ED%/}/${GAMES_DATADIR}"/${PN}
+	python_optimize "${ED%/}"/usr/share/${PN}
 
 	dodoc *.txt
-	games_make_wrapper ${PN} "${EPYTHON} main.py" "${GAMES_DATADIR}"/${PN}
+
+	make_wrapper ${PN} "${EPYTHON} main.py" /usr/share/${PN}
+
 	newicon -s 32 data/kuvake.png ${PN}.png
 	make_desktop_entry ${PN} "Trip on the Funny Boat"
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
