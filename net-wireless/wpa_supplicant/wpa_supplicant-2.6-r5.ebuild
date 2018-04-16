@@ -142,6 +142,9 @@ src_prepare() {
 	eapply "${FILESDIR}/2017-1/rebased-v2.6-0006-TDLS-Reject-TPK-TK-reconfiguration.patch"
 	eapply "${FILESDIR}/2017-1/rebased-v2.6-0007-WNM-Ignore-WNM-Sleep-Mode-Response-without-pending-r.patch"
 	eapply "${FILESDIR}/2017-1/rebased-v2.6-0008-FT-Do-not-allow-multiple-Reassociation-Response-fram.patch"
+
+	# bug (640492)
+	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
 }
 
 src_configure() {
