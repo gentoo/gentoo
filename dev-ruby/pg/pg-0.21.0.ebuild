@@ -23,6 +23,8 @@ RDEPEND+=" dev-db/postgresql:*"
 DEPEND+=" dev-db/postgresql
 	test? ( >=dev-db/postgresql-9.4[server,threads] )"
 
+PATCHES=( "${FILESDIR}/postgresql10-tests.patch" )
+
 all_ruby_prepare() {
 	# hack the Rakefile to make it sure that it doesn't load
 	# rake-compiler (so that we don't have to depend on it and it

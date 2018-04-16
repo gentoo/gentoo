@@ -23,6 +23,8 @@ RDEPEND+=" dev-db/postgresql:*"
 DEPEND+=" dev-db/postgresql
 	test? ( >=dev-db/postgresql-9.4[server,threads] )"
 
+RUBY_PATCHES=( "${FILESDIR}/postgresql10-tests.patch" )
+
 ruby_add_bdepend "
 	doc? (
 		dev-ruby/hoe
