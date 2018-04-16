@@ -156,10 +156,6 @@ net-libs/gnutls dane
 # fontconfig-infinality dependency not yet keyworded on most arches
 media-libs/freetype infinality
 
-# Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
-# sys-fs/zfs is not available everywhere.
-sys-boot/grub libzfs
-
 # Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
 # JIT compilation in libzpaq generates code for x86/amd64.
 app-arch/zpaq jit

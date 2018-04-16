@@ -183,10 +183,6 @@ net-libs/gnutls -dane
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
 
-# Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
-# sys-fs/zfs is not available everywhere.
-sys-boot/grub -libzfs
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
