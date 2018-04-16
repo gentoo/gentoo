@@ -1,29 +1,28 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
 # for updating the texmf database, id est latex-package_rehash
 inherit latex-package
 
 DESCRIPTION="SLaTeX is a Scheme program allowing you to write Scheme in your (La)TeX source"
 HOMEPAGE="http://www.ccs.neu.edu/home/dorai/slatex/slatxdoc.html"
-SRC_URI="http://evalwhen.com/slatex/slatex.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="http://www.ccs.neu.edu/home/dorai/slatex/${PN}.tar.bz2 -> ${P}.tar.bz2"
 
-LICENSE="freedist" # license doesn't grant the right for modifications
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-CDEPEND="dev-scheme/guile"
-DEPEND="${CDEPEND} dev-scheme/scmxlate !dev-scheme/plt-scheme"
-RDEPEND="${CDEPEND}"
+RDEPEND="dev-scheme/guile"
+DEPEND="${RDEPEND}
+	dev-scheme/scmxlate"
 
 S="${WORKDIR}/${PN}"
-
 TARGET_DIR="/usr/share/${PN}"
 
 src_prepare() {
+	eapply_user
 	sed "s:\"/home/dorai/.www/slatex/slatex.scm\":\"${TARGET_DIR}/slatex.scm\":" \
 		-i scmxlate-slatex-src.scm || die "sed failed"
 }
@@ -35,8 +34,8 @@ src_compile() {
 
 src_install() {
 	insinto "${TARGET_DIR}"
-	doins ${PN}.scm || die "doins failed"
-	insinto /usr/share/texmf/tex/latex/slatex/
-	doins ${PN}.sty || die "doins failed"
-	dobin ${PN} || die "dobin failed"
+	doins slatex.scm
+	insinto "${TEXMF}/tex/latex/${PN}"
+	doins slatex.sty
+	dobin slatex
 }
