@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit font
 
@@ -19,8 +19,9 @@ RDEPEND=""
 
 FONT_SUFFIX="ttf"
 
-DOCS=(CONTRIBUTING.txt FONTLOG.txt README.txt)
+DOCS=( CONTRIBUTING.txt FONTLOG.txt README.txt )
 
 src_prepare() {
+	default
 	rm "${S}"/Ubuntu-M*.ttf || die
 }
