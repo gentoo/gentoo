@@ -7386,7 +7386,7 @@ media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.1.4: Library to handle, display and manipulate GIF images
 media-libs/glew 1.10.0-r2 1.13.0 2.1.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1: The Portable OpenGL FrameWork
-media-libs/glm 0.9.6.1: OpenGL Mathematics
+media-libs/glm 0.9.6.1 0.9.8.5-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0-r1: The OpenGL Utility Library
 media-libs/glyr 1.0.5: A music related metadata searchengine, both with commandline interface and C API
