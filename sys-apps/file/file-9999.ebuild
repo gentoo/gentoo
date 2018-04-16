@@ -21,7 +21,7 @@ HOMEPAGE="https://www.darwinsys.com/file/"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="python static-libs zlib"
+IUSE="python seccomp static-libs zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -31,7 +31,8 @@ DEPEND="
 	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
-	python? ( !dev-python/python-magic )"
+	python? ( !dev-python/python-magic )
+	seccomp? ( sys-libs/libseccomp )"
 
 src_prepare() {
 	default
@@ -46,6 +47,7 @@ src_prepare() {
 multilib_src_configure() {
 	local myeconfargs=(
 		--enable-fsect-man5
+		$(use_enable seccomp libseccomp)
 		$(use_enable static-libs static)
 		$(use_enable zlib)
 	)
@@ -70,7 +72,7 @@ src_configure() {
 		LDFLAGS="${BUILD_LDFLAGS} -static" \
 		CC=${BUILD_CC} \
 		CXX=${BUILD_CXX} \
-		econf --disable-shared
+		econf --disable-shared $(use_enable seccomp libseccomp)
 	fi
 
 	multilib-minimal_src_configure
