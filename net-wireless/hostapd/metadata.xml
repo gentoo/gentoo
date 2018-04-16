@@ -18,4 +18,8 @@
 		<email>andrey_utkin@gentoo.org</email>
 		<name>Andrey Utkin</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
 </pkgmetadata>
