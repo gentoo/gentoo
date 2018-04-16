@@ -3,11 +3,6 @@
 
 # This file requires >=portage-2.1.1
 
-# Richard Yao <ryao@gentoo.org> (16 Mar 2018)
-# sys-fs/zfs is not keyworded stable.
-sys-cluster/ceph zfs
-sys-boot/grub libzfs
-
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
 # Expose SVGA backend for x86 users
 app-emulation/fuse -backend-svga
