@@ -60,6 +60,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/aircrack-ng-1.2-no-force-stack-protector.patch
 	eapply_user
 	eautoreconf
 }
