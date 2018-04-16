@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -83,13 +83,14 @@ RDEPEND="
 	)
 	sdl? ( media-libs/libsdl[X] )
 	sdl-sound? ( media-libs/libsdl )
-	media-libs/speex[ogg]
+	>=media-libs/speex-1.2.0
+	media-libs/speexdsp
 	sys-libs/zlib
 	>=sys-devel/libtool-2.2
 	mysql? ( virtual/mysql )
 	lirc? ( app-misc/lirc )
 	dbus? ( sys-apps/dbus )
-	ssh?  ( >=net-libs/libssh-0.4[server] )
+	ssh? ( >=net-libs/libssh-0.4[server] )
 	ssl? (
 		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( dev-libs/openssl:0= )
