@@ -1,6 +1,5 @@
-diff -aurN a/driver/catalog_no_i_s.c b/driver/catalog_no_i_s.c
---- a/driver/catalog_no_i_s.c	2016-11-29 07:40:13.000000000 -0500
-+++ b/driver/catalog_no_i_s.c	2017-02-17 14:07:03.979683613 -0500
+--- a/driver/catalog_no_i_s.c
++++ b/driver/catalog_no_i_s.c
 @@ -1093,7 +1093,11 @@
    unsigned long *lengths;
    SQLRETURN rc= SQL_SUCCESS;
@@ -13,9 +12,8 @@ diff -aurN a/driver/catalog_no_i_s.c b/driver/catalog_no_i_s.c
  
    /* Get the list of tables that match szCatalog and szTable */
    myodbc_mutex_lock(&stmt->dbc->lock);
-diff -aurN a/driver/desc.c b/driver/desc.c
---- a/driver/desc.c	2016-11-29 07:40:13.000000000 -0500
-+++ b/driver/desc.c	2017-02-17 14:09:30.139954232 -0500
+--- a/driver/desc.c
++++ b/driver/desc.c
 @@ -63,13 +63,21 @@
       but in desc_get_rec we manually get a pointer to it. This avoids
       having to call set_dynamic after modifying the DESCREC.
@@ -50,9 +48,8 @@ diff -aurN a/driver/desc.c b/driver/desc.c
    {
      return set_desc_error(dest, "HY001",
                "Memory allocation error",
-diff -aurN a/driver/handle.c b/driver/handle.c
---- a/driver/handle.c	2016-11-29 07:40:13.000000000 -0500
-+++ b/driver/handle.c	2017-02-17 14:10:32.078797593 -0500
+--- a/driver/handle.c
++++ b/driver/handle.c
 @@ -409,7 +409,11 @@
      }
    }
@@ -65,9 +62,8 @@ diff -aurN a/driver/handle.c b/driver/handle.c
    memset((*param_bind)->buffer, 0, sizeof(MYSQL_BIND) *
  											(*param_bind)->max_element);
  
-diff -aurN a/driver/parse.c b/driver/parse.c
---- a/driver/parse.c	2016-11-29 07:40:13.000000000 -0500
-+++ b/driver/parse.c	2017-02-17 14:12:00.638143846 -0500
+--- a/driver/parse.c
++++ b/driver/parse.c
 @@ -139,8 +139,13 @@
  
      /* TODO: Store offsets rather than ptrs. In this case we will be fine
@@ -82,9 +78,8 @@ diff -aurN a/driver/parse.c b/driver/parse.c
    }
  
    return pq;
-diff -aurN a/MYODBC_MYSQL.h b/MYODBC_MYSQL.h
---- a/MYODBC_MYSQL.h	2016-11-29 07:40:13.000000000 -0500
-+++ b/MYODBC_MYSQL.h	2017-02-17 15:04:47.153994839 -0500
+--- a/MYODBC_MYSQL.h
++++ b/MYODBC_MYSQL.h
 @@ -44,7 +44,7 @@
  #endif
  
