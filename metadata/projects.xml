@@ -1015,22 +1015,6 @@
     </member>
   </project>
   <project>
-    <email>enlightenment@gentoo.org</email>
-    <name>Project Enlightenment</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Enlightenment</url>
-    <description>Project Enlightenment maintains efl packages including e17</description>
-    <member is-lead="1">
-      <email>tommy@gentoo.org</email>
-      <name>Thomas Sachau</name>
-      <role>Lead</role>
-    </member>
-    <member>
-      <email>vapier@gentoo.org</email>
-      <name>Mike Frysinger</name>
-      <role>Member</role>
-    </member>
-  </project>
-  <project>
     <email>eselect@gentoo.org</email>
     <name>eselect configuration and management tool</name>
     <url>https://wiki.gentoo.org/wiki/Project:Eselect</url>
@@ -1552,6 +1536,11 @@
       <role>Hardened sources</role>
     </member>
     <member>
+      <email>chutzpah@gentoo.org</email>
+      <name>Patrick McLean</name>
+      <role>PaX markings</role>
+    </member>
+    <member>
       <email>klondike@gentoo.org</email>
       <name>Francisco Blas Izquierdo Riera</name>
       <role>Documentation, PR</role>
@@ -1575,6 +1564,16 @@
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Integrity, SELinux</role>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+      <role>PaX markings</role>
+    </member>
+    <member>
+      <email>wizardedit@gentoo.org</email>
+      <name>Austin English</name>
+      <role>PaX markings</role>
     </member>
     <member is-lead="1">
       <email>zorry@gentoo.org</email>

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:0 virtual/pkgconfig
+DESCRIPTION=An ncurses-based Nibbles clone
+EAPI=6
+HOMEPAGE=http://lightless.org/gnake
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0
+SLOT=0
+SRC_URI=mirror://gentoo/Gnake.0.94b.tar.gz
+_md5_=bdae1be3982434f3ae9a9ba573a7f8e4
