@@ -36,6 +36,12 @@ DEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
+src_prepare(){
+	default
+	sed -i 's,^qt5_add_resources,# DISABLED qt5_add_resources,g' "${S}/CMakeLists.txt" || \
+		die "Unable to patch CMakeLists.txt"
+}
+
 pkg_postinst(){
 	gnome2_icon_cache_update
 }
