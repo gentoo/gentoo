@@ -102,7 +102,7 @@ src_install() {
 	rm -r third_party/ycmd/{*.md,*.sh} || die
 	find python -name *test* -exec rm -rf {} + || die
 	egit_clean
-	rm third_party/ycmd/libclang.so || die
+	rm third_party/ycmd/libclang.so* || die
 
 	vim-plugin_src_install
 
