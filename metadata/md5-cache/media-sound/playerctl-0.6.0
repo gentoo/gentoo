@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/glib:2 dev-libs/gobject-introspection dev-util/gdbus-codegen dev-util/gtk-doc-am doc? ( dev-util/gtk-doc ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A CLI utility to control media players over MPRIS
+EAPI=6
+HOMEPAGE=https://github.com/acrisci/playerctl
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-libs/glib:2 dev-libs/gobject-introspection
+SLOT=0
+SRC_URI=https://github.com/acrisci/playerctl/archive/v0.6.0.tar.gz -> playerctl-0.6.0.tar.gz
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=54c70de042fc012b38351f9ce68e81ca
