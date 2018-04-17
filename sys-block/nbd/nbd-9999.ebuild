@@ -16,7 +16,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug gnutls netlink zlib"
 
-# gnutls is an automagic dep.
 RDEPEND="
 	>=dev-libs/glib-2.26.0
 	gnutls? ( >=net-libs/gnutls-2.12.0 )
