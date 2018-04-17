@@ -32,6 +32,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5.5-cmake.patch
+	"${FILESDIR}"/${PN}-3.5.5-qt-5.11b3.patch
 )
 
 src_configure() {

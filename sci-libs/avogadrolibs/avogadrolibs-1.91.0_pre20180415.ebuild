@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT=f414794a168712f72884cdcfba818def5f42e721
+COMMIT=606debb5d7c2c4020478264c609f895584fc5e38
 inherit cmake-utils
 
 DESCRIPTION="Advanced molecule editor and visualizer 2 - libraries"
@@ -39,17 +39,20 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
-	dev-qt/qtopengl:5
+	qt5? (
+		dev-qt/linguist-tools:5
+		dev-qt/qtopengl:5
+	)
 	test? ( dev-cpp/gtest )"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.2-6464.patch
-	"${FILESDIR}/"${P}-underlinking.patch
-	"${FILESDIR}/"${P}-unbundle-jsoncpp.patch
-	"${FILESDIR}/"${P}-bundled-genxrdpattern.patch
-	"${FILESDIR}/"${P}-qt-5.11.patch
+	"${FILESDIR}/"${PN}-1.91.0_pre20180406-underlinking.patch
+	"${FILESDIR}/"${PN}-1.91.0_pre20180406-unbundle-jsoncpp.patch
+	"${FILESDIR}/"${PN}-1.91.0_pre20180406-bundled-genxrdpattern.patch
+	"${FILESDIR}/"${P}-qt-5.11b3.patch
 )
 
 src_unpack() {
@@ -70,6 +73,7 @@ src_configure() {
 		-DUSE_LIBARCHIVE=$(usex archive)
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DUSE_HDF5=$(usex hdf5)
+		-DENABLE_TRANSLATIONS=$(usex qt5)
 		-DUSE_OPENGL=$(usex qt5)
 		-DUSE_QT=$(usex qt5)
 		-DBUILD_STATIC_PLUGINS=$(usex static-plugins)
