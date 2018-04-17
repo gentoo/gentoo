@@ -37,7 +37,8 @@ src_compile() {
 
 src_install() {
 	dodoc ICHANGES
-	emake distrib
+	emake new_distrib
+	emake wrappers
 	# Install doc
 	cd distribution
 	dodoc CHANGES.txt
