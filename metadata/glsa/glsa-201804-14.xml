@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-14">
+  <title>GDK-PixBuf: Remote code execution</title>
+  <synopsis>A vulnerability has been found in GDK-PixBuf that may allow a
+    remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">gdkpixbuf</product>
+  <announced>2018-04-17</announced>
+  <revised count="1">2018-04-17</revised>
+  <bug>644770</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/gdk-pixbuf" auto="yes" arch="*">
+      <unaffected range="ge">2.36.11</unaffected>
+      <vulnerable range="lt">2.36.11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GDK-PixBuf is an image loading library for GTK+.</p>
+  </background>
+  <description>
+    <p>Several integer overflows were discovered in GDK-PixBuf’s gif_get_lzw
+      function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      image file, could execute arbitrary code or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GDK-PixBuf users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/gdk-pixbuf-2.36.11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-1000422">
+      CVE-2017-1000422
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-17T17:12:14Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-17T18:21:26Z">b-man</metadata>
+</glsa>
