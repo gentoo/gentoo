@@ -20,8 +20,6 @@ IUSE="hdaps"
 DEPEND="sys-apps/dmidecode"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/linux-4.15-timer_setup-fix.patch" )
-
 # This code is factored out of both pkg_pretend() and pkg_setup()
 # because the PMS states that ebuilds may not call phase functions
 # directly (see the "List of functions" section). This was bug #596616
