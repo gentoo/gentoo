@@ -12,12 +12,12 @@ SRC_URI="http://grid-deployment.web.cern.ch/grid-deployment/dms/lcgutil/tar/${PN
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc ipv6 test tools"
+IUSE="doc ipv6 kernel_linux test tools"
 
 CDEPEND="
 		dev-libs/libxml2:2=
 		dev-libs/openssl:0=
-		sys-apps/util-linux:0=
+		kernel_linux? ( sys-apps/util-linux )
 "
 
 DEPEND="${CDEPEND}
