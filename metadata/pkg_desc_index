@@ -591,7 +591,7 @@ app-editors/vim 8.0.1298: Vim, an improved vi-style text editor
 app-editors/vim-core 8.0.1298: vim and gvim shared files
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r: VI Like Emacs -- yet another full-featured vi clone
-app-editors/yudit 2.9.2 2.9.6: Free (Y)unicode text editor for all unices
+app-editors/yudit 2.9.6: Free (Y)unicode text editor for all unices
 app-editors/zile 2.3.24-r2 2.4.11: Zile is a small Emacs clone
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
@@ -7288,7 +7288,7 @@ media-gfx/pqiv 2.10.2: powerful GTK 3 based command-line image viewer with a min
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qrencode 3.4.4-r1: C library for encoding data in a QR Code symbol
-media-gfx/quat 1.20 1.20-r1: A 3D quaternionic fractal generator
+media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/raw-thumbnailer 0.2.1 0.2.1-r1: A lightweight and fast raw image thumbnailer
 media-gfx/rawtherapee 5.2: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.0-r2 2.2.1-r1 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
@@ -8409,7 +8409,7 @@ net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/unbound 1.5.1-r2 1.5.10: A validating, recursive and caching DNS resolver
-net-dns/updatedd 2.6 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
+net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-firewall/arno-iptables-firewall 2.0.1e: Arno's iptables firewall script
 net-firewall/arptables 0.0.3.4-r2 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.2: Connection tracking userspace tools
@@ -8483,7 +8483,7 @@ net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/openfire 4.1.0: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.12.0: GTK Instant Messenger client
 net-im/prosody 0.9.10 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
-net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
+net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/sendxmpp 1.23: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
@@ -8494,7 +8494,7 @@ net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
-net-irc/dccserver 0.5 0.5-r1: linux implementation of the mirc dccserver command
+net-irc/dccserver 0.5-r1: linux implementation of the mirc dccserver command
 net-irc/dircproxy 1.2.0_rc1: an IRC proxy server
 net-irc/eggdrop 1.6.21-r1: An IRC bot extensible with C or TCL
 net-irc/eiwic 1.1.4: A modular IRC bot written in C
@@ -8576,7 +8576,7 @@ net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4: exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
-net-libs/libident 0.32 0.32-r1: A small library to interface to the Ident protocol server
+net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0: iscsi client library and utilities
 net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
@@ -8935,7 +8935,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whois 5.2.12 5.2.20: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
-net-misc/wput 0.6.1 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
+net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.1.0: The X2Go Qt client
 net-misc/x2goserver 4.0.1.22: The X2Go server
@@ -10979,7 +10979,7 @@ x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with 
 x11-plugins/pidgin-sipe 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
-x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch
+x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/vicious 2.1.3 2.3.1: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r2: WMaker DockApp: A Calendar clock with antialiased text
@@ -11218,7 +11218,7 @@ x11-wm/i3 4.13-r1: An improved dynamic tiling window manager
 x11-wm/icewm 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2: Very fast and lightweight still powerful window manager for X
 x11-wm/lumina 1.3.0_p1: Lumina desktop environment
-x11-wm/lwm 1.2.2 1.2.4: The ultimate lightweight window manager
+x11-wm/lwm 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.12.1: MATE default window manager
 x11-wm/muffin 2.8.5 3.0.5 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
