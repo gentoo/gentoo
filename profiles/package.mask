@@ -214,11 +214,6 @@ dev-db/mysql-udf-infusion
 dev-python/visual
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Version bump pending for a long time, depends in QT4 (#630476). Removal in
-# a month.
-x11-misc/treeline
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Security vulnerable (#630954, #635548). Removal in a month. 
 media-sound/mp3gain
 media-sound/aacgain
