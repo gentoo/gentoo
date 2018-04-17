@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (17 Apr 2018)
+# Changed output for ELF files, which results in no files (either
+# executables or libraries) being stripped.
+# Masked for about two weeks so package managers can be adjusted.
+# See https://bugs.gentoo.org/653352
+>=sys-apps/file-5.33
+
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Apr 2018)
 # Depends on dead Qt4. Switch to media-gfx/scantailor-advanced instead.
 # Masked for removal in 30 days. Bug #633386
