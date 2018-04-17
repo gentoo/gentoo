@@ -7,7 +7,7 @@ inherit autotools multilib-minimal readme.gentoo-r1 eapi7-ver
 
 DESCRIPTION="A library for configuring and customizing font access"
 HOMEPAGE="https://fontconfig.org/"
-SRC_URI="http://fontconfig.org/release/${P}.tar.bz2"
+SRC_URI="https://fontconfig.org/release/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="1.0"
@@ -19,7 +19,8 @@ IUSE="doc static-libs"
 # default and used by every distro.  See bug #283191.
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.8.1[${MULTILIB_USEDEP}]
-	sys-apps/util-linux[${MULTILIB_USEDEP}]"
+	sys-apps/util-linux[${MULTILIB_USEDEP}]
+	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( =app-text/docbook-sgml-dtd-3.1*
