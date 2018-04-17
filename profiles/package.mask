@@ -360,10 +360,6 @@ net-dialup/hcfpcimodem
 games-fps/warsow-community-map-pack
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Needs QT4, fails to build (#648706, #650640). Removal in a month.
-media-sound/qarecord
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Library dead for years, finally nothing in the tree requires it anymore
 # (#648996). Removal in a month.
 dev-cpp/libgnomemm
