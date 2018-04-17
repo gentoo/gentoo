@@ -1,0 +1,240 @@
+From 208a259b08676f2e0db35451b78e8225cb87547d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 17 Apr 2018 13:09:25 +0200
+Subject: [PATCH] Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+
+---
+ CMakeLists.txt                                 |  3 ---
+ TomahawkAddLibrary.cmake                       |  4 +++-
+ TomahawkUse.cmake.in                           |  3 ---
+ src/crashreporter/CMakeLists.txt               |  6 ++++--
+ src/libtomahawk/CMakeLists.txt                 | 18 +++++++++++-------
+ src/tests/tomahawk_add_test.cmake              |  8 ++++++--
+ src/tomahawk/CMakeLists.txt                    | 17 ++++++++++-------
+ src/tools/database-reader/CMakeLists.txt       |  4 +++-
+ .../tomahawk-test-musicscan/CMakeLists.txt     |  4 +++-
+ .../kdsingleapplicationguard/CMakeLists.txt    |  4 +++-
+ .../src/certificate/CMakeLists.txt             |  6 +++---
+ .../qxt/qxtweb-standalone/CMakeLists.txt       | 10 +++++-----
+ 12 files changed, 51 insertions(+), 36 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7004e1b70..616db971f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -243,9 +243,6 @@ if( NOT Qt5Core_DIR )
+     macro_optional_find_package(Qt4 4.7.0 COMPONENTS ${NEEDED_QT4_COMPONENTS} )
+     macro_log_feature(QT4_FOUND "Qt" "A cross-platform application and UI framework" "http://qt-project.org" TRUE "" "If you see this, although libqt4-devel is installed, check whether the \n     qtwebkit-devel package and whatever contains QtUiTools is installed too")
+ 
+-    macro(qt5_use_modules)
+-    endmacro()
+-
+     macro(qt_wrap_ui)
+         qt4_wrap_ui(${ARGN})
+     endmacro()
+diff --git a/TomahawkAddLibrary.cmake b/TomahawkAddLibrary.cmake
+index 384394e45..f67a48900 100644
+--- a/TomahawkAddLibrary.cmake
++++ b/TomahawkAddLibrary.cmake
+@@ -46,7 +46,9 @@ function(tomahawk_add_library)
+     endif()
+ 
+     # HACK: add qt modules - every lib should define its own set of modules
+-    qt5_use_modules(${target} Core Network Widgets Sql Xml ${LIBRARY_QT5_MODULES})
++    if(Qt5Core_DIR)
++        target_link_libraries(${target} Qt5::Core Qt5::Network Qt5::Widgets Qt5::Sql Qt5::Xml)
++    endif()
+ 
+     # definitions - can this be moved into set_target_properties below?
+     add_definitions(${QT_DEFINITIONS})
+diff --git a/TomahawkUse.cmake.in b/TomahawkUse.cmake.in
+index cb39fe219..9401e1851 100644
+--- a/TomahawkUse.cmake.in
++++ b/TomahawkUse.cmake.in
+@@ -81,9 +81,6 @@ else(TOMAHAWK_QT5)
+     find_package(Qt4 4.7.0 COMPONENTS ${NEEDED_QT4_COMPONENTS})
+     include( ${QT_USE_FILE} )
+ 
+-    macro(qt5_use_modules)
+-    endmacro()
+-
+     macro(qt_wrap_ui)
+         qt4_wrap_ui(${ARGN})
+     endmacro()
+diff --git a/src/crashreporter/CMakeLists.txt b/src/crashreporter/CMakeLists.txt
+index b837eb941..d47c91b62 100644
+--- a/src/crashreporter/CMakeLists.txt
++++ b/src/crashreporter/CMakeLists.txt
+@@ -43,7 +43,9 @@ target_link_libraries( ${TOMAHAWK_CRASH_REPORTER_TARGET}
+     ${QT_LIBRARIES}
+ )
+ 
++if(Qt5Core_DIR)
++    target_link_libraries(${TOMAHAWK_CRASH_REPORTER_TARGET} Qt5::Widgets Qt5::Network)
++endif()
++
+ set_target_properties(${TOMAHAWK_CRASH_REPORTER_TARGET} PROPERTIES AUTOMOC ON)
+ install(TARGETS ${TOMAHAWK_CRASH_REPORTER_TARGET} RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
+-
+-qt5_use_modules(${TOMAHAWK_CRASH_REPORTER_TARGET} Widgets Network)
+diff --git a/src/libtomahawk/CMakeLists.txt b/src/libtomahawk/CMakeLists.txt
+index adb3edfa0..a85a835ad 100644
+--- a/src/libtomahawk/CMakeLists.txt
++++ b/src/libtomahawk/CMakeLists.txt
+@@ -500,12 +500,17 @@ set_target_properties(
+             OUTPUT_NAME ${TOMAHAWK_BASE_TARGET_NAME}
+ )
+ 
+-
+-qt5_use_modules(${TOMAHAWK_LIBRARY} Widgets Network Sql WebKitWidgets Concurrent Xml UiTools Svg)
+-IF(APPLE)
+-       qt5_use_modules(${TOMAHAWK_LIBRARY} MacExtras)
+-ENDIF()
+-
++if(Qt5Core_DIR)
++    target_link_libraries(${TOMAHAWK_LIBRARY}
++        Qt5::Widgets Qt5::Network Qt5::Sql Qt5::WebKitWidgets Qt5::Concurrent Qt5::Xml Qt5::UiTools Qt5::Svg
++    )
++    if(APPLE)
++        target_link_libraries(${TOMAHAWK_LIBRARY} Qt5::MacExtras)
++    endif()
++    if( UNIX AND NOT APPLE )
++        target_link_libraries(${TOMAHAWK_LIBRARY} Qt5::DBus)
++    endif()
++endif()
+ 
+ IF(QCA2_FOUND)
+     INCLUDE_DIRECTORIES( ${QCA2_INCLUDE_DIR} )
+@@ -514,7 +519,6 @@ ENDIF(QCA2_FOUND)
+ 
+ IF( UNIX AND NOT APPLE )
+     LIST(APPEND LINK_LIBRARIES ${QT_QTDBUS_LIBRARIES} )
+-    qt5_use_modules(${TOMAHAWK_LIBRARY} DBus)
+ ENDIF( UNIX AND NOT APPLE )
+ 
+ TARGET_LINK_LIBRARIES( ${TOMAHAWK_LIBRARY}
+diff --git a/src/tests/tomahawk_add_test.cmake b/src/tests/tomahawk_add_test.cmake
+index 464b8c918..e3e20ed4b 100644
+--- a/src/tests/tomahawk_add_test.cmake
++++ b/src/tests/tomahawk_add_test.cmake
+@@ -16,8 +16,12 @@ macro(tomahawk_add_test test_class)
+         ${QT_QTCORE_LIBRARY}
+     )
+ 
+-    add_test(NAME ${TOMAHAWK_TEST_TARGET} COMMAND ${TOMAHAWK_TEST_TARGET})
++    if(Qt5Core_DIR)
++        target_link_libraries(${TOMAHAWK_TEST_TARGET}
++            Qt5::Core Qt5::Network Qt5::Widgets Qt5::Sql Qt5::Xml Qt5::Test
++        )
++    endif()
+ 
+-    qt5_use_modules(${TOMAHAWK_TEST_TARGET} Core Network Widgets Sql Xml Test)
++    add_test(NAME ${TOMAHAWK_TEST_TARGET} COMMAND ${TOMAHAWK_TEST_TARGET})
+ 
+ endmacro()
+diff --git a/src/tomahawk/CMakeLists.txt b/src/tomahawk/CMakeLists.txt
+index cb60b8012..7facdc3da 100644
+--- a/src/tomahawk/CMakeLists.txt
++++ b/src/tomahawk/CMakeLists.txt
+@@ -171,13 +171,16 @@ SET_TARGET_PROPERTIES( ${TOMAHAWK_APPLICATION_TARGET}
+         RUNTIME_OUTPUT_NAME ${TOMAHAWK_RUNTIME_OUTPUT_NAME}
+ )
+ 
+-
+-qt5_use_modules(${TOMAHAWK_APPLICATION_TARGET} Core Widgets Network Sql WebKitWidgets)
+-if(APPLE)
+-    qt5_use_modules(${TOMAHAWK_APPLICATION_TARGET} MacExtras)
+-endif()
+-if(WIN32)
+-    qt5_use_modules(${TOMAHAWK_APPLICATION_TARGET} WinExtras)
++if(Qt5Core_DIR)
++    target_link_libraries(${TOMAHAWK_APPLICATION_TARGET}
++        Qt5::Core Qt5::Widgets Qt5::Network Qt5::Sql Qt5::WebKitWidgets
++    )
++    if(APPLE)
++        target_link_libraries(${TOMAHAWK_APPLICATION_TARGET} Qt5::MacExtras)
++    endif()
++    if(WIN32)
++        target_link_libraries(${TOMAHAWK_APPLICATION_TARGET} Qt5::WinExtras)
++    endif()
+ endif()
+ 
+ MESSAGE( STATUS "OS_SPECIFIC_LINK_LIBRARIES: ${OS_SPECIFIC_LINK_LIBRARIES}" )
+diff --git a/src/tools/database-reader/CMakeLists.txt b/src/tools/database-reader/CMakeLists.txt
+index 72bb1e0db..d7a45f0a6 100644
+--- a/src/tools/database-reader/CMakeLists.txt
++++ b/src/tools/database-reader/CMakeLists.txt
+@@ -15,7 +15,9 @@ set_target_properties( ${TOMAHAWK_TOOL_DB_LIST_ARTISTS_TARGET}
+ target_link_libraries( ${TOMAHAWK_TOOL_DB_LIST_ARTISTS_TARGET}
+     ${TOMAHAWK_LIBRARIES}
+ )
++if(Qt5Core_DIR)
++    target_link_libraries(${TOMAHAWK_TOOL_DB_LIST_ARTISTS_TARGET} Qt5::Core)
++endif()
+ 
+-qt5_use_modules(${TOMAHAWK_TOOL_DB_LIST_ARTISTS_TARGET} Core)
+ install( TARGETS ${TOMAHAWK_TOOL_DB_LIST_ARTISTS_TARGET} BUNDLE DESTINATION . RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
+ 
+diff --git a/src/tools/tomahawk-test-musicscan/CMakeLists.txt b/src/tools/tomahawk-test-musicscan/CMakeLists.txt
+index 097e3fc08..15c0c479f 100644
+--- a/src/tools/tomahawk-test-musicscan/CMakeLists.txt
++++ b/src/tools/tomahawk-test-musicscan/CMakeLists.txt
+@@ -14,6 +14,8 @@ set_target_properties( ${TOMAHAWK_TOOL_MUSICSCAN_TARGET}
+ target_link_libraries( ${TOMAHAWK_TOOL_MUSICSCAN_TARGET}
+     ${TOMAHAWK_LIBRARIES}
+ )
++if(Qt5Core_DIR)
++    target_link_libraries(${TOMAHAWK_TOOL_MUSICSCAN_TARGET} Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets)
++endif()
+ 
+-qt5_use_modules(${TOMAHAWK_TOOL_MUSICSCAN_TARGET} Core Gui Network Widgets)
+ install( TARGETS ${TOMAHAWK_TOOL_MUSICSCAN_TARGET} BUNDLE DESTINATION . RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} )
+diff --git a/thirdparty/kdsingleapplicationguard/CMakeLists.txt b/thirdparty/kdsingleapplicationguard/CMakeLists.txt
+index af4cf8704..9d6b49014 100644
+--- a/thirdparty/kdsingleapplicationguard/CMakeLists.txt
++++ b/thirdparty/kdsingleapplicationguard/CMakeLists.txt
+@@ -24,4 +24,6 @@ set_target_properties(
+         PROPERTIES
+             AUTOMOC TRUE
+ )
+-qt5_use_modules(kdsingleapplicationguard Core)
++if(Qt5Core_DIR)
++    target_link_libraries(kdsingleapplicationguard Qt5::Core)
++endif()
+diff --git a/thirdparty/qt-certificate-addon/src/certificate/CMakeLists.txt b/thirdparty/qt-certificate-addon/src/certificate/CMakeLists.txt
+index a51157cf7..bfb0b0afe 100644
+--- a/thirdparty/qt-certificate-addon/src/certificate/CMakeLists.txt
++++ b/thirdparty/qt-certificate-addon/src/certificate/CMakeLists.txt
+@@ -25,6 +25,6 @@ set_target_properties(
+         PROPERTIES
+             AUTOMOC TRUE
+ )
+-qt5_use_modules(qtcertificateaddon Core Network)
+-
+-
++if(Qt5Core_DIR)
++    target_link_libraries(qtcertificateaddon Qt5::Core Qt5::Network)
++endif()
+diff --git a/thirdparty/qxt/qxtweb-standalone/CMakeLists.txt b/thirdparty/qxt/qxtweb-standalone/CMakeLists.txt
+index 654a6aab5..1babe0cfc 100644
+--- a/thirdparty/qxt/qxtweb-standalone/CMakeLists.txt
++++ b/thirdparty/qxt/qxtweb-standalone/CMakeLists.txt
+@@ -74,10 +74,10 @@ ADD_LIBRARY( qxtweb-standalone STATIC
+ )
+ 
+ 
+-target_link_libraries( qxtweb-standalone
+-    ${QT_LIBRARIES}
+-)
+-
+-qt5_use_modules( qxtweb-standalone Network )
++if(Qt5Core_DIR)
++    target_link_libraries( qxtweb-standalone Qt5::Network)
++else()
++    target_link_libraries( qxtweb-standalone ${QT_LIBRARIES} )
++endif()
+ 
+ set_target_properties( qxtweb-standalone PROPERTIES AUTOMOC TRUE )
+-- 
+2.17.0
+

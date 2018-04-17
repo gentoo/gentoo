@@ -50,6 +50,8 @@ RDEPEND="${CDEPEND}
 	app-crypt/qca:2[ssl]
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11b3.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 	has_version "media-libs/liblastfm[qt5]" &&
