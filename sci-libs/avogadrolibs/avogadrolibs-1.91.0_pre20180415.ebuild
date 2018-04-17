@@ -39,10 +39,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
-	qt5? (
-		dev-qt/linguist-tools:5
-		dev-qt/qtopengl:5
-	)
+	qt5? ( dev-qt/linguist-tools:5 )
 	test? ( dev-cpp/gtest )"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
