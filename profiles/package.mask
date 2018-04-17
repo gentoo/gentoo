@@ -312,10 +312,6 @@ x11-misc/dockmanager
 games-arcade/monster-masher
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Relies on dead QT4 (#644422), build issues (#629728). Removal in a month.
-media-video/videocut
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Tests fail, package has no reverse deps and is not really needed at
 # present time (#645166). Removal in a month.
 dev-python/jenkins-autojobs
