@@ -1,0 +1,65 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,4 @@
+-COMPILER=gcc
+-LIBS = -lm -L./  -lforms -L/usr/X11R6/lib -lX11 -lnsl 
+-INCLUDE=-I/usr/X11R6/include/X11 -I/usr/include -I/usr/X11R6/include -I/usr/local/X11/include/ -I/usr/X/include/
+-FLAGS = -g -O2
+-DESTDIR =
++LIBS = -lm -L./ -lforms
+ 
+ 
+ default:
+@@ -35,7 +31,7 @@
+ 	@echo "erzeuge deutsche Version von elem"
+ 
+ elem-de: elem_main_de.o elem_cb_de.o elem_de.o deutsch.h
+-	${COMPILER} ${FLAGS} -o elem-de elem_main_de.o elem_cb_de.o elem_de.o ${LIBS} -DDEUTSCH
++	$(CC) $(LDFLAGS) $(CFLAGS) -o elem-de elem_main_de.o elem_cb_de.o elem_de.o $(LIBS)
+ 
+ 
+ 
+@@ -43,34 +39,34 @@
+ 	@echo "creating english version of elem"
+ 
+ elem-en: elem_main_en.o elem_cb_en.o elem_en.o english.h
+-	${COMPILER} ${FLAGS} -o elem-en elem_main_en.o elem_cb_en.o elem_en.o ${LIBS} -DENGLISH
++	$(CC) $(LDFLAGS) $(CFLAGS) -o elem-en elem_main_en.o elem_cb_en.o elem_en.o $(LIBS)
+ 
+ static-de : elem_main_de.o elem_cb_de.o elem_de.o
+-	${COMPILER} ${FLAGS} -static -o elem-static-de elem_main_de.o elem_cb_de.o elem_de.o  ${LIBS} -DDEUTSCH
++	$(CC) $(LDFLAGS) $(CFLAGS) -static -o elem-static-de elem_main_de.o elem_cb_de.o elem_de.o $(LIBS)
+ 
+ static-en : elem_main_en.o elem_cb_en.o elem_en.o
+-	${COMPILER} ${FLAGS} -static -o elem-static-en elem_main_en.o elem_cb_en.o elem_en.o  ${LIBS} -DENGLISH
++	$(CC) $(LDFLAGS) $(CFLAGS) -static -o elem-static-en elem_main_en.o elem_cb_en.o elem_en.o $(LIBS)
+ 
+ 
+ 
+ 
+ elem_main_de.o : elem_main.c elem.h deutsch.h
+-	${COMPILER} ${FLAGS} -DDEUTSCH -o elem_main_de.o -c elem_main.c ${INCLUDE}
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DDEUTSCH -o elem_main_de.o -c elem_main.c
+ 
+ elem_main_en.o : elem_main.c elem.h english.h
+-	${COMPILER} ${FLAGS} -DENGLISH -o elem_main_en.o -c elem_main.c ${INCLUDE}
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DENGLISH -o elem_main_en.o -c elem_main.c
+ 
+ 
+ elem_cb_de.o : elem_cb.c elem.h deutsch.h
+-	${COMPILER} ${FLAGS} -DDEUTSCH -o elem_cb_de.o -c elem_cb.c ${INCLUDE}
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DDEUTSCH -o elem_cb_de.o -c elem_cb.c
+ elem_cb_en.o : elem_cb.c elem.h english.h
+-	${COMPILER} ${FLAGS} -DENGLISH -o elem_cb_en.o -c elem_cb.c ${INCLUDE}
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DENGLISH -o elem_cb_en.o -c elem_cb.c
+ 
+ 
+ elem_de.o : elem.c elem.h
+-	${COMPILER} ${FLAGS} -DDEUTSCH  -o elem_de.o -c elem.c ${INCLUDE}
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DDEUTSCH  -o elem_de.o -c elem.c
+ elem_en.o : elem.c elem.h
+-	${COMPILER} ${FLAGS} -DENGLISH  -o elem_en.o -c elem.c ${INCLUDE}
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DENGLISH  -o elem_en.o -c elem.c
+ 
+ 
+ install-de: deutsch
