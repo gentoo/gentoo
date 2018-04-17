@@ -3396,21 +3396,21 @@ dev-perl/Business-ISBN-Data 20140910.3.0: Data pack for Business::ISBN
 dev-perl/Business-ISMN 1.131.0: International Standard Music Numbers
 dev-perl/Business-ISSN 1.2.0: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
-dev-perl/CDDB 1.222.0-r1 1.222.0-r2: high-level interface to cddb/freedb protocol
+dev-perl/CDDB 1.222.0-r2: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.360.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Compile 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.230.0: PSGI adapter for CGI
 dev-perl/CGI-Fast 2.100.0 2.120.0: CGI Interface for Fast CGI
-dev-perl/CGI-FastTemplate 1.90.0-r1 1.90.0-r2: High Performance Templates and Variable Interpolation
+dev-perl/CGI-FastTemplate 1.90.0-r2: High Performance Templates and Variable Interpolation
 dev-perl/CGI-FormBuilder 3.100.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r1: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
 dev-perl/CPAN-Checksums 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
-dev-perl/CPAN-Meta-Check 0.13.0 0.14.0: Verify requirements in a CPAN::Meta object
+dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Perl-Releases 3.380.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
@@ -3425,30 +3425,30 @@ dev-perl/Canary-Stability 2006 2012.0.0: Canary to check perl compatibility for 
 dev-perl/Capture-Tiny 0.360.0 0.460.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
-dev-perl/Carp-Assert-More 1.140.0 1.160.0: convenience wrappers around Carp::Assert
+dev-perl/Carp-Assert-More 1.160.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.60.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.10: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r2: Implements an algorithm to find good values for chart axis
-dev-perl/Chatbot-Eliza 1.60.0 1.80.0: A clone of the classic Eliza program
+dev-perl/Chatbot-Eliza 1.80.0: A clone of the classic Eliza program
 dev-perl/Cisco-Reconfig 0.912.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.80.0: A minimalistic variant of Class::Accessor
 dev-perl/Class-Autouse 2.10.0-r2: Runtime aspect loading of one or more classes
-dev-perl/Class-C3 0.310.0 0.330.0: A pragma to use the C3 method resolution order algortihm
+dev-perl/Class-C3 0.330.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-XS 0.140.0: XS speedups for Class::C3
-dev-perl/Class-Container 0.120.0-r1 0.120.0-r2: Glue object frameworks together transparently
-dev-perl/Class-DBI 3.0.17-r1 3.0.17-r2: Simple Database Abstraction
+dev-perl/Class-Container 0.120.0-r2: Glue object frameworks together transparently
+dev-perl/Class-DBI 3.0.17-r2: Simple Database Abstraction
 dev-perl/Class-DBI-mysql 1.0.0-r2: Extensions to Class::DBI for MySQL
-dev-perl/Class-Data-Inheritable 0.80.0-r1 0.80.0-r2: Inheritable, overridable class data
+dev-perl/Class-Data-Inheritable 0.80.0-r2: Inheritable, overridable class data
 dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
-dev-perl/Class-ErrorHandler 0.30.0 0.40.0: Automated accessor generation
-dev-perl/Class-Factory-Util 1.700.0-r1 1.700.0-r2: Provide utility methods for factory classes
-dev-perl/Class-ISA 0.36-r1 0.360.0: Report the search path thru an ISA tree
+dev-perl/Class-ErrorHandler 0.40.0: Automated accessor generation
+dev-perl/Class-Factory-Util 1.700.0-r2: Provide utility methods for factory classes
+dev-perl/Class-ISA 0.360.0: Report the search path thru an ISA tree
 dev-perl/Class-Inspector 1.310.0 1.320.0: Provides information about Classes
 dev-perl/Class-Load 0.200.0-r1 0.230.0 0.240.0: A working (require q{Class::Name}) and more
-dev-perl/Class-Load-XS 0.60.0-r1 0.100.0: XS implementation of parts of Class::Load
+dev-perl/Class-Load-XS 0.100.0: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
 dev-perl/Class-Method-Modifiers 2.120.0: provides Moose-like method modifiers
@@ -3471,8 +3471,8 @@ dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-AutoConf 0.315.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.630.0: Config file parser module
-dev-perl/Config-Grammar 1.100.0-r1 1.120.0: A grammar-based, user-friendly config parser
-dev-perl/Config-IniFiles 2.880.0 2.940.0: A module for reading .ini-style configuration files
+dev-perl/Config-Grammar 1.120.0: A grammar-based, user-friendly config parser
+dev-perl/Config-IniFiles 2.940.0: A module for reading .ini-style configuration files
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
 dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r1 0.500.0-r2: Read directives from a configuration file
@@ -3495,7 +3495,7 @@ dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-DES 2.70.0 2.70.0-r1: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
-dev-perl/Crypt-DH 0.70.0-r1 0.70.0-r2: Diffie-Hellman key exchange system
+dev-perl/Crypt-DH 0.70.0-r2: Diffie-Hellman key exchange system
 dev-perl/Crypt-DH-GMP 0.0.120: Crypt::DH Using GMP Directly
 dev-perl/Crypt-DSA 1.170.0: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
@@ -3508,10 +3508,10 @@ dev-perl/Crypt-OpenSSL-Random 0.40.0-r2 0.110.0: OpenSSL/LibreSSL pseudo-random 
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-Primes 0.500.0-r1: Provable Prime Number Generator suitable for Cryptographic Applications
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
-dev-perl/Crypt-RIPEMD160 0.50.0-r1 0.60.0: Perl extension for the RIPEMD-160 Hash function
+dev-perl/Crypt-RIPEMD160 0.60.0: Perl extension for the RIPEMD-160 Hash function
 dev-perl/Crypt-RSA 1.990.0-r1: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.250.0-r1: Cryptographically Secure, True Random Number Generator
-dev-perl/Crypt-Random-Source 0.70.0-r1 0.120.0: Get weak or strong random data from pluggable sources
+dev-perl/Crypt-Random-Source 0.120.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.130.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SSLeay 0.720.0-r1: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
@@ -3519,9 +3519,9 @@ dev-perl/Crypt-SmbHash 0.120.0-r1 0.120.0-r2: LM/NT hashing, for Samba's smbpass
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/Curses 1.360.0: Curses interface modules for Perl
-dev-perl/Curses-UI 0.960.900-r1 0.960.900-r2: Perl UI framework based on the curses library
+dev-perl/Curses-UI 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
-dev-perl/Cwd-Guard 0.40.0 0.50.0: Temporary changing working directory (chdir)
+dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.500.0 1.540.0-r1: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.41.0 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
