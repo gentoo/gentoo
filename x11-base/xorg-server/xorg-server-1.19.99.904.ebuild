@@ -108,9 +108,10 @@ REQUIRED_USE="!minimal? (
 	)
 	xephyr? ( kdrive )"
 
-#UPSTREAMED_PATCHES=(
-#	"${WORKDIR}/patches/"
-#)
+UPSTREAMED_PATCHES=(
+	"${FILESDIR}"/${P}-modesetting-Move-GBM-code-inside-ifdef-GLAMOR_HAS_GB.patch
+	"${FILESDIR}"/${P}-xwayland-Fix-build-without-glamor.patch
+)
 
 PATCHES=(
 	"${UPSTREAMED_PATCHES[@]}"

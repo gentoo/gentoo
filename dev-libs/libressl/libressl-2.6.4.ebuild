@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib-minimal
+inherit ltprune multilib-minimal
 
 DESCRIPTION="Free version of the SSL/TLS protocol forked from OpenSSL"
 HOMEPAGE="https://www.libressl.org/"
@@ -15,7 +15,8 @@ LICENSE="ISC openssl"
 # versions, we have to change the subslot to trigger rebuild of consumers.
 SLOT="0/44"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
-IUSE="+asm static-libs"
+IUSE="+asm static-libs test"
+REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="!dev-libs/openssl:0"
 DEPEND="${RDEPEND}"
