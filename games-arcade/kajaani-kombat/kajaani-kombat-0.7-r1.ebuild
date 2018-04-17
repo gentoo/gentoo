@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="A rampart-like game set in space"
 HOMEPAGE="http://kombat.kajaani.net/"
@@ -19,14 +19,16 @@ DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-ttf
 	media-libs/sdl-mixer[vorbis]
 	sys-libs/ncurses:0
-	sys-libs/readline:0"
+	sys-libs/readline:0
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-makefile.patch" \
+	default
+	eapply "${FILESDIR}/${PV}-makefile.patch" \
 		"${FILESDIR}"/${P}-ldflags.patch
 	sed -i \
-		-e "s:GENTOODIR:${GAMES_DATADIR}/${PN}/:" \
+		-e "s:GENTOODIR:/usr/share/${PN}/:" \
 		Makefile || die
 	sed -i \
 		-e 's/IMG_Load/img_load/' \
@@ -34,10 +36,9 @@ src_prepare() {
 }
 
 src_install() {
-	dogamesbin kajaani-kombat
-	insinto "${GAMES_DATADIR}/${PN}"
+	dobin kajaani-kombat
+	insinto "/usr/share/${PN}"
 	doins *.{png,ttf,ogg}
-	dodoc AUTHORS ChangeLog README
+	einstalldocs
 	doman kajaani-kombat.6
-	prepgamesdirs
 }

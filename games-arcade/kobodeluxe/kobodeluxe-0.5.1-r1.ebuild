@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 MY_P="KoboDeluxe-${PV/_/}"
 DESCRIPTION="An SDL port of xkobo, a addictive space shoot-em-up"
@@ -16,9 +16,11 @@ IUSE="opengl"
 
 DEPEND="media-libs/libsdl
 	media-libs/sdl-image[png]
-	opengl? ( virtual/opengl )"
+	opengl? ( virtual/opengl )
+"
 RDEPEND="${DEPEND}"
-S=${WORKDIR}/${MY_P}
+
+S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
 	unpack ${A}
@@ -27,7 +29,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch \
+	default
+	eapply \
 		"${FILESDIR}"/${P}-glibc29.patch \
 		"${FILESDIR}"/${P}-glibc2.10.patch
 	# Fix paths
@@ -42,13 +45,12 @@ src_prepare() {
 }
 
 src_configure() {
-	egamesconf $(use_enable opengl)
+	econf $(use_enable opengl)
 }
 
 src_install () {
 	default
 	newicon icons/KDE/icons/32x32/kobodl.png ${PN}.png
 	make_desktop_entry kobodl "Kobo Deluxe"
-	prepgamesdirs
-	fperms 2775 "${GAMES_STATEDIR}"/${PN}
+	keepdir /var/lib/${PN}
 }

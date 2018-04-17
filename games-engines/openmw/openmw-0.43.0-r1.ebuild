@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}-${P}"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11b3.patch" )
+
 src_prepare() {
 	cmake-utils_src_prepare
 

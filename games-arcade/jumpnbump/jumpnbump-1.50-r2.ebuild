@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+inherit autotools desktop
 
-inherit autotools eutils games
-
-DESCRIPTION="a funny multiplayer game about cute little fluffy bunnies"
+DESCRIPTION="A funny multiplayer game about cute little fluffy bunnies"
 HOMEPAGE="http://www.jumpbump.mine.nu/"
 SRC_URI="
 	http://www.jumpbump.mine.nu/port/${P}.tar.gz
@@ -28,20 +27,22 @@ RDEPEND="${DEPEND}
 	tk? (
 		dev-lang/tcl:0=
 		dev-lang/tk:0=
-	)"
+	)
+"
 
 src_prepare() {
-	epatch ../${P}-autotool.patch
+	default
+	eapply ../${P}-autotool.patch
 	rm -f configure
 	eautoreconf
 	sed -i \
-		-e "/PREFIX/ s:PREFIX.*:\"${GAMES_DATADIR}/${PN}/jumpbump.dat\":" \
+		-e "/PREFIX/ s:PREFIX.*:\"/usr/share/${PN}/jumpbump.dat\":" \
 		globals.h \
 		|| die "sed failed"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	# clean up a bit.  It leaves a dep on Xdialog but ignore that.
 	use fbcon || rm -f "${D}${GAMES_BINDIR}/jumpnbump.fbcon"
 	use kde || rm -f "${D}${GAMES_BINDIR}/jumpnbump-kdialog"
@@ -49,5 +50,4 @@ src_install() {
 	use tk || rm -f "${D}${GAMES_BINDIR}/jnbmenu.tcl"
 	newicon sdl/jumpnbump64.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "Jump n Bump"
-	prepgamesdirs
 }

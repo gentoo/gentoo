@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Help West Muldune escape from a futuristic mental hospital"
 HOMEPAGE="http://members.fortunecity.com/rivalentertainment/iox.html"
@@ -17,33 +17,33 @@ IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-mixer
-	media-libs/sdl-image"
-RDEPEND=${DEPEND}
+	media-libs/sdl-image
+"
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 src_prepare() {
+	default
+
 	cd ${PN}
 
 	# Modify data load code and paths to game data
-	sed -e "s:/usr/share/games:${GAMES_DATADIR}:" \
-		"${FILESDIR}"/${P}-datafiles.patch > "${T}"/datafiles.patch \
-		|| die
-		epatch "${T}"/datafiles.patch
+	eapply "${FILESDIR}"/${P}-datafiles.patch
 
-	epatch "${FILESDIR}"/${P}-gcc6.patch
+	eapply "${FILESDIR}"/${P}-gcc6.patch
 
 	sed -i \
-		-e "/lvl/s:^:${GAMES_DATADIR}/${PN}/:" \
-		-e "s:night:${GAMES_DATADIR}/${PN}/night:" \
+		-e "/lvl/s:^:/usr/share/${PN}/:" \
+		-e "s:night:/usr/share/${PN}/night:" \
 		levels.dat || die
 	sed -i \
-		-e "s:tiles.dat:${GAMES_DATADIR}/${PN}/tiles.dat:" \
-		-e "s:sprites.dat:${GAMES_DATADIR}/${PN}/sprites.dat:" \
-		-e "s:levels.dat:${GAMES_DATADIR}/${PN}/levels.dat:" \
-		-e "s:IO_T:${GAMES_DATADIR}/${PN}/IO_T:" \
-		-e "s:tiles.att:${GAMES_DATADIR}/${PN}/tiles.att:" \
-		-e "s:shot:${GAMES_DATADIR}/${PN}/shot:" \
+		-e "s:tiles.dat:/usr/share/${PN}/tiles.dat:" \
+		-e "s:sprites.dat:/usr/share/${PN}/sprites.dat:" \
+		-e "s:levels.dat:/usr/share/${PN}/levels.dat:" \
+		-e "s:IO_T:/usr/share/${PN}/IO_T:" \
+		-e "s:tiles.att:/usr/share/${PN}/tiles.att:" \
+		-e "s:shot:/usr/share/${PN}/shot:" \
 		io.cpp || die
 	sed -i \
 		-e 's:\[32:[100:' \
@@ -52,10 +52,9 @@ src_prepare() {
 
 src_install() {
 	cd ${PN}
-	dogamesbin ${PN}
-	insinto "${GAMES_DATADIR}"/${PN}
+	dobin ${PN}
+	insinto /usr/share/${PN}
 	doins *bmp *png *dat *att *lvl *wav *mod *IT
 	newicon west00r.png ${PN}.png
 	make_desktop_entry ${PN} "Insane Odyssey"
-	prepgamesdirs
 }

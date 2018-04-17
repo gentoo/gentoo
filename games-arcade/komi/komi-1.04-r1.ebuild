@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Komi the Space Frog - simple SDL game of collection"
 HOMEPAGE="http://komi.sourceforge.net"
@@ -14,16 +14,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]
-	media-libs/sdl-mixer"
+	media-libs/sdl-mixer
+"
 RDEPEND="${DEPEND}"
-DOCS=( CHANGELOG.txt README.txt TROUBLESHOOTING.txt )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-DESTDIR.patch \
+	default
+	eapply "${FILESDIR}"/${PV}-DESTDIR.patch \
 		"${FILESDIR}"/${P}-install.patch
 	sed -i \
-		-e "/^BINPATH/s:=.*:=${GAMES_BINDIR}/:" \
-		-e "/^DATAPATH/s:=.*:=${GAMES_DATADIR}/${PN}/:" \
+		-e "/^BINPATH/s:=.*:=/usr/bin/:" \
+		-e "/^DATAPATH/s:=.*:=/usr/share/${PN}/:" \
 		-e '/^SDL_LIB/s:$: $(LDFLAGS):' \
 		-e '/^SDL_LIB/s:--static-:--:' \
 		Makefile \
@@ -39,5 +40,4 @@ src_install() {
 	newicon komidata/sprites_komi.bmp ${PN}.bmp
 	make_desktop_entry komi Komi /usr/share/pixmaps/${PN}.bmp
 	doman komi.6
-	prepgamesdirs
 }
