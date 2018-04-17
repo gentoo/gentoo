@@ -110,7 +110,7 @@ mask_390x=">=x11-drivers/nvidia-drivers-391.0.0"
 nvidia-driver-get-card() {
 	local NVIDIA_CARD=$(
 		[ -x /usr/sbin/lspci ] && /usr/sbin/lspci -d 10de: -n \
-			| awk -F'[: ]' '/ 0300: /{print $6}'
+			| awk -F'[: ]' '/ 03[0-9][0-9]: /{print $6}'
 	)
 
 	if [ -n "${NVIDIA_CARD}" ]; then
