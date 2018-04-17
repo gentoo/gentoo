@@ -33,10 +33,7 @@ DEPEND="${RDEPEND}
 # 1 of 2 (UrlBuilderTest) is failing, last checked version 1.0.9
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}/${P}-cmake.patch"
-	"${FILESDIR}/${P}-qt-5.11b3.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-qt-5.11b3.patch" )
 
 src_configure() {
 	# demos not working
