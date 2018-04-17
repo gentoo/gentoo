@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -88,8 +88,8 @@ RDEPEND="sys-libs/ncurses:0=
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	gzip-el? ( app-arch/gzip )
-	pax_kernel? ( sys-apps/attr )"
+	gzip-el? ( app-arch/gzip )"
+#	pax_kernel? ( sys-apps/attr )
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"
