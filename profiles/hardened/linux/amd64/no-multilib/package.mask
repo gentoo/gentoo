@@ -26,7 +26,7 @@ app-accessibility/mbrola
 app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
-=app-editors/emacs-18*
+app-editors/emacs:18
 app-emulation/crossover-bin
 app-emulation/genymotion-bin
 app-emulation/playonlinux
