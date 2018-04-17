@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-13">
+  <title>ncurses: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ncurses, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ncurses</product>
+  <announced>2018-04-17</announced>
+  <revised count="1">2018-04-17</revised>
+  <bug>624644</bug>
+  <bug>625830</bug>
+  <bug>629276</bug>
+  <bug>639706</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/ncurses" auto="yes" arch="*">
+      <unaffected range="ge" slot="0">6.1</unaffected>
+      <vulnerable range="lt" slot="0">6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Free software emulation of curses in System V.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ncurses. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing the user to process untrusted terminfo or
+      other data, could execute arbitrary code or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ncurses users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/ncurses-6.1:0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10684">CVE-2017-10684</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10685">CVE-2017-10685</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11112">CVE-2017-11112</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11113">CVE-2017-11113</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13728">CVE-2017-13728</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13729">CVE-2017-13729</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13730">CVE-2017-13730</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13731">CVE-2017-13731</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13732">CVE-2017-13732</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13733">CVE-2017-13733</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13734">CVE-2017-13734</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16879">CVE-2017-16879</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-15T18:38:59Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-17T18:18:44Z">b-man</metadata>
+</glsa>
