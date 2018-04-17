@@ -23,12 +23,12 @@ mail-client/novell-groupwise-client
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
-=app-editors/emacs-18*
 >=app-i18n/atokx3-3.0.0
 app-accessibility/mbrola
 app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
+app-editors/emacs:18
 app-emulation/crossover-bin
 app-emulation/playonlinux
 app-emulation/q4wine
