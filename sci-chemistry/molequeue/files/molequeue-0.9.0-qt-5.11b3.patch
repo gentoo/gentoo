@@ -1,0 +1,154 @@
+From 844c6a7ee7f4ad00bc8225549d26c6bde8b683ab Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 17 Apr 2018 10:50:36 +0200
+Subject: [PATCH] Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+
+---
+ molequeue/app/CMakeLists.txt                       | 14 +++++---------
+ molequeue/app/testing/CMakeLists.txt               |  6 ++----
+ molequeue/app/testing/clienttestsrc/CMakeLists.txt |  3 +--
+ molequeue/client/CMakeLists.txt                    |  2 +-
+ molequeue/plugins/localsocketserver/CMakeLists.txt |  3 +--
+ molequeue/servercore/CMakeLists.txt                |  2 +-
+ molequeue/zeromq/CMakeLists.txt                    |  3 +--
+ 7 files changed, 12 insertions(+), 21 deletions(-)
+
+diff --git a/molequeue/app/CMakeLists.txt b/molequeue/app/CMakeLists.txt
+index d40fce5..b6e72f8 100644
+--- a/molequeue/app/CMakeLists.txt
++++ b/molequeue/app/CMakeLists.txt
+@@ -1,11 +1,9 @@
+-set(qt_components Core Widgets Network)
++find_package(Qt5 REQUIRED COMPONENTS Core Widgets Network)
+ 
+ if(MoleQueue_USE_EZHPC_UIT)
+-  list(APPEND qt_components XmlPatterns)
++  find_package(Qt5XmlPatterns REQUIRED)
+ endif()
+ 
+-find_package(Qt5 COMPONENTS ${qt_components} REQUIRED)
+-
+ # Provide some simple API to find the plugins, scripts, etc.
+ if(APPLE)
+   # It is a special case, the app bundle logic breaks the relative pathing.
+@@ -170,12 +168,11 @@ qt5_wrap_ui(ui_srcs ${ui_files})
+ qt5_add_resources(rcc_srcs queuetray.qrc)
+ 
+ add_library(molequeue_static STATIC ${mq_srcs} ${ui_srcs})
+-qt5_use_modules(molequeue_static ${qt_components})
+ set_target_properties(molequeue_static PROPERTIES AUTOMOC TRUE)
+-target_link_libraries(molequeue_static MoleQueueServerCore)
++target_link_libraries(molequeue_static MoleQueueServerCore Qt5::Core Qt5::Widgets Qt5::Network)
+ 
+ if(MoleQueue_USE_EZHPC_UIT)
+-  target_link_libraries(molequeue_static KDSoap::kdsoap)
++  target_link_libraries(molequeue_static KDSoap::kdsoap Qt5::XmlPatterns)
+ endif()
+ 
+ if(MoleQueue_BUILD_CLIENT)
+@@ -195,8 +192,7 @@ elseif(WIN32)
+ endif()
+ 
+ add_executable(molequeue WIN32 MACOSX_BUNDLE ${sources} ${rcc_srcs})
+-qt5_use_modules(molequeue ${qt_components})
+-target_link_libraries(molequeue molequeue_static)
++target_link_libraries(molequeue molequeue_static Qt5::Core Qt5::Widgets Qt5::Network)
+ if(WIN32)
+   target_link_libraries(molequeue Qt5::WinMain)
+ endif()
+diff --git a/molequeue/app/testing/CMakeLists.txt b/molequeue/app/testing/CMakeLists.txt
+index 5b88038..f79a17a 100644
+--- a/molequeue/app/testing/CMakeLists.txt
++++ b/molequeue/app/testing/CMakeLists.txt
+@@ -31,8 +31,7 @@ set(testutils_SRCS
+ 
+ add_library(testutils STATIC ${testutils_SRCS})
+ set_target_properties(testutils PROPERTIES AUTOMOC TRUE)
+-qt5_use_modules(testutils Test)
+-target_link_libraries(testutils molequeue_static)
++target_link_libraries(testutils molequeue_static Qt5::Test)
+ 
+ set(MyTests
+   filespecification
+@@ -71,9 +70,8 @@ endif()
+ 
+ foreach(test ${MyTests})
+   add_executable(${test}test MACOSX_BUNDLE ${test}test.cpp)
+-  qt5_use_modules(${test}test Test)
+   set_target_properties(${test}test PROPERTIES AUTOMOC TRUE)
+-  target_link_libraries(${test}test testutils)
++  target_link_libraries(${test}test testutils Qt5::Test)
+   add_test(NAME molequeue-${test} COMMAND ${test}test)
+ endforeach()
+ 
+diff --git a/molequeue/app/testing/clienttestsrc/CMakeLists.txt b/molequeue/app/testing/clienttestsrc/CMakeLists.txt
+index d506010..7377e3c 100644
+--- a/molequeue/app/testing/clienttestsrc/CMakeLists.txt
++++ b/molequeue/app/testing/clienttestsrc/CMakeLists.txt
+@@ -9,6 +9,5 @@ set(srcs sendRpcKill)
+ foreach(source ${srcs})
+   add_executable(${source} ${source}.cpp)
+   set_target_properties(${source} PROPERTIES AUTOMOC TRUE)
+-  qt5_use_modules(${source} Core)
+-  target_link_libraries(${source} MoleQueueClient)
++  target_link_libraries(${source} MoleQueueClient Qt5::Core)
+ endforeach()
+diff --git a/molequeue/client/CMakeLists.txt b/molequeue/client/CMakeLists.txt
+index 8cb131a..c614aea 100644
+--- a/molequeue/client/CMakeLists.txt
++++ b/molequeue/client/CMakeLists.txt
+@@ -15,7 +15,7 @@ set(headers
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+ add_library(MoleQueueClient ${sources})
+-qt5_use_modules(MoleQueueClient Network)
++target_link_libraries(MoleQueueClient Qt5::Network)
+ set_target_properties(MoleQueueClient PROPERTIES AUTOMOC TRUE)
+ include(GenerateExportHeader)
+ generate_export_header(MoleQueueClient EXPORT_FILE_NAME molequeueclientexport.h)
+diff --git a/molequeue/plugins/localsocketserver/CMakeLists.txt b/molequeue/plugins/localsocketserver/CMakeLists.txt
+index fd030f9..80018c3 100644
+--- a/molequeue/plugins/localsocketserver/CMakeLists.txt
++++ b/molequeue/plugins/localsocketserver/CMakeLists.txt
+@@ -2,9 +2,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY
+   ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../lib/molequeue/plugins)
+ 
+ add_library(LocalSocketServer MODULE localsocketconnectionlistenerfactory.cpp)
+-qt5_use_modules(LocalSocketServer Network)
+ set_target_properties(LocalSocketServer PROPERTIES AUTOMOC TRUE PREFIX "")
+-target_link_libraries(LocalSocketServer MoleQueueServerCore)
++target_link_libraries(LocalSocketServer MoleQueueServerCore Qt5::Network)
+ 
+ set_property(GLOBAL APPEND PROPERTY MoleQueue_PLUGINS LocalSocketServer)
+ 
+diff --git a/molequeue/servercore/CMakeLists.txt b/molequeue/servercore/CMakeLists.txt
+index aab0bec..eee1bfd 100644
+--- a/molequeue/servercore/CMakeLists.txt
++++ b/molequeue/servercore/CMakeLists.txt
+@@ -12,7 +12,7 @@ add_library(MoleQueueServerCore
+   messageidmanager_p.cpp
+ )
+ 
+-qt5_use_modules(MoleQueueServerCore Network)
++target_link_libraries(MoleQueueServerCore Qt5::Network)
+ set_target_properties(MoleQueueServerCore PROPERTIES AUTOMOC TRUE)
+ #target_link_libraries(MoleQueueServerCore)
+ 
+diff --git a/molequeue/zeromq/CMakeLists.txt b/molequeue/zeromq/CMakeLists.txt
+index 188f437..451c0ec 100644
+--- a/molequeue/zeromq/CMakeLists.txt
++++ b/molequeue/zeromq/CMakeLists.txt
+@@ -13,9 +13,8 @@ set(sources
+ )
+ 
+ add_library(MoleQueueZeroMq ${sources})
+-qt5_use_modules(MoleQueueZeroMq Network)
+ set_target_properties(MoleQueueZeroMq PROPERTIES AUTOMOC TRUE)
+-target_link_libraries(MoleQueueZeroMq MoleQueueServerCore ${ZeroMQ_LIBRARIES})
++target_link_libraries(MoleQueueZeroMq MoleQueueServerCore ${ZeroMQ_LIBRARIES} Qt5::Network)
+ 
+ generate_export_header(MoleQueueZeroMq
+   EXPORT_FILE_NAME molequeuezeromqexport.h)
+-- 
+2.17.0
+
