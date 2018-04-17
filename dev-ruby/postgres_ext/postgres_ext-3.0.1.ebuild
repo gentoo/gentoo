@@ -19,9 +19,8 @@ IUSE=""
 # Requires live database connection
 RESTRICT=test
 
-ruby_add_rdepend "|| (
-			dev-ruby/activerecord:5.0
-			dev-ruby/activerecord:4.2 )
+ruby_add_rdepend "
+		dev-ruby/activerecord:4.2
 		>=dev-ruby/arel-4.0.1:*
 		dev-ruby/pg_array_parser:0.0.9"
 
