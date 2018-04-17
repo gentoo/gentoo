@@ -116,6 +116,7 @@ src_prepare() {
 	sed -i \
 		-e '/="$ROOT/s:ROOT:ROOT'"${EPREFIX}"':' \
 		-e '/RELPATH="\.\./s:"$:'"${relp}"'":' \
+		-e 's/openssl rehash/c_rehash/' \
 		usr/sbin/update-ca-certificates || die
 }
 
