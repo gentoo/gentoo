@@ -41,12 +41,6 @@
 # Masked for removal in 30 days. Bug #633386
 media-gfx/scantailor
 
-# Andreas Sturmlechner <asturm@gentoo.org> (09 Apr 2018)
-# Obsolete dev-texlive/* cleanup. Content moved into other packages.
-dev-texlive/texlive-documentation-base
-dev-texlive/texlive-mathextra
-dev-texlive/texlive-science
-
 # Andreas Sturmlechner <asturm@gentoo.org> (08 Apr 2018)
 # Depends on dead Qt4. Masked for removal in 30 days. Bug #649124
 dev-python/PyFoam
