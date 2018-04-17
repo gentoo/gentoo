@@ -321,10 +321,6 @@ games-arcade/monster-masher
 media-video/videocut
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Depends on dead QT4 (#644480). Removal in a month.
-sci-electronics/plcedit
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Tests fail, package has no reverse deps and is not really needed at
 # present time (#645166). Removal in a month.
 dev-python/jenkins-autojobs
