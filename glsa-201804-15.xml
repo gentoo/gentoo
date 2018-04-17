@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-15">
+  <title>Evince: Command injection</title>
+  <synopsis>A vulnerability has been found in Evince which may allow for
+    arbitrary command execution.
+  </synopsis>
+  <product type="ebuild">evince</product>
+  <announced>2018-04-17</announced>
+  <revised count="1">2018-04-17</revised>
+  <bug>650272</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/evince" auto="yes" arch="*">
+      <unaffected range="ge">3.24.2-r1</unaffected>
+      <vulnerable range="lt">3.24.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Evince is a document viewer for multiple document formats, including
+      PostScript.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in Evince’s handling of filenames while
+      printing PDF files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing the user to process a specially crafted
+      file, could execute arbitrary commands.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Evince users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/evince-3.24.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-1000159">
+      CVE-2017-1000159
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-17T17:27:38Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-17T18:22:39Z">b-man</metadata>
+</glsa>
