@@ -35,7 +35,7 @@ all_ruby_prepare() {
 	# Remove bundler support
 	rm Gemfile || die
 	sed -i -e '/[Bb]undler/d' Rakefile || die
-	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die
+	sed -i -e '/simplecov/I s:^:#:' -e '1i gem "http", "~>0.8"' spec/spec_helper.rb || die
 	sed -i -e '1igem "test-unit"' test/test_helper.rb || die
 
 	# There is now optional support for curb and typhoeus which we don't
