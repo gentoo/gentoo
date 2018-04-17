@@ -45,7 +45,7 @@ src_prepare() {
 	fi
 
 	filter-lfs-flags # configure handles this sanely
-	use static && append-ldflags -static
+	use static && append-ldflags -static -pthread
 
 	export ac_cv_header_libaio_h=$(usex aio)
 	use elibc_musl && export ac_cv_header_stdc=no
