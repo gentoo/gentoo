@@ -4,7 +4,7 @@ Use pkg-config to detect Brotli's install path.
 
 --- a/config
 +++ b/config
-@@ -59,93 +59,19 @@ have=NGX_HTTP_BROTLI_STATIC_MODULE . auto/have  # deprecated
+@@ -59,98 +59,19 @@ have=NGX_HTTP_BROTLI_STATIC_MODULE . auto/have  # deprecated
  ngx_module_type=HTTP_FILTER
  ngx_module_name=ngx_http_brotli_filter_module
  
@@ -32,7 +32,10 @@ Use pkg-config to detect Brotli's install path.
  
 -ngx_module_incs="$brotli/include"
 -ngx_module_deps="$brotli/common/constants.h \
+-                 $brotli/common/context.h \
 -                 $brotli/common/dictionary.h \
+-                 $brotli/common/platform.h \
+-                 $brotli/common/transform.h \
 -                 $brotli/common/version.h \
 -                 $brotli/enc/backward_references.h \
 -                 $brotli/enc/backward_references_hq.h \
@@ -48,8 +51,8 @@ Use pkg-config to detect Brotli's install path.
 -                 $brotli/enc/command.h \
 -                 $brotli/enc/compress_fragment.h \
 -                 $brotli/enc/compress_fragment_two_pass.h \
--                 $brotli/enc/context.h \
 -                 $brotli/enc/dictionary_hash.h \
+-                 $brotli/enc/encoder_dict.h \
 -                 $brotli/enc/entropy_encode.h \
 -                 $brotli/enc/entropy_encode_static.h \
 -                 $brotli/enc/fast_log.h \
@@ -66,7 +69,7 @@ Use pkg-config to detect Brotli's install path.
 -                 $brotli/enc/memory.h \
 -                 $brotli/enc/metablock.h \
 -                 $brotli/enc/metablock_inc.h \
--                 $brotli/enc/port.h \
+-                 $brotli/enc/params.h \
 -                 $brotli/enc/prefix.h \
 -                 $brotli/enc/quality.h \
 -                 $brotli/enc/ringbuffer.h \
@@ -75,6 +78,7 @@ Use pkg-config to detect Brotli's install path.
 -                 $brotli/enc/utf8_util.h \
 -                 $brotli/enc/write_bits.h"
 -ngx_module_srcs="$brotli/common/dictionary.c \
+-                 $brotli/common/transform.c \
 -                 $brotli/enc/backward_references.c \
 -                 $brotli/enc/backward_references_hq.c \
 -                 $brotli/enc/bit_cost.c \
@@ -85,6 +89,7 @@ Use pkg-config to detect Brotli's install path.
 -                 $brotli/enc/compress_fragment_two_pass.c \
 -                 $brotli/enc/dictionary_hash.c \
 -                 $brotli/enc/encode.c \
+-                 $brotli/enc/encoder_dict.c \
 -                 $brotli/enc/entropy_encode.c \
 -                 $brotli/enc/histogram.c \
 -                 $brotli/enc/literal_cost.c \
@@ -100,7 +105,7 @@ Use pkg-config to detect Brotli's install path.
  ngx_module_incs="$brotli/include"
  ngx_module_deps="$brotli/include/brotli/encode.h \
                   $brotli/include/brotli/port.h \
-@@ -153,8 +79,6 @@ ngx_module_deps="$brotli/include/brotli/encode.h \
+@@ -158,8 +79,6 @@ ngx_module_deps="$brotli/include/brotli/encode.h \
  ngx_module_srcs="$ngx_addon_dir/src/ngx_http_brotli_filter_module.c"
  ngx_module_libs="-lbrotlienc -lm"
  
