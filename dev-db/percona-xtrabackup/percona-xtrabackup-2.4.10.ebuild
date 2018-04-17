@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/libgpg-error
 	dev-python/sphinx
 	net-misc/curl
-	sys-libs/zlib"
+	sys-libs/zlib:="
 
 RDEPEND="
 	${DEPEND}
@@ -34,16 +34,16 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.6-remove-boost-version-check.patch
-	"${FILESDIR}"/${PN}-2.4.6-fix-gcc6-isystem.patch
+	"${FILESDIR}"/${PN}-2.4.10-fix-gcc6-isystem.patch
 )
 
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# remove bundled lz4, boost, libedit, libevent, zlib
+	# remove bundled boost, libedit, libevent, zlib
 	# just to be safe...
+	# We keep lz4 directory because we use extra/lz4/xxhash.c in cmake/libutils.cmake
 	rm -rv \
-		extra/lz4 \
 		include/boost_1_59_0 \
 		cmd-line-utils/libedit \
 		libevent \
@@ -56,6 +56,10 @@ src_configure() {
 	#   error: 'fts_ast_node_type_get' was not declared in this scope
 	#
 	append-cppflags -DDBUG_OFF
+
+	# Upstream doesn't support C++14 -- build will fail with -fpermissive error
+	# https://bugs.mysql.com/bug.php?id=87956
+	append-cxxflags $(test-flags-CXX -std=gnu++03) -std=gnu++03
 
 	local mycmakeargs=(
 		-DBUILD_CONFIG=xtrabackup_release
