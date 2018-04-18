@@ -112,10 +112,11 @@ net-analyzer/nagios-plugin-check_raid i2o
 media-video/ffmpeg appkit
 
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# The whole zeitgeist stuck is dead (#629180)
+# The whole zeitgeist stack is dead (#629180)
 gnome-extra/synapse zeitgeist
 app-editors/gedit-plugins zeitgeist
 dev-libs/folks zeitgeist
+www-client/midori zeitgeist
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Having a masked
