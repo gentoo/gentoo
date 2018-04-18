@@ -2912,7 +2912,7 @@ dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
-dev-libs/botan 1.10.17 2.5.0: A C++ crypto library
+dev-libs/botan 1.10.17 2.5.0 2.6.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20160131: A library of curses widgets
@@ -5054,7 +5054,7 @@ dev-python/networkx 1.11 1.11-r1: Python tools to manipulate graphs and complex 
 dev-python/neutron-lib 1.9.1 1.13.0: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/nltk 3.2.3: Natural Language Toolkit
-dev-python/nose 1.3.7-r1: Unittest extension with automatic test suite discovery and easy test authoring
+dev-python/nose 1.3.7-r1 1.3.7-r3: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-exclude 0.4.1: Exclude specific directories from nosetests runs
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
