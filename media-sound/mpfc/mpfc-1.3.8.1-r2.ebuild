@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="alsa cdda flac gpm mad nls oss static-libs vorbis wav"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-0.9.0 )
