@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,19 +7,19 @@ inherit eutils scons-utils toolchain-funcs xdg
 
 MY_P="${PN}_v${PV}-src"
 DESCRIPTION="Descent Rebirth - enhanced Descent 1 & 2 engine"
-HOMEPAGE="http://www.dxx-rebirth.com/"
-SRC_URI="http://www.dxx-rebirth.com/download/dxx/${MY_P}.tar.gz
+HOMEPAGE="https://www.dxx-rebirth.com/"
+SRC_URI="https://www.dxx-rebirth.com/download/dxx/${MY_P}.tar.gz
 	opl3-musicpack? (
-		descent1? ( http://www.dxx-rebirth.com/download/dxx/res/d1xr-opl3-music.dxa )
-		descent2? ( http://www.dxx-rebirth.com/download/dxx/res/d2xr-opl3-music.dxa ) )
+		descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-opl3-music.dxa )
+		descent2? ( https://www.dxx-rebirth.com/download/dxx/res/d2xr-opl3-music.dxa ) )
 	sc55-musicpack? (
-		descent1? ( http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa )
-		descent2? ( http://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa ) )
+		descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa )
+		descent2? ( https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa ) )
 	l10n_de? (
-		descent1? ( http://www.dxx-rebirth.com/download/dxx/res/d1xr-briefings-ger.dxa )
-		descent2? ( http://www.dxx-rebirth.com/download/dxx/res/d2xr-briefings-ger.dxa ) )
+		descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-briefings-ger.dxa )
+		descent2? ( https://www.dxx-rebirth.com/download/dxx/res/d2xr-briefings-ger.dxa ) )
 	textures? (
-		descent1? ( http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa ) )"
+		descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa ) )"
 
 LICENSE="DXX-Rebirth GPL-3 public-domain"
 SLOT="0"
