@@ -109,8 +109,6 @@ sci-libs/vtk mpi
 # Doug Goldstein <cardoe@gentoo.org> (04 Jan 2017)
 # libcxx is not stable so we can't let users use it
 dev-lang/rust libcxx
-# llvm 3.8.x is not stable so we can't let users use it
-dev-lang/rust system-llvm
 
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
 # Will always require unstable packages.
@@ -153,10 +151,6 @@ net-analyzer/pmacct mongodb
 # sci-visualization/paraview is not ready for stabilization yet
 # See bug #541012
 sci-libs/openfoam paraview
-
-# Pacho Ramos <pacho@gentoo.org>
-# dev-libs/libappindicator isn't going to be stabilized
-x11-misc/redshift appindicator
 
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.

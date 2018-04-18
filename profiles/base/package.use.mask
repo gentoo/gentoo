@@ -37,10 +37,6 @@ net-mail/fetchmail hesiod
 sys-freebsd/freebsd-lib hesiod
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# dev-java/jad-bin will be removed (#619770)
-dev-lisp/abcl jad
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # app-misc/cwiid will be removed (#608780)
 media-sound/supercollider wiimote
 
@@ -90,10 +86,6 @@ dev-qt/qtdemo:4 phonon
 dev-python/PyQt4 phonon
 dev-python/pyside:0 phonon
 
-# Brian Evans <grknight@gentoo.org> (22 Feb 2018)
-# Depends on vulnerable dev-php/ZendFramework which is masked for removal
-www-apps/postfixadmin xmlrpc
-
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2018)
 # Depends on unreleased media-libs/libaom, and 9999 is currently broken
 media-video/vlc aom
@@ -124,10 +116,6 @@ media-video/ffmpeg appkit
 gnome-extra/synapse zeitgeist
 app-editors/gedit-plugins zeitgeist
 dev-libs/folks zeitgeist
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# We will remove ptlib, its support was broken anyway (#624578).
-net-voip/yate h323
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Having a masked
@@ -389,7 +377,6 @@ dev-java/icedtea cacao jamvm
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
 # Need vulnerable libotr version (see bug #576914).
-net-im/centerim otr
 =net-im/climm-0.7.1 otr
 
 # James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
