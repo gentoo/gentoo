@@ -14,7 +14,6 @@ acl - Add support for Access Control Lists
 acpi - Add support for Advanced Configuration and Power Interface
 adns - Add support for asynchronous DNS resolution
 afs - Add OpenAFS support (distributed file system)
-aim - Enable AIM IM protocol support
 alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
 altivec - Add support for optimizations for G4 and G5/ppc970 processors
 ao - Use libao audio output library for sound playback
