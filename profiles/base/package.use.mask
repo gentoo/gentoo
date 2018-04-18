@@ -122,12 +122,8 @@ media-video/ffmpeg appkit
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
 # The whole zeitgeist stuck is dead (#629180)
 gnome-extra/synapse zeitgeist
-www-client/midori zeitgeist
 app-editors/gedit-plugins zeitgeist
-app-misc/bijiben zeitgeist
 dev-libs/folks zeitgeist
-media-sound/rhythmbox zeitgeist
-media-video/totem zeitgeist
 
 # Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
 # We will remove ptlib, its support was broken anyway (#624578).

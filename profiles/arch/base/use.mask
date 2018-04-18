@@ -24,9 +24,6 @@ cuda
 # masking here, and unmasking in arch/x86/use.mask
 vidix
 
-# Mask as long its not available everywhere
-zeitgeist
-
 # vdpau is currently only available with binary nvidia-drivers, thus amd64/x86*
 vdpau
 
