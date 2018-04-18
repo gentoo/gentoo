@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ GCONF_DEBUG="no"
 inherit autotools eutils flag-o-matic gnome2
 
 DESCRIPTION="Squash the monsters with your levitation worker gnome"
-HOMEPAGE="http://people.iola.dk/olau/monster-masher/"
-SRC_URI="http://people.iola.dk/olau/monster-masher/source/${P}.tar.bz2"
+HOMEPAGE="https://people.iola.dk/olau/monster-masher/"
+SRC_URI="https://people.iola.dk/olau/monster-masher/source/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
