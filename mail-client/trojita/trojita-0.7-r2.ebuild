@@ -45,7 +45,8 @@ DOCS=( README LICENSE )
 PATCHES=(
 	"${FILESDIR}/${P}-gpgme.patch"
 	"${FILESDIR}/${P}-gpg-tests.patch"
-	)
+	"${FILESDIR}/${P}-qt-5.11b3.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
