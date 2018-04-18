@@ -10,7 +10,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Analysis and generation of C code"
-HOMEPAGE="http://visq.github.io/language-c/"
+HOMEPAGE="https://visq.github.io/language-c/"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
