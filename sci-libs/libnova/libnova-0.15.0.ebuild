@@ -1,10 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Celestial Mechanics and Astronomical Calculation Library"
 HOMEPAGE="http://libnova.sourceforge.net/"
@@ -19,22 +18,33 @@ DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND=""
 
 src_prepare() {
+	default
 	sed -i -e '/CFLAGS=-Wall/d' configure.in || die
-	autotools-utils_src_prepare
+	mv configure.{in,ac} || die
+	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable static-libs static)
 }
 
 src_compile() {
-	autotools-utils_src_compile
-	use doc && autotools-utils_src_compile -C doc doc
+	default
+	use doc && emake -C doc doc
 }
 
 src_install() {
-	autotools-utils_src_install
-	use doc && dohtml doc/html/*
+	use doc && HTML_DOCS=( doc/html/. )
+	default
+
 	if use examples; then
-		make clean
-		rm examples/Makefile*
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		emake clean
+		rm examples/Makefile* || die
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
 	fi
 }
