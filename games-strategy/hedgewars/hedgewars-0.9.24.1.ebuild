@@ -17,7 +17,7 @@ SRC_URI="https://www.hedgewars.org/download/releases/${MY_P}.tar.bz2
 LICENSE="GPL-2 Apache-2.0 FDL-1.3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav"
+IUSE="libav server"
 
 QA_FLAGS_IGNORED="/usr/bin/hwengine" # pascal sucks
 QA_PRESTRIPPED="/usr/bin/hwengine" # pascal sucks
@@ -41,7 +41,21 @@ CDEPEND="
 	!libav? ( media-video/ffmpeg:= )"
 DEPEND="${CDEPEND}
 	>=dev-lang/fpc-2.4
-	dev-qt/linguist-tools:5"
+	dev-qt/linguist-tools:5
+	server? (
+		>=dev-lang/ghc-6.10
+		dev-haskell/entropy
+		dev-haskell/hslogger
+		>=dev-haskell/mtl-2
+		>=dev-haskell/network-2.3
+		dev-haskell/random
+		dev-haskell/regex-tdfa
+		dev-haskell/sandi
+		dev-haskell/sha
+		dev-haskell/vector
+		dev-haskell/utf8-string
+		>=dev-haskell/zlib-0.5.3 <dev-haskell/zlib-0.6
+	)"
 RDEPEND="${CDEPEND}
 	app-arch/xz-utils
 	>=media-fonts/dejavu-2.28
@@ -59,7 +73,7 @@ src_configure() {
 		-DDATA_INSTALL_DIR="${EPREFIX}/usr/share/${PN}"
 		-Dtarget_binary_install_dir="${EPREFIX}/usr/bin"
 		-Dtarget_library_install_dir="${EPREFIX}/usr/$(get_libdir)"
-		-DNOSERVER=TRUE
+		-DNOSERVER=$(usex server FALSE TRUE)
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
 		-DPHYSFS_SYSTEM=ON
 		# Need to tell the build system where the fonts are located
