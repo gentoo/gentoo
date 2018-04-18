@@ -346,11 +346,6 @@ app-editors/cooledit
 app-mobilephone/ringtonetools
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Dead for years, probably not needed anymore at present time (#648102).
-# Removal in a month.
-app-laptop/lphdisk
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Dead for a long time, broken with current kernels (#648392). Removal in a
 # month.
 net-dialup/hcfpcimodem
