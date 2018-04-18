@@ -9293,7 +9293,7 @@ sci-libs/libctl 3.1: Guile-based library for scientific simulations
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libgeotiff 1.4.0: Library for reading TIFF files with embedded tags for geographic information
 sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
-sci-libs/libnova 0.12.3 0.15.0: Celestial Mechanics and Astronomical Calculation Library
+sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libspatialindex 1.8.1: General framework for developing spatial indices
