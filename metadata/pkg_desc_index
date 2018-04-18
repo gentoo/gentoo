@@ -7024,7 +7024,7 @@ media-fonts/corefonts 1-r7: Microsoft's TrueType core fonts
 media-fonts/cronyx-fonts 2.3.1-r2: Cronyx Cyrillic bitmap fonts for X
 media-fonts/croscorefonts 1.23.0: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/culmus 0.120-r4: Hebrew Type1 fonts
-media-fonts/dejavu 2.35: DejaVu fonts, bitstream vera with ISO-8859-2 characters
+media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.89: A monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r3 113-r4: Font family from Google's Android project
 media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script provided by the Bhutanese government
@@ -7516,7 +7516,7 @@ media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
 media-libs/libmtp 1.1.13 1.1.14: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.0.9: Qt/C++ library wrapping the gpodder.net webservice
-media-libs/libnjb 2.2.6 2.2.7: a C library and API for communicating with the Creative Nomad JukeBox digital audio player
+media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnut 661: Library and tools to create NUT multimedia files
 media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
 media-libs/libogg 1.3.2 1.3.3: the Ogg media file format library
@@ -7943,7 +7943,7 @@ media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.0: a metronome application supporting different meters and speeds ranging
 media-sound/guayadeque 0.4.5_p20170110: Music management program designed for all music enthusiasts
-media-sound/herrie 2.2 2.2-r1: Herrie is a command line music player
+media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14: Opensource software organ
 media-sound/hydrogen 1.0.0_pre20180301-r1: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
@@ -7990,7 +7990,7 @@ media-sound/mpc 0.27 0.28: A commandline client for Music Player Daemon (media-s
 media-sound/mpd 0.20.10: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
-media-sound/mpfc 1.3.7-r1 1.3.8.1-r2: Music Player For Console
+media-sound/mpfc 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.25.6: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mserv 0.35-r1: Jukebox-style music server
@@ -9324,7 +9324,7 @@ sci-libs/scipy 0.16.1 0.19.1: Scientific algorithms library for Python
 sci-libs/scotch 6.0.0: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1: Library for manipulating ESRI Shapefiles
 sci-libs/spqr 1.2.3-r1: Multithreaded multifrontal sparse QR factorization library
-sci-libs/suitesparseconfig 4.2.1 4.2.1-r1: Common configurations for all packages in suitesparse
+sci-libs/suitesparseconfig 4.2.1-r1: Common configurations for all packages in suitesparse
 sci-libs/superlu 4.3-r1: Sparse LU factorization library
 sci-libs/szip 2.1 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
