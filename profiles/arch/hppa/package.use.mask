@@ -135,10 +135,6 @@ dev-python/pymongo test
 # USE=gui requires x11-libs/qscintilla,
 sci-mathematics/octave gui
 
-# Jeroen Roovers <jer@gentoo.org> (31 Jan 2014)
-# Mask x11-libs/libgksu dependency (bug #499900)
-xfce-extra/xfce4-taskmanager gksu
-
 # Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
 # needs app-arch/innoextract (bug #492326)
 games-fps/duke3d-data gog
