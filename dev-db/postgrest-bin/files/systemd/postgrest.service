@@ -1,0 +1,19 @@
+[Unit]
+Description=Postgrest service for %I
+Documentation=https://postgrest.com
+
+After=syslog.target network-online.target
+Requires=network-online.target
+
+[Service]
+User=postgrest
+Group=postgrest
+WorkingDirectory=/etc/postgrest
+ExecStart=/usr/bin/postgrest %i.conf
+ProtectSystem=true
+ProtectHome=true
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
