@@ -11,7 +11,7 @@ SRC_URI="https://github.com/trizen/youtube-viewer/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="gtk"
 
 RDEPEND="
