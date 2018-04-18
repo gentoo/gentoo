@@ -155,6 +155,7 @@ src_prepare() {
 	PATCHES+=(
 		"${FILESDIR}/238-initctl.patch"
 		"${FILESDIR}/238-nspawn-wait.patch"
+		"${FILESDIR}/238-timesync-connection.patch"
 	)
 
 	if ! use vanilla; then
