@@ -13,7 +13,7 @@ MY_PN="${PN}-qt"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Free, open-source, non-linear video editor to create and edit videos and movies"
-HOMEPAGE="http://www.openshot.org/ https://launchpad.net/openshot"
+HOMEPAGE="https://www.openshot.org/ https://launchpad.net/openshot"
 SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
@@ -21,10 +21,11 @@ SLOT="1"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	dev-python/PyQt5[svg,webkit,${PYTHON_USEDEP}]
-	>=media-libs/libopenshot-0.1.8[python,${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
+	dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	>=media-libs/libopenshot-0.1.8[python,${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
