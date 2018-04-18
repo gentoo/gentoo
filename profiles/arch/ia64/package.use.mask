@@ -223,10 +223,6 @@ net-misc/modemmanager mbim
 # Various deps not ported to ia64.
 dev-python/ipython nbconvert notebook
 
-# Mike Frysinger <vapier@gentoo.org> (15 Mar 2014)
-# dev-python/greenlet is not ported to ia64.
-dev-python/pyzmq green test
-
 # Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
 # Missing keywords, bug #504672
 >=net-misc/vinagre-3.10 rdp
