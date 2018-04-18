@@ -346,16 +346,6 @@ app-editors/cooledit
 app-mobilephone/ringtonetools
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Dead for years, probably not needed anymore at present time (#648102).
-# Removal in a month.
-app-laptop/lphdisk
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Dead for a long time, broken with current kernels (#648392). Removal in a
-# month.
-net-dialup/hcfpcimodem
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Not useful anymore without warsow (#648676). Removal in a month.
 games-fps/warsow-community-map-pack
 
@@ -507,10 +497,6 @@ games-server/cyphesis
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Not buildable (#627102, #630850). Removal in a month.
 dev-games/crystalspace
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Dead for years, nothing needs it (#627464). Removal in a month.
-dev-java/commons-betwixt
 
 # Georgy Yakovlev <ya@sysdump.net> (13 Mar 2018)
 # 1.x version is no longer maintained by upstream
