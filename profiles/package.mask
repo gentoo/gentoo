@@ -512,10 +512,6 @@ dev-games/crystalspace
 # Dead for years, nothing needs it (#627464). Removal in a month.
 dev-java/commons-betwixt
 
-# Fabian Groffen <grobian@gentoo.org> (16 Mar 2018)
-# Exim release candidates, use at your own risk
-=mail-mta/exim-4.91_rc*
-
 # Georgy Yakovlev <ya@sysdump.net> (13 Mar 2018)
 # 1.x version is no longer maintained by upstream
 # 2.x is in the tree and is better in almost every way
@@ -548,12 +544,6 @@ app-forensics/rdd
 # python eclasses (#613892), needs obsolete libs (#640888). Removal in a
 # month.
 net-p2p/tribler
-
-# Tobias Klausmann <klausman@gentoo.org> (13 Mar 2018)
-# Has a bug in the storage engine, details:
-# https://www.robustperception.io/new-features-in-prometheus-2-2-0/
-# https://github.com/prometheus/prometheus/issues/3943
-=net-analyzer/prometheus-2.2.0
 
 # Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
 # Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
@@ -700,10 +690,6 @@ games-kids/crayon-physics
 # Missing dependencies.
 >=dev-python/scrapy-1.4.0
 
-# Robin H. Johnson <robbat2@gentoo.org> (22 Oct 2017)
-# Masking for testing, contains Fedora Hobbled-EC for USE=bindist
-=dev-libs/openssl-1.0.2l-r1
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
 # Broken with recent Perl (5.26) and not used by anything
 # in the Gentoo repository. Please uninstall.
@@ -736,15 +722,6 @@ sys-devel/automake:1.8
 #   emerge -C perl-core/Unicode-Collate
 # See bug #634040
 <perl-core/Unicode-Collate-1.190.0-r99
-
-# Michał Górny <mgorny@gentoo.org> (05 Oct 2017)
-# (on behalf of QA)
-# Rogue version bumps that reintroduce QA violations that were fixed
-# in #598527 and #598529, breaking the current verison
-# of app-portage/eix as a result, #633424. Do not reintroduce without
-# prior review from QA.
-=app-shells/push-3.0
-=app-shells/quoter-4.0
 
 # Patrice Clement <monsieurp@gentoo.org> (01 Oct 2017)
 # Mask Atom betas for testing.
@@ -783,12 +760,6 @@ app-arch/unrar-gpl
 # ipython-6 is python-3 only and causes circular dependencies
 # Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
 >=dev-python/ipython-6
-
-# Michael Orlitzky <mjo@gentoo.org> (18 Aug 2017)
-# Last version from 2011, and has a vulnerable init script
-# (bug 603382). The proxy-maintainer is unknown to bugzilla,
-# and the previous maintainer jmbsvicetto is OK with masking.
-<net-misc/vde-2.3.2-r4
 
 # Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
 # Masked ede and all its dependencies due to security reasons. 
@@ -837,18 +808,6 @@ net-vpn/kvpnc
 # Randomly broken due to sys-devel/binutils-config bug (#584296).
 # Unmask when it is finally fixed, so people can build the package.
 dev-util/mutrace
-
-# Matthias Schwarzott <zzam@gentoo.org> (03 Jul 2017)
-# The snapshots got a wrong version number assigned.
-# They are from before version 2.0.0. Masking them to force
-# an update to version 2.0.0 as soon as it is added to the tree.
-=media-plugins/vdr-xineliboutput-2.0.0_p20130821
-=media-plugins/vdr-xineliboutput-2.0.0_p20150220
-
-# Thomas Deutschmann <whissi@gentoo.org> (28 Jun 2017)
-# New strip feature which is enabled by default causes genkernel
-# to create unbootable kernel/initramfs images. Bug #622716
-=sys-kernel/genkernel-3.5.1.0
 
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
@@ -899,13 +858,6 @@ net-wireless/cpyrit-cuda
 =net-ftp/filezilla-3.30.0-r300
 =net-ftp/filezilla-3.31.0-r300
 
-# Rick Farina <zerochaos@gentoo.org> (17 Apr 2017)
-# Masking old versions because upstream changed versioning
-# Please keep this mask for 1 year to ease upgrades for users
-=app-crypt/hashcat-3.10-r1
-=app-crypt/hashcat-3.30
-=app-crypt/hashcat-3.40
-
 # Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
 # Masked until Mozilla and Chrome agreed how to handle
 # Symantec trust issues properly (bug #613714)
@@ -935,12 +887,6 @@ media-plugins/gst-plugins-ffmpeg
 # Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
 # Alpha release with new features, masked for testing
 =app-text/tesseract-4.00.00_alpha*
-
-# Yixun Lan <dlan@gentoo.org> (16 Jan 2017)
-# Masked, Vulnerable due to RGW Denial of Service (bug #598206)
-# We mask it instead of removing them, due user may need them while
-# upgrade from old versions (<0.94.x)
-<sys-cluster/ceph-10.2.3-r1
 
 # Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
 # Use x11-drivers/nvidia-drivers[tools] instead.
@@ -975,11 +921,6 @@ app-admin/amazon-ec2-init
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
-
-# Chris Reffett <creffett@gentoo.org> (25 May 2016)
-# The webkit-gtk:4 backend for Xiphos has known text display issues.
-# Use at your own risk.
-=app-text/xiphos-4.0.4-r1
 
 # James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
 # Masking Spring Framework for the time being as 3.2.4 is old, has
@@ -1068,7 +1009,6 @@ games-strategy/smac
 # Rafael Martins <rafaelmartins@gentoo.org> (04 Dec 2016)
 # Adding Lua 5.3 to mask
 app-eselect/eselect-lua
-=dev-lang/lua-5.1.5-r2
 =dev-lang/lua-5.1.5-r100
 =dev-lang/lua-5.1.5-r101
 =dev-lang/lua-5.2.3
