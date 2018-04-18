@@ -33,10 +33,6 @@ if [[ "${PV}" = 9999 ]] ; then
 	"
 fi
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.17-automagic.patch"
-)
-
 src_prepare() {
 	default
 	if [[ "${PV}" = 9999 ]] ; then
