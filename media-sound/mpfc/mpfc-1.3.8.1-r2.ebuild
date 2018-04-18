@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Music Player For Console"
 HOMEPAGE="http://mpfc.sourceforge.net/"
@@ -53,5 +53,6 @@ src_install() {
 	insinto /etc
 	doins mpfcrc
 
-	prune_libtool_files --all
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }
