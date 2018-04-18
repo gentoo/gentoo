@@ -108,6 +108,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-7.30.0-prefix.patch
 	eapply "${FILESDIR}"/${PN}-respect-cflags-3.patch
 	eapply "${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
+	# the next curl release (7.60.0) *should* contain this patch as it is in Git head and 7.60.0 has been tagged
+    eapply "${FILESDIR}"/${PN}-7.59.0-libressl-compatibility.patch
 
 	sed -i '/LD_LIBRARY_PATH=/d' configure.ac || die #382241
 
