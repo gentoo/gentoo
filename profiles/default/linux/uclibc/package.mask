@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/musl
@@ -12,9 +12,6 @@ sys-fs/udev
 # Working on it, bug #470884
 dev-libs/elfutils
 >virtual/libelf-2
-
-# packages that unconditionally depend on dev-libs/elfutils
-<net-firewall/fwbuilder-5.3.7
 
 # These binary pkgs have a hard dep on glibc; make repoman shut up
 app-arch/rar
