@@ -27,3 +27,7 @@ src_configure() {
 	tc-export CC
 	export EFIDIR="Gentoo"
 }
+
+src_compile() {
+	emake PKG_CONFIG="$(tc-getPKG_CONFIG)"
+}
