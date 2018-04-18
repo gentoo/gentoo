@@ -4,7 +4,7 @@
 EAPI=5
 
 XORG_DOC=doc
-inherit xorg-2 multilib versionator flag-o-matic
+inherit autotools xorg-2 multilib versionator flag-o-matic
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
@@ -131,6 +131,12 @@ pkg_setup() {
 		ewarn "glamor is necessary for acceleration under Xwayland."
 		ewarn "Performance may be unacceptable without it."
 	fi
+}
+
+src_prepare() {
+	xorg-2_src_prepare
+	# needed because xwayland patch touches hw/xwayland/Makefile.am
+	eautoreconf
 }
 
 src_configure() {
