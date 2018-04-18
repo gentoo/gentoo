@@ -60,7 +60,7 @@ fi
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="insecure_certs"
+IUSE=""
 ${PRECOMPILED} || IUSE+=" cacert"
 
 DEPEND=""
@@ -105,7 +105,7 @@ src_prepare() {
 
 		if use cacert ; then
 			pushd "${S}"/nss-${NSS_VER} >/dev/null
-			epatch "${DISTDIR}"/nss-cacert-class1-class3.patch
+			eapply -p0 "${DISTDIR}"/nss-cacert-class1-class3.patch
 			popd >/dev/null
 		fi
 	fi
@@ -138,18 +138,6 @@ src_compile() {
 		mv "${d}"/*.crt "${c}"/mozilla/ || die
 	else
 		mv usr/share/doc/{ca-certificates,${PF}} || die
-	fi
-
-	if ! use insecure_certs ; then
-		elog "To prevent applications relying on system's trusted root certificate store"
-		elog "from using CAs where at least one major browser vendor Gentoo is following"
-		elog "has decided to apply trust level restrictions, the following"
-		elog "certificate(s) were removed:"
-		# Remove untrusted certs from StartCom and WoSign (bug #598072)
-		elog "$(find "${c}" -type f \( \
-			-iname '*startcom*' \
-			-o -iname '*wosign*' \
-			\) -printf '%P removed; see https://bugs.gentoo.org/598072 for details\n' -delete)"
 	fi
 
 	(
