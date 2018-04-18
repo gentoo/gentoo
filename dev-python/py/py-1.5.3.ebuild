@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc test"
 
 RDEPEND=""
@@ -22,7 +22,7 @@ DEPEND="
 	test? ( >=dev-python/pytest-2.4.2[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.4.34-skip-broken-pytest3.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.5.2-skip-apiwarn-pytest31.patch )
 
 python_prepare_all() {
 	sed -e 's:intersphinx_mapping:#&:' -i doc/conf.py || die
