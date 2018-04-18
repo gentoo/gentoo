@@ -593,12 +593,6 @@ media-libs/libdvdplay
 # Masked for removal in 30 days. Bug #648560
 media-video/aacskeys
 
-# Michael Palimaka <kensington@gentoo.org> (22 Feb 2018)
-# Plugin for removed package media-sound/amarok. Dead upstream.
-# Depends on vulnerable gstreamer:0.10.
-# Masked for removal in 30 days. Bug #629184.
-media-sound/moodbar
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
