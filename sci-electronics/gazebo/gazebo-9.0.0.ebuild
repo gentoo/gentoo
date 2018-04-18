@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PATCHES=( "${FILESDIR}/qwt.patch" )
+PATCHES=( "${FILESDIR}/qwt.patch" "${FILESDIR}/ffmpeg4.patch" )
 
 src_configure() {
 	# doesnt build without it
