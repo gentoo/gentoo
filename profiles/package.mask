@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (18 Mar 2018)
+# Breaks consumers most likely because of the following change:
+#   * Add const to several classes and members
+# See tracker bug #653464
+>=app-text/poppler-0.64.0
+
 # Lars Wendler <polynomial-c@gentoo.org> (17 Apr 2018)
 # Changed output for ELF files, which results in no files (either
 # executables or libraries) being stripped.
