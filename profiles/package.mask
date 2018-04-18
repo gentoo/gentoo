@@ -346,11 +346,6 @@ app-editors/cooledit
 app-mobilephone/ringtonetools
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Dead for a long time, broken with current kernels (#648392). Removal in a
-# month.
-net-dialup/hcfpcimodem
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Not useful anymore without warsow (#648676). Removal in a month.
 games-fps/warsow-community-map-pack
 
