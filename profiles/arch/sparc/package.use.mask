@@ -181,8 +181,8 @@ net-misc/spice-gtk smartcard webdav
 gnome-base/gvfs nfs
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# dev-lang/luajit and dev-lua/lgi and lack sparc keyword, bug #551540
-dev-libs/libpeas lua jit
+# dev-lua/lgi lacks sparc keyword, bug #551540
+dev-libs/libpeas lua
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
