@@ -498,10 +498,6 @@ games-server/cyphesis
 # Not buildable (#627102, #630850). Removal in a month.
 dev-games/crystalspace
 
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Dead for years, nothing needs it (#627464). Removal in a month.
-dev-java/commons-betwixt
-
 # Georgy Yakovlev <ya@sysdump.net> (13 Mar 2018)
 # 1.x version is no longer maintained by upstream
 # 2.x is in the tree and is better in almost every way
