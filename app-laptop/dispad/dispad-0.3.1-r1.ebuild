@@ -16,9 +16,10 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND="x11-libs/libX11
-	x11-libs/libXi
-	dev-libs/confuse"
+DEPEND="
+	dev-libs/confuse
+	x11-libs/libX11
+	x11-libs/libXi"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
