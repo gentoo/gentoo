@@ -66,10 +66,6 @@ dev-qt/qtwebkit webchannel
 # missing keywords
 media-sound/audacity midi soundtouch
 
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# dev-lang/luajit lack ppc64 keyword, bug #551540
-dev-libs/libpeas jit
-
 # Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
