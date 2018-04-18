@@ -111,8 +111,7 @@ media-libs/opencv vtk
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=lua requires dev-lua/lgi that is not keyworded yet.
-# USE=lua,jit required dev-lang/luajit that is not keyworded yet.
-dev-libs/libpeas lua jit
+dev-libs/libpeas lua
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires dev-libs/efl that is not keyworded.
@@ -275,7 +274,7 @@ net-libs/libpcap bluetooth
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
-xfce-extra/xfce4-taskmanager gksu gtk3
+xfce-extra/xfce4-taskmanager gtk3
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
 
