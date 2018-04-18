@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (18 Apr 2018)
+# sci-mathematics/glpk is not keyworded on alpha anymore
+dev-libs/ppl lpsol
+sci-libs/pastix starpu
+
 # Tobias Klausmann <klausman@gentoo.org> (22 Mar 2018)
 # Masked due to missing deps. Some *could* have their deps keyworded,
 # but we're trying to keep the maintenance load low.
