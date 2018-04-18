@@ -112,7 +112,6 @@ games-fps/ut2004-demo
 games-misc/little-inferno
 games-puzzle/hoh-bin
 games-roguelike/adom
-<games-roguelike/dwarf-fortress-0.43.0
 games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
 games-rpg/eschalon-book-1-demo
