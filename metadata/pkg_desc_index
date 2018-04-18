@@ -2874,7 +2874,7 @@ dev-lang/ocaml 4.04.2: Type-inferring functional programming language descended 
 dev-lang/orc 0.4.27 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3 5.24.3-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.33 5.6.34 5.6.35-r1 7.0.27 7.0.28 7.0.29 7.1.13 7.1.15 7.1.16: The PHP language runtime engine
-dev-lang/python 2.7.14-r1 3.4.5-r1 3.5.4-r1 3.6.3-r1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.14-r1 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0-r1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/ruby 2.2.9 2.2.10 2.3.6 2.3.7: An object-oriented scripting language
