@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Layer Four Traceroute (LFT) and WhoB"
 HOMEPAGE="http://pwhois.org/lft/"
-SRC_URI="http://pwhois.org/get/${P}.tar.gz"
+SRC_URI="http://pwhois.org/get/${P/0}.tar.gz"
 
 LICENSE="VOSTROM"
 SLOT="0"
@@ -17,6 +17,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+S=${WORKDIR}/${P/0}
 
 DOCS=( CHANGELOG README TODO )
 
