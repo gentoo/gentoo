@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils games
 
 DESCRIPTION="Help poor Monkey navigate his way down through treacherous areas"
-HOMEPAGE="http://www.aelius.com/primateplunge/"
-SRC_URI="http://www.aelius.com/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.aelius.com/primateplunge/"
+SRC_URI="https://www.aelius.com/${PN}/${P}.tar.gz"
 
 LICENSE="Primate-Plunge"
 SLOT="0"
