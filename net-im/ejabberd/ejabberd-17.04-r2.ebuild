@@ -5,7 +5,7 @@ EAPI=6
 
 SSL_CERT_MANDATORY=1
 
-inherit eutils pam rebar ssl-cert systemd
+inherit autotools eutils pam rebar ssl-cert systemd
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="https://www.ejabberd.im/ https://github.com/processone/ejabberd/"
@@ -228,6 +228,11 @@ src_prepare() {
 	sed -e "s|\(ERL_LIBS=\){{libdir}}.*|\1${ejabberd_erl_libs}|" \
 		-i "${S}/ejabberdctl.template" \
 		|| die 'failed to set ERL_LIBS in ejabberdctl.template'
+
+	# https://github.com/processone/ejabberd/commit/58110e4bc152100078dbc0cb66d4a5257ae645e0,
+	# bug #651932, drop in next version
+	sed -i -e 's/REQUIRE_ERLANG_MAX="9.0.0 (No Max)"/REQUIRE_ERLANG_MAX="100.0.0 (No Max)"/' configure.ac || die
+	eautoreconf
 }
 
 src_configure() {

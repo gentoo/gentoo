@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
+
 inherit autotools
 
 DESCRIPTION="Daemon to disable trackpads while typing"
@@ -15,11 +16,13 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND="x11-libs/libX11
-	x11-libs/libXi
-	dev-libs/confuse"
+DEPEND="
+	dev-libs/confuse
+	x11-libs/libX11
+	x11-libs/libXi"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	eautoreconf -i
 }

@@ -1,10 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# TODO: convert FusionSound #484250
-
 EAPI=6
-inherit autotools flag-o-matic toolchain-funcs ltprune multilib-minimal
+inherit autotools flag-o-matic ltprune toolchain-funcs multilib-minimal
 
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
@@ -15,10 +13,9 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="cpu_flags_x86_3dnow alsa altivec custom-cflags dbus fusionsound gles haptic +joystick cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video wayland X xinerama xscreensaver"
+IUSE="cpu_flags_x86_3dnow alsa altivec custom-cflags dbus gles haptic libsamplerate +joystick cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
-	fusionsound? ( sound )
 	gles? ( video )
 	nas? ( sound )
 	opengl? ( video )
@@ -30,9 +27,11 @@ REQUIRED_USE="
 RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	fusionsound? ( >=dev-libs/DirectFB-1.7.1[fusionsound] )
 	gles? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
-	nas? ( >=media-libs/nas-1.9.4[${MULTILIB_USEDEP}] )
+	libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
+	nas? (
+		>=media-libs/nas-1.9.4[${MULTILIB_USEDEP}]
+		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
 	opengl? (
 		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 		>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
@@ -51,7 +50,6 @@ RDEPEND="
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXrandr-1.4.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
 		>=x11-libs/libXxf86vm-1.1.3[${MULTILIB_USEDEP}]
 		xinerama? ( >=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}] )
 		xscreensaver? ( >=x11-libs/libXScrnSaver-1.2.2-r1[${MULTILIB_USEDEP}] )
@@ -115,6 +113,7 @@ multilib_src_configure() {
 		$(use_enable pulseaudio)
 		--disable-pulseaudio-shared
 		--disable-arts
+		$(use_enable libsamplerate)
 		$(use_enable nas)
 		--disable-nas-shared
 		--disable-sndio
@@ -136,7 +135,7 @@ multilib_src_configure() {
 		$(use_enable X video-x11-vm)
 		--disable-video-cocoa
 		--disable-video-directfb
-		$(multilib_native_use_enable fusionsound)
+		--disable-fusionsound
 		--disable-fusionsound-shared
 		$(use_enable video video-dummy)
 		$(use_enable opengl video-opengl)
