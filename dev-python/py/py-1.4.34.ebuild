@@ -22,6 +22,8 @@ DEPEND="
 	test? ( >=dev-python/pytest-2.4.2[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.4.34-skip-broken-pytest3.patch )
+
 python_prepare_all() {
 	sed -e 's:intersphinx_mapping:#&:' -i doc/conf.py || die
 	distutils-r1_python_prepare_all
