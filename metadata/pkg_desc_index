@@ -7144,7 +7144,7 @@ media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
 media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
 media-fonts/tibetan-machine-font 1.901: Fonts for the Tibetan and Himalayan languages
 media-fonts/ttf-bitstream-vera 1.10-r3: Bitstream Vera font family
-media-fonts/ubuntu-font-family 0.80 0.83-r1: A set of matching libre/open fonts funded by Canonical
+media-fonts/ubuntu-font-family 0.83-r1: A set of matching libre/open fonts funded by Canonical
 media-fonts/umeplus-fonts 20130511 20131109 20160402: UmePlus fonts are modified Ume and M+ fonts for Japanese
 media-fonts/unfonts 1.0.2_pre080608-r1: Korean Un fonts collection
 media-fonts/unfonts-extra 1.0.2_pre080608-r1: Korean Un fonts extras collection
@@ -9346,7 +9346,7 @@ sci-mathematics/flint 2.4.4-r1: Fast Library for Number Theory
 sci-mathematics/frobby 0.9.0-r2: Software system and project for computations with monomial ideals
 sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ginac 1.6.6: C++ library and tools for symbolic calculations
-sci-mathematics/glpk 4.45 4.63: GNU Linear Programming Kit
+sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/jags 3.4.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
