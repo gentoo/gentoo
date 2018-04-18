@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,8 +25,7 @@ HOMEPAGE="http://www.kismetwireless.net/"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-#IUSE="+client +pcre speech +plugin-autowep +plugin-btscan plugin-dot15d4 +plugin-ptw +plugin-spectools +plugin-syslog selinux +suid"
-IUSE="+client +pcre speech selinux +suid"
+IUSE="+pcre speech selinux +suid"
 
 CDEPEND="
 	net-misc/networkmanager:=
@@ -39,9 +38,10 @@ CDEPEND="
 			dev-libs/libnl:3
 			net-libs/libpcap
 			)
+	dev-libs/protobuf-c:=
+	sys-libs/ncurses:=
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
-	client? ( sys-libs/ncurses:0= )
 	!arm? ( speech? ( app-accessibility/flite ) )
 	"
 	#plugin-btscan? ( net-wireless/bluez )
@@ -58,7 +58,7 @@ RDEPEND="${CDEPEND}
 
 src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
-		conf/kismet.conf.in
+		conf/kismet_logging.conf || die
 
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
@@ -70,8 +70,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable client) \
-		$(use_enable pcre)
+		$(use_enable pcre) \
+		--disable-python-tools
 }
 
 src_compile() {
@@ -159,14 +159,14 @@ src_install() {
 pkg_preinst() {
 	if use suid; then
 		enewgroup kismet
-		fowners root:kismet /usr/bin/kismet_capture_tools/kismet_cap_linux_bluetooth
-		fowners root:kismet /usr/bin/kismet_capture_tools/kismet_cap_linux_wifi
-		fowners root:kismet /usr/bin/kismet_capture_tools/kismet_cap_pcapfile
+		fowners root:kismet /usr/bin/kismet_cap_linux_bluetooth
+		fowners root:kismet /usr/bin/kismet_cap_linux_wifi
+		fowners root:kismet /usr/bin/kismet_cap_pcapfile
 		# Need to set the permissions after chowning.
 		# See chown(2)
-		fperms 4550 /usr/bin/kismet_capture_tools/kismet_cap_linux_bluetooth
-		fperms 4550 /usr/bin/kismet_capture_tools/kismet_cap_linux_wifi
-		fperms 4550 /usr/bin/kismet_capture_tools/kismet_cap_pcapfile
+		fperms 4550 /usr/bin/kismet_cap_linux_bluetooth
+		fperms 4550 /usr/bin/kismet_cap_linux_wifi
+		fperms 4550 /usr/bin/kismet_cap_pcapfile
 		elog "Kismet has been installed with a setuid-root helper binary"
 		elog "to enable minimal-root operation.  Users need to be part of"
 		elog "the 'kismet' group to perform captures from physical devices."
