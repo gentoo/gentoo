@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,6 +34,7 @@ DEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/test-for-argp.patch
 	"${FILESDIR}"/${PN}-5-fix-textrels-on-PIC-x86.patch #469962
+	"${FILESDIR}"/${PN}-6.1-fix-nistbeacon-validation-on-x86.patch
 )
 
 src_prepare() {
