@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 		e2fsprogs? ( sys-fs/e2fsprogs )
 	)"
 
+PATCHES=(
+    "${FILESDIR}"/${PN}-3.3.2-libressl.patch
+)
+
 # Various test problems, starting with the fact that sandbox
 # explodes on long paths. https://bugs.gentoo.org/598806
 RESTRICT="test"
