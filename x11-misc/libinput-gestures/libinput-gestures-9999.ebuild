@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 inherit git-r3 python-single-r1
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
-HOMEPAGE="https://github.com/bulletmark/${PN}"
+HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
 EGIT_REPO_URI="https://github.com/bulletmark/${PN}.git"
 SRC_URI=""
 
