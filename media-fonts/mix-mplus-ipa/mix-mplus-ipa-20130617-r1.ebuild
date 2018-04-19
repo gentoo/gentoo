@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 inherit font
 
 MY_PV="${PV/_p/-}"
@@ -31,5 +31,6 @@ DEPEND="app-arch/unzip"
 RDEPEND=""
 
 src_prepare() {
+	default
 	mv */*.${FONT_SUFFIX} "${FONT_S}" || die
 }

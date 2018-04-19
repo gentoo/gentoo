@@ -27,9 +27,6 @@ DEPEND="cuda? ( dev-util/nvidia-cuda-toolkit )
 	ssl? ( dev-libs/openssl:0= )
 	webserver? ( net-libs/libmicrohttpd )"
 RDEPEND="${DEPEND}"
-PATCHES=(
-	"${FILESDIR}/${PN}-2.4.2-fix-paths.patch"
-)
 
 src_prepare() {
 	cmake-utils_src_prepare
