@@ -2261,6 +2261,7 @@ kde-apps/ktp-text-ui:speech - Enable incoming messages to be read out using text
 kde-apps/kwave:opus - Enable Opus audio codec support
 kde-apps/kwave:qtmedia - Enable playback via Qt5Multimedia
 kde-apps/libkdepim:designer - Build plugins for dev-qt/designer
+kde-apps/libksane:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
 kde-apps/mailcommon:designer - Build plugins for dev-qt/designer
 kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer - Install plugin for dev-qt/designer
