@@ -1,0 +1,45 @@
+From e8d7ea04e39f1209a79c003f3b62c9f1761dec0e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Thu, 19 Apr 2018 05:29:01 -0400
+Subject: [PATCH] rngd_nistbeacon: fix the size of frequency and timestamp on
+ x86_32
+
+The members "frequency" and "timestamp" of struct nist_data_block are
+defined as int and long, respectively. On x86_64, their sizes
+correctly correspond to 4 and 8 bytes. However, on 32-bit x86
+architectures, both int and long are defined as 4 bytes, causing the
+digest verification to fail. Fix it by using uint32_t and uint64_t
+explicitly.
+---
+ rngd_nistbeacon.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/rngd_nistbeacon.c b/rngd_nistbeacon.c
+index fbebc53..eadde39 100644
+--- a/rngd_nistbeacon.c
++++ b/rngd_nistbeacon.c
+@@ -97,8 +97,8 @@ BIO *bfp;
+ 
+ struct nist_data_block {
+ 	char *version;
+-	int frequency;
+-	long timestamp;
++	uint32_t frequency;
++	uint64_t timestamp;
+ 	char *seedvalue;
+ 	size_t seedvaluelen;
+ 	char *previoushash;
+@@ -355,8 +355,8 @@ static int validate_nist_block()
+ 
+ 
+ 	EVP_VerifyUpdate(mdctx, block.version, strlen(block.version));
+-	EVP_VerifyUpdate(mdctx, &block.frequency, sizeof(int));
+-	EVP_VerifyUpdate(mdctx, &block.timestamp, sizeof(long));
++	EVP_VerifyUpdate(mdctx, &block.frequency, sizeof(uint32_t));
++	EVP_VerifyUpdate(mdctx, &block.timestamp, sizeof(uint64_t));
+ 	EVP_VerifyUpdate(mdctx, block.seedvalue, block.seedvaluelen);
+ 	EVP_VerifyUpdate(mdctx, block.previoushash, block.previoushashlen);
+ 	EVP_VerifyUpdate(mdctx, &block.errorcode, block.errorcodelen);
+-- 
+2.13.6
+
