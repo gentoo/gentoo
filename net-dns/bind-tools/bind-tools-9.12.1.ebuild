@@ -67,6 +67,7 @@ src_configure() {
 		myconf="${myconf} --with-randomdev=/dev/random"
 	fi
 
+	# bug 607400
 	if use libedit ; then
 		myconf+=' --with-readline=-ledit'
 	elif use readline ; then
