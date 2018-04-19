@@ -1,0 +1,13 @@
+--- Python-3.6.1.orig/Makefile.pre.in	2017-08-19 18:35:19.000000000 +0200
++++ Python-3.6.1/Makefile.pre.in	2017-08-19 21:02:47.989030137 +0200
+@@ -1406,8 +1406,8 @@
+ # pkgconfig directory
+ LIBPC=		$(LIBDIR)/pkgconfig
+ 
+-libainstall:	all python-config
+-	@for i in $(LIBDIR) $(LIBPL) $(LIBPC); \
++libainstall:	python-config
++	@for i in $(LIBDIR) $(LIBPL) $(LIBPC) $(BINDIR); \
+ 	do \
+ 		if test ! -d $(DESTDIR)$$i; then \
+ 			echo "Creating directory $$i"; \
