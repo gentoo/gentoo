@@ -12,9 +12,10 @@ SRC_URI="https://getdnsapi.net/releases/${P//./-}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="stubby +getdns_query +getdns_server_mon libressl +idn +unbound libevent libev libuv +threads"
+IUSE="stubby +getdns_query +getdns_server_mon libressl +idn +unbound libevent libev libuv +threads static-libs"
 
 DEPEND="
+	dev-libs/libbsd:=
 	dev-libs/libyaml:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -24,7 +25,10 @@ DEPEND="
 	libev? ( dev-libs/libev:= )
 	libuv? ( dev-libs/libuv:= )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	stubby? ( sys-libs/libcap:= )
+"
 
 src_configure() {
 	econf \
@@ -40,6 +44,7 @@ src_configure() {
 		$(use_with libev) \
 		$(use_with libuv) \
 		$(use_with threads libpthread)
+		$(use_enable static-libs static)
 }
 
 src_install() {
