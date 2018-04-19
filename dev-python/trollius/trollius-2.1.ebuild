@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A port of the Tulip project (asyncio module, PEP3156)"
-HOMEPAGE="https://github.com/haypo/trollius https://pypi.python.org/pypi/trollius/"
+HOMEPAGE="https://github.com/haypo/trollius https://pypi.org/project/trollius/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

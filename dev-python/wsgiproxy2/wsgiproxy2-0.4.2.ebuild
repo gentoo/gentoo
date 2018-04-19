@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN="WSGIProxy2"
 
 DESCRIPTION="HTTP proxying tools for WSGI apps"
-HOMEPAGE="https://pypi.python.org/pypi/WSGIProxy2"
+HOMEPAGE="https://pypi.org/project/WSGIProxy2"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip"
 
 LICENSE="MIT"

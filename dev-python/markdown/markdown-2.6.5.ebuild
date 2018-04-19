@@ -13,7 +13,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Python implementation of the markdown markup language"
 HOMEPAGE="
 	http://www.freewisdom.org/projects/python-markdown
-	https://pypi.python.org/pypi/Markdown
+	https://pypi.org/project/Markdown
 	https://pythonhosted.org/Markdown/
 	https://github.com/waylan/Python-Markdown"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"

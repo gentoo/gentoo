@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="QR Code generator on top of PIL"
-HOMEPAGE="https://pypi.python.org/pypi/qrcode"
+HOMEPAGE="https://pypi.org/project/qrcode"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

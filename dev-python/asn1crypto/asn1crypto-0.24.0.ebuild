@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python ASN.1 library with a focus on performance and a pythonic API"
-HOMEPAGE="https://github.com/wbond/asn1crypto/ https://pypi.python.org/pypi/asn1crypto/"
+HOMEPAGE="https://github.com/wbond/asn1crypto/ https://pypi.org/project/asn1crypto/"
 # pypi tarball does not have tests
 SRC_URI="https://github.com/wbond/asn1crypto/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 

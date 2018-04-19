@@ -10,7 +10,7 @@ MY_PN="Flask-Evolution"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple migrations for Flask/SQLAlchemy projects"
-HOMEPAGE="https://pypi.python.org/pypi/Flask-Evolution"
+HOMEPAGE="https://pypi.org/project/Flask-Evolution"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

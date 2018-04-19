@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="doc fax +hpcups hpijs kde libressl -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 
 # dependency on dev-python/notify-python dropped due to python 3 incompatibility
-# possible replacement notify2 (https://pypi.python.org/pypi/notify2/0.3) not in tree
+# possible replacement notify2 (https://pypi.org/project/notify2/0.3) not in tree
 
 COMMON_DEPEND="
 	net-print/cups

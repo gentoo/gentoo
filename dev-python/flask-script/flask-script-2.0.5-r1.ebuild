@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Flask support for writing external scripts"
 HOMEPAGE="https://flask-script.readthedocs.io/en/latest/
 	https://flask-script.readthedocs.io/en/latest/
-	https://pypi.python.org/pypi/Flask-Script"
+	https://pypi.org/project/Flask-Script"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ MY_PN="Flask-WhooshAlchemy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Whoosh extension to Flask/SQLAlchemy"
-HOMEPAGE="https://github.com/gyllstromk/Flask-WhooshAlchemy https://pypi.python.org/pypi/Flask-WhooshAlchemy"
+HOMEPAGE="https://github.com/gyllstromk/Flask-WhooshAlchemy https://pypi.org/project/Flask-WhooshAlchemy"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

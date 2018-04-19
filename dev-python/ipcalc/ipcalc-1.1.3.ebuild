@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="IP subnet calculator"
-HOMEPAGE="https://pypi.python.org/pypi/ipcalc/"
+HOMEPAGE="https://pypi.org/project/ipcalc/"
 SRC_URI="mirror://pypi/i/${PN}/${P}.tar.gz"
 
 SLOT="0"

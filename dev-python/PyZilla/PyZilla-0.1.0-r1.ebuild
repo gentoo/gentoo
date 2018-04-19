@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python wrapper for the BugZilla XML-RPC API"
-HOMEPAGE="https://pypi.python.org/pypi/PyZilla"
+HOMEPAGE="https://pypi.org/project/PyZilla"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

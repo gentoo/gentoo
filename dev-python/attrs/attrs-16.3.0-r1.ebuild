@@ -11,7 +11,7 @@ DESCRIPTION="Attributes without boilerplate"
 HOMEPAGE="
 	https://github.com/hynek/attrs
 	https://attrs.readthedocs.org/
-	https://pypi.python.org/pypi/attrs"
+	https://pypi.org/project/attrs"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

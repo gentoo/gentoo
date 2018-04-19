@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A nose plugin to show skipped tests and their messages"
 HOMEPAGE="https://github.com/cpcloud/nose-show-skipped
-	https://pypi.python.org/pypi/nose-show-skipped"
+	https://pypi.org/project/nose-show-skipped"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

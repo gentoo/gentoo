@@ -10,7 +10,7 @@ MY_PN="Embedly"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python Library for Embedly"
-HOMEPAGE="https://github.com/embedly/embedly-python/ https://pypi.python.org/pypi/Embedly"
+HOMEPAGE="https://github.com/embedly/embedly-python/ https://pypi.org/project/Embedly"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

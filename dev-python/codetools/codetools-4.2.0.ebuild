@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Enthought Tool Suite: Code analysis and execution tools"
 HOMEPAGE="http://docs.enthought.com/codetools/
 	https://github.com/enthought/codetools
-	https://pypi.python.org/pypi/codetools"
+	https://pypi.org/project/codetools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 IUSE="test"

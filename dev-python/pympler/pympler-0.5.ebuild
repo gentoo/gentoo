@@ -11,7 +11,7 @@ MY_PN="Pympler"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Memory profiling for Python applications"
-HOMEPAGE="https://pypi.python.org/pypi/Pympler https://github.com/pympler/pympler"
+HOMEPAGE="https://pypi.org/project/Pympler https://github.com/pympler/pympler"
 SRC_URI="https://github.com/pympler/pympler/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # The PyPi tarball is missing the documentation
 #SRC_URI="mirror://pypi/P/${MY_PN}/${MY_P}.tar.gz"

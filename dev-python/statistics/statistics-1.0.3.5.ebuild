@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Python 2.* port of 3.4 Statistics Module"
 HOMEPAGE="https://github.com/digitalemagine/py-statistics
-	https://pypi.python.org/pypi/statistics"
+	https://pypi.org/project/statistics"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

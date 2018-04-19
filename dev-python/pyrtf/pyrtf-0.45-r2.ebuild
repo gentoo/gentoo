@@ -11,7 +11,7 @@ MY_PN="PyRTF"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python library to produce RTF documents"
-HOMEPAGE="http://pyrtf.sourceforge.net https://pypi.python.org/pypi/PyRTF"
+HOMEPAGE="http://pyrtf.sourceforge.net https://pypi.org/project/PyRTF"
 SRC_URI="mirror://sourceforge/$PN/${MY_P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-2 )"

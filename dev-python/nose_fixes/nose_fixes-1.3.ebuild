@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A plugin to make nose behave better"
-HOMEPAGE="https://pythonhosted.org/nose_fixes/ https://pypi.python.org/pypi/nose_fixes/"
+HOMEPAGE="https://pythonhosted.org/nose_fixes/ https://pypi.org/project/nose_fixes/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
-HOMEPAGE="https://pypi.python.org/pypi/pyldap https://github.com/pyldap/pyldap/"
+HOMEPAGE="https://pypi.org/project/pyldap https://github.com/pyldap/pyldap/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"
