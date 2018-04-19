@@ -11,6 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
+IUSE="static-libs"
 
 RDEPEND=">=dev-libs/openssl-1:0="
 DEPEND="${RDEPEND}
@@ -52,4 +53,8 @@ src_install() {
 
 	# Init scripts are only for Fedora
 	rm -r "${ED%/}"/etc/init.d || die 'remove initscripts failed'
+
+	if ! use static-libs ; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 }
