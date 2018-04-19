@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 inherit python-single-r1
 
 DESCRIPTION="Actions gestures on your touchpad using libinput"
-HOMEPAGE="https://github.com/bulletmark/${PN}"
+HOMEPAGE="https://github.com/bulletmark/libinput-gestures"
 SRC_URI="https://github.com/bulletmark/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
