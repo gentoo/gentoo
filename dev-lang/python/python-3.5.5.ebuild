@@ -75,6 +75,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
 	epatch "${FILESDIR}/3.6-disable-nis.patch"
 	epatch "${FILESDIR}/python-3.5.5-libressl-compatibility.patch"
+	epatch "${FILESDIR}/python-3.5.5-hash-unaligned.patch"
 
 	epatch_user
 
