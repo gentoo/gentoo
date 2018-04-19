@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug ffmpeg imagemagick opengl qt5 +sdl"
+IUSE="debug ffmpeg imagemagick libav opengl qt5 +sdl"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
 
@@ -20,7 +20,10 @@ RDEPEND="
 	dev-db/sqlite:3
 	media-libs/libpng:0=
 	sys-libs/zlib[minizip]
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		libav? ( media-video/libav:= )
+		!libav? ( media-video/ffmpeg:= )
+	)
 	imagemagick? ( media-gfx/imagemagick:= )
 	opengl? ( virtual/opengl )
 	qt5? (
@@ -45,8 +48,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_GL="$(usex opengl)"
-		-DBUILD_GLES=OFF
 		-DBUILD_PYTHON=OFF
 		-DBUILD_QT="$(usex qt5)"
 		-DBUILD_SDL="$(usex sdl)"
