@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Browser-based user interface for BorgBackup"
-HOMEPAGE="https://pypi.python.org/pypi/borgweb"
+HOMEPAGE="https://pypi.org/project/borgweb"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

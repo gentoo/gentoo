@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A sphinx extension to include jinja based templates into a sphinx doc"
-HOMEPAGE="https://github.com/tardyp/sphinx-jinja https://pypi.python.org/pypi/sphinx-jinja"
+HOMEPAGE="https://github.com/tardyp/sphinx-jinja https://pypi.org/project/sphinx-jinja"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings to libsensors (via ctypes)"
-HOMEPAGE="https://pypi.python.org/pypi/PySensors/"
+HOMEPAGE="https://pypi.org/project/PySensors/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="py.test plugin to catch log messages, fork of pytest-capturelog"
-HOMEPAGE="https://pypi.python.org/pypi/pytest-catchlog https://github.com/eisensheng/pytest-catchlog"
+HOMEPAGE="https://pypi.org/project/pytest-catchlog https://github.com/eisensheng/pytest-catchlog"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 SLOT="0"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="Incremental is a small library that versions your Python projects"
-HOMEPAGE="https://github.com/hawkowl/incremental https://pypi.python.org/pypi/incremental"
+HOMEPAGE="https://github.com/hawkowl/incremental https://pypi.org/project/incremental"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

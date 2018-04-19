@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_P="Genshi-${PV}"
 
 DESCRIPTION="Python toolkit for stream-based generation of output for the web"
-HOMEPAGE="http://genshi.edgewall.org/ https://pypi.python.org/pypi/Genshi"
+HOMEPAGE="http://genshi.edgewall.org/ https://pypi.org/project/Genshi"
 SRC_URI="http://ftp.edgewall.com/pub/genshi/${MY_P}.tar.gz"
 
 LICENSE="BSD"

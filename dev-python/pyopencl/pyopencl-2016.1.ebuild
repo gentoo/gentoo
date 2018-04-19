@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python wrapper for OpenCL"
 HOMEPAGE="https://mathema.tician.de/software/pyopencl
-	https://pypi.python.org/pypi/pyopencl"
+	https://pypi.org/project/pyopencl"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

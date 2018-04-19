@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Distribution utilities"
-HOMEPAGE="https://pypi.python.org/pypi/distlib https://bitbucket.org/vinay.sajip/distlib https://github.com/vsajip/distlib"
+HOMEPAGE="https://pypi.org/project/distlib https://bitbucket.org/vinay.sajip/distlib https://github.com/vsajip/distlib"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 SLOT="0"

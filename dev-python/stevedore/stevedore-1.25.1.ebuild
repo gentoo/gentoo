@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Manage dynamic plugins for Python applications"
-HOMEPAGE="https://github.com/openstack/stevedore https://pypi.python.org/pypi/stevedore"
+HOMEPAGE="https://github.com/openstack/stevedore https://pypi.org/project/stevedore"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

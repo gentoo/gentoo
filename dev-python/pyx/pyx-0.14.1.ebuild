@@ -9,7 +9,7 @@ MY_PN=PyX
 MY_P="${P/pyx/PyX}"
 DESCRIPTION="Python package for the generation of encapsulated PostScript figures"
 HOMEPAGE="https://pyx.sourceforge.net/
-	https://pypi.python.org/pypi/PyX/"
+	https://pypi.org/project/PyX/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

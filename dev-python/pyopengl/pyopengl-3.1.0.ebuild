@@ -11,7 +11,7 @@ MY_PN="PyOpenGL"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python OpenGL bindings"
-HOMEPAGE="http://pyopengl.sourceforge.net/ https://pypi.python.org/pypi/PyOpenGL"
+HOMEPAGE="http://pyopengl.sourceforge.net/ https://pypi.org/project/PyOpenGL"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 #	mirror://sourceforge/pyopengl/${MY_P}.tar.gz" # broken mirror for this release
 LICENSE="BSD"

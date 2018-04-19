@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Get CPU info with pure Python 2 & 3"
-HOMEPAGE="https://github.com/workhorsy/py-cpuinfo https://pypi.python.org/pypi/py-cpuinfo"
+HOMEPAGE="https://github.com/workhorsy/py-cpuinfo https://pypi.org/project/py-cpuinfo"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

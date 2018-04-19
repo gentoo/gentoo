@@ -9,7 +9,7 @@ PYTHON_REQ_USE='xml(+)'
 inherit distutils-r1
 
 DESCRIPTION="Python video metadata parser"
-HOMEPAGE="https://github.com/Diaoul/enzyme https://pypi.python.org/pypi/enzyme"
+HOMEPAGE="https://github.com/Diaoul/enzyme https://pypi.org/project/enzyme"
 SRC_URI="
 	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )

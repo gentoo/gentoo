@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Pidfile featuring stale detection and file-locking"
-HOMEPAGE="https://pypi.python.org/pypi/pid https://github.com/trbs/pid/"
+HOMEPAGE="https://pypi.org/project/pid https://github.com/trbs/pid/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

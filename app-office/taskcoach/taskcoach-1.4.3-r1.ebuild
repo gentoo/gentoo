@@ -10,7 +10,7 @@ MY_PN="TaskCoach"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple personal tasks and todo lists manager"
-HOMEPAGE="http://www.taskcoach.org https://pypi.python.org/pypi/TaskCoach"
+HOMEPAGE="http://www.taskcoach.org https://pypi.org/project/TaskCoach"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 

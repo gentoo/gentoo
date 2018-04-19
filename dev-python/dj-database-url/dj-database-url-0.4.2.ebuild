@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Use Database URLs in your Django Application"
 HOMEPAGE="
-	https://pypi.python.org/pypi/dj-database-url
+	https://pypi.org/project/dj-database-url
 	https://github.com/kennethreitz/dj-database-url"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

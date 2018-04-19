@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="OGR's neat, nimble, no-nonsense API"
-HOMEPAGE="https://pypi.python.org/pypi/Fiona"
+HOMEPAGE="https://pypi.org/project/Fiona"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

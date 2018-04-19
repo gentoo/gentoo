@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Meta package for the Enthought Tool Suite"
-HOMEPAGE="https://pypi.python.org/pypi/ets
+HOMEPAGE="https://pypi.org/project/ets
 	https://github.com/enthought/ets"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

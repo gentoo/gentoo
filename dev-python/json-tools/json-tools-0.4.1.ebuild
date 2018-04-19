@@ -11,7 +11,7 @@ MY_PN="json_tools"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A set of tools to manipulate JSON: diff, patch, and pretty-printing"
-HOMEPAGE="https://pypi.python.org/pypi/json_tools https://bitbucket.org/vadim_semenov/json_tools"
+HOMEPAGE="https://pypi.org/project/json_tools https://bitbucket.org/vadim_semenov/json_tools"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

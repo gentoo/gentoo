@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Interface to OpenMarket's FastCGI C Library/SDK"
-HOMEPAGE="https://pypi.python.org/pypi/python-fastcgi"
+HOMEPAGE="https://pypi.org/project/python-fastcgi"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

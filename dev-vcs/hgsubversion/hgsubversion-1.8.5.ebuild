@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="hgsubversion is a Mercurial extension for working with Subversion repositories"
-HOMEPAGE="https://bitbucket.org/durin42/hgsubversion/wiki/Home https://pypi.python.org/pypi/hgsubversion"
+HOMEPAGE="https://bitbucket.org/durin42/hgsubversion/wiki/Home https://pypi.org/project/hgsubversion"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

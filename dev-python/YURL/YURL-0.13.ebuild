@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Yurl is the replacement of built in python urlparse module"
-HOMEPAGE="https://pypi.python.org/pypi/YURL"
+HOMEPAGE="https://pypi.org/project/YURL"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

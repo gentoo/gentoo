@@ -11,7 +11,7 @@ MY_PN="PasteScript"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A pluggable command-line frontend, including commands to setup package file layouts"
-HOMEPAGE="https://pypi.python.org/pypi/PasteScript"
+HOMEPAGE="https://pypi.org/project/PasteScript"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

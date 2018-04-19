@@ -12,7 +12,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 DESCRIPTION="RDF library containing a triple store and parser/serializer"
-HOMEPAGE="https://github.com/RDFLib/rdflib https://pypi.python.org/pypi/rdflib"
+HOMEPAGE="https://github.com/RDFLib/rdflib https://pypi.org/project/rdflib"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

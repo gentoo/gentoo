@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="tool to manage multiple virtualenvs written in pure python"
 HOMEPAGE="
 	https://github.com/berdario/pew
-	https://pypi.python.org/pypi/pew"
+	https://pypi.org/project/pew"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

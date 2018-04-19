@@ -10,7 +10,7 @@ MYPN="Automat"
 MYP="${MYPN}-${PV}"
 
 DESCRIPTION="Self-service finite-state machines for the programmer on the go"
-HOMEPAGE="https://github.com/glyph/automat https://pypi.python.org/pypi/Automat"
+HOMEPAGE="https://github.com/glyph/automat https://pypi.org/project/Automat"
 SRC_URI="mirror://pypi/${MYPN:0:1}/${MYPN}/${MYP}.tar.gz"
 
 LICENSE="MIT"

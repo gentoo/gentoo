@@ -9,7 +9,7 @@ inherit distutils-r1
 RESTRICT="test" # broken
 
 DESCRIPTION="Flask integration layer for the Peewee ORM"
-HOMEPAGE="https://pypi.python.org/pypi/Flask-Admin"
+HOMEPAGE="https://pypi.org/project/Flask-Admin"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://git.tiker.net/trees/pyopencl.git"
 
 DESCRIPTION="Python wrapper for OpenCL"
 HOMEPAGE="https://mathema.tician.de/software/pyopencl
-	https://pypi.python.org/pypi/pyopencl"
+	https://pypi.org/project/pyopencl"
 SRC_URI=""
 
 LICENSE="GPL-2"

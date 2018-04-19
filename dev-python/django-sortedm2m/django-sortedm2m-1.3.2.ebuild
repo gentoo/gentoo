@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Drop-in replacement for django's many to many field with sorted relations"
-HOMEPAGE="https://pypi.python.org/pypi/django-sortedm2m"
+HOMEPAGE="https://pypi.org/project/django-sortedm2m"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

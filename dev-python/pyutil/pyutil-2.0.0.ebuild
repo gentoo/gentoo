@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A collection of utilities for Python programmers"
-HOMEPAGE="https://tahoe-lafs.org/trac/pyutil https://pypi.python.org/pypi/pyutil"
+HOMEPAGE="https://tahoe-lafs.org/trac/pyutil https://pypi.org/project/pyutil"
 SRC_URI="mirror://pypi/p/pyutil/pyutil-${PV}.tar.gz"
 
 LICENSE="GPL-2+"

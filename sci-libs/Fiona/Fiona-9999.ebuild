@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="OGR's neat, nimble, no-nonsense API"
-HOMEPAGE="https://pypi.python.org/pypi/Fiona"
+HOMEPAGE="https://pypi.org/project/Fiona"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/Toblerity/${PN}.git"
 

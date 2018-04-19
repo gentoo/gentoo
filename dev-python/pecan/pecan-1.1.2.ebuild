@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="A WSGI object-dispatching web framework,  lean, fast, with few dependencies."
-HOMEPAGE="https://pypi.python.org/pypi/pecan"
+HOMEPAGE="https://pypi.org/project/pecan"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

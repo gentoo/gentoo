@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="VPython for Jupyter notebook"
-HOMEPAGE="http://www.vpython.org/ https://pypi.python.org/pypi/vpython/"
+HOMEPAGE="http://www.vpython.org/ https://pypi.org/project/vpython/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 DEPEND="dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/versioneer[${PYTHON_USEDEP}]

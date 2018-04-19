@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Replacement for bz2.BZ2File with features from newest CPython"
-HOMEPAGE="https://pypi.python.org/pypi/bz2file https://github.com/nvawda/bz2file"
+HOMEPAGE="https://pypi.org/project/bz2file https://github.com/nvawda/bz2file"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

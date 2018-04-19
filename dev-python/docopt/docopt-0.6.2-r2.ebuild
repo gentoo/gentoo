@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Pythonic argument parser, that will make you smile"
-HOMEPAGE="https://pypi.python.org/pypi/docopt https://github.com/docopt/docopt"
+HOMEPAGE="https://pypi.org/project/docopt https://github.com/docopt/docopt"
 SRC_URI="
 	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	https://github.com/docopt/docopt/archive/${PV}.tar.gz -> ${P}.tar.gz"

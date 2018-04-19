@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Collection of extensions to Distutils"
-HOMEPAGE="https://github.com/pypa/setuptools https://pypi.python.org/pypi/setuptools"
+HOMEPAGE="https://github.com/pypa/setuptools https://pypi.org/project/setuptools"
 
 LICENSE="MIT"
 SLOT="0"

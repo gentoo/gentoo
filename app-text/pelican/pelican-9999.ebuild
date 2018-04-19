@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A tool to generate a static blog, with restructured text or markdown input files"
-HOMEPAGE="http://blog.getpelican.com/ https://pypi.python.org/pypi/pelican"
+HOMEPAGE="http://blog.getpelican.com/ https://pypi.org/project/pelican"
 EGIT_REPO_URI="https://github.com/getpelican/pelican.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${P}"
 

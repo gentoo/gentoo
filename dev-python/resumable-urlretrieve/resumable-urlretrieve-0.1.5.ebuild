@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Small library to fetch files over HTTP and resuming their download"
 HOMEPAGE="
 	https://github.com/berdario/resumable-urlretrieve
-	https://pypi.python.org/pypi/resumable-urlretrieve"
+	https://pypi.org/project/resumable-urlretrieve"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

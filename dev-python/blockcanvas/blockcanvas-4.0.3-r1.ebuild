@@ -10,7 +10,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Enthought Tool Suite: Numerical modeling"
 HOMEPAGE="http://docs.enthought.com/blockcanvas/
 	https://github.com/enthought/blockcanvas
-	https://pypi.python.org/pypi/blockcanvas"
+	https://pypi.org/project/blockcanvas"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

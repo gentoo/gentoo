@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Strip-o-Gram HTML Conversion Library"
-HOMEPAGE="https://pypi.python.org/pypi/stripogram"
+HOMEPAGE="https://pypi.org/project/stripogram"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

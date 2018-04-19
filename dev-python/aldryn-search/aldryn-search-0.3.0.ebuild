@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="An extension to django CMS to provide multilingual Haystack indexes"
-HOMEPAGE="https://pypi.python.org/pypi/aldryn-search"
+HOMEPAGE="https://pypi.org/project/aldryn-search"
 SRC_URI="https://github.com/aldryn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

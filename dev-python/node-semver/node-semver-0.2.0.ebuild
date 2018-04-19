@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python version of node-semver, the semantic versioner for npm"
 HOMEPAGE="
-	https://pypi.python.org/pypi/node-semver
+	https://pypi.org/project/node-semver
 	https://github.com/podhmo/python-semver
 	https://github.com/npm/node-semver"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

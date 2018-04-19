@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_PN="socketIO-client"
 REPO_PN="socketIO_client"
 DESCRIPTION="A socket.io client library for Python"
-HOMEPAGE="https://github.com/invisibleroads/socketIO-client/ https://pypi.python.org/pypi/socketIO-client"
+HOMEPAGE="https://github.com/invisibleroads/socketIO-client/ https://pypi.org/project/socketIO-client"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${REPO_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Python interface to Graphviz's Dot language"
-HOMEPAGE="https://github.com/erocarrera/pydot https://pypi.python.org/pypi/pydot"
+HOMEPAGE="https://github.com/erocarrera/pydot https://pypi.org/project/pydot"
 # pypi releases don't include tests
 SRC_URI="https://github.com/erocarrera/pydot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

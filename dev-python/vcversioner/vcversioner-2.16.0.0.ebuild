@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Use version control tags to discover version numbers"
-HOMEPAGE="https://github.com/habnabit/vcversioner https://pypi.python.org/pypi/vcversioner"
+HOMEPAGE="https://github.com/habnabit/vcversioner https://pypi.org/project/vcversioner"
 SRC_URI="mirror://pypi/v/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

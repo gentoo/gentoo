@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="Symbolic constants in Python"
-HOMEPAGE="https://github.com/twisted/constantly https://pypi.python.org/pypi/constantly"
+HOMEPAGE="https://github.com/twisted/constantly https://pypi.org/project/constantly"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

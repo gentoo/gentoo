@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Will try to get to the bottom of what makes files or directories different"
-HOMEPAGE="https://diffoscope.org/ https://pypi.python.org/pypi/diffoscope/"
+HOMEPAGE="https://diffoscope.org/ https://pypi.org/project/diffoscope/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"

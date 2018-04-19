@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 inherit distutils-r1
 
 DESCRIPTION="BuildBot base web interface, use with buildbot-{console-view,waterfall-view}..."
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-www"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-www"
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"

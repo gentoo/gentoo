@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Friendly state machines for python."
-HOMEPAGE="https://pypi.python.org/pypi/automaton"
+HOMEPAGE="https://pypi.org/project/automaton"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

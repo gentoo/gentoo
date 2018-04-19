@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="Official Python API client for Discogs"
-HOMEPAGE="https://github.com/discogs/discogs_client https://pypi.python.org/pypi/discogs-client"
+HOMEPAGE="https://github.com/discogs/discogs_client https://pypi.org/project/discogs-client"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

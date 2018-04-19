@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Useful miscellaneous modules used by Logilab projects"
-HOMEPAGE="https://www.logilab.org/project/logilab-common https://pypi.python.org/pypi/logilab-common"
+HOMEPAGE="https://www.logilab.org/project/logilab-common https://pypi.org/project/logilab-common"
 SRC_URI="ftp://ftp.logilab.org/pub/common/${P}.tar.gz mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

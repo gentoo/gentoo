@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1
 
-HOMEPAGE="https://pypi.python.org/pypi/requests-kerberos"
+HOMEPAGE="https://pypi.org/project/requests-kerberos"
 DESCRIPTION="A Kerberos authentication handler for python-requests"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 

@@ -14,7 +14,7 @@ fi
 inherit distutils-r1 ${GIT_ECLASS}
 
 DESCRIPTION="Dynamic DNS implementation, that relies on DNSimple.com"
-HOMEPAGE="https://pypi.python.org/pypi/dnsimple-dyndns
+HOMEPAGE="https://pypi.org/project/dnsimple-dyndns
 	https://github.com/rafaelmartins/dnsimple-dyndns"
 
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Message Passing Interface for Python"
-HOMEPAGE="https://bitbucket.org/mpi4py/ https://pypi.python.org/pypi/mpi4py"
+HOMEPAGE="https://bitbucket.org/mpi4py/ https://pypi.org/project/mpi4py"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

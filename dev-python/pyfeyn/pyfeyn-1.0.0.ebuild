@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Python package for drawing Feynman diagrams"
-HOMEPAGE="http://pyfeyn.hepforge.org/ https://pypi.python.org/pypi/pyfeyn/"
+HOMEPAGE="http://pyfeyn.hepforge.org/ https://pypi.org/project/pyfeyn/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"

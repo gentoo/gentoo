@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="${P}-20050316"
 
 DESCRIPTION="A light-weight XML object model for Python"
-HOMEPAGE="http://effbot.org/zone/element-index.htm https://pypi.python.org/pypi/elementtree"
+HOMEPAGE="http://effbot.org/zone/element-index.htm https://pypi.org/project/elementtree"
 SRC_URI="http://effbot.org/downloads/${MY_P}.tar.gz"
 
 LICENSE="ElementTree"

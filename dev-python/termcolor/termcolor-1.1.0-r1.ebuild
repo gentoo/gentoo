@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="ANSII Color formatting for output in terminal"
-HOMEPAGE="https://pypi.python.org/pypi/termcolor"
+HOMEPAGE="https://pypi.org/project/termcolor"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

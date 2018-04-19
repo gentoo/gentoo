@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A Python package for implementing SCGI servers"
-HOMEPAGE="https://pypi.python.org/pypi/scgi http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/"
+HOMEPAGE="https://pypi.org/project/scgi http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/"
 SRC_URI="http://python.ca/scgi/releases/${P}.tar.gz"
 
 LICENSE="CNRI"

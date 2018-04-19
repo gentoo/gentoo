@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Python library for MurmurHash3, fast and robust hash functions."
-HOMEPAGE="https://pypi.python.org/pypi/mmh3"
+HOMEPAGE="https://pypi.org/project/mmh3"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"

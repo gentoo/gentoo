@@ -10,7 +10,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
-	https://pypi.python.org/pypi/nose
+	https://pypi.org/project/nose
 	https://nose.readthedocs.io/en/latest/
 	https://github.com/nose-devs/nose"
 SRC_URI=""

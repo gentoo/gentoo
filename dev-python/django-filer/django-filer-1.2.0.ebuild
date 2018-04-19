@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="File management application for django that makes handling of files and images"
-HOMEPAGE="https://pypi.python.org/pypi/django-filer"
+HOMEPAGE="https://pypi.org/project/django-filer"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

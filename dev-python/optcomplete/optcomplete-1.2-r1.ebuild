@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Shell completion self-generator for Python"
-HOMEPAGE="http://furius.ca/optcomplete/ https://pypi.python.org/pypi/optcomplete"
+HOMEPAGE="http://furius.ca/optcomplete/ https://pypi.org/project/optcomplete"
 SRC_URI="http://furius.ca/downloads/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Allow a different format in dosctrings for better clarity"
-HOMEPAGE="https://pypi.python.org/pypi/sphinxcontrib-napoleon"
+HOMEPAGE="https://pypi.org/project/sphinxcontrib-napoleon"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

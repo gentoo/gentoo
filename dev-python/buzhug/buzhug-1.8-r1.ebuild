@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Fast, pure-Python database engine"
-HOMEPAGE="http://buzhug.sourceforge.net/ https://pypi.python.org/pypi/buzhug"
+HOMEPAGE="http://buzhug.sourceforge.net/ https://pypi.org/project/buzhug"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
 LICENSE="BSD"

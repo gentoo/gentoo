@@ -10,7 +10,7 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python Cryptography Toolkit"
 HOMEPAGE="https://www.dlitz.net/software/pycrypto/
-	https://pypi.python.org/pypi/pycrypto"
+	https://pypi.org/project/pycrypto"
 SRC_URI="http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/${P}.tar.gz"
 
 LICENSE="PSF-2 public-domain"
