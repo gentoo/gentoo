@@ -1,11 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=ILYAZ
-MODULE_SECTION=modules
-MODULE_VERSION=2.01080605
+DIST_AUTHOR=ILYAZ
+DIST_SECTION=modules
+DIST_VERSION=2.01080900
+DIST_A_EXT=zip
 inherit perl-module toolchain-funcs
 
 PARI_VER=2.3.5
@@ -14,21 +15,22 @@ DESCRIPTION="Perl interface to PARI"
 SRC_URI="${SRC_URI}
 	http://pari.math.u-bordeaux.fr/pub/pari/unix/pari-${PARI_VER}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 # Math::Pari requires that a copy of the pari source in a parallel
 # directory to where you build it. It does not need to compile it, but
 # it does need to be the same version as is installed, hence the hard
 # DEPEND below
-RDEPEND="~sci-mathematics/pari-${PARI_VER}"
-DEPEND="${RDEPEND}"
+DEPEND="app-arch/unzip"
 
 S_PARI=${WORKDIR}/pari-${PARI_VER}
-SRC_TEST=do
 
+PATCHES=(
+	"${FILESDIR}/no-flto.patch"
+	"${FILESDIR}/${P}-no-dot-inc.patch"
+)
 src_prepare() {
 	# On 64-bit hardware, these files are needed in both the 64/ and 32/
 	# directories for the testsuite to pass.
@@ -42,6 +44,9 @@ src_prepare() {
 		[ -f "$i" -a ! -f "$o32" ] && cp -al "$i" "$o32"
 		[ -f "$i" -a ! -f "$o64" ] && cp -al "$i" "$o64"
 	done
+	cd "${S_PARI}"
+	eapply "${FILESDIR}/pari-${PARI_VER}-no-dot-inc.patch"
+	cd "${S}"
 	perl-module_src_prepare
 }
 
