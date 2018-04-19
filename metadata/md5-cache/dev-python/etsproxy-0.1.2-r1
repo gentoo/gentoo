@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=!<dev-python/apptools-4 !<dev-python/blockcanvas-4 !<dev-python/chaco-4 !<dev-python/codetools-4 !<dev-python/enable-4 !<dev-python/enthoughtbase-4 !<dev-python/envisagecore-4 !<dev-python/envisageplugins-4 !<dev-python/etsdevtools-4 !<dev-python/etsprojecttools-4 !<dev-python/graphcanvas-4 !<sci-visualization/mayavi-4 !<dev-python/scimath-4 !<dev-python/traits-4 !<dev-python/traitsbackendwx-4 !<dev-python/traitsbackendqt-4 !<dev-python/traitsgui-4 dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Enthought Tool Suite: Proxy modules for backwards compatibility
 EAPI=5
-HOMEPAGE=https://pypi.python.org/pypi/etsproxy
+HOMEPAGE=https://pypi.org/project/etsproxy
 IUSE=python_targets_python2_7
 KEYWORDS=amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://www.enthought.com/repo/ets/etsproxy-0.1.2.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	distutils-r1	c25bafd988acc946bfa457eac09621d8	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	2770eed66a9b8ef944714cd0e968182e	multibuild	72647e255187a1fadc81097b3657e5c3	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	e9350ec46bb5c9f3504b4fbe8b8d8987	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=00dd09885307ab1b997bb8ed74c99567
+_md5_=97a581fed84b34580095bf28ca4b7407

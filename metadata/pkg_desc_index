@@ -7071,7 +7071,7 @@ media-fonts/font-schumacher-misc 1.1.2-r1: X.Org Schumacher fonts
 media-fonts/font-screen-cyrillic 1.0.4-r1: X.Org Screen cyrillic fonts
 media-fonts/font-sony-misc 1.0.3-r1: X.Org Sony fonts
 media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
-media-fonts/font-util 1.3.0 1.3.1: X.Org font utilities
+media-fonts/font-util 1.3.1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
@@ -9088,7 +9088,7 @@ net-wireless/wepattack 0.1.3-r3: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20160502 20160610 20170307 20171223 20171223-r1: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.6-r3: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.6-r3 2.6-r6: IEEE 802.1X/WPA supplicant for secure wireless transfers
 perl-core/ExtUtils-Constant 0.230.0-r1: Generate XS code to import C header constants
 perl-core/File-Path 2.130.0: File path and name utilities
 perl-core/File-Temp 0.230.400-r1: File::Temp can be used to create and open temporary files in a safe way
