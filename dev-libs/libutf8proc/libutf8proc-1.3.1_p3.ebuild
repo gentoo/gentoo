@@ -13,7 +13,7 @@ SRC_URI="${NETSURF_BUILDSYSTEM_SRC_URI}
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc"
 IUSE=""
 
 RDEPEND=""
