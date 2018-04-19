@@ -1,0 +1,60 @@
+From 3e25263d7709524e227207092533397ef65f2c82 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sun, 8 Apr 2018 11:50:18 +0200
+Subject: Use KCrash
+
+---
+ CMakeLists.txt       | 1 +
+ shell/CMakeLists.txt | 2 +-
+ shell/main.cpp       | 3 +++
+ 3 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b38cac..fd2d55e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,6 +53,7 @@ find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS
+     Config
+     ConfigWidgets
+     CoreAddons
++    Crash
+     DocTools
+     IconThemes
+     JS
+diff --git a/shell/CMakeLists.txt b/shell/CMakeLists.txt
+index ec2f1ba..e85076d 100644
+--- a/shell/CMakeLists.txt
++++ b/shell/CMakeLists.txt
+@@ -27,7 +27,7 @@ ecm_add_app_icon(okular_SRCS ICONS ${ICONS_SRCS})
+ 
+ add_executable(okular ${okular_SRCS})
+ 
+-target_link_libraries(okular KF5::Parts KF5::WindowSystem)
++target_link_libraries(okular KF5::Parts KF5::WindowSystem KF5::Crash)
+ 
+ if(NOT WIN32)
+ 	target_link_libraries(okular KF5::Activities)
+diff --git a/shell/main.cpp b/shell/main.cpp
+index 3f8dc43..de8a5c2 100644
+--- a/shell/main.cpp
++++ b/shell/main.cpp
+@@ -20,6 +20,7 @@
+ #include <kwindowsystem.h>
+ #include <QApplication>
+ #include <KAboutData>
++#include <KCrash>
+ #include <KMessageBox>
+ #include <QCommandLineParser>
+ #include <QCommandLineOption>
+@@ -39,6 +40,8 @@ int main(int argc, char** argv)
+     // set icon for shells which do not use desktop file metadata
+     QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("okular")));
+ 
++    KCrash::initialize();
++
+     QCommandLineParser parser;
+     // The KDE4 version accepted flags such as -unique with a single dash -> preserve compatibility
+     parser.setSingleDashWordOptionMode(QCommandLineParser::ParseAsLongOptions);
+-- 
+cgit v0.11.2
+
