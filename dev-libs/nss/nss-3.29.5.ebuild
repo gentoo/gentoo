@@ -27,11 +27,7 @@ DEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	>=dev-libs/nspr-${NSPR_VER}[${MULTILIB_USEDEP}]
 	${CDEPEND}"
 RDEPEND=">=dev-libs/nspr-${NSPR_VER}[${MULTILIB_USEDEP}]
-	${CDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r12
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	${CDEPEND}"
 
 RESTRICT="test"
 

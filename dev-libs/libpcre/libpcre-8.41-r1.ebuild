@@ -35,10 +35,6 @@ DEPEND="
 "
 RDEPEND="
 	${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 "
 
 S="${WORKDIR}/${MY_P}"

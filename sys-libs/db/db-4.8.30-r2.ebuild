@@ -38,11 +38,7 @@ DEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jdk-1.5 )
 	>=sys-devel/binutils-2.16.1"
 RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jre-1.5 )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	java? ( >=virtual/jre-1.5 )"
 
 src_prepare() {
 	cd "${WORKDIR}"/"${MY_P}" || die

@@ -15,11 +15,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x
 IUSE="doc +gmp neon static-libs test cpu_flags_x86_aes"
 
 DEPEND="gmp? ( >=dev-libs/gmp-5.0:0=[${MULTILIB_USEDEP}] )"
-RDEPEND="${DEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r17
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="${DEPEND}"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/nettle/nettle-stdint.h

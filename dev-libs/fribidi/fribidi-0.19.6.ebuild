@@ -18,9 +18,7 @@ IUSE="static-libs"
 
 RESTRICT="test" #397347
 
-RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r10
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

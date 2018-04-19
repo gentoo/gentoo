@@ -18,11 +18,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE="minizip static-libs"
 
 DEPEND="minizip? ( ${AUTOTOOLS_DEPEND} )"
-RDEPEND="abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
-	!<dev-libs/libxml2-2.7.7" #309623
+RDEPEND="!<dev-libs/libxml2-2.7.7" #309623
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.2.11-fix-deflateParams-usage.patch
