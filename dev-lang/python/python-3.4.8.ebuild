@@ -74,6 +74,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.4.5-cross.patch"
 	epatch "${FILESDIR}/3.4-getentropy-linux.patch"
 	epatch "${FILESDIR}/3.6-disable-nis.patch"
+	epatch "${FILESDIR}/python-3.5.5-hash-unaligned.patch"
 
 	epatch_user
 
