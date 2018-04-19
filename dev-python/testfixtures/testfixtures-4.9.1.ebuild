@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A collection of helpers and mock objects for unit tests and doc tests"
-HOMEPAGE="https://pypi.python.org/pypi/testfixtures/ https://github.com/Simplistix/testfixtures"
+HOMEPAGE="https://pypi.org/project/testfixtures/ https://github.com/Simplistix/testfixtures"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python binding for libclamav"
 HOMEPAGE="https://xael.org/norman/python/pyclamav/
-	https://pypi.python.org/pypi/pyclamav"
+	https://pypi.org/project/pyclamav"
 SRC_URI="https://xael.org/norman/python/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

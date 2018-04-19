@@ -9,7 +9,7 @@ inherit distutils-r1
 RESTRICT="test" # requires running MongoDB server
 
 DESCRIPTION="Flask support for MongoDB and with WTF model forms"
-HOMEPAGE="https://pypi.python.org/pypi/flask-mongoengine/"
+HOMEPAGE="https://pypi.org/project/flask-mongoengine/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

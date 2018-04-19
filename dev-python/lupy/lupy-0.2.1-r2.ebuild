@@ -10,7 +10,7 @@ MY_PN="Lupy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Lupy is a is a full-text indexer and search engine written in Python"
-HOMEPAGE="https://pypi.python.org/pypi/Lupy"
+HOMEPAGE="https://pypi.org/project/Lupy"
 SRC_URI="mirror://sourceforge/lupy/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

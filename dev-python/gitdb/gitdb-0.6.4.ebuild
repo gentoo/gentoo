@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="GitDB is a pure-Python git object database"
 HOMEPAGE="
 	https://github.com/gitpython-developers/gitdb
-	https://pypi.python.org/pypi/gitdb"
+	https://pypi.org/project/gitdb"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

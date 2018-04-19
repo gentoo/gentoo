@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="lirc module for Python"
-HOMEPAGE="https://sourceforge.net/projects/pylirc/ https://pypi.python.org/pypi/pylirc"
+HOMEPAGE="https://sourceforge.net/projects/pylirc/ https://pypi.org/project/pylirc"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

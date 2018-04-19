@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Library providing cryptographic recipes and primitives"
-HOMEPAGE="https://github.com/pyca/cryptography/ https://pypi.python.org/pypi/cryptography/"
+HOMEPAGE="https://github.com/pyca/cryptography/ https://pypi.org/project/cryptography/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"

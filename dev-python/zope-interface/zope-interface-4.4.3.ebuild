@@ -11,7 +11,7 @@ MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Interfaces for Python"
-HOMEPAGE="https://pypi.python.org/pypi/zope.interface https://github.com/zopefoundation/zope.interface"
+HOMEPAGE="https://pypi.org/project/zope.interface https://github.com/zopefoundation/zope.interface"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="ZPL"

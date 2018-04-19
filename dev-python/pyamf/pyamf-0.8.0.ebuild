@@ -11,7 +11,7 @@ MY_PN=PyAMF
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Action Message Format (AMF) support for Python"
-HOMEPAGE="https://github.com/hydralabs/pyamf https://pypi.python.org/pypi/PyAMF"
+HOMEPAGE="https://github.com/hydralabs/pyamf https://pypi.org/project/PyAMF"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

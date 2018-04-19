@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Namespace for backported Python features"
-HOMEPAGE="https://bitbucket.org/brandon/backports https://pypi.python.org/pypi/backports/"
+HOMEPAGE="https://bitbucket.org/brandon/backports https://pypi.org/project/backports/"
 SRC_URI="https://dev.gentoo.org/~radhermit/dist/${P}.tar.gz"
 
 LICENSE="PYTHON"

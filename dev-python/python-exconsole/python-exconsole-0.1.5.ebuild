@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Emergency/postmortem Python console"
-HOMEPAGE="https://github.com/Eugeny/exconsole https://pypi.python.org/pypi/python-exconsole"
+HOMEPAGE="https://github.com/Eugeny/exconsole https://pypi.org/project/python-exconsole"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

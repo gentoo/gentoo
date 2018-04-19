@@ -10,7 +10,7 @@ MY_PN="Flask-Testing"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Unit testing for Flask"
-HOMEPAGE="http://pythonhosted.org/Flask-Testing/ https://pypi.python.org/pypi/Flask-Testing/"
+HOMEPAGE="http://pythonhosted.org/Flask-Testing/ https://pypi.org/project/Flask-Testing/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

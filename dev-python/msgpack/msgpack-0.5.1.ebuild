@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="MessagePack (de)serializer for Python"
 HOMEPAGE="https://msgpack.org
 	https://github.com/msgpack/msgpack-python/
-	https://pypi.python.org/pypi/msgpack-python/"
+	https://pypi.org/project/msgpack-python/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"

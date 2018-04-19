@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python package for providing Mozilla's CA Bundle"
-HOMEPAGE="http://certifi.io/ https://pypi.python.org/pypi/certifi"
+HOMEPAGE="http://certifi.io/ https://pypi.org/project/certifi"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
