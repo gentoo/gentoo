@@ -42,6 +42,7 @@ src_configure() {
 		-DMICROHTTPD_ENABLE=$(usex webserver)
 		-DOpenCL_ENABLE=$(usex opencl)
 		-DOpenSSL_ENABLE=$(usex ssl)
+		-DLIBRARY_OUTPUT_PATH=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }
