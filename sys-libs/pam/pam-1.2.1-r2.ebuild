@@ -35,11 +35,7 @@ PDEPEND="sys-auth/pambase"
 RDEPEND="${RDEPEND}
 	!<sys-apps/openrc-0.11.8
 	!sys-auth/openpam
-	!sys-auth/pam_userdb
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r7
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	!sys-auth/pam_userdb"
 
 S="${WORKDIR}/${MY_P}"
 

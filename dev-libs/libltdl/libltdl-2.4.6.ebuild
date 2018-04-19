@@ -18,11 +18,7 @@ IUSE="static-libs"
 # libltdl doesn't have a testsuite.
 RESTRICT="test"
 
-RDEPEND="!<sys-devel/libtool-2.4.3-r2:2
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140406-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="!<sys-devel/libtool-2.4.3-r2:2"
 DEPEND="app-arch/xz-utils"
 
 S="${WORKDIR}/${MY_P}/libltdl"
