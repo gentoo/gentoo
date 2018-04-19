@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="LZ4 Bindings for Python"
-HOMEPAGE="https://pypi.python.org/pypi/lz4 https://github.com/steeve/python-lz4"
+HOMEPAGE="https://pypi.org/project/lz4 https://github.com/steeve/python-lz4"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

@@ -10,7 +10,7 @@ MY_PN="MyghtyUtils"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Set of utility classes used by Myghty templating"
-HOMEPAGE="http://www.myghty.org https://pypi.python.org/pypi/MyghtyUtils"
+HOMEPAGE="http://www.myghty.org https://pypi.org/project/MyghtyUtils"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="MIT"

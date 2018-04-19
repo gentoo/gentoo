@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A simple serialization library based on ast.literal_eval"
-HOMEPAGE="https://pypi.python.org/pypi/serpent https://github.com/irmen/Serpent"
+HOMEPAGE="https://pypi.org/project/serpent https://github.com/irmen/Serpent"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

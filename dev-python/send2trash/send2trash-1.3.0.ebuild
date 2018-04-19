@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Sends files to the Trash (or Recycle Bin)"
 HOMEPAGE="
 	http://hg.hardcoded.net/send2trash
-	https://pypi.python.org/pypi/Send2Trash
+	https://pypi.org/project/Send2Trash
 	https://github.com/hsoft/send2trash"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 

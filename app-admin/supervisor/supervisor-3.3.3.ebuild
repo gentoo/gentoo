@@ -12,7 +12,7 @@ inherit distutils-r1
 MY_PV="${PV/_beta/b}"
 
 DESCRIPTION="A system for controlling process state under UNIX"
-HOMEPAGE="http://supervisord.org/ https://pypi.python.org/pypi/supervisor"
+HOMEPAGE="http://supervisord.org/ https://pypi.org/project/supervisor"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"

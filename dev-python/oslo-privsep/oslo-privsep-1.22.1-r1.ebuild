@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="OpenStack library for privilege separation."
-HOMEPAGE="https://pypi.python.org/pypi/oslo.privsep"
+HOMEPAGE="https://pypi.org/project/oslo.privsep"
 SRC_URI="mirror://pypi/${PN:0:1}/oslo.privsep/oslo.privsep-${PV}.tar.gz"
 S="${WORKDIR}/oslo.privsep-${PV}"
 

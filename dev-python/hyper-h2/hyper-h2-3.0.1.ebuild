@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
-HOMEPAGE="https://python-hyper.org/h2/en/stable/ https://pypi.python.org/pypi/h2"
+HOMEPAGE="https://python-hyper.org/h2/en/stable/ https://pypi.org/project/h2"
 SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

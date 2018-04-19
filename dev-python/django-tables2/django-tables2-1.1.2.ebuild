@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Table/data-grid framework for Django"
-HOMEPAGE="https://pypi.python.org/pypi/django-tables2/ https://github.com/bradleyayers/django-tables2/"
+HOMEPAGE="https://pypi.org/project/django-tables2/ https://github.com/bradleyayers/django-tables2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

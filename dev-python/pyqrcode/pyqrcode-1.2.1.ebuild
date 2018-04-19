@@ -10,7 +10,7 @@ MY_PN="PyQRCode"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A pure Python QR code generator with SVG, EPS, PNG and terminal output"
-HOMEPAGE="https://github.com/mnooner256/pyqrcode https://pypi.python.org/pypi/PyQRCode"
+HOMEPAGE="https://github.com/mnooner256/pyqrcode https://pypi.org/project/PyQRCode"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

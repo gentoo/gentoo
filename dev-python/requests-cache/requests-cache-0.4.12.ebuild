@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 
 inherit distutils-r1
 
-HOMEPAGE="https://pypi.python.org/pypi/requests-cache"
+HOMEPAGE="https://pypi.org/project/requests-cache"
 DESCRIPTION="Persistent cache for requests library"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 

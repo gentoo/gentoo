@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_PN="SecretStorage"
 
 DESCRIPTION="Python bindings to FreeDesktop.org Secret Service API."
-HOMEPAGE="https://github.com/mitya57/secretstorage https://pypi.python.org/pypi/SecretStorage"
+HOMEPAGE="https://github.com/mitya57/secretstorage https://pypi.org/project/SecretStorage"
 SRC_URI="mirror://pypi/S/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="BSD"

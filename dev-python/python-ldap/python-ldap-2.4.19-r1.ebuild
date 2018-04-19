@@ -10,7 +10,7 @@ inherit distutils-r1 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
 HOMEPAGE="https://www.python-ldap.org/en/latest/
-	https://pypi.python.org/pypi/python-ldap"
+	https://pypi.org/project/python-ldap"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"

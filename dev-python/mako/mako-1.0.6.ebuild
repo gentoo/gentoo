@@ -11,7 +11,7 @@ MY_PN="Mako"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A Python templating language"
-HOMEPAGE="http://www.makotemplates.org/ https://pypi.python.org/pypi/Mako"
+HOMEPAGE="http://www.makotemplates.org/ https://pypi.org/project/Mako"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

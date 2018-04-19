@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A requests-like API built on top of twisted.web's Agent"
-HOMEPAGE="https://github.com/twisted/treq https://pypi.python.org/pypi/treq"
+HOMEPAGE="https://github.com/twisted/treq https://pypi.org/project/treq"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

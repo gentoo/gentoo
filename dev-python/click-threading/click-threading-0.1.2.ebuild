@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Multithreaded Click apps made easy."
-HOMEPAGE="https://github.com/click-contrib/click-threading https://pypi.python.org/pypi/click-threading"
+HOMEPAGE="https://github.com/click-contrib/click-threading https://pypi.org/project/click-threading"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

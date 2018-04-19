@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="YAML parser/emitter that supports roundtrip comment preservation"
-HOMEPAGE="https://pypi.python.org/pypi/ruamel.yaml https://bitbucket.org/ruamel/yaml"
+HOMEPAGE="https://pypi.org/project/ruamel.yaml https://bitbucket.org/ruamel/yaml"
 MY_PN="${PN//-/.}"
 SRC_URI="https://bitbucket.org/${MY_PN/.//}/get/${PV}.tar.gz -> ${P}.tar.gz"
 

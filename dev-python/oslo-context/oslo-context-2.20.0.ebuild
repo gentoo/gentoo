@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="Helpers to maintain useful information about a request context"
-HOMEPAGE="https://pypi.python.org/pypi/oslo.context"
+HOMEPAGE="https://pypi.org/project/oslo.context"
 SRC_URI="mirror://pypi/${PN:0:1}/oslo.context/oslo.context-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"

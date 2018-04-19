@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy pypy3 )
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Bash tab completion for argparse"
-HOMEPAGE="https://pypi.python.org/pypi/argcomplete"
+HOMEPAGE="https://pypi.org/project/argcomplete"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

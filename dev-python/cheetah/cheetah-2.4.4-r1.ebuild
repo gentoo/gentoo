@@ -10,7 +10,7 @@ MY_PN="Cheetah"
 MY_P="${MY_PN}-${PV/_}"
 
 DESCRIPTION="Python-powered template engine and code generator"
-HOMEPAGE="http://www.cheetahtemplate.org/ https://rtyler.github.com/cheetah/ https://pypi.python.org/pypi/Cheetah"
+HOMEPAGE="http://www.cheetahtemplate.org/ https://rtyler.github.com/cheetah/ https://pypi.org/project/Cheetah"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

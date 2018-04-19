@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="A featureful, correct URL for Python"
-HOMEPAGE="https://github.com/python-hyper/hyperlink https://pypi.python.org/pypi/hyperlink"
+HOMEPAGE="https://github.com/python-hyper/hyperlink https://pypi.org/project/hyperlink"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD MIT"

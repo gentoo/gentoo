@@ -9,7 +9,7 @@ inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="A Python wrapper for the ALSA API"
 HOMEPAGE="https://www.sourceforge.net/projects/pyalsaaudio
-	https://pypi.python.org/pypi/pyalsaaudio"
+	https://pypi.org/project/pyalsaaudio"
 SRC_URI="mirror://sourceforge/pyalsaaudio/${P}.tar.gz
 	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

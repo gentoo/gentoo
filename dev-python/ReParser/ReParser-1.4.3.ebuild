@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Simple regex-based lexer/parser for inline markup"
-HOMEPAGE="https://pypi.python.org/pypi/ReParser"
+HOMEPAGE="https://pypi.org/project/ReParser"
 
 LICENSE="MIT"
 SLOT="0"

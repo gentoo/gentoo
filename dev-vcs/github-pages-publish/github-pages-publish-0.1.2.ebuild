@@ -14,7 +14,7 @@ fi
 inherit distutils-r1 ${GIT_ECLASS}
 
 DESCRIPTION="A script that commits files from a directory to Github Pages"
-HOMEPAGE="https://pypi.python.org/pypi/github-pages-publish
+HOMEPAGE="https://pypi.org/project/github-pages-publish
 	https://github.com/rafaelmartins/github-pages-publish"
 
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

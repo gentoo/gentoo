@@ -13,7 +13,7 @@ MY_PN=${MY_PN//-/_}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Backport of the ssl.match_hostname function"
-HOMEPAGE="https://pypi.python.org/pypi/backports.ssl_match_hostname/"
+HOMEPAGE="https://pypi.org/project/backports.ssl_match_hostname/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="PYTHON"

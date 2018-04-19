@@ -69,6 +69,7 @@ src_prepare() {
 		"${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
 		"${FILESDIR}/3.6.5-disable-nis.patch"
 		"${FILESDIR}/python-3.6.5-libressl-compatibility.patch"
+		"${FILESDIR}/python-3.6.5-hash-unaligned.patch"
 	)
 
 	default

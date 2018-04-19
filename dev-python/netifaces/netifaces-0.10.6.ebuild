@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Portable network interface information"
 HOMEPAGE="
-	https://pypi.python.org/pypi/netifaces/
+	https://pypi.org/project/netifaces/
 	https://alastairs-place.net/projects/netifaces/
 	https://bitbucket.org/al45tair/netifaces"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
