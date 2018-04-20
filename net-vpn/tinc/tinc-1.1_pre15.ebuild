@@ -1,14 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools multilib python-single-r1 systemd
+inherit autotools python-single-r1 systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://www.tinc-vpn.org/"
@@ -43,20 +43,18 @@ RDEPEND="${DEPEND}
 	vde? ( net-misc/vde )"
 S="${WORKDIR}/${MY_P}"
 
+# Upstream's patchset
+if [[ -n ${UPSTREAM_VER} ]]; then
+	PATCHES=( "${WORKDIR}"/patches-upstream )
+fi
+
+PATCHES+=(
+	"${FILESDIR}"/${PN}-1.1-fix-paths.patch #560528
+	"${FILESDIR}"/${PN}-1.1-tinfo.patch #621868
+)
+
 src_prepare() {
-	# Upstream's patchset
-	if [[ -n ${UPSTREAM_VER} ]]; then
-		einfo "Try to apply Tinc Upstream patch set"
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
-	fi
-
-	eapply "${FILESDIR}"/tinc-1.1-fix-paths.patch #560528
-	eapply "${FILESDIR}"/${PN}-1.1-tinfo.patch #621868
-	eapply_user
-
+	default
 	eautoreconf
 }
 
