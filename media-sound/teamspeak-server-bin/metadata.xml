@@ -11,6 +11,8 @@
 	</maintainer>
 	<longdescription>TeamSpeak Server (Voice Communication Software)</longdescription>
 	<use>
-		<flag name="tsdns">Make use of TeamSpeak DNS.</flag>
+		<flag name="doc">Install TeamSpeak complete documentation.</flag>
+		<!-- <flag name="mysql">Install TeamSpeak MariaDB support.</flag> -->
+		<flag name="tsdns">Install TeamSpeak DNS.</flag>
 	</use>
 </pkgmetadata>
