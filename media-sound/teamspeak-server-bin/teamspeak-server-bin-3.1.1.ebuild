@@ -25,7 +25,9 @@ RESTRICT="mirror strip"
 S="${WORKDIR}/teamspeak3-server_linux"
 
 pkg_setup() {
-	enewuser teamspeak
+	# Create teamspeak user and group
+	enewgroup teamspeak
+	enewuser teamspeak -1 -1 /opt/teamspeak3-server teamspeak
 }
 
 src_unpack() {
