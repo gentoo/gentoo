@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -22,10 +22,9 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README greetings.txt history.txt )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.48.13-minizip.patch
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.48.13-minizip.patch
+)
 
 src_configure() {
 	econf $(use_enable static-libs static) \
