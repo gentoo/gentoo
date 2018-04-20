@@ -1,6 +1,5 @@
-diff -uNr passenger-5.1.1.orig/src/cxx_supportlib/vendor-modified/boost/math/special_functions/fpclassify.hpp passenger-5.1.1/src/cxx_supportlib/vendor-modified/boost/math/special_functions/fpclassify.hpp
---- passenger-5.1.1.orig/src/cxx_supportlib/vendor-modified/boost/math/special_functions/fpclassify.hpp	2013-10-26 15:00:00.000000000 -0700
-+++ passenger-5.1.1/src/cxx_supportlib/vendor-modified/boost/math/special_functions/fpclassify.hpp	2017-01-12 19:21:39.696285758 -0800
+--- a/src/cxx_supportlib/vendor-modified/boost/math/special_functions/fpclassify.hpp
++++ b/src/cxx_supportlib/vendor-modified/boost/math/special_functions/fpclassify.hpp
 @@ -134,8 +134,8 @@
  inline bool is_nan_helper(__float128 f, const boost::true_type&) { return ::isnanq(f); }
  inline bool is_nan_helper(__float128 f, const boost::false_type&) { return ::isnanq(f); }

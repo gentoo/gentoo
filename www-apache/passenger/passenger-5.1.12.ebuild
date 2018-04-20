@@ -41,10 +41,12 @@ pkg_setup() {
 	depend.apache_pkg_setup
 }
 
-all_ruby_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.1.11-gentoo.patch
-	epatch "${FILESDIR}"/${PN}-5.1.1-isnan.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.1.11-gentoo.patch
+	"${FILESDIR}"/${PN}-5.1.1-isnan.patch
+)
 
+all_ruby_prepare() {
 	# Change these with sed instead of a patch so that we can easily use
 	# the toolchain-funcs methods.
 	sed -i -e "/^CC/ s/=.*$/= '$(tc-getCC)'/" \
