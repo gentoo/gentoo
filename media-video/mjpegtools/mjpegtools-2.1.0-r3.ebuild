@@ -31,12 +31,6 @@ DEPEND="${RDEPEND}
 	virtual/awk
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
 
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20140508-r4
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)"
-
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-pic.patch
 	# https://sourceforge.net/p/mjpeg/bugs/139/

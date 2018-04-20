@@ -75,9 +75,7 @@ DEPEND="${COMMON_DEPEND}
 	ocaml? ( test? ( dev-ml/ounit ) )
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
-	clang? ( !<=sys-devel/clang-${PV}-r99 )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	clang? ( !<=sys-devel/clang-${PV}-r99 )"
 PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
 	kernel_Darwin? ( =sys-libs/libcxx-${PV}* )"
 

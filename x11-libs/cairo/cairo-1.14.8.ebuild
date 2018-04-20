@@ -42,10 +42,6 @@ RDEPEND=">=dev-libs/lzo-2.06-r1[${MULTILIB_USEDEP}]
 	)
 	xcb? (
 		>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
-	)
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20131008-r1
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

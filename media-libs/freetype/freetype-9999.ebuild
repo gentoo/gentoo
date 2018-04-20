@@ -30,7 +30,7 @@ LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
 RESTRICT="!bindist? ( bindist )" # bug 541408
 
-CDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	harfbuzz? ( >=media-libs/harfbuzz-0.9.19[truetype,${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}] )
@@ -41,9 +41,8 @@ CDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 			>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]
 		)
 	)"
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-RDEPEND="${CDEPEND}"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(

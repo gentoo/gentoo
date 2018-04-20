@@ -26,7 +26,7 @@ DEPEND="sys-apps/grep
 	x86-fbsd? ( ${NASM} )
 	x86-macos? ( ${NASM} )
 	x64-macos? ( ${NASM} )"
-RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND=""
 
 S=${WORKDIR}/${MY_PN}/build/generic
 

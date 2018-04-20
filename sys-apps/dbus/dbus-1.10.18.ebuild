@@ -23,16 +23,12 @@ CDEPEND="
 	>=dev-libs/expat-2
 	selinux? (
 		sys-libs/libselinux
-		)
+	)
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:0= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXt
-		)
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r4
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)
 "
 DEPEND="${CDEPEND}
@@ -43,7 +39,7 @@ DEPEND="${CDEPEND}
 	test? (
 		>=dev-libs/glib-2.36:2
 		${PYTHON_DEPS}
-		)
+	)
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-dbus )

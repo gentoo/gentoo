@@ -15,10 +15,6 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86 ~x86-fbsd ~x64-macos"
 IUSE="flac mikmod modplug mp3 mpeg physfs speex static-libs vorbis"
 
 RDEPEND="
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-sdl-20140406
-	)
 	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
 	mikmod? ( >=media-libs/libmikmod-3.2.0[${MULTILIB_USEDEP}] )

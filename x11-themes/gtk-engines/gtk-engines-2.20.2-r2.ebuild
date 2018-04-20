@@ -19,10 +19,6 @@ IUSE="accessibility lua"
 RDEPEND="
 	>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
 	lua? ( dev-lang/lua:0[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)
 "
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.31
