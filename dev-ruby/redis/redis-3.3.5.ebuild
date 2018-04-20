@@ -35,5 +35,5 @@ all_ruby_prepare() {
 	# Version 3.0.6 downloads and compiles redis-server to test against.
 	# This patch reverts it to the way 3.0.5 does it, using the local server.
 	# https://github.com/redis/redis-rb/commit/351a1294fe33f79c23495b7568045e9f484918f2
-	epatch "${FILESDIR}/${PN}-3.2.1-local-redis-server.patch"
+	eapply "${FILESDIR}/${PN}-3.2.1-local-redis-server.patch"
 }
