@@ -18,7 +18,7 @@ RDEPEND=""
 DOCS=( README.md )
 
 src_prepare() {
-	eapply_user
+	default
 
 	# fix interpreter to be a recent/good shell
 	sed -i -e "1s:/bin/sh:${BASH}:" conftools/get-version.sh || die
