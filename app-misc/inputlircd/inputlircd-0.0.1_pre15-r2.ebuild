@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs eutils versionator
+
+inherit toolchain-funcs versionator
 
 DESCRIPTION="Inputlirc daemon to utilize /dev/input/event*"
 HOMEPAGE="https://github.com/ferdinandhuebner/inputlirc"
@@ -16,7 +17,7 @@ src_prepare() {
 	local ver="$(best_version sys-kernel/linux-headers)"
 	ver=${ver#sys-kernel/linux-headers-}
 	if version_is_at_least 4.4 ${ver} ; then
-		epatch "${FILESDIR}/inputlircd-linux-4.4-fix.patch"
+		eapply "${FILESDIR}/inputlircd-linux-4.4-fix.patch"
 	fi
 
 	sed -e 's:$(CFLAGS):$(CFLAGS) $(LDFLAGS):' -i Makefile || die
