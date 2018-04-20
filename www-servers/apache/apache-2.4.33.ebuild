@@ -141,6 +141,11 @@ RDEPEND+="${CDEPEND}"
 
 REQUIRED_USE="apache2_modules_http2? ( ssl )"
 
+PATCHES=(
+	# this *should* be included from upstream in the next release as it is currently in Git head
+	"${FILESDIR}/${P}-libressl-compatibility.patch"
+)
+
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
 	# to USE flag conditionals (bug #499260)
