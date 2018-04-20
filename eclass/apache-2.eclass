@@ -110,7 +110,7 @@ DEPEND="${CDEPEND}
 	ldap? ( =net-nds/openldap-2* )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.2:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	!=www-servers/apache-1*"
 RDEPEND+=" ${DEPEND}
