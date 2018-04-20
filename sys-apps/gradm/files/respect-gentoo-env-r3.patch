@@ -1,6 +1,5 @@
-diff -Naur gradm2.orig/Makefile gradm2/Makefile
---- gradm2.orig/Makefile	2013-08-09 16:28:37.000000000 -0400
-+++ gradm2/Makefile	2013-08-10 07:57:12.000000000 -0400
+--- a/Makefile
++++ b/Makefile
 @@ -18,18 +18,18 @@
  BISON=/usr/bin/bison
  #YACC := $(shell if [ -x $(BYACC) ]; then echo $(BYACC); else echo $(BISON); fi)
