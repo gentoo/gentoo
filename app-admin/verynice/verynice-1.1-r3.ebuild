@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils systemd toolchain-funcs
+inherit systemd toolchain-funcs
 
 DESCRIPTION="A tool for dynamically adjusting the nice-level of processes"
 HOMEPAGE="https://web.archive.org/web/20130621090315/http://thermal.cnde.iastate.edu/~sdh4/verynice/"
@@ -16,10 +16,9 @@ IUSE=""
 
 S=${WORKDIR}/${PN}
 
-src_prepare() {
-	default
-	epatch "${FILESDIR}"/${P}-build.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-build.patch
+)
 
 src_compile() {
 	tc-export CC
