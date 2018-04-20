@@ -29,3 +29,10 @@ pkg_setup() {
 	kde5_pkg_setup
 	python-single-r1_pkg_setup
 }
+
+src_configure() {
+	local mycmakeargs=(
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+	)
+	kde5_src_configure
+}
