@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils multilib systemd
 
 DESCRIPTION="Open Source mobile telephony (GSM/UMTS) daemon"
-HOMEPAGE="http://ofono.org/"
+HOMEPAGE="https://01.org/ofono"
 SRC_URI="mirror://kernel/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

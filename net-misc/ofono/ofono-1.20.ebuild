@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils multilib systemd
 
 DESCRIPTION="Open Source mobile telephony (GSM/UMTS) daemon"
-HOMEPAGE="http://ofono.org/"
+HOMEPAGE="https://01.org/ofono"
 SRC_URI="mirror://kernel/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
