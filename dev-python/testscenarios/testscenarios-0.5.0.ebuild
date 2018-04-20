@@ -30,5 +30,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	"${PYTHON}" -m unittest discover
+	"${PYTHON}" -m unittest discover || die "Tests fail with ${EPYTHON}"
 }
