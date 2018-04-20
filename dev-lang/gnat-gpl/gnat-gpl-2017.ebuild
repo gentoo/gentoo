@@ -70,16 +70,16 @@ pkg_setup() {
 	if [[ ${gnatpath} != "." ]] ; then
 		GNATMAKE="${gnatpath}/${GNATMAKE}"
 	fi
+}
 
+src_unpack() {
 	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
 		eerror "1) use gcc-config to select the right compiler or"
 		eerror "2) set the bootstrap use flag"
 		die "ada compiler not available"
 	fi
-}
 
-src_unpack() {
 	GCC_A_FAKEIT="
 		${P}-src.tar.gz
 		${MYP}.tar.gz
