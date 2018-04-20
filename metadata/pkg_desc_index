@@ -4244,7 +4244,7 @@ dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into 
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-Wrapper 1.50.0: Word wrap text by breaking long lines
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
-dev-perl/TheSchwartz 1.120.0 1.120.0-r1: Reliable job queue
+dev-perl/TheSchwartz 1.120.0-r1: Reliable job queue
 dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
 dev-perl/Throwable 0.200.11 0.200.13: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
