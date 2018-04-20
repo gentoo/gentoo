@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (20 Mar 2018)
+# Likely to break a lot of software
+# Masked for initial testing
+>=dev-db/mysql-connector-c++-8.0.0
+
 # Lars Wendler <polynomial-c@gentoo.org> (18 Mar 2018)
 # Breaks consumers most likely because of the following change:
 #   * Add const to several classes and members
