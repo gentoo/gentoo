@@ -1,0 +1,83 @@
+Index: CinelerraCV-2.3/quicktime/mpeg4.c
+===================================================================
+--- CinelerraCV-2.3.orig/quicktime/mpeg4.c
++++ CinelerraCV-2.3/quicktime/mpeg4.c
+@@ -625,7 +625,6 @@ static int encode(quicktime_t *file, uns
+ // ffmpeg section
+ 		{
+ 			AVDictionary ** opts = NULL;
+-			static char *video_rc_eq="tex^qComp";
+ 			codec->encode_initialized[current_field] = 1;
+ 			if(!ffmpeg_initialized)
+ 			{
+@@ -650,7 +649,6 @@ static int encode(quicktime_t *file, uns
+ 			context->pix_fmt = AV_PIX_FMT_YUV420P;
+ 			context->bit_rate = codec->bitrate / codec->total_fields;
+ 			context->bit_rate_tolerance = codec->bitrate_tolerance;
+-			context->rc_eq = video_rc_eq;
+         	context->rc_max_rate = 0;
+         	context->rc_min_rate = 0;
+         	context->rc_buffer_size = 0;
+@@ -658,8 +656,6 @@ static int encode(quicktime_t *file, uns
+ 				(!codec->fix_bitrate ? codec->quantizer : 2);
+ 			context->qmax = 
+ 				(!codec->fix_bitrate ? codec->quantizer : 31);
+-			context->lmin = 2 * FF_QP2LAMBDA;
+-			context->lmax = 31 * FF_QP2LAMBDA;
+ 			context->mb_lmin = 2 * FF_QP2LAMBDA;
+ 			context->mb_lmax = 31 * FF_QP2LAMBDA;
+ 			context->max_qdiff = 3;
+@@ -680,8 +676,6 @@ static int encode(quicktime_t *file, uns
+ 			context->frame_skip_cmp = FF_CMP_DCTMAX;
+ 			context->ildct_cmp = FF_CMP_VSAD;
+ 			context->intra_dc_precision = 0;
+-        	context->intra_quant_bias = FF_DEFAULT_QUANT_BIAS;
+-        	context->inter_quant_bias = FF_DEFAULT_QUANT_BIAS;
+         	context->i_quant_factor = -0.8;
+         	context->i_quant_offset = 0.0;
+ 			context->mb_decision = FF_MB_DECISION_SIMPLE;
+@@ -689,18 +683,14 @@ static int encode(quicktime_t *file, uns
+ 			context->me_sub_cmp = FF_CMP_SAD;
+ 			context->me_cmp = FF_CMP_SAD;
+ 			context->me_pre_cmp = FF_CMP_SAD;
+-			context->me_method = ME_EPZS;
+ 			context->me_subpel_quality = 8;
+ 			context->me_penalty_compensation = 256;
+ 			context->me_range = 0;
+-			context->me_threshold = 0;
+-			context->mb_threshold = 0;
+ 			context->nsse_weight= 8;
+         	context->profile= FF_PROFILE_UNKNOWN;
+-			context->rc_buffer_aggressivity = 1.0;
+         	context->level= FF_LEVEL_UNKNOWN;
+ 			av_dict_set(opts, "umv", "1", 0);
+-			context->flags |= CODEC_FLAG_AC_PRED;
++			context->flags |= AV_CODEC_FLAG_AC_PRED;
+ 
+ // All the forbidden settings can be extracted from libavcodec/mpegvideo.c of ffmpeg...
+  			
+@@ -709,7 +699,7 @@ static int encode(quicktime_t *file, uns
+ 			   codec->ffmpeg_id == AV_CODEC_ID_H263 ||
+ 			   codec->ffmpeg_id == AV_CODEC_ID_H263P ||
+ 			   codec->ffmpeg_id == AV_CODEC_ID_FLV1)
+-				context->flags |= CODEC_FLAG_4MV;
++				context->flags |= AV_CODEC_FLAG_4MV;
+ // Not compatible with Win
+ //			context->flags |= CODEC_FLAG_QPEL;
+ 
+@@ -723,12 +713,12 @@ static int encode(quicktime_t *file, uns
+ 			}
+ 
+ 			if(!codec->fix_bitrate)
+-				context->flags |= CODEC_FLAG_QSCALE;
++				context->flags |= AV_CODEC_FLAG_QSCALE;
+ 
+ 			if(codec->interlaced)
+ 			{
+-				context->flags |= CODEC_FLAG_INTERLACED_DCT;
+-				context->flags |= CODEC_FLAG_INTERLACED_ME;
++				context->flags |= AV_CODEC_FLAG_INTERLACED_DCT;
++				context->flags |= AV_CODEC_FLAG_INTERLACED_ME;
+ 			}
+ 
+ 
