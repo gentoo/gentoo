@@ -1,5 +1,5 @@
---- GNUmakefile	2012-04-10 04:31:14.505474482 +0200
-+++ GNUmakefile	2012-04-10 04:31:53.821982958 +0200
+--- a/GNUmakefile
++++ b/GNUmakefile
 @@ -64,7 +64,7 @@
  acc: acc.c
  	$(CC) -o $@ $< $(CFLAGS) $(LDFLAGS) -lowfat
