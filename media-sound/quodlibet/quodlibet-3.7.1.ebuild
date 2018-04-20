@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 gnome2-utils fdo-mime
+inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="audio library tagger, manager, and player for GTK+"
 HOMEPAGE="http://quodlibet.readthedocs.org"
@@ -61,11 +61,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

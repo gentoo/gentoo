@@ -5,7 +5,7 @@ EAPI=6
 
 USE_RUBY="ruby22 ruby23"
 
-inherit autotools eutils multilib ruby-single toolchain-funcs
+inherit autotools ruby-single toolchain-funcs
 
 DESCRIPTION="Epic5 IRC Client"
 SRC_URI="ftp://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/${P}.tar.bz2"
@@ -30,17 +30,17 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.2-libarchive-automagic.patch \
+	"${FILESDIR}"/${P}-ruby-automagic-as-needed.patch \
+	"${FILESDIR}"/${P}-tcl-automagic-as-needed.patch \
+	"${FILESDIR}"/${PN}-1.1.2-perl-automagic-as-needed.patch \
+	"${FILESDIR}"/${P}-without-localdir.patch \
+	"${FILESDIR}"/${P}-socks5-libsocks.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.1.2-libarchive-automagic.patch \
-		"${FILESDIR}"/${P}-ruby-automagic-as-needed.patch \
-		"${FILESDIR}"/${P}-tcl-automagic-as-needed.patch \
-		"${FILESDIR}"/${PN}-1.1.2-perl-automagic-as-needed.patch \
-		"${FILESDIR}"/${P}-without-localdir.patch \
-		"${FILESDIR}"/${P}-socks5-libsocks.patch
-
-	eapply_user
-
+	default
 	eautoconf
 }
 
