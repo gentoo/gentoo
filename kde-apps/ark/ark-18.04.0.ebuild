@@ -47,6 +47,8 @@ DEPEND="${RDEPEND}
 # bug #560548, last checked with 16.04.1
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-missing-memory-include.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package bzip2 BZip2)
