@@ -115,13 +115,6 @@ else
 	DEPEND="${DEPEND} nls? ( >=sys-devel/gettext-0.17 )"
 fi
 
-if [[ ${SLOT} == "0.10" ]]; then
-	RDEPEND="${RDEPEND}
-		abi_x86_32? (
-			!app-emulation/emul-linux-x86-gstplugins[-abi_x86_32(-)]
-		)"
-fi
-
 DEPEND="${DEPEND} ${RDEPEND}"
 
 # @FUNCTION: gstreamer_environment_reset
