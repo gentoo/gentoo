@@ -17,9 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 RDEPEND="!=media-libs/jpeg-8*:0
-	!<media-libs/libjpeg-turbo-1.3.0-r2
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r5
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	!<media-libs/libjpeg-turbo-1.3.0-r2"
 DEPEND="${RDEPEND}"
 
 DOCS=""

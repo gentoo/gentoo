@@ -12,8 +12,6 @@ LICENSE="GPL-2"
 SLOT="1"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="static-libs"
-RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r6
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 
 DOCS=( AUTHORS DEVELOPER )
 

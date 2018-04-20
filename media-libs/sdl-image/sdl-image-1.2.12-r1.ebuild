@@ -15,10 +15,6 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd
 IUSE="gif jpeg png static-libs tiff webp"
 
 RDEPEND="
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-sdl-20140406
-	)
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )

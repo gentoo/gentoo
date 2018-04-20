@@ -15,10 +15,6 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~
 IUSE="static-libs X"
 
 RDEPEND="
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-sdl-20140406
-	)
 	X? ( >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
 	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}]"

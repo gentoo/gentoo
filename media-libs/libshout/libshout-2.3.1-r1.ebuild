@@ -16,9 +16,7 @@ IUSE="speex static-libs theora"
 RDEPEND=">=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
-	theora? ( >=media-libs/libtheora-1.1.1[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r6
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+	theora? ( >=media-libs/libtheora-1.1.1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

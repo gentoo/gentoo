@@ -20,9 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="static-libs"
 
-RDEPEND=">=media-libs/libdvdread-5.0.2[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r4
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND=">=media-libs/libdvdread-5.0.2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig" # To get pkg.m4 for eautoreconf #414391
 
