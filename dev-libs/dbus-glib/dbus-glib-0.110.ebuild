@@ -22,12 +22,7 @@ DEPEND="${CDEPEND}
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
-RDEPEND="${CDEPEND}
-	abi_x86_32? (
-		!<app-emulation/emul-linux-x86-baselibs-20131008-r8
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
-"
+RDEPEND="${CDEPEND}"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README )
 

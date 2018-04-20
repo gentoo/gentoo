@@ -19,11 +19,7 @@ CDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( >=dev-util/gtk-doc-1.4 )"
-RDEPEND="${CDEPEND}
-	abi_x86_32? (
-		!<app-emulation/emul-linux-x86-baselibs-20131008-r8
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="${CDEPEND}"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README )
 

@@ -19,10 +19,7 @@ DEPEND=">=dev-lang/perl-5.6
 	virtual/yacc"
 RDEPEND="
 	valgrind? ( dev-util/valgrind )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r16
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
