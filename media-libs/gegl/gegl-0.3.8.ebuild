@@ -75,6 +75,11 @@ pkg_setup() {
 	use test && use introspection && python-any-r1_pkg_setup
 }
 
+PATCHES=(
+	#"${FILESDIR}"/${P}-g_log_domain.patch
+	"${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
+)
+
 src_prepare() {
 	default
 
@@ -86,14 +91,10 @@ src_prepare() {
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
 
-	#epatch "${FILESDIR}"/${P}-g_log_domain.patch
-
 	# commit 7c78497b : tests that use gegl.png are broken on non-amd64
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
-
-	epatch "${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
 
 	eautoreconf
 

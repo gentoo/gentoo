@@ -75,6 +75,10 @@ pkg_setup() {
 	use test && use introspection && python-any-r1_pkg_setup
 }
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
+)
+
 src_prepare() {
 	default
 
@@ -90,8 +94,6 @@ src_prepare() {
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
-
-	epatch "${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
 
 	eautoreconf
 
