@@ -25,7 +25,9 @@ RESTRICT="mirror strip"
 S="${WORKDIR}/teamspeak3-server_linux"
 
 pkg_setup() {
-	enewuser teamspeak
+	# Create teamspeak3 user and group
+	enewgroup teamspeak3
+	enewuser teamspeak3 -1 -1 /opt/teamspeak3-server teamspeak3
 }
 
 src_unpack() {
@@ -124,7 +126,7 @@ src_install() {
 	doenvd "${T}"/99teamspeak3-server
 
 	# Set permissions
-	fowners -R teamspeak:teamspeak "/etc/teamspeak3-server" "/opt/teamspeak3-server" "/var/log/teamspeak3-server"
+	fowners -R teamspeak3:teamspeak3 "/etc/teamspeak3-server" "/opt/teamspeak3-server" "/var/log/teamspeak3-server"
 }
 
 pkg_postinst() {
