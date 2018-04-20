@@ -85,22 +85,22 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-cve-2017-17784.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17785.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-1.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-2.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17787.patch  # bug 641954
+PATCHES=(
+	"${FILESDIR}"/${P}-cve-2017-17784.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17785.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-1.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-2.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17787.patch  # bug 641954
 	# NOTE:                           CVE-2017-17788 already fixed upstream
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17789.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17789.patch  # bug 641954
+)
 
-	eapply_user
+src_prepare() {
+	gnome2_src_prepare
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
 	eautoreconf  # If you remove this: remove dev-util/gtk-doc-am from DEPEND, too
-
-	gnome2_src_prepare
 
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
