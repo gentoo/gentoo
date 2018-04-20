@@ -20,11 +20,7 @@ RDEPEND="jpeg? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}] )
 	jbig? ( >=media-libs/jbigkit-2.1[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	!media-libs/tiff-compat
-	!=media-libs/tiff-3*:0
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r10
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	!=media-libs/tiff-3*:0"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

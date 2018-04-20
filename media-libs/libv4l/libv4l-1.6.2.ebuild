@@ -18,11 +18,7 @@ IUSE="jpeg"
 # The libraries only link to -ljpeg, therefore multilib depend only for virtual/jpeg.
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	!media-tv/v4l2-ctl
-	!<media-tv/ivtv-utils-1.4.0-r2
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20130224-r5
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)"
+	!<media-tv/ivtv-utils-1.4.0-r2"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/os-headers

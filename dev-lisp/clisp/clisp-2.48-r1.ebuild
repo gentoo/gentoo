@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="alpha amd64 ia64 ppc -sparc x86"
-IUSE="berkdb hyperspec X new-clx dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib"
+IUSE="berkdb hyperspec X new-clx dbus fastcgi gdbm gtk +pcre postgres +readline svm -threads +unicode +zlib"
 
 RDEPEND="virtual/libiconv
 		 >=dev-libs/libsigsegv-2.4
@@ -21,7 +21,6 @@ RDEPEND="virtual/libiconv
 		 fastcgi? ( dev-libs/fcgi )
 		 gdbm? ( sys-libs/gdbm )
 		 gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6:2.0 )
-		 pari? ( >=sci-mathematics/pari-2.3.0 )
 		 postgres? ( >=dev-db/postgresql-8.0 )
 		 readline? ( >=sys-libs/readline-5.0 )
 		 pcre? ( dev-libs/libpcre )
@@ -107,7 +106,6 @@ src_configure() {
 	use fastcgi && enable_modules fastcgi
 	use gdbm && enable_modules gdbm
 	use gtk && enable_modules gtk2
-	use pari && enable_modules pari
 	use pcre && enable_modules pcre
 	use svm && enable_modules libsvm
 	use zlib && enable_modules zlib

@@ -28,11 +28,6 @@ RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	tools? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508-r2
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)"
 
 pkg_setup() {
 	use tools && python-single-r1_pkg_setup

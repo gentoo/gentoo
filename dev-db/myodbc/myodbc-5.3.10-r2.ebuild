@@ -25,9 +25,6 @@ IUSE=""
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
 	~virtual/libmysqlclient-18[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-	)
 	!>=dev-db/mariadb-10.2.0[client-libs(+)]
 	!dev-db/mariadb-connector-c[mysqlcompat(-)]
 "
