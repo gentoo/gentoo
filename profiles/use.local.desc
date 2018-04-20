@@ -1607,7 +1607,6 @@ dev-libs/xmlsec:openssl - Install xmlsec-openssl library
 dev-libs/yaz:ziffy - Install ziffy, a promiscuous Z39.50 APDU sniffer
 dev-lisp/clisp:hyperspec - Use local hyperspec instead of online version
 dev-lisp/clisp:new-clx - Build CLISP with support for the NEW-CLX module which is a -C binding to the Xorg libraries
-dev-lisp/clisp:pari - Build CLISP with support for the PARI Computer Algebra System
 dev-lisp/clisp:svm - Build CLISP with support for the Support Vector Machine module
 dev-lisp/ecls:gengc - Use generational garbage collection (experimental)
 dev-lisp/ecls:libatomic - Use dev-libs/libatomic_ops library
@@ -4970,7 +4969,6 @@ sci-mathematics/octave:openssl - Use dev-libs/openssl for low level hash functio
 sci-mathematics/octave:qhull - Add support for media-libs/qhull, to allow `delaunay', `convhull', and related functions
 sci-mathematics/octave:qrupdate - Add support for sci-libs/qrupdatefor QR and Cholesky update functions
 sci-mathematics/octave:sparse - Add enhanced support for sparse matrix algebra with SuiteSparse
-sci-mathematics/pari:data - Add additional data (elldata, galdata, seadata, nftables)
 sci-mathematics/singular:boost - Compile against external boost headers (dev-libs/boost)
 sci-mathematics/unuran:prng - Use sci-mathematics/prng library
 sci-mathematics/unuran:rngstreams - Use sci-mathematics/rngstreams library
