@@ -11,7 +11,7 @@ MY_PN="Bottleneck"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Fast NumPy array functions written in Cython"
-HOMEPAGE="https://pypi.org/project/Bottleneck"
+HOMEPAGE="https://pypi.org/project/Bottleneck/"
 SRC_URI="mirror://pypi/B/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"

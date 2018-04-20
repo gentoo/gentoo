@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="An event driven meteor client"
-HOMEPAGE="https://pypi.org/project/python-meteor https://github.com/hharnisc/python-meteor"
+HOMEPAGE="https://pypi.org/project/python-meteor/ https://github.com/hharnisc/python-meteor"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

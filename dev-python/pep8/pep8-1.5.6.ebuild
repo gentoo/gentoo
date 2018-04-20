@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python style guide checker"
-HOMEPAGE="https://github.com/jcrocholl/pep8 https://pypi.org/project/pep8"
+HOMEPAGE="https://github.com/jcrocholl/pep8 https://pypi.org/project/pep8/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

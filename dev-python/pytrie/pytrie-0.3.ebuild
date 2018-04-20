@@ -10,7 +10,7 @@ MY_PN="PyTrie"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A pure Python implementation of the trie data structure."
-HOMEPAGE="https://github.com/gsakkis/pytrie/ https://pypi.org/project/PyTrie"
+HOMEPAGE="https://github.com/gsakkis/pytrie/ https://pypi.org/project/PyTrie/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

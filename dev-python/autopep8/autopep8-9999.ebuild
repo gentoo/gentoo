@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 git-2
 
 DESCRIPTION="Automatically formats Python code to conform to the PEP 8 style guide"
-HOMEPAGE="https://github.com/hhatto/autopep8 https://pypi.org/project/autopep8"
+HOMEPAGE="https://github.com/hhatto/autopep8 https://pypi.org/project/autopep8/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/hhatto/${PN}.git"
 

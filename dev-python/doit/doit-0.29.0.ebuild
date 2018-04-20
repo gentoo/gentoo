@@ -8,7 +8,7 @@ inherit eutils distutils-r1
 RESTRICT="test" # can't work as it imports nonexistant modules from coverage
 
 DESCRIPTION="Automation tool"
-HOMEPAGE="http://python-doit.sourceforge.net/ https://pypi.org/project/doit"
+HOMEPAGE="http://python-doit.sourceforge.net/ https://pypi.org/project/doit/"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

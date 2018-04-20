@@ -11,7 +11,7 @@ MY_PN="PyScaffold"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for easily putting up the scaffold of a Python project"
-HOMEPAGE="https://pypi.org/project/PyScaffold http://pyscaffold.readthedocs.org/"
+HOMEPAGE="https://pypi.org/project/PyScaffold/ http://pyscaffold.readthedocs.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 
 SLOT="0"

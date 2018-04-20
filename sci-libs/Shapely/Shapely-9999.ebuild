@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Geometric objects, predicates, and operations"
-HOMEPAGE="https://pypi.org/project/Shapely"
+HOMEPAGE="https://pypi.org/project/Shapely/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/Toblerity/${PN}.git"
 

@@ -11,7 +11,7 @@ DESCRIPTION="Pure Python toolkit for creating GUI's using web technology"
 HOMEPAGE="
 	https://flexx.readthedocs.org
 	https://github.com/zoofio/flexx
-	https://pypi.org/project/flexx"
+	https://pypi.org/project/flexx/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"

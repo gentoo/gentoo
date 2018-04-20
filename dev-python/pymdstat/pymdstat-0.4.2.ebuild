@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python library to parse Linux /proc/mdstat"
 HOMEPAGE="https://github.com/nicolargo/pymdstat
-	https://pypi.org/project/pymdstat"
+	https://pypi.org/project/pymdstat/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

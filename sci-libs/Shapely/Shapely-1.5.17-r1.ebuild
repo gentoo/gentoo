@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Geometric objects, predicates, and operations"
-HOMEPAGE="https://pypi.org/project/Shapely"
+HOMEPAGE="https://pypi.org/project/Shapely/"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3

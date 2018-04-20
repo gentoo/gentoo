@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx flag-o-matic
 
 DESCRIPTION="Enthought Tool Suite: Drawing and interaction packages"
 HOMEPAGE="http://docs.enthought.com/enable/
-	https://pypi.org/project/enable
+	https://pypi.org/project/enable/
 	https://github.com/enthought/enable"
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/enthought/enable/archive/${PV}.tar.gz -> ${P}.tar.gz"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="package to manage versions by scm tags via setuptools"
-HOMEPAGE="https://github.com/pypa/setuptools_scm https://pypi.org/project/setuptools_scm"
+HOMEPAGE="https://github.com/pypa/setuptools_scm https://pypi.org/project/setuptools_scm/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

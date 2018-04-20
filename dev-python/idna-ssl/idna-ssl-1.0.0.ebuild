@@ -11,7 +11,7 @@ MY_PN=${PN/-/_}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Patch ssl.match_hostname for Unicode(idna) domains support"
-HOMEPAGE="https://github.com/aio-libs/idna-ssl https://pypi.org/project/idna_ssl"
+HOMEPAGE="https://github.com/aio-libs/idna-ssl https://pypi.org/project/idna_ssl/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"

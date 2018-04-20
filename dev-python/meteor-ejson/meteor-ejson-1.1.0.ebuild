@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Encoder and Decoder for Extended JSON (EJSON) as used in Meteor and DDP"
-HOMEPAGE="https://pypi.org/project/meteor-ejson https://github.com/lyschoening/meteor-ejson-python"
+HOMEPAGE="https://pypi.org/project/meteor-ejson/ https://github.com/lyschoening/meteor-ejson-python"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
