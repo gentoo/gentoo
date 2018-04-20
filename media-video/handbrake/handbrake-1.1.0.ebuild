@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils gnome2-utils python-any-r1
+inherit autotools eutils gnome2-utils python-any-r1 xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
@@ -99,7 +99,7 @@ src_prepare() {
 	default
 
 	# Get rid of libav specific code when using ffmpeg
-	use libav || eapply -R "${FILESDIR}/${PN}-0.10.3-nolibav.patch"
+	use libav || eapply -R "${FILESDIR}/${PN}-1.1.0-nolibav.patch"
 
 	cd "${S}/gtk"
 	# Don't run autogen.sh.
@@ -145,6 +145,7 @@ pkg_postinst() {
 	fi
 
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_preinst() {
@@ -153,4 +154,5 @@ pkg_preinst() {
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
