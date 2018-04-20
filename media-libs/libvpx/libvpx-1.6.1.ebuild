@@ -32,7 +32,7 @@ REQUIRED_USE="
 # Disable test phase when USE="-test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND=""
 DEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )

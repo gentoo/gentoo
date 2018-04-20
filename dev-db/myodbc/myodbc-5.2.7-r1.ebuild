@@ -20,11 +20,7 @@ IUSE=""
 
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
-	>=virtual/mysql-5.5[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-	)
-"
+	>=virtual/mysql-5.5[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
 

@@ -26,10 +26,6 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 # gtk-doc-am to install API docs
 RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20140508-r5
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)
 	!<media-libs/gst-plugins-base-0.10.26"
 	# ^^ queue2 move, mustn't have both libgstcoreleements.so and libgstqueue2.so at runtime providing the element at once
 

@@ -76,10 +76,6 @@ CDEPEND="
 			kinit? ( !app-crypt/heimdal )
 			)
 		cxx? ( dev-libs/cyrus-sasl:= )
-	)
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r3
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
 DEPEND="${CDEPEND}
 	sys-apps/groff"

@@ -33,10 +33,6 @@ RDEPEND="${COMMON_DEPEND}
 	java? (
 		>=virtual/jre-1.5
 	)
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r5
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.33-CVE-2017-14062.patch

@@ -31,12 +31,10 @@ CDEPEND="
 	>=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}]
 	afs? ( net-fs/openafs )
 	hdb-ldap? ( >=net-nds/openldap-2.3.0 )
-	X? ( x11-libs/libX11
+	X? (
+		x11-libs/libX11
 		x11-libs/libXau
-		x11-libs/libXt )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
+		x11-libs/libXt
 	)
 	!!app-crypt/mit-krb5
 	!!app-crypt/mit-krb5-appl"

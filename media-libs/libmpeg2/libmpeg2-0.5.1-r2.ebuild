@@ -15,12 +15,12 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-
 IUSE="sdl static-libs X"
 
 RDEPEND="sdl? ( media-libs/libsdl )
-	X? ( x11-libs/libXv
+	X? (
+		x11-libs/libXv
 		x11-libs/libICE
 		x11-libs/libSM
-		x11-libs/libXt )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r9
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+		x11-libs/libXt
+	)"
 DEPEND="${RDEPEND}
 	X? ( x11-proto/xextproto )"
 
