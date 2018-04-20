@@ -2868,7 +2868,7 @@ dev-lang/luajit 2.0.2 2.0.3-r1 2.0.4: Just-In-Time Compiler for the Lua programm
 dev-lang/mercury 13.05.2 14.01.1: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 13.05.2 14.01.1: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
-dev-lang/mono 4.4.1.0: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/ocaml 4.04.2: Type-inferring functional programming language descended from the ML family
