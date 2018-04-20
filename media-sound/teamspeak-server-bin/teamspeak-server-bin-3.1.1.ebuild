@@ -24,8 +24,12 @@ RESTRICT="mirror strip"
 
 S="${WORKDIR}/teamspeak3-server_linux"
 
+QA_PREBUILT="opt/teamspeak3-server/libts3db_sqlite3.so
+		opt/teamspeak3-server/ts3server"
+
 pkg_setup() {
-	enewuser teamspeak
+	enewgroup teamspeak
+	enewuser teamspeak -1 -1 /opt/teamspeak3-server teamspeak
 }
 
 src_unpack() {
