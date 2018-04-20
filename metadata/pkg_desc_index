@@ -3524,7 +3524,7 @@ dev-perl/Curses-UI 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
-dev-perl/DBD-SQLite 1.500.0 1.540.0-r1: Self Contained RDBMS in a DBI Driver
+dev-perl/DBD-SQLite 1.540.0-r1: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.41.0 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
@@ -4148,7 +4148,7 @@ dev-perl/Task-Weaken 1.40.0-r1: Ensure that a platform has weaken support
 dev-perl/Template-DBI 2.650.0-r2: DBI plugin for the Template Toolkit
 dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Latex 3.60.0: LaTeX support for the Template Toolkit
-dev-perl/Template-Toolkit 2.260.0 2.270.0-r1: The Template Toolkit
+dev-perl/Template-Toolkit 2.270.0-r1: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-ProgressBar 2.170.0: Perl module for Term-ProgressBar
