@@ -16,11 +16,14 @@ RDEPEND=""
 
 DOCS=( AUTHORS Changes README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-getrandom-detection.patch
+	"${FILESDIR}"/${P}-posix-shell.patch
+	"${FILESDIR}"/${P}-gentoo-dash.patch  # bug 622360
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-getrandom-detection.patch
-	epatch "${FILESDIR}"/${P}-posix-shell.patch
-	epatch "${FILESDIR}"/${P}-gentoo-dash.patch  # bug 622360
-	eapply_user
+	default
 	eautoreconf
 }
 
