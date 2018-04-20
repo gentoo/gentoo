@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A Python Mocking and Patching Library for Testing"
-HOMEPAGE="http://www.voidspace.org.uk/python/mock/ https://pypi.org/project/mock"
+HOMEPAGE="http://www.voidspace.org.uk/python/mock/ https://pypi.org/project/mock/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

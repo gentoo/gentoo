@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A low-level ctypes wrapper for Ed25519 digital signatures."
-HOMEPAGE="https://bitbucket.org/dholth/ed25519ll/ https://pypi.org/project/ed25519ll"
+HOMEPAGE="https://bitbucket.org/dholth/ed25519ll/ https://pypi.org/project/ed25519ll/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

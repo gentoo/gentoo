@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A simple statsd client"
 HOMEPAGE="https://github.com/jsocol/pystatsd
-	https://pypi.org/project/statsd"
+	https://pypi.org/project/statsd/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

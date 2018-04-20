@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Allows re-usable apps to provide sets of templates and staticfiles"
-HOMEPAGE="https://pypi.org/project/aldryn-boilerplates"
+HOMEPAGE="https://pypi.org/project/aldryn-boilerplates/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

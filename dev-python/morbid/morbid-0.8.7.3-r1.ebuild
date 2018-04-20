@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A Twisted-based publish/subscribe messaging server that uses the STOMP protocol"
-HOMEPAGE="https://pypi.org/project/morbid"
+HOMEPAGE="https://pypi.org/project/morbid/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

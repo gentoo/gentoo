@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Twisted-based Tor controller client, with state-tracking and config abstractions"
-HOMEPAGE="https://github.com/meejah/txtorcon https://pypi.org/project/txtorcon https://txtorcon.readthedocs.org"
+HOMEPAGE="https://github.com/meejah/txtorcon https://pypi.org/project/txtorcon/ https://txtorcon.readthedocs.org"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

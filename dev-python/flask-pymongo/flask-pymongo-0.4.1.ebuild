@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="PyMongo support for Flask"
-HOMEPAGE="https://pypi.org/project/Flask-PyMongo"
+HOMEPAGE="https://pypi.org/project/Flask-PyMongo/"
 SRC_URI="https://github.com/dcrosta/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

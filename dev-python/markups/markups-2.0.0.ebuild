@@ -14,7 +14,7 @@ DESCRIPTION="A wrapper around various text markups"
 HOMEPAGE="
 	http://pythonhosted.org/Markups/
 	https://github.com/retext-project/pymarkups
-	https://pypi.org/project/Markups"
+	https://pypi.org/project/Markups/"
 SRC_URI="mirror://pypi/M/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

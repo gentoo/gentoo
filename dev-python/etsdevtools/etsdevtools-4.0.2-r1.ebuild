@@ -10,7 +10,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Enthought Tool Suite: Tools to support Python development"
 HOMEPAGE="https://github.com/enthought/etsdevtools
 	http://docs.enthought.com/etsdevtools/
-	https://pypi.org/project/etsdevtools"
+	https://pypi.org/project/etsdevtools/"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

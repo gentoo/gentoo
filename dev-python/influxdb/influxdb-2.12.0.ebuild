@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="InfluxDB client"
-HOMEPAGE="https://github.com/influxdb/influxdb-python https://pypi.org/project/influxdb"
+HOMEPAGE="https://github.com/influxdb/influxdb-python https://pypi.org/project/influxdb/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

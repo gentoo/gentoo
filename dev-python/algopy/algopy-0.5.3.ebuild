@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Taylor Arithmetic Computation and Algorithmic Differentiation"
-HOMEPAGE="https://pypi.org/project/algopy http://packages.python.org/algopy"
+HOMEPAGE="https://pypi.org/project/algopy/ http://packages.python.org/algopy"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

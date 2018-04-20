@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="A nice-looking, customizable theme for Sphinx"
 HOMEPAGE="
 	https://github.com/irskep/sphinx-better-theme
-	https://pypi.org/project/sphinx-better-theme"
+	https://pypi.org/project/sphinx-better-theme/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

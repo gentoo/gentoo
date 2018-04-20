@@ -14,7 +14,7 @@ MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot/"
 SRC_URI="
 	mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~dolsen/distfiles/buildbot-1.1.0.docs.tar.xz

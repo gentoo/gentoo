@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Python implementation of the markdown markup language"
 HOMEPAGE="
 	http://www.freewisdom.org/projects/python-markdown
-	https://pypi.org/project/Markdown
+	https://pypi.org/project/Markdown/
 	https://pythonhosted.org/Markdown/
 	https://github.com/waylan/Python-Markdown"
 SRC_URI="mirror://pypi/M/${PN^}/${P^}.tar.gz"

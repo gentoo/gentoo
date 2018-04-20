@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="POSIX ACLs (Access Control Lists) for Python"
 HOMEPAGE="https://pylibacl.k1024.org/
-	https://pypi.org/project/pylibacl"
+	https://pypi.org/project/pylibacl/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

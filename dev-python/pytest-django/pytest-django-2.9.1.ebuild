@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A Django plugin for py.test"
-HOMEPAGE="https://pypi.org/project/pytest-django https://pytest-django.readthedocs.org https://github.com/pytest-dev/pytest-django"
+HOMEPAGE="https://pypi.org/project/pytest-django/ https://pytest-django.readthedocs.org https://github.com/pytest-dev/pytest-django"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

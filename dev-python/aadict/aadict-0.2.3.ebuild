@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="An auto-attribute dict (and a couple of other useful dict functions)"
-HOMEPAGE="https://github.com/metagriffin/aadict https://pypi.org/project/aadict"
+HOMEPAGE="https://github.com/metagriffin/aadict https://pypi.org/project/aadict/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"

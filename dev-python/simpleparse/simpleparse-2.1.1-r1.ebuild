@@ -9,7 +9,7 @@ MY_PN="SimpleParse"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A Parser Generator for mxTextTools"
-HOMEPAGE="http://simpleparse.sourceforge.net https://pypi.org/project/SimpleParse"
+HOMEPAGE="http://simpleparse.sourceforge.net https://pypi.org/project/SimpleParse/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="eGenixPublic-1.1 HPND"

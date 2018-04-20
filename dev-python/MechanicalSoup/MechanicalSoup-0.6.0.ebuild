@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="A python library for automating interaction with web sites"
-HOMEPAGE="https://pypi.org/project/MechanicalSoup"
+HOMEPAGE="https://pypi.org/project/MechanicalSoup/"
 
 LICENSE="MIT"
 SLOT="0"

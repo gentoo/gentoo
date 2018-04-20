@@ -11,7 +11,7 @@ MY_PN="XlsxWriter"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python module for creating Excel XLSX files"
-HOMEPAGE="https://pypi.org/project/XlsxWriter https://github.com/jmcnamara/XlsxWriter"
+HOMEPAGE="https://pypi.org/project/XlsxWriter/ https://github.com/jmcnamara/XlsxWriter"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
