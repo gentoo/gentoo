@@ -1,5 +1,5 @@
---- ext/systemd/puppet.service	2017-02-02 18:28:58.000000000 -0600
-+++ ext/systemd/puppet.service	2017-03-09 10:56:59.091489324 -0600
+--- a/ext/systemd/puppet.service
++++ b/ext/systemd/puppet.service
 @@ -17,7 +17,7 @@
  EnvironmentFile=-/etc/sysconfig/puppetagent
  EnvironmentFile=-/etc/sysconfig/puppet

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 USE_RUBY="ruby22 ruby23 ruby24"
 
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_DOC="doc:all"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit eutils user ruby-fakegem versionator
+inherit user ruby-fakegem versionator
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="http://puppetlabs.com/"
@@ -66,13 +66,13 @@ all_ruby_prepare() {
 	rm spec/lib/matchers/json.rb $( grep -Rl matchers/json spec) || die
 
 	# can't be run within portage.
-	epatch "${FILESDIR}/puppet-fix-tests-4.7.0.patch"
+	eapply "${FILESDIR}/puppet-fix-tests-4.7.0.patch"
 
 	# fix systemd path
-	epatch "${FILESDIR}/puppet-systemd.patch"
+	eapply "${FILESDIR}/puppet-systemd.patch"
 
 	# backport upstream fix for ruby 2.3.6 compatibility
-	epatch "${FILESDIR}/puppet-4-webrick-ruby.patch"
+	eapply "${FILESDIR}/puppet-4-webrick-ruby.patch"
 
 	# Avoid specs that can only run in the puppet.git repository. This
 	# should be narrowed down to the specific specs.

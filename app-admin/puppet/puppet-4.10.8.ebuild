@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 USE_RUBY="ruby22 ruby23"
 
@@ -9,7 +9,7 @@ USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit xemacs-elisp-common eutils user ruby-fakegem versionator
+inherit xemacs-elisp-common user ruby-fakegem versionator
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="http://puppetlabs.com/"
@@ -68,13 +68,13 @@ all_ruby_prepare() {
 	rm spec/lib/matchers/json.rb $( grep -Rl matchers/json spec) || die
 
 	# can't be run within portage.
-	epatch "${FILESDIR}/puppet-fix-tests-4.7.0.patch"
+	eapply "${FILESDIR}/puppet-fix-tests-4.7.0.patch"
 
 	# fix systemd path
-	epatch "${FILESDIR}/puppet-systemd.patch"
+	eapply "${FILESDIR}/puppet-systemd.patch"
 
 	if use experimental; then
-		epatch "${FILESDIR}/43e2c935252b995134ce353e5e6312cf77aea480.patch"
+		eapply "${FILESDIR}/43e2c935252b995134ce353e5e6312cf77aea480.patch"
 	fi
 
 	# Use working version of mocha
