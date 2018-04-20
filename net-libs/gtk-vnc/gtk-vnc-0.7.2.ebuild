@@ -3,11 +3,10 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 )
 VALA_MIN_API_VERSION="0.16"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 multibuild python-r1 vala
+inherit gnome2 multibuild vala
 
 DESCRIPTION="VNC viewer widget for GTK"
 HOMEPAGE="https://wiki.gnome.org/Projects/gtk-vnc"
@@ -15,9 +14,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/gtk-vnc"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="examples +gtk3 +introspection pulseaudio python sasl vala"
+IUSE="examples +gtk3 +introspection pulseaudio sasl vala"
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
 	vala? ( gtk3 introspection )
 "
 
@@ -34,9 +32,6 @@ COMMON_DEPEND="
 	gtk3? ( >=x11-libs/gtk+-2.91.3:3[introspection?] )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.4:= )
 	pulseaudio? ( media-sound/pulseaudio )
-	python? (
-		${PYTHON_DEPS}
-		>=dev-python/pygtk-2:2[${PYTHON_USEDEP}] )
 	sasl? ( dev-libs/cyrus-sasl )
 "
 RDEPEND="${COMMON_DEPEND}"
@@ -60,10 +55,6 @@ compute_variants() {
 src_prepare() {
 	prepare() {
 		mkdir -p "${BUILD_DIR}" || die
-
-		if [[ ${MULTIBUILD_ID} == 2.0 ]] && use python ; then
-			python_foreach_impl prepare
-		fi
 	}
 
 	local MULTIBUILD_VARIANTS
@@ -90,24 +81,11 @@ src_configure() {
 		--disable-vala
 	)
 
-	configure_python() {
-		ECONF_SOURCE="${S}" gnome2_src_configure \
-			${myconf[@]} \
-			--with-gtk=2.0 \
-			--with-python
-	}
-
 	configure_normal() {
 		ECONF_SOURCE="${S}" gnome2_src_configure \
 			${myconf[@]} \
 			--with-gtk=${MULTIBUILD_VARIANT} \
 			--without-python
-
-		# for gtk3, python support is via gobject-introspection
-		# Ex: from gi.repository import GtkVnc
-		if [[ ${MULTIBUILD_ID} == 2.0 ]] && use python ; then
-			python_foreach_impl run_in_build_dir configure_python
-		fi
 	}
 
 	local MULTIBUILD_VARIANTS
@@ -116,23 +94,8 @@ src_configure() {
 }
 
 src_compile() {
-	compile_python() {
-		cd "${BUILD_DIR}"/src || die
-		# CPPFLAGS set to help find includes for gvnc.override
-		emake gtkvnc.la \
-			VPATH="${S}/src:${GTK2_BUILDDIR}/src:${BUILD_DIR}/src" \
-			CPPFLAGS="${CPPFLAGS} -I${GTK2_BUILDDIR}/src" \
-			gtkvnc_la_LIBADD="${GTK2_BUILDDIR}/src/libgtk-vnc-1.0.la" \
-			gtkvnc_la_DEPENDENCIES="${GTK2_BUILDDIR}/src/libgtk-vnc-1.0.la"
-	}
-
 	compile_normal() {
 		gnome2_src_compile
-
-		if [[ ${MULTIBUILD_ID} == 2.0 ]] && use python ; then
-			local GTK2_BUILDDIR="${BUILD_DIR}"
-			python_foreach_impl run_in_build_dir compile_python
-		fi
 	}
 
 	local MULTIBUILD_VARIANTS
@@ -148,22 +111,8 @@ src_test() {
 }
 
 src_install() {
-	install_python() {
-		cd "${BUILD_DIR}"/src || die
-		emake install-pyexecLTLIBRARIES DESTDIR="${D}" \
-			VPATH="${S}/src:${GTK2_BUILDDIR}/src:${BUILD_DIR}/src" \
-			CPPFLAGS="${CPPFLAGS} -I${GTK2_BUILDDIR}/src" \
-			gtkvnc_la_LIBADD="${GTK2_BUILDDIR}/src/libgtk-vnc-1.0.la" \
-			gtkvnc_la_DEPENDENCIES="${GTK2_BUILDDIR}/src/libgtk-vnc-1.0.la"
-	}
-
 	install_normal() {
 		gnome2_src_install
-
-		if [[ ${MULTIBUILD_ID} == 2.0 ]] && use python ; then
-			local GTK2_BUILDDIR="${BUILD_DIR}"
-			python_foreach_impl run_in_build_dir install_python
-		fi
 	}
 
 	local MULTIBUILD_VARIANTS
