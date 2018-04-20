@@ -192,7 +192,6 @@ DEPEND="
 # prefix: first need to implement something for #196294
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mysql )
-	abi_x86_32? ( !app-emulation/emul-linux-x86-db[-abi_x86_32(-)] )
 "
 
 # Having different flavours at the same time is not a good idea
