@@ -1,5 +1,5 @@
---- gdb-1461.2/src/gdb/macosx/macosx-nat-inferior.c
-+++ gdb-1461.2/src/gdb/macosx/macosx-nat-inferior.c
+--- a/gdb/macosx/macosx-nat-inferior.c
++++ b/gdb/macosx/macosx-nat-inferior.c
 @@ -60,13 +60,17 @@
  #include <sys/sysctl.h>
  #include <sys/proc.h>
@@ -18,8 +18,8 @@
  
  #include "macosx-nat-dyld.h"
  #include "macosx-nat-inferior.h"
---- gdb-1461.2/src/gdb/macosx/macosx-nat-info.c
-+++ gdb-1461.2/src/gdb/macosx/macosx-nat-info.c
+--- a/gdb/macosx/macosx-nat-info.c
++++ b/gdb/macosx/macosx-nat-info.c
 @@ -45,6 +45,22 @@
  #include "macosx-nat-inferior.h"
  #include "macosx-nat-inferior-debug.h"
@@ -43,8 +43,8 @@
  extern macosx_inferior_status *macosx_status;
  
  #define CHECK_ARGS(what, args) \
---- gdb-1461.2/src/gdb/macosx/macosx-nat-infthread.c
-+++ gdb-1461.2/src/gdb/macosx/macosx-nat-infthread.c
+--- a/gdb/macosx/macosx-nat-infthread.c
++++ b/gdb/macosx/macosx-nat-infthread.c
 @@ -36,8 +36,10 @@
  #include <sys/dir.h>
  #include <inttypes.h>
@@ -56,8 +56,8 @@
  
  #include "macosx-nat-inferior.h"
  #include "macosx-nat-inferior-util.h"
---- gdb-1461.2/src/gdb/macosx/macosx-tdep.c
-+++ gdb-1461.2/src/gdb/macosx/macosx-tdep.c
+--- a/gdb/macosx/macosx-tdep.c
++++ b/gdb/macosx/macosx-tdep.c
 @@ -63,7 +63,6 @@
  #include "gdbcore.h"
  
@@ -66,8 +66,8 @@
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <sys/param.h>
---- gdb-1461.2/src/gdb/remote.c
-+++ gdb-1461.2/src/gdb/remote.c
+--- a/gdb/remote.c
++++ b/gdb/remote.c
 @@ -62,7 +62,6 @@
  #include "macosx-nat-dyld.h"
  #include "macosx-nat-dyld-process.h"
@@ -90,8 +90,8 @@
  }
  
  static void
---- gdb-1461.2/src/gdb/symfile.c
-+++ gdb-1461.2/src/gdb/symfile.c
+--- a/gdb/symfile.c
++++ b/gdb/symfile.c
 @@ -67,7 +67,6 @@
  #include <ctype.h>
  #include <time.h>
@@ -100,8 +100,8 @@
  
  #include <sys/mman.h>
  
---- gdb-1461.2/src/gdb/utils.c
-+++ gdb-1461.2/src/gdb/utils.c
+--- a/gdb/utils.c
++++ b/gdb/utils.c
 @@ -27,7 +27,6 @@
  #include "gdb_string.h"
  #include "event-top.h"
