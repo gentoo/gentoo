@@ -14,21 +14,27 @@ SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
+IUSE="systemd"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
-PATCHES=( "${FILESDIR}"/config-full-paths-r8.patch )
+PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
 
 pkg_setup() {
 	enewgroup dnscrypt
 	enewuser dnscrypt -1 -1 /var/empty dnscrypt
 }
 
-src_compile() {
+src_prepare() {
+	default
 	# Create directory structure suitable for building
 	mkdir -p "src/${EGO_PN%/*}" || die
 	mv "${PN}" "src/${EGO_PN}" || die
 	mv "vendor" "src/" || die
-	golang-build_src_compile
+
+	if use systemd; then
+		sed -i 's|\['\''127\.0\.0\.1:53'\'', '\''\[::1\]:53'\''\]|\[\]|' \
+			"src/${EGO_PN}"/example-dnscrypt-proxy.toml || die
+	fi
 }
 
 src_install() {
@@ -36,17 +42,16 @@ src_install() {
 
 	insinto /etc/dnscrypt-proxy
 	newins "src/${EGO_PN}"/example-dnscrypt-proxy.toml dnscrypt-proxy.toml
-	doins "src/${EGO_PN}"/example-{blacklist.txt,cloaking-rules.txt,forwarding-rules.txt}
+	doins "src/${EGO_PN}"/example-{blacklist.txt,whitelist.txt}
+	doins "src/${EGO_PN}"/example-{cloaking-rules.txt,forwarding-rules.txt}
 
 	insinto "/usr/share/dnscrypt-proxy"
 	doins -r "utils/generate-domains-blacklists/."
 
 	newinitd "${FILESDIR}"/dnscrypt-proxy.initd-r2 dnscrypt-proxy
 	newconfd "${FILESDIR}"/dnscrypt-proxy.confd-r2 dnscrypt-proxy
-	systemd_newunit "${FILESDIR}"/${PN}.service-r2 dnscrypt-proxy.service
+	systemd_dounit systemd/dnscrypt-proxy.service
 	systemd_dounit systemd/dnscrypt-proxy.socket
-
-	keepdir /var/log/dnscrypt-proxy
 
 	einstalldocs
 }
@@ -72,10 +77,15 @@ pkg_postinst() {
 	done
 
 	if systemd_is_booted || has_version sys-apps/systemd; then
-		elog "To use systemd socket activation with ${PN} you must"
-		elog "set listen_addresses setting to \"[]\" in the config file"
+		elog "Starting with version 2.0.9 ${PN} unit changed:"
+		elog "It now runs as an unprivileged user with dynamic UID/GID"
+		elog "and privately stores log and cache files"
+		elog
+		elog "See man:systemd.exec, man:nss-systemd"
+		elog
 		elog "Edit ${PN}.socket if you need to change port and address"
 		elog
+
 	fi
 
 	elog "After starting the service you will need to update your"
