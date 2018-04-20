@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="HTTP/2 framing layer for Python"
-HOMEPAGE="https://python-hyper.org/en/latest/ https://pypi.org/project/hyperframe"
+HOMEPAGE="https://python-hyper.org/en/latest/ https://pypi.org/project/hyperframe/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

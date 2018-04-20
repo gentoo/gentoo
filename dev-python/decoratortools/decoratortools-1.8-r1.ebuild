@@ -11,7 +11,7 @@ MY_PN="DecoratorTools"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Class, function, and metaclass decorators"
-HOMEPAGE="https://pypi.org/project/DecoratorTools"
+HOMEPAGE="https://pypi.org/project/DecoratorTools/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="|| ( PSF-2 ZPL )"

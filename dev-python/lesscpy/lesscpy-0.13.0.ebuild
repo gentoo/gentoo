@@ -10,7 +10,7 @@ inherit distutils-r1
 RESTRICT="test"
 
 DESCRIPTION="A compiler written in Python for the LESS language"
-HOMEPAGE="https://pypi.org/project/lesscpy"
+HOMEPAGE="https://pypi.org/project/lesscpy/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Signal dispatching mechanism for Python"
-HOMEPAGE="https://pypi.org/project/Louie"
+HOMEPAGE="https://pypi.org/project/Louie/"
 SRC_URI="mirror://pypi/L/${PN^}/${P^}.tar.gz"
 
 LICENSE="BSD"

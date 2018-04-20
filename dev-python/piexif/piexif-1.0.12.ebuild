@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Exif manipulation with pure Python"
 HOMEPAGE="https://github.com/hMatoba/Piexif
-	https://pypi.org/project/piexif"
+	https://pypi.org/project/piexif/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"

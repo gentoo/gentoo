@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1 user
 
 DESCRIPTION="Python library to write fuzzing programs"
-HOMEPAGE="https://bitbucket.org/haypo/fusil/wiki/Home https://pypi.org/project/fusil"
+HOMEPAGE="https://bitbucket.org/haypo/fusil/wiki/Home https://pypi.org/project/fusil/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

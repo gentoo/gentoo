@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A Python API for libmagic, the library behind the Unix file command"
-HOMEPAGE="https://pypi.org/project/filemagic https://github.com/aliles/filemagic"
+HOMEPAGE="https://pypi.org/project/filemagic/ https://github.com/aliles/filemagic"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

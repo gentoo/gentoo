@@ -10,7 +10,7 @@ MY_PN="TTFQuery"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Font metadata and glyph outline extraction utility library"
-HOMEPAGE="http://ttfquery.sourceforge.net/ https://pypi.org/project/TTFQuery"
+HOMEPAGE="http://ttfquery.sourceforge.net/ https://pypi.org/project/TTFQuery/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

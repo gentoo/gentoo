@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Easily test your HTTP library against a local copy of httpbin"
 HOMEPAGE="https://github.com/kevin1024/pytest-httpbin
-	https://pypi.org/project/pytest-httpbin"
+	https://pypi.org/project/pytest-httpbin/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

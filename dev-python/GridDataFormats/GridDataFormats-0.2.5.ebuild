@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Reading and writing of data on regular grids in Python"
-HOMEPAGE="https://pypi.org/project/GridDataFormats https://github.com/MDAnalysis/GridDataFormats"
+HOMEPAGE="https://pypi.org/project/GridDataFormats/ https://github.com/MDAnalysis/GridDataFormats"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

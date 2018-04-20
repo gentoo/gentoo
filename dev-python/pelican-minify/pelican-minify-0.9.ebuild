@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="An HTML minification plugin for Pelican, the static site generator."
-HOMEPAGE="https://pypi.org/project/pelican-minify"
+HOMEPAGE="https://pypi.org/project/pelican-minify/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Unlicense"

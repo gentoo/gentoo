@@ -11,7 +11,7 @@ RESTRICT="test"
 inherit distutils-r1
 
 DESCRIPTION="A pep8 equivalent for bash scripts"
-HOMEPAGE="https://pypi.org/project/bashate"
+HOMEPAGE="https://pypi.org/project/bashate/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

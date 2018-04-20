@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Syntax highlighting and autocompletion for the Python interpreter"
-HOMEPAGE="https://www.bpython-interpreter.org/ https://github.com/bpython/bpython https://pypi.org/project/bpython"
+HOMEPAGE="https://www.bpython-interpreter.org/ https://github.com/bpython/bpython https://pypi.org/project/bpython/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

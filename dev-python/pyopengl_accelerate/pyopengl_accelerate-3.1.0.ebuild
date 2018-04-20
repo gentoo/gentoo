@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Accelerate module for PyOpenGL"
-HOMEPAGE="http://pyopengl.sourceforge.net/ https://pypi.org/project/PyOpenGL-accelerate"
+HOMEPAGE="http://pyopengl.sourceforge.net/ https://pypi.org/project/PyOpenGL-accelerate/"
 MY_PN="PyOpenGL-accelerate"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"

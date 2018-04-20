@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="TCP port monitoring utilities"
-HOMEPAGE="https://pypi.org/project/portend https://github.com/jaraco/portend"
+HOMEPAGE="https://pypi.org/project/portend/ https://github.com/jaraco/portend"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

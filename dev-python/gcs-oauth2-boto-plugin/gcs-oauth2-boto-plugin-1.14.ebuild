@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library"
-HOMEPAGE="https://pypi.org/project/gcs-oauth2-boto-plugin"
+HOMEPAGE="https://pypi.org/project/gcs-oauth2-boto-plugin/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

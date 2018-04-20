@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Line-by-line profiler"
 HOMEPAGE="
 	https://github.com/rkern/line_profiler
-	https://pypi.org/project/line_profiler"
+	https://pypi.org/project/line_profiler/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64"
 

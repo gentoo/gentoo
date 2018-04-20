@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+),sqlite"
 inherit distutils-r1 eutils
 
 DESCRIPTION="A library for property based testing"
-HOMEPAGE="https://github.com/DRMacIver/hypothesis https://pypi.org/project/hypothesis"
+HOMEPAGE="https://github.com/DRMacIver/hypothesis https://pypi.org/project/hypothesis/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"

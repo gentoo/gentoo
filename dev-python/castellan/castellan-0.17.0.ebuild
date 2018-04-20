@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="Generic Key Manager interface for OpenStack"
-HOMEPAGE="https://pypi.org/project/castellan"
+HOMEPAGE="https://pypi.org/project/castellan/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

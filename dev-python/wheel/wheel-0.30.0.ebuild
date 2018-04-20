@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1 eutils
 
 DESCRIPTION="A built-package format for Python"
-HOMEPAGE="https://pypi.org/project/wheel"
+HOMEPAGE="https://pypi.org/project/wheel/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1 eutils multilib-minimal versionator
 
 DESCRIPTION="A streaming protocol for test results"
-HOMEPAGE="https://launchpad.net/subunit https://pypi.org/project/python-subunit"
+HOMEPAGE="https://launchpad.net/subunit https://pypi.org/project/python-subunit/"
 SRC_URI="https://launchpad.net/${PN}/trunk/$(get_version_component_range 1-2)/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="iLO automation from python or shell"
-HOMEPAGE="https://pypi.org/project/python-hpilo"
+HOMEPAGE="https://pypi.org/project/python-hpilo/"
 SRC_URI="https://github.com/seveas/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

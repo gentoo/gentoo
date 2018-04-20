@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="Components injected into wsgi pipelines to intercept request/response flows."
-HOMEPAGE="https://pypi.org/project/oslo.middleware"
+HOMEPAGE="https://pypi.org/project/oslo.middleware/"
 SRC_URI="mirror://pypi/${PN:0:1}/oslo.middleware/oslo.middleware-${PV}.tar.gz"
 S="${WORKDIR}/oslo.middleware-${PV}"
 

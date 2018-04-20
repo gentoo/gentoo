@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Core of Hachoir framework: parse and edit binary files"
-HOMEPAGE="https://bitbucket.org/haypo/hachoir/wiki/hachoir-core https://pypi.org/project/hachoir-core"
+HOMEPAGE="https://bitbucket.org/haypo/hachoir/wiki/hachoir-core https://pypi.org/project/hachoir-core/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P=${PN}_${PV}
 
 DESCRIPTION="Simple Chart Library for Python"
-HOMEPAGE="https://pypi.org/project/Graphy"
+HOMEPAGE="https://pypi.org/project/Graphy/"
 SRC_URI="https://${PN}.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="Apache-2.0"

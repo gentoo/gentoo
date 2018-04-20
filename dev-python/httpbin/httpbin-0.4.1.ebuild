@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="HTTP Request and Response Service"
-HOMEPAGE="https://github.com/Runscope/httpbin https://pypi.org/project/httpbin"
+HOMEPAGE="https://github.com/Runscope/httpbin https://pypi.org/project/httpbin/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

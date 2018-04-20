@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="A logging replacement for Python"
 HOMEPAGE="https://logbook.readthedocs.io/en/stable/
 	https://github.com/getlogbook/logbook
-	https://pypi.org/project/Logbook"
+	https://pypi.org/project/Logbook/"
 SRC_URI="https://github.com/getlogbook/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

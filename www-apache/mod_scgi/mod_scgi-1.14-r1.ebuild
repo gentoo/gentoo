@@ -5,7 +5,7 @@ EAPI=5
 inherit apache-module eutils
 
 DESCRIPTION="Apache module for a replacement of the CGI protocol, similar to FastCGI"
-HOMEPAGE="http://python.ca/scgi/ https://pypi.org/project/scgi"
+HOMEPAGE="http://python.ca/scgi/ https://pypi.org/project/scgi/"
 SRC_URI="http://python.ca/scgi/releases/scgi-${PV}.tar.gz"
 
 LICENSE="CNRI"

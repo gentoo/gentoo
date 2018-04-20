@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit eutils distutils-r1
 
 DESCRIPTION="An implementation of JSON Reference for Python"
-HOMEPAGE="https://github.com/gazpachoking/jsonref https://pypi.org/project/jsonref"
+HOMEPAGE="https://github.com/gazpachoking/jsonref https://pypi.org/project/jsonref/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

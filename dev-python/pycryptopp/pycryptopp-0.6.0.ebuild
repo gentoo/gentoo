@@ -11,7 +11,7 @@ MY_P="${P}.${NUM}"
 
 DESCRIPTION="Python wrappers for a few algorithms from the Crypto++ library"
 HOMEPAGE="https://tahoe-lafs.org/trac/pycryptopp
-	https://pypi.org/project/pycryptopp"
+	https://pypi.org/project/pycryptopp/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

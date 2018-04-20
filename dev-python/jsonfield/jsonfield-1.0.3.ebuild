@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Reusable Django field that allows you to store validated JSON in your model"
-HOMEPAGE="https://pypi.org/project/jsonfield https://github.com/bradjasper/django-jsonfield"
+HOMEPAGE="https://pypi.org/project/jsonfield/ https://github.com/bradjasper/django-jsonfield"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

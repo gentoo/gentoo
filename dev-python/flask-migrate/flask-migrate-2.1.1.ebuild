@@ -10,7 +10,7 @@ MY_PN="Flask-Migrate"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="SQLAlchemy database migrations for Flask applications using Alembic"
-HOMEPAGE="https://pypi.org/project/Flask-Migrate"
+HOMEPAGE="https://pypi.org/project/Flask-Migrate/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="ANSI escape character sequences for colored terminal text & cursor positioning"
 HOMEPAGE="
-	https://pypi.org/project/colorama
+	https://pypi.org/project/colorama/
 	https://github.com/tartley/colorama"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

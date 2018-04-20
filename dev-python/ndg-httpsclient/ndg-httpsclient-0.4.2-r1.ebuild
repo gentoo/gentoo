@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL"
 HOMEPAGE="
 	https://github.com/cedadev/ndg_httpsclient/
-	https://pypi.org/project/ndg-httpsclient"
+	https://pypi.org/project/ndg-httpsclient/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/-/_}.tar.gz"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 DESCRIPTION="a fake file system that mocks the Python file system modules"
-HOMEPAGE="https://github.com/jmcgeheeiv/pyfakefs/ https://pypi.org/project/pyfakefs"
+HOMEPAGE="https://github.com/jmcgeheeiv/pyfakefs/ https://pypi.org/project/pyfakefs/"
 SRC_URI="https://github.com/jmcgeheeiv/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

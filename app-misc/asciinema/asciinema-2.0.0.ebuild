@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Command line recorder for asciinema.org service"
-HOMEPAGE="https://asciinema.org/ https://pypi.org/project/asciinema"
+HOMEPAGE="https://asciinema.org/ https://pypi.org/project/asciinema/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

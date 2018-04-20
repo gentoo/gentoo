@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="parses CSS3 Selectors and translates them to XPath 1.0"
 HOMEPAGE="https://cssselect.readthedocs.io/en/latest/
-	https://pypi.org/project/cssselect"
+	https://pypi.org/project/cssselect/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

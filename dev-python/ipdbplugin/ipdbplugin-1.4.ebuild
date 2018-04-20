@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Nose plugin to use iPdb instead of Pdb when tests fail"
-HOMEPAGE="https://pypi.org/project/ipdbplugin"
+HOMEPAGE="https://pypi.org/project/ipdbplugin/"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3

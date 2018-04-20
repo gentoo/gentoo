@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_{6,7},3_{3,4}} )
 inherit distutils-r1
 
 DESCRIPTION="Reusable app for adding a DurationField to Django"
-HOMEPAGE="https://pypi.org/project/django-durationfield"
+HOMEPAGE="https://pypi.org/project/django-durationfield/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

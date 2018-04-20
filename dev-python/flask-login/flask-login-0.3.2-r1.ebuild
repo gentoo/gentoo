@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Login session support for Flask"
-HOMEPAGE="https://pypi.org/project/Flask-Login"
+HOMEPAGE="https://pypi.org/project/Flask-Login/"
 SRC_URI="https://github.com/maxcountryman/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # pypi tarball is missing tests
 

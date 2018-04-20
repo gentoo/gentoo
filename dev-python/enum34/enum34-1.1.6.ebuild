@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python 3.4 Enum backported"
-HOMEPAGE="https://pypi.org/project/enum34"
+HOMEPAGE="https://pypi.org/project/enum34/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

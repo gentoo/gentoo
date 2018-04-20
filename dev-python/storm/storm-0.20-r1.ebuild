@@ -10,7 +10,7 @@ PYTHON_REQ_USE="sqlite?"
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="An object-relational mapper for Python developed at Canonical"
-HOMEPAGE="https://storm.canonical.com/ https://pypi.org/project/storm"
+HOMEPAGE="https://storm.canonical.com/ https://pypi.org/project/storm/"
 SRC_URI="https://launchpad.net/storm/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

@@ -10,7 +10,7 @@ inherit distutils-r1 eutils
 DESCRIPTION="Smart cards support in python"
 HOMEPAGE="https://pyscard.sourceforge.io/
 	https://github.com/LudovicRousseau/pyscard
-	https://pypi.org/project/pyscard"
+	https://pypi.org/project/pyscard/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

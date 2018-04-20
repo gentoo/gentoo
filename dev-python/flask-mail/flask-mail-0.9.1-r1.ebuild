@@ -10,7 +10,7 @@ MY_PN="Flask-Mail"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Flask extension for sending email"
-HOMEPAGE="http://pythonhosted.org/Flask-Mail/ https://pypi.org/project/Flask-Mail"
+HOMEPAGE="http://pythonhosted.org/Flask-Mail/ https://pypi.org/project/Flask-Mail/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
