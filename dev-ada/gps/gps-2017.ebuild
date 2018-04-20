@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 autotools
+inherit python-single-r1 autotools desktop
 
 MYP=${PN}-gpl-${PV}-src
 
@@ -74,4 +74,5 @@ src_install() {
 		insinto /usr/share/doc
 		doins -r "${WORKDIR}"/gnat-gpl-2017-x86_64-linux-bin/share/doc/gnat
 	fi
+	make_desktop_entry "${PN}" "GPS" "${EPREFIX}/usr/share/gps/icons/hicolor/32x32/apps/gps_32.png" "Development;IDE;"
 }
