@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Set of extensions to Ian Bicking's virtualenv tool"
 HOMEPAGE="https://bitbucket.org/dhellmann/virtualenvwrapper
-	https://pypi.org/project/virtualenvwrapper"
+	https://pypi.org/project/virtualenvwrapper/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Package for using processes, which mimics the threading module API"
-HOMEPAGE="https://pypi.org/project/processing"
+HOMEPAGE="https://pypi.org/project/processing/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"

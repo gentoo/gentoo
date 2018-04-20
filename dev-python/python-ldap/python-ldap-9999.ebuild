@@ -11,7 +11,7 @@ inherit distutils-r1 git-2 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
 HOMEPAGE="https://www.python-ldap.org/en/latest/
-	https://pypi.org/project/python-ldap"
+	https://pypi.org/project/python-ldap/"
 EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
 
 LICENSE="PSF-2"

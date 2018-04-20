@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="django CMS plugins with common utilities"
-HOMEPAGE="https://pypi.org/project/aldryn-common"
+HOMEPAGE="https://pypi.org/project/aldryn-common/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

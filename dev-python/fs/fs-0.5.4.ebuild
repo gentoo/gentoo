@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Filesystem abstraction layer"
 HOMEPAGE="
-	https://pypi.org/project/fs
+	https://pypi.org/project/fs/
 	https://docs.pyfilesystem.org
 	https://www.willmcgugan.com/tag/fs/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"

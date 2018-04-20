@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Platform for Python test doubles: mocks, stubs, fakes, and dummies"
-HOMEPAGE="http://labix.org/mocker https://pypi.org/project/mocker"
+HOMEPAGE="http://labix.org/mocker https://pypi.org/project/mocker/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python Documentation Utilities"
-HOMEPAGE="http://docutils.sourceforge.net/ https://pypi.org/project/docutils"
+HOMEPAGE="http://docutils.sourceforge.net/ https://pypi.org/project/docutils/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-3 public-domain"

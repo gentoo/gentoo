@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Log formatting with colors"
-HOMEPAGE="https://pypi.org/project/colorlog https://github.com/borntyping/python-colorlog"
+HOMEPAGE="https://pypi.org/project/colorlog/ https://github.com/borntyping/python-colorlog"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

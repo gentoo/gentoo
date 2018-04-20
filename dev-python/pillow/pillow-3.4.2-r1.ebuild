@@ -12,7 +12,7 @@ MY_PN=Pillow
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python Imaging Library (fork)"
-HOMEPAGE="https://github.com/python-imaging/Pillow https://pypi.org/project/Pillow"
+HOMEPAGE="https://github.com/python-imaging/Pillow https://pypi.org/project/Pillow/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="HPND"

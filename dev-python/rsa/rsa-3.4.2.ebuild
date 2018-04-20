@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Pure-Python RSA implementation"
-HOMEPAGE="https://stuvel.eu/rsa https://pypi.org/project/rsa"
+HOMEPAGE="https://stuvel.eu/rsa https://pypi.org/project/rsa/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -11,7 +11,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Enthought Tool Suite: Extensible application framework"
 HOMEPAGE="http://docs.enthought.com/envisage/
 	https://github.com/enthought/envisage
-	https://pypi.org/project/envisage"
+	https://pypi.org/project/envisage/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

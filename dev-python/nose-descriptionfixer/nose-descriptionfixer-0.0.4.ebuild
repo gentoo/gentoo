@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3)
 inherit distutils-r1
 
 DESCRIPTION="Fix the way tests are described when the verbose flag is used"
-HOMEPAGE="https://pypi.org/project/nose-descriptionfixer"
+HOMEPAGE="https://pypi.org/project/nose-descriptionfixer/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

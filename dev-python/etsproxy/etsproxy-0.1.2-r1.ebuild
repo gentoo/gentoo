@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Enthought Tool Suite: Proxy modules for backwards compatibility"
-HOMEPAGE="https://pypi.org/project/etsproxy"
+HOMEPAGE="https://pypi.org/project/etsproxy/"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"
