@@ -1,5 +1,5 @@
 From ceddea3f55773e104c628ef6316ce74785d235f3 Mon Sep 17 00:00:00 2001
-From: °RÓ¨ < _â>
+From: Brian Dolbec <brian.dolbec@sony.com>
 Date: Tue, 6 Mar 2018 02:30:56 +0000
 Subject: [PATCH] Migrate duration calculations to >=buildbot-0.9
 
