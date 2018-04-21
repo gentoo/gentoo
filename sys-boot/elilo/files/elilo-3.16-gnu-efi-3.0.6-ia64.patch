@@ -1,0 +1,112 @@
+Disambiguate setpjmp()/longjmp()/jmp_buf across elilo copy and gnu-efi-3.0.6.
+
+In order not to chang the behaviour I'm keeping elilo's implementation
+as the jmp_buf passing ABI is slightly different scross the two.
+
+  setjmp.h:25:14: error: conflicting types for 'jmp_buf'
+   typedef long jmp_buf[_JBLEN] __attribute__ ((aligned (16))); /* guarantees 128-bit alignment! */
+                ^~~~~~~
+  In file included from /usr/include/efi/efisetjmp.h:5:0,
+                   from /usr/include/efi/efi.h:60,
+                   from gzip.c:29:
+  /usr/include/efi/ia64/efisetjmp_arch.h:45:23: note: previous declaration of 'jmp_buf' was here
+   } ALIGN(JMPBUF_ALIGN) jmp_buf;
+                         ^~~~~~~
+diff --git a/ia64/gzip.c b/ia64/gzip.c
+index cc0c943..e2d40f6 100644
+--- a/ia64/gzip.c
++++ b/ia64/gzip.c
+@@ -138,3 +138,3 @@ static void error(char *m);
+ 
+-static jmp_buf jbuf;
++static jmp_buf_ia64_elilo jbuf;
+ static int error_return;
+@@ -598,3 +598,3 @@ load_abort:
+ 	error_return = ELILO_LOAD_ABORTED;
+-	longjmp(jbuf, 1);
++	longjmp_ia64_elilo(jbuf, 1);
+ }
+@@ -606,3 +606,3 @@ error(char *x)
+ 	/* will eventually exit with error from gunzip() */
+-	longjmp(jbuf,1);
++	longjmp_ia64_elilo(jbuf,1);
+ }
+@@ -645,3 +645,3 @@ gunzip_kernel(fops_fd_t fd, kdesc_t *kd)
+ 
+-	if (setjmp(jbuf) == 1) goto error;
++	if (setjmp_ia64_elilo(jbuf) == 1) goto error;
+ 
+diff --git a/ia64/longjmp.S b/ia64/longjmp.S
+index 23dec86..5341632 100644
+--- a/ia64/longjmp.S
++++ b/ia64/longjmp.S
+@@ -18,5 +18,5 @@
+ 
+-   Note that __sigsetjmp() did NOT flush the register stack.  Instead,
+-   we do it here since __longjmp() is usually much less frequently
+-   invoked than __sigsetjmp(). The only difficulty is that __sigsetjmp()
++   Note that __sigsetjmp_ia64_elilo() did NOT flush the register stack.  Instead,
++   we do it here since __longjmp_ia64_elilo() is usually much less frequently
++   invoked than __sigsetjmp(). The only difficulty is that __sigsetjmp_ia64_elilo()
+    didn't (and wouldn't be able to) save ar.rnat either.  This is a problem
+@@ -40,8 +40,8 @@
+ 
+-	/* __longjmp(__jmp_buf buf, int val) */
++	/* __longjmp_ia64_elilo(__jmp_buf_ia64_elilo buf, int val) */
+ 
+ 	.text 
+-	.global longjmp
+-	.proc longjmp
+-longjmp:
++	.global longjmp_ia64_elilo
++	.proc longjmp_ia64_elilo
++longjmp_ia64_elilo:
+ 	alloc r8=ar.pfs,2,1,0,0
+@@ -161,2 +161,2 @@ longjmp:
+ 	br.ret.dptk.few rp
+-	.endp longjmp
++	.endp longjmp_ia64_elilo
+diff --git a/ia64/setjmp.S b/ia64/setjmp.S
+index 4c83d03..57f5542 100644
+--- a/ia64/setjmp.S
++++ b/ia64/setjmp.S
+@@ -70,14 +70,14 @@
+ 	.text
+-	.global setjmp
+-	.proc setjmp
+-setjmp:
++	.global setjmp_ia64_elilo
++	.proc setjmp_ia64_elilo
++setjmp_ia64_elilo:
+ 	alloc r8=ar.pfs,2,0,0,0
+ 	mov in1=1
+-	br.cond.sptk.many __sigsetjmp
+-	.endp setjmp
++	br.cond.sptk.many __sigsetjmp_ia64_elilo
++	.endp setjmp_ia64_elilo
+ 
+-	/* __sigsetjmp(__jmp_buf buf, int savemask) */
++	/* __sigsetjmp_ia64_elilo(__jmp_buf buf, int savemask) */
+ 
+-	.proc __sigsetjmp
+-__sigsetjmp:
++	.proc __sigsetjmp_ia64_elilo
++__sigsetjmp_ia64_elilo:
+ 	//.prologue ASM_UNW_PRLG_RP|ASM_UNW_PRLG_PFS, ASM_UNW_PRLG_GRSAVE(2)
+@@ -173,2 +173,2 @@ __sigsetjmp:
+ 
+-	.endp __sigsetjmp
++	.endp __sigsetjmp_ia64_elilo
+diff --git a/ia64/setjmp.h b/ia64/setjmp.h
+index 91bbfc1..f9e654d 100644
+--- a/ia64/setjmp.h
++++ b/ia64/setjmp.h
+@@ -24,5 +24,5 @@
+ /* the __jmp_buf element type should be __float80 per ABI... */
+-typedef long jmp_buf[_JBLEN] __attribute__ ((aligned (16))); /* guarantees 128-bit alignment! */
++typedef long jmp_buf_ia64_elilo[_JBLEN] __attribute__ ((aligned (16))); /* guarantees 128-bit alignment! */
+ 
+-extern int setjmp (jmp_buf __env);
+-extern void longjmp (jmp_buf __env, int __val);
++extern int setjmp_ia64_elilo (jmp_buf_ia64_elilo __env);
++extern void longjmp_ia64_elilo (jmp_buf_ia64_elilo __env, int __val);
