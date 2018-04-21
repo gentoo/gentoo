@@ -229,7 +229,7 @@ app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.0_p20140705: Very good, but slow, deflate or zlib compression
 app-arch/zstd 1.1.3 1.3.2: zstd fast compression library
 app-backup/amanda 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
-app-backup/backintime 1.1.24: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
+app-backup/backintime 1.1.24 1.2.0_pre20180221: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
@@ -2915,7 +2915,7 @@ dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
 dev-libs/beignet 1.3.2: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
-dev-libs/boehm-gc 6.8 7.1-r1 7.2e 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
+dev-libs/boehm-gc 6.8 7.1-r1 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
 dev-libs/botan 1.10.17 2.5.0 2.6.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
@@ -5850,12 +5850,12 @@ dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/rmagick 2.15.4 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.6.0: Ruby bindings for rrdtool
-dev-ruby/rspec 2.99.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.99.2-r2 3.5.4: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-expectations 2.99.2 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec 2.99.0 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.99.2-r2 3.5.4 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-expectations 2.99.2 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-mocks 2.99.2 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-support 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-mocks 2.99.2 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-support 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/ruby-atk 3.0.8: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
 dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
@@ -5944,7 +5944,7 @@ dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean
 dev-ruby/xpath 2.1.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.3.0 1.3.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.11: Documentation generation tool for the Ruby programming language
-dev-ruby/zentest 4.11.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
+dev-ruby/zentest 4.11.0 4.11.1: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/chicken 4.10.0-r1 4.13.0-r1: Scheme interpreter and native Scheme to C compiler
 dev-scheme/gambit 4.8.8-r1: Gambit-C is a native Scheme to C compiler and interpreter
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
@@ -6114,7 +6114,7 @@ dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
 dev-util/catalyst 2.0.18-r1 2.0.18-r4: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/ccache 3.2.4: fast compiler cache
+dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 0.9.8: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
@@ -6257,6 +6257,7 @@ dev-util/schroot 1.6.10-r3: Utility to execute commands in a chroot environment
 dev-util/scons 2.4.1 2.5.1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2: simple command-line tool to talk to serial devices
+dev-util/shadowman 2: Unified compiler shadow link directory updater
 dev-util/shc 3.8.9: A (shell-) script compiler/scrambler
 dev-util/shelltestrunner 1.3.5-r1: A tool for testing command-line programs
 dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
