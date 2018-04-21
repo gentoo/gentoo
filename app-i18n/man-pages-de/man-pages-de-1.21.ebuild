@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ inherit autotools
 MY_P="${PN/-/}-${PV}"
 
 DESCRIPTION="A somewhat comprehensive collection of Linux german man page translations"
-HOMEPAGE="http://alioth.debian.org/projects/manpages-de/"
-SRC_URI="http://manpages-de.alioth.debian.org/downloads/${MY_P}.tar.xz"
+HOMEPAGE="https://alioth.debian.org/projects/manpages-de/"
+SRC_URI="https://manpages-de.alioth.debian.org/downloads/${MY_P}.tar.xz"
 
 LICENSE="GPL-3+ man-pages GPL-2+ GPL-2 BSD"
 SLOT="0"
