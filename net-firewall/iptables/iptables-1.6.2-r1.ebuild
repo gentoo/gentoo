@@ -9,8 +9,8 @@ AUTOTOOLS_AUTO_DEPEND=no
 inherit ltprune multilib systemd toolchain-funcs autotools flag-o-matic
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
-HOMEPAGE="http://www.netfilter.org/projects/iptables/"
-SRC_URI="http://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
+HOMEPAGE="https://www.netfilter.org/projects/iptables/"
+SRC_URI="https://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 # Subslot tracks libxtables as that's the one other packages generally link
