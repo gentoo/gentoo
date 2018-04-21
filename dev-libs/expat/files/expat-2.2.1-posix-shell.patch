@@ -11,8 +11,8 @@ It doesn't matter in bash, but some other sh don't like it, so it's a portabilit
 
 diff --git a/expat/configure.ac b/expat/configure.ac
 index e48c32e..1357c9a 100644
---- a/expat/configure.ac
-+++ b/expat/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -220,8 +220,8 @@ AS_HELP_STRING([--disable-xml-context],
      [Do not retain context around the current parse point]),
    [enable_xml_context=${enableval}])
