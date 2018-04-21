@@ -6,15 +6,16 @@ inherit eutils systemd unpacker user
 
 DESCRIPTION="general puppet client utils along with mcollective hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"
-SRC_BASE="http://apt.puppetlabs.com/pool/stretch/puppet5/${PN:0:1}/${PN}/${PN}_${PV}-1stretch"
+SRC_BASE="http://apt.puppetlabs.com/pool/stretch/PC1/${PN:0:1}/${PN}/${PN}_${PV}-1stretch"
 SRC_URI="
 	amd64? ( ${SRC_BASE}_amd64.deb )
-	x86?   ( ${SRC_BASE}_i386.deb )"
+	x86?   ( ${SRC_BASE}_i386.deb )
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="puppetdb selinux"
+KEYWORDS="~amd64 ~x86"
+IUSE="experimental puppetdb selinux"
 RESTRICT="strip"
 
 CDEPEND="!app-admin/augeas
@@ -30,19 +31,42 @@ RDEPEND="${CDEPEND}
 	app-portage/eix
 	sys-apps/dmidecode
 	sys-libs/glibc
-	sys-libs/readline:0/7
-	sys-libs/ncurses:0[tinfo]
+	>=sys-libs/readline-6.0
+	<sys-libs/readline-7.0
 	selinux? (
 		sys-libs/libselinux[ruby]
 		sec-policy/selinux-puppet
 	)
-	puppetdb? ( >=dev-ruby/puppetdb-termini-5.0.1 )"
+	puppetdb? ( >=dev-ruby/puppetdb-termini-3.1.0 )"
 
 S=${WORKDIR}
+
+QA_PREBUILT="
+	/opt/puppetlabs/puppet
+	/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/2.1.0/x86_64-linux/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/mathn/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/io/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/dl/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/racc/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/enc/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/json/ext/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/rbconfig/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/digest/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/*
+	/opt/puppetlabs/puppet/lib/engines/*
+	/opt/puppetlabs/puppet/lib/virt-what/*
+	/opt/puppetlabs/puppet/lib/*
+	/opt/puppetlabs/puppet/bin/*"
 
 pkg_setup() {
 	enewgroup puppet
 	enewuser puppet -1 -1 /var/run/puppet puppet
+}
+
+src_prepare() {
+	if use experimental; then
+		epatch "${FILESDIR}/43e2c935252b995134ce353e5e6312cf77aea480.patch"
+	fi
 }
 
 src_install() {
@@ -83,4 +107,5 @@ src_install() {
 	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
 	dosym ../../opt/puppetlabs/puppet/bin/augparse /usr/bin/augparse
 	dosym ../../opt/puppetlabs/puppet/bin/augtool /usr/bin/augtool
+	dosym ../../opt/puppetlabs/puppet/bin/extlookup2hiera /usr/bin/extlookup2hiera
 }
