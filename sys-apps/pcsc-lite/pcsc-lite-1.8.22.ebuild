@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,12 +7,9 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit python-single-r1 systemd udev user multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
-HOMEPAGE="https://pcsclite.alioth.debian.org/"
+HOMEPAGE="https://pcsclite.apdu.fr/"
 
-STUPID_NUM="4225"
-MY_P="${PN}-${PV/_/-}"
-SRC_URI="https://alioth.debian.org/download.php/file/${STUPID_NUM}/${MY_P}.tar.bz2"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 
 # GPL-2 is there for the init script; everything else comes from
 # upstream.
