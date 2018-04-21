@@ -16,7 +16,4 @@ SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc sparc x86 ~x86-linux"
 IUSE=""
 
-DEPEND="dev-python/pyxml[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
-
 DOCS=( ChangeLog README README.xmlrev TODO )
