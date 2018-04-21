@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="Plasma applet and services for creating encrypted vaults"
-HOMEPAGE+=" http://cukic.co/2017/02/03/vaults-encryption-in-plasma/"
+HOMEPAGE+=" https://cukic.co/2017/02/03/vaults-encryption-in-plasma/"
 
 LICENSE="LGPL-3"
 KEYWORDS="amd64 ~arm x86"
