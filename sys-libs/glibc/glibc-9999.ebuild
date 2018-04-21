@@ -33,7 +33,7 @@ PATCH_VER=5
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps compile-locales debug doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -775,14 +775,6 @@ src_prepare() {
 		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
 		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
 		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
-
-		if use debug ; then
-			# Allow SIGABRT to dump core on non-hardened systems, or when debug is requested.
-			sed -i \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-stack_chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				debug/Makefile || die
-		fi
 	fi
 }
 
