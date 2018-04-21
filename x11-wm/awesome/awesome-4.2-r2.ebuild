@@ -50,13 +50,10 @@ DEPEND="${RDEPEND}
 	test? (
 		app-shells/zsh
 		x11-base/xorg-server[xvfb]
+		dev-lua/busted
+		dev-lua/luacheck
 	)
 "
-# Uncomment when these are keyworded on ppc/ppc64 (automagic deps)
-#		dev-lua/busted
-#		dev-lua/luacheck
-#	)
-#"
 
 # Skip installation of README.md by einstalldocs, which leads to broken symlink
 DOCS=()
