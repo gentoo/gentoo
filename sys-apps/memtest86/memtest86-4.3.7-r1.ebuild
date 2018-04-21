@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit mount-boot eutils toolchain-funcs
 
 DESCRIPTION="A stand alone memory test for x86 computers"
-HOMEPAGE="http://www.memtest86.com/"
-SRC_URI="http://www.memtest86.com/downloads/${P}-src.tar.gz"
+HOMEPAGE="https://www.memtest86.com/"
+SRC_URI="https://www.memtest86.com/downloads/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
