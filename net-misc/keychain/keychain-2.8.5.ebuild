@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG"
-HOMEPAGE="http://www.funtoo.org/Keychain"
+HOMEPAGE="https://www.funtoo.org/Keychain"
 SRC_URI="https://github.com/funtoo/keychain/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
