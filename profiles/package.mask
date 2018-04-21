@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Apr 2018)
+# Package moved into kde-apps/kate as a feature. Masked for removal.
+kde-misc/ktexteditorpreviewplugin
+
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
 # See: https://bugs.gentoo.org/653678
