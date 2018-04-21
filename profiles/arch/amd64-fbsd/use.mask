@@ -33,6 +33,10 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Michał Górny <mgorny@gentoo.org> (21 Apr 2018)
+# net-wireless/bluez.
+bluetooth
+
 # Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
 # Requires dev-libs/libressl (not yet tested).
 curl_ssl_libressl
