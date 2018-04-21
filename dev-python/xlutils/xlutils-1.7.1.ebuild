@@ -29,5 +29,5 @@ DEPEND="${RDEPEND}
 DOCS="README.txt docs/*.txt"
 
 python_test() {
-	py.test xlutils/tests
+	py.test -v xlutils/tests || die "Tests fail with ${EPYTHON}"
 }
