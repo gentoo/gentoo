@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/pillow[${PYTHON_USEDEP}]
 	gnome-base/libglade[${PYTHON_USEDEP}]
-	dev-python/pyxml[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.6.1:2[${PYTHON_USEDEP}]
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.5.2[${PYTHON_USEDEP}]
