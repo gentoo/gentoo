@@ -5,7 +5,7 @@ EAPI=6
 
 PATCHSET=1
 
-inherit autotools eutils flag-o-matic multilib versionator
+inherit autotools flag-o-matic versionator
 
 MY_P="${PN}-$(get_version_component_range 1-3)"
 S=${WORKDIR}/${MY_P}
