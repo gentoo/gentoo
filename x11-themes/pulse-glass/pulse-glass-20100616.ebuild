@@ -1,5 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 MY_PN="Pulse-Glass"
 
@@ -16,5 +18,5 @@ S="${WORKDIR}/${MY_PN}"
 
 src_install() {
 	insinto /usr/share/cursors/xorg-x11/${MY_PN}
-	doins -r cursors || die
+	doins -r cursors
 }
