@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-inherit flag-o-matic toolchain-funcs versionator eutils udev
+EAPI=6
+inherit flag-o-matic toolchain-funcs udev versionator
 
 MY_PV="$(replace_version_separator 2 -)"
 
@@ -23,10 +23,13 @@ DEPEND="
 
 S=${WORKDIR}/${PN}
 
+PATCHES=(
+	"${FILESDIR}"/respect-gentoo-env-r3.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/respect-gentoo-env-r3.patch
+	default
 	sed -i -e "s:/lib/udev:$(get_udevdir):" Makefile || die
-	eapply_user
 }
 
 src_compile() {
