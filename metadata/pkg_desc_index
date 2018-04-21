@@ -512,7 +512,7 @@ app-doc/kicad-doc 4.0.1 4.0.4: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1: the Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
-app-doc/linux-kernel-in-a-nutshell 1 1-r1: Linux Kernel in a Nutshell: A Desktop Quick Reference
+app-doc/linux-kernel-in-a-nutshell 1-r1: Linux Kernel in a Nutshell: A Desktop Quick Reference
 app-doc/linuxfromscratch 7.10: LFS documents building a Linux system entirely from source
 app-doc/mkdoxy 1.0.0 1.0.0-r1: mkDoxy generates Doxygen-compatible HTML documentation for makefiles
 app-doc/motif-reference-manual 2.3.0-r2: Motif Reference Manual
