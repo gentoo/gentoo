@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed016
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gmp gnat_2016 +gnat_2017 gtk iconv postgres pygobject projects readline
 	+shared sqlite static-libs syslog tools"
 
