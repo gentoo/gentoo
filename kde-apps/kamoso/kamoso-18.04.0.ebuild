@@ -4,6 +4,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Application to take pictures and videos from your webcam by KDE"
@@ -32,3 +33,5 @@ RDEPEND="${DEPEND}
 	$(add_qt_dep qtquickcontrols2)
 	media-plugins/gst-plugins-meta:1.0[alsa,theora,vorbis,v4l]
 "
+
+RESTRICT+=" test"
