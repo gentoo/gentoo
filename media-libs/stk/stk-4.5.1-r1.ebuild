@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Synthesis ToolKit in C++"
 HOMEPAGE="https://ccrma.stanford.edu/software/stk/"
