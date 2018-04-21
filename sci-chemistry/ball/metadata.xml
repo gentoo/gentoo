@@ -29,7 +29,6 @@ integrated user-friendly GUI.
 		<flag name="fftw">Build with <pkg>sci-libs/fftw</pkg> (switching BALL to GPL3)</flag>
 		<flag name="gui">Build VIEW library required for visualization and graphical user interfaces</flag>
 		<flag name="lpsolve">Enable support for the Mixed Integer Linear Programming solver</flag>
-		<flag name="sql">Include SQL database support</flag>
 		<flag name="openbabel">Enable support for <pkg>sci-chemistry/openbabel</pkg> (switching BALL to GPL3)</flag>
 		<flag name="svm">Enable support for the Support Vector Machine module</flag>
 		<flag name="webengine">Enable QtWebEngine support with Qt5 (requires gui)</flag>
