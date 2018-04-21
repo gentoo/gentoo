@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
+# Protocol headers and client library for the long dead Xprint extension.
+# Removal in 30 days. Bug #649076.
+x11-proto/printproto
+x11-libs/libXp
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Apr 2018)
 # Package moved into kde-apps/kate as a feature. Masked for removal.
 kde-misc/ktexteditorpreviewplugin
