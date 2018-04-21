@@ -54,18 +54,30 @@ DEPEND="${RDEPEND}
 
 DOCS=( ChangeLog INSTALL README NEWS )
 
-src_prepare() {
+PATCHES=(
 	# https://bugs.gentoo.org/show_bug.cgi?id=636780
-	epatch "${FILESDIR}/${P}-ffmpeg-av_frame_alloc.patch"
+	"${FILESDIR}/${P}-ffmpeg-av_frame_alloc.patch"
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=442016
-	epatch "${FILESDIR}/${P}-cve-2012-4433-1e92e523.patch"
-	epatch "${FILESDIR}/${P}-cve-2012-4433-4757cdf7.patch"
+	"${FILESDIR}/${P}-cve-2012-4433-1e92e523.patch"
+	"${FILESDIR}/${P}-cve-2012-4433-4757cdf7.patch"
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=416587
-	epatch "${FILESDIR}/${P}-introspection-version.patch"
+	"${FILESDIR}/${P}-introspection-version.patch"
 
-	epatch "${FILESDIR}/${P}-ffmpeg-0.11.diff"
+	"${FILESDIR}/${P}-ffmpeg-0.11.diff"
+	"${FILESDIR}"/${P}-g_log_domain.patch
+
+	# https://bugs.gentoo.org/show_bug.cgi?id=605216
+	# https://bugs.gentoo.org/show_bug.cgi?id=617430
+	"${FILESDIR}"/${P}-underlinking.patch
+	"${FILESDIR}"/${P}-libopenraw-0.1.patch  # bug 639834
+	"${FILESDIR}"/${P}-fix-without-exiv2.patch  # bug 641872
+
+)
+
+src_prepare() {
+	default
 	# fix OSX loadable module filename extension
 	sed -i -e 's/\.dylib/.bundle/' configure.ac || die
 	# don't require Apple's OpenCL on versions of OSX that don't have it
@@ -73,15 +85,6 @@ src_prepare() {
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
 
-	epatch "${FILESDIR}"/${P}-g_log_domain.patch
-
-	# https://bugs.gentoo.org/show_bug.cgi?id=605216
-	# https://bugs.gentoo.org/show_bug.cgi?id=617430
-	epatch "${FILESDIR}"/${P}-underlinking.patch
-	epatch "${FILESDIR}"/${P}-libopenraw-0.1.patch  # bug 639834
-	epatch "${FILESDIR}"/${P}-fix-without-exiv2.patch  # bug 641872
-
-	eapply_user
 	eautoreconf
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=468248
