@@ -20,10 +20,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-lang/perl"
 
-src_prepare() {
-	EPATCH_SUFFIX="patch" epatch "${FILESDIR}/${P}"
-	eapply_user
+PATCHES=(
+	"${FILESDIR}/${P}"
+)
 
+src_prepare() {
+	default
 	eautoreconf
 }
 
