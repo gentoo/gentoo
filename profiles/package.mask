@@ -38,7 +38,7 @@ kde-misc/ktexteditorpreviewplugin
 # See: https://bugs.gentoo.org/653678
 >=media-video/ffmpeg-4.0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (23 Apr 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Apr 2018)
 # Breaking consumers by internal header cleanup and removal of deprecated
 # qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
 # and against the qt-5.11 tracker (bug #653646).
@@ -95,12 +95,12 @@ kde-misc/ktexteditorpreviewplugin
 ~dev-qt/qtxmlpatterns-5.11.0_beta4
 ~dev-qt/qtxml-5.11.0_beta4
 
-# Brian Evans <grknight@gentoo.org> (20 Mar 2018)
+# Brian Evans <grknight@gentoo.org> (20 Apr 2018)
 # Likely to break a lot of software
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
 
-# Lars Wendler <polynomial-c@gentoo.org> (18 Mar 2018)
+# Lars Wendler <polynomial-c@gentoo.org> (18 Apr 2018)
 # Breaks consumers most likely because of the following change:
 #   * Add const to several classes and members
 # See tracker bug #653464
