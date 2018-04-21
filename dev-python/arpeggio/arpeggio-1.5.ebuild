@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN=Arpeggio
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Parser interpreter based on PEG grammars"
-HOMEPAGE="https://pypi.org/project/Arpeggio https://github.com/igordejanovic/Arpeggio"
+HOMEPAGE="https://pypi.org/project/Arpeggio/ https://github.com/igordejanovic/Arpeggio"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 # pypi tarball omits tests
 RESTRICT="test"

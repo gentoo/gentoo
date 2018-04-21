@@ -8,7 +8,7 @@ inherit distutils-r1
 
 MY_PN="Extremes"
 DESCRIPTION="Production-quality 'Min' and 'Max' objects"
-HOMEPAGE="https://pypi.org/project/Extremes"
+HOMEPAGE="https://pypi.org/project/Extremes/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip -> ${P}.zip"
 
 KEYWORDS="amd64 x86"

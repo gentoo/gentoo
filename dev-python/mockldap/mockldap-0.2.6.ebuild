@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="A simple mock implementation of python-ldap"
-HOMEPAGE="https://bitbucket.org/psagers/mockldap/ https://pypi.org/project/mockldap"
+HOMEPAGE="https://bitbucket.org/psagers/mockldap/ https://pypi.org/project/mockldap/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

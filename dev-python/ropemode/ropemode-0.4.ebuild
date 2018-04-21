@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A helper for using rope refactoring library in IDEs"
-HOMEPAGE="https://github.com/python-rope/ropemode https://pypi.org/project/ropemode"
+HOMEPAGE="https://github.com/python-rope/ropemode https://pypi.org/project/ropemode/"
 SRC_URI="https://github.com/python-rope/ropemode/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # pypi releases don't include tests
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

@@ -10,7 +10,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Enthought Tool Suite: Scientific and mathematical tools"
 HOMEPAGE="http://docs.enthought.com/scimath/
 	https://github.com/enthought/scimath
-	https://pypi.org/project/scimath"
+	https://pypi.org/project/scimath/"
 SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
 
 LICENSE="BSD"

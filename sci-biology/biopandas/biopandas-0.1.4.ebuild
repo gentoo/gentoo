@@ -14,7 +14,7 @@ DESCRIPTION="Molecular Structures in Pandas DataFrames"
 HOMEPAGE="
 	https://rasbt.github.io/biopandas/
 	https://github.com/rasbt/biopandas
-	https://pypi.org/project/BioPandas"
+	https://pypi.org/project/BioPandas/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${P}.tar.gz"
 
 LICENSE="BSD"

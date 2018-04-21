@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A pure git implementation of a sliding window memory map manager"
 HOMEPAGE="
-	https://pypi.org/project/smmap
+	https://pypi.org/project/smmap/
 	https://github.com/Byron/smmap"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

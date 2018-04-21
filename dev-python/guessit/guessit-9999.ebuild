@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library for guessing information from video filenames"
-HOMEPAGE="https://github.com/guessit-io/guessit https://pypi.org/project/guessit"
+HOMEPAGE="https://github.com/guessit-io/guessit https://pypi.org/project/guessit/"
 EGIT_REPO_URI="https://github.com/${PN}-io/${PN}.git"
 EGIT_BRANCH="develop"
 

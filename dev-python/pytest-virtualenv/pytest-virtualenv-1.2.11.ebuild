@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Virtualenv fixture for py.test"
-HOMEPAGE="https://github.com/manahl/pytest-plugins https://pypi.org/project/pytest-virtualenv"
+HOMEPAGE="https://github.com/manahl/pytest-plugins https://pypi.org/project/pytest-virtualenv/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

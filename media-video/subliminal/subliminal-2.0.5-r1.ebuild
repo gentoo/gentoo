@@ -10,7 +10,7 @@ COMMIT_ID='dd74383d1cba82829ce720f2e439a65d13ffe7ef'
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Python library to search and download subtitles"
-HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.org/project/subliminal"
+HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.org/project/subliminal/"
 SRC_URI="
 	https://github.com/Diaoul/${PN}/archive/${COMMIT_ID}.tar.gz -> ${PF}.tar.gz
 	test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )

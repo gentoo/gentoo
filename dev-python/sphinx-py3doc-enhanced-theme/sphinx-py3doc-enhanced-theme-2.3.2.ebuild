@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Enhanced Sphinx theme (based on Python 3 docs)"
-HOMEPAGE="https://github.com/ionelmc/sphinx-py3doc-enhanced-theme https://pypi.org/project/sphinx-py3doc-enhanced-theme"
+HOMEPAGE="https://github.com/ionelmc/sphinx-py3doc-enhanced-theme https://pypi.org/project/sphinx-py3doc-enhanced-theme/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

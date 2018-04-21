@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pure python memcached client"
 HOMEPAGE="https://www.tummy.com/Community/software/python-memcached/
-	https://pypi.org/project/python-memcached"
+	https://pypi.org/project/python-memcached/"
 SRC_URI="ftp://ftp.tummy.com/pub/python-memcached/old-releases/${P}.tar.gz"
 
 LICENSE="OSL-2.0"

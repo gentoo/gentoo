@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Web Helpers"
 HOMEPAGE="https://docs.pylonsproject.org/projects/webhelpers/en/latest/
-	https://pypi.org/project/WebHelpers"
+	https://pypi.org/project/WebHelpers/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

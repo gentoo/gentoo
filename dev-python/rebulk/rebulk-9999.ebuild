@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library that performs advanced searches in strings"
-HOMEPAGE="https://github.com/Toilal/rebulk https://pypi.org/project/rebulk"
+HOMEPAGE="https://github.com/Toilal/rebulk https://pypi.org/project/rebulk/"
 EGIT_REPO_URI="https://github.com/Toilal/${PN}.git"
 
 LICENSE="MIT Apache-2.0"

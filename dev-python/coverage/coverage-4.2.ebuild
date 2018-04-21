@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Code coverage measurement for Python"
-HOMEPAGE="http://nedbatchelder.com/code/coverage/ https://pypi.org/project/coverage"
+HOMEPAGE="http://nedbatchelder.com/code/coverage/ https://pypi.org/project/coverage/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
