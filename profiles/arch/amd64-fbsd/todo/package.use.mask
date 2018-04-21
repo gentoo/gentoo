@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Mask useflags that require deps with missing keywords.
@@ -196,4 +196,4 @@ net-misc/wget uuid
 media-video/vlc rdp
 
 # net-wireless/bluez
-media-sound/pulseaudio bluetooth native-headset ofono-headset
+media-sound/pulseaudio native-headset ofono-headset
