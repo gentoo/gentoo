@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,6 +21,7 @@ RDEPEND=">=dev-python/xlwt-0.7.3[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-0.7.7[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/errorhandler[${PYTHON_USEDEP}]
+		dev-python/manuel[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		>=dev-python/testfixtures-1.6.1[${PYTHON_USEDEP}] )"
