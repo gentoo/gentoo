@@ -14,6 +14,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+# all tests access network, also assume that localhost will have
+# no HTTP server running (which is extremely silly)
+RESTRICT="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
