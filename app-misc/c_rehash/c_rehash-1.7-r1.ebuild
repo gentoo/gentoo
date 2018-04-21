@@ -4,8 +4,8 @@
 EAPI=5
 
 DESCRIPTION="c_rehash script from OpenSSL"
-HOMEPAGE="http://www.openssl.org/"
-SRC_URI="http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/openssl/openssl-c_rehash.sh?rev=${PV} -> openssl-c_rehash.sh.${PV}"
+HOMEPAGE="https://www.openssl.org/ https://github.com/pld-linux/openssl/"
+SRC_URI="https://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/openssl/openssl-c_rehash.sh?rev=${PV} -> openssl-c_rehash.sh.${PV}"
 
 LICENSE="openssl"
 SLOT="0"
