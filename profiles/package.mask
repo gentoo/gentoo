@@ -274,7 +274,6 @@ dev-python/visual
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Security vulnerable (#630954, #635548). Removal in a month. 
-media-sound/mp3gain
 media-sound/aacgain
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
