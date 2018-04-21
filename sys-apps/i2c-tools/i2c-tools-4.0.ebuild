@@ -32,9 +32,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake all-lib CC=$(tc-getCC) # parallel make
+	emake all-lib AR=$(tc-getAR) CC=$(tc-getCC) # parallel make
 	emake CC=$(tc-getCC)
-	emake -C eepromer CC=$(tc-getCC)
+	emake -C eepromer CC=$(tc-getCC) CFLAGS="${CFLAGS}"
 	if use python ; then
 		cd py-smbus || die
 		append-cppflags -I../include
@@ -45,7 +45,7 @@ src_compile() {
 src_install() {
 	emake install-lib install libdir="${D}"/usr/$(get_libdir) prefix="${D}"/usr
 	dosbin eepromer/eeprom{,er}
-	rm -rf "${D}"/usr/include # part of linux-headers
+	rm -rf "${D}"/usr/include || die # part of linux-headers
 	dodoc CHANGES README
 	local d
 	for d in eeprom eepromer ; do
