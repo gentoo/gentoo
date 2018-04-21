@@ -1,5 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="Key binding editor for enlightenment 16"
 HOMEPAGE="https://www.enlightenment.org/"
@@ -14,12 +16,6 @@ RDEPEND="=x11-libs/gtk+-2*"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_compile() {
-	econf --enable-gtk2 || die
-	emake || die
-}
-
-src_install() {
-	emake install DESTDIR="${D}" || die
-	dodoc README ChangeLog AUTHORS
+src_configure() {
+	econf --enable-gtk2
 }
