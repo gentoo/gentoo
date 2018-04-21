@@ -13,7 +13,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deecffb
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 +gnat_2017"
 
 DEPEND="dev-ada/gnat_util[gnat_2017]
