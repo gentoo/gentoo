@@ -3,13 +3,11 @@
 
 EAPI=6
 
-STUPID_NUM="4218"
-
 inherit toolchain-funcs udev
 
 DESCRIPTION="CCID free software driver"
-HOMEPAGE="http://pcsclite.alioth.debian.org/ccid.html"
-SRC_URI="http://alioth.debian.org/frs/download.php/file/${STUPID_NUM}/${P}.tar.bz2"
+HOMEPAGE="https://ccid.apdu.fr/"
+SRC_URI="https://ccid.apdu.fr/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
