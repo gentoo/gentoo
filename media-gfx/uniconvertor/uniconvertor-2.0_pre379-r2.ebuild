@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r1
 
 DESCRIPTION="Convert vector graphic file formats like .cdr, .svg, wmf and more."
 HOMEPAGE="https://sk1project.net/modules.php?name=Products&product=uniconvertor"
