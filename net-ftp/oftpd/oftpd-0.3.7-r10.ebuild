@@ -12,7 +12,7 @@ SRC_URI="http://www.time-travellers.org/oftpd/${P}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ppc64 ~sh sparc x86"
+KEYWORDS="amd64 arm ~ppc ppc64 ~sh sparc x86"
 IUSE="ipv6"
 
 DEPEND="net-ftp/ftpbase"
