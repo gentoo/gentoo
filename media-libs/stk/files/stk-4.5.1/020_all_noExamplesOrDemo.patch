@@ -1,7 +1,5 @@
-Index: stk-4.5.0/Makefile.in
-===================================================================
---- stk-4.5.0.orig/Makefile.in
-+++ stk-4.5.0/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -6,35 +6,14 @@ REALTIME = @realtime@
  
  all :
