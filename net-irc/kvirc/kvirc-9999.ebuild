@@ -76,8 +76,6 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
 
-DOCS=(ChangeLog doc/FAQ)
-
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
