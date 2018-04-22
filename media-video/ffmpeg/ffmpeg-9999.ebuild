@@ -73,15 +73,15 @@ FFMPEG_FLAG_MAP=(
 		# indevs
 		libv4l:libv4l2 pulseaudio:libpulse libdrm
 		# decoders
-		amr:libopencore-amrwb amr:libopencore-amrnb fdk:libfdk-aac
+		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray celt:libcelt gme:libgme gsm:libgsm
 		mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
-		speex:libspeex svg:librsvg vorbis:libvorbis
-		vpx:libvpx zvbi:libzvbi
+		speex:libspeex svg:librsvg video_cards_nvidia:ffnvcodec
+		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		appkit
 		bs2b:libbs2b chromaprint flite:libflite frei0r
-		fribidi:libfribidi fontconfig ladspa libass truetype:libfreetype
+		fribidi:libfribidi fontconfig ladspa libass lv2 truetype:libfreetype
 		rubberband:librubberband zeromq:libzmq zimg:libzimg
 		# libswresample options
 		libsoxr
@@ -92,7 +92,7 @@ FFMPEG_FLAG_MAP=(
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
-	kvazaar:libkvazaar libaom nvenc:nvenc
+	kvazaar:libkvazaar libaom
 	openh264:libopenh264 snappy:libsnappy theora:libtheora twolame:libtwolame
 	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
@@ -170,11 +170,11 @@ RDEPEND="
 	cdio? ( >=dev-libs/libcdio-paranoia-0.90_p1-r1[${MULTILIB_USEDEP}] )
 	celt? ( >=media-libs/celt-0.11.1-r1[${MULTILIB_USEDEP}] )
 	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
+	codec2? ( media-libs/codec2[${MULTILIB_USEDEP}] )
 	encode? (
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
-		nvenc? ( media-video/nvidia_video_sdk )
 		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
@@ -217,6 +217,7 @@ RDEPEND="
 	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
 	libv4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
+	lv2? ( media-libs/lv2[${MULTILIB_USEDEP}] media-libs/lilv[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	mmal? ( media-libs/raspberrypi-userland )
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
@@ -235,6 +236,7 @@ RDEPEND="
 	svg? ( gnome-base/librsvg:2=[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
 	vaapi? ( >=x11-libs/libva-1.2.1-r1[${MULTILIB_USEDEP}] )
+	video_cards_nvidia? ( media-libs/nv-codec-headers[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vorbis? (
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
