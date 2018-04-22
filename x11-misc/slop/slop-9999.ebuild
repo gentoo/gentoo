@@ -3,6 +3,7 @@
 
 EAPI=6
 
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit cmake-utils
 
 DESCRIPTION="An application that queries the user for a selection for printing"
