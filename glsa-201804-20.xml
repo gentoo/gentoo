@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-20">
+  <title>unADF: Remote code execution</title>
+  <synopsis>Multiple vulnerabilities have been found in unADF that may allow a
+    remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">unadf</product>
+  <announced>2018-04-22</announced>
+  <revised count="1">2018-04-22</revised>
+  <bug>636388</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/unadf" auto="yes" arch="*">
+      <unaffected range="ge">0.7.12-r1</unaffected>
+      <vulnerable range="lt">0.7.12-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>An unzip like for .ADF files.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities were discovered in unADF that can lead to
+      remote code execution. Please review the CVE identifiers referenced below
+      for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      file, could execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All unADF users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/unadf-0.7.12-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-1243">CVE-2016-1243</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-1244">CVE-2016-1244</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-22T20:59:29Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-22T23:50:47Z">b-man</metadata>
+</glsa>
