@@ -15,6 +15,9 @@
   (dict/list/string/array editor), doc viewer, history log,
   environment variables editor, ...
   </longdescription>
+  <use>
+    <flag name="webengine">Build bindings for the QtWebEngine module</flag>
+  </use>
   <upstream>
     <remote-id type="pypi">spyder</remote-id>
     <remote-id type="bitbucket">spyder-ide/spyderlib</remote-id>
