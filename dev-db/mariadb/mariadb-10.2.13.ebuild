@@ -534,8 +534,8 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
-	if [[ -f "${D}/usr/include/mysql/server/private/config.h" ]] ; then
-		rm "${D}/usr/include/mysql/server/private/config.h" || die
+	if [[ -f "${ED}/usr/include/mysql/server/private/config.h" ]] ; then
+		rm "${ED}/usr/include/mysql/server/private/config.h" || die
 	fi
 
 	if ! multilib_is_native_abi && use server ; then
@@ -545,9 +545,9 @@ multilib_src_install() {
 
 	if use client-libs ; then
 	# Install compatible symlinks to libmysqlclient
-#	use static-libs && dosym libmariadbclient.a "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.a"
-#	dosym libmariadb.so.3 "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.so"
-	dosym libmariadb.so.3 "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.so.${SUBSLOT}"
+#	use static-libs && dosym libmariadbclient.a "/usr/$(get_libdir)/libmysqlclient.a"
+#	dosym libmariadb.so.3 "/usr/$(get_libdir)/libmysqlclient.so"
+	dosym libmariadb.so.3 "/usr/$(get_libdir)/libmysqlclient.so.${SUBSLOT}"
 	fi
 
 	# Kill old libmysqclient_r symlinks if they exist.  Time to fix what depends on them.
