@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils gnome2-utils games
+EAPI=6
+inherit eutils gnome2-utils
 
 DESCRIPTION="A mashup of \"Not\" and \"Pacman\""
 HOMEPAGE="http://stabyourself.net/notpacman/"
@@ -16,33 +15,30 @@ KEYWORDS="~amd64 ~x86"
 
 LVSLOT="0.7"
 RDEPEND=">=games-engines/love-0.7.2:${LVSLOT}
-	 media-libs/devil[png]"
+	 media-libs/devil[png]
+"
 DEPEND="app-arch/unzip"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
-	local dir=${GAMES_DATADIR}/love/${PN}
+	local dir=/usr/share/love/${PN}
 
 	exeinto "${dir}"
 	newexe not_pacman.love ${PN}.love
 
-	dodoc README
+	einstalldocs
 
 	doicon -s 32 "${DISTDIR}"/${PN}.png
-	games_make_wrapper ${PN} "love-${LVSLOT} ${PN}.love" "${dir}"
+	make_wrapper ${PN} "love-${LVSLOT} ${PN}.love" "${dir}"
 	make_desktop_entry ${PN}
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils games
+EAPI=6
+inherit desktop gnome2-utils
 
 DESCRIPTION="The game Missile Command for Linux"
 HOMEPAGE="http://missile.sourceforge.net/"
@@ -15,36 +15,35 @@ IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image[png]
-	media-libs/sdl-mixer"
-RDEPEND=${DEPEND}
+	media-libs/sdl-mixer
+"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-ldflags.patch
+	default
+	eapply "${FILESDIR}"/${P}-ldflags.patch
 	sed -i \
 		-e '/^CC/d' \
-		-e "s:\$(game_prefix)/\$(game_data):${GAMES_DATADIR}/${PN}:" \
+		-e "s:\$(game_prefix)/\$(game_data):/usr/share/${PN}:" \
 		-e "s/-O2/${CFLAGS}/" \
 		-e 's/-lSDL_image $(SND_LIBS)/-lSDL_image -lm $(SND_LIBS)/g' \
 		Makefile || die
 }
 
 src_install() {
-	dogamesbin ${PN}
-	insinto "${GAMES_DATADIR}"/${PN}
+	dobin ${PN}
+	insinto /usr/share/${PN}
 	doins -r data/*
 	newicon -s 48 icons/${PN}_icon_black.png ${PN}.png
 	make_desktop_entry ${PN} "Missile Command"
-	dodoc README
-	prepgamesdirs
+	einstalldocs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

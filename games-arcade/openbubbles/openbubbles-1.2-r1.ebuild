@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="A clone of Evan Bailey's game Bubbles"
 HOMEPAGE="https://web.archive.org/web/20101126190910/http://www.freewebs.com/lasindi/openbubbles/"
@@ -16,15 +16,12 @@ IUSE=""
 DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-gfx"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-glibc2.10.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-glibc2.10.patch )
 
 src_install() {
 	default
 	newicon data/bubble.png ${PN}.png
 	make_desktop_entry ${PN} "OpenBubbles"
-	prepgamesdirs
 }

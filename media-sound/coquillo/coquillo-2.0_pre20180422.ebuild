@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT=dc8f1c6751242d6c0416472fd91d972d110be67a
+COMMIT=05e97cb24d0d296d3becea9854fcb0562302ab4a
 inherit desktop qmake-utils
 
 DESCRIPTION="GUI audio tagger based on Qt and taglib"
@@ -29,17 +29,13 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-linking.patch"
-	"${FILESDIR}/${P}-qt-5.11.patch"
-)
-
 src_configure() {
 	eqmake5
 }
 
 src_install() {
 	dobin ${PN}
-	make_desktop_entry ${PN} Coquillo
+	doicon extra/${PN}.png
+	domenu extra/${PN}.desktop
 	einstalldocs
 }

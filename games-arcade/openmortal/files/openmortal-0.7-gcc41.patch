@@ -1,5 +1,5 @@
---- src/OnlineChat.cpp.old
-+++ src/OnlineChat.cpp
+--- a/src/OnlineChat.cpp.old
++++ b/src/OnlineChat.cpp
 @@ -56,7 +56,7 @@
  class CChallengeMenu: public Menu
  {

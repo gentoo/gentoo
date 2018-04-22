@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
 
 DESCRIPTION="A framework for 2D games in Lua"
 HOMEPAGE="http://love2d.org/"
@@ -13,31 +12,30 @@ SLOT="0.7"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-games/physfs
-	dev-lang/lua[deprecated]
+RDEPEND="
+	dev-games/physfs
+	dev-lang/lua:0[deprecated]
 	media-libs/devil[mng,png,tiff]
-	media-libs/freetype
+	media-libs/freetype:2
 	media-libs/libmodplug
 	media-libs/libsdl[joystick,opengl]
 	media-libs/libvorbis
 	media-libs/openal
 	media-sound/mpg123
-	virtual/opengl"
+	virtual/opengl
+"
 DEPEND="${RDEPEND}
-	media-libs/libmng
-	media-libs/tiff"
+	media-libs/libmng:0
+	media-libs/tiff:0
+"
 
-S=${WORKDIR}/${PN}-HEAD
+S="${WORKDIR}/${PN}-HEAD"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.8.0-freetype2.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-0.8.0-freetype2.patch )
 
 src_install() {
 	DOCS="readme.txt changes.txt" \
 		default
-	if [[ "${SLOT}" != "0" ]]; then
-		mv "${ED}${GAMES_BINDIR}"/${PN} \
-			"${ED}${GAMES_BINDIR}"/${PN}-${SLOT} || die
-	fi
+
+	mv "${ED}/usr/bin/${PN}" "${ED}/usr/bin/${PN}-${SLOT}" || die
 }

@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils games
+EAPI=6
+inherit eutils
 
 DESCRIPTION="The spiritual successor of the classic Tetris mixed with physics"
 HOMEPAGE="http://stabyourself.net/nottetris2/"
@@ -15,21 +14,20 @@ KEYWORDS="~amd64 ~x86"
 
 LVSLOT="0.7"
 RDEPEND=">=games-engines/love-0.7.2:${LVSLOT}
-	 media-libs/devil[png]"
+	 media-libs/devil[png]
+"
 DEPEND="app-arch/unzip"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
-	local dir=${GAMES_DATADIR}/love/${PN}
+	local dir=/usr/share/love/${PN}
 
 	exeinto "${dir}"
 	newexe "Not Tetris 2.love" ${PN}.love
 
 	newdoc "Not Readme.txt" README
 
-	games_make_wrapper ${PN} "love-${LVSLOT} ${PN}.love" "${dir}"
+	make_wrapper ${PN} "love-${LVSLOT} ${PN}.love" "${dir}"
 	make_desktop_entry ${PN}
-
-	prepgamesdirs
 }

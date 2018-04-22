@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Mole infested 2D platform game"
 HOMEPAGE="http://moleinvasion.tuxfamily.org/"
@@ -18,20 +18,23 @@ DEPEND="media-libs/libsdl[opengl,video]
 	virtual/opengl
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[vorbis]
-	media-libs/sdl-ttf"
+	media-libs/sdl-ttf
+"
 RDEPEND="${DEPEND}"
-S=${WORKDIR}/${P}/src
+
+S="${WORKDIR}/${P}/src"
 
 src_prepare() {
+	default
 	use music && mv -f "${WORKDIR}"/music ../
 	sed -i \
 		-e '/^CFLAGS/s:= -g:+=:' \
 		-e '/^LDFLAGS/d' \
-		-e "/^FINALEXEDIR/s:/usr.*:${GAMES_BINDIR}:" \
-		-e "/^FINALDATADIR/s:/usr.*:${GAMES_DATADIR}/${PN}:" \
-		Makefile \
-		|| die "sed failed"
-	epatch "${FILESDIR}"/${P}-opengl.patch \
+		-e "/^FINALEXEDIR/s:/usr.*:/usr/bin:" \
+		-e "/^FINALDATADIR/s:/usr.*:/usr/share/${PN}:" \
+		Makefile || die "sed failed"
+
+	eapply "${FILESDIR}"/${P}-opengl.patch \
 		"${FILESDIR}"/${P}-underlink.patch
 }
 
@@ -40,5 +43,4 @@ src_install() {
 	newicon ../gfx/icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "Mole Invasion"
 	doman ../debian/*.6
-	prepgamesdirs
 }
