@@ -99,7 +99,10 @@ RESTRICT="test"
 PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
+	# release-3_0 branch
+	"${FILESDIR}/${P}-check-constraints.patch"
 	# TODO upstream
+	"${FILESDIR}/${P}-qt-5.11.patch"
 	"${FILESDIR}/${PN}-3.0.0-featuresummary.patch"
 )
 
