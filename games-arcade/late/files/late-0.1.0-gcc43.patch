@@ -1,5 +1,5 @@
---- src/init.cpp
-+++ src/init.cpp
+--- a/src/init.cpp
++++ b/src/init.cpp
 @@ -26,6 +26,8 @@
  #include "scorescreen.h"
  #include <fstream>
