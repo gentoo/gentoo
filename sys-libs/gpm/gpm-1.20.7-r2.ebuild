@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # emacs support disabled due to #99533 #335900
@@ -8,8 +8,8 @@ EAPI=5
 inherit eutils systemd toolchain-funcs autotools multilib-minimal
 
 DESCRIPTION="Console-based mouse driver"
-HOMEPAGE="http://www.nico.schottelius.org/software/gpm/"
-SRC_URI="http://www.nico.schottelius.org/software/${PN}/archives/${P}.tar.lzma
+HOMEPAGE="https://www.nico.schottelius.org/software/gpm/"
+SRC_URI="https://www.nico.schottelius.org/software/${PN}/archives/${P}.tar.lzma
 	mirror://gentoo/${P}-docs.patch.xz"
 
 LICENSE="GPL-2"

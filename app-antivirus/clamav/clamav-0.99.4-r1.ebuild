@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils flag-o-matic user systemd
 
 DESCRIPTION="Clam Anti-Virus Scanner"
-HOMEPAGE="http://www.clamav.net/"
+HOMEPAGE="https://www.clamav.net/"
 SRC_URI="https://www.clamav.net/downloads/production/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -28,7 +28,7 @@ CDEPEND="bzip2? ( app-arch/bzip2 )
 	!!<app-antivirus/clamav-0.99"
 # hard block clamav < 0.99 due to linking problems Bug #567680
 # openssl is now *required* see this link as to why
-# http://blog.clamav.net/2014/02/introducing-openssl-as-dependency-to.html
+# https://blog.clamav.net/2014/02/introducing-openssl-as-dependency-to.html
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	test? ( dev-libs/check )"
