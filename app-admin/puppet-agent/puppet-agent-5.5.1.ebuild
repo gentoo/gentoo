@@ -52,7 +52,6 @@ src_install() {
 	doconfd etc/default/pxp-agent
 	# logrotate.d
 	insinto /etc/logrotate.d
-	doins etc/logrotate.d/mcollective
 	doins etc/logrotate.d/pxp-agent
 	# puppet itself
 	insinto /etc/puppetlabs
