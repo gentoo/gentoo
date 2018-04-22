@@ -23,14 +23,16 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/libusb-1.0.20
-	>=dev-qt/qtcore-5.6:5
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qttest:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 S="${WORKDIR}/${P/_/-}"
 
