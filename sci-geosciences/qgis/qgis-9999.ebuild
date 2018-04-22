@@ -26,6 +26,7 @@ SLOT="0"
 IUSE="3d examples georeferencer grass mapserver oracle polar postgres python webkit"
 
 REQUIRED_USE="
+	grass? ( python )
 	mapserver? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -104,7 +105,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -185,10 +186,12 @@ src_install() {
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
-	python_optimize "${ED%/}"/usr/share/qgis/python
+	if use python; then
+		python_optimize "${ED%/}"/usr/share/qgis/python
 
-	if use grass; then
-		python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
+		if use grass; then
+			python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
+		fi
 	fi
 }
 
