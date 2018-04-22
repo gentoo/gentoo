@@ -1252,6 +1252,11 @@
       <role>Member</role>
     </member>
     <member>
+      <email>sobhan@gentoo.org</email>
+      <name>Sobhan Mohammadpour</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>tetromino@gentoo.org</email>
       <name>Alexandre Rostovtsev</name>
       <role>Member</role>
@@ -4274,6 +4279,10 @@ developers and volunteer mentors.</description>
     <member>
       <email>remi@gentoo.org</email>
       <name>Rémi Cardona</name>
+    </member>
+    <member>
+      <email>sarnex@gentoo.org</email>
+      <name>Nick Sarnie</name>
     </member>
   </project>
   <project>
