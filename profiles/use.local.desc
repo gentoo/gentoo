@@ -3378,6 +3378,7 @@ media-video/ffmpeg:cdio - Enables audio CD grabbing with dev-libs/libcdio.
 media-video/ffmpeg:celt - Adds Xiph CELT audio decoding support via media-libs/celt
 media-video/ffmpeg:chromaprint - Enables audio fingerprinting support with media-libs/chromaprint.
 media-video/ffmpeg:chromium - Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.
+media-video/ffmpeg:codec2 - Enables codec2 low bit rate speech codec support via media-libs/codec2.
 media-video/ffmpeg:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
 media-video/ffmpeg:ebur128 - Enables EBU R128 loudness normalization filter via media-libs/libebur128
 media-video/ffmpeg:fdk - Use external fdk-aac library for AAC encoding
@@ -3396,6 +3397,7 @@ media-video/ffmpeg:libilbc - Enables iLBC de/encoding via media-libs/libilbc.
 media-video/ffmpeg:librtmp - Enables Real Time Messaging Protocol using librtmp (media-video/rtmpdump) in addition to FFmpeg's native implementation.
 media-video/ffmpeg:libsoxr - Enables audio resampling through media-libs/soxr.
 media-video/ffmpeg:libv4l - Uses media-libs/libv4l for video4linux instead of direct calls. Adds support for more devices via the userspace library.
+media-video/ffmpeg:lv2 - Enables lv2 audio filter wrapper.
 media-video/ffmpeg:mipsdspr1 - Enables MIPS DSP ASE R1 optimizations.
 media-video/ffmpeg:mipsdspr2 - Enables MIPS DSP ASE R2 optimizations.
 media-video/ffmpeg:mipsfpu - Enables floating point MIPS optimizations.
