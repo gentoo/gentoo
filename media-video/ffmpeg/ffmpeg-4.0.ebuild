@@ -73,11 +73,11 @@ FFMPEG_FLAG_MAP=(
 		# indevs
 		libv4l:libv4l2 pulseaudio:libpulse libdrm
 		# decoders
-		amr:libopencore-amrwb amr:libopencore-amrnb fdk:libfdk-aac video_cards_nvidia:ffnvcodec
+		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray celt:libcelt gme:libgme gsm:libgsm
 		mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
-		speex:libspeex svg:librsvg vorbis:libvorbis
-		vpx:libvpx zvbi:libzvbi
+		speex:libspeex svg:librsvg video_cards_nvidia:ffnvcodec
+		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		appkit
 		bs2b:libbs2b chromaprint flite:libflite frei0r
@@ -170,6 +170,7 @@ RDEPEND="
 	cdio? ( >=dev-libs/libcdio-paranoia-0.90_p1-r1[${MULTILIB_USEDEP}] )
 	celt? ( >=media-libs/celt-0.11.1-r1[${MULTILIB_USEDEP}] )
 	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
+	codec2? ( media-libs/codec2[${MULTILIB_USEDEP}] )
 	encode? (
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
