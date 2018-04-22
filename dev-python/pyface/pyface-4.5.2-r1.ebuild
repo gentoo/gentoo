@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,11 +19,7 @@ IUSE="examples test"
 
 RDEPEND="
 	>=dev-python/traits-4.1[${PYTHON_USEDEP}]
-	|| (
-		dev-python/wxpython:*[${PYTHON_USEDEP}]
-		dev-python/PyQt4[${PYTHON_USEDEP}]
-		dev-python/pyside[${PYTHON_USEDEP}]
-	)"
+	dev-python/wxpython:*[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -34,8 +30,7 @@ DEPEND="
 	)"
 
 python_test() {
-	export ETS_TOOLKIT=qt4
-	export QT_API=pyqt
+	export ETS_TOOLKIT=wx
 	# set nosetests to ignore tests unpassable by these vars.
 	VIRTUALX_COMMAND="nosetests" virtualmake -v -I 'composite_grid_model_test_case*' \
 		-I 'simple_grid_model_test_case*' \

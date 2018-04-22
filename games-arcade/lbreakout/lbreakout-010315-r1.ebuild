@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games
+EAPI=6
 
 DESCRIPTION="Breakout clone written with the SDL library"
 HOMEPAGE="http://lgames.sourceforge.net/LBreakout/"
@@ -17,6 +16,7 @@ DEPEND=">=media-libs/libsdl-1.1.5"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i \
 		-e '/^sdir=/s:$datadir/games:$datadir:' \
 		-e '/^hdir=/s:/var/lib/games:$localstatedir:' \
@@ -25,8 +25,6 @@ src_prepare() {
 }
 
 src_install() {
-	dodir "${GAMES_STATEDIR}"
+	HTML_DOCS="lbreakout/manual/*"
 	default
-	dohtml lbreakout/manual/*
-	prepgamesdirs
 }

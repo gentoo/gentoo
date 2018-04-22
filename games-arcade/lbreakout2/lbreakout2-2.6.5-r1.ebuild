@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils flag-o-matic gnome2-utils games
+EAPI=6
+inherit autotools desktop flag-o-matic gnome2-utils
 
 levels_V=20141220
 themes_V=20141220
@@ -18,14 +18,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE="nls themes"
 
-RDEPEND="media-libs/libpng:0
+RDEPEND="
+	media-libs/libpng:0=
 	sys-libs/zlib
 	media-libs/libsdl[sound,joystick,video]
 	media-libs/sdl-net
 	media-libs/sdl-mixer
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+"
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -49,13 +52,14 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
+	eapply "${FILESDIR}"/${P}-gentoo.patch
 	eautoreconf
 }
 
 src_configure() {
 	filter-flags -O?
-	egamesconf \
+	econf \
 		--enable-sdl-net \
 		--localedir=/usr/share/locale \
 		--with-docdir="/usr/share/doc/${PF}/html" \
@@ -66,24 +70,20 @@ src_install() {
 	default
 
 	if use themes ; then
-		insinto "${GAMES_DATADIR}/lbreakout2/gfx"
+		insinto /usr/share/lbreakout2/gfx
 		doins -r "${WORKDIR}/themes/"*
 	fi
 
 	newicon client/gfx/win_icon.png ${PN}.png
 	newicon -s 32 client/gfx/win_icon.png ${PN}.png
 	make_desktop_entry lbreakout2 LBreakout2
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
