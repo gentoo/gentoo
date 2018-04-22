@@ -28,6 +28,10 @@ RUBY_S="${MY_P}"
 
 PATCHES=( "${FILESDIR}/${P}-unvendor-hiredis.patch" )
 
+all_ruby_prepare() {
+	sed -i -e 's:/tmp/:'${T}'/:' test/connection_test.rb || die
+}
+
 each_ruby_configure() {
 	CC=$(tc-getCC) ${RUBY} -Cext/hiredis_ext extconf.rb || die
 }
