@@ -48,7 +48,7 @@ www-servers/lighttpd memcached
 x11-misc/xscreensaver gdm
 
 # NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
-# net-libs/libmicrodns not yet keyworded for arm64
+# net-libs/libmicrodns not yet keyworded for arm64, bug #653800
 media-video/vlc microdns
 
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)

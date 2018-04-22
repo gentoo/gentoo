@@ -18,7 +18,7 @@ app-emulation/qemu capstone
 >=dev-python/ipython-5.4.1 qt5 smp
 
 # NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
-# net-libs/libmicrodns not yet keyworded for ppc
+# net-libs/libmicrodns not yet keyworded for ppc, bug #653800
 media-video/vlc microdns
 
 # Amy Liffey <amynka@gentoo.org (21 Jan 2018)

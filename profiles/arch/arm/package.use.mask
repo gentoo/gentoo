@@ -12,7 +12,7 @@ mail-client/mutt notmuch
 >=dev-python/ipython-5.4.1 notebook qt5 smp
 
 # NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
-# net-libs/libmicrodns not yet keyworded for arm
+# net-libs/libmicrodns not yet keyworded for arm, bug #653800
 media-video/vlc microdns
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Feb 2018)
