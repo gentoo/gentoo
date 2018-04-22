@@ -38,7 +38,7 @@ src_install() {
 	rm -rf "${D}"/var
 
 	einfo "Setting default aliases..."
-	"${ED%/}/usr/bin/wm-icons-config" --force --user-dir="${ED%/}/usr/share/icons/wm-icons" --defaults
+	"${ED%/}/usr/bin/wm-icons-config" --force --user-dir="${ED%/}/usr/share/icons/wm-icons" --defaults || die
 
 	einstalldocs
 }

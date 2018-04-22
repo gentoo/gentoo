@@ -25,7 +25,7 @@ src_install() {
 	emake icondir="${ED%/}/usr/share/icons/wm-icons" DESTDIR="${D}" install
 
 	einfo "Setting default aliases..."
-	"${ED%/}/usr/bin/wm-icons-config" --force --user-dir="${ED%/}/usr/share/icons/wm-icons" --defaults
+	"${ED%/}/usr/bin/wm-icons-config" --force --user-dir="${ED%/}/usr/share/icons/wm-icons" --defaults || die
 
 	einstalldocs
 }
