@@ -5483,7 +5483,6 @@ dev-python/shortuuid 0.4.3: A generator library for concise, unambiguous and URL
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.10.0 3.13.2: Simple, fast, extensible JSON encoder/decoder for Python
 dev-python/simplekv 0.9.2: A key-value storage for binary data, support many backends.
-dev-python/simpleparse 2.1.1-r1: A Parser Generator for mxTextTools
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.19.3 4.19.8: Python extension module generator for C and C++ libraries
