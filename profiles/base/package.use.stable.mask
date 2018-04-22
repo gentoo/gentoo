@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Apr 2018)
+# Not ready for stable, crashes LO on some systems.
+>=app-office/libreoffice-6.0 kde
+
 # Michał Górny <mgorny@gentoo.org> (21 Apr 2018)
 # Apparently requires newer dev-python/django stable.
 =dev-python/django-tastypie-0.13.3 doc
