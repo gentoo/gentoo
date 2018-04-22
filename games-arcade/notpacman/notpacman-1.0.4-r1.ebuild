@@ -13,7 +13,8 @@ LICENSE="WTFPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=games-engines/love-0.7.2:0.7
+LVSLOT="0.7"
+RDEPEND=">=games-engines/love-0.7.2:${LVSLOT}
 	 media-libs/devil[png]
 "
 DEPEND="app-arch/unzip"
