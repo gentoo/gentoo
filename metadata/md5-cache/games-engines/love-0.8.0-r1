@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-games/physfs dev-lang/lua:0[deprecated] media-libs/devil[mng,png,tiff] media-libs/freetype:2 media-libs/libmodplug media-libs/libsdl[joystick,opengl,video] media-libs/libvorbis media-libs/openal media-sound/mpg123 virtual/opengl media-libs/libmng:0 media-libs/tiff:0
+DESCRIPTION=A framework for 2D games in Lua
+EAPI=6
+HOMEPAGE=http://love2d.org/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ZLIB
+RDEPEND=dev-games/physfs dev-lang/lua:0[deprecated] media-libs/devil[mng,png,tiff] media-libs/freetype:2 media-libs/libmodplug media-libs/libsdl[joystick,opengl,video] media-libs/libvorbis media-libs/openal media-sound/mpg123 virtual/opengl
+SLOT=0
+SRC_URI=https://www.bitbucket.org/rude/love/downloads/love-0.8.0-linux-src.tar.gz
+_md5_=4677f6381102ce4517add3fd7a28e579
