@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (22 Apr 2018)
+# Unmaintained buggy package with unresearched segfaults.  No support
+# for Python 3.  No reverse dependencies.
+# Removal in 30 days.  Bug #454680.
+dev-python/simpleparse
+
 # Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
 # Awful, unmaintained, unused. Removal in 30 days. Bug #651300.
 x11-libs/xpyb
