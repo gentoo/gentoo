@@ -27,6 +27,7 @@ IUSE="3d examples georeferencer grass mapserver oracle polar postgres python web
 
 REQUIRED_USE="
 	mapserver? ( python )
+	grass? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
