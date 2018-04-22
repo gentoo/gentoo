@@ -16,7 +16,7 @@ index 5b4d458..c6e290a 100644
          line0 = f.readline()
          f.close()
 -        m = re.match(r'.+?\s(3|4)\.\d+', line0)
-+        m = re.match(r'.+?\s([3-5])\.\d+', line0)
++        m = re.match(r'.+?\s([3-8])\.\d+', line0)
          if int(m.group(1)) < 4:
              use_32bit_workaround = True
  
