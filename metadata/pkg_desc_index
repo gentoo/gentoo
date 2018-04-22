@@ -3140,7 +3140,7 @@ dev-libs/libspt 1.1-r2: Library for handling root privilege
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r3 1.2.20-r4: C library for manipulating tar archives
-dev-libs/libtasn1 4.12-r1 4.13: ASN.1 library
+dev-libs/libtasn1 4.13: ASN.1 library
 dev-libs/libtecla 1.6.1-r2: Tecla command-line editing library
 dev-libs/libtermkey 0.20: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtommath 0.42.0-r1: Optimized and portable routines for integer theoretic applications
@@ -7222,7 +7222,7 @@ media-gfx/gif2png 2.5.8 2.5.9: Converts images from gif format to png format
 media-gfx/gifsicle 1.86 1.90: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
-media-gfx/gimp 2.8.22 2.8.22-r1: GNU Image Manipulation Program
+media-gfx/gimp 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
 media-gfx/gnofract4d 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
@@ -7393,7 +7393,7 @@ media-libs/freeverb3 3.1.2_pre20151102-r1: Reverb and Impulse Response Convoluti
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.1: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
-media-libs/gd 2.2.4 2.2.5: A graphics library for fast image creation
+media-libs/gd 2.2.5: A graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image processing framework
 media-libs/gexiv2 0.10.3 0.10.3-r1 0.10.8: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
@@ -7574,7 +7574,7 @@ media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.1: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.6: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
-media-libs/libvorbis 1.3.5 1.3.6: The Ogg Vorbis sound file format library
+media-libs/libvorbis 1.3.6: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.5.0: WebM VP8 Codec SDK
 media-libs/libwebp 0.5.2: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r6: library for converting WMF files
@@ -8521,7 +8521,7 @@ net-irc/inspircd 2.0.23 2.0.25: Inspire IRCd - The Stable, High-Performance Modu
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for several IRC daemons
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 1.0.4 1.0.5 1.0.6 1.0.7: A modular textUI IRC client with IPv6 support
+net-irc/irssi 1.0.7: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.4-r1: A user friendly IRC Client
