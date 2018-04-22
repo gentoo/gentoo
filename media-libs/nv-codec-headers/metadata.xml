@@ -4,4 +4,7 @@
   <maintainer type="project">
     <email>media-video@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">FFmpeg/nv-codec-headers</remote-id>
+  </upstream>
 </pkgmetadata>

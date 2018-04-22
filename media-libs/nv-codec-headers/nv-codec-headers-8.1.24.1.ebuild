@@ -7,7 +7,7 @@ inherit multilib-minimal
 
 DESCRIPTION="FFmpeg version of headers required to interface with Nvidias codec APIs"
 HOMEPAGE="https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git"
-SRC_URI="mirror://gentoo/${P}.tar.xz"
+SRC_URI="https://github.com/FFmpeg/nv-codec-headers/releases/download/n${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,11 +19,7 @@ RDEPEND="${DEPEND}
 	>=x11-drivers/nvidia-drivers-390.25[${MULTILIB_USEDEP}]
 "
 
-# Snapshot from:
-# EGIT_REPO_URI="https://git.videolan.org/git/ffmpeg/nv-codec-headers.git"
-# EGIT_COMMIT="n${PV}"
-
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/${PN}-n${PV}"
 
 src_prepare() {
 	multilib_copy_sources
