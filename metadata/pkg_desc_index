@@ -1893,7 +1893,7 @@ dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
 dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading constant data bases
 dev-db/tokyocabinet 1.4.48 1.4.48-r1: A library of routines for managing a database
-dev-db/unixODBC 2.3.5 2.3.5-r1: A complete ODBC driver manager
+dev-db/unixODBC 2.3.5-r1: A complete ODBC driver manager
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
