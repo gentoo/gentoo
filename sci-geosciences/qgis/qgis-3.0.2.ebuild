@@ -56,7 +56,7 @@ COMMON_DEPEND="
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
 	georeferencer? ( sci-libs/gsl:= )
-	grass? ( >=sci-geosciences/grass-7.0.0:= )
+	grass? ( =sci-geosciences/grass-7*:= )
 	mapserver? ( dev-libs/fcgi )
 	oracle? (
 		dev-db/oracle-instantclient:=
@@ -136,7 +136,7 @@ src_configure() {
 		-DENABLE_TESTS=OFF
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
-		-DWITH_GRASS=$(usex grass)
+		-DWITH_GRASS7=$(usex grass)
 		-DWITH_SERVER=$(usex mapserver)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
@@ -148,7 +148,6 @@ src_configure() {
 
 	if use grass; then
 		mycmakeargs+=(
-			-DWITH_GRASS7=ON
 			-DGRASS_PREFIX7=/usr/$(get_libdir)/grass70
 		)
 	fi
