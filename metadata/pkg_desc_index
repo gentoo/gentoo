@@ -1788,8 +1788,11 @@ dev-ada/aunit 2017: Ada unit testing framework
 dev-ada/aws 2017: A complete Web development framework
 dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016 2017: GNAT Component Collection
+dev-ada/gnatmem 2017: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gprbuild 2017: Multi-Language Management
 dev-ada/gtkada 2017: A complete Ada graphical toolkit
+dev-ada/langkit 2017: A Python framework to generate language parsers
+dev-ada/libadalang 2017: high performance semantic engine for the Ada programming language
 dev-ada/libgpr 2016 2017: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2017: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
@@ -4839,6 +4842,7 @@ dev-python/funcparserlib 0.3.6: Recursive descent parsing library based on funct
 dev-python/funcsigs 0.4 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
 dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in Python
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
+dev-python/funcy 1.8: A collection of fancy functional tools focused on practicality
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
@@ -5417,6 +5421,7 @@ dev-python/qpid-python 0.20: A high-speed platform independent enterprise messag
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.3: Python bindings for Qscintilla
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
+dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rarfile 2.8 3.0: Module for RAR archive reading
 dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
@@ -9863,6 +9868,7 @@ sys-auth/pam_p11 0.1.6: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password changing programs
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
 sys-auth/pam_ssh 1.97-r1 1.97-r2 1.98: Uses ssh-agent to provide single sign-on
+sys-auth/pam_u2f 1.0.4-r1: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20101024-r2 20120417-r3 20150213 20150213-r1: PAM base configuration files
 sys-auth/polkit 0.113 0.113-r4: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
