@@ -22,8 +22,7 @@
     <remote-id type="github">Bitmessage/PyBitmessage</remote-id>
   </upstream>
   <use>
-    <flag name="opencl">
-      Uses <pkg>dev-python/pyopencl</pkg> for GPU acceleration.
-    </flag>
+    <flag name="opencl">Enable <pkg>dev-python/pyopencl</pkg> for GPU acceleration</flag>
+    <flag name="qrcode">Enable <pkg>dev-python/qrcode</pkg> for QR code support</flag>
   </use>
 </pkgmetadata>
