@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-21">
+  <title>librelp: Remote code execution</title>
+  <synopsis>A vulnerability has been found in librelp that may allow a remote
+    attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">librelp</product>
+  <announced>2018-04-22</announced>
+  <revised count="1">2018-04-22</revised>
+  <bug>651192</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/librelp" auto="yes" arch="*">
+      <unaffected range="ge">1.2.15</unaffected>
+      <vulnerable range="lt">1.2.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A reliable logging program.</p>
+  </background>
+  <description>
+    <p>A buffer overflow was discovered in librelp with the handling of x509
+      certificates.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by sending a specially crafted x509 certificate,
+      could execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All librelp users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/librelp-1.2.15"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000140">
+      CVE-2018-1000140
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-22T21:23:29Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-22T23:52:09Z">b-man</metadata>
+</glsa>
