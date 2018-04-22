@@ -1747,6 +1747,7 @@ dev-python/QtPy:pyqt5 - Enable the dev-python/PyQt5 backend
 dev-python/QtPy:pyside - Enable the dev-python/pyside backend
 dev-python/QtPy:svg - Build bindings for the QtSvg module
 dev-python/QtPy:testlib - Build bindings for the QtTest module
+dev-python/QtPy:webengine - Build bindings for the QtWebEngine module
 dev-python/QtPy:webkit - Build bindings for the QtWebKit module
 dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/anyvc:bazaar - Add support for Bazaar
