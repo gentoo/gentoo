@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="
-	debug firebird iodbc kerberos ldap mysql odbc oracle pam pcap
+	debug firebird iodbc kerberos ldap libressl mysql odbc oracle pam pcap
 	postgres python readline sqlite ssl
 "
 RESTRICT="test firebird? ( bindist )"
@@ -38,7 +38,10 @@ RDEPEND="!net-dialup/cistronradius
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	ldap? ( net-nds/openldap )
 	kerberos? ( virtual/krb5 )
 	sqlite? ( dev-db/sqlite:3 )
