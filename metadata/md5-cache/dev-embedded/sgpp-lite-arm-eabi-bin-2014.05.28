@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Regular, validated releases of the GNU Toolchain for arm processors
+EAPI=6
+HOMEPAGE=http://www.codesourcery.com/sgpp/lite/arm
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/glibc
+RESTRICT=strip
+SLOT=2014.05.28
+SRC_URI=https://sourcery.mentor.com/public/gnu_toolchain/arm-none-eabi/arm-2014.05-28-arm-none-eabi-i686-pc-linux-gnu.tar.bz2
+_md5_=7851e0c3412ffd0107cd83220acde821
