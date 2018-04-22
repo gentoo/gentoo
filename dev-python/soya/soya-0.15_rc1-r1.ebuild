@@ -44,10 +44,7 @@ PATCHES=(
 )
 
 src_unpack() {
-	if [ ${A} != "" ]; then
-		unpack ${A}
-	fi
-
+	unpack ${A}
 	mv "${WORKDIR}/${MY_P}" "${WORKDIR}/${MY_PN}"
 }
 
