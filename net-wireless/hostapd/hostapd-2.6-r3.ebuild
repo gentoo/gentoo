@@ -112,8 +112,6 @@ src_configure() {
 	einfo "  HostAP driver enabled"
 	echo "CONFIG_DRIVER_WIRED=y" >> ${CONFIG}
 	einfo "  Wired driver enabled"
-	echo "CONFIG_DRIVER_PRISM54=y" >> ${CONFIG}
-	einfo "  Prism54 driver enabled"
 	echo "CONFIG_DRIVER_NONE=y" >> ${CONFIG}
 	einfo "  None driver enabled"
 
