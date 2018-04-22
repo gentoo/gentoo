@@ -19,7 +19,7 @@ S=${WORKDIR}
 
 src_install() {
 	exeinto /usr/lib/misc
-	newexe "${FILESDIR}"/fox-wrapper-${PV}.sh fox-wrapper.sh || die
+	newexe "${FILESDIR}"/fox-wrapper-${PV}.sh fox-wrapper.sh
 
 	dodir /usr/bin
 	dosym ../lib/misc/fox-wrapper.sh /usr/bin/fox-config
