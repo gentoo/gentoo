@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=media-libs/libsdl-1.1.5
+DESCRIPTION=Breakout clone written with the SDL library
+EAPI=6
+HOMEPAGE=http://lgames.sourceforge.net/LBreakout/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libsdl-1.1.5
+SLOT=0
+SRC_URI=mirror://sourceforge/lgames/lbreakout-010315.tar.gz
+_md5_=0cce95ef170705d671731d50139210f0
