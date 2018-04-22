@@ -3,6 +3,7 @@
 
 EAPI=6
 
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit cmake-utils
 
 DESCRIPTION="Commandline tool to take screenshots of the desktop"
