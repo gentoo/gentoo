@@ -16,7 +16,6 @@ IUSE=""
 RDEPEND="|| ( x11-wm/fluxbox x11-wm/blackbox x11-wm/openbox )"
 
 src_install() {
-
 	insinto /usr/share/commonbox/backgrounds
 	doins "${S}"/backgrounds/*
 
@@ -24,5 +23,4 @@ src_install() {
 	doins "${S}"/styles/*
 
 	dodoc README.commonbox-styles STYLES.authors
-
 }
