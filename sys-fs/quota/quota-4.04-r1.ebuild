@@ -22,7 +22,6 @@ RDEPEND="
 	)
 	rpc? (
 		net-nds/rpcbind
-		elibc_glibc? ( sys-libs/glibc[-rpc(-)] )
 		net-libs/libtirpc
 		net-libs/rpcsvc-proto
 	)
