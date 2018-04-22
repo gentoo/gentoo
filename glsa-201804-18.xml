@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-18">
+  <title>tenshi: Privilege escalation</title>
+  <synopsis>Gentoo's tenshi ebuild is vulnerable to privilege escalation due to
+    the way pid files are handled.
+  </synopsis>
+  <product type="ebuild">tenshi</product>
+  <announced>2018-04-22</announced>
+  <revised count="1">2018-04-22</revised>
+  <bug>626654</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/tenshi" auto="yes" arch="*">
+      <unaffected range="ge">0.17</unaffected>
+      <vulnerable range="lt">0.17</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A log monitoring program, designed to watch one or more log files for
+      lines matching user defined regular expressions and report on the
+      matches.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that the tenshi ebuild creates a tenshi.pid file after
+      dropping privileges to a non-root account.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges to root or kill arbitrary
+      processes.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tenshi users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/tenshi-0.17"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11746">CVE-2017-11746</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-18T00:37:51Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-22T22:37:25Z">b-man</metadata>
+</glsa>
