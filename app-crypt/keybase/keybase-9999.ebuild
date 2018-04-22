@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/keybase/client.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="+suid"
 
 DEPEND="
 	>=dev-lang/go-1.6:0
@@ -49,8 +49,12 @@ src_compile() {
 
 src_install() {
 	dobin "${T}/keybase"
+	dodir "/var/lib/keybase"
+	fowners keybasehelper:keybasehelper "/var/lib/keybase"
+	dosym "/tmp/keybase" "/var/lib/keybase/mount1"
 	dobin "${T}/keybase-mount-helper"
-	fowners keybasehelper:keybasehelper "${EROOT}/usr/bin/keybase-mount-helper"
+	fowners keybasehelper:keybasehelper "/usr/bin/keybase-mount-helper"
+	use suid && fperms 4755 "/usr/bin/keybase-mount-helper"
 	dobin "${S}/packaging/linux/run_keybase"
 	systemd_douserunit "${S}/packaging/linux/systemd/keybase.service"
 }
