@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,6 +42,12 @@ PATCHES=( "${FILESDIR}/bro-2.4.1-remove-unnecessary-remove.patch"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	# Disable shell script feature which sets interpreter to build time default
+	find . -name "*.cmake" -exec sed -i -e "s:\${\${_shell}_interp}:/usr/bin/env ${EPYTHON}:g" {} + || die
+	cmake-utils_src_prepare
 }
 
 src_configure() {
