@@ -1,17 +1,15 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
 DESCRIPTION="A package to simplify installation of all dictd dictionaries"
-
-SLOT="0"
-LICENSE="GPL-2"
 HOMEPAGE="http://www.dict.org/"
-IUSE=""
-KEYWORDS="x86 ppc sparc amd64 ppc64"
 
-DEPEND=""
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc amd64 ppc64"
+IUSE=""
 
 RDEPEND="app-dicts/dictd-devils
 	app-dicts/dictd-elements
@@ -21,4 +19,5 @@ RDEPEND="app-dicts/dictd-devils
 	app-dicts/dictd-misc
 	app-dicts/dictd-vera
 	app-dicts/dictd-web1913
-	app-dicts/dictd-wn"
+	app-dicts/dictd-wn
+"
