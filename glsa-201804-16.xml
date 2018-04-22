@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-16">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ClamAV, the worst of
+    which may allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>2018-04-22</announced>
+  <revised count="1">2018-04-22</revised>
+  <bug>623534</bug>
+  <bug>625632</bug>
+  <bug>628686</bug>
+  <bug>628690</bug>
+  <bug>649314</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.99.4</unaffected>
+      <vulnerable range="lt">0.99.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ClamAV is a GPL virus scanner.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ClamAV. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, through multiple vectors, could execute arbitrary
+      code, cause a Denial of Service condition, or have other unspecified
+      impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ClamAV users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.99.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2012-6706">CVE-2012-6706</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11423">CVE-2017-11423</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-6418">CVE-2017-6418</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-6419">CVE-2017-6419</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-6420">CVE-2017-6420</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0202">CVE-2018-0202</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000085">
+      CVE-2018-1000085
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-22T21:20:11Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-22T22:32:37Z">b-man</metadata>
+</glsa>
