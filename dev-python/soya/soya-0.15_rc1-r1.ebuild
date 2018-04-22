@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,19 +22,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
-DEPEND=">=dev-games/ode-0.10[-double-precision]
+RDEPEND=">=dev-games/ode-0.14[-double-precision]
 	dev-python/editobj
 	dev-python/pillow
 	>=dev-python/pyopenal-0.1.6
 	media-fonts/freefonts
 	>=media-libs/cal3d-0.10
 	media-libs/freeglut
-	>=media-libs/freetype-2.1.5
-	>=media-libs/glew-1.3.3:*
+	>=media-libs/freetype-2.1.5:2
+	>=media-libs/glew-1.3.3:0
 	>=media-libs/libsdl-1.2.8[opengl]
 	media-libs/openal
-	virtual/opengl"
-RDEPEND="${DEPEND}"
+	virtual/opengl
+"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
 
