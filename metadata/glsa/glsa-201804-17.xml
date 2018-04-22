@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-17">
+  <title>Quagga: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Quagga, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">quagga</product>
+  <announced>2018-04-22</announced>
+  <revised count="1">2018-04-22</revised>
+  <bug>647788</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/quagga" auto="yes" arch="*">
+      <unaffected range="ge">1.2.4</unaffected>
+      <vulnerable range="lt">1.2.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Quagga is a free routing daemon replacing Zebra supporting RIP, OSPF and
+      BGP.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Quagga. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by sending specially crafted packets, could execute
+      arbitrary code or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Quagga users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/quagga-1.2.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5378">CVE-2018-5378</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5379">CVE-2018-5379</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5380">CVE-2018-5380</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5381">CVE-2018-5381</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-20T13:52:43Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-22T22:35:42Z">b-man</metadata>
+</glsa>
