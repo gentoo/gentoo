@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="emerge this package to install all of the gkrellm plugins"
-HOMEPAGE="http://www.gkrellm.net/"
+HOMEPAGE="http://gkrellm.srcbox.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
