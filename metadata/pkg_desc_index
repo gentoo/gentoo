@@ -8967,7 +8967,7 @@ net-nds/openldap 2.4.44: LDAP suite of application and development tools
 net-nds/rpcbind 0.2.4-r3: portmap replacement which supports RPC over various protocols
 net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ server
-net-nds/yp-tools 4.2.2-r1: Network Information Service tools
+net-nds/yp-tools 4.2.2-r1 4.2.2-r2: Network Information Service tools
 net-news/liferea 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.10.2: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.8: A Qt-based RSS/Atom feed reader
@@ -9899,7 +9899,8 @@ sys-block/ms-sys 2.4.0: A command-line program for writing Microsoft compatible 
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.15.3: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3: A daemon to spin down your disks and force accesses to be cached
-sys-block/open-iscsi 2.0.872-r2 2.0.873 2.0.873-r1: A performant, transport independent, multi-platform implementation of RFC3720
+sys-block/open-iscsi 2.0.872-r2 2.0.873 2.0.873-r1 2.0.875: A performant, transport independent, multi-platform implementation of RFC3720
+sys-block/open-isns 0.98: iSNS server and client for Linux
 sys-block/parted 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 3.3.1: KDE utility for management of partitions and file systems
@@ -9997,8 +9998,30 @@ sys-devel/prelink 20130503: Modifies ELFs to avoid runtime symbol resolutions re
 sys-devel/qconf 2.3: ./configure like generator for qmake-based projects
 sys-devel/remake 3.81.0.2 3.82.0.9: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/ucpp 1.3.4: A quick and light preprocessor, but anyway fully compliant to C99
-sys-fabric/libibverbs 1.1.7: A library to use InfiniBand 'verbs' for direct access to IB hardware
-sys-fabric/librdmacm 1.0.18: OpenIB userspace RDMA CM library
+sys-fabric/dapl 2.0.40: OpenIB - Direct Access Provider Library
+sys-fabric/ibacm 1.0.8: IB CM pre-connection service application
+sys-fabric/infiniband-diags 1.6.4: OpenIB diagnostic programs and scripts needed to diagnose an IB subnet
+sys-fabric/infinipath-psm 3.2: OpenIB userspace driver for the PathScale InfiniBand HCAs
+sys-fabric/libcxgb3 1.3.1-r2: OpenIB - driver for Chelsio T3-based iWARP (RDMA over IP/ethernet)
+sys-fabric/libcxgb4 1.3.2: OpenIB - driver for Chelsio T4-based iWARP (RDMA over IP/ethernet)
+sys-fabric/libehca 1.2.2-r3: OpenIB - IBM eServer eHCA Infiniband device driver for Linux on POWER
+sys-fabric/libibcm 1.0.5-r3: OpenIB Userspace CM library
+sys-fabric/libibmad 1.3.11: OpenIB library provides the API for use interfacing with IB management programs
+sys-fabric/libibumad 1.3.9: OpenIB User MAD lib functions which sit on top of the user MAD kernel modules
+sys-fabric/libibverbs 1.1.7 1.1.7-r1: A library to use InfiniBand 'verbs' for direct access to IB hardware
+sys-fabric/libipathverbs 1.2.1: OpenIB userspace driver for the PathScale InfiniBand HCAs
+sys-fabric/libmlx4 1.0.5: OpenIB userspace driver for Mellanox ConnectX HCA
+sys-fabric/libmlx5 1.0.1: OpenIB userspace driver for Mellanox ConnectIB HCA
+sys-fabric/libmthca 1.0.6: OpenIB userspace driver for Mellanox InfiniBand HCAs
+sys-fabric/libnes 1.1.4: NetEffect RNIC Userspace Library
+sys-fabric/libocrdma 1.0.2: OpenIB userspace driver for Emulex OneConnect RDMA
+sys-fabric/librdmacm 1.0.18 1.0.18-r1: OpenIB userspace RDMA CM library
+sys-fabric/ofed 3.12_rc1: OpenIB system files
+sys-fabric/opensm 3.3.17-r1: OpenSM - InfiniBand Subnet Manager and Administration for OpenIB
+sys-fabric/perftest 2.0: OpenIB uverbs micro-benchmarks
+sys-fabric/qperf 0.4.9: Measure RDMA and IP performance
+sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
+sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
 sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips

@@ -5462,6 +5462,16 @@ sys-devel/llvm:ncurses - Support querying terminal properties using ncurses' ter
 sys-devel/llvm:sanitize - Build compiler-rt's sanitizers
 sys-devel/llvm:static-analyzer - Install the Clang static analyzer (requires USE=clang)
 sys-devel/llvm:xar - Support dumping LLVM bitcode sections in Mach-O files (uses app-arch/xar)
+sys-fabric/ofed:dapl - Add support for DAPL abstraction layer
+sys-fabric/ofed:diags - Add dignostic tools for infiniband
+sys-fabric/ofed:ibacm - Add support for userspace pre-connection services
+sys-fabric/ofed:mstflint - Tools to burn Mellanox firmware
+sys-fabric/ofed:opensm - Add OpenSM - Subnet manager for infiniband
+sys-fabric/ofed:perftest - Add perftest utils
+sys-fabric/ofed:qperf - Add rdma tests
+sys-fabric/ofed:rds - Tools to manage rds sockets
+sys-fabric/ofed:srp - Suport for userspace part for srp initiator
+sys-fabric/opensm:tools - Install ssld extra tool
 sys-firmware/edk2-ovmf:binary - Use pre-built binaries
 sys-firmware/intel-microcode:initramfs - install a small initramfs for use with CONFIG_MICROCODE_EARLY
 sys-firmware/intel-microcode:monolithic - install the large text microcode.dat (used by older kernels via microcode_ctl)
