@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,12 +24,6 @@ RDEPEND="
 	app-arch/bzip2
 	dev-db/sqlcipher
 	dev-libs/openssl:0
-	dev-qt/qtcore:5
-	dev-qt/qtmultimedia:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtscript:5
-	dev-qt/qtxml:5
 	net-libs/libmicrohttpd
 	net-libs/libupnp:0
 	sys-libs/zlib
@@ -40,7 +34,12 @@ RDEPEND="
 		net-misc/curl
 	)
 	gui? (
-		dev-qt/designer:5
+		dev-qt/qtcore:5
+		dev-qt/qtmultimedia:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtscript:5
+		dev-qt/qtxml:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtx11extras:5
@@ -54,6 +53,8 @@ RDEPEND="
 		virtual/ffmpeg[encode]
 	)"
 DEPEND="${RDEPEND}
+	gui? ( dev-qt/designer:5 )
+	dev-qt/qtcore:5
 	virtual/pkgconfig
 "
 
@@ -81,12 +82,6 @@ src_prepare() {
 
 	# Avoid openpgpsdk false dependency on qtgui
 	sed -i '2iQT -= gui' openpgpsdk/src/openpgpsdk.pro || die
-
-	# Fix version
-	sed -i -e '/RS_BUILD_NUMBER/s/2/3/' libretroshare/src/retroshare/rsversion.in || die
-
-	# Fix comment not allowed in C++11
-	eapply "${FILESDIR}/${P}-fix-comment.patch"
 
 	eapply_user
 }
