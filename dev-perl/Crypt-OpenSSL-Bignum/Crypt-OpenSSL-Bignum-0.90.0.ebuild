@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=KMX
-DIST_VERSION=0.07
+DIST_VERSION=0.09
 inherit perl-module
 
 DESCRIPTION="OpenSSL's multiprecision integer arithmetic"
