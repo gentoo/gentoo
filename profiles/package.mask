@@ -354,10 +354,6 @@ app-backup/holland-backup-mysql-lvm
 app-backup/holland-backup-mysqlhotcopy
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Forces downgrade of mock (#643506). Removal in a month.
-dev-python/django-social-auth
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Requires old psycopg (#643614). Removal in a month.
 dev-python/adodb-py
 
@@ -393,11 +389,6 @@ dev-python/jenkins-autojobs
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Dead since 2004, doesn't run (#645512). Removal in a month.
 media-video/cpdvd
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# No reverse deps, not working properly with python3 (#646718). Removal in a
-# month.
-dev-python/async
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Relies on dead libs, upstream dead for ages, buggy (#647486). Removal in a
@@ -437,11 +428,6 @@ www-apps/collectd-web
 # this old themes (#650744). Removal in a month.
 media-gfx/qingy-themes
 
-# Matt Turner <mattst88@gentoo.org> (17 Mar 2018)
-# Dead. Unlikely to be of any use today. Removal in 30 days.
-# Bug #415611
-x11-misc/Xorgautoconfig
-
 # Lars Wendler <polynomial-c@gentoo.org> (17 Mar 2018)
 # Dead upstream. Authors not reachable. Unclear license situation.
 # Masked for removal in 30 days. See bug #650746
@@ -461,7 +447,7 @@ games-fps/alephone-infinity
 # Broken for a long time (#587806). Removal in a month.
 app-text/zemberek-server
 app-text/zpspell
- 
+
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Hans de Graaff <graaff@gentoo.org> (1 Jun 2014)
 # Mask new rubinius version for testing. This needs more work
@@ -469,11 +455,6 @@ app-text/zpspell
 # welcome.
 # Removal in a month (#588102)
 dev-lang/rubinius
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Dead since 2002, many alternatives better maintained in the tree
-# (#590056). Removal in a month.
-x11-terms/hanterm
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Obsoleted by sys-cluster/drbd-utils many time ago (#590872). Removal in a
@@ -513,11 +494,6 @@ dev-vcs/bzr-git
 games-board/freedoko
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Obsolete and with security vulnerabilities for a long time (#603760).
-# Removal in a month.
-www-apps/sugarcrm
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Version in the tree really old, multiple build failures (#604556, #604580,
 # #604586). Removal in a month.
 net-misc/pavuk
@@ -528,11 +504,6 @@ net-misc/pavuk
 app-misc/cwiid
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# ebuild needs fixing (#612916), upstream dead since 2006. Removal in a
-# month.
-mail-filter/anomy-sanitizer
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # ebuild needs fixing (#612998), our version is completely outdated
 # (#592836). Removal in a month.
 dev-util/bluej
@@ -541,16 +512,6 @@ dev-util/bluej
 # Many build issues (#576612, #605318, #605320, #608772, #613824), doesn't
 # use python eclasses (#615946). Removal in a month.
 media-gfx/k3d
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Not compatible with current NetworkManager versions, use net-misc/networkmanager-libreswan
-# instead (#615142). Removal in a month.
-net-misc/networkmanager-openswan
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Dead for years, many alternatives in the tree (#616146). Removal in a
-# month.
-net-firewall/gshield
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Not buildable (#616674). Removal in a month.
@@ -577,11 +538,6 @@ dev-games/crystalspace
 # 2.x is in the tree and is better in almost every way
 # Removal in 90 days. Bug #650464
 =net-dns/dnscrypt-proxy-1.9.5-r1
-
-# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
-# Upstream dead for a long time, requires obsolete gstreamer and other old
-# libs (#629192), buggy (#490344). Removal in a month.
-media-tv/me-tv
 
 # Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
 # Major version bump pending (#540322), current version in the tree is
