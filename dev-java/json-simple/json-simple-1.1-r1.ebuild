@@ -15,7 +15,7 @@ SRC_URI="https://github.com/fangyidong/json-simple/archive/${MY_P}.tar.gz -> ${P
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"
