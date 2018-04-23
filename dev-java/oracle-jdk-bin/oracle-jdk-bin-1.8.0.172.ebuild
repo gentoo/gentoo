@@ -95,7 +95,7 @@ S="${WORKDIR}/jdk$(replace_version_separator 3 _  ${S_PV})"
 
 pkg_nofetch() {
 	local a
-	einfo "Please download these files and move them to ${DISTDIR}:"
+	einfo "Please download these files and move them to your distfiles directory:"
 	einfo
 	for a in ${A} ; do
 		[[ ! -f ${DISTDIR}/${a} ]] && einfo "  ${a}"
