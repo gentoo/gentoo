@@ -38,7 +38,7 @@ CDEPEND="dbus? ( sys-apps/dbus )
 			net-libs/gnutls:=
 		)
 		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.2k:0= )
+			!libressl? ( >=dev-libs/openssl-1.0.2k:0=[-bindist] )
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)
