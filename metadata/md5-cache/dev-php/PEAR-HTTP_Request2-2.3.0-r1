@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[curl?,fileinfo?,ssl?,zlib?] >=dev-php/PEAR-Net_URL2-2.2.0
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTTP_Request2-2.3.0.tgz
 _eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
-_md5_=d1cc931341f87e11180f27c127ac94b0
+_md5_=acf5b7fbe61c6959da0ed045c6ae5c5a
