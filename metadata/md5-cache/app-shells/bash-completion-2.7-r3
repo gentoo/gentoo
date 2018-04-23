@@ -11,5 +11,5 @@ RDEPEND=>=app-shells/bash-4.3_p30-r1 sys-apps/miscfiles !app-eselect/eselect-bas
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/scop/bash-completion/releases/download/2.7/bash-completion-2.7.tar.xz https://bitbucket.org/mgorny/bashcomp2/downloads/bashcomp-2.0.2.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	ce21313503c41896ebcd7d58b0607e37
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=dc1f9b37fe4a35aa173daf18afe82608

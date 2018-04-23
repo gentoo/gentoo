@@ -9,5 +9,5 @@ RDEPEND=sys-libs/glibc
 RESTRICT=bindist fetch mirror strip
 SLOT=0
 SRC_URI=ftp://ftp.supermicro.com/utility/IPMICFG/IPMICFG_1.27.1_build.170901.zip
-_eclasses_=eapi7-ver	ad64fd3dcf3a655ac44ecae6d0e5ffcc
+_eclasses_=eapi7-ver	0ac2f15e1a779b87e6e29beb189fcc63
 _md5_=f62e5a59fc3ad5aa8540200e1703ff7e
