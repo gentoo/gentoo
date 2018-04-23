@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-19">
+  <title>mbed TLS: Multiple vulnerabilites</title>
+  <synopsis>Multiple vulnerabilities have been found in mbed TLS, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">mbedtls</product>
+  <announced>2018-04-22</announced>
+  <revised count="1">2018-04-22</revised>
+  <bug>647800</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/mbedtls" auto="yes" arch="*">
+      <unaffected range="ge">2.7.2</unaffected>
+      <vulnerable range="lt">2.7.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mbed TLS (previously PolarSSL) is an “easy to understand, use,
+      integrate and expand” implementation of the TLS and SSL protocols and
+      the respective cryptographic algorithms and support code required.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in mbed TLS. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, through multiple vectors, could possibly execute
+      arbitrary code with the privileges of the process or cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mbed TLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/mbedtls-2.7.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18187">CVE-2017-18187</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0487">CVE-2018-0487</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0488">CVE-2018-0488</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-22T21:30:30Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-22T23:49:11Z">b-man</metadata>
+</glsa>
