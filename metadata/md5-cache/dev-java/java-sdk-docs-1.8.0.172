@@ -9,4 +9,4 @@ RESTRICT=fetch
 SLOT=1.8
 SRC_URI=jdk-8u172-docs-all.zip
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=aef37a3c0808e7702885d7c33a75eb8f
+_md5_=417814d8953c535e88d2b4dc12178ea0
