@@ -64,9 +64,9 @@ fi
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
-		+gpl +hardcoded-tables +iconv lzma +network opencl openssl +postproc
-		samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau X:xlib xcb:libxcb
-		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
+		+gpl +hardcoded-tables +iconv libressl:libtls lzma +network opencl
+		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau
+		X:xlib xcb:libxcb xcb:libxcb-shm xcb:libxcb-xfixes +zlib
 		# libavdevice options
 		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
 		opengl
@@ -215,6 +215,7 @@ RDEPEND="
 	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
 	libdrm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
 	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
+	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
 	libv4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
 	lv2? ( media-libs/lv2[${MULTILIB_USEDEP}] media-libs/lilv[${MULTILIB_USEDEP}] )
@@ -312,7 +313,7 @@ multilib_src_configure() {
 	local myconf=( ${EXTRA_FFMPEG_CONF} )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
-	use openssl && use gpl && myconf+=( --enable-nonfree )
+	use openssl || use libressl  && use gpl && myconf+=( --enable-nonfree )
 	use samba && myconf+=( --enable-version3 )
 
 	# Encoders
@@ -347,13 +348,18 @@ multilib_src_configure() {
 		myconf+=( $(use_enable ${i%:*} ${i#*:}) )
 	done
 
-	# Incompatible features: openssl and gnutls
-	# openssl support provides a (strict) superset of gnutls support as of 2017.11.30
+	# Incompatible features: openssl or libressl and gnutls
+	# openssl and libressl support provides a (strict) superset of gnutls support as of 2017.11.30
 	# So, we warn the user and disable gnutls
 	if use openssl && use gnutls; then
 		ewarn "openssl and gnutls are mutually exclusive in ${PN}, disabling gnutls since openssl provides more features"
 		myconf+=( --disable-gnutls )
 	fi
+
+	if use libressl && use gnutls; then
+        ewarn "libressl and gnutls are mutually excluse in ${PN}, disabling gnutls since libressl provides more features"
+        myconf+=( --disable-gnutls )
+    fi
 
 	# (temporarily) disable non-multilib deps
 	if ! multilib_is_native_abi; then
