@@ -18,7 +18,7 @@ else
 fi
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="opengl"
 
 RDEPEND="
