@@ -6,6 +6,8 @@
 
 EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
 
+inherit bash-completion-r1 epatch
+
 VERSION_BUSYBOX='1.27.2' # warning, be sure to bump patches
 VERSION_DMRAID='1.0.0.rc16-3' # warning, be sure to bump patches
 VERSION_MDADM='4.0' # warning, be sure to bump patches
@@ -34,13 +36,11 @@ COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 
 if [[ ${PV} == 9999* ]]
 then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git
-		https://anongit.gentoo.org/git/proj/${PN}.git"
-	inherit git-2 bash-completion-r1 eutils
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
+	inherit git-r3
 	S="${WORKDIR}/${PN}"
 	SRC_URI="${COMMON_URI}"
 else
-	inherit bash-completion-r1 eutils
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		${COMMON_URI}"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -76,14 +76,6 @@ pkg_pretend() {
 		ewarn "to have genkernel create an initramfs with LUKS support."
 		ewarn "Sorry for the inconvenience."
 		echo
-	fi
-}
-
-src_unpack() {
-	if [[ ${PV} == 9999* ]] ; then
-		git-2_src_unpack
-	else
-		unpack ${P}.tar.xz
 	fi
 }
 
