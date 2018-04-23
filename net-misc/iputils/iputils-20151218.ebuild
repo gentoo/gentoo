@@ -31,7 +31,7 @@ LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 		gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 		!gcrypt? (
 			!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-			libressl? ( dev-libs/libressl[static-libs(+)] )
+			libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 		)
 	) )"
 RDEPEND="arping? ( !net-misc/arping )
