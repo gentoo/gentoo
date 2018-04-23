@@ -1,5 +1,5 @@
---- configure.ac.orig
-+++ configure.ac
+--- a/configure.ac.orig
++++ b/configure.ac
 @@ -7,12 +7,12 @@
  
  AC_INIT([primateplunge], [1.1], [primateplunge@aelius.com])
