@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,9 +11,13 @@ SRC_URI="mirror://sourceforge/nagios/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
-IUSE="command-args minimal selinux ssl tcpd"
+IUSE="command-args libressl minimal selinux ssl tcpd"
 
-DEPEND="ssl? ( dev-libs/openssl:0 )
+DEPEND="
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	!minimal? ( tcpd? ( sys-apps/tcp-wrappers ) )"
 RDEPEND="${DEPEND}
 	!minimal? (
