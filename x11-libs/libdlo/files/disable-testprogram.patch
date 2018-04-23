@@ -1,0 +1,33 @@
+--- a/configure.ac	2009-10-19 04:41:33.000000000 +0200
++++ b/configure.ac	2018-04-23 23:18:48.867807771 +0200
+@@ -48,7 +48,6 @@
+ 
+ AC_CONFIG_FILES([Makefile
+                  src/Makefile
+-                 test/Makefile
+                 ])
+ AC_OUTPUT
+ AC_MSG_RESULT([
+--- a/Makefile.am	2009-10-09 02:20:55.000000000 +0200
++++ b/Makefile.am	2018-04-23 23:19:27.036807625 +0200
+@@ -1,19 +1,13 @@
+-SUBDIRS=src  \
+-	test
++SUBDIRS=src
+ dist_doc_DATA = README
+ ACLOCAL_AMFLAGS = -I m4
+ AUTOMAKE_OPTIONS = foreign
+ EXTRA_DIST = \
+ 	autogen.sh \
+-	test/images/test08.bmp \
+-	test/images/test16.bmp \
+-	test/images/test24.bmp \
+-	test/images/test32.bmp \
+ 	Guide-v104.pdf \
+ 	mkdox.sh
+ 
+ TESTS_ENVIRONMENT = sudo
+-TESTS = test/test1
+ 
+ MAINTAINERCLEANFILES = depcomp INSTALL install-sh missing aclocal.m4 config.guess config.sub configure
+ 
