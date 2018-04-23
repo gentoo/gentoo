@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,7 +23,7 @@ IUSE_OFED_DRIVERS="
 inherit openib udev toolchain-funcs
 
 DESCRIPTION="OpenIB system files"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux"
 IUSE="dapl +diags ibacm mstflint +opensm perftest qperf rds srp ${IUSE_OFED_DRIVERS}"
 
 RDEPEND="!sys-fabric/openib
