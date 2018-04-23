@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	sys-boot/gnu-efi
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-libressl-compatibility.patch" )
+
 src_prepare() {
 	# Respect users CFLAGS
 	sed -i -e 's/CFLAGS.*= -O2 -g/CFLAGS += /' Make.rules || die
