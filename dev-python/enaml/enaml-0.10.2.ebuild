@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit distutils-r1 flag-o-matic virtualx
 
 DESCRIPTION="Enthought Tool Suite: framework for writing declarative interfaces"
-HOMEPAGE="https://github.com/nucleic/enaml https://pypi.python.org/pypi/enaml"
+HOMEPAGE="https://github.com/nucleic/enaml https://pypi.org/project/enaml"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="

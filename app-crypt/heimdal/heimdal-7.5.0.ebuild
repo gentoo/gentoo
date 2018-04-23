@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd"
 IUSE="afs +berkdb caps hdb-ldap ipv6 libressl otp +pkinit selinux ssl static-libs test X"
 
 CDEPEND="
@@ -31,12 +31,10 @@ CDEPEND="
 	>=sys-libs/readline-6.2_p5-r1:0=[${MULTILIB_USEDEP}]
 	afs? ( net-fs/openafs )
 	hdb-ldap? ( >=net-nds/openldap-2.3.0 )
-	X? ( x11-libs/libX11
+	X? (
+		x11-libs/libX11
 		x11-libs/libXau
-		x11-libs/libXt )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
+		x11-libs/libXt
 	)
 	!!app-crypt/mit-krb5
 	!!app-crypt/mit-krb5-appl"

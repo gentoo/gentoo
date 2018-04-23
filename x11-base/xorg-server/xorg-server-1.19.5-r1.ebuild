@@ -16,7 +16,7 @@ IUSE="${IUSE_SERVERS} debug +glamor ipv6 libressl minimal selinux +suid systemd 
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl )
+	libressl? ( dev-libs/libressl:0= )
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3

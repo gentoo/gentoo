@@ -4,7 +4,7 @@
 EAPI=5
 
 XORG_DOC=doc
-inherit xorg-2 multilib versionator flag-o-matic
+inherit autotools xorg-2 multilib versionator flag-o-matic
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
@@ -18,7 +18,7 @@ IUSE="${IUSE_SERVERS} debug +glamor ipv6 libressl minimal selinux systemd +udev 
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl )
+	libressl? ( dev-libs/libressl:0= )
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
@@ -131,6 +131,12 @@ pkg_setup() {
 		ewarn "glamor is necessary for acceleration under Xwayland."
 		ewarn "Performance may be unacceptable without it."
 	fi
+}
+
+src_prepare() {
+	xorg-2_src_prepare
+	# needed because xwayland patch touches hw/xwayland/Makefile.am
+	eautoreconf
 }
 
 src_configure() {

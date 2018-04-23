@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Debugger capable of attaching and injecting code"
-HOMEPAGE="https://github.com/google/pyringe https://pypi.python.org/pypi/pyringe/"
+HOMEPAGE="https://github.com/google/pyringe https://pypi.org/project/pyringe/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

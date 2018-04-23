@@ -16,7 +16,7 @@ SRC_URI="https://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
 
 LICENSE="PSF-2"
 SLOT="3.4/3.4m"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -74,6 +74,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.4.5-cross.patch"
 	epatch "${FILESDIR}/3.4-getentropy-linux.patch"
 	epatch "${FILESDIR}/3.6-disable-nis.patch"
+	epatch "${FILESDIR}/python-3.5.5-hash-unaligned.patch"
 
 	epatch_user
 

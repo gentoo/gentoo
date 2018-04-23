@@ -6,7 +6,7 @@ inherit cmake-utils gnome2-utils
 
 COMMIT="ea9ac466221f8b4f8974d2db1c42dc4ad6126564"
 DESCRIPTION="An open-source reimplementation of the popular UFO: Enemy Unknown"
-HOMEPAGE="http://openxcom.org/"
+HOMEPAGE="https://openxcom.org/"
 SRC_URI="https://github.com/SupSuper/OpenXcom/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ CC-BY-SA-4.0"
@@ -52,7 +52,7 @@ pkg_postinst() {
 	elog "/usr/share/${PN}/TFTD"
 	echo
 	elog "If you need or want text in some language other than english, download:"
-	elog "http://openxcom.org/translations/latest.zip and uncompress it in"
+	elog "https://openxcom.org/translations/latest.zip and uncompress it in"
 	elog "/usr/share/${PN}/common/Language"
 }
 

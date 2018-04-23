@@ -17,9 +17,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc64 ~s390 ~sh ~spa
 IUSE=""
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
-	!=media-libs/libpng-1.2*:0
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r3
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	!=media-libs/libpng-1.2*:0"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 

@@ -9,7 +9,7 @@ COMMIT="32a11cd7d75c4c5b3e3fc01c383314be298b0f9b"
 inherit eutils distutils-r1
 
 DESCRIPTION="RAML reference implementation in Python"
-HOMEPAGE="https://ramlfications.readthedocs.org/ https://pypi.python.org/pypi/ramlfications/"
+HOMEPAGE="https://ramlfications.readthedocs.org/ https://pypi.org/project/ramlfications/"
 SRC_URI="https://github.com/spotify/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

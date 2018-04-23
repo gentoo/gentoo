@@ -50,7 +50,7 @@ SRC_URI+="
 
 LICENSE+=" GPL-2 GPL-3"
 SLOT="${TOOLCHAIN_GCC_PV}"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bootstrap"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
@@ -88,15 +88,16 @@ pkg_setup() {
 		GNATBIND="${path}/${GNATBIND}"
 		CXX="${path}/${CXX}"
 	fi
+}
+
+src_unpack() {
 	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
 		eerror "1) use gcc-config to select the right compiler or"
 		eerror "2) set the bootstrap use flag"
 		die "ada compiler not available"
 	fi
-}
 
-src_unpack() {
 	GCC_A_FAKEIT="${P}-src.tar.gz
 		${MYP}.tar.gz
 		${FSFGCC}.tar.bz2

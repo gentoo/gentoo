@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Performance metrics, based on Coda Hale's Yammer metrics"
-HOMEPAGE="https://pyformance.readthedocs.org/ https://github.com/omergertel/pyformance/ https://pypi.python.org/pypi/pyformance/"
+HOMEPAGE="https://pyformance.readthedocs.org/ https://github.com/omergertel/pyformance/ https://pypi.org/project/pyformance/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

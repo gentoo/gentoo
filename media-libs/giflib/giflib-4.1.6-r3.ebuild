@@ -16,11 +16,7 @@ IUSE="rle static-libs X"
 
 RDEPEND="
 	rle? ( media-libs/urt )
-	X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140406-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
-	)"
+	X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

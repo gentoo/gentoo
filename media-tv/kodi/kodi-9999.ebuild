@@ -12,7 +12,7 @@ inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 LIBDVDCSS_VERSION="1.4.1-Leia-Alpha-1"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-1"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-1"
-FFMPEG_VERSION="3.4.1"
+FFMPEG_VERSION="4.0"
 CODENAME="Leia"
 FFMPEG_KODI_VERSION="Alpha-1"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz

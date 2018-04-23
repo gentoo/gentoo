@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Transparent server-side session support for flask"
-HOMEPAGE="https://pypi.python.org/pypi/Flask-KVSession https://github.com/mbr/flask-kvsession"
+HOMEPAGE="https://pypi.org/project/Flask-KVSession https://github.com/mbr/flask-kvsession"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

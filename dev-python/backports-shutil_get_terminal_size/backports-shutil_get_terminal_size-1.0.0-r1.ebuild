@@ -11,7 +11,7 @@ MY_PN="backports.shutil_get_terminal_size"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A backport of the get_terminal_size function from Python 3.3's shutil"
-HOMEPAGE="https://pypi.python.org/pypi/backports.shutil_get_terminal_size/ https://github.com/chrippa/backports.shutil_get_terminal_size"
+HOMEPAGE="https://pypi.org/project/backports.shutil_get_terminal_size/ https://github.com/chrippa/backports.shutil_get_terminal_size"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"

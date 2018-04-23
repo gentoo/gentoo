@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/clisp/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="2/${PV}"
 KEYWORDS="amd64 ~ppc ~sparc x86"
-IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib"
+IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm -threads +unicode +zlib"
 # "jit" disabled ATM
 
 RDEPEND=">=dev-lisp/asdf-2.33-r3
@@ -22,7 +22,6 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 		 fastcgi? ( dev-libs/fcgi )
 		 gdbm? ( sys-libs/gdbm )
 		 gtk? ( >=x11-libs/gtk+-2.10 >=gnome-base/libglade-2.6 )
-		 pari? ( <sci-mathematics/pari-2.5.0 )
 		 postgres? ( >=dev-db/postgresql-8.0 )
 		 readline? ( >=sys-libs/readline-5.0 <sys-libs/readline-7.0 )
 		 pcre? ( dev-libs/libpcre )
@@ -105,7 +104,6 @@ src_configure() {
 	use fastcgi && enable_modules fastcgi
 	use gdbm && enable_modules gdbm
 	use gtk && enable_modules gtk2
-	use pari && enable_modules pari
 	use pcre && enable_modules pcre
 	use svm && enable_modules libsvm
 	use zlib && enable_modules zlib

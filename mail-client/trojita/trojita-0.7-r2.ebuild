@@ -18,6 +18,8 @@ LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 IUSE="+crypt +dbus debug +password test +zlib"
 
+REQUIRED_USE="password? ( dbus )"
+
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -45,7 +47,8 @@ DOCS=( README LICENSE )
 PATCHES=(
 	"${FILESDIR}/${P}-gpgme.patch"
 	"${FILESDIR}/${P}-gpg-tests.patch"
-	)
+	"${FILESDIR}/${P}-qt-5.11b3.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -61,7 +64,7 @@ src_configure() {
 		-DWITH_GPGMEPP=$(usex crypt)
 		-DWITH_MIMETIC=$(usex crypt)
 		-DWITH_DBUS=$(usex dbus)
-		-DWITH_QTKEYCHAINPLUGIN=$(usex password)
+		-DWITH_QTKEYCHAIN_PLUGIN=$(usex password)
 		-DWITH_TESTS=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
 	)

@@ -12,7 +12,7 @@ MY_PN="Cycler"
 DESCRIPTION="Composable style cycles"
 HOMEPAGE="
 	https://matplotlib.org/cycler/
-	https://pypi.python.org/pypi/Cycler/
+	https://pypi.org/project/Cycler/
 	https://github.com/matplotlib/cycler"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 

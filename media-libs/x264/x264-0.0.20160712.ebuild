@@ -28,9 +28,7 @@ ASM_DEP=">=dev-lang/yasm-1.2.0"
 DEPEND="abi_x86_32? ( ${ASM_DEP} )
 	abi_x86_64? ( ${ASM_DEP} )
 	opencl? ( dev-lang/perl )"
-RDEPEND="opencl? ( >=virtual/opencl-0-r3[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r7
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND="opencl? ( >=virtual/opencl-0-r3[${MULTILIB_USEDEP}] )"
 
 DOCS="AUTHORS doc/*.txt"
 

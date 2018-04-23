@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}"
 # DOCS="AUTHORS BUGS Changelog README.md TODO doc/CODING_STYLE doc/*.doc doc/*.bt doc/SceneGenerators doc/ipmpx_syntax.bt doc/*.txt"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.7.1-configure.patch"
+	"${FILESDIR}/ffmpeg4.patch"
 )
 
 DOCS=(

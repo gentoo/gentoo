@@ -10,7 +10,7 @@ MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Zope testrunner script"
-HOMEPAGE="https://pypi.python.org/pypi/zope.testrunner https://github.com/zopefoundation/zope.testrunner"
+HOMEPAGE="https://pypi.org/project/zope.testrunner https://github.com/zopefoundation/zope.testrunner"
 SRC_URI="mirror://pypi/${MY_PN::1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="ZPL"

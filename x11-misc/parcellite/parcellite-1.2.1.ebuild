@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils fdo-mime
+
+inherit autotools eutils xdg-utils
 
 MY_P=${PN}-${PV/_}
 
@@ -42,9 +43,9 @@ src_configure() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

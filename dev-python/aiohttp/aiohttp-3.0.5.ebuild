@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="http client/server for asyncio"
-HOMEPAGE="https://pypi.python.org/pypi/aiohttp"
+HOMEPAGE="https://pypi.org/project/aiohttp"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

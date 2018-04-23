@@ -36,7 +36,7 @@ src_install() {
 	fowners -R nobody:nobody /var/lib/ganglia-web/dwoo
 	fperms -R 777 /var/lib/ganglia-web/dwoo
 
-	einstalldocs AUTHORS README TODO
+	einstalldocs
 }
 
 pkg_postinst() {

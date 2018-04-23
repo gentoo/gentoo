@@ -10,7 +10,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Enthought Tool Suite: Explicitly typed attributes for Python"
 HOMEPAGE="http://docs.enthought.com/traits/
 	https://github.com/enthought/traits
-	https://pypi.python.org/pypi/traits"
+	https://pypi.org/project/traits"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -30,10 +30,8 @@ RDEPEND="app-arch/bzip2:0=
 	virtual/libffi
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:0=[berkdb] )
-	ncurses? (
-		>=sys-libs/ncurses-5.2:0=
-		readline? ( >=sys-libs/readline-4.1:0= )
-	)
+	ncurses? ( >=sys-libs/ncurses-5.2:0= )
+	readline? ( >=sys-libs/readline-4.1:0= )
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )

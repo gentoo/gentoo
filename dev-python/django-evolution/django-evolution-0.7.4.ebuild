@@ -13,7 +13,7 @@ MY_P=${MY_PN}-${PV}
 RELEASE="0.7"
 
 DESCRIPTION="A Django application that will run cron jobs for other django apps"
-HOMEPAGE="https://pypi.python.org/pypi/django_evolution/"
+HOMEPAGE="https://pypi.org/project/django_evolution/"
 SRC_URI="http://downloads.reviewboard.org/releases/${PN}/${RELEASE}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

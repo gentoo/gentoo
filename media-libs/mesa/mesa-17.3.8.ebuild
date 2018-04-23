@@ -25,7 +25,7 @@ if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
-	KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -81,7 +81,6 @@ LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.89"
 RDEPEND="
 	!<x11-base/xorg-server-1.7
 	!<=x11-proto/xf86driproto-2.0.3
-	abi_x86_32? ( !app-emulation/emul-linux-x86-opengl[-abi_x86_32(-)] )
 	classic? ( app-eselect/eselect-mesa )
 	gallium? ( app-eselect/eselect-mesa )
 	>=app-eselect/eselect-opengl-1.3.0

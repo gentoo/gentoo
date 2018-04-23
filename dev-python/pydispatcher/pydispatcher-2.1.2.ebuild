@@ -8,7 +8,7 @@ inherit distutils-r1
 
 MY_P="PyPyDispatcher-${PV}"
 DESCRIPTION="Multi-producer-multi-consumer signal dispatching mechanism"
-HOMEPAGE="https://github.com/scrapy/pypydispatcher https://pypi.python.org/pypi/PyPyDispatcher"
+HOMEPAGE="https://github.com/scrapy/pypydispatcher https://pypi.org/project/PyPyDispatcher"
 SRC_URI="mirror://pypi/${MY_P::1}/${MY_P%-*}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -103,7 +103,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	use doc && dohtml -r "${CMAKE_BUILD_DIR}"/out/html/*
+	use doc && dodoc -r "${CMAKE_BUILD_DIR}"/out/html/*
 }
 
 pkg_postinst() {

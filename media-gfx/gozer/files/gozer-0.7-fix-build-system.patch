@@ -1,0 +1,51 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,14 +5,9 @@
+ # A list of all the files in the current directory which can be regenerated
+ MAINTAINERCLEANFILES = Makefile.in gozer.spec
+ 
+-LDFLAGS           = -L/usr/X11R6/lib -L/usr/lib -L/usr/local/lib
+-INCLUDES          = -I/usr/X11R6/include \
+-$(X_CFLAGS) -I$(prefix)/include -I$(includedir) -I.
+-
+ man_MANS = gozer.1
+ 
+-docs_DATA = README AUTHORS ChangeLog TODO
+-docsdir = $(prefix)/doc/@PACKAGE@
++doc_DATA = README AUTHORS ChangeLog TODO
+ 
+ EXTRA_DIST = \
+ gozer.spec gozer.1 $(docs_DATA)
+--- a/src/fonts/Makefile.am
++++ b/src/fonts/Makefile.am
+@@ -8,6 +8,6 @@
+ fonts_DATA = \
+ helmetr.ttf
+ 
+-fontsdir=$(prefix)/share/@PACKAGE@/fonts
++fontsdir=$(prefix)/share/$(PACKAGE)/fonts
+ 
+ EXTRA_DIST = $(fonts_DATA)
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,15 +1,13 @@
+ # A list of all the files in the current directory which can be regenerated
+-MAINTAINERCLEANFILES = Makefile.in				
++MAINTAINERCLEANFILES = Makefile.in
+ 
+ SUBDIRS = fonts
+ 
+-LDFLAGS           = -L/usr/X11R6/lib
+-INCLUDES          = -g -O3 -Wall -I/usr/X11R6/include \
+-$(X_CFLAGS) -I$(prefix)/include -I$(includedir) -I. \
+--DPREFIX=\""$(prefix)"\" @GIBLIB_CFLAGS@
+-LIBOBJS = @LIBOBJS@
++AM_CPPFLAGS = -Wall -I/usr/X11R6/include \
++	$(X_CFLAGS) -I$(prefix)/include -I$(includedir) -I. \
++	-DPREFIX=\""$(prefix)"\" $(GIBLIB_CFLAGS)
+ 
+ bin_PROGRAMS      = gozer
+ gozer_SOURCES       = main.c getopt.c getopt1.c getopt.h gozer.h \
+ options.c options.h debug.h utils.c utils.h imlib.c structs.h
+-gozer_LDADD         = @GIBLIB_LIBS@
++gozer_LDADD         = $(GIBLIB_LIBS) -L/usr/X11R6/lib

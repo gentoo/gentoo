@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Virtual Python Environment builder"
 HOMEPAGE="
 	https://virtualenv.pypa.io/en/stable/
-	https://pypi.python.org/pypi/virtualenv
+	https://pypi.org/project/virtualenv
 	https://github.com/pypa/virtualenv/
 "
 SRC_URI="https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"

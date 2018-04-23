@@ -22,10 +22,6 @@ IUSE="static-libs python utils"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r5
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 "
 DEPEND="
 	${RDEPEND}

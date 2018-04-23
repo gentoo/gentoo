@@ -1,0 +1,33 @@
+Description: Simple fixes
+ * Fix freeing unmalloced memory
+   The memory of 'in_file' is not malloced, but points to argv[].
+   It is wrong to free it.
+ * When there is no input file specified by argv, it causes error
+   and fp_in == NULL.  Check is needed to call fclose for fp_in.
+Author: NIIBE Yutaka
+
+## Fixes the issue reported at:
+## http://www.forallsecure.com/bug-reports/6b11b6fccda17cc467e055ccf7fec3fa2d89ec00/
+
+Index: mcpp-2.7.2/src/main.c
+===================================================================
+--- mcpp-2.7.2.orig/src/main.c	2013-07-09 03:03:05.610947658 +0000
++++ mcpp-2.7.2/src/main.c	2013-07-09 03:03:05.534947624 +0000
+@@ -428,16 +428,11 @@
+ 
+ fatal_error_exit:
+ #if MCPP_LIB
+-    /* Free malloced memory */
+-    if (mcpp_debug & MACRO_CALL) {
+-        if (in_file != stdin_name)
+-            free( in_file);
+-    }
+     clear_filelist();
+     clear_symtable();
+ #endif
+ 
+-    if (fp_in != stdin)
++    if (fp_in && fp_in != stdin)
+         fclose( fp_in);
+     if (fp_out != stdout)
+         fclose( fp_out);

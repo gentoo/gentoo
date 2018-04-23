@@ -55,7 +55,6 @@ DEPEND="
 "
 RDEPEND="
 	dev-qt/qtchooser
-	abi_x86_32? ( !app-emulation/emul-linux-x86-qtlibs[-abi_x86_32(-)] )
 "
 
 

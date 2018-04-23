@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils autotools gnome.org fdo-mime
+inherit eutils autotools gnome.org xdg-utils
 
 DESCRIPTION="GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags"
 HOMEPAGE="https://projects.gnome.org/easytag/"
@@ -55,5 +55,5 @@ src_configure() {
 		$(use_enable wavpack)
 }
 
-pkg_postinst() { fdo-mime_desktop_database_update; }
-pkg_postrm() { fdo-mime_desktop_database_update; }
+pkg_postinst() { xdg_desktop_database_update; }
+pkg_postrm() { xdg_desktop_database_update; }

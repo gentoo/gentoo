@@ -34,11 +34,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508-r1
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

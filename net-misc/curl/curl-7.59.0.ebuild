@@ -53,11 +53,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	metalink? ( >=media-libs/libmetalink-0.1.1[${MULTILIB_USEDEP}] )
 	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh2[static-libs?,${MULTILIB_USEDEP}] )
-	sys-libs/zlib[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r13
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	sys-libs/zlib[${MULTILIB_USEDEP}]"
 
 # Do we need to enforce the same ssl backend for curl and rtmpdump? Bug #423303
 #	rtmp? (
@@ -108,6 +104,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-7.30.0-prefix.patch
 	eapply "${FILESDIR}"/${PN}-respect-cflags-3.patch
 	eapply "${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
+	# the next curl release (7.60.0) *should* contain this patch as it is in Git head and 7.60.0 has been tagged
+	eapply "${FILESDIR}"/${PN}-7.59.0-libressl-compatibility.patch
 
 	sed -i '/LD_LIBRARY_PATH=/d' configure.ac || die #382241
 

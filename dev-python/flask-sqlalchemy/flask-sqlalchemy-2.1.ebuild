@@ -10,7 +10,7 @@ MY_PN="Flask-SQLAlchemy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="SQLAlchemy support for Flask applications"
-HOMEPAGE="https://pypi.python.org/pypi/Flask-SQLAlchemy"
+HOMEPAGE="https://pypi.org/project/Flask-SQLAlchemy"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

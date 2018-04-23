@@ -10,7 +10,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Enthought Tool Suite: Application tools"
 HOMEPAGE="http://docs.enthought.com/apptools/
 	https://github.com/enthought/apptools
-	https://pypi.python.org/pypi/apptools"
+	https://pypi.org/project/apptools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

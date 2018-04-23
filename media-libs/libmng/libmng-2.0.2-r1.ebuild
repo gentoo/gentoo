@@ -15,9 +15,7 @@ IUSE="lcms static-libs"
 
 RDEPEND=">=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r9
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

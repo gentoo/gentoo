@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="reStructuredText viewer"
-HOMEPAGE="https://mg.pov.lt/restview/ https://pypi.python.org/pypi/restview"
+HOMEPAGE="https://mg.pov.lt/restview/ https://pypi.org/project/restview"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

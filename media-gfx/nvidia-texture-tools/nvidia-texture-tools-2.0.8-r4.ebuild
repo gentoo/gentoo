@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit cmake-utils eutils
 
 DESCRIPTION="A set of cuda-enabled texture tools and compressors"
 HOMEPAGE="http://developer.nvidia.com/object/texture_tools.html"
 SRC_URI="https://${PN}.googlecode.com/files/${P}-1.tar.gz
-	https://dev.gentoo.org/~ssuominen/${P}-patchset-1.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-patchset-1-r1.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -38,13 +39,13 @@ PATCHES=(
 	"${FILESDIR}/${P}-clang.patch" # fix clang build
 	"${FILESDIR}/${P}-cpp14.patch" # fix bug #594938
 	"${FILESDIR}/${P}-drop-qt4.patch" # fix bug #560248
+	"${WORKDIR}/patches"
 )
 
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	edos2unix cmake/*
-	EPATCH_SUFFIX=patch epatch "${WORKDIR}/patches"
 	cmake-utils_src_prepare
 }
 

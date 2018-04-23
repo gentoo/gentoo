@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tiny document-oriented database"
 HOMEPAGE="https://github.com/msiemens/tinydb
-	https://pypi.python.org/pypi/tinydb"
+	https://pypi.org/project/tinydb"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"

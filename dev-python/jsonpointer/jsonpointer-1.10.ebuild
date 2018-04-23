@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Identify specific nodes in a JSON document (according to draft 08)"
-HOMEPAGE="https://github.com/stefankoegl/python-json-pointer https://pypi.python.org/pypi/jsonpointer/"
+HOMEPAGE="https://github.com/stefankoegl/python-json-pointer https://pypi.org/project/jsonpointer/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

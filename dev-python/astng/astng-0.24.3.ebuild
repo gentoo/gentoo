@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Abstract Syntax Tree for logilab packages"
-HOMEPAGE="https://www.logilab.org/project/logilab-astng https://pypi.python.org/pypi/logilab-astng"
+HOMEPAGE="https://www.logilab.org/project/logilab-astng https://pypi.org/project/logilab-astng"
 SRC_URI="ftp://ftp.logilab.org/pub/astng/logilab-${P}.tar.gz mirror://pypi/l/logilab-astng/logilab-${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

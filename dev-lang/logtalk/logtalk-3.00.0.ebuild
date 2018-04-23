@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils fdo-mime
+inherit eutils xdg-utils
 
 DESCRIPTION="Open source object-oriented logic programming language"
 HOMEPAGE="http://logtalk.org"
@@ -21,7 +21,7 @@ RDEPEND="
 	${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-user-docs.patch
+	epatch "${FILESDIR}"/${PN}-3.00.0-no-user-docs.patch
 }
 
 src_install() {
@@ -99,7 +99,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	ewarn "Before running logtalk, users should execute"
 	ewarn "logtalk_user_setup *once*."
@@ -128,5 +128,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

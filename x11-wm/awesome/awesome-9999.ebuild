@@ -11,16 +11,17 @@ EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dbus doc elibc_FreeBSD gnome luajit"
+IUSE="dbus doc elibc_FreeBSD gnome luajit test"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0
+	luajit? ( dev-lang/luajit:2 )
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
-	>=dev-lua/lgi-0.7
+	>=dev-lua/lgi-0.8
 	x11-libs/cairo[xcb]
 	x11-libs/gdk-pixbuf:2
-	>=x11-libs/libxcb-1.6
+	>=x11-libs/libxcb-1.6[xkb]
 	>=x11-libs/pango-1.19.3[introspection]
 	>=x11-libs/startup-notification-0.10_p20110426
 	>=x11-libs/xcb-util-0.3.8
@@ -32,7 +33,8 @@ RDEPEND="
 	x11-libs/libxkbcommon[X]
 	>=x11-libs/libX11-1.3.99.901
 	dbus? ( >=sys-apps/dbus-1 )
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )"
+	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
+"
 
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 DEPEND="${RDEPEND}
@@ -44,9 +46,16 @@ DEPEND="${RDEPEND}
 	>=x11-proto/xcb-proto-1.5
 	>=x11-proto/xproto-7.0.15
 	doc? ( dev-lua/ldoc )
-	luajit? ( dev-lang/luajit:2 )"
+	test? (
+		app-shells/zsh
+		x11-base/xorg-server[xvfb]
+		dev-lua/busted
+		dev-lua/luacheck
+	)
+"
 
-DOCS=( docs/{00-authors,01-readme,02-contributing}.md )
+# Skip installation of README.md by einstalldocs, which leads to broken symlink
+DOCS=()
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0-convert-path.patch"  # bug #408025
 	"${FILESDIR}/${PN}-xsession.patch"          # bug #408025
@@ -54,20 +63,29 @@ PATCHES=(
 )
 
 src_configure() {
+	# Compression of manpages is handled by portage
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
+		-DCOMPRESS_MANPAGES=OFF
 		-DWITH_DBUS=$(usex dbus)
-		-DWITH_GENERATE_DOC=$(usex doc $(usex doc) n)
+		-DGENERATE_DOC=$(usex doc)
+		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 	)
-	if [ $(usex luajit) = "yes" ]; then
-		mycmakeargs+=('-DLUA_INCLUDE_DIR=/usr/include/luajit-2.0')
-		mycmakeargs+=('-DLUA_LIBRARY=/usr/lib/libluajit-5.1.so')
+	if use luajit; then
+		mycmakeargs+=("-DLUA_INCLUDE_DIR=${EPREFIX}/usr/include/luajit-2.0")
+		mycmakeargs+=("-DLUA_LIBRARY=${EPREFIX}/usr/$(get_libdir)/libluajit-5.1.so")
 	fi
 	cmake-utils_src_configure
 }
 
+src_test() {
+	# awesome's test suite starts Xvfb by itself, no need for virtualx eclass
+	HEADLESS=1 cmake-utils_src_make check -j1
+}
+
 src_install() {
 	cmake-utils_src_install
+	rm "${ED}"/usr/share/doc/${PF}/LICENSE || die
 
 	pax-mark m "${ED%/}"/usr/bin/awesome
 
@@ -87,6 +105,9 @@ src_install() {
 		insinto /usr/share/xsessions
 		doins "${FILESDIR}"/${PN}-gnome-xsession.desktop
 	fi
+
+	# This directory contains SVG images which we don't want to compress
+	use doc && touch "${ED}"/usr/share/doc/${PF}/doc/images.ecompress.skip
 }
 
 pkg_postinst() {

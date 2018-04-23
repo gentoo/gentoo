@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="python binding for curl/libcurl"
 HOMEPAGE="
 	https://github.com/pycurl/pycurl
-	https://pypi.python.org/pypi/pycurl
+	https://pypi.org/project/pycurl
 	http://pycurl.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

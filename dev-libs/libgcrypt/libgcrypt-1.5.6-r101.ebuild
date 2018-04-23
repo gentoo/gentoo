@@ -15,11 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
-	!dev-libs/libgcrypt:0/11
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r19
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
-	)"
+	!dev-libs/libgcrypt:0/11"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

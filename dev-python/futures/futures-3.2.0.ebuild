@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Backport of the concurrent.futures package from Python 3.2"
-HOMEPAGE="https://github.com/agronholm/pythonfutures https://pypi.python.org/pypi/futures"
+HOMEPAGE="https://github.com/agronholm/pythonfutures https://pypi.org/project/futures"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"

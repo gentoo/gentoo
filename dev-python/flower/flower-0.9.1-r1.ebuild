@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1 systemd user
 
 DESCRIPTION="Real-time monitor and web admin for Celery distributed task queue"
-HOMEPAGE="https://flower.readthedocs.org/ https://github.com/mher/flower/ https://pypi.python.org/pypi/flower"
+HOMEPAGE="https://flower.readthedocs.org/ https://github.com/mher/flower/ https://pypi.org/project/flower"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

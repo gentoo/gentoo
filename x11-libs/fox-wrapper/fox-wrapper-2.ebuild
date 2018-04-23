@@ -1,5 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="wrapper for fox-config to manage multiple versions"
 HOMEPAGE="https://www.gentoo.org/"
@@ -17,7 +19,7 @@ S=${WORKDIR}
 
 src_install() {
 	exeinto /usr/lib/misc
-	newexe "${FILESDIR}"/fox-wrapper-${PV}.sh fox-wrapper.sh || die
+	newexe "${FILESDIR}"/fox-wrapper-${PV}.sh fox-wrapper.sh
 
 	dodir /usr/bin
 	dosym ../lib/misc/fox-wrapper.sh /usr/bin/fox-config

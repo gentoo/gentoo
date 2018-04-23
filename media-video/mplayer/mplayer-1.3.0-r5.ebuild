@@ -248,6 +248,7 @@ src_prepare() {
 		printf "${ESVN_WC_REVISION}" > $svf
 	else
 		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
+		has_version '>media-video/ffmpeg-3.5' && eapply "${FILESDIR}"/${PN}-1.3-ffmpeg4.patch
 	fi
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"

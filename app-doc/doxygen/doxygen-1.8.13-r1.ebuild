@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1
+inherit cmake-utils eutils flag-o-matic python-any-r1 xdg-utils
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
@@ -132,7 +132,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 
 	elog
 	elog "For examples and other goodies, see the source tarball. For some"
@@ -147,5 +147,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

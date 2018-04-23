@@ -113,7 +113,6 @@ DEPEND="virtual/yacc
 	server? ( extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) ) )
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
-	abi_x86_32? ( !app-emulation/emul-linux-x86-db[-abi_x86_32(-)] )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
 	!<virtual/mysql-5.6-r9
@@ -505,8 +504,8 @@ multilib_src_install() {
 	mysql_init_vars
 
 	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
-	if [[ -f "${D}/usr/include/mysql/server/private/config.h" ]] ; then
-		rm "${D}/usr/include/mysql/server/private/config.h" || die
+	if [[ -f "${ED}/usr/include/mysql/server/private/config.h" ]] ; then
+		rm "${ED}/usr/include/mysql/server/private/config.h" || die
 	fi
 
 	if ! multilib_is_native_abi && use server ; then
@@ -515,9 +514,9 @@ multilib_src_install() {
 	fi
 
 	# Install compatible symlinks to libmysqlclient
-#	use static-libs && dosym libmariadbclient.a "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.a"
-#	dosym libmariadb.so.3 "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.so"
-	dosym libmariadb.so.3 "${EPREFIX}/usr/$(get_libdir)/libmysqlclient.so.${SUBSLOT}"
+#	use static-libs && dosym libmariadbclient.a "/usr/$(get_libdir)/libmysqlclient.a"
+#	dosym libmariadb.so.3 "/usr/$(get_libdir)/libmysqlclient.so"
+	dosym libmariadb.so.3 "/usr/$(get_libdir)/libmysqlclient.so.${SUBSLOT}"
 
 	# Kill old libmysqclient_r symlinks if they exist.  Time to fix what depends on them.
 	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die

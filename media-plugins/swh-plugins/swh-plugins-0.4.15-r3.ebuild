@@ -17,9 +17,7 @@ IUSE="cpu_flags_x86_3dnow nls cpu_flags_x86_sse"
 
 RDEPEND="
 	>=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}]
-	>=sci-libs/fftw-3.3.3-r2[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r2
-					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
+	>=sci-libs/fftw-3.3.3-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	media-libs/ladspa-sdk
 	sys-devel/gettext

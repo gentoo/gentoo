@@ -29,7 +29,94 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (18 Mar 2018)
+# Michał Górny <mgorny@gentoo.org> (22 Apr 2018)
+# Unmaintained buggy package with unresearched segfaults.  No support
+# for Python 3.  No reverse dependencies.
+# Removal in 30 days.  Bug #454680.
+dev-python/simpleparse
+
+# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
+# Awful, unmaintained, unused. Removal in 30 days. Bug #651300.
+x11-libs/xpyb
+
+# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
+# Protocol headers and client library for the long dead Xprint extension.
+# Removal in 30 days. Bug #649076.
+x11-proto/printproto
+x11-libs/libXp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Apr 2018)
+# Package moved into kde-apps/kate as a feature. Masked for removal.
+kde-misc/ktexteditorpreviewplugin
+
+# Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
+# Needs porting of revdeps
+# See: https://bugs.gentoo.org/653678
+>=media-video/ffmpeg-4.0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Apr 2018)
+# Breaking consumers by internal header cleanup and removal of deprecated
+# qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
+# and against the qt-5.11 tracker (bug #653646).
+~dev-qt/assistant-5.11.0_beta4
+~dev-qt/designer-5.11.0_beta4
+~dev-qt/linguist-5.11.0_beta4
+~dev-qt/linguist-tools-5.11.0_beta4
+~dev-qt/pixeltool-5.11.0_beta4
+~dev-qt/qdbus-5.11.0_beta4
+~dev-qt/qdbusviewer-5.11.0_beta4
+~dev-qt/qdoc-5.11.0_beta4
+~dev-qt/qt3d-5.11.0_beta4
+~dev-qt/qtbluetooth-5.11.0_beta4
+~dev-qt/qtcharts-5.11.0_beta4
+~dev-qt/qtconcurrent-5.11.0_beta4
+~dev-qt/qtcore-5.11.0_beta4
+~dev-qt/qtdatavis3d-5.11.0_beta4
+~dev-qt/qtdbus-5.11.0_beta4
+~dev-qt/qtdeclarative-5.11.0_beta4
+~dev-qt/qtdiag-5.11.0_beta4
+~dev-qt/qtgraphicaleffects-5.11.0_beta4
+~dev-qt/qtgui-5.11.0_beta4
+~dev-qt/qthelp-5.11.0_beta4
+~dev-qt/qtimageformats-5.11.0_beta4
+~dev-qt/qtlocation-5.11.0_beta4
+~dev-qt/qtmultimedia-5.11.0_beta4
+~dev-qt/qtnetworkauth-5.11.0_beta4
+~dev-qt/qtnetwork-5.11.0_beta4
+~dev-qt/qtopengl-5.11.0_beta4
+~dev-qt/qtpaths-5.11.0_beta4
+~dev-qt/qtplugininfo-5.11.0_beta4
+~dev-qt/qtpositioning-5.11.0_beta4
+~dev-qt/qtprintsupport-5.11.0_beta4
+~dev-qt/qtquickcontrols2-5.11.0_beta4
+~dev-qt/qtquickcontrols-5.11.0_beta4
+~dev-qt/qtscript-5.11.0_beta4
+~dev-qt/qtscxml-5.11.0_beta4
+~dev-qt/qtsensors-5.11.0_beta4
+~dev-qt/qtserialbus-5.11.0_beta4
+~dev-qt/qtserialport-5.11.0_beta4
+~dev-qt/qtspeech-5.11.0_beta4
+~dev-qt/qtsql-5.11.0_beta4
+~dev-qt/qtsvg-5.11.0_beta4
+~dev-qt/qttest-5.11.0_beta4
+~dev-qt/qttranslations-5.11.0_beta4
+~dev-qt/qtvirtualkeyboard-5.11.0_beta4
+~dev-qt/qtwayland-5.11.0_beta4
+~dev-qt/qtwebchannel-5.11.0_beta4
+~dev-qt/qtwebengine-5.11.0_beta4
+~dev-qt/qtwebsockets-5.11.0_beta4
+~dev-qt/qtwebview-5.11.0_beta4
+~dev-qt/qtwidgets-5.11.0_beta4
+~dev-qt/qtx11extras-5.11.0_beta4
+~dev-qt/qtxmlpatterns-5.11.0_beta4
+~dev-qt/qtxml-5.11.0_beta4
+
+# Brian Evans <grknight@gentoo.org> (20 Apr 2018)
+# Likely to break a lot of software
+# Masked for initial testing
+>=dev-db/mysql-connector-c++-8.0.0
+
+# Lars Wendler <polynomial-c@gentoo.org> (18 Apr 2018)
 # Breaks consumers most likely because of the following change:
 #   * Add const to several classes and members
 # See tracker bug #653464
@@ -179,18 +266,6 @@ dev-perl/WWW-Bugzilla
 # that do not make it any more working. Bug #651030.
 >=sys-devel/distcc-3.3
 
-# Brian Evans <grknight@gentoo.org (20 Mar 2018)
-# These PEAR packages are unmaintained upstream and
-# are difficult to test or have no tests.
-# PHP team no longer wants to maintain these for PHP7 and beyond
-# Removal in 30 days. Bug 650988
-dev-php/PEAR-File_Passwd
-dev-php/PEAR-HTML_QuickForm
-dev-php/PEAR-HTML_QuickForm_Controller
-dev-php/PEAR-HTML_QuickForm_advmultiselect
-dev-php/PEAR-HTML_Select
-dev-php/PEAR-I18Nv2
-
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Unresolved security issues (#606652), tests fail (#628622, #337249).
 # Removal in a month.
@@ -215,7 +290,6 @@ dev-python/visual
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Security vulnerable (#630954, #635548). Removal in a month. 
-media-sound/mp3gain
 media-sound/aacgain
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
@@ -344,16 +418,6 @@ app-editors/cooledit
 # Dead for years, not really useful at present time (#647842). Removal in a
 # month.
 app-mobilephone/ringtonetools
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Dead for years, probably not needed anymore at present time (#648102).
-# Removal in a month.
-app-laptop/lphdisk
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Dead for a long time, broken with current kernels (#648392). Removal in a
-# month.
-net-dialup/hcfpcimodem
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Not useful anymore without warsow (#648676). Removal in a month.
@@ -508,10 +572,6 @@ games-server/cyphesis
 # Not buildable (#627102, #630850). Removal in a month.
 dev-games/crystalspace
 
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# Dead for years, nothing needs it (#627464). Removal in a month.
-dev-java/commons-betwixt
-
 # Georgy Yakovlev <ya@sysdump.net> (13 Mar 2018)
 # 1.x version is no longer maintained by upstream
 # 2.x is in the tree and is better in almost every way
@@ -553,15 +613,6 @@ net-p2p/tribler
 # Masked for testing.
 >=dev-python/aiohttp-3
 
-# Ulrich Müller <ulm@gentoo.org> (01 Mar 2018)
-# Very old (Open)Motif version 2.2 installing libXm.so.3.
-# Released in 2004. Non-free. No revdeps in Gentoo repo.
-# Depends on x11-libs/libXp which is on its way out.
-# If you still need this for third-party binaries, try the
-# workaround outlined in https://bugs.gentoo.org/210021#c19.
-# Masked for removal in 30 days. Bug #649080.
-x11-libs/motif:2.2
-
 # Anthony G. Basile <blueness@gentoo.org> (25 Feb 2018)
 # Upstream has been dead since 2012.  Migrate to uclibc-ng.
 # See https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
@@ -592,12 +643,6 @@ media-libs/libdvdplay
 # Dead upstream, long since replaced by libaacs for functionality.
 # Masked for removal in 30 days. Bug #648560
 media-video/aacskeys
-
-# Michael Palimaka <kensington@gentoo.org> (22 Feb 2018)
-# Plugin for removed package media-sound/amarok. Dead upstream.
-# Depends on vulnerable gstreamer:0.10.
-# Masked for removal in 30 days. Bug #629184.
-media-sound/moodbar
 
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
@@ -680,11 +725,6 @@ games-kids/crayon-physics
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Depends on dead Qt4. Last-rites on hold for chance of Qt5-port. Bug #620702
 <media-gfx/freecad-0.18
-
-# Mike Gilbert <floppym@gentoo.org> (05 Nov 2017)
-# Breaks several reverse dependencies.
-# https://bugs.gentoo.org/635934
->=dev-util/scons-3.0.0
 
 # Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
 # Missing dependencies.
@@ -857,11 +897,6 @@ net-wireless/cpyrit-cuda
 # Drop mask after migration of existing wxGTK:3.0 users
 =net-ftp/filezilla-3.30.0-r300
 =net-ftp/filezilla-3.31.0-r300
-
-# Lars Wendler <polynomial-c@gentoo.org> (24 Mar 2017)
-# Masked until Mozilla and Chrome agreed how to handle
-# Symantec trust issues properly (bug #613714)
-=app-misc/ca-certificates-20161130.3.30-r1
 
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Old gstreamer 0.10 version, which is security vulnerable.
