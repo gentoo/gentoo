@@ -1,5 +1,5 @@
---- src/audio.cc
-+++ src/audio.cc
+--- a/src/audio.cc
++++ b/src/audio.cc
 @@ -22,7 +22,7 @@
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
@@ -18,8 +18,8 @@
      return false;
    }
    
---- src/ecran.cc
-+++ src/ecran.cc
+--- a/src/ecran.cc
++++ b/src/ecran.cc
 @@ -21,7 +21,7 @@
  //    with this program; if not, write to the Free Software Foundation, Inc.,
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -29,8 +29,8 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <math.h>
---- src/editeur.cc
-+++ src/editeur.cc
+--- a/src/editeur.cc
++++ b/src/editeur.cc
 @@ -25,7 +25,7 @@
  #include <windows.h>
  #endif
@@ -49,8 +49,8 @@
        exit(-1);
      }
      
---- src/jeux.cc
-+++ src/jeux.cc
+--- a/src/jeux.cc
++++ b/src/jeux.cc
 @@ -25,7 +25,7 @@
  #include <windows.h>
  #endif
@@ -60,8 +60,8 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
---- src/loco.cc
-+++ src/loco.cc
+--- a/src/loco.cc
++++ b/src/loco.cc
 @@ -21,7 +21,7 @@
  //    with this program; if not, write to the Free Software Foundation, Inc.,
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -71,8 +71,8 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
---- src/main.cc
-+++ src/main.cc
+--- a/src/main.cc
++++ b/src/main.cc
 @@ -23,7 +23,7 @@
  
  #include <stdio.h>
@@ -109,8 +109,8 @@
      exit(-1);
    }
    // Change le nom de la fenetre
---- src/menu.cc
-+++ src/menu.cc
+--- a/src/menu.cc
++++ b/src/menu.cc
 @@ -21,7 +21,7 @@
  //    with this program; if not, write to the Free Software Foundation, Inc.,
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -138,8 +138,8 @@
      exit(-1);
    }
    
---- src/mouse.cc
-+++ src/mouse.cc
+--- a/src/mouse.cc
++++ b/src/mouse.cc
 @@ -21,7 +21,7 @@
  //    with this program; if not, write to the Free Software Foundation, Inc.,
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -149,8 +149,8 @@
  #include <stdio.h>
  #include "mouse.h"
  #include "preference.h"
---- src/sprite.cc
-+++ src/sprite.cc
+--- a/src/sprite.cc
++++ b/src/sprite.cc
 @@ -21,7 +21,7 @@
  //    with this program; if not, write to the Free Software Foundation, Inc.,
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -205,8 +205,8 @@
      return false;
    }
    return true;
---- src/tableau.cc
-+++ src/tableau.cc
+--- a/src/tableau.cc
++++ b/src/tableau.cc
 @@ -21,7 +21,7 @@
  //    with this program; if not, write to the Free Software Foundation, Inc.,
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -216,8 +216,8 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include "preference.h"
---- src/utils.cc
-+++ src/utils.cc
+--- a/src/utils.cc
++++ b/src/utils.cc
 @@ -21,7 +21,7 @@
  //    with this program; if not, write to the Free Software Foundation, Inc.,
  //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
