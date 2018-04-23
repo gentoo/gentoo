@@ -92,6 +92,41 @@ __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
 
+
+read -d '' __MESON_ARRAY_PARSER <<"EOF"
+import shlex;
+
+# See http://mesonbuild.com/Syntax.html#strings
+def quote(str):
+	escaped = str.replace("\\\\", "\\\\\\\\").replace("'", "\\\\'")
+	return "'{}'".format(escaped)
+
+print("[{}]".format(
+	", ".join([quote(x) for x in shlex.split(None)])))
+EOF
+
+# @FUNCTION: _meson_env_array
+# @INTERNAL
+# @DESCRIPTION:
+# Parses the command line flags and converts them into an array suitable for
+# use in a cross file.
+#
+# Input: --single-quote=\' --double-quote=\" --dollar=\$ --backtick=\`
+#        --backslash=\\ --full-word-double="Hello World"
+#        --full-word-single='Hello World'
+#        --full-word-backslash=Hello\ World
+#        --simple --unicode-8=© --unicode-16=𐐷 --unicode-32=𐤅
+#
+# Output: ['--single-quote=\'', '--double-quote="', '--dollar=$',
+#          '--backtick=`', '--backslash=\\', '--full-word-double=Hello World',
+#          '--full-word-single=Hello World',
+#          '--full-word-backslash=Hello World', '--simple', '--unicode-8=©',
+#          '--unicode-16=𐐷', '--unicode-32=𐤅']
+#
+_meson_env_array() {
+	echo "$1" | python -c "$__MESON_ARRAY_PARSER"
+}
+
 # @FUNCTION: _meson_create_cross_file
 # @INTERNAL
 # @DESCRIPTION:
@@ -128,6 +163,15 @@ _meson_create_cross_file() {
 	cpp = '${CXX}'
 	pkgconfig = '${PKG_CONFIG}'
 	strip = '${STRIP}'
+
+	[properties]
+	c_args = $(_meson_env_array "$CFLAGS")
+	c_link_args = $(_meson_env_array "$LDFLAGS")
+	cpp_args = $(_meson_env_array "$CXXFLAGS")
+	cpp_link_args = $(_meson_env_array "$LDFLAGS")
+	fortran_args = $(_meson_env_array "$FCFLAGS")
+	objc_args = $(_meson_env_array "$OBJCFLAGS")
+	objcpp_args = $(_meson_env_array "$OBJCXXFLAGS")
 
 	[host_machine]
 	system = '${system}'
