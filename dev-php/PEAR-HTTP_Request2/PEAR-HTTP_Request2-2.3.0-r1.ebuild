@@ -27,6 +27,6 @@ src_test() {
 
 src_install() {
 	php-pear-r2_src_install
-	insinto "/usr/share/php/${PEAR_PN}"
+	insinto "/usr/share/php/data/${PHP_PEAR_PKG_NAME}"
 	doins data/*
 }
