@@ -828,7 +828,7 @@ app-forensics/libewf 20130416: Implementation of the EWF (SMART and EnCase) imag
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
 app-forensics/rkhunter 1.4.2 1.4.6: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
-app-forensics/sleuthkit 4.0.2 4.5.0: A collection of file system and media management forensic analysis tools
+app-forensics/sleuthkit 4.5.0: A collection of file system and media management forensic analysis tools
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/bidiv 1.5-r1: A BiDirectional Text Viewer
 app-i18n/canna 3.7_p3-r1: A client-server based Kana-Kanji conversion system
