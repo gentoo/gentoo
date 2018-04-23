@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/RetroShare/RetroShare/archive/v${PV}.tar.gz -> ${P}.
 # pegmarkdown can also be used with MIT
 LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="cli feedreader gnome-keyring +gui voip"
 REQUIRED_USE="
@@ -50,6 +50,7 @@ RDEPEND="
 	voip? (
 		media-libs/opencv[-qt4(-)]
 		media-libs/speex
+		media-libs/speexdsp
 		virtual/ffmpeg[encode]
 	)"
 DEPEND="${RDEPEND}

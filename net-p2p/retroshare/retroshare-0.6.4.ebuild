@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/RetroShare/RetroShare/archive/v${PV}.tar.gz -> ${P}.
 # pegmarkdown can also be used with MIT
 LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="cli feedreader gnome-keyring +gui voip"
 REQUIRED_USE="
@@ -50,6 +50,7 @@ RDEPEND="
 	voip? (
 		media-libs/opencv[-qt4(-)]
 		media-libs/speex
+		media-libs/speexdsp
 		virtual/ffmpeg[encode]
 	)"
 DEPEND="${RDEPEND}
@@ -79,7 +80,7 @@ src_prepare() {
 		retroshare-nogui/src/retroshare-nogui.pro || die 'sed on retroshare-gui/src/retroshare-gui.pro failed'
 
 	# Avoid openpgpsdk false dependency on qtgui
-	sed -i '2iQT -= gui' openpgpsdk/src/openpgpsdk.pro
+	sed -i '2iQT -= gui' openpgpsdk/src/openpgpsdk.pro || die
 
 	eapply_user
 }
@@ -106,22 +107,22 @@ src_install() {
 	local i
 	local extension_dir="/usr/$(get_libdir)/${PN}/extensions6/"
 
-	use cli && dobin retroshare-nogui/src/RetroShare06-nogui
-	use gui && dobin retroshare-gui/src/RetroShare06
+	use cli && dobin retroshare-nogui/src/retroshare-nogui
+	use gui && dobin retroshare-gui/src/retroshare
 
 	exeinto "${extension_dir}"
 	use feedreader && doexe plugins/FeedReader/*.so*
 	use voip && doexe plugins/VOIP/*.so*
 
-	insinto /usr/share/RetroShare06
+	insinto /usr/share/retroshare
 	doins libbitdht/src/bitdht/bdboot.txt
 
 	doins -r libresapi/src/webui
 
 	dodoc README.md
-	make_desktop_entry RetroShare06
+	make_desktop_entry retroshare
 	for i in 24 48 64 128 ; do
-		doicon -s ${i} "data/${i}x${i}/apps/retroshare06.png"
+		doicon -s ${i} "data/${i}x${i}/apps/retroshare.png"
 	done
 }
 
@@ -134,6 +135,10 @@ pkg_preinst() {
 			elog "and clients with 0.6.* can not connect to clients that have 0.5.*"
 			elog "It's recommended to drop all your configuration and either"
 			elog "generate a new certificate or import existing from a backup"
+			break
+		fi
+		if version_is_at_least 0.6.0 ${ver}; then
+			elog "Main executable was renamed upstream from RetroShare06 to retroshare"
 			break
 		fi
 	done
