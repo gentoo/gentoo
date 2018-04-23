@@ -77,7 +77,7 @@ S="${WORKDIR}/jre$(replace_version_separator 3 _  ${S_PV})"
 
 pkg_nofetch() {
 	einfo "Please download ${ARCH_FILES[${ARCH}]} and move it to"
-	einfo "${DISTDIR}:"
+	einfo "your distfiles directory:"
 	einfo
 	einfo "  http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html"
 	einfo
