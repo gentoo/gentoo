@@ -9003,7 +9003,7 @@ net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with 
 net-p2p/ncdc 1.19.1: ncurses directconnect client
 net-p2p/pybitmessage 0.4.2: P2P communications protocol
 net-p2p/qbittorrent 3.3.16: BitTorrent client in C++ and Qt
-net-p2p/retroshare 0.6.2: P2P private sharing application
+net-p2p/retroshare 0.6.3-r1: P2P private sharing application
 net-p2p/rtorrent 0.9.6 0.9.6-r1: BitTorrent Client using libtorrent
 net-p2p/syncthing 0.14.38: Open Source Continuous File Synchronization
 net-p2p/torrentinfo 1.8.6: A torrent file parser

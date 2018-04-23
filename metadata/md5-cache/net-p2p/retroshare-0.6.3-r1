@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=app-arch/bzip2 dev-db/sqlcipher dev-libs/openssl:0 dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 net-libs/libmicrohttpd net-libs/libupnp:0 sys-libs/zlib gnome-keyring? ( gnome-base/libgnome-keyring ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) gui? ( dev-qt/designer:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) voip? ( media-libs/opencv[-qt4(-)] media-libs/speex media-libs/speexdsp virtual/ffmpeg[encode] ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=P2P private sharing application
+EAPI=6
+HOMEPAGE=http://retroshare.net
+IUSE=cli feedreader gnome-keyring +gui voip
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 GPL-3 Apache-2.0 LGPL-2.1
+RDEPEND=app-arch/bzip2 dev-db/sqlcipher dev-libs/openssl:0 dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 net-libs/libmicrohttpd net-libs/libupnp:0 sys-libs/zlib gnome-keyring? ( gnome-base/libgnome-keyring ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) gui? ( dev-qt/designer:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) voip? ( media-libs/opencv[-qt4(-)] media-libs/speex media-libs/speexdsp virtual/ffmpeg[encode] )
+REQUIRED_USE=|| ( cli gui ) feedreader? ( gui ) voip? ( gui )
+SLOT=0
+SRC_URI=https://github.com/RetroShare/RetroShare/archive/v0.6.3.tar.gz -> retroshare-0.6.3.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	ce21313503c41896ebcd7d58b0607e37	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=fbca8b95d6695c2925f284f2eaa2edb2
