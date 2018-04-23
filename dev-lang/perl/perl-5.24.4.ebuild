@@ -7,31 +7,14 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.9
-PATCH_BASE="perl-5.26.2-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.24.4-patches-${PATCH_VER}"
 
+PERL_OLDVERSEN="5.24.3 5.24.2 5.24.1 5.24.0"
 DIST_AUTHOR=SHAY
 
-# Greatest first, don't include yourself
-# Devel point-releases are not ABI-intercompatible, but stable point releases are
-# BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
-PERL_BIN_OLDVERSEN="5.26.1 5.26.0"
-if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.26.2
-else
-	DIST_VERSION="${PV/_rc/-RC}"
-fi
-SHORT_PV="${DIST_VERSION%.*}"
-# Even numbered major versions are ABI intercompatible
-# Odd numbered major versions are not
-if [[ $(( ${SHORT_PV#*.} % 2 )) == 1 ]]; then
-	SUBSLOT="${DIST_VERSION%-RC*}"
-else
-	SUBSLOT="${DIST_VERSION%.*}"
-fi
-# Used only in tar paths
-MY_P="perl-${DIST_VERSION}"
-# Used in library paths
-MY_PV="${DIST_VERSION%-RC*}"
+SHORT_PV="${PV%.*}"
+MY_P="perl-${PV/_rc/-RC}"
+MY_PV="${PV%_rc*}"
 
 DESCRIPTION="Larry Wall's Practical Extraction and Report Language"
 
@@ -46,12 +29,8 @@ SRC_URI="
 HOMEPAGE="https://www.perl.org/"
 
 LICENSE="|| ( Artistic GPL-1+ )"
-SLOT="0/${SUBSLOT}"
-
-if [[ "${PV##*.}" != "9999" ]]; then
+SLOT="0/${SHORT_PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-fi
-
 IUSE="berkdb debug doc gdbm ithreads"
 
 RDEPEND="
@@ -65,30 +44,31 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="
 	>=app-admin/perl-cleaner-2.5
+	>=virtual/perl-File-Path-2.130.0
 	>=virtual/perl-File-Temp-0.230.400-r2
 	>=virtual/perl-Data-Dumper-2.154.0
 	virtual/perl-Test-Harness
 "
-# bug 390719, bug 523624
+# bug 390719, bug 523624, bug 620304
 # virtual/perl-Test-Harness is here for the bundled ExtUtils::MakeMaker
 
 S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
-	src_remove_dual      perl-core/Archive-Tar        2.240.0       ptar ptardiff ptargrep
-	src_remove_dual      perl-core/CPAN               2.180.0       cpan
-	src_remove_dual      perl-core/Digest-SHA         5.960.0       shasum
-	src_remove_dual      perl-core/Encode             2.880.0       enc2xs piconv
-	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.240.0       instmodsh
-	src_remove_dual      perl-core/ExtUtils-ParseXS   3.340.0       xsubpp
-	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
-	src_remove_dual      perl-core/JSON-PP            2.274.0.200_rc   json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.804.142.600_rc corelist
+	src_remove_dual      perl-core/Archive-Tar        2.40.100_rc   ptar ptardiff ptargrep
+	src_remove_dual      perl-core/CPAN               2.110.100_rc  cpan
+	src_remove_dual      perl-core/Digest-SHA         5.950.100_rc  shasum
+	src_remove_dual      perl-core/Encode             2.800.100_rc  enc2xs piconv
+	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.100.200_rc  instmodsh
+	src_remove_dual      perl-core/ExtUtils-ParseXS   3.310.0       xsubpp
+	src_remove_dual      perl-core/IO-Compress        2.69.1_rc          zipdetails
+	src_remove_dual      perl-core/JSON-PP            2.273.0.100_rc     json_pp
+	src_remove_dual      perl-core/Module-CoreList    5.201.804.142.400_rc  corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
-	src_remove_dual      perl-core/Pod-Perldoc        3.280.0       perldoc
-	src_remove_dual      perl-core/Test-Harness       3.380.0       prove
-	src_remove_dual      perl-core/podlators          4.90.0        pod2man pod2text
-	src_remove_dual_man  perl-core/podlators          4.90.0        /usr/share/man/man1/perlpodstyle.1
+	src_remove_dual      perl-core/Pod-Perldoc        3.250.300_rc  perldoc
+	src_remove_dual      perl-core/Test-Harness       3.360.100_rc  prove
+	src_remove_dual      perl-core/podlators          4.70.0        pod2man pod2text
+	src_remove_dual_man  perl-core/podlators          4.70.0        /usr/share/man/man1/perlpodstyle.1
 }
 
 check_rebuild() {
@@ -151,17 +131,13 @@ pkg_setup() {
 		myarch+="-thread"
 	fi
 
-	PRIV_BASE="/usr/$(get_libdir)/perl5"
-	SITE_BASE="/usr/local/$(get_libdir)/perl5"
-	VENDOR_BASE="/usr/$(get_libdir)/perl5/vendor_perl"
-
 	LIBPERL="libperl$(get_libname ${MY_PV} )"
-	PRIV_LIB="${PRIV_BASE}/${MY_PV}"
-	ARCH_LIB="${PRIV_BASE}/${MY_PV}/${myarch}${mythreading}"
-	SITE_LIB="${SITE_BASE}/${MY_PV}"
-	SITE_ARCH="${SITE_BASE}/${MY_PV}/${myarch}${mythreading}"
-	VENDOR_LIB="${VENDOR_BASE}/${MY_PV}"
-	VENDOR_ARCH="${VENDOR_BASE}/${MY_PV}/${myarch}${mythreading}"
+	PRIV_LIB="/usr/$(get_libdir)/perl5/${MY_PV}"
+	ARCH_LIB="/usr/$(get_libdir)/perl5/${MY_PV}/${myarch}${mythreading}"
+	SITE_LIB="/usr/local/$(get_libdir)/perl5/${MY_PV}"
+	SITE_ARCH="/usr/local/$(get_libdir)/perl5/${MY_PV}/${myarch}${mythreading}"
+	VENDOR_LIB="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}"
+	VENDOR_ARCH="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}/${myarch}${mythreading}"
 
 	dual_scripts
 }
@@ -282,38 +258,10 @@ done < "${WORKDIR}"/patches/series > "${S}/${patchoutput}"
 echo "${patchoutput}" >> "${S}/MANIFEST"
 }
 
-src_prepare_perlcross() {
-	cp -a ../perl-cross-${CROSS_VER}/* . || die
-
-	sed -i \
-		-e 's/MakeMaker\.pm .*/MakeMaker.pm bf9174c70a0e50ff2fee4552c7df89b37d292da1/' \
-		-e 's/MM_Unix\.pm .*/MM_Unix.pm b0ec308fe2d7dcfcef5732880db0fae1f4ea80fa/' \
-		cnf/diffs/perl5-${PV}/customized.patch || die
-
-	sed -i \
-		-e 's|^lib/unicore/CombiningClass.pl pod/perluniprops.pod:|lib/unicore/CombiningClass.pl pod/perluniprops.pod: $(CONFIGPM)|' \
-		Makefile || die
-
-	# bug 604072
-	MAKEOPTS+=" -j1"
-	export MAKEOPTS
-}
-src_prepare_dynamic() {
-	ln -s ${LIBPERL} libperl$(get_libname ${SHORT_PV}) || die
-	ln -s ${LIBPERL} libperl$(get_libname ) || die
-}
-
 src_prepare() {
 	local patch
 	EPATCH_OPTS+=" -p1"
-
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		# do NOT mess with nsl, on Solaris this is always necessary,
-		# when -lsocket is used e.g. to get h_errno
-		sed -i '/gentoo\/no-nsl\.patch/d' "${WORKDIR}/patches/series" || die "Can't exclude libnsl patch"
-	fi
-
-	einfo "Applying patches from ${PATCH_BASE} ..."
+	einfo "Applying patches from ${MY_P}-${PATCH_VER} ..."
 	while read patch ; do
 		EPATCH_SINGLE_MSG="  ${patch} ..."
 		epatch "${WORKDIR}"/patches/${patch}
@@ -321,18 +269,35 @@ src_prepare() {
 
 	src_prepare_update_patchlevel_h
 
-	tc-is-cross-compiler && src_prepare_perlcross
+	if tc-is-cross-compiler; then
+		cp -a ../perl-cross-${CROSS_VER}/* . || die
 
-	tc-is-static-only || src_prepare_dynamic
+		sed -i \
+			-e 's/(15 + $CLEANUP)/(13 + $CLEANUP)/' \
+			cnf/diffs/perl5-${PV}/makemaker-test.patch || die
+
+		sed -i \
+			-e 's/MakeMaker\.pm .*/MakeMaker.pm bf9174c70a0e50ff2fee4552c7df89b37d292da1/' \
+			-e 's/MM_Unix\.pm .*/MM_Unix.pm b0ec308fe2d7dcfcef5732880db0fae1f4ea80fa/' \
+			cnf/diffs/perl5-${PV}/customized.patch || die
+
+		sed -i \
+			-e 's|^lib/unicore/CombiningClass.pl pod/perluniprops.pod:|lib/unicore/CombiningClass.pl pod/perluniprops.pod: $(CONFIGPM)|' \
+			Makefile || die
+
+		# bug 604072
+		MAKEOPTS+=" -j1"
+		export MAKEOPTS
+	fi
+
+	if ! tc-is-static-only ; then
+		ln -s ${LIBPERL} libperl$(get_libname ${SHORT_PV}) || die
+		ln -s ${LIBPERL} libperl$(get_libname ) || die
+	fi
 
 	if use gdbm; then
 		sed -i "s:INC => .*:INC => \"-I${EROOT}usr/include/gdbm\":g" \
 			ext/NDBM_File/Makefile.PL || die
-	fi
-
-	# Use errno.h from prefix rather than from host system, bug #645804
-	if use prefix; then
-		sed -i "/my..sysroot/s:'':'${EPREFIX}':" ext/Errno/Errno_pm.PL || die
 	fi
 
 	default
@@ -413,38 +378,8 @@ src_configure() {
 		myconf -DDEBUGGING=none
 	fi
 
-	# Autodiscover all old version directories, some of them will even be newer
-	# if you downgrade
-	if [[ -z ${PERL_OLDVERSEN} ]]; then
-		PERL_OLDVERSEN="$(
-			find "${EROOT%/}${PRIV_BASE}" "${EROOT%/}${SITE_BASE}" "${EROOT%/}${VENDOR_BASE}" \
-				   -maxdepth 1 -mindepth 1 -type d -regex '.*/5[.][0-9]+[.][0-9]+$' \
-				   -printf "%f "  2>/dev/null )"
-	fi
-	# Fixup versions, removing self match, fixing order and dupes
-	PERL_OLDVERSEN="$(
-		echo "${PERL_OLDVERSEN}"           |\
-			tr " " "\n" 				   |\
-			grep -vF "${DIST_VERSION%-RC}" |\
-			sort -u -nr -t'.' -k1,1 -k2,2 -k3,3
-	)"
-
-	# Experts who want a "Pure" install can set PERL_OLDVERSEN to an empty string
-	if [[ -n "${PERL_OLDVERSEN// }" ]]; then
-		local inclist="$(
-				for v in ${PERL_OLDVERSEN};	do
-					has "${v}" ${PERL_BIN_OLDVERSEN} && echo -n "${v}/${myarch}${mythreading} ";
-					echo -n "${v} ";
-				done )"
-		einfo "This version of perl may partially support modules previously"
-		einfo "installed in any of the following paths:"
-		for incpath in ${inclist}; do
-			[[ -e "${EROOT%/}${VENDOR_BASE}/${incpath}" ]] && einfo " ${EROOT%/}${VENDOR_BASE}/${incpath}"
-			[[ -e "${EROOT%/}${PRIV_BASE}/${incpath}"   ]] && einfo " ${EROO%/T}${PRIV_BASE}/${incpath}"
-			[[ -e "${EROOT%/}${SITE_BASE}/${incpath}"   ]] && einfo " ${EROOT%/}${SITE_BASE}/${incpath}"
-		done
-		einfo "This is a temporary measure and you should aim to cleanup these paths"
-		einfo "via world updates and perl-cleaner"
+	if [[ -n ${PERL_OLDVERSEN} ]] ; then
+		local inclist=$(for v in ${PERL_OLDVERSEN}; do echo -n "${v}/${myarch}${mythreading} ${v} "; done )
 		myconf -Dinc_version_list="${inclist}"
 	fi
 
@@ -482,8 +417,6 @@ src_configure() {
 	fi
 
 	myconf -Dnoextensions="${disabled_extensions}"
-
-	[[ "${PV##*.}" == "9999" ]] && myconf -Dusedevel -Uversiononly
 
 	[[ -n "${EXTRA_ECONF}" ]] && ewarn During Perl build, EXTRA_ECONF=${EXTRA_ECONF}
 	# allow fiddling via EXTRA_ECONF, bug 558070
