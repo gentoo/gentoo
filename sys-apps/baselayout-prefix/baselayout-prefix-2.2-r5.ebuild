@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ pkg_preinst() {
 
 src_prepare() {
 	if use prefix-chain; then
-		epatch "${FILESDIR}"/baselayout-${PV}-prefix-chaining.patch
+		eapply "${FILESDIR}"/baselayout-${PV}-prefix-chaining.patch
 
 		# need to set the PKG_CONFIG_PATH globally for this prefix, when
 		# chaining is enabled, since pkg-config may not be installed locally,
