@@ -45,14 +45,9 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		$(use_with python_targets_python2_7 python2)
+		--without-python3
 		$(use_with doc gtk-doc)
 	)
-	if use python_targets_python3_4 || use python_targets_python3_5 || use python_targets_python3_6 ; then
-		myeconfargs+=( --with-python3 )
-	else
-		myeconfargs+=( --without-python3 )
-	fi
 	econf "${myeconfargs[@]}"
 }
 
