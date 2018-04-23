@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils autotools games
+EAPI=6
+inherit autotools desktop
 
 DESCRIPTION="3D Pacman clone with a few surprises. Rockets, bombs and explosions abound"
 HOMEPAGE="http://pacmanarena.sourceforge.net/"
@@ -14,15 +14,18 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
-RDEPEND="virtual/opengl
+RDEPEND="
+	virtual/opengl
 	virtual/glu
 	media-libs/libsdl[sound]
 	media-libs/sdl-mixer[vorbis]
-	media-libs/sdl-net"
+	media-libs/sdl-net
+"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
+	app-arch/unzip
+"
 
-S=${WORKDIR}/pacman
+S="${WORKDIR}/pacman"
 
 src_unpack() {
 	unpack pacman-arena-${PV}.tar.bz2
@@ -31,6 +34,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	sed -i \
 		-e "/^CFLAGS/ s:pacman:${PN}:" \
 		-e '1i CC=@CC@' \
@@ -38,16 +42,15 @@ src_prepare() {
 	sed -i \
 		-e '/CFLAGS/s:-g::' \
 		configure || die
-	epatch "${FILESDIR}"/${P}-underlink.patch
+	eapply "${FILESDIR}"/${P}-underlink.patch
 	eautoreconf
 }
 
 src_install() {
-	newgamesbin pacman ${PN} || die
-	insinto "${GAMES_DATADIR}"/${PN}
-	doins -r gfx sfx || die
+	newbin pacman ${PN}
+	insinto /usr/share/${PN}
+	doins -r gfx sfx
 	newicon gfx/pacman_arena1.tga ${PN}.tga
 	make_desktop_entry ${PN} "Pacman Arena" /usr/share/pixmaps/${PN}.tga
-	dodoc README
-	prepgamesdirs
+	einstalldocs
 }
