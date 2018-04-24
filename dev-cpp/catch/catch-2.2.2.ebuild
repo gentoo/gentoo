@@ -3,8 +3,10 @@
 
 EAPI=6
 
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
+
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-inherit cmake-utils
+inherit cmake-utils python-any-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -25,13 +27,23 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.2.0-fix-pkg-config.patch )
+DEPEND="test? ( ${PYTHON_DEPS} )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.2-test-python3.patch
+	"${FILESDIR}"/${PN}-2.2.2-python-automagic.patch
+)
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DCATCH_ENABLE_WERROR=OFF
 		-DBUILD_TESTING=$(usex test)
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 	cmake-utils_src_configure
 }

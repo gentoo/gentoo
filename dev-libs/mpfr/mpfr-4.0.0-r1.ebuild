@@ -29,7 +29,7 @@ src_prepare() {
 	if [[ ${PLEVEL} != ${PV} ]] ; then
 		local i
 		for (( i = 1; i <= PLEVEL; ++i )) ; do
-			epatch "${FILESDIR}"/${MY_PV}/patch$(printf '%02d' ${i})
+			eapply "${FILESDIR}"/${MY_PV}/patch$(printf '%02d' ${i})
 		done
 	fi
 	eapply_user
