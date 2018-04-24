@@ -75,7 +75,7 @@ RDEPEND="!x64-macos? (
 
 pkg_nofetch() {
 	einfo "Please download ${ARCH_FILES[${ARCH}]} and move it to"
-	einfo "${DISTDIR}:"
+	einfo "your distfiles directory:"
 	einfo
 	einfo "  http://www.oracle.com/technetwork/java/javase/downloads/jre9-downloads-3848532.html"
 	einfo

@@ -28,7 +28,6 @@ DEPEND="
 	virtual/libiconv
 "
 RDEPEND="
-	>=dev-libs/openssl-1.0.1:0
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr

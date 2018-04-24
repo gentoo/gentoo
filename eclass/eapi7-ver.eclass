@@ -63,7 +63,7 @@ case ${EAPI:-0} in
 	6)
 		;;
 	*)
-		die "${ECLASS}: EAPI=${EAPI} unknown";;
+		die "${ECLASS}: EAPI=${EAPI} includes all functions from this eclass";;
 esac
 
 # @FUNCTION: _ver_parse_range

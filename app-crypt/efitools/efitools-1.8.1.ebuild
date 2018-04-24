@@ -20,10 +20,12 @@ RDEPEND="!libressl? ( dev-libs/openssl:0= )
 
 DEPEND="${RDEPEND}
 	app-crypt/sbsigntool
-	dev-perl/File-Slurp-Unicode
+	dev-perl/File-Slurp
 	sys-apps/help2man
 	sys-boot/gnu-efi
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${P}-libressl-compatibility.patch" )
 
 src_prepare() {
 	# Respect users CFLAGS
