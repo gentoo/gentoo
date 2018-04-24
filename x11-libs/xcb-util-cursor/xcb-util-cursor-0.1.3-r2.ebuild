@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,10 +20,10 @@ IUSE="test"
 
 RDEPEND=">=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
 	>=x11-libs/xcb-util-image-0.3.9-r1[${MULTILIB_USEDEP}]
-	>=x11-libs/xcb-util-renderutil-0.3.9[${MULTILIB_USEDEP}]
-	>=x11-proto/xcb-proto-1.8-r3:=[${MULTILIB_USEDEP}]
-	>=x11-proto/xproto-7.0.24:=[${MULTILIB_USEDEP}]"
+	>=x11-libs/xcb-util-renderutil-0.3.9[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
+	>=x11-proto/xcb-proto-1.8-r3:=[${MULTILIB_USEDEP}]
+	>=x11-proto/xproto-7.0.24:=[${MULTILIB_USEDEP}]
 	>=dev-util/gperf-3.0.1
 	test? ( >=dev-libs/check-0.9.11[${MULTILIB_USEDEP}] )"
 
