@@ -25,7 +25,6 @@ RDEPEND="net-libs/mbedtls
 	net-libs/libcorkipset
 	>=dev-libs/libsodium-1.0.8
 	dev-libs/libev
-	net-libs/udns
 	net-dns/c-ares
 	dev-libs/libpcre
 	"
