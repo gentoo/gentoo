@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
+# Produces a lot of Pango warnings, then segfaults.  Unmaintained.
+# No reverse dependencies.  Removal in 30 days.  Bug #526668.
+dev-python/kiwi
+
+# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
 # Obsolete package used during some past GSoC development
 # and unmaintained since.  All of its users have retired already.
 # No reverse dependencies.  The ebuild runs test suite of CPython
