@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils pax-utils versionator
+inherit cmake-utils desktop pax-utils versionator
 
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="https://awesomewm.org/"
