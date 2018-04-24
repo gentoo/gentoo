@@ -60,7 +60,7 @@ src_test() {
 }
 
 python_test() {
-	nosetests || die "Tests fail with ${EPYTHON}"
+	nosetests -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
