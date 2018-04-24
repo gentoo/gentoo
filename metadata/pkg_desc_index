@@ -3353,7 +3353,7 @@ dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot exec
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
-dev-perl/AnyEvent 7.120.0 7.140.0: Provides a uniform interface to various event loops
+dev-perl/AnyEvent 7.140.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-HTTP 2.230.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.270.0-r1: Perl Authentication and Authorization via cookies
@@ -3370,7 +3370,7 @@ dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0: Generic archive extracting mechanism
-dev-perl/Archive-Zip 1.590.0 1.600.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Archive-Zip 1.600.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.0: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
@@ -3432,8 +3432,8 @@ dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
-dev-perl/Canary-Stability 2006 2012.0.0: Canary to check perl compatibility for schmorp's modules
-dev-perl/Capture-Tiny 0.360.0 0.460.0: Capture STDOUT and STDERR from Perl, XS or external programs
+dev-perl/Canary-Stability 2012.0.0: Canary to check perl compatibility for schmorp's modules
+dev-perl/Capture-Tiny 0.460.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
 dev-perl/Carp-Assert-More 1.160.0: convenience wrappers around Carp::Assert
@@ -3457,7 +3457,7 @@ dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
 dev-perl/Class-ErrorHandler 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r2: Provide utility methods for factory classes
 dev-perl/Class-ISA 0.360.0: Report the search path thru an ISA tree
-dev-perl/Class-Inspector 1.310.0 1.320.0: Provides information about Classes
+dev-perl/Class-Inspector 1.320.0: Provides information about Classes
 dev-perl/Class-Load 0.200.0-r1 0.230.0 0.240.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.100.0: XS implementation of parts of Class::Load
 dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
@@ -3472,7 +3472,7 @@ dev-perl/Class-Virtual 0.60.0-r1 0.80.0: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r1: base class to treat unhandled method calls as errors
 dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
-dev-perl/Clipboard 0.130.0-r2 0.130.0-r3: Copy and paste with any OS
+dev-perl/Clipboard 0.130.0-r3: Copy and paste with any OS
 dev-perl/Clone 0.390.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
