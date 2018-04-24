@@ -19,5 +19,5 @@ src_prepare() {
 	default
 
 	#mans provided by other packages
-	rm generated/man1/groups.1 po/man1/groups.1.po
+	rm generated/man1/groups.1 po/man1/groups.1.po || die "Failed to clean up duplicates from build directory!"
 }
