@@ -7,7 +7,7 @@ inherit cmake-utils gnome2-utils pax-utils systemd user versionator
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~sparc-solaris"
+	KEYWORDS="~amd64 ~arm ~ppc x86 ~amd64-linux ~sparc-solaris"
 else
 	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
 	inherit git-r3
