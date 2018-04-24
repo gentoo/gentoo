@@ -8,5 +8,5 @@ VIM_SPELL_LANGUAGE="Spanish"
 inherit vim-spell
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc sparc ~x86"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
