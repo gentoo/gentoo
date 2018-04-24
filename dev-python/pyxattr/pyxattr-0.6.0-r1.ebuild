@@ -43,6 +43,8 @@ src_test() {
 	# Perform the tests in /var/tmp; that location is more likely
 	# to have xattr support than /tmp which is often tmpfs.
 	local -x TEST_DIR=/var/tmp
+	# Ignore selinux attributes by default, bug #503946.
+	local -x TEST_IGNORE_XATTRS="security.selinux"
 
 	einfo 'Please note that the tests fail if xattrs are not supported'
 	einfo 'by the filesystem used for /var/tmp.'
