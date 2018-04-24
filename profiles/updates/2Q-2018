@@ -4,3 +4,4 @@ move gnome-extra/gnome-builder dev-util/gnome-builder
 move kde-apps/kstars sci-astronomy/kstars
 move media-video/kamoso kde-apps/kamoso
 move app-backup/kbackup kde-apps/kbackup
+move x11-proto/xcb-proto x11-base/xcb-proto

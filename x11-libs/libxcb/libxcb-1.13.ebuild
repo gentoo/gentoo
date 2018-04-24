@@ -30,10 +30,10 @@ DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	${PYTHON_DEPS}
 	$(python_gen_any_dep \
-		">=x11-proto/xcb-proto-1.13[${MULTILIB_USEDEP},\${PYTHON_USEDEP}]")"
+		">=x11-base/xcb-proto-1.13[${MULTILIB_USEDEP},\${PYTHON_USEDEP}]")"
 
 python_check_deps() {
-	has_version --host-root ">=x11-proto/xcb-proto-1.13[${PYTHON_USEDEP}]"
+	has_version --host-root ">=x11-base/xcb-proto-1.13[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
