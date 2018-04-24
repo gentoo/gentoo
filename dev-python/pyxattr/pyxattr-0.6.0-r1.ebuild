@@ -42,7 +42,7 @@ python_compile_all() {
 src_test() {
 	# Perform the tests in /var/tmp; that location is more likely
 	# to have xattr support than /tmp which is often tmpfs.
-	export TESTDIR=/var/tmp
+	local -x TEST_DIR=/var/tmp
 
 	einfo 'Please note that the tests fail if xattrs are not supported'
 	einfo 'by the filesystem used for /var/tmp.'
