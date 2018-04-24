@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit ltprune
 
 DESCRIPTION="Program and text file generation"
 HOMEPAGE="https://www.gnu.org/software/autogen/"
@@ -20,11 +20,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.18.4-tmp-log.patch #563352
-	epatch "${FILESDIR}"/${PN}-5.18.4_fix_format.test_for_dash.patch #576674
-	default
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.18.4-tmp-log.patch #563352
+	"${FILESDIR}"/${PN}-5.18.4_fix_format.test_for_dash.patch #576674
+)
 
 src_configure() {
 	# suppress possibly incorrect -R flag
