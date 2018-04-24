@@ -85,7 +85,8 @@ RDEPEND="sys-libs/ncurses:0=
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	gzip-el? ( app-arch/gzip )"
+	gzip-el? ( app-arch/gzip )
+	X? ( x11-base/xorg-proto )"
 #	pax_kernel? ( sys-apps/attr )
 
 RDEPEND="${RDEPEND}
