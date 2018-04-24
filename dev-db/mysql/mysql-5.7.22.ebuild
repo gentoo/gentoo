@@ -207,6 +207,8 @@ src_prepare() {
 			"${S}/cmake/ssl.cmake" || die
 	fi
 
+	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
+
 	cmake-utils_src_prepare
 }
 
@@ -273,6 +275,7 @@ multilib_src_configure() {
 		-DWITH_RAPID=OFF
 		-DWITH_LIBEVENT=NO
 		-DWITH_CURL=system
+		-DWITH_BOOST="${S}/boost"
 	)
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
@@ -307,7 +310,6 @@ multilib_src_configure() {
 	if multilib_is_native_abi && use server ; then
 
 		mycmakeargs+=(
-			-DWITH_BOOST="${S}/boost"
 			-DWITH_LZ4=system
 			-DWITH_NUMA=$(usex numa ON OFF)
 		)
