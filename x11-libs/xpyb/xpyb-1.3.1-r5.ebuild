@@ -18,9 +18,9 @@ IUSE="selinux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=x11-libs/libxcb-1.7
-	>=x11-proto/xcb-proto-1.7.1[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=x11-proto/xcb-proto-1.7.1[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-python.patch
