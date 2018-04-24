@@ -6,7 +6,7 @@ EAPI=6
 MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="fish is the Friendly Interactive SHell"
+DESCRIPTION="Friendly Interactive SHell"
 HOMEPAGE="http://fishshell.com/"
 SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/${MY_P}.tar.gz"
 
