@@ -8,5 +8,5 @@ VIM_SPELL_LANGUAGE="Czech"
 inherit vim-spell
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-KEYWORDS="amd64 ~sparc ~x86"
+KEYWORDS="amd64 sparc ~x86"
 LICENSE="GPL-2"
