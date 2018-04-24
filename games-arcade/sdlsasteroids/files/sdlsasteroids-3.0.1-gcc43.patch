@@ -1,5 +1,5 @@
---- src/sbitmap.h
-+++ src/sbitmap.h
+--- a/src/sbitmap.h
++++ b/src/sbitmap.h
 @@ -36,7 +36,7 @@
    void LoadImage(char* path);
    void LoadSurface(SDL_Surface* surface);
