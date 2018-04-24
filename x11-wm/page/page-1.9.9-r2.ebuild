@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-libs/glib-2.50.3-r1:2"
 
 DEPEND="${RDEPEND}
-	>=x11-proto/xcb-proto-1.12-r2
+	>=x11-base/xcb-proto-1.12-r2
 	x11-base/xorg-proto"
 
 src_install() {

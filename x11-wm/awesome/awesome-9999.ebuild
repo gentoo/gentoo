@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 	dev-util/gperf
 	virtual/pkgconfig
 	media-gfx/imagemagick[png]
-	>=x11-proto/xcb-proto-1.5
+	>=x11-base/xcb-proto-1.5
 	>=x11-proto/xproto-7.0.15
 	doc? ( dev-lua/ldoc )
 	test? (
