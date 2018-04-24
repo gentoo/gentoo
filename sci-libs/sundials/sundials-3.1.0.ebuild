@@ -45,7 +45,6 @@ src_configure() {
 		-DF90_ENABLE="$(usex fortran)"
 		-DHYPRE_ENABLE="$(usex hypre)"
 		-DHYPRE_INCLUDE_DIR="${EPREFIX}/usr/include/hypre"
-		-DHYPRE_LIBRARY="HYPRE"
 		-DKLU_ENABLE="$(usex sparse)"
 		-DKLU_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libklu.so"
 		-DLAPACK_ENABLE="$(usex lapack)"
