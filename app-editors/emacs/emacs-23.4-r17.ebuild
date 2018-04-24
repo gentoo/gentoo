@@ -76,7 +76,10 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	alsa? ( virtual/pkgconfig )
 	dbus? ( virtual/pkgconfig )
-	X? ( virtual/pkgconfig )
+	X? (
+		virtual/pkgconfig
+		x11-base/xorg-proto
+	)
 	gzip-el? ( app-arch/gzip )"
 #	pax_kernel? ( sys-apps/attr )
 
