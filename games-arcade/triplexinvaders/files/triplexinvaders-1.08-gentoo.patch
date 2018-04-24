@@ -1,5 +1,5 @@
---- sound.py.old	2007-04-14 21:52:02.000000000 +0200
-+++ sound.py	2007-04-14 21:52:27.000000000 +0200
+--- a/sound.py.old	2007-04-14 21:52:02.000000000 +0200
++++ b/sound.py	2007-04-14 21:52:27.000000000 +0200
 @@ -16,7 +16,7 @@
  
  
@@ -18,8 +18,8 @@
        sound.set_volume(volume)
        LoadedSounds[name] = sound
     return LoadedSounds[name]
---- util.py.old	2007-04-14 21:56:30.000000000 +0200
-+++ util.py	2007-04-14 21:56:48.000000000 +0200
+--- a/util.py.old	2007-04-14 21:56:30.000000000 +0200
++++ b/util.py	2007-04-14 21:56:48.000000000 +0200
 @@ -30,7 +30,7 @@
  LoadedTextures = weakref.WeakValueDictionary()
  
@@ -38,8 +38,8 @@
        LoadedModels[name] = model
     return LoadedModels[name]
  
---- hiscore.py.old	2007-04-14 22:04:04.000000000 +0200
-+++ hiscore.py	2007-04-14 22:04:25.000000000 +0200
+--- a/hiscore.py.old	2007-04-14 22:04:04.000000000 +0200
++++ b/hiscore.py	2007-04-14 22:04:25.000000000 +0200
 @@ -5,7 +5,7 @@
  # copy the highscores to the user's homedir
  highscorefile = os.path.join(configdir, 'hiscores')
@@ -49,8 +49,8 @@
      shutil.copy(oldpath, highscorefile)
  
  def write(score, name):
---- options.py.old	2007-04-14 22:05:23.000000000 +0200
-+++ options.py	2007-04-14 22:05:42.000000000 +0200
+--- a/options.py.old	2007-04-14 22:05:23.000000000 +0200
++++ b/options.py	2007-04-14 22:05:42.000000000 +0200
 @@ -5,7 +5,7 @@
  # copy the options to the user's homedir
  optionfile = os.path.join(configdir, 'options.conf')

@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games
+EAPI=6
+inherit desktop
 
 MY_P="${PN}_${PV}_src"
 
@@ -15,26 +15,29 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="media-libs/libsdl[sound,video,joystick]
+RDEPEND="
+	media-libs/libsdl[sound,video,joystick]
 	media-libs/sdl-gfx
 	media-libs/sdl-image[png]
 	media-libs/sdl-ttf
-	media-libs/sdl-mixer[vorbis]"
-
+	media-libs/sdl-mixer[vorbis]
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 src_compile() {
-	emake GAMEDATA="${GAMES_DATADIR}/${PN}"
+	emake GAMEDATA="/usr/share/${PN}"
 }
 
 src_install() {
-	dogamesbin ${PN}
+	dobin ${PN}
 
-	insinto "${GAMES_DATADIR}/${PN}"
+	insinto "/usr/share/${PN}"
 	doins -r BGM SE res
-	dodoc README.txt
-	prepgamesdirs
+	einstalldocs
+
+	make_desktop_entry ${PN}
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Asteroids Clone for X using SDL"
 HOMEPAGE="http://david.hedbor.org/projects/sdlroids/"
@@ -14,20 +14,21 @@ KEYWORDS="~alpha ~amd64 ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="media-libs/libsdl
-	media-libs/sdl-mixer"
+	media-libs/sdl-mixer
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i \
 		-e 's/$(SOUNDSDIR)/$(DESTDIR)$(SOUNDSDIR)/' \
 		-e 's/$(GFXDIR)/$(DESTDIR)$(GFXDIR)/' Makefile.in \
 		|| die "sed failed"
-	epatch "${FILESDIR}"/${PV}-sound.patch
+	eapply "${FILESDIR}"/${PV}-sound.patch
 }
 
 src_install() {
 	default
 	newicon icons/sdlroids-48x48.xpm ${PN}.xpm
 	make_desktop_entry ${PN} SDLRoids ${PN}
-	prepgamesdirs
 }

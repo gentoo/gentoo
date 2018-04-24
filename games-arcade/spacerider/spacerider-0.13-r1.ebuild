@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
-DESCRIPTION="space-shooter written in C++, using the SDL"
+DESCRIPTION="Space-shooter written in C++, using the SDL"
 HOMEPAGE="http://www.hackl.dhs.org/spacerider/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2" # stupid php script
 
@@ -19,24 +19,26 @@ DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image[jpeg]
 	media-libs/sdl-net
 	media-libs/sdl-ttf"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}"-gentoo.patch \
+	default
+	eapply "${FILESDIR}/${P}"-gentoo.patch \
 		"${FILESDIR}/${P}"-gcc41.patch \
 		"${FILESDIR}"/${P}-ovflfix.patch \
 		"${FILESDIR}"/${P}-gcc49.patch \
 		"${FILESDIR}"/${P}-font.patch
 	sed -i \
-		-e "s:/usr/share/games/spacerider:${GAMES_DATADIR}/${PN}:" \
+		-e "s:/usr/share/games/spacerider:/usr/share/${PN}:" \
 		globals.cpp || die
 }
 
 src_install() {
-	dogamesbin ${PN}
-	insinto "${GAMES_DATADIR}/${PN}"
+	dobin ${PN}
+	insinto "/usr/share/${PN}"
 	doins -r data
-	dodoc AUTHORS
+	einstalldocs
 	newman ${PN}.{1,6}
-	prepgamesdirs
+	newicon data/sprites/star_monster1/1.bmp ${PN}.bmp
+	make_desktop_entry ${PN} Spacerider /usr/share/pixmaps/${PN}.bmp
 }

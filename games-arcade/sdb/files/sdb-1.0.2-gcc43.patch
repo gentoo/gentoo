@@ -1,5 +1,5 @@
---- src/sdb.h
-+++ src/sdb.h
+--- a/src/sdb.h
++++ b/src/sdb.h
 @@ -35,6 +35,7 @@
  #include <vector>
  #include <fstream>

@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit eutils
 
-DESCRIPTION="action/arcade recreation of SolarFox"
+DESCRIPTION="Action/arcade recreation of SolarFox"
 HOMEPAGE="http://www.pygame.org/shredwheat/solarwolf/"
 SRC_URI="http://www.pygame.org/shredwheat/solarwolf/${P}.tar.gz"
 
@@ -13,20 +13,24 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~x86"
 IUSE=""
 
-RDEPEND=">=dev-python/pygame-1.5.6
-	media-libs/sdl-mixer[mod,vorbis]"
+RDEPEND="
+	>=dev-python/pygame-1.5.6
+	media-libs/sdl-mixer[mod,vorbis]
+"
+DEPEND=""
 
 src_prepare() {
+	default
 	find . -name .xvpics -print0 | xargs -0 rm -fr
+	gunzip dist/${PN}.6.gz || die #619948
 }
 
 src_install() {
-	insinto "$(games_get_libdir)"/${PN}
+	insinto /usr/share/${PN}
 	doins -r code data *py
-	games_make_wrapper ${PN} "python2 ./solarwolf.py" "$(games_get_libdir)"/${PN}
+	make_wrapper ${PN} "python2 ./solarwolf.py" /usr/share/${PN}
 	doicon dist/${PN}.png
 	make_desktop_entry ${PN} SolarWolf
-	dodoc readme.txt
-	doman dist/${PN}.6.gz
-	prepgamesdirs
+	einstalldocs
+	doman dist/${PN}.6
 }

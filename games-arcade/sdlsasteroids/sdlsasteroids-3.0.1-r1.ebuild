@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Rework of Sasteroids using SDL"
 HOMEPAGE="http://sdlsas.sourceforge.net/"
@@ -19,10 +19,12 @@ DEPEND="virtual/opengl
 	media-libs/sdl-image[png]
 	media-libs/sdl-ttf"
 RDEPEND="${DEPEND}"
-S=${WORKDIR}/SDLSasteroids-${PV}
+
+S="${WORKDIR}/SDLSasteroids-${PV}"
 
 src_prepare() {
-	epatch \
+	default
+	eapply \
 		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-ldflags.patch
 	sed -i \
@@ -39,17 +41,18 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		GAMEDIR="${GAMES_DATADIR}/${PN}" \
+		GAMEDIR="/usr/share/${PN}" \
 		OPTS="${CXXFLAGS}"
 }
 
 src_install() {
 	dodir /usr/share/man/man6/
 	emake \
-		GAMEDIR="${D}/${GAMES_DATADIR}/${PN}" \
-		BINDIR="${D}/${GAMES_BINDIR}" \
+		GAMEDIR="${D}/usr/share/${PN}" \
+		BINDIR="${D}/usr/bin" \
 		MANDIR="${D}/usr/share/man/" \
 		install
 	dodoc ChangeLog README README.xast TODO description
-	prepgamesdirs
+	newicon graphics/sprite/bigast.png ${PN}.png
+	make_desktop_entry sasteroids "Sasteroids" ${PN}
 }
