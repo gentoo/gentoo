@@ -5,15 +5,17 @@ EAPI=6
 
 inherit cmake-utils gnome2-utils pax-utils systemd user
 
-EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
-[[ "${PV}" == "9999" ]] && inherit git-r3
+if [[ ${PV} != *9999* ]]; then
+	SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~sparc-solaris"
+else
+	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
+	inherit git-r3
+fi
 
 DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
 HOMEPAGE="http://quassel-irc.org/"
-[[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
-
 LICENSE="GPL-3"
-KEYWORDS=""
 SLOT="0"
 IUSE="+breeze crypt +dbus debug kde ldap monolithic oxygen postgres +server
 snorenotify +ssl syslog urlpreview X"
