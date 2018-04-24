@@ -11,11 +11,11 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	GIT_ECLASS="git-r3"
 else
-	COMMIT=804168edc74d7230a84e8937e2ea9a3b1ad2e9c2
+	COMMIT=bd096dcbc3cfa8965ee96245b95c4027278b42a6
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils ${GIT_ECLASS} vcs-snapshot
+inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils ${GIT_ECLASS}
 unset GIT_ECLASS
 
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
@@ -97,6 +97,8 @@ DEPEND="${COMMON_DEPEND}
 		gnome-base/gsettings-desktop-schemas
 	)
 "
+
+S="${WORKDIR}/${PN^}-${COMMIT}"
 
 DOCS=( Changelog README.md )
 
