@@ -34,6 +34,7 @@ export KDE_BUILD_TYPE
 
 case ${CATEGORY} in
 	kde-frameworks)
+		[[ ${PV} = 5.45* ]] && : ${QT_MINIMAL:=5.9.4}
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
