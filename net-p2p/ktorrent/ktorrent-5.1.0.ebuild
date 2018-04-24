@@ -78,7 +78,10 @@ RDEPEND="${COMMON_DEPEND}
 	!net-p2p/ktorrent:4
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-cmake-3.11.patch" #650808
+)
 
 src_configure() {
 	local mycmakeargs=(
