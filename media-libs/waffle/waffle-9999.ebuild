@@ -33,7 +33,7 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	>=x11-proto/xcb-proto-1.8-r3[${MULTILIB_USEDEP}]
+	>=x11-base/xcb-proto-1.8-r3[${MULTILIB_USEDEP}]
 	doc? (
 		dev-libs/libxslt
 		app-text/docbook-xml-dtd:4.2

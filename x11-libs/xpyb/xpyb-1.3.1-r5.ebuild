@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND=">=x11-libs/libxcb-1.7
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	>=x11-proto/xcb-proto-1.7.1[${PYTHON_USEDEP}]"
+	>=x11-base/xcb-proto-1.7.1[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-python.patch
