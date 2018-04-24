@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201804-22">
+  <title>Chromium, Google Chrome: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">chromium,chrome</product>
+  <announced>2018-04-24</announced>
+  <revised count="1">2018-04-24</revised>
+  <bug>653696</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">66.0.3359.117</unaffected>
+      <vulnerable range="lt">66.0.3359.117</vulnerable>
+    </package>
+    <package name="www-client/google-chrome" auto="yes" arch="*">
+      <unaffected range="ge">66.0.3359.117</unaffected>
+      <vulnerable range="lt">66.0.3359.117</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+    
+    <p>Google Chrome is one fast, simple, and secure browser for all your
+      devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the referenced CVE identifiers and Google Chrome
+      Releases for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, bypass
+      content security controls, or conduct URL spoofing.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-66.0.3359.117"
+    </code>
+    
+    <p>All Google Chrome users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/google-chrome-66.0.3359.117"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6085">CVE-2018-6085</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6086">CVE-2018-6086</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6087">CVE-2018-6087</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6088">CVE-2018-6088</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6089">CVE-2018-6089</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6090">CVE-2018-6090</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6091">CVE-2018-6091</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6092">CVE-2018-6092</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6093">CVE-2018-6093</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6094">CVE-2018-6094</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6095">CVE-2018-6095</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6096">CVE-2018-6096</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6097">CVE-2018-6097</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6098">CVE-2018-6098</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6099">CVE-2018-6099</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6100">CVE-2018-6100</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6101">CVE-2018-6101</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6102">CVE-2018-6102</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6103">CVE-2018-6103</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6104">CVE-2018-6104</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6105">CVE-2018-6105</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6106">CVE-2018-6106</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6107">CVE-2018-6107</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6108">CVE-2018-6108</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6109">CVE-2018-6109</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6110">CVE-2018-6110</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6111">CVE-2018-6111</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6112">CVE-2018-6112</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6113">CVE-2018-6113</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6114">CVE-2018-6114</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6115">CVE-2018-6115</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6116">CVE-2018-6116</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6117">CVE-2018-6117</uri>
+    <uri link="https://chromereleases.googleblog.com/2018/04/stable-channel-update-for-desktop.html">
+      Google Chrome Release 20180417
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-23T16:38:49Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-04-24T00:27:21Z">b-man</metadata>
+</glsa>
