@@ -20,12 +20,12 @@ RDEPEND="
 	dev-perl/XML-Descent
 	dev-perl/XML-Simple
 	>=virtual/perl-XSLoader-0.20.0
-	x11-proto/xcb-proto
 	>=x11-libs/libxcb-1.2
 	x11-libs/xcb-util
 	x11-libs/xcb-util-wm
 "
 DEPEND="${RDEPEND}
+	x11-proto/xcb-proto
 	>=virtual/perl-Devel-PPPort-3.190.0
 	dev-perl/ExtUtils-Depends
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
