@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_any_dep '
 			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
 			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )')
 		introspection? ( >=dev-libs/gjs-1.32 )
 	)
@@ -47,9 +48,10 @@ DEPEND="${RDEPEND}
 
 python_check_deps() {
 	if use introspection; then
-		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
+		has_version --host-root "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
 	fi
-	has_version "dev-python/mock[${PYTHON_USEDEP}]"
+	has_version --host-root "dev-python/mock[${PYTHON_USEDEP}]" &&
+	has_version --host-root "dev-python/dbus-python[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
