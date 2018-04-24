@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=lapack? ( virtual/lapack ) mpi? ( virtual/mpi sci-libs/hypre:= ) sparse? ( sci-libs/klu:= ) superlumt? ( sci-libs/superlu_mt:= ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6 fortran? ( virtual/fortran )
+DESCRIPTION=Suite of nonlinear solvers
+EAPI=6
+HOMEPAGE=http://computation.llnl.gov/projects/sundials
+IUSE=cxx doc examples fortran hypre lapack mpi openmp sparse static-libs superlumt threads
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=lapack? ( virtual/lapack ) mpi? ( virtual/mpi sci-libs/hypre:= ) sparse? ( sci-libs/klu:= ) superlumt? ( sci-libs/superlu_mt:= ) fortran? ( virtual/fortran )
+REQUIRED_USE=hypre? ( mpi )
+SLOT=0/3
+SRC_URI=http://computation.llnl.gov/projects/sundials/download/sundials-3.1.0.tar.gz
+_eclasses_=cmake-utils	d2f8cff68b90b869ef9d460c6f3c4e2e	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b94d058cb539f834cf593c9ab4d36f2d
