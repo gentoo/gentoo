@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md"
@@ -20,10 +20,10 @@ KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~
 IUSE=""
 
 ruby_add_rdepend "
-	>=dev-ruby/net-ssh-2.0.14
+	>=dev-ruby/net-ssh-2.0.14:*
 	>=dev-ruby/net-sftp-2.0.2
 	>=dev-ruby/net-scp-1.0.2
-	>=dev-ruby/net-ssh-gateway-1.1.0
+	>=dev-ruby/net-ssh-gateway-1.1.0:*
 	>=dev-ruby/highline-1.2.7"
 ruby_add_bdepend "
 	test? (	dev-ruby/mocha:0.14 )"
