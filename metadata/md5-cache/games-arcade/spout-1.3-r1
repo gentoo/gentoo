@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=>=media-libs/libsdl-1.2.6
+DESCRIPTION=Abstract Japanese caveflier / shooter
+EAPI=6
+HOMEPAGE=http://freshmeat.net/projects/spout/
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=>=media-libs/libsdl-1.2.6
+SLOT=0
+SRC_URI=http://rohanpm.net/files/old/spout-unix-1.3.tar.bz2
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
+_md5_=0df36a69309862cf448bb6228ba45327

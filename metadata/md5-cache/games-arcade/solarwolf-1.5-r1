@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Action/arcade recreation of SolarFox
+EAPI=6
+HOMEPAGE=http://www.pygame.org/shredwheat/solarwolf/
+KEYWORDS=~alpha ~amd64 ~hppa ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-python/pygame-1.5.6 media-libs/sdl-mixer[mod,vorbis]
+SLOT=0
+SRC_URI=http://www.pygame.org/shredwheat/solarwolf/solarwolf-1.5.tar.gz
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1b4367dae10b41f8322c256d25ebfe97
