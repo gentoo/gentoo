@@ -13,7 +13,9 @@ SRC_URI="http://acm.jhu.edu/~arthur/invaders/${P}.zip"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/pygame[${PYTHON_USEDEP}]
