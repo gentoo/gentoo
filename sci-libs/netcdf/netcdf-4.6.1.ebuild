@@ -30,8 +30,6 @@ src_configure() {
 	local myconf
 	if use mpi; then
 		export CC=mpicc
-		myconf="--enable-parallel"
-		use test && myconf+=" --enable-parallel-tests"
 	fi
 	econf "${myconf}" \
 		--disable-examples \
