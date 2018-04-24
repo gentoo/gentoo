@@ -23,7 +23,8 @@ RDEPEND="
 	png? ( >=media-libs/libpng-1.2:0= )"
 
 DEPEND="${RDEPEND}
-	>=app-text/texi2html-5"
+	>=app-text/texi2html-5
+	X? ( x11-base/xorg-proto )"
 
 S="${WORKDIR}/${PN}"
 
