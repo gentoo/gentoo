@@ -25,7 +25,7 @@ RDEPEND="
 	x11-libs/xcb-util-wm
 "
 DEPEND="${RDEPEND}
-	x11-proto/xcb-proto
+	x11-base/xcb-proto
 	>=virtual/perl-Devel-PPPort-3.190.0
 	dev-perl/ExtUtils-Depends
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
