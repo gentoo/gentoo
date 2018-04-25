@@ -14,7 +14,7 @@ IUSE="${JAVA_PKG_IUSE}"
 
 LICENSE="Apache-2.0"
 SLOT="3.0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="
 	dev-java/bsf:2.3
