@@ -5,9 +5,6 @@
     <email>sound@gentoo.org</email>
     <name>Gentoo Sound project</name>
   </maintainer>
-  <use>
-    <flag name="cli">Build commandline client</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">qtscrob</remote-id>
   </upstream>
