@@ -98,6 +98,8 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 
+RESTRICT="test"
+
 S="${WORKDIR}/${PN^}-${COMMIT}"
 
 DOCS=( Changelog README.md )
