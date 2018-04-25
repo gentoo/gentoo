@@ -24,7 +24,7 @@ REQUIRED_USE="
 	replaygain? ( taglib )
 "
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -53,7 +53,10 @@ RDEPEND="
 		udisks? ( sys-fs/udisks:2 )
 	)
 "
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}
+	dev-lang/perl[ithreads]
+"
+DEPEND="${COMMON_DEPEND}
 	dev-qt/qtconcurrent:5
 	dev-qt/linguist-tools:5
 "
