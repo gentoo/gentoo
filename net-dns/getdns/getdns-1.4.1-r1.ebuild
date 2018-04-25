@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit user fcaps
+inherit user fcaps systemd
 
 DESCRIPTION="Modern asynchronous DNS API"
 HOMEPAGE="https://getdnsapi.net/"
@@ -52,6 +52,8 @@ src_install() {
 	if use stubby; then
 		newinitd "${FILESDIR}"/stubby.initd stubby
 		newconfd "${FILESDIR}"/stubby.confd stubby
+		systemd_newunit "${FILESDIR}"/stubby.systemd stubby.service
+		systemd_newtmpfilesd "${FILESDIR}"/stubby.tmpfilesd stubby.conf
 	fi
 }
 
