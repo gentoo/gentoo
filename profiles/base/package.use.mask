@@ -7,13 +7,16 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
+# Qt4 is dead and going away.
+kde-plasma/plasma-desktop qt4
+kde-plasma/plasma-meta qt4
+kde-plasma/breeze qt4
+kde-plasma/oxygen qt4
+
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl
-
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on obsolete dev-libs/sni-qt and dead Qt4.
-kde-plasma/plasma-desktop qt4
 
 # Mike Gilbert <floppym@gentoo.org> (01 May 2018)
 # Requires >=media-video/ffmpeg-4 (bug 654208).
