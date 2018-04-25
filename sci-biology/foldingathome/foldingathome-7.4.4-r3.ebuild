@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,11 +75,11 @@ Documentation=https://folding.stanford.edu/home/the-software/
 [Service]
 Type=simple
 User=foldingathome
-WorkingDirectory="${EPREFIX}/opt/foldingathome"
+WorkingDirectory=${EPREFIX}/opt/foldingathome
 PIDFile=/run/fahclient.pid
-ExecStart=./FAHClient -v start
-ExecReload=./FAHClient -v restart
-ExecStop=./FAHClient -v stop
+ExecStart=${EPREFIX}/opt/foldingathome/FAHClient -v start
+ExecReload=${EPREFIX}/opt/foldingathome/FAHClient -v restart
+ExecStop=${EPREFIX}/opt/foldingathome/FAHClient -v stop
 KillMode=process
 
 [Install]
