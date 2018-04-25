@@ -21,7 +21,7 @@ SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -
 	!system-ffmpeg? ( https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz -> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz )"
 
 DESCRIPTION="Kodi is a free and open source media-player and entertainment hub"
-HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
+HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
