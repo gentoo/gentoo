@@ -14,7 +14,7 @@ inherit toolchain-funcs multilib-minimal
 LIBVPX_TESTDATA_VER=1.7.0
 
 DESCRIPTION="WebM VP8 and VP9 Codec SDK"
-HOMEPAGE="http://www.webmproject.org"
+HOMEPAGE="https://www.webmproject.org"
 SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( mirror://gentoo/${PN}-testdata-${LIBVPX_TESTDATA_VER}.tar.xz )"
 
