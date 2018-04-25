@@ -8529,7 +8529,7 @@ net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.24.2: An IRC client for Gnome
-net-irc/quassel 0.12.4 0.12.5: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
+net-irc/quassel 0.12.5: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.1 2.2 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
