@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils
@@ -16,7 +16,7 @@ KEYWORDS="x86 ppc"
 RDEPEND="x11-libs/libX11
 	xft? ( x11-libs/libXft )"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_unpack() {
 	unpack ${A}
