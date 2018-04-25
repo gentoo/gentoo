@@ -1,0 +1,36 @@
+From 2c0569c71d33fb84af35887d012c039c0d8d0add Mon Sep 17 00:00:00 2001
+From: Tom Stellard <tstellar@redhat.com>
+Date: Sat, 7 Apr 2018 03:59:05 +0000
+Subject: [PATCH] Merging r326843:
+
+------------------------------------------------------------------------
+r326843 | eugenezelenko | 2018-03-06 15:06:13 -0800 (Tue, 06 Mar 2018) | 6 lines
+
+[Transforms] Add missing header for InstructionCombining.cpp, in order to export LLVMInitializeInstCombine as extern "C". Fixes PR35947.
+
+Patch by Brenton Bostick.
+
+Differential revision: https://reviews.llvm.org/D44140
+
+------------------------------------------------------------------------
+
+git-svn-id: https://llvm.org/svn/llvm-project/llvm/branches/release_60@329480 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ lib/Transforms/InstCombine/InstructionCombining.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/Transforms/InstCombine/InstructionCombining.cpp b/lib/Transforms/InstCombine/InstructionCombining.cpp
+index b332e75c7fe..35ed592ac07 100644
+--- a/lib/Transforms/InstCombine/InstructionCombining.cpp
++++ b/lib/Transforms/InstCombine/InstructionCombining.cpp
+@@ -34,6 +34,7 @@
+ //===----------------------------------------------------------------------===//
+ 
+ #include "InstCombineInternal.h"
++#include "llvm-c/Initialization.h"
+ #include "llvm/ADT/APInt.h"
+ #include "llvm/ADT/ArrayRef.h"
+ #include "llvm/ADT/DenseMap.h"
+-- 
+2.17.0
+
