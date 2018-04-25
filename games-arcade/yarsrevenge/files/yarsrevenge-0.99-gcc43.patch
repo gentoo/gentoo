@@ -1,5 +1,5 @@
---- yar/sgw.hxx
-+++ yar/sgw.hxx
+--- a/yar/sgw.hxx
++++ b/yar/sgw.hxx
 @@ -24,6 +24,7 @@
  
  #include <iostream>
