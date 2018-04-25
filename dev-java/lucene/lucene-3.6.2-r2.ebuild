@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/lucene/java/${PV}/${P}-src.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="3.6"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="
 	dev-java/ant-ivy:2
