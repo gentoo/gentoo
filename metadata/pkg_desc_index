@@ -545,7 +545,7 @@ app-editors/emacs 18.59-r11 23.4-r17 24.5-r5 25.3-r1 25.3-r4: The extensible, cu
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.6.7: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.6.7 1.6.10: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3: Lightweight text-mode editor
 app-editors/gedit 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
@@ -5683,7 +5683,7 @@ dev-qt/qtgui 4.8.7 5.7.1-r1 5.9.4-r3: The GUI module and platform plugins for th
 dev-qt/qthelp 4.8.7 5.7.1 5.9.4: Qt5 module for integrating online documentation into applications
 dev-qt/qtimageformats 5.7.1 5.9.4: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.7.1 5.9.4: The Location module for the Qt5 framework
-dev-qt/qtlockedfile 2.4.1_p20150629: QFile extension with advisory locking functions
+dev-qt/qtlockedfile 2.4.1_p20150629 2.4.1_p20171024: QFile extension with advisory locking functions
 dev-qt/qtmultimedia 4.8.7 5.7.1 5.9.4-r1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.7.1 5.9.4: Network abstraction library for the Qt5 framework
 dev-qt/qtopengl 4.8.7 5.7.1 5.9.4: OpenGL support library for the Qt5 framework (deprecated)
@@ -5696,7 +5696,7 @@ dev-qt/qtscript 4.8.7 5.7.1 5.9.4: Application scripting library for the Qt5 fra
 dev-qt/qtscxml 5.7.1 5.9.4: State Chart XML (SCXML) support library for the Qt5 framework
 dev-qt/qtsensors 5.7.1 5.9.4: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.7.1 5.9.4: Serial port abstraction library for the Qt5 framework
-dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
+dev-qt/qtsingleapplication 2.6.1_p20150629 2.6.1_p20171024: Qt library to start applications only once per user
 dev-qt/qtspeech 5.9.4: Text-to-speech library for the Qt5 framework
 dev-qt/qtsql 4.8.7-r1 5.7.1-r1 5.9.4-r1: SQL abstraction library for the Qt5 framework
 dev-qt/qtsvg 4.8.7 5.7.1 5.9.4-r2: SVG rendering library for the Qt5 framework
@@ -8199,7 +8199,7 @@ media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
-media-video/smplayer 17.11.2: Great Qt GUI front-end for mplayer/mpv
+media-video/smplayer 17.11.2 18.3.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 17.5.0-r1: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
@@ -8968,7 +8968,7 @@ net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ 
 net-nds/yp-tools 4.2.2-r1 4.2.2-r2: Network Information Service tools
 net-news/liferea 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.10.2: An RSS/Atom feed reader for text terminals
-net-news/quiterss 0.18.8: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.18.8 0.18.9-r1: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19: Rawdog - RSS Aggregator Without Delusions Of Grandeur
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
