@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 inherit multilib toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20170804"
+MY_RELEASEDATE="20180419"
 
 DESCRIPTION="SELinux binary policy representation library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -37,12 +37,15 @@ src_prepare() {
 }
 
 multilib_src_compile() {
-	tc-export RANLIB;
-	LIBDIR="\$(PREFIX)/$(get_libdir)" SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
-		emake AR="$(tc-getAR)" CC="$(tc-getCC)"
+	tc-export CC AR RANLIB
+	emake \
+		LIBDIR="\$(PREFIX)/$(get_libdir)" \
+		SHLIBDIR="/$(get_libdir)"
 }
 
 multilib_src_install() {
-	LIBDIR="\$(PREFIX)/$(get_libdir)" SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
-		emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" \
+		LIBDIR="\$(PREFIX)/$(get_libdir)" \
+		SHLIBDIR="/$(get_libdir)" \
+		install
 }
