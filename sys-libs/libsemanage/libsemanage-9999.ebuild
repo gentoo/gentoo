@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20170804"
+MY_RELEASEDATE="20180419"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
@@ -48,6 +48,9 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_prepare() {
+	eapply_user
+
+	echo >> "${S}/src/semanage.conf"
 	echo "# Set this to true to save the linked policy." >> "${S}/src/semanage.conf"
 	echo "# This is normally only useful for analysis" >> "${S}/src/semanage.conf"
 	echo "# or debugging of policy." >> "${S}/src/semanage.conf"
@@ -70,8 +73,6 @@ src_prepare() {
 	echo "# Reduce memory usage for bzip2 compression and" >> "${S}/src/semanage.conf"
 	echo "# decompression of modules in the module store." >> "${S}/src/semanage.conf"
 	echo "bzip-small=true" >> "${S}/src/semanage.conf"
-
-	eapply_user
 
 	multilib_copy_sources
 }
@@ -98,16 +99,13 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake \
-		LIBDIR="${ED}/usr/$(get_libdir)" \
-		SHLIBDIR="${ED}/usr/$(get_libdir)" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		DESTDIR="${ED}" install
 
 	if multilib_is_native_abi && use python; then
 		installation_py() {
 			emake DESTDIR="${ED}" \
-				LIBDIR="${ED}/usr/$(get_libdir)" \
-				SHLIBDIR="${ED}/usr/$(get_libdir)" \
-				LIBSEPOLA="${EPREFIX%/}/usr/$(get_libdir)/libsepol.a" \
+				LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 				install-pywrap
 			python_optimize # bug 531638
 		}
@@ -131,7 +129,7 @@ pkg_postinst() {
 	for POLICY_TYPE in ${POLICY_TYPES} ; do
 		if [ ! -d "${EROOT}/var/lib/selinux/${POLICY_TYPE}/active" ] ; then
 			einfo "Migrating store ${POLICY_TYPE} (without policy rebuild)."
-			/usr/libexec/selinux/semanage_migrate_store -n -s "${POLICY_TYPE}" || die "Failed to migrate store ${POLICY_TYPE}"
+			"${EROOT}/usr/libexec/selinux/semanage_migrate_store" -n -s "${POLICY_TYPE}" || die "Failed to migrate store ${POLICY_TYPE}"
 		fi
 	done
 }
