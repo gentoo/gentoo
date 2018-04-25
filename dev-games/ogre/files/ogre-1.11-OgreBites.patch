@@ -1,0 +1,11 @@
+--- a/Components/Bites/CMakeLists.txt	2018-04-05 07:59:27.889463510 +0200
++++ b/Components/Bites/CMakeLists.txt	2018-04-05 07:59:53.125462527 +0200
+@@ -121,7 +121,7 @@
+   set(DEPENDENCIES ${DEPENDENCIES} "-framework Cocoa")
+ elseif(UNIX)
+   list(APPEND SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreGLXConfigDialog.cpp")
+-  list(APPEND DEPENDENCIES ${X11_Xt_LIB} ${XAW_LIBRARY})
++  list(APPEND DEPENDENCIES ${X11_X11_LIB} ${X11_Xt_LIB} ${XAW_LIBRARY})
+   install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/misc/GLX_backdrop.png" DESTINATION "share/OGRE/")
+ endif()
+ 

@@ -84,6 +84,7 @@ Exporters
     <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
     <flag name="gles2">build OpenGL ES 2.x RenderSystem</flag>
     <flag name="gles3">Enable OpenGL ES 3.x Features</flag>
+    <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
     <flag name="ois">pull in Object-oriented Input System library for samples</flag>
     <flag name="poco">when USE=threads, use poco for threading</flag>
     <flag name="tbb">when USE=threads, use tbb for threading</flag>
