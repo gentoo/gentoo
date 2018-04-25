@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-MY_PV="fff9217fb1acda132702730b66b10981ea9d4cac"
+EAPI=6
+MY_PV="26d5e12ea2a1eae180b11b061160d6f78fbedd17"
 MY_P="${PN}-${MY_PV}"
 
 PHP_LIB_NAME="Auth"
@@ -31,5 +31,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "This ebuild can optionally make use of:"
-	elog "    dev-php/PEAR-DB"
+	elog "    dev-php/PEAR-MDB2"
 }
