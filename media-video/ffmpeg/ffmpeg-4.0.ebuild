@@ -196,7 +196,6 @@ RDEPEND="
 	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
 	gmp? ( >=dev-libs/gmp-6:0=[${MULTILIB_USEDEP}] )
-	gnutls? ( !openssl? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
 	iconv? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
 	iec61883? (
@@ -215,7 +214,6 @@ RDEPEND="
 	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
 	libdrm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
 	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
 	libv4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
 	lv2? ( media-libs/lv2[${MULTILIB_USEDEP}] media-libs/lilv[${MULTILIB_USEDEP}] )
@@ -225,7 +223,6 @@ RDEPEND="
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
@@ -258,6 +255,19 @@ RDEPEND="
 	postproc? ( !media-libs/libpostproc )
 "
 
+# Crypto & co provider magic
+# - libressl is a useflag meaning it should always favor libressl over openssl
+# - libressl and openssl provide more features to ffmpeg than gnutls
+#
+# The ordering is thus: libressl > openssl > gnutls
+RDEPEND="${RDEPEND}
+	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+	!libressl? (
+		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+		!openssl? ( gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
+	)
+"
+
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
 	doc? ( sys-apps/texinfo )
@@ -288,7 +298,7 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
-	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
+	gpl? ( openssl? ( bindist ) fdk? ( bindist ) libressl? ( bindist ) )
 "
 
 S=${WORKDIR}/${P/_/-}
@@ -349,15 +359,9 @@ multilib_src_configure() {
 	done
 
 	# Incompatible features: openssl or libressl and gnutls
-	# openssl and libressl support provides a (strict) superset of gnutls support as of 2017.11.30
-	# So, we warn the user and disable gnutls
-	if use openssl && use gnutls; then
-		ewarn "openssl and gnutls are mutually exclusive in ${PN}, disabling gnutls since openssl provides more features"
-		myconf+=( --disable-gnutls )
-	fi
-
-	if use libressl && use gnutls; then
-		ewarn "libressl and gnutls are mutually excluse in ${PN}, disabling gnutls since libressl provides more features"
+	if use libressl ; then
+		myconf+=( --disable-gnutls --disable-openssl )
+	elif use openssl ; then
 		myconf+=( --disable-gnutls )
 	fi
 
