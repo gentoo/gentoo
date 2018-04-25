@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
 SLOT=0
 _eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782	selinux-policy-2	426dde83b8cbb78f4bf8e9edf7715355
-_md5_=1a1a929951bfec0c0773b2bbd3f9b2e3
+_md5_=a9b2631f1f6282c9998acbd77cd95616
