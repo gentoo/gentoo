@@ -52,6 +52,7 @@ src_prepare() {
 	if full_archive; then
 		eapply "${FILESDIR}/${PN}-3.23.0-full_archive-build.patch"
 		eapply "${FILESDIR}/${PN}-3.23.1-full_archive-prohibit_bound_parameters_in_arguments_to_table-valued_functions_within_triggers.patch"
+		eapply "${FILESDIR}/${PN}-3.23.1-full_archive-tests.patch"
 
 		eapply_user
 
