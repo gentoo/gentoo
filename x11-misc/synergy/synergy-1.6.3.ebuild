@@ -34,7 +34,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( >=dev-cpp/gmock-1.6.0 )
+	test? ( >=dev-cpp/gtest-1.8.0 )
 	x11-proto/kbproto
 	x11-proto/randrproto
 	x11-proto/xextproto
