@@ -2644,7 +2644,7 @@ dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jsap 2.1-r2: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729: Java implementation of the JavaScript Object Notation
-dev-java/json-simple 1.1: Simple Java toolkit for JSON
+dev-java/json-simple 1.1 1.1-r1: Simple Java toolkit for JSON
 dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface Classes
 dev-java/jsr173 1.0-r4: Yet another Java library for parsing and writing XML
