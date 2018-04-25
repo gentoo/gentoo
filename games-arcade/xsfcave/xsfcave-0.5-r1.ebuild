@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="A X11 sfcave clone"
 HOMEPAGE="http://xsfcave.idios.org"
@@ -19,5 +19,5 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	default
-	prepgamesdirs
+	make_desktop_entry "${PN}"
 }

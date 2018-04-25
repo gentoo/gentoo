@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
 DESCRIPTION="Clone of the Rick Dangerous adventure game from the 80's"
 HOMEPAGE="http://www.bigorno.net/xrick/"
@@ -24,14 +24,15 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}*.patch
+	default
+	eapply "${FILESDIR}"/${P}*.patch
 	sed -i \
 		-e "/^run from/d" \
-		-e "/data.zip/ s:the directory where xrick is:$(games_get_libdir)/${PN}.:" \
+		-e "/data.zip/ s:the directory where xrick is:$(get_libdir)/${PN}.:" \
 		xrick.6 || die
 
 	sed -i \
-		-e "s:data.zip:$(games_get_libdir)/${PN}/data.zip:" \
+		-e "s:data.zip:/usr/$(get_libdir)/${PN}/data.zip:" \
 		src/xrick.c || die
 
 	sed -i \
@@ -43,12 +44,11 @@ src_prepare() {
 }
 
 src_install() {
-	dogamesbin xrick
-	insinto "$(games_get_libdir)"/${PN}
+	dobin xrick
+	insinto /usr/"$(get_libdir)"/${PN}
 	doins data.zip
 	newicon src/xrickST.ico ${PN}.ico
 	make_desktop_entry ${PN} ${PN} /usr/share/pixmaps/${PN}.ico
 	dodoc README KeyCodes
 	doman xrick.6
-	prepgamesdirs
 }

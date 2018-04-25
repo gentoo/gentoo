@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs games
+EAPI=6
+inherit desktop epatch toolchain-funcs
 
 DESCRIPTION="Lode-Runner-like arcade game"
 HOMEPAGE="http://www.xdr.com/dash/scavenger.html"
@@ -15,15 +15,17 @@ IUSE=""
 
 RDEPEND="x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-misc/imake"
+	x11-misc/imake
+"
 
-S=${WORKDIR}/${P}/src
+S="${WORKDIR}/${P}/src"
 
 src_prepare() {
+	default
 	epatch "${FILESDIR}/${PV}-gentoo.patch"
 	sed -i \
-		-e "s:GENTOO_DATADIR:${GAMES_DATADIR}:" \
-		-e "s:GENTOO_BINDIR:${GAMES_BINDIR}:" \
+		-e "s:GENTOO_DATADIR:/usr/share:" \
+		-e "s:GENTOO_BINDIR:/usr/bin:" \
 		Imakefile \
 		|| die
 }
@@ -42,5 +44,5 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc ../{CREDITS,DOC,README,TODO,changelog}
-	prepgamesdirs
+	make_desktop_entry scavenger "XScavenger"
 }

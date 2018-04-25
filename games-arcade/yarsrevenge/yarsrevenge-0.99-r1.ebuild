@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
-DESCRIPTION="remake of the Atari 2600 classic Yar's Revenge"
+DESCRIPTION="Remake of the Atari 2600 classic Yar's Revenge"
 HOMEPAGE="http://freshmeat.net/projects/yarsrevenge/"
 SRC_URI="http://www.autismuk.freeserve.co.uk/yar-${PV}.tar.gz"
 
@@ -14,18 +14,17 @@ KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,joystick,video]"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/yar-${PV}
+S="${WORKDIR}/yar-${PV}"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PV}-math.patch \
-		"${FILESDIR}"/${P}-gcc43.patch \
-		"${FILESDIR}"/${P}-gcc44.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PV}-math.patch
+	"${FILESDIR}"/${P}-gcc43.patch
+	"${FILESDIR}"/${P}-gcc44.patch
+)
 
 src_install() {
 	default
-	prepgamesdirs
+	make_desktop_entry "${PN}" "Yar's Revenge"
 }
