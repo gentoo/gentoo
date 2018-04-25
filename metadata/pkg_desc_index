@@ -10164,7 +10164,7 @@ sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3: Compatibility package for old term
 sys-libs/libunwind 1.1-r1 1.2.1: Portable and efficient API to determine the call-chain of a program
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/llvm-libunwind 4.0.1 5.0.1: C++ runtime stack unwinder from LLVM
-sys-libs/lwp 2.2: Light weight process library (used by Coda). This is NOT libwww-perl
+sys-libs/lwp 2.2 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.18 1.1.19: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r101 6.1-r2: console display library
