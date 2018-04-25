@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit toolchain-funcs
 
-MY_RELEASEDATE="20170804"
+MY_RELEASEDATE="20180419"
 
 MY_P="${P//_/-}"
 IUSE=""
@@ -41,15 +41,12 @@ src_prepare() {
 }
 
 src_compile() {
-	emake \
-		CC="$(tc-getCC)" \
-		LIBDIR="\$(PREFIX)/$(get_libdir)"
+	tc-export CC
+	default
 }
 
 src_install() {
-	emake DESTDIR="${D}" \
-		LIBDIR="\$(PREFIX)/$(get_libdir)" \
-		install
+	emake DESTDIR="${D}" install
 
 	rm -rf "${D}/etc/rc.d" || die
 
