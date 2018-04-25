@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	COMMIT=bd096dcbc3cfa8965ee96245b95c4027278b42a6
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils ${GIT_ECLASS}
 unset GIT_ECLASS
