@@ -113,7 +113,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
 	cmake-utils_src_prepare
 
 	# lib64 fixes
