@@ -3266,8 +3266,6 @@ media-sound/split2flac:enca - Try to guess the charset using enca
 media-sound/split2flac:flake - Add support for Flake, alternative FLAC encoder
 media-sound/split2flac:mac - Add support for Monkey's Audio files
 media-sound/split2flac:replaygain - Support for Replay Gain metadata, for relative volume adjustment
-media-sound/spotify:pax_kernel - Triggers a paxmarking of the main Spotify binary
-media-sound/spotify:systray - Pulls in dependencies needed for systray support on some desktop environments
 media-sound/umurmur:shm - Enable shared memory support
 media-sound/vimpc:boost - Use boost instead of C++11 libraries
 media-sound/vorbis-tools:kate - Adds support for Ogg Kate subtitles via libkate.
