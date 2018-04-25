@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -76,7 +76,7 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
 
-DOCS=(ChangeLog doc/FAQ)
+DOCS=()
 
 pkg_setup() {
 	if use python; then
