@@ -22,8 +22,7 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	test? (
 		|| ( dev-lang/ruby:2.9 dev-lang/ruby:2.8 dev-lang/ruby:2.7 dev-lang/ruby:2.6 dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 )
-		>=dev-cpp/gmock-1.6
-		>=dev-cpp/gtest-1.6
+		>=dev-cpp/gtest-1.8.0
 		dev-util/cucumber
 		dev-util/aruba
 	)
