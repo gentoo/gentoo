@@ -25,6 +25,11 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/protobuf-${PV}/python"
 
+python_prepare_all() {
+	eapply -p2 "${FILESDIR}/${P}-google.protobuf.pyext._message.MessageMeta.patch"
+	distutils-r1_python_prepare_all
+}
+
 python_configure_all() {
 	mydistutilsargs=(--cpp_implementation)
 }
