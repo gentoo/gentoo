@@ -80,7 +80,8 @@ cmake_src_bootstrap() {
 
 	# execinfo.h on Solaris isn't quite what it is on Darwin
 	if [[ ${CHOST} == *-solaris* ]] ; then
-		sed -i -e 's/execinfo\.h/blablabla.h/' Source/kwsys/CMakeLists.txt || die
+		sed -i -e 's/execinfo\.h/blablabla.h/' \
+			Source/kwsys/CMakeLists.txt || die
 	fi
 
 	tc-export CC CXX LD
@@ -122,6 +123,12 @@ cmake_src_test() {
 
 src_prepare() {
 	cmake-utils_src_prepare
+
+	# disable Xcode hooks, bug #652134
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i -e 's/__APPLE__/__DISABLED_APPLE__/' \
+			Source/cmGlobalXCodeGenerator.cxx || die
+	fi
 
 	# Add gcc libs to the default link paths
 	sed -i \
