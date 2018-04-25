@@ -61,6 +61,8 @@ RDEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package fits CFitsio)
