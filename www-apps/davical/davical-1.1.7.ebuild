@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit webapp vcs-snapshot
+inherit webapp
 
 DESCRIPTION="A CalDAV and CardDAV Server"
-HOMEPAGE="http://davical.org/"
-SRC_URI="https://gitlab.com/${PN}-project/${PN}/repository/archive.tar.gz?ref=r${PV} -> ${PN}-${PV}.tar.gz"
+HOMEPAGE="https://davical.org/"
+SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -23,6 +23,8 @@ RDEPEND="app-admin/pwgen
 	virtual/httpd-php"
 
 need_httpd
+
+S="${WORKDIR}"
 
 src_compile() {
 	emake built-locale
