@@ -24,7 +24,7 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-58.0-patches-02"
+PATCH="${PN}-59.0-patches-01"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
@@ -33,7 +33,7 @@ inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6
 		pax-utils xdg-utils autotools mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
+HOMEPAGE="http://www.mozilla.com/firefox"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -42,17 +42,22 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist eme-free +gmp-autoupdate hardened hwaccel jack +screenshot selinux test"
 RESTRICT="!bindist? ( bindist )"
 
+SRCHASH=239e434d6d2b8e1e2b697c3416d1e96d48fe98e5
+SDIR="release"
+[[ ${PV} = *_beta* ]] && SDIR="beta"
+
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/${PATCH}.tar.xz )
 SRC_URI="${SRC_URI}
-	${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz
+	https://hg.mozilla.org/releases/mozilla-${SDIR}/archive/${SRCHASH}.tar.bz2 -> firefox-${MOZ_PV}.source.tar.bz2
 	${PATCH_URIS[@]}"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 RDEPEND="
+	system-icu? ( >=dev-libs/icu-60.2 )
 	jack? ( virtual/jack )
-	>=dev-libs/nss-3.34.1
-	>=dev-libs/nspr-4.17
+	>=dev-libs/nss-3.35
+	>=dev-libs/nspr-4.18
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
@@ -61,7 +66,7 @@ DEPEND="${RDEPEND}
 	amd64? ( ${ASM_DEPEND} virtual/opengl )
 	x86? ( ${ASM_DEPEND} virtual/opengl )"
 
-S="${WORKDIR}/firefox-${MOZ_PV}"
+S="${WORKDIR}"/mozilla-${SDIR}-${SRCHASH}
 
 QA_PRESTRIPPED="usr/lib*/${PN}/firefox"
 
@@ -186,7 +191,8 @@ src_configure() {
 	# enable JACK, bug 600002
 	mozconfig_use_enable jack
 
-	use eme-free && mozconfig_annotate '+eme-free' --disable-eme
+	# Enable/Disable eme support
+	mozconfig_use_enable eme-free eme
 
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
@@ -222,7 +228,7 @@ src_configure() {
 
 src_compile() {
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 \
-	./mach build -v || die
+	./mach build || die
 }
 
 src_install() {
@@ -232,7 +238,7 @@ src_install() {
 	pax-mark m "${BUILD_OBJ_DIR}"/dist/bin/xpcshell
 
 	# Add our default prefs for firefox
-	cp "${FILESDIR}"/gentoo-default-prefs.js-1 \
+	cp "${FILESDIR}"/gentoo-default-prefs.js-2 \
 		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
 		|| die
 
@@ -265,7 +271,7 @@ src_install() {
 
 	cd "${S}"
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 \
-	DESTDIR="${D}" ./mach install -v
+	DESTDIR="${D}" ./mach install
 
 	# Install language packs
 	mozlinguas_src_install
@@ -290,7 +296,7 @@ sticky_pref("devtools.theme", "dark");
 PROFILE_EOF
 
 	else
-		sizes="16 22 24 32 256"
+		sizes="16 22 24 32 48 64 128 256"
 		icon_path="${S}/browser/branding/official"
 		icon="${PN}"
 		name="Mozilla Firefox"
@@ -301,11 +307,8 @@ PROFILE_EOF
 		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
 		newins "${icon_path}/default${size}.png" "${icon}.png"
 	done
-	# The 128x128 icon has a different name
-	insinto "/usr/share/icons/hicolor/128x128/apps"
-	newins "${icon_path}/mozicon128.png" "${icon}.png"
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
-	newicon "${icon_path}/content/icon48.png" "${icon}.png"
+	newicon "${icon_path}/default48.png" "${icon}.png"
 	newmenu "${FILESDIR}/icon/${PN}.desktop" "${PN}.desktop"
 	sed -i -e "s:@NAME@:${name}:" -e "s:@ICON@:${icon}:" \
 		"${ED}/usr/share/applications/${PN}.desktop" || die
