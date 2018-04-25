@@ -3,8 +3,7 @@
 
 EAPI=6
 
-COMMIT=b84549b8803033b803f7d4dc14d5dcd7a5c344b7
-inherit cmake-utils vcs-snapshot
+inherit cmake-utils
 
 DESCRIPTION="Qt/C++ library wrapping the gpodder.net webservice"
 HOMEPAGE="http://wiki.gpodder.org/wiki/Libmygpo-qt"
@@ -13,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/gpodder/libmygpo-qt.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/gpodder/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gpodder/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~x86"
 fi
 
@@ -39,4 +38,13 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	# bug: 653312
+	local myctestargs=(
+		-E "(JsonCreatorTest-test)"
+	)
+
+	cmake-utils_src_test
 }
