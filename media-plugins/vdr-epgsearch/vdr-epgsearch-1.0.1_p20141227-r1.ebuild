@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit vdr-plugin-2
 
@@ -30,37 +30,38 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+conflictcheckonly +epgsearchonly l10n_de pcre +quicksearch tre"
+REQUIRED_USE="?? ( pcre tre )"
 
 DEPEND="media-video/vdr
 	pcre? ( dev-libs/libpcre )
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}"
 
-REQUIRED_USE="pcre? ( !tre )
-	tre? ( !pcre )"
-
 src_prepare() {
 	# make detection in vdr-plugin-2.eclass for new Makefile handling happy
-	echo "# SOFILE" >> Makefile
+	echo "# SOFILE" >> Makefile || die "cannot write to Makefile"
 
 	# remove untranslated .po files
-	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nn_NO,pl_PL,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po
+	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nn_NO,pl_PL,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po || die "cannot remove .po files"
 
-	epatch "${FILESDIR}/vdr-epgsearch-1.0.1_beta5_makefile.diff"
+	local PATCHES=(
+		"${FILESDIR}/vdr-epgsearch-1.0.1_beta5_makefile.diff"
+		"${FILESDIR}/fix-manpage-generation.diff"
+		)
 
-	use conflictcheckonly || sed -e "s:install-\$(PLUGIN3)::" -i Makefile
-	use epgsearchonly || sed -e "s:install-\$(PLUGIN2)::" -i Makefile
-	use quicksearch || sed -e "s:install-\$(PLUGIN4)::" -i Makefile
+	use conflictcheckonly || sed -e "s:install-\$(PLUGIN3)::" -i Makefile || die "cannot modify Makefile"
+	use epgsearchonly || sed -e "s:install-\$(PLUGIN2)::" -i Makefile || die "cannot modify Makefile"
+	use quicksearch || sed -e "s:install-\$(PLUGIN4)::" -i Makefile || die "cannot modify Makefile"
 
 	vdr-plugin-2_src_prepare
 
 	fix_vdr_libsi_include conflictcheck.c
 
 	# install conf-file disabled
-	sed -e '/^Menu/s:^:#:' -i conf/epgsearchmenu.conf
+	sed -e '/^Menu/s:^:#:' -i conf/epgsearchmenu.conf || die "cannot modify epgsearchmenu.conf"
 
-	# Get rid of the broken symlinks
-	rm -f README{,.DE} MANUAL
+	# Get rid of the broken symlink
+	rm README || die "cannot remove broken symlink"
 }
 
 src_compile() {
@@ -80,20 +81,18 @@ src_compile() {
 }
 
 src_install() {
+	DOCS=( conf/*.templ HISTORY* README.Translators )
 	vdr-plugin-2_src_install
 
-	diropts "-m755 -o vdr -g vdr"
+	diropts -m 755 -o vdr -g vdr
+	insopts -m 644 -o vdr -g vdr
 	keepdir /etc/vdr/plugins/epgsearch
 	insinto /etc/vdr/plugins/epgsearch
+	doins conf/*
 
-	doins conf/epgsearchmenu.conf
-	doins conf/epgsearchconflmail.templ conf/epgsearchupdmail.templ
-
-	nonfatal dodoc conf/*.templ HISTORY*
-
-	doman man/en/*.gz
+	doman man/en/*
 
 	if use l10n_de; then
-		doman -i18n=de man/de/*.gz
+		doman -i18n=de man/de/*
 	fi
 }
