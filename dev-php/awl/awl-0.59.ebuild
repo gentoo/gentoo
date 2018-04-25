@@ -3,11 +3,9 @@
 
 EAPI=6
 
-inherit vcs-snapshot
-
 DESCRIPTION="Andrew McMillan's Web Libraries"
 HOMEPAGE="https://gitlab.com/davical-project/awl"
-SRC_URI="${HOMEPAGE}/repository/archive.tar.gz?ref=r${PV} -> ${P}.tar.gz"
+SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,6 +14,8 @@ IUSE="test"
 
 DEPEND="test? ( dev-php/phpunit )"
 RDEPEND="dev-lang/php:*[pdo,postgres,xml]"
+
+S="${WORKDIR}"
 
 src_compile() {
 	:
@@ -26,7 +26,7 @@ src_test() {
 }
 
 src_install() {
-	dodoc debian/changelog
+	einstalldocs
 	insinto /usr/share/php/${PN}
 	doins -r dba inc
 }
