@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,8 @@ inherit toolchain-funcs multilib-minimal
 LIBVPX_TESTDATA_VER=1.6.1
 
 DESCRIPTION="WebM VP8 and VP9 Codec SDK"
-HOMEPAGE="http://www.webmproject.org"
-SRC_URI="http://storage.googleapis.com/downloads.webmproject.org/releases/webm/${P}.tar.bz2
+HOMEPAGE="https://www.webmproject.org"
+SRC_URI="https://storage.googleapis.com/downloads.webmproject.org/releases/webm/${P}.tar.bz2
 	test? ( mirror://gentoo/${PN}-testdata-${LIBVPX_TESTDATA_VER}.tar.bz2 )"
 
 LICENSE="BSD"
