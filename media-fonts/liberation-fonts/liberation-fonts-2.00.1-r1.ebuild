@@ -9,8 +9,8 @@ inherit font python-any-r1
 
 DESCRIPTION="A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat"
 HOMEPAGE="https://pagure.io/liberation-fonts"
-SRC_URI="!fontforge? ( https://releases.pagure.org/liberation-fonts/${PN}/${PN}-ttf-${PV}.tar.gz )
-fontforge? ( https://releases.pagure.org/liberation-fonts/${PN}/${P}.tar.gz )"
+SRC_URI="!fontforge? ( https://releases.pagure.org/${PN}/${PN}-ttf-${PV}.tar.gz )
+fontforge? ( https://releases.pagure.org/${PN}/${P}.tar.gz )"
 
 KEYWORDS="~alpha amd64 arm arm64 ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x64-solaris"
 SLOT="0"
