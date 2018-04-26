@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -53,12 +53,7 @@ RDEPEND="
 	!<dev-qt/qthelp-4.8.5:4
 "
 DEPEND="${RDEPEND}
-	!aqua? (
-		>=x11-proto/inputproto-2.2-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		xinerama? ( >=x11-proto/xineramaproto-1.2.1-r1[${MULTILIB_USEDEP}] )
-		xv? ( >=x11-proto/videoproto-2.3.1-r1[${MULTILIB_USEDEP}] )
-	)
+	!aqua? ( x11-base/xorg-proto )
 "
 PDEPEND="
 	qt3support? ( ~dev-qt/qt3support-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
