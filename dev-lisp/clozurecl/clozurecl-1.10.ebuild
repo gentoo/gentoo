@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MY_PN=ccl
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Common Lisp implementation, derived from Digitool's MCL product"
-HOMEPAGE="http://ccl.clozure.com/"
+HOMEPAGE="https://ccl.clozure.com/"
 SRC_URI="
 	x86?   ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )
 	amd64? ( ftp://ftp.clozure.com/pub/release/${PV}/${MY_P}-linuxx86.tar.gz )"
