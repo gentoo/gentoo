@@ -25,10 +25,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-util/cram )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-htmldir-fix.patch"
-)
-
 src_prepare() {
 	default
 
