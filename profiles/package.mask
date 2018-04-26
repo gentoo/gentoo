@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (26 Apr 2018)
+# Merged into >=dev-cpp/gtest-1.8.0.
+# Masked for removal in 30 days.
+dev-cpp/gmock
+
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
 # Depends on dead Qt4, no more revdeps. Masked for removal in 30 days.
 dev-libs/qjson
