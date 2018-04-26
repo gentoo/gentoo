@@ -1,0 +1,29 @@
+--- a/Build.PL
++++ b/Build.PL
+@@ -125,7 +125,7 @@
+ 
+     my $hts_lib     = "$root";
+     my $hts_include = "$root/htslib";
+-    if (-f "$hts_lib/libhts.a" && -f "$hts_include/hts.h") {
++    if ((-f "$hts_lib/libhts.so" || -f "$hts_lib/libhts.a") && -f "$hts_include/hts.h") {
+         $self->config_data('hts_lib'     => $hts_lib);
+         $self->config_data('hts_include' => $hts_include);
+         return 1;
+@@ -145,7 +145,7 @@
+ 
+     my $hts_lib     = "$root/lib";
+     my $hts_include = "$root/include/htslib";
+-    if (-f "$hts_lib/libhts.a" && -f "$hts_include/hts.h") {
++    if ((-f "$hts_lib/libhts.so" || -f "$hts_lib/libhts.a") && -f "$hts_include/hts.h") {
+         $self->config_data('hts_lib'     => $hts_lib);
+         $self->config_data('hts_include' => $hts_include);
+         return 1;
+@@ -164,7 +164,7 @@
+ This module requires htslib (http://htslib/org)
+ Install it if you have not done so already.
+ 
+-This script will attempt to locate htslib by looking for hts.h and libhts.a in:
++This script will attempt to locate htslib by looking for hts.h and libhts.so/libhts.a in:
+ 
+   1. --htslib command line argument
+   2. HTSLIB_DIR environment variable
