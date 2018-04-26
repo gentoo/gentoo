@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
 # Openssl doesn't play along nicely with cross-compiling
@@ -81,8 +81,8 @@ chost_machine=${CHOST%%-*}
 case ${system} in
 linux)
 	case ${chost_machine}:${ABI} in
-		aarch64*be*)  machine="generic64 -DB_ENDIAN";;
-		aarch64*)     machine="generic64 -DL_ENDIAN";;
+		aarch64*be*)  machine="aarch64 -DB_ENDIAN";;
+		aarch64*)     machine="aarch64 -DL_ENDIAN";;
 		alphaev56*|\
 		alphaev[678]*)machine=alpha+bwx-${compiler};;
 		alpha*)       machine=alpha-${compiler};;
