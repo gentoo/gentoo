@@ -18,7 +18,7 @@ SRC_URI="http://hci.iwr.uni-heidelberg.de/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc +fftw +hdf5 +jpeg openexr +png +python test +tiff"
 
 # Pull in dev-lang/python:2.7 for vigra-config which is always installed
