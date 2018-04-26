@@ -3,9 +3,9 @@ DEPEND=>=sys-libs/lwp-2.5 virtual/pkgconfig
 DESCRIPTION=Recoverable Virtual Memory (used by Coda)
 EAPI=6
 HOMEPAGE=http://www.coda.cs.cmu.edu/
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=>=sys-libs/lwp-2.5
 SLOT=1
 SRC_URI=http://www.coda.cs.cmu.edu/pub/rvm/src/rvm-1.17.tar.gz
-_md5_=959c2a24b0764c81905cb6f771008c65
+_md5_=dc29dc601d308f1857d27c8f319bcf2a

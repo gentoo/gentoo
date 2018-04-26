@@ -4720,7 +4720,6 @@ dev-python/django-compressor 1.5: Compresses linked and inline javascript or CSS
 dev-python/django-debug-toolbar 1.5: A configurable set of panels that display debug information
 dev-python/django-discover-runner 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
-dev-python/django-evolution 0.7.4: A Django application that will run cron jobs for other django apps
 dev-python/django-haystack 2.4.1: Pluggable search for Django
 dev-python/django-international 0.0.6: Country and currency data for Django projects
 dev-python/django-ldap-groups 0.1.3-r1: A reusable application for the Django web framework
@@ -4903,7 +4902,6 @@ dev-python/hyper-h2 2.5.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
 dev-python/hypothesis 3.6.0-r1: A library for property based testing
 dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
-dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 2.3: Iterative JSON parser with a Pythonic interface
@@ -4967,7 +4965,6 @@ dev-python/keystoneauth 3.1.0 3.4.0: This package contains tools for authenticat
 dev-python/keystonemiddleware 4.17.0 4.21.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1 0.1.4: Kivys Garden tool to manage flowers
-dev-python/kiwi 1.9.39.2: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
 dev-python/kiwisolver 1.0.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/kombu 3.0.37-r1 4.1.0-r1: AMQP Messaging Framework for Python
 dev-python/lazy-object-proxy 1.2.1: A fast and thorough lazy object proxy
