@@ -192,7 +192,7 @@ src_configure() {
 	mozconfig_use_enable jack
 
 	# Enable/Disable eme support
-	mozconfig_use_enable !eme-free eme
+	use eme-free && mozconfig_annotate '+eme-free' --disable-eme
 
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
