@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	sys-apps/util-linux
 	sys-block/parted
 	sys-fs/dosfstools
@@ -24,6 +23,7 @@ RDEPEND="${DEPEND}
 	sys-boot/grub:2[grub_platforms_pc]
 	!minimal? ( x11-libs/wxGTK:${WX_GTK_VER} )
 "
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/WoeUSB-${PV}"
 
