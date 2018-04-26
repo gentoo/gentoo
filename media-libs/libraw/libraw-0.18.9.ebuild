@@ -8,13 +8,15 @@ inherit multilib-minimal toolchain-funcs
 MY_PN=LibRaw
 MY_PV="${PV/_b/-B}"
 MY_P="${MY_PN}-${MY_PV}"
+# demosaic package wasn't bumped to 0.18.9 version
+DEMOSAIC_PV="0.18.8"
 
 DESCRIPTION="LibRaw is a library for reading RAW files obtained from digital photo cameras"
 HOMEPAGE="https://www.libraw.org/ https://github.com/LibRaw/LibRaw"
 SRC_URI="https://www.libraw.org/data/${MY_P}.tar.gz
 	demosaic? (
-		https://www.libraw.org/data/LibRaw-demosaic-pack-GPL2-${MY_PV}.tar.gz
-		https://www.libraw.org/data/LibRaw-demosaic-pack-GPL3-${MY_PV}.tar.gz
+		https://www.libraw.org/data/LibRaw-demosaic-pack-GPL2-${DEMOSAIC_PV}.tar.gz
+		https://www.libraw.org/data/LibRaw-demosaic-pack-GPL3-${DEMOSAIC_PV}.tar.gz
 	)"
 
 LICENSE="LGPL-2.1 CDDL demosaic? ( GPL-2 GPL-3 )"
@@ -31,10 +33,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( Changelog.txt README )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.18.4-glibc-2.27.patch
-)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
