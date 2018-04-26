@@ -3,17 +3,11 @@
 
 EAPI=6
 
-SCM=
-[[ "${PV}" = 9999 ]] && SCM="autotools git-r3"
-inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-funcs ${SCM}
-unset SCM
-
-INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
+inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-funcs
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
-IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug fontforge harfbuzz
-	infinality png static-libs utils"
+IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug fontforge harfbuzz infinality png static-libs utils"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
@@ -23,7 +17,9 @@ if [[ "${PV}" != 9999 ]] ; then
 		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-	IUSE+="doc"
+	IUSE+=" doc"
+else
+	inherit autotools git-r3
 fi
 
 LICENSE="|| ( FTL GPL-2+ )"
@@ -52,33 +48,37 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
 )
 
-src_fetch() {
+_egit_repo_handler() {
 	if [[ "${PV}" = 9999 ]] ; then
+		local phase="${1}"
+		case ${phase} in
+			fetch|unpack)
+				:;
+			;;
+			*)
+				die "Please use this function with either \"fetch\" or \"unpack\""
+			;;
+		esac
+
 		local EGIT_REPO_URI
 		EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2.git"
-		git-r3_src_fetch
+		git-r3_src_${phase}
 		if use utils ; then
 			EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2-demos.git"
-			git-r3_src_fetch
+			local EGIT_CHECKOUT_DIR="${WORKDIR}/ft2demos-${PV}"
+			git-r3_src_${phase}
 		fi
 	else
 		default
 	fi
 }
 
+src_fetch() {
+	_egit_repo_handler fetch
+}
+
 src_unpack() {
-	if [[ "${PV}" = 9999 ]] ; then
-		local EGIT_REPO_URI
-		EGIT_REPO_URI="http://git.savannah.gnu.org/r/freetype/freetype2.git"
-		git-r3_src_unpack
-		if use utils ; then
-			EGIT_REPO_URI="http://git.savannah.gnu.org/r/freetype/freetype2-demos.git"
-			local EGIT_CHECKOUT_DIR="${WORKDIR}/ft2demos-${PV}"
-			git-r3_src_unpack
-		fi
-	else
-		default
-	fi
+	_egit_repo_handler unpack
 }
 
 src_prepare() {
@@ -174,8 +174,7 @@ multilib_src_configure() {
 		LIBPNG_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libpng)"
 	)
 
-	ECONF_SOURCE="${S}" \
-		econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -199,7 +198,7 @@ multilib_src_install() {
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
 			./libtool --mode=install $(type -P install) -m 755 "$ft2demo" \
-				"${ED}"/usr/bin || die
+				"${ED%/}"/usr/bin || die
 		done
 	fi
 }
@@ -211,8 +210,8 @@ multilib_src_install_all() {
 		local header
 		find src/truetype include/freetype/internal -name '*.h' | \
 		while read header; do
-			mkdir -p "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
-			cp ${header} "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
+			mkdir -p "${ED%/}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
+			cp ${header} "${ED%/}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
 		done
 	fi
 
@@ -222,5 +221,5 @@ multilib_src_install_all() {
 		dodoc -r docs/*
 	fi
 
-	prune_libtool_files --all
+	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 }
