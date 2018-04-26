@@ -3578,6 +3578,11 @@ developers and volunteer mentors.</description>
     <name>Gentoo Scheme Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Scheme</url>
     <description>The Gentoo Scheme Project handles Scheme related packages in the Gentoo package tree.</description>
+    <member>
+      <email>amynka@gentoo.org</email>
+      <name>Amy Liffey</name>
+      <role>Member</role>
+    </member>
   </project>
   <project>
     <email>sci@gentoo.org</email>
