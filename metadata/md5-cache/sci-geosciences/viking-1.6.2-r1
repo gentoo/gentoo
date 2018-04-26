@@ -4,10 +4,10 @@ DESCRIPTION=GPS data editor and analyzer
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/viking/
 IUSE=doc +exif libexif gps +magic mapnik nls sqlite
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=app-arch/bzip2 dev-libs/expat dev-libs/glib:2 net-misc/curl sys-libs/zlib x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 gps? ( >=sci-geosciences/gpsd-2.96 ) exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) ) magic? ( sys-apps/file ) mapnik? ( sci-geosciences/mapnik ) sqlite? ( dev-db/sqlite:3 ) sci-geosciences/gpsbabel
 SLOT=0
 SRC_URI=mirror://sourceforge/viking/viking-1.6.2.tar.bz2 doc? ( mirror://sourceforge/viking/viking.pdf )
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	gnome2-utils	4d211d7614f303710fca59db6ec12c88	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=c77457c13d5c1440cc735b02454eb8b5
+_md5_=cb21769a7cbc49e6b286f029574389f2
