@@ -9294,7 +9294,6 @@ sci-libs/hdf 4.2.8: General purpose library and format for storing scientific da
 sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.4.1: INDI Astronomical Control Protocol library
-sci-libs/io_lib 1.10.1: A general purpose trace and experiment file reading/writing interface
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
 sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
 sci-libs/libcerf 1.4: Efficient and accurate implementation of complex error functions
