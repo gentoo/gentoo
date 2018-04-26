@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) dev-lang/luajit:=
 SLOT=0
-SRC_URI=https://github.com/akopytov/sysbench/archive/1.0.12.tar.gz -> sysbench-1.0.12.tar.gz
+SRC_URI=https://github.com/akopytov/sysbench/archive/1.0.14.tar.gz -> sysbench-1.0.14.tar.gz
 _eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=cd336847e8a157eebfd4d7ef961c5468
+_md5_=4e28de46a98ce64ec8c334d97efba211

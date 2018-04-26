@@ -135,7 +135,7 @@ app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer ad
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 5.1.2 5.2.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/testdisk 7.0-r3 7.1_pre20180322: Checks and undeletes partitions + PhotoRec, signature based recovery tool
+app-admin/testdisk 7.1_pre20180322: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.6: Open Source File Integrity Checker and IDS
@@ -269,7 +269,7 @@ app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 3.0.6 3.1.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
-app-benchmarks/sysbench 1.0.7 1.0.10: System performance benchmark
+app-benchmarks/sysbench 1.0.10: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 3.1.2: A modern HTTP benchmarking tool
@@ -1161,7 +1161,7 @@ app-office/ledger 3.1.1: A double-entry accounting system with a command-line re
 app-office/libalkimia 7.0.1: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 5.4.5.1: A full office productivity suite
 app-office/libreoffice-l10n 5.4.5.1: Translations for the Libreoffice suite
-app-office/lyx 2.2.3-r4 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openoffice-bin 4.1.4: Apache OpenOffice productivity suite
@@ -1809,7 +1809,6 @@ dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.2.0: Google's C++ argument parsing library
 dev-cpp/glibmm 2.50.1 2.52.1: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4-r1: Google's C++ logging library
-dev-cpp/gmock 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.10.0: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0-r1 1.8.0-r1: Google C++ Testing Framework
@@ -2743,7 +2742,7 @@ dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of un-/structured data
 dev-java/proguard 4.5: Free Java class file shrinker, optimizer, and obfuscator
-dev-java/protobuf-java 3.1.0 3.5.1.1: Google's Protocol Buffers - Java bindings
+dev-java/protobuf-java 3.5.1.1: Google's Protocol Buffers - Java bindings
 dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
@@ -3205,8 +3204,8 @@ dev-libs/pkcs11-helper 1.21-r1: PKCS#11 helper library
 dev-libs/poco 1.4.6_p4: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
-dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.1.0 3.5.1.1: Google's Protocol Buffers - Extensible mechanism for serializing structured data
-dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.3.0-r1: Protocol Buffers implementation in C
+dev-libs/protobuf 3.5.1.1: Google's Protocol Buffers - Extensible mechanism for serializing structured data
+dev-libs/protobuf-c 1.3.0-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPath support
@@ -5174,7 +5173,7 @@ dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r3: Text progressbar library for python
 dev-python/prometheus_client 0.1.1: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 1.0.15: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.1.0 3.5.1.1: Google's Protocol Buffers - Python bindings
+dev-python/protobuf-python 3.5.1.1: Google's Protocol Buffers - Python bindings
 dev-python/psutil 5.4.1 5.4.3: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.6.2 2.7.3: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33: Python REPL build on top of prompt_toolkit
