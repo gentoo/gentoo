@@ -28,16 +28,16 @@ RESTRICT="fetch"
 
 DEPEND=""
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtpositioning:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwebengine:5[widgets]
-	dev-qt/qtwebkit:5
-	dev-qt/qtxml:5
+	=dev-qt/qtcore-5.9*:5
+	=dev-qt/qtdeclarative-5.9*:5
+	=dev-qt/qtgui-5.9*:5
+	=dev-qt/qtnetwork-5.9*:5
+	=dev-qt/qtpositioning-5.9*:5
+	=dev-qt/qtprintsupport-5.9*:5
+	=dev-qt/qtsvg-5.9*:5
+	=dev-qt/qtwebengine-5.9*:5[widgets]
+	=dev-qt/qtwebkit-5.9*:5
+	=dev-qt/qtxml-5.9*:5
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
