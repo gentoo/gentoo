@@ -3,19 +3,19 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 inherit multilib ruby-fakegem
 
 DESCRIPTION="a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack"
-HOMEPAGE="http://puma.io/"
+HOMEPAGE="https://puma.io/"
 SRC_URI="https://github.com/puma/puma/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86"
 IUSE=""
 
 DEPEND+=" dev-libs/openssl:0 test? ( net-misc/curl )"
@@ -29,9 +29,6 @@ all_ruby_prepare() {
 
 	# Avoid test failing inconsistently
 	sed -i -e '/phased_restart_via_pumactl/,/^  end/ s:^:#:' test/test_integration.rb || die
-
-	# Avoid test we did not run previously that is failing
-	rm -f test/test_cli.rb || die
 
 	# Avoid test that trigger a bug in ruby very easily and lead to
 	# failure. This affects all current puma versions in combination
