@@ -6,8 +6,8 @@ EAPI="5"
 inherit ssl-cert eutils pam autotools
 
 DESCRIPTION="Serial Console Manager"
-HOMEPAGE="http://www.conserver.com/"
-SRC_URI="http://www.conserver.com/${P}.tar.gz"
+HOMEPAGE="https://www.conserver.com/"
+SRC_URI="https://www.conserver.com/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
