@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,9 +39,9 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 
 DEPEND="app-arch/zip
 		gtk? (
+			x11-base/xorg-proto
 			x11-libs/libXrender
 			>=x11-libs/libXtst-1.1.0
-			x11-proto/xproto
 		)
 		>=virtual/jdk-1.5
 		${RDEPEND}"
