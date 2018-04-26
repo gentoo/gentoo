@@ -1,0 +1,84 @@
+--- a/server/Makefile.in	2018-05-15 21:52:38.966823295 +0200
++++ b/server/Makefile.in	2018-05-15 21:58:27.137821967 +0200
+@@ -83,13 +83,13 @@
+ .c.o:
+ 	$(CC) $(CFLAGS) $(DEFINES)  -c $(INCLUDES) $<
+ 
+-serdispd: $(LIB_DIR)/$(LIB_STATIC) $(SDISPDOBJECTS)
++serdispd: $(LIB_DIR)/$(LIB_SHARED) $(SDISPDOBJECTS)
+ 	$(CC) -o $@ $(SDISPDOBJECTS) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
+ 
+-serdisplearn: $(LIB_DIR)/$(LIB_STATIC) $(SLEARNOBJECTS)
++serdisplearn: $(LIB_DIR)/$(LIB_SHARED) $(SLEARNOBJECTS)
+ 	$(CC) -o $@ $(SLEARNOBJECTS) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
+ 
+-serdispproxy: $(LIB_DIR)/$(LIB_STATIC) $(SPROXYOBJECTS)
++serdispproxy: $(LIB_DIR)/$(LIB_SHARED) $(SPROXYOBJECTS)
+ 	$(CC) -o $@ $(SPROXYOBJECTS) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
+ 
+ 
+--- a/src/Makefile.in	2018-05-15 22:09:10.087118208 +0200
++++ b/src/Makefile.in	2018-05-15 22:11:22.224117704 +0200
+@@ -167,7 +167,7 @@
+ 
+ all: libraries programs
+ 
+-libraries: library.static library.shared
++libraries: library.shared
+ 
+ library.static: $(LIB_DIR)/$(LIB_STATIC)
+ 
+@@ -188,7 +188,7 @@
+ 	cd $(LIB_DIR) && $(LN_S) -f $(LIB_SHARED) lib$(LIB_NAME).so.$(VERSION_MAJOR)
+ 	cd $(LIB_DIR) && $(LN_S) -f lib$(LIB_NAME).so.$(VERSION_MAJOR) lib$(LIB_NAME).so
+ 
+-testserdisp: $(LIB_DIR)/$(LIB_STATIC) $(OBJECTS)
++testserdisp: $(LIB_DIR)/$(LIB_SHARED) $(OBJECTS)
+ 	$(CC) -o testserdisp $(OBJECTS) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
+ 
+ clean:
+@@ -198,7 +198,7 @@
+ distclean: clean
+ 	/bin/rm -f Makefile
+ 
+-install: $(LIB_DIR)/$(LIB_SHARED) $(LIB_DIR)/$(LIB_STATIC)
++install: $(LIB_DIR)/$(LIB_SHARED)
+ 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
+ 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(includedir)
+@@ -206,7 +206,6 @@
+ 	
+ 	$(INSTALL_PROGRAM) $(PROGRAMS) $(DESTDIR)$(bindir)/
+ 	$(INSTALL_PROGRAM) $(LIB_DIR)/$(LIB_SHARED) $(DESTDIR)$(libdir)/
+-	$(INSTALL_DATA) $(LIB_DIR)/$(LIB_STATIC) $(DESTDIR)$(libdir)/
+ 	list='$(LIB_HEADERFILES)'; \
+ 	for headerfile in $$list; do \
+ 	  $(INSTALL_DATA) ../include/serdisplib/$$headerfile $(DESTDIR)$(includedir)/serdisplib/ ; \
+--- a/tools/Makefile.in	2018-05-15 21:53:01.042823211 +0200
++++ b/tools/Makefile.in	2018-05-15 21:59:45.142821669 +0200
+@@ -130,19 +130,19 @@
+ .c.o:
+ 	$(CC) $(CFLAGS) $(DEFINES)  -c $(INCLUDES) $<
+ 
+-multidisplay: $(LIB_DIR)/$(LIB_STATIC) $(OBJECTS)
++multidisplay: $(LIB_DIR)/$(LIB_SHARED) $(OBJECTS)
+ 	$(CC) -o multidisplay $(OBJ_MULTIDISPLAY) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC) $(EXTRA_LIBS)
+ 
+-l4m132c_tool: $(LIB_DIR)/$(LIB_STATIC) $(OBJECTS)
++l4m132c_tool: $(LIB_DIR)/$(LIB_SHARED) $(OBJECTS)
+ 	$(CC) -o l4m132c_tool $(OBJ_L4M132C_TOOL) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
+ 
+-sdcmegtron_tool: $(LIB_DIR)/$(LIB_STATIC) $(OBJECTS)
++sdcmegtron_tool: $(LIB_DIR)/$(LIB_SHARED) $(OBJECTS)
+ 	$(CC) -o sdcmegtron_tool $(OBJ_SDCMEGTRON_TOOL) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
+ 
+-l4m320t_tool: $(LIB_DIR)/$(LIB_STATIC) $(OBJECTS)
+-	$(CC) -o l4m320t_tool $(OBJ_L4M320T_TOOL) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
++l4m320t_tool: $(LIB_DIR)/$(LIB_SHARED) $(OBJECTS)
++	$(CC) -o l4m320t_tool $(OBJ_L4M320T_TOOL) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC) $(EXTRA_LIBS)
+ 
+-touchscreen_tool: $(LIB_DIR)/$(LIB_STATIC) $(OBJECTS)
++touchscreen_tool: $(LIB_DIR)/$(LIB_SHARED) $(OBJECTS)
+ 	$(CC) -o touchscreen_tool $(OBJ_TOUCHSCREEN_TOOL) $(LIB_SERDISP) $(EXTRA_LIBS_STATIC)
+ 
+ clean:
