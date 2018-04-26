@@ -3250,7 +3250,6 @@ media-sound/qmmp:sid - Build with SID (Commodore 64 Audio) support
 media-sound/qmmp:soxr - Use the SoX resampling library
 media-sound/qmmp:stereo - Enable stereo effect
 media-sound/qmmp:tray - Build tray icon
-media-sound/qtscrobbler:cli - Build commandline client
 media-sound/rhythmbox:daap - Build the local network music sharing plugin which uses the DAAP protocol using net-libs/libdmapsharing
 media-sound/rhythmbox:visualizer - Enable support for visualizations using media-plugins/gst-plugins-libvisual
 media-sound/shntool:alac - Add support for Apple Lossless Audio Codec files
