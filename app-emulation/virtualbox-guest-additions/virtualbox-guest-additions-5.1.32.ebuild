@@ -20,6 +20,7 @@ IUSE="X"
 
 RDEPEND="X? ( x11-apps/xrandr
 		x11-apps/xrefresh
+		x11-base/xorg-proto
 		x11-libs/libXmu
 		x11-libs/libX11
 		x11-libs/libXt
@@ -27,8 +28,7 @@ RDEPEND="X? ( x11-apps/xrandr
 		x11-libs/libXau
 		x11-libs/libXdmcp
 		x11-libs/libSM
-		x11-libs/libICE
-		x11-proto/glproto )
+		x11-libs/libICE )
 	sys-apps/dbus
 	!!x11-drivers/xf86-input-virtualbox"
 DEPEND="${RDEPEND}
@@ -37,8 +37,7 @@ DEPEND="${RDEPEND}
 	sys-devel/bin86
 	sys-libs/pam
 	sys-power/iasl
-	X? ( x11-proto/renderproto )
-	!X? ( x11-proto/xproto )"
+	x11-base/xorg-proto"
 PDEPEND="X? ( ~x11-drivers/xf86-video-virtualbox-${PV} )"
 
 BUILD_TARGETS="all"
