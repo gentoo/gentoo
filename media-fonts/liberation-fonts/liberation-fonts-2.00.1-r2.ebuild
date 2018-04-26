@@ -11,10 +11,10 @@ DESCRIPTION="A Helvetica/Times/Courier replacement TrueType font set, courtesy o
 HOMEPAGE="https://pagure.io/liberation-fonts"
 SRC_URI="
 	!fontforge? (
-		https://releases.pagure.org/liberation-fonts/${PN}/${PN}-ttf-${PV}.tar.gz
+		https://releases.pagure.org/${PN}/${PN}-ttf-${PV}.tar.gz
 	)
 	fontforge? (
-		https://releases.pagure.org/liberation-fonts/${PN}/${P}.tar.gz
+		https://releases.pagure.org/${PN}/${P}.tar.gz
 	)
 "
 
