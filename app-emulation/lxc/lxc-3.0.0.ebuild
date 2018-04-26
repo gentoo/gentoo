@@ -125,7 +125,7 @@ src_configure() {
 		--enable-doc \
 		$(use_enable examples) \
 		$(use_enable pam) \
-		$(use_with pam pam-dir $(getpam_mod_dir)) \
+		$(use_with pam pamdir $(getpam_mod_dir)) \
 		$(use_enable seccomp) \
 		$(use_enable selinux)
 }
@@ -138,6 +138,7 @@ src_install() {
 		${PN}-{attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,stop,unfreeze,wait}
 
 	keepdir /etc/lxc /var/lib/lxc/rootfs /var/log/lxc
+	rmdir "${D}"/var/cache/lxc "${D}"/var/cache || die "rmdir failed"
 
 	find "${D}" -name '*.la' -delete
 
