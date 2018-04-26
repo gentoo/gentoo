@@ -108,7 +108,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig
 	)
-	hvm? ( x11-proto/xproto
+	hvm? ( x11-base/xorg-proto
 		!net-libs/libiscsi )
 	qemu? (
 		app-arch/snappy:=

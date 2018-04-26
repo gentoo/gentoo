@@ -19,8 +19,10 @@ RDEPEND="
 		x11-libs/libXaw )
 "
 DEPEND="${RDEPEND}
-	X? ( x11-misc/imake
-		x11-proto/xproto )
+	X? (
+		x11-base/xorg-proto
+		x11-misc/imake
+	)
 	sys-devel/bison
 "
 # test hangs forever, disabling it
