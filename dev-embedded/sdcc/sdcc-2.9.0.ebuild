@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
 		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~x86"
 	docs_compile() { return 1; }
 fi
 
