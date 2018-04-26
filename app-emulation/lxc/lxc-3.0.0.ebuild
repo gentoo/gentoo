@@ -1,37 +1,32 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-MY_P="${P/_/-}"
-PYTHON_COMPAT=( python{3_4,3_5} )
-DISTUTILS_OPTIONAL=1
-
-inherit autotools bash-completion-r1 distutils-r1 linux-info versionator flag-o-matic systemd
+inherit autotools bash-completion-r1 linux-info flag-o-matic systemd readme.gentoo-r1 pam
 
 DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/"
-SRC_URI="https://github.com/lxc/lxc/archive/${MY_P}.tar.gz"
+SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz"
 
-KEYWORDS="amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="cgmanager doc examples lua python seccomp"
+IUSE="examples pam seccomp selinux"
 
-RDEPEND="net-libs/gnutls
+RDEPEND="
+	net-libs/gnutls
 	sys-libs/libcap
-	cgmanager? ( app-admin/cgmanager )
-	lua? ( >=dev-lang/lua-5.1:= )
-	python? ( ${PYTHON_DEPS} )
-	seccomp? ( sys-libs/libseccomp )"
+	pam? ( virtual/pam )
+	seccomp? ( sys-libs/libseccomp )
+	selinux? ( sys-libs/libselinux )"
 
 DEPEND="${RDEPEND}
-	doc? ( app-text/docbook-sgml-utils )
+	app-text/docbook-sgml-utils
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
-	sys-process/criu
 	sys-apps/util-linux
 	app-misc/pax-utils
 	virtual/awk"
@@ -94,17 +89,13 @@ ERROR_GRKERNSEC_SYSFS_RESTRICT="CONFIG_GRKERNSEC_SYSFS_RESTRICT:  this GRSEC fea
 
 DOCS=(AUTHORS CONTRIBUTING MAINTAINERS NEWS README doc/FAQ.txt)
 
-S="${WORKDIR}/${PN}-${MY_P}"
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
 pkg_setup() {
 	kernel_is -lt 4 7 && CONFIG_CHECK="${CONFIG_CHECK} ~DEVPTS_MULTIPLE_INSTANCES"
 	linux-info_pkg_setup
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-2.0.6-bash-completion.patch
+	eapply "${FILESDIR}"/${PN}-3.0.0-bash-completion.patch
 	#558854
 	eapply "${FILESDIR}"/${PN}-2.0.5-omit-sysconfig.patch
 	eapply_user
@@ -114,15 +105,13 @@ src_prepare() {
 src_configure() {
 	append-flags -fno-strict-aliasing
 
-	if use python; then
-		#541932
-		python_setup "python3*"
-		export PKG_CONFIG_PATH="${T}/${EPYTHON}/pkgconfig:${PKG_CONFIG_PATH}"
-	fi
-
 	# I am not sure about the --with-rootfs-path
 	# /var/lib/lxc is probably more appropriate than
 	# /usr/lib/lxc.
+	# Note by holgersson: Why is apparmor disabled?
+
+	# --enable-doc is for manpages which is why we don't link it to a "doc"
+	# USE flag. We always want man pages.
 	econf \
 		--localstatedir=/var \
 		--bindir=/usr/bin \
@@ -133,69 +122,49 @@ src_configure() {
 		--with-runtime-path=/run \
 		--disable-apparmor \
 		--disable-werror \
-		$(use_enable cgmanager) \
-		$(use_enable doc) \
+		--enable-doc \
 		$(use_enable examples) \
-		$(use_enable lua) \
-		$(use_enable python) \
-		$(use_enable seccomp)
-}
-
-python_compile() {
-	distutils-r1_python_compile build_ext -I ../ -L ../${PN}
-}
-
-src_compile() {
-	default
-
-	if use python; then
-		pushd "${S}/src/python-${PN}" > /dev/null
-		distutils-r1_src_compile
-		popd > /dev/null
-	fi
+		$(use_enable pam) \
+		$(use_with pam pamdir $(getpam_mod_dir)) \
+		$(use_enable seccomp) \
+		$(use_enable selinux)
 }
 
 src_install() {
 	default
 
 	mv "${ED}"/usr/share/bash-completion/completions/${PN} "${ED}"/$(get_bashcompdir)/${PN}-start || die
-	# start-ephemeral is no longer a command but removing it here
-	# generates QA warnings (still in upstream completion script)
 	bashcomp_alias ${PN}-start \
-		${PN}-{attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,start-ephemeral,stop,unfreeze,wait}
-
-	if use python; then
-		pushd "${S}/src/python-lxc" > /dev/null
-		# Unset DOCS. This has been handled by the default target
-		unset DOCS
-		distutils-r1_src_install
-		popd > /dev/null
-	fi
+		${PN}-{attach,cgroup,copy,console,create,destroy,device,execute,freeze,info,monitor,snapshot,stop,unfreeze,wait}
 
 	keepdir /etc/lxc /var/lib/lxc/rootfs /var/log/lxc
+	rmdir "${D}"/var/cache/lxc "${D}"/var/cache || die "rmdir failed"
 
 	find "${D}" -name '*.la' -delete
 
 	# Gentoo-specific additions!
-	newinitd "${FILESDIR}/${PN}.initd.5" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd.7" ${PN}
 
 	# Remember to compare our systemd unit file with the upstream one
 	# config/init/systemd/lxc.service.in
 	systemd_newunit "${FILESDIR}"/${PN}_at.service.4 "lxc@.service"
+
+	DOC_CONTENTS="
+	For openrc, there is an init script provided with the package.
+	You _should_ only need to symlink /etc/init.d/lxc to
+	/etc/init.d/lxc.configname to start the container defined in
+	/etc/lxc/configname.conf.
+
+	Correspondingly, for systemd a service file lxc@.service is installed.
+	Enable and start lxc@configname in order to start the container defined
+	in /etc/lxc/configname.conf.
+
+	If you want checkpoint/restore functionality, please install criu
+	(sys-process/criu)."
+	DISABLE_AUTOFORMATTING=true
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog ""
-	elog "Starting from version ${PN}-1.1.0-r3, the default lxc path has been"
-	elog "moved from /etc/lxc to /var/lib/lxc. If you still want to use /etc/lxc"
-	elog "please add the following to your /etc/lxc/default.conf"
-	elog "lxc.lxcpath = /etc/lxc"
-	elog ""
-	elog "There is an init script provided with the package now; no documentation"
-	elog "is currently available though, so please check out /etc/init.d/lxc ."
-	elog "You _should_ only need to symlink it to /etc/init.d/lxc.configname"
-	elog "to start the container defined into /etc/lxc/configname.conf ."
-	elog "For further information about LXC development see"
-	elog "http://blog.flameeyes.eu/tag/lxc" # remove once proper doc is available
-	elog ""
+	readme.gentoo_print_elog
 }
