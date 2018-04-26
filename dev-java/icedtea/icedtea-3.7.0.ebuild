@@ -86,13 +86,10 @@ X_COMMON_DEP="
 	>=x11-libs/libXtst-1.0.3
 	x11-libs/libXcomposite"
 X_DEPEND="
+	x11-base/xorg-proto
 	>=x11-libs/libXau-1.0.3
 	>=x11-libs/libXdmcp-1.0.2
-	>=x11-libs/libXinerama-1.0.2
-	x11-proto/inputproto
-	>=x11-proto/xextproto-7.1.1
-	x11-proto/xineramaproto
-	x11-proto/xproto"
+	>=x11-libs/libXinerama-1.0.2"
 
 # The Javascript requirement is obsolete; OpenJDK 8+ has Nashorn
 COMMON_DEP="

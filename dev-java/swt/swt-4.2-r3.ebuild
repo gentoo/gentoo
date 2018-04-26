@@ -42,11 +42,11 @@ DEPEND="${COMMON_DEP}
 	>=virtual/jdk-1.4
 	app-arch/unzip
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	x11-libs/libX11
 	x11-libs/libXrender
 	x11-libs/libXt
-	>=x11-libs/libXtst-1.1.0
-	x11-proto/inputproto"
+	>=x11-libs/libXtst-1.1.0"
 RDEPEND="${COMMON_DEP}
 	>=virtual/jre-1.4"
 
