@@ -4,10 +4,10 @@ DESCRIPTION=OpenGL interactive relativistic simulator
 EAPI=6
 HOMEPAGE=http://lightspeed.sourceforge.net/
 IUSE=nls truetype
-KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
 RDEPEND=media-libs/libpng:0= media-libs/tiff:0 virtual/opengl x11-libs/gtkglext x11-libs/gtkglarea:2 x11-libs/gtk+:2 x11-libs/libXmu truetype? ( media-libs/ftgl )
 SLOT=0
 SRC_URI=mirror://sourceforge/lightspeed/lightspeed-1.2a.tar.gz mirror://sourceforge/lightspeed/objects-1.tar.gz mirror://debian/pool/main/l/lightspeed/lightspeed_1.2a-7.diff.gz
 _eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=a8bf0b6d249f78d6c90bef62a286af07
+_md5_=d215b10e2c024422da6a0be6f6cd0ae3
