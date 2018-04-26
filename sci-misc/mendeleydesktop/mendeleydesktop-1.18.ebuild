@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit eutils multilib python-single-r1 xdg gnome2-utils
+inherit desktop gnome2-utils python-single-r1 xdg-utils
 
 MY_P_AMD64="${P}-linux-x86_64"
 MY_P_X86="${P}-linux-i486"
@@ -45,9 +45,11 @@ RDEPEND="
 
 QA_PREBUILT="/opt/mendeleydesktop/.*"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.17.8-libdir.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.17.8-libdir.patch
 	"${FILESDIR}"/${PN}-1.17.8-qt5plugins.patch
-	"${FILESDIR}"/${PN}-1.17.8-unix-distro-build.patch )
+	"${FILESDIR}"/${PN}-1.17.8-unix-distro-build.patch
+)
 
 pkg_nofetch() {
 	elog "Please download ${A} from:"
