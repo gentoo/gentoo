@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_P=${P/_}
 	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~ppc64 x86"
 	S=${WORKDIR}/${MY_P}
 fi
 

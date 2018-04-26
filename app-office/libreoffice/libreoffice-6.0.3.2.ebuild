@@ -102,7 +102,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	=dev-libs/liborcus-0.13*
+	>=dev-libs/liborcus-0.13.3
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
@@ -247,6 +247,8 @@ PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
+	# 6.0 branch
+	"${FILESDIR}/${P}-poppler-0.64.patch"
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"

@@ -64,9 +64,9 @@ fi
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
-		+gpl +hardcoded-tables +iconv lzma +network opencl openssl +postproc
-		samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau X:xlib xcb:libxcb
-		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
+		+gpl +hardcoded-tables +iconv libressl:libtls lzma +network opencl
+		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau
+		X:xlib xcb:libxcb xcb:libxcb-shm xcb:libxcb-xfixes +zlib
 		# libavdevice options
 		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
 		opengl
@@ -196,7 +196,6 @@ RDEPEND="
 	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
 	gmp? ( >=dev-libs/gmp-6:0=[${MULTILIB_USEDEP}] )
-	gnutls? ( !openssl? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
 	iconv? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
 	iec61883? (
@@ -224,7 +223,6 @@ RDEPEND="
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
@@ -257,6 +255,19 @@ RDEPEND="
 	postproc? ( !media-libs/libpostproc )
 "
 
+# Crypto & co provider magic
+# - libressl is a useflag meaning it should always favor libressl over openssl
+# - libressl and openssl provide more features to ffmpeg than gnutls
+#
+# The ordering is thus: libressl > openssl > gnutls
+RDEPEND="${RDEPEND}
+	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+	!libressl? (
+		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+		!openssl? ( gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
+	)
+"
+
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
 	doc? ( sys-apps/texinfo )
@@ -287,7 +298,7 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
-	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
+	gpl? ( openssl? ( bindist ) fdk? ( bindist ) libressl? ( bindist ) )
 "
 
 S=${WORKDIR}/${P/_/-}
@@ -312,7 +323,7 @@ multilib_src_configure() {
 	local myconf=( ${EXTRA_FFMPEG_CONF} )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
-	use openssl && use gpl && myconf+=( --enable-nonfree )
+	use openssl || use libressl && use gpl && myconf+=( --enable-nonfree )
 	use samba && myconf+=( --enable-version3 )
 
 	# Encoders
@@ -347,11 +358,10 @@ multilib_src_configure() {
 		myconf+=( $(use_enable ${i%:*} ${i#*:}) )
 	done
 
-	# Incompatible features: openssl and gnutls
-	# openssl support provides a (strict) superset of gnutls support as of 2017.11.30
-	# So, we warn the user and disable gnutls
-	if use openssl && use gnutls; then
-		ewarn "openssl and gnutls are mutually exclusive in ${PN}, disabling gnutls since openssl provides more features"
+	# Incompatible features: openssl or libressl and gnutls
+	if use libressl ; then
+		myconf+=( --disable-gnutls --disable-openssl )
+	elif use openssl ; then
 		myconf+=( --disable-gnutls )
 	fi
 

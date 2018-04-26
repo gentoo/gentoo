@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
+# Depends on dead Qt4, no more revdeps. Masked for removal in 30 days.
+dev-libs/qjson
+
 # Michał Górny <mgorny@gentoo.org> (22 Apr 2018)
 # Unmaintained buggy package with unresearched segfaults.  No support
 # for Python 3.  No reverse dependencies.
@@ -200,6 +204,10 @@ sci-chemistry/cyana
 # Requires >=dev-libs/icu-61.1
 # https://bugs.gentoo.org/651698
 =net-libs/nodejs-9.11*
+
+# Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
+# Requires >=dev-libs/openssl-1.1.0
+=net-libs/nodejs-10*
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (3 Apr 2018)
 # Merged into >=dev-db/m17n-db-1.7.0.
@@ -787,7 +795,7 @@ dev-lang/spidermonkey:52
 
 # Nicolas Bock <nicolasbock@gentoo.org> (17 Jul 2017)
 # Keep shotwell development series masked.
->=media-gfx/shotwell-0.27
+>=media-gfx/shotwell-0.29
 
 # Nicolas Bock <nicolasbock@gentoo.org> (31 Oct 2017)
 # There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).

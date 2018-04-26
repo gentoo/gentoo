@@ -28,14 +28,18 @@ RDEPEND="
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-ncurses-linking.patch"
+)
+
 DOCS="AUTHORS FAQ NEWS README TODO"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
 	sed -i -e '/stat.h/a#include <sys/sysmacros.h>' "${S}/src/modes/file_info.c" \
 		|| die
-	eapply_user
 	eautoreconf
 }
 

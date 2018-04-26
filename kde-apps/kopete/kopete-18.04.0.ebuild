@@ -137,6 +137,8 @@ DEPEND="${COMMONDEPEND}
 	jingle? ( dev-libs/jsoncpp )
 "
 
+PATCHES=( "${FILESDIR}/${P}-oscar.patch" )
+
 src_configure() {
 	local x x2
 	# Handle common stuff
