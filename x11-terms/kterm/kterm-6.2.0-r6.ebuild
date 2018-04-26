@@ -50,7 +50,8 @@ src_compile(){
 	emake \
 		CC="$(tc-getCC)" \
 		CDEBUGFLAGS="${CFLAGS}" \
-		LOCAL_LDFLAGS="${LDFLAGS} $("$(tc-getPKG_CONFIG)" --libs ncurses)" \
+		LOCAL_LDFLAGS="${LDFLAGS}" \
+		TERMCAPLIB="$("$(tc-getPKG_CONFIG)" --libs ncurses)" \
 		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults"
 }
 
