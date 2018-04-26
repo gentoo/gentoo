@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc ppc64 x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="X"
 
 RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
-	X? ( >=x11-proto/xproto-7.0.4
+	X? ( x11-base/xorg-proto
 		>=x11-libs/libX11-1.0.0
 		>=x11-libs/libXt-1.0.0
 		>=x11-libs/libXpm-3.5.4.2
