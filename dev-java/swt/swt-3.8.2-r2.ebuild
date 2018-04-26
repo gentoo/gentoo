@@ -40,11 +40,11 @@ COMMON=">=dev-libs/glib-2.6
 
 DEPEND=">=virtual/jdk-1.4
 		app-arch/unzip
+		x11-base/xorg-proto
 		x11-libs/libX11
 		x11-libs/libXrender
 		x11-libs/libXt
 		>=x11-libs/libXtst-1.1.0
-		x11-proto/inputproto
 		virtual/pkgconfig
 		${COMMON}"
 
