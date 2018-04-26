@@ -35,7 +35,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	gstreamer? ( x11-proto/videoproto )
+	gstreamer? ( x11-base/xorg-proto )
 "
 
 src_prepare() {
