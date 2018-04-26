@@ -3,9 +3,11 @@
 
 EAPI=6
 
+MY_PKG=manpages-pl-${PV}
+
 DESCRIPTION="A collection of Polish translations of Linux manual pages"
 HOMEPAGE="https://sourceforge.net/projects/manpages-pl/"
-SRC_URI="mirror://sourceforge/manpages-pl/manpages-pl-${PV}.tar.bz2"
+SRC_URI="mirror://sourceforge/manpages-pl/${MY_PKG}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -13,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 
 DOCS=( AUTHORS README )
 
-S="${WORKDIR}/manpages-pl-${PV}"
+S="${WORKDIR}/${MY_PKG}"
 
 src_prepare() {
 	default
