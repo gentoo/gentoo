@@ -11,7 +11,7 @@ if [[ ${PV} = *9999 ]]; then
 else
 	COMMIT=876b1314ab892cbfa6672b6b94adbeb90db4211f
 	SRC_URI="https://github.com/Exiv2/${PN}/tarball/${COMMIT} -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 fi
 inherit cmake-multilib python-any-r1
 
@@ -33,7 +33,6 @@ RDEPEND="
 	xmp? ( >=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	app-text/dos2unix
 	doc? (
 		${PYTHON_DEPS}
 		app-doc/doxygen
@@ -92,7 +91,7 @@ src_prepare() {
 		doxygen &>/dev/null -u config/Doxyfile || die
 	fi
 
-	dos2unix samples/exiv2json.cpp || die # workaround for CVE-2017-18005 patch
+	edos2unix samples/exiv2json.cpp # workaround for CVE-2017-18005 patch
 
 	cmake-utils_src_prepare
 }
