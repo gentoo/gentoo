@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 gnome2-utils
 
 DESCRIPTION="An automatic disk mounting service using udisks"
-HOMEPAGE="https://pypi.org/project/udiskie https://github.com/coldfix/udiskie"
+HOMEPAGE="https://pypi.org/project/udiskie/ https://github.com/coldfix/udiskie"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="Markdown to reStructuredText converter"
-HOMEPAGE="https://github.com/miyakogi/m2r https://pypi.org/project/m2r"
+HOMEPAGE="https://github.com/miyakogi/m2r https://pypi.org/project/m2r/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

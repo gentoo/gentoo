@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="path.py-${PV}"
 
 DESCRIPTION="A module wrapper for os.path"
-HOMEPAGE="https://pypi.org/project/path.py https://github.com/jaraco/path.py"
+HOMEPAGE="https://pypi.org/project/path.py/ https://github.com/jaraco/path.py"
 SRC_URI="mirror://pypi/p/path.py/${MY_P}.tar.gz"
 
 SLOT="0"

@@ -10,7 +10,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="a python library similar to readline"
-HOMEPAGE="https://pypi.org/project/readlike"
+HOMEPAGE="https://pypi.org/project/readlike/"
 
 LICENSE="MIT"
 SLOT="0"

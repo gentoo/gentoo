@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit linux-info distutils-r1
 
 DESCRIPTION="Transparent proxy server that works as a poor man's VPN using ssh"
-HOMEPAGE="https://github.com/sshuttle/sshuttle https://pypi.org/project/sshuttle"
+HOMEPAGE="https://github.com/sshuttle/sshuttle https://pypi.org/project/sshuttle/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"

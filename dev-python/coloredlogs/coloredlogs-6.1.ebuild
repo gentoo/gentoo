@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Colored stream handler for the logging module"
 HOMEPAGE="
-	https://pypi.org/project/coloredlogs
+	https://pypi.org/project/coloredlogs/
 	https://github.com/xolox/python-coloredlogs
 	http://coloredlogs.readthedocs.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

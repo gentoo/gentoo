@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Alternative Python bindings for Subversion"
-HOMEPAGE="https://www.samba.org/~jelmer/subvertpy/ https://pypi.org/project/subvertpy"
+HOMEPAGE="https://www.samba.org/~jelmer/subvertpy/ https://pypi.org/project/subvertpy/"
 SRC_URI="https://www.samba.org/~jelmer/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"

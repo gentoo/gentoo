@@ -11,7 +11,7 @@ MY_PN=CosmoloPy
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Cosmology routines built on NumPy/SciPy"
-HOMEPAGE="https://roban.github.com/CosmoloPy/ https://pypi.org/project/CosmoloPy"
+HOMEPAGE="https://roban.github.com/CosmoloPy/ https://pypi.org/project/CosmoloPy/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

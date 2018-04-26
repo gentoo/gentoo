@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="BLAKE2 hash function extension module"
-HOMEPAGE="https://github.com/dchest/pyblake2 https://pypi.org/project/pyblake2"
+HOMEPAGE="https://github.com/dchest/pyblake2 https://pypi.org/project/pyblake2/"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 # pyblake2 itself allows more licenses but blake2 allows the following three

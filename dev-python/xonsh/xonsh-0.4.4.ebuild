@@ -11,7 +11,7 @@ DESCRIPTION="An exotic, usable shell"
 HOMEPAGE="
 	http://xonsh.readthedocs.org/
 	https://github.com/scopatz/xonsh
-	http://pypi.org/project/xonsh"
+	http://pypi.org/project/xonsh/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
