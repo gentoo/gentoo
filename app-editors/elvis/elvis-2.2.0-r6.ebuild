@@ -1,43 +1,39 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit versionator toolchain-funcs
+EAPI=5
+inherit eutils versionator toolchain-funcs
 
 MY_PV=$(replace_version_separator 2 '_')
 
 DESCRIPTION="A vi/ex clone"
-HOMEPAGE="http://elvis.the-little-red-haired-girl.org"
+HOMEPAGE="ftp://ftp.cs.pdx.edu/pub/elvis/"
 SRC_URI="ftp://ftp.cs.pdx.edu/pub/elvis/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris"
+KEYWORDS="amd64 ppc ppc64 x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="X"
 
-RDEPEND="
-	sys-libs/ncurses:0=
-	app-eselect/eselect-vi
+RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
 	X? (
-		x11-base/xorg-proto
 		>=x11-libs/libX11-1.0.0
 		>=x11-libs/libXt-1.0.0
 		>=x11-libs/libXpm-3.5.4.2
-		>=x11-libs/libXft-2.1.8.2
-	)"
-
-DEPEND="
-	${RDEPEND}
+		>=x11-libs/libXft-2.1.8.2 )
+	app-eselect/eselect-vi"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+S=${WORKDIR}/${PN}-${MY_PV}
 
-PATCHES=(
-	"${FILESDIR}"/ft2.3-symbol-collision-fix.patch
-	"${FILESDIR}"/${P}-glibc-2.10.patch
-	"${FILESDIR}"/${P}-interix.patch
-)
+src_prepare() {
+	epatch \
+		"${FILESDIR}"/ft2.3-symbol-collision-fix.patch \
+		"${FILESDIR}"/${P}-glibc-2.10.patch \
+		"${FILESDIR}"/${P}-interix.patch
+}
 
 src_configure() {
 	./configure \
@@ -70,7 +66,6 @@ src_install() {
 	dodir /usr/share/elvis
 	dodir /usr/share/doc/${PF}
 	dodir /etc
-
 	emake install \
 		PREFIX="${ED}"/usr \
 		BINDIR="${ED}"/usr/bin \
@@ -78,9 +73,9 @@ src_install() {
 		DOCDIR="${ED}"/usr/share/doc/${PF}
 
 	# Install the man-pages
-	mv doc/elvis.man doc/elvis.1 || die
-	mv doc/elvtags.man doc/elvtags.1 || die
-	mv doc/ref.man doc/ref.1 || die
+	mv doc/elvis.man doc/elvis.1
+	mv doc/elvtags.man doc/elvtags.1
+	mv doc/ref.man doc/ref.1
 	doman doc/*.1
 
 	# Fixup some READMEs
