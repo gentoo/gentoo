@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,7 +33,8 @@ ruby_add_rdepend "
 	highlight? ( >=dev-ruby/coderay-1.0.9 )
 "
 
-ruby_add_bdepend "test? (
+ruby_add_bdepend "doc? ( dev-ruby/yard )
+	test? (
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/coderay-1.0.9
 		dev-ruby/syntax
