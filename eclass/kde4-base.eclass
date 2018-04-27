@@ -387,7 +387,7 @@ kdedepend="
 	dev-util/automoc
 	virtual/pkgconfig
 	>=x11-libs/libXtst-1.1.0
-	x11-proto/xf86vidmodeproto
+	x11-base/xorg-proto
 "
 
 kderdepend=""
