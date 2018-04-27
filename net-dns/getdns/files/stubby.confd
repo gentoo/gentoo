@@ -1,4 +1,0 @@
-# /etc/conf.d/stubby: config file for /etc/init.d/stubby
-
-# See stubby -h for possible options to put here.
-STUBBY_OPTS=""
