@@ -1,11 +1,20 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 inherit eutils flag-o-matic multilib toolchain-funcs savedconfig
-if [[ ${PV} == *9999 ]] ; then
+
+MY_P=uClibc-${PV}
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://git.busybox.net/uClibc"
 	EGIT_BRANCH="0.9.33"
-	EGIT_REPO_URI="git://git.busybox.net/uClibc"
-	inherit git-2
+	inherit git-r3
+else
+	PATCH_VER=""
+	SRC_URI="https://uclibc.org/downloads/${MY_P}.tar.bz2
+		${PATCH_VER:+mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.bz2}"
+	KEYWORDS="-* ~amd64 ~arm ~m68k ~mips ~ppc ~sh ~sparc ~x86"
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
@@ -16,15 +25,8 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
-MY_P=uClibc-${PV}
 DESCRIPTION="C library for developing embedded Linux systems"
 HOMEPAGE="https://www.uclibc.org/"
-if [[ ${PV} != *9999 ]] ; then
-	PATCH_VER=""
-	SRC_URI="https://uclibc.org/downloads/${MY_P}.tar.bz2
-		${PATCH_VER:+mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.bz2}"
-	KEYWORDS="-* ~amd64 ~arm ~m68k ~mips ~ppc ~sh ~sparc ~x86"
-fi
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -231,8 +233,8 @@ src_config() {
 }
 
 src_unpack() {
-	if [[ ${PV} == *9999 ]] ; then
-		git-2_src_unpack
+	if [[ ${PV} == *9999* ]] ; then
+		git-r3_src_unpack
 	else
 		unpack ${A}
 	fi
