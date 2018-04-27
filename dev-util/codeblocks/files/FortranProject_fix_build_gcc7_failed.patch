@@ -1,0 +1,52 @@
+# This patch is applied to fix gcc-7 compilation error:
+# "call of overloaded ‘abs(unsigned int)’ is ambiguous".
+# Patch is from upstream and initially fix another upstream bug:
+# [r184] by  darmar ( https://sourceforge.net/p/fortranproject/code/184/ )
+# *Fixed bug in the parser where some function call was recognised as variable declaration.
+--- old/src/plugins/contrib/FortranProject/parserf.cpp
++++ new/src/plugins/contrib/FortranProject/parserf.cpp
+@@ -2932,7 +2932,7 @@
+                     }
+                     else
+                     {
+-                        int lds = abs(fileChildren->Item(i)->m_LineStart - tokFl->m_LineStart);
++                        int lds = abs(int(fileChildren->Item(i)->m_LineStart) - int(tokFl->m_LineStart));
+                         if ((foundGuess && lineDifStart > lds) || !foundGuess)
+                         {
+                             guess.Clear();
+@@ -2960,7 +2960,7 @@
+                             }
+                             else
+                             {
+-                                int lds = abs(childL1->Item(j)->m_LineStart - tokFl->m_LineStart);
++                                int lds = abs(int(childL1->Item(j)->m_LineStart) - int(tokFl->m_LineStart));
+                                 if ((foundGuess && lineDifStart > lds) || !foundGuess)
+                                 {
+                                     guess.Clear();
+@@ -2992,7 +2992,7 @@
+                                     }
+                                     else
+                                     {
+-                                        int lds = abs(childL2->Item(k)->m_LineStart - tokFl->m_LineStart);
++                                        int lds = abs(int(childL2->Item(k)->m_LineStart) - int(tokFl->m_LineStart));
+                                         if ((foundGuess && lineDifStart > lds) || !foundGuess)
+                                         {
+                                             guess.Clear();
+--- old/src/plugins/contrib/FortranProject/parserthreadf.cpp
++++ new/src/plugins/contrib/FortranProject/parserthreadf.cpp
+@@ -1943,9 +1943,13 @@
+         else
+         {
+             bool needDefault = true;
+-            bool hasFunctionInLine;
++            bool hasFunctionInLine = false;
+             TokensArrayF tokTmpArr;
+-            CheckParseOneDeclaration(token, tok_low, next, nex_low, needDefault, tokTmpArr, hasFunctionInLine);
++            if (ln_tokold != m_Tokens.GetLineNumber()) // declaration can start only from a new line
++            {
++                CheckParseOneDeclaration(token, tok_low, next, nex_low, needDefault, tokTmpArr, hasFunctionInLine);
++            }
++
+             if (tokTmpArr.size() == 0 && m_pLastParent && !hasFunctionInLine)
+             {
+                 CheckParseCallProcedure(token, tok_low, next);

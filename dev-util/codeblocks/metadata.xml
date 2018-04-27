@@ -11,6 +11,7 @@
   </maintainer>
   <use>
     <flag name="contrib">Build additional contrib components</flag>
+    <flag name="fortran">Build FortranProject plugin which enables to use Code::Blocks IDE for Fortran language</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">codeblocks</remote-id>

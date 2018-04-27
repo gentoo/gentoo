@@ -1,0 +1,249 @@
+diff -Naur old/configure.ac new/configure.ac
+--- old/configure.ac	2017-12-28 14:01:34.000000000 +0300
++++ new/configure.ac	2018-02-21 17:51:00.000000000 +0300
+@@ -537,6 +537,10 @@
+ 	src/plugins/contrib/EditorTweaks/Makefile
+ 	src/plugins/contrib/envvars/Makefile
+ 	src/plugins/contrib/FileManager/Makefile
++	src/plugins/contrib/FortranProject/Makefile
++	src/plugins/contrib/FortranProject/images/Makefile
++	src/plugins/contrib/FortranProject/images/16x16/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/Makefile
+ 	src/plugins/contrib/headerfixup/Makefile
+ 	src/plugins/contrib/help_plugin/Makefile
+ 	src/plugins/contrib/help_plugin/bzip2/Makefile
+diff -Naur old/m4/acinclude.m4 new/m4/acinclude.m4
+--- old/m4/acinclude.m4	2017-11-01 02:32:37.000000000 +0300
++++ new/m4/acinclude.m4	2018-02-21 12:55:43.000000000 +0300
+@@ -345,6 +345,7 @@
+ 	AM_CONDITIONAL([BUILD_EDITORTWEAKS], [false])
+ 	AM_CONDITIONAL([BUILD_ENVVARS], [false])
+ 	AM_CONDITIONAL([BUILD_FILEMANAGER], [false])
++	AM_CONDITIONAL([BUILD_FORTRANPROJECT], [false])
+ 	AM_CONDITIONAL([BUILD_HEADERFIXUP], [false])
+ 	AM_CONDITIONAL([BUILD_HELP], [false])
+ 	AM_CONDITIONAL([BUILD_KEYBINDER], [false])
+@@ -387,6 +388,7 @@
+ 	AM_CONDITIONAL([BUILD_EDITORTWEAKS], [true])
+ 	AM_CONDITIONAL([BUILD_ENVVARS], [true])
+ 	AM_CONDITIONAL([BUILD_FILEMANAGER], [true])
++	AM_CONDITIONAL([BUILD_FORTRANPROJECT], [true])
+ 	AM_CONDITIONAL([BUILD_HEADERFIXUP], [true])
+ 	AM_CONDITIONAL([BUILD_HELP], [true])
+ 	AM_CONDITIONAL([BUILD_KEYBINDER], [true])
+@@ -427,7 +429,7 @@
+   [                        compiles none of the contrib-plugins ]
+   [                        Plugin names are: AutoVersioning, BrowseTracker, byogames, Cccc, CppCheck, cbkoders, codesnippets, ]
+   [                        		     codestat, copystrings, Cscope, DoxyBlocks, dragscroll, EditorConfig, EditorTweaks, envvars, ]
+-  [                        		     FileManager, headerfixup, help, hexeditor, incsearch, keybinder, libfinder, MouseSap, ]
++  [                        		     FileManager, FortranProject, headerfixup, help, hexeditor, incsearch, keybinder, libfinder, MouseSap, ]
+   [                        		     NassiShneiderman, ProjectOptionsManipulator, profiler, regex, ReopenEditor, exporter, smartindent, spellchecker, ]
+   [                        		     symtab, ThreadSearch, ToolsPlus, Valgrind, wxcontrib, wxsmith, wxsmithcontrib, wxsmithaui ],
+   plugins="$withval", plugins="none")
+@@ -481,6 +483,9 @@
+ 	FileManager)
+ 		AM_CONDITIONAL([BUILD_FILEMANAGER], [true])
+ 		;;
++	FortranProject)
++		AM_CONDITIONAL([BUILD_FORTRANPROJECT], [true])
++		;;
+ 	headerfixup)
+ 		AM_CONDITIONAL([BUILD_HEADERFIXUP], [true])
+ 		;;
+@@ -598,6 +603,9 @@
+ 	-FileManager)
+ 		AM_CONDITIONAL([BUILD_FILEMANAGER], [false])
+ 		;;
++	-FortranProject)
++		AM_CONDITIONAL([BUILD_FORTRANPROJECT], [false])
++		;;
+ 	-headerfixup)
+ 		AM_CONDITIONAL([BUILD_HEADERFIXUP], [false])
+ 		;;
+@@ -700,6 +708,7 @@
+ AC_SUBST(BUILD_EDITORTWEAKS)
+ AC_SUBST(BUILD_ENVVARS)
+ AC_SUBST(BUILD_FILEMANAGER)
++AC_SUBST(BUILD_FORTRANPROJECT)
+ AC_SUBST(BUILD_HEADERFIXUP)
+ AC_SUBST(BUILD_HELP)
+ AC_SUBST(BUILD_HEXEDITOR)
+diff -Naur old/src/plugins/contrib/FortranProject/Makefile.am new/src/plugins/contrib/FortranProject/Makefile.am
+--- /dev/null	1970-01-01 03:00:00.000000000 +0300
++++ new/src/plugins/contrib/FortranProject/Makefile.am	2018-02-22 10:32:29.000000000 +0300
+@@ -0,0 +1,122 @@
++SUBDIRS = images
++
++AM_CPPFLAGS = $(WX_CXXFLAGS) \
++		-I$(top_srcdir)/src/include \
++		-I$(top_srcdir)/src/sdk/wxscintilla/include
++
++pluginlibdir = $(pkglibdir)/plugins
++
++pluginlib_LTLIBRARIES = libFortranProject.la
++
++libFortranProject_la_LDFLAGS = @MODULE_SHARED_LDFLAGS@ -version-info 0:1:0 -no-undefined -avoid-version
++
++libFortranProject_la_LIBADD = ../../../sdk/libcodeblocks.la \
++			$(WX_LIBS) \
++			$(CB_TINYXML_LIBS)
++
++libFortranProject_la_SOURCES = autoinsert.cpp \
++					bindto.cpp \
++					bindtonewtype.cpp \
++					bufferparserthread.cpp \
++					calledbydict.cpp \
++					calltree.cpp \
++					calltreeview.cpp \
++					ccsmartfilter.cpp \
++					changecase.cpp \
++					constrhighlighter.cpp \
++					docblock.cpp \
++					farrays.cpp \
++					fconstruct.cpp \
++					finfowindow.cpp \
++					formatindent.cpp \
++					formatindentdlg.cpp \
++					fortranfileext.cpp \
++					fortranproject.cpp \
++					fpimagelist.cpp \
++					fpoptionsdlg.cpp \
++					includedb.cpp \
++					indentestimator.cpp \
++					jumptracker.cpp \
++					keywordsparserf.cpp \
++					lineaddress.cpp \
++					makefiledlg.cpp \
++					makefilegen.cpp \
++					moduletokenf.cpp \
++					nativeparserf.cpp \
++					parserf.cpp \
++					parserthreadf.cpp \
++					projectdependencies.cpp \
++					tab2space.cpp \
++					textcutter.cpp \
++					tokenf.cpp \
++					tokenizerf.cpp \
++					usetokenf.cpp \
++					workspacebrowserbuilder.cpp \
++					workspacebrowserf.cpp \
++					workspaceparserthread.cpp
++
++noinst_HEADERS = autoinsert.h \
++					bindto.h \
++					bindtonewtype.h \
++					bufferparserthread.h \
++					calledbydict.h \
++					calltree.h \
++					calltreeview.h \
++					ccsmartfilter.h \
++					changecase.h \
++					constrhighlighter.h \
++					docblock.h \
++					farrays.h \
++					fconstruct.h \
++					finfowindow.h \
++					formatindent.h \
++					formatindentdlg.h \
++					fortranfileext.h \
++					fortranproject.h \
++					fpimagelist.h \
++					fpoptionsdlg.h \
++					includedb.h \
++					indentestimator.h \
++					jumptracker.h \
++					keywordsparserf.h \
++					lineaddress.h \
++					makefiledlg.h \
++					makefilegen.h \
++					moduletokenf.h \
++					nativeparserf.h \
++					parserf.h \
++					parserthreadf.h \
++					projectdependencies.h \
++					tab2space.h \
++					textcutter.h \
++					tokenf.h \
++					tokenizerf.h \
++					usetokenf.h \
++					workspacebrowserbuilder.h \
++					workspacebrowserf.h \
++					workspaceparserthread.h
++
++EXTRA_DIST = $(srcdir)/*.cbp \
++		wxsmith/Bindto.wxs \
++		wxsmith/BindNewType.wxs \
++		wxsmith/FormatIndent.wxs \
++		wxsmith/MakefileDlg.wxs \
++		manifest.xml \
++		resources/changecase.xrc \
++		resources/fortranprojecttoolbar.xrc \
++		resources/settings.xrc \
++		resources/tab2space.xrc \
++		resources/workspacebrowserf.xrc \
++		update* \
++		images/*.png \
++		images/16x16/*.png \
++		images/fortranproject/*.png \
++		images/fortranproject/*.f90
++
++pkgdata_DATA = FortranProject.zip
++
++CLEANFILES = $(pkgdata_DATA)
++
++FortranProject.zip: manifest.xml
++	PWD=`pwd` cd $(srcdir) && zip -j9 $(PWD)/FortranProject.zip manifest.xml resources/*.xrc > /dev/null
++	PWD=`pwd` cd $(srcdir) && zip -R9 $(PWD)/FortranProject.zip images/*.png images/16x16/*.png images/fortranproject/*.png images/fortranproject/*.f90 > /dev/null
+diff -Naur old/src/plugins/contrib/FortranProject/images/16x16/Makefile.am new/src/plugins/contrib/FortranProject/images/16x16/Makefile.am
+--- /dev/null	1970-01-01 03:00:00.000000000 +0300
++++ new/src/plugins/contrib/FortranProject/images/16x16/Makefile.am	2018-02-22 09:08:57.000000000 +0300
+@@ -0,0 +1,3 @@
++pkgdatadir = $(datadir)/@PACKAGE@/images/16x16
++
++dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur old/src/plugins/contrib/FortranProject/images/Makefile.am new/src/plugins/contrib/FortranProject/images/Makefile.am
+--- /dev/null	1970-01-01 03:00:00.000000000 +0300
++++ new/src/plugins/contrib/FortranProject/images/Makefile.am	2018-02-22 09:11:41.000000000 +0300
+@@ -0,0 +1,5 @@
++SUBDIRS = 16x16 fortranproject
++
++pkgdatadir = $(datadir)/@PACKAGE@/images
++
++dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur old/src/plugins/contrib/FortranProject/images/fortranproject/Makefile.am new/src/plugins/contrib/FortranProject/images/fortranproject/Makefile.am
+--- /dev/null	1970-01-01 03:00:00.000000000 +0300
++++ new/src/plugins/contrib/FortranProject/images/fortranproject/Makefile.am	2018-02-22 10:40:11.000000000 +0300
+@@ -0,0 +1,3 @@
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject
++
++dist_pkgdata_DATA = $(srcdir)/*.png $(srcdir)/*.f90
+diff -Naur old/src/plugins/contrib/Makefile.am new/src/plugins/contrib/Makefile.am
+--- old/src/plugins/contrib/Makefile.am	2017-11-01 02:32:42.000000000 +0300
++++ new/src/plugins/contrib/Makefile.am	2018-02-21 11:08:07.000000000 +0300
+@@ -54,6 +54,10 @@
+ MAYBE_FILEMANAGER=FileManager appdata
+ endif
+ 
++if BUILD_FORTRANPROJECT
++MAYBE_FORTRANPROJECT=FortranProject appdata
++endif
++
+ if BUILD_HELP
+ MAYBE_HELP=help_plugin appdata
+ endif
+@@ -170,6 +174,7 @@
+ 		$(MAYBE_EDITORTWEAKS) \
+ 		$(MAYBE_ENVVARS) \
+ 		$(MAYBE_FILEMANAGER) \
++		$(MAYBE_FORTRANPROJECT) \
+ 		$(MAYBE_HEADERFIXUP) \
+ 		$(MAYBE_HELP) \
+ 		$(MAYBE_HEXEDITOR) \
+@@ -212,6 +217,7 @@
+ 		EditorTweaks \
+ 		envvars \
+ 		FileManager \
++		FortranProject \
+ 		headerfixup \
+ 		help_plugin \
+ 		HexEditor \
