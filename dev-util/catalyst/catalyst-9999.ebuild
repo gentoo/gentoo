@@ -35,8 +35,10 @@ RDEPEND="
 	!kernel_FreeBSD? ( || ( app-arch/tar[xattr] app-arch/libarchive[xattr] ) )
 	kernel_FreeBSD? ( app-arch/libarchive[xattr] )
 	virtual/cdrtools
-	amd64? ( >=sys-boot/syslinux-3.72 )
-	x86? ( >=sys-boot/syslinux-3.72 )
+	!prefix? (
+		amd64? ( >=sys-boot/syslinux-3.72 )
+		x86? ( >=sys-boot/syslinux-3.72 )
+	)
 	ccache? ( dev-util/ccache )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
 "
