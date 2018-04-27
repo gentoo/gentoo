@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit bash-completion-r1 eutils multilib python-r1
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/kernel/${PN}/${PN}.git"
-	inherit autotools git-2
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/kernel/${PN}/${PN}.git"
+	inherit autotools git-r3
 else
 	SRC_URI="mirror://kernel/linux/utils/kernel/kmod/${P}.tar.xz"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
