@@ -104,23 +104,23 @@ _apache2_set_mpms() {
 	for mpm in ${IUSE_MPMS} ; do
 		IUSE="${IUSE} apache2_mpms_${mpm}"
 
-		REQUIRED_USE="${REQUIRED_USE} apache2_mpms_${mpm}? ("
+		REQUIRED_USE+=" apache2_mpms_${mpm}? ("
 		for ompm in ${IUSE_MPMS} ; do
 			if [[ "${mpm}" != "${ompm}" ]] ; then
-				REQUIRED_USE="${REQUIRED_USE} !apache2_mpms_${ompm}"
+				REQUIRED_USE+=" !apache2_mpms_${ompm}"
 			fi
 		done
 
 		if has ${mpm} ${IUSE_MPMS_FORK} ; then
-			REQUIRED_USE="${REQUIRED_USE} !threads"
+			REQUIRED_USE+=" !threads"
 		else
-			REQUIRED_USE="${REQUIRED_USE} threads"
+			REQUIRED_USE+=" threads"
 		fi
-		REQUIRED_USE="${REQUIRED_USE} )"
+		REQUIRED_USE+=" )"
 	done
 
 	if [[ "${PV}" != 2.2* ]] ; then
-		REQUIRED_USE="${REQUIRED_USE} apache2_mpms_prefork? ( !apache2_modules_http2 )"
+		REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
 	fi
 }
 _apache2_set_mpms
@@ -155,7 +155,7 @@ _apache2_set_module_depends() {
 	local dep
 
 	for dep in ${MODULE_DEPENDS} ; do
-		REQUIRED_USE="${REQUIRED_USE} apache2_modules_${dep%:*}? ( apache2_modules_${dep#*:} )"
+		REQUIRED_USE+=" apache2_modules_${dep%:*}? ( apache2_modules_${dep#*:} )"
 	done
 }
 _apache2_set_module_depends
