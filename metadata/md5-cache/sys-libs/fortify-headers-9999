@@ -1,9 +1,9 @@
 DEFINED_PHASES=prepare unpack
-DEPEND=dev-vcs/git
+DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=A standalone implementation of fortify source.
-EAPI=5
+EAPI=6
 HOMEPAGE=http://git.2f30.org/fortify-headers/
 LICENSE=ISC
 SLOT=0
-_eclasses_=git-2	45ff482316b52b3f96ff6b7309b77f03
-_md5_=ce8399979c9fce8d8d61544b2b512744
+_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_md5_=71cab4ca1cce05aed0547e99184cbf24
