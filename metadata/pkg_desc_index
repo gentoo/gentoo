@@ -4788,6 +4788,7 @@ dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 1.10.0-r1: A simple pythonic tool for remote execution and deployment
 dev-python/fasteners 0.13.0 0.14.1: Python package that provides useful locks
+dev-python/faulthandler 3.0: functions to dump Python tracebacks explicitly (on fault, user signal, timeout)
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/feedgenerator 1.9: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
@@ -8040,7 +8041,7 @@ media-sound/qmmp 1.1.7-r1: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.4.4: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
-media-sound/quodlibet 3.7.1 3.8.1-r1: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 3.7.1 3.8.1-r1 3.9.1: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
@@ -8883,7 +8884,7 @@ net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your comm
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.18: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
-net-misc/r8168 8.044.02 8.045.08: r8168 driver for Realtek 8111/8168 PCI-E NICs
+net-misc/r8168 8.045.08: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
@@ -9000,8 +9001,8 @@ net-p2p/syncthing 0.14.38: Open Source Continuous File Synchronization
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.92-r2 2.93: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-gtk 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
-net-p2p/vuze 4.8.1.2-r1: BitTorrent client in Java, formerly called Azureus
-net-p2p/vuze-coreplugins 4.8.1.2: Core plugins for Vuze that are included in upstream distribution
+net-p2p/vuze 4.8.1.2-r1 5.7.2.0-r1: BitTorrent client in Java, formerly called Azureus
+net-p2p/vuze-coreplugins 4.8.1.2 5.7.2.0: Core plugins for Vuze that are included in upstream distribution
 net-print/cndrvcups-common-lb 3.40: Common files for Canon drivers
 net-print/cndrvcups-lb 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.1.4: The Common Unix Printing System
