@@ -1,0 +1,7 @@
+/var/log/stubby.log {
+	rotate 4
+	compress
+	size 200k
+	noolddir
+	missingok
+}
