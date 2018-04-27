@@ -106,15 +106,15 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	# A man-page is always handy, so fake one – here neomuttrc.5
-	# (neomutt.1 already exists)
+	# A man-page is always handy, so fake one for neomutt(1), neomuttrc(5).
 	if use !doc; then
-		sed -n '/^\(SRCDIR\|EXEEXT\|CC_FOR_BUILD\)\s*=/p;$a\\n' \
-			Makefile > doc/Makefile.fakedoc || die
-		sed -n '/^\(MAKEDOC_CPP\s*=\|doc\/\(makedoc$(EXEEXT)\|neomuttrc.man\):\)/,/^[[:blank:]]*$/p' \
+		printf 'include Makefile\n\nfake-doc: %s\n\n' \
+			'doc/neomutt.1 doc/neomuttrc.5' > doc/Makefile.fakedoc || die
+
+		sed -n '/^doc\/neomutt\(\.1\|rc\.5\):/,/^[[:blank:]]*$/p' \
 			doc/Makefile.autosetup >> doc/Makefile.fakedoc || die
-		emake -f doc/Makefile.fakedoc doc/neomuttrc.man
-		cp doc/neomuttrc.man doc/neomuttrc.5 || die
+
+		emake -f doc/Makefile.fakedoc fake-doc
 		doman doc/neomutt.1 doc/neomuttrc.5
 	fi
 
