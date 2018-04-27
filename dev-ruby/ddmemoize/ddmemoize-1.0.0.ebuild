@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
@@ -12,16 +12,20 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Transform Ruby enumerators that produce data slowly and unpredictably"
-HOMEPAGE="https://github.com/ddfreyne/slow_enumerator_tools/"
+DESCRIPTION="Adds support for memoizing functions"
+HOMEPAGE="https://github.com/ddfreyne/ddmemoize/"
 
 LICENSE="MIT"
 SLOT="1"
 KEYWORDS="~amd64"
 IUSE=""
 
+ruby_add_rdepend "
+	dev-ruby/ddmetrics:1
+	dev-ruby/ref:2
+"
+
 all_ruby_prepare() {
-	sed -i -e '/simplecov/,/SimpleCov.formatter/ s:^:#:' \
+	sed -i -e '/simplecov/,/^SimpleCov.formatter/ s:^:#:' \
 		-e '/fuubar/,/^end/ s:^:#:' spec/spec_helper.rb || die
-	sed -i -e '/Fuubar/d' .rspec || die
 }
