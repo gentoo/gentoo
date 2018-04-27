@@ -19,7 +19,7 @@ detect_version
 
 K_NOSETEXTRAVERSION="don't_set_it"
 DESCRIPTION="The Zen Kernel Live Sources"
-HOMEPAGE="https://zen-kernel.org"
+HOMEPAGE="https://github.com/zen-kernel"
 
 IUSE=""
 
