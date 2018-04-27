@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
-#RUBY_FAKEGEM_RECIPE_TEST="rspec3"
+RUBY_FAKEGEM_RECIPE_TEST="none"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_BINWRAP=""
 
@@ -19,9 +19,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
-
-# Specs are not packaged in the gem and source is not tagged upstream.
-RESTRICT="test"
 
 ruby_add_bdepend "dev-ruby/rex-random_identifier
 		  dev-ruby/rex-text"
