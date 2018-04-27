@@ -206,11 +206,10 @@ DEPEND="${RDEPEND}
 if in_iuse gcj ; then
 	GCJ_DEPS=">=media-libs/libart_lgpl-2.1"
 	GCJ_GTK_DEPS="
+		x11-base/xorg-proto
 		x11-libs/libXt
 		x11-libs/libX11
 		x11-libs/libXtst
-		x11-proto/xproto
-		x11-proto/xextproto
 		=x11-libs/gtk+-2*
 		virtual/pkgconfig
 	"
