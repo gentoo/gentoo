@@ -28,9 +28,6 @@ RDEPEND="
 
 	x11-libs/libXi
 	x11-libs/libXxf86dga
-	x11-proto/xproto
-	x11-proto/inputproto
-	x11-proto/xf86dgaproto
 
 	dev-libs/libxml2:2
 	media-libs/audiofile:=
@@ -39,6 +36,7 @@ RDEPEND="
 	media-libs/liblrdf
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	app-text/gnome-doc-utils
 	virtual/pkgconfig
 "
