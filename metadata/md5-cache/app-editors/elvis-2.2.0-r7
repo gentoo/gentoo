@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst postrm
-DEPEND=sys-libs/ncurses:0= app-eselect/eselect-vi X? ( >=x11-proto/xproto-7.0.4 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 ) virtual/pkgconfig
+DEPEND=sys-libs/ncurses:0= app-eselect/eselect-vi X? ( >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 ) x11-base/xorg-proto virtual/pkgconfig
 DESCRIPTION=A vi/ex clone
 EAPI=6
 HOMEPAGE=http://elvis.the-little-red-haired-girl.org
 IUSE=X
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris
 LICENSE=Artistic
-RDEPEND=sys-libs/ncurses:0= app-eselect/eselect-vi X? ( >=x11-proto/xproto-7.0.4 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 )
+RDEPEND=sys-libs/ncurses:0= app-eselect/eselect-vi X? ( >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 )
 SLOT=0
 SRC_URI=ftp://ftp.cs.pdx.edu/pub/elvis/elvis-2.2_0.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=171d459ac3fd38ae07e4ce48dc782471
+_md5_=9d0c7611bc1b1e29dd2d127ae14305ef
