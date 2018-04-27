@@ -14,14 +14,13 @@ SLOT="0"
 IUSE="debug static-libs threads"
 KEYWORDS="amd64 ppc x86"
 
-DEPEND="
+RDEPEND="
 	dev-lang/tk[threads?]
 	x11-libs/libXScrnSaver
 	x11-libs/libX11
-	x11-libs/libXext
-	x11-proto/scrnsaverproto
-	x11-proto/xextproto"
-RDEPEND="${DEPEND}"
+	x11-libs/libXext"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 PATCHES=(
 		"${FILESDIR}"/${PV}-Makefile.in.diff
