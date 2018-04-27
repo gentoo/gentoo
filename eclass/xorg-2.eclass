@@ -210,7 +210,7 @@ case ${XORG_DRI} in
 		IUSE+=" ${XORG_DRI}"
 		;;
 esac
-unset DRI_COMMONDEPEND
+unset DRI_COMMON_DEPEND
 
 if [[ -n "${DRIVER}" ]]; then
 	COMMON_DEPEND+="
