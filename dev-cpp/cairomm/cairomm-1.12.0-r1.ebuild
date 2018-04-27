@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="C++ bindings for the Cairo vector graphics library"
-HOMEPAGE="http://cairographics.org/cairomm"
+HOMEPAGE="https://cairographics.org/cairomm/"
 
 LICENSE="LGPL-2+"
 SLOT="0"
