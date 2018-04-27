@@ -65,10 +65,8 @@ multilib_src_configure() {
 multilib_src_install() {
 	V=1 emake install DESTDIR="${D}"
 
-	HTML_DOCS=( doc/. )
+	local HTML_DOCS=( doc/. )
 	einstalldocs
 
-	if use static-libs ; then
-		find "${D}" -name '*.la' -delete || die
-	fi
+	find "${D}" -name '*.la' -delete || die
 }
