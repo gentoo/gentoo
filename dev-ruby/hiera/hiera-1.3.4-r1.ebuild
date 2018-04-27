@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A simple pluggable Hierarchical Database"
-HOMEPAGE="http://projects.puppetlabs.com/"
+HOMEPAGE="https://docs.puppet.com/hiera/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
