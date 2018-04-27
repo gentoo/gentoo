@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 AUTOTOOLS_AUTORECONF="1"
 
-inherit eutils autotools autotools-utils
+inherit autotools autotools-utils eutils
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/sahlberg/${PN}.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~x86"
