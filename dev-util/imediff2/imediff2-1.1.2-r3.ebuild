@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ inherit python-single-r1 versionator
 MY_P=${PN}_$(replace_version_separator 3 -)
 
 DESCRIPTION="An interactive, user friendly 2-way merge tool in text mode"
-HOMEPAGE="http://elonen.iki.fi/code/imediff/"
+HOMEPAGE="https://elonen.iki.fi/code/imediff/"
 SRC_URI="mirror://debian/pool/main/i/${PN}/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"
