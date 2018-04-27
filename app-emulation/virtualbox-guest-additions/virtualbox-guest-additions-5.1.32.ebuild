@@ -20,7 +20,6 @@ IUSE="X"
 
 RDEPEND="X? ( x11-apps/xrandr
 		x11-apps/xrefresh
-		x11-base/xorg-proto
 		x11-libs/libXmu
 		x11-libs/libX11
 		x11-libs/libXt
