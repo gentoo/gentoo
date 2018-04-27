@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Python libraries and CLI to interact with the REST API of a Girder server"
-HOMEPAGE="http://girder.readthedocs.org/en/latest/python-client.html"
+HOMEPAGE="https://girder.readthedocs.io/en/latest/python-client.html"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
