@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/elfix.git"
-	inherit git-2
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/elfix.git"
+	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/elfix/elfix-${PV}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
