@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,10 +12,9 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python implementation of the markdown markup language"
 HOMEPAGE="
-	http://www.freewisdom.org/projects/python-markdown
+	https://python-markdown.github.io/
 	https://pypi.org/project/Markdown/
-	https://pythonhosted.org/Markdown/
-	https://github.com/waylan/Python-Markdown"
+	https://github.com/Python-Markdown/markdown"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="|| ( BSD GPL-2 )"
