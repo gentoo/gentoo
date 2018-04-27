@@ -50,8 +50,10 @@ src_configure() {
 src_install() {
 	default
 	if use stubby; then
-		newinitd "${FILESDIR}"/stubby.initd stubby
-		newconfd "${FILESDIR}"/stubby.confd stubby
+		newinitd "${FILESDIR}"/stubby.initd-r1 stubby
+		newconfd "${FILESDIR}"/stubby.confd-r1 stubby
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}"/stubby.logrotate stubby
 		systemd_newunit "${FILESDIR}"/stubby.systemd stubby.service
 		systemd_newtmpfilesd "${FILESDIR}"/stubby.tmpfilesd stubby.conf
 	fi

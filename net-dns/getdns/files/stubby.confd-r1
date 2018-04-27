@@ -1,0 +1,16 @@
+# /etc/conf.d/stubby: config file for /etc/init.d/stubby
+
+# Enter here Stubby YAML configuration file to use.
+STUBBY_CONFIG_FILE="/etc/stubby/stubby.yml"
+
+# Set here Stubby log level to use.
+# Following log levels are available:
+#	0: EMERG  - System is unusable
+#	1: ALERT  - Action must be taken immediately
+#	2: CRIT   - Critical conditions
+#	3: ERROR  - Error conditions
+#	4: WARN   - Warning conditions
+#	5: NOTICE - Normal, but significant, condition
+#	6: INFO   - Informational message
+#	7: DEBUG  - Debug-level message
+STUBBY_LOGLEVEL="5"
