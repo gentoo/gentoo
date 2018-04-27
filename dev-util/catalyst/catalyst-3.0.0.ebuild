@@ -1,13 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+inherit distutils-r1 multilib
+
+DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 if [[ ${PV} == *9999* ]]; then
-	SRC_ECLASS="git-2"
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/catalyst.git"
-	EGIT_BRANCH="master"
-	S="${WORKDIR}/${PN}"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/catalyst.git"
+	inherit git-r3
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
 		https://dev.gentoo.org/~dolsen/releases/catalyst/${P}.tar.bz2
@@ -15,13 +18,6 @@ else
 		https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
-
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-
-inherit distutils-r1 multilib ${SRC_ECLASS}
-
-DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2"
 SLOT="0"
