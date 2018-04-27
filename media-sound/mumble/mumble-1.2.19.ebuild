@@ -38,7 +38,6 @@ RDEPEND=">=dev-libs/boost-1.41.0
 	dev-qt/qtsql:4[sqlite]
 	dev-qt/qtsvg:4
 	dev-qt/qtxmlpatterns:4
-	x11-proto/inputproto
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( dev-qt/qtdbus:4 )
 	g15? ( app-misc/g15daemon )
@@ -47,7 +46,9 @@ RDEPEND=">=dev-libs/boost-1.41.0
 	speech? ( app-accessibility/speech-dispatcher )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	x11-base/xorg-proto
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.4-speech-dispatcher.patch
