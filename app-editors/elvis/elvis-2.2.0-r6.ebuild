@@ -23,7 +23,7 @@ RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
 		>=x11-libs/libXft-2.1.8.2 )
 	app-eselect/eselect-vi"
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
+	X? ( x11-base/xorg-proto )
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${PN}-${MY_PV}
