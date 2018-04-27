@@ -3118,7 +3118,7 @@ dev-libs/libpipeline 1.4.0 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpqxx 4.0.1 5.1.0 6.0.0: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
-dev-libs/libpthread-stubs 0.3-r1 0.4: Pthread functions stubs for platforms missing them
+dev-libs/libpthread-stubs 0.4: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 2.0.0: A Qt implementation of XDG standards
 dev-libs/librdkafka 0.9.2-r1 0.9.5 0.11.3-r1: Apache Kafka C/C++ client library
