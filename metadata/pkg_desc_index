@@ -2885,7 +2885,7 @@ dev-lang/php 5.6.33 5.6.34 5.6.35-r1 7.0.27 7.0.28 7.0.29 7.1.13 7.1.15 7.1.16: 
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0-r1: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/ruby 2.2.9 2.2.10 2.3.6 2.3.7: An object-oriented scripting language
+dev-lang/ruby 2.3.6 2.3.7: An object-oriented scripting language
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.11.4-r1: The Scala Programming Language
 dev-lang/scala-bin 2.11.8: The Scala Programming Language
@@ -5930,7 +5930,7 @@ dev-ruby/timecop 0.8.1: A gem providing 'time travel' and 'time freezing' capabi
 dev-ruby/tins 1.14.0: All the stuff that isn't good enough for a real library
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
 dev-ruby/trollop 2.1.2: Trollop is a commandline option parser for Ruby
-dev-ruby/tzinfo 0.3.53 1.2.4: Daylight-savings aware timezone library
+dev-ruby/tzinfo 1.2.4: Daylight-savings aware timezone library
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.4: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
