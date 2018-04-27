@@ -13,6 +13,10 @@ SLOT="1"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ia64.patch
+)
+
 src_configure() {
 	econf --disable-static
 }
