@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Simple framework for creating REST APIs"
-HOMEPAGE="http://flask-restful.readthedocs.org/ https://github.com/twilio/flask-restful/"
+HOMEPAGE="https://flask-restful.readthedocs.io/en/latest/ https://github.com/twilio/flask-restful/"
 SRC_URI="https://github.com/twilio/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
