@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 pypy )
 
 inherit distutils-r1
 
@@ -22,9 +22,6 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
-
-# https://bitbucket.org/dholth/ed25519ll/issues/1/testfailures-with-python-3
-RESTRICT=test
 
 python_test() {
 	esetup.py test
