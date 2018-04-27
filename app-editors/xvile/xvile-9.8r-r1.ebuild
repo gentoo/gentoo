@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,9 +20,9 @@ RDEPEND="perl? ( dev-lang/perl )
 	>=x11-libs/libICE-1.0.0
 	>=x11-libs/libSM-1.0.0
 	>=x11-libs/libXaw-1.0.1
-	>=x11-libs/libXpm-3.5.4.2
-	>=x11-proto/xproto-7.0.4"
+	>=x11-libs/libXpm-3.5.4.2"
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	sys-devel/flex"
 
 S=${WORKDIR}/${MY_P}

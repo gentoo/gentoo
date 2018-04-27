@@ -1,38 +1,32 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A mouse friendly tiling window manager"
 HOMEPAGE="http://www.hzog.net/index.php/Main_Page"
-SRC_URI="http://www.hzog.net/pub/${PF}.tar.gz"
+SRC_URI="http://www.hzog.net/pub/${PN}-1.9.9-r1.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=x11-proto/xcb-proto-1.12-r2
 	>=x11-libs/libxcb-1.11[xkb]
 	>=x11-libs/xcb-util-0.4.0
 	>=x11-libs/libXfixes-5.0.3
 	>=x11-libs/libXdamage-1.1.4-r1
-	>=x11-proto/damageproto-1.2.1-r1
-	>=x11-proto/randrproto-1.5.0
 	>=x11-libs/libXrandr-1.5.1
-	>=x11-proto/xproto-7.0.31
-	>=x11-proto/fixesproto-5.0-r1
-	>=x11-proto/compositeproto-0.4.2-r1
 	>=x11-libs/libXcomposite-0.4.4-r1
-	>=x11-proto/renderproto-0.11.1-r1
 	>=x11-libs/libXrender-0.9.10
 	>=x11-libs/libXext-1.3.3
-	>=x11-proto/xextproto-7.3.0
 	>=x11-libs/cairo-1.14.6[X,xcb]
 	>=x11-libs/pango-1.40.5
 	>=dev-libs/glib-2.50.3-r1:2"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=x11-base/xcb-proto-1.12-r2
+	x11-base/xorg-proto"
 
 src_install() {
 	default
