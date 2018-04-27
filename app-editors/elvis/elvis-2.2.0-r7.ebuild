@@ -28,7 +28,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto
+	X? ( x11-base/xorg-proto )
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
