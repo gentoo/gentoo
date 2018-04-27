@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=A virtual for PyPy3 Python implementation
+EAPI=6
+IUSE=bzip2 gdbm ncurses sqlite tk
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+RDEPEND=|| ( >=dev-python/pypy3-6.0.0:0/60[bzip2?,gdbm(-)?,ncurses?,sqlite?,tk?] >=dev-python/pypy3-bin-6.0.0:0/60[gdbm(-)?,sqlite?,tk?] )
+SLOT=0/60
+_md5_=98ebfe538a16178f7e8d1ad3e2e8f46a
