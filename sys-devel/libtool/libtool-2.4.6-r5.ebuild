@@ -66,9 +66,12 @@ src_prepare() {
 		)
 	fi
 
-	use vanilla && return 0
-
-	default
+	if use vanilla ; then
+		eapply_user
+		return 0
+	else
+		default
+	fi
 
 	if use prefix ; then
 		# seems that libtool has to know about EPREFIX a little bit
