@@ -6,7 +6,7 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.code.sf.net/p/net-tools/code"
+	EGIT_REPO_URI="https://git.code.sf.net/p/net-tools/code"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.xz"
