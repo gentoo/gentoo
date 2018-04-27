@@ -97,9 +97,34 @@ for module in ${IUSE_MODULES} ; do
 	IUSE="${IUSE} apache2_modules_${module}"
 done
 
-for mpm in ${IUSE_MPMS} ; do
-	IUSE="${IUSE} apache2_mpms_${mpm}"
-done
+_apache2_set_mpms() {
+	local mpm
+	local ompm
+
+	for mpm in ${IUSE_MPMS} ; do
+		IUSE="${IUSE} apache2_mpms_${mpm}"
+
+		REQUIRED_USE+=" apache2_mpms_${mpm}? ("
+		for ompm in ${IUSE_MPMS} ; do
+			if [[ "${mpm}" != "${ompm}" ]] ; then
+				REQUIRED_USE+=" !apache2_mpms_${ompm}"
+			fi
+		done
+
+		if has ${mpm} ${IUSE_MPMS_FORK} ; then
+			REQUIRED_USE+=" !threads"
+		else
+			REQUIRED_USE+=" threads"
+		fi
+		REQUIRED_USE+=" )"
+	done
+
+	if [[ "${PV}" != 2.2* ]] ; then
+		REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
+	fi
+}
+_apache2_set_mpms
+unset -f _apache2_set_mpms
 
 DEPEND="${CDEPEND}
 	dev-lang/perl
@@ -119,6 +144,23 @@ PDEPEND="~app-admin/apache-tools-${PV}"
 
 S="${WORKDIR}/httpd-${PV}"
 
+# @VARIABLE: MODULE_DEPENDS
+# @DESCRIPTION:
+# This variable needs to be set in the ebuild and contains a space-separated
+# list of dependency tokens each with a module and the module it depends on
+# separated by a colon
+
+# now extend REQUIRED_USE to reflect the module dependencies to portage
+_apache2_set_module_depends() {
+	local dep
+
+	for dep in ${MODULE_DEPENDS} ; do
+		REQUIRED_USE+=" apache2_modules_${dep%:*}? ( apache2_modules_${dep#*:} )"
+	done
+}
+_apache2_set_module_depends
+unset -f _apache2_set_module_depends
+
 # ==============================================================================
 # INTERNAL FUNCTIONS
 # ==============================================================================
@@ -135,16 +177,12 @@ setup_mpm() {
 	MY_MPM=""
 	for x in ${IUSE_MPMS} ; do
 		if use apache2_mpms_${x} ; then
-			if [[ -z "${MY_MPM}" ]] ; then
-				MY_MPM=${x}
-				elog
-				elog "Selected MPM: ${MY_MPM}"
-				elog
-			else
-				eerror "You have selected more then one mpm USE-flag."
-				eerror "Only one MPM is supported."
-				die "more then one mpm was specified"
-			fi
+			# there can at most be one MPM selected because of REQUIRED_USE constraints
+			MY_MPM=${x}
+			elog
+			elog "Selected MPM: ${MY_MPM}"
+			elog
+			break
 		fi
 	done
 
@@ -160,20 +198,6 @@ setup_mpm() {
 			elog "Selected default MPM: ${MY_MPM}"
 			elog
 		fi
-	fi
-
-	if has ${MY_MPM} ${IUSE_MPMS_THREAD} && ! use threads ; then
-		eerror "You have selected a threaded MPM but USE=threads is disabled"
-		die "invalid use flag combination"
-	fi
-
-	if has ${MY_MPM} ${IUSE_MPMS_FORK} && use threads ; then
-		eerror "You have selected a non-threaded MPM but USE=threads is enabled"
-		die "invalid use flag combination"
-	fi
-
-	if [[ "${PV}" != 2.2* ]] && [[ "${MY_MPM}" = *prefork* ]] && use apache2_modules_http2 ; then
-		die "http2 does not work with prefork MPM."
 	fi
 }
 
@@ -204,35 +228,6 @@ check_module_critical() {
 		ewarn "Although this is not an error, please be"
 		ewarn "aware that this setup is UNSUPPORTED."
 		ewarn
-	fi
-}
-
-# @VARIABLE: MODULE_DEPENDS
-# @DESCRIPTION:
-# This variable needs to be set in the ebuild and contains a space-separated
-# list of dependency tokens each with a module and the module it depends on
-# separated by a colon
-
-# @FUNCTION: check_module_depends
-# @DESCRIPTION:
-# This internal function makes sure that all inter-module dependencies are
-# satisfied with the current module selection
-check_module_depends() {
-	local err=0
-
-	for m in ${MY_MODS[@]} ; do
-		for dep in ${MODULE_DEPENDS} ; do
-			if [[ "${m}" == "${dep%:*}" ]] ; then
-				if ! use apache2_modules_${dep#*:} ; then
-					eerror "Module '${m}' depends on '${dep#*:}'"
-					err=1
-				fi
-			fi
-		done
-	done
-
-	if [[ ${err} -ne 0 ]] ; then
-		die "invalid use flag combination"
 	fi
 }
 
@@ -316,7 +311,6 @@ setup_modules() {
 
 	# sort and uniquify MY_MODS
 	MY_MODS=( $(echo ${MY_MODS[@]} | tr ' ' '\n' | sort -u) )
-	check_module_depends
 	check_module_critical
 }
 
