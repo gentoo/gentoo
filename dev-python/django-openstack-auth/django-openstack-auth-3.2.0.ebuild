@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ MY_PN=${PN//-/_}
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Django authentication backend for use with OpenStack Keystone Identity backend"
-HOMEPAGE="http://django_openstack_auth.readthedocs.org/"
+HOMEPAGE="https://django-openstack-auth.readthedocs.io/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
