@@ -8,7 +8,7 @@ DESCRIPTION="Data-protection and recovery tool for DVDs"
 HOMEPAGE="http://dvdisaster.sourceforge.net/"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="debug nls"
