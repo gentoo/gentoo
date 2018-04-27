@@ -8,7 +8,10 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="A Session and Caching library with WSGI Middleware"
-HOMEPAGE="https://github.com/bbangert/beaker https://pypi.org/project/Beaker/"
+HOMEPAGE="
+	https://github.com/bbangert/beaker
+	https://beaker.readthedocs.io/en/latest/
+	https://pypi.org/project/Beaker/"
 # pypi tarball lacks tests
 SRC_URI="https://github.com/bbangert/beaker/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
