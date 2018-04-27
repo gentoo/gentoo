@@ -56,7 +56,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
 	virtual/pkgconfig
-	x11-proto/inputproto
+	x11-base/xorg-proto
 "
 
 src_configure() {
