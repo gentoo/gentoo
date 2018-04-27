@@ -101,6 +101,9 @@ src_compile() {
 		AS="$(tc-getAS)"
 		LD="$(tc-getLD)"
 		AR="$(tc-getAR)"
+		GNUEFILIB="/usr/$(get_libdir)"
+		EFILIB="/usr/$(get_libdir)"
+		EFICRT0="/usr/$(get_libdir)"
 		RANLIB="$(tc-getRANLIB)"
 		OBJCOPY="$(tc-getOBJCOPY)"
 		GNUEFI_LDFLAGS="-T \$(GNUEFI_LDSCRIPT) -shared -nostdlib -Bsymbolic \
