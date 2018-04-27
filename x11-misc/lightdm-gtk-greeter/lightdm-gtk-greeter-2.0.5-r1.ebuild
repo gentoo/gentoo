@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit versionator gnome2-utils
+inherit autotools gnome2-utils versionator
 
 DESCRIPTION="LightDM GTK+ Greeter"
 HOMEPAGE="https://launchpad.net/lightdm-gtk-greeter"
@@ -46,6 +46,10 @@ src_prepare() {
 			>> "${WORKDIR}"/${PN}.conf || die
 	fi
 	default
+
+	# Fix docdir
+	sed "/^docdir/s@${PN}@${PF}@" -i data/Makefile.am || die
+	eautoreconf
 }
 
 src_configure() {
