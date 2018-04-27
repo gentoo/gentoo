@@ -4,6 +4,7 @@
 EAPI=5
 
 XORG_MULTILIB=yes
+XORG_STATIC=no
 inherit xorg-2
 
 DESCRIPTION="Pthread functions stubs for platforms missing them"
