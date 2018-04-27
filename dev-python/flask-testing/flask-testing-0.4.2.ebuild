@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ MY_PN="Flask-Testing"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Unit testing for Flask"
-HOMEPAGE="http://pythonhosted.org/Flask-Testing/ https://pypi.org/project/Flask-Testing/"
+HOMEPAGE="https://pythonhosted.org/Flask-Testing/ https://pypi.org/project/Flask-Testing/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
