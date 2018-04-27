@@ -13,13 +13,13 @@ SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="gtk"
 
-DEPEND="x11-libs/libX11
+RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
-	x11-proto/inputproto
 	gtk? ( dev-cpp/gtkmm:2.4 )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 src_configure() {
 	append-cxxflags -std=c++11 #566594
