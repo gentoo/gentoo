@@ -51,7 +51,9 @@ src_unpack() {
 	cp "${FILESDIR}"/build.xml "${S}" || die "failed to copy build.xml"
 }
 
-java_prepare() {
+src_prepare() {
+	default
+
 	# upstream likes randomly changing a subset of files to CRLF every release
 	edos2unix $(find "${S}" -type f -name "*.java")
 
