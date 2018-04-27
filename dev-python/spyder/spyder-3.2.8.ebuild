@@ -8,7 +8,10 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit eutils distutils-r1 xdg-utils
 
 DESCRIPTION="Python IDE with matlab-like features"
-HOMEPAGE="https://github.com/spyder-ide/spyder/ https://pypi.python.org/pypi/spyder/ http://pythonhosted.org/spyder/"
+HOMEPAGE="
+	https://github.com/spyder-ide/spyder/
+	https://pypi.org/project/spyder/
+	https://pythonhosted.org/spyder/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
