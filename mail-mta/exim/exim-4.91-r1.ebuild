@@ -55,7 +55,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	dmarc? ( mail-filter/opendmarc )
 	srs? ( mail-filter/libsrs_alt )
-	X? ( x11-proto/xproto
+	X? (
 		x11-libs/libX11
 		x11-libs/libXmu
 		x11-libs/libXt
