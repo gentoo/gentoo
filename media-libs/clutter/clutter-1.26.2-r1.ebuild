@@ -47,7 +47,6 @@ RDEPEND="
 		>=x11-libs/libX11-1.3.1
 		x11-libs/libXext
 		x11-libs/libXdamage
-		x11-proto/inputproto
 		>=x11-libs/libXi-1.3
 		>=x11-libs/libXcomposite-0.4 )
 	wayland? (
@@ -62,6 +61,7 @@ DEPEND="${RDEPEND}
 		>=dev-util/gtk-doc-1.20
 		>=app-text/docbook-sgml-utils-0.6.14[jadetex]
 		dev-libs/libxslt )
+	X? ( x11-base/xorg-proto )
 	test? ( x11-libs/gdk-pixbuf )
 "
 
