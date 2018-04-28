@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic readme.gentoo-r1 user systemd
+inherit autotools flag-o-matic readme.gentoo-r1 systemd user
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="http://www.lighttpd.net/"
@@ -37,10 +37,9 @@ CDEPEND="
 		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos?] )
 		libressl? ( dev-libs/libressl:= )
 	)
-	sqlite?		( dev-db/sqlite:3 )
+	sqlite?	( dev-db/sqlite:3 )
 	webdav? (
 		dev-libs/libxml2
-		>=dev-db/sqlite-3
 		sys-fs/e2fsprogs
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
@@ -81,7 +80,7 @@ remove_non_essential() {
 
 	# non-essential modules
 	rm -f \
-		${libdir}/mod_{compress,evhost,expire,proxy,scgi,secdownload,simple_vhost,status,setenv,trigger*,usertrack}.*
+		${libdir}/mod_{compress,evhost,expire,proxy,scgi,secdownload,simple_vhost,status,setenv,trigger*,usertrack}.* || die
 
 	# allow users to keep some based on USE flags
 	use pcre    || rm -f ${libdir}/mod_{ssi,re{direct,write}}.*
@@ -192,7 +191,7 @@ src_install() {
 	newdoc doc/config//lighttpd.conf lighttpd.conf.distrib
 	use ipv6 && readme.gentoo_create_doc
 
-	use doc && dodoc -r doc/*
+	use doc && dodoc -r doc
 
 	docinto txt
 	dodoc doc/outdated/*.txt
