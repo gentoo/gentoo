@@ -24,7 +24,6 @@ DEPEND="
 	sys-auth/polkit-qt[qt5(+)]
 	sys-libs/pam
 	x11-libs/libX11
-	x11-proto/xproto
 	x11-libs/libfakekey
 	dev-libs/libusb
 	!sys-auth/thinkfinger
