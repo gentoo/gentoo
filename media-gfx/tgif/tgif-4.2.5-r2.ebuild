@@ -22,8 +22,7 @@ DEPEND="sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libXt
-	x11-proto/xproto"
+	x11-libs/libXt"
 RDEPEND="${DEPEND}
 	media-libs/netpbm"
 

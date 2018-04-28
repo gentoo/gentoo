@@ -48,7 +48,6 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXt
 	media-libs/giflib:=
-	x11-proto/xproto
 	agg? ( x11-libs/agg )
 	cairo? ( x11-libs/cairo )
 	directfb? (

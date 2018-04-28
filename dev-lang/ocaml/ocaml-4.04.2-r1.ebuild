@@ -22,7 +22,7 @@ IUSE="emacs flambda latex ncurses +ocamlopt X xemacs"
 RDEPEND="
 	sys-libs/binutils-libs:=
 	ncurses? ( sys-libs/ncurses:0= )
-	X? ( x11-libs/libX11 x11-proto/xproto )"
+	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
