@@ -14,7 +14,6 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/radare/radare2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~arm ~arm64"
-	PATCHES=( "${FILESDIR}"/${PN}-0.9.9-nogit.patch )
 fi
 
 LICENSE="GPL-2"
