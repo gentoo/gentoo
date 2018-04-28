@@ -9,5 +9,5 @@ DESCRIPTION="X.Org rstart application"
 KEYWORDS="amd64 arm ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE=""
 
-RDEPEND="x11-proto/xproto"
-DEPEND="${RDEPEND}"
+DEPEND="x11-base/xorg-proto"
+RDEPEND="${DEPEND}"
