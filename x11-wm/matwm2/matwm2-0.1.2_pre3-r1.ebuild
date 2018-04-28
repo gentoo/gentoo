@@ -19,15 +19,12 @@ S="${WORKDIR}/${PN}-${MY_PV}/${PN}"
 RDEPEND="
 	x11-libs/libXext
 	x11-libs/libX11
-	debug? ( x11-proto/xproto )
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xextproto
-	xinerama? ( x11-proto/xineramaproto )
 "
 
 PATCHES=( "${FILESDIR}/${P}-destdir-fix.patch" )
