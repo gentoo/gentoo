@@ -14,9 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 DEPEND="x11-libs/libXpm"
-RDEPEND="${DEPEND}
-	x11-proto/xextproto
-	x11-proto/xproto"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-gcc41.patch )
 
