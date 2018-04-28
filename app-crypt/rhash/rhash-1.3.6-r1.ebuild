@@ -12,9 +12,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x64-solaris ~x86-solaris"
-IUSE="debug nls openssl static-libs"
+IUSE="debug nls libressl ssl static-libs"
 
-RDEPEND="openssl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )"
+RDEPEND="
+	ssl? (
+		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+)"
 
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
@@ -47,7 +51,7 @@ multilib_src_configure() {
 		--enable-lib-shared \
 		$(use_enable debug) \
 		$(use_enable nls gettext) \
-		$(use_enable openssl) \
+		$(use_enable ssl openssl) \
 		$(use_enable static-libs lib-static)
 
 	echo "${@}"
