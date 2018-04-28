@@ -14,7 +14,7 @@ DOC_PV="1.10.1"
 DOC_P="${PN}-${DOC_PV}"
 
 DESCRIPTION="Fast array and numerical python library"
-HOMEPAGE="http://www.numpy.org/"
+HOMEPAGE="https://www.numpy.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	doc? (
 		http://docs.scipy.org/doc/${DOC_P}/${PN}-html-${DOC_PV}.zip

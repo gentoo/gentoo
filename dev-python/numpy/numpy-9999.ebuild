@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ DOC_PV="1.9.1"
 DOC_P="${PN}-${DOC_PV}"
 
 DESCRIPTION="Fast array and numerical python library"
-HOMEPAGE="http://www.numpy.org/"
+HOMEPAGE="https://www.numpy.org"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/numpy/numpy.git"
 
