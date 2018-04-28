@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit eutils unpacker
+inherit desktop eutils unpacker
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.baldursgate.com/"
-SRC_URI="gog_baldur_s_gate_enhanced_edition_2.5.0.9.sh"
+SRC_URI="baldur_s_gate_enhanced_edition_en_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -29,11 +29,11 @@ S="${WORKDIR}/data/noarch"
 pkg_nofetch() {
 	einfo "Please buy and download \"${SRC_URI}\" from"
 	einfo "https://www.gog.com/game/baldurs_gate_enhanced_edition"
-	einfo "and copy it to \"${DISTDIR}\""
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unpack_zip ${A}
 }
 
 src_install() {
@@ -52,5 +52,5 @@ src_install() {
 
 	newicon "support/icon.png" "${PN}.png"
 	make_wrapper ${PN} "./BaldursGate" "${dir}" "${dir}/lib"
-	make_desktop_entry "${PN}" "Baldur's Gate: Enhanced Edition" "${PN}" "Game;RolePlaying"
+	make_desktop_entry "${PN}" "Baldur's Gate: Enhanced Edition" "${PN}"
 }
