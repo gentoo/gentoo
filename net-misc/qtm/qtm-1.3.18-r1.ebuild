@@ -23,9 +23,9 @@ RDEPEND="dev-lang/perl
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	virtual/perl-Digest-MD5
-	x11-proto/xproto
 	dbus? ( dev-qt/qtdbus:5 )"
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	virtual/pkgconfig"
 
 DOCS=( Changelog README )
