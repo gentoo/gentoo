@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Geospatial extension to SQLAlchemy with PostGIS support"
-HOMEPAGE="http://geoalchemy.org/ http://geoalchemy-2.readthedocs.org"
+HOMEPAGE="https://geoalchemy-2.readthedocs.io/en/latest/"
 SRC_URI="https://github.com/geoalchemy/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # ^^ tarball on pypi is missing tests
 LICENSE="MIT"
