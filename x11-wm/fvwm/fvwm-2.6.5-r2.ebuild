@@ -39,10 +39,7 @@ COMMON_DEPEND="
 		media-libs/fontconfig
 		x11-libs/libXft
 	)
-	xinerama? (
-		x11-proto/xineramaproto
-		x11-libs/libXinerama
-	)
+	xinerama? ( x11-libs/libXinerama )
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
