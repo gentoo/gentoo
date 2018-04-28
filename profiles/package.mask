@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (27 Apr 2018)
+# Upstream is dead, the site with the sources is down.
+# There's no chance to get the sources (fetch restricted)
+# Removal in 30 days (bug #642866)
+app-emulation/armv8-fast-model
+
 # Hans de Graaff <graaff@gentoo.org> (27 Apr 2018)
 # No longer supported upstream. Use ruby23 instead.
 # Masked for removal in 30 days. Bug #642258.
