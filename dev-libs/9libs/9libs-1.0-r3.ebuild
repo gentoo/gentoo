@@ -14,10 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=">=x11-proto/xproto-7.0.4
+DEPEND="
 	>=x11-libs/libX11-1.0.0
 	>=x11-libs/libXt-1.0.0"
-
 RDEPEND="${DEPEND}"
 
 src_prepare() {
