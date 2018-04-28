@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MY_PN="PyScaffold"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for easily putting up the scaffold of a Python project"
-HOMEPAGE="https://pypi.org/project/PyScaffold/ http://pyscaffold.readthedocs.org/"
+HOMEPAGE="https://pypi.org/project/PyScaffold/ https://pyscaffold.readthedocs.io/en/latest/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 
 SLOT="0"
