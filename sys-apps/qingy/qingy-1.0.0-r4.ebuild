@@ -27,7 +27,6 @@ RDEPEND="
 	X? (
 		x11-libs/libX11:=
 		x11-libs/libXScrnSaver:=
-		x11-proto/scrnsaverproto
 	)
 "
 DEPEND="${RDEPEND}
