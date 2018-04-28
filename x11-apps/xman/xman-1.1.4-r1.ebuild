@@ -12,8 +12,7 @@ IUSE=""
 
 DEPEND="x11-libs/libXaw
 	x11-libs/libXt
-	x11-libs/libXmu
-	x11-proto/xproto"
+	x11-libs/libXmu"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
