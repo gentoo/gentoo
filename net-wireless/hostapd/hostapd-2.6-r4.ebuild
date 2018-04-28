@@ -12,12 +12,13 @@ SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
-IUSE="ipv6 libressl logwatch netlink sqlite +ssl +wps +crda"
+IUSE="internal-tls ipv6 libressl logwatch netlink sqlite +wps +crda"
 
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0=[-bindist] )
-		libressl? ( dev-libs/libressl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? (
+		internal-tls? ( dev-libs/libtommath )
+		!internal-tls? ( dev-libs/openssl:0=[-bindist] )
 	)
 	kernel_linux? (
 		dev-libs/libnl:3
@@ -29,6 +30,16 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S="${S}/${PN}"
+
+pkg_pretend() {
+	if use internal-tls; then
+		if use libressl; then
+			elog "libressl flag takes precedence over internal-tls"
+		else
+			ewarn "internal-tls implementation is experimental and provides fewer features"
+		fi
+	fi
+}
 
 src_prepare() {
 	# Allow users to apply patches to src/drivers for example,
@@ -71,7 +82,9 @@ src_configure() {
 	echo "CONFIG_ERP=y" >> ${CONFIG}
 	echo "CONFIG_EAP_MD5=y" >> ${CONFIG}
 
-	if use ssl; then
+	if use internal-tls && !use libressl; then
+		echo "CONFIG_TLS=internal" >> ${CONFIG}
+	else
 		# SSL authentication methods
 		echo "CONFIG_EAP_FAST=y" >> ${CONFIG}
 		echo "CONFIG_EAP_TLS=y" >> ${CONFIG}
@@ -80,6 +93,7 @@ src_configure() {
 		echo "CONFIG_EAP_PEAP=y" >> ${CONFIG}
 		echo "CONFIG_TLSV11=y" >> ${CONFIG}
 		echo "CONFIG_TLSV12=y" >> ${CONFIG}
+		echo "CONFIG_EAP_PWD=y" >> ${CONFIG}
 	fi
 
 	if use wps; then
@@ -103,7 +117,6 @@ src_configure() {
 	echo "CONFIG_EAP_SAKE=y" >> ${CONFIG}
 	echo "CONFIG_EAP_GPSK=y" >> ${CONFIG}
 	echo "CONFIG_EAP_GPSK_SHA256=y" >> ${CONFIG}
-	echo "CONFIG_EAP_PWD=y" >> ${CONFIG}
 
 	einfo "Enabling drivers: "
 
@@ -170,7 +183,7 @@ src_configure() {
 src_compile() {
 	emake V=1
 
-	if use ssl; then
+	if use libressl || !use internal-tls; then
 		emake V=1 nt_password_hash
 		emake V=1 hlr_auc_gw
 	fi
@@ -185,7 +198,9 @@ src_install() {
 	dosbin ${PN}
 	dobin ${PN}_cli
 
-	use ssl && dobin nt_password_hash hlr_auc_gw
+	if use libressl || !use internal-tls; then
+		dobin nt_password_hash hlr_auc_gw
+	fi
 
 	newinitd "${FILESDIR}"/${PN}-init.d ${PN}
 	newconfd "${FILESDIR}"/${PN}-conf.d ${PN}
