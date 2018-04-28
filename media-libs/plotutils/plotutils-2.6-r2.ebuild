@@ -20,9 +20,7 @@ DEPEND="
 	png? (
 		media-libs/libpng:0=
 		sys-libs/zlib )
-	X? (
-		x11-libs/libXaw
-		x11-proto/xextproto )"
+	X? ( x11-libs/libXaw )"
 RDEPEND="${DEPEND}"
 
 DOCS="AUTHORS COMPAT ChangeLog INSTALL.* KNOWN_BUGS NEWS ONEWS PROBLEMS README THANKS TODO"
