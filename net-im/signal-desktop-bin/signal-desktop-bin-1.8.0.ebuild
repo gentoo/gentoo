@@ -20,6 +20,7 @@ RESTRICT="bindist mirror"
 RDEPEND="
 	gnome-base/gconf:2
 	dev-libs/nss
+	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	net-print/cups
 	ayatana? ( dev-libs/libappindicator:3 )
