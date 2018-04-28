@@ -23,7 +23,7 @@ RDEPEND="
 	sys-libs/binutils-libs:=
 	ncurses? ( sys-libs/ncurses:0= )
 	spacetime? ( sys-libs/libunwind:= )
-	X? ( x11-libs/libX11 x11-proto/xproto )"
+	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
