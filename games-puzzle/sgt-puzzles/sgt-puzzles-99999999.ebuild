@@ -7,7 +7,7 @@ inherit eutils gnome2-utils toolchain-funcs autotools
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.tartarus.org/simon/puzzles.git"
+	EGIT_REPO_URI="https://git.tartarus.org/simon/puzzles.git"
 	GENTOO_ICONS="20160315"
 	SRC_URI="https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${PN}-icons-${GENTOO_ICONS}.tar.xz"
 	KEYWORDS=""
