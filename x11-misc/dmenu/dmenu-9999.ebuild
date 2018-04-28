@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,16 +42,15 @@ src_prepare() {
 
 src_compile() {
 	emake CC=$(tc-getCC) \
-		"FREETYPEINC=$( $(tc-getPKG_CONFIG) --cflags x11 fontconfig xft 2>/dev/null )" \
-		"FREETYPELIBS=$( $(tc-getPKG_CONFIG) --libs x11 fontconfig xft 2>/dev/null )" \
-		"XINERAMAFLAGS=$(
-			usex xinerama "-DXINERAMA $(
-				$(tc-getPKG_CONFIG) --cflags xinerama 2>/dev/null
-			)" ''
-		)" \
-		"XINERAMALIBS=$(
-			usex xinerama "$( $(tc-getPKG_CONFIG) --libs xinerama 2>/dev/null)" ''
-		)"
+		INCS=" \
+			$(usex xinerama "-DXINERAMA" '') \
+			$(
+				$(tc-getPKG_CONFIG) --cflags fontconfig freetype2 x11 xft $(usex xinerama xinerama '')
+			)" \
+		LIBS=" \
+			$(
+				$(tc-getPKG_CONFIG) --libs fontconfig x11 xft $(usex xinerama xinerama '')
+			)"
 }
 
 src_install() {
