@@ -2878,7 +2878,7 @@ dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
-dev-lang/ocaml 4.04.2: Type-inferring functional programming language descended from the ML family
+dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.27 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3 5.24.3-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.33 5.6.34 5.6.35-r1 7.0.27 7.0.28 7.0.29 7.1.13 7.1.15 7.1.16: The PHP language runtime engine
@@ -2900,8 +2900,8 @@ dev-lang/vala 0.32.1 0.34.9 0.34.16 0.36.7 0.36.13: Compiler for the GObject typ
 dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
-dev-libs/9libs 1.0-r2: A package of Plan 9 compatibility libraries
-dev-libs/DirectFB 1.7.6: Thin library on top of the Linux framebuffer devices
+dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
+dev-libs/DirectFB 1.7.6-r1: Thin library on top of the Linux framebuffer devices
 dev-libs/Ice 3.6.3-r1: ICE middleware C++ library and generator tools
 dev-libs/MicroJSON 0.3.1: Small and simple to use JSON generation and parsing library
 dev-libs/UTF8Strings 1.14.2: C++ library providing ability to work natively with UTF8 string
@@ -6973,7 +6973,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-mta/courier 0.75.0: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.90.1: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.90.1-r1: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
@@ -8689,7 +8689,7 @@ net-mail/ezmlm-idx 6.0.0: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.7: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.4: A POP3 mail retriever with reliable Maildir and mbox delivery
-net-mail/gnubiff 2.2.15-r2: A mail notification program
+net-mail/gnubiff 2.2.15-r3: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/imapsync 1.592-r1: A tool allowing incremental and recursive imap transfer from one mailbox to another
 net-mail/isync 1.2.1: MailDir mailbox synchronizer
@@ -8882,7 +8882,7 @@ net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.68: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
-net-misc/qtm 1.3.18: Qt blogging client
+net-misc/qtm 1.3.18-r1: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.045.08: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
@@ -10510,7 +10510,7 @@ www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
-www-plugins/gnash 0.8.10_p20160329-r1: GNU Flash movie player that supports many SWF v7,8,9 features
+www-plugins/gnash 0.8.10_p20160329-r2: GNU Flash movie player that supports many SWF v7,8,9 features
 www-servers/apache 2.2.34 2.4.27-r1 2.4.29-r1: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.45: Lightweight high-performance web server
@@ -10531,7 +10531,7 @@ x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.7 1.0.8: X.Org bitmap application
 x11-apps/editres 1.0.6 1.0.7: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.0.4-r1: X.Org fonttosfnt application
-x11-apps/fslsfonts 1.0.5: list fonts served by X font server
+x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
 x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/iceauth 1.0.6 1.0.7 1.0.8: ICE authority file utility
 x11-apps/ico 1.0.4 1.0.5: animate an icosahedron or other polyhedron
@@ -10543,7 +10543,7 @@ x11-apps/mkfontdir 1.0.7: create an index of X font files in a directory
 x11-apps/mkfontscale 1.1.1 1.1.2 1.1.3: create an index of scalable font files for X
 x11-apps/oclock 1.0.3 1.0.4: round X clock
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
-x11-apps/rstart 1.0.5: X.Org rstart application
+x11-apps/rstart 1.0.5-r1: X.Org rstart application
 x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
 x11-apps/sessreg 1.1.1: manage utmp/wtmp entries for non-init clients
 x11-apps/setxkbmap 1.3.0 1.3.1: Controls the keyboard layout of a running X server
@@ -10589,7 +10589,7 @@ x11-apps/xlsatoms 1.1.1 1.1.2: list interned atoms defined on server
 x11-apps/xlsclients 1.1.2 1.1.3 1.1.4: X.Org xlsclients application
 x11-apps/xlsfonts 1.0.4 1.0.5 1.0.6: X.Org xlsfonts application
 x11-apps/xmag 1.0.5 1.0.6: X.Org xmag application
-x11-apps/xman 1.1.3 1.1.4: Manual page display program for the X Window System
+x11-apps/xman 1.1.4-r1: Manual page display program for the X Window System
 x11-apps/xmessage 1.0.4 1.0.5: display a message or query in a window (X-based /bin/echo)
 x11-apps/xmodmap 1.0.8 1.0.9: utility for modifying keymaps and pointer button mappings in X
 x11-apps/xmore 1.0.2: plain text display program for the X Window System
@@ -10671,7 +10671,7 @@ x11-libs/gtkhotkey 0.2.1-r1: Cross platform library for using desktop wide hotke
 x11-libs/gtkmathview 0.8.0-r3: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.24.6 3.24.7: A text widget implementing syntax highlighting and other features
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
-x11-libs/libFS 1.0.6 1.0.7: X.Org FS library
+x11-libs/libFS 1.0.7: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r1: X.Org Inter-Client Exchange library
 x11-libs/libSM 1.2.2-r1: X.Org Session Management library
@@ -10679,33 +10679,33 @@ x11-libs/libX11 1.6.5: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.2-r1: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1: X.Org XTrap library
 x11-libs/libXau 1.0.8: X.Org X authorization library
-x11-libs/libXaw 1.0.12 1.0.13: X.Org Xaw library
+x11-libs/libXaw 1.0.13: X.Org Xaw library
 x11-libs/libXaw3d 1.6.2: X.Org Xaw3d library
 x11-libs/libXaw3dXft 1.6.2c: Xaw3dXft library
 x11-libs/libXcomposite 0.4.4-r1: X.Org Xcomposite library
 x11-libs/libXcursor 1.1.15: X.Org Xcursor library
 x11-libs/libXdamage 1.1.4-r1: X.Org Xdamage library
 x11-libs/libXdmcp 1.1.2-r1: X.Org X Display Manager Control Protocol library
-x11-libs/libXext 1.3.2 1.3.3: X.Org Xext library
+x11-libs/libXext 1.3.3: X.Org Xext library
 x11-libs/libXfixes 5.0.3: X.Org Xfixes library
 x11-libs/libXfont 1.5.4: X.Org Xfont library
 x11-libs/libXfont2 2.0.3: X.Org Xfont library
-x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
+x11-libs/libXft 2.3.2: X.Org Xft library
 x11-libs/libXi 1.7.9: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
-x11-libs/libXmu 1.1.1 1.1.2: X.Org Xmu library
+x11-libs/libXmu 1.1.2: X.Org Xmu library
 x11-libs/libXpm 3.5.12: X.Org Xpm library
 x11-libs/libXpresent 1.0.0: X Present Extension C Library
 x11-libs/libXrandr 1.5.1: X.Org Xrandr library
 x11-libs/libXrender 0.9.10: X.Org Xrender library
 x11-libs/libXres 1.0.7: X.Org XRes library
-x11-libs/libXt 1.1.4 1.1.5: X.Org X Toolkit Intrinsics library
+x11-libs/libXt 1.1.5: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11: X.Org Xv library
 x11-libs/libXvMC 1.0.10: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.4: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.3-r1: X.Org Xxf86misc library
-x11-libs/libXxf86vm 1.1.3 1.1.4: X.Org Xxf86vm library
+x11-libs/libXxf86vm 1.1.4: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
 x11-libs/libast 0.7 0.7-r1: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
@@ -10716,7 +10716,7 @@ x11-libs/libfakekey 0.1-r1 0.1-r3: Helper library for the x11-misc/matchbox-keyb
 x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-qt 0.11.1: Qt port of libfm, a library providing components to build desktop file managers
-x11-libs/libfontenc 1.1.2 1.1.3: X.Org fontenc library
+x11-libs/libfontenc 1.1.3: X.Org fontenc library
 x11-libs/libgksu 2.0.12-r3 2.0.12-r4: A library for integration of su into applications
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
@@ -10730,7 +10730,7 @@ x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.24.1: A window navigation construction kit
 x11-libs/libxcb 1.12-r2: X C-language Bindings library
 x11-libs/libxkbcommon 0.6.0 0.7.1: X.Org xkbcommon library
-x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
+x11-libs/libxkbfile 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
