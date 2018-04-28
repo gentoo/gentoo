@@ -36,10 +36,7 @@ DEPEND="${PYTHON_DEPS}
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)"
 
-PATCHES=(
-		"${FILESDIR}/${PN}-Fix-layers-install-directory.patch"
-		"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
-	)
+PATCHES=( "${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch" )
 
 multilib_src_configure() {
 	local mycmakeargs=(
