@@ -1,13 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-RUBY_FAKEGEM_DOCDIR="doc"
-RUBY_FAKEGEM_EXTRADOC="Features.txt History.txt README.md"
+RUBY_FAKEGEM_EXTRADOC="README.md"
+
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
@@ -21,4 +22,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/rainbow-2.0.0"
+ruby_add_rdepend "dev-ruby/rainbow:3"
+
+all_ruby_prepare() {
+	# Fix path to match installed gem path
+	sed -i -e 's:logue/lib/logue:/lib/logue:' lib/logue/stack.rb || die
+}
