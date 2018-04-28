@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils systemd user
+inherit systemd user
 
 DESCRIPTION="TeamSpeak is software for quality voice communication via the Internet"
 HOMEPAGE="https://www.teamspeak.com/"
@@ -48,27 +48,22 @@ src_install() {
 	insinto "/opt/teamspeak3-server"
 	doins "${T}"/.ts3server_license_accepted
 
-	# Install binary and wrapper
 	exeinto "/opt/teamspeak3-server"
 	doexe "ts3server"
 	doexe "${FILESDIR}/ts3server-bin"
 	dodir "/opt/bin"
 	dosym "../teamspeak3-server/ts3server-bin" "/opt/bin/ts3server"
 
-	# Install libs
 	exeinto "/opt/teamspeak3-server"
 	doexe "libts3db_sqlite3.so"
 
-	# Install sql
 	insinto "/opt/teamspeak3-server/sql"
 	doins "sql"/*.sql
 	doins -r "sql/create_sqlite"
 
-	# Install config
 	insinto "/etc/teamspeak3-server"
 	doins "${FILESDIR}/ts3server.ini"
 
-	# Install init script and systemd unit
 	newinitd "${FILESDIR}/teamspeak.initd" teamspeak3-server
 	systemd_newunit "${FILESDIR}/teamspeak.service" teamspeak3-server.service
 	systemd_newtmpfilesd "${FILESDIR}/teamspeak.tmpfiles" teamspeak3-server.conf
@@ -87,7 +82,6 @@ src_install() {
 	#	doins -r "sql/updates_and_fixes"
 	# fi
 
-	# Install optional docs
 	if use doc; then
 		local HTML_DOCS=( "doc/serverquery/." )
 
@@ -98,7 +92,6 @@ src_install() {
 		dodoc "doc"/*.txt
 	fi
 
-	# Install tsdns
 	if use tsdns; then
 		exeinto "/opt/teamspeak3-server"
 		doexe "tsdns/tsdnsserver"
@@ -112,10 +105,8 @@ src_install() {
 		dodoc "tsdns/README" "tsdns/USAGE"
 	fi
 
-	# Install docs
 	einstalldocs
 
-	# Keep directories
 	keepdir "/etc/teamspeak3-server"
 	keepdir "/var/log/teamspeak3-server"
 
@@ -127,7 +118,6 @@ src_install() {
 	# fi
 	doenvd "${T}"/99teamspeak3-server
 
-	# Set permissions
 	fowners -R teamspeak:teamspeak "/etc/teamspeak3-server" "/opt/teamspeak3-server" "/var/log/teamspeak3-server"
 }
 
