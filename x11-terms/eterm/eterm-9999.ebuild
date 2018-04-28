@@ -17,8 +17,6 @@ RDEPEND="
 	x11-libs/libXt
 	x11-libs/libICE
 	x11-libs/libSM
-	x11-proto/xextproto
-	x11-proto/xproto
 	x11-libs/libast
 	media-libs/imlib2[X]
 	media-fonts/font-misc-misc
