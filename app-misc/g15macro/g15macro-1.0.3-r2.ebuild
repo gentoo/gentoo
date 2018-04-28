@@ -17,8 +17,6 @@ DEPEND=">=app-misc/g15daemon-1.9.0
 	dev-libs/libg15
 	dev-libs/libg15render
 	x11-libs/libX11
-	x11-proto/xextproto
-	x11-proto/xproto
 	x11-libs/libXtst
 "
 RDEPEND="${DEPEND}
