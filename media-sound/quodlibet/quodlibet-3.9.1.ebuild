@@ -63,11 +63,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	xdg-utils_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg-utils_desktop_database_update
 	gnome2_icon_cache_update
 }
