@@ -1,5 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="compiler-compiler tool for aspect-oriented programming"
 HOMEPAGE="https://www.gnu.org/software/dotgnu"
