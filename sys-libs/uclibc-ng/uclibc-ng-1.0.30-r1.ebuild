@@ -252,6 +252,9 @@ src_prepare() {
 	# We want to get rid of this and just have ABI = 0.
 	eapply "${FILESDIR}"/uclibc-compat-r1.patch
 
+	# Critical fix for ld.so.cache
+	eapply "${FILESDIR}"/${P}-fix-ld.so.cache.patch
+
 	# We need to change the major.minor.sublevel of uclibc-ng.
 	# Upstream sets MAJOR_VERSION = 1 which breaks runtime linking.
 	# If we really want the ABI bump, we'll have to hack the gcc
