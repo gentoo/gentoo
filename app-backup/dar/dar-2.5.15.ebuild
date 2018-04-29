@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,26 +54,28 @@ REQUIRED_USE="?? ( dar32 dar64 )
 #)
 
 src_configure() {
-	local myconf=( --disable-upx )
-
-	# Bug 103741
-	filter-flags -fomit-frame-pointer
-
 	# configure.ac is totally funked up regarding the AC_ARG_ENABLE
 	# logic.
 	# For example "--enable-dar-static" causes configure to DISABLE
 	# static builds of dar.
 	# Do _not_ use $(use_enable) until you have verified that the
 	# logic has been fixed by upstream.
-	use xattr || myconf+=( --disable-ea-support )
-	use dar32 && myconf+=( --enable-mode=32 )
-	use dar64 && myconf+=( --enable-mode=64 )
-	use doc || myconf+=( --disable-build-html )
-	# use examples && myconf+=( --enable-examples )
-	use gcrypt || myconf+=( --disable-libgcrypt-linking )
-	use gpg || myconf+=( --disable-gpgme-linking )
-	use lzo || myconf+=( --disable-liblzo2-linking )
-	use nls || myconf+=( --disable-nls )
+	local myconf=(
+		--disable-upx
+		$(usex dar32 --enable-mode=32 '')
+		$(usex dar64 --enable-mode=64 '')
+		$(usex doc '' --disable-build-html)
+		#$(usex examples --enable-examples '')
+		$(usex gcrypt '' --disable-libgcrypt-linking)
+		$(usex gpg '' --disable-gpgme-linking)
+		$(usex lzo '' --disable-liblzo2-linking)
+		$(usex nls '' --disable-nls)
+		$(usex xattr '' --disable-ea-support)
+	)
+
+	# Bug 103741
+	filter-flags -fomit-frame-pointer
+
 	if ! use static ; then
 		myconf+=( --disable-dar-static )
 		if ! use static-libs ; then
@@ -91,6 +93,6 @@ src_install() {
 	einstalldocs
 
 	if ! use static-libs ; then
-		prune_libtool_files --all
+		find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 	fi
 }
