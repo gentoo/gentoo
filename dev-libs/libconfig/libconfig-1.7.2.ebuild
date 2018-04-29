@@ -17,8 +17,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
 IUSE="+cxx static-libs"
 
 DEPEND="
-	sys-devel/libtool
+	sys-apps/texinfo
 	sys-devel/bison
+	sys-devel/libtool
 "
 
 src_prepare() {
