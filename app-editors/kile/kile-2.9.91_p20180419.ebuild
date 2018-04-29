@@ -3,9 +3,9 @@
 
 EAPI=6
 
-COMMIT=be912e1b8644053d80e5e37d3ccd07448670fb10
+COMMIT=f87c242a61292ea254fed10f3e215a8d3e4b862a
 KDE_HANDBOOK="forceoptional"
-inherit kde5 vcs-snapshot
+inherit kde5
 
 DESCRIPTION="Latex Editor and TeX shell based on KDE Frameworks"
 HOMEPAGE="https://kile.sourceforge.io/"
@@ -55,6 +55,8 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( kile-remote-control.txt )
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	kde5_src_prepare
