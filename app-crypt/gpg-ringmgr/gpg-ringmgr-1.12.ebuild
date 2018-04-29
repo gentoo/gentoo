@@ -1,5 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="GPG Keyring Manager to handle large GPG keyrings more easily"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"

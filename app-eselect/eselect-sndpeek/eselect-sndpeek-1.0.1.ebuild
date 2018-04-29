@@ -1,5 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Manages the /usr/bin/sndpeek symlink"
 HOMEPAGE="https://www.gentoo.org/"

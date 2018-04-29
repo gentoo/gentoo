@@ -1,6 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Servlet API 2.3 from jakarta.apache.org"
