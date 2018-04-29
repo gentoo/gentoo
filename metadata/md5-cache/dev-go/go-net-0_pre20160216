@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=BSD
 SLOT=0/0_pre20160216
 SRC_URI=https://github.com/golang/net/archive/b6d7b1396ec874c3b00f6c84cd4301a17c56c8ed.tar.gz -> go-net-0_pre20160216.tar.gz
-_eclasses_=golang-base	928887539e385bb489681b292f6b862f	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
 _md5_=1f3ff73dc2636633d90e2572fc1d4747

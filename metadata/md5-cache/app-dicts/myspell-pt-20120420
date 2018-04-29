@@ -8,5 +8,5 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-f
 LICENSE=GPL-2 MIT
 SLOT=0
 SRC_URI=http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT.oxt preao? ( http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT-preao.oxt )
-_eclasses_=myspell-r2	efe585da0c175bc2ac2dffda176c79dc
+_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
 _md5_=95ec86f1506b903ba3a5e0f9a3a5b827

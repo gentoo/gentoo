@@ -10,5 +10,5 @@ RDEPEND=apparmor? ( sys-libs/libapparmor ) seccomp? ( sys-libs/libseccomp ) !app
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/opencontainers/runc/archive/9f9c96235cc97674e935002fc3d78361b696a69e.tar.gz -> docker-runc-1.0.0_rc4_p20180122.tar.gz
-_eclasses_=golang-base	928887539e385bb489681b292f6b862f	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
 _md5_=9a5ee41a56ba9a7ad672045529df69df
