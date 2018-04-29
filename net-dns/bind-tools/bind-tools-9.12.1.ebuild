@@ -82,7 +82,7 @@ src_configure() {
 	# localstatedir for nsupdate -l, bug 395785
 	tc-export BUILD_CC
 	econf \
-		--localstatedir=/var \
+		--localstatedir="${EPREFIX}"/var \
 		--without-python \
 		--without-libjson \
 		--without-zlib \
@@ -92,7 +92,7 @@ src_configure() {
 		$(use_with idn) \
 		$(usex idn --with-idnlib=-lidnkit '') \
 		$(use_enable seccomp) \
-		$(use_with ssl openssl) \
+		$(use_with ssl openssl "${EPREFIX}"/usr) \
 		$(use_with xml libxml2) \
 		$(use_with gssapi) \
 		$(use_with readline) \
