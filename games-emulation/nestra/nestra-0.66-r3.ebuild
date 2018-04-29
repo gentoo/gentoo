@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs flag-o-matic multilib games
+EAPI=6
+inherit epatch toolchain-funcs flag-o-matic
 
 PATCH="${P/-/_}-10.diff"
 DESCRIPTION="NES emulation for Linux/x86"
@@ -16,17 +16,19 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11[abi_x86_32(-)]"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	epatch \
-		"${WORKDIR}"/${PATCH} \
-		"${FILESDIR}"/${P}-exec-stack.patch \
-		"${FILESDIR}"/${P}-include.patch
+	default
+	epatch "${WORKDIR}"/${PATCH}
+	eapply "${FILESDIR}"/${P}-exec-stack.patch
+	eapply "${FILESDIR}"/${P}-include.patch
+
 	append-ldflags -Wl,-z,noexecstack
 	use amd64 && multilib_toolchain_setup x86
+
 	sed -i \
 		-e "s:-L/usr/X11R6/lib:${LDFLAGS}:" \
 		-e 's:-O2 ::' \
@@ -37,12 +39,11 @@ src_prepare() {
 
 src_compile() {
 	use amd64 && multilib_toolchain_setup x86
-	games_src_compile
+	default
 }
 
 src_install() {
-	dogamesbin nestra
-	dodoc BUGS CHANGES README
+	dobin nestra
+	einstalldocs
 	doman nestra.6
-	prepgamesdirs
 }

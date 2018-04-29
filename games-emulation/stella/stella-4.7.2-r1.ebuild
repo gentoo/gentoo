@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils games
+EAPI=6
+inherit desktop gnome2-utils
 
 DESCRIPTION="Stella Atari 2600 VCS Emulator"
 HOMEPAGE="http://stella.sourceforge.net/"
@@ -13,12 +13,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="joystick"
 
-DEPEND="media-libs/libsdl2[joystick?,opengl,video]
-	media-libs/libpng:0
-	sys-libs/zlib"
-RDEPEND=${DEPEND}
+RDEPEND="
+	media-libs/libsdl2[joystick?,opengl,video]
+	media-libs/libpng:0=
+	sys-libs/zlib
+"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	sed -i \
 		-e '/INSTALL/s/-s //' \
 		-e '/STRIP/d' \
@@ -33,9 +36,9 @@ src_configure() {
 	# not an autoconf script
 	./configure \
 		--prefix="/usr" \
-		--bindir="${GAMES_BINDIR}" \
+		--bindir="/usr/bin" \
 		--docdir="/usr/share/doc/${PF}" \
-		--datadir="${GAMES_DATADIR}" \
+		--datadir="/usr/share" \
 		$(use_enable joystick) \
 		|| die
 }
@@ -50,17 +53,14 @@ src_install() {
 		newicon -s ${i} src/common/stella-${i}x${i}.png stella.png
 	done
 	domenu src/unix/stella.desktop
-	dohtml -r docs/*
-	prepgamesdirs
+	HTML_DOCS="docs/*" einstalldocs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

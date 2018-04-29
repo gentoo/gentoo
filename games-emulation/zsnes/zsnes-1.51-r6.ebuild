@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils autotools flag-o-matic toolchain-funcs multilib pax-utils games
+EAPI=6
+inherit autotools desktop flag-o-matic toolchain-funcs pax-utils
 
 DESCRIPTION="SNES (Super Nintendo) emulator that uses x86 assembly"
 HOMEPAGE="http://www.zsnes.com/ http://ipherswipsite.com/zsnes/"
@@ -17,16 +17,20 @@ RDEPEND="
 	media-libs/libsdl[sound,video,abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)]
 	ao? ( media-libs/libao[abi_x86_32(-)] )
-	debug? ( sys-libs/ncurses:0[abi_x86_32(-)] )
+	debug? ( sys-libs/ncurses:0=[abi_x86_32(-)] )
 	opengl? ( virtual/opengl[abi_x86_32(-)] )
-	png? ( media-libs/libpng:0[abi_x86_32(-)] )"
+	png? ( media-libs/libpng:0=[abi_x86_32(-)] )
+"
 DEPEND="${RDEPEND}
 	dev-lang/nasm
-	debug? ( virtual/pkgconfig )"
+	debug? ( virtual/pkgconfig )
+"
 
-S=${WORKDIR}/${PN}_${PV//./_}/src
+S="${WORKDIR}/${PN}_${PV//./_}/src"
 
 src_prepare() {
+	default
+
 	# Fixing compilation without libpng installed
 	# Fix bug #186111
 	# Fix bug #214697
@@ -36,7 +40,7 @@ src_prepare() {
 	# Fix buffer overwrite #257963
 	# Fix gcc47 compile #419635
 	# Fix stack alignment issue #503138
-	epatch \
+	eapply \
 		"${FILESDIR}"/${P}-libpng.patch \
 		"${FILESDIR}"/${P}-archopt-july-23-update.patch \
 		"${FILESDIR}"/${P}-gcc43.patch \
@@ -79,9 +83,9 @@ src_configure() {
 	use amd64 && multilib_toolchain_setup x86
 	use custom-cflags || strip-flags
 
-	append-flags -U_FORTIFY_SOURCE	#257963
+	append-cppflags -U_FORTIFY_SOURCE	#257963
 
-	egamesconf \
+	econf \
 		$(use_enable ao libao) \
 		$(use_enable debug debugger) \
 		$(use_enable png libpng) \
@@ -96,16 +100,18 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin zsnes
+	dobin zsnes
 	if use pax_kernel; then
 		pax-mark m "${D}""${GAMES_BINDIR}"/zsnes || die
 	fi
+
 	newman linux/zsnes.1 zsnes.6
+
 	dodoc \
 		../docs/{readme.1st,authors.txt,srcinfo.txt,stdards.txt,support.txt,thanks.txt,todo.txt,README.LINUX} \
 		../docs/readme.txt/*
-	dohtml -r ../docs/readme.htm/*
+	HTML_DOCS="../docs/readme.htm/*" einstalldocs
+
 	make_desktop_entry zsnes ZSNES
 	newicon icons/48x48x32.png ${PN}.png
-	prepgamesdirs
 }

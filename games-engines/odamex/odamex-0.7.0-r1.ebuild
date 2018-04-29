@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 WX_GTK_VER="3.0"
-inherit cmake-utils eutils gnome2-utils wxwidgets games
+inherit cmake-utils eutils gnome2-utils readme.gentoo-r1 wxwidgets
 
 MY_P=${PN}-src-${PV}
 DESCRIPTION="An online multiplayer, free software engine for Doom and Doom II"
@@ -16,18 +16,24 @@ KEYWORDS="~amd64 ~x86"
 IUSE="dedicated +odalaunch master portmidi server"
 
 RDEPEND="
-	dedicated? ( >=net-libs/miniupnpc-1.8 )
+	dedicated? ( >=net-libs/miniupnpc-1.8:0= )
 	!dedicated? (
-		media-libs/libpng:0
+		media-libs/libpng:0=
 		>=media-libs/libsdl-1.2.9[X,sound,joystick,video]
 		>=media-libs/sdl-mixer-1.2.6
 		odalaunch? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 		portmidi? ( media-libs/portmidi )
-		server? ( >=net-libs/miniupnpc-1.8 )
-	)"
+		server? ( >=net-libs/miniupnpc-1.8:0= )
+	)
+"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/src-${PV:2:3}
+DOC_CONTENTS="
+	This is just the engine, you will need doom resource files in order to play.
+	Check: http://odamex.net/wiki/FAQ#What_data_files_are_required.3F
+"
+
+S="${WORKDIR}/src-${PV:2:3}"
 
 pkg_pretend() {
 	if ! test-flag-CXX -std=c++11; then
@@ -41,18 +47,18 @@ src_prepare() {
 		"${FILESDIR}"/3-${P}-wad-search-path.patch \
 		"${FILESDIR}"/4-${P}-odalauncher-bin-path.patch \
 		"${FILESDIR}"/${P}-miniupnpc.patch \
+		"${FILESDIR}"/${P}-miniupnpc20.patch \
 		"${FILESDIR}"/${P}-gcc6.patch
 
 	rm -r libraries/libminiupnpc || die
-
-	epatch_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_INTREE_PORTMIDI=OFF
-		-DCMAKE_INSTALL_BINDIR="${GAMES_BINDIR}"
-		-DCMAKE_INSTALL_DATADIR="${GAMES_DATADIR}"
+		-DCMAKE_INSTALL_BINDIR="/usr/bin"
+		-DCMAKE_INSTALL_DATADIR="/usr/share"
 		$(cmake-utils_use_build master MASTER)
 	)
 
@@ -83,6 +89,7 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
+	readme.gentoo_create_doc
 
 	if ! use dedicated ; then
 		newicon -s 128 "${S}/media/icon_${PN}_128.png" "${PN}.png"
@@ -93,22 +100,15 @@ src_install() {
 			make_desktop_entry odalaunch "Odamex Launcher" odalaunch
 		fi
 	fi
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-	einfo
-	elog "This is just the engine, you will need doom resource files in order to play."
-	elog "Check: http://odamex.net/wiki/FAQ#What_data_files_are_required.3F"
-	einfo
 	gnome2_icon_cache_update
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {

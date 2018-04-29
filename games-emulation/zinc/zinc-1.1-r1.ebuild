@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games
+EAPI=6
 
 DESCRIPTION="An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades"
 HOMEPAGE="http://caesar.logiqx.com/php/emulator.php?id=zinc_linux"
@@ -13,18 +12,18 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
-QA_PREBUILT="${GAMES_PREFIX_OPT:1}/bin/zinc /usr/lib*/*.so"
+QA_PREBUILT="/opt/bin/zinc /usr/lib*/*.so"
 
 RDEPEND="
 	x11-libs/libXext[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]"
+	virtual/opengl[abi_x86_32(-)]
+"
 
-S=${WORKDIR}/zinc
+S="${WORKDIR}/zinc"
 
 src_install() {
-	exeinto "${GAMES_PREFIX_OPT}"/bin
+	exeinto /opt/bin
 	doexe zinc
 	dolib.so libcontrolznc.so librendererznc.so libsoundznc.so libs11player.so
-	dodoc readme.txt
-	prepgamesdirs
+	einstalldocs
 }

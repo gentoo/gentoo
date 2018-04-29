@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils fdo-mime qmake-utils games
+EAPI=6
+inherit gnome2-utils qmake-utils xdg
 
 DESCRIPTION="Multimedia interpreter for TADS text adventures"
 HOMEPAGE="http://qtads.sourceforge.net"
@@ -18,34 +18,30 @@ DEPEND="media-libs/libsdl[sound]
 	media-libs/sdl-sound[mp3]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	eqmake5 qtads.pro -after CONFIG-=silent
 }
 
 src_install() {
-	dogamesbin qtads
+	dobin qtads
 	dodoc AUTHORS HTML_TADS_LICENSE NEWS README
 	insinto /usr
 	doins -r share
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }
