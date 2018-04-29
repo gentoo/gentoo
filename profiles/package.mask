@@ -364,11 +364,6 @@ games-action/d2x-rebirth
 net-irc/savirc
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# Fails to build (#634662), version bump long time pending (#596162).
-# Removal in a month.
-games-emulation/sdlmame
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # Multiple vulnerabilities (#635598). Removal in a month.
 www-apps/b2evolution
  
