@@ -86,9 +86,13 @@ COMMON_DEPEND="
 		)
 	)
 	client-libs? ( >=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
+		net-libs/libnsl:0=[${MULTILIB_USEDEP}]
 		kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	)
-	!client-libs? ( >=sys-libs/zlib-1.2.3:0= kerberos? ( virtual/krb5 ) )
+	!client-libs? ( >=sys-libs/zlib-1.2.3:0=
+		net-libs/libnsl:0=
+		kerberos? ( virtual/krb5 )
+	)
 	sys-libs/ncurses:0=
 	!bindist? (
 		sys-libs/binutils-libs:0=

@@ -81,13 +81,24 @@ COMMON_DEPEND="
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	!yassl? (
-		!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
+		client-libs? (
+			!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
+		)
+		!client-libs? (
+			!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
-	>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
+	client-libs? ( >=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
+		net-libs/libnsl:0=[${MULTILIB_USEDEP}]
+		kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
+	)
+	!client-libs? ( >=sys-libs/zlib-1.2.3:0=
+		net-libs/libnsl:0=
+		kerberos? ( virtual/krb5 )
+	)
 	sys-libs/ncurses:0=
-	mroonga? ( app-text/groonga-normalizer-mysql )
-	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
@@ -102,6 +113,7 @@ COMMON_DEPEND="
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
 		innodb-snappy? ( app-arch/snappy )
+		mroonga? ( app-text/groonga-normalizer-mysql )
 		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( virtual/pam:0= )
@@ -139,7 +151,7 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 # xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	!client-libs? ( dev-db/mariadb-connector-c dev-db/mysql-connector-c )
+	!client-libs? ( dev-db/mariadb-connector-c[${MULTILIB_USEDEP}] dev-db/mysql-connector-c[${MULTILIB_USEDEP}] )
 	 server? ( ~virtual/mysql-5.6[static=]
 		 galera? ( sst-xtrabackup? ( || ( >=dev-db/xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
 
