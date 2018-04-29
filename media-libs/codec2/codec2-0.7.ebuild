@@ -16,3 +16,8 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+multilib_src_configure() {
+	local mycmakeargs=( -DUNITTEST=OFF )
+	cmake-utils_src_configure
+}
