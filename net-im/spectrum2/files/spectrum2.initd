@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/${RC_SVCNAME}_manager"
+command_args="start"
+command_background="true"
+command_group="spectrum"
+command_user="spectrum"
+name="Spectrum2 Transport"
+pidfile="/run/${RC_SVCNAME}/${RC_SVCNAME}_manager.pid"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -d -o "${command_user}:${command_group}" -q "/run/${RC_SVCNAME}"
+}
+
+status() {
+	ebegin "Status Spectrum2 Transport"
+	${command} status
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Spectrum2 Transport"
+	${command} stop
+	eend $?
+}

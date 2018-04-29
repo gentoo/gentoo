@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2018-04-27 12:27:02.000000000 +0200
++++ b/CMakeLists.txt	2018-04-29 18:17:42.157170288 +0200
+@@ -399,10 +399,6 @@
+ endif()
+ 
+ if(CMAKE_BUILD_TYPE MATCHES Debug)
+-	if (CMAKE_COMPILER_IS_GNUCXX)
+-		ADD_DEFINITIONS(-O0)
+-		ADD_DEFINITIONS(-ggdb)
+-	endif()
+ 	ADD_DEFINITIONS(-DDEBUG)
+ 	message("Debug             : yes")
+ else(CMAKE_BUILD_TYPE MATCHES Debug)
