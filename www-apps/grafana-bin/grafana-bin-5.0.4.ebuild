@@ -9,7 +9,7 @@ MY_PN=${PN/-bin/}
 S=${WORKDIR}/${MY_PN}-${PV}
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
-HOMEPAGE="http://grafana.org"
+HOMEPAGE="https://grafana.org"
 SRC_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release/${MY_PN}-${PV}.linux-x64.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
