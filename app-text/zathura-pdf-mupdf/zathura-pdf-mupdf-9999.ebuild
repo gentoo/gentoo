@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs xdg
+inherit meson xdg
 
 if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git"
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
+	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="https://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+	SRC_URI="https://pwmt.org/projects/${PN}/download/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="PDF plug-in for zathura"
@@ -21,33 +21,18 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE=""
 
-RDEPEND="!app-text/zathura-pdf-poppler
-	>=app-text/mupdf-1.12.0:=
-	>=app-text/zathura-0.3.8
-	media-libs/jbig2dec:=
-	media-libs/openjpeg:2=
-	virtual/jpeg:0
-	x11-libs/cairo:="
+RDEPEND="
+	>=app-text/zathura-2.0
+	dev-libs/girara
+	>=app-text/mupdf-1.14.0
+	!app-text/zathura-pdf-poppler
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_configure() {
-	myzathuraconf=(
-		CC="$(tc-getCC)"
-		LD="$(tc-getLD)"
-		VERBOSE=1
-		DESTDIR="${D}"
-		MUPDF_LIB="$($(tc-getPKG_CONFIG) --libs mupdf)"
-		OPENSSL_INC="$($(tc-getPKG_CONFIG) --cflags mupdf)"
-		OPENSSL_LIB=''
-	)
-}
+src_prepare() {
+	default
 
-src_compile() {
-	emake "${myzathuraconf[@]}"
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" install
-	dodoc AUTHORS
+	sed -i '/mupdfthird/d' meson.build ||
+		die 'fail to remove uninstallable mupdfthird'
 }
