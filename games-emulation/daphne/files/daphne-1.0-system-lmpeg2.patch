@@ -1,14 +1,14 @@
 diff -ur v_1_0.old/src/vldp2/Makefile.am v_1_0/src/vldp2/Makefile.am
---- v_1_0.old/src/vldp2/Makefile.am	2009-12-29 18:04:15.000000000 +0200
-+++ v_1_0/src/vldp2/Makefile.am	2009-12-29 18:10:42.000000000 +0200
+--- a/vldp2/Makefile.am	2009-12-29 18:04:15.000000000 +0200
++++ b/vldp2/Makefile.am	2009-12-29 18:10:42.000000000 +0200
 @@ -1,3 +1,3 @@
 -SUBDIRS = autotools include libmpeg2 libvo doc src vc++ test
 +SUBDIRS = autotools
  
  EXTRA_DIST = bootstrap
 diff -ur v_1_0.old/src/vldp2/Makefile.in v_1_0/src/vldp2/Makefile.in
---- v_1_0.old/src/vldp2/Makefile.in	2009-12-29 18:04:15.000000000 +0200
-+++ v_1_0/src/vldp2/Makefile.in	2009-12-29 18:10:51.000000000 +0200
+--- a/vldp2/Makefile.in	2009-12-29 18:04:15.000000000 +0200
++++ b/vldp2/Makefile.in	2009-12-29 18:10:51.000000000 +0200
 @@ -128,7 +128,7 @@
  sharedstatedir = @sharedstatedir@
  sysconfdir = @sysconfdir@
@@ -19,8 +19,8 @@ diff -ur v_1_0.old/src/vldp2/Makefile.in v_1_0/src/vldp2/Makefile.in
  EXTRA_DIST = bootstrap
  subdir = .
 diff -ur v_1_0.old/src/vldp2/Makefile.linux v_1_0/src/vldp2/Makefile.linux
---- v_1_0.old/src/vldp2/Makefile.linux	2009-12-29 18:04:15.000000000 +0200
-+++ v_1_0/src/vldp2/Makefile.linux	2009-12-29 18:13:12.000000000 +0200
+--- a/vldp2/Makefile.linux	2009-12-29 18:04:15.000000000 +0200
++++ b/vldp2/Makefile.linux	2009-12-29 18:13:12.000000000 +0200
 @@ -14,14 +14,9 @@
  DFLAGS = -O3 -march=i686 -fomit-frame-pointer -funroll-loops
  
