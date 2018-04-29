@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mysql-v2.eclass
@@ -273,6 +273,7 @@ DEPEND="
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
 	>=sys-libs/zlib-1.2.3
+	net-libs/libnsl
 "
 # TODO: add this as a dep if it is moved from the overlay
 #	!dev-db/mariadb-native-client[mysqlcompat]
