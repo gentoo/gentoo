@@ -6,17 +6,17 @@
 # Same for www-servers/tornado and USE=client ... so why not???
 # pypy is viable but better with a cutdown set of deps
 
-EAPI="5"
+EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads?"
 
 inherit distutils-r1
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/Lawouach/WebSocket-for-Python.git"
-	inherit git-2
+	inherit git-r3
 else
 	inherit vcs-snapshot
-	SRC_URI="https://github.com/Lawouach/WebSocket-for-Python/tarball/v${PV} -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Lawouach/WebSocket-for-Python/archive/v${PV} -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -40,7 +40,7 @@ DEPEND="test? (
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}"/${PN}-0.3.4-tests.patch
 )
 
 python_test() {

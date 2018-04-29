@@ -1,33 +1,39 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-# pypy: bug #458558 (wrong linker options due to not respecting CC)
-PYTHON_COMPAT=( python2_7 )
-DISTUTILS_IN_SOURCE_BUILD=1
+PYTHON_COMPAT=( python2_7 pypy )
 
-inherit distutils-r1 git-2 multilib
+inherit distutils-r1
 
 DESCRIPTION="Various LDAP-related Python modules"
 HOMEPAGE="https://www.python-ldap.org/en/latest/
 	https://pypi.org/project/python-ldap/"
-EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
+	inherit git-r3
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-solaris"
+fi
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc examples sasl ssl"
 
 # If you need support for openldap-2.3.x, please use python-ldap-2.3.9.
 # python team: Please do not remove python-ldap-2.3.9 from the tree.
 RDEPEND=">=net-nds/openldap-2.4
 	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1 )"
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/pyasn1-modules[${PYTHON_USEDEP}] )"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/pyasn1-modules[${PYTHON_USEDEP}]
+	)
+"
 RDEPEND+=" !dev-python/pyldap"
 
 python_prepare_all() {

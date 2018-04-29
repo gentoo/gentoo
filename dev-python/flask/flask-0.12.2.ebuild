@@ -7,29 +7,32 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 
 inherit distutils-r1
 
+DESCRIPTION="A microframework based on Werkzeug, Jinja2 and good intentions"
+HOMEPAGE="https://github.com/pallets/flask/"
 MY_PN="Flask"
 MY_P="${MY_PN}-${PV}"
-
-DESCRIPTION="A microframework based on Werkzeug, Jinja2 and good intentions"
-SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
-HOMEPAGE="https://github.com/pallets/flask/"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/mitsuhiko/flask.git"
+	inherit git-r3
+else
+	SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
+	KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+	S="${WORKDIR}/${MY_P}"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
-RDEPEND=">=dev-python/blinker-1[${PYTHON_USEDEP}]
-	>=dev-python/werkzeug-0.7[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.4[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/click-2[${PYTHON_USEDEP}]
+	>=dev-python/blinker-1[${PYTHON_USEDEP}]
 	>=dev-python/itsdangerous-0.21[${PYTHON_USEDEP}]
-	>=dev-python/click-2[${PYTHON_USEDEP}]"
+	>=dev-python/jinja-2.4[${PYTHON_USEDEP}]
+	>=dev-python/werkzeug-0.7[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	# Prevent un-needed d'loading
