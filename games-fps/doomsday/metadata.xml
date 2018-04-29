@@ -9,6 +9,7 @@
 		<flag name="demo">Install launcher dor doom1.wad from <pkg>games-fps/doom-data</pkg></flag>
 		<flag name="doom">Install launcher for jdoom game</flag>
 		<flag name="fluidsynth">Build the FluidSynth sound driver</flag>
+		<flag name="fmod">Enable support for fmod music and sound effects lib</flag>
 		<flag name="freedoom">Install launcher for doom1.wad from <pkg>games-fps/freedoom</pkg></flag>
 		<flag name="heretic">Install launcher for jheretic game</flag>
 		<flag name="hexen">Install launcher for jhexen game</flag>
