@@ -5605,7 +5605,7 @@ dev-python/virtualenv 15.1.0: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.7.1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/vobject 0.9.3 0.9.5: Python package for parsing and generating vCard and vCalendar files
-dev-python/voluptuous 0.9.3 0.10.5: A Python data validation library.
+dev-python/voluptuous 0.10.5 0.11.1: A Python data validation library.
 dev-python/waitress 1.0.1 1.0.2: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.3-r1 0.8.3-r2: Python API and shell utilities to monitor file system events
