@@ -9,7 +9,7 @@ MY_P="${MY_P/-/_}"
 DEB_V="${P##*_p}"
 
 DESCRIPTION="Spider Solitaire"
-HOMEPAGE="http://packages.debian.org/stable/games/spider"
+HOMEPAGE="https://packages.debian.org/stable/games/spider"
 SRC_URI="mirror://debian/pool/main/s/spider/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/s/spider/${MY_P}-${DEB_V}.diff.gz"
 
