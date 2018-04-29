@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=UCI-only chess engine
+EAPI=6
+HOMEPAGE=http://arctrix.com/nas/fruit/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://arctrix.com/nas/fruit/fruit_21_linux.zip
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=da25e490684f7101fd19e53f7c903d5e

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Single-user single-tasking operating system for 32 bit Atari computer emulators
+EAPI=6
+HOMEPAGE=http://emutos.sourceforge.net
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/emutos/emutos-src-0.9.3.tar.gz mirror://sourceforge/emutos/emutos-512k-0.9.4.zip mirror://sourceforge/emutos/emutos-256k-0.9.4.zip
+_md5_=ae77d07d7fb2081cd8cba088f7cc3d70

@@ -4351,6 +4351,7 @@ dev-perl/XML-SAX-Writer 0.560.0: SAX2 Writer
 dev-perl/XML-Simple 2.200.0-r1 2.220.0: An API for simple XML files
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Stream 1.240.0: Creates and XML Stream connection and parses return data
+dev-perl/XML-TreePP 0.430.0-r1: Pure Perl implementation for parsing/writing XML documents
 dev-perl/XML-Twig 3.520.0: Process huge XML documents in tree mode
 dev-perl/XML-Writer 0.625.0: XML Writer Perl Module
 dev-perl/XML-XPath 1.130.0-r1: A XPath Perl Module
@@ -8121,7 +8122,7 @@ media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
-media-tv/xmltv 0.5.57: Set of utilities to manage TV listings stored in the XMLTV format
+media-tv/xmltv 0.5.57 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
 media-video/aegisub 3.2.2_p20160518-r2: Advanced subtitle editor
 media-video/atomicparsley 0.9.0: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files

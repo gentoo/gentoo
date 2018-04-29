@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=sys-libs/gdbm:0=
+DESCRIPTION=Console based chess interface
+EAPI=6
+HOMEPAGE=http://sjeng.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/gdbm:0=
+SLOT=0
+SRC_URI=mirror://sourceforge/sjeng/Sjeng-Free-11.2.tar.gz
+_md5_=3d33af3110d7047eee643333163a725c
