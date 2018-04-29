@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic games
+EAPI=6
+inherit flag-o-matic
 
 DESCRIPTION="Gamecube emulator"
 HOMEPAGE="http://gcube.exemu.net/"
@@ -13,31 +13,38 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/opengl
+RDEPEND="
+	virtual/opengl
 	media-libs/libsdl[joystick,opengl,sound,video]
 	virtual/jpeg:0
-	sys-libs/ncurses:0
-	sys-libs/zlib"
-RDEPEND=${DEPEND}
+	sys-libs/ncurses:0=
+	sys-libs/zlib
+"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${PV}
+S="${WORKDIR}/${PV}"
 
 src_prepare() {
+	default
+
 	sed -i -e '/^CFLAGS=-g/d' Makefile.rules || die
-	epatch "${FILESDIR}"/${P}-ldflags.patch \
+
+	eapply "${FILESDIR}"/${P}-ldflags.patch \
 		"${FILESDIR}"/${P}-underlink.patch \
 		"${FILESDIR}"/${P}-gcc47.patch
+
 	sed -i -e '/^CC=/d' Makefile || die
+
 	append-cflags -std=gnu89 # build with gcc5 (bug #570504)
 }
 
 src_install() {
 	local x
 
-	dogamesbin gcmap gcube
+	dobin gcmap gcube
 	for x in bin2dol isopack thpview tplx ; do
-		newgamesbin ${x} ${PN}-${x}
+		newbin ${x} ${PN}-${x}
 	done
-	dodoc ChangeLog README
-	prepgamesdirs
+
+	einstalldocs
 }

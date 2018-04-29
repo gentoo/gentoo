@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit flag-o-matic toolchain-funcs eutils games
+EAPI=6
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bob Hyatt's strong chess engine"
 HOMEPAGE="http://www.craftychess.com/"
@@ -21,14 +21,15 @@ DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 src_prepare() {
+	default
 	sed -i \
 		-e '/-o crafty/s/CC/CXX/' \
 		-e 's:CXFLAGS:CXXFLAGS:g' \
 		-e 's:-j ::g' \
 		Makefile || die
 	sed -i \
-		-e "s:\"crafty.hlp\":\"${GAMES_DATADIR}/${PN}/crafty.hlp\":" option.c || die
-	epatch "${FILESDIR}"/${P}-numcpus.patch
+		-e "s:\"crafty.hlp\":\"/usr/share/${PN}/crafty.hlp\":" option.c || die
+	eapply "${FILESDIR}"/${P}-numcpus.patch
 }
 
 src_compile() {
@@ -37,7 +38,7 @@ src_compile() {
 	if ! use no-opts ; then
 		if [[ $(tc-getCC) = icc ]] ; then
 			makeopts="${makeopts} asm=X86.o"
-			append-flags -D_REENTRANT -tpp6 \
+			append-cppflags -D_REENTRANT -tpp6 \
 				-DCOMPACT_ATTACKS -DUSE_ATTACK_FUNCTIONS \
 				-DUSE_ASSEMBLY_A -DUSE_ASSEMBLY_B -DFAST \
 				-DSMP -DCPUS=4 -DCLONE -DDGT
@@ -46,13 +47,13 @@ src_compile() {
 		else
 			if [[ "${CHOST}" == "i686-pc-linux-gnu" ]] \
 			|| [[ "${CHOST}" == "i586-pc-linux-gnu" ]] ; then
-				append-flags -DCOMPACT_ATTACKS -DUSE_ATTACK_FUNCTIONS \
+				append-cppflags -DCOMPACT_ATTACKS -DUSE_ATTACK_FUNCTIONS \
 					-DUSE_ASSEMBLY_A -DUSE_ASSEMBLY_B \
 					-DFAST -DSMP -DCPUS=4 -DCLONE -DDGT
 				append-flags -fno-gcse \
 					-fomit-frame-pointer -mpreferred-stack-boundary=2
 			elif [[ "${CHOST}" == "x86_64-pc-linux-gnu" ]] ; then
-				append-flags -DCOMPACT_ATTACKS -DUSE_ATTACK_FUNCTIONS \
+				append-cppflags -DCOMPACT_ATTACKS -DUSE_ATTACK_FUNCTIONS \
 					-DUSE_ASSEMBLY_A -DUSE_ASSEMBLY_B \
 					-DFAST -DSMP -DCPUS=4 -DCLONE -DDGT
 				append-flags -fomit-frame-pointer
@@ -61,25 +62,13 @@ src_compile() {
 			fi
 		fi
 	fi
-	append-flags -DPOSIX -DSKILL
+	append-cppflags -DPOSIX -DSKILL
 	emake ${makeopts} crafty-make LDFLAGS="${LDFLAGS} -pthread"
 }
 
 src_install() {
-	dogamesbin crafty
-	insinto "${GAMES_DATADIR}/${PN}"
+	dobin crafty
+	insinto "/usr/share/${PN}"
 	doins crafty.hlp
 	dodoc "${DISTDIR}"/crafty.doc.ascii
-	prepgamesdirs
-}
-
-pkg_postinst() {
-	games_pkg_postinst
-	elog
-	elog "Note: No books or tablebases have been installed. If you want them, just"
-	elog "      download them from ${HOMEPAGE}."
-	elog "      You will find documentation there too. In most cases you take now "
-	elog "      your xboard compatible application, (xboard, eboard, knights) and "
-	elog "      just play chess against computer opponent. Have fun."
-	elog
 }

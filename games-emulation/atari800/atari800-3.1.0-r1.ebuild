@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games autotools eutils
+EAPI=6
+inherit desktop autotools
 
 DESCRIPTION="Atari 800 emulator"
 HOMEPAGE="http://atari800.sourceforge.net/"
@@ -15,37 +15,38 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ncurses oss opengl readline +sdl +sound"
 
 NOTSDL_DEPS="
-	sys-libs/ncurses:0
+	sys-libs/ncurses:0=
 	sound? (
 		!oss? ( media-libs/libsdl[sound] )
-	)"
-RDEPEND="sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] )
+	)
+"
+RDEPEND="
+	sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] )
 	ncurses? ( ${NOTSDL_DEPS} )
 	!sdl? ( !ncurses? ( ${NOTSDL_DEPS} ) )
-	readline? ( sys-libs/readline:0
-		sys-libs/ncurses:0 )
-	media-libs/libpng:0
-	sys-libs/zlib"
+	readline? (
+		sys-libs/readline:0=
+		sys-libs/ncurses:0= )
+	media-libs/libpng:0=
+	sys-libs/zlib
+"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
+	app-arch/unzip
+"
 
 src_prepare() {
+	default
+
 	# remove some not-so-interesting ones
 	rm -f DOC/{INSTALL.*,*.in,CHANGES.OLD} || die
 	sed -i \
 		-e '1s/ 1 / 6 /' \
 		src/atari800.man || die
-	sed -i \
-		-e "/SYSTEM_WIDE_CFG_FILE/s:/etc:${GAMES_SYSCONFDIR}:" \
-		src/cfg.c || die
-	sed -i \
-		-e "/share/s:/usr/share:${GAMES_DATADIR}:" \
-		src/atari.c || die
-	sed "s:/usr/share/games:${GAMES_DATADIR}:" \
+	sed "s:/usr/share/games:/usr/share:" \
 		"${FILESDIR}"/atari800.cfg > "${T}"/atari800.cfg || die
 
 	# Bug 544608
-	epatch "${FILESDIR}/${P}-tgetent-detection.patch"
+	eapply "${FILESDIR}/${P}-tgetent-detection.patch"
 	pushd src > /dev/null && eautoreconf
 	popd > /dev/null
 }
@@ -67,12 +68,8 @@ src_configure() {
 		fi
 	fi
 
-	echo
-	elog "Building ${PN} with ${video} video and ${sound} sound"
-	echo
-
 	cd src && \
-		egamesconf \
+		econf \
 			$(use_with readline) \
 			--with-video=${video} \
 			--with-sound=${sound}
@@ -83,12 +80,13 @@ src_compile() {
 }
 
 src_install () {
-	dogamesbin src/atari800
+	dobin src/atari800
 	newman src/atari800.man atari800.6
 	dodoc README.1ST DOC/*
-	insinto "${GAMES_DATADIR}/${PN}"
+	insinto "/usr/share/${PN}"
 	doins "${WORKDIR}/"*.ROM
-	insinto "${GAMES_SYSCONFDIR}"
+	insinto /etc
 	doins "${T}"/atari800.cfg
-	prepgamesdirs
+	newicon data/atari2.svg ${PN}.svg
+	make_desktop_entry ${PN} "Atari 800 emulator"
 }

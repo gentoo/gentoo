@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils games
+EAPI=6
+inherit autotools
 
 DESCRIPTION="Gameboy emulator with multiple renderers"
 HOMEPAGE="https://sourceforge.net/projects/gnuboy/"
@@ -13,19 +13,25 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X sdl"
 
-RDEPEND="sdl? ( media-libs/libsdl )
+RDEPEND="
+	sdl? ( media-libs/libsdl )
 	!X? ( media-libs/libsdl )
-	X? ( x11-libs/libXext )"
+	X? ( x11-libs/libXext )
+"
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xextproto
-		x11-proto/xproto )"
+	X? (
+		x11-proto/xextproto
+		x11-proto/xproto )
+"
 
 src_prepare() {
-	epatch \
+	default
+	eapply \
 		"${FILESDIR}"/${P}-exec-stack.patch \
 		"${FILESDIR}"/${P}-linux-headers.patch \
 		"${FILESDIR}"/${P}-include.patch
 
+	mv configure.in configure.ac || die
 	eautoreconf
 }
 
@@ -36,7 +42,7 @@ src_configure() {
 		myconf="--with-sdl"
 	fi
 
-	egamesconf \
+	econf \
 		$(use_with X x) \
 		$(use_with sdl) \
 		$(use_enable x86 asm) \
@@ -49,9 +55,8 @@ src_install() {
 	for f in sdlgnuboy xgnuboy
 	do
 		if [[ -f ${f} ]] ; then
-			dogamesbin ${f}
+			dobin ${f}
 		fi
 	done
 	dodoc README docs/{CHANGES,CONFIG,CREDITS,FAQ,HACKING,WHATSNEW}
-	prepgamesdirs
 }

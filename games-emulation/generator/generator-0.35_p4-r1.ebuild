@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils toolchain-funcs games
+EAPI=6
+inherit autotools toolchain-funcs
 
-MY_P=${PN}-${PV/_p/-cbiere-r}
+MY_P="${PN}-${PV/_p/-cbiere-r}"
 DESCRIPTION="Sega Genesis / Mega Drive emulator"
 HOMEPAGE="http://www.squish.net/generator/"
 SRC_URI="http://www.squish.net/generator/cbiere/generator/${MY_P}.tar.bz2"
@@ -14,24 +14,28 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+sdlaudio"
 
-DEPEND="virtual/jpeg:0
+RDEPEND="
+	virtual/jpeg:0
 	media-libs/libsdl[joystick,video]
-	sdlaudio? ( media-libs/libsdl[sound] )"
-RDEPEND=${DEPEND}
+	sdlaudio? ( media-libs/libsdl[sound] )
+"
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch \
+	default
+	eapply \
 		"${FILESDIR}"/${P}-configure.patch \
-		"${FILESDIR}"/${P}-underlink.patch
+		"${FILESDIR}"/${P}-underlink.patch \
+		"${FILESDIR}"/${P}-inline.patch
 
 	sed -i -e 's/@GTK_CFLAGS@//g' main/Makefile.am || die
 	eautoreconf
 }
 
 src_configure() {
-	egamesconf \
+	econf \
 		--with-cmz80 \
 		--with-sdl \
 		--without-tcltk \
@@ -45,7 +49,6 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin main/generator-sdl
+	dobin main/generator-sdl
 	dodoc AUTHORS ChangeLog NEWS README TODO docs/*
-	prepgamesdirs
 }

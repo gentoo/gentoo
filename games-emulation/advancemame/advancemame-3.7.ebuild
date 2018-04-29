@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic games
+EAPI=6
+inherit flag-o-matic
 
 DESCRIPTION="GNU/Linux port of the MAME emulator with GUI menu"
-HOMEPAGE="http://advancemame.sourceforge.net/"
-SRC_URI="mirror://sourceforge/advancemame/${P}.tar.gz"
+HOMEPAGE="http://www.advancemame.it/"
+SRC_URI="https://github.com/amadvance/advancemame/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 XMAME"
 SLOT="0"
@@ -14,30 +14,31 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa fbcon oss truetype"
 
 # sdl is required (bug #158417)
-RDEPEND="app-arch/unzip
+RDEPEND="
+	app-arch/unzip
 	app-arch/zip
 	dev-libs/expat
-	media-libs/libsdl
+	media-libs/libsdl2
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
-	truetype? ( media-libs/freetype )"
+	truetype? ( media-libs/freetype:2 )
+"
 DEPEND="${RDEPEND}
 	virtual/os-headers
-	x86? ( >=dev-lang/nasm-0.98 )"
+	x86? ( >=dev-lang/nasm-0.98 )
+"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-pic.patch" \
-		"${FILESDIR}"/${P}-verboselog.patch
+	default
 
-	sed -i \
-		-e 's/"-s"//' \
-		configure || die "sed failed"
+	eapply "${FILESDIR}/${PN}-1.2-pic.patch" \
+		"${FILESDIR}"/${PN}-1.2-verboselog.patch
 
-	use x86 &&
-		ln -s $(type -P nasm) "${T}/${CHOST}-nasm"
-	ln -s $(type -P sdl-config) "${T}/${CHOST}-sdl-config"
-	use truetype &&
-		ln -s $(type -P freetype-config) "${T}/${CHOST}-freetype-config"
+	sed -i -e 's/"-s"//' configure || die
+
+	use x86 && ln -s $(type -P nasm) "${T}/${CHOST}-nasm"
+	ln -s $(type -P sdl2-config) "${T}/${CHOST}-sdl2-config"
+	use truetype && ln -s $(type -P freetype-config) "${T}/${CHOST}-freetype-config"
 }
 
 src_configure() {
@@ -47,9 +48,10 @@ src_configure() {
 	fi
 
 	PATH="${PATH}:${T}"
-	egamesconf \
+	econf \
 		--enable-expat \
-		--enable-sdl \
+		--enable-sdl2 \
+		--disable-sdl \
 		--enable-zlib \
 		--disable-slang \
 		--disable-svgalib \
@@ -58,8 +60,7 @@ src_configure() {
 		$(use_enable fbcon fb) \
 		$(use_enable oss) \
 		$(use_enable truetype freetype) \
-		$(use_enable x86 asm) \
-		--with-emu=${PN/advance}
+		$(use_enable x86 asm)
 }
 
 src_compile() {
@@ -71,21 +72,20 @@ src_install() {
 
 	for f in adv* ; do
 		if [[ -L "${f}" ]] ; then
-			dogamesbin "${f}"
+			dobin "${f}"
 		fi
 	done
 
-	insinto "${GAMES_DATADIR}/advance"
+	insinto "/usr/share/advance"
 	doins support/event.dat
-	keepdir "${GAMES_DATADIR}/advance/"{artwork,diff,image,rom,sample,snap}
+	keepdir "/usr/share/advance/"{artwork,diff,image,rom,sample,snap}
 
 	dodoc HISTORY README RELEASE
 	cd doc
 	dodoc *.txt
-	dohtml *.html
+	HTMLDOCS="*.html" einstalldocs
+
 	for f in *.1 ; do
 		newman ${f} ${f/1/6}
 	done
-
-	prepgamesdirs
 }

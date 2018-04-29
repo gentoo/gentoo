@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs games
+EAPI=6
+inherit desktop epatch toolchain-funcs
 
-DEB_PATCH_VER="12"
+DEB_PATCH_VER="13"
 DESCRIPTION="Mille Bournes card game"
 HOMEPAGE="http://www.milleborne.info/"
 SRC_URI="mirror://debian/pool/main/x/xmille/${PN}_${PV}.orig.tar.gz
@@ -18,11 +18,13 @@ IUSE=""
 RDEPEND="x11-libs/libXext"
 DEPEND="${RDEPEND}
 	app-text/rman
-	x11-misc/imake"
+	x11-misc/imake
+"
 
-S=${WORKDIR}/${P}.orig
+S="${WORKDIR}/${P}.orig"
 
 src_prepare() {
+	default
 	epatch "${WORKDIR}"/${PN}_${PV}-${DEB_PATCH_VER}.diff
 
 }
@@ -41,8 +43,8 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin xmille
-	dodoc CHANGES README
+	dobin xmille
+	einstalldocs
+	make_desktop_entry "${PN}" "Milles Bournes"
 	newman xmille.man xmille.6
-	prepgamesdirs
 }

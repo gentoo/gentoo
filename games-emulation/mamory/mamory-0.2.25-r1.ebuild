@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools flag-o-matic games
+EAPI=6
+inherit autotools flag-o-matic
 
 DESCRIPTION="ROM management tools and library"
 HOMEPAGE="http://mamory.sourceforge.net/"
@@ -14,9 +14,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/expat"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	# Make sure the system expat is used
 	sed -i \
 		-e 's/#ifdef.*SYSEXPAT/#if 1/' \
@@ -37,12 +39,12 @@ src_prepare() {
 }
 
 src_configure() {
-	egamesconf \
-		--includedir=/usr/include
+	econf \
+		--includedir=/usr/include \
+		--disable-static
 }
 
 src_install() {
-	default
-	dohtml DOCS/mamory.html
-	prepgamesdirs
+	HTML_DOCS="DOCS/mamory.html" default
+	find "${D}" -name '*.la' -delete || die
 }

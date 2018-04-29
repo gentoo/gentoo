@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games
+EAPI=6
 
 DESCRIPTION="Single-user single-tasking operating system for 32 bit Atari computer emulators"
 HOMEPAGE="http://emutos.sourceforge.net"
@@ -18,10 +17,9 @@ IUSE=""
 RDEPEND=""
 DEPEND="app-arch/unzip"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
-	dogameslib */*.img
+	dolib */*.img
 	dodoc emutos-512k-${PV}/{readme.txt,doc/{announce,authors,changelog,status}.txt}
-	prepgamesdirs
 }

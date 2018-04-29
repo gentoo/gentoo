@@ -1,11 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+inherit desktop flag-o-matic toolchain-funcs gnome2-utils
 
-inherit eutils flag-o-matic toolchain-funcs gnome2-utils games
-
-DESCRIPTION="portable, Open Source NES emulator which is written mostly in C"
+DESCRIPTION="Portable, Open Source NES emulator which is written mostly in C"
 HOMEPAGE="http://fakenes.sourceforge.net/"
 SRC_URI="mirror://sourceforge/fakenes/${P}.tar.bz2"
 
@@ -14,17 +13,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="openal opengl zlib"
 
-RDEPEND=">=media-libs/allegro-4.4.1.1:0[opengl?]
+RDEPEND="
+	>=media-libs/allegro-4.4.1.1:0[opengl?]
 	dev-games/hawknl
 	openal? (
 		media-libs/openal
 		media-libs/freealut
 	)
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
+	default
 	sed -i \
 		-e "s:openal-config:pkg-config openal:" \
 		build/openal.cbd || die
@@ -32,7 +35,7 @@ src_prepare() {
 	sed -i \
 		-e "s:LIBAGL = agl:LIBAGL = alleggl:" \
 		build/alleggl.cbd || die
-	epatch "${FILESDIR}"/${P}-{underlink,zlib}.patch
+	eapply "${FILESDIR}"/${P}-{underlink,zlib}.patch
 }
 
 src_compile() {
@@ -51,25 +54,21 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin fakenes
-	insinto "${GAMES_DATADIR}/${PN}"
+	dobin fakenes
+	insinto "/usr/share/${PN}"
 	doins support/*
-	dodoc docs/{CHANGES,README}
-	dohtml docs/faq.html
+
+	cd docs && HTML_DOCS="faq.html" einstalldocs && cd ..
 
 	newicon -s 32 support/icon-32x32.png ${PN}.png
 	make_desktop_entry ${PN} "FakeNES"
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

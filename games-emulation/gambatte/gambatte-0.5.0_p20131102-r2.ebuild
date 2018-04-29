@@ -1,9 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit scons-utils games
+EAPI=6
+inherit scons-utils
 
 DESCRIPTION="An accuracy-focused Gameboy / Gameboy Color emulator"
 HOMEPAGE="https://sourceforge.net/projects/gambatte"
@@ -16,9 +15,9 @@ IUSE=""
 
 RDEPEND="
 	media-libs/libsdl[X,sound,joystick,video]
-	sys-libs/zlib"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils"
+	sys-libs/zlib
+"
+DEPEND="${RDEPEND}"
 
 fix_scons() {
 	local i
@@ -48,6 +47,8 @@ END
 }
 
 src_prepare() {
+	default
+
 	# Fix zlib/minizip build error
 	sed -i \
 		-e '1i#define OF(x) x' \
@@ -68,9 +69,6 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin gambatte_sdl/gambatte_sdl
-
-	dodoc README changelog
-
-	prepgamesdirs
+	dobin gambatte_sdl/gambatte_sdl
+	einstalldocs
 }

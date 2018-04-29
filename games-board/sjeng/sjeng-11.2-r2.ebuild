@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit games
+EAPI=6
 
 DESCRIPTION="Console based chess interface"
 HOMEPAGE="http://sjeng.sourceforge.net/"
@@ -13,12 +12,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="sys-libs/gdbm"
-RDEPEND=${DEPEND}
+RDEPEND="sys-libs/gdbm:0="
+DEPEND=${RDEPEND}
 
-S=${WORKDIR}/Sjeng-Free-${PV}
-
-src_install () {
-	default
-	prepgamesdirs
-}
+S="${WORKDIR}/Sjeng-Free-${PV}"

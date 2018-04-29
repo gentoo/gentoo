@@ -1,12 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils autotools flag-o-matic games
+EAPI=6
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="A NeoGeo emulator"
 HOMEPAGE="https://code.google.com/p/gngeo/"
-SRC_URI="https://gngeo.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://gngeo.googlecode.com/files/${P}.tar.gz
+	https://storage.googleapis.com/google-code-archive/v2/code.google.com/gngeo/logo.png -> ${PN}.png"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,10 +17,11 @@ IUSE=""
 DEPEND="virtual/opengl
 	media-libs/libsdl[joystick,opengl,sound,video]
 	sys-libs/zlib[minizip]"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch \
+	default
+	eapply \
 		"${FILESDIR}"/${P}-execstacks.patch \
 		"${FILESDIR}"/${P}-zlib.patch \
 		"${FILESDIR}"/${P}-concurrentMake.patch \
@@ -30,18 +32,12 @@ src_prepare() {
 }
 
 src_configure() {
-	egamesconf --disable-i386asm
+	econf --disable-i386asm
 }
 
 src_install() {
 	DOCS=( AUTHORS FAQ NEWS README* TODO sample_gngeorc )
 	default
-	prepgamesdirs
-}
-
-pkg_postinst() {
-	games_pkg_postinst
-	echo
-	elog "A licensed NeoGeo BIOS copy is required to run the emulator."
-	echo
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN}
 }
