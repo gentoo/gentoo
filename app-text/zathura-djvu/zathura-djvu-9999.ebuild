@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs xdg
+inherit meson xdg
 
 if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-djvu.git"
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
+	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+	SRC_URI="https://pwmt.org/projects/${PN}/download/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="DjVu plug-in for zathura"
@@ -21,27 +21,11 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=app-text/djvu-3.5.24-r1:=
+RDEPEND="
+	app-text/djvu
 	>=app-text/zathura-0.3.8
-	dev-libs/glib:2=
-	x11-libs/cairo:="
+	dev-libs/glib:2
+	x11-libs/cairo
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_configure() {
-	myzathuraconf=(
-		CC="$(tc-getCC)"
-		LD="$(tc-getLD)"
-		VERBOSE=1
-		DESTDIR="${D}"
-	)
-}
-
-src_compile() {
-	emake "${myzathuraconf[@]}"
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" install
-	dodoc AUTHORS
-}
