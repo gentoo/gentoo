@@ -1,5 +1,5 @@
---- tools/archopt.c.old
-+++ tools/archopt.c
+--- a/tools/archopt.c.old
++++ b/tools/archopt.c
 @@ -1,8 +1,30 @@
 +/*
 +Copyright (C) 2005-2007 Nach, grinvader ( http://www.zsnes.com )
