@@ -1,5 +1,5 @@
---- build/main.mk.old	2015-01-18 12:18:50.608153217 +0100
-+++ build/main.mk	2015-01-18 12:20:00.352861984 +0100
+--- a/build/main.mk.old	2015-01-18 12:18:50.608153217 +0100
++++ b/build/main.mk	2015-01-18 12:20:00.352861984 +0100
 @@ -541,10 +541,9 @@
  DEPEND_SUBST=$(patsubst $(SOURCES_PATH)/%.cc,$(DEPEND_PATH)/%.d,$<)
  $(OBJECTS_FULL): $(INIT_DUMMY_FILE)
