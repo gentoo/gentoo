@@ -1,17 +1,17 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib toolchain-funcs virtualx xdg-utils
+inherit meson virtualx xdg
 
 if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura.git"
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
+	inherit git-r3
 else
+	SRC_URI="https://pwmt.org/projects/${PN}/download/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-	SRC_URI="http://pwmt.org/projects/${PN}/download/${P}.tar.gz"
 fi
 
 DESCRIPTION="A highly customizable and functional document viewer"
@@ -19,51 +19,38 @@ HOMEPAGE="http://pwmt.org/projects/zathura/"
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="+magic sqlite synctex test"
+IUSE="+magic +seccomp sqlite synctex test"
 
-RDEPEND=">=dev-libs/girara-0.2.7:=
-	>=dev-libs/glib-2.32:2=
-	x11-libs/cairo:=
-	>=x11-libs/gtk+-3.6:3
+RDEPEND="
+	>=x11-libs/gtk+-3.22:3
+	>=dev-libs/girara-0.2.9:0=
+	>=dev-libs/glib-2.50:2=
+	sqlite? ( >=dev-db/sqlite-3.5.9:3= )
 	magic? ( sys-apps/file:= )
-	sqlite? ( dev-db/sqlite:3= )
-	synctex? ( >=app-text/texlive-core-2015 )"
+	synctex? ( >=app-text/texlive-core-2015 )
+	seccomp? ( sys-libs/libseccomp )
+"
+# dev-libs/appstream-glib triggers screenshot downloads, failing with network-sandbox
 DEPEND="${RDEPEND}
-	sys-devel/gettext
+	dev-python/sphinx
+	dev-util/intltool
 	virtual/pkgconfig
-	test? ( dev-libs/check )"
+	test? (
+		dev-libs/check
+		!dev-libs/appstream-glib
+	)
+"
 
 src_configure() {
-	myzathuraconf=(
-		WITH_MAGIC=$(usex magic 1 0)
-		WITH_SQLITE=$(usex sqlite 1 0)
-		WITH_SYNCTEX=$(usex synctex 1 0)
-		PREFIX="${EPREFIX}"/usr
-		LIBDIR='${PREFIX}'/$(get_libdir)
-		CC="$(tc-getCC)"
-		SFLAGS=''
-		VERBOSE=1
-		DESTDIR="${D}"
+	local emesonargs=(
+		-Denable-sqlite=$(usex sqlite true false)
+		-Denable-synctex=$(usex synctex true false)
+		-Denable-magic=$(usex magic true false)
+		-Denable-seccomp=$(usex seccomp true false)
 	)
-}
-
-src_compile() {
-	emake "${myzathuraconf[@]}"
+	meson_src_configure
 }
 
 src_test() {
-	Xemake "${myzathuraconf[@]}" test
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" install
-	dodoc AUTHORS
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
+	virtx meson_src_test
 }
