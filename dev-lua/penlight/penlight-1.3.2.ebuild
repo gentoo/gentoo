@@ -22,6 +22,9 @@ RDEPEND="${COMMON_DEPEND}
 	dev-lua/luafilesystem"
 
 src_install() {
-	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)"
+        local luapath=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)
+        # Remove EPREFIX as it will be added in insinto
+	insinto "${luapath#${EPREFIX}}"
 	doins -r lua/pl
 }
+
