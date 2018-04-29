@@ -477,6 +477,11 @@ x11-themes/icewm-themes
 sys-freebsd/virtio-kmod
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# Doesn't build (#591918, #587392). Removal in a month.
+games-fps/alephone
+games-fps/alephone-infinity
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # Broken for a long time (#587806). Removal in a month.
 app-text/zemberek-server
 app-text/zpspell
