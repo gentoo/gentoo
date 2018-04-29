@@ -70,10 +70,7 @@ COMMON_DEPEND="
 		>=net-libs/aqbanking-5.6.5
 		>=sys-libs/gwenhywfar-4.15.3-r1[qt5]
 	)
-	holidays? ( || (
-		$(add_frameworks_dep kholidays)
-		$(add_kdeapps_dep kholidays)
-	) )
+	holidays? ( $(add_frameworks_dep kholidays) )
 	ofx? ( dev-libs/libofx )
 	weboob? (
 		${PYTHON_DEPS}
