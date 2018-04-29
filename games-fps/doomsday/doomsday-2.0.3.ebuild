@@ -16,11 +16,10 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="fluidsynth openal +doom demo freedoom heretic hexen tools fmod"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-        demo? ( doom ) freedoom? ( doom )
+	demo? ( doom ) freedoom? ( doom )
 "
 
 RDEPEND="
-	>=dev-util/cmake-3.1
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
