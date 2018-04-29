@@ -11,8 +11,8 @@ RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="architecture specific information for Rex"
-HOMEPAGE="https://rubygems.org/gems/rex-arch"
+DESCRIPTION="ruby implmenetation of the SSLScan tool "
+HOMEPAGE="https://rubygems.org/gems/rex-sslscan"
 
 LICENSE="BSD"
 
@@ -20,4 +20,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-ruby_add_bdepend "dev-ruby/rex-text"
+PDEPEND="dev-libs/openssl"
+
+ruby_add_rdepend "dev-ruby/rex-core dev-ruby/rex-socket dev-ruby/rex-text"

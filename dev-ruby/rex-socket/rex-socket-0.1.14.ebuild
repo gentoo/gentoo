@@ -11,8 +11,8 @@ RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="architecture specific information for Rex"
-HOMEPAGE="https://rubygems.org/gems/rex-arch"
+DESCRIPTION="Ruby Exploitation (Rex) Socket Abstraction Library"
+HOMEPAGE="https://rubygems.org/gems/rex-socket"
 
 LICENSE="BSD"
 
@@ -20,4 +20,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-ruby_add_bdepend "dev-ruby/rex-text"
+ruby_add_bdepend "dev-ruby/rex-core"
