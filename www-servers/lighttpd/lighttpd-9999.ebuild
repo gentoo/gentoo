@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit autotools eutils readme.gentoo-r1 user systemd git-r3
 
 DESCRIPTION="Lightweight high-performance web server"
-HOMEPAGE="http://www.lighttpd.net/"
+HOMEPAGE="https://www.lighttpd.net/"
 EGIT_REPO_URI="https://git.lighttpd.net/lighttpd1.4.git git+ssh://git@lighttpd.net/lighttpd/lighttpd1.4.git git://git.lighttpd.net/lighttpd/lighttpd1.4.git"
 
 LICENSE="BSD GPL-2"
