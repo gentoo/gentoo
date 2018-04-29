@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>gnome-extra/cinnamon-settings-daemon-3.6
+DESCRIPTION=Translation data for Cinnamon
+EAPI=6
+HOMEPAGE=http://cinnamon.linuxmint.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>gnome-extra/cinnamon-settings-daemon-3.6
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/linuxmint/cinnamon-translations/archive/3.6.3.tar.gz -> cinnamon-translations-3.6.3.tar.gz
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b
+_md5_=ec415cb57dae1a2783b51af3fe99a3a8
