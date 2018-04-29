@@ -18,4 +18,7 @@
     <doc lang="en">http://pwmt.org/projects/girara/</doc>
     <bugs-to>http://bugs.pwmt.org/</bugs-to>
   </upstream>
+  <use>
+    <flag name="json">Configuration dumping support via <pkg>dev-libs/json-c</pkg></flag>
+  </use>
 </pkgmetadata>

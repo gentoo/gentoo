@@ -1,67 +1,56 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit multilib toolchain-funcs virtualx
-[[ ${PV} == 9999* ]] && inherit git-2
+inherit meson virtualx
+
+if [[ ${PV} == *9999 ]]; then
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
+	EGIT_BRANCH="develop"
+	inherit git-r3
+else
+	SRC_URI="https://pwmt.org/projects/${PN}/download/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+fi
 
 DESCRIPTION="UI library that focuses on simplicity and minimalism"
 HOMEPAGE="https://pwmt.org/projects/girara/"
-if ! [[ ${PV} == 9999* ]]; then
-SRC_URI="https://pwmt.org/projects/${PN}/download/${P}.tar.gz"
-fi
-EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
-EGIT_BRANCH="develop"
 
 LICENSE="ZLIB"
 SLOT="0"
-if ! [[ ${PV} == 9999* ]]; then
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-else
-KEYWORDS=""
-fi
-IUSE="libnotify static-libs test"
+IUSE="doc json libnotify test"
 
-RDEPEND=">=dev-libs/glib-2.28
-	>=x11-libs/gtk+-3.4:3
-	!<${CATEGORY}/${PN}-0.1.6
-	libnotify? ( >=x11-libs/libnotify-0.7 )"
+RDEPEND="
+	>=dev-libs/glib-2.50
+	>=x11-libs/gtk+-3.20:3
+	>=x11-libs/pango-1.14
+	libnotify? ( >=x11-libs/libnotify-0.7.0 )
+	json? ( dev-libs/json-c )
+"
 DEPEND="${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig"
+	dev-util/intltool
+	virtual/pkgconfig
+	test? ( dev-libs/check )
+	doc? ( app-doc/doxygen )
+"
 
-pkg_setup() {
-	mygiraraconf=(
-		WITH_LIBNOTIFY=$(usex libnotify 1 0)
-		PREFIX="${EPREFIX}"/usr
-		LIBDIR='${PREFIX}'/$(get_libdir)
-		CC="$(tc-getCC)"
-		SFLAGS=''
-		VERBOSE=1
-		DESTDIR="${D}"
-		)
-}
-
-src_prepare() {
-	# Remove 'static' and 'install-static' targets
-	if ! use static-libs; then
-		sed -i \
-			-e '/^${PROJECT}:/s:static::' \
-			-e '/^install:/s:install-static::' \
-			Makefile || die
-	fi
-}
-
-src_compile() {
-	emake "${mygiraraconf[@]}"
+src_configure() {
+	local emesonargs=(
+		-Denable-notify=$(usex libnotify true false)
+		-Denable-json=$(usex json true false)
+		-Denable-docs=$(usex doc true false)
+	)
+	meson_src_configure
 }
 
 src_test() {
-	virtx default
+	virtx meson_src_test
 }
 
 src_install() {
-	emake "${mygiraraconf[@]}" install
-	dodoc AUTHORS
+	if use doc; then
+		HTML_DOCS="${BUILD_DIR}/doc/html/."
+	fi
+	meson_src_install
 }
