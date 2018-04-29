@@ -1,5 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Extensible perl-based build utility"
 SRC_URI="http://www.dsmit.com/cons/stable/${P}.tgz"

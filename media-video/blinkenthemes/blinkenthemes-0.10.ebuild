@@ -1,6 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 DESCRIPTION="Themes for blinkensim"
 HOMEPAGE="http://www.blinkenlights.net/project/developer-tools"
 SRC_URI="http://www.blinkenlights.de/dist/blinkenthemes-0.10.tar.gz"
