@@ -1,5 +1,5 @@
---- main/Makefile.am.old	2011-06-20 21:35:25.832460030 +0200
-+++ main/Makefile.am	2011-06-20 21:36:29.490503981 +0200
+--- a/main/Makefile.am.old	2011-06-20 21:35:25.832460030 +0200
++++ b/main/Makefile.am	2011-06-20 21:36:29.490503981 +0200
 @@ -7,7 +7,7 @@
  bin_PROGRAMS = @PROGRAM@
  EXTRA_PROGRAMS = generator-svgalib generator-tcltk generator-allegro \
