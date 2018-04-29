@@ -21,6 +21,6 @@ src_unpack() {
 }
 
 src_install() {
-	insinto /usr/lib/dict
-	doins usr/share/dictd/{wn.dict.dz,wn.index}
+	insinto /usr/share/dict
+	doins usr/share/dictd/wn.{dict.dz,index}
 }
