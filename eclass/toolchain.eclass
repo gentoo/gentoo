@@ -971,7 +971,14 @@ toolchain_src_configure() {
 		case ${CTARGET} in
 		*-linux)		 needed_libc=no-fucking-clue;;
 		*-dietlibc)		 needed_libc=dietlibc;;
-		*-elf|*-eabi)	 needed_libc=newlib;;
+		*-elf|*-eabi)
+			needed_libc=newlib
+			# Bare-metal targets don't have access to clock_gettime()
+			# arm-none-eabi example: bug #589672
+			# But we explicitly do --enable-libstdcxx-time above.
+			# Undoing it here.
+			confgcc+=( --disable-libstdcxx-time )
+			;;
 		*-freebsd*)		 needed_libc=freebsd-lib;;
 		*-gnu*)			 needed_libc=glibc;;
 		*-klibc)		 needed_libc=klibc;;
