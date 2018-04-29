@@ -52,6 +52,8 @@ python_compile_all() {
 
 python_test() {
 	tc-export CC
+	# https://github.com/cython/cython/issues/1911
+	local -x CFLAGS="${CFLAGS} -fno-strict-overflow"
 	"${PYTHON}" runtests.py -vv --work-dir "${BUILD_DIR}"/tests \
 		|| die "Tests fail with ${EPYTHON}"
 }
