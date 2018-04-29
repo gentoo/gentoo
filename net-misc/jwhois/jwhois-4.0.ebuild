@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Advanced Internet Whois client capable of recursive queries"
 HOMEPAGE="https://www.gnu.org/software/jwhois/"

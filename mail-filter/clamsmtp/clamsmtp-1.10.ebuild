@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="An SMTP filter to check for viruses using the ClamAV anti-virus software"
 HOMEPAGE="http://thewalter.net/stef/software/clamsmtp/"

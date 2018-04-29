@@ -1,5 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set"
 HOMEPAGE="https://sourceforge.net/projects/libavc1394/"

@@ -1,5 +1,7 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="mkDoxy generates Doxygen-compatible HTML documentation for makefiles"
 HOMEPAGE="https://sourceforge.net/projects/mkdoxy/"

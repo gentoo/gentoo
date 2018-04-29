@@ -1,5 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="qmail-lint checks your qmail configuration for common problems"
 HOMEPAGE="http://www.qmail.org/"
