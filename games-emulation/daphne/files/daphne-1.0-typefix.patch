@@ -1,8 +1,8 @@
 amd64 does not like int pointers
 
 diff -ruN v_1_0.orig/src/ldp-in/ldv1000.cpp v_1_0/src/ldp-in/ldv1000.cpp
---- v_1_0.orig/src/ldp-in/ldv1000.cpp	2008-01-29 18:04:34.000000000 +0100
-+++ v_1_0/src/ldp-in/ldv1000.cpp	2008-09-19 14:29:40.000000000 +0200
+--- a/ldp-in/ldv1000.cpp	2008-01-29 18:04:34.000000000 +0100
++++ b/ldp-in/ldv1000.cpp	2008-09-19 14:29:40.000000000 +0200
 @@ -607,9 +607,9 @@
  
  void ldv1000_event_callback(void *eventType)
@@ -16,8 +16,8 @@ diff -ruN v_1_0.orig/src/ldp-in/ldv1000.cpp v_1_0/src/ldp-in/ldv1000.cpp
  	case LDV1000_EVENT_VSYNC_END:
  #ifdef DEBUG
 diff -ruN v_1_0.orig/src/vldp2/libvo/video_out_null.c v_1_0/src/vldp2/libvo/video_out_null.c
---- v_1_0.orig/src/vldp2/libvo/video_out_null.c	2008-01-29 18:04:43.000000000 +0100
-+++ v_1_0/src/vldp2/libvo/video_out_null.c	2008-09-19 14:30:03.000000000 +0200
+--- a/vldp2/libvo/video_out_null.c	2008-01-29 18:04:43.000000000 +0100
++++ b/vldp2/libvo/video_out_null.c	2008-09-19 14:30:03.000000000 +0200
 @@ -82,7 +82,7 @@
  				// this is the potentially expensive callback that gets the hardware overlay
  				// ready to be displayed, so we do this before we sleep
