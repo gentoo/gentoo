@@ -1,5 +1,5 @@
---- configure.old       2009-02-04 14:41:40.000000000 +0100
-+++ configure   2009-02-04 14:48:52.000000000 +0100
+--- a/configure.old       2009-02-04 14:41:40.000000000 +0100
++++ b/configure   2009-02-04 14:48:52.000000000 +0100
 @@ -4929,7 +4929,7 @@
         { echo "$as_me:$LINENO: result: $with_opengl" >&5
  echo "${ECHO_T}$with_opengl" >&6; }
