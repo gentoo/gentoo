@@ -1,5 +1,5 @@
---- configure.in.orig	2016-03-31 04:15:45.913917791 -0400
-+++ configure.in	2016-03-31 04:16:23.447607551 -0400
+--- a/configure.in.orig	2016-03-31 04:15:45.913917791 -0400
++++ b/configure.in	2016-03-31 04:16:23.447607551 -0400
 @@ -236,20 +236,12 @@
             AC_DEFINE(PROCESSOR_INTEL, 1, [Define if you have an x86 processor])
             ALIGNLONGS=0
