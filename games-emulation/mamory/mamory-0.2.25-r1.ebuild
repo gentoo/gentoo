@@ -35,9 +35,7 @@ src_prepare() {
 		common/Makefile.am || die
 
 	AT_M4DIR="config" eautoreconf
-	append-cflags -std=gnu89 # build with gcc5 (bug #570500)
-
-	
+	append-cflags -std=gnu89 # build with gcc5 (bug #570500)	
 }
 
 src_configure() {
