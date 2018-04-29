@@ -48,7 +48,6 @@ move kde-base/kcalc kde-apps/kcalc
 move kde-base/kcharselect kde-apps/kcharselect
 move kde-base/kcolorchooser kde-apps/kcolorchooser
 move kde-base/kcron kde-apps/kcron
-move kde-base/kde-l10n kde-apps/kde4-l10n
 move kde-base/kdeaccessibility-meta kde-apps/kdeaccessibility-meta
 move kde-base/kdeadmin-meta kde-apps/kdeadmin-meta
 move kde-base/kdebase-meta kde-apps/kdebase-meta
@@ -110,7 +109,6 @@ move kde-base/krdc kde-apps/krdc
 move kde-base/kreversi kde-apps/kreversi
 move kde-base/krfb kde-apps/krfb
 move kde-base/kruler kde-apps/kruler
-move kde-base/kscd kde-apps/kscd
 move kde-base/kshisen kde-apps/kshisen
 move kde-base/ksirk kde-apps/ksirk
 move kde-base/ksnakeduel kde-apps/ksnakeduel
