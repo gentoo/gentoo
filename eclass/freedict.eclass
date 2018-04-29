@@ -21,31 +21,21 @@
 # @DESCRIPTION:
 # Please see above for a description.
 
+if [[ -z ${_FREEDICT_ECLASS} ]]; then
+_FREEDICT_ECLASS=1
+
 case ${EAPI:-0} in
 	6) ;;
 	*) die "${ECLASS}.eclass is banned in EAPI=${EAPI}" ;;
 esac
 
+inherit dict
+
 MY_P=${PN/freedict-/}
+DICTS=( ${MY_P} )
 
 DESCRIPTION="Freedict for language translation from ${FORLANG} to ${TOLANG}"
 HOMEPAGE="http://freedict.sourceforge.net/"
 SRC_URI="http://freedict.sourceforge.net/download/linux/${MY_P}.tar.gz"
 
-LICENSE="GPL-2+"
-SLOT="0"
-
-RDEPEND="app-text/dictd"
-
-S="${WORKDIR}"
-
-# @FUNCTION: freedict_src_install
-# @DESCRIPTION:
-# The freedict src_install function, which is exported
-freedict_src_install() {
-	insinto /usr/$(get_libdir)/dict
-	doins ${MY_P}.dict.dz
-	doins ${MY_P}.index
-}
-
-EXPORT_FUNCTIONS src_install
+fi
