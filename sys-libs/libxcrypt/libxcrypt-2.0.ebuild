@@ -1,5 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="A replacement for libcrypt with DES, MD5 and blowfish support"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"

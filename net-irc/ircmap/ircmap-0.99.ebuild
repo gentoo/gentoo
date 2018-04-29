@@ -1,5 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Scripts to treate diagrams of IRC networks using the LINKS command"
 HOMEPAGE="http://pasky.or.cz/~pasky/irc/"

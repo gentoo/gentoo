@@ -1,6 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 inherit flag-o-matic eutils toolchain-funcs
 
 _XA_CYUV_sparc=xa1.0_cyuv_sparcELF.o
