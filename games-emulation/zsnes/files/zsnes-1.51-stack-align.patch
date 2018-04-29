@@ -1,5 +1,5 @@
---- zsnes_1_51/src/linux/sdllink.c.old
-+++ zsnes_1_51/src/linux/sdllink.c
+--- src/linux/sdllink.c.old
++++ src/linux/sdllink.c
 @@ -773,11 +773,11 @@ BOOL InitInput()
  {
    InitJoystickInput();
