@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="An emulator for the Sega Dreamcast system"
 HOMEPAGE="http://www.lxdream.org/"
