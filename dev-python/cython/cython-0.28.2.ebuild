@@ -57,7 +57,7 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( CHANGES.rst README.txt ToDo.txt USAGE.txt )
+	local DOCS=( CHANGES.rst README.rst ToDo.txt USAGE.txt )
 	use doc && local HTML_DOCS=( docs/build/html/. )
 	distutils-r1_python_install_all
 
