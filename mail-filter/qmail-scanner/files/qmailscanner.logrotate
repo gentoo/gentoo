@@ -1,4 +1,0 @@
-/var/spool/qmailscan/qmail-queue.log /var/spool/qmailscan/quarantine.log /var/spool/qmailscan/mailstats.csv {
-	weekly
-	create 0600 qscand qscand
-}
