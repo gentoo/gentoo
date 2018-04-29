@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ fi
 VIRTUALX_REQUIRED="test"
 RESTRICT="test"
 
-inherit autotools readme.gentoo-r1 toolchain-funcs virtualx $GIT_ECLASS
+inherit autotools readme.gentoo-r1 toolchain-funcs virtualx epatch $GIT_ECLASS
 
 DESCRIPTION="Wayland reference compositor"
 HOMEPAGE="https://wayland.freedesktop.org/"
@@ -95,6 +95,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-sysmacros.patch"
 	if [[ ${PV} = 9999* ]]; then
 		eautoreconf
 	fi
