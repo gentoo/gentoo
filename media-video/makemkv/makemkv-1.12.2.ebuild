@@ -16,12 +16,12 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+gui libav multilib"
+IUSE="+gui libav"
 
 QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
 DEPEND="
-	sys-libs/glibc[multilib?]
+	sys-libs/glibc
 	dev-libs/expat
 	dev-libs/openssl:0[-bindist(-)]
 	sys-libs/zlib
@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 
 CONFIG_CHECK="~CHR_DEV_SG"
 S="${WORKDIR}/${MY_P}"
-PATCHES=( "${FILESDIR}"/${PN}-{wget,path}.patch )
+PATCHES=( "${FILESDIR}"/${PN}-path.patch )
 
 src_configure() {
 	# See bug #439380.
@@ -66,13 +66,8 @@ src_install() {
 
 	cd "${WORKDIR}"/${MY_PB} || die
 
-	# install prebuilt bins
-	if use x86; then
-		dobin bin/i386/{makemkvcon,mmdtsdec}
-	elif use amd64; then
-		dobin bin/amd64/makemkvcon
-		use multilib && dobin bin/i386/mmdtsdec
-	fi
+	# install prebuilt bin
+	dobin bin/$(usex x86 i386 ${ARCH})/makemkvcon
 
 	# install profiles and locales
 	insinto /usr/share/MakeMKV
