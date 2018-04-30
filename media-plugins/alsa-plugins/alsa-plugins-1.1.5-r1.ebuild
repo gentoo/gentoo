@@ -23,14 +23,8 @@ RDEPEND="
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.8-r1:=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	speex? (
-		|| (
-			(
-				>=media-libs/speex-1.2.0[${MULTILIB_USEDEP}]
-				media-libs/speexdsp[${MULTILIB_USEDEP}]
-			)
-			<media-libs/speex-1.2.0[${MULTILIB_USEDEP}]
-		)
-		media-libs/speex:=[${MULTILIB_USEDEP}]
+		>=media-libs/speex-1.2.0:=[${MULTILIB_USEDEP}]
+		media-libs/speexdsp[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}
