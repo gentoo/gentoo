@@ -144,6 +144,11 @@ REQUIRED_USE="
 	session-mm? ( session !threads )
 	mysql? ( || ( mysqli pdo ) )
 "
+PATCHES=(
+	# hopefully upstream will include the same version check fixes in upcoming releases
+	# patch added 20180429
+	"${FILESDIR}/libressl-compatibility.patch"
+)
 
 PHP_MV="$(get_major_version)"
 
