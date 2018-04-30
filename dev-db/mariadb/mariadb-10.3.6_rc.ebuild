@@ -712,8 +712,6 @@ src_test() {
 		_disable_test main.plugin_auth "Needs client libraries built"
 	fi
 
-	_disable_test main.mysql "Bogus error text mismatch failure"
-
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
