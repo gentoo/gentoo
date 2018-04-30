@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -17,7 +17,7 @@ RDEPEND="x11-libs/libXtst
 	gnome? ( gnome-base/libgnome )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/inputproto"
+	x11-base/xorg-proto"
 
 src_configure() {
 	econf $(use_with gnome)
