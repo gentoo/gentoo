@@ -106,7 +106,7 @@ DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="Please take a thorough look a the Step-by-step-manual.html
 in /usr/share/doc/${PF}/html for integration with pam/polkit/...
 Hint: You may want
-   auth        sufficient  pam_fingerprint-gui.so
+auth sufficient  pam_fingerprint-gui.so
 in /etc/pam.d/system-auth
 
 There are udev rules to enforce group fingerprint on the reader device
