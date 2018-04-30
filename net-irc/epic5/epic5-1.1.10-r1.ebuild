@@ -49,7 +49,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-tcl-automagic-as-needed.patch \
 		"${FILESDIR}"/${PN}-1.1.2-perl-automagic-as-needed.patch \
 		"${FILESDIR}"/${P}-without-localdir.patch \
-		"${FILESDIR}"/${P}-socks5-libsocks.patch
+		"${FILESDIR}"/${P}-socks5-libsocks.patch \
+		"${FILESDIR}"/${P}-xlocale.patch
 	eautoconf
 }
 
