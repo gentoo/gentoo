@@ -34,7 +34,7 @@ src_prepare() {
 	# Allow users to apply patches to src/drivers for example,
 	# i.e. anything outside ${S}/${PN}
 	pushd ../ >/dev/null || die
-	
+
 	# Add LibreSSL compatibility patch bug (#567262)
 	eapply "${FILESDIR}/${P}-libressl-compatibility.patch"
 
