@@ -68,7 +68,7 @@ DEPEND="lights? ( || (
 "
 
 S="${WORKDIR}/${PN}"
-dir="/usr/share/quake1"
+dir="/usr/share/games/quake1"
 
 opengl_client() { use opengl || ( ! use dedicated && ! use sdl ) }
 
@@ -186,7 +186,7 @@ pkg_postinst() {
 		elog "Place pak0.pak and pak1.pak in ${dir}/id1"
 	fi
 
-	if use sdl $$ ! use alsa ; then
+	if use sdl && ! use alsa ; then
 		ewarn "Select opengl with alsa, instead of sdl USE flag, for better audio latency."
 	fi
 }
