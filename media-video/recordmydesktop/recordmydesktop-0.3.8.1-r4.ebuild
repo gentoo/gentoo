@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -26,14 +26,12 @@ RDEPEND="sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	jack? ( media-sound/jack-audio-connection-kit )"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
-	if has_version ">=x11-proto/xextproto-7.1.1"; then
-		sed -i \
-			-e 's:shmstr.h:shmproto.h:g' \
-			src/rmd_{getzpixmap.c,update_image.c} || die
-	fi
+	sed -i \
+		-e 's:shmstr.h:shmproto.h:g' \
+		src/rmd_{getzpixmap.c,update_image.c} || die
 
 	# fix weird Framerates with new libtheora
 	epatch "${FILESDIR}/${PV}-fix_new_theora.patch"

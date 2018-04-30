@@ -54,7 +54,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	virtual/pkgconfig
-	x11-proto/xf86vidmodeproto
+	x11-base/xorg-proto
 	test? ( dev-libs/glib:2[utils] )
 "
 

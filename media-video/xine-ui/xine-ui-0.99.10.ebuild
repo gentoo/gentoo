@@ -39,10 +39,8 @@ RDEPEND="|| ( app-arch/tar app-arch/libarchive )
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.18.3 )
 	X? (
+		x11-base/xorg-proto
 		x11-libs/libXt
-		x11-proto/inputproto
-		x11-proto/xf86vidmodeproto
-		xinerama? ( x11-proto/xineramaproto )
 		)
 	virtual/pkgconfig"
 
