@@ -187,7 +187,7 @@ DEPEND="
 	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
 	>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 	sys-libs/ncurses:0=
-	net-libs/libnsl:0=[${MULTILIB_USEDEP}]
+	net-libs/libnsl:0=
 "
 
 # prefix: first need to implement something for #196294
