@@ -53,9 +53,6 @@ src_prepare() {
 
 	echo "SUBDIRS = $(usex test auto '')" >> tests/tests.pro
 
-	# since 1.10, TestApi is either broken or requires more configuration
-	sed -i -e '/\<api\>/ d' tests/auto/auto.pro || die
-
 	# skip several tests that fail and/or have additional deps
 	sed -i \
 		-e 's/findArchiver("7z")/""/'		`# requires p7zip, fails` \
@@ -86,9 +83,10 @@ src_test() {
 
 	export HOME=${T}
 	export LD_LIBRARY_PATH=${S}/$(get_libdir)
+	export QBS_AUTOTEST_PROFILE=autotests
 
-	"${S}"/bin/qbs-setup-toolchains /usr/bin/gcc gcc || die
-	"${S}"/bin/qbs-setup-qt "$(qt5_get_bindir)/qmake" qbs_autotests || die
+	"${S}"/bin/qbs-setup-toolchains --detect || die
+	"${S}"/bin/qbs-setup-qt "$(qt5_get_bindir)/qmake" autotests || die
 
 	einfo "Running autotests"
 
