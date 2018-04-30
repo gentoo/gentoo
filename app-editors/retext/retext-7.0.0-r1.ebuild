@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/markups-2.0[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,network,printsupport,webkit,widgets,${PYTHON_USEDEP}]
+	dev-python/PyQt5[gui,network,printsupport,webengine,widgets,${PYTHON_USEDEP}]
 	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
 "
 
@@ -50,4 +50,12 @@ python_install_all() {
 	l10n_for_each_disabled_locale_do remove_locale
 
 	make_desktop_entry ${PN} "${MY_PN} Editor" ${PN} "Development;Utility;TextEditor"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
