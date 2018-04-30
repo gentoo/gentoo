@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
+# media-libs/vulkan-loader is keyworded on amd64
+app-emulation/wine-vanilla -vulkan
+
 # Richard Yao <ryao@gentoo.org> (16 Apr 2018)
 # sys-fs/zfs is keyworded on amd64
 sys-cluster/ceph -zfs
