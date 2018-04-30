@@ -51,7 +51,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
-	X? ( x11-proto/inputproto )
+	X? ( x11-base/xorg-proto )
 "
 
 # Needs keywording on many arches.
