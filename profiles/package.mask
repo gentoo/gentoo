@@ -323,11 +323,6 @@ sys-libs/uclibc
 net-libs/webkit-gtk:2
 net-libs/webkit-gtk:3
 
-# Steve Dibb <beandog@gentoo.org> (22 Feb 2018)
-# Dead upstream, long since replaced by libaacs for functionality.
-# Masked for removal in 30 days. Bug #648560
-media-video/aacskeys
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
