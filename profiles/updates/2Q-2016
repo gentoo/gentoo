@@ -51,7 +51,6 @@ move sys-infiniband/libmthca sys-fabric/libmthca
 move sys-infiniband/libnes sys-fabric/libnes
 move sys-infiniband/libocrdma sys-fabric/libocrdma
 move sys-infiniband/librdmacm sys-fabric/librdmacm
-move sys-infiniband/mstflint sys-fabric/mstflint
 move sys-infiniband/ofed sys-fabric/ofed
 move sys-infiniband/opensm sys-fabric/opensm
 move sys-infiniband/perftest sys-fabric/perftest
