@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,10 +33,8 @@ RDEPEND="
 	>=dev-libs/libzip-1.0
 	media-libs/libpng:0=
 	media-libs/libsdl2
-	|| (
-		media-libs/speexdsp
-		<media-libs/speex-1.2.0
-	)
+	>=media-libs/speex-1.2.0
+	media-libs/speexdsp
 	multiplayer? (
 		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( dev-libs/openssl:0= )
