@@ -60,6 +60,8 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.9-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
+	"${MY_PATCH_DIR}"/20032_all_mariadb-10.2.12-fix-address-resolve.patch
+	"${MY_PATCH_DIR}"/20033_all_mariadb-10.1.31-xtradb-sst.patch
 )
 
 # Be warned, *DEPEND are version-dependant
