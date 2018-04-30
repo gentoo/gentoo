@@ -184,7 +184,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig:*
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
-	xcb? ( x11-proto/xproto:0 )
+	xcb? ( x11-base/xorg-proto )
 "
 
 PATCHES=(

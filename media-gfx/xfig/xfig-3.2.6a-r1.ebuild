@@ -27,8 +27,7 @@ RDEPEND="
 	postscript? ( app-text/ghostscript-gpl )
 "
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/inputproto
+	x11-base/xorg-proto
 "
 
 PATCHES=(

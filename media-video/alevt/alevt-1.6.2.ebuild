@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="x11-libs/libX11
 	>=media-libs/libpng-1.4"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 RESTRICT="strip"
 

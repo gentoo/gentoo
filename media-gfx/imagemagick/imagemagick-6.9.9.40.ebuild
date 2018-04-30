@@ -59,7 +59,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!media-gfx/graphicsmagick[imagemagick]
 	virtual/pkgconfig
-	X? ( x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto )"
 
 REQUIRED_USE="corefonts? ( truetype )
 	test? ( corefonts )"

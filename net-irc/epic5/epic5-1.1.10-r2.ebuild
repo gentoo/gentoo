@@ -31,12 +31,13 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.2-libarchive-automagic.patch \
-	"${FILESDIR}"/${P}-ruby-automagic-as-needed.patch \
-	"${FILESDIR}"/${P}-tcl-automagic-as-needed.patch \
-	"${FILESDIR}"/${PN}-1.1.2-perl-automagic-as-needed.patch \
-	"${FILESDIR}"/${P}-without-localdir.patch \
+	"${FILESDIR}"/${PN}-1.1.2-libarchive-automagic.patch
+	"${FILESDIR}"/${P}-ruby-automagic-as-needed.patch
+	"${FILESDIR}"/${P}-tcl-automagic-as-needed.patch
+	"${FILESDIR}"/${PN}-1.1.2-perl-automagic-as-needed.patch
+	"${FILESDIR}"/${P}-without-localdir.patch
 	"${FILESDIR}"/${P}-socks5-libsocks.patch
+	"${FILESDIR}"/${P}-xlocale.patch
 )
 
 src_prepare() {

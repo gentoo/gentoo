@@ -130,17 +130,13 @@ RDEPEND+="
 	xvmc? ( x11-libs/libXvMC )
 "
 
-X_DEPS="
-	x11-proto/videoproto
-	x11-proto/xf86vidmodeproto
-"
 ASM_DEP="dev-lang/yasm"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	dga? ( x11-proto/xf86dgaproto )
-	X? ( ${X_DEPS} )
-	xinerama? ( x11-proto/xineramaproto )
-	xscreensaver? ( x11-proto/scrnsaverproto )
+	dga? ( x11-base/xorg-proto )
+	X? ( x11-base/xorg-proto )
+	xinerama? ( x11-base/xorg-proto )
+	xscreensaver? ( x11-base/xorg-proto )
 	amd64? ( ${ASM_DEP} )
 	doc? (
 		dev-libs/libxslt app-text/docbook-xml-dtd
