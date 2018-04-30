@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools font
 
 DESCRIPTION="Window Maker Dock Applet Library"
-HOMEPAGE="http://www.dockapps.net/libdockapp"
+HOMEPAGE="https://www.dockapps.net/libdockapp"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
