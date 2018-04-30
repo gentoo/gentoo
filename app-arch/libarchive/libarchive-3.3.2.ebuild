@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	)"
 
 PATCHES=(
-    "${FILESDIR}"/${PN}-3.3.2-libressl.patch
+	"${FILESDIR}"/${PN}-3.3.2-libressl.patch
 )
 
 # Various test problems, starting with the fact that sandbox
