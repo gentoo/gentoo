@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,7 +39,7 @@ RDEPEND="sys-libs/ncurses:=
 		x11-libs/libSM )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
 S="${WORKDIR}/swipl-${PV}"

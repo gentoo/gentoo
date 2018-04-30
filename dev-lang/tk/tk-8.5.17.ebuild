@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ RDEPEND="
 	)
 	~dev-lang/tcl-${PV}:0="
 DEPEND="${RDEPEND}
-	!aqua? ( x11-proto/xproto )"
+	!aqua? ( x11-base/xorg-proto )"
 
 SPARENT="${WORKDIR}/${MY_P}"
 S="${SPARENT}"/unix
