@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit multilib toolchain-funcs
 
 DESCRIPTION="dockapp that shows the time in multiple timezones"
-HOMEPAGE="http://www.dockapps.net/wmtz"
-# http://www.dockapps.net/download/${P}.tar.gz
+HOMEPAGE="https://www.dockapps.net/wmtz"
+# https://www.dockapps.net/download/${P}.tar.gz
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
