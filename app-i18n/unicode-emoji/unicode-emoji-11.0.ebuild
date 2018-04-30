@@ -28,8 +28,10 @@ src_unpack() {
 
 src_install() {
 	insinto /usr/share/unicode/emoji
-	local file
-	for file in ${A}; do
-		newins "${DISTDIR}/${file}" "$(sed -e "s/${PN%-*}-\(.*\)-${PV}/\1/" <<< "${file}")"
+	local source_file target_file
+	for source_file in ${A}; do
+		target_file="${source_file#${PN%-*}-}"
+		target_file="${target_file%-${PV}.txt}.txt"
+		newins "${DISTDIR}/${source_file}" "${target_file}"
 	done
 }
