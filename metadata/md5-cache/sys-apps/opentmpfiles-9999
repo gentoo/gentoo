@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst unpack
+DEFINED_PHASES=install postinst prepare unpack
 DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=A standalone utility to process systemd-style tmpfiles.d files
 EAPI=6
@@ -7,5 +7,5 @@ IUSE=selinux
 LICENSE=BSD-2
 RDEPEND=!<sys-apps/openrc-0.23 selinux? ( sec-policy/selinux-base-policy )
 SLOT=0
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
-_md5_=782c61d5e608b62af606195f94247b2c
+_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782	prefix	e51c7882b7b721e54e684f7eb143cbfe
+_md5_=be92793d903309e043c569e590ddd3e3
