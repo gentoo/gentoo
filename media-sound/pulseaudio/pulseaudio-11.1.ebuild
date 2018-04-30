@@ -75,16 +75,8 @@ RDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	|| (
-		(
-			>=media-libs/speex-1.2.0
-			media-libs/speexdsp
-		)
-		(
-			<media-libs/speex-1.2.0
-			>=media-libs/speex-1.2_rc1
-		)
-	)
+	>=media-libs/speex-1.2.0
+	media-libs/speexdsp
 	gdbm? ( sys-libs/gdbm:= )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
