@@ -12,7 +12,7 @@ JAVA_PKG_OPT_USE="jdbc"
 inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	java-pkg-opt-2 user cmake-utils multilib-minimal
 
-SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz "
+SRC_URI="https://downloads.mariadb.org/interstitial/${P/_rc/}/source/${P/_rc/}.tar.gz "
 
 # Gentoo patches to MySQL
 if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]]; then
@@ -43,13 +43,18 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+# REMEMBER: also update eclass/mysql*.eclass before committing!
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
 S="${WORKDIR}/mysql"
 
 if [[ "${MY_EXTRAS_VER}" == "live" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mysql-extras.git"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/mysql-extras"
+	EGIT_CLONE_TYPE=shallow
 	MY_PATCH_DIR="${WORKDIR}/mysql-extras"
 else
 	MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
@@ -60,8 +65,6 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.9-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
-	"${MY_PATCH_DIR}"/20032_all_mariadb-10.2.12-fix-address-resolve.patch
-	"${MY_PATCH_DIR}"/20033_all_mariadb-10.1.31-xtradb-sst.patch
 )
 
 # Be warned, *DEPEND are version-dependant
@@ -87,10 +90,14 @@ COMMON_DEPEND="
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)
-	client-libs? ( >=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
+	client-libs? (
+		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	)
-	!client-libs? ( >=sys-libs/zlib-1.2.3:0= kerberos? ( virtual/krb5 ) )
+	!client-libs? (
+		>=sys-libs/zlib-1.2.3:0=
+		kerberos? ( virtual/krb5 )
+	)
 	sys-libs/ncurses:0=
 	!bindist? (
 		sys-libs/binutils-libs:0=
@@ -124,7 +131,7 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
-	!<virtual/mysql-5.6-r9
+	!<virtual/mysql-5.6-r11
 	${COMMON_DEPEND}
 	server? ( galera? (
 		sys-apps/iproute2
@@ -248,11 +255,15 @@ pkg_postinst() {
 }
 
 src_unpack() {
+
+	# Initialize the proper variables first
+	mysql_init_vars
+
 	unpack ${A}
 	# Grab the patches
 	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
 
-	mv -f "${WORKDIR}/${P}" "${S}" || die
+	mv -f "${WORKDIR}/${P/_rc/}" "${S}" || die
 }
 
 src_prepare() {
@@ -533,6 +544,9 @@ multilib_src_install() {
 
 	cmake-utils_src_install
 
+	# Make sure the vars are correctly initialized
+	mysql_init_vars
+
 	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
 	if [[ -f "${ED}/usr/include/mysql/server/private/config.h" ]] ; then
 		rm "${ED}/usr/include/mysql/server/private/config.h" || die
@@ -697,6 +711,8 @@ src_test() {
 	if ! use client-libs ; then
 		_disable_test main.plugin_auth "Needs client libraries built"
 	fi
+
+	_disable_test main.mysql "Bogus error text mismatch failure"
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
