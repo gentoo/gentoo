@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180308-1938Z"
+MY_EXTRAS_VER="20170926-1321Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -28,7 +28,7 @@ HOMEPAGE="http://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0/${SUBSLOT:-0}"
-IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
+IUSE="+backup bindist cracklib debug embedded extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup sst-xtrabackup static static-libs systemd systemtap tcmalloc
@@ -39,11 +39,12 @@ RESTRICT="!bindist? ( bindist ) libressl? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
-	!server? ( !extraengine )
+	!server? ( !extraengine !embedded )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+# REMEMBER: also update eclass/mysql*.eclass before committing!
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -57,7 +58,7 @@ fi
 
 PATCHES=(
 	"${MY_PATCH_DIR}"/20015_all_mariadb-pkgconfig-location.patch
-	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.9-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.8-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
 )
@@ -72,24 +73,18 @@ COMMON_DEPEND="
 	)
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
+	!dev-db/mariadb-connector-c[mysqlcompat]
 	jemalloc? ( dev-libs/jemalloc:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	!yassl? (
-		client-libs? (
-			!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
-		)
-		!client-libs? (
-			!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
+		!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
 	)
-	client-libs? ( >=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
-		kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
-	)
-	!client-libs? ( >=sys-libs/zlib-1.2.3:0= kerberos? ( virtual/krb5 ) )
+	>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 	sys-libs/ncurses:0=
+	mroonga? ( app-text/groonga-normalizer-mysql )
+	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
@@ -104,7 +99,6 @@ COMMON_DEPEND="
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
 		innodb-snappy? ( app-arch/snappy )
-		mroonga? ( app-text/groonga-normalizer-mysql )
 		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( virtual/pam:0= )
@@ -119,7 +113,6 @@ DEPEND="virtual/yacc
 	server? ( extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) ) )
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
-	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
 	!<virtual/mysql-5.6-r9
@@ -142,9 +135,9 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 # xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	!client-libs? ( dev-db/mariadb-connector-c[${MULTILIB_USEDEP}] dev-db/mysql-connector-c[${MULTILIB_USEDEP}] )
-	 server? ( ~virtual/mysql-5.6[static=]
-		 galera? ( sst-xtrabackup? ( || ( >=dev-db/xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
+	 server? ( ~virtual/mysql-5.6[embedded=,static=] )
+	 virtual/libmysqlclient:${SLOT}[${MULTILIB_USEDEP},static-libs=]
+	server? ( galera? ( sst-xtrabackup? ( || ( >=dev-db/xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
@@ -246,6 +239,10 @@ pkg_postinst() {
 }
 
 src_unpack() {
+
+	# Initialize the proper variables first
+	mysql_init_vars
+
 	unpack ${A}
 	# Grab the patches
 	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
@@ -268,10 +265,6 @@ src_prepare() {
 	# There is no CMake flag, it simply checks for existance
 	rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
 
-	if ! use server; then
-		rm -r "${S}"/plugin/handler_socket || die
-	fi
-
 	cmake-utils_src_prepare
 }
 
@@ -286,19 +279,11 @@ src_configure(){
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
 
-	if use client-libs ; then
-		multilib-minimal_src_configure
-	else
-		multilib_src_configure
-	fi
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	if ! multilib_is_native_abi && ! use client-libs ; then
-		return
-	fi
 
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
 
@@ -355,10 +340,6 @@ multilib_src_configure() {
 		mycmakeargs+=( -DWITH_SSL=system )
 	else
 		mycmakeargs+=( -DWITH_SSL=bundled )
-	fi
-
-	if ! use client-libs ; then
-		mycmakeargs+=( -DWITHOUT_CLIENTLIBS=YES )
 	fi
 
 	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
@@ -454,7 +435,7 @@ multilib_src_configure() {
 			-DMYSQL_USER=mysql
 			-DDISABLE_SHARED=$(usex static YES NO)
 			-DWITH_DEBUG=$(usex debug)
-			-DWITH_EMBEDDED_SERVER=OFF
+			-DWITH_EMBEDDED_SERVER=$(usex embedded)
 			-DWITH_PROFILING=$(usex profiling)
 		)
 
@@ -481,7 +462,7 @@ multilib_src_configure() {
 	else
 		mycmakeargs+=(
 			-DWITHOUT_SERVER=1
-			-DWITH_EMBEDDED_SERVER=OFF
+			-DWITHOUT_EMBEDDED_SERVER=1
 			-DEXTRA_CHARSETS=none
 			-DINSTALL_SQLBENCHDIR=
 			-DWITH_SYSTEMD=no
@@ -492,11 +473,7 @@ multilib_src_configure() {
 }
 
 src_compile() {
-	if use client-libs ; then
-		multilib-minimal_src_compile
-	else
-		multilib_src_compile
-	fi
+	multilib-minimal_src_compile
 }
 
 multilib_src_compile() {
@@ -504,32 +481,27 @@ multilib_src_compile() {
 }
 
 src_install() {
-	local MULTILIB_WRAPPED_HEADERS
-	local MULTILIB_CHOST_TOOLS
-	if use client-libs ; then
-		# headers with ABI specific data
-		MULTILIB_WRAPPED_HEADERS=(
-			/usr/include/mysql/server/my_config.h
-			/usr/include/mysql/server/private/embedded_priv.h
-			/usr/include/mysql/server/mysql_version.h
-			/usr/include/mariadb/mariadb_version.h
-			/usr/include/mysql/mariadb_version.h
-			/usr/include/mysql/server/private/probes_mysql_nodtrace.h
-			/usr/include/mysql/server/private/probes_mysql_dtrace.h )
+	# headers with ABI specific data
+	local MULTILIB_WRAPPED_HEADERS=(
+		/usr/include/mysql/server/my_config.h
+		/usr/include/mysql/server/private/embedded_priv.h
+		/usr/include/mysql/server/mysql_version.h
+		/usr/include/mariadb/mariadb_version.h
+		/usr/include/mysql/mariadb_version.h
+		/usr/include/mysql/server/private/probes_mysql_nodtrace.h
+		/usr/include/mysql/server/private/probes_mysql_dtrace.h )
 
-		# wrap the config scripts
-		MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config /usr/bin/mysql_config )
-		multilib-minimal_src_install
-	else
-		multilib_src_install
-		multilib_src_install_all
-	fi
+	# wrap the config scripts
+	local MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config /usr/bin/mysql_config )
+	multilib-minimal_src_install
 }
 
 # Intentionally override eclass function
 multilib_src_install() {
-
 	cmake-utils_src_install
+
+	# Make sure the vars are correctly initialized
+	mysql_init_vars
 
 	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
 	if [[ -f "${ED}/usr/include/mysql/server/private/config.h" ]] ; then
@@ -541,12 +513,10 @@ multilib_src_install() {
 		doins "${S}"/sql/*.h
 	fi
 
-	if use client-libs ; then
 	# Install compatible symlinks to libmysqlclient
 #	use static-libs && dosym libmariadbclient.a "/usr/$(get_libdir)/libmysqlclient.a"
 #	dosym libmariadb.so.3 "/usr/$(get_libdir)/libmysqlclient.so"
 	dosym libmariadb.so.3 "/usr/$(get_libdir)/libmysqlclient.so.${SUBSLOT}"
-	fi
 
 	# Kill old libmysqclient_r symlinks if they exist.  Time to fix what depends on them.
 	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
@@ -627,7 +597,12 @@ multilib_src_install_all() {
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mariadb-X.X.XX.ebuild \
 # digest clean package
-src_test() {
+multilib_src_test() {
+
+	if ! multilib_is_native_abi ; then
+		einfo "Server tests not available on non-native abi".
+		return 0;
+	fi
 
 	_disable_test() {
 		local rawtestname reason
@@ -691,10 +666,6 @@ src_test() {
 		main.mysql_client_test_comp rpl.rpl_extra_col_master_myisam ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
-
-	if ! use client-libs ; then
-		_disable_test main.plugin_auth "Needs client libraries built"
-	fi
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
@@ -846,11 +817,11 @@ pkg_config() {
 
 		unset tmp_mysqld_password_source
 	fi
-	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir)"
+	MYSQL_TMPDIR="$(_getoptval '--mysqld' tmpdir)"
 	# These are dir+prefix
-	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log)"
+	MYSQL_RELAY_LOG="$(_getoptval '--mysqld' relay-log)"
 	MYSQL_RELAY_LOG=${MYSQL_RELAY_LOG%/*}
-	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
+	MYSQL_LOG_BIN="$(_getoptval '--mysqld' log-bin)"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
 
 	if [[ ! -d "${ROOT}/$MYSQL_TMPDIR" ]]; then
