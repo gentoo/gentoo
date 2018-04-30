@@ -11,8 +11,8 @@ MY_P=${P/_beta/-beta}
 S=${WORKDIR}/${PN}
 
 DESCRIPTION="CD player applet for WindowMaker"
-SRC_URI="http://www.dockapps.net/download/${MY_P}.tgz"
-HOMEPAGE="http://www.dockapps.net/wmcdplay"
+SRC_URI="https://www.dockapps.net/download/${MY_P}.tgz"
+HOMEPAGE="https://www.dockapps.net/wmcdplay"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
