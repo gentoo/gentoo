@@ -24,4 +24,5 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	sed -i -e 's|^PREFIX = /usr/local|PREFIX = /usr|g' Makefile
 	export DESTDIR="${D}"
+	eapply_user
 }
