@@ -51,8 +51,8 @@ RDEPEND="
 	tools? ( dev-libs/tinyxml[stl] )
 	zip? ( sys-libs/zlib dev-libs/zziplib )"
 DEPEND="${RDEPEND}
-	x11-proto/xf86vidmodeproto
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(

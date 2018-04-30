@@ -74,9 +74,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	virtual/pkgconfig
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
-	xrandr? ( x11-proto/randrproto )
 "
 
 S="${WORKDIR}/${MY_P}"
