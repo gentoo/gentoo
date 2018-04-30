@@ -8,6 +8,5 @@
 	<use>
 		<flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
 		<flag name="hunspell">Adds support for <pkg>app-text/hunspell</pkg> spell checker</flag>
-		<flag name="zemberek">Adds support for <pkg>app-text/zemberek-server</pkg> spell checker server</flag>
 	</use>
 </pkgmetadata>
