@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit prefix
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -22,8 +23,13 @@ IUSE="selinux"
 RDEPEND="!<sys-apps/openrc-0.23
 	selinux? ( sec-policy/selinux-base-policy )"
 
-src_install() {
+src_prepare() {
 	default
+	hprefixify tmpfiles
+}
+src_install() {
+	emake DESTDIR="${ED}" install
+	einstalldocs
 	cd openrc
 	for f in opentmpfiles-dev opentmpfiles-setup; do
 		newconfd ${f}.confd ${f}
