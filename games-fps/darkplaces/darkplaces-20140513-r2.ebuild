@@ -68,7 +68,7 @@ DEPEND="lights? ( || (
 "
 
 S="${WORKDIR}/${PN}"
-dir="/usr/share/quake1"
+dir="/usr/share/games/quake1"
 
 opengl_client() { use opengl || ( ! use dedicated && ! use sdl ) }
 
