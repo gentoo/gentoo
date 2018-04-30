@@ -5777,7 +5777,7 @@ dev-ruby/http 0.6.3-r1 0.9.8-r2: An easy-to-use client library for making reques
 dev-ruby/http-cookie 1.0.2-r1: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.3: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
-dev-ruby/httparty 0.14.0-r1: Makes http fun! Also, makes consuming restful web services dead easy
+dev-ruby/httparty 0.14.0-r1 0.16.0: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpclient 2.8.2.4: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.9.1: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
@@ -10475,7 +10475,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 66.0.3359.117: Open-source version of Google Chrome web browser
+www-client/chromium 66.0.3359.117 66.0.3359.139: Open-source version of Google Chrome web browser
 www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser

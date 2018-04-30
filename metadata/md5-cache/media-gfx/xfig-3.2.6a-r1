@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure
-DEPEND=x11-libs/libXaw x11-libs/libXaw3d x11-libs/libXi x11-libs/libXt media-libs/libpng:0= media-fonts/font-misc-misc media-fonts/urw-fonts >=media-gfx/transfig-3.2.5-r1 media-libs/netpbm jpeg? ( virtual/jpeg:0= ) nls? ( x11-libs/libXaw3d[unicode] ) postscript? ( app-text/ghostscript-gpl ) x11-proto/xproto x11-proto/inputproto
+DEPEND=x11-libs/libXaw x11-libs/libXaw3d x11-libs/libXi x11-libs/libXt media-libs/libpng:0= media-fonts/font-misc-misc media-fonts/urw-fonts >=media-gfx/transfig-3.2.5-r1 media-libs/netpbm jpeg? ( virtual/jpeg:0= ) nls? ( x11-libs/libXaw3d[unicode] ) postscript? ( app-text/ghostscript-gpl ) x11-base/xorg-proto
 DESCRIPTION=A menu-driven tool to draw and manipulate objects interactively in an X window
 EAPI=6
 HOMEPAGE=http://mcj.sourceforge.net/
@@ -9,4 +9,4 @@ LICENSE=BSD
 RDEPEND=x11-libs/libXaw x11-libs/libXaw3d x11-libs/libXi x11-libs/libXt media-libs/libpng:0= media-fonts/font-misc-misc media-fonts/urw-fonts >=media-gfx/transfig-3.2.5-r1 media-libs/netpbm jpeg? ( virtual/jpeg:0= ) nls? ( x11-libs/libXaw3d[unicode] ) postscript? ( app-text/ghostscript-gpl )
 SLOT=0
 SRC_URI=mirror://sourceforge/mcj/xfig-full-3.2.6a.tar.xz
-_md5_=3a707836f0749525ec7438a1077d4ad0
+_md5_=a6f65ebecef3317bf0af743f50ea5a39
