@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="dockapp for checking pop3 accounts"
-HOMEPAGE="http://www.dockapps.net/wmpop3"
-SRC_URI="http://www.dockapps.net/download/${P/wmpop3/WMPop3}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmpop3"
+SRC_URI="https://www.dockapps.net/download/${P/wmpop3/WMPop3}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
