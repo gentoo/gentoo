@@ -55,9 +55,7 @@ DEPEND="${RDEPEND}
 	dev-python/cheetah
 	>=dev-util/intltool-0.40.0
 	sys-devel/autoconf-archive
-	x11-proto/xproto
-	x11-proto/inputproto
-	x11-proto/recordproto
+	x11-base/xorg-proto
 	virtual/pkgconfig
 	doc? (
 		app-text/docbook-sgml-utils
