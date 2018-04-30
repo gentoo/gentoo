@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,7 +30,7 @@ RDEPEND="media-libs/libpng:0
 	mikmod? ( media-libs/libmikmod )
 	vorbis? ( media-libs/libvorbis )"
 DEPEND="${RDEPEND}
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/ClanLib-${PV}
 
