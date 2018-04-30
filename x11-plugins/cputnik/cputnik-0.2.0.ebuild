@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils toolchain-funcs
 
 DESCRIPTION="cputnik is a simple cpu monitor dockapp"
-HOMEPAGE="http://www.dockapps.net/cputnik"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/cputnik"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
