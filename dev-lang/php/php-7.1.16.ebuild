@@ -145,7 +145,12 @@ REQUIRED_USE="
 	mysql? ( || ( mysqli pdo ) )
 "
 
-PATCHES=( "${FILESDIR}/mbstring-oniguruma-6.8.patch" )
+PATCHES=(
+	"${FILESDIR}/mbstring-oniguruma-6.8.patch"
+	# hopefully upstream will include the same version check fixes in upcoming releases
+	# patch added 20180429
+	"${FILESDIR}/libressl-compatibility.patch"
+)
 
 PHP_MV="$(get_major_version)"
 
