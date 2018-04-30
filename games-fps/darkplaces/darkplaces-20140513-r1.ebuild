@@ -186,7 +186,7 @@ pkg_postinst() {
 		elog "Place pak0.pak and pak1.pak in ${dir}/id1"
 	fi
 
-	if use sdl $$ ! use alsa ; then
+	if use sdl && ! use alsa ; then
 		ewarn "Select opengl with alsa, instead of sdl USE flag, for better audio latency."
 	fi
 }
