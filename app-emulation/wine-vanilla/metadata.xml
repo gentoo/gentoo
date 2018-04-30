@@ -36,6 +36,7 @@ This variant of the Wine packaging does not include external patchsets
 		<flag name="samba">Add support for NTLM auth. see
 		http://wiki.winehq.org/NtlmAuthSetupGuide and
 		http://wiki.winehq.org/NtlmSigningAndSealing</flag>
+		<flag name="sdl">Add support for gamepad detection using SDL</flag>
 		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
 	</use>
