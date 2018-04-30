@@ -53,6 +53,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/iniparser:0
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	net-libs/libnsl[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	>=sys-libs/ldb-1.1.27[ldap(+)?,python(+),${MULTILIB_USEDEP}]
 	<sys-libs/ldb-1.1.30[ldap(+)?,python(+),${MULTILIB_USEDEP}]

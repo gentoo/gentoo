@@ -47,6 +47,7 @@ CDEPEND="
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
+	net-libs/libnsl[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	>=sys-libs/ldb-1.3.2[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
@@ -78,10 +79,6 @@ CDEPEND="
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.15.1[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )
-	|| (
-		net-libs/libnsl
-		<sys-libs/glibc-2.26[rpc(+)]
-	)
 "
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
