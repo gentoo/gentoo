@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="multishape 3d rotating dots"
-HOMEPAGE="http://www.dockapps.net/wmdots"
-SRC_URI="http://www.dockapps.net/download/${P/_}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmdots"
+SRC_URI="https://www.dockapps.net/download/${P/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
