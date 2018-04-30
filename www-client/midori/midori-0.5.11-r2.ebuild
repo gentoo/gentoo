@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~mips x86 ~x86-fbsd"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
-IUSE="doc granite xscreensaver +jit zeitgeist"
+IUSE="doc granite xscreensaver +jit"
 
 RDEPEND="
 	>=app-crypt/gcr-3:=[gtk]
@@ -29,7 +29,6 @@ RDEPEND="
 	>=x11-libs/gtk+-3.10.0:3
 	>=net-libs/webkit-gtk-2.3.91:4[jit=]
 	granite? ( >=dev-libs/granite-0.2 )
-	zeitgeist? ( >=dev-libs/libzeitgeist-0.3.14 )
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -60,7 +59,6 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DUSE_APIDOCS="$(usex doc)"
 		-DUSE_GRANITE="$(usex granite)"
-		-DUSE_ZEITGEIST="$(usex zeitgeist)"
 		-DUSE_XSCREENSAVER="$(usex xscreensaver)"
 		-DVALA_EXECUTABLE="${VALAC}"
 		-DUSE_GTK3=ON
