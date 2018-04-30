@@ -1,0 +1,56 @@
+From 0d3bbfb6b8ba05af199b49f5dd71d842f6acffda Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Fri, 27 Apr 2018 18:07:35 +0000
+Subject: [PATCH] Fix gn bootstrap
+
+BUG=837312
+R=dpranke
+
+Change-Id: Ia5c57f596388a4ba325208c638fac558984202f0
+Reviewed-on: https://chromium-review.googlesource.com/1030895
+Reviewed-by: Dirk Pranke <dpranke@chromium.org>
+Commit-Queue: Dirk Pranke <dpranke@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#554419}
+---
+ tools/gn/bootstrap/bootstrap.py | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 7fa9f0489f5b..ebc32371acc3 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -525,8 +525,11 @@ def write_gn_ninja(path, root_gen_dir, options, windows_x64_toolchain):
+       'base/location.cc',
+       'base/logging.cc',
+       'base/md5.cc',
++      'base/memory/platform_shared_memory_region.cc',
++      'base/memory/read_only_shared_memory_region.cc',
+       'base/memory/ref_counted.cc',
+       'base/memory/ref_counted_memory.cc',
++      'base/memory/shared_memory_mapping.cc',
+       'base/memory/shared_memory_handle.cc',
+       'base/memory/shared_memory_tracker.cc',
+       'base/memory/weak_ptr.cc',
+@@ -663,6 +666,19 @@ def write_gn_ninja(path, root_gen_dir, options, windows_x64_toolchain):
+       'base/vlog.cc',
+   ])
+ 
++  if is_win:
++    static_libraries['base']['sources'].extend([
++        'base/memory/platform_shared_memory_region_win.cc'
++    ])
++  elif is_mac:
++    static_libraries['base']['sources'].extend([
++        'base/memory/platform_shared_memory_region_mac.cc'
++    ])
++  elif is_posix:
++    static_libraries['base']['sources'].extend([
++        'base/memory/platform_shared_memory_region_posix.cc'
++    ])
++
+   if is_posix:
+     static_libraries['base']['sources'].extend([
+         'base/base_paths_posix.cc',
+-- 
+2.17.0
+
