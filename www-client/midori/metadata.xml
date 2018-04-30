@@ -7,6 +7,5 @@
   </maintainer>
   <use>
     <flag name="granite">Enable support for the elementary library <pkg>dev-libs/granite</pkg></flag>
-    <flag name="zeitgeist">Add support for Zeitgeist event tracking system</flag>
   </use>
 </pkgmetadata>
