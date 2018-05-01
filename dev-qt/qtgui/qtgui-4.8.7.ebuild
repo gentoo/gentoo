@@ -25,6 +25,7 @@ RDEPEND="
 	>=media-libs/fontconfig-2.10.2-r1[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.4.11-r1:2[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
+	elibc_glibc? ( net-libs/libnsl:=[${MULTILIB_USEDEP}] )
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	virtual/jpeg:0[${MULTILIB_USEDEP}]
 	!aqua? (
