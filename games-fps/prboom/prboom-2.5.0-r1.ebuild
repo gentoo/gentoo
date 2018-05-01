@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}"
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
 To play the original Doom levels, place doom.wad and/or doom2.wad
-into ${GAMES_DATADIR}/doom-data
+into /usr/share/doom-data
 Then run ${PN} accordingly.
 
 doom1.wad is the shareware demo wad consisting of 1 episode,
@@ -76,7 +76,6 @@ src_configure() {
 
 src_install() {
 	default
-	emake DESTDIR="${D}" install
 
 	doman doc/*.{5,6}
 
@@ -88,5 +87,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	readme.gentoo_print_elog	
+	readme.gentoo_print_elog
 }
