@@ -1017,7 +1017,7 @@ app-misc/grc 1.5: Generic Colouriser beautifies your logfiles or output of comma
 app-misc/gtypist 2.8.5-r1 2.9.5: Universal typing tutor
 app-misc/hachoir-metadata 1.3.3-r1: Program to extract metadata using Hachoir library
 app-misc/hilite 1.5-r1: A utility which highlights stderr text in red
-app-misc/hivex 1.3.11-r1 1.3.14: Library for reading and writing Windows Registry 'hive' binary files
+app-misc/hivex 1.3.14: Library for reading and writing Windows Registry 'hive' binary files
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.24.3: Memorization aid based on the Leitner flashcard system
 app-misc/iguanaIR 1.0.1-r1: library for Irman control of Unix software
