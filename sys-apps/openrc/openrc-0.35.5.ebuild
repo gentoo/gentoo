@@ -59,6 +59,10 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Add-_POSIX_C_SOURCE-definition-to-Linux-build.patch
+	)
+
 src_prepare() {
 	default
 
