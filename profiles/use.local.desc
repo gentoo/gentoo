@@ -3519,7 +3519,7 @@ media-video/vdr:alternatechannel - Use alternate channel on record
 media-video/vdr:bidi - fribidi support, for languages, written from right to left
 media-video/vdr:ddepgentry - remove duplicate EPG entries
 media-video/vdr:dvlvidprefer - controls video-dir choice on recording
-media-video/vdr:graphtft - support for media-plugins/vdr-graphtftplugin up from version 0.1.7
+media-video/vdr:graphtft - support for vdr-graphtft plugin up from version 0.1.7
 media-video/vdr:html - Install HTML documentation
 media-video/vdr:jumpingseconds - skip seconds in played records
 media-video/vdr:jumpplay - Enables automatic jumping over cut marks while watching a recording
@@ -3711,7 +3711,7 @@ net-analyzer/sarg:gd - Enable support for graphs in reports through media-libs/g
 net-analyzer/sarg:pcre - Enable support for regular expressions in the hostalias file through dev-libs/libpcre
 net-analyzer/scapy:pyx - Enable dev-python/pyx support for psdump/pdfdump commands
 net-analyzer/scapy:tcpreplay - Enable net-analyzer/tcpreplay support for fast packet replay
-net-analyzer/scapy:visual - Enable dev-python/visual support for 3d graphs
+net-analyzer/scapy:visual - Enable visual package support for 3d graphs
 net-analyzer/smokeping:dig - Install net-dns/bind-tools for dig functionality
 net-analyzer/smokeping:echoping - Install net-analyzer/echoping for echoping functionality
 net-analyzer/smokeping:ssh - Install ssh functionality
