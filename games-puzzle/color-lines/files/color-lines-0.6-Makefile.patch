@@ -1,5 +1,5 @@
---- Makefile.unix.orig	2013-04-12 13:56:42.131113000 +0400
-+++ Makefile.unix	2013-04-12 13:57:26.595946027 +0400
+--- a/Makefile.unix.orig	2013-04-12 13:56:42.131113000 +0400
++++ b/Makefile.unix	2013-04-12 13:57:26.595946027 +0400
 @@ -2,18 +2,18 @@
  VERTITLE := lines-$(VERSION)
  ARCHIVE := lines_$(VERSION).tar.gz

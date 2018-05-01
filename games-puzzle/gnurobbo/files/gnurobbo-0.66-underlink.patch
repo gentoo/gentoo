@@ -1,5 +1,5 @@
---- Makefile.old	2011-06-20 21:19:49.578922392 +0200
-+++ Makefile	2011-06-20 21:20:28.535421648 +0200
+--- a/Makefile.old	2011-06-20 21:19:49.578922392 +0200
++++ b/Makefile	2011-06-20 21:20:28.535421648 +0200
 @@ -39,14 +39,13 @@
  CFLAGS?=-O3 -pipe
  CFLAGS+=-Wall `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" \

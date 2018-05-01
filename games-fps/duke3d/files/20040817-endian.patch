@@ -1,5 +1,5 @@
---- duke3d/source/buildengine/platform.h	2003-08-07 12:06:17.000000000 +0200
-+++ duke3d.new/source/buildengine/platform.h	2004-08-24 18:35:05.292291088 +0200
+--- buildengine/platform.h.old	2003-08-07 12:06:17.000000000 +0200
++++ buildengine/platform.h	2004-08-24 18:35:05.292291088 +0200
 @@ -5,6 +5,7 @@
  #include "win32_compat.h"
  #elif (defined PLATFORM_UNIX)

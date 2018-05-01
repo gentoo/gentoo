@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/show_bug.cgi?id=308739
 
---- src/SDL/i_sshot.c
-+++ src/SDL/i_sshot.c
+--- a/src/SDL/i_sshot.c
++++ b/src/SDL/i_sshot.c
 @@ -231,7 +231,7 @@
    if (fp)
    {

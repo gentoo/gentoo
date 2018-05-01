@@ -46,7 +46,7 @@ src_compile() {
 	# put javacc.jar on ant's classpath here even when <javacc> task
 	# doesn't use it - it's to fool the <available> test, first time
 	# it's useful not to have ignoresystemclasses=true...
-	ANT_TASKS="ant-nodeps javacc" \
+	ANT_TASKS="ant-core javacc" \
 		eant \
 		-Djavacc.home="${EPREFIX}"/usr/share/javacc/lib \
 		javacc

@@ -1,5 +1,5 @@
---- src/locale_dialog.cpp.old
-+++ src/locale_dialog.cpp
+--- a/src/locale_dialog.cpp.old
++++ b/src/locale_dialog.cpp
 @@ -85,7 +85,7 @@
  	if (paths.isEmpty()) {
  		QString appdir = QCoreApplication::applicationDirPath();
@@ -9,8 +9,8 @@
  		paths.append(appdir + "/../Resources");
  	}
  	foreach (const QString& path, paths) {
---- src/main.cpp.old
-+++ src/main.cpp
+--- a/src/main.cpp.old
++++ b/src/main.cpp
 @@ -46,7 +46,7 @@
  	QString path = app.applicationDirPath();
  	QStringList paths;
