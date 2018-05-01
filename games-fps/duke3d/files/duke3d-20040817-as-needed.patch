@@ -1,6 +1,6 @@
 diff -ur duke3d/source/buildengine/Makefile duke3d-patched/source/buildengine/Makefile
---- duke3d/source/buildengine/Makefile	2004-05-15 05:15:05.000000000 +0200
-+++ duke3d-patched/source/buildengine/Makefile	2008-02-27 23:10:46.000000000 +0100
+--- source/buildengine/Makefile	2004-05-15 05:15:05.000000000 +0200
++++ source/buildengine/Makefile	2008-02-27 23:10:46.000000000 +0100
 @@ -99,11 +99,11 @@
    ifeq ($(strip $(SDL_LIB_DIR)),please_set_me_cygwin_users)
      $(error Cygwin users need to set the SDL_LIB_DIR envr var.)
@@ -47,8 +47,8 @@ diff -ur duke3d/source/buildengine/Makefile duke3d-patched/source/buildengine/Ma
  listclean:
  	@echo "A 'make clean' would remove" $(CLEANUP)
 diff -ur duke3d/source/Makefile duke3d-patched/source/Makefile
---- duke3d/source/Makefile	2004-05-15 05:14:16.000000000 +0200
-+++ duke3d-patched/source/Makefile	2008-02-27 23:09:57.000000000 +0100
+--- source/Makefile	2004-05-15 05:14:16.000000000 +0200
++++ source/Makefile	2008-02-27 23:09:57.000000000 +0100
 @@ -45,11 +45,11 @@
    ifeq ($(strip $(SDL_LIB_DIR)),please_set_me_cygwin_users)
      $(error Cygwin users need to set the SDL_LIB_DIR envr var.)
