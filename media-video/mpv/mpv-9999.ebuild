@@ -58,8 +58,8 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	!libav? ( ~media-video/ffmpeg-${PV}:0=[encode?,threads,vaapi?,vdpau?] )
-	libav? ( ~media-video/libav-${PV}:0=[encode?,threads,vaapi?,vdpau?] )
+	!libav? ( >=media-video/ffmpeg-4.0:0=[encode?,threads,vaapi?,vdpau?] )
+	libav? ( ~media-video/libav-9999:0=[encode?,threads,vaapi?,vdpau?] )
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
 	bluray? ( >=media-libs/libbluray-0.3.0:= )
@@ -98,8 +98,8 @@ COMMON_DEPEND="
 	vdpau? ( x11-libs/libvdpau )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
+		>=dev-libs/wayland-protocols-1.12
 		>=x11-libs/libxkbcommon-0.3.0
-		dev-libs/wayland-protocols
 	)
 	X? (
 		x11-libs/libX11

@@ -363,7 +363,7 @@ media-fonts/fontawesome:0/5
 =net-mail/cyrus-imapd-2.5*
 
 # Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
-# mpv >= 0.28.0 requires changes currently only available in ffmpeg-9999.
+# mpv >= 0.28.0 requires currently masked ffmpeg >= 4.0.
 >=media-video/mpv-0.28.0
 
 # Richard Freeman <rich0@gentoo.org> (09 Jan 2018)
