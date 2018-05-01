@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (01 May 2018)
+# Requires >=media-video/ffmpeg-4 (bug 654208).
+>=www-client/chromium-67 system-ffmpeg
+
 # Göktürk Yüksek <gokturk@gentoo.org> (4 Apr 2018)
 # libewf is getting treecleaned (#547418).
 # Starting with sleuthkit-4.6.0, we statically link sleuthkit to a
