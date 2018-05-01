@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,8 +30,11 @@ fi
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
 
-LICENSE="IDEA
-	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
+LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
+INRIA EPL-1.0 EPL-2.0 Growl Apache-1.1 Apache-2.0 Javolution CDDL-1.1 The_Werken_Company
+Brett_McLaughlin_and_Jason_Hunter Nathan_Sweet Michael_Baranov MiG_InfoCom_AB NanoContainer_Organization sun-bcla
+LGPL-2.1+ MIT BSD"
+
 IUSE="-custom-jdk"
 
 DEPEND="!dev-util/${PN}:14
