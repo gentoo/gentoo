@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="Library for handling page faults in user mode"
 HOMEPAGE="https://www.gnu.org/software/libsigsegv/"
 SRC_URI="mirror://gnu/libsigsegv/${P}.tar.gz"
@@ -19,7 +21,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+	eautoreconf
 }
+
 src_configure () {
 	econf --enable-shared
 }
