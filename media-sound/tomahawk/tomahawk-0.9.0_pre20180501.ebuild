@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT=00f602e10203b76fc28b4615868c567e6bd4ced4
+COMMIT=34c1f88171f00a3e9fae57250799f3d3623b5f74
 inherit kde5 vcs-snapshot
 
 DESCRIPTION="Multi-source social music player"
@@ -32,7 +32,7 @@ CDEPEND="
 	dev-libs/boost:=
 	dev-libs/qtkeychain:=[qt5(+)]
 	>=dev-libs/quazip-0.7.2[qt5(+)]
-	>=media-libs/liblastfm-1.0.9-r1[qt5(+)]
+	>=media-libs/liblastfm-1.1.0_pre20150206
 	>=media-libs/taglib-1.8.0
 	media-video/vlc:=[flac,dvbpsi,ffmpeg,mp3]
 	>=net-libs/gnutls-3.2:=
@@ -49,14 +49,6 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	app-crypt/qca:2[ssl]
 "
-
-PATCHES=( "${FILESDIR}/${P}-qt-5.11b3.patch" )
-
-src_prepare() {
-	kde5_src_prepare
-	has_version "media-libs/liblastfm[qt5]" &&
-		eapply "${FILESDIR}/${PN}-liblastfm-cmake.patch"
-}
 
 src_configure() {
 	local mycmakeargs=(
