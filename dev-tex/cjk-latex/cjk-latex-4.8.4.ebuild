@@ -8,7 +8,7 @@ inherit latex-package elisp-common toolchain-funcs multilib eutils flag-o-matic
 MY_P="${P/-latex/}"
 
 DESCRIPTION="LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings"
-HOMEPAGE="http://cjk.ffii.org/"
+HOMEPAGE="https://cjk.ffii.org/"
 # fonts are taken from ftp://ftp.ctan.org/tex-archive/fonts/CJK.zip
 SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
 	mirror://gentoo/${MY_P}-fonts.zip
