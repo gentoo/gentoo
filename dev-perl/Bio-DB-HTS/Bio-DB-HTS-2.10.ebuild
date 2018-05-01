@@ -15,16 +15,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="sci-libs/htslib:="
+RDEPEND="sci-biology/bioperl
+	sci-libs/htslib:="
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? ( dev-perl/Test-LeakTrace )"
 
 PATCHES=(
 	"${FILESDIR}/2.10-build_search_for_so.patch"
+	"${FILESDIR}/2.10-build_split_htslib_opts.patch"
 )
 
 src_configure() {
-	local myconf="--htslib=${EPREFIX}/usr"
+	local myconf="--htslib-includedir=${EPREFIX}/usr/include/htslib --htslib-libdir=${EPREFIX}/usr/$(get_libdir)"
 	perl-module_src_configure
 }
