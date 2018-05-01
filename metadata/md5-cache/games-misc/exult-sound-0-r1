@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=!<games-engines/exult-9999
+DESCRIPTION=Sound data for games-engines/exult
+EAPI=6
+HOMEPAGE=http://exult.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/exult/U7MusicOGG_1of2.zip mirror://sourceforge/exult/U7MusicOGG_2of2.zip mirror://sourceforge/exult/jmsfx.zip mirror://sourceforge/exult/jmsfxsi.zip
+_md5_=6ba21de73cc05ab910631249a81cf9de

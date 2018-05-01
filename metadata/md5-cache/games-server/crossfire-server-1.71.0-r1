@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=net-misc/curl X? ( x11-libs/libXaw media-libs/libpng:0= )
+DESCRIPTION=Server for the crossfire clients
+EAPI=6
+HOMEPAGE=http://crossfire.real-time.com/
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-misc/curl X? ( x11-libs/libXaw media-libs/libpng:0= )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/crossfire/crossfire-server/1.71.0/crossfire-1.71.0.tar.bz2 mirror://sourceforge/crossfire/crossfire-server/1.71.0/crossfire-1.71.0.maps.tar.bz2 mirror://sourceforge/crossfire/crossfire-server/1.71.0/crossfire-1.71.0.arch.tar.bz2
+_md5_=e4b5af9428a46b8df5740eb3ca1df58c

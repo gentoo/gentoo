@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=media-libs/libsdl[video] media-libs/sdl-mixer[vorbis] nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=Reimplementation of Nebulous using SDL
+EAPI=6
+HOMEPAGE=http://toppler.sourceforge.net/
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[video] media-libs/sdl-mixer[vorbis] nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/toppler/toppler-1.1.6.tar.gz
+_md5_=768162c55d0cb726eb5abb31ba39c88a

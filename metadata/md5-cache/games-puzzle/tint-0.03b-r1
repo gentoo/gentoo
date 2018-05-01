@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=>=sys-libs/ncurses-5.4-r1:0=
+DESCRIPTION=Tint Is Not Tetris, a ncurses based clone of the original Tetris(tm) game
+EAPI=6
+HOMEPAGE=http://oasis.frogfoot.net/code/tint/
+KEYWORDS=~amd64 ~ppc64 ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=sys-libs/ncurses-5.4-r1:0=
+SLOT=0
+SRC_URI=http://oasis.frogfoot.net/code/tint/download/0.03b/tint_0.03b.tar.gz
+_md5_=e49bbb7058639af5c79d069570b26cd7
