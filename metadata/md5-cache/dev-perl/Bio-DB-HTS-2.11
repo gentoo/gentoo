@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-biology/bioperl sci-libs/htslib:= dev-perl/Module-Build test? ( dev-perl/Test-LeakTrace ) dev-lang/perl:=
+DESCRIPTION=Perl bindings for sci-libs/htslib
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Bio-DB-HTS/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=sci-biology/bioperl sci-libs/htslib:= dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AV/AVULLO/Bio-DB-HTS-2.11.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=e759835a2fbc70009386d657d3bb2988
