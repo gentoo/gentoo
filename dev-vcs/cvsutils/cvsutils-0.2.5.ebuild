@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="A small bundle of utilities to work with CVS repositories"
 HOMEPAGE="http://www.red-bean.com/cvsutils/"

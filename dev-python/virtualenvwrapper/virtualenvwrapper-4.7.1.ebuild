@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Set of extensions to Ian Bicking's virtualenv tool"
-HOMEPAGE="http://www.doughellmann.com/projects/virtualenvwrapper
+HOMEPAGE="https://bitbucket.org/dhellmann/virtualenvwrapper
 	https://pypi.org/project/virtualenvwrapper/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
