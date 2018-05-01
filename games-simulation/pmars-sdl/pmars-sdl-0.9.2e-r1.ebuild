@@ -29,9 +29,9 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}"/${P}-format.patch )
 
 DOC_CONTENTS="
-	There are some macros in ${GAMES_DATADIR}/${MY_PN}/macros
+	There are some macros in /usr/share/pmars/macros
 	which you should make accessible to pmars by typing
-	export PMARSHOME=${GAMES_DATADIR}/${MY_PN}/macros\n
+	export PMARSHOME=/usr/share/pmars/macros\n
 "
 
 src_compile() {
