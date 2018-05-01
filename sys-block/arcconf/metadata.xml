@@ -14,7 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		Microsemi Adaptec RAID Controller Command Line Utility, which allows you to:
+		The Microsemi Adaptec RAID Controller Command Line Utility allows you to:
 		Create and delete logical drives.
 		Display and modify configuration settings.
 		Copy configurations from one computer to another.
