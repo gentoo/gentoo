@@ -31,7 +31,7 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap nls openssl offensive pam sasl selinux +sendmail skey"
+IUSE="gcrypt ldap nls openssl offensive pam sasl selinux +sendmail skey sssd"
 
 CDEPEND="
 	sys-libs/zlib
@@ -145,6 +145,7 @@ src_configure() {
 		$(use_with skey)
 		$(use_with selinux)
 		$(use_with sendmail)
+		$(use_with sssd)
 	)
 	econf "${myeconfargs[@]}"
 }
