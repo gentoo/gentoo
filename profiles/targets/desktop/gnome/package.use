@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Needed by mutter defaults, bug #547300
@@ -9,12 +9,6 @@ media-libs/cogl kms
 
 # For eautoreconf in =app-crypt/seahorse-3.10.2-r1
 app-crypt/gcr vala
-
-# Do not enable gstreamer in wine by default; it's mostly broken in <1.7.20,
-# and the patch that fixes it causes problems in some games in >=1.7.20
-# See http://bugs.winehq.org/show_bug.cgi?id=30557 and
-# http://bugs.winehq.org/show_bug.cgi?id=36772
-app-emulation/wine -gstreamer
 
 # Required by folks, needed by empathy
 >=gnome-extra/evolution-data-server-3.8 vala
@@ -47,10 +41,6 @@ net-libs/libproxy python
 
 # Required by net-misc/vinagre-3
 net-libs/gtk-vnc gtk3
-
-# The following are required by ekiga-3
-net-libs/opal sip
-net-libs/ptlib wav
 
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3
