@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2-utils prefix qmake-utils xdg-utils
 
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
-HOMEPAGE="http://www.texstudio.org/ https://github.com/texstudio-org/texstudio"
+HOMEPAGE="https://www.texstudio.org https://github.com/texstudio-org/texstudio"
 SRC_URI="https://github.com/texstudio-org/texstudio/archive/2.12.8.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
