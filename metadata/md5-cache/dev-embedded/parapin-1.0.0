@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/parapin/parapin-1.0.0.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=4b2a9630084041ca293038ca5bfeffb7
+_md5_=996274ddbf04b4fcd434d1e53c3fefdf

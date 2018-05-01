@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 RDEPEND=|| ( app-i18n/uim app-i18n/uim-svn ) >=app-i18n/tomoe-gtk-0.6.0
 SLOT=0
 SRC_URI=mirror://sourceforge/tomoe/uim-tomoe-gtk-0.6.0.tar.gz
-_md5_=78a2514e48ad1d3f937eae19858adab5
+_md5_=764b995c223b549beafe091ede3f32f9

@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://gentoo/myspell-sw_KE-20060316.zip
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	myspell	a0259d47cff590f8fd5ab7027c637c59	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=34b25b5d30bdaf2dacabc43e29d473e9
+_md5_=71131ddd2188839de91ea2e077ad7b14

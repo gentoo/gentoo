@@ -9,4 +9,4 @@ LICENSE=GPL-3
 RDEPEND=idn? ( net-dns/libidn )
 SLOT=0
 SRC_URI=mirror://gnu/jwhois/jwhois-4.0.tar.gz
-_md5_=7d49197923364bfec94d8f097461b53d
+_md5_=1c117a1127b066b35021dce1a2ebe5e1

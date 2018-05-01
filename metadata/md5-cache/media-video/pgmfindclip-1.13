@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.lallafa.de/bp/files/pgmfindclip-1.13.tgz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=ed54694d149fab13d4caeaba9d7fe612
+_md5_=8ed3ec2d21db442fef7b6b1cbcf448f4

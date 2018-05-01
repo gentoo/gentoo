@@ -8,4 +8,4 @@ RDEPEND==dev-embedded/scratchbox-1.0*
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://scratchbox.org/download/files/sbox-releases/hathor/tarball/scratchbox-devkit-apt-https-1.0.11-i386.tar.gz
-_md5_=0632445c74d893f17de928fa190783ba
+_md5_=e67274bc1d921edaae4d31ad922063c6

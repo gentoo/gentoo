@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.pragmatic-c.com/gpl-cver/downloads/gplcver-2.12a.src.tar.bz2
-_md5_=2c0af5ee1cd111fb2939ce85d024720a
+_md5_=5e55cdbb1c7bc0effb9ba8040434cd11

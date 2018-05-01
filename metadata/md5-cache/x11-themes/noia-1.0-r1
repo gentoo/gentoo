@@ -7,4 +7,4 @@ LICENSE=LGPL-2.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://debian/pool/main/k/kde-icons-noia/kde-icons-noia_1.0.orig.tar.gz
-_md5_=cdd2ec8fd9c89d69499ff4b20e09fca5
+_md5_=eb0a5ef30fac9db8186de9dbb05378b1

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=x11-apps/bdftopcf app-arch/gzip
 SLOT=0
 SRC_URI=mirror://gentoo/ebdftopcf-2.tar.bz2
-_md5_=3afa09b103f08991f4ea8e0f1013c940
+_md5_=437f42b7e37befdd38b4450db0364ca4

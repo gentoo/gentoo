@@ -6,4 +6,4 @@ KEYWORDS=-* ppc
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=ppc? ( mirror://gentoo/vmips-cross-bin-1.0.ppc.tar.bz2 )
-_md5_=fc63ea681e2b0ad621094a259f56eed4
+_md5_=720b4b6b24f3d6a2cbd6140eecc3b591

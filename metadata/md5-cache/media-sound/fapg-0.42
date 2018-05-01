@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=xspf? ( >=dev-libs/uriparser-0.6.3 )
 SLOT=0
 SRC_URI=http://royale.zerezo.com/fapg/fapg-0.42.tar.gz
-_md5_=423118f2a614f8f7d11e427e2001441c
+_md5_=386107c59c0ba57256ed01256a2895a2

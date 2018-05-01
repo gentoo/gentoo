@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=mirror://gentoo/wmcpuload-1.1.0pre5.tar.gz
-_md5_=70fbaac859003d078919ebfa5d16a7b5
+_md5_=ec44459f310b589d13f86574ce9b1cb9

@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=virtual/cdrtools
 SLOT=0
 SRC_URI=mirror://sourceforge/movix/emovix-0.9.0.tar.gz
-_md5_=9e29e6f291b289f58b5b94768b5f0a28
+_md5_=f83c5fde223996a263cc5039a6a83b69

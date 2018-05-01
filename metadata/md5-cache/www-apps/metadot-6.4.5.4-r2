@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/perl-5.6 =www-apache/mod_perl-2* dev-perl/DBI >=dev-perl/DBD-
 SLOT=6.4.5.4-r2
 SRC_URI=http://download.metadot.com/Metadot6.4.5.4.tar.gz
 _eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
-_md5_=86f4002e620689efc169133d6897ff09
+_md5_=db729c93762d3bd8d1e04df84b064518

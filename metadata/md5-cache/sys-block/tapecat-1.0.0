@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/file
 SLOT=0
 SRC_URI=http://downloads.inventivetechnology.at/tapecat/tapecat-1.0.0.tar.bz2
-_md5_=322d7271679c55bad1bf75d3ea0a29d3
+_md5_=22bfe6717d2aeabd319a66e12f15f0a8

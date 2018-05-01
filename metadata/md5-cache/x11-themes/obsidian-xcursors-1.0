@@ -6,4 +6,4 @@ KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.kde-look.org/CONTENT/content-files/73135-Obsidian.tar.bz2
-_md5_=c2f1ff5334f05eeaebbb6e53a3e634bb
+_md5_=07b9f109b1d4a3644a68da141f84bdda

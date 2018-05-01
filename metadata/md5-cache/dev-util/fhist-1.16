@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=sys-devel/gettext sys-apps/groff
 SLOT=0
 SRC_URI=http://fhist.sourceforge.net/fhist-1.16.tar.gz
-_md5_=8e344269eca8305135e1dde96e1ebacb
+_md5_=9d147d9f98125a49c6a2eee5dd80e368

@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=http://sed.free.fr/tinlink/tinlink-1.0.0.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
-_md5_=a90c2d71fb9c43e0e44a89d924c507fc
+_md5_=11be44d28538d97f8d65af468e939763

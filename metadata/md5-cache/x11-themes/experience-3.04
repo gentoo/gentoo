@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-themes/gtk-engines-experience
 SLOT=0
 SRC_URI=http://freshmeat.net/redir/experience/50795/url_tgz/experience-gtk-3.04.tar.gz
-_md5_=75ec3fd4898d537a2f36817a50177e6b
+_md5_=3c7b5db1b789c29b94ef1f1d0fa62468

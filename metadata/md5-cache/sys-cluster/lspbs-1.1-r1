@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-cluster/torque
 SLOT=0
 SRC_URI=http://homepages.inf.ed.ac.uk/s0239160/misc/lspbs/lspbs-1.1.tar.gz
-_md5_=f0900f4e9768b235ef799602541bb477
+_md5_=061414e31c20619eb9b7f034928b47ba

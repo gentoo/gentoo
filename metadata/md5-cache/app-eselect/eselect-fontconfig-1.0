@@ -6,4 +6,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-f
 LICENSE=GPL-2
 RDEPEND=app-admin/eselect >=media-libs/fontconfig-2.4
 SLOT=0
-_md5_=1e5063a345ac237d621bf54e84aa0bce
+_md5_=1edbc7b1ac3c3e51e67c70e34964a6aa

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~wolf31o2/sources/gentoo-artwork-livecd/gentoo-artwork-livecd-2007.0.tar.bz2
-_md5_=95aea80d52def6401c57b186b2176bd6
+_md5_=3c977231a388ab397315055c7b62e048

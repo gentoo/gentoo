@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=bluetooth? ( net-wireless/bluez )
 SLOT=0
 SRC_URI=mirror://sourceforge/scmxx/scmxx-0.9.0.tar.bz2
-_md5_=e495b6a117e9607ffa45a9fc7c4bff06
+_md5_=4940938adf9cc27d833bfa20a9ca2377

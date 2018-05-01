@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/tk
 SLOT=0
 SRC_URI=mirror://sourceforge/vtcl/vtcl-1.6.0.tar.gz
-_md5_=996014ed96e9b004a2088fee0ad0f89f
+_md5_=e35c201396e024a652fd357e0d6aa58d
