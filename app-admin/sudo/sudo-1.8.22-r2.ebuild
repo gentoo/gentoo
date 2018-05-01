@@ -25,7 +25,7 @@ SLOT="0"
 if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
 fi
-IUSE="gcrypt ldap nls pam offensive openssl sasl selinux +sendmail skey"
+IUSE="gcrypt ldap nls pam offensive openssl sasl selinux +sendmail skey sssd"
 
 CDEPEND="
 	gcrypt? ( dev-libs/libgcrypt:= )
@@ -139,6 +139,7 @@ src_configure() {
 		$(use_with skey)
 		$(use_with selinux)
 		$(use_with sendmail)
+		$(use_with sssd)
 	)
 	econf "${myeconfargs[@]}"
 }
