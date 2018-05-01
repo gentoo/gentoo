@@ -12,8 +12,8 @@ TWISTED_P="${TWISTED_PN}-${PV}"
 TWISTED_RELEASE=$(get_version_component_range 1-2 "${PV}")
 
 DESCRIPTION="An asynchronous networking framework written in Python"
-HOMEPAGE="http://www.twistedmatrix.com/"
-SRC_URI="http://twistedmatrix.com/Releases/${TWISTED_PN}"
+HOMEPAGE="https://www.twistedmatrix.com/trac/"
+SRC_URI="https://twistedmatrix.com/Releases/${TWISTED_PN}"
 SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 
@@ -103,7 +103,7 @@ python_prepare_all() {
 python_compile() {
 	if ! python_is_python3; then
 		# Needed to make the sendmsg extension work
-		# (see http://twistedmatrix.com/trac/ticket/5701 )
+		# (see https://twistedmatrix.com/trac/ticket/5701 )
 		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 		local -x CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
 	fi
