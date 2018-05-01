@@ -19,7 +19,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-
 PATCHES=(
 	"${FILESDIR}"/${P}-ldflags.patch
 	"${FILESDIR}"/${P}-gentoo.patch
