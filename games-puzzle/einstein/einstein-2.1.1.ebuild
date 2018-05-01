@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="A puzzle game inspired by Albert Einstein"
 HOMEPAGE="https://github.com/lksj/einstein-puzzle"
-SRC_URI="https://github.com/lksj/einstein-puzzle/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/lksj/einstein-puzzle/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-2"
