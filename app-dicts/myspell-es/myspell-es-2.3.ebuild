@@ -36,6 +36,6 @@ IUSE=""
 
 src_prepare() {
 	# remove license files
-	rm -rf {GPL,LGPL,MPL}*
+	rm {GPL,LGPL,MPL}* || die
 	default
 }
