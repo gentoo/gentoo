@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,8 +30,11 @@ fi
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
 
-LICENSE="IDEA
-	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
+LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
+INRIA EPL-1.0 EPL-2.0 Growl Apache-1.1 Apache-2.0 Javolution CDDL-1.1 The_Werken_Company
+Brett_McLaughlin_and_Jason_Hunter Nathan_Sweet Michael_Baranov MiG_InfoCom_AB NanoContainer_Organization sun-bcla
+LGPL-2.1+ MIT BSD"
+
 IUSE="-custom-jdk"
 
 DEPEND="!dev-util/${PN}:14
@@ -43,25 +46,18 @@ S="${WORKDIR}/${MY_PN}-IU-${PV_STRING}"
 QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
 src_prepare() {
-	eapply_user
-	if ! use amd64; then
-		rm -r plugins/tfsIntegration/lib/native/linux/x86_64 || die
-	fi
-	if ! use arm; then
-		rm bin/fsnotifier-arm || die
-		rm -r plugins/tfsIntegration/lib/native/linux/arm || die
-	fi
-	if ! use ppc; then
-		rm -r plugins/tfsIntegration/lib/native/linux/ppc || die
-	fi
-	if ! use x86; then
-		rm -r plugins/tfsIntegration/lib/native/linux/x86 || die
-	fi
 	if ! use custom-jdk; then
 		if [[ -d jre ]]; then
 			rm -r jre || die
 		fi
 	fi
+	
+	# If tested and added to other platforms, folowing should be changed
+	# rm -r plugins/tfsIntegration/lib/native/linux/x86_64 || die
+	rm bin/fsnotifier-arm || die
+	rm -r plugins/tfsIntegration/lib/native/linux/arm || die
+	rm -r plugins/tfsIntegration/lib/native/linux/ppc || die
+	rm -r plugins/tfsIntegration/lib/native/linux/x86 || die
 	rm -r plugins/tfsIntegration/lib/native/solaris || die
 	rm -r plugins/tfsIntegration/lib/native/hpux || die
 }
