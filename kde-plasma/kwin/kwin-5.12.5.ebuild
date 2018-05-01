@@ -23,10 +23,10 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdeclarative)
-	$(add_frameworks_dep kglobalaccel)
+	$(add_frameworks_dep kglobalaccel '' '' '5=')
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kidletime)
+	$(add_frameworks_dep kidletime '' '' '5=')
 	$(add_frameworks_dep kinit)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep knewstuff)
@@ -42,10 +42,9 @@ COMMON_DEPEND="
 	$(add_plasma_dep breeze)
 	$(add_plasma_dep kdecoration)
 	$(add_plasma_dep kscreenlocker)
-	$(add_qt_dep qtcore)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui 'gles2=')
+	$(add_qt_dep qtgui 'gles2=' '' '5=')
 	$(add_qt_dep qtscript)
 	$(add_qt_dep qtsensors)
 	$(add_qt_dep qtwidgets)
@@ -81,7 +80,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep designer)
 	$(add_qt_dep qtconcurrent)
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 RESTRICT+=" test"

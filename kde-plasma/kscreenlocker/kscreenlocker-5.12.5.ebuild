@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	seccomp? ( sys-libs/libseccomp )
 "
 DEPEND="${COMMON_DEPEND}
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)

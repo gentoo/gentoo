@@ -12,7 +12,7 @@ LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="bluetooth crypt +display-manager grub gtk +handbook legacy-systray
-networkmanager pam plymouth pulseaudio qt4 +sddm sdk +wallpapers"
+networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers"
 
 RDEPEND="
 	$(add_plasma_dep breeze)
@@ -69,12 +69,8 @@ RDEPEND="
 		$(add_plasma_dep plymouth-kcm)
 	)
 	pulseaudio? ( $(add_plasma_dep plasma-pa) )
-	qt4? (
-		kde-plasma/qguiplatformplugin_kde:4
-		legacy-systray? ( dev-libs/sni-qt )
-	)
 	sdk? ( $(add_plasma_dep plasma-sdk) )
 	wallpapers? ( $(add_plasma_dep plasma-workspace-wallpapers) )
 "
 
-REQUIRED_USE="legacy-systray? ( || ( gtk qt4 ) )"
+REQUIRED_USE="legacy-systray? ( gtk )"

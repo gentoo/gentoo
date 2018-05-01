@@ -39,7 +39,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kiconthemes)
 	!minimal? ( $(add_frameworks_dep plasma) )
-	X? ( x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 "
 
 src_configure() {

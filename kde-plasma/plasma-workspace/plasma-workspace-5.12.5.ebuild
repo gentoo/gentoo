@@ -118,14 +118,13 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtconcurrent)
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4-startkde-script.patch"
 	"${FILESDIR}/${PN}-5.10-startplasmacompositor-script.patch"
 	"${FILESDIR}/${PN}-5.10.4-unused-dep.patch"
-	"${FILESDIR}/${P}-bbc-weather.patch"
 )
 
 RESTRICT+=" test"
@@ -166,9 +165,7 @@ src_install() {
 pkg_postinst () {
 	kde5_pkg_postinst
 
-	echo
 	elog "To enable gpg-agent and/or ssh-agent in Plasma sessions,"
 	elog "edit ${EPREFIX}/etc/plasma/startup/10-agent-startup.sh and"
 	elog "${EPREFIX}/etc/plasma/shutdown/10-agent-shutdown.sh"
-	echo
 }

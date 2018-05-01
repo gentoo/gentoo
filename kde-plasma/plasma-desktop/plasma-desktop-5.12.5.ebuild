@@ -97,7 +97,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
-	x11-proto/xproto
+	x11-base/xorg-proto
 	fontconfig? ( x11-libs/libXrender )
 	mouse? (
 		x11-drivers/xf86-input-evdev
@@ -151,9 +151,6 @@ src_test() {
 pkg_postinst() {
 	kde5_pkg_postinst
 
-	if has_version "dev-qt/qtcore:4" && ! has_version "dev-libs/sni-qt" ; then
-		elog "For Qt4 applications legacy-systray support, please install dev-libs/sni-qt."
-	fi
 	if has_version "x11-libs/gtk+:2" && ! has_version "dev-libs/libappindicator:2"; then
 		elog "For GTK+2 applications legacy-systray support, please install dev-libs/libappindicator:2."
 	fi
