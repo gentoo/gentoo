@@ -23,9 +23,10 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/2.10-build_search_for_so.patch"
+	"${FILESDIR}/2.10-build_split_htslib_opts.patch"
 )
 
 src_configure() {
-	local myconf="--htslib=${EPREFIX}/usr"
+	local myconf="--htslib-includedir=${EPREFIX}/usr/include/htslib --htslib-libdir=${EPREFIX}/usr/$(get_libdir)"
 	perl-module_src_configure
 }
