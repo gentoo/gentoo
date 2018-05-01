@@ -2,8 +2,8 @@ respect flags
 
 applied on top of debian patches
 
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -46,8 +46,6 @@
  dnl Checks for libraries.
  dnl AM_PATH_GTK_2_0(2.0.0,,AC_MSG_ERROR(Groundhog needs GTK 2.0))
