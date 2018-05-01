@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="sci-libs/htslib:="
+RDEPEND="sci-biology/bioperl
+	sci-libs/htslib:="
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? ( dev-perl/Test-LeakTrace )"
