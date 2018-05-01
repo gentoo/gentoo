@@ -33,6 +33,10 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Ulrich Müller <ulm@gentoo.org> (01 May 2018)
+# virtual/mysql is not keyworded.
+mysql
+
 # Michał Górny <mgorny@gentoo.org> (21 Apr 2018)
 # net-wireless/bluez.
 bluetooth
