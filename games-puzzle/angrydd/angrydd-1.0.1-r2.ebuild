@@ -38,7 +38,7 @@ src_install() {
 	python_optimize "${ED}/usr/share/${PN}"
 
 	dodir /usr/bin
-	dosym "/usr/share/${PN}/angrydd.py" "/usr/bin/${PN}"
+	dosym "${ED}/usr/share/${PN}/angrydd.py" "/usr/bin/${PN}"
 	doman angrydd.6
 	dodoc README TODO HACKING
 
