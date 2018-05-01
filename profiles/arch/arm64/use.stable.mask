@@ -49,10 +49,6 @@ postscript
 # media-libs/jasper is not stable here.
 jpeg2k
 
-# Michał Górny <mgorny@gentoo.org> (18 Feb 2018)
-# sys-apps/systemd is not stable on arm64.
-systemd
-
 # Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
 # dev-libs/libressl not marked stable yet
 libressl
