@@ -19,7 +19,7 @@ RDEPEND=""
 DEPEND="test? ( >=dev-cpp/catch-1.11.0 )"
 
 PATCHES=(
-	"${FILESDIR}/ms-gsl-0_pre20180108-use_system_catch-636828.patch"
+	"${FILESDIR}/${P}-use_system_catch-636828.patch"
 	"${FILESDIR}/${P}-disable_Werror-644042.patch"
 )
 
