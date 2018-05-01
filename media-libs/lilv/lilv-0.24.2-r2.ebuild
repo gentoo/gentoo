@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 DOCS=( "AUTHORS" "NEWS" "README" )
 
 src_prepare() {
-	epatch "${FILESDIR}/includedir.patch"
+	eapply "${FILESDIR}/includedir.patch"
 	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
 	default
 	multilib_copy_sources
