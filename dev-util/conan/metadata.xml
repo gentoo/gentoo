@@ -6,9 +6,9 @@
     <name>Benjamin Schindler</name>
   </maintainer>
   <maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
-  </maintainer>		
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">conan</remote-id>
     <remote-id type="github">conan-io/conan</remote-id>
