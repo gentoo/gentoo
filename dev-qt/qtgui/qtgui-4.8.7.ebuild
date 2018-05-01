@@ -25,7 +25,6 @@ RDEPEND="
 	>=media-libs/fontconfig-2.10.2-r1[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.4.11-r1:2[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
-	elibc_glibc? ( net-libs/libnsl:=[${MULTILIB_USEDEP}] )
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	virtual/jpeg:0[${MULTILIB_USEDEP}]
 	!aqua? (
@@ -50,6 +49,7 @@ RDEPEND="
 	)
 	mng? ( >=media-libs/libmng-1.0.10-r2:=[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.3-r1[${MULTILIB_USEDEP}] )
+	nis? ( elibc_glibc? ( net-libs/libnsl:=[${MULTILIB_USEDEP}] ) )
 	tiff? ( >=media-libs/tiff-4.0.3-r2:0[${MULTILIB_USEDEP}] )
 	!<dev-qt/qthelp-4.8.5:4
 "

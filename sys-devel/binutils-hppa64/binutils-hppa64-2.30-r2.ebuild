@@ -37,8 +37,7 @@ case ${PV} in
 		;;
 esac
 SLOT="${BVER}"
-#KEYWORDS="-* ~hppa"
-KEYWORDS=""
+KEYWORDS="-* ~hppa"
 
 #
 # The Gentoo patchset
