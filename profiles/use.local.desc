@@ -4788,6 +4788,7 @@ net-wireless/bluez:test-programs - Install tools for testing of various Bluetoot
 net-wireless/bluez:user-session - Allow compatibility with user-session semantics for session bus under systemd
 net-wireless/crda:gcrypt - Use libgcrypt instead of openssl for key checking
 net-wireless/hostapd:crda - Add CRDA support
+net-wireless/hostapd:internal-tls - Use internal TLSv1 implementation instead of depending on OpenSSL, LibreSSL or GnuTLS
 net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
 net-wireless/hostapd:sqlite - Adding sqlite support
