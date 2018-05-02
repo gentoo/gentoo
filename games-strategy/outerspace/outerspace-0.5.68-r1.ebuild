@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils gnome2-utils distutils-r1 games
+inherit desktop gnome2-utils distutils-r1
 
-MY_PN=${PN/outerspace/Outer Space}
-DESCRIPTION="on-line strategy game taking place in the dangerous universe"
+MY_PN="${PN/outerspace/Outer Space}"
+DESCRIPTION="On-line strategy game taking place in the dangerous universe"
 HOMEPAGE="http://www.ospace.net/"
 SRC_URI="mirror://sourceforge/ospace/Client/${PV}/Outer%20Space-${PV}.tar.gz -> ${P}.tar.gz
 	mirror://sourceforge/ospace/Client/${PV}/outerspace_${PV}-0ubuntu1_all.deb"
@@ -18,8 +18,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-python/pygame-1.7"
+DEPEND=""
 
-S=${WORKDIR}/${MY_PN}-${PV}
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_unpack() {
 	default
@@ -28,8 +29,8 @@ src_unpack() {
 
 python_install() {
 	distutils-r1_python_install \
-		--install-scripts="${GAMES_BINDIR}" \
-		--install-data="${GAMES_DATADIR}/${PN}" \
+		--install-scripts="/usr/bin" \
+		--install-data="/usr/share/${PN}" \
 		--install-lib="$(python_get_sitedir)"
 
 	# source tarball is missing files
@@ -39,40 +40,31 @@ python_install() {
 }
 
 src_prepare() {
+	default
+
 	# fix setup script
 	# rework python start script to avoid shell-wrapper script
-	epatch "${FILESDIR}"/${P}-setup.patch
+	eapply "${FILESDIR}"/${P}-setup.patch
 
 	sed -i\
-		-e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}/${PN}:" \
+		-e "s:@GENTOO_DATADIR@:/usr/share/${PN}:" \
 		osc.py || die "sed failed"
 
 	distutils-r1_src_prepare
 }
 
-src_compile() {
-	distutils-r1_src_compile
-}
-
 src_install() {
 	distutils-r1_src_install
-	newicon -s 48 res/icon48.png ${PN}.png
+	newicon res/logo-login.png ${PN}.png
 	make_desktop_entry "osc.py" "${MY_PN}"
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
-
-	einfo
-	einfo "start the game via 'osc.py'"
-	einfo
 }
 
 pkg_postrm() {

@@ -1,5 +1,5 @@
---- main.cpp
-+++ main.cpp
+--- a/main.cpp
++++ b/main.cpp
 @@ -8,6 +8,7 @@
  
  #include <stdio.h>

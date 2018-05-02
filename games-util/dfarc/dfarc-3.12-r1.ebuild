@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 WX_GTK_VER="3.0"
-inherit eutils gnome2-utils fdo-mime wxwidgets games
+inherit eutils gnome2-utils wxwidgets xdg
 
 DESCRIPTION="Frontend and .dmod installer for GNU FreeDink"
 HOMEPAGE="http://www.freedink.org/"
@@ -17,16 +17,16 @@ IUSE="nls"
 RDEPEND="
 	app-arch/bzip2
 	x11-misc/xdg-utils
-	x11-libs/wxGTK:${WX_GTK_VER}[X]"
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
+"
 DEPEND="${RDEPEND}
-	nls? ( >=dev-util/intltool-0.31 )"
+	nls? ( >=dev-util/intltool-0.31 )
+"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-nowindres.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-nowindres.patch )
 
 src_configure() {
-	egamesconf \
+	econf \
 		$(use_enable nls) \
 		--disable-desktopfiles
 }
@@ -34,23 +34,19 @@ src_configure() {
 src_install() {
 	default
 	dodoc TRANSLATIONS.txt
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
+	xdg_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
+	xdg_pkg_postinst
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
 }
 
 pkg_postrm() {
+	xdg_pkg_postrm
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
 }

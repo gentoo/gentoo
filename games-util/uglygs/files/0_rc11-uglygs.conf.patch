@@ -1,5 +1,5 @@
---- uglygs.conf.orig	2003-06-30 11:16:57.000000000 -0400
-+++ uglygs.conf	2003-06-30 11:22:50.000000000 -0400
+--- a/uglygs.conf.orig	2003-06-30 11:16:57.000000000 -0400
++++ b/uglygs.conf	2003-06-30 11:22:50.000000000 -0400
 @@ -12,22 +12,23 @@
  $runmode = "loop";                                              # Run mode, Run as a loop or as a cron Executable
  

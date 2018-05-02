@@ -1,30 +1,32 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=6
+inherit desktop
 
-DESCRIPTION="unique multiplayer wargame"
+DESCRIPTION="Unique multiplayer wargame"
 HOMEPAGE="http://www.ufoot.org/liquidwar/"
 SRC_URI="https://savannah.nongnu.org/download/liquidwar/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="nls"
+IUSE=""
 RESTRICT="test"
 
 RDEPEND=">=media-libs/allegro-4.2:0[X]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-exec-stack.patch \
+	default
+
+	eapply "${FILESDIR}"/${P}-exec-stack.patch \
 		"${FILESDIR}"/${P}-ovflfix.patch
 	sed -i \
 		-e 's:/games::' \
 		-e '/^MANDIR/ s:=.*:= $(mandir)/man6:' \
 		-e '/^PIXDIR/ s:=.*:= /usr/share/pixmaps:' \
-		-e '/^DESKTOPDIR/ s:=.*:= /usr/share/applnk/Games/:' \
+		-e '/^DESKTOPDIR/ s:=.*:= /usr/share/applications/:' \
 		-e '/^INFODIR/ s/=.*/= $(infodir)/' \
 		-e '/^GAMEDIR/ s/exec_prefix/bindir/' \
 		-e '/install/s:-s ::' \
@@ -36,11 +38,11 @@ src_prepare() {
 		-e '/^GAMEDIR/ s/$(exec_prefix)/@bindir@/' \
 		-e 's:/games::' src/Makefile.in \
 		|| die "sed src/Makefile.in failed"
-	epatch "${FILESDIR}"/${P}-underlink.patch
+	eapply "${FILESDIR}"/${P}-underlink.patch
 }
 
 src_configure() {
-	egamesconf \
+	econf \
 		--disable-doc-ps \
 		--disable-doc-pdf \
 		--disable-target-opt \
@@ -54,7 +56,9 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install_nolink
-	rm -f "${D}"/usr/share/doc/${PF}/COPYING
-	use nls || rm -f "${D}"/usr/share/doc/${PF}/README.*
-	prepgamesdirs
+	einstalldocs
+	rm -f "${ED}"/usr/share/doc/${PF}/COPYING
+	# Provided desktop file is completely obsolete
+	rm -f "${ED}"/usr/share/applications/liquidwar.desktop
+	make_desktop_entry ${PN} "Liquid War" /usr/share/pixmaps/${PN}.xpm
 }

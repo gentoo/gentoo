@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils autotools gnome2-utils games
+EAPI=6
+inherit autotools desktop gnome2-utils
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/beta-}"
@@ -16,15 +16,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-RDEPEND="media-libs/libsdl[sound,video]
+RDEPEND="
+	media-libs/libsdl[sound,video]
 	media-libs/sdl-mixer
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+"
 DEPEND="${RDEPEND}
-	sys-devel/gettext"
+	sys-devel/gettext
+"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
 	sed -i \
 		-e '/desktop_DATA/d' \
 		-e '/icon_DATA/d' \
@@ -38,26 +42,25 @@ src_prepare() {
 	# Build a temporary lgc-pg that knows about ${WORKDIR}:
 	cp -pPR "${S}" "${WORKDIR}"/tmp-build || die
 	sed -i \
-		-e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}:" \
+		-e "s:@GENTOO_DATADIR@:/usr/share:" \
 		-e "s:@D@::" \
 		{lgc-pg,src}/misc.c || die
 
 	cd "${WORKDIR}"/tmp-build || die
 	sed -i \
-		-e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}:" \
+		-e "s:@GENTOO_DATADIR@:/usr/share:" \
 		-e "s:@D@:${D}:" \
 		{lgc-pg,src}/misc.c || die
 }
 
 src_configure() {
-	egamesconf \
-		$(use_enable nls)
+	econf $(use_enable nls)
 
 	# Build the temporary lgc-pg:
 	cd "${WORKDIR}"/tmp-build || die
-	egamesconf \
+	econf \
 		--disable-nls \
-		--datadir="${D}/${GAMES_DATADIR}"
+		--datadir="${D}/usr/share"
 }
 
 src_compile() {
@@ -70,26 +73,23 @@ src_compile() {
 
 src_install() {
 	default
-	keepdir "${GAMES_DATADIR}"/${PN}/{ai_modules,music,terrain}
+	keepdir /usr/share/${PN}/{ai_modules,music,terrain}
 
 	# Generate scenario data:
-	dodir "${GAMES_DATADIR}"/${PN}/gfx/{flags,units,terrain} #413901
+	dodir /usr/share/${PN}/gfx/{flags,units,terrain} #413901
 	SDL_VIDEODRIVER=dummy "${WORKDIR}"/tmp-build/lgc-pg/lgc-pg --separate-bridges \
 		-s "${WORKDIR}"/pg-data \
-		-d "${D}/${GAMES_DATADIR}"/${PN} || die
+		-d "${D}"/usr/share/${PN} || die
 
 	doicon -s 48 lgeneral.png
 	make_desktop_entry ${PN} LGeneral
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

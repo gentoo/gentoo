@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils unpacker games
+EAPI=6
+inherit eutils unpacker
 
 DESCRIPTION="Control your own kingdom in this simulation"
 HOMEPAGE="http://www.linuxgamepublishing.com/info.php?id=8&"
@@ -14,30 +14,30 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist strip"
 
-RDEPEND="sys-libs/glibc
+RDEPEND="
+	sys-libs/glibc
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
 	x11-libs/libXau[abi_x86_32(-)]
-	x11-libs/libXdmcp[abi_x86_32(-)]"
+	x11-libs/libXdmcp[abi_x86_32(-)]
+"
+DEPEND=""
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
-dir=${GAMES_PREFIX_OPT}/${PN}
-Ddir=${D}/${dir}
+dir="/opt/${PN}"
+Ddir="${D}/${dir}"
 QA_PREBUILT="${dir:1}/maj_demo"
 
 src_install() {
-	dodoc README*
+	einstalldocs
 	insinto "${dir}"
 	exeinto "${dir}"
 	doins -r data quests
 	doins majesty.{bmp,xpm} majestysite.url
 	newicon majesty.xpm majesty-demo.xpm
 	# only installing the static version for now
-	if use x86 || use amd64; then
-		doexe bin/Linux/x86/maj_demo
-	fi
-	games_make_wrapper maj_demo ./maj_demo "${dir}" "${dir}"
-	prepgamesdirs
+	doexe bin/Linux/x86/maj_demo
+	make_wrapper maj_demo ./maj_demo "${dir}" "${dir}"
 	make_desktop_entry maj_demo "Majesty (Demo)"
 }

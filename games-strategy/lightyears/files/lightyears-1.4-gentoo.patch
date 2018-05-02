@@ -1,5 +1,5 @@
---- lightyears
-+++ lightyears
+--- a/lightyears
++++ b/lightyears
 @@ -1,7 +1,6 @@
  #!/usr/bin/python
  
