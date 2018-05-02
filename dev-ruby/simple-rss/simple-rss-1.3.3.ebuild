@@ -11,14 +11,12 @@ RUBY_FAKEGEM_EXTRADOC="README.markdown"
 inherit ruby-fakegem
 
 DESCRIPTION="A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby"
-HOMEPAGE="http://simple-rss.rubyforge.org/"
+HOMEPAGE="https://github.com/cardmagic/simple-rss"
 LICENSE="LGPL-2"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
-
-ruby_add_bdepend "test? ( dev-ruby/rspec )"
 
 all_ruby_prepare() {
 	# Avoid dependency on bundler
