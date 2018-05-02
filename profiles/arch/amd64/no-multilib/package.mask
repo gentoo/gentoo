@@ -137,6 +137,7 @@ games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/heroes3
 games-strategy/heroes3-demo
+games-strategy/knights-demo
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz
