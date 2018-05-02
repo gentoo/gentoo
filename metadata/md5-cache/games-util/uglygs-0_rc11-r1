@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=net-analyzer/rrdtool[graph] dev-lang/perl
+DESCRIPTION=Quickly searches the network for game servers
+EAPI=6
+HOMEPAGE=http://uglygs.uglypunk.com/
+KEYWORDS=~amd64 ~alpha ~hppa ~x86
+LICENSE=GPL-2
+RDEPEND=net-analyzer/rrdtool[graph] dev-lang/perl
+SLOT=0
+SRC_URI=ftp://ftp.uglypunk.com/uglygs/current/uglygs-rc11.tar.gz
+_md5_=1e54e366634cdab26ff210fcff85abba
