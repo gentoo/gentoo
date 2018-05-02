@@ -7187,7 +7187,7 @@ media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
-media-gfx/digikam 5.7.0-r3: Digital photo management application
+media-gfx/digikam 5.7.0-r3 5.9.0: Digital photo management application
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
@@ -7791,7 +7791,7 @@ media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) vi
 media-plugins/gst-plugins-xvideo 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
 media-plugins/hexter 1.0.2: Yamaha DX7 modeling DSSI plugin
-media-plugins/kipi-plugins 5.7.0: Plugins for the KDE Image Plugin Interface
+media-plugins/kipi-plugins 5.7.0 5.9.0: Plugins for the KDE Image Plugin Interface
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
