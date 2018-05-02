@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="plugins">Build support for plugins using librest</flag>
-    <flag name="zeitgeist">Add support for Zeitgeist event tracking system</flag>
   </use>
   <upstream>
     <remote-id type="launchpad">synapse-project</remote-id>
