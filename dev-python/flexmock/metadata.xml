@@ -14,7 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">TomasTomecek/sen</remote-id>
-		<remote-id type="pypi">sen</remote-id>
+		<remote-id type="github">bkabrda/flexmock</remote-id>
+		<remote-id type="pypi">flexmock</remote-id>
 	</upstream>
 </pkgmetadata>
