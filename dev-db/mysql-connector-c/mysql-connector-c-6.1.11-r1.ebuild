@@ -45,6 +45,7 @@ DOCS=( README )
 PATCHES=(
 	"${FILESDIR}/mysql_com.patch"
 	"${FILESDIR}/20028_all_mysql-5.6-gcc7.patch"
+	"${FILESDIR}/6.1.11-openssl-1.1.patch"
 )
 
 src_prepare() {
@@ -57,7 +58,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	mycmakeargs+=(
+	local mycmakeargs=(
 		-DINSTALL_LAYOUT=RPM
 		-DINSTALL_LIBDIR=$(get_libdir)
 		-DWITH_DEFAULT_COMPILER_OPTIONS=OFF
