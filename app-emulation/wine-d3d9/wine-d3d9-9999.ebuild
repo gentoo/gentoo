@@ -44,7 +44,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags d3d9 dos elibc_glibc +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner selinux +ssl test +threads +truetype udev +udisks v4l vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags d3d9 dos elibc_glibc +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks v4l vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -101,6 +101,7 @@ COMMON_DEPEND="
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
+	sdl? ( media-libs/libsdl2:=[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
@@ -429,6 +430,7 @@ multilib_src_configure() {
 		$(use_with pulseaudio pulse)
 		$(use_with threads pthread)
 		$(use_with scanner sane)
+		$(use_with sdl)
 		$(use_enable test tests)
 		$(use_with truetype freetype)
 		$(use_with udev)
