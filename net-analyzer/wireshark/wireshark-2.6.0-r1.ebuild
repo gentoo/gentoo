@@ -118,6 +118,11 @@ src_configure() {
 	fi
 
 	mycmakeargs+=(
+		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
+		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '')
+		$(usex qt5 MOC=$(qt5_get_bindir)/moc '')
+		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '')
+		$(usex qt5 UIC=$(qt5_get_bindir)/uic '')
 		-DBUILD_androiddump=$(usex androiddump)
 		-DBUILD_capinfos=$(usex capinfos)
 		-DBUILD_captype=$(usex captype)
@@ -138,13 +143,16 @@ src_configure() {
 		-DBUILD_udpdump=$(usex udpdump)
 		-DBUILD_wireshark=$(usex qt5)
 		-DBUILD_wireshark_gtk=$(usex gtk)
+		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
+		-DENABLE_CAP=$(usex caps)
 		-DENABLE_CARES=$(usex adns)
 		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LIBXML2=$(usex libxml2)
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_LZ4=$(usex lz4)
+		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex nghttp2)
 		-DENABLE_PCAP=$(usex pcap)
 		-DENABLE_PORTAUDIO=$(usex portaudio)
@@ -153,15 +161,6 @@ src_configure() {
 		-DENABLE_SNAPPY=$(usex snappy)
 		-DENABLE_SPANDSP=$(usex spandsp)
 		-DENABLE_ZLIB=$(usex zlib)
-		-DENABLE_NETLINK=$(usex netlink)
-		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
-		-DENABLE_CAP=$(usex caps)
-		-DDUMPCAP_INSTALL_OPTION=$(usex caps capabilities suid)
-		-DDISABLE_WERROR=yes
-		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '')
-		$(usex qt5 MOC=$(qt5_get_bindir)/moc '')
-		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '')
-		$(usex qt5 UIC=$(qt5_get_bindir)/uic '')
 	)
 
 	cmake-utils_src_configure
