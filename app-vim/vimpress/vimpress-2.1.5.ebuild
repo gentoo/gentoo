@@ -14,7 +14,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="|| ( app-editors/vim[python] app-editors/gvim[python] )
-	|| ( dev-lang/python:2.7 dev-lang/python:2.6 )
+	dev-lang/python:2.7
 	dev-python/markdown"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
