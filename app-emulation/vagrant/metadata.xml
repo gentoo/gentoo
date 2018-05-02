@@ -15,6 +15,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">mitchellh/vagrant</remote-id>
+		<remote-id type="github">hashicorp/vagrant</remote-id>
 	</upstream>
 </pkgmetadata>
