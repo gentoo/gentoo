@@ -35,7 +35,7 @@ bazel_external_uris="https://github.com/abseil/abseil-py/archive/acec853355ef987
 	https://github.com/NVlabs/cub/archive/1.8.0.zip -> cub-1.8.0.zip
 	https://github.com/abseil/abseil-cpp/archive/720c017e30339fd1786ce4aac68bc8559736e53f.tar.gz -> abseil_cpp-720c017e30339fd1786ce4aac68bc8559736e53f.tar.gz
 	https://github.com/aws/aws-sdk-cpp/archive/1.3.15.tar.gz -> aws_sdk_cpp-1.3.15.tar.gz
-	https://github.com/bazelbuild/rules_closure/archive/08039ba8ca59f64248bb3b6ae016460fe9c9914f.tar.gz
+	https://github.com/bazelbuild/rules_closure/archive/08039ba8ca59f64248bb3b6ae016460fe9c9914f.tar.gz -> bazel-rules_closure-08039ba8ca59f64248bb3b6ae016460fe9c9914f.tar.gz
 	https://github.com/cython/cython/archive/3732784c45cfb040a5b0936951d196f83a12ea17.tar.gz -> cython-3732784c45cfb040a5b0936951d196f83a12ea17.tar.gz
 	https://github.com/edenhill/librdkafka/archive/v0.11.1.tar.gz -> librdkafka-v0.11.1.tar.gz
 	https://github.com/glennrp/libpng/archive/v1.6.34.tar.gz -> libpng-v1.6.34.tar.gz
