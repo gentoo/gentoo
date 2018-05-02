@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils eutils fcaps flag-o-matic git-r3 gnome2-utils ltprune multilib qmake-utils user xdg-utils
+inherit cmake-utils eutils fcaps flag-o-matic gnome2-utils ltprune multilib qmake-utils user xdg-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
 IUSE="
 	adns androiddump bcg729 +capinfos +caps +captype ciscodump +dftest doc
 	+dumpcap +editcap gtk kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
@@ -86,8 +86,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-androiddump-wsutil.patch
+	"${FILESDIR}"/${PN}-99999999-androiddump.patch
 )
 
 pkg_setup() {
