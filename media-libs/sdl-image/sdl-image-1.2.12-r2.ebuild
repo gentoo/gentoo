@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ RDEPEND="
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-3.9.7-r1:0[${MULTILIB_USEDEP}] )
-	webp? ( >=media-libs/libwebp-0.3.0[${MULTILIB_USEDEP}] )"
+	webp? ( >=media-libs/libwebp-0.3.0:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
