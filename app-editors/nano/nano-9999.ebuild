@@ -64,7 +64,8 @@ src_configure() {
 
 src_install() {
 	default
-	rm -rf "${ED%/}"/trash
+	# don't use "${ED}" here or things break (#654534)
+	rm -r "${D%/}"/trash || die
 
 	dodoc doc/sample.nanorc
 	docinto html
