@@ -12,7 +12,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="A tool for building and distributing development environments"
-HOMEPAGE="http://vagrantup.com/"
+HOMEPAGE="https://vagrantup.com/"
 SRC_URI="https://github.com/hashicorp/vagrant/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
