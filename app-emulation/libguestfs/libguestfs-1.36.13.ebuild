@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
-inherit autotools linux-info perl-functions python-single-r1 versionator
+inherit eutils autotools linux-info perl-functions python-single-r1 versionator
 
 MY_PV_1="$(get_version_component_range 1-2)"
 MY_PV_2="$(get_version_component_range 2)"
