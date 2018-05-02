@@ -22,6 +22,18 @@ USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_PPC ABI_S390 ABI_X86 CPU_F
 CONFIG_PROTECT="/etc"
 CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
 
+# EAPI 7 environment variable blacklist.
+#
+# DBUS_SESSION_BUS_ADDRESS to avoid trying to access the user's session
+# bus.
+#
+# DISPLAY and XAUTHORITY to avoid trying to access the user's X11.
+#
+# XDG_* since the values coming from user environment can collide with
+# ebuild-set ${HOME} (e.g. by referring to user's home directory).
+# We exclude XDG_DATA_DIRS & XDG_CONFIG_DIRS as those are set in env.d.
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR"
+
 # Variables that are set exclusively by the profile
 # and not by user configuration files.
 PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USERLAND USE_EXPAND_IMPLICIT USE_EXPAND_UNPREFIXED USE_EXPAND_VALUES_ELIBC USE_EXPAND_VALUES_KERNEL USE_EXPAND_VALUES_USERLAND"
