@@ -126,7 +126,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		# force to find crypto++ see bug #548544
-		-DCRYPTOPP_LIBRARIES="crypto++"
+		-DCRYPTOPP_LIBRARIES="cryptopp"
 		-DCRYPTOPP_FOUND=ON
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
