@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/elilo/${P}-all.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ia64 ~x86"
 IUSE=""
 
 # gnu-efi contains only static libs, so there's no run-time dep on it
