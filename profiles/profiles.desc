@@ -104,7 +104,7 @@ arm64           default/linux/arm64/17.0                        dev
 arm64           default/linux/arm64/17.0/desktop                exp
 arm64           default/linux/arm64/17.0/desktop/systemd        dev
 arm64           default/linux/arm64/17.0/developer              exp
-arm64           default/linux/arm64/17.0/systemd                exp
+arm64           default/linux/arm64/17.0/systemd                dev
 
 # HPPA Profiles
 # @MAINTAINER: hppa@gentoo.org
