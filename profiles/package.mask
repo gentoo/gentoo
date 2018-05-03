@@ -519,11 +519,6 @@ dev-lang/spidermonkey:52
 >=app-text/jabref-bin-4.0
 
 # Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Doesn't work with >=openvpn-2.3, bug 470696
-# Fix is work in progress, see above bug. dilfridge@g.o
-net-vpn/kvpnc
-
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
 # Randomly broken due to sys-devel/binutils-config bug (#584296).
 # Unmask when it is finally fixed, so people can build the package.
 dev-util/mutrace
