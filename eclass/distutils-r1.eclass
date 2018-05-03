@@ -231,7 +231,7 @@ fi
 # @USAGE: [<args>...]
 # @DESCRIPTION:
 # Run setup.py using currently selected Python interpreter
-# (if ${PYTHON} is set; fallback 'python' otherwise).
+# (if ${EPYTHON} is set; fallback 'python' otherwise).
 #
 # setup.py will be passed the following, in order:
 # 1. ${mydistutilsargs[@]}
@@ -250,7 +250,7 @@ esetup.py() {
 
 	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
 
-	set -- "${PYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
+	set -- "${EPYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die "${die_args[@]}"
