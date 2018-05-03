@@ -45,3 +45,36 @@
  
     package Address_To_Id_Maps is new Ada.Containers.Hashed_Maps
       (Lexical_Env, Integer, Hash, "=");
+--- a/testsuite/testsuite_support/__init__.py.old	2018-05-02 21:40:04.977442020 +0200
++++ b/testsuite/testsuite_support/__init__.py	2018-05-02 21:40:45.422759387 +0200
+@@ -68,6 +68,7 @@
+         # to build it in parallel.
+         if not self.global_env['options'].disable_tear_up_builds:
+-            p = Run(['gprbuild', '-p', '-f', '-P',
++            p = Run(['gprbuild', '-p', '-f', '-XLIBRARY_TYPE=relocatable',
++                     '-XXMLADA_BUILD=relocatable', '-P',
+                      os.path.join(self.root_dir, '..', 'langkit', 'support',
+                                   'langkit_support.gpr')], output=PIPE)
+             report(p, "Langkit support")
+--- a/testsuite/testsuite_support/langkit_support_driver.py.old	2018-05-03 08:01:20.019944992 +0200
++++ b/testsuite/testsuite_support/langkit_support_driver.py	2018-05-03 08:02:50.146430288 +0200
+@@ -36,5 +36,7 @@
+             ))
+ 
+         self.run_and_check(['gprbuild', '-p', '-P', 'p.gpr', '-gnata',
++                            '-XLIBRARY_TYPE=relocatable',
++                            '-XXMLADA_BUILD=relocatable',
+                             '-cargs', '-O0', '-g'])
+         self.run_and_check(['./{}'.format(source[:-4])])
++++ a/testsuite/testsuite_support/adalog_driver.py.old	2018-05-03 08:14:30.998698722 +0200
+--- b/testsuite/testsuite_support/adalog_driver.py	2018-05-03 08:16:48.275417176 +0200
+@@ -41,6 +41,8 @@
+                 )
+             ))
+ 
+-        self.run_and_check(['gprbuild', '-p', '-P', 'p.gpr', '-cargs', '-O0',
++        self.run_and_check(['gprbuild', '-p', '-XLIBRARY_TYPE=relocatable',
++                            '-XXMLADA_BUILD=relocatable',
++                            '-P', 'p.gpr', '-cargs', '-O0',
+                             '-g'])
+         self.run_and_check(['./{}'.format(source[:-4])])
