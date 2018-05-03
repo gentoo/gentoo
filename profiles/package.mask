@@ -215,11 +215,6 @@ media-video/bdsup2sub++
 sys-fs/aufs3
 sys-fs/aufs4
 
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Apr 2018)
-# Dead upstream, depends on dead PyQt4.
-# Masked for removal in 30 days. Bugs #649118, #510066
-media-video/subdownloader
-
 # Michał Górny (03 Apr 2018)
 # Starting with sys-apps/sandbox-2.13+, unloading is possible via
 # disabling (SANDBOX_ON=0) + wiping LD_PRELOAD. This renders the tool
