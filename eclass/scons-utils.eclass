@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: scons-utils.eclass
@@ -93,7 +93,7 @@
 # -- EAPI support check --
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "EAPI ${EAPI} unsupported."
 esac
 
@@ -102,9 +102,14 @@ inherit multiprocessing
 # -- ebuild variables setup --
 
 if [[ -n ${SCONS_MIN_VERSION} ]]; then
-	DEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
+	BDEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
 else
-	DEPEND="dev-util/scons"
+	BDEPEND="dev-util/scons"
+fi
+
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	DEPEND=${BDEPEND}
+	unset BDEPEND
 fi
 
 # -- public functions --
