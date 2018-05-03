@@ -18,10 +18,10 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	>=dev-libs/openssl-1.0.2
+	>=dev-libs/openssl-1.0.2:0=[-bindist]
 	>=dev-libs/protobuf-3:=
-	net-dns/c-ares
-	sys-libs/zlib"
+	net-dns/c-ares:=
+	sys-libs/zlib:="
 
 DEPEND="${RDEPEND}"
 
