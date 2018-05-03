@@ -28,7 +28,7 @@ RESTRICT="!bindist? ( bindist )" # bug 541408
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
-	harfbuzz? ( >=media-libs/harfbuzz-0.9.19[truetype,${MULTILIB_USEDEP}] )
+	harfbuzz? ( >=media-libs/harfbuzz-1.3.0[truetype,${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}] )
 	utils? (
 		X? (
@@ -49,7 +49,7 @@ PATCHES=(
 )
 
 _egit_repo_handler() {
-	if [[ "${PV}" = 9999 ]] ; then
+	if [[ "${PV}" == 9999 ]] ; then
 		local phase="${1}"
 		case ${phase} in
 			fetch|unpack)
@@ -82,7 +82,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	if [[ "${PV}" = 9999 ]] ; then
+	if [[ "${PV}" == 9999 ]] ; then
 		# inspired by shipped autogen.sh script
 		eval $(sed -nf version.sed include/freetype/freetype.h)
 		pushd builds/unix &>/dev/null || die
@@ -162,6 +162,7 @@ multilib_src_configure() {
 	type -P gmake &> /dev/null && export GNUMAKE=gmake
 
 	local myeconfargs=(
+		--disable-freetype-config
 		--enable-biarch-config
 		--enable-shared
 		$(use_with bzip2)
