@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: out-of-source.eclass
@@ -32,7 +32,7 @@
 # @CODE
 
 case ${EAPI} in
-	6);;
+	6|7);;
 	*) die "EAPI ${EAPI:-0} unsupported (too old)";;
 esac
 
