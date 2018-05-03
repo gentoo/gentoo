@@ -46,7 +46,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6)
+	5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -98,7 +98,11 @@ if [[ ! ${_DISTUTILS_R1} ]]; then
 
 if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 	RDEPEND=${PYTHON_DEPS}
-	DEPEND=${PYTHON_DEPS}
+	if [[ ${EAPI} != [56] ]]; then
+		BDEPEND=${PYTHON_DEPS}
+	else
+		DEPEND=${PYTHON_DEPS}
+	fi
 	REQUIRED_USE=${PYTHON_REQUIRED_USE}
 fi
 
@@ -413,7 +417,7 @@ _distutils-r1_create_setup_cfg() {
 			[install]
 			compile = True
 			optimize = 2
-			root = ${D}
+			root = ${D%/}
 		_EOF_
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
@@ -583,7 +587,7 @@ distutils-r1_python_install() {
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		_distutils-r1_wrap_scripts "${root}" "${scriptdir}"
-		multibuild_merge_root "${root}" "${D}"
+		multibuild_merge_root "${root}" "${D%/}"
 	fi
 }
 
@@ -798,7 +802,7 @@ _distutils-r1_check_namespace_pth() {
 
 	while IFS= read -r -d '' f; do
 		pth+=( "${f}" )
-	done < <(find "${ED}" -name '*-nspkg.pth' -print0)
+	done < <(find "${ED%/}" -name '*-nspkg.pth' -print0)
 
 	if [[ ${pth[@]} ]]; then
 		ewarn "The following *-nspkg.pth files were found installed:"
