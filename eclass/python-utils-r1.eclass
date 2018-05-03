@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -19,7 +19,7 @@
 # https://wiki.gentoo.org/wiki/Project:Python/python-utils-r1
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
+	0|1|2|3|4|5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -688,8 +688,8 @@ python_optimize() {
 			# 2) skip paths which do not exist
 			#    (python2.6 complains about them verbosely)
 
-			if [[ ${f} == /* && -d ${D}${f} ]]; then
-				set -- "${D}${f}" "${@}"
+			if [[ ${f} == /* && -d ${D%/}${f} ]]; then
+				set -- "${D%/}${f}" "${@}"
 			fi
 		done < <("${PYTHON}" -c 'import sys; print("\0".join(sys.path))' || die)
 
@@ -699,7 +699,7 @@ python_optimize() {
 	local d
 	for d; do
 		# make sure to get a nice path without //
-		local instpath=${d#${D}}
+		local instpath=${d#${D%/}}
 		instpath=/${instpath##/}
 
 		case "${EPYTHON}" in
@@ -924,7 +924,7 @@ python_domodule() {
 		doins -r "${@}" || return ${?}
 	)
 
-	python_optimize "${ED}/${d}"
+	python_optimize "${ED%/}/${d}"
 }
 
 # @FUNCTION: python_doheader
@@ -1086,9 +1086,20 @@ python_is_python3() {
 python_is_installed() {
 	local impl=${1:-${EPYTHON}}
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON"
+	local hasv_args=()
 
-	# for has_version
-	local -x ROOT=/
+	case ${EAPI:-0} in
+		0|1|2|3|4)
+			local -x ROOT=/
+			;;
+		5|6)
+			hasv_args+=( --host-root )
+			;;
+		*)
+			hasv_args+=( -b )
+			;;
+	esac
+
 	case "${impl}" in
 		pypy|pypy3)
 			local append=
@@ -1097,13 +1108,13 @@ python_is_installed() {
 			fi
 
 			# be happy with just the interpeter, no need for the virtual
-			has_version "dev-python/${impl}${append}" \
-				|| has_version "dev-python/${impl}-bin${append}"
+			has_version "${hasv_args[@]}" "dev-python/${impl}${append}" \
+				|| has_version "${hasv_args[@]}" "dev-python/${impl}-bin${append}"
 			;;
 		*)
 			local PYTHON_PKG_DEP
 			python_export "${impl}" PYTHON_PKG_DEP
-			has_version "${PYTHON_PKG_DEP}"
+			has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
 			;;
 	esac
 }
@@ -1167,7 +1178,7 @@ python_fix_shebang() {
 				for i in "${split_shebang[@]}"; do
 					case "${i}" in
 						*"${EPYTHON}")
-							debug-print "${FUNCNAME}: in file ${f#${D}}"
+							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
 							debug-print "${FUNCNAME}: shebang matches EPYTHON: ${shebang}"
 
 							# Nothing to do, move along.
@@ -1176,7 +1187,7 @@ python_fix_shebang() {
 							break
 							;;
 						*python|*python[23])
-							debug-print "${FUNCNAME}: in file ${f#${D}}"
+							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
 							debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
 
 							if [[ ${i} == *python2 ]]; then
@@ -1226,7 +1237,7 @@ python_fix_shebang() {
 			fi
 
 			if [[ ! ${quiet} ]]; then
-				einfo "Fixing shebang in ${f#${D}}."
+				einfo "Fixing shebang in ${f#${D%/}}."
 			fi
 
 			if [[ ! ${error} ]]; then
@@ -1240,7 +1251,7 @@ python_fix_shebang() {
 				any_fixed=1
 			else
 				eerror "The file has incompatible shebang:"
-				eerror "  file: ${f#${D}}"
+				eerror "  file: ${f#${D%/}}"
 				eerror "  current shebang: ${shebang}"
 				eerror "  requested impl: ${EPYTHON}"
 				die "${FUNCNAME}: conversion of incompatible shebang requested"
@@ -1251,7 +1262,7 @@ python_fix_shebang() {
 			local cmd=eerror
 			[[ ${EAPI:-0} == [012345] ]] && cmd=eqawarn
 
-			"${cmd}" "QA warning: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
+			"${cmd}" "QA warning: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
 			if [[ ${any_correct} ]]; then
 				"${cmd}" "All files have ${EPYTHON} shebang already."
 			else
