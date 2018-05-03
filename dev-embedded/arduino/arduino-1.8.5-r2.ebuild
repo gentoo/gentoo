@@ -144,7 +144,7 @@ src_install() {
 		einstalldocs
 
 		# arduino expects its doc in its "main" directory. symlink it.
-		dosym "${EPREFIX}/usr/share/doc/${P}/html/reference" "${SHARE}/reference"
+		dosym "${EPREFIX}/usr/share/doc/${PF}/html/reference" "${SHARE}/reference"
 	fi
 
 	# Install menu and icons
