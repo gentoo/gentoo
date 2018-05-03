@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -75,7 +75,7 @@ case ${EAPI:-0} in
 		inherit epatch
 		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
 			pkg_{setup,postinst,postrm} ;;
-	6)
+	6|7)
 		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
 			pkg_{setup,postinst,postrm} ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
