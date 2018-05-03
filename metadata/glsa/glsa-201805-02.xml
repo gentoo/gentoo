@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-02">
+  <title>Python: Buffer overflow</title>
+  <synopsis>A buffer overflow in Python might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>2018-05-02</announced>
+  <revised count="1">2018-05-02</revised>
+  <bug>637938</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge" slot="2.7">2.7.14</unaffected>
+      <vulnerable range="lt" slot="2.7">2.7.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python is an interpreted, interactive, object-oriented programming
+      language.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow was discovered in Python’s PyString_DecodeEscape
+      function in stringobject.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to process a specially crafted
+      file, could execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Python 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.7.14:2.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-1000158">
+      CVE-2017-1000158
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-04-24T00:27:08Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-05-02T23:53:50Z">b-man</metadata>
+</glsa>
