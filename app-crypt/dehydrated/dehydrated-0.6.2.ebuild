@@ -7,7 +7,7 @@ inherit user
 
 DESCRIPTION="a client for signing certificates with an ACME-server"
 HOMEPAGE="https://github.com/lukas2511/dehydrated"
-SRC_URI="mirror://github.com/lukas2511/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lukas2511/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
