@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -79,7 +79,8 @@ esac
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == [45] ]] && inherit eutils
-inherit toolchain-funcs xdg-utils
+[[ ${EAPI} == [56] ]] && inherit xdg-utils
+inherit toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit multiprocessing python-r1
@@ -739,7 +740,7 @@ distutils-r1_src_prepare() {
 
 distutils-r1_src_configure() {
 	python_export_utf8_locale
-	xdg_environment_reset # Bug 577704
+	[[ ${EAPI} == [56] ]] && xdg_environment_reset # Bug 577704
 
 	if declare -f python_configure >/dev/null; then
 		_distutils-r1_run_foreach_impl python_configure
