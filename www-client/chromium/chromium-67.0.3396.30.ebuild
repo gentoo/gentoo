@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=media-libs/openh264-1.6.0:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
-		>=media-video/ffmpeg-3:=
+		>=media-video/ffmpeg-4:=
 		|| (
 			media-video/ffmpeg[-samba]
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
@@ -144,10 +144,9 @@ GTK+ icon theme.
 "
 
 PATCHES=(
-	"${FILESDIR}/chromium-FORTIFY_SOURCE-r2.patch"
+	"${FILESDIR}/chromium-compiler-r0.patch"
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
-	"${FILESDIR}/chromium-clang-r2.patch"
 	"${FILESDIR}/chromium-math.h-r0.patch"
 	"${FILESDIR}/chromium-stdint.patch"
 	"${FILESDIR}/chromium-ffmpeg-r1.patch"
@@ -228,6 +227,7 @@ src_prepare() {
 		third_party/angle/third_party/spirv-headers
 		third_party/angle/third_party/spirv-tools
 		third_party/angle/third_party/vulkan-validation-layers
+		third_party/apple_apsl
 		third_party/blink
 		third_party/boringssl
 		third_party/boringssl/src/third_party/fiat
@@ -247,6 +247,8 @@ src_prepare() {
 		third_party/catapult/tracing/third_party/pako
 		third_party/ced
 		third_party/cld_3
+		third_party/crashpad
+		third_party/crashpad/crashpad/third_party/zlib
 		third_party/crc32c
 		third_party/cros_system_api
 		third_party/devscripts
