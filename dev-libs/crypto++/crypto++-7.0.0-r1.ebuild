@@ -37,7 +37,7 @@ src_compile() {
 	# ASM isn't Darwin/Mach-O ready, #479554, buildsys doesn't grok CPPFLAGS
 	[[ ${CHOST} == *-darwin* ]] && append-cxxflags -DCRYPTOPP_DISABLE_ASM
 
-	emake -f GNUmakefile all shared
+	emake -f GNUmakefile all shared libcryptopp.pc
 }
 
 src_install() {
