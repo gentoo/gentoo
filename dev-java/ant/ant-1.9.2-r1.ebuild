@@ -5,7 +5,7 @@ EAPI=6
 inherit versionator
 
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files"
-HOMEPAGE="http://ant.apache.org/"
+HOMEPAGE="https://ant.apache.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
