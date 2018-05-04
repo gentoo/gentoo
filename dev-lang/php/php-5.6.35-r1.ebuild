@@ -232,6 +232,7 @@ php_set_ini_dir() {
 
 src_prepare() {
 	eapply "${FILESDIR}/php-${SLOT}-no-bison-warnings.patch"
+	eapply "${FILESDIR}/php-freetype-2.9.1.patch"
 
 	# Change PHP branding
 	# Get the alpha/beta/rc version
