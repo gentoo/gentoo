@@ -8,4 +8,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc
 LICENSE=CC-BY-SA-3.0
 SLOT=0
 SRC_URI=!binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-7_p20180430.tar.xz ) binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-7_p20180430-prebuilt.tar.xz )
-_md5_=772e3d2952c69cf93a1ec04787af290f
+_md5_=c524c3636d475bf02f90b624fa62c4f3
