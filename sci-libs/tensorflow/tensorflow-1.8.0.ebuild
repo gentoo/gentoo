@@ -103,6 +103,31 @@ PATCHES=(
 	"${FILESDIR}/0001-pip_package-modularize-build-script-to-allow-distros.patch"
 )
 
+bazel-get-cpu-flags() {
+	local i f=()
+	# Keep this list in sync with tensorflow/core/platform/cpu_feature_guard.cc.
+	for i in sse sse2 sse3 sse4_1 sse4_2 avx avx2 fma4; do
+		use cpu_flags_x86_${i} && f+=( -m${i/_/.} )
+	done
+	use cpu_flags_x86_fma3 && f+=( -mfma )
+	echo "${f[*]}"
+}
+
+bazel-get-flags() {
+	local i fs=()
+	for i in ${CXXFLAGS} $(bazel-get-cpu-flags); do
+		fs+=( "--cxxopt=${i}" "--host_cxxopt=${i}" )
+	done
+	for i in ${CPPFLAGS}; do
+		fs+=( "--copt=${i}" "--host_copt=${i}" )
+		fs+=( "--cxxopt=${i}" "--host_cxxopt=${i}" )
+	done
+	for i in ${LDFLAGS}; do
+		fs+=( "--linkopt=${i}" "--host_linkopt=${i}" )
+	done
+	echo "${fs[*]}"
+}
+
 setup_bazelrc() {
 	if [[ -f "${T}/bazelrc" ]]; then
 		return
@@ -118,7 +143,8 @@ setup_bazelrc() {
 	echo "startup --batch" > "${T}/bazelrc" || die
 
 	# make bazel respect $MAKEOPTS
-	echo "build --jobs=$(makeopts_jobs)" >> "${T}/bazelrc" || die
+	echo "build --jobs=$(makeopts_jobs) $(bazel-get-flags)" >> "${T}/bazelrc" || die
+	echo "build --compilation_mode=opt --host_compilation_mode=opt" >> "${T}/bazelrc" || die
 
 	# Use standalone strategy to deactivate the bazel sandbox, since it
 	# conflicts with FEATURES=sandbox.
@@ -187,16 +213,8 @@ src_prepare() {
 
 src_configure() {
 	do_configure() {
-		local cc_opt_flags=( ${CFLAGS} )
-
-		# Keep this list in sync with tensorflow/core/platform/cpu_feature_guard.cc.
-		for i in sse sse2 sse3 sse4_1 sse4_2 avx avx2 fma4; do
-			use cpu_flags_x86_${i} && cc_opt_flags+=( -m${i/_/.} )
-		done
-		use cpu_flags_x86_fma3 && cc_opt_flags+=( -mfma )
-
 		python_export PYTHON_SITEDIR
-		export CC_OPT_FLAGS="${cc_opt_flags[*]}"
+		export CC_OPT_FLAGS="${CFLAGS} $(bazel-get-cpu-flags)"
 		export GCC_HOST_COMPILER_PATH=$(tc-getCC)
 		export TF_NEED_JEMALLOC=$(usex jemalloc 1 0)
 		export TF_NEED_GCP=0
