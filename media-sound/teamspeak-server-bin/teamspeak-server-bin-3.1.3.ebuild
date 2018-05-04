@@ -5,27 +5,27 @@ EAPI=6
 
 inherit systemd user
 
-DESCRIPTION="TeamSpeak is software for quality voice communication via the Internet"
+DESCRIPTION="A server software for hosting quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
 SRC_URI="amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_amd64-${PV}.tar.bz2 )
 	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_x86-${PV}.tar.bz2 )"
 
 LICENSE="LGPL-2.1 teamspeak3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="doc tsdns"
-# IUSE="doc mysql tsdns"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="doc mysql tsdns"
 
-# RDEPEND="mysql? ( dev-db/mariadb-connector-c:0=
-#		<dev-libs/openssl-1.1:0=
-#		sys-libs/zlib )"
+RDEPEND="mysql? ( <dev-libs/openssl-1.1:0=
+	sys-libs/zlib:= )"
 
 RESTRICT="mirror strip"
 
 S="${WORKDIR}/teamspeak3-server_linux"
 
-QA_PREBUILT="opt/teamspeak3-server/libts3db_sqlite3.so
-		opt/teamspeak3-server/ts3server"
+QA_PREBUILT="opt/teamspeak3-server/libmariadb.so.2
+	opt/teamspeak3-server/libts3db_mariadb.so
+	opt/teamspeak3-server/libts3db_sqlite3.so
+	opt/teamspeak3-server/ts3server"
 
 pkg_setup() {
 	enewgroup teamspeak
@@ -43,7 +43,6 @@ src_unpack() {
 }
 
 src_install() {
-	# Accept license
 	touch "${T%/}"/.ts3server_license_accepted || die
 	insinto "/opt/teamspeak3-server"
 	doins "${T}"/.ts3server_license_accepted
@@ -68,19 +67,19 @@ src_install() {
 	systemd_newunit "${FILESDIR}/teamspeak.service" teamspeak3-server.service
 	systemd_newtmpfilesd "${FILESDIR}/teamspeak.tmpfiles" teamspeak3-server.conf
 
-	# Install optional mysql
-	# if use mysql; then
-	#	insinto "/etc/teamspeak3-server"
-	#	doins "${FILESDIR}/ts3server_mariadb.ini.sample"
-	#	doins "${FILESDIR}/ts3db_mariadb.ini.sample"
-	#
-	#	exeinto "/opt/teamspeak3-server"
-	#	doexe "libts3db_mariadb.so"
-	#
-	#	insinto "/opt/teamspeak3-server/sql"
-	#	doins -r "sql/create_mariadb"
-	#	doins -r "sql/updates_and_fixes"
-	# fi
+	if use mysql; then
+		insinto "/etc/teamspeak3-server"
+		doins "${FILESDIR}/ts3server_mariadb.ini.sample"
+		doins "${FILESDIR}/ts3db_mariadb.ini.sample"
+
+		exeinto "/opt/teamspeak3-server"
+		doexe "libts3db_mariadb.so"
+		doexe "redist/libmariadb.so.2"
+
+		insinto "/opt/teamspeak3-server/sql"
+		doins -r "sql/create_mariadb"
+		doins -r "sql/updates_and_fixes"
+	fi
 
 	if use doc; then
 		local HTML_DOCS=( "doc/serverquery/." )
@@ -110,12 +109,11 @@ src_install() {
 	keepdir "/etc/teamspeak3-server"
 	keepdir "/var/log/teamspeak3-server"
 
-	# Protect config
-	# if use mysql; then
-	#	echo "CONFIG_PROTECT=\"/etc/teamspeak3-server/ts3server.ini /etc/teamspeak3-server/ts3server_mariadb.ini\"" > "${T}"/99teamspeak3-server || die
-	# else
-	echo "CONFIG_PROTECT=\"/etc/teamspeak3-server/ts3server.ini\"" > "${T}"/99teamspeak3-server || die
-	# fi
+	if use mysql; then
+		echo "CONFIG_PROTECT=\"/etc/teamspeak3-server/ts3server.ini /etc/teamspeak3-server/ts3server_mariadb.ini\"" > "${T}"/99teamspeak3-server || die
+	else
+		echo "CONFIG_PROTECT=\"/etc/teamspeak3-server/ts3server.ini\"" > "${T}"/99teamspeak3-server || die
+	fi
 	doenvd "${T}"/99teamspeak3-server
 
 	fowners -R teamspeak:teamspeak "/etc/teamspeak3-server" "/opt/teamspeak3-server" "/var/log/teamspeak3-server"
