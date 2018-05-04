@@ -30,7 +30,6 @@ DEPEND="!binary? (
 			>=dev-tex/tex4ht-20090611_p1038-r5
 		)
 	)"
-RDEPEND=""
 
 src_compile() {
 	if ! use binary; then
