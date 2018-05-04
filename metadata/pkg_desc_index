@@ -2378,7 +2378,7 @@ dev-haskell/zlib-enum 0.2.3.1 0.2.3.1-r1: Enumerator interface for zlib compress
 dev-java/absolutelayout 6.7_beta-r1: AbsoluteLayout files extracted from Netbeans
 dev-java/animal-sniffer-annotations 1.15: Java annotations for marking methods that Animal Sniffer should ignore
 dev-java/annogen 0.1.0-r3: A tool which helps you work with JSR175 annotations
-dev-java/ant 1.9.2 1.9.2-r1: Java-based build tool similar to 'make' that uses XML configuration files
+dev-java/ant 1.9.2-r1: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-antlr 1.9.2-r1: Apache Ant's optional tasks for Antlr
 dev-java/ant-apache-bcel 1.9.2: Apache Ant's optional tasks depending on bcel
 dev-java/ant-apache-bsf 1.9.2: Apache Ant's optional tasks depending on bsf-2.3
@@ -2436,7 +2436,7 @@ dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generato
 dev-java/bytelist 1.0.10: JRuby support library
 dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
-dev-java/cdegroot-db 0.08-r1 0.08-r2: OO database written in Java
+dev-java/cdegroot-db 0.08-r2: OO database written in Java
 dev-java/cdi-api 1.2: Contexts and Dependency Injection for the Java EE platform
 dev-java/cglib 3.1: cglib is a powerful, high performance and quality Code Generation Library
 dev-java/classmate 0.9.0-r1: Zero-dependency Java library for accurately introspecting type information
@@ -2644,7 +2644,7 @@ dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jsap 2.1-r2: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729: Java implementation of the JavaScript Object Notation
-dev-java/json-simple 1.1 1.1-r1: Simple Java toolkit for JSON
+dev-java/json-simple 1.1-r1: Simple Java toolkit for JSON
 dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface Classes
 dev-java/jsr173 1.0-r4: Yet another Java library for parsing and writing XML
@@ -2793,12 +2793,12 @@ dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
-dev-java/swarmcache 1.0_pre20050106-r1 1.0_pre20050106-r2: Cluster-aware Caching for Java
+dev-java/swarmcache 1.0_pre20050106-r2: Cluster-aware Caching for Java
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swt 3.7.2-r2 3.8.2-r2: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
-dev-java/tapestry 3.0.4-r2 3.0.4-r3: Dynamic, robust, highly scalable web framework in Java
+dev-java/tapestry 3.0.4-r3: Dynamic, robust, highly scalable web framework in Java
 dev-java/telnetd 2.0-r1: A telnet daemon for use in Java applications
 dev-java/testng 6.9.10: Testing framework inspired by JUnit and NUnit with new features
 dev-java/tijmp 0.8: Java Memory Profiler for java 1.6+
