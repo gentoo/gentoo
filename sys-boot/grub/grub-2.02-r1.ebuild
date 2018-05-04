@@ -3,12 +3,7 @@
 
 EAPI=6
 
-if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTOGEN=1
-	GRUB_AUTORECONF=1
-fi
-
-# 2.02-grub-pkg-config.patch modifies configure.ac
+GRUB_AUTOGEN=1
 GRUB_AUTORECONF=1
 
 if [[ -n ${GRUB_AUTOGEN} ]]; then
@@ -44,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/2.02-multiple-early-initrd.patch
+	"${FILESDIR}"/2.02-freetype-capitalise-variables.patch
 	"${FILESDIR}"/2.02-freetype-pkg-config.patch
 )
 
