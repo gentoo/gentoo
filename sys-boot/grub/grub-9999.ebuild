@@ -18,7 +18,7 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit autotools bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs versionator
+inherit bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs versionator
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -67,7 +67,7 @@ REQUIRED_USE="
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-RDEPEND="
+COMMON_DEPEND="
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
 	debug? (
@@ -80,14 +80,17 @@ RDEPEND="
 	ppc? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
 	ppc64? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	app-misc/pax-utils
 	sys-devel/flex
 	sys-devel/bison
 	sys-apps/help2man
 	sys-apps/texinfo
-	fonts? ( media-libs/freetype:2 )
+	fonts? (
+		media-libs/freetype:2
+		virtual/pkgconfig
+	)
 	grub_platforms_xen? ( app-emulation/xen-tools:= )
 	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
@@ -96,6 +99,7 @@ DEPEND="${RDEPEND}
 			app-arch/bzip2[static-libs(+)]
 			media-libs/freetype[static-libs(+)]
 			sys-libs/zlib[static-libs(+)]
+			virtual/pkgconfig
 		)
 	)
 	test? (
@@ -111,9 +115,11 @@ DEPEND="${RDEPEND}
 	themes? (
 		app-arch/unzip
 		media-libs/freetype:2
+		virtual/pkgconfig
 	)
+	truetype? ( virtual/pkgconfig )
 "
-RDEPEND+="
+RDEPEND="${COMMON_DEPEND}
 	kernel_linux? (
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
@@ -121,8 +127,6 @@ RDEPEND+="
 	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
 	nls? ( sys-devel/gettext )
 "
-
-DEPEND+=" !!=media-libs/freetype-2.5.4"
 
 RESTRICT="strip !test? ( test )"
 
