@@ -33,7 +33,7 @@ QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectman
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 
 # minimum Qt version required
-QT_PV="5.9.0:5"
+QT_PV="5.6.2:5"
 
 CDEPEND="
 	=dev-libs/botan-1.10*[-bindist,threads]
@@ -123,7 +123,7 @@ src_prepare() {
 	sed -i -e '/sdktool/ d' tests/auto/auto.pro || die
 	sed -i -e '/\(dumpers\|offsets\)\.pro/ d' tests/auto/debugger/debugger.pro || die
 	sed -i -e '/CONFIG -=/ s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
-	sed -i -e '/timeline\(items\|notes\|selection\)renderpass/ d' tests/auto/tracing/tracing.pro || die
+	sed -i -e '/timeline\(items\|notes\|selection\)renderpass/ d' tests/auto/timeline/timeline.pro || die
 	sed -i -e 's/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
 
 	# fix path to some clang headers
