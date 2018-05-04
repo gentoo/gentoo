@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-MY_PN="percona-${PN/-bin}"
+MY_PN="${PN%-bin}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases"
