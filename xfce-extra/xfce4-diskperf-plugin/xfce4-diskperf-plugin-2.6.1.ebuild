@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+PATCHES=( "${FILESDIR}/${P}-majorminor.patch" )
+
 pkg_preinst() {
 	gnome2_icon_savelist
 }
