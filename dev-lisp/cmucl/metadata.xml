@@ -30,6 +30,8 @@ ANSI Common Lisp standard. Here is a summary of its main features:
    code profiler.
 </longdescription>
 <use>
+<flag name="doc">Installs package documentation</flag>
 <flag name="source">Include source code for CMUCL in installation</flag>
+<flag name="X">Don't build CLX, CLM, or Hemlock</flag>
 </use>
 </pkgmetadata>
