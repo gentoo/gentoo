@@ -8,7 +8,7 @@ BASE_AMD64_URI="http://packages.gentooexperimental.org/packages/amd64-libreoffic
 BASE_X86_URI="http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-${BASE_PACKAGENAME}-"
 
 DESCRIPTION="LibreOffice, a full office productivity suite. Binary package, debug info"
-HOMEPAGE="http://www.libreoffice.org"
+HOMEPAGE="https://www.libreoffice.org"
 SRC_URI_AMD64="
 	${BASE_AMD64_URI}libreoffice-${PVR}.tar.xz
 	kde? (
