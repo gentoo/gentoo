@@ -11,9 +11,9 @@
 # Christian Faulhammer <fauli@gentoo.org>
 # @BLURB: generic fetching functions for the Bazaar VCS
 # @DESCRIPTION:
-# The bzr.eclass provides functions to fetch, unpack, patch, and
-# bootstrap sources from repositories of the Bazaar distributed version
-# control system.  The eclass was originally derived from git.eclass.
+# The bzr.eclass provides functions to fetch and unpack sources from
+# repositories of the Bazaar distributed version control system.
+# The eclass was originally derived from git.eclass.
 #
 # Note: Just set EBZR_REPO_URI to the URI of the branch and src_unpack()
 # of this eclass will export the branch to ${WORKDIR}/${P}.
