@@ -1,13 +1,12 @@
-DEFINED_PHASES=configure install postinst
-DEPEND=app-misc/g15daemon >=dev-libs/libg15render-1.2[truetype?] truetype? ( media-libs/freetype )
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=app-misc/g15daemon >=dev-libs/libg15render-1.2[truetype?] virtual/pkgconfig truetype? ( media-libs/freetype ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A library to render text and shapes into a buffer usable by the Logitech G15
-EAPI=2
+EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/g15tools/
 IUSE=truetype examples
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=app-misc/g15daemon >=dev-libs/libg15render-1.2[truetype?] truetype? ( media-libs/freetype )
 SLOT=0
 SRC_URI=mirror://sourceforge/g15tools/g15composer-3.2.tar.bz2
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=f30265a94ea5d41480e300934f595016
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_md5_=ed81b9a75306a0f473e7d19a1ef7e611
