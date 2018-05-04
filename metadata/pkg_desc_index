@@ -138,7 +138,7 @@ app-admin/tenshi 0.17: Log parsing and notification program
 app-admin/testdisk 7.1_pre20180322: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
-app-admin/tripwire 2.4.3.6: Open Source File Integrity Checker and IDS
+app-admin/tripwire 2.4.3.6 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
@@ -4678,7 +4678,7 @@ dev-python/coverage 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11 0.3.17: Python module to provide iteration for datetime object
 dev-python/crumbs 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.7.1 2.0.2-r1 2.1.4: Library providing cryptographic recipes and primitives
+dev-python/cryptography 1.7.1 2.0.2-r1 2.1.4 2.1.4-r1: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.7.1 2.0.2 2.1.4: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
@@ -5653,7 +5653,7 @@ dev-python/zfec 1.4.24: Fast erasure codec for the command-line, C, Python, or H
 dev-python/zope-component 4.3.0-r1: Zope Component Architecture
 dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0: Event publishing / dispatch, used by Zope Component Architecture
-dev-python/zope-interface 4.1.1 4.3.2: Interfaces for Python
+dev-python/zope-interface 4.1.1 4.3.2 4.4.3: Interfaces for Python
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
 dev-qt/assistant 4.8.7 5.7.1 5.9.4: Tool for viewing on-line documentation in Qt help file format
 dev-qt/designer 4.8.7 5.7.1 5.9.4: WYSIWYG tool for designing and building Qt-based GUIs
@@ -6119,7 +6119,7 @@ dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 0.9.8: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.17.12: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.17.12 2.18.2: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cloc 1.72: Count Lines of Code
 dev-util/cmake 3.9.6: Cross platform Make
@@ -8281,7 +8281,7 @@ net-analyzer/linkchecker 9.3.1-r1: Check websites for broken links
 net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/monitoring-plugins 2.1.2 2.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+net-analyzer/monitoring-plugins 2.1.2 2.2 2.2-r2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
