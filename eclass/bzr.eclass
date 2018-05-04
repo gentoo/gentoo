@@ -20,18 +20,19 @@
 
 EBZR="bzr.eclass"
 
-case ${EAPI:-0} in
-	2|3|4|5|6) ;;
-	*) die "${EBZR}: EAPI ${EAPI:-0} is not supported" ;;
-esac
-
-EXPORT_FUNCTIONS src_unpack
-
 if [[ ${EBZR_REPO_URI%%:*} = sftp ]]; then
 	DEPEND=">=dev-vcs/bzr-2.6.0[sftp]"
 else
 	DEPEND=">=dev-vcs/bzr-2.6.0"
 fi
+
+case ${EAPI:-0} in
+	2|3|4|5|6) ;;
+	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
+	*) die "${EBZR}: EAPI ${EAPI:-0} is not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_unpack
 
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
 # @DESCRIPTION:
