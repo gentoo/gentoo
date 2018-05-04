@@ -18,7 +18,8 @@ RDEPEND="
 	X? ( >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
 	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
 
