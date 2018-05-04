@@ -16,8 +16,10 @@ IUSE="truetype examples"
 
 DEPEND="app-misc/g15daemon
 	>=dev-libs/libg15render-1.2[truetype?]
-	virtual/pkgconfig
-	truetype? ( media-libs/freetype )"
+	truetype? (
+		media-libs/freetype
+		virtual/pkgconfig
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-freetype_pkgconfig.patch
