@@ -89,6 +89,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-androiddump-wsutil.patch
+	"${FILESDIR}"/${PN}-2.6.0-qtsvg.patch
+	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-99999999-androiddump.patch
 )
 

@@ -46,6 +46,9 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/run-lock.patch
 
+	# bug 616758
+	epatch "${FILESDIR}/${P}"-sysmacros.patch
+
 	autoreconf
 }
 
