@@ -13,7 +13,7 @@ PYTHON_REQ_USE="threads,xml"
 inherit gnome2-utils java-pkg-opt-2 python-single-r1 pax-utils prefix versionator xdg-utils
 
 DESCRIPTION="A full office productivity suite. Binary package"
-HOMEPAGE="http://www.libreoffice.org"
+HOMEPAGE="https://www.libreoffice.org"
 SRC_URI_AMD64="
 	${BASE_AMD64_URI}libreoffice-${PVR}.tar.xz
 	kde? (
