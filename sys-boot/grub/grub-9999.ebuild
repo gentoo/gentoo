@@ -67,7 +67,7 @@ REQUIRED_USE="
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-RDEPEND="
+COMMON_DEPEND="
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
 	debug? (
@@ -80,7 +80,7 @@ RDEPEND="
 	ppc? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
 	ppc64? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	app-misc/pax-utils
 	sys-devel/flex
@@ -113,7 +113,7 @@ DEPEND="${RDEPEND}
 		media-libs/freetype:2
 	)
 "
-RDEPEND+="
+RDEPEND="${COMMON_DEPEND}
 	kernel_linux? (
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
@@ -121,8 +121,6 @@ RDEPEND+="
 	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
 	nls? ( sys-devel/gettext )
 "
-
-DEPEND+=" !!=media-libs/freetype-2.5.4"
 
 RESTRICT="strip !test? ( test )"
 
