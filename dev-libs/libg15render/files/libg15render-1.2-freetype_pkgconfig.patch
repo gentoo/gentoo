@@ -1,0 +1,35 @@
+--- libg15render-1.2/configure.in
++++ libg15render-1.2/configure.in
+@@ -13,19 +13,20 @@
+ AC_PROG_LIBTOOL
+ 
+ # Checks for --enable args
+-AC_MSG_CHECKING(whether to enable FreeType2 support)
+-AC_ARG_ENABLE(ttf, [  --enable-ttf		enable FreeType2 support],
+-	if [[[ "$enableval" = "yes" ]]]; then
+-		AC_DEFINE(TTF_SUPPORT, [1], [Define to 1 to enable FreeType2 support])
+-		CFLAGS="$CFLAGS `freetype-config --cflags`"
+-		FTLIB="-lfreetype"
+-		ttf_support="yes"
+-	else
+-		ttf_support="no"
+-	fi,
+-	ttf_support="no"
++AC_ARG_ENABLE(ttf, [  --enable-ttf		enable FreeType2 support],,enable_ttf=no)
++AS_IF([test "x$enable_ttf" = "xyes"], [
++	PKG_PROG_PKG_CONFIG
++	PKG_CHECK_MODULES(FREETYPE, freetype2,
++		[
++			AC_DEFINE(TTF_SUPPORT, [1], [Define to 1 to enable FreeType2 support])
++			CFLAGS="$CFLAGS $FREETYPE_CFLAGS"
++			FTLIB="$FREETYPE_LIBS"
++		],
++		AC_MSG_ERROR([Cannot find freetype2])
++	)
++],
++	AC_MSG_RESULT(No Freetype is being used)
+ )
+-AC_MSG_RESULT($ttf_support)
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB([g15], [writePixmapToLCD], ,AC_MSG_ERROR(["libg15 not found. please install it"]))
