@@ -175,6 +175,13 @@ multilib_src_configure() {
 		LIBPNG_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libpng)"
 	)
 
+	case ${CHOST} in
+		mingw*|*-mingw*) ;;
+		# Workaround windows mis-detection: bug #654712
+		# Have to do it for both ${CHOST}-windres and windres
+		*) myeconfargs+=( ac_cv_prog_RC= ac_cv_prog_ac_ct_RC= ) ;;
+	esac
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
