@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils
+inherit autotools
 
 DESCRIPTION="Small library for display text and graphics on a Logitech G15 keyboard"
 HOMEPAGE="https://sourceforge.net/projects/g15tools/"
@@ -19,22 +19,32 @@ RDEPEND="
 	dev-libs/libg15
 	truetype? ( media-libs/freetype )
 "
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}
+	truetype? ( virtual/pkgconfig )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-pixel-c.patch"
+	"${FILESDIR}/${P}-freetype_pkgconfig.patch"
+)
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-pixel-c.patch"
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-static \
+	local myeconfargs=(
+		--disable-static
 		$(use_enable truetype ttf )
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	emake DESTDIR="${D}" \
-		docdir=/usr/share/doc/${PF} install || die "make install failed"
-	rm "${ED}/usr/share/doc/${PF}/COPYING"
+		docdir=/usr/share/doc/${PF} install
+	rm "${ED%/}/usr/share/doc/${PF}/COPYING"
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	find "${ED}" -name '*.la' -delete || die
 }
