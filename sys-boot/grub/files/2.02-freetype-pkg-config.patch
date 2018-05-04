@@ -1,0 +1,73 @@
+From 3b0a266dead87906bcf440fd9ef12e1a514320ab Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 4 May 2018 13:43:59 +0200
+Subject: [PATCH] Use pkg-config to find freetype
+
+As of freetype-2.9.1 the freetype-config script has been deprecated and
+is no longer shipped by default.
+
+Based on a patch by Lars Wendler <polynomial-c@gentoo.org>.
+---
+ configure.ac | 27 +++++++++++++++++++--------
+ 1 file changed, 19 insertions(+), 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c7888e40f..220f5ffc1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1510,7 +1510,8 @@ fi
+ 
+ if test x"$grub_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  AC_CHECK_TOOLS([FREETYPE], [freetype-config])
++  PKG_PROG_PKG_CONFIG
++  PKG_CHECK_MODULES(FREETYPE2, freetype2, FREETYPE=yes)
+   if test "x$FREETYPE" = x ; then
+     grub_mkfont_excuse=["need freetype2 library"]
+   fi
+@@ -1520,8 +1521,8 @@ unset ac_cv_header_ft2build_h
+ 
+ if test x"$grub_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  freetype_cflags=`$FREETYPE --cflags`
+-  freetype_libs=`$FREETYPE --libs`
++  freetype_cflags="$FREETYPE2_CFLAGS"
++  freetype_libs="$FREETYPE2_LIBS"
+   SAVED_CPPFLAGS="$CPPFLAGS"
+   SAVED_LIBS="$LIBS"
+   CPPFLAGS="$CPPFLAGS $freetype_cflags"
+@@ -1573,16 +1574,26 @@ AC_SUBST([BUILD_WORDS_BIGENDIAN])
+ 
+ if test x"$grub_build_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  AC_CHECK_PROGS([BUILD_FREETYPE], [freetype-config])
+-  if test "x$BUILD_FREETYPE" = x ; then
+-    grub_build_mkfont_excuse=["need freetype2 library"]
++  if test -z "$BUILD_FREETYPE2_CFLAGS" || test -z "$BUILD_FREETYPE2_LIBS" ; then
++    AC_CHECK_PROGS([BUILD_PKGCONFIG], [pkg-config])
++    if test -z "$BUILD_PKGCONFIG" ; then
++      grub_build_mkfont_excuse=["need pkg-config"]
++    elif ! "$BUILD_PKGCONFIG" --exists freetype2 ; then
++      grub_build_mkfont_excuse=["need freetype2 library"]
++    fi
+   fi
+ fi
+ 
+ if test x"$grub_build_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  build_freetype_cflags=`$BUILD_FREETYPE --cflags`
+-  build_freetype_libs=`$BUILD_FREETYPE --libs`
++  if test -z "$BUILD_FREETYPE2_CFLAGS" ; then
++    BUILD_FREETYPE2_CFLAGS=`$BUILD_PKGCONFIG --cflags freetype2`
++  fi
++  if test -z "$BUILD_FREETYPE2_LIBS" ; then
++    BUILD_FREETYPE2_LIBS=`$BUILD_PKGCONFIG --libs freetype2`
++  fi
++  build_freetype_cflags="$BUILD_FREETYPE2_CFLAGS"
++  build_freetype_libs="$BUILD_FREETYPE2_LIBS"
+   SAVED_CPPFLAGS_2="$CPPFLAGS"
+   SAVED_LIBS="$LIBS"
+   CPPFLAGS="$CPPFLAGS $build_freetype_cflags"
+-- 
+2.17.0
+
