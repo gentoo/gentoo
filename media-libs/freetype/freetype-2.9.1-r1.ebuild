@@ -175,6 +175,13 @@ multilib_src_configure() {
 		LIBPNG_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libpng)"
 	)
 
+	case ${CHOST} in
+		mingw*|*-mingw*) ;;
+		# Workaround windows mis-detection: bug #654712
+		# Have to do it for both ${CHOST}-windres and windres
+		*) myeconfargs+=( ac_cv_prog_RC= ac_cv_prog_ac_ct_RC= ) ;;
+	esac
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
@@ -196,6 +203,7 @@ multilib_src_install() {
 	if multilib_is_native_abi && use utils; then
 		einfo "Installing utils"
 		rm "${WORKDIR}"/ft2demos-${PV}/bin/README || die
+		dodir /usr/bin #654780
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
 			./libtool --mode=install $(type -P install) -m 755 "$ft2demo" \
