@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 inherit autotools flag-o-matic
 
 DESCRIPTION="Library parsing various ebook formats"
-HOMEPAGE="http://www.sourceforge.net/projects/libebook/"
+HOMEPAGE="https://www.sourceforge.net/projects/libebook/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="MPL-2.0"
