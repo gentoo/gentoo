@@ -1867,7 +1867,7 @@ dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.3 11.2.0.4: Oracle 11g Instant 
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: ODBC supplement
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
 dev-db/percona-toolkit 2.2.11 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.7 2.4.8 2.4.9: Hot backup utility for MySQL based servers
+dev-db/percona-xtrabackup 2.4.9: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.2: wxWidgets GUI for PostgreSQL
 dev-db/pgadmin4 2.0-r1: GUI administration and development platform for PostgreSQL
