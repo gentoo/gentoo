@@ -1,0 +1,47 @@
+diff --git a/Shorewall-core/lib.cli b/Shorewall-core/lib.cli
+index 0e2de1525..60499180d 100644
+--- a/Shorewall-core/lib.cli
++++ b/Shorewall-core/lib.cli
+@@ -1201,11 +1201,17 @@ show_saves_command() {
+     echo
+ 
+     for f in ${VARDIR}/*-iptables; do
+-	fn=$(basename $f)
+-	fn=${fn%-iptables}
+-	mtime=$(ls -lt $f | tail -n 1 | cut -d ' ' -f '6 7 8' )
+-	[ $fn = "$RESTOREFILE" ] && fn="$fn (default)"
+-	echo "   $mtime ${fn%-iptables}"
++	case $f in
++	    *\**)
++	        ;;
++	    *)
++		fn=$(basename $f)
++		fn=${fn%-iptables}
++		mtime=$(ls -lt $f | tail -n 1 | cut -d ' ' -f '6 7 8' )
++		[ $fn = "$RESTOREFILE" ] && fn="$fn (default)"
++		echo "   $mtime ${fn%-iptables}"
++		;;
++	esac
+     done
+ 
+     echo
+diff --git a/Shorewall/lib.cli-std b/Shorewall/lib.cli-std
+index 2d8c7df67..46c932335 100644
+--- a/Shorewall/lib.cli-std
++++ b/Shorewall/lib.cli-std
+@@ -412,10 +412,14 @@ uptodate() {
+ 	    elif  [ -n "$(${find} ${dir} -maxdepth $AUTOMAKE -type f -newer $1 -print)" ]; then
+ 		return 1;
+ 	    fi
+-	elif [ $AUTOMAKE = recursive ]; then
++	elif [ "$AUTOMAKE" = recursive ]; then
+ 	    if [ -n "$(${find} ${dir} -newer $1 -print -quit)" ]; then
+ 		return 1;
+ 	    fi
++	elif [ -z "$AUTOMAKE" ]; then
++	    if [ -n "$(${find} ${dir} -maxdepth 1 -type f -newer $1 -print -quit)" ]; then
++		return 1;
++	    fi
+ 	elif [ -n "$(${find} ${dir} -maxdepth $AUTOMAKE -type f -newer $1 -print -quit)" ]; then
+ 	    return 1;
+ 	fi
