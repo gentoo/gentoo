@@ -27,7 +27,6 @@ DEPEND="!binary? (
 			>=dev-tex/tex4ht-20090115_p0029
 		)
 	)"
-RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
