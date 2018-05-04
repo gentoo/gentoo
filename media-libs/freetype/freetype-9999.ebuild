@@ -196,6 +196,7 @@ multilib_src_install() {
 	if multilib_is_native_abi && use utils; then
 		einfo "Installing utils"
 		rm "${WORKDIR}"/ft2demos-${PV}/bin/README || die
+		dodir /usr/bin #654780
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
 			./libtool --mode=install $(type -P install) -m 755 "$ft2demo" \
