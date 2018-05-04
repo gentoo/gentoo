@@ -195,11 +195,6 @@ sci-chemistry/avogadro
 # Masked for removal in 30 days.
 xfce-extra/xfce-theme-manager
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Apr 2018)
-# Dead upstream, depends on dead Qt4.
-# Masked for removal in 30 days. Bugs #644478
-x11-libs/libqxt
-
 # Rick Farina <zerochaos@gentoo.org> (04 Apr 2018)
 # Violates PMS and does not work with stable portage.
 # Masked for removal in 60 days, lift mask if bug #650126 is fixed
