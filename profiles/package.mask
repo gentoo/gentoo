@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (4 May 2018)
+# Upstream is dead, no maintainer, no longer updated.
+# Masked for removal in 30 days
+games-misc/fortune-mod-gentoo-ru
+
 # Mike Gilbert <floppym@gentoo.org> (30 Apr 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
