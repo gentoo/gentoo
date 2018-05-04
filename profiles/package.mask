@@ -200,10 +200,6 @@ x11-libs/libXp
 # Masked for removal in 30 days. Bug #633386
 media-gfx/scantailor
 
-# Andreas Sturmlechner <asturm@gentoo.org> (08 Apr 2018)
-# Depends on dead Qt4. Masked for removal in 30 days. Bug #649124
-dev-python/PyFoam
-
 # Jason Zaman <perfinion@gentoo.org> (08 Apr 2018)
 # Dead upstream, for an old version of Xfce
 # Masked for removal in 30 days.
