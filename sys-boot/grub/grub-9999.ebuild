@@ -87,7 +87,10 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
 	sys-apps/help2man
 	sys-apps/texinfo
-	fonts? ( media-libs/freetype:2 )
+	fonts? (
+		media-libs/freetype:2
+		virtual/pkgconfig
+	)
 	grub_platforms_xen? ( app-emulation/xen-tools:= )
 	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
@@ -96,6 +99,7 @@ DEPEND="${COMMON_DEPEND}
 			app-arch/bzip2[static-libs(+)]
 			media-libs/freetype[static-libs(+)]
 			sys-libs/zlib[static-libs(+)]
+			virtual/pkgconfig
 		)
 	)
 	test? (
@@ -111,7 +115,9 @@ DEPEND="${COMMON_DEPEND}
 	themes? (
 		app-arch/unzip
 		media-libs/freetype:2
+		virtual/pkgconfig
 	)
+	truetype? ( virtual/pkgconfig )
 "
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? (
