@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,7 @@ SRC_URI="https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/s
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	app-arch/lz4:0=
@@ -26,23 +25,29 @@ DEPEND="
 	dev-libs/libgpg-error
 	dev-python/sphinx
 	net-misc/curl
-	sys-libs/zlib"
-RDEPEND="${DEPEND}
+	sys-libs/zlib:="
+
+RDEPEND="
+	${DEPEND}
 	!dev-db/xtrabackup-bin
 	dev-perl/DBD-mysql"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.6-remove-boost-version-check.patch
-	"${FILESDIR}"/${PN}-2.4.6-fix-gcc6-isystem.patch
+	"${FILESDIR}"/${PN}-2.4.11-fix-gcc6-isystem.patch
 )
 
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# remove bundled lz4, boost, libedit, libevent, zlib
+	# remove bundled boost, libedit, libevent, zlib
 	# just to be safe...
-	rm -r extra/lz4 include/boost_1_59_0 \
-		cmd-line-utils/libedit libevent zlib || die
+	# We keep lz4 directory because we use extra/lz4/xxhash.c in cmake/libutils.cmake
+	rm -rv \
+		include/boost_1_59_0 \
+		cmd-line-utils/libedit \
+		libevent \
+		zlib || die
 }
 
 src_configure() {
@@ -51,6 +56,10 @@ src_configure() {
 	#   error: 'fts_ast_node_type_get' was not declared in this scope
 	#
 	append-cppflags -DDBUG_OFF
+
+	# Upstream doesn't support C++14 -- build will fail with -fpermissive error
+	# https://bugs.mysql.com/bug.php?id=87956
+	append-cxxflags $(test-flags-CXX -std=gnu++03) -std=gnu++03
 
 	local mycmakeargs=(
 		-DBUILD_CONFIG=xtrabackup_release
@@ -61,6 +70,8 @@ src_configure() {
 		-DWITH_ZLIB=system
 		-DWITH_PIC=ON
 	)
+
+	local CMAKE_BUILD_TYPE="Release"
 	cmake-utils_src_configure
 }
 
