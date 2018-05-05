@@ -30,8 +30,6 @@ RDEPEND="app-arch/zip
 	)"
 
 DEPEND="${RDEPEND}
-	sys-devel/autoconf:2.69
-	sys-devel/automake
 	virtual/pkgconfig"
 
 PATCHES=(
