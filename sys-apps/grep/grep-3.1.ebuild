@@ -29,6 +29,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 src_prepare() {
 	sed -i \
 		-e "s:@SHELL@:${EPREFIX}/bin/sh:g" \
+		-e "s:@grep@:${EPREFIX}/bin/grep:" \
 		src/egrep.sh || die #523898
 }
 
