@@ -5,6 +5,11 @@
 		<email>jscinoz@jscinoz.so</email>
 		<name>Jack Coulter</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>herb@hlmjr.com</email>
+		<name>Herb Miller Jr. (herbmillerjr)</name>
+		<description>Co-maintainer, CC on bugs.</description>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
