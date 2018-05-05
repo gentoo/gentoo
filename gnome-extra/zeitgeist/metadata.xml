@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>herb@hlmjr.com</email>
+		<name>Herb Miller Jr. (herbmillerjr)</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Zeitgeist is a service which logs the users's activities and events (files opened,
+		websites visites, conversations held with other people, etc.) and makes relevant
+		information available to other applications. It is able to establish relationships
+		between items based on similarity and usage patterns.
+	</longdescription>
+	<use>
+		<flag name="datahub">Use build datahub for passive event injection</flag>
+		<flag name="downloads-monitor">Monitor the XDG_DOWNLOAD_DIRECTORY</flag>
+		<flag name="fts">Enable the full text search extension</flag>
+		<flag name="sql-debug">Enable SQL debugging</flag>
+		<flag name="telepathy">Enable telepathy framework as data source</flag>
+	</use>
+	<upstream>
+		<remote-id type="launchpad">zeitgeist</remote-id>
+	</upstream>
+</pkgmetadata>
