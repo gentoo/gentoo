@@ -4,7 +4,7 @@
 EAPI=0
 
 DESCRIPTION="a dockapp for monitoring CPU usage with a LCD display"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/36"
+HOMEPAGE="https://www.dockapps.net/wmcpuload"
 SRC_URI="mirror://gentoo/${P/_/}.tar.gz"
 
 LICENSE="GPL-2"
