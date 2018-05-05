@@ -22,7 +22,7 @@ CDEPEND="
 	ldap?     ( >=net-nds/openldap-2.1.26 )
 	libev?    ( >=dev-libs/libev-4.01 )
 	lua?      ( >=dev-lang/lua-5.1:= )
-	memcached? ( dev-libs/libmemcache )
+	memcached? ( dev-libs/libmemcached )
 	mysql?    ( >=virtual/mysql-4.0 )
 	pcre?     ( >=dev-libs/libpcre-3.1 )
 	php?      ( dev-lang/php:*[cgi] )
