@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -24,7 +24,6 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "test? (
 	dev-ruby/celluloid
-	dev-ruby/dotenv
 	dev-ruby/nenv
 	dev-ruby/rspec-retry
 )"
