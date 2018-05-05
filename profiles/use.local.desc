@@ -3053,9 +3053,9 @@ media-plugins/kipi-plugins:mediawiki - Build the mediawiki export plugin
 media-plugins/kipi-plugins:remotestorage - Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via kde-frameworks/kio
 media-plugins/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
 media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
-media-plugins/vdr-epgsearch:conflictcheckonly - ToDo
-media-plugins/vdr-epgsearch:epgsearchonly - ToDo
-media-plugins/vdr-epgsearch:quicksearch - ToDo
+media-plugins/vdr-epgsearch:conflictcheckonly - install the "conflictcheckonly" vdr-plugin
+media-plugins/vdr-epgsearch:epgsearchonly - install the "epgsearchonly" vdr-plugin
+media-plugins/vdr-epgsearch:quicksearch - install the "quicksearch" vdr-plugin
 media-plugins/vdr-epgsearch:tre - Add support for unlimited fuzzy searching with help of dev-libs/tre library
 media-plugins/vdr-streamdev:client - Compile the VDR plugin vdr-streamdev-client that acts like a dvb-budget card
 media-plugins/vdr-streamdev:server - Compile the VDR plugin vdr-streamdev-server that allows remote systems to access the DVB cards used for the local VDR
