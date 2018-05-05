@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>kitsunenokenja@protonmail.ch</email>
+		<name>Rob Levitsky</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<maintainer>
 			<email>jfreegman@tox.chat</email>
@@ -16,6 +23,7 @@
 		<flag name="audio">Enables audio calling</flag>
 		<flag name="notifications">Enables desktop notifications with libnotify, with sound support.</flag>
 		<flag name="qrcode">Enables QR code support</flag>
+		<flag name="qrpng">Enables QR code PNG support</flag>
 		<flag name="video">Enables video calling</flag>
 	</use>
 </pkgmetadata>
