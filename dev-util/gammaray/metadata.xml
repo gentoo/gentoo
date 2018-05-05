@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>petross404@gmail.com</email>
+		<name>Petros S</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+	<flag name="3d">Build support for Qt5 3D modules</flag>
+	<flag name="concurrent">Required for the GammaRay launcher process list</flag>
+	<flag name="designer">Widget .ui file export</flag>
+	<flag name="geolocation">Physical position determination support from Qt5 framework</flag>
+	<flag name="printsupport">Printing support library from the Qt5 framework. Required for widget PDF export</flag>
+	<flag name="script">Enable scripting support from the Qt5 framework</flag>
+	<flag name="qml">Build with Qt5 Quick support</flag>
+	<flag name="scxml">Build support for Qt5 State Chart XML (SCXML)</flag>
+	<flag name="webengine">Enable support for dev-qt/qtwebengine</flag>
+	</use>
+</pkgmetadata>
