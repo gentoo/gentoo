@@ -64,11 +64,8 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ ${WX_GTK_VER} == "3.0" || ${WX_GTK_VER} == "3.0-gtk3" ]]; then
-		elog "KNOWN ISSUE:"
-		elog "The symbols browser is disabled in wx3.x builds due to it causes crashes."
-		elog "For more information see ticket https://sourceforge.net/p/codeblocks/tickets/225/"
-		elog "with related commits https://sourceforge.net/p/codeblocks/code/11027/"
-		elog "and https://sourceforge.net/p/codeblocks/code/11141/"
+		elog "The symbols browser is disabled due to it causing crashes."
+		elog "For more information see https://sourceforge.net/p/codeblocks/tickets/225/"
 	fi
 
 	xdg_desktop_database_update
