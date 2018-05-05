@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="applet which displays the date and time in a dockable tile"
-HOMEPAGE="http://www.dockapps.net/wmtime"
+HOMEPAGE="https://www.dockapps.net/wmtime"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
