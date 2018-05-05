@@ -22,6 +22,12 @@ DEPEND="${RDEPEND}
 "
 # dev-cpp/mm-common needed for eautoreconf
 
+PATCHES=(
+	# Fix build with GCC-8
+	# https://bugs.gentoo.org/654776
+	"${FILESDIR}"/${PN}-fix-threads-gobject.patch
+)
+
 src_prepare() {
 	if ! use test; then
 		# don't waste time building tests
