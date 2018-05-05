@@ -1,0 +1,29 @@
+For whatever reason, gcc7 insists that putting these values into
+this char buffer requires 12, not 10 characters.
+
+Furthermore, it doesn't like strcpy here, insisting it's going to
+hax0r your memory or something like that.  Maybe a glibc issue?
+
+Presumably C++ will always support putting char constants into
+char[] arrays.  Someone who understands modern C++ could probably
+provide a less ridiculous solution.
+
+-gmt
+
+diff -urpN mysql-workbench-community-6.3.9-src.orig/backend/wbprivate/workbench/wb_model_file.cpp mysql-workbench-community-6.3.9-src/backend/wbprivate/workbench/wb_model_file.cpp
+--- mysql-workbench-community-6.3.9-src.orig/backend/wbprivate/workbench/wb_model_file.cpp	2017-02-03 10:40:18.000000000 -0800
++++ mysql-workbench-community-6.3.9-src/backend/wbprivate/workbench/wb_model_file.cpp	2017-11-02 03:22:56.923575633 -0700
+@@ -145,10 +145,11 @@ static int rmdir_recursively(const char
+ 
+ std::string ModelFile::create_document_dir(const std::string &dir, const std::string &prefix) {
+   std::string path;
+-  char s[10];
++  char s[12];
+   int i = 0;
+ 
+-  strcpy(s, "d");
++  s[0]='d';
++  s[1]='\0';
+   for (;;) {
+     path = dir + "/" + prefix + s;
+ 
