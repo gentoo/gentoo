@@ -42,8 +42,8 @@ RDEPEND="
 	media-libs/x264:=
 	media-sound/lame
 	sys-libs/zlib
-	libav? ( >=media-video/libav-10.1:0=[fdk?] )
-	!libav? ( >=media-video/ffmpeg-2.3:0=[fdk?] )
+	libav? ( >=media-video/libav-12.2:0=[fdk?] )
+	!libav? ( >=media-video/ffmpeg-3.4:0=[fdk?] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
