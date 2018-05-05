@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,11 +18,19 @@ DEPEND="app-admin/eselect
 	!<net-analyzer/metasploit-4.6"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}
+S="${WORKDIR}"
+
+src_prepare() {
+	cp "${FILESDIR}"/91metasploit 91metasploit || die
+	cp "${FILESDIR}"/msfloader-${PV} msfloader-${PV} || die
+
+	sed -i -e "s/@LIBDIR@/$(get_libdir)/g" 91metasploit || die
+	sed -i -e "s/@LIBDIR@/$(get_libdir)/g" msfloader-${PV} || die
+}
 
 src_install() {
 	#force to use the outdated bundled version of metasm
-	doenvd "${FILESDIR}"/91metasploit
+	doenvd 91metasploit
 
 	newinitd "${FILESDIR}"/msfrpcd.initd msfrpcd
 	newconfd "${FILESDIR}"/msfrpcd.confd msfrpcd
@@ -30,7 +38,7 @@ src_install() {
 	insinto /usr/share/eselect/modules
 	newins "${FILESDIR}/metasploit.eselect-0.13" metasploit.eselect
 
-	newbin "${FILESDIR}"/msfloader-${PV} msfloader
+	newbin msfloader-${PV} msfloader
 }
 
 pkg_postinst() {
