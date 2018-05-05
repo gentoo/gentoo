@@ -15,7 +15,7 @@ diff -ruN grok-0.9.2.orig/Makefile grok-0.9.2/Makefile
  
  # Platform so we know what to dlopen
 -CFLAGS+=-DPLATFORM_$(PLATFORM)
-+CFLAGS+=-DPLATFORM_$(PLATFORM) -I/usr/include/tirpc
++CFLAGS+=-DPLATFORM_$(PLATFORM) -I$(EPREFIX)/usr/include/tirpc
  # Uncomment to totally disable logging features
  #CFLAGS+=-DNOLOGGING
  
