@@ -4,5 +4,8 @@
 <maintainer type="project">
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
-  </maintainer>
+</maintainer>
+<use>
+    <flag name="pull-translations">Pull translations from lxqt-l10n as part of the package.</flag>
+</use>
 </pkgmetadata>
