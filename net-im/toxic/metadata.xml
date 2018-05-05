@@ -22,7 +22,6 @@
 	<use>
 		<flag name="audio">Enables audio calling</flag>
 		<flag name="notifications">Enables desktop notifications with libnotify, with sound support.</flag>
-		<flag name="qrcode">Enables QR code support</flag>
 		<flag name="qrpng">Enables QR code PNG support</flag>
 		<flag name="video">Enables video calling</flag>
 	</use>
