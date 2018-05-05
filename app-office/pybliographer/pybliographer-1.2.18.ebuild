@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-single-r1
 
 DESCRIPTION="Pybliographer is a tool for working with bibliographic databases"
-HOMEPAGE="http://pybliographer.org/"
+HOMEPAGE="https://pybliographer.org"
 SRC_URI="mirror://sourceforge/pybliographer/${P}.tar.gz"
 
 LICENSE="GPL-2"
