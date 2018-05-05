@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A simple pluggable Hierarchical Database"
-HOMEPAGE="https://docs.puppet.com/hiera/latest/"
+HOMEPAGE="https://docs.puppet.com/hiera/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
