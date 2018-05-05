@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST="spec"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -21,7 +21,7 @@ IUSE=""
 
 ruby_add_bdepend "doc? ( dev-ruby/redcarpet )"
 ruby_add_rdepend "dev-ruby/redcarpet
-	!!dev-ruby/rouge:0"
+	!!<dev-ruby/rouge-1.11.1-r2:0"
 
 RESTRICT="test"
-# Depends on dev-ruby/wrong, which is not packaged yet.
+# Depends on dev-ruby/minitest-power_assert, which is not packaged yet.
