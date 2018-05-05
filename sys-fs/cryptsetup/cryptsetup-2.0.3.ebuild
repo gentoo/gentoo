@@ -80,6 +80,8 @@ src_configure() {
 		--disable-internal-argon2
 		--enable-shared
 		--sbindir=/sbin
+		# for later use
+		# --with-default-luks-format=LUKS2
 		--with-tmpfilesdir="${EPREFIX%/}/usr/lib/tmpfiles.d"
 		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 		$(use_enable argon2 libargon2)

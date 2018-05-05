@@ -22,7 +22,7 @@ IUSE="debug nagios"
 
 RDEPEND="dev-libs/libgcrypt:0"
 DEPEND="${RDEPEND}
-		virtual/os-headers"
+	virtual/os-headers"
 RDEPEND="${RDEPEND}
 	nagios? (
 		|| ( net-analyzer/icinga net-analyzer/nagios )
