@@ -10,5 +10,5 @@ RDEPEND=gnutls? ( net-libs/gnutls ) iconv? ( virtual/libiconv ) iodbc? ( dev-db/
 RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.00.41.tar.gz
-_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
 _md5_=9d0321e0dc8584e2470fbbebc3f07043

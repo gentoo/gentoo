@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libsdl-1.0.1
 SLOT=0
 SRC_URI=http://kenn.frap.net/wakkabox/wakkabox-1.1.0.tar.gz
-_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
 _md5_=f1b7249ac8506af28067b012f338d2bb

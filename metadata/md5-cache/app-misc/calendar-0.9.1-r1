@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 ~hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=http://bsdcalendar.sourceforge.net/calendar-0.9.1.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
 _md5_=f8edc4e8546863055fa02e6392c783f5
