@@ -94,7 +94,8 @@ __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 
 
 read -d '' __MESON_ARRAY_PARSER <<"EOF"
-import shlex;
+import shlex
+import sys
 
 # See http://mesonbuild.com/Syntax.html#strings
 def quote(str):
@@ -102,7 +103,7 @@ def quote(str):
 	return "'{}'".format(escaped)
 
 print("[{}]".format(
-	", ".join([quote(x) for x in shlex.split(None)])))
+	", ".join([quote(x) for x in shlex.split(" ".join(sys.argv[1:]))])))
 EOF
 
 # @FUNCTION: _meson_env_array
@@ -124,7 +125,7 @@ EOF
 #          '--unicode-16=𐐷', '--unicode-32=𐤅']
 #
 _meson_env_array() {
-	echo "$1" | python -c "$__MESON_ARRAY_PARSER"
+	python -c "${__MESON_ARRAY_PARSER}" "$@"
 }
 
 # @FUNCTION: _meson_create_cross_file
@@ -165,13 +166,13 @@ _meson_create_cross_file() {
 	strip = '${STRIP}'
 
 	[properties]
-	c_args = $(_meson_env_array "$CFLAGS")
-	c_link_args = $(_meson_env_array "$LDFLAGS")
-	cpp_args = $(_meson_env_array "$CXXFLAGS")
-	cpp_link_args = $(_meson_env_array "$LDFLAGS")
-	fortran_args = $(_meson_env_array "$FCFLAGS")
-	objc_args = $(_meson_env_array "$OBJCFLAGS")
-	objcpp_args = $(_meson_env_array "$OBJCXXFLAGS")
+	c_args = $(_meson_env_array "${CFLAGS}")
+	c_link_args = $(_meson_env_array "${LDFLAGS}")
+	cpp_args = $(_meson_env_array "${CXXFLAGS}")
+	cpp_link_args = $(_meson_env_array "${LDFLAGS}")
+	fortran_args = $(_meson_env_array "${FCFLAGS}")
+	objc_args = $(_meson_env_array "${OBJCFLAGS}")
+	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS}")
 
 	[host_machine]
 	system = '${system}'
