@@ -4,4 +4,4 @@
 # The following values are used to configure the kube-apiserver
 #
 
-command_args=""
+command_args="--etcd-servers=http://127.0.0.1:4001"

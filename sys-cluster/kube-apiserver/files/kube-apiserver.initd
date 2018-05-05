@@ -4,11 +4,12 @@
 
 description="Kubernetes API Server"
 pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+certdir=${certdir:-"/run/${RC_SVCNAME}"}
 user=${user:-${RC_SVCNAME}}
 group=${group:-${RC_SVCNAME}}
 
 command="/usr/bin/kube-apiserver"
-command_args="${command_args}"
+command_args="--cert-dir=${certdir} ${command_args}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
@@ -16,4 +17,8 @@ start_stop_daemon_args="--user ${user} --group ${group} \
 
 depend() {
 	after net
+}
+
+start_pre() {
+	checkpath -d -o "${user}:${group}" -m 0770 "${certdir}"
 }
