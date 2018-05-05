@@ -13,4 +13,7 @@
 		tested with nginx + fcgiwrap. It should works with any CGI-capable web
 		server.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rafaelmartins/cgisysinfo</remote-id>
+	</upstream>
 </pkgmetadata>
