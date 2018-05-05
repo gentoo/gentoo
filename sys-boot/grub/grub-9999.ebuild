@@ -33,8 +33,7 @@ if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~arm64 ~x86"
 else
 	inherit git-r3
-	EGIT_REPO_URI="git://git.sv.gnu.org/grub.git
-		http://git.savannah.gnu.org/r/grub.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
 
 PATCHES=(
