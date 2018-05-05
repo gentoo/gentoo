@@ -3,16 +3,16 @@
 
 EAPI=6
 
-COMMIT=32bf659581e1c6a02a6f97bd714b44456c654783
+MY_PV=0.7.90
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
-inherit kde5 vcs-snapshot
+inherit kde5
 
 DESCRIPTION="BibTeX editor to edit bibliographies used with LaTeX"
 HOMEPAGE="https://userbase.kde.org/KBibTeX"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="mirror://kde/unstable/KBibTeX/${PN}-${MY_PV}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -61,6 +61,8 @@ RDEPEND="${DEPEND}
 "
 
 RESTRICT+=" test"
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_configure() {
 	local mycmakeargs=(
