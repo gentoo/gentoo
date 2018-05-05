@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 # Needed by packages writing specs for celluloid
@@ -41,4 +41,12 @@ all_ruby_prepare() {
 
 	sed -i -e '1irequire "pathname"' spec/spec_helper.rb || die
 	mkdir log || die
+}
+
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby24)
+			sed -i -e '/String expected, but Fixnum received/ s/Fixnum/Integer/' spec/shared/actor_examples.rb || die
+			;;
+	esac
 }
