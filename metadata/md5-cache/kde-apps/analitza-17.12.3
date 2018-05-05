@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
 DEPEND=>=dev-qt/qtdeclarative-5.9.1:5 >=dev-qt/qtgui-5.9.1:5[-gles2] >=dev-qt/qtprintsupport-5.9.1:5 >=dev-qt/qtsvg-5.9.1:5 >=dev-qt/qtwidgets-5.9.1:5 >=dev-qt/qtxml-5.9.1:5 eigen? ( dev-cpp/eigen:3 ) nls? ( >=dev-qt/linguist-tools-5.9.1:5 ) sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) dev-util/desktop-file-utils x11-misc/shared-mime-info >=kde-frameworks/extra-cmake-modules-5.43.0:5 test? ( >=dev-qt/qttest-5.9.1:5 ) >=dev-qt/qtcore-5.9.1:5 dev-util/desktop-file-utils app-arch/xz-utils
 DESCRIPTION=KDE library for mathematical features
 EAPI=6

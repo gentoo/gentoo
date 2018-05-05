@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
 DEPEND=>=kde-frameworks/extra-cmake-modules-5.43:5 >=dev-qt/qtcore-5.7.1:5 test? ( >=dev-qt/qttest-5.7.1:5 app-misc/fdupes ) sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( >=dev-qt/qttest-5.7.1:5 ) dev-util/desktop-file-utils app-arch/xz-utils
 DESCRIPTION=Breeze SVG icon theme
 EAPI=6

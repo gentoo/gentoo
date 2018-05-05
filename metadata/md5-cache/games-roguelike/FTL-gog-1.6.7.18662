@@ -1,4 +1,4 @@
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=install nofetch prepare unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Top-down roguelike space ship simulator
 EAPI=6

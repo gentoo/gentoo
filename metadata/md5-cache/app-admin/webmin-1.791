@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prepare prerm
+DEFINED_PHASES=config install postinst postrm preinst prepare prerm
 DEPEND=virtual/perl-MIME-Base64 virtual/perl-Socket virtual/perl-Sys-Syslog virtual/perl-Time-HiRes virtual/perl-Time-Local dev-perl/Authen-Libwrap dev-perl/IO-Tty dev-perl/MD5 dev-perl/Net-SSLeay dev-perl/Authen-PAM dev-perl/Sys-Hostname-Long >=net-dns/dnssec-tools-1.13 !minimal? ( mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) ldap? ( dev-perl/perl-ldap ) dev-perl/XML-Generator dev-perl/XML-Parser ) ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) ) virtual/pkgconfig
 DESCRIPTION=A web-based Unix systems administration interface
 EAPI=5

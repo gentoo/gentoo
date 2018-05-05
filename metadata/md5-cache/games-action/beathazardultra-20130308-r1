@@ -1,4 +1,4 @@
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=install nofetch prepare unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Intense music-driven arcade shooter powered by your music
 EAPI=6

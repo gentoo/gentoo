@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare pretend setup unpack
 DEPEND=app-arch/innoextract cdinstall? ( app-arch/cabextract )
 DESCRIPTION=Arx Fatalis data files
 EAPI=5

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
 DEPEND=>=media-video/vdr-2 ssl? ( dev-libs/openssl ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
 DESCRIPTION=VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
 EAPI=6

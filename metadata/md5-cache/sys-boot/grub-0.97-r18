@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup test
+DEFINED_PHASES=compile config configure install postinst postrm preinst prepare prerm pretend setup test
 DEPEND=!static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)] ) ) virtual/pkgconfig static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3:0[static-libs(+),abi_x86_32(-)] ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GNU GRUB Legacy boot loader
 EAPI=6

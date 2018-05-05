@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare setup
+DEFINED_PHASES=compile config configure install postinst prepare setup
 DESCRIPTION=Utility to send SMS messages to mobile phones and pagers
 EAPI=5
 HOMEPAGE=http://www.smsclient.org

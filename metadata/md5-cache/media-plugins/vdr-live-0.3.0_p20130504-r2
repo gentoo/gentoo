@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
 DEPEND=media-video/vdr >=dev-libs/tntnet-2.2.1[ssl=] >=dev-libs/cxxtools-2.2.1 pcre? ( >=dev-libs/libpcre-8.12[cxx] ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
 DESCRIPTION=VDR Plugin: Web Access To Settings
 EAPI=5

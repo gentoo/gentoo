@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEFINED_PHASES=compile config configure install postinst postrm preinst prepare setup unpack
 DEPEND=app-arch/p7zip
 DESCRIPTION=Editor's Choice Edition plus Mega Pack for the well-known first-person shooter
 EAPI=5

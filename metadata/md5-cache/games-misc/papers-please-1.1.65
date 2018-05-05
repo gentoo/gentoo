@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=A Dystopian Document Thriller
 EAPI=5
 HOMEPAGE=http://papersplea.se

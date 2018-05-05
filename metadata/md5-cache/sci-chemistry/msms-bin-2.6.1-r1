@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DESCRIPTION=MSMS very efficiently computes triangulations of Solvent Excluded Surfaces
 EAPI=4
 HOMEPAGE=http://mgl.scripps.edu/people/sanner/html/msms_home.html

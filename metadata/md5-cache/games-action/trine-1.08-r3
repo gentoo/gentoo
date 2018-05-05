@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare unpack
 DEPEND=app-admin/chrpath app-arch/unzip >=sys-apps/sed-4
 DESCRIPTION=A physics-based action game with character-dependent solutions to challenges
 EAPI=6

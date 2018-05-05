@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare
+DEFINED_PHASES=compile config configure install postinst preinst prepare
 DEPEND=nls? ( virtual/libintl )
 DESCRIPTION=Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 EAPI=6

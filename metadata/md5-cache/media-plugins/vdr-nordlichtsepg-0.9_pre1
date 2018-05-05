@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
 DEPEND=>=media-video/vdr-1.3.31 >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
 DESCRIPTION=vdr Plugin: Better EPG view than default vdr
 EAPI=5

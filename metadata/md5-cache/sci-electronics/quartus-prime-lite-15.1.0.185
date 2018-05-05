@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst pretend
+DEFINED_PHASES=install nofetch postinst pretend
 DESCRIPTION=Full-featured EDA product for altera devices
 EAPI=5
 HOMEPAGE=https://www.altera.com/products/design-software/fpga-design/quartus-prime/overview.html

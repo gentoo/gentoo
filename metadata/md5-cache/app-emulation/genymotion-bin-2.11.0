@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst prepare unpack
+DEFINED_PHASES=install nofetch postinst prepare unpack
 DESCRIPTION=Complete set of tools that provide a virtual environment for Android
 EAPI=6
 HOMEPAGE=http://genymotion.com

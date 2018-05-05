@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare pretend setup unpack
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=An original action role-playing game set in a lush imaginative world
 EAPI=5

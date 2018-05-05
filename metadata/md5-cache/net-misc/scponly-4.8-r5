@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare
+DEFINED_PHASES=compile config configure install postinst prepare
 DEPEND=sys-apps/sed net-misc/openssh quota? ( sys-fs/quota ) rsync? ( net-misc/rsync ) subversion? ( dev-vcs/subversion )
 DESCRIPTION=A tiny pseudoshell which only permits scp and sftp
 EAPI=5

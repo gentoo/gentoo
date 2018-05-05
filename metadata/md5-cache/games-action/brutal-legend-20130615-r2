@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst unpack
 DEPEND=app-arch/unzip >=sys-apps/sed-4
 DESCRIPTION=Unleash the power of Heavy Metal to reign down fire from the sky
 EAPI=6

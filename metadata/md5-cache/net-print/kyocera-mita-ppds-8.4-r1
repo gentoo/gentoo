@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DEPEND=app-arch/unzip
 DESCRIPTION=PPD description files for (some) Kyocera Mita Printers
 EAPI=6

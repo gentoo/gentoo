@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare test
+DEFINED_PHASES=compile config configure install postinst prepare test
 DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Enterprise scalable realtime graphing
 EAPI=5

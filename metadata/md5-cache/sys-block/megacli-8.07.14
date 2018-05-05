@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst unpack
+DEFINED_PHASES=install nofetch postinst unpack
 DEPEND=app-arch/unzip app-admin/chrpath >=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=LSI Logic MegaRAID Command Line Interface management tool
 EAPI=5

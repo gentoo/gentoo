@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prepare
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=2D physics puzzle/sandbox game with drawing
 EAPI=6

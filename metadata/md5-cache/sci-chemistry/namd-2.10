@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare
+DEFINED_PHASES=compile configure install nofetch postinst prepare
 DEPEND=>=sys-cluster/charm-6.5.1-r2 sci-libs/fftw:3.0 dev-lang/tcl:0= virtual/pkgconfig app-shells/tcsh
 DESCRIPTION=A powerful and highly parallelized molecular dynamics code
 EAPI=6

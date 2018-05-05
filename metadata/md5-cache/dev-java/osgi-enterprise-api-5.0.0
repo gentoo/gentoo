@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install preinst prepare setup
+DEFINED_PHASES=compile install nofetch preinst prepare setup
 DEPEND=dev-java/glassfish-persistence:0 dev-java/osgi-core-api:0 java-virtuals/servlet-api:2.5 >=virtual/jdk-1.5 app-arch/unzip >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 DESCRIPTION=OSGi Enterprise Release 5 Companion Code
 EAPI=5

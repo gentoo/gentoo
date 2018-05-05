@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=A 2D scroller set in a massive ocean world
 EAPI=5

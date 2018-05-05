@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DEPEND=app-arch/unzip
 DESCRIPTION=LSI Logic MegaRAID Text User Interface management tool
 EAPI=6

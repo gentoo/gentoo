@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm prepare setup unpack
+DEFINED_PHASES=install nofetch postinst postrm prepare setup unpack
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=Research management tool for desktop and web
 EAPI=6

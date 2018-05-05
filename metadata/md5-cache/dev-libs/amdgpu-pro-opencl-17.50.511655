@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst prepare unpack
+DEFINED_PHASES=install nofetch postinst prepare unpack
 DEPEND=dev-util/patchelf
 DESCRIPTION=Proprietary OpenCL implementation for AMD GPUs
 EAPI=6

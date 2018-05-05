@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DEPEND=app-arch/unzip
 DESCRIPTION=Oracle's documentation bundle (including API) for Java SE
 EAPI=6

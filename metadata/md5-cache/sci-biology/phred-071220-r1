@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile install nofetch
 DESCRIPTION=A base caller for Sanger DNA sequencing
 EAPI=6
 HOMEPAGE=http://phrap.org/phredphrapconsed.html

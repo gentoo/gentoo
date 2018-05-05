@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst postrm
+DEFINED_PHASES=config configure install postinst postrm
 DEPEND=app-i18n/skk-jisyo gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) systemd? ( virtual/udev[systemd] ) dev-lang/perl virtual/pkgconfig
 DESCRIPTION=Yet Another SKK server
 EAPI=6

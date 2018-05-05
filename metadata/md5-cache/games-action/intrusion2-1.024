@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Fast paced action sidescroller set in a sci-fi environment
 EAPI=5
 HOMEPAGE=http://intrusion2.com

@@ -1,4 +1,4 @@
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install nofetch unpack
 DESCRIPTION=Binary plugins from Google Chrome for use in Chromium
 EAPI=5
 HOMEPAGE=https://www.google.com/chrome

@@ -1,4 +1,4 @@
-DEFINED_PHASES=install setup unpack
+DEFINED_PHASES=install nofetch setup unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Oracle 11g client installation ODBC supplement
 EAPI=0

@@ -1,4 +1,4 @@
-DEFINED_PHASES=install setup
+DEFINED_PHASES=install nofetch setup
 DEPEND=app-arch/unzip
 DESCRIPTION=Microsemi Adaptec RAID Controller Command Line Utility
 EAPI=6

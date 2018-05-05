@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DESCRIPTION=A puzzle game with a strong emphasis on physics
 EAPI=6
 HOMEPAGE=http://2dboy.com/

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst prerm setup
+DEFINED_PHASES=compile config install postinst prerm setup
 DESCRIPTION=Driver for Connexant DGC modems
 EAPI=0
 HOMEPAGE=http://www.linuxant.com/drivers/dgc/

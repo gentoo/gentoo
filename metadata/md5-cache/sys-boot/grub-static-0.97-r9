@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prerm setup
+DEFINED_PHASES=config install postinst postrm preinst prerm setup
 DEPEND=!<sys-boot/grub-2
 DESCRIPTION=GNU GRUB Legacy boot loader (static build)
 EAPI=0

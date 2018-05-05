@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst unpack
+DEFINED_PHASES=compile config install postinst unpack
 DEPEND=ssl? ( dev-libs/openssl )
 DESCRIPTION=IMAP server for Maildir
 EAPI=0

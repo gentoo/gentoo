@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst prepare
+DEFINED_PHASES=config configure install postinst prepare
 DEPEND=>=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=A simple utility to read the temperature of SMART capable hard drives
 EAPI=5

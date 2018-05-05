@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst
+DEFINED_PHASES=config install postinst postrm preinst
 DESCRIPTION=A cross-compilation toolkit for embedded Linux application development
 EAPI=0
 HOMEPAGE=http://www.scratchbox.org/

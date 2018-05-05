@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst prepare
+DEFINED_PHASES=config install postinst prepare
 DEPEND=sys-libs/ncurses virtual/pkgconfig
 DESCRIPTION=TOMOYO Linux tools
 EAPI=5

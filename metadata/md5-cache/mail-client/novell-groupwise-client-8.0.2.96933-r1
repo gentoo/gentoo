@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install prepare unpack
+DEFINED_PHASES=compile install nofetch prepare unpack
 DEPEND=dev-util/patchelf >=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=Novell Groupwise Client for Linux
 EAPI=5

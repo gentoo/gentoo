@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst setup unpack
+DEFINED_PHASES=config install postinst setup unpack
 DEPEND=dev-lang/perl dev-perl/DBI dev-perl/Net-Server dev-perl/Date-Calc virtual/mailx postgres? ( dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBD-SQLite ) mysql? ( dev-perl/DBD-mysql ) !postgres? ( !mysql? ( !sqlite? ( dev-perl/DBD-Pg ) ) ) sys-apps/sed virtual/pkgconfig
 DESCRIPTION=SQLgrey is a postfix policy service implementing a grey-listing policy
 EAPI=0

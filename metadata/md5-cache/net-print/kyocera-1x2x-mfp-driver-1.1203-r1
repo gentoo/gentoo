@@ -1,4 +1,4 @@
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=install nofetch prepare unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 EAPI=6

@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst prepare setup
+DEFINED_PHASES=config configure install postinst prepare setup
 DEPEND=sys-libs/e2fsprogs-libs dev-libs/libxml2:2 dev-lang/perl sys-libs/zlib ssl? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) ) mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) postgres? ( dev-db/postgresql:=[server] ) pcre? ( dev-libs/libpcre:3 ) pam? ( virtual/pam ) >=sys-devel/bison-2.2 doc? ( media-gfx/transfig app-text/jadetex app-text/docbook-dsssl-stylesheets app-text/docbook-sgml-dtd:3.1 ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 sys-devel/automake >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
 DESCRIPTION=Powerful SMS and WAP gateway
 EAPI=6

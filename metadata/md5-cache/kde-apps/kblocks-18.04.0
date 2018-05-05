@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
 DEPEND=>=kde-frameworks/kconfig-5.44.0:5 >=kde-frameworks/kconfigwidgets-5.44.0:5 >=kde-frameworks/kcoreaddons-5.44.0:5 >=kde-frameworks/kcrash-5.44.0:5 >=kde-frameworks/ki18n-5.44.0:5 >=kde-frameworks/kwidgetsaddons-5.44.0:5 >=kde-frameworks/kxmlgui-5.44.0:5 >=kde-apps/libkdegames-18.04.0:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtnetwork-5.7.1:5 >=dev-qt/qtsvg-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info >=kde-frameworks/extra-cmake-modules-5.44.0:5 handbook? ( >=kde-frameworks/kdoctools-5.44.0:5 ) >=dev-qt/qtcore-5.7.1:5 dev-util/desktop-file-utils app-arch/xz-utils
 DESCRIPTION=A single-player Tetris-like KDE game
 EAPI=6

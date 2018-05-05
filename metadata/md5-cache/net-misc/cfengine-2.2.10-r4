@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst prepare
+DEFINED_PHASES=config configure install postinst prepare
 DEPEND=>=sys-libs/db-4 >=dev-libs/openssl-0.9.7 app-portage/portage-utils virtual/yacc sys-devel/flex
 DESCRIPTION=An automated suite of programs for configuring and maintaining Unix-like computers
 EAPI=2

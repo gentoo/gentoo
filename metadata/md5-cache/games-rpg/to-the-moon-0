@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup unpack
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=Two doctors traversing the memories of a dying man to fulfill his last wish
 EAPI=5

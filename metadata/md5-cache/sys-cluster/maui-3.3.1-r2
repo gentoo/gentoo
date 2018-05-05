@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install prepare setup
+DEFINED_PHASES=configure install nofetch prepare setup
 DEPEND=pbs? ( sys-cluster/torque ) slurm? ( sys-cluster/slurm )
 DESCRIPTION=Maui Cluster Scheduler
 EAPI=4

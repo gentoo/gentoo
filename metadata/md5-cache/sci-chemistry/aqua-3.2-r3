@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install prepare setup
+DEFINED_PHASES=compile install nofetch prepare setup
 DEPEND=app-shells/tcsh virtual/fortran
 DESCRIPTION=Program suite in this distribution calculates restraint violations
 EAPI=6

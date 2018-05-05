@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare test unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare test unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Oracle 12c Instant Client with SDK
 EAPI=6

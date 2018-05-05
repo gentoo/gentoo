@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst prerm pretend unpack
 DESCRIPTION=LSI MPT-SAS2 controller management tool
 EAPI=5
 HOMEPAGE=http://www.lsi.com/support/Pages/download-results.aspx?component=Storage+Component&productfamily=Host+Bus+Adapters&productcode=0&assettype=Miscellaneous&productname=&keyword=SAS2IRCU

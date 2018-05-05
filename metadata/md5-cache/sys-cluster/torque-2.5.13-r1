@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup test
+DEFINED_PHASES=compile config configure install postinst preinst prepare setup test
 DEPEND=sys-libs/readline:0= munge? ( sys-auth/munge ) tk? ( dev-lang/tk:0= dev-lang/tcl:0= ) syslog? ( virtual/logger ) !!games-util/qstat sys-libs/ncurses:* sys-apps/ed !!sys-cluster/slurm >=app-portage/elt-patches-20170422
 DESCRIPTION=Resource manager and queuing system based on OpenPBS
 EAPI=5

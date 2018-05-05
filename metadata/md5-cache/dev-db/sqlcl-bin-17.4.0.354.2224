@@ -1,4 +1,4 @@
-DEFINED_PHASES=install prepare
+DEFINED_PHASES=install nofetch prepare
 DESCRIPTION=Oracle SQLcl is the new SQL*Plus
 EAPI=6
 HOMEPAGE=http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare setup test
+DEFINED_PHASES=compile config configure install postinst prepare setup test
 DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] doc? ( dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) >=dev-python/python-dateutil-1.5[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] test? ( dev-python/mock[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/twisted-mail[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/twisted-web[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/twisted-words[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig
 DESCRIPTION=BuildBot build automation system
 EAPI=5

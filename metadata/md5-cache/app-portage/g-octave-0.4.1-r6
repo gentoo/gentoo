@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare test
+DEFINED_PHASES=compile config configure install postinst prepare test
 DEPEND=doc? ( >=dev-python/sphinx-1.0 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=A tool that generates and installs ebuilds for Octave-Forge
 EAPI=6

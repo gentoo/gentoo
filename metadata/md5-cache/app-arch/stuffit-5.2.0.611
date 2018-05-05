@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst
+DEFINED_PHASES=install nofetch postinst
 DESCRIPTION=Aladdin Software's StuffIt and StuffIt Expander
 EAPI=6
 HOMEPAGE=http://www.stuffit.com/

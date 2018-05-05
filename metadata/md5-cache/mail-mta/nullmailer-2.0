@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst postrm prepare setup
+DEFINED_PHASES=config configure install postinst postrm prepare setup
 DEPEND=sys-apps/groff ssl? ( net-libs/gnutls:0= ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Simple relay-only local mail transport agent
 EAPI=6

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Faster Than Light: A spaceship simulation real-time roguelike-like game
 EAPI=5
 HOMEPAGE=http://www.ftlgame.com/

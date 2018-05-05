@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst prerm pretend unpack
 DESCRIPTION=LSI MPT-SAS2 controller management tool
 EAPI=6
 HOMEPAGE=https://www.broadcom.com/products/storage/host-bus-adapters/sas-9207-8e#tab-archive-drivers4-abc

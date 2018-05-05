@@ -1,4 +1,4 @@
-DEFINED_PHASES=install pretend setup unpack
+DEFINED_PHASES=install nofetch pretend setup unpack
 DESCRIPTION=Syzygy chess endgame tablebases for up to 6 pieces
 EAPI=6
 HOMEPAGE=http://tablebase.sesse.net/ http://kirill-kryukov.com/chess/tablebases-online/

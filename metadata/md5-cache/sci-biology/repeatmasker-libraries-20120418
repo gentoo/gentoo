@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DESCRIPTION=A special version of RepBase used by RepeatMasker
 EAPI=5
 HOMEPAGE=http://repeatmasker.org/

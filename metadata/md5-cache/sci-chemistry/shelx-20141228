@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DESCRIPTION=Crystal structure determination from single-crystal diffraction data
 EAPI=5
 HOMEPAGE=http://shelx.uni-ac.gwdg.de/SHELX/

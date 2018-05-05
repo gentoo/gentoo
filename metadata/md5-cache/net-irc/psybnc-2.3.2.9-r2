@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst prepare setup unpack
+DEFINED_PHASES=compile config install postinst prepare setup unpack
 DEPEND=ssl? ( >=dev-libs/openssl-0.9.7d ) oidentd? ( >=net-misc/oidentd-2.0 )
 DESCRIPTION=psyBNC is a multi-user and multi-server gateway to IRC networks
 EAPI=2

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile config install postinst preinst prepare setup unpack
 DEPEND=!mail-mta/qmail net-mail/queue-repair ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) sys-apps/gentoo-functions sys-apps/groff >=sys-apps/sed-4
 DESCRIPTION=qmail -- a secure, reliable, efficient, simple message transfer agent
 EAPI=5

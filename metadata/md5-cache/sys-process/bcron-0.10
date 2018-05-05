@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst prepare setup
+DEFINED_PHASES=config configure install postinst prepare setup
 DEPEND=>=sys-process/cronbase-0.3.2 virtual/mta sys-apps/ucspi-unix virtual/daemontools || ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-libs/bglibs-1.106 >=sys-apps/sed-4.0.5
 DESCRIPTION=A new cron system designed with secure operations in mind by Bruce Guenter
 EAPI=5

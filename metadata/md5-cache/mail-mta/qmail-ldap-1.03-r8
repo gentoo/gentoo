@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst preinst setup unpack
+DEFINED_PHASES=compile config install postinst preinst setup unpack
 DEPEND=!mail-mta/qmail net-nds/openldap net-mail/queue-repair ssl? ( dev-libs/openssl ) >=sys-apps/sed-4
 DESCRIPTION=qmail -- a secure, reliable, efficient, simple message transfer agent
 EAPI=0

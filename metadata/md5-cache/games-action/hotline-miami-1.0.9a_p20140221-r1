@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=High-octane action game overflowing with raw brutality
 EAPI=5
 HOMEPAGE=http://www.devolverdigital.com/games/view/hotline-miami

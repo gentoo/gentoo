@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
 DEPEND=>=media-video/vdr-2 >=media-libs/raspberrypi-userland-0_pre20140117 virtual/ffmpeg >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
 DESCRIPTION=VDR Plugin: Output Device for Raspberry Pi
 EAPI=5

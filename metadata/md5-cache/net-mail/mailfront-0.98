@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst
+DEFINED_PHASES=compile config install postinst
 DEPEND=>=dev-libs/bglibs-1.022 >=net-libs/cvm-0.71
 DESCRIPTION=Mail server network protocol front-ends
 EAPI=0

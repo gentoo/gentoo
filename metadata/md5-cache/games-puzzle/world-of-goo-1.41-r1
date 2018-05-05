@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=A puzzle game with a strong emphasis on physics
 EAPI=5
 HOMEPAGE=http://2dboy.com/

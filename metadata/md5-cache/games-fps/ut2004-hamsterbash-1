@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=UT2004 Hamster Bash - Cute and violent hamster cage rampage mod
 EAPI=5

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEFINED_PHASES=compile config configure install postinst postrm preinst prepare setup unpack
 DESCRIPTION=Sequel to the 1999 Game of the Year multi-player first-person shooter
 EAPI=5
 HOMEPAGE=http://www.unrealtournament2003.com/

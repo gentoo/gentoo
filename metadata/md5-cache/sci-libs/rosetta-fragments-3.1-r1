@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install prepare
+DEFINED_PHASES=compile install nofetch prepare
 DESCRIPTION=Fragment library for rosetta
 EAPI=6
 HOMEPAGE=http://www.rosettacommons.org

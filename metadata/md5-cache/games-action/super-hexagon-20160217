@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst unpack
 DEPEND=app-arch/unzip >=sys-apps/sed-4
 DESCRIPTION=A minimal action game by Terry Cavanagh, with music by Chipzel
 EAPI=6

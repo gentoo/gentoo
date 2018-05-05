@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst
+DEFINED_PHASES=install nofetch postinst postrm preinst
 DEPEND=app-arch/unzip >=sys-apps/sed-4
 DESCRIPTION=The original sidescrolling action platformer under the Trine 2 engine
 EAPI=6

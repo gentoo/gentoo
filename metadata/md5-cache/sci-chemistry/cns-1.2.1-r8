@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install postinst prepare setup test
+DEFINED_PHASES=compile install nofetch postinst prepare setup test
 DEPEND=app-shells/tcsh virtual/fortran
 DESCRIPTION=Crystallography and NMR System
 EAPI=5

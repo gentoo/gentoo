@@ -1,4 +1,4 @@
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install nofetch unpack
 DESCRIPTION=Acrobat FDF Toolkit
 EAPI=0
 HOMEPAGE=http://www.adobe.com/devnet/acrobat/fdftoolkit.html

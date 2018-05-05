@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install nofetch
 DESCRIPTION=emulator for a basic ARMv8 platform environment (for running bare metal & Linux)
 EAPI=4
 HOMEPAGE=https://silver.arm.com/browse/FM00A

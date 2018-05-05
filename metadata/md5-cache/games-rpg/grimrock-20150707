@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst unpack
 DEPEND=app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=Legend of Grimrock: The ultimate dungeon crawling RPG + modding engine
 EAPI=6

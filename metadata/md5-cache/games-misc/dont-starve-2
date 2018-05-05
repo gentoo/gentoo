@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
 DESCRIPTION=Wilderness survival game full of science and magic
 EAPI=5
 HOMEPAGE=http://www.dontstarvegame.com/

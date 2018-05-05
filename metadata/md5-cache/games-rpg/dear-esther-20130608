@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup unpack
 DEPEND=app-arch/unzip >=sys-apps/sed-4
 DESCRIPTION=Ghost story, told using first-person gaming technologies
 EAPI=5

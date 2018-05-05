@@ -1,4 +1,4 @@
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install nofetch unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Video chat browser plug-in for Google Talk
 EAPI=5

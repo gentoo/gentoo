@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare pretend setup unpack
 DEPEND=app-arch/unzip >=sys-apps/sed-4
 DESCRIPTION=A hybrid of two hot genres: Tower Defense and cooperative online Action-RPG
 EAPI=5

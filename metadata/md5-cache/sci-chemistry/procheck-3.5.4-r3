@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install setup
+DEFINED_PHASES=compile install nofetch setup
 DEPEND=app-shells/tcsh virtual/fortran
 DESCRIPTION=Checks the stereochemical quality of a protein structure
 EAPI=6

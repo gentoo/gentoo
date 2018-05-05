@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install prepare setup test
+DEFINED_PHASES=compile config configure install prepare setup test
 DEPEND=dev-cpp/gtest >=dev-cpp/sparsehash-1.12 dev-db/sqlite:3= dev-libs/leveldb:0= dev-libs/openssl:0 net-libs/pacparser:0= net-misc/curl:0[adns] sys-apps/attr sys-fs/fuse:0= sys-libs/libcap:0= sys-libs/zlib:0= preload? ( >=dev-cpp/tbb-4.4:0=[debug?] ) server? ( >=dev-cpp/tbb-4.4:0=[debug?] dev-python/geoip-python ) virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( dev-python/geoip-python >=dev-cpp/tbb-4.4:0= || ( sys-devel/gdb dev-util/lldb ) ) sys-devel/make >=dev-util/cmake-3.9.6
 DESCRIPTION=HTTP read-only file system for distributing software
 EAPI=6

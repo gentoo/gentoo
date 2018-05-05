@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm setup
+DEFINED_PHASES=config install postinst postrm setup
 DEPEND=virtual/pkgconfig
 DESCRIPTION=Folding@Home is a distributed computing project for protein folding
 EAPI=6

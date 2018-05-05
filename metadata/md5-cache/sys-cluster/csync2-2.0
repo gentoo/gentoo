@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst
+DEFINED_PHASES=config configure install postinst
 DEPEND=>=net-libs/librsync-0.9.5 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) sqlite? ( >=dev-db/sqlite-3.0 ) ssl? ( >=net-libs/gnutls-2.7.3 ) xinetd? ( sys-apps/xinetd ) virtual/pkgconfig
 DESCRIPTION=Cluster synchronization tool
 EAPI=5

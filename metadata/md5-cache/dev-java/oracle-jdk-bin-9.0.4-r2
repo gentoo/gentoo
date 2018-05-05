@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prerm setup unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst prerm setup unpack
 DEPEND=>=sys-apps/sed-4 >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
 DESCRIPTION=Oracle's Java SE Development Kit
 EAPI=6

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile config configure install postinst preinst prepare setup unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Epic Bonus Pack for UT2003
 EAPI=5

@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst prepare setup
+DEFINED_PHASES=config configure install postinst prepare setup
 DEPEND=>=dev-libs/bglibs-1.106
 DESCRIPTION=Syslog message handling tools
 EAPI=5

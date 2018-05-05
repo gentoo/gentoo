@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst setup unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst setup unpack
 DEPEND=>=sys-apps/sed-4 >=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=Nero Burning ROM for Linux
 EAPI=6

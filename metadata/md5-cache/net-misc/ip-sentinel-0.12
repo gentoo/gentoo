@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst setup
+DEFINED_PHASES=config install postinst setup
 DESCRIPTION=Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/ip-sentinel/

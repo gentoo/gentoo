@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile install nofetch
 DESCRIPTION=Shotgun assembly and alignment utilities
 EAPI=6
 HOMEPAGE=http://www.phrap.org/

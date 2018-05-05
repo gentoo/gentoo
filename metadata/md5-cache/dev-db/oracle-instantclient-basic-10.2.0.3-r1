@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst setup unpack
+DEFINED_PHASES=install nofetch postinst setup unpack
 DEPEND=app-arch/unzip
 DESCRIPTION=Oracle 10g client installation for Linux with SDK
 EAPI=0

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst prepare
+DEFINED_PHASES=compile configure install nofetch postinst prepare
 DEPEND=x11-libs/libX11 x11-libs/motif:0 sci-biology/samtools:0.1-legacy virtual/pkgconfig
 DESCRIPTION=A genome sequence finishing program
 EAPI=6

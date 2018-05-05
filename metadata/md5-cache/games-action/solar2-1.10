@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup unpack
 DEPEND=>=sys-apps/sed-4
 DESCRIPTION=An open-world, sandbox game set in an infinite abstract universe
 EAPI=5

@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+DEFINED_PHASES=install nofetch postinst postrm preinst prerm pretend unpack
 DESCRIPTION=Flash utility for LSI MPT-SAS3 controller
 EAPI=6
 HOMEPAGE=https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads

@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postrm prepare setup
+DEFINED_PHASES=config install postrm prepare setup
 DESCRIPTION=WWW Admin for the VDR (Video Disk Recorder)
 EAPI=5
 HOMEPAGE=http://projects.vdr-developer.org/projects/xxv

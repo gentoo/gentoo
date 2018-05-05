@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst preinst prepare setup unpack
+DEFINED_PHASES=config install postinst preinst prepare setup unpack
 DEPEND=dev-lang/perl dev-perl/Template-Toolkit dev-perl/libwww-perl dev-perl/URI dev-perl/Locale-gettext virtual/perl-IO-Compress ipv6? ( dev-perl/IO-Socket-INET6 ) ssl? ( dev-perl/IO-Socket-SSL ) virtual/perl-libnet dev-perl/Authen-SASL dev-perl/Digest-HMAC ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) ) virtual/pkgconfig
 DESCRIPTION=WWW Admin for the Video Disk Recorder
 EAPI=5
