@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="a lightweight PDF viewer and toolkit written in portable C"
 HOMEPAGE="https://mupdf.com/"
@@ -149,4 +149,12 @@ src_install() {
 	doins platform/debian/${PN}.pc
 
 	dodoc README CHANGES docs/*.{txt,c}
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
