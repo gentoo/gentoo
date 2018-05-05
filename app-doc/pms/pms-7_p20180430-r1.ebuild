@@ -11,7 +11,7 @@ SRC_URI="!binary? ( https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz )
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="binary html"
+IUSE="binary html twoside"
 
 # texlive-bibtexextra: plainurl.bst
 # texlive-latexextra: chngcntr, isodate, marginnote, paralist, tocbibind
@@ -35,8 +35,10 @@ src_compile() {
 	if ! use binary; then
 		# just in case; we shouldn't be generating any fonts
 		export VARTEXFONTS="${T}/fonts"
-		emake
+		emake $(usex twoside TWOSIDE=yes "")
 		use html && emake html
+	else
+		use twoside && ewarn "USE=twoside is not supported with USE=binary"
 	fi
 }
 
