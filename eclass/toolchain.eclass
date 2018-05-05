@@ -1207,7 +1207,17 @@ toolchain_src_configure() {
 			if hardened_gcc_is_stable ssp; then
 				export gcc_cv_libc_provides_ssp=yes
 			fi
-			confgcc+=( --disable-libssp )
+			if use_if_iuse ssp; then
+				# On some targets USE="ssp -libssp" is an invalid
+				# configuration as target libc does not provide
+				# stack_chk_* functions. Do not disable libssp there.
+				case ${CTARGET} in
+					mingw*|*-mingw*) ewarn "Not disabling libssp" ;;
+					*) confgcc+=( --disable-libssp ) ;;
+				esac
+			else
+				confgcc+=( --disable-libssp )
+			fi
 		fi
 	fi
 
