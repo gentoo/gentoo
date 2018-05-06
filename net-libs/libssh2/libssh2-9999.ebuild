@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit autotools git-r3 multilib-minimal
 
 EGIT_REPO_URI="https://github.com/libssh2/libssh2"
 DESCRIPTION="Library implementing the SSH2 protocol"
-HOMEPAGE="http://www.libssh2.org/"
+HOMEPAGE="https://www.libssh2.org"
 SRC_URI=""
 
 LICENSE="BSD"
