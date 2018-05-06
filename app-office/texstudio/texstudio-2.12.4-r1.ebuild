@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/TeXstudio%20${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="video"
 
 COMMON_DEPEND="
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
-	dev-qt/qtsingleapplication[qt5,X]
+	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsvg:5
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
@@ -42,7 +42,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}
+S=${WORKDIR}/${PN}${PV}
 
 src_prepare() {
 	default
@@ -55,10 +55,6 @@ src_prepare() {
 	sed \
 		-e '/qtsingleapplication.pri/d' \
 		-i ${PN}.pro || die
-
-#	cat >> ${PN}.pro <<- EOF
-#	exists(texmakerx_my.pri):include(texmakerx_my.pri)
-#	EOF
 
 	cp "${FILESDIR}"/texmakerx_my.pri ${PN}.pri || die
 	eprefixify ${PN}.pri
@@ -75,8 +71,7 @@ src_configure() {
 src_install() {
 	local i
 	for i in 16x16 22x22 32x32 48x48 64x64 128x128; do
-		insinto /usr/share/icons/hicolor/${i}/apps
-		newins utilities/${PN}${i}.png ${PN}.png
+		newicon -s ${i} utilities/${PN}${i}.png ${PN}.png
 	done
 	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
 }
