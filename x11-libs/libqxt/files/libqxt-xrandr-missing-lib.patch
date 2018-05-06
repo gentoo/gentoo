@@ -1,9 +1,0 @@
-diff -Naur libqxt-libqxt-v0.6.2-orig/config.tests/xrandr/xrandr.pro libqxt-libqxt-v0.6.2/config.tests/xrandr/xrandr.pro
---- libqxt-libqxt-v0.6.2-orig/config.tests/xrandr/xrandr.pro	2013-12-26 01:57:00.691752845 +0100
-+++ libqxt-libqxt-v0.6.2/config.tests/xrandr/xrandr.pro	2013-12-26 01:57:21.705969462 +0100
-@@ -4,4 +4,4 @@
- DEPENDPATH += .
- INCLUDEPATH += .
- SOURCES += main.cpp
--!win32:LIBS+=-lXrandr
-+!win32:LIBS+=-lXrandr -lX11
