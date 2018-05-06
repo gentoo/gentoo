@@ -11,7 +11,7 @@ MY_PV=${PV/_/-}
 
 DESCRIPTION="A software for Gentoo installation"
 HOMEPAGE="https://github.com/ChrisADR/installer"
-SRC_URI="mirror://github.com/ChrisADR/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ChrisADR/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
