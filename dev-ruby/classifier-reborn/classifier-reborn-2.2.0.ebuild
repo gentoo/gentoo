@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.markdown"
@@ -21,6 +21,7 @@ IUSE="gsl test"
 ruby_add_rdepend ">=dev-ruby/fast-stemmer-1.0.0
 	!!dev-ruby/classifier
 	gsl? ( dev-ruby/rb-gsl )"
+ruby_add_bdepend "test? ( dev-ruby/redis )"
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
