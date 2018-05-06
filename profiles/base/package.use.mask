@@ -206,11 +206,6 @@ media-video/parole clutter
 # Needs patch to even build, subs are broken and not supported anymore.
 media-video/mpv libav
 
-# Maciej Mrozowski <reavertm@gmail.com> (15 Jun 2017)
-# Mask due to bug #621810
-dev-games/simgear gdal
-games-simulation/flightgear gdal
-
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
 # dev-libs/dee is masked for removal, mask flags that requires it.
