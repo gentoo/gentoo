@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils autotools flag-o-matic
 
 DESCRIPTION="Reports network interface statistics"
-SRC_URI="http://www.frenchfries.net/paul/tcpstat/${P}.tar.gz"
-HOMEPAGE="http://www.frenchfries.net/paul/tcpstat/"
+SRC_URI="https://www.frenchfries.net/paul/tcpstat/${P}.tar.gz"
+HOMEPAGE="https://www.frenchfries.net/paul/tcpstat/"
 
 DEPEND="net-libs/libpcap"
 
