@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,9 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	x86? ( dev-lang/nasm )"
 
-S=${WORKDIR}/${P/_/}
+S="${WORKDIR}/${P/_/}"
+
+PATCHES=( "${FILESDIR}/${PN}-2.0.0-freetype_pkgconfig.patch" )
 
 src_prepare() {
 	default
