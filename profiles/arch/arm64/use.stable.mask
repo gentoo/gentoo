@@ -13,10 +13,6 @@ cups
 vala
 webp
 
-# Mart Raudsepp <leio@gentoo.org> (03 Mar 2018)
-# media-gfx/fontforge not marked stable yet
-fontforge
-
 # Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
 # Neither x11-libs/gtk+ SLOT marked stable yet
 gtk
