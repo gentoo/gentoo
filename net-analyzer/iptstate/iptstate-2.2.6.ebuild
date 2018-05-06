@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="IP Tables State displays states being kept by iptables in a top-like format"
-HOMEPAGE="http://www.phildev.net/iptstate/ https://github.com/jaymzh/iptstate"
+HOMEPAGE="https://www.phildev.net/iptstate/ https://github.com/jaymzh/iptstate"
 SRC_URI="https://github.com/jaymzh/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="ZLIB"
