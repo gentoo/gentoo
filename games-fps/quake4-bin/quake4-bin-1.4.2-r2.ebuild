@@ -14,20 +14,14 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="cdinstall dedicated l10n_cs l10n_fr l10n_it l10n_pl l10n_ru"
 RESTRICT="strip"
 
-# QUAKE4 NEEDS s3tc support, which can be obtained for OSS drivers via
-# media-libs/libtxc_dxtn and is built into the proprietary drivers.
-# depend optionally on them but elog too, in case a user has both
-# proprietary and OSS drivers installed and sees the segfault.
-
 RDEPEND="sys-libs/glibc
 	amd64? ( sys-libs/glibc[multilib] )
 	sys-libs/zlib[abi_x86_32(-)]
 	dedicated? ( app-misc/screen )
 	!dedicated? (
 		|| (
-			>=media-libs/libtxc_dxtn-1.0.1-r1[abi_x86_32(-)]
+			virtual/opengl[abi_x86_32(-)]
 			x11-drivers/nvidia-drivers
-			>=x11-drivers/ati-drivers-8.8.25-r1
 		)
 		>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
 		>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
@@ -133,11 +127,6 @@ pkg_postinst() {
 		elog " sed -i 's:spanish:english:' ~/.quake4/q4base/Quake4Config.cfg"
 		elog
 		elog "Saved games from previous Quake 4 versions might not be compatible."
-		elog
-		elog "If you get a segmentation fault or an error regarding"
-		elog "'GL_EXT_texture_compression_s3tc', you can obtain the"
-		elog "necessary support for your mesa drivers by installing"
-		elog "media-libs/libtxc_dxtn (for abi_x86_32 if multilib)."
 		echo
 	fi
 	elog "To start the dedicated server, run:  quake4-ded"
