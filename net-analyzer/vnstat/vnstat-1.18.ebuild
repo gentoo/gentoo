@@ -5,8 +5,8 @@ EAPI=6
 inherit systemd user
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
-HOMEPAGE="http://humdi.net/vnstat/"
-SRC_URI="http://humdi.net/vnstat/${P}.tar.gz"
+HOMEPAGE="https://humdi.net/vnstat/"
+SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
