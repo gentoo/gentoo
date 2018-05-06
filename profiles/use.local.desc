@@ -733,6 +733,7 @@ app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to act
 app-portage/gemato:blake2 - Install dependencies needed for BLAKE2 hash functions
 app-portage/gemato:gpg - Install dependencies needed for OpenPGP signature verification support
 app-portage/gemato:sha3 - Install dependencies needed for SHA3 hash functions
+app-portage/gemato:tools - Install additional utilities (benchmarks, hash testing tools, fast Manifest generators) to /usr/share/gemato.
 app-portage/grs:server - Install all the tools building systems
 app-portage/layman:bazaar - Support dev-vcs/bzr based overlays
 app-portage/layman:cvs - Support dev-vcs/cvs based overlays
