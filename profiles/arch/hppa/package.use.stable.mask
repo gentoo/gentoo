@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (6 May 2018)
+# sci-visualization/gnuplot is not stable.
+app-admin/sysstat isag
+sci-mathematics/octave gnuplot
+sci-libs/libqalculate gnuplot
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Feb 2018)
 # dev-libs/libical stabilisation timeout, bug #621724
 app-mobilephone/gnokii ical
