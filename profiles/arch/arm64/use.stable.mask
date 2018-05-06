@@ -41,10 +41,6 @@ postgres
 # dev-lang/tk is not stable here.
 tk
 
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# app-text/ghostscript-gpl is not stable here.
-postscript
-
 # Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
 # dev-libs/libressl not marked stable yet
 libressl
