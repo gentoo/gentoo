@@ -88,10 +88,6 @@ media-sound/audacity midi soundtouch
 # Missing keywords (02 Jun 2015)
 net-misc/connman openconnect
 
-# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
-# Missing stable
-dev-libs/protobuf python
-
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam

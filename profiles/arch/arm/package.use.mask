@@ -376,10 +376,6 @@ app-admin/conky audacious cmus irc lua-cairo lua-imlib lua-rsvg moc xmms2
 # Not tested
 media-libs/devil allegro nvtt
 
-# Agostino Sarubbo <ago@gentoo.org> (23 Jul 2013)
-# java is not stable on arm
-dev-libs/protobuf java
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
 # requires net-misc/freerdp which is not keyworded on arm
 # screen-sharing requires rdp flag
