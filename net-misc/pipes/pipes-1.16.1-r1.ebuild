@@ -5,8 +5,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Very versatile TCP pipes"
-HOMEPAGE="http://bisqwit.iki.fi/source/pipes.html"
-SRC_URI="http://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
+HOMEPAGE="https://bisqwit.iki.fi/source/pipes.html"
+SRC_URI="https://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
