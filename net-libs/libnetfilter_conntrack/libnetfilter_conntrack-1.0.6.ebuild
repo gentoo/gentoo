@@ -5,8 +5,8 @@ EAPI=6
 inherit autotools linux-info
 
 DESCRIPTION="programming interface (API) to the in-kernel connection tracking state table"
-HOMEPAGE="http://www.netfilter.org/projects/libnetfilter_conntrack/"
-SRC_URI="http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_conntrack/"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
