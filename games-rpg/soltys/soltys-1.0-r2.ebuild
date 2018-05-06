@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit unpacker eutils
+inherit eutils
 
 DESCRIPTION="Classic adventure game"
 HOMEPAGE="http://wiki.scummvm.org/index.php/Soltys"
@@ -18,24 +18,24 @@ KEYWORDS="~amd64 ~x86"
 IUSE="l10n_en l10n_es l10n_pl"
 
 RDEPEND=">=games-engines/scummvm-1.5"
-DEPEND="$(unpacker_src_uri_depends)"
+DEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
 src_unpack() {
 	if use l10n_en || ( ! use l10n_en && ! use l10n_es && ! use l10n_pl ) ; then
 		mkdir -p en || die
-		unpacker ${PN}-en-v${PV}.zip
+		unpack ${PN}-en-v${PV}.zip
 		mv vol.{cat,dat} en/ || die
 	fi
 	if use l10n_es ; then
 		mkdir -p es || die
-		unpacker ${PN}-es-v${PV}.zip
+		unpack ${PN}-es-v${PV}.zip
 		mv soltys-es-v1-0/vol.{cat,dat} es/ || die
 	fi
 	if use l10n_pl ; then
 		mkdir -p pl || die
-		unpacker ${PN}-pl-v${PV}.zip
+		unpack ${PN}-pl-v${PV}.zip
 		mv vol.{cat,dat} pl/ || die
 	fi
 }
