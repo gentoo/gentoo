@@ -61,10 +61,6 @@ net-libs/libproxy kde
 sys-auth/polkit kde
 x11-misc/xscreensaver new-login
 
-# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
-# Missing stable
-dev-libs/protobuf python
-
 # Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
 # webkit-gtk is going to stay in ~all but amd64/x86
 # that are the only arches upstream is taking care

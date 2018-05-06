@@ -38,7 +38,6 @@ media-sound/pulseaudio equalizer
 
 # Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
 # Missing keywords
-dev-libs/protobuf python
 dev-python/pyquery test
 sys-fs/dmraid klibc
 
