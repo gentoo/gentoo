@@ -29,3 +29,9 @@ multilib_src_compile() {
 		HTML_DOCS=( "${BUILD_DIR}"/doc/_build/html/. )
 	fi
 }
+
+multilib_src_install() {
+	default
+
+	find "${D}" -name '*.la' -delete || die
+}
