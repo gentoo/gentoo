@@ -1069,9 +1069,6 @@ dev-games/physfs:slb - Enable Independence War SLB archive support
 dev-games/physfs:vdf - Enable Gothic/Gothic II VDF archive support
 dev-games/physfs:wad - Enable Doom WAD archive support
 dev-games/physfs:zip - Enable ZIP archive support
-dev-games/simgear:dns - Enable DNS resolver via net-libs/udns
-dev-games/simgear:gdal - Enable alternative terrain engine based on pagedLOD via sci-libs/gdal
-dev-games/simgear:subversion - Enable terrasync scenery downloader
 dev-haskell/aeson-pretty:lib-only - don't build 'aeson-pretty' executable.
 dev-haskell/ansi-terminal:example - Build the example application.
 dev-haskell/ansi-wl-pprint:example - Build the example application.

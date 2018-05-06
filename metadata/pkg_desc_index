@@ -1991,7 +1991,6 @@ dev-games/paklib 0.3: library for accessing Quake pak files
 dev-games/physfs 2.0.3-r2: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
-dev-games/simgear 2016.4.4: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.0.3: A general purpose tile map editor
 dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
