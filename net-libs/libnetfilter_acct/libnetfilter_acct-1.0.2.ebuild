@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils linux-info multilib
 
 DESCRIPTION="Userspace library providing interface to extended accounting infrastructure of NetFilter"
-HOMEPAGE="http://netfilter.org/projects/libnetfilter_acct"
-SRC_URI="http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+HOMEPAGE="https://netfilter.org/projects/libnetfilter_acct/"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
