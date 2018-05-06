@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_EXTRADOC="README.md History.markdown"
