@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit perl-module toolchain-funcs
 
 DESCRIPTION="Port Scanning Attack Detection daemon"
-SRC_URI="http://www.cipherdyne.org/psad/download/${P}.tar.bz2"
-HOMEPAGE="http://www.cipherdyne.org/psad"
+SRC_URI="https://www.cipherdyne.org/psad/download/${P}.tar.bz2"
+HOMEPAGE="https://www.cipherdyne.org/psad/"
 
 SLOT="0"
 LICENSE="GPL-2"
