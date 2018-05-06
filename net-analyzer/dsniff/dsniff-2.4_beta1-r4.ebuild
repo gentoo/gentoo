@@ -6,8 +6,8 @@ EAPI=0
 inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A collection of tools for network auditing and penetration testing"
-HOMEPAGE="http://monkey.org/~dugsong/dsniff/"
-SRC_URI="http://monkey.org/~dugsong/${PN}/beta/${P/_beta/b}.tar.gz
+HOMEPAGE="https://monkey.org/~dugsong/dsniff/"
+SRC_URI="https://monkey.org/~dugsong/${PN}/beta/${P/_beta/b}.tar.gz
 	mirror://debian/pool/main/d/${PN}/${PN}_2.4b1+debian-18.diff.gz"
 
 LICENSE="BSD"
