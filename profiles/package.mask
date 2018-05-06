@@ -681,10 +681,8 @@ dev-util/mutrace
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
-# headless mode in >=www-client/chromium-59.
-# Masked for removal in 90 days. Bug #589994.
+# headless mode in >=www-client/chromium-59. Bug #589994.
 www-client/phantomjs
-dev-ruby/poltergeist
 
 # Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
 # Broken runscript/changed behavior causing lvm2 to fail
