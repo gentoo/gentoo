@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="A non-blocking DNS resolver library"
-HOMEPAGE="http://www.monkey.org/~provos/libdnsres/"
-SRC_URI="http://www.monkey.org/~provos/${P}.tar.gz"
+HOMEPAGE="https://www.monkey.org/~provos/libdnsres/"
+SRC_URI="https://www.monkey.org/~provos/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
