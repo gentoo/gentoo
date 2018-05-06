@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://github.com/mgorny/gemato.git"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+blake2 bzip2 +gpg lzma sha3 test"
+IUSE="+blake2 bzip2 +gpg lzma sha3 test tools"
 
 MODULE_RDEPEND="
 	blake2? ( $(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )
@@ -32,4 +32,13 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_test() {
 	esetup.py test
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	if use tools; then
+		insinto /usr/share/gemato
+		doins utils/*.{bash,py}
+	fi
 }
