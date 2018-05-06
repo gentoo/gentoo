@@ -1,0 +1,218 @@
+From 92b5903a360931a7ba335fc10ae2e0802652326b Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 6 May 2018 13:13:37 -0400
+Subject: [PATCH] Remove arch-specic code from build_ffmpeg.py
+
+---
+ chromium/scripts/build_ffmpeg.py | 185 -------------------------------
+ 1 file changed, 185 deletions(-)
+
+diff --git a/chromium/scripts/build_ffmpeg.py b/chromium/scripts/build_ffmpeg.py
+index aa1fc54755..d7d8878db6 100755
+--- a/third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
++++ b/third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+@@ -534,201 +534,16 @@ def ConfigureAndBuild(target_arch, target_os, host_os, host_arch, parallel_jobs,
+     configure_flags['Common'].extend(SetupAndroidToolchain(target_arch))
+   else:
+     configure_flags['Common'].extend([
+-        # --optflags doesn't append multiple entries, so set all at once.
+-        '--optflags="-O2"',
+         '--enable-decoder=theora,vp8',
+         '--enable-parser=vp3,vp8',
+     ])
+ 
+-  if target_os in ('linux', 'linux-noasm', 'android'):
+-    if target_arch == 'x64':
+-      if target_os == 'android':
+-        configure_flags['Common'].extend([
+-            '--arch=x86_64',
+-        ])
+-      if target_os != 'android':
+-        configure_flags['Common'].extend(['--enable-lto'])
+-      pass
+-    elif target_arch == 'ia32':
+-      configure_flags['Common'].extend([
+-          '--arch=i686',
+-          '--extra-cflags="-m32"',
+-          '--extra-ldflags="-m32"',
+-      ])
+-      # Android ia32 can't handle textrels and ffmpeg can't compile without
+-      # them.  http://crbug.com/559379
+-      if target_os == 'android':
+-        configure_flags['Common'].extend([
+-            '--disable-x86asm',
+-        ])
+-    elif target_arch == 'arm' or target_arch == 'arm-neon':
+-      # TODO(ihf): ARM compile flags are tricky. The final options
+-      # overriding everything live in chroot /build/*/etc/make.conf
+-      # (some of them coming from src/overlays/overlay-<BOARD>/make.conf).
+-      # We try to follow these here closely. In particular we need to
+-      # set ffmpeg internal #defines to conform to make.conf.
+-      # TODO(ihf): For now it is not clear if thumb or arm settings would be
+-      # faster. I ran experiments in other contexts and performance seemed
+-      # to be close and compiler version dependent. In practice thumb builds are
+-      # much smaller than optimized arm builds, hence we go with the global
+-      # CrOS settings.
+-      configure_flags['Common'].extend([
+-          '--arch=arm',
+-          '--enable-armv6',
+-          '--enable-armv6t2',
+-          '--enable-vfp',
+-          '--enable-thumb',
+-          '--extra-cflags=-march=armv7-a',
+-      ])
+-
+-      if target_os == 'android':
+-        configure_flags['Common'].extend([
+-            # Runtime neon detection requires /proc/cpuinfo access, so ensure
+-            # av_get_cpu_flags() is run outside of the sandbox when enabled.
+-            '--enable-neon',
+-            '--extra-cflags=-mtune=generic-armv7-a',
+-            # Enabling softfp lets us choose either softfp or hardfp when doing
+-            # the chrome build.
+-            '--extra-cflags=-mfloat-abi=softfp',
+-        ])
+-        if target_arch == 'arm':
+-          print('arm-neon is the only supported arm arch for Android.\n')
+-          return 1
+-
+-        if target_arch == 'arm-neon':
+-          configure_flags['Common'].extend([
+-              '--extra-cflags=-mfpu=neon',
+-          ])
+-        else:
+-          configure_flags['Common'].extend([
+-              '--extra-cflags=-mfpu=vfpv3-d16',
+-          ])
+-      else:
+-        if host_arch != 'arm':
+-          configure_flags['Common'].extend([
+-              '--enable-cross-compile',
+-              '--target-os=linux',
+-              '--extra-cflags=--target=arm-linux-gnueabihf',
+-              '--extra-ldflags=--target=arm-linux-gnueabihf',
+-              '--sysroot=' + os.path.join(CHROMIUM_ROOT_DIR,
+-                                          'build/linux/debian_sid_arm-sysroot'),
+-              '--extra-cflags=-mtune=cortex-a8',
+-              # NOTE: we don't need softfp for this hardware.
+-              '--extra-cflags=-mfloat-abi=hard',
+-              # For some reason configure drops this...
+-              '--extra-cflags=-O2',
+-          ])
+-
+-        if target_arch == 'arm-neon':
+-          configure_flags['Common'].extend([
+-              '--enable-neon',
+-              '--extra-cflags=-mfpu=neon',
+-          ])
+-        else:
+-          configure_flags['Common'].extend([
+-              '--disable-neon',
+-              '--extra-cflags=-mfpu=vfpv3-d16',
+-          ])
+-    elif target_arch == 'arm64':
+-      if target_os != 'android':
+-        configure_flags['Common'].extend([
+-            '--enable-cross-compile',
+-            '--cross-prefix=/usr/bin/aarch64-linux-gnu-',
+-            '--target-os=linux',
+-            '--extra-cflags=--target=aarch64-linux-gnu',
+-            '--extra-ldflags=--target=aarch64-linux-gnu',
+-            '--sysroot=' + os.path.join(CHROMIUM_ROOT_DIR,
+-                                        'build/linux/debian_sid_arm64-sysroot'),
+-        ])
+-      configure_flags['Common'].extend([
+-          '--arch=aarch64',
+-          '--enable-armv8',
+-          '--extra-cflags=-march=armv8-a',
+-      ])
+-    elif target_arch == 'mipsel':
+-      # These flags taken from android chrome build with target_cpu='mipsel'
+-      configure_flags['Common'].extend([
+-          '--arch=mipsel',
+-          '--disable-mips32r6',
+-          '--disable-mips32r5',
+-          '--disable-mips32r2',
+-          '--disable-mipsdsp',
+-          '--disable-mipsdspr2',
+-          '--disable-msa',
+-          '--enable-mipsfpu',
+-          '--extra-cflags=-march=mipsel',
+-          '--extra-cflags=-mcpu=mips32',
+-          # Required to avoid errors about dynamic relocation w/o -fPIC.
+-          '--extra-ldflags=-z notext',
+-      ])
+-      if target_os == 'linux':
+-        configure_flags['Common'].extend([
+-            '--enable-cross-compile',
+-            '--target-os=linux',
+-            '--sysroot=' + os.path.join(CHROMIUM_ROOT_DIR,
+-                                        'build/linux/debian_sid_mips-sysroot'),
+-            '--extra-cflags=--target=mipsel-linux-gnu',
+-            '--extra-ldflags=--target=mipsel-linux-gnu',
+-        ])
+-    elif target_arch == 'mips64el':
+-      # These flags taken from android chrome build with target_cpu='mips64el'
+-      configure_flags['Common'].extend([
+-          '--arch=mips64el',
+-          '--enable-mipsfpu',
+-          '--disable-mipsdsp',
+-          '--disable-mipsdspr2',
+-          '--extra-cflags=-march=mips64el',
+-          # Required to avoid errors about dynamic relocation w/o -fPIC.
+-          '--extra-ldflags=-z notext',
+-      ])
+-      if target_os == 'android':
+-        configure_flags['Common'].extend([
+-            '--enable-mips64r6',
+-            '--extra-cflags=-mcpu=mips64r6',
+-            '--disable-mips64r2',
+-            '--enable-msa',
+-        ])
+-      if target_os == 'linux':
+-        configure_flags['Common'].extend([
+-            '--enable-cross-compile',
+-            '--target-os=linux',
+-            '--sysroot=' + os.path.join(
+-                CHROMIUM_ROOT_DIR, 'build/linux/debian_sid_mips64el-sysroot'),
+-            '--enable-mips64r2',
+-            '--disable-mips64r6',
+-            '--disable-msa',
+-            '--extra-cflags=-mcpu=mips64r2',
+-            '--extra-cflags=--target=mips64el-linux-gnuabi64',
+-            '--extra-ldflags=--target=mips64el-linux-gnuabi64',
+-        ])
+-    else:
+-      print(
+-          'Error: Unknown target arch %r for target OS %r!' % (target_arch,
+-                                                               target_os),
+-          file=sys.stderr)
+-      return 1
+-
+   if target_os == 'linux-noasm':
+     configure_flags['Common'].extend([
+         '--disable-asm',
+         '--disable-inline-asm',
+     ])
+ 
+-  if 'win' not in target_os:
+-    configure_flags['Common'].extend([
+-        '--enable-pic',
+-        '--cc=clang',
+-        '--cxx=clang++',
+-        '--ld=clang',
+-    ])
+-
+-    # Clang Linux will use the first 'ld' it finds on the path, which will
+-    # typically be the system one, so explicitly configure use of Clang's
+-    # ld.lld, to ensure that things like cross-compilation and LTO work.
+-    # This does not work for arm64, ia32 and is always used on mac.
+-    if target_arch not in ['arm64', 'ia32', 'mipsel'] and target_os != 'mac':
+-      configure_flags['Common'].append('--extra-ldflags=-fuse-ld=lld')
+-
+   # Should be run on Mac.
+   if target_os == 'mac':
+     if host_os != 'mac':
+-- 
+2.17.0
+
