@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets"
-HOMEPAGE="http://www.si6networks.com/tools/ipv6toolkit/"
+HOMEPAGE="https://www.si6networks.com/tools/ipv6toolkit/"
 
 LICENSE="GPL-3"
 SLOT="0"
