@@ -78,7 +78,6 @@ all_ruby_prepare() {
 	   spec/nanoc/filters/less_spec.rb \
 	   test/filters/test_{markaby,rainpress}.rb || die
 
-
 	# Use useable tmp dir
 	sed -i -e 's:/tmp/whatever:'${T}'/whatever:' spec/nanoc/base/checksummer_spec.rb || die
 
