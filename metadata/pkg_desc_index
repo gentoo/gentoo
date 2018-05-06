@@ -9288,7 +9288,7 @@ sci-libs/gdal 2.2.3-r1: Translator library for raster geospatial data formats (i
 sci-libs/geos 3.6.1 3.6.2: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
-sci-libs/hdf 4.2.8: General purpose library and format for storing scientific data
+sci-libs/hdf 4.2.8 4.2.13-r1: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.4.1: INDI Astronomical Control Protocol library
