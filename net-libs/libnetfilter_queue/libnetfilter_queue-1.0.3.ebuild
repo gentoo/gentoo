@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit linux-info
 
 DESCRIPTION="API to packets that have been queued by the kernel packet filter"
-HOMEPAGE="http://www.netfilter.org/projects/libnetfilter_queue/"
-SRC_URI="http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_queue/"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
