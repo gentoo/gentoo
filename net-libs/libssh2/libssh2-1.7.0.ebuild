@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ AUTOTOOLS_AUTORECONF=true
 inherit autotools-multilib
 
 DESCRIPTION="Library implementing the SSH2 protocol"
-HOMEPAGE="http://www.libssh2.org/"
-SRC_URI="http://www.${PN}.org/download/${P}.tar.gz"
+HOMEPAGE="https://www.libssh2.org"
+SRC_URI="https://www.${PN}.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
