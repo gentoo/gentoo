@@ -5,8 +5,8 @@ EAPI=6
 inherit autotools eutils multilib user systemd
 
 DESCRIPTION="A powerful latency measurement tool"
-HOMEPAGE="http://oss.oetiker.ch/smokeping/"
-SRC_URI="http://oss.oetiker.ch/smokeping/pub/${P}.tar.gz"
+HOMEPAGE="https://oss.oetiker.ch/smokeping/"
+SRC_URI="https://oss.oetiker.ch/smokeping/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
