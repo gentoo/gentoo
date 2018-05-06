@@ -356,10 +356,6 @@ gnome-base/gnome classic extras
 # Missing keywords from dev-ml/lablgtk, bug #487722
 net-p2p/mldonkey gtk guionly
 
-# Pacho Ramos <pacho@gentoo.org> (22 Sep 2013)
-# Missing keywords, bug #484734
-media-sound/rhythmbox visualizer
-
 # Markus Meier <maekke@gentoo.org> (15 Sep 2013)
 # Unkeyworded deps, bug #481462
 dev-python/ipython nbconvert
@@ -379,10 +375,6 @@ app-admin/conky audacious cmus irc lua-cairo lua-imlib lua-rsvg moc xmms2
 # Sergey Popov <pinkbyte@gentoo.org> (30 Jul 2013)
 # Not tested
 media-libs/devil allegro nvtt
-
-# Agostino Sarubbo <ago@gentoo.org> (23 Jul 2013)
-# java is not stable on arm
-dev-libs/protobuf java
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
 # requires net-misc/freerdp which is not keyworded on arm
