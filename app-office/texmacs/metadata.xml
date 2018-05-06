@@ -11,6 +11,5 @@
   </maintainer>
   <use>
     <flag name="netpbm">Add support for <pkg>media-libs/netpbm</pkg></flag>
-    <flag name="pdf">Add the experimental native pdf export</flag>
   </use>
 </pkgmetadata>
