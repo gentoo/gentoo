@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# net-print/cups not stable yet
+cups
+
 # Michał Górny <mgorny@gentoo.org> (16 Apr 2018)
 # Not stable yet.
 vala
