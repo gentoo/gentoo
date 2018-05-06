@@ -59,8 +59,6 @@ dev-python/pyyaml libyaml
 dev-python/setuptools_scm mercurial test
 dev-python/sphinx latex test
 dev-python/twisted-core gtk serial
-media-fonts/baekmuk-fonts X
-media-fonts/liberation-fonts X
 net-analyzer/netcat crypt
 
 # Michał Górny <mgorny@gentoo.org> (07 Feb 2018)
