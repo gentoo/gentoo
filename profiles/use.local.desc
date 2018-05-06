@@ -722,7 +722,6 @@ app-office/scribus:tk - Install tk based scripts e.g. FontSample.py
 app-office/skrooge:activities - Enable kactivities support
 app-office/skrooge:designer - Build plugins for dev-qt/designer
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
-app-office/texmacs:pdf - Add the experimental native pdf export
 app-office/texstudio:video - Use phonon for video embedding
 app-pda/gtkpod:clutter - Enable clutter support for displaying coverart
 app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/colordiff)
