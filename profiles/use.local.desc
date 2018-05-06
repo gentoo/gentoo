@@ -3842,7 +3842,9 @@ net-dns/unbound:dnstap - Enable dnstap support
 net-dns/unbound:ecdsa - Enable ECDSA support
 net-dns/unbound:gost - Enable GOST support
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
-net-firewall/conntrack-tools:libtirpc - Build against net-libs/libtirpc for RPC support
+net-firewall/conntrack-tools:cthelper - Use net-libs/libnetfilter_cthelper for userspace conntrack helper support
+net-firewall/conntrack-tools:cttimeout - Use net-libs/libnetfilter_cttimeout for conntrack timeout support
+net-firewall/conntrack-tools:libtirpc - Use net-libs/libtirpc for RPC support
 net-firewall/ebtables:perl - Install the ebtables-save script which uses perl
 net-firewall/firehol:ipset - Use net-firewall/ipset.
 net-firewall/firewalld:gui - Builds and installs GUI configurator and GTK+ applet

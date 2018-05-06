@@ -793,7 +793,7 @@ app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-mpost 0.3: mpost module for eselect
 app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
 app-eselect/eselect-oodict 20100228: Manages configuration of dictionaries for OpenOffice.Org
-app-eselect/eselect-opencl 1.1.0-r1: Utility to change the OpenCL implementation being used
+app-eselect/eselect-opencl 1.1.0-r1 1.1.0-r4: Utility to change the OpenCL implementation being used
 app-eselect/eselect-opengl 1.3.1-r4: Utility to change the OpenGL interface being used
 app-eselect/eselect-package-manager 20110108-r1: Manages PACKAGE_MANAGER environment variable
 app-eselect/eselect-pdftex 0.3: pdftex module for eselect
@@ -3044,7 +3044,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.8-r1 1.1.1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.23: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.5.6 1.5.7: Handler library for evdev events
+dev-libs/libevdev 1.5.6 1.5.7 1.5.9: Handler library for evdev events
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
@@ -3253,9 +3253,9 @@ dev-libs/vala-common 0.34.9 0.36.7 0.36.13: Build infrastructure for packages th
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.4 1.3.0: SIMD Vector Class Library for C++
 dev-libs/volume_key 0.3.9: Library for manipulating and storing storage volume encryption keys
-dev-libs/wayland 1.12.0 1.13.0: Wayland protocol libraries
-dev-libs/wayland-protocols 1.11: Wayland protocol files
-dev-libs/weston 1.9.0 1.11.0: Wayland reference compositor
+dev-libs/wayland 1.12.0 1.13.0 1.14.0: Wayland protocol libraries
+dev-libs/wayland-protocols 1.11 1.13: Wayland protocol files
+dev-libs/weston 1.9.0 1.11.0 3.0.0: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.24 1.4.4: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.24 1.4.4: SWIG and JNI bindings for Xapian
@@ -7466,7 +7466,7 @@ media-libs/libdvdread 5.0.3 6.0.0: Library for DVD navigation tools
 media-libs/libebur128 1.2.0-r1 1.2.3: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
-media-libs/libepoxy 1.4.1 1.4.2: Epoxy is a library for handling OpenGL function pointer management for you
+media-libs/libepoxy 1.4.1 1.4.2 1.5.1: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21 0.6.21-r1: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.6: Library to extract metadata from files of arbitrary type
@@ -10297,7 +10297,7 @@ virtual/mta 0 1: Virtual for Message Transfer Agents
 virtual/mysql 5.6-r6 5.6-r9: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
-virtual/opencl 0-r4: Virtual for OpenCL implementations
+virtual/opencl 0-r4 0-r5: Virtual for OpenCL implementations
 virtual/opengl 7.0 7.0-r1: Virtual for OpenGL implementation
 virtual/os-headers 0: Virtual for operating system headers
 virtual/package-manager 1: Virtual for the package manager
@@ -10527,7 +10527,7 @@ www-servers/uwsgi 2.0.17: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3: Varnish is a state-of-the-art, high-performance HTTP accelerator
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.4 1.0.5: list X application resource database
-x11-apps/bdftopcf 1.0.4 1.0.5: X.Org bdftopcf application
+x11-apps/bdftopcf 1.0.4 1.0.5 1.1: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.7 1.0.8: X.Org bitmap application
 x11-apps/editres 1.0.6 1.0.7: a dynamic resource editor for X Toolkit applications
@@ -10536,7 +10536,7 @@ x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
 x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/iceauth 1.0.6 1.0.7 1.0.8: ICE authority file utility
 x11-apps/ico 1.0.4 1.0.5: animate an icosahedron or other polyhedron
-x11-apps/intel-gpu-tools 1.15: Intel GPU userland tools
+x11-apps/intel-gpu-tools 1.15 1.20: Intel GPU userland tools
 x11-apps/listres 1.0.3 1.0.4: list resources in widgets
 x11-apps/luit 1.1.1: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.2.0 8.3.0: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
@@ -10576,10 +10576,10 @@ x11-apps/xfontsel 1.0.5 1.0.6: point and click selection of X11 font names
 x11-apps/xgamma 1.0.5 1.0.6: Alter a monitor's gamma correction through the X server
 x11-apps/xgc 1.0.4 1.0.5: X graphics demo
 x11-apps/xhost 1.0.6 1.0.7: Controls host and/or user access to a running X server
-x11-apps/xinit 1.3.4-r3: X Window System initializer
+x11-apps/xinit 1.3.4-r3 1.4.0: X Window System initializer
 x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r1: A generic touchscreen calibration program for X.Org
-x11-apps/xkbcomp 1.3.1 1.4.0: compile XKB keyboard description
+x11-apps/xkbcomp 1.3.1 1.4.0 1.4.1: compile XKB keyboard description
 x11-apps/xkbevd 1.1.3 1.1.4: XKB event daemon
 x11-apps/xkbprint 1.0.4: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
@@ -10604,38 +10604,38 @@ x11-apps/xset 1.2.3 1.2.4: X.Org xset application
 x11-apps/xsetroot 1.1.1 1.1.2: X.Org xsetroot application
 x11-apps/xsm 1.0.3 1.0.4: X Session Manager
 x11-apps/xstdcmap 1.0.3: X standard colormap utility
-x11-apps/xtrap 1.0.2-r1: X.Org xtrap application
+x11-apps/xtrap 1.0.2-r1 1.0.3: X.Org xtrap application
 x11-apps/xvidtune 1.0.2-r1 1.0.3: video mode tuner for Xorg
 x11-apps/xvinfo 1.1.2 1.1.3: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.6 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.3 1.1.4: window information utility for X
 x11-apps/xwud 1.0.4 1.0.5: image displayer for X
-x11-base/xcb-proto 1.12-r2: X C-language Bindings protocol headers
+x11-base/xcb-proto 1.12-r2 1.13: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.19: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
-x11-base/xorg-server 1.19.5-r1: X.Org X servers
+x11-base/xorg-server 1.19.5-r1 1.19.5-r2: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 304.137 340.106 375.82 378.13-r1 381.22-r1 384.130 387.34 390.42: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.5: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
-x11-drivers/xf86-input-libinput 0.24.0 0.25.1: X.org input driver based on libinput
+x11-drivers/xf86-input-libinput 0.24.0 0.25.1 0.27.1: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.2: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.3.0 0.3.1 0.4.1: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0: Driver for Synaptics touchpads
 x11-drivers/xf86-input-tslib 0.0.6-r2 0.0.6-r3: xorg input driver for use of tslib based touchscreen devices
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.0 1.4.1: null input driver
-x11-drivers/xf86-input-wacom 0.34.0: Driver for Wacom tablets and drawing devices
-x11-drivers/xf86-video-amdgpu 1.3.0: Accelerated Open Source driver for AMDGPU cards
+x11-drivers/xf86-input-wacom 0.34.0 0.36.0: Driver for Wacom tablets and drawing devices
+x11-drivers/xf86-video-amdgpu 1.3.0 18.0.1: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 7.9.0: ATI video driver
+x11-drivers/xf86-video-ati 7.9.0 18.0.1: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.6 0.3.7 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.4.4: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
-x11-drivers/xf86-video-intel 2.99.917_p20170216 2.99.917_p20170313: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.99.917_p20170216 2.99.917_p20170313 2.99.917_p20180214: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5: Matrox video driver
 x11-drivers/xf86-video-nouveau 1.0.13 1.0.15: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
@@ -10644,7 +10644,7 @@ x11-drivers/xf86-video-qxl 0.1.5: QEMU QXL paravirt video driver
 x11-drivers/xf86-video-r128 6.10.2: ATI Rage128 video driver
 x11-drivers/xf86-video-siliconmotion 1.7.9: Silicon Motion video driver
 x11-drivers/xf86-video-tdfx 1.4.7: 3Dfx video driver
-x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
+x11-drivers/xf86-video-vesa 2.3.3 2.3.4 2.4.0: Generic VESA video driver
 x11-drivers/xf86-video-virtualbox 5.1.32: VirtualBox X11 video driver for Gentoo guest
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.1.0 13.2.1: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
@@ -10699,7 +10699,7 @@ x11-libs/libXpm 3.5.12: X.Org Xpm library
 x11-libs/libXpresent 1.0.0: X Present Extension C Library
 x11-libs/libXrandr 1.5.1: X.Org Xrandr library
 x11-libs/libXrender 0.9.10: X.Org Xrender library
-x11-libs/libXres 1.0.7: X.Org XRes library
+x11-libs/libXres 1.0.7 1.2.0: X.Org XRes library
 x11-libs/libXt 1.1.5: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11: X.Org Xv library
@@ -10712,7 +10712,7 @@ x11-libs/libast 0.7 0.7-r1: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.82 2.4.88 2.4.89: X.Org libdrm library
+x11-libs/libdrm 2.4.82 2.4.88 2.4.89 2.4.91: X.Org libdrm library
 x11-libs/libfakekey 0.1-r3: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
@@ -10721,7 +10721,7 @@ x11-libs/libfontenc 1.1.3: X.Org fontenc library
 x11-libs/libgksu 2.0.12-r3 2.0.12-r4: A library for integration of su into applications
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
-x11-libs/libpciaccess 0.13.4: Library providing generic access to the PCI bus and devices
+x11-libs/libpciaccess 0.13.4 0.14: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libva 1.7.3: Video Acceleration (VA) API for Linux
@@ -10729,12 +10729,12 @@ x11-libs/libva-intel-driver 1.7.3: HW video decode support for Intel integrated 
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.24.1: A window navigation construction kit
-x11-libs/libxcb 1.12-r2: X C-language Bindings library
+x11-libs/libxcb 1.12-r2 1.13: X C-language Bindings library
 x11-libs/libxkbcommon 0.6.0 0.7.1: X.Org xkbcommon library
-x11-libs/libxkbfile 1.0.9: X.Org xkbfile library
+x11-libs/libxkbfile 1.0.9 1.0.9-r1: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
-x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
+x11-libs/libxshmfence 1.1 1.2 1.3: Shared memory fences using futexes
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1 0.15.1-r2: Athena Widgets with N*XTSTEP appearance
@@ -10927,7 +10927,7 @@ x11-misc/xfe 1.42: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
-x11-misc/xkeyboard-config 2.20: X keyboard configuration database
+x11-misc/xkeyboard-config 2.20 2.23.1-r1: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50: Just another screensaver application for X
 x11-misc/xmobar 0.23.1: A Minimalistic Text Based Status Bar
