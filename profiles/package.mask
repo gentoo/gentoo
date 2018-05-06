@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
+# SoQt does not build yet
+>=media-libs/coin-4.0.0
+>=media-libs/simage-1.7.1
+
 # Mikle Kolyada <zlogene@gentoo.org> (4 May 2018)
 # Upstream is dead, no maintainer, no longer updated.
 # Masked for removal in 30 days
@@ -332,7 +337,7 @@ media-fonts/fontawesome:0/5
 >=dev-libs/mpfr-4.0.0
 
 # Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
-# To adapt to changed version naming by upstream 
+# To adapt to changed version naming by upstream
 # (pcb-yyyymmdd to pcb-x.y.z) we move the ebuild to
 # pcb-0_pyyyymmdd and mask >=pcb-20000000.
 # Do not remove the mask until newer version gets stable
@@ -442,7 +447,7 @@ sys-kernel/hardened-sources
 >=dev-python/ipython-6
 
 # Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
-# Masked ede and all its dependencies due to security reasons. 
+# Masked ede and all its dependencies due to security reasons.
 # bug #398241
 app-xemacs/ede
 app-xemacs/semantic
