@@ -8,8 +8,8 @@ MY_PV="v${PV//./_}"
 inherit linux-info
 
 DESCRIPTION="Microsemi Adaptec RAID Controller Command Line Utility"
-HOMEPAGE="http://www.adaptec.com/en-us/downloads/"
-SRC_URI="http://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
+HOMEPAGE="https://www.microsemi.com/"
+SRC_URI="https://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
 
 KEYWORDS="-* ~amd64"
 LICENSE="Microsemi"
