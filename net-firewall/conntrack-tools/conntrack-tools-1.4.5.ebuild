@@ -11,13 +11,17 @@ SRC_URI="http://www.netfilter.org/projects/conntrack-tools/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
-IUSE="doc +libtirpc"
+IUSE="doc +cthelper +cttimeout +libtirpc"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3
 	>=net-libs/libnetfilter_conntrack-1.0.7
-	>=net-libs/libnetfilter_cthelper-1.0.0
-	>=net-libs/libnetfilter_cttimeout-1.0.0
+	cthelper? (
+		>=net-libs/libnetfilter_cthelper-1.0.0
+	)
+	cttimeout? (
+		>=net-libs/libnetfilter_cttimeout-1.0.0
+	)
 	>=net-libs/libnetfilter_queue-1.0.2
 	>=net-libs/libnfnetlink-1.0.1
 	!libtirpc? ( sys-libs/glibc[rpc(-)] )
@@ -72,7 +76,10 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with libtirpc)
+	econf \
+		$(use_enable cthelper) \
+		$(use_enable cttimeout) \
+		$(use_with libtirpc)
 }
 
 src_compile() {
