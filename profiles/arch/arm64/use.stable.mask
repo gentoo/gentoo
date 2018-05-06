@@ -45,10 +45,6 @@ tk
 # app-text/ghostscript-gpl is not stable here.
 postscript
 
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# media-libs/jasper is not stable here.
-jpeg2k
-
 # Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
 # dev-libs/libressl not marked stable yet
 libressl
