@@ -3,8 +3,11 @@
 
 EAPI=6
 
-MUTATIONS="es_ANY es_AR es_BO es_CL es_CO es_CR es_CU es_DO es_EC es_ES es_GT
-es_HN es_MX es_NI es_PA es_PE es_PH es_PR es_PY es_SV es_US es_UY es_VE"
+MUTATIONS=(
+	"es_ANY" "es_AR" "es_BO" "es_CL" "es_CO" "es_CR" "es_CU" "es_DO" "es_EC"
+	"es_ES" "es_GT" "es_HN" "es_MX" "es_NI" "es_PA" "es_PE" "es_PH" "es_PR"
+	"es_PY" "es_SV" "es_US" "es_UY" "es_VE"
+)
 
 MYSPELL_DICT=( )
 MYSPELL_HYPH=(
@@ -16,14 +19,14 @@ MYSPELL_THES=(
 )
 
 SRC_URI=""
-for i in ${MUTATIONS}; do
+for i in "${MUTATIONS[@]}"; do
 	MYSPELL_DICT+=(
 		"${i}.dic"
 		"${i}.aff"
 	)
 	SRC_URI+=" https://github.com/sbosio/rla-es/releases/download/v${PV}/${i}.oxt -> ${i}-${PV}.oxt"
 done
-unset i
+unset i MUTATIONS
 
 inherit myspell-r2
 
