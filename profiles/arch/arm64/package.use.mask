@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# New enough dev-ruby/webmock not keyworded yet
+>=dev-ruby/thor-0.20.0 test
+
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
