@@ -122,10 +122,10 @@ EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
-		DEPEND="sys-devel/make"
+		BDEPEND="sys-devel/make"
 		;;
 	ninja)
-		DEPEND="dev-util/ninja"
+		BDEPEND="dev-util/ninja"
 		;;
 	*)
 		eerror "Unknown value for \${CMAKE_MAKEFILE_GENERATOR}"
@@ -134,8 +134,13 @@ case ${CMAKE_MAKEFILE_GENERATOR} in
 esac
 
 if [[ ${PN} != cmake ]]; then
-	DEPEND+=" >=dev-util/cmake-${CMAKE_MIN_VERSION}"
+	BDEPEND+=" >=dev-util/cmake-${CMAKE_MIN_VERSION}"
 fi
+
+case ${EAPI} in
+	7) ;;
+	*) DEPEND=" ${BDEPEND}" ;;
+esac
 
 # Internal functions used by cmake-utils_use_*
 _cmake_use_me_now() {
