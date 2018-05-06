@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2 BSD MIT"
 SLOT=0
-IUSE="3d bluetooth concurrent designer -doc geolocation printsupport\
+IUSE="3d bluetooth concurrent designer -doc geolocation printsupport
 	script scxml svg test qml wayland webengine"
 
 RDEPEND="
@@ -47,9 +47,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare(){
-	if use !script ; then
-		eapply "${FILESDIR}/disable-qt5script.patch"
-	fi
+	eapply "${FILESDIR}/disable-qt5script.patch"
 
 	sed -i "/BackwardMacros.cmake/d" CMakeLists.txt || die
 	sed -i "/add_backward(gammaray_core)/d" core/CMakeLists.txt || die
