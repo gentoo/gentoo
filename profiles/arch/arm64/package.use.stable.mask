@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# No media-libs/freeglut and co stable yet
+media-libs/jasper opengl
+
 # Mart Raudsepp <leio@gentoo.org> (04 May 2018)
 # sci-libs/mpir fails tests, bug 640424
 dev-python/gmpy mpir
