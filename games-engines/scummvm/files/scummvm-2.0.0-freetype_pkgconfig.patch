@@ -1,0 +1,50 @@
+From 86c7fd67e5ab2e721de8493d162d7605b1b08823 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sun, 6 May 2018 10:22:48 +0200
+Subject: [PATCH] Use pkg-config to find freetype if freetype-config is not
+ available
+
+---
+ configure | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/configure b/configure
+index 8e2a387acc..e3c15a9a2a 100755
+--- a/configure
++++ b/configure
+@@ -4674,7 +4674,13 @@ if test "$_freetype2" != "no"; then
+ 	find_freetypeconfig
+ 
+ 	if test -z "$_freetypeconfig"; then
+-		_freetype2=no
++		if pkg-config --exists freetype2; then
++			FREETYPE2_LIBS=`pkg-config --libs freetype2`
++			FREETYPE2_CFLAGS=`pkg-config --cflags freetype2`
++			_freetype2=yes
++		else
++			_freetype2=no
++		fi
+ 	else
+ 		# Since 2.3.12, freetype-config prepends $SYSROOT to everything.
+ 		# This means we can't pass it a --prefix that includes $SYSROOT.
+@@ -4714,13 +4720,12 @@ EOF
+ 			fi
+ 			cc_check_clean
+ 		fi
+-
+-		if test "$_freetype2" = "yes"; then
+-			append_var LIBS "$FREETYPE2_LIBS"
+-			append_var INCLUDES "$FREETYPE2_CFLAGS"
+-		fi
+ 	fi
+ 
++	if test "$_freetype2" = "yes"; then
++		append_var LIBS "$FREETYPE2_LIBS"
++		append_var INCLUDES "$FREETYPE2_CFLAGS"
++	fi
+ fi
+ 
+ echocheck "FreeType2"
+-- 
+2.17.0
+
