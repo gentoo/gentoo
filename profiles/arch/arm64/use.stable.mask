@@ -4,14 +4,14 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# net-print/cups not stable yet
+cups
+
 # Michał Górny <mgorny@gentoo.org> (16 Apr 2018)
 # Not stable yet.
 vala
 webp
-
-# Mart Raudsepp <leio@gentoo.org> (03 Mar 2018)
-# media-gfx/fontforge not marked stable yet
-fontforge
 
 # Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
 # Neither x11-libs/gtk+ SLOT marked stable yet
@@ -40,14 +40,6 @@ postgres
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # dev-lang/tk is not stable here.
 tk
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# app-text/ghostscript-gpl is not stable here.
-postscript
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# media-libs/jasper is not stable here.
-jpeg2k
 
 # Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
 # dev-libs/libressl not marked stable yet
