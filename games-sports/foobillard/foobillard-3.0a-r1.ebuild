@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE="sdl video_cards_nvidia"
 
-DEPEND="x11-libs/libXaw
+RDEPEND="x11-libs/libXaw
 	x11-libs/libXi
 	virtual/opengl
 	virtual/glu
@@ -22,16 +22,18 @@ DEPEND="x11-libs/libXaw
 	sdl? ( media-libs/libsdl[video] )
 	!sdl? ( media-libs/freeglut )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_prepare() {
 	default
 	eapply \
 		"${FILESDIR}"/${P}-no_nvidia.patch \
+		"${FILESDIR}"/${P}-freetype_pkgconfig.patch \
 		"${FILESDIR}"/${P}-fbsd.patch \
 		"${FILESDIR}"/${P}-as-needed.patch \
 		"${FILESDIR}"/${P}-gl-clamp.patch
-	mv configure.{in,ac}
+	mv configure.{in,ac} || die
 	rm aclocal.m4
 
 	eautoreconf

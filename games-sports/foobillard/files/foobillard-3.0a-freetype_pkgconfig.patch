@@ -1,0 +1,35 @@
+--- foobillard-3.0a/configure.in
++++ foobillard-3.0a/configure.in
+@@ -13,7 +13,7 @@
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(limits.h unistd.h math.h stdlib.h stdio.h ft2build.h)
++AC_CHECK_HEADERS(limits.h unistd.h math.h stdlib.h stdio.h)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+--- foobillard-3.0a/src/Makefile.am
++++ foobillard-3.0a/src/Makefile.am
+@@ -50,7 +50,7 @@
+ #CC     = gcc
+ #CXXFLAGS = -O6 -s
+ #CFLAGS = -DXMESA -Wall -O3 -I$(INCDIR)
+-#CFLAGS = -Wall -O3 -I$(INCDIR) `freetype-config --cflags`
++#CFLAGS = -Wall -O3 -I$(INCDIR) `pkg-config --cflags freetype2`
+ if USE_SDL
+ SDL_CFLAGS = `sdl-config --cflags` -DUSE_SDL
+ SDL_LIBS   = `sdl-config --libs`
+@@ -79,10 +79,10 @@
+ SOUND_CFLAGS =
+ endif
+ 
+-AM_CFLAGS = -Wall `freetype-config --cflags` ${SDL_CFLAGS} ${NVIDIA_CFLAGS} ${SOUND_CFLAGS} ${DEBUG_CFLAGS}
++AM_CFLAGS = -Wall `pkg-config --cflags freetype2` ${SDL_CFLAGS} ${NVIDIA_CFLAGS} ${SOUND_CFLAGS} ${DEBUG_CFLAGS}
+ 
+ #LIBS   = -L$(LIBDIR) -lglut -lGLU -lGL -lXext -lXaw -lm -lXi -lpng -lz
+ #LIBS   = -L$(LIBDIR) -lglut -lGLU -lGL -lXext -lXaw -lm -lXi -lpng -lz
+-AM_LDFLAGS = ${all_libraries} `freetype-config --libs` ${SDL_LIBS} ${GLUT_LIBS}
++AM_LDFLAGS = ${all_libraries} `pkg-config --libs freetype2` ${SDL_LIBS} ${GLUT_LIBS}
+ #LDADD = ${X_PRE_LIBS} ${X_LIBS} ${X_EXTRA_LIBS} -lGL -lGLU -lXaw -lm -lXi -lpng -lz -L/home/floh/nvsdk/OpenGL/lib/ -lnvparse
+ LDADD = ${X_PRE_LIBS} ${X_LIBS} ${X_EXTRA_LIBS} -lGL -lGLU -lXaw -lm -lXi -lpng -lz
