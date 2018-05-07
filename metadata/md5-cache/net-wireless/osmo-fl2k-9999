@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=virtual/libusb:1 sys-devel/make >=dev-util/cmake-3.9.6 virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DESCRIPTION=turns FL2000-based USB 3.0 to VGA adapters into low cost DACs
+EAPI=6
+HOMEPAGE=https://osmocom.org/projects/osmo-fl2k/wiki
+IUSE=udev
+LICENSE=GPL-2+
+RDEPEND=virtual/libusb:1 media-sound/sox sys-apps/pv
+SLOT=0
+_eclasses_=cmake-utils	d2f8cff68b90b869ef9d460c6f3c4e2e	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	af51ccfceeb403ab80f1bf9209d372c8	linux-info	ca370deef9d44125d829f2eb6ebc83e0	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	udev	d91cac2c73b94629cad2daea66e0d182	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=9a54378ad03e0d77f63b30de8cb183f8
