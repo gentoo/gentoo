@@ -21,10 +21,5 @@ DEPEND="
 DOCS=( CHANGES.md README.md doc/yenc-draft.1.3.txt )
 
 python_test() {
-	# https://github.com/sabnzbd/sabyenc/pull/7
-	cat <<-EOF > pytest.ini
-		[pytest]
-		norecursedirs = yencfiles
-	EOF
 	pytest -v || die "Test failed."
 }
