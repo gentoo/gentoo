@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A very small C compiler for ix86/amd64"
-HOMEPAGE="http://bellard.org/tcc/"
-SRC_URI="http://download.savannah.gnu.org/releases/tinycc/${P}.tar.bz2"
+HOMEPAGE="https://bellard.org/tcc/"
+SRC_URI="https://download.savannah.gnu.org/releases/tinycc/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
