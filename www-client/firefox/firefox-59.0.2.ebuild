@@ -117,6 +117,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
+	eapply "${FILESDIR}/${PN}-59.0.2-gcc-8.patch"
 
 	# Enable gnomebreakpad
 	if use debug ; then
