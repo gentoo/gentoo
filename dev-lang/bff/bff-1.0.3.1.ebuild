@@ -12,7 +12,7 @@ SRC_URI="http://swapped.cc/bf/files/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 m68k ppc ppc64 s390 sh x86"
+KEYWORDS="amd64 arm ia64 m68k ppc ppc64 s390 sh x86"
 IUSE="test"
 
 DEPEND=""
