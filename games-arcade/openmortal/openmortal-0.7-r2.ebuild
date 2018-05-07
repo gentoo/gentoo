@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl[video]
+RDEPEND="media-libs/libsdl[video]
 	media-libs/sdl-image
 	media-libs/sdl-mixer
 	media-libs/sdl-ttf
@@ -21,13 +21,15 @@ DEPEND="media-libs/libsdl[video]
 	>=media-libs/freetype-2.4.0:2
 	dev-lang/perl
 "
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}
+	virtual/pkgconfig"
 
 src_prepare() {
 	default
 	eapply \
 		"${FILESDIR}/${P}"-gcc41.patch \
-		"${FILESDIR}/${P}"-freetype.patch
+		"${FILESDIR}/${P}"-freetype.patch \
+		"${FILESDIR}/${P}"-freetype_pkgconfig.patch
 	mv configure.{in,ac} || die
 	eautoreconf
 }
