@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit java-pkg-opt-2
 
 DESCRIPTION="A compiler for the Perl 6 programming language"
-HOMEPAGE="http://rakudo.org"
+HOMEPAGE="https://rakudo.org"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/rakudo/${PN}.git"
