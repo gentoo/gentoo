@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1
 
 DESCRIPTION="roleplaying game engine"
-HOMEPAGE="http://adonthell.linuxgames.com/"
+HOMEPAGE="http://adonthell.nongnu.org/"
 SRC_URI="https://savannah.nongnu.org/download/${PN}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
