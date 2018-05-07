@@ -28,7 +28,6 @@ DEPEND="${COMMONDEPEND}
 	sys-devel/bc
 	virtual/yacc
 	pax_kernel? ( sys-apps/elfix )
-	!dev-lang/mono-basic
 "
 
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
