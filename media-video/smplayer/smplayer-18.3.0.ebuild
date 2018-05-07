@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-14.9.0.6966-unbundle-qtsingleapplication.patch" # bug 487544
 	"${FILESDIR}/${PN}-17.1.0-advertisement_crap.patch"
 	"${FILESDIR}/${PN}-18.2.0-jobserver.patch"
+	"${FILESDIR}/${PN}-18.3.0-disable-werror.patch"
 )
 
 src_prepare() {
