@@ -6852,7 +6852,7 @@ kde-plasma/kscreen 5.11.5: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.11.5: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.11.5: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.11.5: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.11.5 5.11.5-r1: KWallet PAM module to not enter password again
+kde-plasma/kwallet-pam 5.11.5-r1: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.11.5: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.11.5: KDE window manager
 kde-plasma/kwrited 5.11.5: KDE Plasma daemon listening for wall and write messages
