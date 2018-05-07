@@ -33,6 +33,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	virtual/pkgconfig
 	x11-proto/xextproto
 	doc? ( app-doc/doxygen )
 	xinerama? ( x11-proto/xineramaproto )
@@ -56,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
 	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.3.4-freetype_pkgconfig.patch
 )
 
 src_prepare() {
