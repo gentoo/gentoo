@@ -5,7 +5,7 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="A packet generator and analyzer"
-HOMEPAGE="http://ostinato.org/"
+HOMEPAGE="https://ostinato.org"
 SRC_URI="https://github.com/pstavirs/ostinato/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
