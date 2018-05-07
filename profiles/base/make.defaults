@@ -32,7 +32,11 @@ CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
 # XDG_* since the values coming from user environment can collide with
 # ebuild-set ${HOME} (e.g. by referring to user's home directory).
 # We exclude XDG_DATA_DIRS & XDG_CONFIG_DIRS as those are set in env.d.
-ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR"
+#
+# PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX:
+# These are guaranteed to confuse perl module installation. Pre-EAPI7
+# the Perl eclasses bail out if they are set. Now we declare them here.
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX"
 
 # Variables that are set exclusively by the profile
 # and not by user configuration files.
