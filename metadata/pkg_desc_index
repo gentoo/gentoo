@@ -6852,7 +6852,7 @@ kde-plasma/kscreen 5.11.5: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.11.5: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.11.5: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.11.5: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.11.5: KWallet PAM module to not enter password again
+kde-plasma/kwallet-pam 5.11.5 5.11.5-r1: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.11.5: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.11.5: KDE window manager
 kde-plasma/kwrited 5.11.5: KDE Plasma daemon listening for wall and write messages
@@ -7513,7 +7513,7 @@ media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.2-r1: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.8.5: Library for playing MOD-like music files
-media-libs/libmp3splt 0.9.1a 0.9.2: a library for mp3splt to split mp3 and ogg files without decoding
+media-libs/libmp3splt 0.9.1a 0.9.2 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 1.9.1-r1 2.0.0: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.9 2.10: A library for interfacing Music Player Daemon (media-sound/mpd)
