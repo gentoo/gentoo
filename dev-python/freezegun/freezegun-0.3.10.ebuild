@@ -16,8 +16,8 @@ KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh
 IUSE="test"
 
 RDEPEND="
-	>dev-python/python-dateutil-2.0
-	dev-python/six
+	>dev-python/python-dateutil-2.0[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
