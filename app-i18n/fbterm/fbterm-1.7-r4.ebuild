@@ -14,13 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="gpm video_cards_vesa"
 
-COMMON_DEPEND="media-libs/fontconfig
+CDEPEND="media-libs/fontconfig
 	media-libs/freetype:2
 	gpm? ( sys-libs/gpm )
 	video_cards_vesa? ( dev-libs/libx86 )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${CDEPEND}
 	!>=sys-libs/ncurses-6.1"
-DEPEND="${COMMON_DEPEND}
+DEPEND="${CDEPEND}
 	sys-libs/ncurses
 	virtual/pkgconfig"
 
