@@ -13,6 +13,7 @@
 			providing access to various locale display names, localized number
 			and date formatting, etc.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Babel</remote-id>
 	</upstream>
