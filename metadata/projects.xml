@@ -635,6 +635,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:ComRel</url>
     <description>Community Relations handles many personnel-related tasks, solving conflicts and also ensuring that the Gentoo Code of Conduct and proper and professional behavior is followed across Gentoo's borders.</description>
     <subproject ref="undertakers@gentoo.org"/>
+    <member>
+      <email>bircoph@gentoo.org</email>
+      <name>Andrew Savchenko</name>
+    </member>
     <member is-lead="1">
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
@@ -650,6 +654,10 @@
     <member>
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
+    </member>
+    <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
     </member>
     <member>
       <email>pacho@gentoo.org</email>
