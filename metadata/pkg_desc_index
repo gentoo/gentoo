@@ -4925,7 +4925,7 @@ dev-python/ipython 3.2.1-r1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/irc 11.0.1 15.0.6: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
-dev-python/iso8601 0.1.10 0.1.11: Simple module to parse ISO 8601 dates
+dev-python/iso8601 0.1.10 0.1.11 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.5.4: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 4.2.5: A python utility/library to sort imports
 dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted environments and back
