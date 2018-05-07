@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires unstable dev-python/PyQt4
+media-sound/pulseaudio qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
 # Requires not stabilised dev-python/restkit
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
