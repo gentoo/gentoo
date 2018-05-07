@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/libbsd:= dev-libs/libyaml:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) idn? ( net-dns/libidn2:= ) unbound? ( >=net-dns/unbound-1.4.16:= ) libevent? ( dev-libs/libevent:= ) libev? ( dev-libs/libev:= ) libuv? ( dev-libs/libuv:= ) stubby? ( sys-libs/libcap:= )
 SLOT=0
 SRC_URI=https://getdnsapi.net/releases/getdns-1-4-1/getdns-1.4.1.tar.gz
-_eclasses_=fcaps	e80204189039ecc03f24151c518375f0	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	fa02994d0beba88681127d93da4411ec	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=fcaps	29a56915716950cd3d23630cede80d68	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	fa02994d0beba88681127d93da4411ec	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=e05b0292e61bae60c46253a73c844bef

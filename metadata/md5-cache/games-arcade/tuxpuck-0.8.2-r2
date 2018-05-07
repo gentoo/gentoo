@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=media-libs/libsdl media-libs/libpng:0= virtual/jpeg:0 media-libs/libvorbis media-libs/freetype:2
+DEPEND=media-libs/libsdl media-libs/libpng:0= virtual/jpeg:0 media-libs/libvorbis media-libs/freetype:2 virtual/pkgconfig
 DESCRIPTION=Hover hockey
 EAPI=6
 HOMEPAGE=http://home.no.net/munsuun/tuxpuck/
@@ -9,4 +9,4 @@ RDEPEND=media-libs/libsdl media-libs/libpng:0= virtual/jpeg:0 media-libs/libvorb
 SLOT=0
 SRC_URI=http://home.no.net/munsuun/tuxpuck/files/tuxpuck-0.8.2.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
-_md5_=a4a1bca4ee0bc79a4c6df2174811f277
+_md5_=8708a74f1b25419f7b55b97a0e5dbaa6
