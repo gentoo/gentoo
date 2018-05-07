@@ -27,6 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	dev-lang/swig
+	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
