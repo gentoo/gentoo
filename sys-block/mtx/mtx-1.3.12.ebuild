@@ -4,7 +4,7 @@
 EAPI=0
 
 DESCRIPTION="Utilities for controlling SCSI media changers and tape drives"
-HOMEPAGE="http://mtx.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/mtx/"
 SRC_URI="mirror://sourceforge/mtx/${P}.tar.gz"
 
 LICENSE="GPL-2"
