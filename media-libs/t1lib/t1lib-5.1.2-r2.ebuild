@@ -21,11 +21,7 @@ RDEPEND="X? (
 	)"
 DEPEND="${RDEPEND}
 	doc? ( virtual/latex-base )
-	X? (
-		x11-libs/libXfont
-		x11-proto/xproto
-		x11-proto/fontsproto
-	)"
+	X? ( x11-base/xorg-proto )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.1-parallel.patch
