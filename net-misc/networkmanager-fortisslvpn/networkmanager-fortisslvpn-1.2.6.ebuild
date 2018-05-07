@@ -1,10 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
+GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
-inherit gnome2 autotools
+inherit gnome2
 
 DESCRIPTION="NetworkManager Fortinet SSLVPN compatible plugin"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -15,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="gtk"
 
 RDEPEND="
-	>=net-misc/networkmanager-1.1:=
+	>=net-misc/networkmanager-1.2:=
 	>=dev-libs/glib-2.32:2
 	net-dialup/ppp:=
 	>=net-vpn/openfortivpn-1.2.0
@@ -31,16 +33,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	# Upstream patch 377ba9ca7fb33f3fb2ba5258a5af666869947597
-	eapply "${FILESDIR}/${P}-location-fix.diff"
-
-	eapply_user
-
-	eautoreconf
-
-	gnome2_src_prepare
-}
+PATCHES=(
+	# Upstream patch e5d476076e068f58ef4fa938f09945159fce36a6
+	"${FILESDIR}"/${P}-location-fix.diff
+	# Upstream patch 4195187fbe5be348222c9a8472f7c9cf0e51d346
+	"${FILESDIR}"/${P}-nm-utils-dependency-fix.diff
+)
 
 src_configure() {
 	gnome2_src_configure \
