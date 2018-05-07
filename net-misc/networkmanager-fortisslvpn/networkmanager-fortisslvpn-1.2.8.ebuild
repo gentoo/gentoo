@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,13 +32,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	# Upstream patch e5d476076e068f58ef4fa938f09945159fce36a6
-	"${FILESDIR}"/${P}-location-fix.diff
-	# Upstream patch 4195187fbe5be348222c9a8472f7c9cf0e51d346
-	"${FILESDIR}"/${P}-nm-utils-dependency-fix.diff
-)
 
 src_configure() {
 	gnome2_src_configure \
