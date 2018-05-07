@@ -22,16 +22,16 @@ RDEPEND="media-libs/fontconfig
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-gcc6.patch
-	"${FILESDIR}"/${PN}-noterminfo.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-gcc6.patch )
 
 FILECAPS=(
 	cap_sys_tty_config+ep usr/bin/${PN}
 )
 
 src_prepare() {
+	# bug #648472
+	sed -i "s/terminfo//" Makefile.am
+
 	default
 	eautoreconf
 }
