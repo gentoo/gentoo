@@ -7,5 +7,5 @@ IUSE=mercurial
 LICENSE=GPL-2
 RDEPEND=sys-apps/sed app-shells/bash app-text/wdiff sys-apps/diffutils mercurial? ( dev-vcs/mercurial )
 SLOT=0
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8
 _md5_=98a4f58804c8cd7181181fae36796e12

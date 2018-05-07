@@ -6,5 +6,5 @@ HOMEPAGE=https://idlastro.gsfc.nasa.gov/
 LICENSE=BSD-2 BSD
 RDEPEND=dev-lang/gdl
 SLOT=0
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8
 _md5_=ac474f298f79c2ce8677c6d2b4e19ce1

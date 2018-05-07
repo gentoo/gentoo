@@ -10,5 +10,5 @@ PDEPEND=>=dev-util/cargo-0.24.0
 RDEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 jemalloc? ( dev-libs/jemalloc )
 SLOT=stable/1.23
 SRC_URI=https://static.rust-lang.org/dist/rustc-1.23.0-src.tar.gz -> rustc-1.23.0-src.tar.gz amd64? ( https://static.rust-lang.org/dist/rust-1.22.0-x86_64-unknown-linux-gnu.tar.gz ) x86? ( https://static.rust-lang.org/dist/rust-1.22.0-i686-unknown-linux-gnu.tar.gz )
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	27d7f9da7187d283b7f3eae8390b7b09	python-utils-r1	c9de01becf9df3f8c10aeec3dc693f5d	toolchain-funcs	fa02994d0beba88681127d93da4411ec	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=66190b98a61687c08db96c21c3346e56

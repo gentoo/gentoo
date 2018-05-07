@@ -7,5 +7,5 @@ IUSE=+lognorm
 LICENSE=BSD
 PDEPEND=app-admin/sagan
 SLOT=0
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8
 _md5_=0bfa8f18da81fb433b1e89a10703d388

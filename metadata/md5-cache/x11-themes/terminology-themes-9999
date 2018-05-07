@@ -6,5 +6,5 @@ HOMEPAGE=https://charlesmilette.net/terminology-themes/
 LICENSE=GPL-3
 RDEPEND=x11-terms/terminology
 SLOT=0
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=f495666dc6a9e2ae1e5d9bdee7f05385

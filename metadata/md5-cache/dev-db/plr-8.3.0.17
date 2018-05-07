@@ -10,5 +10,5 @@ RDEPEND=dev-lang/R postgres_targets_postgres10? ( dev-db/postgresql:10=[server] 
 REQUIRED_USE=|| ( postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 postgres_targets_postgres9_2 )
 SLOT=0
 SRC_URI=https://github.com/postgres-plr/plr/archive/REL8_3_0_17.tar.gz -> plr-8.3.0.17.tar.gz
-_eclasses_=multibuild	72647e255187a1fadc81097b3657e5c3	postgres	c59d58664169a60e232dd018eae69172	postgres-multi	4ad3669c874bed68b375f87035e46db8	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=multibuild	35719a9cd25ec71ee49c966f6868454c	postgres	c59d58664169a60e232dd018eae69172	postgres-multi	4ad3669c874bed68b375f87035e46db8	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=6f448051e22e986a4784357725063779

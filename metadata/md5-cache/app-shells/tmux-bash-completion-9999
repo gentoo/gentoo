@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/imomaliev/tmux-bash-completion
 LICENSE=GPL-2
 RDEPEND=>=app-misc/tmux-2.2 app-shells/bash-completion
 SLOT=0
-_eclasses_=bash-completion-r1	8e447753aaf658afa609fbf961d80ab7	git-r3	25b08efef07cea6bcd45b8c6dcce2782	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
 _md5_=73621ef711bf68408774e732c74660d4

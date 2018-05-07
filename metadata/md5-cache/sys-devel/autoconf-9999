@@ -8,5 +8,5 @@ LICENSE=GPL-3
 PDEPEND=emacs? ( app-emacs/autoconf-mode )
 RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 !~sys-devel/autoconf-9999:2.5 >=sys-devel/autoconf-wrapper-13
 SLOT=9999
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782	toolchain-autoconf	f81999e77b1ca74160d9370a7ce9c6cf
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	toolchain-autoconf	f81999e77b1ca74160d9370a7ce9c6cf
 _md5_=d9156623a46588b8aa4ec395ff639b43

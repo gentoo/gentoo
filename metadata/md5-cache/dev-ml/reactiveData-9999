@@ -7,5 +7,5 @@ IUSE=+ocamlopt
 LICENSE=LGPL-3-with-linking-exception
 RDEPEND=dev-ml/react:= >=dev-lang/ocaml-4:=
 SLOT=0/9999
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782	opam	24b4a2529c1fd12f1304856d6c5a690d
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	opam	24b4a2529c1fd12f1304856d6c5a690d
 _md5_=98d9f05c2bc8dc841646d2e6d240b8e3

@@ -7,5 +7,5 @@ IUSE=libressl ssl
 LICENSE=BSD-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=2
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8
 _md5_=c3b38b5572c2ad78fb590aa1c531b8f4

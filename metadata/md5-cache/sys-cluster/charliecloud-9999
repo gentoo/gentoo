@@ -7,5 +7,5 @@ IUSE=doc examples suid test
 LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8
 _md5_=c870916b18d498e0045f8d03eaea87e9
