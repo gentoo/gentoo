@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils unpacker
+inherit eutils
 
 DESCRIPTION="Bert the little dragon searches for his father"
 HOMEPAGE="http://www.ucw.cz/draci-historie/index-en.html"
@@ -21,29 +21,29 @@ KEYWORDS="~amd64 ~x86"
 IUSE="l10n_cs l10n_de l10n_en l10n_pl"
 
 RDEPEND=">=games-engines/scummvm-1.1"
-DEPEND="$(unpacker_src_uri_depends)"
+DEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
 src_unpack() {
 	if use l10n_en || ( ! use l10n_cs && ! use l10n_de && ! use l10n_en && ! use l10n_pl ) ; then
 		mkdir en || die
-		unpacker dh-en-${PV}.zip
+		unpack dh-en-${PV}.zip
 		mv *.{dfw,fon,mid,sam} en/ || die
 	fi
 	if use l10n_cs ; then
 		mkdir cs || die
-		unpacker dh-cz-${PV}.zip
+		unpack dh-cz-${PV}.zip
 		mv *.{dfw,fon,mid,sam,zzz} cs/ || die
 	fi
 	if use l10n_de ; then
 		mkdir de || die
-		unpacker dh-de-${PV}.zip
+		unpack dh-de-${PV}.zip
 		mv *.{dfw,fon,mid,sam} de/ || die
 	fi
 	if use l10n_pl ; then
 		mkdir pl || die
-		unpacker dh-pl-${PV}.zip
+		unpack dh-pl-${PV}.zip
 		mv *.{dfw,fon,mid,sam,zzz} pl/ || die
 	fi
 }
