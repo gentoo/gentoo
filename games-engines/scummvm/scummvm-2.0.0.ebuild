@@ -30,6 +30,7 @@ RDEPEND=">=media-libs/libsdl2-2.0.0[sound,joystick,video]
 	fluidsynth? ( media-sound/fluidsynth )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
+	truetype? ( virtual/pkgconfig )
 	x86? ( dev-lang/nasm )"
 
 S="${WORKDIR}/${P/_/}"
