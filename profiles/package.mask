@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (7 May 2018)
+# Old slots that are ruby23-only and no longer maintained
+# upstream, and that do not have packages depend on them.
+# Migrate to newer slot of the same package.
+dev-ruby/askismet:0
+dev-ruby/arel:5.0
+dev-ruby/autoprefixer-rails:6
+dev-ruby/blankslate:2
+dev-ruby/http:0.6
+dev-ruby/jquery-ui-rails:4
+dev-ruby/net-ssh:3
+dev-ruby/sanitize:0
+dev-ruby/twitter:5
+
 # Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
 # SoQt does not build yet
 >=media-libs/coin-4.0.0
