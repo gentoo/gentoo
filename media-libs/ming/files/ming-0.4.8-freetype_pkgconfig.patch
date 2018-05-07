@@ -1,0 +1,47 @@
+From ef3719d39e8bb7e96c6ec57d60261f1516353460 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 4 May 2018 17:40:04 +0200
+Subject: [PATCH] Use pkg-config to find freetype
+
+As of freetype-2.9.1 the freetype-config script has been deprecated and
+is no longer shipped by default.
+---
+ configure.in | 22 ++--------------------
+ 1 file changed, 2 insertions(+), 20 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 95943a0b..f1685c26 100644
+--- a/configure.in
++++ b/configure.in
+@@ -257,26 +257,8 @@ freetype_support=yes)
+ 
+ if test "$freetype_support" = "yes"; then
+ 	dnl Check for the freetype library
+-	AC_ARG_WITH(freetype-config, [  --with-freetype-config=PROG   Use FreeType configuration program PROG], freetype_config=$withval, freetype_config=yes)
+-	if test "$freetype_config" = "yes"; then 
+-		AC_PATH_PROG(ft_config,freetype-config,no)
+-        	if test "$ft_config" = "no"; then
+-			echo "To compile ming please install freetype:"
+-			echo " as .deb user: sudo apt-get install libfreetype6 libfreetype6-dev"
+-			echo ""
+-			echo "or disable the freetype configuration option:"
+-			echo " --disable-freetype"
+-                	AC_MSG_ERROR([Could not detect freetype-config!])
+-        	fi
+-	else
+-        	ft_config="$freetype_config"
+-	fi
+-
+-	FREETYPE_CFLAGS="`$ft_config --cflags`"
+-	FREETYPE_LIBS="`$ft_config --libs`"
+-
+-	AC_SUBST(FREETYPE_LIBS)
+-	AC_SUBST(FREETYPE_CFLAGS)
++	PKG_PROG_PKG_CONFIG
++	PKG_CHECK_MODULES(FREETYPE, freetype2,, AC_MSG_ERROR([Could not find freetype]))
+ fi
+ 
+ dnl Check for the ungif or gif (new or old) libraries
+-- 
+2.17.0
+
