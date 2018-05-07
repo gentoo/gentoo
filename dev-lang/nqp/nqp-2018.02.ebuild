@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Not Quite Perl, a Perl 6 bootstrapping compiler"
-HOMEPAGE="http://rakudo.org/"
+HOMEPAGE="https://rakudo.org"
 
 LICENSE="Artistic-2"
 SLOT="0"
