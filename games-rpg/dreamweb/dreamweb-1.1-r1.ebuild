@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit unpacker eutils
+inherit eutils
 
 DESCRIPTION="Top-down adventure game set in a gritty futuristic/dystopian city"
 HOMEPAGE="http://wiki.scummvm.org/index.php/Dreamweb"
@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc l10n_de l10n_en l10n_en-GB l10n_es l10n_fr l10n_it"
 
 RDEPEND=">=games-engines/scummvm-1.7[flac]"
-DEPEND="$(unpacker_src_uri_depends)"
+DEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
@@ -31,38 +31,38 @@ src_unpack() {
 	if use l10n_de ; then
 		mkdir -p "${S}"/de || die
 		cd "${S}"/de || die
-		unpacker ${PN}-cd-de-${PV}.zip
+		unpack ${PN}-cd-de-${PV}.zip
 	fi
 	if use l10n_en || ( ! use l10n_de && ! use l10n_en && ! use l10n_en-GB && \
 			! use l10n_es && ! use l10n_fr && ! use l10n_it ) ; then
 		mkdir -p "${S}"/en_US || die
 		cd "${S}"/en_US || die
-		unpacker ${PN}-cd-us-${PV}.zip
+		unpack ${PN}-cd-us-${PV}.zip
 	fi
 	if use l10n_en-GB ; then
 		mkdir -p "${S}"/en_GB || die
 		cd "${S}"/en_GB || die
-		unpacker ${PN}-cd-uk-${PV}.zip
+		unpack ${PN}-cd-uk-${PV}.zip
 	fi
 	if use l10n_es ; then
 		mkdir -p "${S}"/es || die
 		cd "${S}"/es || die
-		unpacker ${PN}-cd-es-${PV}.zip
+		unpack ${PN}-cd-es-${PV}.zip
 	fi
 	if use l10n_fr ; then
 		mkdir -p "${S}"/fr || die
 		cd "${S}"/fr || die
-		unpacker ${PN}-cd-fr-${PV}.zip
+		unpack ${PN}-cd-fr-${PV}.zip
 	fi
 	if use l10n_it ; then
 		mkdir -p "${S}"/it || die
 		cd "${S}"/it || die
-		unpacker ${PN}-cd-it-${PV}.zip
+		unpack ${PN}-cd-it-${PV}.zip
 	fi
 	if use doc ; then
 		mkdir -p "${S}"/doc || die
 		cd "${S}"/doc || die
-		unpacker ${PN}-manuals-en-highres.zip
+		unpack ${PN}-manuals-en-highres.zip
 	fi
 }
 
