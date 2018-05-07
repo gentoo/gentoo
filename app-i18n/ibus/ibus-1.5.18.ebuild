@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools bash-completion-r1 gnome2-utils ltprune python-r1 vala virtualx
+inherit autotools bash-completion-r1 gnome2-utils python-r1 vala virtualx xdg-utils
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -14,8 +14,10 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="+X gconf +gtk +gtk2 +introspection +libnotify nls +python test vala wayland"
-REQUIRED_USE="gtk2? ( gtk )
+IUSE="+X +emoji gconf +gtk +gtk2 +introspection kde +libnotify nls +python test +unicode vala wayland"
+REQUIRED_USE="emoji? ( gtk )
+	gtk2? ( gtk )
+	kde? ( gtk )
 	libnotify? ( gtk )
 	python? (
 		${PYTHON_REQUIRED_USE}
@@ -42,6 +44,7 @@ CDEPEND="app-text/iso-codes
 		gtk2? ( x11-libs/gtk+:2 )
 	)
 	introspection? ( dev-libs/gobject-introspection )
+	kde? ( dev-qt/qtgui:5 )
 	libnotify? ( x11-libs/libnotify )
 	nls? ( virtual/libintl )
 	python? (
@@ -62,14 +65,24 @@ DEPEND="${CDEPEND}
 	$(vala_depend)
 	dev-util/intltool
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	emoji? (
+		app-i18n/unicode-cldr
+		app-i18n/unicode-emoji
+	)
+	nls? ( sys-devel/gettext )
+	unicode? ( app-i18n/unicode-data )"
 
 src_prepare() {
 	vala_src_prepare --ignore-use
-	# disable emoji
-	touch \
-		tools/main.vala \
-		ui/gtk3/panel.vala
+	sed -i "/UCD_DIR=/s/\$with_emoji_annotation_dir/\$with_ucd_dir/" configure.ac
+	if ! use emoji; then
+		touch \
+			tools/main.vala \
+			ui/gtk3/panel.vala
+	fi
+	if ! use kde; then
+		touch ui/gtk3/panel.vala
+	fi
 	if ! use libnotify; then
 		touch ui/gtk3/panel.vala
 	fi
@@ -87,9 +100,11 @@ src_prepare() {
 
 	default
 	eautoreconf
+	xdg_environment_reset
 }
 
 src_configure() {
+	local unicodedir="${EPREFIX}"/usr/share/unicode
 	local python_conf=()
 	if use python; then
 		python_setup
@@ -103,17 +118,22 @@ src_configure() {
 
 	econf \
 		$(use_enable X xim) \
+		$(use_enable emoji emoji-dict) \
+		$(use_with emoji unicode-emoji-dir "${unicodedir}"/emoji) \
+		$(use_with emoji emoji-annotation-dir "${unicodedir}"/cldr/common/annotations) \
 		$(use_enable gconf) \
 		$(use_enable gtk gtk3) \
 		$(use_enable gtk ui) \
 		$(use_enable gtk2) \
 		$(use_enable introspection) \
+		$(use_enable kde appindicator) \
 		$(use_enable libnotify) \
 		$(use_enable nls) \
 		$(use_enable test tests) \
+		$(use_enable unicode unicode-dict) \
+		$(use_with unicode ucd-dir "${EPREFIX}/usr/share/unicode-data") \
 		$(use_enable vala) \
 		$(use_enable wayland) \
-		--disable-emoji-dict \
 		"${python_conf[@]}"
 }
 
@@ -124,7 +144,7 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 
 	if use python; then
 		python_install() {
