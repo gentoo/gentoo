@@ -1,0 +1,15 @@
+commit 77c90022233634a3c891dc778585c526d9d846a1
+Author: Alexey Sokolov <sokolov@google.com>
+Date:   Sun Apr 1 11:33:20 2018 +0100
+
+    Don't install terminfo: ncurses-6.1 supports fbterm itself
+
+    https://bugs.gentoo.org/648472
+
+diff --git a/Makefile.am b/Makefile.am
+index 10814b6..8adcd57 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1 +1 @@
+-SUBDIRS = src im terminfo doc
++SUBDIRS = src im doc
