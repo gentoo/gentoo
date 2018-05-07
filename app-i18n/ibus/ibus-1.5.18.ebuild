@@ -130,10 +130,10 @@ src_configure() {
 		$(use_enable libnotify) \
 		$(use_enable nls) \
 		$(use_enable test tests) \
-		$(use_enable vala) \
-		$(use_enable wayland) \
 		$(use_enable unicode unicode-dict) \
 		$(use_with unicode ucd-dir "${EPREFIX}/usr/share/unicode-data") \
+		$(use_enable vala) \
+		$(use_enable wayland) \
 		"${python_conf[@]}"
 }
 
