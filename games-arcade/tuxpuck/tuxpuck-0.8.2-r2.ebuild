@@ -21,6 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	media-libs/freetype:2
+	virtual/pkgconfig
 "
 
 src_prepare() {
@@ -40,7 +41,8 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${P}-ldflags.patch \
 		"${FILESDIR}"/${P}-png15.patch \
-		"${FILESDIR}"/${P}-parallel.patch
+		"${FILESDIR}"/${P}-parallel.patch \
+		"${FILESDIR}"/${P}-freetype_pkgconfig.patch
 }
 
 src_compile() {
