@@ -1,0 +1,18 @@
+--- inkscape-0.92.3/configure.ac
++++ inkscape-0.92.3/configure.ac
+@@ -252,12 +252,9 @@
+ 			 [#include <malloc.h>])
+ ])
+ 
+-AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, no)
+-if test "x$FREETYPE_CONFIG" = "xno"; then
+-	AC_MSG_ERROR([Cannot find freetype-config])
+-fi
+-FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
+-FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
++PKG_CHECK_MODULES(FREETYPE, freetype2,,
++	AC_MSG_ERROR([Cannot find freetype])
++)
+ AC_SUBST(FREETYPE_CFLAGS)
+ AC_SUBST(FREETYPE_LIBS)
+ 

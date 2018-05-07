@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,9 +17,9 @@ IUSE="gpm video_cards_vesa"
 RDEPEND="media-libs/fontconfig
 	media-libs/freetype:2
 	gpm? ( sys-libs/gpm )
-	video_cards_vesa? ( dev-libs/libx86 )"
+	video_cards_vesa? ( dev-libs/libx86 )
+	>=sys-libs/ncurses-6.1"
 DEPEND="${RDEPEND}
-	sys-libs/ncurses
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-gcc6.patch )
@@ -29,7 +29,8 @@ FILECAPS=(
 )
 
 src_prepare() {
-	sed -i "s|tic|tic -o '\$(DESTDIR)\$(datadir)/terminfo'|" terminfo/Makefile.am
+	# bug #648472
+	sed -i "s/terminfo//" Makefile.am
 
 	default
 	eautoreconf
@@ -42,7 +43,6 @@ src_configure() {
 }
 
 src_install() {
-	dodir /usr/share/terminfo
 	default
 
 	use filecaps || fperms u+s /usr/bin/${PN}
