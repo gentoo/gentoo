@@ -1,12 +1,13 @@
 DEFINED_PHASES=configure prepare
-DEPEND=fastcgi? ( dev-libs/fcgi )
+DEPEND=fastcgi? ( dev-libs/fcgi ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A small cgi utility to show basic system information
 EAPI=5
-HOMEPAGE=http://projects.rafaelmartins.eng.br/cgisysinfo
+HOMEPAGE=https://github.com/rafaelmartins/cgisysinfo
 IUSE=fastcgi
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=fastcgi? ( dev-libs/fcgi )
 SLOT=0
-SRC_URI=http://distfiles.rafaelmartins.eng.br/cgisysinfo/cgisysinfo-0.4.1.tar.bz2
-_md5_=04aeb373eb40290cf8a576433640159f
+SRC_URI=https://github.com/rafaelmartins/cgisysinfo/archive/0.4.1.tar.gz -> cgisysinfo-0.4.1.tar.gz
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_md5_=40300521c9aa8be1269e579214b08eaa
