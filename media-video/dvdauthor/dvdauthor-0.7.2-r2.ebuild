@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic toolchain-funcs
+inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tools for generating DVD files to be played on standalone DVD players"
 HOMEPAGE="http://dvdauthor.sourceforge.net/"
@@ -28,8 +28,12 @@ S="${WORKDIR}/${PN}"
 
 DOCS=( AUTHORS ChangeLog README TODO )
 
+PATCHES=( "${FILESDIR}/${PN}-freetype_pkgconfig.patch" )
+
 src_prepare() {
 	default
+
+	eautoreconf
 
 	if use imagemagick && has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
 		eapply "${FILESDIR}/${PN}-0.7.2-imagemagick7.patch"
