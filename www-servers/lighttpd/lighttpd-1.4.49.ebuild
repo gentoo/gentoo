@@ -99,11 +99,7 @@ pkg_setup() {
 		ewarn "as conditionals and modules such as mod_re{write,direct}"
 		ewarn "and mod_ssi."
 	fi
-	if use mmap; then
-		ewarn "You have enabled the mmap option. This option may allow"
-		ewarn "local users to trigger SIGBUG crashes. Use this option"
-		ewarn "with EXTRA care."
-	fi
+
 	enewgroup lighttpd
 	enewuser lighttpd -1 -1 /var/www/localhost/htdocs lighttpd
 
