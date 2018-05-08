@@ -37,5 +37,4 @@ MULTILIB_STRICT_DIRS="/lib32 /usr/lib32 /usr/kde/*/lib32 /usr/qt/*/lib32 /usr/X1
 
 # 2006/10/05 - Gustavo Zacarias <gustavoz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mach64 mga r128 radeon sunbw2 suncg14 suncg3 \
-	suncg6 sunffb sunleo tdfx voodoo"
+VIDEO_CARDS="fbdev glint mga r128 radeon tdfx voodoo"
