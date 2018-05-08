@@ -110,11 +110,12 @@ fcaps() {
 		root=${EROOT:-${ROOT}}
 		;;
 	esac
+	root=${root%/}
 
 	# Process every file!
 	local file
 	for file ; do
-		[[ ${file} != /* ]] && file="${root}${file}"
+		[[ ${file} != /* ]] && file="${root}/${file}"
 
 		if use filecaps ; then
 			# Try to set capabilities.  Ignore errors when the
