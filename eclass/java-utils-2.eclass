@@ -15,7 +15,7 @@
 # you should inherit java-pkg-2 for Java packages or java-pkg-opt-2 for packages
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
-inherit eutils versionator multilib
+has "${EAPI:-0}" 0 1 2 3 4 5 6 && inherit eutils versionator multilib
 
 IUSE="elibc_FreeBSD"
 
@@ -1526,8 +1526,16 @@ java-pkg_is-vm-version-eq() {
 
 	local vm_version="$(java-pkg_get-vm-version)"
 
-	vm_version="$(get_version_component_range 1-2 "${vm_version}")"
-	needed_version="$(get_version_component_range 1-2 "${needed_version}")"
+	case ${EAPI} in
+	0|1|2|3|4|5|6)
+		vm_version="$(get_version_component_range 1-2 "${vm_version}")"
+		needed_version="$(get_version_component_range 1-2 "${needed_version}")"
+		;;
+	7)
+		vm_version="$(ver_cut 1-2 "${vm_version}")"
+		needed_version="$(ver_cut 1-2 "${needed_version}")"
+		;;
+	esac
 
 	if [[ -z "${vm_version}" ]]; then
 		debug-print "Could not get JDK version from DEPEND"
