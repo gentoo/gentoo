@@ -33,8 +33,8 @@ src_prepare() {
 	eapply_user
 
 	# save local macros, since we regenerate aclocal.m4 below
-	mv aclocal.m4 mylocal.m4 || die
-	AT_M4DIR=. eautoreconf
+	mv aclocal.m4 acinclude.m4 || die
+	eautoreconf
 }
 
 src_configure() {
