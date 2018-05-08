@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit user systemd
 
-DESCRIPTION="An open source Ticket Request System"
+DESCRIPTION="An Open source Ticket Request System"
 HOMEPAGE="https://www.otrs.com/"
 SRC_URI="https://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
