@@ -1,6 +1,6 @@
 --- a/ext/gd/config.m4	2018-04-24 11:09:54.000000000 -0400
 +++ b/ext/gd/config.m4	2018-05-04 15:18:49.867283889 -0400
-@@ -186,21 +186,35 @@
+@@ -186,21 +186,36 @@
  AC_DEFUN([PHP_GD_FREETYPE2],[
    if test "$PHP_FREETYPE_DIR" != "no"; then
  
@@ -17,6 +17,7 @@
 +      FREETYPE2_CFLAGS=`$PKG_CONFIG --cflags freetype2`
 +      FREETYPE2_LIBS=`$PKG_CONFIG --libs freetype2`
 +      FREETYPE2_VERSION=`$PKG_CONFIG --modversion freetype2`
++      FREETYPE2_DIR="found"
 +
 +      AC_MSG_RESULT(from pkgconfig: version $FREETYPE2_VERSION found)
 +    else
@@ -49,7 +50,7 @@
      AC_DEFINE(HAVE_LIBFREETYPE,1,[ ])
 --- a/configure	2018-04-24 11:10:05.000000000 -0400
 +++ b/configure	2018-05-04 15:18:45.626367913 -0400
-@@ -34348,21 +34348,78 @@
+@@ -34348,21 +34348,79 @@
  
    if test "$PHP_FREETYPE_DIR" != "no"; then
  
@@ -107,6 +108,7 @@
 +      FREETYPE2_CFLAGS=`$PKG_CONFIG --cflags freetype2`
 +      FREETYPE2_LIBS=`$PKG_CONFIG --libs freetype2`
 +      FREETYPE2_VERSION=`$PKG_CONFIG --modversion freetype2`
++      FREETYPE2_DIR="found"
 +
 +      { $as_echo "$as_me:${as_lineno-$LINENO}: result: from pkgconfig: version $FREETYPE2_VERSION found" >&5
 +$as_echo "from pkgconfig: version $FREETYPE2_VERSION found" >&6; }
