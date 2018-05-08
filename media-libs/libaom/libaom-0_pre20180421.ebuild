@@ -14,7 +14,7 @@ elif [[ ${PV} == *pre* ]]; then
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
-HOMEPAGE="http://aomedia.org"
+HOMEPAGE="https://aomedia.org"
 
 LICENSE="BSD-2"
 SLOT="0/0"
