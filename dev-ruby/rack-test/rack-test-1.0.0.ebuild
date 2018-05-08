@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -31,4 +31,7 @@ all_ruby_prepare() {
 	rm Gemfile* || die
 	sed -i -e '/bundler/d' -e '/[Cc]ode[Cc]limate/d' \
 		-e '1igem "rack", "~>1.0"' spec/spec_helper.rb || die
+
+	# Use correct version
+	sed -i -e 's/0.8.2/0.8.3/' lib/rack/test/version.rb || die
 }
