@@ -242,6 +242,7 @@ src_prepare() {
 		subversion_wc_info
 		printf "${ESVN_WC_REVISION}" > $svf
 	else
+		epatch "${FILESDIR}"/${PN}-1.3.0-freetype_pkgconfig.patch #655240
 		epatch "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
 	fi
 	if [ ! -f VERSION ] ; then

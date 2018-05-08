@@ -243,6 +243,7 @@ src_prepare() {
 		subversion_wc_info
 		printf "${ESVN_WC_REVISION}" > $svf
 	else
+		eapply "${FILESDIR}"/${PN}-1.3.0-freetype_pkgconfig.patch #655240
 		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
 		has_version '>media-video/ffmpeg-3.5' && eapply "${FILESDIR}"/${PN}-1.3-ffmpeg4.patch
 	fi
