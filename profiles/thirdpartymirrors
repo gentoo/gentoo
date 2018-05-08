@@ -24,7 +24,7 @@ mplayer		http://www1.mplayerhq.hu/MPlayer http://www2.mplayerhq.hu/MPlayer http:
 mysql		https://artfiles.org/mysql/ https://www.mirrorservice.org/sites/ftp.mysql.com/ https://ftp.gwdg.de/pub/misc/mysql/ https://ftp.jaist.ac.jp/pub/mysql/ http://mysql.he.net/ http://mysql.mirrors.ovh.net/ftp.mysql.com/ http://mirror.switch.ch/ftp/mirror/mysql/ http://vesta.informatik.rwth-aachen.de/mysql/ http://ftp.ntua.gr/pub/databases/mysql/ http://mysql.linux.cz/ http://linorg.usp.br/mysql/
 nongnu		http://download.savannah.nongnu.org/releases/ http://ftp.cc.uoc.gr/mirrors/nongnu.org/ http://ftp.twaren.net/Unix/NonGNU/ http://mirror.csclub.uwaterloo.ca/nongnu/ ftp://mirror.csclub.uwaterloo.ca/nongnu/ http://mirrors.fe.up.pt/pub/nongnu/ ftp://mirrors.fe.up.pt/pub/nongnu/ http://nongnu.askapache.com/ http://nongnu.uib.no/ ftp://nongnu.uib.no/pub/nongnu/ http://savannah.c3sl.ufpr.br/ ftp://savannah.c3sl.ufpr.br/savannah-nongnu/ ftp://ftp.twaren.net/Unix/NonGNU/
 openbsd		https://mirrors.evowise.com/pub/OpenBSD/
-openssl		ftp://ftp.openssl.org ftp://ftp.linux.hr/pub/openssl/ http://artfiles.org/openssl.org/ ftp://ftp.pca.dfn.de/pub/tools/net/openssl/ ftp://guest.kuria.katowice.pl/pub/openssl/ ftp://ftp.fi.muni.cz/pub/openssl/ http://openssl.skazkaforyou.com/
+openssl		https://artfiles.org/openssl.org/ https://www.mirrorservice.org/sites/ftp.openssl.org/ ftp://ftp.openssl.org
 opera		ftp://ftp.opera.com/pub/opera ftp://ftp.tu-cottbus.de/pub/net/opera ftp://ftp.task.gda.pl/pub/opera ftp://ftp.ntua.gr/pub/www/Opera ftp://ftp.rediris.es/mirror/opera ftp://ftp.heanet.ie/pub/opera
 postgresql	https://ftp.postgresql.org/pub/
 pypi		https://pypi.org/packages/source https://files.pythonhosted.org/packages/source
