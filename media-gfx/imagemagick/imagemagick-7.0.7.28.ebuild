@@ -8,7 +8,7 @@ inherit eutils flag-o-matic libtool multilib toolchain-funcs versionator
 MY_P=ImageMagick-$(replace_version_separator 3 '-')
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
-HOMEPAGE="http://www.imagemagick.org/"
+HOMEPAGE="https://www.imagemagick.org/"
 SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
 
 LICENSE="imagemagick"
