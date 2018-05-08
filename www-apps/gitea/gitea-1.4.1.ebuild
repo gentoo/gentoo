@@ -2,7 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+<<<<<<< HEAD
 inherit user systemd golang-build golang-vcs-snapshot
+=======
+inherit user golang-build golang-vcs-snapshot
+>>>>>>> www-apps/gitea: version bump to 1.4.1
 
 EGO_PN="code.gitea.io/gitea"
 KEYWORDS="~amd64 ~arm"
@@ -48,9 +52,15 @@ src_install() {
 }
 
 pkg_postinst() {
+<<<<<<< HEAD
 	if [[ ! -e "${EROOT}/var/lib/gitea/conf/app.ini" ]]; then
 		elog "No app.ini found, copying initial config over"
 		cp "${FILESDIR}"/app.ini "${EROOT}"/var/lib/gitea/conf/ || die
+=======
+	if [[ ! -e ${EROOT}/var/lib/gitea/conf/app.ini ]]; then
+		elog "No app.ini found, copying initial config over"
+		cp "${FILESDIR}"/app.ini /var/lib/gitea/conf/ || die
+>>>>>>> www-apps/gitea: version bump to 1.4.1
 		chown git:git /var/lib/gitea/conf/app.ini
 	else
 		elog "app.ini found, please check example file for possible changes"
