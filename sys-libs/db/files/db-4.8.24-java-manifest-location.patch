@@ -1,6 +1,5 @@
-diff -Nuar db-4.8.24.orig/dist/Makefile.in db-4.8.24/dist/Makefile.in
---- db-4.8.24.orig/dist/Makefile.in	2009-09-19 23:39:45.286001896 +0000
-+++ db-4.8.24/dist/Makefile.in	2009-09-19 23:41:13.079326882 +0000
+--- a/dist/Makefile.in
++++ b/dist/Makefile.in
 @@ -830,7 +830,7 @@
  	$(JAVA) -classpath $(JAVA_CLASSTOP) \
  	    com.sleepycat.persist.model.ClassEnhancer $(JAVA_CLASSTOP)
