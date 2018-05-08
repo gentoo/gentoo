@@ -152,10 +152,6 @@ video_cards_r300
 video_cards_r600
 video_cards_radeonsi
 
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_vesa
-
 # Diego Pettenò <flameeyes@gentoo.org>
 # Until xine-lib's keywording can be maintained, please leave it masked.
 xine

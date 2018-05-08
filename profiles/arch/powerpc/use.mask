@@ -112,10 +112,6 @@ lcd_devices_stv5730
 # Both
 lcd_devices_t6963
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_vesa
-
 # Intel Integrated Primitive (sci-libs/ipp) support
 ipp
 
