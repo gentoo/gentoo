@@ -9,52 +9,40 @@ however, since the behavior is not portable, no one should be relying on echo
 having any specific behavior.  they should use `printf` when they want an escape
 sequence.  it also makes dash smaller & faster to disable this logic entirely.
 
---- a/src/bltin/printf.c
-+++ b/src/bltin/printf.c
-@@ -439,34 +444,12 @@
+--- dash-0.5.10/src/bltin/printf.c
++++ dash-0.5.10/src/bltin/printf.c
+@@ -457,22 +457,13 @@
  int
  echocmd(int argc, char **argv)
  {
--	int nonl = 0;
--	struct output *outs = out1;
--
--	if (!*++argv)
--		goto end;
--	if (equal(*argv, "-n")) {
--		nonl = ~nonl;
--		if (!*++argv)
--			goto end;
+-	const char *lastfmt = snlfmt;
+-	int nonl;
 +	int i;
+ 
+-	if (*++argv && equal(*argv, "-n")) {
+-		argv++;
+-		lastfmt = "%s";
 +	for (i = 1; i < argc; ++i) {
 +		outstr(argv[i], out1);
-+		if (i < argc - 1)
++		if (1 < argc - 1)
 +			outc(' ', out1);
  	}
 -
 -	do {
--		int c;
+-		const char *fmt = "%s ";
+-		char *s = *argv;
 -
--		nonl += conv_escape_str(*argv);
--		outstr(stackblock(), outs);
--		if (nonl > 0)
--			break;
+-		if (!s || !*++argv)
+-			fmt = lastfmt;
 -
--		c = ' ';
--		if (!*++argv) {
--end:
--			if (nonl) {
--				break;
--			}
--			c = '\n';
--		}
--		outc(c, outs);
--	} while (*argv);
+-		nonl = print_escape_str(fmt, NULL, NULL, s ?: nullstr);
+-	} while (!nonl && *argv);
 +	outc('\n', out1);
  	return 0;
  }
---- a/src/dash.1
-+++ b/src/dash.1
-@@ -1180,43 +1180,15 @@
+--- dash-0.5.10/src/dash.1
++++ dash-0.5.10/src/dash.1
+@@ -1182,43 +1182,15 @@
  option turns off the effect of any preceding
  .Fl P
  options.
@@ -66,7 +54,7 @@ sequence.  it also makes dash smaller & faster to disable this logic entirely.
 -Unless the
 -.Fl n
 -option is present, a newline is output following the arguments.
--.Pp
+ .Pp
 -If any of the following sequences of characters is encountered during
 -output, the sequence is not output.  Instead, the specified action is
 -performed:
@@ -94,11 +82,10 @@ sequence.  it also makes dash smaller & faster to disable this logic entirely.
 -.It Li \e\e
 -Output a backslash.
 -.El
- .Pp
--All other backslash sequences elicit undefined behaviour.
 +No arguments or backslash sequences are supported as they are not portable.
 +They will be printed out exactly as passed in.
-+.Pp
+ .Pp
+-All other backslash sequences elicit undefined behaviour.
 +You can replace `echo -n ...` with the portable `printf %s ...` construct.
  .It eval Ar string ...
  Concatenate all the arguments with spaces.
