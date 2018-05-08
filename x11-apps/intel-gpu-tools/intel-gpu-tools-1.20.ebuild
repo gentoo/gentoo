@@ -7,7 +7,7 @@ inherit xorg-2
 
 DESCRIPTION="Intel GPU userland tools"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa glib gsl sound test-programs udev unwind valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xrandr xv"
 REQUIRED_USE="test-programs? ( sound? ( alsa gsl ) )"
 RESTRICT="test"
