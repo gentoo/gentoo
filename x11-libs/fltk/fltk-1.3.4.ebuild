@@ -82,6 +82,7 @@ src_prepare() {
 
 	cp fluid/{,x-}fluid.desktop || die
 
+	eaclocal
 	eautoconf
 	multilib_copy_sources
 }
