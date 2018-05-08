@@ -121,9 +121,6 @@ vpopmail
 # We don't have any virtual/mpi (bug 111807)
 mpi
 
-# Modular X: mask non-alpha cards
-video_cards_vesa
-
 # Matt Turner <mattst88@gentoo.org>
 # llvm is not keyworded
 video_cards_amdgpu
