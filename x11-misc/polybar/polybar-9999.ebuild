@@ -21,9 +21,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	${PYTHON_DEPS}
 	x11-base/xcb-proto
+	x11-libs/cairo
 	x11-libs/libxcb
-	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-image
+	x11-libs/xcb-util-wm
+	x11-libs/xcb-util-xrm
 	alsa? ( media-libs/alsa-lib )
 	curl? ( net-misc/curl )
 	i3wm? ( dev-libs/jsoncpp )
