@@ -8,18 +8,18 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="diagnostic_aggregator tests"
+DESCRIPTION="Packages related to gathering, viewing, and analyzing diagnostics data from robots"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-ros/diagnostic_aggregator
-	dev-ros/diagnostic_msgs
-	dev-ros/pluginlib
-	dev-ros/roscpp
-	dev-ros/rospy
-	dev-ros/rostest
+	dev-ros/diagnostic_analysis
+	dev-ros/diagnostic_common_diagnostics
+	dev-ros/diagnostic_updater
+	dev-ros/rosdiagnostic
+	dev-ros/self_test
+	dev-ros/test_diagnostic_aggregator
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/gcc6.patch" )

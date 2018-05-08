@@ -2,19 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-ROS_REPO_URI="https://github.com/ros-perception/perception_pcl"
+ROS_REPO_URI="https://github.com/ros/roscpp_core"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="PCL (Point Cloud Library) ROS interface stack"
+DESCRIPTION="Time and Duration implementations for C++ libraries"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/pcl_conversions
-	dev-ros/pcl_ros
+	dev-libs/boost:=[threads]
+	dev-ros/cpp_common
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )
+"

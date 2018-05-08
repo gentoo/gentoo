@@ -5,21 +5,17 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros/diagnostics"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
 inherit ros-catkin
 
-DESCRIPTION="diagnostic_aggregator tests"
+DESCRIPTION="Command to print aggregated diagnostic contents to the command line"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/diagnostic_aggregator
-	dev-ros/diagnostic_msgs
-	dev-ros/pluginlib
-	dev-ros/roscpp
-	dev-ros/rospy
-	dev-ros/rostest
+DEPEND="
+	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/gcc6.patch" )
+RDEPEND="${DEPEND}"

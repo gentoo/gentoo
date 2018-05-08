@@ -2,19 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-ROS_REPO_URI="https://github.com/ros-perception/perception_pcl"
+
+ROS_REPO_URI="https://github.com/ros/ros"
 KEYWORDS="~amd64 ~arm"
-ROS_SUBDIR=${PN}
+ROS_SUBDIR=tools/${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="PCL (Point Cloud Library) ROS interface stack"
+DESCRIPTION="Assorted shell commands for using ros with bash"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/pcl_conversions
-	dev-ros/pcl_ros
-"
+RDEPEND=""
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/catkin_prefix2.patch" )

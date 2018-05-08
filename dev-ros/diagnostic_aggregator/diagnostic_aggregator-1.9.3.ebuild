@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,18 +8,22 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="diagnostic_aggregator tests"
+DESCRIPTION="Aggregates ROS diagnostics"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/diagnostic_aggregator
-	dev-ros/diagnostic_msgs
+	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
+		dev-libs/tinyxml2:=
 	dev-ros/roscpp
 	dev-ros/rospy
 	dev-ros/rostest
+	dev-ros/xmlrpcpp
+	dev-ros/bondcpp
+	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
-DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/gcc6.patch" )
+DEPEND="${RDEPEND}
+	test? ( dev-ros/rostest )"
