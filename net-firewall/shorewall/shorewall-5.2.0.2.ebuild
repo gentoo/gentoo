@@ -177,9 +177,6 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall.initd-r3 "${S}"/${MY_PN_IPV4}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall.systemd "${S}"/${MY_PN_IPV4}/gentoo.service || die "Copying shorewall.systemd failed"
 		eend 0
-
-		eapply "${FILESDIR}"/shorewall-5.2.0.1-YESNO.patch
-		eapply "${FILESDIR}"/shorewall-5.2.0.1-AUTOMAKE-SAVE.patch
 	fi
 
 	# shorewall6
