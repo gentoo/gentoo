@@ -18,9 +18,7 @@ DEFAULT_ABI="x86_fbsd"
 ABI="x86_fbsd"
 LIBDIR_x86_fbsd="lib"
 
-VIDEO_CARDS="apm ark chips cirrus cyrix dummy i128 intel mach64 mga \
-	nv r128 radeon rendition s3 s3virge savage siliconmotion sis \
-	sisusb tga trident tseng via vmware"
+VIDEO_CARDS="dummy intel mga nv r128 radeon siliconmotion via vmware"
 
 # Unhide the CPU_FLAGS_X86 USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_X86"
