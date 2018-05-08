@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 WANT_LIBTOOL="none"
 
-inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs
+inherit autotools estack flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV/_/}"
 PATCHSET_VERSION="3.5.4-1"
@@ -58,36 +58,37 @@ S="${WORKDIR}/${MY_P}"
 
 PYVER=${SLOT%/*}
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
+	"${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
+	"${FILESDIR}/3.6-disable-nis.patch"
+	"${FILESDIR}/python-3.5.5-libressl-compatibility.patch"
+	"${FILESDIR}/python-3.5.5-hash-unaligned.patch"
+)
+
 src_prepare() {
 	# Ensure that internal copies of expat, libffi and zlib are not used.
-	rm -fr Modules/expat
-	rm -fr Modules/_ctypes/libffi*
-	rm -fr Modules/zlib
+	rm -fr Modules/expat || die
+	rm -fr Modules/_ctypes/libffi* || die
+	rm -fr Modules/zlib || die
 
 	if tc-is-cross-compiler; then
-		# Invokes BUILDPYTHON, which is built for the host arch
-		local EPATCH_EXCLUDE="*_regenerate_platform-specific_modules.patch"
+		rm -f "${WORKDIR}"/patches/06_all_regenerate_platform-specific_modules.patch
 	fi
+	eapply "${WORKDIR}"/patches/${patches}
 
-	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
-	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
-	epatch "${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
-	epatch "${FILESDIR}/3.6-disable-nis.patch"
-	epatch "${FILESDIR}/python-3.5.5-libressl-compatibility.patch"
-	epatch "${FILESDIR}/python-3.5.5-hash-unaligned.patch"
-
-	epatch_user
+	default
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
-		configure.ac \
 		Lib/distutils/command/install.py \
 		Lib/distutils/sysconfig.py \
 		Lib/site.py \
 		Lib/sysconfig.py \
 		Lib/test/test_site.py \
 		Makefile.pre.in \
-		Modules/getpath.c \
 		Modules/Setup.dist \
+		Modules/getpath.c \
+		configure.ac \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
 	eautoreconf
@@ -208,6 +209,7 @@ src_test() {
 	done
 
 	local -x PYTHONDONTWRITEBYTECODE=
+
 	emake test EXTRATESTOPTS="-u-network" CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
 	local result=$?
 
@@ -242,13 +244,13 @@ src_install() {
 		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
 
 	# Fix collisions between different slots of Python.
-	rm -f "${ED}usr/$(get_libdir)/libpython3.so"
+	rm -f "${ED}/usr/$(get_libdir)/libpython3.so"
 
 	# Cheap hack to get version with ABIFLAGS
-	local abiver=$(cd "${ED}usr/include"; echo python*)
+	local abiver=$(cd "${ED}/usr/include"; echo python*)
 	if [[ ${abiver} != python${PYVER} ]]; then
 		# Replace python3.X with a symlink to python3.Xm
-		rm "${ED}usr/bin/python${PYVER}" || die
+		rm "${ED}/usr/bin/python${PYVER}" || die
 		dosym "${abiver}" "/usr/bin/python${PYVER}"
 		# Create python3.X-config symlink
 		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
@@ -259,17 +261,17 @@ src_install() {
 	# python seems to get rebuilt in src_install (bug 569908)
 	# Work around it for now.
 	if has_version dev-libs/libffi[pax_kernel]; then
-		pax-mark E "${ED}usr/bin/${abiver}"
+		pax-mark E "${ED}/usr/bin/${abiver}"
 	else
-		pax-mark m "${ED}usr/bin/${abiver}"
+		pax-mark m "${ED}/usr/bin/${abiver}"
 	fi
 
 	use elibc_uclibc && rm -fr "${libdir}/test"
 	use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
-	use tk || rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
+	use tk || rm -fr "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
 
 	use threads || rm -fr "${libdir}/multiprocessing"
-	use wininst || rm -f "${libdir}/distutils/command/"wininst-*.exe
+	use wininst || rm -fr "${libdir}/distutils/command/"wininst-*.exe
 
 	dodoc "${S}"/Misc/{ACKS,HISTORY,NEWS}
 
@@ -288,7 +290,7 @@ src_install() {
 	sed \
 		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${PYVER/./_}_PORT:" \
 		-e "s:@PYDOC@:pydoc${PYVER}:" \
-		-i "${ED}etc/conf.d/pydoc-${PYVER}" "${ED}etc/init.d/pydoc-${PYVER}" || die "sed failed"
+		-i "${ED}/etc/conf.d/pydoc-${PYVER}" "${ED}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
 	local vars=( EPYTHON PYTHON_SITEDIR PYTHON_SCRIPTDIR )

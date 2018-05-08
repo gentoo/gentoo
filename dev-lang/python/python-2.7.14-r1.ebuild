@@ -7,7 +7,7 @@ WANT_LIBTOOL="none"
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs multiprocessing
 
 MY_P="Python-${PV}"
-PATCHSET_VERSION="2.7.14-0"
+PATCHSET_VERSION="2.7.14-1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
@@ -30,9 +30,7 @@ RDEPEND="app-arch/bzip2:0=
 	virtual/libintl
 	berkdb? ( || (
 		sys-libs/db:5.3
-		sys-libs/db:5.2
 		sys-libs/db:5.1
-		sys-libs/db:5.0
 		sys-libs/db:4.8
 		sys-libs/db:4.7
 		sys-libs/db:4.6
