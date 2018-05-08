@@ -9389,7 +9389,7 @@ sci-physics/root 5.34.36: C++ data analysis framework and interpreter from CERN
 sci-visualization/epix 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/ggobi 2.1.11: Visualization program for exploring high-dimensional data
-sci-visualization/gnuplot 5.0.1-r1 5.0.7 5.2.2: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.0.7 5.2.2: Command-line driven interactive plotting program
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/mayavi 4.3.0 4.5.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer
