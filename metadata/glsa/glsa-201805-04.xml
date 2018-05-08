@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-04">
+  <title>rsync: Arbitrary command execution</title>
+  <synopsis>A vulnerability in rsync might allow remote attackers to execute
+    arbitrary commands.
+  </synopsis>
+  <product type="ebuild">rsync</product>
+  <announced>2018-05-08</announced>
+  <revised count="1">2018-05-08</revised>
+  <bug>646818</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">3.1.3</unaffected>
+      <vulnerable range="lt">3.1.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>File transfer program to keep remote files into sync.</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in rsync’s parse_arguments function in
+      options.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could possibly execute arbitrary commands with the
+      privilege of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rsync users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/rsync-3.1.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5764">CVE-2018-5764</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-03T08:10:23Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2018-05-08T15:27:34Z">b-man</metadata>
+</glsa>
