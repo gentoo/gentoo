@@ -1,6 +1,6 @@
 DEFINED_PHASES=config install postinst prepare setup
 DEPEND=media-libs/libpng:0 virtual/pkgconfig
-DESCRIPTION=OTRS is an Open source Ticket Request System
+DESCRIPTION=An open source Ticket Request System
 EAPI=6
 HOMEPAGE=https://www.otrs.com/
 IUSE=apache2 fastcgi +gd ldap mod_perl +mysql pdf postgres soap
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( mysql postgres )
 SLOT=0
 SRC_URI=https://ftp.otrs.org/pub/otrs/otrs-5.0.25.tar.bz2
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	fa02994d0beba88681127d93da4411ec	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=1058127987a3cab27504540f48dd14e1
+_md5_=fb61f8431e82a8a43aa65d5dc7e66ceb
