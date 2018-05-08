@@ -210,7 +210,7 @@
     <description>The Antivirus Project maintains antivirus-related packages.</description>
     <member>
       <email>lordvan@gentoo.org</email>
-      <name>Thomas R</name>
+      <name>Thomas Raschbacher</name>
     </member>
   </project>
   <project>
@@ -4059,7 +4059,7 @@ developers and volunteer mentors.</description>
     </member>
     <member>
       <email>lordvan@gentoo.org</email>
-      <name>Thomas R</name>
+      <name>Thomas Raschbacher</name>
       <role>Member ( DVB )</role>
     </member>
     <member is-lead="1">
