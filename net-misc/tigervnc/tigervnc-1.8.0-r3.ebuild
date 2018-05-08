@@ -22,17 +22,19 @@ IUSE="+drm gnutls nls java +opengl pam server +xorgmodule xinerama dri3"
 
 CDEPEND="virtual/jpeg:0
 	sys-libs/zlib:=
-	>=x11-libs/libXtst-1.0.99.2
 	>=x11-libs/fltk-1.3.1
 	gnutls? ( net-libs/gnutls:= )
 	nls? ( virtual/libiconv )
 	pam? ( virtual/pam )
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXrender
 	server? (
-		dev-lang/perl
-		>=x11-libs/libXi-1.2.99.1
-		>=x11-libs/libXfont-1.4.2
-		>=x11-libs/libxkbfile-1.0.4
-		x11-libs/libXrender
+		x11-libs/libXau
+		x11-libs/libXdamage
+		x11-libs/libXdmcp
+		x11-libs/libXfont2
+		x11-libs/libXtst
 		>=x11-libs/pixman-0.27.2
 		>=x11-apps/xauth-1.0.3
 		x11-apps/xsetroot
@@ -53,11 +55,21 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/nasm )
-	x11-libs/libXfont2
 	nls? ( sys-devel/gettext )
 	java? ( >=virtual/jdk-1.5 )
 	x11-base/xorg-proto
-	server?	(
+	media-libs/fontconfig
+	x11-base/xorg-proto
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libXcursor
+	x11-libs/libXfixes
+	x11-libs/libXft
+	x11-libs/libXi
+	server? (
+		dev-libs/libbsd
+		x11-libs/libxkbfile
+		x11-libs/libxshmfence
 		virtual/pkgconfig
 		media-fonts/font-util
 		x11-misc/util-macros
