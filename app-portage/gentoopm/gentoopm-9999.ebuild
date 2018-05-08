@@ -14,7 +14,7 @@ SRC_URI=""
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc"
+IUSE=""
 
 RDEPEND="
 	|| (
@@ -22,26 +22,8 @@ RDEPEND="
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
 		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
 		>=sys-apps/paludis-3.0.0_pre20170219[python,${PYTHON_USEDEP}] )"
-DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep python2_7)] )"
 PDEPEND="app-eselect/eselect-package-manager"
-
-REQUIRED_USE="doc? ( $(python_gen_useflags python2_7) )"
-
-src_configure() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
-	distutils-r1_src_configure
-}
-
-python_compile_all() {
-	use doc && esetup.py doc
-}
 
 python_test() {
 	esetup.py test
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/. )
-
-	distutils-r1_python_install_all
 }
