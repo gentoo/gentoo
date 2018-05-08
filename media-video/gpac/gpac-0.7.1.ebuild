@@ -56,12 +56,14 @@ RDEPEND="
 "
 # disabled upstream, see applications/Makefile
 # wxwidgets? ( =x11-libs/wxGTK-2.8* )
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 # DOCS="AUTHORS BUGS Changelog README.md TODO doc/CODING_STYLE doc/*.doc doc/*.bt doc/SceneGenerators doc/ipmpx_syntax.bt doc/*.txt"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.7.1-configure.patch"
 	"${FILESDIR}/ffmpeg4.patch"
+	"${FILESDIR}/${PN}-freetype.patch"
 )
 
 DOCS=(
