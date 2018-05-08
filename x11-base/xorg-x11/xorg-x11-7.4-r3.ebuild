@@ -119,19 +119,7 @@ RDEPEND="${RDEPEND}
 
 DEPEND="${RDEPEND}"
 
-pkg_preinst() {
-	# Save xorg.conf because of bug #278268
-	if [[ -f "${EROOT%/}/etc/X11/xorg.conf" ]]; then
-		cp "${EROOT%/}/etc/X11/xorg.conf" "${T}" || die
-	fi
-}
-
 pkg_postinst() {
-	# Restore saved xorg.conf
-	if [[ -f "${T}/xorg.conf" ]]; then
-		cp "${T}/xorg.conf" "${EROOT%/}/etc/X11/xorg.conf" || die
-	fi
-
 	elog
 	elog "Please note that the xcursors are in ${EROOT%/}/usr/share/cursors/${PN}."
 	elog "Any custom cursor sets should be placed in that directory."
