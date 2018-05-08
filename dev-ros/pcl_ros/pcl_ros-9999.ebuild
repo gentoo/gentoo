@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roslib
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/message_filters
 	>=dev-cpp/eigen-3.2.5:3
 	dev-ros/pluginlib
 	dev-libs/console_bridge:=
