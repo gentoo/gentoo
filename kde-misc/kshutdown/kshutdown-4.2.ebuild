@@ -12,7 +12,7 @@ HOMEPAGE="https://kshutdown.sourceforge.io"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-source-${PV/_}.zip"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+kde"
 
 COMMON_DEPEND="
