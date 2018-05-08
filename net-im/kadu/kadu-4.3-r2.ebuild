@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXScrnSaver
-	gadu? ( >=net-libs/libgadu-1.11.1[threads] )
+	gadu? ( >=net-libs/libgadu-1.12.2[threads] )
 	mpd? ( media-libs/libmpdclient )
 	otr? (
 		>=dev-libs/libgcrypt-1.2.2:0
