@@ -2956,7 +2956,7 @@ dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 2.0: foreign function call libraries
 dev-libs/folks 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1: Simple XLS data extraction library
-dev-libs/fribidi 0.19.5-r1 0.19.6: A free implementation of the unicode bidirectional algorithm
+dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.22.0: GNOME docking library
@@ -10616,7 +10616,7 @@ x11-base/xcb-proto 1.12-r2 1.13: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.19: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
 x11-base/xorg-server 1.19.5-r1 1.19.5-r2: X.Org X servers
-x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
+x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 304.137 340.106 375.82 378.13-r1 381.22-r1 384.130 387.34 390.42: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.5: Generic Linux input driver
