@@ -34,6 +34,9 @@ esac
 waf-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# WAF looks for PKGCONFIG not PKG_CONFIG.
+	export PKGCONFIG=$(tc-getPKG_CONFIG)
+
 	local fail
 	if [[ ! ${_PYTHON_ANY_R1} && ! ${_PYTHON_SINGLE_R1} && ! ${_PYTHON_R1} ]]; then
 		eerror "Using waf-utils.eclass without any python-r1 suite eclass is not supported."
