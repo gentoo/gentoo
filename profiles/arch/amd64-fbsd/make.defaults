@@ -21,9 +21,7 @@ LDFLAGS_x86_fbsd="-m elf_i386_fbsd -L/usr/lib32"
 
 CPU_FLAGS_X86="mmx mmxext sse sse2"
 
-VIDEO_CARDS="apm ark chips cirrus cyrix dummy i128 intel mach64 mga \
-	nv r128 radeon rendition s3 s3virge savage siliconmotion sis \
-	sisusb tga trident tseng via vmware"
+VIDEO_CARDS="dummy intel mga nv r128 radeon siliconmotion via vmware"
 
 # Vanilla FreeBSD has: lib for native 64 bits libs, lib32 for 32-bits emulation.
 # Let's do this too as this also happens to be more standard among other linux
