@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eapi7-ver.eclass
@@ -58,12 +58,9 @@
 # the version string, it is truncated silently.
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5)
-		die "${ECLASS}: EAPI=${EAPI:-0} not supported";;
-	6)
-		;;
-	*)
-		die "${ECLASS}: EAPI=${EAPI} includes all functions from this eclass";;
+	0|1|2|3|4|5|6) ;;
+	7) die "${ECLASS}: EAPI=${EAPI} includes all functions from this eclass" ;;
+	*) die "${ECLASS}: EAPI=${EAPI} unknown" ;;
 esac
 
 # @FUNCTION: _ver_parse_range
@@ -135,11 +132,12 @@ ver_cut() {
 	local max=$((${#comp[@]}/2))
 	_ver_parse_range "${range}" "${max}"
 
-	local IFS=
 	if [[ ${start} -gt 0 ]]; then
 		start=$(( start*2 - 1 ))
 	fi
-	echo "${comp[*]:start:end*2-start}"
+	# Work around a bug in bash-3.2, where "${comp[*]:start:end*2-start}"
+	# inserts stray 0x7f characters for empty array elements
+	printf "%s" "${comp[@]:start:end*2-start}" $'\n'
 }
 
 # @FUNCTION: ver_rs
