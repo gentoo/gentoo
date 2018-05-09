@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/655320
+https://patchwork.kernel.org/patch/10382199/
+
+--- dash-0.5.10/src/jobs.c
++++ dash-0.5.10/src/jobs.c
+@@ -975,8 +975,8 @@
+ 	int st;
+ 
+ 	TRACE(("waitforjob(%%%d) called\n", jp ? jobno(jp) : 0));
+-	while ((jp && jp->state == JOBRUNNING) || gotsigchld)
+-		dowait(DOWAIT_BLOCK, jp);
++	while (jp ? jp->state == JOBRUNNING : gotsigchld)
++		dowait(jp ? DOWAIT_BLOCK : DOWAIT_NORMAL, jp);
+ 	if (!jp)
+ 		return exitstatus;
+ 	st = getstatus(jp);
