@@ -22,7 +22,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/lxml[${PYTHON_USEDEP}]
 	net-misc/wget"
 
-
 src_compile() {
 	MAKEARGS=(
 		PREFIX="${EPREFIX}/usr"
