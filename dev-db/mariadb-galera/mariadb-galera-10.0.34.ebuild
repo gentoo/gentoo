@@ -59,8 +59,8 @@ RDEPEND="${RDEPEND} ${COMMON_DEPEND}
 		virtual/perl-Time-HiRes )
 	server? ( extraengine? ( jdbc? ( >=virtual/jre-1.6 ) ) )
 "
-# xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
-PDEPEND="sst-xtrabackup? ( || ( >=dev-db/xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) )"
+# percona-xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
+PDEPEND="sst-xtrabackup? ( || ( >=dev-db/percona-xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) )"
 
 MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h )
 
