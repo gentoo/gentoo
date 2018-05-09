@@ -14,11 +14,13 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	app-admin/eselect
 	dev-python/lxml[${PYTHON_USEDEP}]
 	net-misc/wget"
+
 
 src_compile() {
 	MAKEARGS=(
