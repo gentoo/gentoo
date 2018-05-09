@@ -478,6 +478,10 @@ app-xemacs/xemacs-packages-all
 # versions of gjs.  Will unmask when gnome-3.26 is ready for testing
 # or when upstream releases an official tarball.
 dev-lang/spidermonkey:52
+# Lars Wendler <polynomial-c@gentoo.org> (09 May 2018)
+# Depends on masked spidermonkey:52.
+# Please remove both masks together.
+>=sys-auth/polkit-0.114
 
 # Nicolas Bock <nicolasbock@gentoo.org> (17 Jul 2017)
 # Keep shotwell development series masked.
