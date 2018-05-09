@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="An open source re-implementation of RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.website/"
@@ -18,22 +18,21 @@ else
 	S="${WORKDIR}/OpenRCT2-${PV}"
 fi
 
-TSV="0.1.0"
+TSV="0.1.2"
 SRC_URI+=" https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip -> ${PN}-title-sequence-v${TSV}.zip "
+
+OBJV="1.0"
+SRC_URI+=" https://github.com/OpenRCT2/objects/releases/download/v${OBJV}/objects.zip -> ${PN}-objects-v${OBJV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="libressl +multiplayer opengl test truetype +twitch"
-
-# This is needed because of this bug: https://github.com/OpenRCT2/OpenRCT2/issues/5469
-REQUIRED_USE="multiplayer? ( twitch )"
 
 RDEPEND="
 	>=dev-libs/jansson-2.5
 	>=dev-libs/libzip-1.0
 	media-libs/libpng:0=
 	media-libs/libsdl2
-	>=media-libs/speex-1.2.0
 	media-libs/speexdsp
 	multiplayer? (
 		libressl? ( dev-libs/libressl:0= )
@@ -47,15 +46,33 @@ RDEPEND="
 	twitch? ( net-misc/curl[ssl] )
 "
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	test? ( dev-cpp/gtest )
 "
 
-if [[ ${PV} == 9999 ]]; then
 src_unpack() {
-	default
-	git-r3_src_unpack
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+	else
+		unpack ${P}.tar.gz
+	fi
+
+	mkdir -p "${S}/data/title" || die
+	pushd "${S}/data/title" || die
+	unpack ${PN}-title-sequence-v${TSV}.zip
+	popd || die
+
+	mkdir -p "${S}/data/object" || die
+	pushd "${S}/data/object" || die
+	unpack ${PN}-objects-v${OBJV}.zip
+	popd || die
 }
-fi
+
+src_prepare() {
+	sed -i CMakeLists.txt -e 's/-Werror//' || die
+
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -65,18 +82,12 @@ src_configure() {
 		-DDISABLE_TTF="$(usex !truetype)"
 		-DWITH_TESTS="$(usex test)"
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
-		-DDISABLE_RCT2_TESTS=ON
+		-DDOWNLOAD_OBJECTS=OFF
 		-DSYSTEM_GTEST=ON
+		-DBUILD_SHARED_LIBS=ON
 	)
 
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	insinto /usr/share/openrct2/title
-	doins "${WORKDIR}"/*.parkseq
 }
 
 pkg_postinst() {
@@ -87,8 +98,12 @@ pkg_postinst() {
 		ewarn ""
 	fi
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
