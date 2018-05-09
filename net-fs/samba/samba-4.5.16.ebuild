@@ -16,7 +16,7 @@ SRC_PATH="stable"
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/samba-4.5.11-disable-python-patches.tar.xz"
 [[ ${PV} = *_rc* ]] || \
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="http://www.samba.org/"
@@ -53,6 +53,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/iniparser:0
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	>=sys-libs/ldb-1.1.27[ldap(+)?,python(+),${MULTILIB_USEDEP}]
 	<sys-libs/ldb-1.1.30[ldap(+)?,python(+),${MULTILIB_USEDEP}]
@@ -67,7 +68,10 @@ CDEPEND="${PYTHON_DEPS}
 	pam? ( virtual/pam )
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
-	cluster? ( !dev-db/ctdb )
+	cluster? (
+		net-libs/rpcsvc-proto
+		!dev-db/ctdb
+	)
 	cups? ( net-print/cups )
 	dmapi? ( sys-apps/dmapi )
 	fam? ( virtual/fam )

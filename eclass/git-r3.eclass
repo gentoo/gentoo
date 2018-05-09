@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
@@ -10,7 +10,7 @@
 # git as remote repository.
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
+	0|1|2|3|4|5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -22,7 +22,11 @@ EXPORT_FUNCTIONS src_unpack
 if [[ ! ${_GIT_R3} ]]; then
 
 if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
-	DEPEND=">=dev-vcs/git-1.8.2.1"
+	if [[ ${EAPI:-0} != [0123456] ]]; then
+		BDEPEND=">=dev-vcs/git-1.8.2.1"
+	else
+		DEPEND=">=dev-vcs/git-1.8.2.1"
+	fi
 fi
 
 # @ECLASS-VARIABLE: EGIT_CLONE_TYPE
@@ -648,16 +652,27 @@ git-r3_fetch() {
 			local clone_type=${EGIT_CLONE_TYPE}
 
 			if [[ ${r} == http://* || ${r} == https://* ]] &&
-					[[ ! ${EGIT_CURL_WARNED} ]] &&
-					! ROOT=/ has_version 'dev-vcs/git[curl]'
+					[[ ! ${EGIT_CURL_WARNED} ]]
 			then
-				ewarn "git-r3: fetching from HTTP(S) requested. In order to support HTTP(S),"
-				ewarn "dev-vcs/git needs to be built with USE=curl. Example solution:"
-				ewarn
-				ewarn "	echo dev-vcs/git curl >> /etc/portage/package.use"
-				ewarn "	emerge -1v dev-vcs/git"
-				ewarn
-				ewarn "HTTP(S) URIs will be skipped."
+				case ${EAPI:-0} in
+					0|1|2|3|4)
+						ROOT=/ has_version 'dev-vcs/git[curl]';;
+					5|6)
+						has_version --host-root 'dev-vcs/git[curl]';;
+					*)
+						has_version -b 'dev-vcs/git[curl]';;
+				esac
+
+				if [[ ${?} -ne 0 ]]; then
+					ewarn "git-r3: fetching from HTTP(S) requested. In order to support HTTP(S),"
+					ewarn "dev-vcs/git needs to be built with USE=curl. Example solution:"
+					ewarn
+					ewarn "	echo dev-vcs/git curl >> /etc/portage/package.use"
+					ewarn "	emerge -1v dev-vcs/git"
+					ewarn
+					ewarn "HTTP(S) URIs will be skipped."
+				fi
+
 				EGIT_CURL_WARNED=1
 			fi
 

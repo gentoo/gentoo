@@ -11,8 +11,13 @@ SRC_URI="https://freedv.com/wp-content/uploads/sites/8/2017/10/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa ~ia64"
 IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+multilib_src_configure() {
+	local mycmakeargs=( -DUNITTEST=OFF )
+	cmake-utils_src_configure
+}

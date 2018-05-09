@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P=${P/pywebdav/PyWebDAV}
 
 DESCRIPTION="WebDAV server written in Python"
-HOMEPAGE="https://pypi.org/project/PyWebDAV"
+HOMEPAGE="https://pypi.org/project/PyWebDAV/"
 SRC_URI="https://pywebdav.googlecode.com/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"

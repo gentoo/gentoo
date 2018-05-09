@@ -9,7 +9,7 @@ coreboot - Coreboot platform support
 efi-32 - EFI 32 bit platform support (Old MACs)
 efi-64 - EFI 64 bit platform support
 emu - Emulation platform support
-ieee1275 - IEEE1275 pltaform support
+ieee1275 - IEEE1275 platform support
 loongson - MIPS loongson platform support
 multiboot - Multiboot platform support
 pc - PC platform support

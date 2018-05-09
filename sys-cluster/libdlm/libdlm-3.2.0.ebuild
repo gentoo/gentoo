@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit multilib toolchain-funcs versionator
+inherit multilib toolchain-funcs versionator epatch
 
 CLUSTER_RELEASE="${PV}"
 MY_P="cluster-${CLUSTER_RELEASE}"
@@ -33,6 +33,7 @@ src_prepare() {
 	sed -i \
 		-e "s|/lib|/$(get_libdir)|g" \
 		"${WORKDIR}/${MY_P}/make/install.mk" || die "sed failed"
+	epatch "${FILESDIR}/${P}-sysmacros.patch"
 }
 
 src_configure() {

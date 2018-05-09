@@ -5,8 +5,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="TCP network re-engineering tool"
-HOMEPAGE="http://www.remlab.net/tcpreen/"
-SRC_URI="http://www.remlab.net/files/${PN}/stable/${P}.tar.bz2"
+HOMEPAGE="https://www.remlab.net/tcpreen/"
+SRC_URI="https://www.remlab.net/files/${PN}/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

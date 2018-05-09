@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_P="CherryPy-${PV}"
 
 DESCRIPTION="CherryPy is a pythonic, object-oriented HTTP framework"
-HOMEPAGE="http://www.cherrypy.org/ https://pypi.org/project/CherryPy"
+HOMEPAGE="https://www.cherrypy.org https://pypi.org/project/CherryPy/"
 SRC_URI="mirror://pypi/C/CherryPy/${MY_P}.tar.gz"
 
 LICENSE="BSD"

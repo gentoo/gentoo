@@ -75,15 +75,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-apps/bdftopcf
 	x11-apps/mkfontdir
-	x11-proto/xproto
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	media-libs/fontconfig
-	x11-proto/videoproto
 	nls? ( sys-devel/gettext )
 	!sdl? (
-		fullscreen? (
-			x11-proto/xf86vidmodeproto
-		)
 		!gtk? (
 			x11-libs/libICE
 			x11-libs/libSM

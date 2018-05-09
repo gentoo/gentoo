@@ -70,7 +70,7 @@ $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -217,12 +217,9 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/ucpp
 	sys-libs/zlib
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	x11-libs/libXt
 	x11-libs/libXtst
-	x11-proto/randrproto
-	x11-proto/xextproto
-	x11-proto/xineramaproto
-	x11-proto/xproto
 	java? (
 		dev-java/ant-core
 		>=virtual/jdk-1.6

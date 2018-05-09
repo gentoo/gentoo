@@ -55,7 +55,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/six[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0=
 	alsa? (
-		media-libs/alsa-lib[${PYTHON_USEDEP}]
+		media-libs/alsa-lib:=
 	)
 	fcd? ( virtual/libusb:1 )
 	filter? ( sci-libs/scipy )

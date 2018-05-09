@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P=${PN}-${PV/_beta/b}
 DESCRIPTION="Exif manipulation with pure Python"
 HOMEPAGE="https://github.com/hMatoba/Piexif
-	https://pypi.org/project/piexif"
+	https://pypi.org/project/piexif/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.zip"
 
 LICENSE="MIT"

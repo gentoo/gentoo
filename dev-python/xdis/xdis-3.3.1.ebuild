@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="Python cross-version byte-code disassembler and marshal routines"
-HOMEPAGE="https://github.com/rocky/python-xdis/ https://pypi.org/project/xdis"
+HOMEPAGE="https://github.com/rocky/python-xdis/ https://pypi.org/project/xdis/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

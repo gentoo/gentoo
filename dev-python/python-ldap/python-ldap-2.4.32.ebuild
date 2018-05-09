@@ -9,12 +9,17 @@ inherit distutils-r1 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
 HOMEPAGE="https://www.python-ldap.org/en/latest/
-	https://pypi.org/project/python-ldap"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	https://pypi.org/project/python-ldap/"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
+	inherit git-r3
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-solaris"
+fi
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-solaris"
 IUSE="examples sasl ssl"
 
 # If you need support for openldap-2.3.x, please use python-ldap-2.3.9.
@@ -26,7 +31,8 @@ RDEPEND=">net-nds/openldap-2.4.11
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1 )"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+"
 RDEPEND+=" !dev-python/pyldap"
 
 python_prepare_all() {

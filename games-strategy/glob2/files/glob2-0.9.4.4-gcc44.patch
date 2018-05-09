@@ -1,5 +1,5 @@
---- libgag/include/StreamBackend.h.old
-+++ libgag/include/StreamBackend.h
+--- a/libgag/include/StreamBackend.h.old
++++ b/libgag/include/StreamBackend.h
 @@ -28,6 +28,9 @@
  #ifdef putc
  #undef putc

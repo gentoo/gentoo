@@ -7,7 +7,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for the LZMA compression library"
 HOMEPAGE="https://www.joachim-bauch.de/projects/pylzma/
-	https://pypi.org/project/pylzma"
+	https://pypi.org/project/pylzma/"
 # pypi tarball does not include test data
 SRC_URI="https://github.com/fancycode/pylzma/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 

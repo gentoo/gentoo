@@ -12,7 +12,7 @@ DESCRIPTION="Database connectivity and creation framework for various vendors"
 
 LICENSE="LGPL-2+"
 SLOT="5/4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug mysql postgres sqlite"
 
 RDEPEND="

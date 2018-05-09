@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy pypy3)
 inherit distutils-r1
 
 DESCRIPTION="A fast, pure-Python in-memory database"
-HOMEPAGE="https://pypi.org/project/PyDbLite"
+HOMEPAGE="https://pypi.org/project/PyDbLite/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

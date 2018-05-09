@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,7 +50,10 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e 's/-O2 -Wall -Werror -ansi -pedantic -g//' \
+		-e 's|-Werror||g' \
+		configure.ac || die
+	sed -i \
+		-e 's/-O2 -Wall .* -g/-Wall/' \
 		-e "s/libstr =/libstr = '\$(LDFLAGS) ' ./" \
 		mkfiles.pl || die
 	./mkfiles.pl || die

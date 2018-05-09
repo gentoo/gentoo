@@ -11,12 +11,12 @@ MY_PN="h2"
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
 HOMEPAGE="https://python-hyper.org/h2/en/stable
 	https://github.com/python-hyper/hyper-h2
-	https://pypi.org/project/h2"
+	https://pypi.org/project/h2/"
 SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="

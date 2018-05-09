@@ -1,5 +1,7 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit toolchain-funcs
 
@@ -10,7 +12,7 @@ SRC_URI="http://swapped.cc/bf/files/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 m68k ppc ppc64 s390 sh x86"
+KEYWORDS="amd64 arm ia64 m68k ppc ppc64 s390 sh x86"
 IUSE="test"
 
 DEPEND=""

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 inherit autotools ruby-single toolchain-funcs
 
@@ -31,12 +31,13 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.2-libarchive-automagic.patch \
-	"${FILESDIR}"/${P}-ruby-automagic-as-needed.patch \
-	"${FILESDIR}"/${P}-tcl-automagic-as-needed.patch \
-	"${FILESDIR}"/${PN}-1.1.2-perl-automagic-as-needed.patch \
-	"${FILESDIR}"/${P}-without-localdir.patch \
+	"${FILESDIR}"/${PN}-1.1.2-libarchive-automagic.patch
+	"${FILESDIR}"/${P}-ruby-automagic-as-needed.patch
+	"${FILESDIR}"/${P}-tcl-automagic-as-needed.patch
+	"${FILESDIR}"/${PN}-1.1.2-perl-automagic-as-needed.patch
+	"${FILESDIR}"/${P}-without-localdir.patch
 	"${FILESDIR}"/${P}-socks5-libsocks.patch
+	"${FILESDIR}"/${P}-xlocale.patch
 )
 
 src_prepare() {

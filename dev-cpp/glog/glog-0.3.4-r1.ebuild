@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,10 +18,7 @@ RDEPEND="
 	gflags? ( >=dev-cpp/gflags-2.0-r1[${MULTILIB_USEDEP}] )
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	test? (
-		>=dev-cpp/gmock-1.7.0-r1[${MULTILIB_USEDEP}]
-		>=dev-cpp/gtest-1.6.0-r2[${MULTILIB_USEDEP}]
-	)"
+	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.2-avoid-inline-asm.patch

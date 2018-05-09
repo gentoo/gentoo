@@ -67,7 +67,6 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
-	eapply "${FILESDIR}/fix-setuptools.patch"
 	eapply_user
 	eautoreconf
 }

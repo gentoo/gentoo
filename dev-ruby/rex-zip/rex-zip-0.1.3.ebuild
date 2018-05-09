@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 # Upstream has specs but they are not included in the gem or tagged upstream
 RUBY_FAKEGEM_RECIPE_TEST="none"

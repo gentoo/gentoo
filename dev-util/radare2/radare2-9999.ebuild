@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils bash-completion-r1
 
 DESCRIPTION="unix-like reverse engineering framework and commandline tools"
 HOMEPAGE="http://www.radare.org"
@@ -14,12 +14,11 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/radare/radare2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~arm ~arm64"
-	PATCHES=( "${FILESDIR}"/${PN}-0.9.9-nogit.patch )
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ssl libressl +system-capstone zsh-completion"
+IUSE="ssl libressl +system-capstone"
 
 RDEPEND="
 	ssl? (
@@ -41,10 +40,11 @@ src_configure() {
 src_install() {
 	default
 
-	if use zsh-completion; then
-		insinto /usr/share/zsh/site-functions
-		doins doc/zsh/_*
-	fi
+	insinto /usr/share/zsh/site-functions
+	doins doc/zsh/_*
+
+	newbashcomp doc/bash_autocompletion.sh "${PN}"
+	bashcomp_alias "${PN}" rafind2 r2 rabin2 rasm2 radiff2
 
 	# a workaround for unstable $(INSTALL) call, bug #574866
 	local d

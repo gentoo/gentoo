@@ -40,8 +40,8 @@ _emake() {
 
 src_configure() {
 	# Avoid slow configure+gnulib+make if on an up-to-date Linux system
-	if use prefix || ! use kernel_linux || \
-	   has_version '<sys-libs/glibc-2.10'
+	if use prefix || ! use kernel_linux ||
+		has_version '<sys-libs/glibc-2.10'
 	then
 		econf $(use_with caps) $(use_with debug) $(use_with python) $(use_with seccomp)
 	else

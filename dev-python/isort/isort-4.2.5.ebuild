@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A python utility/library to sort imports"
-HOMEPAGE="https://pypi.org/project/isort"
+HOMEPAGE="https://pypi.org/project/isort/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

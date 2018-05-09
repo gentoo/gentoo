@@ -24,7 +24,6 @@ DEPEND="dev-tex/leaflet
 		app-text/recode
 		>=dev-tex/tex4ht-20090611_p1038-r5
 	)"
-RDEPEND=""
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts

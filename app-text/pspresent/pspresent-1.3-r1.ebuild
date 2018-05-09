@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -18,8 +18,7 @@ RDEPEND="x11-libs/libX11
 	xinerama? ( x11-libs/libXinerama )
 	app-text/ghostscript-gpl"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	xinerama? ( x11-proto/xineramaproto )
+	x11-base/xorg-proto
 	>=sys-apps/sed-4"
 
 src_prepare() {

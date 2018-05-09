@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A supersonic micro-framework for building cloud APIs"
-HOMEPAGE="http://falconframework.org/ https://pypi.org/project/falcon"
+HOMEPAGE="http://falconframework.org/ https://pypi.org/project/falcon/"
 SRC_URI="https://github.com/racker/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

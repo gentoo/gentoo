@@ -1,6 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 inherit vim-plugin eutils
 
 DESCRIPTION="vim plugin: syntax highlighting for dhcpd.conf"

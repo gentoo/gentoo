@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/azureus/${PN}/${MY_SRC}/${MY_SRC}_source.zip"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 # bundles parts of http://www.programmers-friend.org/
 # bundles bcprov - 1.37 required but not in the tree
@@ -51,7 +51,9 @@ src_unpack() {
 	cp "${FILESDIR}"/build.xml "${S}" || die "failed to copy build.xml"
 }
 
-java_prepare() {
+src_prepare() {
+	default
+
 	# upstream likes randomly changing a subset of files to CRLF every release
 	edos2unix $(find "${S}" -type f -name "*.java")
 

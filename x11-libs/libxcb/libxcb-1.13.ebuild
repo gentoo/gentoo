@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://anongit.freedesktop.org/git/xcb/libxcb.git"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="https://xcb.freedesktop.org/dist/${P}.tar.bz2"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc selinux test xkb"
 SLOT="0/1.12"
 
@@ -30,10 +30,10 @@ DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	${PYTHON_DEPS}
 	$(python_gen_any_dep \
-		">=x11-proto/xcb-proto-1.13[${MULTILIB_USEDEP},\${PYTHON_USEDEP}]")"
+		">=x11-base/xcb-proto-1.13[${MULTILIB_USEDEP},\${PYTHON_USEDEP}]")"
 
 python_check_deps() {
-	has_version --host-root ">=x11-proto/xcb-proto-1.13[${PYTHON_USEDEP}]"
+	has_version --host-root ">=x11-base/xcb-proto-1.13[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

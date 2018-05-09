@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ MODULE_VERSION=0.2.12
 inherit perl-module eutils prefix
 
 DESCRIPTION="Portage abstraction layer for perl"
-HOMEPAGE="http://search.cpan.org/~kentnl/PortageXS-0.2.12/"
+HOMEPAGE="http://search.cpan.org/~kentnl/PortageXS"
 
 SLOT="0"
 LICENSE="GPL-2"

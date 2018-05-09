@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23"
 
 # No, I am not calling ruby-ng
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20170804"
+MY_RELEASEDATE="20180426"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -27,7 +27,7 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="pcre2 python ruby static-libs ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
+IUSE="pcre2 python ruby static-libs ruby_targets_ruby23"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
@@ -35,7 +35,6 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
 		ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
 	)"
 DEPEND="${RDEPEND}
@@ -53,7 +52,7 @@ multilib_src_compile() {
 
 	emake \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
-		SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
+		SHLIBDIR="/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
 		USE_PCRE2="$(usex pcre2 y n)" \
 		all
@@ -63,7 +62,7 @@ multilib_src_compile() {
 			emake \
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
+				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2="$(usex pcre2 y n)" \
 				pywrap
 		}
@@ -79,7 +78,7 @@ multilib_src_compile() {
 				RUBY=${1} \
 				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
+				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2="$(usex pcre2 y n)" \
 				rubywrap
 		}
@@ -94,8 +93,7 @@ multilib_src_compile() {
 multilib_src_install() {
 	emake DESTDIR="${D}" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
-		SHLIBDIR="\$(DESTDIR)/$(get_libdir)" \
-		LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
+		SHLIBDIR="/$(get_libdir)" \
 		USE_PCRE2="$(usex pcre2 y n)" \
 		install
 
@@ -103,7 +101,7 @@ multilib_src_install() {
 		installation() {
 			emake DESTDIR="${D}" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
+				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2="$(usex pcre2 y n)" \
 				install-pywrap
 			python_optimize # bug 531638
@@ -118,7 +116,7 @@ multilib_src_install() {
 			rm src/selinuxswig_ruby_wrap.lo
 			emake DESTDIR="${D}" \
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
+				SHLIBDIR="/$(get_libdir)" \
 				RUBY=${1} \
 				USE_PCRE2="$(usex pcre2 y n)" \
 				install-rubywrap

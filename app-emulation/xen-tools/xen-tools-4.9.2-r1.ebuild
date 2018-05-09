@@ -13,12 +13,12 @@ MAJOR_V="$(get_version_component_range 1-2)"
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="amd64"
 	REPO="xen.git"
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 	UPSTREAM_VER=2
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
@@ -108,7 +108,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig
 	)
-	hvm? ( x11-proto/xproto
+	hvm? ( x11-base/xorg-proto
 		!net-libs/libiscsi )
 	qemu? (
 		app-arch/snappy:=

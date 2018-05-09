@@ -14,7 +14,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python interface to the R Programming Language"
 HOMEPAGE="https://rpy.sourceforge.net/
-	https://pypi.org/project/rpy2"
+	https://pypi.org/project/rpy2/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3 GPL-2 LGPL-2.1 MPL-1.1"

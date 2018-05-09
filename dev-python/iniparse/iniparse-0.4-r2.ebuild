@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Better INI parser for Python"
-HOMEPAGE="https://pypi.org/project/iniparse"
+HOMEPAGE="https://pypi.org/project/iniparse/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT PSF-2"

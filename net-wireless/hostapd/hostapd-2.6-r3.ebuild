@@ -34,7 +34,7 @@ src_prepare() {
 	# Allow users to apply patches to src/drivers for example,
 	# i.e. anything outside ${S}/${PN}
 	pushd ../ >/dev/null || die
-	
+
 	# Add LibreSSL compatibility patch bug (#567262)
 	eapply "${FILESDIR}/${P}-libressl-compatibility.patch"
 
@@ -112,8 +112,6 @@ src_configure() {
 	einfo "  HostAP driver enabled"
 	echo "CONFIG_DRIVER_WIRED=y" >> ${CONFIG}
 	einfo "  Wired driver enabled"
-	echo "CONFIG_DRIVER_PRISM54=y" >> ${CONFIG}
-	einfo "  Prism54 driver enabled"
 	echo "CONFIG_DRIVER_NONE=y" >> ${CONFIG}
 	einfo "  None driver enabled"
 

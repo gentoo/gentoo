@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Python library used to edit or create SubRip files"
-HOMEPAGE="https://github.com/byroot/pysrt https://pypi.org/project/pysrt"
+HOMEPAGE="https://github.com/byroot/pysrt https://pypi.org/project/pysrt/"
 # pypi tarballs don't include tests https://github.com/byroot/pysrt/issues/42
 SRC_URI="https://github.com/byroot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

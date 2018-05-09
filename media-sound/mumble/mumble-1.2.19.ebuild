@@ -22,13 +22,8 @@ RDEPEND=">=dev-libs/boost-1.41.0
 	>=dev-libs/protobuf-2.2.0:=
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	>=media-libs/opus-1.0.1
-	|| (
-		(
-			>=media-libs/speex-1.2.0
-			media-libs/speexdsp
-		)
-		<media-libs/speex-1.2.0
-	)
+	>=media-libs/speex-1.2.0
+	media-libs/speexdsp
 	sys-apps/lsb-release
 	x11-libs/libX11
 	x11-libs/libXi
@@ -38,7 +33,6 @@ RDEPEND=">=dev-libs/boost-1.41.0
 	dev-qt/qtsql:4[sqlite]
 	dev-qt/qtsvg:4
 	dev-qt/qtxmlpatterns:4
-	x11-proto/inputproto
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( dev-qt/qtdbus:4 )
 	g15? ( app-misc/g15daemon )
@@ -47,7 +41,9 @@ RDEPEND=">=dev-libs/boost-1.41.0
 	speech? ( app-accessibility/speech-dispatcher )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	x11-base/xorg-proto
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.4-speech-dispatcher.patch

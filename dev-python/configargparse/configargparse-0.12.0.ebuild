@@ -10,7 +10,7 @@ MY_PN=ConfigArgParse
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Drop-in replacement for argparse supporting config files and env variables"
-HOMEPAGE="https://github.com/zorro3/ConfigArgParse https://pypi.org/project/ConfigArgParse"
+HOMEPAGE="https://github.com/zorro3/ConfigArgParse https://pypi.org/project/ConfigArgParse/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

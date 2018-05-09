@@ -12,7 +12,7 @@
 #
 # If using gpg-agent for ssh instead of ssh-agent, a GUI pinentry program
 # must be selected either with eselect pinentry or adding an entry to
-# $HOME/.gnupg/gpg-agent.conf such as "pinentry-program /usr/bin/pinentry-qt4".
+# $HOME/.gnupg/gpg-agent.conf such as "pinentry-program /usr/bin/pinentry-qt".
 #
 # If using gnupg-2.1 or later with gpg-agent for ssh instead of ssh-agent,
 # $HOME/.gnupg/gpg-agent.conf must be edited to include "enable-ssh-support".

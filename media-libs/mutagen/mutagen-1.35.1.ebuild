@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Audio metadata tag reader and writer implemented in pure Python"
-HOMEPAGE="https://bitbucket.org/lazka/mutagen https://pypi.org/project/mutagen"
+HOMEPAGE="https://bitbucket.org/lazka/mutagen https://pypi.org/project/mutagen/"
 SRC_URI="https://bitbucket.org/lazka/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"

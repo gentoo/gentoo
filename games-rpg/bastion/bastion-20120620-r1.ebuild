@@ -76,9 +76,6 @@ pkg_preinst() {
 pkg_postinst() {
 	games_pkg_postinst
 
-	elog "If you are using opensource drivers you should consider installing:"
-	elog "    media-libs/libtxc_dxtn"
-
 	gnome2_icon_cache_update
 }
 

@@ -34,7 +34,7 @@ RDEPEND="
 	svg? ( || ( media-gfx/inkscape gnome-base/librsvg:2 ) )
 "
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 S="${WORKDIR}/${MY_P}"
 

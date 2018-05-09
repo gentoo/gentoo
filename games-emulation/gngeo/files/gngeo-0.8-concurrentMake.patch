@@ -1,5 +1,5 @@
---- src/generator68k/Makefile.am.orig	2015-01-23 18:37:37.998723294 -0500
-+++ src/generator68k/Makefile.am	2015-01-23 18:38:39.995391133 -0500
+--- a/src/generator68k/Makefile.am.orig	2015-01-23 18:37:37.998723294 -0500
++++ b/src/generator68k/Makefile.am	2015-01-23 18:38:39.995391133 -0500
 @@ -71,9 +71,12 @@
  
  #def68k : def68k.c

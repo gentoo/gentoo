@@ -32,13 +32,8 @@ RDEPEND="
 	dev-qt/qtxml:5
 	>=dev-libs/protobuf-2.2.0:=
 	>=media-libs/libsndfile-1.0.20[-minimal]
-	|| (
-		(
-			>=media-libs/speex-1.2.0
-			media-libs/speexdsp
-		)
-		<media-libs/speex-1.2.0
-	)
+	>=media-libs/speex-1.2.0
+	media-libs/speexdsp
 	sys-apps/lsb-release
 	x11-libs/libX11
 	x11-libs/libXi
@@ -56,7 +51,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
 	virtual/pkgconfig
-	x11-proto/inputproto
+	x11-base/xorg-proto
 "
 
 src_configure() {

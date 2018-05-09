@@ -6,7 +6,6 @@
 <name>Gentoo VDR Project</name>
 </maintainer>
 <use>
-	<flag name="graphtft">Enable support for
-		<pkg>media-plugins/vdr-graphtft</pkg></flag>
+	<flag name="graphtft">Enable support for vdr-graphtft plugin</flag>
 </use>
 </pkgmetadata>

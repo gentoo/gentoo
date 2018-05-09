@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ MY_PV="${PV}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Crossbar.io - The Unified Application Router for the twisted framework"
-HOMEPAGE="http://crossbar.io/ https://github.com/crossbario/crossbar https://pypi.org/project/crossbar"
+HOMEPAGE="https://crossbar.io/ https://github.com/crossbario/crossbar https://pypi.org/project/crossbar/"
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 SRC_URI="https://github.com/crossbario/crossbar/archive/v17.8.1.tar.gz -> ${P}.tar.gz"
 

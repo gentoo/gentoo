@@ -8,7 +8,7 @@ inherit distutils-r1
 
 MY_PN="Flask-SocketIO"
 DESCRIPTION="Socket.IO integration for Flask applications."
-HOMEPAGE="https://flask-socketio.readthedocs.org/ https://github.com/miguelgrinberg/Flask-SocketIO/ https://pypi.org/project/Flask-SocketIO"
+HOMEPAGE="https://flask-socketio.readthedocs.org/ https://github.com/miguelgrinberg/Flask-SocketIO/ https://pypi.org/project/Flask-SocketIO/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

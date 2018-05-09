@@ -19,11 +19,6 @@ portaudio
 mozilla
 seamonkey
 
-# 2006/03/20 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_vesa
-video_cards_via
-
 # Masked p2p for bug #155302 <josejx@gentoo.org>
 p2p
 

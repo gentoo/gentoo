@@ -18,8 +18,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-# Add doc back in for 3.0 and bump app-doc/gnucash-docs
-IUSE="aqbanking chipcard debug examples gnome-keyring mysql nls ofx postgres
+IUSE="aqbanking chipcard debug doc examples gnome-keyring mysql nls ofx postgres
 	  python quotes -register2 sqlite"
 REQUIRED_USE="
 	chipcard? ( aqbanking )
@@ -76,11 +75,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-# Uncomment for 3.0
-# PDEPEND="doc? (
-# 	~app-doc/gnucash-docs-${PV}
-# 	gnome-extra/yelp
-# )"
+PDEPEND="doc? (
+	~app-doc/gnucash-docs-${PV}
+	gnome-extra/yelp
+)"
 
 #PATCHES=( "${FILESDIR}"/${PN}-2.7.4-fix-tests-for-32bit-platforms.patch )
 

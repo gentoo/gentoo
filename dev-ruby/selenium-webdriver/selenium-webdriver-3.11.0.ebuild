@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 # NOTE: this package contains precompiled code. It appears that all
 # source code can be found at https://code.google.com/p/selenium/ but the

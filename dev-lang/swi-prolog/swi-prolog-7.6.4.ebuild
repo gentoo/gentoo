@@ -41,7 +41,7 @@ RDEPEND="sys-libs/ncurses:=
 		x11-libs/libSM )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
 S="${WORKDIR}/swipl-${PV}"

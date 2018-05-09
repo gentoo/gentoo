@@ -11,7 +11,7 @@ MY_PN="Pyro4"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Distributed object middleware for Python (RPC)"
-HOMEPAGE="https://pypi.org/project/Pyro4
+HOMEPAGE="https://pypi.org/project/Pyro4/
 	https://github.com/irmen/Pyro4"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 

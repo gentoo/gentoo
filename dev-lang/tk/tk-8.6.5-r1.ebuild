@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ RDEPEND="
 	)
 	~dev-lang/tcl-${PV}:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	!aqua? ( >=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}] )"
+	!aqua? ( x11-base/xorg-proto )"
 
 # Not bumped to 8.6
 #RESTRICT=test

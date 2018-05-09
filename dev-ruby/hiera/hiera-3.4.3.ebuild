@@ -13,12 +13,12 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A simple pluggable Hierarchical Database"
-HOMEPAGE="https://docs.puppet.com/hiera/latest/"
+HOMEPAGE="https://docs.puppet.com/hiera/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha )"
 

@@ -26,7 +26,10 @@ DEPEND="
 "
 
 S=${WORKDIR}/${P/_}
-PATCHES=( "${FILESDIR}"/${PN}-2.13.01-fix-docdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.13.01-fix-docdir.patch
+	"${FILESDIR}"/${PN}-2.13.01-gcc-8.patch
+)
 
 src_configure() {
 	strip-flags

@@ -31,10 +31,7 @@ DEPEND="${RDEPEND}
 	app-text/xmlto"
 RDEPEND="${RDEPEND}
 	python? (
-		|| (
-			dev-python/protobuf-python[${PYTHON_USEDEP}]
-			dev-libs/protobuf[python,${PYTHON_USEDEP}]
-		)
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
 		dev-python/ipaddr[${PYTHON_USEDEP}]
 	)"
 
@@ -67,6 +64,12 @@ src_prepare() {
 			-e 's:libselinux:no_libselinux:g' \
 			-i Makefile.config || die
 	fi
+}
+
+src_configure() {
+	# Gold linker generates invalid object file when used with criu's custom
+	# linker script.  Use the bfd linker instead. See https://crbug.com/839665#c3
+	tc-ld-disable-gold
 }
 
 src_compile() {

@@ -23,8 +23,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	X? (
-		x11-proto/xextproto
-		x11-proto/xproto
 		x11-libs/libXpm
 		x11-libs/libXt
 	)"

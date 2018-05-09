@@ -154,7 +154,6 @@ src_install() {
 
 	if use ldap ; then
 		dodoc README.LDAP
-		dosbin plugins/sudoers/sudoers2ldif
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
 		# See ldap.conf(5) and README.LDAP for details

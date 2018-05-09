@@ -25,13 +25,13 @@ fi
 
 RELEASE_VER=${PV}
 
-GCC_BOOTSTRAP_VER="4.7.3-r1"
+GCC_BOOTSTRAP_VER=20180501
 
 # Gentoo patchset
 PATCH_VER=5
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
-SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
+SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
 IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
 
@@ -730,7 +730,7 @@ src_unpack() {
 	# Consistency is not guaranteed between pkg_ and src_ ...
 	sanity_prechecks
 
-	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
+	use multilib && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
 
 	setup_env
 
@@ -886,8 +886,8 @@ glibc_do_configure() {
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
 		$(use_multiarch || echo --disable-multi-arch)
-		$(in_iuse systemtap && use_enable systemtap)
-		$(in_iuse nscd && use_enable nscd)
+		$(use_enable systemtap)
+		$(use_enable nscd)
 		${EXTRA_ECONF}
 	)
 
@@ -895,8 +895,8 @@ glibc_do_configure() {
 	myconf+=( $(use_enable vanilla timezone-tools) )
 
 	# These libs don't have configure flags.
-	ac_cv_lib_audit_audit_log_user_avc_message=$(in_iuse audit && usex audit || echo no)
-	ac_cv_lib_cap_cap_init=$(in_iuse caps && usex caps || echo no)
+	ac_cv_lib_audit_audit_log_user_avc_message=$(usex audit || echo no)
+	ac_cv_lib_cap_cap_init=$(usex caps || echo no)
 
 	# There is no configure option for this and we need to export it
 	# since the glibc build will re-run configure on itself
@@ -933,7 +933,7 @@ glibc_do_configure() {
 	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib ; then
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
-			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
+			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
 		fi
 	fi
 }
@@ -1201,7 +1201,7 @@ glibc_do_src_install() {
 	# With devpts under Linux mounted properly, we do not need the pt_chown
 	# binary to be setuid.  This is because the default owners/perms will be
 	# exactly what we want.
-	if in_iuse suid && ! use suid ; then
+	if ! use suid ; then
 		find "${ED}" -name pt_chown -exec chmod -s {} +
 	fi
 

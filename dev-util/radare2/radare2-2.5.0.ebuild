@@ -18,14 +18,14 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ssl libressl +system-capstone"
+IUSE="ssl libressl"
 
 RDEPEND="
+	dev-libs/capstone:0=
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	system-capstone? ( dev-libs/capstone:0= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -33,8 +33,8 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
-		$(use_with ssl openssl) \
-		$(use_with system-capstone syscapstone)
+		--with-syscapstone \
+		$(use_with ssl openssl)
 }
 
 src_install() {

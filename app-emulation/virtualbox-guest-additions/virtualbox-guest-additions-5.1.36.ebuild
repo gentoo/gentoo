@@ -15,7 +15,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 RDEPEND="X? ( x11-apps/xrandr
@@ -27,8 +27,7 @@ RDEPEND="X? ( x11-apps/xrandr
 		x11-libs/libXau
 		x11-libs/libXdmcp
 		x11-libs/libSM
-		x11-libs/libICE
-		x11-proto/glproto )
+		x11-libs/libICE )
 	sys-apps/dbus
 	!!x11-drivers/xf86-input-virtualbox"
 DEPEND="${RDEPEND}
@@ -37,8 +36,7 @@ DEPEND="${RDEPEND}
 	sys-devel/bin86
 	sys-libs/pam
 	sys-power/iasl
-	X? ( x11-proto/renderproto )
-	!X? ( x11-proto/xproto )"
+	x11-base/xorg-proto"
 PDEPEND="X? ( ~x11-drivers/xf86-video-virtualbox-${PV} )"
 
 BUILD_TARGETS="all"

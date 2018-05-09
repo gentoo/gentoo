@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit cuda distutils-r1 multilib
 
 DESCRIPTION="Python wrapper for NVIDIA CUDA"
-HOMEPAGE="http://mathema.tician.de/software/pycuda/ https://pypi.org/project/pycuda"
+HOMEPAGE="http://mathema.tician.de/software/pycuda/ https://pypi.org/project/pycuda/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

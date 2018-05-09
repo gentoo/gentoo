@@ -15,7 +15,7 @@ if [[ ${PV} = 9999 ]] ; then
 	inherit git-r3 autotools
 else
 	SRC_URI="https://www.freedesktop.org/software/${PN}/release/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 LICENSE="Old-MIT ISC icu"
@@ -46,6 +46,10 @@ if [[ ${PV} = 9999 ]] ; then
 		dev-util/ragel
 	"
 fi
+
+PATCHES=(
+	"${FILESDIR}/${P}-test_fixup.patch"
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

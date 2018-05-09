@@ -11,7 +11,7 @@ MY_PN="MySQL-python"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python interface to MySQL"
-HOMEPAGE="https://sourceforge.net/projects/mysql-python/ https://pypi.org/project/MySQL-python"
+HOMEPAGE="https://sourceforge.net/projects/mysql-python/ https://pypi.org/project/MySQL-python/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="GPL-2"

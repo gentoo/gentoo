@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="asyncio event loop scheduling callbacks in eventlet"
-HOMEPAGE="https://pypi.org/project/aioeventlet"
+HOMEPAGE="https://pypi.org/project/aioeventlet/"
 SRC_URI="mirror://pypi/a/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
