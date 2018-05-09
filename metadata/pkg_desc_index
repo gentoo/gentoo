@@ -8604,7 +8604,7 @@ net-libs/libnetfilter_cttimeout 1.0.0: netlink interface to the connection track
 net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by the kernel packet filter
 net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
-net-libs/libnfsidmap 0.24 0.25-r1: NFSv4 ID <-> name mapping library
+net-libs/libnfsidmap 0.25-r1: NFSv4 ID <-> name mapping library
 net-libs/libnftnl 1.0.8-r1: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
@@ -8956,7 +8956,7 @@ net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/gss-proxy 0.7.0-r1: daemon to proxy GSSAPI context establishment and channel handling
 net-nds/jxplorer 3.3.1: A fully functional ldap browser written in java
-net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
+net-nds/ldapvi 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/openldap 2.4.44: LDAP suite of application and development tools
 net-nds/rpcbind 0.2.4-r3: portmap replacement which supports RPC over various protocols
 net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
@@ -10076,7 +10076,7 @@ sys-fs/mdadm 3.4: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
-sys-fs/mtools 4.0.15 4.0.18-r2: utilities to access MS-DOS disks from Unix without mounting them
+sys-fs/mtools 4.0.18-r2: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1 0.6.4-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.12: NCurses Disk Usage

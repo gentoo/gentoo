@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[X,sound,joystick,video] sys-libs/zlib
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/gambatte-0.5.0_p20131102.tar.xz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	3790b47674a03f79525a1a517bd2191f
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	76b2b03d288c4f41265d91a72357778f
 _md5_=12675c7e7c10deaeff9a28623a866254
