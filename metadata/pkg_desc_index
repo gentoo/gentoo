@@ -1930,7 +1930,7 @@ dev-embedded/include 0.4.2: A collection of useful, independent include files fo
 dev-embedded/libftdi 0.19 0.20-r1 1.2-r1: Userspace access to FTDI USB interface chips
 dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer software for the serial port
 dev-embedded/ponyprog 2.07c-r2: Serial device programmer
-dev-embedded/sdcc 2.5.0_p20060502 3.5.0: Small device C compiler (for various microprocessors)
+dev-embedded/sdcc 3.5.0: Small device C compiler (for various microprocessors)
 dev-embedded/tigcc 0.96_beta7: Cross compiler for Texas Instruments TI-89, TI-92(+) and V200 calculators
 dev-embedded/u-boot-tools 2016.03: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
