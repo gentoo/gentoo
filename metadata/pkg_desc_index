@@ -804,7 +804,7 @@ app-eselect/eselect-python 20160516 20171204: Eselect module for management of m
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
-app-eselect/eselect-repository 2 3: Manage repos.conf via eselect
+app-eselect/eselect-repository 3: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20161226 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -7672,7 +7672,7 @@ media-libs/webrtc-audio-processing 0.1-r1 0.3: AudioProcessing library from the 
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20160712 0.0.20170701: A free library for encoding X264/AVC streams
 media-libs/x265 2.2 2.6: Library for encoding video streams into the H.265/HEVC format
-media-libs/xine-lib 1.2.6-r2 1.2.8 1.2.9-r1: Core libraries for Xine movie player
+media-libs/xine-lib 1.2.6-r2 1.2.9-r1: Core libraries for Xine movie player
 media-libs/xvid 1.3.3: XviD, a high performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.5: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.2.0: Provides easy access to ALSA PCM devices
