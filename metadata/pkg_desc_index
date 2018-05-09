@@ -7664,7 +7664,6 @@ media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis deco
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.6-r1 2.7.1: Audio processing system for plugins to extract information from audio data
-media-libs/varconf 0.6.6 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.11.0: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3: VisualOn AAC encoder library
