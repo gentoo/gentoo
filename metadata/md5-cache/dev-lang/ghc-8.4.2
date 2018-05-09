@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup unpack
+DEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] !ghcmakebinary? ( virtual/libffi:= ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 ) doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-python/sphinx >=dev-libs/libxslt-1.1.2 ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The Glasgow Haskell Compiler
+EAPI=6
+HOMEPAGE=http://www.haskell.org/ghc/
+IUSE=doc ghcbootstrap ghcmakebinary +gmp profile binary
+LICENSE=BSD
+PDEPEND=!ghcbootstrap? ( >=app-admin/haskell-updater-1.2 )
+RDEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] !ghcmakebinary? ( virtual/libffi:= ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 )
+REQUIRED_USE=?? ( ghcbootstrap binary )
+SLOT=0/8.4.2
+SRC_URI=!binary? ( http://downloads.haskell.org/~ghc/8.4.2/ghc-8.4.2-src.tar.xz ) !ghcbootstrap? ( amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.4.2-x86_64-pc-linux-gnu.tbz2 ) x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.4.2-i686-pc-linux-gnu.tbz2 ) )
+_eclasses_=autotools	4842e626555a9a4344f34cef2e190b67	bash-completion-r1	7e76462890d7d19cad453151876b0ecf	check-reqs	fd05cf75484aa28d307cf4ee6e1db056	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	ghc-package	a0d34e2f5f204f01c404ae1ce539542a	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	b963274a93e76570a88168c1f1db4cd7	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=c14c73c7eeba58f9c214263a127d42b6
