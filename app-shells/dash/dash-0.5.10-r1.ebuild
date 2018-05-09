@@ -27,7 +27,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	libedit? ( static? ( dev-libs/libedit[static-libs] ) )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.5.9.1-format-security.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.9.1-format-security.patch
+	"${FILESDIR}"/${P}-subshells.patch
+)
 
 src_prepare() {
 	if [[ -n "${DEB_PATCH}" ]] ; then
