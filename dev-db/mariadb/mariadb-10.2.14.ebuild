@@ -140,11 +140,11 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
-# xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
+# percona-xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
 	!client-libs? ( dev-db/mariadb-connector-c[${MULTILIB_USEDEP}] dev-db/mysql-connector-c[${MULTILIB_USEDEP}] )
 	 server? ( ~virtual/mysql-5.6[static=]
-		 galera? ( sst-xtrabackup? ( || ( >=dev-db/xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
+		 galera? ( sst-xtrabackup? ( || ( >=dev-db/percona-xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
