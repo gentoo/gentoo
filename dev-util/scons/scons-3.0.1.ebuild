@@ -13,12 +13,21 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	doc? (
 		http://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf -> ${P}-user.pdf
 		http://www.scons.org/doc/${PV}/HTML/${PN}-user.html -> ${P}-user.html
-	)"
+	)
+	test? ( https://github.com/scons/scons/archive/${PV}.tar.gz -> ${P}.gh.tar.gz )"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="doc"
+IUSE="doc test"
+
+src_unpack() {
+	if use test; then
+		unpack "${P}.gh.tar.gz"
+		mv "${P}" "${P}-full" || die
+	fi
+	unpack "${P}.tar.gz"
+}
 
 python_prepare_all() {
 	# remove half-broken, useless custom commands
@@ -27,6 +36,14 @@ python_prepare_all() {
 		-e '/data_files/s:man/:share/man/:' setup.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	cd "${WORKDIR}/${P}-full" || die
+	"${EPYTHON}" runtest.py -as \
+		-j "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" \
+		--builddir "${BUILD_DIR}/lib" ||
+		die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
