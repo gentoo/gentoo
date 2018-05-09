@@ -135,6 +135,9 @@ escons() {
 		_scons_clean_makeopts
 	fi
 
+	# pass ebuild environment variables through!
+	local -x GENTOO_SCONS_ENV_PASSTHROUGH=1
+
 	set -- scons ${SCONSOPTS} ${EXTRA_ESCONS} "${@}"
 	echo "${@}" >&2
 	"${@}"
