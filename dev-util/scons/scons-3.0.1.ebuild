@@ -21,25 +21,36 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc test"
 
+S=${WORKDIR}/${P}/src
+
 src_unpack() {
+	# use the git directory structure, but put pregenerated release
+	# inside src/ subdirectory to make our life easier
 	if use test; then
 		unpack "${P}.gh.tar.gz"
-		mv "${P}" "${P}-full" || die
+		rm -r "${P}/src" || die
+	else
+		mkdir "${P}" || die
 	fi
+
+	cd "${P}" || die
 	unpack "${P}.tar.gz"
+	mv "${P}" src || die
 }
 
-python_prepare_all() {
+src_prepare() {
+	# apply patches relatively to top directory
+	cd "${WORKDIR}/${P}" || die
+	distutils-r1_src_prepare
+
 	# remove half-broken, useless custom commands
 	# and fix manpage install location
 	sed -i -e '/cmdclass/,/}$/d' \
-		-e '/data_files/s:man/:share/man/:' setup.py || die
-
-	distutils-r1_python_prepare_all
+		-e '/data_files/s:man/:share/man/:' "${S}"/setup.py || die
 }
 
 python_test() {
-	cd "${WORKDIR}/${P}-full" || die
+	cd "${WORKDIR}/${P}" || die
 	"${EPYTHON}" runtest.py -as \
 		-j "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" \
 		--builddir "${BUILD_DIR}/lib" ||
