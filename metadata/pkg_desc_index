@@ -1155,7 +1155,7 @@ app-office/grisbi 1.0.2: Grisbi is a personal accounting application for Linux
 app-office/homebank 5.1.3: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
-app-office/kexi 3.0.2 3.1.0: Visual database applications creator
+app-office/kexi 3.1.0: Visual database applications creator
 app-office/kmymoney 5.0.1-r2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.1: Library with common classes and functionality used by KDE finance applications
@@ -1840,7 +1840,7 @@ dev-db/db-je 3.3.75: A high performance, transactional storage engine written en
 dev-db/freetds 1.00.41: Tabular Datastream Library
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
-dev-db/kdb 3.0.2 3.1.0-r1: Database connectivity and creation framework for various vendors
+dev-db/kdb 3.1.0-r1: Database connectivity and creation framework for various vendors
 dev-db/kyotocabinet 1.2.76-r1: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for libdbi
@@ -3000,8 +3000,8 @@ dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating busine
 dev-libs/keybinder 0.3.1-r200 0.3.1-r201 0.3.1-r300 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/klibc 2.0.4-r2 2.0.4-r3: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
-dev-libs/kproperty 3.0.2 3.1.0: Property editing framework with editor widget similar to Qt Designer
-dev-libs/kreport 3.0.2 3.1.0: Framework for creation and generation of reports in multiple formats
+dev-libs/kproperty 3.1.0: Property editing framework with editor widget similar to Qt Designer
+dev-libs/kreport 3.1.0: Framework for creation and generation of reports in multiple formats
 dev-libs/leatherman 0.10.1 1.2.1 1.3.0 1.4.0: A C++ toolkit
 dev-libs/legousbtower 0.5.4-r1: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.15.0-r1 1.18-r2: a fast key-value storage library written at Google
@@ -6821,18 +6821,18 @@ kde-misc/kanyremote 6.4: KDE frontend to Anyremote
 kde-misc/kdeconnect 1.2.1-r2: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
-kde-misc/kio-gdrive 1.2.1-r1 1.2.3: KIO Slave for Google Drive service
+kde-misc/kio-gdrive 1.2.3: KIO Slave for Google Drive service
 kde-misc/krename 5.0.0: Powerful batch file renamer
 kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
-kde-misc/kshutdown 4.0 4.2: Shutdown manager for desktop environments like KDE Plasma
+kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/latte-dock 0.7.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.2: A collection manager based on KDE Frameworks
-kde-misc/wacomtablet 3.0.0_beta2 3.0.0: KControl module for Wacom tablets
-kde-misc/yakuake 3.0.4-r2 3.0.5: Quake-style terminal emulator based on konsole
+kde-misc/wacomtablet 3.0.0: KControl module for Wacom tablets
+kde-misc/yakuake 3.0.5: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.5.0: Getting things done application by KDE
 kde-plasma/bluedevil 5.11.5: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.11.5: Breeze visual style for the Plasma desktop
