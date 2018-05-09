@@ -23,6 +23,11 @@ IUSE="doc test"
 
 S=${WORKDIR}/${P}/src
 
+PATCHES=(
+	# support env passthrough for Gentoo ebuilds
+	"${FILESDIR}"/scons-3.0.1-env-passthrough.patch
+)
+
 src_unpack() {
 	# use the git directory structure, but put pregenerated release
 	# inside src/ subdirectory to make our life easier
