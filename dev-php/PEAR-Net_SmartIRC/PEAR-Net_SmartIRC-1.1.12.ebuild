@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,11 +13,12 @@ IUSE="doc examples"
 DOCS=( CREDITS FEATURES docs/HOWTO README.md )
 
 src_install() {
-	php-pear-r2_src_install
-	use examples && dodoc -r docs/examples
+	local HTML_DOCS=( )
+	use examples && HTML_DOCS+=( docs/examples/ )
 
 	if use doc; then
-		dodoc docs/DOCUMENTATION
-		dodoc -r docs/HTML
+		DOCS+=( docs/DOCUMENTATION )
+		HTML_DOCS+=( docs/HTML/* )
 	fi
+	php-pear-r2_src_install
 }
