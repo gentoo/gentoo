@@ -18,6 +18,7 @@ DOCS=( AUTHORS README )
 S="${WORKDIR}/${MY_PKG}"
 
 src_prepare() {
+	sed -i -e '/COMPRESSOR/d' -e '/Compress manpages/d' Makefile
 	default
 
 	#mans provided by other packages
