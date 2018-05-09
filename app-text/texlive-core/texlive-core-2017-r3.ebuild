@@ -99,6 +99,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	sys-libs/zlib
 	>=media-libs/libpng-1.2.43-r2:0=
 	>=app-text/poppler-0.58.0:=
+	<app-text/poppler-0.64.0
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
 	dev-libs/zziplib
@@ -117,6 +118,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	cjk? ( >=dev-libs/ptexenc-1.3.5 )"
 
 DEPEND="${COMMON_DEPEND}
+	<media-libs/freetype-2.9.1
 	virtual/pkgconfig
 	sys-apps/ed
 	sys-devel/flex
