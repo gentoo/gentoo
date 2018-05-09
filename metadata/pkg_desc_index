@@ -8420,7 +8420,7 @@ net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/unbound 1.5.1-r2 1.5.10: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-firewall/arno-iptables-firewall 2.0.1e: Arno's iptables firewall script
-net-firewall/arptables 0.0.3.4-r2 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
+net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.2: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
