@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 		${RUBY_DEPS}
 	)"
 
+PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+
 pkg_setup() {
 	enewgroup h2o
 	enewuser h2o -1 -1 -1 h2o
