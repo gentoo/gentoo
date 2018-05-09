@@ -143,7 +143,7 @@ app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptabl
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
-app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
+app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.52-r1 1.53-r2 1.55-r1: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.5: Displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
@@ -1117,7 +1117,7 @@ app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal 
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
 app-misc/uptimed 0.4.0-r1: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
-app-misc/vcp 2.2-r1 2.2-r2: Copy files/directories in a curses interface
+app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
 app-misc/vifm 0.7.2 0.9: Console file manager with vi(m)-like keybindings
 app-misc/vlock 2.2.3-r1: A console screen locker
 app-misc/wcd 5.2.7: Wherever Change Directory
