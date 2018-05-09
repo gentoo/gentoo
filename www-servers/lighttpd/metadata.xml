@@ -10,7 +10,7 @@
 		<name>Mikle Kolyada</name>
 	</maintainer>
 	<longdescription lang="en">
-		lighttpd a secure, fast, compliant and very flexible web-server
+		lighttpd is a secure, fast, compliant and very flexible web-server
 		which has been optimized for high-performance environments. It has a very
 		low memory footprint compared to other webservers and takes care of cpu-load.
 		Its advanced feature-set (FastCGI, CGI, Auth, Output-Compression,
