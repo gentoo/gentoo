@@ -11,7 +11,7 @@ SRC_URI="http://members.iinet.net.au/~lynx/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~sparc x86"
 
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
