@@ -2,11 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="GNU/Linux port of the MAME emulator with GUI menu"
 HOMEPAGE="http://www.advancemame.it/"
 SRC_URI="https://github.com/amadvance/advancemame/releases/download/v${PV}/${P}.tar.gz"
+
+# Fetch too big upstream patch
+SRC_URI+=" https://github.com/amadvance/advancemame/commit/70f099ac49786a287ebd3949ce8f8670a5731abd.patch -> ${PN}-3.7-use_pkgconfig_for_freetype_and_sdl.patch"
 
 LICENSE="GPL-2 XMAME"
 SLOT="0"
@@ -25,20 +28,28 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/os-headers
+	virtual/pkgconfig
 	x86? ( >=dev-lang/nasm-0.98 )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2-pic.patch"
+	"${FILESDIR}"/${PN}-1.2-verboselog.patch
+
+	# Patches from upstream
+	"${FILESDIR}/${P}-move_aclocal_to_acinclude.patch"
+	"${DISTDIR}/${P}-use_pkgconfig_for_freetype_and_sdl.patch"
+	"${FILESDIR}/${P}-remove_static_configure_option.patch"
+)
+
 src_prepare() {
 	default
-
-	eapply "${FILESDIR}/${PN}-1.2-pic.patch" \
-		"${FILESDIR}"/${PN}-1.2-verboselog.patch
+	eautoreconf
 
 	sed -i -e 's/"-s"//' configure || die
 
 	use x86 && ln -s $(type -P nasm) "${T}/${CHOST}-nasm"
 	ln -s $(type -P sdl2-config) "${T}/${CHOST}-sdl2-config"
-	use truetype && ln -s $(type -P freetype-config) "${T}/${CHOST}-freetype-config"
 }
 
 src_configure() {
@@ -55,7 +66,6 @@ src_configure() {
 		--enable-zlib \
 		--disable-slang \
 		--disable-svgalib \
-		--disable-static \
 		$(use_enable alsa) \
 		$(use_enable fbcon fb) \
 		$(use_enable oss) \
