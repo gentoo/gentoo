@@ -8,7 +8,7 @@ HOMEPAGE="https://justgetflux.com/"
 SRC_URI="amd64? ( https://justgetflux.com/linux/${PN}64.tgz -> ${PN}64-${PV}.tar.gz )
 	x86? ( https://justgetflux.com/linux/${PN}-pre.tgz -> ${P}.tar.gz )"
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="f.lux"
 SLOT="0"
 
