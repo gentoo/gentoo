@@ -10508,7 +10508,7 @@ www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPla
 www-plugins/gnash 0.8.10_p20160329-r2: GNU Flash movie player that supports many SWF v7,8,9 features
 www-servers/apache 2.2.34 2.4.27-r1 2.4.29-r1: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
-www-servers/lighttpd 1.4.45 1.4.45-r1: Lightweight high-performance web server
+www-servers/lighttpd 1.4.45-r1: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
 www-servers/nginx 1.12.2-r1: Robust, small and high performance http and reverse proxy server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
