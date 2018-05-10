@@ -7332,7 +7332,7 @@ media-gfx/xpaint 2.9.10.2: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r2: graphical scanning frontend
 media-gfx/xv 3.10a-r17: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
-media-gfx/zbar 0.10-r6 0.10_p20121015-r2: Library and tools for reading barcodes from images or video
+media-gfx/zbar 0.10_p20121015-r3: Library and tools for reading barcodes from images or video
 media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r6: A ASCII-Graphics Library
