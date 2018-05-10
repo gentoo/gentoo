@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
-IUSE="gtk imagemagick java jpeg python qt4 static-libs test +threads v4l X xv"
+IUSE="gtk imagemagick java jpeg python static-libs test +threads v4l X xv"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( X ${PYTHON_REQUIRED_USE} )"
 
@@ -27,8 +27,6 @@ CDEPEND="gtk? ( dev-libs/glib:2[${MULTILIB_USEDEP}]
 		${PYTHON_DEPS}
 		gtk? ( >=dev-python/pygtk-2[${PYTHON_USEDEP}] )
 	)
-	qt4? ( dev-qt/qtcore:4[${MULTILIB_USEDEP}]
-		dev-qt/qtgui:4[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libXext[${MULTILIB_USEDEP}]
 		xv? ( x11-libs/libXv[${MULTILIB_USEDEP}] )
@@ -109,7 +107,7 @@ multilib_src_configure() {
 		${myimagemagick} \
 		${mygraphicsmagick} \
 		$(multilib_native_use_with python) \
-		$(use_with qt4 qt) \
+		--without-qt \
 		$(use_enable static-libs static) \
 		$(use_enable threads pthread) \
 		$(use_with X x) \
