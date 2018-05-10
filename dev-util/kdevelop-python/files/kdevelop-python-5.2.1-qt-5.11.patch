@@ -1,0 +1,24 @@
+From a4a3cfb040054e7ca938bdd593c6c3c80d80807f Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Thu, 10 May 2018 06:55:07 +0200
+Subject: Fix build with Qt 5.11
+
+Some includes were added transitively, now they need to be explicit.
+---
+ codegen/correctionfilegenerator.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/codegen/correctionfilegenerator.cpp b/codegen/correctionfilegenerator.cpp
+index bb79a25..53ebec4 100644
+--- a/codegen/correctionfilegenerator.cpp
++++ b/codegen/correctionfilegenerator.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include "correctionfilegenerator.h"
+ 
++#include <QAction>
+ #include <QTemporaryFile>
+ 
+ #include <language/backgroundparser/backgroundparser.h>
+-- 
+cgit v0.11.2
