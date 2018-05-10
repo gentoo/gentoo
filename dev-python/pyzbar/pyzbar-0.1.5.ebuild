@@ -14,7 +14,15 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="media-gfx/zbar"
+RDEPEND="
+	media-gfx/zbar
+	dev-python/pillow
+	dev-python/numpy
+	python_targets_python2_7? (
+		=dev-python/enum34-1.1.6
+		virtual/python-pathlib
+	)
+"
 
 DEPEND="
 	${RDEPEND}
