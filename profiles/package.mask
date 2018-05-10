@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4, newer versions do not provide a GUI.
+# Masked for removal, bug #649572
+<x11-misc/synergy-1.9.0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # Depends on dead Qt4, does not build, needs someone to bump to Qt5.
 # Masked for removal in 30 days. Bugs #588892, #588898, #649656
 media-libs/libprojectm-qt
