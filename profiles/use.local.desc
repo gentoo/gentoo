@@ -1740,8 +1740,6 @@ dev-python/PyQt5:x11extras - Build bindings for the QtX11Extras module
 dev-python/PyQt5:xmlpatterns - Build bindings for the QtXmlPatterns module
 dev-python/QtPy:designer - Build bindings for the QtDesigner module and enable the designer plugin
 dev-python/QtPy:gui - Build bindings for the QtGui module
-dev-python/QtPy:pyqt5 - Enable the dev-python/PyQt5 backend
-dev-python/QtPy:pyside - Enable the dev-python/pyside backend
 dev-python/QtPy:svg - Build bindings for the QtSvg module
 dev-python/QtPy:testlib - Build bindings for the QtTest module
 dev-python/QtPy:webengine - Build bindings for the QtWebEngine module
@@ -1792,10 +1790,7 @@ dev-python/netaddr:cli - Enable netaddr shell with dev-python/ipython
 dev-python/networkx:scipy - Enables scipy backend
 dev-python/nltk:numpy - Use numpy for the saved word tokenizer
 dev-python/numexpr:mkl - Enable support for Intel Vector Math Library, part of sci-libs/mkl.
-dev-python/pandas:R - Enable support for R via dev-python/rpy
-dev-python/pandas:excel - Pull a few Python packages for Microsoft Excel i/o
 dev-python/pandas:full-support - Pull all packages to give pandas full support
-dev-python/pandas:html - Enable HTML i/o via dev-python/beautifulsoup
 dev-python/passlib:bcrypt - bcrpyt hash algoryptm support
 dev-python/passlib:scrypt - accelerated scrypt algoythm support
 dev-python/passlib:totp - time based one time password support

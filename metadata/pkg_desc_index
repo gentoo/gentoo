@@ -5118,7 +5118,7 @@ dev-python/owslib 0.16.0: Library for client programming with Open Geospatial Co
 dev-python/packaging 16.8: Core utilities for Python packages
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
-dev-python/pandas 0.16.2 0.19.1: Powerful data structures for data analysis and statistics
+dev-python/pandas 0.19.1: Powerful data structures for data analysis and statistics
 dev-python/paramiko 2.1.2 2.2.1 2.4.1: SSH2 protocol library
 dev-python/parsedatetime 2.4-r1: Parse human-readable date/time strings
 dev-python/partd 0.3.2: Appendable key-value storage
@@ -5304,7 +5304,6 @@ dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pyside 1.2.2-r2: Python bindings for the Qt framework
-dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
 dev-python/pysnmp 4.3.3: Python SNMP library
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
