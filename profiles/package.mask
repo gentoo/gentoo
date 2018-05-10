@@ -29,6 +29,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4, no revdeps. Masked for removal in 30 days.
+dev-libs/sni-qt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4, dead upstream.
+# Masked for removal in 30 days. Bugs #408651, #642950, #651622
+media-gfx/structure-synth
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4, dead upstream.
+# Masked for removal in 30 days. Bug #640258
+dev-util/valkyrie
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4, severely outdated, no one does the bump.
+# Masked for removal in 30 days. Bugs #489190, #648666
+media-gfx/ipe
+
 # Andreas Sturmlechner <asturm@gentoo.org> (8 May 2018)
 # Breaking consumers by internal header cleanup and removal of deprecated
 # qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
