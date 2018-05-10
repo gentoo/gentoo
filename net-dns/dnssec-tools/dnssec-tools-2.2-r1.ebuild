@@ -1,20 +1,21 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils qt4-r2 systemd readme.gentoo
+inherit readme.gentoo-r1 systemd
 
-DESCRIPTION="tools to ease the deployment of DNSSEC related technologies"
-HOMEPAGE="http://www.dnssec-tools.org/"
-SRC_URI="http://www.dnssec-tools.org/download/${P}.tar.gz"
+DESCRIPTION="Tools to ease the deployment of DNSSEC related technologies"
+HOMEPAGE="https://www.dnssec-tools.org/"
+SRC_URI="https://www.dnssec-tools.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
-RDEPEND="dev-lang/perl
+RDEPEND="
+	dev-lang/perl
 	dev-perl/Crypt-OpenSSL-Random
 	dev-perl/Getopt-GUI-Long
 	dev-perl/GraphViz
@@ -24,7 +25,10 @@ RDEPEND="dev-lang/perl
 	dev-perl/XML-Simple"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${PN}-2.0-dtinitconf.patch )
+
 src_prepare() {
+	default
 	sed -e '/^maninstall:/,+3s:$(MKPATH) $(mandir)/$(man1dir):$(MKPATH) $(DESTDIR)/$(mandir)/$(man1dir):' \
 		-i Makefile.in || die
 	sed -e 's:/usr/local/etc:/etc:g' \
@@ -32,7 +36,6 @@ src_prepare() {
 		-i tools/donuts/donuts \
 		-i tools/etc/dnssec-tools/dnssec-tools.conf \
 		-i tools/scripts/genkrf || die
-	epatch "${FILESDIR}"/${PN}-2.0-dtinitconf.patch
 }
 
 src_configure() {
@@ -54,7 +57,7 @@ src_install() {
 	newconfd "${FILESDIR}"/donutsd.confd donutsd
 	systemd_dounit "${FILESDIR}"/donutsd.service
 
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 	readme.gentoo_create_doc
 }
 
