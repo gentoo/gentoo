@@ -3092,7 +3092,6 @@ dev-libs/libmaxminddb 1.2.1: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5: Modular Calendar Access Library
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
-dev-libs/libmemcache 1.4.0_rc2-r1: C API for memcached
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
 dev-libs/libmirage 3.1.0: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
