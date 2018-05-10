@@ -28,13 +28,8 @@ MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vbo
 
 pkg_setup() {
 	enewgroup vboxusers
-
-	CONFIG_CHECK="!TRIM_UNUSED_KSYMS"
-	ERROR_TRIM_UNUSED_KSYMS="The kernel option CONFIG_TRIM_UNUSED_KSYMS removed kernel symbols that are needed by ${PN} to load correctly."
-
 	linux-mod_pkg_setup
-
-	BUILD_PARAMS="KERN_DIR=${KV_DIR} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
+	BUILD_PARAMS="CC=$(tc-getBUILD_CC) KERN_DIR=${KV_DIR} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
 }
 
 src_prepare() {
