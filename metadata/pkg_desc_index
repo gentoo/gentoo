@@ -10877,7 +10877,7 @@ x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sselp 0.2-r1: Simple X selection printer
 x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
-x11-misc/synergy 1.6.3 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
+x11-misc/synergy 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tint2 0.12.12: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/touchcal 0.80: Touchscreen calibration utility
