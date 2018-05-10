@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Masked for removal in 30 days, bug #644728
+app-i18n/ibus-qt
+app-i18n/qimhangul
+=app-i18n/tagainijisho-1.0*
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
 # Breaking consumers by internal header cleanup File bugs with
 # fixes upstream and against the qt-5.11 tracker (bug #653646).
 ~dev-qt/assistant-5.11.1
