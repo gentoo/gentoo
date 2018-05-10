@@ -7538,7 +7538,6 @@ media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images
 media-libs/libpng 1.2.57 1.5.28 1.6.29 1.6.34: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517-r1: Video post processing library
 media-libs/libprojectm 2.1.0-r1 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
-media-libs/libprojectm-qt 2.1.0-r1: A graphical music visualization plugin similar to milkdrop
 media-libs/libptp2 1.1.10: Library and client to communicate with cameras via PTP
 media-libs/libqaccessibilityclient 0.2.0: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r2: An enhanced version of the quicktime4linux library
@@ -8029,8 +8028,6 @@ media-sound/pnmixer 0.6_pre20111213: Alsa volume mixer for the system tray
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/pragha 1.3.3: A lightweight music player (for Xfce)
-media-sound/projectm-jack 2.0.1 2.1.0: A Qt based GUI for projectM that visualizes your JACK output
-media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes your pulseaudio output
 media-sound/pulseaudio 11.1: A networked sound server with an advanced plugin system
 media-sound/pulseeffects 3.1.6: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
