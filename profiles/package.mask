@@ -30,6 +30,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4. Masked for removal in 30 days.
+dev-python/pyside-tools
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # Depends on dead Qt4, newer versions do not provide a GUI.
 # Masked for removal, bug #649572
 <x11-misc/synergy-1.9.0

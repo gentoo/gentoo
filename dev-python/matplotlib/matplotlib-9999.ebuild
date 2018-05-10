@@ -21,7 +21,7 @@ SLOT="0"
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 KEYWORDS=""
-IUSE="cairo doc excel examples fltk gtk2 gtk3 latex pyside qt4 qt5 test tk wxwidgets"
+IUSE="cairo doc excel examples fltk gtk2 gtk3 latex qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="
@@ -31,7 +31,7 @@ REQUIRED_USE="
 	gtk2? ( ${PY2_FLAGS} )
 	wxwidgets? ( ${PY2_FLAGS} )
 	test? (
-		cairo fltk latex pyside qt5 qt4 tk wxwidgets
+		cairo fltk latex qt5 tk wxwidgets
 		|| ( gtk2 gtk3 )
 		)"
 
@@ -102,10 +102,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-xetex
 	)
-	pyside? ( dev-python/pyside[X,${PYTHON_USEDEP}] )
-	qt4? ( dev-python/PyQt4[X,${PYTHON_USEDEP}] )
-	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )
-	"
+	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )"
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
@@ -182,9 +179,11 @@ python_configure() {
 		dateutil = False
 		[gui_support]
 		agg = True
+		pyside = False
+		pysideagg = False
+		qt4 = False
+		qt4agg = False
 		$(use_setup cairo)
-		$(use_setup pyside)
-		$(use_setup qt4)
 		$(use_setup qt5)
 		$(use_setup tk)
 	EOF

@@ -18,8 +18,8 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="cairo doc excel examples gtk2 gtk3 latex pyside qt5 test tk wxwidgets"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+IUSE="cairo doc excel examples gtk2 gtk3 latex qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="
@@ -102,9 +102,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-xetex
 	)
-	pyside? ( dev-python/pyside[X,${PYTHON_USEDEP}] )
-	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )
-	"
+	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )"
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
@@ -177,11 +175,12 @@ python_configure() {
 		tests = $(usex test True False)
 		[gui_support]
 		agg = True
+		pyside = False
+		pysideagg = False
 		qt4 = False
 		qt4agg = False
 		$(use_setup cairo)
 		$(use_setup gtk3)
-		$(use_setup pyside)
 		$(use_setup qt5)
 		$(use_setup tk)
 	EOF
