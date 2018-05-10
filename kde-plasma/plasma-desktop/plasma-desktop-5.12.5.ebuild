@@ -140,8 +140,10 @@ src_configure() {
 }
 
 src_test() {
+	# parallel tests hang, bug #646890
 	# needs D-Bus, bug #634166
 	local myctestargs=(
+		-j1
 		-E "(test_kio_fonts)"
 	)
 
