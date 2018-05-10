@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="A free implementation of the unicode bidirectional algorithm"
 HOMEPAGE="https://fribidi.org/"
-SRC_URI="https://fribidi.org/download/${P}.tar.bz2"
+SRC_URI="https://github.com/fribidi/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
