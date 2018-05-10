@@ -3225,7 +3225,6 @@ dev-libs/serd 0.26.0 0.28.0-r1: Library for RDF syntax which supports reading an
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/skalibs 2.3.2.0: development files used for building software at skarnet.org: essentially general-purpose libraries
-dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/sord 0.12.2 0.16.0 0.16.0-r1: Library for storing RDF data in memory
@@ -6280,7 +6279,6 @@ dev-util/uncrustify 0.66.1: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0: An open-source memory debugger for GNU/Linux
-dev-util/valkyrie 2.0.0-r1: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.18: Lint tool for Vim script language
 dev-util/weka 3.7.13: A Java data mining package
