@@ -343,7 +343,7 @@ app-crypt/mcrypt 2.6.8-r3: replacement of the old unix crypt(1)
 app-crypt/md5deep 4.3: Expanded md5sum program with recursive and comparison options
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
-app-crypt/mit-krb5 1.15.2 1.15.2-r1 1.16 1.16-r2: MIT Kerberos V
+app-crypt/mit-krb5 1.16 1.16-r2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.37: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/openpgp-keys-gentoo-mirror 20180203: OpenPGP key used to sign gentoo-mirror commits
