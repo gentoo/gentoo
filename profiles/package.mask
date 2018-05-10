@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (13 May 2018)
+# Depends on dead Qt4, get iBus immodule for Qt5 via dev-qt/qtgui[ibus].
+# Masked for removal in 30 days, bug #644728.
+app-i18n/ibus-qt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 May 2018)
+# Depends on dead Qt4, dead upstream.
+# Masked for removal in 30 days, bug #644728.
+app-i18n/qimhangul
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 May 2018)
+# Depends on dead Qt4. Masked for removal, bug #644728.
+<app-i18n/tagainijisho-1.1.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 May 2018)
 # Depends on dead Qt4, upstream TRAC and SVN dead. No maint. response.
 # Masked for removal in 30 days, bugs #645418, #591866, #574244.
