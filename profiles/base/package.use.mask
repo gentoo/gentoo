@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on obsolete dev-libs/sni-qt and dead Qt4.
+kde-plasma/plasma-desktop qt4
+
 # Mike Gilbert <floppym@gentoo.org> (01 May 2018)
 # Requires >=media-video/ffmpeg-4 (bug 654208).
 >=www-client/chromium-67 system-ffmpeg
