@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 DISABLE_AUTOFORMATTING=true
 
@@ -11,24 +11,21 @@ inherit python-single-r1 eutils readme.gentoo-r1
 
 DESCRIPTION="Elog viewer for Gentoo"
 HOMEPAGE="https://sourceforge.net/projects/elogviewer"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/Synss/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~sparc x86 ~x86-fbsd"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	|| (
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
-		dev-python/PyQt4[${PYTHON_USEDEP},X]
-		dev-python/pyside[${PYTHON_USEDEP},X]
+		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
 	)
-	>=sys-apps/portage-2.1
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python{2_7,3_3})
-	!dev-python/PyQt5[-gui]
-	!dev-python/PyQt5[-widgets]
+	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -45,6 +42,10 @@ To operate properly this software needs the directory
 ${PORT_LOGDIR:-/var/log/portage}/elog created, belonging to group portage.
 To start the software as a user, add yourself to the portage group."
 
+src_compile() {
+	rm -f Makefile
+}
+
 src_install() {
 	python_newscript elogviewer.py elogviewer
 
@@ -56,4 +57,8 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
+
+	ewarn "The elogviewer's configuration file is now saved in:"
+	ewarn "~/.config/elogviewer/ (was ~/.config/Mathias\ Laurin/)."
+	ewarn "Please migrate any user specific settings to the new config file."
 }
