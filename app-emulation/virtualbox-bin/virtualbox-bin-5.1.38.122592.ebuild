@@ -78,7 +78,7 @@ RDEPEND="!!app-emulation/virtualbox
 	${PYTHON_DEPS}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-S=${WORKDIR}
+S="${WORKDIR}"
 
 QA_PREBUILT="opt/VirtualBox/*"
 

@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
+inherit flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -13,7 +13,7 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.0-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.32-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -53,7 +53,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
-	>=dev-util/kbuild-0.1.9998.3127
+	>=dev-util/kbuild-0.1.9998_pre20131130-r1
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
 	sys-libs/libcap
@@ -151,7 +151,8 @@ src_prepare() {
 
 	# Replace pointless GCC version check with something less stupid.
 	# This is needed for the qt5 version check.
-	sed -e 's@^check_gcc$@cc_maj="$(gcc -dumpversion | cut -d. -f1)" ; cc_min="$(gcc -dumpversion | cut -d. -f2)"@' -i configure || die
+	sed -e 's@^check_gcc$@cc_maj="$(gcc -dumpversion | cut -d. -f1)" ; cc_min="$(gcc -dumpversion | cut -d. -f2)"@' \
+		-i configure || die
 
 	# Don't use "echo -n"
 	sed 's@ECHO_N="echo -n"@ECHO_N="printf"@' -i configure || die
@@ -185,12 +186,12 @@ src_prepare() {
 
 	# Only add nopie patch when we're on hardened
 	if  gcc-specs-pie ; then
-		eapply "${FILESDIR}/050_virtualbox-5.2.8-nopie.patch"
+		eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
 	fi
 
 	# Only add paxmark patch when we're on pax_kernel
 	if use pax_kernel ; then
-		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
+		eapply "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch
 	fi
 
 	eapply "${WORKDIR}/patches"

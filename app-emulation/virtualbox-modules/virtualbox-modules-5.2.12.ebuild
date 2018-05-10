@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="pax_kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"
@@ -28,27 +28,13 @@ MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vbo
 
 pkg_setup() {
 	enewgroup vboxusers
-
-	CONFIG_CHECK="!TRIM_UNUSED_KSYMS"
-	ERROR_TRIM_UNUSED_KSYMS="The kernel option CONFIG_TRIM_UNUSED_KSYMS removed kernel symbols that are needed by ${PN} to load correctly."
-
 	linux-mod_pkg_setup
-
-	BUILD_PARAMS="KERN_DIR=${KV_DIR} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
+	BUILD_PARAMS="CC=$(tc-getBUILD_CC) KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
 }
 
 src_prepare() {
-	if kernel_is -ge 2 6 33 ; then
-		# evil patch for new kernels - header moved
-		grep -lR linux/autoconf.h *  | xargs sed -i -e 's:<linux/autoconf.h>:<generated/autoconf.h>:'
-	fi
-
 	if use pax_kernel && kernel_is -ge 3 0 0 ; then
-		eapply "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
-	fi
-
-	if kernel_is -ge 4 14 0 ; then
-		eapply "${FILESDIR}"/${PN}-5.1.30-udp.patch
+		eapply -p0 "${FILESDIR}"/${PN}-5.2.8-pax-const.patch
 	fi
 
 	default
