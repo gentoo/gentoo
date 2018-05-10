@@ -316,6 +316,7 @@ media-plugins/gst-plugins-mad:1.0
 # Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
 # Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
 >=x11-base/xorg-server-1.19.7
+>=x11-base/xorg-drivers-1.20
 
 # Tim Harder <radhermit@gentoo.org> (01 Mar 2018)
 # Masked for testing.
