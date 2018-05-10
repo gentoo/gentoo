@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4, does not build, needs someone to bump to Qt5.
+# Masked for removal in 30 days. Bugs #588892, #588898, #649656
+media-sound/projectm-pulseaudio
+media-sound/projectm-jack
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # Depends on dead Qt4, no revdeps. Masked for removal in 30 days.
 dev-libs/sni-qt
 
