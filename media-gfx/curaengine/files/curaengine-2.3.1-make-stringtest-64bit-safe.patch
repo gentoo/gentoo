@@ -1,0 +1,13 @@
+diff --git a/tests/utils/StringTest.cpp b/tests/utils/StringTest.cpp
+index aa369f3da..b1a084587 100644
+--- a/tests/utils/StringTest.cpp
++++ b/tests/utils/StringTest.cpp
+@@ -79,7 +79,7 @@ void StringTest::writeInt2mmAssert(int64_t in)
+     int64_t out = MM2INT(strtod(str.c_str(), nullptr));
+ 
+     char buffer[200];
+-    sprintf(buffer, "The integer %ld was printed as '%s' which was interpreted as %ld rather than %ld!", in, str.c_str(), out, in);
++    sprintf(buffer, "The integer %d was printed as '%s' which was interpreted as %d rather than %d!", in, str.c_str(), out, in);
+     CPPUNIT_ASSERT_MESSAGE(std::string(buffer), in == out);
+ }
+ 
