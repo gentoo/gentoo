@@ -1,18 +1,16 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
-
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 eutils flag-o-matic git-r3 multiprocessing virtualx toolchain-funcs
+inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="https://matplotlib.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/matplotlib/matplotlib.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 # Main license: matplotlib
@@ -20,39 +18,38 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS=""
-IUSE="cairo doc excel examples fltk gtk2 gtk3 latex qt5 test tk wxwidgets"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+IUSE="cairo doc excel examples gtk2 gtk3 latex qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="
 	doc? ( ${PY2_FLAGS} )
 	excel? ( ${PY2_FLAGS} )
-	fltk? ( ${PY2_FLAGS} )
 	gtk2? ( ${PY2_FLAGS} )
 	wxwidgets? ( ${PY2_FLAGS} )
 	test? (
-		cairo fltk latex qt5 tk wxwidgets
+		cairo latex qt5 tk wxwidgets
 		|| ( gtk2 gtk3 )
 		)"
 
 # #456704 -- a lot of py2-only deps
 PY2_USEDEP=$(python_gen_usedep python2_7)
+PY2_DEPEND="
+	$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep 'dev-python/subprocess32[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7)"
 COMMON_DEPEND="
 	dev-python/cycler[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.6[${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
-	>=dev-python/six-1.4[${PYTHON_USEDEP}]
+	>=dev-python/six-1.10[${PYTHON_USEDEP}]
 	media-fonts/stix-fonts
 	media-libs/freetype:2
 	media-libs/libpng:0
-	media-libs/qhull
-	cairo? (
-		|| (
-			dev-python/pycairo[${PYTHON_USEDEP}]
-			dev-python/cairocffi[${PYTHON_USEDEP}]
-			)
-		)
+	>=media-libs/qhull-2013
+	>=dev-python/kiwisolver-1.0.0[${PYTHON_USEDEP}]
+	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
 	gtk2? (
 		dev-libs/glib:2=
 		x11-libs/gdk-pixbuf
@@ -64,17 +61,20 @@ COMMON_DEPEND="
 #	dev-python/pycxx
 
 DEPEND="${COMMON_DEPEND}
+	${PY2_DEPEND}
 	dev-python/versioneer[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
 		app-text/dvipng
+		dev-python/colorspacious[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/mock[${PY2_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.3.4
+		sci-libs/scipy[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.3.0[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-gallery-0.1.12[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
@@ -87,9 +87,9 @@ DEPEND="${COMMON_DEPEND}
 		)"
 
 RDEPEND="${COMMON_DEPEND}
+	${PY2_DEPEND}
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
-	fltk? ( dev-python/pyfltk[${PYTHON_USEDEP}] )
 	gtk3? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection] )
@@ -110,7 +110,6 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 pkg_setup() {
 	unset DISPLAY # bug #278524
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
 }
 
 use_setup() {
@@ -138,19 +137,14 @@ python_prepare_all() {
 #	from six import *
 #	EOF
 
+	local PATCHES=( "${FILESDIR}"/${P}-doc-make.patch )
+
 	sed \
 		-e 's/matplotlib.pyparsing_py[23]/pyparsing/g' \
 		-i lib/matplotlib/{mathtext,fontconfig_pattern}.py \
 		|| die "sed pyparsing failed"
 
-	# suggested by upstream
-#	sed \
-#		-e '/tol/s:32:35:g' \
-#		-i lib/matplotlib/tests/test_mathtext.py || die
-
-	sed \
-		-e "s:/usr/:${EPREFIX}/usr/:g" \
-		-i setupext.py || die
+	hprefixify setupext.py
 
 	export XDG_RUNTIME_DIR="${T}/runtime-dir"
 	mkdir "${XDG_RUNTIME_DIR}" || die
@@ -171,12 +165,14 @@ python_configure() {
 	# create setup.cfg (see setup.cfg.template for any changes).
 
 	# common switches.
-	cat > "${BUILD_DIR}"/setup.cfg <<- EOF
+	cat > "${BUILD_DIR}"/setup.cfg <<- EOF || die
 		[directories]
-		basedirlist = "${EPREFIX}/usr"
+		basedirlist = ${EPREFIX}/usr
 		[provide_packages]
 		pytz = False
 		dateutil = False
+		[packages]
+		tests = $(usex test True False)
 		[gui_support]
 		agg = True
 		pyside = False
@@ -184,6 +180,7 @@ python_configure() {
 		qt4 = False
 		qt4agg = False
 		$(use_setup cairo)
+		$(use_setup gtk3)
 		$(use_setup qt5)
 		$(use_setup tk)
 	EOF
@@ -194,38 +191,29 @@ python_configure() {
 		echo "gtk3cairo = False" >> "${BUILD_DIR}"/setup.cfg || die
 	fi
 
-	if $(python_is_python3); then
-		cat >> "${BUILD_DIR}"/setup.cfg <<- EOF
-			six = True
-			fltk = False
-			fltkagg = False
+	if python_is_python3; then
+		cat >> "${BUILD_DIR}"/setup.cfg <<- EOF || die
 			gtk = False
 			gtkagg = False
 			wx = False
 			wxagg = False
 		EOF
 	else
-		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF
-			six = False
-			$(use_setup fltk)
+		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF || die
 			$(use_setup gtk2 gtk)
-			$(use_setup gtk3)
 			$(use_setup wxwidgets wx)
 		EOF
 	fi
 }
 
 wrap_setup() {
-	local MPLSETUPCFG=${BUILD_DIR}/setup.cfg
-	export MPLSETUPCFG
+	local -x MPLSETUPCFG=${BUILD_DIR}/setup.cfg
 	unset DISPLAY
-
-	# Note: remove build... if switching to out-of-source build
-	"${@}" build --build-lib="${BUILD_DIR}"/build/lib
+	"$@"
 }
 
 python_compile() {
-	wrap_setup distutils-r1_python_compile
+	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/lib
 }
 
 python_compile_all() {
@@ -236,18 +224,14 @@ python_compile_all() {
 		local -x PYTHONPATH="${BUILD_DIR}"/build/lib:${PYTHONPATH}
 
 		VARTEXFONTS="${T}"/fonts \
-		"${PYTHON}" ./make.py --small html || die
+		emake SPHINXOPTS= O=-Dplot_formats=png:100 html
 	fi
 }
 
 python_test() {
 	wrap_setup distutils_install_for_testing
 
-	virtx ${PYTHON} tests.py \
-		--no-pep8 \
-		--no-network \
-		--verbose \
-		--processes=$(makeopts_jobs)
+	virtx "${EPYTHON}" -c "import sys, matplotlib as m; sys.exit(0 if m.test(verbosity=2) else 1)"
 }
 
 python_install() {
