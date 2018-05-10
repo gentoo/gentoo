@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (10 May 2018)
+# The upstream is totally dead (the last release is from 2006).
+# Does not compile against gcc-6, uses old EAPI=3 (#564998, #644262).
+# Use dev-libs/memcached istead. Removal in 30 days.
+dev-libs/libmemcache
+
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # Depends on dead Qt4. Masked for removal in 30 days.
 dev-python/pyside-tools
