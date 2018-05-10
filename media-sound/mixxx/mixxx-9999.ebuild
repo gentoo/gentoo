@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,21 +7,25 @@ inherit flag-o-matic scons-utils toolchain-funcs
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://www.mixxx.org/"
-SRC_URI="https://downloads.${PN}.org/${P}/${P}-src.tar.gz"
-
-# Upstream patches
-SRC_URI+=" https://github.com/mixxxdj/mixxx/commit/51d95ba58d99309f439cb7e2d1285cfb33aa0f63.patch -> ${PN}-2.0.0-ffmpeg30.patch"
-SRC_URI+=" https://github.com/mixxxdj/mixxx/commit/869e07067b15e09bf7ef886a8772afdfb79cbc3c.patch -> ${PN}-2.0.0-ffmpeg31.patch"
+if [[ "${PV}" == 9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/mixxxdj/${PN}.git"
+else
+	#SRC_URI="https://downloads.mixxx.org/${P}/${P}-src.tar.gz"
+	SRC_URI="https://github.com/mixxxdj/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-release-${PV}"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="aac debug doc ffmpeg hid mp3 mp4 shout wavpack"
+IUSE="aac doc ffmpeg hid mp3 mp4 opus shout wavpack"
 
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
 RDEPEND="
 	dev-db/sqlite
+	dev-libs/glib:2
 	dev-libs/protobuf:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -56,6 +60,7 @@ RDEPEND="
 	hid? ( dev-libs/hidapi )
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
+	opus? (	media-libs/opusfile )
 	shout? ( media-libs/libshout )
 	wavpack? ( media-sound/wavpack )
 	ffmpeg? ( media-video/ffmpeg:0= )
@@ -70,22 +75,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
-
-	"${DISTDIR}"/${P}-ffmpeg30.patch
-	"${DISTDIR}"/${P}-ffmpeg31.patch
-
-	"${FILESDIR}"/${P}-chromaprint-1.4.patch #604528
-	"${FILESDIR}"/${P}-gcc62.patch #595090
-
-	"${FILESDIR}"/${PN}-2.0.0-sqlite3.patch #622776
-
-	# The following patches were taken from sunny-overlay (bug #608430)
-	"${FILESDIR}"/${P}-fix-formatting-of-time-durations.patch
-	"${FILESDIR}"/${P}-eliminate-unnecessary-heap-allocation-of-qtime.patch
-	"${FILESDIR}"/${P}-fix-missing-pointer-initialization.patch
-	"${FILESDIR}"/${P}-move-definition-of-time-formatseconds-into-dot-cpp-file.patch
-	"${FILESDIR}"/${P}-fix-formatting-of-time-durations2.patch
-	"${FILESDIR}"/${P}-rmx2-backport-controller-scripts.patch
 )
 
 src_prepare() {
@@ -120,7 +109,7 @@ src_configure() {
 		m4a="$(usex mp4 1 0)"
 		mad="$(usex mp3 1 0)"
 		optimize="${myoptimize}"
-		qdebug="$(usex debug 1 0)"
+		opus="$(usex opus 1 0)"
 		qt5=1
 		shoutcast="$(usex shout 1 0)"
 		vinylcontrol=1
