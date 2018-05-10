@@ -162,8 +162,8 @@ multilib_src_configure() {
 	type -P gmake &> /dev/null && export GNUMAKE=gmake
 
 	local myeconfargs=(
+		--disable-freetype-config
 		--enable-biarch-config
-		--enable-freetype-config
 		--enable-shared
 		$(use_with bzip2)
 		$(use_with harfbuzz)
