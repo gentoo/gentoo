@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on dead Qt4, dead upstream.
+# Masked for removal in 30 days. Bug #640258
+dev-util/valkyrie
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # Depends on dead Qt4, severely outdated, no one does the bump.
 # Masked for removal in 30 days. Bugs #489190, #648666
 media-gfx/ipe
