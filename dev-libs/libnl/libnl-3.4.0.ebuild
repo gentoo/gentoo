@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="static-libs python utils"
+IUSE="+debug static-libs python +threads utils"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
@@ -71,9 +71,11 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
-		--disable-silent-rules \
+		$(multilib_native_use_enable utils cli) \
+		$(use_enable debug) \
 		$(use_enable static-libs static) \
-		$(multilib_native_use_enable utils cli)
+		$(use_enable threads) \
+		--disable-silent-rules
 }
 
 multilib_src_compile() {
