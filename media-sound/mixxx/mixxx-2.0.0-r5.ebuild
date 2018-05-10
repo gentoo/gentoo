@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI+=" https://github.com/mixxxdj/mixxx/commit/869e07067b15e09bf7ef886a8772a
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="aac debug doc ffmpeg hid mp3 mp4 shout wavpack"
+IUSE="aac debug doc ffmpeg hid mp3 mp4 opus shout wavpack"
 
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
@@ -56,6 +56,7 @@ RDEPEND="
 	hid? ( dev-libs/hidapi )
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
+	opus? ( media-libs/opusfile )
 	shout? ( media-libs/libshout )
 	wavpack? ( media-sound/wavpack )
 	ffmpeg? ( media-video/ffmpeg:0= )
@@ -120,6 +121,7 @@ src_configure() {
 		m4a="$(usex mp4 1 0)"
 		mad="$(usex mp3 1 0)"
 		optimize="${myoptimize}"
+		opus="$(usex opus 1 0)"
 		qdebug="$(usex debug 1 0)"
 		qt5=1
 		shoutcast="$(usex shout 1 0)"
