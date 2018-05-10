@@ -93,7 +93,7 @@
 # -- EAPI support check --
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
+	0|1|2|3|4|5|6) ;;
 	*) die "EAPI ${EAPI} unsupported."
 esac
 
