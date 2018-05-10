@@ -7975,7 +7975,7 @@ media-sound/mcdp 0.4a 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.22: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.6: A console MOD-Player based on libmikmod
-media-sound/mixxx 2.0.0-r4: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.0.0-r5: Advanced Digital DJ tool based on Qt
 media-sound/moc 2.5.2: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.1: libmodplug based module players modplug123 and modplugplay
 media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
