@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 		dev-python/u-msgpack[${PYTHON_USEDEP}]
 	)
 	dev-python/PyQt5[${PYTHON_USEDEP}]
-	dev-python/QtPy[gui,pyqt5,${PYTHON_USEDEP}]
+	>=dev-python/QtPy-1.3.1[gui,pyqt5(+),${PYTHON_USEDEP}]
 	debug? ( dev-python/python-prctl[${PYTHON_USEDEP}] )
 	libnotify? (
 		dev-python/pygobject[${PYTHON_USEDEP}]
