@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 SLOT="5"
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm ia64 x86"
+KEYWORDS="amd64 ~arm ia64 x86"
 IUSE="debug doc examples svg"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
