@@ -18,7 +18,7 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/traitlets[${PYTHON_USEDEP}]
-	"
+"
 DEPEND="${RDEPEND}
 	!!<dev-python/jupyter-1.0.0-r1
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/ipython-4.0.1[${PYTHON_USEDEP}]
 	)
-	"
+"
+
+# tests require installation of jupyter_core, bug #649538
+RESTRICT="test"
 
 python_prepare_all() {
 	# Prevent un-needed download during build
