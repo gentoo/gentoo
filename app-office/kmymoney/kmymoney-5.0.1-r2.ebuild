@@ -87,7 +87,10 @@ RDEPEND="${COMMON_DEPEND}
 	quotes? ( dev-perl/Finance-Quote )
 "
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-qt-5.11.patch"
+)
 
 pkg_setup() {
 	use weboob && python_setup
