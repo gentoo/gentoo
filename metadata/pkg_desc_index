@@ -5401,7 +5401,7 @@ dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2016.2.6-r1: A collection of tools missing from the Python standard library
 dev-python/pytrie 0.3: A pure Python implementation of the trie data structure.
 dev-python/pytz 2016.3 2017.2: World timezone definitions for Python
-dev-python/pyudev 0.20.0 0.21.0: Python binding to libudev
+dev-python/pyudev 0.20.0-r1 0.21.0: Python binding to libudev
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyx 0.12.1-r1 0.14.1: Python package for the generation of encapsulated PostScript figures

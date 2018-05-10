@@ -1821,8 +1821,6 @@ dev-python/pyside:webkit - Build QtWebKit module
 dev-python/pyside:xmlpatterns - Build QtXmlPatterns module
 dev-python/python-caja:gtk3 - Build with GTK+3 instead of GTK+2
 dev-python/pyudev:pygobject - Install PyGobject bindings
-dev-python/pyudev:pyside - Install PySide bindings
-dev-python/pyudev:qt4 - Install PyQt4 bindings
 dev-python/pyudev:qt5 - Install PyQt5 bindings
 dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
 dev-python/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
