@@ -1,0 +1,43 @@
+From fe45e504ace024d920fe18b4f55d6aa07b2f929b Mon Sep 17 00:00:00 2001
+From: Ghostkeeper <rubend@tutanota.com>
+Date: Mon, 20 Nov 2017 10:46:09 +0100
+Subject: [PATCH] Use ints instead of int64_t to test writing ints
+
+Because sprintf doesn't accept anything more.
+---
+ tests/utils/StringTest.cpp | 4 ++--
+ tests/utils/StringTest.h   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/utils/StringTest.cpp b/tests/utils/StringTest.cpp
+index 5bd16c5d3..980d2145f 100644
+--- a/tests/utils/StringTest.cpp
++++ b/tests/utils/StringTest.cpp
+@@ -71,12 +71,12 @@ void StringTest::writeInt2mmTestMax()
+ }
+ 
+ 
+-void StringTest::writeInt2mmAssert(int64_t in)
++void StringTest::writeInt2mmAssert(int in)
+ {
+     std::ostringstream ss;
+     writeInt2mm(in, ss);
+     std::string str = ss.str();
+-    int64_t out = MM2INT(strtod(str.c_str(), nullptr));
++    int out = MM2INT(strtod(str.c_str(), nullptr));
+ 
+     char buffer[200];
+     sprintf(buffer, "The integer %d was printed as '%s' which was interpreted as %d rather than %d!", in, str.c_str(), out, in);
+diff --git a/tests/utils/StringTest.h b/tests/utils/StringTest.h
+index 58be00642..da1da793a 100644
+--- a/tests/utils/StringTest.h
++++ b/tests/utils/StringTest.h
+@@ -68,7 +68,7 @@ class StringTest : public CppUnit::TestFixture
+      * 
+      * \param in the integer to check
+      */
+-    void writeInt2mmAssert(int64_t in);
++    void writeInt2mmAssert(int in);
+ };
+ 
+ }
