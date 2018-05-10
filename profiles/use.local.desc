@@ -1966,7 +1966,6 @@ dev-qt/qtwebengine:widgets - Enable QtWidgets support
 dev-qt/qtwebkit:geolocation - Enable physical position determination via dev-qt/qtpositioning
 dev-qt/qtwebkit:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtwebkit:gstreamer - Enable HTML5 audio/video support via media-libs/gstreamer using SLOT 1.0
-dev-qt/qtwebkit:gstreamer010 - Enable HTML5 audio/video support via media-libs/gstreamer using SLOT 0.10
 dev-qt/qtwebkit:multimedia - Enable HTML5 audio/video support via dev-qt/qtmultimedia
 dev-qt/qtwebkit:orientation - Enable device orientation detection via dev-qt/qtsensors
 dev-qt/qtwebkit:printsupport - Enable printing via dev-qt/qtprintsupport
