@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,6 +36,8 @@ DEPEND="
 
 DOCS=( AUTHORS BUGS ChangeLog README TODO )
 
+PATCHES=( "${FILESDIR}/${PN}-1.42-use_pkgconfig_for_freetype_and_xft.patch" )
+
 src_prepare() {
 	default
 
@@ -62,15 +64,15 @@ src_prepare() {
 		-e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' \
 		configure.ac || die
 
-	eapply_user
-
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug) \
-		$(use_enable nls) \
-		$(use_enable startup-notification sn) \
+	local myeconfargs=(
+		$(use_enable debug)
+		$(use_enable nls)
+		$(use_enable startup-notification sn)
 		--enable-minimalflags
+	)
+	econf "${myeconfargs[@]}"
 }
