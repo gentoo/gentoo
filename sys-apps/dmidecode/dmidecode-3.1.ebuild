@@ -6,7 +6,7 @@ EAPI=5
 inherit flag-o-matic toolchain-funcs eutils
 
 DESCRIPTION="DMI (Desktop Management Interface) table related utilities"
-HOMEPAGE="http://www.nongnu.org/dmidecode/"
+HOMEPAGE="https://www.nongnu.org/dmidecode/"
 SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
