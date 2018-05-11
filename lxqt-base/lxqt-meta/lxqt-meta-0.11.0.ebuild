@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Meta ebuild for LXQt, the Lightweight Desktop Environment"
-HOMEPAGE="http://lxqt.org/"
+HOMEPAGE="https://lxqt.org"
 
 LICENSE="metapackage"
 SLOT="0"
