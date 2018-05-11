@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ PB=${PN}
 P_ARCHIVE=l_${PN}_p_${PV}
 
 DESCRIPTION="Intel(R) Math Kernel Library: linear algebra, fft, math functions"
-HOMEPAGE="http://developer.intel.com/software/products/mkl/"
+HOMEPAGE="https://software.intel.com/en-us/mkl"
 SRC_URI="http://registrationcenter-download.intel.com/irc_nas/${PID}/${P_ARCHIVE}.tgz"
 
 SLOT="0"
