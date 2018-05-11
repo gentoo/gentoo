@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
-	X? ( >=x11-proto/videoproto-2.3.1-r1[${MULTILIB_USEDEP}] )"
+	X? ( x11-base/xorg-proto )"
 
 REQUIRED_USE="opengl? ( X )"
 
