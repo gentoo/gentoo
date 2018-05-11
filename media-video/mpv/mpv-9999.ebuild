@@ -119,6 +119,7 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	dev-python/docutils
 	virtual/pkgconfig
+	cuda? ( >=media-libs/nv-codec-headers-8.1.24.1 )
 	doc? ( dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	test? ( >=dev-util/cmocka-1.0.0 )
