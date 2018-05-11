@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils gnome2-utils
 
 DESCRIPTION="A volume control trayicon with mouse wheel support"
-HOMEPAGE="http://oliwer.net/b/volwheel.html"
+HOMEPAGE="https://oliwer.net/b/volwheel.html"
 SRC_URI="https://olwtools.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3"
