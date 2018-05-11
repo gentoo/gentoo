@@ -33,7 +33,7 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 #		 jit? ( >=dev-libs/lightning-1.2 )
 
 DEPEND="${RDEPEND}
-	X? ( x11-misc/imake x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto x11-misc/imake )"
 
 enable_modules() {
 	[[ $# = 0 ]] && die "${FUNCNAME[0]} must receive at least one argument"
