@@ -5,8 +5,8 @@ EAPI=6
 inherit desktop gnome2-utils
 
 DESCRIPTION="Clone of Super Monkey Ball using SDL/OpenGL"
-HOMEPAGE="http://neverball.org/"
-SRC_URI="http://neverball.org/${P}.tar.gz"
+HOMEPAGE="https://neverball.org"
+SRC_URI="https://neverball.org/${P}.tar.gz"
 
 LICENSE="GPL-2+ IJG"
 SLOT="0"
