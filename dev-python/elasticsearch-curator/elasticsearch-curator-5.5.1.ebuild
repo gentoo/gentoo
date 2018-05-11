@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,14 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_PN="curator"
-ES_VERSION="5.6.3"
-
-# tests fail in chroot
-# https://github.com/elastic/elasticsearch/issues/12018
-RESTRICT="test"
-
-# running tests in non-chroot environments:
-# FEATURES="test -usersandbox" emerge dev-python/elasticsearch-curator
+ES_VERSION="6.2.4"
 
 inherit distutils-r1
 
@@ -25,13 +18,14 @@ SRC_URI="https://github.com/elasticsearch/${MY_PN}/archive/v${PV}.tar.gz -> ${P}
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test"
 IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/elasticsearch-py-5.4.0[${PYTHON_USEDEP}]
-	<dev-python/elasticsearch-py-6.0.0[${PYTHON_USEDEP}]
+	<dev-python/elasticsearch-py-7.0.0[${PYTHON_USEDEP}]
 	>=dev-python/click-6.7[${PYTHON_USEDEP}]
-	>=dev-python/certifi-2017.4.17[${PYTHON_USEDEP}]
+	>=dev-python/certifi-2018.01.18[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.20[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.9.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
@@ -47,6 +41,25 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
+python_prepare_all() {
+	# avoid downloading from net
+	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
+
+	# allow to use newer dev-python/elasticsearch-py
+	sed -e 's/elasticsearch==5.5.2/elasticsearch>=5.4.0/g' -i setup.py || die
+
+	distutils-r1_python_prepare_all
+}
+
+python_compile_all() {
+	emake -C docs -j1 man $(usex doc html "")
+}
+
+# tests fail in chroot
+# https://github.com/elastic/elasticsearch/issues/12018
+#
+# running tests in non-chroot environments:
+# FEATURES="test -usersandbox" emerge dev-python/elasticsearch-curator
 python_test() {
 	ES="${WORKDIR}/elasticsearch-${ES_VERSION}"
 	ES_PORT="25123"
@@ -89,18 +102,6 @@ python_test() {
 	esetup.py test || die
 
 	pkill -F ${PID}
-}
-
-python_prepare_all() {
-	# avoid downloading from net
-	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
-
-	distutils-r1_python_prepare_all
-}
-
-python_compile_all() {
-	cd docs || die
-	emake -j1 man $(usex doc html "")
 }
 
 python_install_all() {
