@@ -24,12 +24,12 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-59.0-patches-01"
+PATCH="${PN}-60.0-patches-01"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
 
-inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.58 \
+inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.60 \
 		pax-utils xdg-utils autotools mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
@@ -48,7 +48,7 @@ SDIR="release"
 
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/${PATCH}.tar.xz )
 SRC_URI="${SRC_URI}
-	https://hg.mozilla.org/releases/mozilla-${SDIR}/archive/${SRCHASH}.tar.bz2 -> firefox-${MOZ_PV}.source.tar.bz2
+	${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz
 	${PATCH_URIS[@]}"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 	amd64? ( ${ASM_DEPEND} virtual/opengl )
 	x86? ( ${ASM_DEPEND} virtual/opengl )"
 
-S="${WORKDIR}"/mozilla-${SDIR}-${SRCHASH}
+S="${WORKDIR}/firefox-${PV%_*}"
 
 QA_PRESTRIPPED="usr/lib*/${PN}/firefox"
 
@@ -228,7 +228,7 @@ src_configure() {
 
 src_compile() {
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 \
-	./mach build || die
+	./mach build --verbose || die
 }
 
 src_install() {
