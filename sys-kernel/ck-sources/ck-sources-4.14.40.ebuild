@@ -11,7 +11,7 @@ HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 IUSE="experimental"
 
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="12"
+K_GENPATCHES_VER="45"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -35,9 +35,14 @@ CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 
-SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI}"
+# Fix for: https://github.com/gentoo/gentoo/pull/6942
+BLKIO_HASH="25849740d77dfc089fdbfb53623e50d38a972aff"
+BLKIO_FILE="${PN}-4.14-blkio-fix.patch"
+BLKIO_URI="https://github.com/ckolivas/linux/commit/${BLKIO_HASH}.patch -> ${BLKIO_FILE}"
 
-UNIPATCH_LIST="${DISTDIR}/${CK_FILE}"
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI} ${BLKIO_URI}"
+
+UNIPATCH_LIST="${DISTDIR}/${CK_FILE} ${DISTDIR}/${BLKIO_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
 pkg_setup() {

@@ -6,7 +6,8 @@ EAPI=6
 inherit autotools readme.gentoo-r1 systemd user
 
 DESCRIPTION="Lightweight high-performance web server"
-HOMEPAGE="https://www.lighttpd.net/"
+HOMEPAGE="https://www.lighttpd.net
+		  https://github.com/lighttpd"
 SRC_URI="https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
