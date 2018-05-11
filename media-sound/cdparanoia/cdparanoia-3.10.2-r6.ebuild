@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ inherit autotools eutils libtool toolchain-funcs versionator multilib-minimal
 
 MY_P=${PN}-III-$(get_version_component_range 2-3)
 DESCRIPTION="an advanced CDDA reader with error correction"
-HOMEPAGE="http://www.xiph.org/paranoia"
-SRC_URI="http://downloads.xiph.org/releases/${PN}/${MY_P}.src.tgz
+HOMEPAGE="https://www.xiph.org/paranoia"
+SRC_URI="https://downloads.xiph.org/releases/${PN}/${MY_P}.src.tgz
 	https://dev.gentoo.org/~ssuominen/${MY_P}-patches-2.tbz2"
 
 LICENSE="GPL-2 LGPL-2.1"
