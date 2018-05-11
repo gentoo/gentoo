@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils scons-utils
 
 DESCRIPTION="Futuristic real-time strategy game"
-HOMEPAGE="http://www.boswars.org/"
-SRC_URI="http://www.boswars.org/dist/releases/${P}-src.tar.gz
+HOMEPAGE="https://www.boswars.org"
+SRC_URI="https://www.boswars.org/dist/releases/${P}-src.tar.gz
 	https://dev.gentoo.org/~hasufell/distfiles/${P}-fixed-images-for-libpng-1.6.tar.xz
 	mirror://gentoo/bos.png"
 
