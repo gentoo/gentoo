@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2
 
 DESCRIPTION="Stream directory browser for browsing internet radio streams"
-HOMEPAGE="http://www.nongnu.org/streamtuner"
+HOMEPAGE="https://www.nongnu.org/streamtuner/"
 SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz
 	 https://savannah.nongnu.org/download/${PN}/${P}-pygtk-2.6.diff"
 
