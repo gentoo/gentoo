@@ -24,7 +24,7 @@ RDEPEND="${COMMON_DEPEND}
 	X? ( x11-libs/libXt x11-libs/libXaw )"
 
 DEPEND="${COMMON_DEPEND}
-	X? ( x11-proto/xproto )"
+	X? ( x11-base/xorg-proto )"
 
 S="${WORKDIR}/ACE_wrappers"
 
