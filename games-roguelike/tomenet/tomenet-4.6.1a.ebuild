@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils gnome2-utils toolchain-funcs games
 
 DESCRIPTION="A MMORPG based on the works of J.R.R. Tolkien"
-HOMEPAGE="http://www.tomenet.eu/"
-SRC_URI="http://www.tomenet.eu/downloads/${P}.tar.bz2"
+HOMEPAGE="https://www.tomenet.eu"
+SRC_URI="https://www.tomenet.eu/downloads/${P}.tar.bz2"
 
 LICENSE="Moria"
 SLOT="0"

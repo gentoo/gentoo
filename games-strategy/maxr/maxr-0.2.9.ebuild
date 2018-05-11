@@ -6,8 +6,8 @@ EAPI=6
 inherit cmake-utils desktop gnome2-utils
 
 DESCRIPTION="Mechanized Assault and Exploration Reloaded"
-HOMEPAGE="http://www.maxr.org/"
-SRC_URI="http://www.maxr.org/downloads/${P}.tar.gz"
+HOMEPAGE="https://www.maxr.org"
+SRC_URI="https://www.maxr.org/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.2+"
 SLOT="0"
