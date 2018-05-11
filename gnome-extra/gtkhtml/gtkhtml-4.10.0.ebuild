@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -25,7 +25,7 @@ RDEPEND="
 	>=net-libs/libsoup-2.26.0:2.4
 "
 DEPEND="${RDEPEND}
-	x11-proto/xproto
+	x11-base/xorg-proto
 	sys-devel/gettext
 	>=dev-util/intltool-0.40.0
 	virtual/pkgconfig

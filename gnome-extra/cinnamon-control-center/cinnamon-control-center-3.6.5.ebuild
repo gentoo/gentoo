@@ -60,9 +60,7 @@ RDEPEND="${COMMON_DEPEND}
 
 DEPEND="${COMMON_DEPEND}
 	app-text/iso-codes
-	x11-proto/xproto
-	x11-proto/xf86miscproto
-	x11-proto/kbproto
+	x11-base/xorg-proto
 
 	dev-libs/libxslt
 	>=dev-util/intltool-0.40.1

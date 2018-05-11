@@ -26,7 +26,7 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-sgml-utils
 	dev-libs/appstream-glib
 	>=sys-devel/gettext-0.19.7
-	x11-proto/randrproto
+	x11-base/xorg-proto
 	virtual/pkgconfig
 	test? ( sys-apps/dbus )
 "
