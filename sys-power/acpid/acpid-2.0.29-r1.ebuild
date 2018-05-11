@@ -50,7 +50,7 @@ src_install() {
 	newinitd "${WORKDIR}/${EXTRAS_NAME}/${PN}-2.0.26-init.d" ${PN}
 	newconfd "${WORKDIR}/${EXTRAS_NAME}/${PN}-2.0.16-conf.d" ${PN}
 
-	systemd_dounit "${WORKDIR}/${EXTRAS_NAME}/systemd/${PN}.{service,socket}"
+	systemd_dounit "${WORKDIR}"/${EXTRAS_NAME}/systemd/${PN}.{service,socket}
 }
 
 pkg_postinst() {
