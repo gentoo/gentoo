@@ -90,7 +90,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( >=dev-libs/check-0.9.10 )
 	X? (
-		x11-proto/xproto[${MULTILIB_USEDEP}]
+		x11-base/xorg-proto
 		>=x11-libs/libXtst-1.0.99.2[${MULTILIB_USEDEP}]
 	)
 	dev-libs/libatomic_ops

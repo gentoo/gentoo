@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,8 +22,8 @@ RDEPEND=">=media-sound/jack-audio-connection-kit-0.109.2
 	x11-libs/libX11"
 # osc? ( >=media-libs/liblo-0.22 )
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	x11-base/xorg-proto"
 
 DOCS=( AUTHORS ChangeLog HOWTO NEWS README )
 

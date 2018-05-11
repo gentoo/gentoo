@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -21,9 +21,7 @@ RDEPEND="media-libs/alsa-lib
 	x11-libs/libXxf86misc"
 DEPEND="${RDEPEND}
 	virtual/os-headers
-	x11-proto/kbproto
-	x11-proto/xf86miscproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS="AUTHORS NEWS README TODO"
 
