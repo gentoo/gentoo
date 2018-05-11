@@ -423,7 +423,7 @@ games-kids/crayon-physics
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Depends on dead Qt4. Last-rites on hold for chance of Qt5-port. Bug #620702
-<media-gfx/freecad-0.18
+<media-gfx/freecad-0.17
 
 # Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
 # Missing dependencies.
