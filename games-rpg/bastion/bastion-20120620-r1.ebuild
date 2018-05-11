@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit eutils gnome2-utils check-reqs unpacker games
 
 TIMESTAMP=${PV:0:4}-${PV:4:2}-${PV:6:2}
 DESCRIPTION="An original action role-playing game set in a lush imaginative world"
-HOMEPAGE="http://supergiantgames.com/?page_id=242"
+HOMEPAGE="https://supergiantgames.com/games/bastion/"
 SRC_URI="Bastion-HIB-${TIMESTAMP}.sh"
 
 LICENSE="all-rights-reserved"
