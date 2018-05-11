@@ -12,8 +12,8 @@ RUBY_FAKEGEM_TASK_DOC=""
 inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="A tool for building and distributing development environments"
-HOMEPAGE="http://vagrantup.com/"
-SRC_URI="https://github.com/mitchellh/vagrant/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://vagrantup.com/"
+SRC_URI="https://github.com/hashicorp/vagrant/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -71,7 +71,7 @@ all_ruby_install() {
 	all_fakegem_install
 
 	# provide executable similar to upstream:
-	# https://github.com/mitchellh/vagrant-installers/blob/master/substrate/modules/vagrant_installer/templates/vagrant.erb
+	# https://github.com/hashicorp/vagrant-installers/blob/master/substrate/modules/vagrant_installer/templates/vagrant.erb
 	dobin "${PN}"
 
 	# directory for plugins.json

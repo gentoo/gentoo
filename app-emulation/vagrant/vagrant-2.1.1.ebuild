@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
@@ -56,7 +56,7 @@ all_ruby_prepare() {
 		-i ${PN}.gemspec || die
 
 	# remove windows-specific gems
-	sed -e '/wdm\|winrm/d' \
+	sed -e '/wdm\|win32-\|winrm/d' \
 		-i ${PN}.gemspec || die
 
 	# remove bsd-specific gems
