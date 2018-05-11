@@ -49,7 +49,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install manualdir="${EPREFIX}/usr/share/man/man1"
+	emake DESTDIR="${D}" install
 	einstalldocs
 	find "${D}" -name '*.la' -delete || die
 }
