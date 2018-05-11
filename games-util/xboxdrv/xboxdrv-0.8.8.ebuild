@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ inherit linux-info scons-utils toolchain-funcs systemd udev
 
 MY_P=${PN}-linux-${PV}
 DESCRIPTION="Userspace Xbox 360 Controller driver"
-HOMEPAGE="http://pingus.seul.org/~grumbel/xboxdrv/"
-SRC_URI="http://pingus.seul.org/~grumbel/xboxdrv/${MY_P}.tar.bz2"
+HOMEPAGE="https://pingus.seul.org/~grumbel/xboxdrv/"
+SRC_URI="https://pingus.seul.org/~grumbel/xboxdrv/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
