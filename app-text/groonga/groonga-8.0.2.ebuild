@@ -97,6 +97,4 @@ src_install() {
 	fowners groonga:groonga /var/{log,lib}/${PN}
 
 	use examples || rm -r "${D%/}/usr/share/${PN}" || die
-	# Extra init script
-	rm -r "${D%/}/usr/sbin/groonga-httpd-restart" || die
 }
