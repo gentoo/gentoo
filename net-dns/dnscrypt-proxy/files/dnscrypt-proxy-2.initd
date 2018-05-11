@@ -14,6 +14,6 @@ depend() {
 }
 
 start_pre() {
-        checkpath -q -d -m 0775 -o "${command_user}" /var/cache/"${SVCNAME}"
-        checkpath -q -d -m 0775 -o "${command_user}" /var/log/"${SVCNAME}"
+        checkpath -q -d -m 0775 -o "${command_user}" /var/cache/"${RC_SVCNAME}"
+        checkpath -q -d -m 0775 -o "${command_user}" /var/log/"${RC_SVCNAME}"
 }
