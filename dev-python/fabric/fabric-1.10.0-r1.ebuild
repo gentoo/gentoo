@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,8 @@ KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/paramiko-1.10[${PYTHON_USEDEP}]"
+	>=dev-python/paramiko-1.10[${PYTHON_USEDEP}]
+	dev-python/pycrypto[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
