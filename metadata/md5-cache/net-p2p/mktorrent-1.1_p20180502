@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= )
 SLOT=0
-SRC_URI=https://github.com/Rudde/mktorrent/archive/v1.1.tar.gz -> mktorrent-1.1.tar.gz
+SRC_URI=https://github.com/Rudde/mktorrent/archive/96090fb175f3cef17ae2499e98c2868363106927.tar.gz -> mktorrent-96090fb175f3cef17ae2499e98c2868363106927.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=c2bf66ae8e5b97fae6ff8b3814de2a41
+_md5_=9cc3fe19c64612653209719f81184390
