@@ -6,7 +6,7 @@ EAPI=6
 inherit desktop
 
 DESCRIPTION="First-person ego-shooter, built as a total conversion of Cube Engine 2"
-HOMEPAGE="http://www.redeclipse.net/"
+HOMEPAGE="https://www.redeclipse.net"
 SRC_URI="https://github.com/red-eclipse/base/releases/download/v${PV}/${PN}_${PV}_nix.tar.bz2"
 
 # According to doc/license.txt file
