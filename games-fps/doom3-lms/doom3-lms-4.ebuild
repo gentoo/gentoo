@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MOD_DIR="lms4"
 
 inherit games games-mods
 
-HOMEPAGE="http://doom3coop.com/"
+HOMEPAGE="https://www.doom3coop.com"
 SRC_URI="LastManStandingCoop4Multiplatform.zip"
 
 LICENSE="GameFront"
