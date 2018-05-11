@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Framebuffer screenshot utility"
-HOMEPAGE="http://fbgrab.monells.se/"
-SRC_URI="http://fbgrab.monells.se/${P}.tar.gz"
+HOMEPAGE="https://fbgrab.monells.se/"
+SRC_URI="https://fbgrab.monells.se/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
