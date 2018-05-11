@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit libtool multilib multilib-minimal eutils
 
 DESCRIPTION="The Audio Output library"
-HOMEPAGE="http://www.xiph.org/ao/"
-SRC_URI="http://downloads.xiph.org/releases/ao/${P}.tar.gz"
+HOMEPAGE="https://www.xiph.org/ao/"
+SRC_URI="https://downloads.xiph.org/releases/ao/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
