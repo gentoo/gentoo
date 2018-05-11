@@ -5,7 +5,8 @@ EAPI="6"
 inherit autotools eutils readme.gentoo-r1 user systemd git-r3
 
 DESCRIPTION="Lightweight high-performance web server"
-HOMEPAGE="https://www.lighttpd.net/"
+HOMEPAGE="https://www.lighttpd.net
+		  https://github.com/lighttpd"
 EGIT_REPO_URI="https://git.lighttpd.net/lighttpd1.4.git git+ssh://git@lighttpd.net/lighttpd/lighttpd1.4.git git://git.lighttpd.net/lighttpd/lighttpd1.4.git"
 
 LICENSE="BSD GPL-2"
