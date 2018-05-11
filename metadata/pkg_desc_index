@@ -7378,7 +7378,7 @@ media-libs/fontconfig-infinality 20120619 20130404: Configuration for freetype-i
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4-r1: Image library supporting many formats
-media-libs/freetype 2.8: A high-quality and portable font engine
+media-libs/freetype 2.8 2.9.1-r1: A high-quality and portable font engine
 media-libs/freeverb3 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.1: Video game music file emulators
@@ -9059,6 +9059,7 @@ net-vpn/libreswan 3.21 3.22: IPsec implementation for Linux, fork of Openswan
 net-vpn/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConnect SSL VPN software
+net-vpn/openfortivpn 1.6.0: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.4: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
