@@ -1,0 +1,47 @@
+https://github.com/mozilla/gecko-dev/commit/38a3ee1f792f586aef412ebc04980a93825612c9.patch
+https://bugs.gentoo.org/655022
+
+From 38a3ee1f792f586aef412ebc04980a93825612c9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert-Andr=C3=A9=20Mauchin?= <zebob.m@gmail.com>
+Date: Mon, 5 Feb 2018 09:46:44 -0500
+Subject: [PATCH] Bug 1435695 - WebRTC fails to build with GCC 8; r=dminor
+
+--HG--
+extra : rebase_source : d26e183b2082fa4f88ce3b837e2db5fc8acbff5b
+---
+ media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c                | 5 +++--
+ .../webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c     | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c b/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c
+index 0340165eb5050..d09314720ddde 100644
+--- a/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c
++++ b/media/webrtc/trunk/webrtc/common_audio/vad/vad_core.c
+@@ -115,8 +115,9 @@ static int32_t WeightedAverage(int16_t* data, int16_t offset,
+ // undefined behavior, so not a good idea; this just makes UBSan ignore the
+ // violation, so that our old code can continue to do what it's always been
+ // doing.)
+-static inline int32_t OverflowingMulS16ByS32ToS32(int16_t a, int32_t b)
+-    RTC_NO_SANITIZE("signed-integer-overflow") {
++static inline int32_t RTC_NO_SANITIZE("signed-integer-overflow")
++OverflowingMulS16ByS32ToS32(int16_t a, int32_t b)
++{
+   return a * b;
+ }
+ 
+diff --git a/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c b/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
+index 2b92acb64a3d7..c10014f6a108d 100644
+--- a/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
++++ b/media/webrtc/trunk/webrtc/modules/audio_coding/codecs/isac/fix/source/lattice.c
+@@ -209,8 +209,9 @@ void WebRtcIsacfix_NormLatticeFilterMa(size_t orderCoef,
+ // Left shift of an int32_t that's allowed to overflow. (It's still undefined
+ // behavior, so not a good idea; this just makes UBSan ignore the violation, so
+ // that our old code can continue to do what it's always been doing.)
+-static inline int32_t OverflowingLShiftS32(int32_t x, int shift)
+-    RTC_NO_SANITIZE("shift") {
++static inline int32_t RTC_NO_SANITIZE("shift")
++OverflowingLShiftS32(int32_t x, int shift)
++{
+   return x << shift;
+ }
+ 
