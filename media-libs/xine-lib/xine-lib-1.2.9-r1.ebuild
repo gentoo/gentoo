@@ -103,13 +103,12 @@ DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )
 	v4l? ( virtual/os-headers )
 	X? (
+		x11-base/xorg-proto
 		x11-libs/libXt
-		x11-proto/xf86vidmodeproto
-		x11-proto/xproto
 		)
-	xv? ( x11-proto/videoproto )
-	xvmc? ( x11-proto/videoproto )
-	xinerama? ( x11-proto/xineramaproto )"
+	xv? ( x11-base/xorg-proto )
+	xvmc? ( x11-base/xorg-proto )
+	xinerama? ( x11-base/xorg-proto )"
 REQUIRED_USE="vidix? ( || ( X fbcon ) )
 	xv? ( X )
 	xinerama? ( X )"

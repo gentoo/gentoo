@@ -55,10 +55,7 @@ RDEPEND="
 		xscreensaver? ( >=x11-libs/libXScrnSaver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	)"
 DEPEND="${RDEPEND}
-	X? (
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	)
+	X? ( x11-base/xorg-proto )
 	virtual/pkgconfig"
 
 MULTILIB_WRAPPED_HEADERS=(
