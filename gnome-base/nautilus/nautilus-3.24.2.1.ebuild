@@ -48,7 +48,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-doc-am-1.10
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 RDEPEND="${COMMON_DEPEND}
 	packagekit? ( app-admin/packagekit-base )
