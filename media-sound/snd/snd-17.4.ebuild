@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools flag-o-matic
 
 DESCRIPTION="Snd is a sound editor"
-HOMEPAGE="http://ccrma.stanford.edu/software/snd/"
+HOMEPAGE="https://ccrma.stanford.edu/software/snd/"
 SRC_URI="ftp://ccrma-ftp.stanford.edu/pub/Lisp/${P}.tar.gz"
 
 LICENSE="Snd BSD-2 HPND GPL-2+ LGPL-2.1+ LGPL-3+ ruby? ( free-noncomm ) s7? ( free-noncomm )"
