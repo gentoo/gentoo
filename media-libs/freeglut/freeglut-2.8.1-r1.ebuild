@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,8 +22,7 @@ RDEPEND=">=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXxf86vm-1.1.3[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	>=x11-proto/inputproto-2.3[${MULTILIB_USEDEP}]
-	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]"
+	x11-base/xorg-proto"
 
 PATCHES=(
 	# Please read the comments in the patch before thinking about dropping it

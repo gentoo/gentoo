@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ RDEPEND="
 	xpm? ( x11-libs/libXpm )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	X? ( x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto )"
 
 PATCHES=(
 	"${FILESDIR}/${P}"-CVE-2009-3994.patch

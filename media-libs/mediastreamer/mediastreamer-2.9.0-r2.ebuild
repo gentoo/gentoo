@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( >=dev-util/cunit-2.1_p2[ncurses] )
 	video? ( dev-util/xxdi )
-	X? ( x11-proto/videoproto )
+	X? ( x11-base/xorg-proto )
 "
 PDEPEND="
 	amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )

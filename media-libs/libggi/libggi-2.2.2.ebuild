@@ -20,9 +20,7 @@ RDEPEND=">=media-libs/libgii-1.0.2
 	svga? ( >=media-libs/svgalib-1.4.2 )
 	aalib? ( >=media-libs/aalib-1.2-r1 )"
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xf86dgaproto
-		x11-proto/xf86vidmodeproto
-		x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto )"
 
 src_compile() {
 	local myconf=""

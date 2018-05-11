@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -43,7 +43,7 @@ RDEPEND=">=net-libs/ortp-0.17[ipv6?]
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	x11-proto/videoproto
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )"
 
 PDEPEND="amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
