@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,8 +9,8 @@ MOD_ICON="excessiveplus.ico"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.excessiveplus.net/"
-SRC_URI="http://www.excessiveplus.net/files/release/xp-${PV}.zip"
+HOMEPAGE="https://www.excessiveplus.net"
+SRC_URI="https://www.excessiveplus.net/files/release/xp-${PV}.zip"
 
 LICENSE="all-rights-reserved"
 KEYWORDS="~amd64 ~x86"
