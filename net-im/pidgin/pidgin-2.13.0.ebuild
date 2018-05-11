@@ -88,7 +88,7 @@ DEPEND="$RDEPEND
 	dev-perl/XML-Parser
 	virtual/pkgconfig
 	gtk? (
-		x11-proto/scrnsaverproto
+		x11-base/xorg-proto
 		${NLS_DEPEND}
 	)
 	dbus? ( ${PYTHON_DEPS} )

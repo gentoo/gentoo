@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,7 +87,7 @@ DEPEND="$RDEPEND
 	dev-perl/XML-Parser
 	virtual/pkgconfig
 	gtk? (
-		x11-proto/scrnsaverproto
+		x11-base/xorg-proto
 		${NLS_DEPEND}
 	)
 	dbus? ( ${PYTHON_DEPS} )
