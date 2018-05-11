@@ -21,7 +21,7 @@ RDEPEND="x11-libs/libX11
 	virtual/jpeg:0
 	media-libs/libpng:0="
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 

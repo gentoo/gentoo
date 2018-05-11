@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -17,7 +17,7 @@ RDEPEND="x11-libs/libXext
 	sdl? ( >=media-libs/libsdl-1.2 )
 	svga? ( >=media-libs/svgalib-1.4.3 )"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	sed -e '/CFLAGS=/s:-O4:${CFLAGS}:' \

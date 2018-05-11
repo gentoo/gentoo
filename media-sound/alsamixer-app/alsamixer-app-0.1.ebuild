@@ -22,7 +22,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	media-libs/alsa-lib"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${MY_P}
 
