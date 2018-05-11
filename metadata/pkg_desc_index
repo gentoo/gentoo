@@ -7817,7 +7817,7 @@ media-plugins/vdr-dvbhddevice 2.1.3_p20140115: VDR Plugin: output device for the
 media-plugins/vdr-dvbsddevice 2.0.0: VDR Plugin: output device for the 'Full Featured' SD DVB Card
 media-plugins/vdr-dvd 0.3.7_pre20090106-r1: VDR Plugin: DVD-Player
 media-plugins/vdr-dvdswitch 0.2.0 0.2.1 0.2.2: VDR Plugin: to play dvds and dvd file structures
-media-plugins/vdr-epgsearch 1.0.0-r1 1.0.1_p20141227-r1: VDR plugin: create timers from epg content based on saved search expressions
+media-plugins/vdr-epgsearch 1.0.1_p20141227-r1: VDR plugin: create timers from epg content based on saved search expressions
 media-plugins/vdr-epgsync 1.0.1: VDR Plugin: Import the EPG of another VDR via vdr-svdrpservice
 media-plugins/vdr-extrecmenu 1.2.2-r2 1.2.4: VDR Plugin: Extended recordings menu
 media-plugins/vdr-femon 2.0.4: VDR Plugin: DVB Frontend Status Monitor (signal strengt/noise)
