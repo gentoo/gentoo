@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ EAPI=5
 inherit autotools eutils multilib-minimal
 
 DESCRIPTION="A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)"
-HOMEPAGE="http://wiki.xiph.org/Tremor"
+HOMEPAGE="https://wiki.xiph.org/Tremor"
 SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="BSD"
