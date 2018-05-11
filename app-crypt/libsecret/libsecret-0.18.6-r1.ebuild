@@ -84,5 +84,5 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# tests fail without gobject-introspection
-	multilib_is_native_abi && Xemake check
+	multilib_is_native_abi && virtx emake check
 }
