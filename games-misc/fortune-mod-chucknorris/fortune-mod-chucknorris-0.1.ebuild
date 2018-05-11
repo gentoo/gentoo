@@ -3,8 +3,8 @@
 
 EAPI=5
 DESCRIPTION="Chuck Norris Facts"
-HOMEPAGE="http://www.k-lug.org/~kessler/projects.html"
-SRC_URI="http://www.k-lug.org/~kessler/chucknorris.tar.gz"
+HOMEPAGE="https://www.k-lug.org/~kessler/projects.html"
+SRC_URI="https://www.k-lug.org/~kessler/chucknorris.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
