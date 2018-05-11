@@ -41,7 +41,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	rmdir "${S}"/lib/xpp || die
 	mv "${WORKDIR}"/xpp-$XPP_VERSION "${S}"/lib/xpp || die
