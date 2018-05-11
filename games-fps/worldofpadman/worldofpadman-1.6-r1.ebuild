@@ -5,7 +5,7 @@ EAPI=6
 inherit desktop
 
 DESCRIPTION="A cartoon style multiplayer first-person shooter"
-HOMEPAGE="http://worldofpadman.net/"
+HOMEPAGE="https://worldofpadman.net/"
 SRC_URI="mirror://sourceforge/${PN}/wop-1.5-unified.zip
 	mirror://sourceforge/${PN}/wop-1.5.x-to-1.6-patch-unified.zip"
 
