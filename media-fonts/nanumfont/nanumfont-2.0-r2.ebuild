@@ -1,7 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
+
 inherit font
 
 MY_P="NanumGothicCoding-${PV}"
@@ -26,9 +27,10 @@ FONT_S="${S}"
 FONT_SUFFIX="ttf"
 
 src_prepare() {
+	default
 	# Rename names in cp949 encoding, bug #322041
 	mkdir recode || die
 	mv *-Bold.ttf recode/${PN}-Bold.ttf || die
 	mv *.ttf recode/${PN}.ttf || die
-	mv recode/* .
+	mv recode/* . || die
 }
