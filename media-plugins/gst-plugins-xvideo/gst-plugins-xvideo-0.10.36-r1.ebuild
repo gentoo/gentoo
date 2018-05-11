@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,9 +12,7 @@ IUSE=""
 RDEPEND=">=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	>=x11-proto/videoproto-2.3.1-r1[${MULTILIB_USEDEP}]
-	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]"
+	x11-base/xorg-proto"
 
 # xshm is a compile time option of xvideo
 # x is needed to build any X plugins, but we build/install only xv anyway
