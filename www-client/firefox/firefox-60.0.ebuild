@@ -57,7 +57,7 @@ RDEPEND="
 	system-icu? ( >=dev-libs/icu-60.2 )
 	jack? ( virtual/jack )
 	>=dev-libs/nss-3.35
-	>=dev-libs/nspr-4.18
+	>=dev-libs/nspr-4.19
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
