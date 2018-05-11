@@ -57,10 +57,7 @@ DEPEND="${COMMON_DEPEND}
 	gnome-base/gnome-common
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xextproto
-	x11-proto/randrproto
-	x11-proto/scrnsaverproto
-	x11-proto/xf86miscproto
+	x11-base/xorg-proto
 	doc? (
 		app-text/xmlto
 		app-text/docbook-xml-dtd:4.1.2

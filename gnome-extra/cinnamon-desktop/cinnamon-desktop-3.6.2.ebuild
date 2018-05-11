@@ -38,8 +38,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-doc-am-1.4
 	>=dev-util/intltool-0.40.6
 	gnome-base/gnome-common
-	x11-proto/randrproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 	virtual/pkgconfig
 "
 

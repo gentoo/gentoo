@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -60,9 +60,7 @@ RDEPEND="${COMMON_DEPEND}
 
 DEPEND="${COMMON_DEPEND}
 	app-text/iso-codes
-	x11-proto/xproto
-	x11-proto/xf86miscproto
-	x11-proto/kbproto
+	x11-base/xorg-proto
 
 	dev-libs/libxslt
 	>=dev-util/intltool-0.40.1
