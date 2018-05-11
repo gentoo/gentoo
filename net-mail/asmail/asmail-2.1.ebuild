@@ -22,7 +22,7 @@ RDEPEND="dev-libs/openssl
 	x11-libs/libSM
 	jpeg? ( virtual/jpeg )"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_compile() {
 	epatch "${FILESDIR}"/${P}-ldflags.patch
