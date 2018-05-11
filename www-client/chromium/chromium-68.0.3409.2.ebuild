@@ -130,7 +130,6 @@ Some web pages may require additional fonts to display properly.
 Try installing some of the following packages if some characters
 are not displayed properly:
 - media-fonts/arphicfonts
-- media-fonts/bitstream-cyberbit
 - media-fonts/droid
 - media-fonts/ipamonafont
 - media-fonts/noto
