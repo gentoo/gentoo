@@ -36,11 +36,10 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	x11-libs/libfontenc
 	x11-misc/gccmakedep
-	x11-misc/imake
-	x11-proto/inputproto
-	x11-proto/xextproto"
+	x11-misc/imake"
 
 S="${WORKDIR}/nx-libs-${PV}"
 
