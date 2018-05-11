@@ -13,18 +13,24 @@ SRC_URI="https://github.com/NaturalHistoryMuseum/${PN}/archive/v${PV}.tar.gz -> 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
 
 RDEPEND="
 	media-gfx/zbar
-	dev-python/pillow
-	dev-python/numpy
-	python_targets_python2_7? (
-		=dev-python/enum34-1.1.6
-		virtual/python-pathlib
-	)
+	dev-python/pillow[${PYTHON_USEDEP}]
+	virtual/python-enum34[${PYTHON_USEDEP}]
+	virtual/python-pathlib[${PYTHON_USEDEP}]
 "
 
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
 "
+
+python_test() {
+	nosetests -v || die
+}
