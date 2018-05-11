@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 inherit multilib python-r1 xdg-utils
 
 DESCRIPTION="a media player aiming to be similar to AmaroK, but for GTK+"
-HOMEPAGE="http://www.exaile.org/"
+HOMEPAGE="https://www.exaile.org"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
