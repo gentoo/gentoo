@@ -5,10 +5,12 @@ EAPI=6
 
 inherit desktop unpacker xdg-utils
 
+MY_PV="${PV/_/-}"
+
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/TeamSpeak3-Client-linux_amd64-${PV/_/-}.run )
-	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/TeamSpeak3-Client-linux_x86-${PV/_/-}.run )"
+SRC_URI="amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/TeamSpeak3-Client-linux_amd64-${MY_PV}.run )
+	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/TeamSpeak3-Client-linux_x86-${MY_PV}.run )"
 
 KEYWORDS="-* ~amd64 ~x86"
 LICENSE="teamspeak3"
