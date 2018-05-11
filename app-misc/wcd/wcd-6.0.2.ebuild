@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,26 +21,19 @@ DEPEND="${CDEPEND}
 	app-text/ghostscript-gpl"
 RDEPEND="${CDEPEND}"
 
-S="${WORKDIR}"/${P}/src
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.3.4-gentoo.patch
-)
+S="${WORKDIR}/${P}/src"
 
 src_prepare() {
-	# Required for stupid eapply function
-	pushd .. &>/dev/null || die
-	default
-	popd &>/dev/null || die
+	eapply -p2 "${FILESDIR}"/${PN}-6.0.2-gentoo.patch
+	eapply_user
 	tc-export CC
 }
 
 src_compile() {
 	local mycompile="LFS=1"
-	use nls || mycompile="${mycompile} ENABLE_NLS="
-	use unicode && mycompile="${mycompile} UCS=1 UNINORM=1"
-	emake \
-		${mycompile}
+	use nls || mycompile+=" ENABLE_NLS="
+	use unicode && mycompile+=" UCS=1 UNINORM=1"
+	emake ${mycompile}
 }
 
 src_install() {
