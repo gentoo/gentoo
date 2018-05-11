@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (11 May 2018)
+# Masked for removal in 30 days (bug #655466). Fails to
+# fetch distfile (bug #655454). Access not existing
+# directories (bug #467128).Uses deprecated EAPI 2
+# (bug #648050).
+media-fonts/bitstream-cyberbit
+
 # Mikle Kolyada <zlogene@gentoo.org> (10 May 2018)
 # The upstream is totally dead (the last release is from 2006).
 # Does not compile against gcc-6, uses old EAPI=3 (#564998, #644262).
