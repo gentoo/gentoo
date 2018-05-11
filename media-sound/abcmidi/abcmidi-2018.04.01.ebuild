@@ -7,8 +7,8 @@ inherit autotools
 
 MY_P="abcMIDI-${PV}"
 DESCRIPTION="Programs for processing ABC music notation files"
-HOMEPAGE="http://ifdo.ca/~seymour/runabc/top.html"
-SRC_URI="http://ifdo.ca/~seymour/runabc/${MY_P}.zip"
+HOMEPAGE="https://ifdo.ca/~seymour/runabc/top.html"
+SRC_URI="https://ifdo.ca/~seymour/runabc/${MY_P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
