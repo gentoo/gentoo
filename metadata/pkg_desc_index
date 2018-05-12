@@ -794,7 +794,7 @@ app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-mpost 0.3: mpost module for eselect
 app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
 app-eselect/eselect-oodict 20100228: Manages configuration of dictionaries for OpenOffice.Org
-app-eselect/eselect-opencl 1.1.0-r1 1.1.0-r4: Utility to change the OpenCL implementation being used
+app-eselect/eselect-opencl 1.1.0-r4: Utility to change the OpenCL implementation being used
 app-eselect/eselect-opengl 1.3.1-r4: Utility to change the OpenGL interface being used
 app-eselect/eselect-package-manager 20110108-r1: Manages PACKAGE_MANAGER environment variable
 app-eselect/eselect-pdftex 0.3: pdftex module for eselect
@@ -10292,7 +10292,7 @@ virtual/mta 0 1: Virtual for Message Transfer Agents
 virtual/mysql 5.6-r6 5.6-r12: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
-virtual/opencl 0-r4 0-r5: Virtual for OpenCL implementations
+virtual/opencl 0-r5: Virtual for OpenCL implementations
 virtual/opengl 7.0 7.0-r1: Virtual for OpenGL implementation
 virtual/os-headers 0: Virtual for operating system headers
 virtual/package-manager 1: Virtual for the package manager
@@ -10623,13 +10623,13 @@ x11-drivers/xf86-input-tslib 0.0.6-r2 0.0.6-r3: xorg input driver for use of tsl
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.0 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.34.0 0.36.0: Driver for Wacom tablets and drawing devices
-x11-drivers/xf86-video-amdgpu 1.3.0 18.0.1: Accelerated Open Source driver for AMDGPU cards
+x11-drivers/xf86-video-amdgpu 18.0.1: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 7.9.0 18.0.1: ATI video driver
+x11-drivers/xf86-video-ati 18.0.1: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.6 0.3.7 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.4.4: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
-x11-drivers/xf86-video-intel 2.99.917_p20170216 2.99.917_p20170313 2.99.917_p20180214: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.99.917_p20180214: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5: Matrox video driver
 x11-drivers/xf86-video-nouveau 1.0.13 1.0.15: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
