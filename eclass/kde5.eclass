@@ -31,10 +31,10 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils eutils flag-o-matic gnome2-utils kde5-functions virtualx xdg
+inherit cmake-utils flag-o-matic gnome2-utils kde5-functions virtualx xdg
 
 case ${EAPI} in
-	6) inherit eapi7-ver ;;
+	6) inherit eapi7-ver eutils ;;
 esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
