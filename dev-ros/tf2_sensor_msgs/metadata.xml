@@ -6,6 +6,6 @@
 		<name>Gentoo ROS Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ros/geometry_experimental</remote-id>
+		<remote-id type="github">ros/geometry2</remote-id>
 	</upstream>
 </pkgmetadata>
