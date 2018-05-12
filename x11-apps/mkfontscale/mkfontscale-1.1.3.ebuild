@@ -15,8 +15,8 @@ RDEPEND="x11-libs/libfontenc
 	sys-libs/zlib
 	app-arch/bzip2"
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	x11-misc/util-macros
-	x11-proto/xproto
 	app-arch/gzip"
 
 XORG_CONFIGURE_OPTIONS=(

@@ -12,8 +12,8 @@ IUSE=""
 
 RDEPEND=">=x11-libs/libxcb-1.6"
 DEPEND="${RDEPEND}
-	x11-libs/libX11
-	>=x11-proto/xproto-7.0.17"
+	x11-base/xorg-proto
+	x11-libs/libX11"
 
 pkg_setup() {
 	# interix has a _very_ old iconv in libc, however, including

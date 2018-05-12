@@ -18,7 +18,7 @@ X86_RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXv
 	)"
-X86_DEPEND=">=x11-proto/dri2proto-2.6"
+X86_DEPEND="x11-base/xorg-proto"
 RDEPEND="sys-apps/kmod:=
 	sys-process/procps:=
 	>=x11-libs/cairo-1.12.0[X?]

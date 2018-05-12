@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,16 +22,7 @@ RDEPEND="
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="${RDEPEND}
-	x11-proto/compositeproto
-	x11-proto/inputproto
-	x11-proto/kbproto
-	x11-proto/renderproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xextproto
-	x11-proto/xproto
-	dga? ( x11-proto/xf86dgaproto )
-	dmx? ( x11-proto/dmxproto )
-	xinerama? ( x11-proto/xineramaproto )
+	x11-base/xorg-proto
 "
 
 pkg_setup() {
