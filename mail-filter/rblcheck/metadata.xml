@@ -6,6 +6,6 @@
 		<name>Net-Mail</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">rblcheck</remote-id>
+		<remote-id type="github">logic/rblcheck</remote-id>
 	</upstream>
 </pkgmetadata>
