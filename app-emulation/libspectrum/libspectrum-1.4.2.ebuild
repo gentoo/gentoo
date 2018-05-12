@@ -31,6 +31,12 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_test() {
+	# check only builds test executable but doesn't run it
+	emake check
+	./test/test || die
+}
+
 src_install() {
 	default
 	dodoc doc/*.txt *.txt
