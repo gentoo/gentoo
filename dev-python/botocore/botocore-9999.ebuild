@@ -21,19 +21,15 @@ else
 fi
 
 RDEPEND="
-	>=dev-python/docutils-0.10[${PYTHON_USEDEP}]
-	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
-	<dev-python/jmespath-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
-	<dev-python/python-dateutil-3.0.0[${PYTHON_USEDEP}]
+	dev-python/docutils[${PYTHON_USEDEP}]
+	dev-python/jmespath[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
-		>=dev-python/guzzle_sphinx_theme-0.7.10[${PYTHON_USEDEP}]
-		<dev-python/guzzle_sphinx_theme-0.8[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.1.3[${PYTHON_USEDEP}]
-		<dev-python/sphinx-1.7[${PYTHON_USEDEP}]
+		dev-python/guzzle_sphinx_theme[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	test? (
 		${RDEPEND}
