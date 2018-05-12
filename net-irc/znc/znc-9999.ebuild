@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,13 +17,13 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="
-		http://znc.in/releases/archive/${P}.tar.gz
+		https://znc.in/releases/archive/${P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-HOMEPAGE="http://znc.in"
+HOMEPAGE="https://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+ipv6 +icu libressl nls perl python +ssl sasl tcl test +zlib"
@@ -45,8 +45,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 	perl? ( >=dev-lang/swig-3.0.0 )
 	python? ( >=dev-lang/swig-3.0.0 )
 "
@@ -98,9 +98,7 @@ src_configure() {
 }
 
 src_test() {
-	pushd "${BUILD_DIR}" > /dev/null || die
-	${CMAKE_MAKEFILE_GENERATOR} unittest || die "Unit test failed"
-	popd > /dev/null || die
+	cmake-utils_src_make unittest
 }
 
 src_install() {
@@ -138,8 +136,7 @@ pkg_config() {
 		ewarn "to generate a new configuration, remove the folder"
 		ewarn "and try again."
 	else
-		einfo "Press any key to interactively create a new configuration file"
-		einfo "for znc."
+		einfo "Press enter to interactively create a new configuration file for znc."
 		einfo "To abort, press Control-C"
 		read
 		mkdir -p "${EROOT%/}/var/lib/znc" || die
@@ -149,7 +146,7 @@ pkg_config() {
 			"${EROOT%/}"/usr/bin/znc -- --makeconf --datadir "${EROOT%/}/var/lib/znc" ||
 			die "Config failed"
 		einfo
-		einfo "Now you can start znc service using the init system of your choice."
-		einfo "Don't forget to enable znc service if you want to use znc on boot."
+		einfo "You can now start the znc service using the init system of your choice."
+		einfo "Don't forget to enable it if you want to use znc at boot."
 	fi
 }
