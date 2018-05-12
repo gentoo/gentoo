@@ -50,6 +50,7 @@ DEPEND="
 	x11-libs/libxcb
 	x11-libs/xcb-util-keysyms
 	x11-misc/xkeyboard-config
+	nls? ( sys-devel/gettext )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd )
 	udisks? ( sys-fs/udisks:2 )
