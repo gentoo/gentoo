@@ -79,7 +79,10 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
+	find "${ED}" -name '*.la' -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -name "*.a" -delete || die
+	fi
 	rm "${ED%/}"/usr/share/doc/${PF}/COPYING* || die
 }
 
