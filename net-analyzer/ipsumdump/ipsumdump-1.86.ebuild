@@ -21,6 +21,10 @@ DEPEND="
 	dev-libs/expat
 	sys-apps/texinfo
 "
+DOCS=(
+	NEWS.md
+	README.md
+)
 
 src_configure() {
 	econf \
