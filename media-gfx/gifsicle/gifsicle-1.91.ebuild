@@ -12,9 +12,20 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="X"
 
-RDEPEND="X? ( x11-libs/libX11 x11-libs/libXt )"
-DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+RDEPEND="
+	X? (
+		x11-libs/libX11
+		x11-libs/libXt
+	)
+"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
+DOCS=(
+	NEWS.md
+	README.md
+)
 
 src_configure() {
 	econf $(usex X "" "--disable-gifview")
