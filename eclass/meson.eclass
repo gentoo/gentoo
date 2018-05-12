@@ -157,7 +157,7 @@ _meson_create_cross_file() {
 	# This may require adjustment based on CFLAGS
 	local cpu=${CHOST%%-*}
 
-	cat > "${T}/meson.${CHOST}" <<-EOF
+	cat > "${T}/meson.${CHOST}.${ABI}" <<-EOF
 	[binaries]
 	ar = '$(tc-getAR)'
 	c = '$(tc-getCC)'
@@ -245,10 +245,8 @@ meson_src_configure() {
 	local -x CXX=$(tc-getCXX) CXXFLAGS=${CXXFLAGS}
 	_meson_move_flags CXX CXXFLAGS
 
-	if tc-is-cross-compiler; then
-		_meson_create_cross_file || die "unable to write meson cross file"
-		mesonargs+=( --cross-file "${T}/meson.${CHOST}" )
-	fi
+	_meson_create_cross_file || die "unable to write meson cross file"
+	mesonargs+=( --cross-file "${T}/meson.${CHOST}.${ABI}" )
 
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
