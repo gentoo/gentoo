@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 May 2018)
+# Depends on dead Qt4, upstream TRAC and SVN dead. No maint. response.
+# Masked for removal in 30 days, bugs #645418, #591866, #574244.
+net-dns/dnssec-lookup
+net-dns/dnssec-nodes
+net-dns/dnssec-system-tray
+
 # Mikle Kolyada <zlogene@gentoo.org> (10 May 2018)
 # The upstream is totally dead (the last release is from 2006).
 # Does not compile against gcc-6, uses old EAPI=3 (#564998, #644262).
