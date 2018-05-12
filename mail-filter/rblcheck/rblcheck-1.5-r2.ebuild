@@ -6,9 +6,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Perform lookups in RBL-styles services"
-HOMEPAGE="http://rblcheck.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rblcheck/${P}.tar.gz"
-
+HOMEPAGE="https://github.com/logic/rblcheck"
+SRC_URI="https://github.com/logic/rblcheck/releases/download/${P}/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
