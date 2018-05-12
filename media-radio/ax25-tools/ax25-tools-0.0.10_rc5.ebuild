@@ -22,6 +22,13 @@ DEPEND="dev-libs/libax25
 		media-libs/mesa )"
 RDEPEND=${DEPEND}
 
+src_prepare() {
+        for filename in 6pack/m6pack.c kiss/kissattach.c kiss/kissnetd.c kiss/mkiss.c kiss/net2kiss.c;
+        do
+            sed -i -e "s/__USE_XOPEN/__USE_XOPEN_EXTENDED/g" $filename
+        done
+}
+
 src_configure() {
 	econf $(use_with X x)
 }
