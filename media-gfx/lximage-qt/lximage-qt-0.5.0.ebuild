@@ -5,11 +5,11 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="LXImage Image Viewer - GPicView replacement"
-HOMEPAGE="http://lxqt.org/"
+HOMEPAGE="https://lxqt.org"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}.git"
+	EGIT_REPO_URI="https://git.lxde.org/git/lxde/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm64 x86"
