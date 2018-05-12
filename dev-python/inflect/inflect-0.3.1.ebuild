@@ -22,5 +22,5 @@ DEPEND="
 "
 
 python_test() {
-	nosetests tests || die "tests failed with ${EPYTHON}"
+	nosetests -v tests || die "tests failed with ${EPYTHON}"
 }
