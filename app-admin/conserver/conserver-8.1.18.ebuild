@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,8 +6,8 @@ EAPI="4"
 inherit ssl-cert eutils pam autotools
 
 DESCRIPTION="Serial Console Manager"
-HOMEPAGE="http://www.conserver.com/"
-SRC_URI="http://www.conserver.com/${P}.tar.gz"
+HOMEPAGE="https://www.conserver.com/"
+SRC_URI="https://www.conserver.com/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

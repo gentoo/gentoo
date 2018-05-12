@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A Python module for making simple text/console-mode user interfaces"
-HOMEPAGE="http://pythondialog.sourceforge.net/ https://pypi.python.org/pypi/python2-pythondialog"
+HOMEPAGE="http://pythondialog.sourceforge.net/ https://pypi.org/project/python2-pythondialog/"
 SRC_URI="mirror://pypi/${PN:0:1}/python2-${PN}/python2-${P}.tar.gz"
 
 LICENSE="LGPL-2"

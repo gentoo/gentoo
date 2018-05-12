@@ -24,7 +24,7 @@ RDEPEND="
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
-	|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-mathextra )
+	dev-texlive/texlive-mathscience
 	dev-texlive/texlive-pictures
 	dev-texlive/texlive-xetex
 	gnome-base/librsvg

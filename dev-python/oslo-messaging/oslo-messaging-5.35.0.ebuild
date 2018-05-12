@@ -7,13 +7,13 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="Messaging API for RPC and notifications over different messaging transports"
-HOMEPAGE="https://pypi.python.org/pypi/oslo.messaging"
+HOMEPAGE="https://pypi.org/project/oslo.messaging/"
 SRC_URI="mirror://pypi/${PN:0:1}/oslo.messaging/oslo.messaging-${PV}.tar.gz"
 S="${WORKDIR}/oslo.messaging-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"

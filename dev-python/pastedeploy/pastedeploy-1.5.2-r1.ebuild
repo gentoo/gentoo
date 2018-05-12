@@ -10,13 +10,13 @@ MY_PN="PasteDeploy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Load, configure, and compose WSGI applications and servers"
-HOMEPAGE="http://pythonpaste.org/deploy/ https://pypi.python.org/pypi/PasteDeploy"
+HOMEPAGE="https://pypi.org/project/PasteDeploy/"
 # pypi tarball does not include tests
 SRC_URI="https://bitbucket.org/ianb/pastedeploy/get/${PV}.tar.gz -> ${P}-r1.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="doc test"
 
 RDEPEND="dev-python/namespace-paste[${PYTHON_USEDEP}]

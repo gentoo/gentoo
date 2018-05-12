@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk 
 NOSHORTLANGS="en_GB zh_CN zh_TW"
 
 DESCRIPTION="GTK+ based fast and lightweight IDE"
-HOMEPAGE="http://www.geany.org"
-SRC_URI="http://download.geany.org/${P}.tar.bz2"
+HOMEPAGE="https://www.geany.org"
+SRC_URI="https://download.geany.org/${P}.tar.bz2"
 
 LICENSE="GPL-2+ HPND"
 SLOT="0"

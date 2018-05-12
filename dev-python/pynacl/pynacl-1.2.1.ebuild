@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6})
 inherit distutils-r1
 
 DESCRIPTION="Python binding to the Networking and Cryptography (NaCl) library"
-HOMEPAGE="https://github.com/pyca/pynacl/ https://pypi.python.org/pypi/PyNaCl/"
+HOMEPAGE="https://github.com/pyca/pynacl/ https://pypi.org/project/PyNaCl/"
 SRC_URI="https://github.com/pyca/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd"
 IUSE="test"
 
 RDEPEND="
@@ -23,7 +23,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( >=dev-python/pytest-2.6.4[${PYTHON_USEDEP}] )
+	test? ( >=dev-python/hypothesis-3.27.0[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.2.1[${PYTHON_USEDEP}] )
 "
 
 src_prepare() {

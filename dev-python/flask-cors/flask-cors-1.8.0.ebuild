@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="A Flask extension for Cross Origin Resource Sharing (CORS)"
-HOMEPAGE="https://github.com/wcdolphin/flask-cors https://pypi.python.org/pypi/Flask-Cors"
+HOMEPAGE="https://github.com/wcdolphin/flask-cors https://pypi.org/project/Flask-Cors/"
 
 LICENSE="MIT"
 SLOT="0"

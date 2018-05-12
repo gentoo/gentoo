@@ -1,0 +1,27 @@
+From 5740a0fdb6805c2e26dce20555a946da8485fe50 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Mon, 19 Mar 2018 17:13:30 +0100
+Subject: [PATCH] Fix build with Qt 5.11 (missing QTabWidget)
+
+Reviewers: #konversation
+
+Differential Revision: https://phabricator.kde.org/D11490
+---
+ src/dcc/transferdetailedinfopanel.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/dcc/transferdetailedinfopanel.h b/src/dcc/transferdetailedinfopanel.h
+index e8debbc0..0e7391de 100644
+--- a/src/dcc/transferdetailedinfopanel.h
++++ b/src/dcc/transferdetailedinfopanel.h
+@@ -16,6 +16,7 @@
+ #include "ui_transferdetailedinfopanelui.h"
+ #include "ui_transferdetailedtimeinfopanelui.h"
+ 
++#include <QTabWidget>
+ 
+ class QTimer;
+ 
+-- 
+2.16.2
+

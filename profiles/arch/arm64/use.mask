@@ -26,6 +26,14 @@
 -neon
 -armvfp
 
+# Michał Górny <mgorny@gentoo.org> (03 Feb 2018)
+# dev-lang/luajit not tested here.
+luajit
+
+# Brian Evans <grknight@gentoo.org> (02 Mar 2018)
+# dev-db/qdbm is net yet keyworded
+qdbm
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # net-dialup/freeradius{,-client} not keyworded.
 radius
@@ -203,8 +211,6 @@ video_cards_nv
 video_cards_r128
 video_cards_radeon
 video_cards_tdfx
-video_cards_vesa
-video_cards_via
 video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>

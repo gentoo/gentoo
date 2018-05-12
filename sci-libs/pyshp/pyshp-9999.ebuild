@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Pure Python read/write support for ESRI Shapefile format"
-HOMEPAGE="https://pypi.python.org/pypi/pyshp/"
+HOMEPAGE="https://pypi.org/project/pyshp/"
 
 if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""

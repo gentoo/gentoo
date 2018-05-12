@@ -4,7 +4,7 @@
 EAPI=6
 
 RUBY_OPTIONAL=no
-USE_RUBY="ruby22"
+USE_RUBY="ruby23"
 # note: define maximally ONE implementation here
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )

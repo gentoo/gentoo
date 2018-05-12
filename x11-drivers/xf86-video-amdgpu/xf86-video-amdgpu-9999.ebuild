@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ fi
 
 DESCRIPTION="Accelerated Open Source driver for AMDGPU cards"
 
-RDEPEND=">=x11-libs/libdrm-2.4.72[video_cards_amdgpu]
+RDEPEND=">=x11-libs/libdrm-2.4.78[video_cards_amdgpu]
 	x11-base/xorg-server[glamor(-)]"
 DEPEND="${RDEPEND}"
 

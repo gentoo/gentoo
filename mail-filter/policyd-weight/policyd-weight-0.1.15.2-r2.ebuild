@@ -15,7 +15,7 @@ SRC_URI="http://www.policyd-weight.org/releases/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE=""
 
 DEPEND=""

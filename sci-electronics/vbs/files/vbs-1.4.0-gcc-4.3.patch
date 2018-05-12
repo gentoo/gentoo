@@ -1,5 +1,5 @@
---- vbs-1.4.0b/src/common/dumpstrm.cc	2009-01-21 02:42:43.000000000 -0400
-+++ vbs-1.4.0/src/common/dumpstrm.cc	2009-01-21 02:48:57.000000000 -0400
+--- a/common/dumpstrm.cc
++++ b/common/dumpstrm.cc
 @@ -13,6 +13,7 @@
  
  #include <cstdio> // sprintf
@@ -8,8 +8,8 @@
  #include "dumpstrm.h"
  
  using std::cerr;
---- vbs-1.4.0b/src/common/logic.h	2009-01-21 02:42:43.000000000 -0400
-+++ vbs-1.4.0/src/common/logic.h	2009-01-21 02:48:05.000000000 -0400
+--- a/common/logic.h
++++ b/common/logic.h
 @@ -18,6 +18,7 @@
  
  #ifndef _LOGIC_H
@@ -18,8 +18,8 @@
  
  class logic
  	{
---- vbs-1.4.0b/src/common/bvector.h	2009-01-21 02:42:43.000000000 -0400
-+++ vbs-1.4.0/src/common/bvector.h	2009-01-21 02:46:31.000000000 -0400
+--- a/common/bvector.h
++++ b/common/bvector.h
 @@ -30,6 +30,7 @@
  #include <string>
  #include <utility>

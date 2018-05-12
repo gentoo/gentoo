@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	gnome-base/gconf:2[${MULTILIB_USEDEP}]

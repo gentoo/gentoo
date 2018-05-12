@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Monkeyscan
-Comment=Monkeyscan part of monkeysign
-Categories=Network;GTK;GNOME;X-Internet;
-Exec=/usr/bin/monkeyscan
-Terminal=false
-Type=Application
-

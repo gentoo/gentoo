@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Beierlein <tomjbe@gentoo.org> (20 Apr 2018)
+# Needs asciidoctor which pulls a lot unstable ruby deps
+media-radio/wsjtx doc
+
+# Mikle Kolyada <zlogene@gentoo.org> (18 Mar 2018)
+# Pulls too much unstable ruby deps (some are not even keyworded)
+net-misc/chrony html
+
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependeny is not stable
 sci-libs/gdal oracle
@@ -48,10 +56,6 @@ dev-db/mariadb mroonga
 # and additional unstable dependencies
 gnustep-base/gnustep-make libobjc2
 
-# Yixun Lan <dlan@gentoo.org> (02 Apr 2015)
-# sys-fs/zfs is not stable.
-sys-cluster/ceph zfs
-
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
 dev-python/apptools test
@@ -61,11 +65,3 @@ dev-python/apptools test
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3
-
-# Mike Gilbert <floppym@gentoo.org> (22 Mar 2014)
-# sys-fs/zfs is not stable.
-sys-boot/grub libzfs
-
-# Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
-# [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
-www-apps/cgit jit

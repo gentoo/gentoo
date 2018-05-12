@@ -1,0 +1,134 @@
+From f8e302e5ac5033c1b7ac5d83d6d8df3f15eb6178 Mon Sep 17 00:00:00 2001
+From: Wuzzy <Wuzzy2@mail.ru>
+Date: Tue, 27 Mar 2018 17:32:23 +0200
+Subject: [PATCH] Fix team files and settings not saving properly, and remove
+ FileEngine stuff from DLC
+
+This is done by using absolute paths and removing physfs://
+---
+ QTfrontend/game.cpp             |  4 ++--
+ QTfrontend/team.cpp             | 10 +++++-----
+ QTfrontend/ui/page/pagedata.cpp |  6 ------
+ QTfrontend/util/DataManager.cpp |  4 ++--
+ 4 files changed, 9 insertions(+), 15 deletions(-)
+
+diff --git a/QTfrontend/game.cpp b/QTfrontend/game.cpp
+index 224c38350..f071ef734 100644
+--- a/QTfrontend/game.cpp
++++ b/QTfrontend/game.cpp
+@@ -536,7 +536,7 @@ void HWGame::abort()
+ void HWGame::sendCampaignVar(const QByteArray &varToSend)
+ {
+     QString varToFind = QString::fromUtf8(varToSend);
+-    QSettings teamfile(QString("physfs://Teams/%1.hwt").arg(campaignTeam), QSettings::IniFormat, 0);
++    QSettings teamfile(QString(cfgdir->absolutePath() + "/Teams/%1.hwt").arg(campaignTeam), QSettings::IniFormat, 0);
+     teamfile.setIniCodec("UTF-8");
+     QString varValue = teamfile.value("Campaign " + campaign + "/" + varToFind, "").toString();
+     QByteArray command;
+@@ -553,7 +553,7 @@ void HWGame::writeCampaignVar(const QByteArray & varVal)
+     QString varToWrite = QString::fromUtf8(varVal.left(i));
+     QString varValue = QString::fromUtf8(varVal.mid(i + 1));
+ 
+-    QSettings teamfile(QString("physfs://Teams/%1.hwt").arg(campaignTeam), QSettings::IniFormat, 0);
++    QSettings teamfile(QString(cfgdir->absolutePath() + "/Teams/%1.hwt").arg(campaignTeam), QSettings::IniFormat, 0);
+     teamfile.setIniCodec("UTF-8");
+     teamfile.setValue("Campaign " + campaign + "/" + varToWrite, varValue);
+ }
+diff --git a/QTfrontend/team.cpp b/QTfrontend/team.cpp
+index 0586e622a..740697b7f 100644
+--- a/QTfrontend/team.cpp
++++ b/QTfrontend/team.cpp
+@@ -171,7 +171,7 @@ HWTeam & HWTeam::operator = (const HWTeam & other)
+ 
+ bool HWTeam::loadFromFile()
+ {
+-    QSettings teamfile(QString("physfs://Teams/%1.hwt").arg(DataManager::safeFileName(m_name)), QSettings::IniFormat, 0);
++    QSettings teamfile(QString(cfgdir->absolutePath() + "/Teams/%1.hwt").arg(DataManager::safeFileName(m_name)), QSettings::IniFormat, 0);
+     teamfile.setIniCodec("UTF-8");
+     m_name = teamfile.value("Team/Name", m_name).toString();
+     m_grave = teamfile.value("Team/Grave", "Statue").toString();
+@@ -204,7 +204,7 @@ bool HWTeam::loadFromFile()
+ 
+ bool HWTeam::fileExists()
+ {
+-    QFile f(QString("physfs://Teams/%1.hwt").arg(DataManager::safeFileName(m_name)));
++    QFile f(QString(cfgdir->absolutePath() + "/Teams/%1.hwt").arg(DataManager::safeFileName(m_name)));
+     return f.exists();
+ }
+ 
+@@ -220,7 +220,7 @@ bool HWTeam::deleteFile()
+ {
+     if(m_isNetTeam)
+         return false;
+-    QFile cfgfile(QString("physfs://Teams/%1.hwt").arg(DataManager::safeFileName(m_name)));
++    QFile cfgfile(QString(cfgdir->absolutePath() + "/Teams/%1.hwt").arg(DataManager::safeFileName(m_name)));
+     cfgfile.remove();
+     return true;
+ }
+@@ -229,12 +229,12 @@ bool HWTeam::saveToFile()
+ {
+     if (OldTeamName != m_name)
+     {
+-        QFile cfgfile(QString("physfs://Teams/%1.hwt").arg(DataManager::safeFileName(OldTeamName)));
++        QFile cfgfile(QString(cfgdir->absolutePath() + "/Teams/%1.hwt").arg(DataManager::safeFileName(OldTeamName)));
+         cfgfile.remove();
+         OldTeamName = m_name;
+     }
+ 
+-    QString fileName = QString("physfs://Teams/%1.hwt").arg(DataManager::safeFileName(m_name));
++    QString fileName = QString(cfgdir->absolutePath() + "/Teams/%1.hwt").arg(DataManager::safeFileName(m_name));
+     DataManager::ensureFileExists(fileName);
+     QSettings teamfile(fileName, QSettings::IniFormat, 0);
+     teamfile.setIniCodec("UTF-8");
+diff --git a/QTfrontend/ui/page/pagedata.cpp b/QTfrontend/ui/page/pagedata.cpp
+index ccdea5ac4..cc7d17b2a 100644
+--- a/QTfrontend/ui/page/pagedata.cpp
++++ b/QTfrontend/ui/page/pagedata.cpp
+@@ -31,8 +31,6 @@
+ #include "pagedata.h"
+ #include "databrowser.h"
+ #include "hwconsts.h"
+-#include "DataManager.h"
+-#include "FileEngine.h"
+ 
+ QLayout * PageDataDownload::bodyLayoutDefinition()
+ {
+@@ -197,9 +195,6 @@ void PageDataDownload::fileDownloaded()
+         out.write(reply->readAll());
+ 
+         out.close();
+-
+-        // now mount it
+-        FileEngineHandler::mount(fileName);
+     }
+ }
+ 
+@@ -229,7 +224,6 @@ void PageDataDownload::onPageLeave()
+     if (m_contentDownloaded)
+     {
+         m_contentDownloaded = false;
+-        //DataManager::instance().reload();
+     }
+ }
+ 
+diff --git a/QTfrontend/util/DataManager.cpp b/QTfrontend/util/DataManager.cpp
+index 3d69931cf..5c8aa4cc5 100644
+--- a/QTfrontend/util/DataManager.cpp
++++ b/QTfrontend/util/DataManager.cpp
+@@ -172,11 +172,11 @@ QString DataManager::settingsFileName()
+ {
+     if(m_settingsFileName.isEmpty())
+     {
+-        QFile settingsFile("physfs://settings.ini");
++        QFile settingsFile(cfgdir->absoluteFilePath("settings.ini"));
+ 
+         if(!settingsFile.exists())
+         {
+-            QFile oldSettingsFile("physfs://hedgewars.ini");
++            QFile oldSettingsFile(cfgdir->absoluteFilePath("hedgewars.ini"));
+ 
+             settingsFile.open(QFile::WriteOnly);
+             settingsFile.close();
+-- 
+2.16.1
+

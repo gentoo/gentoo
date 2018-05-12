@@ -1,0 +1,40 @@
+From 1fe7a493eae81a4f32f65be03f594a7553429268 Mon Sep 17 00:00:00 2001
+From: Hleb Valoshka <375gnu@gmail.com>
+Date: Sat, 24 Feb 2018 16:45:36 +0300
+Subject: [PATCH] replace _BSD_SOURCE with _DEFAULT_SOURCE
+
+---
+ acinclude.m4          | 4 ++--
+ admin/acinclude.m4.in | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index e2d5da23..49a086f8 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -3223,8 +3223,8 @@ AC_DEFUN([AC_CHECK_COMPILERS],
+         CXXFLAGS="-Wall -W -Wpointer-arith $CXXFLAGS"
+         case $host in
+           *-*-linux-gnu)	
+-            CFLAGS="-std=iso9899:1990 -W -Wall -Wchar-subscripts -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_BSD_SOURCE $CFLAGS"
+-            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wchar-subscripts $CXXFLAGS"
++            CFLAGS="-std=iso9899:1990 -W -Wall -Wchar-subscripts -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_DEFAULT_SOURCE $CFLAGS"
++            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_DEFAULT_SOURCE -Wcast-align -Wchar-subscripts $CXXFLAGS"
+             KDE_CHECK_COMPILER_FLAG(Wmissing-format-attribute, [CXXFLAGS="$CXXFLAGS -Wformat-security -Wmissing-format-attribute"])
+             KDE_CHECK_C_COMPILER_FLAG(Wmissing-format-attribute, [CFLAGS="$CFLAGS -Wformat-security -Wmissing-format-attribute"])
+           ;;
+diff --git a/admin/acinclude.m4.in b/admin/acinclude.m4.in
+index e2d5da23..49a086f8 100644
+--- a/admin/acinclude.m4.in
++++ b/admin/acinclude.m4.in
+@@ -3223,8 +3223,8 @@ AC_DEFUN([AC_CHECK_COMPILERS],
+         CXXFLAGS="-Wall -W -Wpointer-arith $CXXFLAGS"
+         case $host in
+           *-*-linux-gnu)	
+-            CFLAGS="-std=iso9899:1990 -W -Wall -Wchar-subscripts -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_BSD_SOURCE $CFLAGS"
+-            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align -Wchar-subscripts $CXXFLAGS"
++            CFLAGS="-std=iso9899:1990 -W -Wall -Wchar-subscripts -Wshadow -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -D_XOPEN_SOURCE=500 -D_DEFAULT_SOURCE $CFLAGS"
++            CXXFLAGS="-ansi -D_XOPEN_SOURCE=500 -D_DEFAULT_SOURCE -Wcast-align -Wchar-subscripts $CXXFLAGS"
+             KDE_CHECK_COMPILER_FLAG(Wmissing-format-attribute, [CXXFLAGS="$CXXFLAGS -Wformat-security -Wmissing-format-attribute"])
+             KDE_CHECK_C_COMPILER_FLAG(Wmissing-format-attribute, [CFLAGS="$CFLAGS -Wformat-security -Wmissing-format-attribute"])
+           ;;

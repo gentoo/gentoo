@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -36,7 +36,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/bundler
 	dev-ruby/addressable
 	dev-ruby/rake
-	dev-ruby/webmock:0
+	dev-ruby/webmock:3
 	dev-ruby/json:0
 	>=dev-ruby/multi_xml-0.5.3
 	>=dev-ruby/rack-cache-1.1
@@ -50,7 +50,8 @@ all_ruby_prepare() {
 		-e "/addressable/ s/, '< 2.4'//" \
 		-e "/rake/ s/, '< 11'//" \
 		-e "/rack-cache/ s/, '< 1.3'//" \
-		-e "/simple_oauth/ s/, '< 0.3'//" Gemfile || die
+		-e "/simple_oauth/ s/, '< 0.3'//" \
+		-e "/webmock/ s/< 2/~> 3.0/" Gemfile || die
 
 	# Avoid unneeded dependency on git
 	sed -i -e '/git ls-files/d' ${RUBY_FAKEGEM_GEMSPEC} || die

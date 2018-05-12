@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit eutils python-single-r1 gnome2-utils git-r3
+inherit python-single-r1 gnome2-utils git-r3
 
-DESCRIPTION="Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4"
+DESCRIPTION="Backup system inspired by TimeVault and FlyBack"
 HOMEPAGE="https://backintime.readthedocs.io/ https://github.com/bit-team/backintime/"
 EGIT_REPO_URI="https://github.com/bit-team/backintime/"
 

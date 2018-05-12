@@ -2,11 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>brendan@horan.hk</email>
-		<name>Brendan Hhoran</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
 	</maintainer>
 </pkgmetadata>

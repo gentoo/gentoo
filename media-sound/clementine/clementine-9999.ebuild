@@ -43,8 +43,6 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
@@ -57,7 +55,7 @@ COMMON_DEPEND="
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
-	lastfm? ( >=media-libs/liblastfm-1[qt5(+)] )
+	lastfm? ( >=media-libs/liblastfm-1.1.0_pre20150206 )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
@@ -80,12 +78,12 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )
 "
 DEPEND="${COMMON_DEPEND}
-	|| (
-		>=dev-cpp/gtest-1.8.0
-		dev-cpp/gmock
-	)
-	dev-libs/boost:=
+	>=dev-cpp/gtest-1.8.0
+	dev-libs/boost
 	dev-qt/linguist-tools:5
+	dev-qt/qtopengl:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
@@ -117,14 +115,6 @@ src_prepare() {
 		sed -e "/find_package.*Qt5/s:\ Test::" -i CMakeLists.txt || die
 		cmake_comment_add_subdirectory tests
 	fi
-
-	# Fix clementine relying on downstream renaming of lastfm header dir
-	sed -i -e "/^#include/s/lastfm5/lastfm/" \
-		tests/albumcoverfetcher_test.cpp \
-		src/internet/lastfm/lastfm{settingspage.cpp,service.cpp,compat.h} \
-		src/core/song.cpp || die "Failed to sed lastfm header suffix"
-	sed -e "/^find_path.*LASTFM5/s/lastfm5/lastfm/" \
-		-i CMakeLists.txt || die "Failed to sed lastfm header suffix"
 }
 
 src_configure() {
@@ -132,7 +122,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		# force to find crypto++ see bug #548544
-		-DCRYPTOPP_LIBRARIES="crypto++"
+		-DCRYPTOPP_LIBRARIES="cryptopp"
 		-DCRYPTOPP_FOUND=ON
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
@@ -172,16 +162,12 @@ src_test() {
 	virtx emake test
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
 
 	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
-	elog "USE flags. You may be intrested in setting aac, flac, mp3, ogg or wavpack USE flags "
+	elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
 	elog "depending on your preferences"
 }
 

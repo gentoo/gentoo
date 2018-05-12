@@ -1,0 +1,10 @@
+--- a/m4/curses.m4
++++ b/m4/curses.m4
+@@ -39,6 +39,7 @@
+       )]
+     )
+   ])
++  AC_SEARCH_LIBS(stdscr, tinfo)
+ 
+   AC_SUBST(CURSES_LIBS)
+ ])

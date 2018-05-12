@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Mar 2018)
+# Requires media-libs/portmidi which is not stable
+media-sound/hydrogen portmidi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
 # Requires sci-geosciences/gpsd which is not stable
 app-misc/geoclue gps
@@ -56,10 +60,6 @@ net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde
 x11-misc/xscreensaver new-login
-
-# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
-# Missing stable
-dev-libs/protobuf python
 
 # Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
 # webkit-gtk is going to stay in ~all but amd64/x86

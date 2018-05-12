@@ -1,6 +1,5 @@
-diff -urN logtalk-3.11.2.orig/scripts/logtalk_user_setup.sh logtalk-3.11.2/scripts/logtalk_user_setup.sh
---- logtalk-3.11.2.orig/scripts/logtalk_user_setup.sh	2017-08-28 10:13:52.000000000 +0200
-+++ logtalk-3.11.2/scripts/logtalk_user_setup.sh	2017-09-24 14:47:36.815968990 +0200
+--- a/scripts/logtalk_user_setup.sh
++++ b/scripts/logtalk_user_setup.sh
 @@ -130,14 +130,6 @@
  rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/lgt2*
  rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.dtd

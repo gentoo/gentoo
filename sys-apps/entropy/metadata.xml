@@ -5,8 +5,4 @@
 		<email>mudler@gentoo.org</email>
 		<name>Ettore Di Giacinto</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>lxnay@gentoo.org</email>
-		<name>Fabio Erculiani</name>
-	</maintainer>
 </pkgmetadata>

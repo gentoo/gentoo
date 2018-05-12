@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Statistical and novel interactive HTML plots for Python"
-HOMEPAGE="http://bokeh.pydata.org/ https://github.com/bokeh/bokeh http://pypi.python.org/pypi/bokeh"
+HOMEPAGE="http://bokeh.pydata.org/ https://github.com/bokeh/bokeh http://pypi.org/project/bokeh/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

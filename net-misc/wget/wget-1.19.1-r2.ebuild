@@ -24,7 +24,7 @@ LIB_DEPEND="idn? ( >=net-dns/libidn2-0.14[static-libs(+)] )
 		gnutls? ( net-libs/gnutls:0=[static-libs(+)] )
 		!gnutls? (
 			!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-			libressl? ( dev-libs/libressl[static-libs(+)] )
+			libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 		)
 	)
 	uuid? ( sys-apps/util-linux[static-libs(+)] )

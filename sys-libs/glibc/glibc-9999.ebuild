@@ -25,15 +25,15 @@ fi
 
 RELEASE_VER=${PV}
 
-GCC_BOOTSTRAP_VER="4.7.3-r1"
+GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
 PATCH_VER=5
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
-SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
+SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps compile-locales debug doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -116,8 +116,8 @@ alt_prefix() {
 	is_crosscompile && echo /usr/${CTARGET}
 }
 
-# We need to be able to set alternative headers for compiling for non-native 
-# platform. Will also become useful for testing kernel-headers without screwing 
+# We need to be able to set alternative headers for compiling for non-native
+# platform. Will also become useful for testing kernel-headers without screwing
 # up the whole system.
 alt_headers() {
 	echo ${ALT_HEADERS:=$(alt_prefix)/usr/include}
@@ -450,12 +450,20 @@ setup_env() {
 		# and fall back on CFLAGS.
 		local VAR=CFLAGS_${CTARGET//[-.]/_}
 		CFLAGS=${!VAR-${CFLAGS}}
+		einfo " $(printf '%15s' 'Manual CFLAGS:')   ${CFLAGS}"
 	fi
 
 	setup_flags
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
 
+	if use headers-only ; then
+		# Avoid mixing host's CC and target's CFLAGS_${ABI}:
+		# At this bootstrap stage we have only binutils for
+		# target but not compiler yet.
+		einfo "Skip CC ABI injection. We can't use (cross-)compiler yet."
+		return 0
+	fi
 	local VAR=CFLAGS_${ABI}
 	# We need to export CFLAGS with abi information in them because glibc's
 	# configure script checks CFLAGS for some targets (like mips).  Keep
@@ -463,6 +471,7 @@ setup_env() {
 	# top of each other.
 	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET_OPT:-${CTARGET}})}
 	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
+	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 }
 
 foreach_abi() {
@@ -721,7 +730,7 @@ src_unpack() {
 	# Consistency is not guaranteed between pkg_ and src_ ...
 	sanity_prechecks
 
-	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
+	use multilib && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
 
 	setup_env
 
@@ -745,16 +754,6 @@ src_prepare() {
 		einfo "Done."
 	fi
 
-	if just_headers ; then
-		if [[ -e ports/sysdeps/mips/preconfigure ]] ; then
-			# mips peeps like to screw with us.  if building headers,
-			# we don't have a real compiler, so we can't let them
-			# insert -mabi on us.
-			sed -i '/CPPFLAGS=.*-mabi/s|.*|:|' ports/sysdeps/mips/preconfigure || die
-			find ports/sysdeps/mips/ -name Makefile -exec sed -i '/^CC.*-mabi=/s:-mabi=.*:-D_MIPS_SZPTR=32:' {} +
-		fi
-	fi
-
 	default
 
 	gnuconfig_update
@@ -776,14 +775,6 @@ src_prepare() {
 		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
 		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
 		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
-
-		if use debug ; then
-			# Allow SIGABRT to dump core on non-hardened systems, or when debug is requested.
-			sed -i \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-stack_chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				debug/Makefile || die
-		fi
 	fi
 }
 
@@ -895,8 +886,8 @@ glibc_do_configure() {
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
 		$(use_multiarch || echo --disable-multi-arch)
-		$(in_iuse systemtap && use_enable systemtap)
-		$(in_iuse nscd && use_enable nscd)
+		$(use_enable systemtap)
+		$(use_enable nscd)
 		${EXTRA_ECONF}
 	)
 
@@ -904,8 +895,8 @@ glibc_do_configure() {
 	myconf+=( $(use_enable vanilla timezone-tools) )
 
 	# These libs don't have configure flags.
-	ac_cv_lib_audit_audit_log_user_avc_message=$(in_iuse audit && usex audit || echo no)
-	ac_cv_lib_cap_cap_init=$(in_iuse caps && usex caps || echo no)
+	ac_cv_lib_audit_audit_log_user_avc_message=$(usex audit || echo no)
+	ac_cv_lib_cap_cap_init=$(usex caps || echo no)
 
 	# There is no configure option for this and we need to export it
 	# since the glibc build will re-run configure on itself
@@ -942,7 +933,7 @@ glibc_do_configure() {
 	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib ; then
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
-			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
+			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
 		fi
 	fi
 }
@@ -963,6 +954,7 @@ glibc_headers_configure() {
 		libc_cv_asm_cfi_directives=yes
 		libc_cv_broken_visibility_attribute=no
 		libc_cv_c_cleanup=yes
+		libc_cv_compiler_powerpc64le_binary128_ok=yes
 		libc_cv_forced_unwind=yes
 		libc_cv_gcc___thread=yes
 		libc_cv_mlong_double_128=yes
@@ -970,6 +962,7 @@ glibc_headers_configure() {
 		libc_cv_ppc_machine=yes
 		libc_cv_ppc_rel16=yes
 		libc_cv_predef_fortify_source=no
+		libc_cv_target_power8_ok=yes
 		libc_cv_visibility_attribute=yes
 		libc_cv_z_combreloc=yes
 		libc_cv_z_execstack=yes
@@ -990,6 +983,8 @@ glibc_headers_configure() {
 		export ${v}
 	done
 
+	local headers_only_arch_CPPFLAGS=()
+
 	# Blow away some random CC settings that screw things up. #550192
 	if [[ -d ${S}/sysdeps/mips ]]; then
 		pushd "${S}"/sysdeps/mips >/dev/null
@@ -1005,6 +1000,25 @@ glibc_headers_configure() {
 
 		popd >/dev/null
 	fi
+
+	case ${CTARGET} in
+	riscv*)
+		# RISC-V interrogates the compiler to determine which target to
+		# build.  If building the headers then we don't strictly need a
+		# RISC-V compiler, so the built-in definitions that are provided
+		# along with all RISC-V compiler might not exist.  This causes
+		# glibc's RISC-V preconfigure script to blow up.  Since we're just
+		# building the headers any value will actually work here, so just
+		# pick the standard one (rv64g/lp64d) to make the build scripts
+		# happy for now -- the headers are all the same anyway so it
+		# doesn't matter.
+		headers_only_arch_CPPFLAGS+=(
+			-D__riscv_xlen=64
+			-D__riscv_flen=64
+			-D__riscv_float_abi_double=1
+			-D__riscv_atomic=1
+		) ;;
+	esac
 
 	local myconf=()
 	myconf+=(
@@ -1022,11 +1036,20 @@ glibc_headers_configure() {
 
 	# Nothing is compiled here which would affect the headers for the target.
 	# So forcing CC/CFLAGS is sane.
+	local headers_only_CC=$(tc-getBUILD_CC)
+	local headers_only_CFLAGS="-O1 -pipe"
+	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE ${headers_only_arch_CPPFLAGS[*]}"
+	local headers_only_LDFLAGS=""
 	set -- "${S}"/configure "${myconf[@]}"
-	echo "$@"
-	CC="$(tc-getBUILD_CC)" \
-	CFLAGS="-O1 -pipe" \
-	CPPFLAGS="-U_FORTIFY_SOURCE" \
+	echo \
+		"CC=${headers_only_CC}" \
+		"CFLAGS=${headers_only_CFLAGS}" \
+		"CPPFLAGS=${headers_only_CPPFLAGS}" \
+		"LDFLAGS=${headers_only_LDFLAGS}" \
+		"$@"
+	CC=${headers_only_CC} \
+	CFLAGS=${headers_only_CFLAGS} \
+	CPPFLAGS=${headers_only_CPPFLAGS} \
 	LDFLAGS="" \
 	"$@" || die "failed to configure glibc"
 }
@@ -1070,6 +1093,10 @@ do_src_test() {
 }
 
 src_test() {
+	if just_headers ; then
+		return
+	fi
+
 	# Give tests more time to complete.
 	export TIMEOUTFACTOR=5
 
@@ -1174,7 +1201,7 @@ glibc_do_src_install() {
 	# With devpts under Linux mounted properly, we do not need the pt_chown
 	# binary to be setuid.  This is because the default owners/perms will be
 	# exactly what we want.
-	if in_iuse suid && ! use suid ; then
+	if ! use suid ; then
 		find "${ED}" -name pt_chown -exec chmod -s {} +
 	fi
 
@@ -1289,7 +1316,7 @@ src_strip() {
 	# if user has stripping enabled and does not have split debug turned on,
 	# then leave the debugging sections in libpthread.
 	if ! has nostrip ${FEATURES} && ! has splitdebug ${FEATURES} ; then
-		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"/*/libpthread-*.so
+		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"$(alt_prefix)/*/libpthread-*.so
 	fi
 }
 

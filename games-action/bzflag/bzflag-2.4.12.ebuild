@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils flag-o-matic autotools
 
 DESCRIPTION="3D tank combat simulator game"
-HOMEPAGE="http://www.bzflag.org/"
+HOMEPAGE="https://www.bzflag.org/"
 SRC_URI="https://download.bzflag.org/bzflag/source/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
@@ -24,9 +24,9 @@ DEPEND="
 		virtual/opengl )
 	upnp? ( net-libs/miniupnpc )"
 RDEPEND=${DEPEND}
-
 PATCHES=(
 	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${P}-tinfo.patch
 )
 
 src_prepare() {

@@ -4,7 +4,6 @@
     <longdescription>Apple airplay and raop protocol server</longdescription>
     <use>
         <flag name='alac'>Add support for Apple Lossless Audio Codec files</flag>
-        <flag name='static-libs'>Build static versions of dynamic libraries as well</flag>
         <flag name='tools'>Build and install a binary shairplay in /usr/bin</flag>
     </use>
     <maintainer type="person">

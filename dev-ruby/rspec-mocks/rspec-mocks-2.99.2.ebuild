@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -39,13 +39,9 @@ all_ruby_prepare() {
 
 	# Avoid a weird, and failing, test testing already installed code.
 	sed -e '/has an up-to-date caller_filter file/,/end/ s:^:#:' -i spec/rspec/mocks_spec.rb || die
-}
 
-each_ruby_prepare() {
-	case ${RUBY} in
-		*ruby22|*ruby23|*ruby24)
-			# Psych and Syck are not supported by default anymore on ruby22.
-			rm spec/rspec/mocks/serialization_spec.rb || die
-			;;
-	esac
+	# Psych and Syck are not supported by default anymore on ruby22.
+	rm spec/rspec/mocks/serialization_spec.rb || die
+
+	sed -i -e '/does not affect the ability to access the top-level constant/,/end/ s:^:#:' spec/rspec/mocks/mutate_const_spec.rb || die
 }

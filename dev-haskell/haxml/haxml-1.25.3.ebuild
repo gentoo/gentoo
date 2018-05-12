@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ MY_PN="HaXml"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Utilities for manipulating XML documents"
-HOMEPAGE="http://projects.haskell.org/HaXml/"
+HOMEPAGE="https://archives.haskell.org/projects.haskell.org/HaXml/"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

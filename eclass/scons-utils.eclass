@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: scons-utils.eclass
@@ -102,9 +102,14 @@ inherit multiprocessing
 # -- ebuild variables setup --
 
 if [[ -n ${SCONS_MIN_VERSION} ]]; then
-	DEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
+	BDEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
 else
-	DEPEND="dev-util/scons"
+	BDEPEND="dev-util/scons"
+fi
+
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	DEPEND=${BDEPEND}
+	unset BDEPEND
 fi
 
 # -- public functions --
@@ -129,6 +134,9 @@ escons() {
 		local SCONSOPTS
 		_scons_clean_makeopts
 	fi
+
+	# pass ebuild environment variables through!
+	local -x GENTOO_SCONS_ENV_PASSTHROUGH=1
 
 	set -- scons ${SCONSOPTS} ${EXTRA_ESCONS} "${@}"
 	echo "${@}" >&2

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Python REPL build on top of prompt_toolkit"
-HOMEPAGE="https://pypi.python.org/pypi/ptpython/ https://github.com/jonathanslenders/ptpython"
+HOMEPAGE="https://pypi.org/project/ptpython/ https://github.com/jonathanslenders/ptpython"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

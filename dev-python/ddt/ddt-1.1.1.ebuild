@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="A library to multiply test cases"
-HOMEPAGE="https://pypi.python.org/pypi/ddt https://github.com/txels/ddt"
+HOMEPAGE="https://pypi.org/project/ddt/ https://github.com/txels/ddt"
 SRC_URI="mirror://pypi/d/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

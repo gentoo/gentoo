@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit golang-build
+inherit golang-build bash-completion-r1
 EGO_PN="github.com/ncw/${PN}"
 
 if [[ ${PV} == *9999* ]]; then
@@ -28,4 +28,11 @@ src_install() {
 	dobin ${PN}
 	doman src/${EGO_PN}/${PN}.1
 	dodoc src/${EGO_PN}/README.md
+
+	./rclone genautocomplete bash ${PN}.bash || die
+	newbashcomp ${PN}.bash ${PN}
+
+	./rclone genautocomplete zsh ${PN}.zsh || die
+	insinto /usr/share/zsh/site-functions
+	newins ${PN}.zsh _${PN}
 }

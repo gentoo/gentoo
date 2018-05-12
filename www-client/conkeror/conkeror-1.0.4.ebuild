@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 # CC-BY-SA-3.0 for conkeror.png
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 ) CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="|| ( ( >=www-client/firefox-5.0 <www-client/firefox-57 )
 	( >=www-client/firefox-bin-23.0 <www-client/firefox-bin-57 ) )"

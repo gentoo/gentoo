@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit xdg-utils distutils-r1 gnome2-utils virtualx
+inherit distutils-r1 gnome2-utils virtualx xdg-utils
 
 MY_P=${P/_/-}
 DESCRIPTION="A desktop wiki"

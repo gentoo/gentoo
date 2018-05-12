@@ -5,10 +5,6 @@
 		<email>gokturk@gentoo.org</email>
 		<name>Göktürk Yüksek</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
 	<use>
 		<flag name="expert-mode">Builds ext4magic with expert mode. Highly useful in recovering data from a corrupted filesystem</flag>
 		<flag name="file-attr">Enable the recovery of file attributes (append, immutable, nodump etc)</flag>

@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-# ruby20 crashes in test suite
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="rdoc"
@@ -17,7 +16,7 @@ HOMEPAGE="http://rubyeventmachine.com"
 
 LICENSE="|| ( GPL-2 Ruby )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND="${DEPEND}
@@ -51,6 +50,12 @@ all_ruby_prepare() {
 	sed -i -e '/test_for_real/,/^    end/ s:^:#:' \
 		tests/test_pending_connect_timeout.rb || die
 	rm -f tests/test_{get_sock_opt,set_sock_opt,idle_connection}.rb || die
+	sed -i -e '/test_ipv6_tcp_client_with_ipv6_google_com/aomit "network"' tests/test_ipv6.rb || die
+	# don't test unsecure and obsolete protocols
+	sed -i -e 's/sslv2 sslv3//' \
+		-e '/\(test_any_to_v3\|test_v3_to_any\|test_v3_to_v3\|test_v3_with_external\)/aomit "obsolete"' \
+		tests/test_ssl_protocols.rb || die
+
 }
 
 each_ruby_configure() {
@@ -72,7 +77,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib -S testrb tests/test_*.rb || die
+	${RUBY} -Ilib -S testrb-2 tests/test_*.rb || die
 }
 
 all_ruby_install() {

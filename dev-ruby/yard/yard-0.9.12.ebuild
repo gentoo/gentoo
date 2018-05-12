@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -16,7 +16,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="templates"
 inherit ruby-fakegem
 
 DESCRIPTION="Documentation generation tool for the Ruby programming language"
-HOMEPAGE="http://yardoc.org/"
+HOMEPAGE="https://yardoc.org/"
 
 # The gem lakes the gemspec file needed to pass tests.
 SRC_URI="https://github.com/lsegal/yard/archive/v${PV}.tar.gz -> ${P}-git.tgz"

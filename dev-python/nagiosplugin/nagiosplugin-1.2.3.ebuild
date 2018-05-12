@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A class library for writing nagios-compatible plugins"
-HOMEPAGE="https://bitbucket.org/flyingcircus/nagiosplugin/ https://pypi.python.org/pypi/nagiosplugin/"
+HOMEPAGE="https://bitbucket.org/flyingcircus/nagiosplugin/ https://pypi.org/project/nagiosplugin/"
 if [[ ${PV} == "9999" ]] ; then
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/flyingcircus/nagiosplugin/"

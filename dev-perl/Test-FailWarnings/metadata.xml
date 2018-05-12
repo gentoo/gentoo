@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-FailWarnings</remote-id>
+    <remote-id type="cpan-module">Test::FailWarnings</remote-id>
+  </upstream>
 </pkgmetadata>

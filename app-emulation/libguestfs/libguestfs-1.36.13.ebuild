@@ -140,7 +140,7 @@ src_configure() {
 		--without-java \
 		$(use_enable perl) \
 		$(use_enable fuse) \
-		$($use_enable ocaml) \
+		$(use_enable ocaml) \
 		$(use_enable ruby) \
 		--disable-haskell \
 		--disable-golang \

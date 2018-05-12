@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-multilib vcs-snapshot flag-o-matic
 
 DESCRIPTION="A small, fast, and high performance math library for robot applications"
-HOMEPAGE="http://ignitionrobotics.org/libraries/math"
+HOMEPAGE="https://ignitionrobotics.org/libraries/math"
 SRC_URI="https://bitbucket.org/ignitionrobotics/ign-math/get/${PN}3_${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"

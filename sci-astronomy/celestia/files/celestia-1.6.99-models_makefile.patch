@@ -1,0 +1,21 @@
+From abe1b03873af0e33d6cc23dec22755564794d41c Mon Sep 17 00:00:00 2001
+From: Hleb Valoshka <375gnu@gmail.com>
+Date: Sat, 24 Feb 2018 15:58:35 +0300
+Subject: [PATCH] add Makefile for models/ subdir
+
+---
+ models/Makefile.am | 5 +++++
+ 1 file changed, 5 insertions(+)
+ create mode 100644 models/Makefile.am
+
+diff --git a/models/Makefile.am b/models/Makefile.am
+new file mode 100644
+index 00000000..09d37338
+--- /dev/null
++++ b/models/Makefile.am
+@@ -0,0 +1,5 @@
++pkgdatadir = @datadir@/@PACKAGE@/models
++
++pkgdata_DATA = $(wildcard *.cmod) $(wildcard *.png)
++
++EXTRA_DIST = $(pkgdata_DATA)

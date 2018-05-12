@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Efficient tree implementations for Django 1.6+"
-HOMEPAGE="https://tabo.pe/projects/django-treebeard/ https://pypi.python.org/pypi/django-treebeard"
+HOMEPAGE="https://tabo.pe/projects/django-treebeard/ https://pypi.org/project/django-treebeard/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -37,10 +37,7 @@ done
 
 RDEPEND="
 	>=media-video/libav-0.8.2-r2:0=
-	!media-video/ffmpeg:0
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20140508-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )
-"
+	!media-video/ffmpeg:0"
 DEPEND="${RDEPEND}"
 
 multilib_src_configure() {

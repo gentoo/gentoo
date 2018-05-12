@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils toolchain-funcs fcaps
 
 DESCRIPTION="generates a status bar for dzen2, xmobar or similar"
-HOMEPAGE="http://i3wm.org/i3status/"
-SRC_URI="http://i3wm.org/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://i3wm.org/i3status/"
+SRC_URI="https://i3wm.org/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

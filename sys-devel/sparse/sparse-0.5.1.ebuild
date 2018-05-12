@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/${PN}/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://git.kernel.org/pub/scm/devel/${PN}/${PN}.git/snapshot/${P}.tar.gz"
+	SRC_URI="mirror://kernel/software/devel/${PN}/dist/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 

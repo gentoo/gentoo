@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 inherit eutils fortran-2 toolchain-funcs
 
 DESCRIPTION="Parallel matrix preconditioners library"
-HOMEPAGE="http://acts.nersc.gov/hypre/"
+HOMEPAGE="https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods"
 SRC_URI="https://computation.llnl.gov/casc/hypre/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

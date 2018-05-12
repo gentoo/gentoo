@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: convert FusionSound #484250
@@ -30,7 +30,7 @@ REQUIRED_USE="
 RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	fusionsound? ( || ( >=media-libs/FusionSound-1.1.1 >=dev-libs/DirectFB-1.7.1[fusionsound] ) )
+	fusionsound? ( >=dev-libs/DirectFB-1.7.1[fusionsound] )
 	gles? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
 	nas? ( >=media-libs/nas-1.9.4[${MULTILIB_USEDEP}] )
 	opengl? (
@@ -57,10 +57,7 @@ RDEPEND="
 		xscreensaver? ( >=x11-libs/libXScrnSaver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	)"
 DEPEND="${RDEPEND}
-	X? (
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	)
+	X? ( x11-base/xorg-proto )
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}

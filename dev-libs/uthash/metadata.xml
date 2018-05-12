@@ -4,6 +4,5 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="github">troydhanson/uthash</remote-id>
-    <remote-id type="sourceforge">uthash</remote-id>
   </upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gimp.org/"
 SRC_URI="mirror://gimp/v$(get_version_component_range 1-2)/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse udev vector-icons webp wmf xpm"
@@ -85,22 +85,22 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-cve-2017-17784.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17785.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-1.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-2.patch  # bug 641954
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17787.patch  # bug 641954
+PATCHES=(
+	"${FILESDIR}"/${P}-cve-2017-17784.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17785.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-1.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17786-2.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17787.patch  # bug 641954
 	# NOTE:                           CVE-2017-17788 already fixed upstream
-	epatch "${FILESDIR}"/${PN}-2.8.22-cve-2017-17789.patch  # bug 641954
+	"${FILESDIR}"/${PN}-2.8.22-cve-2017-17789.patch  # bug 641954
+)
 
-	eapply_user
+src_prepare() {
+	gnome2_src_prepare
 
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's:-DGIMP_DISABLE_DEPRECATED:-DGIMP_protect_DISABLE_DEPRECATED:g' -i configure.ac || die #615144
 	eautoreconf  # If you remove this: remove dev-util/gtk-doc-am from DEPEND, too
-
-	gnome2_src_prepare
 
 	sed 's:-DGIMP_protect_DISABLE_DEPRECATED:-DGIMP_DISABLE_DEPRECATED:g' -i configure || die #615144
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test

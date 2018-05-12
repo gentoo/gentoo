@@ -39,6 +39,8 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	kde5_pkg_setup

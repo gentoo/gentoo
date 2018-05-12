@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Manage python installations in your system, berdario's shallow fork"
 HOMEPAGE="
 	https://github.com/berdario/pythonz/tree/bd
-	https://pypi.python.org/pypi/pythonz-bd"
+	https://pypi.org/project/pythonz-bd/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

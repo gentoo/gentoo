@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
 IUSE="+cairo examples gtk test"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-lang/spidermonkey:38
@@ -34,9 +34,25 @@ RDEPEND="${RDEPEND}
 	!<gnome-extra/cinnamon-2.4
 "
 
+RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${PN}-3.6.1-No-reason-for-System.version-to-be-this-restrictive.patch" )
+
 src_prepare() {
 	eautoreconf
 	gnome2_src_prepare
+	sed -ie "s/gjs-console/cjs-console/g" \
+		"${S}"/installed-tests/scripts/testCommandLine.sh \
+		"${S}"/installed-tests/scripts/testWarnings.sh || die
+
+	sed -ie "s/Gjs-WARNING/Cjs-WARNING/g" \
+		"${S}"/installed-tests/scripts/testCommandLine.sh || die
+
+	sed -ie "s/'Gjs'/'Cjs'/g" \
+		"${S}"/installed-tests/js/testExceptions.js \
+		"${S}"/installed-tests/js/testSignals.js \
+		"${S}"/installed-tests/js/testGDBus.js \
+		"${S}"/installed-tests/js/testEverythingBasic.js || die
 }
 
 src_configure() {

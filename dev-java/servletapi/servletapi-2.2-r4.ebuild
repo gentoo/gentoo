@@ -19,7 +19,7 @@ DEPEND="
 RDEPEND="
 	>=virtual/jre-1.6"
 
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 LICENSE="Apache-1.1"
 SLOT="2.2"
 IUSE="doc"

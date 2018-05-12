@@ -9,12 +9,12 @@ inherit distutils-r1
 MY_P="CherryPy-${PV}"
 
 DESCRIPTION="CherryPy is a pythonic, object-oriented HTTP framework"
-HOMEPAGE="http://www.cherrypy.org/ https://pypi.python.org/pypi/CherryPy"
+HOMEPAGE="https://www.cherrypy.org https://pypi.org/project/CherryPy/"
 SRC_URI="mirror://pypi/C/CherryPy/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/cheroot-5.9.1[${PYTHON_USEDEP}]

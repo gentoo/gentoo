@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Dead-simple Object-XML mapper for Python"
-HOMEPAGE="http://packages.python.org/dexml http://pypi.python.org/pypi/dexml"
+HOMEPAGE="https://pypi.org/project/dexml/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

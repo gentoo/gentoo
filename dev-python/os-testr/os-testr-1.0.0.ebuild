@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="A testr wrapper to provide functionality for OpenStack projects"
-HOMEPAGE="https://pypi.python.org/pypi/os-testr https://github.com/openstack/os-testr"
+HOMEPAGE="https://pypi.org/project/os-testr/ https://github.com/openstack/os-testr"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"

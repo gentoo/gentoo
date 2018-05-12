@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ EGIT_BRANCH="frameworks"
 inherit kde5
 
 DESCRIPTION="Plasma Network Monitor"
-HOMEPAGE="http://kde-apps.org/content/show.php?content=12956"
+HOMEPAGE="https://kde-apps.org/content/show.php?content=12956"
 LICENSE="GPL-2"
 IUSE="wifi"
 

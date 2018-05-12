@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools bash-completion-r1 eutils git-r3
 
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
-HOMEPAGE="http://mosh.mit.edu"
+HOMEPAGE="https://mosh.org"
 EGIT_REPO_URI="https://github.com/keithw/mosh.git"
 
 LICENSE="GPL-3"

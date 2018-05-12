@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (11 May 2018)
+# USE=doc uses non-BSD 'cp' syntax, bug #655444.
+>=dev-lang/nasm-2.13 doc
+
 # Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
 # unkeyworded notmuch dependency, bug #587560
 mail-client/mutt notmuch
@@ -28,7 +32,6 @@ app-text/asciidoc test highlight
 # iproute2 - linux only
 net-vpn/openvpn iproute2
 
-app-admin/sshguard -ipfilter
 media-video/ffmpeg ieee1394 iec61883
 net-libs/c-client pam
 net-proxy/squid -ipf-transparent -pf-transparent

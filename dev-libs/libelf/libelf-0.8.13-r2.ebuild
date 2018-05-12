@@ -14,11 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ~mips ppc ppc64 sparc x86 -amd64-fbsd -x86-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug nls elibc_FreeBSD"
 
-RDEPEND="!dev-libs/elfutils
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r11
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="!dev-libs/elfutils"
 DEPEND="nls? ( sys-devel/gettext )"
 
 DOCS=( ChangeLog README )

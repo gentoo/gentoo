@@ -9,7 +9,7 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug ipv6"
 
 RDEPEND="client? ( sys-libs/ncurses )

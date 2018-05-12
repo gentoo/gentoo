@@ -1,0 +1,20 @@
+Bug: https://bugs.gentoo.org/587898
+
+commit 96fd4a7914e8daf924829606dc25f9e4767401dd
+Author: Hannah von Reth <vonreth@kde.org>
+Date:   Mon Nov 21 08:57:00 2016 +0100
+
+    [WIP] Support to build with static Qt and static plugins
+
+diff --git a/src/libsnore/notification/icon.cpp b/src/libsnore/notification/icon.cpp
+index b95ceb4..5c7c139 100644
+--- a/src/libsnore/notification/icon.cpp
++++ b/src/libsnore/notification/icon.cpp
+@@ -25,6 +25,7 @@
+ #include <QNetworkReply>
+ #include <QNetworkRequest>
+ #include <QUrl>
++#include <QTime>
+ 
+ using namespace Snore;
+ 

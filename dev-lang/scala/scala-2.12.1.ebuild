@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -134,7 +134,7 @@ src_prepare() {
 			cp -p "${DISTDIR}/${g}" "${S}/${j#${BURI}/*/}" || die
 		done
 		# gentoo patch (by gienah) to stop it calling git log in the build
-		eapply "${FILESDIR}/${P}-no-git.patch"
+		eapply "${FILESDIR}/${PN}-2.12.1-no-git.patch"
 
 		# https://issues.scala-lang.org/browse/SI-10098
 		eapply "${FILESDIR}/${PN}-2.12.1-runner-script.patch"

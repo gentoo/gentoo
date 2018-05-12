@@ -48,7 +48,7 @@ src_prepare() {
 
 	java-pkg_clean
 
-	epatch "${FILESDIR}/${P}-build.xml.patch"
+	eapply "${FILESDIR}/${PN}-7.0.84-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\

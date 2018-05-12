@@ -27,6 +27,7 @@ IUSE=""
 RDEPEND="
 	>=sys-apps/portage-2.3.0_rc[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 

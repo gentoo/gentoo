@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Recursive descent parsing library based on functional combinators"
-HOMEPAGE="https://pypi.python.org/pypi/funcparserlib"
+HOMEPAGE="https://pypi.org/project/funcparserlib/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

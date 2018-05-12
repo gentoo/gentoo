@@ -1,6 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=5
 inherit sgml-catalog eutils
 
 MY_P="docbk40"
@@ -16,22 +17,21 @@ IUSE=""
 DEPEND=">=app-arch/unzip-5.41"
 RDEPEND="app-text/sgml-common"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 sgml-catalog_cat_include "/etc/sgml/sgml-docbook-${PV}.cat" \
 	"/usr/share/sgml/docbook/sgml-dtd-${PV}/catalog"
 sgml-catalog_cat_include "/etc/sgml/sgml-docbook-${PV}.cat" \
 	"/etc/sgml/sgml-docbook.cat"
 
-src_unpack() {
-	unpack ${A}
+src_prepare() {
+	default
 	epatch "${FILESDIR}"/${P}-catalog.diff
 }
 
 src_install() {
 	insinto /usr/share/sgml/docbook/sgml-dtd-${PV}
-	doins *.dcl *.dtd *.mod || die "doins failed"
-	newins docbook.cat catalog || die "newins failed"
-
+	doins *.dcl *.dtd *.mod
+	newins docbook.cat catalog
 	dodoc *.txt
 }

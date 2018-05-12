@@ -6,12 +6,12 @@ EAPI=6
 inherit autotools ltprune
 
 DESCRIPTION="Command line tool for signing, verifying, encrypting and decrypting XML"
-HOMEPAGE="http://www.aleksey.com/xmlsec"
-SRC_URI="http://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
+HOMEPAGE="https://www.aleksey.com/xmlsec"
+SRC_URI="https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE="doc gcrypt gnutls libressl nss +openssl static-libs"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
 	gnutls? ( gcrypt )"

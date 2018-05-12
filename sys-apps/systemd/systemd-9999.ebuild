@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -20,7 +20,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -56,11 +56,9 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	pam? ( virtual/pam:=[${MULTILIB_USEDEP}] )
 	pcre? ( dev-libs/libpcre2 )
 	qrcode? ( media-gfx/qrencode:0= )
-	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
+	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )"
 
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
@@ -68,6 +66,7 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	sysv-utils? ( !sys-apps/sysvinit )
 	!sysv-utils? ( sys-apps/sysvinit )
+	resolvconf? ( !net-dns/openresolv )
 	!build? ( || (
 		sys-apps/util-linux[kill(-)]
 		sys-process/procps[kill(+)]
@@ -147,10 +146,14 @@ src_unpack() {
 }
 
 src_prepare() {
-	local PATCHES=(
-	)
+	# Do NOT add patches here
+	local PATCHES=()
 
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
+
+	# Add local patches here
+	PATCHES+=(
+	)
 
 	if ! use vanilla; then
 		PATCHES+=(
@@ -238,7 +241,7 @@ multilib_src_configure() {
 		-Ddbus=$(meson_multilib_native_use test)
 		-Dxkbcommon=$(meson_multilib_native_use xkb)
 		# hardcode a few paths to spare some deps
-		-Dpath-kill=/bin/kill
+		-Dkill-path=/bin/kill
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
@@ -294,23 +297,23 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	local rootprefix=$(usex usrmerge /usr '')
+
 	# meson doesn't know about docdir
 	mv "${ED%/}"/usr/share/doc/{systemd,${PF}} || die
 
 	einstalldocs
 	dodoc "${FILESDIR}"/nsswitch.conf
 
-	if use sysv-utils; then
-		local app
-		for app in halt poweroff reboot runlevel shutdown telinit; do
-			dosym ../bin/systemctl /sbin/${app}
-		done
-		dosym ../lib/systemd/systemd /sbin/init
-	else
-		# we just keep sysvinit tools, so no need for the mans
-		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
-			|| die
+	if ! use resolvconf; then
+		rm -f "${ED%/}${rootprefix}"/sbin/resolvconf || die
+	fi
+
+	if ! use sysv-utils; then
+		rm "${ED%/}${rootprefix}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
+		rmdir "${ED%/}${rootprefix}"/sbin || die
 		rm "${ED%/}"/usr/share/man/man1/init.1 || die
+		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 || die
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,10 @@ IUSE="smart samba"
 
 RDEPEND="
 	dev-perl/Monitoring-Plugin
-	sys-apps/portage
+	|| (
+		sys-apps/portage
+		sys-apps/portage-mgorny
+	)
 	dev-perl/Time-Duration
 	dev-perl/TimeDate
 	smart? (

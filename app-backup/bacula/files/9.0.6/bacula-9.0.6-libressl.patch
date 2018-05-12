@@ -1,0 +1,62 @@
+--- src/lib/crypto.c.orig       2018-02-02 15:34:39.420489000 -0600
++++ src/lib/crypto.c    2018-02-02 15:35:44.000524000 -0600
+@@ -195,7 +195,7 @@
+ IMPLEMENT_ASN1_FUNCTIONS(SignatureData)
+ IMPLEMENT_ASN1_FUNCTIONS(CryptoData)
+
+-#if (OPENSSL_VERSION_NUMBER >= 0x10100000L)
++#if ( (OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER) )
+ DEFINE_STACK_OF(SignerInfo);
+ DEFINE_STACK_OF(RecipientInfo);
+ #else
+--- src/lib/openssl-compat.h.orig       2018-02-02 15:26:04.182557000 -0600
++++ src/lib/openssl-compat.h    2018-02-02 15:27:50.229100000 -0600
+@@ -1,7 +1,7 @@
+ #ifndef __OPENSSL_COPMAT__H__
+ #define __OPENSSL_COPMAT__H__
+
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if ( (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER) )
+ static inline int EVP_PKEY_up_ref(EVP_PKEY *pkey)
+ {
+        CRYPTO_add(&pkey->references, 1, CRYPTO_LOCK_EVP_PKEY);
+--- src/lib/openssl.c.orig	2018-02-16 08:36:24.092583000 -0600
++++ src/lib/openssl.c	2018-02-16 08:37:23.795454000 -0600
+@@ -69,7 +69,7 @@
+    }
+ }
+ 
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if ( (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER) )
+ /* Array of mutexes for use with OpenSSL static locking */
+ static pthread_mutex_t *mutexes;
+ 
+@@ -263,7 +263,7 @@
+ {
+    int stat = 0;
+ 
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if ( (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER) )
+    if ((stat = openssl_init_threads()) != 0) {
+       berrno be;
+       Jmsg1(NULL, M_ABORT, 0,
+@@ -310,7 +310,7 @@
+       Jmsg0(NULL, M_ERROR, 0, _("Failed to save OpenSSL PRNG\n"));
+    }
+ 
+-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
++#if ( (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER) )
+    openssl_cleanup_threads();
+ 
+    /* Free libssl and libcrypto error strings */
+--- src/lib/tls.c.orig	2017-11-21 18:37:16.000000000 +0100
++++ src/lib/tls.c	2018-04-16 20:00:54.082000000 +0200
+@@ -116,7 +116,7 @@
+    ctx = (TLS_CONTEXT *)malloc(sizeof(TLS_CONTEXT));
+ 
+    /* Allocate our OpenSSL TLS Context */
+-#if (OPENSSL_VERSION_NUMBER >= 0x10100000L)
++#if ( (OPENSSL_VERSION_NUMBER >= 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER) )
+    /* Allows SSLv3, TLSv1, TLSv1.1 and TLSv1.2 protocols */
+    ctx->openssl = SSL_CTX_new(TLS_method());
+ 

@@ -64,9 +64,7 @@ pkg_nofetch() {
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
 }
 
-src_unpack() {
-	default
-
+pkg_setup() {
 	case ${ARCH} in
 		amd64)
 			ICAARCH=linuxx64
@@ -117,7 +115,7 @@ src_install() {
 	for tmpl in {appsrv,wfclient}.template ; do
 		newins nls/en/${tmpl} ${tmpl/template/ini}
 	done
-	touch "${ED}/${ICAROOT}"/config/.server || die
+	touch "${ED%/}/${ICAROOT}"/config/.server || die
 
 	insinto "${ICAROOT}"/gtk
 	doins gtk/*
@@ -133,14 +131,14 @@ src_install() {
 	insinto "${ICAROOT}"/config/usertemplate
 	doins config/usertemplate/*
 
-	LANGCODES="en"
-	use l10n_de && LANGCODES+=" de"
-	use l10n_es && LANGCODES+=" es"
-	use l10n_fr && LANGCODES+=" fr"
-	use l10n_ja && LANGCODES+=" ja"
-	use l10n_zh_CN && LANGCODES+=" zh_CN"
+	local lang LANGCODES=( en )
+	use l10n_de && LANGCODES+=( de )
+	use l10n_es && LANGCODES+=( es )
+	use l10n_fr && LANGCODES+=( fr )
+	use l10n_ja && LANGCODES+=( ja )
+	use l10n_zh_CN && LANGCODES+=( zh_CN )
 
-	for lang in ${LANGCODES} ; do
+	for lang in ${LANGCODES[@]} ; do
 		insinto "${ICAROOT}"/nls/${lang}
 		doins nls/${lang}/*
 
@@ -154,8 +152,8 @@ src_install() {
 		dosym UTF-8 "${ICAROOT}"/nls/${lang}/utf8
 
 		for tmpl in {appsrv,wfclient}.template ; do
-			cp "${ED}/${ICAROOT}"/nls/${lang}/${tmpl} \
-				"${ED}/${ICAROOT}"/nls/${lang}/${tmpl/template/ini} \
+			cp "${ED%/}/${ICAROOT}"/nls/${lang}/${tmpl} \
+				"${ED%/}/${ICAROOT}"/nls/${lang}/${tmpl/template/ini} \
 				|| die
 		done
 	done
@@ -181,7 +179,8 @@ src_install() {
 	make_wrapper wfica "${ICAROOT}"/wfica . "${ICAROOT}"
 
 	dodir /etc/revdep-rebuild/
-	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" > "${D}"/etc/revdep-rebuild/70icaclient
+	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" \
+		> "${ED%/}"/etc/revdep-rebuild/70icaclient
 }
 
 pkg_preinst() {

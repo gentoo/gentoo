@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Standalone version of django.utils.feedgenerator"
-HOMEPAGE="https://pypi.python.org/pypi/feedgenerator"
+HOMEPAGE="https://pypi.org/project/feedgenerator/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,6 +1,51 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller <ulm@gentoo.org> (01 May 2018)
+# Missing keyword on virtual/gsasl dependency, bug #635216.
+net-mail/mailutils sasl
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2018)
+# Missing keywords on dependencies.
+dev-qt/designer webkit
+dev-qt/qtgui eglfs evdev ibus libinput
+dev-qt/qtnetwork connman libproxy
+
+# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Someone needs to test the driver.
+x11-base/xorg-drivers video_cards_amdgpu
+
+# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Requires sys-fs/fuse. Maybe it could work with fuse4bsd?
+net-fs/openafs fuse
+
+# Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
+# Requires separate libacl while FreeBSD has it in libc.
+dev-lang/php acl
+
+# Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
+# Unkeyworded dependencies.
+dev-libs/cyrus-sasl authdaemond
+gnome-base/gvfs cdda google nfs
+sys-auth/consolekit evdev pm-utils
+
+# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Requires masked USE flags.
+gnome-base/gvfs mtp
+
+# Michał Górny <mgorny@gentoo.org> (22 Feb 2018)
+# USE=libcxxrt is use.forced.
+sys-libs/libcxx libcxxabi
+
+# Michał Górny <mgorny@gentoo.org> (22 Feb 2018)
+# Even more unkeyworded dependencies.
+dev-libs/libpeas lua
+dev-util/cmocka doc
+
+# Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
+# Requires net-misc/curl[kerberos] which is masked here.
+dev-python/pycurl test
+
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
 # More unkeyworded dependencies.
 media-libs/xine-lib fusionsound
@@ -9,9 +54,6 @@ media-video/ffmpeg frei0r sofalizer
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # Unkeyworded dependencies.
 app-doc/doxygen clang
-dev-libs/glib dbus
-dev-libs/leveldb tcmalloc
-dev-libs/libpeas jit
 dev-perl/GD fcgi
 media-libs/libcanberra gnome
 media-libs/mesa vaapi
@@ -54,11 +96,8 @@ sys-devel/llvm ocaml
 
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
+app-editors/emacs mailutils
 app-editors/emacs-vcs mailutils
-
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
 
 # Johannes Huber <johu@gentoo.org> (28 Jan 2015)
 # Missing keyword on dev-libs/botan and dev-libs/pkcs11-helper

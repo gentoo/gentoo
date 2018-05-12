@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# Matt Turner <mattst88@gentoo.org> (25 Mar 2018)
+# Unmask systemd since it is keyworded here.
+-systemd
+
 # Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
 # dev-util/valgrind is not keyworded here yet,
 # though the MIPS platform is supported upstream
@@ -100,10 +104,6 @@ lapack
 blas
 
 # Alexander Færøy <eroyf@gentoo.org>
-# ldap -- untested, masking for now.
-ldap
-
-# Alexander Færøy <eroyf@gentoo.org>
 # Clamav -- untested, masking for now.
 clamav
 
@@ -151,10 +151,6 @@ video_cards_r200
 video_cards_r300
 video_cards_r600
 video_cards_radeonsi
-
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_vesa
 
 # Diego Pettenò <flameeyes@gentoo.org>
 # Until xine-lib's keywording can be maintained, please leave it masked.
@@ -314,9 +310,6 @@ clvm
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # virtual/opencl is not keyworded
 opencl
-
-# Unmask once sys-libs/libunwind gets keyworded.
-unwind
 
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # please remove when keyworded

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="archive berkdb debug doc +gmp hardened java +libedit libressl minimal odbc readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses:=
@@ -41,7 +41,7 @@ RDEPEND="sys-libs/ncurses:=
 		x11-libs/libSM )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
 S="${WORKDIR}/swipl-${PV}"

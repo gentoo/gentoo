@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Release notes manager, storing release notes in a git repo and building docs"
-HOMEPAGE="https://pypi.python.org/pypi/reno"
+HOMEPAGE="https://pypi.org/project/reno/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

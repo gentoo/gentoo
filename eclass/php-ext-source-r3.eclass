@@ -11,7 +11,7 @@
 
 inherit autotools
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install src_test
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 
 case ${EAPI} in
 	6) ;;
@@ -74,7 +74,7 @@ esac
 [[ -z "${PHP_EXT_SAPIS}" ]] && PHP_EXT_SAPIS="apache2 cli cgi fpm embed phpdbg"
 
 # @ECLASS-VARIABLE: PHP_INI_NAME
-# @DESCRIPTION
+# @DESCRIPTION:
 # An optional file name of the saved ini file minis the ini extension
 # This allows ordering of extensions such that one is loaded before
 # or after another.  Defaults to the PHP_EXT_NAME.
@@ -141,33 +141,33 @@ DEPEND="${DEPEND}
 # @ECLASS-VARIABLE: PHP_EXT_SKIP_PHPIZE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# By default, we run "phpize" in php-ext-source-r3_src_unpack(). Set
+# By default, we run "phpize" in php-ext-source-r3_src_prepare(). Set
 # PHP_EXT_SKIP_PHPIZE="yes" in your ebuild if you do not want to run
 # phpize (and the autoreconf that becomes necessary afterwards).
 
-# @FUNCTION: php-ext-source-r3_src_unpack
+# @ECLASS-VARIABLE: PHP_EXT_SKIP_PATCHES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Runs the default src_unpack and then makes a copy for each PHP slot.
-php-ext-source-r3_src_unpack() {
-	default
-
-	local slot orig_s="${PHP_EXT_S}"
-	for slot in $(php_get_slots); do
-		cp --recursive --preserve "${orig_s}" "${WORKDIR}/${slot}" || \
-			die "failed to copy sources from ${orig_s} to ${WORKDIR}/${slot}"
-	done
-}
-
+# By default, we run default_src_prepare to PHP_EXT_S.
+# Set PHP_EXT_SKIP_PATCHES="yes" in your ebuild if you
+# want to apply patches yourself.
 
 # @FUNCTION: php-ext-source-r3_src_prepare
 # @DESCRIPTION:
-# For each PHP slot, we initialize the environment, run the default
-# src_prepare() for PATCHES/eapply_user support, and then call
-# php-ext-source-r3_phpize.
+# Runs the default src_prepare() for PATCHES/eapply_user() support (optional),
+# and for each PHP slot, makes a copy of sources, initializes the environment,
+# and calls php-ext-source-r3_phpize().
 php-ext-source-r3_src_prepare() {
-	for slot in $(php_get_slots); do
-		php_init_slot_env "${slot}"
+	local slot orig_s="${PHP_EXT_S}"
+	if [[ "${PHP_EXT_SKIP_PATCHES}" != 'yes' ]] ; then
+		pushd "${orig_s}" > /dev/null || die
 		default
+		popd > /dev/null || die
+	fi
+	for slot in $(php_get_slots); do
+		cp --recursive --preserve "${orig_s}" "${WORKDIR}/${slot}" || \
+			die "failed to copy sources from ${orig_s} to ${WORKDIR}/${slot}"
+		php_init_slot_env "${slot}"
 		php-ext-source-r3_phpize
 	done
 }

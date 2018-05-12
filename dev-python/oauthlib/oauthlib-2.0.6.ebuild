@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="Spec-compliant and thorough implementation of the OAuth request-signing logic"
-HOMEPAGE="https://github.com/idan/oauthlib https://pypi.python.org/pypi/oauthlib"
+HOMEPAGE="https://github.com/idan/oauthlib https://pypi.org/project/oauthlib/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 
 # optional extras hard set as RDEPs. See setup.py

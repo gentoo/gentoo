@@ -6,6 +6,6 @@
 		<name>Gentoo ROS Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ros/robot_model</remote-id>
+		<remote-id type="github">ros/joint_state_publisher</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -10,7 +10,7 @@ MY_PN="Flask-BabelEx"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Adds i18n/l10n support to Flask applications"
-HOMEPAGE="https://github.com/mrjoes/flask-babelex https://pypi.python.org/pypi/Flask-BabelEx"
+HOMEPAGE="https://github.com/mrjoes/flask-babelex https://pypi.org/project/Flask-BabelEx/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

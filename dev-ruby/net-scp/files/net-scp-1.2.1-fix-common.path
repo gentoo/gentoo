@@ -1,0 +1,28 @@
+--- test/common.rb	2018-01-21 16:23:07.384173147 +0100
++++ test/common.rb	2018-01-21 16:20:34.084172782 +0100
+@@ -1,11 +1,11 @@
+ require 'test/unit'
+ require 'mocha/setup'
+ 
+-begin
+-  gem 'net-ssh', ">= 2.0.0"
+-  require 'net/ssh'
+-rescue LoadError
+-  $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../../net-ssh/lib"
++#begin
++#  #gem 'net-ssh', ">= 2.0.0"
++#  require 'net/ssh'
++#rescue LoadError
++#  $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../../net-ssh/lib"
+ 
+   begin
+     require 'net/ssh'
+@@ -14,7 +14,7 @@
+   rescue LoadError => e
+     abort "could not load net/ssh v2 (#{e.inspect})"
+   end
+-end
++#end
+ 
+ $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../lib"
+ 

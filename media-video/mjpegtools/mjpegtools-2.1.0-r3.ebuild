@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/mjpeg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="dv gtk cpu_flags_x86_mmx png quicktime sdl sdlgfx static-libs"
 REQUIRED_USE="sdlgfx? ( sdl )"
 
@@ -30,12 +30,6 @@ DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
 	virtual/awk
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
-
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20140508-r4
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-pic.patch

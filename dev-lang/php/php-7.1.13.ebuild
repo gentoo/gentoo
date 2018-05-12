@@ -145,6 +145,8 @@ REQUIRED_USE="
 	mysql? ( || ( mysqli pdo ) )
 "
 
+PATCHES=( "${FILESDIR}/mbstring-oniguruma-6.8.patch" )
+
 PHP_MV="$(get_major_version)"
 
 php_install_ini() {
@@ -255,7 +257,7 @@ src_configure() {
 		$(use_enable hash hash)
 		$(use_with mhash mhash "${EPREFIX}/usr")
 		$(use_with iconv iconv \
-			$(use elibc_glibc || use elibc_musl || echo "${EPREFIX}/usr"))
+			$(use elibc_glibc || use elibc_musl || use elibc_FreeBSD || echo "${EPREFIX}/usr"))
 		$(use_enable intl intl)
 		$(use_enable ipv6 ipv6)
 		$(use_enable json json)

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="Low-overhead managed string library for C"
-HOMEPAGE="http://www.and.org/ustr"
+HOMEPAGE="http://www.and.org/ustr/"
 SRC_URI="ftp://ftp.and.org/pub/james/ustr/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( BSD-2 MIT LGPL-2 )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vogel/injeqt/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 
 # https://github.com/vogel/injeqt/issues/18
 RESTRICT=test
+
+PATCHES=( "${FILESDIR}/${P}-gcc7.patch" )
 
 src_configure() {
 	local mycmakeargs=(

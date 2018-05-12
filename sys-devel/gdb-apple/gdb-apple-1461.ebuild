@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit eutils flag-o-matic
 
@@ -24,16 +24,18 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/gdb-${APPLE_PV}/src
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-no-global-gdbinit.patch
+	"${FILESDIR}"/${PN}-768-texinfo.patch
+	"${FILESDIR}"/${P}-dyld-info.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-no-global-gdbinit.patch
-	epatch "${FILESDIR}"/${PN}-768-texinfo.patch
-	epatch "${FILESDIR}"/${P}-dyld-info.patch
-	[[ ${CHOST} == *-darwin8 ]] && epatch "${FILESDIR}"/${P}-darwin8.patch
+	default
+	[[ ${CHOST} == *-darwin8 ]] && eapply "${FILESDIR}"/${P}-darwin8.patch
 
 	# for FSF gcc / gcc-apple:42
 	sed -e 's/-Wno-long-double//' -i gdb/config/*/macosx.mh
-
-	eapply_user
 }
 
 src_configure() {

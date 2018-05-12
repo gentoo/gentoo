@@ -21,6 +21,7 @@ IUSE+=" cpu_flags_x86_sse4_1"
 IUSE+=" cpu_flags_x86_sse4_2"
 IUSE+=" cpu_flags_x86_ssse3"
 #IUSE+=" cpu_flags_x86_x87"
+RESTRICT="!test? ( test )"
 
 RDEPEND="!dev-cpp/eigen:0"
 DEPEND="

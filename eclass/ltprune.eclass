@@ -15,6 +15,13 @@
 
 if [[ -z ${_LTPRUNE_ECLASS} ]]; then
 
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6)
+		;;
+	*)
+		die "${ECLASS}: banned in EAPI=${EAPI}; use 'find' instead";;
+esac
+
 inherit toolchain-funcs
 
 # @FUNCTION: prune_libtool_files

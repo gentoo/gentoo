@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed016
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 x86"
 IUSE="gmp gnat_2016 +gnat_2017 gtk iconv postgres pygobject projects readline
 	+shared sqlite static-libs syslog tools"
 
@@ -35,11 +35,13 @@ RDEPEND="dev-lang/gnat-gpl:6.3.0
 	sqlite? ( dev-db/sqlite )
 	projects? (
 		>=dev-ada/libgpr-2017[gnat_2017,shared?,static-libs?]
+		dev-ada/xmlada[shared?,static-libs?]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2017]"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	tools? ( static-libs )
 	pygobject? ( gtk )
 	!gnat_2016 gnat_2017"
 

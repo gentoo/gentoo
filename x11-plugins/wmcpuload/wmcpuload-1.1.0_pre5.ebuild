@@ -1,8 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 DESCRIPTION="a dockapp for monitoring CPU usage with a LCD display"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/36"
+HOMEPAGE="https://www.dockapps.net/wmcpuload"
 SRC_URI="mirror://gentoo/${P/_/}.tar.gz"
 
 LICENSE="GPL-2"

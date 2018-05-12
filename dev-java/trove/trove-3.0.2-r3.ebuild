@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="GNU Trove: High performance collections for Java"
 SRC_URI="mirror://sourceforge/trove4j/${P}.tar.gz"
 HOMEPAGE="http://trove4j.sourceforge.net"
-KEYWORDS="amd64 ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 SLOT="0"
 LICENSE="LGPL-2.1"

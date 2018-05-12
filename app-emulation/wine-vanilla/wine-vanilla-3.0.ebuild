@@ -95,22 +95,6 @@ COMMON_DEPEND="
 	xml? (
 		dev-libs/libxml2[${MULTILIB_USEDEP}]
 		dev-libs/libxslt[${MULTILIB_USEDEP}]
-	)
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-baselibs-20140508-r14
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-db-20140508-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-medialibs-20140508-r6
-		!app-emulation/emul-linux-x86-opengl[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-opengl-20140508-r1
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-sdl-20140508-r1
-		!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-soundlibs-20140508
-		!app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-xlibs-20140508
 	)"
 
 RDEPEND="${COMMON_DEPEND}
@@ -137,13 +121,9 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
 	virtual/yacc
-	X? (
-		x11-proto/inputproto
-		x11-proto/xextproto
-		x11-proto/xf86vidmodeproto
-	)
+	X? ( x11-base/xorg-proto )
 	prelink? ( sys-devel/prelink )
-	xinerama? ( x11-proto/xineramaproto )"
+	xinerama? ( x11-base/xorg-proto )"
 
 # These use a non-standard "Wine" category, which is provided by
 # /etc/xdg/applications-merged/wine.menu

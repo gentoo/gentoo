@@ -11,14 +11,14 @@ MY_PN="amqp"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Low-level AMQP client for Python (fork of amqplib)"
-HOMEPAGE="https://github.com/celery/py-amqp https://pypi.python.org/pypi/amqp/"
+HOMEPAGE="https://github.com/celery/py-amqp https://pypi.org/project/amqp/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc extras test"
 
 RDEPEND=""

@@ -146,10 +146,11 @@ src_configure() {
 	INCPATH=${LIBPATH}/include
 	DATAPATH=/usr/share/binutils-data/${CTARGET}/${BVER}
 	if is_cross ; then
-		BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${BVER}
+		TOOLPATH=/usr/${CHOST}/${CTARGET}
 	else
-		BINPATH=/usr/${CTARGET}/binutils-bin/${BVER}
+		TOOLPATH=/usr/${CTARGET}
 	fi
+	BINPATH=${TOOLPATH}/binutils-bin/${BVER}
 
 	# Make sure we filter $LINGUAS so that only ones that
 	# actually work make it through #42033
@@ -251,7 +252,8 @@ src_configure() {
 
 src_compile() {
 	cd "${MY_BUILDDIR}"
-	emake all
+	# see Note [tooldir hack for ldscripts]
+	emake tooldir="${EPREFIX}${TOOLPATH}" all
 
 	# only build info pages if the user wants them
 	if use doc ; then
@@ -272,6 +274,7 @@ src_install() {
 	local x d
 
 	cd "${MY_BUILDDIR}"
+	# see Note [tooldir hack for ldscripts]
 	emake DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
 	rm -rf "${ED}"/${LIBPATH}/bin
 	use static-libs || find "${ED}" -name '*.la' -delete
@@ -380,3 +383,31 @@ pkg_postrm() {
 		binutils-config ${CTARGET}-${BVER}
 	fi
 }
+
+# Note [slotting support]
+# -----------------------
+# Gentoo's layout for binutils files is non-standard as Gentoo
+# supports slotted installation for binutils. Many tools
+# still expect binutils to reside in known locations.
+# binutils-config package restores symlinks into known locations,
+# like:
+#    /usr/bin/${CTARGET}-<tool>
+#    /usr/bin/${CHOST}/${CTARGET}/lib/ldscrips
+#    /usr/include/
+#
+# Note [tooldir hack for ldscripts]
+# ---------------------------------
+# Build system does not allow ./configure to tweak every location
+# we need for slotting binutils hence all the shuffling in
+# src_install(). This note is about SCRIPTDIR define handling.
+#
+# SCRIPTDIR defines 'ldscripts/' directory location. SCRIPTDIR value
+# is set at build-time in ld/Makefile.am as: 'scriptdir = $(tooldir)/lib'
+# and hardcoded as -DSCRIPTDIR='"$(scriptdir)"' at compile time.
+# Thus we can't just move files around after compilation finished.
+#
+# Our goal is the following:
+# - at build-time set scriptdir to point to symlinked location:
+#   ${TOOLPATH}: /usr/${CHOST} (or /usr/${CHOST}/${CTARGET} for cross-case)
+# - at install-time set scriptdir to point to slotted location:
+#   ${LIBPATH}: /usr/$(get_libdir)/binutils/${CTARGET}/${BVER}

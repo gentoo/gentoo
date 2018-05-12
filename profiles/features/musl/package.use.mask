@@ -17,3 +17,8 @@ sys-fs/e2fsprogs nls
 
 # See bug #576928
 media-libs/mesa nptl
+
+# bash-malloc relies on sbrk which is implemented
+# as a fail-only stub in musl. breaks horribly if enabled.
+# bash: xmalloc: locale.c:81: cannot allocate 18 bytes (0 bytes allocated)
+app-shells/bash mem-scramble

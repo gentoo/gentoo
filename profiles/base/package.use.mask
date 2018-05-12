@@ -7,6 +7,93 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# Depends on obsolete dev-libs/sni-qt and dead Qt4.
+kde-plasma/plasma-desktop qt4
+
+# Mike Gilbert <floppym@gentoo.org> (01 May 2018)
+# Requires >=media-video/ffmpeg-4 (bug 654208).
+>=www-client/chromium-67 system-ffmpeg
+
+# Göktürk Yüksek <gokturk@gentoo.org> (4 Apr 2018)
+# libewf is getting treecleaned (#547418).
+# Starting with sleuthkit-4.6.0, we statically link sleuthkit to a
+# locally compiled libewf. Mask the prior versions.
+<app-forensics/sleuthkit-4.6.0 ewf
+
+# Mart Raudsepp <leio@gentoo.org> (1 Apr 2018)
+# rust[extended] file collides with dev-util/cargo, while everything
+# in tree uses the latter at the moment (#645562)
+dev-lang/rust extended
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# app-backup/holland-lib-mysql will be removed (#643502)
+app-backup/holland mysql
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# media-sound/mp3gain and media-sound/aacgain will be removed (#630954).
+media-sound/abcde lame
+media-sound/split2flac mp3 mp4
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# dev-python/visual will be removed (#630252)
+net-analyzer/scapy visual
+
+# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
+# net-dns/hesiod will be removed (#606652)
+net-mail/fetchmail hesiod
+sys-freebsd/freebsd-lib hesiod
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# app-misc/cwiid will be removed (#608780)
+media-sound/supercollider wiimote
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# sys-fabric/mstflint will be removed (#594908)
+sys-fabric/ofed mstflint
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# x11-themes/vdrgraphtft-avp is being removed (#592066)
+media-plugins/vdr-music graphtft
+
+# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
+# app-text/zemberek-server is being removed (#587806)
+app-text/enchant zemberek
+
+# Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
+# Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
+# no active upstream anymore.
+net-fs/samba dmapi
+
+# Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
+# Mask local USE flag to satisfy repoman
+app-emulation/fuse backend-svga
+
+# Pacho Ramos <pacho@gentoo.org> (13 Mar 2018)
+# libewf is going to be removed, bug #547418
+app-admin/testdisk ewf
+
+# Patrick McLean <chutzpah@gentoo.org> (6 Mar 2018)
+# Requires dev-libs/boost-1.66 that is unkeyworded/masked
+>=sys-cluster/ceph-12.2.4 system-boost
+
+# Brian Evans <grknight@gentoo.org> (5 Mar 2018)
+# Mask embedded USE on virtual/mysql to transition it to be obsolete
+>=virtual/mysql-5.6-r11 embedded
+
+# Brian Evans <grknight@gentoo.org> (28 Feb 2018)
+# Mask client-libs USE to force users to install alternative standard pacakges
+dev-db/mariadb client-libs
+dev-db/mysql client-libs
+dev-db/percona-server client-libs
+
+# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2018)
+# Depends on obsolete media-libs/phonon[qt4]
+dev-qt/designer:4 phonon
+dev-qt/qtdemo:4 phonon
+dev-python/PyQt4 phonon
+dev-python/pyside:0 phonon
+
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2018)
 # Depends on unreleased media-libs/libaom, and 9999 is currently broken
 media-video/vlc aom
@@ -33,23 +120,11 @@ net-analyzer/nagios-plugin-check_raid i2o
 media-video/ffmpeg appkit
 
 # Pacho Ramos <pacho@gentoo.org> (28 Dec 2017)
-# The whole zeitgeist stuck is dead (#629180)
+# The whole zeitgeist stack is dead (#629180)
 gnome-extra/synapse zeitgeist
-www-client/midori zeitgeist
 app-editors/gedit-plugins zeitgeist
-app-misc/bijiben zeitgeist
 dev-libs/folks zeitgeist
-media-sound/rhythmbox zeitgeist
-media-video/totem zeitgeist
-
-# Pacho Ramos <pacho@gentoo.org> (27 Dec 2017)
-# We will remove ptlib, its support was broken anyway (#624578).
-net-voip/yate h323
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (25 Dec 2017)
-# We need to clean up obsolete packages a bit. Bug 628820.
-~app-text/texlive-core-2012 xetex
-~app-text/texlive-core-2013 xetex
+www-client/midori zeitgeist
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Having a masked
@@ -61,7 +136,7 @@ dev-java/oracle-jre-bin:9 gentoo-vm
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Requires audacious, which is masked. Bug 632513
-=media-libs/freeverb3-3.1.2_pre20151102-r1 jack
+media-libs/freeverb3 jack
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
 # USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
@@ -91,10 +166,6 @@ sys-libs/glibc vanilla
 # This is a security risk if not used carefully, bug 628596.
 net-analyzer/nrpe command-args
 
-# Michał Górny <mgorny@gentoo.org> (05 Aug 2017)
-# media-libs/silgraphite is being treecleaned wrt #594314.
-<app-text/texlive-core-2013 xetex
-
 # Michał Górny <mgorny@gentoo.org> (04 Aug 2017)
 # sys-kernel/openvz-sources is being treecleaned wrt #580516.
 app-emulation/libvirt openvz
@@ -103,11 +174,6 @@ app-emulation/libvirt openvz
 # The Z3 backend is unstable and causes assertion failures. Mask it
 # until upstream fixes it properly.
 sys-devel/clang z3
-
-# Ulrich Müller <ulm@gentoo.org> (26 Jul 2017)
-# Disable hesiod support due to security vulnerability, bug #626242.
-app-editors/emacs hesiod
-app-editors/emacs-vcs hesiod
 
 # Brian Evans <grknight@gentoo.org> (21 Jul 2017)
 # Mask USE flag which has limited keywords for app-crypt/argon2
@@ -143,17 +209,6 @@ media-video/parole clutter
 # Libav is basically unsupported by mpv, see upstream issues 3923, 3925.
 # Needs patch to even build, subs are broken and not supported anymore.
 media-video/mpv libav
-
-# Maciej Mrozowski <reavertm@gmail.com> (15 Jun 2017)
-# Mask due to bug #621810
-dev-games/simgear gdal
-games-simulation/flightgear gdal
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# dev-cpp/libgnomeuimm is masked for removal, mask flags that require
-# it.
-app-cdr/cdrdao gcdmaster
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
@@ -326,13 +381,7 @@ dev-java/icedtea cacao jamvm
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
 # Need vulnerable libotr version (see bug #576914).
-net-im/centerim otr
 =net-im/climm-0.7.1 otr
-
-# James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
-# jtds:1.2 needs removing because it depends on Java 6. Unfortunately
-# we can't stabilise the latest sqldeveloper yet because of Java 8.
-<dev-db/sqldeveloper-4.1.3.20.78-r1 mssql sybase
 
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
@@ -608,7 +657,6 @@ media-sound/pulseaudio system-wide
 
 # These are for BSD only
 net-proxy/squid ipf-transparent pf-transparent
-app-admin/sshguard ipfilter
 
 # Alexis Ballier <aballier@gentoo.org> <16 Feb 2011>
 # Win32 specific useflags for vlc. Can be used for cross-compiling.

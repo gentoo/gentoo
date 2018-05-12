@@ -1,5 +1,5 @@
---- setup.py
-+++ setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -42,12 +42,7 @@
  
  # collect data files
@@ -42,8 +42,8 @@
 -        os.remove(path)
 -
 -shutil.rmtree("libsrvr", onerror = onerror)
---- osc.py
-+++ osc.py
+--- a/osc.py
++++ b/osc.py
 @@ -23,12 +23,36 @@
  # tweak PYTHONPATH
  import sys

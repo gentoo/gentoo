@@ -8,9 +8,8 @@
 	<use>
 		<flag name="colord">Support color management using <pkg>x11-misc/colord</pkg></flag>
 		<flag name="flickr">Add support for uploading photos to flickr</flag>
-		<flag name="geo">Enable geotagging support</flag>
+		<flag name="geolocation">Enable geotagging support</flag>
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
-		<flag name="libsecret">Enable libsecret support to store login credentials</flag>
 		<flag name="opencl">Enable opencl support</flag>
 		<flag name="pax_kernel">Triggers paxmarking of main darktable binary</flag>
 		<flag name="webp">Enable WebP export support</flag>

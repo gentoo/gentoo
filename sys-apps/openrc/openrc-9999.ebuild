@@ -53,15 +53,14 @@ RDEPEND="${COMMON_DEPEND}
 		>=sec-policy/selinux-base-policy-2.20170204-r4
 		>=sec-policy/selinux-openrc-2.20170204-r4
 	)
+	!<app-shells/gentoo-bashcomp-20180302
+	!<app-shells/gentoo-zsh-completions-20180228
 "
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
 src_prepare() {
 	default
-
-	sed -i 's:0444:0644:' mk/sys.mk || die
-
 	if [[ ${PV} == "9999" ]] ; then
 		local ver="git-${EGIT_VERSION:0:6}"
 		sed -i "/^GITVER[[:space:]]*=/s:=.*:=${ver}:" mk/gitver.mk || die
@@ -73,7 +72,7 @@ src_compile() {
 
 	MAKE_ARGS="${MAKE_ARGS}
 		LIBNAME=$(get_libdir)
-		LIBEXECDIR=${EPREFIX}/$(get_libdir)/rc
+		LIBEXECDIR=${EPREFIX}/lib/rc
 		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
 		MKSELINUX=$(usex selinux)
@@ -124,9 +123,9 @@ src_install() {
 	gen_usr_ldscript librc.so
 
 	if ! use kernel_linux; then
-		keepdir /$(get_libdir)/rc/init.d
+		keepdir /lib/rc/init.d
 	fi
-	keepdir /$(get_libdir)/rc/tmp
+	keepdir /lib/rc/tmp
 
 	# Backup our default runlevels
 	dodir /usr/share/"${PN}"
@@ -295,24 +294,19 @@ pkg_postinst() {
 		elog "# rc-update add consolefont boot"
 	fi
 
-	# Handle the conf.d/local.{start,stop} -> local.d transition
-	if path_exists -o "${EROOT}"etc/conf.d/local.{start,stop} ; then
-		elog "Moving your ${EROOT}etc/conf.d/local.{start,stop}"
-		elog "files to ${EROOT}etc/local.d"
-		mv "${EROOT}"etc/conf.d/local.start "${EROOT}"etc/local.d/baselayout1.start
-		mv "${EROOT}"etc/conf.d/local.stop "${EROOT}"etc/local.d/baselayout1.stop
-		chmod +x "${EROOT}"etc/local.d/*{start,stop}
-	fi
-
-	if use kernel_linux && [[ "${EROOT}" = "/" ]]; then
-		if ! /$(get_libdir)/rc/sh/migrate-to-run.sh; then
-			ewarn "The dependency data could not be migrated to /run/openrc."
-			ewarn "This means you need to reboot your system."
+	# Added for 0.35.
+	if use kernel_linux && [[ ! -h "${EROOT}"/lib ]]; then
+		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
+			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
+		fi
+	elif ! use kernel_linux; then
+		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
+			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
 		fi
 	fi
 
 	# update the dependency tree after touching all files #224171
-	[[ "${EROOT}" = "/" ]] && "${EROOT}/${LIBDIR}"/rc/bin/rc-depend -u
+	[[ "${EROOT}" = "/" ]] && "${EROOT}"/lib/rc/bin/rc-depend -u
 
 	if ! use newnet && ! use netifrc; then
 		ewarn "You have emerged OpenRc without network support. This"

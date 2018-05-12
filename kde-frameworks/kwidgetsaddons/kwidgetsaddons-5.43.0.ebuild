@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="An assortment of high-level widgets for common tasks"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="nls"
 
 RDEPEND="
@@ -18,3 +18,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 "
+
+src_test() {
+	# bug 650216
+	local myctestargs=( -E "(kdatecomboboxtest)" )
+	kde5_src_test
+}

@@ -5,16 +5,21 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
-inherit distutils-r1 git-r3 user
+inherit distutils-r1 user
 
 DESCRIPTION="The Openstack authentication, authorization, and service catalog"
 HOMEPAGE="https://launchpad.net/keystone"
-EGIT_REPO_URI="https://github.com/openstack/keystone.git"
-EGIT_BRANCH="stable/queens"
+if [[ ${PV} == *9999 ]];then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/openstack/keystone.git"
+	EGIT_BRANCH="stable/queens"
+else
+	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="+sqlite ldap memcached mongo mysql postgres test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -121,6 +126,8 @@ python_prepare_all() {
 	cp etc/keystone-paste.ini ${PN}/tests/tmp/ || die
 	sed -i 's|/usr/local|/usr|g' httpd/keystone-uwsgi-* || die
 	sed -i 's|python|python27|g' httpd/keystone-uwsgi-* || die
+	# allow useage of renamed msgpack
+	sed -i '/^msgpack/d' requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 

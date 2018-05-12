@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,16 +35,14 @@ RDEPEND="
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}] )
+		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
+	)
+	!<media-libs/gst-plugins-bad-1.11.90:1.0
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
-	X? (
-		>=x11-proto/videoproto-2.3.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}] )
+	X? ( x11-base/xorg-proto )
 "
-RDEPEND+="!<media-libs/gst-plugins-bad-1.11.90:1.0" # rawparse move
 
 multilib_src_configure() {
 	gstreamer_multilib_src_configure \

@@ -14,7 +14,7 @@ inherit toolchain-funcs multilib-minimal
 LIBVPX_TESTDATA_VER=1.7.0
 
 DESCRIPTION="WebM VP8 and VP9 Codec SDK"
-HOMEPAGE="http://www.webmproject.org"
+HOMEPAGE="https://www.webmproject.org"
 SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( mirror://gentoo/${PN}-testdata-${LIBVPX_TESTDATA_VER}.tar.xz )"
 
@@ -32,7 +32,7 @@ REQUIRED_USE="
 # Disable test phase when USE="-test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND=""
 DEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )

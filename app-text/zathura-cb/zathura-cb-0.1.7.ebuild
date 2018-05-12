@@ -10,12 +10,12 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-cb.git"
 	EGIT_BRANCH="develop"
 else
-	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+	KEYWORDS="amd64 ~arm x86"
+	SRC_URI="https://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
 fi
 
 DESCRIPTION="Comic book plug-in for zathura with 7zip, rar, tar and zip support"
-HOMEPAGE="http://pwmt.org/projects/zathura/"
+HOMEPAGE="https://pwmt.org/projects/zathura/"
 
 LICENSE="ZLIB"
 SLOT="0"

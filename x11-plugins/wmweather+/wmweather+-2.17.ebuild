@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts"
-HOMEPAGE="http://www.sourceforge.net/projects/wmweatherplus/"
+HOMEPAGE="https://www.sourceforge.net/projects/wmweatherplus/"
 SRC_URI="mirror://sourceforge/wmweatherplus/${P}.tar.gz"
 
 SLOT="0"

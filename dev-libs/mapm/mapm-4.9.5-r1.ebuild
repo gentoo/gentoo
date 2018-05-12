@@ -11,7 +11,7 @@ SRC_URI="http://www.tc.umn.edu/~ringx004/${P}.tar.gz"
 
 LICENSE="mapm-4.9.5"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
 DEPEND=""

@@ -28,10 +28,15 @@ HOMEPAGE="https://sourceware.org/newlib/"
 
 LICENSE="NEWLIB LIBGLOSS GPL-2"
 SLOT="0"
-IUSE="nls threads unicode headers-only"
+IUSE="nls threads unicode headers-only nano"
 RESTRICT="strip"
 
 NEWLIBBUILD="${WORKDIR}/build"
+NEWLIBNANOBUILD="${WORKDIR}/build.nano"
+NEWLIBNANOTMPINSTALL="${WORKDIR}/nano_tmp_install"
+
+CFLAGS_FULL="-ffunction-sections -fdata-sections"
+CFLAGS_NANO="-Os -ffunction-sections -fdata-sections"
 
 pkg_setup() {
 	# Reject newlib-on-glibc type installs
@@ -47,6 +52,8 @@ src_configure() {
 	# we should fix this ...
 	unset LDFLAGS
 	CHOST=${CTARGET} strip-unsupported-flags
+	CCASFLAGS_ORIG="${CCASFLAGS}"
+	CFLAGS_ORIG="${CFLAGS}"
 
 	local myconf=(
 		# Disable legacy syscall stub code in newlib.  These have been
@@ -61,22 +68,73 @@ src_configure() {
 	mkdir -p "${NEWLIBBUILD}"
 	cd "${NEWLIBBUILD}"
 
+	export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_FULL}"
+	export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_FULL}"
 	ECONF_SOURCE=${S} \
 	econf \
 		$(use_enable unicode newlib-mb) \
 		$(use_enable nls) \
 		"${myconf[@]}"
+
+	# Build newlib-nano beside newlib (original)
+	# Based on https://tracker.debian.org/media/packages/n/newlib/rules-2.1.0%2Bgit20140818.1a8323b-2
+	if use nano ; then
+		mkdir -p "${NEWLIBNANOBUILD}" || die
+		cd "${NEWLIBNANOBUILD}" || die
+		export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_NANO}"
+		export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_NANO}"
+		ECONF_SOURCE=${S} \
+		econf \
+			$(use_enable unicode newlib-mb) \
+			$(use_enable nls) \
+			--enable-newlib-reent-small \
+			--disable-newlib-fvwrite-in-streamio \
+			--disable-newlib-fseek-optimization \
+			--disable-newlib-wide-orient \
+			--enable-newlib-nano-malloc \
+			--disable-newlib-unbuf-stream-opt \
+			--enable-lite-exit \
+			--enable-newlib-global-atexit \
+			--enable-newlib-nano-formatted-io \
+			${myconf}
+	fi
 }
 
 src_compile() {
+	export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_FULL}"
+	export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_FULL}"
 	emake -C "${NEWLIBBUILD}"
+
+	if use nano ; then
+		export "CFLAGS_FOR_TARGET=${CFLAGS_ORIG} ${CFLAGS_NANO}"
+		export "CCASFLAGS=${CCASFLAGS_ORIG} ${CFLAGS_NANO}"
+		emake -C "${NEWLIBNANOBUILD}"
+	fi
 }
 
 src_install() {
-	cd "${NEWLIBBUILD}"
+	cd "${NEWLIBBUILD}" || die
 	emake -j1 DESTDIR="${D}" install
 #	env -uRESTRICT CHOST=${CTARGET} prepallstrip
+
+	if use nano ; then
+		cd "${NEWLIBNANOBUILD}" || die
+		emake -j1 DESTDIR="${NEWLIBNANOTMPINSTALL}" install
+		# Rename nano lib* files to lib*_nano and move to the real ${D}
+		local nanolibfiles=""
+		nanolibfiles=$(find "${NEWLIBNANOTMPINSTALL}" -regex ".*/lib\(c\|g\|rdimon\)\.a" -print)
+		for f in ${nanolibfiles}; do
+			local l="${f##${NEWLIBNANOTMPINSTALL}}"
+			mv -v "${f}" "${D}/${l%%\.a}_nano.a" || die
+		done
+
+		# Move newlib-nano's version of newlib.h to newlib-nano/newlib.h
+		mkdir -p "${D}/usr/${CTARGET}/include/newlib-nano" || die
+		mv "${NEWLIBNANOTMPINSTALL}/usr/${CTARGET}/include/newlib.h" \
+			"${D}/usr/${CTARGET}/include/newlib-nano/newlib.h" || die
+	fi
+
 	# minor hack to keep things clean
-	rm -fR "${D}"/usr/share/info
-	rm -fR "${D}"/usr/info
+	rm -rf "${D}"/usr/share/info || die
+	rm -rf "${D}"/usr/info || die
 }

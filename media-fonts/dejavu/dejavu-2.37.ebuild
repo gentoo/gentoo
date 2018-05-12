@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit font versionator
+inherit font versionator xdg-utils
 
 DESCRIPTION="DejaVu fonts, bitstream vera with ISO-8859-2 characters"
 HOMEPAGE="https://dejavu-fonts.github.io/"
@@ -25,15 +25,17 @@ fi
 
 LICENSE="BitstreamVera"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="fontforge"
 
-DEPEND="fontforge? ( x11-apps/mkfontscale
+DEPEND="fontforge? (
+		x11-apps/mkfontscale
 		>=media-gfx/fontforge-20080429
 		x11-apps/mkfontdir
 		dev-perl/Font-TTF
 		app-i18n/unicode-data
-		>media-libs/fontconfig-2.6.0 )"
+		>media-libs/fontconfig-2.6.0:1.0 )
+"
 
 FONT_CONF=(
 	fontconfig/20-unhint-small-dejavu-sans-mono.conf
@@ -55,6 +57,11 @@ src_unpack() {
 	else
 		mv "${MY_BP}" "${P}" || die
 	fi
+}
+
+src_prepare() {
+	default
+	xdg_environment_reset
 }
 
 src_compile() {

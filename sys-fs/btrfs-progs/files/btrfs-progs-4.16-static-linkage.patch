@@ -1,0 +1,27 @@
+https://www.spinics.net/lists/linux-btrfs/msg76763.html
+Reported-by: Attila Tóth
+Bug: https://bugs.gentoo.org/652966
+diff --git a/Makefile b/Makefile
+index 5ba76d2..dc3a31a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -264,6 +264,7 @@ static_libbtrfs_objects = $(patsubst %.o, %.static.o, $(libbtrfs_objects))
+ static_convert_objects = $(patsubst %.o, %.static.o, $(convert_objects))
+ static_mkfs_objects = $(patsubst %.o, %.static.o, $(mkfs_objects))
+ static_image_objects = $(patsubst %.o, %.static.o, $(image_objects))
++static_libbtrfsutil_objects = $(patsubst %.o, %.static.o, $(libbtrfsutil_objects))
+ 
+ libs_shared = libbtrfs.so.0.1 libbtrfsutil.so.$(libbtrfsutil_version)
+ libs_static = libbtrfs.a libbtrfsutil.a
+@@ -453,7 +454,7 @@ btrfs: btrfs.o $(objects) $(cmds_objects) $(libs_static)
+ 	@echo "    [LD]     $@"
+ 	$(Q)$(CC) -o $@ $^ $(LDFLAGS) $(LIBS) $(LIBS_COMP)
+ 
+-btrfs.static: btrfs.static.o $(static_objects) $(static_cmds_objects) $(static_libbtrfs_objects)
++btrfs.static: btrfs.static.o $(static_objects) $(static_cmds_objects) $(static_libbtrfs_objects) $(static_libbtrfsutil_objects)
+ 	@echo "    [LD]     $@"
+ 	$(Q)$(CC) -o $@ $^ $(STATIC_LDFLAGS) $(STATIC_LIBS) $(STATIC_LIBS_COMP)
+ 
+-- 
+2.17.0
+

@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 JAVA_PKG_IUSE="doc examples source"
 
@@ -10,7 +12,7 @@ SRC_URI="http://www.jdom.org/dist/source/${P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
 LICENSE="JDOM"
 SLOT="${PV}"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc64 x86"
 COMMON_DEP="dev-java/saxpath
 		>=dev-java/xerces-2.7"
 RDEPEND=">=virtual/jre-1.4

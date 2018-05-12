@@ -1,0 +1,28 @@
+From cb10c88a091c62c29054138a2da69d05cbf1e406 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 10 Apr 2018 19:43:17 +0200
+Subject: [PATCH] Fix build with Qt 5.11
+
+---
+ plugins/keybindings/KeysPage.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/keybindings/KeysPage.cpp b/plugins/keybindings/KeysPage.cpp
+index 6579e3e..e68b039 100644
+--- a/plugins/keybindings/KeysPage.cpp
++++ b/plugins/keybindings/KeysPage.cpp
+@@ -1,9 +1,10 @@
+ #include "KeysPage.h"
+ 
+-#include <QPushButton>
++#include <QAction>
+ #include <QHeaderView>
+ #include <QKeyEvent>
+ #include <QMessageBox>
++#include <QPushButton>
+ 
+ #include "KeySettings.h"
+ #include "Log.h"
+-- 
+2.17.0
+

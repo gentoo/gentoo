@@ -9,8 +9,8 @@ AUTOTOOLS_AUTO_DEPEND=no
 inherit ltprune multilib systemd toolchain-funcs autotools flag-o-matic
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
-HOMEPAGE="http://www.netfilter.org/projects/iptables/"
-SRC_URI="http://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
+HOMEPAGE="https://www.netfilter.org/projects/iptables/"
+SRC_URI="https://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 # Subslot tracks libxtables as that's the one other packages generally link
@@ -19,7 +19,7 @@ SLOT="0/12"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="conntrack ipv6 netlink nftables pcap static-libs"
 
-RDEPEND="
+COMMON_DEPEND="
 	conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 )
 	netlink? ( net-libs/libnfnetlink )
 	nftables? (
@@ -28,12 +28,18 @@ RDEPEND="
 	)
 	pcap? ( net-libs/libpcap )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/os-headers
 	virtual/pkgconfig
 	nftables? (
 		sys-devel/flex
 		virtual/yacc
+	)
+"
+RDEPEND="${COMMON_DEPEND}
+	nftables? (
+		!<net-firewall/ebtables-2.0.10.4-r2
+		!net-misc/ethertypes
 	)
 "
 

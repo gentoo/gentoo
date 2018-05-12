@@ -11,7 +11,7 @@ DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/"
 SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -146,7 +146,7 @@ src_configure() {
 }
 
 python_compile() {
-	distutils-r1_python_compile build_ext -I ../ -L ../${PN}
+	distutils-r1_python_compile build_ext -I.. -L../lxc/.libs --no-pkg-config
 }
 
 src_compile() {

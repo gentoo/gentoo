@@ -16,9 +16,6 @@ sys-fs/udev
 dev-libs/elfutils
 >virtual/libelf-2
 
-# packages that unconditionally depend on dev-libs/elfutils
-<net-firewall/fwbuilder-5.3.7
-
 # Ian Stakenvicius, 2017-06-14
 # on behalf of mozilla@gentoo.org
 # Mask firefox-54 and above as it requires rust

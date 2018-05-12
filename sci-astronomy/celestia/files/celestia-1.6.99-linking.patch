@@ -1,0 +1,78 @@
+From 803f4652895d40acc698901a87114a8582c050e6 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 4 Apr 2018 15:40:08 +0200
+Subject: [PATCH] Fix linking issues:
+
+ * underlinking GLUT (https://bugs.gentoo.org/372123, https://bugs.gentoo.org/387609)
+ * as-needed (https://bugs.gentoo.org/281258)
+ * theora with glut (https://bugs.gentoo.org/399237)
+---
+ configure.in             |  1 +
+ src/celestia/Makefile.am | 13 ++++++++-----
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 0b70581e..3ea150b9 100644
+--- a/configure.in
++++ b/configure.in
+@@ -242,6 +242,7 @@ if (test "$ui_glut" = "yes"); then
+ 	dnl Check for GLUT.
+ 	AC_CHECK_LIB(glut, glutKeyboardUpFunc, ,
+ 	             [AC_MSG_ERROR([GLUT library version >= 3.7 not found])])
++	check_theora="yes"
+ fi
+ AM_CONDITIONAL(ENABLE_GLUT, test "$ui_glut" = "yes")
+ 
+diff --git a/src/celestia/Makefile.am b/src/celestia/Makefile.am
+index 95ba9ab6..8402256b 100644
+--- a/src/celestia/Makefile.am
++++ b/src/celestia/Makefile.am
+@@ -7,14 +7,15 @@ DEFS = -DCONFIG_DATA_DIR='"$(PKGDATADIR)"' -DLOCALEDIR='"$(datadir)/locale"' @DE
+ 
+ if ENABLE_KDE
+ SUBDIRS += kde
+-celestiaKDELIBS = $(LIB_QT) $(LIB_KDECORE) $(LIB_KDEUI) $(LIB_KFILE) \
+-                  $(LIBSOCKET) -lDCOP kde/libkdegui.a
++celestiaKDELIBS = kde/libkdegui.a
+ celestia_LDFLAGS = $(all_libraries) $(KDE_RPATH)
++LIBS += $(LIB_QT) $(LIB_KDECORE) $(LIB_KDEUI) $(LIB_KFILE) $(LIBSOCKET) -lDCOP
+ endif
+ 
+ if ENABLE_GTK
+ SUBDIRS += gtk
+-celestiaGTKLIBS = $(GTK_LIBS) gtk/libgtkgui.a
++celestiaGTKLIBS = gtk/libgtkgui.a
++LIBS += $(GTK_LIBS)
+ endif
+ 
+ if ENABLE_QT
+@@ -49,6 +50,7 @@ endif
+ 
+ if ENABLE_GLUT
+ GLUTSOURCES = glutmain.cpp
++GLUTLIBS = -lGL
+ endif
+ 
+ if ENABLE_THEORA
+@@ -63,8 +65,6 @@ celestia_LDADD = \
+ 	$(celestiaKDELIBS) \
+ 	$(celestiaGTKLIBS) \
+ 	$(celestiaQTLIBS) \
+-	$(LUA_LIBS) \
+-	$(THEORA_LIBS) \
+ 	../celengine/libcelengine.a \
+ 	../celephem/libcelephem.a \
+ 	../celmodel/libcelmodel.a \
+@@ -72,6 +72,9 @@ celestia_LDADD = \
+ 	../cel3ds/libcel3ds.a \
+ 	../celmath/libcelmath.a \
+ 	../celutil/libcelutil.a \
++	$(LUA_LIBS) \
++	$(THEORA_LIBS) \
++	$(GLUTLIBS) \
+ 	$(SPICE_LIBS)
+ 
+ noinst_HEADERS = $(wildcard *.h)
+-- 
+2.17.0
+

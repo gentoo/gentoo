@@ -41,6 +41,7 @@
 		<flag name="macosx-quartztext">Enable Mac OS X quartz text module</flag>
 		<flag name="macosx-qtkit">Enable Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module</flag>
 		<flag name="matroska">Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
+		<flag name="microdns">Enable Chromecast auto-detection using <pkg>net-libs/libmicrodns</pkg></flag>
 		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
 		<flag name="nfs">Enable support for nfs protocol via <pkg>net-fs/libnfs</pkg></flag>
 		<flag name="omxil">Enable OpenMAX Integration Layer codec module</flag>
@@ -57,6 +58,7 @@
 		<flag name="shout">Enable libshout output</flag>
 		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay</pkg>:2</flag>
 		<flag name="skins">Enable support for the skins2 interface</flag>
+		<flag name="soxr">Enable SoX Resampler support via <pkg>media-libs/soxr</pkg></flag>
 		<flag name="swscale">Enable image scaling and conversion via libswscale (part of FFmpeg)</flag>
 		<flag name="tremor">Enable tremor, a fixed-point version of the Ogg Vorbis decoder</flag>
 		<flag name="twolame">Enable twolame support (MPEG Audio Layer 2 encoder)</flag>

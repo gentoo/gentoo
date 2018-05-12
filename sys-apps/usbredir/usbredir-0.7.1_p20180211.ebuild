@@ -7,7 +7,7 @@ inherit eutils flag-o-matic
 MY_PV=${PV/_p*/}
 
 DESCRIPTION="TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)"
-HOMEPAGE="https://www.spice-space.org/page/UsbRedir"
+HOMEPAGE="https://www.spice-space.org/usbredir.html"
 SRC_URI="https://www.spice-space.org/download/usbredir/usbredir-${MY_PV}.tar.bz2
 	https://dev.gentoo.org/~tamiko/distfiles/${P}-patches.tar.xz"
 

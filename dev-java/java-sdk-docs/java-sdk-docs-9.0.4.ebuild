@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ S="${WORKDIR}/docs"
 pkg_nofetch() {
 	einfo "Please download ${SRC_URI} from"
 	einfo "${DOWNLOAD_URL}"
-	einfo "by agreeing to the license and place it in ${DISTDIR}"
+	einfo "by agreeing to the license and place it in your distfiles directory."
 	einfo ""
 	einfo "If you find the file on the download page replaced with a higher"
 	einfo "version, please report it in bug #67266 (link below)."

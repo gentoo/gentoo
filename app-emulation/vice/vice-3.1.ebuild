@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="Xaw3d alsa ethernet ffmpeg fullscreen +gtk ipv6 lame libav nls oss png pulseaudio sdl +sdlsound threads vte zlib"
 
 # upstream says gtk3 and sdl2 shouldn't be exposed yet.
@@ -75,15 +75,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-apps/bdftopcf
 	x11-apps/mkfontdir
-	x11-proto/xproto
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	media-libs/fontconfig
-	x11-proto/videoproto
 	nls? ( sys-devel/gettext )
 	!sdl? (
-		fullscreen? (
-			x11-proto/xf86vidmodeproto
-		)
 		!gtk? (
 			x11-libs/libICE
 			x11-libs/libSM

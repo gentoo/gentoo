@@ -1,0 +1,17 @@
+--- a/desktop/ponyprog.desktop
++++ b/desktop/ponyprog.desktop
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+-Version=3.0.0
++Version=1.1
+ Name=Ponyprog
+ Comment=EEPROM and microcontroller flasher
+ GenericName=Ponyprog
+ TryExec=ponyprog
+ Exec=ponyprog
+ Terminal=false
+-Icon=ponyprog.png
++Icon=ponyprog
+ Type=Application
+ Categories=Utility;Qt;
+ 

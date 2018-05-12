@@ -15,7 +15,7 @@ DESCRIPTION="Python interface to the OpenSSL library"
 HOMEPAGE="
 	http://pyopenssl.sourceforge.net/
 	https://launchpad.net/pyopenssl
-	https://pypi.python.org/pypi/pyOpenSSL
+	https://pypi.org/project/pyOpenSSL/
 "
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 

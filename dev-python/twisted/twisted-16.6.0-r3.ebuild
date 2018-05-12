@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,14 +12,14 @@ TWISTED_P="${TWISTED_PN}-${PV}"
 TWISTED_RELEASE=$(get_version_component_range 1-2 "${PV}")
 
 DESCRIPTION="An asynchronous networking framework written in Python"
-HOMEPAGE="http://www.twistedmatrix.com/"
-SRC_URI="http://twistedmatrix.com/Releases/${TWISTED_PN}"
+HOMEPAGE="https://www.twistedmatrix.com/trac/"
+SRC_URI="https://twistedmatrix.com/Releases/${TWISTED_PN}"
 SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 
 # Dropped keywords due to new deps not keyworded
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 x86"
 
 LICENSE="MIT"
 SLOT="0"
@@ -96,7 +96,7 @@ python_prepare_all() {
 python_compile() {
 	if ! python_is_python3; then
 		# Needed to make the sendmsg extension work
-		# (see http://twistedmatrix.com/trac/ticket/5701 )
+		# (see https://twistedmatrix.com/trac/ticket/5701 )
 		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 		local -x CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
 	fi

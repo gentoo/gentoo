@@ -33,7 +33,6 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="capinfos">Install capinfos, to print information about capture files</flag>
 <flag name="captype">Install captype, to print the file types of capture files</flag>
 <flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
-<flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
 <flag name="dftest">Install dftest, to display filter byte-code, for debugging dfilter routines</flag>
 <flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
 <flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
@@ -41,6 +40,7 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
 <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
 <flag name="lz4">Use <pkg>app-arch/lz4</pkg> for compression/decompression</flag>
+<flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
 <flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 <flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>

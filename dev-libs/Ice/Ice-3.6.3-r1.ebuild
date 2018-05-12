@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby22"
+USE_RUBY="ruby23"
 
 PHP_EXT_NAME="IcePHP"
 PHP_EXT_INI="yes"
@@ -28,8 +28,9 @@ SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( http://download.zeroc.com/Ice/$(get_version_component_range 1-2)/${P}.pdf )"
 LICENSE="GPL-2"
 SLOT="0/36"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc examples libressl +ncurses mono php python ruby test debug"
+RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=dev-libs/expat-2.0.1
@@ -41,7 +42,7 @@ RDEPEND=">=dev-libs/expat-2.0.1
 	)
 	dev-cpp/libmcpp
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( $(ruby_implementation_depend ruby22) )
+	ruby? ( $(ruby_implementation_depend ruby23) )
 	mono? ( dev-lang/mono )
 	php? ( dev-lang/php:7.0 )
 	!dev-python/IcePy
@@ -114,12 +115,14 @@ src_prepare() {
 		-e '/SUBDIRS/s|\ test||' \
 		csharp/Makefile || die "sed failed"
 
-	# IceUtil/stacktrace fails with USE=debug
 	# skip udp test due to multicast
+	# skip IceGrid/admin bug #649850
 	# skip IceSSL tests due to requirement of internet connection
+	# skip IceStorm/single bug #636834
 	# IceStorm/stress fails without USE=debug
+	# IceUtil/stacktrace fails with USE=debug
 	sed -i \
-		-e 's|allTests.py|allTests.py --rfilter=IceUtil\/stacktrace --rfilter=udp --rfilter=IceSSL --rfilter=IceStorm\/stress|' \
+		-e 's|allTests.py|allTests.py --rfilter=IceUtil\/stacktrace --rfilter=udp --rfilter=IceGrid\/admin --rfilter=IceSSL --rfilter=IceStorm\/single --rfilter=IceStorm\/stress|' \
 		cpp/Makefile || die "sed failed"
 
 	# mainly broken .ice files
@@ -131,6 +134,11 @@ src_prepare() {
 	sed -i \
 		-e 's|allTests.py|allTests.py --rfilter=Slice\/unicodePaths|' \
 		ruby/Makefile || die "sed failed"
+
+	# fix for x86 IceBox test
+	sed -i \
+		-e 's|"32"|""|' \
+		scripts/TestUtil.py || die "sed failed"
 }
 
 src_configure() {
@@ -174,24 +182,24 @@ src_configure() {
 	fi
 
 	if use ruby; then
-		SITERUBY="$(ruby22 -r rbconfig -e 'print RbConfig::CONFIG["sitelibdir"]')"
+		SITERUBY="$(ruby23 -r rbconfig -e 'print RbConfig::CONFIG["sitelibdir"]')"
 		MAKE_RULES_RUBY=(
 			"install_rubydir=\"${ED%/}/${SITERUBY}\""
 			"install_libdir=\"${ED%/}/${SITERUBY}\""
 		)
 
-		# make it use ruby22 only
+		# make it use ruby23 only
 		sed -i \
-			-e 's|RUBY = ruby|\022|' \
+			-e 's|RUBY = ruby|\023|' \
 			ruby/config/Make.rules || die "sed failed"
 		sed -i \
-			-e 's|env ruby|\022|' \
+			-e 's|env ruby|\023|' \
 			ruby/config/s2rb.rb || die "sed failed"
 		sed -i \
-			-e 's|env ruby|\022|' \
+			-e 's|env ruby|\023|' \
 			ruby/scripts/slice2rb || die "sed failed"
 		sed -i \
-			-e 's|output.write("ruby|\022|' \
+			-e 's|output.write("ruby|\023|' \
 			scripts/TestUtil.py || die "sed failed"
 	fi
 

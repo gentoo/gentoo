@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://mkvtoolnix.download/sources/${P}.tar.xz"
-	KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"

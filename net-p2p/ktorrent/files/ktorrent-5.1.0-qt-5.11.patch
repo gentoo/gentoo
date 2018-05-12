@@ -1,0 +1,53 @@
+From 4befccc3d0ebbd9235e6f10d411f139802e3871a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 18 Mar 2018 19:13:26 +0100
+Subject: [PATCH] Fix build with Qt 5.11 (missing headers)
+
+Reviewers: stikonas
+
+Differential Revision: https://phabricator.kde.org/D11456
+---
+ ktorrent/dialogs/fileselectdlg.cpp | 1 +
+ ktorrent/groups/groupview.cpp      | 1 +
+ plugins/search/searchprefpage.cpp  | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/ktorrent/dialogs/fileselectdlg.cpp b/ktorrent/dialogs/fileselectdlg.cpp
+index 139b4752..ec7d8ede 100644
+--- a/ktorrent/dialogs/fileselectdlg.cpp
++++ b/ktorrent/dialogs/fileselectdlg.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include "fileselectdlg.h"
+ 
++#include <QButtonGroup>
+ #include <QMenu>
+ #include <QPushButton>
+ #include <QTextCodec>
+diff --git a/ktorrent/groups/groupview.cpp b/ktorrent/groups/groupview.cpp
+index 990ed0d3..76208144 100644
+--- a/ktorrent/groups/groupview.cpp
++++ b/ktorrent/groups/groupview.cpp
+@@ -23,6 +23,7 @@
+ #include <QAction>
+ #include <QDragEnterEvent>
+ #include <QDropEvent>
++#include <QHeaderView>
+ #include <QInputDialog>
+ #include <QMenu>
+ #include <QTreeWidgetItemIterator>
+diff --git a/plugins/search/searchprefpage.cpp b/plugins/search/searchprefpage.cpp
+index 667e7a82..4be6cd5c 100644
+--- a/plugins/search/searchprefpage.cpp
++++ b/plugins/search/searchprefpage.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include "searchprefpage.h"
+ 
++#include <QButtonGroup>
+ #include <QCheckBox>
+ #include <QFile>
+ #include <QInputDialog>
+-- 
+2.16.2
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,8 +44,7 @@ RDEPEND="X? ( x11-libs/libXt
 		virtual/cdrtools"
 
 DEPEND="${RDEPEND}
-		X? ( dga? ( x11-proto/xf86vidmodeproto
-					x11-proto/xf86dgaproto ) )"
+		X? ( dga? ( x11-base/xorg-proto ) )"
 
 src_prepare() {
 	default

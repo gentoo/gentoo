@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="push to and pull from a Git repository using Mercurial"
-HOMEPAGE="http://hg-git.github.io https://pypi.python.org/pypi/hg-git"
+HOMEPAGE="http://hg-git.github.io https://pypi.org/project/hg-git/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,0 +1,37 @@
+From 97e728e3db4d74cf2a74316a4f0287a86ece47ad Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 4 Apr 2018 15:45:25 +0200
+Subject: [PATCH] Fixes for >=gcc-4.7
+
+---
+ src/celengine/frametree.h    | 1 +
+ src/celengine/planetgrid.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/celengine/frametree.h b/src/celengine/frametree.h
+index 62ca5450..f8e17f8a 100644
+--- a/src/celengine/frametree.h
++++ b/src/celengine/frametree.h
+@@ -13,6 +13,7 @@
+ #ifndef _CELENGINE_FRAMETREE_H_
+ #define _CELENGINE_FRAMETREE_H_
+ 
++#include <unistd.h>
+ #include <vector>
+ #include <cstddef>
+ 
+diff --git a/src/celengine/planetgrid.cpp b/src/celengine/planetgrid.cpp
+index 1c0f53bc..c08fef4a 100644
+--- a/src/celengine/planetgrid.cpp
++++ b/src/celengine/planetgrid.cpp
+@@ -14,6 +14,7 @@
+ #include "planetgrid.h"
+ #include "body.h"
+ #include "vecgl.h"
++#include <celmath/mathlib.h>
+ #include <celmath/intersect.h>
+ #include <Eigen/Core>
+ #include <Eigen/Geometry>
+-- 
+2.17.0
+

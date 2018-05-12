@@ -23,13 +23,13 @@ EXPORT_FUNCTIONS src_unpack src_compile src_install
 # @ECLASS-VARIABLE: ANT_TASK_JDKVER
 # @DESCRIPTION:
 # Affects the >=virtual/jdk version set in DEPEND string. Defaults to 1.5, can
-# be overriden from ebuild BEFORE inheriting this eclass.
+# be overridden from ebuild BEFORE inheriting this eclass.
 ANT_TASK_JDKVER=${ANT_TASK_JDKVER-1.5}
 
 # @ECLASS-VARIABLE: ANT_TASK_JREVER
 # @DESCRIPTION:
 # Affects the >=virtual/jre version set in DEPEND string. Defaults to 1.5, can
-# be overriden from ebuild BEFORE inheriting this eclass.
+# be overridden from ebuild BEFORE inheriting this eclass.
 ANT_TASK_JREVER=${ANT_TASK_JREVER-1.5}
 
 # @ECLASS-VARIABLE: ANT_TASK_NAME
@@ -84,7 +84,7 @@ fi
 # source/workdir name
 MY_P="apache-ant-${MY_PV}"
 
-# Default values for standard ebuild variables, can be overriden from ebuild.
+# Default values for standard ebuild variables, can be overridden from ebuild.
 DESCRIPTION="Apache Ant's optional tasks depending on ${ANT_TASK_DEPNAME}"
 HOMEPAGE="http://ant.apache.org/"
 SRC_URI="${UPSTREAM_PREFIX}/${MY_P}-src.tar.bz2

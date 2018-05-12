@@ -11,7 +11,7 @@ MY_PN="Werkzeug"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Collection of various utilities for WSGI applications"
-HOMEPAGE="http://werkzeug.pocoo.org/ https://pypi.python.org/pypi/Werkzeug https://github.com/pallets/werkzeug"
+HOMEPAGE="http://werkzeug.pocoo.org/ https://pypi.org/project/Werkzeug/ https://github.com/pallets/werkzeug"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2017.20161128-underlinking.patch
+	"${FILESDIR}"/${PN}-4.4.20160803-underlinking.patch
 	"${FILESDIR}"/${PN}-2017.20161128-build.patch
 )
 

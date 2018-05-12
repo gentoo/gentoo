@@ -1,0 +1,36 @@
+
+# HG changeset patch
+# User Daiki Ueno <dueno@redhat.com>
+# Date 1516710574 -3600
+# Node ID 74e679158d1bfe05c173e995ae7dc5a05ae02fe0
+# Parent  b3feffd76f4714139f72369f82b28619a704dbd6
+Bug 1432455, Build Hacl_Poly1305_64.o on AArch64 even with make, r=fkiefer
+
+diff --git a/lib/freebl/Makefile b/lib/freebl/Makefile
+--- a/lib/freebl/Makefile
++++ b/lib/freebl/Makefile
+@@ -522,17 +522,22 @@ ifndef NSS_DISABLE_CHACHAPOLY
+ 
+         ifneq (1,$(CC_IS_GCC))
+             EXTRA_SRCS += chacha20.c
+             VERIFIED_SRCS += Hacl_Chacha20.c
+         else
+             EXTRA_SRCS += chacha20_vec.c
+         endif
+     else
+-        EXTRA_SRCS += poly1305.c
++        ifeq ($(CPU_ARCH),aarch64)
++            EXTRA_SRCS += Hacl_Poly1305_64.c
++        else
++            EXTRA_SRCS += poly1305.c
++        endif
++
+         EXTRA_SRCS += chacha20.c
+         VERIFIED_SRCS += Hacl_Chacha20.c
+     endif # x86_64
+ endif # NSS_DISABLE_CHACHAPOLY
+ 
+ ifeq (,$(filter-out i386 x386 x86 x86_64 aarch64,$(CPU_ARCH)))
+     # All intel architectures get the 64 bit version
+     # With custom uint128 if necessary (faster than generic 32 bit version).
+

@@ -56,10 +56,6 @@ CDEPEND="
 	X? ( x11-misc/xdg-utils )
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 "
 
 DEPEND="${CDEPEND}

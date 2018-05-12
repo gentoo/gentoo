@@ -1,9 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-
-inherit games
+EAPI=6
 
 MUSIC_DATE="20060803"
 
@@ -24,10 +22,10 @@ SRC_URI="http://www.eternal-lands.com/el_linux_193.zip
 LICENSE="eternal_lands"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
-IUSE="music sound bloodsuckermaps"
+IUSE="bloodsuckermaps music sound"
 
 DEPEND="app-arch/unzip
-		!bloodsuckermaps? ( !games-rpg/eternal-lands-bloodsucker )"
+	!bloodsuckermaps? ( !games-rpg/eternal-lands-bloodsucker )"
 
 PDEPEND="bloodsuckermaps? ( >=games-rpg/eternal-lands-bloodsucker-3.0_p20110618 )"
 
@@ -37,13 +35,14 @@ S="${WORKDIR}/el_linux"
 src_prepare() {
 	# Move our music files to the correct directory
 	if use music ; then
-		mkdir music
+		mkdir music || die
 		mv ../*.ogg ../*.pll music || die
 	fi
 
 	# Fix assertion error with >=libxml2-2.9 (see bug #449352)
 	xmllint --noent actor_defs/actor_defs.xml > actor_defs.xml || die "Failed parsing actor_defs.xml"
-	mv actor_defs.xml actor_defs
+	mv actor_defs.xml actor_defs || die
+	eapply_user
 }
 
 src_install() {
@@ -72,32 +71,29 @@ src_install() {
 	fi
 
 	insopts -m 0660
-	insinto "${GAMES_DATADIR}/${MY_PN}"
+	insinto /usr/share/games/eternal-lands
 	doins -r 2dobjects 3dobjects actor_defs animations maps meshes \
 		particles skeletons shaders textures languages shaders skybox \
 		*.lst 3dobjects.txt *.xml \
 		|| die "doins failed"
 
 	if use music ; then
-		doins -r music || die "doins music failed"
+		doins -r music
 	fi
 
 	# Removed sound from above - need to handle sound support
 
 	cd "${WORKDIR}"
 	if use sound ; then
-	   doins -r sound || die "doins sound failed"
+	   doins -r sound
 	fi
-
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	# Ensure that the files are writable by the game group for auto
 	# updating.
-	chmod -R g+rw "${ROOT}/${GAMES_DATADIR}/${MY_PN}"
+	chmod -R g+rw "${EROOT}"usr/share/games/eternal-lands || die
 
 	# Make sure new files stay in games group
-	find "${ROOT}/${GAMES_DATADIR}/${MY_PN}" -type d -exec chmod g+sx {} \;
+	find "${EROOT}"usr/share/games/eternal-lands -type d -exec chmod g+sx {} \; || die
 }

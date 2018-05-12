@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="${P/_p/.post}"
 
 DESCRIPTION="Allows using distutils2-like setup.cfg files for a package metadata"
-HOMEPAGE="https://pypi.python.org/pypi/d2to1 https://github.com/embray/d2to1"
+HOMEPAGE="https://pypi.org/project/d2to1/ https://github.com/embray/d2to1"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

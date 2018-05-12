@@ -1,20 +1,23 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
 inherit toolchain-funcs
-
-IUSE=""
 
 DESCRIPTION="Matrox utility to switch output modes (activate tvout)"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/"
 SRC_URI="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/${P}.tar.gz"
-
-DEPEND="sys-libs/ncurses"
-RDEPEND="${DEPEND}"
+LICENSE="GPL-2"
 
 SLOT="0"
-LICENSE="GPL-2"
 KEYWORDS="amd64 ppc x86"
+RDEPEND="
+	sys-libs/ncurses
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 doecho() {
 	echo "$@"
@@ -24,7 +27,8 @@ doecho() {
 src_compile() {
 	doecho $(tc-getCC) -o ${PN} \
 		${CFLAGS} ${LDFLAGS} \
-		${PN}.c -lncurses \
+		${PN}.c \
+		$($(tc-getPKG_CONFIG) --libs ncurses) \
 		|| die "build failed"
 
 	#prepare small README
@@ -38,7 +42,7 @@ _EOF_
 }
 
 src_install() {
-	dobin matroxset || die
+	dobin matroxset
 
-	dodoc README || die
+	dodoc README
 }

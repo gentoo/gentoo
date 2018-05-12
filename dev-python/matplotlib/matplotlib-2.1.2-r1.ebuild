@@ -9,7 +9,7 @@ PYTHON_REQ_USE='tk?,threads(+)'
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
-HOMEPAGE="http://matplotlib.org/"
+HOMEPAGE="https://matplotlib.org/"
 SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.bz2"
 
 SLOT="0"
@@ -18,7 +18,7 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
 IUSE="cairo doc excel examples gtk2 gtk3 latex pyside qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"

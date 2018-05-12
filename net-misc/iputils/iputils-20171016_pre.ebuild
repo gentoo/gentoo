@@ -24,7 +24,7 @@ if [[ ${PV} == "99999999" ]] ; then
 else
 	SRC_URI="https://github.com/iputils/iputils/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~whissi/dist/iputils/${PN}-manpages-${PV}.tar.xz"
-	KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
@@ -40,8 +40,8 @@ LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 		gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 		nettle? ( dev-libs/nettle[static-libs(+)] )
 		openssl? (
-			!libressl? ( dev-libs/openssl:0[static-libs(+)] )
-			libressl? ( dev-libs/libressl[static-libs(+)] )
+			!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
+			libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 		)
 	) )"
 RDEPEND="arping? ( !net-misc/arping )

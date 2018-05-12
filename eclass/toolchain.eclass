@@ -137,7 +137,8 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
-	tc_version_is_at_least 3 && IUSE+=" doc gcj awt hardened multilib objc"
+	tc_version_is_at_least 3 && IUSE+=" doc hardened multilib objc"
+	tc_version_is_between 3 7 && IUSE+=" awt gcj"
 	tc_version_is_at_least 3.3 && IUSE+=" pgo"
 	tc_version_is_at_least 4.0 && IUSE+=" objc-gc"
 	tc_version_is_between 4.0 4.9 && IUSE+=" mudflap"
@@ -149,7 +150,8 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	# versions which we dropped.  Since graphite was also experimental in
 	# the older versions, we don't want to bother supporting it.  #448024
 	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
-	tc_version_is_at_least 4.9 && IUSE+=" cilk +vtv"
+	tc_version_is_between 4.9 8 && IUSE+=" cilk"
+	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
 fi
@@ -184,7 +186,7 @@ fi
 
 if in_iuse graphite ; then
 	if tc_version_is_at_least 5.0 ; then
-		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14 )"
+		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
 	elif tc_version_is_at_least 4.8 ; then
 		RDEPEND+="
 			graphite? (
@@ -206,11 +208,10 @@ DEPEND="${RDEPEND}
 if in_iuse gcj ; then
 	GCJ_DEPS=">=media-libs/libart_lgpl-2.1"
 	GCJ_GTK_DEPS="
+		x11-base/xorg-proto
 		x11-libs/libXt
 		x11-libs/libX11
 		x11-libs/libXtst
-		x11-proto/xproto
-		x11-proto/xextproto
 		=x11-libs/gtk+-2*
 		virtual/pkgconfig
 	"
@@ -972,7 +973,14 @@ toolchain_src_configure() {
 		case ${CTARGET} in
 		*-linux)		 needed_libc=no-fucking-clue;;
 		*-dietlibc)		 needed_libc=dietlibc;;
-		*-elf|*-eabi)	 needed_libc=newlib;;
+		*-elf|*-eabi)
+			needed_libc=newlib
+			# Bare-metal targets don't have access to clock_gettime()
+			# arm-none-eabi example: bug #589672
+			# But we explicitly do --enable-libstdcxx-time above.
+			# Undoing it here.
+			confgcc+=( --disable-libstdcxx-time )
+			;;
 		*-freebsd*)		 needed_libc=freebsd-lib;;
 		*-gnu*)			 needed_libc=glibc;;
 		*-klibc)		 needed_libc=klibc;;
@@ -1199,7 +1207,17 @@ toolchain_src_configure() {
 			if hardened_gcc_is_stable ssp; then
 				export gcc_cv_libc_provides_ssp=yes
 			fi
-			confgcc+=( --disable-libssp )
+			if use_if_iuse ssp; then
+				# On some targets USE="ssp -libssp" is an invalid
+				# configuration as target libc does not provide
+				# stack_chk_* functions. Do not disable libssp there.
+				case ${CTARGET} in
+					mingw*|*-mingw*) ewarn "Not disabling libssp" ;;
+					*) confgcc+=( --disable-libssp ) ;;
+				esac
+			else
+				confgcc+=( --disable-libssp )
+			fi
 		fi
 	fi
 
@@ -1808,6 +1826,7 @@ toolchain_src_install() {
 	# libsupc++.la: This has no dependencies.
 	# libcc1.la: There is no static library, only dynamic.
 	# libcc1plugin.la: Same as above, and it's loaded via dlopen.
+	# libcp1plugin.la: Same as above, and it's loaded via dlopen.
 	# libgomp.la: gcc itself handles linkage (libgomp.spec).
 	# libgomp-plugin-*.la: Same as above, and it's an internal plugin only
 	# loaded via dlopen.
@@ -1827,6 +1846,7 @@ toolchain_src_install() {
 			-name libsupc++.la -o \
 			-name libcc1.la -o \
 			-name libcc1plugin.la -o \
+			-name libcp1plugin.la -o \
 			-name 'libgomp.la' -o \
 			-name 'libgomp-plugin-*.la' -o \
 			-name libgfortran.la -o \

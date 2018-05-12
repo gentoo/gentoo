@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,8 @@ MY_PN="RegenDoc"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Check/update simple file/shell examples in documentation"
-HOMEPAGE="https://pypi.python.org/pypi/RegenDoc http://bitbucket.org/pytest-dev/regendoc/"
+HOMEPAGE="https://pypi.org/project/RegenDoc/
+	https://bitbucket.org/pytest-dev/regendoc/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 
 LICENSE="MIT"

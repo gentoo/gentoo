@@ -1,9 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="yeahconsole turns an xterm or rxvt-unicode into a game-like console"
 HOMEPAGE="http://phrat.de/yeahtools.html"
@@ -12,24 +11,25 @@ SRC_URI="http://phrat.de/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 hppa x86"
-
-IUSE=""
-RDEPEND="x11-libs/libX11"
-DEPEND="${RDEPEND}
-	x11-proto/xproto"
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-make.patch
-}
+RDEPEND="
+	x11-libs/libX11
+"
+DEPEND="
+	${RDEPEND}
+	x11-proto/xproto
+"
+PATCHES=(
+	"${FILESDIR}"/${P}-make.patch
+)
 
 src_compile() {
 	tc-export CC
-	emake || die "make failed"
+	emake
 }
 
 src_install() {
 	dodir /usr/bin
-	emake PREFIX="${D}"/usr install || die "emake install failed"
+	emake PREFIX="${D}"/usr install
 	dodoc README
 }
 

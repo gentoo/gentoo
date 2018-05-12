@@ -29,7 +29,9 @@ src_prepare() {
 	sed -i -e "s/1.4.14/1.4.14_git20170829/g" Rules.make || die
 
 	# Fix build failure
-	sed -i -e "s/-fno-strict-aliasing/-fno-strict-aliasing -U_FORTIFY_SOURCE -mcpu=v9/g" Rules.make || die
+	# -fno-PIC is needed to shrink silo size back to manageable on
+	# profiles where gcc has -fPIC default (via --enable-default-pie).
+	sed -i -e "s/-fno-strict-aliasing/-fno-strict-aliasing -U_FORTIFY_SOURCE -mcpu=v9 -fno-PIC/g" Rules.make || die
 
 	# Don't strip ieee32.b during compile
 	sed -i -e '/^	$(STRIP) ieee32.b/d' first/Makefile || die

@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit flag-o-matic multilib toolchain-funcs eutils
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A free commandline encoder for X264/AVC streams"
-HOMEPAGE="http://www.videolan.org/developers/x264.html"
+HOMEPAGE="https://www.videolan.org/developers/x264.html"
 if [[ ${PV} == 9999 ]]; then
-	inherit git-2
-	EGIT_REPO_URI="git://git.videolan.org/x264.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.videolan.org/git/x264.git"
 	SRC_URI=""
 else
 	inherit versionator
@@ -25,8 +25,9 @@ IUSE="10bit avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads"
 
 REQUIRED_USE="ffmpegsource? ( ffmpeg )"
 
-RDEPEND="ffmpeg? ( virtual/ffmpeg )
+RDEPEND="
 	~media-libs/x264-${PV}[10bit=,interlaced=,threads=]
+	ffmpeg? ( virtual/ffmpeg )
 	ffmpegsource? ( media-libs/ffmpegsource )
 	mp4? ( >=media-video/gpac-0.5.2:= )"
 
@@ -37,9 +38,7 @@ DEPEND="${RDEPEND}
 	x86-fbsd? ( ${ASM_DEP} )
 	virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}/gpac.patch"
-}
+PATCHES=( "${FILESDIR}/gpac.patch" )
 
 src_configure() {
 	tc-export CC

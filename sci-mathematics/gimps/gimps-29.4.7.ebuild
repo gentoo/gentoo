@@ -6,7 +6,7 @@ EAPI=6
 inherit pax-utils systemd readme.gentoo-r1 versionator
 
 DESCRIPTION="The Great Internet Mersenne Prime Search"
-HOMEPAGE="http://mersenne.org/"
+HOMEPAGE="https://www.mersenne.org/"
 
 # The author has finally caved in to the pressure of putting the build
 # number in the package name. Some dark magic necessary to get to the
@@ -20,7 +20,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GIMPS"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 x86"
 
 # Since there are no statically linked binaries for this version of mprime,
 # and no static binaries for amd64 in general, we use the dynamically linked

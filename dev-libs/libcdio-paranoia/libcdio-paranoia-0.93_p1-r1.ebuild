@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 MY_P=${PN}-10.2+${PV/_p/+}
 
-inherit eutils autotools multilib-minimal flag-o-matic
+inherit autotools multilib-minimal flag-o-matic
 
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -21,22 +22,22 @@ IUSE="+cxx static-libs test"
 RDEPEND="app-eselect/eselect-cdparanoia
 	>=dev-libs/libcdio-0.93:0=[${MULTILIB_USEDEP}]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r10
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+"
+
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
 PATCHES=("${FILESDIR}"/${PN}-0.90-oos-tests.patch)
 
 src_prepare() {
-	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	default
+	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	eautoreconf
 
 	[[ ${CC} == *clang* ]] && append-flags -std=gnu89
@@ -53,7 +54,7 @@ multilib_src_configure() {
 	# Darwin linker doesn't get this
 	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --without-versioned-libs )
 	ECONF_SOURCE="${S}" \
-	econf "${myeconfargs[@]}"
+		econf "${myeconfargs[@]}"
 }
 
 pkg_postinst() {

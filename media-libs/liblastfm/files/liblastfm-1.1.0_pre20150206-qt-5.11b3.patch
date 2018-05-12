@@ -1,0 +1,302 @@
+From 62a08d490a1e75e3ef5d08f3fb37e65c1563e706 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Apr 2018 11:51:42 +0200
+Subject: [PATCH 1/4] Make Qt5 build default and simplify logic, add missing
+ deps
+
+---
+ CMakeLists.txt | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index be88967..e628611 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,19 +27,19 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmake/Module
+ # setup qt stuff
+ set(CMAKE_AUTOMOC ON)
+ 
+-option(BUILD_WITH_QT4 "Build liblastfm with Qt4 no matter if Qt5 was found" OFF)
++option(BUILD_WITH_QT4 "Build liblastfm with Qt4" OFF)
+ 
+-if( NOT BUILD_WITH_QT4 )
+-    # try Qt5 first, and prefer that if found
+-    find_package(Qt5Core QUIET)
+-endif()
++if(NOT BUILD_WITH_QT4)
++    find_package(Qt5 REQUIRED COMPONENTS Core Network Xml CONFIG)
++
++    if(BUILD_FINGERPRINT)
++        find_package(Qt5Sql REQUIRED CONFIG)
++    endif()
+ 
+-if(Qt5Core_DIR)
+     set(LASTFM_LIB_VERSION_SUFFIX 5)
+-    message(STATUS "Found Qt5! Please keep in mind, this is highly experimental and not our main development target..")
+     include_directories(${Qt5Core_INCLUDE_DIRS})
+     if(UNIX AND NOT APPLE)
+-        find_package(Qt5DBus REQUIRED)
++        find_package(Qt5DBus REQUIRED CONFIG)
+     endif()
+ 
+ #     macro(qt_wrap_ui)
+-- 
+2.17.0
+
+
+From ff32d56e5e1bd8b1f86a8e9840c778249ff19118 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Apr 2018 11:56:48 +0200
+Subject: [PATCH 2/4] Make use of FeatureSummary
+
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e628611..dcdfd91 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,6 +20,7 @@ option(BUILD_TESTS "Build liblastfm tests" ON)
+ 
+ # installation dirs
+ include(GNUInstallDirs)
++include(FeatureSummary)
+ 
+ #cmake module path
+ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmake/Modules")
+@@ -97,3 +98,5 @@ if(BUILD_TESTS)
+     enable_testing()
+     add_subdirectory(tests)
+ endif()
++
++feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.17.0
+
+
+From 5762278b29c1ab6559dcca7a1e8fbad1d75134da Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 1 Apr 2018 12:06:48 +0200
+Subject: [PATCH 3/4] Cleanup include dirs
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dcdfd91..52589b5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,10 +38,10 @@ if(NOT BUILD_WITH_QT4)
+     endif()
+ 
+     set(LASTFM_LIB_VERSION_SUFFIX 5)
+-    include_directories(${Qt5Core_INCLUDE_DIRS})
+     if(UNIX AND NOT APPLE)
+         find_package(Qt5DBus REQUIRED CONFIG)
+     endif()
++    include_directories(Qt5::Core Qt5::Network Qt5::Xml)
+ 
+ #     macro(qt_wrap_ui)
+ #         qt5_wrap_ui(${ARGN})
+-- 
+2.17.0
+
+
+From aeb0cbc56376021444a56a984613faacefedfea9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 15 Apr 2018 21:31:14 +0200
+Subject: [PATCH 4/4] Fix build with Qt 5.11_beta3 (drop qt5_use_modules)
+
+---
+ CMakeLists.txt                 |  3 --
+ src/CMakeLists.txt             | 63 +++++++++++++++++++---------------
+ src/fingerprint/CMakeLists.txt | 20 ++++++-----
+ tests/lastfm_add_test.cmake    | 16 +++++----
+ 4 files changed, 55 insertions(+), 47 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 52589b5..c8bc89d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -57,9 +57,6 @@ if(NOT BUILD_WITH_QT4)
+ #     endmacro()
+ else()
+     find_package(Qt4 COMPONENTS QtCore QtNetwork QtXml REQUIRED)
+-
+-    macro(qt5_use_modules)
+-    endmacro()
+ endif()
+ 
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0f872fb..22ce506 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,16 +3,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/global.h.in ${CMAKE_CURRENT_BINARY_DI
+ 
+ add_definitions(${QT_DEFINITIONS})
+ include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
+-set(liblastfm_LIBRARIES
+-    ${QT_QTCORE_LIBRARY}
+-    ${QT_QTNETWORK_LIBRARY}
+-    ${QT_QTXML_LIBRARY}
+-)
+-
+-list(APPEND liblastfm_QT5_MODULES
+-    Xml
+-    Network
+-)
+ 
+ set(liblastfm_SOURCES
+         ws.cpp
+@@ -49,15 +39,11 @@ if(WIN32)
+     if(NOT MINGW)
+         add_definitions("-D_ATL_DLL -D_CRT_SECURE_NO_WARNINGS")
+ 
+-        list(APPEND liblastfm_SOURCES
++        set(liblastfm_SOURCES ${liblastfm_SOURCES}
+             win/WNetworkConnectionMonitor_win.cpp
+             win/WmiSink.cpp
+             win/NdisEvents.cpp
+         )
+-        list(APPEND liblastfm_LIBRARIES
+-            winhttp
+-            wbemuuid
+-        )
+     endif()
+ endif()
+ 
+@@ -67,30 +53,51 @@ if(APPLE)
+     #set(CMAKE_OSX_DEPLOYMENT_TARGET 10.5)
+     #set(CMAKE_OSX_SYSROOT "/Developer/SDKs/MacOSX${CMAKE_OSX_DEPLOYMENT_TARGET}.sdk")
+ 
+-    list(APPEND liblastfm_SOURCES
++    set(liblastfm_SOURCES ${liblastfm_SOURCES}
+         mac/MNetworkConnectionMonitor_mac.cpp
+     )
+-
+-    find_library(SYSTEMCONFIGURATION_LIBRARY SystemConfiguration)
+-    find_library(COREFOUNDATION_LIBRARY CoreFoundation)
+-    list(APPEND liblastfm_LIBRARIES
+-        ${COREFOUNDATION_LIBRARY}
+-        ${SYSTEMCONFIGURATION_LIBRARY}
+-    )
+ endif()
+ 
+ if(UNIX AND NOT APPLE)
+-    list(APPEND liblastfm_SOURCES
++    set(liblastfm_SOURCES ${liblastfm_SOURCES}
+         linux/LNetworkConnectionMonitor_linux.cpp
+     )
+-    list(APPEND liblastfm_LIBRARIES ${QT_QTDBUS_LIBRARY})
+-    list(APPEND liblastfm_QT5_MODULES DBus)
+ endif()
+ 
+ add_library(${LASTFM_LIB_TARGET_NAME} SHARED ${liblastfm_SOURCES})
+-qt5_use_modules(${LASTFM_LIB_TARGET_NAME} ${liblastfm_QT5_MODULES})
+ 
+-target_link_libraries(${LASTFM_LIB_TARGET_NAME} ${liblastfm_LIBRARIES})
++if(Qt5Core_DIR)
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME} Qt5::Network Qt5::Xml)
++    if(UNIX AND NOT APPLE)
++        target_link_libraries(${LASTFM_LIB_TARGET_NAME} Qt5::DBus)
++    endif()
++else()
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME}
++        ${QT_QTCORE_LIBRARY}
++        ${QT_QTNETWORK_LIBRARY}
++        ${QT_QTXML_LIBRARY}
++    )
++    if(UNIX AND NOT APPLE)
++        target_link_libraries(${LASTFM_LIB_TARGET_NAME} ${QT_QTDBUS_LIBRARY})
++    endif()
++endif()
++
++if(WIN32 AND NOT MINGW)
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME}
++        winhttp
++        wbemuuid
++    )
++endif()
++
++if(APPLE)
++    find_library(SYSTEMCONFIGURATION_LIBRARY SystemConfiguration)
++    find_library(COREFOUNDATION_LIBRARY CoreFoundation)
++    target_link_libraries(${LASTFM_LIB_TARGET_NAME}
++        ${COREFOUNDATION_LIBRARY}
++        ${SYSTEMCONFIGURATION_LIBRARY}
++    )
++endif()
++
+ set_target_properties(${LASTFM_LIB_TARGET_NAME} PROPERTIES
+     VERSION ${LASTFM_VERSION_STRING}
+     SOVERSION ${LASTFM_SOVERSION}
+diff --git a/src/fingerprint/CMakeLists.txt b/src/fingerprint/CMakeLists.txt
+index 126f8d9..4a74e0d 100644
+--- a/src/fingerprint/CMakeLists.txt
++++ b/src/fingerprint/CMakeLists.txt
+@@ -26,21 +26,23 @@ set(lastfm_fingerprint_HEADERS
+ 
+ add_library(${FINGERPRINT_LIB_TARGET_NAME} SHARED ${lastfm_fingerprint_SOURCES})
+ 
+-target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME}
+-    ${LASTFM_LIB_TARGET_NAME}
+-    ${QT_QTSQL_LIBRARY}
+-    ${QT_QTCORE_LIBRARY}
+-    ${LIBSAMPLERATE_LIBRARY}
+-    ${LIBFFTW3_LIBRARY}
+-)
+-
+ set_target_properties(${FINGERPRINT_LIB_TARGET_NAME} PROPERTIES
+     COMPILE_DEFINITIONS LASTFM_FINGERPRINT_LIB
+     VERSION ${LASTFM_VERSION_STRING}
+     SOVERSION ${LASTFM_SOVERSION}
+ )
+ 
+-qt5_use_modules(${FINGERPRINT_LIB_TARGET_NAME} Network Sql Xml)
++target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME}
++    ${LASTFM_LIB_TARGET_NAME}
++    ${LIBSAMPLERATE_LIBRARY}
++    ${LIBFFTW3_LIBRARY}
++)
++
++if(Qt5Core_DIR)
++    target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME} Qt5::Network Qt5::Sql Qt5::Xml)
++else()
++    target_link_libraries(${FINGERPRINT_LIB_TARGET_NAME} ${QT_QTCORE_LIBRARY} ${QT_QTSQL_LIBRARY})
++endif()
+ 
+ install(TARGETS ${FINGERPRINT_LIB_TARGET_NAME}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+diff --git a/tests/lastfm_add_test.cmake b/tests/lastfm_add_test.cmake
+index a4a1686..2f0664d 100644
+--- a/tests/lastfm_add_test.cmake
++++ b/tests/lastfm_add_test.cmake
+@@ -6,13 +6,15 @@ macro(lastfm_add_test test_class)
+     configure_file(Test${LASTFM_TEST_CLASS}.h Test${LASTFM_TEST_CLASS}.h)
+     add_executable(${LASTFM_TEST_CLASS}Test Test${LASTFM_TEST_CLASS}.cpp)
+ 
+-    qt5_use_modules(${LASTFM_TEST_CLASS}Test Core Test Xml Network)
+-
+-    target_link_libraries(${LASTFM_TEST_CLASS}Test
+-        ${LASTFM_LIB_TARGET_NAME}
+-        ${QT_QTTEST_LIBRARY}
+-        ${QT_QTCORE_LIBRARY}
+-    )
++    if(Qt5Core_DIR)
++        target_link_libraries(${LASTFM_TEST_CLASS}Test Qt5::Core Qt5::Test Qt5::Xml Qt5::Network
++            ${LASTFM_LIB_TARGET_NAME}
++        )
++    else()
++        target_link_libraries(${LASTFM_TEST_CLASS}Test ${QT_QTCORE_LIBRARY} ${QT_QTTEST_LIBRARY}
++            ${LASTFM_LIB_TARGET_NAME}
++        )
++    endif()
+ 
+     add_test(NAME ${LASTFM_TEST_CLASS}Test COMMAND ${LASTFM_TEST_CLASS}Test)
+ endmacro()
+-- 
+2.17.0
+

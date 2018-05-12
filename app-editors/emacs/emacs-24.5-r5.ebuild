@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena dbus games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena dbus games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -24,7 +24,6 @@ RDEPEND="sys-libs/ncurses:0=
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	gpm? ( sys-libs/gpm )
-	hesiod? ( net-dns/hesiod )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -65,7 +64,6 @@ RDEPEND="sys-libs/ncurses:0=
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
-				x11-libs/libXp
 				x11-libs/libXpm
 				x11-libs/libXmu
 				x11-libs/libXt
@@ -88,7 +86,8 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? ( sys-apps/attr )"
+	X? ( x11-base/xorg-proto )"
+#	pax_kernel? ( sys-apps/attr )
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"
@@ -199,10 +198,6 @@ src_configure() {
 		myconf+=" --without-x --without-ns"
 	fi
 
-	# Save version information in the Emacs binary. It will be available
-	# in variable "system-configuration-options".
-	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
-
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
@@ -210,11 +205,11 @@ src_configure() {
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--with-gameuser=":gamestat" \
 		--without-compress-install \
+		--without-hesiod \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with gpm) \
-		$(use_with hesiod) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with libxml2 xml2) \
 		$(use_with selinux) \
@@ -225,8 +220,8 @@ src_configure() {
 }
 
 src_compile() {
-	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	emake
+	# Disable sandbox when dumping. For the unbelievers, see bug #131505
+	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
 src_install () {

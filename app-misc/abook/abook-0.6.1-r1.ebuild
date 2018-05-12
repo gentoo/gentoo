@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,11 +26,12 @@ DEPEND="nls? ( sys-devel/gettext )"
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( BUGS ChangeLog FAQ README TODO sample.abookrc )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.1-tinfo.patch
+)
 
 src_prepare() {
 	default
-
-	# TODO: do the right thing and find out whats wrong with Makefile.in
 	eautoreconf
 }
 

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Fixtures, reusable state for writing clean tests and more"
-HOMEPAGE="https://launchpad.net/python-fixtures https://pypi.python.org/pypi/fixtures"
+HOMEPAGE="https://launchpad.net/python-fixtures https://pypi.org/project/fixtures/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"

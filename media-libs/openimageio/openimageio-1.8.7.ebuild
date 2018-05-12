@@ -65,6 +65,10 @@ RDEPEND=">=dev-libs/boost-1.62:=
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[latex] )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-ffmpeg4.patch"
+)
+
 DOCS=( CHANGES.md CREDITS.md README.md src/doc/${PN}.pdf )
 
 pkg_setup() {

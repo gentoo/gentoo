@@ -1,6 +1,69 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# New enough dev-ruby/webmock not keyworded yet
+>=dev-ruby/thor-0.20.0 test
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unkeyworded dependencies.
+app-admin/syslog-ng mongodb
+
+# Mart Raudsepp <leio@gentoo.org> (08 Apr 2018)
+# Tests fail for bundled luajit, USE=luajit is globally
+# masked too (no-one has tested it yet).
+app-text/texlive-core luajittex
+dev-texlive/texlive-basic luajittex
+
+# Michał Górny <mgorny@gentoo.org> (03 Apr 2018)
+# Requires unported sys-libs/netbsd-csu.
+sys-devel/clang-runtime crt
+
+# Mart Raudsepp <leio@gentoo.org> (31 Mar 2018)
+# Boost.Context can be built on arm64
+dev-libs/boost -context
+
+# Michał Górny <mgorny@gentoo.org> (12 Mar 2018)
+# Requires masked net-misc/curl with libressl.
+dev-libs/libgit2 libressl
+
+# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Requires masked dependent flags.
+net-fs/samba addc addns ads cluster python test
+
+# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Some more unkeyworded dependencies.
+app-text/tesseract scrollview
+dev-cpp/eigen test
+kde-frameworks/frameworkintegration appstream
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
+kde-plasma/plasma-workspace geolocation
+mate-base/mate help
+mate-base/mate-applets-meta appindicator sensors
+mate-extra/caja-extensions gajim
+net-fs/samba dmapi
+net-im/pidgin gadu
+net-misc/ntpsec rclock_oncore rclock_pps
+sci-libs/gdal armadillo netcdf
+sys-fs/btrfs-progs reiserfs
+www-client/chromium widevine
+www-servers/lighttpd memcached
+x11-misc/xscreensaver gdm
+
+# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
+# net-libs/libmicrodns not yet keyworded for arm64, bug #653800
+media-video/vlc microdns
+
+# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Requires masked dependent flags.
+dev-lang/php ldap-sasl
+net-nds/openldap cxx
+
+# Matthew Thode <prometheanfire@gentoo.org> (23 Feb 2018)
+# net-proxy/haproxy isn't keyworded for arm64
+sys-cluster/neutron haproxy
+
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
@@ -52,8 +115,7 @@ media-libs/opencv vtk
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=lua requires dev-lua/lgi that is not keyworded yet.
-# USE=lua,jit required dev-lang/luajit that is not keyworded yet.
-dev-libs/libpeas lua jit
+dev-libs/libpeas lua
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires dev-libs/efl that is not keyworded.
@@ -136,18 +198,8 @@ app-emulation/libvirt openvz
 app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
-# pull webkit-gtk:2 which we would like to avoid
-x11-libs/wxGTK:3.0 webkit
-
-# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # media-gfx/nvidia-texture-tools does not support arm64
 media-libs/devil nvtt
-
-# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
-# luajit added arm64 support in luajit 2.1, still in rc/beta, revisit this when
-# such a version hits the tree
-dev-db/redis luajit
-www-servers/nginx luajit
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # Virtualbox is x86 only
@@ -217,7 +269,7 @@ app-portage/g-sorcery bson
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # Unkeyworded depedencies
-app-admin/rsyslog grok kafka mongodb normalize rabbitmq
+app-admin/rsyslog grok kafka kubernetes mongodb normalize rabbitmq
 
 # Michael Weber <xmw@gentoo.org> (01 Mar 2017)
 # untested dependencies
@@ -226,7 +278,7 @@ net-libs/libpcap bluetooth
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
-xfce-extra/xfce4-taskmanager gksu gtk3
+xfce-extra/xfce4-taskmanager gtk3
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
 
@@ -262,6 +314,7 @@ net-misc/tlsdate seccomp
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
+dev-python/pycurl curl_ssl_libressl
 net-misc/curl curl_ssl_axtls curl_ssl_libressl metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
@@ -294,10 +347,6 @@ gnome-base/gnome classic
 # Benda Xu <heroxbd@gentoo.org> (31 Oct 2013)
 # Missing keywords from dev-ml/lablgtk, bug #487722
 net-p2p/mldonkey gtk guionly
-
-# Pacho Ramos <pacho@gentoo.org> (22 Sep 2013)
-# Missing keywords, bug #484734
-media-sound/rhythmbox visualizer
 
 # Markus Meier <maekke@gentoo.org> (15 Sep 2013)
 # Unkeyworded deps, bug #481462
@@ -382,8 +431,8 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/okular chm
-kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
+sci-astronomy/kstars indi
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions

@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/anyremote/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="bluetooth"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Framework for manipulating strings using various encodings"
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="nls"
 
 DEPEND="nls? ( $(add_qt_dep linguist-tools) )"

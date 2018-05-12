@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="http://clisp.sourceforge.net/"
@@ -11,8 +11,8 @@ SRC_URI="https://haible.de/bruno/gnu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2/8"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm -threads +unicode +zlib"
 # "jit" disabled ATM
 
 RDEPEND=">=dev-lisp/asdf-2.33-r3
@@ -23,7 +23,6 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 		 fastcgi? ( dev-libs/fcgi )
 		 gdbm? ( sys-libs/gdbm )
 		 gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6 )
-		 pari? ( <sci-mathematics/pari-2.5.0 )
 		 postgres? ( >=dev-db/postgresql-8.0:* )
 		 readline? ( >=sys-libs/readline-7.0:0= )
 		 pcre? ( dev-libs/libpcre:3 )
@@ -34,7 +33,7 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 		 berkdb? ( sys-libs/db:4.8 )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-misc/imake x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto x11-misc/imake )"
 
 enable_modules() {
 	[[ $# = 0 ]] && die "${FUNCNAME[0]} must receive at least one argument"
@@ -60,6 +59,8 @@ src_prepare() {
 	fi
 	eapply "${FILESDIR}"/"${P}"-after_glibc_cfree_bdb.patch
 	eapply_user
+
+	xdg_environment_reset
 }
 
 src_configure() {
@@ -93,26 +94,25 @@ src_configure() {
 	fi
 	if use berkdb; then
 		enable_modules berkeley-db
-		append-cppflags -I/usr/include/db4.8
+		append-cppflags -I"${EPREFIX}"/usr/include/db4.8
 	fi
 	use dbus && enable_modules dbus
 	use fastcgi && enable_modules fastcgi
 	use gdbm && enable_modules gdbm
 	use gtk && enable_modules gtk2
-	use pari && enable_modules pari
 	use pcre && enable_modules pcre
 	use svm && enable_modules libsvm
 	use zlib && enable_modules zlib
 
 	if use hyperspec; then
-		CLHSROOT="file:///usr/share/doc/hyperspec/HyperSpec/"
+		CLHSROOT="file:///${EPREFIX}/usr/share/doc/hyperspec/HyperSpec/"
 	else
 		CLHSROOT="http://www.lispworks.com/reference/HyperSpec/"
 	fi
 
 	# configure chokes on --sysconfdir option
-	local configure="./configure --prefix=/usr --enable-portability \
-		  --libdir=/usr/$(get_libdir) $(use_with readline) $(use_with unicode) \
+	local configure="./configure --prefix=${EPREFIX}/usr --enable-portability \
+		  --libdir=${EPREFIX}/usr/$(get_libdir) $(use_with readline) $(use_with unicode) \
 		  ${myconf} --hyperspec=${CLHSROOT} ${BUILDDIR}"
 	einfo "${configure}"
 	${configure} || die "./configure failed"
@@ -131,12 +131,9 @@ src_compile() {
 
 src_install() {
 	pushd "${BUILDDIR}"
-	make DESTDIR="${D}" prefix=/usr install-bin || die "Installation failed"
+	make DESTDIR="${D}" prefix="${EPREFIX}"/usr install-bin || die "Installation failed"
 	doman clisp.1
 	dodoc ../SUMMARY README* ../src/NEWS ../unix/MAGIC.add ../ANNOUNCE
-	# stripping them removes common symbols (defined but uninitialised variables)
-	# which are then needed to build modules...
-	export STRIP_MASK="*/usr/$(get_libdir)/clisp-${PV}/*/*"
 	popd
 	dohtml doc/impnotes.{css,html} doc/regexp.html doc/clisp.png
 	dodoc doc/{CLOS-guide,LISP-tutorial}.txt

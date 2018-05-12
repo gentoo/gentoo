@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,8 +32,8 @@ all_ruby_prepare() {
 		-e '/simplecov/I s:^:#:' \
 		spec/spec_helper.rb || die
 
-	# Avoid activerecord specs since they don't run 
-	# consistently accross rails versions and not all 
+	# Avoid activerecord specs since they don't run
+	# consistently accross rails versions and not all
 	# arches have rails
 	rm -f spec/ext/active_record_spec.rb || die
 }

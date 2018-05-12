@@ -10,7 +10,7 @@ libbtrfs_soname=0
 if [[ ${PV} != 9999 ]]; then
 	MY_PV="v${PV/_/-}"
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz"
 	S="${WORKDIR}"/${PN}-${MY_PV}
 else
@@ -65,6 +65,10 @@ DEPEND="${RDEPEND}
 if [[ ${PV} == 9999 ]]; then
 	DEPEND+=" sys-devel/gnuconfig"
 fi
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.15.1-e2fsprogs-1.44.0.patch"
+)
 
 src_prepare() {
 	default

@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="More routines for operating on iterables, beyond itertools"
-HOMEPAGE="https://pypi.python.org/pypi/more-itertools"
+HOMEPAGE="https://pypi.org/project/more-itertools/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc x86"
 IUSE="doc test"
 
 RDEPEND="<dev-python/six-2.0[${PYTHON_USEDEP}]"

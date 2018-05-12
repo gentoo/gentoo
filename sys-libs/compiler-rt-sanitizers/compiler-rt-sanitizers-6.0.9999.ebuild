@@ -8,7 +8,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils flag-o-matic git-r3 llvm python-any-r1
+inherit check-reqs cmake-utils flag-o-matic git-r3 llvm \
+	multiprocessing python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -19,20 +20,20 @@ EGIT_BRANCH="release_60"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="6.0.0"
+SLOT="6.0.1"
 KEYWORDS=""
-IUSE="+clang test"
+IUSE="+clang test elibc_glibc"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
-LLVM_SLOT=${SLOT%%.*}
+CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
 	>=sys-devel/llvm-6
 	clang? ( sys-devel/clang )
 	test? (
 		!<sys-apps/sandbox-2.13
-		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
-		=sys-devel/clang-${PV%_*}*:${LLVM_SLOT}
+		$(python_gen_any_dep ">=dev-python/lit-5[\${PYTHON_USEDEP}]")
+		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT} )
 	${PYTHON_DEPS}"
 
@@ -71,6 +72,20 @@ src_unpack() {
 	git-r3_checkout
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	if use test; then
+		# remove tests that are broken by new glibc
+		# https://bugs.llvm.org/show_bug.cgi?id=36065
+		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
+			rm test/lsan/TestCases/Linux/use_tls_dynamic.cc || die
+			rm test/msan/dtls_test.c || die
+			rm test/sanitizer_common/TestCases/Posix/sanitizer_set_death_callback_test.cc || die
+		fi
+	fi
+}
+
 src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
@@ -99,17 +114,17 @@ src_configure() {
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv"
+			-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 
 			# they are created during src_test()
-			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang"
-			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang++"
+			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang"
+			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang++"
 		)
 
 		# same flags are passed for build & tests, so we need to strip
 		# them down to a subset supported by clang
-		CC=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang \
-		CXX=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang++ \
+		CC=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang \
+		CXX=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++ \
 		strip-unsupported-flags
 	fi
 
@@ -129,17 +144,17 @@ src_configure() {
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_SLOT}/{bin,$(get_libdir)},clang/${SLOT}/include} || die
-		cp "${EPREFIX}"/usr/lib/llvm/${LLVM_SLOT}/bin/clang{,++} \
-			"${BUILD_DIR}"/lib/llvm/${LLVM_SLOT}/bin/ || die
+		mkdir -p "${BUILD_DIR}"/lib/{llvm/${CLANG_SLOT}/{bin,$(get_libdir)},clang/${SLOT}/include} || die
+		cp "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/bin/clang{,++} \
+			"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/bin/ || die
 		cp "${EPREFIX}"/usr/lib/clang/${SLOT}/include/*.h \
 			"${BUILD_DIR}"/lib/clang/${SLOT}/include/ || die
 		cp "${sys_dir}"/*builtins*.a \
 			"${BUILD_DIR}/lib/clang/${SLOT}/lib/${sys_dir##*/}/" || die
 		# we also need LLVMgold.so for gold-based tests
-		if [[ -f ${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/$(get_libdir)/LLVMgold.so ]]; then
-			ln -s "${EPREFIX}"/usr/lib/llvm/${LLVM_SLOT}/$(get_libdir)/LLVMgold.so \
-				"${BUILD_DIR}"/lib/llvm/${LLVM_SLOT}/$(get_libdir)/ || die
+		if [[ -f ${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/$(get_libdir)/LLVMgold.so ]]; then
+			ln -s "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/$(get_libdir)/LLVMgold.so \
+				"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/$(get_libdir)/ || die
 		fi
 	fi
 }

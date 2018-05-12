@@ -1,0 +1,57 @@
+From 14428e2e2ab517e935b6c8cd6c3bd90dba429532 Mon Sep 17 00:00:00 2001
+From: Michael Cummings <mcummings@gentoo.org>
+Date: Wed, 14 Jun 2006 15:06:45 +1200
+Subject: Modify build for users that didnt install xorg meta
+
+And fix finding X11 headers
+
+Bug: https://bugs.gentoo.org/128326
+Bug: https://bugs.gentoo.org/198977
+---
+ myConfig | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/myConfig b/myConfig
+index 6260866b..6b5f3ddd 100755
+--- a/myConfig
++++ b/myConfig
+@@ -316,7 +316,7 @@ if ($win_arch eq 'x') {
+ 	}
+ 	close(XMKMF);
+ 	while (defined $uidir) {
+-	  last unless ($uidir =~ s!^.*-I(\S+)/lib/X11/config!!o);
++	  last unless ($uidir =~ s!^.*-I(\S+)/lib(64)/X11/config!!o);
+ 	  $try = $1;
+ 	  $try =~ s/'x11root'/$ENV{X11ROOT}/;
+ 	  push(@xdirs,$try);
+@@ -365,8 +365,7 @@ if ($win_arch eq 'x') {
+   #
+   unless (defined $xlib)
+     {
+-      $xlib = &lX11(0,chooseX11(</usr/X11*/lib>),chooseX11(</usr/lib/X11*>),</usr/Xfree*/lib>,'/usr/X386/lib',
+-                    '/opt/X11/lib')
++      $xlib = &lX11(0,chooseX11(</usr/X11*/lib>),chooseX11(</usr/lib/X11*>),</usr/Xfree*/lib>,'/usr/X386/lib','/opt/X11/lib','/usr/lib64')
+     }
+ 
+   #
+@@ -385,7 +384,7 @@ if ($win_arch eq 'x') {
+       exit 0;
+     }
+ 
+-  ($base) = $xlib =~ m#-L(.*)(?:/lib)$#x;
++  ($base) = $xlib =~ m#-L(.*)(?:/lib(64))$#x;
+   if (defined $X11INC)
+     {
+       $xinc = &IX11("$X11INC");
+@@ -397,6 +396,8 @@ if ($win_arch eq 'x') {
+     {
+       warn "Cannot find X include files via $base/include\n";
+       $xinc = &IX11(map("$_/include",@xdirs),
++            chooseX11(</usr/include/X11*>),
++		    '/usr/include',
+ 		    '/usr/openwin/include',
+ 		    chooseX11(</usr/X11*/include>),
+ 		    chooseX11(</usr/include/X11*>),
+-- 
+2.16.2
+

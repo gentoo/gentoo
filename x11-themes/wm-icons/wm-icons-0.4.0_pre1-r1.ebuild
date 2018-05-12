@@ -1,52 +1,46 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit autotools
 
-DESCRIPTION="A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind"
-
+DESCRIPTION="A Large Assortment of Beautiful Themed Icons, Created with FVWM in mind"
 HOMEPAGE="http://wm-icons.sourceforge.net/"
 SRC_URI="mirror://gentoo/wm-icons-${PV}-cvs-01092003.tar.bz2"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 x86"
-
 IUSE=""
+
 RDEPEND="virtual/awk dev-lang/perl"
 
 S=${WORKDIR}/wm-icons
 
-src_unpack() {
-	unpack ${A}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.0-build.patch
+)
 
-	sed -i 's#$(bindir)/wm-icons-config#true#g' "${S}"/Makefile.am
-	# duplication of bin/Makefile in configure.in #91764
-	sed -i '132s/bin\/Makefile//' "${S}"/configure.in
-	# non-portable comment bombs automake.
-	sed -i 's/\t#/#/' "${S}"/Makefile.am
-
-	cd "${S}"
+src_prepare() {
+	default
 	eautoreconf
 }
 
-src_compile() {
-	econf --enable-all-sets --enable-icondir=/usr/share/icons/wm-icons || die "econf failed"
-	emake || die "emake failed"
+src_configure() {
+	econf --enable-icondir="${EPREFIX}"/usr/share/icons/wm-icons
 }
 
 src_install() {
 	# strange makefile...
-	einstall icondir="${D}/usr/share/icons/wm-icons" DESTDIR="${D}" || die
+	emake icondir="${ED%/}/usr/share/icons/wm-icons" DESTDIR="${D}" install
 
-	dodir /usr/bin
-	mv "${D}"/"${D}"/usr/bin/wm-icons-config "${D}"/usr/bin/wm-icons-config
 	rm -rf "${D}"/var
 
 	einfo "Setting default aliases..."
-	"${D}"/usr/bin/wm-icons-config --user-dir="${D}/usr/share/icons/wm-icons" --defaults
+	"${ED%/}/usr/bin/wm-icons-config" --force --user-dir="${ED%/}/usr/share/icons/wm-icons" --defaults || die
 
-	dodoc AUTHORS ChangeLog NEWS README
+	einstalldocs
 }
 
 pkg_postinst() {

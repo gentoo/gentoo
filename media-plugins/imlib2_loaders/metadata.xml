@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>enlightenment@gentoo.org</email>
-	<name>Project Enlightenment</name>
-</maintainer>
+<!-- maintainer-needed -->
 <use>
 	<flag name="eet">Enable Eet image loader</flag>
 	<flag name="xcf">Enable XCF image loader</flag>

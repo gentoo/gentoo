@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Backport of the functools module from Python 3"
-HOMEPAGE="https://pypi.python.org/pypi/functools32 https://github.com/MiCHiLU/python-functools32"
+HOMEPAGE="https://pypi.org/project/functools32/ https://github.com/MiCHiLU/python-functools32"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}-2.tar.gz"
 
 SLOT="0"

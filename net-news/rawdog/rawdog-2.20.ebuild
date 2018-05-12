@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Rawdog - RSS Aggregator Without Delusions Of Grandeur"
-HOMEPAGE="http://offog.org/code/rawdog.html https://pypi.python.org/pypi/rawdog"
+HOMEPAGE="http://offog.org/code/rawdog.html https://pypi.org/project/rawdog/"
 SRC_URI="http://offog.org/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

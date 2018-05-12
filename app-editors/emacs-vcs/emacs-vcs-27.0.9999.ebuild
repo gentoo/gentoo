@@ -14,7 +14,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 else
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
 		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
@@ -28,7 +28,7 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="27"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib mailutils motif pax_kernel png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -38,7 +38,6 @@ RDEPEND="sys-libs/ncurses:0=
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	gpm? ( sys-libs/gpm )
-	hesiod? ( net-dns/hesiod )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -92,7 +91,6 @@ RDEPEND="sys-libs/ncurses:0=
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
-				x11-libs/libXp
 				x11-libs/libXpm
 				x11-libs/libXmu
 				x11-libs/libXt
@@ -115,7 +113,8 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? ( sys-apps/attr )"
+	X? ( x11-base/xorg-proto )"
+#	pax_kernel? ( sys-apps/attr )
 
 if [[ ${PV##*.} = 9999 ]]; then
 	DEPEND="${DEPEND}
@@ -242,24 +241,20 @@ src_configure() {
 		myconf+=" --without-x --without-ns"
 	fi
 
-	# Save version information in the Emacs binary. It will be available
-	# in variable "system-configuration-options".
-	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
-
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--without-compress-install \
-		--with-file-notification=$(usev inotify || usev gfile || echo no) \
+		--without-hesiod \
 		--without-pop \
+		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
 		$(use_with gpm) \
-		$(use_with hesiod) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with libxml2 xml2) \
 		$(use_with mailutils) \
@@ -274,15 +269,7 @@ src_configure() {
 
 src_compile() {
 	# Disable sandbox when dumping. For the unbelievers, see bug #131505
-	cat >src/temacs-wrapper <<-'EOF' || die
-		#!/bin/bash
-		export SANDBOX_ON=0
-		unset LD_PRELOAD
-		exec ./temacs "$@"
-	EOF
-	chmod +x src/temacs-wrapper || die
-
-	emake RUN_TEMACS="./temacs-wrapper"
+	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
 src_install () {

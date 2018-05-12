@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Module to validate VAT numbers"
-HOMEPAGE="https://pypi.python.org/pypi/vatnumber/"
+HOMEPAGE="https://pypi.org/project/vatnumber/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

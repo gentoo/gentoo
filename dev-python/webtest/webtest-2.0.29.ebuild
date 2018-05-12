@@ -11,12 +11,12 @@ MY_PN="WebTest"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Helper to test WSGI applications"
-HOMEPAGE="http://pythonpaste.org/webtest/ https://pypi.python.org/pypi/WebTest"
+HOMEPAGE="https://pypi.org/project/WebTest/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc64 ~s390 ~sh sparc x86"
 IUSE="doc test"
 
 # nose<1.3.0 appears a leftover never updated in requires.txt. tests pass fine with latest

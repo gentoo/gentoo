@@ -22,7 +22,7 @@ DESCRIPTION="A graph based image processing framework"
 HOMEPAGE="http://www.gegl.org/"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
-SLOT="0.3"
+SLOT="0.4"
 
 IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun libav openexr raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="

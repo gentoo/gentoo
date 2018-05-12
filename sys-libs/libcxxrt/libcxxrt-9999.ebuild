@@ -25,7 +25,7 @@ if [ "${PV%9999}" = "${PV}" ] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="+libunwind +static-libs"
+IUSE="+libunwind +static-libs test"
 
 RDEPEND="libunwind? ( || ( >=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
 		sys-libs/llvm-libunwind[static-libs?,${MULTILIB_USEDEP}] ) )"

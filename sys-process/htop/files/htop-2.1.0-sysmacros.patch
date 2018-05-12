@@ -1,40 +1,81 @@
-From 7fd09c08b5b50e5c0a2aebb66072deda4ac503fb Mon Sep 17 00:00:00 2001
-From: Lars Wendler <polynomial-c@gentoo.org>
-Date: Mon, 5 Feb 2018 16:02:19 +0100
-Subject: [PATCH] Add <sys/sysmacros.h> to two files.
+From d2d413161bbdf009f232faa5789131326225f838 Mon Sep 17 00:00:00 2001
+From: Explorer09 <explorer09@gmail.com>
+Date: Sat, 24 Feb 2018 11:57:18 +0800
+Subject: [PATCH] Fix build failure ('major' undefined) in glibc 2.28.
 
->=glibc-2.28 will no longer include sysmacros implicitly.
+glibc 2.28 no longer defines 'major' and 'minor' in <sys/types.h> and
+requires us to include <sys/sysmacros.h>. (glibc 2.25 starts
+deprecating the macros in <sys/types.h>.) Now do include the latter if
+found on the system.
+
+At the moment, let's also utilize AC_HEADER_MAJOR in configure script.
+However as Autoconf 2.69 has not yet updated the AC_HEADER_MAJOR macro
+to reflect the glibc change [1], so add a workaround code.
+
+Fixes #663. Supersedes pull request #729.
+
+Reference:
+[1] https://git.savannah.gnu.org/gitweb/?p=autoconf.git;a=commit;h=e17a30e987d7ee695fb4294a82d987ec3dc9b974
+
+Signed-off-by: Kang-Che Sung <explorer09@gmail.com>
 ---
- Process.c                | 3 +++
- linux/LinuxProcessList.c | 1 +
- 2 files changed, 4 insertions(+)
+ Process.c                |  6 ++++++
+ configure.ac             | 10 ++++++++++
+ linux/LinuxProcessList.c |  6 ++++++
+ 3 files changed, 22 insertions(+)
 
 diff --git a/Process.c b/Process.c
-index 2ff778d..e135c60 100644
+index 2ff778df..845ca54b 100644
 --- a/Process.c
 +++ b/Process.c
-@@ -19,6 +19,9 @@ in the source distribution for its full text.
- #include <sys/param.h>
- #include <sys/stat.h>
- #include <sys/types.h>
-+#ifdef HAVE_SYS_SYSMACROS_H
-+# include <sys/sysmacros.h>	/* for major, minor */
-+#endif
- #include <unistd.h>
- #include <stdlib.h>
- #include <signal.h>
-diff --git a/linux/LinuxProcessList.c b/linux/LinuxProcessList.c
-index c8ba89d..fb95440 100644
---- a/linux/LinuxProcessList.c
-+++ b/linux/LinuxProcessList.c
-@@ -25,6 +25,7 @@ in the source distribution for its full text.
+@@ -28,6 +28,12 @@ in the source distribution for its full text.
  #include <time.h>
  #include <assert.h>
- #include <sys/types.h>
+ #include <math.h>
++#ifdef MAJOR_IN_MKDEV
++#include <sys/mkdev.h>
++#elif defined(MAJOR_IN_SYSMACROS) || \
++   (defined(HAVE_SYS_SYSMACROS_H) && HAVE_SYS_SYSMACROS_H)
 +#include <sys/sysmacros.h>
++#endif
+ 
+ #ifdef __ANDROID__
+ #define SYS_ioprio_get __NR_ioprio_get
+diff --git a/configure.ac b/configure.ac
+index 44595050..36aebc5e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -61,6 +61,16 @@ AC_CHECK_HEADERS([stdlib.h string.h strings.h sys/param.h sys/time.h unistd.h],[
+ ])
+ AC_CHECK_HEADERS([execinfo.h],[:],[:])
+ 
++AC_HEADER_MAJOR
++dnl glibc 2.25 deprecates 'major' and 'minor' in <sys/types.h> and requires to
++dnl include <sys/sysmacros.h>. However the logic in AC_HEADER_MAJOR has not yet
++dnl been updated in Autoconf 2.69, so use a workaround:
++m4_version_prereq([2.70], [],
++[if test $ac_cv_header_sys_mkdev_h = no; then
++   AC_CHECK_HEADER(sys/sysmacros.h, [AC_DEFINE(MAJOR_IN_SYSMACROS, 1,
++      [Define to 1 if `major', `minor', and `makedev' are declared in <sys/sysmacros.h>.])])
++fi])
++
+ # Checks for typedefs, structures, and compiler characteristics.
+ # ----------------------------------------------------------------------
+ AC_HEADER_STDBOOL
+diff --git a/linux/LinuxProcessList.c b/linux/LinuxProcessList.c
+index c8ba89d2..158a7ea2 100644
+--- a/linux/LinuxProcessList.c
++++ b/linux/LinuxProcessList.c
+@@ -26,6 +26,12 @@ in the source distribution for its full text.
+ #include <assert.h>
+ #include <sys/types.h>
  #include <fcntl.h>
++#ifdef MAJOR_IN_MKDEV
++#include <sys/mkdev.h>
++#elif defined(MAJOR_IN_SYSMACROS) || \
++   (defined(HAVE_SYS_SYSMACROS_H) && HAVE_SYS_SYSMACROS_H)
++#include <sys/sysmacros.h>
++#endif
  
  #ifdef HAVE_DELAYACCT
--- 
-2.16.2
-
+ #include <netlink/attr.h>

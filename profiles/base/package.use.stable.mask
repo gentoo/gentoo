@@ -4,10 +4,41 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (22 Apr 2018)
+# Not ready for stable, crashes LO on some systems.
+>=app-office/libreoffice-6.0 kde
+
+# Michał Górny <mgorny@gentoo.org> (21 Apr 2018)
+# Apparently requires newer dev-python/django stable.
+=dev-python/django-tastypie-0.13.3 doc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
+# Depends on unstable dependencies; qt3d bug #652046
+sci-geosciences/qgis 3d grass
+
+# Thomas Beierlein <tomjbe@gentoo.org> (21 Mar 2018)
+# ~app-backup/bacula-9.0.6 does not compile with USE=libressl (bug #641492)
+~app-backup/bacula-9.0.6 libressl
+
+# Matthias Maier <tamiko@gentoo.org> (18 Mar 2018)
+# dev-libs/capstone hasn't been stabilized yet
+app-emulation/qemu capstone
+
+# Zac Medico <zmedico@gentoo.org> (9 Mar 2018)
+# The rsync-verify support is not really stable yet.
+# Bugs #649276, #647964
+<sys-apps/portage-2.3.28 rsync-verify
+
+# Kent Fredric <kentnl@gentoo.org> (3 Mar 2018)
+# Not an officially supported configuration, as it causes unpredictable
+# fragility and/or dependency headaches due to the very narrow interop window
+# Bugs #649408, #641108, #640724
+dev-perl/DBD-SQLite system-sqlite
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (13 Feb 2018)
-# Requires >=dev-lang/mujs-1.0.0 stabilized. mpv-0.27.1 is stabilized
+# Requires >=dev-lang/mujs-1.0.0 stabilized. mpv-0.27.2 is stabilized
 # due to a security bug, so we won't bother with javascript this time.
-~media-video/mpv-0.27.1 javascript
+~media-video/mpv-0.27.2 javascript
 
 # Andrey Grozin <grozin@gentoo.org> (24 Jan 2018)
 # Depends on unstable dev-python/sphinx-gallery.
@@ -32,17 +63,6 @@ dev-php/PEAR-Text_Password test
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
-# Requires unstable dependency dev-qt/qtspeech.
-kde-apps/kanagram speech
-kde-apps/kdepim-runtime speech
-kde-apps/konqueror speech
-kde-apps/kpimtextedit speech
-kde-apps/ktp-text-ui speech
-kde-apps/okular speech
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
-
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependeny is not stable
 sci-libs/gdal mdb
@@ -50,10 +70,6 @@ sci-libs/gdal mdb
 # Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
-
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Aug 2017)
-# Not operational, bug #619534
->=kde-apps/cantor-17.04.3 R
 
 # Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
 # Unstable dependencies.
@@ -66,11 +82,6 @@ net-dns/dnsmasq libidn2
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Feb 2017)
-# Requires not yet stabilised sci-geosciences/grass,
-# which probably needs bump to solve several issues.
-sci-geosciences/qgis grass
 
 # Brian Dolbec <dolsen@gentoo.org> (14 Feb 2017)
 # This is stable masked as g-sorcery is being not actively developed.
@@ -106,8 +117,6 @@ sci-libs/vtk mpi
 # Doug Goldstein <cardoe@gentoo.org> (04 Jan 2017)
 # libcxx is not stable so we can't let users use it
 dev-lang/rust libcxx
-# llvm 3.8.x is not stable so we can't let users use it
-dev-lang/rust system-llvm
 
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
 # Will always require unstable packages.
@@ -136,10 +145,6 @@ dev-lang/go gccgo
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
 
-# Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
-# Unmask stable-masked implementations for python-exec
-dev-lang/python-exec -python_targets_python3_6
-
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
@@ -154,10 +159,6 @@ net-analyzer/pmacct mongodb
 # sci-visualization/paraview is not ready for stabilization yet
 # See bug #541012
 sci-libs/openfoam paraview
-
-# Pacho Ramos <pacho@gentoo.org>
-# dev-libs/libappindicator isn't going to be stabilized
-x11-misc/redshift appindicator
 
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
@@ -212,5 +213,5 @@ app-emulation/xen-tools ocaml
 media-gfx/imagemagick opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
-# No stable sci-chemistry/avogadro yet but we want kde-4.10 to go stable
->=kde-apps/kalzium-4.10.0 editor
+# Depends on unstable sci-libs/avogadrolibs
+kde-apps/kalzium editor

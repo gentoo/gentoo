@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1 bash-completion-r1
 
 DESCRIPTION="Asynchronous task queue/job queue based on distributed message passing"
-HOMEPAGE="http://celeryproject.org/ https://pypi.python.org/pypi/celery"
+HOMEPAGE="http://celeryproject.org/ https://pypi.org/project/celery/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

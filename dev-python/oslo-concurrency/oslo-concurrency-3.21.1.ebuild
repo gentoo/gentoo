@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="library for running  multi-thread, multi-process applications"
-HOMEPAGE="https://pypi.python.org/pypi/oslo.concurrency"
+HOMEPAGE="https://pypi.org/project/oslo.concurrency/"
 SRC_URI="mirror://pypi/${PN:0:1}/oslo.concurrency/oslo.concurrency-${PV}.tar.gz"
 S="${WORKDIR}/oslo.concurrency-${PV}"
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -22,6 +22,8 @@ IUSE=""
 RDEPEND+=" dev-db/postgresql:*"
 DEPEND+=" dev-db/postgresql
 	test? ( >=dev-db/postgresql-9.4[server,threads] )"
+
+PATCHES=( "${FILESDIR}/postgresql10-tests.patch" )
 
 all_ruby_prepare() {
 	# hack the Rakefile to make it sure that it doesn't load

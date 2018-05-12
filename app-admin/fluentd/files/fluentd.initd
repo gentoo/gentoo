@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/fluentd
+pidfile=/var/run/fluentd.pid
+command_args="--daemon ${pidfile} --no-supervisor ${fluent_opts}"
+command_background=yes
+command_user=fluentd:fluentd
+ 
+start_pre() {
+fluentd -q --dry-run
+}

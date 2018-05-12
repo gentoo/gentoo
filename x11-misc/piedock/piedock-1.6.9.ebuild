@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="A little bit like the famous OS X dock but in shape of a pie menu"
 HOMEPAGE="
 	http://markusfisch.de/PieDock
@@ -30,19 +32,31 @@ RDEPEND="
 		x11-libs/gtk+:2
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
+
 DOCS=( res/${PN}rc.sample AUTHORS ChangeLog NEWS )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-signals.patch
+	"${FILESDIR}"/${PN}-1.6.9-freetype_pkgconfig.patch
 )
-S=${WORKDIR}/PieDock-${PV}
+
+S="${WORKDIR}/PieDock-${PV}"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	econf \
-		$(use_enable gtk) \
-		--disable-kde \
-		--bindir="${EPREFIX}"/usr/bin \
-		--enable-xft \
-		--enable-xmu \
+	local myeconfargs=(
+		$(use_enable gtk)
+		--disable-kde
+		--bindir="${EPREFIX}"/usr/bin
+		--enable-xft
+		--enable-xmu
 		--enable-xrender
+	)
+	econf "${myeconfargs[@]}"
 }

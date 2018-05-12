@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>enlightenment@gentoo.org</email>
-	<name>Project Enlightenment</name>
-</maintainer>
+<!-- maintainer-needed -->
 <use>
 	<flag name="pango">Enable pango font rendering</flag>
 	<flag name="xrandr">Enable support for the X xrandr extension</flag>
@@ -31,7 +28,6 @@
 	<flag name="enlightenment_modules_packagekit">Package manager integration</flag>
 	<flag name="enlightenment_modules_pager">Gadget to allow you to visualize your virtual desktops and the windows they contain</flag>
 	<flag name="enlightenment_modules_pager-plain">A simpler desktop pager</flag>
-	<flag name="enlightenment_modules_policy-mobile"/>
 	<flag name="enlightenment_modules_quickaccess">Enlightenment Quickaccess Launcher</flag>
 	<flag name="enlightenment_modules_shot">Simple screenshot+save/upload module</flag>
 	<flag name="enlightenment_modules_start">Enlightenment's 'Start' button equivalent</flag>

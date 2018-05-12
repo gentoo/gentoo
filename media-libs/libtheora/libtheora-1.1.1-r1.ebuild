@@ -19,9 +19,7 @@ RDEPEND=">=media-libs/libogg-1.3.0:=[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=
 		>=media-libs/libsdl-0.11.0
 		media-libs/libvorbis:=
-		)
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r1
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+	)"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig"

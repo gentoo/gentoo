@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools ltprune
 
 DESCRIPTION="Command line tool for signing, verifying, encrypting and decrypting XML"
-HOMEPAGE="http://www.aleksey.com/xmlsec"
-SRC_URI="http://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
+HOMEPAGE="https://www.aleksey.com/xmlsec"
+SRC_URI="https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

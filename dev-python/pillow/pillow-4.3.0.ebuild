@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples imagequant jpeg2k lcms test tiff tk truetype webp zlib"
 
 REQUIRED_USE="test? ( tiff )"
@@ -43,10 +43,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-src_compile() {
+src_configure(){
 	# raqm not in portage yet
-	distutils-r1_src_compile \
+	mydistutilsargs=( build_ext \
 		--disable-raqm \
+		--disable-platform-guessing \
 		$(use_enable truetype freetype) \
 		$(use_enable jpeg2k jpeg2000) \
 		$(use_enable lcms) \
@@ -54,7 +55,7 @@ src_compile() {
 		$(use_enable imagequant) \
 		$(use_enable webp) \
 		$(use_enable webp webpmux) \
-		$(use_enable zlib)
+		$(use_enable zlib))
 }
 
 python_compile_all() {

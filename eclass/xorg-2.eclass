@@ -199,26 +199,18 @@ DRI_COMMON_DEPEND="
 	x11-base/xorg-server[-minimal]
 	x11-libs/libdrm
 "
-DRI_DEPEND="
-	x11-proto/xf86driproto
-	x11-proto/glproto
-	x11-proto/dri2proto
-"
 case ${XORG_DRI} in
 	no)
 		;;
 	always)
 		COMMON_DEPEND+=" ${DRI_COMMON_DEPEND}"
-		DEPEND+=" ${DRI_DEPEND}"
 		;;
 	*)
 		COMMON_DEPEND+=" ${XORG_DRI}? ( ${DRI_COMMON_DEPEND} )"
-		DEPEND+=" ${XORG_DRI}? ( ${DRI_DEPEND} )"
 		IUSE+=" ${XORG_DRI}"
 		;;
 esac
-unset DRI_DEPEND
-unset DRI_COMMONDEPEND
+unset DRI_COMMON_DEPEND
 
 if [[ -n "${DRIVER}" ]]; then
 	COMMON_DEPEND+="
@@ -226,26 +218,13 @@ if [[ -n "${DRIVER}" ]]; then
 	"
 fi
 if [[ -n "${DRIVER}" && ${PN} == xf86-input-* ]]; then
-	DEPEND+="
-		x11-proto/inputproto
-		x11-proto/kbproto
-		x11-proto/xproto
-	"
+	DEPEND+=" x11-base/xorg-proto"
 fi
 if [[ -n "${DRIVER}" && ${PN} == xf86-video-* ]]; then
 	COMMON_DEPEND+="
 		x11-libs/libpciaccess
 	"
-	# we also needs some protos and libs in all cases
-	DEPEND+="
-		x11-proto/fontsproto
-		x11-proto/randrproto
-		x11-proto/renderproto
-		x11-proto/videoproto
-		x11-proto/xextproto
-		x11-proto/xineramaproto
-		x11-proto/xproto
-	"
+	DEPEND+=" x11-base/xorg-proto"
 fi
 
 # @ECLASS-VARIABLE: XORG_DOC
@@ -304,10 +283,6 @@ fi
 DEPEND+=" ${COMMON_DEPEND}"
 RDEPEND+=" ${COMMON_DEPEND}"
 unset COMMON_DEPEND
-
-if [[ ${XORG_MULTILIB} == yes ]]; then
-	RDEPEND+=" abi_x86_32? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] )"
-fi
 
 debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: DEPEND=${DEPEND}"
 debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: RDEPEND=${RDEPEND}"

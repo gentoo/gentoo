@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 pypy )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 DESCRIPTION="Extensible Python-based build utility"
 HOMEPAGE="http://www.scons.org/"
@@ -15,14 +15,17 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc"
 
 #PATCHES=(  )
 
 python_prepare_all() {
-	# https://bugs.gentoo.org/show_bug.cgi?id=361061
-	sed -i -e "s|/usr/local/bin:/opt/bin:/bin:/usr/bin|${EPREFIX}/usr/local/bin:${EPREFIX}/opt/bin:${EPREFIX}/bin:${EPREFIX}/usr/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin|g" engine/SCons/Platform/posix.py || die
+	# bug #361061
+	if use prefix ; then
+		eapply "${FILESDIR}"/scons-2.5.1-respect-path.patch
+		eprefixify engine/SCons/Platform/posix.py
+	fi
 	# and make sure the build system doesn't "force" /usr/local/ :(
 	sed -i -e "s/'darwin'/'NOWAYdarwinWAYNO'/" setup.py || die
 

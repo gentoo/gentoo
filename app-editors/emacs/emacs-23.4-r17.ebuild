@@ -14,14 +14,13 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="alsa aqua athena dbus games gconf gif gpm gtk gzip-el hesiod jpeg kerberos livecd m17n-lib motif pax_kernel png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
+IUSE="alsa aqua athena dbus games gconf gif gpm gtk gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
-	hesiod? ( net-dns/hesiod )
 	kerberos? ( virtual/krb5 )
 	alsa? ( media-libs/alsa-lib )
 	gpm? ( sys-libs/gpm )
@@ -52,7 +51,6 @@ RDEPEND="sys-libs/ncurses:0=
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
-				x11-libs/libXp
 				x11-libs/libXpm
 				x11-libs/libXext
 				x11-libs/libXmu
@@ -78,9 +76,12 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	alsa? ( virtual/pkgconfig )
 	dbus? ( virtual/pkgconfig )
-	X? ( virtual/pkgconfig )
-	gzip-el? ( app-arch/gzip )
-	pax_kernel? ( sys-apps/attr )"
+	X? (
+		virtual/pkgconfig
+		x11-base/xorg-proto
+	)
+	gzip-el? ( app-arch/gzip )"
+#	pax_kernel? ( sys-apps/attr )
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"
@@ -198,10 +199,6 @@ src_configure() {
 		myconf+=" --without-x --without-ns"
 	fi
 
-	# Save version information in the Emacs binary. It will be available
-	# in variable "system-configuration-options".
-	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
-
 	# According to configure, this option is only used for GNU/Linux
 	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
 	# out the location because $(get_libdir) does not necessarily return
@@ -216,7 +213,7 @@ src_configure() {
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--with-crt-dir="${crtdir}" \
 		--with-gameuser=":gamestat" \
-		$(use_with hesiod) \
+		--without-hesiod \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with gpm) \
 		$(use_with dbus) \
@@ -224,10 +221,11 @@ src_configure() {
 }
 
 src_compile() {
-	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
+	# Disable sandbox when dumping. For the unbelievers, see bug #131505
 	emake CC="$(tc-getCC)" \
 		AR="$(tc-getAR) cq" \
-		RANLIB="$(tc-getRANLIB)"
+		RANLIB="$(tc-getRANLIB)" \
+		RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
 src_install () {

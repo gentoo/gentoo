@@ -14,6 +14,7 @@
 		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
 		<flag name="kafka">Build the Apache Kafka input/output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
 		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
+		<flag name="kubernetes">Build the kubernetes modify plugin (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> for building the rfc5424hmac modify module (requires rfc5424hmac USE flag)</flag>
 		<flag name="mdblookup">Build the MaxMind DB lookup message modify plugin using <pkg>dev-libs/libmaxminddb</pkg></flag>
 		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/libmongo-client</pkg>)</flag>

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="W3C provenance data dodel library"
-HOMEPAGE="https://pypi.python.org/pypi/prov"
+HOMEPAGE="https://pypi.org/project/prov/"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

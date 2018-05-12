@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit autotools eutils linux-info linux-mod python-r1 systemd
 
 DESCRIPTION="Production quality, multilayer virtual switch"
-HOMEPAGE="http://openvswitch.org"
-SRC_URI="http://openvswitch.org/releases/${P}.tar.gz"
+HOMEPAGE="https://www.openvswitch.org"
+SRC_URI="https://www.openvswitch.org/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="debug modules monitor +ssl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

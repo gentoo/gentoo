@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Third Party IM Client for Google Hangouts"
-HOMEPAGE="https://pypi.python.org/pypi/hangups"
+HOMEPAGE="https://pypi.org/project/hangups/"
 
 LICENSE="MIT"
 SLOT="0"

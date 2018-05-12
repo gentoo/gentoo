@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-fbsd"
 fi
 
 IUSE="alsa gles2 gstreamer openal pulseaudio qml widgets"
@@ -35,7 +35,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	gstreamer? ( x11-proto/videoproto )
+	gstreamer? ( x11-base/xorg-proto )
 "
 
 src_prepare() {

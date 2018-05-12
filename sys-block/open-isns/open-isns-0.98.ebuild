@@ -11,15 +11,18 @@ SRC_URI="https://github.com/open-iscsi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug slp ssl static"
+KEYWORDS="~alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc ~x86"
+IUSE="debug libressl slp ssl static"
 
 DEPEND="
-	ssl? ( dev-libs/openssl:= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	slp? ( net-libs/openslp )"
 RDEPEND="${DEPEND}"
 
-PATCHES=()
+PATCHES=( "${FILESDIR}/${P}-libressl-compatibility.patch" )
 
 src_configure() {
 	use debug && append-cppflags -DDEBUG_TCP -DDEBUG_SCSI

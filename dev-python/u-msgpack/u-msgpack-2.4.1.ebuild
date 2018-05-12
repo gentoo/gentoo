@@ -10,7 +10,7 @@ MY_PN="${PN}-python"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A portable, lightweight MessagePack serializer and deserializer"
-HOMEPAGE="https://github.com/vsergeev/u-msgpack-python https://pypi.python.org/pypi/u-msgpack-python"
+HOMEPAGE="https://github.com/vsergeev/u-msgpack-python https://pypi.org/project/u-msgpack-python/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

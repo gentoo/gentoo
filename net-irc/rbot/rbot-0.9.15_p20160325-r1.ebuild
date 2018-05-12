@@ -8,7 +8,7 @@ GITHUB_COMMIT="e358601cc521d8aced941eb928fae2d8c53cf0c2"
 inherit ruby-ng eutils user
 
 DESCRIPTION="A ruby IRC bot"
-HOMEPAGE="http://ruby-rbot.org/"
+HOMEPAGE="https://ruby-rbot.org/"
 SRC_URI="https://github.com/ruby-rbot/rbot/archive/${GITHUB_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( feh GPL-2 )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,8 +18,8 @@ IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
+	dev-lang/orc[static-libs(+)?]
 	>=dev-libs/glib-2.22:2[static-libs(+)?]
-	>=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?]
 	media-libs/opus[static-libs(+)?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/jpeg:0=[static-libs(+)?]
@@ -72,8 +72,7 @@ src_configure() {
 		$(use_with sasl)
 		$(use_enable smartcard)
 		--enable-gstreamer=$(usex gstreamer "1.0" "no")
-		--enable-celt051
-		--disable-gui
+		--disable-celt051
 		"
 	econf ${myconf}
 }

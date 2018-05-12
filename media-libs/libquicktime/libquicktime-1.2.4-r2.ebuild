@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
-	X? ( >=x11-proto/videoproto-2.3.1-r1[${MULTILIB_USEDEP}] )"
+	X? ( x11-base/xorg-proto )"
 
 REQUIRED_USE="opengl? ( X )"
 
@@ -60,6 +60,9 @@ src_prepare() {
 	if has_version '>=media-video/ffmpeg-2.9' ||
 		has_version '>=media-video/libav-12'; then
 		epatch "${FILESDIR}"/${P}-ffmpeg29.patch
+	fi
+	if has_version '>media-video/ffmpeg-3.5' ; then
+		epatch "${FILESDIR}/${P}-ffmpeg4.patch"
 	fi
 
 	for FILE in lqt_ffmpeg.c video.c audio.c ; do

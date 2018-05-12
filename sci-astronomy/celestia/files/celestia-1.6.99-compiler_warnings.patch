@@ -1,0 +1,226 @@
+From dba25141a60ba7a09eac8f64eac1c18c48acc3a3 Mon Sep 17 00:00:00 2001
+From: Hleb Valoshka <375gnu@gmail.com>
+Date: Mon, 12 Mar 2018 20:18:51 +0300
+Subject: [PATCH] fix (some) compiler warnings
+
+---
+ src/cel3ds/3dsread.cpp       |  5 +++--
+ src/celengine/command.cpp    | 15 ++++++---------
+ src/celengine/observer.cpp   |  8 ++++----
+ src/celengine/render.cpp     |  2 ++
+ src/celengine/renderglsl.cpp |  2 +-
+ src/celengine/star.cpp       |  2 +-
+ src/celestia/glutmain.cpp    |  9 ++++-----
+ src/celestia/qt/qtmain.cpp   |  2 +-
+ src/celutil/bigfix.cpp       |  3 +--
+ 9 files changed, 23 insertions(+), 25 deletions(-)
+
+diff --git a/src/cel3ds/3dsread.cpp b/src/cel3ds/3dsread.cpp
+index 3b78847f..3ee3cf3d 100644
+--- a/src/cel3ds/3dsread.cpp
++++ b/src/cel3ds/3dsread.cpp
+@@ -116,8 +116,9 @@ void indent()
+         cout << "  ";
+ }
+ 
+-void logChunk(uint16 chunkType/*, int chunkSize*/)
++void logChunk(uint16 /*chunkType*/ /*, int chunkSize*/)
+ {
++#if 0
+     const char* name = NULL;
+ 
+     switch (chunkType)
+@@ -193,7 +194,7 @@ void logChunk(uint16 chunkType/*, int chunkSize*/)
+     default:
+         break;
+     }
+-#if 0
++
+     indent();
+ 
+     if (name == NULL)
+diff --git a/src/celengine/command.cpp b/src/celengine/command.cpp
+index e190fa5b..a258f4c0 100644
+--- a/src/celengine/command.cpp
++++ b/src/celengine/command.cpp
+@@ -703,24 +703,21 @@ CommandCapture::CommandCapture(const std::string& _type,
+ void CommandCapture::process(ExecutionEnvironment&)
+ {
+ #ifndef TARGET_OS_MAC
+-    bool success = false;
+-
+-
+     // Get the dimensions of the current viewport
+     int viewport[4];
+     glGetIntegerv(GL_VIEWPORT, viewport);
+ 
+     if (compareIgnoringCase(type, "jpeg") == 0)
+     {
+-        success = CaptureGLBufferToJPEG(filename,
+-                                        viewport[0], viewport[1],
+-                                        viewport[2], viewport[3]);
++        CaptureGLBufferToJPEG(filename,
++                              viewport[0], viewport[1],
++                              viewport[2], viewport[3]);
+     }
+     if (compareIgnoringCase(type, "png") == 0)
+     {
+-        success = CaptureGLBufferToPNG(filename,
+-                                       viewport[0], viewport[1],
+-                                       viewport[2], viewport[3]);
++        CaptureGLBufferToPNG(filename,
++                             viewport[0], viewport[1],
++                             viewport[2], viewport[3]);
+     }
+ #endif
+ }
+diff --git a/src/celengine/observer.cpp b/src/celengine/observer.cpp
+index 3b5af97a..60b818b3 100644
+--- a/src/celengine/observer.cpp
++++ b/src/celengine/observer.cpp
+@@ -426,7 +426,7 @@ void Observer::update(double dt, double timeScale)
+                 UniversalCoord origin = centerObj.getPosition(simTime);
+ 
+                 Vector3d v0 = ufrom.offsetFromKm(origin);
+-                Vector3d v1 = uto.offsetFromKm(origin);
++                //Vector3d v1 = uto.offsetFromKm(origin);
+ 
+                 if (jv.norm() == 0.0)
+                 {
+@@ -629,7 +629,7 @@ void Observer::computeGotoParameters(const Selection& destination,
+     }
+     
+     UniversalCoord targetPosition = destination.getPosition(getTime());
+-    Vector3d v = targetPosition.offsetFromKm(getPosition()).normalized();
++    //Vector3d v = targetPosition.offsetFromKm(getPosition()).normalized();
+     
+     jparams.traj = Linear;
+     jparams.duration = gotoTime;
+@@ -694,7 +694,7 @@ void Observer::computeGotoParametersGC(const Selection& destination,
+     setFrame(frame->getCoordinateSystem(), destination);
+ 
+     UniversalCoord targetPosition = destination.getPosition(getTime());
+-    Vector3d v = targetPosition.offsetFromKm(getPosition()).normalized();
++    //Vector3d v = targetPosition.offsetFromKm(getPosition()).normalized();
+ 
+     jparams.traj = GreatCircle;
+     jparams.duration = gotoTime;
+@@ -791,7 +791,7 @@ void Observer::computeCenterCOParameters(const Selection& destination,
+ 
+     Selection centerObj = frame->getRefObject();
+     UniversalCoord centerPos = centerObj.getPosition(getTime());
+-    UniversalCoord targetPosition = destination.getPosition(getTime());
++    //UniversalCoord targetPosition = destination.getPosition(getTime());
+ 
+     Quaterniond q;
+     q.setFromTwoVectors(v, w);
+diff --git a/src/celengine/render.cpp b/src/celengine/render.cpp
+index 018153d5..bfcefd39 100644
+--- a/src/celengine/render.cpp
++++ b/src/celengine/render.cpp
+@@ -8033,8 +8033,10 @@ void Renderer::renderCometTail(const Body& body,
+ {
+     Vector3f cometPoints[MaxCometTailPoints];
+     Vector3d pos0 = body.getOrbit(now)->positionAtTime(now);
++#if 0
+     Vector3d pos1 = body.getOrbit(now)->positionAtTime(now - 0.01);
+     Vector3d vd = pos1 - pos0;
++#endif
+     double t = now;
+ 
+     float distanceFromSun, irradiance_max = 0.0f;
+diff --git a/src/celengine/renderglsl.cpp b/src/celengine/renderglsl.cpp
+index 15644440..14774239 100644
+--- a/src/celengine/renderglsl.cpp
++++ b/src/celengine/renderglsl.cpp
+@@ -773,7 +773,7 @@ void renderGeometryShadow_GLSL(Geometry* geometry,
+     int lightIndex = 0;
+     Vector3f viewDir = -ls.lights[lightIndex].direction_obj;
+     Vector3f upDir = viewDir.unitOrthogonal();
+-    Vector3f rightDir = upDir.cross(viewDir);
++    /*Vector3f rightDir = */upDir.cross(viewDir);
+ 
+ 
+     glUseProgramObjectARB(0);
+diff --git a/src/celengine/star.cpp b/src/celengine/star.cpp
+index a5119cd6..662db92c 100644
+--- a/src/celengine/star.cpp
++++ b/src/celengine/star.cpp
+@@ -761,7 +761,7 @@ StarDetails::StarDetails() :
+     bolometricCorrection(0.0f),
+     knowledge(0u),
+     visible(true),
+-    texture(texture),
++    texture(texture), // warning: ‘StarDetails::texture’ is initialized with itself [-Winit-self]
+     geometry(InvalidResource),
+     orbit(NULL),
+     orbitalRadius(0.0f),
+diff --git a/src/celestia/glutmain.cpp b/src/celestia/glutmain.cpp
+index b1fb416c..36ae331b 100644
+--- a/src/celestia/glutmain.cpp
++++ b/src/celestia/glutmain.cpp
+@@ -155,8 +155,7 @@ static void MouseButton(int button, int state, int x, int y)
+     lastY = y;
+ }
+ 
+-
+-static void KeyPress(unsigned char c, int x, int y)
++static void KeyPress(unsigned char c, int /*x*/, int /*y*/)
+ {
+     // Ctrl-Q exits
+     if (c == '\021')
+@@ -167,7 +166,7 @@ static void KeyPress(unsigned char c, int x, int y)
+ }
+ 
+ 
+-static void KeyUp(unsigned char c, int x, int y)
++static void KeyUp(unsigned char c, int /*x*/, int /*y*/)
+ {
+     appCore->keyUp((int) c);
+ }
+@@ -237,13 +236,13 @@ static void HandleSpecialKey(int key, bool down)
+ }
+ 
+ 
+-static void SpecialKeyPress(int key, int x, int y)
++static void SpecialKeyPress(int key, int /*x*/, int /*y*/)
+ {
+     HandleSpecialKey(key, true);
+ }
+ 
+ 
+-static void SpecialKeyUp(int key, int x, int y)
++static void SpecialKeyUp(int key, int /*x*/, int /*y*/)
+ {
+     HandleSpecialKey(key, false);
+ }
+diff --git a/src/celestia/qt/qtmain.cpp b/src/celestia/qt/qtmain.cpp
+index f8dc5080..04b666d5 100644
+--- a/src/celestia/qt/qtmain.cpp
++++ b/src/celestia/qt/qtmain.cpp
+@@ -29,7 +29,7 @@
+ using namespace std;
+ 
+ extern "C" { FILE __iob_func[3] = { *stdin,*stdout,*stderr }; }
+-static const char *description = "Celestia";
++//static const char *description = "Celestia";
+ 
+ // Command line options
+ static bool startFullscreen = false;
+diff --git a/src/celutil/bigfix.cpp b/src/celutil/bigfix.cpp
+index 1eacc5e2..a4ff2f4b 100644
+--- a/src/celutil/bigfix.cpp
++++ b/src/celutil/bigfix.cpp
+@@ -416,11 +416,10 @@ std::string BigFix::toString()
+ 
+     // Conversion using code from the original BigFix class.
+     std::string encoded("");
+-    int bits, c, char_count, started, i, j;
++    int bits, c, char_count, i, j;
+ 
+     char_count = 0;
+     bits = 0;
+-    started = 0;
+ 
+     // Find first significant (non null) byte
+     i = 16;

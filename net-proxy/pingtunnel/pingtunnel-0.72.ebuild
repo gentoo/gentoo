@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Tunnel TCP over ICMP"
-HOMEPAGE="http://www.cs.uit.no/~daniels/PingTunnel"
-SRC_URI="http://www.cs.uit.no/~daniels/PingTunnel/PingTunnel-${PV}.tar.gz"
+HOMEPAGE="https://www.cs.uit.no/~daniels/PingTunnel"
+SRC_URI="https://www.cs.uit.no/~daniels/PingTunnel/PingTunnel-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -4,6 +4,23 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# net-print/cups not stable yet
+cups
+
+# Michał Górny <mgorny@gentoo.org> (16 Apr 2018)
+# Not stable yet.
+vala
+webp
+
+# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
+# Neither x11-libs/gtk+ SLOT marked stable yet
+gtk
+
+# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
+# app-crypt/libsecret and co not marked stable yet
+gnome-keyring
+
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # net-dns/avahi is not stable here (not even GTK+).
 zeroconf
@@ -24,18 +41,6 @@ postgres
 # dev-lang/tk is not stable here.
 tk
 
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# app-text/ghostscript-gpl is not stable here.
-postscript
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# media-libs/jasper is not stable here.
-jpeg2k
-
-# Michał Górny <mgorny@gentoo.org> (18 Feb 2018)
-# sys-apps/systemd is not stable on arm64.
-systemd
-
 # Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
 # dev-libs/libressl not marked stable yet
 libressl
@@ -47,10 +52,6 @@ ruby_targets_ruby22
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # dev-vcs/subversion not marked stable yet
 subversion
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# sys-apps/dbus not marked stable yet
-dbus
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # sys-auth/skey not marked stable yet

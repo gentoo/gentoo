@@ -6,7 +6,6 @@ move app-cdr/k3b kde-apps/k3b
 move net-misc/badvpn net-vpn/badvpn
 move net-misc/freelan net-vpn/freelan
 move net-firewall/ipsec-tools net-vpn/ipsec-tools
-move net-misc/kvpnc net-vpn/kvpnc
 move net-misc/libreswan net-vpn/libreswan
 move net-misc/logmein-hamachi net-vpn/logmein-hamachi
 move net-misc/openconnect net-vpn/openconnect
@@ -24,7 +23,6 @@ move net-misc/isatapd net-vpn/isatapd
 move net-misc/iodine net-vpn/iodine
 move net-misc/corkscrew net-vpn/corkscrew
 move net-misc/aiccu net-vpn/aiccu
-move net-misc/htun net-vpn/htun
 move net-misc/httptunnel net-vpn/httptunnel
 move net-misc/nstx net-vpn/nstx
 move net-misc/6tunnel net-vpn/6tunnel

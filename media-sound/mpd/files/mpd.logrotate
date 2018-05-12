@@ -1,7 +1,0 @@
-/var/lib/mpd/log {
-	missingok
-	postrotate
-	[ -f /var/run/mpd.pid ] && cat /var/run/mpd.pid | xargs /bin/kill -HUP
-	[ -f /var/lib/mpd/pid ] && cat /var/lib/mpd/pid | xargs /bin/kill -HUP
-	endscript
-}

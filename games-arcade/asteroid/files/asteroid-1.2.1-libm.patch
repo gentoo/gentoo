@@ -1,0 +1,24 @@
+From 4efc7fc0a1246f023d6f96b94081678e302ab430 Mon Sep 17 00:00:00 2001
+From: Charles Lindsay <chaz@chazomatic.us>
+Date: Mon, 23 May 2016 18:50:34 -0700
+Subject: [PATCH] Add libm to link command
+
+Without it, some systems (and now mine!) would give a linker error about
+missing libm.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 29fd714..ab9a7ec 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,7 +39,7 @@ include_directories("${PROJECT_BINARY_DIR}/include")
+ file(GLOB asteroid_SRCS "src/*.c")
+ add_executable(asteroid ${asteroid_SRCS})
+ include_directories(${OPENGL_INCLUDE_DIR} ${GLUT_INCLUDE_DIR})
+-target_link_libraries(asteroid ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
++target_link_libraries(asteroid m ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+ if(Asteroid_BUILD_GTK)
+    include_directories(${GTK2_INCLUDE_DIRS})
+    target_link_libraries(asteroid ${GTK2_LIBRARIES})

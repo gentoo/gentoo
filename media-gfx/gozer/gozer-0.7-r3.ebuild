@@ -11,25 +11,20 @@ SRC_URI="http://www.linuxbrit.co.uk/downloads/${P}.tar.gz"
 
 LICENSE="feh LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="x11-libs/libXext
-	>=media-libs/giblib-1.2.1"
-RDEPEND=">=media-libs/giblib-1.2.1
+RDEPEND="
+	media-libs/giblib
 	media-libs/imlib2"
+DEPEND="
+	${RDEPEND}
+	x11-libs/libXext"
+
+PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
 src_prepare() {
 	default
-	sed -i src/Makefile.am \
-		-e 's|-g -O3|$(CFLAGS)|g' \
-		-e '/LDFLAGS/s|=|+=|g' \
-		|| die "sed src/Makefile.am"
+	mv configure.{in,ac} || die
 	eautoreconf
-}
-
-src_install() {
-	emake install DESTDIR="${D}"
-	rm -rf "${D}"/usr/doc || die
-	dodoc TODO README AUTHORS ChangeLog
 }

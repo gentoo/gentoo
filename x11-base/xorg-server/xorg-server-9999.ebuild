@@ -9,19 +9,21 @@ EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
-KEYWORDS=""
+if [[ ${PV} != 9999* ]]; then
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} debug +glamor ipv6 libressl minimal selinux systemd +udev unwind xcsecurity"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl )
+	libressl? ( dev-libs/libressl:0= )
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
 	x11-apps/xkbcomp
-	>=x11-libs/libdrm-2.4.46
+	>=x11-libs/libdrm-2.4.89
 	>=x11-libs/libpciaccess-0.12.901
 	>=x11-libs/libXau-1.0.4
 	>=x11-libs/libXdmcp-1.0.2
@@ -82,32 +84,8 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 
 DEPEND="${CDEPEND}
 	sys-devel/flex
-	>=x11-proto/bigreqsproto-1.1.0
-	>=x11-proto/compositeproto-0.4
-	>=x11-proto/damageproto-1.1
-	>=x11-proto/fixesproto-5.0
-	>=x11-proto/fontsproto-2.1.3
-	>=x11-proto/glproto-1.4.17-r1
-	>=x11-proto/inputproto-2.3
-	>=x11-proto/kbproto-1.0.3
-	>=x11-proto/randrproto-1.5.0
-	>=x11-proto/recordproto-1.13.99.1
-	>=x11-proto/renderproto-0.11
-	>=x11-proto/resourceproto-1.2.0
-	>=x11-proto/scrnsaverproto-1.1
-	>=x11-proto/trapproto-3.4.3
-	>=x11-proto/videoproto-2.2.2
-	>=x11-proto/xcmiscproto-1.2.0
-	>=x11-proto/xextproto-7.2.99.901
-	>=x11-proto/xf86dgaproto-2.0.99.1
-	>=x11-proto/xf86vidmodeproto-2.2.99.1
-	>=x11-proto/xineramaproto-1.1.3
-	>=x11-proto/xproto-7.0.31
-	>=x11-proto/presentproto-1.0
-	>=x11-proto/dri2proto-2.8
-	>=x11-proto/dri3proto-1.0
+	>=x11-base/xorg-proto-2018.3
 	dmx? (
-		>=x11-proto/dmxproto-2.2.99.1
 		doc? (
 			|| (
 				www-client/links
@@ -115,9 +93,6 @@ DEPEND="${CDEPEND}
 				www-client/w3m
 			)
 		)
-	)
-	!minimal? (
-		>=x11-proto/xf86driproto-2.1.0
 	)"
 
 RDEPEND="${CDEPEND}
@@ -186,8 +161,9 @@ src_configure() {
 		$(use_with doc xmlto)
 		$(use_with systemd systemd-daemon)
 		$(use_enable systemd systemd-logind)
+		$(use_enable systemd suid-wrapper)
+		$(use_enable !systemd install-setuid)
 		--enable-libdrm
-		--enable-suid-wrapper
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
 		--with-fontrootdir="${EPREFIX}"/usr/share/fonts

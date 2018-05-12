@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Python Serial Port extension"
-HOMEPAGE="https://github.com/pyserial/pyserial https://pypi.python.org/pypi/pyserial"
+HOMEPAGE="https://github.com/pyserial/pyserial https://pypi.org/project/pyserial/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,6 +64,7 @@ RDEPEND="!<dev-go/go-tools-0_pre20150902"
 # These test data objects have writable/executable stacks.
 QA_EXECSTACK="
 	usr/lib/go/src/debug/elf/testdata/*.obj
+	usr/lib/go/src/go/internal/gccgoimporter/testdata/escapeinfo.gox
 	usr/lib/go/src/go/internal/gccgoimporter/testdata/unicode.gox
 	usr/lib/go/src/go/internal/gccgoimporter/testdata/time.gox
 	"

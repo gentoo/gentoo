@@ -22,6 +22,22 @@ USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_PPC ABI_S390 ABI_X86 CPU_F
 CONFIG_PROTECT="/etc"
 CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
 
+# EAPI 7 environment variable blacklist.
+#
+# DBUS_SESSION_BUS_ADDRESS to avoid trying to access the user's session
+# bus.
+#
+# DISPLAY and XAUTHORITY to avoid trying to access the user's X11.
+#
+# XDG_* since the values coming from user environment can collide with
+# ebuild-set ${HOME} (e.g. by referring to user's home directory).
+# We exclude XDG_DATA_DIRS & XDG_CONFIG_DIRS as those are set in env.d.
+#
+# PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX:
+# These are guaranteed to confuse perl module installation. Pre-EAPI7
+# the Perl eclasses bail out if they are set. Now we declare them here.
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX"
+
 # Variables that are set exclusively by the profile
 # and not by user configuration files.
 PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USERLAND USE_EXPAND_IMPLICIT USE_EXPAND_UNPREFIXED USE_EXPAND_VALUES_ELIBC USE_EXPAND_VALUES_KERNEL USE_EXPAND_VALUES_USERLAND"
@@ -46,8 +62,9 @@ LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (15 May 2011)
 # Andreas K. Hüttel <dilfridge@gentoo.org> (19 Aug 2011, 25 Mar 2012)
-# By default build all koffice / calligra features.
-CALLIGRA_FEATURES="kexi words flow plan sheets stage tables krita karbon braindump author"
+# Johannes Huber <johu@gentoo.org> (15 Apr 2018)
+# By default build all calligra features.
+CALLIGRA_FEATURES="karbon plan sheets stage words"
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Sep 2010)
 # Small default list of enabled plugins for collectd

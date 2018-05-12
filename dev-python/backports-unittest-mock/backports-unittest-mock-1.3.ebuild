@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd"
 IUSE="doc test"
 
 RDEPEND="dev-python/backports[${PYTHON_USEDEP}]
@@ -26,7 +26,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/jaraco-packaging[${PYTHON_USEDEP}]
-		dev-python/rst-linker[${PYTHON_USEDEP}]
+		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.5.2[${PYTHON_USEDEP}]
 	)
 	test? (

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -23,10 +23,13 @@ DEPEND=">=dev-libs/libowfat-0.25[diet=]
 	)"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.13-compile.patch"
+)
+
 src_prepare() {
+	default
 	rm Makefile  # leaves us with GNUmakefile
-	epatch "${FILESDIR}/${PN}-0.13-compile.patch"
-	eapply_user
 }
 
 src_compile() {

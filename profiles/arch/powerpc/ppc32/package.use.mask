@@ -27,10 +27,6 @@ net-proxy/haproxy device-atlas
 # Requires a Java dependency
 app-text/tesseract scrollview
 
-# Davide Pesavento <pesa@gentoo.org> (21 Jan 2017)
-# Requires unkeyworded dev-python/PyQt5
-dev-python/qscintilla-python qt5
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (13 Dec 2016)
 # Dropping ppc from sci-libs/armadillo, bug 555896
 sci-libs/gdal armadillo
@@ -91,10 +87,6 @@ media-sound/audacity midi soundtouch
 # Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
 # Missing keywords (02 Jun 2015)
 net-misc/connman openconnect
-
-# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
-# Missing stable
-dev-libs/protobuf python
 
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86

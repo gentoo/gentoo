@@ -27,7 +27,7 @@ done
 
 LICENSE="Sleepycat"
 SLOT="5.3"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -103,6 +103,12 @@ src_prepare() {
 		local ev="__EDIT_${v}__"
 		sed -i -e "s/${ev}/${!v}/g" configure || die
 	done
+
+	# This is a false positive skip in the tests as the test-reviewer code
+	# looks for 'Skipping\s'
+	sed -i \
+		-e '/db_repsite/s,Skipping:,Skipping,g' \
+		"${S_BASE}"/test/tcl/reputils.tcl || die
 }
 
 multilib_src_configure() {

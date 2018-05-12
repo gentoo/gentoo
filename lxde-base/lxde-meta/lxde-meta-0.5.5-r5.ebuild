@@ -4,11 +4,11 @@
 EAPI="6"
 
 DESCRIPTION="Meta ebuild for LXDE, the Lightweight X11 Desktop Environment"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://lxde.org/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc x86"
 IUSE=""
 
 RDEPEND=">=lxde-base/menu-cache-0.3.3

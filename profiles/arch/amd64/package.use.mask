@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,18 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
+# media-libs/vulkan-loader is keyworded on amd64
+app-emulation/wine-any -vulkan
+app-emulation/wine-d3d9 -vulkan
+app-emulation/wine-staging -vulkan
+app-emulation/wine-vanilla -vulkan
+
+# Richard Yao <ryao@gentoo.org> (16 Apr 2018)
+# sys-fs/zfs is keyworded on amd64
+sys-cluster/ceph -zfs
+sys-boot/grub -libzfs
 
 # Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
 # [cuda] is unmasked in this profiles.
@@ -62,7 +74,7 @@ media-libs/mlt vdpau
 
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Enable MQTT support on supported architectures
-app-admin/collectd -collectd_plugins_mqtt
+app-metrics/collectd -collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
@@ -183,10 +195,6 @@ net-libs/gnutls -dane
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
 
-# Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
-# sys-fs/zfs is not available everywhere.
-sys-boot/grub -libzfs
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
@@ -222,10 +230,6 @@ dev-qt/qtwebkit -jit
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Alexey Shvetsov <alexxy@gentoo.org> (1 Jul 2011)
-# Use mask infiniband for stable corosync
-=sys-cluster/corosync-1.3.0 infiniband
-
 # Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
@@ -259,9 +263,6 @@ media-libs/imlib2 cpu_flags_x86_mmx
 # unmask USE=bindist on amd64 - also unmasking the other flags that were under a
 # bad comment heading. see bug #246144
 media-video/mplayer -cpudetection
-
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-app-text/enchant -zemberek
 
 # assembler-section
 

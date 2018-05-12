@@ -97,11 +97,12 @@ src_configure() {
 		--bindir="${EPREFIX}/bin"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=user
-		--with-dracutdir="/usr/$(get_libdir)/dracut"
+		--with-dracutdir="${EPREFIX}/usr/lib/dracut"
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
-		--with-blkid
+		--with-systemdunitdir="$(systemd_get_systemunitdir)"
+		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
 	)
 	autotools-utils_src_configure
@@ -187,6 +188,15 @@ pkg_postinst() {
 		einfo "The zfs-shutdown script is obsolete. Removing it from runlevel."
 		rm "${EROOT}etc/runlevels/shutdown/zfs-shutdown"
 	fi
+
+	systemd_reenable zfs-zed.service
+	systemd_reenable zfs-import-cache.service
+	systemd_reenable zfs-import-scan.service
+	systemd_reenable zfs-mount.service
+	systemd_reenable zfs-share.service
+	systemd_reenable zfs-import.target
+	systemd_reenable zfs.target
+	systemd_reenable zfs.service
 
 }
 

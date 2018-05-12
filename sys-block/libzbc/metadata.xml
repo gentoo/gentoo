@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<longdescription lang="en">
+		libzbc is a simple library providing functions for manipulating disks
+		supporting the Zoned Block Command (ZBC) and Zoned-device ATA command
+		set (ZAC) disks. libzbc implemention is compliant with the latest
+		drafts of the ZBC and ZAC standards defined by INCITS technical
+		committee T10 and T13 (respectively).
+
+		In addition to supporting ZBC and ZAC disks, libzbc also implements an
+		emulation mode allowing emulating the behavior of a host-managed zoned
+		disk using a regular file or a standard block device as backing store.
+	</longdescription>
+</pkgmetadata>

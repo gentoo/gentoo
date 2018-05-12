@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-multilib vcs-snapshot flag-o-matic
 
 DESCRIPTION="A small, fast, and high performance math library for robot applications"
-HOMEPAGE="http://ignitionrobotics.org/libraries/math"
+HOMEPAGE="https://ignitionrobotics.org/libraries/math"
 SRC_URI="https://bitbucket.org/ignitionrobotics/ign-math/get/${PN}4_${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"
