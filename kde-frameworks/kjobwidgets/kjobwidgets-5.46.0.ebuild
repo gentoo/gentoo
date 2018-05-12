@@ -21,8 +21,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 	X? (
+		x11-base/xorg-proto
 		x11-libs/libX11
-		x11-proto/xproto
 	)
 "
 

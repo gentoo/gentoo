@@ -51,7 +51,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep kdoctools)
-	X? ( x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 "
 
 RESTRICT+=" test"

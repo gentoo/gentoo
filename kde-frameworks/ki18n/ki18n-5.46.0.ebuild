@@ -25,8 +25,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${P}-fix-build-pofiles.patch" )
-
 pkg_setup() {
 	kde5_pkg_setup
 	python-single-r1_pkg_setup

@@ -30,7 +30,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
-	X? ( x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 "
 
 src_configure() {

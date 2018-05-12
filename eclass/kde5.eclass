@@ -31,7 +31,11 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils eutils flag-o-matic gnome2-utils kde5-functions versionator virtualx xdg
+inherit cmake-utils flag-o-matic gnome2-utils kde5-functions virtualx xdg
+
+case ${EAPI} in
+	6) inherit eapi7-ver eutils ;;
+esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	case ${KDE_SCM} in
@@ -180,7 +184,7 @@ case ${KDE_SUBSLOT} in
 			kde-frameworks | \
 			kde-plasma | \
 			kde-apps)
-				SLOT+="/$(get_version_component_range 1-2)"
+				SLOT+="/$(ver_cut 1-2)"
 				;;
 			*)
 				SLOT+="/${PV}"
@@ -338,7 +342,7 @@ _calculate_src_uri() {
 		kde-frameworks)
 			SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
 		kde-plasma)
-			local plasmapv=$(get_version_component_range 1-3)
+			local plasmapv=$(ver_cut 1-3)
 
 			case ${PV} in
 				5.?.[6-9]? | 5.??.[6-9]? )
@@ -407,11 +411,11 @@ _calculate_live_repo() {
 			fi
 
 			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-				EGIT_BRANCH="Applications/$(get_version_component_range 1-2)"
+				EGIT_BRANCH="Applications/$(ver_cut 1-2)"
 			fi
 
 			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
-				EGIT_BRANCH="Plasma/$(get_version_component_range 1-2)"
+				EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
 			fi
 
 			EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
