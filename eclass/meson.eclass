@@ -162,6 +162,7 @@ _meson_create_cross_file() {
 	ar = '$(tc-getAR)'
 	c = '$(tc-getCC)'
 	cpp = '$(tc-getCXX)'
+	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	strip = '$(tc-getSTRIP)'
 
