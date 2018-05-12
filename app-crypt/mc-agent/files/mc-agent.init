@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v3
+
+command=/usr/bin/mc-agent
+command_args="--no-fork"
+pidfile=/var/run/mc-agent.pid
+start_stop_daemon_args="--make-pidfile --background"
+
