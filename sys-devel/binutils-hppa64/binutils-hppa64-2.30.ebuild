@@ -383,7 +383,7 @@ pkg_postrm() {
 		choice=${choice//$'\n'/ }
 		choice=${choice/* }
 		if [[ -z ${choice} ]] ; then
-			env -i ROOT="${ROOT}" binutils-config -u ${CTARGET}
+			binutils-config -u ${CTARGET}
 		else
 			binutils-config ${choice}
 		fi
