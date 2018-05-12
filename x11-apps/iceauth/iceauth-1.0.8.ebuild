@@ -12,4 +12,4 @@ IUSE=""
 
 RDEPEND="x11-libs/libICE"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"

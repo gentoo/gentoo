@@ -12,7 +12,7 @@ IUSE=""
 RDEPEND="x11-libs/libX11
 	virtual/opengl"
 DEPEND="${RDEPEND}
-	x11-proto/glproto"
+	x11-base/xorg-proto"
 
 pkg_setup() {
 	xorg-2_pkg_setup
