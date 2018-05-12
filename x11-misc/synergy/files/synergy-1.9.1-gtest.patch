@@ -1,0 +1,28 @@
+--- a/src/lib/synergy/KeyMap.h
++++ b/src/lib/synergy/KeyMap.h
+@@ -24,7 +24,9 @@
+ #include "common/stdset.h"
+ #include "common/stdvector.h"
+ 
++#if WITH_GENTOO_TEST
+ #include <gtest/gtest_prod.h>
++#endif
+ 
+ namespace synergy {
+ 
+@@ -327,6 +329,7 @@
+     //@}
+ 
+ 
++#if WITH_GENTOO_TEST
+ private:
+     FRIEND_TEST(KeyMapTests,
+                 findBestKey_requiredDown_matchExactFirstItem);
+@@ -341,6 +344,7 @@
+     FRIEND_TEST(KeyMapTests,
+                 findBestKey_onlyOneRequiredDown_matchTwoRequiredChangesItem);
+     FRIEND_TEST(KeyMapTests, findBestKey_noRequiredDown_cannotMatch);
++#endif
+ 
+ private:
+     //! Ways to synthesize a key

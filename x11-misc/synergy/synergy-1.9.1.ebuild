@@ -1,23 +1,24 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic gnome2-utils cmake-utils qt4-r2
+EAPI=6
+
+inherit cmake-utils desktop gnome2-utils
 
 DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple computers"
-HOMEPAGE="http://synergy-project.org/ https://github.com/symless/synergy-core"
+HOMEPAGE="https://symless.com/synergy https://github.com/symless/synergy-core"
 SRC_URI="
-	https://github.com/symless/${PN}/archive/v${PV}-stable.tar.gz -> ${P}.tar.gz
+	https://github.com/symless/${PN}-core/archive/v${PV}-stable.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}.png
 "
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="libressl qt4"
+IUSE="libressl qt5"
 RESTRICT="test"
 
-S=${WORKDIR}/${P}-stable
+S=${WORKDIR}/${PN}-core-${PV}-stable
 
 COMMON_DEPEND="
 	!libressl? ( dev-libs/openssl:* )
@@ -31,9 +32,11 @@ COMMON_DEPEND="
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXtst
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtwidgets:5
 		net-dns/avahi[mdnsresponder-compat]
 	)
 "
@@ -47,45 +50,33 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	qt4? ( !x11-misc/qsynergy )
+	qt5? ( !x11-misc/qsynergy )
 "
 
+DOCS=( ChangeLog doc/synergy.conf.example{,-advanced,-basic} )
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.16_p1969-pthread.patch
-	"${FILESDIR}"/${PN}-1.7.5-gentoo.patch
-	"${FILESDIR}"/${PN}-1.8.1-internal-gmock-gtest.patch
-	"${FILESDIR}"/${PN}-1.8.5-gtest.patch
+	"${FILESDIR}"/${P}-pthread.patch
+	"${FILESDIR}"/${P}-internal-gmock-gtest.patch
+	"${FILESDIR}"/${P}-gtest.patch
+	"${FILESDIR}"/${P}-cmake-version.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
 )
 
-src_prepare() {
-	cmake-utils_src_prepare
-}
-
 src_configure() {
-	append-cxxflags ${mycmakeargs}
+	local mycmakeargs=(
+		-DSYNERGY_BUILD_LEGACY_GUI=$(usex qt5)
+		-DSYNERGY_BUILD_LEGACY_INSTALLER=OFF
+	)
 
 	cmake-utils_src_configure
-
-	if use qt4 ; then
-		cd src/gui || die
-		qt4-r2_src_configure
-	fi
-}
-
-src_compile() {
-	cmake-utils_src_compile
-
-	if use qt4 ; then
-		cd src/gui || die
-		qt4-r2_src_compile
-	fi
 }
 
 src_install () {
-	dobin bin/${PN}{c,s} bin/syntool
+	dobin "${BUILD_DIR}"/bin/{synergy{c,s},syntool}
 
-	if use qt4 ; then
-		newbin bin/${PN} qsynergy
+	if use qt5 ; then
+		newbin "${BUILD_DIR}"/bin/${PN} qsynergy
 		newicon -s 256 "${DISTDIR}"/${PN}.png q${PN}.png
 		make_desktop_entry q${PN} ${PN/s/S} q${PN} Utility;
 	fi
@@ -96,17 +87,17 @@ src_install () {
 	newman doc/${PN}c.man ${PN}c.1
 	newman doc/${PN}s.man ${PN}s.1
 
-	dodoc README doc/synergy.conf.example* ChangeLog
+	einstalldocs
 }
 
 pkg_preinst() {
-	use qt4 && gnome2_icon_savelist
+	use qt5 && gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	use qt4 && gnome2_icon_cache_update
+	use qt5 && gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	use qt4 && gnome2_icon_cache_update
+	use qt5 && gnome2_icon_cache_update
 }

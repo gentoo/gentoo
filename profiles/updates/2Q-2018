@@ -6,3 +6,4 @@ move media-video/kamoso kde-apps/kamoso
 move app-backup/kbackup kde-apps/kbackup
 move x11-proto/xcb-proto x11-base/xcb-proto
 move dev-db/xtrabackup-bin dev-db/percona-xtrabackup-bin
+move ros-meta/geometry_experimental ros-meta/geometry2
