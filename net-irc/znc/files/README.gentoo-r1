@@ -10,6 +10,6 @@ configuration files:
   # rm -rf /home/$USER/.znc
   # chown -R znc:znc /var/lib/znc
 
-OpenRC user may also adjust the location of the files and the user running
-znc in /etc/conf.d/znc instead. Systemd user may have to overwrite
+OpenRC users may also adjust the location of the files and the user running
+znc in /etc/conf.d/znc instead. Systemd users may have to overwrite the
 existing unit file.
