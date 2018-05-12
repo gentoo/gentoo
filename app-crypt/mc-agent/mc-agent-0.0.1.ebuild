@@ -82,4 +82,3 @@ src_install() {
     dobin "${WORKDIR}/bin/${PN}"
 	newinitd "${FILESDIR}/mc-agent.init" mc-agent
 }
-
