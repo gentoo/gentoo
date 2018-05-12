@@ -11,7 +11,7 @@ GTEST_VER="1.7.0"
 GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> googletest-release-${GTEST_VER}.tar.gz"
 
 DESCRIPTION="An advanced IRC Bouncer"
-HOMEPAGE="http://znc.in"
+HOMEPAGE="https://znc.in"
 SRC_URI="
 	http://znc.in/releases/archive/${PN}-${MY_PV}.tar.gz
 	test? ( ${GTEST_URL} )
