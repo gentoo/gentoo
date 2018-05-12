@@ -32,10 +32,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
-	X? (
-		x11-proto/xextproto[${MULTILIB_USEDEP}]
-		x11-proto/xproto[${MULTILIB_USEDEP}]
-	)
+	X? ( x11-base/xorg-proto )
 "
 
 multilib_src_configure() {

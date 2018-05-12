@@ -57,9 +57,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
-	x11-proto/scrnsaverproto
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 RDEPEND="${COMMON_DEPEND}
 	speech? ( app-accessibility/powiedz )

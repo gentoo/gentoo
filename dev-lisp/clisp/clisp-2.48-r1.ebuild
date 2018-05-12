@@ -31,7 +31,7 @@ RDEPEND="virtual/libiconv
 		 berkdb? ( sys-libs/db:4.5 )"
 
 DEPEND="${RDEPEND}
-	X? ( new-clx? ( x11-misc/imake x11-proto/xextproto ) )"
+	X? ( new-clx? ( x11-base/xorg-proto x11-misc/imake ) )"
 
 # dev-lisp/gentoo-init is obsolete, it will be dropped soon
 # This version of clisp is its last consumer

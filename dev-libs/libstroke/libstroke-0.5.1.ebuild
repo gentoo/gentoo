@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
-DEPEND="x11-proto/xproto
+DEPEND="x11-base/xorg-proto
 	${RDEPEND}"
 
 src_unpack() {

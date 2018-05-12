@@ -20,7 +20,7 @@ RDEPEND="sys-libs/ncurses
 		x11-libs/libSM
 		x11-libs/libXaw )"
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto )"
 
 S="${WORKDIR}/${P/2.5/2.4}"
 
