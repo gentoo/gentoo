@@ -35,6 +35,7 @@ DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kio)
+	dev-util/intltool
 	net-libs/libaccounts-glib
 "
 RDEPEND="${COMMON_DEPEND}
