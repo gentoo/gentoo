@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile prepare
+DESCRIPTION=Tool for incremental and recursive IMAP transfers between mailboxes
+EAPI=6
+HOMEPAGE=http://ks.lamiral.info/imapsync/ https://github.com/imapsync/imapsync
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=WTFPL-2
+RDEPEND=test? ( virtual/perl-Test dev-perl/Test-Deep dev-perl/Test-Fatal dev-perl/Test-MockObject dev-perl/Test-Pod dev-perl/Test-Requires dev-perl/Test-Warn dev-perl/Test-NoWarnings )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/imapsync/imapsync/archive/imapsync-1.882.tar.gz
+_md5_=586cef1b0bb5dc0501f039d54066c262
