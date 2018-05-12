@@ -167,9 +167,9 @@ _meson_create_cross_file() {
 
 	[properties]
 	c_args = $(_meson_env_array "${CFLAGS}")
-	c_link_args = $(_meson_env_array "${LDFLAGS}")
+	c_link_args = $(_meson_env_array "${CFLAGS} ${LDFLAGS}")
 	cpp_args = $(_meson_env_array "${CXXFLAGS}")
-	cpp_link_args = $(_meson_env_array "${LDFLAGS}")
+	cpp_link_args = $(_meson_env_array "${CXXFLAGS} ${LDFLAGS}")
 	fortran_args = $(_meson_env_array "${FCFLAGS}")
 	objc_args = $(_meson_env_array "${OBJCFLAGS}")
 	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS}")
