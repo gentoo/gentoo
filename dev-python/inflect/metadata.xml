@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">inflect</remote-id>
-		<remote-id type="github">pwdyson/inflect.py</remote-id>
+		<remote-id type="github">jazzband/inflect</remote-id>
 	</upstream>
 </pkgmetadata>
