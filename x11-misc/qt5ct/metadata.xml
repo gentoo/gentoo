@@ -15,7 +15,6 @@
 	</longdescription>
 	<use>
 		<flag name="dbus">Enable system tray and global menu support</flag>
-		<flag name="systray">Enable system tray support</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">qt5ct</remote-id>
