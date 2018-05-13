@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed 's:FileNotFoundError:EnvironmentError:' -i pym/repoman/config.py || die
+	sed 's:file\.size\.fatal:file.size-fatal:' -i pym/repoman/modules/scan/fetch/fetches.py || die
 	distutils-r1_src_prepare
 }
 
