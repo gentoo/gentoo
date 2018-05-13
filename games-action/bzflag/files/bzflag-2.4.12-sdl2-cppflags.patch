@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -236,6 +236,7 @@
+ AC_PROG_CC
+ AC_PROG_LN_S
+ AC_CHECK_PROG(AR, ar, ar)
++PKG_PROG_PKG_CONFIG
+ AC_SUBST(AR)
+ AC_SUBST(AR_FLAGS)
+ 
+@@ -716,6 +717,8 @@
+ fi
+ if test "x$with_SDL" = "x2"; then
+     AC_DEFINE(HAVE_SDL2, 1, [Using SDL2])
++    PKG_CHECK_MODULES(sdl2, sdl2,
++        [CONF_CPPFLAGS="$CONF_CPPFLAGS $sdl2_CFLAGS"],[])
+ fi
+ 
+ AM_CONDITIONAL(HAVE_SDL, test x$with_SDL = x1 -o x$with_SDL = x2)
