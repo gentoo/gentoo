@@ -20,6 +20,7 @@ S="${WORKDIR}"
 QA_PREBUILT="*"
 RESTRICT="mirror bindist strip" #299368
 
+# See bug 642054 about app-crypt/libsecret and MULTILIB_USEDEP.
 RDEPEND="
 	app-crypt/libsecret[${MULTILIB_USEDEP}]
 	dev-libs/atk[${MULTILIB_USEDEP}]
