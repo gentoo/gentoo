@@ -69,18 +69,16 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /usr/share/pixmaps
-	doins usr/share/pixmaps/${MY_PN}.png
+	doicon usr/share/pixmaps/slack.png
+	doicon -s 512 usr/share/pixmaps/slack.png
+	domenu usr/share/applications/slack.desktop
 
-	newicon -s 512 usr/share/pixmaps/${MY_PN}.png ${MY_PN}.png
-	domenu usr/share/applications/${MY_PN}.desktop
+	insinto /opt/slack
+	doins -r usr/lib/slack/.
+	fperms +x /opt/slack/slack
+	dosym ../../opt/slack/slack usr/bin/slack
 
-	insinto /opt/${MY_PN}
-	doins -r usr/lib/${MY_PN}/.
-	fperms +x /opt/${MY_PN}/${MY_PN}
-	dosym ../../opt/${MY_PN}/${MY_PN} usr/bin/${MY_PN}
-
-	use pax_kernel && pax-mark -m ${ED%/}/opt/${MY_PN}/${MY_PN}
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/slack/slack
 }
 
 pkg_postinst() {

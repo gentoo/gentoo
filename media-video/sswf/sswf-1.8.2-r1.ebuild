@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="A C++ Library and a script language tool to create Flash (SWF) movies up to version 8"
-HOMEPAGE="http://www.m2osw.com/sswf.html"
+HOMEPAGE="https://www.m2osw.com/sswf.html"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2
 	mirror://sourceforge/${PN}/${P}-doc.tar.bz2"
 
