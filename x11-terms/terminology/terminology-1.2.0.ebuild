@@ -1,16 +1,17 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
 HOMEPAGE="https://www.enlightenment.org/about-terminology"
-EGIT_REPO_URI="https://git.enlightenment.org/apps/${PN}.git"
+SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/efl-1.20.0[eet,fontconfig,opengl,X]"
