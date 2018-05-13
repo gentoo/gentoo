@@ -20,7 +20,7 @@ SLOT="0"
 
 DEPEND="dev-lang/go:0"
 
-# inherit golang-build
+inherit user
 
 S=${WORKDIR}
 
@@ -81,4 +81,23 @@ src_compile() {
 src_install() {
     dobin "${WORKDIR}/bin/${PN}"
 	newinitd "${FILESDIR}/mc-agent.init" mc-agent
+	newconfd "${FILESDIR}/mc-agent.defaults" mc-agent
+
+	dodir /etc/tmpfiles.d
+	insinto /etc/tmpfiles.d
+	doins "${FILESDIR}/mc-agent.conf"
+}
+
+pkg_setup() {
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 -1 ${PN}
+}
+
+pkg_postinst() {
+	# Add /tmp/mc-agent in case it doesn't exist yet. This should solve
+	# problems like bug #508634 where tmpfiles.d isn't in effect.
+	local rundir="/tmp/mc-agent"
+	mkdir -m 0770 "${rundir}"
+	chgrp ${PN} "${rundir}"
+	chown ${PN} "${rundir}"
 }

@@ -1,0 +1,5 @@
+# SSH Socket Directory
+SOCK_DIR="/tmp/mc-agent"
+
+# SSH Socket File
+SOCK_FILE="agent.socket"
