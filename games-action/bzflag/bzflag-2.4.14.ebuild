@@ -46,6 +46,8 @@ src_configure() {
 		ewarn "You are building a server-only copy of BZFlag"
 		ewarn
 		myconf="--disable-client --without-SDL"
+	else
+		myconf="--with-sdl=2"
 	fi
 
 	econf \
