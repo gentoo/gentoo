@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=sys-libs/zlib app-arch/bzip2
+DESCRIPTION=A PGP packet visualizer
+EAPI=6
+HOMEPAGE=http://www.mew.org/~kazu/proj/pgpdump/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=BSD
+RDEPEND=sys-libs/zlib app-arch/bzip2
+SLOT=0
+SRC_URI=http://www.mew.org/~kazu/proj/pgpdump/pgpdump-0.33.tar.gz
+_md5_=f65fbcf8a31c216b064748cd20100cef
