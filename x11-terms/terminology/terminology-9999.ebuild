@@ -13,8 +13,9 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="nls"
 
+RDEPEND=">=dev-libs/efl-1.20.0[eet,fontconfig,opengl,X]"
 DEPEND="
-	>=dev-libs/efl-1.20.0[eet,fontconfig,opengl,X]
+	${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
