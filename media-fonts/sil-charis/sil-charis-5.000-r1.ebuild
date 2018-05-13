@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit font
 
 MY_PN="CharisSIL"
@@ -25,6 +26,7 @@ FONT_SUFFIX="ttf"
 DOCS="OFL-FAQ.txt documentation/*"
 
 src_prepare() {
+	default
 	if use compact; then
 		mv "${WORKDIR}"/${MY_PN}Compact-${PV}/*.${FONT_SUFFIX} "${FONT_S}" || die
 	fi
