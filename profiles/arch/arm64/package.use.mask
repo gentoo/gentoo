@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (13 May 2018)
+# Not bothering with otherwise p.masked old gcc for the
+# extra dev-libs/cloog dependency with USE=graphite
+<sys-devel/gcc-5 graphite
+
 # Mart Raudsepp <leio@gentoo.org> (06 May 2018)
 # New enough dev-ruby/webmock not keyworded yet
 >=dev-ruby/thor-0.20.0 test
@@ -320,9 +325,6 @@ net-misc/curl curl_ssl_axtls curl_ssl_libressl metalink
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
-
-# Needs testing.
-sys-devel/gcc graphite regression-test
 
 # Roy Bamford <neddyseagoon@gentoo.org> (26 Jan 2017)
 # gcj-6.3 won't bootstrap icedtea 7
