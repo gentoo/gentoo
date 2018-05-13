@@ -11,13 +11,10 @@ CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Messages for commonly used sensors, including cameras and scanning laser rangefinders"
+DESCRIPTION="Messages for defining shapes, such as simple solid object primitives, planes, and meshes"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND=""
-DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest dev-ros/rosunit[${PYTHON_USEDEP}] )
-"
-RDEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}"

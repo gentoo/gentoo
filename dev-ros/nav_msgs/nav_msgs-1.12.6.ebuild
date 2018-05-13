@@ -7,17 +7,14 @@ ROS_REPO_URI="https://github.com/ros/common_msgs"
 KEYWORDS="~amd64 ~arm"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 ROS_SUBDIR=${PN}
-CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
+CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs dev-ros/actionlib_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Messages for commonly used sensors, including cameras and scanning laser rangefinders"
+DESCRIPTION="Common messages used to interact with the navigation stack"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND=""
-DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest dev-ros/rosunit[${PYTHON_USEDEP}] )
-"
-RDEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}"

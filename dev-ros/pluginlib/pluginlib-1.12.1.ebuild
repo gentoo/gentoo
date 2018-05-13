@@ -6,6 +6,7 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros/pluginlib"
 KEYWORDS="~amd64 ~arm"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+ROS_SUBDIR="${PN}"
 
 inherit ros-catkin
 
@@ -15,12 +16,11 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/class_loader-0.3.5
+	>=dev-ros/class_loader-0.3.5:=
 	dev-ros/rosconsole
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-libs/boost:=
 	dev-libs/tinyxml2:=
-	dev-ros/cmake_modules
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"

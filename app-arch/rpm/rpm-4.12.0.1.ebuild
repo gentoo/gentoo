@@ -13,7 +13,7 @@ SRC_URI="http://rpm.org/releases/rpm-$(get_version_component_range 1-2).x/${P}.t
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="nls python doc caps lua acl selinux"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
