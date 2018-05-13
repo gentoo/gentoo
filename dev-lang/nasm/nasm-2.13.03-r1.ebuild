@@ -32,6 +32,7 @@ S=${WORKDIR}/${P/_}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.13.01-fix-docdir.patch
 	"${FILESDIR}"/${PN}-2.13.01-gcc-8.patch
+	"${FILESDIR}"/${PN}-2.13.03-bsd-cp-doc.patch
 )
 
 src_configure() {
