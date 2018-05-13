@@ -2732,11 +2732,6 @@ developers and volunteer mentors.</description>
       <name>Brian Dolbec</name>
       <role>Gentooolkit, Mirrorselect, Esearch, Layman, Gentoo-keys</role>
     </member>
-    <member is-lead="1">
-      <email>fuzzyray@gentoo.org</email>
-      <name>Paul Varner</name>
-      <role>Lead</role>
-    </member>
     <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
