@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -8,7 +8,7 @@ inherit font
 MY_PN="AbyssinicaSIL"
 
 DESCRIPTION="SIL Opentype Unicode fonts for Ethiopic languages"
-HOMEPAGE="http://scripts.sil.org/AbyssinicaSIL"
+HOMEPAGE="https://software.sil.org/abyssinica"
 SRC_URI="mirror://gentoo/${MY_PN}${PV}.zip"
 
 LICENSE="OFL-1.1"
