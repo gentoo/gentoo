@@ -13,14 +13,14 @@ LICENSE="BSD-2"
 SLOT="0.17/${PV%%_*}"
 KEYWORDS="~amd64 ~x86"
 
-e_conf_mods=(
+E_CONF_MODS=(
 	applications bindings dialogs display
 	interaction intl menus paths
 	performance randr shelves theme
 	window-manipulation window-remembers
 )
 
-e_norm_mods=(
+E_NORM_MODS=(
 	appmenu backlight battery bluez4
 	clock conf connman cpufreq
 	everything fileman fileman-opinfo gadman
@@ -36,14 +36,17 @@ e_norm_mods=(
 )
 
 IUSE_E_MODULES=(
-	${e_conf_mods[@]/#/enlightenment_modules_conf-}
-	${e_norm_mods[@]/#/enlightenment_modules_}
+	${E_CONF_MODS[@]/#/enlightenment_modules_conf-}
+	${E_NORM_MODS[@]/#/enlightenment_modules_}
 )
 
 IUSE="doc nls pam systemd udisks wayland ${IUSE_E_MODULES[@]/#/+}"
 
+RDEPEND="
+	>=dev-libs/efl-1.20.5[eet,X]
+"
 DEPEND="
-	>=dev-libs/efl-1.20.5[X]
+	${RDEPEND}
 	virtual/pkgconfig
 	virtual/udev
 	x11-libs/libXext
@@ -56,9 +59,9 @@ DEPEND="
 	udisks? ( sys-fs/udisks:2 )
 	wayland? (
 		dev-libs/efl[wayland]
-		>=dev-libs/wayland-1.11.0
-		>=x11-libs/libxkbcommon-0.3.1
-		>=x11-libs/pixman-0.31.1
+		>=dev-libs/wayland-1.12.0
+		x11-libs/libxkbcommon
+		x11-libs/pixman
 	)
 "
 
@@ -103,14 +106,14 @@ src_configure() {
 }
 
 src_install() {
-	meson_src_install
-
 	insinto /etc/enlightenment
-		newins "${FILESDIR}"/gentoo-sysactions.conf sysactions.conf
+	newins "${FILESDIR}"/gentoo-sysactions.conf sysactions.conf
 
 	if use doc ; then
 		local HTML_DOCS=( doc/. )
 	fi
+
+	meson_src_install
 }
 
 pkg_postinst() {
