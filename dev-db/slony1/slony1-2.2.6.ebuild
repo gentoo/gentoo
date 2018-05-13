@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-POSTGRES_COMPAT=( 9.{2..6} 10 )
+POSTGRES_COMPAT=( 9.{3..6} 10 )
 POSTGRES_USEDEP="server,threads"
 
 inherit eutils postgres-multi versionator
