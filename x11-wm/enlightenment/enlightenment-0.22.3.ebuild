@@ -44,16 +44,11 @@ IUSE="doc nls pam systemd udisks wayland ${IUSE_E_MODULES[@]/#/+}"
 
 RDEPEND="
 	>=dev-libs/efl-1.20.5[eet,X]
-"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
 	virtual/udev
 	x11-libs/libXext
 	x11-libs/libxcb
 	x11-libs/xcb-util-keysyms
 	x11-misc/xkeyboard-config
-	nls? ( sys-devel/gettext )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd )
 	udisks? ( sys-fs/udisks:2 )
@@ -63,6 +58,11 @@ DEPEND="
 		x11-libs/libxkbcommon
 		x11-libs/pixman
 	)
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 "
 
 src_prepare() {
