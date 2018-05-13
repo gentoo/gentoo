@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit eutils multilib python-single-r1 qt4-r2 user
+inherit eutils multilib python-single-r1 user
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="http://www.bareos.org/"
@@ -17,7 +17,7 @@ LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb libressl
-	logwatch mysql ndmp postgres python qt4 rados rados-striper readline scsi-crypto
+	logwatch mysql ndmp postgres python rados rados-striper readline scsi-crypto
 	sql-pooling +sqlite ssl static +storage-daemon tcpd vim-syntax"
 REQUIRED_USE="!clientonly? ( || ( mysql postgres sqlite ) )"
 
@@ -37,10 +37,6 @@ DEPEND="
 			virtual/mta
 			jansson? ( dev-libs/jansson )
 		)
-	)
-	qt4? (
-		dev-qt/qtsvg:4
-		x11-libs/qwt:5
 	)
 	fastlz? ( dev-libs/bareos-fastlzlib )
 	logwatch? ( sys-apps/logwatch )
@@ -102,12 +98,6 @@ pkg_setup() {
 		einfo
 	fi
 
-	if use clientonly && use static && use qt4; then
-		ewarn
-		ewarn "Building statically linked 'bat' is not supported. Ignorig 'qt4' useflag."
-		ewarn
-	fi
-
 	if ! use clientonly; then
 		if [ -z "$(egetent passwd bareos 2>/dev/null)" ]; then
 			enewuser bareos -1 -1 /var/lib/bareos bareos,disk,tape,cdrom,cdrw
@@ -165,8 +155,8 @@ src_configure() {
 	# do not build bat and traymonitor if 'static' clientonly
 	if ! use clientonly || ! use static; then
 		myconf="${myconf} \
-			$(use_enable qt4 bat) \
-			$(use_enable qt4 traymonitor)"
+			--disable-bat \
+			--disable-traymonitor"
 	fi
 
 	myconf="${myconf} \
@@ -221,15 +211,6 @@ src_configure() {
 		--disable-afs \
 		--host=${CHOST} \
 		${myconf}
-	# correct configuration for QT based bat
-	if use qt4 ; then
-		pushd src/qt-console
-		eqmake4
-		popd
-		pushd src/qt-tray-monitor
-		eqmake4
-		popd
-	fi
 }
 
 src_compile() {
@@ -244,13 +225,6 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 	newicon src/images/bareos_logo_shadow.png bareos.png
-
-	# install bat icon and desktop file when enabled
-	# (for some reason ./configure doesn't pick this up)
-	if use qt4 && ! use static ; then
-		doicon src/images/bat.png
-		domenu scripts/bat.desktop
-	fi
 
 	# remove some scripts we don't need at all
 	rm -f "${D}"/usr/libexec/bareos/{bareos,bareos-ctl-dir,bareos-ctl-fd,bareos-ctl-sd,startmysql,stopmysql}
@@ -290,9 +264,8 @@ src_install() {
 	fi
 
 	rm -vf "${D}"/usr/share/man/man1/bareos-bwxconsole.1*
-	if ! use qt4; then
-		rm -vf "${D}"/usr/share/man/man1/bat.1*
-	fi
+	rm -vf "${D}"/usr/share/man/man1/bat.1*
+
 	if use clientonly || ! use director; then
 		rm -vf "${D}"/usr/share/man/man8/bareos-dir.8*
 		rm -vf "${D}"/usr/share/man/man8/bareos-dbcheck.8*
@@ -323,9 +296,7 @@ src_install() {
 	if ! use scsi-crypto; then
 		rm -vf "${D}"/usr/share/man/man8/bscrypto.8*
 	fi
-	if ! use qt4; then
-		rm -vf "${D}"/usr/share/man/man1/bareos-tray-monitor.1*
-	fi
+	rm -vf "${D}"/usr/share/man/man1/bareos-tray-monitor.1*
 
 	# documentation
 	dodoc README.md
@@ -422,7 +393,6 @@ pkg_postinst() {
 		einfo
 	fi
 
-	einfo "Please note that 'bconsole' will always be installed. To compile 'bat'"
-	einfo "you have to enable 'USE=qt4'."
+	einfo "Please note that 'bconsole' will always be installed."
 	einfo
 }
