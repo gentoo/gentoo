@@ -16,9 +16,8 @@ KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 CDEPEND="
-	>=dev-python/botocore-1.3.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/futures-2.2.0[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep '<dev-python/futures-4.0.0[${PYTHON_USEDEP}]' 'python2_7')
+	dev-python/botocore[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' 'python2_7')
 "
 # Pin mock to 1.3.0 if testing failures due to mock occur.
 DEPEND="
