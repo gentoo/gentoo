@@ -78,6 +78,8 @@ pkg_setup() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
+	"${FILESDIR}"/${P}-ffmpeg-4-0-compat-1.patch  # bug 654172
+	"${FILESDIR}"/${P}-ffmpeg-4-0-compat-2.patch  # bug 654172
 )
 
 src_prepare() {
