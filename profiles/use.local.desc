@@ -3496,7 +3496,6 @@ media-video/mpv:rubberband - Enable high quality pitch correction via media-libs
 media-video/mpv:sdl - Enable media-libs/libsdl2 based video and audio outputs (Note: these outputs exist for compatibility reasons only, avoid if possible)
 media-video/mpv:tools - Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv
 media-video/mpv:uchardet - Enable subtitles charset discovery via app-i18n/uchardet
-media-video/mpv:vf-dlopen - Install additional video filters to be used with -vf dlopen
 media-video/noad:libmpeg2 - Support for libmpeg2 library
 media-video/nvidia_video_sdk:tools - Build and install example tools.
 media-video/parole:clutter - Compile in Clutter GTK+ support
@@ -5975,7 +5974,6 @@ x11-misc/mozo:gtk3 - Build with GTK+3 instead of GTK+2
 x11-misc/openbox-menu:icons - Enable support for icons in menus
 x11-misc/openbox-menu:svg - Support SVG icons
 x11-misc/qt5ct:dbus - Enable system tray and global menu support
-x11-misc/qt5ct:systray - Enable system tray support
 x11-misc/redshift:geoclue - Control dependency on app-misc/geoclue
 x11-misc/rofi:windowmode - Enable normal window mode
 x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
