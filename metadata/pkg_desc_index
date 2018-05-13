@@ -7110,7 +7110,7 @@ media-fonts/mikachan-font-ttf 8.9-r2: Mikachan Japanese TrueType fonts
 media-fonts/monafont 2.90-r2: Japanese bitmap and TrueType fonts suitable for browsing 2ch
 media-fonts/mplus-fonts 2.2.4: M+ Japanese bitmap fonts
 media-fonts/mplus-outline-fonts 0_pre062: M+ Japanese outline fonts
-media-fonts/nanumfont 2.0: Korean monospace font distributed by NHN
+media-fonts/nanumfont 2.0 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
 media-fonts/noto 20170403: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20150615: Google's font family that aims to support all the world's languages
@@ -7129,12 +7129,12 @@ media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
 media-fonts/sil-abyssinica 1.200: SIL Opentype Unicode fonts for Ethiopic languages
 media-fonts/sil-arabicfonts 1.005: SIL Opentype Unicode fonts for Arabic Languages
-media-fonts/sil-charis 4.110: SIL Charis - SIL fonts for Roman and Cyrillic languages
-media-fonts/sil-doulos 4.110: SIL Doulos - SIL font for Roman and Cyrillic Languages
+media-fonts/sil-charis 4.110 5.000-r1: Serif typeface for Roman and Cyrillic languages
+media-fonts/sil-doulos 4.110 5.000-r1: SIL Doulos - SIL font for Roman and Cyrillic Languages
 media-fonts/sil-ezra 2.51: SIL Ezra - Unicode Opentype fonts for Biblical Hebrew
 media-fonts/sil-galatia 2.1: The Galatia SIL Greek Unicode Fonts package
-media-fonts/sil-gentium 1.508: SIL Gentium Plus unicode font for Latin and Greek languages
-media-fonts/sil-padauk 2.8: SIL fonts for Myanmar script
+media-fonts/sil-gentium 1.508 5.000-r1: Gentium Plus unicode font for Latin and Greek languages
+media-fonts/sil-padauk 2.8 2.8-r1: SIL fonts for Myanmar script
 media-fonts/source-han-sans 1.001: Pan-CJK OpenType/CFF font family
 media-fonts/source-pro 20141211: Adobe's open source typeface family designed for UI environments
 media-fonts/stix-fonts 1.1.1: Comprehensive OpenType font set of mathematical symbols and alphabets
