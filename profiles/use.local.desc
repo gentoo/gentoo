@@ -3688,14 +3688,19 @@ net-analyzer/nsca:minimal - Only build and install the send_nsca command and not
 net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
+net-analyzer/pmacct:bgp-bins - Link BGP daemon binaries
+net-analyzer/pmacct:bmp-bins - Link BMP daemon binaries
 net-analyzer/pmacct:geoipv2 - Enable support for GeoIP2 through dev-libs/libmaxminddb
 net-analyzer/pmacct:jansson - Enable support for JSON through dev-libs/jansson
 net-analyzer/pmacct:kafka - Enable support for Apache Kafka through dev-libs/librdkafka
+net-analyzer/pmacct:l2 - Enable Layer-2 features and support
 net-analyzer/pmacct:mongodb - Enable support for MongoDB through dev-libs/mongo-c-driver
 net-analyzer/pmacct:ndpi - Enable support for nDPI through net-libs/nDPI
 net-analyzer/pmacct:nflog - Enable support for NFLOG through uacctd
+net-analyzer/pmacct:plabel - Enable IP prefix labels
 net-analyzer/pmacct:rabbitmq - Enable support for RabbitMQ through net-libs/rabbitmq-c
-net-analyzer/pmacct:ulog - Enable support for ULOG in older kernels (deprecated)
+net-analyzer/pmacct:st-bins - Link Streaming Telemetry daemon binaries
+net-analyzer/pmacct:traffic-bins - Link IPv4/IPv6 traffic accounting binaries
 net-analyzer/pmacct:zmq - Enable support for ZeroMQ through net-libs/zeromq
 net-analyzer/pnp4nagios:icinga - Build against net-analyzer/icinga2 or net-analyzer/icinga instead of net-analyzer/nagios-core
 net-analyzer/pnp4nagios:nagios - Build against net-analyzer/nagios-core (the default)
