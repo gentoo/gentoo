@@ -1084,7 +1084,7 @@ app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/scope 0.04-r1: Serial Line Analyser
-app-misc/screen 4.4.0: screen manager with VT100/ANSI terminal emulation
+app-misc/screen 4.4.0 4.6.1: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 3.8.0: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
