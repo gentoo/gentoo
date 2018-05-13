@@ -31,6 +31,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.12-configure.patch
 	"${FILESDIR}"/${PN}-2.4.12-tinfo.patch
+	"${FILESDIR}"/${PN}-2.4.12-sdl2-cppflags.patch
 )
 
 src_prepare() {
