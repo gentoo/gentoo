@@ -12,4 +12,7 @@
   <upstream>
     <remote-id type="github">hpc/charliecloud</remote-id>
   </upstream>
+  <use>
+    <flag name='pv'>Use sys-apps/pv to enable progress bar functionality</flag>
+  </use>
 </pkgmetadata>
