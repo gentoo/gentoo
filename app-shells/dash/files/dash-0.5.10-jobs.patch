@@ -1,0 +1,88 @@
+From 9e5cd41d9605e4caaac3aacdc0482f6ee220a298 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Mon, 7 May 2018 00:40:34 +0800
+Subject: jobs - Do not block when waiting on SIGCHLD
+
+Because of the nature of SIGCHLD, the process may have already been
+waited on and therefore we must be prepared for the case that wait
+may block.  So ensure that it doesn't by using WNOHANG.
+
+Furthermore, multiple jobs may have exited when gotsigchld is set.
+Therefore we need to wait until there are no zombies left.
+
+Lastly, waitforjob needs to be called with interrupts off and
+the original patch broke that.
+
+Fixes: 03876c0743a5 ("eval: Reap zombies after built-in...")
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/eval.c | 12 ++++--------
+ src/jobs.c | 13 ++++++++++---
+ 2 files changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/src/eval.c b/src/eval.c
+index a27d657..39c4e41 100644
+--- a/src/eval.c
++++ b/src/eval.c
+@@ -859,10 +859,8 @@ bail:
+ 		if (!(flags & EV_EXIT) || have_traps()) {
+ 			INTOFF;
+ 			jp = makejob(cmd, 1);
+-			if (forkshell(jp, cmd, FORK_FG) != 0) {
+-				INTON;
++			if (forkshell(jp, cmd, FORK_FG) != 0)
+ 				break;
+-			}
+ 			FORCEINTON;
+ 		}
+ 		listsetvar(varlist.list, VEXPORT|VSTACK);
+@@ -875,11 +873,8 @@ bail:
+ 			if (execcmd && argc > 1)
+ 				listsetvar(varlist.list, VEXPORT);
+ 		}
+-		if (evalbltin(cmdentry.u.cmd, argc, argv, flags)) {
+-			if (exception == EXERROR && spclbltin <= 0) {
+-				FORCEINTON;
+-				break;
+-			}
++		if (evalbltin(cmdentry.u.cmd, argc, argv, flags) &&
++		    !(exception == EXERROR && spclbltin <= 0)) {
+ raise:
+ 			longjmp(handler->loc, 1);
+ 		}
+@@ -892,6 +887,7 @@ raise:
+ 	}
+ 
+ 	status = waitforjob(jp);
++	FORCEINTON;
+ 
+ out:
+ 	if (cmd->ncmd.redirect)
+diff --git a/src/jobs.c b/src/jobs.c
+index 1a97c54..606d603 100644
+--- a/src/jobs.c
++++ b/src/jobs.c
+@@ -975,10 +975,17 @@ waitforjob(struct job *jp)
+ 	int st;
+ 
+ 	TRACE(("waitforjob(%%%d) called\n", jp ? jobno(jp) : 0));
+-	while ((jp && jp->state == JOBRUNNING) || gotsigchld)
+-		dowait(DOWAIT_BLOCK, jp);
+-	if (!jp)
++	if (!jp) {
++		int pid = gotsigchld;
++
++		while (pid > 0)
++			pid = dowait(DOWAIT_NORMAL, NULL);
++
+ 		return exitstatus;
++	}
++
++	while (jp->state == JOBRUNNING)
++		dowait(DOWAIT_BLOCK, jp);
+ 	st = getstatus(jp);
+ #if JOBS
+ 	if (jp->jobctl) {
+-- 
+cgit v1.1
+
