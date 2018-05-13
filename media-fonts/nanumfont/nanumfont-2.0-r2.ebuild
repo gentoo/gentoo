@@ -12,7 +12,7 @@ SRC_URI="http://dev.naver.com/frs/download.php/441/${MY_P}.zip"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # Only installs fonts
