@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.9.1-format-security.patch
-	"${FILESDIR}"/${P}-jobs.patch
 )
 
 src_prepare() {
