@@ -6,16 +6,18 @@ EAPI=6
 MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop gnome2-utils multilib-build pax-utils unpacker xdg-utils
+inherit desktop eapi7-ver gnome2-utils multilib-build pax-utils unpacker xdg-utils
+
+MY_PV=$(ver_rs 3 -)
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="http://www.slack.com/"
-SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
+SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${MY_PV}5a7a50e-amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 -*"
-IUSE="pax_kernel"
+IUSE="ayatana pax_kernel"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-crypt/libsecret:0[${MULTILIB_USEDEP}]
@@ -33,7 +35,7 @@ RDEPEND="app-crypt/libsecret:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
-	x11-libs/gtk+:2[${MULTILIB_USEDEP}]
+	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	x11-libs/libX11:0[${MULTILIB_USEDEP}]
 	x11-libs/libxcb:0/1.12[${MULTILIB_USEDEP}]
 	x11-libs/libXcomposite:0[${MULTILIB_USEDEP}]
@@ -47,7 +49,8 @@ RDEPEND="app-crypt/libsecret:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrender:0[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	x11-libs/pango:0[${MULTILIB_USEDEP}]
+	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="opt/slack/slack
 	opt/slack/resources/app.asar.unpacked/node_modules/*
@@ -57,19 +60,27 @@ QA_PREBUILT="opt/slack/slack
 
 S="${WORKDIR}"
 
+src_prepare() {
+	default
+
+	if use ayatana ; then
+		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
+			usr/share/applications/slack.desktop \
+			|| die "sed failed for slack.desktop"
+	fi
+}
+
 src_install() {
-	insinto /usr/share/pixmaps
-	doins usr/share/pixmaps/${MY_PN}.png
+	doicon usr/share/pixmaps/slack.png
+	doicon -s 512 usr/share/pixmaps/slack.png
+	domenu usr/share/applications/slack.desktop
 
-	newicon -s 512 usr/share/pixmaps/${MY_PN}.png ${MY_PN}.png
-	domenu usr/share/applications/${MY_PN}.desktop
+	insinto /opt/slack
+	doins -r usr/lib/slack/.
+	fperms +x /opt/slack/slack
+	dosym ../../opt/slack/slack usr/bin/slack
 
-	insinto /opt/${MY_PN}
-	doins -r usr/lib/${MY_PN}/.
-	fperms +x /opt/${MY_PN}/${MY_PN}
-	dosym ../../opt/${MY_PN}/${MY_PN} usr/bin/${MY_PN}
-
-	use pax_kernel && pax-mark -m ${ED%/}/opt/${MY_PN}/${MY_PN}
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/slack/slack
 }
 
 pkg_postinst() {
