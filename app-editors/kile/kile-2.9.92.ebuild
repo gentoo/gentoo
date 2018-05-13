@@ -3,13 +3,12 @@
 
 EAPI=6
 
-COMMIT=f87c242a61292ea254fed10f3e215a8d3e4b862a
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Latex Editor and TeX shell based on KDE Frameworks"
 HOMEPAGE="https://kile.sourceforge.io/"
-SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+[[ ${PV} != *9999* ]] && SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="FDL-1.2 GPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -55,8 +54,6 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( kile-remote-control.txt )
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	kde5_src_prepare
