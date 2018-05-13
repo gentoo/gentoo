@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit elisp-common eutils
 
@@ -20,17 +20,12 @@ RDEPEND="${DEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.7.0-make-elc.patch"
-	epatch_user
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.0-make-elc.patch
+)
 
 src_configure() {
-	# May want to add a USE flag for --enable-force-cdiv, if necessary
-	# At this point I do not know when that is appropriate, and I don't
-	# want to add an ebuild-specific USE flag without understanding.
 	econf \
-		--without-check \
 		$(use emacs || echo "--without-lispdir")
 }
 
@@ -40,7 +35,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	dodoc AUTHORS BUGS ChangeLog NEWS* README* ToDo doc/glossaries.doc doc/*.ps
 
