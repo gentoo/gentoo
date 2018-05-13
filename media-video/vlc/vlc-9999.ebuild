@@ -53,7 +53,7 @@ REQUIRED_USE="
 	vdpau? ( ffmpeg X )
 "
 RDEPEND="
-	net-dns/libidn:0
+	net-dns/libidn:=
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
 	virtual/opengl
