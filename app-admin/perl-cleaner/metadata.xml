@@ -5,7 +5,5 @@
 	<email>perl@gentoo.org</email>
 	<name>Gentoo Perl Project</name>
 </maintainer>
-<maintainer type="person">
-	<email>fuzzyray@gentoo.org</email>
-</maintainer>
 </pkgmetadata>
+
