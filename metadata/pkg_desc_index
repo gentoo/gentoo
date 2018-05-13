@@ -731,7 +731,7 @@ app-emulation/docker-proxy 0.8.0_p20170917: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/e-uae 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
-app-emulation/free42 2.0.17: An HP-42S Calculator Simulator
+app-emulation/free42 2.0.17 2.0.20: An HP-42S Calculator Simulator
 app-emulation/ganeti 2.15.2-r5: Ganeti is a virtual server management software tool
 app-emulation/ganeti-htools 0.3.1: Cluster tools for fixing common allocation problems on Ganeti 2.0 clusters
 app-emulation/ganeti-instance-debootstrap 0.11: Scripts to build Ganeti VMs with debootstrap
@@ -3266,7 +3266,7 @@ dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
-dev-lisp/abcl 0.20.0-r1: Common Lisp implementation for the JVM
+dev-lisp/abcl 0.20.0-r1 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/asdf 3.1.5: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
@@ -8917,7 +8917,7 @@ net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2: Bandwidth limiting pipe
-net-misc/tigervnc 1.8.0: Remote desktop viewer display system
+net-misc/tigervnc 1.8.0 1.8.0-r3: Remote desktop viewer display system
 net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
