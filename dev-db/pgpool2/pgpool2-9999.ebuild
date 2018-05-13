@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
 
-POSTGRES_COMPAT=( 9.{3..6} )
+POSTGRES_COMPAT=( 9.{3..6} 10 )
 
 inherit git-r3 postgres-multi
 
