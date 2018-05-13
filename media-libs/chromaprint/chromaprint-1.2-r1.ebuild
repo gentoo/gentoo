@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit cmake-multilib
 
 DESCRIPTION="A client-side library that implements a custom algorithm for extracting fingerprints"
-HOMEPAGE="http://acoustid.org/chromaprint"
+HOMEPAGE="https://acoustid.org/chromaprint"
 SRC_URI="https://bitbucket.org/acoustid/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
