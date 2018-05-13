@@ -1,6 +1,5 @@
-diff -ru bzflag-2.4.4.orig/configure.ac bzflag-2.4.4/configure.ac
---- bzflag-2.4.4.orig/configure.ac	2016-02-14 19:09:51.000000000 -0500
-+++ bzflag-2.4.4/configure.ac	2016-05-05 16:35:35.475935345 -0400
+--- a/configure.ac
++++ b/configure.ac
 @@ -215,7 +215,7 @@
  AC_SUBST(AR)
  AC_SUBST(AR_FLAGS)
