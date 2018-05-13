@@ -20,7 +20,6 @@ app-portage/layman cvs subversion test
 app-text/asciidoc graphviz
 app-text/xmlto latex
 dev-libs/apr-util freetds odbc
-dev-util/patchutils test
 gnome-base/dconf test
 gnome-base/librsvg tools
 net-dns/avahi bookmarks gtk3 qt4 utils
