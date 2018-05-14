@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ S="${WORKDIR}/edb-debugger-${PV}"
 
 RDEPEND="
 	>=dev-libs/capstone-3.0
-	graphviz? ( >=media-gfx/graphviz-2.38.0 )
+	graphviz? ( media-gfx/graphviz )
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	"
 DEPEND="
-	>=dev-libs/boost-1.35.0
+	dev-libs/boost
 	virtual/pkgconfig
 	${RDEPEND}"
 
@@ -41,15 +41,13 @@ src_prepare(){
 	sed -i -e 's/GenericName=edb debugger/GenericName=Evan\x27s Debugger/' edb.desktop || die
 	sed -i -e 's/Comment=edb debugger/Comment=edb is a cross platform x86\/x86-64 debugger/' edb.desktop || die
 
-	if ! use graphviz; then
-		sed -i '/pkg_check_modules(GRAPHVIZ/d' CMakeLists.txt || die
-	fi
 	cmake-utils_src_prepare
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_DISABLE_FIND_PACKAGE_GRAPHVIZ=$(usex !graphviz)
 		-DQT_VERSION=Qt5
 	)
 	if use pax_kernel || use legacy-mem-write; then
