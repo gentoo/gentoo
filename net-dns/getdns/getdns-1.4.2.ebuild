@@ -54,8 +54,8 @@ src_install() {
 		newconfd "${FILESDIR}"/stubby.confd-r1 stubby
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/stubby.logrotate stubby
-		systemd_newunit "${FILESDIR}"/stubby.systemd stubby.service
-		systemd_newtmpfilesd "${FILESDIR}"/stubby.tmpfilesd stubby.conf
+		systemd_dounit "${S}"/stubby/systemd/stubby.service
+		systemd_dotmpfilesd "${S}"/stubby/systemd/stubby.conf
 	fi
 }
 
