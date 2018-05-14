@@ -8,7 +8,7 @@ PYTHON_REQ_USE='threads(+)'
 
 VALA_MAX_API_VERSION=0.34
 
-inherit gnome2 pax-utils python-any-r1 cmake-utils vala
+inherit gnome2 pax-utils python-any-r1 cmake-utils vala virtualx
 
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
 HOMEPAGE="http://www.midori-browser.org/"
@@ -72,6 +72,10 @@ src_configure() {
 	use xscreensaver || mycmakeargs+=( -DXSS=XSS-NOTFOUND )
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	virtx cmake-utils_src_test
 }
 
 src_install() {
