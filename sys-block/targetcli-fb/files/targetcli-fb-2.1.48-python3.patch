@@ -1,0 +1,23 @@
+From ed5ff9b9505e50b545e86dfbdd32077f0ddda0cb Mon Sep 17 00:00:00 2001
+From: Taylor Jakobson <tjakobs@us.ibm.com>
+Date: Thu, 1 Feb 2018 14:44:32 -0600
+Subject: [PATCH] Use signed char instead of char
+
+Python3 does not have the "character" type, use signed char instead.
+---
+ targetcli/ui_backstore.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/targetcli/ui_backstore.py b/targetcli/ui_backstore.py
+index 3a2db10..5af448f 100644
+--- a/targetcli/ui_backstore.py
++++ b/targetcli/ui_backstore.py
+@@ -536,7 +536,7 @@ def _ui_block_ro_check(self, dev):
+         except (OSError, IOError):
+             raise ExecutionError("Could not open %s" % dev)
+         # ioctl returns an int. Provision a buffer for it
+-        buf = array.array('c', [chr(0)] * 4)
++        buf = array.array('b', [0] * 4)
+         try:
+             fcntl.ioctl(f, BLKROGET, buf)
+         except (OSError, IOError):
