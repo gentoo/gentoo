@@ -18,7 +18,7 @@ SRC_URI="https://github.com/faye/websocket-driver-ruby/archive/${PV}.tar.gz -> $
 RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0.7"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
