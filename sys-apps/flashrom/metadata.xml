@@ -14,6 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="at25df021a">Atmel AT25DF021A support</flag>
 		<flag name="atahpt">Highpoint (HPT) ATA/RAID controller support</flag>
 		<flag name="atapromise">Support for Promise PDC2026x (FastTrak/Ultra)</flag>
 		<flag name="atavia">Support for VIA VT6421A SATA controllers</flag>

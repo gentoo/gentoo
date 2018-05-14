@@ -8,7 +8,9 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://review.coreboot.org/flashrom.git"
 	inherit git-r3
 else
-	SRC_URI="https://download.flashrom.org/releases/${P}.tar.bz2"
+	SRC_URI="https://download.flashrom.org/releases/${P}.tar.bz2
+		at25df021a? ( https://wiki.raptorcs.com/w/images/4/47/Atmel_enablement.diff -> ${P}-atmel_enablement.patch )
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
@@ -25,7 +27,7 @@ atahpt +atapromise +atavia +buspirate_spi ch341a_spi dediprog +drkaiser +dummy
 +ft2232_spi +gfxnvidia +internal +it8212 +linux_spi mstarddc_spi +nic3com
 +nicintel +nicintel_eeprom +nicintel_spi nicnatsemi +nicrealtek +ogp_spi
 +pickit2_spi +pony_spi +rayer_spi +satamv +satasii +serprog +usbblaster_spi"
-IUSE="${IUSE_PROGRAMMERS} +internal_dmi static tools +wiki"
+IUSE="${IUSE_PROGRAMMERS} at25df021a +internal_dmi static tools +wiki"
 
 LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	atapromise? ( sys-apps/pciutils[static-libs(+)] )
@@ -62,6 +64,11 @@ _flashrom_enable() {
 flashrom_enable() {
 	local u
 	for u ; do _flashrom_enable "${u}" ; done
+}
+
+src_prepare() {
+	use at25df021a && eapply "${DISTDIR}/${P}-atmel_enablement.patch"
+	default
 }
 
 src_compile() {
