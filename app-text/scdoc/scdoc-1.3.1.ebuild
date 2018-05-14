@@ -16,8 +16,10 @@ KEYWORDS="~amd64 ~x86"
 src_prepare() {
 	default
 
-	sed -i 's/-Werror//' Makefile || die 'Failed to remove -Werror'
-	sed -i 's/CFLAGS=/CFLAGS+=/' Makefile || die 'Failed to patch makefile'
+	sed -e 's/-Werror//' \
+		-e 's/CFLAGS=/CFLAGS+=/' \
+		-e '/^PREFIX/s@=.*$@=/usr@' \
+		-i Makefile || die 'Failed to patch Makefile'
 }
 
 src_compile() {
