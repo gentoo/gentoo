@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-VALA_MAX_API_VERSION=0.34
+VALA_MIN_API_VERSION=0.36
 
 inherit cmake-utils gnome2-utils pax-utils python-any-r1 vala virtualx xdg-utils
 
@@ -14,7 +14,7 @@ DESCRIPTION="A lightweight web browser based on WebKitGTK+"
 HOMEPAGE="http://www.midori-browser.org/"
 SRC_URI="http://www.${PN}-browser.org/downloads/${PN}_${PV}_all_.tar.bz2"
 
-KEYWORDS="~amd64 ~arm ~mips x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~mips ~x86 ~x86-fbsd"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
@@ -49,6 +49,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-libsoup.patch #587448
+	eapply "${FILESDIR}"/${P}-vala-0.35.patch #628108
 
 	cmake-utils_src_prepare
 	vala_src_prepare
