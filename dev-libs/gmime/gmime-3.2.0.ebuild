@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/glib-2.32.0:2
 	sys-libs/zlib
 	crypt? ( >=app-crypt/gpgme-1.8.0:1= )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn:= )
 	vala? (
 		$(vala_depend)
 		>=dev-libs/gobject-introspection-1.30.0:= )
