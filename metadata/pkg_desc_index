@@ -55,7 +55,7 @@ app-admin/eclean-kernel 0.4.2: Remove outdated built kernels
 app-admin/emacs-updater 1.15: Rebuild Emacs packages
 app-admin/eselect 1.4.11 1.4.12: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/fam 2.7.0-r7: FAM, the File Alteration Monitor
+app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/filebeat 5.5.2 6.1.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
@@ -245,7 +245,7 @@ app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup
 app-backup/duplicity 0.7.10: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
-app-backup/fsarchiver 0.8.1: Flexible filesystem archiver for backup and deployment tool
+app-backup/fsarchiver 0.8.1 0.8.4: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A small perl script utilizing tar
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.9: Powerful and flexible backup (and syncing) tool, using RSync and Qt
@@ -744,6 +744,7 @@ app-emulation/libvirt 4.1.0-r3: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/lxc 2.1.1: LinuX Containers userspace utilities
 app-emulation/lxd 2.21: Fast, dense and secure container management
+app-emulation/nemu 1.4.0: ncurses interface for QEMU
 app-emulation/q4wine 1.3.6-r1: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.11.1-r2: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
@@ -2953,7 +2954,7 @@ dev-libs/expat 2.2.1 2.2.5: Stream-oriented XML parser library
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
-dev-libs/ffcall 2.0: foreign function call libraries
+dev-libs/ffcall 2.0 2.1: Build foreign function call interfaces in embedded interpreter
 dev-libs/folks 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
@@ -5007,7 +5008,7 @@ dev-python/markdown 2.6.5 2.6.8: Python implementation of the markdown markup la
 dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
-dev-python/matplotlib 2.1.2-r1: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 2.1.2-r1 2.2.2-r1: Pure python plotting library with matlab like syntax
 dev-python/mccabe 0.2.1 0.6.1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
@@ -6023,7 +6024,7 @@ dev-tex/ivritex 1.1.2: Hebrew support for TeX
 dev-tex/latex-beamer 3.36: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2008 2015: Convertor written in Perl that converts LATEX documents to HTML
-dev-tex/latex2rtf 2.3.11: LaTeX to RTF converter
+dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
 dev-tex/latexdiff 1.1.0: Compare two latex files and mark up significant differences
 dev-tex/latexmk 435: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
@@ -8211,7 +8212,7 @@ media-video/x264-encoder 0.0.20160712 0.0.20170701: A free commandline encoder f
 media-video/xine-ui 0.99.9: Xine movie player
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
 net-analyzer/amap 5.4: A network scanning tool for pentesters
-net-analyzer/argus 3.0.8.1: network Audit Record Generation and Utilization System
+net-analyzer/argus 3.0.8.1 3.0.8.2-r1: network Audit Record Generation and Utilization System
 net-analyzer/argus-clients 3.0.8: Clients for net-analyzer/argus
 net-analyzer/arp-sk 0.0.16-r2: A swiss knife tool for ARP
 net-analyzer/arping 2.17: A utility to see if a specific IP address is taken and what MAC address owns it
@@ -8413,7 +8414,7 @@ net-dns/unbound 1.5.1-r2 1.5.10: A validating, recursive and caching DNS resolve
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-firewall/arno-iptables-firewall 2.0.1e: Arno's iptables firewall script
 net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
-net-firewall/conntrack-tools 1.4.2: Connection tracking userspace tools
+net-firewall/conntrack-tools 1.4.2 1.4.4-r1: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
@@ -9010,7 +9011,7 @@ net-print/foomatic-db 4.0.20170331: Printer information files for foomatic-db-en
 net-print/foomatic-db-engine 4.0.11 4.0.12: Generates ppds out of xml foomatic printer description files
 net-print/foomatic-db-ppds 4.0.20170331: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
-net-print/gutenprint 5.2.12: Ghostscript and cups printer drivers
+net-print/gutenprint 5.2.12 5.2.13: Ghostscript and cups printer drivers
 net-print/hplip 3.17.10: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/ink 0.5.1: A command line utility to display the ink level of your printer
 net-print/libgnomecups 0.2.3-r3 0.2.3-r5: GNOME cups library
@@ -10202,7 +10203,7 @@ sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing au
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.0-r1 1.5.1-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
