@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 
 CONFIG_CHECK="~CHR_DEV_SG"
 S="${WORKDIR}/${MY_P}"
-PATCHES=( "${FILESDIR}"/${PN}-path.patch )
+PATCHES=( "${FILESDIR}"/${PN}-{path,ffmpeg}.patch )
 
 src_configure() {
 	# See bug #439380.
