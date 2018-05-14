@@ -74,6 +74,9 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 	sed -i -e 's/configure.in/configure.ac/' Makefile.in || die
+	sed -i \
+		-e 's:SDL_platform:SDL2/SDL_platform:' \
+		include/SDL_config.h.in || die
 	mv configure.{in,ac} || die
 	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
 }
