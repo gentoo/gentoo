@@ -27,10 +27,12 @@ RDEPEND="
 	dev-libs/libxml2
 	>=net-libs/libsoup-2.38:2.4
 	>=x11-libs/libnotify-0.7
-	xscreensaver? ( x11-libs/libXScrnSaver )
 	>=x11-libs/gtk+-3.10.0:3
 	>=net-libs/webkit-gtk-2.3.91:4[jit=]
 	granite? ( >=dev-libs/granite-0.2 )
+	xscreensaver? (
+		x11-libs/libX11
+		x11-libs/libXScrnSaver )
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -61,12 +63,13 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DUSE_APIDOCS="$(usex doc)"
 		-DUSE_GRANITE="$(usex granite)"
-		-DUSE_XSCREENSAVER="$(usex xscreensaver)"
 		-DUSE_ZEITGEIST=OFF
 		-DVALA_EXECUTABLE="${VALAC}"
 		-DUSE_GTK3=ON
 		-DHALF_BRO_INCOM_WEBKIT2=ON
-		)
+	)
+
+	use xscreensaver || mycmakeargs+=( -DXSS=XSS-NOTFOUND )
 
 	cmake-utils_src_configure
 }
