@@ -1,6 +1,10 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <ya@sysdump.net> (14 May 2018)
+# Force the host target to avoid dependency hell
+dev-lang/rust llvm_targets_AArch64
+
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Force the host target to avoid dependency hell
 sys-devel/clang llvm_targets_AArch64
