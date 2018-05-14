@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (14 May 2018)
+# All current releases do not install, as well as the latest nightly
+# build upstream (dated July 2017).  Last upstream activity around
+# May 2017.  Masked for removal in 30 days.  Bug #638478.
+dev-lang/ekopath
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 May 2018)
 # Depends on dead Qt4, upstream TRAC and SVN dead. No maint. response.
 # Masked for removal in 30 days, bugs #645418, #591866, #574244.
