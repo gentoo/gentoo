@@ -8,7 +8,7 @@ PYTHON_REQ_USE='threads(+)'
 
 VALA_MAX_API_VERSION=0.34
 
-inherit gnome2 pax-utils python-any-r1 cmake-utils vala virtualx
+inherit cmake-utils gnome2-utils pax-utils python-any-r1 vala virtualx xdg-utils
 
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
 HOMEPAGE="http://www.midori-browser.org/"
@@ -51,7 +51,6 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-libsoup.patch #587448
 
 	cmake-utils_src_prepare
-	gnome2_src_prepare
 	vala_src_prepare
 	sed -i -e '/^install/s:COPYING:HACKING TODO TRANSLATE:' CMakeLists.txt || die
 }
@@ -78,6 +77,12 @@ src_test() {
 	virtx cmake-utils_src_test
 }
 
-src_install() {
-	cmake-utils_src_install
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
