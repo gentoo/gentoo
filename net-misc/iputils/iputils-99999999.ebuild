@@ -30,7 +30,7 @@ SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
 
 LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
-	idn? ( net-dns/libidn2[static-libs(+)] )
+	idn? ( net-dns/libidn2:=[static-libs(+)] )
 	ipv6? (
 		ssl? (
 			gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
