@@ -9803,7 +9803,7 @@ sys-apps/shadow 4.5 4.6: Utilities to deal with user accounts
 sys-apps/smartmontools 6.4 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 236-r5: System and service manager for Linux
+sys-apps/systemd 236-r5 238-r6: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
@@ -10090,7 +10090,7 @@ sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
-sys-fs/udev 216 225-r1 233 236-r1: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 216 225-r1 233 236-r1 238: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 32: udev startup scripts for openrc
 sys-fs/udftools 1.1-r1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1: An automatic disk mounting service using udisks
@@ -10144,7 +10144,7 @@ sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 4.0.1 5.0.1: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.1.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1: library that provides direct access to the IEEE 1394 bus
-sys-libs/libseccomp 2.3.0 2.3.2: high level interface to Linux seccomp filter
+sys-libs/libseccomp 2.3.0 2.3.2 2.3.3: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.6 2.7: SELinux userland library
 sys-libs/libsemanage 2.6 2.7: SELinux kernel and policy management library
 sys-libs/libsepol 2.6 2.7: SELinux binary policy representation library
