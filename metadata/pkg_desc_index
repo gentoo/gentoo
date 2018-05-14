@@ -211,7 +211,7 @@ app-arch/tar 1.29-r1 1.29-r3: Use this to make tarballs :)
 app-arch/tardy 1.28: A tar post-processor
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/torrentzip 0.9: Create identical zip archives over multiple systems
-app-arch/unace 2.5-r3 2.5-r5: ACE unarchiver
+app-arch/unace 2.5-r5: ACE unarchiver
 app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.1: unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
