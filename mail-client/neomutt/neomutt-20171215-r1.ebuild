@@ -35,7 +35,7 @@ CDEPEND="
 	gnutls? ( >=net-libs/gnutls-1.0.17 )
 	gpg? ( >=app-crypt/gpgme-0.9.0 )
 	gpgme? ( >=app-crypt/gpgme-0.9.0 )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn:= )
 	kerberos? ( virtual/krb5 )
 	notmuch? ( net-mail/notmuch )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
