@@ -1,0 +1,27 @@
+From 3c705e016746a838add37715b97a6e7dd43bf846 Mon Sep 17 00:00:00 2001
+From: Kevin Funk <kevin.funk@kdab.com>
+Date: Wed, 7 Mar 2018 20:16:35 +0100
+Subject: [PATCH] CMake: Allow to disable Qt5::Script dependency
+
+... and in that case make sure the scriptenginedebugger plugin isn't
+built
+
+Fixes #492
+---
+ plugins/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index e12937f89..db5efb5d4 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -31,7 +31,9 @@ if(Qt5Widgets_FOUND OR QT_QTGUI_FOUND)
+   add_subdirectory(styleinspector)
+ endif()
+ 
+-if(QT_QTSCRIPTTOOLS_FOUND OR Qt5ScriptTools_FOUND)
++# just checking whether Qt5::ScriptTools is found should be enough, but it isn't.
++# thus check both that Qt5::Script & Qt5::ScriptTools are found to fix https://github.com/KDAB/GammaRay/issues/492
++if((QT_QTSCRIPT_FOUND AND QT_QTSCRIPTTOOLS_FOUND) OR (Qt5Script_FOUND AND Qt5ScriptTools_FOUND))
+   add_subdirectory(scriptenginedebugger)
+ endif()
