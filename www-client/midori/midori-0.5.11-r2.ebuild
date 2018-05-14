@@ -60,6 +60,7 @@ src_configure() {
 		-DUSE_APIDOCS="$(usex doc)"
 		-DUSE_GRANITE="$(usex granite)"
 		-DUSE_XSCREENSAVER="$(usex xscreensaver)"
+		-DUSE_ZEITGEIST=OFF
 		-DVALA_EXECUTABLE="${VALAC}"
 		-DUSE_GTK3=ON
 		-DHALF_BRO_INCOM_WEBKIT2=ON
