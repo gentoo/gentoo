@@ -67,6 +67,7 @@ src_configure() {
 	unset PLATFORM # if set in user env, this breaks configure
 
 	local myconf=(
+		--disable-lto #655638
 		--with-crond-dir="${EPREFIX}/etc/cron.d"
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
 		$(use_enable nls gettext)
