@@ -23,7 +23,7 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )"
 
 DEPEND="${RDEPEND}
-	app-text/docbook-sgml-utils
+	>=app-text/docbook-sgml-utils-0.6.14-r2
 	>=sys-kernel/linux-headers-3.2"
 
 RDEPEND="${RDEPEND}
