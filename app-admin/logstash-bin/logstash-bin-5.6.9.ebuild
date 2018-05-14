@@ -20,6 +20,7 @@ KEYWORDS="~amd64"
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
 
+DEPEND="app-arch/unzip"
 RDEPEND="virtual/jre:1.8"
 
 S="${WORKDIR}/${MY_P}"
@@ -63,15 +64,15 @@ pkg_postinst() {
 	ewarn "Self installed plugins are removed during Logstash upgrades (Bug #622602)"
 	ewarn "Install the plugins via eselect module that will automatically re-install"
 	ewarn "all self installed plugins after Logstash upgrades."
-	einfo
-	einfo "Installing plugins:"
-	einfo "eselect logstash-plugin install logstash-output-gelf"
-	einfo
+	elog
+	elog "Installing plugins:"
+	elog "eselect logstash-plugin install logstash-output-gelf"
+	elog
 
-	einfo "Reinstalling self installed plugins (installed via eselect module):"
+	elog "Reinstalling self installed plugins (installed via eselect module):"
 	eselect logstash-plugin reinstall
 
-	einfo
-	einfo "Sample configuration:"
-	einfo "${EROOT%/}/usr/share/${MY_PN}"
+	elog
+	elog "Sample configuration:"
+	elog "${EROOT%/}/usr/share/${MY_PN}"
 }
