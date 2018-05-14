@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-05">
+  <title>mpv: Remote code execution</title>
+  <synopsis>A vulnerability has been found in mpv that may allow a remote
+    attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">mpv</product>
+  <announced>2018-05-14</announced>
+  <revised count="1">2018-05-14</revised>
+  <bug>646886</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-video/mpv" auto="yes" arch="*">
+      <unaffected range="ge">0.27.2</unaffected>
+      <vulnerable range="lt">0.27.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Video player based on MPlayer/mplayer2</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in mpv with the handling of HTML
+      documents containing VIDEO elements. Additionally, mpv accepts arbitrary
+      URLs in a src attribute without a protocol whitelist in
+      player/lua/ytdl_hook.lua.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by enticing the user to visit a specially crafted web
+      site, could execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All mpv users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/mpv-0.27.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6360">CVE-2018-6360</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-07T16:02:12Z">jmbailey</metadata>
+  <metadata tag="submitter" timestamp="2018-05-14T23:21:56Z">jmbailey</metadata>
+</glsa>
