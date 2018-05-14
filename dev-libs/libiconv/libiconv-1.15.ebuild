@@ -20,6 +20,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.15-no-gets.patch"
+	"${FILESDIR}/${PN}-1.15-no-aix-tweaks.patch"
 )
 
 src_prepare() {
