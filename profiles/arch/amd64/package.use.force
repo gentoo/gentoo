@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <ya@sysdump.net> (14 May 2018)
+# Force the host target to avoid dependency hell
+dev-lang/rust llvm_targets_X86
+
 # NP-Hardass <NP-Hardass@gentoo.org> (23 May 2017)
 # Packages with optional 64-bit variant
 app-emulation/wine-vanilla -abi_x86_64
