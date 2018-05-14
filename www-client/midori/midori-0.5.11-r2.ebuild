@@ -6,6 +6,8 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
+VALA_MAX_API_VERSION=0.34
+
 inherit gnome2 pax-utils python-any-r1 cmake-utils vala
 
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
