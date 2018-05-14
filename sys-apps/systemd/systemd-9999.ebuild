@@ -42,8 +42,8 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 		ssl? ( >=net-libs/gnutls-3.1.4:0= )
 	)
 	idn? (
-		libidn2? ( net-dns/libidn2 )
-		!libidn2? ( net-dns/libidn )
+		libidn2? ( net-dns/libidn2:= )
+		!libidn2? ( net-dns/libidn:= )
 	)
 	importd? (
 		app-arch/bzip2:0=
