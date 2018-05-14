@@ -3267,7 +3267,7 @@ dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
-dev-lisp/abcl 0.20.0-r1 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
+dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/asdf 3.1.5: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
