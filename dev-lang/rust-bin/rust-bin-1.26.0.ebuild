@@ -1,32 +1,36 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils bash-completion-r1
+inherit eutils bash-completion-r1 versionator
 
 MY_P="rust-${PV}"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="http://www.rust-lang.org/"
-SRC_URI="amd64? ( http://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux-gnu.tar.gz )
-	x86? ( http://static.rust-lang.org/dist/${MY_P}-i686-unknown-linux-gnu.tar.gz )"
+SRC_URI="amd64? ( http://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux-gnu.tar.xz )
+	x86? ( http://static.rust-lang.org/dist/${MY_P}-i686-unknown-linux-gnu.tar.xz )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
+CARGO_DEPEND_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
+
 DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 	!dev-lang/rust:0
 "
 RDEPEND="${DEPEND}"
+PDEPEND=">=dev-util/cargo-${CARGO_DEPEND_VERSION}"
 
 QA_PREBUILT="
 	opt/${P}/bin/rustc-bin-${PV}
 	opt/${P}/bin/rustdoc-bin-${PV}
 	opt/${P}/lib/*.so
 	opt/${P}/lib/rustlib/*/lib/*.so
+	opt/${P}/lib/rustlib/*/lib/*.rlib*
 "
 
 src_unpack() {
@@ -58,9 +62,9 @@ src_install() {
 	mv "${D}/opt/${P}/bin/rustdoc" "${D}/opt/${P}/bin/${rustdoc}" || die
 	mv "${D}/opt/${P}/bin/rust-gdb" "${D}/opt/${P}/bin/${rustgdb}" || die
 
-	dosym "/opt/${P}/bin/${rustc}" "/usr/bin/${rustc}"
-	dosym "/opt/${P}/bin/${rustdoc}" "/usr/bin/${rustdoc}"
-	dosym "/opt/${P}/bin/${rustgdb}" "/usr/bin/${rustgdb}"
+	dosym "../../opt/${P}/bin/${rustc}" "/usr/bin/${rustc}"
+	dosym "../../opt/${P}/bin/${rustdoc}" "/usr/bin/${rustdoc}"
+	dosym "../../opt/${P}/bin/${rustgdb}" "/usr/bin/${rustgdb}"
 
 	cat <<-EOF > "${T}"/50${P}
 	LDPATH="/opt/${P}/lib"

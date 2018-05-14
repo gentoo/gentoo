@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 )
 
 inherit multiprocessing python-any-r1 versionator toolchain-funcs
 
@@ -12,13 +12,13 @@ if [[ ${PV} = *beta* ]]; then
 	BETA_SNAPSHOT="${betaver:0:4}-${betaver:4:2}-${betaver:6:2}"
 	MY_P="rustc-beta"
 	SLOT="beta/${PV}"
-	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.gz"
+	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.xz"
 	KEYWORDS=""
 else
 	ABI_VER="$(get_version_component_range 1-2)"
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
-	SRC="${MY_P}-src.tar.gz"
+	SRC="${MY_P}-src.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
@@ -36,15 +36,20 @@ CARGO_DEPEND_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="http://www.rust-lang.org/"
 
-SRC_URI="https://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.gz
-	amd64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_amd64}.tar.gz )
-	x86? ( https://static.rust-lang.org/dist/${RUST_STAGE0_x86}.tar.gz )
-	arm64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_arm64}.tar.gz )
+SRC_URI="https://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.xz
+	amd64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_amd64}.tar.xz )
+	x86? ( https://static.rust-lang.org/dist/${RUST_STAGE0_x86}.tar.xz )
+	arm64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_arm64}.tar.xz )
 "
+
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
+	NVPTX PowerPC Sparc SystemZ X86 XCore )
+ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
+LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="debug doc extended +jemalloc"
+IUSE="debug doc extended +jemalloc ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		jemalloc? ( dev-libs/jemalloc )"
@@ -58,7 +63,7 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="!extended? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
 
-PATCHES=( "${FILESDIR}/1.23.0-separate-libdir.patch" )
+REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 S="${WORKDIR}/${MY_P}-src"
 
@@ -88,6 +93,7 @@ src_configure() {
 		optimize = $(toml_usex !debug)
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
+		targets = "${LLVM_TARGETS// /;}"
 		[build]
 		build = "${rust_target}"
 		host = ["${rust_target}"]
