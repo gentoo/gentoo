@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,9 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Statistical and interactive HTML plots for Python"
-HOMEPAGE="http://bokeh.pydata.org/"
+HOMEPAGE="https://bokeh.pydata.org/en/latest/
+	https://github.com/bokeh/bokeh
+	https://pypi.org/project/bokeh/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
