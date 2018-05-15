@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,9 +8,9 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit cuda distutils-r1 git-r3 multilib
 
 DESCRIPTION="Python wrapper for NVIDIA CUDA"
-HOMEPAGE="http://mathema.tician.de/software/pycuda/ https://pypi.org/project/pycuda/"
+HOMEPAGE="https://mathema.tician.de/software/pycuda/ https://pypi.org/project/pycuda/"
 SRC_URI=""
-EGIT_REPO_URI="http://git.tiker.net/trees/pycuda.git"
+EGIT_REPO_URI="https://git.tiker.net/trees/pycuda.git"
 
 LICENSE="GPL-2"
 SLOT="0"
