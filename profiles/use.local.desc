@@ -1444,7 +1444,6 @@ dev-libs/fcgi:html - Install HTML documentation
 dev-libs/folks:telepathy - Load contacts from the Telepathy framework
 dev-libs/folks:tracker - Load contacts from app-misc/tracker index
 dev-libs/folks:utils - Build the folks-inspect utility
-dev-libs/folks:zeitgeist - Add support for Zeitgeist event tracking system
 dev-libs/fstrm:utils - Build fstrm utility programs
 dev-libs/gf2x:bindist - Disable automatic fine-tuning to local processor features like pclmul or sse2.
 dev-libs/gf2x:custom-tune - Extra long compile time for tuning hardware specific low-level routines
