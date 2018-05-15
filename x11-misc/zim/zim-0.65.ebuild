@@ -67,7 +67,6 @@ pkg_postinst() {
 		einfo "    dev-lang/R"
 		einfo "    dev-python/gtkspell-python"
 		einfo "    dev-vcs/bzr"
-		einfo "    gnome-extra/zeitgeist"
 		einfo "    media-gfx/graphviz"
 		einfo "    media-gfx/imagemagick"
 		einfo "    media-gfx/scrot"
