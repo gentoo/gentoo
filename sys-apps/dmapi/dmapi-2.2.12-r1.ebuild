@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 inherit eutils toolchain-funcs multilib multilib-minimal
 
 DESCRIPTION="XFS data management API library"
-HOMEPAGE="http://oss.sgi.com/projects/xfs/"
+HOMEPAGE="https://xfs.wiki.kernel.org/"
 SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars/${P}.tar.gz
 	ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/${P}.tar.gz"
 
