@@ -20,8 +20,8 @@ RDEPEND="
 	dev-ros/resource_retriever
 	dev-ros/urdf
 	dev-ros/geometric_shapes
-	dev-ros/tf
 	media-libs/assimp
 	dev-libs/collada-dom:=
+	dev-cpp/eigen:3
 "
 DEPEND="${RDEPEND}"
