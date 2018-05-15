@@ -107,7 +107,3 @@ games-fps/duke3d-data gog
 # Maciej Mrozowski <reavertm@gentoo.org> (26 Jun 2010)
 # Needs media-libs/simage keyworded, bug 325623
 media-libs/coin simage
-
-#nixnut <nixnut@gentoo.org> (24 jan 2009)
-#don't want zemberek for enchant for ppc32
-app-text/enchant zemberek
