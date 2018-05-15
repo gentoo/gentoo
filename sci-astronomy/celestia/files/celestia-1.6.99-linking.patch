@@ -1,4 +1,4 @@
-From 803f4652895d40acc698901a87114a8582c050e6 Mon Sep 17 00:00:00 2001
+From 60dffe49ff32cbee0144c0dc9c6ae4f954aec784 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Wed, 4 Apr 2018 15:40:08 +0200
 Subject: [PATCH] Fix linking issues:
@@ -7,15 +7,15 @@ Subject: [PATCH] Fix linking issues:
  * as-needed (https://bugs.gentoo.org/281258)
  * theora with glut (https://bugs.gentoo.org/399237)
 ---
- configure.in             |  1 +
+ configure.ac             |  1 +
  src/celestia/Makefile.am | 13 ++++++++-----
  2 files changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/configure.in b/configure.in
-index 0b70581e..3ea150b9 100644
---- a/configure.in
-+++ b/configure.in
-@@ -242,6 +242,7 @@ if (test "$ui_glut" = "yes"); then
+diff --git a/configure.ac b/configure.ac
+index c9e722a1..7efce6ef 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -243,6 +243,7 @@ if (test "$ui_glut" = "yes"); then
  	dnl Check for GLUT.
  	AC_CHECK_LIB(glut, glutKeyboardUpFunc, ,
  	             [AC_MSG_ERROR([GLUT library version >= 3.7 not found])])
@@ -24,7 +24,7 @@ index 0b70581e..3ea150b9 100644
  AM_CONDITIONAL(ENABLE_GLUT, test "$ui_glut" = "yes")
  
 diff --git a/src/celestia/Makefile.am b/src/celestia/Makefile.am
-index 95ba9ab6..8402256b 100644
+index 60609fd3..394af68e 100644
 --- a/src/celestia/Makefile.am
 +++ b/src/celestia/Makefile.am
 @@ -7,14 +7,15 @@ DEFS = -DCONFIG_DATA_DIR='"$(PKGDATADIR)"' -DLOCALEDIR='"$(datadir)/locale"' @DE
