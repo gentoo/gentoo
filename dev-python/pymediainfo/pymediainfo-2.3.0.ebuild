@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
 
 inherit distutils-r1
 
@@ -16,14 +16,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-RDEPEND="media-libs/libmediainfo"
+RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	media-libs/libmediainfo
+"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
@@ -33,7 +36,7 @@ python_compile_all() {
 
 python_test() {
 	# requires network access
-	py.test tests/test.py -k "not MediaInfoURLTest" \
+	py.test tests/test_pymediainfo.py -k "not MediaInfoURLTest" \
 		|| die "tests failed with ${EPYTHON}"
 }
 
