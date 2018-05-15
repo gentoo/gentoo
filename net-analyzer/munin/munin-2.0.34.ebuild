@@ -110,8 +110,10 @@ S="${WORKDIR}/${MY_P}"
 pkg_setup() {
 	enewgroup munin
 	enewuser munin 177 -1 /var/lib/munin munin
-	enewuser munin-async -1 /bin/sh /var/spool/munin-async
-	esethome munin-async /var/spool/munin-async
+	if ! use minimal ;then
+		enewuser munin-async -1 /bin/sh /var/spool/munin-async
+		esethome munin-async /var/spool/munin-async
+	fi
 	java-pkg-opt-2_pkg_setup
 }
 
@@ -198,16 +200,20 @@ src_install() {
 	newinitd "${FILESDIR}"/munin-node_init.d_2.0.19 munin-node
 	newconfd "${FILESDIR}"/munin-node_conf.d_1.4.6-r2 munin-node
 
-	newinitd "${FILESDIR}"/munin-asyncd.init.2 munin-asyncd
+	if ! use minimal ;then
+		newinitd "${FILESDIR}"/munin-asyncd.init.2 munin-asyncd
+	fi
 
 	dodir /usr/lib/tmpfiles.d
 	cat > "${D}"/usr/lib/tmpfiles.d/${CATEGORY}:${PN}:${SLOT}.conf <<- EOF
 	d /run/munin 0700 munin munin - -
 	EOF
 
-	systemd_dounit "${FILESDIR}"/munin-async.service
-	systemd_dounit "${FILESDIR}"/munin-graph.{service,socket}
-	systemd_dounit "${FILESDIR}"/munin-html.{service,socket}
+	if ! use minimal ;then
+		systemd_dounit "${FILESDIR}"/munin-async.service
+		systemd_dounit "${FILESDIR}"/munin-graph.{service,socket}
+		systemd_dounit "${FILESDIR}"/munin-html.{service,socket}
+	fi
 	systemd_dounit "${FILESDIR}"/munin-node.service
 
 	cat >> "${T}"/munin.env <<- EOF
@@ -240,11 +246,13 @@ src_install() {
 	sed -i -e 's:/run/munin/munin-node.pid:/run/munin-node.pid:' \
 		"${D}"/etc/munin/munin-node.conf || die
 
-	keepdir /var/spool/munin-async/.ssh
-	touch "${D}"/var/spool/munin-async/.ssh/authorized_keys
-	fowners munin-async:munin /var/spool/munin-async{,/.ssh/{,authorized_keys}}
-	fperms 0750 /var/spool/munin-async{,/.ssh}
-	fperms 0600 /var/spool/munin-async/.ssh/authorized_keys
+	if ! use minimal ;then
+		keepdir /var/spool/munin-async/.ssh
+		touch "${D}"/var/spool/munin-async/.ssh/authorized_keys
+		fowners munin-async:munin /var/spool/munin-async{,/.ssh/{,authorized_keys}}
+		fperms 0750 /var/spool/munin-async{,/.ssh}
+		fperms 0600 /var/spool/munin-async/.ssh/authorized_keys
+	fi
 
 	if use minimal; then
 		# This requires the presence of munin-update, which is part of
