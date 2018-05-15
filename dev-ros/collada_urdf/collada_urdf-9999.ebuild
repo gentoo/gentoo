@@ -22,7 +22,6 @@ RDEPEND="
 	dev-ros/geometric_shapes
 	dev-ros/tf
 	media-libs/assimp
-	dev-libs/tinyxml
 	dev-libs/collada-dom:=
 "
 DEPEND="${RDEPEND}"
