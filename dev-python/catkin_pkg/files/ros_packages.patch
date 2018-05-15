@@ -7,7 +7,7 @@ Index: catkin_pkg-0.3.1/src/catkin_pkg/packages.py
              continue
          elif PACKAGE_MANIFEST_FILENAME in filenames:
 -            paths.append(os.path.relpath(dirpath, basepath))
-+            paths.append(os.path.relpath(dirpath.replace('ros_packages/',''), basepath))
++            paths.append(os.path.relpath(dirpath.replace('ros_packages/', ''), basepath))
              del dirnames[:]
              continue
          for dirname in dirnames:

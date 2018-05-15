@@ -19,7 +19,7 @@ Index: catkin_pkg-0.2.8/src/catkin_pkg/workspaces.py
      if paths is None:
 -        if 'CMAKE_PREFIX_PATH' not in os.environ:
 -            raise RuntimeError('Neither the environment variable CMAKE_PREFIX_PATH is set nor was a list of paths passed.')
-+        if 'CMAKE_PREFIX_PATH' not in os.environ and 'CATKIN_PREFIX_PATH' not in os.environ :
++        if 'CMAKE_PREFIX_PATH' not in os.environ and 'CATKIN_PREFIX_PATH' not in os.environ:
 +            raise RuntimeError('None of the environment variables CMAKE_PREFIX_PATH or CATKIN_PREFIX_PATH are set nor was a list of paths passed.')
          paths = os.environ['CMAKE_PREFIX_PATH'].split(os.pathsep) if os.environ['CMAKE_PREFIX_PATH'] else []
 +        paths += os.environ['CATKIN_PREFIX_PATH'].split(os.pathsep) if os.environ['CATKIN_PREFIX_PATH'] else []
