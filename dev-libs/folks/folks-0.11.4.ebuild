@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 
 # TODO: --enable-profiling
 # Vala isn't really optional, https://bugzilla.gnome.org/show_bug.cgi?id=701099
-IUSE="bluetooth debug eds +telepathy test tracker utils zeitgeist"
+IUSE="bluetooth debug eds +telepathy test tracker utils"
 REQUIRED_USE="bluetooth? ( eds )"
 
 COMMON_DEPEND="
@@ -33,7 +33,6 @@ COMMON_DEPEND="
 	eds? ( >=gnome-extra/evolution-data-server-3.13.90:=[vala] )
 	telepathy? ( >=net-libs/telepathy-glib-0.19.9[vala] )
 	tracker? ( >=app-misc/tracker-1:0= )
-	zeitgeist? ( >=gnome-extra/zeitgeist-0.9.14 )
 "
 # telepathy-mission-control needed at runtime; it is used by the telepathy
 # backend via telepathy-glib's AccountManager binding.
@@ -73,7 +72,6 @@ src_configure() {
 		$(use_enable tracker tracker-backend) \
 		$(use_enable utils inspect-tool) \
 		$(use_enable test modular-tests) \
-		$(use_enable zeitgeist) \
 		--enable-vala \
 		--enable-import-tool \
 		--disable-docs \
