@@ -74,8 +74,13 @@ app-admin/testdisk ewf
 >=sys-cluster/ceph-12.2.4 system-boost
 
 # Brian Evans <grknight@gentoo.org> (5 Mar 2018)
-# Mask embedded USE on virtual/mysql to transition it to be obsolete
->=virtual/mysql-5.6-r11 embedded
+# Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
+virtual/mysql embedded
+dev-db/mariadb embedded
+dev-db/mariadb-galera embedded
+dev-db/mysql embedded
+dev-db/mysql-cluster embedded
+dev-perl/DBD-mysql embedded
 
 # Brian Evans <grknight@gentoo.org> (28 Feb 2018)
 # Mask client-libs USE to force users to install alternative standard pacakges
