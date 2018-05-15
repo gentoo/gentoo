@@ -11,7 +11,7 @@ PV3="$(get_version_component_range 3)"
 MYP="${PN}${PV1}${PV2}_${PV3}oss"
 
 DESCRIPTION="High level abstract threading library"
-HOMEPAGE="http://www.threadingbuildingblocks.org/"
+HOMEPAGE="https://www.threadingbuildingblocks.org"
 SRC_URI="http://threadingbuildingblocks.org/sites/default/files/software_releases/source/${MYP}_src.tgz"
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
