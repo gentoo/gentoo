@@ -19,12 +19,13 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
+	virtual/opengl
 "
 DEPEND="
 	${RDEPEND}
-	dev-qt/qtsvg:5
 "
 
 src_prepare() {
