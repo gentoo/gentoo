@@ -1427,7 +1427,7 @@ app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.1.8 2.3.3: A Python port of Textile, A humane web text generator
-app-text/qpdf 5.1.1-r1 7.0.0: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 7.0.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1: Convert files between various character sets
@@ -8932,7 +8932,7 @@ net-misc/vde 2.3.2-r4: Virtual distributed ethernet emulator for emulators like 
 net-misc/vinagre 3.22.0-r3: VNC client for the GNOME desktop
 net-misc/vino 3.22.0: An integrated VNC server for GNOME
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.19.1-r2 1.19.5: Network utility to retrieve files from the WWW
+net-misc/wget 1.19.5: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.2.12 5.2.20: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
