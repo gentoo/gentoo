@@ -57,17 +57,6 @@ PATCHES=(
 
 	# libpng16 #464764
 	"${FILESDIR}"/${PN}-1.6.1-libpng16.patch
-
-	# Patches from upstream PRs
-
-	# https://github.com/CelestiaProject/Celestia/pull/35
-	#"${FILESDIR}/${PN}-1.6.99-automake.patch"
-	"${FILESDIR}/${PN}-1.6.99-models_makefile.patch"
-	"${FILESDIR}/${PN}-1.6.99-default_source.patch"
-	"${FILESDIR}/${PN}-1.6.99-symlink.patch"
-
-	# https://github.com/CelestiaProject/Celestia/pull/37
-	"${FILESDIR}/${PN}-1.6.99-compiler_warnings.patch"
 )
 
 pkg_setup() {
@@ -89,11 +78,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	if [[ -f configure.in ]] ; then
-		mv configure.{in,ac} || die
-	else
-		elog "configure.in file is gone. Clean up the ebuild!"
-	fi
+	# This commit introduced lots of glut related undefined reference errors
+	eapply -R "${FILESDIR}/${PN}-1.6.99-automake.patch"
 
 	# remove flags to let the user decide
 	local
