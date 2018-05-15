@@ -17,7 +17,7 @@ else
 	else
 		MY_PV="$PV-ce"
 	fi
-	DOCKER_GITCOMMIT="3d479c0"
+	DOCKER_GITCOMMIT="f150324"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
@@ -61,9 +61,9 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	~app-emulation/containerd-1.0.3
+	~app-emulation/containerd-1.0.3_p20180223
 	~app-emulation/runc-1.0.0_rc5[apparmor?,seccomp?]
-	~app-emulation/docker-proxy-0.8.0_p20180314
+	~app-emulation/docker-proxy-0.8.0_p20180411
 	container-init? ( >=sys-process/tini-0.16.1[static] )
 "
 
