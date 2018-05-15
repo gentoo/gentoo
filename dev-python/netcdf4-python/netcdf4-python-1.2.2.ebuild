@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ MY_PN="netCDF4"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python/numpy interface to the netCDF C library"
-HOMEPAGE="http://unidata.github.io/netcdf4-python"
+HOMEPAGE="https://unidata.github.io/netcdf4-python/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
