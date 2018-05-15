@@ -18,10 +18,13 @@ RDEPEND="
 	dev-ros/angles
 	dev-ros/collada_parser
 	dev-ros/resource_retriever
+	dev-ros/rosconsole
 	dev-ros/urdf
 	dev-ros/geometric_shapes
 	media-libs/assimp
 	dev-libs/collada-dom:=
 	dev-cpp/eigen:3
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-ros/cmake_modules
+"
