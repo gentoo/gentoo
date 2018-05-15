@@ -13,7 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="puppetdb"
 # will need the same keywords as puppet
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND+="
 		>=virtual/jdk-1.8.0
