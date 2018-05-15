@@ -48,15 +48,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-desktop.patch
 	# add a ~/.celestia for extra directories
 	"${FILESDIR}"/${PN}-1.6.99-cfg.patch
-	# missing zlib.h include with libpng15
-	"${FILESDIR}"/${PN}-1.6.1-libpng15.patch
-	"${FILESDIR}"/${PN}-1.6.99-linking.patch
 
-	# gcc-47, #414015
-	"${FILESDIR}"/${PN}-1.6.99-gcc47.patch
-
-	# libpng16 #464764
-	"${FILESDIR}"/${PN}-1.6.1-libpng16.patch
+	# https://github.com/CelestiaProject/Celestia/pull/48
+	"${FILESDIR}"/${PN}-1.6.99-gtk_libs.patch
+	"${FILESDIR}"/${PN}-1.6.99-glew_linking.patch
 )
 
 pkg_setup() {
@@ -77,9 +72,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# This commit introduced lots of glut related undefined reference errors
-	eapply -R "${FILESDIR}/${PN}-1.6.99-automake.patch"
 
 	# remove flags to let the user decide
 	local
