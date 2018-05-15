@@ -186,7 +186,8 @@ multilib_src_install() {
 	use mdnsresponder-compat && dosym avahi-compat-libdns_sd/dns_sd.h /usr/include/dns_sd.h
 
 	if multilib_is_native_abi && use doc; then
-		dohtml -r doxygen/html/. || die
+		docinto html
+		dodoc -r doxygen/html/.
 		insinto /usr/share/devhelp/books/avahi
 		doins avahi.devhelp || die
 	fi
