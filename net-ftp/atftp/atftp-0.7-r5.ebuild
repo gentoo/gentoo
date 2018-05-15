@@ -23,6 +23,7 @@ DEPEND="tcpd? ( sys-apps/tcp-wrappers )
 RDEPEND="${DEPEND}
 	!net-ftp/netkit-tftp
 	!net-ftp/tftp-hpa
+	!net-ftp/uftpd
 	selinux? ( sec-policy/selinux-tftp )"
 
 PATCHES=(
