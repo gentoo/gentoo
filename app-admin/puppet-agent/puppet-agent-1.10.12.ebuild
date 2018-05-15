@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit eutils systemd unpacker user
 
 DESCRIPTION="general puppet client utils along with mcollective hiera and facter"
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="experimental puppetdb selinux"
 RESTRICT="strip"
 
@@ -67,6 +67,7 @@ src_prepare() {
 	if use experimental; then
 		epatch "${FILESDIR}/43e2c935252b995134ce353e5e6312cf77aea480.patch"
 	fi
+	eapply_user
 }
 
 src_install() {
@@ -76,7 +77,6 @@ src_install() {
 	doconfd etc/default/pxp-agent
 	# logrotate.d
 	insinto /etc/logrotate.d
-	doins etc/logrotate.d/mcollective
 	doins etc/logrotate.d/pxp-agent
 	# puppet itself
 	insinto /etc/puppetlabs
