@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit golang-vcs-snapshot
+inherit bash-completion-r1 golang-vcs-snapshot
 
 KEYWORDS="~amd64"
 DESCRIPTION="A tool that facilitates building OCI images"
@@ -38,6 +38,7 @@ src_install() {
 	doman docs/*.1
 	dodoc -r docs/tutorials
 	dobin ${PN} imgtype
+	dobashcomp contrib/completions/bash/buildah
 }
 
 src_test() {
