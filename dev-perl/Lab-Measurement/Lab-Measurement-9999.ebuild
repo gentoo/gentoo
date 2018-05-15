@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="Measurement control and automation with Perl"
-HOMEPAGE="http://www.labmeasurement.de/"
+HOMEPAGE="https://www.labmeasurement.de"
 
 SLOT="0"
 IUSE="test"
