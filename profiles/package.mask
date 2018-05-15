@@ -30,6 +30,20 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (15 May 2018)
+# Remaining fetch-restricted game packages missing BLAKE2B hashes.
+# Please provide updated hashes if you have the matching distfiles.
+# Bug #642876.  Removal in 30 days.
+games-action/shadowgrounds-bin
+games-action/shadowgrounds-survivor-bin
+games-action/trine2
+games-misc/dont-starve
+games-puzzle/larry
+games-rpg/avadon
+games-rpg/bastion
+games-rpg/penumbra-collection
+games-rpg/wasteland2
+
+# Michał Górny <mgorny@gentoo.org> (15 May 2018)
 # All current versions are unfetchable.  No maintainer activity
 # since 2014.  Bug #600962.  Removal in 30 days.
 net-misc/asterisk-g729
