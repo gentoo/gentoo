@@ -7,11 +7,16 @@ inherit qmake-utils xdg-utils
 
 DESCRIPTION="Notepad++-like editor for Linux"
 HOMEPAGE="http://notepadqq.altervista.org"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ "${PV}" == 9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/notepadqq/notepadqq.git"
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -19,13 +24,12 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
-	virtual/opengl
 "
 DEPEND="
 	${RDEPEND}
+	dev-qt/qtsvg:5
 "
 
 src_prepare() {
