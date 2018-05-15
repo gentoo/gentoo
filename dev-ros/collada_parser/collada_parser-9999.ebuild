@@ -16,11 +16,11 @@ IUSE=""
 RDEPEND="
 	dev-libs/boost:=
 	>=dev-ros/urdf_parser_plugin-1.12.6
-	dev-ros/roscpp
 	dev-ros/class_loader:=
 	dev-libs/urdfdom_headers
 	dev-libs/collada-dom:=
 	>=dev-ros/urdf-1.12.6
+	dev-ros/rosconsole
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
