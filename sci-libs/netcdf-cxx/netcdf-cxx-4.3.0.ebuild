@@ -8,7 +8,7 @@ inherit eutils
 MYP=${PN}4-${PV}
 
 DESCRIPTION="C++ library for netCDF"
-HOMEPAGE="http://www.unidata.ucar.edu/software/netcdf/"
+HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
 SRC_URI="https://github.com/Unidata/netcdf-cxx4/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"
