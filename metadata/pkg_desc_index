@@ -5274,7 +5274,7 @@ dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
 dev-python/pyopencl 2016.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
-dev-python/pyopenssl 16.2.0 17.2.0 17.5.0: Python interface to the OpenSSL library
+dev-python/pyopenssl 17.5.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
