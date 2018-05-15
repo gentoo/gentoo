@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180308-1938Z"
+MY_EXTRAS_VER="20180515-0123Z"
 # The wsrep API version must match between upstream WSREP and sys-cluster/galera major number
 WSREP_REVISION="25"
 SUBSLOT="18"
@@ -23,7 +23,11 @@ REQUIRED_USE="jdbc? ( extraengine server !static ) server? ( tokudb? ( jemalloc 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
-MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
+if [[ ${MY_EXTRAS_VER} == "live" ]] ; then
+	MY_PATCH_DIR="${WORKDIR%/}/mysql-extras"
+else
+	MY_PATCH_DIR="${WORKDIR%/}/mysql-extras-${MY_EXTRAS_VER}"
+fi
 
 PATCHES=(
 	"${MY_PATCH_DIR}"/20006_all_cmake_elib-mariadb-10.1.27.patch
@@ -32,6 +36,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.1.16-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.1.26-gssapi-detect.patch
 	"${MY_PATCH_DIR}"/20029_all_mariadb-10.1.31-enable-numa.patch
+	"${MY_PATCH_DIR}"/20035_all_mariadb-10.1-atomic-detection.patch
 )
 
 COMMON_DEPEND="
