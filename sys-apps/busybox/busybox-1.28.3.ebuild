@@ -285,7 +285,8 @@ src_install() {
 	dodoc *.txt
 	docinto pod
 	dodoc *.pod
-	dohtml *.html
+	docinto html
+	dodoc *.html
 
 	cd ../examples
 	docinto examples
