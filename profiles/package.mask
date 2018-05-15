@@ -30,6 +30,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (15 May 2018)
+# Distfile missing BLAKE2B hash.  The package is fetch-restricted,
+# the sources can apparently by only obtained by buying it, or filing
+# an academic license request and having it approved.  Please provide
+# the updated hash if you have the matching distfile.
+# Bug #642908.  Removal in 30 days.
+sci-libs/coinhsl
+
+# Michał Górny <mgorny@gentoo.org> (15 May 2018)
 # Remaining fetch-restricted game packages missing BLAKE2B hashes.
 # Please provide updated hashes if you have the matching distfiles.
 # Bug #642876.  Removal in 30 days.
