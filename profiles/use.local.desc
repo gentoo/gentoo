@@ -6069,7 +6069,7 @@ x11-themes/zuki-themes:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-themes/zuki-themes:mate - Install Metacity theme for mate-base/mate
 x11-themes/zuki-themes:xfce - Install theme for xfce-base/xfwm4
 x11-themes/zukitwo:gnome-shell - Install theme for gnome-base/gnome-shell
-x11-wm/enlightenment:enlightenment_modules_appmenu - Gadget that hold the toolbar of the foreground application
+x11-wm/enlightenment:enlightenment_modules_appmenu - Gadget that holds the menubar of the foreground application
 x11-wm/enlightenment:enlightenment_modules_backlight - Backlight control slider gadget
 x11-wm/enlightenment:enlightenment_modules_battery - A gadget to visualize your battery status
 x11-wm/enlightenment:enlightenment_modules_bluez4 - Configure Bluetooth devices
@@ -6093,32 +6093,36 @@ x11-wm/enlightenment:enlightenment_modules_connman - Control Wifi and wired netw
 x11-wm/enlightenment:enlightenment_modules_cpufreq - Gadget to monitor and change the CPU frequency
 x11-wm/enlightenment:enlightenment_modules_everything - The run command module provides an application launcher dialog
 x11-wm/enlightenment:enlightenment_modules_fileman - Enlightenment's integrated file manager
-x11-wm/enlightenment:enlightenment_modules_fileman-opinfo - Can be placed on the desktop or in a shelf
+x11-wm/enlightenment:enlightenment_modules_fileman-opinfo - Allows EFM to be placen on the desktop or in a shelf
 x11-wm/enlightenment:enlightenment_modules_gadman - Module to manage gadgets on the desktop
-x11-wm/enlightenment:enlightenment_modules_geolocation - Geolocation
+x11-wm/enlightenment:enlightenment_modules_geolocation - Geolocation information
 x11-wm/enlightenment:enlightenment_modules_ibar - Iconic application launcher
 x11-wm/enlightenment:enlightenment_modules_ibox - A home for your iconified applications
 x11-wm/enlightenment:enlightenment_modules_lokker - Screen locker
+x11-wm/enlightenment:enlightenment_modules_luncher - Iconic application launcher
 x11-wm/enlightenment:enlightenment_modules_mixer - A module to provide a mixer for changing volume
 x11-wm/enlightenment:enlightenment_modules_msgbus - DBus Extension
 x11-wm/enlightenment:enlightenment_modules_music-control - Control your music in your shelf
-x11-wm/enlightenment:enlightenment_modules_notification - notification-daemon alternative. Popup if an event occur
+x11-wm/enlightenment:enlightenment_modules_notification - Notification-daemon alternative
 x11-wm/enlightenment:enlightenment_modules_packagekit - Package manager integration
 x11-wm/enlightenment:enlightenment_modules_pager - Gadget to allow you to visualize your virtual desktops and the windows they contain
 x11-wm/enlightenment:enlightenment_modules_pager-plain - A simpler desktop pager
 x11-wm/enlightenment:enlightenment_modules_quickaccess - Enlightenment Quickaccess Launcher
 x11-wm/enlightenment:enlightenment_modules_shot - Simple screenshot+save/upload module
 x11-wm/enlightenment:enlightenment_modules_start - Enlightenment's 'Start' button equivalent
-x11-wm/enlightenment:enlightenment_modules_syscon - This module provides a unified popup dialog for all the system actions in Enlightenment
-x11-wm/enlightenment:enlightenment_modules_systray - system tray that hold applications icons like Skype, Pidgin, Kopete and others
+x11-wm/enlightenment:enlightenment_modules_syscon - Provides a unified popup dialog for all the system actions in Enlightenment
+x11-wm/enlightenment:enlightenment_modules_sysinfo - A gadget to visualize your system info
+x11-wm/enlightenment:enlightenment_modules_systray - System tray that hold applications icons like Skype, Pidgin, Kopete and others
 x11-wm/enlightenment:enlightenment_modules_tasks - Gadget to allow you to switch tasks
 x11-wm/enlightenment:enlightenment_modules_teamwork - Enable teamwork module
 x11-wm/enlightenment:enlightenment_modules_temperature - Temperature monitor
 x11-wm/enlightenment:enlightenment_modules_tiling - Positions/resizes your windows tilingly
 x11-wm/enlightenment:enlightenment_modules_time - Time related gadgets
+x11-wm/enlightenment:enlightenment_modules_vkbd - Virtual keyboard
 x11-wm/enlightenment:enlightenment_modules_winlist - A module to show the list of client applications presently running
 x11-wm/enlightenment:enlightenment_modules_wireless - WiFi monitoring
 x11-wm/enlightenment:enlightenment_modules_wizard - First Run Wizard
+x11-wm/enlightenment:enlightenment_modules_wl-buffer - Wayland buffer
 x11-wm/enlightenment:enlightenment_modules_wl-desktop-shell - Enlightenment Wayland Desktop Shell
 x11-wm/enlightenment:enlightenment_modules_wl-drm - Wayland DRM (Direct Rendering Manager) compositing module
 x11-wm/enlightenment:enlightenment_modules_wl-text-input - Wayland text input support
