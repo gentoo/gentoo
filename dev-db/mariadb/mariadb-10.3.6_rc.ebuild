@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180308-1938Z"
+MY_EXTRAS_VER="20180515-1334Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -53,11 +53,11 @@ S="${WORKDIR}/mysql"
 if [[ "${MY_EXTRAS_VER}" == "live" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/mysql-extras.git"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/mysql-extras"
+	EGIT_CHECKOUT_DIR="${WORKDIR%/}/mysql-extras"
 	EGIT_CLONE_TYPE=shallow
-	MY_PATCH_DIR="${WORKDIR}/mysql-extras"
+	MY_PATCH_DIR="${WORKDIR%/}/mysql-extras"
 else
-	MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
+	MY_PATCH_DIR="${WORKDIR%/}/mysql-extras-${MY_EXTRAS_VER}"
 fi
 
 PATCHES=(
@@ -65,6 +65,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.9-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
+	"${MY_PATCH_DIR}"/20035_all_mariadb-10.3-atomic-detection.patch
 )
 
 # Be warned, *DEPEND are version-dependant
