@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic gnome2-utils
+inherit autotools eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
@@ -57,6 +57,10 @@ DEPEND="${RDEPEND}
 		nls? ( sys-devel/gettext )
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.5.11-freetype_pkgconfig.patch"
+)
+
 pkg_setup() {
 	if use !dedicated && use !server ; then
 		ewarn "Disabling server USE flag will make it impossible"
@@ -67,6 +71,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	eautoreconf
 
 	# install the .desktop in /usr/share/applications
 	# install the icons in /usr/share/pixmaps
