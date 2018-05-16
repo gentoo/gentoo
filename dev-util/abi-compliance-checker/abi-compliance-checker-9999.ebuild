@@ -28,10 +28,6 @@ SRC_URI=
 KEYWORDS=
 #endif
 
-src_compile() {
-	:
-}
-
 src_install() {
 	dodir /usr
 	perl Makefile.pl --install --prefix="${EPREFIX}"/usr --destdir="${D}" || die
