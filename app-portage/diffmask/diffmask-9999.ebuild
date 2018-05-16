@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A utility to maintain package.unmask entries up-to-date with masks"
-HOMEPAGE="https://bitbucket.org/mgorny/diffmask/"
+HOMEPAGE="https://github.com/mgorny/diffmask/"
 SRC_URI=""
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
