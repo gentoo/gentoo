@@ -442,10 +442,17 @@ autotools_env_setup() {
 	if [[ ${WANT_AUTOMAKE} == "latest" ]]; then
 		local pv
 		for pv in ${_LATEST_AUTOMAKE[@]/#*:} ; do
-			# has_version respects ROOT, but in this case, we don't want it to,
-			# thus "ROOT=/" prefix;
 			# Break on first hit to respect _LATEST_AUTOMAKE order.
-			ROOT=/ has_version "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
+			local hv_args=""
+			case ${EAPI:-0} in
+				5|6)
+					hv_args="--host-root"
+					;;
+				7)
+					hv_args="-b"
+					;;
+			esac
+			ROOT=/ has_version ${hv_args} "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
 		done
 		[[ ${WANT_AUTOMAKE} == "latest" ]] && \
 			die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE[*]}"

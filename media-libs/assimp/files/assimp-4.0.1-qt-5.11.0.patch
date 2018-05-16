@@ -1,0 +1,59 @@
+From 7251c3c51a774c2828f62787e3aa6ad743ca5628 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 16 May 2018 13:45:25 +0200
+Subject: [PATCH 1/2] Fix build with Qt 5.11.0_beta3 (qt5_use_modules is gone)
+
+---
+ tools/assimp_qt_viewer/CMakeLists.txt | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/tools/assimp_qt_viewer/CMakeLists.txt b/tools/assimp_qt_viewer/CMakeLists.txt
+index 42ef0fb3..9f1b68ca 100644
+--- a/tools/assimp_qt_viewer/CMakeLists.txt
++++ b/tools/assimp_qt_viewer/CMakeLists.txt
+@@ -3,7 +3,7 @@ project(assimp_qt_viewer)
+ 
+ cmake_minimum_required(VERSION 2.6)
+ 
+-find_package(Qt5Widgets REQUIRED)
++find_package(Qt5 COMPONENTS Gui Widgets OpenGL REQUIRED)
+ find_package(DevIL REQUIRED)
+ find_package(OpenGL REQUIRED)
+ 
+@@ -25,9 +25,8 @@ qt5_wrap_ui(UISrcs mainwindow.ui)
+ qt5_wrap_cpp(MOCrcs mainwindow.hpp glview.hpp)
+ 
+ add_executable(${PROJECT_NAME} ${assimp_qt_viewer_SRCS} ${UISrcs} ${MOCrcs})
+-target_link_libraries(${PROJECT_NAME} ${QT_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTOPENGL_LIBRARY} ${IL_LIBRARIES} ${OPENGL_LIBRARIES} assimp)
++target_link_libraries(${PROJECT_NAME} Qt5::Gui Qt5::Widgets Qt5::OpenGL ${IL_LIBRARIES} ${OPENGL_LIBRARIES} assimp)
+ 
+-qt5_use_modules(${PROJECT_NAME} Widgets OpenGL)
+ if(WIN32) # Check if we are on Windows
+ 	if(MSVC) # Check if we are using the Visual Studio compiler
+ 		#set_target_properties(TestProject PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
+-- 
+2.17.0
+
+
+From 5bbf0a8afa5a3cbaa9281e47cc327b0d9560b03f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 16 May 2018 13:58:30 +0200
+Subject: [PATCH 2/2] Add missing assimp_qt_viewer install target
+
+---
+ tools/assimp_qt_viewer/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/assimp_qt_viewer/CMakeLists.txt b/tools/assimp_qt_viewer/CMakeLists.txt
+index 9f1b68ca..b41291e3 100644
+--- a/tools/assimp_qt_viewer/CMakeLists.txt
++++ b/tools/assimp_qt_viewer/CMakeLists.txt
+@@ -42,3 +42,5 @@ else()
+ endif()
+ 
+ set_property(TARGET ${PROJECT_NAME} PROPERTY DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
++
++install(TARGETS assimp_qt_viewer DESTINATION "${ASSIMP_BIN_INSTALL_DIR}")
+-- 
+2.17.0
+
