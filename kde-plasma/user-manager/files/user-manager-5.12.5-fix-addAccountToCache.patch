@@ -1,0 +1,104 @@
+From ff88e24e4380a341f70f9b005acbce2ae9afa60a Mon Sep 17 00:00:00 2001
+From: Valeriy Malov <jazzvoid@gmail.com>
+Date: Sat, 12 May 2018 18:13:25 +0300
+Subject: Split replaceAccount from addAccountToCache
+
+Summary:
+We were accidentally overwriting first account in the model with
+currently logged in user after polling AccountsService
+
+BUG: 336994
+
+Test Plan: check if kcmshell5 user_manager lists mutliple users on cold boot
+
+Reviewers: #plasma, davidedmundson
+
+Reviewed By: #plasma, davidedmundson
+
+Subscribers: davidedmundson, ngraham, rdieter, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D12837
+---
+ src/lib/accountmodel.cpp | 26 ++++++++++++++++----------
+ src/lib/accountmodel.h   |  1 +
+ 2 files changed, 17 insertions(+), 10 deletions(-)
+
+diff --git a/src/lib/accountmodel.cpp b/src/lib/accountmodel.cpp
+index 8ebc4ff..8258810 100644
+--- a/src/lib/accountmodel.cpp
++++ b/src/lib/accountmodel.cpp
+@@ -93,8 +93,8 @@ AccountModel::AccountModel(QObject* parent)
+         addAccount(path.path());
+     }
+ 
+-    //Adding fake "new user" directly into cache
+-    addAccountToCache("new-user", 0);
++    // Adding fake "new user" directly into cache
++    addAccountToCache("new-user", nullptr);
+ 
+     m_kEmailSettings.setProfile(m_kEmailSettings.defaultProfileName());
+ 
+@@ -368,11 +368,7 @@ void AccountModel::addAccount(const QString& path)
+ void AccountModel::addAccountToCache(const QString& path, Account* acc, int pos)
+ {
+     if (pos > -1) {
+-        if (m_userPath.count() > 0) {
+-            m_userPath.replace(pos, path);
+-        } else {
+-            m_userPath.insert(pos, path);
+-        }
++        m_userPath.insert(pos, path);
+     } else {
+         m_userPath.append(path);
+     }
+@@ -381,6 +377,16 @@ void AccountModel::addAccountToCache(const QString& path, Account* acc, int pos)
+     m_loggedAccounts[path] = false;
+ }
+ 
++void AccountModel::replaceAccount(const QString &path, OrgFreedesktopAccountsUserInterface *acc, int pos)
++{
++    if (pos >= m_userPath.size() || pos < 0) {
++        return;
++    }
++    m_userPath.replace(pos, path);
++
++    m_users.insert(path, acc);
++    m_loggedAccounts[path] = false;
++}
+ 
+ void AccountModel::removeAccount(const QString& path)
+ {
+@@ -429,13 +435,13 @@ void AccountModel::UserAdded(const QDBusObjectPath& dbusPath)
+     }
+     connect(acc, SIGNAL(Changed()), SLOT(Changed()));
+ 
+-    //First, we modify "new-user" to become the new created user
++    // First, we modify "new-user" to become the new created user
+     int row = rowCount();
+-    addAccountToCache(path, acc, row - 1);
++    replaceAccount(path, acc, row - 1);
+     QModelIndex changedIndex = index(row - 1, 0);
+     emit dataChanged(changedIndex, changedIndex);
+ 
+-    //Then we add new-user again.
++    // Then we add new-user again.
+     beginInsertRows(QModelIndex(), row, row);
+     addAccountToCache("new-user", 0);
+     endInsertRows();
+diff --git a/src/lib/accountmodel.h b/src/lib/accountmodel.h
+index b666239..f515613 100644
+--- a/src/lib/accountmodel.h
++++ b/src/lib/accountmodel.h
+@@ -79,6 +79,7 @@ class AccountModel : public QAbstractListModel
+         const QString accountPathForUid(uint uid) const;
+         void addAccount(const QString &path);
+         void addAccountToCache(const QString &path, OrgFreedesktopAccountsUserInterface *acc, int pos = -1);
++        void replaceAccount(const QString &path, OrgFreedesktopAccountsUserInterface *acc, int pos);
+         void removeAccount(const QString &path);
+         bool checkForErrors(QDBusPendingReply <void> reply) const;
+         QString cryptPassword(const QString &password) const;
+-- 
+cgit v0.11.2
+
