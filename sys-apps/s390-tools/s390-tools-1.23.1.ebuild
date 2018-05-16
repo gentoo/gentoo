@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,8 +10,8 @@ E2FSPROGS_P=e2fsprogs-1.41.3
 LINUX_P=linux-2.6.27
 
 DESCRIPTION="User space utilities for the zSeries (s390) Linux kernel and device drivers"
-HOMEPAGE="http://www.ibm.com/developerworks/linux/linux390/s390-tools.html"
-SRC_URI="http://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/${P}.tar.bz2
+HOMEPAGE="https://www.ibm.com/developerworks/linux/linux390/s390-tools.html"
+SRC_URI="https://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/${P}.tar.bz2
 	zfcpdump? (
 		mirror://sourceforge/e2fsprogs/${E2FSPROGS_P}.tar.gz
 		mirror://kernel/linux/kernel/v2.6/${LINUX_P}.tar.bz2
