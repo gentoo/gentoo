@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS=( CHANGELOG.md CONTRIBUTING.md FAQ.md README.md  )
+DOCS=( {CHANGELOG,CONTRIBUTING,FAQ,README}.md )
 
 src_prepare() {
 	default
