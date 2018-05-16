@@ -35,7 +35,7 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
 	macosx-qtkit matroska microdns modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
 	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp
-	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex ssl svg
+	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl svg
 	taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx
 	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
@@ -175,6 +175,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0:0
 		media-libs/speexdsp:0
 	)
+	srt? ( net-libs/srt )
 	ssl? ( net-libs/gnutls:0 )
 	svg? (
 		gnome-base/librsvg:2
@@ -365,6 +366,7 @@ src_configure() {
 		$(use_enable skins skins2)
 		$(use_enable soxr)
 		$(use_enable speex)
+		$(use_enable srt)
 		$(use_enable ssl gnutls)
 		$(use_enable svg)
 		$(use_enable svg svgdec)
@@ -412,7 +414,6 @@ src_configure() {
 		--disable-shine
 		--disable-sndio
 		--disable-spatialaudio
-		--disable-srt
 		--disable-vsxu
 		--disable-wasapi
 	)
