@@ -154,6 +154,8 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
+	# systemtap is a gentoo-specific switch: bug #654748
+	tc_version_is_at_least 8.0 && IUSE+=" systemtap"
 fi
 
 IUSE+=" ${IUSE_DEF[*]/#/+}"
@@ -218,6 +220,11 @@ if in_iuse gcj ; then
 	tc_version_is_at_least 3.4 && GCJ_GTK_DEPS+=" x11-libs/pango"
 	tc_version_is_at_least 4.2 && GCJ_DEPS+=" app-arch/zip app-arch/unzip"
 	DEPEND+=" gcj? ( awt? ( ${GCJ_GTK_DEPS} ) ${GCJ_DEPS} )"
+fi
+
+if in_iuse systemtap ; then
+	# gcc needs sys/sdt.h headers on target
+	DEPEND+=" systemtap? ( dev-util/systemtap )"
 fi
 
 PDEPEND=">=sys-devel/gcc-config-1.7"
@@ -1227,6 +1234,10 @@ toolchain_src_configure() {
 
 	if in_iuse mpx ; then
 		confgcc+=( $(use_enable mpx libmpx) )
+	fi
+
+	if in_iuse systemtap ; then
+		confgcc+=( $(use_enable systemtap) )
 	fi
 
 	if in_iuse vtv ; then
