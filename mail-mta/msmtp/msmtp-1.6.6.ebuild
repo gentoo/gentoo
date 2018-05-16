@@ -14,7 +14,7 @@ KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~arm-lin
 IUSE="doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax"
 
 CDEPEND="
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn:= )
 	libsecret? ( app-crypt/libsecret )
 	nls? ( virtual/libintl )
 	sasl? ( virtual/gsasl )
