@@ -21,8 +21,8 @@ RDEPEND="
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.11[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.35[python(+)?,${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.15[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.36[python(+)?,${MULTILIB_USEDEP}]
 	ldap? ( net-nds/openldap )
 	python? ( ${PYTHON_DEPS} )
 "
