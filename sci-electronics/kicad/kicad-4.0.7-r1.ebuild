@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,12 @@ PYTHON_COMPAT=( python2_7 )
 
 WX_GTK_VER="3.0"
 
-inherit cmake-utils eutils flag-o-matic gnome2-utils python-single-r1 wxwidgets vcs-snapshot versionator xdg
-
-DESCRIPTION="Electronic Schematic and PCB design tools."
-HOMEPAGE="http://www.kicad-pcb.org"
+inherit check-reqs cmake-utils flag-o-matic gnome2-utils python-single-r1 wxwidgets vcs-snapshot versionator xdg
 
 SERIES=$(get_version_component_range 1-2)
 
+DESCRIPTION="Electronic Schematic and PCB design tools."
+HOMEPAGE="http://www.kicad-pcb.org"
 SRC_URI="https://launchpad.net/${PN}/${SERIES}/${PV}/+download/${P}.tar.xz
 	!minimal? (
 		http://downloads.kicad-pcb.org/libraries/${PN}-footprints-${PV}.tar.gz
@@ -22,7 +21,7 @@ SRC_URI="https://launchpad.net/${PN}/${SERIES}/${PV}/+download/${P}.tar.xz
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug doc examples github i18n libressl minimal +python"
 LANGS="bg ca cs de el es fi fr hu it ja ko nl pl pt ru sk sl sv zh-CN"
 for lang in ${LANGS} ; do
@@ -55,25 +54,29 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu"
 
+pkg_pretend() {
+	CHECKREQS_DISK_BUILD="8G"
+	check-reqs_pkg_pretend
+}
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	setup-wxwidgets
+	CHECKREQS_DISK_BUILD="8G"
+	check-reqs_pkg_setup
 }
 
 src_prepare() {
 	xdg_src_prepare
+	cmake-utils_src_prepare
 
 	# Patch to work with >=boost 1.61
 	eapply "${FILESDIR}/${PN}-boost-1.61.patch"
+	# Patch to work with >=cmake 3.11
+	eapply "${FILESDIR}/${PN}-cmake-checkcxxsymbolexists.patch"
 
 	# Remove cvpcb desktop file as it does nothing
 	rm "resources/linux/mime/applications/cvpcb.desktop" || die
-
-	# remove all the non unix file endings and fix application categories in desktop files
-	while IFS="" read -d $'\0' -r f; do
-		edos2unix "${f}"
-		sed -i '/Categories/s/Development;//' "${f}"
-	done < <(find "${S}" -type f -name "*.desktop" -print0)
 
 	# Handle optional minimal install.
 	if use minimal; then
@@ -127,8 +130,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DKICAD_DOCS="/usr/share/doc/${PF}"
-		-DKICAD_HELP="/usr/share/doc/${PF}/help"
-		-DwxUSE_UNICODE=ON
 		-DKICAD_SKIP_BOOST=ON
 		-DBUILD_GITHUB_PLUGIN="$(usex github)"
 		-DKICAD_SCRIPTING="$(usex python)"
@@ -138,6 +139,7 @@ src_configure() {
 		-DCMAKE_CXX_FLAGS="-std=c++11"
 	)
 	use python && mycmakeargs+=(
+		-DwxUSE_UNICODE=ON
 		-DPYTHON_DEST="$(python_get_sitedir)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"

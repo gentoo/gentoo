@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 WX_GTK_VER="3.0"
@@ -10,7 +10,6 @@ inherit cmake-utils eutils flag-o-matic gnome2-utils python-single-r1 wxwidgets 
 
 DESCRIPTION="Electronic Schematic and PCB design tools."
 HOMEPAGE="http://www.kicad-pcb.org"
-LIBCONTEXT_COMMIT="3d92a1a50f4749b5a92131a957c9615473be85b4"
 
 SERIES=$(get_version_component_range 1-2)
 
@@ -19,12 +18,11 @@ SRC_URI="https://launchpad.net/${PN}/${SERIES}/${PV}/+download/${P}.tar.xz
 		http://downloads.kicad-pcb.org/libraries/${PN}-footprints-${PV}.tar.gz
 		http://downloads.kicad-pcb.org/libraries/kicad-library-${PV}.tar.gz
 	)
-	i18n? ( https://github.com/KiCad/${PN}-i18n/archive/${PV}.tar.gz -> ${P}-i18n.tar.gz )
-	https://github.com/twlostow/libcontext/archive/${LIBCONTEXT_COMMIT}.tar.gz -> ${PN}-libcontext.tar.gz"
+	i18n? ( https://github.com/KiCad/${PN}-i18n/archive/${PV}.tar.gz -> ${P}-i18n.tar.gz )"
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples github i18n libressl minimal +python"
 LANGS="bg ca cs de el es fi fr hu it ja ko nl pl pt ru sk sl sv zh-CN"
 for lang in ${LANGS} ; do
@@ -35,15 +33,15 @@ unset lang
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
-COMMON_DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 	python? (
 		dev-python/wxpython:${WX_GTK_VER}[opengl,${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
-	>=dev-libs/boost-1.56[nls,threads,python?]
+	>=dev-libs/boost-1.61[context,nls,threads,python?,${PYTHON_USEDEP}]
 	github? (
-		libressl? ( dev-libs/libressl:0 )
-		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0= )
 	)
 	media-libs/glew:0=
 	media-libs/freeglut
@@ -58,26 +56,27 @@ RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
+	setup-wxwidgets
 }
 
 src_prepare() {
 	xdg_src_prepare
+	cmake-utils_src_prepare
 
-	# Add separated out libcontext files and patch source to use them
-	mkdir -p "${S}/common/system/" || die
-	mkdir -p "${S}/include/system/" || die
-	cp "${WORKDIR}/${PN}-libcontext/libcontext.cpp" "${S}/common/system/libcontext.cpp" || die
-	cp "${WORKDIR}/${PN}-libcontext/libcontext.h" "${S}/include/system/libcontext.h" || die
-	# Path source to use new "built in" libcontext. Also patch libcontext.cpp to have correct include file.
-	# Path must be applied after new libcontext files have been copied to the kicad source directory.
-	epatch "${FILESDIR}/${P}-boost-context.patch"
+	# Patch to work with >=boost 1.61
+	eapply "${FILESDIR}/${PN}-boost-1.61.patch"
+	# Patch to work with >=cmake 3.11
+	eapply "${FILESDIR}/${PN}-cmake-checkcxxsymbolexists.patch"
 
-	# remove all the non unix file endings
-	edos2unix $(find "${S}" -type f -name "*.desktop")
+	# Remove cvpcb desktop file as it does nothing
+	rm "resources/linux/mime/applications/cvpcb.desktop" || die
 
-	# Remove cvpcb desktop file while it does nothing
-	rm "${WORKDIR}/${P}/resources/linux/mime/applications/cvpcb.desktop" || die
+	# remove all the non unix file endings and fix application categories in desktop files
+	while IFS="" read -d $'\0' -r f; do
+		edos2unix "${f}"
+		sed -i '/Categories/s/Development;//' "${f}"
+	done < <(find "${S}" -type f -name "*.desktop" -print0)
 
 	# Handle optional minimal install.
 	if use minimal; then
@@ -107,7 +106,7 @@ src_prepare() {
 		local lang
 		for lang in ${LANGS}; do
 			if ! use l10n_${lang}; then
-				lang="${lang//-/_}"
+				lang="${lang//-/_}"  # Needed to turn zh-CN to zh_CN as KiCad does not follow l10n standard here
 				sed "/${lang}/d" -i ${PN}-i18n/LINGUAS || die
 			fi
 		done
@@ -121,14 +120,8 @@ src_prepare() {
 		sed '/make uninstall/,$d' -i ${PN}-i18n/CMakeLists.txt || die
 	fi
 
-	# Install examples in the right place if requested
-	if use examples; then
-		# install demos into the examples folder too
-		sed -e 's:${KICAD_DATA}/demos:${KICAD_DOCS}/examples:' -i CMakeLists.txt || die
-	else
-		# remove additional demos/examples as its not strictly required to run the binaries
-		sed -e '/add_subdirectory( demos )/d' -i CMakeLists.txt || die
-	fi
+	# Install examples if requested
+	use examples || sed -e '/add_subdirectory( demos )/d' -i CMakeLists.txt || die
 
 	# Add important missing doc files
 	sed -e 's/INSTALL.txt/AUTHORS.txt CHANGELOG.txt README.txt TODO.txt/' -i CMakeLists.txt || die
@@ -136,21 +129,21 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DKICAD_DOCS="/usr/share/doc/${PF}"
+		-DKICAD_SKIP_BOOST=ON
+		-DBUILD_GITHUB_PLUGIN="$(usex github)"
+		-DKICAD_SCRIPTING="$(usex python)"
+		-DKICAD_SCRIPTING_MODULES="$(usex python)"
+		-DKICAD_SCRIPTING_WXPYTHON="$(usex python)"
+		-DKICAD_I18N_UNIX_STRICT_PATH="$(usex i18n)"
+		-DCMAKE_CXX_FLAGS="-std=c++11"
+	)
+	use python && mycmakeargs+=(
+		-DwxUSE_UNICODE=ON
 		-DPYTHON_DEST="$(python_get_sitedir)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
-		-DKICAD_DOCS="/usr/share/doc/${PF}"
-		-DKICAD_HELP="/usr/share/doc/${PF}/help"
-		-DKICAD_REPO_NAME="stable"
-		-DKICAD_BUILD_VERSION="${PV}"
-		-DwxUSE_UNICODE=ON
-		-DKICAD_SKIP_BOOST=ON
-		$(cmake-utils_use github BUILD_GITHUB_PLUGIN)
-		$(cmake-utils_use python KICAD_SCRIPTING)
-		$(cmake-utils_use python KICAD_SCRIPTING_MODULES)
-		$(cmake-utils_use python KICAD_SCRIPTING_WXPYTHON)
-		$(usex i18n "-DKICAD_I18N_UNIX_STRICT_PATH=1" "")
 	)
 	if use debug; then
 		append-cxxflags "-DDEBUG"
@@ -178,7 +171,6 @@ src_install() {
 
 pkg_preinst() {
 	xdg_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
