@@ -30,9 +30,7 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
-# The patch to force user's *FLAGS does not handle --param flags
-# correctly, and I don't seem to be able to get it right.  Use -r1
-# instead.  Help appreciated.
+# Broken *FLAGS handling.  Use -r3 instead.
 =dev-util/scons-3.0.1-r2
 
 # Michał Górny <mgorny@gentoo.org> (15 May 2018)
