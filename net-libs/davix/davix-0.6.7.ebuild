@@ -32,6 +32,7 @@ RDEPEND="${CDEPEND}"
 
 PATCHES=(
 		"${FILESDIR}"/${P}-uio.patch
+		"${FILESDIR}"/${P}-uuid.patch
 )
 
 REQUIRED_USE="test? ( tools )"
