@@ -8,9 +8,9 @@ AUTOTOOLS_AUTORECONF=yes
 inherit autotools-utils git-r3
 
 DESCRIPTION="Library of routines for IF97 water & steam properties"
-HOMEPAGE="https://bitbucket.org/mgorny/libh2o/"
+HOMEPAGE="https://github.com/mgorny/libh2o/"
 SRC_URI=""
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/libh2o.git"
 
 LICENSE="BSD"
 SLOT="0"
