@@ -8,9 +8,9 @@ AUTOTOOLS_AUTORECONF=yes
 inherit autotools-utils git-r3 udev user
 
 DESCRIPTION="Simple udev-based automounter for removable USB media"
-HOMEPAGE="https://bitbucket.org/mgorny/uam/"
+HOMEPAGE="https://github.com/mgorny/uam/"
 SRC_URI=""
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/uam.git"
 
 LICENSE="BSD"
 SLOT="0"
