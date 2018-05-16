@@ -10405,6 +10405,7 @@ virtual/python-pathlib 1.0: A virtual for Python pathlib module
 virtual/python-pmw 1: A virtual for pmw, for Python 2 & 3
 virtual/python-singledispatch 0: A virtual for the Python functools.singledispatch function
 virtual/python-typing 0: A virtual for the Python typing module
+virtual/python-unittest-mock 1: A virtual for unittest.mock with mock fallback
 virtual/qmail 1.03: Virtual for qmail
 virtual/ruby-ffi 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-ssl 10: Virtual ebuild for the Ruby OpenSSL bindings
