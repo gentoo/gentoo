@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Amy Liffey <amynka@gentoo.org> (16 May 2018)
+# Obsolete and not used anymore replaced by app-crypt/eid-mw.
+# Requested by maintainer Vincent Hardy <vincent.hardy.be@gmail.com>
+# Removal in 30 days.
+app-misc/eid-viewer-bin
+
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Ancient, unmaintained and seriously broken.  Applying patches
 # in the ebuild was broken in 2014 and nobody even reported that.
