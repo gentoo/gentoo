@@ -4927,7 +4927,7 @@ dev-python/ipy 0.83: Class and tools for handling of IPv4 and IPv6 addresses and
 dev-python/ipykernel 4.6.1-r2: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.0.2-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 5.4.1: Advanced interactive shell for Python
-dev-python/ipython_genutils 0.1.0 0.2.0: Vestigial utilities from IPython
+dev-python/ipython_genutils 0.2.0: Vestigial utilities from IPython
 dev-python/ipywidgets 7.0.0: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 15.0.6: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
@@ -5475,7 +5475,7 @@ dev-python/ryu 4.14 4.21: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.1.11: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
-dev-python/scandir 1.5 1.6: A better directory iterator and faster os.walk()
+dev-python/scandir 1.6: A better directory iterator and faster os.walk()
 dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical tools
 dev-python/scripttest 1.2-r1: A very small text templating language
 dev-python/scrypt 0.8.0: Bindings for the scrypt key derivation function library
@@ -5575,7 +5575,7 @@ dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.10.0: Add a progress meter to your loops in a second.
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.8: Debug log/trace messages
-dev-python/traitlets 4.3.1 4.3.2: A configuration system for Python applications
+dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/traits 4.5.0: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0: Enthought Tool Suite: Traits-capable user interfaces
 dev-python/translate-toolkit 2.0.0: Toolkit to convert between many translation formats
