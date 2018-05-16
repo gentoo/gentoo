@@ -87,6 +87,10 @@ DEPEND="${RDEPEND}
 	) ) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/2.0.0-rc2-primitives.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
