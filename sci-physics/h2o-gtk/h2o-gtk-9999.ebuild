@@ -8,9 +8,9 @@ AUTOTOOLS_AUTORECONF=yes
 inherit autotools-utils git-r3
 
 DESCRIPTION="GTK+ UI for libh2o -- water & steam properties"
-HOMEPAGE="https://bitbucket.org/mgorny/h2o-gtk/"
+HOMEPAGE="https://github.com/mgorny/h2o-gtk/"
 SRC_URI=""
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/h2o-gtk.git"
 
 LICENSE="BSD"
 SLOT="0"
