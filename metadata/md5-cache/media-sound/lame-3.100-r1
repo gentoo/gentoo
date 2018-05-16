@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=frontend? ( >=sys-libs/ncurses-5.7-r7:0= sndfile? ( >=media-libs/libsndfile-1.0.2 ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/lame/lame-3.100.tar.gz
-_eclasses_=autotools	02d4d2fc8dba08b060de8f3afd46b409	libtool	0081a71a261724730ec4c248494f044d	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	toolchain-funcs	fa02994d0beba88681127d93da4411ec
 _md5_=745f4448d4a6da29f14a92ee1ef06f31

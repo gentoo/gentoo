@@ -10,5 +10,5 @@ RDEPEND=bzip2? ( app-arch/bzip2 ) fbcon? ( media-libs/libpng:0= ) gpm? ( sys-lib
 REQUIRED_USE=!livecd? ( fbcon? ( gpm ) ) svga? ( suid )
 SLOT=2
 SRC_URI=http://links.twibright.com/download/links-2.14.tar.bz2 mirror://debian/pool/main/l/links2/links2_2.10-2.debian.tar.xz
-_eclasses_=autotools	02d4d2fc8dba08b060de8f3afd46b409	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=088a14becf9eddf314d743106bf57407

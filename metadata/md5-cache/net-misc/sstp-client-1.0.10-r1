@@ -9,5 +9,5 @@ LICENSE=GPL-2+-with-openssl-exception
 RDEPEND=>=dev-libs/libevent-2.0.10 dev-libs/openssl:0 net-dialup/ppp:=
 SLOT=0
 SRC_URI=mirror://sourceforge/sstp-client/sstp-client-1.0.10.tar.gz
-_eclasses_=autotools	02d4d2fc8dba08b060de8f3afd46b409	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=b8e4ffe427d30f3679742850961e91d8

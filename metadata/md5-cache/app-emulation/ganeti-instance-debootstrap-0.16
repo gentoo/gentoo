@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/coreutils-6.10-r1 app-arch/dpkg app-arch/dump app-emulation/ganeti dev-util/debootstrap sys-apps/util-linux sys-fs/e2fsprogs sys-fs/multipath-tools
 SLOT=0
 SRC_URI=http://downloads.ganeti.org/instance-debootstrap/ganeti-instance-debootstrap-0.16.tar.gz
-_eclasses_=autotools	02d4d2fc8dba08b060de8f3afd46b409	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
 _md5_=55bc3d958e1eb8f2e17810d2519288fd

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-arch/xz-utils
 SLOT=3
 SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0.tar.gz
-_eclasses_=autotools	02d4d2fc8dba08b060de8f3afd46b409	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec
 _md5_=14a01e537d2aa95b5479d2dc7de8a661
