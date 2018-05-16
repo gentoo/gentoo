@@ -77,7 +77,7 @@ dev-libs/libmemcache
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # Depends on dead Qt4. Masked for removal in 30 days.
-dev-python/pyside-tools
+dev-python/pyside-tools:0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # Depends on dead Qt4, does not build, needs someone to bump to Qt5.
