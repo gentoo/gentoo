@@ -6,10 +6,10 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Library of routines for IF97 water & steam properties"
-HOMEPAGE="https://bitbucket.org/mgorny/libh2o/"
+DESCRIPTION="Python API for sci-libs/libh2o"
+HOMEPAGE="https://github.com/mgorny/pyh2o/"
 SRC_URI=""
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/pyh2o.git"
 
 LICENSE="BSD"
 SLOT="0"
