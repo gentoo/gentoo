@@ -10,7 +10,7 @@ PV2="$(get_version_component_range 2)"
 MYP="${PN}${PV1}_${PV2}oss"
 
 DESCRIPTION="High level abstract threading library"
-HOMEPAGE="http://www.threadingbuildingblocks.org/"
+HOMEPAGE="https://www.threadingbuildingblocks.org"
 SRC_URI="http://threadingbuildingblocks.org/sites/default/files/software_releases/source/${MYP}_src.tgz"
 LICENSE="Apache-2.0"
 SLOT="0"

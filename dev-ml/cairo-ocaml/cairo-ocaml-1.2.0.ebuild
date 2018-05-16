@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils findlib autotools
 
 DESCRIPTION="Ocaml bindings for the cairo vector graphics library"
-HOMEPAGE="http://www.cairographics.org/cairo-ocaml/"
+HOMEPAGE="https://www.cairographics.org/cairo-ocaml/"
 SRC_URI="https://cgit.freedesktop.org/cairo-ocaml/snapshot/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
