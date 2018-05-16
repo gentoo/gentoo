@@ -9,7 +9,7 @@ PLOCALE_BACKUP="en"
 inherit l10n git-r3 qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
-HOMEPAGE="http://psi-im.org/"
+HOMEPAGE="https://psi-im.org"
 
 PSI_URI="https://github.com/psi-im"
 PSI_PLUS_URI="https://github.com/psi-plus"
