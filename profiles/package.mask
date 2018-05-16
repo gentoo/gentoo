@@ -30,6 +30,15 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
+# Ancient, unmaintained and seriously broken.  Applying patches
+# in the ebuild was broken in 2014 and nobody even reported that.
+# Building tests is broken.  No reverse dependencies.  Back in the day,
+# the package was so bad and incomplete that I've decided it's easier to
+# write my own implementation.  sci-libs/libh2o is a good replacement.
+# Bug #655852.  Removal in 30 days.
+sci-libs/freesteam
+
+# Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Broken *FLAGS handling.  Use -r3 instead.
 =dev-util/scons-3.0.1-r2
 
