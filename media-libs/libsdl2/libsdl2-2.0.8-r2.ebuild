@@ -60,6 +60,9 @@ DEPEND="${RDEPEND}
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/SDL2/SDL_config.h
+	/usr/include/SDL2/SDL_platform.h
+	/usr/include/SDL2/begin_code.h
+	/usr/include/SDL2/close_code.h
 )
 
 PATCHES=(
@@ -74,9 +77,6 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 	sed -i -e 's/configure.in/configure.ac/' Makefile.in || die
-	sed -i \
-		-e 's:SDL_platform:SDL2/SDL_platform:' \
-		include/SDL_config.h.in || die
 	mv configure.{in,ac} || die
 	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
 }
