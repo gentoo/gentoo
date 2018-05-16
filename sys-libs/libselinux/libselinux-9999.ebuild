@@ -39,7 +39,8 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? ( >=dev-lang/swig-2.0.9 )"
+	python? ( >=dev-lang/swig-2.0.9 )
+	ruby? ( >=dev-lang/swig-2.0.9 )"
 
 src_prepare() {
 	eapply_user
