@@ -118,7 +118,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	cjk? ( >=dev-libs/ptexenc-1.3.5 )"
 
 DEPEND="${COMMON_DEPEND}
-	<media-libs/freetype-2.9.1
+	<media-libs/freetype-2.9.1-r1
 	virtual/pkgconfig
 	sys-apps/ed
 	sys-devel/flex
