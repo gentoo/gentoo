@@ -9,7 +9,7 @@ PLOCALE_BACKUP="en"
 inherit l10n qmake-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
-HOMEPAGE="http://psi-im.org/"
+HOMEPAGE="https://psi-im.org"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
 	https://github.com/psi-im/psi-l10n/archive/${PV}.tar.gz -> psi-l10n-${PV}.tar.gz"
 
