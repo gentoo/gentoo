@@ -3,24 +3,17 @@
 
 EAPI=7
 
-inherit autotools git-r3
-
-DESCRIPTION="Library of routines for IF97 water & steam properties"
-HOMEPAGE="https://github.com/mgorny/libh2o/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/libh2o.git"
+DESCRIPTION="C++ bindings for libh2o"
+HOMEPAGE="https://github.com/mgorny/libh2oxx/"
+SRC_URI="https://github.com/mgorny/libh2oxx/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug static-libs"
 
-DEPEND="virtual/pkgconfig"
-
-src_prepare() {
-	default
-	eautoreconf
-}
+RDEPEND=">=sci-libs/libh2o-0.2:0="
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	local myconf=(

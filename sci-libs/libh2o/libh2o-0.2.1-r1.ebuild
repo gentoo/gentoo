@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit autotools-utils
+EAPI=7
 
 DESCRIPTION="Library of routines for IF97 water & steam properties"
 HOMEPAGE="https://github.com/mgorny/libh2o/"
@@ -17,9 +15,15 @@ IUSE="debug static-libs"
 DEPEND="virtual/pkgconfig"
 
 src_configure() {
-	local myeconfargs=(
+	local myconf=(
 		$(use_enable debug)
+		$(use_enable static-libs static)
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
