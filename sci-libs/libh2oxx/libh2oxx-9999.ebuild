@@ -8,9 +8,9 @@ AUTOTOOLS_AUTORECONF=yes
 inherit autotools-utils git-r3
 
 DESCRIPTION="C++ bindings for libh2o"
-HOMEPAGE="https://bitbucket.org/mgorny/libh2oxx/"
+HOMEPAGE="https://github.com/mgorny/libh2oxx/"
 SRC_URI=""
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/libh2oxx.git"
 
 LICENSE="BSD"
 SLOT="0"
