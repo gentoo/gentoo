@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SLOT="0/17"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~ia64 ~sparc ~x86"
 IUSE="debug gnutls idn libressl ssl static-libs test zlib"
 
-DEPEND="idn? ( net-dns/libidn )
+DEPEND="idn? ( net-dns/libidn:= )
 	gnutls? ( net-libs/gnutls )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0 )
