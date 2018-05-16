@@ -48,11 +48,12 @@ src_configure() {
 		ewarn
 		myconf="--disable-client --without-SDL"
 	else
-		myconf="--with-sdl=2"
+		myconf="--with-SDL=2"
 	fi
 
 	econf \
 		$(use_enable upnp UPnP) \
+		--libdir=/usr/$(get_libdir)/${PN} \
 		${myconf}
 }
 
