@@ -1,0 +1,989 @@
+From cef89684e41b90c644f369edbca2bf079b8b0454 Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Date: Wed, 16 May 2018 12:34:10 -0300
+Subject: [PATCH] don't use qPrintable() anymore
+
+As commented on: https://bugreports.qt.io/browse/QTBUG-68307,
+qt5 is explicitly breaking qPrintable().
+
+So, let's define our own version of it.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+
+diff --git a/src/backend-vlc/vlcmediawidget.cpp b/src/backend-vlc/vlcmediawidget.cpp
+index 2421dd69e285..c03b7dd732c6 100644
+--- a/src/backend-vlc/vlcmediawidget.cpp
++++ b/src/backend-vlc/vlcmediawidget.cpp
+@@ -55,7 +55,7 @@ bool VlcMediaWidget::init()
+ 
+ 	vlcInstance = libvlc_new(argc, argv);
+ 	if (!vlcInstance) {
+-		qCWarning(logMediaWidget, "libVLC: failed to use extra args: %s", qPrintable(args));
++		qCWarning(logMediaWidget, "libVLC: failed to use extra args: %s", toPrintable(args));
+ 		argc = 0;
+ 		vlcInstance = libvlc_new(0, NULL);
+ 		if (vlcInstance)
+@@ -63,7 +63,7 @@ bool VlcMediaWidget::init()
+ 	}
+ 
+ 	if (vlcInstance == NULL) {
+-		qFatal("Cannot create vlc instance %s", qPrintable(libvlc_errmsg()));
++		qFatal("Cannot create vlc instance %s", toPrintable(libvlc_errmsg()));
+ 		delete argv;
+ 		return false;
+ 	}
+@@ -73,14 +73,14 @@ bool VlcMediaWidget::init()
+ 		for (int i = 0; i < argc; i++)
+ 			log += " " + QLatin1String(argv[i]);
+ 
+-		qCDebug(logVlc, "%s", qPrintable(log));
++		qCDebug(logVlc, "%s", toPrintable(log));
+ 	}
+ 	delete argv;
+ 
+ 	vlcMediaPlayer = libvlc_media_player_new(vlcInstance);
+ 
+ 	if (vlcMediaPlayer == NULL) {
+-		qFatal("Cannot create vlc media player %s", qPrintable(libvlc_errmsg()));
++		qFatal("Cannot create vlc media player %s", toPrintable(libvlc_errmsg()));
+ 		return false;
+ 	}
+ 
+@@ -95,7 +95,7 @@ bool VlcMediaWidget::init()
+ 
+ 	for (uint i = 0; i < (sizeof(eventTypes) / sizeof(eventTypes[0])); ++i) {
+ 		if (libvlc_event_attach(eventManager, eventTypes[i], vlcEventHandler, this) != 0) {
+-			qCCritical(logMediaWidget, "Cannot attach event handler %s", qPrintable(eventTypes[i]));
++			qCCritical(logMediaWidget, "Cannot attach event handler %s", toPrintable(eventTypes[i]));
+ 			return false;
+ 		}
+ 	}
+@@ -167,7 +167,7 @@ void VlcMediaWidget::setAudioDevice(QString device)
+ 	for (i = vlcAudioOutput; i != NULL; i = i->p_next) {
+ 		if (device.compare(QString::fromUtf8(i->psz_description)))
+ 			continue;
+-		qCDebug(logVlc, "Setting audio output to: %s", qPrintable(i->psz_device));
++		qCDebug(logVlc, "Setting audio output to: %s", toPrintable(i->psz_device));
+ 
+ 		libvlc_audio_output_device_set(vlcMediaPlayer, NULL, i->psz_device);
+ 	}
+@@ -319,7 +319,7 @@ void VlcMediaWidget::play(const MediaSource &source)
+ 
+ 	if (vlcMedia == NULL) {
+ 		libvlc_media_player_stop(vlcMediaPlayer);
+-		qCWarning(logMediaWidget, "Cannot create media %s", qPrintable(source.getUrl().toDisplayString()));
++		qCWarning(logMediaWidget, "Cannot create media %s", toPrintable(source.getUrl().toDisplayString()));
+ 		return;
+ 	}
+ 
+@@ -328,7 +328,7 @@ void VlcMediaWidget::play(const MediaSource &source)
+ 
+ 	for (uint i = 0; i < (sizeof(eventTypes) / sizeof(eventTypes[0])); ++i) {
+ 		if (libvlc_event_attach(eventManager, eventTypes[i], vlcEventHandler, this) != 0) {
+-			qCWarning(logMediaWidget, "Cannot attach event handler %s", qPrintable(eventTypes[i]));
++			qCWarning(logMediaWidget, "Cannot attach event handler %s", toPrintable(eventTypes[i]));
+ 		}
+ 	}
+ 
+@@ -340,7 +340,7 @@ void VlcMediaWidget::play(const MediaSource &source)
+ //		setExternalSubtitle(source.subtitleUrl);
+ 
+ 	if (libvlc_media_player_play(vlcMediaPlayer) != 0) {
+-		qCWarning(logMediaWidget, "Cannot play media %s", qPrintable(source.getUrl().toDisplayString()));
++		qCWarning(logMediaWidget, "Cannot play media %s", toPrintable(source.getUrl().toDisplayString()));
+ 	}
+ 
+ 	setCursor(Qt::BlankCursor);
+@@ -408,7 +408,7 @@ void VlcMediaWidget::setCurrentSubtitle(int currentSubtitle)
+ 		}
+ 
+ 		if (track->i_id == requestedSubtitle)
+-			qCDebug(logVlc, "Subtitle set to id %d: %s", track->i_id, qPrintable(subtitle));
++			qCDebug(logVlc, "Subtitle set to id %d: %s", track->i_id, toPrintable(subtitle));
+ 		track = track->p_next;
+ 	}
+ 	libvlc_track_description_list_release(track);
+@@ -424,11 +424,11 @@ void VlcMediaWidget::setExternalSubtitle(const QUrl &url)
+ 					  libvlc_media_slave_type_subtitle,
+ 					  url.toEncoded().constData(),
+ 					  true) == 0)
+-		qCWarning(logMediaWidget, "Cannot set subtitle file %s", qPrintable(fname));
++		qCWarning(logMediaWidget, "Cannot set subtitle file %s", toPrintable(fname));
+ #else
+ 	if (libvlc_video_set_subtitle_file(vlcMediaPlayer,
+-					   qPrintable(fname)) == 0)
+-		qCWarning(logMediaWidget, "Cannot set subtitle file %s", qPrintable(fname));
++					   toPrintable(fname)) == 0)
++		qCWarning(logMediaWidget, "Cannot set subtitle file %s", toPrintable(fname));
+ #endif
+ }
+ 
+@@ -625,7 +625,7 @@ void VlcMediaWidget::updateSubtitles()
+ 		// currentSubtitle
+ 		subtitleId[track->i_id] = ++i;
+ 		subtitles.append(subtitle);
+-		qCDebug(logVlc, "Got subtitle id#%d: %s", track->i_id, qPrintable(subtitle));
++		qCDebug(logVlc, "Got subtitle id#%d: %s", track->i_id, toPrintable(subtitle));
+ 		track = track->p_next;
+ 	}
+ 	libvlc_track_description_list_release(track);
+diff --git a/src/dvb/dvbcam_linux.cpp b/src/dvb/dvbcam_linux.cpp
+index 7e1c483ac674..5ef445a34c6a 100644
+--- a/src/dvb/dvbcam_linux.cpp
++++ b/src/dvb/dvbcam_linux.cpp
+@@ -66,7 +66,7 @@ void DvbLinuxCam::startCa(const QString &path)
+ 	caFd = open(QFile::encodeName(path).constData(), O_RDWR | O_NONBLOCK);
+ 
+ 	if (caFd < 0) {
+-		qCWarning(logCam, "Cannot open CA device node %s", qPrintable(path));
++		qCWarning(logCam, "Cannot open CA device node %s", toPrintable(path));
+ 		return;
+ 	}
+ 
+diff --git a/src/dvb/dvbchannel.cpp b/src/dvb/dvbchannel.cpp
+index 8395f6fa52fa..1c3aa973e327 100644
+--- a/src/dvb/dvbchannel.cpp
++++ b/src/dvb/dvbchannel.cpp
+@@ -146,7 +146,7 @@ DvbChannelModel *DvbChannelModel::createSqlModel(QObject *parent)
+ 	}
+ 
+ 	if (!file.open(QIODevice::ReadOnly)) {
+-		qCWarning(logDvb, "Cannot open %s", qPrintable(file.fileName()));
++		qCWarning(logDvb, "Cannot open %s", toPrintable(file.fileName()));
+ 		return channelModel;
+ 	}
+ 
+@@ -212,7 +212,7 @@ DvbChannelModel *DvbChannelModel::createSqlModel(QObject *parent)
+ 		channel.isScrambled = (flags & 0x1) != 0;
+ 
+ 		if (stream.status() != QDataStream::Ok) {
+-			qCWarning(logDvb, "Invalid channels in file %s", qPrintable(file.fileName()));
++			qCWarning(logDvb, "Invalid channels in file %s", toPrintable(file.fileName()));
+ 			break;
+ 		}
+ 
+@@ -223,7 +223,7 @@ DvbChannelModel *DvbChannelModel::createSqlModel(QObject *parent)
+ 	channelModel->channelFlush();
+ 
+ 	if (!file.remove()) {
+-		qCWarning(logDvb, "Cannot remove '%s' from DB", qPrintable(file.fileName()));
++		qCWarning(logDvb, "Cannot remove '%s' from DB", toPrintable(file.fileName()));
+ 	}
+ 
+ 	return channelModel;
+diff --git a/src/dvb/dvbconfigdialog.cpp b/src/dvb/dvbconfigdialog.cpp
+index fc444595cd34..d0a7bf0c82fe 100644
+--- a/src/dvb/dvbconfigdialog.cpp
++++ b/src/dvb/dvbconfigdialog.cpp
+@@ -546,7 +546,7 @@ void DvbConfigDialog::accept()
+ 	foreach (RegexInputLine *regexInputLine, regexInputList)
+ 	{
+ 		manager->addRecordingRegex(regexInputLine->lineEdit->text());
+-		qCDebug(logDvb, "saved regex: %s", qPrintable(regexInputLine->lineEdit->text()));
++		qCDebug(logDvb, "saved regex: %s", toPrintable(regexInputLine->lineEdit->text()));
+ 		manager->addRecordingRegexPriority(regexInputLine->spinBox->value());
+ 		qCDebug(logDvb, "saved priority: %i", regexInputLine->spinBox->value());
+ 	}
+@@ -1539,7 +1539,7 @@ void DvbSLnbConfigObject::configure()
+ 
+ 	for (i = 0; i < size; i++) {
+ 		struct lnbSat lnb = device->getLnbSatModels().at(i);
+-		QRadioButton *radioButton = new QRadioButton(i18nd("libdvbv5", qPrintable(lnb.name)), mainWidget);
++		QRadioButton *radioButton = new QRadioButton(i18nd("libdvbv5", toPrintable(lnb.name)), mainWidget);
+ 		mainLayout->addWidget(radioButton);
+ 		lnbSelectionGroup->addButton(radioButton, i + 1);
+ 		gridLayout->addWidget(radioButton, i % ((size + 1) / 2), i / ((size + 1) / 2));
+diff --git a/src/dvb/dvbdevice.cpp b/src/dvb/dvbdevice.cpp
+index d4c7150e39e6..27a304931477 100644
+--- a/src/dvb/dvbdevice.cpp
++++ b/src/dvb/dvbdevice.cpp
+@@ -226,7 +226,7 @@ DvbDataDumper::DvbDataDumper()
+ 		QLatin1String(".bin"));
+ 
+ 	if (!open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+-		qCWarning(logDev, "Can't open %s", qPrintable(fileName()));
++		qCWarning(logDev, "Can't open %s", toPrintable(fileName()));
+ 	}
+ }
+ 
+@@ -343,7 +343,7 @@ void DvbDevice::tune(const DvbTransponder &transponder)
+ 		}
+ 
+ 		if (!ok)
+-			qCWarning(logDev, "Can't extract orbital position from %s", qPrintable(config->scanSource));
++			qCWarning(logDev, "Can't extract orbital position from %s", toPrintable(config->scanSource));
+ 
+ 		double radius = 6378;
+ 		double semiMajorAxis = 42164;
+diff --git a/src/dvb/dvbdevice_linux.cpp b/src/dvb/dvbdevice_linux.cpp
+index 1f6c4ad4e1b2..82b29305700a 100644
+--- a/src/dvb/dvbdevice_linux.cpp
++++ b/src/dvb/dvbdevice_linux.cpp
+@@ -95,7 +95,7 @@ void DvbLinuxDevice::startDevice(const QString &deviceId_)
+ 	struct dvb_v5_fe_parms *parms = dvb_fe_open2(adapter, index, verbose, 0, dvbv5_log);
+ 
+ 	if (!parms) {
+-		qCWarning(logDev, "Cannot open frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "Cannot open frontend %s", toPrintable(frontendPath));
+ 		return;
+ 	}
+ 
+@@ -184,7 +184,7 @@ void DvbLinuxDevice::startDevice(const QString &deviceId_)
+ 
+ 	ready = true;
+ 
+-	qCInfo(logDev, "Found dvb device %s: %s", qPrintable(deviceId), qPrintable(frontendName));
++	qCInfo(logDev, "Found dvb device %s: %s", toPrintable(deviceId), toPrintable(frontendName));
+ }
+ 
+ void DvbLinuxDevice::startCa()
+@@ -264,14 +264,14 @@ bool DvbLinuxDevice::acquire()
+ 	dvbv5_parms = dvb_fe_open2(adapter, index, verbose, 0, dvbv5_log);
+ 
+ 	if (!dvbv5_parms) {
+-		qCWarning(logDev, "Cannot open frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "Cannot open frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+ 	dvrFd = open(QFile::encodeName(dvrPath).constData(), O_RDONLY | O_NONBLOCK | O_CLOEXEC);
+ 
+ 	if (dvrFd < 0) {
+-		qCWarning(logDev, "Cannot open dvr %s", qPrintable(dvrPath));
++		qCWarning(logDev, "Cannot open dvr %s", toPrintable(dvrPath));
+ 		dvb_fe_close(dvbv5_parms);
+ 		dvbv5_parms = NULL;
+ 		return false;
+@@ -298,7 +298,7 @@ bool DvbLinuxDevice::sendMessage(const char *message, int length)
+ 	Q_ASSERT(dvbv5_parms && (length >= 0) && (length <= 6));
+ 
+ 	if (dvb_fe_diseqc_cmd(dvbv5_parms, length, (const unsigned char *)message) != 0) {
+-		qCWarning(logDev, "ioctl FE_DISEQC_SEND_MASTER_CMD failed for frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "ioctl FE_DISEQC_SEND_MASTER_CMD failed for frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+@@ -310,7 +310,7 @@ bool DvbLinuxDevice::sendBurst(SecBurst burst)
+ 	Q_ASSERT(dvbv5_parms);
+ 
+ 	if (dvb_fe_diseqc_burst(dvbv5_parms, burst == BurstMiniB) != 0) {
+-		qCWarning(logDev, "ioctl FE_DISEQC_SEND_BURST failed for frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "ioctl FE_DISEQC_SEND_BURST failed for frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+@@ -885,11 +885,11 @@ bool DvbLinuxDevice::satSetup(QString lnbModel, int satNumber, int bpf)
+ 	int lnb = dvb_sat_search_lnb(lnbModel.toUtf8());
+ 	dvbv5_parms->lnb = dvb_sat_get_lnb(lnb);
+ 	if (!dvbv5_parms->lnb) {
+-		qCCritical(logDev, "Cannot set LNBf type to %s", qPrintable(lnbModel));
++		qCCritical(logDev, "Cannot set LNBf type to %s", toPrintable(lnbModel));
+ 		return false;
+ 	}
+ 
+-	qCDebug(logDev, "Using LNBf type %s", qPrintable(lnbModel));
++	qCDebug(logDev, "Using LNBf type %s", toPrintable(lnbModel));
+ 
+ 	dvbv5_parms->sat_number = satNumber;
+ 	dvbv5_parms->freq_bpf = bpf;
+@@ -903,7 +903,7 @@ bool DvbLinuxDevice::tune(const DvbTransponder &transponder)
+ 	stopDvr();
+ 	fe_delivery_system_t delsys;
+ 
+-	qCDebug(logDev, "tune to: %s", qPrintable(transponder.toString()));
++	qCDebug(logDev, "tune to: %s", toPrintable(transponder.toString()));
+ 
+ 	// FIXME: add support for LNA on/off
+ 
+@@ -1067,7 +1067,7 @@ bool DvbLinuxDevice::tune(const DvbTransponder &transponder)
+ 	}
+ 
+ 	if (dvb_fe_set_parms(dvbv5_parms) != 0) {
+-		qCWarning(logDev, "ioctl FE_SET_PROPERTY failed for frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "ioctl FE_SET_PROPERTY failed for frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+@@ -1245,7 +1245,7 @@ bool DvbLinuxDevice::getProps(DvbTransponder &transponder)
+ 		qCWarning(logDev, "Invalid transmission type");
+ 		return false;
+ 	default:
+-		qCWarning(logDev, "Unknown transmission type %s", qPrintable(transponder.getTransmissionType()));
++		qCWarning(logDev, "Unknown transmission type %s", toPrintable(transponder.getTransmissionType()));
+ 		return false;
+ 	}
+ 	return true;
+@@ -1270,12 +1270,12 @@ bool DvbLinuxDevice::isTuned()
+ 	uint32_t status = 0;
+ 
+ 	if (dvb_fe_get_stats(dvbv5_parms) != 0) {
+-		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+ 	if (dvb_fe_retrieve_stats(dvbv5_parms, DTV_STATUS, &status) != 0) {
+-		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+@@ -1291,7 +1291,7 @@ float DvbLinuxDevice::getSignal(Scale &scale)
+ 	scale = DvbBackendDevice::NotSupported;
+ 
+ 	if (dvb_fe_get_stats(dvbv5_parms) != 0) {
+-		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+@@ -1334,7 +1334,7 @@ float DvbLinuxDevice::getSnr(Scale &scale)
+ 
+ 	scale = DvbBackendDevice::NotSupported;
+ 	if (dvb_fe_get_stats(dvbv5_parms) != 0) {
+-		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", qPrintable(frontendPath));
++		qCWarning(logDev, "ioctl FE_READ_STATUS failed for frontend %s", toPrintable(frontendPath));
+ 		return false;
+ 	}
+ 
+@@ -1380,7 +1380,7 @@ bool DvbLinuxDevice::addPidFilter(int pid)
+ 	int dmxFd = open(QFile::encodeName(demuxPath).constData(), O_RDONLY | O_NONBLOCK | O_CLOEXEC);
+ 
+ 	if (dmxFd < 0) {
+-		qCWarning(logDev, "Cannot open demux %s", qPrintable(demuxPath));
++		qCWarning(logDev, "Cannot open demux %s", toPrintable(demuxPath));
+ 		return false;
+ 	}
+ 
+@@ -1393,7 +1393,7 @@ bool DvbLinuxDevice::addPidFilter(int pid)
+ 	pes_filter.flags = DMX_IMMEDIATE_START;
+ 
+ 	if (ioctl(dmxFd, DMX_SET_PES_FILTER, &pes_filter) != 0) {
+-		qCWarning(logDev, "Cannot set up PID filter for demux %s", qPrintable(demuxPath));
++		qCWarning(logDev, "Cannot set up PID filter for demux %s", toPrintable(demuxPath));
+ 		close(dmxFd);
+ 		return false;
+ 	}
+@@ -1505,7 +1505,7 @@ void DvbLinuxDevice::startDvr()
+ 					continue;
+ 				}
+ 
+-				qCWarning(logDev, "Cannot read from dvr %s: error: %d", qPrintable(dvrPath), errno);
++				qCWarning(logDev, "Cannot read from dvr %s: error: %d", toPrintable(dvrPath), errno);
+ 				return;
+ 			}
+ 		}
+@@ -1573,7 +1573,7 @@ void DvbLinuxDevice::run()
+ 					continue;
+ 				}
+ 
+-				qCWarning(logDev, "Cannot read from dvr %s: error %d", qPrintable(dvrPath), errno);
++				qCWarning(logDev, "Cannot read from dvr %s: error %d", toPrintable(dvrPath), errno);
+ 				dataSize = int(read(dvrFd, dvrBuffer.data, bufferSize));
+ 
+ 				if (dataSize < 0) {
+@@ -1585,7 +1585,7 @@ void DvbLinuxDevice::run()
+ 						continue;
+ 					}
+ 
+-					qCWarning(logDev, "Cannot read from dvr %s: error %d", qPrintable(dvrPath), errno);
++					qCWarning(logDev, "Cannot read from dvr %s: error %d", toPrintable(dvrPath), errno);
+ 					return;
+ 				}
+ 			}
+@@ -1643,16 +1643,16 @@ void DvbLinuxDeviceManager::componentAdded(const QString &udi)
+ 	QString devicePath = QString(QLatin1String("/dev/dvb/adapter%1/%2%3")).arg(adapter).arg(type).arg(index);
+ 
+ 	if ((adapter < 0) || (adapter > 0x7fff) || (index < 0) || (index > 0x7fff)) {
+-		qCWarning(logDev, "Cannot determine adapter or index for device %s", qPrintable(udi));
++		qCWarning(logDev, "Cannot determine adapter or index for device %s", toPrintable(udi));
+ 		return;
+ 	}
+ 
+ 	if (devicePath.isEmpty()) {
+-		qCWarning(logDev, "Cannot determine path for device %s", qPrintable(udi));
++		qCWarning(logDev, "Cannot determine path for device %s", toPrintable(udi));
+ 		return;
+ 	}
+ 
+-	qCDebug(logDev, "New device detected: %s", qPrintable(udi));
++	qCDebug(logDev, "New device detected: %s", toPrintable(udi));
+ 
+ 	int deviceIndex = ((adapter << 16) | index);
+ 	DvbLinuxDevice *device = devices.value(deviceIndex);
+@@ -1800,7 +1800,7 @@ void DvbLinuxDeviceManager::componentRemoved(const QString &udi)
+ 	bool removeDevice = false;
+ 
+ 	if (device->isReady())
+-		qCInfo(logDev, "Digital TV device removed %s: %s", qPrintable(device->getDeviceId()), qPrintable(device->getFrontendName()));
++		qCInfo(logDev, "Digital TV device removed %s: %s", toPrintable(device->getDeviceId()), toPrintable(device->getFrontendName()));
+ 
+ 	if (udi == device->caUdi) {
+ 		device->caPath.clear();
+diff --git a/src/dvb/dvbepg.cpp b/src/dvb/dvbepg.cpp
+index 46746c85acee..ff3890d09547 100644
+--- a/src/dvb/dvbepg.cpp
++++ b/src/dvb/dvbepg.cpp
+@@ -76,7 +76,7 @@ DvbEpgModel::DvbEpgModel(DvbManager *manager_, QObject *parent) : QObject(parent
+ 	QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/epgdata.dvb"));
+ 
+ 	if (!file.open(QIODevice::ReadOnly)) {
+-		qCWarning(logEpg, "Cannot open %s", qPrintable(file.fileName()));
++		qCWarning(logEpg, "Cannot open %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+@@ -94,7 +94,7 @@ DvbEpgModel::DvbEpgModel(DvbManager *manager_, QObject *parent) : QObject(parent
+ 	} else if (version == 0x140c37b5) {
+ 		hasMultilang = false;
+ 	} else if (version != 0x20171112) {
+-		qCWarning(logEpg, "Wrong DB version for: %s", qPrintable(file.fileName()));
++		qCWarning(logEpg, "Wrong DB version for: %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+@@ -161,7 +161,7 @@ DvbEpgModel::DvbEpgModel(DvbManager *manager_, QObject *parent) : QObject(parent
+ 		}
+ 
+ 		if (stream.status() != QDataStream::Ok) {
+-			qCWarning(logEpg, "Corrupt data %s", qPrintable(file.fileName()));
++			qCWarning(logEpg, "Corrupt data %s", toPrintable(file.fileName()));
+ 			break;
+ 		}
+ 
+@@ -182,7 +182,7 @@ DvbEpgModel::~DvbEpgModel()
+ 	QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/epgdata.dvb"));
+ 
+ 	if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+-		qCWarning(logEpg, "Cannot open %s", qPrintable(file.fileName()));
++		qCWarning(logEpg, "Cannot open %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+@@ -277,8 +277,8 @@ void DvbEpgModel::Debug(QString text, const DvbSharedEpgEntry &entry)
+ 	QTime end = entry->begin.addSecs(QTime(0, 0, 0).secsTo(entry->duration)).toLocalTime().time();
+ 
+ 	qCDebug(logEpg, "event %s: type %d, from %s to %s: %s: %s: %s : %s",
+-		qPrintable(text), entry->type, qPrintable(QLocale().toString(begin, QLocale::ShortFormat)), qPrintable(QLocale().toString(end)),
+-		qPrintable(entry->title()), qPrintable(entry->subheading()), qPrintable(entry->details()), qPrintable(entry->content));
++		toPrintable(text), entry->type, toPrintable(QLocale().toString(begin, QLocale::ShortFormat)), toPrintable(QLocale().toString(end)),
++		toPrintable(entry->title()), toPrintable(entry->subheading()), toPrintable(entry->details()), toPrintable(entry->content));
+ }
+ 
+ DvbSharedEpgEntry DvbEpgModel::addEntry(const DvbEpgEntry &entry)
+diff --git a/src/dvb/dvbliveview.cpp b/src/dvb/dvbliveview.cpp
+index b47ba9968413..05ff52ede4a3 100644
+--- a/src/dvb/dvbliveview.cpp
++++ b/src/dvb/dvbliveview.cpp
+@@ -448,14 +448,14 @@ void DvbLiveView::playbackStatusChanged(MediaWidget::PlaybackStatus playbackStat
+ 
+ 		if (internal->timeShiftFile.exists() ||
+ 		    !internal->timeShiftFile.open(QIODevice::WriteOnly)) {
+-			qCWarning(logDvb, "Cannot open file %s", qPrintable(internal->timeShiftFile.fileName()));
++			qCWarning(logDvb, "Cannot open file %s", toPrintable(internal->timeShiftFile.fileName()));
+ 			internal->timeShiftFile.setFileName(QDir::homePath() + QLatin1String("/TimeShift-") +
+ 				QDateTime::currentDateTime().toString(QLatin1String("yyyyMMddThhmmss")) +
+ 				QLatin1String(".m2t"));
+ 
+ 			if (internal->timeShiftFile.exists() ||
+ 			    !internal->timeShiftFile.open(QIODevice::WriteOnly)) {
+-				qCWarning(logDvb, "Cannot open file %s", qPrintable(internal->timeShiftFile.fileName()));
++				qCWarning(logDvb, "Cannot open file %s", toPrintable(internal->timeShiftFile.fileName()));
+ 				mediaWidget->stop();
+ 				break;
+ 			}
+diff --git a/src/dvb/dvbmanager.cpp b/src/dvb/dvbmanager.cpp
+index 467eeb5f27b7..3134ddec61f4 100644
+--- a/src/dvb/dvbmanager.cpp
++++ b/src/dvb/dvbmanager.cpp
+@@ -326,7 +326,7 @@ bool DvbManager::updateScanData(const QByteArray &data)
+ 	QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/scanfile.dvb"));
+ 
+ 	if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+-		qCWarning(logDvb, "Cannot open %s", qPrintable(file.fileName()));
++		qCWarning(logDvb, "Cannot open %s", toPrintable(file.fileName()));
+ 		return false;
+ 	}
+ 
+@@ -579,11 +579,11 @@ void DvbManager::loadDeviceManager()
+ 		QObject *deviceManager = QPluginLoader(path).instance();
+ 
+ 		if (deviceManager == NULL) {
+-			qCWarning(logDvb, "Cannot load dvb device manager %s", qPrintable(path));
++			qCWarning(logDvb, "Cannot load dvb device manager %s", toPrintable(path));
+ 			break;
+ 		}
+ 
+-		qCInfo(logDvb, "Using dvb device manager %s", qPrintable(path));
++		qCInfo(logDvb, "Using dvb device manager %s", toPrintable(path));
+ 		deviceManager->setParent(this);
+ 		connect(deviceManager, SIGNAL(requestBuiltinDeviceManager(QObject*&)),
+ 			this, SLOT(requestBuiltinDeviceManager(QObject*&)));
+@@ -610,7 +610,7 @@ void DvbManager::readDeviceConfigs()
+ 	const char *errMsg;
+ 
+ 	if (!file.open(QIODevice::ReadOnly)) {
+-		qCWarning(logDvb, "Cannot open %s", qPrintable(file.fileName()));
++		qCWarning(logDvb, "Cannot open %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+@@ -680,7 +680,7 @@ void DvbManager::readDeviceConfigs()
+ 	}
+ 
+ 	if (!reader.isValid())
+-		qCWarning(logDvb, "Found some problems at %s: %s", qPrintable(file.fileName()), errMsg);
++		qCWarning(logDvb, "Found some problems at %s: %s", toPrintable(file.fileName()), errMsg);
+ }
+ 
+ void DvbManager::writeDeviceConfigs()
+@@ -688,7 +688,7 @@ void DvbManager::writeDeviceConfigs()
+ 	QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/config.dvb"));
+ 
+ 	if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+-		qCWarning(logDvb, "Cannot open %s", qPrintable(file.fileName()));
++		qCWarning(logDvb, "Cannot open %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+@@ -769,12 +769,12 @@ void DvbManager::readScanData()
+ 		globalDate = DvbScanData(globalFile.read(1024)).readDate();
+ 
+ 		if (globalDate.isNull()) {
+-			qCWarning(logDvb, "Cannot parse %s", qPrintable(globalFile.fileName()));
++			qCWarning(logDvb, "Cannot parse %s", toPrintable(globalFile.fileName()));
+ 		}
+ 
+ 		globalFile.close();
+ 	} else {
+-		qCWarning(logDvb, "Cannot open global scanfile %s", qPrintable(globalFile.fileName()));
++		qCWarning(logDvb, "Cannot open global scanfile %s", toPrintable(globalFile.fileName()));
+ 	}
+ 
+ 	QFile localFile(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/scanfile.dvb"));
+@@ -786,7 +786,7 @@ void DvbManager::readScanData()
+ 		localDate = DvbScanData(localData).readDate();
+ 
+ 		if (localDate.isNull()) {
+-			qCWarning(logDvb, "Cannot parse %s", qPrintable(localFile.fileName()));
++			qCWarning(logDvb, "Cannot parse %s", toPrintable(localFile.fileName()));
+ 		}
+ 
+ 		localFile.close();
+@@ -796,18 +796,18 @@ void DvbManager::readScanData()
+ 		localData.clear();
+ 
+ 		if (localFile.exists() && !localFile.remove()) {
+-			qCWarning(logDvb, "Cannot remove %s", qPrintable(localFile.fileName()));
++			qCWarning(logDvb, "Cannot remove %s", toPrintable(localFile.fileName()));
+ 		}
+ 
+ 		if (!globalFile.copy(localFile.fileName())) {
+-			qCWarning(logDvb, "Cannot copy %s to %s", qPrintable(globalFile.fileName()), qPrintable(localFile.fileName()));
++			qCWarning(logDvb, "Cannot copy %s to %s", toPrintable(globalFile.fileName()), toPrintable(localFile.fileName()));
+ 		}
+ 
+ 		if (localFile.open(QIODevice::ReadOnly)) {
+ 			localData = localFile.readAll();
+ 			localFile.close();
+ 		} else {
+-			qCWarning(logDvb, "Cannot open %s", qPrintable(localFile.fileName()));
++			qCWarning(logDvb, "Cannot open %s", toPrintable(localFile.fileName()));
+ 			scanDataDate = QDate(1900, 1, 1);
+ 			return;
+ 		}
+@@ -817,7 +817,7 @@ void DvbManager::readScanData()
+ 	scanDataDate = data.readDate();
+ 
+ 	if (!scanDataDate.isValid()) {
+-		qCWarning(logDvb, "Cannot parse %s", qPrintable(localFile.fileName()));
++		qCWarning(logDvb, "Cannot parse %s", toPrintable(localFile.fileName()));
+ 		scanDataDate = QDate(1900, 1, 1);
+ 		return;
+ 	}
+@@ -857,7 +857,7 @@ void DvbManager::readScanData()
+ 		else if (!typeStr.compare("isdb-t", Qt::CaseInsensitive))
+ 			type = IsdbT;
+ 		else {
+-			qCWarning(logDvb, "Transmission type '%s' unknown", qPrintable(typeStr));
++			qCWarning(logDvb, "Transmission type '%s' unknown", toPrintable(typeStr));
+ 			continue;
+ 		}
+ 
+@@ -882,7 +882,7 @@ void DvbManager::readScanData()
+ 				DvbTransponder::fromString(QString::fromLatin1(line));
+ 
+ 			if (!transponder.isValid()) {
+-				qCWarning(logDvb, "Error parsing line : '%s'", qPrintable(line));
++				qCWarning(logDvb, "Error parsing line : '%s'", toPrintable(line));
+ 			} else {
+ 				transponders.append(transponder);
+ 
+diff --git a/src/dvb/dvbrecording.cpp b/src/dvb/dvbrecording.cpp
+index 101845572469..92685cb0d608 100644
+--- a/src/dvb/dvbrecording.cpp
++++ b/src/dvb/dvbrecording.cpp
+@@ -77,7 +77,7 @@ DvbRecordingModel::DvbRecordingModel(DvbManager *manager_, QObject *parent) : QO
+ 	}
+ 
+ 	if (!file.open(QIODevice::ReadOnly)) {
+-		qCWarning(logDvb, "Cannot open file %s", qPrintable(file.fileName()));
++		qCWarning(logDvb, "Cannot open file %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+@@ -115,7 +115,7 @@ DvbRecordingModel::DvbRecordingModel(DvbManager *manager_, QObject *parent) : QO
+ 		stream >> recording.details;
+ 
+ 		if (stream.status() != QDataStream::Ok) {
+-			qCWarning(logDvb, "Invalid recordings in file %s", qPrintable(file.fileName()));
++			qCWarning(logDvb, "Invalid recordings in file %s", toPrintable(file.fileName()));
+ 			break;
+ 		}
+ 
+@@ -123,7 +123,7 @@ DvbRecordingModel::DvbRecordingModel(DvbManager *manager_, QObject *parent) : QO
+ 	}
+ 
+ 	if (!file.remove()) {
+-		qCWarning(logDvb, "Cannot remove file %s", qPrintable(file.fileName()));
++		qCWarning(logDvb, "Cannot remove file %s", toPrintable(file.fileName()));
+ 	}
+ }
+ 
+@@ -262,19 +262,19 @@ void DvbRecordingModel::disableLessImportant(DvbSharedRecording &recording1, Dvb
+ 	if (recording1->priority < recording2->priority) {
+ 		DvbRecording rec1 = *(recording1.constData());
+ 		rec1.disabled = true;
+-		qCWarning(logDvb, "Disabled %s because %s has more priority", qPrintable(recording1->name), qPrintable(recording2->name));
++		qCWarning(logDvb, "Disabled %s because %s has more priority", toPrintable(recording1->name), toPrintable(recording2->name));
+ 	}
+ 	if (recording2->priority < recording1->priority) {
+ 		DvbRecording rec2 = *(recording1.constData());
+ 		rec2.disabled = true;
+-		qCWarning(logDvb, "Disabled %s because %s has more priority", qPrintable(recording2->name), qPrintable(recording1->name));
++		qCWarning(logDvb, "Disabled %s because %s has more priority", toPrintable(recording2->name), toPrintable(recording1->name));
+ 	}
+ }
+ 
+ void DvbRecordingModel::addToUnwantedRecordings(DvbSharedRecording recording)
+ {
+ 	unwantedRecordings.append(recording);
+-	qCDebug(logDvb, "executed %s", qPrintable(recording->name));
++	qCDebug(logDvb, "executed %s", toPrintable(recording->name));
+ }
+ 
+ void DvbRecordingModel::executeActionAfterRecording(DvbRecording recording)
+@@ -321,7 +321,7 @@ void DvbRecordingModel::removeDuplicates()
+ 					&& loopEntry1.name == loopEntry2.name) {
+ 					recordings.remove(recordings.key(rec1));
+ 					recordingMap.remove(rec1);
+-					qCDebug(logDvb, "Removed. %s", qPrintable(loopEntry1.name));
++					qCDebug(logDvb, "Removed. %s", toPrintable(loopEntry1.name));
+ 				}
+ 			}
+ 			j = j + 1;
+@@ -375,7 +375,7 @@ bool DvbRecordingModel::existsSimilarRecording(DvbEpgEntry recording)
+ 				&& QString::compare(entry.channel->name, loopEntry.channel->name) == 0
+ 				&& QString::compare((entry.duration).toString(),
+ 						loopEntry.duration.addSecs(- manager->getBeginMargin() - manager->getEndMargin()).toString()) == 0) {
+-			qCDebug(logDvb, "Found from unwanteds %s", qPrintable(loopEntry.name));
++			qCDebug(logDvb, "Found from unwanteds %s", toPrintable(loopEntry.name));
+ 			found = true;
+ 			break;
+ 		}
+@@ -409,7 +409,7 @@ void DvbRecordingModel::disableConflicts()
+ 		{
+ 			if (isInConflictWithAll(rec2, conflictList)) {
+ 				conflictList.append(rec2);
+-				qCDebug(logDvb, "conflict: '%s' '%s' and '%s' '%s'", qPrintable(rec1->name), qPrintable(rec1->begin.toString()), qPrintable(rec2->name), qPrintable(rec2->begin.toString()));
++				qCDebug(logDvb, "conflict: '%s' '%s' and '%s' '%s'", toPrintable(rec1->name), toPrintable(rec1->begin.toString()), toPrintable(rec2->name), toPrintable(rec2->begin.toString()));
+ 
+ 			}
+ 
+@@ -473,13 +473,13 @@ DvbSharedRecording DvbRecordingModel::getLeastImportant(QList<DvbSharedRecording
+ 	DvbSharedRecording leastImportant = recList.value(0);
+ 	foreach(DvbSharedRecording listRec, recList)
+ 	{
+-		qCDebug(logDvb, "name and priority %s %s", qPrintable(listRec->name), qPrintable(listRec->priority));
++		qCDebug(logDvb, "name and priority %s %s", toPrintable(listRec->name), toPrintable(listRec->priority));
+ 		if (listRec->priority < leastImportant->priority) {
+ 			leastImportant = listRec;
+ 		}
+ 	}
+ 
+-	qCDebug(logDvb, "least important: %s", qPrintable(leastImportant->name));
++	qCDebug(logDvb, "least important: %s", toPrintable(leastImportant->name));
+ 	return leastImportant;
+ }
+ 
+@@ -496,7 +496,7 @@ void DvbRecordingModel::disableLeastImportants(QList<DvbSharedRecording> recList
+ 			if (listRecShared->priority == leastImportance) {
+ 				listRec.disabled = true;
+ 				updateRecording(listRecShared, listRec);
+-				qCDebug(logDvb, "disabled: %s %s", qPrintable(listRec.name), qPrintable(listRec.begin.toString()));
++				qCDebug(logDvb, "disabled: %s %s", toPrintable(listRec.name), toPrintable(listRec.begin.toString()));
+ 			}
+ 		}
+ 	}
+@@ -528,7 +528,7 @@ void DvbRecordingModel::findNewRecordings()
+ 					int priority = manager->getRecordingRegexPriorityList().value(i);
+ 					epgModel->scheduleProgram(epgMap.value(key), manager->getBeginMargin(),
+ 							manager->getEndMargin(), false, priority);
+-					qCDebug(logDvb, "scheduled %s", qPrintable(title));
++					qCDebug(logDvb, "scheduled %s", toPrintable(title));
+ 					}
+ 				}
+ 			}
+@@ -628,7 +628,7 @@ int DvbRecordingModel::getSecondsUntilNextRecording() const
+ 		}
+ 		if (end > QDateTime::currentDateTime().toUTC() && rec.begin <= QDateTime::currentDateTime().toUTC()) {
+ 			timeUntil = 0;
+-			qCDebug(logDvb, "Rec ongoing %s", qPrintable(rec.name));
++			qCDebug(logDvb, "Rec ongoing %s", toPrintable(rec.name));
+ 			break;
+ 		}
+ 		if (rec.begin > QDateTime::currentDateTime().toUTC()) {
+@@ -688,7 +688,7 @@ void DvbRecordingModel::scanChannels()
+ 			}
+ 			if (channel.isValid()) {
+ 				// TODO update tab
+-				qCDebug(logDvb, "Executed %s", qPrintable(channel->name));
++				qCDebug(logDvb, "Executed %s", toPrintable(channel->name));
+ 				manager->getLiveView()->playChannel(channel);
+ 				delay(5);
+ 			}
+@@ -814,7 +814,7 @@ bool DvbRecordingFile::start(DvbRecording &recording)
+ 			if (file.open(QIODevice::WriteOnly)) {
+ 				break;
+ 			} else {
+-				qCWarning(logDvb, "Cannot open file %s. Error: %d", qPrintable(file.fileName()), errno);
++				qCWarning(logDvb, "Cannot open file %s. Error: %d", toPrintable(file.fileName()), errno);
+ 			}
+ 
+ 			if ((attempt == 0) && !QDir(folder).exists()) {
+@@ -822,7 +822,7 @@ bool DvbRecordingFile::start(DvbRecording &recording)
+ 					attempt = -1;
+ 					continue;
+ 				} else {
+-					qCWarning(logDvb, "Cannot create folder %s", qPrintable(folder));
++					qCWarning(logDvb, "Cannot create folder %s", toPrintable(folder));
+ 				}
+ 			}
+ 
+@@ -855,7 +855,7 @@ bool DvbRecordingFile::start(DvbRecording &recording)
+ 		}
+ 
+ 		if (!file.isOpen()) {
+-			qCWarning(logDvb, "Cannot open file %s", qPrintable(file.fileName()));
++			qCWarning(logDvb, "Cannot open file %s", toPrintable(file.fileName()));
+ 			return false;
+ 		}
+ 	}
+diff --git a/src/dvb/dvbscan.cpp b/src/dvb/dvbscan.cpp
+index 8c8c9ec5aba0..6558272d1fa5 100644
+--- a/src/dvb/dvbscan.cpp
++++ b/src/dvb/dvbscan.cpp
+@@ -773,7 +773,7 @@ void DvbScan::updateState()
+ 						       arg(channel.transportStreamId).
+ 						       arg(channel.serviceId);
+ 				}
+-				qCDebug(logDvb, "Found channel %s", qPrintable(channel.name));
++				qCDebug(logDvb, "Found channel %s", toPrintable(channel.name));
+ 			}
+ 
+ 			if (!channels.isEmpty()) {
+@@ -918,7 +918,7 @@ void DvbScan::processSdt(const DvbSdtSection &section)
+ 			sdtEntry.name = serviceDescriptor.serviceName();
+ 			sdtEntry.provider = serviceDescriptor.providerName();
+ 
+-			qCDebug(logDvb, "New SDT entry: service ID 0x%04x, name '%s', provider '%s'", entry.serviceId(), qPrintable(sdtEntry.name), qPrintable(sdtEntry.provider));
++			qCDebug(logDvb, "New SDT entry: service ID 0x%04x, name '%s', provider '%s'", entry.serviceId(), toPrintable(sdtEntry.name), toPrintable(sdtEntry.provider));
+ 			sdtEntries.append(sdtEntry);
+ 		}
+ 	}
+@@ -966,7 +966,7 @@ void DvbScan::processVct(const AtscVctSection &section)
+ 			sdtEntry.name = majorminor + QString(shortName, nameLength);
+ 		}
+ 
+-		qCDebug(logDvb, "New SDT entry: name %s", qPrintable(sdtEntry.name));
++		qCDebug(logDvb, "New SDT entry: name %s", toPrintable(sdtEntry.name));
+ 		sdtEntries.append(sdtEntry);
+ 
+ 		if (i < entryCount - 1)
+diff --git a/src/iso-codes.cpp b/src/iso-codes.cpp
+index fe1d7bbed20a..1d352edde54e 100644
+--- a/src/iso-codes.cpp
++++ b/src/iso-codes.cpp
+@@ -37,7 +37,7 @@ namespace IsoCodes
+ 		if (fileName.isEmpty()) {
+ 			qCInfo(logConfig,
+ 			       "Could not locate %s (is iso-codes installed?)",
+-			       qPrintable(file));
++			       toPrintable(file));
+ 			return;
+ 		}
+ 
+@@ -45,8 +45,8 @@ namespace IsoCodes
+ 		if (!f.open(QIODevice::ReadOnly)) {
+ 			qCWarning(logConfig,
+ 			          "Could not open %s (%s)",
+-			          qPrintable(fileName),
+-				  qPrintable(f.errorString()));
++			          toPrintable(fileName),
++				  toPrintable(f.errorString()));
+ 			return;
+ 		}
+ 
+@@ -88,7 +88,7 @@ namespace IsoCodes
+ 		if (hash.isEmpty())
+ 			qCWarning(logConfig,
+ 			          "Error parsing %s: no entries found.",
+-			          qPrintable(fileName));
++			          toPrintable(fileName));
+ 	}
+ 
+ 	/*
+diff --git a/src/log.h b/src/log.h
+index cf23a7797905..61f7dc224d8c 100644
+--- a/src/log.h
++++ b/src/log.h
+@@ -40,3 +40,5 @@ Q_DECLARE_LOGGING_CATEGORY(logMediaWidget)
+ Q_DECLARE_LOGGING_CATEGORY(logPlaylist)
+ Q_DECLARE_LOGGING_CATEGORY(logSql)
+ Q_DECLARE_LOGGING_CATEGORY(logVlc)
++
++#define toPrintable(string) QString(string).toLocal8Bit().constData()
+diff --git a/src/playlist/playlistmodel.cpp b/src/playlist/playlistmodel.cpp
+index 4327fe38235b..1b8e2815377e 100644
+--- a/src/playlist/playlistmodel.cpp
++++ b/src/playlist/playlistmodel.cpp
+@@ -45,7 +45,7 @@ bool Playlist::load(const QUrl &url_, Format format)
+ 	QFile file(localFile);
+ 
+ 	if (!file.open(QIODevice::ReadOnly)) {
+-		qCWarning(logPlaylist, "Cannot open file %s", qPrintable(file.fileName()));
++		qCWarning(logPlaylist, "Cannot open file %s", toPrintable(file.fileName()));
+ 		return false;
+ 	}
+ 
+@@ -78,7 +78,7 @@ bool Playlist::save(Format format) const
+ 	QFile file(localFile);
+ 
+ 	if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+-		qCWarning(logPlaylist, "Cannot open file %s", qPrintable(file.fileName()));
++		qCWarning(logPlaylist, "Cannot open file %s", toPrintable(file.fileName()));
+ 		return false;
+ 	}
+ 
+diff --git a/src/playlist/playlisttab.cpp b/src/playlist/playlisttab.cpp
+index 01f1290f2167..34cc8d5cbf69 100644
+--- a/src/playlist/playlisttab.cpp
++++ b/src/playlist/playlisttab.cpp
+@@ -48,7 +48,7 @@ PlaylistBrowserModel::PlaylistBrowserModel(PlaylistModel *playlistModel_,
+ 		file.setFileName(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/playlists"));
+ 
+ 		if (!file.open(QIODevice::ReadOnly)) {
+-			qCWarning(logPlaylist, "Cannot open file %s", qPrintable(file.fileName()));
++			qCWarning(logPlaylist, "Cannot open file %s", toPrintable(file.fileName()));
+ 			return;
+ 		}
+ 	}
+@@ -69,7 +69,7 @@ PlaylistBrowserModel::PlaylistBrowserModel(PlaylistModel *playlistModel_,
+ 		// compatibility code
+ 		hasSubtitles = false;
+ 	} else if (version != 0x361c4a3c) {
+-		qCWarning(logPlaylist, "Cannot read file %s", qPrintable(file.fileName()));
++		qCWarning(logPlaylist, "Cannot read file %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+@@ -112,7 +112,7 @@ PlaylistBrowserModel::PlaylistBrowserModel(PlaylistModel *playlistModel_,
+ 		}
+ 
+ 		if (stream.status() != QDataStream::Ok) {
+-			qCWarning(logPlaylist, "Cannot read file %s", qPrintable(file.fileName()));
++			qCWarning(logPlaylist, "Cannot read file %s", toPrintable(file.fileName()));
+ 			delete playlist;
+ 			break;
+ 		}
+@@ -126,7 +126,7 @@ PlaylistBrowserModel::~PlaylistBrowserModel()
+ 	QFile file(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1String("/playlistsK4"));
+ 
+ 	if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+-		qCWarning(logPlaylist, "Cannot open file %s", qPrintable(file.fileName()));
++		qCWarning(logPlaylist, "Cannot open file %s", toPrintable(file.fileName()));
+ 		return;
+ 	}
+ 
+diff --git a/src/sqlhelper.cpp b/src/sqlhelper.cpp
+index 089b6970aec2..c48762371ab6 100644
+--- a/src/sqlhelper.cpp
++++ b/src/sqlhelper.cpp
+@@ -80,7 +80,7 @@ QSqlQuery SqlHelper::prepare(const QString &statement)
+ 	query.setForwardOnly(true);
+ 
+ 	if (!query.prepare(statement)) {
+-		qCWarning(logSql, "Error while preparing statement '%s'", qPrintable(query.lastError().text()));
++		qCWarning(logSql, "Error while preparing statement '%s'", toPrintable(query.lastError().text()));
+ 	}
+ 
+ 	return query;
+@@ -92,7 +92,7 @@ QSqlQuery SqlHelper::exec(const QString &statement)
+ 	query.setForwardOnly(true);
+ 
+ 	if (!query.exec(statement)) {
+-		qCWarning(logSql, "Error while executing statement '%s'", qPrintable(query.lastError().text()));
++		qCWarning(logSql, "Error while executing statement '%s'", toPrintable(query.lastError().text()));
+ 	}
+ 
+ 	return query;
+@@ -101,7 +101,7 @@ QSqlQuery SqlHelper::exec(const QString &statement)
+ void SqlHelper::exec(QSqlQuery &query)
+ {
+ 	if (!query.exec()) {
+-		qCWarning(logSql, "Error while executing statement '%s'", qPrintable(query.lastError().text()));
++		qCWarning(logSql, "Error while executing statement '%s'", toPrintable(query.lastError().text()));
+ 	}
+ }
+ 
+diff --git a/src/sqlinterface.cpp b/src/sqlinterface.cpp
+index 8cc3bbd239c5..40886f67fddd 100644
+--- a/src/sqlinterface.cpp
++++ b/src/sqlinterface.cpp
+@@ -135,7 +135,7 @@ void SqlInterface::sqlInsert(SqlKey key)
+ 		break;
+ 	}
+ 
+-	qCWarning(logSql, "Invalid pending statement '%s'", qPrintable(pendingStatement));
++	qCWarning(logSql, "Invalid pending statement '%s'", toPrintable(pendingStatement));
+ }
+ 
+ void SqlInterface::sqlUpdate(SqlKey key)
+@@ -155,7 +155,7 @@ void SqlInterface::sqlUpdate(SqlKey key)
+ 		break;
+ 	}
+ 
+-	qCWarning(logSql, "Invalid pending statement '%s'", qPrintable(pendingStatement));
++	qCWarning(logSql, "Invalid pending statement '%s'", toPrintable(pendingStatement));
+ }
+ 
+ void SqlInterface::sqlRemove(SqlKey key)
+@@ -176,7 +176,7 @@ void SqlInterface::sqlRemove(SqlKey key)
+ 		break;
+ 	}
+ 
+-	qCWarning(logSql, "Invalid pending statement %s", qPrintable(pendingStatement));
++	qCWarning(logSql, "Invalid pending statement %s", toPrintable(pendingStatement));
+ }
+ 
+ void SqlInterface::requestSubmission()
+@@ -226,7 +226,7 @@ void SqlInterface::sqlSubmit()
+ 			continue;
+ 		}
+ 
+-		qCWarning(logSql, "Invalid pending statement %s", qPrintable(pendingStatement));
++		qCWarning(logSql, "Invalid pending statement %s", toPrintable(pendingStatement));
+ 	}
+ 
+ 	pendingStatements.clear();
+

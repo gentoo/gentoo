@@ -48,6 +48,8 @@ RDEPEND="${CDEPEND}
 
 DOCS=( Changelog NOTES README.md )
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+
 src_configure() {
 	# tools working on $HOME directory for a local git checkout
 	local mycmakeargs=(
