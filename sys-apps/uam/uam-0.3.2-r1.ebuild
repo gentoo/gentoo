@@ -3,26 +3,20 @@
 
 EAPI=6
 
-inherit autotools git-r3 udev user
+inherit udev user
 
 DESCRIPTION="Simple udev-based automounter for removable USB media"
 HOMEPAGE="https://github.com/mgorny/uam/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/uam.git"
+SRC_URI="https://github.com/mgorny/uam/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="virtual/udev"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 pkg_postinst() {
 	# The plugdev group is created by pam, pmount and many other ebuilds
