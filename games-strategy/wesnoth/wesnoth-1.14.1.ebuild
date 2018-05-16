@@ -12,14 +12,15 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
-IUSE="dbus dedicated doc fribidi nls openmp server"
+IUSE="dbus dedicated doc fribidi libressl nls openmp server"
 
 RDEPEND="
 	>=dev-libs/boost-1.50:=[nls,threads,icu]
 	>=media-libs/libsdl2-2.0.4:0[joystick,video,X]
 	!dedicated? (
 		dev-libs/glib:2
-		dev-libs/openssl:0=
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 		>=media-libs/fontconfig-2.4.1
 		>=media-libs/sdl2-image-2.0.0[jpeg,png]
 		>=media-libs/sdl2-mixer-2.0.0[vorbis]
