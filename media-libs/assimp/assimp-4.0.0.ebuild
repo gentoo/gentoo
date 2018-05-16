@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-PATCHES=( "${FILESDIR}/findassimp-${PV}.patch" )
+PATCHES=( "${FILESDIR}/findassimp-3.3.1.patch" )
 
 src_configure() {
 	local mycmakeargs=(
