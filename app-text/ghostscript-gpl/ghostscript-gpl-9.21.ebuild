@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	cups? ( >=net-print/cups-1.3.8 )
 	dbus? ( sys-apps/dbus )
 	gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) )
-	unicode? ( net-dns/libidn )
+	unicode? ( net-dns/libidn:= )
 	tiff? ( >=media-libs/tiff-4.0.1:0= )
 	X? ( x11-libs/libXt x11-libs/libXext )
 "
