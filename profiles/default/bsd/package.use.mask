@@ -1,10 +1,6 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (11 May 2018)
-# USE=doc uses non-BSD 'cp' syntax, bug #655444.
->=dev-lang/nasm-2.13 doc
-
 # Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
 # unkeyworded notmuch dependency, bug #587560
 mail-client/mutt notmuch
