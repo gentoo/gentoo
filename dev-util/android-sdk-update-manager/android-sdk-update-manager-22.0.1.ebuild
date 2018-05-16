@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils user
 MY_P="android-sdk_r${PV}-linux"
 
 DESCRIPTION="Open Handset Alliance's Android SDK"
-HOMEPAGE="http://developer.android.com"
+HOMEPAGE="https://developer.android.com"
 SRC_URI="https://dl.google.com/android/${MY_P}.tgz"
 IUSE=""
 RESTRICT="mirror"
@@ -91,7 +91,7 @@ pkg_postinst() {
 	elog "Run 'android' to download the full SDK, including some of the platform tools."
 	elog "You must be in the android group to manage the development environment."
 	elog "Just run 'gpasswd -a <USER> android', then have <USER> re-login."
-	elog "See http://developer.android.com/sdk/adding-components.html for more"
+	elog "See https://developer.android.com/sdk/adding-components.html for more"
 	elog "information."
 	elog "If you have problems downloading the SDK, see https://code.google.com/p/android/issues/detail?id=4406"
 	elog "You need to run env-update and source /etc/profile in any open shells"
