@@ -3,16 +3,13 @@
 
 EAPI=7
 
-inherit autotools git-r3
-
 DESCRIPTION="GTK+ UI for libh2o -- water & steam properties"
 HOMEPAGE="https://github.com/mgorny/h2o-gtk/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/h2o-gtk.git"
+SRC_URI="https://github.com/mgorny/h2o-gtk/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-cpp/gtkmm:2.4=
@@ -20,7 +17,7 @@ RDEPEND="dev-cpp/gtkmm:2.4=
 	sci-libs/plotmm:0="
 DEPEND="${RDEPEND}"
 
-src_prepare() {
+src_configure() {
+	local -x CXXFLAGS="${CXXFLAGS} -std=c++11"
 	default
-	eautoreconf
 }
