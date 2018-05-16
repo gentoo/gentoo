@@ -3,16 +3,13 @@
 
 EAPI=6
 
-inherit git-r3
-
 DESCRIPTION="A tool for checking backward compatibility of a C/C++ library"
 HOMEPAGE="http://ispras.linuxbase.org/index.php/ABI_compliance_checker"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/lvc/${PN}.git"
+SRC_URI="https://github.com/lvc/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"
