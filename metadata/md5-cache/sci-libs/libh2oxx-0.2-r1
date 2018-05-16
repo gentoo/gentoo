@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sci-libs/libh2o-0.2:0=
+DESCRIPTION=C++ bindings for libh2o
+EAPI=7
+HOMEPAGE=https://github.com/mgorny/libh2oxx/
+IUSE=debug static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=sci-libs/libh2o-0.2:0=
+SLOT=0
+SRC_URI=https://github.com/mgorny/libh2oxx/releases/download/libh2oxx-0.2/libh2oxx-0.2.tar.bz2
+_md5_=870f42aa09bcba8f0fcc222c6ace60db
