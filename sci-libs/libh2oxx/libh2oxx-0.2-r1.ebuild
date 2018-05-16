@@ -3,25 +3,17 @@
 
 EAPI=7
 
-inherit autotools git-r3
-
 DESCRIPTION="C++ bindings for libh2o"
 HOMEPAGE="https://github.com/mgorny/libh2oxx/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mgorny/libh2oxx.git"
+SRC_URI="https://github.com/mgorny/libh2oxx/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug static-libs"
 
 RDEPEND=">=sci-libs/libh2o-0.2:0="
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local myconf=(
