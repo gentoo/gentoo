@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MY_PN="MDAnalysis"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A python library to analyze and manipulate molecular dynamics trajectories"
-HOMEPAGE="http://www.mdanalysis.org/"
+HOMEPAGE="https://www.mdanalysis.org"
 SRC_URI="https://mdanalysis.googlecode.com/files/${MY_P}.tar.gz"
 
 SLOT="0"
