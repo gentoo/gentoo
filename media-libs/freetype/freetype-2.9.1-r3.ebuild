@@ -16,7 +16,7 @@ if [[ "${PV}" != 9999 ]] ; then
 			mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
 		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="alpha amd64 ~arm arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"
 else
 	inherit autotools git-r3
@@ -162,8 +162,8 @@ multilib_src_configure() {
 	type -P gmake &> /dev/null && export GNUMAKE=gmake
 
 	local myeconfargs=(
-		--disable-freetype-config
 		--enable-biarch-config
+		--enable-freetype-config
 		--enable-shared
 		$(use_with bzip2)
 		$(use_with harfbuzz)
@@ -230,5 +230,8 @@ multilib_src_install_all() {
 		dodoc -r docs/*
 	fi
 
-	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
+	find "${ED}" -name '*.la' -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 }
