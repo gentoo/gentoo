@@ -10,6 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://git.gnome.org/babl"
 	SRC_URI=""
 else
+	inherit autotools
 	SRC_URI="http://ftp.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
@@ -28,12 +29,12 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.1.48-configure-cflags.patch
+	"${FILESDIR}"/${P}-configure-cflags.patch
 )
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999* ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
