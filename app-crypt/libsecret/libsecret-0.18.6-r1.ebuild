@@ -1,12 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 GCONF_DEBUG="yes"
 PYTHON_COMPAT=( python3_{4,5,6} )
 VALA_USE_DEPEND=vapigen
 
-inherit gnome2 python-any-r1 vala virtualx
+inherit gnome2 multilib-minimal python-any-r1 vala virtualx
 
 DESCRIPTION="GObject library for accessing the freedesktop.org Secret Service API"
 HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
@@ -19,11 +19,11 @@ IUSE="+crypt +introspection test vala"
 REQUIRED_USE="test? ( introspection )
 	vala? ( introspection )"
 
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 
 RDEPEND="
-	>=dev-libs/glib-2.38:2
-	crypt? ( >=dev-libs/libgcrypt-1.2.2:0= )
+	>=dev-libs/glib-2.38:2[${MULTILIB_USEDEP}]
+	crypt? ( >=dev-libs/libgcrypt-1.2.2:0=[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.29:= )
 "
 PDEPEND=">=gnome-base/gnome-keyring-3
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.9
 	>=dev-util/intltool-0.35.0
 	sys-devel/gettext
-	virtual/pkgconfig
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	test? (
 		$(python_gen_any_dep '
 			dev-python/mock[${PYTHON_USEDEP}]
@@ -65,17 +65,28 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
-src_configure() {
+multilib_src_configure() {
+	local ECONF_SOURCE=${S}
 	gnome2_src_configure \
 		--enable-manpages \
 		--disable-strict \
 		--disable-coverage \
 		--disable-static \
 		$(use_enable crypt gcrypt) \
-		$(use_enable introspection) \
-		$(use_enable vala)
+		$(multilib_native_use_enable introspection) \
+		$(multilib_native_use_enable vala) \
+		LIBGCRYPT_CONFIG="${EPREFIX}/usr/bin/${CHOST}-libgcrypt-config"
+
+	if multilib_is_native_abi; then
+		ln -s "${S}"/docs/reference/libsecret/html docs/reference/libsecret/html || die
+	fi
 }
 
-src_test() {
-	Xemake check
+multilib_src_test() {
+	# tests fail without gobject-introspection
+	multilib_is_native_abi && virtx emake check
+}
+
+multilib_src_install() {
+	gnome2_src_install
 }
