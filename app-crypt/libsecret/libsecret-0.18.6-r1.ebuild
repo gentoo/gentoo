@@ -1,8 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-GCONF_DEBUG="yes"
+EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 VALA_USE_DEPEND=vapigen
 
@@ -63,6 +62,9 @@ pkg_setup() {
 src_prepare() {
 	use vala && vala_src_prepare
 	gnome2_src_prepare
+
+	# Drop unwanted CFLAGS modifications
+	sed -e 's/CFLAGS="$CFLAGS -\(g\|O0\|O2\)"//' -i configure || die
 }
 
 multilib_src_configure() {
