@@ -26,6 +26,8 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${P}-fix-valgrind-usage.patch )
+
 src_prepare() {
 	sed -i \
 		-e 's/ -g"/"/g' \
