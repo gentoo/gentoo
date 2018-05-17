@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit java-utils-2 java-pkg-2
 
-DESCRIPTION="JScheme is a Scheme dialect with a simple Java interface called Javadot notation"
+DESCRIPTION="A Scheme dialect with a simple Java interface called Javadot notation"
 HOMEPAGE="http://jscheme.sourceforge.net/jscheme/main.html"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
@@ -28,7 +28,5 @@ src_install() {
 	java-pkg_dolauncher ${PN} \
 		--main jscheme.REPL
 
-	if use doc; then
-		dohtml -r doc || die "dohtml failed"
-	fi
+	use doc && dodoc -r doc
 }
