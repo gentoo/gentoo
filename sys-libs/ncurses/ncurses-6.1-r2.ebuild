@@ -255,7 +255,7 @@ multilib_src_install_all() {
 		einfo "Installing basic terminfo files in /etc..."
 		local x
 		for x in ansi console dumb linux rxvt rxvt-unicode screen{,-256color} vt{52,100,102,200,220} \
-				 xterm xterm-{,256}color
+				xterm xterm-{,256}color
 		do
 			local termfile=$(find "${ED}"/usr/share/terminfo/ -name "${x}" 2>/dev/null)
 			local basedir=$(basename $(dirname "${termfile}"))
@@ -280,7 +280,7 @@ multilib_src_install_all() {
 	dodoc ANNOUNCE MANIFEST NEWS README* TO-DO doc/*.doc
 	if use doc ; then
 		docinto html
-		dohtml -r doc/html/
+		dodoc -r doc/html/.
 	fi
 }
 
