@@ -20,7 +20,7 @@ IUSE=""
 
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
-	>=virtual/mysql-5.5[${MULTILIB_USEDEP}]"
+	~virtual/libmysqlclient-18[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
 
