@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/tilda/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="x11-libs/vte:0
