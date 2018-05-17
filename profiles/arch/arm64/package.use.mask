@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Bennee <alex@bennee.com> (31 May 2018)
+# bunch of dev-perl packages not yet keyworded
+# and the i3 ebuild currently has RESTRICT="test" due to upstream bug
+x11-wm/i3 test
+
 # Mart Raudsepp <leio@gentoo.org> (30 May 2018)
 # app-text/pandoc not keyworded yet
 app-emulation/xen-tools doc
