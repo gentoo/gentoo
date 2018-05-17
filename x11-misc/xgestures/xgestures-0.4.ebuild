@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A mouse gesture recognition program for X11 desktops"
-HOMEPAGE="http://www.cs.bgu.ac.il/~tzachar/xgestures.html"
+HOMEPAGE="https://www.cs.bgu.ac.il/~tzachar/xgestures.html"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
