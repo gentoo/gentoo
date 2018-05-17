@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="A hardware-independent library for executing real-mode x86 code"
-HOMEPAGE="http://www.codon.org.uk/~mjg59/libx86"
-SRC_URI="http://www.codon.org.uk/~mjg59/${PN}/downloads/${P}.tar.gz"
+HOMEPAGE="https://www.codon.org.uk/~mjg59/libx86/"
+SRC_URI="https://www.codon.org.uk/~mjg59/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
