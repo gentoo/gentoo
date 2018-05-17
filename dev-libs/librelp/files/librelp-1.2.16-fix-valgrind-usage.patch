@@ -1,0 +1,27 @@
+Upstream bug: https://github.com/rsyslog/librelp/issues/100
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -176,16 +176,20 @@ fi
+ 
+ # valgrind
+ AC_ARG_ENABLE(valgrind,
+-        [AS_HELP_STRING([--enable-valgrind],[Enable valgrind tests@<:@default=yes@:>@])],
++        [AS_HELP_STRING([--enable-valgrind],[Enable valgrind tests@<:@default=no@:>@])],
+         [case "${enableval}" in
+          yes) enable_valgrind="yes" ;;
+           no) enable_valgrind="no" ;;
+            *) AC_MSG_ERROR(bad value ${enableval} for --enable-valgrind) ;;
+          esac],
+-        [enable_valgrind="yes"]
++        [enable_valgrind="no"]
+ )
+ if test "$enable_valgrind" = "yes"; then
+         AC_CHECK_PROG(VALGRIND, [valgrind], [valgrind], [no])
++
++        if test "x$VALGRIND" = "xno"; then
++                AC_MSG_ERROR([valgrind is missing but forced with --enable-valgrind. Either install valgrind or remove the option!])
++        fi
+ fi
+ AM_CONDITIONAL([HAVE_VALGRIND], test "$enable_valgrind" == "yes")
+ 
