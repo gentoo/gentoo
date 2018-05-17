@@ -42,7 +42,7 @@ src_prepare() {
 		qsstv/qsstv.pro || die
 }
 
-src_compile() {
+src_configure() {
 	eqmake5
 }
 
