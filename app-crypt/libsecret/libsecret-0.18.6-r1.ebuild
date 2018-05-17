@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 GCONF_DEBUG="yes"
 PYTHON_COMPAT=( python3_{4,5,6} )
 VALA_USE_DEPEND=vapigen
@@ -85,4 +85,8 @@ multilib_src_configure() {
 multilib_src_test() {
 	# tests fail without gobject-introspection
 	multilib_is_native_abi && virtx emake check
+}
+
+multilib_src_install() {
+	gnome2_src_install
 }
