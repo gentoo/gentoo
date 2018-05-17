@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Major mode for editing Markdown-formatted text files"
-HOMEPAGE="http://jblevins.org/projects/markdown-mode/"
+HOMEPAGE="https://jblevins.org/projects/markdown-mode/"
 SRC_URI="https://stable.melpa.org/packages/${P}.el"
 
 LICENSE="GPL-2+"
