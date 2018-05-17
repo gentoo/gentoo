@@ -3160,7 +3160,7 @@ dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvterm 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.24 0.25: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
-dev-libs/libx86 1.1-r2 1.1-r3: A hardware-independent library for executing real-mode x86 code
+dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r1: Library for creating diff files
