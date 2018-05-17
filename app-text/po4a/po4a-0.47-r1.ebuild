@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ PLOCALES_BACKUP="en"
 inherit perl-module l10n
 
 DESCRIPTION="Tools for helping translation of documentation"
-HOMEPAGE="http://po4a.alioth.debian.org"
+HOMEPAGE="https://po4a.org/"
 SRC_URI="mirror://debian/pool/main/p/po4a/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
