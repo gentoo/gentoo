@@ -41,10 +41,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-desktop.patch
 	# add a ~/.celestia for extra directories
 	"${FILESDIR}"/${PN}-1.6.99-cfg.patch
-
-	# https://github.com/CelestiaProject/Celestia/pull/48
-	"${FILESDIR}"/${PN}-1.6.99-gtk_libs.patch
-	"${FILESDIR}"/${PN}-1.6.99-glew_linking.patch
 )
 
 pkg_setup() {
