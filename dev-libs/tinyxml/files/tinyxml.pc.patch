@@ -1,0 +1,14 @@
+diff -Naur old/tinyxml.pc new/tinyxml.pc
+--- /dev/null	1970-01-01 03:00:00.000000000 +0300
++++ tinyxml.pc	2018-05-07 01:46:25.000000000 +0300
+@@ -0,0 +1,10 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=${exec_prefix}/lib
++includedir=${prefix}/include
++
++Name: TinyXml
++Description: simple, small, C++ XML parser
++Version: 2.6.2
++Libs: -L${libdir} -ltinyxml
++Cflags: -I${includedir}
