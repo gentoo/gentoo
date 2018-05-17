@@ -8,7 +8,7 @@ CLASSLESS_BGP_PATCH=ht-20040304-classless-bgp.patch
 inherit autotools eutils flag-o-matic multilib pam readme.gentoo-r1 systemd tmpfiles user
 
 DESCRIPTION="A free routing daemon replacing Zebra supporting RIP, OSPF and BGP"
-HOMEPAGE="http://quagga.net/"
+HOMEPAGE="https://www.quagga.net/"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz
 	bgpclassless? ( http://hasso.linux.ee/stuff/patches/quagga/${CLASSLESS_BGP_PATCH} )"
 
