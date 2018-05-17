@@ -66,7 +66,6 @@ games-action/trine2
 games-misc/dont-starve
 games-puzzle/larry
 games-rpg/avadon
-games-rpg/bastion
 games-rpg/penumbra-collection
 games-rpg/wasteland2
 
