@@ -230,5 +230,8 @@ multilib_src_install_all() {
 		dodoc -r docs/*
 	fi
 
-	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
+	find "${ED}" -name '*.la' -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 }
