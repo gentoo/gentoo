@@ -67,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 			=dev-libs/cyrus-sasl-2*[static-libs]
 			net-libs/gnutls[static-libs]
 		)
-	mysql? ( >=virtual/mysql-5.0.3[static-libs] )
+	mysql? ( >=virtual/mysql-5.0.3 virtual/libmysqlclient[static-libs] )
 	sqlite? ( >=dev-db/sqlite-3.3.5[static-libs] )
 	postgres? ( dev-db/postgresql:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
