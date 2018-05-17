@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Simple wrapper around cryptsetup for encrypted containers"
-HOMEPAGE="http://git.zx2c4.com/ctmg/about/"
-SRC_URI="http://git.zx2c4.com/${PN}/snapshot/${P}.tar.xz"
+HOMEPAGE="https://git.zx2c4.com/ctmg/about/"
+SRC_URI="https://git.zx2c4.com/${PN}/snapshot/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
