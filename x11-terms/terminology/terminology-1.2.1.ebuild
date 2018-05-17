@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit meson
+inherit meson xdg-utils
 
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
 HOMEPAGE="https://www.enlightenment.org/about-terminology"
@@ -20,6 +20,12 @@ DEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+
+src_prepare() {
+	default
+
+	xdg_environment_reset
+}
 
 src_configure() {
 	local emesonargs=(
