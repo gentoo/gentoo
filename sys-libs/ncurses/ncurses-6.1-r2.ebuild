@@ -102,7 +102,7 @@ do_configure() {
 	local target=$1
 	shift
 
-	mkdir "${BUILD_DIR}/${target}"
+	mkdir "${BUILD_DIR}/${target}" || die
 	cd "${BUILD_DIR}/${target}" || die
 
 	local conf=(
@@ -219,7 +219,7 @@ do_compile() {
 	# compiled libraries which depends on sources which ...
 	# Manually delete the pc-files file so the install step will
 	# create the .pc files we want.
-	rm -f misc/pc-files
+	rm -f misc/pc-files || die
 	emake "$@"
 }
 
@@ -276,11 +276,11 @@ multilib_src_install_all() {
 	# Because ncurses5-config --terminfo returns the directory we keep it
 	keepdir /usr/share/terminfo #245374
 
-	cd "${S}"
+	cd "${S}" || die
 	dodoc ANNOUNCE MANIFEST NEWS README* TO-DO doc/*.doc
 	if use doc ; then
 		docinto html
-		dohtml -r doc/html/
+		dodoc -r doc/html/
 	fi
 }
 
