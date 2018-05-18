@@ -9,13 +9,12 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/strace/strace.git"
 	inherit git-r3 autotools
 else
-	#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
-HOMEPAGE="https://sourceforge.net/projects/strace/"
+HOMEPAGE="https://strace.io/"
 
 LICENSE="BSD"
 SLOT="0"
@@ -45,6 +44,7 @@ src_prepare() {
 	fi
 
 	filter-lfs-flags # configure handles this sanely
+	# Add -pthread since strace wants -lrt for timer_create, and -lrt uses -lpthread.
 	use static && append-ldflags -static -pthread
 
 	export ac_cv_header_libaio_h=$(usex aio)
@@ -63,7 +63,10 @@ src_configure() {
 		export "${v}_FOR_BUILD=${!bv}"
 	done
 
-	econf $(use_with unwind libunwind)
+	# Don't require mpers support on non-multilib systems. #649560
+	econf \
+		--enable-mpers=check \
+		$(use_with unwind libunwind)
 }
 
 src_test() {
