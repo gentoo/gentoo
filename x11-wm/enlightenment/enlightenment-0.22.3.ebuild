@@ -53,7 +53,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	udisks? ( sys-fs/udisks:2 )
 	wayland? (
-		dev-libs/efl[wayland]
+		dev-libs/efl[drm,wayland]
 		>=dev-libs/wayland-1.12.0
 		x11-libs/libxkbcommon
 		x11-libs/pixman
