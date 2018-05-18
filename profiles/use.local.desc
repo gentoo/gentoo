@@ -3588,6 +3588,7 @@ media-video/vlc:shout - Enable libshout output
 media-video/vlc:sid - Adds support for playing C64 SID files through media-libs/libsidplay:2
 media-video/vlc:skins - Enable support for the skins2 interface
 media-video/vlc:soxr - Enable SoX Resampler support via media-libs/soxr
+media-video/vlc:srt - Enable support for Secure Reliable Transport (SRT) via net-libs/srt
 media-video/vlc:swscale - Enable image scaling and conversion via libswscale (part of FFmpeg)
 media-video/vlc:tremor - Enable tremor, a fixed-point version of the Ogg Vorbis decoder
 media-video/vlc:twolame - Enable twolame support (MPEG Audio Layer 2 encoder)
