@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# media-libs/libaom not yet keyworded
+media-video/vlc aom
+
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
 # Expose SVGA backend for x86 users
 app-emulation/fuse -backend-svga
