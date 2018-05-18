@@ -43,6 +43,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-meson-po.patch" )
+
 src_configure() {
 	xdg_environment_reset
 
