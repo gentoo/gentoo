@@ -2,7 +2,7 @@ DEFINED_PHASES=configure install postinst preinst prepare
 DEPEND=dev-libs/openssl:0 sys-libs/zlib pam? ( virtual/pam ) sys-libs/db:= dev-libs/libevent app-misc/ca-certificates net-mail/mailbase net-libs/libasr !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp[mta] >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Lightweight but featured SMTP daemon from OpenBSD
 EAPI=5
-HOMEPAGE=http://www.opensmtpd.org/
+HOMEPAGE=https://www.opensmtpd.org
 IUSE=pam +mta
 KEYWORDS=amd64 x86
 LICENSE=ISC BSD BSD-1 BSD-2 BSD-4
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/openssl:0 sys-libs/zlib pam? ( virtual/pam ) sys-libs/db:= dev-
 SLOT=0
 SRC_URI=https://www.opensmtpd.org/archives/opensmtpd-6.0.2p1.tar.gz
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	fa02994d0beba88681127d93da4411ec	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=75e7f213e09e7159ec33fb9e27548930
+_md5_=c465550219fe5aff965ff3007ba3e886

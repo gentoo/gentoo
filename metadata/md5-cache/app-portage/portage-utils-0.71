@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure prepare
+DEFINED_PHASES=compile configure
 DEPEND=dev-libs/iniparser:0 app-arch/xz-utils static? ( dev-libs/iniparser:0[static-libs] )
 DESCRIPTION=small and fast portage helper tools written in C
 EAPI=6
@@ -8,6 +8,6 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh
 LICENSE=GPL-2
 RDEPEND=dev-libs/iniparser:0
 SLOT=0
-SRC_URI=mirror://gentoo/portage-utils-0.65.tar.xz https://dev.gentoo.org/~grobian/distfiles/portage-utils-0.65.tar.xz
+SRC_URI=mirror://gentoo/portage-utils-0.71.tar.xz https://dev.gentoo.org/~grobian/distfiles/portage-utils-0.71.tar.xz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=beb56941f63502b8c92bf406a2b64fe8
+_md5_=fadeecb614e68a6cf84822a65403967f
