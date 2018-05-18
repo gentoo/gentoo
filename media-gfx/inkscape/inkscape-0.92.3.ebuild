@@ -11,8 +11,7 @@ MY_P="${P/_/}"
 
 DESCRIPTION="A SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2
-https://dev.gentoo.org/~jstein/dist/inkscape-0.92.1-poppler.patch"
+SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -101,6 +100,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
 	"${FILESDIR}/${PN}-0.92.3-freetype_pkgconfig.patch"
+	"${FILESDIR}/${PN}-0.92.3-poppler-0.64.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
