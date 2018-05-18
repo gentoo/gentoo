@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# media-libs/libaom not yet keyworded
 # net-libs/srt not yet keyworded
 # net-libs/libmicrodns not yet keyworded, bug #653800
 # projectm not yet keyworded, bug #314969
 # net-misc/freerdp not yet keyworded
-media-video/vlc chromaprint microdns opencv projectm rdp srt
+media-video/vlc aom chromaprint microdns opencv projectm rdp srt
 
 # Mart Raudsepp <leio@gentoo.org> (13 May 2018)
 # Not bothering with otherwise p.masked old gcc for the

@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# media-libs/libaom not yet keyworded
+# net-libs/libmicrodns not yet keyworded for arm, bug #653800
+# projectm not yet keyworded, bug #314969
+media-video/vlc aom chromaprint microdns opencv projectm
+
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded dep masks moved from default/linux.
 app-admin/diamond mongo
@@ -10,10 +16,6 @@ mail-client/mutt notmuch
 # Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2018)
 # Requires unkeyworded deps
 >=dev-python/ipython-5.4.1 notebook qt5 smp
-
-# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
-# net-libs/libmicrodns not yet keyworded for arm, bug #653800
-media-video/vlc microdns
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Feb 2018)
 # Depends on not yet keyworded dev-python/geoip-python. Bug #636860
@@ -509,9 +511,6 @@ app-admin/gkrellm ntlm
 
 # missing keywords
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavpack dvd
-
-# projectm not keyworded, bug #314969
-media-video/vlc projectm chromaprint opencv
 
 # Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
