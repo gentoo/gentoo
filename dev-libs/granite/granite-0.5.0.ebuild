@@ -5,7 +5,7 @@ EAPI=6
 
 VALA_MIN_API_VERSION=0.32
 
-inherit gnome2-utils vala cmake-utils
+inherit gnome2-utils vala cmake-utils versionator
 
 DESCRIPTION="Elementary OS library that extends Gtk+"
 HOMEPAGE="https://github.com/elementary/granite"
