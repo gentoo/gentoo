@@ -15,7 +15,7 @@
 # the src_prepare, src_configure, src_compile, and src_install
 # phase hooks.
 
-inherit cmake-utils flag-o-matic multilib prefix eutils toolchain-funcs
+inherit cmake-utils flag-o-matic multilib prefix eutils toolchain-funcs versionator
 
 #
 # HELPER FUNCTIONS:
