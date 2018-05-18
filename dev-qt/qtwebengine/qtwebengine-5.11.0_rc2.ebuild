@@ -81,8 +81,6 @@ PATCHES+=( "${FILESDIR}/${PN}-5.11.0-fix-build-w-o-qtlocation.patch" )
 
 src_prepare() {
 	use pax_kernel && PATCHES+=( "${FILESDIR}/${PN}-5.9.3-paxmark-mksnapshot.patch" )
-	use system-icu && has_version ">=dev-libs/icu-59" && \
-		PATCHES+=( "${FILESDIR}/${PN}-5.11.0-update-shim-headers.patch" )
 
 	# bug 620444 - ensure local headers are used
 	find "${S}" -type f -name "*.pr[fio]" | xargs sed -i -e 's|INCLUDEPATH += |&$$QTWEBENGINE_ROOT/include |' || die

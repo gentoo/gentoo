@@ -24,8 +24,6 @@ QT5_TARGET_SUBDIRS=(
 	src/qdoc
 )
 
-PATCHES=( "${FILESDIR}/${PN}-5.11.0-revert-static-clang.patch" )
-
 src_prepare() {
 	qt_use_disable_mod qml qmldevtools-private \
 		src/qdoc/qdoc.pro
