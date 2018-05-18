@@ -3276,6 +3276,7 @@ dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for 
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
 dev-lisp/clisp 2.48-r1 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
+dev-lisp/clozurecl 1.11.5: Common Lisp implementation, derived from Digitool's MCL product
 dev-lisp/ecls 13.5.1-r1: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10: GNU Common Lisp
