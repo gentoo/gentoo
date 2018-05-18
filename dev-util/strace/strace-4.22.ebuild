@@ -44,6 +44,7 @@ src_prepare() {
 	fi
 
 	filter-lfs-flags # configure handles this sanely
+	# Add -pthread since strace wants -lrt for timer_create, and -lrt uses -lpthread.
 	use static && append-ldflags -static -pthread
 
 	export ac_cv_header_libaio_h=$(usex aio)
