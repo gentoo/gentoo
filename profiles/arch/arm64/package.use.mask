@@ -1,6 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# net-libs/srt not yet keyworded
+# net-libs/libmicrodns not yet keyworded, bug #653800
+# projectm not yet keyworded, bug #314969
+# net-misc/freerdp not yet keyworded
+media-video/vlc chromaprint microdns opencv projectm rdp srt
+
 # Mart Raudsepp <leio@gentoo.org> (13 May 2018)
 # Not bothering with otherwise p.masked old gcc for the
 # extra dev-libs/cloog dependency with USE=graphite
@@ -56,10 +63,6 @@ www-client/chromium widevine
 www-servers/lighttpd memcached
 x11-misc/xscreensaver gdm
 
-# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
-# net-libs/libmicrodns not yet keyworded for arm64, bug #653800
-media-video/vlc microdns
-
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
 # Requires masked dependent flags.
 dev-lang/php ldap-sasl
@@ -105,10 +108,6 @@ net-libs/glib-networking smartcard
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=sofalizer requires sci-libs/netcdf that is not keyworded yet.
 media-video/ffmpeg sofalizer
-
-# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
-# USE=rdp requires net-misc/freerdp that is not keyworded yet.
-media-video/vlc rdp
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
@@ -505,9 +504,6 @@ dev-libs/boost mpi
 # missing keywords
 media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
-
-# projectm not keyworded, bug #314969
-media-video/vlc projectm chromaprint opencv
 
 # Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
