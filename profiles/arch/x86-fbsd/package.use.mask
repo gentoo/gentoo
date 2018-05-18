@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# media-libs/libaom not yet keyworded
+# Requires USE=qt5 that is masked in this profile.
+media-video/vlc aom skins
+
 # Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
 # Needs sys-libs/libomp which is not keyworded. Leaving the decision
 # whether sys-libs/libomp should eventually be keyworded to when new
@@ -11,10 +16,6 @@
 # Needs dev-ml/ocaml-ctypes which is not keyworded. Newer versions
 # no longer have the flag, so no point in keywording it for old.
 sys-devel/llvm ocaml
-
-# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
-# Requires USE=qt5 that is masked in this profile.
-media-video/vlc skins
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
 # idn: Needs net-dns/libidn2 which is not keyworded
