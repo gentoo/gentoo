@@ -283,12 +283,6 @@ x11-libs/libXp
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
 
-# Lars Wendler <polynomial-c@gentoo.org> (18 Apr 2018)
-# Breaks consumers most likely because of the following change:
-#   * Add const to several classes and members
-# See tracker bug #653464
->=app-text/poppler-0.64.0
-
 # Jason Zaman <perfinion@gentoo.org> (08 Apr 2018)
 # Dead upstream, for an old version of Xfce
 # Masked for removal in 30 days.
