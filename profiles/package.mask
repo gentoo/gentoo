@@ -29,6 +29,63 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# Breaking consumers by internal header cleanup and removal of deprecated
+# qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
+# and against the qt-5.11 tracker (bug #653646).
+~dev-qt/assistant-5.11.0_rc2
+~dev-qt/designer-5.11.0_rc2
+~dev-qt/linguist-5.11.0_rc2
+~dev-qt/linguist-tools-5.11.0_rc2
+~dev-qt/pixeltool-5.11.0_rc2
+~dev-qt/qdbus-5.11.0_rc2
+~dev-qt/qdbusviewer-5.11.0_rc2
+~dev-qt/qdoc-5.11.0_rc2
+~dev-qt/qt3d-5.11.0_rc2
+~dev-qt/qtbluetooth-5.11.0_rc2
+~dev-qt/qtcharts-5.11.0_rc2
+~dev-qt/qtconcurrent-5.11.0_rc2
+~dev-qt/qtcore-5.11.0_rc2
+~dev-qt/qtdatavis3d-5.11.0_rc2
+~dev-qt/qtdbus-5.11.0_rc2
+~dev-qt/qtdeclarative-5.11.0_rc2
+~dev-qt/qtdiag-5.11.0_rc2
+~dev-qt/qtgraphicaleffects-5.11.0_rc2
+~dev-qt/qtgui-5.11.0_rc2
+~dev-qt/qthelp-5.11.0_rc2
+~dev-qt/qtimageformats-5.11.0_rc2
+~dev-qt/qtlocation-5.11.0_rc2
+~dev-qt/qtmultimedia-5.11.0_rc2
+~dev-qt/qtnetworkauth-5.11.0_rc2
+~dev-qt/qtnetwork-5.11.0_rc2
+~dev-qt/qtopengl-5.11.0_rc2
+~dev-qt/qtpaths-5.11.0_rc2
+~dev-qt/qtplugininfo-5.11.0_rc2
+~dev-qt/qtpositioning-5.11.0_rc2
+~dev-qt/qtprintsupport-5.11.0_rc2
+~dev-qt/qtquickcontrols2-5.11.0_rc2
+~dev-qt/qtquickcontrols-5.11.0_rc2
+~dev-qt/qtscript-5.11.0_rc2
+~dev-qt/qtscxml-5.11.0_rc2
+~dev-qt/qtsensors-5.11.0_rc2
+~dev-qt/qtserialbus-5.11.0_rc2
+~dev-qt/qtserialport-5.11.0_rc2
+~dev-qt/qtspeech-5.11.0_rc2
+~dev-qt/qtsql-5.11.0_rc2
+~dev-qt/qtsvg-5.11.0_rc2
+~dev-qt/qttest-5.11.0_rc2
+~dev-qt/qttranslations-5.11.0_rc2
+~dev-qt/qtvirtualkeyboard-5.11.0_rc2
+~dev-qt/qtwayland-5.11.0_rc2
+~dev-qt/qtwebchannel-5.11.0_rc2
+~dev-qt/qtwebengine-5.11.0_rc2
+~dev-qt/qtwebsockets-5.11.0_rc2
+~dev-qt/qtwebview-5.11.0_rc2
+~dev-qt/qtwidgets-5.11.0_rc2
+~dev-qt/qtx11extras-5.11.0_rc2
+~dev-qt/qtxmlpatterns-5.11.0_rc2
+~dev-qt/qtxml-5.11.0_rc2
+
 # Amy Liffey <amynka@gentoo.org> (16 May 2018)
 # Obsolete and not used anymore replaced by app-crypt/eid-mw.
 # Requested by maintainer Vincent Hardy <vincent.hardy.be@gmail.com>
@@ -122,63 +179,6 @@ dev-util/valkyrie
 # Depends on dead Qt4, severely outdated, no one does the bump.
 # Masked for removal in 30 days. Bugs #489190, #648666
 media-gfx/ipe
-
-# Andreas Sturmlechner <asturm@gentoo.org> (8 May 2018)
-# Breaking consumers by internal header cleanup and removal of deprecated
-# qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
-# and against the qt-5.11 tracker (bug #653646).
-~dev-qt/assistant-5.11.0_rc
-~dev-qt/designer-5.11.0_rc
-~dev-qt/linguist-5.11.0_rc
-~dev-qt/linguist-tools-5.11.0_rc
-~dev-qt/pixeltool-5.11.0_rc
-~dev-qt/qdbus-5.11.0_rc
-~dev-qt/qdbusviewer-5.11.0_rc
-~dev-qt/qdoc-5.11.0_rc
-~dev-qt/qt3d-5.11.0_rc
-~dev-qt/qtbluetooth-5.11.0_rc
-~dev-qt/qtcharts-5.11.0_rc
-~dev-qt/qtconcurrent-5.11.0_rc
-~dev-qt/qtcore-5.11.0_rc
-~dev-qt/qtdatavis3d-5.11.0_rc
-~dev-qt/qtdbus-5.11.0_rc
-~dev-qt/qtdeclarative-5.11.0_rc
-~dev-qt/qtdiag-5.11.0_rc
-~dev-qt/qtgraphicaleffects-5.11.0_rc
-~dev-qt/qtgui-5.11.0_rc
-~dev-qt/qthelp-5.11.0_rc
-~dev-qt/qtimageformats-5.11.0_rc
-~dev-qt/qtlocation-5.11.0_rc
-~dev-qt/qtmultimedia-5.11.0_rc
-~dev-qt/qtnetworkauth-5.11.0_rc
-~dev-qt/qtnetwork-5.11.0_rc
-~dev-qt/qtopengl-5.11.0_rc
-~dev-qt/qtpaths-5.11.0_rc
-~dev-qt/qtplugininfo-5.11.0_rc
-~dev-qt/qtpositioning-5.11.0_rc
-~dev-qt/qtprintsupport-5.11.0_rc
-~dev-qt/qtquickcontrols2-5.11.0_rc
-~dev-qt/qtquickcontrols-5.11.0_rc
-~dev-qt/qtscript-5.11.0_rc
-~dev-qt/qtscxml-5.11.0_rc
-~dev-qt/qtsensors-5.11.0_rc
-~dev-qt/qtserialbus-5.11.0_rc
-~dev-qt/qtserialport-5.11.0_rc
-~dev-qt/qtspeech-5.11.0_rc
-~dev-qt/qtsql-5.11.0_rc
-~dev-qt/qtsvg-5.11.0_rc
-~dev-qt/qttest-5.11.0_rc
-~dev-qt/qttranslations-5.11.0_rc
-~dev-qt/qtvirtualkeyboard-5.11.0_rc
-~dev-qt/qtwayland-5.11.0_rc
-~dev-qt/qtwebchannel-5.11.0_rc
-~dev-qt/qtwebengine-5.11.0_rc
-~dev-qt/qtwebsockets-5.11.0_rc
-~dev-qt/qtwebview-5.11.0_rc
-~dev-qt/qtwidgets-5.11.0_rc
-~dev-qt/qtx11extras-5.11.0_rc
-~dev-qt/qtxmlpatterns-5.11.0_rc
-~dev-qt/qtxml-5.11.0_rc
 
 # Hans de Graaff <graaff@gentoo.org> (7 May 2018)
 # Old slots that are ruby23-only and no longer maintained
