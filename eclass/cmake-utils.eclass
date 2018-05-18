@@ -512,7 +512,7 @@ cmake-utils_src_configure() {
 	# we need to add "<INCLUDES>"
 	local includes=
 	if [[ ${PN} == cmake ]] ; then
-		if $(version_is_at_least 3.4.0 $(ver_cut 1-3 ${PV})) ; then
+		if $(ver_test $(ver_cut 1-3 ${PV}) -ge 3.4.0) ; then
 			includes="<INCLUDES>"
 		fi
 	elif ROOT=/ has_version \>=dev-util/cmake-3.4.0_rc1 ; then
