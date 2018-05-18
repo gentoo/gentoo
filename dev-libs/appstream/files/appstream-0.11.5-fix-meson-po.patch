@@ -1,0 +1,14 @@
+Gentoo-bug: https://bugs.gentoo.org/640916
+Thanks-to: David Haller <gentoo@dhaller.de>
+
+--- a/po/meson.build	2017-09-04 18:09:52.000000000 +0200
++++ b/po/meson.build	2018-05-15 12:24:42.000000000 +0200
+@@ -21,7 +21,7 @@
+         'find ' + meson.current_source_dir() +
+         ' -type f' +
+         ' -iname "*.po"' +
+-        ' -printf \'%f\\n\'' +
++        ' -printf \'%f\n\'' +
+         ' | grep -oP \'.*(?=[.])\' | sort' +
+         ' > ' + join_paths(meson.current_source_dir(), 'LINGUAS')
+     ]
