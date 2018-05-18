@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# media-libs/libaom not yet keyworded
+# net-libs/libmicrodns not yet keyworded for ppc, bug #653800
+media-video/vlc aom microdns
+
 # Anthony G. Basile <blueness@gentoo.org> (14 Apr 2018)
 # net-vpn/tor, tests are broken on ppc/ppc64, bug #653098
 net-vpn/tor test
@@ -16,10 +21,6 @@ app-emulation/qemu capstone
 # Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2018)
 # Requires unkeyworded deps
 >=dev-python/ipython-5.4.1 qt5 smp
-
-# NP-Hardass <NP-Hardass@gentoo.org> (01 Mar 2018)
-# net-libs/libmicrodns not yet keyworded for ppc, bug #653800
-media-video/vlc microdns
 
 # Amy Liffey <amynka@gentoo.org (21 Jan 2018)
 # dev-libs/cereal not keyworded for ppc
