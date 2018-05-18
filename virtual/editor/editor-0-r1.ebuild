@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Virtual for editor"
 SLOT="0"
@@ -9,9 +9,11 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 
 # Add a package to RDEPEND only if the editor:
 # - can edit ordinary text files,
-# - works on the console.
+# - works on the console,
+# - is a "display" or "visual" editor (e.g., using ncurses).
 
-RDEPEND="|| ( app-editors/nano
+RDEPEND="|| (
+	app-editors/nano
 	app-editors/dav
 	app-editors/e3
 	app-editors/ee
@@ -47,7 +49,7 @@ RDEPEND="|| ( app-editors/nano
 	app-misc/mc[edit]
 	dev-lisp/cmucl
 	mail-client/alpine[-onlyalpine]
-	sys-apps/ed )"
+)"
 
 # Packages outside app-editors providing an editor:
 #	app-misc/mc: mcedit (#62643)
