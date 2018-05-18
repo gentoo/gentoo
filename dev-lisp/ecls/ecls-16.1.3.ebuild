@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit eutils multilib
 
 # test phase only works if ecls already installed #516876
@@ -30,6 +31,11 @@ RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}/${P}-headers-gentoo.patch"
+	"${FILESDIR}/${P}-build.patch"
+)
+
 pkg_setup () {
 	if use gengc || use precisegc ; then
 		ewarn "You have enabled the generational garbage collector or"
@@ -40,8 +46,7 @@ pkg_setup () {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-headers-gentoo.patch
-	epatch "${FILESDIR}"/${PV}-build.patch
+	default
 	cp "${EPREFIX}"/usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
 }
 
@@ -61,8 +66,7 @@ src_configure() {
 		$(use_with threads __thread) \
 		$(use_enable unicode) \
 		$(use_with unicode unicode-names) \
-		$(use_with X x) \
-		$(use_with X clx)
+		$(use_with X x)
 }
 
 src_compile() {
