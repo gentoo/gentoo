@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ximion/${PN}"
 else
-	inherit versionator
-	MY_PV="$(replace_all_version_separators '_')"
+	inherit eapi7-ver
+	MY_PV="$(ver_rs 0- '_')"
 	MY_P="APPSTREAM_${MY_PV}"
 	SRC_URI="https://github.com/ximion/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}
 		qt5? ( dev-qt/qttest:5 )
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-fix-meson-po.patch" )
 
 src_configure() {
 	xdg_environment_reset
