@@ -238,7 +238,10 @@ src_prepare() {
 		done
 	fi
 
-	# Don't build Mroonga
+	# Collides with mariadb-connector-c bug 655980
+	disable_plugin auth_dialog
+
+	# Don't build Mroonga or example
 	disable_engine mroonga
 	disable_engine example
 
