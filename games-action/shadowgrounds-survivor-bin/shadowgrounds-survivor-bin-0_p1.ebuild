@@ -1,12 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit unpacker eutils games
+inherit unpacker eutils games versionator
+
+DIST_PV=$(get_version_component_range 2)
 
 DESCRIPTION="human survivors who battle against the ongoing alien onslaught"
 HOMEPAGE="http://shadowgroundsgame.com/survivor/"
-SRC_URI="Survivor${PV/*_b/B}.run"
+SRC_URI="survivorUpdate${DIST_PV/p/}.run"
 
 LICENSE="frozenbyte-eula"
 SLOT="0"
