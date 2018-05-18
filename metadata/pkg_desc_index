@@ -10270,7 +10270,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0 0-r1: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r1: Virtual for the device filesystem manager
-virtual/editor 0: Virtual for editor
+virtual/editor 0-r1: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/emacs 23 24 25: Virtual for GNU Emacs
 virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Emacs)
