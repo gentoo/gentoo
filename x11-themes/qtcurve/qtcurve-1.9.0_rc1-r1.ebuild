@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -74,13 +74,6 @@ DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 #PATCHES=(
 #	"${FILESDIR}/${P}-add_utils_include.patch"
 #)
-
-pkg_setup() {
-	# bug #498776
-	if ! version_is_at_least 4.7 $(gcc-version) ; then
-		append-cxxflags -Doverride=
-	fi
-}
 
 src_configure() {
 	local mycmakeargs=(
