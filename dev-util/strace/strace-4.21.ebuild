@@ -64,7 +64,10 @@ src_configure() {
 		export "${v}_FOR_BUILD=${!bv}"
 	done
 
-	econf $(use_with unwind libunwind)
+	# Don't require mpers support on non-multilib systems. #649560
+	econf \
+		--enable-mpers=check \
+		$(use_with unwind libunwind)
 }
 
 src_test() {
