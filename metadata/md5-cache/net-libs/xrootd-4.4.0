@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=!<sci-physics/root-5.32[xrootd] sys-libs/zlib fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) ssl? ( dev-libs/openssl:0= ) doc? ( app-doc/doxygen[dot] ) test? ( dev-util/cppunit ) sys-devel/make >=dev-util/cmake-3.9.6
+DEPEND=!<sci-physics/root-5.32[xrootd] sys-libs/zlib fuse? ( sys-fs/fuse:0 ) kerberos? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) ssl? ( dev-libs/openssl:0= ) doc? ( app-doc/doxygen[dot] ) test? ( dev-util/cppunit ) sys-devel/make >=dev-util/cmake-3.9.6
 DESCRIPTION=Extended ROOT remote file server
 EAPI=6
 HOMEPAGE=http://xrootd.org/
 IUSE=doc fuse http kerberos readline ssl test
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-3
-RDEPEND=!<sci-physics/root-5.32[xrootd] sys-libs/zlib fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) ssl? ( dev-libs/openssl:0= )
+RDEPEND=!<sci-physics/root-5.32[xrootd] sys-libs/zlib fuse? ( sys-fs/fuse:0 ) kerberos? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) ssl? ( dev-libs/openssl:0= )
 REQUIRED_USE=http? ( kerberos ssl )
 SLOT=0
 SRC_URI=http://xrootd.org/download/v4.4.0/xrootd-4.4.0.tar.gz
 _eclasses_=cmake-utils	d2f8cff68b90b869ef9d460c6f3c4e2e	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=7ee8863e383ca8f93663f70e33b778c6
+_md5_=e1e15072123cc21c492898cdd4582a64
