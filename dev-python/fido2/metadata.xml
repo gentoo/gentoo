@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>gokturk@gentoo.org</email>
+  <name>Göktürk Yüksek</name>
+</maintainer>
+<longdescription>
+  fido2 provides library functionality for communicating with a FIDO
+  device over USB as well as verifying attestation and assertion
+  signatures.
+</longdescription>
+<upstream>
+  <remote-id type="github">Yubico/python-fido2</remote-id>
+</upstream>
+</pkgmetadata>
