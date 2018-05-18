@@ -1,12 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit unpacker games eutils
+inherit unpacker games eutils versionator
+
+DIST_PV=$(get_version_component_range 2)
 
 DESCRIPTION="an epic action experience combining modern technology with addictive playability"
 HOMEPAGE="http://shadowgroundsgame.com/"
-SRC_URI="Shadowgrounds${PV/*_b/B}.run"
+# FIXME: PV should perhaps be 0_p1, in which case a filter is in order
+SRC_URI="shadowgroundsUpdate${DIST_PV/p/}.run"
 
 LICENSE="frozenbyte-eula"
 SLOT="0"
