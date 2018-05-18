@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
 IUSE="
-	adns androiddump bcg729 +capinfos +caps +captype ciscodump +dftest doc
+	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc
 	+dumpcap +editcap gtk kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
 	nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump +reordercap sbc selinux
 	+sharkd smi snappy spandsp sshdump ssl +text2pcap tfshark +tshark +udpdump
@@ -27,7 +27,7 @@ CDEPEND="
 	netlink? ( dev-libs/libnl:3 )
 	adns? ( >=net-dns/c-ares-1.5 )
 	bcg729? ( media-libs/bcg729 )
-	caps? ( sys-libs/libcap )
+	filecaps? ( sys-libs/libcap )
 	gtk? (
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:3
@@ -147,7 +147,7 @@ src_configure() {
 		-DBUILD_wireshark_gtk=$(usex gtk)
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
-		-DENABLE_CAP=$(usex caps)
+		-DENABLE_CAP=no
 		-DENABLE_CARES=$(usex adns)
 		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_KERBEROS=$(usex kerberos)
@@ -229,6 +229,7 @@ pkg_postinst() {
 
 	# Add group for users allowed to sniff.
 	enewgroup wireshark
+	chgrp wireshark "${EROOT}"/usr/bin/dumpcap
 
 	if use dumpcap && use pcap; then
 		fcaps -o 0 -g wireshark -m 4710 -M 0710 \
