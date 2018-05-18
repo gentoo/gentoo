@@ -7,4 +7,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~blueness/install-xattr/install-xattr-0.5.tar.bz2
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=8b730871980d38813b2f71f5753006b1
+_md5_=6f7fba0dd8d7dbc7290925dc6c44c991
