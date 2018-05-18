@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="A Lee's Hangul truetype fonts"
 HOMEPAGE="https://screenshots.debian.net/package/ttf-alee"
-SRC_URI="http://turul.canonical.com/pool/main/t/ttf-alee/ttf-alee_13.tar.gz"
+SRC_URI="http://turul.canonical.com/pool/main/t/ttf-alee/ttf-alee_${PV}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
