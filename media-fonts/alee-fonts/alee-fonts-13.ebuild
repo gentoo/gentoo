@@ -6,7 +6,7 @@ EAPI=0
 inherit font
 
 DESCRIPTION="A Lee's Hangul truetype fonts"
-HOMEPAGE="http://packages.debian.org/unstable/x11/ttf-alee"
+HOMEPAGE="https://screenshots.debian.net/package/ttf-alee"
 SRC_URI="mirror://debian/pool/main/t/ttf-alee/ttf-alee_${PV}.tar.gz"
 
 LICENSE="Artistic"
