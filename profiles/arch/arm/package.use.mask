@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # media-libs/libaom not yet keyworded
 # net-libs/libmicrodns not yet keyworded for arm, bug #653800
 # projectm not yet keyworded, bug #314969
