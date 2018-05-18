@@ -1,0 +1,193 @@
+From 967dc53dc9a5d1c7ba0c9f57fcb9bc640cd9663b Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Wed, 16 May 2018 14:37:33 +0200
+Subject: [FStab Handling] Clean up process running by using lambdas
+
+Encapsulates the QProcess* into the job it's supposed to be doing without storing it as a member and polluting state when multiple
+actions are requested simultaneously.
+
+CCBUG: 388499
+
+Differential Revision: https://phabricator.kde.org/D9653
+---
+ src/solid/devices/backends/fstab/fstabhandling.cpp | 29 +++++++--------
+ src/solid/devices/backends/fstab/fstabhandling.h   |  9 ++---
+ .../devices/backends/fstab/fstabstorageaccess.cpp  | 42 ++++++++--------------
+ .../devices/backends/fstab/fstabstorageaccess.h    |  3 --
+ 4 files changed, 30 insertions(+), 53 deletions(-)
+
+diff --git a/src/solid/devices/backends/fstab/fstabhandling.cpp b/src/solid/devices/backends/fstab/fstabhandling.cpp
+index 9d078dd..e56f55a 100644
+--- a/src/solid/devices/backends/fstab/fstabhandling.cpp
++++ b/src/solid/devices/backends/fstab/fstabhandling.cpp
+@@ -226,34 +226,31 @@ QStringList Solid::Backends::Fstab::FstabHandling::options(const QString &device
+     return options;
+ }
+ 
+-QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
+-        const QStringList &args,
+-        QObject *obj, const char *slot)
++bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName, const QStringList &args,
++                                                              const QObject *receiver, std::function<void(QProcess *)> callback)
+ {
+     QStringList env = QProcess::systemEnvironment();
+     env.replaceInStrings(QRegExp("^PATH=(.*)", Qt::CaseInsensitive), "PATH=/sbin:/bin:/usr/sbin/:/usr/bin");
+ 
+-    QProcess *process = new QProcess(obj);
++    QProcess *process = new QProcess();
+ 
+-    QObject::connect(process, SIGNAL(finished(int,QProcess::ExitStatus)),
+-                     obj, slot);
++    QObject::connect(process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), receiver,
++        [process, callback](int exitCode, QProcess::ExitStatus exitStatus) {
++            Q_UNUSED(exitCode);
++            Q_UNUSED(exitStatus);
++            callback(process);
++            process->deleteLater();
++    });
+ 
+     process->setEnvironment(env);
+     process->start(commandName, args);
+ 
+     if (process->waitForStarted()) {
+-        return process;
+-    } else {
+-        delete process;
+-        return nullptr;
++        return true;
+     }
+-}
+ 
+-QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
+-        const QString &device,
+-        QObject *obj, const char *slot)
+-{
+-    return callSystemCommand(commandName, QStringList() << device, obj, slot);
++    delete process;
++    return false;
+ }
+ 
+ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
+diff --git a/src/solid/devices/backends/fstab/fstabhandling.h b/src/solid/devices/backends/fstab/fstabhandling.h
+index 2b6b9d9..bcd6c33 100644
+--- a/src/solid/devices/backends/fstab/fstabhandling.h
++++ b/src/solid/devices/backends/fstab/fstabhandling.h
+@@ -25,6 +25,8 @@
+ #include <QtCore/QString>
+ #include <QtCore/QMultiHash>
+ 
++#include <functional>
++
+ class QProcess;
+ class QObject;
+ 
+@@ -44,12 +46,7 @@ public:
+     static QStringList currentMountPoints(const QString &device);
+     static QStringList mountPoints(const QString &device);
+     static QStringList options(const QString &device);
+-    static QProcess *callSystemCommand(const QString &commandName,
+-                                       const QStringList &args,
+-                                       QObject *obj, const char *slot);
+-    static QProcess *callSystemCommand(const QString &commandName,
+-                                       const QString &device,
+-                                       QObject *obj, const char *slot);
++    static bool callSystemCommand(const QString &commandName, const QStringList &args, const QObject *recvr, std::function<void(QProcess *)> callback);
+     static void flushMtabCache();
+     static void flushFstabCache();
+ 
+diff --git a/src/solid/devices/backends/fstab/fstabstorageaccess.cpp b/src/solid/devices/backends/fstab/fstabstorageaccess.cpp
+index a4063ff..e8fce5b 100644
+--- a/src/solid/devices/backends/fstab/fstabstorageaccess.cpp
++++ b/src/solid/devices/backends/fstab/fstabstorageaccess.cpp
+@@ -91,10 +91,13 @@ bool FstabStorageAccess::setup()
+         return false;
+     }
+     m_fstabDevice->broadcastActionRequested("setup");
+-    m_process = FstabHandling::callSystemCommand("mount", filePath(),
+-                this, SLOT(slotSetupFinished(int,QProcess::ExitStatus)));
+-
+-    return m_process != nullptr;
++    return FstabHandling::callSystemCommand("mount", {filePath()}, this, [this](QProcess *process) {
++        if (process->exitCode() == 0) {
++            m_fstabDevice->broadcastActionDone("setup", Solid::NoError, QString());
++        } else {
++            m_fstabDevice->broadcastActionDone("setup", Solid::UnauthorizedOperation, process->readAllStandardError());
++        }
++    });
+ }
+ 
+ void FstabStorageAccess::slotSetupRequested()
+@@ -108,10 +111,13 @@ bool FstabStorageAccess::teardown()
+         return false;
+     }
+     m_fstabDevice->broadcastActionRequested("teardown");
+-    m_process = FstabHandling::callSystemCommand("umount", filePath(),
+-                this, SLOT(slotTeardownFinished(int,QProcess::ExitStatus)));
+-
+-    return m_process != nullptr;
++    return FstabHandling::callSystemCommand("umount", {filePath()}, this, [this](QProcess *process) {
++        if (process->exitCode() == 0) {
++            m_fstabDevice->broadcastActionDone("teardown", Solid::NoError, QString());
++        } else {
++            m_fstabDevice->broadcastActionDone("teardown", Solid::UnauthorizedOperation, process->readAllStandardError());
++        }
++    });
+ }
+ 
+ void FstabStorageAccess::slotTeardownRequested()
+@@ -119,31 +125,11 @@ void FstabStorageAccess::slotTeardownRequested()
+     emit teardownRequested(m_fstabDevice->udi());
+ }
+ 
+-void FstabStorageAccess::slotSetupFinished(int exitCode, QProcess::ExitStatus /*exitStatus*/)
+-{
+-    if (exitCode == 0) {
+-        m_fstabDevice->broadcastActionDone("setup", Solid::NoError, QString());
+-    } else {
+-        m_fstabDevice->broadcastActionDone("setup", Solid::UnauthorizedOperation, m_process->readAllStandardError());
+-    }
+-    delete m_process;
+-}
+-
+ void FstabStorageAccess::slotSetupDone(int error, const QString &errorString)
+ {
+     emit setupDone(static_cast<Solid::ErrorType>(error), errorString, m_fstabDevice->udi());
+ }
+ 
+-void FstabStorageAccess::slotTeardownFinished(int exitCode, QProcess::ExitStatus /*exitStatus*/)
+-{
+-    if (exitCode == 0) {
+-        m_fstabDevice->broadcastActionDone("teardown", Solid::NoError, QString());
+-    } else {
+-        m_fstabDevice->broadcastActionDone("teardown", Solid::UnauthorizedOperation, m_process->readAllStandardError());
+-    }
+-    delete m_process;
+-}
+-
+ void FstabStorageAccess::slotTeardownDone(int error, const QString &errorString)
+ {
+     emit teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_fstabDevice->udi());
+diff --git a/src/solid/devices/backends/fstab/fstabstorageaccess.h b/src/solid/devices/backends/fstab/fstabstorageaccess.h
+index 10ca0a9..61deb88 100644
+--- a/src/solid/devices/backends/fstab/fstabstorageaccess.h
++++ b/src/solid/devices/backends/fstab/fstabstorageaccess.h
+@@ -68,8 +68,6 @@ Q_SIGNALS:
+     void teardownRequested(const QString &udi) Q_DECL_OVERRIDE;
+ 
+ private Q_SLOTS:
+-    void slotSetupFinished(int exitCode, QProcess::ExitStatus exitStatus);
+-    void slotTeardownFinished(int exitCode, QProcess::ExitStatus exitStatus);
+     void onMtabChanged(const QString &device);
+     void connectDBusSignals();
+ 
+@@ -80,7 +78,6 @@ private Q_SLOTS:
+ 
+ private:
+     Solid::Backends::Fstab::FstabDevice *m_fstabDevice;
+-    QProcess *m_process;
+     QString m_filePath;
+     bool m_isAccessible;
+     bool m_isIgnored;
+-- 
+cgit v0.11.2
+
