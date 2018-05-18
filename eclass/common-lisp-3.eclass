@@ -14,7 +14,7 @@ inherit eutils
 # @ECLASS-VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
 # Common Lisp implementations
-CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecls gcl"
+CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecls gcl abcl"
 
 # @ECLASS-VARIABLE: CLSOURCEROOT
 # @DESCRIPTION:
