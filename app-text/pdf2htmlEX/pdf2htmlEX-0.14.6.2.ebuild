@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs flag-o-matic
+inherit cmake-utils toolchain-funcs flag-o-matic versionator
 
 DESCRIPTION="A precise PDF to HTML converter"
 HOMEPAGE="http://coolwanglu.github.io/pdf2htmlEX/"
