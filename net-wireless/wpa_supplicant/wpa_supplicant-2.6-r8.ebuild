@@ -12,7 +12,7 @@ LICENSE="|| ( GPL-2 BSD )"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="ap bindist dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl p2p privsep ps3 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap bindist dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl p2p privsep ps3 qt5 readline selinux smartcard ssl suiteb tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 REQUIRED_USE="smartcard? ( ssl )"
 
 CDEPEND="dbus? ( sys-apps/dbus )
@@ -231,18 +231,29 @@ src_configure() {
 		Kconfig_style_config WPA_CLI_EDIT
 	fi
 
+	if use suiteb; then
+		Kconfig_style_config SUITEB
+	fi
+
 	# SSL authentication methods
 	if use ssl ; then
 		if use gnutls ; then
 			Kconfig_style_config TLS gnutls
 			Kconfig_style_config GNUTLS_EXTRA
 		else
+			#this fails for gnutls
+			Kconfig_style_config SUITEB192
 			Kconfig_style_config TLS openssl
 			if ! use bindist; then
+			  #this fails for gnutls
 			  Kconfig_style_config EAP_PWD
+			  # SAE fails on gnutls and everything below here needs SAE
 			  # Enabling mesh networks.
 			  Kconfig_style_config MESH
-			  #we also need to disable OWE and FILS, except they aren't enabled yet
+			  #WPA3
+			  Kconfig_style_config OWE
+			  Kconfig_style_config SAE
+			  #we also need to disable FILS, except that isn't enabled yet
 			fi
 
 		fi
@@ -420,6 +431,13 @@ pkg_postinst() {
 		echo
 		ewarn "WARNING: your old configuration file ${EROOT%/}/etc/wpa_supplicant.conf"
 		ewarn "needs to be moved to ${EROOT%/}/etc/wpa_supplicant/wpa_supplicant.conf"
+	fi
+
+	if use bindist || use gnutls; then
+		if ! use libressl; then
+			ewarn "Using bindist or gnutls use flags presently breaks WPA3 (specifically SAE and OWE)."
+			ewarn "This is incredibly undesirable"
+		fi
 	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.
