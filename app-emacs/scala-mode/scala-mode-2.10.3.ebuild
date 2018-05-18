@@ -7,7 +7,7 @@ inherit elisp
 
 MY_P="scala-tool-support-${PV}"
 DESCRIPTION="Scala mode for Emacs"
-HOMEPAGE="https://www.scala-lang.org"
+HOMEPAGE="https://www.scala-lang.org/"
 SRC_URI="https://www.scala-lang.org/files/archive/${MY_P}.tgz"
 
 LICENSE="BSD"
