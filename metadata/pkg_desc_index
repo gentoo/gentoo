@@ -7055,7 +7055,7 @@ media-fonts/croscorefonts 1.23.0: Open licensed fonts metrically compatible with
 media-fonts/culmus 0.120-r4: Hebrew Type1 fonts
 media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.89: A monospace bitmap font, primarily aimed at programmers
-media-fonts/droid 113-r4: Font family from Google's Android project
+media-fonts/droid 113-r4 113-r5: Font family from Google's Android project
 media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script provided by the Bhutanese government
 media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/efont-unicode 0.4.2-r1: The /efont/ Unicode Bitmap Fonts
