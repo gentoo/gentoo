@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -31,7 +31,7 @@ IUSE=""
 RDEPEND+=" media-gfx/imagemagick"
 DEPEND+=" test? ( virtual/imagemagick-tools[jpeg,png,tiff] )"
 
-ruby_add_bdepend "test? ( dev-ruby/mocha dev-ruby/posix-spawn dev-ruby/webmock )"
+USE_RUBY="ruby23 ruby24" ruby_add_bdepend "test? ( dev-ruby/mocha dev-ruby/posix-spawn dev-ruby/webmock )"
 
 all_ruby_prepare() {
 	# remove executable bit from all files
@@ -56,4 +56,15 @@ all_ruby_prepare() {
 	sed -i -e 's/:graphicsmagick//' spec/spec_helper.rb || die
 	sed -i -e '/identifies when gm exists/,/^    end/ s:^:#:' spec/lib/mini_magick/utilities_spec.rb || die
 	sed -i -e '/returns GraphicsMagick/,/^    end/ s:^:#:' spec/lib/mini_magick_spec.rb || die
+}
+
+each_ruby_test() {
+	case ${RUBY} in
+		*ruby23|*ruby24)
+			each_fakegem_test
+			;;
+		*)
+			einfo "Skipping tests due to circular dependencies with Rails"
+			;;
+	esac
 }
