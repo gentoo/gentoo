@@ -1,12 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils flag-o-matic toolchain-funcs versionator
 
 DESCRIPTION="A network programming library in C++"
-HOMEPAGE="http://alumnit.ca/wiki/?WvStreams"
-SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://code.google.com/archive/p/wvstreams/
+	https://github.com/apenwarr/wvstreams"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

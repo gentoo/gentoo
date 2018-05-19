@@ -6,6 +6,7 @@
 </maintainer>
   <upstream>
     <remote-id type="google-code">wvstreams</remote-id>
+    <remote-id type="github">apenwarr/wvstreams</remote-id>
   </upstream>
   <use>
     <flag name="boost">
