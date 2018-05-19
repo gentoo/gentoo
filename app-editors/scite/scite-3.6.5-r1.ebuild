@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils flag-o-matic
 
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful editor for programmers"
-HOMEPAGE="http://www.scintilla.org/SciTE.html"
+HOMEPAGE="https://www.scintilla.org/SciTE.html"
 SRC_URI="mirror://sourceforge/scintilla/${PN}${MY_PV}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
