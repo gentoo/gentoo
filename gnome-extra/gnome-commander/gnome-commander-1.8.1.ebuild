@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="A graphical, full featured, twin-panel file manager"
-HOMEPAGE="http://gcmd.github.io/"
+HOMEPAGE="https://gcmd.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
