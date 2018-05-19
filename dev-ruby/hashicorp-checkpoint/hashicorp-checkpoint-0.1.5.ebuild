@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Internal HashiCorp service to check version information"
-HOMEPAGE="http://www.hashicorp.com"
+HOMEPAGE="https://www.hashicorp.com"
 
 LICENSE="MPL-2.0"
 SLOT="0"
