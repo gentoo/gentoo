@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="ncurses based sudoku game"
-HOMEPAGE="http://jubalh.github.io/nudoku"
+HOMEPAGE="https://jubalh.github.io/nudoku"
 SRC_URI="https://github.com/jubalh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
