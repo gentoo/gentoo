@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		RetroArch is a frontend for emulators, game engines and media players.
+		It enables you to run classic games on a wide range of computers and consoles through its slick graphical interface. Settings are also unified so configuration is done once and for all.
+		RetroArch has advanced features like shaders, netplay, rewinding, next-frame response times, and more.
+	</longdescription>
+ 	<use>
+ 		<flag name="cg">Use NVIDIA CG Toolkit for CG shaders.</flag>
+ 	</use>
+	<maintainer type="person">
+		<email>mjaoune55@gmail.com</email>
+		<name>Mahmoud Jaoune</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+</pkgmetadata>

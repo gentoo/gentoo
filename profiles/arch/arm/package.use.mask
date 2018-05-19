@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mahmoud Jaoune <mjaoune55@gmail.com> (04 May 2018)
+# Nvidia-Cg-Toolkit not available for ARM
+app-emulation/retroarch cg
+
 # Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2018)
 # Requires unkeyworded deps
 >=dev-python/ipython-5.4.1 notebook qt5 smp
