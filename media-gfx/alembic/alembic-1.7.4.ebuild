@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1 cmake-utils
 
 DESCRIPTION="Alembic is an open framework for storing and sharing scene data"
-HOMEPAGE="http://alembic.io/"
+HOMEPAGE="https://www.alembic.io"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
