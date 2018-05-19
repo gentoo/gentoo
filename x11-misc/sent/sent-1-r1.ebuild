@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ src_prepare() {
 		-e '/^  echo/d' \
 		Makefile || die
 
-	restore_config config.def.h
+	restore_config config.h
 }
 
 src_compile() {
@@ -41,4 +41,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
+	save_config config.h
 }
