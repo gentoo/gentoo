@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils linux-info systemd toolchain-funcs
 
 DESCRIPTION="Free client for Cisco VPN routing software"
-HOMEPAGE="http://www.unix-ag.uni-kl.de/~massar/vpnc/"
+HOMEPAGE="https://www.unix-ag.uni-kl.de/~massar/vpnc/"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
@@ -32,12 +32,12 @@ CONFIG_CHECK="~TUN"
 src_prepare() {
 	if use gnutls; then
 		elog "Will build with GnuTLS (default) instead of OpenSSL so you may even redistribute binaries."
-		elog "See the Makefile itself and http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=440318"
+		elog "See the Makefile itself and https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=440318"
 	else
 		sed -i -e '/^#OPENSSL_GPL_VIOLATION/s:#::g' "${S}"/Makefile	|| die
 		ewarn "Building SSL support with OpenSSL instead of GnuTLS.  This means that"
 		ewarn "you are not allowed to re-distibute the binaries due to conflicts between BSD license and GPL,"
-		ewarn "see the vpnc Makefile and http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=440318"
+		ewarn "see the vpnc Makefile and https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=440318"
 	fi
 
 	sed -e 's:test/cert0.pem::g' -i Makefile || die
