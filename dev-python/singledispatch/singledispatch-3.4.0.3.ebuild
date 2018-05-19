@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3"
-HOMEPAGE="http://docs.python.org/3/library/functools.html#functools.singledispatch"
+HOMEPAGE="https://docs.python.org/3/library/functools.html#functools.singledispatch"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PF}.tar.gz"
 
 LICENSE="MIT"
