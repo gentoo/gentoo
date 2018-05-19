@@ -18,6 +18,7 @@ app-metrics/collectd collectd_plugins_tokyotyrant
 app-metrics/collectd collectd_plugins_varnish
 app-metrics/collectd collectd_plugins_virt
 app-metrics/collectd collectd_plugins_write_kafka
+app-metrics/collectd collectd_plugins_write_mongodb
 app-metrics/collectd collectd_plugins_xencpu
 app-metrics/collectd collectd_plugins_java
 
