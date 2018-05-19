@@ -30,6 +30,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/os-headers
+	>=sys-kernel/linux-headers-4.4:0
 	virtual/pkgconfig
 	nftables? (
 		sys-devel/flex
