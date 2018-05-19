@@ -1,0 +1,11 @@
+--- a/rules/BruteForcePlugin.py
++++ b/rules/BruteForcePlugin.py
+@@ -56,7 +56,7 @@
+ 
+ 
+     def run(self, idmef):
+-        if not idmef.match("alert.classification.text", re.compile("[Ll]ogin|[Aa]uthentication")):
++        if not idmef.match("alert.classification.text", re.compile("[Ll]ogin|[Aa]uthentication|[Cc]redentials")):
+             return
+ 
+         # FIXME: In the future, we might want to include successfull authentication
