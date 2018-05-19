@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 # this is not null so that the dependencies will actually be filled
 RUBY_FAKEGEM_TASK_TEST="test"
@@ -32,7 +32,7 @@ ruby_add_rdepend "~dev-ruby/activesupport-${PV}
 	dev-ruby/arel:9.0
 	sqlite? ( >=dev-ruby/sqlite3-1.3.6 )
 	mysql? ( || ( dev-ruby/mysql2:0.4 >=dev-ruby/mysql2-0.3.18:0.3 ) )
-	postgres? ( >=dev-ruby/pg-0.18.0 )"
+	postgres? ( >=dev-ruby/pg-0.18.0:* )"
 
 ruby_add_bdepend "
 	test? (

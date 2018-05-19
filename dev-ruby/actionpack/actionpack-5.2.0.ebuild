@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -30,7 +30,7 @@ ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
 	~dev-ruby/actionview-${PV}
 	dev-ruby/rack:2.0
-	>=dev-ruby/rack-test-0.6.3
+	>=dev-ruby/rack-test-0.6.3:*
 	>=dev-ruby/rails-html-sanitizer-1.0.2:1
 	dev-ruby/rails-dom-testing:2
 "
