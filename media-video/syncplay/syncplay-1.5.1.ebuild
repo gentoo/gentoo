@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1
 
 DESCRIPTION="Client/server to synchronize media playback"
-HOMEPAGE="http://syncplay.pl"
+HOMEPAGE="https://syncplay.pl"
 SRC_URI="https://github.com/Syncplay/syncplay/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
