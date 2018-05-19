@@ -194,6 +194,11 @@ common-lisp-export-impl-args() {
 	fi
 	CL_BINARY="${1}"
 	case "${CL_BINARY}" in
+		sbcl)
+			CL_NORC="--sysinit /dev/null --userinit /dev/null"
+			CL_LOAD="--load"
+			CL_EVAL="--eval"
+			;;
 		clisp)
 			CL_NORC="-norc"
 			CL_LOAD="-i"
@@ -216,8 +221,8 @@ common-lisp-export-impl-args() {
 			CL_LOAD="-load"
 			CL_EVAL="-eval"
 			;;
-		sbcl)
-			CL_NORC="--sysinit /dev/null --userinit /dev/null"
+		abcl)
+			CL_NORC="--noinit"
 			CL_LOAD="--load"
 			CL_EVAL="--eval"
 			;;
