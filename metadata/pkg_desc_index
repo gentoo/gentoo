@@ -7187,7 +7187,7 @@ media-fonts/vlgothic 20110722: Japanese TrueType font from Vine Linux
 media-fonts/webby-fonts 1: A small proportional bitmap font for use in webpages
 media-fonts/wqy-bitmapfont 1.0.0_rc1: WenQuanYi Bitmap Song CJK font
 media-fonts/wqy-microhei 0.2.0_beta: A droid derived Sans-Serif style CJK font
-media-fonts/wqy-unibit 1.1.0_p1 1.1.0_p1-r1: WenQuanYi Unibit CJK font
+media-fonts/wqy-unibit 1.1.0_p1-r1: WenQuanYi Unibit CJK font
 media-fonts/wqy-zenhei 0.9.46: WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font
 media-fonts/x11fonts-jmk 3.0-r1: This package contains character-cell fonts for use with X
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
