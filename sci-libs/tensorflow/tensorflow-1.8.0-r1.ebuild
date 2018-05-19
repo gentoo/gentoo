@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
 
@@ -101,6 +101,7 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 PATCHES=(
 	"${FILESDIR}/0001-pip_package-modularize-build-script-to-allow-distros.patch"
+	"${FILESDIR}/tensorflow-1.8.0-0002-dont-strip.patch"
 )
 
 bazel-get-cpu-flags() {
@@ -140,24 +141,32 @@ setup_bazelrc() {
 	# https://github.com/bazelbuild/bazel/blob/76555482873ffcf1d32fb40106f89231b37f850a/src/main/tools/linux-sandbox-pid1.cc#L113
 	addpredict /proc
 
-	echo "startup --batch" > "${T}/bazelrc" || die
+	mkdir -p "${T}/bazel-cache" || die
+	mkdir -p "${T}/bazel-distdir" || die
 
-	# make bazel respect $MAKEOPTS
-	echo "build --jobs=$(makeopts_jobs) $(bazel-get-flags)" >> "${T}/bazelrc" || die
-	echo "build --compilation_mode=opt --host_compilation_mode=opt" >> "${T}/bazelrc" || die
+	cat > "${T}/bazelrc" <<-EOF
+	startup --batch
+
+	# dont strip HOME, portage sets a temp per-package dir
+	build --action_env HOME
+
+	# make bazel respect MAKEOPTS
+	build --jobs=$(makeopts_jobs) $(bazel-get-flags)
+	build --compilation_mode=opt --host_compilation_mode=opt
 
 	# Use standalone strategy to deactivate the bazel sandbox, since it
 	# conflicts with FEATURES=sandbox.
-	echo "build --verbose_failures --spawn_strategy=standalone --genrule_strategy=standalone" >> "${T}/bazelrc" || die
-	echo "build --noshow_loading_progress" >> "${T}/bazelrc" || die
-	echo "test --verbose_failures --spawn_strategy=standalone --genrule_strategy=standalone" >> "${T}/bazelrc" || die
-	echo "test --verbose_test_summary --noshow_loading_progress" >> "${T}/bazelrc" || die
+	build --spawn_strategy=standalone --genrule_strategy=standalone
+	test --spawn_strategy=standalone --genrule_strategy=standalone
+
+	build --strip=never
+	build --verbose_failures --noshow_loading_progress
+	test --verbose_test_summary --verbose_failures --noshow_loading_progress
 
 	# make bazel only fetch distfiles from the cache
-	mkdir -p "${T}/bazel-cache" || die
-	mkdir -p "${T}/bazel-distdir" || die
-	echo "fetch --repository_cache=${T}/bazel-cache/ --experimental_distdir=${T}/bazel-distdir/" >> "${T}/bazelrc" || die
-	echo "build --repository_cache=${T}/bazel-cache/ --experimental_distdir=${T}/bazel-distdir/" >> "${T}/bazelrc" || die
+	fetch --repository_cache=${T}/bazel-cache/ --experimental_distdir=${T}/bazel-distdir/
+	build --repository_cache=${T}/bazel-cache/ --experimental_distdir=${T}/bazel-distdir/
+	EOF
 }
 
 bazel_multibuild_wrapper() {
@@ -170,8 +179,8 @@ bazel_multibuild_wrapper() {
 ebazel() {
 	setup_bazelrc
 
-	echo Running: bazel --bazelrc="${T}/bazelrc" --output_base="${BAZEL_OUTPUT_BASE}" "$@"
-	bazel --bazelrc="${T}/bazelrc" --output_base="${BAZEL_OUTPUT_BASE}" $@ || die
+	echo Running: bazel --output_base="${BAZEL_OUTPUT_BASE}" "$@"
+	bazel --output_base="${BAZEL_OUTPUT_BASE}" $@ || die
 }
 
 load_distfiles() {
@@ -234,6 +243,9 @@ src_configure() {
 		export TF_SET_ANDROID_WORKSPACE=0
 		export PYTHON_BIN_PATH="${PYTHON}"
 		export PYTHON_LIB_PATH="${PYTHON_SITEDIR}"
+
+		# only one bazelrc is read, import our one before configure sets its options
+		echo "import ${T}/bazelrc" >> ./.bazelrc
 
 		# this is not autoconf
 		./configure || die
