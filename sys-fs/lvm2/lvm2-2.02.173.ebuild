@@ -66,9 +66,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.02.99-locale-muck.patch #330373
 	"${FILESDIR}"/${PN}-2.02.70-asneeded.patch # -Wl,--as-needed
 	"${FILESDIR}"/${PN}-2.02.139-dynamic-static-ldflags.patch #332905
-	"${FILESDIR}"/${PN}-2.02.171-static-libm.patch #617756
 	"${FILESDIR}"/${PN}-2.02.172-static-pkgconfig-libs.patch #370217, #439414 + blkid
 	"${FILESDIR}"/${PN}-2.02.130-pthread-pkgconfig.patch #492450
+	"${FILESDIR}"/${PN}-2.02.171-static-libm.patch #617756
 	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
 )
 
