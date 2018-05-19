@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit multiprocessing python-any-r1 versionator toolchain-funcs
 
