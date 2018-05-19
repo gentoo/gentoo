@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR=""
@@ -36,13 +36,15 @@ ruby_add_bdepend "
 	test? (
 		~dev-ruby/railties-${PV}
 		dev-ruby/test-unit:2
+		dev-ruby/mini_magick
 		dev-ruby/mocha
 	)"
 
 all_ruby_prepare() {
 	   # Remove items from the common Gemfile that we don't need for this
 		# test run. This also requires handling some gemspecs.
-		sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|redcarpet\|bcrypt\|uglifier\|aws-sdk-s3\|google-cloud-storage\|azure-storage\|blade\|bootsnap\|hiredis\|qunit-selenium\|chromedriver-helper\|redis\|rb-inotify\|sprockets\|stackprof\|websocket-client-simple\|libxml-ruby\)/ s:^:#:" \
+		sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|redcarpet\|bcrypt\|uglifier\|aws-sdk-s3\|google-cloud-storage\|azure-storage\|blade\|bootsnap\|hiredis\|qunit-selenium\|chromedriver-helper\|redis\|rb-inotify\|sprockets\|stackprof\|websocket-client-simple\|libxml-ruby\|sass-rails\|rubocop\)/ s:^:#:" \
+			-e '/dalli/ s/2.7.7/2.7.9/' \
 			-e '/:job/,/end/ s:^:#:' \
 			-e '/:test/,/^end/ s:^:#:' \
 			-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
