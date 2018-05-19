@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)"
-HOMEPAGE="http://johnkerl.org/miller"
+HOMEPAGE="https://johnkerl.org/miller/doc/index.html"
 SRC_URI="https://github.com/johnkerl/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
