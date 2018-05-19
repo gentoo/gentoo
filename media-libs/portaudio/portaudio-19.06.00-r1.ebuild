@@ -11,7 +11,7 @@ SRC_URI="http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
-IUSE="alsa +cxx debug doc jack oss static-libs"
+IUSE="alsa +cxx debug doc examples jack oss static-libs"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )"
@@ -48,6 +48,14 @@ src_compile() {
 	if use doc; then
 		doxygen -u Doxyfile || die
 		doxygen Doxyfile || die
+	fi
+}
+
+multilib_src_install() {
+	emake DESTDIR="${D}" install
+
+	if multilib_is_native_abi; then
+		use examples && dobin bin/.libs/*
 	fi
 }
 
