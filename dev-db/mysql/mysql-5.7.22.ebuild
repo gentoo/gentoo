@@ -566,10 +566,10 @@ src_test() {
 }
 
 mysql_init_vars() {
-	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
-	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
-	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
-	MY_LOGDIR=${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
+	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX%/}/usr/share/mysql"}
+	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX%/}/etc/mysql"}
+	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX%/}/var/lib/mysql"}
+	MY_LOGDIR=${MY_LOGDIR="${EPREFIX%/}/var/log/mysql"}
 
 	if [[ -z "${MY_DATADIR}" ]] ; then
 		MY_DATADIR=""
@@ -623,7 +623,7 @@ mysql_init_vars() {
 
 pkg_config() {
 	_getoptval() {
-		local mypd="${EROOT}"/usr/bin/my_print_defaults
+		local mypd="${EROOT%/}"/usr/bin/my_print_defaults
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
@@ -632,20 +632,20 @@ pkg_config() {
 	local old_MY_DATADIR="${MY_DATADIR}"
 	local old_HOME="${HOME}"
 	# my_print_defaults needs to read stuff in $HOME/.my.cnf
-	export HOME=${EPREFIX}/root
+	export HOME=${EPREFIX%/}/root
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
 	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
-	if [[ ! -x "${EROOT}/usr/sbin/mysqld" ]] ; then
+	if [[ ! -x "${EROOT%/}/usr/sbin/mysqld" ]] ; then
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 
 	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]]; then
-		local MY_DATADIR_s="${ROOT}/${MY_DATADIR}"
+		local MY_DATADIR_s="${ROOT%/}/${MY_DATADIR}"
 		MY_DATADIR_s="${MY_DATADIR_s%%/}"
-		local old_MY_DATADIR_s="${ROOT}/${old_MY_DATADIR}"
+		local old_MY_DATADIR_s="${ROOT%/}/${old_MY_DATADIR}"
 		old_MY_DATADIR_s="${old_MY_DATADIR_s%%/}"
 
 		if [[ ( -d "${old_MY_DATADIR_s}" ) && ( "${old_MY_DATADIR_s}" != / ) ]]; then
@@ -704,22 +704,22 @@ pkg_config() {
 	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
 
-	if [[ ! -d "${ROOT}/$MYSQL_TMPDIR" ]]; then
+	if [[ ! -d "${EROOT%/}/$MYSQL_TMPDIR" ]]; then
 		einfo "Creating MySQL tmpdir $MYSQL_TMPDIR"
-		install -d -m 770 -o mysql -g mysql "${EROOT}/$MYSQL_TMPDIR"
+		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_TMPDIR"
 	fi
-	if [[ ! -d "${ROOT}/$MYSQL_LOG_BIN" ]]; then
+	if [[ ! -d "${EROOT%/}/$MYSQL_LOG_BIN" ]]; then
 		einfo "Creating MySQL log-bin directory $MYSQL_LOG_BIN"
-		install -d -m 770 -o mysql -g mysql "${EROOT}/$MYSQL_LOG_BIN"
+		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_LOG_BIN"
 	fi
-	if [[ ! -d "${EROOT}/$MYSQL_RELAY_LOG" ]]; then
+	if [[ ! -d "${EROOT%/}/$MYSQL_RELAY_LOG" ]]; then
 		einfo "Creating MySQL relay-log directory $MYSQL_RELAY_LOG"
-		install -d -m 770 -o mysql -g mysql "${EROOT}/$MYSQL_RELAY_LOG"
+		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_RELAY_LOG"
 	fi
 
-	if [[ -d "${ROOT}/${MY_DATADIR}/mysql" ]] ; then
+	if [[ -d "${ROOT%/}/${MY_DATADIR}/mysql" ]] ; then
 		ewarn "You have already a MySQL database in place."
-		ewarn "(${ROOT}/${MY_DATADIR}/*)"
+		ewarn "(${ROOT%/}/${MY_DATADIR}/*)"
 		ewarn "Please rename or delete it if you wish to replace it."
 		die "MySQL database already exists!"
 	fi
@@ -753,9 +753,9 @@ pkg_config() {
 	use prefix && options="${options} '--defaults-file=${MY_SYSCONFDIR}/my.cnf'"
 
 	# Figure out which options we need to disable to do the setup
-	local helpfile="${TMPDIR}/mysqld-help"
-	"${EROOT}/usr/sbin/mysqld" --verbose --help >"${helpfile}" 2>/dev/null
-	for opt in grant-tables host-cache name-resolve networking slave-start \
+	local helpfile="${TMPDIR%/}/mysqld-help"
+	"${EROOT%/}/usr/sbin/mysqld" --verbose --help >"${helpfile}" 2>/dev/null
+	for opt in host-cache name-resolve networking slave-start \
 		federated ssl log-bin relay-log slow-query-log external-locking \
 		log-slave-updates \
 		; do
@@ -766,7 +766,7 @@ pkg_config() {
 	einfo "Creating the mysql database and setting proper permissions on it ..."
 
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
-	PID_DIR="${EROOT}/var/run/mysqld"
+	PID_DIR="${EROOT%/}/var/run/mysqld"
 	if [[ ! -d "${PID_DIR}" ]]; then
 		install -d -m 755 -o mysql -g mysql "${PID_DIR}" || die "Could not create pid directory"
 	fi
@@ -779,33 +779,35 @@ pkg_config() {
 
 	# Filling timezones, see
 	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
-	"${EROOT}/usr/bin/mysql_tzinfo_to_sql" "${EROOT}/usr/share/zoneinfo" > "${sqltmp}" 2>/dev/null
+	echo "USE mysql;" >"${sqltmp}"
+	"${EROOT%/}/usr/bin/mysql_tzinfo_to_sql" "${EROOT%/}/usr/share/zoneinfo" >> "${sqltmp}" 2>/dev/null
+	chown mysql "${sqltmp}" || die
 
 	# --initialize-insecure will not set root password
 	# --initialize would set a random one in the log which we don't need as we set it ourselves
-	local cmd=( "${EROOT}usr/sbin/mysqld" "--initialize-insecure" "--init-file='${sqltmp}'" )
-	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT}/${MY_DATADIR}" "--tmpdir=${ROOT}/${MYSQL_TMPDIR}" )
+	local cmd=( "${EROOT%/}/usr/sbin/mysqld" "--initialize-insecure" "--init-file='${sqltmp}'" )
+	cmd+=( "--basedir=${EPREFIX%/}/usr" ${options} "--datadir=${ROOT%/}${MY_DATADIR}" "--tmpdir=${ROOT%/}${MYSQL_TMPDIR}" )
 	einfo "Command: ${cmd[*]}"
 	su -s /bin/sh -c "${cmd[*]}" mysql \
-		>"${TMPDIR}"/mysql_install_db.log 2>&1
+		>"${TMPDIR%/}"/mysql_install_db.log 2>&1
 	if [ $? -ne 0 ]; then
-		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2
-		die "Failed to initialize mysqld. Please review ${EPREFIX}/var/log/mysql/mysqld.err AND ${TMPDIR}/mysql_install_db.log"
+		grep -B5 -A999 -i "ERROR" "${TMPDIR%/}"/mysql_install_db.log 1>&2
+		die "Failed to initialize mysqld. Please review ${EPREFIX%/}/var/log/mysql/mysqld.err AND ${TMPDIR%/}/mysql_install_db.log"
 	fi
 	popd &>/dev/null || die
-	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
+	[[ -f "${ROOT%/}/${MY_DATADIR}/mysql/user.frm" ]] \
 	|| die "MySQL databases not installed"
 
 	use prefix || options="${options} --user=mysql"
 
-	local socket="${EROOT}/var/run/mysqld/mysqld${RANDOM}.sock"
-	local pidfile="${EROOT}/var/run/mysqld/mysqld${RANDOM}.pid"
-	local mysqld="${EROOT}/usr/sbin/mysqld \
+	local socket="${EROOT%/}/var/run/mysqld/mysqld${RANDOM}.sock"
+	local pidfile="${EROOT%/}/var/run/mysqld/mysqld${RANDOM}.pid"
+	local mysqld="${EROOT%/}/usr/sbin/mysqld \
 		${options} \
 		$(use prefix || echo --user=mysql) \
 		--log-warnings=0 \
-		--basedir=${EROOT}/usr \
-		--datadir=${ROOT}/${MY_DATADIR} \
+		--basedir=${EROOT%/}/usr \
+		--datadir=${ROOT%/}/${MY_DATADIR} \
 		--max_allowed_packet=8M \
 		--net_buffer_length=16K \
 		--socket=${socket} \
@@ -829,8 +831,9 @@ pkg_config() {
 
 	ebegin "Setting root password"
 	# Do this from memory, as we don't want clear text passwords in temp files
-	local sql="UPDATE mysql.user SET Password = PASSWORD('${MYSQL_ROOT_PASSWORD}') WHERE USER='root'; FLUSH PRIVILEGES"
-	"${EROOT}/usr/bin/mysql" \
+	local sql="ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${MYSQL_ROOT_PASSWORD}'"
+	"${EROOT%/}/usr/bin/mysql" \
+		--no-defaults \
 		"--socket=${socket}" \
 		-hlocalhost \
 		-e "${sql}"
