@@ -160,9 +160,7 @@ dev-scheme/racket futures jit
 # Tests require dev-python/tox which isn't keyworded on arm
 sys-cluster/ceph test
 
-# Thomas Deutschmann <whissi@whissi.de> (19 Mar 2016), on behalf of
-# Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
-# for the proxy-maintainers project
+# Thomas Deutschmann <whissi@gentoo.org> (19 Mar 2016)
 # Unkeyworded deps, bug #564274
 app-metrics/collectd collectd_plugins_gmond
 app-metrics/collectd collectd_plugins_ipmi
@@ -173,6 +171,7 @@ app-metrics/collectd collectd_plugins_sigrok
 app-metrics/collectd collectd_plugins_tokyotyrant
 app-metrics/collectd collectd_plugins_varnish
 app-metrics/collectd collectd_plugins_virt
+app-metrics/collectd collectd_plugins_write_mongodb
 
 # Markus Meier <maekke@gentoo.org> (02 Mar 2016)
 # unkeyworded deps for bug #573324
