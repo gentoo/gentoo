@@ -48,7 +48,10 @@ else
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
 
-	PATCHES=( "${FILESDIR}"/${BRANCH}/${PN}-8.35.0-fix-issue2719.patch )
+	PATCHES=(
+		"${FILESDIR}"/${BRANCH}/${PN}-8.35.0-fix-issue2719.patch
+		"${FILESDIR}"/${BRANCH}/${PN}-8.35.0-fix-issue2726.patch
+	)
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
