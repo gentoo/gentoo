@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_PN="${PN/-bin}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Complete set of tools that provide a virtual environment for Android"
-HOMEPAGE="http://genymotion.com"
+HOMEPAGE="https://genymotion.com"
 SRC_URI="${MY_P}-linux_x64.bin"
 DOWNLOAD_URL="https://www.genymotion.com/download/"
 
