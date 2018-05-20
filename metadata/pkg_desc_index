@@ -1924,7 +1924,7 @@ dev-embedded/esptool 2.1: Utility to communicate with the ROM bootloader in Espr
 dev-embedded/ftdi_eeprom 0.3-r1: Utility to program external EEPROM for FTDI USB chips
 dev-embedded/gnusim8085 1.3.7: A GTK2 8085 Simulator
 dev-embedded/gpsim 0.29.0: A simulator for the Microchip PIC microcontrollers
-dev-embedded/gputils 0.13.6-r1 1.5.0: Tools including assembler, linker and librarian for PIC microcontrollers
+dev-embedded/gputils 1.5.0: Tools including assembler, linker and librarian for PIC microcontrollers
 dev-embedded/include 0.4.2: A collection of useful, independent include files for C/Assembler developers
 dev-embedded/libftdi 0.19 0.20-r1 1.2-r1: Userspace access to FTDI USB interface chips
 dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer software for the serial port
