@@ -152,6 +152,10 @@ src_configure() {
 		append-ldflags -L"${SYSROOT%/}${EPREFIX}/opt/vc/lib"
 	fi
 
+	# Prevent access violations from zsh completion generation.
+	# See Gentoo bug 656086.
+	use zsh-completion && addpredict /dev/dri
+
 	local mywafargs=(
 		--confdir="${EPREFIX}/etc/${PN}"
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
