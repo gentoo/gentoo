@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ RUBY_OPTIONAL=yes
 inherit cmake-utils python-r1 ruby-ng perl-module multilib
 
 DESCRIPTION="Library for solving packages and reading repositories"
-HOMEPAGE="http://doc.opensuse.org/projects/libzypp/HEAD/ https://github.com/openSUSE/libsolv"
+HOMEPAGE="https://doc.opensuse.org/projects/libzypp/HEAD/ https://github.com/openSUSE/libsolv"
 SRC_URI="https://github.com/openSUSE/libsolv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
