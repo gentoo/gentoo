@@ -7030,7 +7030,7 @@ mate-extra/mate-system-monitor 1.12.2: The MATE System Monitor
 mate-extra/mate-user-guide 1.12.0: User documentation for MATE Desktop
 mate-extra/mate-user-share 1.12.0: Personal file sharing for the MATE desktop
 mate-extra/mate-utils 1.12.0-r2: Utilities for the MATE desktop
-media-fonts/alee-fonts 13 13-r1: A Lee's Hangul truetype fonts
+media-fonts/alee-fonts 13-r1: A Lee's Hangul truetype fonts
 media-fonts/andika 5.000: Sans-serif font designed for literacy use
 media-fonts/anonymous-pro 1.002-r1: Monospaced truetype font designed with coding in mind
 media-fonts/aquafont 2.7-r4: Handwritten Japanese fixed-width TrueType font
@@ -8979,7 +8979,7 @@ net-nds/openldap 2.4.44: LDAP suite of application and development tools
 net-nds/rpcbind 0.2.4-r3: portmap replacement which supports RPC over various protocols
 net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ server
-net-nds/yp-tools 4.2.2-r1 4.2.2-r2: Network Information Service tools
+net-nds/yp-tools 4.2.2-r2: Network Information Service tools
 net-news/liferea 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.10.2: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.9-r1: A Qt-based RSS/Atom feed reader
