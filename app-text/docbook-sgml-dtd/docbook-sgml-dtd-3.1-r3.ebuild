@@ -6,8 +6,8 @@ inherit sgml-catalog eutils
 
 MY_P="docbk31"
 DESCRIPTION="Docbook SGML DTD 3.1"
-HOMEPAGE="http://docbook.org/sgml/"
-SRC_URI="http://www.oasis-open.org/docbook/sgml/${PV}/${MY_P}.zip"
+HOMEPAGE="https://docbook.org/sgml/"
+SRC_URI="https://www.oasis-open.org/docbook/sgml/${PV}/${MY_P}.zip"
 
 LICENSE="docbook"
 SLOT="3.1"

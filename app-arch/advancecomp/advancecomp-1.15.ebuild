@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/advancemame/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="png mng"
 
 DEPEND="sys-libs/zlib
