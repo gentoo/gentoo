@@ -1,0 +1,36 @@
+From b8b24b58a9bed6db1c886ea71a9bb407fb41fc2f Mon Sep 17 00:00:00 2001
+From: rakshasa <sundell.software@gmail.com>
+Date: Sun, 23 Oct 2016 08:54:11 +0900
+Subject: [PATCH] Use pkg-config for cppunit.
+
+---
+ configure.ac | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2b3eb7ab..65e34872 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,7 +19,6 @@ AC_SUBST(LIBTORRENT_INTERFACE_VERSION_NO)
+ 
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS(config.h)
+-AM_PATH_CPPUNIT(1.9.6)
+ 
+ AC_PROG_CXX
+ 
+@@ -60,9 +59,11 @@ CC_ATTRIBUTE_VISIBILITY
+ AX_PTHREAD
+ AX_CHECK_ZLIB
+ 
+-CFLAGS="$PTHREAD_CFLAGS $CFLAGS"
+-CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
+-LIBS="$PTHREAD_LIBS $LIBS"
++PKG_CHECK_MODULES([CPPUNIT], [cppunit],, [no_cppunit="yes"])
++
++CFLAGS="$PTHREAD_CFLAGS $CPPUNIT_CFLAGS $CFLAGS"
++CXXFLAGS="$PTHREAD_CFLAGS $CPPUNIT_CFLAGS $CXXFLAGS"
++LIBS="$PTHREAD_LIBS $CPPUNIT_LIBS $LIBS"
+ 
+ AC_ARG_ENABLE(openssl,
+   [  --disable-openssl       Don't use OpenSSL's SHA1 implementation.],
