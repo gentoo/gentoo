@@ -2852,7 +2852,7 @@ dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
 dev-lang/R 3.2.2 3.4.1: Language and environment for statistical computing and graphics
-dev-lang/bff 1.0.3.1 1.0.5: A brainfuck interpreter
+dev-lang/bff 1.0.5: A brainfuck interpreter
 dev-lang/cfortran 4.4-r2: Header file allowing to call Fortran routines from C and C++
 dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
@@ -7030,7 +7030,7 @@ mate-extra/mate-system-monitor 1.12.2: The MATE System Monitor
 mate-extra/mate-user-guide 1.12.0: User documentation for MATE Desktop
 mate-extra/mate-user-share 1.12.0: Personal file sharing for the MATE desktop
 mate-extra/mate-utils 1.12.0-r2: Utilities for the MATE desktop
-media-fonts/alee-fonts 13: A Lee's Hangul truetype fonts
+media-fonts/alee-fonts 13 13-r1: A Lee's Hangul truetype fonts
 media-fonts/andika 5.000: Sans-serif font designed for literacy use
 media-fonts/anonymous-pro 1.002-r1: Monospaced truetype font designed with coding in mind
 media-fonts/aquafont 2.7-r4: Handwritten Japanese fixed-width TrueType font
