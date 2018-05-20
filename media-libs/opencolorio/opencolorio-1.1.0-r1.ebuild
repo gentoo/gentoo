@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-compile-error-with-Lut1DOp.cpp.patch"
 	"${FILESDIR}/${P}-use-GNUInstallDirs-and-fix-cmake-install-location.patch"
 	"${FILESDIR}/${P}-remove-building-of-bundled-programs.patch"
+	"${FILESDIR}/${P}-yaml-cpp-0.6.patch"
 )
 
 pkg_setup() {
