@@ -20,12 +20,12 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Dutch dictionaries for myspell/hunspell"
-HOMEPAGE="http://opentaal.org/"
+HOMEPAGE="https://www.opentaal.org"
 # Thesarus is not versioned at all, I suppose we could bump it with each dict
 # release, or when people say that the download uri checksum changed.
 SRC_URI="
-	http://opentaal.org/bestanden/license_result/20-woordenlijst-v-${PV//./}-voor-openofficeorg-3?bid=20&agree=1 -> ${P}.oxt
-	http://data.opentaal.org/opentaalbank/thesaurus/download/thes_nl.oxt -> ${P}_thes.oxt
+	https://www.opentaal.org/bestanden/license_result/20-woordenlijst-v-${PV//./}-voor-openofficeorg-3?bid=20&agree=1 -> ${P}.oxt
+	https://data.opentaal.org/opentaalbank/thesaurus/download/thes_nl.oxt -> ${P}_thes.oxt
 "
 
 LICENSE="BSD-2 CC-BY-3.0"
