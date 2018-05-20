@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic multilib-minimal toolchain-funcs
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Tools for MJPEG video"
 HOMEPAGE="http://mjpeg.sourceforge.net/"
@@ -12,30 +12,34 @@ SRC_URI="mirror://sourceforge/mjpeg/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
-IUSE="dv gtk cpu_flags_x86_mmx png quicktime sdl sdlgfx static-libs"
+IUSE="cpu_flags_x86_mmx dv gtk png quicktime sdl sdlgfx static-libs"
 REQUIRED_USE="sdlgfx? ( sdl )"
 
-RDEPEND="virtual/jpeg:0=[${MULTILIB_USEDEP}]
-	quicktime? ( >=media-libs/libquicktime-1.2.4-r1[${MULTILIB_USEDEP}] )
+RDEPEND="
+	virtual/jpeg:0=[${MULTILIB_USEDEP}]
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
-	png? ( media-libs/libpng:0= )
 	gtk? ( x11-libs/gtk+:2 )
+	png? ( media-libs/libpng:0= )
+	quicktime? ( >=media-libs/libquicktime-1.2.4-r1[${MULTILIB_USEDEP}] )
 	sdl? ( >=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		sdlgfx? ( media-libs/sdl-gfx )
 	)"
-
 DEPEND="${RDEPEND}
-	cpu_flags_x86_mmx? ( dev-lang/nasm )
 	>=sys-apps/sed-4
 	virtual/awk
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	cpu_flags_x86_mmx? ( dev-lang/nasm )
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pic.patch
+	# https://sourceforge.net/p/mjpeg/bugs/139/
+	"${FILESDIR}"/${P}-sdl-cflags.patch
+	"${FILESDIR}"/mjpegtools-2.1.0-no_format.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-pic.patch
-	# https://sourceforge.net/p/mjpeg/bugs/139/
-	epatch "${FILESDIR}"/${P}-sdl-cflags.patch
-	epatch "${FILESDIR}"/mjpegtools-2.1.0-no_format.patch
 	default
 
 	eautoreconf

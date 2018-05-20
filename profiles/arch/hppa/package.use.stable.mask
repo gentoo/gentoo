@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# media-gfx/ufraw is not stable
+media-gfx/imagemagick raw
+
+# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# media-libs/{libdc1394,x264} is not stable.
+media-video/libav ieee1394 x264
+media-video/ffmpeg ieee1394 x264
+
 # Andreas Sturmlechner <asturm@gentoo.org> (6 May 2018)
 # sci-visualization/gnuplot is not stable.
 app-admin/sysstat isag
