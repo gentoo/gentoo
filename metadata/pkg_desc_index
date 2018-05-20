@@ -2866,7 +2866,7 @@ dev-lang/ghc 7.8.4 7.10.3 8.0.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016 2017: GNAT Ada Compiler - GPL version
 dev-lang/go 1.10.1: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
-dev-lang/icon 9.4.3-r5 9.5.0 9.5.1-r1: very high level language
+dev-lang/icon 9.5.1-r1: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/jimtcl 0.76: Small footprint implementation of Tcl programming language
 dev-lang/lazarus 1.0.12: Lazarus IDE is a feature rich visual programming environment emulating Delphi
