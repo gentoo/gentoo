@@ -20,5 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+"
 
 S=${WORKDIR}/${MY_P}
