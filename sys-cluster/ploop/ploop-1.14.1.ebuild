@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils toolchain-funcs multilib systemd
 
 DESCRIPTION="openvz tool and a library to control ploop block devices"
-HOMEPAGE="http://wiki.openvz.org/Download/ploop"
-SRC_URI="http://download.openvz.org/utils/ploop/${PV}/src/${P}.tar.bz2"
+HOMEPAGE="https://wiki.openvz.org/Download/ploop"
+SRC_URI="https://download.openvz.org/utils/ploop/${PV}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
