@@ -87,7 +87,6 @@ if [[ -z ${XORG_MODULE} ]]; then
 		x11-misc|x11-themes) XORG_MODULE=util/    ;;
 		x11-base)            XORG_MODULE=xserver/ ;;
 		x11-drivers)         XORG_MODULE=driver/  ;;
-		x11-proto)           XORG_MODULE=proto/   ;;
 		x11-libs)            XORG_MODULE=lib/     ;;
 		*)                   XORG_MODULE=         ;;
 	esac
@@ -175,7 +174,6 @@ if [[ ${XORG_STATIC} == yes \
 		&& ${FONT} != yes \
 		&& ${CATEGORY} != app-doc \
 		&& ${CATEGORY} != x11-apps \
-		&& ${CATEGORY} != x11-proto \
 		&& ${CATEGORY} != x11-drivers \
 		&& ${CATEGORY} != media-fonts \
 		&& ${PN} != util-macros \
@@ -482,12 +480,6 @@ xorg-2_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local install_args=( docdir="${EPREFIX}/usr/share/doc/${PF}" )
-
-	if [[ ${CATEGORY} == x11-proto ]]; then
-		install_args+=(
-			${PN/proto/}docdir="${EPREFIX}/usr/share/doc/${PF}"
-		)
-	fi
 
 	if [[ ${XORG_MULTILIB} == yes ]]; then
 		autotools-multilib_src_install "${install_args[@]}"
