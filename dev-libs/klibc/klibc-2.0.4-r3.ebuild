@@ -21,7 +21,7 @@ K_TARBALL_SUFFIX="xz"
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="A minimal libc subset for use with initramfs"
-HOMEPAGE="http://www.zytor.com/mailman/listinfo/klibc/ https://www.kernel.org/pub/linux/libs/klibc/"
+HOMEPAGE="https://www.zytor.com/mailman/listinfo/klibc/ https://www.kernel.org/pub/linux/libs/klibc/"
 KV_MAJOR="4" KV_MINOR="x" KV_SUB="14"
 PKV_EXTRA=""
 if [[ ${PKV_EXTRA} ]]; then
