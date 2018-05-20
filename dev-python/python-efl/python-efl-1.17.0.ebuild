@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,7 +19,7 @@ fi
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for Enlightenment Fundation Libraries"
-HOMEPAGE="http://www.enlightenment.org"
+HOMEPAGE="https://www.enlightenment.org"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"
