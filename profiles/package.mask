@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (20 May 2018)
+# Unmaintained. Dead homepage. Depends on dead libXfont.
+# Removal in 30 days. Bug #655104
+app-i18n/fbiterm
+
 # Joonas Niilola <juippis@gmail.com> (18 May 2018)
 # Unmaintained, bugs open without activity, makes users
 # install ancient version of enlightenment by typing
@@ -274,16 +279,6 @@ dev-libs/qjson
 # for Python 3.  No reverse dependencies.
 # Removal in 30 days.  Bug #454680.
 dev-python/simpleparse
-
-# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
-# Awful, unmaintained, unused. Removal in 30 days. Bug #651300.
-x11-libs/xpyb
-
-# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
-# Protocol headers and client library for the long dead Xprint extension.
-# Removal in 30 days. Bug #649076.
-x11-proto/printproto
-x11-libs/libXp
 
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps

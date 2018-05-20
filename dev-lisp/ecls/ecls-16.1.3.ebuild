@@ -14,7 +14,7 @@ DESCRIPTION="ECL is an embeddable Common Lisp implementation"
 HOMEPAGE="https://common-lisp.net/project/ecl/"
 SRC_URI="https://common-lisp.net/project/ecl/static/files/release/${MY_P}.tgz"
 
-LICENSE="BSD LGPL-2"
+LICENSE="BSD-2 LGPL-2.1+"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode +libatomic X"
