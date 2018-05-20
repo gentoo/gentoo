@@ -5,8 +5,8 @@ EAPI=6
 
 MY_P="${P/_/-}"
 DESCRIPTION="A portable high-level Jabber/XMPP library for C++"
-HOMEPAGE="http://camaya.net/gloox"
-SRC_URI="http://camaya.net/download/${MY_P}.tar.bz2"
+HOMEPAGE="https://camaya.net/gloox/"
+SRC_URI="https://camaya.net/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0/17"
