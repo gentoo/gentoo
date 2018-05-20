@@ -52,13 +52,16 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="opengl? ( X )"
 
-DOCS="ChangeLog README TODO"
+DOCS=( ChangeLog README TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${P}+libav-9.patch
+	"${FILESDIR}"/${P}-ffmpeg2.patch
+	"${FILESDIR}"/CVE-2016-2399.patch
+)
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/${P}+libav-9.patch \
-		"${FILESDIR}"/${P}-ffmpeg2.patch \
-		"${FILESDIR}/CVE-2016-2399.patch"
 	if has_version '>=media-video/ffmpeg-2.9' ||
 		has_version '>=media-video/libav-12'; then
 			eapply "${FILESDIR}"/${P}-ffmpeg29.patch
@@ -67,8 +70,9 @@ src_prepare() {
 		eapply "${FILESDIR}/${P}-ffmpeg4.patch"
 	fi
 
-	for FILE in lqt_ffmpeg.c video.c audio.c ; do
-		sed -i -e "s:CODEC_ID_:AV_&:g" "${S}/plugins/ffmpeg/${FILE}" || die
+	local x
+	for x in lqt_ffmpeg.c video.c audio.c ; do
+		sed -i -e "s:CODEC_ID_:AV_&:g" "plugins/ffmpeg/${x}" || die
 	done
 
 	elibtoolize # Required for .so versioning on g/fbsd
