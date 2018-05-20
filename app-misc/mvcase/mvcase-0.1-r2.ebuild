@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A modified version of mv, used to convert filenames to lower/upper case"
-HOMEPAGE="http://www.ibiblio.org/pub/Linux/utils/file"
-SRC_URI="http://www.ibiblio.org/pub/Linux/utils/file/${P}.tar.gz"
+HOMEPAGE="https://www.ibiblio.org/pub/Linux/utils/file"
+SRC_URI="https://www.ibiblio.org/pub/Linux/utils/file/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
