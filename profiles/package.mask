@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (20 May 2018)
+# Unmaintained. Dead homepage. Depends on dead libXfont.
+# Removal in 30 days. Bug #655104
+app-i18n/fbiterm
+
 # Joonas Niilola <juippis@gmail.com> (18 May 2018)
 # Unmaintained, bugs open without activity, makes users
 # install ancient version of enlightenment by typing
