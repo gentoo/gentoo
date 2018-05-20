@@ -18,7 +18,7 @@ IUSE="doc static-libs"
 # Purposefully dropped the xml USE flag and libxml2 support.  Expat is the
 # default and used by every distro.  See bug #283191.
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
-	>=media-libs/freetype-2.8.1[${MULTILIB_USEDEP}]
+	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
