@@ -4,10 +4,10 @@ DESCRIPTION=A C++ crypto library
 EAPI=6
 HOMEPAGE=https://botan.randombit.net/
 IUSE=bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
-KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~ppc-macos
+KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~ppc-macos
 LICENSE=BSD
 RDEPEND=bzip2? ( >=app-arch/bzip2-1.0.5 ) zlib? ( >=sys-libs/zlib-1.2.3 ) boost? ( >=dev-libs/boost-1.48 ) lzma? ( app-arch/xz-utils ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=2/6
 SRC_URI=https://botan.randombit.net/releases/Botan-2.6.0.tgz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	c66af00ffb980e8eb1c961d5e63597fe	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=34bd1042fb0639ee8ca40055d54d46ce
+_md5_=d3ef2de0b8adfcd0805b9f5290f29924
