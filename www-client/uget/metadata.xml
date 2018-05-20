@@ -19,8 +19,6 @@
 		<flag name="aria2">Enable support for <pkg>net-misc/aria2</pkg> through xmlrpc.
 			You'll find the plugin in the app's settings.</flag>
 		<flag name="control-socket">Enable JSON-RPC over unix domain socket</flag>
-		<flag name="gtk3">Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2</flag>
-		<flag name="hide-temp-files">Make temporary files that are used while downloading hidden.</flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>net-libs/gnutls</pkg></flag>
 		<flag name="rss">Enable uGet feed messages</flag>
 	</use>
