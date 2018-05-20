@@ -799,7 +799,7 @@ app-eselect/eselect-package-manager 20110108-r1: Manages PACKAGE_MANAGER environ
 app-eselect/eselect-pdftex 0.3: pdftex module for eselect
 app-eselect/eselect-php 0.9.4-r5: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
-app-eselect/eselect-postgresql 2.2 2.3: Utility to select the default PostgreSQL slot
+app-eselect/eselect-postgresql 2.3: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20160516 20171204: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
@@ -1878,7 +1878,7 @@ dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.7-r1 4.7.8: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.3.20 9.3.22 9.4.15 9.4.17 9.5.10 9.5.12 9.6.6 9.6.7 9.6.8 10.1 10.3: PostgreSQL RDBMS
+dev-db/postgresql 9.3.22 9.4.17 9.5.12 9.6.8 10.3: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
