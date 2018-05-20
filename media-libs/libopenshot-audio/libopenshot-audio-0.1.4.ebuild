@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Audio library used by OpenShot"
-HOMEPAGE="http://www.openshot.org/ https://launchpad.net/libopenshot"
+HOMEPAGE="https://www.openshot.org/ https://launchpad.net/libopenshot"
 SRC_URI="https://github.com/OpenShot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
