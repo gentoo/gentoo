@@ -1,0 +1,34 @@
+--- a/configure	2017-11-22 21:14:23.246456277 +0200
++++ b/configure	2017-11-22 22:29:06.715659588 +0200
+@@ -82,6 +82,9 @@
+ libdir='$(exec_prefix)/lib'
+ datarootdir='$(prefix)/share'
+ mandir='$(datarootdir)/man'
++datadir='$(prefix)/share'
++infodir='$(datadir)/info'
++rundir='$(localstatedir)'
+ 
+ enable_debug=false
+ enable_warnings=true
+@@ -92,6 +95,11 @@
+ for arg; do
+ case "$arg" in
+ --help) usage ;;
++--build=*) build=${arg#*=} ;;
++--host=*) host=${arg#*=} ;;
++--datadir=*) datarootdir=${arg#*=} ;;
++--infodir=*) infodir=${arg#*=} ;;
++--rundir=*) rundir=${arg#*=} ;;
+ --prefix=*) prefix=${arg#*=} ;;
+ --exec-prefix=*) exec_prefix=${arg#*=} ;;
+ --bindir=*) bindir=${arg#*=} ;;
+@@ -243,6 +251,9 @@
+ libdir
+ datarootdir
+ mandir
++datadir
++infodir
++rundir
+ LUAPC
+ CC
+ CFLAGS
