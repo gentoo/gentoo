@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1
 
 DESCRIPTION="Examines C/C++ source code for security flaws"
-HOMEPAGE="http://www.dwheeler.com/flawfinder/"
-SRC_URI="http://www.dwheeler.com/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.dwheeler.com/flawfinder/"
+SRC_URI="https://www.dwheeler.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
