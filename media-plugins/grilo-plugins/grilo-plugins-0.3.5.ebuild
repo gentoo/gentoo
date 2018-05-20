@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 LICENSE="LGPL-2.1+"
 SLOT="0.3"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
-IUSE="daap dvd examples chromaprint flickr freebox gnome-online-accounts lua subtitles test thetvdb tracker upnp-av vimeo +youtube"
+IUSE="daap dvd chromaprint flickr freebox gnome-online-accounts lua subtitles test thetvdb tracker upnp-av vimeo +youtube"
 
 # Bump gom requirement to avoid segfaults
 RDEPEND="
@@ -115,17 +115,14 @@ src_configure() {
 }
 
 src_install() {
-	if use examples; then
-		docinto examples
-		doins help/examples/*.c
-	fi
-
 	gnome2_src_install \
 		DOC_MODULE_VERSION=${SLOT%/*} \
 		HELP_ID="grilo-plugins-${SLOT%/*}" \
 		HELP_MEDIA=""
 
 	# The above doesn't work and collides with 0.2 slot
+	sed -i 's:/example-tmdb\.c:/example-tmdb-0.3.c:' \
+		"${ED}"/usr/share/help/C/examples/example-tmdb.c || die
 	mv "${ED}"/usr/share/help/C/examples/example-tmdb{,-0.3}.c || die
 	mv "${ED}"/usr/share/help/C/grilo-plugins/legal{,-0.3}.xml || die
 	mv "${ED}"/usr/share/help/C/grilo-plugins/grilo-plugins{,-0.3}.xml || die
