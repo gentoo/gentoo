@@ -12,7 +12,7 @@ SRC_URI="https://monkey.org/~dugsong/${PN}/beta/${P/_beta/b}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="X"
 
 DEPEND="net-libs/libpcap
