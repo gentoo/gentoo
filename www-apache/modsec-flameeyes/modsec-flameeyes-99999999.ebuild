@@ -1,22 +1,22 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit readme.gentoo git-2
-
-GITHUB_USER=Flameeyes
-GITHUB_PROJECT=${PN}
-
-EGIT_REPO_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}.git"
+inherit readme.gentoo-r1
 
 DESCRIPTION="Flameeyes's Ruleset for ModSecurity"
 HOMEPAGE="http://www.flameeyes.eu/projects/modsec"
-#SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} == "99999999" ]]; then
+	EGIT_REPO_URI="https://github.com/Flameeyes/modsec-flameeyes.git"
+	inherit git-r3
+else
+	KEYWORDS="~amd64"
+	SRC_URI="https://github.com/Flameeyes/modsec-flameeyes/archive/${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS=""
 
 RDEPEND=">=www-apache/mod_security-2.5.1"
 DEPEND=""
