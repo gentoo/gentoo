@@ -5802,8 +5802,6 @@ www-client/seamonkey:system-sqlite - Use the system-wide dev-db/sqlite installat
 www-client/surf:savedconfig - Without a saved config.h, this package depends on net-misc/curl and x11-terms/st for a default download mechanism
 www-client/uget:aria2 - Enable support for net-misc/aria2 through xmlrpc. You'll find the plugin in the app's settings.
 www-client/uget:control-socket - Enable JSON-RPC over unix domain socket
-www-client/uget:gtk3 - Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2
-www-client/uget:hide-temp-files - Make temporary files that are used while downloading hidden.
 www-client/uget:openssl - Use dev-libs/openssl instead of net-libs/gnutls
 www-client/uget:rss - Enable uGet feed messages
 www-client/w3m:gdk-pixbuf - Enable support for x11-libs/gdk-pixbuf

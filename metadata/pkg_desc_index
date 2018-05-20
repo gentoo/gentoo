@@ -10517,7 +10517,7 @@ www-client/seamonkey 2.49.7.0_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
-www-client/uget 1.8.0 1.10.3 2.2.0: Download manager using gtk+ and libcurl
+www-client/uget 2.2.0: Download manager using gtk+ and libcurl
 www-client/w3m 0.5.3_p20180125: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
