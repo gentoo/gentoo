@@ -279,12 +279,6 @@ dev-python/simpleparse
 # Awful, unmaintained, unused. Removal in 30 days. Bug #651300.
 x11-libs/xpyb
 
-# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
-# Protocol headers and client library for the long dead Xprint extension.
-# Removal in 30 days. Bug #649076.
-x11-proto/printproto
-x11-libs/libXp
-
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
 # See: https://bugs.gentoo.org/653678
