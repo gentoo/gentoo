@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,10 @@ GITHUB_USER=SpiderLabs
 GITHUB_PROJECT=owasp-${PN}
 
 DESCRIPTION="Core Rule Set for ModSecurity"
-HOMEPAGE="http://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project"
+HOMEPAGE="
+	https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project
+	https://modsecurity.org/crs/
+	https://coreruleset.org/"
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
