@@ -4,6 +4,9 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+openal
+
 # Matt Turner <mattst88@gentoo.org> (22 Apr 2018)
 # media-gfx/gimp is ~hppa only
 gimp
