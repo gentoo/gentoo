@@ -5,7 +5,7 @@ EAPI=6
 
 inherit xdg-utils
 
-EGIT_COMMIT_HASH="ba7b71ffd290cbce4bf87d47276fa516c6563345"
+EGIT_COMMIT_HASH="39f406f2726dc88a63bcee4be098362e23ba00a9"
 
 DESCRIPTION="Color schemes for the Terminology terminal emulator"
 HOMEPAGE="https://charlesmilette.net/terminology-themes/"
