@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ MyPN="ppcoin"
 MyP="${MyPN}-${MyPV}"
 
 DESCRIPTION="Cryptocurrency forked from Bitcoin which aims to be energy efficiency"
-HOMEPAGE="http://peercoin.net/"
+HOMEPAGE="https://peercoin.net/"
 SRC_URI="mirror://sourceforge/${MyPN}/${MyP}-linux.tar.gz -> ${MyP}.tar.gz"
 
 LICENSE="MIT ISC GPL-2"
