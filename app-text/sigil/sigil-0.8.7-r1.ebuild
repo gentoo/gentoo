@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit cmake-utils
 MY_PN="Sigil"
 
 DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
-HOMEPAGE="http://sigil-ebook.com/"
+HOMEPAGE="https://sigil-ebook.com/"
 SRC_URI="https://github.com/Sigil-Ebook/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
