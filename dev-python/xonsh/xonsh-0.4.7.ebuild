@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,9 +9,8 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="An exotic, usable shell"
 HOMEPAGE="
-	http://xonsh.readthedocs.org/
 	https://github.com/scopatz/xonsh
-	http://pypi.org/project/xonsh/"
+	https://pypi.org/project/xonsh/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
