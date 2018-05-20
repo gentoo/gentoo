@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit libtool eutils multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="An enhanced version of the quicktime4linux library"
 HOMEPAGE="http://libquicktime.sourceforge.net/"
@@ -108,7 +108,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 
 	# Compatibility with software that uses quicktime prefix, but
 	# don't do that when building for Darwin/MacOS
