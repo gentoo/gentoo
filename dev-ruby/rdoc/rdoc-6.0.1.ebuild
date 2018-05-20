@@ -25,7 +25,7 @@ IUSE=""
 RDEPEND+=">=app-eselect/eselect-ruby-20161226"
 
 ruby_add_bdepend "
-	dev-ruby/kpeg
+	>=dev-ruby/kpeg-1.1.0-r1
 	>dev-ruby/racc-1.4.10
 	test? (
 		dev-ruby/bundler
