@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils linux-info
 
 DESCRIPTION="Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2"
-HOMEPAGE="http://www.sourceforge.net/projects/htbinit"
+HOMEPAGE="https://www.sourceforge.net/projects/htbinit/"
 SRC_URI="mirror://sourceforge/htbinit/htb.init-v${PV}"
 
 LICENSE="GPL-2"
