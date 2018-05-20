@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup test unpack
 DEPEND=dev-libs/expat sys-libs/zlib bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) rpm? ( app-arch/rpm ) ruby? ( ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ) tcl? ( dev-lang/tcl:0= ) perl? ( dev-lang/swig:0 ) python? ( dev-lang/swig:0 ) ruby? ( dev-lang/swig:0 ) tcl? ( dev-lang/swig:0 ) sys-devel/gettext sys-devel/make >=dev-util/cmake-3.9.6 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Library for solving packages and reading repositories
 EAPI=5
-HOMEPAGE=http://doc.opensuse.org/projects/libzypp/HEAD/ https://github.com/openSUSE/libsolv
+HOMEPAGE=https://doc.opensuse.org/projects/libzypp/HEAD/ https://github.com/openSUSE/libsolv
 IUSE=bzip2 lzma perl python rpm ruby tcl python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 elibc_FreeBSD ruby_targets_ruby23
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
@@ -11,4 +11,4 @@ REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_4 py
 SLOT=0
 SRC_URI=https://github.com/openSUSE/libsolv/archive/0.6.22.tar.gz -> libsolv-0.6.22.tar.gz
 _eclasses_=cmake-utils	49cd471f02483798c5068698836b7429	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	c66af00ffb980e8eb1c961d5e63597fe	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	ruby-ng	c1f44e746d7656dd6e02d8815ff9518a	ruby-utils	e5942a80e3c3b936c6b84d6dc4af9f9c	toolchain-funcs	fa02994d0beba88681127d93da4411ec	unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=ab21352c2c337bcf89ee63d6e4474408
+_md5_=6b31e2f94c7c0ebe324317539f897754
