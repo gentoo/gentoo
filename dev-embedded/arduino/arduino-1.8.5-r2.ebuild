@@ -68,6 +68,7 @@ RDEPEND="${CDEPEND}
 	>=virtual/jre-1.8"
 
 DEPEND="${CDEPEND}
+	app-arch/unzip
 	>=virtual/jdk-1.8"
 
 EANT_BUILD_TARGET="build"
