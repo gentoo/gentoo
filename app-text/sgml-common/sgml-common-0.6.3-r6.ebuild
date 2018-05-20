@@ -6,7 +6,7 @@ EAPI=6
 inherit prefix
 
 DESCRIPTION="Base ISO character entities and utilities for SGML"
-HOMEPAGE="http://www.iso.org/standard/16387.html"
+HOMEPAGE="https://www.iso.org/standard/16387.html"
 SRC_URI="https://dev.gentoo.org/~floppym/dist/${PN}/${P}-gentoo.tar.gz"
 
 LICENSE="GPL-2"
