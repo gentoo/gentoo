@@ -8546,7 +8546,7 @@ net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.24.2: An IRC client for Gnome
 net-irc/quassel 0.12.5: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
-net-irc/scrollz 2.1 2.2 2.2.1: Advanced IRC client based on ircII
+net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
@@ -8701,7 +8701,7 @@ net-mail/checkpassword 0.90-r2: A uniform password checking interface for root a
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.17.3: An IMAP daemon designed specifically for maildirs
 net-mail/cyrus-imapd 3.0.4 3.0.5: The Cyrus IMAP Server
-net-mail/dbmail 3.2.2 3.2.3-r1: Enables storage of mail messages in a relational database
+net-mail/dbmail 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.29.1 2.2.32 2.2.34: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 2.5.0 3.1.3: Advanced CLI tool for sending email
