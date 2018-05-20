@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ EAPI=4
 inherit autotools-utils
 
 DESCRIPTION="A tool to provide access to statistics about the system on which it's run"
-HOMEPAGE="http://www.i-scream.org/libstatgrab/"
-SRC_URI="http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/${P}.tar.gz"
+HOMEPAGE="https://www.i-scream.org/libstatgrab/"
+SRC_URI="https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-2.1 )"
 SLOT=0
