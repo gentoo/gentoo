@@ -767,15 +767,6 @@ src_prepare() {
 	chmod u+x "${S}"/scripts/*.sh
 
 	cd "${S}"
-
-	if use hardened ; then
-		# We don't enable these for non-hardened as the output is very terse --
-		# it only states that a crash happened.  The default upstream behavior
-		# includes backtraces and symbols.
-		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
-		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
-		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
-	fi
 }
 
 glibc_do_configure() {
