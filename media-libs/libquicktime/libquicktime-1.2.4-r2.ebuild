@@ -1,7 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit libtool eutils multilib-minimal
 
 DESCRIPTION="An enhanced version of the quicktime4linux library"
@@ -54,15 +55,16 @@ REQUIRED_USE="opengl? ( X )"
 DOCS="ChangeLog README TODO"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}+libav-9.patch \
+	default
+	eapply "${FILESDIR}"/${P}+libav-9.patch \
 		"${FILESDIR}"/${P}-ffmpeg2.patch \
 		"${FILESDIR}/CVE-2016-2399.patch"
 	if has_version '>=media-video/ffmpeg-2.9' ||
 		has_version '>=media-video/libav-12'; then
-		epatch "${FILESDIR}"/${P}-ffmpeg29.patch
+			eapply "${FILESDIR}"/${P}-ffmpeg29.patch
 	fi
 	if has_version '>media-video/ffmpeg-3.5' ; then
-		epatch "${FILESDIR}/${P}-ffmpeg4.patch"
+		eapply "${FILESDIR}/${P}-ffmpeg4.patch"
 	fi
 
 	for FILE in lqt_ffmpeg.c video.c audio.c ; do
