@@ -275,10 +275,6 @@ dev-libs/qjson
 # Removal in 30 days.  Bug #454680.
 dev-python/simpleparse
 
-# Matt Turner <mattst88@gentoo.org> (21 Apr 2018)
-# Awful, unmaintained, unused. Removal in 30 days. Bug #651300.
-x11-libs/xpyb
-
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
 # See: https://bugs.gentoo.org/653678
