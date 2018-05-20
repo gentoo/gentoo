@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/rwos/${PN}.git"
 inherit git-r3
@@ -20,13 +20,14 @@ DEPEND="dev-vcs/git"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	# fix the makefile
 	sed -i \
 		-e "s:CC=:CC?=:g" \
 		-e "s:CFLAGS=:CFLAGS?=:g" \
-		-e "/-strip/d" \
+		-e "/-\$(STRIP)/d" \
 		-e 's:$(CC):$(CC) $(LDFLAGS):' \
-		Makefile
+		Makefile || die
 }
 
 src_install() {
