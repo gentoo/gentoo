@@ -37,6 +37,7 @@ ruby_add_rdepend "
 	>=dev-ruby/rbpdf-1.19.2
 	>=dev-ruby/ruby-openid-2.3.0
 	dev-ruby/rubygems
+	<dev-ruby/rack-2.0.0:*
 	fastcgi? ( dev-ruby/fcgi )
 	imagemagick? ( >=dev-ruby/rmagick-2.14.0 )
 	ldap? ( >=dev-ruby/ruby-net-ldap-0.12.0 )
