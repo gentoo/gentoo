@@ -295,11 +295,6 @@ x11-libs/libXp
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
 
-# Jason Zaman <perfinion@gentoo.org> (08 Apr 2018)
-# Dead upstream, for an old version of Xfce
-# Masked for removal in 30 days.
-xfce-extra/xfce-theme-manager
-
 # Rick Farina <zerochaos@gentoo.org> (04 Apr 2018)
 # Violates PMS and does not work with stable portage.
 # Masked for removal in 60 days, lift mask if bug #650126 is fixed

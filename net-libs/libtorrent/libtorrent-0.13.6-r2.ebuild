@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils libtool toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="BitTorrent library written in C++ for *nix"
 HOMEPAGE="https://rakshasa.github.io/rtorrent/"
@@ -17,22 +17,30 @@ LICENSE="GPL-2"
 # subslot.
 SLOT="0"
 
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="debug ipv6 libressl ssl test"
 
 RDEPEND="
 	sys-libs/zlib
 	>=dev-libs/libsigc++-2.2.2:2
 	ssl? (
-	    !libressl? ( <dev-libs/openssl-1.1:0= )
+	    !libressl? ( dev-libs/openssl:0= )
 	    libressl? ( dev-libs/libressl:= )
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( dev-util/cppunit )"
+	dev-util/cppunit"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-cppunit.patch"
+	"${FILESDIR}/${PN}-0001-Fix-the-DH-parameters-generation-with-OpenSSL-1.1.patch"
+	"${FILESDIR}/${PN}-openssl-1.1-part2.patch"
+	"${FILESDIR}/${PN}-openssl-1.1-part3.patch"
+)
 
 src_prepare() {
-	elibtoolize
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -57,5 +65,5 @@ src_configure() {
 src_install() {
 	default
 
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete
 }
