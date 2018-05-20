@@ -7400,7 +7400,7 @@ media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fmod 4.38.00: music and sound effects library, and a sound processing system
 media-libs/fnlib 0.5-r2: Font Library for enlightenment
 media-libs/fontconfig 2.12.6: A library for configuring and customizing font access
-media-libs/fontconfig-infinality 20120619 20130404: Configuration for freetype-infinality subpixel hinting
+media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality subpixel hinting
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4-r1: Image library supporting many formats
