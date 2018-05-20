@@ -3047,7 +3047,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.8-r1 1.1.1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.23: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.5.6 1.5.7 1.5.9: Handler library for evdev events
+dev-libs/libevdev 1.5.9: Handler library for evdev events
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
@@ -3073,7 +3073,7 @@ dev-libs/libical 2.0.0-r2 2.0.0-r3: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14 1.14-r1: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r2: A library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.7.3 1.10.5 1.10.6: Library to handle input devices in Wayland
+dev-libs/libinput 1.10.6: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.4.8-r1: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.8: Open-source library for reading, mastering and writing optical discs
@@ -3140,7 +3140,7 @@ dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with
 dev-libs/libspt 1.1-r2: Library for handling root privilege
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
-dev-libs/libtar 1.2.20-r3 1.2.20-r4: C library for manipulating tar archives
+dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13: ASN.1 library
 dev-libs/libtecla 1.6.1-r2: Tecla command-line editing library
 dev-libs/libtermkey 0.20: Library for easy processing of keyboard entry from terminal-based programs
@@ -3254,8 +3254,8 @@ dev-libs/vala-common 0.34.9 0.36.7 0.36.13: Build infrastructure for packages th
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.4 1.3.0: SIMD Vector Class Library for C++
 dev-libs/volume_key 0.3.9: Library for manipulating and storing storage volume encryption keys
-dev-libs/wayland 1.12.0 1.13.0 1.14.0: Wayland protocol libraries
-dev-libs/wayland-protocols 1.11 1.13: Wayland protocol files
+dev-libs/wayland 1.14.0: Wayland protocol libraries
+dev-libs/wayland-protocols 1.13: Wayland protocol files
 dev-libs/weston 1.9.0 1.11.0 3.0.0: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.24 1.4.4: Xapian Probabilistic Information Retrieval library
@@ -7208,7 +7208,7 @@ media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle com
 media-gfx/cropgui 0.1.1-r3: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5: A virtual lighttable and darkroom for photographers
-media-gfx/dawn 3.90b 3.90b-r1: 3D geometrical postscript renderer
+media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.9.0: Digital photo management application
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
@@ -7344,7 +7344,7 @@ media-gfx/tic98 1.01-r3: compressor for black-and-white images, in particular sc
 media-gfx/transfig 3.2.5e: A set of tools for creating TeX documents with graphics
 media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
-media-gfx/ufraw 0.22 0.22-r2: RAW Image format viewer and GIMP plugin
+media-gfx/ufraw 0.22-r2: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Convert vector graphic file formats like .cdr, .svg, wmf and more.
 media-gfx/viewnior 1.6: Fast and simple image viewer
 media-gfx/wings 2.1.5: Wings 3D is an advanced subdivision modeler
@@ -7450,7 +7450,7 @@ media-libs/ladspa-sdk 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.8-r1 2.9: A lightweight, speed optimized color management engine
-media-libs/lensfun 0.3.1 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
+media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/libXcm 0.5.2-r1: reference implementation of the net-color spec
@@ -7476,7 +7476,7 @@ media-libs/libclthreads 1.0.2 2.2.1 2.4.0-r1: An audio library by Fons Adriaense
 media-libs/libclxclient 1.0.1 3.3.2 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libcue 1.4.0: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
-media-libs/libdc1394 2.2.1 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
+media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3: library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 1.0.2: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.1: Client library to create MusicBrainz enabled tagging applications
@@ -7489,7 +7489,7 @@ media-libs/libdvdread 5.0.3 6.0.0: Library for DVD navigation tools
 media-libs/libebur128 1.2.0-r1 1.2.3: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
-media-libs/libepoxy 1.4.1 1.4.2 1.5.1: Epoxy is a library for handling OpenGL function pointer management for you
+media-libs/libepoxy 1.4.2 1.5.1: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21 0.6.21-r1: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.6: Library to extract metadata from files of arbitrary type
@@ -7609,7 +7609,7 @@ media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML 
 media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
-media-libs/openal 1.15.1-r2 1.18.2-r1: A software implementation of the OpenAL 3D audio API
+media-libs/openal 1.18.2-r1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.25 1.6.58 1.6.62: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
@@ -7691,7 +7691,7 @@ media-libs/vo-amrwbenc 0.1.2-r1 0.1.3: VisualOn AMR-WB encoder library
 media-libs/waffle 1.5.2: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.1-r1 0.3: AudioProcessing library from the webrtc.org code base
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
-media-libs/x264 0.0.20160712 0.0.20170701: A free library for encoding X264/AVC streams
+media-libs/x264 0.0.20170701: A free library for encoding X264/AVC streams
 media-libs/x265 2.2 2.6: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.6-r2 1.2.9-r1: Core libraries for Xine movie player
 media-libs/xvid 1.3.3: XviD, a high performance/quality MPEG-4 video de-/encoding solution
@@ -8199,7 +8199,7 @@ media-video/movit 1.2.0: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r4 1.5b-r5: Tools for MPEG video
 media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpgtx 1.3.1-r2: Command line MPEG audio/video/system file toolbox
-media-video/mplayer 1.3.0-r3 1.3.0-r5: Media Player for Linux
+media-video/mplayer 1.3.0-r5: Media Player for Linux
 media-video/mpv 0.27.2: Media player based on MPlayer and mplayer2
 media-video/noad 0.7.3-r1 0.8.6-r1: Mark commercial breaks in VDR recordings
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
@@ -10549,7 +10549,7 @@ www-servers/uwsgi 2.0.17: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3: Varnish is a state-of-the-art, high-performance HTTP accelerator
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.4 1.0.5: list X application resource database
-x11-apps/bdftopcf 1.0.4 1.0.5 1.1: X.Org bdftopcf application
+x11-apps/bdftopcf 1.1: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.7 1.0.8: X.Org bitmap application
 x11-apps/editres 1.0.6 1.0.7: a dynamic resource editor for X Toolkit applications
@@ -10597,10 +10597,10 @@ x11-apps/xfontsel 1.0.5 1.0.6: point and click selection of X11 font names
 x11-apps/xgamma 1.0.5 1.0.6: Alter a monitor's gamma correction through the X server
 x11-apps/xgc 1.0.4 1.0.5: X graphics demo
 x11-apps/xhost 1.0.6 1.0.7: Controls host and/or user access to a running X server
-x11-apps/xinit 1.3.4-r3 1.4.0: X Window System initializer
+x11-apps/xinit 1.4.0: X Window System initializer
 x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r1: A generic touchscreen calibration program for X.Org
-x11-apps/xkbcomp 1.3.1 1.4.0 1.4.1: compile XKB keyboard description
+x11-apps/xkbcomp 1.4.1: compile XKB keyboard description
 x11-apps/xkbevd 1.1.3 1.1.4: XKB event daemon
 x11-apps/xkbprint 1.0.4: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
@@ -10625,24 +10625,24 @@ x11-apps/xset 1.2.3 1.2.4: X.Org xset application
 x11-apps/xsetroot 1.1.1 1.1.2: X.Org xsetroot application
 x11-apps/xsm 1.0.3 1.0.4: X Session Manager
 x11-apps/xstdcmap 1.0.3: X standard colormap utility
-x11-apps/xtrap 1.0.2-r1 1.0.3: X.Org xtrap application
+x11-apps/xtrap 1.0.3: X.Org xtrap application
 x11-apps/xvidtune 1.0.2-r1 1.0.3: video mode tuner for Xorg
 x11-apps/xvinfo 1.1.2 1.1.3: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.6 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.3 1.1.4: window information utility for X
 x11-apps/xwud 1.0.4 1.0.5: image displayer for X
-x11-base/xcb-proto 1.12-r2 1.13: X C-language Bindings protocol headers
+x11-base/xcb-proto 1.13: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.19: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
-x11-base/xorg-server 1.19.5-r1 1.19.5-r2: X.Org X servers
+x11-base/xorg-server 1.19.5-r2: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 304.137 340.106 375.82 378.13-r1 381.22-r1 384.130 387.34 390.42: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.5: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
-x11-drivers/xf86-input-libinput 0.24.0 0.25.1 0.27.1: X.org input driver based on libinput
+x11-drivers/xf86-input-libinput 0.27.1: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.2: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.3.0 0.3.1 0.4.1: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0: Driver for Synaptics touchpads
@@ -10710,7 +10710,6 @@ x11-libs/libXdamage 1.1.4-r1: X.Org Xdamage library
 x11-libs/libXdmcp 1.1.2-r1: X.Org X Display Manager Control Protocol library
 x11-libs/libXext 1.3.3: X.Org Xext library
 x11-libs/libXfixes 5.0.3: X.Org Xfixes library
-x11-libs/libXfont 1.5.4: X.Org Xfont library
 x11-libs/libXfont2 2.0.3: X.Org Xfont library
 x11-libs/libXft 2.3.2: X.Org Xft library
 x11-libs/libXi 1.7.9: X.Org Xi library
@@ -10720,7 +10719,7 @@ x11-libs/libXpm 3.5.12: X.Org Xpm library
 x11-libs/libXpresent 1.0.0: X Present Extension C Library
 x11-libs/libXrandr 1.5.1: X.Org Xrandr library
 x11-libs/libXrender 0.9.10: X.Org Xrender library
-x11-libs/libXres 1.0.7 1.2.0: X.Org XRes library
+x11-libs/libXres 1.2.0: X.Org XRes library
 x11-libs/libXt 1.1.5: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11: X.Org Xv library
@@ -10743,7 +10742,7 @@ x11-libs/libfontenc 1.1.3: X.Org fontenc library
 x11-libs/libgksu 2.0.12-r3 2.0.12-r4: A library for integration of su into applications
 x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
-x11-libs/libpciaccess 0.13.4 0.14: Library providing generic access to the PCI bus and devices
+x11-libs/libpciaccess 0.14: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libva 1.7.3: Video Acceleration (VA) API for Linux
@@ -10751,12 +10750,12 @@ x11-libs/libva-intel-driver 1.7.3: HW video decode support for Intel integrated 
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.24.1: A window navigation construction kit
-x11-libs/libxcb 1.12-r2 1.13: X C-language Bindings library
-x11-libs/libxkbcommon 0.6.0 0.7.1 0.8.0: X.Org xkbcommon library
-x11-libs/libxkbfile 1.0.9 1.0.9-r1: X.Org xkbfile library
+x11-libs/libxcb 1.13: X C-language Bindings library
+x11-libs/libxkbcommon 0.8.0: X.Org xkbcommon library
+x11-libs/libxkbfile 1.0.9-r1: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
-x11-libs/libxshmfence 1.1 1.2 1.3: Shared memory fences using futexes
+x11-libs/libxshmfence 1.3: Shared memory fences using futexes
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1 0.15.1-r2: Athena Widgets with N*XTSTEP appearance
@@ -10948,7 +10947,7 @@ x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
 x11-misc/xflux-gui 1.1.10: A GUI for f.lux
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
-x11-misc/xkeyboard-config 2.20 2.23.1-r1: X keyboard configuration database
+x11-misc/xkeyboard-config 2.23.1-r1: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50: Just another screensaver application for X
 x11-misc/xmobar 0.23.1: A Minimalistic Text Based Status Bar
