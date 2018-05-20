@@ -30,8 +30,8 @@
 #--- END OF EXAMPLES ---
 
 # Joonas Niilola <juippis@gmail.com> (18 May 2018)
-# Unmaintained, bugs open without activity, makes users 
-# install ancient version of enlightenment by typing 
+# Unmaintained, bugs open without activity, makes users
+# install ancient version of enlightenment by typing
 # 'emerge enlightenment' due to obnoxious package slotting.
 # Bug #656020. Removal in ~30 days
 =x11-wm/enlightenment-1.0.17
