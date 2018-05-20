@@ -1117,7 +1117,7 @@ app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of
 app-misc/uptimed 0.4.0-r1: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
-app-misc/vifm 0.7.2 0.9: Console file manager with vi(m)-like keybindings
+app-misc/vifm 0.9: Console file manager with vi(m)-like keybindings
 app-misc/vlock 2.2.3-r1: A console screen locker
 app-misc/wcd 5.2.7: Wherever Change Directory
 app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
