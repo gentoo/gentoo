@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,14 +11,18 @@ SRC_URI="http://xjack.org/pwcrypt/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-src_prepare()  {
-	tc-export CC
-}
+DOCS=( CREDITS README )
 
-src_install() {
-	dobin src/pwcrypt
-	dodoc CREDITS README
+src_prepare()  {
+	default
+	sed -i "s/make\( \|$\)/\$(MAKE)\1/g" Makefile.in || die
+	sed -i \
+		-e "/^LDFLAGS/s/= /= @LDFLAGS@ /" \
+		-e "/-install/s/ -s//" \
+		src/Makefile.in || die
+
+	tc-export CC
 }
