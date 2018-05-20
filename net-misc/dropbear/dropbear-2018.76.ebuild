@@ -44,7 +44,7 @@ src_prepare() {
 	sed -i \
 		-e '/pam_start/s:sshd:dropbear:' \
 		svr-authpam.c || die
-	restore_config options.h
+	restore_config default_options.h
 }
 
 src_configure() {
@@ -86,7 +86,7 @@ src_install() {
 		dosym ../bin/dropbearmulti /usr/sbin/dropbear
 		cd "${S}"
 	fi
-	save_config options.h
+	save_config default_options.h
 
 	if ! use minimal ; then
 		mv "${ED}"/usr/bin/{,db}scp || die
