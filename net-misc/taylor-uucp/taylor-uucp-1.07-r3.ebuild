@@ -6,7 +6,7 @@ EAPI="5"
 inherit eutils flag-o-matic autotools
 
 DESCRIPTION="Taylor UUCP"
-HOMEPAGE="http://www.airs.com/ian/uucp.html"
+HOMEPAGE="https://www.airs.com/ian/uucp.html"
 SRC_URI="mirror://gnu/uucp/uucp-${PV}.tar.gz"
 
 LICENSE="GPL-2"
