@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic multilib-minimal toolchain-funcs
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Tools for MJPEG video"
 HOMEPAGE="http://mjpeg.sourceforge.net/"
