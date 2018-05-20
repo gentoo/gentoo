@@ -543,10 +543,12 @@ src_install() {
 		newdoc  "${S}"/gitweb/INSTALL INSTALL.gitweb
 		newdoc  "${S}"/gitweb/README README.gitweb
 
-		find "${ED%/}"/usr/lib64/perl5/ \
-			-name .packlist \
-			-delete \
-			|| die
+		for d in "${ED%/}"/usr/lib{,64}/perl5/ ; do
+			test -d "$d" && find "${d}" \
+				-name .packlist \
+				-delete \
+				|| die
+		done
 	else
 		rm -rf "${ED%/}"/usr/share/gitweb
 	fi
