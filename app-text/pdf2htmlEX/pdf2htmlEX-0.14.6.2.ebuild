@@ -20,6 +20,7 @@ IUSE=""
 
 CDEPEND="
 	>=app-text/poppler-0.61.1:=[jpeg,png]
+	<app-text/poppler-0.64.0
 	app-text/poppler-data
 	~media-gfx/fontforge-20170731
 	media-libs/freetype
