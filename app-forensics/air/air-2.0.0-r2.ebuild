@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/air-imager/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="crypt"
 
 # coreutils are needed for /usr/bin/split binary
