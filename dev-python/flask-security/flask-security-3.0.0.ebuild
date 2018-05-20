@@ -20,14 +20,18 @@ IUSE="test"
 # tests are foobar
 RESTRICT="test"
 
-RDEPEND=">=dev-python/flask-0.9[${PYTHON_USEDEP}]
-	>=dev-python/itsdangerous-0.17[${PYTHON_USEDEP}]
-	>=dev-python/passlib-1.6.1[${PYTHON_USEDEP}]
-	>=dev-python/flask-login-0.1.3[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/flask-0.11[${PYTHON_USEDEP}]
+	>=dev-python/flask-babelex-0.9.3[${PYTHON_USEDEP}]
+	>=dev-python/flask-login-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/flask-mail-0.7.3[${PYTHON_USEDEP}]
-	>=dev-python/flask-wtf-0.8[${PYTHON_USEDEP}]
-	>=dev-python/flask-principal-0.3.3[${PYTHON_USEDEP}]"
+	>=dev-python/flask-principal-0.3.3[${PYTHON_USEDEP}]
+	>=dev-python/flask-wtf-0.13.1[${PYTHON_USEDEP}]
+	>=dev-python/itsdangerous-0.21[${PYTHON_USEDEP}]
+	>=dev-python/passlib-1.7[${PYTHON_USEDEP}]
+"
+
 DEPEND="${RDEPEND}
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
