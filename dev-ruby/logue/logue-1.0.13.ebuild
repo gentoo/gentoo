@@ -25,6 +25,8 @@ IUSE=""
 ruby_add_rdepend "dev-ruby/rainbow:3"
 
 all_ruby_prepare() {
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+
 	# Fix path to match installed gem path
 	sed -i -e 's:logue/lib/logue:/lib/logue:' lib/logue/stack.rb || die
 }
