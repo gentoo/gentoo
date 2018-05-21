@@ -81,23 +81,23 @@ COMMON_DEPEND="
 	jemalloc? ( dev-libs/jemalloc:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
-	!yassl? (
-		client-libs? (
-			!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
-		)
-		!client-libs? (
-			!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
-	)
 	client-libs? (
 		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
+		yassl? ( net-libs/gnutls:0=[${MULTILIB_USEDEP},static-libs?] )
+		!yassl? (
+			!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
+		)
 	)
 	!client-libs? (
 		>=sys-libs/zlib-1.2.3:0=
 		kerberos? ( virtual/krb5 )
+		yassl? ( net-libs/gnutls:0= )
+		!yassl? (
+			!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
 	sys-libs/ncurses:0=
 	!bindist? (
@@ -114,7 +114,7 @@ COMMON_DEPEND="
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
 		innodb-snappy? ( app-arch/snappy )
-		mroonga? ( app-text/groonga-normalizer-mysql )
+		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( virtual/pam:0= )
