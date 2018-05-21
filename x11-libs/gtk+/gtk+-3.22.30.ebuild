@@ -69,13 +69,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-doc-am-1.20
 	>=sys-devel/gettext-0.19.7[${MULTILIB_USEDEP}]
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
-	X? (
-		x11-proto/xextproto[${MULTILIB_USEDEP}]
-		x11-proto/xproto[${MULTILIB_USEDEP}]
-		x11-proto/inputproto[${MULTILIB_USEDEP}]
-		x11-proto/damageproto[${MULTILIB_USEDEP}]
-		xinerama? ( x11-proto/xineramaproto[${MULTILIB_USEDEP}] )
-	)
+	X? ( x11-base/xorg-proto )
 	test? (
 		media-fonts/font-misc-misc
 		media-fonts/font-cursor-misc )

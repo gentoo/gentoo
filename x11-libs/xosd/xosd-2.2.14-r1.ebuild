@@ -21,10 +21,8 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXt
 	media-fonts/font-misc-misc"
 DEPEND="${RDEPEND}
-	xinerama? ( x11-proto/xineramaproto )
-	x11-proto/xextproto
-	x11-proto/xproto
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	x11-base/xorg-proto"
 
 src_unpack() {
 	unpack ${A}
