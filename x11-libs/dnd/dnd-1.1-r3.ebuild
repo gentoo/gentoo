@@ -3,26 +3,24 @@
 
 EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="OffiX' Drag'n'drop library"
 HOMEPAGE="http://leb.net/offix"
 SRC_URI="http://leb.net/offix/${PN}.${PV}.tgz"
-SLOT="0"
+
 LICENSE="GPL-2 LGPL-2"
+SLOT="0"
 KEYWORDS="alpha amd64 ~arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86"
 
-RDEPEND="
-	x11-libs/libXt
+RDEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
-	x11-libs/libXmu
-	x11-libs/libICE
 	x11-libs/libXaw
-	x11-proto/xproto"
-
-DEPEND="
-	${RDEPEND}"
+	x11-libs/libXmu
+	x11-libs/libXt"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.diff
