@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-admin/augeas
-	>=dev-libs/glib-2.21:2
+	>=dev-libs/glib-2.43:2
 	dev-libs/satyr
 	dev-libs/json-c:=
 	dev-libs/libtar
@@ -29,6 +29,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-libs/libproxy:=
 	net-misc/curl:=[ssl]
 	sys-apps/dbus
+	sys-apps/systemd
 	gtk? ( >=x11-libs/gtk+-3.3.12:3 )
 	x11-misc/xdg-utils
 "
@@ -59,8 +60,8 @@ src_prepare() {
 
 src_configure() {
 	local myargs=(
-		--localstatedir="${EPREFIX}/var" \
-		--without-bugzilla \
+		--localstatedir="${EPREFIX}/var"
+		--without-bugzilla
         # Fixes "syntax error in VERSION script" and we aren't supporting Python2 anyway
 		--without-python2
 	)

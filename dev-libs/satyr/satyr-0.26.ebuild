@@ -12,6 +12,7 @@ SRC_URI="https://github.com/abrt/${PN}/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
+SUBSLOT="/3"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -22,7 +23,6 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/elfutils-0.158
 "
 DEPEND="${RDEPEND}
-	dev-python/sphinx
 	virtual/pkgconfig
 "
 
@@ -35,7 +35,8 @@ src_prepare() {
 
 src_configure() {
 	local myargs=(
-		--localstatedir="${EPREFIX}/var" \
+		--localstatedir="${EPREFIX}/var"
+		--without-rpm
 		# Build breaks without and we aren't supporting Python2 anyway
 		--without-python2
 	)
