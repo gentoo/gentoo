@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -51,11 +51,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	opengl? ( virtual/glu[${MULTILIB_USEDEP}] )
-	X? (
-		x11-proto/xproto[${MULTILIB_USEDEP}]
-		x11-proto/xineramaproto[${MULTILIB_USEDEP}]
-		x11-proto/xf86vidmodeproto[${MULTILIB_USEDEP}]
-	)
+	X? ( x11-base/xorg-proto )
 "
 
 PDEPEND=">=app-eselect/eselect-wxwidgets-0.7"

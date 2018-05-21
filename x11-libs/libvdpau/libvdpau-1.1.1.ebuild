@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 		media-gfx/graphviz
 		virtual/latex-base
 		)
-	dri? ( >=x11-proto/dri2proto-2.2 )"
+	dri? ( x11-base/xorg-proto )"
 
 src_configure() {
 	append-cppflags -D_GNU_SOURCE

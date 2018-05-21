@@ -35,9 +35,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
-	xinerama? ( x11-proto/xineramaproto )
 "
 
 DOCS=(
