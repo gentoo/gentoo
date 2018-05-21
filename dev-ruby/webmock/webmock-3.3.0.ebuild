@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_TEST="test spec NO_CONNECTION=true"
 
@@ -29,7 +29,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack
 	>=dev-ruby/httpclient-2.8.0
 	>=dev-ruby/patron-0.4.18
-	>=dev-ruby/http-0.8.0:0.8 )"
+	|| ( dev-ruby/http:3 dev-ruby/http:2.0 ) )"
 
 all_ruby_prepare() {
 	# Remove bundler support
