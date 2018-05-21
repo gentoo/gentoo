@@ -36,7 +36,7 @@ DEPEND="
 	${RDEPEND}
 	bidi? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
-	x11-proto/xextproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {

@@ -37,10 +37,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	x11-base/xorg-proto
 	!!media-libs/libafterimage
-	x11-proto/xextproto
-	x11-proto/xproto
-	xinerama? ( x11-proto/xineramaproto )
 "
 
 S="${WORKDIR}/${PN}-devel-${PV}"
