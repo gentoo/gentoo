@@ -7,7 +7,8 @@ inherit cmake-utils bash-completion-r1
 
 DESCRIPTION="Interfaces with LastPass.com from the command line."
 HOMEPAGE="https://github.com/lastpass/lastpass-cli"
-SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~gokturk/distfiles/app-admin/lastpass-cli/${PN}-man-${PV}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-2+ GPL-2+-with-openssl-exception"
@@ -23,7 +24,6 @@ RDEPEND="
 	pinentry? ( app-crypt/pinentry )
 "
 DEPEND="${RDEPEND}
-	app-text/asciidoc
 	virtual/pkgconfig
 "
 
@@ -36,11 +36,13 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile all doc-man $(usex test lpass-test '')
+	cmake-utils_src_compile all $(usex test lpass-test '')
 }
 
 src_install() {
-	cmake-utils_src_install install install-doc
+	cmake-utils_src_install install
+
+	doman "${WORKDIR}"/man/lpass.1
 }
 
 src_test() {
