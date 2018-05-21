@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,10 +50,8 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.34.90:*
 	sys-devel/gettext:*
 	virtual/pkgconfig:*
-	x11-proto/xextproto:0
-	x11-proto/xproto:0
-	test? ( app-text/docbook-xml-dtd:4.5 )
-	xinerama? ( x11-proto/xineramaproto:0 )"
+	x11-base/xorg-proto
+	test? ( app-text/docbook-xml-dtd:4.5 )"
 
 src_configure() {
 	mate_src_configure \

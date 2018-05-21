@@ -27,8 +27,7 @@ DEPEND="
 	app-arch/xz-utils
 	app-text/rman
 	virtual/jpeg
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {

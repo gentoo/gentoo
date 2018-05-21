@@ -20,8 +20,8 @@ RDEPEND="x11-libs/libXau
 	x11-libs/libXdmcp
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-misc/imake
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto
+	x11-misc/imake"
 
 src_unpack() {
 	unpack ${A}

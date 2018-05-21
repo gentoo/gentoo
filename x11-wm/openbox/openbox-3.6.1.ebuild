@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -45,9 +45,7 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xextproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xineramaproto"
+	x11-base/xorg-proto"
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
