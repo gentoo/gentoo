@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A protein families and domains database"
-HOMEPAGE="http://prosite.expasy.org/"
+HOMEPAGE="https://prosite.expasy.org/"
 SRC_URI="ftp://ftp.expasy.org/databases/prosite/old_releases/prosite${PV//./_}.tar.bz2"
 
 LICENSE="swiss-prot"
