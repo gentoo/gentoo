@@ -19,9 +19,9 @@ RDEPEND=">=x11-libs/libX11-1.0.0
 	>=x11-libs/libXt-1.0.0
 	>=x11-libs/libICE-1.0.0
 	>=x11-libs/libSM-1.0.0
-	>=x11-libs/libXaw-1.0.1
-	>=x11-proto/xproto-7.0.4"
-DEPEND="${RDEPEND}"
+	>=x11-libs/libXaw-1.0.1"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 src_unpack() {
 	unpack ${A}
