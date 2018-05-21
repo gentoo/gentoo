@@ -1487,7 +1487,7 @@ app-text/xiphos 4.0.6a: A bible study frontend for Sword (formerly known as Gnom
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
 app-text/xmldiff 0.6.10-r2: A tool that figures out the differences between two similar XML files
-app-text/xmlstarlet 1.4.2 1.5.0 1.6.1: A set of tools to transform, query, validate, and edit XML documents
+app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.26-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
