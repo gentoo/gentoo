@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/libwacom
 	x11-libs/libXrandr
 	x11-libs/libXinerama"
 DEPEND="${RDEPEND}
-	x11-proto/randrproto"
+	x11-base/xorg-proto"
 
 pkg_setup() {
 	linux-info_pkg_setup
