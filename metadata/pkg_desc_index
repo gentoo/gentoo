@@ -5738,7 +5738,7 @@ dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
 dev-ruby/atomic 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
-dev-ruby/bcat 0.6.2-r2 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
+dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.11-r1: An easy way to keep your users' passwords secure
 dev-ruby/blankslate 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
