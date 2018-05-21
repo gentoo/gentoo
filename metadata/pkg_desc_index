@@ -9716,7 +9716,7 @@ sys-apps/epoch 1.2.1: An init system, a /sbin/init replacement; designed for sim
 sys-apps/etckeeper 1.18.6: A collection of tools to let /etc be stored in a repository
 sys-apps/ethtool 4.8 4.13: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring root privileges
-sys-apps/fakeroot 1.18.4 1.19 1.20.2 1.22: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
+sys-apps/fakeroot 1.22: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.32: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.6.0-r1: GNU utilities for finding files
@@ -9747,7 +9747,7 @@ sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 3.1.1-r1: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
-sys-apps/ifplugd 0.28-r9 0.28-r10: Brings up/down ethernet ports automatically with cable detection
+sys-apps/ifplugd 0.28-r10: Brings up/down ethernet ports automatically with cable detection
 sys-apps/init-system-helpers 1.49-r1: Helper scripts useful for both OpenRC and systemd
 sys-apps/input-utils 1.2: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
@@ -11253,7 +11253,7 @@ x11-wm/afterstep 2.2.12: A feature rich NeXTish window manager
 x11-wm/awesome 3.5.9-r2 4.2-r2: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
 x11-wm/ctwm 4.0.1: A clean, light window manager
-x11-wm/cwm 5.1 5.6: OpenBSD fork of calmwm, a clean and lightweight window manager
+x11-wm/cwm 5.6: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1: a dynamic window manager for X11
 x11-wm/enlightenment 0.20.5: Enlightenment DR17 window manager
 x11-wm/evilwm 1.0.1-r1: A minimalist, no frills window manager for X
