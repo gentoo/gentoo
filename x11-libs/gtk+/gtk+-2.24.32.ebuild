@@ -60,13 +60,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-doc-am-1.20
 	>=sys-devel/gettext-0.18.3[${MULTILIB_USEDEP}]
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-	!aqua? (
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-		>=x11-proto/inputproto-2.3[${MULTILIB_USEDEP}]
-		>=x11-proto/damageproto-1.2.1-r1[${MULTILIB_USEDEP}]
-		xinerama? ( >=x11-proto/xineramaproto-1.2.1-r1[${MULTILIB_USEDEP}] )
-	)
+	!aqua? ( x11-base/xorg-proto )
 	test? (
 		x11-themes/hicolor-icon-theme
 		media-fonts/font-misc-misc
