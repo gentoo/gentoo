@@ -33,8 +33,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/rgb"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	x11-proto/kbproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS=( README{,.i18n} ctlseqs.txt )
 

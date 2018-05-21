@@ -21,7 +21,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {
