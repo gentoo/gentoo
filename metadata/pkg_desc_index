@@ -9737,7 +9737,7 @@ sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for L
 sys-apps/gsmartcontrol 1.0.2: Hard disk drive health inspection tool
 sys-apps/haveged 1.9.1 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hdparm 9.51 9.52: Utility to change hard drive performance parameters
-sys-apps/help2man 1.46.6 1.47.4: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.4: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
