@@ -16,7 +16,7 @@ RDEPEND=">=x11-libs/libXext-1.0.3
 	>=x11-libs/libX11-1.1.1-r1
 	>=x11-libs/libXpm-3.5.6"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${P}/src
 

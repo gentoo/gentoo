@@ -20,7 +20,7 @@ RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libXdmcp
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"

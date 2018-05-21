@@ -18,7 +18,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm
 	>=net-misc/curl-7.9.7"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 # Specific to this tarball
 S=${WORKDIR}/dockapps-5aaf842
