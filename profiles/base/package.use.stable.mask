@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
+# Depends on lots of unstable dependencies
+dev-python/s3fs test
+
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Apr 2018)
 # Not ready for stable, crashes LO on some systems.
 >=app-office/libreoffice-6.0 kde
