@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -21,9 +21,7 @@ RDEPEND="x11-libs/libXtst
 	x11-libs/libXext"
 
 DEPEND="${RDEPEND}
-	x11-proto/inputproto
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 	>=sys-apps/sed-4"
 
 src_prepare() {

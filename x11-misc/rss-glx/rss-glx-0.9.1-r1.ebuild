@@ -28,7 +28,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	virtual/pkgconfig
 	sys-apps/sed
 "

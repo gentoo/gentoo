@@ -19,9 +19,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXinerama"
 DEPEND="${RDEPEND}
-	x11-proto/scrnsaverproto
-	x11-proto/xproto
-	x11-proto/xineramaproto
+	x11-base/xorg-proto
 	tk? ( dev-tcltk/expect )"
 
 src_unpack() {

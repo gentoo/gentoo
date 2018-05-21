@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ RDEPEND="x11-misc/xbitmaps
 	x11-libs/libXaw
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
+	x11-base/xorg-proto
 	x11-misc/imake
 	>=sys-apps/sed-4"
 
