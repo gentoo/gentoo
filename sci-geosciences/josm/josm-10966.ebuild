@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,16 +6,16 @@ EAPI=5
 JAVA_ANT_ENCODING=UTF-8
 
 [[ ${PV} == "9999" ]] && SUBVERSION_ECLASS="subversion"
-ESVN_REPO_URI="http://josm.openstreetmap.de/svn/trunk"
+ESVN_REPO_URI="https://josm.openstreetmap.de/svn/trunk"
 inherit eutils java-pkg-2 java-ant-2 ${SUBVERSION_ECLASS}
 unset SUBVERSION_ECLASS
 
 DESCRIPTION="Java-based editor for the OpenStreetMap project"
-HOMEPAGE="http://josm.openstreetmap.de/"
+HOMEPAGE="https://josm.openstreetmap.de/"
 # Upstream doesn't provide versioned tarballs, so we'll have to create one on our own:
 # REVISION=${PV}
 # mkdir -p josm-${REVISION}
-# svn co -r ${REVISION} http://josm.openstreetmap.de/svn/trunk/ josm-${REVISION}
+# svn co -r ${REVISION} https://josm.openstreetmap.de/svn/trunk/ josm-${REVISION}
 # cd josm-${REVISION} && ant init-svn-revision-xml && cd -
 # tar -cz  --exclude=.svn -f /usr/portage/distfiles/josm-${REVISION}.tar.gz josm-${REVISION}
 [[ ${PV} == "9999" ]] || SRC_URI="mirror://gentoo/${P}.tar.gz"
@@ -37,7 +37,7 @@ src_prepare() {
 	if [[ ${PV} == "9999" ]]; then
 
 		# create-revision needs the compile directory to be a svn directory
-		# see also http://lists.openstreetmap.org/pipermail/dev/2009-March/014182.html
+		# see also https://lists.openstreetmap.org/pipermail/dev/2009-March/014182.html
 		sed -i \
 			-e "s:arg[ ]value=\".\":arg value=\"${ESVN_STORE_DIR}\/${PN}\/trunk\":" \
 			build.xml || die "sed failed"
