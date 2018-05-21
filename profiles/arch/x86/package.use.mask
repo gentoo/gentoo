@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2018)
+# LO kde support on x86 is broken, see bug 523496
+=app-office/libreoffice-bin-6.0* kde
+=app-office/libreoffice-bin-debug-6.0* kde
+
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # media-libs/libaom not yet keyworded
 media-video/vlc aom
