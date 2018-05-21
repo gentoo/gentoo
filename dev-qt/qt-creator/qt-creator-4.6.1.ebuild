@@ -102,9 +102,10 @@ src_prepare() {
 		fi
 	done
 
-	# avoid building unused support libraries
+	# avoid building unused support libraries and tools
 	if ! use clangcodemodel; then
 		sed -i -e '/clangsupport/d' src/libs/libs.pro || die
+		sed -i -e '/SUBDIRS += clang\(\|refactoring\|pchmanager\)backend/d' src/tools/tools.pro || die
 	fi
 	if ! use glsl; then
 		sed -i -e '/glsl/d' src/libs/libs.pro || die
