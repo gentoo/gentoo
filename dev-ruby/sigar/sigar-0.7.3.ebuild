@@ -21,7 +21,7 @@ IUSE=""
 DEPEND+=" || ( <sys-libs/glibc-2.26 net-libs/libtirpc )"
 
 all_ruby_prepare() {
-	sed -i -e '25i$CFLAGS += " -std=gnu89"' \
+	sed -i -e '25i$CFLAGS += " -std=gnu89 -I/usr/include/tirpc"' \
 		-e '25i$LDFLAGS += " -ltirpc"' bindings/ruby/extconf.rb || die
 
 	# Fix compatibility with glibc 2.25
