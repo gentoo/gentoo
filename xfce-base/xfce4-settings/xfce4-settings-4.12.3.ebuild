@@ -35,8 +35,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	sys-devel/gettext
-	>=x11-proto/inputproto-1.4
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_configure() {
 	econf \
