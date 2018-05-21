@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -58,8 +58,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.50.1:0
 	sys-devel/gettext:0
 	virtual/pkgconfig:0
-	x11-proto/inputproto:0
-	x11-proto/xproto:0"
+	x11-base/xorg-proto"
 
 src_configure() {
 	mate_src_configure \
