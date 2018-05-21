@@ -28,7 +28,7 @@ RDEPEND="png? ( media-libs/libpng )
 	x11-libs/libXrender"
 
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-001-fix-segfault-when-wd-empty.patch \
