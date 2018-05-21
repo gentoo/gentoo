@@ -19,7 +19,6 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS=( AUTHORS ChangeLog example.${PN}rc README TODO )
