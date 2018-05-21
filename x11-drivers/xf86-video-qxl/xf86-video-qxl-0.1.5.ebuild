@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,8 +19,8 @@ RDEPEND="
 	x11-base/xorg-server[-minimal]
 	>=x11-libs/libdrm-2.4.46"
 DEPEND="${RDEPEND}
-	x11-proto/xf86dgaproto
-	>=app-emulation/spice-protocol-0.12.0"
+	>=app-emulation/spice-protocol-0.12.0
+	x11-base/xorg-proto"
 
 src_prepare() {
 	python_fix_shebang scripts
