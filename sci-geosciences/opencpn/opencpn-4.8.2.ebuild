@@ -9,7 +9,7 @@ inherit cmake-utils wxwidgets
 DOC_VERSION="4.1.1329.1"
 
 DESCRIPTION="a free, open source software for marine navigation"
-HOMEPAGE="http://opencpn.org/"
+HOMEPAGE="https://opencpn.org/"
 SRC_URI="https://github.com/OpenCPN/OpenCPN/archive/v${PV}.tar.gz -> ${P}.tar.gz
 doc? ( https://launchpad.net/~opencpn/+archive/ubuntu/${PN}/+files/${PN}-doc_${DOC_VERSION}.orig.tar.xz )
 "
