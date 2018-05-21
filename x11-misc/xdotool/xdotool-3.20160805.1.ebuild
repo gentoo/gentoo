@@ -22,8 +22,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xineramaproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 # The test wants to manualy start Xvfb, wont use VirtualX and it tries

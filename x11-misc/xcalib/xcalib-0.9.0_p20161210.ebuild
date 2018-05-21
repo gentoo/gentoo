@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,8 +21,8 @@ RDEPEND="
 	x11-libs/libXxf86vm
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	x11-libs/libXext
-	x11-proto/xf86vidmodeproto
 "
 
 S="${WORKDIR}/${PN}-${COMMIT}"

@@ -60,12 +60,7 @@ DEPEND="
 	sys-devel/bc
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/recordproto
-	x11-proto/scrnsaverproto
-	x11-proto/xextproto
-	x11-proto/xf86miscproto
-	x11-proto/xf86vidmodeproto
-	xinerama? ( x11-proto/xineramaproto )
+	x11-base/xorg-proto
 "
 
 src_prepare() {

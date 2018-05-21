@@ -20,7 +20,7 @@ COMMON_DEPS="x11-libs/libX11
 RDEPEND="${COMMON_DEPS}
 	media-fonts/font-misc-misc"
 DEPEND="${COMMON_DEPS}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS=( CHANGES README.linux TODO )
 

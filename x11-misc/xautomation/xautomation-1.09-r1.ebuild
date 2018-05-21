@@ -19,7 +19,5 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/inputproto
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "

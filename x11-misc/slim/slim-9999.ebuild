@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,7 +35,7 @@ RDEPEND="x11-libs/libXmu
 		!x11-misc/slimlock )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 PDEPEND="branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )"
 
 PATCHES=(

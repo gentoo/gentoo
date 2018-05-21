@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,10 +32,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( virtual/texi2dvi )
-	X? (
-		x11-proto/xf86vidmodeproto
-		x11-proto/xextproto
-		x11-proto/xproto )"
+	X? ( x11-base/xorg-proto )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4-png.patch
