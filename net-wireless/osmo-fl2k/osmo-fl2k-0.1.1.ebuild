@@ -15,6 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	KEYWORDS="~amd64"
 	SRC_URI="https://git.osmocom.org/osmo-fl2k/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/v${PV}"
 fi
 
 LICENSE="GPL-2+"
