@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_configure() {
 	local myconf=(
