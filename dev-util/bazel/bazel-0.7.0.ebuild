@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit bash-completion-r1 java-pkg-2
+inherit bash-completion-r1 java-pkg-2 multiprocessing
 
 DESCRIPTION="Fast and correct automated build system"
 HOMEPAGE="http://bazel.io/"
@@ -36,11 +36,12 @@ src_compile() {
 	# R: /proc/24939/setgroups
 	# C: /usr/lib/systemd/systemd
 	addpredict /proc
+	export EXTRA_BAZEL_ARGS="--jobs=$(makeopts_jobs)"
 	VERBOSE=yes ./compile.sh || die
 	# Use standalone strategy to deactivate the bazel sandbox, since it
 	# conflicts with FEATURES=sandbox.
 	echo "build --verbose_failures --spawn_strategy=standalone --genrule_strategy=standalone" \
-		> "${T}/bazelrc" || die
+		"--jobs=$(makeopts_jobs)" > "${T}/bazelrc" || die
 	output/bazel --bazelrc="${T}/bazelrc" build scripts:bazel-complete.bash || die
 	mv bazel-bin/scripts/bazel-complete.bash output/ || die
 }
