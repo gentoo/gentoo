@@ -23,7 +23,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	x11-misc/imake
 "
 PATCHES=(

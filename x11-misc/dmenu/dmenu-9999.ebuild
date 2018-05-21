@@ -21,8 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	xinerama? ( x11-proto/xineramaproto )
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch

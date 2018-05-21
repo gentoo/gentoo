@@ -21,9 +21,7 @@ RDEPEND="x11-libs/libXtst
 	x11-libs/libXext"
 
 DEPEND="${RDEPEND}
-	x11-proto/inputproto
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 	>=sys-apps/sed-4"
 
 S=${WORKDIR}/${P/_/}

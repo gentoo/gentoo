@@ -24,7 +24,7 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	xinerama? ( x11-proto/xineramaproto )
+	xinerama? ( x11-base/xorg-proto )
 "
 
 src_prepare() {

@@ -20,8 +20,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXmu
 	x11-libs/libXt"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 	sys-apps/sed
 	sys-libs/zlib
 	x11vnc? ( x11-misc/x11vnc )"
