@@ -18,7 +18,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXt
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_install() {
 	emake DESTDIR="${D}" install || die "Installation failed"

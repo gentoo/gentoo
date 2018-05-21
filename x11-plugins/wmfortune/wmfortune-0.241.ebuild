@@ -19,8 +19,7 @@ RDEPEND="games-misc/fortune-mod
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_unpack() {
 	unpack ${A}

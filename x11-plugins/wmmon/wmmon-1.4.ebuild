@@ -16,4 +16,4 @@ RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
