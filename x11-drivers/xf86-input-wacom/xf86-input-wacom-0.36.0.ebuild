@@ -25,7 +25,7 @@ RDEPEND="dev-libs/libwacom
 	x11-libs/libXrandr
 	x11-libs/libXinerama"
 DEPEND="${RDEPEND}
-	x11-proto/randrproto"
+	x11-base/xorg-proto"
 
 pkg_setup() {
 	linux-info_pkg_setup
