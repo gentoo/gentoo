@@ -18,7 +18,7 @@ RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libXpm
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 # Incorrect path in this tarball version
 S=${WORKDIR}/dockapps-be3f170

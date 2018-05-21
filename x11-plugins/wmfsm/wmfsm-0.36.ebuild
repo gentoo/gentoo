@@ -20,7 +20,7 @@ RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libXt
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	sed -e "/^X11LIBS/s/-I$x_includes //" -i configure.ac || die "sed failed"

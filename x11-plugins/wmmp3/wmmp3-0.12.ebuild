@@ -18,8 +18,8 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	media-sound/mpg123"
+	media-sound/mpg123
+	x11-base/xorg-proto"
 
 src_unpack() {
 	unpack ${A}

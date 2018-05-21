@@ -22,8 +22,7 @@ RDEPEND="x11-libs/libX11
 		)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xextproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS="ChangeLog FAQ NEWS README TODO wmbiff/sample.wmbiffrc"
 

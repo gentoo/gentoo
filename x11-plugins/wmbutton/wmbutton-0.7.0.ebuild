@@ -18,8 +18,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/dockapps
 
