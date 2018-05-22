@@ -7126,7 +7126,7 @@ media-fonts/lfpfonts-fix 0.83-r2: Linux Font Project fixed-width fonts
 media-fonts/lfpfonts-var 0.84: Linux Font Project variable-width fonts
 media-fonts/liberation-fonts 2.00.1-r3: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
 media-fonts/libertine 5.3.0.20120702-r2: Fonts from the Linux Libertine Open Fonts Project
-media-fonts/lklug 0.6: Sinhala font
+media-fonts/lklug 0.6-r1: Sinhala font
 media-fonts/lohit-fonts 2.4.2: The Lohit family of Indic fonts
 media-fonts/mathematica-fonts 10.0: Mathematica's Fonts for MathML
 media-fonts/mgopen 1.1: Magenta MgOpen typeface collection for Modern Greek
