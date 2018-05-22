@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (22 May 2018)
+# Breaks revdeps (most likely because of GooHash removal).
+# See tracker bug https://bugs.gentoo.org/656264
+>=app-text/poppler-0.65.0
+
 # Matt Turner <mattst88@gentoo.org> (20 May 2018)
 # Removal in 30 days. Bug #655102
 x11-libs/libXfont
