@@ -26,9 +26,9 @@ COMMON_DEPEND="
 	x11-libs/libXtst
 "
 DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto
 	x11-libs/libXext
 	x11-libs/libXt
-	x11-proto/xproto
 "
 RDEPEND="${COMMON_DEPEND}
 	!<kde-apps/kde4-l10n-17.07.80
