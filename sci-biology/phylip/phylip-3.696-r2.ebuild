@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 RDEPEND="x11-libs/libXaw
 	!!dev-lang/elixir"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 S="${WORKDIR}/${P}/src"
 
