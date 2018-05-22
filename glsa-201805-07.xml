@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-07">
+  <title>Samba: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Samba, the worst of
+    which may allow remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">samba</product>
+  <announced>2018-05-22</announced>
+  <revised count="1">2018-05-22</revised>
+  <bug>588262</bug>
+  <bug>619516</bug>
+  <bug>639024</bug>
+  <bug>650382</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/samba" auto="yes" arch="*">
+      <unaffected range="ge">4.5.16</unaffected>
+      <vulnerable range="lt">4.5.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Samba is a suite of SMB and CIFS client/server programs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Samba. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code, cause a Denial
+      of Service condition, conduct a man-in-the-middle attack, or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Samba users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-fs/samba-4.5.16"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-2119">CVE-2016-2119</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14746">CVE-2017-14746</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15275">CVE-2017-15275</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7494">CVE-2017-7494</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1050">CVE-2018-1050</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1057">CVE-2018-1057</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-15T00:36:47Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-05-22T22:29:53Z">b-man</metadata>
+</glsa>
