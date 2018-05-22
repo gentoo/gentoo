@@ -33,9 +33,7 @@ RDEPEND="dev-libs/expat
 	xinerama? ( x11-libs/libXinerama )
 	xpm? ( x11-libs/libXpm )"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto
-	xinerama? ( x11-proto/xineramaproto )"
+	x11-base/xorg-proto"
 
 src_configure() {
 	econf \

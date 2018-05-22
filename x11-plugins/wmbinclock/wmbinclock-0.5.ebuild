@@ -18,7 +18,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" \

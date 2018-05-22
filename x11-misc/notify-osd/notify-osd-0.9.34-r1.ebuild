@@ -31,7 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	gnome-base/gnome-common
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 RESTRICT="test" # virtualx.eclass: 1 of 1: FAIL: test-modules

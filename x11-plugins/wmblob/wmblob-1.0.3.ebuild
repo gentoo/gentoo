@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ RDEPEND="x11-libs/gtk+:2
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	x11-libs/libXt"
 
 DOCS="AUTHORS ChangeLog NEWS README doc/how_it_works"

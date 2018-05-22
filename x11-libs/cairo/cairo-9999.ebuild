@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,9 +47,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/libtool-2
-	X? (
-		>=x11-proto/renderproto-0.11.1-r1[${MULTILIB_USEDEP}]
-	)"
+	X? ( x11-base/xorg-proto )"
 #[[ ${PV} == *9999* ]] && DEPEND="${DEPEND}
 #	doc? (
 #		>=dev-util/gtk-doc-1.6

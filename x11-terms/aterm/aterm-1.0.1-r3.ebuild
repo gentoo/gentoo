@@ -23,8 +23,8 @@ RDEPEND="
 	x11-libs/libICE
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	x11-libs/libXt
-	x11-proto/xproto
 "
 
 src_prepare() {

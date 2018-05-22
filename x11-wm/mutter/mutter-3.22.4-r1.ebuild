@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -70,9 +70,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
-	x11-proto/xextproto
-	x11-proto/xineramaproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 	test? ( app-text/docbook-xml-dtd:4.5 )
 	wayland? ( >=sys-kernel/linux-headers-4.4 )
 "

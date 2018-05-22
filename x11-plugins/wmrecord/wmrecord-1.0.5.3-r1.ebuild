@@ -14,8 +14,7 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	>=sys-apps/sed-4.1.5-r1"
+	x11-base/xorg-proto"
 
 SLOT="0"
 LICENSE="GPL-2"

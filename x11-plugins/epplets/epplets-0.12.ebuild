@@ -19,8 +19,7 @@ RDEPEND="x11-libs/libX11
 	>=x11-wm/enlightenment-0.16.4"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_install() {
 	emake DESTDIR="${D}" install || die

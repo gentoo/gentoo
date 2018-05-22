@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -18,9 +18,8 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXxf86vm"
 DEPEND="${RDEPEND}
-	x11-libs/libXxf86dga
-	x11-proto/xextproto
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto
+	x11-libs/libXxf86dga"
 
 S=${WORKDIR}/${PN}.app
 

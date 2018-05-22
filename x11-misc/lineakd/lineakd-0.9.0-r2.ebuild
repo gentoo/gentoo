@@ -23,11 +23,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	x11-base/xorg-proto
 	x11-libs/libxkbfile
 	x11-libs/libXt
-	x11-proto/inputproto
-	x11-proto/xextproto
-	x11-proto/xproto
 	x11-libs/libXtst
 "
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,8 +17,8 @@ IUSE="truetype"
 RDEPEND="truetype? ( x11-libs/libXft )
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	x11-base/xorg-proto"
 
 PATCHES=( "${FILESDIR}/${PN}-1.34-fixed-font.patch"
 	  "${FILESDIR}/${P}-gentoo.diff" )

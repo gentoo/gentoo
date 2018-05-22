@@ -17,8 +17,8 @@ IUSE="truetype"
 RDEPEND="truetype? ( x11-libs/libXft )
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	x11-base/xorg-proto"
 
 src_unpack() {
 	unpack ${A}

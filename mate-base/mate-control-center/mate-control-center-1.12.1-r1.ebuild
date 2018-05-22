@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -66,14 +66,8 @@ DEPEND="${RDEPEND}
 	dev-util/desktop-file-utils:0
 	>=dev-util/intltool-0.50.1:*
 	sys-devel/gettext:*
-	x11-proto/kbproto:0
-	x11-proto/randrproto:0
-	x11-proto/renderproto:0
-	x11-proto/scrnsaverproto:0
-	x11-proto/xextproto:0
-	x11-proto/xf86miscproto:0
-	x11-proto/xproto:0
-	virtual/pkgconfig:*"
+	virtual/pkgconfig:*
+	x11-base/xorg-proto"
 
 PATCHES=( "${FILESDIR}/${PN}-1.12.1-backport-appindicator-configure.patch" )
 

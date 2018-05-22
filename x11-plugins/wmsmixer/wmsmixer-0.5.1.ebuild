@@ -17,8 +17,7 @@ RDEPEND="x11-libs/libXpm
 	x11-libs/libXext
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_compile() {
 	g++ ${CFLAGS} -I/usr/X11R6/include -c -o wmsmixer.o wmsmixer.cc
