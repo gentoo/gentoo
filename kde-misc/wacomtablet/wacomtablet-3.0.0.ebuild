@@ -38,8 +38,8 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	sys-devel/gettext
+	x11-base/xorg-proto
 	x11-libs/libX11
-	x11-proto/xproto
 "
 RDEPEND="${CDEPEND}
 	!kde-misc/wacomtablet:4
