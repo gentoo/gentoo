@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-09">
+  <title>Shadow: security bypass</title>
+  <synopsis>A vulnerability found in Shadow may allow local attackers to bypass
+    security restrictions.
+  </synopsis>
+  <product type="ebuild">shadow</product>
+  <announced>2018-05-22</announced>
+  <revised count="1">2018-05-22</revised>
+  <bug>647790</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/shadow" auto="yes" arch="*">
+      <unaffected range="ge">4.6</unaffected>
+      <vulnerable range="lt">4.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Shadow is a set of tools to deal with user accounts.</p>
+  </background>
+  <description>
+    <p>A local attacker could possibly bypass security restrictions if an
+      administrator used “group blacklisting” to restrict access to file
+      system paths.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly bypass security restrictions.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All shadow users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/shadow-4.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7169">CVE-2018-7169</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-22T22:21:35Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2018-05-22T22:36:37Z">Zlogene</metadata>
+</glsa>

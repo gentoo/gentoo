@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-08">
+  <title>VirtualBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VirtualBox, the worst
+    of which could allow an attacker to take control of VirtualBox.
+  </synopsis>
+  <product type="ebuild">virtualbox</product>
+  <announced>2018-05-22</announced>
+  <revised count="1">2018-05-22</revised>
+  <bug>655186</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/virtualbox" auto="yes" arch="*">
+      <unaffected range="ge">5.1.36</unaffected>
+      <vulnerable range="lt">5.1.36</vulnerable>
+    </package>
+    <package name="app-emulation/virtualbox-bin" auto="yes" arch="*">
+      <unaffected range="ge">5.1.36.122089</unaffected>
+      <vulnerable range="lt">5.1.36.122089</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VirtualBox is a powerful virtualization product from Oracle.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VirtualBox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could take control of VirtualBox resulting in the execution
+      of arbitrary code with the privileges of the process, a Denial of Service
+      condition, or other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VirtualBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/virtualbox-5.1.36"
+    </code>
+    
+    <p>All VirtualBox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/virtualbox-bin-5.1.36.122089"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2830">CVE-2018-2830</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2831">CVE-2018-2831</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2835">CVE-2018-2835</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2836">CVE-2018-2836</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2837">CVE-2018-2837</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2842">CVE-2018-2842</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2843">CVE-2018-2843</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2844">CVE-2018-2844</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2845">CVE-2018-2845</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2860">CVE-2018-2860</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-14T23:15:39Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-05-22T22:32:13Z">b-man</metadata>
+</glsa>
