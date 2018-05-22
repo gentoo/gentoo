@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=x11-libs/libX11 x11-libs/libXext app-text/rman x11-misc/gccmakedep x11-misc/imake x11-proto/xextproto x11-proto/xproto
+DEPEND=x11-libs/libX11 x11-libs/libXext app-text/rman x11-base/xorg-proto x11-misc/gccmakedep x11-misc/imake
 DESCRIPTION=A multi-player 2D client/server space game
 EAPI=6
 HOMEPAGE=http://www.xpilot.org/
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext
 SLOT=0
 SRC_URI=mirror://sourceforge/xpilotgame/xpilot-4.5.5.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=b64ba03df48f94f03deac73ea03c90c1
+_md5_=0a710f12c8efb52164266834de1ba49d
