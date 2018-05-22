@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,9 +32,8 @@ RDEPEND="
 	x11-libs/vte:0"
 DEPEND="${RDEPEND}
 	app-text/rman
-	x11-misc/imake
-	x11-proto/inputproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto
+	x11-misc/imake"
 
 #S="${WORKDIR}/${PN}-2.7.5-${VERS}"
 S="${WORKDIR}/RasMol-${PV}"
