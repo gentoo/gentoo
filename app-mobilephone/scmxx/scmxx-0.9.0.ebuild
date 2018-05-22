@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
 DESCRIPTION="Exchange data with Siemens phones"
 HOMEPAGE="http://www.hendrik-sattler.de/scmxx/"
@@ -17,13 +17,13 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	default
 
 	exeinto /usr/lib/scmxx
 	doexe contrib/*
 
 	doman docs/*.1
 
-	rm docs/README_WIN32.txt
+	rm docs/README_WIN32.txt || die
 	dodoc AUTHORS BUGS CHANGELOG README TODO docs/*.txt
 }
