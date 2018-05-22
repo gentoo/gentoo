@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install
-DEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm x11-proto/xextproto
+DEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm x11-base/xorg-proto
 DESCRIPTION=WMACPILoad based dockapp to monitor CPU temp and battery time on ACPI kernels
 EAPI=0
 HOMEPAGE=http://wmacpiload.tuxfamily.org/
@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=http://wmacpiload.tuxfamily.org/download/wmacpiload-0.2.0.tar.bz2
-_md5_=271ee4f3f4b1d66941f9466d03df8241
+_md5_=00a0447759f1c637092379c4b8e15601

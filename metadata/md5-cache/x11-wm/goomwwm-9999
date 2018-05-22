@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=x11-libs/libXft x11-libs/libX11 x11-libs/libXinerama virtual/pkgconfig x11-proto/xineramaproto x11-proto/xproto >=dev-vcs/git-1.8.2.1
+DEPEND=x11-libs/libXft x11-libs/libX11 x11-libs/libXinerama virtual/pkgconfig x11-base/xorg-proto >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Get out of my way, Window Manager!
 EAPI=6
 HOMEPAGE=https://github.com/seanpringle/goomwwm
@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=x11-libs/libXft x11-libs/libX11 x11-libs/libXinerama
 SLOT=0
 _eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=dfcbfe0fdc860387c7690a7220ad5d85
+_md5_=1db4acaf8e8d16ce6925f4bfddb20845

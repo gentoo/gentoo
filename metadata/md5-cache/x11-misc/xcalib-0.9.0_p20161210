@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=x11-libs/libX11 x11-libs/libXrandr x11-libs/libXxf86vm x11-libs/libXext x11-proto/xf86vidmodeproto sys-devel/make >=dev-util/cmake-3.9.6
+DEPEND=x11-libs/libX11 x11-libs/libXrandr x11-libs/libXxf86vm x11-base/xorg-proto x11-libs/libXext sys-devel/make >=dev-util/cmake-3.9.6
 DESCRIPTION=A tiny monitor calibration loader for X.org
 EAPI=6
 HOMEPAGE=https://github.com/OpenICC/xcalib
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXrandr x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=https://github.com/OpenICC/xcalib/archive/95c932996cfc9f792dea4a6c49fec3c1ed2267ac.tar.gz -> xcalib-0.9.0_p20161210.tar.gz
 _eclasses_=cmake-utils	49cd471f02483798c5068698836b7429	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=dbc390dff77de47bf6e4cbb3e2da4781
+_md5_=dae251b81863862efa124e8a945224d9

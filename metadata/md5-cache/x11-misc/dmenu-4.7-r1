@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst prepare
-DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig xinerama? ( x11-proto/xineramaproto ) x11-proto/xproto
+DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-base/xorg-proto
 DESCRIPTION=a generic, highly customizable, and efficient menu for the X Window System
 EAPI=6
 HOMEPAGE=https://tools.suckless.org/dmenu/
@@ -10,4 +10,4 @@ RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-li
 SLOT=0
 SRC_URI=https://dl.suckless.org/tools/dmenu-4.7.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=cbe16282fc60617fb213484de0e254c9
+_md5_=9a4748f675c03dfc6809229035dca845

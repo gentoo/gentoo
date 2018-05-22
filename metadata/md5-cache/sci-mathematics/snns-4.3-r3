@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=X? ( x11-libs/libX11 x11-libs/libXaw3d x11-libs/libXt ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) X? ( x11-proto/xproto ) >=sys-devel/bison-1.2.2
+DEPEND=X? ( x11-libs/libX11 x11-libs/libXaw3d x11-libs/libXt ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) X? ( x11-base/xorg-proto ) >=sys-devel/bison-1.2.2
 DESCRIPTION=Stuttgart Neural Network Simulator
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/snns/
@@ -11,4 +11,4 @@ REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=http://www.ra.cs.uni-tuebingen.de/downloads/SNNS/SNNSv4.3.tar.gz doc? ( http://www.ra.cs.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.Manual.pdf )
 _eclasses_=distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	c66af00ffb980e8eb1c961d5e63597fe	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=1ba1b0dded5db72455c45400f5e9d14e
+_md5_=0e384ceef15f369a95b7c00379daaf11

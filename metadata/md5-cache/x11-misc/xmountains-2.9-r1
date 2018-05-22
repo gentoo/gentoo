@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=x11-libs/libX11 x11-misc/xbitmaps x11-proto/xproto
+DEPEND=x11-libs/libX11 x11-misc/xbitmaps x11-base/xorg-proto
 DESCRIPTION=Fractal terrains of snow-capped mountains near water
 EAPI=6
 HOMEPAGE=https://spbooth.github.io/xmountains/
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-misc/xbitmaps
 SLOT=0
 SRC_URI=http://www.epcc.ed.ac.uk/~spb/xmountains/xmountains_2.9.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=7856ed88dd6632b35020c30c9865545e
+_md5_=d6a72083c716d863852c20d0bd58eb74

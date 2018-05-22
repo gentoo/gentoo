@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) xrandr? ( x11-libs/libXrandr ) virtual/perl-Pod-Parser x11-libs/libXtst virtual/pkgconfig x11-proto/randrproto x11-proto/xproto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) xrandr? ( x11-libs/libXrandr ) virtual/perl-Pod-Parser x11-libs/libXtst virtual/pkgconfig x11-base/xorg-proto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=window manager without mouse dependency
 EAPI=6
 HOMEPAGE=http://www.nongnu.org/ratpoison/
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) xrandr? ( x11-libs/libXrandr ) virtual/perl-Pod-Parser x11-libs/libXtst
 SLOT=0
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	git-r3	af51ccfceeb403ab80f1bf9209d372c8	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=09828b9d63dc6cd8d42e6ad5640221b5
+_md5_=29e36ef595bfdc09a81907c9752025b7

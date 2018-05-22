@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=app-admin/gkrellm:2[X] x11-libs/libXtst x11-proto/inputproto virtual/pkgconfig
+DEPEND=app-admin/gkrellm:2[X] x11-libs/libXtst x11-base/xorg-proto virtual/pkgconfig
 DESCRIPTION=GKrellM2 plugin for monitoring keyboard LEDs
 EAPI=6
 HOMEPAGE=http://heim.ifi.uio.no/~oyvinha/gkleds/
@@ -9,4 +9,4 @@ RDEPEND=app-admin/gkrellm:2[X] x11-libs/libXtst
 SLOT=2
 SRC_URI=http://heim.ifi.uio.no/~oyvinha/e107_files/downloads/gkleds-0.8.2.tar.gz
 _eclasses_=gkrellm-plugin	e3548dfd06a50087a45520f52934a39c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=3155bbb2fd02abe059880821ce05b17c
+_md5_=956dcb5def7681f3e1cc96c35923f151

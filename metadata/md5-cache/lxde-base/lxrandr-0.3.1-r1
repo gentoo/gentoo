@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare
-DEPEND=x11-libs/gtk+:2 x11-libs/libXrandr x11-apps/xrandr x11-proto/randrproto virtual/pkgconfig sys-devel/gettext >=dev-util/intltool-0.40.0
+DEPEND=x11-libs/gtk+:2 x11-libs/libXrandr x11-apps/xrandr >=dev-util/intltool-0.40.0 sys-devel/gettext virtual/pkgconfig x11-base/xorg-proto
 DESCRIPTION=LXDE GUI interface to RandR extention
 EAPI=6
 HOMEPAGE=https://wiki.lxde.org/en/LXRandR
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/gtk+:2 x11-libs/libXrandr x11-apps/xrandr
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/lxrandr-0.3.1.tar.xz
 _eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b
-_md5_=57a697e28ca1ffe20a2ec4cfb45367b9
+_md5_=1f534d0140dbd2279ad50911ffdd7e85

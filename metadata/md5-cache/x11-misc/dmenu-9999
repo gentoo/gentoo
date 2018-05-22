@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig xinerama? ( x11-proto/xineramaproto ) x11-proto/xproto >=dev-vcs/git-1.8.2.1
+DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-base/xorg-proto >=dev-vcs/git-1.8.2.1
 DESCRIPTION=a generic, highly customizable, and efficient menu for the X Window System
 EAPI=6
 HOMEPAGE=https://tools.suckless.org/dmenu/
@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama )
 SLOT=0
 _eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=54929068051c12a73ff7a8a62e1d97d4
+_md5_=ce9282f00e16577255d13c0a6505d238

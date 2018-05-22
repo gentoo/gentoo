@@ -1,5 +1,5 @@
 DEFINED_PHASES=install
-DEPEND=x11-libs/libXt >=dev-libs/lzo-2 x11-proto/xproto
+DEPEND=x11-libs/libXt >=dev-libs/lzo-2 x11-base/xorg-proto
 DESCRIPTION=Differential X Protocol Compressor
 EAPI=6
 HOMEPAGE=http://www.vigor.nu/dxpc/
@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=x11-libs/libXt >=dev-libs/lzo-2
 SLOT=0
 SRC_URI=http://www.vigor.nu/dxpc/dxpc-3.9.2.tgz
-_md5_=3f5152d457ec301838bdb693b74923f6
+_md5_=a7fdb46eea9cdcb32f61383b3c18c597

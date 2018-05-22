@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=x11-libs/libX11 x11-libs/libXext media-libs/freeglut media-libs/imlib2 >=x11-wm/enlightenment-0.16.4 virtual/pkgconfig x11-proto/xproto x11-proto/xextproto
+DEPEND=x11-libs/libX11 x11-libs/libXext media-libs/freeglut media-libs/imlib2 >=x11-wm/enlightenment-0.16.4 virtual/pkgconfig x11-base/xorg-proto
 DESCRIPTION=Base files for Enlightenment epplets and some epplets
 EAPI=4
 HOMEPAGE=https://www.enlightenment.org/
@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext media-libs/freeglut media-libs/imlib2 >=x11-wm/enlightenment-0.16.4
 SLOT=0
 SRC_URI=mirror://sourceforge/enlightenment/epplets-0.14.tar.gz
-_md5_=4d17274346cc84232bb2bda5b097fd0c
+_md5_=532c9d757d120f2dc9df31a7dbf8d3e6

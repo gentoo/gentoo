@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare
-DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXft x11-libs/libXpm x11-libs/libXrender x11-libs/libXtst sys-devel/flex virtual/pkgconfig virtual/yacc x11-proto/inputproto x11-proto/xextproto x11-proto/xproto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXft x11-libs/libXpm x11-libs/libXrender x11-libs/libXtst sys-devel/flex virtual/pkgconfig virtual/yacc x11-base/xorg-proto >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Gesture/Handwriting recognition engine for X
 EAPI=4
 HOMEPAGE=http://freshmeat.net/projects/xstroke/
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXft x11-libs/libXpm x11-lib
 SLOT=0
 SRC_URI=mirror://gentoo/xstroke-0.6.tar.bz2
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=2af52029ef6dbe9f6e5aecead4183567
+_md5_=c6fcef59d5d32576db1bdf8340616b8d

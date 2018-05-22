@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=media-libs/imlib2[X] x11-libs/libX11 x11-proto/xproto
+DEPEND=media-libs/imlib2[X] x11-libs/libX11 x11-base/xorg-proto
 DESCRIPTION=A simple but powerful tool to set desktop wallpaper
 EAPI=6
 HOMEPAGE=http://home.gna.org/fvwm-crystal/
@@ -9,4 +9,4 @@ RDEPEND=media-libs/imlib2[X] x11-libs/libX11
 SLOT=0
 SRC_URI=http://download.gna.org/fvwm-crystal/habak/0.2.5/habak-0.2.5.tar.bz2
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=d9a3832efddc049ff643be9b1cd532cc
+_md5_=a7103c74fd5cad348726c881cd8b9ce7

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=x11-libs/libXext x11-libs/libXrandr x11-proto/xextproto x11-proto/xproto
+DEPEND=x11-libs/libXext x11-libs/libXrandr x11-base/xorg-proto
 DESCRIPTION=A minimalist, no frills window manager for X
 EAPI=6
 HOMEPAGE=http://www.6809.org.uk/evilwm/
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXext x11-libs/libXrandr
 SLOT=0
 SRC_URI=http://www.6809.org.uk/evilwm/evilwm-1.0.1.tar.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=1eea5164985573deda8ceb1734f3c6ca
+_md5_=22add0dfdbb633bc15efbd29dc7b8a32

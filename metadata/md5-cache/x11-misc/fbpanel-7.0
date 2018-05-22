@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure postinst setup
-DEPEND=dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) x11-libs/gdk-pixbuf:2[X] x11-libs/gtk+:2 x11-libs/libX11 || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig x11-proto/xproto
+DEPEND=dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) x11-libs/gdk-pixbuf:2[X] x11-libs/gtk+:2 x11-libs/libX11 || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig x11-base/xorg-proto
 DESCRIPTION=light-weight X11 desktop panel
 EAPI=6
 HOMEPAGE=https://aanatoly.github.io/fbpanel/
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 alsa? ( media-libs/alsa-lib ) x11-libs/gdk-pixbuf:2[X] x
 SLOT=0
 SRC_URI=https://github.com/aanatoly/fbpanel/archive/7.0.tar.gz -> fbpanel-7.0.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=a215f79a5827b596fb6c481d0d3480ec
+_md5_=f7968bd09f0e13c652f7025271b0194a

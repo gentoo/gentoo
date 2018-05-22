@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=x11-libs/libX11 x11-libs/libXtst x11-libs/libXext x11-proto/inputproto app-text/rman x11-misc/imake x11-proto/xproto
+DEPEND=x11-libs/libX11 x11-libs/libXtst x11-libs/libXext app-text/rman x11-base/xorg-proto x11-misc/imake
 DESCRIPTION=A utility to connect the Mouse and KeyBoard to another X
 EAPI=0
 HOMEPAGE=http://www.the-labs.com/X11/#x2x
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXtst x11-libs/libXext
 SLOT=0
 SRC_URI=http://ftp.digital.com/pub/Digital/SRC/x2x/x2x-1.27.tar.gz mirror://debian/pool/main/x/x2x/x2x_1.27-8.diff.gz mirror://gentoo/x2x_1.27-8-initvars.patch.gz mirror://gentoo/x2x-1.27-license.patch.gz mirror://gentoo/x2x-1.27-keymap.diff.gz
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=a64fac882b7408885bd0c126153a464e
+_md5_=979a9bfb230fc2740caab0dcc0459298
