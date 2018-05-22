@@ -3,7 +3,7 @@
 
 EAPI=6
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="5.4.5"
+MOZ_LIGHTNING_VER="5.4.8"
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 MOZ_LANGS=(ar ast be bg bn-BD br ca cs cy da de el en en-GB en-US es-AR
