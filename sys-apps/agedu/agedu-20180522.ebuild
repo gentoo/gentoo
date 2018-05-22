@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools eutils
 
 # agedu-20151213.59b0ed3.ebuild is not a legitimate name
 # so we'll drop versionator and just set MY_P manually.
-MY_P="${PN}"-20170831.fc6b2b5
+MY_P="${PN}"-20180522.5b12791
 
 DESCRIPTION="A utility for tracking down wasted disk space"
 HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/agedu/"
