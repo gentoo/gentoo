@@ -1,0 +1,34 @@
+From 3752d992f3140806ea1d513739b6f23addf52df1 Mon Sep 17 00:00:00 2001
+From: cc <longlene@gmail.com>
+Date: Tue, 22 May 2018 12:52:12 +0800
+Subject: [PATCH] fix for build with syscapstone
+
+---
+ libr/Makefile | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/libr/Makefile b/libr/Makefile
+index 05cb40fec7..0b39b48c02 100644
+--- a/libr/Makefile
++++ b/libr/Makefile
+@@ -84,13 +84,18 @@ E+=../shlr/bochs/lib/libbochs.${EXT_AR}
+ #E+=../shlr/sdb/src/libsdb.${EXT_AR}
+ #endif
+ 
++ifeq ($(USE_CAPSTONE),1)
++E+=$(CAPSTONE_LDFLAGS)
++else
++E+=../shlr/capstone/libcapstone.${EXT_AR}
++endif
++
+ libr.${EXT_SO}: .libr
+ 	$(CC) -fvisibility=hidden $(MLFLAGS) -shared -dynamiclib -o libr.${EXT_SO}  \
+ 		.libr/*.o \
+ 		../shlr/gdb/lib/libgdbr.${EXT_AR} ../shlr/java/libr_java.${EXT_AR} \
+ 		../shlr/zip/librz.${EXT_AR} \
+-		../shlr/libr_shlr.${EXT_AR} $(E)\
+-		../shlr/capstone/libcapstone.${EXT_AR}
++		../shlr/libr_shlr.${EXT_AR} $(E)
+ 
+ else
+ 
