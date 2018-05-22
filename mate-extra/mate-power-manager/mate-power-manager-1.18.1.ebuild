@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,10 +47,9 @@ DEPEND="${COMMON_DEPEND}
 	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools:0
 	>=dev-util/intltool-0.50.1:*
-	x11-proto/randrproto:0
-	>=x11-proto/xproto-7.0.15:0
 	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	virtual/pkgconfig:*
+	x11-base/xorg-proto"
 
 src_configure() {
 	mate_src_configure \

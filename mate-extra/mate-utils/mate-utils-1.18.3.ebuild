@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,9 +42,9 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1:*
-	x11-proto/xextproto:0
 	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	virtual/pkgconfig:*
+	x11-base/xorg-proto"
 
 src_prepare() {
 	# Make apps visible in all DEs.
