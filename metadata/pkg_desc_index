@@ -753,7 +753,7 @@ app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, P
 app-emulation/spectemu 0.99.3: 48k ZX Spectrum Emulator
 app-emulation/spice 0.13.3-r2 0.14.0-r1: SPICE server
 app-emulation/spice-protocol 0.12.12 0.12.13: Headers defining the SPICE protocol
-app-emulation/spice-vdagent 0.17.0 0.17.0_p20180319-r1: SPICE VD Linux Guest Agent
+app-emulation/spice-vdagent 0.17.0_p20180319-r1: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/vice 3.1: The Versatile Commodore 8-bit Emulator
