@@ -45,9 +45,9 @@ DEPEND="${RDEPEND}
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1:*
-	x11-proto/xextproto:0
 	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	virtual/pkgconfig:*
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}/${P}-dict-gtk3.patch"
