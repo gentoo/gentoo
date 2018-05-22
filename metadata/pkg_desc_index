@@ -267,7 +267,7 @@ app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEm
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 3.0.6 3.1.4: A HTTP regression testing and benchmarking utility
-app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
+app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/sysbench 1.0.10: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
@@ -7064,6 +7064,7 @@ media-fonts/essays1743 2.000: John Stracke's Essays 1743 font
 media-fonts/exo 2: A geometric sans-serif font with a technological feel
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
+media-fonts/fira-code 1.205: Monospaced font with programming ligatures
 media-fonts/fira-sans 4.002: Default typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r1: X.Org Adobe bitmap fonts
 media-fonts/font-adobe-75dpi 1.0.3-r1: X.Org Adobe bitmap fonts
