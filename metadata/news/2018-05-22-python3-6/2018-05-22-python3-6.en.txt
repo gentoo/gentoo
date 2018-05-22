@@ -1,0 +1,61 @@
+Title: Python 3.6 to become the default target
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2018-05-22
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: dev-lang/python:3.4
+Display-If-Installed: dev-lang/python:3.5
+
+On 2018-06-22, Python 3.6 will replace Python 3.5 in the default Python
+targets for Gentoo systems.  The new default targets will be:
+
+    PYTHON_TARGETS="python2_7 python3_6"
+    PYTHON_SINGLE_TARGET="python3_6"
+
+If you have not overriden the value of those variables on your system,
+then your package manager will want to use the new targets immediately.
+In order to prevent dependency conflicts, please clean stray packages
+and rebuild/upgrade all packages with USE flag changes after the change,
+e.g.:
+
+    emerge --depclean
+    emerge -1vUD @world
+    emerge --depclean
+
+Please note that upgrading dependencies in place may cause some
+of the package dependencies to be temporarily missing.  While this
+should not affect scripts that are already fully loaded, it may cause
+ImportErrors while starting Python scripts or loading additional
+modules (only scripts running Python 3.5 are affected).
+
+In order to improve stability of the upgrade, you may choose to
+temporarily enable both targets, i.e. set in /etc/portage/make.conf
+or its equivalent:
+
+    PYTHON_TARGETS="python2_7 python3_5 python3_6"
+    PYTHON_SINGLE_TARGET="python3_5"
+
+This will cause the dependencies to include both Python 3.5 and 3.6
+support on the next system upgrade.  Once all packages are updated,
+you can restart your scripts, remove the custom setting and run another
+upgrade to remove support for Python 3.5.
+
+If you would like to postpone the switch to Python 3.6, you can copy
+the current value of PYTHON_TARGETS and/or PYTHON_SINGLE_TARGET
+to /etc/portage/make.conf or its equivalent:
+
+    PYTHON_TARGETS="python2_7 python3_5"
+    PYTHON_SINGLE_TARGET="python3_5"
+
+If you would like to migrate your systems earlier, you can do the same
+with the new value.
+
+If you are still using Python 3.4, please consider switching to a newer
+version as it is reaching its end-of-life.  The end-of-life dates
+for the currently used versions are:
+
+  Python 3.4        2019-03-16
+  Python 2.7        2020-01-01
+  Python 3.5        2020-09-13 [1]
+
+[1]:https://devguide.python.org/#status-of-python-branches
