@@ -4,11 +4,11 @@ DESCRIPTION=General purpose formula parser & interpreter
 EAPI=6
 HOMEPAGE=https://gitlab.com/ixion/ixion
 IUSE=debug python static-libs +threads python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~x86
 LICENSE=MIT
 RDEPEND=dev-libs/boost:= python? ( python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) )
 SLOT=0/0.13
 SRC_URI=https://kohei.us/files/ixion/src/libixion-0.13.0.tar.xz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=f3a5ece294780a4f29ccf31bd8ce66fc
+_md5_=2a88f7c9c919edf5d747b8c9f100c521
