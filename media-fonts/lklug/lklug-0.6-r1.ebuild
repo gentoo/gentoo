@@ -12,7 +12,7 @@ SRC_URI="http://sinhala.sourceforge.net/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
