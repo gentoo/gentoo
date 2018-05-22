@@ -134,6 +134,9 @@ multilib_src_configure() {
 		$(multilib_native_use_enable openmpi_ofed_features_failover btl-openib-failover) \
 		$(multilib_native_use_with openmpi_rm_pbs tm) \
 		$(multilib_native_use_with openmpi_rm_slurm slurm)
+
+	# fix parallel build when f08 is enabled
+	mkdir -p ompi/mpi/fortran/use-mpi-f08/profile || die
 }
 
 multilib_src_test() {
