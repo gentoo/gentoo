@@ -1,12 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=${P/iripdb/iRipDB}
-S=${WORKDIR}/${PN}
 
 DESCRIPTION="Allows generating the DB files necessary for the iRiver iHP-1xx"
 HOMEPAGE="http://www.fataltourist.com/iripdb/"
@@ -22,6 +21,8 @@ RDEPEND="media-libs/taglib
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
+S=${WORKDIR}/${MY_P}
+
 src_compile() {
 	echo "$(tc-getCXX) ${CXXFLAGS} -c -o main.o main.cpp"
 	$(tc-getCXX) ${CXXFLAGS} -c -o main.o -I/usr/include/taglib main.cpp
@@ -30,6 +31,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin iripdb || die
-	dodoc AUTHORS README doc/iRivDB_structure || die
+	dobin iripdb
+	dodoc AUTHORS README doc/iRivDB_structure
 }
