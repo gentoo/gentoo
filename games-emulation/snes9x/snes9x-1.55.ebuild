@@ -33,9 +33,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xproto
-	gtk? ( virtual/pkgconfig
-		xv? ( x11-proto/videoproto ) )
+	x11-base/xorg-proto
 	nls? ( dev-util/intltool )"
 
 S="${WORKDIR}/${P}/unix"
