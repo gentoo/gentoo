@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="sci-libs/libticables2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	xinerama? ( x11-proto/xineramaproto )"
+	xinerama? ( x11-base/xorg-proto )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-remove_depreciated_gtk_calls.patch
