@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Oxygen visual style for the Plasma desktop"
 HOMEPAGE="https://cgit.kde.org/oxygen.git"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="wayland"
 
 COMMON_DEPEND="
