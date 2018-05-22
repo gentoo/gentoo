@@ -10,7 +10,7 @@ DESCRIPTION="Dedicated search application built on top of Baloo"
 HOMEPAGE="https://cgit.kde.org/milou.git"
 
 LICENSE="GPL-2 LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
