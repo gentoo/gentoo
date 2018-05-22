@@ -1,8 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A Window Maker applet that shows your biorhythm"
 HOMEPAGE="http://wmbio.sourceforge.net/"
@@ -22,11 +21,13 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}/src
 
 src_prepare() {
+	default
+
 	# Honour Gentoo CFLAGS
-	sed -i "s/-g -O2/\$(CFLAGS)/" Makefile
+	sed -i "s/-g -O2/\$(CFLAGS)/" Makefile || die "sed CFLAGS failed"
 
 	# Honour Gentoo LDFLAGS
-	sed -i "s/-o wmbio/\$(LDFLAGS) -o wmbio/" Makefile
+	sed -i "s/-o wmbio/\$(LDFLAGS) -o wmbio/" Makefile || die "sed LDFLAGS failed"
 }
 
 src_compile() {
@@ -35,5 +36,4 @@ src_compile() {
 
 src_install () {
 	dobin wmbio || die "dobin failed"
-	dodoc ../{AUTHORS,Changelog,NEWS,README} || die
 }
