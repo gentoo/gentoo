@@ -15,7 +15,7 @@ DEPEND="
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kirigami)
-	$(add_qt_dep qtdeclarative)
+	$(add_qt_dep qtdeclarative '' '' '5=')
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "
