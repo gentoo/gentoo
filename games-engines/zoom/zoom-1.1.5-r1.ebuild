@@ -20,7 +20,7 @@ RDEPEND="
 	x11-libs/libXft"
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
 
