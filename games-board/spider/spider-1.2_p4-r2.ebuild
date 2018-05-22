@@ -25,8 +25,8 @@ RDEPEND="
 	x11-libs/libXt
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	x11-misc/imake
-	x11-proto/xproto
 "
 
 S="${WORKDIR}/${MY_P/_/-}.orig"
