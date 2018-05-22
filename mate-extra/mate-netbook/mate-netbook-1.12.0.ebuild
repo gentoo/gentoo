@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,10 +36,10 @@ RDEPEND="
 	)"
 
 DEPEND="${RDEPEND}
-	x11-proto/xproto:0
 	>=dev-util/intltool-0.50.1:*
 	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	virtual/pkgconfig:*
+	x11-base/xorg-proto"
 
 src_configure() {
 	mate_src_configure \
