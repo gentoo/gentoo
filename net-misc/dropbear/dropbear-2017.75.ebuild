@@ -6,9 +6,9 @@ EAPI="5"
 inherit eutils savedconfig pam user
 
 DESCRIPTION="small SSH 2 client/server designed for small memory environments"
-HOMEPAGE="http://matt.ucc.asn.au/dropbear/dropbear.html"
-SRC_URI="http://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
-	http://matt.ucc.asn.au/dropbear/testing/${P}.tar.bz2"
+HOMEPAGE="https://matt.ucc.asn.au/dropbear/dropbear.html"
+SRC_URI="https://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
+	https://matt.ucc.asn.au/dropbear/testing/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
