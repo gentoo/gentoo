@@ -39,6 +39,8 @@ src_prepare() {
 	sed 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' \
 		-i Makefile.am Makefile.in || die "sed 2 failed"
 
+	epatch "${FILESDIR}/${PN}-fix-threads-gobject.patch"
+
 	gnome2_src_prepare
 }
 
