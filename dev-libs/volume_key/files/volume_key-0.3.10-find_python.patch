@@ -1,0 +1,55 @@
+From ab21d82bc0186627451d16be45568fcf2b590817 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 22 May 2018 15:08:44 +0200
+Subject: [PATCH] Use pkgconfig to find python
+
+otherwise linkage and include of python fails if python is not in
+default (python$(PYTHON_VERSION)) location.
+---
+ Makefile.am  | 4 ++--
+ configure.ac | 7 +++++--
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 68560b1..0bc1a5b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -20,7 +20,7 @@ ACLOCAL_AMFLAGS = -I m4
+ AM_CPPFLAGS = $(blkid_CFLAGS) $(glib_CFLAGS) $(GPGME_CFLAGS) \
+ 	$(libcryptsetup_CFLAGS) $(nss_CFLAGS)
+ LOCALEDIR_CPPFLAGS = -DLOCALEDIR='"$(localedir)"'
+-PYTHON_CPPFLAGS = -I/usr/include/python$(PYTHON_VERSION)
++PYTHON_CPPFLAGS = $(PYTHON_CFLAGS)
+ 
+ ## Targets
+ SUBDIRS = po
+@@ -65,7 +65,7 @@ lib_libvolume_key_la_LIBADD = $(blkid_LIBS) $(glib_LIBS) $(GPGME_LIBS) \
+ python__volume_key_la_SOURCES = python/volume_key_wrap.c
+ python__volume_key_la_CPPFLAGS = $(AM_CPPFLAGS) $(PYTHON_CPPFLAGS)
+ python__volume_key_la_LDFLAGS = -module -avoid-version $(glib_LIBS)
+-python__volume_key_la_LIBADD = lib/libvolume_key.la -lpython$(PYTHON_VERSION) \
++python__volume_key_la_LIBADD = lib/libvolume_key.la $(PYTHON_LIBS) \
+ 	$(glib_LIBS) $(nss_LIBS)
+ 
+ src_volume_key_SOURCES = src/volume_key.c
+diff --git a/configure.ac b/configure.ac
+index 40c3906..c9680e4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,8 +28,11 @@ AC_PROG_CC
+ AM_PROG_CC_C_O
+ AM_PROG_AR
+ LT_INIT([disable-static])
+-AC_PATH_PROGS(PYTHON, python2.7 python2.6 python2 python, [Python is required])
+-AM_PATH_PYTHON([2.6], [], AC_MSG_ERROR([Python 2.6 or 2.7 is required]))
++PKG_PROG_PKG_CONFIG
++PKG_CHECK_MODULES(PYTHON, [python], [
++	AM_PATH_PYTHON
++	], AC_MSG_ERROR([Python is required])
++)
+ 
+ AC_PATH_PROG([GPG], [gpg2])
+ AC_ARG_VAR([GPG])
+-- 
+2.17.0
+
