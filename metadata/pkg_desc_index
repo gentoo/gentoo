@@ -5335,7 +5335,7 @@ dev-python/pytest-fixture-config 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.7: Py.test plugin to test server connections locally
 dev-python/pytest-mock 1.6.0: Thin-wrapper around the mock package for easier use with py.test
-dev-python/pytest-qt 2.3.0: pytest plugin for PyQt4 or PyQt5 applications
+dev-python/pytest-qt 2.3.0-r2: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-relaxed 1.1.0: py.test plugin for relaxed test discovery and organization
 dev-python/pytest-runner 2.6.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-shutil 1.2.11: A goodie-bag of unix shell and environment tools for py.test
