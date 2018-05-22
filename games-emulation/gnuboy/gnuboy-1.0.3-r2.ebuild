@@ -19,9 +19,7 @@ RDEPEND="
 	X? ( x11-libs/libXext )
 "
 DEPEND="${RDEPEND}
-	X? (
-		x11-proto/xextproto
-		x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 "
 
 src_prepare() {
