@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build kernel_FreeBSD kernel_linux usrmerge"
+IUSE="build kernel_FreeBSD kernel_linux +split-usr"
 
 pkg_setup() {
 	multilib_layout
@@ -35,7 +35,7 @@ multilib_layout() {
 	# figure out which paths should be symlinks and which should be directories
 	local dirs syms exp d
 	for libdir in ${libdirs} ; do
-		if ! use usrmerge ; then
+		if use split-usr ; then
 			exp=( {,usr/,usr/local/}${libdir} )
 		else
 			exp=( {usr/,usr/local/}${libdir} )
@@ -62,7 +62,7 @@ multilib_layout() {
 	# setup symlinks and dirs where we expect them to be; do not migrate
 	# data ... just fall over in that case.
 	local prefix prefix_lst
-	if ! use usrmerge ; then
+	if use split-usr ; then
 		prefix_lst="${EROOT}"{,usr/,usr/local/}
 	else
 		prefix_lst="${EROOT}"{usr/,usr/local/}
@@ -125,7 +125,7 @@ multilib_layout() {
 			fi
 		fi
 	done
-	if use usrmerge ; then
+	if ! use split-usr ; then
 		for libdir in ${libdirs}; do
 			if [[ ! -e "${EROOT}${libdir}" ]]; then
 				ln -s usr/"${libdir}" "${EROOT}${libdir}"
@@ -145,7 +145,7 @@ pkg_preinst() {
 	# Also, we cannot reference $S as binpkg will break so we do this.
 	multilib_layout
 	if use build ; then
-		if ! use usrmerge ; then
+		if use split-usr ; then
 			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
 		else
 			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
