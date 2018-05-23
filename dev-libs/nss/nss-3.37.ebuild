@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.32-gentoo-fixups.patch"
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
+	"${FILESDIR}/${P}-fix-fstar-missing-symbols.patch"
 )
 
 src_unpack() {

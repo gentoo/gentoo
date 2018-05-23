@@ -1,0 +1,34 @@
+# HG changeset patch
+# User Jan Beich <jbeich@FreeBSD.org>
+# Date 1525728934 0
+# Node ID 259444458a1a7f2ce1813ebe88d924173d5daf0c
+# Parent  5db9e969c74a2a02c4b1d918792827014d1a9d5e
+Bug 1459739 - Build FStar.o on 32-bit ARM even with make. r=fkiefer
+
+
+diff --git a/lib/freebl/Makefile b/lib/freebl/Makefile
+--- a/lib/freebl/Makefile
++++ b/lib/freebl/Makefile
+@@ -534,16 +534,19 @@ endif # NSS_DISABLE_CHACHAPOLY
+ ifeq (,$(filter-out i386 x386 x86 x86_64 aarch64,$(CPU_ARCH)))
+     # All intel architectures get the 64 bit version
+     # With custom uint128 if necessary (faster than generic 32 bit version).
+     ECL_SRCS += curve25519_64.c
+     VERIFIED_SRCS += Hacl_Curve25519.c FStar.c
+ else
+     # All non intel architectures get the generic 32 bit implementation (slow!)
+     ECL_SRCS += curve25519_32.c
++ifndef NSS_DISABLE_CHACHAPOLY
++        VERIFIED_SRCS += FStar.c
++endif
+ endif
+ 
+ #######################################################################
+ # (5) Execute "global" rules. (OPTIONAL)                              #
+ #######################################################################
+ 
+ include $(CORE_DEPTH)/coreconf/rules.mk
+ 
+
+
+
