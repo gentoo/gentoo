@@ -22,7 +22,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	app-text/asciidoc
 	virtual/pkgconfig
 "
 PATCHES=(
