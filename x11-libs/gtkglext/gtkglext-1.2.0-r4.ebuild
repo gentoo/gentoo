@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-GNOME2_LA_PUNT="yes"
+EAPI=6
 inherit autotools gnome2 multilib-minimal
 
 DESCRIPTION="GL extensions for Gtk+ 2.0"
@@ -15,35 +13,33 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND=">=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}]
 	>=x11-libs/pangox-compat-0.0.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
 	>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
-	>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]"
+	>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2014.02.28
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+"
 
 src_prepare() {
+	# Fix build issues with gcc patch from Fedora, bug #649718
+	eapply "${FILESDIR}"/${P}-gcc8-fixes.patch
+
 	# Ancient configure.in with broken multilib gl detection (bug #543050)
 	# Backport some configure updates from upstream git master to fix
-	epatch "${FILESDIR}/${P}-gl-configure.patch"
+	eapply "${FILESDIR}/${P}-gl-configure.patch"
+
 	mv configure.{in,ac} || die "mv failed"
 	eautoreconf
 
 	gnome2_src_prepare
-
-	# Remove development knobs, bug #308973
-	sed -i 's:-D\(G.*DISABLE_DEPRECATED\):-D__\1__:g' \
-		examples/Makefile.am examples/Makefile.in \
-		gdk/Makefile.am gdk/Makefile.in \
-		gdk/win32/Makefile.am gdk/win32/Makefile.in \
-		gdk/x11/Makefile.am gdk/x11/Makefile.in \
-		gtk/Makefile.am gtk/Makefile.in \
-		|| die "sed failed"
 }
 
 multilib_src_configure() {
