@@ -58,6 +58,7 @@ CDEPEND="
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
 	!sys-cluster/mpiexec
+	!sys-cluster/pmix
 	>=dev-libs/libevent-2.0.21[${MULTILIB_USEDEP}]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	>=sys-apps/hwloc-1.10.0-r2[${MULTILIB_USEDEP},numa?]
