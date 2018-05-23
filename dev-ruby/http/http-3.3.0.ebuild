@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -22,7 +22,7 @@ IUSE=""
 ruby_add_rdepend "
 	>=dev-ruby/addressable-2.3:0
 	>=dev-ruby/http-cookie-1.0:0
-	>=dev-ruby/http-form_data-1.0.1:1.0
+	dev-ruby/http-form_data:2
 	>=dev-ruby/http_parser_rb-0.6.0 =dev-ruby/http_parser_rb-0.6*"
 
 ruby_add_bdepend "
