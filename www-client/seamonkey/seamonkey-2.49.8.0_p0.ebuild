@@ -90,7 +90,7 @@ RDEPEND="
 	>=dev-libs/nss-3.28.3
 	>=dev-libs/nspr-4.13.1
 	jack? ( virtual/jack )
-	crypt? ( >=x11-plugins/enigmail-1.9.8.3-r1 )
+	crypt? ( >=x11-plugins/enigmail-2.0.5 )
 "
 
 DEPEND="
