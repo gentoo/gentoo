@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Small and fast window manager"
-HOMEPAGE="http://www.oroborus.org"
+HOMEPAGE="https://www.oroborus.org"
 SRC_URI="mirror://debian/pool/main/o/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
