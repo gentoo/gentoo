@@ -121,7 +121,9 @@ PYTHONDONTWRITEBYTECODE="1"
 # Add default USE value for bootstrap and rename it from STAGE1_USE to BOOTSTRAP_USE
 # Add in expanded PYTHON_TARGETS or stage1 builds break because of USE="-* ${BOOTSTRAP_USE}"
 # This MUST be kept in sync with the PYTHON_TARGETS below
-BOOTSTRAP_USE="cxx unicode internal-glib python_targets_python3_5 python_targets_python2_7"
+# Mike Gilbert <floppym@gentoo.org> (23 May 2018)
+# sys-apps/baslayout-2.5 needs split-usr enabled.
+BOOTSTRAP_USE="cxx unicode internal-glib split-usr python_targets_python3_5 python_targets_python2_7"
 
 # Mike Gilbert <floppym@gentoo.org> (15 May 2012)
 # Default target(s) for python-r1.eclass
