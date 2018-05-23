@@ -1,4 +1,4 @@
-From ef3719d39e8bb7e96c6ec57d60261f1516353460 Mon Sep 17 00:00:00 2001
+From 0d5b3bc1cc492c10072def017fe704782bc4b274 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Fri, 4 May 2018 17:40:04 +0200
 Subject: [PATCH] Use pkg-config to find freetype
@@ -6,14 +6,14 @@ Subject: [PATCH] Use pkg-config to find freetype
 As of freetype-2.9.1 the freetype-config script has been deprecated and
 is no longer shipped by default.
 ---
- configure.in | 22 ++--------------------
- 1 file changed, 2 insertions(+), 20 deletions(-)
+ configure.in | 30 +++++++-----------------------
+ 1 file changed, 7 insertions(+), 23 deletions(-)
 
 diff --git a/configure.in b/configure.in
-index 95943a0b..f1685c26 100644
+index 361db86c..cb9423f5 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -257,26 +257,8 @@ freetype_support=yes)
+@@ -257,26 +257,10 @@ freetype_support=yes)
  
  if test "$freetype_support" = "yes"; then
  	dnl Check for the freetype library
@@ -38,10 +38,25 @@ index 95943a0b..f1685c26 100644
 -	AC_SUBST(FREETYPE_LIBS)
 -	AC_SUBST(FREETYPE_CFLAGS)
 +	PKG_PROG_PKG_CONFIG
-+	PKG_CHECK_MODULES(FREETYPE, freetype2,, AC_MSG_ERROR([Could not find freetype]))
++	PKG_CHECK_MODULES(FREETYPE, freetype2, HAS_FREETYPE=true,
++		AC_MSG_ERROR([Could not find freetype])
++	)
  fi
  
  dnl Check for the ungif or gif (new or old) libraries
+@@ -334,9 +318,9 @@ if test -n "${ZLIB}" -a -n "${ZLIB_INC}"; then
+ 	AC_DEFINE([USE_ZLIB], [1], [Use zlib])
+ fi
+ 
+-AM_CONDITIONAL(USE_FREETYPE, test x${ft_config} != x)
+-if test -n "${ft_config}"; then
+-	AC_DEFINE(USE_FREETYPE, [1], [Use freetype library])
++AM_CONDITIONAL(USE_FREETYPE, test x${HAS_FREETYPE} != x)
++if test x${HAS_FREETYPE} = xtrue ; then
++       AC_DEFINE(USE_FREETYPE, [1], [Use freetype library])
+ fi
+ 
+ AM_CONDITIONAL(GIFLIB_GIFERRORSTRING, test x"$ac_cv_lib_gif_GifErrorString" = xyes)
 -- 
 2.17.0
 
