@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="MIDI and audio sequencer and notation editor"
-HOMEPAGE="http://www.rosegardenmusic.com/"
+HOMEPAGE="https://www.rosegardenmusic.com/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
