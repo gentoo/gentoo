@@ -29,6 +29,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-libs/libproxy:=
 	net-misc/curl:=[ssl]
 	sys-apps/dbus
+	sys-apps/systemd
 	gtk? ( >=x11-libs/gtk+-3.3.12:3 )
 	python? ( ${PYTHON_DEPS} )
 	x11-misc/xdg-utils
@@ -39,7 +40,6 @@ DEPEND="${COMMON_DEPEND}
 	app-text/asciidoc
 	app-text/xmlto
 	>=dev-util/intltool-0.3.50
-	sys-apps/systemd
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "
