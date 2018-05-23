@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1
 
 DESCRIPTION="a package for multitrack audio processing"
-HOMEPAGE="http://ecasound.seul.org/ecasound"
-SRC_URI="http://ecasound.seul.org/download/${P}.tar.gz"
+HOMEPAGE="https://ecasound.seul.org/ecasound/"
+SRC_URI="https://ecasound.seul.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
