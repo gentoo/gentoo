@@ -63,7 +63,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/gkrellm 2.3.10-r1: Single process stack of various system monitors
-app-admin/glance 15.0.1 16.0.0: Services for discovering, registering, and retrieving VM images
+app-admin/glance 15.0.1 16.0.1: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -8285,7 +8285,7 @@ net-analyzer/hping 3_pre20051105-r6: A ping-like TCP/IP packet assembler/analyze
 net-analyzer/httping 2.5: http protocol ping-like program
 net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
-net-analyzer/icinga2 2.8.2: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.8.4: Distributed, general purpose, network monitoring engine
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4-r2: display bandwidth usage on an interface
