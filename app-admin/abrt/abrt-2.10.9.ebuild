@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit autotools xdg-utils python-single-r1 systemd user
+inherit autotools gnome2-utils python-single-r1 systemd user
 
 DESCRIPTION="Automatic bug detection and reporting tool"
 HOMEPAGE="https://github.com/abrt/abrt/wiki/ABRT-Project"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug selinux systemd"
+IUSE="debug selinux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
@@ -24,6 +24,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/nss
 	>=gnome-base/gsettings-desktop-schemas-3.15.1
 	sys-apps/dbus
+	sys-apps/systemd
 	sys-auth/polkit
 	sys-fs/inotify-tools
 	x11-libs/gtk+:3
@@ -77,7 +78,7 @@ src_configure() {
 		$(usex selinux "" "--without-selinux")
 		--without-python2
 		# Fixes "syntax error in VERSION script" and we aren't supporting Python2 anyway
-		$(usex python "--with-python3" "--without-python3")
+		--with-python3
 		--without-pythondoc
 		# package breaks due to no sphinx-build-3
 		--without-pythontests
