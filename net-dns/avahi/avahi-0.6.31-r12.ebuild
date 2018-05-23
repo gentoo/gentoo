@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,8 +17,8 @@ SRC_URI="http://avahi.org/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
-IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python qt4 selinux test utils"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
+IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python selinux test utils"
 
 REQUIRED_USE="
 	utils? ( || ( gtk gtk3 ) )
@@ -33,7 +33,6 @@ COMMON_DEPEND="
 	dev-libs/expat
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	gdbm? ( >=sys-libs/gdbm-1.10-r1[${MULTILIB_USEDEP}] )
-	qt4? ( dev-qt/qtcore:4[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2[${MULTILIB_USEDEP}] )
 	gtk3? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
@@ -196,7 +195,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable introspection) \
 		$(multilib_native_use_enable utils gtk-utils) \
 		--disable-qt3 \
-		$(use_enable qt4) \
+		--disable-qt4 \
 		$(use_enable gdbm) \
 		$(systemd_with_unitdir) \
 		"${myconf[@]}"
@@ -215,11 +214,6 @@ multilib_src_install() {
 
 	use howl-compat && dosym avahi-compat-howl.pc /usr/$(get_libdir)/pkgconfig/howl.pc
 	use mdnsresponder-compat && dosym avahi-compat-libdns_sd/dns_sd.h /usr/include/dns_sd.h
-
-	# Needed for running on systemd properly, bug #537000
-	if multilib_is_native_abi; then
-		ln -s avahi-daemon.service "${D}$(systemd_get_unitdir)"/dbus-org.freedesktop.Avahi.service || die
-	fi
 
 	if multilib_is_native_abi && use doc; then
 		dohtml -r doxygen/html/. || die
