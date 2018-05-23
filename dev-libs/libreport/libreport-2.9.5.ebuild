@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit autotools ltprune python-r1 user
+inherit autotools python-r1 user
 
 DESCRIPTION="Generic library for reporting software bugs"
 HOMEPAGE="https://github.com/abrt/libreport"
@@ -29,6 +29,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-libs/libproxy:=
 	net-misc/curl:=[ssl]
 	sys-apps/dbus
+	sys-apps/systemd
 	gtk? ( >=x11-libs/gtk+-3.3.12:3 )
 	python? ( ${PYTHON_DEPS} )
 	x11-misc/xdg-utils
@@ -66,15 +67,23 @@ src_configure() {
 		--without-python2
 		$(usex python "--with-python3" "--without-python3")
 	)
+	if use python; then
+		python_foreach_impl run_in_build_dir \
+			econf "${myargs[@]}"
+	else
+		econf "${myargs[@]}"
+	fi
+}
 
-	econf "${myargs[@]}"
+src_compile() {
+	use python && python_foreach_impl run_in_build_dir default
 }
 
 src_install() {
-
+	use python && python_foreach_impl run_in_build_dir default
 	# Need to set correct ownership for use by app-admin/abrt
 	diropts -o abrt -g abrt
 	keepdir /var/spool/abrt
 
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -exec rm -f {} + || die
 }
