@@ -94,9 +94,6 @@ pkg_prerm() {
 
 pkg_postrm() {
     use initramfs && mount-boot_pkg_postrm
-"intel-microcode-20180425.ebuild" [converted] 101L, 2785Cc                                                                                                             57,4-10       Top
-pkg_postrm() {
-    use initramfs && mount-boot_pkg_postrm
 }
 
 pkg_postinst() {
