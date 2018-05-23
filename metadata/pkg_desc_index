@@ -8601,7 +8601,7 @@ net-libs/libeXosip 3.5.0: library to use the SIP protocol for multimedia session
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r1: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.8: A portable, efficient middleware for different kinds of mail access
-net-libs/libgadu 1.11.4 1.12.1 1.12.2: This library implements the client side of the Gadu-Gadu protocol
+net-libs/libgadu 1.11.4 1.12.2: This library implements the client side of the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
