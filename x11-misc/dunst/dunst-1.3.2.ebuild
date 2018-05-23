@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit toolchain-funcs
 
-DESCRIPTION="customizable and lightweight notification-daemon"
+DESCRIPTION="Customizable and lightweight notification-daemon"
 HOMEPAGE="http://www.knopwob.org/dunst/ https://github.com/dunst-project/dunst"
 SRC_URI="https://github.com/${PN}-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -19,10 +20,10 @@ CDEPEND="
 	sys-apps/dbus
 	x11-libs/cairo[X,glib]
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2=
+	x11-libs/libX11
 	x11-libs/libXScrnSaver
-	x11-libs/libXft
 	x11-libs/libXinerama
+	x11-libs/libXrandr
 	x11-libs/pango[X]
 	dunstify? ( x11-libs/libnotify )
 "
