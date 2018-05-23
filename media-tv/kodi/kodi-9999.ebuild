@@ -122,7 +122,7 @@ RDEPEND="${COMMON_DEPEND}
 		|| ( app-misc/lirc app-misc/inputlircd )
 	)
 	!media-tv/xbmc
-	udisks? ( sys-fs/udisks:0 )
+	udisks? ( sys-fs/udisks:2 )
 	upower? (
 		systemd? ( sys-power/upower )
 		!systemd? (
