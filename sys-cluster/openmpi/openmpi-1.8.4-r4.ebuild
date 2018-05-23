@@ -57,6 +57,7 @@ RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/mpiexec
+	!sys-cluster/pmix
 	dev-libs/libevent
 	dev-libs/libltdl:0
 	>=sys-apps/hwloc-1.9.1[numa?]
