@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs eutils multilib multilib-minimal
 
 DESCRIPTION="Audio processing system for plugins to extract information from audio data"
-HOMEPAGE="http://www.vamp-plugins.org"
+HOMEPAGE="https://www.vamp-plugins.org"
 SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2206/${P}.tar.gz"
 
 LICENSE="BSD"
