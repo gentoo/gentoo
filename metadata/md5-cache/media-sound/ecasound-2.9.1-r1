@@ -2,13 +2,13 @@ DEFINED_PHASES=configure install prepare setup
 DEPEND=sys-libs/readline:0= alsa? ( media-libs/alsa-lib:= ) audiofile? ( media-libs/audiofile:= ) jack? ( virtual/jack:= ) libsamplerate? ( media-libs/libsamplerate:= ) lv2? ( >=media-libs/lilv-0.5.0:= ) media-libs/ladspa-sdk mikmod? ( media-libs/libmikmod:0= ) ncurses? ( sys-libs/ncurses:0= ) oil? ( dev-libs/liboil:= ) osc? ( media-libs/liblo:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby ) sndfile? ( media-libs/libsndfile:= ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a package for multitrack audio processing
 EAPI=6
-HOMEPAGE=http://ecasound.seul.org/ecasound
+HOMEPAGE=https://ecasound.seul.org/ecasound/
 IUSE=alsa audiofile debug doc jack libsamplerate lv2 mikmod ncurses oil osc oss python ruby sndfile static-libs test python_targets_python2_7
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=sys-libs/readline:0= alsa? ( media-libs/alsa-lib:= ) audiofile? ( media-libs/audiofile:= ) jack? ( virtual/jack:= ) libsamplerate? ( media-libs/libsamplerate:= ) lv2? ( >=media-libs/lilv-0.5.0:= ) media-libs/ladspa-sdk mikmod? ( media-libs/libmikmod:0= ) ncurses? ( sys-libs/ncurses:0= ) oil? ( dev-libs/liboil:= ) osc? ( media-libs/liblo:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby ) sndfile? ( media-libs/libsndfile:= )
 REQUIRED_USE=test? ( lv2 ) python? ( python_targets_python2_7 )
 SLOT=1
-SRC_URI=http://ecasound.seul.org/download/ecasound-2.9.1.tar.gz
+SRC_URI=https://ecasound.seul.org/download/ecasound-2.9.1.tar.gz
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3fad9e7ac306532d17a3bc1eb6b660c1
+_md5_=a135f9c101c9cafee56efd654582a106
