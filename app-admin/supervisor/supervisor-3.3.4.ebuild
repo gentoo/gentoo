@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )	# py2 only
 # xml.etree.ElementTree module required.
 PYTHON_REQ_USE="xml"
 
-inherit distutils-r1 user
+inherit distutils-r1 systemd user
 
 MY_PV="${PV/_beta/b}"
 
@@ -61,6 +61,7 @@ python_install_all() {
 	insinto /etc
 	doins "${FILESDIR}/supervisord.conf"
 	keepdir /var/log/supervisor
+	systemd_dounit "${FILESDIR}/supervisord.service"
 }
 
 pkg_preinst() {
