@@ -28,21 +28,30 @@ RDEPEND="!<sys-apps/microcode-ctl-1.17-r2" #268586
 S=${WORKDIR}
 
 # Blacklist bad microcode here.
-# 0x000604f1 aka 06-4f-01 aka CPUID 406F1 require newer microcode loader
-DEFAULT_MICROCODE_SIGNATURES="-s !0x000604f1"
+# 0x000406f1 aka 06-4f-01 aka CPUID 406F1 require newer microcode loader
+MICROCODE_BLACKLIST_DEFAULT="-s !0x000406f1"
+MICROCODE_BLACKLIST="${MICROCODE_BLACKLIST:=${MICROCODE_BLACKLIST_DEFAULT}}"
+
+# In case we want to set some defaults ...
+MICROCODE_SIGNATURES_DEFAULT=""
 
 # Advanced users only:
 # merge with:
 # only current CPU: MICROCODE_SIGNATURES="-S"
 # only specific CPU: MICROCODE_SIGNATURES="-s 0x00000f4a -s 0x00010676"
 # exclude specific CPU: MICROCODE_SIGNATURES="-s !0x00000686"
-MICROCODE_SIGNATURES="${MICROCODE_SIGNATURES:=${DEFAULT_MICROCODE_SIGNATURES}}"
+MICROCODE_SIGNATURES="${MICROCODE_SIGNATURES:=${MICROCODE_SIGNATURES_DEFAULT}}"
 
 pkg_pretend() {
-	if [[ "${MICROCODE_SIGNATURES}" != "${DEFAULT_MICROCODE_SIGNATURES}" ]]; then
-		ewarn "The user has opted in for advanced use:"
-		ewarn "MICROCODE_SIGNATURES is set to \"${MICROCODE_SIGNATURES}\" instead of default \"${DEFAULT_MICROCODE_SIGNATURES}\"!"
+	if [[ "${MICROCODE_BLACKLIST}" != "${MICROCODE_BLACKLIST_DEFAULT}" ]]; then
+		ewarn "MICROCODE_BLACKLIST is set to \"${MICROCODE_BLACKLIST}\" instead of default \"${MICROCODE_BLACKLIST_DEFAULT}\". You are on your own!"
 	fi
+
+	if [[ "${MICROCODE_SIGNATURES}" != "${MICROCODE_SIGNATURES_DEFAULT}" ]]; then
+		ewarn "The user has opted in for advanced use:"
+		ewarn "MICROCODE_SIGNATURES is set to \"${MICROCODE_SIGNATURES}\" instead of default \"${MICROCODE_SIGNATURES_DEFAULT}\"!"
+	fi
+
 	use initramfs && mount-boot_pkg_pretend
 }
 
@@ -70,6 +79,7 @@ src_install() {
 	fi
 
 	opts=(
+		${MICROCODE_BLACKLIST}
 		${MICROCODE_SIGNATURES}
 		# be strict about what we are doing
 		--overwrite
@@ -112,18 +122,21 @@ pkg_postrm() {
 pkg_postinst() {
 	use initramfs && mount-boot_pkg_postinst
 
-	if [[ "${MICROCODE_SIGNATURES}" != "${DEFAULT_MICROCODE_SIGNATURES}" ]]; then
-		if kernel_is -lt 4 14 34; then
-			ewarn "${P} contains microcode updates which require"
-			ewarn "additional kernel patches which aren't yet included in kernel <4.14.34."
-			ewarn "Loading such a microcode through kernel interface from an unpatched kernel"
-			ewarn "can crash your system!"
-			ewarn ""
-			ewarn "Those microcodes are blacklisted per default. However, you have altered"
-			ewarn "MICROCODE_SIGNATURES and maybe unintentionally re-enabled those microcodes."
-			ewarn ""
-			ewarn "Check ${EROOT%/}/usr/share/doc/${P}/releasenot* if your microcode update"
-			ewarn "requires additional kernel patches or not."
-		fi
+	# We cannot give detailed information if user is affected or not:
+	# If MICROCODE_BLACKLIST wasn't modified, user can still use MICROCODE_SIGNATURES
+	# to to force a specific, otherwise blacklisted, microcode. So we
+	# only show a generic warning based on running kernel version:
+	if kernel_is -lt 4 14 34; then
+		ewarn "${P} contains microcode updates which require"
+		ewarn "additional kernel patches which aren't yet included in kernel <4.14.34."
+		ewarn "Loading such a microcode through kernel interface from an unpatched kernel"
+		ewarn "can crash your system!"
+		ewarn ""
+		ewarn "Those microcodes are blacklisted per default. However, if you have altered"
+		ewarn "MICROCODE_BLACKLIST or MICROCODE_SIGNATURES, you maybe have unintentionally"
+		ewarn "re-enabled those microcodes...!"
+		ewarn ""
+		ewarn "Check ${EROOT%/}/usr/share/doc/${P}/releasenot* if your microcode update"
+		ewarn "requires additional kernel patches or not."
 	fi
 }
