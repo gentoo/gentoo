@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # TODO: run-time test for ipv6: does it need mediastreamer[ipv6]?
-IUSE="assistant doc gsm-nonstandard gtk ipv6 libnotify ncurses nls sqlite ssl tools upnp video"
+IUSE="assistant doc gsm-nonstandard gtk ipv6 libnotify libressl ncurses nls sqlite ssl tools upnp video"
 
 RDEPEND="
 	>=media-libs/mediastreamer-2.9.0[ipv6?,upnp?,video?]
@@ -35,7 +35,10 @@ RDEPEND="
 		sys-libs/ncurses
 	)
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? (
+		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0= )
+	)
 	tools? ( dev-libs/libxml2 )
 	upnp? ( net-libs/libupnp )
 	video? ( >=media-libs/mediastreamer-2.9.0[v4l] )
