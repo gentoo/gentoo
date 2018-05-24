@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>csmk+gentoo@chaoslab.org</email>
+		<email>gentoo@chaoslab.org</email>
 		<name>Ian Moone</name>
 	</maintainer>
 	<maintainer type="project">
