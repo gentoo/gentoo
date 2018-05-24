@@ -29,10 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# William Hubbs <williamh@gentoo.org> (22 May 2018)
-# Installs spurious paths  ,see bug #656380
-=sys-apps/baselayout-2.5
-
 # Lars Wendler <polynomial-c@gentoo.org> (22 May 2018)
 # Breaks revdeps (most likely because of GooHash removal).
 # See tracker bug https://bugs.gentoo.org/656264
