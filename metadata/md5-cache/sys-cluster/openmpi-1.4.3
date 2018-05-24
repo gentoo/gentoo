@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare setup test
-DEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec fortran? ( virtual/fortran )
+DEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec !sys-cluster/pmix fortran? ( virtual/fortran )
 DESCRIPTION=A high-performance message passing library (MPI)
 EAPI=5
 HOMEPAGE=http://www.open-mpi.org
 IUSE=+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt
 KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=BSD
-RDEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec fortran? ( virtual/fortran )
+RDEPEND=pbs? ( sys-cluster/torque ) vt? ( !dev-libs/libotf !app-text/lcdf-typetools ) elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) ) !sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec !sys-cluster/pmix fortran? ( virtual/fortran )
 RESTRICT=mpi-threads? ( test )
 SLOT=0
 SRC_URI=http://www.open-mpi.org/software/ompi/v1.4/downloads/openmpi-1.4.3.tar.bz2
 _eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=094a8afce4f365d9e196b0df6a105673
+_md5_=4c8312e512913abf59365232bdd2091c
