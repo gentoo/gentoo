@@ -21,7 +21,7 @@ RDEPEND=">=sys-libs/glibc-2.15
 S="${WORKDIR}"
 
 src_install() {
-	dobin mg
+	newbin mg mastergear
 	docinto html
 	dodoc MG.html
 }
