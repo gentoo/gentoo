@@ -5,8 +5,8 @@ EAPI=5
 inherit multilib multilib-minimal
 
 DESCRIPTION="An audio time-stretching and pitch-shifting library and utility program"
-HOMEPAGE="http://www.breakfastquay.com/rubberband/"
-SRC_URI="http://code.breakfastquay.com/attachments/download/34/${P}.tar.bz2"
+HOMEPAGE="https://www.breakfastquay.com/rubberband/"
+SRC_URI="https://code.breakfastquay.com/attachments/download/34/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
