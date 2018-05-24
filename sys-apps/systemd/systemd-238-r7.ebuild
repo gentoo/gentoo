@@ -154,6 +154,7 @@ src_prepare() {
 		"${FILESDIR}/238-initctl.patch"
 		"${FILESDIR}/238-nspawn-wait.patch"
 		"${FILESDIR}/238-timesync-connection.patch"
+		"${FILESDIR}/238-sparc-raw-clone.patch"
 	)
 
 	if ! use vanilla; then
