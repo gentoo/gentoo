@@ -1,0 +1,9 @@
+--- a/bash_completion.d/unp
++++ a/bash_completion.d/unp
+@@ -1,6 +1,5 @@
+ # bash completion for unp
+ 
+-have unp &&
+ _unp()
+ {
+     local cur
