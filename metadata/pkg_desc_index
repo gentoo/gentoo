@@ -9831,7 +9831,7 @@ sys-apps/shadow 4.6: Utilities to deal with user accounts
 sys-apps/smartmontools 6.4 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 236-r5 238-r6: System and service manager for Linux
+sys-apps/systemd 236-r5 238-r7: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
