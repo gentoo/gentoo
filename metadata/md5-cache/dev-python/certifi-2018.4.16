@@ -4,11 +4,11 @@ DESCRIPTION=Python package for providing Mozilla's CA Bundle
 EAPI=6
 HOMEPAGE=http://certifi.io/ https://pypi.org/project/certifi
 IUSE=python_targets_pypy python_targets_pypy3 python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MPL-2.0
 RDEPEND=app-misc/ca-certificates python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_pypy3? ( >=virtual/pypy3-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_pypy python_targets_pypy3 python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
 SLOT=0
 SRC_URI=mirror://pypi/c/certifi/certifi-2018.4.16.tar.gz
 _eclasses_=distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	e51c7882b7b721e54e684f7eb143cbfe	python-r1	c66af00ffb980e8eb1c961d5e63597fe	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	fa02994d0beba88681127d93da4411ec	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=3c0364e09c5485ec14d479e7bc2d281a
+_md5_=dd6415e86b22f8d29c363c9738d15ca2
