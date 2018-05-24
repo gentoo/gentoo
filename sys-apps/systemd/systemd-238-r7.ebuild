@@ -154,6 +154,7 @@ src_prepare() {
 		"${FILESDIR}/238-initctl.patch"
 		"${FILESDIR}/238-nspawn-wait.patch"
 		"${FILESDIR}/238-timesync-connection.patch"
+		"${FILESDIR}/238-sparc-raw-clone.patch"
 	)
 
 	if ! use vanilla; then
@@ -290,6 +291,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
 	eninja test
 }
 
