@@ -23,7 +23,6 @@ RDEPEND=">=media-libs/libsdl-1.2.7:0[joystick,video,X]
 		dbus? ( sys-apps/dbus )
 		sys-libs/zlib
 		x11-libs/pango
-		dev-lang/lua:0
 		media-libs/fontconfig
 	)
 	>=dev-libs/boost-1.48:=[nls,threads]
