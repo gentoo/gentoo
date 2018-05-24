@@ -63,11 +63,11 @@ multilib_layout() {
 	# data ... just fall over in that case.
 	local prefix prefix_lst
 	if use split-usr ; then
-		prefix_lst="${EROOT}"{,usr/,usr/local/}
+		prefix_lst=( "${EROOT}"{,usr/,usr/local/} )
 	else
-		prefix_lst="${EROOT}"{usr/,usr/local/}
+		prefix_lst=( "${EROOT}"{usr/,usr/local/} )
 	fi
-	for prefix in "${prefix_lst}"; do
+	for prefix in "${prefix_lst[@]}"; do
 		if [ "${SYMLINK_LIB}" = yes ] ; then
 			# we need to make sure "lib" points to the native libdir
 			if [ -h "${prefix}lib" ] ; then
@@ -257,6 +257,11 @@ pkg_postinst() {
 		if ! version_is_at_least 2.5 ${x}; then
 			ewarn "Please run env-update then log out and back in to"
 			ewarn "update your path."
+		fi
+		# clean up after 2.5 typos
+		# https://bugs.gentoo.org/show_bug.cgi?id=656380
+		if [[ ${x} == 2.5 ]]; then
+			rm -fr "${EROOT}{,usr"
 		fi
 	done
 
