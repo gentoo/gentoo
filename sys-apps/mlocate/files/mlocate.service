@@ -1,0 +1,10 @@
+[Unit]
+Description=Update locate database
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/mlocate/mlocate.sh systemd
+Nice=19
+IOSchedulingClass=idle
+IOSchedulingPriority=7
