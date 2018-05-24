@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 WX_GTK_VER=3.0
 
-inherit eutils gnome2 fdo-mime multilib python-single-r1 versionator wxwidgets autotools
+inherit autotools gnome2 python-single-r1 versionator wxwidgets xdg-utils
 
 MY_PM=${PN}$(get_version_component_range 1-2 ${PV})
 MY_PM=${MY_PM/.}
@@ -32,8 +32,8 @@ RDEPEND="${PYTHON_DEPS}
 	sci-libs/gdal
 	sys-libs/gdbm
 	sys-libs/ncurses:0=
-	sys-libs/zlib
-	fftw? ( sci-libs/fftw:3.0 )
+	sys-libs/zlib:=
+	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos )
 	blas? ( virtual/blas
 		sci-libs/cblas-reference )
@@ -121,9 +121,7 @@ src_prepare() {
 	sed -e 's:\(#include <ogr_api.h>\):#ifdef HAVE_OGR\n\1\n#endif:' \
 		-i "${S}/vector/v.external/main.c" || die "failed to sed main.c"
 
-	epatch "${PATCHES[@]}"
-
-	eapply_user
+	default
 	eautoconf
 
 	ebegin "Fixing python shebangs"
@@ -254,14 +252,14 @@ src_install() {
 
 pkg_postinst() {
 	if use X; then
-		fdo-mime_desktop_database_update
+		xdg_desktop_database_update
 		gnome2_icon_cache_update
 	fi
 }
 
 pkg_postrm() {
 	if use X; then
-		fdo-mime_desktop_database_update
+		xdg_desktop_database_update
 		gnome2_icon_cache_update
 	fi
 }
