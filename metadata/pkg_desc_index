@@ -3018,7 +3018,6 @@ dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applicati
 dev-libs/libassuan 2.4.3-r1 2.5.1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 1.2-r1 7.2d 7.4.2 7.6.0 7.6.4: Implementation for atomic memory update operations
-dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
@@ -6784,7 +6783,6 @@ kde-frameworks/kcrash 5.43.0: Framework for intercepting and handling applicatio
 kde-frameworks/kdbusaddons 5.43.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.43.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.43.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs 4.14.37: Libraries needed for programs by KDE
 kde-frameworks/kdelibs-env 4.14.3: Environment setting required for all KDELibs4 apps to run
 kde-frameworks/kdelibs4support 5.43.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesignerplugin 5.43.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
@@ -6901,7 +6899,6 @@ kde-plasma/plasma-workspace-wallpapers 5.11.5 5.12.5: Additional wallpapers for 
 kde-plasma/plymouth-kcm 5.11.5 5.12.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.11.5 5.12.5: PolKit agent module for KDE Plasma
 kde-plasma/powerdevil 5.11.5 5.12.5: Power management for KDE Plasma Shell
-kde-plasma/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt4 applications with KDE Plasma
 kde-plasma/sddm-kcm 5.11.5 5.12.5: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.11.5 5.12.5: System settings utility
 kde-plasma/user-manager 5.11.5 5.12.5-r1: Simple system settings module to manage the users of your system

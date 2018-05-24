@@ -2305,7 +2305,6 @@ kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-frameworks/frameworkintegration:appstream - Enable AppStream software metadata support
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
-kde-frameworks/kdelibs:qt3support - Enable kde3support/qt3support for very old applications
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
 kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
 kde-frameworks/kfilemetadata:epub - Enable support for reading EPUB ebook metadata
