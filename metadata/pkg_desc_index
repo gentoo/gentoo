@@ -6390,7 +6390,7 @@ games-puzzle/hitori 3.22.4: Logic puzzle game for GNOME
 games-puzzle/lightsoff 3.24.0: Turn off all the lights
 games-puzzle/quadrapassel 3.22.0: Fit falling blocks together
 games-puzzle/swell-foop 3.24.0: Clear the screen by removing groups of colored and shaped tiles
-games-strategy/seven-kingdoms 2.14.4 2.14.7: Seven Kingdoms: Ancient Adversaries
+games-strategy/seven-kingdoms 2.14.7: Seven Kingdoms: Ancient Adversaries
 games-util/pogo-manager-bin 0.1.6: Pokemon Go manager
 games-util/pyfa 1.34.0: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qstat 2.11: Server statics collector supporting many FPS games
