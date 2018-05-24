@@ -278,10 +278,6 @@ dev-python/kiwi
 # instead of its own.  Removal in 30 days.  Bug #526552.
 dev-python/tdaemon
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
-# Depends on dead Qt4, no more revdeps. Masked for removal in 30 days.
-dev-libs/qjson
-
 # Michał Górny <mgorny@gentoo.org> (22 Apr 2018)
 # Unmaintained buggy package with unresearched segfaults.  No support
 # for Python 3.  No reverse dependencies.
