@@ -3,9 +3,10 @@ DEPEND=>=app-text/sgmltools-lite-3.0.3-r9 dev-util/byacc >=app-portage/elt-patch
 DESCRIPTION=language independent text-to-speech system
 EAPI=6
 HOMEPAGE=http://epos.ufe.cz/
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 x86
+IUSE=+voices
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=mirror://sourceforge/epos/epos-2.5.37.tar.gz
+SRC_URI=mirror://sourceforge/epos/epos-2.5.37.tar.gz voices? ( mirror://sourceforge/epos/voices/Czech%20_%20Machac%2BViolka%2C%20July%2005/epos-tdp.tgz )
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=e0701f6837c08e068d7c25c2c47e6865
+_md5_=1dfef6c395ad74a18e55e4e1d871d5dc
