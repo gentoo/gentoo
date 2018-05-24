@@ -32,8 +32,8 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
 # Depends on dead Qt4. Masked for removal in 30 days. Bug #629018
 dev-libs/libattica
-kde-frameworks/kde-env
 kde-frameworks/kdelibs
+kde-frameworks/kdelibs-env
 kde-plasma/qguiplatformplugin_kde
 
 # Lars Wendler <polynomial-c@gentoo.org> (22 May 2018)
