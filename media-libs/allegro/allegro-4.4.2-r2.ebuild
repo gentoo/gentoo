@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-r2-underlink.patch
 	"${FILESDIR}"/${P}-r2-gentoo.patch
 	"${FILESDIR}"/${P}-r2-rpath.patch
+	"${FILESDIR}"/${P}-Werror-format-security.patch
 )
 
 src_prepare() {
