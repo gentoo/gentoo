@@ -6,7 +6,7 @@ EAPI="6"
 inherit udev unpacker
 
 DESCRIPTION="Proprietary plugins and firmware for HPLIP"
-HOMEPAGE="http://hplipopensource.com/hplip-web/index.html"
+HOMEPAGE="https://developers.hp.com/hp-linux-imaging-and-printing"
 SRC_URI="http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-${PV}-plugin.run"
 
 LICENSE="hplip-plugin"
