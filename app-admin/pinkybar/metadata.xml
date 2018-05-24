@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>wifiextender@yandex.com</email>
+		<name>Aaron Caffrey</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">su8/pinky-bar</remote-id>
+	</upstream>
+	<use>
+		<flag name="alsa">Get the sound volume level using ALSA.</flag>
+		<flag name="colors">Colorize the output data.</flag>
+		<flag name="drivetemp">Read the drive temperature from S.M.A.R.T.</flag>
+		<flag name="drivetemp-light">Read the drive temperature from S.M.A.R.T
+			light version.</flag>
+		<flag name="dvd">To get the cdrom or dvdrom vendor and model names.</flag>
+		<flag name="dwm">Output the data to the root window. Enable it if you are
+			using dwm.</flag>
+		<flag name="ip">Fetch and display your external (ipv4) IP address.</flag>
+		<flag name="keyboard">Query xorg and show the currently used keyboard
+			layout.</flag>
+		<flag name="libnl">Enable the wifi related options regarding chipsets
+			supporting the cfg80211,mac80211 modules</flag>
+		<flag name="lisp">Extend pinkybar with your own crafted script written
+			in lisp, stored in /usr/share/pinkysc/pinky.lisp</flag>
+		<flag name="mouse">Query xorg and get the mouse speed in percentage.</flag>
+		<flag name="mpd">To see the currently played song name, date, artist(s),
+			title.</flag>
+		<flag name="ncurses">Output the data to the terminal using the ncurses
+			library.</flag>
+		<flag name="numcapslock">Query xorg to get the current state of numlock
+			, capslock and scroll lock.</flag>
+		<flag name="net">Enable the internet related options.</flag>
+		<flag name="pci">To get the NIC vendor and model names.</flag>
+		<flag name="perl">Extend pinkybar with your own crafted script written
+			in perl, stored in /usr/share/pinkysc/pinky.pl</flag>
+		<flag name="python2">Extend pinkybar with your own crafted script
+			written in python, stored in /usr/share/pinkysc/pinky.py</flag>
+		<flag name="r">Extend pinkybar with your own crafted script written in
+			R, stored in /usr/share/pinkysc/pinky.R</flag>
+		<flag name="ruby">Extend pinkybar with your own crafted script written
+			in ruby, stored in /usr/share/pinkysc/pinky.rb</flag>
+		<flag name="sensors">Alternative way to obtain data from the sensors.</flag>
+		<flag name="slang">Extend pinkybar with your own crafted script written
+			in slang, stored in /usr/share/pinkysc/pinky.sl</flag>
+		<flag name="smartemp">Read the drive temperature from S.M.A.R.T.</flag>
+		<flag name="tcl">Extend pinkybar with your own crafted scripts written
+			in tcl, stored in /usr/share/pinkysc/pinky.tcl</flag>
+	</use>
+</pkgmetadata>
