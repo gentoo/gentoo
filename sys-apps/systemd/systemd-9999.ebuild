@@ -289,6 +289,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
 	eninja test
 }
 
