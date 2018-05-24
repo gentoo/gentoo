@@ -2232,7 +2232,7 @@ kde-apps/cantor:R - Enable dev-lang/R backend support
 kde-apps/cantor:analitza - Enable kde-apps/analitza backend support
 kde-apps/cantor:julia - Enable dev-lang/julia backend support
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
-kde-apps/dolphin:thumbnail - Enables video thumbnail generation
+kde-apps/dolphin:thumbnail - Enables thumbnail generation
 kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
 kde-apps/dolphin-plugins:dropbox - Enable support for the dropbox fileviewer plugin
 kde-apps/dolphin-plugins:git - Enable support for the git VCS
