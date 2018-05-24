@@ -8,6 +8,12 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
+# kdelibs4 is dead and going away. Bug #645558
+<app-office/libreoffice-6.0 kde
+<app-office/libreoffice-bin-6.0 kde
+<app-office/libreoffice-bin-debug-6.0 kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
 # Qt4 is dead and going away.
 kde-plasma/plasma-desktop qt4
 kde-plasma/plasma-meta qt4
