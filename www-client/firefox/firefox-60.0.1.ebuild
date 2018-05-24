@@ -24,7 +24,7 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-60.0-patches-01"
+PATCH="${PN}-60.0-patches-02"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
@@ -56,8 +56,8 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 RDEPEND="
 	system-icu? ( >=dev-libs/icu-60.2 )
 	jack? ( virtual/jack )
-	>=dev-libs/nss-3.36.1
-	>=dev-libs/nspr-4.19
+	>=dev-libs/nss-3.35
+	>=dev-libs/nspr-4.18
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
