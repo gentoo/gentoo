@@ -11,5 +11,6 @@
 		<flag name="man">Enable manpages kioslave</flag>
 		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
 		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>
+		<flag name="taglib">Enable audio thumbnails via <pkg>media-libs/taglib</pkg></flag>
 	</use>
 </pkgmetadata>
