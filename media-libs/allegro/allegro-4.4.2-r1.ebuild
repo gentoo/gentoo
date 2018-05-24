@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-underlink.patch
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-rpath.patch
+	"${FILESDIR}"/${P}-Werror-format-security.patch # bug 540470
 )
 
 src_prepare() {
