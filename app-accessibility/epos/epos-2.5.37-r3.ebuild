@@ -7,12 +7,13 @@ inherit autotools
 
 DESCRIPTION="language independent text-to-speech system"
 HOMEPAGE="http://epos.ufe.cz/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+	voices? ( mirror://sourceforge/${PN}/voices/Czech%20_%20Machac%2BViolka%2C%20July%2005/epos-tdp.tgz )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+IUSE="+voices"
 
 DEPEND=">=app-text/sgmltools-lite-3.0.3-r9
 	dev-util/byacc"
@@ -46,4 +47,8 @@ src_install() {
 
 	doinitd "${FILESDIR}/eposd"
 	dodoc WELCOME THANKS Changes "${FILESDIR}/README.gentoo"
+	if use  voices ; then
+		insinto /usr/share/${PN}/inv/
+		doins -r ../tdp
+	fi
 }
