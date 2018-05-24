@@ -72,13 +72,14 @@ app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool fo
 app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r26: A simple utility to read the temperature of SMART capable hard drives
 app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
+app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/keepass 2.38: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.2.4: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.0.0: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.10: Check for mapped libs and open files that are marked as deleted
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
-app-admin/logcheck 1.3.15-r2: Mails anomalies in the system logfiles to the administrator
+app-admin/logcheck 1.3.15-r2 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.13.0 3.14.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r2: Automatically monitor system logs and mail security violations
@@ -151,7 +152,7 @@ app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1: Yet Another Log Analyzer
 app-antivirus/clamav 0.99.2-r1 0.99.3-r1 0.99.4-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2: Downloads and installs third-party clamav signatures
-app-arch/advancecomp 1.15: Recompress ZIP, PNG and MNG, considerably improving compression
+app-arch/advancecomp 1.15 2.0: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r1: Afio creates cpio-format archives.
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
@@ -1118,7 +1119,7 @@ app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of
 app-misc/uptimed 0.4.0-r1: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
-app-misc/vifm 0.9: Console file manager with vi(m)-like keybindings
+app-misc/vifm 0.9 0.9.1: Console file manager with vi(m)-like keybindings
 app-misc/vlock 2.2.3-r1: A console screen locker
 app-misc/wcd 5.2.7: Wherever Change Directory
 app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
@@ -3279,7 +3280,7 @@ dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression libr
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
 dev-lisp/clisp 2.48-r1 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
 dev-lisp/clozurecl 1.11.5: Common Lisp implementation, derived from Digitool's MCL product
-dev-lisp/ecls 13.5.1-r1: ECL is an embeddable Common Lisp implementation
+dev-lisp/ecls 13.5.1-r1 16.1.3: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
@@ -5736,7 +5737,7 @@ dev-ruby/actionpack 5.1.4: Eases web-request routing, handling, and response
 dev-ruby/actionview 5.1.4: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activemodel 5.1.4: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activesupport 5.0.6 5.1.4: Utility Classes and Extension to the Standard Library
-dev-ruby/addressable 2.4.0-r1: A replacement for the URI implementation that is part of Ruby's standard library
+dev-ruby/addressable 2.4.0-r1 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
 dev-ruby/atomic 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
@@ -5765,7 +5766,7 @@ dev-ruby/crass 1.0.3: Ruby CSS parser that's fully compliant with the CSS Syntax
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.6: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.6: A high performance pure Ruby client for accessing memcached servers
-dev-ruby/dbf 3.1.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 3.1.0 3.1.1: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/did_you_mean 1.0.2: 'did you mean?'experience in Ruby
@@ -5815,7 +5816,7 @@ dev-ruby/libxml 2.9.0: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.1.5-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/locale 2.1.0-r2 2.1.2-r1: A pure ruby library which provides basic APIs for localization
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
-dev-ruby/logue 1.0.4: A module that adds logging/trace functionality
+dev-ruby/logue 1.0.4 1.0.11: A module that adds logging/trace functionality
 dev-ruby/loofah 2.2.1: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/maxitest 2.4.0 2.8.0: Minitest + all the features you always wanted
@@ -5833,7 +5834,7 @@ dev-ruby/multi_xml 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/mustache 1.0.2: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.1.2: Numerical N-dimensional Array class
-dev-ruby/net-http-digest_auth 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
+dev-ruby/net-http-digest_auth 1.4-r2 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-scp 1.1.2-r1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r2: SFTP in pure Ruby
@@ -5849,6 +5850,7 @@ dev-ruby/patron 0.10.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pg 0.18.4-r1: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pkg-config 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1: Shows each value of variables and method calls in the expression
+dev-ruby/public_suffix 3.0.2: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/puppetdb-termini 5.2.2: Library needed to connect puppet to puppetdb
 dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.7 2.0.3: A modular Ruby webserver interface
@@ -5913,7 +5915,7 @@ dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 3.0.8: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
-dev-ruby/ruby-termios 1.0.0-r1: A Ruby interface to termios
+dev-ruby/ruby-termios 1.0.0-r1 1.0.2-r1: A Ruby interface to termios
 dev-ruby/ruby-vte 3.0.8: Ruby vte bindings
 dev-ruby/ruby-vte3 3.0.8-r1: Ruby VTE bindings
 dev-ruby/ruby-webkit2-gtk 3.0.8: Ruby WebKitGtk+ for Gtk 3.0 bindings
@@ -5922,7 +5924,7 @@ dev-ruby/ruby2ruby 2.3.2: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
 dev-ruby/ruby_parser 3.9.0: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.7.6: Centralized Ruby extension management system
-dev-ruby/rubypants 0.2.0-r5: A Ruby port of the SmartyPants PHP library
+dev-ruby/rubypants 0.2.0-r5 0.7.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sass 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
@@ -6268,7 +6270,7 @@ dev-util/pycharm-community 2017.3.3 2017.3.4: Intelligent Python IDE with unique
 dev-util/pycharm-professional 2017.3.3 2017.3.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.10.1: Modern build tool for software projects
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
-dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
+dev-util/qstlink2 1.0.3 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50: quilt patch manager
 dev-util/ragel 6.7-r1 6.10: Compiles finite state machines from regular languages into executable code
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
@@ -7171,7 +7173,7 @@ media-fonts/stix-fonts 1.1.1: Comprehensive OpenType font set of mathematical sy
 media-fonts/symbola 8.00 9.17: Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.40: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.40 4.46: A clean fixed font for the console and X11
 media-fonts/tex-gyre 2.005: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
 media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
@@ -7465,7 +7467,7 @@ media-libs/libao 1.2.0 1.2.2: The Audio Output library
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.13.6: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2: Blu-ray library for BD+ decryption
-media-libs/libbluray 0.9.3: Blu-ray playback libraries
+media-libs/libbluray 0.9.3 1.0.2: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r1: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
 media-libs/libcaca 0.99_beta18-r2 0.99_beta19: A library that creates colored ASCII-art graphics
@@ -7615,7 +7617,7 @@ media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.18.2-r1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.25 1.6.58 1.6.62: Stream based read/write library for COLLADA files
-media-libs/opencolorio 1.0.9-r2: A color management framework for visual effects and animation
+media-libs/opencolorio 1.0.9-r2 1.1.0-r1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/opencv 2.4.13-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.1.0 2.2.0-r2: ILM's OpenEXR high dynamic-range image file format libraries
@@ -7629,9 +7631,9 @@ media-libs/opusfile 0.6: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
 media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.9.1-r1: KDE multimedia API
-media-libs/phonon-gstreamer 4.9.0-r1: Phonon GStreamer backend
-media-libs/phonon-vlc 0.9.1-r1: Phonon VLC backend
+media-libs/phonon 4.9.1-r1 4.10.1: KDE multimedia API
+media-libs/phonon-gstreamer 4.9.0-r1 4.9.0-r2: Phonon GStreamer backend
+media-libs/phonon-vlc 0.9.1-r1 0.10.1: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
@@ -8196,7 +8198,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/mediainfo 17.12: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
-media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
+media-video/mjpegtools 2.1.0-r2 2.1.0-r3: Tools for MJPEG video
 media-video/mkvtoolnix 19.0.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.0.1-r1: A software motion detector
 media-video/movit 1.2.0: Modern Video Toolkit
@@ -8941,7 +8943,7 @@ net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneli
 net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connections
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/stunnel 5.36: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.36 5.43: TLS/SSL - Port Wrapper
 net-misc/suite3270 3.4_p10 3.5_p10: Complete 3270 access package
 net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
@@ -9099,7 +9101,7 @@ net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption
 net-wireless/aircrack-ng 1.2_rc1-r1: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
-net-wireless/bluez 5.47-r1 5.49: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 5.47-r1 5.49 5.49-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/crda 1.1.3-r1 3.18-r1: Central Regulatory Domain Agent for wireless networks
 net-wireless/gnome-bluetooth 3.20.1: Bluetooth graphical utilities integrated with GNOME
@@ -9269,7 +9271,7 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
-sci-geosciences/qgis 3.0.1: User friendly Geographic Information System
+sci-geosciences/qgis 3.0.1 3.0.2: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3: GPS mapping utility
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
