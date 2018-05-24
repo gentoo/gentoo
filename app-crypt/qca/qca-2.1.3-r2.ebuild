@@ -82,7 +82,7 @@ src_install() {
 
 	if use doc; then
 		pushd "${BUILD_DIR}" >/dev/null || die
-		doxygen Doxyfile.in || die
+		doxygen Doxyfile || die
 		dodoc -r apidocs/html
 		popd >/dev/null || die
 	fi
