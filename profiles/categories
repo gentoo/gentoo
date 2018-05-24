@@ -42,6 +42,7 @@ dev-libs
 dev-lisp
 dev-lua
 dev-ml
+dev-nodejs
 dev-perl
 dev-php
 dev-python
