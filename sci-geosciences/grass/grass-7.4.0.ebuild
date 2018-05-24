@@ -19,7 +19,7 @@ HOMEPAGE="http://grass.osgeo.org/"
 SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/7.2.0"
+SLOT="0/7.4.0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
@@ -78,9 +78,13 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${PN}"-7.0.1-declare-inespg.patch
-	"${FILESDIR}/${P}"-gcc7.patch
-	"${FILESDIR}/${P}"-glibc-2.26-{1,2}.patch
 )
+
+#pre_pkg_setup() {
+#	export LIBS="$(pkg-config --libs libtirpc) ${LIBS}"
+#	export CPPFLAGS="$(pkg-config --cflags libtirpc) ${CPPFLAGS}"
+#	einfo "LIBS='${LIBS}' CPPFLAGS='${CPPFLAGS}' # bug #588980"
+#}
 
 pkg_setup() {
 	if use lapack; then
@@ -127,6 +131,20 @@ src_prepare() {
 	ebegin "Fixing python shebangs"
 	python_fix_shebang -q "${S}"
 	eend $?
+
+	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
+	shopt -s nullglob
+	mesa_cards=$(echo -n /dev/dri/card* /dev/dri/render* | sed 's/ /:/g')
+	if test -n "${mesa_cards}"; then
+		addpredict "${mesa_cards}"
+	fi
+	ati_cards=$(echo -n /dev/ati/card* | sed 's/ /:/g')
+	if test -n "${ati_cards}"; then
+		addpredict "${ati_cards}"
+	fi
+	shopt -u nullglob
+	addpredict /dev/nvidiactl
+
 }
 
 src_configure() {
@@ -135,7 +153,7 @@ src_configure() {
 		setup-wxwidgets
 	fi
 
-	addwrite "${ROOT}dev/dri/renderD128"
+	addwrite "${EPREFIX}/dev/dri/renderD128"
 
 	econf \
 		--enable-shared \
@@ -145,8 +163,8 @@ src_configure() {
 		$(use_with png) \
 		$(use_with postgres) \
 		$(use_with mysql) \
-		$(use_with mysql mysql-includes "${ROOT}usr/include/mysql") \
-		$(use_with mysql mysql-libs "${ROOT}usr/$(get_libdir)/mysql") \
+		$(use_with mysql mysql-includes "${EPREFIX}/usr/include/mysql") \
+		$(use_with mysql mysql-libs "${EPREFIX}/usr/$(get_libdir)/mysql") \
 		$(use_with sqlite) \
 		$(use_with opengl) \
 		$(use_with odbc) \
@@ -155,7 +173,7 @@ src_configure() {
 		$(use_with lapack) \
 		$(use_with X cairo) \
 		$(use_with truetype freetype) \
-		$(use_with truetype freetype-includes "${ROOT}usr/include/freetype2") \
+		$(use_with truetype freetype-includes "${EPREFIX}/usr/include/freetype2") \
 		$(use_with nls) \
 		$(use_with readline) \
 		--without-opendwg \
@@ -163,14 +181,14 @@ src_configure() {
 		$(use_with threads pthread) \
 		$(use_with openmp) \
 		$(use_with opencl) \
-		--with-gdal="${ROOT}usr/bin/gdal-config" \
-		$(use_with liblas liblas "${ROOT}usr/bin/liblas-config") \
+		--with-gdal="${EPREFIX}/usr/bin/gdal-config" \
+		$(use_with liblas liblas "${EPREFIX}/usr/bin/liblas-config") \
 		$(use_with X wxwidgets "${WX_CONFIG}") \
-		$(use_with netcdf netcdf "${ROOT}usr/bin/nc-config") \
-		$(use_with geos geos "${ROOT}usr/bin/geos-config") \
-		--with-proj-includes="${ROOT}usr/include/libprojectM" \
-		--with-proj-libs="${ROOT}usr/$(get_libdir)" \
-		--with-proj-share="${ROOT}usr/share/proj/" \
+		$(use_with netcdf netcdf "${EPREFIX}/usr/bin/nc-config") \
+		$(use_with geos geos "${EPREFIX}/usr/bin/geos-config") \
+		--with-proj-includes="${EPREFIX}/usr/include/libprojectM" \
+		--with-proj-libs="${EPREFIX}/usr/$(get_libdir)" \
+		--with-proj-share="${EPREFIX}/usr/share/proj/" \
 		$(use_with X x)
 }
 
@@ -204,8 +222,6 @@ src_install() {
 		dodir /usr/share/locale/
 		mv locale/* "${D}usr/share/locale/" || die
 		rm -rf locale/ || die
-		# pt_BR is broken
-		mv "${D}usr/share/locale/pt_br" "${D}usr/share/locale/pt_BR" || die
 	fi
 
 	popd &> /dev/null || die
