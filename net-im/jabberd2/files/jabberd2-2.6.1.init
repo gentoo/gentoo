@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+COMPONENT=${RC_SVCNAME#jabberd2-}
+
+command=/usr/bin/jabberd2-${COMPONENT}
+command_args="-c /etc/jabber/${COMPONENT}.xml"
+command_background=true
+command_user=jabber:jabber
+pidfile=/var/run/jabberd2-${COMPONENT}.pid
+extra_started_commands="reload"
+
+depend() {
+	need net
+	use mysql postgresql slapd
+	if [ "${COMPONENT}" = sm ]; then
+		need jabberd2-router
+	elif [ "${COMPONENT}" = c2s -o "${COMPONENT}" = s2s ]; then
+		need jabberd2-sm
+	fi
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --exec "${command}" --pidfile "${pidfile}"
+	eend $?
+}

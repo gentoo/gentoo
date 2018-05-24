@@ -1,0 +1,31 @@
+/var/log/jabber/router.log {
+	su jabber jabber
+	missingok
+	postrotate
+		/etc/init.d/jabberd2-router reload
+	endscript
+}
+
+/var/log/jabber/sm.log {
+	su jabber jabber
+	missingok
+	postrotate
+		/etc/init.d/jabberd2-sm reload
+	endscript
+}
+
+/var/log/jabber/c2s.log {
+	su jabber jabber
+	missingok
+	postrotate
+		/etc/init.d/jabberd2-c2s reload
+	endscript
+}
+
+/var/log/jabber/s2s.log {
+	su jabber jabber
+	missingok
+	postrotate
+		/etc/init.d/jabberd2-s2s reload
+	endscript
+}

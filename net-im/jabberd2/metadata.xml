@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mendo@mendo.dk</email>
+		<name>Thomas Petersen</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="experimental">Enable experimental features such
+			as TLS Everywhere.</flag>
+		<flag name="memdebug">Enable nad and pool debug.
+			Requires USE="debug" to be set.</flag>
+		<flag name="websocket">Enable WebSocket support on C2S port.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jabberd2/jabberd2</remote-id>
+	</upstream>
+</pkgmetadata>
