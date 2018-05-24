@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools db-use eutils flag-o-matic pam systemd versionator
+inherit autotools db-use flag-o-matic pam systemd eapi7-ver
 
 DESCRIPTION="Open Source Jabber Server"
 HOMEPAGE="http://jabberd2.org"
@@ -50,8 +50,9 @@ DEPEND="
 
 DOCS=( AUTHORS README )
 
-#PATCHES=(
-#)
+PATCHES=(
+	"${FILESDIR}/jabberd2-2.6.1-openssl-1.1.patch"
+)
 
 S="${WORKDIR}/jabberd-${PV}"
 
@@ -65,8 +66,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/jabberd2-2.6.1-openssl-1.1.patch"
-
 	# Fix some default directory locations
 	sed -i \
 		-e 's,@localstatedir@/@package@/pid/,/var/run/,g' \
@@ -142,7 +141,7 @@ src_install() {
 	# Fix systemd unit files installation path, bug #626026
 	emake systemddir="$(systemd_get_systemunitdir)" DESTDIR="${D}" install
 	einstalldocs
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 
 	keepdir /var/spool/jabber/{fs,db}
 	fowners jabber:jabber /var/spool/jabber/{fs,db}
@@ -166,7 +165,7 @@ src_install() {
 		tools/{migrate-jd14dir-2-sqlite.pl,pipe-auth.pl}
 
 	# remove useless upstart files wrt #498900
-	rm -rf "${ED%/}"/usr/etc
+	rm -rf "${ED%/}"/usr/etc || die
 }
 
 pkg_postinst() {
@@ -187,7 +186,7 @@ pkg_postinst() {
 	fi
 
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.6.1-r1 ${v}; then
+		if ver_test ${v} -lt 2.6.1-r1; then
 			ewarn 'Starting with version 2.6.1-r1 the init script has been split up'
 			ewarn 'into separate scripts for each component. Please remove the old jabberd'
 			ewarn 'init script from all runlevels and add the relevant new init scripts'
