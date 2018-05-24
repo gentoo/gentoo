@@ -24,6 +24,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/icu:=
+	dev-libs/libsodium
 	dev-libs/libxml2
 	dev-libs/nspr
 	~games-strategy/0ad-data-${PV}
