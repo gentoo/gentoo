@@ -15,7 +15,7 @@ SRC_URI="https://github.com/ChrisADR/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 DOCS=( README.md CONTRIBUTING.md )
