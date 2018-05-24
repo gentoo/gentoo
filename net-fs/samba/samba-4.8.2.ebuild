@@ -114,7 +114,6 @@ REQUIRED_USE="
 	ads? ( acl gnutls ldap winbind )
 	cluster? ( ads )
 	gpg? ( addc )
-	python? ( ldap )
 	test? ( python )
 	?? ( system-heimdal system-mitkrb5 )
 	${PYTHON_REQUIRED_USE}
@@ -131,6 +130,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
+	"${FILESDIR}/${PN}-4.8-without_ads_build_fix.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
