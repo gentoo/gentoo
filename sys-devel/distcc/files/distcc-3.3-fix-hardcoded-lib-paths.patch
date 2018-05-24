@@ -1,0 +1,83 @@
+From 145cdb4f9630af910f96d379bbde9cd0da376c28 Mon Sep 17 00:00:00 2001
+From: "R.J.V. Bertin" <rjvbertin@gmail.com>
+Date: Sat, 19 May 2018 20:40:44 +0200
+Subject: [PATCH] don't hardcode /usr/lib/distcc but $PREFIX/lib/distcc
+
+Committed from host : Portia.local
+---
+ Makefile.in  |  2 +-
+ src/daemon.c |  6 +++---
+ src/serve.c  | 10 +++++-----
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 4303a58..6e1e467 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -59,7 +59,7 @@ include_server_builddir = $(builddir)/_include_server
+ 
+ # These must be done from here, not from autoconf, because they can 
+ # contain variable expansions written in Make syntax.  Ew.
+-DIR_DEFS = -DSYSCONFDIR="\"${sysconfdir}\"" -DICONDIR="\"${icondir}\""
++DIR_DEFS = -DLIBDIR="\"${libdir}\"" -DSYSCONFDIR="\"${sysconfdir}\"" -DICONDIR="\"${icondir}\""
+ 
+ # arguments to pkgconfig
+ GNOME_PACKAGES = @GNOME_PACKAGES@
+diff --git a/src/daemon.c b/src/daemon.c
+index 9df4f7f..1114aef 100644
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -160,13 +160,13 @@ static void dcc_warn_masquerade_whitelist(void) {
+                        " --make-me-a-botnet. To set up masquerade automatically" \
+                        " run update-distcc-symlinks.";
+ 
+-    d = opendir("/usr/lib/distcc");
++    d = opendir(LIBDIR "/distcc");
+     if (!d) {
+-        rs_log_crit("/usr/lib/distcc not found. %s", warn);
++        rs_log_crit(LIBDIR "/distcc not found. %s", warn);
+         dcc_exit(EXIT_COMPILER_MISSING);
+     }
+     if (!readdir(d)) {
+-        rs_log_crit("/usr/lib/distcc empty. %s", warn);
++        rs_log_crit(LIBDIR "/distcc empty. %s", warn);
+         dcc_exit(EXIT_COMPILER_MISSING);
+     }
+ }
+diff --git a/src/serve.c b/src/serve.c
+index 4af1458..32bb3ae 100644
+--- a/src/serve.c
++++ b/src/serve.c
+@@ -358,7 +358,7 @@ static int dcc_check_compiler_masq(char *compiler_name)
+ }
+ 
+ /**
+- * Make sure there is a masquerade to distcc in /usr/lib/distcc in order to
++ * Make sure there is a masquerade to distcc in LIBDIR/lib/distcc in order to
+  * execute a binary of the same name.
+  *
+  * Before this it was possible to execute arbitrary command after connecting
+@@ -376,19 +376,19 @@ static int dcc_check_compiler_whitelist(char *_compiler_name)
+         return EXIT_BAD_ARGUMENTS;
+     }
+ 
+-    dirfd = open("/usr/lib/distcc", O_RDONLY);
++    dirfd = open(LIBDIR "/distcc", O_RDONLY);
+     if (dirfd < 0) {
+         if (errno == ENOENT)
+-            rs_log_crit("no %s", "/usr/lib/distcc");
++            rs_log_crit("no %s", LIBDIR "/distcc");
+         return EXIT_DISTCC_FAILED;
+     }
+ 
+     if (faccessat(dirfd, compiler_name, X_OK, 0) < 0) {
+-        rs_log_crit("%s not in %s whitelist.", compiler_name, "/usr/lib/distcc");
++        rs_log_crit("%s not in %s whitelist.", compiler_name, LIBDIR "/distcc");
+         return EXIT_BAD_ARGUMENTS;           /* ENOENT, EACCESS, etc */
+     }
+ 
+-    rs_trace("%s in /usr/lib/distcc whitelist", compiler_name);
++    rs_trace("%s in" LIBDIR "/distcc whitelist", compiler_name);
+     return 0;
+ }
+ 
