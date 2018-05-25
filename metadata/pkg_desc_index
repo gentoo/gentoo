@@ -5260,7 +5260,7 @@ dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtkhelpers 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyhamcrest 1.9.0: Hamcrest framework for matcher objects
-dev-python/pyicu 1.9.5 2.0.2: Python bindings for dev-libs/icu
+dev-python/pyicu 2.0.2: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.5.3: JSON Web Token implementation in Python
