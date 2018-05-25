@@ -68,6 +68,8 @@ DEPEND="
 src_prepare() {
 	default
 
+	xdg_environment_reset
+
 	# fix QA issues with .desktop files
 	find data/desktop/ -type f -exec sed -i 's|OnlyShowIn=Enlightenment|OnlyShowIn=X-Enlightenment|g' {} \; || die
 	sed -i 's/Categories=Audio/Categories=AudioVideo/g' src/modules/mixer/emixer.desktop || die
