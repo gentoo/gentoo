@@ -1891,7 +1891,7 @@ dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.20.1-r1 3.21.0 3.22.0 3.23.1: A SQL Database Engine in a C Library
+dev-db/sqlite 3.23.1: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.9.1-r1 3.10.1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
