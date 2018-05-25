@@ -5390,7 +5390,7 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.6: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 6.5.0 6.7.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 6.0.1 7.1.2 9.1.1: A client for the OpenStack Nova API
+dev-python/python-novaclient 7.1.2 9.1.2: A client for the OpenStack Nova API
 dev-python/python-octaviaclient 1.4.0: A client for the OpenStack Zun API
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
 dev-python/python-openstackclient 3.12.0 3.14.1: A client for the OpenStack APIs
@@ -9964,7 +9964,7 @@ sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.2-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/neutron 11.0.3 12.0.1: A virtual network service for Openstack
-sys-cluster/nova 16.1.0 17.0.1: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 16.1.3 17.0.4: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 2.0.2: A high-performance message passing library (MPI)
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
@@ -10481,7 +10481,7 @@ www-apps/cgit 0.12: a fast web-interface for git repositories
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
-www-apps/icingaweb2 2.5.1: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.5.3: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-pnp4nagios 1.0.1: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111: A wiki compiler
 www-apps/mediawiki 1.27.3: The MediaWiki wiki web application (as used on wikipedia.org)
