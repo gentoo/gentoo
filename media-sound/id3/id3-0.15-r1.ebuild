@@ -21,5 +21,5 @@ src_prepare() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" || die "emake failed"
+		LDFLAGS="${LDFLAGS}"
 }
