@@ -56,8 +56,8 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 RDEPEND="
 	system-icu? ( >=dev-libs/icu-60.2 )
 	jack? ( virtual/jack )
-	>=dev-libs/nss-3.35
-	>=dev-libs/nspr-4.18
+	>=dev-libs/nss-3.36.1
+	>=dev-libs/nspr-4.19
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
