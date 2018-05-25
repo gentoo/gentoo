@@ -9,7 +9,7 @@ inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20180510"
+MY_RELEASEDATE="20180524"
 EXTRAS_VER="1.36"
 SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
@@ -41,7 +41,6 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
-	>=sys-libs/glibc-2.4
 	>=sys-libs/libcap-1.10-r10:=
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=

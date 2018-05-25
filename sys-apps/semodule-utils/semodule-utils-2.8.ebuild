@@ -5,7 +5,9 @@ EAPI="6"
 
 inherit toolchain-funcs
 
-MY_RELEASEDATE="20180510"
+MY_RELEASEDATE="20180524"
+SEPOL_VER="${PV}"
+SELNX_VER="${PV}"
 
 MY_P="${P//_/-}"
 IUSE=""
@@ -20,16 +22,13 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-DESCRIPTION="SELinux context translation to human readable names"
+DESCRIPTION="SELinux policy module utilities"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libsepol-${PV}:=
-	>=sys-libs/libselinux-${PV}:=
-	dev-libs/libpcre:=
-	>=sys-libs/libcap-1.10-r10:="
+DEPEND=">=sys-libs/libsepol-${SEPOL_VER}:="
 
 RDEPEND="${DEPEND}
 	!<sys-apps/policycoreutils-2.7_pre"
@@ -41,14 +40,10 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export CC
-	default
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
-	rm -rf "${D}/etc/rc.d" || die
-
-	newinitd "${FILESDIR}/mcstransd.init" mcstransd
+	emake DESTDIR="${D}" \
+		install
 }

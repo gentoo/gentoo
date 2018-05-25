@@ -10,7 +10,7 @@ inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20180426"
+MY_RELEASEDATE="20180524"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
@@ -27,7 +27,7 @@ fi
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="pcre2 python ruby static-libs ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
+IUSE="pcre2 python ruby static-libs ruby_targets_ruby23"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
@@ -36,10 +36,12 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
-	)"
+	)
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? ( >=dev-lang/swig-2.0.9 )"
+	python? ( >=dev-lang/swig-2.0.9 )
+	ruby? ( >=dev-lang/swig-2.0.9 )"
 
 src_prepare() {
 	eapply_user
@@ -55,6 +57,7 @@ multilib_src_compile() {
 		SHLIBDIR="/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
 		USE_PCRE2="$(usex pcre2 y n)" \
+		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 		all
 
 	if multilib_is_native_abi && use python; then
@@ -64,6 +67,7 @@ multilib_src_compile() {
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2="$(usex pcre2 y n)" \
+				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				pywrap
 		}
 		python_foreach_impl building
@@ -80,6 +84,7 @@ multilib_src_compile() {
 				LIBDIR="\$(PREFIX)/$(get_libdir)" \
 				SHLIBDIR="/$(get_libdir)" \
 				USE_PCRE2="$(usex pcre2 y n)" \
+				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 				rubywrap
 		}
 		for RUBYTARGET in ${USE_RUBY}; do
