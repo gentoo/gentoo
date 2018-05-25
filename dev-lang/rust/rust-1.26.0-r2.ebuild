@@ -117,7 +117,7 @@ src_configure() {
 		extended = $(toml_usex extended)
 		[install]
 		prefix = "${EPREFIX}/usr"
-		libdir = "$(get_libdir)/${P}"
+		libdir = "$(get_libdir)"
 		docdir = "share/doc/${P}"
 		mandir = "share/${P}/man"
 		[rust]
@@ -172,12 +172,14 @@ src_install() {
 		abi_libdir=$(get_abi_LIBDIR ${v##*.})
 		rust_target=$(get_abi_CHOST ${v##*.})
 		mkdir -p ${D}/usr/${abi_libdir}
-		cp ${D}/usr/$(get_libdir)/${P}/rustlib/${rust_target}/lib/*.so \
+		cp ${D}/usr/$(get_libdir)/rustlib/${rust_target}/lib/*.so \
 		   ${D}/usr/${abi_libdir} || die
 	done
 
 	dodoc COPYRIGHT
 
+	# FIXME:
+	# Really not sure if that env is needed, specailly LDPATH
 	cat <<-EOF > "${T}"/50${P}
 		LDPATH="/usr/$(get_libdir)/${P}"
 		MANPATH="/usr/share/${P}/man"
