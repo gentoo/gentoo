@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-# ruby24 don't have required deps
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 inherit eutils depend.apache ruby-ng user
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
@@ -13,10 +12,7 @@ SRC_URI="https://www.redmine.org/releases/${P}.tar.gz"
 KEYWORDS="~amd64"
 LICENSE="GPL-2"
 SLOT="0"
-# All db-related USEs are ineffective since we depend on rails
-# which depends on activerecord which depends on all ruby's db bindings
-#IUSE="ldap openid imagemagick postgres sqlite mysql fastcgi passenger"
-IUSE="imagemagick fastcgi ldap markdown passenger"
+IUSE="imagemagick fastcgi ldap markdown mysql passenger postgres sqlite"
 
 ruby_add_rdepend "
 	dev-ruby/actionpack-action_caching
@@ -42,16 +38,11 @@ ruby_add_rdepend "
 	imagemagick? ( >=dev-ruby/rmagick-2.14.0 )
 	ldap? ( >=dev-ruby/ruby-net-ldap-0.12.0 )
 	markdown? ( >=dev-ruby/redcarpet-3.3.2 )
+	mysql? ( dev-ruby/mysql2:0.4 )
 	passenger? ( www-apache/passenger )
+	postgres? ( dev-ruby/pg:0 )
+	sqlite? ( dev-ruby/sqlite3 )
 	"
-# TODO add USE doc and test
-#ruby_add_bdepend ">=dev-ruby/rdoc-2.4.2
-#	dev-ruby/yard
-#	test? (
-#		>=dev-ruby/shoulda-3.3.2
-#		>=dev-ruby/mocha-0.13.3
-#		>=dev-ruby/capybara-2.0.0
-#	)"
 
 REDMINE_DIR="/var/lib/${PN}"
 
@@ -61,7 +52,7 @@ pkg_setup() {
 }
 
 all_ruby_prepare() {
-	rm -r log files/delete.me Gemfile || die
+	rm -r log files/delete.me || die
 
 	# bug #406605
 	rm .{git,hg}ignore || die
@@ -74,7 +65,21 @@ all_ruby_prepare() {
 	# remove ldap staff module if disabled to avoid #413779
 	use ldap || rm app/models/auth_source_ldap.rb || die
 
-	eapply "${FILESDIR}/${PN}-3.4.3_requires.patch"
+	# Fixing versions in Gemfile
+	eapply "${FILESDIR}/${P}_gemfile_versions.patch"
+
+	sed -i -e "/group :development do/,/end$/d" Gemfile || die
+	sed -i -e "/group :test do/,/end$/d" Gemfile || die
+
+	if ! use imagemagick ; then
+		sed -i -e "/group :rmagick do/,/end$/d" Gemfile || die
+	fi
+	if ! use ldap ; then
+		sed -i -e "/group :ldap do/,/end$/d" Gemfile || die
+	fi
+	if ! use markdown ; then
+		sed -i -e "/group :markdown do/,/end$/d" Gemfile || die
+	fi
 }
 
 all_ruby_install() {
@@ -207,7 +212,7 @@ pkg_config() {
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Populating database with default configuration data."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:load_default_data || die
-		chown redmine:redmine "${EROOT%/}var/log/redmine/*.log" || die
+		chown redmine:redmine -R "${EROOT%/}var/log/redmine/" || die
 		einfo
 		einfo "If you use sqlite3, please do not forget to change the ownership"
 		einfo "of the sqlite files."
