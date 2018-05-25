@@ -835,6 +835,11 @@
       <email>jer@gentoo.org</email>
       <name>Jeroen Roovers</name>
     </member>
+    <member>
+      <email>johu@gentoo.org</email>
+      <name>Johannes Huber</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>devmanual@gentoo.org</email>
