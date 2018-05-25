@@ -9,6 +9,7 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
+    <flag name="egl">Enable EGL rendering</flag>
     <flag name="pango">Enable pango font rendering</flag>
     <flag name="ukit">Use upower/udisks to automount devices</flag>
     <flag name="xrandr">Enable support for the X xrandr extension</flag>
