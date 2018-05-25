@@ -139,7 +139,7 @@ src_install() {
 
 	insinto /etc/zsh
 	export PREFIX_QUOTE_CHAR='"' PREFIX_EXTRA_REGEX="/EUID/s,0,${EUID},"
-	newins "$(prefixify_ro "${FILESDIR}"/zprofile-3)" zprofile
+	newins "$(prefixify_ro "${FILESDIR}"/zprofile-4)" zprofile
 
 	keepdir /usr/share/zsh/site-functions
 	insinto /usr/share/zsh/${PV%_*}/functions/Prompts
