@@ -38,6 +38,7 @@ DEPEND="${COMMON_DEPEND}
 # sed -i -e '/^=item --\[no\]version-check/,/^default: yes/{/^default: yes/d}' bin/*
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.7-no-versioncheck.patch
+	"${FILESDIR}"/${PN}-3.0.10-slave-delay-fix.patch
 )
 
 src_prepare() {
