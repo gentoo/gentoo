@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/libsemanage-9999
 SLOT=0
 _eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
-_md5_=80ef7dcf5da899c2c85e7f84b519be82
+_md5_=a53f371fd1777814908233bc76604a68

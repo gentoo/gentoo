@@ -9690,7 +9690,7 @@ sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* 
 sys-apps/bleachbit 2.0: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.28.0: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
-sys-apps/checkpolicy 2.6 2.7: SELinux policy compiler
+sys-apps/checkpolicy 2.7: SELinux policy compiler
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4: Performance monitoring tool capable of interactive reporting and logging to disk
@@ -9820,7 +9820,7 @@ sys-apps/rng-tools 5-r2: Daemon to use hardware random number generators
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
 sys-apps/sandbox 2.12 2.13: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
-sys-apps/secilc 2.6 2.7: SELinux Common Intermediate Language (CIL) Compiler
+sys-apps/secilc 2.7: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.2: Super-useful stream editor
 sys-apps/selinux-python 2.7: SELinux core utilities
 sys-apps/semodule-utils 2.7: SELinux policy module utilities
@@ -10172,9 +10172,9 @@ sys-libs/libomp 4.0.1 5.0.1: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.1.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1: library that provides direct access to the IEEE 1394 bus
 sys-libs/libseccomp 2.3.0 2.3.2 2.3.3: high level interface to Linux seccomp filter
-sys-libs/libselinux 2.6 2.7: SELinux userland library
-sys-libs/libsemanage 2.6 2.7: SELinux kernel and policy management library
-sys-libs/libsepol 2.6 2.7: SELinux binary policy representation library
+sys-libs/libselinux 2.7: SELinux userland library
+sys-libs/libsemanage 2.7: SELinux kernel and policy management library
+sys-libs/libsepol 2.7: SELinux binary policy representation library
 sys-libs/libsmbios 2.3.2: Provide access to (SM)BIOS information
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r1: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
