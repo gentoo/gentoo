@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="sourceforge">epos</remote-id>
 	</upstream>
-	<use>
-		<flag name="voices">Adds additional voices</flag>
-	</use>
 </pkgmetadata>
