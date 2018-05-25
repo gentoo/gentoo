@@ -648,6 +648,7 @@ net-wireless/cpyrit-cuda
 =net-ftp/filezilla-3.31.0-r300
 =net-ftp/filezilla-3.33.0-r300
 =dev-util/codeblocks-17.12-r300
+=dev-util/codeblocks-17.12-r301
 
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Old gstreamer 0.10 version, which is security vulnerable.
