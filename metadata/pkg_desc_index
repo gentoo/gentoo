@@ -121,7 +121,7 @@ app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to b
 app-admin/rsyslog 8.32.0-r4 8.34.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
-app-admin/setools 3.3.8-r7 4.0.1 4.1.1: Policy Analysis Tools for SELinux
+app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
 app-admin/sshguard 2.1.0-r1: protects hosts from brute force attacks against ssh
 app-admin/sudo 1.8.20_p2 1.8.22-r2: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
