@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit unpacker versionator
+inherit unpacker eapi7-ver
 
 SUPER_PN='amdgpu-pro'
-MY_PV=$(replace_version_separator 2 '-')
+MY_PV=$(ver_rs 2 '-')
 
 DESCRIPTION="Proprietary OpenCL implementation for AMD GPUs"
 HOMEPAGE="https://support.amd.com/en-us/kb-articles/Pages/Radeon-Software-for-Linux-Release-Notes.aspx"
@@ -26,7 +26,7 @@ QA_PREBUILT="/opt/${SUPER_PN}/lib*/*"
 S="${WORKDIR}/${SUPER_PN}-${MY_PV}"
 
 pkg_nofetch() {
-	local pkgver=$(get_version_component_range 1-2)
+	local pkgver=$(ver_cut 1-2)
 	einfo "Please download the Radeon Software for Linux Driver ${pkgver} for Ubuntu from"
 	einfo "    ${HOMEPAGE}"
 	einfo "The archive should then be placed into ${DISTDIR}."
@@ -37,7 +37,7 @@ src_unpack() {
 
 	local ids_ver="1.0.0"
 	local libdrm_ver="2.4.82"
-	local patchlevel=$(get_version_component_range 3)
+	local patchlevel=$(ver_cut 3)
 	cd "${S}" || die
 	unpack_deb opencl-${SUPER_PN}-icd_${MY_PV}_amd64.deb
 	unpack_deb libdrm-amdgpu-amdgpu1_${libdrm_ver}-${patchlevel}_amd64.deb
