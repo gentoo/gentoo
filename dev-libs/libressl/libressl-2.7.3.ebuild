@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit ltprune multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Free version of the SSL/TLS protocol forked from OpenSSL"
 HOMEPAGE="https://www.libressl.org/"
@@ -49,5 +49,5 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${D}" -name '*.la' -exec rm -f {} + || die
 }
