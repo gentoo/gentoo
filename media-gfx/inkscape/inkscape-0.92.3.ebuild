@@ -101,6 +101,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
 	"${FILESDIR}/${PN}-0.92.3-freetype_pkgconfig.patch"
 	"${FILESDIR}/${PN}-0.92.3-poppler-0.64.patch"
+	"${FILESDIR}/${PN}-0.92.3-poppler-0.65.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
