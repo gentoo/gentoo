@@ -7977,7 +7977,7 @@ media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14: Opensource software organ
 media-sound/hydrogen 1.0.0_pre20180301-r1: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
-media-sound/id3 0.15: changes the id3 tag in an mp3 file
+media-sound/id3 0.15-r1: changes the id3 tag in an mp3 file
 media-sound/id3ed 1.10.4: ID3 tag editor for mp3 files
 media-sound/id3ted 1.0_beta3: A Command-line ID3 Tag Editor
 media-sound/id3tool 1.2a: A command line utility for easy manipulation of the ID3 tags present in MPEG Layer 3 audio files
