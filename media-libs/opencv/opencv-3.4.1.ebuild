@@ -27,8 +27,6 @@ IUSE="contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
 REQUIRED_USE="
-	cpu_flags_x86_sse
-	cpu_flags_x86_sse2
 	cuda? ( tesseract? ( opencl ) )
 	dnn_samples? ( examples )
 	gflags? ( contrib )
