@@ -4,10 +4,10 @@ DESCRIPTION=Set of utilities to manage TV listings stored in the XMLTV format
 EAPI=6
 HOMEPAGE=http://xmltv.org
 IUSE=ar ch_search dk dtvla es_laguiatv eu_dotmedia eu_epg fi fi_sv fr fr_kazer huro il is it na_dd na_dtv na_tvmedia nl no_gf pt_meo se_swedb se_tvzon tr uk_bleb uk_tvguide tv_check tv_combiner tv_pick_cgi zz_sdjson
-KEYWORDS=amd64 ~arm ~ppc x86 ~x86-linux
+KEYWORDS=amd64 ~arm ppc x86 ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-perl/libwww-perl-5.65 >=dev-perl/XML-Parser-2.34 >=dev-perl/XML-Twig-3.10 >=dev-perl/Date-Manip-5.42 >=dev-perl/XML-Writer-0.6 virtual/perl-Memoize virtual/perl-Storable >=dev-perl/Lingua-Preferred-0.2.4 >=dev-perl/Term-ProgressBar-2.03 virtual/perl-IO-Compress dev-perl/Unicode-String dev-perl/TermReadKey dev-perl/File-Slurp >=dev-lang/perl-5.6.1 dev-perl/XML-LibXML dev-perl/XML-TreePP dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://sourceforge/xmltv/xmltv-0.5.70.tar.bz2
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=8081e9b2afa521d91675b3cd351b780a
+_md5_=aac87f8fa4f2b6757776549b96bf9315
