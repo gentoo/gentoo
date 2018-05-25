@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 # Python is used during build for some scripted source files generation (and twisted tests)
 PYTHON_COMPAT=( python2_7 )
 
@@ -14,7 +14,7 @@ SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
-IUSE="gnutls +jingle plugins test"
+IUSE="gnutls +jingle libressl plugins test"
 
 # Prevent false positives due nested configure
 QA_CONFIGURE_OPTIONS=".*"
@@ -33,7 +33,10 @@ RDEPEND="
 	dev-db/sqlite:3
 
 	gnutls? ( >=net-libs/gnutls-2.10.2 )
-	!gnutls? ( >=dev-libs/openssl-0.9.8g:0[-bindist] )
+	!gnutls? (
+		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( >=dev-libs/openssl-0.9.8g:0=[-bindist] )
+	)
 	jingle? (
 		>=net-libs/libsoup-2.42
 		>=net-libs/libnice-0.0.11 )
