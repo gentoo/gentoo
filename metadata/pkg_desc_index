@@ -9888,7 +9888,7 @@ sys-auth/polkit 0.113-r4: Policy framework for controlling privileges for system
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.112.0_p20160416-r1: PolicyKit Qt API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
-sys-auth/rtkit 0.11-r1 0.11-r2: Realtime Policy and Watchdog Daemon
+sys-auth/rtkit 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/sssd 1.12.1: System Security Services Daemon provides access to identity and authentication
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
