@@ -86,6 +86,7 @@ src_prepare() {
 	# Useless UI element would require qt3support, bug #365019
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
 	epatch "${FILESDIR}"/${PN}-3.6.1-automagic-audio.patch
+	cmake-utils_src_prepare
 }
 
 src_configure() {
