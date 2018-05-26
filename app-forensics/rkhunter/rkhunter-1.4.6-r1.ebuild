@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils bash-completion-r1
+inherit bash-completion-r1
 
 DESCRIPTION="Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers"
 HOMEPAGE="http://rkhunter.sf.net/"
@@ -11,22 +11,21 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~mips ppc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
 	app-shells/bash
 	dev-lang/perl
 	sys-process/lsof[rpc]
-	virtual/cron
-	virtual/mailx
 "
 
 S="${WORKDIR}/${P}/files"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}.conf.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-1.4.6-conf.patch"
+	"${FILESDIR}/${PN}-1.4.6-no-insecure-web.patch"
+)
 
 src_install() {
 	# rkhunter requires to be root
@@ -48,7 +47,7 @@ src_install() {
 	dodoc ACKNOWLEDGMENTS CHANGELOG FAQ README
 
 	exeinto /etc/cron.daily
-	newexe "${FILESDIR}/${PN}-1.3.cron" ${PN}
+	newexe "${FILESDIR}/${PN}-1.4.cron" ${PN}
 
 	newbashcomp "${FILESDIR}/${PN}.bash-completion" ${PN}
 }
