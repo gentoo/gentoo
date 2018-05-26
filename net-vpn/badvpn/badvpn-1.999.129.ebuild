@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -45,11 +45,6 @@ S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
 	enewuser ${PN}
-}
-
-src_prepare() {
-	# allow user to easily apply patches
-	epatch_user
 }
 
 src_configure() {
