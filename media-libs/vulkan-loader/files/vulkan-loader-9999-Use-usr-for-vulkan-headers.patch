@@ -1,0 +1,51 @@
+From d9b3835e1ad455853e3a58ec0d2a0653e5952a21 Mon Sep 17 00:00:00 2001
+From: Nick Sarnie <sarnex@gentoo.org>
+Date: Mon, 26 May 2018 16:57:33 -0400
+Subject: [PATCH] Use /usr for vulkan-headers
+
+Signed-off-by: Nick Sarnie <sarnex@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0b744a87..14034d33c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,7 +68,7 @@ if(WIN32)
+ endif()
+ 
+ set(SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/scripts")
+-set(HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Vulkan-Headers")
++set(HEADERS_DIR "/usr")
+ 
+ # Output warning if vulkan headers submodule contents are not present
+ if (NOT EXISTS "${HEADERS_DIR}/include/vulkan/vulkan_core.h")
+@@ -131,8 +131,9 @@ set (PYTHON_CMD ${PYTHON_EXECUTABLE})
+ # Define macro used for building vkxml generated files
+ macro(run_vk_xml_generate dependency output)
+     add_custom_command(OUTPUT ${output}
+-    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/lvl_genvk.py -registry ${HEADERS_DIR}/registry/vk.xml ${output}
+-    DEPENDS ${HEADERS_DIR}/registry/vk.xml ${HEADERS_DIR}/registry/generator.py ${SCRIPTS_DIR}/${dependency} ${SCRIPTS_DIR}/lvl_genvk.py ${HEADERS_DIR}/registry/reg.py
++    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/lvl_genvk.py -registry ${HEADERS_DIR}/include/vulkan/registry/vk.xml ${output}
++    DEPENDS ${HEADERS_DIR}/include/vulkan/registry/vk.xml ${HEADERS_DIR}/include/vulkan/registry/generator.py
++    ${SCRIPTS_DIR}/${dependency}  ${SCRIPTS_DIR}/lvl_genvk.py ${HEADERS_DIR}/include/vulkan/registry/reg.py
+     )
+ endmacro()
+ 
+diff --git a/scripts/lvl_genvk.py b/scripts/lvl_genvk.py
+index 0de555fae..dab543ed3 100644
+--- a/scripts/lvl_genvk.py
++++ b/scripts/lvl_genvk.py
+@@ -17,7 +17,7 @@
+ import argparse, cProfile, pdb, string, sys, time, os
+ 
+ scripts_dir = os.path.dirname(os.path.abspath(__file__))
+-registry_dir = os.path.join(scripts_dir, '../Vulkan-Headers/registry')
++registry_dir = os.path.join(scripts_dir, '/usr/include/vulkan/registry')
+ sys.path.insert(0, registry_dir)
+ 
+ from reg import *
+-- 
+2.17.0
+
