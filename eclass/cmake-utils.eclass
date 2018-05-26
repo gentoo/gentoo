@@ -226,9 +226,18 @@ _cmake_generator_to_use() {
 		ninja)
 			# if ninja is enabled but not installed, the build could fail
 			# this could happen if ninja is manually enabled (eg. make.conf) but not installed
-			if ! ROOT=/ has_version dev-util/ninja; then
-				die "CMAKE_MAKEFILE_GENERATOR is set to ninja, but ninja is not installed. Please install dev-util/ninja or unset CMAKE_MAKEFILE_GENERATOR."
-			fi
+			case ${EAPI} in
+				5|6)
+					if ! ROOT=/ has_version dev-util/ninja; then
+						die "CMAKE_MAKEFILE_GENERATOR is set to ninja, but ninja is not installed. Please install dev-util/ninja or unset CMAKE_MAKEFILE_GENERATOR."
+					fi
+				;;
+				*)
+					if ! has_version -b dev-util/ninja; then
+						die "CMAKE_MAKEFILE_GENERATOR is set to ninja, but ninja is not installed. Please install dev-util/ninja or unset CMAKE_MAKEFILE_GENERATOR."
+					fi
+				;;
+			esac
 			generator_name="Ninja"
 			;;
 		emake)
@@ -511,11 +520,23 @@ cmake-utils_src_configure() {
 	# Since cmake-3.4.0_rc1 "<FLAGS>" no longer contains includes and thus
 	# we need to add "<INCLUDES>"
 	local includes=
+
+	local has_cmake_340=
+	case ${EAPI} in
+		5|6)
+			has_cmake_34=$(ROOT=/ has_version \>=dev-util/cmake-3.4.0_rc1)
+		;;
+		*)
+			has_cmake_34=$(has_version -b \>=dev-util/cmake-3.4.0_rc1)
+		;;
+	esac
+
+
 	if [[ ${PN} == cmake ]] ; then
 		if $(ver_test $(ver_cut 1-3 ${PV}) -ge 3.4.0) ; then
 			includes="<INCLUDES>"
 		fi
-	elif ROOT=/ has_version \>=dev-util/cmake-3.4.0_rc1 ; then
+	elif [[ ${has_cmake_340} ]]; then
 		includes="<INCLUDES>"
 	fi
 	cat > "${build_rules}" <<- _EOF_ || die
