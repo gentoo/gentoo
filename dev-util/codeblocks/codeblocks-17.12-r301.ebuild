@@ -30,6 +30,7 @@ RDEPEND="app-arch/zip
 	)"
 
 DEPEND="${RDEPEND}
+	>=dev-libs/tinyxml-2.6.2-r3
 	virtual/pkgconfig"
 
 PATCHES=(
