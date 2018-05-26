@@ -1,0 +1,24 @@
+From d3d9f1b73732d4f9d4d33bc7fa782cadbc10d80f Mon Sep 17 00:00:00 2001
+From: Nick Sarnie <sarnex@gentoo.org>
+Date: Mon, 21 May 2018 22:34:25 -0400
+Subject: [PATCH] Do not install vulkan headers
+
+Signed-off-by: Nick Sarnie <sarnex@gentoo.org>
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 627de6f70..65f5ea0d7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -170,7 +170,6 @@ if(NOT WIN32)
+     endif()
+ endif()
+ 
+-install(DIRECTORY "${HEADERS_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/vk_layer_dispatch_table.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vulkan")
+ 
+ # uninstall target
+-- 
+2.17.0
