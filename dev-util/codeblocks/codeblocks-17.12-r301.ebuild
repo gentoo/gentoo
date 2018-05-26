@@ -55,7 +55,6 @@ src_configure() {
 	use contrib || CONF_WITH_LST=$(use_with fortran contrib-plugins FortranProject)
 
 	econf \
-		--with-wx-config="${WX_CONFIG}" \
 		--disable-static \
 		$(use_enable debug) \
 		$(use_enable pch) \
