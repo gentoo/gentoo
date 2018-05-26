@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="ALSA sequencer event viewer/filter"
-HOMEPAGE="http://www.alsa-project.org/~iwai/alsa.html"
-SRC_URI="http://ftp.suse.com/pub/people/tiwai/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.alsa-project.org/~iwai/alsa.html"
+SRC_URI="https://ftp.suse.com/pub/people/tiwai/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,5 +24,5 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS ChangeLog README
+	default
 }
