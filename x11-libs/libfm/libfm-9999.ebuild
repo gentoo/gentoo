@@ -1,23 +1,23 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="https://github.com/lxde/${PN}"
 inherit autotools git-r3 vala xdg-utils
 
 DESCRIPTION="A library for file management"
-HOMEPAGE="http://pcmanfm.sourceforge.net/"
+HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
+EGIT_REPO_URI="https://github.com/lxde/${PN}"
 
 LICENSE="GPL-2"
-SLOT="0/4.4.0" #copy ABI_VERSION because it seems upstream change it randomly
-IUSE="+automount debug doc examples exif gtk udisks vala"
+SLOT="0/5.1.1" #copy ABI_VERSION because it seems upstream change it randomly
 KEYWORDS=""
+IUSE="+automount debug doc examples exif gtk udisks +vala"
 
 COMMON_DEPEND=">=dev-libs/glib-2.18:2
 	gtk? ( >=x11-libs/gtk+-2.16:2 )
 	>=lxde-base/menu-cache-0.3.2:=
-	x11-libs/libfm-extra"
+	udisks? ( dev-libs/dbus-glib )"
 RDEPEND="${COMMON_DEPEND}
 	!lxde-base/lxshortcut
 	x11-misc/shared-mime-info
@@ -40,6 +40,8 @@ DOCS=( AUTHORS TODO )
 REQUIRED_USE="udisks? ( automount ) doc? ( gtk )"
 
 src_prepare() {
+	default
+
 	if ! use doc; then
 		sed -ie '/^SUBDIR.*=/s#docs##' "${S}"/Makefile.am || die "sed failed"
 		sed -ie '/^[[:space:]]*docs/d' configure.ac || die "sed failed"
@@ -72,7 +74,7 @@ src_prepare() {
 
 	eautoreconf
 	rm -r autom4te.cache || die
-	use vala && export VALAC="$(type -p valac-$(vala_best_api_version))"
+	vala_src_prepare
 }
 
 src_configure() {
@@ -86,8 +88,7 @@ src_configure() {
 		$(use_enable udisks) \
 		$(use_enable vala actions) \
 		$(use_with gtk) \
-		$(use_enable doc gtk-doc) \
-		--with-html-dir=/usr/share/doc/${PF}/html
+		$(use_enable doc gtk-doc)
 }
 
 src_install() {
@@ -99,10 +100,6 @@ src_install() {
 	if [[ -h ${D}/usr/include/${PN} || -d ${D}/usr/include/${PN} ]]; then
 		rm -r "${D}"/usr/include/${PN}
 	fi
-	# Remove files installed by split-off libfm-extra package
-	rm "${D}"/usr/include/libfm-1.0/fm-{extra,version,xml-file}.h
-	rm "${D}"/usr/$(get_libdir)/libfm-extra*
-	rm "${D}"/usr/$(get_libdir)/pkgconfig/libfm-extra.pc
 }
 
 pkg_preinst() {
