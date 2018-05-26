@@ -7,7 +7,7 @@ WX_GTK_VER="3.0-gtk3"
 
 inherit autotools flag-o-matic gnome2-utils wxwidgets xdg-utils
 
-DESCRIPTION="The open source, cross platform, free C++ IDE"
+DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="http://www.codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
