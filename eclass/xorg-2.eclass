@@ -515,6 +515,8 @@ xorg-2_pkg_postinst() {
 		create_fonts_scale
 		create_fonts_dir
 		font_pkg_postinst "$@"
+
+		ewarn "Installed fonts changed. Run 'xset fp rehash' if you are using non-fontconfig applications."
 	fi
 }
 
