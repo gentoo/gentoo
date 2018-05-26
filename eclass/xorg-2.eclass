@@ -60,7 +60,7 @@ esac
 EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
 
 IUSE=""
-HOMEPAGE="https://www.x.org/wiki/"
+HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
 
 # @ECLASS-VARIABLE: XORG_EAUTORECONF
 # @DESCRIPTION:
