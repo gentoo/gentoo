@@ -1,0 +1,35 @@
+From 9498942c820525dc531f643696b7938d3f5fa482 Mon Sep 17 00:00:00 2001
+From: Nick Sarnie <sarnex@gentoo.org>
+Date: Tue, 22 May 2018 19:55:59 -0400
+Subject: [PATCH] Use usr for vulkan headers
+
+Signed-off-by: Nick Sarnie <sarnex@gentoo.org>
+---
+ CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fa9a3d3b..2998edfa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,13 +29,15 @@ endif()
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ set(TOOLS_TARGET_FOLDER lvl_cmake_targets)
+ 
++set(HEADERS_DIR "/usr")
++
+ # Output warning if vulkan headers submodule contents are not present
+-if (NOT EXISTS "${PROJECT_SOURCE_DIR}/Vulkan-Headers/include/vulkan/vulkan_core.h")
++if (NOT EXISTS "${HEADERS_DIR}/include/vulkan/vulkan_core.h")
+     message(FATAL_ERROR "Please run 'git submodule update --init' before running cmake")
+ endif()
+ 
+ # Header file for CMake settings
+-include_directories("${PROJECT_SOURCE_DIR}/Vulkan-Headers/include")
++include_directories("${HEADERS_DIR}/include")
+ 
+ if (CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+     set(COMMON_COMPILE_FLAGS "-Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers")
+-- 
+2.17.0
+
