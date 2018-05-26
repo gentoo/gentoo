@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1 gnome2-utils virtualx xdg-utils
 
@@ -24,16 +24,20 @@ RDEPEND="app-text/iso-codes
 		app-text/gtkspell:3
 		>=dev-python/pyenchant-1.4[${PYTHON_USEDEP}]
 	)"
-DEPEND="${RDEPEND}
-	dev-util/intltool
+DEPEND="
 	sys-devel/gettext
 	test? (
+		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "
 
 DOCS=( AUTHORS.md NEWS.md TODO.md README.md README.aeidon.md )
+
+python_test() {
+	virtx py.test
+}
 
 pkg_postinst() {
 	xdg_desktop_database_update
@@ -47,10 +51,6 @@ pkg_postinst() {
 			elog "Aspell/Pspell, Ispell, MySpell, Uspell, Hspell or AppleSpell."
 		fi
 	fi
-}
-
-python_test() {
-	virtx py.test
 }
 
 pkg_postrm() {
