@@ -79,7 +79,7 @@ src_prepare() {
 		popd > /dev/null || die
 	fi
 
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {
