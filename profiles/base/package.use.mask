@@ -13,12 +13,6 @@
 <app-office/libreoffice-bin-6.0 kde
 <app-office/libreoffice-bin-debug-6.0 kde
 
-# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
-# Qt4 is dead and going away.
-kde-plasma/plasma-desktop qt4
-kde-plasma/breeze qt4
-kde-plasma/oxygen qt4
-
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl
