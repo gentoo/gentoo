@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 MY_PN="PyICU"
 MY_P="${MY_PN}-${PV}"
@@ -29,6 +29,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S="${WORKDIR}/${MY_P}"
 
 DOCS=(CHANGES CREDITS README.md)
+
+python_prepare_all() {
+	# bug 651748
+	# due to ICU 59 requiring C++11 now
+	append-cxxflags -std=c++11
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	if [[ ${EPYTHON} == python2* ]]; then
