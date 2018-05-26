@@ -2926,7 +2926,7 @@ dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 6.8 7.1-r1 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
-dev-libs/botan 1.10.17 2.5.0 2.6.0: A C++ crypto library
+dev-libs/botan 1.10.17 2.6.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20160131: A library of curses widgets
@@ -8880,7 +8880,7 @@ net-misc/networkmanager-openvpn 1.8.2: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
-net-misc/ntp 4.2.8_p10-r1 4.2.8_p11: Network Time Protocol suite/programs
+net-misc/ntp 4.2.8_p11: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365: A NTP (RFC-1305) client for unix-alike computers
 net-misc/nx 3.5.0.33: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
@@ -10230,7 +10230,7 @@ sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing au
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.0-r1 1.5.1-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.1-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
