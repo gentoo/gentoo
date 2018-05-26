@@ -111,7 +111,6 @@ src_prepare() {
 	fi
 	# Useless UI element would require qt3support, bug #365019
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
-	default
 	cmake-utils_src_prepare
 }
 
