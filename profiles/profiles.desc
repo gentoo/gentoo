@@ -54,6 +54,7 @@ amd64           default/linux/amd64/17.0/x32                            dev
 amd64           default/linux/amd64/17.1                           exp
 amd64           default/linux/amd64/17.1/selinux                   exp
 amd64           default/linux/amd64/17.1/hardened                  exp
+amd64           default/linux/amd64/17.1/hardened/selinux          exp
 amd64           default/linux/amd64/17.1/desktop                   exp
 amd64           default/linux/amd64/17.1/desktop/gnome             exp
 amd64           default/linux/amd64/17.1/desktop/gnome/systemd     exp
