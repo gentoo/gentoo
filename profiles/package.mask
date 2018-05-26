@@ -374,15 +374,6 @@ media-plugins/gst-plugins-mad:1.0
 # See https://wiki.gentoo.org/wiki/Project:Hardened_uClibc
 sys-libs/uclibc
 
-# Mart Raudsepp <leio@gentoo.org> (23 Feb 2018)
-# Old net-libs/webkit-gtk SLOTs have hundreds of known security issues.
-# Use the security safe net-libs webkit-gtk SLOT=4 instead via
-# libraries and applications ported to gtk3 and webkit2gtk API.
-# Please keep this package.mask entry until at least 25th May 2018 for
-# extra notification of the security vulnerabilities. Bug #577068.
-net-libs/webkit-gtk:2
-net-libs/webkit-gtk:3
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
