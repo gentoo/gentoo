@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,8 +17,9 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="test"
 
-RDEPEND="dev-python/click[${PYTHON_USEDEP}]
-	>=dev-python/click-log-0.1.3[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/click-5.0[${PYTHON_USEDEP}]
+	>=dev-python/click-log-0.2.0[${PYTHON_USEDEP}]
+	<dev-python/click-log-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/click-threading-0.2[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.4.1[${PYTHON_USEDEP}]
 	!=dev-python/requests-2.9.0[${PYTHON_USEDEP}]
