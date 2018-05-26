@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-12">
+  <title>NTP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NTP, the worst of which
+    could lead to remote code execution.
+  </synopsis>
+  <product type="ebuild">ntp</product>
+  <announced>2018-05-26</announced>
+  <revised count="1">2018-05-26</revised>
+  <bug>649612</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.8_p11</unaffected>
+      <vulnerable range="lt">4.2.8_p11</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTP contains software for the Network Time Protocol.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NTP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NTP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/ntp-4.2.8_p11"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7170">CVE-2018-7170</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7182">CVE-2018-7182</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7183">CVE-2018-7183</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7184">CVE-2018-7184</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7185">CVE-2018-7185</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-26T14:29:05Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-05-26T15:54:33Z">b-man</metadata>
+</glsa>
