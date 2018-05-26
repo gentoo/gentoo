@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-10">
+  <title>Zsh: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Zsh, the worst of which
+    could allow local attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">zsh</product>
+  <announced>2018-05-26</announced>
+  <revised count="1">2018-05-26</revised>
+  <bug>649614</bug>
+  <bug>651860</bug>
+  <bug>655708</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-shells/zsh" auto="yes" arch="*">
+      <unaffected range="ge">5.5</unaffected>
+      <vulnerable range="lt">5.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A shell designed for interactive use, although it is also a powerful
+      scripting language.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Zsh. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could execute arbitrary code, escalate privileges, or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Zsh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-shells/zsh-5.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18205">CVE-2017-18205</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18206">CVE-2017-18206</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1071">CVE-2018-1071</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1083">CVE-2018-1083</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1100">CVE-2018-1100</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7548">CVE-2018-7548</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7549">CVE-2018-7549</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-26T14:04:43Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-05-26T15:33:08Z">b-man</metadata>
+</glsa>
