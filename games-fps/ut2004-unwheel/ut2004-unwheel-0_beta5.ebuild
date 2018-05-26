@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MOD_DIR="unwheel"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/unwheel"
+HOMEPAGE="https://www.moddb.com/mods/unwheel"
 SRC_URI="unwheel_r5.zip
 	unwheelcbpvol1.zip"
 
