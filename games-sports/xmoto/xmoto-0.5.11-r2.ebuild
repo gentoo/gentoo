@@ -58,6 +58,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 653404
+	# due to ICU 59 requiring C++11 now
+	append-cxxflags -std=c++11
+
 	econf \
 		--enable-threads=posix \
 		$(use_enable nls) \
