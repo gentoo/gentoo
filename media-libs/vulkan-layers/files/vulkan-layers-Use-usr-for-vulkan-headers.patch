@@ -1,0 +1,57 @@
+From 42fb7b4c73b0cae196a2eb6d97bfa6cc635f23fb Mon Sep 17 00:00:00 2001
+From: Nick Sarnie <sarnex@gentoo.org>
+Date: Sat, 26 May 2018 17:39:08 -0400
+Subject: [PATCH] Use usr for vulkan headers
+
+Signed-off-by: Nick Sarnie <sarnex@gentoo.org>
+---
+ CMakeLists.txt        | 2 +-
+ layers/CMakeLists.txt | 5 +++--
+ scripts/lvl_genvk.py  | 2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 178debdd..dc742304 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ find_package(PythonInterp 3 REQUIRED)
+ 
+ # TODO: Add option to override this with env var, or even to use SDK
+-set(VULKAN_HEADERS_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/Vulkan-Headers")
++set(VULKAN_HEADERS_LOCATION "/usr")
+ 
+ # Output warning if vulkan headers submodule contents are not present
+ if (NOT EXISTS "${VULKAN_HEADERS_LOCATION}/include/vulkan/vulkan_core.h")
+diff --git a/layers/CMakeLists.txt b/layers/CMakeLists.txt
+index 962c4be6..26e5abaf 100644
+--- a/layers/CMakeLists.txt
++++ b/layers/CMakeLists.txt
+@@ -38,8 +38,9 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/scripts")
+ # Define macro used for building vkxml generated files
+ macro(run_vk_xml_generate dependency output)
+     add_custom_command(OUTPUT ${output}
+-    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/lvl_genvk.py -registry ${VULKAN_HEADERS_LOCATION}/registry/vk.xml ${output}
+-    DEPENDS ${VULKAN_HEADERS_LOCATION}/registry/vk.xml ${VULKAN_HEADERS_LOCATION}/registry/generator.py ${SCRIPTS_DIR}/${dependency} ${SCRIPTS_DIR}/lvl_genvk.py ${VULKAN_HEADERS_LOCATION}/registry/reg.py
++    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/lvl_genvk.py -registry ${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/vk.xml ${output}
++    DEPENDS ${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/vk.xml ${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/generator.py ${SCRIPTS_DIR}/${dependency} ${SCRIPTS_DIR}/lvl_genvk.py 
++${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/reg.py
+     )
+ endmacro()
+ 
+diff --git a/scripts/lvl_genvk.py b/scripts/lvl_genvk.py
+index 4dac9ca2..6ea83ddb 100644
+--- a/scripts/lvl_genvk.py
++++ b/scripts/lvl_genvk.py
+@@ -16,7 +16,7 @@
+ 
+ import argparse, cProfile, pdb, string, sys, time, os
+ scripts_directory_path = os.path.dirname(os.path.abspath(__file__))
+-registry_headers_path = os.path.join(scripts_directory_path, '../Vulkan-Headers/registry')
++registry_headers_path = os.path.join(scripts_directory_path, '/usr/include/vulkan/registry')
+ sys.path.insert(0, registry_headers_path)
+ 
+ from reg import *
+-- 
+2.17.0
+
