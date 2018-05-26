@@ -1,0 +1,414 @@
+# Patch from: https://sourceforge.net/p/codeblocks/code/11266/
+# * updated astyle plugin to v3.1
+# * removed obsolete astyle options
+# * added new astyle options
+# Authored by: jenslody 2018-01-15
+diff -Naur codeblocks-17.12/src/plugins/astyle/asstreamiterator.cpp codeblocks-code-11266-trunk/src/plugins/astyle/asstreamiterator.cpp
+--- codeblocks-17.12/src/plugins/astyle/asstreamiterator.cpp	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/asstreamiterator.cpp	2018-01-15 20:54:23.000000000 +0300
+@@ -2,9 +2,9 @@
+  * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
+  * http://www.gnu.org/licenses/gpl-3.0.html
+  *
+- * $Revision: 9995 $
+- * $Id: asstreamiterator.cpp 9995 2014-10-16 09:01:46Z mortenmacfly $
+- * $HeadURL: http://svn.code.sf.net/p/codeblocks/code/branches/release-17.xx/src/plugins/astyle/asstreamiterator.cpp $
++ * $Revision: 11266 $
++ * $Id: asstreamiterator.cpp 11266 2018-01-15 17:54:23Z jenslody $
++ * $HeadURL: file:///svn/p/codeblocks/code/trunk/src/plugins/astyle/asstreamiterator.cpp $
+  */
+ 
+ #include "asstreamiterator.h"
+@@ -53,8 +53,10 @@
+ 
+ std::string ASStreamIterator::peekNextLine()
+ {
+-    if (!m_SavedCharPtr)
++    if (!m_SavedCharPtr){
+         m_SavedCharPtr = m_CharPtr;
++        m_SavedCurChar = m_CurChar;
++    }
+ 
+     return readLine();
+ }
+@@ -62,6 +64,7 @@
+ void ASStreamIterator::peekReset()
+ {
+     m_CharPtr = m_SavedCharPtr;
++    m_CurChar = m_SavedCurChar;
+     m_SavedCharPtr = 0;
+ }
+ 
+diff -Naur codeblocks-17.12/src/plugins/astyle/asstreamiterator.h codeblocks-code-11266-trunk/src/plugins/astyle/asstreamiterator.h
+--- codeblocks-17.12/src/plugins/astyle/asstreamiterator.h	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/asstreamiterator.h	2018-01-15 20:54:23.000000000 +0300
+@@ -22,6 +22,7 @@
+ 
+         bool hasMoreLines() const;
+         int  getStreamLength() const;
++        std::streamoff getPeekStart() const { return 0; }
+         std::string nextLine(bool emptyLineWasDeleted = false);
+         std::string peekNextLine();
+         void peekReset();
+@@ -39,6 +40,7 @@
+         const wxChar*       m_CharPtr;
+         const wxChar*       m_SavedCharPtr;
+         int                 m_CurChar;
++        int                 m_SavedCurChar;
+         int                 m_CurLine;
+         bool                m_FoundBookmark;
+         bool                m_FoundBreakpoint;
+diff -Naur codeblocks-17.12/src/plugins/astyle/astyleconfigdlg.cpp codeblocks-code-11266-trunk/src/plugins/astyle/astyleconfigdlg.cpp
+--- codeblocks-17.12/src/plugins/astyle/astyleconfigdlg.cpp	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/astyleconfigdlg.cpp	2018-01-15 20:54:23.000000000 +0300
+@@ -2,9 +2,9 @@
+  * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
+  * http://www.gnu.org/licenses/gpl-3.0.html
+  *
+- * $Revision: 10955 $
+- * $Id: astyleconfigdlg.cpp 10955 2016-12-29 08:55:24Z mortenmacfly $
+- * $HeadURL: http://svn.code.sf.net/p/codeblocks/code/branches/release-17.xx/src/plugins/astyle/astyleconfigdlg.cpp $
++ * $Revision: 11266 $
++ * $Id: astyleconfigdlg.cpp 11266 2018-01-15 17:54:23Z jenslody $
++ * $HeadURL: file:///svn/p/codeblocks/code/trunk/src/plugins/astyle/astyleconfigdlg.cpp $
+  */
+ 
+ #include <sdk.h>
+@@ -34,7 +34,7 @@
+   EVT_RADIOBUTTON(XRCID("rbStroustrup"), AstyleConfigDlg::OnStyleChange)
+   EVT_RADIOBUTTON(XRCID("rbWhitesmith"), AstyleConfigDlg::OnStyleChange)
+   EVT_RADIOBUTTON(XRCID("rbVTK"),        AstyleConfigDlg::OnStyleChange)
+-  EVT_RADIOBUTTON(XRCID("rbBanner"),     AstyleConfigDlg::OnStyleChange)
++  EVT_RADIOBUTTON(XRCID("rbRatliff"),    AstyleConfigDlg::OnStyleChange)
+   EVT_RADIOBUTTON(XRCID("rbGNU"),        AstyleConfigDlg::OnStyleChange)
+   EVT_RADIOBUTTON(XRCID("rbLinux"),      AstyleConfigDlg::OnStyleChange)
+   EVT_RADIOBUTTON(XRCID("rbHorstmann"),  AstyleConfigDlg::OnStyleChange)
+@@ -158,7 +158,7 @@
+       XRCCTRL(*this, "rbVTK", wxRadioButton)->SetValue(true);
+       break;
+ #undef AS_VTK
+-#define AS_BANNER "\
++#define AS_RATLIFF "\
+ int Foo(bool isBar) {\n\
+     if (isBar) {\n\
+         bar();\n\
+@@ -167,11 +167,11 @@
+     else\n\
+         return 0;\n\
+     }"
+-    case aspsBanner:
+-      sample = _T(AS_BANNER);
+-      XRCCTRL(*this, "rbBanner", wxRadioButton)->SetValue(true);
++    case aspsRatliff:
++      sample = _T(AS_RATLIFF);
++      XRCCTRL(*this, "rbRatliff", wxRadioButton)->SetValue(true);
+       break;
+-#undef AS_BANNER
++#undef AS_RATLIFF
+ #define AS_GNU "\
+ int Foo(bool isBar)\n\
+ {\n\
+@@ -307,8 +307,8 @@
+     SetStyle(aspsWhitesmith);
+   else if (event.GetId() == XRCID("rbVTK"))
+     SetStyle(aspsVTK);
+-  else if (event.GetId() == XRCID("rbBanner"))
+-    SetStyle(aspsBanner);
++  else if (event.GetId() == XRCID("rbRatliff"))
++    SetStyle(aspsRatliff);
+   else if (event.GetId() == XRCID("rbGNU"))
+     SetStyle(aspsGnu);
+   else if (event.GetId() == XRCID("rbLinux"))
+@@ -376,6 +376,7 @@
+   XRCCTRL(*this,   "chkAttachExternC",       wxCheckBox)->SetValue(cfg->ReadBool(_T("/attach_extern_c"),       false));
+   XRCCTRL(*this,   "chkAttachNamespaces",    wxCheckBox)->SetValue(cfg->ReadBool(_T("/attach_namespaces"),     false));
+   XRCCTRL(*this,   "chkAttachInlines",       wxCheckBox)->SetValue(cfg->ReadBool(_T("/attach_inlines"),        false));
++  XRCCTRL(*this,   "chkAttachClosingWhiles", wxCheckBox)->SetValue(cfg->ReadBool(_T("/attach_closing_whiles"), false));
+ 
+   XRCCTRL(*this,   "spnIndentation",         wxSpinCtrl)->SetValue(cfg->ReadInt(_T("/indentation"),            4));
+   XRCCTRL(*this,   "spnContinuation",        wxSpinCtrl)->SetValue(cfg->ReadInt(_T("/continuation"),           0));
+@@ -386,6 +387,7 @@
+   XRCCTRL(*this,   "chkIndentLabels",        wxCheckBox)->SetValue(cfg->ReadBool(_T("/indent_labels"),         false));
+   XRCCTRL(*this,   "chkIndentModifiers",     wxCheckBox)->SetValue(cfg->ReadBool(_T("/indent_modifiers"),      false));
+   XRCCTRL(*this,   "chkIndentNamespaces",    wxCheckBox)->SetValue(cfg->ReadBool(_T("/indent_namespaces"),     false));
++  XRCCTRL(*this,   "chkIndentAfterParens",   wxCheckBox)->SetValue(cfg->ReadBool(_T("/indent_after_parens"),   false));
+   XRCCTRL(*this,   "chkIndentSwitches",      wxCheckBox)->SetValue(cfg->ReadBool(_T("/indent_switches"),       false));
+   XRCCTRL(*this,   "chkIndentPreprocBlock",  wxCheckBox)->SetValue(cfg->ReadBool(_T("/indent_preproc_block"),  false));
+   XRCCTRL(*this,   "chkIndentPreprocDefine", wxCheckBox)->SetValue(cfg->ReadBool(_T("/indent_preproc_define"), false));
+@@ -399,6 +401,10 @@
+   XRCCTRL(*this,   "chkAddBrackets",         wxCheckBox)->SetValue(cfg->ReadBool(_T("/add_brackets"),          false));
+   XRCCTRL(*this,   "chkAddOneLineBrackets",  wxCheckBox)->SetValue(cfg->ReadBool(_T("/add_one_line_brackets"), false));
+   XRCCTRL(*this,   "chkRemoveBrackets",      wxCheckBox)->SetValue(cfg->ReadBool(_T("/remove_brackets"),       false));
++  XRCCTRL(*this,   "chkBreakReturnType",     wxCheckBox)->SetValue(cfg->ReadBool(_T("/break_return_type"),     false));
++  XRCCTRL(*this,   "chkBreakReturnTypeDecl", wxCheckBox)->SetValue(cfg->ReadBool(_T("/break_return_type_decl"),false));
++  XRCCTRL(*this,   "chkAttachReturnType",    wxCheckBox)->SetValue(cfg->ReadBool(_T("/attach_return_type"),    false));
++  XRCCTRL(*this,   "chkAttachReturnTypeDecl",wxCheckBox)->SetValue(cfg->ReadBool(_T("/attach_return_type_decl"),false));
+   XRCCTRL(*this,   "chkKeepBlocks",          wxCheckBox)->SetValue(cfg->ReadBool(_T("/keep_blocks"),           false));
+   XRCCTRL(*this,   "chkKeepHeaders",         wxCheckBox)->SetValue(cfg->ReadBool(_T("/keep_headers"),          false));
+   XRCCTRL(*this,   "chkKeepStatements",      wxCheckBox)->SetValue(cfg->ReadBool(_T("/keep_statements"),       false));
+@@ -455,8 +461,8 @@
+     style = aspsWhitesmith;
+   else if (XRCCTRL(*this, "rbVTK",        wxRadioButton)->GetValue())
+     style = aspsVTK;
+-  else if (XRCCTRL(*this, "rbBanner",     wxRadioButton)->GetValue())
+-    style = aspsBanner;
++  else if (XRCCTRL(*this, "rbRatliff",     wxRadioButton)->GetValue())
++    style = aspsRatliff;
+   else if (XRCCTRL(*this, "rbGNU",        wxRadioButton)->GetValue())
+     style = aspsGnu;
+   else if (XRCCTRL(*this, "rbLinux",      wxRadioButton)->GetValue())
+@@ -480,6 +486,7 @@
+   cfg->Write(_T("/attach_extern_c"),          XRCCTRL(*this, "chkAttachExternC",       wxCheckBox)->GetValue());
+   cfg->Write(_T("/attach_namespaces"),        XRCCTRL(*this, "chkAttachNamespaces",    wxCheckBox)->GetValue());
+   cfg->Write(_T("/attach_inlines"),           XRCCTRL(*this, "chkAttachInlines",       wxCheckBox)->GetValue());
++  cfg->Write(_T("/attach_closing_whiles"),    XRCCTRL(*this, "chkAttachClosingWhiles", wxCheckBox)->GetValue());
+ 
+   cfg->Write(_T("/indentation"),              XRCCTRL(*this, "spnIndentation",         wxSpinCtrl)->GetValue());
+   cfg->Write(_T("/continuation"),             XRCCTRL(*this, "spnContinuation",        wxSpinCtrl)->GetValue());
+@@ -490,6 +497,7 @@
+   cfg->Write(_T("/indent_labels"),            XRCCTRL(*this, "chkIndentLabels",        wxCheckBox)->GetValue());
+   cfg->Write(_T("/indent_modifiers"),         XRCCTRL(*this, "chkIndentModifiers",     wxCheckBox)->GetValue());
+   cfg->Write(_T("/indent_namespaces"),        XRCCTRL(*this, "chkIndentNamespaces",    wxCheckBox)->GetValue());
++  cfg->Write(_T("/indent_after_parens"),      XRCCTRL(*this, "chkIndentAfterParens",   wxCheckBox)->GetValue());
+   cfg->Write(_T("/indent_switches"),          XRCCTRL(*this, "chkIndentSwitches",      wxCheckBox)->GetValue());
+   cfg->Write(_T("/indent_preproc_block"),     XRCCTRL(*this, "chkIndentPreprocBlock",  wxCheckBox)->GetValue());
+   cfg->Write(_T("/indent_preproc_define"),    XRCCTRL(*this, "chkIndentPreprocDefine", wxCheckBox)->GetValue());
+@@ -503,6 +511,10 @@
+   cfg->Write(_T("/add_brackets"),             XRCCTRL(*this, "chkAddBrackets",         wxCheckBox)->GetValue());
+   cfg->Write(_T("/add_one_line_brackets"),    XRCCTRL(*this, "chkAddOneLineBrackets",  wxCheckBox)->GetValue());
+   cfg->Write(_T("/remove_brackets"),          XRCCTRL(*this, "chkRemoveBrackets",      wxCheckBox)->GetValue());
++  cfg->Write(_T("/break_return_type_decl"),   XRCCTRL(*this, "chkBreakReturnTypeDecl", wxCheckBox)->GetValue());
++  cfg->Write(_T("/break_return_type"),        XRCCTRL(*this, "chkBreakReturnType",     wxCheckBox)->GetValue());
++  cfg->Write(_T("/attach_return_type"),       XRCCTRL(*this, "chkAttachReturnType",    wxCheckBox)->GetValue());
++  cfg->Write(_T("/attach_return_type_decl"),  XRCCTRL(*this, "chkAttachReturnTypeDecl",wxCheckBox)->GetValue());
+   cfg->Write(_T("/keep_blocks"),              XRCCTRL(*this, "chkKeepBlocks",          wxCheckBox)->GetValue());
+   cfg->Write(_T("/keep_headers"),             XRCCTRL(*this, "chkKeepHeaders",         wxCheckBox)->GetValue());
+   cfg->Write(_T("/keep_statements"),          XRCCTRL(*this, "chkKeepStatements",      wxCheckBox)->GetValue());
+diff -Naur codeblocks-17.12/src/plugins/astyle/astyleplugin.cpp codeblocks-code-11266-trunk/src/plugins/astyle/astyleplugin.cpp
+--- codeblocks-17.12/src/plugins/astyle/astyleplugin.cpp	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/astyleplugin.cpp	2017-10-09 00:31:56.000000000 +0300
+@@ -4,7 +4,7 @@
+  *
+  * $Revision: 11193 $
+  * $Id: astyleplugin.cpp 11193 2017-10-08 21:31:56Z fuscated $
+- * $HeadURL: http://svn.code.sf.net/p/codeblocks/code/branches/release-17.xx/src/plugins/astyle/astyleplugin.cpp $
++ * $HeadURL: file:///svn/p/codeblocks/code/trunk/src/plugins/astyle/astyleplugin.cpp $
+  */
+ 
+ #include <sdk.h>
+diff -Naur codeblocks-17.12/src/plugins/astyle/astylepredefinedstyles.h codeblocks-code-11266-trunk/src/plugins/astyle/astylepredefinedstyles.h
+--- codeblocks-17.12/src/plugins/astyle/astylepredefinedstyles.h	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/astylepredefinedstyles.h	2018-01-15 20:54:23.000000000 +0300
+@@ -14,7 +14,7 @@
+   aspsStroustrup,
+   aspsWhitesmith,
+   aspsVTK,
+-  aspsBanner,
++  aspsRatliff,
+   aspsGnu,
+   aspsLinux,
+   aspsHorstmann,
+diff -Naur codeblocks-17.12/src/plugins/astyle/dlgformattersettings.cpp codeblocks-code-11266-trunk/src/plugins/astyle/dlgformattersettings.cpp
+--- codeblocks-17.12/src/plugins/astyle/dlgformattersettings.cpp	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/dlgformattersettings.cpp	2018-01-15 20:54:23.000000000 +0300
+@@ -2,9 +2,9 @@
+  * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
+  * http://www.gnu.org/licenses/gpl-3.0.html
+  *
+- * $Revision: 10950 $
+- * $Id: dlgformattersettings.cpp 10950 2016-12-29 06:16:39Z mortenmacfly $
+- * $HeadURL: http://svn.code.sf.net/p/codeblocks/code/branches/release-17.xx/src/plugins/astyle/dlgformattersettings.cpp $
++ * $Revision: 11266 $
++ * $Id: dlgformattersettings.cpp 11266 2018-01-15 17:54:23Z jenslody $
++ * $HeadURL: file:///svn/p/codeblocks/code/trunk/src/plugins/astyle/dlgformattersettings.cpp $
+  */
+ 
+ #include "dlgformattersettings.h"
+@@ -39,8 +39,8 @@
+     formatter.setFormattingStyle(astyle::STYLE_WHITESMITH);
+   else if (XRCCTRL(*m_dlg, "rbVTK", wxRadioButton)->GetValue())
+     formatter.setFormattingStyle(astyle::STYLE_VTK);
+-  else if (XRCCTRL(*m_dlg, "rbBanner", wxRadioButton)->GetValue())
+-    formatter.setFormattingStyle(astyle::STYLE_BANNER);
++  else if (XRCCTRL(*m_dlg, "rbRatliff", wxRadioButton)->GetValue())
++    formatter.setFormattingStyle(astyle::STYLE_RATLIFF);
+   else if (XRCCTRL(*m_dlg, "rbGNU", wxRadioButton)->GetValue())
+     formatter.setFormattingStyle(astyle::STYLE_GNU);
+   else if (XRCCTRL(*m_dlg, "rbLinux", wxRadioButton)->GetValue())
+@@ -58,10 +58,11 @@
+   else if (XRCCTRL(*m_dlg, "rbLisp", wxRadioButton)->GetValue())
+     formatter.setFormattingStyle(astyle::STYLE_LISP);
+ 
+-  formatter.setAttachClass(XRCCTRL(*m_dlg,     "chkAttachClasses",    wxCheckBox)->GetValue());
+-  formatter.setAttachExternC(XRCCTRL(*m_dlg,   "chkAttachExternC",    wxCheckBox)->GetValue());
+-  formatter.setAttachNamespace(XRCCTRL(*m_dlg, "chkAttachNamespaces", wxCheckBox)->GetValue());
+-  formatter.setAttachInline(XRCCTRL(*m_dlg,    "chkAttachInlines",    wxCheckBox)->GetValue());
++  formatter.setAttachClass(XRCCTRL(*m_dlg,        "chkAttachClasses",       wxCheckBox)->GetValue());
++  formatter.setAttachExternC(XRCCTRL(*m_dlg,      "chkAttachExternC",       wxCheckBox)->GetValue());
++  formatter.setAttachNamespace(XRCCTRL(*m_dlg,    "chkAttachNamespaces",    wxCheckBox)->GetValue());
++  formatter.setAttachInline(XRCCTRL(*m_dlg,       "chkAttachInlines",       wxCheckBox)->GetValue());
++  formatter.setAttachClosingWhile(XRCCTRL(*m_dlg, "chkAttachClosingWhiles", wxCheckBox)->GetValue());
+ 
+   bool value = XRCCTRL(*m_dlg, "chkForceUseTabs", wxCheckBox)->GetValue();
+   int spaceNum = XRCCTRL(*m_dlg, "spnIndentation", wxSpinCtrl)->GetValue();
+@@ -79,6 +80,7 @@
+   formatter.setLabelIndent(XRCCTRL(*m_dlg,              "chkIndentLabels",        wxCheckBox)->GetValue());
+   formatter.setModifierIndent(XRCCTRL(*m_dlg,           "chkIndentModifiers",     wxCheckBox)->GetValue());
+   formatter.setNamespaceIndent(XRCCTRL(*m_dlg,          "chkIndentNamespaces",    wxCheckBox)->GetValue());
++  formatter.setAfterParenIndent(XRCCTRL(*m_dlg,         "chkIndentAfterParens",   wxCheckBox)->GetValue());
+   formatter.setSwitchIndent(XRCCTRL(*m_dlg,             "chkIndentSwitches",      wxCheckBox)->GetValue());
+   formatter.setPreprocBlockIndent(XRCCTRL(*m_dlg,       "chkIndentPreprocBlock",  wxCheckBox)->GetValue());
+   formatter.setPreprocDefineIndent(XRCCTRL(*m_dlg,      "chkIndentPreprocDefine", wxCheckBox)->GetValue());
+@@ -88,11 +90,15 @@
+   formatter.setMinConditionalIndentOption(minConditionalEvent);
+   formatter.setMaxInStatementIndentLength( wxAtoi(XRCCTRL(*m_dlg, "txtMaxInStatementIndent", wxTextCtrl)->GetValue()) );
+ 
+-  formatter.setBreakClosingHeaderBracketsMode(XRCCTRL(*m_dlg, "chkBreakClosing", wxCheckBox)->GetValue());
++  formatter.setBreakClosingHeaderBracesMode(XRCCTRL(*m_dlg, "chkBreakClosing",   wxCheckBox)->GetValue());
+   formatter.setBreakElseIfsMode(XRCCTRL(*m_dlg, "chkBreakElseIfs",               wxCheckBox)->GetValue());
+-  formatter.setAddBracketsMode(XRCCTRL(*m_dlg, "chkAddBrackets",                 wxCheckBox)->GetValue());
+-  formatter.setAddOneLineBracketsMode(XRCCTRL(*m_dlg, "chkAddOneLineBrackets",   wxCheckBox)->GetValue());
+-  formatter.setRemoveBracketsMode(XRCCTRL(*m_dlg, "chkRemoveBrackets",           wxCheckBox)->GetValue());
++  formatter.setAddBracesMode(XRCCTRL(*m_dlg, "chkAddBrackets",                   wxCheckBox)->GetValue());
++  formatter.setAddOneLineBracesMode(XRCCTRL(*m_dlg, "chkAddOneLineBrackets",     wxCheckBox)->GetValue());
++  formatter.setRemoveBracesMode(XRCCTRL(*m_dlg, "chkRemoveBrackets",             wxCheckBox)->GetValue());
++  formatter.setBreakReturnType(XRCCTRL(*m_dlg, "chkBreakReturnType",             wxCheckBox)->GetValue());
++  formatter.setBreakReturnTypeDecl(XRCCTRL(*m_dlg, "chkBreakReturnTypeDecl",     wxCheckBox)->GetValue());
++  formatter.setAttachReturnType(XRCCTRL(*m_dlg, "chkAttachReturnType",           wxCheckBox)->GetValue());
++  formatter.setAttachReturnTypeDecl(XRCCTRL(*m_dlg, "chkAttachReturnTypeDecl",   wxCheckBox)->GetValue());
+   formatter.setBreakOneLineBlocksMode(!XRCCTRL(*m_dlg, "chkKeepBlocks",          wxCheckBox)->GetValue());
+   formatter.setBreakOneLineHeadersMode(!XRCCTRL(*m_dlg, "chkKeepHeaders",        wxCheckBox)->GetValue());
+   formatter.setBreakOneLineStatementsMode(!XRCCTRL(*m_dlg, "chkKeepStatements",  wxCheckBox)->GetValue());
+diff -Naur codeblocks-17.12/src/plugins/astyle/formattersettings.cpp codeblocks-code-11266-trunk/src/plugins/astyle/formattersettings.cpp
+--- codeblocks-17.12/src/plugins/astyle/formattersettings.cpp	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/formattersettings.cpp	2018-01-15 20:54:23.000000000 +0300
+@@ -2,9 +2,9 @@
+  * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
+  * http://www.gnu.org/licenses/gpl-3.0.html
+  *
+- * $Revision: 10950 $
+- * $Id: formattersettings.cpp 10950 2016-12-29 06:16:39Z mortenmacfly $
+- * $HeadURL: http://svn.code.sf.net/p/codeblocks/code/branches/release-17.xx/src/plugins/astyle/formattersettings.cpp $
++ * $Revision: 11266 $
++ * $Id: formattersettings.cpp 11266 2018-01-15 17:54:23Z jenslody $
++ * $HeadURL: file:///svn/p/codeblocks/code/trunk/src/plugins/astyle/formattersettings.cpp $
+  */
+ 
+ #include <sdk.h>
+@@ -54,8 +54,8 @@
+       formatter.setFormattingStyle(astyle::STYLE_VTK);
+       break;
+ 
+-    case aspsBanner: // Banner
+-      formatter.setFormattingStyle(astyle::STYLE_BANNER);
++    case aspsRatliff: // Ratliff
++      formatter.setFormattingStyle(astyle::STYLE_RATLIFF);
+       break;
+ 
+     case aspsGnu: // GNU
+@@ -123,7 +123,7 @@
+   formatter.setMinConditionalIndentOption(cfg->ReadInt(_T("/min_conditional_indent"), 2));
+   formatter.setMaxInStatementIndentLength(cfg->ReadInt(_T("/max_instatement_indent"), 40));
+ 
+-  formatter.setBreakClosingHeaderBracketsMode(cfg->ReadBool(_T("/break_closing")));
++  formatter.setBreakClosingHeaderBracesMode(cfg->ReadBool(_T("/break_closing")));
+   formatter.setBreakElseIfsMode(cfg->ReadBool(_T("/break_elseifs")));
+   formatter.setAddBracketsMode(cfg->ReadBool(_T("/add_brackets")));
+   formatter.setAddOneLineBracketsMode(cfg->ReadBool(_T("/add_one_line_brackets")));
+diff -Naur codeblocks-17.12/src/plugins/astyle/resources/configuration.xrc codeblocks-code-11266-trunk/src/plugins/astyle/resources/configuration.xrc
+--- codeblocks-17.12/src/plugins/astyle/resources/configuration.xrc	2017-11-01 02:32:42.000000000 +0300
++++ codeblocks-code-11266-trunk/src/plugins/astyle/resources/configuration.xrc	2018-01-15 20:54:23.000000000 +0300
+@@ -61,9 +61,9 @@
+ 											<border>5</border>
+ 										</object>
+ 										<object class="sizeritem">
+-											<object class="wxRadioButton" name="rbBanner">
+-												<label>Banner</label>
+-												<tooltip>Banner style uses attached, indented brackets. Switch blocks and class blocks are indented to prevent a &apos;hanging indent&apos; with following case statements and C++ class modifiers (public, private, protected).</tooltip>
++											<object class="wxRadioButton" name="rbRatliff">
++												<label>Ratliff</label>
++												<tooltip>Ratliff style uses attached, indented brackets. Switch blocks and class blocks are indented to prevent a &apos;hanging indent&apos; with following case statements and C++ class modifiers (public, private, protected).</tooltip>
+ 											</object>
+ 											<flag>wxTOP|wxLEFT|wxRIGHT|wxALIGN_LEFT</flag>
+ 											<border>5</border>
+@@ -212,6 +212,13 @@
+ 											<flag>wxTOP|wxALIGN_LEFT</flag>
+ 											<border>5</border>
+ 										</object>
++										<object class="sizeritem">
++											<object class="wxCheckBox" name="chkAttachClosingWhiles">
++												<label>Attach closing &quot;while&quot;</label>
++											</object>
++											<flag>wxTOP|wxALIGN_LEFT</flag>
++											<border>5</border>
++										</object>
+ 									</object>
+ 									<flag>wxEXPAND</flag>
+ 									<border>5</border>
+@@ -320,6 +327,13 @@
+ 											<border>5</border>
+ 										</object>
+ 										<object class="sizeritem">
++											<object class="wxCheckBox" name="chkIndentAfterParens">
++												<label>Indent after parens</label>
++											</object>
++											<flag>wxTOP|wxALIGN_LEFT</flag>
++											<border>5</border>
++										</object>
++										<object class="sizeritem">
+ 											<object class="wxCheckBox" name="chkIndentSwitches">
+ 												<label>Indent switches (keyword case:)</label>
+ 											</object>
+@@ -427,21 +441,49 @@
+ 										</object>
+ 										<object class="sizeritem">
+ 											<object class="wxCheckBox" name="chkAddBrackets">
+-												<label>Add brackets to unbracketed one line conditional statements</label>
++												<label>Add braces to unbraced one line conditional statements</label>
+ 											</object>
+ 											<flag>wxTOP|wxALIGN_LEFT</flag>
+ 											<border>5</border>
+ 										</object>
+ 										<object class="sizeritem">
+ 											<object class="wxCheckBox" name="chkAddOneLineBrackets">
+-												<label>Add one line brackets to unbracketed one line conditional statements</label>
++												<label>Add one line braces to unbraced one line conditional statements</label>
+ 											</object>
+ 											<flag>wxTOP|wxALIGN_LEFT</flag>
+ 											<border>5</border>
+ 										</object>
+ 										<object class="sizeritem">
+ 											<object class="wxCheckBox" name="chkRemoveBrackets">
+-												<label>Remove brackets from conditional statements (single statement on a single line)</label>
++												<label>Remove braces from conditional statements (single statement on a single line)</label>
++											</object>
++											<flag>wxTOP|wxALIGN_LEFT</flag>
++											<border>5</border>
++										</object>
++										<object class="sizeritem">
++											<object class="wxCheckBox" name="chkBreakReturnType">
++												<label>Break the return type from the function name in function definitions</label>
++											</object>
++											<flag>wxTOP|wxALIGN_LEFT</flag>
++											<border>5</border>
++										</object>
++										<object class="sizeritem">
++											<object class="wxCheckBox" name="chkBreakReturnTypeDecl">
++												<label>Break the return type from the function name in function declarations or signatures</label>
++											</object>
++											<flag>wxTOP|wxALIGN_LEFT</flag>
++											<border>5</border>
++										</object>
++										<object class="sizeritem">
++											<object class="wxCheckBox" name="chkAttachReturnType">
++												<label>Attach the return type to the function name in function definitions</label>
++											</object>
++											<flag>wxTOP|wxALIGN_LEFT</flag>
++											<border>5</border>
++										</object>
++										<object class="sizeritem">
++											<object class="wxCheckBox" name="chkAttachReturnTypeDecl">
++												<label>Attach the return type to the function name in function declarations or signatures</label>
+ 											</object>
+ 											<flag>wxTOP|wxALIGN_LEFT</flag>
+ 											<border>5</border>
