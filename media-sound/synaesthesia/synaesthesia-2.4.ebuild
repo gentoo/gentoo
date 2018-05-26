@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="a nice graphical accompaniment to music"
 HOMEPAGE="http://www.logarithmic.net/pfh/synaesthesia"
@@ -27,5 +27,5 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc README
+	default
 }
