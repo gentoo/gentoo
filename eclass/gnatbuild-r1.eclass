@@ -313,7 +313,6 @@ should_we_eselect_gnat() {
 		echo
 		elog "eselect gnat set <profile>"
 		echo
-		ebeep
 		return 1
 	fi
 }
