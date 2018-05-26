@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,17 +7,24 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit autotools elisp-common python-single-r1 systemd user versionator
 
+if [[ ${PV#9999} != ${PV} ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
+else
+	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(get_version_component_range '1-2')/${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+fi
+
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/"
-SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(get_version_component_range '1-2')/${PV}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
-IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
+IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband ipv6 +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
-	glupy? ( ${PYTHON_REQUIRED_USE} )"
+	glupy? ( ${PYTHON_REQUIRED_USE} )
+	ipv6? ( libtirpc )"
 
 # the tests must be run as root
 RESTRICT="test"
@@ -60,7 +67,7 @@ SITEFILE="50${PN}-mode-gentoo.el"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.12.2-poisoned-sysmacros.patch"
 	"${FILESDIR}/${PN}-3.12.2-silent_rules.patch"
-	"${FILESDIR}/${PN}-3.12.3-libtirpc.patch"
+	"${FILESDIR}/${PN}-TIRPC-config-summary.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
@@ -94,6 +101,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# --without-ipv6-default doesn't do what you think it does. Chewi
+	# has given up fighting with upstream about this.
+	# https://bugzilla.redhat.com/show_bug.cgi?id=1553926
+
 	econf \
 		--disable-dependency-tracking \
 		--disable-silent-rules \
@@ -113,6 +124,7 @@ src_configure() {
 		$(use_enable tiering) \
 		$(use_enable xml xml-output) \
 		$(use_with libtirpc) \
+		$(use ipv6 && echo --with-ipv6-default) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var
@@ -172,7 +184,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.confd" glusterfsd
 
 	keepdir /var/log/${PN}
-	keepdir /var/lib/glusterd
+	keepdir /var/lib/glusterd/{events,glusterfind/.keys}
 
 	# QA
 	rm -r "${ED}/var/run/" || die
