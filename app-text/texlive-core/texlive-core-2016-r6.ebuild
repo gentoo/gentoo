@@ -12,7 +12,7 @@ inherit eutils flag-o-matic toolchain-funcs libtool texlive-common
 MY_PV=${PN%-core}-${TL_SOURCE_VERSION}-source
 
 DESCRIPTION="A complete TeX distribution"
-HOMEPAGE="http://tug.org/texlive/"
+HOMEPAGE="https://tug.org/texlive/"
 SLOT="0"
 LICENSE="GPL-2 LPPL-1.3c TeX"
 
