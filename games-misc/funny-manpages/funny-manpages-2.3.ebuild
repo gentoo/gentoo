@@ -6,7 +6,7 @@ EAPI=6
 MY_R="${PV:0-1}"
 MY_P="${PN}_${PV/_p?/}"
 DESCRIPTION="funny manpages collected from various sources"
-HOMEPAGE="https://debian.org/"
+HOMEPAGE="https://www.debian.org/"
 SRC_URI="mirror://debian/pool/main/f/funny-manpages/${MY_P}.orig.tar.gz"
 
 if [[ "${PV}" = *_p* ]] ; then
