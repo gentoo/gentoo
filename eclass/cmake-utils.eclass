@@ -9,7 +9,7 @@
 # Maciej Mrozowski <reavertm@gentoo.org>
 # (undisclosed contributors)
 # Original author: Zephyrus (zephyrus@mirach.it)
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
 # The cmake-utils eclass makes creating ebuilds for cmake-based packages much easier.
@@ -105,7 +105,7 @@ _CMAKE_UTILS_ECLASS=1
 
 case ${EAPI} in
 	5) : ${CMAKE_WARN_UNUSED_CLI:=no} ;;
-	6) : ${CMAKE_WARN_UNUSED_CLI:=yes} ;;
+	6|7) : ${CMAKE_WARN_UNUSED_CLI:=yes} ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
