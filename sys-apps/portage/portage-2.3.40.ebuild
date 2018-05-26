@@ -94,6 +94,10 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# apply 4fb5ef2ce2cb
+	sed -i "s:\\((self._poll_obj, 'close'\\)):\\1, None):" \
+		pym/portage/util/_eventloop/EventLoop.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
