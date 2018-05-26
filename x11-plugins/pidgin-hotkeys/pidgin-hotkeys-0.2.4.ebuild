@@ -1,9 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Pidgin plugin to define global hotkeys for various actions"
 HOMEPAGE="http://pidgin-hotkeys.sourceforge.net/"
@@ -22,5 +20,5 @@ DEPEND="${RDEPEND}
 
 src_install() {
 	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog README NEWS || die
+	default
 }
