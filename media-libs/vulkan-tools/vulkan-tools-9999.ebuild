@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="51dfb7b8a19820d6716190dd7e45cd6e861e1f1a"
+	EGIT_COMMIT="5e1623ca6860f3e393b1dabbdd19ba216871fa61"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
@@ -28,6 +28,7 @@ RDEPEND=""
 DEPEND="${PYTHON_DEPS}
 	dev-util/glslang:=[${MULTILIB_USEDEP}]
 	dev-util/vulkan-headers
+	media-libs/vulkan-loader:=[${MULTILIB_USEDEP}]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
