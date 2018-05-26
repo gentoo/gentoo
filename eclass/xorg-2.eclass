@@ -156,7 +156,7 @@ if [[ ${FONT} == yes ]]; then
 	# Set up configure options, wrapped so ebuilds can override if need be
 	[[ -z ${FONT_OPTIONS} ]] && FONT_OPTIONS="--with-fontdir=\"${EPREFIX}/usr/share/fonts/${FONT_DIR}\""
 
-	[[ ${PN##*-} = misc || ${PN##*-} = 75dpi || ${PN##*-} = 100dpi || ${PN##*-} = cyrillic ]] && IUSE+=" nls"
+	[[ ${PN} = font-misc-misc || ${PN} = font-schumacher-misc || ${PN##*-} = 75dpi || ${PN##*-} = 100dpi || ${PN##*-} = cyrillic ]] && IUSE+=" nls"
 fi
 
 # If we're a driver package, then enable DRIVER case
@@ -364,7 +364,8 @@ xorg-2_font_configure() {
 	if has nls ${IUSE//+} && ! use nls; then
 		if grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
 			FONT_OPTIONS+="
-				--disable-all-encodings"
+				--disable-all-encodings
+				--enable-iso8859-1"
 		else
 			FONT_OPTIONS+="
 				--disable-iso8859-2
@@ -514,6 +515,8 @@ xorg-2_pkg_postinst() {
 		create_fonts_scale
 		create_fonts_dir
 		font_pkg_postinst "$@"
+
+		ewarn "Installed fonts changed. Run 'xset fp rehash' if you are using non-fontconfig applications."
 	fi
 }
 
