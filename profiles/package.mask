@@ -327,7 +327,8 @@ sci-chemistry/cyana
 # Mart Raudsepp <leio@gentoo.org> (30 Mar 2018)
 # GStreamer mp3 decoder plugin based on libmad is removed with gstreamer-1.12.
 # media-plugins/gst-plugins-mpg123 is the suggested replacement.
-# Masked for removal in 30 days. Bug 631128
+# Please keep this package.mask entry until at least 26th June 2018 for
+# extra notification of the deprecation and replacement. Bug #631128.
 media-plugins/gst-plugins-mad:1.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (27 Mar 2018)
