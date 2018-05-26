@@ -110,7 +110,6 @@ src_prepare() {
 	epatch "${FILESDIR}"/gnuradio-wxpy3.0-compat.patch
 	# Useless UI element would require qt3support, bug #365019
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
-	default
 	cmake-utils_src_prepare
 }
 
