@@ -13,7 +13,7 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="cpu_flags_x86_3dnow alsa altivec aqua custom-cflags dbus gles haptic libsamplerate +joystick cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video wayland X xinerama xscreensaver"
+IUSE="cpu_flags_x86_3dnow alsa altivec aqua custom-cflags dbus gles haptic libsamplerate +joystick kms cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video video_cards_vc4 wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
 	gles? ( video )
@@ -28,10 +28,15 @@ RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	gles? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
+	kms? (
+		>=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
+		>=media-libs/mesa-9.0.0[${MULTILIB_USEDEP},gbm]
+	)
 	libsamplerate? ( media-libs/libsamplerate[${MULTILIB_USEDEP}] )
 	nas? (
 		>=media-libs/nas-1.9.4[${MULTILIB_USEDEP}]
-		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
+		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
+	)
 	opengl? (
 		>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 		>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
@@ -125,6 +130,7 @@ multilib_src_configure() {
 		$(use_enable wayland video-wayland)
 		--disable-wayland-shared
 		--disable-video-mir
+		$(use_enable video_cards_vc4 video-rpi)
 		$(use_enable X video-x11)
 		--disable-x11-shared
 		$(use_enable X video-x11-xcursor)
@@ -139,6 +145,8 @@ multilib_src_configure() {
 		--disable-video-directfb
 		--disable-fusionsound
 		--disable-fusionsound-shared
+		$(use_enable kms video-kmsdrm)
+		--disable-kmsdrm-shared
 		$(use_enable video video-dummy)
 		$(use_enable opengl video-opengl)
 		--disable-video-opengles1
