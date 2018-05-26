@@ -5,19 +5,16 @@ EAPI="6"
 
 inherit pax-utils
 
-# Upstream messed up packaging:
-# This is v1.21.06 according to "storcli -v" but ZIP is named v1.21.16..
-# Also, README is isn't included in archive.
-MY_PV="1.23.02"
+# Upstream is still using strange version numbers
+MY_PV="007.0504.0000.0000"
 
 DESCRIPTION="MegaRAID StorCLI (successor of the MegaCLI)"
 HOMEPAGE="https://www.broadcom.com/support/download-search?dk=storcli"
-SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_StorCLI.zip -> ${P}.zip
-	https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${PV}_StorCLI.txt -> ${P}_readme.txt"
+SRC_URI="https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_Unified_StorCLI.zip -> ${P}.zip"
 
 LICENSE="Avago LSI BSD"
-SLOT="0/6.14"
-KEYWORDS="-* amd64 x86"
+SLOT="0/7.5"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -40,9 +37,9 @@ src_unpack() {
 		fi
 	done
 
-	unpack "${WORKDIR}"/storcli_All_OS.zip
+	unpack "${WORKDIR}"/Unified_storcli_all_os.zip
 
-	mv storcli_All_OS/Ubuntu/storcli_*.deb "${WORKDIR}" || die "Failed to move storclli_*.deb"
+	mv Unified_storcli_all_os/Ubuntu/storcli_*.deb "${WORKDIR}" || die "Failed to move storcli_*.deb"
 
 	# Unpack Ubuntu package which will be our $S content
 	unpack "${WORKDIR}"/storcli_*.deb
@@ -56,9 +53,9 @@ src_prepare() {
 	default
 
 	# Create clean $S
-	mv "${WORKDIR}"/*_readme.txt "${S}"/readme.txt || die "Failed to move *CLI.txt to readme.txt"
-	mv "${WORKDIR}"/storcli_All_OS/Linux/license.txt "${S}"/license.txt || die "Failed to move Linux/license.txt"
-	rm -rf "${WORKDIR}"/storcli_All* || die "Failed to cleanup storcli_all* dirs/files"
+	mv "${WORKDIR}"/*_StorCLI.txt "${S}"/readme.txt || die "Failed to move *StorCLI.txt to readme.txt"
+	mv "${WORKDIR}"/Unified_storcli_all_os/Linux/license.txt "${S}"/license.txt || die "Failed to move Linux/license.txt"
+	rm -rf "${WORKDIR}"/Unified_stor* || die "Failed to cleanup Unified_storcli* dirs/files"
 	mv "${WORKDIR}"/opt/Mega*/storcli/* "${S}" || die "Failed to move storcli_.deb content to '${S}'"
 	rm -rf "${WORKDIR}"/{opt,control.tar.gz,data.tar.gz,debian-binary} || die "Failed to cleanup no longer needed files"
 }
