@@ -39,4 +39,5 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die "make install failed"
+	default
 }
