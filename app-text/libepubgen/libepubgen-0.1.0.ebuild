@@ -19,6 +19,10 @@ DEPEND="${RDEPEND}
 	dev-libs/boost
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
+	test? (
+		dev-util/cppunit
+		dev-libs/libxml2:2
+	)
 "
 
 src_configure() {
