@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils cmake-utils gnome2-utils readme.gentoo-r1
 
 DESCRIPTION="Open Source remake of The Settlers II game (needs original game files)"
-HOMEPAGE="http://www.siedler25.org/"
+HOMEPAGE="https://www.siedler25.org/"
 # no upstream source tarball yet
 # https://bugs.launchpad.net/s25rttr/+bug/1069546
 SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
