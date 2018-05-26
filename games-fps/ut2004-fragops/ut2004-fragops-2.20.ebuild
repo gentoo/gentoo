@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ MOD_ICON="Help/FragOps.ico"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/fragops"
+HOMEPAGE="https://www.moddb.com/mods/fragops"
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/fragops_v220_fulllmw.zip"
 
 LICENSE="freedist"

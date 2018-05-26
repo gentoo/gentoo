@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ MOD_ICON="flem.ico"
 
 inherit games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/chex-trek-beyond-the-quest"
+HOMEPAGE="https://www.moddb.com/mods/chex-trek-beyond-the-quest"
 SRC_URI="chextrek_beta_${PV/.}.zip"
 
 LICENSE="GameFront"
@@ -20,7 +20,7 @@ RESTRICT="fetch bindist"
 
 pkg_nofetch() {
 	elog "Please download ${SRC_URI} from:"
-	elog "http://www.filefront.com/8396958"
+	elog "https://www.moddb.com/mods/chex-trek-beyond-the-quest/downloads/chex-trek-beta-052"
 	elog "and move it to ${DISTDIR}"
 }
 
