@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,7 +50,7 @@ DEPEND="
 	webengine? ( $(add_qt_dep qtwebengine 'widgets') )
 	webkit? ( $(add_qt_dep qtwebkit) )
 	zotero? (
-		app-crypt/qca[qt5]
+		app-crypt/qca[qt5(+)]
 		dev-libs/qoauth:5
 	)
 "
