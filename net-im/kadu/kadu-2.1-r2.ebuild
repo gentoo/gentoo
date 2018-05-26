@@ -22,7 +22,7 @@ REQUIRED_USE="
 	)
 "
 COMMON_DEPEND="
-	app-crypt/qca:2[qt5,ssl]
+	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-libs/injeqt-1.0.0
 	>=dev-qt/qtcore-5.2.0:5
 	>=dev-qt/qtdbus-5.2.0:5
