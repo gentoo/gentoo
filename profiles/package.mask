@@ -137,8 +137,6 @@ sci-libs/freesteam
 # Remaining fetch-restricted game packages missing BLAKE2B hashes.
 # Please provide updated hashes if you have the matching distfiles.
 # Bug #642876.  Removal in 30 days.
-games-action/shadowgrounds-bin
-games-action/shadowgrounds-survivor-bin
 games-action/trine2
 games-misc/dont-starve
 games-puzzle/larry
