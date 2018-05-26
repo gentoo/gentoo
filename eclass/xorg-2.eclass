@@ -364,7 +364,8 @@ xorg-2_font_configure() {
 	if has nls ${IUSE//+} && ! use nls; then
 		if grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
 			FONT_OPTIONS+="
-				--disable-all-encodings"
+				--disable-all-encodings
+				--enable-iso8859-1"
 		else
 			FONT_OPTIONS+="
 				--disable-iso8859-2
