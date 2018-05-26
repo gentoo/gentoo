@@ -16,4 +16,5 @@ PATCHES=( "${FILESDIR}/${P}.patch" )
 
 src_install() {
 	emake DESTDIR="${D}" install || die
+	default
 }
