@@ -1,9 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Dump a remote Subversion repository"
 HOMEPAGE="http://rsvndump.sourceforge.net"
@@ -22,14 +20,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/xmlto
 		>=app-text/asciidoc-8.4 )"
 
+DOCS=( AUTHORS ChangeLog NEWS README THANKS )
+
 src_configure() {
 	econf \
 		$(use_enable doc man) \
 		$(use_enable debug)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake failed"
-
-	dodoc AUTHORS ChangeLog NEWS README THANKS || die "dodoc failed"
 }
