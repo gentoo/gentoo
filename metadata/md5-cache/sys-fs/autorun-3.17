@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=-
 DEPEND=sys-devel/gettext dev-util/intltool app-text/xmlto app-text/docbook-xml-dtd:4.1.2
 DESCRIPTION=auto cdrom mounter for the lazy user
 EAPI=7
@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/autorun/autorun-3.17.tar.gz
-_md5_=46b42e2263744a451df134519ea1f783
+_md5_=075acb442ecae5d35a03d2fde9e18ce8

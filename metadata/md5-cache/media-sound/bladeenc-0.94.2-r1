@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=-
 DESCRIPTION=An mp3 encoder
 EAPI=6
 HOMEPAGE=http://bladeenc.mp3.no/
@@ -6,4 +6,4 @@ KEYWORDS=amd64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://bladeenc.mp3.no/source/bladeenc-0.94.2-src-stable.tar.gz
-_md5_=21e8344c26183bcd74bb1ee0fa5fc57c
+_md5_=7ff74e07a7d138ad255fa7927da98135

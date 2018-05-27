@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure
 DEPEND=virtual/pkgconfig
 DESCRIPTION=Guifications is a graphical notification plugin for pidgin
 EAPI=6
@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=net-im/pidgin[gtk] x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://downloads.guifications.org/plugins//Guifications2/pidgin-guifications-2.16.tar.bz2
-_md5_=61d4f496d8a465c212028ef5267c022c
+_md5_=8ddb86438811cea36f8549f64dfdc5e9
