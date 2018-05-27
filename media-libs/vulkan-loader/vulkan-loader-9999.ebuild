@@ -17,16 +17,15 @@ fi
 inherit python-any-r1 cmake-multilib
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
-HOMEPAGE="https://github.com/KhronosGroup/Vulkan-LoaderAndValidationLayers"
+HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Loader"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="layers wayland X"
 
-RDEPEND=""
+PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
 	dev-util/vulkan-headers
-	layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
