@@ -20,12 +20,8 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
 src_prepare() {
+	default
 	sed -e '/CFLAGS=/s:-O4:${CFLAGS}:' \
 		-e '/CXXFLAGS=/s:-O4:${CXXFLAGS}:' -i configure || die "sed failed"
 	sed -e 's:void inline:inline void:' -i syna.h || die "sed failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	default
 }
