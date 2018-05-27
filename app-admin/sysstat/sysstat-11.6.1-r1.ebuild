@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,6 +45,10 @@ src_prepare() {
 		done
 	fi
 
+	cp "${FILESDIR}/${PN}".init.d-r1 "${T}" || die
+	sed -i "s:@@GENTOO_LIBDIR@@:$(get_libdir):" \
+		"${T}/${PN}".init.d-r1 || die "failed to replace libdir"
+
 	default
 }
 
@@ -82,8 +86,8 @@ src_install() {
 	dodoc -r contrib/
 
 	rm -r "${D}/${SYSSTAT_FAKE_RC_DIR}" || die
-	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
+	newinitd "${T}/${PN}".init.d-r1 ${PN}
 	systemd_dounit ${PN}.service
 
-	rm -f "${D}"usr/share/doc/${PF}/COPYING
+	rm -f "${D}"usr/share/doc/${PF}/COPYING || die
 }
