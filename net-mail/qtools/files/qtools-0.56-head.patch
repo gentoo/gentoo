@@ -1,6 +1,6 @@
-diff -ur qtools-0.56/Makefile ../../qtools-0.56.patched/Makefile
+diff -ur qtools-0.56/Makefile qtools-0.56.patched/Makefile
 --- qtools-0.56/Makefile	2001-11-08 14:07:57.000000000 +0100
-+++ ../../qtools-0.56.patched/Makefile	2005-06-29 00:44:05.000000000 +0200
++++ qtools-0.56.patched/Makefile	2005-06-29 00:44:05.000000000 +0200
 @@ -13,7 +13,7 @@
  load: warn-auto.sh conf-ld
  	( cat warn-auto.sh; \
