@@ -7,17 +7,15 @@ PYTHON_REQ_USE="threads"
 
 inherit python-single-r1 unpacker
 
-DESCRIPTION="Commercial version of app-emulation/wine with paid support"
+DESCRIPTION="Commercial version of app-emulation/wine with paid support."
 HOMEPAGE="http://www.codeweavers.com/products/crossover/"
-SRC_URI="install-crossover-${PV}.bin"
+SRC_URI="https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crossover-${PV}.bin"
 
-LICENSE="CROSSOVER-2"
+LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+capi +cups doc +gphoto2 +gsm +jpeg +lcms +ldap +mp3 +nls +openal +opengl +png +scanner +ssl +v4l"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="bindist fetch test"
-
+IUSE="+capi +cups doc +gphoto2 +gsm +jpeg +lcms +ldap +mp3 +nls +openal +opencl +opengl +png +scanner +ssl +v4l"
+RESTRICT="bindist test"
 QA_FLAGS_IGNORED="opt/cxoffice/.*"
 QA_PRESTRIPPED="opt/cxoffice/lib/.*
 	opt/cxoffice/bin/cxburner
@@ -52,6 +50,7 @@ RDEPEND="${DEPEND}
 	mp3? ( >=media-sound/mpg123-1.5.0[abi_x86_32(-)] )
 	nls? ( sys-devel/gettext[abi_x86_32(-)] )
 	openal? ( media-libs/openal[abi_x86_32(-)] )
+	opencl? ( virtual/opencl[abi_x86_32(-)] )
 	opengl? (
 		virtual/glu[abi_x86_32(-)]
 		virtual/opengl[abi_x86_32(-)]
@@ -89,8 +88,12 @@ src_unpack() {
 
 src_prepare() {
 	python_fix_shebang .
-	sed -e 's:/usr/local/etc/xdg /etc/xdg::' -i "${WORKDIR}/bin/locate_gui.sh" \
-		 || die "Could not patch ${WORKDIR}/bin/locate_gui.sh"
+
+	sed -i \
+		-e "s:xdg_install_icons(:&\"${ED}\".:" \
+		-e "s:\"\(.*\)/applications:\"${ED}\1/applications:" \
+		-e "s:\"\(.*\)/desktop-directories:\"${ED}\1/desktop-directories:" \
+		"${S}/lib/perl/CXMenuXDG.pm"
 
 	# Remove unnecessary files
 	rm -r license.txt guis/ || die "Could not remove files"
@@ -107,24 +110,37 @@ src_install() {
 
 	# Install files
 	dodir /opt/cxoffice
-	cp -r ./* "${ED}opt/cxoffice" \
+	#cp -r ./* "${ED}opt/cxoffice" \
+	find . | cpio -dumpl "${ED}/opt/cxoffice" 2>/dev/null \
 		|| die "Could not install into ${ED}opt/cxoffice"
 
 	# Install configuration file
 	insinto /opt/cxoffice/etc
 	doins share/crossover/data/cxoffice.conf
 
-	# Install requisite directories for menus
-	dodir "/usr/share/applications"
-	dodir "/etc/xdg/menus/applications-merged"
-
 	# Install menus
-	XDG_CONFIG_DIRS="${ED}etc/xdg" \
-		XDG_DATA_DIRS="${ED}usr/share" \
-		"${ED}opt/cxoffice/bin/cxmenu" --crossover --install \
+	# XXX: locate_gui.sh automatically detects *-application-merged directories
+	# This means what we install will vary depending on the contents of
+	# /etc/xdg, which is a QA violation. It is not clear how to resolve this.
+	XDG_DATA_HOME="/usr/share" XDG_CONFIG_HOME="/etc/xdg" \
+		"${ED}opt/cxoffice/bin/cxmenu" --destdir="${ED}" --crossover --install \
 		|| die "Could not install menus"
 
-	# Fix menus
-	sed -e "s:${ED}:/:" -i "${ED}usr/share/applications/"* \
-		|| die "Could not fix menus"
+	rm "${ED}usr/share/applications/"*"Uninstall CrossOver Linux.desktop" \
+		|| die "Could not remove uninstall menus"
+	sed -i \
+		-e "s:\"${ED}\".::" \
+		-e "s:${ED}::" \
+		"${ED}/opt/cxoffice/lib/perl/CXMenuXDG.pm" \
+		|| die "Could not fix paths in ${ED}/opt/cxoffice/lib/perl/CXMenuXDG.pm"
+	sed -i -e "s:${ED}:/:" \
+		"${ED}usr/share/applications/"*"CrossOver.desktop" \
+		|| die "Could not fix paths of *.desktop files"
+}
+
+pkg_postinst() {
+	einfo "${P} is open source software with the exception of the GUI."
+	einfo "Source code can be obtained from:"
+	einfo
+	einfo "https://media.codeweavers.com/pub/crossover/source/crossover-sources-${PV}.tar.gz"
 }

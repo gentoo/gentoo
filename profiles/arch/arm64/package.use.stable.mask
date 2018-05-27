@@ -22,7 +22,7 @@ app-text/xmlto latex
 dev-libs/apr-util freetds odbc
 gnome-base/dconf test
 gnome-base/librsvg tools
-net-dns/avahi bookmarks gtk3 qt4 utils
+net-dns/avahi bookmarks gtk3 utils
 net-misc/openssh X
 sys-apps/dbus test
 sys-apps/man-pages l10n_fr

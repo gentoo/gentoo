@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-COMMIT=b210fd84d1053d3a57a888ecc8444f580d4b0651
+COMMIT=30e211367003bafa67834ffff3f31e6b5a897f4b
 inherit distutils-r1 gnome2-utils
 
 MY_PN="PyBitmessage"
