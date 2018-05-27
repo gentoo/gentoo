@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (25 May 2018)
+# New package. Needs to interact with media-libs/mesa and
+# x11-drivers/nvidia-drivers. Work in progress.
+media-libs/libglvnd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
 # Depends on dead Qt4. Masked for removal in 30 days. Bug #629018
 dev-libs/libattica
