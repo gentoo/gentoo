@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ COMMON_DEPEND="dev-qt/qtcore:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtgui:5
 	dev-qt/qtdeclarative:5
+	dev-qt/qtprintsupport:5
 	x11-libs/libxcb:0
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
@@ -46,7 +47,6 @@ S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}/1.2.0-desktop-files.patch"
-	"${FILESDIR}/1.3.0-OS-detect.patch"
 	"${FILESDIR}/1.4.0-poppler.patch"
 )
 
@@ -65,22 +65,16 @@ src_prepare(){
 
 src_configure(){
 	eqmake5 PREFIX="${EPREFIX}/usr" LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" \
-		DESTDIR="${D}" CONFIG+=WITH_I18N QMAKE_CFLAGS_ISYSTEM=
+		CONFIG+=WITH_I18N QMAKE_CFLAGS_ISYSTEM=
 }
 
 src_install(){
-	# A hack to avoid sandbox violation and install liblthemeengine*.so to the correct places
 	emake install INSTALL_ROOT="${D}"
-	rm "${ED%/}"/${PN}-* "${ED%/}"/start-${PN}-desktop "${ED%/}"/liblthemeengine*.so "${ED%/}"/lthemeengine || die
-	mv "${D}/${D}/etc" "${D}/etc" || die
-	mv "${D}/${D}/usr/bin" "${D}/usr/bin" || die
-	mv "${D}/${D}/usr/share" "${D}/usr/share" || die
-	rm -rf "${D}/var" || die
-	mv "${ED%/}"/etc/luminaDesktop.conf{.dist,} || die
 	einstalldocs
 
 	remove_locale() {
-		rm -f "${D}"/usr/share/${PN}-desktop/i18n/l*_${1}.qm
+		rm -f "${ED%/}"/usr/share/${PN}-desktop/i18n/l*_${1}.qm
+
 	}
 	l10n_for_each_disabled_locale_do remove_locale
 }

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="Mixed Integer Linear Programming (MILP) solver"
 HOMEPAGE="https://sourceforge.net/projects/lpsolve/"
@@ -17,12 +17,14 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		$(use_enable static-libs static)
 }
 
 src_install() {
 	default
+
 	# required because it does not provide .pc file
-	use static-libs || find "${ED}" -name '*.la' -exec rm -f {} +
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }
