@@ -25,8 +25,3 @@ src_configure() {
 	econf \
 		--disable-dependency-tracking
 }
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
-}
