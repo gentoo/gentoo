@@ -2476,7 +2476,6 @@ dev-java/commons-validator 1.4.0: Commons component to validate user input, or d
 dev-java/commons-vfs 1.0-r1: A single Java API for accessing various different file systems
 dev-java/cortado 0.6.0-r1: Multimedia framework for Java written by Fluendo
 dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables
-dev-java/cssparser 0.9.22: API for parsing CSS 2 in Java
 dev-java/dbus-java 2.7-r1: Java bindings for the D-Bus messagebus
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
@@ -6274,7 +6273,7 @@ dev-util/quilt 0.50: quilt patch manager
 dev-util/ragel 6.7-r1 6.10: Compiles finite state machines from regular languages into executable code
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.16: tool for generating C-based recognizers from regular expressions
-dev-util/rebar 2.6.1: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar 2.6.1 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
