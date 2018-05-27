@@ -36,7 +36,14 @@ LICENSE="google-chrome"
 IUSE="+widevine"
 RESTRICT="bindist mirror strip"
 
-RDEPEND="widevine? ( !<www-client/chromium-57[widevine(-)] )"
+RDEPEND="
+	widevine? (
+		dev-libs/glib:2
+		dev-libs/nspr
+		dev-libs/nss
+		!<www-client/chromium-57[widevine(-)]
+	)
+"
 
 for x in 0 beta stable unstable; do
 	if [[ ${SLOT} != ${x} ]]; then
