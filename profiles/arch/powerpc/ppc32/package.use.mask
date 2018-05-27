@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (27 May 2018)
+# kde-frameworks/kdelibs4support not keyworded on ppc
+x11-wm/sawfish kde
+
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Feb 2018)
 # Requires not yet keyworded dependencies
 sys-libs/gwenhywfar sensors serialport webkit
