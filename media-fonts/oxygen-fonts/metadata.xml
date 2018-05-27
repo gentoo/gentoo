@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>kde@gentoo.org</email>
-		<name>Gentoo KDE Project</name>
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
 	</maintainer>
 </pkgmetadata>
