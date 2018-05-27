@@ -9,7 +9,7 @@ if [[ ${PV} != 9999 ]]; then
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="alpha amd64 ~arm ~ppc ~ppc64 x86"
+	KEYWORDS="alpha amd64 arm ~ppc ~ppc64 x86"
 else
 	inherit git-r3
 	SRC_URI=""
