@@ -6,8 +6,8 @@ EAPI="5"
 inherit autotools eutils
 
 DESCRIPTION="Toolkit for Internationalized Domain Names (IDN)"
-HOMEPAGE="http://www.nic.ad.jp/ja/idn/idnkit/download/"
-SRC_URI="http://www.nic.ad.jp/ja/idn/idnkit/download/sources/${P}-src.tar.gz"
+HOMEPAGE="https://www.nic.ad.jp/ja/idn/idnkit/download/"
+SRC_URI="https://www.nic.ad.jp/ja/idn/idnkit/download/sources/${P}-src.tar.gz"
 
 LICENSE="JNIC"
 SLOT="0"
