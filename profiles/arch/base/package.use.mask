@@ -218,10 +218,6 @@ sys-power/pm-utils video_cards_intel video_cards_radeon
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan X
 
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-# Java is not supported in most of the arches enchant is keyworded
-app-text/enchant zemberek
-
 # Raúl Porcel <armin76@gentoo.org> (09 Nov 2008)
 # CPU opts: This needs amd64, x86 and ppc on some of them
 # dvdnav: hard masked dependency
