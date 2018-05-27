@@ -517,35 +517,14 @@ cmake-utils_src_configure() {
 
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
-	# Since cmake-3.4.0_rc1 "<FLAGS>" no longer contains includes and thus
-	# we need to add "<INCLUDES>"
-	local includes=
 
-	local has_cmake_3_4_0=false
-	case ${EAPI} in
-		5|6)
-			ROOT=/ has_version ">=dev-util/cmake-3.4.0_rc1" && has_cmake_3_4_0=true
-			;;
-		*)
-			has_version -b ">=dev-util/cmake-3.4.0_rc1" && has_cmake_3_4_0=true
-			;;
-	esac
-
-
-	if [[ ${PN} == cmake ]] ; then
-		if $(ver_test $(ver_cut 1-3 ${PV}) -ge 3.4.0) ; then
-			includes="<INCLUDES>"
-		fi
-	elif ${has_cmake_3_4_0}; then
-		includes="<INCLUDES>"
-	fi
 	cat > "${build_rules}" <<- _EOF_ || die
-		SET (CMAKE_ASM_COMPILE_OBJECT "<CMAKE_ASM_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "ASM compile command" FORCE)
-		SET (CMAKE_ASM-ATT_COMPILE_OBJECT "<CMAKE_ASM-ATT_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c -x assembler <SOURCE>" CACHE STRING "ASM-ATT compile command" FORCE)
+		SET (CMAKE_ASM_COMPILE_OBJECT "<CMAKE_ASM_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "ASM compile command" FORCE)
+		SET (CMAKE_ASM-ATT_COMPILE_OBJECT "<CMAKE_ASM-ATT_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c -x assembler <SOURCE>" CACHE STRING "ASM-ATT compile command" FORCE)
 		SET (CMAKE_ASM-ATT_LINK_FLAGS "-nostdlib" CACHE STRING "ASM-ATT link flags" FORCE)
-		SET (CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C compile command" FORCE)
-		SET (CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C++ compile command" FORCE)
-		SET (CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> ${includes} ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
+		SET (CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C compile command" FORCE)
+		SET (CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C++ compile command" FORCE)
+		SET (CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> <INCLUDES> ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
 	_EOF_
 
 	local myCC=$(tc-getCC) myCXX=$(tc-getCXX) myFC=$(tc-getFC)
