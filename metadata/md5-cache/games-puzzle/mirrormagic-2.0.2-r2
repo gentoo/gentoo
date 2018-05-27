@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!sdl? ( x11-libs/libX11 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-mixer media-libs/sdl-image )
 SLOT=0
 SRC_URI=http://www.artsoft.org/RELEASES/unix/mirrormagic/mirrormagic-2.0.2.tar.gz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=c9f3f0d80a3f5569451ef709b84b4f74

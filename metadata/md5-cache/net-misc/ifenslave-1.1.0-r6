@@ -7,5 +7,5 @@ KEYWORDS=~alpha amd64 ~arm ~mips ppc sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://debian/pool/main/i/ifenslave-2.6/ifenslave-2.6_1.1.0.orig.tar.gz mirror://debian/pool/main/i/ifenslave-2.6/ifenslave-2.6_1.1.0-17.debian.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=9874d00bf1dfab5bb2939bf9f7dd3b30

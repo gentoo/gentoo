@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/pcsc-lite-1.8.3 usb? ( virtual/libusb:1 )
 SLOT=0
 SRC_URI=https://ccid.apdu.fr/files/ccid-1.4.29.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	udev	d91cac2c73b94629cad2daea66e0d182
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	d91cac2c73b94629cad2daea66e0d182
 _md5_=2a93a1d1f9643a2e950da47486b1a05b

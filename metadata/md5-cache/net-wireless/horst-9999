@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0 pcap? ( net-libs/libpcap )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=git-r3	af51ccfceeb403ab80f1bf9209d372c8	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=26fb33c5b99c7cb9ae460f8c60006d55

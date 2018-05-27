@@ -9,5 +9,5 @@ RDEPEND=media-fonts/font-adobe-75dpi media-fonts/font-misc-misc x11-libs/libX11 
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=amd64? ( http://www.baudline.com/baudline_1.08_linux_x86_64.tar.gz ) ppc? ( http://www.baudline.com/baudline_1.08_linux_ppc.tar.gz ) s390? ( http://www.baudline.com/baudline_1.08_linux_s390.tar.gz ) x86? ( http://www.baudline.com/baudline_1.08_linux_i686.tar.gz )
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=96c854de84bcd8d43bc699a7c6119f9f

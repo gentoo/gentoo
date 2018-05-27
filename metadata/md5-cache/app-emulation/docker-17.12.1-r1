@@ -10,5 +10,5 @@ RDEPEND=>=dev-db/sqlite-3.7.9:3 device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) s
 RESTRICT=installsources strip
 SLOT=0
 SRC_URI=https://github.com/docker/docker-ce/archive/v17.12.1-ce.tar.gz -> docker-17.12.1.tar.gz
-_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	estack	43ddf5aaffa7a8d0482df54d25a66a1f	golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	fa02994d0beba88681127d93da4411ec	udev	d91cac2c73b94629cad2daea66e0d182	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	estack	43ddf5aaffa7a8d0482df54d25a66a1f	golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	linux-info	ca370deef9d44125d829f2eb6ebc83e0	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	d91cac2c73b94629cad2daea66e0d182	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=45e26822d4aec16c72d0e3b47d2d4cdb

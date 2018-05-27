@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[joystick,video] media-libs/sdl-mixer media-libs/sdl-net !<games-fps/lsdldoom-1.5 virtual/opengl virtual/glu
 SLOT=0
 SRC_URI=mirror://sourceforge/prboom/prboom-2.5.0.tar.gz mirror://gentoo/prboom.png
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=4b810e04c77b642653282950bec9291b

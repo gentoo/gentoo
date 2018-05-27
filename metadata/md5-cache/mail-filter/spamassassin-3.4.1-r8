@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl dev-perl/HTML-Parser dev-perl/Net-DNS dev-perl/NetAddr-IP 
 REQUIRED_USE=bayes? ( || ( berkdb mysql postgres sqlite ) )
 SLOT=0
 SRC_URI=mirror://apache/spamassassin/source/Mail-SpamAssassin-3.4.1.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=64aca8b198033885961f258ca904f1b8

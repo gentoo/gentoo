@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=alsa_cards_usb-usx2y? ( sys-apps/fxload ) alsa_cards_hdsp? ( media-sound/alsa-tools ) alsa_cards_hdspm? ( media-sound/alsa-tools )
 SLOT=0
 SRC_URI=mirror://alsaproject/firmware/alsa-firmware-1.0.29.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	udev	d91cac2c73b94629cad2daea66e0d182
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	d91cac2c73b94629cad2daea66e0d182
 _md5_=ca0f8a96c6582c6e3b39ea0a49aa97df

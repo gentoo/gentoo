@@ -10,5 +10,5 @@ RDEPEND=ftdi? ( dev-embedded/libftdi:0 ) hid? ( >=dev-libs/libhid-0.2.16 ) irman
 REQUIRED_USE=lcd_devices_mdm166a? ( hid )
 SLOT=0
 SRC_URI=mirror://sourceforge/lcdproc/lcdproc-0.5.6.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=d8080215041e28e231db5eefdb7dfb23

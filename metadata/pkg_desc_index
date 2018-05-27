@@ -79,7 +79,7 @@ app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.0.0: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.10: Check for mapped libs and open files that are marked as deleted
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
-app-admin/logcheck 1.3.15-r2 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
+app-admin/logcheck 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.13.0 3.14.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r2: Automatically monitor system logs and mail security violations
@@ -134,7 +134,7 @@ app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/sysstat 11.4.0: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 5.1.2 5.2.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 5.1.2 5.2.1 5.2.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.17: Log parsing and notification program
 app-admin/testdisk 7.1_pre20180322: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -150,9 +150,9 @@ app-admin/whowatch 1.8.5: Displays information about users currently logged on i
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1: Yet Another Log Analyzer
-app-antivirus/clamav 0.99.2-r1 0.99.3-r1 0.99.4-r1: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.99.4-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2: Downloads and installs third-party clamav signatures
-app-arch/advancecomp 1.15 2.0: Recompress ZIP, PNG and MNG, considerably improving compression
+app-arch/advancecomp 2.0: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r1: Afio creates cpio-format archives.
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
@@ -187,7 +187,7 @@ app-arch/lrzip 0.621: Long Range ZIP or Lzma RZIP optimized for compressing larg
 app-arch/lz4 0_p131 1.7.5-r1 1.8.0: Extremely Fast Compression algorithm
 app-arch/lzip 1.18: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.17: Lziprecover is a data recovery tool and decompressor for lzip compressed files
-app-arch/lzop 1.03 1.04: Utility for fast (even real-time) compression/decompression
+app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3: control magnetic tape drive operation
@@ -205,7 +205,7 @@ app-arch/rpm 4.11.0.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.14-r1: Tools to deal with shar archives
-app-arch/snappy 1.1.3-r1 1.1.7: A high-speed compression/decompression library by Google
+app-arch/snappy 1.1.7: A high-speed compression/decompression library by Google
 app-arch/star 1.5.3: An enhanced (world's fastest) tar, as well as enhanced mt/rmt
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tar 1.29-r1 1.29-r3: Use this to make tarballs :)
@@ -254,7 +254,7 @@ app-backup/rdiff-backup 1.3.3-r1: Local/remote mirroring+incremental backup
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
-app-benchmarks/acovea 5.1.1 5.1.1-r1 5.1.1-r2: Analysis of Compiler Options via Evolutionary Algorithm
+app-benchmarks/acovea 5.1.1 5.1.1-r2: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
 app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark suite
@@ -263,7 +263,7 @@ app-benchmarks/cpuburn 1.4a-r1: Designed to heavily load CPU chips [testing purp
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r1: A better i7 (and now i3, i5) reporting tool for Linux
-app-benchmarks/iozone 3.397 3.471: Filesystem benchmarking program
+app-benchmarks/iozone 3.471: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
@@ -354,7 +354,7 @@ app-crypt/p11-kit 0.23.2 0.23.9: Provides a standard configuration setup for ins
 app-crypt/paperkey 1.4: OpenPGP key archiver
 app-crypt/pgpdump 0.30: A PGP packet visualizer
 app-crypt/pinentry 1.0.0-r2: Simple passphrase entry dialogs which utilize the Assuan protocol
-app-crypt/qca 2.1.3-r1: Qt Cryptographic Architecture (QCA)
+app-crypt/qca 2.1.3-r2: Qt Cryptographic Architecture (QCA)
 app-crypt/quickcrypt 0.9.2b-r1: gives you a quick MD5 Password from any string
 app-crypt/rhash 1.3.5: Console utility and library for computing and verifying file hash sums
 app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
@@ -363,7 +363,7 @@ app-crypt/seahorse 3.20.0: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
-app-crypt/signing-party 2.6 2.7: A collection of several tools related to OpenPGP
+app-crypt/signing-party 2.7: A collection of several tools related to OpenPGP
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
@@ -371,7 +371,7 @@ app-crypt/tinyca 2.0.7.5-r3: Simple Perl/Tk GUI to manage a small certification 
 app-crypt/tpm-tools 1.3.9: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.14-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/veracrypt 1.22: Disk encryption with strong security based on TrueCrypt
-app-crypt/xca 1.3.2-r2 1.4.1: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
+app-crypt/xca 1.4.1: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
 app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
@@ -531,7 +531,7 @@ app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/adie 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
-app-editors/bluefish 2.2.6: A GTK HTML editor for the experienced web designer or programmer
+app-editors/bluefish 2.2.6 2.2.10: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.3.2-r2: display-oriented editor for binary files, based on the vi texteditor
 app-editors/curses-hexedit 0.9.7: full screen curses hex editor (with insert/delete support)
 app-editors/dav 0.8.5-r1: A minimal console text editor
@@ -829,7 +829,7 @@ app-forensics/foremost 1.5.7-r2: A console program to recover files based on the
 app-forensics/libewf 20130416: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
-app-forensics/rkhunter 1.4.2 1.4.6: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
+app-forensics/rkhunter 1.4.6: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/sleuthkit 4.5.0: A collection of file system and media management forensic analysis tools
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
 app-i18n/bidiv 1.5-r1: A BiDirectional Text Viewer
@@ -853,7 +853,7 @@ app-i18n/fcitx-table-extra 0.3.8: Extra Chinese table input methods for Fcitx
 app-i18n/fcitx-unikey 0.2.7: Vietnamese Unikey input methods for Fcitx
 app-i18n/freewnn 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.12 1.5.16: Intelligent Input Bus for Linux / Unix OS
-app-i18n/ibus-anthy 1.5.4: Japanese Anthy engine for IBus
+app-i18n/ibus-anthy 1.5.9: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-handwrite 2.1.4-r1: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
@@ -890,7 +890,7 @@ app-i18n/mozc 2.20.2673.102 2.23.2815.102: Mozc - Japanese input method editor
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nkf 2.1.3: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
-app-i18n/poedit 1.8.5 2.0.6: GUI gettext translations editor
+app-i18n/poedit 2.0.6: GUI gettext translations editor
 app-i18n/pology 0.11-r1: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
@@ -926,7 +926,7 @@ app-laptop/batti 0.3.8-r4: A upower based battery monitor for the system tray, s
 app-laptop/hdaps-gl 0.0.5: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.33-r1: Dell Inspiron and Latitude utilities
-app-laptop/laptop-mode-tools 1.71-r1 1.72.2: Linux kernel laptop_mode user-space utilities
+app-laptop/laptop-mode-tools 1.72.2: Linux kernel laptop_mode user-space utilities
 app-laptop/nvidiabl 0.83: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
 app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon cards
@@ -1218,7 +1218,7 @@ app-portage/gemato 13.0: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0 0.4.2-r1: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0: Collection of developer scripts for Gentoo
-app-portage/gentoopm 0.2.9-r1: A common interface to Gentoo package managers
+app-portage/gentoopm 0.2.9-r1 0.3.0: A common interface to Gentoo package managers
 app-portage/grs 0.5 0.6-r1: Suite to build Gentoo Reference Systems
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.4.2-r1: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.5: metadata.xml generator for ebuilds
@@ -1255,7 +1255,7 @@ app-shells/mksh 52: MirBSD KSH Shell
 app-shells/mpv-bash-completion 3.3.16: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1: A high-performance, parallel remote shell utility
-app-shells/posh 0.12.6 0.13.1: Reimplementation of Bourne shell based on pdksh
+app-shells/posh 0.13.1: Reimplementation of Bourne shell based on pdksh
 app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rrs 1.70-r2: Reverse Remote Shell
@@ -1271,7 +1271,7 @@ app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.9: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.10: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
@@ -1363,7 +1363,7 @@ app-text/jabref 2.10-r2: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 3.2 3.4 3.7 3.8.2: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
 app-text/jist 1.5.1-r1: A ruby gem to publish a gist
-app-text/kbibtex 0.8_pre20171110: BibTeX editor to edit bibliographies used with LaTeX
+app-text/kbibtex 0.8_pre20171110-r1: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
@@ -2395,7 +2395,7 @@ dev-java/ant-commons-net 1.9.2: Apache Ant's optional tasks depending on commons
 dev-java/ant-contrib 1.0_beta2-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.9.2: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1: Ant Compiler Adapter for Eclipse Java Compiler
-dev-java/ant-ivy 2.0.0 2.3.0-r2: Ivy is a free java based dependency manager
+dev-java/ant-ivy 2.3.0-r2: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.9.2: Apache Ant's optional tasks depending on sun-jai-bin
 dev-java/ant-javamail 1.9.2-r2: Apache Ant's optional tasks depending on oracle-javamail
 dev-java/ant-jdepend 1.9.2: Apache Ant's optional tasks depending on jdepend
@@ -2590,7 +2590,7 @@ dev-java/jchardet 1.1-r1: Java port of Mozilla's Automatic Charset Detection alg
 dev-java/jcifs 1.3.17-r2: Library that implements the CIFS/SMB networking protocol in Java
 dev-java/jclasslib 3.1: Java bytecode viewer
 dev-java/jcmdline 1.0.2-r2 2.0.0: Library for parsing/handling of command line parameters
-dev-java/jcodings 1.0.4 1.0.5 1.0.11: Byte-based encoding support library for Java
+dev-java/jcodings 1.0.5 1.0.11: Byte-based encoding support library for Java
 dev-java/jcommander 1.48: Command line parsing framework for Java
 dev-java/jcommon 1.0.23: A collection of useful classes used by JFreeChart, JFreeReport and others
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
@@ -2888,7 +2888,7 @@ dev-lang/orc 0.4.27 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler
 dev-lang/perl 5.24.3-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.33 5.6.34 5.6.35-r1 7.0.27 7.0.28 7.0.29 7.1.13 7.1.15 7.1.16: The PHP language runtime engine
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: An interpreted, interactive, object-oriented programming language
-dev-lang/python-exec 2.4.4 2.4.5: Python script wrapper
+dev-lang/python-exec 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0-r1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/ruby 2.3.6 2.3.7: An object-oriented scripting language
 dev-lang/rust 1.25.0: Systems programming language from Mozilla
@@ -3000,9 +3000,9 @@ dev-libs/jemalloc 3.6.0: Jemalloc is a general-purpose scalable concurrent alloc
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.12: A JSON implementation in C
 dev-libs/json-glib 1.2.8: Library providing GLib serialization and deserialization for the JSON format
-dev-libs/jsoncpp 1.8.1 1.8.4: C++ JSON reader and writer
+dev-libs/jsoncpp 1.8.4: C++ JSON reader and writer
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
-dev-libs/judy 1.0.4 1.0.5 1.0.5-r2: A C library that implements a dynamic array
+dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
 dev-libs/kdiagram 2.6.0: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r200 0.3.1-r201 0.3.1-r300 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/klibc 2.0.4-r2 2.0.4-r3: A minimal libc subset for use with initramfs
@@ -3038,7 +3038,7 @@ dev-libs/libcroco 0.6.12-r1: Generic Cascading Style Sheet (CSS) parsing and man
 dev-libs/libdaemon 0.14-r1 0.14-r2 0.14-r3: Simple library for creating daemon processes in C
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 12.10.2-r2: Library to pass menu structure across DBus
-dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r1: Library providing Qt implementation of DBusMenu specification
+dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configuration files
@@ -3178,7 +3178,7 @@ dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.1: C++ classes for flexible logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
-dev-libs/lzo 2.09 2.10: An extremely fast compression and decompression library
+dev-libs/lzo 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5-r1: Mike's Arbitrary Precision Math Library
@@ -3201,7 +3201,7 @@ dev-libs/oniguruma 6.6.1 6.7.1: Regular expression library for different charact
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0: Libraries and applications to access smartcards
-dev-libs/openssl 0.9.8z_p8 0.9.8z_p8-r1 1.0.2n 1.0.2o: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 0.9.8z_p8-r1 1.0.2o: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r4 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
@@ -3211,7 +3211,7 @@ dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/protobuf 3.5.1.1 3.5.2: Google's Protocol Buffers - Extensible mechanism for serializing structured data
 dev-libs/protobuf-c 1.3.0-r1: Protocol Buffers implementation in C
-dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
+dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pugixml 1.8: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/qcustomplot 2.0.0: Qt C++ widget for plotting and data visualization
@@ -3537,8 +3537,8 @@ dev-perl/Curses-UI 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
-dev-perl/DBD-SQLite 1.540.0-r1: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.41.0 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
+dev-perl/DBD-SQLite 1.560.0: Self Contained RDBMS in a DBI Driver
+dev-perl/DBD-mysql 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
@@ -5686,7 +5686,7 @@ dev-qt/qdbusviewer 4.8.7 5.9.4: Graphical tool that lets you introspect D-Bus ob
 dev-qt/qdoc 5.9.4: Qt documentation generator
 dev-qt/qt-creator 4.5.2: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.9.4_p201801220610: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
+dev-qt/qt-meta 4.8.6-r1: Cross-platform application development framework (metapackage)
 dev-qt/qt3support 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.9.4: Bluetooth support library for the Qt5 framework
@@ -6206,7 +6206,7 @@ dev-util/gnome-builder 3.24.2-r1: Builder attempts to be an IDE for writing soft
 dev-util/gnome-devel-docs 3.22.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/google-perftools 2.0-r2 2.6.2: Fast, multi-threaded malloc() and nifty performance analysis tools
-dev-util/gource 0.47: A software version control visualization tool
+dev-util/gource 0.48: A software version control visualization tool
 dev-util/gperf 3.0.4: A perfect hash function generator
 dev-util/gtk-builder-convert 2.24.31-r1: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
@@ -6269,7 +6269,7 @@ dev-util/pycharm-community 2017.3.3 2017.3.4: Intelligent Python IDE with unique
 dev-util/pycharm-professional 2017.3.3 2017.3.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.10.1: Modern build tool for software projects
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
-dev-util/qstlink2 1.0.3 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
+dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50: quilt patch manager
 dev-util/ragel 6.7-r1 6.10: Compiles finite state machines from regular languages into executable code
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
@@ -6432,15 +6432,15 @@ gnome-base/nautilus 3.20.4 3.24.2.1: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 8-r1 10: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
-gnome-extra/cinnamon 3.0.7-r2 3.6.6-r2: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 3.0.1 3.6.5: Cinnamons's main interface to configure various aspects of the desktop
-gnome-extra/cinnamon-desktop 2.8.1 3.0.2 3.6.2: A collection of libraries and utilites used by Cinnamon
-gnome-extra/cinnamon-menus 2.8.0 3.0.2 3.6.0: Cinnamon's library for the Desktop Menu fd.o specification
-gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1 3.6.1-r1: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1 3.6.1-r4: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1 3.6.1-r1: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 2.8.3 3.0.3 3.6.3: Translation data for Cinnamon
-gnome-extra/cjs 3.0.1 3.6.1: Linux Mint's fork of gjs for Cinnamon
+gnome-extra/cinnamon 3.6.6-r2: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon-control-center 3.6.5: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-desktop 3.6.2: A collection of libraries and utilites used by Cinnamon
+gnome-extra/cinnamon-menus 3.6.0: Cinnamon's library for the Desktop Menu fd.o specification
+gnome-extra/cinnamon-screensaver 3.6.1-r1: Screensaver for Cinnamon
+gnome-extra/cinnamon-session 3.6.1-r4: Cinnamon session manager
+gnome-extra/cinnamon-settings-daemon 3.6.1-r1: Cinnamon's settings daemon
+gnome-extra/cinnamon-translations 3.6.3: Translation data for Cinnamon
+gnome-extra/cjs 3.6.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.22.7 3.24.7: Evolution groupware backend
 gnome-extra/evolution-ews 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
@@ -6479,7 +6479,7 @@ gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched whe
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.5: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.12.4: Nautilus extension to tag files for Tracker
-gnome-extra/nemo 2.8.7 3.0.6 3.6.4: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 3.6.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.4.6-r1 1.8.10: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
@@ -6858,49 +6858,49 @@ kde-misc/tellico 3.1.2: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.5: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.5.0: Getting things done application by KDE
-kde-plasma/bluedevil 5.11.5 5.12.5: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.11.5 5.12.5: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-grub 5.11.5 5.12.5: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.11.5 5.12.5: Official GTK+ port of Plasma's Breeze widget style
-kde-plasma/breeze-plymouth 5.11.5 5.12.5: Breeze theme for Plymouth
-kde-plasma/drkonqi 5.11.5 5.12.5: Plasma crash handler, gives the user feedback if a program crashed
-kde-plasma/kactivitymanagerd 5.11.5 5.12.5: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.11.5 5.12.5: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.11.5 5.12.5: KDE Plasma systemsettings kcm to set GTK application look&feel
-kde-plasma/kdecoration 5.11.5 5.12.5: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.11.5 5.12.5: Extra Plasma applets and engines
-kde-plasma/kgamma 5.11.5 5.12.5: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.11.5 5.12.5: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.11.5 5.12.5: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.11.5 5.12.5: KDE Plasma menu editor
-kde-plasma/kscreen 5.11.5 5.12.5: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.11.5 5.12.5: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 5.11.5 5.12.5: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.11.5 5.12.5: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.11.5-r1 5.12.5-r1: KWallet PAM module to not enter password again
-kde-plasma/kwayland-integration 5.11.5 5.12.5: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.11.5 5.12.5: KDE window manager
-kde-plasma/kwrited 5.11.5 5.12.5: KDE Plasma daemon listening for wall and write messages
-kde-plasma/libkscreen 5.11.5 5.12.5: Plasma screen management library
-kde-plasma/libksysguard 5.11.5 5.12.5: Task management and system monitoring library
-kde-plasma/milou 5.11.5 5.12.5: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.11.5 5.12.5: Oxygen visual style for the Plasma desktop
+kde-plasma/bluedevil 5.12.5: Bluetooth stack for KDE Plasma
+kde-plasma/breeze 5.12.5: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-grub 5.12.5: Breeze theme for GRUB
+kde-plasma/breeze-gtk 5.12.5: Official GTK+ port of Plasma's Breeze widget style
+kde-plasma/breeze-plymouth 5.12.5: Breeze theme for Plymouth
+kde-plasma/drkonqi 5.12.5: Plasma crash handler, gives the user feedback if a program crashed
+kde-plasma/kactivitymanagerd 5.12.5: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kde-cli-tools 5.12.5: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.12.5: KDE Plasma systemsettings kcm to set GTK application look&feel
+kde-plasma/kdecoration 5.12.5: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.12.5: Extra Plasma applets and engines
+kde-plasma/kgamma 5.12.5: Screen gamma values kcontrol module
+kde-plasma/khotkeys 5.12.5: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.12.5: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.12.5: KDE Plasma menu editor
+kde-plasma/kscreen 5.12.5: KDE Plasma screen management
+kde-plasma/kscreenlocker 5.12.5: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 5.12.5: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.12.5: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.12.5-r1: KWallet PAM module to not enter password again
+kde-plasma/kwayland-integration 5.12.5: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.12.5: KDE window manager
+kde-plasma/kwrited 5.12.5: KDE Plasma daemon listening for wall and write messages
+kde-plasma/libkscreen 5.12.5: Plasma screen management library
+kde-plasma/libksysguard 5.12.5: Task management and system monitoring library
+kde-plasma/milou 5.12.5: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.12.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.11.5 5.12.5-r1: KDE Plasma desktop
-kde-plasma/plasma-integration 5.11.5 5.12.5: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-meta 5.11.5 5.12.5: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.11.5 5.12.5: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.11.5 5.12.5: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.11.5 5.12.5: Useful applications for Plasma development
-kde-plasma/plasma-vault 5.11.5 5.12.5: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.11.5-r1 5.12.5: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.11.5 5.12.5: Additional wallpapers for the Plasma workspace
-kde-plasma/plymouth-kcm 5.11.5 5.12.5: KDE Plasma control module for Plymouth
-kde-plasma/polkit-kde-agent 5.11.5 5.12.5: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.11.5 5.12.5: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.11.5 5.12.5: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.11.5 5.12.5: System settings utility
-kde-plasma/user-manager 5.11.5 5.12.5-r1: Simple system settings module to manage the users of your system
+kde-plasma/plasma-desktop 5.12.5-r1: KDE Plasma desktop
+kde-plasma/plasma-integration 5.12.5: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-meta 5.12.5: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.12.5: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.12.5: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.12.5: Useful applications for Plasma development
+kde-plasma/plasma-vault 5.12.5: Plasma applet and services for creating encrypted vaults
+kde-plasma/plasma-workspace 5.12.5: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.12.5: Additional wallpapers for the Plasma workspace
+kde-plasma/plymouth-kcm 5.12.5: KDE Plasma control module for Plymouth
+kde-plasma/polkit-kde-agent 5.12.5: PolKit agent module for KDE Plasma
+kde-plasma/powerdevil 5.12.5: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.12.5: KDE Plasma control module for SDDM
+kde-plasma/systemsettings 5.12.5: System settings utility
+kde-plasma/user-manager 5.12.5-r1: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.6.3: LXDE GTK+ theme switcher
 lxde-base/lxde-common 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0-r1: nuoveXT2 iconset
@@ -6942,7 +6942,7 @@ mail-client/cone 0.92: CONE: COnsole News reader and Emailer
 mail-client/evolution 3.24.6: Integrated mail, addressbook and calendaring functionality
 mail-client/geary 0.12.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
-mail-client/mailx 8.1.2.20050715-r6 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
+mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.7.2 1.9.4-r1: A small but very powerful text-based mail client
 mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
@@ -6973,7 +6973,7 @@ mail-filter/libspf2 1.2.9-r3 1.2.10: libspf2 implements the Sender Policy Framew
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
 mail-filter/libsrs_alt 1.0: Sender Rewriting Scheme library
 mail-filter/maildrop 2.8.3: Mail delivery agent/filter
-mail-filter/mailfilter 0.8.2 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
+mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 1.9: A milter-based regular expression filter
 mail-filter/mimedefang 2.73 2.74: Antispam, antivirus and other customizable filters for MTAs with Milter support
@@ -7328,7 +7328,7 @@ media-gfx/recoverjpeg 2.0-r2 2.2.1-r1 2.2.3-r1: Recover JPEG pictures from a pos
 media-gfx/ristretto 0.8.2_p20170821: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.3: Utility to convert raster images to EPS, PDF and many others
-media-gfx/sane-backends 1.0.27 1.0.27-r1: Scanner Access Now Easy - Backends
+media-gfx/sane-backends 1.0.27-r1: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r3: Scanner Access Now Easy
 media-gfx/scour 0.36: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8_p13: Screen capture utility using imlib2 library
@@ -7484,7 +7484,7 @@ media-libs/libde265 1.0.2: Open h.265 video codec implementation
 media-libs/libdiscid 0.6.1: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r2 1.0.0-r3: Software codec for dv-format video (camcorders etc)
-media-libs/libdvbpsi 1.3.0-r1 1.3.1: library for MPEG TS/DVB PSI tables decoding and generation
+media-libs/libdvbpsi 1.3.1: library for MPEG TS/DVB PSI tables decoding and generation
 media-libs/libdvdcss 1.3.0 1.4.0: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 5.0.3 6.0.0: Library for DVD navigation tools
 media-libs/libdvdread 5.0.3 6.0.0: Library for DVD navigation tools
@@ -7613,7 +7613,7 @@ media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.18.2-r1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.25 1.6.58 1.6.62: Stream based read/write library for COLLADA files
-media-libs/opencolorio 1.0.9-r2 1.1.0-r1: A color management framework for visual effects and animation
+media-libs/opencolorio 1.1.0-r1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/opencv 2.4.13-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.1.0 2.2.0-r2: ILM's OpenEXR high dynamic-range image file format libraries
@@ -7627,9 +7627,9 @@ media-libs/opusfile 0.6: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
 media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.9.1-r1 4.10.1: KDE multimedia API
-media-libs/phonon-gstreamer 4.9.0-r1 4.9.0-r2: Phonon GStreamer backend
-media-libs/phonon-vlc 0.9.1-r1 0.10.1: Phonon VLC backend
+media-libs/phonon 4.10.1: KDE multimedia API
+media-libs/phonon-gstreamer 4.9.0-r2: Phonon GStreamer backend
+media-libs/phonon-vlc 0.10.1: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
@@ -8504,7 +8504,7 @@ net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client 
 net-im/gajim 0.16.6-r1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/jabber-base 0.01: Jabber servers and transports layout package
-net-im/kadu 2.1-r1 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
+net-im/kadu 2.1-r2 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mcabber 1.0.5: A small Jabber console client with various features, like MUC, SSL, PGP
@@ -8721,7 +8721,7 @@ net-mail/libpst 0.6.64-r1: Tools and library for reading Outlook files (.pst for
 net-mail/mailbase 1 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.24 2.1.26: A python-based mailing list server with an extensive web interface
+net-mail/mailman 2.1.26: A python-based mailing list server with an extensive web interface
 net-mail/mailutils 3.1.1: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
@@ -9801,7 +9801,7 @@ sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
 sys-apps/paludis 3.0.0_pre20170808: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/pciutils 3.4.1: Various utilities dealing with the PCI bus
-sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
+sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.22: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7: SELinux core utilities
@@ -9877,7 +9877,7 @@ sys-auth/pam_krb5 4.6: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 183 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
 sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a user session
-sys-auth/pam_mysql 0.7_rc1-r4 0.7_rc1-r5: pam_mysql is a module for pam to authenticate users with mysql
+sys-auth/pam_mysql 0.7_rc1-r5: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.1.6: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password changing programs
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
@@ -9886,7 +9886,7 @@ sys-auth/pam_u2f 1.0.4-r1: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20101024-r2 20120417-r3 20150213 20150213-r1: PAM base configuration files
 sys-auth/polkit 0.113-r4: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
-sys-auth/polkit-qt 0.112.0_p20160416-r1: PolicyKit Qt API wrapper library
+sys-auth/polkit-qt 0.112.0_p20160416-r2: PolicyKit Qt API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
@@ -9922,7 +9922,7 @@ sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for 
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
-sys-block/storcli 1.19.04 1.20.15 1.21.06: MegaRAID StorCLI (successor of the MegaCLI)
+sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/tgt 1.0.72 1.0.73: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.7.0: A suite of tools for thin provisioning on Linux
@@ -9953,7 +9953,7 @@ sys-cluster/dlm-lib 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/galera 25.3.20 25.3.23: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
-sys-cluster/glusterfs 3.12.3 4.0.0-r1: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 4.0.0-r1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
 sys-cluster/heat 9.0.3 10.0.0: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/ipvsadm 1.24 1.26-r2 1.27-r1: utility to administer the IP virtual server services
@@ -9988,7 +9988,7 @@ sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel b
 sys-devel/binutils 2.29.1-r1: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/boost-m4 0.4 0.4_p20160328: Another set of autoconf macros for compiling against boost
+sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 4.0.1 5.0.1: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.1 4.0.1 5.0.1: Meta-ebuild for clang runtime libraries
 sys-devel/crossdev 20171230: Gentoo Cross-toolchain generator
@@ -10612,7 +10612,7 @@ x11-apps/xlogo 1.0.4: X Window System logo
 x11-apps/xlsatoms 1.1.2: list interned atoms defined on server
 x11-apps/xlsclients 1.1.4: X.Org xlsclients application
 x11-apps/xlsfonts 1.0.6: X.Org xlsfonts application
-x11-apps/xmag 1.0.5 1.0.6: X.Org xmag application
+x11-apps/xmag 1.0.6: X.Org xmag application
 x11-apps/xman 1.1.4-r1: Manual page display program for the X Window System
 x11-apps/xmessage 1.0.4 1.0.5: display a message or query in a window (X-based /bin/echo)
 x11-apps/xmodmap 1.0.8 1.0.9: utility for modifying keymaps and pointer button mappings in X
@@ -10990,7 +10990,7 @@ x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r2: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r2: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/docker 1.5: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/enigmail 1.9.9 2.0.4 2.0.5: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 1.9.9 2.0.4 2.0.5-r1: Mozilla extension to provide GPG support in mail clients
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
@@ -11268,7 +11268,7 @@ x11-wm/jwm 2.3.2: Very fast and lightweight still powerful window manager for X
 x11-wm/lumina 1.3.0_p1: Lumina desktop environment
 x11-wm/lwm 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.12.1: MATE default window manager
-x11-wm/muffin 2.8.5 3.0.5 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
+x11-wm/muffin 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/openbox 3.5.2-r1 3.6.1: A standards compliant, fast, light-weight, extensible window manager

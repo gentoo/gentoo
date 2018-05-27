@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 
 RESTRICT=test
 SLOT=0
 SRC_URI=http://releases.pagure.org/volume_key/volume_key-0.3.10.tar.xz
-_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=4d708ea4576884b826669dfe890bd6d5

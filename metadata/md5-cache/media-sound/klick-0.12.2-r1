@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/boost media-libs/libsamplerate media-libs/libsndfile virtual/jack osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband )
 SLOT=0
 SRC_URI=http://das.nasophon.de/download/klick-0.12.2.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	26a3d0e2e380dde78b6e3187ec68fa8d	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	26a3d0e2e380dde78b6e3187ec68fa8d	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=995d6cc169176b5147dff1efe78f4298

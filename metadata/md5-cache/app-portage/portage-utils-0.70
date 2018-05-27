@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/iniparser:0
 SLOT=0
 SRC_URI=mirror://gentoo/portage-utils-0.70.tar.xz https://dev.gentoo.org/~grobian/distfiles/portage-utils-0.70.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=fadeecb614e68a6cf84822a65403967f
