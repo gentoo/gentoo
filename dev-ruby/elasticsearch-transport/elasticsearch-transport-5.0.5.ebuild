@@ -5,7 +5,9 @@ EAPI=6
 
 USE_RUBY="ruby23 ruby24"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
-RUBY_FAKEGEM_TASK_DOC=doc
+RUBY_FAKEGEM_RECIPE_DOC=rdoc
+
+RUBY_FAKEGEM_TASK_TEST="NOTURN=true test"
 
 inherit ruby-fakegem
 
@@ -30,12 +32,10 @@ ruby_add_bdepend "
 		dev-ruby/mocha:1.0
 		dev-ruby/pry
 		dev-ruby/shoulda-context
+		dev-ruby/curb
+		dev-ruby/patron
 	)
 "
-
-# Tests need additional modules (at least 'turn') packaged. Then someone
-# should look into running them and so on.
-RESTRICT="test"
 
 RUBY_S=${MY_P}/${PN}
 
@@ -47,4 +47,8 @@ all_ruby_prepare() {
 	sed -e '/bundler/d' \
 		-e '/require.*cane/,/end/d' \
 		-i Rakefile || die
+
+	# Tweak test setup to only run unit tests since we don't have a live cluster
+	sed -i -e "s/RUBY_VERSION > '1.9'/false/" \
+		-e '/module Elasticsearch/,$ s:^:#:' test/test_helper.rb || die
 }
