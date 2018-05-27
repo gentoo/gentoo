@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib rpm toolchain-funcs
 
 DESCRIPTION="hardware detection tool used in SuSE Linux"
-HOMEPAGE="http://www.opensuse.org/"
+HOMEPAGE="https://www.opensuse.org/"
 SRC_URI="http://download.opensuse.org/source/factory/repo/oss/suse/src/${P}-1.1.src.rpm"
 
 LICENSE="GPL-2"
