@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	sys-devel/gettext"
 
+RESTRICT="test" # bug 650760
+
 PATCHES=( "${FILESDIR}"/${P}-errorcodes{1,2}.patch )
 
 src_prepare() {
