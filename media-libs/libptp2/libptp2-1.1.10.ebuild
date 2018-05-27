@@ -29,8 +29,3 @@ src_prepare() {
 src_test() {
 	env LD_LIBRARY_PATH=./src/.libs/ ./src/ptpcam -l || die
 }
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
-}
