@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=dev-libs/librevenge dev-libs/boost virtual/pkgconfig doc? ( app-doc/doxygen )
+DEPEND=dev-libs/librevenge dev-libs/boost virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit dev-libs/libxml2:2 )
 DESCRIPTION=EPUB generator for librevenge
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/libepubgen/
@@ -9,4 +9,4 @@ LICENSE=MPL-2.0
 RDEPEND=dev-libs/librevenge
 SLOT=0
 SRC_URI=mirror://sourceforge/libepubgen/libepubgen-0.1.0.tar.xz
-_md5_=6f8a87fbbcf12f52a940be912b5681c7
+_md5_=f5a5b32a65ba232ea066d6ad38eeb534

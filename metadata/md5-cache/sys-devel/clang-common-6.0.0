@@ -7,5 +7,5 @@ LICENSE=UoI-NCSA
 PDEPEND=sys-devel/clang:*
 SLOT=0
 SRC_URI=https://releases.llvm.org/6.0.0/cfe-6.0.0.src.tar.xz
-_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=17ccdf550ff816f5f0fec4be85da07e8

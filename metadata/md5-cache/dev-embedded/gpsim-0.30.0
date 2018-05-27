@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-embedded/gputils-0.12 dev-libs/glib:2 dev-libs/popt sys-libs/readline:0= gtk? ( >=x11-libs/gtk+extra-2 )
 SLOT=0
 SRC_URI=mirror://sourceforge/gpsim/gpsim-0.30.0.tar.gz
-_eclasses_=ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=de2d1f2760423b9ca162d803b23e5b63

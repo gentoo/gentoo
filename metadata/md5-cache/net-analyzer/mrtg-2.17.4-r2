@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-perl/SNMP_Session-1.13-r2 >=dev-perl/Socket6-0.23 dev-lang/perl media-libs/gd[png] selinux? ( sec-policy/selinux-mrtg )
 SLOT=0
 SRC_URI=https://oss.oetiker.ch/mrtg/pub/mrtg-2.17.4.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=9d16da98705b7bd4a4c6a09e9170cab0

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Vulkan Header files and API registry
+EAPI=6
+HOMEPAGE=https://github.com/KhronosGroup/Vulkan-Headers
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=!<=media-libs/vulkan-loader-1.1.70.0-r999
+SLOT=0
+SRC_URI=https://github.com/KhronosGroup/Vulkan-Headers/archive/a901a3edf256c1a1441433e77feac919fb8e5ed6.tar.gz -> vulkan-headers-0_p20180526.tar.gz
+_md5_=aec1e48424fb50937293917a11822a4f

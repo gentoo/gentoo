@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-db/postgresql:=
 SLOT=0
 SRC_URI=https://github.com/jtv/libpqxx/archive/6.0.0.tar.gz -> libpqxx-6.0.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=499ef3413895edee3fe441aaa0fa4975

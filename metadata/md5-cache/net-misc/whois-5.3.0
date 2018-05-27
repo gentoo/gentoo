@@ -10,5 +10,5 @@ RDEPEND=iconv? ( virtual/libiconv ) idn? ( net-dns/libidn2 ) nls? ( virtual/libi
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://debian/pool/main/w/whois/whois_5.3.0.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=d4eae4096ffeecb86fd1924f92600000

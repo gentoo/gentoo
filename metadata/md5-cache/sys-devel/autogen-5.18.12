@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-scheme/guile-2.0:= dev-libs/libxml2
 SLOT=0
 SRC_URI=mirror://gnu/autogen/rel5.18.12/autogen-5.18.12.tar.xz
-_eclasses_=ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=c50f190b49c367267f0ae15ad1731f9b

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=net-analyzer/rrdtool[perl] net-libs/libpcap net-libs/libtirpc:= sys-libs/ncurses:= sys-libs/readline:= sys-libs/zlib ft? ( net-analyzer/flow-tools ) geoip? ( dev-libs/geoip ) mysql? ( virtual/mysql ) sasl? ( dev-libs/cyrus-sasl )
 SLOT=0
 SRC_URI=http://qosient.com/argus/dev/argus-clients-3.0.8.2.tar.gz
-_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=b6b1ca87e57cea396e40b2f9f34b5e14

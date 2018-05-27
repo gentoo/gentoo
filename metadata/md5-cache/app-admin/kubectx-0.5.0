@@ -7,5 +7,5 @@ LICENSE=Apache-2.0
 RDEPEND=sys-cluster/kubectl
 SLOT=0
 SRC_URI=https://github.com/ahmetb/kubectx/archive/v0.5.0.tar.gz -> kubectx-0.5.0.tar.gz
-_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
 _md5_=7d3d6cc8bcab4613546c3f14cd9b5d37

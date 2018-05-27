@@ -8,5 +8,5 @@ LICENSE=feh LGPL-2+
 RDEPEND=>=media-libs/imlib2-1.0.3 >=media-libs/giblib-1.2.3
 SLOT=0
 SRC_URI=http://www.linuxbrit.co.uk/downloads/scrot-0.8.tar.gz
-_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=a69a132b84227ffea9ed9593102c6b98

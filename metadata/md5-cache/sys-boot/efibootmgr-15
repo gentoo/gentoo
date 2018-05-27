@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/pciutils >=sys-libs/efivar-25:=
 SLOT=0
 SRC_URI=https://github.com/rhinstaller/efibootmgr/releases/download/15/efibootmgr-15.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	fa02994d0beba88681127d93da4411ec
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=74aef3dff2f65395e82fc97937c0de10
