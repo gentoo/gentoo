@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 PIDFILE=${PIDFILE:-/var/run/cntlm.pid}
@@ -16,6 +16,6 @@ start() {
 
 stop() {
 	ebegin "Stopping cntlm"
-	start-stop-daemon --stop --pidfile ${PIDFILE}
+	start-stop-daemon --stop --pidfile ${PIDFILE} -R SIGTERM/2/SIGKILL/2
 	eend $?
 }
