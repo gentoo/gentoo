@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils flag-o-matic multilib
 
 DESCRIPTION="A lexical database for the English language"
-HOMEPAGE="http://wordnet.princeton.edu/"
+HOMEPAGE="https://wordnet.princeton.edu/"
 SRC_URI="
 	ftp://ftp.cogsci.princeton.edu/pub/wordnet/${PV}/WordNet-${PV}.tar.gz
 	mirror://gentoo/${P}-patchset-1.tar.bz2"
