@@ -116,7 +116,7 @@ multilib_src_install() {
 pkg_postinst() {
 	# Migrate the SELinux semanage configuration store if not done already
 	local selinuxtype=$(awk -F'=' '/SELINUXTYPE=/ {print $2}' "${EROOT}"/etc/selinux/config 2>/dev/null)
-	if [ -n "${selinuxtype}" ] && [ ! -d "${EROOT}"/var/lib/selinux/${mcs}/active ] ; then
+	if [ -n "${selinuxtype}" ] && [ ! -d "${EROOT}"/var/lib/selinux/${selinuxtype}/active ] ; then
 		ewarn "Since the 2.4 SELinux userspace, the policy module store is moved"
 		ewarn "from /etc/selinux to /var/lib/selinux. The migration will be run now."
 		ewarn "If there are any issues, it can be done manually by running:"
