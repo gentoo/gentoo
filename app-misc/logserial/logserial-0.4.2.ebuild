@@ -25,5 +25,5 @@ src_compile() {
 
 src_install() {
 	dobin logserial
-	default
+	dodoc CHANGELOG README
 }
