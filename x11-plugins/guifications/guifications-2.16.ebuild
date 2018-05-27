@@ -28,8 +28,3 @@ src_configure() {
 		$(use_enable debug ) \
 		$(use_enable nls) || die "econf failure"
 }
-
-src_install() {
-	emake install DESTDIR="${D}" || die "make install failure"
-	default
-}
