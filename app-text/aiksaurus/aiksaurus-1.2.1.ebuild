@@ -30,8 +30,3 @@ src_configure() {
 	filter-flags -fno-exceptions
 	econf $(use_with gtk)
 }
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
-}
