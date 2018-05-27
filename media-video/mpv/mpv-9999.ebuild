@@ -98,7 +98,7 @@ COMMON_DEPEND="
 	vdpau? ( x11-libs/libvdpau )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
-		>=dev-libs/wayland-protocols-1.12
+		>=dev-libs/wayland-protocols-1.14
 		>=x11-libs/libxkbcommon-0.3.0
 	)
 	X? (
@@ -150,6 +150,10 @@ src_configure() {
 		append-cflags -I"${SYSROOT%/}${EPREFIX}/opt/vc/include"
 		append-ldflags -L"${SYSROOT%/}${EPREFIX}/opt/vc/lib"
 	fi
+
+	# Prevent access violations from zsh completion generation.
+	# See Gentoo bug 656086.
+	use zsh-completion && addpredict /dev/dri
 
 	local mywafargs=(
 		--confdir="${EPREFIX}/etc/${PN}"
