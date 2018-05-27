@@ -13,8 +13,3 @@ KEYWORDS="ppc x86 ~x86-fbsd"
 IUSE=""
 
 PATCHES=( "${FILESDIR}/${P}.patch" )
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
-}

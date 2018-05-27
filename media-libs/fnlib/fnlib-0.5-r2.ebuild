@@ -25,10 +25,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --sysconfdir=/etc/fnlib
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
+	econf --sysconfdir="${EPREFIX}"/etc/fnlib
 }

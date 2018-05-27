@@ -18,15 +18,6 @@ DEPEND="sys-devel/gettext
 	app-text/xmlto
 	app-text/docbook-xml-dtd:4.1.2"
 
+export KDEDIR=/usr
+
 PATCHES=( "${FILESDIR}/${P}-headers.patch" )
-
-src_configure() {
-	export KDEDIR=/usr
-	econf \
-		--disable-dependency-tracking
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
-}
