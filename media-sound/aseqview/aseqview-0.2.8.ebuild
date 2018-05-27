@@ -21,8 +21,3 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf --disable-alsatest --disable-gtktest --enable-gtk2
 }
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	default
-}
