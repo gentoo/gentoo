@@ -15,7 +15,7 @@ VIVALDI_PN="${PN}-${VIVALDI_BRANCH:-stable}"
 VIVALDI_BIN="${PN}${VIVALDI_BRANCH/snapshot/-snapshot}"
 VIVALDI_HOME="opt/${VIVALDI_BIN}"
 DESCRIPTION="A new browser for our friends"
-HOMEPAGE="http://vivaldi.com/"
+HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
