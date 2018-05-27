@@ -33,7 +33,6 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "make install failure"
-	find "${D}" -name "*.la" -delete || die "error cleaning la file."
 	default
+	find "${D}" -name "*.la" -delete || die "error cleaning la file."
 }
