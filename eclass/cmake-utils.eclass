@@ -521,14 +521,14 @@ cmake-utils_src_configure() {
 	# we need to add "<INCLUDES>"
 	local includes=
 
-	local has_cmake_340=
+	local has_cmake_3_4_0=false
 	case ${EAPI} in
 		5|6)
-			has_cmake_34=$(ROOT=/ has_version \>=dev-util/cmake-3.4.0_rc1)
-		;;
+			ROOT=/ has_version ">=dev-util/cmake-3.4.0_rc1" && has_cmake_3_4_0=true
+			;;
 		*)
-			has_cmake_34=$(has_version -b \>=dev-util/cmake-3.4.0_rc1)
-		;;
+			has_version -b ">=dev-util/cmake-3.4.0_rc1" && has_cmake_3_4_0=true
+			;;
 	esac
 
 
@@ -536,7 +536,7 @@ cmake-utils_src_configure() {
 		if $(ver_test $(ver_cut 1-3 ${PV}) -ge 3.4.0) ; then
 			includes="<INCLUDES>"
 		fi
-	elif [[ ${has_cmake_340} ]]; then
+	elif ${has_cmake_3_4_0}; then
 		includes="<INCLUDES>"
 	fi
 	cat > "${build_rules}" <<- _EOF_ || die
