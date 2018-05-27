@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
 IUSE="doc test"
 
 RDEPEND="
@@ -28,22 +28,24 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/path-py[${PYTHON_USEDEP}]
-		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.4[${PYTHON_USEDEP}]
 	)
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_compile_all() {
-	use doc && esetup.py build_sphinx
+	if use doc; then
+		sphinx-build docs docs/_build/html || die
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
-	py.test --ignore=rst || die "tests failed with ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
-	distutils-r1_python_install_all
+	# Ignore the module from ${S}, use the one from ${BUILD_DIR}
+	# Otherwise, ImportMismatchError may occur
+	# https://github.com/gentoo/gentoo/pull/1622#issuecomment-224482396
+	# Override pytest options to skip flake8
+	py.test -v --ignore=rst --override-ini="addopts=--doctest-modules" \
+		|| die "tests failed with ${EPYTHON}"
 }
