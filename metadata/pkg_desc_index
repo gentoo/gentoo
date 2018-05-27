@@ -82,7 +82,7 @@ app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale f
 app-admin/logcheck 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.13.0 3.14.0: Rotates, compresses, and mails system logs
-app-admin/logsentry 1.1.1 1.1.1-r2: Automatically monitor system logs and mail security violations
+app-admin/logsentry 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/lsat 0.9.7.1-r2: The Linux Security Auditing Tool
 app-admin/lsyncd 2.2.0: Live Syncing (Mirror) Daemon
@@ -267,7 +267,7 @@ app-benchmarks/iozone 3.471: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
-app-benchmarks/siege 3.0.6 3.1.4: A HTTP regression testing and benchmarking utility
+app-benchmarks/siege 3.1.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/sysbench 1.0.10: System performance benchmark
@@ -6227,7 +6227,7 @@ dev-util/kdevelop-python 5.2.1: Python plugin for KDevelop
 dev-util/kyua 0.13-r1: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
-dev-util/lockrun 20120508 20120508-r1: Lockrun - runs cronjobs with overrun protection
+dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/ltrace 0.7.2: trace library calls made at runtime
 dev-util/lttng-modules 2.7.1: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1: Linux Trace Toolkit - next generation
