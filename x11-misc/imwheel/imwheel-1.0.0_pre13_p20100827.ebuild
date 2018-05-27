@@ -36,8 +36,3 @@ src_configure() {
 	myconf="--disable-gpm --disable-gpm-doc"
 	econf ${myconf} || die "configure failed"
 }
-
-src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-	default
-}
