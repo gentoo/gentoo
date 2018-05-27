@@ -13,8 +13,3 @@ KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE=""
 
 PATCHES=( "${FILESDIR}/${P}-secfix.diff" )
-
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	default
-}
