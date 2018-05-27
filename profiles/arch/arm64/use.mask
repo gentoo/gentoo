@@ -138,8 +138,6 @@ darcs
 mercurial
 kerberos
 gpg
-gnome
-doc
 emacs
 gphoto2
 afs
