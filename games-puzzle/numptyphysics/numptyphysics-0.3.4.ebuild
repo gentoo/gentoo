@@ -2,13 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils flag-o-matic git-r3
+inherit eutils gnome2-utils flag-o-matic
 
 DESCRIPTION="Crayon Physics-like drawing puzzle game using the same excellent Box2D engine"
 HOMEPAGE="http://thp.io/2015/numptyphysics/"
 
 # This is only the SRC_URI for the user levels. The code is in git repo.
 SRC_URI="user-levels? (
+	https://github.com/thp/numptyphysics/archive/0.3.4.tar.gz -> ${P}.tar.gz
 	http://numptyphysics.garage.maemo.org/levels/butelo/butelo.npz
 	http://numptyphysics.garage.maemo.org/levels/catalyst/catalyst.npz
 	http://numptyphysics.garage.maemo.org/levels/christeck/christeck.npz
@@ -32,35 +33,26 @@ SRC_URI="user-levels? (
 	http://numptyphysics.garage.maemo.org/levels/zeez/zeez.npz
 )"
 
-EGIT_REPO_URI="https://github.com/thp/numptyphysics"
-
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="+user-levels"
 
-RDEPEND="media-libs/libsdl2[opengl,video]
+RDEPEND="
+	media-libs/libsdl2[opengl,video]
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-ttf
 	virtual/opengl
-	dev-libs/glib:2"
+	dev-libs/glib:2
+"
 DEPEND="${DEPEND}
-	virtual/pkgconfig"
-
-src_unpack() {
-	git-r3_src_unpack
-}
+	virtual/pkgconfig
+"
 
 src_prepare() {
+	default
 	append-cxxflags -std=c++11 -Isrc
-	sed -i '/-g -O2/d' external/Box2D/Source/Makefile \
-		external/glaserl/makefile || die
-	sed -i "/return thp::/s% thp::.*$%\"/usr/share/${PN}/data\";%" \
-		src/Os.cpp || die
-	sed -e '/CXXFLAGS +=/s/\(CXXFLAGS +=\).*\( -DAPP=.*\)/\1\2/' \
-		-e '/SILENTCMD/s/$(LIBS)$/$(LDFLAGS) $(LIBS)/' \
-		-i makefile || die
-	eapply_user
+	eapply "${FILESDIR}"/${P}-gentoo.patch
 }
 
 pkg_preinst() {

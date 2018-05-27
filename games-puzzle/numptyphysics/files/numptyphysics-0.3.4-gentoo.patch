@@ -40,5 +40,5 @@ index b5d7fb9..6a0ccf4 100644
  
      // System-wide installation
 -    return thp::format("%s/../share/%s/data", g_appDir.c_str(), appName().c_str());
-+    return "@GENTOO_DATADIR@";
++    return "/usr/share/numptyphysics/data";
  }
