@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	!app-emulation/crossover-office-pro-bin
 	!app-emulation/crossover-office-bin
-	capi? ( net-dialup/capi4k-utils )
+	capi? ( net-libs/libcapi[abi_x86_32(-)] )
 	cups? ( net-print/cups[abi_x86_32(-)] )
 	gsm? ( media-sound/gsm[abi_x86_32(-)] )
 	jpeg? ( virtual/jpeg[abi_x86_32(-)] )
@@ -98,7 +98,7 @@ src_prepare() {
 
 src_install() {
 	# Install crossover symlink, bug #476314
-	dosym /opt/cxoffice/bin/crossover /opt/bin/crossover
+	dosym ../cxoffice/bin/crossover /opt/bin/crossover
 
 	# Install documentation
 	dodoc README changelog.txt
