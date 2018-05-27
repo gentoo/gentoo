@@ -23,8 +23,3 @@ src_prepare() {
 	sed -e 's: -Wall -g3::' -i configure.ac || die
 	eautoreconf
 }
-
-src_install() {
-	emake DESTDIR="${D}" ALL_LINGUAS="${LANGS}" install || die
-	default
-}
