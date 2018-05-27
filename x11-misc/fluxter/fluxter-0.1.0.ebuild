@@ -26,5 +26,5 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--datadir=/usr/share/commonbox
+		--datadir="${EPREFIX}"/usr/share/commonbox
 }
