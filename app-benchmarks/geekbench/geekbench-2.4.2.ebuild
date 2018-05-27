@@ -7,7 +7,7 @@ DESCRIPTION="A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windo
 HOMEPAGE="https://www.geekbench.com"
 SRC_URI="https://cdn.primatelabs.com/Geekbench-${PV}-LinuxARM.tar.gz"
 
-KEYWORDS="-* ~arm"
+KEYWORDS="-* arm"
 LICENSE="geekbench"
 SLOT="2"
 
