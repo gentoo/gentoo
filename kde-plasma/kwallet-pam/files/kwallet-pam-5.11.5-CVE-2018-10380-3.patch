@@ -1,0 +1,54 @@
+From 8da1a47035fc92bc1496059583772bc4bd6e8ba6 Mon Sep 17 00:00:00 2001
+From: Maximiliano Curia <maxy@gnuservers.com.ar>
+Date: Fri, 4 May 2018 22:06:06 +0200
+Subject: Avoid giving an stderr to kwallet
+
+Summary:
+The fixes for CVE-2018-10380 introduced a regression for most users not
+using kde, and some for kde sessions. In particular the reorder of the
+close calls and creating a new socket caused that the socket is always
+assigned the file descriptor 2, aka stderr.
+
+BUG: 393856
+
+Test Plan: It works
+
+Reviewers: #plasma, aacid
+
+Reviewed By: aacid
+
+Subscribers: asturmlechner, rdieter, davidedmundson, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D12702
+---
+ pam_kwallet.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/pam_kwallet.c b/pam_kwallet.c
+index b9c984a..661ed8d 100644
+--- a/pam_kwallet.c
++++ b/pam_kwallet.c
+@@ -375,7 +375,8 @@ static int drop_privileges(struct passwd *userInfo)
+ static void execute_kwallet(pam_handle_t *pamh, struct passwd *userInfo, int toWalletPipe[2], char *fullSocket)
+ {
+     //In the child pam_syslog does not work, using syslog directly
+-    int x = 2;
++    //keep stderr open so socket doesn't returns us that fd
++    int x = 3;
+     //Close fd that are not of interest of kwallet
+     for (; x < 64; ++x) {
+         if (x != toWalletPipe[0]) {
+@@ -424,6 +425,8 @@ static void execute_kwallet(pam_handle_t *pamh, struct passwd *userInfo, int toW
+         pam_syslog(pamh, LOG_INFO, "%s-kwalletd: Couldn't listen in socket\n", logPrefix);
+         return;
+     }
++    //finally close stderr
++    close(2);
+ 
+     // Fork twice to daemonize kwallet
+     setsid();
+-- 
+cgit v0.11.2
+
