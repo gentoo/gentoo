@@ -6124,7 +6124,6 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/aruba 0.5.4-r1 0.6.2-r1: Cucumber steps for driving out command line applications
 dev-util/astyle 3.0.1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
-dev-util/automoc 0.9.88-r1: KDE Meta Object Compiler
 dev-util/babeltrace 1.2.4: A command-line tool and library to read and convert trace files
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
