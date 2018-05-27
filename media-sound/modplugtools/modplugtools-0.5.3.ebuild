@@ -17,8 +17,3 @@ RDEPEND=">=media-libs/libao-0.8.0
 	!media-sound/modplugplay"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
-}
