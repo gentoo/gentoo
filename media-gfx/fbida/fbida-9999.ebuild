@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils git-r3 toolchain-funcs
 
 DESCRIPTION="Image viewers for the framebuffer console (fbi) and X11 (ida)"
-HOMEPAGE="http://www.kraxel.org/blog/linux/fbida/"
+HOMEPAGE="https://www.kraxel.org/blog/linux/fbida/"
 EGIT_REPO_URI="
 	git://git.kraxel.org/fbida
 "
