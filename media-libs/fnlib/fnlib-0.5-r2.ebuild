@@ -25,5 +25,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --sysconfdir=/etc/fnlib
+	econf --sysconfdir="${EPREFIX}"/etc/fnlib
 }
