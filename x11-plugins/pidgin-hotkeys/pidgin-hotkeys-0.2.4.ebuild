@@ -17,8 +17,3 @@ RDEPEND="net-im/pidgin[gtk]
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	default
-}
