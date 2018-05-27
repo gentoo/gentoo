@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="0759b0fd2cd4d1db9b3968cb2684872c1fb11628"
+	EGIT_COMMIT="6a354a5200df761a7a7fabc338e9c1b81961919b"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-ValidationLayers-${EGIT_COMMIT}"
@@ -24,7 +24,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="X wayland"
 
-RDEPEND=""
+# Old packaging will cause file collisions
+RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
 		dev-util/glslang:=[${MULTILIB_USEDEP}]
 		>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
