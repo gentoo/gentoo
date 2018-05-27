@@ -22,8 +22,3 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc-4.3.patch"
 	"${FILESDIR}/${P}-gcc-4.4.patch"
 )
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	default
-}
