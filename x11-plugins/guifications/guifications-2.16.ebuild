@@ -26,5 +26,5 @@ DEPEND="${DEPEND}
 src_configure() {
 	econf \
 		$(use_enable debug ) \
-		$(use_enable nls) || die "econf failure"
+		$(use_enable nls)
 }
