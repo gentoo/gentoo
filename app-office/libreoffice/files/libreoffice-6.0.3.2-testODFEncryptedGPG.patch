@@ -1,0 +1,89 @@
+From 74d438f716d9cef165c78f950d4c53a46c37503c Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@debian.org>
+Date: Sun, 18 Mar 2018 22:25:36 +0100
+Subject: gpg4libre: fix failing gpg test due to over-long filenames
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This squashes the following commits:
+
+From f68929ac611fdda19c1ee413effc59d33aa5ef97 Mon Sep 17 00:00:00 2001
+From: Thorsten Behrens <Thorsten.Behrens@CIB.de>
+Date: Fri, 9 Mar 2018 01:38:26 +0100
+Subject: gpg4libre: fix failing gpg test due to over-long filenames
+
+With long workdir path, gpg sometimes fails with 'gpg: can't connect
+to the agent: File name too long' error.
+WK recommends to create preferred socket dir under /run/user, needs
+prepping though via gpgconf.
+
+See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=84720
+
+From d7ecf4a4e37a9eeffa2b40f9fe5a2e6a8f90c876 Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@debian.org>
+Date: Sun, 18 Mar 2018 11:25:41 +0100
+Subject: properly check for gpgconf (and --create-socketdir) working
+
+From d6ed1d415d36809d784af780231258ea0ee1024f Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@debian.org>
+Date: Sun, 18 Mar 2018 19:06:58 +0100
+Subject: actually add GPGCONF to config_host.mk.in
+
+From 7a95ee8d0badb2cbbd137a6e18af1bada35ae933 Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@debian.org>
+Date: Sun, 18 Mar 2018 19:26:45 +0100
+Subject: actually add HAVE_GPGCONF_SOCKETDIR to config_host.mk.in...
+
+From 5204a5145d8232ea0650144fb4756c38303ef06e Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@debian.org>
+Date: Sun, 18 Mar 2018 19:28:55 +0100
+Subject: revert accidentially comitted local changes :(
+
+From bc358d39ac985914160e8aaa23b29469470c032b Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@debian.org>
+Date: Sun, 18 Mar 2018 20:36:45 +0100
+Subject: this is sh, not make...
+
+Change-Id: I7880fd7eee57cedc19b72348b45f0c1389409fe6
+Reviewed-on: https://gerrit.libreoffice.org/51521
+Tested-by: Jenkins <ci@libreoffice.org>
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+Tested-by: Caolán McNamara <caolanm@redhat.com>
+---
+ xmlsecurity/CppunitTest_xmlsecurity_signing.mk | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+(limited to 'xmlsecurity/CppunitTest_xmlsecurity_signing.mk')
+
+diff --git a/xmlsecurity/CppunitTest_xmlsecurity_signing.mk b/xmlsecurity/CppunitTest_xmlsecurity_signing.mk
+index c382e3b..2f3ed41 100644
+--- a/xmlsecurity/CppunitTest_xmlsecurity_signing.mk
++++ b/xmlsecurity/CppunitTest_xmlsecurity_signing.mk
+@@ -52,11 +52,23 @@ ifeq ($(ENABLE_PDFIMPORT),TRUE)
+ $(eval $(call gb_CppunitTest_use_executable,xmlsecurity_signing,xpdfimport))
+ endif
+ 
+-# reset the LD_LIBRARY_PATH for spawned GPG processes
++# various hacks to make unit test work on Linux more often
+ ifeq ($(OS),LINUX)
++# reset the LD_LIBRARY_PATH for spawned GPG processes
+ $(call gb_CppunitTest_get_target,xmlsecurity_signing): \
+     EXTRA_ENV_VARS := \
+         LIBO_LD_PATH=$$LD_LIBRARY_PATH
++
++ifneq (,$(HAVE_GPGCONF_SOCKETDIR))
++# create socket dir below /run/user/ instead of in workdir
++.PHONY : gb_CppunitTest_run_gpgconf
++gb_CppunitTest_run_gpgconf:
++	GNUPGHOME=$(WORKDIR)/CppunitTest/xmlsecurity_signing.test.user \
++	$(GPGCONF) --create-socketdir
++
++$(call gb_CppunitTest_get_target,xmlsecurity_signing): \
++    gb_CppunitTest_run_gpgconf
++endif
+ endif
+ 
+ # vim: set noet sw=4 ts=4:
+-- 
+cgit v1.1

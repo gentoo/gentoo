@@ -226,6 +226,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
 	test? (
+		app-crypt/gnupg
 		dev-util/cppunit
 		media-fonts/dejavu
 	)
@@ -246,6 +247,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	# 6.0 branch
 	"${FILESDIR}/${P}-poppler-0.64.patch"
+	"${FILESDIR}/${PN}-6.0.3.2-testODFEncryptedGPG.patch" #bug 656676
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
