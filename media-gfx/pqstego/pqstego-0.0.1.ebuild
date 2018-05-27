@@ -1,7 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
 DESCRIPTION="Tools for Perturbed Quantization Steganography"
 HOMEPAGE="https://sourceforge.net/projects/pqstego/"
@@ -18,9 +18,4 @@ DEPEND="media-libs/libpqstego
 src_configure() {
 	econf \
 		--disable-dependency-tracking
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS CHANGES README
 }
