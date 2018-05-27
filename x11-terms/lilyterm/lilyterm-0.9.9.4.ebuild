@@ -1,12 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="a terminal emulator based off of libvte that aims to be fast and lightweight"
-HOMEPAGE="http://lilyterm.luna.com.tw"
+HOMEPAGE="https://lilyterm.luna.com.tw"
 LICENSE="GPL-3"
-SRC_URI="http://${PN}.luna.com.tw/file/${P}.tar.gz"
+SRC_URI="https://${PN}.luna.com.tw/file/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
