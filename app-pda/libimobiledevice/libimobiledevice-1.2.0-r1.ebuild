@@ -21,7 +21,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/6" # based on SONAME of libimobiledevice.so
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="gnutls python static-libs"
+IUSE="gnutls libressl python static-libs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -31,7 +31,9 @@ RDEPEND="
 		dev-libs/libgcrypt:0
 		>=dev-libs/libtasn1-1.1
 		>=net-libs/gnutls-2.2.0 )
-	!gnutls? ( dev-libs/openssl:0= )
+	!gnutls? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= ) )
 	python? (
 		${PYTHON_DEPS}
 		app-pda/libplist[python(-),${PYTHON_USEDEP}] )
