@@ -11,7 +11,7 @@ SRC_URI="https://mosh.org/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ppc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos"
 IUSE="+client examples +mosh-hardening +server ufw +utempter"
 
 REQUIRED_USE="
