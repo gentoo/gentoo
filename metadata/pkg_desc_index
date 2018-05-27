@@ -542,7 +542,7 @@ app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r6: A vi/ex clone
 app-editors/emacs 18.59-r11 23.4-r17 24.5-r5 25.3-r4: The extensible, customizable, self-documenting real-time display editor
-app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
+app-editors/emact 2.56.0 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
 app-editors/focuswriter 1.6.10: A fullscreen and distraction-free word processor
@@ -555,7 +555,7 @@ app-editors/gvim 8.0.1298: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
-app-editors/jasspa-microemacs 20091011-r2: Jasspa Microemacs
+app-editors/jasspa-microemacs 20091011-r2 20091011-r3: Jasspa Microemacs
 app-editors/jed 0.99.19: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
@@ -2502,7 +2502,7 @@ dev-java/felix-gogo-runtime 0.10.0: Felix Gogo Runtime
 dev-java/felix-shell 1.4.3: Felix Shell
 dev-java/felix-utils 1.2.0: Felix Utils
 dev-java/flyingsaucer 7-r2: 100% Java XHTML+CSS renderer
-dev-java/fontbox 1.7.1 1.8.11: An open source Java library for parsing font files
+dev-java/fontbox 1.7.1-r1 1.8.11: An open source Java library for parsing font files
 dev-java/fop 2.0-r3: Formatting Objects Processor is a print formatter driven by XSL
 dev-java/forehead 1.0_beta5-r2: A framework to assist in controlling the run-time ClassLoader
 dev-java/freemarker 2.3.13-r2: FreeMarker is a tool to generate text output based on templates
@@ -5212,7 +5212,7 @@ dev-python/pyasn1 0.2.3: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8: pyasn1 modules
 dev-python/pyatspi 2.24.0: Python binding to at-spi library
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
-dev-python/pyblake2 1.1.0: BLAKE2 hash function extension module
+dev-python/pyblake2 1.1.0 1.1.2: BLAKE2 hash function extension module
 dev-python/pybloomfiltermmap 0.3.11-r1: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.6.0 2.7.0: python implementation of DMTF Cloud Audit (CADF) data model
@@ -5245,7 +5245,7 @@ dev-python/pyftpdlib 1.5.1: Python FTP server library
 dev-python/pygal 2.1.1: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4: Reimplementation of portions of the pygame API using SDL2
-dev-python/pygit2 0.26.3: Python bindings for libgit2
+dev-python/pygit2 0.26.3 0.26.4: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.1.1 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.22.0 3.24.1: GLib's GObject library bindings for Python
@@ -5464,7 +5464,7 @@ dev-python/roman 2.0.0: An Integer to Roman numerals converter
 dev-python/rope 0.10.3: Python refactoring library
 dev-python/ropemode 0.2-r1: A helper for using rope refactoring library in IDEs
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
-dev-python/rply 0.7.4: Pure python parser generator that also works with RPython
+dev-python/rply 0.7.4 0.7.5: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2: Python interface to the R Programming Language
 dev-python/rpyc 3.3.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.2.3-r1: Pure-Python RSA implementation
@@ -6883,7 +6883,6 @@ kde-plasma/libkscreen 5.12.5: Plasma screen management library
 kde-plasma/libksysguard 5.12.5: Task management and system monitoring library
 kde-plasma/milou 5.12.5: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.12.5: Oxygen visual style for the Plasma desktop
-kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 kde-plasma/plasma-desktop 5.12.5-r1: KDE Plasma desktop
 kde-plasma/plasma-integration 5.12.5: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.12.5: Merge this to pull in all Plasma 5 packages
@@ -7144,6 +7143,7 @@ media-fonts/oldstandard 2.2: Old Standard - font with wide range of Latin, Greek
 media-fonts/open-sans 1: Clean and modern sans-serif typeface designed for legibility across interfaces
 media-fonts/opendesktop-fonts 1.4.2: Chinese TrueType Fonts
 media-fonts/oto 0.5: Open Type Organizer
+media-fonts/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 media-fonts/pcf2bdf 1.04-r1: Converts PCF fonts to BDF fonts
 media-fonts/pigiarniq 1: Nunavut's official Inuktitut font
 media-fonts/pothana2k 2006-r1: Pothana 2000 and Vemana fonts for the Telugu script
@@ -8345,7 +8345,7 @@ net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/ripe-atlas-tools 1.2.2 1.2.3-r1: The official command-line client for RIPE Atlas
 net-analyzer/rrdtool 1.6.0-r1: A system to store and display time-series data
-net-analyzer/sarg 2.3.10: Squid Analysis Report Generator
+net-analyzer/sarg 2.3.10 2.3.11-r1: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanssh 2.1: network scanner that gathers info on SSH protocols and versions
 net-analyzer/scapy 2.3.2-r1: A Python interactive packet manipulation program for mastering the network
@@ -8653,7 +8653,7 @@ net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
-net-libs/loudmouth 1.5.2-r1: Lightweight C Jabber library
+net-libs/loudmouth 1.5.2-r1 1.5.3-r1: Lightweight C Jabber library
 net-libs/mbedtls 2.7.2: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.0.20170509 2.0.20171212 2.0.20180222: UPnP client library and a simple UPnP client
@@ -9013,7 +9013,6 @@ net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.19.1: ncurses directconnect client
-net-p2p/pybitmessage 0.4.2: P2P communications protocol
 net-p2p/qbittorrent 4.0.4: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.3-r1: P2P private sharing application
 net-p2p/rtorrent 0.9.6 0.9.6-r1: BitTorrent Client using libtorrent
@@ -10889,7 +10888,7 @@ x11-misc/rofi 1.3.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screengrab 1.97: Qt application for getting screenshots
 x11-misc/sct 0.3: Set color temperature of the screen
-x11-misc/sddm 0.15.0 0.17.0-r2: Simple Desktop Display Manager
+x11-misc/sddm 0.15.0 0.17.0-r2 0.17.0-r3: Simple Desktop Display Manager
 x11-misc/shared-mime-info 1.9: The Shared MIME-info Database specification
 x11-misc/shutterbug 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-themes/gtk-engines-experience
+DESCRIPTION=GTK+2 themes which copy and improve the look of XP Luna
+EAPI=7
+HOMEPAGE=https://web.archive.org/web/20130730053042/https://art.gnome.org/themes/gtk2/1058
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-themes/gtk-engines-experience
+SLOT=0
+SRC_URI=mirror://gnome/teams/art.gnome.org/themes/gtk2/GTK2-EXperience.tar.gz -> experience-3.04.tar.gz
+_md5_=5532b1ea74b09f33603d317eebf36aae
