@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
 src_prepare() {
+	default
 	if ! use xinerama ; then
 		sed -i -e "/^XINERAMA/s/^/#/g" Makefile || die "sed Makefile"
 	fi
@@ -32,7 +33,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) || die
+	emake CC=$(tc-getCC)
 }
 
 src_install() {
