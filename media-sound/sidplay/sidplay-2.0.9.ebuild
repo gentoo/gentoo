@@ -20,8 +20,3 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc43.patch"
 	"${FILESDIR}/${P}-gcc44.patch"
 )
-
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	default
-}
