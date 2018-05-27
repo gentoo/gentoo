@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 : CFGFILE=${CFGFILE:=/etc/mpd.conf}
@@ -20,7 +20,7 @@ get_config() {
 
 extra_started_commands='reload'
 command=/usr/bin/mpd
-command_args=${opts:=${CFGFILE}}
+command_args=${CFGFILE}
 required_files=${CFGFILE}
 pidfile=$(get_config pid_file)
 description="Music Player Daemon"
