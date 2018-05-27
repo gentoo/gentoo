@@ -236,6 +236,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
 	test? (
+		app-crypt/gnupg
 		dev-util/cppunit
 		media-fonts/dejavu
 	)
