@@ -24,8 +24,6 @@ SDB_LDAP_VER="1.1.0-fc14"
 
 RRL_PV="${MY_PV}"
 
-NSLINT_DIR="contrib/nslint-3.0a2/"
-
 # SDB-LDAP: http://bind9-ldap.bayour.com/
 
 DESCRIPTION="BIND - Berkeley Internet Name Domain - Name Server"
@@ -41,7 +39,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
 IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi idn ipv6
-json ldap libressl lmdb mysql nslint odbc postgres python rpz seccomp selinux ssl static-libs
+json ldap libressl lmdb mysql odbc postgres python rpz seccomp selinux ssl static-libs
 +threads urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
@@ -127,10 +125,6 @@ src_prepare() {
 	# Disable tests for now, bug 406399
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
 
-	if use nslint; then
-		sed -i -e 's:/etc/named.conf:/etc/bind/named.conf:' ${NSLINT_DIR}/nslint.{c,8} || die
-	fi
-
 	# bug #220361
 	rm aclocal.m4
 	rm -rf libtool.m4/
@@ -193,30 +187,10 @@ src_configure() {
 
 	# bug #151839
 	echo '#undef SO_BSDCOMPAT' >> config.h
-
-	if use nslint; then
-		cd $NSLINT_DIR
-		econf
-	fi
-}
-
-src_compile() {
-	emake
-
-	if use nslint; then
-		emake -C $NSLINT_DIR CCOPT="${CFLAGS}"
-	fi
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-
-	if use nslint; then
-		cd $NSLINT_DIR
-		dobin nslint
-		doman nslint.8
-		cd "${S}"
-	fi
 
 	dodoc CHANGES README
 
