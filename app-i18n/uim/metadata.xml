@@ -15,7 +15,7 @@
   <use>
     <flag name="anthy">Enable support for <pkg>app-i18n/anthy</pkg></flag>
     <flag name="eb">Enable support for <pkg>dev-libs/eb</pkg></flag>
-    <flag name="gtk3">Enable support for <pkg>x11-libs/gtk+</pkg>:3</flag>
+    <flag name="gtk2">Enable support for <pkg>x11-libs/gtk+</pkg>:2</flag>
     <flag name="skk">Enable support for <pkg>app-i18n/skk-jisyo</pkg></flag>
   </use>
   <upstream>
