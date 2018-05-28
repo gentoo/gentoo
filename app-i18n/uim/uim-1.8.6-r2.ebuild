@@ -82,6 +82,7 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${PN}-zh-TW.patch
 )
 DOCS=( AUTHORS NEWS README RELNOTE )
