@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86"
-IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk3 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs test unicode xft"
+IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk3 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs unicode xft"
 RESTRICT="test"
 REQUIRED_USE="gtk? ( X )
 	gtk3? ( X )
