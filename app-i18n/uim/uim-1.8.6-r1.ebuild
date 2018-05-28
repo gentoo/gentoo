@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86"
-IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk3 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs unicode xft"
+IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk3 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs xft"
 RESTRICT="test"
 REQUIRED_USE="gtk? ( X )
 	gtk3? ( X )
@@ -29,10 +29,7 @@ CDEPEND="!dev-scheme/sigscheme
 		x11-libs/libXrender
 		x11-libs/libXt
 	)
-	anthy? (
-		unicode? ( >=app-i18n/anthy-8622 )
-		!unicode? ( app-i18n/anthy )
-	)
+	anthy? ( app-i18n/anthy )
 	canna? ( app-i18n/canna )
 	curl? ( net-misc/curl )
 	eb? ( dev-libs/eb )
@@ -98,6 +95,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		$(use_with X x)
+		$(use_with anthy anthy-utf8)
 		$(use_with canna)
 		$(use_with curl)
 		$(use_with eb)
@@ -119,6 +117,7 @@ src_configure() {
 		$(use_enable ssl openssl)
 		$(use_enable static-libs static)
 		$(use_with xft)
+		--without-anthy
 		--disable-gnome-applet
 		--disable-gnome3-applet
 		--disable-kde-applet
@@ -126,16 +125,6 @@ src_configure() {
 		--without-mana
 		--without-prime
 	)
-
-	if use anthy; then
-		if use unicode; then
-			myconf+=( --with-anthy-utf8 )
-		else
-			myconf+=( --with-anthy )
-		fi
-	else
-		myconf+=( --without-anthy )
-	fi
 
 	if (use gtk || use gtk3) && (use anthy || use canna); then
 		myconf+=( --enable-dict )
