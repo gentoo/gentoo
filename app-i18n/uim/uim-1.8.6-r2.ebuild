@@ -122,6 +122,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_with xft)
 		--without-anthy
+		--enable-default-toolkit=$(usex gtk gtk3 $(usex gtk2 gtk $(usex qt4 qt4)))
 		--disable-gnome-applet
 		--disable-gnome3-applet
 		--disable-kde-applet
