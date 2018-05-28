@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,6 +20,7 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	>=sys-devel/gcc-4.7[cxx]
 	<sys-devel/gcc-7[cxx]
+	<sys-libs/glibc-2.26
 	>=x11-drivers/nvidia-drivers-384.81[X,uvm]
 	debugger? (
 		sys-libs/libtermcap-compat

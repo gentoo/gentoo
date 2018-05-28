@@ -20,6 +20,7 @@ IUSE="debugger doc eclipse profiler"
 DEPEND=""
 RDEPEND="${DEPEND}
 	<sys-devel/gcc-7[cxx]
+	<sys-libs/glibc-2.26
 	>=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm]
 	debugger? (
 		sys-libs/libtermcap-compat
