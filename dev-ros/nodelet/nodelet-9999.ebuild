@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,6 +26,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-libs/boost:=
 	sys-apps/util-linux
+	dev-ros/class_loader:=
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-python/rospkg[${PYTHON_USEDEP}]
 "
