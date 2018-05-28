@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 DOCS=( NEWS README AUTHORS ChangeLog )
 
 src_prepare() {
+	default
 	[[ ${PV} = 9999* ]] && eautoreconf
 }
 
