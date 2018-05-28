@@ -10,7 +10,7 @@ inherit ros-catkin
 
 DESCRIPTION="ROS-independent package for loading plugins"
 LICENSE="BSD"
-SLOT="0/melodic"
+SLOT="0/melodic2"
 IUSE=""
 
 RDEPEND="dev-libs/poco
