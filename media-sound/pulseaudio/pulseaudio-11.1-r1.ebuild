@@ -116,7 +116,10 @@ RDEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${P}"-qpaeq-pyqt5-{1,2}.patch )
+PATCHES=(
+	"${FILESDIR}/${P}"-qpaeq-pyqt5-{1,2}.patch
+	"${FILESDIR}/${P}"-glibc-2.27.patch
+)
 
 pkg_pretend() {
 	CONFIG_CHECK="~HIGH_RES_TIMERS"
