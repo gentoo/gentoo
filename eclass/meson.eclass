@@ -162,6 +162,9 @@ _meson_create_cross_file() {
 	ar = $(_meson_env_array "$(tc-getAR)")
 	c = $(_meson_env_array "$(tc-getCC)")
 	cpp = $(_meson_env_array "$(tc-getCXX)")
+	fortran = $(_meson_env_array "$(tc-getFC)")
+	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
+	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
 
