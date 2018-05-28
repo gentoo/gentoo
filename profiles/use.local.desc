@@ -459,6 +459,7 @@ app-emulation/wine-vanilla:run-exes - Use Wine to open and run .EXE and .MSI fil
 app-emulation/wine-vanilla:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
 app-emulation/wine-vanilla:sdl - Add support for gamepad detection using SDL
 app-emulation/wine-vanilla:udev - Use virtual/libudev to provide plug and play support
+app-emulation/wine-vanilla:vkd3d - Use app-emulation/vkd3d to provide Direct3D 12 support
 app-emulation/wine-vanilla:vulkan - Enable Vulkan drivers
 app-emulation/winetricks:rar - Pull in app-arch/unrar for extraction of rar-compressed game files
 app-emulation/x48:readline - Enables support for libreadline
