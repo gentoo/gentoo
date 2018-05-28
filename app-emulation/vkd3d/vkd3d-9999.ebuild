@@ -3,15 +3,14 @@
 
 EAPI=6
 
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://source.winehq.org/git/vkd3d.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://dev.gentoo.org/~sarnex/distfiles/vkd3d-${PV}.tar.xz"
-	S="${WORKDIR}/${PN}"
+	SRC_URI="https://dl.winehq.org/vkd3d/source/${P}.tar.xz"
 fi
 
 IUSE="spirv-tools"
@@ -25,11 +24,6 @@ HOMEPAGE="https://source.winehq.org/git/vkd3d.git/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 multilib_src_configure() {
 	local myconf=(
