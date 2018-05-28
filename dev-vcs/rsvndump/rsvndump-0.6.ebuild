@@ -20,8 +20,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/xmlto
 		>=app-text/asciidoc-8.4 )"
 
-DOCS=( AUTHORS ChangeLog NEWS README THANKS )
-
 src_configure() {
 	econf \
 		$(use_enable doc man) \
