@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install preinst prepare unpack
-DEPEND=app-arch/zip x11-libs/wxGTK:2.8[X] contrib? ( app-text/hunspell dev-libs/boost:= dev-libs/libgamin ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEPEND=app-arch/zip x11-libs/wxGTK:3.0[X] contrib? ( app-text/hunspell dev-libs/boost:= dev-libs/libgamin ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=The open source, cross platform, free C++ IDE
 EAPI=5
 HOMEPAGE=http://www.codeblocks.org/
 IUSE=contrib debug pch static-libs
 LICENSE=GPL-3
-RDEPEND=app-arch/zip x11-libs/wxGTK:2.8[X] contrib? ( app-text/hunspell dev-libs/boost:= dev-libs/libgamin )
+RDEPEND=app-arch/zip x11-libs/wxGTK:3.0[X] contrib? ( app-text/hunspell dev-libs/boost:= dev-libs/libgamin )
 SLOT=0
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	subversion	a5d5826a85609611f098c0553eb24cc1	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
-_md5_=61d5de79a125e1a6412b7f65c472d4e3
+_md5_=122f162b09bd5f0c0d7fad21277caf8d

@@ -7,4 +7,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=http://www.ods.org/dl/odsclient-1.03.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=e1d5c65a43c960e930152f84b8e46871
+_md5_=935f008128b5911d60de85be834296c0
