@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/276928
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -122,7 +122,6 @@
  		#endif
  		]])

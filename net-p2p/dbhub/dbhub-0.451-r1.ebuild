@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="Hub software for Direct Connect, fork of opendchub"
 HOMEPAGE="http://www.dbhub.org"
@@ -18,10 +18,14 @@ DEPEND="perl? ( dev-lang/perl )
 
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-gentoo.patch"
+	"${FILESDIR}/${PN}-no-dynaloader.patch"
+	"${FILESDIR}/${PN}-fix-buffer-overflows.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-gentoo.patch \
-		"${FILESDIR}"/${PN}-no-dynaloader.patch \
-		"${FILESDIR}"/${PN}-fix-buffer-overflows.patch
+	default
 	eautoreconf
 }
 
@@ -31,8 +35,4 @@ src_configure() {
 		$(use_enable perl) \
 		$(use_enable switch_user) \
 		$(use_enable debug)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
 }
