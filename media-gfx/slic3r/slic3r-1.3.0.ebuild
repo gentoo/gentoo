@@ -76,7 +76,7 @@ S="${MY_WORKDIR}/xs"
 src_prepare() {
 	pushd "${MY_WORKDIR}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
-	eapply "${FILESDIR}"/${PN}-1.3.0-no-locallib.patch
+	eapply "${FILESDIR}"/${P}-no-locallib.patch
 	eapply_user
 	popd || die
 }
