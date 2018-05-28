@@ -19,8 +19,6 @@ RDEPEND=""
 
 S=${WORKDIR}/${PN}
 
-DOCS=( AUTHORS ChangeLog Configure_GoFish README TODO )
-
 pkg_setup() {
 	enewgroup gopher
 	enewuser gopher -1 -1 -1 gopher
@@ -34,7 +32,7 @@ src_configure() {
 
 src_install () {
 	default
-
+	dodoc Configure_GoFish
 	newinitd "${FILESDIR}"/gofish.rc gofish
 	newconfd "${FILESDIR}"/gofish.confd gofish
 }
