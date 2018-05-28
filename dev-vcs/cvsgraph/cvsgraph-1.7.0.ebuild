@@ -9,7 +9,7 @@ SRC_URI="http://www.akhphd.au.dk/~bertho/cvsgraph/release/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-alpha amd64 -ia64 ~ppc ~sparc x86"
+KEYWORDS="-alpha amd64 -ia64 ~ppc sparc x86"
 IUSE="gif jpeg nls png truetype zlib"
 
 DEPEND="media-libs/gd
