@@ -1,0 +1,36 @@
+From 2688af280836b95908d3cfd6915510d55de673b8 Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sun, 19 May 2013 16:15:01 +0100
+Subject: [PATCH 08/15] Declare multiplication and division operators as const
+
+---
+ include/agg_trans_affine.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/include/agg_trans_affine.h b/include/agg_trans_affine.h
+index a662099..2f602a0 100644
+--- a/include/agg_trans_affine.h
++++ b/include/agg_trans_affine.h
+@@ -216,15 +216,15 @@ namespace agg
+         }
+ 
+         // Multiply the matrix by another one and return
+-        // the result in a separete matrix.
+-        trans_affine operator * (const trans_affine& m)
++        // the result in a separate matrix.
++        trans_affine operator * (const trans_affine& m) const
+         {
+             return trans_affine(*this).multiply(m);
+         }
+ 
+         // Multiply the matrix by inverse of another one 
+-        // and return the result in a separete matrix.
+-        trans_affine operator / (const trans_affine& m)
++        // and return the result in a separate matrix.
++        trans_affine operator / (const trans_affine& m) const
+         {
+             return trans_affine(*this).multiply_inv(m);
+         }
+-- 
+1.8.1.4
+
