@@ -12,10 +12,10 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
-IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk3 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify libressl m17n-lib ncurses nls qt4 skk sqlite ssl static-libs xft"
+IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk2 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify libressl m17n-lib ncurses nls qt4 skk sqlite ssl static-libs xft"
 RESTRICT="test"
 REQUIRED_USE="gtk? ( X )
-	gtk3? ( X )
+	gtk2? ( X )
 	qt4? ( X )
 	xft? ( X )"
 
@@ -36,8 +36,8 @@ CDEPEND="!dev-scheme/sigscheme
 	emacs? ( virtual/emacs )
 	expat? ( dev-libs/expat )
 	libffi? ( virtual/libffi )
-	gtk? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )
+	gtk? ( x11-libs/gtk+:3 )
+	gtk2? ( x11-libs/gtk+:2 )
 	libedit? ( dev-libs/libedit )
 	libnotify? ( x11-libs/libnotify )
 	m17n-lib? ( dev-libs/m17n-lib )
@@ -108,8 +108,8 @@ src_configure() {
 		$(use_with expat)
 		$(use_with libedit)
 		$(use_with libffi ffi)
-		$(use_with gtk gtk2)
-		$(use_with gtk3)
+		$(use_with gtk gtk3)
+		$(use_with gtk2)
 		$(use_with m17n-lib m17nlib)
 		$(use_enable ncurses fep)
 		$(use_enable nls)
@@ -130,7 +130,7 @@ src_configure() {
 		--without-prime
 	)
 
-	if (use gtk || use gtk3) && (use anthy || use canna); then
+	if (use gtk || use gtk2) && (use anthy || use canna); then
 		myconf+=( --enable-dict )
 	else
 		myconf+=( --disable-dict )
@@ -140,7 +140,7 @@ src_configure() {
 		myconf+=( --enable-notify=libnotify )
 	fi
 
-	if use gtk || use gtk3 || use qt4; then
+	if use gtk || use gtk2 || use qt4; then
 		myconf+=( --enable-pref )
 	else
 		myconf+=( --disable-pref )
@@ -201,12 +201,12 @@ pkg_postinst() {
 		elog "Integration with LEIM is not done with this ebuild, please have"
 		elog "a look at the documentation how to achieve this."
 	fi
-	use gtk && gnome2_query_immodules_gtk2
-	use gtk3 && gnome2_query_immodules_gtk3
+	use gtk && gnome2_query_immodules_gtk3
+	use gtk2 && gnome2_query_immodules_gtk2
 }
 
 pkg_postrm() {
 	use emacs && elisp-site-regen
-	use gtk && gnome2_query_immodules_gtk2
-	use gtk3 && gnome2_query_immodules_gtk3
+	use gtk && gnome2_query_immodules_gtk3
+	use gtk2 && gnome2_query_immodules_gtk2
 }
