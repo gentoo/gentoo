@@ -20,7 +20,6 @@ DEPEND="
 	$(add_qt_dep qtcore)
 	media-gfx/fontforge
 "
-RDEPEND="!media-fonts/oxygen-fonts"
 
 DOCS=( README.md )
 
