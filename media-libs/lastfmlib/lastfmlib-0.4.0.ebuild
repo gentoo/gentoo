@@ -26,5 +26,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}"/usr -name '*.la' -delete
+	find "${D}"/usr -name '*.la' -delete || die "Pruning failed"
 }
