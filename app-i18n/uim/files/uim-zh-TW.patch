@@ -1,6 +1,5 @@
-diff -Naur uim-1.5.4.orig/xim/convdisp.cpp uim-1.5.4/xim/convdisp.cpp
---- uim-1.5.4.orig/xim/convdisp.cpp	2008-02-13 23:43:42.000000000 +0900
-+++ uim-1.5.4/xim/convdisp.cpp	2008-12-10 02:04:35.000000000 +0900
+--- a/xim/convdisp.cpp
++++ b/xim/convdisp.cpp
 @@ -69,7 +69,7 @@
  #endif
  
