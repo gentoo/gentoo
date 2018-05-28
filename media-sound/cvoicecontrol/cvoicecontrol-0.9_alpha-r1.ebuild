@@ -20,9 +20,9 @@ PATCHES=( "${FILESDIR}/${P}-gentoo-2.patch" )
 
 src_prepare() {
 	default
-	sed -i -e "s/install-data-am: install-data-local/install-data-am:/" Makefile.in
+	sed -i -e "s/install-data-am: install-data-local/install-data-am:/" Makefile.in || die "sed failed"
 	# Handle documentation with dohtml instead.
-	sed -i -e "s:SUBDIRS = docs:#SUBDIRS = docs:" cvoicecontrol/Makefile.in
+	sed -i -e "s:SUBDIRS = docs:#SUBDIRS = docs:" cvoicecontrol/Makefile.in || die "sed #2 failed"
 }
 
 src_install () {
