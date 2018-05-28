@@ -16,6 +16,8 @@ IUSE=""
 RDEPEND=">=app-admin/eselect-1.0.5"
 DEPEND="${RDEPEND}"
 
+S="${WORKDIR}"
+
 src_install() {
 	local MODULEDIR="/usr/share/eselect/modules"
 	local MODULE="blas"
