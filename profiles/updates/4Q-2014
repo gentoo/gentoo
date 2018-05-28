@@ -7,6 +7,5 @@ slotmove =dev-cpp/gstreamermm-0.10* 0 0.10
 move net-zope/zc-buildout dev-python/zc-buildout
 move net-zope/zope-interface dev-python/zope-interface
 move media-gfx/photo media-gfx/photoqt
-move kde-base/oxygen-fonts kde-plasma/oxygen-fonts
 move dev-db/postgresql-base dev-db/postgresql
 move dev-db/pgasync dev-python/pgasync
