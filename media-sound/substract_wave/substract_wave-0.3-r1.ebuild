@@ -20,7 +20,6 @@ PATCHES=(
 
 DOCS=( CHANGES mono-stereo.txt README )
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	emake || die "emake failed"
 }
