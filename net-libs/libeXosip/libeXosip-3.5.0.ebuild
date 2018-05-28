@@ -1,13 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils
+EAPI=6
 
 MY_PV=${PV%.?}-${PV##*.}
 MY_PV=${PV}
 MY_P=${PN}2-${MY_PV}
+
 DESCRIPTION="library to use the SIP protocol for multimedia session establishement"
 HOMEPAGE="https://savannah.nongnu.org/projects/exosip/"
 SRC_URI="mirror://nongnu/exosip/${MY_P}.tar.gz"
@@ -15,11 +14,15 @@ SRC_URI="mirror://nongnu/exosip/${MY_P}.tar.gz"
 KEYWORDS="amd64 ppc x86 ~ppc-macos ~x86-macos"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="+srv ssl"
+IUSE="libressl +srv ssl"
 
 DEPEND=">=net-libs/libosip-3.2.0
 	<net-libs/libosip-4
-	ssl? ( dev-libs/openssl )"
+	ssl? (
+		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( dev-libs/openssl:0= )
+	)
+"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
@@ -29,9 +32,4 @@ src_configure() {
 		--enable-mt \
 		$(use_enable ssl openssl) \
 		$(use_enable srv srvrec)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS ChangeLog NEWS README
 }
