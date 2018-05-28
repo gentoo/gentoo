@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (28 May 2018)
+# Requires unported sys-libs/netbsd-csu or sys-freebsd/freebsd-lib
+sys-devel/clang-runtime crt
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (28 May 2018)
 # sys-devel/llvmgold not yet keyworded
 sys-devel/llvm gold
 
