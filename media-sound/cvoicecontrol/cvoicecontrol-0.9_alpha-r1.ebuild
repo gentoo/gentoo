@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 PATCHES=( "${FILESDIR}/${P}-gentoo-2.patch" )
 
 src_prepare() {
-	eapply_user
+	default
 	sed -i -e "s/install-data-am: install-data-local/install-data-am:/" Makefile.in
 	# Handle documentation with dohtml instead.
 	sed -i -e "s:SUBDIRS = docs:#SUBDIRS = docs:" cvoicecontrol/Makefile.in
