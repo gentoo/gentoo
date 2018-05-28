@@ -18,9 +18,8 @@ DEPEND=""
 
 PATCHES=( "${FILESDIR}/${P}-gentoo.patch" )
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	emake
 }
 
 src_install() {
