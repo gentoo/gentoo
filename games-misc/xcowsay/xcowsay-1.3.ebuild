@@ -30,6 +30,6 @@ src_configure() {
 src_install() {
 	default
 	if ! use fortune; then
-		rm -f "${D}"/usr/bin/xcowfortune
+		rm -f "${ED}"/usr/bin/xcowfortune || die "Removal of xcowfortune failed"
 	fi
 }
