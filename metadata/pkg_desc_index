@@ -347,7 +347,7 @@ app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large num
 app-crypt/mit-krb5 1.16 1.16-r2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.37: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
-app-crypt/openpgp-keys-gentoo-mirror 20180203: OpenPGP key used to sign gentoo-mirror commits
+app-crypt/openpgp-keys-gentoo-mirror 20180203 20180528: OpenPGP key used to sign gentoo-mirror commits
 app-crypt/openpgp-keys-gentoo-release 20180323: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/p11-kit 0.23.2 0.23.9: Provides a standard configuration setup for installing PKCS#11
