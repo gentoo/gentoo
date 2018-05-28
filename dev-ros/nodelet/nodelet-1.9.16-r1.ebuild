@@ -26,6 +26,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-libs/boost:=
 	sys-apps/util-linux
+	dev-ros/class_loader:=
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-python/rospkg[${PYTHON_USEDEP}]
 "
