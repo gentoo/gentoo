@@ -1,7 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="A program to link two /dev/net/tun to form virtual ethernet"
@@ -16,6 +16,7 @@ IUSE=""
 S=${WORKDIR}/${PN}
 
 src_prepare() {
+	default
 	sed -i \
 		-e 's:= -Wall -s:+= -Wall:' \
 		-e 's:$(CFLAGS):$(LDFLAGS) &:' \
@@ -23,9 +24,5 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
+	emake CC="$(tc-getCC)"
 }
