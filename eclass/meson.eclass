@@ -159,11 +159,11 @@ _meson_create_cross_file() {
 
 	cat > "${T}/meson.${CHOST}" <<-EOF
 	[binaries]
-	ar = '$(tc-getAR)'
-	c = '$(tc-getCC)'
-	cpp = '$(tc-getCXX)'
+	ar = $(_meson_env_array "$(tc-getAR)")
+	c = $(_meson_env_array "$(tc-getCC)")
+	cpp = $(_meson_env_array "$(tc-getCXX)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
-	strip = '$(tc-getSTRIP)'
+	strip = $(_meson_env_array "$(tc-getSTRIP)")
 
 	[properties]
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
