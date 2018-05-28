@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
+# sys-devel/llvmgold not yet keyworded
+sys-devel/llvm gold
+
 # Tomáš Mózes <hydrapolic@gmail.com> (05 Jun 2018)
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
