@@ -18,8 +18,7 @@ RDEPEND="x11-libs/libX11
 	xinerama? ( x11-libs/libXinerama )
 	app-text/ghostscript-gpl"
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-	>=sys-apps/sed-4"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	default
