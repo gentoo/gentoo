@@ -14,8 +14,3 @@ IUSE=""
 
 DEPEND="media-libs/libpqstego
 	virtual/jpeg:0"
-
-src_configure() {
-	econf \
-		--disable-dependency-tracking
-}
