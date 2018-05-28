@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 PATCHES=( "${FILESDIR}/${PN}-3.3.0-out-source-build.patch" )
 
 src_prepare() {
-	eapply_user
+	default
 	AT_M4DIR="scripts" eautoreconf
 }
 
