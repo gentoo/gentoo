@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Chema Alonso Josa <nimiux@gentoo.org> (28 May 2018)
+# Upstream is dead.
+# Masked for removal in 30 days. Bug #646118
+net-misc/urlview
+
 # Andreas Sturmlechner <asturm@gentoo.org> (27 May 2018)
 # Depends on dead Qt4. No more revdeps. Masked for removal in 30 days.
 dev-util/automoc
