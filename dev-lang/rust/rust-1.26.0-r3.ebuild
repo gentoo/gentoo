@@ -102,6 +102,7 @@ src_configure() {
 		optimize = $(toml_usex !debug)
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
+		targets = "${LLVM_TARGETS// /;}"
 		[build]
 		build = "${rust_target}"
 		host = ["${rust_target}"]
