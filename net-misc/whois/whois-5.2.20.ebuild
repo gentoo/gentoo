@@ -16,7 +16,7 @@ IUSE="iconv idn nls"
 RESTRICT="test" #59327
 
 RDEPEND="iconv? ( virtual/libiconv )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn:= )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
