@@ -16,8 +16,7 @@ RDEPEND=">=app-i18n/scim-1.4[-gtk3]
 	dev-libs/wnn7sdk
 	freewnn? ( app-i18n/freewnn )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	>=sys-apps/sed-4"
+	virtual/pkgconfig"
 
 PATCHES=(
 	# bug #295733
