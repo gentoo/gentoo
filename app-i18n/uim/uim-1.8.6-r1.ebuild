@@ -80,8 +80,8 @@ RDEPEND="${CDEPEND}
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.0-gentoo.patch
-	"${FILESDIR}"/${PN}-1.5.4-zhTW.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-zh-TW.patch
 )
 DOCS=( AUTHORS NEWS README RELNOTE )
 
