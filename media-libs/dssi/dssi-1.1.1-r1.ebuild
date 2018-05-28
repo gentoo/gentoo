@@ -37,5 +37,5 @@ src_prepare() {
 src_install() {
 	DOCS=( README doc/TODO doc/*.txt )
 	default
-	find "${D}" -name '*.la' -delete
+	find "${D}" -name '*.la' -delete || die "Pruning failed"
 }
