@@ -31,5 +31,5 @@ src_compile() {
 
 src_install() {
 	dosbin odsclient
-	default
+	einstalldocs
 }
