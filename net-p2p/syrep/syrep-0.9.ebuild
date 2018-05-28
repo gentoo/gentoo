@@ -35,6 +35,6 @@ src_configure() {
 
 src_install() {
 	DOCS=( doc/README doc/*.txt )
-	use doc && HTML_DOCS=( doc/*.html doc/*.css )
+	use doc && HTML_DOCS=( doc/*.{css,html} )
 	default
 }
