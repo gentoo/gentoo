@@ -59,6 +59,7 @@ RDEPEND="${DEPEND_COMMON}
 	)
 "
 DEPEND="${DEPEND_COMMON}
+	net-libs/rpcsvc-proto
 	virtual/pkgconfig"
 
 PATCHES=(
@@ -85,6 +86,7 @@ src_configure() {
 		--enable-tirpc
 		--with-tirpcinclude="${EPREFIX%/}"/usr/include/tirpc/
 		--with-pluginpath="${EPREFIX%/}"/usr/$(get_libdir)/libnfsidmap
+		--with-rpcgen
 		--with-systemd="$(systemd_get_systemunitdir)"
 		--without-gssglue
 		$(use_enable caps)
