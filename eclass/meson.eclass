@@ -159,11 +159,11 @@ _meson_create_cross_file() {
 
 	cat > "${T}/meson.${CHOST}" <<-EOF
 	[binaries]
-	ar = '$(tc-getAR)'
-	c = '$(tc-getCC)'
-	cpp = '$(tc-getCXX)'
+	ar = $(_meson_env_array "$(tc-getAR)")
+	c = $(_meson_env_array "$(tc-getCC)")
+	cpp = $(_meson_env_array "$(tc-getCXX)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
-	strip = '$(tc-getSTRIP)'
+	strip = $(_meson_env_array "$(tc-getSTRIP)")
 
 	[properties]
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
@@ -198,25 +198,6 @@ meson_use() {
 	usex "$1" "-D${2-$1}=true" "-D${2-$1}=false"
 }
 
-# @FUNCTION: _meson_move_flags
-# @INTERNAL
-# @USAGE: PROG FLAGS
-# @DESCRIPTION:
-# Moves extra arguments from PROG to FLAGS.
-# For example:
-# CC="gcc -m32" -> CC="gcc" CFLAGS="-m32"
-_meson_move_flags() {
-	local prog=${1}
-	local flags=${2}
-	local x=( ${!prog} )
-	if [[ -n ${x[0]} ]]; then
-		export ${prog}=${x[0]}
-	fi
-	if [[ -n ${x[1]} ]]; then
-		export ${flags}="${x[@]:1}${!flags:+ }${!flags}"
-	fi
-}
-
 # @FUNCTION: meson_src_configure
 # @DESCRIPTION:
 # This is the meson_src_configure function.
@@ -232,18 +213,6 @@ meson_src_configure() {
 		--sysconfdir "${EPREFIX}/etc"
 		--wrap-mode nodownload
 		)
-
-	# Prevent multilib flags from leaking across ABIs
-	local -x BUILD_CFLAGS=${BUILD_CFLAGS}
-	local -x BUILD_CXXFLAGS=${BUILD_CXXFLAGS}
-
-	# Move multilib flags from CC to CFLAGS
-	local -x CC=$(tc-getCC) CFLAGS=${CFLAGS}
-	_meson_move_flags CC CFLAGS
-
-	# Move multilib flags from CXX to CXXFLAGS
-	local -x CXX=$(tc-getCXX) CXXFLAGS=${CXXFLAGS}
-	_meson_move_flags CXX CXXFLAGS
 
 	if tc-is-cross-compiler; then
 		_meson_create_cross_file || die "unable to write meson cross file"
