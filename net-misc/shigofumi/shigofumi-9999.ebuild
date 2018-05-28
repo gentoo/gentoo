@@ -20,10 +20,12 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="debug doc nls xattr"
 
-RDEPEND="dev-libs/confuse
+RDEPEND="
+	dev-libs/confuse
 	dev-libs/libxml2
-	sys-libs/readline
-	>=net-libs/libisds-0.7"
+	sys-libs/readline:0=
+	>=net-libs/libisds-0.7
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
