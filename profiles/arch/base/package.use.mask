@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
-# media-libs/vulkan-loader is not available everywhere
-app-emulation/wine-any vulkan
-app-emulation/wine-d3d9 vulkan
-app-emulation/wine-staging vulkan
-app-emulation/wine-vanilla vulkan
+# media-libs/vulkan-loader and app-emulation/vkd3d are not available everywhere
+app-emulation/wine-any vkd3d vulkan
+app-emulation/wine-d3d9 vkd3d vulkan
+app-emulation/wine-staging vkd3d vulkan
+app-emulation/wine-vanilla vkd3d vulkan
 
 # Richard Yao <ryao@gentoo.org> (16 Apr 2018)
 # sys-fs/zfs is not available everywhere.
