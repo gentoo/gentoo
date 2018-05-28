@@ -139,7 +139,7 @@ app-admin/tenshi 0.17: Log parsing and notification program
 app-admin/testdisk 7.1_pre20180322: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
-app-admin/tripwire 2.4.3.6 2.4.3.7: Open Source File Integrity Checker and IDS
+app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
@@ -2959,7 +2959,7 @@ dev-libs/expat 2.2.1 2.2.5: Stream-oriented XML parser library
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
-dev-libs/ffcall 2.0 2.1: Build foreign function call interfaces in embedded interpreter
+dev-libs/ffcall 2.1: Build foreign function call interfaces in embedded interpreter
 dev-libs/folks 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
@@ -3278,7 +3278,7 @@ dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression libr
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
 dev-lisp/clisp 2.48-r1 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
 dev-lisp/clozurecl 1.11.5: Common Lisp implementation, derived from Digitool's MCL product
-dev-lisp/ecls 13.5.1-r1 16.1.3: ECL is an embeddable Common Lisp implementation
+dev-lisp/ecls 16.1.3: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
