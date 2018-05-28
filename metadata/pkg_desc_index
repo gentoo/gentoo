@@ -8994,7 +8994,7 @@ net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.142: A newsreader for GNOME
 net-nntp/slrn 1.0.2: A s-lang based newsreader
-net-nntp/tin 2.2.1 2.4.2: A threaded NNTP and spool based UseNet newsreader
+net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-nntp/xrn 9.02-r1: A small and fast news reader for X
 net-p2p/amule 2.3.2-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind

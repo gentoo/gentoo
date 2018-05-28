@@ -4587,8 +4587,6 @@ net-nntp/slrn:canlock - Add support for cancel locks via net-libs/canlock
 net-nntp/slrn:uudeview - Add support for yEnc coding and more using dev-libs/uulib
 net-nntp/tin:cancel-locks - Enable Cancel-Lock header functionality (also enables USE=evil)
 net-nntp/tin:etiquette - Enable the display off posting etiquettes
-net-nntp/tin:evil - Let tin generate a message ID
-net-nntp/tin:forgery - Cancel messages posted from a different account
 net-nntp/tin:gpg - Enable app-crypt/gnupg support
 net-p2p/amule:daemon - Enable amule daemon
 net-p2p/amule:remote - Enable remote controlling of the client
