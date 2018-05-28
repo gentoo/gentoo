@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit autotools
+inherit autotools ltprune
 
 DESCRIPTION="High quality rendering engine library for C++"
 HOMEPAGE="http://antigrain.com/"
@@ -46,11 +45,16 @@ src_configure() {
 	local myeconfargs=(
 		--disable-ctrl
 		--disable-examples
-		--disable-dependency-tracking
 		$(use_enable gpc)
 		$(use_enable sdl)
+		$(use_enable static-libs static)
 		$(use_enable truetype freetype)
 		$(use_with X x)
 	)
 	econf ${myeconfargs[@]}
+}
+
+src_install() {
+	default
+	prune_libtool_files
 }
