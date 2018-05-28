@@ -1,0 +1,22 @@
+From 843c667c1b516c0764840c6e4d41188f9c96a415 Mon Sep 17 00:00:00 2001
+From: leitner <leitner>
+Date: Mon, 4 Sep 2017 21:59:50 +0000
+Subject: [PATCH] use __DYN_LIB instead of __PIC__ in i386 socketcalls
+
+---
+ i386/syscalls.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/i386/syscalls.h b/i386/syscalls.h
+index 11d6f1d5..14ac517b 100644
+--- a/i386/syscalls.h
++++ b/i386/syscalls.h
+@@ -416,7 +416,7 @@ sym: \
+ .Lend##sym: ; \
+ .size sym,.Lend##sym-sym
+ 
+-#ifndef __PIC__
++#ifndef __DYN_LIB
+ #define __socketcall(name,NAME) \
+ .text; \
+ .type name,@function; \
