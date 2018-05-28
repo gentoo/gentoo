@@ -21,10 +21,11 @@ SLOT="0"
 IUSE="debug doc nls xattr"
 
 RDEPEND="
-	dev-libs/confuse
-	dev-libs/libxml2
+	dev-libs/confuse:0=
+	dev-libs/libxml2:2
 	sys-libs/readline:0=
 	>=net-libs/libisds-0.7
+	xattr? ( sys-apps/attr )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -32,9 +33,8 @@ DEPEND="${RDEPEND}
 		app-text/docbook-xsl-stylesheets
 		dev-libs/libxslt
 	)
-	nls? ( sys-devel/gettext )"
-
-DOCS=( NEWS README AUTHORS ChangeLog )
+	nls? ( sys-devel/gettext )
+"
 
 src_prepare() {
 	default
