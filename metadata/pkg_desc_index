@@ -914,7 +914,7 @@ app-i18n/tomoe 0.6.0-r3: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.10: A command line interface for Transifex
 app-i18n/uchardet 0.0.6-r2: An encoding detector library
-app-i18n/uim 1.8.6-r1: Simple, secure and flexible input method library
+app-i18n/uim 1.8.6-r1: A multilingual input method framework
 app-i18n/unicode-cldr 31.0.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 9.0.0 10.0.0: Unicode data from unicode.org
 app-i18n/unicode-emoji 5.0: UTR #51 Unicode Emoji

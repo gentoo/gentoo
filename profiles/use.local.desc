@@ -526,9 +526,9 @@ app-i18n/scim:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/scim-anthy:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/scim-anthy:kasumi - Use Anthy dictionary maintenance tool (app-dicts/kasumi)
 app-i18n/tomoe:hyperestraier - Enable support for app-text/hyperestraier
-app-i18n/uim:anthy - Enable support for app-i18n/anthy input method
+app-i18n/uim:anthy - Enable support for app-i18n/anthy
 app-i18n/uim:eb - Enable support for dev-libs/eb
-app-i18n/uim:gtk3 - Enable support for x11-libs/gtk+:3
+app-i18n/uim:gtk2 - Enable support for x11-libs/gtk+:2
 app-i18n/uim:skk - Enable support for app-i18n/skk-jisyo
 app-laptop/hdapsd:libconfig - Require dev-libs/libconfig to allow the daemon to read a configuration file at startup
 app-laptop/thinkfan:atasmart - include libatasmart support to get disc temperature
@@ -4207,6 +4207,7 @@ net-libs/wvstreams:boost - Use dev-libs/boost to provide TR1-compatible function
 net-libs/xrootd:fuse - Enable the sys-fs/fuse filesystem driver
 net-libs/xrootd:http - Enable http protocol support
 net-libs/xrootd:rbd - Enable rados block device support via sys-cluster/ceph
+net-libs/zeromq:drafts - Build draft API, which may change at any time without any notice, and is therefore not recommended for normal use.
 net-libs/zeromq:pgm - Build PGM (Pragmatic General Multicast)extention, a protocol for reliable multicast transport of data over IP networks.
 net-libs/zeromq:sodium - Use dev-libs/libsodium for cryptography
 net-mail/automx:memcached - Enable memcached support
