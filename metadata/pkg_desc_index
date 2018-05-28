@@ -674,7 +674,7 @@ app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 20080922: Add support for DocBook 5 schemas to NXML
 app-emacs/nxml-svg-schemas 1.1.20081123: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 3.12.1 3.12.1-r1 4.00.1: Emacs mode for OCaml
-app-emacs/org-mode 8.2.6 8.3.2-r1: An Emacs mode for notes and project planning
+app-emacs/org-mode 8.3.2-r1: An Emacs mode for notes and project planning
 app-emacs/outline-magic 0.9: Outline mode extensions for Emacs
 app-emacs/php-mode 1.5.0: GNU Emacs major mode for editing PHP code
 app-emacs/po-mode 0.19.3: Major mode for GNU gettext PO files
