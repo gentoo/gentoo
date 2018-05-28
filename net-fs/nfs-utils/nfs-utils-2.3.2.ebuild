@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps ipv6 kerberos +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 selinux tcpd +uuid"
+IUSE="caps ipv6 junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 selinux tcpd +uuid"
 REQUIRED_USE="kerberos? ( nfsv4 )"
 RESTRICT="test" #315573
 
@@ -28,30 +28,29 @@ RESTRICT="test" #315573
 # files, and nfs-utils doesn't build against heimdal either,
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
-DEPEND_COMMON="tcpd? ( sys-apps/tcp-wrappers )
-	caps? ( sys-libs/libcap )
-	sys-libs/e2fsprogs-libs
-	>=net-nds/rpcbind-0.2.4
+DEPEND_COMMON="
 	net-libs/libtirpc:=
+	>=net-nds/rpcbind-0.2.4
+	sys-libs/e2fsprogs-libs
+	caps? ( sys-libs/libcap )
+	ldap? ( net-nds/openldap )
 	libmount? ( sys-apps/util-linux )
 	nfsdcld? ( >=dev-db/sqlite-3.3 )
 	nfsv4? (
 		dev-libs/libevent:=
-		>=net-libs/libnfsidmap-0.21-r1
+		>=sys-apps/keyutils-1.5.9
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]
 			app-crypt/mit-krb5
-		)
-		nfsidmap? (
-			>=net-libs/libnfsidmap-0.24
-			>=sys-apps/keyutils-1.5.9
 		)
 	)
 	nfsv41? (
 		sys-fs/lvm2
 	)
+	tcpd? ( sys-apps/tcp-wrappers )
 	uuid? ( sys-apps/util-linux )"
 RDEPEND="${DEPEND_COMMON}
+	!net-libs/libnfsidmap
 	!net-nds/portmap
 	!<sys-apps/openrc-0.13.9
 	selinux? (
@@ -60,11 +59,13 @@ RDEPEND="${DEPEND_COMMON}
 	)
 "
 DEPEND="${DEPEND_COMMON}
+	dev-libs/libxml2
 	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
 	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
+	"${FILESDIR}"/${PN}-2.3.2-junction_libs.patch
 )
 
 src_prepare() {
@@ -81,20 +82,24 @@ src_configure() {
 	export libsqlite3_cv_is_recent=yes # Our DEPEND forces this.
 	export ac_cv_header_keyutils_h=$(usex nfsidmap)
 	local myeconfargs=(
-		--with-statedir="${EPREFIX}"/var/lib/nfs
+		--with-statedir="${EPREFIX%/}"/var/lib/nfs
 		--enable-tirpc
-		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
+		--with-tirpcinclude="${EPREFIX%/}"/usr/include/tirpc/
+		--with-pluginpath="${EPREFIX%/}"/usr/$(get_libdir)/libnfsidmap
+		--with-systemd="$(systemd_get_systemunitdir)"
+		--without-gssglue
+		$(use_enable caps)
+		$(use_enable ipv6)
+		$(use_enable junction)
+		$(use_enable kerberos gss)
+		$(use_enable kerberos svcgss)
+		$(use_enable ldap)
 		$(use_enable libmount libmount-mount)
-		$(use_with tcpd tcp-wrappers)
 		$(use_enable nfsdcld nfsdcltrack)
 		$(use_enable nfsv4)
 		$(use_enable nfsv41)
-		$(use_enable ipv6)
-		$(use_enable caps)
 		$(use_enable uuid)
-		$(use_enable kerberos gss)
-		$(use_enable kerberos svcgss)
-		--without-gssglue
+		$(use_with tcpd tcp-wrappers)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -113,7 +118,7 @@ src_install() {
 	# Don't overwrite existing xtab/etab, install the original
 	# versions somewhere safe...  more info in pkg_postinst
 	keepdir /var/lib/nfs/{,sm,sm.bak}
-	mv "${ED%/}"/var/lib "${ED%/}"/usr/$(get_libdir) || die
+	mv "${ED%/}"/var/lib/nfs "${ED%/}"/usr/$(get_libdir)/ || die
 
 	# Install some client-side binaries in /sbin
 	dodir /sbin
@@ -148,13 +153,6 @@ src_install() {
 		"${ED%/}"/etc/conf.d/nfs || die #234132
 
 	local systemd_systemunitdir="$(systemd_get_systemunitdir)"
-	systemd_dounit systemd/*.{mount,service,target}
-	if ! use nfsv4 || ! use kerberos ; then
-		rm "${ED%/}${systemd_systemunitdir}"/rpc-{gssd,svcgssd}.service || die
-	fi
-	if ! use nfsv41 ; then
-		rm "${ED%/}${systemd_systemunitdir}"/nfs-blkmap.* || die
-	fi
 	sed -i \
 		-e 's:/usr/sbin/rpc.statd:/sbin/rpc.statd:' \
 		"${ED%/}${systemd_systemunitdir}"/* || die

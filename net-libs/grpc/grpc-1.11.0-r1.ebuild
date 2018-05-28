@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}/0002-grpc-1.3.0-Fix-unsecure-.pc-files.patch"
 	"${FILESDIR}/0003-grpc-1.3.0-Don-t-run-ldconfig.patch"
 	"${FILESDIR}/0004-grpc-1.11.0-fix-cpp-so-version.patch"
+	"${FILESDIR}/0005-grpc-1.11.0-pkgconfig-libdir.patch"
 )
 
 src_prepare() {
@@ -42,6 +43,7 @@ src_compile() {
 	emake \
 		V=1 \
 		prefix=/usr \
+		INSTALL_LIBDIR="$(get_libdir)" \
 		AR="$(tc-getAR)" \
 		AROPTS="rcs" \
 		CFLAGS="${CFLAGS}" \
