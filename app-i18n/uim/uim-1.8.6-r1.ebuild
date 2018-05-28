@@ -7,7 +7,7 @@ inherit autotools elisp-common gnome2-utils
 
 DESCRIPTION="A multilingual input method framework"
 HOMEPAGE="https://github.com/uim/uim"
-SRC_URI="https://uim.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
