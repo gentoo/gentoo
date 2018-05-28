@@ -10,6 +10,6 @@
 		</description>
 	</maintainer>
 	<use>
-		<flag name="spirv-tools">Enable better SPIRV support using <pkg>dev-util/spirv-tools</pkg></flag>
+		<flag name="spirv-tools">Enable SPIRV shader debugging support using <pkg>dev-util/spirv-tools</pkg></flag>
 	</use>
 </pkgmetadata>
