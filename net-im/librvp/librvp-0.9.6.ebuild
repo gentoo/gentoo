@@ -19,6 +19,6 @@ DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
 src_configure() {
-	econf --with-gaim-plugin-dir=/usr/$(get_libdir)/pidgin \
-		--with-gaim-data-dir=/usr/share/pixmaps/pidgin
+	econf --with-gaim-plugin-dir="${EPREFIX}"/usr/$(get_libdir)/pidgin \
+		--with-gaim-data-dir="${EPREFIX}"/usr/share/pixmaps/pidgin
 }
