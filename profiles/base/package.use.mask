@@ -7,6 +7,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (27 May 2018)
+# Requires app-arch/snappy[static-libs] that is no longer available.
+# Bugs #651604, #651606.
+app-emulation/qemu static
+dev-libs/leveldb static-libs
+sys-block/fio static
+sys-cluster/ceph static-libs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
 # kdelibs4 is dead and going away. Bug #645558
 <app-office/libreoffice-6.0 kde
