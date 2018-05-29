@@ -22,12 +22,6 @@ app-i18n/scim qt4
 app-i18n/scim-bridge qt4
 app-i18n/uim qt4
 
-# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
-# kdelibs4 is dead and going away. Bug #645558
-<app-office/libreoffice-6.0 kde
-<app-office/libreoffice-bin-6.0 kde
-<app-office/libreoffice-bin-debug-6.0 kde
-
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl
