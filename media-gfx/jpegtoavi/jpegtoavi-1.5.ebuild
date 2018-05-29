@@ -15,9 +15,8 @@ IUSE=""
 
 PATCHES=( "${FILESDIR}/${P}-Makefile.patch" )
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	default
 }
 
 src_install() {
