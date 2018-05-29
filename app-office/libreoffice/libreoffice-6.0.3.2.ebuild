@@ -245,7 +245,7 @@ PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
-	"${FILESDIR}/${PN}-6.0.3.2-disable-flaky-tests.patch" #bug 656676
+	"${FILESDIR}"/${PN}-6.0.3.2-disable-flaky-tests-{1,2}.patch #bug 656676
 	# 6.0 branch
 	"${FILESDIR}/${P}-poppler-0.64.patch"
 
