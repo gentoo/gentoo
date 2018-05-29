@@ -5,7 +5,7 @@ EAPI=6
 
 WX_GTK_VER="3.0"
 
-inherit autotools flag-o-matic gnome2-utils wxwidgets xdg-utils
+inherit autotools gnome2-utils wxwidgets xdg-utils
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="http://www.codeblocks.org/"
@@ -49,8 +49,6 @@ src_prepare() {
 
 src_configure() {
 	setup-wxwidgets
-
-	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
 
 	# USE="contrib -fortran" setup:
 	use fortran || CONF_WITH_LST=$(use_with contrib contrib-plugins all,-FortranProject)
