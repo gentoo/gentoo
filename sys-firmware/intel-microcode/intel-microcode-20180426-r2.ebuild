@@ -19,11 +19,14 @@ SRC_URI="https://downloadmirror.intel.com/${NUM}/eng/microcode-${INTEL_SNAPSHOT}
 LICENSE="intel-ucode"
 SLOT="0"
 KEYWORDS=""
-IUSE="initramfs +split-ucode vanilla"
+IUSE="initramfs +minimal +split-ucode vanilla"
 REQUIRED_USE="|| ( initramfs split-ucode )"
 
 DEPEND="sys-apps/iucode_tool"
-RDEPEND="!<sys-apps/microcode-ctl-1.17-r2" #268586
+
+# !<sys-apps/microcode-ctl-1.17-r2 due to bug #268586
+RDEPEND="!<sys-apps/microcode-ctl-1.17-r2
+	minimal? ( sys-apps/iucode_tool )"
 
 S=${WORKDIR}
 
@@ -96,8 +99,9 @@ src_install() {
 	# The earlyfw cpio needs to be in /boot because it must be loaded before
 	# rootfs is mounted.
 	use initramfs && dodir /boot && opts+=( --write-earlyfw="${ED%/}"/boot/intel-uc.img )
-	# split location:
-	use split-ucode && dodir /lib/firmware/intel-ucode && opts+=( --write-firmware="${ED%/}"/lib/firmware/intel-ucode )
+	# split location (we use a temporary location so that we are able
+	# to re-run iucode_tool in pkg_preinst):
+	dodir /tmp/intel-ucode && opts+=( --write-firmware="${ED%/}"/tmp/intel-ucode )
 
 	iucode_tool \
 		"${opts[@]}" \
@@ -109,6 +113,45 @@ src_install() {
 
 pkg_preinst() {
 	use initramfs && mount-boot_pkg_preinst
+
+	if use minimal; then
+		einfo "Removing ucode(s) not supported by any currently available (=online) processor(s) due to USE=minimal ..."
+		opts=(
+			--scan-system
+			# be strict about what we are doing
+			--overwrite
+			--strict-checks
+			--no-ignore-broken
+			# we want to install latest version
+			--no-downgrade
+			# show everything we find
+			--list-all
+			# show what we selected
+			--list
+		)
+
+		# The earlyfw cpio needs to be in /boot because it must be loaded before
+		# rootfs is mounted.
+		use initramfs && opts+=( --write-earlyfw="${ED%/}"/boot/intel-uc.img )
+		# split location:
+		use split-ucode && dodir /lib/firmware/intel-ucode && opts+=( --write-firmware="${ED%/}"/lib/firmware/intel-ucode )
+
+		iucode_tool \
+			"${opts[@]}" \
+			"${ED%/}"/tmp/intel-ucode \
+			|| die "iucode_tool ${opts[@]} ${ED%/}/tmp/intel-ucode"
+
+	else
+		if use split-ucode; then
+			# Temporary /tmp/intel-ucode will become final /lib/firmware/intel-ucode ...
+			dodir /lib/firmware/intel-ucode
+			mv "${ED%/}"/tmp/intel-ucode "${ED%/}"/lib/firmware/intel-ucode || die "Failed to install splitted ucodes!"
+		fi
+	fi
+
+	# Cleanup any temporary leftovers so that we don't merge any
+	# unneeded files on disk
+	rm -r "${ED%/}"/tmp || die "Failed to cleanup '${ED%/}/tmp'"
 }
 
 pkg_prerm() {
@@ -121,6 +164,13 @@ pkg_postrm() {
 
 pkg_postinst() {
 	use initramfs && mount-boot_pkg_postinst
+
+	if use minimal; then
+		elog "You only installed ucodes for all currently available (=online)"
+		elog "processor(s). Remember to re-emerge this package whenever you"
+		elog "change the system's processor model."
+		elog ""
+	fi
 
 	# We cannot give detailed information if user is affected or not:
 	# If MICROCODE_BLACKLIST wasn't modified, user can still use MICROCODE_SIGNATURES
