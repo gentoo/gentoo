@@ -7,6 +7,18 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
+# Qt4 is dead and going away. Bugs #655382, #638260
+x11-libs/qwt qt4
+sci-libs/ViSP qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
+# dev-python/PyQt4 and dev-python/pyside are dead and going away.
+dev-python/pandas X
+media-sound/pulseaudio qt4
+media-video/syncplay gui
+net-wireless/gnuradio qt4
+
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # dev-libs/DirectFB is being removed (#606194)
 media-libs/libsdl2 fusionsound
