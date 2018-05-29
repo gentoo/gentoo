@@ -3,7 +3,7 @@
 
 EAPI=6
 
-MY_PV=0.7.90
+MY_PV=0.7.95
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
