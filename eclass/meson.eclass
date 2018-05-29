@@ -163,6 +163,7 @@ _meson_create_cross_file() {
 	c = $(_meson_env_array "$(tc-getCC)")
 	cpp = $(_meson_env_array "$(tc-getCXX)")
 	fortran = $(_meson_env_array "$(tc-getFC)")
+	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
 	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
