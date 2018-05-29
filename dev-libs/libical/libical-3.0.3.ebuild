@@ -27,6 +27,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? ( ${PYTHON_DEPS} )
 "
@@ -39,7 +40,10 @@ DOCS=(
 	doc/{AddingOrModifyingComponents,UsingLibical}.txt
 )
 
-PATCHES=( "${FILESDIR}/${P}-pkgconfig-libdir.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0.1-pkgconfig-libdir.patch"
+	"${FILESDIR}/${P}-findicu-pkgconfig.patch"
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -47,8 +51,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
-
-	use doc || cmake_comment_add_subdirectory doc
 	use examples || cmake_comment_add_subdirectory examples
 }
 
@@ -57,6 +59,7 @@ src_configure() {
 		-DICAL_GLIB=OFF
 		-DGOBJECT_INTROSPECTION=OFF
 		$(cmake-utils_use_find_package berkdb BDB)
+		-DICAL_BUILD_DOCS=$(usex doc)
 		-DSHARED_ONLY=$(usex !static-libs)
 	)
 # 	TODO: disabled until useful
