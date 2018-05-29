@@ -14,7 +14,7 @@ SRC_URI="https://github.com/enthought/enable/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 RESTRICT="test" # Until https://github.com/enthought/enable/issues/303 is solved
