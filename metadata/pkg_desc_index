@@ -3153,7 +3153,7 @@ dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libunibreak 4.0: Line and word breaking library
 dev-libs/libunicode 0.4-r2: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
-dev-libs/libunistring 0.9.5 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
+dev-libs/libunistring 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libuv 1.10.2 1.20.0: Cross-platform asychronous I/O
