@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=virtual/perl-Carp >=virtual/perl-Exporter-5.570.0 >=virtual/perl-ExtUtils-MakeMaker-6.300.0 test? ( dev-perl/Sub-Name >=dev-perl/Capture-Tiny-0.120.0 virtual/perl-File-Spec virtual/perl-Test-Simple virtual/perl-if ) dev-lang/perl:=[-build(-)]
-DESCRIPTION=Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
+DESCRIPTION=Minimal try/catch with proper localization of source /var/lib/repo-mirror-ci/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Try-Tiny/
 IUSE=test
