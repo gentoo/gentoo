@@ -17,5 +17,5 @@ DEPEND="virtual/jpeg"
 src_install() {
 	dobin jpeg{hotp,pixi}
 	doman man/jpeg{hotp,pixi}.1
-	dodoc AUTHORS NEWS README README.jpeglib ChangeLog
+	einstalldocs AUTHORS NEWS README README.jpeglib ChangeLog
 }
