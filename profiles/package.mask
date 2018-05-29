@@ -452,7 +452,6 @@ media-fonts/fontawesome:0/5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
 # Masked for testing
-=dev-libs/libical-3.0.1
 ~dev-libs/libical-3.0.3
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
