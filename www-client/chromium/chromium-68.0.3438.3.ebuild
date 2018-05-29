@@ -104,21 +104,7 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/clang-5
 	virtual/pkgconfig
 	dev-vcs/git
-	$(python_gen_any_dep '
-		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
-		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
-		dev-python/html5lib[${PYTHON_USEDEP}]
-		dev-python/simplejson[${PYTHON_USEDEP}]
-	')
 "
-
-# Keep this in sync with the python_gen_any_dep call.
-python_check_deps() {
-	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
-	has_version --host-root ">=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/html5lib[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/simplejson[${PYTHON_USEDEP}]"
-}
 
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
 	EBUILD_DEATH_HOOKS+=" chromium_pkg_die";
@@ -243,7 +229,10 @@ src_prepare() {
 		third_party/catapult
 		third_party/catapult/common/py_vulcanize/third_party/rcssmin
 		third_party/catapult/common/py_vulcanize/third_party/rjsmin
+		third_party/catapult/third_party/beautifulsoup4
+		third_party/catapult/third_party/html5lib-python
 		third_party/catapult/third_party/polymer
+		third_party/catapult/third_party/six
 		third_party/catapult/tracing/third_party/d3
 		third_party/catapult/tracing/third_party/gl-matrix
 		third_party/catapult/tracing/third_party/jszip
@@ -318,6 +307,7 @@ src_prepare() {
 		third_party/rnnoise
 		third_party/s2cellid
 		third_party/sfntly
+		third_party/simplejson
 		third_party/skia
 		third_party/skia/third_party/gif
 		third_party/skia/third_party/skcms
