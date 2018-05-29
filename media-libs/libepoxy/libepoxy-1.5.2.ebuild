@@ -30,7 +30,8 @@ RDEPEND="media-libs/mesa[egl,${MULTILIB_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	${RDEPEND}
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
-	>=dev-util/meson-0.44.0"
+	>=dev-util/meson-0.44.0
+	virtual/pkgconfig"
 
 src_unpack() {
 	default
