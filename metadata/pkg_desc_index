@@ -1897,7 +1897,7 @@ dev-db/sqlitebrowser 3.9.1-r1 3.10.1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
 dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading constant data bases
-dev-db/tokyocabinet 1.4.48 1.4.48-r1: A library of routines for managing a database
+dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/unixODBC 2.3.5-r1: A complete ODBC driver manager
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
@@ -7203,7 +7203,7 @@ media-gfx/aview 1.3.0_rc1-r1: An ASCII Image Viewer
 media-gfx/blender 2.72b-r4 2.79-r1: 3D Creation/Animation/Publishing System
 media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/cairosvg 1.0.22 2.0.3: CLI and library to export SVG to PDF, PostScript, and PNG
-media-gfx/cellwriter 1.3.4 1.3.5: Grid-entry natural handwriting input panel
+media-gfx/cellwriter 1.3.5: Grid-entry natural handwriting input panel
 media-gfx/clockphoto 1.1: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
