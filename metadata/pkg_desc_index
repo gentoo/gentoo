@@ -9887,7 +9887,7 @@ sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
 sys-auth/sssd 1.12.1: System Security Services Daemon provides access to identity and authentication
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
 sys-block/aoetools 36: tools for ATA over Ethernet (AoE) network storage protocol
-sys-block/blktrace 1.0.3 1.2.0: show detailed info about what is happening on a block device io queue
+sys-block/blktrace 1.2.0: show detailed info about what is happening on a block device io queue
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/di 4.43: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
