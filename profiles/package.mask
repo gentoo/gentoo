@@ -169,7 +169,6 @@ games-misc/dont-starve
 games-puzzle/larry
 games-rpg/avadon
 games-rpg/penumbra-collection
-games-rpg/wasteland2
 
 # Michał Górny <mgorny@gentoo.org> (15 May 2018)
 # All current versions are unfetchable.  No maintainer activity
