@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	srv? ( net-dns/c-ares )
 	websockets? ( net-libs/libwebsockets )"
 
-PATCHES=( "${FILESDIR}/${P}-conditional-tests.patch" )
+PATCHES=( "${FILESDIR}/${PN}-fix-conditional-tests.patch" )
 
 _emake() {
 	LIBDIR=$(get_libdir)
