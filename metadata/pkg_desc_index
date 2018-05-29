@@ -6123,7 +6123,7 @@ dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/aruba 0.5.4-r1 0.6.2-r1: Cucumber steps for driving out command line applications
-dev-util/astyle 3.0.1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
+dev-util/astyle 3.0.1-r1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/babeltrace 1.2.4: A command-line tool and library to read and convert trace files
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
@@ -6957,7 +6957,7 @@ mail-filter/bogofilter 1.2.4-r1: Bayesian spam filter designed with fast algorit
 mail-filter/clamassassin 1.2.4: Simple spamassassin-like script for virus scanning and filtering e-mail messages
 mail-filter/clamsmtp 1.10: An SMTP filter to check for viruses using the ClamAV anti-virus software
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
-mail-filter/dcc 1.3.140-r1 1.3.158: Distributed Checksum Clearinghouse
+mail-filter/dcc 1.3.158: Distributed Checksum Clearinghouse
 mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
 mail-filter/dovecot-antispam 2.0_pre20130429: A dovecot antispam plugin supporting multiple backends
 mail-filter/dspam 3.10.2-r1: A statistical-algorithmic hybrid anti-spam filter
@@ -7241,7 +7241,7 @@ media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
+media-gfx/gliv 1.9.7: An image viewer that uses OpenGL
 media-gfx/gnofract4d 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.24.0: Font viewer for GNOME
 media-gfx/gnome-photos 3.24.6: Access, organize and share your photos on GNOME
@@ -7296,7 +7296,7 @@ media-gfx/nvidia-cg-toolkit 3.1.0013-r3: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
-media-gfx/openexr_viewers 1.0.2 2.1.0: OpenEXR Viewers
+media-gfx/openexr_viewers 2.1.0: OpenEXR Viewers
 media-gfx/openvdb 4.0.2: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.6-r2: Compress PNG files without affecting image quality
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
@@ -9768,7 +9768,7 @@ sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech
 sys-apps/lsb-release 1.4: LSB version query program
 sys-apps/lshw 02.18b: Hardware Lister
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
-sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
+sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.6.1-r2: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.14: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
@@ -10179,7 +10179,7 @@ sys-libs/libunwind 1.1-r1 1.2.1: Portable and efficient API to determine the cal
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/llvm-libunwind 4.0.1 5.0.1: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.2 2.8: Light-weight process library (used by Coda)
-sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
+sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.18 1.1.19: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r101 6.1-r2: console display library
 sys-libs/nss_wrapper 1.1.3: A wrapper for the user, group and hosts NSS API
@@ -10495,7 +10495,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 66.0.3359.139 66.0.3359.170: Open-source version of Google Chrome web browser
+www-client/chromium 66.0.3359.170: Open-source version of Google Chrome web browser
 www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
@@ -10637,13 +10637,13 @@ x11-base/xorg-server 1.19.5-r2: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 304.137 340.106 375.82 378.13-r1 381.22-r1 384.130 387.34 390.42: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
-x11-drivers/xf86-input-evdev 2.10.5: Generic Linux input driver
+x11-drivers/xf86-input-evdev 2.10.5 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
 x11-drivers/xf86-input-libinput 0.27.1: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.2: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.4.1: Xorg Driver for Multitouch Trackpads
-x11-drivers/xf86-input-synaptics 1.9.0: Driver for Synaptics touchpads
+x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
 x11-drivers/xf86-input-tslib 0.0.6-r3: xorg input driver for use of tslib based touchscreen devices
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
