@@ -1,0 +1,14 @@
+Author: Diane Trout <diane@ghic.org>
+Description: Don't install the examples as they end up conflicting with
+ other packages.
+--- a/signon-oauth2.pro
++++ b/signon-oauth2.pro
+@@ -3,7 +3,7 @@
+ 
+ TEMPLATE  = subdirs
+ CONFIG   += ordered
+-SUBDIRS   = src tests example
++SUBDIRS   = src tests
+ 
+ include( common-installs-config.pri )
+ 
