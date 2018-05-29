@@ -23,5 +23,7 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || (find "${D}" -name '*.la' -delete || die "Pruning failed")
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die "Pruning failed"
+	fi
 }
