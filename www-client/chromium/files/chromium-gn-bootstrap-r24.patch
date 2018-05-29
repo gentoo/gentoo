@@ -1,0 +1,31 @@
+From 8aca6d50942218ba7887b8b41a44e4f1b7d6f091 Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Thu, 24 May 2018 22:39:20 +0000
+Subject: [PATCH] Fix gn bootstrap
+
+R=dpranke
+
+Change-Id: I469e7e478141e7c389f7a16a5e860122785bab44
+Reviewed-on: https://chromium-review.googlesource.com/1072740
+Reviewed-by: Dirk Pranke <dpranke@chromium.org>
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#561663}
+---
+ tools/gn/bootstrap/bootstrap.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index 0d5f42a1d4a8..300abacdbca0 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -649,7 +649,6 @@ def write_gn_ninja(path, root_gen_dir, options, windows_x64_toolchain):
+       'base/trace_event/memory_peak_detector.cc',
+       'base/trace_event/memory_usage_estimator.cc',
+       'base/trace_event/process_memory_dump.cc',
+-      'base/trace_event/sharded_allocation_register.cc',
+       'base/trace_event/trace_buffer.cc',
+       'base/trace_event/trace_config.cc',
+       'base/trace_event/trace_config_category_filter.cc',
+-- 
+2.17.0
+
