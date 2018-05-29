@@ -12,8 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND="sys-libs/ncurses
-	sys-libs/readline"
+DEPEND="sys-libs/ncurses:0=
+	sys-libs/readline:0="
 
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
