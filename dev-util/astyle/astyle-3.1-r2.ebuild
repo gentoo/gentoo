@@ -52,8 +52,8 @@ src_install() {
 	pushd src/bin >/dev/null || die
 	dobin ${PN}
 
-	local libastylename="lib${PN}.so.${PV}"
-	local libastylejname="lib${PN}j.so.${PV}"
+	local libastylename="lib${PN}.so.${PV}.0"
+	local libastylejname="lib${PN}j.so.${PV}.0"
 	local libdestdir="${EPREFIX}/usr/$(get_libdir)"
 
 	dolib.so "${libastylename}"
