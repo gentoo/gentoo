@@ -5833,6 +5833,7 @@ www-servers/apache:apache2_modules_lbmethod_byrequests - Request counting load b
 www-servers/apache:apache2_modules_lbmethod_bytraffic - Weighted traffic counting load balancer scheduler algorithm for proxy_balancer.
 www-servers/apache:apache2_modules_lbmethod_heartbeat - Heartbeat traffic counting load balancer scheduler algorithm for proxy_balancer.
 www-servers/apache:apache2_modules_macro - Macros for the Apache config file.
+www-servers/apache:apache2_modules_md - Managing domains across virtual hosts, certificate provisioning via the ACME protocol.
 www-servers/apache:apache2_modules_proxy_fcgi - FCGI support module for mod_proxy.
 www-servers/apache:apache2_modules_proxy_html - Module to rewrite links in html pages behind a reverse proxy
 www-servers/apache:apache2_modules_proxy_wstunnel - Provides support for the tunnelling of web socket connections to a backend websockets server.

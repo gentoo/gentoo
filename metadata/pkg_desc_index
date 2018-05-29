@@ -185,8 +185,8 @@ app-arch/libarchive 3.3.1: BSD tar command
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p131 1.7.5-r1 1.8.0: Extremely Fast Compression algorithm
-app-arch/lzip 1.18: lossless data compressor based on the LZMA algorithm
-app-arch/lziprecover 1.17: Lziprecover is a data recovery tool and decompressor for lzip compressed files
+app-arch/lzip 1.18 1.20: lossless data compressor based on the LZMA algorithm
+app-arch/lziprecover 1.17 1.20: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
@@ -3345,7 +3345,7 @@ dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
-dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
+dev-perl/Ace 1.920.0-r1 1.920.0-r3: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
@@ -3354,7 +3354,7 @@ dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two f
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
-dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
+dev-perl/Alien-wxWidgets 0.670.0-r1 0.690.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.140.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-HTTP 2.230.0: Simple but non-blocking HTTP/HTTPS client
@@ -4772,7 +4772,7 @@ dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
 dev-python/empy 3.3-r1: A powerful and robust templating system for Python
-dev-python/enable 4.4.1 4.5.1: Enthought Tool Suite: Drawing and interaction packages
+dev-python/enable 4.4.1 4.5.1 4.7.1: Enthought Tool Suite: Drawing and interaction packages
 dev-python/enaml 0.10.2: Enthought Tool Suite: framework for writing declarative interfaces
 dev-python/encore 0.5.1: Enthought Tool Suite: collection of core-level utility modules
 dev-python/entrypoints 0.2.3: Discover and load entry points from installed packages
@@ -8645,7 +8645,7 @@ net-libs/libsmi 0.4.8-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.56.1 2.58.2: An HTTP library implementation in C
 net-libs/libsrtp 1.6.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.4: Access a working SSH implementation by means of a library
-net-libs/libssh2 1.7.0: Library implementing the SSH2 protocol
+net-libs/libssh2 1.7.0 1.8.0-r1: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.6 0.13.6-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
@@ -10525,7 +10525,7 @@ www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports 
 www-misc/urlwatch 2.5: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
-www-plugins/freshplayerplugin 0.3.5-r2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
+www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r2: GNU Flash movie player that supports many SWF v7,8,9 features
 www-servers/apache 2.2.34 2.4.27-r1 2.4.29-r1: The Apache Web Server
