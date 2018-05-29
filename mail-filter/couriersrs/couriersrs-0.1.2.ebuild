@@ -22,6 +22,6 @@ PATCHES=( "${FILESDIR}/${P}-automake-fixes.diff" )
 
 src_prepare() {
 	default
-	rm m4/*.m4
+	rm m4/*.m4 || die "rm failed!"
 	AT_M4DIR="m4" eautoreconf
 }
