@@ -151,7 +151,7 @@ pkg_preinst() {
 
 	# Cleanup any temporary leftovers so that we don't merge any
 	# unneeded files on disk
-	rm -r "${ED%/}"/tmp || die "Failed to cleanup '"${ED%/}"/tmp'"
+	rm -r "${ED%/}"/tmp || die "Failed to cleanup '${ED%/}/tmp'"
 }
 
 pkg_prerm() {
