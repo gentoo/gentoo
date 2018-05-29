@@ -24,6 +24,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+	mv configure.in configure.ac || die "moving configure.in failed"
 	eautoreconf
 }
 
