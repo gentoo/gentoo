@@ -24,9 +24,9 @@ IUSE="contrib debug fortran pch"
 RDEPEND="app-arch/zip
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	contrib? (
+		app-admin/gamin
 		app-text/hunspell
 		dev-libs/boost:=
-		dev-libs/libgamin
 	)"
 
 DEPEND="${RDEPEND}
