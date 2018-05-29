@@ -4,9 +4,9 @@
 EAPI=6
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20180323"
+GENTOO_PATCHSTAMP="20180529"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.33"
+GENTOO_PATCHNAME="gentoo-apache-2.4.33-r1"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
@@ -36,7 +36,7 @@ authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 brotli cache cache_disk cache_socache cern_meta charset_lite cgi cgid dav dav_fs dav_lock
 dbd deflate dir dumpio env expires ext_filter file_cache filter headers http2
 ident imagemap include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
-lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiation
+lbmethod_heartbeat log_config log_forensic logio macro md mime mime_magic negotiation
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
 slotmem_shm speling socache_shmcb status substitute unique_id userdir usertrack
@@ -65,6 +65,7 @@ MODULE_DEPENDS="
 	logio:log_config
 	cache_disk:cache
 	cache_socache:cache
+	md:watchdog
 	mime_magic:mime
 	proxy_ajp:proxy
 	proxy_balancer:proxy
@@ -94,6 +95,7 @@ MODULE_DEFINES="
 	http2:HTTP2
 	info:INFO
 	ldap:LDAP
+	md:SSL
 	proxy:PROXY
 	proxy_ajp:PROXY
 	proxy_balancer:PROXY
@@ -134,12 +136,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="${IUSE/apache2_modules_http2/+apache2_modules_http2}"
 
 CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
-	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )"
+	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
+	apache2_modules_md? ( >=dev-libs/jansson-2.10 )"
 
 DEPEND+="${CDEPEND}"
 RDEPEND+="${CDEPEND}"
 
-REQUIRED_USE="apache2_modules_http2? ( ssl )"
+REQUIRED_USE="apache2_modules_http2? ( ssl )
+	apache2_modules_md? ( ssl )"
 
 PATCHES=(
 	# this *should* be included from upstream in the next release as it is currently in Git head
