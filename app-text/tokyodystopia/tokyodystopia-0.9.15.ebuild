@@ -26,13 +26,13 @@ src_configure() {
 }
 
 src_install() {
-	HTML_DOCS=( doc/* )
+	HTML_DOCS=( doc/. )
 
 	default
 
 	if use examples; then
 		insinto /usr/share/${PF}/example
-		doins example/*
+		doins example/.
 	fi
 }
 
