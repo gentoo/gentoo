@@ -3,8 +3,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # media-libs/libaom not yet keyworded
-# net-libs/libmicrodns not yet keyworded for ppc, bug #653800
-media-video/vlc aom microdns
+media-video/vlc aom
 
 # Anthony G. Basile <blueness@gentoo.org> (14 Apr 2018)
 # net-vpn/tor, tests are broken on ppc/ppc64, bug #653098

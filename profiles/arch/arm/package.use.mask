@@ -3,9 +3,8 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # media-libs/libaom not yet keyworded
-# net-libs/libmicrodns not yet keyworded for arm, bug #653800
 # projectm not yet keyworded, bug #314969
-media-video/vlc aom chromaprint microdns opencv projectm
+media-video/vlc aom chromaprint opencv projectm
 
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded dep masks moved from default/linux.
