@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
+# Depends on unstable media-libs/libaom, net-libs/srt
+media-video/vlc aom srt
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
 # Depends on lots of unstable dependencies
 dev-python/s3fs test
