@@ -1,0 +1,37 @@
+--- a/xmlsecurity/qa/unit/signing/signing.cxx	2018-01-27 18:21:08.228434985 +0100
++++ b/xmlsecurity/qa/unit/signing/signing.cxx	2018-01-27 18:21:37.428824309 +0100
+@@ -114,7 +114,7 @@
+     /// Test a typical broken ODF signature where the XML dsig hash is corrupted.
+     void testODFBrokenDsigGPG();
+     /// Test loading an encrypted ODF document
+-    void testODFEncryptedGPG();
++//    void testODFEncryptedGPG();
+ #endif
+     CPPUNIT_TEST_SUITE(SigningTest);
+     CPPUNIT_TEST(testDescription);
+@@ -143,7 +143,7 @@
+     CPPUNIT_TEST(testODFUntrustedGoodGPG);
+     CPPUNIT_TEST(testODFBrokenStreamGPG);
+     CPPUNIT_TEST(testODFBrokenDsigGPG);
+-    CPPUNIT_TEST(testODFEncryptedGPG);
++//    CPPUNIT_TEST(testODFEncryptedGPG);
+ #endif
+     CPPUNIT_TEST_SUITE_END();
+ 
+@@ -743,14 +743,14 @@
+     CPPUNIT_ASSERT_EQUAL(static_cast<int>(SignatureState::BROKEN), static_cast<int>(pObjectShell->GetDocumentSignatureState()));
+ }
+ 
+-void SigningTest::testODFEncryptedGPG()
++/*void SigningTest::testODFEncryptedGPG()
+ {
+     createDoc(m_directories.getURLFromSrc(DATA_DIRECTORY) + "encryptedGPG.odt");
+     SfxBaseModel* pBaseModel = dynamic_cast<SfxBaseModel*>(mxComponent.get());
+     CPPUNIT_ASSERT(pBaseModel);
+     SfxObjectShell* pObjectShell = pBaseModel->GetObjectShell();
+     CPPUNIT_ASSERT(pObjectShell);
+-}
++}*/
+ 
+ #endif
+ 
