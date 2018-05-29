@@ -81,9 +81,11 @@ src_prepare() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=760458
 	eapply "${FILESDIR}"/${PN}-2.9.2-python-ABIFLAG.patch
 
-	# Avoid final linking arguments for python modules
 	if [[ ${CHOST} == *-darwin* ]] ; then
+		# Avoid final linking arguments for python modules
 		sed -i -e '/PYTHON_LIBS/s/ldflags/libs/' configure.ac || die
+		# gcc-apple doesn't grok -Wno-array-bounds
+		sed -i -e 's/-Wno-array-bounds//' configure.ac || die
 	fi
 
 	# Please do not remove, as else we get references to PORTAGE_TMPDIR
