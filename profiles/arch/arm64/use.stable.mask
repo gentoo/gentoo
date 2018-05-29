@@ -11,7 +11,6 @@ cups
 # Michał Górny <mgorny@gentoo.org> (16 Apr 2018)
 # Not stable yet.
 vala
-webp
 
 # Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
 # Neither x11-libs/gtk+ SLOT marked stable yet
