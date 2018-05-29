@@ -5,8 +5,8 @@
 # Please use the same syntax as in package.use.mask
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
-# Depends on unstable media-libs/libaom
-media-video/vlc aom
+# Depends on unstable media-libs/libaom, net-libs/srt
+media-video/vlc aom srt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
 # Depends on lots of unstable dependencies
