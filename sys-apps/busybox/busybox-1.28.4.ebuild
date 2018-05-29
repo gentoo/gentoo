@@ -3,8 +3,9 @@
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
-EAPI="5"
-inherit eutils flag-o-matic savedconfig toolchain-funcs multilib
+EAPI=6
+
+inherit flag-o-matic savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
@@ -62,14 +63,18 @@ busybox_config_enabled() {
 	esac
 }
 
+# patches go here!
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.26.2-bb.patch
+	# "${FILESDIR}"/${P}-*.patch
+)
+
 src_prepare() {
+	default
 	unset KBUILD_OUTPUT #88088
 	append-flags -fno-strict-aliasing #310413
 	use ppc64 && append-flags -mminimal-toc #130943
 
-	# patches go here!
-	epatch "${FILESDIR}"/${PN}-1.26.2-bb.patch
-#	epatch "${FILESDIR}"/${P}-*.patch
 	cp "${FILESDIR}"/ginit.c init/ || die
 
 	# flag cleanup
@@ -280,7 +285,8 @@ src_install() {
 	dodoc *.txt
 	docinto pod
 	dodoc *.pod
-	dohtml *.html
+	docinto html
+	dodoc *.html
 
 	cd ../examples
 	docinto examples
