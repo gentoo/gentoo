@@ -1,6 +1,15 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# sys-devel/clang, dev-libs/xapian, app-text/texlive not stable yet
+# USE=doc requires USE=latex
+app-doc/doxygen clang doxysearch latex doc
+
+# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# virtual/opengl and media-libs/freeglut not stable yet
+media-libs/libwebp opengl
+
 # Mart Raudsepp <leio@gentoo.org> (06 May 2018)
 # No media-libs/freeglut and co stable yet
 media-libs/jasper opengl
@@ -17,7 +26,6 @@ dev-python/urllib3 test
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
 app-portage/layman cvs subversion test
-app-text/asciidoc graphviz
 app-text/xmlto latex
 dev-libs/apr-util freetds odbc
 gnome-base/dconf test
