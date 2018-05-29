@@ -32,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-autotools.patch
 	"${FILESDIR}"/${P}-sdl-m4.patch
 	"${FILESDIR}"/${P}-sdl-automagic.patch
-	"${FILESDIR}"/${PV}
+	"${FILESDIR}"/${PVR}
 )
 
 src_prepare() {
