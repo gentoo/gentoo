@@ -254,7 +254,7 @@ pkg_postinst() {
 			ewarn "env-update && . /etc/profile"
 		fi
 
-		if ! version_is_at_least 2.5 ${x}; then
+		if ! version_is_at_least 2.6 ${x}; then
 			ewarn "Please run env-update then log out and back in to"
 			ewarn "update your path."
 		fi
