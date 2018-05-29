@@ -26,7 +26,6 @@ dev-python/urllib3 test
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
 app-portage/layman cvs subversion test
-app-text/asciidoc graphviz
 app-text/xmlto latex
 dev-libs/apr-util freetds odbc
 gnome-base/dconf test
