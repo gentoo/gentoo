@@ -29,7 +29,7 @@ src_prepare() {
 	mv configure.in configure.ac || die "Moving configure.in -> .ac failed"
 	if use oss; then
 		cp "${WORKDIR}"/awe_voice.h src/ || die "copy failed"
-		append-flags -DHAVE_AWE_VOICE_H
+		append-cppflags -DHAVE_AWE_VOICE_H
 	fi
 
 	eautoreconf
