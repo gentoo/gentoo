@@ -8710,7 +8710,7 @@ net-mail/ezmlm-idx 6.0.0: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.7: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.4: A POP3 mail retriever with reliable Maildir and mbox delivery
-net-mail/gnubiff 2.2.15-r3: A mail notification program
+net-mail/gnubiff 2.2.15-r3 2.2.17-r1: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/imapsync 1.592-r1: A tool allowing incremental and recursive imap transfer from one mailbox to another
 net-mail/isync 1.2.1: MailDir mailbox synchronizer
