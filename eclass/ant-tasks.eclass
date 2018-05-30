@@ -16,7 +16,8 @@
 JAVA_ANT_DISABLE_ANT_CORE_DEP=true
 # rewriting build.xml for are the testcases has no reason atm
 JAVA_PKG_BSFIX_ALL=no
-inherit versionator java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
+[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
@@ -60,12 +61,12 @@ if [[ ${PV} == *beta2* ]]; then
 	MY_PV=${PV/_beta2/beta}
 	UPSTREAM_PREFIX="http://people.apache.org/dist/ant/v1.7.1beta2/src"
 	GENTOO_PREFIX="https://dev.gentoo.org/~caster/distfiles"
-	ANT_TASK_PV=$(get_version_component_range 1-3)
+	ANT_TASK_PV=$(ver_cut 1-3)
 elif [[ ${PV} == *_rc* ]]; then
 	MY_PV=${PV/_rc/RC}
 	UPSTREAM_PREFIX="https://dev.gentoo.org/~caster/distfiles"
 	GENTOO_PREFIX="https://dev.gentoo.org/~caster/distfiles"
-	ANT_TASK_PV=$(get_version_component_range 1-3)
+	ANT_TASK_PV=$(ver_cut 1-3)
 else
 	# default for final releases
 	MY_PV=${PV}
@@ -101,7 +102,7 @@ if [[ -z "${ANT_TASK_DISABLE_VM_DEPS}" ]]; then
 fi
 
 # we need direct blockers with old ant-tasks for file collisions - bug #252324
-if version_is_at_least 1.7.1 ; then
+if ver_test -ge 1.7.1; then
 	DEPEND+=" !dev-java/ant-tasks"
 fi
 
@@ -167,7 +168,7 @@ ant-tasks_src_install() {
 	java-pkg_register-ant-task --version "${ANT_TASK_PV}"
 
 	# create the compatibility symlink
-	if version_is_at_least 1.7.1_beta2; then
+	if ver_test -ge 1.7.1_beta2; then
 		dodir /usr/share/ant/lib
 		dosym /usr/share/${PN}/lib/${PN}.jar /usr/share/ant/lib/${PN}.jar
 	fi
