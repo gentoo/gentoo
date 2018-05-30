@@ -1,14 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit autotools multilib git-r3
 
 DESCRIPTION="XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend"
 HOMEPAGE="https://github.com/pipelka/xbmc-addon-xvdr"
 EGIT_REPO_URI="https://github.com/pipelka/xbmc-addon-xvdr.git"
-KEYWORDS=""
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
@@ -17,6 +16,7 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
