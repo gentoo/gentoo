@@ -138,6 +138,7 @@ PDEPEND="
 	!<x11-drivers/xf86-input-wacom-0.34.0
 	!<x11-drivers/xf86-video-amdgpu-1.2.0
 	!<x11-drivers/xf86-video-ati-7.8.0
+	!<x11-drivers/xf86-video-fbdev-0.5.0
 	!<x11-drivers/xf86-video-glint-1.2.9
 	!<x11-drivers/xf86-video-intel-2.99.917_p20160122
 	!<x11-drivers/xf86-video-mga-1.6.5
