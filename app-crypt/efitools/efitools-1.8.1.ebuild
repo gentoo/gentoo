@@ -25,7 +25,10 @@ DEPEND="${RDEPEND}
 	sys-boot/gnu-efi
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-libressl-compatibility.patch" )
+PATCHES=(
+	"${FILESDIR}/1.7.0-Make.rules.patch"
+	"${FILESDIR}/${P}-libressl-compatibility.patch"
+)
 
 src_prepare() {
 	# Respect users CFLAGS
