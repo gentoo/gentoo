@@ -998,6 +998,12 @@ dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most user
 dev-db/unixODBC:odbcmanual - Administrator, Internal Structure, Programmer and User documentation
 dev-embedded/avrdude:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
 dev-embedded/libftdi:tools - build ftdi_eeprom helper tool
+dev-embedded/openocd:cmsis-dap - Support for CMSIS-DAP compliant adapters
+dev-embedded/openocd:dummy - Build the dummy port driver
+dev-embedded/openocd:ftdi - Enable support for USB FTDI chips via dev-embedded/libftdi
+dev-embedded/openocd:jlink - Build the SEGGER J-Link driver
+dev-embedded/openocd:parport - Enable support for parport JTAG devices
+dev-embedded/openocd:verbose-io - Verbose IO and comm JTAG and USB messages
 dev-embedded/sdcc:boehm-gc - Enable Hans Boehm's garbage collector dev-libs/boehm-gc
 dev-embedded/sdcc:device-lib - Enable built of devices libraries
 dev-embedded/sdcc:ds390 - Add support for Dallas DS390

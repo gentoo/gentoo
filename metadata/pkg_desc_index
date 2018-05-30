@@ -199,6 +199,7 @@ app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard arc
 app-arch/pbzip2 1.1.12: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
 app-arch/pigz 2.3.4: A parallel implementation of gzip
+app-arch/pixz 1.0.6: Parallel Indexed XZ compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression utility
 app-arch/rpm 4.11.0.1: Red Hat Package Management Utils
@@ -1932,6 +1933,8 @@ dev-embedded/gpsim 0.29.0: A simulator for the Microchip PIC microcontrollers
 dev-embedded/gputils 1.5.0: Tools including assembler, linker and librarian for PIC microcontrollers
 dev-embedded/include 0.4.2: A collection of useful, independent include files for C/Assembler developers
 dev-embedded/libftdi 0.19 0.20-r1 1.2-r1: Userspace access to FTDI USB interface chips
+dev-embedded/libjaylink 0.1.0: Library to access J-Link devices
+dev-embedded/openocd 0.10.0: OpenOCD - Open On-Chip Debugger
 dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer software for the serial port
 dev-embedded/ponyprog 2.07c-r2: Serial device programmer
 dev-embedded/sdcc 3.5.0: Small device C compiler (for various microprocessors)
