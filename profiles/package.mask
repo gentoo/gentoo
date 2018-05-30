@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (30 May 2018)
+# Masking due to bad commit in the networking stack.
+=sys-kernel/gentoo-sources-4.14.46
+=sys-kernel/gentoo-sources-4.9.104
+=sys-kernel/gentoo-sources-4.4.134
+
 # Michał Górny <mgorny@gentoo.org> (30 May 2018)
 # Gentoo repository mirrors are now running on Gentoo Infastructure,
 # and the key used to sign commits is appropriately part of the regular
