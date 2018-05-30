@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (30 May 2018)
+# Gentoo repository mirrors are now running on Gentoo Infastructure,
+# and the key used to sign commits is appropriately part of the regular
+# keyring (>=app-crypt/openpgp-keys-gentoo-release-20180530).  Please
+# upgrade this keyring, and remove the custom sync-openpgp-key-path from
+# your repos.conf to make Portage use the release keys.
+# Removal in 30 days.
+app-crypt/openpgp-keys-gentoo-mirror
+
 # Chema Alonso Josa <nimiux@gentoo.org> (28 May 2018)
 # Upstream is dead.
 # Masked for removal in 30 days. Bug #646118
