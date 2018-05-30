@@ -22,7 +22,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.20.2:=
+	>=dev-libs/libuv-1.20.3:=
 	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.29.0
 	sys-libs/zlib
@@ -37,7 +37,7 @@ DEPEND="
 "
 S="${WORKDIR}/node-v${PV}"
 PATCHES=(
-	"${FILESDIR}"/gentoo-global-npm-config.patch
+	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 )
 
 pkg_pretend() {
