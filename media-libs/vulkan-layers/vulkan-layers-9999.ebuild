@@ -37,7 +37,7 @@ DEPEND="${PYTHON_DEPS}
 		   )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-Use-usr-for-vulkan-headers.patch"
+	"${FILESDIR}/${PN}-9999-Use-usr-for-vulkan-headers.patch"
 	"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
 	 )
 
