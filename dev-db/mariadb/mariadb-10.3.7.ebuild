@@ -39,7 +39,6 @@ RESTRICT="!bindist? ( bindist ) libressl? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
-	!server? ( !extraengine )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
@@ -275,7 +274,7 @@ src_prepare() {
 
 	local plugin
 	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
-				locale_info qc_info server_audit semisync sql_errlog )
+				locale_info qc_info server_audit sql_errlog )
 	local test_plugins=( audit_null auth_examples daemon_example fulltext
 				debug_key_management example_key_management versioning )
 	if ! use server; then # These plugins are for the server
