@@ -148,5 +148,5 @@ PDEPEND="
 	!<x11-drivers/xf86-video-siliconmotion-1.7.9
 	!<x11-drivers/xf86-video-tdfx-1.4.7
 	!<x11-drivers/xf86-video-virtualbox-5.1.14
-	!<x11-drivers/xf86-video-vmware-13.2.1
+	!<x11-drivers/xf86-video-vmware-13.3.0
 "
