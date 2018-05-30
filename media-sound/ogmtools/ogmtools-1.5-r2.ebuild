@@ -35,6 +35,6 @@ src_install() {
 		dobin dvdxchap
 	fi
 
-	einstalldocs ChangeLog README TODO
+	einstalldocs
 	doman *.1
 }
