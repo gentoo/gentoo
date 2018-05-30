@@ -11268,7 +11268,7 @@ x11-wm/marco 1.12.1: MATE default window manager
 x11-wm/muffin 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clutter
-x11-wm/openbox 3.5.2-r1 3.6.1: A standards compliant, fast, light-weight, extensible window manager
+x11-wm/openbox 3.6.1: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/ratpoison 1.4.8-r1: window manager without mouse dependency
