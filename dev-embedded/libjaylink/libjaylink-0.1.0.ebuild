@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="static-libs"
 
 DEPEND="virtual/libusb:1"
