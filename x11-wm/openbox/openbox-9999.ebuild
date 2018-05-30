@@ -29,6 +29,10 @@ REQUIRED_USE="xdg? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="dev-libs/glib:2
 	>=dev-libs/libxml2-2.0
 	>=media-libs/fontconfig-2
+	x11-libs/cairo
+	x11-libs/libXau
+	x11-libs/libXcursor
+	x11-libs/libXext
 	x11-libs/libXft
 	x11-libs/libXinerama
 	x11-libs/libXrandr
