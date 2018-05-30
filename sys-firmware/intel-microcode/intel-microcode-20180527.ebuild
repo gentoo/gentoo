@@ -8,7 +8,7 @@ inherit linux-info toolchain-funcs mount-boot
 # Find updates by searching and clicking the first link (hopefully it's the one):
 # http://www.intel.com/content/www/us/en/search.html?keyword=Processor+Microcode+Data+File
 
-COLLECTION_SNAPSHOT="20180426"
+COLLECTION_SNAPSHOT="20180527"
 INTEL_SNAPSHOT="20180425"
 NUM="27776"
 DESCRIPTION="Intel IA32/IA64 microcode update data"
@@ -18,7 +18,7 @@ SRC_URI="https://downloadmirror.intel.com/${NUM}/eng/microcode-${INTEL_SNAPSHOT}
 
 LICENSE="intel-ucode"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="initramfs +minimal +split-ucode vanilla"
 REQUIRED_USE="|| ( initramfs split-ucode )"
 
