@@ -19,14 +19,14 @@ SRC_URI="https://downloadmirror.intel.com/${NUM}/eng/microcode-${INTEL_SNAPSHOT}
 LICENSE="intel-ucode"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="initramfs +minimal +split-ucode vanilla"
+IUSE="hostonly initramfs +split-ucode vanilla"
 REQUIRED_USE="|| ( initramfs split-ucode )"
 
 DEPEND="sys-apps/iucode_tool"
 
 # !<sys-apps/microcode-ctl-1.17-r2 due to bug #268586
 RDEPEND="!<sys-apps/microcode-ctl-1.17-r2
-	minimal? ( sys-apps/iucode_tool )"
+	hostonly? ( sys-apps/iucode_tool )"
 
 S=${WORKDIR}
 
@@ -100,8 +100,9 @@ src_install() {
 	# rootfs is mounted.
 	use initramfs && dodir /boot && opts+=( --write-earlyfw="${ED%/}"/boot/intel-uc.img )
 	# split location (we use a temporary location so that we are able
-	# to re-run iucode_tool in pkg_preinst):
-	dodir /tmp/intel-ucode && opts+=( --write-firmware="${ED%/}"/tmp/intel-ucode )
+	# to re-run iucode_tool in pkg_preinst; use keepdir instead of dodir to carry
+	# this folder to pkg_preinst to avoid an error even if no microcode was selected):
+	keepdir /tmp/intel-ucode && opts+=( --write-firmware="${ED%/}"/tmp/intel-ucode )
 
 	iucode_tool \
 		"${opts[@]}" \
@@ -114,8 +115,8 @@ src_install() {
 pkg_preinst() {
 	use initramfs && mount-boot_pkg_preinst
 
-	if use minimal; then
-		einfo "Removing ucode(s) not supported by any currently available (=online) processor(s) due to USE=minimal ..."
+	if use hostonly; then
+		einfo "Removing ucode(s) not supported by any currently available (=online) processor(s) due to USE=hostonly ..."
 		opts=(
 			--scan-system
 			# be strict about what we are doing
@@ -144,14 +145,14 @@ pkg_preinst() {
 	else
 		if use split-ucode; then
 			# Temporary /tmp/intel-ucode will become final /lib/firmware/intel-ucode ...
-			dodir /lib/firmware/intel-ucode
-			mv "${ED%/}"/tmp/intel-ucode "${ED%/}"/lib/firmware/intel-ucode || die "Failed to install splitted ucodes!"
+			dodir /lib/firmware
+			mv "${ED%/}/tmp/intel-ucode" "${ED%/}/lib/firmware" || die "Failed to install splitted ucodes!"
 		fi
 	fi
 
 	# Cleanup any temporary leftovers so that we don't merge any
 	# unneeded files on disk
-	rm -r "${ED%/}"/tmp || die "Failed to cleanup '${ED%/}/tmp'"
+	rm -r "${ED%/}/tmp" || die "Failed to cleanup '${ED%/}/tmp'"
 }
 
 pkg_prerm() {
@@ -165,11 +166,30 @@ pkg_postrm() {
 pkg_postinst() {
 	use initramfs && mount-boot_pkg_postinst
 
-	if use minimal; then
-		elog "You only installed ucodes for all currently available (=online)"
+	local _has_installed_something=
+	if use initramfs && [[ -s "${EROOT%/}/boot/intel-uc.img" ]]; then
+		_has_installed_something="yes"
+	elif use split-ucode; then
+		_has_installed_something=$(find "${EROOT%/}/lib/firmware/intel-ucode" -maxdepth 0 -not -empty -exec echo yes \;)
+	fi
+
+	if use hostonly && [[ -n "${_has_installed_something}" ]]; then
+		elog "You only installed ucode(s) for all currently available (=online)"
 		elog "processor(s). Remember to re-emerge this package whenever you"
 		elog "change the system's processor model."
 		elog ""
+	elif [[ -z "${_has_installed_something}" ]]; then
+		ewarn "WARNING:"
+		ewarn "No ucode was installed! You can ignore this warning if there"
+		ewarn "aren't any microcode updates available for your processor(s)."
+		ewarn "But if you use MICROCODE_SIGNATURES variable please double check"
+		ewarn "if you have an invalid select."
+		ewarn ""
+
+		if use hostonly; then
+			ewarn "Unset \"hostonly\" USE flag to install all available ucodes."
+			ewarn ""
+		fi
 	fi
 
 	# We cannot give detailed information if user is affected or not:
