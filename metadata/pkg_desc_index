@@ -5819,7 +5819,7 @@ dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written i
 dev-ruby/logue 1.0.4 1.0.11: A module that adds logging/trace functionality
 dev-ruby/loofah 2.2.1: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/maruku 0.7.2-r1: A Markdown-superset interpreter written in Ruby
-dev-ruby/maxitest 2.4.0 2.8.0: Minitest + all the features you always wanted
+dev-ruby/maxitest 2.8.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.5-r2: A Ruby library used for automating interaction with websites
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
