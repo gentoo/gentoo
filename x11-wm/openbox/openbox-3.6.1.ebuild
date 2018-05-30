@@ -9,12 +9,10 @@ inherit multilib autotools python-r1 eutils
 DESCRIPTION="A standards compliant, fast, light-weight, extensible window manager"
 HOMEPAGE="http://openbox.org/"
 if [[ ${PV} == *9999* ]]; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="git://git.openbox.org/dana/openbox"
 	SRC_URI="branding? (
 	https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="alpha arm hppa ppc ppc64 sparc x86"
-
 else
 	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz
 	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
@@ -50,14 +48,6 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	x11-base/xorg-proto"
-
-src_unpack() {
-	if [[ ${PV} == *9999* ]]; then
-		git-2_src_unpack
-	else
-		unpack ${A}
-	fi
-}
 
 src_prepare() {
 	use xdg && python_export_best
