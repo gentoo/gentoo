@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# app-text/pandoc not keyworded yet
+app-emulation/xen-tools doc
+dev-python/notebook doc
+
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
 # Require old gnome2 libraries, not keywording legacy on purpose
 <=app-editors/gvim-8.0.1699 gnome
 sys-devel/distcc gnome
