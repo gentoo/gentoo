@@ -30,6 +30,52 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Mask Qt4 for removal. Bug #631788
+=dev-qt/assistant-4.8.7
+=dev-qt/designer-4.8.7
+=dev-qt/linguist-4.8.7
+=dev-qt/pixeltool-4.8.7
+=dev-qt/qdbusviewer-4.8.7
+=dev-qt/qt3support-4.8.7
+=dev-qt/qtbearer-4.8.7
+=dev-qt/qtcore-4.8.7-r4
+=dev-qt/qtdbus-4.8.7
+=dev-qt/qtdeclarative-4.8.7
+=dev-qt/qtdemo-4.8.7
+=dev-qt/qtgui-4.8.7
+=dev-qt/qthelp-4.8.7
+=dev-qt/qt-meta-4.8.6-r1
+=dev-qt/qtmultimedia-4.8.7
+=dev-qt/qtopengl-4.8.7
+=dev-qt/qtscript-4.8.7
+=dev-qt/qtsql-4.8.7-r1
+=dev-qt/qtsvg-4.8.7
+=dev-qt/qttest-4.8.7
+=dev-qt/qttranslations-4.8.7
+=dev-qt/qtxmlpatterns-4.8.7
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Bugs #644360, #644374, #656826, #655382
+<media-sound/mumble-1.3
+<media-sound/murmur-1.3
+<net-analyzer/ostinato-0.9_p20180522
+x11-libs/qwt:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Masked for removal. Bugs #644364, #644368, #644362
+dev-python/pivy
+media-libs/emfengine
+media-libs/quarter
+media-libs/SoQt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Masked for removal.
+dev-python/pyqwt
+dev-python/PyQt4
+dev-python/pyside:0
+dev-python/shiboken:0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
 # Depends on dead Qt4. Masked for removal in 30 days, bug #644728
 app-i18n/ibus-qt
 app-i18n/qimhangul
