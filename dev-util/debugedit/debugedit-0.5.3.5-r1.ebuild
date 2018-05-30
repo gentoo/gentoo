@@ -10,10 +10,14 @@ EAPI="5"
 
 inherit toolchain-funcs eutils
 
+# See #653906 for the need to reversion.
+MY_PV=${PV#0.}
+MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="standalone debugedit taken from rpm"
 HOMEPAGE="http://www.rpm5.org/"
-SRC_URI="https://dev.gentoo.org/~swegener/distfiles/${P}.tar.bz2
-	https://dev.gentoo.org/~vapier/dist/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~swegener/distfiles/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~vapier/dist/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,6 +28,8 @@ DEPEND="dev-libs/popt
 	dev-libs/elfutils
 	dev-libs/beecrypt"
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-5.3.5-DWARF-4.patch #400663
