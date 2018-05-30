@@ -12,7 +12,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snaps
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="libressl"
+IUSE="libressl static"
 
 RDEPEND="!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -25,9 +25,12 @@ DEPEND="${RDEPEND}
 	sys-boot/gnu-efi
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-libressl-compatibility.patch" )
+PATCHES=( "${FILESDIR}/1.7.0-Make.rules.patch"
+	"${FILESDIR}/${P}-libressl-compatibility.patch" )
 
 src_prepare() {
+	use static && append-ldflags -static -ldl
+
 	# Respect users CFLAGS
 	sed -i -e 's/CFLAGS.*= -O2 -g/CFLAGS += /' Make.rules || die
 
