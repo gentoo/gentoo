@@ -28,7 +28,7 @@ RDEPEND="
 		>=app-admin/eselect-1.2
 		app-crypt/openpgp-keys-gentoo-release
 		>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
-		>=app-portage/gemato-10
+		>=app-portage/gemato-10[${PYTHON_USEDEP}]
 		app-shells/bash:0[readline]
 		$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' \
 			python{2_7,3_4,3_5} pypy)
