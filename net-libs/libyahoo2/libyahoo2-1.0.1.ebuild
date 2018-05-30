@@ -44,7 +44,7 @@ src_install() {
 		dobin src/.libs/{autoresponder,yahoo}
 	fi
 
-	dodoc AUTHORS ChangeLog doc/*.txt NEWS README TODO
+	dodoc doc/*.txt
 
 	find "${D}" -name '*.la' -delete || die "Pruning failed"
 }
