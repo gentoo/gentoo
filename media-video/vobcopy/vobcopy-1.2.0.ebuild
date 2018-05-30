@@ -19,7 +19,7 @@ RDEPEND=""
 
 src_configure() {
 	tc-export CC
-	./configure.sh --with-lfs
+	./configure.sh --with-lfs || die "Configure failed"
 }
 
 src_install() {
