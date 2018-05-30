@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-14">
+  <title>procps: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in procps, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">procps</product>
+  <announced>2018-05-30</announced>
+  <revised count="1">2018-05-30</revised>
+  <bug>656022</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-process/procps" auto="yes" arch="*">
+      <unaffected range="ge">3.3.15-r1</unaffected>
+      <vulnerable range="lt">3.3.15-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A bunch of small useful utilities that give information about processes
+      using the /proc filesystem.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in procps. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could execute arbitrary code, escalate privileges, or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All procps users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-process/procps-3.3.15-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1120">CVE-2018-1120</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1121">CVE-2018-1121</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1122">CVE-2018-1122</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1123">CVE-2018-1123</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1124">CVE-2018-1124</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-29T13:26:11Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-05-30T14:04:23Z">b-man</metadata>
+</glsa>
