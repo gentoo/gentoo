@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
 # app-text/docbook2X not stable yet, fails tests (bug #511902)
 dev-vcs/git doc
 
