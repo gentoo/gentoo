@@ -31,9 +31,7 @@ src_configure() {
 src_install() {
 	dobin ogmmerge ogmdemux ogminfo ogmsplit ogmcat
 
-	if use dvd; then
-		dobin dvdxchap
-	fi
+	use dvd && dobin dvdxchap
 
 	einstalldocs
 	doman *.1
