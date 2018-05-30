@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201805-13">
+  <title>Git: Multiple vulnerabilities</title>
+  <synopsis>Git contains multiple vulnerabilities that allow for the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>2018-05-30</announced>
+  <revised count="1">2018-05-30</revised>
+  <bug>656868</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/git" auto="yes" arch="*">
+      <unaffected range="ge">2.16.4</unaffected>
+      <vulnerable range="lt">2.16.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Git is a free and open source distributed version control system
+      designed to handle everything from small to very large projects with
+      speed and efficiency.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Git. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Remote attackers could execute arbitrary code on both client and server.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Git users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.16.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11233">CVE-2018-11233</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11235">CVE-2018-11235</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-30T00:57:53Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-05-30T01:20:47Z">whissi</metadata>
+</glsa>
