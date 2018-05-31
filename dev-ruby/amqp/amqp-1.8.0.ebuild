@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_BINWRAP=""
 
-inherit versionator ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="AMQP client implementation in Ruby/EventMachine"
 HOMEPAGE="http://rubyamqp.info/"
