@@ -18,7 +18,7 @@ fi
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
 HOMEPAGE="https://www.kde.org/ https://community.kde.org/KDEConnect"
 LICENSE="GPL-2+"
-IUSE="app sms wayland"
+IUSE="app wayland"
 
 DEPEND="
 	$(add_frameworks_dep kcmutils)
@@ -43,12 +43,10 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libXtst
 	app? ( $(add_frameworks_dep kdeclarative) )
-	sms? ( $(add_frameworks_dep kpeople) )
 	wayland? ( $(add_frameworks_dep kwayland) )
 "
 RDEPEND="${DEPEND}
 	app? ( $(add_frameworks_dep kirigami) )
-	sms? ( $(add_frameworks_dep kirigami) )
 	wayland? ( $(add_plasma_dep kwin) )
 	!kde-misc/kdeconnect:4
 "
@@ -68,7 +66,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DEXPERIMENTALAPP_ENABLED=$(usex app)
-		-DSMSAPP_ENABLED=$(usex sms)
 		$(cmake-utils_use_find_package wayland KF5Wayland)
 	)
 
