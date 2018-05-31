@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit pam systemd
+inherit bash-completion-r1 pam systemd
 
 DESCRIPTION="Monitoring and managing daemons or similar programs running on a Unix system"
 HOMEPAGE="http://mmonit.com/monit/"
@@ -11,7 +11,7 @@ SRC_URI="http://mmonit.com/monit/dist/${P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="libressl pam ssl"
+IUSE="ipv6 libressl pam ssl"
 
 RDEPEND="
 	ssl? (
@@ -30,7 +30,12 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with ssl) $(use_with pam)
+	local myeconfargs=(
+		$(use_with ipv6)
+		$(use_with pam)
+		$(use_with ssl)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -43,6 +48,8 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/${PN}.service
 
 	use pam && newpamd "${FILESDIR}"/${PN}.pamd ${PN}
+
+	dobashcomp system/bash/monit
 }
 
 pkg_postinst() {
