@@ -53,7 +53,6 @@ src_prepare() {
 		data/lightdm.conf || die "Failed to fix lightdm.conf"
 
 	# use correct version of qmake. bug #566950
-	sed -i -e "/AC_CHECK_TOOLS(MOC4/a AC_SUBST(MOC4,$(qt4_get_bindir)/moc)" configure.ac || die
 	sed -i -e "/AC_CHECK_TOOLS(MOC5/a AC_SUBST(MOC5,$(qt5_get_bindir)/moc)" configure.ac || die
 
 	default
