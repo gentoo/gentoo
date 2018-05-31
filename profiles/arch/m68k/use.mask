@@ -34,7 +34,6 @@ ldap
 slang
 diet
 gtk
-qt4
 mono
 python
 cairo

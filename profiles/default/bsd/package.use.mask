@@ -77,9 +77,6 @@ x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor
 media-libs/gst-plugins-base gbm
 
-# connman is Linux only
-dev-qt/qtbearer connman
-
 # udisks is linux only (for now?)
 gnome-base/gvfs udisks
 

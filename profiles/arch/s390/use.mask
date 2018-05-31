@@ -39,7 +39,6 @@ lucene
 bluetooth
 pcmcia
 cdr
-qt4
 gpm
 3dfx
 acpi

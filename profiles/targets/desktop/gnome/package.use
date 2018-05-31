@@ -32,7 +32,7 @@ media-libs/grilo playlist
 # Required for webkit-gtk-2
 media-libs/harfbuzz icu
 
-# Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt4 qt5 )"
+# Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
 media-libs/libmediaart gtk -qt5
 
 # Pulled in by net-im/telepathy-connection-managers[msn] (via dev-python/papyon
