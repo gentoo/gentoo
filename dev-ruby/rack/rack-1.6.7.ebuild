@@ -9,13 +9,13 @@ RUBY_FAKEGEM_EXTRADOC="HISTORY.md KNOWN-ISSUES README.rdoc SPEC"
 
 RUBY_FAKEGEM_BINWRAP=""
 
-inherit ruby-fakegem eutils versionator
+inherit eapi7-ver eutils ruby-fakegem
 
 DESCRIPTION="A modular Ruby webserver interface"
 HOMEPAGE="https://rack.github.com/"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
