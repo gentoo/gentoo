@@ -260,8 +260,10 @@ src_install() {
 	cmake-utils_src_install
 
 	# remove wrapper binaries and put the actual executable in place
-	for i in "${ED}"/usr/bin/*; do
-		mv "${ED}"/usr/lib/"$(basename $i)" "$i" || die
+	for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
+		if [ -f "${ED}"/usr/lib/"$i" ]; then
+			mv "${ED}"/usr/lib/"$i" "${ED}"/usr/bin/"$i" || die
+		fi
 	done
 
 	# install libraries into correct directory respecting get_libdir:
