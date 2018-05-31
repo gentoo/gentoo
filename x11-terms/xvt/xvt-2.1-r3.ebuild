@@ -38,8 +38,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-pts.patch"
 )
 
-src_prepare() {
-	default
+src_configure() {
 	tc-export CC
 }
 
