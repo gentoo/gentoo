@@ -72,3 +72,13 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+pkg_postinst() {
+	kde5_pkg_postinst
+
+	if use addons; then
+		elog "The functionality of ktexteditorpreview plugin can be extended with:"
+		elog "  kde-misc/kmarkdownwebview"
+		elog "  media-gfx/kgraphviewer"
+	fi
+}
