@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (31 Mai 2018)
+# Needs dev-ruby/asciidoctor and deps which aren't keyworded
+net-analyzer/wireshark doc
+
 # Tobias Klausmann <klausman@gentoo.org> (22 Mar 2018)
 # Masked due to missing deps. Some *could* have their deps keyworded,
 # but we're trying to keep the maintenance load low.
