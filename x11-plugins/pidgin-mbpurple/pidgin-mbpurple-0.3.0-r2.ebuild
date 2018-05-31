@@ -25,8 +25,6 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	default
 
-	tc-export CC
-
 	# upstream Issue 226 (Respect LDFLAGS)
 	sed -i "/^LDFLAGS/d" global.mak || die "sed for LDFLAGS failed"
 
@@ -37,4 +35,8 @@ src_prepare() {
 	if ! use twitgin; then
 		sed -i 's/twitgin//g' Makefile || die
 	fi
+}
+
+src_configure() {
+	tc-export CC
 }
