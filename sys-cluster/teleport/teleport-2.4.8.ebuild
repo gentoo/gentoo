@@ -31,7 +31,7 @@ RDEPEND=""
 src_prepare() {
 	default
 
-	sed -i -e 's/-j 3/-j 1/g' src/${EGO_PN%/*}/Makefile
+	sed -i -e 's/-j 4/-j 1/g' src/${EGO_PN%/*}/Makefile
 }
 
 src_compile() {
@@ -45,10 +45,10 @@ src_install() {
 	insinto /etc/${PN}
 	doins "${FILESDIR}"/${PN}.yaml
 
-	newinitd "${FILESDIR}"/${PN}-2.5.init.d ${PN}
+	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf.d ${PN}
 
-	systemd_newunit "${FILESDIR}"/${PN}-2.5.service ${PN}.service
+	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf ${PN}.service
 }
 
