@@ -8,13 +8,13 @@ USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="FAQ.rdoc README.rdoc USAGE.rdoc"
 
-inherit multilib ruby-fakegem versionator
+inherit eapi7-ver multilib ruby-fakegem
 
 DESCRIPTION="Libpcap bindings for ruby compat"
 HOMEPAGE="https://rubygems.org/gems/pcaprub"
 
 LICENSE="LGPL-2.1"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND+="net-libs/libpcap"
