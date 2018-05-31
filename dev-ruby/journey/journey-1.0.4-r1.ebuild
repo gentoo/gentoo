@@ -8,7 +8,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.rdoc"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Journey is a router. It routes requests"
 HOMEPAGE="https://github.com/rails/journey"
