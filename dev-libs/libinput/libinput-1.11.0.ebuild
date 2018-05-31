@@ -20,7 +20,8 @@ RDEPEND="
 	input_devices_wacom? ( >=dev-libs/libwacom-0.20 )
 	>=dev-libs/libevdev-1.3
 	>=sys-libs/mtdev-1.1
-	virtual/libudev
+	virtual/libudev:=
+	virtual/udev
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -53,4 +54,8 @@ src_install() {
 		dodoc -r "${BUILD_DIR}"/html/.
 	fi
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+}
+
+pkg_postinst() {
+	udevadm hwdb --update --root="${ROOT%/}"
 }
