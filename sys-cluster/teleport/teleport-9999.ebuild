@@ -22,9 +22,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="
-	app-arch/zip
-	>=dev-lang/go-1.7"
+DEPEND="app-arch/zip"
 RDEPEND=""
 
 src_compile() {
