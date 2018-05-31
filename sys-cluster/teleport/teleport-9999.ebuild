@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils golang-build systemd user
+inherit golang-build systemd
 
 DESCRIPTION="Modern SSH server for teams managing distributed infrastructure"
 HOMEPAGE="https://gravitational.com/teleport"
