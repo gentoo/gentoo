@@ -52,7 +52,6 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${PN}-3.5.2-gnome-session.patch" )
 
 src_prepare() {
-	use xdg && python_export_best
 	default
 	sed -i \
 		-e "s:-O0 -ggdb ::" \
