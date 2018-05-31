@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/genuinetools/reg"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="MIT"
 SLOT="0"
-IUSE="seccomp"
+IUSE=""
 
 RESTRICT="test"
 
