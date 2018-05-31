@@ -3,9 +3,9 @@
 
 EAPI="4"
 
-inherit versionator eutils toolchain-funcs multilib flag-o-matic
+inherit eapi7-ver eutils flag-o-matic multilib toolchain-funcs
 
-MY_PV=$(replace_version_separator 3 '-' )
+MY_PV=$(ver_rs 3 '-' )
 MY_P=${PN}-v${MY_PV}
 
 DESCRIPTION="Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting"
