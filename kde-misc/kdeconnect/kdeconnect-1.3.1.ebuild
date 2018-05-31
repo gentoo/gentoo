@@ -3,7 +3,6 @@
 
 EAPI=6
 
-FRAMEWORKS_MINIMAL="5.42.0"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="true"
 KMNAME="${PN}-kde"
@@ -18,7 +17,7 @@ fi
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
 HOMEPAGE="https://www.kde.org/ https://community.kde.org/KDEConnect"
 LICENSE="GPL-2+"
-IUSE="app wayland"
+IUSE="app mousepad wayland"
 
 DEPEND="
 	$(add_frameworks_dep kcmutils)
@@ -39,10 +38,12 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
 	>=app-crypt/qca-2.1.0:2[qt5(+),ssl]
-	x11-libs/libfakekey
-	x11-libs/libX11
-	x11-libs/libXtst
 	app? ( $(add_frameworks_dep kdeclarative) )
+	mousepad? (
+		x11-libs/libfakekey
+		x11-libs/libX11
+		x11-libs/libXtst
+	)
 	wayland? ( $(add_frameworks_dep kwayland) )
 "
 RDEPEND="${DEPEND}
@@ -53,7 +54,7 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-no-wayland.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.3.0-no-wayland.patch" )
 
 src_prepare() {
 	kde5_src_prepare
@@ -66,6 +67,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DEXPERIMENTALAPP_ENABLED=$(usex app)
+		$(cmake-utils_use_find_package mousepad LibFakeKey)
 		$(cmake-utils_use_find_package wayland KF5Wayland)
 	)
 
