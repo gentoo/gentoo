@@ -43,8 +43,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--datadir=/etc \
-		--disable-dependency-tracking \
+		--datadir="${EPREFIX}"/etc \
 		$(use_enable nls)
 }
 
