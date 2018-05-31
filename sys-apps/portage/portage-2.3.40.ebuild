@@ -94,6 +94,10 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# apply d07a47ff3c06
+	sed -i 's:("--dynamic-deps", "y") != "n"$:\0 and "--nodeps" not in myopts:' \
+		pym/_emerge/create_depgraph_params.py || die
+
 	# apply 4fb5ef2ce2cb
 	sed -i "s:\\((self._poll_obj, 'close'\\)):\\1, None):" \
 		pym/portage/util/_eventloop/EventLoop.py || die
