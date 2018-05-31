@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
 RUBY_FAKEGEM_BINWRAP=""
 
-inherit versionator ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="A fully-featured, low-level AMQP 0.9.1 client"
 HOMEPAGE="https://github.com/ruby-amqp/amq-client"
