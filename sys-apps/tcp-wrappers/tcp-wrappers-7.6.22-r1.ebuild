@@ -3,10 +3,10 @@
 
 EAPI="4"
 
-inherit eutils toolchain-funcs versionator flag-o-matic multilib-minimal
+inherit eapi7-ver eutils flag-o-matic multilib-minimal toolchain-funcs
 
-MY_PV=$(get_version_component_range 1-2)
-DEB_PV=$(get_version_component_range 3)
+MY_PV=$(ver_cut 1-2)
+DEB_PV=$(ver_cut 3)
 MY_P="${PN//-/_}_${MY_PV}"
 DESCRIPTION="TCP Wrappers"
 HOMEPAGE="ftp://ftp.porcupine.org/pub/security/index.html"
