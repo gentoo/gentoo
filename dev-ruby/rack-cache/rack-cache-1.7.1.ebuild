@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_TEST="none"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.md doc/*"
 
-inherit versionator ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="Enable HTTP caching for Rack-based applications that produce freshness info"
 HOMEPAGE="https://github.com/rtomayko/rack-cache"
