@@ -13,14 +13,14 @@ RUBY_FAKEGEM_GEMSPEC="railties.gemspec"
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRAINSTALL="exe"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Tools for creating, working with, and running Rails applications"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~hppa ~x86 ~amd64-linux"
 IUSE=""
 

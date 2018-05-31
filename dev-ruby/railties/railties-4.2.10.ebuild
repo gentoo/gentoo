@@ -12,14 +12,14 @@ RUBY_FAKEGEM_GEMSPEC="railties.gemspec"
 
 RUBY_FAKEGEM_BINWRAP=""
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Tools for creating, working with, and running Rails applications"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86 ~amd64-linux"
 IUSE=""
 
@@ -36,7 +36,8 @@ ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
 	~dev-ruby/actionpack-${PV}
 	>=dev-ruby/thor-0.18.1 <dev-ruby/thor-2
-	>=dev-ruby/rake-0.8.7"
+	>=dev-ruby/rake-0.8.7
+"
 
 ruby_add_bdepend "
 	test? (
