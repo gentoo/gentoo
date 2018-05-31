@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit user flag-o-matic multilib autotools pam systemd versionator
+inherit autotools flag-o-matic multilib pam systemd user
 
 # Make it more portable between straight releases
 # and _p? releases.
@@ -185,7 +185,7 @@ src_prepare() {
 			einfo "Disabling known non-working MT AES cipher per default ..."
 
 			cat > "${T}"/disable_mtaes.conf <<- EOF
-			
+
 			# HPN's Multi-Threaded AES CTR cipher is currently known to be broken
 			# and therefore disabled per default.
 			DisableMTAES yes

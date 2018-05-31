@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit user flag-o-matic multilib autotools pam systemd versionator
+inherit autotools flag-o-matic multilib pam systemd user
 
 # Make it more portable between straight releases
 # and _p? releases.
