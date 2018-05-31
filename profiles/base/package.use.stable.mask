@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+# Needs dev-ruby/asciidoctor which has a lot of unstable deps
+net-analyzer/wireshark doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
 # Depends on unstable media-libs/libaom, net-libs/srt
 media-video/vlc aom srt

@@ -17,6 +17,9 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+net-analyzer/wireshark -doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
 # Requires not yet stabilised media-libs/qtav
 media-gfx/digikam mediaplayer
