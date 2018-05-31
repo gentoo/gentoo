@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_DOC="doc:all"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit eutils user ruby-fakegem versionator
+inherit eutils eapi7-ver user ruby-fakegem
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="http://puppetlabs.com/"
@@ -134,7 +134,7 @@ pkg_postinst() {
 	elog
 
 	for v in ${REPLACING_VERSIONS}; do
-		if [ "$(get_major_version $v)" = "4" ]; then
+		if [[ "$(ver_cut 1 $v)" == "4" ]]; then
 			elog
 			elog "Please see the following url for the release notes for puppet-5"
 			elog "https://docs.puppet.com/puppet/5.0/release_notes.html#if-youre-upgrading-from-puppet-4x"

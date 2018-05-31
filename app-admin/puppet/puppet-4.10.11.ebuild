@@ -9,7 +9,7 @@ USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit xemacs-elisp-common eutils user ruby-fakegem versionator
+inherit eutils eapi7-ver ruby-fakegem user xemacs-elisp-common
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="http://puppetlabs.com/"
@@ -176,7 +176,7 @@ pkg_postinst() {
 
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		if [ "$(get_major_version $v)" = "3" ]; then
+		if [[ "$(ver_cut 1 $v)" == "3" ]]; then
 			elog
 			elog "If you're upgrading from 3.x then please move everything in /etc/puppet to"
 			elog "/etc/puppetlabs/puppet"
