@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit versionator
+inherit eapi7-ver
 
-MY_P="${PN}-$(replace_version_separator 2 b)"
+MY_P="${PN}-$(ver_rs 2 b)"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Dump/restore ext2fs backup utilities"
 HOMEPAGE="http://dump.sourceforge.net/"
