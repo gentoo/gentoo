@@ -12,14 +12,14 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 
 RUBY_FAKEGEM_GEMSPEC="activerecord.gemspec"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM"
 HOMEPAGE="https://github.com/rails/rails/"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86 ~amd64-linux"
 IUSE="mysql postgres sqlite"
 
