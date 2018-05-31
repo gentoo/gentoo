@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem
 
 DESCRIPTION="Context framework extracted from Shoulda"
-HOMEPAGE="http://thoughtbot.com/projects/shoulda"
+HOMEPAGE="https://github.com/thoughtbot/shoulda-context"
 
 LICENSE="MIT"
 SLOT="0"
