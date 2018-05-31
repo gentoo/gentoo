@@ -9,7 +9,7 @@ RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
 HOMEPAGE="https://github.com/rspec/rspec"
@@ -19,7 +19,7 @@ SLOT="3"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-SUBVERSION="$(get_version_component_range 1-2)"
+SUBVERSION="$(ver_cut 1-2)"
 
 ruby_add_rdepend "
 	=dev-ruby/rspec-core-${SUBVERSION}*
