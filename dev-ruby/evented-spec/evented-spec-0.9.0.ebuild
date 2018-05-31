@@ -9,7 +9,7 @@ RUBY_FAKEGEM_EXTRADOC="README.textile"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
-inherit versionator ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="A set of helpers to help you test your asynchronous code"
 HOMEPAGE="https://github.com/ruby-amqp/evented-spec"
