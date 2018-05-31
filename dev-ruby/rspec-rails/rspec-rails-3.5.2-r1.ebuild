@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md"
 
-inherit ruby-fakegem versionator
+inherit ruby-fakegem
 
 DESCRIPTION="RSpec's official Ruby on Rails plugin"
 HOMEPAGE="http://rspec.info/"

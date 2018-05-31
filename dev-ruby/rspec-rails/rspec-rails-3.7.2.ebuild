@@ -10,7 +10,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md"
 
-inherit ruby-fakegem versionator
+inherit ruby-fakegem
 
 DESCRIPTION="RSpec's official Ruby on Rails plugin"
 HOMEPAGE="http://rspec.info/"
