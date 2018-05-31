@@ -5,13 +5,13 @@ EAPI=6
 
 #PATCHSET=1
 
-inherit autotools eutils flag-o-matic multilib versionator
+inherit autotools eapi7-ver eutils flag-o-matic multilib
 
-MY_P="${PN}-$(get_version_component_range 1-3)"
+MY_P="${PN}-$(ver_cut 1-3)"
 S=${WORKDIR}/${MY_P}
 
-SLOT=$(get_version_component_range 1-2)
-MY_SUFFIX=$(delete_version_separator 1 ${SLOT})
+SLOT=$(ver_cut 1-2)
+MY_SUFFIX=${SLOT/./}
 RUBYVERSION=${SLOT}.0
 
 if [[ -n ${PATCHSET} ]]; then
@@ -51,7 +51,8 @@ RDEPEND="
 	sys-libs/zlib
 	>=app-eselect/eselect-ruby-20161226
 	!<dev-ruby/rdoc-3.9.4
-	!<dev-ruby/rubygems-1.8.10-r1"
+	!<dev-ruby/rubygems-1.8.10-r1
+"
 
 DEPEND="${RDEPEND}"
 
