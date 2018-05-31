@@ -11,14 +11,14 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Integrated WebSockets for Rails"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 

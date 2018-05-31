@@ -15,14 +15,14 @@ RUBY_FAKEGEM_EXTRAINSTALL="app"
 
 RUBY_FAKEGEM_BINWRAP=""
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Integrated WebSockets for Rails"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
