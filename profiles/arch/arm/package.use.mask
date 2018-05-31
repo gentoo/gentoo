@@ -274,10 +274,6 @@ media-libs/clutter-gtk wayland
 dev-python/ipython doc
 dev-python/oct2py doc
 
-# Patrick Lauer <patrick@gentoo.org> (19 Nov 2014)
-# Missing keywords #529820
-app-office/libreoffice collada
-
 # Michael Weber <xmw@gentoo.org> (15 Nov 2014)
 # missing keywords on media-libs/libharu
 www-client/netsurf pdf-writer
@@ -457,7 +453,7 @@ sci-astronomy/kstars indi
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
-app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher coinmp gltf
+app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher coinmp
 
 # Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
 # No java on ARM
