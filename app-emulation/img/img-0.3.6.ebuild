@@ -10,10 +10,10 @@ GIT_COMMIT="e4a43d044778e3df56e0de3c6ca00706fcca8b50"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="Tool to move from docker-compose to Kubernetes"
-HOMEPAGE="https://github.com/kubernetes/kompose https://kompose.io"
+DESCRIPTION="Standalone daemon-less unprivileged Dockerfile and OCI container image builder"
+HOMEPAGE="https://github.com/genuinetools/img"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="Apache-2.0"
+LICENSE="MIT"
 SLOT="0"
 IUSE="seccomp"
 
