@@ -10,5 +10,5 @@ RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( dev-lang/php:*[mysqli?,postg
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=20180105
 SRC_URI=https://git.tt-rss.org/git/tt-rss/archive/c30f5e18119d1935e8fe6d422053b127e8f4f1b3.tar.gz -> tt-rss-20180105.tar.gz
-_eclasses_=prefix	e51c7882b7b721e54e684f7eb143cbfe	user	8bc2845510e2109af75e3eeac607ec81	webapp	a76ebd3cb5649737496e8238992dd7ca
+_eclasses_=prefix	e51c7882b7b721e54e684f7eb143cbfe	user	8bc2845510e2109af75e3eeac607ec81	webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=11f53d1c564f8684d7496f5d2bacf560

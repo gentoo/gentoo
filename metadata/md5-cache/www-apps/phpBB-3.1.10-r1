@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND==virtual/httpd-php-5*:* =dev-lang/php-5*:*[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml?,zlib?] imagemagick? ( virtual/imagemagick-tools ) >=app-admin/webapp-config-1.50.15
 SLOT=3.1.10-r1
 SRC_URI=http://download.phpbb.com/pub/release/3.1/3.1.10/phpBB-3.1.10.tar.bz2
-_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=b61f9a55032e6eff458ac7ae1e98492a

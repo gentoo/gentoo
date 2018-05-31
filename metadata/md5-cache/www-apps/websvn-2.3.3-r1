@@ -10,5 +10,5 @@ RDEPEND=dev-lang/php:*[xml] dev-vcs/subversion virtual/httpd-php:* enscript? ( a
 RESTRICT=mirror
 SLOT=2.3.3-r1
 SRC_URI=http://websvn.tigris.org/files/documents/1380/49056/websvn-2.3.3.tar.gz
-_eclasses_=webapp	a76ebd3cb5649737496e8238992dd7ca
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=8e2a9bf29813c065d799010c2304dbae

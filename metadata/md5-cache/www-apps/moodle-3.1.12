@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/php-5.4.4[mysqli?,mssql?,postgres?,imap?,ldap?,odbc?,ctype,cu
 REQUIRED_USE=|| ( mysqli mssql postgres )
 SLOT=3.1.12
 SRC_URI=https://download.moodle.org/stable31/moodle-3.1.12.tgz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	webapp	a76ebd3cb5649737496e8238992dd7ca
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=002126657a05b3ce14e8ef8fe04fef27
