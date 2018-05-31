@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib versionator prefix
+inherit eapi7-ver eutils multilib prefix
 
 DESCRIPTION="Filesystem baselayout and init scripts"
 HOMEPAGE="https://www.gentoo.org/"
@@ -233,9 +233,9 @@ pkg_postinst() {
 	fi
 
 	for x in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.4 ${v}; then
+		if ver_compare ${x} -lt 2.4; then
 			ewarn "After updating ${EROOT}etc/profile, please run"
-			ewarn "env-update and . /etc/profile"
+			ewarn "env-update && . /etc/profile"
 			break
 		fi
 	done
