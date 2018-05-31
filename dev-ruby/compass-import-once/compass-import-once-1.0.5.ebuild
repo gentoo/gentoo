@@ -13,13 +13,13 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_EXTRAINSTALL="VERSION"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Speed up your Sass compilation by making @import only import each file once"
 HOMEPAGE="http://compass-style.org/"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 IUSE=""
 
