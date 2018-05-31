@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,14 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_EXTRAINSTALL="rails init.rb VERSION VERSION_DATE VERSION_NAME"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="An extension of CSS3, adding nested rules, variables, mixins, and more"
-HOMEPAGE="http://sass-lang.com/"
+HOMEPAGE="https://sass-lang.com/"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~amd64-linux"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 IUSE=""
 
 ruby_add_bdepend "doc? ( >=dev-ruby/yard-0.5.3 )"

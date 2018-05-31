@@ -11,14 +11,14 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_EXTRAINSTALL="rails init.rb VERSION VERSION_DATE VERSION_NAME"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="An extension of CSS3, adding nested rules, variables, mixins, and more"
 HOMEPAGE="https://sass-lang.com/"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~amd64-linux"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 IUSE=""
 
 ruby_add_bdepend "doc? ( >=dev-ruby/yard-0.5.3 )"
