@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
-inherit versionator ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="Minitest + all the features you always wanted"
 HOMEPAGE="https://github.com/grosser/maxitest"
