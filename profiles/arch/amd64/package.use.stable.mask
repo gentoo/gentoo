@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,9 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+net-analyzer/wireshark -doc
 
 # Thomas Beierlein <tomjbe@gentoo.org> (20 Apr 2018)
 # Needs asciidoctor which pulls a lot unstable ruby deps
