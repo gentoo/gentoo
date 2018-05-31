@@ -10,13 +10,13 @@ RUBY_FAKEGEM_TASK_DOC=""
 
 RUBY_FAKEGEM_EXTRAINSTALL="data stylesheets templates VERSION"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Compass Stylesheet Authoring Framework"
 HOMEPAGE="http://compass-style.org/"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 IUSE=""
 
