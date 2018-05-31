@@ -17,7 +17,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc CHANGELOG"
 
 RUBY_FAKEGEM_REQUIRE_PATHS="lib/case_sensitive_require"
 
-inherit ruby-fakegem versionator
+inherit ruby-fakegem
 
 DESCRIPTION="A module for using Textile in Ruby"
 HOMEPAGE="http://redcloth.org/"
