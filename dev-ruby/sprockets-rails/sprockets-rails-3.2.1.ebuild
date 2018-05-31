@@ -8,14 +8,14 @@ RUBY_FAKEGEM_TASK_DOC=""
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
-inherit ruby-fakegem versionator
+inherit eapi7-ver ruby-fakegem
 
 DESCRIPTION="Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline"
 HOMEPAGE="https://github.com/rails/sprockets-rails"
 SRC_URI="https://github.com/rails/sprockets-rails/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1)"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 
 IUSE="test"
