@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 CDROM_OPTIONAL="yes"
-inherit eutils cdrom check-reqs games
+inherit eutils cdrom check-reqs
 
 DESCRIPTION="Arx Fatalis data files"
 HOMEPAGE="https://www.arkane-studios.com/uk/arx.php"
 SRC_URI="cdinstall? ( http://download.zenimax.com/arxfatalis/patches/1.21/ArxFatalis_1.21_MULTILANG.exe )
-	gog? ( setup_arx_fatalis.exe )"
+	gog? ( setup_arx_fatalis_2.0.0.7.exe )"
 
 LICENSE="cdinstall? ( ArxFatalis-EULA-JoWooD ) gog? ( GOG-EULA )"
 SLOT="0"
@@ -78,7 +78,7 @@ src_unpack() {
 }
 
 src_install() {
-	insinto "${GAMES_DATADIR}"/arx
+	insinto /usr/share/arx
 	doins -r app/{graph,misc}
 	find . -iname "*.pak" -exec doins '{}' \;
 
@@ -89,6 +89,4 @@ src_install() {
 	find . -type f -exec sh -c 'echo "${1}"
 	lower="`echo "${1}" | tr [:upper:] [:lower:]`"
 	[ "${1}" = "${lower}" ] || mv "${1}" "${lower}"' - {} \;
-
-	prepgamesdirs
 }

@@ -4,7 +4,7 @@
 EAPI=5
 
 CDROM_OPTIONAL="yes"
-inherit eutils cdrom unpacker games
+inherit eutils cdrom unpacker
 
 GOG_FILE="gog_duke_nukem_3d_atomic_edition_2.0.0.9.sh"
 DESCRIPTION="Duke Nukem 3D data files"
@@ -58,7 +58,7 @@ src_unpack() {
 src_install() {
 	local DATAROOT
 
-	insinto "${GAMES_DATADIR}"/duke3d
+	insinto /usr/share/duke3d
 
 	if use cdinstall ; then
 		case ${CDROM_SET} in
@@ -72,6 +72,4 @@ src_install() {
 	else
 		doins data/noarch/data/{duke3d.grp,duke.rts,game.con,user.con,demo?.dmo,defs.con}
 	fi
-
-	prepgamesdirs
 }

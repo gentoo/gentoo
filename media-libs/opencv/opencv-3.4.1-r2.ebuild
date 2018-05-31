@@ -226,6 +226,9 @@ MULTILIB_WRAPPED_HEADERS=(
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0-gles.patch"
 	"${FILESDIR}/${PN}-3.4.0-disable-download.patch"
+	"${FILESDIR}/${P}-compilation-C-mode.patch" # https://bugs.gentoo.org/656530
+	"${FILESDIR}/${P}-python-lib-suffix-hack.patch"
+	"${FILESDIR}/${P}-cuda-add-relaxed-constexpr.patch"
 )
 
 pkg_pretend() {
@@ -400,7 +403,7 @@ multilib_src_configure() {
 	# ==================================================
 	# cpu flags, should solve 633900
 	#===================================================
-		-DCPU_DISPATCH=OFF
+		-DCPU_DISPATCH=
 		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
 		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
 		-DENABLE_SSE3=$(usex cpu_flags_x86_sse3)
@@ -468,6 +471,7 @@ python_module_compile() {
 		-DPYTHON2_EXECUTABLE=$(type -P python2)
 		-DPYTHON3_EXECUTABLE=$(type -P python3)
 		-DINSTALL_PYTHON_EXAMPLES=$(usex examples)
+		-DLIBPY_SUFFIX=64
 	)
 
 	# Regenerate cache file. Can't use rebuild_cache as it won't
