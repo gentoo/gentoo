@@ -1,5 +1,5 @@
---- ttyinit.c	2004-08-24 18:51:18.510722064 +0100
-+++ ttyinit.c.new	2004-08-24 18:50:30.539014872 +0100
+--- a/ttyinit.c
++++ b/ttyinit.c
 @@ -46,6 +46,7 @@
  #include <pwd.h>
  #include <errno.h>
