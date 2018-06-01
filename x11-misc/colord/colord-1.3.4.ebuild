@@ -137,10 +137,10 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		gnome2_src_install
 	else
-		gnome2_src_install -j1 -C lib/colord
-		use gusb && gnome2_src_install -j1 -C lib/colorhug
-		gnome2_src_install -j1 -C lib/compat
-		gnome2_src_install -j1 -C contrib/session-helper install-libcolord_includeHEADERS
+		emake install DESTDIR="${D}" -j1 -C lib/colord
+		use gusb && emake install DESTDIR="${D}" -j1 -C lib/colorhug
+		emake install DESTDIR="${D}" -j1 -C lib/compat
+		emake install DESTDIR="${D}" -j1 -C contrib/session-helper install-libcolord_includeHEADERS
 	fi
 }
 
