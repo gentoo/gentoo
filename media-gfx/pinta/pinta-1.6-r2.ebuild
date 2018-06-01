@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit fdo-mime mono-env gnome2-utils
+inherit fdo-mime gnome2-utils mono-env
 
 DESCRIPTION="Simple Painting for Gtk"
 HOMEPAGE="https://pinta-project.com"
