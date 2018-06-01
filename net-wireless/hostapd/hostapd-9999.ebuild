@@ -92,7 +92,7 @@ src_configure() {
 	echo "CONFIG_ERP=y" >> ${CONFIG}
 	echo "CONFIG_EAP_MD5=y" >> ${CONFIG}
 
-	if use internal-tls && !use libressl; then
+	if use internal-tls && ! use libressl; then
 		echo "CONFIG_TLS=internal" >> ${CONFIG}
 	else
 		# SSL authentication methods
@@ -193,7 +193,7 @@ src_configure() {
 src_compile() {
 	emake V=1
 
-	if use libressl || !use internal-tls; then
+	if use libressl || ! use internal-tls; then
 		emake V=1 nt_password_hash
 		emake V=1 hlr_auc_gw
 	fi
@@ -208,7 +208,7 @@ src_install() {
 	dosbin ${PN}
 	dobin ${PN}_cli
 
-	if use libressl || !use internal-tls; then
+	if use libressl || ! use internal-tls; then
 		dobin nt_password_hash hlr_auc_gw
 	fi
 
