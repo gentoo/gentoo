@@ -1,16 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils fdo-mime flag-o-matic scons-utils
+inherit eutils flag-o-matic scons-utils xdg-utils
 
 DESCRIPTION="Application for the schematic capturing and simulation of electrical circuits"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 HOMEPAGE="http://oregano.gforge.lug.fi.uba.ar/" # broken
+
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-LICENSE="GPL-2"
 IUSE=""
 
 CDEPEND="
@@ -50,9 +51,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	elog "You'll need to emerge your prefered simulation backend"
 	elog "such ngspice or gnucap for simulation to work."
 	elog "As an alternative generate a netlist and use sci-electronics/spice"
 	elog "from the command line for simulation."
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

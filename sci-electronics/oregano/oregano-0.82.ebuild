@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
-inherit autotools eutils fdo-mime vcs-snapshot gnome2-utils
+inherit autotools eutils gnome2-utils vcs-snapshot xdg-utils
 
 DESCRIPTION="Application for the schematic capturing and simulation of electrical circuits"
 HOMEPAGE="https://github.com/marc-lorber/oregano"
@@ -52,7 +52,8 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_schemas_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	elog "You'll need to emerge your prefered simulation backend"
 	elog "such ngspice or gnucap for simulation to work."
 	elog "As an alternative generate a netlist and use sci-electronics/spice"
@@ -61,4 +62,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	gnome2_schemas_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
