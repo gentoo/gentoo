@@ -36,16 +36,15 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var
 }
 
 src_install() {
+	default
+
 	rm -rf "${D}"/etc/init.d/openais || die
 
 	if ! use static-libs; then
 		find "${D}" -name '*.la' -delete || die "Pruning failed"
 	fi
-
-	default
 }
