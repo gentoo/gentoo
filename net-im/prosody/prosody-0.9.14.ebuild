@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="ipv6 libevent mysql postgres sqlite ssl zlib jit libressl"
 
 DEPEND="net-im/jabber-base
-		dev-lua/LuaBitOp
 		!jit? ( >=dev-lang/lua-5.1:0 )
 		jit? ( dev-lang/luajit:2 )
 		>=net-dns/libidn-1.1
@@ -31,7 +30,7 @@ RDEPEND="${DEPEND}
 		mysql? ( dev-lua/luadbi[mysql] )
 		postgres? ( dev-lua/luadbi[postgres] )
 		sqlite? ( dev-lua/luadbi[sqlite] )
-		ssl? ( dev-lua/luasec )
+		ssl? ( <dev-lua/luasec-0.6 )
 		zlib? ( dev-lua/lua-zlib )"
 
 S=${WORKDIR}/${MY_P}
@@ -40,7 +39,7 @@ JABBER_ETC="/etc/jabber"
 JABBER_SPOOL="/var/spool/jabber"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.10.0-cfg.lua.patch"
+	epatch "${FILESDIR}/${PN}-0.9.2-cfg.lua.patch"
 	sed -i -e "s!MODULES = \$(DESTDIR)\$(PREFIX)/lib/!MODULES = \$(DESTDIR)\$(PREFIX)/$(get_libdir)/!"\
 		-e "s!SOURCE = \$(DESTDIR)\$(PREFIX)/lib/!SOURCE = \$(DESTDIR)\$(PREFIX)/$(get_libdir)/!"\
 		-e "s!INSTALLEDSOURCE = \$(PREFIX)/lib/!INSTALLEDSOURCE = \$(PREFIX)/$(get_libdir)/!"\
@@ -67,7 +66,8 @@ src_configure() {
 		--cflags="${CFLAGS} -Wall -fPIC" \
 		--ldflags="${LDFLAGS} -shared" \
 		--c-compiler="$(tc-getCC)" \
-		--linker="$(tc-getCC)" || die "configure failed"
+		--linker="$(tc-getCC)" \
+		--require-config || die "configure failed"
 }
 
 src_install() {
