@@ -1,0 +1,53 @@
+From 0896b88d1b80244832f9eacbca993c5121315d05 Mon Sep 17 00:00:00 2001
+From: Paulo Zanoni <paulo.r.zanoni@intel.com>
+Date: Thu, 26 Apr 2018 17:49:41 -0700
+Subject: lib: sync with the newer i915_pciids.h from the Kernel (KBL + ICL)
+
+I just copied the Kernel file into the IGT repository.
+
+New IDs:
+- KBL GT2 sku from 672e314b21dc ("drm/i915/kbl: Add KBL GT2 sku")
+- ICL IDs from d55cb4fa2cf0 ("drm/i915/icl: Add the ICL PCI IDs")
+
+Cc: Matt Atwood <matthew.s.atwood@intel.com>
+Acked-by: Antonio Argenziano <antonio.argenziano@intel.com>
+Reviewed-by: Jose Roberto de Souza <jose.souza@intel.com>
+Signed-off-by: Paulo Zanoni <paulo.r.zanoni@intel.com>
+---
+ lib/i915_pciids.h | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+https://cgit.freedesktop.org/xorg/app/intel-gpu-tools/patch/?id=0896b88d1b80244832f9eacbca993c5121315d05
+
+diff --git a/lib/i915_pciids.h b/lib/i915_pciids.h
+index 0b2ba46..bab70ff 100644
+--- a/lib/i915_pciids.h
++++ b/lib/i915_pciids.h
+@@ -349,6 +349,7 @@
+ #define INTEL_KBL_GT2_IDS(info)	\
+ 	INTEL_VGA_DEVICE(0x5916, info), /* ULT GT2 */ \
+ 	INTEL_VGA_DEVICE(0x5917, info), /* Mobile GT2 */ \
++	INTEL_VGA_DEVICE(0x591C, info), /* ULX GT2 */ \
+ 	INTEL_VGA_DEVICE(0x5921, info), /* ULT GT2F */ \
+ 	INTEL_VGA_DEVICE(0x591E, info), /* ULX GT2 */ \
+ 	INTEL_VGA_DEVICE(0x5912, info), /* DT  GT2 */ \
+@@ -431,4 +432,16 @@
+ 	INTEL_VGA_DEVICE(0x5A44, info), \
+ 	INTEL_VGA_DEVICE(0x5A4C, info)
+ 
++/* ICL */
++#define INTEL_ICL_11_IDS(info) \
++	INTEL_VGA_DEVICE(0x8A50, info), \
++	INTEL_VGA_DEVICE(0x8A51, info), \
++	INTEL_VGA_DEVICE(0x8A5C, info), \
++	INTEL_VGA_DEVICE(0x8A5D, info), \
++	INTEL_VGA_DEVICE(0x8A52, info), \
++	INTEL_VGA_DEVICE(0x8A5A, info), \
++	INTEL_VGA_DEVICE(0x8A5B, info), \
++	INTEL_VGA_DEVICE(0x8A71, info), \
++	INTEL_VGA_DEVICE(0x8A70, info)
++
+ #endif /* _I915_PCIIDS_H */
+-- 
+cgit v1.1
+
