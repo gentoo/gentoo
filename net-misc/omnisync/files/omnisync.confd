@@ -1,0 +1,21 @@
+# REQUIRED, must be one of time/tcp time/udp daytime/tcp daytime/udp http https
+# snts irc icmp icmp snmp simpleptpl socks5sntp sntp
+OMNISYNC_MODE=""
+
+# Options to add
+# -F x   fudge factor (default: 0.000000)                                                                                                -m x   max. offset (default: 7200.000000)
+# -p x   proxy-server (http/https/socks5sntp only)
+# -B x   bind to interface x (not for snmp)
+# -I x   username[:password] (irc/socks5 auth. only)
+# -c x   community (snmp only)
+# -h x   host to connect to
+# -u x   ntpd shared memory unit
+# -z x   do an initial step, to speed up syncing, parameter is number of samples-S x   write measurements to file x
+# -n     do NOT submit to NTPd/set clock, query only (use in combination with -v and -f)
+# -f     do not fork
+# -i x   check interval (default: 60)
+# -d x   timeout
+# -U x   set user to run as
+# -P x   write pid to file x
+# -v     increase verbosity
+OMNISYNC_ARGS=""
