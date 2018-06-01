@@ -7,5 +7,9 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">exult</remote-id>
+		<remote-id type="github">exult/exult</remote-id>
 	</upstream>
+	<use>
+		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
+	</use>
 </pkgmetadata>
