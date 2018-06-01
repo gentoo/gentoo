@@ -1,22 +1,26 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
-inherit versionator linux-info eutils flag-o-matic toolchain-funcs
+
+inherit eapi7-ver eutils flag-o-matic linux-info toolchain-funcs
+
+MY_P="${PN}-$(ver_rs 2 "-")"
 
 DESCRIPTION="A performant, transport independent, multi-platform implementation of RFC3720"
 HOMEPAGE="http://www.open-iscsi.com/"
-MY_PV="${PN}-$(replace_version_separator 2 "-" $MY_PV)"
-SRC_URI="http://www.open-iscsi.org/bits/${MY_PV}.tar.gz"
+SRC_URI="http://www.open-iscsi.org/bits/${MY_P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86"
 IUSE="debug slp"
+
 DEPEND="slp? ( net-libs/openslp )"
 RDEPEND="${DEPEND}
 	sys-apps/util-linux"
 
-S="${WORKDIR}/${MY_PV}"
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	linux-info_pkg_setup
