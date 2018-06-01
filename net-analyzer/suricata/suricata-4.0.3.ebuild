@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+af-packet control-socket cuda debug +detection geoip hardened logrotate lua luajit nflog +nfqueue redis +rules test"
 
-REQUIRED_USE="lua? ( !luajit )"
-
 DEPEND="
 	>=dev-libs/jansson-2.2
 	dev-libs/libpcre
@@ -83,7 +81,7 @@ src_configure() {
 # 		myeconfargs+=( $(use_enable pfring) )
 # 	fi
 	# no libprelude in portage
-# 	if use prelude ; then
+# 	if use prelude ; theng
 # 		myeconfargs+=( $(use_enable prelude) )
 # 	fi
 	if use lua ; then
@@ -91,6 +89,12 @@ src_configure() {
 	fi
 	if use luajit ; then
 		myeconfargs+=( $(use_enable luajit) )
+	fi
+	if (use !lua) && (use !luajit) ; then
+		myeconfargs+=(
+			--disable-lua
+			--disable-luajit
+		)
 	fi
 
 # this should be used when pf_ring use flag support will be added

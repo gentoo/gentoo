@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -38,8 +38,8 @@ RDEPEND="ssl? ( dev-libs/openssl:0= )
 	tcl? ( dev-lang/tcl:0 )"
 DEPEND="${RDEPEND}
 	X? (
+		x11-base/xorg-proto
 		x11-misc/xbitmaps
-		x11-proto/xproto
 		app-text/rman
 		x11-apps/mkfontdir
 		x11-apps/bdftopcf

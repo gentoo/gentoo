@@ -1,6 +1,5 @@
-diff -Naur brltty-5.2/Autostart/Udev/udev.rules brltty-5.2-new/Autostart/Udev/udev.rules
---- brltty-5.2/Autostart/Udev/udev.rules	2014-11-06 07:28:41.000000000 -0800
-+++ brltty-5.2-new/Autostart/Udev/udev.rules	2014-11-20 05:28:44.404885312 -0800
+--- a/Autostart/Udev/udev.rules
++++ b/Autostart/Udev/udev.rules
 @@ -182,20 +182,22 @@
  # FreedomScientific [Focus Blue]
  ENV{PRODUCT}=="f4e/114/*", ENV{BRLTTY_BRAILLE_DRIVER}="fs", GOTO="brltty_usb_run"

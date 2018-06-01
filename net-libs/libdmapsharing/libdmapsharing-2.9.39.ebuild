@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2
 
 DESCRIPTION="A library that implements the DMAP family of protocols"
-HOMEPAGE="http://www.flyn.org/projects/libdmapsharing"
-SRC_URI="http://www.flyn.org/projects/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.flyn.org/projects/libdmapsharing/"
+SRC_URI="https://www.flyn.org/projects/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="3.0/2"

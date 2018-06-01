@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,9 +12,9 @@ inherit webapp eutils multilib user toolchain-funcs
 GIT_V="2.10.2"
 
 DESCRIPTION="a fast web-interface for git repositories"
-HOMEPAGE="http://git.zx2c4.com/cgit/about"
+HOMEPAGE="https://git.zx2c4.com/cgit/about"
 SRC_URI="mirror://kernel/software/scm/git/git-${GIT_V}.tar.xz
-	http://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
+	https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

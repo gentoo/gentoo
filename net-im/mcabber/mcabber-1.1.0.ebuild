@@ -32,6 +32,7 @@ RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
 	idn? ( net-dns/libidn  )
 	spell? ( app-text/enchant )
 	dev-libs/glib:2
+	net-libs/libnsl:0=
 	sys-libs/ncurses:0=
 	>=net-libs/loudmouth-1.4.3-r1[ssl?]"
 DEPEND="${RDEPEND}

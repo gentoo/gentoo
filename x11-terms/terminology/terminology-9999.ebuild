@@ -1,27 +1,29 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-MY_P=${P/_/-}
-
-if [[ "${PV}" != "9999" ]] ; then
-	SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
-else
-	inherit git-r3
-	EGIT_REPO_URI="https://git.enlightenment.org/apps/${PN}.git"
-fi
-
-inherit meson
+inherit git-r3 meson
 
 DESCRIPTION="Feature rich terminal emulator using the Enlightenment Foundation Libraries"
-HOMEPAGE="https://www.enlightenment.org/p.php?p=about/terminology"
+HOMEPAGE="https://www.enlightenment.org/about-terminology"
+EGIT_REPO_URI="https://git.enlightenment.org/apps/${PN}.git"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE=""
+IUSE="nls"
 
-RDEPEND=">=dev-libs/efl-1.18[X]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND=">=dev-libs/efl-1.20.0[eet,fontconfig,opengl,X]"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
+
+src_configure() {
+	local emesonargs=(
+		-D nls=$(usex nls true false)
+	)
+
+	meson_src_configure
+}

@@ -19,11 +19,7 @@ DEPEND=">=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
 		kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 		ssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
-		!<net-fs/autofs-4.1.3
-		abi_x86_32? (
-			!<=app-emulation/emul-linux-x86-baselibs-20140508-r7
-			!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-		)"
+		!<net-fs/autofs-4.1.3"
 
 src_prepare() {
 	if use prefix; then

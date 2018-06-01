@@ -53,6 +53,19 @@ src_install() {
 	fi
 }
 
+src_test() {
+	for slot in $(php_get_slots); do
+		php_init_slot_env "${slot}"
+		ln -s "${EXT_DIR}/propro.so" "modules/propro.so" || die
+		ln -s "${EXT_DIR}/raphf.so" "modules/raphf.so" || die
+		sed -i \
+			's/PHP_TEST_SHARED_EXTENSIONS)/PHP_TEST_SHARED_EXTENSIONS) -d extension=propro.so -d extension=raphf.so/' \
+			Makefile || die
+		NO_INTERACTION="yes" emake test
+		rm modules/propro.so modules/raphf.so || die
+	done
+}
+
 pkg_postinst() {
 	ewarn "This API has drastically changed and is not compatible with the 1.x syntax."
 	ewarn "Please review the documentation and update your code."

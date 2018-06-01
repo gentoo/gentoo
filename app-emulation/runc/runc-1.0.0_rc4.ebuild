@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ else
 	EGIT_COMMIT="v${MY_PV}"
 	RUNC_COMMIT="2e7cfe0" # Change this when you update the ebuild
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc64"
+	KEYWORDS="amd64 ~arm ~ppc64"
 	inherit golang-build golang-vcs-snapshot
 fi
 

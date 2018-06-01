@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,11 @@ PYTHON_REQ_USE="threads(+)"
 inherit eutils bash-completion-r1 distutils-r1
 
 DESCRIPTION="Installs python packages -- replacement for easy_install"
-HOMEPAGE="https://pip.pypa.io/ https://pypi.python.org/pypi/pip/ https://github.com/pypa/pip/"
+HOMEPAGE="https://pip.pypa.io/ https://pypi.org/project/pip/ https://github.com/pypa/pip/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~amd64-fbsd"
 SLOT="0"
 
 IUSE="-vanilla"

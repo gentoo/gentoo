@@ -1,0 +1,10 @@
+diff -r -U1 PyX-0.14.1.orig/faq/general_aspects_pyx.rst PyX-0.14.1/faq/general_aspects_pyx.rst
+--- PyX-0.14.1.orig/faq/general_aspects_pyx.rst	2015-11-02 23:19:54.000000000 +0100
++++ PyX-0.14.1/faq/general_aspects_pyx.rst	2018-03-19 16:45:16.432663630 +0100
+@@ -15,4 +15,4 @@
+ Despite the ties between TeX and PyX, their pronunciation is quite different.
+-According to the developers of PyX, it should be pronounced as [pʏks]. Please do
+-not pronounce it as [pʏx] or [pʏç].
++According to the developers of PyX, it should be pronounced as [pyks]. Please do
++not pronounce it as [pyx] or [pyç].
+ 

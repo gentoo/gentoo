@@ -4,14 +4,18 @@
 	<maintainer type="person">
 		<email>ck+gentoo@bl4ckb0x.de</email>
 		<name>Conrad Kostecki</name>
-		<description>Proxy maintainer, assign bugs to him</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>TeamSpeak Server (Voice Communication Software)</longdescription>
+	<longdescription>
+		TeamSpeak is a proprietary voice-over-Internet Protocol (VoIP) application
+		for audio communication between users on a chat channel, much like a telephone conference call.
+		Users typically use headphones with a microphone.
+		The server software allows users to connect and join chat channels.
+	</longdescription>
 	<use>
-		<flag name="tsdns">Make use of TeamSpeak DNS.</flag>
+		<flag name="tsdns">Install TeamSpeaks own DNS service.</flag>
 	</use>
 </pkgmetadata>

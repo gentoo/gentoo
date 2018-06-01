@@ -5,6 +5,10 @@
     <email>hwoarang@gentoo.org</email>
     <name>Markos Chandras</name>
   </maintainer>
+   <maintainer type="person">
+    <email>johu@gentoo.org</email>
+    <name>Johannes Huber</name>
+  </maintainer>
   <use>
     <flag name="X">Use the <pkg>media-gfx/scrot</pkg> package to take screenshots</flag>
   </use>

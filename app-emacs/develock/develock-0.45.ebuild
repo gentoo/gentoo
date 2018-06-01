@@ -6,8 +6,8 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="An Emacs minor mode for highlighting broken formatting rules"
-HOMEPAGE="http://www.jpl.org/ftp/pub/elisp/
-	http://www.emacswiki.org/emacs/DevelockMode"
+HOMEPAGE="https://www.jpl.org/ftp/pub/elisp/
+	https://www.emacswiki.org/emacs/DevelockMode"
 # taken from http://www.jpl.org/ftp/pub/elisp/${PN}.el.gz
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.gz"
 

@@ -1,0 +1,156 @@
+From 6618c46e46be864dc7f13b217e2912c79bd4b61b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 25 Mar 2018 22:48:44 +1300
+Subject: Patch test suite for '.' in @INC removal in 5.26 and greater.
+
+Bug: https://bugs.gentoo.org/623186
+---
+ MANIFEST                                     | 4 ++--
+ t/dom_astress.t                              | 1 +
+ t/dom_attr.t                                 | 1 +
+ t/dom_cdata.t                                | 1 +
+ t/dom_encode.t                               | 1 +
+ t/dom_jp_astress.t                           | 1 +
+ t/dom_jp_attr.t                              | 1 +
+ t/dom_jp_cdata.t                             | 1 +
+ t/dom_jp_modify.t                            | 1 +
+ t/dom_modify.t                               | 1 +
+ CheckAncestors.pm => t/lib/CheckAncestors.pm | 0
+ CmpDOM.pm => t/lib/CmpDOM.pm                 | 0
+ 12 files changed, 11 insertions(+), 2 deletions(-)
+ rename CheckAncestors.pm => t/lib/CheckAncestors.pm (100%)
+ rename CmpDOM.pm => t/lib/CmpDOM.pm (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index fe947b3..72eeb85 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -1,7 +1,7 @@
+ BUGS
+ Changes
+-CheckAncestors.pm		Used by test cases in t/
+-CmpDOM.pm			Used by test cases in t/
++t/lib/CheckAncestors.pm		Used by test cases in t/
++t/lib/CmpDOM.pm			Used by test cases in t/
+ FAQ.xml
+ MANIFEST			This file.
+ Makefile.PL
+diff --git a/t/dom_astress.t b/t/dom_astress.t
+index 2bc7a6a..ac11c96 100644
+--- a/t/dom_astress.t
++++ b/t/dom_astress.t
+@@ -9,6 +9,7 @@
+ BEGIN {print "1..4\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CmpDOM;
+ $loaded = 1;
+ print "ok 1\n";
+diff --git a/t/dom_attr.t b/t/dom_attr.t
+index afbea05..683f727 100644
+--- a/t/dom_attr.t
++++ b/t/dom_attr.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..23\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CheckAncestors;
+ use CmpDOM;
+ $loaded = 1;
+diff --git a/t/dom_cdata.t b/t/dom_cdata.t
+index 3f4a47b..a7692df 100644
+--- a/t/dom_cdata.t
++++ b/t/dom_cdata.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..3\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CheckAncestors;
+ use CmpDOM;
+ $loaded = 1;
+diff --git a/t/dom_encode.t b/t/dom_encode.t
+index 71519a4..60abfca 100644
+--- a/t/dom_encode.t
++++ b/t/dom_encode.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..3\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CheckAncestors;
+ use CmpDOM;
+ $loaded = 1;
+diff --git a/t/dom_jp_astress.t b/t/dom_jp_astress.t
+index 04c66b6..19c1b21 100644
+--- a/t/dom_jp_astress.t
++++ b/t/dom_jp_astress.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..4\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CmpDOM;
+ $loaded = 1;
+ print "ok 1\n";
+diff --git a/t/dom_jp_attr.t b/t/dom_jp_attr.t
+index 4ecca27..eb37091 100644
+--- a/t/dom_jp_attr.t
++++ b/t/dom_jp_attr.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..23\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CheckAncestors;
+ use CmpDOM;
+ use utf8;
+diff --git a/t/dom_jp_cdata.t b/t/dom_jp_cdata.t
+index e512fc5..7c4dcb1 100644
+--- a/t/dom_jp_cdata.t
++++ b/t/dom_jp_cdata.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..3\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CheckAncestors;
+ use CmpDOM;
+ use utf8;
+diff --git a/t/dom_jp_modify.t b/t/dom_jp_modify.t
+index a749c42..049dfa1 100644
+--- a/t/dom_jp_modify.t
++++ b/t/dom_jp_modify.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..16\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CheckAncestors;
+ use utf8;
+ $loaded = 1;
+diff --git a/t/dom_modify.t b/t/dom_modify.t
+index ba74475..42058a6 100644
+--- a/t/dom_modify.t
++++ b/t/dom_modify.t
+@@ -1,6 +1,7 @@
+ BEGIN {print "1..16\n";}
+ END {print "not ok 1\n" unless $loaded;}
+ use XML::DOM;
++use lib 't/lib';
+ use CheckAncestors;
+ $loaded = 1;
+ print "ok 1\n";
+diff --git a/CheckAncestors.pm b/t/lib/CheckAncestors.pm
+similarity index 100%
+rename from CheckAncestors.pm
+rename to t/lib/CheckAncestors.pm
+diff --git a/CmpDOM.pm b/t/lib/CmpDOM.pm
+similarity index 100%
+rename from CmpDOM.pm
+rename to t/lib/CmpDOM.pm
+-- 
+2.16.2
+

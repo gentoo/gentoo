@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 JAVA_PKG_IUSE="source"
 inherit java-pkg-2 java-ant-2 java-osgi
@@ -12,7 +14,7 @@ HOMEPAGE="http://lucene.apache.org/java"
 SRC_URI="mirror://apache/lucene/java/${MY_P}-src.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="amd64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 DEPEND=">=virtual/jdk-1.4"
 RDEPEND=">=virtual/jre-1.4"

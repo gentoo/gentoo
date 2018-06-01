@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="Set of utilities to manage TV listings stored in the XMLTV format"
 HOMEPAGE="http://xmltv.org"
@@ -11,25 +11,11 @@ SRC_URI="mirror://sourceforge/xmltv/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc x86 ~x86-linux"
 
 IUSE="ar ch_search dk dtvla es_laguiatv eu_dotmedia eu_epg fi fi_sv
 fr fr_kazer huro il is it na_dd na_dtv na_tvmedia nl no_gf pt_meo se_swedb
 se_tvzon tr uk_bleb uk_tvguide tv_check tv_combiner tv_pick_cgi zz_sdjson"
-
-# NOTE: you can customize the xmltv installation by
-#       defining USE FLAGS (custom ones in
-#	/etc/portage/package.use for example).
-#
-#	Do "equery u media-tv/xmltv" for the complete
-#	list of the flags you can set, with description.
-
-# EXAMPLES:
-# enable just North American grabber
-#  in /etc/portage/package.use : media-tv/xmltv na_dd
-#
-# enable graphical front-end, Italy grabber
-#  in /etc/portage/package.use : media-tv/xmltv tv_check it
 
 RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Parser-2.34
@@ -178,6 +164,7 @@ src_install() {
 
 	perl-module_src_install
 
+	local i
 	for i in $(grep -rl "${D}" "${D}"); do
 		sed -e "s:${D}::g" -i "${i}" || die
 	done

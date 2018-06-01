@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -21,12 +21,11 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm
 	rplay? ( media-sound/rplay )"
 DEPEND="${RDEPEND}
+	app-text/rman
 	sys-devel/bison
 	sys-devel/flex
-	x11-misc/imake
-	app-text/rman
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto
+	x11-misc/imake"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-do-not-rm.patch

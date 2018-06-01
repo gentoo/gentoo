@@ -29,11 +29,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 	!<sys-libs/glibc-2.11
 	!sys-apps/gentoo-systemd-integration
-	!sys-apps/systemd
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r7
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	!sys-apps/systemd"
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	>=dev-util/intltool-0.50
@@ -78,14 +74,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if ! [[ ${PV} = 9999* ]]; then
-		# secure_getenv() disable for non-glibc systems wrt bug #443030
-		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 27 ]]; then
-			eerror "The line count for secure_getenv() failed, see bug #443030"
-			die
-		fi
-	fi
-
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
 	ACTION=="add", SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
@@ -97,11 +85,6 @@ src_prepare() {
 	)
 
 	default
-
-	if ! use elibc_glibc; then #443030
-		echo '#define secure_getenv(x) NULL' >> config.h.in
-		sed -i -e '/error.*secure_getenv/s:.*:#define secure_getenv(x) NULL:' src/shared/missing.h || die
-	fi
 }
 
 meson_multilib_native_use() {
@@ -142,10 +125,10 @@ src_configure() {
 
 multilib_src_compile() {
 	# meson creates this link
-	local libudev=$(readlink src/libudev/libudev.so.1)
+	local libudev=$(readlink src/udev/libudev.so.1)
 
 	local targets=(
-		src/libudev/${libudev}
+		src/udev/${libudev}
 	)
 	if multilib_is_native_abi; then
 		targets+=(
@@ -169,10 +152,10 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	local libudev=$(readlink src/libudev/libudev.so.1)
+	local libudev=$(readlink src/udev/libudev.so.1)
 
 	into /
-	dolib.so src/libudev/{${libudev},libudev.so.1,libudev.so}
+	dolib.so src/udev/{${libudev},libudev.so.1,libudev.so}
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins src/libudev/libudev.pc

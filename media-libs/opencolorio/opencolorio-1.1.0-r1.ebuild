@@ -15,7 +15,7 @@ SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_sse2 doc opengl python static-libs test"
 REQUIRED_USE="
 	doc? ( python )
@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-compile-error-with-Lut1DOp.cpp.patch"
 	"${FILESDIR}/${P}-use-GNUInstallDirs-and-fix-cmake-install-location.patch"
 	"${FILESDIR}/${P}-remove-building-of-bundled-programs.patch"
+	"${FILESDIR}/${P}-yaml-cpp-0.6.patch"
 )
 
 pkg_setup() {

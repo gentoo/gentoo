@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 -sparc x86 ~x86-fbsd"
 fi
 inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
 
@@ -184,7 +184,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig:*
 	amd64? ( dev-lang/yasm:* )
 	x86?   ( dev-lang/yasm:* )
-	xcb? ( x11-proto/xproto:0 )
+	xcb? ( x11-base/xorg-proto )
 "
 
 PATCHES=(
@@ -470,8 +470,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e /usr/lib64/vlc/plugins/plugins.dat ]]; then
-		rm /usr/lib64/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e /usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
+		rm /usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	gnome2_icon_cache_update

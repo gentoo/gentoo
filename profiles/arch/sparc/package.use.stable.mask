@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (7 May 2018)
+# sci-visualization/gnuplot is not stable.
+app-admin/sysstat isag
+dev-util/ddd gnuplot
+sci-libs/libqalculate gnuplot
+sci-mathematics/octave gnuplot
+
 # Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
 # Drop stable gstreamer on sparc, can move to use.stable.mask
 # after gstreamer:0.10 is gone; #601354
@@ -38,7 +45,6 @@ media-sound/pulseaudio equalizer
 
 # Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
 # Missing keywords
-dev-libs/protobuf python
 dev-python/pyquery test
 sys-fs/dmraid klibc
 
@@ -47,7 +53,6 @@ sys-fs/dmraid klibc
 dev-util/geany-plugins gtkspell
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
->=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome
 x11-wm/icewm gnome

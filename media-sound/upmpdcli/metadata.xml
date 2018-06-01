@@ -3,7 +3,6 @@
 <pkgmetadata>
 <maintainer type="person">
 	<email>stasibear@gentoo.org</email>
-	<description>Primary maintainer</description>
 </maintainer>
 <longdescription>
 	UPnP Media Renderer front-end for MPD, the Music Player Daemon

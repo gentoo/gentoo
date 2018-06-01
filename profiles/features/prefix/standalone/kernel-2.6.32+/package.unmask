@@ -3,5 +3,6 @@
 # on x86 and amd64, it is glibc-2.26 to require linux-3.2.
 # https://www.sourceware.org/ml/libc-alpha/2017-08/msg00010.html
 
-# we just use a universal glibc-2.24 on all ARCHes for simplicity.
-<sys-libs/glibc-2.24
+# In 2018, only x86 and amd64 are supported, use glibc-2.26 mask.
+# Mask glibc-2.24 on all other ARCHes specifically.
+<sys-libs/glibc-2.26

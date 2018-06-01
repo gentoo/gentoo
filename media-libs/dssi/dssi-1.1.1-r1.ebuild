@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 inherit autotools
 
 DESCRIPTION="Plugin API for software instruments with user interfaces"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	default
 	sed -i \
 		-e 's:libdir=.*:libdir=@libdir@:' \
 		dssi.pc.in || die
@@ -33,13 +34,8 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	econf \
-		--disable-dependency-tracking
-}
-
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc README doc/TODO doc/*.txt
-	find "${D}" -name '*.la' -delete
+	DOCS=( README doc/TODO doc/*.txt )
+	default
+	find "${D}" -name '*.la' -delete || die "Pruning failed"
 }

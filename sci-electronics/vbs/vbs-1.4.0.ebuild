@@ -1,41 +1,40 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils
-
-HOMEPAGE="http://www.geda.seul.org/tools/vbs/index.html"
 DESCRIPTION="vbs - the Verilog Behavioral Simulator"
+HOMEPAGE="http://www.geda.seul.org/tools/vbs/index.html"
 SRC_URI="http://www.geda.seul.org/dist/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-IUSE="examples"
+SLOT="0"
 KEYWORDS="~amd64 ppc ~x86"
+IUSE=""
 
-DEPEND=">=sys-devel/flex-2.3
-	>=sys-devel/bison-1.22"
+DEPEND="
+	sys-devel/flex
+	sys-devel/bison"
 RDEPEND=""
 
 S="${WORKDIR}/${P}/src"
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-gcc-4.1.patch"
-	epatch "${FILESDIR}/${P}-gcc-4.3.patch"
-	sed -i -e "s/strrchr(n,'.')/const_cast<char*>(strrchr(n,'.'))/" common/scp_tab.cc || die "sed failed"
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-4.1.patch
+	"${FILESDIR}"/${P}-gcc-4.3.patch
+	"${FILESDIR}"/${P}-const_cast.patch
+)
 
 src_compile() {
-	emake -j1 vbs || die "Compilation failed"
+	emake -j1 vbs
 }
 
 src_install() {
 	dobin vbs
-	cd ..
-	dodoc BUGS CHANGELOG* CONTRIBUTORS COPYRIGHT FAQ README vbs.txt
-	if use examples ; then
-		insinto /usr/share/${PF}/examples
-		doins EXAMPLES/*
-	fi
+	cd .. || die
+
+	einstalldocs
+	dodoc CHANGELOG* CONTRIBUTORS vbs.txt
+
+	insinto /usr/share/${PF}/examples
+	doins -r EXAMPLES/.
 }

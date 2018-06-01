@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,9 +23,9 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
 	dev-cpp/eigen:3
-	dev-cpp/yaml-cpp
+	dev-cpp/yaml-cpp:=
 	dev-libs/urdfdom:=
-	dev-libs/tinyxml:=
+	dev-libs/tinyxml2:=
 
 	dev-ros/angles
 	dev-ros/image_geometry
@@ -34,7 +34,6 @@ RDEPEND="
 	dev-ros/laser_geometry
 	dev-ros/message_filters
 	dev-ros/pluginlib
-		dev-libs/tinyxml2:=
 	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
 	dev-ros/resource_retriever
 	dev-ros/rosbag[${PYTHON_USEDEP}]

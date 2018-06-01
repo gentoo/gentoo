@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ DEPEND="
 		app-doc/doxygen
 		virtual/latex-base
 		media-gfx/graphviz
-		|| ( >=app-text/texlive-core-2014 app-text/dvipdfm )
+		>=app-text/texlive-core-2014
 	)"
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 

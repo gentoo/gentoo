@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ~ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE="gdm jpeg new-login offensive opengl pam +perl selinux suid xinerama"
 
 COMMON_DEPEND="
@@ -25,6 +25,7 @@ COMMON_DEPEND="
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXft
 	x11-libs/libXi
 	x11-libs/libXmu
 	x11-libs/libXrandr
@@ -59,12 +60,7 @@ DEPEND="
 	sys-devel/bc
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/recordproto
-	x11-proto/scrnsaverproto
-	x11-proto/xextproto
-	x11-proto/xf86miscproto
-	x11-proto/xf86vidmodeproto
-	xinerama? ( x11-proto/xineramaproto )
+	x11-base/xorg-proto
 "
 
 src_prepare() {

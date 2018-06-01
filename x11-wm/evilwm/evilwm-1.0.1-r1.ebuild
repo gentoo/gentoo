@@ -17,8 +17,7 @@ RDEPEND="x11-libs/libXext
 	x11-libs/libXrandr"
 
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	default

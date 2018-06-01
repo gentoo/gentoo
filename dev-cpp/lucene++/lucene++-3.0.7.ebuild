@@ -12,7 +12,7 @@ SRC_URI="https://github.com/luceneplusplus/LucenePlusPlus/archive/rel_${PV}.tar.
 
 LICENSE="|| ( LGPL-3 Apache-2.0 )"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
 IUSE="debug"
 
 DEPEND="dev-libs/boost:="

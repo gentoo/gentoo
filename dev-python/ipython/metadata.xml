@@ -43,10 +43,8 @@
 </longdescription>
   <use>
     <flag name="matplotlib">Add support for <pkg>dev-python/matplotlib</pkg></flag>
-    <flag name="mongodb">Enable support for MongoDB via <pkg>dev-python/pymongo</pkg></flag>
     <flag name="notebook">Install requirements for the web notebook based on <pkg>www-servers/tornado</pkg></flag>
     <flag name="nbconvert">Enable support for converting notebooks to various formats using <pkg>app-text/pandoc</pkg></flag>
-    <flag name="octave">Enable octave bridge via <pkg>dev-python/oct2py</pkg></flag>
   </use>
   <upstream>
     <remote-id type="pypi">ipython</remote-id>

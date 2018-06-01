@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="A port of node.js's EventEmitter to python"
-HOMEPAGE="https://pypi.python.org/pypi/pyee https://github.com/jfhbrook/pyee"
+HOMEPAGE="https://pypi.org/project/pyee/ https://github.com/jfhbrook/pyee"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

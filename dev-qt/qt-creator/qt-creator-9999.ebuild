@@ -4,7 +4,7 @@
 EAPI=6
 PLOCALES="cs de fr ja pl ru sl uk zh-CN zh-TW"
 
-inherit llvm qmake-utils toolchain-funcs virtualx xdg
+inherit llvm qmake-utils virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
 HOMEPAGE="https://doc.qt.io/qtcreator/"
@@ -33,7 +33,7 @@ QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectman
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 
 # minimum Qt version required
-QT_PV="5.6.2:5"
+QT_PV="5.9.0:5"
 
 CDEPEND="
 	=dev-libs/botan-1.10*[-bindist,threads]
@@ -51,9 +51,9 @@ CDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	clangcodemodel? ( >=sys-devel/clang-3.9:= )
+	clangcodemodel? ( >=sys-devel/clang-5:= )
 	designer? ( >=dev-qt/designer-${QT_PV} )
-	qbs? ( >=dev-util/qbs-1.9.1 )
+	qbs? ( >=dev-util/qbs-1.11.1 )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 "
@@ -71,7 +71,7 @@ RDEPEND="${CDEPEND}
 	sys-devel/gdb[client,python]
 	autotools? ( sys-devel/autoconf )
 	bazaar? ( dev-vcs/bzr )
-	clangstaticanalyzer? ( >=sys-devel/clang-3.9:* )
+	clangstaticanalyzer? ( >=sys-devel/clang-5:* )
 	cmake? ( dev-util/cmake[server(+)] )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
@@ -90,22 +90,6 @@ pkg_setup() {
 	use clangcodemodel && llvm_pkg_setup
 }
 
-src_unpack() {
-	if tc-is-gcc; then
-		if [[ $(gcc-major-version) -lt 4 ]] || \
-		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 9 ]]; then
-			eerror "GCC version 4.9 or later is required to build Qt Creator ${PV}"
-			die "GCC >= 4.9 required"
-		fi
-	fi
-
-	if [[ ${PV} == *9999 ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
-}
-
 src_prepare() {
 	default
 
@@ -118,9 +102,10 @@ src_prepare() {
 		fi
 	done
 
-	# avoid building unused support libraries
+	# avoid building unused support libraries and tools
 	if ! use clangcodemodel; then
-		sed -i -e '/clangbackendipc/d' src/libs/libs.pro || die
+		sed -i -e '/clangsupport/d' src/libs/libs.pro || die
+		sed -i -e '/SUBDIRS += clang\(\|refactoring\|pchmanager\)backend/d' src/tools/tools.pro || die
 	fi
 	if ! use glsl; then
 		sed -i -e '/glsl/d' src/libs/libs.pro || die
@@ -139,7 +124,7 @@ src_prepare() {
 	sed -i -e '/sdktool/ d' tests/auto/auto.pro || die
 	sed -i -e '/\(dumpers\|offsets\)\.pro/ d' tests/auto/debugger/debugger.pro || die
 	sed -i -e '/CONFIG -=/ s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
-	sed -i -e '/timeline\(items\|notes\|selection\)renderpass/ d' tests/auto/timeline/timeline.pro || die
+	sed -i -e '/timeline\(items\|notes\|selection\)renderpass/ d' tests/auto/tracing/tracing.pro || die
 	sed -i -e 's/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
 
 	# fix path to some clang headers

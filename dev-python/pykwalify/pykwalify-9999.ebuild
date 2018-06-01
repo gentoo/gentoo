@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python lib/cli for JSON/YAML schema validation"
-HOMEPAGE="https://pypi.python.org/pypi/pykwalify https://github.com/Grokzen/pykwalify"
+HOMEPAGE="https://pypi.org/project/pykwalify/ https://github.com/Grokzen/pykwalify"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/Grokzen/pykwalify.git"
 

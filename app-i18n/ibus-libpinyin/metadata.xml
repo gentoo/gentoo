@@ -13,14 +13,12 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <longdescription lang="en">
-    PinYin engine for IBus platform. It provides a Chinese PinYin input method.
-  </longdescription>
   <use>
     <flag name="boost">Compile against <pkg>dev-libs/boost</pkg> libraries</flag>
     <flag name="opencc">Enable support for <pkg>app-i18n/opencc</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">libpinyin/ibus-libpinyin</remote-id>
+    <remote-id type="sourceforge">libpinyin</remote-id>
   </upstream>
 </pkgmetadata>

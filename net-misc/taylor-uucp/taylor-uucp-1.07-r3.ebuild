@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,12 +6,12 @@ EAPI="5"
 inherit eutils flag-o-matic autotools
 
 DESCRIPTION="Taylor UUCP"
-HOMEPAGE="http://www.airs.com/ian/uucp.html"
+HOMEPAGE="https://www.airs.com/ian/uucp.html"
 SRC_URI="mirror://gnu/uucp/uucp-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ia64 ppc sparc x86"
 
 S="${WORKDIR}/uucp-${PV}"
 

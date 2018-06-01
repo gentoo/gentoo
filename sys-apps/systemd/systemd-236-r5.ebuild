@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~floppym/dist/${P}-patches-2.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+	KEYWORDS="alpha amd64 arm arm64 ia64 ppc ppc64 x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
@@ -21,7 +21,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam policykit qrcode +seccomp selinux ssl +sysv-utils test usrmerge vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam policykit qrcode +seccomp selinux +split-usr ssl +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -58,9 +58,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	qrcode? ( media-gfx/qrencode:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	selinux? ( sys-libs/libselinux:0= )
-	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r9
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )"
 
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
@@ -148,6 +146,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/238-libmount-include.patch"
 	)
 
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
@@ -200,8 +199,8 @@ multilib_src_configure() {
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
 		# make sure we get /bin:/sbin in PATH
-		-Dsplit-usr=$(usex usrmerge false true)
-		-Drootprefix="$(usex usrmerge "${EPREFIX}/usr" "${EPREFIX:-/}")"
+		-Dsplit-usr=$(usex split-usr true false)
+		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
 		# Avoid infinite exec recursion, bug 642724
@@ -237,7 +236,7 @@ multilib_src_configure() {
 		-Ddbus=$(meson_multilib_native_use test)
 		-Dxkbcommon=$(meson_multilib_native_use xkb)
 		# hardcode a few paths to spare some deps
-		-Dpath-kill=/bin/kill
+		-Dkill-path=/bin/kill
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
@@ -332,11 +331,11 @@ multilib_src_install_all() {
 	rm -fr "${ED%/}"/etc/systemd/system/sysinit.target.wants || die
 
 	local udevdir=/lib/udev
-	use usrmerge && udevdir=/usr/lib/udev
+	use split-usr || udevdir=/usr/lib/udev
 
 	rm -r "${ED%/}${udevdir}/hwdb.d" || die
 
-	if ! use usrmerge; then
+	if use split-usr; then
 		# Avoid breaking boot/reboot
 		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
 		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown

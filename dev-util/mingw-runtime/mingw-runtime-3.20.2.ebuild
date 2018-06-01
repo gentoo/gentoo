@@ -21,7 +21,7 @@ SRC_URI="mirror://sourceforge/mingw/${MY_P}-src.tar.lzma"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="headers-only"
 RESTRICT="strip"
 

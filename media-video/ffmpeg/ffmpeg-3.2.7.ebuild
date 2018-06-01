@@ -254,10 +254,6 @@ DEPEND="${RDEPEND}
 	v4l? ( sys-kernel/linux-headers )
 "
 
-RDEPEND="${RDEPEND}
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20140508-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
-
 # Code requiring FFmpeg to be built under gpl license
 GPL_REQUIRED_USE="
 	postproc? ( gpl )

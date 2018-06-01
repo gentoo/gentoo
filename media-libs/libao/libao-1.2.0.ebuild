@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit libtool multilib multilib-minimal eutils
 
 DESCRIPTION="The Audio Output library"
-HOMEPAGE="http://www.xiph.org/ao/"
-SRC_URI="http://downloads.xiph.org/releases/ao/${P}.tar.gz"
+HOMEPAGE="https://www.xiph.org/ao/"
+SRC_URI="https://downloads.xiph.org/releases/ao/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,9 +16,7 @@ IUSE="alsa nas mmap pulseaudio static-libs"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.4[${MULTILIB_USEDEP}] )
-	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20131008-r1
-		!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
+	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

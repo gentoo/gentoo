@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ DESCRIPTION="Executable feature scenarios"
 HOMEPAGE="https://github.com/aslakhellesoy/cucumber/wikis"
 LICENSE="Ruby"
 
-KEYWORDS="amd64 ~arm ~arm64 ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
 SLOT="0"
 IUSE="examples test"
 
@@ -55,7 +55,7 @@ all_ruby_prepare() {
 	sed -i -e '/converts the snapshot path to a relative path/,/end/ s:^:#:' \
 		spec/cucumber/formatter/html_spec.rb || die
 
-	# Avoid specs that fail due to changes in the ruby backtrace, 
+	# Avoid specs that fail due to changes in the ruby backtrace,
 	# introduced in newer versions of dev-lang/ruby, bug 628580
 	rm -f features/docs/defining_steps/nested_steps.feature
 

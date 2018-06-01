@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ S=${WORKDIR}/${P/_/.}
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
 
 COMMON_DEPEND="
@@ -81,6 +81,7 @@ src_prepare() {
 
 	epatch "${WORKDIR}"/${P}-perl524.patch
 	epatch "${WORKDIR}"/${P}-perl524-2.patch
+	epatch "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 
 	epatch "${WORKDIR}"/patches/*.patch
 

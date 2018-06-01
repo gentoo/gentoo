@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,10 +8,10 @@ WEBAPP_OPTIONAL="yes"
 inherit flag-o-matic webapp java-pkg-opt-2 user systemd toolchain-funcs
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
-HOMEPAGE="http://www.zabbix.com/"
+HOMEPAGE="https://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
-SRC_URI="http://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
+SRC_URI="https://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
@@ -66,7 +66,7 @@ DEPEND="${COMMON_DEPEND}
 			=dev-libs/cyrus-sasl-2*[static-libs]
 			net-libs/gnutls[static-libs]
 		)
-	mysql? ( >=virtual/mysql-5.0.3[static-libs] )
+	mysql? ( >=virtual/mysql-5.0.3 virtual/libmysqlclient[static-libs] )
 	sqlite? ( >=dev-db/sqlite-3.3.5[static-libs] )
 	postgres? ( dev-db/postgresql:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )

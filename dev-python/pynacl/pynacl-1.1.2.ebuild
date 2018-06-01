@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6})
 inherit distutils-r1
 
 DESCRIPTION="Python binding to the Networking and Cryptography (NaCl) library"
-HOMEPAGE="https://github.com/pyca/pynacl/ https://pypi.python.org/pypi/PyNaCl/"
+HOMEPAGE="https://github.com/pyca/pynacl/ https://pypi.org/project/PyNaCl/"
 SRC_URI="https://github.com/pyca/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,16 +14,16 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5739942ac7a447658d00e1e7
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 x86"
 IUSE="gmp +gnat_2016 gnat_2017 gtk iconv postgres pygobject projects readline
-	+shared sqlite static syslog tools"
+	+shared sqlite static-libs syslog tools"
 
 RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
 	${PYTHON_DEPS}
 	gmp? ( dev-libs/gmp:* )
 	gtk? (
-		dev-ada/gtkada[gnat_2016=,gnat_2017=,shared?,static?]
+		dev-ada/gtkada[gnat_2016=,gnat_2017=,shared?,static-libs?]
 		dev-libs/atk
 		dev-libs/glib
 		x11-libs/cairo
@@ -35,12 +35,14 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		=dev-ada/libgpr-2016[gnat_2016=,gnat_2017=,shared?,static?]
+		=dev-ada/libgpr-2016[gnat_2016=,gnat_2017=,shared?,static-libs?]
+		dev-ada/xmlada[shared?,static-libs?]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	tools? ( static-libs )
 	pygobject? ( gtk )
 	^^ ( gnat_2016 gnat_2017 )"
 
@@ -97,7 +99,7 @@ src_compile() {
 		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
 			build_library_type/relocatable
 	fi
-	if use static; then
+	if use static-libs; then
 		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
 			build_library_type/static
 	fi
@@ -108,7 +110,7 @@ src_install() {
 	if use shared; then
 		emake prefix="${D}usr" install_library_type/relocatable
 	fi
-	if use static; then
+	if use static-libs; then
 		emake prefix="${D}usr" install_library_type/static
 	fi
 	emake prefix="${D}usr" install_gps_plugin

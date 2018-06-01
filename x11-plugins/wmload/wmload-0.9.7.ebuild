@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="yet another dock application showing a system load gauge"
-HOMEPAGE="http://www.dockapps.net/wmload"
+HOMEPAGE="https://www.dockapps.net/wmload"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -17,7 +17,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.9.6-solaris.patch

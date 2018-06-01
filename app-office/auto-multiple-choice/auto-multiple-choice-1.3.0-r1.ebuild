@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ for lala in ${LANGS}; do
 done
 
 CDEPEND="
-	app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,omega,publishers]
+	app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers]
 	app-text/poppler:=
 	dev-perl/XML-LibXML
 	media-libs/netpbm

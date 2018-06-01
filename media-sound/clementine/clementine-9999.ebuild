@@ -3,23 +3,26 @@
 
 EAPI=6
 
-EGIT_BRANCH="qt5"
-EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
-
 PLOCALES="af ar be bg bn br bs ca cs cy da de el en en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mk_MK mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
-inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils
-[[ ${PV} == *9999* ]] && inherit git-r3
+MY_P="${P/_}"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_BRANCH="qt5"
+	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
+	GIT_ECLASS="git-r3"
+else
+	SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${MY_P^}"
+fi
+inherit cmake-utils flag-o-matic gnome2-utils l10n virtualx xdg-utils ${GIT_ECLASS}
+unset GIT_ECLASS
 
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
 HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player/Clementine"
-[[ ${PV} == *9999* ]] || \
-SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-[[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~x86"
 IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio seafile skydrive test +udisks wiimote"
 
 REQUIRED_USE="
@@ -40,13 +43,11 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
 	media-libs/chromaprint:=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	>=media-libs/libmygpo-qt-1.0.9[qt5]
-	media-libs/taglib[mp4(+)]
+	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
+	media-libs/taglib
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
@@ -54,7 +55,7 @@ COMMON_DEPEND="
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
 	ipod? ( >=media-libs/libgpod-0.8.0 )
-	lastfm? ( >=media-libs/liblastfm-1[qt5] )
+	lastfm? ( >=media-libs/liblastfm-1.1.0_pre20150206 )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
@@ -77,12 +78,12 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )
 "
 DEPEND="${COMMON_DEPEND}
-	|| (
-		>=dev-cpp/gtest-1.8.0
-		dev-cpp/gmock
-	)
-	dev-libs/boost:=
+	>=dev-cpp/gtest-1.8.0
+	dev-libs/boost
 	dev-qt/linguist-tools:5
+	dev-qt/qtopengl:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	sys-devel/gettext
 	virtual/pkgconfig
 	box? ( dev-cpp/sparsehash )
@@ -98,10 +99,6 @@ DEPEND="${COMMON_DEPEND}
 "
 
 DOCS=( Changelog README.md )
-
-MY_P="${P/_}"
-[[ ${PV} == *9999* ]] || \
-S="${WORKDIR}/${MY_P^}"
 
 PATCHES=( "${FILESDIR}"/${PN}-fts3-tokenizer.patch )
 
@@ -125,7 +122,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		# force to find crypto++ see bug #548544
-		-DCRYPTOPP_LIBRARIES="crypto++"
+		-DCRYPTOPP_LIBRARIES="cryptopp"
 		-DCRYPTOPP_FOUND=ON
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
@@ -165,16 +162,12 @@ src_test() {
 	virtx emake test
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
 
 	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
-	elog "USE flags. You may be intrested in setting aac, flac, mp3, ogg or wavpack USE flags "
+	elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
 	elog "depending on your preferences"
 }
 

@@ -1,0 +1,25 @@
+commit 48143b0cf52de37f93ae53a95261988d9b5ebff2
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Thu Jan 26 23:51:29 2017 +0300
+
+build: rpi: add missing linker flags to fix build
+
+See https://www.raspberrypi.org/forums/viewtopic.php?f=67&t=20005&p=194090
+and https://github.com/raspberrypi/firmware/issues/110
+
+Raspberry-pi upstream also adds '-lGLESv2' when EGL is used:
+https://github.com/raspberrypi/userland/blob/master/pkgconfig/egl.pc.in
+
+diff --git a/wscript b/wscript
+index 1880f631e5..741fe1e5a4 100644
+--- a/wscript
++++ b/wscript
+@@ -772,7 +772,7 @@ video_output_features = [
+                      lib=['mmal_core', 'mmal_util', 'mmal_vc_client', 'bcm_host']),
+             # We still need all OpenGL symbols, because the vo_opengl code is
+             # generic and supports anything from GLES2/OpenGL 2.1 to OpenGL 4 core.
+-            check_cc(lib="EGL"),
++            check_cc(lib="EGL", linkflags="-lGLESv2"),
+             check_cc(lib="GLESv2"),
+         ),
+     } , {

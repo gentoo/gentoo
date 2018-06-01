@@ -11,7 +11,7 @@ SRC_URI="http://code.x2go.org/releases/source/nx-libs/nx-libs-${PV}-full.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="elibc_glibc"
 
 RDEPEND="media-libs/freetype:2
@@ -20,10 +20,10 @@ RDEPEND="media-libs/freetype:2
 	virtual/jpeg:*"
 
 DEPEND="${RDEPEND}
+		x11-base/xorg-proto
 		x11-libs/libfontenc
 		x11-misc/gccmakedep
-		x11-misc/imake
-		x11-proto/inputproto"
+		x11-misc/imake"
 
 S=${WORKDIR}/nx-libs-${PV}
 

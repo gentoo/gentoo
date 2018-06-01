@@ -17,7 +17,7 @@ EGIT_BRANCH="stable/pike"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="compute-only dhcp ipv6 l3 metadata openvswitch linuxbridge server sqlite mysql postgres"
+IUSE="compute-only dhcp haproxy ipv6 l3 metadata openvswitch linuxbridge server sqlite mysql postgres"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( !mysql !postgres !sqlite !dhcp !l3 !metadata !server
 						|| ( openvswitch linuxbridge ) )"
@@ -122,7 +122,7 @@ RDEPEND="
 	>=dev-python/ovs-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/ovsdbapp-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.2.2[${PYTHON_USEDEP}]
-	>=dev-python/pyroute2-0.4.17[${PYTHON_USEDEP}]
+	>=dev-python/pyroute2-0.4.21[${PYTHON_USEDEP}]
 	>=dev-python/weakrefmethod-1.0.2[$(python_gen_usedep 'python2_7')]
 	>=dev-python/python-novaclient-9.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-designateclient-1.5.0[${PYTHON_USEDEP}]
@@ -135,7 +135,7 @@ RDEPEND="
 	net-firewall/iptables
 	net-firewall/ebtables
 	net-firewall/conntrack-tools
-	net-proxy/haproxy
+	haproxy? ( net-proxy/haproxy )
 	openvswitch? ( <=net-misc/openvswitch-2.8.9999 )
 	ipv6? (
 		net-misc/radvd

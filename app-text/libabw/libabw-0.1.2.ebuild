@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library parsing abiword documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libabw"
@@ -11,7 +11,7 @@ SRC_URI="https://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc static-libs"
 
 RDEPEND="
@@ -32,6 +32,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619470
+	append-cxxflags -std=c++14
+
 	econf \
 		--disable-werror \
 		$(use_with doc docs) \

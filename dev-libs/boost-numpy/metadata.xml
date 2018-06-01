@@ -4,7 +4,6 @@
   <maintainer type="person">
     <email>heroxbd@gentoo.org</email>
     <name>Benda Xu</name>
-    <description>an extension for Boost.Python that adds NumPy support</description>
   </maintainer>
   <longdescription>It is intended as a replacement for the old numeric support in Boost.Python proper, which is now out-of-date and does not support C/C++ pointer access to the data.</longdescription>
   <upstream>

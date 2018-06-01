@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.33-polkit-configure-check-fix.patch"
 	"${FILESDIR}/${PN}-1.33-resolv-conf-overwrite.patch"
+	"${FILESDIR}/${PN}-1.35-include-ifbridge-before-netinet.patch"
 )
 
 src_prepare() {

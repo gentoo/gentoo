@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Powerful, accurate, and easy-to-use Python library for colorspace conversions"
-HOMEPAGE="http://colorspacious.readthedocs.org/"
+HOMEPAGE="https://colorspacious.readthedocs.org/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND="

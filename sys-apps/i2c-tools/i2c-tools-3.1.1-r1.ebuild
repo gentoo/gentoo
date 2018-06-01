@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 DISTUTILS_OPTIONAL="1"
 
-inherit flag-o-matic toolchain-funcs distutils-r1
+inherit distutils-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="I2C tools for bus probing, chip dumping, EEPROM decoding, and more"
 HOMEPAGE="http://www.lm-sensors.org/wiki/I2CTools"
@@ -45,7 +45,7 @@ src_compile() {
 src_install() {
 	emake install prefix="${D}"/usr
 	dosbin eepromer/eepro{g,m{,er}}
-	rm -rf "${D}"/usr/include # part of linux-headers
+	rm -rf "${D}"/usr/include || die # part of linux-headers
 	dodoc CHANGES README
 	local d
 	for d in eeprom eepromer ; do

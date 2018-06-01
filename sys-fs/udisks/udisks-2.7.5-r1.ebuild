@@ -54,8 +54,6 @@ DEPEND="${COMMON_DEPEND}
 # gnome-base/gnome-common:3
 # sys-devel/autoconf-archive
 
-QA_MULTILIB_PATHS="usr/lib/udisks2/udisksd"
-
 DOCS=( AUTHORS HACKING NEWS README.md )
 
 pkg_setup() {

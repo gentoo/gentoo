@@ -15,12 +15,12 @@ SRC_URI="mirror://gnome/sources/${PN}/${MY_PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="introspection python static-libs test vala"
 
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
-	test? ( python )
+	test? ( python introspection )
 	vala? ( introspection )
 "
 
@@ -31,6 +31,11 @@ RDEPEND="${PYTHON_DEPS}
 	vala? ( $(vala_depend) )
 "
 DEPEND="${RDEPEND}
+	test? (
+		dev-python/pygobject
+		media-gfx/exiv2[xmp]
+	)
+	dev-libs/gobject-introspection-common
 	virtual/pkgconfig"
 
 src_prepare() {

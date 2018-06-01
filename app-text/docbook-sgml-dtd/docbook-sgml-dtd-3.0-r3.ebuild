@@ -1,12 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=5
 inherit sgml-catalog eutils
 
 MY_P="docbk30"
 DESCRIPTION="Docbook SGML DTD 3.0"
-HOMEPAGE="http://docbook.org/sgml/"
-SRC_URI="http://www.oasis-open.org/docbook/sgml/${PV}/${MY_P}.zip"
+HOMEPAGE="https://docbook.org/sgml/"
+SRC_URI="https://www.oasis-open.org/docbook/sgml/${PV}/${MY_P}.zip"
 
 LICENSE="docbook"
 SLOT="3.0"
@@ -16,22 +17,21 @@ IUSE=""
 DEPEND=">=app-arch/unzip-5.41"
 RDEPEND="app-text/sgml-common"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 sgml-catalog_cat_include "/etc/sgml/sgml-docbook-${PV}.cat" \
 	"/usr/share/sgml/docbook/sgml-dtd-${PV}/catalog"
 sgml-catalog_cat_include "/etc/sgml/sgml-docbook-${PV}.cat" \
 	"/etc/sgml/sgml-docbook.cat"
 
-src_unpack() {
-	unpack ${A}
+src_prepare() {
+	default
 	epatch "${FILESDIR}"/${P}-catalog.diff
 }
 
 src_install() {
 	insinto /usr/share/sgml/docbook/sgml-dtd-${PV}
-	doins *.dcl *.dtd *.mod || die "doins failed"
-	newins docbook.cat catalog || die "newins failed"
-
+	doins *.dcl *.dtd *.mod
+	newins docbook.cat catalog
 	dodoc *.txt
 }

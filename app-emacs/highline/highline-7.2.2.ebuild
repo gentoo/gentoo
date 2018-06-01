@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Minor mode to highlight current line in buffer"
-HOMEPAGE="http://www.emacswiki.org/emacs/HighlineMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/HighlineMode"
 # taken from: http://www.emacswiki.org/emacs/download/${PN}.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

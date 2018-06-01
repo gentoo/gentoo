@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ MY_PN="Flask-Mail"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Flask extension for sending email"
-HOMEPAGE="http://pythonhosted.org/Flask-Mail/ https://pypi.python.org/pypi/Flask-Mail"
+HOMEPAGE="https://pythonhosted.org/Flask-Mail/ https://pypi.org/project/Flask-Mail/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

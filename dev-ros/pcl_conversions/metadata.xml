@@ -6,6 +6,6 @@
 		<name>Gentoo ROS Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ros-perception/pcl_conversions</remote-id>
+		<remote-id type="github">ros-perception/perception_pcl</remote-id>
 	</upstream>
 </pkgmetadata>

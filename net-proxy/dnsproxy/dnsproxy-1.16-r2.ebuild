@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils flag-o-matic
 
 DESCRIPTION="The dnsproxy daemon is a proxy for DNS queries"
-HOMEPAGE="http://www.wolfermann.org/dnsproxy.html"
-SRC_URI="http://www.wolfermann.org/${P}.tar.gz"
+HOMEPAGE="https://www.wolfermann.org/dnsproxy.html"
+SRC_URI="https://www.wolfermann.org/${P}.tar.gz"
 
 LICENSE="MIT GPL-2"
 SLOT="0"

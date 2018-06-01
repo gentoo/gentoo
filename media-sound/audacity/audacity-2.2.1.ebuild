@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -48,6 +48,14 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="soundtouch? ( midi )"
 
 S="${WORKDIR}/${MY_P}-rc3"
+
+PATCHES=(
+	"${FILESDIR}/${P}-without-libid3tag.patch"
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+}
 
 src_configure() {
 	local WX_GTK_VER="3.0"

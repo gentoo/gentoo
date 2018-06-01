@@ -247,13 +247,21 @@ tc-stack-grows-down() {
 # Export common build related compiler settings.
 tc-export_build_env() {
 	tc-export "$@"
-	# Some build envs will initialize vars like:
-	# : ${BUILD_LDFLAGS:-${LDFLAGS}}
-	# So make sure all variables are non-empty. #526734
-	: ${BUILD_CFLAGS:=-O1 -pipe}
-	: ${BUILD_CXXFLAGS:=-O1 -pipe}
-	: ${BUILD_CPPFLAGS:= }
-	: ${BUILD_LDFLAGS:= }
+	if tc-is-cross-compiler; then
+		# Some build envs will initialize vars like:
+		# : ${BUILD_LDFLAGS:-${LDFLAGS}}
+		# So make sure all variables are non-empty. #526734
+		: ${BUILD_CFLAGS:=-O1 -pipe}
+		: ${BUILD_CXXFLAGS:=-O1 -pipe}
+		: ${BUILD_CPPFLAGS:= }
+		: ${BUILD_LDFLAGS:= }
+	else
+		# https://bugs.gentoo.org/654424
+		: ${BUILD_CFLAGS:=${CFLAGS}}
+		: ${BUILD_CXXFLAGS:=${CXXFLAGS}}
+		: ${BUILD_CPPFLAGS:=${CPPFLAGS}}
+		: ${BUILD_LDFLAGS:=${LDFLAGS}}
+	fi
 	export BUILD_{C,CXX,CPP,LD}FLAGS
 
 	# Some packages use XXX_FOR_BUILD.
@@ -383,11 +391,28 @@ tc-ld-disable-gold() {
 	local path_ld=$(which "${bfd_ld}" 2>/dev/null)
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
 
-	# Set up LDFLAGS to select gold based on the gcc version.
-	local major=$(gcc-major-version "$@")
-	local minor=$(gcc-minor-version "$@")
-	if [[ ${major} -lt 4 ]] || [[ ${major} -eq 4 && ${minor} -lt 8 ]] ; then
-		# <=gcc-4.7 requires some coercion.  Only works if bfd exists.
+	# Set up LDFLAGS to select gold based on the gcc / clang version.
+	local fallback="true"
+	if tc-is-gcc; then
+		local major=$(gcc-major-version "$@")
+		local minor=$(gcc-minor-version "$@")
+		if [[ ${major} -gt 4 ]] || [[ ${major} -eq 4 && ${minor} -ge 8 ]]; then
+			# gcc-4.8+ supports -fuse-ld directly.
+			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
+			fallback="false"
+		fi
+	elif tc-is-clang; then
+		local major=$(clang-major-version "$@")
+		local minor=$(clang-minor-version "$@")
+		if [[ ${major} -gt 3 ]] || [[ ${major} -eq 3 && ${minor} -ge 5 ]]; then
+			# clang-3.5+ supports -fuse-ld directly.
+			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
+			fallback="false"
+		fi
+	fi
+	if [[ ${fallback} == "true" ]] ; then
+		# <=gcc-4.7 and <=clang-3.4 require some coercion.
+		# Only works if bfd exists.
 		if [[ -e ${path_ld} ]] ; then
 			local d="${T}/bfd-linker"
 			mkdir -p "${d}"
@@ -396,9 +421,6 @@ tc-ld-disable-gold() {
 		else
 			die "unable to locate a BFD linker to bypass gold"
 		fi
-	else
-		# gcc-4.8+ supports -fuse-ld directly.
-		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
 }
 

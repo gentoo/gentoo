@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-utils.eclass
@@ -58,7 +58,7 @@ _CMAKE_UTILS_ECLASS=1
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
 # Specify the minimum required CMake version.
-: ${CMAKE_MIN_VERSION:=3.7.2}
+: ${CMAKE_MIN_VERSION:=3.9.6}
 
 # @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES
 # @DESCRIPTION:
@@ -109,8 +109,12 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-inherit toolchain-funcs multilib ninja-utils flag-o-matic eutils \
-	multiprocessing versionator xdg-utils
+inherit toolchain-funcs ninja-utils flag-o-matic multiprocessing xdg-utils
+
+case ${EAPI} in
+	7) ;;
+	*) inherit eapi7-ver eutils multilib ;;
+esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
@@ -508,7 +512,7 @@ cmake-utils_src_configure() {
 	# we need to add "<INCLUDES>"
 	local includes=
 	if [[ ${PN} == cmake ]] ; then
-		if $(version_is_at_least 3.4.0 $(get_version_component_range 1-3 ${PV})) ; then
+		if $(ver_test $(ver_cut 1-3 ${PV}) -ge 3.4.0) ; then
 			includes="<INCLUDES>"
 		fi
 	elif ROOT=/ has_version \>=dev-util/cmake-3.4.0_rc1 ; then
@@ -516,6 +520,8 @@ cmake-utils_src_configure() {
 	fi
 	cat > "${build_rules}" <<- _EOF_ || die
 		SET (CMAKE_ASM_COMPILE_OBJECT "<CMAKE_ASM_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "ASM compile command" FORCE)
+		SET (CMAKE_ASM-ATT_COMPILE_OBJECT "<CMAKE_ASM-ATT_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c -x assembler <SOURCE>" CACHE STRING "ASM-ATT compile command" FORCE)
+		SET (CMAKE_ASM-ATT_LINK_FLAGS "-nostdlib" CACHE STRING "ASM-ATT link flags" FORCE)
 		SET (CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C compile command" FORCE)
 		SET (CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> ${includes} ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C++ compile command" FORCE)
 		SET (CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> ${includes} ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
@@ -531,6 +537,7 @@ cmake-utils_src_configure() {
 	local toolchain_file=${BUILD_DIR}/gentoo_toolchain.cmake
 	cat > ${toolchain_file} <<- _EOF_ || die
 		SET (CMAKE_ASM_COMPILER "${myCC/ /;}")
+		SET (CMAKE_ASM-ATT_COMPILER "${myCC/ /;}")
 		SET (CMAKE_C_COMPILER "${myCC/ /;}")
 		SET (CMAKE_CXX_COMPILER "${myCXX/ /;}")
 		SET (CMAKE_Fortran_COMPILER "${myFC/ /;}")
@@ -566,10 +573,10 @@ cmake-utils_src_configure() {
 			# When cross-compiling with a sysroot (e.g. with crossdev's emerge wrappers)
 			# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
 			cat >> "${toolchain_file}" <<- _EOF_ || die
-				set(CMAKE_FIND_ROOT_PATH "${SYSROOT}")
-				set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-				set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-				set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+				SET (CMAKE_FIND_ROOT_PATH "${SYSROOT}")
+				SET (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+				SET (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+				SET (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 			_EOF_
 		fi
 	fi
@@ -585,11 +592,11 @@ cmake-utils_src_configure() {
 
 			ELSE ()
 
-			SET(CMAKE_PREFIX_PATH "${EPREFIX}/usr" CACHE STRING "" FORCE)
-			SET(CMAKE_MACOSX_RPATH ON CACHE BOOL "" FORCE)
-			SET(CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
-			SET(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
-			SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
+			SET (CMAKE_PREFIX_PATH "${EPREFIX}/usr" CACHE STRING "" FORCE)
+			SET (CMAKE_MACOSX_RPATH ON CACHE BOOL "" FORCE)
+			SET (CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
+			SET (CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
+			SET (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
 
 			ENDIF (NOT APPLE)
 		_EOF_
@@ -602,6 +609,8 @@ cmake-utils_src_configure() {
 		SET (CMAKE_GENTOO_BUILD ON CACHE BOOL "Indicate Gentoo package build")
 		SET (LIB_SUFFIX ${libdir/lib} CACHE STRING "library path suffix" FORCE)
 		SET (CMAKE_INSTALL_LIBDIR ${libdir} CACHE PATH "Output directory for libraries")
+		SET (CMAKE_INSTALL_INFODIR "${EPREFIX}/usr/share/info" CACHE PATH "")
+		SET (CMAKE_INSTALL_MANDIR "${EPREFIX}/usr/share/man" CACHE PATH "")
 	_EOF_
 	[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}"
 
@@ -609,6 +618,7 @@ cmake-utils_src_configure() {
 	if [[ ${CMAKE_BUILD_TYPE} != Gentoo && ${EAPI} != 5 ]]; then
 		cat >> ${common_config} <<- _EOF_ || die
 			SET (CMAKE_ASM_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+			SET (CMAKE_ASM-ATT_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			SET (CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			SET (CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			SET (CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
@@ -643,7 +653,7 @@ cmake-utils_src_configure() {
 	fi
 
 	# Common configure parameters (overridable)
-	# NOTE CMAKE_BUILD_TYPE can be only overriden via CMAKE_BUILD_TYPE eclass variable
+	# NOTE CMAKE_BUILD_TYPE can be only overridden via CMAKE_BUILD_TYPE eclass variable
 	# No -DCMAKE_BUILD_TYPE=xxx definitions will be in effect.
 	local cmakeargs=(
 		${warn_unused_cli}

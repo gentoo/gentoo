@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: aspell-dict.eclass
+# @ECLASS: myspell-r2.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
 # @AUTHOR:

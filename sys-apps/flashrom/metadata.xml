@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>peter@stuge.se</email>
 		<name>Peter Stuge</name>
-		<description>Please CC on all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

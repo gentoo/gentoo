@@ -1,5 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
@@ -20,9 +22,7 @@ RDEPEND=">=net-misc/wget-1.9-r2
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto
-	>=sys-apps/sed-4.1.5-r1"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${MY_PN}-${PV}/${MY_PN}
 

@@ -27,10 +27,7 @@ DEPEND="${RDEPEND}
 	app-text/xmlto"
 RDEPEND="${RDEPEND}
 	python? (
-		|| (
-			dev-python/protobuf-python[${PYTHON_USEDEP}]
-			dev-libs/protobuf[python,${PYTHON_USEDEP}]
-		)
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
 		dev-python/ipaddr[${PYTHON_USEDEP}]
 	)"
 

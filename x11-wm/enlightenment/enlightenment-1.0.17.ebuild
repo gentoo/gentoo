@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	S=${WORKDIR}/e16/e
 else
 	SRC_URI="mirror://sourceforge/enlightenment/e16-${PV/_/-}.tar.gz"
-	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86"
 	S=${WORKDIR}/e16-${PV/_pre?}
 fi
 inherit eutils
@@ -44,11 +44,7 @@ RDEPEND="pulseaudio? ( media-sound/pulseaudio )
 	virtual/libiconv"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xextproto
-	x11-proto/xf86vidmodeproto
-	xinerama? ( x11-proto/xineramaproto )
-	xcomposite? ( x11-proto/compositeproto )
-	x11-proto/xproto
+	x11-base/xorg-proto
 	nls? ( sys-devel/gettext )"
 PDEPEND="doc? ( app-doc/edox-data )"
 

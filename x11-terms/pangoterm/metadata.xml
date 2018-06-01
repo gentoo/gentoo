@@ -4,6 +4,5 @@
 	<maintainer type="person">
 		<email>tranquility@gentoo.org</email>
 		<name>Ole Reifschneider</name>
-		<description>A GTK/Pango-based terminal that uses libvterm to provide terminal emulation</description>
 	</maintainer>
 </pkgmetadata>

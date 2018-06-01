@@ -15,11 +15,6 @@ IUSE="search-domains"
 
 RDEPEND=">=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r7
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.10-avahi-socket.patch \

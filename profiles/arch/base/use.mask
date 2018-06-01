@@ -24,9 +24,6 @@ cuda
 # masking here, and unmasking in arch/x86/use.mask
 vidix
 
-# Mask as long its not available everywhere
-zeitgeist
-
 # vdpau is currently only available with binary nvidia-drivers, thus amd64/x86*
 vdpau
 
@@ -132,6 +129,7 @@ video_cards_i915
 video_cards_i965
 video_cards_intel
 video_cards_nvidia
+video_cards_vesa
 video_cards_via
 video_cards_vmware
 video_cards_virtualbox
@@ -235,10 +233,8 @@ hppa
 ia64
 m68k
 mips
-nios2
 ppc
 ppc64
-riscv
 s390
 sh
 sparc

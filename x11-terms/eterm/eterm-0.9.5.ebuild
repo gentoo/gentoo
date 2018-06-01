@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -16,7 +16,7 @@ else
 		!minimal? ( http://www.eterm.org/download/Eterm-bg-${PV}.tar.gz )
 		mirror://sourceforge/eterm/${MY_P}.tar.gz
 		!minimal? ( mirror://sourceforge/eterm/Eterm-bg-${PV}.tar.gz )"
-	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86"
 fi
 
 DESCRIPTION="A vt102 terminal emulator for X"
@@ -31,8 +31,6 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXt
 	x11-libs/libICE
 	x11-libs/libSM
-	x11-proto/xextproto
-	x11-proto/xproto
 	>=x11-libs/libast-0.6.1
 	media-libs/imlib2[X]
 	media-fonts/font-misc-misc

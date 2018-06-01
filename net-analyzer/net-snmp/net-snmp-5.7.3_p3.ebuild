@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -82,6 +82,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/${PN}-5.7.3-perl524.patch
 	eapply "${FILESDIR}"/${PN}-5.7.3-perl524-2.patch
 	eapply "${FILESDIR}"/${PN}-5.7.3-mariadb-10.2.patch
+	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 
 	eapply "${WORKDIR}"/patches/*.patch
 

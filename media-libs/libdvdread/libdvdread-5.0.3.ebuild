@@ -20,9 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+css static-libs"
 
-RDEPEND="css? ( >=media-libs/libdvdcss-1.3.0[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r4
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND="css? ( >=media-libs/libdvdcss-1.3.0[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS TODO README )

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,7 @@ JEDIT_HOME="/usr/share/${PN}"
 src_prepare() {
 	mkdir -p lib/{ant-contrib,compile,default-plugins,scripting,test} || die
 
-	epatch "${FILESDIR}"/${P}-build-xml.patch
+	eapply "${FILESDIR}"/${P}-build-xml.patch
 
 	java-ant_xml-rewrite -f "${S}/build.xml" -c \
 		-e javadoc \

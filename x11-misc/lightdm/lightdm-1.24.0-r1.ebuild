@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,7 +55,6 @@ src_prepare() {
 		data/lightdm.conf || die "Failed to fix lightdm.conf"
 
 	# use correct version of qmake. bug #566950
-	sed -i -e "/AC_CHECK_TOOLS(MOC4/a AC_SUBST(MOC4,$(qt4_get_bindir)/moc)" configure.ac || die
 	sed -i -e "/AC_CHECK_TOOLS(MOC5/a AC_SUBST(MOC5,$(qt5_get_bindir)/moc)" configure.ac || die
 
 	default
@@ -127,4 +126,8 @@ src_install() {
 	readme.gentoo_create_doc
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_postinst() {
+	systemd_reenable "${PN}.service"
 }

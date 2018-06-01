@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,7 +28,7 @@ DEPEND="${DEPEND}
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1-with-linking-exception"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd"
 
 DOCS=( "CHANGES" "README.md" )
 

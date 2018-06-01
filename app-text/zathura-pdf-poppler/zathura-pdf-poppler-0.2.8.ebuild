@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-pdf-poppler.git"
 	EGIT_BRANCH="develop"
 else
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
 fi
 
@@ -21,7 +21,7 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE=""
 
-RDEPEND="app-text/poppler:=[cairo]
+RDEPEND="app-text/poppler[cairo]
 	>=app-text/zathura-0.3.8
 	x11-libs/cairo:="
 DEPEND="${RDEPEND}
@@ -32,7 +32,6 @@ src_configure() {
 		CC="$(tc-getCC)"
 		LD="$(tc-getLD)"
 		VERBOSE=1
-		DESTDIR="${D}"
 	)
 }
 
@@ -41,6 +40,6 @@ src_compile() {
 }
 
 src_install() {
-	emake "${myzathuraconf[@]}" install
+	emake "${myzathuraconf[@]}" DESTDIR="${ED%/}" install
 	dodoc AUTHORS
 }

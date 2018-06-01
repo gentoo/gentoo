@@ -1,0 +1,28 @@
+From 919852dce98ce60abf494edfbe3c57d7a08545e4 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 26 Mar 2018 23:37:10 +1300
+Subject: Force setting exapnd-external-entities on libxml for this test
+
+Gentoo defaults expand-external-entities to off, which naturally breaks
+this test which explicitly uses external entities.
+
+Bug: https://bugs.gentoo.org/623678
+---
+ t/31-external-entities-libxml.t | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/t/31-external-entities-libxml.t b/t/31-external-entities-libxml.t
+index 71f6eb9..8c9df11 100644
+--- a/t/31-external-entities-libxml.t
++++ b/t/31-external-entities-libxml.t
+@@ -51,6 +51,7 @@ EOX
+ ## custom parser
+ {
+     my $libxml = XML::LibXML->new;
++    $libxml->expand_entities(1);
+     my $entry = XML::Atom::Entry->new(Stream => \$xml, Parser => $libxml);
+     is $entry->title, "Guest Author", "got title";
+     my $content = $entry->content->body;
+-- 
+2.16.2
+

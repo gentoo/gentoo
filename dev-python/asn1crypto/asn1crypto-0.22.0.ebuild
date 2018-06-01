@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python ASN.1 library with a focus on performance and a pythonic API"
-HOMEPAGE="https://github.com/wbond/asn1crypto/ https://pypi.python.org/pypi/asn1crypto/"
+HOMEPAGE="https://github.com/wbond/asn1crypto/ https://pypi.org/project/asn1crypto/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 inherit readme.gentoo-r1 user distutils-r1
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-worker"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-worker/"
 
 MY_V="${PV/_p/p}"
 MY_P="${PN}-${MY_V}"

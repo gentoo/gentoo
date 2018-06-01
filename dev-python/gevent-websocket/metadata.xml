@@ -4,12 +4,10 @@
 <maintainer type="person">
   <email>ultrabug@gentoo.org</email>
   <name>Ultrabug</name>
-  <description>main maintainer</description>
 </maintainer>
 <maintainer type="person">
   <email>julien@thebault.co</email>
   <name>Lujeni</name>
-  <description>Proxy Maintainer. CC on bugs</description>
 </maintainer>
 <maintainer type="project">
   <email>python@gentoo.org</email>

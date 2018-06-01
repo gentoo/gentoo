@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs eutils multilib multilib-minimal
 
 DESCRIPTION="Audio processing system for plugins to extract information from audio data"
-HOMEPAGE="http://www.vamp-plugins.org"
+HOMEPAGE="https://www.vamp-plugins.org"
 SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/1514/${P}.tar.gz"
 
 LICENSE="BSD"

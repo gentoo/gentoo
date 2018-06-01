@@ -1,0 +1,29 @@
+From 66b262c344deb6ac4924966a584e8aeb3d899180 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 17 Apr 2018 12:07:04 +0200
+Subject: [PATCH] Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+
+---
+ src/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f675d9a..57af1ed 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -161,9 +161,9 @@ qt5_add_dbus_adaptor(kphononplayer_SRCS org.kde.kmplayer.streamslave.xml
+ 
+ add_executable(kphononplayer ${kphononplayer_SRCS})
+ 
+-qt5_use_modules(kphononplayer Core DBus Widgets X11Extras)
+-
+-target_link_libraries(kphononplayer Phonon::phonon4qt5 ${XCB_LIBRARIES})
++target_link_libraries(kphononplayer Phonon::phonon4qt5 ${XCB_LIBRARIES}
++    Qt5::Core Qt5::DBus Qt5::Widgets Qt5::X11Extras
++)
+ 
+ install(TARGETS kphononplayer ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+-- 
+2.17.0
+

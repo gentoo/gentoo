@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="DNS Benchmark Utility"
-HOMEPAGE="https://code.google.com/p/namebench/"
+HOMEPAGE="https://github.com/google/namebench"
 SRC_URI="https://namebench.googlecode.com/files/${P}-source.tgz"
 
 LICENSE="Apache-2.0"

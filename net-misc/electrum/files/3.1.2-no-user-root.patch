@@ -1,0 +1,17 @@
+diff -Naur Electrum-3.1.2.orig/setup.py Electrum-3.1.2/setup.py
+--- Electrum-3.1.2.orig/setup.py	2018-03-28 04:51:11.000000000 -0400
++++ Electrum-3.1.2/setup.py	2018-03-31 15:05:45.540757981 -0400
+@@ -28,13 +28,6 @@
+     opts, _ = parser.parse_known_args(sys.argv[1:])
+     usr_share = os.path.join(sys.prefix, "share")
+     icons_dirname = 'pixmaps'
+-    if not os.access(opts.root_path + usr_share, os.W_OK) and \
+-       not os.access(opts.root_path, os.W_OK):
+-        icons_dirname = 'icons'
+-        if 'XDG_DATA_HOME' in os.environ.keys():
+-            usr_share = os.environ['XDG_DATA_HOME']
+-        else:
+-            usr_share = os.path.expanduser('~/.local/share')
+     data_files += [
+         (os.path.join(usr_share, 'applications/'), ['electrum.desktop']),
+         (os.path.join(usr_share, icons_dirname), ['icons/electrum.png'])

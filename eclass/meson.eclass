@@ -92,6 +92,42 @@ __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
 
+
+read -d '' __MESON_ARRAY_PARSER <<"EOF"
+import shlex
+import sys
+
+# See http://mesonbuild.com/Syntax.html#strings
+def quote(str):
+	escaped = str.replace("\\\\", "\\\\\\\\").replace("'", "\\\\'")
+	return "'{}'".format(escaped)
+
+print("[{}]".format(
+	", ".join([quote(x) for x in shlex.split(" ".join(sys.argv[1:]))])))
+EOF
+
+# @FUNCTION: _meson_env_array
+# @INTERNAL
+# @DESCRIPTION:
+# Parses the command line flags and converts them into an array suitable for
+# use in a cross file.
+#
+# Input: --single-quote=\' --double-quote=\" --dollar=\$ --backtick=\`
+#        --backslash=\\ --full-word-double="Hello World"
+#        --full-word-single='Hello World'
+#        --full-word-backslash=Hello\ World
+#        --simple --unicode-8=© --unicode-16=𐐷 --unicode-32=𐤅
+#
+# Output: ['--single-quote=\'', '--double-quote="', '--dollar=$',
+#          '--backtick=`', '--backslash=\\', '--full-word-double=Hello World',
+#          '--full-word-single=Hello World',
+#          '--full-word-backslash=Hello World', '--simple', '--unicode-8=©',
+#          '--unicode-16=𐐷', '--unicode-32=𐤅']
+#
+_meson_env_array() {
+	python -c "${__MESON_ARRAY_PARSER}" "$@"
+}
+
 # @FUNCTION: _meson_create_cross_file
 # @INTERNAL
 # @DESCRIPTION:
@@ -121,13 +157,29 @@ _meson_create_cross_file() {
 	# This may require adjustment based on CFLAGS
 	local cpu=${CHOST%%-*}
 
-	cat > "${T}/meson.${CHOST}" <<-EOF
+	cat > "${T}/meson.${CHOST}.${ABI}" <<-EOF
 	[binaries]
-	ar = '${AR}'
-	c = '${CC}'
-	cpp = '${CXX}'
-	pkgconfig = '${PKG_CONFIG}'
-	strip = '${STRIP}'
+	ar = $(_meson_env_array "$(tc-getAR)")
+	c = $(_meson_env_array "$(tc-getCC)")
+	cpp = $(_meson_env_array "$(tc-getCXX)")
+	fortran = $(_meson_env_array "$(tc-getFC)")
+	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
+	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
+	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
+	pkgconfig = '$(tc-getPKG_CONFIG)'
+	strip = $(_meson_env_array "$(tc-getSTRIP)")
+
+	[properties]
+	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
+	c_link_args = $(_meson_env_array "${CFLAGS} ${LDFLAGS}")
+	cpp_args = $(_meson_env_array "${CXXFLAGS} ${CPPFLAGS}")
+	cpp_link_args = $(_meson_env_array "${CXXFLAGS} ${LDFLAGS}")
+	fortran_args = $(_meson_env_array "${FCFLAGS}")
+	fortran_link_args = $(_meson_env_array "${FCFLAGS} ${LDFLAGS}")
+	objc_args = $(_meson_env_array "${OBJCFLAGS} ${CPPFLAGS}")
+	objc_link_args = $(_meson_env_array "${OBJCFLAGS} ${LDFLAGS}")
+	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS} ${CPPFLAGS}")
+	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
 
 	[host_machine]
 	system = '${system}'
@@ -166,24 +218,9 @@ meson_src_configure() {
 		--wrap-mode nodownload
 		)
 
-	# Both meson(1) and _meson_create_cross_file need these
-	local -x AR=$(tc-getAR)
-	local -x CC=$(tc-getCC)
-	local -x CXX=$(tc-getCXX)
-	local -x PKG_CONFIG=$(tc-getPKG_CONFIG)
-	local -x STRIP=$(tc-getSTRIP)
-
-	if tc-is-cross-compiler; then
+	if tc-is-cross-compiler || [[ ${ABI} != ${DEFAULT_ABI-${ABI}} ]]; then
 		_meson_create_cross_file || die "unable to write meson cross file"
-		mesonargs+=(
-			--cross-file "${T}/meson.${CHOST}"
-		)
-		# In cross mode, meson uses these as the native/build programs
-		AR=$(tc-getBUILD_AR)
-		CC=$(tc-getBUILD_CC)
-		CXX=$(tc-getBUILD_CXX)
-		PKG_CONFIG=$(tc-getBUILD_PKG_CONFIG)
-		STRIP=$(tc-getBUILD_STRIP)
+		mesonargs+=( --cross-file "${T}/meson.${CHOST}.${ABI}" )
 	fi
 
 	# https://bugs.gentoo.org/625396
@@ -196,7 +233,7 @@ meson_src_configure() {
 	set -- meson "${mesonargs[@]}" "$@" \
 		"${EMESON_SOURCE:-${S}}" "${BUILD_DIR}"
 	echo "$@"
-	"$@" || die
+	tc-env_build "$@" || die
 }
 
 # @FUNCTION: meson_src_compile

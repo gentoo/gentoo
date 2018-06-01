@@ -1,5 +1,5 @@
---- scala-2.12.2-orig/project/VersionUtil.scala	2017-04-13 02:16:08.000000000 +1000
-+++ scala-2.12.2/project/VersionUtil.scala	2017-05-04 23:45:50.715285243 +1000
+--- a/project/VersionUtil.scala
++++ b/project/VersionUtil.scala
 @@ -80,18 +80,8 @@
  
      val (dateObj, sha) = {

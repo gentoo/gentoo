@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,7 +6,7 @@ EAPI="4"
 inherit user multilib flag-o-matic
 
 DESCRIPTION="Library that allows non-privileged apps to write utmp (login) info"
-HOMEPAGE="http://altlinux.org/index.php?module=sisyphus&package=libutempter"
+HOMEPAGE="https://altlinux.org/index.php?module=sisyphus&package=libutempter"
 SRC_URI="ftp://ftp.altlinux.org/pub/people/ldv/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

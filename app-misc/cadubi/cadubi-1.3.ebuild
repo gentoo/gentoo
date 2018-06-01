@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils multilib
+EAPI=6
 
-DESCRIPTION="CADUBI is an application that allows you to draw ASCII-Art images"
+DESCRIPTION="An application that allows you to draw ASCII-Art images"
 HOMEPAGE="http://langworth.com/CadubiProject"
 SRC_URI="http://langworth.com/downloads/${P}.tar.gz"
 
@@ -15,14 +15,13 @@ IUSE=""
 DEPEND="dev-lang/perl
 	>=dev-perl/TermReadKey-2.21"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-helpfile.patch
+src_prepare() {
+	default
+	eapply "${FILESDIR}"/${P}-helpfile.patch
 }
 
 src_install() {
-	dobin cadubi || die
+	dobin cadubi
 	insinto /usr/$(get_libdir)/${PN}
 	doins help.txt
 	dodoc README

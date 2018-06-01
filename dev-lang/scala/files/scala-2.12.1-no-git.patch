@@ -1,5 +1,5 @@
---- scala-2.12.1-orig/tools/get-scala-commit-date	2016-12-05 20:45:09.000000000 +1100
-+++ scala-2.12.1/tools/get-scala-commit-date	2016-12-27 16:41:41.695942033 +1100
+--- a/tools/get-scala-commit-date
++++ b/tools/get-scala-commit-date
 @@ -10,13 +10,8 @@
  
  [[ $# -eq 0 ]] || cd "$1"
@@ -16,8 +16,8 @@
  
  # 20120324
  echo "${lastcommitdate//-/}-${lastcommithours//:/}"
---- scala-2.12.1-orig/tools/get-scala-commit-sha	2016-12-05 20:45:09.000000000 +1100
-+++ scala-2.12.1/tools/get-scala-commit-sha	2016-12-27 16:44:07.393422207 +1100
+--- a/tools/get-scala-commit-sha
++++ b/tools/get-scala-commit-sha
 @@ -10,13 +10,7 @@
  
  [[ $# -eq 0 ]] || cd "$1"

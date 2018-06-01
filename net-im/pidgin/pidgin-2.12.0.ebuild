@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -74,7 +74,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:0= )
 	sasl? ( dev-libs/cyrus-sasl:2 )
 	networkmanager? ( net-misc/networkmanager )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn:= )
 	!<x11-plugins/pidgin-facebookchat-1.69-r1"
 	# Mono support crashes pidgin
 	#mono? ( dev-lang/mono )"
@@ -87,7 +87,7 @@ DEPEND="$RDEPEND
 	dev-perl/XML-Parser
 	virtual/pkgconfig
 	gtk? (
-		x11-proto/scrnsaverproto
+		x11-base/xorg-proto
 		${NLS_DEPEND}
 	)
 	dbus? ( ${PYTHON_DEPS} )

@@ -9,7 +9,7 @@ SRC_URI="https://github.com/mongodb/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~x86"
+KEYWORDS="amd64 hppa x86"
 IUSE="debug examples libressl sasl ssl static-libs test"
 
 RDEPEND="app-arch/snappy:=
@@ -22,6 +22,10 @@ RDEPEND="app-arch/snappy:=
 	)"
 DEPEND="${RDEPEND}
 	test? ( dev-db/mongodb )"
+
+# No tests on x86 because tests require dev-db/mongodb which don't support
+# x86 anymore (bug #645994)
+RESTRICT="x86? ( test )"
 
 src_prepare() {
 	# remove bundled libs

@@ -11,7 +11,6 @@
 		<flag name="projects">Adds support for projects</flag>
 		<flag name="pygobject">Adds support for pygobject</flag>
 		<flag name="shared">Build shared library</flag>
-		<flag name="static">Build static library</flag>
 		<flag name="tools">Build associated tools</flag>
 	</use>
 	<longdescription lang="en">

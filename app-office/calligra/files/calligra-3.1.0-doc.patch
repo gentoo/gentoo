@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2018-03-15 16:59:36.624682111 +0100
++++ b/CMakeLists.txt	2018-03-15 17:07:02.306267220 +0100
+@@ -1160,9 +1160,7 @@
+   add_subdirectory(braindump)
+ endif()
+ 
+-if(SHOULD_BUILD_DOC)
+-    add_subdirectory(doc)
+-endif()
++add_subdirectory(doc)
+ 
+ if(SHOULD_BUILD_PART_QTQUICK)
+     add_subdirectory(qtquick)

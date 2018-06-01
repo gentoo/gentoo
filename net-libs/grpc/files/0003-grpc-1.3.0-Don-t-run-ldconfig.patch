@@ -1,0 +1,53 @@
+From 40f602c0beeb09197507d280b150174e09300d7f Mon Sep 17 00:00:00 2001
+From: Chirantan Ekbote <chirantan@google.com>
+Date: Mon, 10 Jul 2017 13:26:04 -0700
+Subject: [PATCH 5/5] grpc-1.3.0: Don't run ldconfig
+
+It doesn't make sense to run ldconfig for a staged install.  Remove it.
+---
+ Makefile | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 86bd66a5e0..f4c2a5bcb9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2582,11 +2582,6 @@ else ifneq ($(SYSTEM),Darwin)
+ 	$(Q) ln -sf $(SHARED_PREFIX)grpc_unsecure$(SHARED_VERSION_CORE).$(SHARED_EXT_CORE) $(prefix)/$(INSTALL_LIBDIR)/libgrpc_unsecure.so.3
+ 	$(Q) ln -sf $(SHARED_PREFIX)grpc_unsecure$(SHARED_VERSION_CORE).$(SHARED_EXT_CORE) $(prefix)/$(INSTALL_LIBDIR)/libgrpc_unsecure.so
+ endif
+-ifneq ($(SYSTEM),MINGW32)
+-ifneq ($(SYSTEM),Darwin)
+-	$(Q) ldconfig || true
+-endif
+-endif
+ 
+ 
+ install-shared_cxx: shared_cxx strip-shared_cxx install-shared_c install-pkg-config_cxx
+@@ -2635,11 +2630,6 @@ else ifneq ($(SYSTEM),Darwin)
+ 	$(Q) ln -sf $(SHARED_PREFIX)grpc++_unsecure$(SHARED_VERSION_CPP).$(SHARED_EXT_CPP) $(prefix)/$(INSTALL_LIBDIR)/libgrpc++_unsecure.so.1
+ 	$(Q) ln -sf $(SHARED_PREFIX)grpc++_unsecure$(SHARED_VERSION_CPP).$(SHARED_EXT_CPP) $(prefix)/$(INSTALL_LIBDIR)/libgrpc++_unsecure.so
+ endif
+-ifneq ($(SYSTEM),MINGW32)
+-ifneq ($(SYSTEM),Darwin)
+-	$(Q) ldconfig || true
+-endif
+-endif
+ 
+ 
+ install-shared_csharp: shared_csharp strip-shared_csharp
+@@ -2652,11 +2642,6 @@ else ifneq ($(SYSTEM),Darwin)
+ 	$(Q) ln -sf $(SHARED_PREFIX)grpc_csharp_ext$(SHARED_VERSION_CSHARP).$(SHARED_EXT_CSHARP) $(prefix)/$(INSTALL_LIBDIR)/libgrpc_csharp_ext.so.1
+ 	$(Q) ln -sf $(SHARED_PREFIX)grpc_csharp_ext$(SHARED_VERSION_CSHARP).$(SHARED_EXT_CSHARP) $(prefix)/$(INSTALL_LIBDIR)/libgrpc_csharp_ext.so
+ endif
+-ifneq ($(SYSTEM),MINGW32)
+-ifneq ($(SYSTEM),Darwin)
+-	$(Q) ldconfig || true
+-endif
+-endif
+ 
+ 
+ install-plugins: $(PROTOC_PLUGINS)
+-- 
+2.14.0.rc0.284.gd933b75aa4-goog
+

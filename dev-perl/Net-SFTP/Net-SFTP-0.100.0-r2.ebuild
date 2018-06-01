@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Secure File Transfer Protocol client"
 
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/Net-SSH-Perl-1.240.0"

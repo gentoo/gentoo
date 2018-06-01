@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="Functional or integrated test suites for OpenStack projects"
-HOMEPAGE="https://pypi.python.org/pypi/tempest-lib https://github.com/openstack/tempest-lib"
+HOMEPAGE="https://pypi.org/project/tempest-lib/ https://github.com/openstack/tempest-lib"
 SRC_URI="mirror://pypi/t/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

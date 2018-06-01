@@ -1,22 +1,5 @@
 --- a/opt/vivaldi-snapshot/vivaldi-snapshot
 +++ b/opt/vivaldi-snapshot/vivaldi-snapshot
-@@ -32,14 +32,14 @@
-       # Chromium's FFMpeg version N-89284-gba4dfad is the oldest known working version
-       # chromium/third_party/ffmpeg/chromium/config/Chromium/linux/x64/libavutil/ffversion.h
-       if [ -r "$1" ]; then
--        if [ `grep -aom1 'FFmpeg version N-[0-9]\+-' "$1" | cut -f2 -d-` -ge "89284" ]; then
-+#        if [ `grep -aom1 'FFmpeg version N-[0-9]\+-' "$1" | cut -f2 -d-` -ge "89284" ]; then
-           if [[ -n "$LD_PRELOAD" ]]; then
-             export LD_PRELOAD="$LD_PRELOAD:$1"
-           else
-             export LD_PRELOAD="$1"
-           fi
-           export VIVALDI_FFMPEG_FOUND=YES
--        fi
-+#        fi
-       fi
-     fi
-   fi
 @@ -54,6 +54,7 @@
  # Check for libs in preferred order.
  # Where possible, use other files/directories to confirm it's the correct variant.

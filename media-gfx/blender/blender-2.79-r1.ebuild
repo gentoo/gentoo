@@ -8,9 +8,9 @@ inherit check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils \
 	pax-utils python-single-r1 toolchain-funcs versionator
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
-HOMEPAGE="http://www.blender.org"
+HOMEPAGE="https://www.blender.org"
 
-SRC_URI="http://download.blender.org/source/${P}.tar.gz"
+SRC_URI="https://download.blender.org/source/${P}.tar.gz"
 
 # Blender can have letters in the version string,
 # so strip of the letter if it exists.
@@ -18,7 +18,7 @@ MY_PV="$(get_version_component_range 1-2)"
 
 SLOT="0"
 LICENSE="|| ( GPL-2 BL )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+bullet +dds +elbeem +game-engine +openexr collada colorio \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
 	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \

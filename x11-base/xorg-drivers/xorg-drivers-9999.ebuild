@@ -95,7 +95,10 @@ PDEPEND="
 	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
-	video_cards_virtualbox?    ( x11-drivers/xf86-video-virtualbox )
+	video_cards_virtualbox?    ( || (
+					x11-drivers/xf86-video-vboxvideo
+					x11-drivers/xf86-video-virtualbox
+					) )
 	video_cards_vmware?        ( x11-drivers/xf86-video-vmware )
 	video_cards_voodoo?        ( x11-drivers/xf86-video-voodoo )
 
@@ -135,6 +138,7 @@ PDEPEND="
 	!<x11-drivers/xf86-input-wacom-0.34.0
 	!<x11-drivers/xf86-video-amdgpu-1.2.0
 	!<x11-drivers/xf86-video-ati-7.8.0
+	!<x11-drivers/xf86-video-fbdev-0.5.0
 	!<x11-drivers/xf86-video-glint-1.2.9
 	!<x11-drivers/xf86-video-intel-2.99.917_p20160122
 	!<x11-drivers/xf86-video-mga-1.6.5
@@ -145,5 +149,5 @@ PDEPEND="
 	!<x11-drivers/xf86-video-siliconmotion-1.7.9
 	!<x11-drivers/xf86-video-tdfx-1.4.7
 	!<x11-drivers/xf86-video-virtualbox-5.1.14
-	!<x11-drivers/xf86-video-vmware-13.2.1
+	!<x11-drivers/xf86-video-vmware-13.3.0
 "

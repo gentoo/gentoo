@@ -6,12 +6,12 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="A pure-python graphics and GUI library built on PyQt and numpy"
-HOMEPAGE="http://www.pyqtgraph.org/ https://pypi.python.org/pypi/pyqtgraph/"
+HOMEPAGE="http://www.pyqtgraph.org/ https://pypi.org/project/pyqtgraph/"
 SRC_URI="http://www.pyqtgraph.org/downloads/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples opengl svg"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]

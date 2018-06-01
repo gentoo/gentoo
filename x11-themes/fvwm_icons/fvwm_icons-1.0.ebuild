@@ -1,5 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 DESCRIPTION="Icons for use with FVWM"
 HOMEPAGE="http://www.fvwm.org/"
@@ -11,12 +13,11 @@ KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=x11-wm/fvwm-2.6.2"
-DEPEND=""
 
 S=${WORKDIR}/${PN}
 
 src_install() {
 	dodir /usr/share/icons/fvwm
 	insinto /usr/share/icons/fvwm
-	doins "${S}"/*
+	doins -r .
 }

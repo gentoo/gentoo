@@ -1,0 +1,20 @@
+_ebuildtester() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--help --portage-dir --atom --threads"
+
+    if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+
+    case "${prev}" in
+        --portage-dir)
+            COMPREPLY=( $(compgen -o dirnames -A directory ${cur}) )
+            ;;
+    esac
+
+}
+complete -F _ebuildtester ebuildtester

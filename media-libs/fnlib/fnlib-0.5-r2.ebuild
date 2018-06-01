@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 inherit autotools
 
@@ -17,16 +17,13 @@ IUSE=""
 DEPEND="media-libs/imlib"
 RDEPEND="${DEPEND}"
 
+DOCS=( AUTHORS ChangeLog HACKING NEWS README doc/fontinfo.README )
+
 src_prepare() {
+	default
 	eautoreconf
 }
 
 src_configure() {
-	econf --sysconfdir=/etc/fnlib
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog HACKING NEWS README
-	dodoc doc/fontinfo.README
+	econf --sysconfdir="${EPREFIX}"/etc/fnlib
 }

@@ -12,10 +12,6 @@ firebird
 # The modern versions of CUDA SDK are not suitable for stabilization.
 cuda
 
-# Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
-# sys-libs/libapparmor
-apparmor
-
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # no stable versions on amd64
 clozurecl

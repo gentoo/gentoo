@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit flag-o-matic eutils python-single-r1
+inherit epatch eutils flag-o-matic python-single-r1
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -20,7 +20,7 @@ case ${PV} in
 9999*)
 	# live git tree
 	EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
-	inherit git-2
+	inherit git-r3
 	SRC_URI=""
 	;;
 *.*.50.2???????)

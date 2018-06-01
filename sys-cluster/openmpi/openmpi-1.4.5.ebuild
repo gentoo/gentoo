@@ -17,7 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 RESTRICT="mpi-threads? ( test )"
 
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads pbs romio threads vt"
 RDEPEND="
 	pbs? ( sys-cluster/torque )
@@ -28,7 +28,8 @@ RDEPEND="
 	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
-	!sys-cluster/mpiexec"
+	!sys-cluster/mpiexec
+	!sys-cluster/pmix"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}

@@ -14,7 +14,7 @@ MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot/"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -62,14 +62,12 @@ DEPEND="${RDEPEND}
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
 		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 		dev-python/pyjade[${PYTHON_USEDEP}]
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
@@ -82,6 +80,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
+
+if [[ ${PV} != *9999 ]]; then
+	PATCHES=(
+		"${FILESDIR}/Remove-distro-version-test.patch"
+	)
+fi
 
 pkg_setup() {
 	enewuser buildbot

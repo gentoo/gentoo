@@ -5,4 +5,9 @@
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
+	<use>
+		<flag name="vnc-client">Adds support for external VNC client</flag>
+		<flag name="savevm">Adds support for QEMU savevm snapshots (experimental, QEMU must be patched)</flag>
+		<flag name="ovf">Adds support for OVA/OVF import</flag>
+	</use>
 </pkgmetadata>

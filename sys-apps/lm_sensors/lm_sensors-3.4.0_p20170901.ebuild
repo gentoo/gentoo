@@ -19,7 +19,7 @@ LICENSE="GPL-2+ LGPL-2.1"
 # SUBSLOT based on SONAME of libsensors.so
 SLOT="0/4.4.0"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="contrib sensord static-libs"
 
 COMMON_DEPS="
@@ -113,10 +113,10 @@ multilib_src_configure() {
 	if multilib_is_native_abi && use sensord; then
 		# sensord requires net-analyzer/rrdtool which doesn't have real multilib
 		# support. To prevent errors like
-		# 
-		#   skipping incompatible /usr/lib/librrd.so when searching for -lrrd 
+		#
+		#   skipping incompatible /usr/lib/librrd.so when searching for -lrrd
 		#   cannot find -lrrd
-		# 
+		#
 		# we only build sensord when we are building for profile's native ABI
 		# (it doesn't affect libsensors.so).
 		sed -i -e 's:^#\(PROG_EXTRA.*\):\1:' Makefile || \

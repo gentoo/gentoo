@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="+libunwind +static-libs test"
+IUSE="+libunwind +static-libs test elibc_musl"
 
 RDEPEND="
 	libunwind? (
@@ -31,7 +31,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/llvm-4
 	test? ( >=sys-devel/clang-3.9.0
-		~sys-libs/libcxx-${PV}[libcxxabi(-)]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )"
 
 S=${WORKDIR}/${P/_/}.src
@@ -72,11 +71,38 @@ multilib_src_configure() {
 		-DLIBCXXABI_LIBUNWIND_SOURCES="${T}"
 	)
 	if use test; then
-		mycmakeargs+=(
-			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
-		)
+		if has_version '>=sys-devel/llvm-6'; then
+			mycmakeargs+=(
+				-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			)
+		else
+			mycmakeargs+=(
+				-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			)
+		fi
 	fi
 	cmake-utils_src_configure
+}
+
+build_libcxx() {
+	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
+	local CMAKE_USE_DIR=${WORKDIR}/libcxx
+	local BUILD_DIR=${BUILD_DIR}/libcxx
+	local mycmakeargs=(
+		-DLIBCXX_LIBDIR_SUFFIX=
+		-DLIBCXX_ENABLE_SHARED=ON
+		-DLIBCXX_ENABLE_STATIC=OFF
+		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
+		-DLIBCXX_CXX_ABI=libcxxabi
+		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${S}"/include
+		-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=OFF
+		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+		-DLIBCXX_HAS_GCC_S_LIB=OFF
+		-DLIBCXX_INCLUDE_TESTS=OFF
+	)
+
+	cmake-utils_src_configure
+	cmake-utils_src_compile
 }
 
 multilib_src_test() {
@@ -84,6 +110,10 @@ multilib_src_test() {
 
 	[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
 	sed -i -e "/cxx_under_test/s^\".*\"^\"${clang_path}\"^" test/lit.site.cfg || die
+
+	# build a local copy of libc++ for testing to avoid circular dep
+	build_libcxx
+	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	cmake-utils_src_make check-libcxxabi
 }

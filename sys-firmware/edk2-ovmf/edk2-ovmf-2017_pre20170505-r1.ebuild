@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ else
 	SRC_URI="
 		binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )
 		!binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}.tar.xz )"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
 	IUSE="+binary"
 	REQUIRED_USE+="
 		!amd64? ( binary )

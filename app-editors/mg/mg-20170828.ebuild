@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="MicroGnuEmacs, a port from the BSDs"
-HOMEPAGE="http://homepage.boetes.org/software/mg/"
-SRC_URI="http://homepage.boetes.org/software/mg/${P}.tar.gz"
+HOMEPAGE="https://homepage.boetes.org/software/mg/"
+SRC_URI="https://homepage.boetes.org/software/mg/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

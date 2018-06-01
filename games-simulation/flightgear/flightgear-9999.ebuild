@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ IUSE="dbus debug examples gdal openmp qt5 test +udev +utils vim-syntax"
 # zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	>=dev-games/openscenegraph-3.2.0[png]
+	>=dev-games/openscenegraph-3.2.0[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
@@ -31,11 +31,11 @@ COMMON_DEPEND="
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	gdal? ( >=sci-libs/gdal-2.0.0:0 )
 	qt5? (
-		>=dev-qt/qtcore-5.4.1:5
-		>=dev-qt/qtdeclarative-5.4.1:5
-		>=dev-qt/qtgui-5.4.1:5
-		>=dev-qt/qtnetwork-5.4.1:5
-		>=dev-qt/qtwidgets-5.4.1:5
+		>=dev-qt/qtcore-5.7.1:5
+		>=dev-qt/qtdeclarative-5.7.1:5
+		>=dev-qt/qtgui-5.7.1:5
+		>=dev-qt/qtnetwork-5.7.1:5
+		>=dev-qt/qtwidgets-5.7.1:5
 	)
 	udev? ( virtual/udev )
 	utils? (
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 		media-libs/glew:0
 		media-libs/libpng:0
 		virtual/opengl
-		qt5? ( >=dev-qt/qtwebsockets-5.4.1:5 )
+		qt5? ( >=dev-qt/qtwebsockets-5.7.1:5 )
 	)
 "
 # libXi and libXmu are build-only-deps according to FindGLUT.cmake
@@ -77,10 +77,10 @@ src_configure() {
 		-DENABLE_FLITE=OFF
 		-DENABLE_GDAL=$(usex gdal)
 		-DENABLE_GPSSMOOTH=$(usex utils)
+		-DENABLE_HID_INPUT=$(usex udev)
 		-DENABLE_JS_DEMO=$(usex utils)
 		-DENABLE_JSBSIM=ON
 		-DENABLE_LARCSIM=ON
-		-DENABLE_LOGGING=$(usex test)
 		-DENABLE_METAR=$(usex utils)
 		-DENABLE_OPENMP=$(usex openmp)
 		-DENABLE_PROFILE=OFF

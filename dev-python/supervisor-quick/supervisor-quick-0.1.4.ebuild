@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Bypass supervisor's nasty callbacks stack and make it quick!"
-HOMEPAGE="https://pypi.python.org/pypi/supervisor-quick/"
+HOMEPAGE="https://pypi.org/project/supervisor-quick/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

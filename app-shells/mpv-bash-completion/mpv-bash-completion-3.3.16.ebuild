@@ -11,7 +11,7 @@ SRC_URI="https://github.com/2ion/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 IUSE="luajit"
 
 COMMON_DEPEND=">=media-video/mpv-0.25.0[cli]"
@@ -30,6 +30,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# Prevent access violations from completion generation.
+	# See Gentoo bug 656086.
+	addpredict /dev/dri
+
 	$(usex luajit 'luajit' 'lua') gen.lua > mpv || die
 }
 

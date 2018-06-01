@@ -1,0 +1,26 @@
+From ecb3a0b2ffff542179edf844a35fa9a875c188ed Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 29 Mar 2018 16:17:47 +1300
+Subject: Fix nonsense version
+
+---
+ lib/XML/Grove.pm | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/XML/Grove.pm b/lib/XML/Grove.pm
+index 3dfcf5c..2cbcd33 100644
+--- a/lib/XML/Grove.pm
++++ b/lib/XML/Grove.pm
+@@ -14,7 +14,8 @@ use Data::Grove;
+ package XML::Grove;
+ use vars qw{$VERSION @ISA};
+ 
+-$VERSION = '0.46alpha';
++$VERSION = '0.46_00';
++$VERSION =~ tr/_//d;
+ 
+ @ISA = qw{Data::Grove};
+ 
+-- 
+2.16.2
+

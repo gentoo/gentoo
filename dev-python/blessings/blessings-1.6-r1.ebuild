@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A thin, practical wrapper around terminal coloring, styling, and positioning"
-HOMEPAGE="https://github.com/erikrose/blessings https://pypi.python.org/pypi/blessings/"
+HOMEPAGE="https://github.com/erikrose/blessings https://pypi.org/project/blessings/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

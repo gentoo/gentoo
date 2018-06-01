@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 inherit eutils cmake-utils vcs-snapshot
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
-HOMEPAGE="http://www.ogre3d.org/"
+HOMEPAGE="https://www.ogre3d.org/"
 SRC_URI="https://bitbucket.org/sinbad/ogre/get/v${PV//./-}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MIT public-domain"
@@ -51,8 +51,8 @@ RDEPEND="
 	tools? ( dev-libs/tinyxml[stl] )
 	zip? ( sys-libs/zlib dev-libs/zziplib )"
 DEPEND="${RDEPEND}
-	x11-proto/xf86vidmodeproto
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ PYTHON_REQ_USE='sqlite'
 inherit distutils-r1
 
 DESCRIPTION="Free church presentation software"
-HOMEPAGE="http://openlp.org/"
+HOMEPAGE="https://openlp.org/"
 SRC_URI="https://get.openlp.org/${PV}/OpenLP-${PV}.tar.gz"
 
 LICENSE="GPL-2"

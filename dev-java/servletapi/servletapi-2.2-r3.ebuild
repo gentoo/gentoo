@@ -1,5 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 JAVA_PKG_IUSE="doc source"
 
@@ -13,7 +15,7 @@ DEPEND=">=virtual/jdk-1.4
 RDEPEND=">=virtual/jre-1.3"
 LICENSE="Apache-1.1"
 SLOT="2.2"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="doc"
 S="${WORKDIR}/jakarta-servletapi-src"
 

@@ -3,6 +3,27 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Turner <mattst88@gentoo.org> (26 May 2018)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+#
+# Jeroen Roovers <jer@gentoo.org> (22 Mar 2018)
+# sys-cluster/ceph is not supported
+ceph
+
+# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# sys-block/open-iscsi has not been tested on HPPA
+iscsi
+
+# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# sys-boot/plymouth has not been tested on HPPA
+plymouth
+
+# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# sys-fs/dmraid has not been tested on HPPA
+dmraid
+
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
 # Unmask as this profile is big endian.
 -big-endian
@@ -76,10 +97,6 @@ fdk
 # sys-apps/gptfdisk creates partition tables incompatible with the HPPA
 # bootloader (bug #412801).
 gptfdisk
-
-# Jeroen Roovers <jer@gentoo.org> (25 Apr 2012)
-# sys-apps/systemd is not tested
-systemd
 
 # Jeroen Roovers <jer@gentoo.org> (4 Apr 2012)
 # media-video/vlc is not tested
@@ -218,7 +235,6 @@ video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
 video_cards_tdfx
-video_cards_vesa
 video_cards_voodoo
 
 # 25 Jul 2005 Guy Martin <gmsoft@gentoo.org>

@@ -8,10 +8,11 @@ if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="git://git.savannah.gnu.org/config.git
 		http://git.savannah.gnu.org/r/config.git"
 
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	S="${WORKDIR}"
 fi
 
 DESCRIPTION="Updated config.sub and config.guess file from GNU"
@@ -20,8 +21,6 @@ HOMEPAGE="https://savannah.gnu.org/projects/config"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-
-S=${WORKDIR}
 
 maint_pkg_create() {
 	cd "${S}"
@@ -39,7 +38,7 @@ maint_pkg_create() {
 
 src_unpack() {
 	if [[ ${PV} == "99999999" ]] ; then
-		git-2_src_unpack
+		git-r3_src_unpack
 		maint_pkg_create
 	else
 		unpack ${A}
@@ -47,7 +46,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${WORKDIR}"/*.patch
+	epatch "${S}"/*.patch
 	use elibc_uclibc && sed -i 's:linux-gnu:linux-uclibc:' testsuite/config-guess.data #180637
 }
 

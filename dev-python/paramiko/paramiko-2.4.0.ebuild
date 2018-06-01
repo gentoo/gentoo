@@ -9,14 +9,14 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="SSH2 protocol library"
-HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.python.org/pypi/paramiko/"
+HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/"
 # pypi tarballs are missing test data
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="doc examples test"
 
 RDEPEND="
@@ -43,7 +43,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( build/sphinx/html/. )
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
 
 	distutils-r1_python_install_all
 

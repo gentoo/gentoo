@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -33,11 +33,55 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Ulrich Müller <ulm@gentoo.org> (01 May 2018)
+# virtual/mysql is not keyworded.
+mysql
+
+# Michał Górny <mgorny@gentoo.org> (21 Apr 2018)
+# net-wireless/bluez.
+bluetooth
+
+# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Requires dev-libs/libressl (not yet tested).
+curl_ssl_libressl
+
+# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Someone needs to test them.
+input_devices_libinput
+
+# Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
+# virtual/mpi not keyworded at the moment.
+mpi
+
+# Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
+# sys-process/audit seems pretty Linux-specific.
+audit
+
+# Michał Górny <mgorny@gentoo.org> (25 Feb 2018)
+# google-perftools does not work on FreeBSD.
+tcmalloc
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# dev-libs/DirectFB is not keyworded here.
+directfb
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# libraw is not keyworded here.
+raw
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# libav is not keyworded here.
+libav
+
+# Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
+# dev-util/valgrind is not keyworded here.
+valgrind
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # sys-libs/libseccomp is not keyworded here.
 seccomp
 
-# Michał Górny <mgorny@gentoo.org> (23 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # net-fs/samba is not keyworded here.
 samba
 

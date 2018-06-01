@@ -1,13 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 MY_PV=${PV%.?}-${PV##*.}
 MY_PV=${PV}
 MY_P=${PN}2-${MY_PV}
+
 DESCRIPTION="a simple way to support the Session Initiation Protocol"
 HOMEPAGE="https://www.gnu.org/software/osip/"
 SRC_URI="mirror://gnu/osip/${MY_P}.tar.gz"
@@ -19,17 +20,14 @@ IUSE="test"
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}/${PN}-3.3.0-out-source-build.patch" )
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.3.0-out-source-build.patch"
+	default
 	AT_M4DIR="scripts" eautoreconf
 }
 
 src_configure() {
 	econf --enable-mt \
 		$(use_enable test)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "Failed to install"
-	dodoc AUTHORS ChangeLog FEATURES HISTORY README NEWS TODO || die
 }

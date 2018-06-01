@@ -47,8 +47,8 @@ RDEPEND="
 	$(add_qt_dep qtxml)
 	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
-	crypt? ( app-crypt/gpgme )
-	git? ( dev-libs/libgit2 )
+	crypt? ( app-crypt/gpgme:= )
+	git? ( dev-libs/libgit2:= )
 "
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)

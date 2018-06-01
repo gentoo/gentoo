@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,13 +12,13 @@ fi
 inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
 
 DESCRIPTION="Complete solution to record, convert and stream audio and video"
-HOMEPAGE="http://libav.org/"
+HOMEPAGE="https://libav.org/"
 if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
 	SRC_URI="https://dev.gentoo.org/~lu_zero/libav/${P}.tar.xz"
 else # Official release
-	SRC_URI="http://${PN}.org/releases/${P}.tar.xz"
+	SRC_URI="https://${PN}.org/releases/${P}.tar.xz"
 fi
 
 SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-9.tar.xz )"
@@ -113,10 +113,6 @@ DEPEND="${RDEPEND}
 	truetype? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
 "
-
-RDEPEND="${RDEPEND}
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20140508-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 
 # faac can't be binary distributed
 # openssl support marked as nonfree

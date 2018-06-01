@@ -1,5 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 # this package is ONLY available inside the Zope tarball!!!
 ZOPE_PV=2.6.1

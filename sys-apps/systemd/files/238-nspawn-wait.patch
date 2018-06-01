@@ -1,0 +1,83 @@
+From 7511655807e90aa33ea7b71991401a79ec36bb41 Mon Sep 17 00:00:00 2001
+From: Philip Sequeira <phsequei@gmail.com>
+Date: Thu, 5 Apr 2018 14:04:27 +0000
+Subject: [PATCH] nspawn: wait for network namespace creation before interface
+ setup (#8633)
+
+Otherwise, network interfaces can be "moved" into the container's
+namespace while it's still the same as the host namespace, in which case
+e.g. host0 for a veth ends up on the host side instead of inside the
+container.
+
+Regression introduced in 0441378080489e4ab6704cd0a2d78cb1ceaca899.
+
+Fixes #8599.
+---
+ src/nspawn/nspawn.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/src/nspawn/nspawn.c b/src/nspawn/nspawn.c
+index 810f1247ea2..a5bc50c1f4c 100644
+--- a/src/nspawn/nspawn.c
++++ b/src/nspawn/nspawn.c
+@@ -2329,6 +2329,9 @@ static int inner_child(
+                 r = unshare(CLONE_NEWNET);
+                 if (r < 0)
+                         return log_error_errno(errno, "Failed to unshare network namespace: %m");
++
++                /* Tell the parent that it can setup network interfaces. */
++                (void) barrier_place(barrier); /* #3 */
+         }
+ 
+         r = mount_sysfs(NULL, arg_mount_settings);
+@@ -2337,7 +2340,7 @@ static int inner_child(
+ 
+         /* Wait until we are cgroup-ified, so that we
+          * can mount the right cgroup path writable */
+-        if (!barrier_place_and_sync(barrier)) { /* #3 */
++        if (!barrier_place_and_sync(barrier)) { /* #4 */
+                 log_error("Parent died too early");
+                 return -ESRCH;
+         }
+@@ -2448,7 +2451,7 @@ static int inner_child(
+         /* Let the parent know that we are ready and
+          * wait until the parent is ready with the
+          * setup, too... */
+-        if (!barrier_place_and_sync(barrier)) { /* #4 */
++        if (!barrier_place_and_sync(barrier)) { /* #5 */
+                 log_error("Parent died too early");
+                 return -ESRCH;
+         }
+@@ -3533,6 +3536,14 @@ static int run(int master,
+ 
+         if (arg_private_network) {
+ 
++                if (!arg_network_namespace_path) {
++                        /* Wait until the child has unshared its network namespace. */
++                        if (!barrier_place_and_sync(&barrier)) { /* #3 */
++                                log_error("Child died too early");
++                                return -ESRCH;
++                        }
++                }
++
+                 r = move_network_interfaces(*pid, arg_network_interfaces);
+                 if (r < 0)
+                         return r;
+@@ -3656,7 +3667,7 @@ static int run(int master,
+          * its setup (including cgroup-ification), and that
+          * the child can now hand over control to the code to
+          * run inside the container. */
+-        (void) barrier_place(&barrier); /* #3 */
++        (void) barrier_place(&barrier); /* #4 */
+ 
+         /* Block SIGCHLD here, before notifying child.
+          * process_pty() will handle it with the other signals. */
+@@ -3684,7 +3695,7 @@ static int run(int master,
+                 return r;
+ 
+         /* Let the child know that we are ready and wait that the child is completely ready now. */
+-        if (!barrier_place_and_sync(&barrier)) { /* #4 */
++        if (!barrier_place_and_sync(&barrier)) { /* #5 */
+                 log_error("Child died too early.");
+                 return -ESRCH;
+         }

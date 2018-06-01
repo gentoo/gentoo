@@ -1,9 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Davide Pesavento <pesa@gentoo.org> (21 Jan 2017)
-# Requires unkeyworded dev-python/PyQt5
-dev-python/qscintilla-python qt5
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unresolved dependencies.
+app-admin/conky apcupsd hddtemp xmms2
+app-admin/gkrellm hddtemp
+media-video/ffmpeg celt frei0r
+media-video/gpac dvb
+media-video/libav frei0r
+x11-base/xorg-drivers video_cards_glint
+
+# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Requires masked USE flags.
+sci-libs/gdal mdb
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires unkeyworded dev-qt/qtwebkit:5, which is a PITA to maintain on

@@ -6,7 +6,7 @@ EAPI=5
 inherit readme.gentoo elisp
 
 DESCRIPTION="TECO interpreter for GNU Emacs"
-HOMEPAGE="http://www.emacswiki.org/emacs/TECO"
+HOMEPAGE="https://www.emacswiki.org/emacs/TECO"
 # taken from: http://www.emacswiki.org/emacs/teco.el
 SRC_URI="mirror://gentoo/${P}.el.bz2"
 

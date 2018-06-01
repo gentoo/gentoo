@@ -1,5 +1,5 @@
---- monsterz.py
-+++ monsterz.py
+--- a/monsterz.py
++++ b/monsterz.py
 @@ -829,10 +829,10 @@
              pass
          else:

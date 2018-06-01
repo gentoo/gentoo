@@ -14,12 +14,12 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed001
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 +gnat_2017"
 
 RDEPEND="dev-ada/xmlada[gnat_2016=,gnat_2017=,static-libs]"
 DEPEND="${RDEPEND}
-	dev-ada/gnat_util[gnat_2016=,gnat_2017=,static]
+	dev-ada/gnat_util[gnat_2016=,gnat_2017=,static-libs]
 	dev-ada/asis[gnat_2016=,gnat_2017=]
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"

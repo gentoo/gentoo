@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,11 +8,11 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A simple argparse wrapper"
-HOMEPAGE="http://packages.python.org/argh/"
+HOMEPAGE="https://pythonhosted.org/argh/"
 SRC_URI="mirror://pypi/a/${PN}/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 LICENSE="LGPL-3"
 IUSE="test"
 

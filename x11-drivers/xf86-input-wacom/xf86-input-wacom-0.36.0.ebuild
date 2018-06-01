@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://git.code.sf.net/p/linuxwacom/${PN}"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="mirror://sourceforge/linuxwacom/${PN}/${P}.tar.bz2"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE="debug"
 
 # depend on libwacom for its udev rules, bug #389633
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/libwacom
 	x11-libs/libXrandr
 	x11-libs/libXinerama"
 DEPEND="${RDEPEND}
-	x11-proto/randrproto"
+	x11-base/xorg-proto"
 
 pkg_setup() {
 	linux-info_pkg_setup

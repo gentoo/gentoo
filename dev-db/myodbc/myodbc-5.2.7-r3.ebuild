@@ -15,16 +15,13 @@ RESTRICT="primaryuri"
 
 LICENSE="GPL-2"
 SLOT="${MAJOR}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 # Does not build with mysql-connector-c
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
 	~virtual/libmysqlclient-18[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-	)
 	!dev-db/mysql-connector-c
 	!>=dev-db/mariadb-10.2.0
 "
@@ -69,6 +66,7 @@ multilib_src_configure() {
 		-DWITH_DOCUMENTATION_INSTALL_PATH=/usr/share/doc/${PF}
 		-DMYSQL_LIB_DIR="${ROOT}/usr/$(get_libdir)"
 		-DLIB_SUBDIR="$(get_libdir)"
+		-DNO_THREADS=ON
 	)
 	cmake-utils_src_configure
 }

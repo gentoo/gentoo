@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,9 +18,7 @@ RDEPEND="${RDEPEND}
 	>=sys-libs/mtdev-1.0"
 DEPEND="${DEPEND}
 	>=sys-libs/mtdev-1.0
-	x11-proto/randrproto
-	x11-proto/videoproto
-	x11-proto/xineramaproto"
+	x11-base/xorg-proto"
 
 DOCS=( "README.md" )
 PATCHES=( "${FILESDIR}"/${PN}-0.2.0-drop-mtrack-test.patch )

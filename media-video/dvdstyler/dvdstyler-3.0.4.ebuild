@@ -46,6 +46,8 @@ DEPEND="${COMMON_DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	epatch "${FILESDIR}/ffmpeg4.patch"
+
 	need-wxwidgets unicode
 	# disable obsolete GNOME 2.x libraries wrt #508854
 	sed -i -e '/PKG_CONFIG/s:libgnomeui-2.0:dIsAbLeAuToMaGiC&:' configure || die

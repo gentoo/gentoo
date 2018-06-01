@@ -11,6 +11,7 @@ www-misc/profile-sync-daemon
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-admin/systemdgenie
 app-eselect/eselect-gnome-shell-extensions
+app-office/wps-office
 sys-apps/systemd
 app-admin/calamares
 dev-python/python-systemd
@@ -23,7 +24,6 @@ gnome-extra/chrome-gnome-shell
 gnome-extra/gnome-logs
 gnome-extra/gnome-shell-extensions
 gnome-extra/gnome-shell-frippery
-gnome-extra/gnome-shell-extensions-topicons
 gnome-extra/gnome-shell-extensions-topicons-plus
 gnome-extra/gnome-tweak-tool
 x11-themes/zukitwo-shell
@@ -35,3 +35,8 @@ sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
 sys-process/systemd-cron
 sys-apps/dbus-broker
+
+# Gilles Dartiguelongue <eva@gentoo.org> (24 May 2018)
+# Packages use systemd unconditionally for now
+>=app-admin/abrt-2.10
+>=dev-libs/libreport-2.9

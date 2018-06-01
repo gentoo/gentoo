@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/PyGObject"
 
 LICENSE="LGPL-2.1+"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="+cairo examples test +threads"
 
 REQUIRED_USE="
@@ -36,7 +36,7 @@ DEPEND="${COMMON_DEPEND}
 		media-fonts/font-cursor-misc
 		media-fonts/font-misc-misc
 		x11-libs/cairo[glib]
-		x11-libs/gdk-pixbuf:2[introspection]
+		x11-libs/gdk-pixbuf:2[introspection,jpeg]
 		x11-libs/gtk+:3[introspection]
 		x11-libs/pango[introspection]
 		python_targets_python2_7? ( dev-python/pyflakes[$(python_gen_usedep python2_7)] ) )

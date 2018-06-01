@@ -1,6 +1,6 @@
 diff -Nuar a/gtk/build-intel-lib.sh b/gtk/build-intel-lib.sh
---- a/gtk/build-intel-lib.sh	2018-01-08 02:52:33.000000000 +0100
-+++ b/gtk/build-intel-lib.sh	2018-01-13 19:43:23.709997784 +0100
+--- a/gtk/build-intel-lib.sh
++++ b/gtk/build-intel-lib.sh
 @@ -4,7 +4,7 @@
  cd IntelRDFPMathLib20U1
  patch -p0 <../intel-lib-linux.patch

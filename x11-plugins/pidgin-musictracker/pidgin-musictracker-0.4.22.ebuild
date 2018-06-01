@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 inherit autotools
 
@@ -21,6 +21,7 @@ DEPEND=">=net-im/pidgin-2.0.0[gtk]
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i -e "s/DOMAIN/PACKAGE/g" po/Makefile.in.in || die "sed failed"
 	eautoreconf
 }
@@ -32,7 +33,6 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "make install failure"
-	dodoc AUTHORS ChangeLog INSTALL README THANKS || die "dodoc failed"
+	default
 	find "${D}" -name "*.la" -delete || die "error cleaning la file."
 }

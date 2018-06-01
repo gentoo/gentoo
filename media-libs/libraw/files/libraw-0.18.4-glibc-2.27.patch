@@ -1,0 +1,14 @@
+Fix build failure on glibc-2.27 caused by pow64 symbol collision.
+
+https://github.com/LibRaw/LibRaw/pull/115
+https://bugs.gentoo.org/647556
+diff --git a/internal/dcraw_common.cpp b/internal/dcraw_common.cpp
+index 18bcdbc..8cec744 100644
+--- a/internal/dcraw_common.cpp
++++ b/internal/dcraw_common.cpp
+@@ -5770,4 +5770,5 @@ static float powf_lim(float a, float b, float limup)
+   return (b>limup || b < -limup)?0.f:powf(a,b);
+ }
++#define powf64 powf_lim64 /* workaround symbol collision */
+ static float powf64(float a, float b)
+ {

@@ -10,11 +10,12 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="aqbanking">Connect to some internet banks via AqBanking</flag>
-		<flag name="chipcard">Enable support for chipcard reading and
-		processing.</flag>
-		<flag name="hbci">Enable HBCI support, for connecting to some internet
-		banks</flag>
+		<flag name="aqbanking">
+			Connect to some internet banks via AqBanking
+		</flag>
+		<flag name="chipcard">
+			Enable support for chipcard reading and processing.
+		</flag>
 		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
 		<flag name="register2">Use the new register (Experimental)</flag>
 	</use>

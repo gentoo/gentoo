@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="blockdiag generates block-diagram image from text"
-HOMEPAGE="http://blockdiag.com/ https://pypi.python.org/pypi/blockdiag/ https://bitbucket.org/blockdiag/blockdiag/"
+HOMEPAGE="http://blockdiag.com/ https://pypi.org/project/blockdiag/ https://bitbucket.org/blockdiag/blockdiag/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -48,6 +48,6 @@ pkg_postinst() {
 	einfo "For additional functionality, install the following optional packages:"
 	einfo "    dev-python/reportlab for pdf format"
 	einfo "    media-gfx/imagemagick"
-	einfo "    wand: https://pypi.python.org/pypi/Wand"
+	einfo "    wand: https://pypi.org/project/Wand"
 	einfo "          Ctypes-based simple MagickWand API binding for Python"
 }

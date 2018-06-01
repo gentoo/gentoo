@@ -3,12 +3,10 @@
 <pkgmetadata>
 <maintainer type="person">
 	<email>NP-Hardass@gentoo.org</email>
-	<description>please assign bugs to</description>
 </maintainer>
 <maintainer type="person">
 	<email>bircoph@gentoo.org</email>
 	<name>Andrew Savchenko</name>
-	<description>please CC on bugs</description>
 </maintainer>
 <use>
 	<flag name="bitmap-later">Enable fast startup of file server by

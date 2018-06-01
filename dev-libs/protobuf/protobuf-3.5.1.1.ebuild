@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/15"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples static-libs test zlib"
 
 RDEPEND="emacs? ( virtual/emacs )
@@ -23,14 +23,19 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.0-disable_no-warning-test.patch"
 	"${FILESDIR}/${PN}-3.4.0-system_libraries.patch"
 	"${FILESDIR}/${PN}-3.4.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.5.0-atomic_operations.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
 
 src_prepare() {
-	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
 	default
 	eautoreconf
+}
+
+src_configure() {
+	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

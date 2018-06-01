@@ -1,18 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="dockapp that shows lunar ephemeris to a high accuracy"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
-HOMEPAGE="http://www.dockapps.net/wmmoonclock"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmmoonclock"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 LICENSE="GPL-2"
 SLOT="0"

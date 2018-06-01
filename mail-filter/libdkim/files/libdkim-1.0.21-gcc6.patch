@@ -1,5 +1,5 @@
---- a/src/dkimverify.cpp
-+++ b/src/dkimverify.cpp
+--- src/dkimverify.cpp
++++ src/dkimverify.cpp
 @@ -211,14 +211,14 @@
  unsigned DecodeBase64(char *ptr)
  {

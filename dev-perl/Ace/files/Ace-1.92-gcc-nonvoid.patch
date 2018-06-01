@@ -1,0 +1,31 @@
+From c36659030eab65bcf7017e099377bf87a04d1667 Mon Sep 17 00:00:00 2001
+From: Anton Molyboha <anton.stay.connected@gmail.com>
+Date: Fri, 10 Nov 2017 17:37:54 -0500
+Subject: Fix compile with newer gcc "non-void function 'constant' should ..."
+
+Bug: https://bugs.gentoo.org/637330
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123593
+---
+ RPC/RPC.xs | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/RPC/RPC.xs b/RPC/RPC.xs
+index 3e059c0..cd4f6fa 100644
+--- a/RPC/RPC.xs
++++ b/RPC/RPC.xs
+@@ -152,12 +152,6 @@ int arg;
+     case 'Z':
+ 	break;
+     case '_':
+-	if (strEQ(name, "_ACECLIENT_"))
+-#ifdef _ACECLIENT_
+-	    return _ACECLIENT_;
+-#else
+-	    goto not_there;
+-#endif
+ 	break;
+     }
+     errno = EINVAL;
+-- 
+2.16.2
+

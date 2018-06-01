@@ -9,7 +9,7 @@ PLOCALES="af ar ast be bg bn bs ca cs cy da de el en_AU en_CA en_GB eo es et eu 
 inherit distutils-r1 eutils systemd user l10n
 
 DESCRIPTION="BitTorrent client with a client/server model"
-HOMEPAGE="http://deluge-torrent.org/"
+HOMEPAGE="https://deluge-torrent.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -134,6 +134,6 @@ pkg_postinst() {
 	elog "happens in /etc/systemd/system/deluged.service.d/00gentoo.conf"
 	elog "and /etc/systemd/system/deluge-web.service.d/00gentoo.conf"
 	elog
-	elog "For more information look at http://dev.deluge-torrent.org/wiki/Faq"
+	elog "For more information look at https://dev.deluge-torrent.org/wiki/Faq"
 	elog
 }

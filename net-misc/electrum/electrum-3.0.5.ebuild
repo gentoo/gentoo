@@ -3,7 +3,8 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+#PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5} )
 PYTHON_REQ_USE="ncurses?"
 
 inherit desktop distutils-r1 gnome2-utils xdg-utils
@@ -57,10 +58,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
-	|| (
-		dev-python/protobuf-python[${PYTHON_USEDEP}]
-		dev-libs/protobuf[python,${PYTHON_USEDEP}]
-	)
+	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	virtual/python-dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (

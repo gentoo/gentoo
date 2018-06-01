@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 inherit distutils-r1
 
 DESCRIPTION="Buildbot plugin to integrate flask or bottle dashboards to buildbot UI"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot-wsgi-dashboards"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-wsgi-dashboards/"
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"

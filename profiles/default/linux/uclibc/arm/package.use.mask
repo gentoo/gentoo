@@ -1,13 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Thomas Deutschmann <whissi@gentoo.org> (28 Nov 2017)
 # Requires dev-libs/mongo-c-driver which isn't keyworded
 >=app-admin/rsyslog-8.31 mongodb
-
-# Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
-# Needs net-mail/mailutils which is not keyworded, bug #635216.
-app-editors/emacs-vcs mailutils
 
 # Davide Pesavento <pesa@gentoo.org> (19 Dec 2016)
 # Various unkeyworded deps: >=sys-devel/clang-3.9 (#591822),
@@ -29,15 +25,15 @@ app-admin/rsyslog grok
 # Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
 # for the proxy-maintainers project
 # Unkeyworded deps, bug #564274
-app-admin/collectd collectd_plugins_gmond
-app-admin/collectd collectd_plugins_ipmi
-app-admin/collectd collectd_plugins_modbus
-app-admin/collectd collectd_plugins_oracle
-app-admin/collectd collectd_plugins_routeros
-app-admin/collectd collectd_plugins_sigrok
-app-admin/collectd collectd_plugins_tokyotyrant
-app-admin/collectd collectd_plugins_varnish
-app-admin/collectd collectd_plugins_virt
+app-metrics/collectd collectd_plugins_gmond
+app-metrics/collectd collectd_plugins_ipmi
+app-metrics/collectd collectd_plugins_modbus
+app-metrics/collectd collectd_plugins_oracle
+app-metrics/collectd collectd_plugins_routeros
+app-metrics/collectd collectd_plugins_sigrok
+app-metrics/collectd collectd_plugins_tokyotyrant
+app-metrics/collectd collectd_plugins_varnish
+app-metrics/collectd collectd_plugins_virt
 
 # Matthias Maier <tamiko@gentoo.org> (16 Aug 2015)
 # missing keywords

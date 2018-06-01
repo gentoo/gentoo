@@ -10,7 +10,7 @@ if [ ${PV} == "9999" ]; then
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	S="${WORKDIR}/zfs-${PV}"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 inherit flag-o-matic linux-info linux-mod toolchain-funcs autotools-utils
@@ -42,7 +42,7 @@ pkg_setup() {
 	linux-info_pkg_setup
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC
-		!CONFIG_REISER4_FS
+		!REISER4_FS
 		EFI_PARTITION
 		IOSCHED_NOOP
 		MODULES

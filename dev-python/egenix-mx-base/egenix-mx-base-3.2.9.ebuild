@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="eGenix utils for Python"
-HOMEPAGE="http://www.egenix.com/products/python/mxBase https://pypi.python.org/pypi/egenix-mx-base"
-SRC_URI="http://downloads.egenix.com/python/${P}.tar.gz"
+HOMEPAGE="https://www.egenix.com/products/python/mxBase https://pypi.org/project/egenix-mx-base/"
+SRC_URI="https://downloads.egenix.com/python/${P}.tar.gz"
 
 LICENSE="eGenixPublic-1.1"
 SLOT="0"

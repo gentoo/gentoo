@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Open-source Japanese dictionary and kanji lookup tool"
-HOMEPAGE="http://www.tagaini.net/"
+HOMEPAGE="https://www.tagaini.net/"
 SRC_URI="https://github.com/Gnurou/tagainijisho/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-3+ public-domain"
 

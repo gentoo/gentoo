@@ -24,11 +24,7 @@ IUSE=""
 
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-	)
-"
+	sys-libs/zlib[${MULTILIB_USEDEP}]"
 S=${WORKDIR}
 
 #src_configure(){ :; }

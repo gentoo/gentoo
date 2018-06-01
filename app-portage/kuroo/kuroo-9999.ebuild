@@ -8,19 +8,18 @@ ESVN_PROJECT="kuroo4"
 inherit cmake-utils subversion
 
 DESCRIPTION="Graphical Portage frontend based on KDE Frameworks"
-HOMEPAGE="http://kuroo.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/kuroo/"
 
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
 IUSE=""
 
-DEPEND="
+COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	kde-frameworks/extra-cmake-modules:5
 	kde-frameworks/kconfig:5
 	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcoreaddons:5
@@ -34,10 +33,13 @@ DEPEND="
 	kde-frameworks/kxmlgui:5
 	kde-frameworks/threadweaver:5
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	app-portage/gentoolkit
 	kde-apps/kompare:5
 	kde-plasma/kde-cli-tools:5[kdesu]
+"
+DEPEND="${COMMON_DEPEND}
+	kde-frameworks/extra-cmake-modules:5
 "
 
 pkg_postinst() {

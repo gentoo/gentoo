@@ -18,7 +18,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd"
 IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python qt5 selinux test"
 
 REQUIRED_USE="
@@ -186,7 +186,8 @@ multilib_src_install() {
 	use mdnsresponder-compat && dosym avahi-compat-libdns_sd/dns_sd.h /usr/include/dns_sd.h
 
 	if multilib_is_native_abi && use doc; then
-		dohtml -r doxygen/html/. || die
+		docinto html
+		dodoc -r doxygen/html/.
 		insinto /usr/share/devhelp/books/avahi
 		doins avahi.devhelp || die
 	fi

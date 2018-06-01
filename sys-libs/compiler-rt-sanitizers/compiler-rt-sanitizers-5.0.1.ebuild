@@ -20,17 +20,18 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="test"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="+clang test elibc_glibc"
 
-LLVM_SLOT=${SLOT%%.*}
+CLANG_SLOT=${SLOT%%.*}
 # llvm-4 needed for --cmakedir
 DEPEND="
 	>=sys-devel/llvm-4
+	clang? ( sys-devel/clang )
 	test? (
-		app-portage/unsandbox
-		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
-		=sys-devel/clang-${PV%_*}*:${LLVM_SLOT}
+		!<sys-apps/sandbox-2.13
+		$(python_gen_any_dep ">=dev-python/lit-5[\${PYTHON_USEDEP}]")
+		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT} )
 	${PYTHON_DEPS}"
 
@@ -68,9 +69,33 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	if use test; then
+		# remove tests that are broken by new glibc
+		# (disabled in 6.0.0+, r313069)
+		if use elibc_glibc && has_version '>=sys-libs/glibc-2.24'; then
+			rm test/tsan/Linux/user_malloc.cc || die
+		fi
+		# https://bugs.llvm.org/show_bug.cgi?id=36065
+		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
+			rm test/lsan/TestCases/Linux/use_tls_dynamic.cc || die
+			rm test/msan/dtls_test.c || die
+			rm test/sanitizer_common/TestCases/Posix/sanitizer_set_death_callback_test.cc || die
+		fi
+	fi
+}
+
 src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
+
+	if use clang; then
+		local -x CC=${CHOST}-clang
+		local -x CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	fi
 
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
@@ -85,19 +110,28 @@ src_configure() {
 		-DCOMPILER_RT_BUILD_XRAY=ON
 	)
 	if use test; then
+		if has_version '>=sys-devel/llvm-6'; then
+			mycmakeargs+=(
+				-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			)
+		else
+			mycmakeargs+=(
+				-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			)
+		fi
+
 		mycmakeargs+=(
 			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-			-DLIT_COMMAND="${EPREFIX}/usr/bin/unsandbox;${EPREFIX}/usr/bin/lit"
 
 			# they are created during src_test()
-			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang"
-			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang++"
+			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang"
+			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang++"
 		)
 
 		# same flags are passed for build & tests, so we need to strip
 		# them down to a subset supported by clang
-		CC=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang \
-		CXX=${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/bin/clang++ \
+		CC=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang \
+		CXX=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++ \
 		strip-unsupported-flags
 	fi
 
@@ -117,17 +151,17 @@ src_configure() {
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_SLOT}/{bin,$(get_libdir)},clang/${SLOT}/include} || die
-		cp "${EPREFIX}"/usr/lib/llvm/${LLVM_SLOT}/bin/clang{,++} \
-			"${BUILD_DIR}"/lib/llvm/${LLVM_SLOT}/bin/ || die
+		mkdir -p "${BUILD_DIR}"/lib/{llvm/${CLANG_SLOT}/{bin,$(get_libdir)},clang/${SLOT}/include} || die
+		cp "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/bin/clang{,++} \
+			"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/bin/ || die
 		cp "${EPREFIX}"/usr/lib/clang/${SLOT}/include/*.h \
 			"${BUILD_DIR}"/lib/clang/${SLOT}/include/ || die
 		cp "${sys_dir}"/*builtins*.a \
 			"${BUILD_DIR}/lib/clang/${SLOT}/lib/${sys_dir##*/}/" || die
 		# we also need LLVMgold.so for gold-based tests
-		if [[ -f ${EPREFIX}/usr/lib/llvm/${LLVM_SLOT}/$(get_libdir)/LLVMgold.so ]]; then
-			ln -s "${EPREFIX}"/usr/lib/llvm/${LLVM_SLOT}/$(get_libdir)/LLVMgold.so \
-				"${BUILD_DIR}"/lib/llvm/${LLVM_SLOT}/$(get_libdir)/ || die
+		if [[ -f ${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/$(get_libdir)/LLVMgold.so ]]; then
+			ln -s "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/$(get_libdir)/LLVMgold.so \
+				"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/$(get_libdir)/ || die
 		fi
 	fi
 }
@@ -135,6 +169,10 @@ src_configure() {
 src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
+	# disable sandbox to have it stop clobbering LD_PRELOAD
+	local -x SANDBOX_ON=0
+	# wipe LD_PRELOAD to make ASAN happy
+	local -x LD_PRELOAD=
 
 	cmake-utils_src_make check-all
 }

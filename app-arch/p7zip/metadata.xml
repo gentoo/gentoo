@@ -3,7 +3,6 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
-    <description>maintainer</description>
   </maintainer>
   <use>
     <flag name="rar">Enable support for non-free rar decoder</flag>

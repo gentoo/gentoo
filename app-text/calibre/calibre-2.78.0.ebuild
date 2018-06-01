@@ -9,8 +9,8 @@ PYTHON_REQ_USE="sqlite,ssl"
 inherit eutils bash-completion-r1 gnome2-utils multilib toolchain-funcs python-single-r1 xdg-utils
 
 DESCRIPTION="Ebook management application"
-HOMEPAGE="http://calibre-ebook.com/"
-SRC_URI="http://download.calibre-ebook.com/${PV}/${P}.tar.xz"
+HOMEPAGE="https://calibre-ebook.com/"
+SRC_URI="https://download.calibre-ebook.com/${PV}/${P}.tar.xz"
 
 LICENSE="
 	GPL-3+

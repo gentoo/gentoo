@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils cmake-utils
 
 DESCRIPTION="Help a girl named Violet in the struggle with hordes of monsters"
-HOMEPAGE="https://code.google.com/p/violetland/"
+HOMEPAGE="https://violetland.github.io/"
 SRC_URI="https://github.com/ooxi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 CC-BY-SA-3.0"

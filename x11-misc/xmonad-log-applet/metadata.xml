@@ -6,7 +6,6 @@
 	</maintainer>
 	<maintainer type="person">
 		<email>flo@geekplace.eu</email>
-		<description>Maintainer, CC him on bugs</description>
 	</maintainer>
 	<longdescription>
 		xmonad-log-applet is for Xmonad users who find the GNOME, MATE, or Xfce panel useful. The applet will show the active workspaces, the title of the selected window or whatever information you send it from your xmonad.hs.

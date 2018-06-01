@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A nose plugin to show skipped tests and their messages"
-HOMEPAGE="https://github.com/cpcloud/nose-show-skipped http://pypi.python.org/pypi/nose-show-skipped"
+HOMEPAGE="https://github.com/cpcloud/nose-show-skipped
+	https://pypi.org/project/nose-show-skipped/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

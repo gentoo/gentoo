@@ -4,7 +4,6 @@
   <maintainer type="person">
     <email>spiderx@spiderx.dp.ua</email>
     <name>Vladimir Pavljuchenkov</name>
-    <description>Primary maintainer.</description>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
@@ -29,7 +28,6 @@
     <flag name="debug">Enable extra debug codepaths, like asserts and extra output.</flag>
     <flag name="doc">Adds extra documentation (API, doc, etc).</flag>
     <flag name="examples">Install examples, usually source code.</flag>
-    <flag name="static-libs">Install static libraries.</flag>
     <flag name="module_auth_always_online">Enable build of "Always Online" authentication module for Stargazer.</flag>
     <flag name="module_auth_internet_access">Enable build of "InetAccess" authentication module for Stargazer. InetAccess is a Stargazer specific authentication protocol.</flag>
     <flag name="module_auth_freeradius">Enable build of "Radius" authentication module for Stargazer. This module capable of using RADIUS procotol for user authentication.</flag>

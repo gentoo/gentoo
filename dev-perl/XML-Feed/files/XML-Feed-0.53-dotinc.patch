@@ -1,0 +1,45 @@
+From 43bd53272467a27526b46a2cd65748632898cc9f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 26 Mar 2018 18:26:22 +1300
+Subject: Fix test failures w/o '.' in @INC ( perl 5.26+ )
+
+Bug: https://bugs.gentoo.org/623190
+---
+ t/12-multi-categories-atom.t | 2 +-
+ t/12-multi-categories-rss.t  | 2 +-
+ t/12-multi-subjects-rss.t    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/t/12-multi-categories-atom.t b/t/12-multi-categories-atom.t
+index 25b0ff9..15023d4 100644
+--- a/t/12-multi-categories-atom.t
++++ b/t/12-multi-categories-atom.t
+@@ -3,4 +3,4 @@
+ use strict;
+ use vars qw($type $field);
+ $type = "atom";
+-require 't/12-multi-categories.base';
++require './t/12-multi-categories.base';
+diff --git a/t/12-multi-categories-rss.t b/t/12-multi-categories-rss.t
+index c467d74..921029d 100644
+--- a/t/12-multi-categories-rss.t
++++ b/t/12-multi-categories-rss.t
+@@ -3,4 +3,4 @@
+ use strict;
+ use vars qw($type $field);
+ $type = "rss";
+-require 't/12-multi-categories.base';
++require './t/12-multi-categories.base';
+diff --git a/t/12-multi-subjects-rss.t b/t/12-multi-subjects-rss.t
+index c3cd317..0f0027c 100644
+--- a/t/12-multi-subjects-rss.t
++++ b/t/12-multi-subjects-rss.t
+@@ -3,4 +3,4 @@
+ use vars qw($type $field);
+ $type  = "rss";
+ $field = "subjects";
+-require 't/12-multi-categories.base';
++require './t/12-multi-categories.base';
+-- 
+2.16.2
+

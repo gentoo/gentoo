@@ -25,10 +25,6 @@ RESTRICT="!bindist? ( bindist )"
 RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r4
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 	!=dev-libs/openssl-0.9.8*:0"
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5
@@ -97,11 +93,11 @@ multilib_src_configure() {
 	tc-export CC AR RANLIB
 
 	# Clean out patent-or-otherwise-encumbered code
-	# Camellia: Royalty Free            http://en.wikipedia.org/wiki/Camellia_(cipher)
-	# IDEA:     Expired                 http://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
-	# EC:       ????????? ??/??/2015    http://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
-	# MDC2:     Expired                 http://en.wikipedia.org/wiki/MDC-2
-	# RC5:      5,724,428 03/03/2015    http://en.wikipedia.org/wiki/RC5
+	# Camellia: Royalty Free            https://en.wikipedia.org/wiki/Camellia_(cipher)
+	# IDEA:     Expired                 https://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
+	# EC:       ????????? ??/??/2015    https://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
+	# MDC2:     Expired                 https://en.wikipedia.org/wiki/MDC-2
+	# RC5:      5,724,428 03/03/2015    https://en.wikipedia.org/wiki/RC5
 
 	use_ssl() { use $1 && echo "enable-${2:-$1} ${*:3}" || echo "no-${2:-$1}" ; }
 	echoit() { echo "$@" ; "$@" ; }

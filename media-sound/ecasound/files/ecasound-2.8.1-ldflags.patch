@@ -1,5 +1,5 @@
---- ecasound-2.8.1.orig/kvutils/Makefile.am
-+++ ecasound-2.8.1/kvutils/Makefile.am
+--- a/kvutils/Makefile.am
++++ b/kvutils/Makefile.am
 @@ -56,13 +56,12 @@
  			kvu_value_queue.h
  
@@ -15,8 +15,8 @@
  libkvutils_tester_LDADD = $(lib_LTLIBRARIES)
  
  noinst_HEADERS = $(kvutil_headers)
---- ecasound-2.8.1.orig/libecasound/Makefile.am
-+++ ecasound-2.8.1/libecasound/Makefile.am
+--- a/libecasound/Makefile.am
++++ b/libecasound/Makefile.am
 @@ -364,7 +364,7 @@
  
  libecasound_la_SOURCES = $(ecasound_common1_src) $(ecasound_common2_src)
@@ -26,8 +26,8 @@
  libecasound_la_LIBADD = $(eca_libadd)
  libecasound_debug_la_LDFLAGS = $(libecasound_la_LDFLAGS)
  libecasound_debug_la_LIBADD = $(libecasound_la_LIBADD)
---- ecasound-2.8.1.orig/libecasound/plugins/Makefile.am
-+++ ecasound-2.8.1/libecasound/plugins/Makefile.am
+--- a/libecasound/plugins/Makefile.am
++++ b/libecasound/plugins/Makefile.am
 @@ -105,7 +105,7 @@
  libecasound_plugins_la_SOURCES          = audioio_dummy.cpp $(plugin_cond_sources)
  EXTRA_libecasound_plugins_la_SOURCES    = $(plugin_all_sources)
@@ -37,8 +37,8 @@
  
  libecasound_plugins_debug_la_SOURCES	= $(libecasound_plugins_la_SOURCES)
  EXTRA_libecasound_plugins_debug_la_SOURCES = $(EXTRA_libecasound_plugins_la_SOURCES)
---- ecasound-2.8.1.orig/libecasoundc/Makefile.am
-+++ ecasound-2.8.1/libecasoundc/Makefile.am
+--- a/libecasoundc/Makefile.am
++++ b/libecasoundc/Makefile.am
 @@ -14,9 +14,9 @@
  # !!!
  # remember to update eca-version.cpp
@@ -51,8 +51,8 @@
  endif
  
  INCLUDES = -I$(srcdir)
---- ecasound-2.8.1.orig/pyecasound/Makefile.am
-+++ ecasound-2.8.1/pyecasound/Makefile.am
+--- a/pyecasound/Makefile.am
++++ b/pyecasound/Makefile.am
 @@ -28,7 +28,7 @@
  				$(DESTDIR)$(ECA_S_PYTHON_DLMODULES)/ecacontrol.py
  endif

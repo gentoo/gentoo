@@ -3,7 +3,6 @@
 <pkgmetadata>
   <maintainer type="project">
     <email>xemacs@gentoo.org</email>
-    <description>Primary Maintainer</description>
   </maintainer>
   <use>
     <flag name="athena">Chooses the MIT Athena widget set</flag>

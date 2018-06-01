@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<email>alicef@gentoo.org</email>
 	<name>Alice Ferrazzi</name>
-	<description>Assign bugs to me.</description>
 </maintainer>
 <use>
 	<flag name="extras">Installs additional modules used by ikiwiki plugins</flag>

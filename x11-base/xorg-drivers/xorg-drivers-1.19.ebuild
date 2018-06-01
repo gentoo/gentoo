@@ -97,7 +97,10 @@ PDEPEND="
 	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
-	video_cards_virtualbox?    ( x11-drivers/xf86-video-virtualbox )
+	video_cards_virtualbox?    ( || (
+					x11-drivers/xf86-video-vboxvideo
+					x11-drivers/xf86-video-virtualbox
+					) )
 	video_cards_vmware?        ( x11-drivers/xf86-video-vmware )
 	video_cards_voodoo?        ( x11-drivers/xf86-video-voodoo )
 

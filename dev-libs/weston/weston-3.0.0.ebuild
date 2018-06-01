@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,10 @@ HOMEPAGE="https://wayland.freedesktop.org/"
 
 if [[ $PV = 9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
-	KEYWORDS=""
+	KEYWORDS="amd64 arm x86"
 else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86 ~arm-linux"
+	KEYWORDS="amd64 arm x86 ~arm-linux"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"

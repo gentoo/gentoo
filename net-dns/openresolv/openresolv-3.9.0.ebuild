@@ -4,12 +4,12 @@
 EAPI=6
 
 DESCRIPTION="A framework for managing DNS information"
-HOMEPAGE="http://roy.marples.name/projects/openresolv"
-SRC_URI="http://roy.marples.name/downloads/${PN}/${P}.tar.xz"
+HOMEPAGE="https://roy.marples.name/projects/openresolv"
+SRC_URI="https://roy.marples.name/downloads/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="selinux"
 
 DEPEND="!net-dns/resolvconf-gentoo

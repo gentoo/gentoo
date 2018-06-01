@@ -4,6 +4,21 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/capybara depends on www-client/firefox which has not been ported to
+# HPPA
+dev-ruby/capybara test
+
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/haml depends on dev-ruby/action* which lost their keywords, so that
+# kills the fun
+dev-ruby/haml test
+
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/tilt requires dev-ruby/coffee-script which requires net-libs/nodejs
+# which has not been ported to HPPA
+dev-ruby/tilt test
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (4 Oct 2017)
 # -fstack-protector is not supported for hppa, bug 630702
 >=sys-devel/gcc-6.0 ssp
@@ -120,17 +135,9 @@ dev-python/pymongo test
 # USE=gui requires x11-libs/qscintilla,
 sci-mathematics/octave gui
 
-# Jeroen Roovers <jer@gentoo.org> (31 Jan 2014)
-# Mask x11-libs/libgksu dependency (bug #499900)
-xfce-extra/xfce4-taskmanager gksu
-
 # Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
 # needs app-arch/innoextract (bug #492326)
 games-fps/duke3d-data gog
-
-# Jeroen Roovers <jer@gentoo.org> (25 Oct 2013)
-# Building against libatomic_ops fails (bug #453704)
-sys-libs/libunwind libatomic
 
 # Jeroen Roovers <jer@gentoo.org> (23 Jul 2013)
 # graphite is not implemented on HPPA

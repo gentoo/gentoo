@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 llvm python-any-r1
+inherit cmake-utils git-r3 llvm multiprocessing python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -49,7 +49,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 pkg_setup() {
-	llvm_pkg_setup
+	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -88,7 +88,7 @@ src_configure() {
 	)
 
 	use test && mycmakeargs+=(
-		-DLLVM_LIT_ARGS="-vv"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844

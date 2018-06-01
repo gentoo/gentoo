@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="py.test plugin for relaxed test discovery and organization"
-HOMEPAGE="https://pypi.python.org/pypi/pytest-relaxed https://github.com/bitprophet/pytest-relaxed"
+HOMEPAGE="https://pypi.org/project/pytest-relaxed/ https://github.com/bitprophet/pytest-relaxed"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD-2"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~amd64-fbsd ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="test"
 
 RDEPEND="

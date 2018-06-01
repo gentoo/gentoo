@@ -15,7 +15,7 @@ FCFLAGS="${CFLAGS}"
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mach64 mga nv r128 radeon savage tdfx trident voodoo"
+VIDEO_CARDS="fbdev glint mga nv r128 radeon tdfx voodoo"
 
 # 2006/12/06 - Diego Pettenò <flameeyes@gentoo.org>
 # Defaults for PowerPC sound driver
@@ -35,7 +35,3 @@ IUSE_IMPLICIT="abi_ppc_32"
 
 # Enable abi_ppc_32 for packages that don't have it forced.
 ABI_PPC="32"
-
-# Hans de Graaff <graaff@gentoo.org> (21 Jan 2018)
-# Temporary entry to support stable bug 639476
-RUBY_TARGETS="ruby22"

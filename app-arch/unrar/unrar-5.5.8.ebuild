@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,8 +8,8 @@ inherit eutils flag-o-matic multilib toolchain-funcs
 MY_PN=${PN}src
 
 DESCRIPTION="Uncompress rar files"
-HOMEPAGE="http://www.rarlab.com/rar_add.htm"
-SRC_URI="http://www.rarlab.com/rar/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.rarlab.com/rar_add.htm"
+SRC_URI="https://www.rarlab.com/rar/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="unRAR"
 # subslot = soname version

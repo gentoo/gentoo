@@ -1,8 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 DESCRIPTION="a dockapp for monitoring CPU usage with a LCD display"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/36"
+HOMEPAGE="https://www.dockapps.net/wmcpuload"
 SRC_URI="mirror://gentoo/${P/_/}.tar.gz"
 
 LICENSE="GPL-2"
@@ -14,7 +16,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	x11-libs/libICE"
 
 S=${WORKDIR}/${P/_/}

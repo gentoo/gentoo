@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24"
 
 inherit autotools ltprune python-single-r1 ruby-single
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="hyperestraier mysql python ruby ${USE_RUBY//ruby/ruby_targets_ruby} static-libs subversion"
 RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )

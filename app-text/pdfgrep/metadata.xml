@@ -3,11 +3,9 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>jlec@gentoo.org</email>
-		<description>Tree Proxy</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>flo@geekplace.eu</email>
-		<description>Maintainer, CC him on bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

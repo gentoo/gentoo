@@ -11,12 +11,13 @@ SRC_URI="http://meltin.net/hacks/emacs/src/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~x86-linux ~ppc-macos"
 IUSE="X"
 
-DEPEND=">=app-eselect/eselect-emacs-1.15
+RDEPEND=">=app-eselect/eselect-emacs-1.15
 	X? ( x11-libs/libXau )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 
 SITEFILE="50${PN}-gentoo.el"
 

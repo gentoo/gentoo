@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ elif [[ *"${PV}" == *"_pre"* ]] ; then
 	SRC_URI="https://download.enlightenment.org/pre-releases/${MY_P}.tar.xz"
 else
 	SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 inherit enlightenment pax-utils
@@ -92,7 +92,6 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXfixes
 		x11-libs/libXinerama
-		x11-libs/libXp
 		x11-libs/libXrandr
 		x11-libs/libXrender
 		x11-libs/libXtst

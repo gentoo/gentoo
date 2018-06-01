@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="https://bitbucket.org/odedevs/ode/downloads/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1+ BSD )"
 SLOT="0/6"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug doc double-precision examples gyroscopic static-libs"
 
 RDEPEND="examples? (
@@ -22,6 +22,8 @@ DEPEND="${RDEPEND}
 MY_EXAMPLES_DIR=/usr/share/doc/${PF}/examples
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.14-gcc7.patch
+
 	sed -i \
 		-e "s:\$.*/drawstuff/textures:${MY_EXAMPLES_DIR}:" \
 		drawstuff/src/Makefile.am \

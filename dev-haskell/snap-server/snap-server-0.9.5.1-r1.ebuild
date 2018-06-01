@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,7 +39,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	cabal_chdeps \
-		'attoparsec                >= 0.10     && < 0.13' 'attoparsec                >= 0.10     && < 0.14'
+		'attoparsec                >= 0.10     && < 0.13' 'attoparsec                >= 0.10     && < 0.14' \
+		'time                      >= 1.0      && < 1.6' 'time                      >= 1.0'
 }
 
 src_configure() {

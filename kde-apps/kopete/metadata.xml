@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 	<use>
 		<!-- PLUGINS -->
 		<flag name="addbookmarks">Automatically add incoming urls to bookmarks.</flag>
@@ -21,20 +25,10 @@
 		<!-- PROTOCOLS -->
 		<flag name="gadu">Enable the Gadu protocol handler.</flag>
 		<flag name="groupwise">Enable the Groupwise protocol handler.</flag>
-		<!-- uncomment this when enabled in ebuild
-		<flag name="irc">Enable the IRC protocol handler.</flag>
-		-->
 		<flag name="meanwhile">Enable the Sametime protocol handler.</flag>
-		<!-- uncomment this when enabled in ebuild
-		<flag name="telepathy">Enable support for the real-time communication framework telepathy.</flag>
-		-->
 		<flag name="testbed">Enable the testbed protocol.</flag>
 		<flag name="winpopup">Enable pop-up messages sending on windows. (same as good old "net send" messages ;])</flag>
 		<flag name="yahoo">Enable yahoo protocol support.</flag>
 		<flag name="zeroconf">Enable Link-Local Messaging via the bonjour protocol.</flag>
 	</use>
-	<maintainer type="project">
-		<email>kde@gentoo.org</email>
-		<name>Gentoo KDE Project</name>
-	</maintainer>
 </pkgmetadata>

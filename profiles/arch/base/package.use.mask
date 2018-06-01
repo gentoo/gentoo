@@ -1,5 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
+# media-libs/vulkan-loader and app-emulation/vkd3d are not available everywhere
+app-emulation/wine-any vkd3d vulkan
+app-emulation/wine-d3d9 vkd3d vulkan
+app-emulation/wine-staging vkd3d vulkan
+app-emulation/wine-vanilla vkd3d vulkan
+
+# Richard Yao <ryao@gentoo.org> (16 Apr 2018)
+# sys-fs/zfs is not available everywhere.
+sys-cluster/ceph zfs
 
 # Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
 # Moved from use.mask since it is a flag local to one package:
@@ -42,7 +53,7 @@ dev-libs/libsecp256k1 asm
 
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Dependency is only keyworded on amd64 and x86
-app-admin/collectd collectd_plugins_mqtt
+app-metrics/collectd collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # It's only supported on amd64, ia64, powerpc and x86
@@ -206,10 +217,6 @@ sys-power/pm-utils video_cards_intel video_cards_radeon
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan X
-
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-# Java is not supported in most of the arches enchant is keyworded
-app-text/enchant zemberek
 
 # Raúl Porcel <armin76@gentoo.org> (09 Nov 2008)
 # CPU opts: This needs amd64, x86 and ppc on some of them

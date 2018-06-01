@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,9 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="A gpodder.net client library"
-HOMEPAGE="http://thp.io/2010/mygpoclient/"
-SRC_URI="http://thp.io/2010/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/gpodder/mygpoclient
+	https://mygpoclient.readthedocs.io/en/latest/"
+SRC_URI="https://github.com/gpodder/mygpoclient/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

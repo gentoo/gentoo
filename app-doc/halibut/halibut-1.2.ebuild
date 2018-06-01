@@ -6,8 +6,8 @@ EAPI="6"
 inherit toolchain-funcs
 
 DESCRIPTION="yet another free document preparation system"
-HOMEPAGE="http://www.chiark.greenend.org.uk/~sgtatham/halibut/"
-SRC_URI="http://www.chiark.greenend.org.uk/~sgtatham/${PN}/${P}/${P}.tar.gz"
+HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/halibut/"
+SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

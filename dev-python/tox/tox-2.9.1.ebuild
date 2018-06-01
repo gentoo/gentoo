@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="virtualenv-based automation of test activities"
-HOMEPAGE="https://tox.readthedocs.io https://github.com/tox-dev/tox https://pypi.python.org/pypi/tox"
+HOMEPAGE="https://tox.readthedocs.io https://github.com/tox-dev/tox https://pypi.org/project/tox/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 
 IUSE="doc test"
 

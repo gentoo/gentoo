@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ else
 	GIT_ECLASS="vcs-snapshot"
 fi
 
-inherit llvm python-any-r1 toolchain-funcs ${GIT_ECLASS}
+inherit llvm prefix python-any-r1 toolchain-funcs ${GIT_ECLASS}
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="http://libclc.llvm.org/"
@@ -45,6 +45,13 @@ LLVM_MAX_SLOT=5
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
+}
+
+src_prepare() {
+	default
+	if use prefix; then
+		hprefixify configure.py
+	fi
 }
 
 pkg_setup() {

@@ -1,0 +1,6 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (21 Feb 2018)
+# Mozc supports only little-endian architectures.
+app-i18n/mozc

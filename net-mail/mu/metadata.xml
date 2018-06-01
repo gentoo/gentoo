@@ -14,7 +14,6 @@
 		are looking for, assuming that you store your e-mails in Maildirs.  It also includes an emacs based mail client mu4e.
 	</longdescription>
 	<use>
-		<flag name="gui">Build and install the experimental gui 'mug'.</flag>
 		<flag name="emacs">Install the mu4e mail client.</flag>
 	</use>
 	<upstream>

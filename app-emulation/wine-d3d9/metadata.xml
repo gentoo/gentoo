@@ -10,7 +10,7 @@
 		</description>
 	</maintainer>
 	<maintainer type="person">
-		<email>commendsarnex@gmail.com</email>
+		<email>sarnex@gentoo.org</email>
 		<name>Nick Sarnie</name>
 	</maintainer>
 	<longdescription>
@@ -27,6 +27,7 @@ This variant of the Wine packaging includes the Gallium Nine patchset.
 			This patch may break some applications.</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
+		<flag name="gssapi">Use GSSAPI (Kerberos SSP support)</flag>
 		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;</flag>
 		<flag name="mono">Add support for .NET using Wine's Mono add-on</flag>
 		<flag name="netapi">Use libnetapi from <pkg>net-fs/samba</pkg> to support Windows networks in netapi32.dll</flag>
@@ -41,7 +42,10 @@ This variant of the Wine packaging includes the Gallium Nine patchset.
 		<flag name="samba">Add support for NTLM auth. see
 		http://wiki.winehq.org/NtlmAuthSetupGuide and
 		http://wiki.winehq.org/NtlmSigningAndSealing</flag>
+		<flag name="sdl">Add support for gamepad detection using SDL</flag>
 		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
+		<flag name="vkd3d">Use <pkg>app-emulation/vkd3d</pkg> to provide Direct3D 12 support</flag>
+		<flag name="vulkan">Enable Vulkan drivers</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">wine</remote-id>

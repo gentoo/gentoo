@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="A hardware-independent library for executing real-mode x86 code"
-HOMEPAGE="http://www.codon.org.uk/~mjg59/libx86"
-SRC_URI="http://www.codon.org.uk/~mjg59/${PN}/downloads/${P}.tar.gz"
+HOMEPAGE="https://www.codon.org.uk/~mjg59/libx86/"
+SRC_URI="https://www.codon.org.uk/~mjg59/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="static-libs"
 
 src_prepare() {

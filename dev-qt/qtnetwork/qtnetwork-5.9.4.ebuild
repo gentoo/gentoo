@@ -8,10 +8,10 @@ inherit qt5-build
 DESCRIPTION="Network abstraction library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-fbsd"
 fi
 
-IUSE="bindist connman libproxy networkmanager +ssl"
+IUSE="bindist connman libproxy libressl networkmanager +ssl"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
@@ -19,7 +19,10 @@ DEPEND="
 	connman? ( ~dev-qt/qtdbus-${PV} )
 	libproxy? ( net-libs/libproxy )
 	networkmanager? ( ~dev-qt/qtdbus-${PV} )
-	ssl? ( dev-libs/openssl:0=[bindist=] )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0=[bindist=] )
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 RDEPEND="${DEPEND}
 	connman? ( net-misc/connman )

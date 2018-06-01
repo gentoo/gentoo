@@ -9,7 +9,6 @@
 		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
 		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
 		<flag name="shared">Build gnat_util shared library</flag>
-		<flag name="static">Build gnat_util static library</flag>
 		<flag name="static-pic">Build gnat_util static library with pic code</flag>
 	</use>
 	<longdescription lang="en">

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>enlightenment@gentoo.org</email>
-	<name>Project Enlightenment</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription>
 Imlib 2 is the successor to Imlib. It is not just a newer version - it is a 
 completely new library. Imlib2 can be installed alongside Imlib 1.x without any 

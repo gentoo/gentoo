@@ -60,7 +60,7 @@ esac
 EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
 
 IUSE=""
-HOMEPAGE="https://www.x.org/wiki/"
+HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
 
 # @ECLASS-VARIABLE: XORG_EAUTORECONF
 # @DESCRIPTION:
@@ -87,7 +87,6 @@ if [[ -z ${XORG_MODULE} ]]; then
 		x11-misc|x11-themes) XORG_MODULE=util/    ;;
 		x11-base)            XORG_MODULE=xserver/ ;;
 		x11-drivers)         XORG_MODULE=driver/  ;;
-		x11-proto)           XORG_MODULE=proto/   ;;
 		x11-libs)            XORG_MODULE=lib/     ;;
 		*)                   XORG_MODULE=         ;;
 	esac
@@ -157,7 +156,7 @@ if [[ ${FONT} == yes ]]; then
 	# Set up configure options, wrapped so ebuilds can override if need be
 	[[ -z ${FONT_OPTIONS} ]] && FONT_OPTIONS="--with-fontdir=\"${EPREFIX}/usr/share/fonts/${FONT_DIR}\""
 
-	[[ ${PN##*-} = misc || ${PN##*-} = 75dpi || ${PN##*-} = 100dpi || ${PN##*-} = cyrillic ]] && IUSE+=" nls"
+	[[ ${PN} = font-misc-misc || ${PN} = font-schumacher-misc || ${PN##*-} = 75dpi || ${PN##*-} = 100dpi || ${PN##*-} = cyrillic ]] && IUSE+=" nls"
 fi
 
 # If we're a driver package, then enable DRIVER case
@@ -175,7 +174,6 @@ if [[ ${XORG_STATIC} == yes \
 		&& ${FONT} != yes \
 		&& ${CATEGORY} != app-doc \
 		&& ${CATEGORY} != x11-apps \
-		&& ${CATEGORY} != x11-proto \
 		&& ${CATEGORY} != x11-drivers \
 		&& ${CATEGORY} != media-fonts \
 		&& ${PN} != util-macros \
@@ -199,26 +197,18 @@ DRI_COMMON_DEPEND="
 	x11-base/xorg-server[-minimal]
 	x11-libs/libdrm
 "
-DRI_DEPEND="
-	x11-proto/xf86driproto
-	x11-proto/glproto
-	x11-proto/dri2proto
-"
 case ${XORG_DRI} in
 	no)
 		;;
 	always)
 		COMMON_DEPEND+=" ${DRI_COMMON_DEPEND}"
-		DEPEND+=" ${DRI_DEPEND}"
 		;;
 	*)
 		COMMON_DEPEND+=" ${XORG_DRI}? ( ${DRI_COMMON_DEPEND} )"
-		DEPEND+=" ${XORG_DRI}? ( ${DRI_DEPEND} )"
 		IUSE+=" ${XORG_DRI}"
 		;;
 esac
-unset DRI_DEPEND
-unset DRI_COMMONDEPEND
+unset DRI_COMMON_DEPEND
 
 if [[ -n "${DRIVER}" ]]; then
 	COMMON_DEPEND+="
@@ -226,26 +216,13 @@ if [[ -n "${DRIVER}" ]]; then
 	"
 fi
 if [[ -n "${DRIVER}" && ${PN} == xf86-input-* ]]; then
-	DEPEND+="
-		x11-proto/inputproto
-		x11-proto/kbproto
-		x11-proto/xproto
-	"
+	DEPEND+=" x11-base/xorg-proto"
 fi
 if [[ -n "${DRIVER}" && ${PN} == xf86-video-* ]]; then
 	COMMON_DEPEND+="
 		x11-libs/libpciaccess
 	"
-	# we also needs some protos and libs in all cases
-	DEPEND+="
-		x11-proto/fontsproto
-		x11-proto/randrproto
-		x11-proto/renderproto
-		x11-proto/videoproto
-		x11-proto/xextproto
-		x11-proto/xineramaproto
-		x11-proto/xproto
-	"
+	DEPEND+=" x11-base/xorg-proto"
 fi
 
 # @ECLASS-VARIABLE: XORG_DOC
@@ -304,10 +281,6 @@ fi
 DEPEND+=" ${COMMON_DEPEND}"
 RDEPEND+=" ${COMMON_DEPEND}"
 unset COMMON_DEPEND
-
-if [[ ${XORG_MULTILIB} == yes ]]; then
-	RDEPEND+=" abi_x86_32? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] )"
-fi
 
 debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: DEPEND=${DEPEND}"
 debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: RDEPEND=${RDEPEND}"
@@ -391,7 +364,8 @@ xorg-2_font_configure() {
 	if has nls ${IUSE//+} && ! use nls; then
 		if grep -q -s "disable-all-encodings" ${ECONF_SOURCE:-.}/configure; then
 			FONT_OPTIONS+="
-				--disable-all-encodings"
+				--disable-all-encodings
+				--enable-iso8859-1"
 		else
 			FONT_OPTIONS+="
 				--disable-iso8859-2
@@ -508,12 +482,6 @@ xorg-2_src_install() {
 
 	local install_args=( docdir="${EPREFIX}/usr/share/doc/${PF}" )
 
-	if [[ ${CATEGORY} == x11-proto ]]; then
-		install_args+=(
-			${PN/proto/}docdir="${EPREFIX}/usr/share/doc/${PF}"
-		)
-	fi
-
 	if [[ ${XORG_MULTILIB} == yes ]]; then
 		autotools-multilib_src_install "${install_args[@]}"
 	else
@@ -547,6 +515,8 @@ xorg-2_pkg_postinst() {
 		create_fonts_scale
 		create_fonts_dir
 		font_pkg_postinst "$@"
+
+		ewarn "Installed fonts changed. Run 'xset fp rehash' if you are using non-fontconfig applications."
 	fi
 }
 

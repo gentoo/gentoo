@@ -10,7 +10,7 @@ HOMEPAGE="http://www.pgadmin.org/"
 SRC_URI="mirror://postgresql/pgadmin/pgadmin3/v${PV}/src/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 SLOT="0"
 IUSE="debug +databasedesigner"
 
@@ -21,7 +21,7 @@ DEPEND="
 	>=dev-libs/libxslt-1.1"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/pgadmin3-{desktop,gcc6-null-pointer}.patch )
+PATCHES=( "${FILESDIR}"/pgadmin3-{desktop-r1,gcc6-null-pointer}.patch )
 
 src_configure() {
 	WX_GTK_VER="3.0"

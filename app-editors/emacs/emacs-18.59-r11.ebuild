@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,14 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES="../${P}-linux22x-elf-glibc21.diff ../patch"
+
+src_prepare() {
+	default
+
+	# Do not use the sandbox, or the dumped Emacs will be twice as large
+	sed -i -e 's:\./temacs.*dump:SANDBOX_ON=0 LD_PRELOAD= env &:' \
+		src/ymakefile || die
+}
 
 src_configure() {
 	# autoconf? What's autoconf? We are living in 1992. ;-)
@@ -70,8 +78,7 @@ src_configure() {
 }
 
 src_compile() {
-	# Do not use the sandbox, or the dumped Emacs will be twice as large
-	export SANDBOX_ON=0
+	addpredict /var/lib/emacs/lock
 	emake --jobs=1 \
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Demacs" \
 		LD="$(tc-getCC) -nostdlib" LDFLAGS="${LDFLAGS}"

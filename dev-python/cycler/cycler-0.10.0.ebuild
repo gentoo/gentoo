@@ -11,14 +11,14 @@ MY_PN="Cycler"
 
 DESCRIPTION="Composable style cycles"
 HOMEPAGE="
-	http://matplotlib.org/cycler/
-	https://pypi.python.org/pypi/Cycler/
+	https://matplotlib.org/cycler/
+	https://pypi.org/project/Cycler/
 	https://github.com/matplotlib/cycler"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="test"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"

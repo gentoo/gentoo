@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Regression test harness for Emacs Lisp code"
-HOMEPAGE="http://www.emacswiki.org/emacs/WikifiedEmacsLispList"
+HOMEPAGE="https://www.emacswiki.org/emacs/WikifiedEmacsLispList"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-1+"

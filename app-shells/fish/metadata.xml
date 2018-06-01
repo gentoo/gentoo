@@ -4,11 +4,17 @@
 	<maintainer type="person">
 		<email>ya@sysdump.net</email>
 		<name>Georgy Yakovlev</name>
-		<description>Proxied maintainer. Please assign bugs to him.</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
-		<description>Proxy maintainer of Georgy. Please CC on bugs.</description>
 	</maintainer>
+	<longdescription lang="en">
+		Smart and user-friendly command line shell for macOS, Linux, and the rest of the family.
+		It includes features like syntax highlighting, autosuggest-as-you-type,
+		and fancy tab completions that just work, with no configuration required.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fish-shell/fish-shell</remote-id>
+	</upstream>
 </pkgmetadata>

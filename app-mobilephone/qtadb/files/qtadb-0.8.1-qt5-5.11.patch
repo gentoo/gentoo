@@ -1,0 +1,14 @@
+--- a/widgets/filewidget.cpp	2014-11-22 12:44:42.000000000 +0100
++++ b/widgets/filewidget.cpp	2018-03-17 22:52:25.103930971 +0100
+@@ -21,9 +21,10 @@
+ #include "filewidget.h"
+ #include "ui_filewidget.h"
+ 
+-#include <QStandardPaths>
++#include <QHeaderView>
+ #include <QMenu>
+ #include <QScrollBar>
++#include <QStandardPaths>
+ 
+ quint32 qbytearrayToInt32(QByteArray array)
+ {

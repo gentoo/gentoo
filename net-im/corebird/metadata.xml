@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>markpariente@gmail.com</email>
-		<name>Mark R. Pariente</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>moschlar@metalabs.de</email>
 		<name>Moritz Schlarb</name>
 	</maintainer>

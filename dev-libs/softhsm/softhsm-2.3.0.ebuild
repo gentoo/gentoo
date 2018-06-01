@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,10 +6,10 @@ EAPI=6
 inherit ltprune
 
 DESCRIPTION="A software PKCS#11 implementation"
-HOMEPAGE="http://www.opendnssec.org/"
-SRC_URI="http://www.opendnssec.org/files/source/${P}.tar.gz"
+HOMEPAGE="https://www.opendnssec.org/"
+SRC_URI="https://www.opendnssec.org/files/source/${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bindist libressl migration-tool test"
 SLOT="2"
 LICENSE="BSD"

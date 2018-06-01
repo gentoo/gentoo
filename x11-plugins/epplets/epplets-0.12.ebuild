@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Base files for Enlightenment epplets and some epplets"
 HOMEPAGE="https://www.enlightenment.org/"
@@ -17,8 +19,7 @@ RDEPEND="x11-libs/libX11
 	>=x11-wm/enlightenment-0.16.4"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_install() {
 	emake DESTDIR="${D}" install || die

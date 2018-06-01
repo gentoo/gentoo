@@ -1,13 +1,8 @@
 From: Nathan Phillip Brink <binki@gentoo.org>
 Subject: Use -lsocks instead of -lsocks5 for `./configure --with-socks5`.
 
-Index: configure.in
-===================================================================
-RCS file: /home/cvs/repository/epic5/configure.in,v
-retrieving revision 1.101
-diff -u -b -B -u -r1.101 configure.in
---- configure.in	9 Apr 2014 17:51:06 -0000	1.101
-+++ configure.in	4 Sep 2014 00:18:00 -0000
+--- a/configure.in
++++ b/configure.in
 @@ -861,7 +861,7 @@
  
  AC_MSG_CHECKING(whether to support SOCKS)

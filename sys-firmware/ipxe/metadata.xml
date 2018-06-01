@@ -5,6 +5,7 @@
 	<email>qemu@gentoo.org</email>
 </maintainer>
 <use>
+	<flag name="binary">Use pre-built binaries</flag>
 	<flag name="efi">Build an EFI program for using PXE</flag>
 	<flag name="iso">Build a bootable ISO for using PXE</flag>
 	<flag name="lkrn">Build a linux kernel bootable file for using with grub/etc...</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (27 Jun 2016)
@@ -15,6 +15,7 @@ dev-vcs/git mediawiki mediawiki-experimental
 # very bad with, that really causes way more issues than it is worth to
 # have some boundary bugs solved and more robust subshell die support
 sys-apps/portage ipc
+sys-apps/portage-mgorny ipc
 
 # Michael Haubenwallner <haubi@gentoo.org> (17 Sep 2010)
 # sys-apps/keyutils is a linux only package

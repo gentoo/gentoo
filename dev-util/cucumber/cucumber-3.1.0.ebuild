@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~x86"
 SLOT="0"
 IUSE="examples test"
 

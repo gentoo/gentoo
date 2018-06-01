@@ -1,6 +1,76 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# app-text/docbook2X not stable yet, fails tests (bug #511902)
+dev-vcs/git doc
+
+# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# sys-devel/clang, dev-libs/xapian, app-text/texlive not stable yet
+# USE=doc requires USE=latex
+app-doc/doxygen clang doxysearch latex doc
+
+# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# virtual/opengl and media-libs/freeglut not stable yet
+media-libs/libwebp opengl
+
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# No media-libs/freeglut and co stable yet
+media-libs/jasper opengl
+
+# Mart Raudsepp <leio@gentoo.org> (04 May 2018)
+# sci-libs/mpir fails tests, bug 640424
+dev-python/gmpy mpir
+
+# Michał Górny <mgorny@gentoo.org> (01 May 2018)
+# More non-stable dependencies.
+dev-python/urllib3 test
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Non-stable dependencies.
+app-admin/syslog-ng spoof-source
+app-portage/layman cvs subversion test
+app-text/xmlto latex
+dev-libs/apr-util freetds odbc
+gnome-base/dconf test
+gnome-base/librsvg tools
+net-dns/avahi bookmarks gtk3 utils
+net-misc/openssh X
+sys-apps/dbus test
+sys-apps/man-pages l10n_fr
+sys-apps/systemd cryptsetup http policykit qrcode xkb
+sys-auth/pambase consolekit pam_krb5 pam_ssh passwdqc
+sys-block/thin-provisioning-tools test
+sys-devel/distcc gssapi
+sys-devel/gettext cvs
+
+# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Requires masked dependent flags.
+net-dns/avahi howl-compat python
+
+# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
+# Requires xorg-server[xvfb] for tests
+dev-util/cmake test
+dev-libs/glib test
+
+# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Requires masked dependent flags.
+net-dns/avahi mdnsresponder-compat
+net-fs/samba ads
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# Masked due to unstable deps.
+dev-db/redis tcmalloc
+dev-libs/glib test
+dev-python/hgdistver test
+dev-python/pycurl test
+dev-python/pyopenssl test
+dev-python/pyyaml libyaml
+dev-python/setuptools_scm mercurial test
+dev-python/sphinx latex test
+dev-python/twisted-core gtk serial
+net-analyzer/netcat crypt
+
 # Michał Górny <mgorny@gentoo.org> (07 Feb 2018)
 # sys-libs/tevent is not stable here.
 dev-libs/libverto tevent

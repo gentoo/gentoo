@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -94,10 +94,10 @@ pkg_postinst() {
 		elog
 	fi
 
-	if ! has_version "media-libs/speex"; then
+	if ! has_version "media-libs/speexdsp"; then
 		elog
 		elog "For the speexdsp-based noise suppression filter"
-		elog "to be available, the 'media-libs/speex' package needs"
+		elog "to be available, the 'media-libs/speexdsp' package needs"
 		elog "to be installed."
 		elog
 	fi

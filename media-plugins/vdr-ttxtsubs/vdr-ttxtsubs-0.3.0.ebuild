@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit vdr-plugin-2
 VERSION="1281" # every bump, new version!
 
 DESCRIPTION="VDR Plugin: displaying, recording and replaying teletext based subtitles"
-HOMEPAGE="http://projects.vdr-developer.org/projects/show/plg-ttxtsubs"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-ttxtsubs"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tar.gz"
 
 KEYWORDS="amd64 x86"

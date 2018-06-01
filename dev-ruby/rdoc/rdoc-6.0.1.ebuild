@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -25,7 +25,7 @@ IUSE=""
 RDEPEND+=">=app-eselect/eselect-ruby-20161226"
 
 ruby_add_bdepend "
-	dev-ruby/kpeg
+	>=dev-ruby/kpeg-1.1.0-r1
 	>dev-ruby/racc-1.4.10
 	test? (
 		dev-ruby/bundler

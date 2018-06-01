@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,18 @@ LICENSE="WTFPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-DEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}
+DEPEND="
+	dev-lang/perl"
+
+RDEPEND="
+	${DEPEND}
 	dev-perl/Digest-HMAC
 	dev-perl/File-Copy-Recursive
 	dev-perl/IO-Socket-INET6
 	dev-perl/IO-Socket-SSL
 	dev-perl/IO-Tee
 	dev-perl/Mail-IMAPClient
+	dev-perl/Readonly
 	dev-perl/Sys-MemInfo
 	dev-perl/TermReadKey
 	dev-perl/Unicode-String

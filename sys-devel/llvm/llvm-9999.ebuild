@@ -9,7 +9,7 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils eapi7-ver flag-o-matic git-r3 multilib-minimal \
-	pax-utils python-any-r1 toolchain-funcs
+	multiprocessing pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -141,7 +141,7 @@ multilib_src_configure() {
 #	fi
 
 	use test && mycmakeargs+=(
-		-DLLVM_LIT_ARGS="-vv"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	if multilib_is_native_abi; then
@@ -153,6 +153,7 @@ multilib_src_configure() {
 			-DLLVM_INSTALL_UTILS=ON
 		)
 		use doc && mycmakeargs+=(
+			-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 			-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
@@ -169,6 +170,16 @@ multilib_src_configure() {
 			-DCMAKE_CROSSCOMPILING=ON
 			-DLLVM_TABLEGEN="${tblgen}"
 		)
+	fi
+
+	# workaround BMI bug in gcc-7 (fixed in 7.4)
+	# https://bugs.gentoo.org/649880
+	# apply only to x86, https://bugs.gentoo.org/650506
+	if tc-is-gcc && [[ ${MULTILIB_ABI_FLAG} == abi_x86* ]] &&
+			[[ $(gcc-major-version) -eq 7 && $(gcc-minor-version) -lt 4 ]]
+	then
+		local CFLAGS="${CFLAGS} -mno-bmi"
+		local CXXFLAGS="${CXXFLAGS} -mno-bmi"
 	fi
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
@@ -234,4 +245,13 @@ _EOF_
 	doenvd "${T}/10llvm-${revord}"
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
+}
+
+pkg_postinst() {
+	elog "You can find additional opt-viewer utility scripts in:"
+	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/opt-viewer"
+	elog "To use these scripts, you will need Python 2.7 along with the following"
+	elog "packages:"
+	elog "  dev-python/pygments (for opt-viewer)"
+	elog "  dev-python/pyyaml (for all of them)"
 }

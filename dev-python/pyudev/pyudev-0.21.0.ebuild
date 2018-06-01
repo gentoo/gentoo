@@ -7,20 +7,21 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Python binding to libudev"
-HOMEPAGE="http://pyudev.readthedocs.org https://github.com/pyudev/pyudev"
+HOMEPAGE="https://pyudev.readthedocs.io/en/latest/ https://github.com/pyudev/pyudev"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~x86"
-IUSE="pygobject qt5 pyside test"
+KEYWORDS="amd64 arm ~arm64 ~mips ~x86"
+IUSE="pygobject qt5 test"
 REQUIRED_USE="pygobject? ( || ( $(python_gen_useflags 'python2*') ) )"
 
-RDEPEND="virtual/udev
+RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
+	virtual/udev
 	pygobject? ( dev-python/pygobject:2[$(python_gen_usedep 'python2*')] )
 	qt5? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
-	pyside? ( dev-python/pyside[${PYTHON_USEDEP}] )"
+"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (

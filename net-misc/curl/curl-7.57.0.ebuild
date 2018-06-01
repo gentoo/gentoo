@@ -52,11 +52,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	metalink? ( >=media-libs/libmetalink-0.1.1[${MULTILIB_USEDEP}] )
 	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh2[static-libs?,${MULTILIB_USEDEP}] )
-	sys-libs/zlib[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r13
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	sys-libs/zlib[${MULTILIB_USEDEP}]"
 
 # Do we need to enforce the same ssl backend for curl and rtmpdump? Bug #423303
 #	rtmp? (

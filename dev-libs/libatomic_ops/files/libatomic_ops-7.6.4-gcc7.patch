@@ -1,0 +1,40 @@
+Upstream commit: https://github.com/ivmai/libatomic_ops/commit/759fa976432e4f09b4a436774fff7119da050042
+
+From 759fa976432e4f09b4a436774fff7119da050042 Mon Sep 17 00:00:00 2001
+From: Ivan Maidanski <ivmai@mail.ru>
+Date: Thu, 29 Mar 2018 01:42:38 +0300
+Subject: [PATCH] Fix 'undefined reference to __atomic_load/store/cas_16' error
+ (gcc-7/x64)
+
+Issue #34 (libatomic_ops).
+
+* src/atomic_ops/sysdeps/gcc/x86.h [!AO_DISABLE_GCC_ATOMICS
+&& !__APPLE_CC__ && !__clang__ && AO_GNUC_PREREQ(7, 0)
+&& !AO_PREFER_BUILTIN_ATOMICS && !AO_THREAD_SANITIZER
+&& !__MINGW32__] (AO_SKIPATOMIC_double_compare_and_swap_ANY,
+AO_SKIPATOMIC_DOUBLE_LOAD_STORE_ANY): Define macro; add comment.
+---
+ src/atomic_ops/sysdeps/gcc/x86.h | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/atomic_ops/sysdeps/gcc/x86.h b/src/atomic_ops/sysdeps/gcc/x86.h
+index d7c06c5..b4ca39f 100644
+--- a/src/atomic_ops/sysdeps/gcc/x86.h
++++ b/src/atomic_ops/sysdeps/gcc/x86.h
+@@ -67,7 +67,15 @@
+ #       define AO_SKIPATOMIC_DOUBLE_LOAD_STORE_ANY
+ #     endif
+ #   endif /* __x86_64__ */
+-# endif /* __clang__ */
++
++# elif AO_GNUC_PREREQ(7, 0) && !defined(AO_PREFER_BUILTIN_ATOMICS) \
++       && !defined(AO_THREAD_SANITIZER) && !defined(__MINGW32__)
++    /* gcc-7.x/x64 (gcc-7.2, at least) requires -latomic flag in case   */
++    /* of double-word atomic operations use (but not in case of TSan).  */
++    /* TODO: Revise it for the future gcc-7 releases. */
++#   define AO_SKIPATOMIC_double_compare_and_swap_ANY
++#   define AO_SKIPATOMIC_DOUBLE_LOAD_STORE_ANY
++# endif /* __GNUC__ && !__clang__ */
+ 
+ # ifdef AO_SKIPATOMIC_DOUBLE_LOAD_STORE_ANY
+ #   define AO_SKIPATOMIC_double_load

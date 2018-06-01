@@ -4,7 +4,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
-KDE_TEST="true"
+KDE_TEST="forceoptional"
 QT_MINIMAL="5.9.3"
 VIRTUALX_REQUIRED="test"
 inherit kde5
@@ -14,7 +14,7 @@ HOMEPAGE="https://userbase.kde.org/Kronometer"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="

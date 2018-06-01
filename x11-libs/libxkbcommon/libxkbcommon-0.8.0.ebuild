@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,14 +17,13 @@ inherit xorg-2 ${GIT_ECLASS}
 
 DESCRIPTION="X.Org xkbcommon library"
 HOMEPAGE="https://xkbcommon.org/"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd"
 IUSE="X doc test"
 
 DEPEND="sys-devel/bison
 	X? (
+		x11-base/xorg-proto
 		>=x11-libs/libxcb-1.10[${MULTILIB_USEDEP},xkb]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-		>=x11-proto/kbproto-1.0.6-r1[${MULTILIB_USEDEP}]
 	)
 	doc? ( app-doc/doxygen )"
 RDEPEND="X? ( >=x11-libs/libxcb-1.10[${MULTILIB_USEDEP},xkb] )"

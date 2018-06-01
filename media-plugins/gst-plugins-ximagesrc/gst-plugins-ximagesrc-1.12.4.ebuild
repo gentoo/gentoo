@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPTION="X11 video capture stream plugin for GStreamer"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="
@@ -18,10 +18,7 @@ RDEPEND="
 	>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	>=x11-proto/damageproto-1.2.1-r1[${MULTILIB_USEDEP}]
-	>=x11-proto/fixesproto-5.0-r1[${MULTILIB_USEDEP}]
-	>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
+	x11-base/xorg-proto
 "
 
 # xshm is a compile time option of ximage

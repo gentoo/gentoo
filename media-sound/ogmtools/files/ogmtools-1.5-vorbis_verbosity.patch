@@ -1,6 +1,5 @@
-diff -ur ogmtools-1.5.orig/ogminfo.c ogmtools-1.5/ogminfo.c
---- ogmtools-1.5.orig/ogminfo.c	2003-11-21 00:21:36.000000000 +0200
-+++ ogmtools-1.5/ogminfo.c	2009-05-12 12:42:56.000000000 +0300
+--- a/ogminfo.c
++++ b/ogminfo.c
 @@ -188,7 +188,7 @@
      }
      vorbis_comment_clear(&vc);

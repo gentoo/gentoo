@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=""
-DEPEND="dev-python/setuptools[${MULTILIB_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/paho.mqtt.python-${PV}"
 

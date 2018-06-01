@@ -19,7 +19,7 @@
 # of this eclass's API.
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
-# any phase functions are overriden the version here should also be called.
+# any phase functions are overridden the version here should also be called.
 
 if [[ -z ${_KDE5_ECLASS} ]]; then
 _KDE5_ECLASS=1
@@ -31,7 +31,11 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils eutils flag-o-matic gnome2-utils kde5-functions versionator virtualx xdg
+inherit cmake-utils flag-o-matic gnome2-utils kde5-functions virtualx xdg
+
+case ${EAPI} in
+	6) inherit eapi7-ver eutils ;;
+esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	case ${KDE_SCM} in
@@ -180,7 +184,7 @@ case ${KDE_SUBSLOT} in
 			kde-frameworks | \
 			kde-plasma | \
 			kde-apps)
-				SLOT+="/$(get_version_component_range 1-2)"
+				SLOT+="/$(ver_cut 1-2)"
 				;;
 			*)
 				SLOT+="/${PV}"
@@ -227,9 +231,6 @@ case ${KDE_DESIGNERPLUGIN} in
 	*)
 		IUSE+=" designer"
 		DEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
-		[[ ${PV} = 17.08* ]] && \
-			DEPEND+=" designer? ( $(add_qt_dep designer) )"
-		;;
 esac
 
 case ${KDE_EXAMPLES} in
@@ -341,7 +342,7 @@ _calculate_src_uri() {
 		kde-frameworks)
 			SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
 		kde-plasma)
-			local plasmapv=$(get_version_component_range 1-3)
+			local plasmapv=$(ver_cut 1-3)
 
 			case ${PV} in
 				5.?.[6-9]? | 5.??.[6-9]? )
@@ -410,11 +411,11 @@ _calculate_live_repo() {
 			fi
 
 			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-				EGIT_BRANCH="Applications/$(get_version_component_range 1-2)"
+				EGIT_BRANCH="Applications/$(ver_cut 1-2)"
 			fi
 
 			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
-				EGIT_BRANCH="Plasma/$(get_version_component_range 1-2)"
+				EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
 			fi
 
 			EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
@@ -633,11 +634,7 @@ kde5_src_configure() {
 	fi
 
 	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		if [[ ${PV} = 17.08* ]]; then
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
-		else
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DesignerPlugin=ON )
-		fi
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DesignerPlugin=ON )
 	fi
 
 	if [[ ${KDE_QTHELP} != false ]]; then

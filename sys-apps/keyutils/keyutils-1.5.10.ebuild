@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,9 +25,12 @@ PATCHES=(
 
 pkg_setup() {
 	CONFIG_CHECK="~KEYS"
-	use test && CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS"
 	ERROR_KEYS="You must have CONFIG_KEYS to use this package!"
-	ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
+
+	if use test && kernel_is lt 4 0 0; then
+		CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS"
+		ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
+	fi
 	linux-info_pkg_setup
 }
 

@@ -120,7 +120,7 @@ libvirtd_dom_stop() {
 		if [ "${shutdown_type}" = "shutdown" ]; then
 			counter=$((${counter} - 1))
 		fi
-		echo -n "."
+		printf "."
 	done
 
 	if [ "${shutdown_type}" = "shutdown" ]; then

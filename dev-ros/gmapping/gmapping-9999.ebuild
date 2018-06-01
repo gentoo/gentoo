@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/openslam_gmapping
 	dev-ros/rosbag_storage
+	dev-ros/gmapping
 "
 DEPEND="${RDEPEND}
 	dev-ros/rostest"

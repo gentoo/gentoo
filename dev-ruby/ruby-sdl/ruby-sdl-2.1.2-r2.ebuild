@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 inherit eutils ruby-ng
 
@@ -10,7 +10,7 @@ RELEASE="rel-${PV//./-}"
 RUBY_S="rubysdl-${RELEASE}"
 
 DESCRIPTION="Ruby/SDL: Ruby bindings for SDL"
-HOMEPAGE="http://www.kmc.gr.jp/~ohai/rubysdl.en.html"
+HOMEPAGE="https://www.kmc.gr.jp/~ohai/rubysdl.en.html"
 SRC_URI="https://github.com/ohai/rubysdl/archive/${RELEASE}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -27,18 +27,23 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle +openssl rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
 
 LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
-	idn? ( net-dns/libidn2[static-libs(+)] )
-	ipv6? ( ssl? (
-		gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
-		nettle? ( dev-libs/nettle[static-libs(+)] )
-		openssl? (
-			!libressl? ( dev-libs/openssl:0[static-libs(+)] )
-			libressl? ( dev-libs/libressl[static-libs(+)] )
+	idn? ( net-dns/libidn2:=[static-libs(+)] )
+	ipv6? (
+		ssl? (
+			gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
+			!gcrypt? (
+				nettle? ( dev-libs/nettle[static-libs(+)] )
+				!nettle? (
+					libressl? ( dev-libs/libressl:0=[static-libs(+)] )
+					!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
+				)
+			)
 		)
-	) )"
+	)
+"
 RDEPEND="arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
 	traceroute? ( !net-analyzer/traceroute )
@@ -54,8 +59,6 @@ if [[ ${PV} == "99999999" ]] ; then
 		dev-libs/libxslt:0
 	"
 fi
-
-REQUIRED_USE="ipv6? ( ssl? ( ^^ ( gcrypt nettle openssl ) ) )"
 
 [ "${PV}" = "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
 
@@ -86,7 +89,7 @@ src_configure() {
 
 	if use ipv6 && use ssl ; then
 		myconf=(
-			USE_CRYPTO=$(usex openssl)
+			USE_CRYPTO=yes
 			USE_GCRYPT=$(usex gcrypt)
 			USE_NETTLE=$(usex nettle)
 		)

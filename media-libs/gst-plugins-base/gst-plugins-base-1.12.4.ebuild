@@ -10,7 +10,7 @@ DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 IUSE="alsa +introspection ivorbis +ogg +orc +pango theora +vorbis X"
 REQUIRED_USE="
@@ -35,16 +35,14 @@ RDEPEND="
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}] )
+		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
+	)
+	!<media-libs/gst-plugins-bad-1.11.90:1.0
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
-	X? (
-		>=x11-proto/videoproto-2.3.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}] )
+	X? ( x11-base/xorg-proto )
 "
-RDEPEND+="!<media-libs/gst-plugins-bad-1.11.90:1.0" # rawparse move
 
 multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340

@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 flag-o-matic ltprune qmake-utils toolchain-funcs
+inherit distutils-r1 flag-o-matic libtool ltprune qmake-utils toolchain-funcs
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -14,7 +14,7 @@ SRC_URI="mirror://gnupg/gpgme/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="1/11" # subslot = soname major version
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="common-lisp static-libs cxx python qt5"
 
 COMMON_DEPEND=">=app-crypt/gnupg-2
@@ -56,6 +56,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	elibtoolize
 
 	# Make best effort to allow longer PORTAGE_TMPDIR
 	# as usock limitation fails build/tests

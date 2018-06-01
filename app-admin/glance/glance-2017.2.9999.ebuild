@@ -4,16 +4,22 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
-inherit distutils-r1 git-r3 user
+inherit distutils-r1 user
 
 DESCRIPTION="Services for discovering, registering, and retrieving VM images"
 HOMEPAGE="https://launchpad.net/glance"
-EGIT_REPO_URI="https://github.com/openstack/glance.git"
-EGIT_BRANCH="stable/pike"
+
+if [[ ${PV} == *9999 ]];then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/openstack/glance.git"
+	EGIT_BRANCH="stable/pike"
+else
+	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc mysql postgres +sqlite +swift"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -71,7 +77,7 @@ RDEPEND="
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
 	>=dev-python/futurist-0.11.0[${PYTHON_USEDEP}]
 	!~dev-python/futurist-0.15.0[${PYTHON_USEDEP}]
-	>=dev-python/taskflow-2.7.0.0[${PYTHON_USEDEP}]
+	>=dev-python/taskflow-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-3.1.0[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-4.12.0[${PYTHON_USEDEP}]
 	>=dev-python/WSME-0.8.0[${PYTHON_USEDEP}]

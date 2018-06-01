@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Tool suite used to flash firmware onto Samsung Galaxy S devices"
-HOMEPAGE="http://glassechidna.com.au/heimdall/"
+HOMEPAGE="https://glassechidna.com.au/heimdall/"
 
 LICENSE="MIT"
 SLOT="0"

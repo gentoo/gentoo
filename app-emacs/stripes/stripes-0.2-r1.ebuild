@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="An Emacs mode that alternates the background color of lines"
-HOMEPAGE="http://www.emacswiki.org/emacs/StripesMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/StripesMode"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"

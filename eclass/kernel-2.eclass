@@ -749,7 +749,6 @@ unpack_2_6() {
 		touch .config
 		eerror "make defconfig failed."
 		eerror "assuming you dont have any headers installed yet and continuing"
-		epause 5
 	fi
 
 	make -s include/linux/version.h ${xmakeopts} 2>/dev/null \
@@ -1607,7 +1606,6 @@ kernel-2_pkg_setup() {
 			ewarn "Also be aware that bugreports about gcc-4 not working"
 			ewarn "with linux-2.4 based ebuilds will be closed as INVALID!"
 			echo
-			epause 10
 		fi
 	fi
 

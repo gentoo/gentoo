@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit python-r1 multilib autotools toolchain-funcs
 
 DESCRIPTION="Redhat's Newt windowing toolkit development files"
-HOMEPAGE="https://fedorahosted.org/newt/"
-SRC_URI="https://fedorahosted.org/releases/n/e/newt/${P}.tar.gz"
+HOMEPAGE="https://pagure.io/newt"
+SRC_URI="https://releases.pagure.org/newt/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

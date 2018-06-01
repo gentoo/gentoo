@@ -13,7 +13,7 @@ SRC_URI="https://github.com/openscenegraph/${MY_PN}/archive/${PV}.tar.gz -> ${MY
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/145" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="debug examples"
 
 RDEPEND="
@@ -32,6 +32,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5.5-cmake.patch
+	"${FILESDIR}"/${PN}-3.5.5-qt-5.11b3.patch
 )
 
 src_configure() {

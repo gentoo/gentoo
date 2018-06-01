@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 gnome2-utils fdo-mime virtualx
+inherit distutils-r1 gnome2-utils virtualx xdg-utils
 
 DESCRIPTION="A desktop wiki"
 HOMEPAGE="http://zim-wiki.org/"
@@ -60,14 +60,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 	if ! has_version ${CATEGORY}/${PN}; then
 		einfo "Please emerge these packages for additional functionality"
 		einfo "    dev-lang/R"
 		einfo "    dev-python/gtkspell-python"
 		einfo "    dev-vcs/bzr"
-		einfo "    gnome-extra/zeitgeist"
 		einfo "    media-gfx/graphviz"
 		einfo "    media-gfx/imagemagick"
 		einfo "    media-gfx/scrot"
@@ -78,6 +77,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

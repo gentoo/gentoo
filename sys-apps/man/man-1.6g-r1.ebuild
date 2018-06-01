@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit eutils toolchain-funcs user
+inherit eutils prefix toolchain-funcs user
 
 DESCRIPTION="Standard commands to read man pages"
 HOMEPAGE="http://primates.ximian.com/~flucifredi/man/"
@@ -11,7 +11,7 @@ SRC_URI="http://primates.ximian.com/~flucifredi/man/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="+lzma nls selinux"
 
 DEPEND="nls? ( sys-devel/gettext )"
@@ -64,13 +64,24 @@ src_configure() {
 	fi
 	export COMPRESS
 	if use lzma ; then
-		COMPRESS=/usr/bin/xz
+		COMPRESS="${EPREFIX}"/usr/bin/xz
 	else
-		COMPRESS=/bin/bzip2
+		COMPRESS="${EPREFIX}"/bin/bzip2
 	fi
+
+	if [[ -n ${EPREFIX} ]]; then
+		hprefixify configure || die
+		sed -i \
+			-e "s/man_user=root/man_user=$(id -u)/"  \
+			-e "s/man_group=man/man_group=$(id -g)/" \
+			configure || die "Failed to disable suid/sgid options for man"
+		sed -i -e 's:/usr/bin:@bindir@:' man2html/Makefile.in || die
+	fi
+
 	echoit \
 	./configure \
-		-confdir=/etc \
+		-bindir="${EPREFIX}"/usr/bin \
+		-confdir="${EPREFIX}"/etc \
 		+sgid +fhs \
 		+lang ${mylang} \
 		|| die "configure failed"
@@ -89,8 +100,8 @@ src_install() {
 	newexe "${FILESDIR}"/makewhatis.cron makewhatis
 
 	keepdir /var/cache/man
-	diropts -m0775 -g man
-	local mansects=$(grep ^MANSECT "${D}"/etc/man.conf | cut -f2-)
+	[[ -z ${EPREFIX} ]] && diropts -m0775 -g man
+	local mansects=$(grep ^MANSECT "${ED}"/etc/man.conf | cut -f2-)
 	for x in ${mansects//:/ } ; do
 		keepdir /var/cache/man/cat${x}
 	done

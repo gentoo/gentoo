@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,10 +6,10 @@ EAPI=6
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n git-r3 qmake-utils xdg-utils
+inherit l10n git-r3 qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
-HOMEPAGE="http://psi-im.org/"
+HOMEPAGE="https://psi-im.org"
 
 PSI_URI="https://github.com/psi-im"
 PSI_PLUS_URI="https://github.com/psi-plus"
@@ -22,9 +22,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql ssl webengine webkit whiteboarding xscreensaver"
 
-# qconf generates not quite compatible configure scripts
-QA_CONFIGURE_OPTIONS=".*"
-
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
 	iconsets? ( extras )
@@ -33,7 +30,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	app-crypt/qca:2[qt5]
+	app-crypt/qca:2[qt5(+)]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -54,8 +51,8 @@ RDEPEND="
 	)
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
-		>=dev-qt/qtwebchannel-5.7:5
-		>=dev-qt/qtwebengine-5.7:5[widgets]
+		dev-qt/qtwebchannel:5
+		dev-qt/qtwebengine:5[widgets]
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
@@ -65,7 +62,7 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	extras? ( >=sys-devel/qconf-2.3 )
+	extras? ( >=sys-devel/qconf-2.4 )
 "
 PDEPEND="
 	crypt? ( app-crypt/qca[gpg] )
@@ -140,6 +137,8 @@ src_prepare() {
 
 src_configure() {
 	CONF=(
+		--prefix="${EPREFIX}"/usr
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--no-separate-debug-info
 		--qtdir="$(qt5_get_bindir)/.."
 		$(use_enable aspell)
@@ -154,7 +153,10 @@ src_configure() {
 	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
 	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
 
-	econf "${CONF[@]}"
+	# This may generate warnings if passed option already matches with default.
+	# Just ignore them. It's how qconf-based configure works and will be fixed in
+	# future qconf versions.
+	./configure "${CONF[@]}" || die "configure failed"
 
 	eqmake5 psi.pro
 }
@@ -188,12 +190,12 @@ src_install() {
 	l10n_for_each_locale_do install_locale
 }
 
-pkg_postinst(){
-	xdg_mimeinfo_database_update
+pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }

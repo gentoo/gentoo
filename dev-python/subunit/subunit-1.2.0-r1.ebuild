@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,20 +8,21 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1 eutils multilib-minimal versionator
 
 DESCRIPTION="A streaming protocol for test results"
-HOMEPAGE="https://launchpad.net/subunit https://pypi.python.org/pypi/python-subunit"
+HOMEPAGE="https://launchpad.net/subunit https://pypi.org/project/python-subunit/"
 SRC_URI="https://launchpad.net/${PN}/trunk/$(get_version_component_range 1-2)/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-fbsd"
 IUSE="static-libs test"
 
 RDEPEND="
 	>=dev-python/testtools-0.9.34[${PYTHON_USEDEP}]
 	dev-python/extras[${PYTHON_USEDEP}]
-	dev-lang/perl:=
-"
-DEPEND="${RDEPEND}
+	dev-lang/perl:="
+
+DEPEND="
+	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-libs/check-0.9.11[${MULTILIB_USEDEP}]
 	>=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}]

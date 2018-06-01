@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6})
 inherit eutils distutils-r1
 
 DESCRIPTION="GitHub API client implemented using Twisted"
-HOMEPAGE="https://github.com/tomprince/txgithub https://pypi.python.org/pypi/txgithub"
+HOMEPAGE="https://github.com/tomprince/txgithub https://pypi.org/project/txgithub/"
 SRC_URI="https://github.com/tomprince/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

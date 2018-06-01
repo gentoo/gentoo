@@ -8,13 +8,12 @@
 	<maintainer type="person">
 		<email>egore@gmx.de</email>
 		<name>Christoph Brill</name>
-		<description>upstream co-maintainer</description>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>x11@gentoo.org</email>
 		<name>X11</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>fercerpav@gmail.com</email>
 		<name>Paul Fertser</name>
-		<description>Upstream contact. CC him on bugs</description>
 	</maintainer>
 	<use>
 		<flag name="cmsis-dap">Support for CMSIS-DAP compliant adapters</flag>

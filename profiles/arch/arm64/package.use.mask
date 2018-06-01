@@ -1,16 +1,145 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# app-text/pandoc not keyworded yet
+app-emulation/xen-tools doc
+dev-python/notebook doc
+
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# Require old gnome2 libraries, not keywording legacy on purpose
+<=app-editors/gvim-8.0.1699 gnome
+sys-devel/distcc gnome
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# media-libs/libaom not yet keyworded
+# net-libs/srt not yet keyworded
+# net-libs/libmicrodns not yet keyworded, bug #653800
+# projectm not yet keyworded, bug #314969
+# net-misc/freerdp not yet keyworded
+media-video/vlc aom chromaprint microdns opencv projectm rdp srt
+
+# Mart Raudsepp <leio@gentoo.org> (13 May 2018)
+# Not bothering with otherwise p.masked old gcc for the
+# extra dev-libs/cloog dependency with USE=graphite
+<sys-devel/gcc-5 graphite
+
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# New enough dev-ruby/webmock not keyworded yet
+>=dev-ruby/thor-0.20.0 test
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unkeyworded dependencies.
+app-admin/syslog-ng mongodb
+
+# Mart Raudsepp <leio@gentoo.org> (08 Apr 2018)
+# Tests fail for bundled luajit, USE=luajit is globally
+# masked too (no-one has tested it yet).
+app-text/texlive-core luajittex
+dev-texlive/texlive-basic luajittex
+
+# Michał Górny <mgorny@gentoo.org> (03 Apr 2018)
+# Requires unported sys-libs/netbsd-csu.
+sys-devel/clang-runtime crt
+
+# Mart Raudsepp <leio@gentoo.org> (31 Mar 2018)
+# Boost.Context can be built on arm64
+dev-libs/boost -context
+
+# Michał Górny <mgorny@gentoo.org> (12 Mar 2018)
+# Requires masked net-misc/curl with libressl.
+dev-libs/libgit2 libressl
+
+# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Requires masked dependent flags.
+net-fs/samba addc addns ads cluster python test
+
+# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Some more unkeyworded dependencies.
+app-text/tesseract scrollview
+dev-cpp/eigen test
+kde-frameworks/frameworkintegration appstream
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
+kde-plasma/plasma-workspace geolocation
+mate-base/mate help
+mate-base/mate-applets-meta appindicator sensors
+mate-extra/caja-extensions gajim
+net-fs/samba dmapi
+net-im/pidgin gadu
+net-misc/ntpsec rclock_oncore rclock_pps
+sci-libs/gdal armadillo netcdf
+sys-fs/btrfs-progs reiserfs
+www-client/chromium widevine
+www-servers/lighttpd memcached
+x11-misc/xscreensaver gdm
+
+# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Requires masked dependent flags.
+dev-lang/php ldap-sasl
+net-nds/openldap cxx
+
+# Matthew Thode <prometheanfire@gentoo.org> (23 Feb 2018)
+# net-proxy/haproxy isn't keyworded for arm64
+sys-cluster/neutron haproxy
+
+# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# Requires unkeyworded dependencies.
+dev-python/ipython notebook
+dev-python/networkx scipy
+<dev-ruby/haml-5 test
+media-libs/ming php
+media-libs/opencv contrib_dnn
+net-analyzer/icinga2 classicui
+
+# Matthew Thode <prometheanfire@gentoo.org> (16 Feb 2018)
+# USE=test requires dev-db/mongodb which is not keyworded
+dev-python/pymongo test
+
+# Michał Górny <mgorny@gentoo.org> (16 Feb 2018)
+# USE=test-full requires USE=pkcs11 that is use.masked.
+net-libs/gnutls test-full
+
+# Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
+# USE=mercurial requires dev-vcs/mercurial, which is not keyworded yet
+dev-python/setuptools_scm mercurial
+
+# Matthew Thode <prometheanfire@gentoo.org> (13 Feb 2018)
+# USE=scipy requires scipy, which is not keyworded yet
+dev-python/networkx scipy
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=dmraid requires sys-fs/dmraid that is not keyworded yet.
+sys-libs/libblockdev dmraid
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=smartcard requires net-libs/gnutls-3[pkcs11] that is use.masked.
+net-libs/glib-networking smartcard
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=sofalizer requires sci-libs/netcdf that is not keyworded yet.
+media-video/ffmpeg sofalizer
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
+>=media-plugins/grilo-plugins-0.3.5 upnp-av
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=vtk requires sci-libs/vtk that is not keyworded yet.
+media-libs/opencv vtk
+
+# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# USE=lua requires dev-lua/lgi that is not keyworded yet.
+dev-libs/libpeas lua
+
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires dev-libs/efl that is not keyworded.
 dev-libs/dbus-c++ ecore
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # USE=eds requires USE=gnome that is masked here.
-# USE=collada requires media-libs/opencollada.
-# USE=gltf requires media-libs/libgltf.
 # USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
-app-office/libreoffice collada eds gltf postgres
+app-office/libreoffice eds postgres
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires mail-client/thunderbird* that is not keyworded here.
@@ -26,6 +155,7 @@ app-emulation/libvirt xen
 
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Requires USE=sdl that is masked in this profile.
+app-emulation/qemu sdl2
 media-video/mjpegtools sdlgfx
 
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
@@ -81,18 +211,8 @@ app-emulation/libvirt openvz
 app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
-# pull webkit-gtk:2 which we would like to avoid
-x11-libs/wxGTK:3.0 webkit
-
-# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # media-gfx/nvidia-texture-tools does not support arm64
 media-libs/devil nvtt
-
-# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
-# luajit added arm64 support in luajit 2.1, still in rc/beta, revisit this when
-# such a version hits the tree
-dev-db/redis luajit
-www-servers/nginx luajit
 
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # Virtualbox is x86 only
@@ -162,7 +282,7 @@ app-portage/g-sorcery bson
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # Unkeyworded depedencies
-app-admin/rsyslog grok kafka mongodb normalize rabbitmq
+app-admin/rsyslog grok kafka kubernetes mongodb normalize rabbitmq
 
 # Michael Weber <xmw@gentoo.org> (01 Mar 2017)
 # untested dependencies
@@ -171,7 +291,7 @@ net-libs/libpcap bluetooth
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
-xfce-extra/xfce4-taskmanager gksu gtk3
+xfce-extra/xfce4-taskmanager gtk3
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
 
@@ -207,14 +327,12 @@ net-misc/tlsdate seccomp
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
+dev-python/pycurl curl_ssl_libressl
 net-misc/curl curl_ssl_axtls curl_ssl_libressl metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
-
-# Needs testing.
-sys-devel/gcc graphite regression-test
 
 # Roy Bamford <neddyseagoon@gentoo.org> (26 Jan 2017)
 # gcj-6.3 won't bootstrap icedtea 7
@@ -239,10 +357,6 @@ gnome-base/gnome classic
 # Benda Xu <heroxbd@gentoo.org> (31 Oct 2013)
 # Missing keywords from dev-ml/lablgtk, bug #487722
 net-p2p/mldonkey gtk guionly
-
-# Pacho Ramos <pacho@gentoo.org> (22 Sep 2013)
-# Missing keywords, bug #484734
-media-sound/rhythmbox visualizer
 
 # Markus Meier <maekke@gentoo.org> (15 Sep 2013)
 # Unkeyworded deps, bug #481462
@@ -327,8 +441,8 @@ app-accessibility/speech-dispatcher flite
 # mask kde-apps/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
 kde-apps/okular chm
-kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
+sci-astronomy/kstars indi
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
@@ -399,9 +513,6 @@ dev-libs/boost mpi
 # missing keywords
 media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
-
-# projectm not keyworded, bug #314969
-media-video/vlc projectm chromaprint opencv
 
 # Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq

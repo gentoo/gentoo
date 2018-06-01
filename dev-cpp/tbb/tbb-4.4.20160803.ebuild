@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ PV3="$(get_version_component_range 3)"
 MYP="${PN}${PV1}${PV2}_${PV3}oss"
 
 DESCRIPTION="High level abstract threading library"
-HOMEPAGE="http://www.threadingbuildingblocks.org/"
+HOMEPAGE="https://www.threadingbuildingblocks.org"
 SRC_URI="http://threadingbuildingblocks.org/sites/default/files/software_releases/source/${MYP}_src.tgz"
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
@@ -23,8 +23,8 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MYP}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-underlinking.patch
-	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${PN}-4.4.20160803-underlinking.patch
+	"${FILESDIR}"/${PN}-4.4.20160803-build.patch
 )
 
 src_prepare() {

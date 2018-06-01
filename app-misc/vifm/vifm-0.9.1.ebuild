@@ -8,12 +8,12 @@ inherit autotools vim-doc versionator xdg-utils
 MY_P=$(replace_version_separator 4 '-' ${PF})
 
 DESCRIPTION="Console file manager with vi(m)-like keybindings"
-HOMEPAGE="http://vifm.info/"
+HOMEPAGE="https://vifm.info/"
 SRC_URI="mirror://sourceforge/vifm/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="X developer +extended-keys gtk +magic vim vim-syntax"
 
 DEPEND="
@@ -28,14 +28,18 @@ RDEPEND="
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-ncurses-linking.patch"
+)
+
 DOCS="AUTHORS FAQ NEWS README TODO"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
 	sed -i -e '/stat.h/a#include <sys/sysmacros.h>' "${S}/src/modes/file_info.c" \
 		|| die
-	eapply_user
 	eautoreconf
 }
 

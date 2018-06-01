@@ -1,0 +1,26 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -12,6 +12,7 @@ OBJDUMP		= @OBJDUMP@
+ VPATH		= @srcdir@
+ prefix		= @prefix@
+ exec_prefix     = @exec_prefix@
++sysconfdir      = @sysconfdir@
+ datarootdir	= @datarootdir@
+ bindir          = @bindir@
+ mandir		= @mandir@/man1
+@@ -46,11 +47,11 @@ distclean: clean
+ 	-$(RM) $(TARGET) config.h config.log \
+ 	config.status Makefile mbuffer.1 core
+ 
+-$(DESTDIR)$(etcdir)/mbuffer.rc:
+-	-$(INSTALL) -d -m 755 $(DESTDIR)$(etcdir)
+-	$(INSTALL) -m 644 mbuffer.rc $(DESTDIR)$(etcdir)
++$(DESTDIR)$(sysconfdir)/mbuffer.rc:
++	-$(INSTALL) -d -m 755 $(DESTDIR)$(sysconfdir)
++	$(INSTALL) -m 644 mbuffer.rc $(DESTDIR)$(sysconfdir)/
+ 
+-install: $(TARGET) $(DESTDIR)$(etcdir)/mbuffer.rc
++install: $(TARGET) $(DESTDIR)$(sysconfdir)/mbuffer.rc
+ 	-$(INSTALL) -d -m 755 $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 755 $(TARGET) $(DESTDIR)$(bindir)/
+ 	-$(INSTALL) -d -m 755 $(DESTDIR)$(mandir)

@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MOD_ICON="Help/Troopers.ico"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/troopers-dawn-of-destiny/"
+HOMEPAGE="https://www.moddb.com/mods/troopers-dawn-of-destiny/"
 SRC_URI="troopersversion${PV/.}zip.zip"
 
 LICENSE="freedist"

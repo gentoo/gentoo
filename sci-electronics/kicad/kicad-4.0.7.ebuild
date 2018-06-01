@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ SRC_URI="https://launchpad.net/${PN}/${SERIES}/${PV}/+download/${P}.tar.xz
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug doc examples github i18n libressl minimal +python"
 LANGS="bg ca cs de el es fi fr hu it ja ko nl pl pt ru sk sl sv zh-CN"
 for lang in ${LANGS} ; do
@@ -72,6 +72,8 @@ src_prepare() {
 
 	# Patch to work with >=boost 1.61
 	eapply "${FILESDIR}/${PN}-boost-1.61.patch"
+	# Patch to work with >=cmake 3.11
+	eapply "${FILESDIR}/${PN}-cmake-checkcxxsymbolexists.patch"
 
 	# Remove cvpcb desktop file as it does nothing
 	rm "resources/linux/mime/applications/cvpcb.desktop" || die
@@ -128,8 +130,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DKICAD_DOCS="/usr/share/doc/${PF}"
-		-DKICAD_HELP="/usr/share/doc/${PF}/help"
-		-DwxUSE_UNICODE=ON
 		-DKICAD_SKIP_BOOST=ON
 		-DBUILD_GITHUB_PLUGIN="$(usex github)"
 		-DKICAD_SCRIPTING="$(usex python)"
@@ -139,6 +139,7 @@ src_configure() {
 		-DCMAKE_CXX_FLAGS="-std=c++11"
 	)
 	use python && mycmakeargs+=(
+		-DwxUSE_UNICODE=ON
 		-DPYTHON_DEST="$(python_get_sitedir)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"

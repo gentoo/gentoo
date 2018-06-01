@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS=""
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="rtlsdr fgfs +gui uhd"
+IUSE="rtlsdr fgfs uhd"
 DEPEND=">=net-wireless/gnuradio-3.7.0:=
 	net-wireless/gr-osmosdr
 	dev-python/pyzmq[${PYTHON_USEDEP}]
@@ -23,7 +23,6 @@ DEPEND=">=net-wireless/gnuradio-3.7.0:=
 		games-simulation/flightgear )
 	rtlsdr? ( net-wireless/rtl-sdr )
 	uhd? ( >=net-wireless/uhd-3.4.0 )
-	gui? ( dev-python/pyqwt[${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 

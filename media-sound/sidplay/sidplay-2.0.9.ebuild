@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="C64 SID player"
 HOMEPAGE="http://sidplay2.sourceforge.net/"
@@ -17,12 +16,7 @@ RDEPEND=">=media-libs/libsidplay-2.1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch \
-		"${FILESDIR}"/${P}-gcc44.patch
-}
-
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc TODO AUTHORS ChangeLog
-}
+PATCHES=(
+	"${FILESDIR}/${P}-gcc43.patch"
+	"${FILESDIR}/${P}-gcc44.patch"
+)

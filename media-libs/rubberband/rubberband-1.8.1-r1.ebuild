@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit multilib multilib-minimal
 
 DESCRIPTION="An audio time-stretching and pitch-shifting library and utility program"
-HOMEPAGE="http://www.breakfastquay.com/rubberband/"
-SRC_URI="http://code.breakfastquay.com/attachments/download/34/${P}.tar.bz2"
+HOMEPAGE="https://www.breakfastquay.com/rubberband/"
+SRC_URI="https://code.breakfastquay.com/attachments/download/34/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="static-libs"
 
 RDEPEND="media-libs/vamp-plugin-sdk[${MULTILIB_USEDEP}]

@@ -4,17 +4,24 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
-inherit distutils-r1 eutils git-r3 linux-info user
+inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="A CloudFormation-compatible openstack-native cloud orchestration engine."
 HOMEPAGE="https://launchpad.net/heat"
-SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.pike -> heat.conf.sample-${PV}"
-EGIT_REPO_URI="https://github.com/openstack/heat.git"
-EGIT_BRANCH="stable/pike"
+
+if [[ ${PV} == *9999 ]];then
+	inherit git-r3
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.pike -> heat.conf.sample-${PV}"
+	EGIT_REPO_URI="https://github.com/openstack/heat.git"
+	EGIT_BRANCH="stable/pike"
+else
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.pike -> heat.conf.sample-${PV}
+		https://tarballs.openstack.org/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="+mysql +memcached postgres sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -81,8 +88,7 @@ RDEPEND="
 	>=dev-python/python-monascaclient-1.7.0[${PYTHON_USEDEP}]
 	>=dev-python/python-neutronclient-6.3.0[${PYTHON_USEDEP}]
 	>=dev-python/python-novaclient-9.0.0[${PYTHON_USEDEP}]
-	>=dev-python/python-openstackclient-3.3.0[${PYTHON_USEDEP}]
-	!~dev-python/python-openstackclient-3.10.0[${PYTHON_USEDEP}]
+	>=dev-python/python-openstackclient-3.11.0[${PYTHON_USEDEP}]
 	>=dev-python/python-saharaclient-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-senlinclient-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-swiftclient-3.2.0[${PYTHON_USEDEP}]

@@ -9,12 +9,10 @@
 	<maintainer type="person">
 		<email>pastas4@gmail.com</email>
 		<name>Dainius Masiliūnas (GreatEmerald)</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
-		<description>co-maintainer, CC bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

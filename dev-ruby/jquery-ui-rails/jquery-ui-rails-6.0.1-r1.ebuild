@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/joliss/jquery-ui-rails"
 
 LICENSE="MIT"
 SLOT="6"
-KEYWORDS="~amd64 ~arm ~x64-macos"
+KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 
 IUSE=""
 

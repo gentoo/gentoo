@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ SRC_PATH="stable"
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.2.12.tar.xz"
 [[ ${PV} = *_rc* ]] || \
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc ~x86"
+KEYWORDS="hppa"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="https://www.samba.org/"
@@ -48,6 +48,7 @@ CDEPEND="${PYTHON_DEPS}
 	sys-libs/readline:=
 	virtual/libiconv
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	>=net-libs/socket_wrapper-1.1.2[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	sys-libs/libcap
@@ -63,7 +64,10 @@ CDEPEND="${PYTHON_DEPS}
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
 	aio? ( dev-libs/libaio )
-	cluster? ( !dev-db/ctdb )
+	cluster? (
+		net-libs/rpcsvc-proto
+		!dev-db/ctdb
+	)
 	cups? ( net-print/cups )
 	dmapi? ( sys-apps/dmapi )
 	fam? ( virtual/fam )

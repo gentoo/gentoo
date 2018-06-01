@@ -9,7 +9,7 @@ HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+ GPL-2+" # GPL-2+ applies only to the build system
 SLOT="2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc debug test"
 
 RDEPEND="
@@ -21,6 +21,12 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 # dev-cpp/mm-common needed for eautoreconf
+
+PATCHES=(
+	# Fix build with GCC-8
+	# https://bugs.gentoo.org/654776
+	"${FILESDIR}"/${PN}-fix-threads-gobject.patch
+)
 
 src_prepare() {
 	if ! use test; then

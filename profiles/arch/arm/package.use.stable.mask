@@ -1,9 +1,28 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
-# Requires sci-geosciences/gpsd which is not stable
-app-misc/geoclue gps
+# Pacho Ramos <pacho@gentoo.org> (28 May 2018)
+# Don't rely on stable inkscape
+app-text/dblatex inkscape
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires unstable dev-python/PyQt4
+media-sound/pulseaudio qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires not stabilised dev-python/restkit
+dev-python/wsgiproxy2 test
+dev-python/pyquery test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires not stabilised Qt5
+app-i18n/ibus kde
+dev-qt/qtchooser test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires not stabilised dev-python/matplotlib
+dev-python/numpydoc test
+dev-python/ipython matplotlib
 
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Jan 2018)
 # Requires not stabilised app-text/libexttextcat, bug #637086
@@ -29,10 +48,6 @@ media-sound/mpd fluidsynth
 <=media-video/ffmpeg-3.3.6 frei0r sofalizer
 
 # Alexis Ballier <aballier@gentoo.org> (26 May 2017)
-# toolame not stable yet
-~media-video/mplayer-1.2.1 toolame
-
-# Alexis Ballier <aballier@gentoo.org> (26 May 2017)
 # No musepack-tools stable yet
 media-video/vlc musepack
 media-plugins/gst-plugins-meta:0.10 musepack
@@ -49,7 +64,7 @@ media-libs/libbluray java
 # Thomas Deutschmann <whissi@gentoo.org> (20 Mar 2017)
 # Requires dev-java/java-config and deps which is not stable on arm
 # Requires app-emulation/xen-tools which is not stable on arm
-app-admin/collectd collectd_plugins_java collectd_plugins_xencpu
+app-metrics/collectd collectd_plugins_java collectd_plugins_xencpu
 
 # Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
 # Required media-plugins/gst-plugins-x264 is not stable
@@ -122,7 +137,6 @@ www-client/qupzilla kwallet
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 net-libs/libproxy webkit
->=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome
 

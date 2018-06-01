@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ MY_PN="python-glyr"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A python wrapper for Glyr"
-HOMEPAGE="https://sahib.github.com/python-glyr/intro.html
+HOMEPAGE="https://sahib.github.io/python-glyr/intro.html
 	https://github.com/sahib/python-glyr"
 SRC_URI="https://github.com/sahib/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 

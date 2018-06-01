@@ -11,18 +11,22 @@ SRC_URI="https://github.com/lib${PN}/${PN}/archive/${PV}.tar.gz -> ${P}-github.t
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs subunit"
 
 RDEPEND="
-	subunit? ( >=dev-python/subunit-0.0.10-r1[${MULTILIB_USEDEP}] )"
-
-DEPEND="
-	${RDEPEND}
+	subunit? ( >=dev-python/subunit-0.0.10-r1[${MULTILIB_USEDEP}] )
+"
+DEPEND="${RDEPEND}
 	sys-apps/texinfo
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-DOCS=( AUTHORS ChangeLog NEWS README.md THANKS TODO )
+PATCHES=(
+	# Fix test failures due to varying floating point behavior across platforms
+	# (#648920), patch from Fedora.
+	"${FILESDIR}/${PN}-0.12.0-fp.patch"
+)
 
 pkg_setup() {
 	# See multilib_src_test(), disable sleep()-based tests because they

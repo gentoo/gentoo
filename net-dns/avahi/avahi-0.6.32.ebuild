@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,8 +18,8 @@ S="${WORKDIR}/${P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
-IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python qt4 selinux test utils"
+KEYWORDS="hppa"
+IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python selinux test utils"
 
 REQUIRED_USE="
 	utils? ( || ( gtk gtk3 ) )
@@ -34,7 +34,6 @@ COMMON_DEPEND="
 	dev-libs/expat
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	gdbm? ( sys-libs/gdbm[${MULTILIB_USEDEP}] )
-	qt4? ( dev-qt/qtcore:4[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2[${MULTILIB_USEDEP}] )
 	gtk3? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
@@ -177,7 +176,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable introspection) \
 		$(multilib_native_use_enable utils gtk-utils) \
 		--disable-qt3 \
-		$(use_enable qt4) \
+		--disable-qt4 \
 		$(use_enable gdbm) \
 		$(systemd_with_unitdir) \
 		"${myconf[@]}"

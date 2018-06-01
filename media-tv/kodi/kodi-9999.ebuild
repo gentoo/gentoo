@@ -9,19 +9,19 @@ PYTHON_REQ_USE="sqlite"
 
 inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 
-LIBDVDCSS_COMMIT="2f12236bc1c92f73c21e973363f79eb300de603f"
-LIBDVDREAD_COMMIT="17d99db97e7b8f23077b342369d3c22a6250affd"
-LIBDVDNAV_COMMIT="43b5f81f5fe30bceae3b7cecf2b0ca57fc930dac"
-FFMPEG_VERSION="3.4.1"
+LIBDVDCSS_VERSION="1.4.1-Leia-Alpha-1"
+LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-1"
+LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-1"
+FFMPEG_VERSION="4.0"
 CODENAME="Leia"
 FFMPEG_KODI_VERSION="Alpha-1"
-SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
-	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
-	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
+SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
+	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
+	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
 	!system-ffmpeg? ( https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz -> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz )"
 
 DESCRIPTION="Kodi is a free and open source media-player and entertainment hub"
-HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
+HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -71,10 +71,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libass-0.13.4
 	media-libs/mesa[egl]
 	>=media-libs/taglib-1.11.1
-	system-ffmpeg? ( >=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,openssl,postproc] )
+	system-ffmpeg? (
+		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc]
+		libressl? ( media-video/ffmpeg[libressl,-openssl] )
+		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
+	)
 	mysql? ( virtual/mysql )
 	>=net-misc/curl-7.56.1
-	nfs? ( net-fs/libnfs:= )
+	nfs? ( >=net-fs/libnfs-2.0.0:= )
 	opengl? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -97,7 +101,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		system-ffmpeg? ( media-video/ffmpeg[vdpau] )
 	)
 	wayland? (
-		>=dev-cpp/waylandpp-0.2.2:=
+		>=dev-cpp/waylandpp-0.2.3:=
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
 		>=x11-libs/libxkbcommon-0.4.1
@@ -118,7 +122,7 @@ RDEPEND="${COMMON_DEPEND}
 		|| ( app-misc/lirc app-misc/inputlircd )
 	)
 	!media-tv/xbmc
-	udisks? ( sys-fs/udisks:0 )
+	udisks? ( sys-fs/udisks:2 )
 	upower? (
 		systemd? ( sys-power/upower )
 		!systemd? (
@@ -248,9 +252,9 @@ src_configure() {
 		-DENABLE_VAAPI=$(usex vaapi)
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
-		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_COMMIT}.tar.gz"
-		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz"
-		-Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz"
+		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.gz"
+		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.gz"
+		-Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz"
 	)
 
 	use libusb && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -76,6 +76,10 @@ src_prepare() {
 
 	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
 		PATCHES+=( "${WORKDIR}"/${P}-patchset/${P}-imagemagick7.patch )
+	fi
+
+	if has_version '>=media-video/ffmpeg-4' ;  then
+		PATCHES+=( "${FILESDIR}/ffmpeg4.patch" )
 	fi
 
 	default

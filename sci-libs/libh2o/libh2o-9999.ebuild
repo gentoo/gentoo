@@ -1,37 +1,37 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit git-r3
-#endif
-
-inherit autotools-utils
+inherit autotools git-r3
 
 DESCRIPTION="Library of routines for IF97 water & steam properties"
-HOMEPAGE="https://bitbucket.org/mgorny/libh2o/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/libh2o/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/mgorny/libh2o.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="debug static-libs"
 
 DEPEND="virtual/pkgconfig"
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	local myeconfargs=(
+	local myconf=(
 		$(use_enable debug)
+		$(use_enable static-libs static)
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }

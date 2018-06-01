@@ -1,6 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (27 May 2018)
+# kde-frameworks/kdelibs4support not keyworded on ppc
+x11-wm/sawfish kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (13 Feb 2018)
+# Requires not yet keyworded dependencies
+sys-libs/gwenhywfar sensors serialport webkit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Jan 2018)
 # Requires media-libs/libffado, which requires dev-python/PyQt5,
 # which is not keyworded.
@@ -22,10 +30,6 @@ net-proxy/haproxy device-atlas
 # Bernard Cafarelli <voyageur@gentoo.org> <25 Jan 2017)
 # Requires a Java dependency
 app-text/tesseract scrollview
-
-# Davide Pesavento <pesa@gentoo.org> (21 Jan 2017)
-# Requires unkeyworded dev-python/PyQt5
-dev-python/qscintilla-python qt5
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (13 Dec 2016)
 # Dropping ppc from sci-libs/armadillo, bug 555896
@@ -88,10 +92,6 @@ media-sound/audacity midi soundtouch
 # Missing keywords (02 Jun 2015)
 net-misc/connman openconnect
 
-# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
-# Missing stable
-dev-libs/protobuf python
-
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam
@@ -111,7 +111,3 @@ games-fps/duke3d-data gog
 # Maciej Mrozowski <reavertm@gentoo.org> (26 Jun 2010)
 # Needs media-libs/simage keyworded, bug 325623
 media-libs/coin simage
-
-#nixnut <nixnut@gentoo.org> (24 jan 2009)
-#don't want zemberek for enchant for ppc32
-app-text/enchant zemberek

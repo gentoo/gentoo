@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ inherit vdr-plugin-2 flag-o-matic
 VERSION="679" #every bump, new version
 
 DESCRIPTION="VDR plugin: display of digital images, like jpeg, tiff, png, bmp"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-image"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-image"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tar.gz"
 
 KEYWORDS="amd64 x86"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/musl
@@ -13,9 +13,6 @@ sys-fs/udev
 dev-libs/elfutils
 >virtual/libelf-2
 
-# packages that unconditionally depend on dev-libs/elfutils
-<net-firewall/fwbuilder-5.3.7
-
 # These binary pkgs have a hard dep on glibc; make repoman shut up
 app-arch/rar
 dev-games/gtkradiant
@@ -24,7 +21,7 @@ games-action/descent3
 games-action/descent3-demo
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
-games-action/trine-bin
+games-action/trine
 games-arcade/marbleblastgold-demo
 games-fps/enemy-territory
 games-fps/enemy-territory-etpro
@@ -79,6 +76,7 @@ games-action/hotline-miami
 games-action/intrusion2
 games-action/solar2
 games-action/swordandsworcery
+games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/dynamitejack
 games-arcade/thinktanks-demo

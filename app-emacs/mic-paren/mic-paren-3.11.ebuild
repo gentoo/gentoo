@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Advanced highlighting of matching parentheses"
 HOMEPAGE="http://www.gnuvola.org/software/j/mic-paren/
-	http://www.emacswiki.org/emacs/MicParen"
+	https://www.emacswiki.org/emacs/MicParen"
 # taken from http://www.gnuvola.org/software/j/mic-paren/mic-paren.el
 SRC_URI="mirror://gentoo/${P}.el.xz"
 

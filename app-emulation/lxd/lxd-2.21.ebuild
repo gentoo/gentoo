@@ -59,7 +59,7 @@ EGO_VENDOR=(
 ARCHIVE_URI="https://${EGO_PN}/archive/${P}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="+daemon +ipv6 +dnsmasq nls test"
 

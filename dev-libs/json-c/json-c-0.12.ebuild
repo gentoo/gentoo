@@ -16,11 +16,7 @@ SLOT="0/2"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc static-libs"
 
-RDEPEND="
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140406-r3
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND=""
 
 # tests break otherwise
 AUTOTOOLS_IN_SOURCE_BUILD=1

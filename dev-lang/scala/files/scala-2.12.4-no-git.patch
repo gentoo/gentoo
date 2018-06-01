@@ -1,5 +1,5 @@
---- scala-2.12.4-orig/project/VersionUtil.scala	2017-10-11 09:05:11.000000000 +1100
-+++ scala-2.12.4/project/VersionUtil.scala	2018-01-29 15:58:57.205758665 +1100
+--- a/project/VersionUtil.scala
++++ b/project/VersionUtil.scala
 @@ -2,7 +2,7 @@
  
  import sbt.{stringToProcess => _, _}

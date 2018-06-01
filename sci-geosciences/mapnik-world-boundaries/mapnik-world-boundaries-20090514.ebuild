@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Mapnik World Boundaries"
-HOMEPAGE="http://www.openstreetmap.org/"
+HOMEPAGE="https://www.openstreetmap.org/"
 SRC_URI="mirror://gentoo/world_boundaries-spherical-20090331.tgz
 	mirror://gentoo/processed_p-20090514.zip"
 

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Self-contained ISO 3166-1 country definitions."
-HOMEPAGE="https://pypi.python.org/pypi/iso3166 https://github.com/deactivated/python-iso3166"
+HOMEPAGE="https://pypi.org/project/iso3166/ https://github.com/deactivated/python-iso3166"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

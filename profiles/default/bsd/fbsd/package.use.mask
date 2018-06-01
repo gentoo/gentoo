@@ -1,5 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (06 Apr 2018)
+# We are building only minimal util-linux, so program flags
+# are irrelevant to us.
+sys-apps/util-linux build cramfs fdformat kill ncurses pam readline
+sys-apps/util-linux slang suid tty-helpers
+
+# Brian Evans <grknight@gentoo.org> (2 Mar 2018)
+# php incorrectly looks for libacl when it is built-in on FreeBSD
+dev-lang/php acl
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
 # libressl: dev-libs/libressl is a base package on FreeBSD
@@ -87,10 +97,6 @@ net-dns/bind gssapi
 www-client/firefox wifi
 www-client/seamonkey wifi
 
-# Naohiro Aota <naota@gentoo.org> (03 Oct 2012)
-# Mask gbm, udev is not supported on FreeBSD.
-media-libs/mesa gbm
-
 # Naohiro Aota <naota@gentoo.org> (06 Oct 2012)
 # Mask rpm, app-arch/rpm needs elfutils
 net-analyzer/net-snmp rpm
@@ -110,3 +116,4 @@ media-libs/mesa openmax
 # Naohiro Aota <naota@gentoo.org> (07 Jul 2014)
 # xattr support is not available on BSD #501534
 sys-apps/portage xattr
+sys-apps/portage-mgorny xattr

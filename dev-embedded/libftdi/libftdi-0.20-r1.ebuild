@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://developer.intra2net.com/${PN}"
 else
 	SRC_URI="http://www.intra2net.com/en/developer/${PN}/download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~sparc x86"
 fi
 
 DESCRIPTION="Userspace access to FTDI USB interface chips"

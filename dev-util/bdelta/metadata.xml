@@ -4,7 +4,6 @@
   <maintainer type="person">
     <email>slyfox@gentoo.org</email>
     <name>Sergei Trofimovich</name>
-    <description>Primary Maintainer</description>
   </maintainer>
   <maintainer type="project">
     <email>tools-portage@gentoo.org</email>

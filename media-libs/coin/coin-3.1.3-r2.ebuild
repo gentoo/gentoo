@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ HOMEPAGE="https://bitbucket.org/Coin3D/coin/wiki/Home"
 SRC_URI="https://bitbucket.org/Coin3D/coin/downloads/${MY_P}.tar.gz"
 
 LICENSE="|| ( GPL-2 PEL )"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="bzip2 debug doc javascript openal simage static-libs threads zlib"
 
@@ -35,7 +35,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
 "
 S="${WORKDIR}/${MY_P}"

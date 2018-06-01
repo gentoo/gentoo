@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit gnome2 multilib pax-utils python-r1 systemd
 
@@ -83,6 +83,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/accountsservice-0.6.14[introspection]
 	>=sys-power/upower-0.99:=[introspection]
 	x11-libs/pango[introspection]
+	gnome-base/librsvg:2[introspection]
 
 	>=gnome-base/gnome-session-2.91.91
 	>=gnome-base/gnome-settings-daemon-3.8.3

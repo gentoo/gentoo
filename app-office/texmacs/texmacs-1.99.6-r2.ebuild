@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.texmacs.org/pub/TeXmacs/tmftp/source/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="jpeg netpbm sqlite svg spell"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-text/ghostscript-gpl
@@ -34,7 +34,7 @@ RDEPEND="
 	svg? ( || ( media-gfx/inkscape gnome-base/librsvg:2 ) )
 "
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -51,6 +51,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.99-remove-new-declaration.patch
 
 	"${FILESDIR}"/${PN}-1.99.6-math_util.patch
+
+	# fix build failure on 32-bit systems, bug #652054
+	"${FILESDIR}"/${PN}-1.99.6-guile-size_t.patch
 )
 
 src_configure() {

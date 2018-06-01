@@ -1,0 +1,26 @@
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -4357,7 +4357,11 @@
+ #define CALC_RATE(ewma, cur, minutes) ewma += _A(cur - ewma, minutes)
+ 
+ // calculate EWMA throughput rate for whole module
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++static void rate_timer_calc(struct timer_list *t)
++#else
+ static void rate_timer_calc(unsigned long dummy)
++#endif
+ {
+	static u64 old_pkt_total = 0;
+	static u64 old_traf_total = 0;
+@@ -5525,7 +5525,11 @@
+ 
+ 	netflow_switch_version(protocol);
+ 	_schedule_scan_worker(0);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++	timer_setup(&rate_timer, rate_timer_calc, 0);
++#else
+ 	setup_timer(&rate_timer, rate_timer_calc, 0);
++#endif
+ 	mod_timer(&rate_timer, jiffies + (HZ * SAMPLERATE));
+ 
+ 	peakflows_at = jiffies;

@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>swegener@gentoo.org</email>
-		<description>primary maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>shell-tools@gentoo.org</email>

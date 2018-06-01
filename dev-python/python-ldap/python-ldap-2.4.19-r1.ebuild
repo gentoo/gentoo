@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,12 +9,18 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
-HOMEPAGE="http://www.python-ldap.org https://pypi.python.org/pypi/python-ldap"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.python-ldap.org/en/latest/
+	https://pypi.org/project/python-ldap/"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
+	inherit git-r3
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
+fi
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
 IUSE="doc examples sasl ssl"
 
 # If you need support for openldap-2.3.x, please use python-ldap-2.3.9.

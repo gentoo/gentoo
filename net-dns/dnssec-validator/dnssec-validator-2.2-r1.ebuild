@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="DNSSEC validator (dnsval)"
-HOMEPAGE="http://www.dnssec-tools.org/"
-SRC_URI="http://www.dnssec-tools.org/download/dnsval-${PV}.tar.gz"
+HOMEPAGE="https://www.dnssec-tools.org/"
+SRC_URI="https://www.dnssec-tools.org/download/dnsval-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

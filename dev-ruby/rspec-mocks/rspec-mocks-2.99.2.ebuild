@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "
@@ -39,13 +39,9 @@ all_ruby_prepare() {
 
 	# Avoid a weird, and failing, test testing already installed code.
 	sed -e '/has an up-to-date caller_filter file/,/end/ s:^:#:' -i spec/rspec/mocks_spec.rb || die
-}
 
-each_ruby_prepare() {
-	case ${RUBY} in
-		*ruby22|*ruby23|*ruby24)
-			# Psych and Syck are not supported by default anymore on ruby22.
-			rm spec/rspec/mocks/serialization_spec.rb || die
-			;;
-	esac
+	# Psych and Syck are not supported by default anymore on ruby22.
+	rm spec/rspec/mocks/serialization_spec.rb || die
+
+	sed -i -e '/does not affect the ability to access the top-level constant/,/end/ s:^:#:' spec/rspec/mocks/mutate_const_spec.rb || die
 }

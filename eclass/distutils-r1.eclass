@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -46,7 +46,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6)
+	5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -79,7 +79,8 @@ esac
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == [45] ]] && inherit eutils
-inherit toolchain-funcs xdg-utils
+[[ ${EAPI} == [56] ]] && inherit xdg-utils
+inherit toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit multiprocessing python-r1
@@ -97,7 +98,11 @@ if [[ ! ${_DISTUTILS_R1} ]]; then
 
 if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 	RDEPEND=${PYTHON_DEPS}
-	DEPEND=${PYTHON_DEPS}
+	if [[ ${EAPI} != [56] ]]; then
+		BDEPEND=${PYTHON_DEPS}
+	else
+		DEPEND=${PYTHON_DEPS}
+	fi
 	REQUIRED_USE=${PYTHON_REQUIRED_USE}
 fi
 
@@ -230,13 +235,13 @@ fi
 # @USAGE: [<args>...]
 # @DESCRIPTION:
 # Run setup.py using currently selected Python interpreter
-# (if ${PYTHON} is set; fallback 'python' otherwise).
+# (if ${EPYTHON} is set; fallback 'python' otherwise).
 #
 # setup.py will be passed the following, in order:
 # 1. ${mydistutilsargs[@]}
 # 2. additional arguments passed to the esetup.py function.
 #
-# Please note that setup.py will respect defaults (unless overriden
+# Please note that setup.py will respect defaults (unless overridden
 # via command-line options) from setup.cfg that is created
 # in distutils-r1_python_compile and in distutils-r1_python_install.
 #
@@ -249,7 +254,7 @@ esetup.py() {
 
 	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
 
-	set -- "${PYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
+	set -- "${EPYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die "${die_args[@]}"
@@ -390,7 +395,7 @@ _distutils-r1_create_setup_cfg() {
 		#
 		# note: due to some packages (wxpython) relying on separate
 		# platlib & purelib dirs, we do not set --build-lib (which
-		# can not be overriden with --build-*lib)
+		# can not be overridden with --build-*lib)
 		build-platlib = %(build-base)s/lib
 		build-purelib = %(build-base)s/lib
 
@@ -412,7 +417,7 @@ _distutils-r1_create_setup_cfg() {
 			[install]
 			compile = True
 			optimize = 2
-			root = ${D}
+			root = ${D%/}
 		_EOF_
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
@@ -582,7 +587,7 @@ distutils-r1_python_install() {
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		_distutils-r1_wrap_scripts "${root}" "${scriptdir}"
-		multibuild_merge_root "${root}" "${D}"
+		multibuild_merge_root "${root}" "${D%/}"
 	fi
 }
 
@@ -739,7 +744,7 @@ distutils-r1_src_prepare() {
 
 distutils-r1_src_configure() {
 	python_export_utf8_locale
-	xdg_environment_reset # Bug 577704
+	[[ ${EAPI} == [56] ]] && xdg_environment_reset # Bug 577704
 
 	if declare -f python_configure >/dev/null; then
 		_distutils-r1_run_foreach_impl python_configure
@@ -797,7 +802,7 @@ _distutils-r1_check_namespace_pth() {
 
 	while IFS= read -r -d '' f; do
 		pth+=( "${f}" )
-	done < <(find "${ED}" -name '*-nspkg.pth' -print0)
+	done < <(find "${ED%/}" -name '*-nspkg.pth' -print0)
 
 	if [[ ${pth[@]} ]]; then
 		ewarn "The following *-nspkg.pth files were found installed:"

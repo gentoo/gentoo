@@ -8,7 +8,7 @@ inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-
 INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
 
 DESCRIPTION="A high-quality and portable font engine"
-HOMEPAGE="http://www.freetype.org/"
+HOMEPAGE="https://www.freetype.org/"
 SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
 	mirror://nongnu/freetype/${P/_/}.tar.bz2
 	utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2
@@ -23,7 +23,7 @@ IUSE="X +adobe-cff bindist bzip2 +cleartype_hinting debug doc fontforge harfbuzz
 	infinality png static-libs utils"
 RESTRICT="!bindist? ( bindist )" # bug 541408
 
-CDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	harfbuzz? ( >=media-libs/harfbuzz-0.9.19[truetype,${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:=[${MULTILIB_USEDEP}] )
@@ -34,10 +34,8 @@ CDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 			>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]
 		)
 	)"
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
-	abi_x86_32? ( utils? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] ) )"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(

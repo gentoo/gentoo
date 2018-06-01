@@ -17,12 +17,26 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 Jan 2018)
-# revdeps on dev-libs/boost which is no longer stable.
-dev-db/mariadb oqgraph
-dev-libs/libsigc++ test
-media-libs/chromaprint test
-media-libs/gegl raw
+# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# media-gfx/ufraw is not stable
+media-gfx/imagemagick raw
+
+# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# media-libs/{libdc1394,x264} is not stable.
+media-video/libav ieee1394 x264
+media-video/ffmpeg ieee1394 x264
+
+# Andreas Sturmlechner <asturm@gentoo.org> (6 May 2018)
+# sci-visualization/gnuplot is not stable.
+app-admin/sysstat isag
+sci-mathematics/octave gnuplot
+sci-libs/libqalculate gnuplot
+
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Feb 2018)
+# dev-libs/libical stabilisation timeout, bug #621724
+app-mobilephone/gnokii ical
+net-mail/cyrus-imapd calalarm http jmap
+net-wireless/bluez obex
 
 # Hans de Graaff <graaff@gentoo.org> (26 Nov 2017)
 # Several packages no longer have stable keywords due
@@ -30,15 +44,6 @@ media-libs/gegl raw
 dev-ruby/bundler doc
 dev-ruby/rspec-core highlight test
 sys-block/thin-provisioning-tools test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2017)
-# media-gfx/graphite2 security stabilisation timeout.
-# bug #621724
-app-doc/doxygen doc latex
-app-text/texlive-core xetex
-dev-python/sphinx latex
-dev-util/cmocka doc
-media-libs/harfbuzz graphite
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
 # Mask pdf support so net-print/cups-filters stabilisation
@@ -60,8 +65,3 @@ dev-libs/boost mpi
 media-gfx/exiv2 webready
 media-video/ffmpeg ssh
 net-analyzer/wireshark ciscodump libssh sshdump
-
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Aug 2017)
-# Mask pptx support for dev-libs/libzip stabilisation timeout
-# (bug 622044)
-media-gfx/pstoedit pptx

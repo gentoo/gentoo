@@ -1,0 +1,55 @@
+From 794fdf40ad944225854845a0ff32a5c56fb249d9 Mon Sep 17 00:00:00 2001
+From: Seb35 <seb35@seb35.fr>
+Date: Sun, 6 Nov 2016 22:42:46 +0100
+Subject: [PATCH] Added __construct constructor
+
+This removes deprecation warnings due to old constructor
+(method with the class name). Keep the old-style constructor
+for compatibility (like in the PEAR main class).
+---
+ Image/GraphViz.php | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/Image/GraphViz.php b/Image/GraphViz.php
+index ee84ff2..92842da 100644
+--- a/Image/GraphViz.php
++++ b/Image/GraphViz.php
+@@ -181,7 +181,7 @@ class Image_GraphViz
+      *
+      * @access public
+      */
+-    function Image_GraphViz($directed = true, $attributes = array(),
++    function __construct($directed = true, $attributes = array(),
+                             $name = 'G', $strict = true, $returnError = false)
+     {
+         $this->setDirected($directed);
+@@ -192,6 +192,29 @@ function Image_GraphViz($directed = true, $attributes = array(),
+         $this->_returnFalseOnError = !$returnError;
+     }
+ 
++    /**
++     * Compatibility constructor.
++     *
++     * @param boolean $directed    Directed (TRUE) or undirected (FALSE) graph.
++     *                             Note: You MUST pass a boolean, and not just
++     *                             an  expression that evaluates to TRUE or
++     *                             FALSE (i.e. NULL, empty string, 0 will NOT
++     *                             work)
++     * @param array   $attributes  Attributes of the graph
++     * @param string  $name        Name of the Graph
++     * @param boolean $strict      Whether to collapse multiple edges between
++     *                             same nodes
++     * @param boolean $returnError Set to TRUE to return PEAR_Error instances
++     *                             on failures instead of FALSE
++     *
++     * @access public
++     */
++    function Image_GraphViz($directed = true, $attributes = array(),
++                            $name = 'G', $strict = true, $returnError = false)
++    {
++        self::__construct($directed, $attributes, $name, $strinct, $returnError);
++    }
++
+     /**
+      * Outputs image of the graph in a given format
+      *

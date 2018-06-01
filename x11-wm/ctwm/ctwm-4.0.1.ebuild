@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}dist/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 
 RDEPEND="
 	x11-libs/libICE
@@ -27,8 +27,7 @@ DEPEND="
 	app-arch/xz-utils
 	app-text/rman
 	virtual/jpeg
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {

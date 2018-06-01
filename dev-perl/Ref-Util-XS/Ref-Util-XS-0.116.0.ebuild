@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="XS Implementation for Ref::Util"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="MIT"
 IUSE="test"
 

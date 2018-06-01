@@ -8,7 +8,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 DESCRIPTION="Python module for doing approximate and phonetic matching of strings"
-HOMEPAGE="https://github.com/jamesturk/jellyfish https://pypi.python.org/pypi/jellyfish"
+HOMEPAGE="https://github.com/jamesturk/jellyfish https://pypi.org/project/jellyfish/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

@@ -11,7 +11,7 @@ SRC_URI="https://people.redhat.com/dhowells/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="static static-libs test"
 
 RDEPEND=""
@@ -19,9 +19,12 @@ DEPEND="!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
 
 pkg_setup() {
 	CONFIG_CHECK="~KEYS"
-	use test && CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS"
 	ERROR_KEYS="You must have CONFIG_KEYS to use this package!"
-	ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
+
+	if use test && kernel_is lt 4 0 0; then
+		CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS"
+		ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
+	fi
 	linux-info_pkg_setup
 }
 
