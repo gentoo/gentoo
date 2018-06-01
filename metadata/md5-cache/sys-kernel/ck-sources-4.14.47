@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.14
+EAPI=6
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://dev.gentoo.org/~mpagano/genpatches/ http://kernel.kolivas.org/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+IUSE=experimental symlink build deblob
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 !deblob? ( linux-firmware )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=4.14.47
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.14-gnu/deblob-4.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.14-gnu/deblob-check -> deblob-check-4.14 ) mirror://gentoo/genpatches-4.14-51.base.tar.xz mirror://gentoo/genpatches-4.14-51.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.14-51.experimental.tar.xz ) http://ck.kolivas.org/patches/4.0/4.14/4.14-ck1/patch-4.14-ck1.xz https://github.com/ckolivas/linux/commit/25849740d77dfc089fdbfb53623e50d38a972aff.patch -> ck-sources-4.14-blkio-fix.patch
+_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	kernel-2	f8c4ddcbde73d086d3a2824743eab8ae	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=5ac897c9156629f24087157b77d55b3f

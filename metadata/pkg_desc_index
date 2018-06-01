@@ -7421,7 +7421,7 @@ media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.1.4: Library to handle, display and manipulate GIF images
 media-libs/glew 1.10.0-r2 1.13.0 2.1.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1: The Portable OpenGL FrameWork
-media-libs/glm 0.9.6.1 0.9.8.5-r1: OpenGL Mathematics
+media-libs/glm 0.9.8.5-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0-r1: The OpenGL Utility Library
 media-libs/glyr 1.0.5: A music related metadata searchengine, both with commandline interface and C API
@@ -9328,7 +9328,7 @@ sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/o
 sci-libs/libspatialindex 1.8.1: General framework for developing spatial indices
 sci-libs/libsvm 3.21: Library for Support Vector Machines
 sci-libs/linux-gpib 4.1.0: Kernel module and driver library for GPIB (IEEE 488.2) hardware
-sci-libs/lrslib 042c-r1 042c-r2: self-contained ANSI C implementation of the reverse search algorithm
+sci-libs/lrslib 042c-r2: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/metis 4.0.3: A package for unstructured serial graph partitioning
 sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPFR
@@ -9924,14 +9924,14 @@ sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02: MegaRAID StorCLI (successor o
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/tgt 1.0.72 1.0.73: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.7.0: A suite of tools for thin provisioning on Linux
-sys-block/tw_cli 9.2.1.1 9.4.1.2 9.5.2 10.2 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
+sys-block/tw_cli 9.2.1.1 9.4.1.2 9.5.2 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
 sys-boot/gnu-efi 3.0.3: Library for build EFI Applications
 sys-boot/grub 0.97-r16 0.97-r18 2.02 2.02-r1: GNU GRUB boot loader
 sys-boot/grub-static 0.96-r1 0.97 0.97-r6 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
-sys-boot/lilo 22.8-r2 23.2-r2 24.0-r1: Standard Linux boot loader
+sys-boot/lilo 22.8-r2 24.0-r1: Standard Linux boot loader
 sys-boot/mbr 1.1.11: A replacement master boot record for IBM-PC compatible computers
 sys-boot/os-prober 1.76-r1: Utility to detect other OSs on a set of drives
 sys-boot/plymouth 0.9.2-r1 0.9.3-r1: Graphical boot animation (splash) and logger
