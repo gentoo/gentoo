@@ -22,5 +22,5 @@ DEPEND="x11-libs/gtk+:2
 	dev-perl/Gtk2"
 
 src_install() {
-	dobin "${S}"/tvrss
+	dobin tvrss
 }
