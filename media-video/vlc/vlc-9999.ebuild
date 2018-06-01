@@ -36,7 +36,7 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 	macosx-qtkit matroska microdns modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
 	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp
 	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl svg
-	taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau vnc vorbis vpx
+	taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
 	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -194,7 +194,6 @@ RDEPEND="
 	upnp? ( net-libs/libupnp:= )
 	v4l? ( media-libs/libv4l:0 )
 	vaapi? ( x11-libs/libva:0=[drm,wayland?,X?] )
-	vcd? ( >=dev-libs/libcdio-0.78.2:0 )
 	vdpau? ( x11-libs/libvdpau:0 )
 	vnc? ( net-libs/libvncserver:0 )
 	vorbis? ( media-libs/libvorbis:0 )
@@ -280,6 +279,7 @@ src_configure() {
 		--disable-update-check
 		--enable-fast-install
 		--enable-screen
+		--enable-vcd
 		--enable-vlc
 		$(use_enable a52)
 		$(use_enable alsa)
@@ -378,7 +378,6 @@ src_configure() {
 		$(use_enable upnp)
 		$(use_enable v4l v4l2)
 		$(use_enable vaapi libva)
-		$(use_enable vcd)
 		$(use_enable vdpau)
 		$(use_enable vnc)
 		$(use_enable vorbis)
