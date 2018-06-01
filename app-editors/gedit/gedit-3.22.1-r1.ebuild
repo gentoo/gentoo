@@ -67,6 +67,9 @@ src_prepare() {
 src_configure() {
 	DOCS="AUTHORS ChangeLog MAINTAINERS NEWS README"
 
+	# manually set pyexecdir due to bug #524018 and AM_PATH_PYTHON limitations
+	use python && export am_cv_python_pyexecdir="$(python_get_sitedir)"
+
 	gnome2_src_configure \
 		--disable-deprecations \
 		--disable-updater \
@@ -80,12 +83,4 @@ src_configure() {
 src_test() {
 	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
 	GSETTINGS_SCHEMA_DIR="${S}/data" virtx emake check
-}
-
-src_install() {
-	local args=()
-	# manually set pyoverridesdir due to bug #524018 and AM_PATH_PYTHON limitations
-	use python && args+=( pyoverridesdir="$(python_get_sitedir)/gi/overrides" )
-
-	gnome2_src_install "${args[@]}"
 }
