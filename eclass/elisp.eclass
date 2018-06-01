@@ -137,14 +137,14 @@ elisp_src_prepare() {
 		fi
 		case ${EAPI:-0} in
 			0|1|2|3|4|5) epatch "${file}" ;;
-			6) eapply "${file}" ;;
+			*) eapply "${file}" ;;
 		esac
 	done
 
 	# apply any user patches
 	case ${EAPI:-0} in
 		0|1|2|3|4|5) epatch_user ;;
-		6) eapply_user ;;
+		*) eapply_user ;;
 	esac
 
 	if [[ -n ${ELISP_REMOVE} ]]; then
