@@ -13,7 +13,7 @@ SLOT="0/${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="http://gnuradio.org/git/gnuradio.git"
-	inherit git-2
+	inherit git-r3
 	KEYWORDS=""
 else
 	SRC_URI="http://gnuradio.org/releases/${PN}/${P}.tar.gz"
