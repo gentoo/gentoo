@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23 >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/emacs-daemon-0.22.tar.xz
-_eclasses_=elisp	71fc1fea53f2bcc9e39073663574ce4a	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	fbeb298abf384e44df301f04b7709585	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=2f82ffa99ce2064372db7516804a488f

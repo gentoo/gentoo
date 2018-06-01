@@ -9,5 +9,5 @@ RDEPEND=app-emacs/dash app-emacs/s >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rejeep/f.el/archive/v0.19.0.tar.gz -> f-0.19.0.tar.gz
-_eclasses_=elisp	71fc1fea53f2bcc9e39073663574ce4a	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	fbeb298abf384e44df301f04b7709585	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=7a9da92b807a341d6ba095067abdb864

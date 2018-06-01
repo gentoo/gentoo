@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=!!<app-emacs/magit-2.5.0 >=app-emacs/dash-2.13.0 >=virtual/emacs-24
 SLOT=0
 SRC_URI=https://github.com/magit/with-editor/archive/v2.5.10.tar.gz -> with-editor-2.5.10.tar.gz
-_eclasses_=elisp	71fc1fea53f2bcc9e39073663574ce4a	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f
+_eclasses_=elisp	fbeb298abf384e44df301f04b7709585	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f
 _md5_=5ffb0311053b3025173d3c153f1a37fa
