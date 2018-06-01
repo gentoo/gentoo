@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit fdo-mime java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2 xdg-utils
 
 MY_PN="${PN^}"
 
@@ -71,11 +71,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
