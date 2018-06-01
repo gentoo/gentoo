@@ -3,13 +3,18 @@
 
 EAPI=5
 
-inherit eutils bash-completion-r1 versionator
+inherit eutils bash-completion-r1 versionator toolchain-funcs
 
 MY_P="rust-${PV}"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="http://www.rust-lang.org/"
 SRC_URI="amd64? ( http://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux-gnu.tar.xz )
+	arm? (
+		http://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabi.tar.xz
+		http://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabihf.tar.xz
+		http://static.rust-lang.org/dist/${MY_P}-armv7-unknown-linux-gnueabihf.tar.xz
+		)
 	x86? ( http://static.rust-lang.org/dist/${MY_P}-i686-unknown-linux-gnu.tar.xz )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
@@ -33,11 +38,26 @@ QA_PREBUILT="
 	opt/${P}/lib/rustlib/*/lib/*.rlib*
 "
 
+pkg_pretend () {
+	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then
+		die "${CHOST} is not supported by upstream Rust. You must use a hard float version."
+	fi
+}
+
 src_unpack() {
 	default
 
 	local postfix
 	use amd64 && postfix=x86_64-unknown-linux-gnu
+
+	if use arm && [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv6* ]]; then
+		postfix=arm-unknown-linux-gnueabi
+	elif use arm && [[ ${CHOST} == armv6*h* ]]; then
+		postfix=arm-unknown-linux-gnueabihf
+	elif use arm && [[ ${CHOST} == armv7*h* ]]; then
+		postfix=armv7-unknown-linux-gnueabihf
+        fi
+
 	use x86 && postfix=i686-unknown-linux-gnu
 	mv "${WORKDIR}/${MY_P}-${postfix}" "${S}" || die
 }
