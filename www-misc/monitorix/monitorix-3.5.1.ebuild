@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit eutils systemd user
 
 DESCRIPTION="A lightweight system monitoring tool"
-HOMEPAGE="http://www.monitorix.org/"
-SRC_URI="http://www.${PN}.org/${P}.tar.gz"
+HOMEPAGE="https://www.monitorix.org/"
+SRC_URI="https://www.${PN}.org/old-versions/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
