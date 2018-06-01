@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit cmake-utils git-2 multilib
+inherit cmake-utils git-r3 multilib
 
 DESCRIPTION="Software for the Mirics MSi2500 + MSi001 SDR platform"
 HOMEPAGE="http://cgit.osmocom.org/libmirisdr/"
