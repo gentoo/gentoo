@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit elisp-common eutils fdo-mime flag-o-matic
+inherit elisp-common eutils flag-o-matic xdg-utils
 
 DESCRIPTION="Interactive Geometry Viewer"
 HOMEPAGE="http://geomview.sourceforge.net"
@@ -60,11 +60,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	use emacs && elisp-site-regen
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	use emacs && elisp-site-regen
 }
