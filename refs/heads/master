@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0x8883FA56A308A8D7 1527826404 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1527826404-a129aeaa8ee04423e058
+pusher 0xA6CC832E4E670EB9 1527833258 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1527833259-c32462183aef1ce685e7
 
-46f559e11bea962d98030a2c440fa13c6656daab 1148a0924c4cf021c3201008fdb1b75ebf27a02b refs/heads/master
+1148a0924c4cf021c3201008fdb1b75ebf27a02b 0862dc3f96b0756cf68871d040c958bccb8653a5 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABEIAB0WIQSx3yP+V82AqODatGmIg/pWowio1wUCWxDH5AAKCRCIg/pWowio
-10AXAP4yn0TR5GEbXIcUejyy1r5i056qyIjDD0rdBwVuXqUpEgD/b1LfO0OKEOlG
-bm8V48VRz2yqD9IE6BwPsAadOgIxdJk=
-=17Ag
+iHUEABYIAB0WIQRmBnVdxmm4V4Ve5NumzIMuTmcOuQUCWxDiqgAKCRCmzIMuTmcO
+udNEAP99n3uOMPby+eL69N+X3st89AfIuZjAGxeVBUe3n3Rq4QD/QEJeiIFPCrWd
+i9Fxx0w+r56kBF22ZjL4uXvNARXNHAk=
+=EWOj
 -----END PGP SIGNATURE-----
