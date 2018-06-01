@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -48,7 +48,7 @@ setup-allowed-flags() {
 # Note: shell globs and character lists are allowed
 _setup-allowed-flags() {
 	ALLOWED_FLAGS=(
-		-pipe -O '-O[12sg]' -mcpu -march -mtune
+		-pipe -O '-O[12sg]' '-mcpu=*' '-march=*' '-mtune=*'
 		'-fstack-protector*'
 		'-fsanitize*' '-fno-sanitize*'
 		'-fstack-check*' -fno-stack-check
@@ -70,7 +70,7 @@ _setup-allowed-flags() {
 		'-[DUILR]*' '-Wl,*'
 
 		# Linker choice flag
-		'-fuse-ld'
+		'-fuse-ld=*'
 	)
 
 	# allow a bunch of flags that negate features / control ABI
@@ -80,19 +80,19 @@ _setup-allowed-flags() {
 		-fno-omit-frame-pointer '-fno-builtin*'
 	)
 	ALLOWED_FLAGS+=(
-		-mregparm -mno-app-regs -mapp-regs -mno-mmx -mno-sse
+		'-mregparm=*' -mno-app-regs -mapp-regs -mno-mmx -mno-sse
 		-mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2
 		-mno-avx -mno-aes -mno-pclmul -mno-sse4a -mno-3dnow -mno-popcnt
 		-mno-abm -mips1 -mips2 -mips3 -mips4 -mips32 -mips64 -mips16 -mplt
-		-msoft-float -mno-soft-float -mhard-float -mno-hard-float -mfpu
-		-mieee -mieee-with-inexact -mschedule -mfloat-gprs -mspe -mno-spe
+		-msoft-float -mno-soft-float -mhard-float -mno-hard-float '-mfpu=*'
+		-mieee -mieee-with-inexact '-mschedule=*' -mfloat-gprs -mspe -mno-spe
 		-mtls-direct-seg-refs -mno-tls-direct-seg-refs -mflat -mno-flat
-		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 -mabi
-		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 -mcmodel
-		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' -mfloat-abi
+		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 '-mabi=*'
+		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 '-mcmodel=*'
+		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' '-mfloat-abi=*'
 		-mfix-r4000 -mno-fix-r4000 -mfix-r4400 -mno-fix-r4400
 		-mfix-rm7000 -mno-fix-rm7000 -mfix-r10000 -mno-fix-r10000
-		-mr10k-cache-barrier -mthumb -marm
+		'-mr10k-cache-barrier=*' -mthumb -marm
 
 		# gcc 4.5
 		-mno-fma4 -mno-movbe -mno-xop -mno-lwp
@@ -452,9 +452,8 @@ strip-flags() {
 		local new=()
 
 		for x in ${!var} ; do
-			local flag=${x%%=*}
 			for y in "${ALLOWED_FLAGS[@]}" ; do
-				if [[ -z ${flag%%${y}} ]] ; then
+				if [[ ${x} == ${y} ]] ; then
 					new+=( "${x}" )
 					break
 				fi
