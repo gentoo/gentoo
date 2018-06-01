@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="File copying utility with progress and I/O indicator"
-HOMEPAGE="http://wiki.goffi.org/wiki/Gcp/en"
+HOMEPAGE="https://wiki.goffi.org/wiki/Gcp/en"
 SRC_URI="ftp://ftp.goffi.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
