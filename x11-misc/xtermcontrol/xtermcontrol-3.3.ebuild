@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="xtermcontrol enables dynamic control of XFree86 xterm properties"
-HOMEPAGE="http://www.thrysoee.dk/xtermcontrol/"
-SRC_URI="http://www.thrysoee.dk/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.thrysoee.dk/xtermcontrol/"
+SRC_URI="https://www.thrysoee.dk/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
