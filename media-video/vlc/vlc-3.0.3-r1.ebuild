@@ -33,7 +33,7 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 	debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth fontconfig
 	+gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav libcaca
 	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
-	macosx-qtkit matroska microdns modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
+	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
 	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp
 	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl svg
 	taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
@@ -70,7 +70,10 @@ RDEPEND="
 	bluray? ( media-libs/libbluray:0= )
 	cddb? ( media-libs/libcddb:0 )
 	chromaprint? ( media-libs/chromaprint:0= )
-	chromecast? ( >=dev-libs/protobuf-2.5.0:= )
+	chromecast? (
+		>=dev-libs/protobuf-2.5.0:=
+		>=net-libs/libmicrodns-0.0.9:=
+	)
 	dbus? ( sys-apps/dbus:0 )
 	dc1394? (
 		media-libs/libdc1394:2
@@ -130,7 +133,6 @@ RDEPEND="
 		dev-libs/libebml:0=
 		media-libs/libmatroska:0=
 	)
-	microdns? ( >=net-libs/libmicrodns-0.0.9:= )
 	modplug? ( media-libs/libmodplug:0 )
 	mp3? ( media-libs/libmad:0 )
 	mpeg? ( media-libs/libmpeg2:0 )
@@ -234,13 +236,6 @@ DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_pretend() {
-	# https://bugs.gentoo.org/647668
-	if use chromecast && ! use microdns; then
-		einfo "USE=microdns is required for Chromecast autodetection support"
-	fi
-}
-
 src_prepare() {
 	default
 
@@ -294,6 +289,7 @@ src_configure() {
 		$(use_enable cddb libcddb)
 		$(use_enable chromaprint)
 		$(use_enable chromecast)
+		$(use_enable chromecast microdns)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable dbus)
@@ -338,7 +334,6 @@ src_configure() {
 		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable macosx-qtkit)
 		$(use_enable matroska)
-		$(use_enable microdns)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mad)
 		$(use_enable mpeg libmpeg2)
