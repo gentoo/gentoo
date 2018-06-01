@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit versionator linux-info eutils flag-o-matic toolchain-funcs
+inherit eapi7-ver eutils flag-o-matic linux-info toolchain-funcs
 
-MY_P="${PN}-$(replace_version_separator 2 "-")"
+MY_P="${PN}-$(ver_rs 2 "-")"
 
 DESCRIPTION="A performant, transport independent, multi-platform implementation of RFC3720"
 HOMEPAGE="http://www.open-iscsi.com/"

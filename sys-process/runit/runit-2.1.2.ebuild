@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -115,7 +115,7 @@ migrate_from_211() {
 pkg_postinst() {
 	if [ -z "$REPLACING_VERSIONS" ]; then
 		default_config
-	elif [ ! version_is_at_least 2.1.2 $REPLACING_VERSIONS ]; then
+	elif [ ver_compare $REPLACING_VERSIONS -lt 2.1.2 ]; then
 		migrate_from_211
 	fi
 

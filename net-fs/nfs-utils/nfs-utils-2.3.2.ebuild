@@ -9,8 +9,8 @@ DESCRIPTION="NFS client and server daemons"
 HOMEPAGE="http://linux-nfs.org/"
 
 if [[ "${PV}" = *_rc* ]] ; then
-	inherit versionator
-	MY_PV="$(replace_all_version_separators -)"
+	inherit eapi7-ver
+	MY_PV="$(ver_rs 1- -)"
 	SRC_URI="http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=snapshot;h=refs/tags/${PN}-${MY_PV};sf=tgz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 else

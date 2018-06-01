@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs versionator
+inherit eapi7-ver flag-o-matic toolchain-funcs
 
-#MY_PV="$(get_version_component_range 1-3)"
-DEB_PATCH="" #$(get_version_component_range 4)
+#MY_PV="$(ver_cut 1-3)"
+DEB_PATCH="" #$(ver_cut 4)
 #MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Debian Almquist Shell"

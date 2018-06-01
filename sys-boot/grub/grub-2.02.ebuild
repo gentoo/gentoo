@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [[ -n ${GRUB_AUTOGEN} ]]; then
 	inherit autotools python-any-r1
 fi
 
-inherit autotools bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs versionator
+inherit autotools bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then

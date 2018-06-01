@@ -3,19 +3,19 @@
 
 EAPI="4"
 
-inherit versionator eutils toolchain-funcs multilib flag-o-matic
+inherit eapi7-ver eutils flag-o-matic multilib toolchain-funcs
 
-MY_PV=$(replace_version_separator 3 '-' )
+MY_PV=$(ver_rs 3 '-' )
 MY_P=${PN}-v${MY_PV}
 
 DESCRIPTION="Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting"
 HOMEPAGE="http://ebtables.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
-KEYWORDS="amd64 ppc x86"
-IUSE="static"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ppc x86"
+IUSE="static"
 
 RDEPEND="
 	!<net-firewall/iptables-1.6.2-r2[nftables(-)]

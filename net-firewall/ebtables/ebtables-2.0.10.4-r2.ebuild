@@ -3,9 +3,9 @@
 
 EAPI="6"
 
-inherit versionator toolchain-funcs flag-o-matic
+inherit eapi7-ver flag-o-matic toolchain-funcs
 
-MY_PV=$(replace_version_separator 3 '-' )
+MY_PV=$(ver_rs 3 '-' )
 MY_P=${PN}-v${MY_PV}
 
 DESCRIPTION="Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting"

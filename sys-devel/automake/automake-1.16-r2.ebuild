@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 versionator
+inherit python-any-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"

@@ -3,14 +3,14 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs flag-o-matic versionator
+inherit eutils eapi7-ver flag-o-matic toolchain-funcs
 
 PATCH_VER="2"
 MY_PN="netkit-ftp"
-MY_PV="$(get_version_component_range 1-2)"
+MY_PV="$(ver_cut 1-2)"
 MY_P="netkit-${PN}-${MY_PV}"
 DEB_PN="${MY_PN}-ssl"
-DEB_PV="$(get_version_component_range 1-3)+$(get_version_component_range 4-5)-$(get_version_component_range 6)"
+DEB_PV="$(ver_cut 1-3)+$(ver_cut 4-5)-$(ver_cut 6)"
 DESCRIPTION="Standard Linux FTP client"
 HOMEPAGE="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"
 SRC_URI="ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/${MY_P}.tar.gz
