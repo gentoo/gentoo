@@ -4,14 +4,14 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 versionator
+inherit eapi7-ver python-any-r1
 
 if [[ ${PV/_beta} == ${PV} ]]; then
 	MY_P=${P}
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 		https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
 else
-	MY_PV="$(get_major_version).$(($(get_version_component_range 2)-1))b"
+	MY_PV="$(ver_cut 1).$(($(ver_cut 2)-1))b"
 	MY_P="${PN}-${MY_PV}"
 
 	# Alpha/beta releases are not distributed on the usual mirrors.
