@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools eutils
 
 MY_P=${PN}2-${PV}
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/dbh/dbh/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -27,7 +27,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e "s:-O2:${CFLAGS}:" m4/rfm-conditionals.m4 || die
+	default
+
+	# Make sure user defined CFLAGS are respected
+	sed -i -e "s:-O2:${CFLAGS}:" m4/rfm-conditionals.m4 || die "sed failed"
 	eautoreconf
 }
 
