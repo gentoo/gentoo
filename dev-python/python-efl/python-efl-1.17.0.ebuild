@@ -7,11 +7,11 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 MY_P=${P/_/-}
 
-if [[ "${PV}" == "9999" ]] ; then
+if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUB_PROJECT="bindings/python"
 	EGIT_URI_APPEND="${PN}"
 	EGIT_REPO_URI="https://git.enlightenment.org/${EGIT_SUB_PROJECT}/${EGIT_URI_APPEND}.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="https://download.enlightenment.org/rel/bindings/python/${MY_P}.tar.xz"
 fi
