@@ -7,7 +7,7 @@ inherit eutils xdg-utils gnome2-utils pax-utils unpacker
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
-BUILD_ID_AMD64="223.g92622cc2-21"
+BUILD_ID_AMD64="480.g51b03ac3-13"
 #BUILD_ID_X86=""
 #SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb )
 #	x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_X86}_i386.deb )"
