@@ -7,8 +7,8 @@ inherit autotools fdo-mime toolchain-funcs
 MY_P=${P/_}
 
 DESCRIPTION="An amateur radio logging program"
-HOMEPAGE="http://www.nongnu.org/xlog"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/xlog"
+SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
