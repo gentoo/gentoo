@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ src_compile() {
 	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR}"
 	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	use module && linux-mod_src_compile
-	use tools && emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools
+	use tools && emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools CC="$(tc-getCC)" LD="$(tc-getLD)"
 }
 
 src_install() {
