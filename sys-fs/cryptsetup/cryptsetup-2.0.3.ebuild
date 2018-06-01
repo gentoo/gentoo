@@ -5,11 +5,11 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools python-single-r1 linux-info libtool ltprune versionator
+inherit autotools eapi7-ver libtool linux-info ltprune python-single-r1
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
-SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P/_/-}.tar.xz"
+SRC_URI="mirror://kernel/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version

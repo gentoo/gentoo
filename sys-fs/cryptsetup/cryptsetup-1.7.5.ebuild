@@ -6,11 +6,11 @@ EAPI=5
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools distutils-r1 linux-info libtool eutils versionator
+inherit autotools distutils-r1 eapi7-ver eutils libtool linux-info
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
-SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P}.tar.xz"
+SRC_URI="mirror://kernel/linux/utils/${PN}/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -23,7 +23,8 @@ REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	static? ( !gcrypt )" #496612
 
-LIB_DEPEND="dev-libs/libgpg-error[static-libs(+)]
+LIB_DEPEND="
+	dev-libs/libgpg-error[static-libs(+)]
 	dev-libs/popt[static-libs(+)]
 	sys-apps/util-linux[static-libs(+)]
 	gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
