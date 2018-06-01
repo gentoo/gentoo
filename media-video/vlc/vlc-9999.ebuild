@@ -70,7 +70,10 @@ RDEPEND="
 	bluray? ( media-libs/libbluray:0= )
 	cddb? ( media-libs/libcddb:0 )
 	chromaprint? ( media-libs/chromaprint:0= )
-	chromecast? ( >=dev-libs/protobuf-2.5.0:= )
+	chromecast? (
+		>=dev-libs/protobuf-2.5.0:=
+		>=net-libs/libmicrodns-0.0.9:=
+	)
 	dbus? ( sys-apps/dbus:0 )
 	dc1394? (
 		media-libs/libdc1394:2
@@ -130,7 +133,6 @@ RDEPEND="
 		dev-libs/libebml:0=
 		media-libs/libmatroska:0=
 	)
-	microdns? ( >=net-libs/libmicrodns-0.0.9:= )
 	modplug? ( media-libs/libmodplug:0 )
 	mp3? ( media-libs/libmad:0 )
 	mpeg? ( media-libs/libmpeg2:0 )
@@ -233,13 +235,6 @@ DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_pretend() {
-	# https://bugs.gentoo.org/647668
-	if use chromecast && ! use microdns; then
-		einfo "USE=microdns is required for Chromecast autodetection support"
-	fi
-}
-
 src_prepare() {
 	default
 
@@ -292,6 +287,7 @@ src_configure() {
 		$(use_enable cddb libcddb)
 		$(use_enable chromaprint)
 		$(use_enable chromecast)
+		$(use_enable chromecast microdns)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable dbus)
@@ -336,7 +332,6 @@ src_configure() {
 		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable macosx-qtkit)
 		$(use_enable matroska)
-		$(use_enable microdns)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mad)
 		$(use_enable mpeg libmpeg2)
