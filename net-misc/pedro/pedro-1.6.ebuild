@@ -28,13 +28,13 @@ src_install() {
 	fi
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins src/examples/*.{c,tcl}
+		docinto /usr/share/doc/${PF}/examples
+		dodoc src/examples/*.{c,tcl}
 
-		insinto /usr/share/doc/${PF}/examples/java_api
-		doins src/java_api/*.java
+		docinto /usr/share/doc/${PF}/examples/java_api
+		dodoc src/java_api/*.java
 
-		insinto /usr/share/doc/${PF}/examples/python_api
-		doins src/python_api/*.py
+		docinto /usr/share/doc/${PF}/examples/python_api
+		dodoc src/python_api/*.py
 	fi
 }
