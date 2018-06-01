@@ -1,0 +1,66 @@
+From 4e66272e1f5ebb220af517ca4d8804936f7f465c Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Thu, 31 May 2018 18:11:26 -0600
+Subject: [PATCH] cmake: minor distribution tweaks
+
+- Use GNUInstallDirs to allow to configure install dirs
+- Allow to disable injecting c flags
+
+Signed-off-by: Christoph Junghans <junghans@votca.org>
+---
+ CMakeLists.txt     | 7 +++++--
+ lib/CMakeLists.txt | 4 ++--
+ man/CMakeLists.txt | 2 +-
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f2d0bdf..75753d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,9 +13,12 @@ set(lmfit_VERSION ${lmfit_SOVERSION}.0) # lib version
+ # --- Declare project-wide user flags, and set default values ---
+ option(FITTEST "Build with FitTest" OFF)
+ 
+-set(destination ${CMAKE_INSTALL_PREFIX})
++include(GNUInstallDirs)
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -pedantic -Wall -Wno-sign-compare -Wno-unused-result -Wno-parentheses  -Wno-unknown-pragmas -Werror")
++option(INJECT_C_FLAGS "Inject a bunch of useful c flags" ON)
++if (INJECT_C_FLAGS)
++    set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -pedantic -Wall -Wno-sign-compare -Wno-unused-result -Wno-parentheses  -Wno-unknown-pragmas -Werror")
++endif()
+ 
+ add_subdirectory(lib)
+ add_subdirectory(demo)
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 51b79bb..754f60f 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -17,9 +17,9 @@ target_link_libraries(${library_name} m)
+ 
+ install(
+     TARGETS ${library_name} LIBRARY
+-    DESTINATION ${destination}/lib
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     COMPONENT Libraries)
+ install(
+     FILES ${inc_files}
+-    DESTINATION ${destination}/include
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+     COMPONENT Headers)
+diff --git a/man/CMakeLists.txt b/man/CMakeLists.txt
+index a718d3d..4a15597 100644
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -15,7 +15,7 @@ function(one_page pname section)
+     )
+     install(
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${pname}.${section}
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/man/man${section}"
++        DESTINATION "${CMAKE_INSTALL_MANDIR}/man${section}"
+     )
+ endfunction()
+ 
+-- 
+2.16.4
+
