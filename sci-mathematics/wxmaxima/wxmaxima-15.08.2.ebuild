@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 WX_GTK_VER="3.0"
 
-inherit eutils gnome2-utils wxwidgets fdo-mime
+inherit eutils gnome2-utils wxwidgets xdg-utils
 
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
 HOMEPAGE="http://andrejv.github.io/wxmaxima/"
@@ -66,10 +66,10 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
