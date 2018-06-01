@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools git-2
+inherit autotools git-r3
 
 DESCRIPTION="Osmocom library for A-bis interface"
 HOMEPAGE="http://openbsc.osmocom.org/trac/wiki/libosmo-abis"
