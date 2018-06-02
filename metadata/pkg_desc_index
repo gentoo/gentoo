@@ -8521,7 +8521,7 @@ net-im/mcabber 1.0.5: A small Jabber console client with various features, like 
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/openfire 4.1.0: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.12.0: GTK Instant Messenger client
-net-im/prosody 0.9.11 0.9.12: Prosody is a flexible communications server for Jabber/XMPP written in Lua
+net-im/prosody 0.9.11 0.9.12 0.9.14: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/sendxmpp 1.23: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
