@@ -280,7 +280,7 @@ app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r4: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
-app-cdr/burn-cd 1.7.4 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
+app-cdr/burn-cd 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.3: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdemu 3.1.0: Command-line tool for controlling cdemu-daemon
@@ -901,7 +901,7 @@ app-i18n/scim-anthy 1.2.7-r1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-hangul 0.4.0: Hangul IMEngine for SCIM ported from imhangul
 app-i18n/scim-input-pad 0.1.3: Input pad for SCIM used to input symbols and special characters
 app-i18n/scim-m17n 0.2.3: An input module for Smart Common Input Method (SCIM) which uses m17n as backend
-app-i18n/scim-pinyin 0.5.91-r3 0.5.92: Smart Common Input Method (SCIM) Smart Pinyin Input Method
+app-i18n/scim-pinyin 0.5.92: Smart Common Input Method (SCIM) Smart Pinyin Input Method
 app-i18n/scim-tables 0.5.13: Smart Common Input Method (SCIM) Generic Table Input Method Server
 app-i18n/scim-uim 0.2.0-r2: An input module for Smart Common Input Method (SCIM) which uses uim as backend
 app-i18n/skk-jisyo 201605: Jisyo (dictionary) files for the SKK Japanese-input software
@@ -945,7 +945,7 @@ app-misc/away 0.9.5-r2: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
 app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r3: The advanced PC speaker beeper
-app-misc/bfm 1.2-r1 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
+app-misc/bfm 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bijiben 3.24.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
@@ -1023,7 +1023,7 @@ app-misc/hivex 1.3.14: Library for reading and writing Windows Registry 'hive' b
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.24.3: Memorization aid based on the Leitner flashcard system
 app-misc/iguanaIR 1.0.1-r1: library for Irman control of Unix software
-app-misc/inputlircd 0.0.1_pre11 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
+app-misc/inputlircd 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
 app-misc/jail 2.0 2.0-r1: Builds a chroot and configures all the required files, directories and libraries
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
@@ -1867,10 +1867,10 @@ dev-db/mysql-workbench 6.3.4-r1: MySQL Workbench
 dev-db/mysqltuner 1.6.18: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.6-r4: mytop - a top clone for mysql
 dev-db/opendbx 1.4.5-r1: OpenDBX - A database abstraction layer
-dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.3 11.2.0.4: Oracle 11g Instant Client with SDK
-dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: JDBC supplement
+dev-db/oracle-instantclient-basic 11.2.0.3 11.2.0.4: Oracle 11g Instant Client with SDK
+dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: JDBC supplement
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: ODBC supplement
-dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
+dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
 dev-db/percona-toolkit 2.2.11 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.9: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
@@ -6001,7 +6001,7 @@ dev-tcltk/bwidget 1.9.8: High-level widget set for Tcl/Tk
 dev-tcltk/ck 8.0-r4: A curses based toolkit for tcl
 dev-tcltk/combobox 2.3-r1: A combobox megawidget
 dev-tcltk/expect 5.45: tool for automating interactive applications
-dev-tcltk/expect-lite 4.0.3 4.3.0 4.3.1 4.3.2 4.3.3 4.4.1 4.5.0 4.6.1 4.6.2: quick and easy command line automation tool built on top of expect
+dev-tcltk/expect-lite 4.6.1: quick and easy command line automation tool built on top of expect
 dev-tcltk/itcl 3.4.1 4.0.3: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/itk 3.4.1 4.0.1: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.0.1: Widget collection for incrTcl/incrTk
