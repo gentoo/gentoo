@@ -10,7 +10,6 @@
   cleaner and more powerful than smart-snippet.
 </longdescription>
 <upstream>
-  <remote-id type="google-code">yasnippet</remote-id>
-  <remote-id type="github">capitaomorte/yasnippet</remote-id>
+  <remote-id type="github">joaotavora/yasnippet</remote-id>
 </upstream>
 </pkgmetadata>
