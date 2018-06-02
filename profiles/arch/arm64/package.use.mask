@@ -18,6 +18,7 @@ sys-devel/distcc gnome
 # projectm not yet keyworded, bug #314969
 # net-misc/freerdp not yet keyworded
 media-video/vlc aom chromaprint microdns opencv projectm rdp srt
+>=media-video/vlc-3.0.3 chromecast
 
 # Mart Raudsepp <leio@gentoo.org> (13 May 2018)
 # Not bothering with otherwise p.masked old gcc for the
