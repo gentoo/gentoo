@@ -20,6 +20,7 @@ IUSE="doc static-libs"
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
 	!elibc_Darwin? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )
+	elibc_Darwin? ( sys-libs/libuuid )
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -72,13 +73,6 @@ multilib_src_configure() {
 				addfonts=",/usr/share/fonts"
 		;;
 	esac
-
-	if [[ ${CHOST} == *-darwin* ]] ; then
-		# Darwin provides uuid in libSystem, avoid pkg-config check for
-		# it with some dummy values
-		export UUID_CFLAGS="-I/usr/include/uuid-dummy"
-		export UUID_LIBS="-lc"
-	fi
 
 	local myeconfargs=(
 		$(use_enable doc docbook)
