@@ -6,7 +6,7 @@ EAPI=6
 inherit xdg-utils
 
 DESCRIPTION="a frontend to easily manage connections to remote filesystems using GIO/GVfs"
-HOMEPAGE="http://www.uvena.de/gigolo/ https://goodies.xfce.org/projects/applications/gigolo"
+HOMEPAGE="https://www.uvena.de/gigolo/ https://goodies.xfce.org/projects/applications/gigolo"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
