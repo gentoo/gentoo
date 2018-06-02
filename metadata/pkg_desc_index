@@ -5744,6 +5744,8 @@ dev-ruby/activesupport 5.0.6 5.1.4: Utility Classes and Extension to the Standar
 dev-ruby/addressable 2.4.0-r1 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
+dev-ruby/asciidoctor 1.5.5-r1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciimath 1.0.4: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/atomic 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
@@ -5793,6 +5795,7 @@ dev-ruby/gettext-setup 0.30: A gem to ease i18n
 dev-ruby/gherkin 2.12.2 4.1.3: Fast Gherkin lexer and parser
 dev-ruby/git 1.3.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0: Beautiful graphs for one or multiple datasets
+dev-ruby/haml 4.0.7-r1: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.5: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
@@ -5873,6 +5876,7 @@ dev-ruby/rcairo 1.15.10: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
+dev-ruby/redcarpet 3.4.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2: A module for using Textile in Ruby
 dev-ruby/rest-client 1.8.0-r3: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
@@ -5940,6 +5944,7 @@ dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services
 dev-ruby/shoulda 2.11.3-r2: Making tests easy on the fingers and eyes
 dev-ruby/simple-rss 1.3.1-r1: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/sinatra 1.4.8: A DSL for quickly creating web applications in Ruby with minimal effort
+dev-ruby/slim 3.0.9: A template language aiming to reduce the syntax to the essential parts
 dev-ruby/sparklines 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
 dev-ruby/spork 0.9.2-r2: Spork is Tim Harper's implementation of test server
 dev-ruby/sqlite3 1.3.11: An extension library to access a SQLite database from Ruby
@@ -5947,6 +5952,7 @@ dev-ruby/stomp 1.4.3 1.4.4: Ruby bindings for the stomp messaging protocol
 dev-ruby/syntax 1.2.0-r1: Syntax highlighting for sourcecode and HTML
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
+dev-ruby/temple 0.8.0: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.6.0: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/test-unit 3.1.9: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.5: RR adapter for Test::Unit
@@ -8388,7 +8394,7 @@ net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/w3af 1.1-r1: Web Application Attack and Audit Framework
-net-analyzer/wireshark 2.4.5 2.4.6: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.4.5 2.4.6 2.6.1: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
 net-analyzer/zabbix 2.2.16: ZABBIX is software for monitoring of your applications, network and servers
