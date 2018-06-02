@@ -232,11 +232,6 @@ media-sound/projectm-jack
 # Depends on dead Qt4, no revdeps. Masked for removal in 30 days.
 dev-libs/sni-qt
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on dead Qt4, dead upstream.
-# Masked for removal in 30 days. Bugs #408651, #642950, #651622
-media-gfx/structure-synth
-
 # Hans de Graaff <graaff@gentoo.org> (7 May 2018)
 # Old slots that are ruby23-only and no longer maintained
 # upstream, and that do not have packages depend on them.
