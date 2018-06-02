@@ -1,10 +1,6 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
-# Requires unkeyworded dev-python/PyQt5
-media-sound/pulseaudio qt5
-
 # Pacho Ramos <pacho@gentoo.org> (27 May 2018)
 # kde-frameworks/kdelibs4support not keyworded on ppc
 x11-wm/sawfish kde
