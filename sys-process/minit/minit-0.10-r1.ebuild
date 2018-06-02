@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit toolchain-funcs
 
 DESCRIPTION="a small yet feature-complete init"
 HOMEPAGE="http://www.fefe.de/minit/"
