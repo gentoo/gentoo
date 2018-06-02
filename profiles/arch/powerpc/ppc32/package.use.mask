@@ -1,17 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
-# Requires unkeyworded dev-python/PyQt5
-media-sound/pulseaudio qt5
-
 # Pacho Ramos <pacho@gentoo.org> (27 May 2018)
 # kde-frameworks/kdelibs4support not keyworded on ppc
 x11-wm/sawfish kde
-
-# Andreas Sturmlechner <asturm@gentoo.org> (13 Feb 2018)
-# Requires not yet keyworded dependencies
-sys-libs/gwenhywfar sensors serialport webkit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Jan 2018)
 # Requires media-libs/libffado, which requires dev-python/PyQt5,
@@ -49,7 +41,7 @@ sys-devel/clang-runtime openmp
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
 # dev-qt/qtwebkit:5 and kde-frameworks/*:5 not keyworded.
-net-irc/kvirc kde webkit
+net-irc/kvirc kde
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
@@ -60,14 +52,6 @@ net-irc/kvirc kde webkit
 media-plugins/audacious-plugins qt5
 net-analyzer/wireshark qt5
 sci-astronomy/stellarium sound
-
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-qt/qtwebkit:5, which is a PITA to maintain on
-# minor arches and has been declared deprecated by upstream. So we'd like
-# to avoid keywording it, unless requested by users.
-dev-qt/designer webkit
-net-irc/quassel webkit
-kde-plasma/libksysguard detailedmemory
 
 # James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.
