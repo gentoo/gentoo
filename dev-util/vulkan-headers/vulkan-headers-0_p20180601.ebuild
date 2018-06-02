@@ -3,11 +3,13 @@
 
 EAPI=6
 
+inherit cmake-utils
+
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-Headers.git"
 	inherit git-r3
 else
-	EGIT_COMMIT="a901a3edf256c1a1441433e77feac919fb8e5ed6"
+	EGIT_COMMIT="afd12b7bdcd63bf4d8d669d6e06a368a0954b6e3"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Headers/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Headers-${EGIT_COMMIT}"
@@ -21,10 +23,3 @@ SLOT="0"
 
 # Old packaging will cause file collisions
 RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
-
-src_install() {
-	mkdir "include/vulkan/registry" || die
-	mv "registry/" "include/vulkan/" || die
-	insinto /usr/include/vulkan
-	doins -r include/vulkan/*
-}
