@@ -12,14 +12,14 @@ SRC_URI="https://fontconfig.org/release/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="1.0"
 [[ $(ver_cut 3) -ge 90 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc static-libs"
 
 # Purposefully dropped the xml USE flag and libxml2 support.  Expat is the
 # default and used by every distro.  See bug #283191.
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
-	sys-apps/util-linux[${MULTILIB_USEDEP}]
+	!elibc_Darwin? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -72,6 +72,13 @@ multilib_src_configure() {
 				addfonts=",/usr/share/fonts"
 		;;
 	esac
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# Darwin provides uuid in libSystem, avoid pkg-config check for
+		# it with some dummy values
+		export UUID_CFLAGS="-I/usr/include/uuid-dummy"
+		export UUID_LIBS="-lc"
+	fi
 
 	local myeconfargs=(
 		$(use_enable doc docbook)
