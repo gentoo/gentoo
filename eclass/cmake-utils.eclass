@@ -614,6 +614,12 @@ cmake-utils_src_configure() {
 	_EOF_
 	[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo 'SET (CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}"
 
+	if [[ ${EAPI} != [56] ]]; then
+		cat >> "${common_config}" <<- _EOF_ || die
+			SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
+		_EOF_
+	fi
+
 	# Wipe the default optimization flags out of CMake
 	if [[ ${CMAKE_BUILD_TYPE} != Gentoo && ${EAPI} != 5 ]]; then
 		cat >> ${common_config} <<- _EOF_ || die
