@@ -1,5 +1,5 @@
---- src/tools/Makefile.am
-+++ src/tools/Makefile.am
+--- a/src/tools/Makefile.am
++++ b/src/tools/Makefile.am
 @@ -75,10 +75,7 @@
  # see http://lists.xiph.org/pipermail/ogg-dev/2008-July/001083.html
  install-exec-local:
