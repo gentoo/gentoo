@@ -206,7 +206,7 @@ pkg_postinst() {
 		ewarn "MICROCODE_BLACKLIST or MICROCODE_SIGNATURES, you maybe have unintentionally"
 		ewarn "re-enabled those microcodes...!"
 		ewarn ""
-		ewarn "Check ${EROOT%/}/usr/share/doc/${P}/releasenot* if your microcode update"
+		ewarn "Check \"${EROOT%/}/usr/share/doc/${PN}-*/releasenot*\" if your microcode update"
 		ewarn "requires additional kernel patches or not."
 	fi
 }
