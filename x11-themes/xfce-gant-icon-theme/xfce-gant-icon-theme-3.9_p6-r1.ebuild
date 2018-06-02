@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2-utils
 
 DESCRIPTION="Xfce Gant Icon Theme"
-HOMEPAGE="http://www.xfce-look.org/content/show.php/GANT?content=23297"
+HOMEPAGE="https://www.xfce-look.org/content/show.php/GANT?content=23297"
 SRC_URI="http://overlay.uberpenguin.net/icons-xfce-gant-${PV/_p/-}.tar.bz2"
 
 LICENSE="public-domain"
