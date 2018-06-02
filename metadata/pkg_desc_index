@@ -11120,7 +11120,7 @@ x11-proto/xf86vidmodeproto 2.3.1-r2: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r2: X.Org Xinerama protocol headers
 x11-proto/xproto 7.0.31-r1: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
-x11-terms/eterm 0.9.5 0.9.6-r2: A vt102 terminal emulator for X
+x11-terms/eterm 0.9.6-r2: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
 x11-terms/guake 0.8.8: Drop-down terminal for GTK+ desktops
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
