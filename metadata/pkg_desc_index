@@ -3367,7 +3367,7 @@ dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string 
 dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
-dev-perl/Apache-Test 1.380.0-r1 1.390.0 1.400.0-r1 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
+dev-perl/Apache-Test 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-cpanminus 1.704.300: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.820.0: Manage perl installations in your $HOME
@@ -9883,7 +9883,7 @@ sys-auth/pam_krb5 4.6: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 183 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
 sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a user session
-sys-auth/pam_mysql 0.7_rc1-r5: pam_mysql is a module for pam to authenticate users with mysql
+sys-auth/pam_mysql 0.7_rc1-r5 0.8.1: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.1.6: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password changing programs
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
@@ -10248,6 +10248,7 @@ sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5: tool for identifying where in the system latency is happening
 sys-process/lsof 4.89: Lists open files for running Unix processes
 sys-process/memwatch 0.1.0: Interactive memory viewer
+sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16f: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1: The NUMA daemon that manages application locality
