@@ -8639,7 +8639,7 @@ net-libs/libnfsidmap 0.25-r1: NFSv4 ID <-> name mapping library
 net-libs/libnftnl 1.0.8-r1: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
-net-libs/libnsl 0-r1: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
+net-libs/libnsl 0-r1 1.2.0: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3: C library implementing the OAuth secure authentication protocol
@@ -8685,7 +8685,7 @@ net-libs/qxmpp 0.9.3-r2: A cross-platform C++ XMPP client library based on the Q
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.11: A parsing library for RIPE Atlas result strings
-net-libs/rpcsvc-proto 0: rpcsvc protocol definitions from glibc
+net-libs/rpcsvc-proto 0 1.3.1-r1: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8: HTTP client library
 net-libs/shairplay 0_pre20170118: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.21-r1: OAuth2 plugin for Signon daemon
@@ -10152,7 +10152,7 @@ sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
 sys-libs/freeipmi 1.4.8: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2: Standard GNU database libraries
-sys-libs/glibc 2.25-r11: GNU libc6 (also called glibc2) C library
+sys-libs/glibc 2.25-r11 2.26-r7: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.19.0-r1: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.3.0: Library for managing partitions
