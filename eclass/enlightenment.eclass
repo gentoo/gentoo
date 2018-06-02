@@ -52,11 +52,9 @@ if [[ ${PV} == *9999* ]] ; then
 	if [[ ${EGIT_URI_APPEND} ]] ; then
 		E_LIVE_SERVER=${E_LIVE_SERVER:-${E_LIVE_SERVER_DEFAULT_GIT}}
 		EGIT_URI_APPEND=${EGIT_URI_APPEND:-${PN}}
-		EGIT_PROJECT="enlightenment/${EGIT_SUB_PROJECT}/${EGIT_URI_APPEND}"
 		EGIT_REPO_URI=${EGIT_SERVER:-${E_LIVE_SERVER_DEFAULT_GIT}}/${EGIT_SUB_PROJECT}/${EGIT_URI_APPEND}.git
-		E_S_APPEND=${EGIT_URI_APPEND}
 		E_LIVE_SOURCE="git"
-		inherit git-2
+		inherit git-r3
 	fi
 	E_STATE="live"
 	WANT_AUTOTOOLS="yes"
@@ -107,16 +105,10 @@ DEPEND="doc? ( app-doc/doxygen )
 	${E_CYTHON:+>=dev-python/cython-0.12.1}"
 RDEPEND="nls? ( sys-devel/gettext )"
 
-case ${EURI_STATE:-${E_STATE}} in
-	release) S=${WORKDIR}/${P};;
-	snap)    S=${WORKDIR}/${P};;
-	live)    S=${WORKDIR}/${E_S_APPEND};;
-esac
-
 enlightenment_src_unpack() {
 	if [[ ${E_STATE} == "live" ]] ; then
 		case ${E_LIVE_SOURCE} in
-			git) git-2_src_unpack;;
+			git) git-r3_src_unpack;;
 			*)   die "eek!";;
 		esac
 	else
