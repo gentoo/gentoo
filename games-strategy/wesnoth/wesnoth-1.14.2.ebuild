@@ -100,7 +100,7 @@ src_configure() {
 		-DENABLE_FRIBIDI="$(usex fribidi)"
 		-DENABLE_OMP="$(usex openmp)"
 		-DENABLE_STRICT_COMPILATION="OFF"
-		-DCMAKE_INSTALL_PREFIX="/usr"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		)
 	cmake-utils_src_configure
 }
