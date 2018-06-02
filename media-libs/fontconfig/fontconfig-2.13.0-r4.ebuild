@@ -20,7 +20,7 @@ IUSE="doc static-libs"
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
 	!elibc_Darwin? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )
-	elibc_Darwin? ( sys-libs/libuuid )
+	elibc_Darwin? ( sys-libs/native-uuid )
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
