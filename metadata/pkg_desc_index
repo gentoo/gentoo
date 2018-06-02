@@ -313,14 +313,14 @@ app-cdr/xbiso 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.5.5: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.21.1 0.23.0: An implementation of the ACME protocol
+app-crypt/acme 0.23.0 0.24.0: An implementation of the ACME protocol
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
 app-crypt/bcwipe 1.9.13: Secure file removal utility
 app-crypt/ccid 1.4.26 1.4.27: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
-app-crypt/certbot 0.21.1 0.23.0: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.21.1 0.23.0: Apache plugin for certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 0.21.1 0.23.0: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.23.0 0.24.0: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.23.0 0.24.0: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 0.23.0 0.24.0: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/easy-rsa 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo release media gpg keys
@@ -4959,7 +4959,7 @@ dev-python/jinja 2.9.5 2.10: A full-featured template engine for Python
 dev-python/jmespath 0.9.3: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.11: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
-dev-python/josepy 1.0.1: JOSE protocol implementation in Python
+dev-python/josepy 1.0.1 1.1.0: JOSE protocol implementation in Python
 dev-python/jpype 0.6.1: JPype is an effort to allow Python programs full access to Java class librairies
 dev-python/jsmin 2.2.1: JavaScript minifier
 dev-python/json-rpc 1.10.1: JSON-RPC transport implementation for python
