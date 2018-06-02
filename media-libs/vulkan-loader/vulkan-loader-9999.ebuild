@@ -57,5 +57,5 @@ multilib_src_install() {
 
 pkg_postinst() {
 	einfo "USE=demos has been dropped as per upstream packaging"
-	einfo "vulkaninfo is now available in the media-libs/vulkan-tools package"
+	einfo "vulkaninfo is now available in the dev-util/vulkan-tools package"
 }
