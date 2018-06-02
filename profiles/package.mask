@@ -225,7 +225,6 @@ dev-python/pyside-tools:0
 # Depends on dead Qt4, does not build, needs someone to bump to Qt5.
 # Masked for removal in 30 days. Bugs #588892, #588898, #649656
 media-libs/libprojectm-qt
-media-sound/projectm-pulseaudio
 
 # Hans de Graaff <graaff@gentoo.org> (7 May 2018)
 # Old slots that are ruby23-only and no longer maintained
