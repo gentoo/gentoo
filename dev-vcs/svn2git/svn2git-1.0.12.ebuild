@@ -33,6 +33,7 @@ src_configure() {
 		APR_INCLUDE=/usr/include/apr-1
 		PREFIX=/usr
 		SVN_INCLUDE=/usr/include/subversion-1
+		VERSION=${PV}
 	)
 	eqmake5 "${qmake_args[@]}" fast-export2.pro
 }
