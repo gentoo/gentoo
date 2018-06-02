@@ -1,20 +1,23 @@
-From 42fb7b4c73b0cae196a2eb6d97bfa6cc635f23fb Mon Sep 17 00:00:00 2001
+From 157e9e714c64f3148f09053454d15a25af550a28 Mon Sep 17 00:00:00 2001
 From: Nick Sarnie <sarnex@gentoo.org>
-Date: Sat, 26 May 2018 17:39:08 -0400
+Date: Sat, 2 Jun 2018 07:01:28 -0400
 Subject: [PATCH] Use usr for vulkan headers
 
 Signed-off-by: Nick Sarnie <sarnex@gentoo.org>
 ---
- CMakeLists.txt        | 2 +-
- layers/CMakeLists.txt | 5 +++--
- scripts/lvl_genvk.py  | 2 +-
- 3 files changed, 5 insertions(+), 4 deletions(-)
+ CMakeLists.txt                            | 2 +-
+ layers/CMakeLists.txt                     | 5 +++--
+ scripts/lvl_genvk.py                      | 2 +-
+ scripts/object_tracker_generator.py       | 1 +
+ scripts/parameter_validation_generator.py | 1 +
+ scripts/spec.py                           | 2 +-
+ 6 files changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 178debdd..dc742304 100644
+index aa2e87ed..85c3cc21 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -21,7 +21,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+@@ -18,7 +18,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
  find_package(PythonInterp 3 REQUIRED)
  
  # TODO: Add option to override this with env var, or even to use SDK
@@ -24,7 +27,7 @@ index 178debdd..dc742304 100644
  # Output warning if vulkan headers submodule contents are not present
  if (NOT EXISTS "${VULKAN_HEADERS_LOCATION}/include/vulkan/vulkan_core.h")
 diff --git a/layers/CMakeLists.txt b/layers/CMakeLists.txt
-index 962c4be6..26e5abaf 100644
+index d67e8d79..35485e35 100644
 --- a/layers/CMakeLists.txt
 +++ b/layers/CMakeLists.txt
 @@ -38,8 +38,9 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/scripts")
@@ -33,14 +36,14 @@ index 962c4be6..26e5abaf 100644
      add_custom_command(OUTPUT ${output}
 -    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/lvl_genvk.py -registry ${VULKAN_HEADERS_LOCATION}/registry/vk.xml ${output}
 -    DEPENDS ${VULKAN_HEADERS_LOCATION}/registry/vk.xml ${VULKAN_HEADERS_LOCATION}/registry/generator.py ${SCRIPTS_DIR}/${dependency} ${SCRIPTS_DIR}/lvl_genvk.py ${VULKAN_HEADERS_LOCATION}/registry/reg.py
-+    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/lvl_genvk.py -registry ${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/vk.xml ${output}
-+    DEPENDS ${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/vk.xml ${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/generator.py ${SCRIPTS_DIR}/${dependency} ${SCRIPTS_DIR}/lvl_genvk.py 
-+${VULKAN_HEADERS_LOCATION}/include/vulkan/registry/reg.py
++    COMMAND ${PYTHON_CMD} ${SCRIPTS_DIR}/lvl_genvk.py -registry ${VULKAN_HEADERS_LOCATION}/share/vulkan/registry/vk.xml ${output}
++    DEPENDS ${VULKAN_HEADERS_LOCATION}/share/vulkan/registry/vk.xml ${VULKAN_HEADERS_LOCATION}/share/vulkan/registry/generator.py ${SCRIPTS_DIR}/${dependency} ${SCRIPTS_DIR}/lvl_genvk.py 
++${VULKAN_HEADERS_LOCATION}/share/vulkan/registry/reg.py
      )
  endmacro()
  
 diff --git a/scripts/lvl_genvk.py b/scripts/lvl_genvk.py
-index 4dac9ca2..6ea83ddb 100644
+index 4dac9ca2..170bc0f5 100644
 --- a/scripts/lvl_genvk.py
 +++ b/scripts/lvl_genvk.py
 @@ -16,7 +16,7 @@
@@ -48,10 +51,47 @@ index 4dac9ca2..6ea83ddb 100644
  import argparse, cProfile, pdb, string, sys, time, os
  scripts_directory_path = os.path.dirname(os.path.abspath(__file__))
 -registry_headers_path = os.path.join(scripts_directory_path, '../Vulkan-Headers/registry')
-+registry_headers_path = os.path.join(scripts_directory_path, '/usr/include/vulkan/registry')
++registry_headers_path = os.path.join(scripts_directory_path, '/usr/share/vulkan/registry')
  sys.path.insert(0, registry_headers_path)
  
  from reg import *
+diff --git a/scripts/object_tracker_generator.py b/scripts/object_tracker_generator.py
+index 8d4b68af..ac3020c1 100644
+--- a/scripts/object_tracker_generator.py
++++ b/scripts/object_tracker_generator.py
+@@ -259,6 +259,7 @@ class ObjectTrackerOutputGenerator(OutputGenerator):
+         previous_dir = os.getcwd()
+         os.chdir(os.path.dirname(sys.argv[0]))
+         vuid_filename_locations = [
++            '/usr/share/vulkan/registry/validusage.json',
+             './Vulkan-Headers/registry/validusage.json',
+             '../Vulkan-Headers/registry/validusage.json',
+             '../../Vulkan-Headers/registry/validusage.json',
+diff --git a/scripts/parameter_validation_generator.py b/scripts/parameter_validation_generator.py
+index 66ede40d..9eae6fed 100644
+--- a/scripts/parameter_validation_generator.py
++++ b/scripts/parameter_validation_generator.py
+@@ -189,6 +189,7 @@ class ParameterValidationOutputGenerator(OutputGenerator):
+         previous_dir = os.getcwd()
+         os.chdir(os.path.dirname(sys.argv[0]))
+         vuid_filename_locations = [
++            '/usr/share/vulkan/registry/validusage.json',
+             './Vulkan-Headers/registry/validusage.json',
+             '../Vulkan-Headers/registry/validusage.json',
+             '../../Vulkan-Headers/registry/validusage.json',
+diff --git a/scripts/spec.py b/scripts/spec.py
+index 4eeb46aa..212b0c57 100644
+--- a/scripts/spec.py
++++ b/scripts/spec.py
+@@ -28,7 +28,7 @@ import re
+ 
+ out_filename = "../layers/vk_validation_error_messages.h" # can override w/ '-out <filename>' option
+ db_filename = "../layers/vk_validation_error_database.txt" # can override w/ '-gendb <filename>' option
+-json_filename = "../Vulkan-Headers/registry/validusage.json" # can override w/ '-json-file <filename> option
++json_filename = "/usr/share/vulkan/registry/validusage.json" # can override w/ '-json-file <filename> option
+ gen_db = False # set to True when '-gendb <filename>' option provided
+ json_compare = False # compare existing DB to json file input
+ # This is the root spec link that is used in error messages to point users to spec sections
 -- 
-2.17.0
+2.17.1
 
