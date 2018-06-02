@@ -10680,7 +10680,7 @@ x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C
 x11-libs/c++-gtk-utils 2.0.27 2.2.10: A number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.14.8 1.14.12: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
-x11-libs/dnd 1.1-r1 1.1-r3: OffiX' Drag'n'drop library
+x11-libs/dnd 1.1-r3: OffiX' Drag'n'drop library
 x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and lines environments
 x11-libs/fltk 1.3.3-r3: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.7.54: C++ Toolkit for developing Graphical User Interfaces easily and effectively
