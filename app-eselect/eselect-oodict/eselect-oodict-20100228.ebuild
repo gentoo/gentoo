@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
 DESCRIPTION="Manages configuration of dictionaries for OpenOffice.Org"
 HOMEPAGE="https://www.gentoo.org/"
@@ -17,5 +17,5 @@ RDEPEND=">=app-admin/eselect-1.2"
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	newins "${WORKDIR}"/oodict.eselect-${PVR} oodict.eselect || die "newins failed"
+	newins "${WORKDIR}"/oodict.eselect-${PVR} oodict.eselect
 }
