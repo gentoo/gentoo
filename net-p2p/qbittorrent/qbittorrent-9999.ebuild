@@ -42,7 +42,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
-PATCHES=( "${FILESDIR}/${PN}-4.0.4-werror.patch" )
 
 src_configure() {
 	local mycmakeargs=(
