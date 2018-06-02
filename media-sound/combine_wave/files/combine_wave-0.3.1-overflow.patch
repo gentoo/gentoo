@@ -1,5 +1,3 @@
-diff --git a/combine_wave.c b/combine_wave.c
-index 5bfa4aa..391db25 100644
 --- a/combine_wave.c
 +++ b/combine_wave.c
 @@ -601,9 +601,9 @@ for(i = 0; i < header_size; i++)
