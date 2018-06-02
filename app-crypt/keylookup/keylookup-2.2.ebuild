@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
 DESCRIPTION="A tool to fetch PGP keys from keyservers"
 HOMEPAGE="http://www.palfrader.org/keylookup/"
@@ -16,7 +16,7 @@ RDEPEND="dev-lang/perl
 	app-crypt/gnupg"
 
 src_install() {
-	dobin keylookup || die
+	dobin keylookup
 	doman keylookup.1
-	dodoc NEWS TODO
+	einstalldocs
 }

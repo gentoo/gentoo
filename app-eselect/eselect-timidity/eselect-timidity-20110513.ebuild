@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
 DESCRIPTION="Manages configuration of TiMidity++ patchsets"
 HOMEPAGE="https://www.gentoo.org/"
@@ -16,5 +16,5 @@ RDEPEND=">=app-admin/eselect-1.2.3"
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	newins "${WORKDIR}/timidity.eselect-${PVR}" timidity.eselect || die
+	newins "${WORKDIR}/timidity.eselect-${PVR}" timidity.eselect
 }
