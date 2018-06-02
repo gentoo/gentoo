@@ -1,0 +1,26 @@
+[Unit]
+Description=Gitea service
+Documentation=https://gitea.io
+
+AssertPathIsDirectory=/var/lib/gitea
+AssertPathIsReadWrite=/var/lib/gitea
+
+After=network.target
+Requires=network.target
+After=mysqld.service
+Requires=mysqld.service
+
+[Service]
+User=git
+Group=git
+
+Environment="GITEA_CUSTOM=/var/lib/gitea"
+WorkingDirectory=/var/lib/gitea
+ExecStart=/usr/bin/gitea web -c /var/lib/gitea/conf/app.ini
+
+Restart=always
+PrivateTmp=true
+Nice=5
+
+[Install]
+WantedBy=multi-user.target
