@@ -27,7 +27,7 @@ MODULE_RDEPEND="
 
 RDEPEND="${MODULE_RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND=">=dev-python/setuptools-34[${PYTHON_USEDEP}]
 	test? ( ${MODULE_RDEPEND} )"
 
 python_test() {
