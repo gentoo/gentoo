@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit autotools eutils
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="Oggz provides a simple programming interface for reading and writing Ogg files and streams"
 HOMEPAGE="http://www.xiph.org/oggz/"
@@ -19,8 +20,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( app-text/docbook-sgml-utils )"
 
+PATCHES=( "${FILESDIR}/${P}-destdir.patch" )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-destdir.patch
+	default
 
 	if ! use doc; then
 		sed -i -e '/AC_CHECK_PROG/s:doxygen:dIsAbLe&:' configure.ac || die
@@ -31,13 +34,10 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" docdir="/usr/share/doc/${PF}" install || die
-	dodoc AUTHORS ChangeLog README TODO
-
-	find "${D}" -name '*.la' -delete
+	default
+	find "${D}" -name '*.la' -delete || die "Pruning failed"
 }
