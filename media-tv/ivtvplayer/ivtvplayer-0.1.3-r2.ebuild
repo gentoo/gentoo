@@ -10,14 +10,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="gtk"
 
 RDEPEND="media-tv/v4l-utils
 	 || ( media-video/mplayer[v4l]
 		media-video/mplayer[dvb] )
 	 media-sound/alsa-utils
 	 dev-perl/XML-Simple
-	 dev-perl/Gtk2
+	 gtk? ( dev-perl/Gtk2 )
 	 dev-perl/X-Osd
 	 >=dev-perl/Lirc-Client-1.50"
 DEPEND="${RDEPEND}"
