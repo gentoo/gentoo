@@ -6,7 +6,7 @@ inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/genuinetools/img"
 EGIT_COMMIT="v${PV}"
-GIT_COMMIT="e4a43d044778e3df56e0de3c6ca00706fcca8b50"
+GIT_COMMIT="83e14d354393b360a4b21d6bb57510d17ffefa9e"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -22,7 +22,7 @@ RESTRICT="test"
 src_compile() {
 	local TAGS=$(usex seccomp 'seccomp' '')
 	pushd src/${EGO_PN} || die
-	GOPATH="${S}" go build -tags ${TAGS} -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/img . || die
+	GOPATH="${S}" go build -tags "noembed ${TAGS}" -v -ldflags "-X ${EGO_PN}/version.GITCOMMIT=${GIT_COMMIT} -X ${EGO_PN}/version.VERSION=${PV}" -o "${S}"/bin/img . || die
 	popd || die
 }
 
