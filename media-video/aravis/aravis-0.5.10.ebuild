@@ -1,17 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator
-
-KEYWORDS="~amd64"
-
-if [[ ${PV} == "9999" ]]; then
-	KEYWORDS=""
-	EGIT_REPO_URI="git://git.gnome.org/aravis"
-	EGIT_COMMIT="${aravis_LIVE_COMMIT:-master}"
-	inherit git-2 autotools
+if [[ ${PV} = *9999 ]]; then
+	EGIT_REPO_URI="https://github.com/AravisProject/aravis.git"
+	inherit git-r3 autotools
+else
+	SRC_URI="mirror://gnome/sources/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Library for video acquisition using Genicam cameras"
@@ -19,7 +16,6 @@ HOMEPAGE="https://live.gnome.org/Aravis"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-
 IUSE="X gstreamer caps"
 
 GST_DEPEND="media-libs/gstreamer:1.0
@@ -42,14 +38,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-libs/gobject-introspection"
 
-if [[ -z ${EGIT_COMMIT} ]]; then
-	SRC_URI="mirror://gnome/sources/${PN}/$(get_version_component_range 1-2)/${P}.tar.xz"
-else
+if [[ ${PV} != *9999 ]]; then
 	DEPEND+=" dev-util/gtk-doc dev-util/intltool"
 fi
 
 src_prepare() {
-	if [[ -n ${EGIT_COMMIT} ]]; then
+	default
+	if [[ ${PV} = *9999 ]]; then
 		intltoolize || die
 		gtkdocize || die
 		eautoreconf
