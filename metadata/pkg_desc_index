@@ -4337,7 +4337,7 @@ dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing 
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-LibXML 2.12.800-r1: Perl binding for libxml2
+dev-perl/XML-LibXML 2.12.800-r1 2.13.200: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.940.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
@@ -9005,7 +9005,7 @@ net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 14.1: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.142: A newsreader for GNOME
-net-nntp/slrn 1.0.2: A s-lang based newsreader
+net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-nntp/xrn 9.02-r1: A small and fast news reader for X
 net-p2p/amule 2.3.2-r1: aMule, the all-platform eMule p2p client
