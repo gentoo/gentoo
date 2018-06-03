@@ -23,5 +23,5 @@ DEPEND="${DEPEND}
 DOCS=( ChangeLog NEWS README )
 
 python_test() {
-	nosetests || die
+	nosetests -v || die
 }
