@@ -33,8 +33,7 @@ pkg_setup() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc CHANGELOG README TODO
+	default
 
 	exeinto /etc/X11/Sessions
 	cat <<- EOF > "${T}"/${PN}
