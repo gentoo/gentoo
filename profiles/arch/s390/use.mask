@@ -50,6 +50,7 @@ directfb
 lirc
 java
 hardened
+qt5
 
 # Needs java
 pdfannotextractor
