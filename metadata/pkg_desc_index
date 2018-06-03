@@ -8198,7 +8198,7 @@ media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for t
 media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.14: Media player with digital TV support by KDE
 media-video/kamerka 0.12_p20161002-r1: Simple photo taking application with fancy animated interface
-media-video/kino 1.3.4 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
+media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/libav 9.17 11.8: Complete solution to record, convert and stream audio and video
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
