@@ -99,12 +99,14 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DDOC_INSTALL_DIR="share/doc/${P}"
 		-Duse_libclang=$(usex clang)
 		-Dbuild_doc=$(usex doc)
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
+		)
+	use doc && mycmakeargs+=(
+		-DDOC_INSTALL_DIR="share/doc/${P}"
 		)
 
 	cmake-utils_src_configure
