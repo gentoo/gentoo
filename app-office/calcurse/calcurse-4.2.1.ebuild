@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils autotools multilib-minimal
 
 DESCRIPTION="a text-based calendar and scheduling application"
-HOMEPAGE="http://calcurse.org/"
-SRC_URI="http://calcurse.org/files/${P}.tar.gz"
+HOMEPAGE="https://calcurse.org/"
+SRC_URI="https://calcurse.org/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
