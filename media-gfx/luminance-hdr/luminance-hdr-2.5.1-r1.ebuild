@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsql:5
-	dev-qt/qtwebengine:5
+	dev-qt/qtwebengine:5[widgets]
 	>=media-gfx/exiv2-0.14:0=
 	media-libs/lcms:2
 	media-libs/libpng:0=
@@ -33,8 +33,8 @@ RDEPEND="
 	media-libs/ilmbase:=
 	>=media-libs/openexr-1.2.2-r2:=
 	>=media-libs/tiff-3.8.2-r2:0
-	sci-libs/fftw:3.0[threads]
-	fits? ( sci-libs/cfitsio )
+	sci-libs/fftw:3.0=[threads]
+	fits? ( sci-libs/cfitsio:= )
 	sci-libs/gsl
 	virtual/jpeg:0
 "
