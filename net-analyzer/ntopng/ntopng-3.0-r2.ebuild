@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools user toolchain-funcs
 
 DESCRIPTION="Network traffic analyzer with web interface"
-HOMEPAGE="http://www.ntop.org/"
+HOMEPAGE="https://www.ntop.org/"
 SRC_URI="https://github.com/ntop/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
