@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="x86 ppc"
 IUSE=""
 
-DEPEND=""
-
 src_install() {
 	dobin masm mon dasm
 	dodoc README.txt MANUAL.TXT
