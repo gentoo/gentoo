@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools eutils user
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
-HOMEPAGE="http://suricata-ids.org/"
-SRC_URI="http://www.openinfosecfoundation.org/download/${P}.tar.gz"
+HOMEPAGE="https://suricata-ids.org/"
+SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
