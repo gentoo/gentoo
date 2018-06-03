@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-androiddump-wsutil.patch
 	"${FILESDIR}"/${PN}-2.6.0-qtsvg.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-2.6.1-Qt-5.11.patch
 	"${FILESDIR}"/${PN}-99999999-androiddump.patch
 )
 
