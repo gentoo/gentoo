@@ -3436,7 +3436,7 @@ dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
 dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0: Perl interface to the cairo library
-dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
+dev-perl/Calendar-Simple 1.210.0-r1 1.230.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.460.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
@@ -3546,7 +3546,7 @@ dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Safe 1.2.5-r1: Safer access to your database through a DBI database handle
-dev-perl/DBIx-SearchBuilder 1.660.0-r1: Encapsulate SQL queries and rows in simple Perl objects
+dev-perl/DBIx-SearchBuilder 1.660.0-r1 1.670.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/Daemon-Generic 0.840.0 0.850.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1: (de)serializer perl module for Adobe's AMF (Action Message Format)
