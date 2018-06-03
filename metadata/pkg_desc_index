@@ -659,7 +659,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231 0.48_p20161231: Elisp client for the LysKOM conference system
-app-emacs/magit 2.9.0 2.11.0: A Git porcelain inside Emacs
+app-emacs/magit 2.11.0: A Git porcelain inside Emacs
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
 app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
@@ -715,7 +715,7 @@ app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/wanderlust 2.14.0-r6 2.15.9_p20130619: Yet Another Message Interface on Emacsen
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
-app-emacs/with-editor 2.5.8 2.6.0: Use the Emacsclient as the $EDITOR of child processes
+app-emacs/with-editor 2.6.0: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2: An Emacs major mode for editing XSL stylesheets and running XSL processes
 app-emacs/yatex 1.76 1.77: Yet Another TeX mode for Emacs
