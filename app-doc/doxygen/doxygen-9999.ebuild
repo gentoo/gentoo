@@ -104,6 +104,9 @@ src_configure() {
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
 		)
+	use doc && mycmakeargs+=(
+		-DDOC_INSTALL_DIR="share/doc/${P}"
+		)
 
 	cmake-utils_src_configure
 }
