@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 NEED_EMACS=24
 
 inherit elisp
@@ -19,7 +19,12 @@ SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="../Documentation/*.texi"
 DOCS="../README.md ../Documentation/AUTHORS.md ../Documentation/RelNotes/${PV}.txt"
 
-DEPEND=">=app-emacs/dash-2.13.0 >=app-emacs/with-editor-2.5.10"
+DEPEND="
+	>=app-emacs/dash-2.14.1
+	>=app-emacs/ghub-2.0.1
+	>=app-emacs/magit-popup-2.12.3
+	>=app-emacs/with-editor-2.7.3
+"
 RDEPEND="${DEPEND} >=dev-vcs/git-1.9.4"
 DEPEND="${DEPEND} sys-apps/texinfo"
 

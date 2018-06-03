@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 NEED_EMACS=24
 
 inherit elisp
@@ -18,7 +18,7 @@ SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="*.texi"
 DOCS="README.md with-editor.org"
 
-DEPEND=">=app-emacs/dash-2.13.0"
+DEPEND=""
 # Versions of magit before 2.5.0 bundled with-editor
 RDEPEND="!!<app-emacs/magit-2.5.0 ${DEPEND}"
 DEPEND="${DEPEND} sys-apps/texinfo"
