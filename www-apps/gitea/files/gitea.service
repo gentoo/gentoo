@@ -14,7 +14,7 @@ Requires=mysqld.service
 User=git
 Group=git
 
-Environment="GITEA_CUSTOM=/var/lib/gitea"
+Environment="GITEA_WORK_DIR=/var/lib/gitea"
 WorkingDirectory=/var/lib/gitea
 ExecStart=/usr/bin/gitea web -c /var/lib/gitea/conf/app.ini
 
