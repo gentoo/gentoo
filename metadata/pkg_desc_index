@@ -3556,7 +3556,7 @@ dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested 
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-FormValidator 4.880.0: Validates user input (usually from an HTML form) based on input profile
-dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
+dev-perl/Data-GUID 0.48.0 0.49.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
@@ -4376,7 +4376,7 @@ dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
-dev-perl/autobox 2.850.0: Call methods on native types
+dev-perl/autobox 2.850.0 2.860.0: Call methods on native types
 dev-perl/autovivification 0.170.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.5.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
@@ -9097,7 +9097,7 @@ net-vpn/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling so
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.6.0: A Fortinet compatible VPN client
-net-vpn/openvpn 2.4.4: Robust and highly flexible tunneling application compatible with many OSes
+net-vpn/openvpn 2.4.4 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tor 0.3.1.10: Anonymizing overlay network for TCP
