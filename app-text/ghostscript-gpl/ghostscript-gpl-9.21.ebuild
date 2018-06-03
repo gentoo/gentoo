@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools multilib versionator flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ghostscript is an interpreter for the PostScript language and for PDF"
-HOMEPAGE="http://ghostscript.com/"
+HOMEPAGE="https://ghostscript.com/"
 
 MY_P=${P/-gpl}
 PVM=$(get_version_component_range 1-2)
