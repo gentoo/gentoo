@@ -2600,7 +2600,7 @@ dev-java/jdbc-mysql 5.1.26: MySQL JDBC driver
 dev-java/jdbc-postgresql 9.2_p1003 9.4_p1206: JDBC Driver for PostgreSQL
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: Traverses Java class file directories and generates design quality metrics
-dev-java/jdom 1.0-r2 1.0-r4 1.1.3 2.0.6-r4: Java API to manipulate XML data
+dev-java/jdom 1.0-r4 1.1.3 2.0.6-r4: Java API to manipulate XML data
 dev-java/jdom-jaxen 1.0-r1: Jaxen binding for jdom
 dev-java/jebl 2013.02.18: Java Evolutionary Biology Library
 dev-java/jempbox 1.7.1 1.8.11: An open source Java library for working with XMP metadata
@@ -3019,7 +3019,7 @@ dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libassuan 2.4.3-r1 2.5.1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
-dev-libs/libatomic_ops 1.2-r1 7.2d 7.4.2 7.6.0 7.6.4: Implementation for atomic memory update operations
+dev-libs/libatomic_ops 7.2d 7.4.2 7.6.0 7.6.4: Implementation for atomic memory update operations
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
@@ -6170,7 +6170,7 @@ dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 1.14.0: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 3.8: unit testing and mocking framework for C/C++
 dev-util/cproto 4.7e: Generate C function prototypes from C source code
-dev-util/cpuinfo-collection 20060720 20070104: huge collection of /proc/cpuinfo files
+dev-util/cpuinfo-collection 20070104: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/cscope 15.8a-r1: Interactively examine a C program
 dev-util/ctags 20161028: Exuberant Ctags creates tags files for code browsing in editors
@@ -6228,7 +6228,7 @@ dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/indent 2.2.11-r1: Indent program source files
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
-dev-util/jconfig 2.8-r3 2.8.5: Utility that provides a simple API for the management of properties
+dev-util/jconfig 2.8.5: Utility that provides a simple API for the management of properties
 dev-util/kbuild 0.1.9998_pre20131130-r1: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdevelop 5.2.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
@@ -6287,7 +6287,7 @@ dev-util/re2c 0.13.5-r1 0.16: tool for generating C-based recognizers from regul
 dev-util/rebar 2.6.1 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
-dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
+dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/scala-ide 4.1.0: The Scala IDE
 dev-util/schroot 1.6.10-r3: Utility to execute commands in a chroot environment
@@ -6338,7 +6338,7 @@ dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r11 1.12.12-r12: Concurrent Versions System - source code revision control tools
 dev-vcs/cvs2cl 2.71: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1: Convert a CVS repository to a Subversion repository
-dev-vcs/cvsd 1.0.7 1.0.17: CVS pserver daemon
+dev-vcs/cvsd 1.0.17: CVS pserver daemon
 dev-vcs/cvsgraph 1.6.1 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
@@ -7007,7 +7007,7 @@ mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a
 mail-mta/courier 0.75.0: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.90.1-r1: A highly configurable, drop-in replacement for sendmail
-mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
+mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.6: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0-r1: Simple relay-only local mail transport agent
@@ -7485,8 +7485,8 @@ media-libs/libcdr 0.1.4: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.16: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
-media-libs/libclthreads 2.2.1 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
-media-libs/libclxclient 1.0.1 3.3.2 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
+media-libs/libclthreads 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
+media-libs/libclxclient 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libcue 1.4.0: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
@@ -8717,7 +8717,7 @@ net-mail/cyrus-imapd 3.0.4 3.0.5: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.29.1 2.2.32 2.2.34: An IMAP and POP3 server written with security primarily in mind
-net-mail/email 2.5.0 3.1.3: Advanced CLI tool for sending email
+net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/ezmlm-idx 6.0.0: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.7: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
@@ -8729,7 +8729,7 @@ net-mail/isync 1.2.1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.41: Little Brother database
 net-mail/libpst 0.6.64-r1: Tools and library for reading Outlook files (.pst format)
-net-mail/mailbase 1 1.1: MTA layout package
+net-mail/mailbase 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.26: A python-based mailing list server with an extensive web interface
@@ -8748,13 +8748,13 @@ net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
-net-mail/poppassd_ceti 1.8.5-r1 1.8.5-r2: Password change daemon with PAM support
+net-mail/poppassd_ceti 1.8.5-r2: Password change daemon with PAM support
 net-mail/postfix-logwatch 1.40.03-r2: A log analyzer for postfix
 net-mail/qmail-autoresponder 0.97-r1: Rate-limited autoresponder for qmail
 net-mail/qmail-notify 0.93-r1: Delayed delivery notification for qmail
 net-mail/qmail-qfilter 2.1: qmail-queue multi-filter front end
-net-mail/qmailadmin 1.2.10 1.2.15 1.2.15-r1: A web interface for managing a qmail system with virtual domains
-net-mail/qmhandle 1.2.0-r1 1.3.2: Qmail message queue tool
+net-mail/qmailadmin 1.2.15-r1: A web interface for managing a qmail system with virtual domains
+net-mail/qmhandle 1.3.2: Qmail message queue tool
 net-mail/qpopper 4.1.0: A POP3 Server
 net-mail/qprint 1.1: MIME quoted-printable data encoding and decoding utility
 net-mail/queue-fix 1.4-r2: Qmail Queue Repair Application with support for big-todo
@@ -8852,7 +8852,7 @@ net-misc/ipv6calc 0.97.4 0.99.2: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
-net-misc/jwhois 3.2.3-r1 4.0 4.0-r1: Advanced Internet Whois client capable of recursive queries
+net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knemo 0.8.0_pre20161211: Plasma Network Monitor
 net-misc/knock 0.7: A simple port-knocking daemon
@@ -9059,7 +9059,7 @@ net-print/mtink 1.0.16-r2: mtink is a status monitor and inkjet cartridge change
 net-print/npadmin 0.8.7-r1: Network printer command-line adminstration tool
 net-print/poster 20060221: small utility for making a poster from an EPS file or a one-page PS document
 net-print/splix 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
-net-proxy/3proxy 0.5.3k 0.8.9: A really tiny cross-platform proxy servers set
+net-proxy/3proxy 0.8.9: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
 net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
@@ -9308,7 +9308,7 @@ sci-libs/cln 1.3.3: Class library (C++) for numbers
 sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.6 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
-sci-libs/cxsparse 2.2.1 3.1.2-r1: Extended sparse matrix package
+sci-libs/cxsparse 3.1.2-r1: Extended sparse matrix package
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/exodusii 6.02: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
@@ -9375,7 +9375,7 @@ sci-libs/vtkdata 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r1: eXtensible Data Model and Format
 sci-libs/xkaapi 2.2: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-mathematics/4ti2 1.6.2 1.6.6: Software package for algebraic, geometric and combinatorial problems
-sci-mathematics/calc 2.12.2.2 2.12.5.4: Arbitrary precision C-like arithmetic system
+sci-mathematics/calc 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.9: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.6: Proof assistant written in O'Caml
 sci-mathematics/euler 1.61.0: Mathematical programming environment
@@ -9786,7 +9786,7 @@ sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20150503 1.3.4_p20161120: an (often faster than gawk) awk-interpreter
 sys-apps/mcstrans 2.7: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7: A stand alone memory test for x86 computers
-sys-apps/memtest86+ 2.01 4.00 4.20-r1 5.01-r2: Memory tester based on memtest86
+sys-apps/memtest86+ 4.20-r1 5.01-r2: Memory tester based on memtest86
 sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
 sys-apps/microcode-ctl 1.23 1.28-r2: Intel processor microcode update utility
 sys-apps/miller 4.2.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
@@ -9818,9 +9818,9 @@ sys-apps/proot 3.2.2-r1: User-space implementation of chroot, mount --bind, and 
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qingy 1.0.0-r4: A DirectFB getty replacement
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
-sys-apps/rename 1.3 1.3-r2: Easily rename files
+sys-apps/rename 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
-sys-apps/rescan-scsi-bus 1.29 1.57-r1: Script to rescan the SCSI bus without rebooting
+sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restorecond 2.7: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/rng-tools 5-r2: Daemon to use hardware random number generators
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
@@ -9846,8 +9846,8 @@ sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/uam 0.3.2: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99: proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.94-r1: Command-line tools for building SSL client-server applications
-sys-apps/ucspi-tcp 0.88-r17 0.88-r18: Collection of tools for managing UNIX services
-sys-apps/ucspi-unix 0.36-r2 0.36-r3: A ucspi implementation for unix sockets
+sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
+sys-apps/ucspi-unix 0.36-r3: A ucspi implementation for unix sockets
 sys-apps/udevil 0.4.4-r1 0.4.4-r3: mount and unmount removable devices without a password
 sys-apps/unscd 0.52-r2: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
@@ -9877,10 +9877,10 @@ sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.8 0.9.9: NSS module for name lookups using 
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
 sys-auth/otpcalc 0.97-r8: A One Time Password and S/Key calculator for X
 sys-auth/pam_abl 0.6.0: PAM module for blacklisting hosts and users repeatedly failed authentication
-sys-auth/pam_dotfile 0.7-r1 0.7-r2: pam module to allow password-storing in $HOME/dotfiles
+sys-auth/pam_dotfile 0.7-r2: pam module to allow password-storing in $HOME/dotfiles
 sys-auth/pam_fprint 0.2-r1: a simple PAM module which uses libfprint's functionality for authentication
 sys-auth/pam_krb5 4.6: Kerberos V PAM Authentication Module
-sys-auth/pam_ldap 183 186-r1: PAM LDAP Module
+sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
 sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a user session
 sys-auth/pam_mysql 0.7_rc1-r5 0.8.1: pam_mysql is a module for pam to authenticate users with mysql
@@ -9932,13 +9932,13 @@ sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02: MegaRAID StorCLI (successor o
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/tgt 1.0.72 1.0.73: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.7.0: A suite of tools for thin provisioning on Linux
-sys-block/tw_cli 9.2.1.1 9.4.1.2 9.5.2 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
+sys-block/tw_cli 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
 sys-boot/gnu-efi 3.0.3: Library for build EFI Applications
 sys-boot/grub 0.97-r16 0.97-r18 2.02 2.02-r1: GNU GRUB boot loader
-sys-boot/grub-static 0.96-r1 0.97 0.97-r6 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
+sys-boot/grub-static 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
 sys-boot/lilo 22.8-r2 24.0-r1: Standard Linux boot loader
 sys-boot/mbr 1.1.11: A replacement master boot record for IBM-PC compatible computers
 sys-boot/os-prober 1.76-r1: Utility to detect other OSs on a set of drives
@@ -9951,7 +9951,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 10.2.3-r2: Ceph distributed filesystem
 sys-cluster/cinder 11.1.0: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
-sys-cluster/cman-lib 2.03.09 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
+sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.4.7 2.3.5: OSI Certified implementation of a complete cluster engine
 sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09: General-purpose Distributed Lock Manager
@@ -9962,7 +9962,7 @@ sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clust
 sys-cluster/glusterfs 4.0.0-r1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
 sys-cluster/heat 9.0.4 10.0.1: A CloudFormation-compatible openstack-native cloud orchestration engine.
-sys-cluster/ipvsadm 1.24 1.26-r2 1.27-r1: utility to administer the IP virtual server services
+sys-cluster/ipvsadm 1.26-r2 1.27-r1: utility to administer the IP virtual server services
 sys-cluster/keepalived 1.2.24 1.3.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/libdlm 3.2.0: General-purpose Distributed Lock Manager Library
 sys-cluster/libqb 0.17.1 0.17.2: Library providing high performance logging, tracing, ipc, and poll
@@ -9978,7 +9978,7 @@ sys-cluster/pacemaker 1.1.16: Pacemaker CRM
 sys-cluster/ploop 1.13.2: openvz tool and a library to control ploop block devices
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/resource-agents 3.9.6: Resources pack for Heartbeat / Pacemaker
-sys-cluster/rgmanager 2.03.09 2.03.09-r1: Clustered resource group manager
+sys-cluster/rgmanager 2.03.09-r1: Clustered resource group manager
 sys-cluster/swift 2.16.0 2.17.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13-r1 4.1.7-r1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
@@ -9993,7 +9993,7 @@ sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.29.1-r1 2.30-r2: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
-sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 2.7.1 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 4.0.1 5.0.1: C language family frontend for LLVM
 sys-devel/clang-runtime 3.9.1 4.0.1 5.0.1: Meta-ebuild for clang runtime libraries
@@ -10015,7 +10015,7 @@ sys-devel/make 4.1-r1 4.2.1: Standard tool to compile source trees
 sys-devel/patch 2.7.5 2.7.6-r1: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/qconf 2.3: ./configure like generator for qmake-based projects
-sys-devel/remake 3.81.0.2 3.82.0.9: patched version of GNU make with improved error reporting, tracing and debugging
+sys-devel/remake 3.82.0.9: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/ucpp 1.3.4: A quick and light preprocessor, but anyway fully compliant to C99
 sys-fabric/dapl 2.0.40: OpenIB - Direct Access Provider Library
 sys-fabric/ibacm 1.0.8: IB CM pre-connection service application
@@ -10159,7 +10159,7 @@ sys-libs/kpmcore 3.3.0: Library for managing partitions
 sys-libs/ldb 1.1.26 1.1.29-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6: library required by reiser4progs
 sys-libs/libapparmor 2.12.0: Library to support AppArmor userspace utilities
-sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
+sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.14-r1: A library for manipulating block devices
 sys-libs/libcap 2.24-r2: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
@@ -10183,7 +10183,7 @@ sys-libs/libsepol 2.7: SELinux binary policy representation library
 sys-libs/libsmbios 2.3.2: Provide access to (SM)BIOS information
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r1: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
-sys-libs/libtermcap-compat 2.0.8-r2 2.0.8-r3: Compatibility package for old termcap-based programs
+sys-libs/libtermcap-compat 2.0.8-r3: Compatibility package for old termcap-based programs
 sys-libs/libunwind 1.1-r1 1.2.1: Portable and efficient API to determine the call-chain of a program
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/llvm-libunwind 4.0.1 5.0.1: C++ runtime stack unwinder from LLVM
@@ -10500,7 +10500,7 @@ www-apps/phpsysinfo 3.2.2: A nice package that will display your system stats vi
 www-apps/postfixadmin 3.1: Web Based Management tool for Postfix style virtual domains and users
 www-apps/roundup 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
-www-apps/sitebar 3.3.9-r1 3.3.9-r2: The Bookmark Server for Personal and Team Use
+www-apps/sitebar 3.3.9-r2: The Bookmark Server for Personal and Team Use
 www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software development projects
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
@@ -10530,7 +10530,7 @@ www-client/w3m 0.5.3_p20180125: Text based WWW browser, supports tables and fram
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
 www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
-www-misc/htdig 3.2.0_beta6-r3 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
+www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.9.0 3.10.0-r1: A lightweight system monitoring tool
 www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to RAM.
