@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils git-r3 qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
-HOMEPAGE="http://www.librecad.org/"
+HOMEPAGE="https://www.librecad.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
 

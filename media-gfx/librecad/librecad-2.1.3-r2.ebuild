@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
-HOMEPAGE="http://www.librecad.org/"
+HOMEPAGE="https://www.librecad.org/"
 SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
