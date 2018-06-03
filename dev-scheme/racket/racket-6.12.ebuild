@@ -11,7 +11,7 @@ SRC_URI="minimal? ( http://download.racket-lang.org/installers/${PV}/${PN}-minim
 LICENSE="GPL-3+ LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="doc +futures +jit minimal +places +threads +X"
+IUSE="doc +futures +jit minimal +places +readline +threads +X"
 REQUIRED_USE="futures? ( jit )"
 
 RDEPEND="dev-db/sqlite:3
@@ -20,6 +20,7 @@ RDEPEND="dev-db/sqlite:3
 	x11-libs/pango[X?]
 	virtual/libffi
 	virtual/jpeg:0
+	readline? ( dev-libs/libedit )
 	X? ( x11-libs/gtk+[X?] )"
 RDEPEND="${RDEPEND} !dev-tex/slatex"
 
