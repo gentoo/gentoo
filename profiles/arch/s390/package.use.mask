@@ -4,6 +4,7 @@
 # Mikle Kolyada <zlogene@gentoo.org> (03 Jun 2018)
 # Not tested
 app-crypt/pinentry fltk
+dev-python/cssselect doc
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
