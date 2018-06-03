@@ -1,0 +1,62 @@
+From 787d8d240bbeaa812bcf37deeedb3c467be468a3 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sat, 19 May 2018 17:31:42 +0100
+Subject: [PATCH] __warn_references: tweak assembly for "gnu.warning" section
+
+On some targets ';' (like hppa) is treated as a comment
+in assembly files. This occasionally causes the following
+assembly failures:
+
+```
+Error: can't resolve `.gnu.warning.EVP_DecryptFinal'
+{.gnu.warning.EVP_DecryptFinal section} - `.Ltext0' {.text section}
+```
+
+Note how branch (or other reference) attempts to cross the
+boundary across two section types: '.text' and '.gnu.warning'.
+
+Tobias Ulmer notes that openbsd already uses newlines
+for similar macro:
+
+https://github.com/openbsd/src/blob/master/sys/arch/hppa/include/cdefs.h
+
+This change switches from ';' to newline as well.
+Tested on hppa2.0 and x86_64.
+
+Reported-by: Jeroen Roovers
+Bug: https://bugs.gentoo.org/656104
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ configure.ac               | 2 +-
+ include/compat/sys/types.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b74b8a1..16ed825 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -91,7 +91,7 @@ AM_CONDITIONAL([HOST_CPU_IS_INTEL], [test "x$HOSTARCH" = "xintel"])
+ AC_MSG_CHECKING([if .gnu.warning accepts long strings])
+ AC_LINK_IFELSE([AC_LANG_SOURCE([[
+ extern void SSLv3_method();
+-__asm__(".section .gnu.warning.SSLv3_method; .ascii \"SSLv3_method is insecure\" ; .text");
++__asm__(".section .gnu.warning.SSLv3_method\n\t.ascii \"SSLv3_method is insecure\"\n\t.text");
+ int main() {return 0;}
+ ]])], [
+     AC_DEFINE(HAS_GNU_WARNING_LONG, 1, [Define if .gnu.warning accepts long strings.])
+diff --git a/include/compat/sys/types.h b/include/compat/sys/types.h
+index 2107119..dec09e3 100644
+--- a/include/compat/sys/types.h
++++ b/include/compat/sys/types.h
+@@ -62,7 +62,7 @@ typedef SSIZE_T ssize_t;
+ #if defined(__GNUC__)  && defined (HAS_GNU_WARNING_LONG)
+ #define __warn_references(sym,msg)          \
+   __asm__(".section .gnu.warning." __STRING(sym)  \
+-         " ; .ascii \"" msg "\" ; .text");
++         "\n\t.ascii \"" msg "\"\n\t.text");
+ #else
+ #define __warn_references(sym,msg)
+ #endif
+-- 
+2.17.0
+
