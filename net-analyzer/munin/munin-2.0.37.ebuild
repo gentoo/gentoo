@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PATCHSET=1
 
-inherit eutils user java-pkg-opt-2 systemd
+inherit user java-pkg-opt-2 systemd
 
 MY_P=${P/_/-}
 
@@ -17,9 +17,9 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
-IUSE="asterisk irc java memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache"
-REQUIRED_USE="cgi? ( !minimal ) apache? ( cgi )"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
+IUSE="asterisk irc java ldap memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
+REQUIRED_USE="cgi? ( !minimal ) apache2? ( cgi )"
 
 # Upstream's listing of required modules is NOT correct!
 # Some of the postgres plugins use DBD::Pg, while others call psql directly.
@@ -43,7 +43,7 @@ DEPEND_COM="
 	virtual/perl-Storable
 	virtual/perl-Text-Balanced
 	virtual/perl-Time-HiRes
-	apache? ( www-servers/apache[apache2_modules_cgi,apache2_modules_cgid,apache2_modules_rewrite] )
+	apache2? ( www-servers/apache[apache2_modules_cgi,apache2_modules_cgid,apache2_modules_rewrite] )
 	asterisk? ( dev-perl/Net-Telnet )
 	cgi? (
 		dev-perl/FCGI
@@ -57,6 +57,7 @@ DEPEND_COM="
 	doc? ( dev-python/sphinx )
 	http? ( dev-perl/libwww-perl )
 	irc? ( dev-perl/Net-IRC )
+	ldap? ( dev-perl/perl-ldap )
 	kernel_linux? ( sys-process/procps )
 	memcached? ( dev-perl/Cache-Memcached )
 	mysql? (
@@ -115,7 +116,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${WORKDIR}"/patches/*.patch
+	rm -f "${WORKDIR}"/patches/0001-ipmi_-replace-the-ipmitool-based-plugin-with-one-bas.patch
+	rm -f "${WORKDIR}"/patches/0008-netstat-plugin-active-connections.patch
+	eapply "${WORKDIR}"/patches/*.patch
 
 	eapply_user
 
@@ -126,7 +129,7 @@ src_configure() {
 	local cgidir='$(DESTDIR)/usr/libexec/munin/cgi'
 	use cgi || cgidir="${T}/useless/cgi-bin"
 
-	local cgiuser=$(usex apache apache munin)
+	local cgiuser=$(usex apache2 apache munin)
 
 	cat >> "${S}"/Makefile.config <<- EOF
 	PREFIX=\$(DESTDIR)/usr
@@ -223,7 +226,7 @@ src_install() {
 	fi
 
 	dodir /etc/logrotate.d/
-	sed -e "s:@CGIUSER@:$(usex apache apache munin):g" \
+	sed -e "s:@CGIUSER@:$(usex apache2 apache munin):g" \
 		"${FILESDIR}"/logrotate.d-munin.3 > "${D}"/etc/logrotate.d/munin
 
 	dosym ipmi_ /usr/libexec/munin/plugins/ipmi_sensor_
@@ -258,11 +261,11 @@ src_install() {
 
 			keepdir /var/cache/munin-cgi
 			touch "${D}"/var/log/munin/munin-cgi-{graph,html}.log
-			fowners $(usex apache apache munin) \
+			fowners $(usex apache2 apache munin) \
 				/var/cache/munin-cgi \
 				/var/log/munin/munin-cgi-{graph,html}.log
 
-			if use apache; then
+			if use apache2; then
 				insinto /etc/apache2/vhosts.d
 				newins "${FILESDIR}"/munin.apache.include munin.include
 				newins "${FILESDIR}"/munin.apache.include-2.4 munin-2.4.include
@@ -386,11 +389,11 @@ pkg_postinst() {
 	elog "in the Gentoo Wiki: https://wiki.gentoo.org/wiki/Munin"
 
 	if use cgi; then
-		chown $(usex apache apache munin) \
+		chown $(usex apache2 apache munin) \
 			"${ROOT}"/var/cache/munin-cgi \
 			"${ROOT}"/var/log/munin/munin-cgi-{graph,html}.log
 
-		if use apache; then
+		if use apache2; then
 			elog "To use Munin with CGI you should include /etc/apache2/vhosts.d/munin.include"
 			elog "or /etc/apache2/vhosts.d/munin-2.4.include (for Apache 2.4) from the virtual"
 			elog "host you want it to be served."
