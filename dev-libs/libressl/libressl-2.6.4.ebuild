@@ -22,6 +22,8 @@ RDEPEND="!dev-libs/openssl:0"
 DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
 
+PATCHES=( "${FILESDIR}/libressl-2.6.4-hppa-asm.patch" )
+
 src_prepare() {
 	touch crypto/Makefile.in
 
