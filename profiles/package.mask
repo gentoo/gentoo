@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Raymond Jennings <shentino@gmail.com) (03 Jun 2018)
+# Unresolved bugs, dead upstream
+# Masked for removal in 30 days
+# Bug #629392
+media-video/gnome-mplayer
+
 # Mike Pagano <mpagano@gentoo.org> (30 May 2018)
 # Masking due to bad commit in the networking stack.
 =sys-kernel/gentoo-sources-4.14.46
