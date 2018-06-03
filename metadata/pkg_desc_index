@@ -3547,7 +3547,7 @@ dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Safe 1.2.5-r1: Safer access to your database through a DBI database handle
 dev-perl/DBIx-SearchBuilder 1.660.0-r1 1.670.0: Encapsulate SQL queries and rows in simple Perl objects
-dev-perl/Daemon-Generic 0.840.0 0.850.0: Framework to provide start/stop/reload for a daemon
+dev-perl/Daemon-Generic 0.850.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1: (de)serializer perl module for Adobe's AMF (Action Message Format)
 dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
@@ -3555,7 +3555,7 @@ dev-perl/Data-Compare 1.250.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
-dev-perl/Data-FormValidator 4.860.0-r1 4.880.0: Validates user input (usually from an HTML form) based on input profile
+dev-perl/Data-FormValidator 4.880.0: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
