@@ -20,5 +20,5 @@ S=$WORKDIR
 src_install() {
 	cp -r "$S/"* "$D"
 	rm "${D}/etc/init.d/*"
-	newinitd "${FILESDIR}/amc.init.3" amc
+	newinitd "${FILESDIR}/amc.init.4" amc
 }
