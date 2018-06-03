@@ -11,7 +11,7 @@ SRC_URI="http://www.nickgravgaard.com/${PN}/${P}.tar"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ppc x86"
 IUSE="truetype"
 
 RDEPEND="truetype? ( x11-libs/libXft )
