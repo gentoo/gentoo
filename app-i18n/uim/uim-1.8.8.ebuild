@@ -92,6 +92,8 @@ SITEFILE="50${PN}-gentoo.el"
 src_prepare() {
 	default
 	sed -i "s:\$libedit_path/lib:/$(get_libdir):g" configure.ac
+	# fix build with >=dev-scheme/chicken-4, bug #656852
+	touch scm/json-parser-expanded.scm
 
 	eautoreconf
 }
