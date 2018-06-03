@@ -11,11 +11,8 @@ pidfile=${run_dir}/${SVCNAME}.pid
 user=${user:-root}
 group=${group:-root}
 start_stop_daemon_args="--user ${user} --group ${group}"
+command_args="--daemon"
 
 depend() {
 	use net
-}
-
-start_post() {
-	ewaitfile 60 "${pidfile}"
 }
