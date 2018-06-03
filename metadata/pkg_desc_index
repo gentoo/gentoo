@@ -3473,7 +3473,7 @@ dev-perl/Class-Mix 0.6.0: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
 dev-perl/Class-Trigger 0.140.0-r1: Mixin to add / call inheritable triggers
-dev-perl/Class-Virtual 0.60.0-r1 0.80.0: Base class for virtual base classes
+dev-perl/Class-Virtual 0.80.0: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r1: base class to treat unhandled method calls as errors
 dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
@@ -3482,7 +3482,7 @@ dev-perl/Clone 0.390.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.260.0: Interface to Bzip2 compression library
-dev-perl/Config-Any 0.290.0 0.320.0: Load configuration from different file formats, transparently
+dev-perl/Config-Any 0.320.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-AutoConf 0.315.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.450.0: Read/Write Vixie compatible crontab(5) files
@@ -3491,12 +3491,12 @@ dev-perl/Config-Grammar 1.120.0: A grammar-based, user-friendly config parser
 dev-perl/Config-IniFiles 2.940.0: A module for reading .ini-style configuration files
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
 dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as possible
-dev-perl/ConfigReader 0.500.0-r1 0.500.0-r2: Read directives from a configuration file
+dev-perl/ConfigReader 0.500.0-r2: Read directives from a configuration file
 dev-perl/Const-Fast 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
 dev-perl/Convert-ASCII-Armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
-dev-perl/Convert-BinHex 1.124.0 1.125.0: Extract data from Macintosh BinHex files
+dev-perl/Convert-BinHex 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.780.0-r1: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.110.0: Color space conversions and named lookups
 dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
@@ -3504,12 +3504,12 @@ dev-perl/Convert-TNEF 0.180.0-r2: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.80.0: Cookie string generator / parser
 dev-perl/Cookie-Baker-XS 0.80.0: Accelerate Cookie::Baker's crush_cookie
-dev-perl/Cpanel-JSON-XS 3.23.300 3.23.900: cPanel fork of JSON::XS, fast and correct serializing
+dev-perl/Cpanel-JSON-XS 3.23.900: cPanel fork of JSON::XS, fast and correct serializing
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
-dev-perl/Crypt-DES 2.70.0 2.70.0-r1: Perl DES encryption module
+dev-perl/Crypt-DES 2.70.0-r1: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
 dev-perl/Crypt-DH 0.70.0-r2: Diffie-Hellman key exchange system
 dev-perl/Crypt-DH-GMP 0.0.120: Crypt::DH Using GMP Directly
@@ -3520,7 +3520,7 @@ dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.190.0: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3: Crypt::OpenSSL::RSA module for perl
-dev-perl/Crypt-OpenSSL-Random 0.40.0-r2 0.110.0: OpenSSL/LibreSSL pseudo-random number generator access
+dev-perl/Crypt-OpenSSL-Random 0.110.0: OpenSSL/LibreSSL pseudo-random number generator access
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-Primes 0.500.0-r1: Provable Prime Number Generator suitable for Cryptographic Applications
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
