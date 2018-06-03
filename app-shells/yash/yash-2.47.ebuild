@@ -7,7 +7,7 @@ PLOCALES="en ja"
 inherit flag-o-matic l10n toolchain-funcs
 
 DESCRIPTION="Yash is a POSIX-compliant command line shell"
-HOMEPAGE="https://yash.osnd.jp/"
+HOMEPAGE="https://yash.osdn.jp/"
 SRC_URI="mirror://sourceforge.jp/${PN}/69353/${P}.tar.gz"
 
 LICENSE="GPL-2+"
