@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,8 @@ EAPI=6
 MY_PN="php-file-iterator"
 
 DESCRIPTION="FilterIterator implementation that filters files based on criteria"
-HOMEPAGE="http://phpunit.de"
+HOMEPAGE="https://github.com/sebastianbergmann/php-file-iterator
+	https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
