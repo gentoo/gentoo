@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -15,4 +15,4 @@ HOMEPAGE="https://github.com/cucumber/cucumber-expressions-ruby#readme"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~x86"
-SLOT="5.0"
+SLOT="6.0"
