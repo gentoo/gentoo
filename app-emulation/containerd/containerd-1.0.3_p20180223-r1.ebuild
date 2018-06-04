@@ -13,7 +13,7 @@ else
 	EGIT_COMMIT="v${MY_PV}"
 	CONTAINERD_COMMIT="4ac4fd0b6a268fe6f38b2b2e32e40daa7e424fac"
 	SRC_URI="https://${EGO_PN}/archive/${CONTAINERD_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 
