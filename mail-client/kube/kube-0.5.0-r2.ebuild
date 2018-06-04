@@ -4,7 +4,6 @@
 EAPI=6
 
 KDE_TEST="forceoptional-recursive"
-QT_MINIMAL="5.9"
 inherit kde5
 
 DESCRIPTION="A mail client by KDE"
@@ -23,7 +22,7 @@ RDEPEND="
 	$(add_qt_dep qtquickcontrols)
 	$(add_qt_dep qtquickcontrols2)
 	$(add_qt_dep qttest)
-	$(add_qt_dep qtwebengine)
+	$(add_qt_dep qtwebengine 'widgets')
 	$(add_qt_dep qtwidgets)
 	>=app-crypt/gpgme-1.7.1:=[cxx,qt5]
 	dev-libs/kasync
