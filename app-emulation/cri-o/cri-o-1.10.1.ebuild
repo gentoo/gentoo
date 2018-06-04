@@ -22,6 +22,7 @@ COMMON_DEPEND="
 	app-emulation/runc
 	dev-libs/glib:=
 	dev-libs/libassuan:=
+	dev-libs/libgpg-error:=
 	net-firewall/conntrack-tools
 	net-firewall/iptables
 	net-misc/cni-plugins
