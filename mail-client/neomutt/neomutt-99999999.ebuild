@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="A small but very powerful text-based mail client"
-HOMEPAGE="https://www.neomutt.org/"
+HOMEPAGE="https://neomutt.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -118,7 +118,7 @@ src_install() {
 		doman doc/neomutt.1 doc/neomuttrc.5
 	fi
 
-	dodoc COPYRIGHT LICENSE* ChangeLog* README*
+	dodoc LICENSE* ChangeLog* README*
 }
 
 pkg_postinst() {
