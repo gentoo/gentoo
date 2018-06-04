@@ -18,7 +18,6 @@ IUSE="gles2 hires cpu_flags_x86_sse"
 RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2=]
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=
-	media-libs/libtxc_dxtn
 	sys-libs/zlib:0=
 	virtual/opengl:0=
 	hires? ( dev-libs/boost:0= )"
