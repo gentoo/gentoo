@@ -1298,7 +1298,7 @@ app-text/clara 20031214: An OCR (Optical Character Recognition) program
 app-text/cmark 0.28.0: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
-app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
+app-text/convertlit 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 2.04: convert filenames to utf8 or any other charset
 app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/cwtext 0.96: Text to Morse Code converter
@@ -2163,7 +2163,7 @@ dev-haskell/hostname 1.0: A a cross-platform means of determining the hostname
 dev-haskell/hourglass 0.2.9: simple performant time related library
 dev-haskell/hs-bibutils 5.5: Haskell bindings to bibutils, the bibliography conversion utilities
 dev-haskell/hsb2hs 0.2 0.3.1: Preprocesses a file, adding blobs from files as string literals
-dev-haskell/hscolour 1.17 1.19 1.20.3-r1 1.23-r1: Colourise Haskell code
+dev-haskell/hscolour 1.19 1.20.3-r1 1.23-r1: Colourise Haskell code
 dev-haskell/hslogger 1.2.9: Versatile logging framework
 dev-haskell/hslua 0.3.6.1: A Lua language interpreter embedding in Haskell
 dev-haskell/hsopenssl 0.11.1.1-r1 0.11.4: Partial OpenSSL binding for Haskell
@@ -2836,7 +2836,7 @@ dev-java/xerces 2.11.0: The next generation of high performance, fully compliant
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
 dev-java/xjavac 20110814: The implementation of the javac compiler for IBM JDK 1.4 (needed for xerces-2)
 dev-java/xml-commons 1.4.01: Apache XML Commons
-dev-java/xml-commons-external 1.3.04 1.4.01 1.4.01-r1: Externally-defined set of standard interfaces, namely DOM, SAX, and JAXP
+dev-java/xml-commons-external 1.3.04 1.4.01-r1: Externally-defined set of standard interfaces, namely DOM, SAX, and JAXP
 dev-java/xml-commons-resolver 1.2-r1: An XML Entity and URI Resolver
 dev-java/xml-security 1.5.7-r1: An implementation of the primary security standards for XML
 dev-java/xml-writer 0.2-r1: A simple XML Writer
@@ -2926,7 +2926,7 @@ dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
 dev-libs/beignet 1.3.2: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
-dev-libs/boehm-gc 6.8 7.1-r1 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
+dev-libs/boehm-gc 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
 dev-libs/botan 1.10.17 2.6.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
@@ -3043,7 +3043,7 @@ dev-libs/libdbusmenu 12.10.2-r2: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
-dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configuration files
+dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.6.5 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libebml 1.3.4 1.3.5: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
