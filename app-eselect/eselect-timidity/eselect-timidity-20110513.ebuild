@@ -14,6 +14,8 @@ IUSE=""
 
 RDEPEND=">=app-admin/eselect-1.2.3"
 
+S=${WORKDIR}
+
 src_install() {
 	insinto /usr/share/eselect/modules
 	newins "${WORKDIR}/timidity.eselect-${PVR}" timidity.eselect
