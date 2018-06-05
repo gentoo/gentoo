@@ -21,6 +21,6 @@ DEPEND="
 	${RDEPEND}
 	>=sys-devel/gettext-0.11.5
 	app-text/docbook-xml-dtd:4.1.2
-	gnome-extra/yelp
+	app-text/yelp-tools
 	virtual/pkgconfig
 "
