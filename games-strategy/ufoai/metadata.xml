@@ -6,7 +6,9 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <use>
-    <flag name="editor">Build map editor</flag>
+    <flag name="client">Build the main game client</flag>
+    <flag name="editor">Build the map editor and compiler</flag>
+    <flag name="server">Build the dedicated server</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">ufoai</remote-id>
