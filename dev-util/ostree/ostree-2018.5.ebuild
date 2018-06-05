@@ -41,6 +41,7 @@ DEPEND="
 RDEPEND="${COMMON_DEPEND}"
 
 src_configure() {
+	unset ${!XDG_*} #657346 g-ir-scanner sandbox violation
 	econf \
 		--with-crypto=openssl \
 		--with-curl \
