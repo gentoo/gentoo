@@ -11,8 +11,6 @@ HOMEPAGE="http://www.nvidia.com/ http://www.nvidia.com/Download/Find.aspx"
 AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 ARM_NV_PACKAGE="NVIDIA-Linux-armv7l-gnueabihf-${PV}"
-X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
-X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
 
 NV_URI="http://us.download.nvidia.com/XFree86/"
 SRC_URI="
@@ -25,7 +23,7 @@ SRC_URI="
 
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
-KEYWORDS="-* amd64 x86 ~amd64-fbsd"
+KEYWORDS="-* amd64 ~amd64-fbsd"
 RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
 
@@ -110,7 +108,6 @@ nvidia_drivers_versions_check() {
 
 	# Kernel features/options to check for
 	CONFIG_CHECK="~ZONE_DMA ~MTRR ~SYSVIPC ~!LOCKDEP"
-	use x86 && CONFIG_CHECK+=" ~HIGHMEM"
 
 	# Now do the above checks
 	use kernel_linux && check_extra_config
@@ -153,7 +150,6 @@ pkg_setup() {
 
 	# set variables to where files are in the package structure
 	if use kernel_FreeBSD; then
-		use x86-fbsd   && S="${WORKDIR}/${X86_FBSD_NV_PACKAGE}"
 		use amd64-fbsd && S="${WORKDIR}/${AMD64_FBSD_NV_PACKAGE}"
 		NV_DOC="${S}/doc"
 		NV_OBJ="${S}/obj"
@@ -453,10 +449,6 @@ src_install-libs() {
 	local GL_ROOT="/usr/$(get_libdir)/opengl/nvidia/lib"
 	local CL_ROOT="/usr/$(get_libdir)/OpenCL/vendors/nvidia"
 	local nv_libdir="${NV_OBJ}"
-
-	if use kernel_linux && has_multilib_profile && [[ ${ABI} == "x86" ]]; then
-		nv_libdir="${NV_OBJ}"/32
-	fi
 
 	if use X; then
 		NV_GLX_LIBRARIES=(
