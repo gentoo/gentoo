@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3
 SLOT=0
 SRC_URI=mirror://gentoo/timidity.eselect-20110513.bz2
-_md5_=0367083f0d9f6099802b21d2fda3d07d
+_md5_=c3908ee01b6c1f0865f0a5e7e42013d8
