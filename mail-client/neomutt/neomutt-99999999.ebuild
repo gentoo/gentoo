@@ -5,7 +5,7 @@ EAPI=6
 
 inherit eutils flag-o-matic
 
-if [[ ${PV} =~ 9999$ ]]; then
+if [[ ${PV} =~ 99999999$ ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
