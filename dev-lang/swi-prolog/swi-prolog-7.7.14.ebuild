@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
@@ -59,6 +59,8 @@ src_prepare() {
 
 	# OSX/Intel ld doesn't like an archive without table of contents
 	sed -i -e 's/-cru/-scru/' packages/nlp/libstemmer_c/Makefile.pl || die
+
+	eapply_user
 }
 
 src_configure() {
@@ -79,7 +81,7 @@ src_configure() {
 		$(use_enable gmp) \
 		$(use_enable static-libs static) \
 		--enable-shared \
-		--enable-custom-flags COFLAGS="${CFLAGS}"
+		--enable-custom-flags COFLAGS="${CFLAGS} -DOF=_Z_OF"
 
 	if ! use minimal ; then
 		local jpltestconf
