@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{5,6} )
 
-inherit python-single-r1 toolchain-funcs
+inherit python-single-r1 toolchain-funcs gnome2-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.1-flags.patch
+	"${FILESDIR}"/${PN}-0.9.1-flags.patch
 	"${FILESDIR}"/${PN}-0.7.1-svg-icon.patch
 )
 
@@ -83,4 +83,12 @@ src_install() {
 	python_fix_shebang "${ED}"
 
 	dodoc CHANGELOG.rst *.asciidoc
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }

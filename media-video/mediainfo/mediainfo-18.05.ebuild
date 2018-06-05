@@ -4,7 +4,7 @@
 EAPI=6
 WX_GTK_VER="3.0"
 
-inherit eutils gnome2-utils xdg-utils autotools wxwidgets
+inherit gnome2-utils xdg-utils autotools wxwidgets
 
 DESCRIPTION="MediaInfo supplies technical and tag information about media files"
 HOMEPAGE="https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfo"
@@ -12,7 +12,7 @@ SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="curl mms wxwidgets"
 
 RDEPEND="sys-libs/zlib
