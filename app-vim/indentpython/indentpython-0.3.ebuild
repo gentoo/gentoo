@@ -7,10 +7,8 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: Indent Python code according to PEP8"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=974"
-SRC_URI="https://github.com/vim-scripts/${PN}.vim/archive/${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/vim-scripts/${PN}.vim/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim.org"
 KEYWORDS="amd64 ppc ppc64 x86"
-
-DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}.vim-${PV}"
