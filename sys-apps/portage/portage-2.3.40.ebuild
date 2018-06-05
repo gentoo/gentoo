@@ -10,7 +10,7 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 systemd
+inherit distutils-r1 eutils systemd
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -85,7 +85,8 @@ prefix_src_archives() {
 
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
+	https://github.com/gentoo/portage/commit/345256c2d439c5ab580e4226f227db2819883d40.patch -> ${P}-bug-657360-345256c2d439.patch"
 
 pkg_setup() {
 	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
@@ -93,6 +94,8 @@ pkg_setup() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	epatch "${DISTDIR}/${P}-bug-657360-345256c2d439.patch"
 
 	# apply d07a47ff3c06
 	sed -i 's:("--dynamic-deps", "y") != "n"$:\0 and "--nodeps" not in myopts:' \
