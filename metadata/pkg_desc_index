@@ -8074,7 +8074,7 @@ media-sound/qmmp 1.1.7-r1: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.4.4: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
-media-sound/quodlibet 3.7.1 3.8.1-r1 3.9.1: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 3.8.1-r1 3.9.1: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
