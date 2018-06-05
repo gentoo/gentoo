@@ -37,7 +37,6 @@ DEPEND="${PYTHON_DEPS}
 		   )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-Use-usr-for-vulkan-headers.patch"
 	"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
 	 )
 
@@ -50,6 +49,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DBUILD_TESTS=False
 		-DGLSLANG_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
 	)
 	cmake-utils_src_configure
 }
