@@ -36,7 +36,7 @@ src_prepare() {
 		-e '/^[ \t]*USER_CFLAGS=/s#-O2"#"#' \
 		configure || die "fixing CFLAGS failed"
 
-	eapply_user
+	default
 }
 
 multilib_src_configure() {
