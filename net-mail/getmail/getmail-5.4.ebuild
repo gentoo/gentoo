@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="http://pyropus.ca/software/getmail/"
 SRC_URI="http://pyropus.ca/software/getmail/old-versions/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="4"
+SLOT="0"
 KEYWORDS="amd64 ppc x86 ~ppc-macos ~x86-macos ~x64-solaris"
 IUSE="ssl"
 
