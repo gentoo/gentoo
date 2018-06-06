@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit gnome2-utils
+
 DESCRIPTION="Easy to use task manager"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-taskmanager"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
@@ -42,4 +44,12 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
