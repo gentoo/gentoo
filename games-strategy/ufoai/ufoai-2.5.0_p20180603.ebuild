@@ -17,7 +17,7 @@ DATADIR="/usr/share/${PN}"
 DESCRIPTION="UFO: Alien Invasion - X-COM inspired strategy game"
 HOMEPAGE="https://ufoai.org/"
 SRC_URI="
-	https://sourceforge.net/code-snapshots/git/${PN:0:1}/${PN:0:2}/${PN}/code.git/${PN}-code-${COMMIT}.zip
+	https://dev.gentoo.org/~chewi/distfiles/${PN}-code-${COMMIT}.zip
 	mirror://sourceforge/${PN}/${PN}-${DIST_VERSION}-data.tar
 	editor? ( mirror://sourceforge/${PN}/${PN}-${DIST_VERSION}-mappack.tar.bz2 )
 "
