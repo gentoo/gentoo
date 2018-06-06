@@ -3045,7 +3045,7 @@ dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2: Library providing Qt implementatio
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
-dev-libs/libdynd 0.6.5 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
+dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libebml 1.3.4 1.3.5: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
@@ -4766,7 +4766,7 @@ dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.7.1: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.18.5 0.18.6: Pure-Python implementation of the Git file formats and protocols
-dev-python/dynd-python 0.6.5 0.7.2-r1: Python exposure of multidimensionnal array library libdynd
+dev-python/dynd-python 0.7.2-r1: Python exposure of multidimensionnal array library libdynd
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/egenix-mx-base 3.2.5: eGenix utils for Python
@@ -8683,7 +8683,7 @@ net-libs/ortp 0.20.0 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550)
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.1: Open source SIP, Media, and NAT Traversal Library
 net-libs/qxmpp 0.9.3-r2: A cross-platform C++ XMPP client library based on the Qt framework
-net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
+net-libs/rabbitmq-c 0.8.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/rpcsvc-proto 0 1.3.1-r1: rpcsvc protocol definitions from glibc
