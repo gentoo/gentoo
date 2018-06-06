@@ -9,7 +9,7 @@ inherit cmake-utils l10n systemd user
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
@@ -42,8 +42,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch" # fix for flags handling and bug 563108
 	"${FILESDIR}/${PN}-0.16.0-Xsession.patch" # bug 611210
 	"${FILESDIR}/${PN}-0.16.0-ck2-revert.patch" # bug 633920
-	# TODO: not yet upstream
-	"${FILESDIR}/${P}-switchtogreeter.patch" # bugs 644718, 649888
+	"${FILESDIR}/${P}-consolekit.patch" # bug 647254
+	"${FILESDIR}/${P}-logind-race.patch" # bug 656286
+	# TODO: pending upstream
+	"${FILESDIR}/${P}-switchtogreeter-r1.patch" # bugs 644718, 649888, 655912
 )
 
 src_prepare() {
