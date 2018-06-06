@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit linux-info xorg-2
+inherit linux-info systemd udev xorg-2
 
 DESCRIPTION="Driver for Wacom tablets and drawing devices"
 HOMEPAGE="http://linuxwacom.sourceforge.net/"
@@ -30,6 +30,8 @@ pkg_setup() {
 	linux-info_pkg_setup
 
 	XORG_CONFIGURE_OPTIONS=(
+		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
+		--with-udev-rules-dir="$(get_udevdir)/rules.d"
 		$(use_enable debug)
 	)
 }
