@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils autotools toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_P="${P}-src"
 DESCRIPTION="A makefile framework for writing simple makefiles for complex tasks"
@@ -37,7 +37,13 @@ src_prepare() {
 
 	default
 
-	mv src/kmk/configure.{in,ac} || die
+	# Add a file with the svn revision this package was pulled from
+	printf '%s\n' "KBUILD_SVN_REV := $(ver_cut 4)" \
+		> SvnInfo.kmk || die
+
+	# bootstrapping breaks because of missing po/Makefile.in.in (r3149)
+	sed '/^AC_CONFIG_FILES/s@ po/Makefile\.in@@' \
+		-i src/kmk/configure.ac || die
 
 	cd "${S}/src/kmk" || die
 	eautoreconf
