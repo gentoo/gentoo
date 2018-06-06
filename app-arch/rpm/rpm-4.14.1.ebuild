@@ -16,7 +16,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="acl caps doc lua nls python selinux"
+IUSE="acl caps doc lua nls python selinux test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="!app-arch/rpm5
@@ -40,6 +40,7 @@ DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
+	test? ( sys-apps/fakechroot )
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-rpm )
@@ -104,6 +105,10 @@ src_install() {
 
 	# Fix perllocal.pod file collision
 	perl_delete_localpod
+}
+
+src_test() {
+	emake check
 }
 
 pkg_postinst() {

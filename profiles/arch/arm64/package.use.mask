@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
 # Alex Bennee <alex@bennee.com> (31 May 2018)
 # bunch of dev-perl packages not yet keyworded
 # and the i3 ebuild currently has RESTRICT="test" due to upstream bug
