@@ -33,9 +33,11 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	dev-qt/qtnetwork:5
 	doc? ( app-doc/doxygen )
-	test? ( dev-qt/qttest:5 )
+	test? (
+		dev-qt/qtnetwork:5
+		dev-qt/qttest:5
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	!app-crypt/qca-cyrus-sasl
