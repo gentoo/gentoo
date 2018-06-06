@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -76,14 +76,15 @@ src_configure() {
 
 	local authopts
 	if use mysql; then
-		authopts="$(mysql_config --include)"
-		authopts="--enable-incdir=${authopts#-I}"
+		incdir=$(mysql_config --variable=pkgincludedir)
+		libdir=$(mysql_config --variable=pkglibdir)
 		authopts+=" --enable-auth-module=mysql"
-		authopts+="	--enable-libdir=/usr/$(get_libdir)/mysql"
-		authopts+="	--enable-sql-logging"
+		authopts+=" --enable-incdir=${incdir}"
+		authopts+=" --enable-libdir=${libdir}"
+		authopts+=" --enable-sql-logging"
 		authopts+=" --enable-valias"
-		authopts+="	--disable-mysql-replication"
-		authopts+="	--enable-mysql-limits"
+		authopts+=" --disable-mysql-replication"
+		authopts+=" --enable-mysql-limits"
 	else
 		authopts="--enable-auth-module=cdb"
 	fi
