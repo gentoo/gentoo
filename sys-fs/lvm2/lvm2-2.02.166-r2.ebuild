@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.02.139-dynamic-static-ldflags.patch #332905
 	"${FILESDIR}"/${PN}-2.02.129-static-pkgconfig-libs.patch #370217, #439414 + blkid
 	"${FILESDIR}"/${PN}-2.02.130-pthread-pkgconfig.patch #492450
+	"${FILESDIR}"/${PN}-2.02.166-HPPA-no-O_DIRECT.patch #657446
 	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
 )
 
