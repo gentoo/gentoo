@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	virtual/perl-Encode
 	>=dev-perl/XML-LibXML-1.700.0
-	>=dev-libs/libxslt-1.1.28
+	>=dev-libs/libxslt-1.1.32
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
