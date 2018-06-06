@@ -1,0 +1,22 @@
+From 7bd9f322182d840f3cfaee9a49f5cbd5f426aa1b Mon Sep 17 00:00:00 2001
+From: Erik Ridderby <tech@rby.nu>
+Date: Sat, 12 May 2018 08:04:26 +0200
+Subject: [PATCH] Fixed typo that prevents ConsoleKit to be detected (#1027)
+
+---
+ src/daemon/LogindDBusTypes.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/daemon/LogindDBusTypes.cpp b/src/daemon/LogindDBusTypes.cpp
+index 79c70312..011bb7f5 100644
+--- a/src/daemon/LogindDBusTypes.cpp
++++ b/src/daemon/LogindDBusTypes.cpp
+@@ -63,7 +63,7 @@ LogindPathInternal::LogindPathInternal()
+         available = true;
+         serviceName = QStringLiteral("org.freedesktop.ConsoleKit");
+         managerPath = QStringLiteral("/org/freedesktop/ConsoleKit/Manager");
+-        managerIfaceName = QStringLiteral("/org.freedesktop.ConsoleKit.Manager"); //note this doesn't match logind
++        managerIfaceName = QStringLiteral("org.freedesktop.ConsoleKit.Manager"); //note this doesn't match logind
+         seatIfaceName = QStringLiteral("org.freedesktop.ConsoleKit.Seat");
+         sessionIfaceName = QStringLiteral("org.freedesktop.ConsoleKit.Session");
+         userIfaceName = QStringLiteral("org.freedesktop.ConsoleKit.User");
