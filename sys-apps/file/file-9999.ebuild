@@ -41,7 +41,7 @@ src_prepare() {
 	elibtoolize
 
 	# don't let python README kill main README #60043
-	mv python/README{,.python} || die
+	mv python/README.md README.python || die
 }
 
 multilib_src_configure() {
@@ -112,6 +112,11 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc ChangeLog MAINT README
+
+	# Required for `file -C`
+	dodir /usr/share/misc/magic
+	insinto /usr/share/misc/magic
+	doins -r magic/Magdir/*
 
 	if use python ; then
 		cd python || die
