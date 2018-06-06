@@ -11,3 +11,4 @@ slotmove =dev-ruby/websocket-driver-0.7.0 0 0.7
 move kde-plasma/oxygen-fonts media-fonts/oxygen-fonts
 move media-libs/vulkan-tools dev-util/vulkan-tools
 move games-strategy/ufo-ai games-strategy/ufoai
+slotmove =net-mail/getmail-5.4 4 0
