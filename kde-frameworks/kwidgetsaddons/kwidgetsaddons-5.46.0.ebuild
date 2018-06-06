@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 "
 
 src_test() {
-	# bug 650216
-	local myctestargs=( -E "(kdatecomboboxtest)" )
+	# bug 650216, 653186
+	local myctestargs=( -E "(kdatecomboboxtest|ktooltipwidgettest)" )
 	kde5_src_test
 }
