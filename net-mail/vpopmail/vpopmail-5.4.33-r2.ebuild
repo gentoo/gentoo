@@ -17,7 +17,7 @@ REQUIRED_USE="mysql? ( !postgres )"
 
 DEPEND="virtual/qmail
 	maildrop? ( mail-filter/maildrop )
-	mysql? ( virtual/mysql )
+	mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c[mysqlcompat] ) )
 	postgres? ( dev-db/postgresql[server] )
 	spamassassin? ( mail-filter/spamassassin )"
 RDEPEND="${DEPEND}"
@@ -92,9 +92,11 @@ src_configure() {
 		authopts+=" --disable-mysql-replication"
 		authopts+=" --enable-mysql-limits"
 	elif use postgres; then
-		pglibdir=$(pg_config --libdir)
+		libdir=$(pg_config --libdir)
+		incdir=$(pg_config --pkgincludedir)
 		authopts+=" --enable-auth-module=pgsql"
-		authopts+=" --enable-libdir=${pglibdir}"
+		authopts+=" --enable-incdir=${incdir}"
+		authopts+=" --enable-libdir=${libdir}"
 		authopts+=" --enable-sql-logging"
 		authopts+=" --enable-valias"
 	else
