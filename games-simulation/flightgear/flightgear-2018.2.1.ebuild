@@ -59,6 +59,8 @@ RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
 
+PATCHES=("${FILESDIR}/${P}-cmake.patch")
+
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 pkg_pretend() {
