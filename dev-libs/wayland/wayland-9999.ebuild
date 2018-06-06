@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,8 @@ IUSE="doc static-libs"
 
 RDEPEND=">=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=virtual/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
-	dev-libs/libxml2:="
+	dev-libs/libxml2:=
+	!!<media-libs/mesa-18.1.1-r1"
 DEPEND="${RDEPEND}
 	doc? (
 		>=app-doc/doxygen-1.6[dot]
