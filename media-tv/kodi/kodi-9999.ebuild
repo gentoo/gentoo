@@ -308,5 +308,5 @@ src_install() {
 		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
-	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send
+	python_newscript "tools/EventClients/Clients/KodiSend/kodi-send.py" kodi-send
 }
