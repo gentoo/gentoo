@@ -399,6 +399,12 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
+	# These files are now provided by >=dev-libs/wayland-1.15.0
+	rm "${ED}/usr/$(get_libdir)/libwayland-egl.so" || die
+	rm "${ED}/usr/$(get_libdir)/libwayland-egl.so.1" || die
+	rm "${ED}/usr/$(get_libdir)/libwayland-egl.so.1.0.0" || die
+	rm "${ED}/usr/$(get_libdir)/pkgconfig/wayland-egl.pc" || die
+
 	emake install DESTDIR="${D}"
 
 	if use opencl; then
