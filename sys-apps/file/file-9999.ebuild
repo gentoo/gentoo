@@ -113,6 +113,11 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc ChangeLog MAINT README
 
+	# Required for `file -C`
+	dodir /usr/share/misc/magic
+	insinto /usr/share/misc/magic
+	doins -r magic/Magdir/*
+
 	if use python ; then
 		cd python || die
 		distutils-r1_src_install
