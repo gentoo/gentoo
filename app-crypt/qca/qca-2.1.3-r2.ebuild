@@ -50,6 +50,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-disable-pgp-test.patch"
 	"${FILESDIR}/${P}-c++11.patch"
+	"${FILESDIR}/${P}-deps.patch"
 )
 
 qca_plugin_use() {
