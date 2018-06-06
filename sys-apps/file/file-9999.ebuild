@@ -41,7 +41,7 @@ src_prepare() {
 	elibtoolize
 
 	# don't let python README kill main README #60043
-	mv python/README{,.python} || die
+	mv python/README.md README.python || die
 }
 
 multilib_src_configure() {
