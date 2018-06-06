@@ -1216,7 +1216,7 @@ app-portage/euscan 0.1.1-r2: Ebuild upstream scan utility
 app-portage/euses 2.5.9: look up USE flag descriptions fast
 app-portage/flaggie 0.2.1-r1: A smart CLI mangler for package.* files
 app-portage/g-cpan 0.16.5 0.16.9-r1: Autogenerate and install ebuilds for CPAN modules
-app-portage/gemato 13.0: Stand-alone Manifest generation & verification tool
+app-portage/gemato 13.0-r1: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0 0.4.2-r1: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0: Collection of developer scripts for Gentoo
