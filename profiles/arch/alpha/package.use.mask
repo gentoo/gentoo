@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tomáš Mózes <hydrapolic@gmail.com> (05 Jun 2018)
+# Unkeyworded dependencies.
+app-admin/syslog-ng amqp mongodb
+
 # Thomas Deutschmann <whissi@gentoo.org> (02 Jun 2018)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
