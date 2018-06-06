@@ -5,13 +5,12 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2-utils flag-o-matic linux-info xdg-utils \
-	multilib multilib-minimal pam python-single-r1 user versionator \
-	systemd toolchain-funcs
+inherit autotools eapi7-ver gnome2-utils flag-o-matic linux-info xdg-utils multilib multilib-minimal pam python-single-r1 user java-pkg-opt-2 systemd toolchain-funcs
 
+MY_P="${P/_rc/rc}"
+MY_P="${MY_P/_beta/b}"
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
-MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -21,18 +20,16 @@ if [[ ${PV} == *9999 ]]; then
 	fi
 else
 	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
-	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
-	fi
+	SRC_URI="https://github.com/apple/cups/releases/download/v${PV}/${P}-source.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
 fi
 
 DESCRIPTION="The Common Unix Printing System"
 HOMEPAGE="https://www.cups.org/"
 
-LICENSE="Apache-2.0"
+LICENSE="GPL-2"
 SLOT="0"
-IUSE="acl dbus debug kerberos lprng-compat pam python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
+IUSE="acl dbus debug java kerberos lprng-compat pam python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
 CDEPEND="
 	app-text/libpaper
@@ -44,13 +41,12 @@ CDEPEND="
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
+	java? ( >=virtual/jre-1.6:* )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
 	pam? ( virtual/pam )
 	python? ( ${PYTHON_DEPS} )
-	ssl? (
-		>=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}]
-	)
+	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
 	X? ( x11-misc/xdg-utils )
@@ -88,8 +84,6 @@ PATCHES=(
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/cups-config
 )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup lp
@@ -174,6 +168,7 @@ multilib_src_configure() {
 		$(use_enable debug)
 		$(use_enable debug debug-guards)
 		$(use_enable debug debug-printfs)
+		$(multilib_native_use_with java)
 		$(use_enable kerberos gssapi)
 		$(multilib_native_use_enable pam)
 		$(multilib_native_use_with python python "${PYTHON}")
@@ -184,6 +179,8 @@ multilib_src_configure() {
 		$(multilib_native_use_enable usb libusb)
 		$(use_enable zeroconf avahi)
 		--disable-dnssd
+		--without-perl
+		--without-php
 		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
 	)
 
@@ -314,7 +311,7 @@ pkg_postinst() {
 	local v
 
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.2.2-r2 ${v}; then
+		if ! ver_test ${v} -ge 2.2.2-r2 ; then
 			echo
 			ewarn "The cupsd init script switched to using pidfiles. Shutting down"
 			ewarn "cupsd will fail the next time. To fix this, please run once as root"
