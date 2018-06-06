@@ -1,55 +1,45 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils cuda eutils git-r3 multilib toolchain-funcs
+inherit cmake-utils cuda flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="Fast approximate nearest neighbor searches in high dimensional spaces"
 HOMEPAGE="http://www.cs.ubc.ca/research/flann/"
-SRC_URI="test? ( https://dev.gentoo.org/~bicatali/distfiles/${PN}-1.8.4-testdata.tar.xz )"
 EGIT_REPO_URI="https://github.com/mariusmuja/flann.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="cuda doc examples mpi openmp octave static-libs test"
+IUSE="cuda doc examples mpi openmp octave static-libs"
 
 RDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-5.5 )
 	mpi? (
 		sci-libs/hdf5[mpi]
-		dev-libs/boost[mpi]
+		dev-libs/boost:=[mpi]
 	)
 	!mpi? ( !sci-libs/hdf5[mpi] )
 	octave? ( >=sci-mathematics/octave-3.6.4-r1 )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
-	doc? ( dev-tex/latex2html )
-	test? (
-		dev-cpp/gtest
-		cuda? ( sci-libs/hdf5 )
-	)
-"
+	doc? ( dev-tex/latex2html )"
+# TODO:
+# readd dependencies for test suite,
+# requires multiple ruby dependencies
 
-pkg_setup() {
-	if use openmp; then
-		if [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp ; then
-			ewarn "OpenMP is not available in your current selected gcc"
-			die "need openmp capable gcc"
-		fi
-	fi
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-src_unpack() {
-	default
-	git-r3_src_unpack
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
 	# bug #302621
 	use mpi && export CXX=mpicxx
-
 	# produce pure octave files
 	# octave gentoo installation for .m files respected
 	sed -i \
@@ -65,38 +55,32 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
+
 	# python bindings are split
+	# off into dev-python/pyflann
 	local mycmakeargs=(
 		-DBUILD_C_BINDINGS=ON
 		-DBUILD_PYTHON_BINDINGS=OFF
 		-DPYTHON_EXECUTABLE=
 		-DDOCDIR=share/doc/${PF}
-		$(cmake-utils_use_build cuda CUDA_LIB)
-		$(cmake-utils_use_build examples)
-		$(cmake-utils_use_build doc)
-		$(cmake-utils_use_build test TESTS)
-		$(cmake-utils_use_build octave MATLAB_BINDINGS)
-		$(cmake-utils_use_use mpi)
-		$(cmake-utils_use_use openmp)
+		-DBUILD_CUDA_LIB=$(usex cuda)
+		-DBUILD_EXAMPLES=$(usex examples)
+		-DBUILD_DOC=$(usex doc)
+		-DBUILD_TESTS=OFF
+		-DBUILD_MATLAB_BINDINGS=$(usex octave)
+		-DUSE_MPI=$(usex mpi)
+		-DUSE_OPENMP=$(usex openmp)
 	)
-	use cuda && \
-		mycmakeargs+=(
-		-DCUDA_NVCC_FLAGS="${NVCCFLAGS},-arsch"
-		)
+	use cuda && mycmakeargs+=(
+		-DCUDA_NVCC_FLAGS="${NVCCFLAGS} --linker-options \"-arsch\""
+	)
 	cmake-utils_src_configure
-}
-
-src_test() {
-	ln -s "${WORKDIR}"/testdata/* test/ || die
-	# -j1 to avoid obversubscribing jobs
-	LD_LIBRARY_PATH="${BUILD_DIR}/lib" \
-		cmake-utils_src_compile -j1 test
 }
 
 src_install() {
 	cmake-utils_src_install
-	dodoc README.md
 	if ! use static-libs; then
-		find "${ED}" -name 'lib*.a' -exec rm -rf '{}' '+' || die
+		find "${D}" -name 'lib*.a' -delete || die
 	fi
 }
