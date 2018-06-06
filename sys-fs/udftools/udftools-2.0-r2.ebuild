@@ -18,9 +18,3 @@ RDEPEND="sys-libs/readline:0="
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-sysmacros.patch" )
-
-src_install() {
-	default
-	newinitd "${FILESDIR}"/pktcdvd.init pktcdvd
-	dosym mkudffs.8 /usr/share/man/man8/mkfs.udf.8
-}
