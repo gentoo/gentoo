@@ -38,7 +38,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	if use tools; then
-		insinto /usr/share/gemato
-		doins utils/*.{bash,py}
+		exeinto /usr/share/gemato
+		doexe utils/*.{bash,py}
 	fi
 }
