@@ -202,7 +202,7 @@ app-arch/pigz 2.3.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6: Parallel Indexed XZ compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression utility
-app-arch/rpm 4.11.0.1: Red Hat Package Management Utils
+app-arch/rpm 4.11.0.1 4.14.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.14-r1: Tools to deal with shar archives
@@ -3067,7 +3067,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.0 0.20.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.26.3: A linkable library for Git
+dev-libs/libgit2 0.26.3 0.26.4: A linkable library for Git
 dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1: Contains error handling functions used by GnuPG software
