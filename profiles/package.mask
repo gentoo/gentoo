@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (06 Jun 2018)
+# Temporarily masked while I make sure the blockers work
+>=dev-libs/wayland-1.15.0
+>=media-libs/mesa-18.1.1-r1
+
 # Mike Pagano <mpagano@gentoo.org> (30 May 2018)
 # Masking due to bad commit in the networking stack.
 =sys-kernel/gentoo-sources-4.14.46
