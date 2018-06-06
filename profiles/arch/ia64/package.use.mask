@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded deps.
 net-misc/curl curl_ssl_axtls
