@@ -34,8 +34,12 @@ src_unpack() {
 	tar -xJf "${DISTDIR}/${MY_P}.tar.xz" "${MY_P}/bindings/python" || die
 }
 
+python_test() {
+	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
+}
+
 src_test() {
-	python_foreach_impl python -m unittest discover -v || die
+	python_foreach_impl python_test
 }
 
 src_install() {
