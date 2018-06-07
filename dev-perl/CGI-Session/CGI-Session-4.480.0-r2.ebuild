@@ -1,16 +1,16 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=MARKSTOS
-MODULE_VERSION=4.48
+DIST_AUTHOR=MARKSTOS
+DIST_VERSION=4.48
 inherit perl-module
 
 DESCRIPTION="persistent session data in CGI applications"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -25,5 +25,3 @@ DEPEND="${RDEPEND}
 		dev-perl/CGI-Simple
 	)
 "
-
-SRC_TEST="do"
