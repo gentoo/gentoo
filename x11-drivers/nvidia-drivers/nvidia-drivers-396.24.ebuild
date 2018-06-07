@@ -450,6 +450,10 @@ src_install-libs() {
 	local CL_ROOT="/usr/$(get_libdir)/OpenCL/vendors/nvidia"
 	local nv_libdir="${NV_OBJ}"
 
+	if use kernel_linux && has_multilib_profile && [[ ${ABI} == "x86" ]]; then
+		nv_libdir="${NV_OBJ}"/32
+	fi
+
 	if use X; then
 		NV_GLX_LIBRARIES=(
 			"libEGL.so.$(usex compat ${NV_SOVER} 1.1.0) ${GL_ROOT}"
