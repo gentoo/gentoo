@@ -184,7 +184,7 @@ src_install() {
 		abi_libdir=$(get_abi_LIBDIR ${v##*.})
 		rust_target=$(get_abi_CHOST ${v##*.})
 		mkdir -p "${D}/usr/${abi_libdir}"
-		cp "${D}/usr/$(get_libdir)/rustlib/${rust_target}/lib/*.so" \
+		cp "${D}/usr/$(get_libdir)/rustlib/${rust_target}/lib"/*.so \
 		   "${D}/usr/${abi_libdir}" || die
 	done
 
