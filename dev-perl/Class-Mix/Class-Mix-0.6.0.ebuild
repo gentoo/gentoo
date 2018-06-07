@@ -7,7 +7,7 @@ DIST_VERSION=0.006
 inherit perl-module
 
 DESCRIPTION="dynamic class mixing"
-LICENSE=" || ( Artistic GPL-2 )"
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="test"
