@@ -3210,6 +3210,7 @@ media-sound/pulseaudio:equalizer - Enable the equalizer module (requires sci-lib
 media-sound/pulseaudio:gdbm - Use sys-libs/gdbm to store PulseAudio databases. Recommended for desktop usage. This flag causes the whole package to be licensed under GPL-2 or later.
 media-sound/pulseaudio:glib - Add support to dev-libs/glib-based mainloop for the libpulse client library, to allow using libpulse on glib-based programs.
 media-sound/pulseaudio:gnome - Use GConf to store user preferences on streams and so on. Don't enable this flag if you want to use a system wide instance. If unsure, enable this flag.
+media-sound/pulseaudio:gsettings - Use GSettings instead of GConf to store user preferences.
 media-sound/pulseaudio:native-headset - Build with native HSP backend for bluez 5.
 media-sound/pulseaudio:ofono-headset - Build with oFono HFP backend for bluez 5, requires net-misc/ofono.
 media-sound/pulseaudio:oss - Enable OSS sink/source (output/input). Deprecated, upstream does not support this on systems where other sink/source systems are available (i.e.: Linux). The padsp wrapper is now always build if the system supports OSS at all.

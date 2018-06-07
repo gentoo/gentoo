@@ -5194,7 +5194,7 @@ dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority t
 dev-python/process-tests 1.2.0: Tools for testing processes
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r3: Text progressbar library for python
-dev-python/prometheus_client 0.1.1: Python client for the Prometheus monitoring system
+dev-python/prometheus_client 0.1.1 0.2.0: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 1.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.5.1.1 3.5.2-r1: Google's Protocol Buffers - Python bindings
 dev-python/psutil 5.4.1 5.4.3: Retrieve information on running processes and system utilization
