@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/mesa.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 if [[ ${PV} = 9999 ]]; then
 	GIT_ECLASS="git-r3"
@@ -12,7 +12,7 @@ fi
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools llvm multilib-minimal python-any-r1 pax-utils ${GIT_ECLASS}
+inherit meson llvm multilib-minimal python-any-r1 pax-utils ${GIT_ECLASS}
 
 OPENGL_DIR="xorg-x11"
 
@@ -269,17 +269,14 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	eapply_user
-	[[ ${PV} == 9999 ]] && eautoreconf
-}
-
 multilib_src_configure() {
-	local myconf
+	local emesonargs
 
 	if use classic; then
 		# Configurable DRI drivers
-		driver_enable swrast
+		if use !gallium; then
+			driver_enable swrast
+		fi
 
 		# Intel code
 		driver_enable video_cards_i915 i915
@@ -302,20 +299,23 @@ multilib_src_configure() {
 	fi
 
 	if use egl; then
-		myconf+=" --with-platforms=x11,surfaceless$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
+		emesonargs+=( -Dplatforms=x11,surfaceless$(use wayland && echo ",wayland")$(use gbm && echo ",drm"))
 	fi
 
 	if use gallium; then
-		myconf+="
-			$(use_enable d3d9 nine)
-			$(use_enable llvm)
-			$(use_enable openmax omx-bellagio)
-			$(use_enable vaapi va)
-			$(use_enable vdpau)
-			$(use_enable xa)
-			$(use_enable xvmc)
-		"
-		use vaapi && myconf+=" --with-va-libdir=/usr/$(get_libdir)/va/drivers"
+		emesonargs+=(
+			$(meson_use d3d9 gallium-nine)
+			$(meson_use llvm)
+			-Dgallium-omx=$(usex openmax bellagio disabled)
+			$(meson_use vaapi gallium-va)
+			$(meson_use vdpau gallium-vdpau)
+			$(meson_use xa gallium-xa)
+			$(meson_use xvmc gallium-xvmc)
+			-Dgallium-opencl=$(usex opencl standalone disabled)
+			$(meson_use !pic asm)
+		)
+
+		use vaapi && emesonargs+=( -Dva-libs-path=$(get_libdir)/va/drivers/)
 
 		gallium_enable swrast
 		gallium_enable video_cards_vc4 vc4
@@ -338,68 +338,44 @@ multilib_src_configure() {
 		fi
 
 		gallium_enable video_cards_freedreno freedreno
-		# opencl stuff
-		if use opencl; then
-			myconf+="
-				$(use_enable opencl)
-				--with-clang-libdir="${EPREFIX}/usr/lib"
-				"
-		fi
 
 		gallium_enable video_cards_virgl virgl
 	fi
 
 	if use vulkan; then
 		vulkan_enable video_cards_i965 intel
-		vulkan_enable video_cards_radeonsi radeon
-	fi
-
-	# x86 hardened pax_kernel needs glx-rts, bug 240956
-	if [[ ${ABI} == x86 ]]; then
-		myconf+=" $(use_enable pax_kernel glx-read-only-text)"
-	fi
-
-	# on abi_x86_32 hardened we need to have asm disable
-	if [[ ${ABI} == x86* ]] && use pic; then
-		myconf+=" --disable-asm"
+		vulkan_enable video_cards_radeonsi amd
 	fi
 
 	if use gallium; then
-		myconf+=" $(use_enable osmesa gallium-osmesa)"
+		emesonargs+=( -Dosmesa=$(usex osmesa gallium none))
 	else
-		myconf+=" $(use_enable osmesa)"
+		emesonargs+=( -Dosmesa=$(usex osmesa classic none))
 	fi
 
 	# build fails with BSD indent, bug #428112
 	use userland_GNU || export INDENT=cat
 
-	ECONF_SOURCE="${S}" \
-	econf \
-		--enable-dri \
-		--enable-glx \
-		--enable-shared-glapi \
-		$(use_enable !bindist texture-float) \
-		$(use_enable d3d9 nine) \
-		$(use_enable debug) \
-		$(use_enable dri3) \
-		$(use_enable egl) \
-		$(use_enable gbm) \
-		$(use_enable gles1) \
-		$(use_enable gles2) \
-		$(use_enable nptl glx-tls) \
-		$(use_enable unwind libunwind) \
-		--enable-valgrind=$(usex valgrind auto no) \
-		--enable-llvm-shared-libs \
-		--disable-opencl-icd \
-		--with-dri-drivers=${DRI_DRIVERS} \
-		--with-gallium-drivers=${GALLIUM_DRIVERS} \
-		--with-vulkan-drivers=${VULKAN_DRIVERS} \
-		PYTHON2="${PYTHON}" \
-		${myconf}
+	emesonargs+=(
+		-Dshared-glapi=true
+		$(meson_use !bindist texture-float)
+		$(meson_use dri3)
+		$(meson_use egl)
+		$(meson_use gbm)
+		$(meson_use gles1)
+		$(meson_use gles2)
+		$(meson_use unwind libunwind)
+		$(meson_use valgrind)
+		-Ddri-drivers=${DRI_DRIVERS}
+		-Dgallium-drivers=${GALLIUM_DRIVERS}
+		-Dvulkan-drivers=${VULKAN_DRIVERS}
+	)
+
+	meson_src_configure 
 }
 
 multilib_src_install() {
-	emake install DESTDIR="${D}"
+	meson_src_install
 
 	if use opencl; then
 		ebegin "Moving Gallium/Clover OpenCL implementation for dynamic switching"
@@ -440,7 +416,7 @@ multilib_src_test() {
 		pax-mark m ${llvm_tests}
 		popd >/dev/null || die
 	fi
-	emake check
+	meson_src_test
 }
 
 pkg_postinst() {
