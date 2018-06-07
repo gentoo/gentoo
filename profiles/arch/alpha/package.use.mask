@@ -346,7 +346,6 @@ dev-python/PyQt4 webkit
 dev-qt/assistant webkit
 dev-qt/designer webkit
 dev-qt/qtdeclarative webkit
-net-irc/kvirc webkit
 
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)

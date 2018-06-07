@@ -19,7 +19,6 @@ sci-libs/gdal mdb
 # minor arches and has been declared deprecated by upstream. So we'd like
 # to avoid keywording it, unless requested by users.
 dev-qt/designer webkit
-net-irc/kvirc webkit
 
 # Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
 # Masking due to unsolved dependencies
