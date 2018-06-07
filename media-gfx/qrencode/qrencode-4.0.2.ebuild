@@ -27,27 +27,8 @@ src_configure() {
 }
 
 src_test() {
-	# from upstream's test_basic.sh, which they failed to include
-	# in dist tarball
-	local t tests=(
-		test_bitstream
-		test_estimatebit
-		test_qrencode
-		test_qrinput
-		test_qrspec
-		test_rs
-		test_split
-		test_mask
-		test_mqrspec
-		test_mmask
-		test_monkey
-	)
-
 	cd tests || die
-	for t in "${tests[@]}"; do
-		einfo "Running test: ${t} ..."
-		"./${t}" || die "Test failed: ${t}"
-	done
+	./test_basic.sh || die
 }
 
 src_install() {
