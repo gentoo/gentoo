@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup
 DEPEND=python_single_target_python3_4? ( dev-lang/python:3.4[sqlite] ) python_single_target_python3_5? ( dev-lang/python:3.5[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] dev-qt/qtwidgets:5 dev-qt/qtwebkit:5 dev-qt/qtwebengine:5[widgets] doc? ( dev-python/sphinx[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_6(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] )
 DESCRIPTION=GUI administration and development platform for PostgreSQL
 EAPI=6
-HOMEPAGE=http://www.pgadmin.org/
+HOMEPAGE=https://www.pgadmin.org/
 IUSE=doc python_targets_python3_4 python_targets_python3_5 python_single_target_python3_4 python_single_target_python3_5
 KEYWORDS=~amd64 ~x86
 LICENSE=POSTGRESQL
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://postgresql/pgadmin/pgadmin4/v3.0/source/pgadmin4-3.0.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=50c802c3d46e38937d144c3f22bbce35
+_md5_=789ef0336011612eec2eec7ceafcdfdc
