@@ -10180,7 +10180,7 @@ sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 4.0.1 5.0.1 5.0.2: OpenMP runtime library for LLVM/clang compiler
 sys-libs/libosinfo 1.1.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1: library that provides direct access to the IEEE 1394 bus
-sys-libs/libseccomp 2.3.0 2.3.2 2.3.3: high level interface to Linux seccomp filter
+sys-libs/libseccomp 2.3.2 2.3.3: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.7: SELinux userland library
 sys-libs/libsemanage 2.7: SELinux kernel and policy management library
 sys-libs/libsepol 2.7: SELinux binary policy representation library
