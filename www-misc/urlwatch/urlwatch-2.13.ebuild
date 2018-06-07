@@ -31,6 +31,8 @@ DEPEND="
 	)
 "
 
+DOCS=( CHANGELOG.md README.md )
+
 python_test() {
 	nosetests test || die "tests failed with ${EPYTHON}"
 }
