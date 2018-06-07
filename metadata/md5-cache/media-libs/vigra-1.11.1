@@ -4,7 +4,7 @@ DESCRIPTION=C++ computer vision library emphasizing customizable algorithms and 
 EAPI=6
 HOMEPAGE=https://ukoethe.github.io/vigra/
 IUSE=doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind python_targets_python2_7
-KEYWORDS=~amd64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=amd64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=dev-lang/python:2.7 >=dev-libs/boost-1.52.0-r6:=[python?,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] fftw? ( sci-libs/fftw:3.0 ) hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi?] ) jpeg? ( virtual/jpeg:0 ) openexr? ( media-libs/openexr:= ) png? ( media-libs/libpng:0= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) tiff? ( media-libs/tiff:0= ) valgrind? ( dev-util/valgrind )
 REQUIRED_USE=doc? ( hdf5 fftw ) python? ( hdf5 || ( python_targets_python2_7 ) ) test? ( hdf5 python fftw )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ukoethe/vigra/releases/download/Version-1-11-1/vigra-1.11.1-src.tar.gz
 _eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	c66af00ffb980e8eb1c961d5e63597fe	python-utils-r1	3b2e27bcad216823f5a67d01d28b53a4	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=bc5cbf5da47fae82ac5c5a2d0820e057
+_md5_=a612160845df4f5e570aaa569ce0c216

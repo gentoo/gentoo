@@ -289,7 +289,7 @@ app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha07-r1 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.0: An ncurses based console frontend for cdrtools and dvd+rw-tools
-app-cdr/cuetools 1.3.1: Utilities to manipulate and convert cue and toc files
+app-cdr/cuetools 1.3.1 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
@@ -437,7 +437,7 @@ app-dicts/myspell-af 20080701: Afrikaans dictionaries for myspell/hunspell
 app-dicts/myspell-bg 4.3: Bulgarian dictionaries for myspell/hunspell
 app-dicts/myspell-ca 2.3.0: Catalan dictionaries for myspell/hunspell
 app-dicts/myspell-cs 20110224: Czech dictionaries for myspell/hunspell
-app-dicts/myspell-cy 20060316: Welsh dictionaries for myspell/hunspell
+app-dicts/myspell-cy 20060316 20130708: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de_1901 20120929: German (traditional orthography) dictionaries for myspell/hunspell
@@ -638,6 +638,7 @@ app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill func
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2: A library to provide basic features about message representation or encoding
 app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
+app-emacs/ghub 2.0.0: minuscule client library for the Github API
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r3: Attach to an already running Emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
@@ -659,7 +660,8 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231 0.48_p20161231: Elisp client for the LysKOM conference system
-app-emacs/magit 2.11.0: A Git porcelain inside Emacs
+app-emacs/magit 2.11.0 2.12.1: A Git porcelain inside Emacs
+app-emacs/magit-popup 2.12.3: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
 app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
@@ -715,7 +717,7 @@ app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/wanderlust 2.14.0-r6 2.15.9_p20130619: Yet Another Message Interface on Emacsen
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
-app-emacs/with-editor 2.6.0: Use the Emacsclient as the $EDITOR of child processes
+app-emacs/with-editor 2.6.0 2.7.2: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2: An Emacs major mode for editing XSL stylesheets and running XSL processes
 app-emacs/yatex 1.76 1.77: Yet Another TeX mode for Emacs
@@ -891,7 +893,7 @@ app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nkf 2.1.3: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 2.0.6: GUI gettext translations editor
-app-i18n/pology 0.11-r1: A framework for custom processing of PO files
+app-i18n/pology 0.11-r1 0.12: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
@@ -1065,7 +1067,7 @@ app-misc/ondir 0.2.2-r2: Automatically execute scripts as you traverse directori
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.3: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 3.1.1: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 3.1.1 4.1.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
@@ -1108,7 +1110,7 @@ app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 
 app-misc/timestamp 1.1-r1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmux 2.6: Terminal multiplexer
-app-misc/tmux-mem-cpu-load 2.2.1-r1: CPU, RAM memory, and load monitor for use with tmux
+app-misc/tmux-mem-cpu-load 2.2.1-r1 3.4.0: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 2.2.2: tmux-based terminal divider
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
@@ -1175,7 +1177,7 @@ app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
 app-office/scribus 1.5.3-r1: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.12.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.12.0 2.13.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1: A nice LaTeX-IDE
@@ -1256,7 +1258,7 @@ app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control o
 app-shells/mksh 52: MirBSD KSH Shell
 app-shells/mpv-bash-completion 3.3.16: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
-app-shells/pdsh 2.18-r1: A high-performance, parallel remote shell utility
+app-shells/pdsh 2.18-r1 2.26-r1: A high-performance, parallel remote shell utility
 app-shells/posh 0.13.1: Reimplementation of Bourne shell based on pdksh
 app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
@@ -1445,7 +1447,7 @@ app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scrollkeeper 9999-r2: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
-app-text/sdcv 0.5.0_beta2: Console version of Stardict program
+app-text/sdcv 0.5.0_beta2 0.5.0_beta2-r1: Console version of Stardict program
 app-text/sgml-common 0.6.3-r6: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
@@ -1974,7 +1976,7 @@ dev-erlang/stun 1.0.3 1.0.6 1.0.7 1.0.10: STUN and TURN library for Erlang and E
 dev-erlang/xmpp 1.1.9: XMPP parsing and serialization library on top of Fast XML
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6: Animated sprite editor & pixel art tool
-dev-games/cardpics 0.4: set of free cards sets
+dev-games/cardpics 0.4 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
@@ -3139,7 +3141,7 @@ dev-libs/libsass 3.4.7: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.1: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
-dev-libs/libsigsegv 2.11 2.12: Library for handling page faults in user mode
+dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.11 1.0.15: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with a cleaner API
@@ -3370,14 +3372,14 @@ dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
-dev-perl/App-cpanminus 1.704.300: Get, unpack, build and install modules from CPAN
+dev-perl/App-cpanminus 1.704.300 1.704.400: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.820.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0: Generic archive extracting mechanism
 dev-perl/Archive-Zip 1.600.0: A wrapper that lets you read Zip archive members as if they were files
-dev-perl/Array-Compare 3.0.0: Perl extension for comparing arrays
+dev-perl/Array-Compare 3.0.0 3.0.1: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0: Interface to FITS headers
@@ -3396,9 +3398,9 @@ dev-perl/Authen-SASL 2.160.0-r1: A Perl SASL interface
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
-dev-perl/B-Hooks-EndOfScope 0.210.0: Execute code after a scope finished compilation
+dev-perl/B-Hooks-EndOfScope 0.210.0 0.240.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.220.0: Wrap OP check callbacks
-dev-perl/B-Keywords 1.150.0: Lists of reserved barewords and symbol names
+dev-perl/B-Keywords 1.150.0 1.180.0: Lists of reserved barewords and symbol names
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.291.100: Perl module for BSD process resource limit and priority functions
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
@@ -3419,7 +3421,7 @@ dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.360.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Compile 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.230.0: PSGI adapter for CGI
-dev-perl/CGI-Fast 2.100.0 2.120.0: CGI Interface for Fast CGI
+dev-perl/CGI-Fast 2.100.0 2.120.0 2.130.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r2: High Performance Templates and Variable Interpolation
 dev-perl/CGI-FormBuilder 3.100.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
@@ -3429,7 +3431,7 @@ dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
 dev-perl/CPAN-Checksums 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
-dev-perl/CPAN-Perl-Releases 3.380.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 3.380.0 3.560.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CSS-Minifier-XS 0.90.0-r1: XS based CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/Cache 2.110.0: the Cache interface
@@ -3518,7 +3520,7 @@ dev-perl/Crypt-DSA 1.170.0: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
 dev-perl/Crypt-IDEA 1.100.0: Parse and save PGP packet streams
 dev-perl/Crypt-OpenPGP 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
-dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2: OpenSSL's multiprecision integer arithmetic
+dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2 0.90.0: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.190.0: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r3: Crypt::OpenSSL::RSA module for perl
 dev-perl/Crypt-OpenSSL-Random 0.110.0: OpenSSL/LibreSSL pseudo-random number generator access
@@ -3537,9 +3539,9 @@ dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/Curses 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2: Perl UI framework based on the curses library
-dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
+dev-perl/CursesWidgets 1.997.0-r1 1.997.0-r2: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
-dev-perl/DBD-Pg 3.5.3: PostgreSQL database driver for the DBI module
+dev-perl/DBD-Pg 3.5.3 3.7.0: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.560.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0: Database independent interface for Perl
@@ -3566,11 +3568,11 @@ dev-perl/Data-ObjectDriver 0.150.0: Simple, transparent data interface, with cac
 dev-perl/Data-OptList 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
-dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
-dev-perl/Data-Random 0.80.0: A module used to generate random data
+dev-perl/Data-Perl 0.2.9 0.2.9-r1: Base classes wrapping fundamental Perl data types
+dev-perl/Data-Random 0.80.0 0.120.0: A module used to generate random data
 dev-perl/Data-ShowTable 4.600.0: routines to display tabular data in several formats
 dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
-dev-perl/Data-Structure-Util 0.150.0: Change nature of data within a structure
+dev-perl/Data-Structure-Util 0.150.0 0.160.0: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0: Validate and convert data types.
 dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
@@ -3578,10 +3580,10 @@ dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.110.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.270.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
-dev-perl/Date-Extract 0.50.0: Extract probable dates from strings
+dev-perl/Date-Extract 0.50.0 0.60.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
 dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
-dev-perl/Date-Manip 6.510.0: Perl date manipulation routines
+dev-perl/Date-Manip 6.510.0 6.600.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateTime 1.200.0: A date and time object
@@ -3589,12 +3591,12 @@ dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and 
 dev-perl/DateTime-Format-DateParse 0.50.0-r1: Parses Date::Parse compatible formats
 dev-perl/DateTime-Format-HTTP 0.420.0: Date conversion routines
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
-dev-perl/DateTime-Format-Mail 0.402.0: Convert between DateTime and RFC2822/822 formats
+dev-perl/DateTime-Format-Mail 0.402.0 0.403.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.40.0: Parse informal natural language date/time strings
 dev-perl/DateTime-Format-Strptime 1.700.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.70.0: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-Locale 0.460.0: Localization support for DateTime
-dev-perl/DateTime-Set 0.340.0: Datetime sets and set math
+dev-perl/DateTime-Set 0.340.0 0.390.0: Datetime sets and set math
 dev-perl/DateTime-TimeZone 1.930.0: Time zone object base class and factory
 dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
@@ -4200,7 +4202,7 @@ dev-perl/Test-LongString 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.60.0: Check for memory leaks and circular memory references
 dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
-dev-perl/Test-MockObject 1.201.505.270-r1: Perl extension for emulating troublesome interfaces
+dev-perl/Test-MockObject 1.201.505.270-r1 1.201.612.20: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
 dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-MockTime-HiRes 0.70.0: Replace actual time with simulated high resolution time
@@ -4287,17 +4289,17 @@ dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
-dev-perl/UNIVERSAL-isa 1.201.506.140: Attempt to recover from people calling UNIVERSAL::isa as a function
+dev-perl/UNIVERSAL-isa 1.201.506.140 1.201.710.120: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.180.0: UNIVERSAL::require - require() modules from a variable
 dev-perl/URI 1.710.0: Uniform Resource Identifiers (absolute and relative)
 dev-perl/URI-Fetch 0.130.0: Smart URI fetching/caching
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
-dev-perl/Unicode-LineBreak 2016.3.0: UAX #14 Unicode Line Breaking Algorithm
+dev-perl/Unicode-LineBreak 2016.3.0 2017.4.0-r1: UAX #14 Unicode Line Breaking Algorithm
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1: Conversions to and from arbitrary character sets and UTF8
-dev-perl/Unicode-String 2.90.0-r1: String manipulation for Unicode strings
+dev-perl/Unicode-String 2.90.0-r1 2.100.0: String manipulation for Unicode strings
 dev-perl/Unicode-UTF8 0.620.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0: Perl interface to the Unix getrusage system call
@@ -4312,27 +4314,27 @@ dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
 dev-perl/WWW-Form-UrlEncoded 0.240.0: parser and builder for application/x-www-form-urlencoded
 dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-www-form-urlencoded
 dev-perl/WWW-Mechanize 1.750.0: Handy web browsing in a Perl object
-dev-perl/WWW-Mechanize-FormFiller 0.110.0: Framework to automate HTML forms
+dev-perl/WWW-Mechanize-FormFiller 0.110.0 0.120.0: Framework to automate HTML forms
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
 dev-perl/Want 0.290.0: A generalisation of wantarray
 dev-perl/WeakRef 0.10.0-r1: An API to the Perl weak references
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 0.930.0-r1: Web service API to MusicBrainz database
-dev-perl/Wx 0.992.800: Perl bindings for wxGTK
+dev-perl/Wx 0.992.800 0.993.200-r1: Perl bindings for wxGTK
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1: Client-side interface to the X11 Protocol
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
-dev-perl/XML-Atom 0.410.0-r1: Atom feed and API implementation
+dev-perl/XML-Atom 0.410.0-r1 0.420.0: Atom feed and API implementation
 dev-perl/XML-Catalog 1.30.0: Resolve public identifiers and remap system identifiers
-dev-perl/XML-DOM 1.450.0: A Perl module for an DOM Level 1 compliant interface
-dev-perl/XML-DOM-XPath 0.140.0-r1: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
+dev-perl/XML-DOM 1.450.0 1.460.0-r1: A Perl module for an DOM Level 1 compliant interface
+dev-perl/XML-DOM-XPath 0.140.0-r1 0.140.0-r2: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
 dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: XML::Parser style and generic classes for handling of XML data
 dev-perl/XML-Encoding 2.90.0: Perl Module that parses encoding map XML files
 dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
-dev-perl/XML-Feed 0.530.0: Syndication feed parser and auto-discovery
+dev-perl/XML-Feed 0.530.0 0.530.0-r1: Syndication feed parser and auto-discovery
 dev-perl/XML-Filter-BufferText 1.10.0-r1: Filter to put all characters() in one event
 dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing of selected subtrees
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
@@ -4341,7 +4343,7 @@ dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API t
 dev-perl/XML-LibXML 2.12.800-r1 2.13.200: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.970.0: XML::LibXML based XML::Simple clone
-dev-perl/XML-LibXSLT 1.940.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
+dev-perl/XML-LibXSLT 1.940.0 1.960.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
 dev-perl/XML-NamespaceSupport 1.120.0: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
@@ -4378,7 +4380,7 @@ dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
 dev-perl/autobox 2.850.0 2.860.0: Call methods on native types
-dev-perl/autovivification 0.170.0: Lexically disable autovivification
+dev-perl/autovivification 0.170.0 0.180.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.5.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
@@ -6162,7 +6164,7 @@ dev-util/cloc 1.72: Count Lines of Code
 dev-util/cmake 3.9.6: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30: black box tests Unix command line tools
-dev-util/cmocka 1.0.1: A unit testing framework for C
+dev-util/cmocka 1.0.1 1.1.1: A unit testing framework for C
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
 dev-util/cppcheck 1.81: static analyzer of C/C++ code
@@ -6377,7 +6379,7 @@ games-board/gnome-chess 3.24.1: Play the classic two-player boardgame of chess
 games-board/gnome-mahjongg 3.22.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.20.1 3.24.0: Clear hidden mines from a minefield
 games-board/gnuchess 6.2.4: Console based chess interface
-games-board/gnugo 3.9.1-r1: A Go-playing program
+games-board/gnugo 3.9.1-r1 3.9.1-r2: A Go-playing program
 games-board/iagno 3.22.0: Dominate the board in a classic version of Reversi
 games-board/stockfish 8: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
@@ -6853,17 +6855,18 @@ kde-frameworks/syntax-highlighting 5.43.0: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.43.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49a_p20170225-r1: A DropDrawers clone. Multiple information organizer
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
-kde-misc/kdeconnect 1.2.1-r2: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 1.2.1-r2 1.3.1: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
-kde-misc/kdirstat 3.1.2: GUI equivalent to the du command based on KDE Frameworks
+kde-misc/kdirstat 3.1.2 3.1.3: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kio-gdrive 1.2.3: KIO Slave for Google Drive service
+kde-misc/kmarkdownwebview 0.5.2: KPart for rendering Markdown content
 kde-misc/krename 5.0.0: Powerful batch file renamer
 kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/latte-dock 0.7.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
-kde-misc/skanlite 2.0.1: KDE image scanning application
+kde-misc/skanlite 2.0.1 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.2: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0: KControl module for Wacom tablets
@@ -7166,8 +7169,8 @@ media-fonts/roboto 2.138: Standard font for Android 4.0 (Ice Cream Sandwich) and
 media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
 media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
-media-fonts/sil-abyssinica 1.200: SIL Opentype Unicode fonts for Ethiopic languages
-media-fonts/sil-arabicfonts 1.005: SIL Opentype Unicode fonts for Arabic Languages
+media-fonts/sil-abyssinica 1.200 1.500: SIL Opentype Unicode fonts for Ethiopic languages
+media-fonts/sil-arabicfonts 1.005 2.100: SIL Opentype Unicode fonts for Arabic Languages
 media-fonts/sil-charis 5.000-r1: Serif typeface for Roman and Cyrillic languages
 media-fonts/sil-doulos 5.000-r1: SIL Doulos - SIL font for Roman and Cyrillic Languages
 media-fonts/sil-ezra 2.51: SIL Ezra - Unicode Opentype fonts for Biblical Hebrew
@@ -7295,7 +7298,7 @@ media-gfx/kphotoalbum 5.3: Tool for indexing, searching, and viewing images
 media-gfx/krita 3.3.3: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/librecad 2.1.3-r2: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
-media-gfx/luminance-hdr 2.4.0: Graphical user interface that provides a workflow for HDR imaging
+media-gfx/luminance-hdr 2.4.0 2.5.1-r1: Graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.5.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mcomix 1.2.1: A fork of comix, a GTK image viewer for comic book archives
 media-gfx/metapixel 1.0.2-r1: a program for generating photomosaics
@@ -7304,7 +7307,7 @@ media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a director
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2: fast and easy graphics application for digital painters
-media-gfx/nomacs 3.6.1: Qt-based image viewer
+media-gfx/nomacs 3.6.1 3.8.1: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
@@ -7373,7 +7376,7 @@ media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r6: A ASCII-Graphics Library
 media-libs/adplug 2.2.1: A free, cross-platform, hardware independent AdLib sound player library
-media-libs/aften 0.0.8: An A/52 (AC-3) audio encoder
+media-libs/aften 0.0.8 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
 media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
 media-libs/alsa-lib 1.1.2: Advanced Linux Sound Architecture Library
@@ -7698,7 +7701,7 @@ media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis deco
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.6-r1 2.7.1: Audio processing system for plugins to extract information from audio data
-media-libs/vigra 1.11.0: C++ computer vision library emphasizing customizable algorithms and structures
+media-libs/vigra 1.11.0 1.11.1: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3: VisualOn AMR-WB encoder library
@@ -8223,7 +8226,7 @@ media-video/pitivi 0.97.1: A non-linear video editor using the GStreamer multime
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
-media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
+media-video/recordmydesktop 0.3.8.1-r4 0.3.8.1-r5: A desktop session recorder producing Ogg video/audio files
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
@@ -9136,7 +9139,7 @@ perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand an
 perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/erfa 1.2.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/kstars 17.08.3: Desktop Planetarium
+sci-astronomy/kstars 2.9.5 17.08.3: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/stellarium 0.14.3: 3D photo-realistic skies in real time
@@ -9323,7 +9326,7 @@ sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.13-r1: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.4.1: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.4.1 1.6.0: INDI Astronomical Control Protocol library
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
 sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
 sci-libs/libcerf 1.4: Efficient and accurate implementation of complex error functions
@@ -10773,7 +10776,7 @@ x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.10.3: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1: Qt terminal emulator widget
-x11-libs/qwt 5.2.3-r2 6.1.3-r1: 2D plotting library for Qt4 and Qt5
+x11-libs/qwt 5.2.3-r2 6.1.3-r1 6.1.3-r2: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
@@ -11142,7 +11145,7 @@ x11-terms/qterminal 0.7.1: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.21: rxvt clone with xft and unicode support
-x11-terms/sakura 3.3.4: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.3.4 3.5.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.7: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
