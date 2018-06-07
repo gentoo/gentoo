@@ -6,7 +6,7 @@ EAPI="6"
 inherit eutils multilib versionator wxwidgets
 
 DESCRIPTION="wxWidgets GUI for PostgreSQL"
-HOMEPAGE="http://www.pgadmin.org/"
+HOMEPAGE="https://www.pgadmin.org/"
 SRC_URI="mirror://postgresql/pgadmin/pgadmin3/v${PV}/src/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
