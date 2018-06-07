@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare setup test
+DEPEND=filecaps? ( sys-libs/libcap ) >=dev-lang/go-1.9 virtual/pkgconfig
+DESCRIPTION=A flexible DNS proxy, with support for encrypted DNS protocols
+EAPI=6
+HOMEPAGE=https://github.com/jedisct1/dnscrypt-proxy
+IUSE=+filecaps
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ISC
+SLOT=0
+SRC_URI=https://github.com/jedisct1/dnscrypt-proxy/archive/2.0.15.tar.gz -> dnscrypt-proxy-2.0.15.tar.gz
+_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=916564b72e2b4bef07127d0b884bb926
