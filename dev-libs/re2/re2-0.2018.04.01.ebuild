@@ -9,7 +9,7 @@ inherit multilib-minimal toolchain-funcs
 RE2_VER=${PV#0.}
 RE2_VER=${RE2_VER//./-}
 
-DESCRIPTION="An efficent, principled regular expression library"
+DESCRIPTION="An efficient, principled regular expression library"
 HOMEPAGE="https://github.com/google/re2"
 SRC_URI="https://github.com/google/re2/archive/${RE2_VER}.tar.gz -> re2-${RE2_VER}.tar.gz"
 
