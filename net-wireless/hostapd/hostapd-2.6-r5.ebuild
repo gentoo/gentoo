@@ -7,7 +7,10 @@ inherit toolchain-funcs eutils systemd savedconfig
 
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="http://hostap.epitest.fi"
-SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
+EXTRAS_VER="2.6-r5"
+EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
+SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz
+	https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -47,16 +50,16 @@ src_prepare() {
 	pushd ../ >/dev/null || die
 
 	# Add LibreSSL compatibility patch bug (#567262)
-	eapply "${FILESDIR}/${P}-libressl-compatibility.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/${P}-libressl-compatibility.patch"
 
 	# https://w1.fi/security/2017-1/wpa-packet-number-reuse-with-replayed-messages.txt
-	eapply "${FILESDIR}/2017-1/rebased-v2.6-0001-hostapd-Avoid-key-reinstallation-in-FT-handshake.patch"
-	eapply "${FILESDIR}/2017-1/rebased-v2.6-0002-Prevent-reinstallation-of-an-already-in-use-group-ke.patch"
-	eapply "${FILESDIR}/2017-1/rebased-v2.6-0003-Extend-protection-of-GTK-IGTK-reinstallation-of-WNM-.patch"
-	eapply "${FILESDIR}/2017-1/rebased-v2.6-0004-Prevent-installation-of-an-all-zero-TK.patch"
-	eapply "${FILESDIR}/2017-1/rebased-v2.6-0005-Fix-PTK-rekeying-to-generate-a-new-ANonce.patch"
-	eapply "${FILESDIR}/2017-1/rebased-v2.6-0006-TDLS-Reject-TPK-TK-reconfiguration.patch"
-	eapply "${FILESDIR}/2017-1/rebased-v2.6-0008-FT-Do-not-allow-multiple-Reassociation-Response-fram.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/2017-1/rebased-v2.6-0001-hostapd-Avoid-key-reinstallation-in-FT-handshake.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/2017-1/rebased-v2.6-0002-Prevent-reinstallation-of-an-already-in-use-group-ke.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/2017-1/rebased-v2.6-0003-Extend-protection-of-GTK-IGTK-reinstallation-of-WNM-.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/2017-1/rebased-v2.6-0004-Prevent-installation-of-an-all-zero-TK.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/2017-1/rebased-v2.6-0005-Fix-PTK-rekeying-to-generate-a-new-ANonce.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/2017-1/rebased-v2.6-0006-TDLS-Reject-TPK-TK-reconfiguration.patch"
+	eapply "${WORKDIR}/${EXTRAS_NAME}/2017-1/rebased-v2.6-0008-FT-Do-not-allow-multiple-Reassociation-Response-fram.patch"
 	default
 	popd >/dev/null || die
 
@@ -202,9 +205,9 @@ src_install() {
 		dobin nt_password_hash hlr_auc_gw
 	fi
 
-	newinitd "${FILESDIR}"/${PN}-init.d ${PN}
-	newconfd "${FILESDIR}"/${PN}-conf.d ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${WORKDIR}/${EXTRAS_NAME}"/${PN}-init.d ${PN}
+	newconfd "${WORKDIR}/${EXTRAS_NAME}"/${PN}-conf.d ${PN}
+	systemd_dounit "${WORKDIR}/${EXTRAS_NAME}"/${PN}.service
 
 	doman ${PN}{.8,_cli.1}
 
