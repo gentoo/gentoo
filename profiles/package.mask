@@ -398,12 +398,6 @@ media-plugins/gst-plugins-mad:1.0
 # that do not make it any more working. Bug #651030.
 >=sys-devel/distcc-3.3
 
-# Georgy Yakovlev <ya@sysdump.net> (13 Mar 2018)
-# 1.x version is no longer maintained by upstream
-# 2.x is in the tree and is better in almost every way
-# Removal in 90 days. Bug #650464
-=net-dns/dnscrypt-proxy-1.9.5-r1
-
 # Sebastian Pipping <sping@gentoo.org> (11 Mar 2018)
 # Breaks XFCE, 1.19.6 was fine (in that regard). Bug #650228
 >=x11-base/xorg-server-1.19.7
