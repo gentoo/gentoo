@@ -6,10 +6,10 @@ EAPI="6"
 inherit toolchain-funcs eutils systemd savedconfig
 
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
-HOMEPAGE="http://hostap.epitest.fi"
+HOMEPAGE="http://w1.fi"
 EXTRAS_VER="2.6-r5"
 EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
-SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz
+SRC_URI="http://w1.fi/releases/${P}.tar.gz
 	https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz"
 
 LICENSE="BSD"
