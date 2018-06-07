@@ -23,7 +23,6 @@
     <remote-id type="cpan-module">CGI::Session::Serialize::freezethaw</remote-id>
     <remote-id type="cpan-module">CGI::Session::Serialize::storable</remote-id>
     <remote-id type="cpan-module">CGI::Session::Test::Default</remote-id>
-    <remote-id type="cpan-module">CGI::Session::Test::SimpleObjectClass</remote-id>
     <remote-id type="cpan-module">CGI::Session::Tutorial</remote-id>
     <remote-id type="cpan-module">OverloadedClass</remote-id>
   </upstream>
