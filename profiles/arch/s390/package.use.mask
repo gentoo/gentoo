@@ -5,6 +5,7 @@
 # Not tested
 app-crypt/pinentry fltk
 dev-python/cssselect doc
+dev-vcs/subversion kwallet
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
