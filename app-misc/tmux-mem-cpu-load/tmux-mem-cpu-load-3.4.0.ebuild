@@ -9,7 +9,6 @@ IUSE=""
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"git://github.com/thewtex/tmux-mem-cpu-load.git"}
-	KEYWORDS="amd64 x86"
 	SRC_URI=""
 else
 	KEYWORDS="amd64 x86"
