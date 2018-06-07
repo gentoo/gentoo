@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
 DEPEND=>=dev-libs/boost-1.42.0 >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) app-arch/xz-utils sys-apps/groff doc? ( app-doc/doxygen media-gfx/graphviz ) nls? ( >=app-text/po4a-0.40 sys-devel/gettext ) test? ( >=dev-util/cppunit-1.10.0 ) sys-devel/make >=dev-util/cmake-3.9.6
 DESCRIPTION=Utility to execute commands in a chroot environment
 EAPI=6
-HOMEPAGE=http://packages.debian.org/source/sid/schroot
+HOMEPAGE=https://packages.debian.org/source/sid/schroot
 IUSE=btrfs +dchroot debug doc lvm nls pam test
 KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/boost-1.42.0 >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btr
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/schroot/schroot_1.6.10.orig.tar.xz mirror://debian/pool/main/s/schroot/schroot_1.6.10-2.debian.tar.xz
 _eclasses_=bash-completion-r1	7e76462890d7d19cad453151876b0ecf	cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	63392afb034aad67f17fa129019eb4d9	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=1bdc986bb327b0c54099f487bc865011
+_md5_=880939d1ab1916c47f4355756dd2c04c

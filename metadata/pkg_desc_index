@@ -893,7 +893,7 @@ app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nkf 2.1.3: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 2.0.6: GUI gettext translations editor
-app-i18n/pology 0.11-r1 0.12: A framework for custom processing of PO files
+app-i18n/pology 0.12: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
@@ -1067,7 +1067,7 @@ app-misc/ondir 0.2.2-r2: Automatically execute scripts as you traverse directori
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.3: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 3.1.1 4.1.1: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 4.1.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
@@ -1110,7 +1110,7 @@ app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 
 app-misc/timestamp 1.1-r1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmux 2.6: Terminal multiplexer
-app-misc/tmux-mem-cpu-load 2.2.1-r1 3.4.0: CPU, RAM memory, and load monitor for use with tmux
+app-misc/tmux-mem-cpu-load 3.4.0: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 2.2.2: tmux-based terminal divider
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
@@ -1447,7 +1447,7 @@ app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scrollkeeper 9999-r2: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
-app-text/sdcv 0.5.0_beta2 0.5.0_beta2-r1: Console version of Stardict program
+app-text/sdcv 0.5.0_beta2-r1: Console version of Stardict program
 app-text/sgml-common 0.6.3-r6: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
@@ -6293,7 +6293,7 @@ dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/scala-ide 4.1.0: The Scala IDE
-dev-util/schroot 1.6.10-r3 1.6.10-r4: Utility to execute commands in a chroot environment
+dev-util/schroot 1.6.10-r4: Utility to execute commands in a chroot environment
 dev-util/scons 2.4.1 2.5.1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2: simple command-line tool to talk to serial devices
@@ -6855,7 +6855,7 @@ kde-frameworks/syntax-highlighting 5.43.0: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.43.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49a_p20170225-r1: A DropDrawers clone. Multiple information organizer
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
-kde-misc/kdeconnect 1.2.1-r2 1.3.1: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 1.3.1: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 0.9.98_p20170219-r1: Frontend to diff3 based on Qt/KF5
 kde-misc/kdirstat 3.1.2 3.1.3: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kio-gdrive 1.2.3: KIO Slave for Google Drive service
@@ -6866,7 +6866,7 @@ kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasm
 kde-misc/latte-dock 0.7.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
-kde-misc/skanlite 2.0.1 2.1.0.1: KDE image scanning application
+kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.2: A collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.0.0: KControl module for Wacom tablets
@@ -7307,7 +7307,7 @@ media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a director
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2: fast and easy graphics application for digital painters
-media-gfx/nomacs 3.6.1 3.8.1: Qt-based image viewer
+media-gfx/nomacs 3.8.1: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
@@ -9139,7 +9139,7 @@ perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand an
 perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/erfa 1.2.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/kstars 2.9.5 17.08.3: Desktop Planetarium
+sci-astronomy/kstars 2.9.5: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/stellarium 0.14.3: 3D photo-realistic skies in real time
@@ -11145,7 +11145,7 @@ x11-terms/qterminal 0.7.1: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.21: rxvt clone with xft and unicode support
-x11-terms/sakura 3.3.4 3.5.0: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.5.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.7: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 0.9.1: Feature rich terminal emulator using the Enlightenment Foundation Libraries
