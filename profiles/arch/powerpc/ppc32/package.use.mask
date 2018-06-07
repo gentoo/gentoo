@@ -40,7 +40,7 @@ sci-libs/gdal mdb
 sys-devel/clang-runtime openmp
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
-# dev-qt/qtwebkit:5 and kde-frameworks/*:5 not keyworded.
+# kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
