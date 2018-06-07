@@ -26,6 +26,9 @@
       enable this flag if you want to use a system wide instance. If
       unsure, enable this flag.
     </flag>
+    <flag name="gsettings">
+      Use GSettings instead of GConf to store user preferences.
+    </flag>
     <flag name="oss">
       Enable OSS sink/source (output/input). Deprecated, upstream does
       not support this on systems where other sink/source systems are
