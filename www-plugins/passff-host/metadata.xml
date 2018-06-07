@@ -9,10 +9,12 @@
 	<name>Proxy Maintainers</name>
 </maintainer>
 <use>
-	<flag name="firefox">Install plugin for <pkg>www-client/firefox</pkg></flag>
-	<flag name="firefox-bin">Install plugin for <pkg>www-client/firefox-bin</pkg></flag>
+	<flag name="chrome">Install plugin for chrome (which also includes opera)</flag>
+	<flag name="chromium">Install plugin for chromium</flag>
+	<flag name="firefox">Install plugin for firefox</flag>
+	<flag name="vivaldi">Install plugin for vivaldi</flag>
 </use>
 <upstream>
-	<remote-id type="github">passff/passff</remote-id>
+	<remote-id type="github">passff/passff-host</remote-id>
 </upstream>
 </pkgmetadata>
