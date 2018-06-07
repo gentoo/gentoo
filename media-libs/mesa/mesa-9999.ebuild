@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/mesa.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 if [[ ${PV} = 9999 ]]; then
 	GIT_ECLASS="git-r3"
