@@ -6,7 +6,7 @@ EAPI=6
 inherit check-reqs cuda toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
-DRIVER_PV="387.26"
+DRIVER_PV="396.26"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
@@ -19,9 +19,8 @@ IUSE="debugger doc eclipse profiler"
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	<sys-devel/gcc-7[cxx]
-	<sys-libs/glibc-2.26
-	>=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm]
+	sys-devel/gcc[cxx]
+	>=x11-drivers/nvidia-drivers-396.24[X,uvm]
 	debugger? (
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses:5/5[tinfo]
@@ -48,7 +47,7 @@ src_unpack() {
 src_prepare() {
 	local cuda_supported_gcc
 
-	cuda_supported_gcc="4.7 4.8 4.9 5.3 5.4 6.3 6.4"
+	cuda_supported_gcc="4.7 4.8 4.9 5.3 5.4 6.3 6.4 7.2 7.3"
 
 	sed \
 		-e "s:CUDA_SUPPORTED_GCC:${cuda_supported_gcc}:g" \
