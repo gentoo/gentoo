@@ -31,6 +31,7 @@
 		* Supports multiple languages, translated by the community.
 	</longdescription>
 	<use>
+		<flag name="jsoncpp">Enable using a system-wide JSONCPP</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
 		<flag name="postgres">Optionally use PostgreSQL as map backend</flag>
 		<flag name="redis">Enable redis backend via
