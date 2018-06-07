@@ -1226,7 +1226,14 @@ glibc_do_src_install() {
 	dosbin locale-gen
 	doman *.[0-8]
 	insinto /etc
-	doins locale.gen
+	# install locale header
+	doins "${FILESDIR}"/locale.gen
+	# generate list of all supported locales on this version of glibc
+	sed -e '1,3d' -e 's:/: :g' -e 's: \\::g' -e 's:^:#:g' \
+		"${S}"/localedata/SUPPORTED >> ${D%/}/etc/locale.gen || die
+	# enable en_US.UTF-8 by default in order to save some sorrow for those with
+	# less powerful machines
+	sed -i 's:#en_US.UTF-8 UTF-8:en_US.UTF-8 UTF-8:' ${D%/}/etc/locale.gen || die
 
 	# Make sure all the ABI's can find the locales and so we only
 	# have to generate one set

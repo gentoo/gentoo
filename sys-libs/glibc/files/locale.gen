@@ -1,0 +1,21 @@
+# /etc/locale.gen: list all of the locales you want to have on your system.
+# See the locale.gen(5) man page for more details.
+#
+# The format of each line:
+# <locale name> <charset>
+#
+# Where <locale name> starts with a name as found in /usr/share/i18n/locales/.
+# It must be unique in the file as it is used as the key to locale variables.
+# For non-default encodings, the <charset> is typically appended.
+#
+# Where <charset> is a charset located in /usr/share/i18n/charmaps/ (sans any
+# suffix like ".gz").
+#
+# All blank lines and lines starting with # are ignored.
+#
+# For the default list of supported combinations, see the file:
+# /usr/share/i18n/SUPPORTED
+#
+# Whenever glibc is emerged, the locales listed here will be automatically
+# rebuilt for you.  After updating this file, you can simply run `locale-gen`
+# yourself instead of re-emerging glibc.
