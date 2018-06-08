@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools git-2 gnome2-utils mono-env xdg-utils
+inherit autotools git-r3 gnome2-utils mono-env xdg-utils
 
 DESCRIPTION="Simple Painting for Gtk"
 HOMEPAGE="https://pinta-project.com"
