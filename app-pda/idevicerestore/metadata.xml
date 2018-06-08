@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>https://github.com/libimobiledevice/idevicerestore/issues</bugs-to>
+		<changelog>https://github.com/libimobiledevice/idevicerestore/commits/master</changelog>
+		<doc>https://github.com/libimobiledevice/idevicerestore/tree/master/docs/idevicerestore.1</doc>
+	</upstream>
+	<maintainer type="person">
+		<email>tmmonckton@gmail.com</email>
+		<name>Tobias Monckton</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	<longdescription>
+		idevicerestore allows the restoration of mobile Apple hardware, including iPhones,
+		iPads, and iPod touches, from IPSW files. It can also capture SHSH files, and use
+		custom firmware, if the user can provide it.
+	</longdescription>
+</pkgmetadata>
