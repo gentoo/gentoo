@@ -351,12 +351,17 @@ multilib_src_configure() {
 	fi
 
 	if use gallium; then
-		gallium_enable swrast
+		GALLIUM_DRIVERS+="swrast "
 		emesonargs+=( -Dosmesa=$(usex osmesa gallium none) )
 	else
-		dri_driver_enable swrast
+		DRI_DRIVERS+="swrast "
 		emesonargs+=( -Dosmesa=$(usex osmesa classic none) )
 	fi
+
+	driver_list() {
+		arr=($(printf "%s\n" "$@" | sort -u | tr '\n' ','))
+		echo "${arr: : -1}"
+	}
 
 	emesonargs+=(
 		-Dbuild-tests=$(usex test true false)
@@ -372,9 +377,9 @@ multilib_src_configure() {
 		-Dlibunwind=$(usex unwind true false)
 		-Dlmsensors=$(usex lm_sensors true false)
 		-Dvalgrind=$(usex valgrind auto false)
-		-Ddri-drivers=${DRI_DRIVERS}
-		-Dgallium-drivers=${GALLIUM_DRIVERS}
-		-Dvulkan-drivers=${VULKAN_DRIVERS}
+		-Ddri-drivers=$(driver_list ${DRI_DRIVERS})
+		-Dgallium-drivers=$(driver_list ${GALLIUM_DRIVERS})
+		-Dvulkan-drivers=$(driver_list ${VULKAN_DRIVERS})
 	)
 	meson_src_configure
 }
@@ -455,54 +460,23 @@ pkg_prerm() {
 
 # $1 - VIDEO_CARDS flag
 # other args - names of DRI drivers to enable
-# TODO: avoid code duplication for a more elegant implementation
 dri_driver_enable() {
-	case $# in
-		# for enabling unconditionally
-		1)
-			DRI_DRIVERS+=",$1"
-			;;
-		*)
-			if use $1; then
-				shift
-				for i in $@; do
-					DRI_DRIVERS+=",${i}"
-				done
-			fi
-			;;
-	esac
+	if use $1; then
+		shift
+		DRI_DRIVERS+="$@ "
+	fi
 }
 
 gallium_enable() {
-	case $# in
-		# for enabling unconditionally
-		1)
-			GALLIUM_DRIVERS+=",$1"
-			;;
-		*)
-			if use $1; then
-				shift
-				for i in $@; do
-					GALLIUM_DRIVERS+=",${i}"
-				done
-			fi
-			;;
-	esac
+	if use $1; then
+		shift
+		GALLIUM_DRIVERS+="$@ "
+	fi
 }
 
 vulkan_enable() {
-	case $# in
-		# for enabling unconditionally
-		1)
-			VULKAN_DRIVERS+=",$1"
-			;;
-		*)
-			if use $1; then
-				shift
-				for i in $@; do
-					VULKAN_DRIVERS+=",${i}"
-				done
-			fi
-			;;
-	esac
+	if use $1; then
+		shift
+		VULKAN_DRIVERS+="$@ "
+	fi
 }
