@@ -3350,7 +3350,7 @@ dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
-dev-perl/Ace 1.920.0-r1 1.920.0-r3: Object-Oriented Access to ACEDB Databases
+dev-perl/Ace 1.920.0-r3: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.100.0: A module for merging hierarchies using the C3 algorithm
@@ -3359,7 +3359,7 @@ dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two f
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
 dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
-dev-perl/Alien-wxWidgets 0.670.0-r1 0.690.0-r1: Building, finding and using wxWidgets binaries
+dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.140.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-HTTP 2.230.0: Simple but non-blocking HTTP/HTTPS client
