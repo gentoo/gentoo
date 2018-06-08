@@ -810,6 +810,7 @@ python_replicate_script() {
 		python_export PYTHON_SCRIPTDIR
 
 		(
+			exeopts -m 0755
 			exeinto "${PYTHON_SCRIPTDIR#${EPREFIX}}"
 			doexe "${files[@]}"
 		)
