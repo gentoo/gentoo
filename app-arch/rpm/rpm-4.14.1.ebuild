@@ -108,6 +108,12 @@ src_install() {
 }
 
 src_test() {
+	# Known to fail with FEATURES=usersandbox (bug #657500):
+	if has usersandbox $FEATURES ; then
+		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
+			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	fi
+
 	emake check
 }
 
