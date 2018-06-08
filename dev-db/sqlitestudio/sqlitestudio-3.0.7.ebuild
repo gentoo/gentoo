@@ -5,7 +5,7 @@
 
 EAPI=6
 
-inherit desktop eutils kde5-functions qmake-utils xdg-utils
+inherit desktop eutils gnome2-utils kde5-functions qmake-utils xdg-utils
 
 DESCRIPTION="SQLiteStudio3 is a powerful cross-platform SQLite database manager"
 HOMEPAGE="http://sqlitestudio.pl"
@@ -126,5 +126,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }

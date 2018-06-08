@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PLOCALES="de es fr it pl pt_BR ru sk zh_CN"
 
-inherit desktop eutils l10n qmake-utils xdg
+inherit desktop eutils gnome2-utils l10n qmake-utils xdg
 
 DESCRIPTION="Powerful cross-platform SQLite database manager"
 HOMEPAGE="https://sqlitestudio.pl"
@@ -136,4 +136,12 @@ src_install() {
 	)
 	make_desktop_entry "${make_desktop_entry_args[@]}" \
 		"$( printf '%s\n' "MimeType=application/x-sqlite3;" )"
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
