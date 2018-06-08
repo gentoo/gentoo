@@ -5,7 +5,7 @@ EAPI=6
 
 PLOCALES="de es fr it pl pt_BR ru sk zh_CN"
 
-inherit eutils l10n qmake-utils xdg
+inherit desktop eutils l10n qmake-utils xdg
 
 DESCRIPTION="Powerful cross-platform SQLite database manager"
 HOMEPAGE="https://sqlitestudio.pl"

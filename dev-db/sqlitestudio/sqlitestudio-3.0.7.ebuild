@@ -5,7 +5,7 @@
 
 EAPI=6
 
-inherit kde5-functions qmake-utils xdg-utils
+inherit desktop eutils kde5-functions qmake-utils xdg-utils
 
 DESCRIPTION="SQLiteStudio3 is a powerful cross-platform SQLite database manager"
 HOMEPAGE="http://sqlitestudio.pl"
