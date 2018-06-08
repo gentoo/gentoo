@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-inherit autotools fdo-mime flag-o-matic gnome2-utils python-single-r1
+inherit autotools flag-o-matic gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="https://hexchat.github.io/"
@@ -111,6 +111,8 @@ pkg_preinst() {
 pkg_postinst() {
 	if use gtk ; then
 		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 	else
 		elog "You have disabled the gtk USE flag. This means you don't have"
 		elog "the GTK-GUI for HexChat but only a text interface called \"hexchat-text\"."
@@ -128,5 +130,7 @@ pkg_postinst() {
 pkg_postrm() {
 	if use gtk ; then
 		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 	fi
 }
