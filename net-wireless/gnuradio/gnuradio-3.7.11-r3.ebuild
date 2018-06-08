@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils fdo-mime gnome2-utils python-single-r1 eutils
+inherit cmake-utils eutils gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="http://gnuradio.org/"
@@ -13,11 +13,11 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="http://gnuradio.org/git/gnuradio.git"
+	EGIT_REPO_URI="https://www.gnuradio.org/cgit/gnuradio.git"
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://gnuradio.org/releases/gnuradio/${P}.tar.gz"
+	SRC_URI="https://www.gnuradio.org/releases/gnuradio/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -214,8 +214,8 @@ pkg_postinst()
 	local GRC_ICON_SIZES="32 48 64 128 256"
 
 	if use grc ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		xdg_desktop_database_update
+		xdg_mime_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource install --noupdate --context mimetypes --size ${size} \
 				"${EROOT}/usr/share/pixmaps/grc-icon-${size}.png" application-gnuradio-grc \
@@ -233,8 +233,8 @@ pkg_postrm()
 	local GRC_ICON_SIZES="32 48 64 128 256"
 
 	if use grc ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		xdg_desktop_database_update
+		xdg_mime_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource uninstall --noupdate --context mimetypes --size ${size} \
 				application-gnuradio-grc || ewarn "icon uninstall failed"
