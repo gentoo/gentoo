@@ -261,11 +261,6 @@ dev-ruby/twitter:5
 >=media-libs/coin-4.0.0
 >=media-libs/simage-1.7.1
 
-# Mikle Kolyada <zlogene@gentoo.org> (4 May 2018)
-# Upstream is dead, no maintainer, no longer updated.
-# Masked for removal in 30 days
-games-misc/fortune-mod-gentoo-ru
-
 # Mike Gilbert <floppym@gentoo.org> (30 Apr 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -274,12 +269,6 @@ games-misc/fortune-mod-gentoo-ru
 # Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
 # Masked for testing
 =dev-libs/libressl-2.7*
-
-# Mikle Kolyada <zlogene@gentoo.org> (27 Apr 2018)
-# Upstream is dead, the site with the sources is down.
-# There's no chance to get the sources (fetch restricted)
-# Removal in 30 days (bug #642866)
-app-emulation/armv8-fast-model
 
 # Hans de Graaff <graaff@gentoo.org> (27 Apr 2018)
 # No longer supported upstream. Use ruby23 instead.
