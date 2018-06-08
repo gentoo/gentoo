@@ -298,11 +298,6 @@ dev-ruby/tzinfo:0
 # Removal in 30 days.  Bug #537720.
 dev-python/iconvcodec
 
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Does not work with any of the unmasked django versions.  Unmaintained.
-# No reverse dependencies.  Removal in 30 days.  Bug #527176.
-dev-python/django-evolution
-
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
 # See: https://bugs.gentoo.org/653678
