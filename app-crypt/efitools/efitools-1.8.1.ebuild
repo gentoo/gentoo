@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Tools for manipulating UEFI secure boot platforms"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git"
-SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snapshot/efitools-1.8.1.tar.gz"
+SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
