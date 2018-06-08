@@ -82,6 +82,7 @@ udev_dorules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_udev_get_udevdir)"/rules.d
 		doins "${@}"
 	)
@@ -96,6 +97,7 @@ udev_newrules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_udev_get_udevdir)"/rules.d
 		newins "${@}"
 	)
