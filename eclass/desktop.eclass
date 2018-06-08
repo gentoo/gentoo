@@ -195,6 +195,7 @@ make_desktop_entry() {
 	(
 		# wrap the env here so that the 'insinto' call
 		# doesn't corrupt the env of the caller
+		insopts -m 0644
 		insinto /usr/share/applications
 		doins "${desktop}"
 	) || die "installing desktop file failed"
@@ -228,6 +229,7 @@ make_session_desktop() {
 	(
 	# wrap the env here so that the 'insinto' call
 	# doesn't corrupt the env of the caller
+	insopts -m 0644
 	insinto /usr/share/xsessions
 	doins "${desktop}"
 	)
@@ -243,6 +245,7 @@ domenu() {
 	# wrap the env here so that the 'insinto' call
 	# doesn't corrupt the env of the caller
 	local i j ret=0
+	insopts -m 0644
 	insinto /usr/share/applications
 	for i in "$@" ; do
 		if [[ -f ${i} ]] ; then
@@ -269,6 +272,7 @@ newmenu() {
 	(
 	# wrap the env here so that the 'insinto' call
 	# doesn't corrupt the env of the caller
+	insopts -m 0644
 	insinto /usr/share/applications
 	newins "$@"
 	)
@@ -282,6 +286,7 @@ _iconins() {
 	(
 	# wrap the env here so that the 'insinto' call
 	# doesn't corrupt the env of the caller
+	insopts -m 0644
 	local funcname=$1; shift
 	local size dir
 	local context=apps
