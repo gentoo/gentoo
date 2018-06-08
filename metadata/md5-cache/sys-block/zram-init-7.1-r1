@@ -5,8 +5,8 @@ EAPI=6
 HOMEPAGE=https://github.com/vaeth/zram-init/
 KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=!<sys-apps/openrc-0.13
+RDEPEND=>=app-shells/push-2.0 !<sys-apps/openrc-0.13
 SLOT=0
 SRC_URI=https://github.com/vaeth/zram-init/archive/v7.1.tar.gz -> zram-init-7.1.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	systemd	a31844b675f1a1fea87fbe1144aee5f5	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=61785d8c168f94fe1f63009f4bf0cc09
+_md5_=249380c1f12b66aa5ffddb719294050b
