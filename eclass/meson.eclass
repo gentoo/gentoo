@@ -202,6 +202,21 @@ meson_use() {
 	usex "$1" "-D${2-$1}=true" "-D${2-$1}=false"
 }
 
+
+# @FUNCTION: meson_usex
+# @USAGE: <USE flag> [option name] [true output] [false output]
+# @DESCRIPTION:
+# Given a USE flag, optional meson project option and a true and false
+# value, outputs a string like:
+#
+#   -Doption=[true output]
+#   -Doption=[false output]
+#
+# If the project option is unspecified, it defaults to the USE flag.
+meson_usex() {
+	usex "$1" "-D${*: -3:1}=${*: -2:1}" "-D${*: -3:1}=${*: -1:1}"
+}
+
 # @FUNCTION: meson_src_configure
 # @DESCRIPTION:
 # This is the meson_src_configure function.
