@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,34 +9,34 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug ipv6"
+KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
+IUSE="+client debug ipv6"
 
-RDEPEND="sys-libs/ncurses
-	sys-libs/readline"
+RDEPEND="client? ( sys-libs/ncurses )
+	client? ( sys-libs/readline )"
 DEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-devel/m4"
 
 src_prepare() {
+	eapply_user
 	mkdir ipv6
 	tar c --exclude ipv6 . | tar x -C ipv6
-	eapply_user
 }
 
 src_configure() {
 	econf \
-		--enable-client \
 		--disable-ipv6 \
 		--localstatedir="${EPREFIX}/var" \
+		$(use_enable client) \
 		$(use_enable debug)
 
 	if use ipv6; then
 		cd ipv6
 		econf \
-			--enable-client \
 			--enable-ipv6 \
 			--localstatedir="${EPREFIX}/var" \
+			$(use_enable client) \
 			$(use_enable debug)
 	fi
 }
@@ -51,11 +51,17 @@ src_compile() {
 
 src_install() {
 	if use ipv6; then
-		newbin ipv6/birdc birdc6
+		if use client; then
+			newbin ipv6/birdc birdc6
+		fi
+		newbin ipv6/birdcl birdcl6
 		newsbin ipv6/bird bird6
 		newinitd "${FILESDIR}/initd-v6-${PN}-1.3.8" bird6
 	fi
-	dobin birdc
+	if use client; then
+		dobin birdc
+	fi
+	dobin birdcl
 	dosbin bird
 	newinitd "${FILESDIR}/initd-v4-${PN}-1.3.8" bird
 	dodoc doc/bird.conf.example
