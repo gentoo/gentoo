@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>https://github.com/libimobiledevice/libirecovery/issues</bugs-to>
+		<changelog>https://github.com/libimobiledevice/libirecovery/commits/master</changelog>
+		<doc>https://github.com/libimobiledevice/libirecovery/README</doc>
+		<remote-id type="github">libimobiledevice/libirecovery</remote-id>
+	</upstream>
+	<maintainer type="person">
+		<email>tmmonckton@gmail.com</email>
+		<name>Tobias Monckton</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	<longdescription>
+		libirecovery is a library provided by the libimobiledevice project which implements
+		communication to the iBoot/iBSS system found on Apple's mobile devices (iPhones,
+		iPod Touches, iPads) via a USB connection. A command-line utility is also provided
+		if necessary.
+	</longdescription>
+</pkgmetadata>
