@@ -295,13 +295,13 @@ multilib_src_configure() {
 
 	if use gallium; then
 		emesonargs+=(
-			-Dgallium-nine=$(usex d3d9 true false)
-			-Dllvm=$(usex llvm true false)
+			$(meson_use d3d9 gallium-nine)
+			$(meson_use llvm)
 			-Dgallium-omx=$(usex openmax bellagio disabled)
-			-Dgallium-va=$(usex vaapi true false)
-			-Dgallium-vdpau=$(usex vdpau true false)
-			-Dgallium-xa=$(usex xa true false)
-			-Dgallium-xvmc=$(usex xvmc true false)
+			$(meson_use vaapi gallium-vaapi)
+			$(meson_use vdpau gallium-vdpau)
+			$(meson_use xa gallium-xa)
+			$(meson_use xvmc gallium-xvmc)
 		)
 		use vaapi && emesonargs+=( -Dva-libs-path=/usr/$(get_libdir)/va/drivers )
 
@@ -342,7 +342,7 @@ multilib_src_configure() {
 
 	# x86 hardened pax_kernel needs glx-rts, bug 240956
 	if [[ ${ABI} == x86 ]]; then
-		emesonargs+=( -Dglx-read-only-text=$(usex pax_kernel true false) )
+		emesonargs+=( $(meson_use pax_kernel glx-read-only-text) )
 	fi
 
 	# on abi_x86_32 hardened we need to have asm disable
@@ -364,18 +364,18 @@ multilib_src_configure() {
 	}
 
 	emesonargs+=(
-		-Dbuild-tests=$(usex test true false)
+		$(meson_use test build-tests)
 		-Dglx=dri
 		-Dshared-glapi=true
-		-Dtexture-float=$(usex bindist false true)
-		-Dgallium-nine=$(usex d3d9 true false)
-		-Ddri3=$(usex dri3 true false)
-		-Degl=$(usex egl true false)
-		-Dgbm=$(usex gbm true false)
-		-Dgles1=$(usex gles1 true false)
-		-Dgles2=$(usex gles2 true false)
-		-Dlibunwind=$(usex unwind true false)
-		-Dlmsensors=$(usex lm_sensors true false)
+		$(meson_use !bindist texture-float)
+		$(meson_use d3d9 gallium-nine)
+		$(meson_use dri3)
+		$(meson_use egl)
+		$(meson_use gbm)
+		$(meson_use gles1)
+		$(meson_use gles2)
+		$(meson_use unwind libunwind)
+		$(meson_use lm_sensors lmsensors)
 		-Dvalgrind=$(usex valgrind auto false)
 		-Ddri-drivers=$(driver_list ${DRI_DRIVERS})
 		-Dgallium-drivers=$(driver_list ${GALLIUM_DRIVERS})
