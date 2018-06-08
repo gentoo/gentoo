@@ -22,13 +22,16 @@ DEPEND="
 	>=media-libs/sdl-ttf-2.0.9
 "
 RDEPEND="${DEPEND}
-	~games-rpg/freedink-data-1.08.20140901
+	games-rpg/freedink-data
 "
 DEPEND="${DEPEND}
 	dev-libs/check
 	virtual/pkgconfig
 	sys-devel/gettext
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-108.4-no-windres.patch
+)
 
 src_prepare() {
 	default
