@@ -3,7 +3,7 @@
 
 # Michael Haubenwallner <haubi@gentoo.org> (14 May 2018)
 # stack protector does not fully work on Cygwin yet
-=sys-devel/gcc-6* -ssp
+sys-devel/gcc -ssp
 
 # Michael Haubenwallner <haubi@gentoo.org> (23 Mar 2017)
 # Using nettle hides a conflict between wincrypt and openssl.
