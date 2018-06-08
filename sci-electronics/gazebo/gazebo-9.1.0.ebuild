@@ -11,7 +11,7 @@ SRC_URI="https://osrf-distributions.s3.amazonaws.com/gazebo/releases/${P}.tar.bz
 
 LICENSE="Apache-2.0"
 # Subslot = major version = soname of libs
-SLOT="0/8"
+SLOT="0/9"
 KEYWORDS="~amd64"
 IUSE="cpu_flags_x86_sse2 libav test"
 
@@ -31,7 +31,7 @@ RDEPEND="
 	!libav? ( >=media-video/ffmpeg-2.6:0= )
 	sci-libs/gts
 	>=sci-physics/bullet-2.82
-	>=dev-libs/sdformat-5.0:=
+	>=dev-libs/sdformat-6.0:=
 	dev-qt/qtwidgets:5
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
@@ -43,9 +43,9 @@ RDEPEND="
 	sci-libs/hdf5:=[cxx]
 	sys-apps/util-linux
 	media-gfx/graphviz
-	net-libs/ignition-msgs:0=
-	>=sci-libs/ignition-math-2.3:3=
-	net-libs/ignition-transport:3=
+	net-libs/ignition-msgs:1=
+	sci-libs/ignition-math:4=
+	net-libs/ignition-transport:4=
 	x11-libs/qwt:6=[qt5]
 "
 DEPEND="${RDEPEND}
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PATCHES=( "${FILESDIR}/qwt.patch" "${FILESDIR}/tinyxml6.patch" )
+PATCHES=( "${FILESDIR}/qwt.patch" )
 
 src_configure() {
 	# doesnt build without it
