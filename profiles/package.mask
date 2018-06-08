@@ -292,12 +292,6 @@ dev-ruby/tzinfo:0
 # Package version depends on Qt-5.10 that was/is/will not be in tree.
 >=sci-misc/mendeleydesktop-1.18
 
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Apparently redundant to built-in Python features.  Homepage gone
-# without trace.  Last release in 2003.  No reverse dependencies.
-# Removal in 30 days.  Bug #537720.
-dev-python/iconvcodec
-
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
 # See: https://bugs.gentoo.org/653678
