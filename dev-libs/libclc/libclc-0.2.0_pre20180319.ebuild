@@ -34,6 +34,7 @@ IUSE=""
 
 RDEPEND="
 	|| (
+		sys-devel/clang:7
 		sys-devel/clang:6
 		sys-devel/clang:5
 		sys-devel/clang:4
@@ -42,7 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
-LLVM_MAX_SLOT=6
+LLVM_MAX_SLOT=7
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
