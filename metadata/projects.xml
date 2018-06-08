@@ -4120,6 +4120,10 @@ developers and volunteer mentors.</description>
       <email>tamiko@gentoo.org</email>
       <name>Matthias Maier</name>
     </member>
+    <member>
+      <email>vdupras@gentoo.org</email>
+      <name>Virgil Dupras</name>
+    </member>
   </project>
   <project>
     <email>vmware@gentoo.org</email>
