@@ -7,5 +7,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc
 LICENSE=CC-BY-SA-2.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/devmanual-0_pre20141116.tar.gz
-_eclasses_=readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
 _md5_=29fc17a51063da4e25cb135e56d8ca87

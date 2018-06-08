@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~ppc-aix ~amd64-
 LICENSE=OPL
 SLOT=0
 SRC_URI=ftp://ftp.ics.com/openmotif/openmotif-2.3.0-manual.pdf.tgz
-_eclasses_=readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
 _md5_=a00de83a469be17e6d5b3a9b77198cd2
