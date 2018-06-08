@@ -1,12 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils fixheadtails qmail user
 
 HOMEPAGE="http://www.inter7.com/index.php?page=vpopmail"
-DESCRIPTION="A collection of programs to manage virtual email domains and accounts on your Qmail mail servers"
+DESCRIPTION="Collection of programs to manage virtual email on Qmail servers"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -18,9 +18,61 @@ REQUIRED_USE="mysql? ( !postgres )"
 DEPEND="virtual/qmail
 	maildrop? ( mail-filter/maildrop )
 	mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c[mysqlcompat] ) )
-	postgres? ( dev-db/postgresql[server] )
+	postgres? ( dev-db/postgresql:=[server] )
 	spamassassin? ( mail-filter/spamassassin )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"-p0"
+	"--"
+	"${FILESDIR}"/${PN}-5.4.9-access.violation.patch
+	"${FILESDIR}"/${PN}-lazy.patch
+	"${FILESDIR}"/${PN}-vpgsql.patch
+	"${FILESDIR}"/${PN}-double-free.patch
+)
+DOCS=(
+	ChangeLog
+	doc/AUTHORS
+	doc/FAQ
+	doc/INSTALL
+	doc/README.activedirectory
+	doc/README.authvchkpw
+	doc/README.filelocking
+	doc/README.ipaliasdomains
+	doc/README.ldap
+	doc/README.maildrop
+	doc/README.mysql
+	doc/README.onchange
+	doc/README.oracle
+	doc/README.pgsql
+	doc/README.qmail-default
+	doc/README.quotas
+	doc/README.roamingusers
+	doc/README.spamassassin
+	doc/README.sybase
+	doc/README.vdelivermail
+	doc/README.vlimits
+	doc/README.vpopmaild
+	doc/README.vqmaillocal
+)
+HTML_DOCS=(
+	doc/doc_html/vpopmail5.abw
+	doc/doc_html/vpopmailapi.png
+	doc/doc_html/vpopmail.html
+	doc/man_html/clearopensmtp.html
+	doc/man_html/index.html
+	doc/man_html/vaddaliasdomain.html
+	doc/man_html/vadddomain.html
+	doc/man_html/vadduser.html
+	doc/man_html/vchkpw.html
+	doc/man_html/vconvert.html
+	doc/man_html/vdeldomain.html
+	doc/man_html/vdelivermail.html
+	doc/man_html/vdeluser.html
+	doc/man_html/vpasswd.html
+	doc/man_html/vpopbull.html
+	doc/man_html/vsetuserquota.html
+)
 
 # This makes sure the variable is set, and that it isn't null.
 VPOP_DEFAULT_HOME="/var/vpopmail"
@@ -28,7 +80,6 @@ VPOP_DEFAULT_HOME="/var/vpopmail"
 vpopmail_set_homedir() {
 	VPOP_HOME=$(egethome vpopmail)
 	if [[ -z "${VPOP_HOME}" ]]; then
-		ebeep
 		eerror "vpopmail's home directory is null in passwd data!"
 		eerror "You probably want to check that out."
 		eerror "Continuing with default."
@@ -45,10 +96,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.4.9-access.violation.patch
-	epatch "${FILESDIR}"/${PN}-lazy.patch
-	epatch "${FILESDIR}"/${PN}-double-free.patch
-	epatch "${FILESDIR}"/${PN}-vpgsql.patch
+	default
 
 	echo 'install-recursive: install-exec-am' \
 		>>"${S}"/Makefile.am
@@ -140,16 +188,19 @@ src_install() {
 	dobin "${FILESDIR}"/vpopmail-Maildir-dotmaildir-fix.sh
 	into /usr
 
-	dodoc doc/AUTHORS ChangeLog doc/FAQ doc/INSTALL doc/README*
-	dohtml doc/doc_html/* doc/man_html/*
+	einstalldocs
 	rm -rf "${D}/${VPOP_HOME}"/doc
-	dosym /usr/share/doc/${PF}/ "${VPOP_HOME}"/doc
+	dosym \
+		$(realpath --relative-to "${D}/${VPOP_HOME}"/ "${D}"/usr/share/doc/${PF}/) \
+		"${VPOP_HOME}"/doc
 
 	# create /etc/vpopmail.conf
 	if use mysql; then
 		dodir /etc
 		mv "${D}${VPOP_HOME}"/etc/vpopmail.mysql "${D}"/etc/vpopmail.conf
-		dosym /etc/vpopmail.conf "${VPOP_HOME}"/etc/vpopmail.mysql
+		dosym \
+			$(realpath --relative-to "${D}/${VPOP_HOME}"/etc/ "${D}"/etc/vpopmail.conf) \
+			"${VPOP_HOME}"/etc/vpopmail.mysql
 
 		sed -e '12d' -i "${D}"/etc/vpopmail.conf
 		echo '# Read-only DB' >> "${D}"/etc/vpopmail.conf
