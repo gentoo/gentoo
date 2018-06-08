@@ -46,7 +46,7 @@ src_install() {
 	use vivaldi  && target_dirs+=( "/etc/vivaldi/native-messaging-hosts" )
 
 	for target_dir in "${target_dirs[@]}"; do
-		sed "s;PLACEHOLDER;${target_dir};g" "${P}.json" > "passff.json" || die
+		sed "s;PLACEHOLDER;${target_dir}/passff.py;g" "${P}.json" > "passff.json" || die
 
 		insinto "${target_dir}"
 		doins passff.json
