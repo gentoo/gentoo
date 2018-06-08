@@ -303,11 +303,6 @@ dev-python/iconvcodec
 # No reverse dependencies.  Removal in 30 days.  Bug #527176.
 dev-python/django-evolution
 
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Produces a lot of Pango warnings, then segfaults.  Unmaintained.
-# No reverse dependencies.  Removal in 30 days.  Bug #526668.
-dev-python/kiwi
-
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
 # See: https://bugs.gentoo.org/653678
