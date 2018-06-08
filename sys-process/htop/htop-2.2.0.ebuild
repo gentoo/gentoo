@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit linux-info python-single-r1
 
 DESCRIPTION="interactive process viewer"
-HOMEPAGE="http://hisham.hm/htop/"
-SRC_URI="http://hisham.hm/htop/releases/${PV}/${P}.tar.gz"
+HOMEPAGE="https://hisham.hm/htop/"
+SRC_URI="https://hisham.hm/htop/releases/${PV}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
