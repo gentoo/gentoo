@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="!<sys-apps/openrc-0.13"
+RDEPEND=">=app-shells/push-2.0
+	!<sys-apps/openrc-0.13"
 
 DISABLE_AUTOFORMATTING="true"
 DOC_CONTENTS="To use zram, activate it in your kernel and add it to default runlevel:
@@ -25,11 +26,10 @@ src_prepare() {
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env sh$"#!'"${EPREFIX}/bin/sh"'"' \
 		-- sbin/* || die
-	eapply_user
+	default
 }
 
 src_install() {
-	dosbin sbin/*
 	doinitd openrc/init.d/*
 	doconfd openrc/conf.d/*
 	systemd_dounit systemd/system/*
@@ -37,7 +37,10 @@ src_install() {
 	doins modprobe.d/*
 	insinto /usr/share/zsh/site-functions
 	doins zsh/*
+	dodoc AUTHORS ChangeLog README.md
 	readme.gentoo_create_doc
+	into /
+	dosbin sbin/*
 }
 
 pkg_postinst() {
