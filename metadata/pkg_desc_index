@@ -202,7 +202,7 @@ app-arch/pigz 2.3.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6: Parallel Indexed XZ compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression utility
-app-arch/rpm 4.11.0.1: Red Hat Package Management Utils
+app-arch/rpm 4.11.0.1 4.14.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.14-r1: Tools to deal with shar archives
