@@ -99,7 +99,7 @@ RDEPEND="
 				virtual/libelf:0=[${MULTILIB_USEDEP}]
 			)
 		)
-		lm_sensors? ( sys-apps/lm_sensors:= )
+		lm_sensors? ( sys-apps/lm_sensors:=[${MULTILIB_USEDEP}] )
 		opencl? (
 					app-eselect/eselect-opencl
 					dev-libs/libclc
@@ -297,11 +297,13 @@ multilib_src_configure() {
 		emesonargs+=(
 			$(meson_use d3d9 gallium-nine)
 			$(meson_use llvm)
-			-Dgallium-omx=$(usex openmax bellagio disabled)
-			$(meson_use vaapi gallium-vaapi)
+			$(meson_usex openmax gallium-omx bellagio disabled)
+			$(meson_use vaapi gallium-va)
 			$(meson_use vdpau gallium-vdpau)
 			$(meson_use xa gallium-xa)
 			$(meson_use xvmc gallium-xvmc)
+			$(meson_usex opencl gallium-opencl standalone disabled)
+			$(meson_use !pic asm)
 		)
 		use vaapi && emesonargs+=( -Dva-libs-path=/usr/$(get_libdir)/va/drivers )
 
@@ -325,12 +327,6 @@ multilib_src_configure() {
 		fi
 
 		gallium_enable video_cards_freedreno freedreno
-		# opencl stuff
-		if use opencl; then
-			emesonargs+=(
-				-Dgallium-opencl="$(usex opencl standalone disabled)"
-			)
-		fi
 
 		gallium_enable video_cards_virgl virgl
 	fi
@@ -345,17 +341,12 @@ multilib_src_configure() {
 		emesonargs+=( $(meson_use pax_kernel glx-read-only-text) )
 	fi
 
-	# on abi_x86_32 hardened we need to have asm disable
-	if [[ ${ABI} == x86* ]] && use pic; then
-		emesonargs+=( -Dasm=false )
-	fi
-
 	if use gallium; then
 		GALLIUM_DRIVERS+="swrast "
-		emesonargs+=( -Dosmesa=$(usex osmesa gallium none) )
+		emesonargs+=( $(meson_usex osmesa gallium none) )
 	else
 		DRI_DRIVERS+="swrast "
-		emesonargs+=( -Dosmesa=$(usex osmesa classic none) )
+		emesonargs+=( $(meson_usex osmesa classic none) )
 	fi
 
 	driver_list() {
@@ -368,7 +359,6 @@ multilib_src_configure() {
 		-Dglx=dri
 		-Dshared-glapi=true
 		$(meson_use !bindist texture-float)
-		$(meson_use d3d9 gallium-nine)
 		$(meson_use dri3)
 		$(meson_use egl)
 		$(meson_use gbm)
@@ -376,7 +366,7 @@ multilib_src_configure() {
 		$(meson_use gles2)
 		$(meson_use unwind libunwind)
 		$(meson_use lm_sensors lmsensors)
-		-Dvalgrind=$(usex valgrind auto false)
+		$(meson_usex valgrind auto false)
 		-Ddri-drivers=$(driver_list ${DRI_DRIVERS})
 		-Dgallium-drivers=$(driver_list ${GALLIUM_DRIVERS})
 		-Dvulkan-drivers=$(driver_list ${VULKAN_DRIVERS})
