@@ -12,11 +12,11 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="http://gnuradio.org/git/gnuradio.git"
+	EGIT_REPO_URI="https://www.gnuradio.org/cgit/gnuradio.git"
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://gnuradio.org/releases/${PN}/${P}.tar.gz"
+	SRC_URI="https://www.gnuradio.org/releases/gnuradio/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
