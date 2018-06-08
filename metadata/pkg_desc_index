@@ -3671,7 +3671,7 @@ dev-perl/ExtUtils-InstallPaths 0.10.0 0.11.0: Build.PL install path logic made e
 dev-perl/ExtUtils-LibBuilder 0.80.0: A tool to build C libraries
 dev-perl/ExtUtils-PkgConfig 1.160.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
-dev-perl/ExtUtils-XSpp 0.170.0 0.180.0: XS for C++
+dev-perl/ExtUtils-XSpp 0.180.0: XS for C++
 dev-perl/FCGI 0.770.0: Fast CGI module
 dev-perl/FCGI-ProcManager 0.250.0: A FastCGI process manager
 dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
@@ -8778,7 +8778,7 @@ net-mail/uw-imap 2007f 2007f-r1: UW server daemons for IMAP and POP network mail
 net-mail/uw-mailutils 2007f: Mail utilities from the UW
 net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
-net-mail/vpopmail 5.4.33: A collection of programs to manage virtual email domains and accounts on your Qmail mail servers
+net-mail/vpopmail 5.4.33: Collection of programs to manage virtual email on Qmail servers
 net-mail/yosucker 73: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
 net-mail/ytnef 1.9.2: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/adjtimex 1.29-r1: display or set the kernel time variables
