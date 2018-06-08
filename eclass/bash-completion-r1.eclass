@@ -98,6 +98,7 @@ dobashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_bash-completion-r1_get_bashcompdir)"
 		doins "${@}"
 	)
@@ -112,6 +113,7 @@ newbashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_bash-completion-r1_get_bashcompdir)"
 		newins "${@}"
 	)
