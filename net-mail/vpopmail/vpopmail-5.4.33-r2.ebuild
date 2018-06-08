@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils fixheadtails qmail user
 
@@ -17,10 +17,62 @@ REQUIRED_USE="mysql? ( !postgres )"
 
 DEPEND="virtual/qmail
 	maildrop? ( mail-filter/maildrop )
-	mysql? ( virtual/mysql )
+	mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c[mysqlcompat] ) )
 	postgres? ( dev-db/postgresql:=[server] )
 	spamassassin? ( mail-filter/spamassassin )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"-p0"
+	"--"
+	"${FILESDIR}"/${PN}-5.4.9-access.violation.patch
+	"${FILESDIR}"/${PN}-lazy.patch
+	"${FILESDIR}"/${PN}-vpgsql.patch
+	"${FILESDIR}"/${PN}-double-free.patch
+)
+DOCS=(
+	ChangeLog
+	doc/AUTHORS
+	doc/FAQ
+	doc/INSTALL
+	doc/README.activedirectory
+	doc/README.authvchkpw
+	doc/README.filelocking
+	doc/README.ipaliasdomains
+	doc/README.ldap
+	doc/README.maildrop
+	doc/README.mysql
+	doc/README.onchange
+	doc/README.oracle
+	doc/README.pgsql
+	doc/README.qmail-default
+	doc/README.quotas
+	doc/README.roamingusers
+	doc/README.spamassassin
+	doc/README.sybase
+	doc/README.vdelivermail
+	doc/README.vlimits
+	doc/README.vpopmaild
+	doc/README.vqmaillocal
+)
+HTML_DOCS=(
+	doc/doc_html/vpopmail5.abw
+	doc/doc_html/vpopmailapi.png
+	doc/doc_html/vpopmail.html
+	doc/man_html/clearopensmtp.html
+	doc/man_html/index.html
+	doc/man_html/vaddaliasdomain.html
+	doc/man_html/vadddomain.html
+	doc/man_html/vadduser.html
+	doc/man_html/vchkpw.html
+	doc/man_html/vconvert.html
+	doc/man_html/vdeldomain.html
+	doc/man_html/vdelivermail.html
+	doc/man_html/vdeluser.html
+	doc/man_html/vpasswd.html
+	doc/man_html/vpopbull.html
+	doc/man_html/vsetuserquota.html
+)
 
 # This makes sure the variable is set, and that it isn't null.
 VPOP_DEFAULT_HOME="/var/vpopmail"
@@ -44,10 +96,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.4.9-access.violation.patch
-	epatch "${FILESDIR}"/${PN}-lazy.patch
-	epatch "${FILESDIR}"/${PN}-double-free.patch
-	epatch "${FILESDIR}"/${PN}-vpgsql.patch
+	default
 
 	echo 'install-recursive: install-exec-am' \
 		>>"${S}"/Makefile.am
@@ -91,9 +140,11 @@ src_configure() {
 		authopts+=" --disable-mysql-replication"
 		authopts+=" --enable-mysql-limits"
 	elif use postgres; then
-		pglibdir=$(pg_config --libdir)
+		libdir=$(pg_config --libdir)
+		incdir=$(pg_config --pkgincludedir)
 		authopts+=" --enable-auth-module=pgsql"
-		authopts+=" --enable-libdir=${pglibdir}"
+		authopts+=" --enable-incdir=${incdir}"
+		authopts+=" --enable-libdir=${libdir}"
 		authopts+=" --enable-sql-logging"
 		authopts+=" --enable-valias"
 	else
@@ -137,8 +188,7 @@ src_install() {
 	dobin "${FILESDIR}"/vpopmail-Maildir-dotmaildir-fix.sh
 	into /usr
 
-	dodoc doc/AUTHORS ChangeLog doc/FAQ doc/INSTALL doc/README*
-	dohtml doc/doc_html/* doc/man_html/*
+	einstalldocs
 	rm -rf "${D}/${VPOP_HOME}"/doc
 	dosym \
 		$(realpath --relative-to "${D}/${VPOP_HOME}"/ "${D}"/usr/share/doc/${PF}/) \
