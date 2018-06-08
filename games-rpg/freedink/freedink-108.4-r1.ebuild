@@ -29,6 +29,9 @@ DEPEND="${DEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-108.4-no-windres.patch
+)
 
 src_prepare() {
 	default
