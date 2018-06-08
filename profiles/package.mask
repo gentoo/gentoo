@@ -261,11 +261,6 @@ dev-ruby/twitter:5
 >=media-libs/coin-4.0.0
 >=media-libs/simage-1.7.1
 
-# Mikle Kolyada <zlogene@gentoo.org> (4 May 2018)
-# Upstream is dead, no maintainer, no longer updated.
-# Masked for removal in 30 days
-games-misc/fortune-mod-gentoo-ru
-
 # Mike Gilbert <floppym@gentoo.org> (30 Apr 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -274,12 +269,6 @@ games-misc/fortune-mod-gentoo-ru
 # Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
 # Masked for testing
 =dev-libs/libressl-2.7*
-
-# Mikle Kolyada <zlogene@gentoo.org> (27 Apr 2018)
-# Upstream is dead, the site with the sources is down.
-# There's no chance to get the sources (fetch restricted)
-# Removal in 30 days (bug #642866)
-app-emulation/armv8-fast-model
 
 # Hans de Graaff <graaff@gentoo.org> (27 Apr 2018)
 # No longer supported upstream. Use ruby23 instead.
@@ -291,35 +280,6 @@ dev-ruby/tzinfo:0
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
 # Package version depends on Qt-5.10 that was/is/will not be in tree.
 >=sci-misc/mendeleydesktop-1.18
-
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Apparently redundant to built-in Python features.  Homepage gone
-# without trace.  Last release in 2003.  No reverse dependencies.
-# Removal in 30 days.  Bug #537720.
-dev-python/iconvcodec
-
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Does not work with any of the unmasked django versions.  Unmaintained.
-# No reverse dependencies.  Removal in 30 days.  Bug #527176.
-dev-python/django-evolution
-
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Produces a lot of Pango warnings, then segfaults.  Unmaintained.
-# No reverse dependencies.  Removal in 30 days.  Bug #526668.
-dev-python/kiwi
-
-# Michał Górny <mgorny@gentoo.org> (26 Apr 2018)
-# Obsolete package used during some past GSoC development
-# and unmaintained since.  All of its users have retired already.
-# No reverse dependencies.  The ebuild runs test suite of CPython
-# instead of its own.  Removal in 30 days.  Bug #526552.
-dev-python/tdaemon
-
-# Michał Górny <mgorny@gentoo.org> (22 Apr 2018)
-# Unmaintained buggy package with unresearched segfaults.  No support
-# for Python 3.  No reverse dependencies.
-# Removal in 30 days.  Bug #454680.
-dev-python/simpleparse
 
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
@@ -336,12 +296,6 @@ dev-python/simpleparse
 # Masked for removal in 60 days, lift mask if bug #650126 is fixed
 sys-fs/aufs3
 sys-fs/aufs4
-
-# Michał Górny (03 Apr 2018)
-# Starting with sys-apps/sandbox-2.13+, unloading is possible via
-# disabling (SANDBOX_ON=0) + wiping LD_PRELOAD. This renders the tool
-# obsolete. Removal in 30 days.
-app-portage/unsandbox
 
 # Matthias Maier <tamiko@gentoo.org> (3 Apr 2018)
 # Remove old Intel C/C++/Fortran compiler ebuilds. These packages require
