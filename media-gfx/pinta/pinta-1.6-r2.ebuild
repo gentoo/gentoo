@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit fdo-mime mono-env gnome2-utils
+inherit gnome2-utils mono-env xdg-utils
 
 DESCRIPTION="Simple Painting for Gtk"
 HOMEPAGE="https://pinta-project.com"
@@ -34,13 +34,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
