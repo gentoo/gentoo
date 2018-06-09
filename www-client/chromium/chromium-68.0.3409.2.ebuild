@@ -555,7 +555,7 @@ src_configure() {
 	mkdir -p -m 755 "${TMPDIR}" || die
 
 	# https://bugs.gentoo.org/654216
-	addpredict /dev/dri/
+	addpredict /dev/dri/ #nowarn
 
 	if ! use system-ffmpeg; then
 		local build_ffmpeg_args=""
