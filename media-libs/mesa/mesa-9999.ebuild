@@ -368,7 +368,6 @@ multilib_src_configure() {
 		-Dglx=dri
 		-Dshared-glapi=true
 		$(meson_use !bindist texture-float)
-		$(meson_use d3d9 gallium-nine)
 		$(meson_use dri3)
 		$(meson_use egl)
 		$(meson_use gbm)
