@@ -22,16 +22,16 @@ E_CONF_MODS=(
 
 E_NORM_MODS=(
 	appmenu backlight battery bluez4
-	clock conf connman cpufreq
-	everything fileman fileman-opinfo gadman
-	geolocation ibar ibox lokker
-	mixer msgbus music-control notification
-	packagekit pager pager-plain quickaccess
-	shot start syscon systray
-	tasks teamwork temperature tiling
-	time winlist wireless wizard
-	wl-desktop-shell wl-drm wl-text-input wl-weekeyboard
-	wl-wl wl-x11 xkbswitch xwayland
+	clock conf cpufreq everything
+	fileman fileman-opinfo gadman geolocation
+	ibar ibox lokker mixer
+	msgbus music-control notification packagekit
+	pager pager-plain quickaccess shot
+	start syscon systray tasks
+	teamwork temperature tiling time
+	winlist wireless wizard wl-desktop-shell
+	wl-drm wl-text-input wl-weekeyboard wl-wl
+	wl-x11 xkbswitch xwayland
 )
 
 IUSE_E_MODULES=(
@@ -39,7 +39,7 @@ IUSE_E_MODULES=(
 	${E_NORM_MODS[@]/#/enlightenment_modules_}
 )
 
-IUSE="acpi doc egl nls pam static-libs systemd udisks wayland ${IUSE_E_MODULES[@]/#/+}"
+IUSE="acpi connman doc egl nls pam static-libs systemd udisks wayland ${IUSE_E_MODULES[@]/#/+}"
 
 RDEPEND="
 	>=dev-libs/efl-1.17.0[eet,X]
@@ -49,6 +49,7 @@ RDEPEND="
 	x11-libs/xcb-util-keysyms
 	x11-misc/xkeyboard-config
 	acpi? ( sys-power/acpid )
+	connman? ( net-misc/connman )
 	egl? ( >=dev-libs/efl-1.18.0[egl,wayland] )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd )
@@ -82,6 +83,7 @@ src_configure() {
 		--disable-install-sysactions
 		--disable-policy-mobile
 		--enable-device-udev
+		$(use_enable connman)
 		$(use_enable egl wayland-egl)
 		$(use_enable nls)
 		$(use_enable pam)
