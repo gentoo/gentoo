@@ -9989,7 +9989,7 @@ sys-cluster/torque 2.5.13-r1 4.1.7-r1: Resource manager and queuing system based
 sys-cluster/util-vserver 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-devel/autoconf 2.13 2.64 2.69-r4: Used to create autoconfiguration files
-sys-devel/autoconf-archive 2017.03.21 2017.09.28: GNU Autoconf Macro Archive
+sys-devel/autoconf-archive 2017.03.21 2017.09.28 2018.03.13: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.4 5.18.4-r1: Program and text file generation
 sys-devel/automake 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2: Used to generate Makefile.in from Makefile.am
