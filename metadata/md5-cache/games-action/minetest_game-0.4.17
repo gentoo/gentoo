@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=The main game for the Minetest game engine
+EAPI=6
+HOMEPAGE=https://github.com/minetest/minetest_game
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 CC-BY-SA-3.0
+RDEPEND=>=games-action/minetest-0.4.17
+SLOT=0
+SRC_URI=https://github.com/minetest/minetest_game/archive/0.4.17.tar.gz -> minetest_game-0.4.17.tar.gz
+_eclasses_=vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=9f69228b39f090a02d4e20fd50c4e395
