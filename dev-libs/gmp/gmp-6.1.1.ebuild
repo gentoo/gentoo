@@ -10,10 +10,10 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 PLEVEL=${PV/*p}
 DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
-HOMEPAGE="http://gmplib.org/"
+HOMEPAGE="https://gmplib.org/"
 SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
 	mirror://gnu/${PN}/${MY_P}.tar.xz
-	doc? ( http://gmplib.org/${PN}-man-${MY_PV}.pdf )"
+	doc? ( https://gmplib.org/${PN}-man-${MY_PV}.pdf )"
 
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
@@ -54,7 +54,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
-	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
+	# https://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
 		GMPABI="1.0"
 	fi
