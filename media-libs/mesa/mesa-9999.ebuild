@@ -99,7 +99,7 @@ RDEPEND="
 				virtual/libelf:0=[${MULTILIB_USEDEP}]
 			)
 		)
-		lm_sensors? ( sys-apps/lm_sensors:= )
+		lm_sensors? ( sys-apps/lm_sensors:=[${MULTILIB_USEDEP}] )
 		opencl? (
 					app-eselect/eselect-opencl
 					dev-libs/libclc
@@ -298,7 +298,7 @@ multilib_src_configure() {
 			$(meson_use d3d9 gallium-nine)
 			$(meson_use llvm)
 			-Dgallium-omx=$(usex openmax bellagio disabled)
-			$(meson_use vaapi gallium-vaapi)
+			$(meson_use vaapi gallium-va)
 			$(meson_use vdpau gallium-vdpau)
 			$(meson_use xa gallium-xa)
 			$(meson_use xvmc gallium-xvmc)
@@ -368,7 +368,6 @@ multilib_src_configure() {
 		-Dglx=dri
 		-Dshared-glapi=true
 		$(meson_use !bindist texture-float)
-		$(meson_use d3d9 gallium-nine)
 		$(meson_use dri3)
 		$(meson_use egl)
 		$(meson_use gbm)
