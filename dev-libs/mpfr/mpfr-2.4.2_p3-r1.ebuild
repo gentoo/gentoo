@@ -10,8 +10,8 @@ inherit eutils libtool multilib multilib-minimal flag-o-matic
 MY_PV=${PV/_p*}
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="library for multiple-precision floating-point computations with exact rounding"
-HOMEPAGE="http://www.mpfr.org/"
-SRC_URI="http://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.bz2
+HOMEPAGE="https://www.mpfr.org/"
+SRC_URI="https://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/${MY_P}-patchset.tar.bz2"
 
 LICENSE="LGPL-2.1"
