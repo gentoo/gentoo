@@ -4,8 +4,8 @@
 EAPI="6"
 
 DESCRIPTION="UTR #51 Unicode Emoji"
-HOMEPAGE="http://unicode.org/emoji"
-BASE_URI="http://${PN%-*}.org/Public/${PN/*-}/${PV}"
+HOMEPAGE="https://unicode.org/emoji"
+BASE_URI="https://${PN%-*}.org/Public/${PN/*-}/${PV}"
 SRC_URI="${BASE_URI}/${PN/*-}-data.txt -> ${PN}-data-${PV}.txt
 	${BASE_URI}/${PN/*-}-sequences.txt -> ${PN}-sequences-${PV}.txt
 	${BASE_URI}/${PN/*-}-test.txt -> ${PN}-test-${PV}.txt
