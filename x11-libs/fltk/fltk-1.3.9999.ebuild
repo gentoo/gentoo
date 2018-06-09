@@ -2,14 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+ESVN_OPTIONS="--username= --password="
 
 inherit autotools flag-o-matic multilib-minimal subversion xdg-utils
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="http://www.fltk.org/"
 ESVN_REPO_URI="http://seriss.com/public/fltk/fltk/branches/branch-1.3/"
-ESVN_USER=""
-ESVN_PASSWORD=""
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
@@ -36,6 +35,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	virtual/pkgconfig
 	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
 "
@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
+	"${FILESDIR}"/${PN}-1.3.4-freetype_pkgconfig.patch
 )
 
 pkg_setup() {
@@ -90,6 +91,7 @@ src_prepare() {
 	# also in Makefile:config.guess config.sub:
 	cp misc/config.{guess,sub} . || die
 
+	eaclocal
 	eautoconf
 	multilib_copy_sources
 }

@@ -1,0 +1,33 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1031,13 +1031,13 @@ case $host_os_gui in
+ 	AC_ARG_ENABLE(xft, [  --enable-xft            turn on Xft support [[default=yes]]])
+ 
+ 	xft_found=no
+-	if test x$enable_xft != xno; then
+-	    AC_PATH_PROG(FTCONFIG, freetype-config)
+-
+-	    if test "x$FTCONFIG" != x; then
+-		CPPFLAGS="`$FTCONFIG --cflags` $CPPFLAGS"
+-		CFLAGS="`$FTCONFIG --cflags` $CFLAGS"
+-		CXXFLAGS="`$FTCONFIG --cflags` $CXXFLAGS"
++	AS_IF([test x$enable_xft != xno], [
++	    PKG_PROG_PKG_CONFIG
++	    PKG_CHECK_MODULES(FREETYPE, freetype2, [
++		CPPFLAGS="$FREETYPE_CFLAGS $CPPFLAGS"
++		CFLAGS="$FREETYPE_CFLAGS $CFLAGS"
++		CXXFLAGS="$FREETYPE_CFLAGS $CXXFLAGS"
++	    ],AC_MSG_ERROR([No freetype found]))
+ 
+ 		AC_CHECK_LIB(fontconfig, FcPatternCreate)
+ 		AC_CHECK_HEADER(X11/Xft/Xft.h,
+@@ -1046,8 +1046,7 @@ case $host_os_gui in
+ 			 LIBS="-lXft $LIBS"
+ 			 BUILD="XFT"
+ 			 xft_found=yes]))
+-	    fi
+-	fi
++	])
+ 
+ 	dnl Issue a warning message if Xft was not found, abort configure
+ 	dnl if Xft was requested explicitly (but not found)
