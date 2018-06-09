@@ -8,7 +8,7 @@ EAPI="5"
 inherit eutils libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
-HOMEPAGE="http://gmplib.org/"
+HOMEPAGE="https://gmplib.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
@@ -38,7 +38,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
-	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
+	# https://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
 		GMPABI="1.0"
 	fi
