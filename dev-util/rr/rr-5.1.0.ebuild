@@ -9,7 +9,7 @@ CMAKE_BUILD_TYPE=Release
 inherit cmake-utils linux-info python-single-r1
 
 DESCRIPTION="Record and Replay Framework"
-HOMEPAGE="http://rr-project.org/"
+HOMEPAGE="https://rr-project.org/"
 SRC_URI="https://github.com/mozilla/${PN}/archive/${PV}.tar.gz -> mozilla-${P}.tar.gz"
 
 LICENSE="MIT BSD-2"
