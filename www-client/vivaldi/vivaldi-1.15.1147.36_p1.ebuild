@@ -14,7 +14,7 @@ inherit chromium-2 eutils gnome2-utils multilib unpacker toolchain-funcs xdg-uti
 VIVALDI_PN="${PN}-${VIVALDI_BRANCH:-stable}"
 VIVALDI_BIN="${PN}${VIVALDI_BRANCH/snapshot/-snapshot}"
 VIVALDI_HOME="opt/${VIVALDI_BIN}"
-DESCRIPTION="A new browser for our friends"
+DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
