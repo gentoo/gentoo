@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 eutils multilib versionator
 
 DESCRIPTION="Homology or comparative modeling of protein three-dimensional structures"
-HOMEPAGE="http://salilab.org/modeller/"
-SRC_URI="http://salilab.org/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="https://salilab.org/modeller/"
+SRC_URI="https://salilab.org/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="modeller"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
