@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare unpack
+DEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20180114-r3 sys-devel/m4 >=sys-apps/checkpolicy-2.0.21
+DESCRIPTION=SELinux policy for gpsd
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20180114-r3
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20180114.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180114-r3.tar.bz2
+_eclasses_=selinux-policy-2	c32ee7308f2bc9b7f2ebdbbf9a17316d
+_md5_=84ae7deabd5b83808eea7949c928d6da
