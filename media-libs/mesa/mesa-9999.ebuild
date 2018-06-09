@@ -99,7 +99,7 @@ RDEPEND="
 				virtual/libelf:0=[${MULTILIB_USEDEP}]
 			)
 		)
-		lm_sensors? ( sys-apps/lm_sensors:= )
+		lm_sensors? ( sys-apps/lm_sensors:=[${MULTILIB_USEDEP}] )
 		opencl? (
 					app-eselect/eselect-opencl
 					dev-libs/libclc
