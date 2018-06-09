@@ -4359,7 +4359,7 @@ dev-perl/XML-SAX 0.990.0-r1: Perl module for using and building Perl SAX2 XML pa
 dev-perl/XML-SAX-Base 1.90.0: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-Writer 0.560.0: SAX2 Writer
-dev-perl/XML-Simple 2.200.0-r1 2.220.0: An API for simple XML files
+dev-perl/XML-Simple 2.200.0-r1 2.220.0 2.250.0: An API for simple XML files
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Stream 1.240.0: Creates and XML Stream connection and parses return data
 dev-perl/XML-TreePP 0.430.0-r1: Pure Perl implementation for parsing/writing XML documents
@@ -9115,7 +9115,7 @@ net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/crda 1.1.3-r1 3.18-r1: Central Regulatory Domain Agent for wireless networks
 net-wireless/gnome-bluetooth 3.20.1: Bluetooth graphical utilities integrated with GNOME
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
-net-wireless/hostapd 2.6-r1: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/hostapd 2.6-r1 2.6-r4: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2016.07.1-r1: IEEE 802.11 wireless LAN sniffer
@@ -10211,7 +10211,7 @@ sys-libs/uclibc-ng 1.0.26 1.0.30-r1: C library for developing embedded Linux sys
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.11 1.2.11-r1: Standard (de)compression library
 sys-power/acpi 1.6: Displays information about ACPI devices
-sys-power/acpid 2.0.28: Daemon for Advanced Configuration and Power Interface
+sys-power/acpid 2.0.28 2.0.29-r1: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.0: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.13 3.14.14-r1: APC UPS daemon with integrated tcp/ip remote shutdown
