@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=dev-db/sqlite:3 dev-python/pyzmq dev-lang/luajit:2 dev-libs/json-c:= dev-libs/geoip dev-libs/glib:2 dev-libs/hiredis dev-libs/libsodium:= dev-libs/libxml2 net-analyzer/rrdtool net-libs/libpcap =net-libs/nDPI-2.0 net-misc/curl sys-libs/binutils-libs:= virtual/libmysqlclient >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Network traffic analyzer with web interface
+EAPI=6
+HOMEPAGE=https://www.ntop.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-db/sqlite:3 dev-python/pyzmq dev-lang/luajit:2 dev-libs/json-c:= dev-libs/geoip dev-libs/glib:2 dev-libs/hiredis dev-libs/libsodium:= dev-libs/libxml2 net-analyzer/rrdtool net-libs/libpcap =net-libs/nDPI-2.0 net-misc/curl sys-libs/binutils-libs:= virtual/libmysqlclient dev-db/redis
+SLOT=0
+SRC_URI=https://github.com/ntop/ntopng/archive/3.0.tar.gz -> ntopng-3.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=e0e9422c1f65404a4db1942a03bcd5c9
