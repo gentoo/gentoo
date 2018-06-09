@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (9 June 2018)
+# Fails to buil, dead upstream, EAPI=2
+# Only the live enuild in the tree.
+# Masked for removal in 30 days
+sys-fs/yaffs-utils
+
 # Lars Wendler <polynomial-c@gentoo.org> (9 June 2018)
 # Causes high system load when being used with kde or gnome print manager.
 # https://bugs.gentoo.org/657526
