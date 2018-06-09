@@ -315,6 +315,9 @@ relocate_ghc() {
 		"${WORKDIR}/usr/bin/ghc-${GHC_PV}" \
 		"${WORKDIR}/usr/bin/ghci-${GHC_PV}" \
 		"${WORKDIR}/usr/bin/ghc-pkg-${GHC_PV}" \
+		"${WORKDIR}/usr/bin/haddock-ghc-${GHC_PV}" \
+		"${WORKDIR}/usr/bin/hp2ps" \
+		"${WORKDIR}/usr/bin/hpc" \
 		"${WORKDIR}/usr/bin/hsc2hs" \
 		"${WORKDIR}/usr/bin/runghc-${GHC_PV}" \
 		"${WORKDIR}/usr/$(get_libdir)/${GHC_P}/package.conf.d/"*
@@ -473,6 +476,9 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-7.0.4-CHOST-prefix.patch
 		eapply "${FILESDIR}"/${PN}-8.2.1-darwin.patch
 		eapply "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
+		eapply "${FILESDIR}"/${PN}-8.0.2-no-relax-everywhere.patch
+		eapply "${FILESDIR}"/${PN}-8.0.2-binutils-2.30.patch
+		eapply "${FILESDIR}"/${PN}-8.4.2-allow-cross-bootstrap.patch
 
 		# a bunch of crosscompiler patches
 		# needs newer version:
