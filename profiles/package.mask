@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (9 June 2018)
+# Causes high system load when being used with kde or gnome print manager.
+# https://bugs.gentoo.org/657526
+=net-print/cups-2.2.8
+
 # Daniel Pielmeier <billie@gentoo.org> (8 June 2018)
 # Does not support PyQt5 as well as python 3. Upstream unresponsive.
 # Masked for removal in 30 days. Bug #649112.
