@@ -1,0 +1,14 @@
+diff --git a/deps/neverbleed/neverbleed.c b/deps/neverbleed/neverbleed.c
+index 29b35a9..42356a6 100644
+--- a/deps/neverbleed/neverbleed.c
++++ b/deps/neverbleed/neverbleed.c
+@@ -547,7 +547,7 @@ static int sign_stub(struct expbuf_t *buf)
+     return 0;
+ }
+
+-#if !OPENSSL_1_1_API
++#if !OPENSSL_1_1_API && (!defined(LIBRESSL_VERSION_NUMBER) || LIBRESSL_VERSION_NUMBER < 0x2070000fL)
+
+ static void RSA_get0_key(const RSA *rsa, const BIGNUM **n, const BIGNUM **e, const BIGNUM **d)
+ {
+
