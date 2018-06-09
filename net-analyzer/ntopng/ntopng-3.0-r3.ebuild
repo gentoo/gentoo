@@ -25,7 +25,7 @@ DEPEND="dev-db/sqlite:3
 	net-libs/libpcap
 	=net-libs/nDPI-2.0
 	net-misc/curl
-	sys-libs/binutils-libs
+	sys-libs/binutils-libs:=
 	virtual/libmysqlclient"
 RDEPEND="${DEPEND}
 	dev-db/redis"
