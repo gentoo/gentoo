@@ -24,6 +24,7 @@ RESTRICT="test"
 
 src_configure() {
 	local mycmakeargs=(
+		-DINSTALL_CMAKE_DIR="$(get_libdir)/cmake/${PN}"
 		-DENABLE_CPP11="$(usex !boost)"
 		-DBUILD_TESTS="$(usex test)"
 	)
