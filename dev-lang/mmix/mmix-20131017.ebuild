@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Donald Knuth's MMIX Assembler and Simulator"
-HOMEPAGE="http://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm.edu"
+HOMEPAGE="https://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm.edu"
 SRC_URI="http://mmix.cs.hm.edu/src/${P}.tgz"
 
 DEPEND="virtual/tex-base
