@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools eutils flag-o-matic user
 
@@ -72,14 +72,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug) \
-		$(use_enable ncurses curses) \
-		$(use_enable parcheck) \
-		$(use_enable ssl tls) \
-		$(use_enable zlib gzip) \
-		$(use_enable test tests) \
+	local myconf=(
+		$(use_enable debug)
+		$(use_enable ncurses curses)
+		$(use_enable parcheck)
+		$(use_enable ssl tls)
+		$(use_enable zlib gzip)
+		$(use_enable test tests)
 		--with-tlslib=$(usex gnutls GnuTLS OpenSSL)
+	)
+	econf "${myconf[@]}"
 }
 
 src_test() {
