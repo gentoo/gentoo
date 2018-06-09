@@ -3,6 +3,7 @@ From: Brian Dolbec <brian.dolbec@sony.com>
 Date: Tue, 6 Mar 2018 02:30:56 +0000
 Subject: [PATCH] Migrate duration calculations to >=buildbot-0.9
 
+Time fields are no longer a class, just a long integer.
 ---
  buildbot_prometheus/prometheus.py | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
@@ -11,7 +12,7 @@ diff --git a/buildbot_prometheus/prometheus.py b/buildbot_prometheus/prometheus.
 index a766f41..ebf41a1 100644
 --- a/buildbot_prometheus/prometheus.py
 +++ b/buildbot_prometheus/prometheus.py
-@@ -302,7 +302,7 @@ class Prometheus(service.BuildbotService):
+@@ -302,7 +302,7 @@ def buildsConsumer(self, key, msg):
              build_started = msg['started_at']
              build_finished = msg['complete_at']
              build_duration = build_finished - build_started
@@ -20,7 +21,7 @@ index a766f41..ebf41a1 100644
              self.g_builds_duration.labels(**labels).set(duration_seconds)
  
              build_status = resolve_results_status(msg['results'])
-@@ -401,7 +401,7 @@ class Prometheus(service.BuildbotService):
+@@ -401,7 +401,7 @@ def buildSetsConsumer(self, key, msg):
              buildset_started = msg['submitted_at']
              buildset_finished = msg['complete_at']
              buildset_duration = buildset_finished - buildset_started
@@ -29,7 +30,7 @@ index a766f41..ebf41a1 100644
              self.g_buildsets_duration.labels(**labels).set(duration_seconds)
  
              bs_success = resolve_results_status(msg['results'])
-@@ -444,7 +444,7 @@ class Prometheus(service.BuildbotService):
+@@ -444,7 +444,7 @@ def buildRequestsConsumer(self, key, msg):
              br_started = msg['submitted_at']
              br_finished = msg['complete_at']
              br_duration = br_finished - br_started
@@ -38,7 +39,7 @@ index a766f41..ebf41a1 100644
              self.g_build_requests_duration.labels(**labels).set(duration_seconds)
  
              br_success = resolve_results_status(msg['results'])
-@@ -491,7 +491,7 @@ class Prometheus(service.BuildbotService):
+@@ -491,7 +491,7 @@ def stepsConsumer(self, key, msg):
              step_started = msg['started_at']
              step_finished = msg['complete_at']
              step_duration = step_finished - step_started
@@ -47,6 +48,3 @@ index a766f41..ebf41a1 100644
              self.g_steps_duration.labels(**labels).set(duration_seconds)
  
              step_success = resolve_results_status(msg['results'])
---
-libgit2 0.24.6
-
