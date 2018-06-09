@@ -10,7 +10,7 @@ CHROMIUM_LANGS="
 inherit chromium-2 eutils gnome2-utils multilib unpacker toolchain-funcs xdg-utils
 
 VIVALDI_HOME="opt/${PN}"
-DESCRIPTION="A new browser for our friends"
+DESCRIPTION="A browser for our friends"
 HOMEPAGE="https://vivaldi.com/"
 VIVALDI_BASE_URI="https://downloads.vivaldi.com/snapshot/${PN}_${PV/_p/-}_"
 SRC_URI="
