@@ -298,7 +298,7 @@ multilib_src_configure() {
 			$(meson_use d3d9 gallium-nine)
 			$(meson_use llvm)
 			-Dgallium-omx=$(usex openmax bellagio disabled)
-			$(meson_use vaapi gallium-vaapi)
+			$(meson_use vaapi gallium-va)
 			$(meson_use vdpau gallium-vdpau)
 			$(meson_use xa gallium-xa)
 			$(meson_use xvmc gallium-xvmc)
