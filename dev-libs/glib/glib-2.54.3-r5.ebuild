@@ -46,7 +46,7 @@ RDEPEND="
 	fam? ( >=virtual/fam-0-r1[${MULTILIB_USEDEP}] )
 	utils? (
 		${PYTHON_DEPS}
-		>=dev-util/gdbus-codegen-${PV}[${PYTHON_USEDEP}]
+		>=dev-util/gdbus-codegen-${PV}
 		virtual/libelf:0=
 	)
 "
@@ -59,7 +59,7 @@ DEPEND="${RDEPEND}
 	test? (
 		sys-devel/gdb
 		${PYTHON_DEPS}
-		>=dev-util/gdbus-codegen-${PV}[${PYTHON_USEDEP}]
+		>=dev-util/gdbus-codegen-${PV}
 		>=sys-apps/dbus-1.2.14 )
 	!<dev-util/gtk-doc-1.15-r2
 "
