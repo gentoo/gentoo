@@ -1,0 +1,35 @@
+Description: wavpack: check errors when initializing
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=881145
+Author:  Eric Wong <normalperson@yhbt.net>
+ Jaromír Mikeš <mira.mikes@seznam.cz>
+Forwarded: not-needed
+
+ src/wavpack.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/wavpack.c b/src/wavpack.c
+index 9e525cd4..b7e8dafa 100644
+--- a/src/wavpack.c
++++ b/src/wavpack.c
+@@ -65,6 +65,10 @@ static int start_read(sox_format_t * ft)
+   char msg[80];
+ 
+   p->codec = WavpackOpenFileInputEx(&io_fns, ft, NULL, msg, OPEN_NORMALIZE, 0);
++  if (!p->codec) {
++    lsx_fail_errno(ft, SOX_EHDR, "%s", msg);
++    return SOX_EOF;
++  }
+   ft->encoding.bits_per_sample = WavpackGetBytesPerSample(p->codec) << 3;
+   ft->signal.channels   = WavpackGetNumChannels(p->codec);
+   if (WavpackGetSampleRate(p->codec) && ft->signal.rate && ft->signal.rate != WavpackGetSampleRate(p->codec))
+@@ -108,6 +112,10 @@ static int start_write(sox_format_t * ft)
+   uint64_t size64;
+ 
+   p->codec = WavpackOpenFileOutput(ft_write_b_buf, ft, NULL);
++  if (!p->codec) {
++    lsx_fail_errno(ft, SOX_ENOMEM, "WavPack error creating output instance");
++    return SOX_EOF;
++  }
+   memset(&config, 0, sizeof(config));
+   config.bytes_per_sample  = ft->encoding.bits_per_sample >> 3;
+   config.bits_per_sample   = ft->encoding.bits_per_sample;
