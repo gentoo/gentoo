@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit multilib
 MY_PN="coffeescript"
 
 DESCRIPTION="A little language that compiles into javascript"
-HOMEPAGE="http://coffeescript.org/"
+HOMEPAGE="https://coffeescript.org/"
 
 # The tests are missing from the npm registry package, so use Github
 # instead.
