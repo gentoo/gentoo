@@ -189,17 +189,17 @@ if [[ ${MY_EXTRAS_VER} != "live" && ${MY_EXTRAS_VER} != "none" ]]; then
 fi
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
-HOMEPAGE="http://www.mysql.com/"
+HOMEPAGE="https://www.mysql.com/"
 if [[ ${PN} == "mariadb" ]]; then
-	HOMEPAGE="http://mariadb.org/"
+	HOMEPAGE="https://mariadb.org/"
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 fi
 if [[ ${PN} == "mariadb-galera" ]]; then
-	HOMEPAGE="http://mariadb.org/"
+	HOMEPAGE="https://mariadb.org/"
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL with Galera Replication"
 fi
 if [[ ${PN} == "percona-server" ]]; then
-	HOMEPAGE="http://www.percona.com/software/percona-server"
+	HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server"
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL from the Percona team"
 fi
 LICENSE="GPL-2"
