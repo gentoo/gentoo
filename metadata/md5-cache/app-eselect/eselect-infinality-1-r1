@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Eselect module to choose an infinality font configuration style
+EAPI=6
+HOMEPAGE=https://github.com/yngwin/eselect-infinality
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-admin/eselect
+SLOT=0
+SRC_URI=https://github.com/yngwin/eselect-infinality/tarball/v1 -> eselect-infinality-1.tar.gz
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=63809b4be36662b1922aa2d363035505
