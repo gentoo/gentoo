@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
-HOMEPAGE="http://gnuradio.org/"
+HOMEPAGE="https://gnuradio.org/"
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 
