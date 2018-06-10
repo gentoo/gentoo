@@ -52,9 +52,6 @@ case ${CATEGORY} in
 			: ${QT_MINIMAL:=5.9.1}
 		fi
 		[[ ${PV} = 18.04.2* ]] && : ${FRAMEWORKS_MINIMAL:=5.44.0}
-		if [[ ${KDE_BUILD_TYPE} = live || ${PV} = 18.04* ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.46.0}
-		fi
 		;;
 esac
 
