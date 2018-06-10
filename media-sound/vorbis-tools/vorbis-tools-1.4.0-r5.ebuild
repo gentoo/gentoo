@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-CVE-2014-9640.patch
 	"${FILESDIR}"/${P}-CVE-2014-9638.patch
+	"${FILESDIR}"/${P}-docdir.patch
 )
 
 src_prepare() {
