@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1 python-utils-r1 prefix
 
 DESCRIPTION="Enterprise scalable realtime graphing"
-HOMEPAGE="http://graphite.readthedocs.org/"
+HOMEPAGE="https://graphiteapp.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

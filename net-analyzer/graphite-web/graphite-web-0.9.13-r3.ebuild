@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 python-utils-r1 prefix
 
 DESCRIPTION="Enterprise scalable realtime graphing"
-HOMEPAGE="http://graphite.readthedocs.org/"
+HOMEPAGE="https://graphiteapp.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	https://raw.githubusercontent.com/graphite-project/graphite-web/522d84fed687bd946878e48d85982d59f7bd1267/webapp/content/img/share.png -> ${P}-share.png"
 
