@@ -251,6 +251,7 @@ PATCHES=(
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
 	"${FILESDIR}/${PN}-6.0.3.2-testTdf108947.patch" #bug 656600
+	"${FILESDIR}/${P}-glm-0.9.9.patch" # bug 657178
 
 	# gtk3-kde5 vcl plugin backported from master
 	"${WORKDIR}"/${PATCHSET/.tar.xz/}
