@@ -23,10 +23,10 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-protos.patch
-	"${FILESDIR}"/${P}-tinfo.patch
-	"${FILESDIR}"/${P}-xz.diff
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-headers.patch
+	"${FILESDIR}"/${PN}-tinfo.patch
+	"${FILESDIR}"/${PN}-xz.patch
 )
 DOCS=( README hello.sample )
 HTML_DOCS=( index.html relnote.html hello.sample.gif )
