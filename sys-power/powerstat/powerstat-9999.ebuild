@@ -16,6 +16,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+# Don't compress manpages
+PATCHES=( "${FILESDIR}"/"${PN}"-0.02.17-makefile.patch )
+
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
