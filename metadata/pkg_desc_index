@@ -8735,7 +8735,7 @@ net-mail/getmail 5.4: A POP3 mail retriever with reliable Maildir and mbox deliv
 net-mail/gnubiff 2.2.15-r3 2.2.17-r1: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/imapsync 1.592-r1: A tool allowing incremental and recursive imap transfer from one mailbox to another
-net-mail/isync 1.2.1: MailDir mailbox synchronizer
+net-mail/isync 1.2.1 1.3.0: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.41: Little Brother database
 net-mail/libpst 0.6.64-r1: Tools and library for reading Outlook files (.pst format)
