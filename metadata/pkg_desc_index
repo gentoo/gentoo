@@ -3628,44 +3628,44 @@ dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.110.0: Declare version conflicts for your dist
 dev-perl/EV 4.220.0: Perl interface to libev, a high performance full-featured event loop
-dev-perl/Email-Abstract 3.7.0: unified interface to mail representations
-dev-perl/Email-Address 1.907.0: RFC 2822 Address Parsing and Creation
+dev-perl/Email-Abstract 3.7.0 3.8.0: unified interface to mail representations
+dev-perl/Email-Address 1.907.0 1.908.0: RFC 2822 Address Parsing and Creation
 dev-perl/Email-Address-List 0.50.0: RFC close address list parsing
 dev-perl/Email-Date 1.104.0-r1: Find and Format Date Headers
-dev-perl/Email-Date-Format 1.2.0-r1: Produce RFC 822 date strings
+dev-perl/Email-Date-Format 1.2.0-r1 1.5.0: Produce RFC 822 date strings
 dev-perl/Email-Find 0.100.0-r1: Find RFC 822 email addresses in plain text
-dev-perl/Email-MIME 1.929.0: Easy MIME message parsing
+dev-perl/Email-MIME 1.929.0 1.940.0: Easy MIME message parsing
 dev-perl/Email-MIME-Attachment-Stripper 1.317.0-r1: Strip the attachments from a mail
-dev-perl/Email-MIME-ContentType 1.16.0-r1: Parse a MIME Content-Type Header
+dev-perl/Email-MIME-ContentType 1.16.0-r1 1.18.0: Parse a MIME Content-Type Header
 dev-perl/Email-MIME-Encodings 1.315.0-r1: A unified interface to MIME encoding and decoding
-dev-perl/Email-MessageID 1.405.0: Generate world unique message-ids
-dev-perl/Email-Reply 1.203.0-r1: Reply to a Message
+dev-perl/Email-MessageID 1.405.0 1.406.0: Generate world unique message-ids
+dev-perl/Email-Reply 1.203.0-r1 1.204.0: Reply to a Message
 dev-perl/Email-Send 2.201.0: Simply Sending Email
 dev-perl/Email-Send-Gmail 0.330.0: Send Messages using Gmail
 dev-perl/Email-Sender 1.300.16: A library for sending email
-dev-perl/Email-Simple 2.206.0: Simple parsing of RFC2822 message format and headers
-dev-perl/Email-Valid 1.196.0: Check validity of Internet email addresses
+dev-perl/Email-Simple 2.206.0 2.214.0: Simple parsing of RFC2822 message format and headers
+dev-perl/Email-Valid 1.196.0 1.202.0: Check validity of Internet email addresses
 dev-perl/Encode-Detect 1.10.0-r1: Encode::Detect - An Encode::Encoding subclass that detects the encoding of data
 dev-perl/Encode-EUCJPASCII 0.30.0: An eucJP-open mapping
 dev-perl/Encode-HanConvert 0.350.0-r1: Traditional and Simplified Chinese mappings
-dev-perl/Encode-HanExtra 0.230.0-r1: Extra sets of Chinese encodings
+dev-perl/Encode-HanExtra 0.230.0-r1 0.230.0-r2: Extra sets of Chinese encodings
 dev-perl/Encode-JIS2K 0.30.0: JIS X 0212 (aka JIS 2000) Encodings
-dev-perl/Encode-Locale 1.30.0-r1: Determine the locale encoding
-dev-perl/Encode-compat 0.70.0-r1: Encode.pm emulation layer
+dev-perl/Encode-Locale 1.30.0-r1 1.50.0: Determine the locale encoding
+dev-perl/Encode-compat 0.70.0-r1 0.70.0-r2: Encode.pm emulation layer
 dev-perl/Error 0.170.240: Error/exception handling in an OO-ish way
 dev-perl/Eval-Closure 0.130.0 0.140.0: safely and cleanly create closures via string eval
 dev-perl/Eval-LineNumbers 0.340.0: Add line numbers to hereis blocks that contain perl source code
-dev-perl/Event 1.240.0: Fast, generic event loop
+dev-perl/Event 1.240.0 1.260.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
-dev-perl/Event-RPC 1.50.0: Event based transparent Client/Server RPC framework
-dev-perl/Exception-Class 1.390.0: A module that allows you to declare real exception classes in Perl
+dev-perl/Event-RPC 1.50.0 1.80.0: Event based transparent Client/Server RPC framework
+dev-perl/Exception-Class 1.390.0 1.430.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Expect 1.320.0-r1: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
-dev-perl/Exporter-Lite 0.20.0-r1: Lightweight exporting of variables
-dev-perl/Exporter-Tiny 0.42.0: An exporter with the features of Sub::Exporter but only core dependencies
-dev-perl/ExtUtils-AutoInstall 0.630.0-r1: Automatic installation of dependencies via CPAN from within Makefile.PL
+dev-perl/Exporter-Lite 0.20.0-r1 0.80.0: Lightweight exporting of variables
+dev-perl/Exporter-Tiny 0.42.0 1.0.0: An exporter with the features of Sub::Exporter but only core dependencies
+dev-perl/ExtUtils-AutoInstall 0.630.0-r1 0.640.0: Automatic installation of dependencies via CPAN from within Makefile.PL
 dev-perl/ExtUtils-Config 0.7.0 0.8.0: A wrapper for perl's configuration
-dev-perl/ExtUtils-Depends 0.404.0: Easily build XS extensions that depend on XS extensions
+dev-perl/ExtUtils-Depends 0.404.0 0.405.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.180.0: Facilitate use of FORTRAN from Perl/XS code
 dev-perl/ExtUtils-Helpers 0.22.0 0.26.0: Various portability utilities for module builders
 dev-perl/ExtUtils-InstallPaths 0.10.0 0.11.0: Build.PL install path logic made easy
@@ -4116,6 +4116,9 @@ dev-perl/Schedule-At 1.150.0-r1: OS independent interface to the Unix 'at' comma
 dev-perl/Scope-Guard 0.210.0: Lexically scoped resource management
 dev-perl/Scope-Upper 0.290.0-r1: Act on upper scopes
 dev-perl/Search-Xapian 1.2.23.0: Perl XS frontend to the Xapian C++ search library
+dev-perl/Sereal 4.4.0: Fast, compact, powerful binary (de-)serialization
+dev-perl/Sereal-Decoder 4.4.0: Fast, compact, powerful binary deserialization
+dev-perl/Sereal-Encoder 4.4.0: Fast, compact, powerful binary serialization
 dev-perl/Server-Starter 0.330.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
