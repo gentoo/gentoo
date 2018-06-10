@@ -16,7 +16,7 @@ inherit autotools bash-completion-r1 epunt-cxx flag-o-matic gnome2 libtool linux
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI="${SRC_URI}
+SRC_URI="${SRC_URI} https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz
 	https://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz" # pkg.m4 for eautoreconf
 
 LICENSE="LGPL-2.1+"
@@ -121,6 +121,9 @@ src_prepare() {
 
 	# gdbus-codegen is a separate package
 	eapply "${FILESDIR}"/${PN}-2.54.3-external-gdbus-codegen.patch
+
+	# Upstream glib-2-54 branch; includes fixups for potential libreoffice lockups
+	eapply "${WORKDIR}"/patches/
 
 	# Leave gtester-report python shebang alone - handled by python_fix_shebang
 	sed -e '/${PYTHON}/d' -i glib/Makefile.{am,in} || die
