@@ -8,6 +8,8 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Framework providing transparent file and data management"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-revert-new-uds-implementation.tar.xz"
+
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="acl +handbook kerberos +kwallet X"
@@ -65,6 +67,8 @@ PDEPEND="
 
 # tests hang
 RESTRICT+=" test"
+
+PATCHES=( "${WORKDIR}/${P}-revert-new-uds-implementation.patch" )
 
 src_configure() {
 	local mycmakeargs=(
