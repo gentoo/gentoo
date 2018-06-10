@@ -37,14 +37,20 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		[[ ${PV} = 5.12.5* ]] && : ${QT_MINIMAL:=5.9.1}
+		if [[ ${PV} = 5.12.5* ]]; then
+			: ${FRAMEWORKS_MINIMAL:=5.43.0}
+			: ${QT_MINIMAL:=5.9.1}
+		fi
 		if [[ ${KDE_BUILD_TYPE} = live && ${PV} != 5.12* ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
 			: ${QT_MINIMAL:=5.10.1}
 		fi
 		;;
 	kde-apps)
-		[[ ${PV} = 17.12.3* ]] && : ${QT_MINIMAL:=5.9.1}
+		if [[ ${PV} = 17.12.3* ]]; then
+			: ${FRAMEWORKS_MINIMAL:=5.43.0}
+			: ${QT_MINIMAL:=5.9.1}
+		fi
 		[[ ${PV} = 18.04.2* ]] && : ${FRAMEWORKS_MINIMAL:=5.44.0}
 		if [[ ${KDE_BUILD_TYPE} = live || ${PV} = 18.04* ]]; then
 			: ${FRAMEWORKS_MINIMAL:=5.46.0}
