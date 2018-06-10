@@ -8,8 +8,8 @@ Subject: [PATCH] glib-2.54.3-external-gdbus-codegen-for-autotools
  docs/reference/gio/Makefile.am                     |  1 -
  gio/Makefile.am                                    |  2 +-
  gio/tests/Makefile.am                              |  6 ++----
- gio/tests/gdbus-object-manager-example/Makefile.am |  8 +++-----
- 5 files changed, 6 insertions(+), 12 deletions(-)
+ gio/tests/gdbus-object-manager-example/Makefile.am |  6 ++----
+ 5 files changed, 5 insertions(+), 11 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
 index 0457c90..07166c9 100644
@@ -81,13 +81,6 @@ index 1d0464c..f390dca 100644
  		--interface-prefix org.gtk.GDBus.Example.ObjectManager. \
  		--c-namespace Example \
  		--c-generate-object-manager \
-@@ -46,4 +44,4 @@ EXTRA_DIST += gdbus-example-objectmanager.xml
- 
- CLEANFILES += $(GDBUS_GENERATED)
- 
--check-TESTS:
-\ No newline at end of file
-+check-TESTS: 
 -- 
 2.16.1
 
