@@ -16,7 +16,7 @@ inherit autotools bash-completion-r1 epunt-cxx flag-o-matic gnome2 libtool linux
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
-SRC_URI="${SRC_URI}
+SRC_URI="${SRC_URI} https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz
 	https://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz" # pkg.m4 for eautoreconf
 
 LICENSE="LGPL-2.1+"
@@ -122,6 +122,12 @@ src_prepare() {
 	# gdbus-codegen is a separate package
 	eapply "${FILESDIR}"/${PN}-2.54.3-external-gdbus-codegen.patch
 
+	# Upstream glib-2-54 branch; includes fixups for potential libreoffice lockups
+	eapply "${WORKDIR}"/patches/
+
+	# Leave gtester-report python shebang alone - handled by python_fix_shebang
+	sed -e '/${PYTHON}/d' -i glib/Makefile.{am,in} || die
+
 	# Also needed to prevent cross-compile failures, see bug #267603
 	eautoreconf
 
@@ -220,10 +226,13 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 
-	# gtester-report works only with python2 and is heavily deprecated - https://bugzilla.gnome.org/show_bug.cgi?id=668035#c4
-	# Remove it instead of bothering with making it work with python3 in PYTHON_COMPAT
-	rm "${ED}usr/bin/gtester-report"
-	rm "${ED}usr/share/man/man1/gtester-report.1"
+	if use utils ; then
+		python_fix_shebang "${ED}"/usr/bin/gtester-report
+	else
+		# gtester-report is heavily deprecated, so do not install by default - https://bugzilla.gnome.org/show_bug.cgi?id=668035#c4
+		rm "${ED}usr/bin/gtester-report"
+		rm "${ED}usr/share/man/man1/gtester-report.1"
+	fi
 
 	# Do not install charset.alias even if generated, leave it to libiconv
 	rm -f "${ED}/usr/lib/charset.alias"
