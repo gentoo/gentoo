@@ -33,7 +33,8 @@ ruby_add_rdepend "
 	highlight? ( >=dev-ruby/coderay-1.0.9 )
 "
 
-ruby_add_bdepend "test? (
+ruby_add_bdepend "doc? ( dev-ruby/yard )
+	test? (
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/coderay-1.0.9
 		dev-ruby/syntax
