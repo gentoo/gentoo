@@ -10,5 +10,5 @@ inherit perl-module
 DESCRIPTION="Hash to store values without increasing reference count (weak references)"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
