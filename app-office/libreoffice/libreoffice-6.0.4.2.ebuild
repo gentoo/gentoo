@@ -247,11 +247,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.0.3.2-disable-flaky-tests-1.patch" #bug 656676
+	# 6.1 branch
+	"${FILESDIR}/${P}-glm-0.9.9.patch" # bug 657178
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
 	"${FILESDIR}/${PN}-6.0.3.2-testTdf108947.patch" #bug 656600
-	"${FILESDIR}/${P}-glm-0.9.9.patch" # bug 657178
 
 	# gtk3-kde5 vcl plugin backported from master
 	"${WORKDIR}"/${PATCHSET/.tar.xz/}
