@@ -34,7 +34,7 @@ RUST_STAGE0_arm64="rust-${RUST_STAGE0_VERSION}-${CHOST_arm64}"
 CARGO_DEPEND_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
 
 DESCRIPTION="Systems programming language from Mozilla"
-HOMEPAGE="http://www.rust-lang.org/"
+HOMEPAGE="https://www.rust-lang.org/"
 
 SRC_URI="https://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.xz
 	amd64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_amd64}.tar.xz )
