@@ -8,8 +8,9 @@ inherit autotools toolchain-funcs
 MY_P="${PN}${PV//./}"
 
 DESCRIPTION="Powerful Multilingual File Viewer"
-HOMEPAGE="http://www.ff.iij4u.or.jp/~nrt/lv/"
-SRC_URI="http://www.ff.iij4u.or.jp/~nrt/freeware/${MY_P}.tar.gz"
+#HOMEPAGE="http://www.ff.iij4u.or.jp/~nrt/lv/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
