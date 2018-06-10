@@ -22,7 +22,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-inherit autotools eutils pam perl-module prefix user ${INHERIT_GIT}
+inherit autotools eutils pam perl-module prefix toolchain-funcs user ${INHERIT_GIT}
 
 DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com"
@@ -71,6 +71,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	tc-ld-disable-gold
 	default
 
 	# pids should go to /var/run/slurm
