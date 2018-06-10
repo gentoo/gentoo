@@ -14,6 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# Don't compress manpages
+PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch )
+
 src_compile() {
 	emake CC="$(tc-getCC)"
 }
