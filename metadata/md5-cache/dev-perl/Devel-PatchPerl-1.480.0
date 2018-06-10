@@ -3,10 +3,10 @@ DEPEND=>=dev-perl/File-pushd-1.0.0 virtual/perl-IO virtual/perl-MIME-Base64 dev-
 DESCRIPTION=Patch perl source a la Devel::PPPort's buildperl.pl
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Devel-PatchPerl/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/File-pushd-1.0.0 virtual/perl-IO virtual/perl-MIME-Base64 dev-perl/Module-Pluggable dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BI/BINGOS/Devel-PatchPerl-1.48.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=92682d6123583cfa9d6cdc27b9852aa8
+_md5_=cf3ba11d427c5118e11948b6b072d4f1
