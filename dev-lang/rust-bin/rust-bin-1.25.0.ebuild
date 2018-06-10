@@ -8,14 +8,14 @@ inherit eutils bash-completion-r1 toolchain-funcs
 MY_P="rust-${PV}"
 
 DESCRIPTION="Systems programming language from Mozilla"
-HOMEPAGE="http://www.rust-lang.org/"
-SRC_URI="amd64? ( http://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux-gnu.tar.gz )
+HOMEPAGE="https://www.rust-lang.org/"
+SRC_URI="amd64? ( https://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux-gnu.tar.gz )
 	arm? (
-		http://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabi.tar.gz
-		http://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabihf.tar.gz
-		http://static.rust-lang.org/dist/${MY_P}-armv7-unknown-linux-gnueabihf.tar.gz
+		https://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabi.tar.gz
+		https://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabihf.tar.gz
+		https://static.rust-lang.org/dist/${MY_P}-armv7-unknown-linux-gnueabihf.tar.gz
 		)
-	x86? ( http://static.rust-lang.org/dist/${MY_P}-i686-unknown-linux-gnu.tar.gz )"
+	x86? ( https://static.rust-lang.org/dist/${MY_P}-i686-unknown-linux-gnu.tar.gz )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
