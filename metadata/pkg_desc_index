@@ -7521,7 +7521,6 @@ media-libs/libggimisc 2.2.2: Library for General Graphics Interface
 media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
-media-libs/libgltf 0.1.0: C++ Library for rendering OpenGL models stored in glTF format
 media-libs/libgphoto2 2.5.14 2.5.16: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
@@ -7536,7 +7535,7 @@ media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjackasyn 0.13: An application/library for connecting OSS apps to Jackit
 media-libs/libjpeg-turbo 1.5.0 1.5.1: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
-media-libs/libkate 0.4.1-r2 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
+media-libs/libkate 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.1.0_pre20150206: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.29: Lightweight OSC (Open Sound Control) implementation
@@ -7600,7 +7599,7 @@ media-libs/libsndfile 1.0.28-r1: A C library for reading and writing files conta
 media-libs/libsoundtouch 1.8.0-r1: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1-r1: The Theora Video Compression Codec
-media-libs/libtiger 0.3.4 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
+media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
@@ -7628,7 +7627,7 @@ media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implement
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.18.2-r1: A software implementation of the OpenAL 3D audio API
-media-libs/opencollada 1.6.25 1.6.58 1.6.62: Stream based read/write library for COLLADA files
+media-libs/opencollada 1.6.58 1.6.62: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.0-r1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/opencv 2.4.13-r3: A collection of algorithms and sample code for various computer vision problems
@@ -8574,7 +8573,7 @@ net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.6.10: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
-net-libs/biblesync 1.1.2 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
+net-libs/biblesync 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccrtp 2.0.9: GNU ccRTP - Implementation of the IETF real-time transport protocol
