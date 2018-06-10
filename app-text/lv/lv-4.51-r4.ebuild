@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-inherit autotools eutils toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_P="${PN}${PV//./}"
 
@@ -16,27 +16,26 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses:0=
-	!app-editors/levee"
+RDEPEND="!app-editors/levee
+	sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
 	dev-lang/perl"
-
 S="${WORKDIR}/${MY_P}"
-
-DOCS=(README hello.sample)
-HTML_DOCS=(index.html relnote.html hello.sample.gif)
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-xz.diff
-	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${P}-protos.patch
+	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${P}-xz.diff
 )
+DOCS=( README hello.sample )
+HTML_DOCS=( index.html relnote.html hello.sample.gif )
 
 src_prepare() {
 	default
 
 	cd src
+	mv configure.{in,ac}
 	eautoreconf
 }
 
