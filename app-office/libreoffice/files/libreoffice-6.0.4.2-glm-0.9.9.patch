@@ -1,9 +1,22 @@
-Fix build with >=media-libs/glm-0.9.9
-https://bugs.gentoo.org/657178
-https://bugs.documentfoundation.org/show_bug.cgi?id=118070
+From 5f1bf6598b5725ad1e50ae9f7ec7524cc8a834fa Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sun, 10 Jun 2018 12:25:18 +0200
+Subject: Fix build with GLM 0.9.9.0, tdf#118070
 
+One of the test files was forgotten in 953c4add8fd76d88f49a81ae4c21a1fdcc007e57
+
+Change-Id: I0315433c688ff7edb2ba599bbef203cac9de3022
+Reviewed-on: https://gerrit.libreoffice.org/55554
+Reviewed-by: Rene Engelhard <rene@debian.org>
+Tested-by: Rene Engelhard <rene@debian.org>
+---
+ vcl/Executable_icontest.mk | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/vcl/Executable_icontest.mk b/vcl/Executable_icontest.mk
+index ce16330..8c917b7 100644
 --- a/vcl/Executable_icontest.mk
-+++ a/vcl/Executable_icontest.mk
++++ b/vcl/Executable_icontest.mk
 @@ -19,6 +19,12 @@ $(eval $(call gb_Executable_use_externals,icontest,\
  ))
  endif
@@ -17,3 +30,5 @@ https://bugs.documentfoundation.org/show_bug.cgi?id=118070
  $(eval $(call gb_Executable_use_api,icontest,\
      offapi \
      udkapi \
+-- 
+cgit v1.1
