@@ -1,0 +1,19 @@
+Fix build with >=media-libs/glm-0.9.9
+https://bugs.gentoo.org/657178
+https://bugs.documentfoundation.org/show_bug.cgi?id=118070
+
+--- a/vcl/Executable_icontest.mk
++++ a/vcl/Executable_icontest.mk
+@@ -19,6 +19,12 @@ $(eval $(call gb_Executable_use_externals,icontest,\
+ ))
+ endif
+ 
++ifeq ($(SYSTEM_GLM),TRUE)
++$(eval $(call gb_Executable_add_defs,icontest,\
++    -DGLM_ENABLE_EXPERIMENTAL \
++))
++endif
++
+ $(eval $(call gb_Executable_use_api,icontest,\
+     offapi \
+     udkapi \
