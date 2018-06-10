@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl module for basic IMAP server administration"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 src_test() {
