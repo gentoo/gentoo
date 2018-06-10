@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to the GooCanvas"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="x11-libs/goocanvas:0
