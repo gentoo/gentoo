@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
@@ -22,7 +22,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r2.tar.xz"
+	# SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -37,13 +37,14 @@ IUSE="accessibility +aio alsa bluetooth bzip2 capstone +caps +curl debug
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
 
-COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel
-	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc
-	sparc64 x86_64"
+COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
+	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
+	sh4 sh4eb sparc sparc64 x86_64 xtensa xtensaeb"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS}
-	lm32 moxie ppcemb tricore unicore32 xtensa xtensaeb"
+	lm32 moxie ppcemb tricore unicore32"
 IUSE_USER_TARGETS="${COMMON_TARGETS}
-	armeb hppa mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
+	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus
+	tilegx"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
@@ -81,6 +82,8 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
+	dev-libs/libxml2[static-libs(+)]
+	x11-libs/libxkbcommon[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -109,7 +112,11 @@ SOFTMMU_TOOLS_DEPEND="
 			vte? ( x11-libs/vte:2.91 )
 		)
 	)
-	infiniband? ( sys-fabric/librdmacm:=[static-libs(+)] )
+	infiniband? (
+		sys-fabric/libibumad:=[static-libs(+)]
+		sys-fabric/libibverbs:=[static-libs(+)]
+		sys-fabric/librdmacm:=[static-libs(+)]
+	)
 	iscsi? ( net-libs/libiscsi )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
@@ -208,9 +215,7 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
-	"${FILESDIR}"/${PN}-2.11.0-glibc-2.27.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${WORKDIR}"/patches
 )
 
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
@@ -475,6 +480,12 @@ qemu_src_configure() {
 		$(conf_notuser xen xen-pci-passthrough)
 		$(conf_notuser xfs xfsctl)
 	)
+
+	if [[ ${buildtype} == "user" ]] ; then
+		conf_opts+=( --disable-libxml2 )
+	else
+		conf_opts+=( --enable-libxml2 )
+	fi
 
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
