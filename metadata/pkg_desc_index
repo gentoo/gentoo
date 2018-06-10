@@ -3755,57 +3755,57 @@ dev-perl/Gtk2-ImageView 0.50.0-r1 0.50.0-r2: Perl binding for the GtkImageView i
 dev-perl/Gtk2-Notify 0.50.0: A perl interface to the notification library
 dev-perl/Gtk2-Unique 0.50.0-r1 0.50.0-r2: Perl binding for C libunique library
 dev-perl/Guard 1.23.0: Safe cleanup blocks
-dev-perl/HTML-Clean 0.800.0-r1: Cleans up HTML code for web browsers, not humans
+dev-perl/HTML-Clean 0.800.0-r1 0.800.0-r2: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
 dev-perl/HTML-FillInForm 2.210.0: Populates HTML Forms with data
-dev-perl/HTML-Form 6.30.0-r1: Class that represents an HTML form element
+dev-perl/HTML-Form 6.30.0-r1 6.30.0-r2: Class that represents an HTML form element
 dev-perl/HTML-FormatText-WithLinks 0.150.0-r1: HTML to text conversion with links as footnotes
 dev-perl/HTML-FormatText-WithLinks-AndTables 0.70.0-r1: Converts HTML to text with tables intact
-dev-perl/HTML-Formatter 2.140.0: HTML Formatter
-dev-perl/HTML-FromText 2.50.0-r1: Convert plain text to HTML
+dev-perl/HTML-Formatter 2.140.0 2.160.0: Base class for HTML Formatters
+dev-perl/HTML-FromText 2.50.0-r1 2.70.0: Convert plain text to HTML
 dev-perl/HTML-HTMLDoc 0.100.0-r1: Perl interface to the htmldoc program for producing PDF-Files from HTML-Content
-dev-perl/HTML-LinkExtractor 0.130.0-r1: A bare-bone HTML parser, similar to HTML::Parser
+dev-perl/HTML-LinkExtractor 0.130.0-r1 0.130.0-r2: A bare-bone HTML parser, similar to HTML::Parser
 dev-perl/HTML-Mason 1.560.0: A HTML development and delivery Perl Module
 dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
-dev-perl/HTML-Parser 3.710.0-r1: Parse <HEAD> section of HTML documents
+dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
-dev-perl/HTML-Scrubber 0.150.0: Perl extension for scrubbing/sanitizing html
-dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser
-dev-perl/HTML-Strip 2.90.0: Extension for stripping HTML markup from text
+dev-perl/HTML-Scrubber 0.150.0 0.170.0: Perl extension for scrubbing/sanitizing html
+dev-perl/HTML-SimpleParse 0.120.0-r1 0.120.0-r2: A bare-bones HTML parser, similar to HTML::Parser
+dev-perl/HTML-Strip 2.90.0 2.100.0: Extension for stripping HTML markup from text
 dev-perl/HTML-Table 2.08a-r1: produces HTML tables
-dev-perl/HTML-TableExtract 2.130.0: The Perl Table-Extract Module
+dev-perl/HTML-TableExtract 2.130.0 2.150.0: The Perl Table-Extract Module
 dev-perl/HTML-TableParser 0.420.0: Extract data from an HTML table
 dev-perl/HTML-Tagset 3.200.0-r1: Data tables useful in parsing HTML
-dev-perl/HTML-Template 2.950.0: A Perl module to use HTML Templates
+dev-perl/HTML-Template 2.950.0 2.970.0: A Perl module to use HTML Templates
 dev-perl/HTML-Template-Expr 0.70.0-r1: HTML::Template extension adding expression support
 dev-perl/HTML-Template-JIT 0.50.0-r3: a just-in-time compiler for HTML::Template
 dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interface
-dev-perl/HTML-Tree 5.60.0: A library to manage HTML-Tree in PERL
+dev-perl/HTML-Tree 5.60.0 5.70.0: A library to manage HTML-Tree in PERL
 dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
-dev-perl/HTTP-BrowserDetect 1.500.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
-dev-perl/HTTP-Cache-Transparent 1.100.0-r1: Cache the result of http get-requests persistently
-dev-perl/HTTP-Cookies 6.10.0: Storage of cookies
+dev-perl/HTTP-BrowserDetect 1.500.0 2.80.0 3.140.0: Determine Web browser, version, and platform from an HTTP user agent string
+dev-perl/HTTP-Cache-Transparent 1.100.0-r1 1.400.0: Cache the result of http get-requests persistently
+dev-perl/HTTP-Cookies 6.10.0 6.40.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
-dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
+dev-perl/HTTP-Daemon 6.10.0-r1 6.10.0-r2: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Entity-Parser 0.200.0: PSGI compliant HTTP Entity Parser
-dev-perl/HTTP-Headers-Fast 0.200.0: Faster implementation of HTTP::Headers
-dev-perl/HTTP-Message 6.110.0: Base class for Request/Response
+dev-perl/HTTP-Headers-Fast 0.200.0 0.210.0: Faster implementation of HTTP::Headers
+dev-perl/HTTP-Message 6.110.0 6.130.0: Base class for Request/Response
 dev-perl/HTTP-MultiPartParser 0.20.0: Low Level MultiPart MIME HTTP parser
-dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
+dev-perl/HTTP-Negotiate 6.10.0 6.10.0-r1: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
 dev-perl/HTTP-Server-Simple 0.520.0: Lightweight HTTP Server
 dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standalone mason server
 dev-perl/HTTP-Server-Simple-PSGI 0.160.0: PSGI handler for HTTP::Server::Simple
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
 dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
-dev-perl/Hash-MoreUtils 0.20.0-r1: Provide the stuff missing in Hash::Util
+dev-perl/Hash-MoreUtils 0.20.0-r1 0.50.0: Provide the stuff missing in Hash::Util
 dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
-dev-perl/Hash-NoRef 0.30.0-r1: Hash to store values without increasing reference count (weak references)
-dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sorted
-dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
+dev-perl/Hash-NoRef 0.30.0-r1 0.30.0-r2: Hash to store values without increasing reference count (weak references)
+dev-perl/Heap 0.800.0-r1 0.800.0-r2: Perl extensions for keeping data partially sorted
+dev-perl/Hook-LexWrap 0.250.0 0.260.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IO-AIO 4.330.0: Asynchronous Input/Output
 dev-perl/IO-All 0.870.0: unified IO operations
@@ -4153,7 +4153,7 @@ dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Export
 dev-perl/Sub-Exporter-Progressive 0.1.11: Only use Sub::Exporter if you need it
 dev-perl/Sub-Identify 0.140.0: Retrieve names of code references
 dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
-dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
+dev-perl/Sub-Name 0.50.0-r1 0.150.0 0.210.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
 dev-perl/Sub-Quote 2.3.1: efficient generation of subroutines via string eval
 dev-perl/Sub-Uplevel 0.280.0: Apparently run a function in a higher stack frame
@@ -4198,7 +4198,7 @@ dev-perl/Test-DistManifest 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
 dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
 dev-perl/Test-Exception 0.430.0: Test functions for exception based code
-dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
+dev-perl/Test-FailWarnings 0.8.0 0.8.0-r1: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File 1.443.0: Test file attributes
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
@@ -4290,7 +4290,7 @@ dev-perl/Tk-JPEG-Lite 2.14.30-r1: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
 dev-perl/Tree-DAG_Node 1.60.0-r1: (Super)class for representing nodes in a tree
 dev-perl/Tree-Simple 1.180.0-r1 1.270.0: A simple tree object
-dev-perl/Try-Tiny 0.220.0 0.240.0: Minimal try/catch with proper localization of $@
+dev-perl/Try-Tiny 0.220.0 0.240.0 0.300.0: Minimal try/catch with proper localization of $@
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
