@@ -25,9 +25,18 @@ RDEPEND="
 	id3tag? ( media-libs/libid3tag )
 	ladspa? ( media-libs/ladspa-sdk )
 	mad? ( media-libs/libmad )
-	ogg? ( media-libs/libvorbis	media-libs/libogg )
-	opus? ( media-libs/opus media-libs/opusfile )
-	png? ( media-libs/libpng:0= sys-libs/zlib )
+	ogg? (
+		media-libs/libogg
+		media-libs/libvorbis
+	)
+	opus? (
+		media-libs/opus
+		media-libs/opusfile
+	)
+	png? (
+		media-libs/libpng:0=
+		sys-libs/zlib
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	sndfile? ( >=media-libs/libsndfile-1.0.11 )
 	twolame? ( media-sound/twolame )
