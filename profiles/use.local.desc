@@ -2319,7 +2319,6 @@ kde-frameworks/kinit:caps - Capabilities support for improved security and bette
 kde-frameworks/kinit:man - Build and install man pages
 kde-frameworks/kio:kwallet - Enable permanent storage of passwords for kpasswdserver with kde-frameworks/kwallet
 kde-frameworks/knotifications:speech - Enable text-to-speech notification support
-kde-frameworks/knotifyconfig:phonon - Add sound support via media-libs/phonon
 kde-frameworks/kpackage:man - Build and install man pages
 kde-frameworks/kservice:man - Build and install man pages
 kde-frameworks/ktexteditor:editorconfig - Enable support for EditorConfig configuration files
