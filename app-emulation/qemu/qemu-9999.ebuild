@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
@@ -79,6 +79,8 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
+	dev-libs/libxml2[static-libs(+)]
+	x11-libs/libxkbcommon[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -107,7 +109,11 @@ SOFTMMU_TOOLS_DEPEND="
 			vte? ( x11-libs/vte:2.91 )
 		)
 	)
-	infiniband? ( sys-fabric/librdmacm:=[static-libs(+)] )
+	infiniband? (
+		sys-fabric/libibumad:=[static-libs(+)]
+		sys-fabric/libibverbs:=[static-libs(+)]
+		sys-fabric/librdmacm:=[static-libs(+)]
+	)
 	iscsi? ( net-libs/libiscsi )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
@@ -139,7 +145,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
 	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
-	snappy? ( app-arch/snappy )
+	snappy? ( app-arch/snappy:= )
 	spice? (
 		>=app-emulation/spice-protocol-0.12.3
 		>=app-emulation/spice-0.12.0[static-libs(+)]
@@ -471,6 +477,12 @@ qemu_src_configure() {
 		$(conf_notuser xen xen-pci-passthrough)
 		$(conf_notuser xfs xfsctl)
 	)
+
+	if [[ ${buildtype} == "user" ]] ; then
+		conf_opts+=( --disable-libxml2 )
+	else
+		conf_opts+=( --enable-libxml2 )
+	fi
 
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
