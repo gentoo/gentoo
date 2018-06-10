@@ -1,5 +1,5 @@
---- lv451.orig/index.html
-+++ lv451/index.html
+--- a/index.html
++++ b/index.html
 @@ -301,8 +301,11 @@
  	<P>
  	Compressed files that have suffix ``gz'', ``z'', or ``GZ'', ``Z'' are
@@ -14,8 +14,8 @@
  	<P>
  	In case that standard output is not connected to an ordinal terminal
  	but to redirect or pipe-line,
---- lv451.orig/src/stream.c
-+++ lv451/src/stream.c
+--- a/src/stream.c
++++ b/src/stream.c
 @@ -43,6 +43,8 @@
  
  private byte *gz_filter = "zcat";
@@ -37,7 +37,7 @@
    if( NULL != filter ){
      /*
 -     * zcat or bzcat
-+     * zcat or bzcat or lzcat or xzcat
++     * zcat, bzcat, lzcat or xzcat
       */
      if( NULL == (st->fp = (FILE *)tmpfile()) )
        perror( "temporary file" ), exit( -1 );

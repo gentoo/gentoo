@@ -23,10 +23,10 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	epatch "${FILESDIR}"/${P}-protos.patch
-	epatch "${FILESDIR}"/${P}-tinfo.patch
-	epatch "${FILESDIR}"/${P}-xz.diff
+	epatch "${FILESDIR}"/${PN}-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-headers.patch
+	epatch "${FILESDIR}"/${PN}-tinfo.patch
+	epatch "${FILESDIR}"/${PN}-xz.patch
 
 	cd "${S}"/src
 	mv configure.{in,ac}
