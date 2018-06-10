@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator xdg-utils
+inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -104,21 +104,7 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/clang-5
 	virtual/pkgconfig
 	dev-vcs/git
-	$(python_gen_any_dep '
-		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
-		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
-		dev-python/html5lib[${PYTHON_USEDEP}]
-		dev-python/simplejson[${PYTHON_USEDEP}]
-	')
 "
-
-# Keep this in sync with the python_gen_any_dep call.
-python_check_deps() {
-	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
-	has_version --host-root ">=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/html5lib[${PYTHON_USEDEP}]" &&
-	has_version --host-root "dev-python/simplejson[${PYTHON_USEDEP}]"
-}
 
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
 	EBUILD_DEATH_HOOKS+=" chromium_pkg_die";
@@ -145,14 +131,15 @@ GTK+ icon theme.
 
 PATCHES=(
 	"${FILESDIR}/chromium-widevine-r2.patch"
-	"${FILESDIR}/chromium-compiler-r1.patch"
-	"${FILESDIR}/chromium-ffmpeg-build-r0.patch"
+	"${FILESDIR}/chromium-compiler-r2.patch"
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-math.h-r0.patch"
 	"${FILESDIR}/chromium-stdint.patch"
 	"${FILESDIR}/chromium-ffmpeg-r1.patch"
-	"${FILESDIR}/chromium-gn-bootstrap-r23.patch"
+	"${FILESDIR}/chromium-libjpeg-r0.patch"
+	"${FILESDIR}/chromium-cors-string-r0.patch"
+	"${FILESDIR}/chromium-libwebp-shim-r0.patch"
 )
 
 pre_build_checks() {
@@ -218,6 +205,8 @@ src_prepare() {
 		net/third_party/http2
 		net/third_party/mozilla_security_manager
 		net/third_party/nss
+		net/third_party/quic
+		net/third_party/spdy
 		third_party/WebKit
 		third_party/analytics
 		third_party/angle
@@ -241,7 +230,10 @@ src_prepare() {
 		third_party/catapult
 		third_party/catapult/common/py_vulcanize/third_party/rcssmin
 		third_party/catapult/common/py_vulcanize/third_party/rjsmin
+		third_party/catapult/third_party/beautifulsoup4
+		third_party/catapult/third_party/html5lib-python
 		third_party/catapult/third_party/polymer
+		third_party/catapult/third_party/six
 		third_party/catapult/tracing/third_party/d3
 		third_party/catapult/tracing/third_party/gl-matrix
 		third_party/catapult/tracing/third_party/jszip
@@ -275,11 +267,11 @@ src_prepare() {
 		third_party/libXNVCtrl
 		third_party/libaddressinput
 		third_party/libaom
-		third_party/libaom/source/libaom/third_party/x86inc
 		third_party/libjingle
 		third_party/libphonenumber
 		third_party/libsecret
 		third_party/libsrtp
+		third_party/libsync
 		third_party/libudev
 		third_party/libwebm
 		third_party/libxml/chromium
@@ -310,9 +302,12 @@ src_prepare() {
 		third_party/polymer
 		third_party/protobuf
 		third_party/protobuf/third_party/six
+		third_party/pyjson5
 		third_party/qcms
+		third_party/rnnoise
 		third_party/s2cellid
 		third_party/sfntly
+		third_party/simplejson
 		third_party/skia
 		third_party/skia/third_party/gif
 		third_party/skia/third_party/skcms
@@ -557,7 +552,8 @@ src_configure() {
 	# https://bugs.gentoo.org/654216
 	addpredict /dev/dri/ #nowarn
 
-	if ! use system-ffmpeg; then
+	#if ! use system-ffmpeg; then
+	if false; then
 		local build_ffmpeg_args=""
 		if use pic && [[ "${ffmpeg_target_arch}" == "ia32" ]]; then
 			build_ffmpeg_args+=" --disable-asm"
@@ -586,18 +582,6 @@ src_compile() {
 	python_setup
 
 	#"${EPYTHON}" tools/clang/scripts/update.py --force-local-build --gcc-toolchain /usr --skip-checkout --use-system-cmake --without-android || die
-
-	# Build mksnapshot and pax-mark it.
-	local x
-	for x in mksnapshot v8_context_snapshot_generator; do
-		if tc-is-cross-compiler; then
-			eninja -C out/Release "host/${x}"
-			pax-mark m "out/Release/host/${x}"
-		else
-			eninja -C out/Release "${x}"
-			pax-mark m "out/Release/${x}"
-		fi
-	done
 
 	# Even though ninja autodetects number of CPUs, we respect
 	# user's options, for debugging with -j 1 or any other reason.
