@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Getopt::Long with usage text"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
 IUSE="test minimal"
 
 CONFLICTS="!<dev-perl/MooseX-Getopt-0.660.0"
