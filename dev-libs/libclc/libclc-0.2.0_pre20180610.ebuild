@@ -31,17 +31,18 @@ fi
 LICENSE="|| ( MIT BSD )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+IUSE_VIDEO_CARDS="video_cards_nvidia video_cards_r600 video_cards_radeonsi"
+IUSE="${IUSE_VIDEO_CARDS}"
+REQUIRED_USE="|| ( ${IUSE_VIDEO_CARDS} )"
 
-RDEPEND="
+DEPEND="
 	|| (
 		sys-devel/clang:7
 		sys-devel/clang:6
 		sys-devel/clang:5
 		sys-devel/clang:4
 		>=sys-devel/clang-3.9:0
-	)"
-DEPEND="${RDEPEND}
+	)
 	${PYTHON_DEPS}"
 
 LLVM_MAX_SLOT=7
@@ -63,10 +64,18 @@ pkg_setup() {
 }
 
 src_configure() {
+	local libclc_targets=()
+
+	use video_cards_nvidia && libclc_targets+=("nvptx--" "nvptx64--" "nvptx--nvidiacl" "nvptx64--nvidiacl")
+	use video_cards_r600 && libclc_targets+=("r600--")
+	use video_cards_radeonsi && libclc_targets+=("amdgcn--" "amdgcn-mesa-mesa3d" "amdgcn--amdhsa")
+
+	[[ ${#libclc_targets[@]} ]] || die "libclc target missing!"
+
 	./configure.py \
 		--with-cxx-compiler="$(tc-getCXX)" \
 		--with-llvm-config="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config" \
-		--prefix="${EPREFIX}/usr" || die
+		--prefix="${EPREFIX}/usr" ${libclc_targets[@]} || die
 }
 
 src_compile() {
