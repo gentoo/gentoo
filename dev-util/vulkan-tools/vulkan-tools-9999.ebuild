@@ -36,8 +36,6 @@ DEPEND="${PYTHON_DEPS}
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	   )"
 
-PATCHES=( "${FILESDIR}/${PN}-Use-usr-for-vulkan-headers.patch" )
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
@@ -46,6 +44,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DGLSLANG_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
 	)
 	cmake-utils_src_configure
 }
