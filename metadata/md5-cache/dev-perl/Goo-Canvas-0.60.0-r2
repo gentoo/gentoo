@@ -4,10 +4,10 @@ DESCRIPTION=Perl interface to the GooCanvas
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Goo-Canvas/
 IUSE=examples
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=x11-libs/goocanvas:0 dev-perl/Gtk2 dev-perl/glib-perl dev-perl/Cairo dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Y/YE/YEWENBIN/Goo-Canvas-0.06.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=c26b71bcf3281f4d6cb44693fb8f0619
+_md5_=010a9f435cd9cd52e210118e1aef0956
