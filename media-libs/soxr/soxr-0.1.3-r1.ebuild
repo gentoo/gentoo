@@ -26,7 +26,7 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( README TODO NEWS AUTHORS )
 
 PATCHES=(
-	"${FILESDIR}/nodoc.patch"
+	"${FILESDIR}/${PN}-0.1.1-nodoc.patch"
 	"${FILESDIR}/${P}-fix-pkgconfig.patch"
 )
 
