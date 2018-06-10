@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Asynchronous Input/Output"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 #RESTRICT="test"
 
