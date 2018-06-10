@@ -29,6 +29,6 @@ src_configure() {
 
 src_test() {
 	#bug 650214
-	local myctestargs=( -E "(kdatecomboboxtest)" )
+	local myctestargs=( -E "(plasma-plasmoidpackagetest)" )
 	kde5_src_test
 }
