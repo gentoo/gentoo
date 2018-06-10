@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Jun 2018)
+# Dead upstream, no more revdeps after LO dropped support.
+# Masked for removal in 30 days, bug #657400
+media-libs/libgltf
+
 # Mikle Kolyada <zlogene@gentoo.org> (9 June 2018)
 # Fails to buil, dead upstream, EAPI=2
 # Only the live enuild in the tree.
