@@ -40,5 +40,6 @@
   </use>
   <upstream>
     <remote-id type="github">MusicPlayerDaemon/MPD</remote-id>
+    <bugs-to>https://github.com/MusicPlayerDaemon/MPD/issues</bugs-to>
   </upstream>
 </pkgmetadata>
