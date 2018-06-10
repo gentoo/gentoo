@@ -248,6 +248,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.3.2-disable-flaky-tests-{1,2}.patch #bug 656676
 	# 6.0 branch
 	"${FILESDIR}/${P}-poppler-0.64.patch"
+	# 6.1 branch
+	"${FILESDIR}/${PN}-6.0.4.2-glm-0.9.9.patch" # bug 657178
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"

@@ -233,11 +233,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4.4.2-poppler-0.62.patch" # bug 642602
 	"${FILESDIR}/${PN}-6.0.3.2-poppler-0.64.patch" # bug 653478
 	"${FILESDIR}/${P}-glm-0.9.9.patch" # bug 657178
+	# 6.1 branch
+	"${FILESDIR}/${PN}-6.0.4.2-glm-0.9.9.patch" # bug 657178
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
 	"${FILESDIR}/${PN}-5.4.4.2-gtk3-no-gtk-build.patch" # bug 641812
-	"${FILESDIR}/${PN}-6.0.4.2-glm-0.9.9.patch" # bug 657178
 )
 
 pkg_pretend() {
