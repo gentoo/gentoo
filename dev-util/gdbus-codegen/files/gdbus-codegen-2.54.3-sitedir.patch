@@ -17,6 +17,6 @@ index 8050981..932410a 100644
 -
 -sys.path.insert(0, os.path.abspath(path))
 -from codegen import codegen_main
-+     from gdbus_codegen import codegen_main
++    from gdbus_codegen import codegen_main
  
  sys.exit(codegen_main.codegen_main())
