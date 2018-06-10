@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
-HOMEPAGE="http://www.claws-mail.org/"
+HOMEPAGE="https://www.claws-mail.org/"
 
-SRC_URI="http://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
+SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"

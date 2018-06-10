@@ -7,13 +7,13 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
-HOMEPAGE="http://www.claws-mail.org/"
+HOMEPAGE="https://www.claws-mail.org/"
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.claws-mail.org/claws.git"
 else
-	SRC_URI="http://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
+	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
