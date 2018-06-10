@@ -4,40 +4,17 @@ Date: Fri, 23 Feb 2018 15:27:33 +0330
 Subject: [PATCH] glib-2.54.3-external-gdbus-codegen-for-autotools
 
 ---
- configure.ac                                       | 17 ++++++++---------
+ configure.ac                                       |  1 -
  docs/reference/gio/Makefile.am                     |  1 -
  gio/Makefile.am                                    |  2 +-
  gio/tests/Makefile.am                              |  6 ++----
  gio/tests/gdbus-object-manager-example/Makefile.am |  8 +++-----
- 5 files changed, 14 insertions(+), 20 deletions(-)
+ 5 files changed, 6 insertions(+), 12 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
 index 0457c90..07166c9 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -382,14 +382,14 @@ AC_SUBST(PERL_PATH)
- # option to specify python interpreter to use; this just sets $PYTHON, so that
- # we will fallback to reading $PYTHON if --with-python is not given, and
- # python.m4 will get the expected input
--AC_ARG_WITH(python,
--            AS_HELP_STRING([--with-python=PATH],
--                           [Path to Python interpreter; searches $PATH if only a program name is given; if not given, searches for a few standard names such as "python3" or "python2"]),
--            [PYTHON="$withval"], [])
--if test x"$PYTHON" = xyes; then
--  AC_MSG_ERROR([--with-python option requires a path or program argument])
--fi
--AM_PATH_PYTHON(2.7,,PYTHON="python2.7")
-+#AC_ARG_WITH(python,
-+#            AS_HELP_STRING([--with-python=PATH],
-+#                           [Path to Python interpreter; searches $PATH if only a program name is given; if not given, searches for a few standard names such as "python3" or "python2"]),
-+#            [PYTHON="$withval"], [])
-+#if test x"$PYTHON" = xyes; then
-+#  AC_MSG_ERROR([--with-python option requires a path or program argument])
-+#fi
-+#AM_PATH_PYTHON(2.7,,PYTHON="python2.7")
- 
- 
- dnl ***********************
 @@ -3469,7 +3469,6 @@ gobject/glib-mkenums
  gobject/tests/Makefile
  gthread/Makefile
