@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 GNOME2_LA_PUNT="yes"
 
 inherit autotools bash-completion-r1 epunt-cxx flag-o-matic gnome2 libtool linux-info \
-	multilib multilib-minimal pax-utils python-r1 toolchain-funcs versionator virtualx
+	multilib multilib-minimal pax-utils python-single-r1 toolchain-funcs versionator virtualx
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
@@ -84,6 +84,8 @@ pkg_setup() {
 		fi
 		linux-info_pkg_setup
 	fi
+	# FIXME: Move python deps that are only required at build time of other packages to a split package
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -120,11 +122,6 @@ src_prepare() {
 	# gdbus-codegen is a separate package
 	eapply "${FILESDIR}"/${PN}-2.54.3-external-gdbus-codegen.patch
 
-	# Leave python shebang alone - handled by python_replicate_script
-	# We could call python_setup and give configure a valid --with-python
-	# arg, but that would mean a build dep on python when USE=utils.
-	sed -e 's:@PYTHON@:python:' \
-		-i gobject/glib-{genmarshal.in,mkenums.in} || die
 	# Also needed to prevent cross-compile failures, see bug #267603
 	eautoreconf
 
@@ -179,6 +176,7 @@ multilib_src_configure() {
 		$(use_enable systemtap dtrace) \
 		$(use_enable systemtap systemtap) \
 		$(multilib_native_use_enable utils libelf) \
+		--with-python=${EPYTHON} \
 		--disable-compile-warnings \
 		--enable-man \
 		--with-pcre=system \
@@ -221,10 +219,6 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-
-	# FIXME: Move python deps that are only required at build time of other packages to a split package
-	python_replicate_script "${ED}"/usr/bin/glib-mkenums
-	python_replicate_script "${ED}"/usr/bin/glib-genmarshal
 
 	# gtester-report works only with python2 and is heavily deprecated - https://bugzilla.gnome.org/show_bug.cgi?id=668035#c4
 	# Remove it instead of bothering with making it work with python3 in PYTHON_COMPAT
