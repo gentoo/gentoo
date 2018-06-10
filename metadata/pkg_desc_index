@@ -3673,16 +3673,16 @@ dev-perl/ExtUtils-LibBuilder 0.80.0: A tool to build C libraries
 dev-perl/ExtUtils-PkgConfig 1.160.0: Simplistic perl interface to pkg-config
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.180.0: XS for C++
-dev-perl/FCGI 0.770.0: Fast CGI module
-dev-perl/FCGI-ProcManager 0.250.0: A FastCGI process manager
+dev-perl/FCGI 0.770.0 0.780.0: Fast CGI module
+dev-perl/FCGI-ProcManager 0.250.0 0.280.0: A FastCGI process manager
 dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
-dev-perl/Feed-Find 0.70.0-r1: Syndication feed auto-discovery
+dev-perl/Feed-Find 0.70.0-r1 0.70.0-r2: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r1: Festival-Async - Non-blocking interface to a Festival server
 dev-perl/File-BaseDir 0.30.0-r1: Use the Freedesktop.org base directory specification
 dev-perl/File-Copy-Link 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
 dev-perl/File-DesktopEntry 0.40.0-r1: Object to handle .desktop files
-dev-perl/File-Find-Rule 0.330.0-r1: Alternative interface to File::Find
+dev-perl/File-Find-Rule 0.330.0-r1 0.340.0: Alternative interface to File::Find
 dev-perl/File-Find-Rule-Perl 1.150.0: Common rules for searching for Perl things
 dev-perl/File-Flat 1.40.0-r1: Implements a flat filesystem
 dev-perl/File-Flock 2014.10.0: flock() wrapper. Auto-create locks
@@ -3690,8 +3690,8 @@ dev-perl/File-HomeDir 1.2.0: Get home directory for self or other user
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
-dev-perl/File-MimeInfo 0.270.0: Determine file type
-dev-perl/File-NCopy 0.360.0-r1: Copy file, file Copy file[s] | dir[s], dir
+dev-perl/File-MimeInfo 0.270.0 0.280.0: Determine file type
+dev-perl/File-NCopy 0.360.0-r1 0.360.0-r2: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
 dev-perl/File-Next 1.160.0: File::Next is an iterator-based module for finding files
 dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
@@ -3703,26 +3703,26 @@ dev-perl/File-ShareDir-Install 0.110.0: Install shared files
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
 dev-perl/File-Slurp-Unicode 0.7.1-r1: Reading/Writing of Complete Files with Character Encoding Support
-dev-perl/File-Slurper 0.0.800: A simple, sane and efficient module to slurp a file
+dev-perl/File-Slurper 0.0.800 0.10.0: A simple, sane and efficient module to slurp a file
 dev-perl/File-Sort 1.10.0-r1: Sort a file or merge sort multiple files
 dev-perl/File-Stat-Bits 1.10.0-r1: File stat bit mask constants
 dev-perl/File-Sync 0.110.0: Perl access to fsync() and sync() function calls
-dev-perl/File-Tail 1.200.0: Perl extension for reading from continously updated files
+dev-perl/File-Tail 1.200.0 1.300.0: Perl extension for reading from continously updated files
 dev-perl/File-Tempdir 0.20.0-r1: This module provide an object interface to tempdir() from File::Temp
 dev-perl/File-Type 0.220.0-r1: Determine file type using magic
 dev-perl/File-Which 1.90.0-r1 1.220.0: Perl module implementing 'which' internally
-dev-perl/File-chdir 0.101.0: An alternative to File::Spec and CWD
+dev-perl/File-chdir 0.101.0 0.101.100: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0: Implements symbolic and ls chmod modes
-dev-perl/File-pushd 1.3.0-r1: Change directory temporarily for a limited scope
+dev-perl/File-pushd 1.3.0-r1 1.14.0: Change directory temporarily for a limited scope
 dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of multiple bytes
-dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
-dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
+dev-perl/Filesys-Df 0.920.0-r1 0.920.0-r2: Disk free based on Filesys::Statvfs
+dev-perl/Filesys-DiskSpace 0.50.0-r1 0.50.0-r2: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
-dev-perl/Finance-Quote 1.370.0: Get stock and mutual fund quotes from various exchanges
-dev-perl/Finance-YahooQuote 0.250.0: Get stock quotes from Yahoo! Finance
+dev-perl/Finance-Quote 1.370.0 1.470.0: Get stock and mutual fund quotes from various exchanges
+dev-perl/Finance-YahooQuote 0.250.0 0.250.0-r1: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
-dev-perl/Font-TTF 1.20.0-r1: module for compiling and altering fonts
+dev-perl/Font-TTF 1.20.0-r1 1.60.0: module for compiling and altering fonts
 dev-perl/FreezeThaw 0.500.100-r1: converting Perl structures to strings and back
 dev-perl/Fuse 0.16.1: Fuse module for perl
 dev-perl/GD 2.560.0-r1: Interface to Thomas Boutell's gd library
@@ -4067,6 +4067,7 @@ dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.11.0: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.140.0-r1: PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.190.0: PerlIO layer to gzip/gunzip
+dev-perl/PerlIO-utf8_strict 0.7.0: Fast and correct UTF-8 IO
 dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
 dev-perl/PerlIO-via-dynamic 0.140.0-r1: Dynamic PerlIO layers
 dev-perl/PlRPC 0.202.0-r2: The Perl RPC Module
@@ -4390,7 +4391,7 @@ dev-perl/bareword-filehandles 0.5.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0-r1: Save a tree AND a kitten, use common::sense!
-dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
+dev-perl/frontier-rpc 0.07_beta4-r1 0.07_beta4-r2: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.325.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.46.0: Perl interface to the 2.x series of the Gnome libraries
