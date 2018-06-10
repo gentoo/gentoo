@@ -13,16 +13,16 @@ ICEDTEA_BRANCH=$(get_version_component_range 1-2)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
 
-CORBA_TARBALL="872ca6c060bb.tar.xz"
-JAXP_TARBALL="154d73707643.tar.xz"
-JAXWS_TARBALL="3f0a3aea44b4.tar.xz"
-JDK_TARBALL="80cebaab0ba5.tar.xz"
-LANGTOOLS_TARBALL="0a2dce555d35.tar.xz"
-OPENJDK_TARBALL="644bdc77dd18.tar.xz"
-NASHORN_TARBALL="136ab780f038.tar.xz"
-HOTSPOT_TARBALL="074a569c30e4.tar.xz"
-SHENANDOAH_TARBALL="773364cde857.tar.xz"
-AARCH32_TARBALL="1cd346521065.tar.xz"
+CORBA_TARBALL="75fd375dd38a.tar.xz"
+JAXP_TARBALL="2b279bb3475b.tar.xz"
+JAXWS_TARBALL="c54a27559acb.tar.xz"
+JDK_TARBALL="9c9ff65b03b6.tar.xz"
+LANGTOOLS_TARBALL="21524ad5b914.tar.xz"
+OPENJDK_TARBALL="499b993b345a.tar.xz"
+NASHORN_TARBALL="bb3e3345d3ec.tar.xz"
+HOTSPOT_TARBALL="cb5711bf53d9.tar.xz"
+SHENANDOAH_TARBALL="c44a9eef4985.tar.xz"
+AARCH32_TARBALL="bd08b7f27e11.tar.xz"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.xz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -67,7 +67,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="+alsa cacao +cups doc examples +gtk headless-awt
 	jamvm +jbootstrap kerberos libressl nsplugin pax_kernel +pch
-	pulseaudio sctp selinux shenandoah smartcard +source +sunec test +webstart zero"
+	pulseaudio sctp selinux shenandoah smartcard +source +sunec +system-lcms test +webstart zero"
 
 REQUIRED_USE="gtk? ( !headless-awt )"
 
@@ -97,13 +97,13 @@ COMMON_DEP="
 	>=dev-util/systemtap-1
 	media-libs/fontconfig:1.0=
 	>=media-libs/freetype-2.5.3:2=
-	>=media-libs/lcms-2.5:2=
 	>=sys-libs/zlib-1.2.3
 	virtual/jpeg:0=
 	kerberos? ( virtual/krb5 )
 	sctp? ( net-misc/lksctp-tools )
 	smartcard? ( sys-apps/pcsc-lite )
-	sunec? ( >=dev-libs/nss-3.16.1-r1 )"
+	sunec? ( >=dev-libs/nss-3.16.1-r1 )
+	system-lcms? ( >=media-libs/lcms-2.9:2= )"
 
 # Gtk+ will move to COMMON_DEP in time; PR1982
 # gsettings-desktop-schemas will be needed for native proxy support; PR1976
@@ -136,7 +136,6 @@ DEPEND="${COMMON_DEP} ${ALSA_COMMON_DEP} ${CUPS_COMMON_DEP} ${X_COMMON_DEP} ${X_
 		dev-java/icedtea-bin:7
 		dev-java/icedtea:8
 		dev-java/icedtea:7
-		dev-java/oracle-jdk-bin:1.8
 	)
 	app-arch/cpio
 	app-arch/unzip
@@ -195,8 +194,7 @@ pkg_setup() {
 
 	JAVA_PKG_WANT_BUILD_VM="
 		icedtea-8 icedtea-bin-8
-		icedtea-7 icedtea-bin-7
-		oracle-jdk-bin-1.8"
+		icedtea-7 icedtea-bin-7"
 	JAVA_PKG_WANT_SOURCE="1.5"
 	JAVA_PKG_WANT_TARGET="1.5"
 
@@ -245,9 +243,6 @@ src_configure() {
 	# In-tree JIT ports are available for amd64, arm, arm64, ppc64 (be&le), SPARC and x86.
 	if { use amd64 || use arm || use arm64 || use ppc64 || use sparc || use x86; }; then
 		hotspot_port="yes"
-
-		# Work around stack alignment issue, bug #647954.
-		use x86 && append-flags -mincoming-stack-boundary=2
 	fi
 
 	# Always use HotSpot as the primary VM if available. #389521 #368669 #357633 ...
@@ -335,14 +330,14 @@ src_configure() {
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--with-pkgversion="Gentoo ${PF}" \
 		--disable-downloading --disable-Werror --disable-tests \
-		--enable-system-lcms --enable-system-jpeg \
-		--enable-system-zlib --disable-systemtap-tests \
-		--enable-improved-font-rendering \
+		--disable-systemtap-tests --enable-improved-font-rendering \
+		--enable-system-jpeg --enable-system-zlib \
 		$(use_enable headless-awt headless) \
 		$(use_enable !headless-awt system-gif) \
 		$(use_enable !headless-awt system-png) \
 		$(use_enable doc docs) \
 		$(use_enable kerberos system-kerberos) \
+		$(use_enable system-lcms) \
 		$(use_with pax_kernel pax "${EPREFIX}/usr/sbin/paxmark.sh") \
 		$(use_enable sctp system-sctp) \
 		$(use_enable smartcard system-pcsc) \
