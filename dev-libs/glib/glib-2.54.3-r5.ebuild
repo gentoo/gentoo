@@ -6,7 +6,7 @@
 # then to be think very closely.
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 # Completely useless with or without USE static-libs, people need to use
 # pkg-config
 GNOME2_LA_PUNT="yes"
@@ -23,9 +23,9 @@ LICENSE="LGPL-2.1+"
 SLOT="2"
 IUSE="dbus debug fam kernel_linux +mime selinux static-libs systemtap test utils xattr"
 REQUIRED_USE="
-	utils? ( ${PYTHON_REQUIRED_USE} )
+	${PYTHON_REQUIRED_USE}
 	test? ( ${PYTHON_REQUIRED_USE} )
-"
+" # test dep left here and elsewhere to not forget, as global python requirement is supposed to be temporary until a split package is made with meson
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
@@ -44,8 +44,8 @@ RDEPEND="
 	selinux? ( >=sys-libs/libselinux-2.2.2-r5[${MULTILIB_USEDEP}] )
 	xattr? ( >=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}] )
 	fam? ( >=virtual/fam-0-r1[${MULTILIB_USEDEP}] )
+	${PYTHON_DEPS}
 	utils? (
-		${PYTHON_DEPS}
 		>=dev-util/gdbus-codegen-${PV}
 		virtual/libelf:0=
 	)
@@ -123,8 +123,6 @@ src_prepare() {
 	# Leave python shebang alone - handled by python_replicate_script
 	# We could call python_setup and give configure a valid --with-python
 	# arg, but that would mean a build dep on python when USE=utils.
-	sed -e '/${PYTHON}/d' \
-		-i glib/Makefile.{am,in} || die
 	sed -e 's:@PYTHON@:python:' \
 		-i gobject/glib-{genmarshal.in,mkenums.in} || die
 	# Also needed to prevent cross-compile failures, see bug #267603
@@ -224,12 +222,14 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 
-	if use utils ; then
-		python_replicate_script "${ED}"/usr/bin/gtester-report
-	else
-		rm "${ED}usr/bin/gtester-report"
-		rm "${ED}usr/share/man/man1/gtester-report.1"
-	fi
+	# FIXME: Move python deps that are only required at build time of other packages to a split package
+	python_replicate_script "${ED}"/usr/bin/glib-mkenums
+	python_replicate_script "${ED}"/usr/bin/glib-genmarshal
+
+	# gtester-report works only with python2 and is heavily deprecated - https://bugzilla.gnome.org/show_bug.cgi?id=668035#c4
+	# Remove it instead of bothering with making it work with python3 in PYTHON_COMPAT
+	rm "${ED}usr/bin/gtester-report"
+	rm "${ED}usr/share/man/man1/gtester-report.1"
 
 	# Do not install charset.alias even if generated, leave it to libiconv
 	rm -f "${ED}/usr/lib/charset.alias"
