@@ -7535,7 +7535,7 @@ media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjackasyn 0.13: An application/library for connecting OSS apps to Jackit
 media-libs/libjpeg-turbo 1.5.0 1.5.1: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
-media-libs/libkate 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
+media-libs/libkate 0.4.1-r2 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.1.0_pre20150206: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.29: Lightweight OSC (Open Sound Control) implementation
