@@ -46,6 +46,19 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-CVE-2017-11332.patch
+	"${FILESDIR}"/${P}-CVE-2017-11333.patch
+	"${FILESDIR}"/${P}-CVE-2017-11358.patch
+	"${FILESDIR}"/${P}-CVE-2017-11359.patch
+	"${FILESDIR}"/${P}-CVE-2017-15370.patch
+	"${FILESDIR}"/${P}-CVE-2017-15371.patch
+	"${FILESDIR}"/${P}-CVE-2017-15372.patch
+	"${FILESDIR}"/${P}-CVE-2017-15642.patch
+	"${FILESDIR}"/${P}-CVE-2017-18189.patch
+	"${FILESDIR}"/${P}-wavpack-chk-errors-on-init.patch
+)
+
 src_prepare() {
 	default
 	sed -i -e 's:CFLAGS="-g":CFLAGS="$CFLAGS -g":' configure.ac || die #386027
