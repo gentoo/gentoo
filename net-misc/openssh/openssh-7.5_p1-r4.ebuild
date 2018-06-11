@@ -130,6 +130,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-7.5_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	epatch "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
+	epatch "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
 	epatch "${FILESDIR}"/${PN}-7.5_p1-cross-cache.patch
 	epatch "${FILESDIR}"/${PN}-7.5_p1-CVE-2017-15906.patch
 	use X509 || epatch "${FILESDIR}"/${PN}-7.5_p1-s390-seccomp.patch # already included in X509 patch set, #644252

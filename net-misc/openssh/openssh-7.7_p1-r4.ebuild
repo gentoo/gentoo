@@ -112,6 +112,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-7.7_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	eapply "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
+	eapply "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
 
 	local PATCHSET_VERSION_MACROS=()
 
