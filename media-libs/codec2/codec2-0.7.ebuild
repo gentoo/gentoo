@@ -11,7 +11,7 @@ SRC_URI="https://freedv.com/wp-content/uploads/sites/8/2017/10/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64"
+KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
 IUSE=""
 
 DEPEND=""
