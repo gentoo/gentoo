@@ -3,6 +3,7 @@
 
 EAPI=5
 
+XORG_EAUTORECONF=yes
 XORG_DOC=doc
 inherit xorg-2 multilib versionator flag-o-matic
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
@@ -109,6 +110,7 @@ REQUIRED_USE="!minimal? (
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
+	"${FILESDIR}"/${P}-xfree86-Inline-xf86-Read-Write-Mmio-8-16-32-on-alpha.patch
 )
 
 PATCHES=(
