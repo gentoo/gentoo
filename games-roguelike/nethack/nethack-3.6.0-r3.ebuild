@@ -23,7 +23,7 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	X? (
-		x11-proto/xproto
+		x11-base/xorg-proto
 		x11-apps/bdftopcf
 		x11-apps/mkfontdir
 	)"
