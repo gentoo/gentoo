@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs flag-o-matic multilib
+inherit toolchain-funcs flag-o-matic multilib-minimal
 
 DESCRIPTION="An ultra-fast, ultra-compact key-value embedded data store"
 HOMEPAGE="http://symas.com/mdb/"
@@ -32,9 +32,11 @@ src_prepare() {
 		-e "s!shared!shared ${soname}!" \
 		"${S}/Makefile" || die
 	eapply_user
+
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# ensure sigwait has a second sig argument
 		append-cppflags -D_POSIX_PTHREAD_SEMANTICS
@@ -43,11 +45,11 @@ src_configure() {
 	fi
 }
 
-src_compile() {
+multilib_src_compile() {
 	emake LDLIBS+=" -pthread"
 }
 
-src_install() {
+multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	mv "${ED}"usr/$(get_libdir)/liblmdb$(get_libname) \
