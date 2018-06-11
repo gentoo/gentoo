@@ -9,4 +9,5 @@
   <email>ml@gentoo.org</email>
   <name>Gentoo ML Project</name>
 </maintainer>
+<stabilize-allarches/>
 </pkgmetadata>
