@@ -110,6 +110,7 @@ src_prepare() {
 	cp version.h version.h.pristine
 
 	eapply "${FILESDIR}/${P}-warnings.patch"
+	eapply "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
 
 	# don't break .ssh/authorized_keys2 for fun
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
