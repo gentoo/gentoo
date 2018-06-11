@@ -9,6 +9,7 @@
   YASnippet is a re-design and re-write of smart-snippet. It is much
   cleaner and more powerful than smart-snippet.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">joaotavora/yasnippet</remote-id>
 </upstream>
