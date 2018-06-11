@@ -21,7 +21,7 @@ RDEPEND="
 		)
 	x11-libs/libXaw"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${PN}
 
