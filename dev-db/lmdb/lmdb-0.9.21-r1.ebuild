@@ -20,23 +20,23 @@ RDEPEND="!=net-nds/openldap-2.4.40"
 S="${WORKDIR}/${PN}-LMDB_${PV}/libraries/liblmdb"
 
 src_prepare() {
-	local soname="-Wl,-soname,liblmdb$(get_libname 0)"
-	[[ ${CHOST} == *-darwin* ]] && \
-		soname="-dynamiclib -install_name ${EPREFIX}/usr/$(get_libdir)/liblmdb$(get_libname 0)"
-	sed -i -e "s!^CC.*!CC = $(tc-getCC)!" \
-		-e "s!^CFLAGS.*!CFLAGS = ${CFLAGS}!" \
-		-e "s!^AR.*!AR = $(tc-getAR)!" \
-		-e "s!^SOEXT.*!SOEXT = $(get_libname)!" \
-		-e "/^prefix/s!/usr/local!${EPREFIX}/usr!" \
-		-e "/^libdir/s!lib\$!$(get_libdir)!" \
-		-e "s!shared!shared ${soname}!" \
-		"${S}/Makefile" || die
 	eapply_user
-
 	multilib_copy_sources
 }
 
 multilib_src_configure() {
+    local soname="-Wl,-soname,liblmdb$(get_libname 0)"
+    [[ ${CHOST} == *-darwin* ]] && \
+        soname="-dynamiclib -install_name ${EPREFIX}/usr/$(get_libdir)/liblmdb$(get_libname 0)"
+    sed -i -e "s!^CC.*!CC = $(tc-getCC)!" \
+        -e "s!^CFLAGS.*!CFLAGS = ${CFLAGS}!" \
+        -e "s!^AR.*!AR = $(tc-getAR)!" \
+        -e "s!^SOEXT.*!SOEXT = $(get_libname)!" \
+        -e "/^prefix/s!/usr/local!${EPREFIX}/usr!" \
+        -e "/^libdir/s!lib\$!$(get_libdir)!" \
+        -e "s!shared!shared ${soname}!" \
+        "Makefile" || die
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# ensure sigwait has a second sig argument
 		append-cppflags -D_POSIX_PTHREAD_SEMANTICS
