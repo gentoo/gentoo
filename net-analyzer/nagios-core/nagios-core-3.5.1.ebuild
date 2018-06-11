@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit depend.apache eutils multilib toolchain-funcs user
 
 MY_P=${PN/-core}-${PV}
 DESCRIPTION="Nagios Core - Check daemon, CGIs, docs"
-HOMEPAGE="http://www.nagios.org/"
+HOMEPAGE="https://www.nagios.org/"
 SRC_URI="mirror://sourceforge/nagios/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

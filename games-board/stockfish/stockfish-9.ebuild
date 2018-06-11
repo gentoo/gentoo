@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Free UCI chess engine, claimed to be the strongest in the world"
-HOMEPAGE="http://stockfishchess.org/"
+HOMEPAGE="https://stockfishchess.org/"
 
 SRC_URI="https://stockfish.s3.amazonaws.com/${P}-src.zip"
 LICENSE="GPL-3"
