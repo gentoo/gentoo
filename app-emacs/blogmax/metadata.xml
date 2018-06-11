@@ -8,4 +8,5 @@
 <longdescription>
   BlogMax is an Emacs package that aids in the creation of a weblog.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

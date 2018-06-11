@@ -13,4 +13,5 @@
   disk. When the buffer is subsequently saved to disk, a hook function
   re-encodes the buffer before the actual disk write takes place.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>
