@@ -11,7 +11,7 @@ SRC_URI="https://github.com/KhronosGroup/SPIRV-Tools/archive/v${PV}.tar.gz -> ${
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 # Tests fail upon finding symbols that do not match a regular expression
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
