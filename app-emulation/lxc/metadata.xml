@@ -18,6 +18,7 @@
     <name>Gentoo Virtualization Project</name>
   </maintainer>
   <use>
+    <flag name="apparmor">Enable AppArmor support</flag>
     <flag name="cgmanager">Enable support for cgroup management using <pkg>app-admin/cgmanager</pkg></flag>
   </use>
   <upstream>
