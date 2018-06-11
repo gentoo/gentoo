@@ -21,7 +21,7 @@ SLOT="0"
 
 IUSE="
 	debug firebird iodbc kerberos ldap libressl memcached mysql odbc oracle pam
-	pcap postgres python readline rest sqlite ssl
+	pcap postgres python readline rest samba sqlite ssl
 "
 RESTRICT="test firebird? ( bindist )"
 
@@ -40,6 +40,7 @@ RDEPEND="!net-dialup/cistronradius
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )
 	rest? ( dev-libs/json-c:= )
+	samba? ( net-fs/samba )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -79,6 +80,8 @@ src_prepare() {
 	use pam || { rm -r src/modules/rlm_pam || die ; }
 	use python || { rm -r src/modules/rlm_python || die ; }
 	use rest || { rm -r src/modules/rlm_rest || die ; }
+	# can't just nuke rlm_mschap because many modules rely on smbdes.h
+	use samba || { rm -r src/modules/rlm_mschap/{configure,*.mk} || die ; }
 	# Do not install ruby rlm module, bug #483108
 	rm -r src/modules/rlm_ruby || die
 
