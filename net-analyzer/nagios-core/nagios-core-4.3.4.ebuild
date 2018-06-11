@@ -7,7 +7,7 @@ inherit toolchain-funcs user
 
 MY_P=${PN/-core}-${PV}
 DESCRIPTION="Nagios core - monitoring daemon, web GUI, and documentation"
-HOMEPAGE="http://www.nagios.org/"
+HOMEPAGE="https://www.nagios.org/"
 
 # The name of the directory into which our Gentoo icons will be
 # extracted, and also the basename of the archive containing it.
