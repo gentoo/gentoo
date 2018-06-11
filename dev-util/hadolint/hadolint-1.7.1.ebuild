@@ -18,16 +18,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-haskell/aeson:=[profile?]
-	dev-haskell/dlist:=[profile?]
 	>=dev-haskell/gitrev-1.3.1:=[profile?]
-	>=dev-haskell/language-docker-3.0.0:=[profile?]
-	dev-haskell/optparse-applicative:=[profile?]
-	>=dev-haskell/parsec-3.1:=[profile?]
+	>=dev-haskell/language-docker-6.0.1:=[profile?] <dev-haskell/language-docker-7:=[profile?]
+	>=dev-haskell/megaparsec-6.4:=[profile?]
+	>=dev-haskell/optparse-applicative-0.14:=[profile?]
 	>=dev-haskell/split-0.2:=[profile?]
 	dev-haskell/text:=[profile?]
+	dev-haskell/void:=[profile?]
 	dev-haskell/yaml:=[profile?]
 	>=dev-lang/ghc-8.0.2:=
-	>=dev-util/shellcheck-0.4.7:=[profile?]
+	>=dev-util/shellcheck-0.5.0:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.2.0
