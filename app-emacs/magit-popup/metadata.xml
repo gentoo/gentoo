@@ -21,6 +21,7 @@ not limit what that next command could be.  But entering a command
 console popup does limit the selection to the commands defined for
 that popup, and so we use the term "infix" instead of "prefix".
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">magit/magit-popup</remote-id>
 </upstream>

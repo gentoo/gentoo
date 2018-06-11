@@ -5,6 +5,7 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">jorgenschaefer/circe</remote-id>
 </upstream>

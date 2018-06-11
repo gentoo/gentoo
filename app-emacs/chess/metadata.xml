@@ -23,6 +23,7 @@
 
   chess.el also provides a mode for editing Portable Game Notation (PGN) files.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="sourceforge">emacs-chess</remote-id>
 </upstream>

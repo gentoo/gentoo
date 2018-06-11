@@ -10,6 +10,7 @@
   for use with GNU Emacs and XEmacs. It can hook into Emacs-based mail- and
   news-readers and automatically collect information on messages therein.
 </longdescription>
+<stabilize-allarches/>
 <use>
   <flag name="tex">Install plain TeX support files</flag>
   <flag name="vm">Add support for <pkg>app-emacs/vm</pkg></flag>
