@@ -12,12 +12,13 @@ SRC_URI="https://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~x86"
-IUSE="debug doc +gmp +readline"
+IUSE="debug doc +gmp json +readline"
 
 RDEPEND=">=net-libs/libmnl-1.0.3:0=
 	gmp? ( dev-libs/gmp:0= )
+	json? ( dev-libs/jansson )
 	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.0.9:0="
+	>=net-libs/libnftnl-1.1.1:0="
 
 DEPEND="${RDEPEND}
 	>=app-text/docbook2X-0.8.8-r4
@@ -45,10 +46,11 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--sbindir="${EPREFIX}"/sbin
-		$(use_enable doc pdf-doc)
 		$(use_enable debug)
-		$(use_with readline cli)
+		$(use_enable doc pdf-doc)
 		$(use_with !gmp mini_gmp)
+		$(use_with json)
+		$(use_with readline cli)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -56,7 +58,6 @@ src_configure() {
 src_install() {
 	default
 
-	dodir /usr/libexec/${PN}
 	exeinto /usr/libexec/${PN}
 	doexe "${FILESDIR}"/libexec/${PN}.sh
 

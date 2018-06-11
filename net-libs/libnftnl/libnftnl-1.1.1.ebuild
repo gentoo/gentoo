@@ -14,7 +14,7 @@ SLOT="0/7" # libnftnl.so version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="examples json static-libs test threads"
 
-RDEPEND=">=net-libs/libmnl-1.0.0
+RDEPEND=">=net-libs/libmnl-1.0.3
 	json? ( >=dev-libs/jansson-2.3 )"
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
