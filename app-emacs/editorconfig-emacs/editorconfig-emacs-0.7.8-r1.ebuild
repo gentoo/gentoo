@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit elisp
+inherit elisp readme.gentoo-r1
 
 DESCRIPTION="EditorConfig plugin for emacs"
 HOMEPAGE="https://github.com/editorconfig/editorconfig-emacs"
@@ -12,16 +12,10 @@ SRC_URI="https://github.com/editorconfig/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-RESTRICT="test"
+RESTRICT="test"		# make test requires a git repo
 
-src_install() {
-	local site_file="${T}/50${PN}-gentoo.el"
-	echo "
-(require 'editorconfig)
-(editorconfig-mode 1)
-" > "${site_file}" || die
-	elisp-site-file-install "${site_file}"
-	elisp_src_install
-	dodoc README.md
-}
+SITEFILE="50${PN}-gentoo.el"
+DOCS="README.md"
+DOC_CONTENTS="The EditorConfig feature is not enabled as a site default.
+	Add the following line to your ~/.emacs file to activate it:
+	\n\t(editorconfig-mode 1)"
