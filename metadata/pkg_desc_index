@@ -5239,7 +5239,7 @@ dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychm 0.8.4-r1: Python bindings for the chmlib library
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
-dev-python/pycodestyle 2.2.0 2.3.1: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.3.1: Python style guide checker (fka pep8)
 dev-python/pycountry 16.11.8: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
