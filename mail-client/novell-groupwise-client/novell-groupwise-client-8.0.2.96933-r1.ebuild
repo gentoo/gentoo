@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-util/patchelf"
+DEPEND=">=dev-util/patchelf-0.9"
 RDEPEND="
 	sys-libs/libstdc++-v3
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
