@@ -7481,7 +7481,7 @@ media-libs/libXcm 0.5.2-r1: reference implementation of the net-color spec
 media-libs/libaacplus 2.0.2-r2: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.7.1: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2: Afterstep's standalone generic image manipulation library
-media-libs/libao 1.2.0 1.2.2: The Audio Output library
+media-libs/libao 1.2.2: The Audio Output library
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.13.6: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2: Blu-ray library for BD+ decryption
@@ -7571,7 +7571,7 @@ media-libs/libmygpo-qt 1.1.0: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnut 661: Library and tools to create NUT multimedia files
 media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
-media-libs/libogg 1.3.2 1.3.3: the Ogg media file format library
+media-libs/libogg 1.3.3: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libomxil-bellagio 0.9.3: Open Source implementation of the OpenMAX Integration Layer
 media-libs/libopendaap 0.4.0: A library to connect to iTunes(R) music shares
@@ -8126,7 +8126,7 @@ media-sound/timidity-freepats 20060219-r1: Free and open set of instrument patch
 media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
-media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
+media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
