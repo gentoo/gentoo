@@ -8,7 +8,7 @@ CMAKE_BUILD_TYPE="None"
 inherit cmake-utils eutils gnome2-utils python-single-r1 python-utils-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
-HOMEPAGE="http://gnuradio.org/"
+HOMEPAGE="https://gnuradio.org/"
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 
