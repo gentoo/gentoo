@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A set of tools that use the proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
@@ -21,7 +19,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2.2.6b
 	nls? ( sys-devel/gettext )"
 
-DOCS="AUTHORS ChangeLog NEWS README"
+DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_configure() {
 	local myeconfargs=(
@@ -42,12 +40,12 @@ src_compile() {
 src_install() {
 	default
 
-	use X || rm -f "${ED}"/usr/bin/pstree.x11
+	use X || rm -f "${ED%/}"/usr/bin/pstree.x11
 
-	[[ -s ${ED}/usr/bin/peekfd ]] || rm -f "${ED}"/usr/bin/peekfd
-	[[ -e ${ED}/usr/bin/peekfd ]] || rm -f "${ED}"/usr/share/man/man1/peekfd.1
+	[[ -s ${ED%/}/usr/bin/peekfd ]] || rm -f "${ED%/}"/usr/bin/peekfd
+	[[ -e ${ED%/}/usr/bin/peekfd ]] || rm -f "${ED%/}"/usr/share/man/man1/peekfd.1
 
 	# fuser is needed by init.d scripts; use * wildcard for #458250
 	dodir /bin
-	mv "${ED}"/usr/bin/*fuser "${ED}"/bin || die
+	mv "${ED%/}"/usr/bin/*fuser "${ED%/}"/bin || die
 }
