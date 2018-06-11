@@ -2018,10 +2018,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
     <description>Maintains LXQt DE related packages.</description>
     <member>
-      <email>johu@gentoo.org</email>
-      <name>Johannes Huber</name>
-    </member>
-    <member>
       <email>mrueg@gentoo.org</email>
       <name>Manuel Rüger</name>
     </member>
