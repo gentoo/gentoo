@@ -1,0 +1,290 @@
+Port of Fedora's Hobble-EC patches for OpenSSL 1.0 series.
+
+From https://src.fedoraproject.org/git/rpms/openssl.git
+
+Contains parts of the following patches, rediffed. The patches are on various
+different branches.
+f23 openssl-1.0.2c-ecc-suiteb.patch
+f23 openssl-1.0.2a-fips-ec.patch
+f28 openssl-1.1.0-ec-curves.patch
+
+Signed-off-By: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar --exclude ec_curve.c -p openssl-1.0.2m.hobble/apps/speed.c openssl-1.0.2m.mod/apps/speed.c
+--- openssl-1.0.2m.hobble/apps/speed.c	2017-11-02 07:32:57.000000000 -0700
++++ openssl-1.0.2m.mod/apps/speed.c	2018-06-10 19:00:09.264550382 -0700
+@@ -989,10 +989,7 @@ int MAIN(int argc, char **argv)
+         } else
+ # endif
+ # ifndef OPENSSL_NO_ECDSA
+-        if (strcmp(*argv, "ecdsap160") == 0)
+-            ecdsa_doit[R_EC_P160] = 2;
+-        else if (strcmp(*argv, "ecdsap192") == 0)
+-            ecdsa_doit[R_EC_P192] = 2;
++	if (0) {}
+         else if (strcmp(*argv, "ecdsap224") == 0)
+             ecdsa_doit[R_EC_P224] = 2;
+         else if (strcmp(*argv, "ecdsap256") == 0)
+@@ -1001,36 +998,13 @@ int MAIN(int argc, char **argv)
+             ecdsa_doit[R_EC_P384] = 2;
+         else if (strcmp(*argv, "ecdsap521") == 0)
+             ecdsa_doit[R_EC_P521] = 2;
+-        else if (strcmp(*argv, "ecdsak163") == 0)
+-            ecdsa_doit[R_EC_K163] = 2;
+-        else if (strcmp(*argv, "ecdsak233") == 0)
+-            ecdsa_doit[R_EC_K233] = 2;
+-        else if (strcmp(*argv, "ecdsak283") == 0)
+-            ecdsa_doit[R_EC_K283] = 2;
+-        else if (strcmp(*argv, "ecdsak409") == 0)
+-            ecdsa_doit[R_EC_K409] = 2;
+-        else if (strcmp(*argv, "ecdsak571") == 0)
+-            ecdsa_doit[R_EC_K571] = 2;
+-        else if (strcmp(*argv, "ecdsab163") == 0)
+-            ecdsa_doit[R_EC_B163] = 2;
+-        else if (strcmp(*argv, "ecdsab233") == 0)
+-            ecdsa_doit[R_EC_B233] = 2;
+-        else if (strcmp(*argv, "ecdsab283") == 0)
+-            ecdsa_doit[R_EC_B283] = 2;
+-        else if (strcmp(*argv, "ecdsab409") == 0)
+-            ecdsa_doit[R_EC_B409] = 2;
+-        else if (strcmp(*argv, "ecdsab571") == 0)
+-            ecdsa_doit[R_EC_B571] = 2;
+         else if (strcmp(*argv, "ecdsa") == 0) {
+-            for (i = 0; i < EC_NUM; i++)
++            for (i = R_EC_P224; i < R_EC_P521; i++)
+                 ecdsa_doit[i] = 1;
+         } else
+ # endif
+ # ifndef OPENSSL_NO_ECDH
+-        if (strcmp(*argv, "ecdhp160") == 0)
+-            ecdh_doit[R_EC_P160] = 2;
+-        else if (strcmp(*argv, "ecdhp192") == 0)
+-            ecdh_doit[R_EC_P192] = 2;
++	if (0) {}
+         else if (strcmp(*argv, "ecdhp224") == 0)
+             ecdh_doit[R_EC_P224] = 2;
+         else if (strcmp(*argv, "ecdhp256") == 0)
+@@ -1039,28 +1013,8 @@ int MAIN(int argc, char **argv)
+             ecdh_doit[R_EC_P384] = 2;
+         else if (strcmp(*argv, "ecdhp521") == 0)
+             ecdh_doit[R_EC_P521] = 2;
+-        else if (strcmp(*argv, "ecdhk163") == 0)
+-            ecdh_doit[R_EC_K163] = 2;
+-        else if (strcmp(*argv, "ecdhk233") == 0)
+-            ecdh_doit[R_EC_K233] = 2;
+-        else if (strcmp(*argv, "ecdhk283") == 0)
+-            ecdh_doit[R_EC_K283] = 2;
+-        else if (strcmp(*argv, "ecdhk409") == 0)
+-            ecdh_doit[R_EC_K409] = 2;
+-        else if (strcmp(*argv, "ecdhk571") == 0)
+-            ecdh_doit[R_EC_K571] = 2;
+-        else if (strcmp(*argv, "ecdhb163") == 0)
+-            ecdh_doit[R_EC_B163] = 2;
+-        else if (strcmp(*argv, "ecdhb233") == 0)
+-            ecdh_doit[R_EC_B233] = 2;
+-        else if (strcmp(*argv, "ecdhb283") == 0)
+-            ecdh_doit[R_EC_B283] = 2;
+-        else if (strcmp(*argv, "ecdhb409") == 0)
+-            ecdh_doit[R_EC_B409] = 2;
+-        else if (strcmp(*argv, "ecdhb571") == 0)
+-            ecdh_doit[R_EC_B571] = 2;
+         else if (strcmp(*argv, "ecdh") == 0) {
+-            for (i = 0; i < EC_NUM; i++)
++	    for (i = R_EC_P224; i <= R_EC_P521; i++)
+                 ecdh_doit[i] = 1;
+         } else
+ # endif
+@@ -1149,21 +1103,13 @@ int MAIN(int argc, char **argv)
+             BIO_printf(bio_err, "dsa512   dsa1024  dsa2048\n");
+ # endif
+ # ifndef OPENSSL_NO_ECDSA
+-            BIO_printf(bio_err, "ecdsap160 ecdsap192 ecdsap224 "
++            BIO_printf(bio_err, "ecdsap224 "
+                        "ecdsap256 ecdsap384 ecdsap521\n");
+-            BIO_printf(bio_err,
+-                       "ecdsak163 ecdsak233 ecdsak283 ecdsak409 ecdsak571\n");
+-            BIO_printf(bio_err,
+-                       "ecdsab163 ecdsab233 ecdsab283 ecdsab409 ecdsab571\n");
+             BIO_printf(bio_err, "ecdsa\n");
+ # endif
+ # ifndef OPENSSL_NO_ECDH
+-            BIO_printf(bio_err, "ecdhp160  ecdhp192  ecdhp224 "
++            BIO_printf(bio_err, "ecdhp224 "
+                        "ecdhp256  ecdhp384  ecdhp521\n");
+-            BIO_printf(bio_err,
+-                       "ecdhk163  ecdhk233  ecdhk283  ecdhk409  ecdhk571\n");
+-            BIO_printf(bio_err,
+-                       "ecdhb163  ecdhb233  ecdhb283  ecdhb409  ecdhb571\n");
+             BIO_printf(bio_err, "ecdh\n");
+ # endif
+ 
+@@ -1242,11 +1188,11 @@ int MAIN(int argc, char **argv)
+         for (i = 0; i < DSA_NUM; i++)
+             dsa_doit[i] = 1;
+ # ifndef OPENSSL_NO_ECDSA
+-        for (i = 0; i < EC_NUM; i++)
++        for (i = R_EC_P224; i <= R_EC_P521; i++)
+             ecdsa_doit[i] = 1;
+ # endif
+ # ifndef OPENSSL_NO_ECDH
+-        for (i = 0; i < EC_NUM; i++)
++        for (i = R_EC_P224; i <= R_EC_P521; i++)
+             ecdh_doit[i] = 1;
+ # endif
+     }
+diff -Nuar --exclude ec_curve.c -p openssl-1.0.2m.hobble/crypto/ec/ecp_smpl.c openssl-1.0.2m.mod/crypto/ec/ecp_smpl.c
+--- openssl-1.0.2m.hobble/crypto/ec/ecp_smpl.c	2017-11-02 07:32:57.000000000 -0700
++++ openssl-1.0.2m.mod/crypto/ec/ecp_smpl.c	2018-06-10 18:45:36.909911848 -0700
+@@ -187,6 +187,11 @@ int ec_GFp_simple_group_set_curve(EC_GRO
+         return 0;
+     }
+ 
++    if (BN_num_bits(p) < 224) {
++        ECerr(EC_F_EC_GFP_SIMPLE_GROUP_SET_CURVE, EC_R_UNSUPPORTED_FIELD);
++        return 0;
++    }
++
+     if (ctx == NULL) {
+         ctx = new_ctx = BN_CTX_new();
+         if (ctx == NULL)
+diff -Nuar --exclude ec_curve.c -p openssl-1.0.2m.hobble/ssl/t1_lib.c openssl-1.0.2m.mod/ssl/t1_lib.c
+--- openssl-1.0.2m.hobble/ssl/t1_lib.c	2017-11-02 07:32:58.000000000 -0700
++++ openssl-1.0.2m.mod/ssl/t1_lib.c	2018-06-10 18:46:55.329811812 -0700
+@@ -271,10 +271,7 @@ static const unsigned char eccurves_auto
+     0, 23,                      /* secp256r1 (23) */
+     /* Other >= 256-bit prime curves. */
+     0, 25,                      /* secp521r1 (25) */
+-    0, 28,                      /* brainpool512r1 (28) */
+-    0, 27,                      /* brainpoolP384r1 (27) */
+     0, 24,                      /* secp384r1 (24) */
+-    0, 26,                      /* brainpoolP256r1 (26) */
+     0, 22,                      /* secp256k1 (22) */
+ # ifndef OPENSSL_NO_EC2M
+     /* >= 256-bit binary curves. */
+@@ -292,10 +289,7 @@ static const unsigned char eccurves_all[
+     0, 23,                      /* secp256r1 (23) */
+     /* Other >= 256-bit prime curves. */
+     0, 25,                      /* secp521r1 (25) */
+-    0, 28,                      /* brainpool512r1 (28) */
+-    0, 27,                      /* brainpoolP384r1 (27) */
+     0, 24,                      /* secp384r1 (24) */
+-    0, 26,                      /* brainpoolP256r1 (26) */
+     0, 22,                      /* secp256k1 (22) */
+ # ifndef OPENSSL_NO_EC2M
+     /* >= 256-bit binary curves. */
+@@ -310,13 +304,6 @@ static const unsigned char eccurves_all[
+      * Remaining curves disabled by default but still permitted if set
+      * via an explicit callback or parameters.
+      */
+-    0, 20,                      /* secp224k1 (20) */
+-    0, 21,                      /* secp224r1 (21) */
+-    0, 18,                      /* secp192k1 (18) */
+-    0, 19,                      /* secp192r1 (19) */
+-    0, 15,                      /* secp160k1 (15) */
+-    0, 16,                      /* secp160r1 (16) */
+-    0, 17,                      /* secp160r2 (17) */
+ # ifndef OPENSSL_NO_EC2M
+     0, 8,                       /* sect239k1 (8) */
+     0, 6,                       /* sect233k1 (6) */
+@@ -351,29 +338,21 @@ static const unsigned char fips_curves_d
+     0, 9,                       /* sect283k1 (9) */
+     0, 10,                      /* sect283r1 (10) */
+ #  endif
+-    0, 22,                      /* secp256k1 (22) */
+     0, 23,                      /* secp256r1 (23) */
+ #  ifndef OPENSSL_NO_EC2M
+     0, 8,                       /* sect239k1 (8) */
+     0, 6,                       /* sect233k1 (6) */
+     0, 7,                       /* sect233r1 (7) */
+ #  endif
+-    0, 20,                      /* secp224k1 (20) */
+-    0, 21,                      /* secp224r1 (21) */
+ #  ifndef OPENSSL_NO_EC2M
+     0, 4,                       /* sect193r1 (4) */
+     0, 5,                       /* sect193r2 (5) */
+ #  endif
+-    0, 18,                      /* secp192k1 (18) */
+-    0, 19,                      /* secp192r1 (19) */
+ #  ifndef OPENSSL_NO_EC2M
+     0, 1,                       /* sect163k1 (1) */
+     0, 2,                       /* sect163r1 (2) */
+     0, 3,                       /* sect163r2 (3) */
+ #  endif
+-    0, 15,                      /* secp160k1 (15) */
+-    0, 16,                      /* secp160r1 (16) */
+-    0, 17,                      /* secp160r2 (17) */
+ };
+ # endif
+ 
+diff -up openssl-1.0.2a/crypto/ecdh/ecdhtest.c.fips-ec openssl-1.0.2a/crypto/ecdh/ecdhtest.c
+--- openssl-1.0.2a/crypto/ecdh/ecdhtest.c.fips-ec	2015-03-19 14:30:36.000000000 +0100
++++ openssl-1.0.2a/crypto/ecdh/ecdhtest.c	2015-04-22 19:00:19.721884512 +0200
+@@ -501,11 +501,13 @@ int main(int argc, char *argv[])
+         goto err;
+ 
+     /* NIST PRIME CURVES TESTS */
++# if 0
+     if (!test_ecdh_curve
+         (NID_X9_62_prime192v1, "NIST Prime-Curve P-192", ctx, out))
+         goto err;
+     if (!test_ecdh_curve(NID_secp224r1, "NIST Prime-Curve P-224", ctx, out))
+         goto err;
++# endif
+     if (!test_ecdh_curve
+         (NID_X9_62_prime256v1, "NIST Prime-Curve P-256", ctx, out))
+         goto err;
+@@ -536,13 +538,14 @@ int main(int argc, char *argv[])
+     if (!test_ecdh_curve(NID_sect571r1, "NIST Binary-Curve B-571", ctx, out))
+         goto err;
+ # endif
++# if 0
+     if (!test_ecdh_kat(out, "Brainpool Prime-Curve brainpoolP256r1", 256))
+         goto err;
+     if (!test_ecdh_kat(out, "Brainpool Prime-Curve brainpoolP384r1", 384))
+         goto err;
+     if (!test_ecdh_kat(out, "Brainpool Prime-Curve brainpoolP512r1", 512))
+         goto err;
+-
++# endif
+     ret = 0;
+ 
+  err:
+diff -up openssl-1.0.2a/crypto/ecdsa/ecdsatest.c.fips-ec openssl-1.0.2a/crypto/ecdsa/ecdsatest.c
+--- openssl-1.0.2a/crypto/ecdsa/ecdsatest.c.fips-ec	2015-03-19 14:19:00.000000000 +0100
++++ openssl-1.0.2a/crypto/ecdsa/ecdsatest.c	2015-04-22 19:00:19.722884536 +0200
+@@ -138,11 +138,14 @@ int restore_rand(void)
+ }
+ 
+ static int fbytes_counter = 0;
+-static const char *numbers[8] = {
++static const char *numbers[10] = {
++    "651056770906015076056810763456358567190100156695615665659",
+     "651056770906015076056810763456358567190100156695615665659",
+     "6140507067065001063065065565667405560006161556565665656654",
+     "8763001015071075675010661307616710783570106710677817767166"
+         "71676178726717",
++    "8763001015071075675010661307616710783570106710677817767166"
++        "71676178726717",
+     "7000000175690566466555057817571571075705015757757057795755"
+         "55657156756655",
+     "1275552191113212300012030439187146164646146646466749494799",
+@@ -158,7 +161,7 @@ int fbytes(unsigned char *buf, int num)
+     int ret;
+     BIGNUM *tmp = NULL;
+ 
+-    if (fbytes_counter >= 8)
++    if (fbytes_counter >= 10)
+         return 0;
+     tmp = BN_new();
+     if (!tmp)
+@@ -532,8 +535,10 @@ int main(void)
+     RAND_seed(rnd_seed, sizeof(rnd_seed));
+ 
+     /* the tests */
++# if 0
+     if (!x9_62_tests(out))
+         goto err;
++# endif
+     if (!test_builtin(out))
+         goto err;
+ 
