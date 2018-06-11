@@ -910,6 +910,7 @@ dev-ada/libadalang:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/libadalang:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/libgpr:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/libgpr:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
+dev-ada/libgpr:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/libgpr:shared - Build shared library
 dev-ada/libgpr:static-pic - Build static library with pic code
 dev-ada/xmlada:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
