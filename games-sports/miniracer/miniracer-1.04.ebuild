@@ -21,9 +21,7 @@ RDEPEND="virtual/opengl
 	media-libs/libsdl
 	media-libs/sdl-mixer"
 DEPEND="${RDEPEND}
-	x11-proto/xf86dgaproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-nosharedelf.patch \
