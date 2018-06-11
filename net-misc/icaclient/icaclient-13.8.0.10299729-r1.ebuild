@@ -6,7 +6,7 @@ EAPI=6
 inherit multilib eutils versionator
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
-HOMEPAGE="http://www.citrix.com/"
+HOMEPAGE="https://www.citrix.com/"
 SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 	x86? ( linuxx86-${PV}.tar.gz )"
 
