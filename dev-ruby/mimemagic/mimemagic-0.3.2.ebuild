@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/minad/mimemagic"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/bacon )"
