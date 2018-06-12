@@ -3315,7 +3315,6 @@ media-tv/xmltv:ee - Estonia tv listing grabber
 media-tv/xmltv:es_laguiatv - Spain alternative grabber
 media-tv/xmltv:es_miguiatv - Spain alternative grabber
 media-tv/xmltv:eu_dotmedia - Grabber for Europe (xmltv.se / dotmedia)
-media-tv/xmltv:eu_egon - Grabber for german speaking area (Egon zappt)
 media-tv/xmltv:eu_epg - EPG grabber for some European countries.
 media-tv/xmltv:fi - Finland tv listing grabber
 media-tv/xmltv:fi_sv - Grabber for Finland (Swedish)
@@ -3336,14 +3335,12 @@ media-tv/xmltv:no_gf - Norway Gfeed tv listing grabber
 media-tv/xmltv:pt - Portugal tv listing grabber
 media-tv/xmltv:pt_meo - Grabber for Portugal (MEO)
 media-tv/xmltv:re - Reunion Island (France) tv listing grabber
-media-tv/xmltv:sd_json - Grabber for schedulesDirect.org SD-JSON service (many countries)
 media-tv/xmltv:se_swedb - Sweden tv listing grabber
 media-tv/xmltv:se_tvzon - Sweden (tvzon.se) tv listing grabber
 media-tv/xmltv:tr - Turkey (Digiturk) tv listing grabber
 media-tv/xmltv:tv_check - enable GUI checking
 media-tv/xmltv:tv_combiner - enable grabbers combiner
 media-tv/xmltv:tv_pick_cgi - enable CGI support
-media-tv/xmltv:uk_atlas - Fast UK and Ireland tv listing grabber
 media-tv/xmltv:uk_bleb - Britain tv listing grabber
 media-tv/xmltv:uk_rt - Britain alternative tv listing grabber
 media-tv/xmltv:uk_tvguide - UK and Ireland tv listing grabber using TV Guide website
