@@ -11,6 +11,7 @@ inherit kde5
 DESCRIPTION="Hex editor by KDE"
 HOMEPAGE="https://www.kde.org/applications/utilities/okteta
 https://utils.kde.org/projects/okteta"
+SRC_URI="mirror://kde/stable/applications/${PV}/${P}.tar.xz"
 KEYWORDS="amd64 x86"
 IUSE="crypt designer"
 
