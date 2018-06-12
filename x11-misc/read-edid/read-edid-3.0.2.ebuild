@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit cmake-utils
 
 DESCRIPTION="Program that can get information from a PnP monitor"
@@ -13,7 +14,7 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 
 DEPEND=">=dev-libs/libx86-1.1"
-RDEPEND="$DEPEND"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i -e 's|COPYING||g;s|share/doc/read-edid|&-'"${PV}"'|g' \
