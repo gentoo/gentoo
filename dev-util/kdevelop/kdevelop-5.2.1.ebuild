@@ -60,7 +60,7 @@ COMMON_DEPEND="
 	>=sys-devel/clang-3.8.0:=
 	x11-misc/shared-mime-info
 	gdbui? ( $(add_plasma_dep libksysguard) )
-	okteta? ( $(add_kdeapps_dep okteta) )
+	okteta? ( app-editors/okteta:5 )
 	plasma? (
 		$(add_frameworks_dep krunner)
 		$(add_frameworks_dep plasma)
