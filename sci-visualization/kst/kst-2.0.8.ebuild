@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils multilib
+inherit cmake-utils
 
 MY_P=Kst-${PV}
 
@@ -54,7 +54,7 @@ src_configure() {
 		-Dkst_release=$(usex debug OFF ON)
 		-Dkst_rpath=OFF
 		-Dkst_svnversion=OFF
-		$(cmake-utils_use test kst_test)
+		-Dkst_test=$(usex test)
 	)
 
 	cmake-utils_src_configure
