@@ -79,7 +79,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
-	"${FILESDIR}/${PN}-2.2.8-validation_fixes.patch" #657526
+	"${FILESDIR}/${P}-validation_fixes.patch" #657526
 )
 
 MULTILIB_CHOST_TOOLS=(
