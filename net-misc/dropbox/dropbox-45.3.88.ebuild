@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 inherit eutils gnome2-utils pax-utils systemd python-single-r1
 
 DESCRIPTION="Dropbox daemon (pretends to be GUI-less)"
-HOMEPAGE="http://dropbox.com/"
+HOMEPAGE="https://www.dropbox.com/"
 SRC_URI="
 	x86? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-${PV}.tar.gz )
 	amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-${PV}.tar.gz )"
