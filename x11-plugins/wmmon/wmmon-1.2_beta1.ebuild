@@ -5,7 +5,7 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Dockable system resources monitor applet for WindowMaker"
-HOMEPAGE="http://repo.or.cz/w/dockapps.git"
+HOMEPAGE="https://www.dockapps.net/wmmon"
 SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P/_beta/b}.tar.bz2"
 
 LICENSE="GPL-2"
