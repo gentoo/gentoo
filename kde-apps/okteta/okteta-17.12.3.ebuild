@@ -8,7 +8,7 @@ KDE_TEST="optional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="KDE hexeditor"
+DESCRIPTION="Hex editor by KDE"
 HOMEPAGE="https://www.kde.org/applications/utilities/okteta
 https://utils.kde.org/projects/okteta"
 KEYWORDS="amd64 x86"
