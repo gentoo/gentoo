@@ -10,7 +10,7 @@ DESCRIPTION="a small library to create and manage 64-bit disk based hash tables"
 HOMEPAGE="https://www.gnu.org/software/libdbh/"
 SRC_URI="mirror://sourceforge/dbh/dbh/${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
