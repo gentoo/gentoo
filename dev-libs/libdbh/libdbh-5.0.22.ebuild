@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools
 
 MY_P=${PN}2-${PV}
 
@@ -19,10 +19,6 @@ DEPEND="dev-util/gtk-doc-am
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
-
-pkg_setup() {
-	DOCS=( AUTHORS ChangeLog NEWS README TODO )
-}
 
 src_prepare() {
 	default
