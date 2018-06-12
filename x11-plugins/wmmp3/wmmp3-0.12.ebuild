@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils
 
 DESCRIPTION="Mp3 player dock app for WindowMaker; frontend to mpg123"
-HOMEPAGE="http://www.dockapps.net/wmmp3"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmmp3"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
