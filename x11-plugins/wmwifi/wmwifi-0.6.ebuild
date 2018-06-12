@@ -4,8 +4,8 @@
 EAPI=0
 
 DESCRIPTION="wireless network interface monitor dockapp"
-HOMEPAGE="http://www.dockapps.net/wmwifi"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmwifi"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
