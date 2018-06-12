@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>Aidenn0@geocities.com</email>
-		<name>Jason Miller</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>proxy-mintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="ar">Argentina tv listing grabber</flag>
 		<flag name="ch">Switzerland bluewin tv listing grabber</flag>
@@ -58,3 +51,4 @@
 		<remote-id type="sourceforge">xmltv</remote-id>
 	</upstream>
 </pkgmetadata>
+
