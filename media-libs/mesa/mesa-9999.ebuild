@@ -36,9 +36,9 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm
-	lm_sensors opencl osmesa pax_kernel openmax pic selinux test unwind
-	vaapi valgrind vdpau vulkan wayland xvmc xa"
+	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm lm_sensors
+	opencl osmesa openmax pax_kernel pic selinux test unwind vaapi valgrind
+	vdpau vulkan wayland xa xvmc"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 gallium )
