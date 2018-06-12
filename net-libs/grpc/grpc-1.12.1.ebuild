@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/0006-grpc-1.12.1-allow-system-openssl.patch"
 	"${FILESDIR}/0007-grpc-1.12.1-allow-system-zlib.patch"
 	"${FILESDIR}/0008-grpc-1.12.1-allow-system-cares.patch"
+	"${FILESDIR}/0009-grpc-1.12.1-gcc8-fixes.patch"
 )
 
 src_prepare() {
