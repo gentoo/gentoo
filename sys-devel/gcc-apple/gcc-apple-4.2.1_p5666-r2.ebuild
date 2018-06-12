@@ -352,8 +352,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	# beware this also switches when it's on another branch version of GCC
-	gcc-config ${CTARGET}-${GCC_VERS}
+	# only activate this compiler if nothing else is activated
+	gcc-config -c >& /dev/null || gcc-config ${CTARGET}-${GCC_VERS}
 }
 
 pkg_postrm() {
