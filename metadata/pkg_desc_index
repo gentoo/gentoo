@@ -575,6 +575,7 @@ app-editors/nano 2.8.7: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
+app-editors/okteta 17.12.3: Hex editor by KDE
 app-editors/pluma 1.12.2-r1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
@@ -6761,7 +6762,6 @@ kde-apps/marble 17.12.3: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 17.12.3: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 17.12.3: Libraries for messaging functions
 kde-apps/minuet 17.12.3: A KDE Software for Music Education
-kde-apps/okteta 17.12.3: KDE hexeditor
 kde-apps/okular 17.12.3: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 17.12.3: Jigsaw puzzle game by KDE
 kde-apps/parley 17.12.3: A vocabulary trainer to help you memorize things
