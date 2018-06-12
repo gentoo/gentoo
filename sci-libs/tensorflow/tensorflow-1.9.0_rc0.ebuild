@@ -45,7 +45,7 @@ bazel_external_uris="
 	https://github.com/open-source-parsers/jsoncpp/archive/11086dd6a7eba04289944367ca82cea71299ed70.tar.gz -> jsoncpp-11086dd6a7eba04289944367ca82cea71299ed70.tar.gz
 	https://www.sqlite.org/2018/sqlite-amalgamation-3230100.zip
 	https://zlib.net/zlib-1.2.11.tar.gz
-	jemalloc? ( https://github.com/jemalloc/jemalloc/archive/4.4.0.tar.gz -> jemalloc-4.4.0.tar.gz )
+	https://github.com/jemalloc/jemalloc/archive/4.4.0.tar.gz -> jemalloc-4.4.0.tar.gz
 	python? (
 		http://ftp.exim.org/pub/pcre/pcre-8.39.tar.gz
 		http://ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz
