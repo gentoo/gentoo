@@ -1607,7 +1607,7 @@ app-vim/recover 0.18: vim plugin: show differences for recovered files
 app-vim/reload 0.6.17: vim plugin: automatic reloading of vim scripts
 app-vim/repeat 1.1: vim plugin: use the repeat command "." with plugin maps
 app-vim/salt-vim 20151119: Vim files for working on Salt files
-app-vim/scala-syntax 1.0: vim plugin: Scala syntax highlighting, filetype and indent settings
+app-vim/scala-syntax 1.0-r1: vim plugin: Scala syntax highlighting, filetype and indent settings
 app-vim/screen 1.5: vim plugin: simulate a split shell with screen or tmux
 app-vim/searchcomplete 1.1-r1: vim plugin: tab completion in searches
 app-vim/securemodelines 20140926: vim plugin: secure, user-configurable modeline support
