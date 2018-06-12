@@ -1,16 +1,16 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_PN=AlsaMixer.app
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="AlsaMixer.app is a simple mixer dockapp"
-HOMEPAGE="http://www.dockapps.net/alsamixerapp"
-SRC_URI="http://www.dockapps.net/download/${MY_P}.tar.gz"
+DESCRIPTION="simple alsa mixer dockapp"
+HOMEPAGE="https://www.dockapps.net/alsamixerapp"
+SRC_URI="https://www.dockapps.net/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,18 +26,9 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-Makefile.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
 
 src_compile() {
 	tc-export CXX
-	emake || die "emake failed."
-}
-
-src_install() {
-	dobin ${MY_PN} || die "dobin failed."
-	dodoc README
+	default
 }
