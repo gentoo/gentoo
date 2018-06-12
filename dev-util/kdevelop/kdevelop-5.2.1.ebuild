@@ -12,7 +12,7 @@ inherit kde5
 
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
 LICENSE="GPL-2 LGPL-2"
-IUSE="cvs +gdbui okteta +plasma +qmake reviewboard subversion webkit +welcomepage"
+IUSE="cvs +gdbui hex +plasma +qmake reviewboard subversion webkit +welcomepage"
 [[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="amd64 x86"
 
 REQUIRED_USE="test? ( welcomepage )"
@@ -60,7 +60,7 @@ COMMON_DEPEND="
 	>=sys-devel/clang-3.8.0:=
 	x11-misc/shared-mime-info
 	gdbui? ( $(add_plasma_dep libksysguard) )
-	okteta? ( $(add_kdeapps_dep okteta) )
+	hex? ( app-editors/okteta:5 )
 	plasma? (
 		$(add_frameworks_dep krunner)
 		$(add_frameworks_dep plasma)
@@ -107,7 +107,7 @@ src_configure() {
 		$(cmake-utils_use_find_package gdbui KF5SysGuard)
 		-DBUILD_executeplasmoid=$(usex plasma)
 		$(cmake-utils_use_find_package plasma KF5Plasma)
-		$(cmake-utils_use_find_package okteta OktetaKastenControllers)
+		$(cmake-utils_use_find_package hex OktetaKastenControllers)
 		$(cmake-utils_use_find_package qmake KDevelop-PG-Qt)
 		$(cmake-utils_use_find_package reviewboard KDEExperimentalPurpose)
 		$(cmake-utils_use_find_package subversion SubversionLibrary)

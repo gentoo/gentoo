@@ -4,7 +4,7 @@
 # Required by >=dev-qt/qtwebengine-5.9
 dev-libs/libxml2 icu
 
-# Required by kde-apps/okteta
+# Required by app-editors/okteta
 dev-qt/qtscript:5 scripttools
 
 # Required by kde-apps/akonadi

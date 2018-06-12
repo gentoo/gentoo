@@ -4,14 +4,18 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
-KDE_TEST="optional"
+KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="KDE hexeditor"
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
+DESCRIPTION="Hex editor by KDE"
 HOMEPAGE="https://www.kde.org/applications/utilities/okteta
 https://utils.kde.org/projects/okteta"
-KEYWORDS="amd64 x86"
 IUSE="crypt designer"
 
 DEPEND="
@@ -33,6 +37,7 @@ DEPEND="
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
+	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
@@ -48,8 +53,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DOMIT_EXAMPLES=ON
 		$(cmake-utils_use_find_package crypt Qca-qt5)
-		$(cmake-utils_use_find_package designer Qt5Designer)
-		$(cmake-utils_use_find_package designer Qt5UiPlugin)
+		-DBUILD_DESIGNERPLUGIN=$(usex designer)
 	)
 
 	kde5_src_configure
