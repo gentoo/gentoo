@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils eutils flag-o-matic gnome2-utils
+
+inherit cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="3D photo-realistic skies in real time"
 HOMEPAGE="http://www.stellarium.org/"
@@ -96,10 +97,6 @@ src_install() {
 		doins "${DISTDIR}"/stars_{4_1,{5,6,7,8}_2}v0_1.cat
 	fi
 	newicon doc/images/stellarium-logo.png ${PN}.png
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
