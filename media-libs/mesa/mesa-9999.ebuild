@@ -38,7 +38,7 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm
-	lm_sensors +nptl opencl osmesa pax_kernel openmax pic selinux test unwind
+	lm_sensors opencl osmesa pax_kernel openmax pic selinux test unwind
 	vaapi valgrind vdpau vulkan wayland xvmc xa"
 
 REQUIRED_USE="
