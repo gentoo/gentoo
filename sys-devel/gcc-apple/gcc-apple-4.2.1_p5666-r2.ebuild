@@ -26,7 +26,6 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 	>=sys-libs/ncurses-5.2-r2
 	nls? ( sys-devel/gettext )
 	>=sys-devel/gcc-config-1.8-r1
-	sys-libs/csu
 	!<sys-apps/portage-2.2.14
 	fortran? (
 		>=dev-libs/gmp-4.2.1
@@ -37,6 +36,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	${CATEGORY}/binutils-apple
 	>=dev-libs/mpfr-2.2.0_p10"
+PDEPEND="sys-libs/csu"
 
 S=${WORKDIR}/gcc-${APPLE_VERS}
 
