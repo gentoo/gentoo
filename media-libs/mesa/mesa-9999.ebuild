@@ -351,16 +351,16 @@ multilib_src_configure() {
 	fi
 
 	if use gallium; then
-		GALLIUM_DRIVERS+="swrast "
+		GALLIUM_DRIVERS+=(swrast)
 		emesonargs+=( -Dosmesa=$(usex osmesa gallium none) )
 	else
-		DRI_DRIVERS+="swrast "
+		DRI_DRIVERS+=(swrast)
 		emesonargs+=( -Dosmesa=$(usex osmesa classic none) )
 	fi
 
 	driver_list() {
-		arr=($(printf "%s\n" "$@" | sort -u | tr '\n' ','))
-		echo "${arr: : -1}"
+		local drivers="$(sort -u <<< "${1// /$'\n'}")"
+		echo "${drivers//$'\n'/,}"
 	}
 
 	emesonargs+=(
@@ -376,9 +376,9 @@ multilib_src_configure() {
 		$(meson_use unwind libunwind)
 		$(meson_use lm_sensors lmsensors)
 		-Dvalgrind=$(usex valgrind auto false)
-		-Ddri-drivers=$(driver_list ${DRI_DRIVERS})
-		-Dgallium-drivers=$(driver_list ${GALLIUM_DRIVERS})
-		-Dvulkan-drivers=$(driver_list ${VULKAN_DRIVERS})
+		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
+		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
+		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
 	)
 	meson_src_configure
 }
@@ -462,20 +462,20 @@ pkg_prerm() {
 dri_driver_enable() {
 	if use $1; then
 		shift
-		DRI_DRIVERS+="$@ "
+		DRI_DRIVERS+=("$@")
 	fi
 }
 
 gallium_enable() {
 	if use $1; then
 		shift
-		GALLIUM_DRIVERS+="$@ "
+		GALLIUM_DRIVERS+=("$@")
 	fi
 }
 
 vulkan_enable() {
 	if use $1; then
 		shift
-		VULKAN_DRIVERS+="$@ "
+		VULKAN_DRIVERS+=("$@")
 	fi
 }
