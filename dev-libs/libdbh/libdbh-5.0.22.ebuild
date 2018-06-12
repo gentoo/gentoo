@@ -6,7 +6,7 @@ inherit autotools eutils
 
 MY_P=${PN}2-${PV}
 
-DESCRIPTION="a small library to create and manage 64-bit disk based hash tables"
+DESCRIPTION="A small library to create and manage 64-bit disk based hash tables"
 HOMEPAGE="https://www.gnu.org/software/libdbh/"
 SRC_URI="mirror://sourceforge/dbh/dbh/${PV}/${MY_P}.tar.gz"
 
