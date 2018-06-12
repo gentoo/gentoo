@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~sparc ~x86"
 IUSE="bzip2 cpu_flags_x86_mmx cpu_flags_x86_sse2 gif jpeg mp3 nls png static-libs tiff X zlib"
 
 RDEPEND="
