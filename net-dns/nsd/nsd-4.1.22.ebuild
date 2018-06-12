@@ -15,7 +15,7 @@ HOMEPAGE="http://www.nlnetlabs.nl/projects/nsd"
 SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl libressl"
 
 S="${WORKDIR}/${MY_P}"
@@ -87,6 +87,8 @@ src_install() {
 	# remove the /run directory that usually resides on tmpfs and is
 	# being taken care of by the nsd init script anyway (checkpath)
 	rm -r "${ED%/}"/run || die "Failed to remove /run"
+
+	keepdir /var/db/${PN}
 }
 
 pkg_postinst() {
