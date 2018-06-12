@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -40,7 +40,11 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS README.kstScript )
-PATCHES=( "${FILESDIR}/${P}-includes.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${P}-includes.patch"
+	"${FILESDIR}/${P}-qt-5.11b3.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

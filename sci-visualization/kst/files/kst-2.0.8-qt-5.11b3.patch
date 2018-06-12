@@ -1,0 +1,25 @@
+From 91867d80df4fe8f26c9adbfe10c1c883ccb36697 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Jun 2018 08:57:08 +0200
+Subject: [PATCH] Fix configure with Qt-5.11.0_beta3 (no more qt5_use_modules)
+
+---
+ cmake/modules/KstMacros.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/modules/KstMacros.cmake b/cmake/modules/KstMacros.cmake
+index 676d5731..95848f20 100644
+--- a/cmake/modules/KstMacros.cmake
++++ b/cmake/modules/KstMacros.cmake
+@@ -240,7 +240,7 @@ endmacro()
+ macro(kst_link)
+ 	target_link_libraries(${kst_name} ${ARGV})
+ 	if(kst_qt5)
+-		qt5_use_modules(${kst_name} Widgets Xml Network PrintSupport)
++		target_link_libraries(${kst_name} Qt5::Widgets Qt5::Xml Qt5::Network Qt5::PrintSupport)
+ 	else()
+ 		target_link_libraries(${kst_name}
+ 		${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTSVG_LIBRARY} ${QT_QTNETWORK_LIBRARY})
+-- 
+2.17.1
+
