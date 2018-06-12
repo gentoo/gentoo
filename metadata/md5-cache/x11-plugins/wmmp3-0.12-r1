@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile postinst
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm media-sound/mpg123 x11-base/xorg-proto
+DESCRIPTION=Mp3 player dock app for WindowMaker; frontend to mpg123
+EAPI=7
+HOMEPAGE=https://www.dockapps.net/wmmp3
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=https://www.dockapps.net/download/wmmp3-0.12.tar.gz
+_md5_=9d8b41f1d96588a02538f3782f2f05ab

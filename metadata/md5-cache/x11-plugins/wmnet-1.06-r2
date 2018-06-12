@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-base/xorg-proto x11-misc/imake app-text/rman
+DESCRIPTION=WMnet is a dock.app network monitor
+EAPI=7
+HOMEPAGE=https://www.dockapps.net/wmnet
+KEYWORDS=~x86 ~sparc ~alpha ~amd64 ~ppc
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext
+SLOT=0
+SRC_URI=https://www.dockapps.net/download/wmnet-1.06.tar.gz mirror://gentoo/wmnet-1.06-misc.patch.bz2
+_md5_=8e8ce0314d2576e87c750188c71b863c
