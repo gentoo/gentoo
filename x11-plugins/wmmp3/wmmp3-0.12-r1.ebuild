@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Mp3 player dock app for WindowMaker; frontend to mpg123"
 HOMEPAGE="https://www.dockapps.net/wmmp3"
@@ -11,7 +9,7 @@ SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
@@ -21,23 +19,12 @@ DEPEND="${RDEPEND}
 	media-sound/mpg123
 	x11-base/xorg-proto"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+PATCHES=( "${FILESDIR}"/${P}-x_includes_n_libraries.patch )
 
-	# Fix #103531
-	epatch "${FILESDIR}"/${P}-x_includes_n_libraries.patch
-}
+DOCS=( AUTHORS ChangeLog sample.wmmp3 README TODO )
 
 src_compile() {
-	# override wmmp3 self-calculated cflags
-	econf
-	emake prefix="/usr/" || die
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog sample.wmmp3 README TODO
+	emake prefix="/usr/"
 }
 
 pkg_postinst() {
