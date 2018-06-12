@@ -7,9 +7,9 @@ inherit eutils
 
 IUSE=""
 DESCRIPTION="WMnet is a dock.app network monitor"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz
 	mirror://gentoo/${P}-misc.patch.bz2"
-HOMEPAGE="http://www.dockapps.net/wmnet"
+HOMEPAGE="https://www.dockapps.net/wmnet"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext"
