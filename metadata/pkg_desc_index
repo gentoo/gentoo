@@ -1277,7 +1277,7 @@ app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
 app-text/ansifilter 2.10: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
-app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
+app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r2 8.6.10: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.7_rc1: A spell checker replacement for ispell
@@ -7261,7 +7261,7 @@ media-gfx/freepv 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPanoView form
 media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
 media-gfx/geeqie 1.3-r1: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2png 2.5.8 2.5.9: Converts images from gif format to png format
-media-gfx/gifsicle 1.86 1.90: Create, manipulate, and optimize GIF images and animations
+media-gfx/gifsicle 1.86 1.90 1.91: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.22-r1: GNU Image Manipulation Program
@@ -8110,7 +8110,7 @@ media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practic
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.0_beta1: A simple audiofile converter application for the GNOME environment
-media-sound/sox 14.4.2: The swiss army knife of sound processing programs
+media-sound/sox 14.4.2 14.4.2-r1: The swiss army knife of sound processing programs
 media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
@@ -8153,7 +8153,7 @@ media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8-r4 0.8_p20161122: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
-media-sound/zynaddsubfx 3.0.1-r1: ZynAddSubFX is an opensource software synthesizer
+media-sound/zynaddsubfx 3.0.3: ZynAddSubFX is an opensource software synthesizer
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
 media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.3: Scripts necessary for use of vdr as a set-top-box
