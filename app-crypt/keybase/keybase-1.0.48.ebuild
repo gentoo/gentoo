@@ -19,14 +19,6 @@ DEPEND="
 RDEPEND="
 	app-crypt/gnupg"
 
-src_prepare() {
-	# if grep --quiet keybasehelper /etc/passwd; then
-	# 	ewarn "Removing obsolete user keybasehelper"
-	# 	userdel --remove keybasehelper || die
-	# fi
-	eapply_user
-}
-
 src_unpack() {
 	unpack "${P}.tar.gz"
 	ln -vs "client-${PV}" "${P}" || die
@@ -58,4 +50,5 @@ pkg_postinst() {
 	elog "Start/Restart keybase: run_keybase"
 	elog "Run the service:       keybase service"
 	elog "Run the client:        keybase login"
+	ewarn "Note that the user keybasehelper is obsolete and can be removed"
 }
