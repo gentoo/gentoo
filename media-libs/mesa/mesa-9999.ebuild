@@ -26,7 +26,6 @@ fi
 LICENSE="MIT"
 SLOT="0"
 RESTRICT="
-	!bindist? ( bindist )
 	!test? ( test )
 "
 
@@ -37,7 +36,7 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	bindist +classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm
+	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm
 	lm_sensors opencl osmesa pax_kernel openmax pic selinux test unwind
 	vaapi valgrind vdpau vulkan wayland xvmc xa"
 
@@ -367,7 +366,6 @@ multilib_src_configure() {
 		$(meson_use test build-tests)
 		-Dglx=dri
 		-Dshared-glapi=true
-		$(meson_use !bindist texture-float)
 		$(meson_use dri3)
 		$(meson_use egl)
 		$(meson_use gbm)
@@ -414,10 +412,6 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-
-	if use !bindist; then
-		dodoc docs/patents.txt
-	fi
 }
 
 multilib_src_test() {
@@ -441,13 +435,6 @@ pkg_postinst() {
 			OMX_BELLAGIO_REGISTRY=${EPREFIX}/usr/share/mesa/xdg/.omxregister \
 			omxregister-bellagio
 		eend $?
-	fi
-
-	# warn about patent encumbered texture-float
-	if use !bindist; then
-		elog "USE=\"bindist\" was not set. Potentially patent encumbered code was"
-		elog "enabled. Please see /usr/share/doc/${P}/patents.txt.bz2 for an"
-		elog "explanation."
 	fi
 }
 
