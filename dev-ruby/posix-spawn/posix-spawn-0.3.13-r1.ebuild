@@ -13,7 +13,7 @@ inherit ruby-fakegem
 DESCRIPTION="Library that implements a subset of the Ruby 1.9 Process::spawn"
 HOMEPAGE="https://github.com/rtomayko/posix-spawn/"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT LGPL-2.1"
 SLOT="0"
