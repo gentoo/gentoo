@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	virtual/pkgconfig"
 
-S="${WORKDIR}"/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	DOCS=( AUTHORS ChangeLog NEWS README TODO )
