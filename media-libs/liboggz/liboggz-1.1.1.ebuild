@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Oggz provides a simple programming interface for reading and writing Ogg files and streams"
-HOMEPAGE="http://www.xiph.org/oggz/"
-SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.xiph.org/oggz/"
+SRC_URI="https://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
