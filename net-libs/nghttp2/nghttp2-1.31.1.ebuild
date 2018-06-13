@@ -23,8 +23,8 @@ SLOT="0/1.14" # <C++>.<C> SONAMEs
 IUSE="cxx debug hpack-tools jemalloc libressl static-libs test +threads utils xml"
 
 SSL_DEPEND="
-	!libressl? ( >=dev-libs/openssl-1.0.2:0[-bindist,${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	!libressl? ( >=dev-libs/openssl-1.0.2:0=[-bindist,${MULTILIB_USEDEP}] )
+	libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	cxx? (

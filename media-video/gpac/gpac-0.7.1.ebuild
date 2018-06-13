@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.7.1-configure.patch"
 	"${FILESDIR}/ffmpeg4.patch"
 	"${FILESDIR}/${PN}-freetype.patch"
+	"${FILESDIR}/${P}-openssl-1.1.patch"
 )
 
 DOCS=(
