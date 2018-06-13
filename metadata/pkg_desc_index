@@ -29,7 +29,7 @@ app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech 
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.4.2.0 2.4.3.0 2.5.2: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.4.3.0 2.5.2 2.5.4: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.29 2.4.33: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -4645,7 +4645,7 @@ dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/bz2file 0.98: Replacement for bz2.BZ2File with features from newest CPython
 dev-python/cached-property 1.3.1: A cached-property for decorating methods in classes
-dev-python/cachetools 1.1.5 2.0.0 2.0.1: Extensible memoizing collections and decorators
+dev-python/cachetools 2.0.1 2.1.0: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.7.2 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: The Python bindings to libcangjie
 dev-python/carbon 0.9.13: Backend data caching and persistence daemon for Graphite
@@ -4990,7 +4990,7 @@ dev-python/kaa-imlib2 0.2.3-r2: Imlib2 wrapper for Python
 dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files in Python, successor of MMPython
 dev-python/kazoo 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 10.6.0 11.0.0: Provides access to the system keyring service
+dev-python/keyring 11.0.0 12.2.1: Provides access to the system keyring service
 dev-python/keystoneauth 3.1.0 3.4.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.17.0 4.21.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
@@ -5352,6 +5352,7 @@ dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-fixture-config 1.2.11: Virtualenv fixture for py.test
+dev-python/pytest-flake8 0.9.1: py.test plugin for flake8
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.7: Py.test plugin to test server connections locally
 dev-python/pytest-mock 1.6.0: Thin-wrapper around the mock package for easier use with py.test
