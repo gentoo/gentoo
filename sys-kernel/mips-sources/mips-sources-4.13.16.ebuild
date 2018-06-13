@@ -24,12 +24,12 @@ K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit kernel-2 eutils
+inherit eapi7-ver eutils kernel-2
 detect_version
 
 # Version Data
 F_KV="${PVR}"
-BASE_KV="$(get_version_component_range 1-2).0"
+BASE_KV="$(ver_cut 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
