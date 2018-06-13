@@ -19,14 +19,6 @@ DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 "
 
-src_prepare() {
-	# bug 650280
-	has_version '<dev-qt/qtcore-5.10.0:5' && \
-		eapply "${FILESDIR}/${PN}-5.46.0-kformattest.patch"
-
-	kde5_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-D_KDE4_DEFAULT_HOME_POSTFIX=4
