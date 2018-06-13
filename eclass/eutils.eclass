@@ -172,6 +172,7 @@ make_wrapper() {
 
 	if [[ -n ${path} ]] ; then
 		(
+		exeopts -m 0755
 		exeinto "${path}"
 		newexe "${tmpwrapper}" "${wrapper}"
 		) || die

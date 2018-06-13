@@ -10,7 +10,10 @@
 # git as remote repository.
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6|7)
+	0|1|2|3)
+		die "Unsupported EAPI=${EAPI} (obsolete) for ${ECLASS}"
+		;;
+	4|5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -23,9 +26,9 @@ if [[ ! ${_GIT_R3} ]]; then
 
 if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
 	if [[ ${EAPI:-0} != [0123456] ]]; then
-		BDEPEND=">=dev-vcs/git-1.8.2.1"
+		BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
 	else
-		DEPEND=">=dev-vcs/git-1.8.2.1"
+		DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
 	fi
 fi
 
@@ -650,31 +653,6 @@ git-r3_fetch() {
 
 			local fetch_command=( git fetch "${r}" )
 			local clone_type=${EGIT_CLONE_TYPE}
-
-			if [[ ${r} == http://* || ${r} == https://* ]] &&
-					[[ ! ${EGIT_CURL_WARNED} ]]
-			then
-				case ${EAPI:-0} in
-					0|1|2|3|4)
-						ROOT=/ has_version 'dev-vcs/git[curl]';;
-					5|6)
-						has_version --host-root 'dev-vcs/git[curl]';;
-					*)
-						has_version -b 'dev-vcs/git[curl]';;
-				esac
-
-				if [[ ${?} -ne 0 ]]; then
-					ewarn "git-r3: fetching from HTTP(S) requested. In order to support HTTP(S),"
-					ewarn "dev-vcs/git needs to be built with USE=curl. Example solution:"
-					ewarn
-					ewarn "	echo dev-vcs/git curl >> /etc/portage/package.use"
-					ewarn "	emerge -1v dev-vcs/git"
-					ewarn
-					ewarn "HTTP(S) URIs will be skipped."
-				fi
-
-				EGIT_CURL_WARNED=1
-			fi
 
 			if [[ ${clone_type} == mirror ]]; then
 				fetch_command+=(

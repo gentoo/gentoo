@@ -789,6 +789,7 @@ python_newexe() {
 
 	(
 		dodir "${wrapd}"
+		exeopts -m 0755
 		exeinto "${d}"
 		newexe "${f}" "${newfn}" || return ${?}
 	)
@@ -920,6 +921,7 @@ python_domodule() {
 	fi
 
 	(
+		insopts -m 0644
 		insinto "${d}"
 		doins -r "${@}" || return ${?}
 	)
@@ -954,6 +956,7 @@ python_doheader() {
 	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
 
 	(
+		insopts -m 0644
 		insinto "${d}"
 		doins -r "${@}" || return ${?}
 	)
