@@ -26,6 +26,8 @@ IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
 
+DEPEND+=" test? ( app-text/mupdf ) "
+
 ruby_add_rdepend "
 	~dev-ruby/actionpack-${PV}:*
 	~dev-ruby/activerecord-${PV}:*
