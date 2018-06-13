@@ -192,11 +192,10 @@
 
 PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit eutils toolchain-funcs versionator multilib python-any-r1
+inherit toolchain-funcs python-any-r1
+[[ ${EAPI:-0} == [012345] ]] && inherit epatch
+[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
 case ${EAPI:-0} in
-	0|1)
-		EXPORT_FUNCTIONS src_{unpack,compile,install,test} \
-			pkg_{setup,preinst,postinst,postrm} ;;
 	2|3|4|5|6)
 		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
 			pkg_{setup,preinst,postinst,postrm} ;;
@@ -215,8 +214,6 @@ fi
 
 HOMEPAGE="https://www.kernel.org/ https://www.gentoo.org/ ${HOMEPAGE}"
 : ${LICENSE:="GPL-2"}
-
-has "${EAPI:-0}" 0 1 2 && ED=${D} EPREFIX= EROOT=${ROOT}
 
 # This is the latest KV_PATCH of the deblob tool available from the
 # libre-sources upstream. If you bump this, you MUST regenerate the Manifests
@@ -326,7 +323,7 @@ detect_version() {
 	OKV=${OKV/-r*}
 	OKV=${OKV/_p*}
 
-	KV_MAJOR=$(get_version_component_range 1 ${OKV})
+	KV_MAJOR=$(ver_cut 1 ${OKV})
 	# handle if OKV is X.Y or X.Y.Z (e.g. 3.0 or 3.0.1)
 	local OKV_ARRAY
 	IFS="." read -r -a OKV_ARRAY <<<"${OKV}"
@@ -334,17 +331,17 @@ detect_version() {
 	# if KV_MAJOR >= 3, then we have no more KV_MINOR
 	#if [[ ${KV_MAJOR} -lt 3 ]]; then
 	if [[ ${#OKV_ARRAY[@]} -ge 3 ]]; then
-		KV_MINOR=$(get_version_component_range 2 ${OKV})
-		KV_PATCH=$(get_version_component_range 3 ${OKV})
+		KV_MINOR=$(ver_cut 2 ${OKV})
+		KV_PATCH=$(ver_cut 3 ${OKV})
 		if [[ ${KV_MAJOR}${KV_MINOR}${KV_PATCH} -ge 269 ]]; then
-			KV_EXTRA=$(get_version_component_range 4- ${OKV})
+			KV_EXTRA=$(ver_cut 4- ${OKV})
 			KV_EXTRA=${KV_EXTRA/[-_]*}
 		else
-			KV_PATCH=$(get_version_component_range 3- ${OKV})
+			KV_PATCH=$(ver_cut 3- ${OKV})
 		fi
 	else
-		KV_PATCH=$(get_version_component_range 2 ${OKV})
-		KV_EXTRA=$(get_version_component_range 3- ${OKV})
+		KV_PATCH=$(ver_cut 2 ${OKV})
+		KV_EXTRA=$(ver_cut 3- ${OKV})
 		KV_EXTRA=${KV_EXTRA/[-_]*}
 	fi
 
@@ -645,12 +642,7 @@ if [[ ${ETYPE} == sources ]]; then
 			DEBLOB_CHECK_A="deblob-check-${DEBLOB_PV}"
 			DEBLOB_HOMEPAGE="http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags"
 			DEBLOB_URI_PATH="${DEBLOB_PV}${K_DEBLOB_TAG}"
-			if ! has "${EAPI:-0}" 0 1 ; then
-				DEBLOB_CHECK_URI="${DEBLOB_HOMEPAGE}/${DEBLOB_URI_PATH}/deblob-check -> ${DEBLOB_CHECK_A}"
-			else
-				DEBLOB_CHECK_URI="mirror://gentoo/${DEBLOB_CHECK_A}"
-			fi
-
+			DEBLOB_CHECK_URI="${DEBLOB_HOMEPAGE}/${DEBLOB_URI_PATH}/deblob-check -> ${DEBLOB_CHECK_A}"
 			DEBLOB_URI="${DEBLOB_HOMEPAGE}/${DEBLOB_URI_PATH}/${DEBLOB_A}"
 			HOMEPAGE="${HOMEPAGE} ${DEBLOB_HOMEPAGE}"
 
@@ -1075,9 +1067,9 @@ postinst_sources() {
 	fi
 
 	# warn sparc users that they need to do cross-compiling with >= 2.6.25(bug #214765)
-	KV_MAJOR=$(get_version_component_range 1 ${OKV})
-	KV_MINOR=$(get_version_component_range 2 ${OKV})
-	KV_PATCH=$(get_version_component_range 3 ${OKV})
+	KV_MAJOR=$(ver_cut 1 ${OKV})
+	KV_MINOR=$(ver_cut 2 ${OKV})
+	KV_PATCH=$(ver_cut 3 ${OKV})
 	if [[ "$(tc-arch)" = "sparc" ]]; then
 		if [[ $(gcc-major-version) -lt 4 && $(gcc-minor-version) -lt 4 ]]; then
 			if [[ ${KV_MAJOR} -ge 3 || ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} > 2.6.24 ]] ; then
@@ -1475,10 +1467,6 @@ kernel-2_src_unpack() {
 	# allow ebuilds to massage the source tree after patching but before
 	# we run misc `make` functions below
 	[[ $(type -t kernel-2_hook_premake) == "function" ]] && kernel-2_hook_premake
-
-	case ${EAPI:-0} in
-		0|1) kernel-2_src_prepare ;;
-	esac
 
 	debug-print "Doing unpack_set_extraversion"
 
