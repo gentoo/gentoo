@@ -7,6 +7,8 @@
 </maintainer>
 <use>
  <flag name="glib">Support reading config files via glib helpers</flag>
+ <flag name="chamelium">Enables support for building Chamelium tests</flag>
+ <flag name="gtk-doc">Uses gtk-doc to build documentation (HTML by default)</flag>
  <flag name="test-programs">Install test programs for DRM driver development</flag>
  <flag name="unwind">Provide automatic stack traces on test failures</flag>
  <flag name="valgrind">Support valgrind annotations</flag>
