@@ -10,7 +10,10 @@ HOMEPAGE="http://www.jetbrains.com/clion"
 SRC_URI="http://download.jetbrains.com/cpp/CLion-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="IDEA
-	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
+	|| ( IDEA_Academic IDEA_Classroom IDEA_Personal ) GPL-2 Apache-1.1 Apache-2.0
+	GPL-3 UoI-NCSA PSF-2 BSD BSD-2 EPL-1.0 EPL-2.0 sun-bcla-javahelp CDDL-1.1
+	GPL-2-with-classpath-exception JDOM CPL-0.5 ZLIB oromatcher MPL-1.0 LGPL-2.1+
+	MIT ISC ms-tfs-sdk"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
