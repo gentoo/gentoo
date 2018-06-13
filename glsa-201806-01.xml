@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201806-01">
+  <title>GNU Wget: Cookie injection</title>
+  <synopsis>A vulnerablity in GNU Wget could allow arbitrary cookies to be
+    injected.
+  </synopsis>
+  <product type="ebuild">wget</product>
+  <announced>2018-06-13</announced>
+  <revised count="1">2018-06-13</revised>
+  <bug>655216</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.19.5</unaffected>
+      <vulnerable range="lt">1.19.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in GNU Wget’s resp_new function which
+      does not validate \r\n sequences in continuation lines.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could inject arbitrary cookie entry requests.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.19.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0494">CVE-2018-0494</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-06-12T02:50:06Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-06-13T20:52:56Z">irishluck83</metadata>
+</glsa>
