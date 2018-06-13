@@ -83,6 +83,10 @@ waf-utils_src_configure() {
 	[[ -z ${NO_WAF_LIBDIR} ]] && libdir=(--libdir="${EPREFIX}/usr/$(get_libdir)")
 
 	tc-export AR CC CPP CXX RANLIB
+
+	# WAF looks for PKGCONFIG not PKG_CONFIG.
+	local -x PKGCONFIG=$(tc-getPKG_CONFIG)
+
 	echo "CCFLAGS=\"${CFLAGS}\" LINKFLAGS=\"${CFLAGS} ${LDFLAGS}\" \"${WAF_BINARY}\" --prefix=${EPREFIX}/usr ${libdir[@]} $@ configure"
 
 	CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
