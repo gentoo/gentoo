@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup test unpack
+DEPEND=systemd? ( sys-apps/systemd ) >=dev-lang/go-1.9
+DESCRIPTION=Prometheus Exporter for Postfix
+EAPI=6
+HOMEPAGE=https://github.com/kumina/postfix_exporter
+IUSE=systemd
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/kumina/postfix_exporter/archive/0.1.2.tar.gz -> postfix_exporter-0.1.2.tar.gz https://github.com/coreos/go-systemd/archive/bebb2b01b0473b183e4624aaf8e23ae6f4b22417.tar.gz -> github.com-coreos-go-systemd-bebb2b01b0473b183e4624aaf8e23ae6f4b22417.tar.gz https://github.com/coreos/pkg/archive/97fdf19511ea361ae1c100dd393cc47f8dcfa1e1.tar.gz -> github.com-coreos-pkg-97fdf19511ea361ae1c100dd393cc47f8dcfa1e1.tar.gz https://github.com/prometheus/client_golang/archive/f504d69affe11ec1ccb2e5948127f86878c9fd57.tar.gz -> github.com-prometheus-client_golang-f504d69affe11ec1ccb2e5948127f86878c9fd57.tar.gz https://github.com/beorn7/perks/archive/3a771d992973f24aa725d07868b467d1ddfceafb.tar.gz -> github.com-beorn7-perks-3a771d992973f24aa725d07868b467d1ddfceafb.tar.gz https://github.com/golang/protobuf/archive/e09c5db296004fbe3f74490e84dcd62c3c5ddb1b.tar.gz -> github.com-golang-protobuf-e09c5db296004fbe3f74490e84dcd62c3c5ddb1b.tar.gz https://github.com/prometheus/client_model/archive/99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c.tar.gz -> github.com-prometheus-client_model-99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c.tar.gz https://github.com/prometheus/common/archive/38c53a9f4bfcd932d1b00bfc65e256a7fba6b37a.tar.gz -> github.com-prometheus-common-38c53a9f4bfcd932d1b00bfc65e256a7fba6b37a.tar.gz https://github.com/matttproud/golang_protobuf_extensions/archive/c12348ce28de40eed0136aa2b644d0ee0650e56c.tar.gz -> github.com-matttproud-golang_protobuf_extensions-c12348ce28de40eed0136aa2b644d0ee0650e56c.tar.gz https://github.com/prometheus/procfs/archive/780932d4fbbe0e69b84c34c20f5c8d0981e109ea.tar.gz -> github.com-prometheus-procfs-780932d4fbbe0e69b84c34c20f5c8d0981e109ea.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=aea25bdfa23562c4deaed255d102c452
