@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}"/3.4.2-solaris-isnan.patch )
 
+RESTRICT="test"
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
