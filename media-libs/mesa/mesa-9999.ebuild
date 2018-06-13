@@ -351,10 +351,10 @@ multilib_src_configure() {
 	fi
 
 	if use gallium; then
-		GALLIUM_DRIVERS+=(swrast)
+		gallium_enable -- swrast
 		emesonargs+=( -Dosmesa=$(usex osmesa gallium none) )
 	else
-		DRI_DRIVERS+=(swrast)
+		dri_driver_enable -- swrast
 		emesonargs+=( -Dosmesa=$(usex osmesa classic none) )
 	fi
 
@@ -457,24 +457,24 @@ pkg_prerm() {
 	fi
 }
 
-# $1 - VIDEO_CARDS flag
+# $1 - VIDEO_CARDS flag (check skipped for "--")
 # other args - names of DRI drivers to enable
 dri_driver_enable() {
-	if use $1; then
+	if [[ $1 == -- ]] || use $1; then
 		shift
 		DRI_DRIVERS+=("$@")
 	fi
 }
 
 gallium_enable() {
-	if use $1; then
+	if [[ $1 == -- ]] || use $1; then
 		shift
 		GALLIUM_DRIVERS+=("$@")
 	fi
 }
 
 vulkan_enable() {
-	if use $1; then
+	if [[ $1 == -- ]] || use $1; then
 		shift
 		VULKAN_DRIVERS+=("$@")
 	fi
