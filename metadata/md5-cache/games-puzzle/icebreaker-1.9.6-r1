@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[video] media-libs/sdl-mixer
 SLOT=0
 SRC_URI=http://www.mattdm.org/icebreaker/1.9.x/icebreaker-1.9.6.tgz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
 _md5_=bb9cb78444bbc02e6ae914bf81ccd920

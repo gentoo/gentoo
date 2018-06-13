@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/sdl-image[jpeg,png] media-libs/sdl-net media-libs/libsdl[joystick,video]
 SLOT=0
 SRC_URI=mirror://sourceforge/gav/gav-0.9.0.tar.gz mirror://gentoo/fabeach.tgz mirror://gentoo/florindo.tgz mirror://gentoo/inverted.tgz mirror://gentoo/naive.tgz mirror://gentoo/unnamed.tgz mirror://gentoo/yisus.tgz mirror://gentoo/yisus2.tgz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
 _md5_=93cb214a464f9c35223c91f019136ab1

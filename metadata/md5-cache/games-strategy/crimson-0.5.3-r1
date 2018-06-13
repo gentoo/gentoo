@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-net zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=http://crimson.seul.org/files/crimson-0.5.3.tar.bz2
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
 _md5_=44f49e27fa1305345c0db056d701f072

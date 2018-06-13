@@ -9,5 +9,5 @@ RDEPEND=media-libs/libsdl[video]
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://www.bigorno.net/xrick/xrick-021212.tgz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
 _md5_=66f11f5285dbbbdef043e38c8a1f117f

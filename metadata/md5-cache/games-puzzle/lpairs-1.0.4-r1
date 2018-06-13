@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=media-libs/libsdl[sound?,video] nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/lgames/lpairs-1.0.4.tar.gz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
 _md5_=779780f0046420930872d322047081d6

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libsdl-1.2.4 >=media-libs/sdl-mixer-1.2 >=media-libs/sdl-image-1.2 media-libs/sdl-ttf
 SLOT=0
 SRC_URI=http://www.shiftygames.com/torrent/torrent-0.8.2.tar.gz
-_eclasses_=desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
 _md5_=8bc56a032dda80c80d0ce25aa780ba7f
