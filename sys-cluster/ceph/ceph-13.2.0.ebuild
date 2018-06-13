@@ -6,15 +6,18 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 DISTUTILS_OPTIONAL=1
 
 inherit check-reqs cmake-utils distutils-r1 flag-o-matic multiprocessing \
-	python-r1 udev user readme.gentoo-r1 systemd
+	python-r1 udev user readme.gentoo-r1 toolchain-funcs systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
-	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz
+		mgr-frontend? ( mirror://gentoo/${P}-frontend-node-modules.tar.xz )"
+	# unkeyworded for testing that this actually works
+	# had to do a lot of hackery for the mgr frontend, dunno if anything broke
+	#KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -25,8 +28,9 @@ SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace cephfs fuse jemalloc ldap lttng +mgr nss +radosgw +ssl"
-IUSE+=" static-libs +system-boost systemd +tcmalloc test xfs zfs"
+IUSE="babeltrace cephfs dpdk fuse jemalloc ldap lttng +mgr mgr-frontend nss"
+IUSE+=" +radosgw +ssl static-libs +system-boost systemd +tcmalloc test"
+IUSE+=" xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 # unbundling code commented out pending bugs 584056 and 584058
@@ -39,10 +43,11 @@ COMMON_DEPEND="
 	app-arch/snappy:=[static-libs?]
 	app-arch/zstd:=[static-libs?]
 	app-misc/jq:=[static-libs?]
-	<dev-libs/crypto++-7.0:=[static-libs?]
+	dev-libs/crypto++:=[static-libs?]
 	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc?]
 	dev-libs/libaio:=[static-libs?]
 	dev-libs/libxml2:=[static-libs?]
+	sys-auth/oath-toolkit:=
 	sys-apps/keyutils:=[static-libs?]
 	sys-apps/util-linux:=[static-libs?]
 	sys-libs/zlib:=[static-libs?]
@@ -54,6 +59,11 @@ COMMON_DEPEND="
 	ssl? ( dev-libs/openssl:=[static-libs?] )
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
+	mgr? (
+		<net-libs/nodejs-9.0
+		>net-libs/nodejs-8.10
+	)
+	mgr-frontend? ( net-libs/nodejs[npm] )
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
 		dev-libs/openssl:=[static-libs?]
@@ -67,17 +77,19 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	"
 DEPEND="${COMMON_DEPEND}
-	app-arch/cpio
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/yasm )
+	app-arch/cpio
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/sphinx
+	dev-util/cunit
 	dev-util/gperf
 	dev-util/valgrind
 	sys-apps/which
 	sys-devel/bc
 	virtual/pkgconfig
 	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/tox[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		sys-apps/grep[pcre]
@@ -90,6 +102,7 @@ RDEPEND="${COMMON_DEPEND}
 	sys-fs/cryptsetup
 	sys-fs/lvm2
 	!<sys-apps/openrc-0.26.3
+	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/cherrypy[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -100,11 +113,15 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	"
 REQUIRED_USE="
-	$(python_gen_useflags 'python2*')
 	${PYTHON_REQUIRED_USE}
+	|| ( $(python_gen_useflags 'python3*') )
+	mgr-frontend? ( mgr || ( $(python_gen_useflags 'python2*') ) )
 	?? ( ssl nss )
 	?? ( jemalloc tcmalloc )
 	"
+
+# currently does not configure without the mgr
+REQUIRED_USE+=" mgr"
 
 RESTRICT="test? ( userpriv )"
 
@@ -124,10 +141,11 @@ UNBUNDLE_LIBS=(
 PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
 	"${FILESDIR}/ceph-12.2.0-cflags.patch"
-	"${FILESDIR}/ceph-12.2.1-systemd-unitdir.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
-	"${FILESDIR}/ceph-12.2.4-cflags.patch"
+	"${FILESDIR}/ceph-13.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-rocksdb-cflags.patch"
+	"${FILESDIR}/ceph-13.2.0-mgr-python-version.patch"
+	"${FILESDIR}/ceph-13.2.0-no-virtualenvs.patch"
 )
 
 check-reqs_export_vars() {
@@ -153,7 +171,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	python_setup 'python2*'
+	python_setup 'python3*'
 	check-reqs_export_vars
 	check-reqs_pkg_setup
 	user_setup
@@ -163,11 +181,14 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-12.2.4-boost-sonames.patch"
+		eapply "${FILESDIR}/ceph-13.2.0-boost-sonames.patch"
 	fi
 
+	# prevent useless javascript from being installed to the system
+	use mgr-frontend || rm -rf src/pybind/mgr/dashboard/frontend
+
 	# remove tests that need root access
-	rm src/test/cli/ceph-authtool/cap*.t
+	rm src/test/cli/ceph-authtool/cap*.t || die
 
 	#rm -rf "${UNBUNDLE_LIBS[@]}"
 }
@@ -177,9 +198,11 @@ ceph_src_configure() {
 	local mycmakeargs=(
 		-DWITH_BABELTRACE=$(usex babeltrace)
 		-DWITH_CEPHFS=$(usex cephfs)
+		-DWITH_DPDK=$(usex dpdk)
 		-DWITH_FUSE=$(usex fuse)
 		-DWITH_LTTNG=$(usex lttng)
 		-DWITH_MGR=$(usex mgr)
+		-DWITH_MGR_DASHBOARD_FRONTEND=$(usex mgr-frontend)
 		-DWITH_NSS=$(usex nss)
 		-DWITH_OPENLDAP=$(usex ldap)
 		-DWITH_RADOSGW=$(usex radosgw)
@@ -218,7 +241,6 @@ src_configure() {
 python_compile() {
 	local CMAKE_USE_DIR="${S}"
 
-	ceph_src_configure
 	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
 	emake VERBOSE=1 all
 
@@ -229,6 +251,35 @@ python_compile() {
 }
 
 src_compile() {
+	if use mgr-frontend; then
+		# npm likes trying to create /etc/npm
+		addpredict /etc/npm
+
+		# subshell to avoid polluting the environment
+		(
+			python_setup 'python2*'
+
+			export CC="$(tc-getCC)" CXX="$(tc-getCXX)"
+
+			set -e
+
+			pushd src/pybind/mgr/dashboard/frontend >/dev/null
+
+			npm install --offline --no-save --verbose --parseable \
+				--no-rollback --no-progress --fetch-retries=0 \
+				--nodedir="/usr/include/node" \
+				--cache="${WORKDIR}/${P}-npm-cache" \
+				--registry="http://npmjs.invalid" \
+				--sass-binary-site="http://sass.invalid"
+
+			# this tends to get installed to the system if it's still here
+			rm -rf node_modules/node-sass/build
+
+			popd >/dev/null
+
+		) || die "failed to build node modules for mgr-frontend"
+	fi
+
 	cmake-utils_src_make all
 
 	# we have to do this here to prevent from building everything multiple times
@@ -243,7 +294,7 @@ src_test() {
 python_install() {
 	local CMAKE_USE_DIR="${S}"
 	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
-	DESTDIR="${D}" emake install
+	DESTDIR="${ED}" emake install
 	popd >/dev/null || die
 }
 
@@ -286,7 +337,7 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	python_setup 'python2*'
+	python_setup 'python3*'
 
 	# bug #630232
 	sed -i -r "s:${T//:/\\:}/${EPYTHON}:/usr:" "${ED}"/usr/bin/ceph \
