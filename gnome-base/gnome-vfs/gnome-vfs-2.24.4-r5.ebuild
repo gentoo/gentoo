@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,8 +34,8 @@ RDEPEND="
 			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
 			!gnome-extra/gnome-vfs-sftp )
 		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 			!gnome-extra/gnome-vfs-sftp ) )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
