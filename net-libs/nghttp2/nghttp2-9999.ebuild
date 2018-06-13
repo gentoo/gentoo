@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: Add python support.
@@ -23,8 +23,8 @@ SLOT="0/1.14" # <C++>.<C> SONAMEs
 IUSE="cxx debug hpack-tools jemalloc libressl static-libs test +threads utils xml"
 
 SSL_DEPEND="
-	!libressl? ( >=dev-libs/openssl-1.0.2:0[-bindist,${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	!libressl? ( >=dev-libs/openssl-1.0.2:0=[-bindist,${MULTILIB_USEDEP}] )
+	libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	cxx? (
