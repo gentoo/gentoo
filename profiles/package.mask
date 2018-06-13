@@ -29,38 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Matt Turner <mattst88@gentoo.org> (10 Jun 2018)
-# Packages combined into x11-base/xorg-proto. All reverse deps transitioned.
-# Removal in 30 days. Bug #656250
-x11-proto/bigreqsproto
-x11-proto/compositeproto
-x11-proto/damageproto
-x11-proto/dmxproto
-x11-proto/dri2proto
-x11-proto/dri3proto
-x11-proto/fixesproto
-x11-proto/fontsproto
-x11-proto/glproto
-x11-proto/inputproto
-x11-proto/kbproto
-x11-proto/presentproto
-x11-proto/randrproto
-x11-proto/recordproto
-x11-proto/renderproto
-x11-proto/resourceproto
-x11-proto/scrnsaverproto
-x11-proto/trapproto
-x11-proto/videoproto
-x11-proto/xcmiscproto
-x11-proto/xextproto
-x11-proto/xf86bigfontproto
-x11-proto/xf86dgaproto
-x11-proto/xf86driproto
-x11-proto/xf86miscproto
-x11-proto/xf86vidmodeproto
-x11-proto/xineramaproto
-x11-proto/xproto
-
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Jun 2018)
 # Dead upstream, no more revdeps after LO dropped support.
 # Masked for removal in 30 days, bug #657400
