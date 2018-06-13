@@ -12,8 +12,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-PATCHES=( "${FILESDIR}"/0001-remove-license.patch )
-
 DEPEND="
 	!net-misc/uftp
 	!net-ftp/atftp
@@ -21,3 +19,7 @@ DEPEND="
 	dev-libs/libuev"
 
 RDEPEND="${DEPEND}"
+
+src_install() {
+    emake DESTDIR="${D}" install doc_DATA=README.md
+}
