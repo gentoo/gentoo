@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-inherit autotools-multilib
+inherit multilib-minimal
 
 DESCRIPTION="Library for DVD navigation tools"
 HOMEPAGE="https://www.videolan.org/developers/libdvdnav.html"
