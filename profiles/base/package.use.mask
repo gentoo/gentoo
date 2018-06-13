@@ -15,6 +15,13 @@ dev-libs/leveldb static-libs
 sys-block/fio static
 sys-cluster/ceph static-libs
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Jun 2018)
+# Qt 4 not available.
+app-i18n/fcitx:4 qt4
+app-i18n/scim qt4
+app-i18n/scim-bridge qt4
+app-i18n/uim qt4
+
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl

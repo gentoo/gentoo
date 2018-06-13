@@ -9,7 +9,7 @@ SRC_PV="$(printf "%u%02u%02u%02u" $(get_version_components))"
 DOC_PV="${SRC_PV}"
 # DOC_PV="$(printf "%u%02u%02u00" $(get_version_components $(get_version_component_range 1-3)))"
 
-DESCRIPTION="A SQL Database Engine in a C Library"
+DESCRIPTION="SQL database engine"
 HOMEPAGE="https://sqlite.org/"
 SRC_URI="doc? ( https://sqlite.org/2018/${PN}-doc-${DOC_PV}.zip )
 	tcl? ( https://sqlite.org/2018/${PN}-src-${SRC_PV}.zip )
@@ -19,7 +19,7 @@ SRC_URI="doc? ( https://sqlite.org/2018/${PN}-doc-${DOC_PV}.zip )
 
 LICENSE="public-domain"
 SLOT="3"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug doc icu +readline secure-delete static-libs tcl test tools"
 
 RDEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]
@@ -50,9 +50,8 @@ pkg_setup() {
 
 src_prepare() {
 	if full_archive; then
-		eapply "${FILESDIR}/${PN}-3.23.0-full_archive-build.patch"
-		eapply "${FILESDIR}/${PN}-3.23.1-full_archive-prohibit_bound_parameters_in_arguments_to_table-valued_functions_within_triggers.patch"
-		eapply "${FILESDIR}/${PN}-3.23.1-full_archive-tests.patch"
+		eapply "${FILESDIR}/${PN}-3.24.0-full_archive-build.patch"
+		eapply "${FILESDIR}/${PN}-3.24.0-full_archive-archive_command_paths_handling.patch"
 
 		eapply_user
 
@@ -61,7 +60,7 @@ src_prepare() {
 		sed -e "s/AC_CHECK_FUNCS(.*)/AC_CHECK_FUNCS([fdatasync fullfsync gmtime_r isnan localtime_r localtime_s malloc_usable_size posix_fallocate pread pread64 pwrite pwrite64 strchrnul usleep utime])/" -i configure.ac || die "sed failed"
 	else
 		eapply "${FILESDIR}/${PN}-3.21.0-nonfull_archive-build.patch"
-		eapply "${FILESDIR}/${PN}-3.23.1-nonfull_archive-prohibit_bound_parameters_in_arguments_to_table-valued_functions_within_triggers.patch"
+		eapply "${FILESDIR}/${PN}-3.24.0-nonfull_archive-archive_command_paths_handling.patch"
 
 		eapply_user
 
