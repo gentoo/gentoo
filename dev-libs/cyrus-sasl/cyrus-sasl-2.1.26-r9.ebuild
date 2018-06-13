@@ -27,7 +27,7 @@ DEPEND="net-mail/mailbase
 	pam? ( >=virtual/pam-0-r1[${MULTILIB_USEDEP}] )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( >=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}] )
-	ssl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
+	ssl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jdk-1.4:= )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-sasl )"
