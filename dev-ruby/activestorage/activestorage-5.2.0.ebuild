@@ -40,12 +40,14 @@ ruby_add_bdepend "
 		dev-ruby/test-unit:2
 		dev-ruby/mini_magick
 		dev-ruby/mocha
+		dev-ruby/rake
+		dev-ruby/sqlite3
 	)"
 
 all_ruby_prepare() {
 	   # Remove items from the common Gemfile that we don't need for this
 		# test run. This also requires handling some gemspecs.
-		sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|redcarpet\|bcrypt\|uglifier\|aws-sdk-s3\|google-cloud-storage\|azure-storage\|blade\|bootsnap\|hiredis\|qunit-selenium\|chromedriver-helper\|redis\|rb-inotify\|sprockets\|stackprof\|websocket-client-simple\|libxml-ruby\|sass-rails\|rubocop\)/ s:^:#:" \
+		sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|redcarpet\|bcrypt\|uglifier\|aws-sdk-s3\|google-cloud-storage\|azure-storage\|blade\|bootsnap\|hiredis\|qunit-selenium\|chromedriver-helper\|redis\|rb-inotify\|sprockets\|stackprof\|websocket-client-simple\|libxml-ruby\|sass-rails\|rubocop\|capybara\|rack-cache\|json\|dalli\|listen\|connection_pool\|puma\|mysql2\)/ s:^:#:" \
 			-e '/dalli/ s/2.7.7/2.7.9/' \
 			-e '/:job/,/end/ s:^:#:' \
 			-e '/:test/,/^end/ s:^:#:' \
