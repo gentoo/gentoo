@@ -24,7 +24,7 @@ src_prepare() {
 	default
 
 	# Make sure user defined CFLAGS are respected
-	sed -i -e "s:-O2:${CFLAGS}:" m4/rfm-conditionals.m4 || die "sed failed"
+	sed -i -e 's:-O2:${CFLAGS}:' m4/rfm-conditionals.m4 || die "sed failed"
 	eautoreconf
 }
 
