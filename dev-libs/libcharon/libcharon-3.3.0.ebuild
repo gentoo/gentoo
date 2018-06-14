@@ -9,7 +9,7 @@ inherit cmake-utils python-single-r1
 MY_PN="libCharon"
 
 DESCRIPTION="This library facilitates communication between Cura and its backend"
-HOMEPAGE="https://github.com/Ultimaker/liblibCharon"
+HOMEPAGE="https://github.com/Ultimaker/libCharon"
 SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
