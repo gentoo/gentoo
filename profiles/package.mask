@@ -370,7 +370,7 @@ virtual/jre:9
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
-net-misc/asterisk-g729net-misc/cocaine-core
+net-misc/cocaine-core
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Depends on dead Qt4, upstream porting inquiry pending. Bug #631788
