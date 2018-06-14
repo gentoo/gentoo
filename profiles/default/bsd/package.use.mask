@@ -75,6 +75,7 @@ media-libs/libsdl2 kms
 media-libs/mesa gbm dri3 d3d9
 x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor
+media-libs/gst-plugins-base gbm
 
 # connman is Linux only
 dev-qt/qtbearer connman
