@@ -21,7 +21,7 @@ IUSE=""
 RDEPEND=">=dev-haskell/case-insensitive-1.2:=[profile?] <dev-haskell/case-insensitive-1.3:=[profile?]
 	>=dev-haskell/fail-4.9:=[profile?] <dev-haskell/fail-4.10:=[profile?]
 	>=dev-haskell/mtl-2.0:=[profile?] <dev-haskell/mtl-3.0:=[profile?]
-	>=dev-haskell/parser-combinators-0.4:=[profile?] <dev-haskell/parser-combinators-2.0:=[profile?]
+	>=dev-haskell/parser-combinators-0.4:=[profile?]
 	>=dev-haskell/scientific-0.3.1:=[profile?] <dev-haskell/scientific-0.4:=[profile?]
 	>=dev-haskell/semigroups-0.18:=[profile?] <dev-haskell/semigroups-0.19:=[profile?]
 	>=dev-haskell/text-0.2:=[profile?] <dev-haskell/text-1.3:=[profile?]
@@ -33,6 +33,13 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/hspec-expectations-0.5 <dev-haskell/hspec-expectations-0.9
 		>=dev-haskell/quickcheck-2.7 <dev-haskell/quickcheck-2.12 )
 "
+src_prepare() {
+	default
+
+	cabal_chdeps \
+		'parser-combinators >= 0.4 && < 1.0' 'parser-combinators >= 0.4' \
+		'build-tools:        hspec-discover >= 2.0 && < 3.0' 'build-depends:        hspec-discover >= 2.0 && < 3.0'
+}
 
 src_configure() {
 	haskell-cabal_src_configure \
