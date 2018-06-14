@@ -19,11 +19,11 @@ IUSE="+usb zeroconf"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/uranium[${PYTHON_USEDEP}]
-	media-gfx/curaengine
-	media-gfx/fdm-materials
-	dev-libs/libsavitar:=[python,${PYTHON_USEDEP}]
-	dev-libs/libcharon[${PYTHON_USEDEP}]
+	>=dev-python/uranium-${PV:0:3}[${PYTHON_USEDEP}]
+	>=media-gfx/curaengine-${PV:0:3}
+	>=media-gfx/fdm-materials-${PV:0:3}
+	>=dev-libs/libsavitar-${PV:0:3}:=[python,${PYTHON_USEDEP}]
+	>=dev-libs/libcharon-${PV:0:3}[${PYTHON_USEDEP}]
 	usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
 	zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )"
 
