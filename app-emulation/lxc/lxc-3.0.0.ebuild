@@ -96,6 +96,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-3.0.0-bash-completion.patch
+	eapply "${FILESDIR}"/${PN}-3.0.0-static-libcap.patch
 	#558854
 	eapply "${FILESDIR}"/${PN}-2.0.5-omit-sysconfig.patch
 	eapply_user
