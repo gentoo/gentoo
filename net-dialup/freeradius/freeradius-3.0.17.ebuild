@@ -42,7 +42,7 @@ RDEPEND="!net-dialup/cistronradius
 	rest? ( dev-libs/json-c:= )
 	samba? ( net-fs/samba )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
+		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	ldap? ( net-nds/openldap )
