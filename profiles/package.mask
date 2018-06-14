@@ -325,10 +325,6 @@ sys-libs/uclibc
 =sys-firmware/intel-microcode-20180108
 =sys-firmware/intel-microcode-20180108-r1
 
-# Patrice Clement <monsieurp@gentoo.org> (26 Jan 2018)
-# Has different symbols. Known to cause issues with i3bar/swaybar.
-media-fonts/fontawesome:0/5
-
 # Eray Aslan <eras@gentoo.org> (22 Jan 2018)
 # Vulnerable - see https://bugs.gentoo.org/630684
 # Please migrate to cyrus-imapd-3.0 releases
