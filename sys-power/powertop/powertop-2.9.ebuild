@@ -40,6 +40,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libc++.patch
+	"${FILESDIR}"/${P}-ncurses_tinfo.patch
 )
 
 pkg_setup() {
@@ -105,8 +106,10 @@ src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
 		chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
 		scripts/version || die "Failed to extract version information"
-		eautoreconf
 	fi
+
+	# Call eautoreconf since ncurses patch touches configure.ac
+	eautoreconf
 }
 
 src_configure() {
