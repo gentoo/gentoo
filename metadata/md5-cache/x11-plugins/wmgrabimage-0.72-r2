@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=net-misc/wget-1.9-r2 >=media-gfx/imagemagick-5.5.7.15 x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-base/xorg-proto
+DESCRIPTION=wmGrabImage grabs an image from the WWW and displays it
+EAPI=7
+HOMEPAGE=https://www.dockapps.net/wmgrabimage
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-misc/wget-1.9-r2 >=media-gfx/imagemagick-5.5.7.15 x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=https://www.dockapps.net/download/wmGrabImage-0.72.tgz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=80779b65dcbe9af51d5b2325fa11832e
