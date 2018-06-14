@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs eutils flag-o-matic
+inherit cmake-utils toolchain-funcs flag-o-matic xdg-utils
 
 MY_P=${P/_/.}
 DESCRIPTION="Graphical user interface that provides a workflow for HDR imaging"
@@ -66,7 +66,7 @@ pkg_pretend() {
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DUSE_OPENMP="$(usex openmp)"
 		-DUSE_FITS="$(usex fits)"
 	)
@@ -81,4 +81,14 @@ src_install() {
 			rm -f "${D}"/usr/share/${PN}/i18n/{lang,qt}_${lang}.qm || die
 		fi
 	done
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
