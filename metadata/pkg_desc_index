@@ -98,7 +98,7 @@ app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archi
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit-base 1.1.7-r1: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-qt 1.0.0: Qt PackageKit backend library
-app-admin/pass 1.7.1: Stores, retrieves, generates, and synchronizes passwords securely
+app-admin/pass 1.7.2: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/perl-cleaner 2.20 2.25: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
