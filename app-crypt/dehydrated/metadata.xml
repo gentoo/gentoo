@@ -8,6 +8,9 @@
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
 	</maintainer>
+	<use>
+		<flag name="cron">Install cron job to sign/renew non-existent/changed/expiring certificates</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">lukas2511/dehydrated</remote-id>
 	</upstream>
