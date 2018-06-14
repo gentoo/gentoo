@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201806-03">
+  <title>BURP: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities were discovered in BURP's Gentoo ebuild,
+    the worst of which could lead to root privilege escalation.
+  </synopsis>
+  <product type="ebuild">burp</product>
+  <announced>2018-06-13</announced>
+  <revised count="1">2018-06-13</revised>
+  <bug>628770</bug>
+  <bug>641842</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-backup/burp" auto="yes" arch="*">
+      <unaffected range="ge">2.1.32</unaffected>
+      <vulnerable range="lt">2.1.32</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A network backup and restore program.</p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s BURP ebuild does not properly set
+      permissions or place the pid file in a safe directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>Users should ensure the proper permissions are set as discussed in the
+      referenced bugs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All BURP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-backup/burp-2.1.32"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18284">CVE-2017-18284</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-18285">CVE-2017-18285</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-05-29T13:34:12Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-06-13T20:55:37Z">b-man</metadata>
+</glsa>
