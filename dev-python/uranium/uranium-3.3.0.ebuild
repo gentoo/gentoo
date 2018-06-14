@@ -1,37 +1,42 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
+
 inherit cmake-utils python-single-r1
 
-MY_PN=Uranium
-MY_PV=${PV/_beta}
+MY_PN="Uranium"
 
 DESCRIPTION="A Python framework for building 3D printing related applications"
 HOMEPAGE="https://github.com/Ultimaker/Uranium"
-SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="AGPL-3+"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	~dev-libs/libarcus-${PV}:*[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
+	dev-libs/libarcus:=[python,${PYTHON_USEDEP}]
+	<dev-python/PyQt5-5.10[${PYTHON_USEDEP},declarative,network,svg]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-qt/qtdeclarative:5
-	dev-qt/qtquickcontrols:5"
+	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+	dev-qt/qtquickcontrols:5
+	dev-qt/qtquickcontrols2:5"
+
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
-PATCHES=( "${FILESDIR}/${PN}-2.3.1-fix-install-paths.patch" )
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DOCS=( README.md )
+
+PATCHES=( "${FILESDIR}/${PN}-3.3.0-fix-install-paths.patch" )
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
