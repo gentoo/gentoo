@@ -56,6 +56,7 @@ src_configure() {
 		--disable-module-dirauth \
 		--disable-rust \
 		--disable-restart-debugging \
+		--disable-zstd-advanced-apis  \
 		$(use_enable lzma) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
