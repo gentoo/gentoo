@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201806-04">
+  <title>Quassel: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in Quassel, the worst of
+    which could allow remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">net-irc/quassel</product>
+  <announced>2018-06-14</announced>
+  <revised count="1">2018-06-14</revised>
+  <bug>653834</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/quassel" auto="yes" arch="*">
+      <unaffected range="ge">0.12.5</unaffected>
+      <vulnerable range="lt">0.12.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Quassel is a Qt4/KDE4 IRC client suppporting a remote daemon for 24/7
+      connectivity.
+    </p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Quassel. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause arbitrary code execution or a Denial of
+      Service condition.
+    </p>
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Quassel users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/quassel-0.12.5"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000178">
+      CVE-2018-1000178
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000179">
+      CVE-2018-1000179
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-06-05T01:35:09Z">chrisadr</metadata>
+  <metadata tag="submitter" timestamp="2018-06-14T02:22:47Z">irishluck83</metadata>
+</glsa>
