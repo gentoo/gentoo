@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (14 Jun 2018)
+# Mask new php pre-releases for initial testing
+dev-lang/php:7.3
+virtual/httpd-php:7.3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Jun 2018)
 # Dead upstream, no more revdeps after LO dropped support.
 # Masked for removal in 30 days, bug #657400
