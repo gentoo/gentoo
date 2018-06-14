@@ -204,11 +204,6 @@ games-puzzle/larry
 games-rpg/avadon
 games-rpg/penumbra-collection
 
-# Michał Górny <mgorny@gentoo.org> (15 May 2018)
-# All current versions are unfetchable.  No maintainer activity
-# since 2014.  Bug #600962.  Removal in 30 days.
-net-misc/asterisk-g729
-
 # Hans de Graaff <graaff@gentoo.org> (7 May 2018)
 # Old slots that are ruby23-only and no longer maintained
 # upstream, and that do not have packages depend on them.
@@ -375,7 +370,7 @@ virtual/jre:9
 # Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
-net-misc/cocaine-core
+net-misc/asterisk-g729net-misc/cocaine-core
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
 # Depends on dead Qt4, upstream porting inquiry pending. Bug #631788
