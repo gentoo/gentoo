@@ -14,10 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="x11-libs/vte:0
+RDEPEND="x11-libs/vte:2.91
 	>=dev-libs/glib-2.8.4:2
 	dev-libs/confuse
 	gnome-base/libglade
+	x11-libs/gtk+:3
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
