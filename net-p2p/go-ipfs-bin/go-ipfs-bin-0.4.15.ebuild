@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1
+inherit bash-completion-r1 systemd user
 
 DESCRIPTION="Main implementation of IPFS"
 HOMEPAGE="https://ipfs.io/"
@@ -25,5 +25,18 @@ QA_PREBUILT="/usr/bin/ipfs"
 src_install() {
 	dobin ipfs
 
+	systemd_dounit "${FILESDIR}/ipfs.service"
+	newinitd "${FILESDIR}/ipfs.init" ipfs
+	newconfd "${FILESDIR}/ipfs.confd" ipfs
+
 	newbashcomp "${DISTDIR}/${P}.bash" "ipfs"
+}
+
+pkg_postinst() {
+	enewgroup ipfs
+	enewuser ipfs "" "" /var/lib/ipfs ipfs
+
+	elog 'To be able to use the ipfs service you will need to create the ipfs repository'
+	elog '(eg: su -s /bin/sh -c "ipfs init -e" ipfs)'
+	elog 'or change IPFS_PATH of /etc/conf.d/ipfs with another with proper permissions.'
 }

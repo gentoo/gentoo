@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+IPFS_PATH=${IPFS_PATH:-/var/lib/ipfs/.ipfs}
+
+depend() {
+	need net
+}
+
+start() {
+  ebegin "Starting ipfs"
+  start-stop-daemon --wait 1000 -b --start -u ipfs \
+	-e IPFS_PATH=${IPFS_PATH} \
+	--make-pidfile --pidfile /run/ipfs.pid \
+	--exec /usr/bin/ipfs \
+	-- daemon --enable-gc --migrate
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping ipfs"
+  start-stop-daemon --stop --exec /usr/bin/ipfs \
+      --pidfile /run/ipfs.pid \
+      -- shutdown
+  eend $?
+}
