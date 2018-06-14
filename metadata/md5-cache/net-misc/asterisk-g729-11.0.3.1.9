@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=G.729 codec and supporting files for asterisk
+EAPI=6
+HOMEPAGE=http://store.digium.com/productview.php?product_code=G729CODEC
+KEYWORDS=~amd64 ~x86
+LICENSE=Digium
+RDEPEND==net-misc/asterisk-11*
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=x86? ( http://downloads.digium.com/pub/telephony/codec_g729/asterisk-11.0/x86-32/codec_g729a-11.0_3.1.9-x86_32.tar.gz http://downloads.digium.com/pub/register/x86-32/register -> astregister-x86_32 http://downloads.digium.com/pub/register/x86-32/asthostid -> asthostid-x86_32 ) amd64? ( http://downloads.digium.com/pub/telephony/codec_g729/asterisk-11.0/x86-64/codec_g729a-11.0_3.1.9-x86_64.tar.gz http://downloads.digium.com/pub/register/x86-64/register -> astregister-x86_64 http://downloads.digium.com/pub/register/x86-64/asthostid -> asthostid-x86_64 )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=5b0b303256a7cc0d178520670a8f4bca
