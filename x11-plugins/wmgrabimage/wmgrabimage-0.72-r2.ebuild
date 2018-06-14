@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils
+inherit desktop
 
 MY_PN=${PN/grabi/GrabI}
 
@@ -13,7 +13,7 @@ SRC_URI="https://www.dockapps.net/download/${MY_PN}-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND=">=net-misc/wget-1.9-r2
@@ -26,26 +26,24 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_PN}-${PV}/${MY_PN}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-noman.patch
+PATCHES=( "${FILESDIR}"/${PN}-noman.patch )
+
+src_prepare() {
 	sed -i -e 's/-geom /-geometry /' GrabImage || die "sed failed."
 	sed -i -e 's/install -s -m /install -m /' Makefile || die "sed failed."
+	default
 }
 
 src_compile() {
-	emake clean || die "emake clean failed."
-	emake CFLAGS="${CFLAGS} -Wall" SYSTEM="${LDFLAGS}" || die "emake failed."
+	emake clean
+	emake CFLAGS="${CFLAGS} -Wall" SYSTEM="${LDFLAGS}"
 }
 
 src_install() {
 	dodir /usr/bin
-	emake DESTDIR="${D}/usr" install || die "einstall failed."
+	emake DESTDIR="${D}/usr" install
 
 	doman wmGrabImage.1
-
-	dodoc ../{BUGS,CHANGES,HINTS,TODO}
-
 	domenu "${FILESDIR}"/${PN}.desktop
+	dodoc ../{BUGS,CHANGES,HINTS,TODO}
 }

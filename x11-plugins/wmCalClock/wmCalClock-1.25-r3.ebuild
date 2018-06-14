@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="WMaker DockApp: A Calendar clock with antialiased text"
 HOMEPAGE="https://www.dockapps.net/wmcalclock"
@@ -17,23 +17,15 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 S="${WORKDIR}/${P}/Src"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-makefile.patch
-}
+DOCS=( ../{BUGS,CHANGES,HINTS,README,TODO} )
+
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_compile() {
-	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)" || die "Compilation failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-
-	dodoc ../{BUGS,CHANGES,HINTS,README,TODO}
+	emake CC="$(tc-getCC)" LIBDIR="-L/usr/$(get_libdir)/"
 }

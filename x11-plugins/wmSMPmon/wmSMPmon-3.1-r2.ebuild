@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="SMP system monitor dockapp"
 HOMEPAGE="https://www.dockapps.net/wmsmpmon"
@@ -11,7 +11,7 @@ SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
@@ -20,19 +20,12 @@ RDEPEND="x11-libs/libX11
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+DOCS=( ../Changelog )
+
 S="${WORKDIR}/${P}/${PN}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-makefile.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_compile() {
-	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)" || die "compile failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc ../Changelog
+	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)"
 }

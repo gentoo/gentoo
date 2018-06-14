@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils toolchain-funcs multilib
+inherit toolchain-funcs
 
 DESCRIPTION="WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack"
 HOMEPAGE="https://www.dockapps.net/wmmatrix"
@@ -19,21 +19,13 @@ RDEPEND="${CDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-makefile.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_compile() {
 	# this version is distributed with compiled binaries!
 	make clean
-	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)" || die "compile failed"
-}
-
-src_install () {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)"
 }
