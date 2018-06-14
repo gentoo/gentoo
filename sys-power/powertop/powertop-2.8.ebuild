@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils linux-info
+inherit eutils linux-info autotools
 SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${P}.tar.gz"
 KEYWORDS="amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux"
 
@@ -91,11 +91,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} == "9999" ]] ; then
-		eautoreconf
-	else
-		default
-	fi
+	epatch "${FILESDIR}"/${P}-ncurses_tinfo.patch
+
+	# Call eautoreconf since ncurses patch touches configure.ac.
+	eautoreconf
 }
 
 src_configure() {
