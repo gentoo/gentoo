@@ -205,7 +205,6 @@ sci-libs/freesteam
 # Bug #642876.  Removal in 30 days.
 games-misc/dont-starve
 games-puzzle/larry
-games-rpg/avadon
 games-rpg/penumbra-collection
 
 # Hans de Graaff <graaff@gentoo.org> (7 May 2018)
