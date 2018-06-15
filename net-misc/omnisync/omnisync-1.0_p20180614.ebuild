@@ -3,39 +3,25 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit cmake-utils vcs-snapshot
+
+SNAPSHOT="b3a759af454552f4bbd3b1e097b41bd0d1d7fcf5"
 
 DESCRIPTION="A driver for NTPd for people who are firewall-challenged"
 HOMEPAGE="https://www.vanheusden.com/time/omnisync"
 LICENSE="GPL-2"
-SRC_URI="https://www.vanheusden.com/time/${PN}/${P}.tgz"
+SRC_URI="https://gitlab.com/grknight/omnisync/-/archive/${SNAPSHOT}/omnisync-${SNAPSHOT}.tar.bz2 -> ${P}.tar.bz2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE=""
 
-RDEPEND="dev-libs/openssl:0= net-analyzer/net-snmp:="
+RDEPEND="net-libs/gnutls:= net-analyzer/net-snmp:="
 DEPEND="${RDEPEND}"
 DOCS=( readme.txt Changes )
-PATCHES=(
-	"${FILESDIR}"/omnisync-1.0-help.patch
-	"${FILESDIR}"/omnisync-1.0-maxshm.patch
-	"${FILESDIR}"/omnisync-1.0-statfile.patch
-	"${FILESDIR}"/omnisync-1.0-openssl11.patch
-)
-
-src_prepare() {
-	default
-	tc-export CC
-	sed -i \
-		-e 's/-O2 -Wall/-Wall/' \
-		-e 's/-lsnmp/-lnetsnmp/' \
-		"${S%/}/Makefile" || die
-	use debug ||  sed -i -e 's/$(DEBUG)//' "${S%/}/Makefile" || die
-}
 
 src_install() {
-	dosbin omnisync
+	cmake-utils_src_install
 	newinitd "${FILESDIR%/}/${PN}.initd" ${PN}
 	newconfd "${FILESDIR%/}/${PN}.confd" ${PN}
 	einstalldocs
