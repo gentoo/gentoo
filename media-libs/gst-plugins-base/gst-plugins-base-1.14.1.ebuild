@@ -25,6 +25,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x8
 #  and optional graphene usage for gltransformation and glvideoflip elements and more GLSL Uniforms support in glshader;
 #  and libpng/jpeg are required for gloverlay element;
 
+# Keep default IUSE options for relevant ones mirrored with gst-plugins-gtk and gst-plugins-bad
 IUSE="alsa +egl gbm gles2 +introspection ivorbis +ogg +opengl +orc +pango theora +vorbis wayland +X"
 GL_REQUIRED_USE="
 	|| ( gbm wayland X )
