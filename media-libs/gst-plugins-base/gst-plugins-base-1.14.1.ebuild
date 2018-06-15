@@ -88,6 +88,12 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
+src_prepare() {
+	# Disable GL tests for now; prone to fail with EGL_NOT_INITIALIZED, etc
+	sed -i -e '/^@USE_GL_TRUE@/d' tests/check/Makefile.in
+	default
+}
+
 multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
 
@@ -166,4 +172,9 @@ multilib_src_install_all() {
 	DOCS="AUTHORS NEWS README RELEASE"
 	einstalldocs
 	prune_libtool_files --modules
+}
+
+multilib_src_test() {
+	unset GSETTINGS_BACKEND
+	emake check
 }
