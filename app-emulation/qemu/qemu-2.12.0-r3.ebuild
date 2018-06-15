@@ -22,7 +22,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r3.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r4.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -216,7 +216,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${FILESDIR}"/${P}-tcg-instruction-overflow.patch # Will be fixed in 2.12.1
 	"${WORKDIR}"/patches
 )
 
