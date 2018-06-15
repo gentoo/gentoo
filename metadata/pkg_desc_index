@@ -8474,7 +8474,7 @@ net-firewall/firewalld 0.5.1-r2: A firewall daemon with D-BUS interface providin
 net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/ipset 6.29: IPset tool for iptables, successor to ippool
-net-firewall/ipt_netflow 2.2-r2: Netflow iptables module
+net-firewall/ipt_netflow 2.3: Netflow iptables module
 net-firewall/iptables 1.4.21-r1 1.6.1-r3: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
