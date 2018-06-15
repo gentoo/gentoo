@@ -33,7 +33,7 @@ RDEPEND="dev-db/sqlite:3
 		truetype? ( media-libs/freetype:2 )
 	)
 	jsoncpp? ( dev-libs/jsoncpp )
-	leveldb? ( dev-libs/leveldb )
+	leveldb? ( dev-libs/leveldb:= )
 	luajit? ( dev-lang/luajit:2 )
 	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
