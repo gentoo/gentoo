@@ -6,8 +6,6 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	#EGIT_REPO_URI="git://git.code.sf.net/p/strace/code"
-	#EGIT_PROJECT="${PN}"
 	EGIT_REPO_URI="https://github.com/strace/strace.git"
 	inherit git-r3 autotools
 else
@@ -46,7 +44,8 @@ src_prepare() {
 	fi
 
 	filter-lfs-flags # configure handles this sanely
-	use static && append-ldflags -static
+	# Add -pthread since strace wants -lrt for timer_create, and -lrt uses -lpthread.
+	use static && append-ldflags -static -pthread
 
 	export ac_cv_header_libaio_h=$(usex aio)
 	use elibc_musl && export ac_cv_header_stdc=no
@@ -81,6 +80,6 @@ src_test() {
 
 src_install() {
 	default
-	use perl || rm "${ED}"/usr/bin/strace-graph
+	use perl || rm "${ED%/}"/usr/bin/strace-graph
 	dodoc CREDITS
 }
