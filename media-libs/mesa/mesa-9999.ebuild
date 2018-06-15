@@ -44,7 +44,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 REQUIRED_USE="
 	d3d9?   ( dri3 gallium )
 	llvm?   ( gallium )
-	opencl? ( gallium llvm )
+	opencl? ( gallium llvm || ( video_cards_r600 video_cards_radeonsi ) )
 	openmax? ( gallium )
 	gles1?  ( egl )
 	gles2?  ( egl )
