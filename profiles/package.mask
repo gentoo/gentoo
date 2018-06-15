@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
+# No upstream (website disappeared), no upstream plugin maintainer,
+# and pretty much a fringe format anyway.
+# Marked for removal in 30 days, bug #658194
+media-plugins/gst-plugins-schroedinger
+
 # Mike Gilbert <floppym@gentoo.org> (15 Jun 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
