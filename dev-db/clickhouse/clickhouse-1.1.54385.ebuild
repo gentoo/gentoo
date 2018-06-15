@@ -171,13 +171,9 @@ src_install() {
 	fi
 
 	if use doc; then
-		echo "Entering docs"
 		pushd "${S}/docs" || die "Failed to enter docs build directory"
-		pwd
-		echo "Executing build.sh"
-		bash -x ./build.sh || die "Failed to build docs"
+		./build.sh || die "Failed to build docs"
 		popd || die "Failed to exit docs build directory"
-		echo "Installing docs"
 
 		dodoc -r "${S}/docs/build/docs"
 	fi
