@@ -796,7 +796,7 @@ glibc_do_configure() {
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
 	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS)"
 	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
-	# CFLAGS can contain ABI-spefcific flags like -mfpu=neon, see bug #657760
+	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
 	# To build .S (assembly) files with the same ABI-specific flags
 	# upstream currently recommends adding CFLAGS to CPPFLAGS: https://sourceware.org/PR23273
 	export CPPFLAGS="${CPPFLAGS} ${CFLAGS}"
