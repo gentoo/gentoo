@@ -216,6 +216,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	"${FILESDIR}"/${P}-tcg-instruction-overflow.patch # Will be fixed in 2.12.1
 	"${WORKDIR}"/patches
 )
 
