@@ -56,6 +56,7 @@ multilib_src_configure() {
 	# Disable debug, as it only affects -g passing (debugging symbols), this must done through make.conf in gentoo
 	local myconf=(
 		--libexecdir="${EPREFIX}"/usr/$(get_libdir)
+		--disable-benchmarks
 		--disable-debug
 		--disable-examples
 		--disable-static
