@@ -36,7 +36,7 @@ DEPEND="
 		)
 		!X? ( >=media-libs/glfw-3.0 )
 	)
-	leveldb? ( dev-libs/leveldb )
+	leveldb? ( dev-libs/leveldb:= )
 	ncurses? ( sys-libs/ncurses:= )
 	sqlite? ( dev-db/sqlite:3 )
 	tokyocabinet? ( dev-db/tokyocabinet )
