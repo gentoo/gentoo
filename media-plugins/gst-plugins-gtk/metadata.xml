@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
+<use>
+	<flag name="egl">Enable EGL platform usage</flag>
+	<flag name="gles2">Enable gtkglsink OpenGL sink based on GLESv2 API</flag>
+	<flag name="opengl">Enable gtkglsink OpenGL sink based on desktop OpenGL API</flag>
+</use>
+<longdescription lang="en">
+	GStreamer plugin for rendering video into a GtkWidget.
+
+	Includes the following elements:
+	* gtksink - A video sink that renders to a GtkWidget
+	* gtkglsink - A video sink that renders to a GtkWidget using OpenGL (built only with USE=opengl or USE=gles2)
+</longdescription>
+</pkgmetadata>
