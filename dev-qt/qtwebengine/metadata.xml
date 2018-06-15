@@ -6,6 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
+		<flag name="designer">Install QWebEngineView plugin for displaying web pages in <pkg>dev-qt/designer</pkg></flag>
 		<flag name="geolocation">Enable physical position determination
 			via <pkg>dev-qt/qtpositioning</pkg></flag>
 		<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
