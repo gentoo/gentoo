@@ -115,7 +115,7 @@ src_install() {
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		doins "${DISTDIR}"/${MY_P}.Manual.pdf
+		doins "${DISTDIR}"/SNNSv4.2.Manual.pdf
 	fi
 
 	insinto /usr/share/doc/${PF}/examples
