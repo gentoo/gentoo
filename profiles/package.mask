@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (15 Jun 2018)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-69
+
 # Brian Evans <grknight@gentoo.org> (14 Jun 2018)
 # Mask new php pre-releases for initial testing
 dev-lang/php:7.3
@@ -225,11 +230,6 @@ dev-ruby/twitter:5
 # SoQt does not build yet
 >=media-libs/coin-4.0.0
 >=media-libs/simage-1.7.1
-
-# Mike Gilbert <floppym@gentoo.org> (30 Apr 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-68
 
 # Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
 # Masked for testing
