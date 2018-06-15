@@ -2898,7 +2898,7 @@ dev-lang/php 5.6.35-r1 5.6.36 7.0.29 7.0.30 7.1.16 7.1.18: The PHP language runt
 dev-lang/python 2.7.14-r1 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.5: Python script wrapper
 dev-lang/qu-prolog 10.0-r1: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/ruby 2.3.6 2.3.7: An object-oriented scripting language
+dev-lang/ruby 2.3.7: An object-oriented scripting language
 dev-lang/rust 1.25.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.25.0: Systems programming language from Mozilla
 dev-lang/sassc 3.4.7: A libsass command line driver
