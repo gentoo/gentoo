@@ -25,6 +25,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	dev-libs/glib
 	dev-libs/libltdl:0
 	dev-libs/libxml2:2=
 	>=media-libs/freetype-2.3.7:2=
