@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 inherit autotools eutils xdg-utils gnome2-utils toolchain-funcs
 
 DESCRIPTION="GPL Electronic Design Automation: Printed Circuit Board editor"
-HOMEPAGE="http://www.gpleda.org/"
+HOMEPAGE="http://pcb.geda-project.org/"
 SRC_URI="mirror://sourceforge/pcb/pcb/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
