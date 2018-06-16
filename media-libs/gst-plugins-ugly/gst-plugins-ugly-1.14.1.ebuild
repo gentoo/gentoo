@@ -4,7 +4,7 @@
 EAPI=6
 GST_ORG_MODULE="gst-plugins-ugly"
 
-inherit eutils gstreamer
+inherit ltprune gstreamer
 
 DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
