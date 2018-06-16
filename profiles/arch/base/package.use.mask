@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (17 Jun 2018)
+# Vulkan support is only available on few selected arches atm.
+# Mask everywhere, unmask where appropriate.
+media-video/mpv vulkan
+
 # Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
 # media-libs/vulkan-loader and app-emulation/vkd3d are not available everywhere
 app-emulation/wine-any vkd3d vulkan
