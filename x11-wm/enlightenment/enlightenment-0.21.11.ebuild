@@ -42,7 +42,7 @@ IUSE_E_MODULES=(
 IUSE="acpi connman doc egl nls pam static-libs systemd udisks wayland ${IUSE_E_MODULES[@]/#/+}"
 
 RDEPEND="
-	>=dev-libs/efl-1.17.0[eet,X]
+	>=dev-libs/efl-1.18.0[eet,X]
 	virtual/udev
 	x11-libs/libXext
 	x11-libs/libxcb
