@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="examples pam seccomp selinux"
+IUSE="examples pam seccomp selinux +templates"
 
 RDEPEND="
 	net-libs/gnutls
@@ -30,6 +30,8 @@ RDEPEND="${RDEPEND}
 	sys-apps/util-linux
 	app-misc/pax-utils
 	virtual/awk"
+
+PDEPEND="templates? ( app-emulation/lxc-templates )"
 
 CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
 	~CPUSETS ~CGROUP_CPUACCT
