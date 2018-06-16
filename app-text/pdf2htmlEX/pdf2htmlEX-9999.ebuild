@@ -23,7 +23,7 @@ IUSE=""
 CDEPEND="
 	>=app-text/poppler-0.61.1:=[jpeg,png]
 	app-text/poppler-data
-	~media-gfx/fontforge-20170731
+	~media-gfx/fontforge-20170731[cairo,png]
 	media-libs/freetype
 	x11-libs/cairo[svg]
 "
