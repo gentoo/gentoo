@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 eutils multilib-minimal pax-utils
+inherit bash-completion-r1 ltprune multilib-minimal pax-utils
 
 DESCRIPTION="Open source multimedia framework"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
