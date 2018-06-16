@@ -39,7 +39,7 @@ RDEPEND="!net-dialup/cistronradius
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
+		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	ldap? ( net-nds/openldap )
