@@ -35,15 +35,17 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	client? (
-		sys-libs/ncurses:0
-		sys-libs/readline:0
-	)
-
+	dev-libs/re2:0=
 	!static? (
+		client? (
+			sys-libs/ncurses:0=
+			sys-libs/readline:0=
+		)
+
 		dev-libs/double-conversion
 		dev-libs/capnproto
 		dev-libs/libltdl:0
+		sys-libs/libunwind:7
 		sys-libs/zlib
 		|| (
 			dev-db/unixODBC
@@ -64,9 +66,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/mkdocs-0.17.3 )
 	static? (
+		client? (
+			sys-libs/ncurses:0=[static-libs]
+			sys-libs/readline:0=[static-libs]
+		)
 		dev-libs/double-conversion[static-libs]
 		dev-libs/capnproto[static-libs]
 		dev-libs/libltdl[static-libs]
+		sys-libs/libunwind:7[static-libs]
 		sys-libs/zlib[static-libs]
 		|| (
 			dev-db/unixODBC[static-libs]
