@@ -367,6 +367,7 @@ setup_flags() {
 	append-flags -O2 -fno-strict-aliasing
 
 	filter-flags '-fstack-protector*'
+	append-flags '-fno-stack-protector'
 
 	# Starting with gcc-6 (and fully upstreamed pie patches) we control
 	# default enabled/disabled pie via use flags. So nothing to do
