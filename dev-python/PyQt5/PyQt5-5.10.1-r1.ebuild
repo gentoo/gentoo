@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit multibuild python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for the Qt framework"
@@ -52,7 +52,7 @@ REQUIRED_USE="
 "
 
 # Minimal supported version of Qt.
-QT_PV="5.9.3:5"
+QT_PV="5.9.4:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -94,7 +94,11 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS=( "${S}"/{ChangeLog,NEWS} )
-PATCHES=( "${FILESDIR}/${P}-timeline.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${P}-timeline.patch"
+	"${FILESDIR}/${P}-fix-testlib.patch"
+)
 
 pyqt_use_enable() {
 	use "$1" || return
