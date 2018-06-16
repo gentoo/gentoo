@@ -25,10 +25,13 @@ RDEPEND="${DEPEND}
 	dev-python/pyxattr[${PYTHON_USEDEP}]
 "
 
-PATCHES=( "${FILESDIR}/${P}-librsync-1.0.0.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-librsync-1.0.0.patch"
+	"${FILESDIR}/${P}-no-docs.patch"
+)
 
 python_install_all() {
+	local HTML_DOCS=( FAQ.html )
 	use examples && local EXAMPLES=( examples.html )
-
 	distutils-r1_python_install_all
 }
