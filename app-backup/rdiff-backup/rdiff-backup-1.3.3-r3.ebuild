@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 PYTHON_COMPAT=( python2_7 )
+inherit distutils-r1
 
-inherit distutils-r1 versionator
-
-UPSTREAM_PV=$(replace_all_version_separators '-')
+UPSTREAM_PV=$(ver_rs 0 '-')
 
 DESCRIPTION="Local/remote mirroring+incremental backup"
 HOMEPAGE="https://github.com/sol1/rdiff-backup"
@@ -18,17 +18,20 @@ KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86
 IUSE="examples"
 
 DEPEND="
-	net-libs/librsync:0/2
+	net-libs/librsync:0=
 "
-RDEPEND="
-	dev-python/pyxattr[${PYTHON_USEDEP}]
+RDEPEND="${DEPEND}
 	dev-python/pylibacl[${PYTHON_USEDEP}]
+	dev-python/pyxattr[${PYTHON_USEDEP}]
 "
 
-PATCHES=( "${FILESDIR}/${P}-librsync-1.0.0.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-librsync-1.0.0.patch"
+	"${FILESDIR}/${P}-no-docs.patch"
+)
 
 python_install_all() {
+	local HTML_DOCS=( FAQ.html )
 	use examples && local EXAMPLES=( examples.html )
-
 	distutils-r1_python_install_all
 }
