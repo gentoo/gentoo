@@ -31,8 +31,8 @@ SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
 	dvd +egl encode gbm +iconv jack javascript jpeg lcms +libass libav libcaca
 	libmpv +lua luajit openal +opengl oss pulseaudio raspberry-pi rubberband
-	samba sdl selinux test tools +uchardet v4l vaapi vdpau wayland +X +xv zlib
-	zsh-completion"
+	samba sdl selinux test tools +uchardet v4l vaapi vdpau vulkan wayland +X
+	+xv zlib zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -50,6 +50,7 @@ REQUIRED_USE="
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
 	vdpau? ( X )
+	vulkan? ( || ( X wayland ) )
 	wayland? ( egl )
 	X? ( egl? ( opengl ) )
 	xv? ( X )
@@ -96,6 +97,10 @@ COMMON_DEPEND="
 	v4l? ( media-libs/libv4l )
 	vaapi? ( x11-libs/libva:=[drm?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
+	vulkan? (
+		media-libs/shaderc
+		media-libs/vulkan-loader[X?,wayland?]
+	)
 	wayland? (
 		>=dev-libs/wayland-1.6.0
 		>=x11-libs/libxkbcommon-0.3.0
@@ -234,10 +239,12 @@ src_configure() {
 		$(usex vaapi "$(use_enable gbm vaapi-drm)" '--disable-vaapi-drm')
 		$(use_enable libcaca caca)
 		$(use_enable jpeg)
+		$(use_enable vulkan shaderc)
 		$(use_enable raspberry-pi rpi)
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 		--disable-mali-fbdev # Only available in overlays.
 		$(usex opengl '' '--disable-gl')
+		$(use_enable vulkan)
 
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
