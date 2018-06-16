@@ -19,6 +19,7 @@ IUSE="+python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-libs/pugixml
 	dev-python/sip[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}"
