@@ -138,6 +138,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-stdint.patch"
 	"${FILESDIR}/chromium-ffmpeg-r1.patch"
 	"${FILESDIR}/chromium-libwebp-shim-r0.patch"
+	"${FILESDIR}/chromium-disable_xml_catalogs.patch"
 )
 
 pre_build_checks() {
