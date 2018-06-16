@@ -112,8 +112,7 @@ esac
 inherit toolchain-funcs ninja-utils flag-o-matic multiprocessing xdg-utils
 
 case ${EAPI} in
-	7) ;;
-	*) inherit eutils multilib ;;
+	5|6) inherit eutils multilib ;;
 esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
