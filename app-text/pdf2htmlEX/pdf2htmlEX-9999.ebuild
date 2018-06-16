@@ -31,6 +31,7 @@ RDEPEND="${CDEPEND}
 "
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
+	virtual/jre
 "
 
 pkg_pretend() {
