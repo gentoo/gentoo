@@ -4324,27 +4324,27 @@ dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
 dev-perl/WWW-Form-UrlEncoded 0.240.0: parser and builder for application/x-www-form-urlencoded
 dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-www-form-urlencoded
 dev-perl/WWW-Mechanize 1.750.0: Handy web browsing in a Perl object
-dev-perl/WWW-Mechanize-FormFiller 0.110.0 0.120.0: Framework to automate HTML forms
+dev-perl/WWW-Mechanize-FormFiller 0.120.0: Framework to automate HTML forms
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
 dev-perl/Want 0.290.0: A generalisation of wantarray
 dev-perl/WeakRef 0.10.0-r1: An API to the Perl weak references
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 0.930.0-r1: Web service API to MusicBrainz database
-dev-perl/Wx 0.992.800 0.993.200-r1: Perl bindings for wxGTK
+dev-perl/Wx 0.993.200-r1: Perl bindings for wxGTK
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1: Client-side interface to the X11 Protocol
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
-dev-perl/XML-Atom 0.410.0-r1 0.420.0: Atom feed and API implementation
+dev-perl/XML-Atom 0.420.0: Atom feed and API implementation
 dev-perl/XML-Catalog 1.30.0: Resolve public identifiers and remap system identifiers
 dev-perl/XML-DOM 1.450.0 1.460.0-r1: A Perl module for an DOM Level 1 compliant interface
-dev-perl/XML-DOM-XPath 0.140.0-r1 0.140.0-r2: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
+dev-perl/XML-DOM-XPath 0.140.0-r2: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
 dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: XML::Parser style and generic classes for handling of XML data
 dev-perl/XML-Encoding 2.90.0: Perl Module that parses encoding map XML files
 dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
-dev-perl/XML-Feed 0.530.0 0.530.0-r1: Syndication feed parser and auto-discovery
+dev-perl/XML-Feed 0.530.0-r1: Syndication feed parser and auto-discovery
 dev-perl/XML-Filter-BufferText 1.10.0-r1: Filter to put all characters() in one event
 dev-perl/XML-Filter-DOMFilter-LibXML 0.40.0: SAX Filter allowing DOM processing of selected subtrees
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
