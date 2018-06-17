@@ -5,12 +5,5 @@
 # kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
 
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-qt/qtwebkit:5, which is a PITA to maintain on
-# minor arches and has been declared deprecated by upstream. So we'd like
-# to avoid keywording it, unless requested by users.
-dev-qt/designer webkit
-net-irc/kvirc webkit
-
 dev-libs/libpcre cxx
 sys-libs/ncurses cxx
