@@ -117,6 +117,7 @@ games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/hoh-bin
+games-puzzle/triptych
 games-roguelike/adom
 games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
