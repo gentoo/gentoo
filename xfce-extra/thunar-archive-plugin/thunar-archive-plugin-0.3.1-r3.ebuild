@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND=">=xfce-base/libxfce4util-4.8:=
 	>=xfce-base/exo-0.6:=
-	>=xfce-base/thunar-1.2:="
+	<xfce-base/thunar-1.7:="
 # dev-util/xfce4-dev-tools for eautoreconf
 DEPEND="${RDEPEND}
 	dev-util/intltool

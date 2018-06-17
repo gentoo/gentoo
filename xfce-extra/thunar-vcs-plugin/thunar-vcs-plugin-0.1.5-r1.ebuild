@@ -18,7 +18,7 @@ RDEPEND=">=dev-libs/glib-2.18:2=
 	>=x11-libs/gtk+-2.14:2=
 	>=xfce-base/exo-0.6:=
 	>=xfce-base/libxfce4util-4.8:=
-	>=xfce-base/thunar-1.2:=
+	<xfce-base/thunar-1.7:=
 	git? ( dev-vcs/git )
 	subversion? (
 		>=dev-libs/apr-0.9.7:=
