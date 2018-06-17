@@ -206,10 +206,6 @@ app-misc/eid-viewer-bin
 # Bug #655852.  Removal in 30 days.
 sci-libs/freesteam
 
-# Michał Górny <mgorny@gentoo.org> (16 May 2018)
-# Broken *FLAGS handling.  Use -r3 instead.
-=dev-util/scons-3.0.1-r2
-
 # Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
 # SoQt does not build yet
 >=media-libs/coin-4.0.0
