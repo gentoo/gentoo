@@ -29,6 +29,256 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't work on amd64, upstream dead for ages, bug #254510
+# Removal in a month.
+games-arcade/xevil
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't work (#348124), dead since 2004. Removal in a month.
+x11-plugins/wmlaptop
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Package obsolete since many years ago (#398689). Removal in a month.
+dev-java/servletapi
+dev-java/sun-jacc-api
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Needs a major version bump to stop relying on old versions of other libs
+# (#421427). Removal in a month.
+dev-java/easyneurons
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Needs someone to maintain this package and bump it to newer versions
+# stopping to rely on dead gstreamer:0.10 (#438972). Removal in a month.
+media-video/aravis
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to run because it requires a bundled lib as unmaintained as this
+# package by upstream (#472752). Removal in a month.
+net-misc/nemesis
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Upstream dead for ages, relies on dead gstreamer:0.10 (#552528). Removal
+# in a month.
+x11-misc/winswitch
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Obsolete package not needed for a long time, bug #559994. Removal in a
+# month.
+dev-java/jdom-jaxen
+=dev-java/jdom-1.0-r4
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to build, nothing requires it (#561366, #579600, #618936). Removal
+# in a month.
+net-misc/openvpn-auth-ldap
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Supposedly working with wxGTK:3.0 but with bugs that upstream never fixed,
+# this would be the last package still needing old wxGTK:2.8 to workaround
+# this bugs (#597194). Removal in a month except if someone figures out
+# about how to solve this bugs.
+net-p2p/amule
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Upstream dead for a long time, bug #606194. Removal in a month.
+dev-libs/DirectFB
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Not usable anymore after server shutdown (#608806). Removal in a month.
+games-fps/postal2mp-demo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Segfaults at start (#612322). Removal in a month.
+games-arcade/snake3d
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# tests fail with python >= 3.4 (#620082), nothing requires this package,
+# removal in a month.
+dev-python/eliot
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Not compatible with recent python versions (#624668), needs a major
+# version bump. Removal in a month.
+dev-python/django-two-factor-auth
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to build (#624688). Removal in a month.
+sci-physics/hoomd-blue
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Upstream dead, relies on obsolete gstreamer:0.10. Please use alternatives
+# (like soundconverter) instead (#629182). Removal in a month.
+media-sound/gnac
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to run (#630576). Removal in a month.
+games-simulation/dangerdeep
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# frogr is a good replacement for this old package still relying on dead
+# gnome2 python bindings (#640046). Removal in a month.
+media-gfx/postr
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to fetch (#640572). Removal in a month.
+games-puzzle/triptych-demo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to fetch (#640584). Removal in a month.
+games-strategy/gorky17-demo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Dead since 2013, not compatible with latest profiles (#642568). Removal in
+# a month
+net-vpn/miredo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to build (#642996). Removal in a month.
+games-engines/gargoyle
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to compile (#648430), crashes from time to time (#222065). Removal
+# in a month.
+app-misc/wyrd
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Not compatible with recent perl, not needed by anything in the tree
+# (#648582). Removal in a month.
+app-doc/mkdoxy 
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Not compatible with recent PHP, upstream dead for ages (#650870, #650934)
+#, removal in a month.
+www-apps/gnopaste
+www-apps/openwebstats
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Upstream dead, security vulnerable (#650936). Removal in a month.
+www-apps/phprojekt
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't run, cannot bump it (#651146). Removal in a month.
+games-emulation/hatari
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't work even with current PHP versions, upstream dead (#651148),
+# removal in a month.
+www-apps/mypictures
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't work with PHP7, dead upstream (#651184, #651194), removal in a month.
+www-apps/phpmp
+www-apps/polarblog
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Multiple bugs (#424383, #554944), upstream dead (#651340). Removal in a
+# month.
+net-irc/ircservices
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Dead since 2002, orphan, nothing requires it (#651344). Removal in a
+# month.
+app-text/rhyme
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Dead lib not used by anything in the tree (#652186). Removal in a month.
+net-libs/libwhisker
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Obsolete package for the old documentation system (#653168). Removal in a
+# month.
+app-text/gentoo-guide-xml-dtd
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Dead for ages, nothing requires it, needs klibc (that is also completely
+# unmaintained in our side) (#653390). Removal in a month.
+sys-boot/getdvhoff
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Not needed by anything anymore (#653664). Removal in a month.
+dev-python/pyxml
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Both games crash on start (#653812). Removal in a month.
+games-arcade/marbleblast-demo
+games-arcade/marbleblastgold-demo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Crashes at start (#653998). Removal in a month.
+games-arcade/skystreets
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Merged in games-emulation/advancemame long time ago (#654286). Removal in
+# a month.
+games-emulation/advancemenu
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# This installs an older GUI than the one provided by fceux package
+# (#654294). Removal in a month.
+games-emulation/gfceux
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Upstream dead for ages, doesn't work on amd64, other distros killed it
+# long time ago (#654302). Removal in a month.
+games-emulation/hugo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't support amd64, relies on virtual/libstdc++ (#654306). Removal in a
+# month.
+games-emulation/kigb
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Our version is completely outdated, a major version bump and rework of the
+# ebuild is needed (#654336). Removal in a month.
+games-emulation/raine
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Upstream dead for a long time, not compatible with amd64, people can use
+# quake2-icculus with aalib under SDL (#654348). Removal in a month.
+games-fps/aaquake2
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Not required by anything in the tree, upstream disappeared long time ago
+# (#654352). Removal in a month.
+games-fps/doomsday-resources
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to run, use eduke32 instead (#654480). Removal in a month.
+games-fps/duke3d
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't run on amd64, prboom can be used instead (#654482). Removal in a
+# month.
+games-fps/lsdldoom
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to start (#654492). Removal in a month.
+games-fps/soldieroffortune-demo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Fails to run (#654510). Removal in a month.
+games-puzzle/brainworkshop
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Dead since 2003, not ported ever to amd64 (#654516). Removal in a month.
+games-puzzle/ensemblist
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't run (#654520). Removal in a month.
+games-puzzle/hoh-bin
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't run (#654554, #654650). Removal in a month.
+games-sports/miniracer
+games-strategy/heroes3-demo
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# Doesn't build (#655174), not required by any package, upstream dead for a
+# long time. Removal in a month.
+x11-themes/wm-icons
+
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
