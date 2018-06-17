@@ -18,7 +18,7 @@ IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2.18
 	>=x11-libs/gtk+-2.12:2
-	>=xfce-base/thunar-1.2"
+	<xfce-base/thunar-1.7"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
