@@ -48,10 +48,13 @@ src_install() {
 
 	if use zsh-completion ; then
 		insinto /usr/share/zsh/site-functions
-		doins src/github.com/knqyf263/pet/misc/completions/zsh/_${PN}
+		doins src/github.com/knqyf263/pet/misc/completions/zsh/_pet
 	fi
 }
 
-pkg_postinstall() {
-	einfo "You should consider to install app-shells/peco to be able to use selector command"
+pkg_postinst() {
+	if ! has_version app-shells/peco ; then
+		einfo "You should consider to install app-shells/peco"
+		einfo "to be able to use selector command"
+	fi
 }
