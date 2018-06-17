@@ -514,7 +514,6 @@ app-doc/linkers-and-loaders 1: the Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
 app-doc/linux-kernel-in-a-nutshell 1-r1: Linux Kernel in a Nutshell: A Desktop Quick Reference
 app-doc/linuxfromscratch 7.10: LFS documents building a Linux system entirely from source
-app-doc/mkdoxy 1.0.0-r1: mkDoxy generates Doxygen-compatible HTML documentation for makefiles
 app-doc/motif-reference-manual 2.3.0-r2: Motif Reference Manual
 app-doc/php-docs 20101029-r1: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68: A Hacker magazine by the community, for the community
@@ -1130,7 +1129,6 @@ app-misc/when 1.1.36: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 2.19.6: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.20: Helpful utility to attack Repetitive Strain Injury (RSI)
-app-misc/wyrd 1.4.6-r1: Text-based front-end to Remind
 app-misc/xmind 3.5.3.201506180105-r2: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/ytree 1.99_p1: A curses-based file manager
@@ -1337,7 +1335,6 @@ app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes
 app-text/evince 3.24.2-r1: Simple document viewer for GNOME
 app-text/fbreader 0.99.4-r3 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/flpsed 0.7.0: Pseudo PostScript editor
-app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
 app-text/ghostscript-gpl 9.21: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glark 1.10.5-r1: File searcher similar to grep but with fancy output
 app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word (german): losung)
@@ -1439,7 +1436,6 @@ app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1: Convert files between various character sets
 app-text/rfcutil 3.2.3-r2: return all related RFCs based upon a number or a search string
-app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
@@ -2494,7 +2490,6 @@ dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dynamic languages
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
-dev-java/easyneurons 2.3: GUI neural network editor for neuroph
 dev-java/echo2 2.1.1: Echo2 is the next-generation of the Echo Web Framework
 dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1: Eclipse Compiler for Java
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
@@ -2606,8 +2601,7 @@ dev-java/jdbc-mysql 5.1.26: MySQL JDBC driver
 dev-java/jdbc-postgresql 9.2_p1003 9.4_p1206: JDBC Driver for PostgreSQL
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: Traverses Java class file directories and generates design quality metrics
-dev-java/jdom 1.0-r4 1.1.3 2.0.6-r4: Java API to manipulate XML data
-dev-java/jdom-jaxen 1.0-r1: Jaxen binding for jdom
+dev-java/jdom 1.1.3 2.0.6-r4: Java API to manipulate XML data
 dev-java/jebl 2013.02.18: Java Evolutionary Biology Library
 dev-java/jempbox 1.7.1 1.8.11: An open source Java library for working with XMP metadata
 dev-java/jettison 1.3.7: A JSON StAX implementation
@@ -2776,7 +2770,6 @@ dev-java/sat4j-pseudo 2.2.0: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r3: SAX: Simple API for XML in Java
 dev-java/saxon 6.5.5-r2 9.2.0.6-r2: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
-dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary objects
 dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS files
 dev-java/sjsxp 1.0.1-r3: Sun Java Streaming XML Parser
@@ -2797,7 +2790,6 @@ dev-java/stax2-api 4.0.0: Extended Stax (STandard Api for Xml procesing) API
 dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/sun-dtdparser 1.0: Sun DTDParser
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
-dev-java/sun-jacc-api 20070102: Java Authorization Contract for Containers
 dev-java/sun-jaf 1.1.1 1.1.1-r1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
 dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
@@ -2916,7 +2908,6 @@ dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
 dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
-dev-libs/DirectFB 1.7.6-r1: Thin library on top of the Linux framebuffer devices
 dev-libs/Ice 3.6.3-r1: ICE middleware C++ library and generator tools
 dev-libs/MicroJSON 0.3.1: Small and simple to use JSON generation and parsing library
 dev-libs/UTF8Strings 1.14.2: C++ library providing ability to work natively with UTF8 string
@@ -4756,7 +4747,7 @@ dev-python/django-recaptcha 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 1.0: An extensible user-registration application for Django
 dev-python/django-select2 4.2.2: A Django integration of Select2
 dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing via setup.py
-dev-python/django-tastypie 0.9.15 0.13.3: A flexible and capable API layer for django utilising serialisers
+dev-python/django-tastypie 0.13.3: A flexible and capable API layer for django utilising serialisers
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
@@ -5441,7 +5432,6 @@ dev-python/pyx 0.12.1-r1 0.14.1: Python package for the generation of encapsulat
 dev-python/pyxattr 0.5.5: Python interface to xattr
 dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
-dev-python/pyxml 0.8.4-r3: A collection of libraries to process XML with Python
 dev-python/pyyaml 3.12: YAML parser and emitter for Python
 dev-python/pyzmq 16.0.2: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 1.0.0: A distributed, collaborative spam detection and filtering network
@@ -7337,7 +7327,6 @@ media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngrewrite 1.3.0: A utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
-media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
@@ -8555,7 +8544,6 @@ net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r1: Graphical IRC client based on XChat
 net-irc/inspircd 2.0.23 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
-net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for several IRC daemons
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 1.0.7: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
@@ -8881,7 +8869,6 @@ net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent lo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ndisc6 0.9.9: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
-net-misc/nemesis 1.4: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netctl 1.9: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
 net-misc/netifrc 0.2.2 0.5.1: Gentoo Network Interface Management Scripts
@@ -9020,7 +9007,6 @@ net-nntp/pan 0.142: A newsreader for GNOME
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-nntp/xrn 9.02-r1: A small and fast news reader for X
-net-p2p/amule 2.3.2-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.15.1: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.15.1: Original Bitcoin crypto-currency wallet for automated services
@@ -9105,7 +9091,6 @@ net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/pr
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.21 3.22: IPsec implementation for Linux, fork of Openswan
-net-vpn/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.6.0: A Fortinet compatible VPN client
@@ -10508,7 +10493,6 @@ www-apps/moinmoin 1.9.7-r1: Python WikiClone
 www-apps/nanoblogger 3.2.3: Small and simple weblog engine written in Bash for the command-line
 www-apps/nikola 7.8.8: A static website and blog generator
 www-apps/novnc 0.6.2: noVNC is a VNC client implemented using HTML5 technologies
-www-apps/phpmp 0.11.0-r1: phpMp is a client program for Music Player Daemon (mpd)
 www-apps/phpsysinfo 3.2.2: A nice package that will display your system stats via PHP
 www-apps/postfixadmin 3.1: Web Based Management tool for Postfix style virtual domains and users
 www-apps/roundup 1.5.1: Issue-tracking system with command-line, web, and e-mail interfaces
@@ -11232,7 +11216,6 @@ x11-themes/vdr-channel-logos 0.2: Logos for vdr-skin*
 x11-themes/vertex-icon-theme 20150506: Vertex icon theme
 x11-themes/vertex-theme 20160329 20170128-r1: Vertex theme for GTK+ based desktops
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
-x11-themes/wm-icons 0.4.0_pre1-r1: A Large Assortment of Beautiful Themed Icons, Created with FVWM in mind
 x11-themes/xcursor-themes 1.0.4 1.0.5: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0-r1: Additional themes for the Xfce window manager

@@ -1371,24 +1371,6 @@ dev-lang/swi-prolog:archive - Use libarchive for extension packs
 dev-lang/swi-prolog:uuid - Use ossp-uuid for UUID pack
 dev-lang/swig:ccache - build ccache-swig(a fast compiler cache)
 dev-lang/yap:R - Enable support for connecting R to Prolog
-dev-libs/DirectFB:bmp - build BMP image provider
-dev-libs/DirectFB:divine - enable DiVine
-dev-libs/DirectFB:drmkms - build with DRM/KMS support
-dev-libs/DirectFB:dynload - enable dynload support
-dev-libs/DirectFB:egl - build with EGL support
-dev-libs/DirectFB:fusiondale - enable FusionDale
-dev-libs/DirectFB:fusionsound - enable FusionSound
-dev-libs/DirectFB:gles2 - build gles2 gfxdriver
-dev-libs/DirectFB:imlib2 - build Imlib2 image provider
-dev-libs/DirectFB:input_hub - provides an asynchronous interface to the input devices available and those being added/removed
-dev-libs/DirectFB:mpeg2 - build MPEG2 image provider
-dev-libs/DirectFB:mpeg3 - build Libmpeg3 video provider
-dev-libs/DirectFB:multicore - enable multicore support
-dev-libs/DirectFB:pnm - build PNM (PBM/PGM/PPM) image provider
-dev-libs/DirectFB:sawman - enable SaWMan (window manager and application manager)
-dev-libs/DirectFB:swfdec - build Swfdec (Flash decoder) video provider
-dev-libs/DirectFB:tremor - build Ogg/Vorbis music provider using Tremor
-dev-libs/DirectFB:webp - build WebP image provider
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
 dev-libs/ace:tao - Include the ACE ORB (CORBA stuff) (called tao) into the build of ace
 dev-libs/appstream:apt - Enables Debians APT support
@@ -1772,9 +1754,6 @@ dev-python/cgkit:3ds - Enable support for importing 3D Studio models
 dev-python/dap:server - Enable OpenDAP server support
 dev-python/dask:distributed - Add support for distributed computing with dev-python/distributed
 dev-python/django-tastypie:bip - An optional serialiser dev-python/biplist
-dev-python/django-tastypie:digest - Library to aid in implementing HTTP Digest Authentication
-dev-python/django-tastypie:lxml - An optional serialiser dev-python/lxml
-dev-python/django-tastypie:yaml - An optional serialiser dev-python/yaml
 dev-python/flask-restful:paging - Enable resource paging support
 dev-python/geopy:timezone - Enables localized date support
 dev-python/geopy:yahoo - Enables use of YahooPlaceFinder
@@ -4609,9 +4588,6 @@ net-nntp/slrn:uudeview - Add support for yEnc coding and more using dev-libs/uul
 net-nntp/tin:cancel-locks - Enable Cancel-Lock header functionality (also enables USE=evil)
 net-nntp/tin:etiquette - Enable the display off posting etiquettes
 net-nntp/tin:gpg - Enable app-crypt/gnupg support
-net-p2p/amule:daemon - Enable amule daemon
-net-p2p/amule:remote - Enable remote controlling of the client
-net-p2p/amule:stats - Enable statistic reporting
 net-p2p/bitcoin-cli:knots - Build enhanced Bitcoin Knots version, rather than Bitcoin Core
 net-p2p/bitcoin-qt:asm - Enable assembly for optimization
 net-p2p/bitcoin-qt:bip70 - Enable support for the BIP70 payment protocol
