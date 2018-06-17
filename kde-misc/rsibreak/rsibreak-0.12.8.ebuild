@@ -4,6 +4,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5 eapi7-ver
 
 DESCRIPTION="Small utility which bothers you at certain intervals"
