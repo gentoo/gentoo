@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm
+DEPEND=>=x11-libs/cairo-1.12:= >=dev-libs/glib-2.42:= >=x11-libs/gtk+-3.20:3= >=x11-libs/libwnck-3.14:3= x11-libs/libX11:= >=xfce-base/exo-0.11:= >=xfce-base/garcon-0.6:= >=xfce-base/libxfce4ui-4.13:= >=xfce-base/libxfce4util-4.13:= >=xfce-base/xfconf-4.12.1:= libnotify? ( >=x11-libs/libnotify-0.7:= ) thunar? ( >=dev-libs/glib-2.38:= >=xfce-base/thunar-1.7:= ) dev-util/intltool sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Desktop manager for the Xfce desktop environment
+EAPI=6
+HOMEPAGE=https://www.xfce.org/projects/
+IUSE=debug libnotify +thunar
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/cairo-1.12:= >=dev-libs/glib-2.42:= >=x11-libs/gtk+-3.20:3= >=x11-libs/libwnck-3.14:3= x11-libs/libX11:= >=xfce-base/exo-0.11:= >=xfce-base/garcon-0.6:= >=xfce-base/libxfce4ui-4.13:= >=xfce-base/libxfce4util-4.13:= >=xfce-base/xfconf-4.12.1:= libnotify? ( >=x11-libs/libnotify-0.7:= ) thunar? ( >=dev-libs/glib-2.38:= >=xfce-base/thunar-1.7:= )
+SLOT=0
+SRC_URI=mirror://xfce/src/xfce/xfdesktop/4.13/xfdesktop-4.13.2.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=ef4aaa19caeefd2f6e2790fbf050b011
