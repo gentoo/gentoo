@@ -35,11 +35,11 @@ KEYWORDS="~amd64"
 IUSE="zsh-completion"
 
 # dev-go/toml doesn't provide sources
-DEPEND="dev-go/go-crypto
-	dev-go/go-net
-	dev-go/go-oauth2
-	dev-go/go-protobuf
-	dev-go/go-sys"
+DEPEND="dev-go/go-crypto:=
+	dev-go/go-net:=
+	dev-go/go-oauth2:=
+	dev-go/go-protobuf:=
+	dev-go/go-sys:="
 RDEPEND="${DEPEND}
 	zsh-completion? ( app-shells/zsh-completions )"
 
