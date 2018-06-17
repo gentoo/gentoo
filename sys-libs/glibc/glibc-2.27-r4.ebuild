@@ -72,6 +72,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
+	sys-devel/bison
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
