@@ -6,6 +6,7 @@ EAPI=7
 inherit git-r3
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
+EGIT_BRANCH="master"
 DESCRIPTION="Gentoo Package Manager Specification (draft)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
 
