@@ -34,6 +34,10 @@ DOCS=( README RELEASE_NOTES TODO ) # ChangeLog is bogus, see git instead
 
 RESTRICT="test" # Disabled because of sandbox violation(s)
 
+PATCHES=(
+	"${FILESDIR}"/xdg-utils-1.1.3-xdg-open-pcmanfm.patch
+)
+
 #S=${WORKDIR}/${MY_P}
 
 src_prepare() {
@@ -42,14 +46,9 @@ src_prepare() {
 	# to run `autoconf` in ./ and `make scripts-clean` in ./scripts/ to refresh
 	# all the files
 	if [[ -d "${WORKDIR}/patch" ]]; then
-		eapply patch
+		eapply "${WORKDIR}/patch"
 	fi
 	eautoreconf
-
-	if pushd scripts &>/dev/null ; then
-		make scripts-clean
-		popd &>/dev/null
-	fi
 }
 
 src_configure() {
