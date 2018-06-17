@@ -191,12 +191,6 @@ x11-plugins/epplets
 ~dev-qt/qtxmlpatterns-5.11.0_rc2
 ~dev-qt/qtxml-5.11.0_rc2
 
-# Amy Liffey <amynka@gentoo.org> (16 May 2018)
-# Obsolete and not used anymore replaced by app-crypt/eid-mw.
-# Requested by maintainer Vincent Hardy <vincent.hardy.be@gmail.com>
-# Removal in 30 days.
-app-misc/eid-viewer-bin
-
 # Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
 # SoQt does not build yet
 >=media-libs/coin-4.0.0
