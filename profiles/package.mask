@@ -210,12 +210,6 @@ sci-libs/freesteam
 # Broken *FLAGS handling.  Use -r3 instead.
 =dev-util/scons-3.0.1-r2
 
-# Michał Górny <mgorny@gentoo.org> (15 May 2018)
-# Remaining fetch-restricted game packages missing BLAKE2B hashes.
-# Please provide updated hashes if you have the matching distfiles.
-# Bug #642876.  Removal in 30 days.
-games-rpg/penumbra-collection
-
 # Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
 # SoQt does not build yet
 >=media-libs/coin-4.0.0
