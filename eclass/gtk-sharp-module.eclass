@@ -1,6 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# Michał Górny <mgorny@gentoo.org> (17 Jun 2018)
+# This eclass was used for old versions of split gtk-sharp modules,
+# and all packages/versions using it have been removed already.
+# It's not maintained, uses obsolete eclasses, outdated URIs,
+# it has documentation problems.  Removal in 30 days.
+
 # @ECLASS: gtk-sharp-module.eclass
 # @MAINTAINER:
 # dotnet@gentoo.org
