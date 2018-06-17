@@ -4,18 +4,15 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
-KDE_PO_DIRS="po doc-translations"
 inherit kde5
 
 DESCRIPTION="Image viewer based on KDE Frameworks"
 HOMEPAGE="https://userbase.kde.org/KuickShow"
-SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz -> ${P}-r1.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
-
-DOCS=( AUTHORS BUGS ChangeLog README TODO )
 
 DEPEND="
 	$(add_frameworks_dep kcompletion)
@@ -42,4 +39,4 @@ RDEPEND="${DEPEND}
 	!media-gfx/kuickshow:4
 "
 
-PATCHES=( "${FILESDIR}/${P}-desktop-fix.patch" )
+PATCHES=( "${FILESDIR}/${P}-handbook-fix.patch" )
