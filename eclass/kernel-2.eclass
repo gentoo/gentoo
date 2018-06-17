@@ -643,7 +643,7 @@ if [[ ${ETYPE} == sources ]]; then
 			K_DEBLOB_TAG=${K_DEBLOB_TAG:--gnu}
 			DEBLOB_A="deblob-${DEBLOB_PV}"
 			DEBLOB_CHECK_A="deblob-check-${DEBLOB_PV}"
-			DEBLOB_HOMEPAGE="http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags"
+			DEBLOB_HOMEPAGE="https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/"
 			DEBLOB_URI_PATH="${DEBLOB_PV}${K_DEBLOB_TAG}"
 			if ! has "${EAPI:-0}" 0 1 ; then
 				DEBLOB_CHECK_URI="${DEBLOB_HOMEPAGE}/${DEBLOB_URI_PATH}/deblob-check -> ${DEBLOB_CHECK_A}"
