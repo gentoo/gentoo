@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils cmake-utils vcs-snapshot
+inherit cmake-utils
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="https://www.ogre3d.org/"
