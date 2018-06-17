@@ -91,7 +91,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # built-in modules
 
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-IUSE="${IUSE} debug doc ldap libressl selinux ssl static suexec threads"
+IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec threads"
 
 for module in ${IUSE_MODULES} ; do
 	IUSE="${IUSE} apache2_modules_${module}"
