@@ -49,11 +49,6 @@ dev-java/sun-jacc-api
 dev-java/easyneurons
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Needs someone to maintain this package and bump it to newer versions
-# stopping to rely on dead gstreamer:0.10 (#438972). Removal in a month.
-media-video/aravis
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Fails to run because it requires a bundled lib as unmaintained as this
 # package by upstream (#472752). Removal in a month.
 net-misc/nemesis
