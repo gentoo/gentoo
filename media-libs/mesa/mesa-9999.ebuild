@@ -371,6 +371,7 @@ multilib_src_configure() {
 		$(meson_use gbm)
 		$(meson_use gles1)
 		$(meson_use gles2)
+		$(meson_use selinux)
 		$(meson_use unwind libunwind)
 		$(meson_use lm_sensors lmsensors)
 		-Dvalgrind=$(usex valgrind auto false)
