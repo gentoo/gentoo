@@ -18,7 +18,7 @@ IUSE=""
 
 RUBY_PATCHES=( "${FILESDIR}/${P}-net-ssh-4.patch" )
 
-ruby_add_rdepend "|| ( dev-ruby/net-ssh:4 dev-ruby/net-ssh:3 dev-ruby/net-ssh:2.6 )"
+ruby_add_rdepend "|| ( dev-ruby/net-ssh:4 dev-ruby/net-ssh:2.6 )"
 
 ruby_add_bdepend "
 	test? (
