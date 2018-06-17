@@ -117,10 +117,6 @@ games-simulation/dangerdeep
 media-gfx/postr
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to fetch (#640572). Removal in a month.
-games-puzzle/triptych-demo
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Fails to fetch (#640584). Removal in a month.
 games-strategy/gorky17-demo
 
