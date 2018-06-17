@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/JFreegman/toxic/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+X +audio notifications +python +qrcode +video"
+IUSE="+X +audio notifications +python qrpng +video"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Not a typo; net-libs/tox only has a 'both or neither' option
@@ -24,13 +24,14 @@ RDEPEND="
 	net-libs/tox:0/0.1
 	)
 	dev-libs/libconfig
+	media-gfx/qrencode
+	media-libs/libpng:0=
 	net-misc/curl:0=
 	sys-libs/ncurses:0=
 	audio? ( media-libs/openal media-libs/freealut )
 	video? ( media-libs/libvpx:= x11-libs/libX11 )
 	notifications? ( x11-libs/libnotify )
 	python? ( ${PYTHON_DEPS} )
-	qrcode? ( media-gfx/qrencode )
 "
 DEPEND="
 	virtual/pkgconfig
@@ -39,7 +40,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-verbose-build-log.patch"
-	)
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -69,7 +70,7 @@ src_configure() {
 	if ! use notifications; then
 		export DISABLE_DESKTOP_NOTIFY=1
 	fi
-	if ! use qrcode; then
+	if ! use qrpng; then
 		export DISABLE_QRPNG=1
 	fi
 	if use python; then
