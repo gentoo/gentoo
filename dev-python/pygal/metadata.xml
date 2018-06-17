@@ -7,5 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">pygal</remote-id>
+    <remote-id type="github">Kozea/pygal</remote-id>
+    <bugs-to>https://github.com/Kozea/pygal/issues</bugs-to>
   </upstream>
 </pkgmetadata>
