@@ -12,7 +12,7 @@ else
 fi
 
 DESCRIPTION="Library for video acquisition using Genicam cameras"
-HOMEPAGE="https://live.gnome.org/Aravis"
+HOMEPAGE="https://wiki.gnome.org/Projects/Aravis"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
