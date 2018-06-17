@@ -33,7 +33,7 @@ SRC_URI="${SRC_URI}
 HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
 RESTRICT="strip mirror"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+ffmpeg +pulseaudio selinux startup-notification"
@@ -88,7 +88,7 @@ src_install() {
 	declare MOZILLA_FIVE_HOME=/opt/${MOZ_PN}
 
 	local size sizes icon_path icon name
-	sizes="16 32 48"
+	sizes="16 32 48 128"
 	icon_path="${S}/browser/chrome/icons/default"
 	icon="${PN}"
 	name="Mozilla Firefox"
@@ -98,9 +98,6 @@ src_install() {
 		insinto "/usr/share/icons/hicolor/${size}x${size}/apps"
 		newins "${icon_path}/default${size}.png" "${icon}.png" || die
 	done
-	# The 128x128 icon has a different name
-	insinto /usr/share/icons/hicolor/128x128/apps
-	newins "${icon_path}/../../../icons/mozicon128.png" "${icon}.png" || die
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
 	newicon "${S}"/browser/chrome/icons/default/default48.png ${PN}.png
 	domenu "${FILESDIR}"/${PN}.desktop
@@ -150,7 +147,7 @@ src_install() {
 	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}" >> ${T}/10${PN}
 	doins "${T}"/10${PN} || die
 
-	# Plugins dir
+	# Plugins dir, still used for flash
 	share_plugins_dir
 
 	# Required in order to use plugins and even run firefox on hardened.
