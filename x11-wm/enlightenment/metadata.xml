@@ -10,9 +10,7 @@
   </maintainer>
   <use>
     <flag name="egl">Enable EGL rendering</flag>
-    <flag name="pango">Enable pango font rendering</flag>
     <flag name="ukit">Use upower/udisks to automount devices</flag>
-    <flag name="xrandr">Enable support for the X xrandr extension</flag>
     <flag name="enlightenment_modules_appmenu">Gadget that holds the menubar of the foreground application</flag>
     <flag name="enlightenment_modules_backlight">Backlight control slider gadget</flag>
     <flag name="enlightenment_modules_battery">A gadget to visualize your battery status</flag>
