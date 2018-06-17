@@ -22,26 +22,27 @@ REQUIRED_USE="examples? ( ois )
 RESTRICT="test" #139905
 
 RDEPEND="
-	cg? ( media-gfx/nvidia-cg-toolkit )
 	dev-libs/boost
 	dev-libs/zziplib
-	freeimage? ( media-libs/freeimage )
-	gl3plus? ( >=media-libs/mesa-9.2.5 )
-	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
-	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
 	media-libs/freetype:2
-	ois? ( dev-games/ois )
-	tools? ( dev-libs/tinyxml[stl] )
 	virtual/glu
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXrandr
-	x11-libs/libXt"
+	x11-libs/libXt
+	cg? ( media-gfx/nvidia-cg-toolkit )
+	freeimage? ( media-libs/freeimage )
+	gl3plus? ( >=media-libs/mesa-9.2.5 )
+	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
+	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
+	ois? ( dev-games/ois )
+	tools? ( dev-libs/tinyxml[stl] )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+	doc? ( app-doc/doxygen )"
+
 PATCHES=(
 	"${FILESDIR}/${P}-samples.patch"
 	"${FILESDIR}/${P}-resource_path.patch"
