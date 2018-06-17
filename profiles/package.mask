@@ -338,6 +338,7 @@ games-kids/crayon-physics
 # Masked until the latter sees a new release.
 >=dev-python/thunarx-python-0.4.0
 >=xfce-base/thunar-1.7
+>=xfce-base/xfdesktop-4.13.2
 >=xfce-extra/thunar-archive-plugin-0.4.0
 >=xfce-extra/thunar-media-tags-plugin-0.3.0
 >=xfce-extra/thunar-shares-plugin-0.3.0
