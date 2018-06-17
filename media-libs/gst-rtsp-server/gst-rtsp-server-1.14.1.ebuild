@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,28 +6,25 @@ EAPI=6
 inherit eutils gstreamer
 
 DESCRIPTION="A GStreamer based RTSP server"
-HOMEPAGE="https://people.freedesktop.org/~wtay/"
+HOMEPAGE="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 
 LICENSE="LGPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples +introspection static-libs test"
 
-# FIXME: check should depend on USE=test but check is losy
-# configure says good and bad are required by macros forces them to be optional
-# they are only used in unittests anyway.
+# gst-plugins-base for many used elements and API
+# gst-plugins-good for rtprtxsend and rtpbin elements, maybe more
+# gst-plugins-srtp for srtpenc and srtpdec elements
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/gstreamer-${PV}:${SLOT}[introspection?,${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[introspection?,${MULTILIB_USEDEP}]
+	>=media-libs/gst-plugins-good-${PV}:${SLOT}[${MULTILIB_USEDEP}]
+	>=media-plugins/gst-plugins-srtp-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/check-0.9.2
 	>=dev-util/gtk-doc-am-1.12
-	test? (
-		>=media-libs/gst-plugins-bad-${PV}:${SLOT}[introspection?,${MULTILIB_USEDEP}]
-		>=media-libs/gst-plugins-good-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	)
 "
 
 # Due to gstreamer src_configure
@@ -38,6 +35,8 @@ multilib_src_configure() {
 	# docbook: nothing behind that switch
 	# libcgroup is automagic and only used in examples
 	gstreamer_multilib_src_configure \
+		--disable-debug \
+		--disable-valgrind \
 		--disable-examples \
 		--disable-docbook \
 		--disable-gtk-doc \
