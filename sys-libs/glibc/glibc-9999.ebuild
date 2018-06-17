@@ -33,7 +33,7 @@ PATCH_VER=6
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -73,12 +73,15 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
+	sys-devel/bison
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
 	doc? ( sys-apps/texinfo )
+	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
+	>=net-dns/libidn2-2.0.5
 	sys-apps/gentoo-functions
 	!sys-kernel/ps3-sources
 	!sys-libs/nss-db
