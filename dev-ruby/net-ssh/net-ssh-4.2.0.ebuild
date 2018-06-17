@@ -27,6 +27,11 @@ all_ruby_prepare() {
 	# Don't use a ruby-bundled version of libsodium
 	sed -i -e '/rbnacl\/libsodium/ s:^:#:' lib/net/ssh/authentication/ed25519.rb || die
 
+	# Don' try to use libsodium-related tests with USE=-sodium
+	if ! use sodium ; then
+		rm -f test/authentication/test_ed25519.rb
+	fi
+
 	# Avoid bundler dependency
 	sed -i -e '/\(bundler\|:release\)/ s:^:#:' Rakefile || die
 }
