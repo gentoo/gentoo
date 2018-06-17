@@ -128,10 +128,11 @@ unset -f _apache2_set_mpms
 
 DEPEND="${CDEPEND}
 	dev-lang/perl
-	=dev-libs/apr-util-1*:=[ldap?]
+	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
 	apache2_modules_deflate? ( sys-libs/zlib )
 	apache2_modules_mime? ( app-misc/mime-types )
+	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.2:0= )
