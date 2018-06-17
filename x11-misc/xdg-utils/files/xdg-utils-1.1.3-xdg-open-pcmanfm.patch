@@ -1,0 +1,21 @@
+From 31525d3855f876ddf2e29091b2e8d376f923e09e Mon Sep 17 00:00:00 2001
+From: Rex Dieter <rdieter@gmail.com>
+Date: Thu, 24 May 2018 14:40:53 -0500
+Subject: xdg-open: better pcmanfm check (BR106636,BR106161)
+
+diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
+index 630e63e..bf9da4c 100644
+--- a/scripts/xdg-open.in
++++ b/scripts/xdg-open.in
+@@ -451,7 +451,7 @@ open_lxde()
+ {
+ 
+     # pcmanfm only knows how to handle file:// urls and filepaths, it seems.
+-    if pcmanfm --help >/dev/null 2>&1 -a is_file_url_or_path "$1"; then
++    if pcmanfm --help >/dev/null 2>&1 && is_file_url_or_path "$1"; then
+         local file="$(file_url_to_path "$1")"
+ 
+         # handle relative paths
+-- 
+cgit v1.1
+
