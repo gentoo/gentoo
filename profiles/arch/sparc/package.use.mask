@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2018)
+# Mask broken HIPE support on sparc32 (bug #656618)
+dev-lang/erlang hipe
+
 # Sergei Trofimovich <slyfox@gentoo.org> (08 May 2018)
 # Mask USE=games to avoid unkeyworded games-util/qstat.
 net-analyzer/monitoring-plugins game
