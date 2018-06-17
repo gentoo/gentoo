@@ -20,7 +20,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	>=dev-python/pygobject-2.16:2[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	>=xfce-base/thunar-1.1.0"
+	<xfce-base/thunar-1.7"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
