@@ -9,8 +9,8 @@ inherit user flag-o-matic multilib autotools pam systemd versionator
 # and _p? releases.
 PARCH=${P/_}
 
-HPN_VER="14v15-gentoo1" HPN_PATCH="${PARCH}-hpnssh${HPN_VER}.patch.xz"
-SCTP_VER="1.0" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
+HPN_VER="14v15-gentoo2" HPN_PATCH="${PARCH}-hpnssh${HPN_VER}.patch.xz"
+SCTP_VER="1.1" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
 X509_VER="11.3.1" X509_PATCH="${PARCH}-x509-${X509_VER}.patch.xz"
 
 # Disable LDAP support until someone will rewrite the patch,
