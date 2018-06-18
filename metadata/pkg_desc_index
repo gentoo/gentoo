@@ -8312,7 +8312,7 @@ net-analyzer/linkchecker 9.3.1-r1: Check websites for broken links
 net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/mate-netspeed 1.12.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/monitoring-plugins 2.1.2 2.2 2.2-r2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+net-analyzer/monitoring-plugins 2.2-r2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
