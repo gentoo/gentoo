@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/sol1/rdiff-backup/archive/r1.3.3.tar.gz -> rdiff-backup-1.3.3.tar.gz
 _eclasses_=distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	ffa9c3284c6b07b8c9f7933911f63812	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=aeafb5fab7d06f470bb3345e5e00d525
+_md5_=1d4661ea574a09e3fed04506c5c07f07
