@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="md4 and edonkey hash algorithm tool"
-HOMEPAGE="http://linux.xulin.de/c/"
-SRC_URI="http://linux.xulin.de/c/${P}.tar.gz"
+HOMEPAGE="https://linux.xulin.de/c/"
+SRC_URI="https://linux.xulin.de/c/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc"
