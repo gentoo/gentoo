@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">plyvel</remote-id>
-		<remote-id type="bitbucket">wbolster/plyvel</remote-id>
 		<remote-id type="github">wbolster/plyvel</remote-id>
+		<bugs-to>https://github.com/wbolster/plyvel/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
