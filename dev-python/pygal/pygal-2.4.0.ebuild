@@ -39,6 +39,7 @@ DOCS=( docs/changelog.rst README.md )
 python_prepare_all() {
 	sed -i "/sphinx.ext.intersphinx/d" docs/conf.py || die
 	# Not actually required unless we want to do setup.py test
+	# https://github.com/Kozea/pygal/issues/430
 	sed -i "s/'pytest-runner'\(,\)\?//" setup.py || die
 	distutils-r1_python_prepare_all
 }
