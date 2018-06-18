@@ -32,6 +32,6 @@ PATCHES=(
 
 python_install_all() {
 	local HTML_DOCS=( FAQ.html )
-	use examples && local EXAMPLES=( examples.html )
+	use examples && HTML_DOCS+=( examples.html )
 	distutils-r1_python_install_all
 }
