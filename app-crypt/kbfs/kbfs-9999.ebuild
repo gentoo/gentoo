@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit git-r3 systemd
+inherit git-r3 golang-build systemd
 
 DESCRIPTION="Keybase Filesystem (KBFS)"
 HOMEPAGE="https://keybase.io/docs/kbfs"
@@ -14,37 +14,33 @@ SLOT="0"
 KEYWORDS=""
 IUSE="git"
 
-DEPEND=">=dev-lang/go-1.6:0"
+DEPEND=""
 RDEPEND="
 	app-crypt/gnupg
 	sys-fs/fuse
 	"
 
-S="${WORKDIR}/src/github.com/keybase/kbfs"
-
 src_unpack() {
 	git-r3_src_unpack
-	mkdir -p "$(dirname "${S}")" || die
-	ln -s "${WORKDIR}/${P}" "${S}" || die
+	mkdir -vp "${S}/src/github.com/keybase" || die
+	ln -vs "${S}" "${S}/src/github.com/keybase/kbfs" || die
 }
 
 src_compile() {
-	GOPATH="${WORKDIR}" \
-		go build -v -x \
-		-tags production \
-		-o "${T}/kbfsfuse" \
-		github.com/keybase/kbfs/kbfsfuse
-	use git && \
-		GOPATH="${WORKDIR}" \
-		go build -v -x \
-		-tags production \
-		-o "${T}/git-remote-keybase" \
-		github.com/keybase/kbfs/kbfsgit/git-remote-keybase
+	EGO_PN="github.com/keybase/kbfs/kbfsfuse" \
+		EGO_BUILD_FLAGS="-tags production -o ${T}/kbfsfuse" \
+		golang-build_src_compile
+	EGO_PN="github.com/keybase/kbfs/kbfsgit/git-remote-keybase" \
+		EGO_BUILD_FLAGS="-tags production -o ${T}/git-remote-keybase" \
+		golang-build_src_compile
+	EGO_PN="github.com/keybase/kbfs/redirector" \
+		EGO_BUILD_FLAGS="-tags production -o ${T}/keybase-redirector" \
+		golang-build_src_compile
 }
 
 src_install() {
 	dobin "${T}/kbfsfuse"
-	use git && \
-		dobin "${T}/git-remote-keybase"
+	dobin "${T}/git-remote-keybase"
+	dobin "${T}/keybase-redirector"
 	systemd_douserunit "${S}/packaging/linux/systemd/kbfs.service"
 }
