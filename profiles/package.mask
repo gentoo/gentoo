@@ -83,13 +83,6 @@ dev-java/jdom-jaxen
 net-misc/openvpn-auth-ldap
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Supposedly working with wxGTK:3.0 but with bugs that upstream never fixed,
-# this would be the last package still needing old wxGTK:2.8 to workaround
-# this bugs (#597194). Removal in a month except if someone figures out
-# about how to solve this bugs.
-net-p2p/amule
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Upstream dead for a long time, bug #606194. Removal in a month.
 dev-libs/DirectFB
 
