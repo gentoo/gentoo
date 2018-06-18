@@ -1,9 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-multilib vcs-snapshot flag-o-matic
+CMAKE_BUILD_TYPE=RelWithDebInfo
+inherit cmake-multilib vcs-snapshot
 
 DESCRIPTION="A small, fast, and high performance math library for robot applications"
 HOMEPAGE="https://ignitionrobotics.org/libraries/math"
@@ -17,5 +18,5 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-util/ignition-cmake[${MULTILIB_USEDEP}]"
+
 S="${WORKDIR}/${PN}4_${PV}"
-CMAKE_BUILD_TYPE=RelWithDebInfo
