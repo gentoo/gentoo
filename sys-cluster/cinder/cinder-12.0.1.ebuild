@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
-inherit distutils-r1 eutils git-r3 linux-info user
+inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
@@ -22,7 +22,6 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="+api +scheduler +volume infiniband iscsi lvm mysql +memcached postgres rdma sqlite +tcp test +tgt"
 REQUIRED_USE="|| ( mysql postgres sqlite ) iscsi? ( tgt ) infiniband? ( rdma )"
 
