@@ -41,6 +41,8 @@ pkg_setup() {
 		einfo "to compile aMule Statistics GUI."
 		einfo "I will now compile console versions only."
 	fi
+
+	setup-wxwidgets
 }
 
 pkg_preinst() {
@@ -52,14 +54,6 @@ pkg_preinst() {
 
 src_configure() {
 	local myconf
-
-	if use X; then
-		einfo "wxGTK with X support will be used"
-		need-wxwidgets unicode
-	else
-		einfo "wxGTK without X support will be used"
-		need-wxwidgets base-unicode
-	fi
 
 	if use X; then
 		use stats && myconf="${myconf}
