@@ -91,11 +91,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} == "9999" ]] ; then
-		eautoreconf
-	else
-		default
-	fi
+	epatch "${FILESDIR}"/${P}-ncurses_tinfo.patch
+
+	# Call eautoreconf since ncurses patch touches configure.ac
+	eautoreconf
 }
 
 src_configure() {
