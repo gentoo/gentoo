@@ -1889,7 +1889,7 @@ dev-db/postgresql 9.3.22 9.4.17 9.5.12 9.6.8 10.3: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
-dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.8-r2 3.2.8-r5 4.0.2-r1: A persistent caching system, key-value and data structures database
+dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.8-r2 3.2.8-r5 3.2.12 4.0.2-r1 4.0.10: A persistent caching system, key-value and data structures database
 dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management System
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.4.1: Full Database Encryption for SQLite
@@ -9947,7 +9947,7 @@ sys-boot/unetbootin 657: UNetbootin installs Linux/BSD distributions to a partit
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
 sys-cluster/ceph 10.2.3-r2: Ceph distributed filesystem
-sys-cluster/cinder 11.1.0: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 11.1.0 12.0.1: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.4.7 2.3.5: OSI Certified implementation of a complete cluster engine
@@ -10477,7 +10477,7 @@ www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsecurity-crs 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.1.12: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.1.12 5.3.2: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
