@@ -10,7 +10,7 @@ DESCRIPTION="Hardware accelerated video decoding through VA-API plugin for GStre
 HOMEPAGE="https://cgit.freedesktop.org/gstreamer/gstreamer-vaapi"
 SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="1.0"
 KEYWORDS="amd64 ~arm64 x86"
 
