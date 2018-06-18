@@ -19,9 +19,11 @@ RDEPEND="app-crypt/gpgme:=
 	dev-libs/libgpg-error:=
 	dev-libs/libassuan:=
 	sys-fs/lvm2:=
-	sys-libs/libseccomp:="
+	sys-libs/libseccomp:=
+	selinux? ( sys-libs/libselinux:= )"
 DEPEND="${RDEPEND}"
 RESTRICT="test"
+REQUIRED_USE="ostree? ( selinux )"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_prepare() {
