@@ -3,9 +3,7 @@
 
 EAPI=6
 
-inherit eutils systemd user versionator git-r3
-
-MY_PV=$(replace_version_separator 3 '-')
+inherit golang-build systemd git-r3
 
 DESCRIPTION="Client for keybase.io"
 HOMEPAGE="https://keybase.io/"
@@ -14,53 +12,43 @@ EGIT_REPO_URI="https://github.com/keybase/client.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="+suid"
+IUSE=""
 
 DEPEND="
-	>=dev-lang/go-1.6:0
-	app-crypt/kbfs"
+	~app-crypt/kbfs-${PV}"
 RDEPEND="
 	app-crypt/gnupg"
 
-S="${WORKDIR}/src/github.com/keybase/client"
-
-pkg_setup() {
-	enewuser keybasehelper
-}
-
 src_unpack() {
 	git-r3_src_unpack
-	mkdir -p "$(dirname "${S}")" || die
-	ln -s "${WORKDIR}/${PN}-${MY_PV}" "${S}" || die
+	ln -vs "client" "${P}" || die
+	mkdir -vp "${S}/src/github.com/keybase" || die
+	ln -vs "${S}" "${S}/src/github.com/keybase/client" || die
 }
 
 src_compile() {
-	GOPATH="${WORKDIR}:${S}/go/vendor" \
-		go build -v -x \
-		-tags production \
-		-o "${T}/keybase" \
-		github.com/keybase/client/go/keybase || die
-	GOPATH="${WORKDIR}" \
-		go build -v -x \
-		-tags production \
-		-o "${T}/keybase-mount-helper" \
-		github.com/keybase/client/go/mounter/keybase-mount-helper || die
+	EGO_PN="github.com/keybase/client/go/keybase" \
+		EGO_BUILD_FLAGS="-tags production -o ${T}/keybase" \
+		golang-build_src_compile
+}
+
+src_test() {
+	EGO_PN="github.com/keybase/client/go/keybase" \
+		golang-build_src_test
 }
 
 src_install() {
 	dobin "${T}/keybase"
-	dodir "/var/lib/keybase"
-	fowners keybasehelper:keybasehelper "/var/lib/keybase"
-	dosym "/tmp/keybase" "/var/lib/keybase/mount1"
-	dobin "${T}/keybase-mount-helper"
-	fowners keybasehelper:keybasehelper "/usr/bin/keybase-mount-helper"
-	use suid && fperms 4755 "/usr/bin/keybase-mount-helper"
 	dobin "${S}/packaging/linux/run_keybase"
 	systemd_douserunit "${S}/packaging/linux/systemd/keybase.service"
+	dodir "/opt/keybase"
+	insinto "/opt/keybase"
+	doins "${S}/packaging/linux/crypto_squirrel.txt"
 }
 
 pkg_postinst() {
-	elog "Run the service: keybase service"
-	elog "Run the client:  keybase login"
-	elog "Restart keybase: run_keybase"
+	elog "Start/Restart keybase: run_keybase"
+	elog "Run the service:       keybase service"
+	elog "Run the client:        keybase login"
+	ewarn "Note that the user keybasehelper is obsolete and can be removed"
 }
