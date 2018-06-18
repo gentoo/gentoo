@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-texlive/texlive-metapost virtual/latex-base
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/feynmf-1.08.tar.gz doc? ( https://dev.gentoo.org/~ulm/distfiles/feynmf-cnl.tar.gz )
-_eclasses_=latex-package	79acad19b9efeec616d0ad70cd117b03
+_eclasses_=latex-package	773c51c2ef26eaff025998531e7c6731
 _md5_=5cb5422fd1761899cc803893ec0dadf5

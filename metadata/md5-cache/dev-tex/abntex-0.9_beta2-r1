@@ -9,5 +9,5 @@ LICENSE=LPPL-1.3c
 RDEPEND=dev-texlive/texlive-latex dev-texlive/texlive-latexrecommended lyx? ( app-office/lyx ) virtual/latex-base
 SLOT=0
 SRC_URI=mirror://sourceforge/abntex/abntex-0.9-beta2.tar.gz doc? ( mirror://sourceforge/abntex/abntex-doc-0.9-beta2.tar.gz )
-_eclasses_=latex-package	79acad19b9efeec616d0ad70cd117b03
+_eclasses_=latex-package	773c51c2ef26eaff025998531e7c6731
 _md5_=a2ddd450141688b4d2301c20a88f0be8
