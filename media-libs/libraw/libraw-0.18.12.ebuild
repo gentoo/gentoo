@@ -1,14 +1,15 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit multilib-minimal toolchain-funcs
 
 MY_PN=LibRaw
 MY_PV="${PV/_b/-B}"
 MY_P="${MY_PN}-${MY_PV}"
-# demosaic package wasn't bumped to 0.18.9 version
+# demosaic package sometimes doesn't get bumped.
+# Otherwise you can set it to ${PV}.
 DEMOSAIC_PV="0.18.8"
 
 DESCRIPTION="LibRaw is a library for reading RAW files obtained from digital photo cameras"
