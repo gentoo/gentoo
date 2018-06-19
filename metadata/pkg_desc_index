@@ -21,7 +21,7 @@ app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring yo
 app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/speech-dispatcher 0.8.1 0.8.7: Speech synthesis interface
-app-accessibility/speech-tools 2.1-r2 2.1-r4: Speech tools for Festival Text to Speech engine
+app-accessibility/speech-tools 2.1-r4: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
@@ -3017,7 +3017,7 @@ dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libassuan 2.4.3-r1 2.5.1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
-dev-libs/libatomic_ops 7.2d 7.4.2 7.6.0 7.6.4: Implementation for atomic memory update operations
+dev-libs/libatomic_ops 7.6.4: Implementation for atomic memory update operations
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
