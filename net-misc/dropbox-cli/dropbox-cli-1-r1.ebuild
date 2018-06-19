@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1
 
 DESCRIPTION="Cli interface for dropbox daemon (python)"
-HOMEPAGE="http://www.dropbox.com/"
+HOMEPAGE="https://www.dropbox.com/"
 SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.py.xz"
 
 LICENSE="GPL-3"
