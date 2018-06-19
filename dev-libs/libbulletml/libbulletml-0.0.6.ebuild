@@ -22,6 +22,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-gcc46.patch
 	rm -r boost || die
+
+	# don't override the system-wide flags
+	sed -i -e '/^CFLAGS =/d;/^CXXFLAGS =/d' src/Makefile src/ygg/Makefile
 }
 
 src_compile() {
