@@ -14,11 +14,11 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="debug static-libs"
+IUSE="debug nls static-libs"
 
 DEPEND="
 	sys-devel/autoconf
-	sys-devel/gettext
+	nls? ( sys-devel/gettext )
 "
 
 PATCHES=(
@@ -40,6 +40,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		--enable-shared $(use_enable static-libs static)
+		$(use_enable nls)
 		--libexecdir="${EPREFIX}"/usr/$(get_libdir)
 		$(use_enable debug)
 	)
