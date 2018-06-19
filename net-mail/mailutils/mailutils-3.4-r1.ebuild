@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/mailutils/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="berkdb bidi +clients gdbm sasl guile ipv6 kerberos kyotocabinet ldap \
 	mysql nls pam postgres python servers ssl static-libs +threads tcpd \
 	tokyocabinet"
@@ -29,7 +29,7 @@ RDEPEND="!mail-client/nmh
 	berkdb? ( sys-libs/db:= )
 	bidi? ( dev-libs/fribidi )
 	gdbm? ( sys-libs/gdbm )
-	guile? ( dev-scheme/guile:= )
+	guile? ( dev-scheme/guile:12/22 )
 	kerberos? ( virtual/krb5 )
 	kyotocabinet? ( dev-db/kyotocabinet )
 	ldap? ( net-nds/openldap )
@@ -62,6 +62,7 @@ src_prepare() {
 		sed -i -e /^INCLUDES/"s:$:$(mysql_config --include):" \
 			sql/Makefile.am || die
 	fi
+	eapply "${FILESDIR}/${P}-MH-testsuite.patch"
 	eapply_user
 	eautoreconf
 }
