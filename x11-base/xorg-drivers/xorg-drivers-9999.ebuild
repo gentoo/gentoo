@@ -63,7 +63,7 @@ PDEPEND="
 	input_devices_joystick?    ( >=x11-drivers/xf86-input-joystick-1.6.3 )
 	input_devices_keyboard?    ( x11-drivers/xf86-input-keyboard )
 	input_devices_libinput?    ( >=x11-drivers/xf86-input-libinput-0.27.1 )
-	input_devices_mouse?       ( x11-drivers/xf86-input-mouse )
+	input_devices_mouse?       ( >=x11-drivers/xf86-input-mouse-1.9.3 )
 	input_devices_tslib?       ( x11-drivers/xf86-input-tslib )
 	input_devices_vmmouse?     ( x11-drivers/xf86-input-vmmouse )
 	input_devices_void?        ( x11-drivers/xf86-input-void )
