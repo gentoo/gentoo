@@ -49,11 +49,11 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		# we install attr into /bin, so we need the shared lib with it
 		gen_usr_ldscript -a attr
-
-		# Add a wrapper until people upgrade.
-		insinto /usr/include/attr
-		newins "${FILESDIR}"/xattr-shim.h xattr.h
 	fi
+
+	# Add a wrapper until people upgrade.
+	insinto /usr/include/attr
+	newins "${FILESDIR}"/xattr-shim.h xattr.h
 }
 
 multilib_src_install_all() {
