@@ -721,8 +721,8 @@ net-wireless/cpyrit-cuda
 # Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
 # Coordinated conversion to wxGTK:3.0-gtk3
 # Drop mask after migration of existing wxGTK:3.0 users
-=net-ftp/filezilla-3.31.0-r300
 =net-ftp/filezilla-3.33.0-r300
+=net-ftp/filezilla-3.34.0-r300
 =dev-util/codeblocks-17.12-r300
 
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
