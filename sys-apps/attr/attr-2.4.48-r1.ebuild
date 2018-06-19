@@ -46,6 +46,26 @@ multilib_src_configure() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
+	# Sanity check until we track down why this is happening. #644048
+	local lib="${ED}/usr/$(get_libdir)/libattr.so.1"
+	if [[ -e ${lib} ]] ; then
+		local versions=$(readelf -V "${lib}")
+		local symbols=$(readelf -sW "${lib}")
+		if [[ "${versions}" != *"ATTR_1.0"* || \
+		      "${versions}" != *"ATTR_1.1"* || \
+		      "${versions}" != *"ATTR_1.2"* || \
+		      "${versions}" != *"ATTR_1.3"* || \
+		      "${symbols}" != *"getxattr@ATTR_1.0"* ]] ; then
+			echo "# readelf -V ${lib}"
+			echo "${versions}"
+			echo "# readelf -sW ${lib}"
+			echo "${symbols}"
+			die "symbol version sanity check failed; please comment on https://bugs.gentoo.org/644048"
+		else
+			einfo "${lib} passed symbol checks"
+		fi
+	fi
+
 	if multilib_is_native_abi; then
 		# we install attr into /bin, so we need the shared lib with it
 		gen_usr_ldscript -a attr
