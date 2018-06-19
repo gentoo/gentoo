@@ -125,7 +125,7 @@ src_compile() {
 src_install() {
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LINKFLAGS="${LDFLAGS}" \
 	LIBDIR="${EPREFIX}/usr/$(get_libdir)" escons ${myesconsargs[@]} \
-		install_root="${ED}"/usr install
+		install_root="${ED%/}"/usr install
 
 	dodoc README Mixxx-Manual.pdf
 }
