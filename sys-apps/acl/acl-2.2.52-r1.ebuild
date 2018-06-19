@@ -7,7 +7,7 @@ inherit eutils libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.src.tar.gz"
+SRC_URI="mirror://nongnu/${PN}/${P}.src.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
