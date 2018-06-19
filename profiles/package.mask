@@ -357,18 +357,6 @@ kde-frameworks/kdelibs
 kde-frameworks/kdelibs-env
 kde-plasma/qguiplatformplugin_kde
 
-# Joonas Niilola <juippis@gmail.com> (18 May 2018)
-# Unmaintained, bugs open without activity, makes users
-# install ancient version of enlightenment by typing
-# 'emerge enlightenment' due to obnoxious package slotting.
-# Bug #656020. Removal in ~30 days
-=x11-wm/enlightenment-1.0.17
-=x11-wm/enlightenment-0.16.9999
-app-doc/edox-data
-x11-misc/e16keyedit
-x11-misc/e16menuedit2
-x11-plugins/epplets
-
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # Breaking consumers by internal header cleanup and removal of deprecated
 # qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
