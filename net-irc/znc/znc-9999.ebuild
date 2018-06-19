@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit cmake-utils python-single-r1 readme.gentoo-r1 systemd user
 
-GTEST_VER="1.8.0"
-GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
+GTEST_VER="ba96d0b1161f540656efdaed035b3c062b60e006" # 1.8.0 is too old, but newer version not released yet
+GTEST_URL="https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
 if [[ ${PV} == *9999* ]]; then
@@ -49,7 +49,12 @@ DEPEND="
 	nls? ( sys-devel/gettext )
 	perl? ( >=dev-lang/swig-3.0.0 )
 	python? ( >=dev-lang/swig-3.0.0 )
+	test? ( dev-qt/qtnetwork:5 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.0-inttest-dir.patch
+)
 
 pkg_setup() {
 	if use python; then
@@ -71,6 +76,9 @@ src_prepare() {
 		rm modules/modpython/generated.tar.gz || die
 	fi
 
+	sed -i -e "s|DZNC_BIN_DIR:path=|DZNC_BIN_DIR:path=${T}/inttest|" \
+		test/CMakeLists.txt || die
+
 	cmake-utils_src_prepare
 }
 
@@ -90,8 +98,8 @@ src_configure() {
 	)
 
 	if [[ ${PV} != *9999* ]] && use test; then
-		export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googletest"
-		export GMOCK_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googlemock"
+		export GTEST_ROOT="${WORKDIR}/googletest-${GTEST_VER}/googletest"
+		export GMOCK_ROOT="${WORKDIR}/googletest-${GTEST_VER}/googlemock"
 	fi
 
 	cmake-utils_src_configure
@@ -99,6 +107,27 @@ src_configure() {
 
 src_test() {
 	cmake-utils_src_make unittest
+	if has network-sandbox ${FEATURES}; then
+		cmake-utils_src_make install DESTDIR=${T}/inttest
+		local filter='-'
+		if ! use perl; then
+			filter="${filter}:ZNCTest.Modperl*"
+		fi
+		if ! use python; then
+			filter="${filter}:ZNCTest.Modpython*"
+		fi
+		# CMAKE_PREFIX_PATH and CXXFLAGS are needed for znc-buildmod
+		# invocations from inside the test
+		GTEST_FILTER="${filter}" ZNC_UNUSUAL_ROOT=${T}/inttest \
+			CMAKE_PREFIX_PATH=${T}/inttest/usr/share/znc/cmake \
+			CXXFLAGS="${CXXFLAGS} -isystem ${T}/inttest/usr/include" \
+			cmake-utils_src_make inttest
+	else
+		# TODO: don't require sandbox after
+		# https://github.com/znc/znc/pull/1363 is implemented
+		ewarn "FEATURES=-network-sandbox; Skipping integration tests which"
+		ewarn "temporary open local ports."
+	fi
 }
 
 src_install() {
