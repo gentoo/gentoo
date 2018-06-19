@@ -531,11 +531,6 @@ sys-libs/uclibc
 # mpv >= 0.28.0 requires currently masked ffmpeg >= 4.0.
 >=media-video/mpv-0.28.0
 
-# Lars Wendler <polynomial-c@gentoo.org> (10 Jan 2018)
-# Mask followup bugfixes for =sys-apps/attr-2.4.48 as well until proper
-# testing has been conducted.
-=sys-apps/acl-2.2.52-r2
-
 # Matthias Maier <tamiko@gentoo.org> (26 Dec 2017)
 # gcc depends on mpfr and this version changes soname. Spare users with
 # FEATURES=-preserve-libs from completely frying their system.
