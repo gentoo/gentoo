@@ -11,7 +11,7 @@ SRC_URI="https://github.com/scim-im/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="doc gtk3 qt4"
 
 RDEPEND="x11-libs/libX11
