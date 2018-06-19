@@ -29,8 +29,8 @@ MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
 
-inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.60 \
-		pax-utils xdg-utils autotools mozlinguas-v2
+inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils llvm \
+		mozconfig-v6.60 pax-utils xdg-utils autotools mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="http://www.mozilla.com/firefox"
@@ -78,6 +78,10 @@ if [[ -z $GMP_PLUGIN_LIST ]]; then
 	GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
 fi
 
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}"
+}
+
 pkg_setup() {
 	moz_pkgsetup
 
@@ -99,6 +103,8 @@ pkg_setup() {
 	fi
 
 	addpredict /proc/self/oom_score_adj
+
+	llvm_pkg_setup
 }
 
 pkg_pretend() {
