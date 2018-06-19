@@ -18,6 +18,7 @@ RDEPEND="virtual/libiconv
 		 >=dev-libs/libsigsegv-2.4
 		 >=dev-libs/ffcall-1.10
 		 dbus? ( sys-apps/dbus )
+		 elibc_glibc? ( <=sys-libs/glibc-2.26:2.2 )
 		 fastcgi? ( dev-libs/fcgi )
 		 gdbm? ( sys-libs/gdbm )
 		 gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6:2.0 )
