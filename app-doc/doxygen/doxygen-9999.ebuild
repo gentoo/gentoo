@@ -32,7 +32,7 @@ RDEPEND="app-text/ghostscript-gpl
 		media-gfx/graphviz
 		media-libs/freetype
 	)
-	doxysearch? ( dev-libs/xapian )
+	doxysearch? ( dev-libs/xapian:= )
 	latex? (
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
