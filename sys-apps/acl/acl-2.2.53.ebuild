@@ -7,7 +7,7 @@ inherit libtool ltprune toolchain-funcs multilib-minimal
 
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
+SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
