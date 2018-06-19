@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://nongnu/attr/attr-2.4.48.tar.gz
 _eclasses_=libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=6ca424447eecd4d2c07be398e241e075
+_md5_=2e58e5bf4e82ce77a42abec899e034d1
