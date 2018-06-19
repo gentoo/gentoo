@@ -23,7 +23,7 @@ RDEPEND="app-crypt/gpgme:=
 	selinux? ( sys-libs/libselinux:= )"
 DEPEND="${RDEPEND}"
 RESTRICT="test"
-REQUIRED_USE="ostree? ( selinux )"
+REQUIRED_USE="!selinux? ( !ostree )"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_prepare() {
