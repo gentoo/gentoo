@@ -24,6 +24,8 @@ SDB_LDAP_VER="1.1.0-fc14"
 
 RRL_PV="${MY_PV}"
 
+NSLINT_DIR="contrib/nslint-3.0a2/"
+
 # SDB-LDAP: http://bind9-ldap.bayour.com/
 
 DESCRIPTION="BIND - Berkeley Internet Name Domain - Name Server"
@@ -38,7 +40,7 @@ LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi idn ipv6
+IUSE="-berkdb +caps dlz dnstap doc filter-aaaa fixed-rrset geoip gost gssapi idn ipv6
 json ldap libressl lmdb mysql odbc postgres python rpz seccomp selinux ssl static-libs
 +threads urandom xml +zlib"
 # sdb-ldap - patch broken
@@ -63,7 +65,7 @@ DEPEND="
 	mysql? ( >=virtual/mysql-4.0 )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
-	idn? ( <net-dns/idnkit-2:= )
+	idn? ( net-dns/idnkit )
 	postgres? ( dev-db/postgresql:= )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
@@ -106,6 +108,9 @@ src_prepare() {
 			-e 's:/etc/rndc.key:/etc/bind/rndc.key:g' \
 			"${i}" || die "sed failed, ${i} doesn't exist"
 	done
+
+	# bug 657654 / CVE-2018-5738
+	epatch "${FILESDIR}/${P}-CVE-2018-5738.patch"
 
 #	if use dlz; then
 #		# sdb-ldap patch as per  bug #160567
@@ -156,7 +161,7 @@ src_configure() {
 		--enable-full-report \
 		--without-readline \
 		$(use_enable caps linux-caps) \
-		$(use_enable dnsrps) \
+		$(use_enable filter-aaaa) \
 		$(use_enable fixed-rrset) \
 		$(use_enable ipv6) \
 		$(use_enable rpz rpz-nsdname) \
