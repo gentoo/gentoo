@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/F1ash/qt-virt-manager"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="smartcard"
+IUSE="smartcard vnc"
 
 DEPEND="
 	dev-qt/qtcore:5
@@ -35,7 +35,7 @@ DEPEND="
 	smartcard? ( >=app-emulation/libcacard-2.5.0 )
 	dev-libs/glib
 	net-misc/spice-gtk
-	net-libs/libvncserver
+	vnc? ( >=net-libs/libvncserver-0.9.11-r1 )
 	app-emulation/libvirt
 "
 RDEPEND="${DEPEND}"
@@ -44,6 +44,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_QT_VERSION=5
 		-DWITH_LIBCACARD="$(usex smartcard ON OFF)"
+		-DWITH_VNC_SUPPORT="$(usex vnc ON OFF)"
 	)
 	cmake-utils_src_configure
 }
