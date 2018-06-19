@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="A tool which replaces copies of a file with hardlinks"
-HOMEPAGE="http://jak-linux.org/projects/hardlink/"
-SRC_URI="http://jak-linux.org/projects/${PN}/${PN}_${PV}.tar.xz"
+HOMEPAGE="https://jak-linux.org/projects/hardlink/"
+SRC_URI="https://jak-linux.org/projects/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
