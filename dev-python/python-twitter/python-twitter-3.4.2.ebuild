@@ -18,12 +18,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-macos"
 IUSE="doc examples test"
 
+# https://bugs.gentoo.org/624916
 RDEPEND="
+	!dev-python/twitter
 	dev-python/oauth2[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/requests-oauthlib[${PYTHON_USEDEP}]"
-
+	dev-python/requests-oauthlib[${PYTHON_USEDEP}]
+"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
