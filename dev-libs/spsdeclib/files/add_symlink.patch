@@ -1,0 +1,16 @@
+--- a/Makefile.in	2014-06-17 22:55:04.000000000 +0200
++++ b/Makefile.in	2018-01-07 04:07:07.865950231 +0100
+@@ -15,6 +15,8 @@
+ LIBS		= @LIB_LIBS@
+ 
+ LIBRARY		= @LIBRARY@
++SYMLINK1	= lib@PACKAGE@.so
++SYMLINK2	= lib@PACKAGE@.so.5
+ OBJECTS		= @EXTRA_OBJECTS@ ../Codec/CTRawCodec.o ../Codec/CTRawCodecDecompressor.o ../Codec/DiskEncoding.o ../Core/BaseFile.o ../Core/BitBuffer.o ../Core/CRC.o ../Core/DiskFile.o ../Core/MemoryFile.o CapsAPI.o CapsFDCEmulator.o CapsFile.o CapsFormatMFM.o CapsImage.o CapsImageStd.o CapsLoader.o DiskImage.o DiskImageFactory.o stdafx.o StreamCueImage.o StreamImage.o
+ 
+ 
+@@ -50,3 +52,4 @@
+ install:
+ 	install -d $(DESTDIR)$(libdir)
+ 	install $(LIBRARY) $(DESTDIR)$(libdir)/$(LIBRARY)
++	cd $(DESTDIR)$(libdir) && ln -sf $(SYMLINK2) ${SYMLINK1} && ln -sf $(LIBRARY) ${SYMLINK2}
