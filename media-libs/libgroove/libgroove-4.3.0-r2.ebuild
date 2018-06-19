@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,8 +14,8 @@ SLOT="0/4"
 KEYWORDS="~amd64"
 IUSE="+chromaprint libav +loudness +sound static-libs"
 
-DEPEND="libav? ( media-video/libav )
-	!libav? ( media-video/ffmpeg )
+DEPEND="libav? ( <=media-video/libav-12.9999 )
+	!libav? ( <media-video/ffmpeg-4 )
 	chromaprint? ( media-libs/chromaprint )
 	loudness? ( media-libs/libebur128[speex(+)] )
 	sound? ( media-libs/libsdl2[sound] )"
