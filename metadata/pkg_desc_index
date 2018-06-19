@@ -8353,7 +8353,7 @@ net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
 net-analyzer/pmacct 1.6.2: A network tool to gather IP traffic information
-net-analyzer/pnp4nagios 0.6.24 0.6.25-r2 0.6.26-r9: A performance data analyzer for nagios
+net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
