@@ -9069,7 +9069,7 @@ net-proxy/http-replicator 3.0-r7: Proxy cache for Gentoo packages
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/polipo 1.1.1-r4: A caching web proxy
 net-proxy/privoxy 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
-net-proxy/squid 3.5.26 3.5.27-r1: A full-featured web proxy cache
+net-proxy/squid 3.5.27-r1: A full-featured web proxy cache
 net-proxy/squidclamav 6.8: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/sshuttle 0.78.3-r2: Transparent proxy server that works as a poor man's VPN using ssh
