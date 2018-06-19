@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
+# Needs dev-libs/libmaxminddb which isn't keyworded
+www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
+
 # Jan Vesely <jano.vesely@gmail.com> (15 June 2018)
 # Mesa clover only works on r600 or radeonsi GPUs. The corresponding
 # video_cards useflags are not available on arm
