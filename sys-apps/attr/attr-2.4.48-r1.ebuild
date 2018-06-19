@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 inherit libtool ltprune toolchain-funcs multilib-minimal
 
@@ -14,11 +14,11 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="debug static-libs"
+IUSE="debug nls static-libs"
 
 DEPEND="
 	sys-devel/autoconf
-	sys-devel/gettext
+	nls? ( sys-devel/gettext )
 "
 
 PATCHES=(
@@ -39,7 +39,9 @@ multilib_src_configure() {
 
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
-		--enable-shared $(use_enable static-libs static)
+		--enable-shared
+		$(use_enable static-libs static)
+		$(use_enable nls)
 		--libexecdir="${EPREFIX}"/usr/$(get_libdir)
 		$(use_enable debug)
 	)
@@ -52,6 +54,10 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		# we install attr into /bin, so we need the shared lib with it
 		gen_usr_ldscript -a attr
+
+		# Add a wrapper until people upgrade.
+		insinto /usr/include/attr
+		newins "${FILESDIR}"/xattr-shim.h xattr.h
 	fi
 }
 
