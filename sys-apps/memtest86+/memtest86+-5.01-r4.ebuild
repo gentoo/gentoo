@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit mount-boot eutils toolchain-funcs
 
@@ -12,14 +12,18 @@ SRC_URI="http://www.memtest.org/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="floppy iso serial"
+IUSE="+boot floppy iso serial"
 
 BOOTDIR="/boot/memtest86plus"
-QA_PRESTRIPPED="${BOOTDIR}/memtest"
-QA_FLAGS_IGNORED="${BOOTDIR}/memtest"
+QA_PRESTRIPPED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
+QA_FLAGS_IGNORED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
 
 RDEPEND="floppy? ( >=sys-boot/grub-0.95:0 sys-fs/mtools )"
 DEPEND="iso? ( app-cdr/cdrtools )"
+
+pkg_pretend() {
+	use boot && mount-boot_pkg_pretend
+}
 
 src_prepare() {
 	sed -i -e 's,0x10000,0x100000,' memtest.lds || die
@@ -39,6 +43,7 @@ src_prepare() {
 			config.h \
 			|| die "sed failed"
 	fi
+	default
 }
 
 src_configure() {
@@ -56,7 +61,12 @@ src_compile() {
 src_test() { :; }
 
 src_install() {
-	insinto "${BOOTDIR}"
+	if use boot; then
+		insinto "${BOOTDIR}"
+		doins memtest memtest.bin
+	fi
+
+	insinto /usr/share/${PN}
 	use iso && newins mt*.iso memtest.iso
 	doins memtest memtest.bin
 
@@ -71,20 +81,34 @@ src_install() {
 	fi
 }
 
-pkg_postinst() {
-	mount-boot_pkg_postinst
+pkg_preinst() {
+	use boot && mount-boot_pkg_preinst
+}
 
-	elog "memtest86+ has been installed in ${BOOTDIR}/"
-	elog "You may wish to update your bootloader configs by adding these lines:"
-	elog " - For grub2 just run grub-mkconfig, a configuration file is installed"
-	elog "   as /etc/grub.d/39_${PN}"
-	elog " - For grub legacy: (replace '?' with correct numbers for your boot partition)"
-	elog "    > title=${PN}"
-	elog "    > root (hd?,?)"
-	elog "    > kernel ${BOOTDIR}/memtest.bin"
-	elog " - For lilo:"
-	elog "    > image  = ${BOOTDIR}/memtest.bin"
-	elog "    > label  = ${PN}"
-	elog ""
-	elog "Note: For older configs, you might have to change from 'memtest' to 'memtest.bin'."
+pkg_postinst() {
+	if use boot; then
+		mount-boot_pkg_postinst
+
+		elog "memtest86+ has been installed in ${BOOTDIR}/"
+		elog "You may wish to update your bootloader configs by adding these lines:"
+		elog " - For grub2 just run grub-mkconfig, a configuration file is installed"
+		elog "   as /etc/grub.d/39_${PN}"
+		elog " - For grub legacy: (replace '?' with correct numbers for your boot partition)"
+		elog "    > title=${PN}"
+		elog "    > root (hd?,?)"
+		elog "    > kernel ${BOOTDIR}/memtest.bin"
+		elog " - For lilo:"
+		elog "    > image  = ${BOOTDIR}/memtest.bin"
+		elog "    > label  = ${PN}"
+		elog ""
+		elog "Note: For older configs, you might have to change from 'memtest' to 'memtest.bin'."
+	fi
+}
+
+pkg_prerm() {
+	use boot && mount-boot_pkg_prerm
+}
+
+pkg_postrm() {
+	use boot && mount-boot_pkg_postrm
 }
