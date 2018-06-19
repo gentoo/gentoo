@@ -26,5 +26,3 @@ RDEPEND="${DEPEND}"
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
 PATCHES=( "${FILESDIR}/makefile.patch" )
-
-QA_WX_LOAD="usr/bin/stress-ng"
