@@ -23,11 +23,7 @@ DEPEND="app-text/asciidoc
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
-	sed -i \
-		-e "s:udiskie.__version__:2:" \
-		-e 's:gtk-update-icon-cache:true:' \
-		setup.py || die
-
+	setup.py || die
 	distutils-r1_src_prepare
 }
 
@@ -39,10 +35,6 @@ src_compile() {
 src_install() {
 	distutils-r1_src_install
 	doman doc/${PN}.8
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
