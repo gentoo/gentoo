@@ -18,7 +18,7 @@ HOMEPAGE="http://x265.org/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/161"
+SLOT="0/160"
 IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
