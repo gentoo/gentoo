@@ -13,14 +13,17 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/xz-utils"
-RDEPEND="net-firewall/iptables[ipv6]
+RDEPEND="
+	net-firewall/iptables[ipv6]
 	sys-apps/iproute2[-minimal]
+	sys-apps/net-tools
 	virtual/modutils
 	|| (
 		net-misc/wget
 		net-misc/curl
-	)"
+	)
+"
+DEPEND=""
 
 pkg_setup() {
 	local KCONFIG_OPTS="~NF_CONNTRACK_IPV4 ~NF_CONNTRACK_MARK ~NF_NAT ~NF_NAT_FTP ~NF_NAT_IRC \
