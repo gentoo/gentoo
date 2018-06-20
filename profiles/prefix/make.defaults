@@ -10,8 +10,9 @@ USE="readline zlib ncurses ssl"
 
 # Python 3.6 is unmasked for us, build stuff by default with latest to
 # avoid unnecessary builds
-PYTHON_TARGETS="python2_7 python3_6"
-PYTHON_SINGLE_TARGET="python3_6"
+# NOTE: Both are incremental variables: Need to drop obsolete base values.
+PYTHON_TARGETS="python2_7 -python3_5 python3_6"
+PYTHON_SINGLE_TARGET="-python3_5 python3_6"
 
 # Move away from ruby22 fast forward to ruby24, we don't have ruby23
 RUBY_TARGETS="ruby24"
