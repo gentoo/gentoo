@@ -191,7 +191,7 @@ src_prepare() {
 			einfo "Disabling known non-working MT AES cipher per default ..."
 
 			cat > "${T}"/disable_mtaes.conf <<- EOF
-			
+
 			# HPN's Multi-Threaded AES CTR cipher is currently known to be broken
 			# and therefore disabled per default.
 			DisableMTAES yes
