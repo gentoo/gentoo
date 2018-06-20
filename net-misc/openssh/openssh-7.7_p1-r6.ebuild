@@ -345,6 +345,9 @@ tweak_ssh_configs() {
 
 	# Allow client to pass locale environment variables. #367017
 	AcceptEnv ${locale_vars[*]}
+
+	# Allow client to pass COLORTERM to match TERM. #658540
+	AcceptEnv COLORTERM
 	EOF
 
 	# Then the client config.
@@ -352,6 +355,9 @@ tweak_ssh_configs() {
 
 	# Send locale environment variables. #367017
 	SendEnv ${locale_vars[*]}
+
+	# Send COLORTERM to match TERM. #658540
+	SendEnv COLORTERM
 	EOF
 
 	if use pam ; then
