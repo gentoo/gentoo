@@ -43,7 +43,7 @@ src_configure() {
 		$(use_with libevent) \
 		$(use_with libev) \
 		$(use_with libuv) \
-		$(use_with threads libpthread)
+		$(use_with threads libpthread) \
 		$(use_enable static-libs static)
 }
 
