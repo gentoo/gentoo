@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
@@ -20,6 +20,7 @@ IUSE="doc test"
 RDEPEND="
 	dev-python/dominate[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/visitor[${PYTHON_USEDEP}]
 "
 DEPEND="
