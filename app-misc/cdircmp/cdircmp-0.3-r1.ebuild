@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Compare directories and select files to copy"
 HOMEPAGE="http://home.hccnet.nl/paul.schuurmans/"
-SRC_URI="http://home.hccnet.nl/paul.schuurmans/download/${P}.tar.gz"
+SRC_URI="http://home.hccnet.nl/paul.schuurmans/linux/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
