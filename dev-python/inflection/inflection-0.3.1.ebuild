@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
-DESCRIPTION="A port of Ruby on Rails inflector to Python"
+DESCRIPTION="A port of Ruby on Rails' inflector to Python"
 HOMEPAGE="https://github.com/jpvanhal/inflection"
 # PyPI tarballs don't include doc
 # https://github.com/jpvanhal/inflection/pull/12
@@ -28,14 +28,12 @@ DEPEND="
 "
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		sphinx-build docs docs/_build/html || die
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
 	py.test || die "Tests failed with ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }
