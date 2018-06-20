@@ -2973,7 +2973,7 @@ dev-libs/girara 0.2.7 0.2.8: UI library that focuses on simplicity and minimalis
 dev-libs/gjs 1.46.0 1.48.7: Javascript bindings for GNOME
 dev-libs/glib 2.50.3-r1 2.52.3: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.0: Utilities for creating and parsing messages using MIME
-dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.2: Library for arbitrary-precision arithmetic on different type of numbers
+dev-libs/gmp 4.3.2-r1 6.1.2: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gobject-introspection 1.50.0 1.52.1: Introspection system for GObject-based libraries
 dev-libs/gobject-introspection-common 1.50.0 1.52.1: Build infrastructure for GObject Introspection
 dev-libs/gom 0.3.2: GObject to SQLite object mapper library
