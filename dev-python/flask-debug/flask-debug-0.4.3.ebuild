@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 MY_PN="Flask-Debug"
-DESCRIPTION="Configures Flask applications in a canonical way"
+DESCRIPTION="Flask extension that displays various debugging insights during development"
 HOMEPAGE="https://github.com/mbr/Flask-Debug"
 # PyPI tarballs don't include tests
 # https://github.com/mbr/Flask-Debug/pull/2

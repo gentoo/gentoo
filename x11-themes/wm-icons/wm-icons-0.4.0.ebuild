@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit readme.gentoo-r1
 
 DESCRIPTION="A Large Assortment of Beautiful Themed Icons, Created with FVWM in mind"
 HOMEPAGE="http://wm-icons.sourceforge.net/"
@@ -12,11 +13,24 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="virtual/awk dev-lang/perl"
-DEPEND="${RDEPEND} sys-devel/autoconf sys-devel/automake sys-apps/sed"
+RDEPEND="
+	virtual/awk
+	dev-lang/perl
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-build.patch )
+
+DOC_CONTENTS="
+	Users can use the wm-icons-config utility to create aliases in their
+	home directory, FVWM users can then set this in their ImagePath.
+	Sample configurations for fvwm1, fvwm2, fvwm95 and scwm are available in
+	/usr/share/wm-icons
+"
 
 src_configure() {
-	econf --enable-all-sets \
+	econf \
+		--enable-all-sets \
 		--enable-icondir="${EPREFIX}"/usr/share/icons/wm-icons
 }
 
@@ -28,13 +42,9 @@ src_install() {
 	"${ED%/}/usr/bin/wm-icons-config" --force --user-dir="${ED%/}/usr/share/icons/wm-icons" --defaults || die
 
 	einstalldocs
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	einfo "Users can use the wm-icons-config utility to create aliases in their"
-	einfo "home directory, FVWM users can then set this in their ImagePath"
-	einfo
-	einfo "Sample configurations for fvwm1, fvwm2, fvwm95 and scwm are available in"
-	einfo "/usr/share/wm-icons"
-	einfo
+	readme.gentoo_print_elog
 }

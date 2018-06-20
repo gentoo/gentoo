@@ -1,24 +1,22 @@
---- a/configure.in
-+++ b/configure.in
-@@ -129,7 +129,7 @@ AC_OUTPUT(
- 	etc/debian-menu-system/Makefile
- 	devel/Makefile
- 	devel/bin/Makefile
--	bin/Makefile
-+	
- 	bin/wm-icons-config
- 	doc/Makefile
- 	doc/wm-icons.lsm
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -13,8 +13,8 @@ SUBDIRS = bin doc icons etc devel rpm
- # => icondir) is different for the build and install phases, as it
+@@ -14,7 +14,7 @@
  # is for a distribution package building.
+ # Set the default icon set aliases (symlinks).
  install-data-local:
--	# set the default icon set aliases (symlinks)
 -	$(bindir)/wm-icons-config --user-dir="$(icondir)" --defaults --quiet
-+# set the default icon set aliases (symlinks)
-+	true --user-dir="$(icondir)" --defaults --quiet
++	true
+ 
+ wm-configs _pack-symlinks _unpack-symlinks:
+	cd devel/bin && $(MAKE) $(AM_MAKEFLAGS) $@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -417,7 +417,7 @@
+ # is for a distribution package building.
+ # Set the default icon set aliases (symlinks).
+ install-data-local:
+-	$(bindir)/wm-icons-config --user-dir="$(icondir)" --defaults --quiet
++	true
  
  wm-configs _pack-symlinks _unpack-symlinks:
  	cd devel/bin && $(MAKE) $(AM_MAKEFLAGS) $@
