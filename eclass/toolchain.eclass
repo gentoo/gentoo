@@ -1034,7 +1034,7 @@ toolchain_src_configure() {
 			confgcc+=( --enable-shared )
 		fi
 		case ${CHOST} in
-		mingw*|*-mingw*|*-cygwin)
+		mingw*|*-mingw*)
 			confgcc+=( --enable-threads=win32 ) ;;
 		*)
 			confgcc+=( --enable-threads=posix ) ;;
