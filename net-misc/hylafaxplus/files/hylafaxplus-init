@@ -1,9 +1,9 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Author Geaaru
 # Distributed under the terms of the GNU General Public License v2
 
-opts="zap"
+extra_commands="zap"
 
 depend() {
 	use lo
