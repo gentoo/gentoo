@@ -128,7 +128,7 @@ else
 	S=${WORKDIR}/${VER_PREFIX}${ROS_REPO_URI##*/}-${PV}${VER_SUFFIX}/${ROS_SUBDIR}
 fi
 
-HOMEPAGE="http://wiki.ros.org/${PN}"
+HOMEPAGE="https://wiki.ros.org/${PN} ${ROS_REPO_URI}"
 
 # @FUNCTION: ros-catkin_src_prepare
 # @DESCRIPTION:
