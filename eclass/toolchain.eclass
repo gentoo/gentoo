@@ -1722,9 +1722,9 @@ toolchain_src_install() {
 	S="${WORKDIR}"/build emake -j1 DESTDIR="${D}" install || die
 
 	# Punt some tools which are really only useful while building gcc
-	find "${D}" -name install-tools -prune -type d -exec rm -rf "{}" \;
+	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
 	# This one comes with binutils
-	find "${D}" -name libiberty.a -delete
+	find "${ED}" -name libiberty.a -delete
 
 	# Move the libraries to the proper location
 	gcc_movelibs
@@ -1733,7 +1733,7 @@ toolchain_src_install() {
 	if ! is_crosscompile ; then
 		local EXEEXT
 		eval $(grep ^EXEEXT= "${WORKDIR}"/build/gcc/config.log)
-		[[ -r ${D}${BINPATH}/gcc${EXEEXT} ]] || die "gcc not found in ${D}"
+		[[ -r ${D}${BINPATH}/gcc${EXEEXT} ]] || die "gcc not found in ${ED}"
 	fi
 
 	dodir /etc/env.d/gcc
@@ -1812,7 +1812,7 @@ toolchain_src_install() {
 			|| prepman "${DATAPATH#${EPREFIX}}"
 	fi
 	# prune empty dirs left behind
-	find "${D}" -depth -type d -delete 2>/dev/null
+	find "${ED}" -depth -type d -delete 2>/dev/null
 
 	# install testsuite results
 	if use regression-test; then
@@ -1968,7 +1968,7 @@ gcc_movelibs() {
 	for FROMDIR in ${removedirs} ; do
 		rmdir "${D}"${FROMDIR} >& /dev/null
 	done
-	find -depth "${D}" -type d -exec rmdir {} + >& /dev/null
+	find -depth "${ED}" -type d -exec rmdir {} + >& /dev/null
 }
 
 # make sure the libtool archives have libdir set to where they actually
