@@ -17,8 +17,9 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Jun 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (20 Jun 2018)
 # dev-python/PyQt5 is not stable.
+media-sound/pulseaudio qt5
 net-print/hplip qt5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Mar 2018)
