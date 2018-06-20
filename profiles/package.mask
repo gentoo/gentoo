@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (20 Jun 2018)
+# No reverse deps after removal of app-i18n/fbiterm
+# Removal in 30 days. Bug #658528
+x11-libs/libiterm-mbt
+
 # Michał Górny <mgorny@gentoo.org> (20 Jun 2018)
 # Multiple serious bugs.  Upstream does not support Gentoo, and getting
 # any fixes applied is very difficult.  Regularly fails to build.
