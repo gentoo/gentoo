@@ -8,8 +8,6 @@
 # ssl:       encrypted connections are a nice feature
 USE="readline zlib ncurses ssl"
 
-FEATURES="collision-protect"
-
 # Python 3.6 is unmasked for us, build stuff by default with latest to
 # avoid unnecessary builds
 PYTHON_TARGETS="python2_7 python3_6"
