@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+EAPI=7
+PYTHON_COMPAT=( pypy python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
@@ -20,6 +20,7 @@ IUSE="doc test"
 RDEPEND="
 	dev-python/dominate[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/visitor[${PYTHON_USEDEP}]
 	dev-python/wtforms[${PYTHON_USEDEP}]
 "
@@ -30,11 +31,13 @@ DEPEND="
 		dev-python/flask-debug[${PYTHON_USEDEP}]
 		dev-python/flask-nav[${PYTHON_USEDEP}]
 		dev-python/flask-wtf[${PYTHON_USEDEP}]
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? (
+		dev-python/alabaster[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	)
 "
 
 python_prepare_all() {
@@ -43,15 +46,13 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		sphinx-build docs docs/_build/html || die
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
 	# Skip one test which requires network access
 	py.test -k "not test_versions_match" || die "Tests failed with ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
 }
