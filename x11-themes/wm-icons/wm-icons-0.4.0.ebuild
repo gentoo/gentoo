@@ -25,7 +25,7 @@ DOC_CONTENTS="
 	Users can use the wm-icons-config utility to create aliases in their
 	home directory, FVWM users can then set this in their ImagePath.
 	Sample configurations for fvwm1, fvwm2, fvwm95 and scwm are available in
-        /usr/share/wm-icons
+	/usr/share/wm-icons
 "
 
 src_configure() {
