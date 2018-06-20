@@ -278,11 +278,6 @@ games-puzzle/hoh-bin
 games-sports/miniracer
 games-strategy/heroes3-demo
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't build (#655174), not required by any package, upstream dead for a
-# long time. Removal in a month.
-x11-themes/wm-icons
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
