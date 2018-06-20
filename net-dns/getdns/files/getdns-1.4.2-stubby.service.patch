@@ -1,0 +1,16 @@
+diff -ur a/stubby/systemd/stubby.service b/stubby/systemd/stubby.service
+--- a/stubby/systemd/stubby.service	2018-05-11 13:25:22.000000000 +0200
++++ b/stubby/systemd/stubby.service	2018-06-20 15:40:23.650164668 +0200
+@@ -3,9 +3,11 @@
+ 
+ [Service]
+ User=stubby
+-DynamicUser=yes
++DynamicUser=no
+ CacheDirectory=stubby
+ WorkingDirectory=/var/cache/stubby
++ExecStartPre=/bin/mkdir -p /var/cache/stubby
++ExecStartPre=/bin/chown stubby:stubby /var/cache/stubby
+ ExecStart=/usr/bin/stubby
+ AmbientCapabilities=CAP_NET_BIND_SERVICE
+ CapabilityBoundingSet=CAP_NET_BIND_SERVICE

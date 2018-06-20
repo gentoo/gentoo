@@ -30,6 +30,11 @@ RDEPEND="
 	stubby? ( sys-libs/libcap:= )
 "
 
+src_prepare() {
+	eapply "${FILESDIR}/${PN}-1.4.2-stubby.service.patch"
+	eapply_user
+}
+
 src_configure() {
 	econf \
 		--runstatedir=/var/run \
