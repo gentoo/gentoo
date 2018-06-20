@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201806-07">
+  <title>Transmission: Remote code execution </title>
+  <synopsis>A vulnerability in Transmission could allow a remote attacker to
+    execute arbitrary RPC commands.
+  </synopsis>
+  <product type="ebuild">transmission</product>
+  <announced>2018-06-20</announced>
+  <revised count="1">2018-06-20</revised>
+  <bug>644406</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-p2p/transmission" auto="yes" arch="*">
+      <unaffected range="ge">2.93</unaffected>
+      <vulnerable range="lt">2.93</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Transmission is a cross-platform BitTorrent client.</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in how Transmission handles access
+      control through the X-Transmission-Session-Id.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary RFC commands or consequently
+      conduct a DNS rebinding attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Transmission users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-p2p/transmission-"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5702">CVE-2018-5702</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-06-11T15:35:43Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-06-20T00:24:22Z">irishluck83</metadata>
+</glsa>
