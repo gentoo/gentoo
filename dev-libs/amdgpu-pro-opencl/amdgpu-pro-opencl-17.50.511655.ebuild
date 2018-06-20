@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit unpacker eapi7-ver
+inherit unpacker
 
 SUPER_PN='amdgpu-pro'
 MY_PV=$(ver_rs 2 '-')
