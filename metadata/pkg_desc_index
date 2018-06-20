@@ -4940,7 +4940,7 @@ dev-python/ipyparallel 6.0.2-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 5.4.1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0: Vestigial utilities from IPython
 dev-python/ipywidgets 7.0.0: IPython HTML widgets for Jupyter
-dev-python/irc 11.0.1 15.0.6: IRC client framework written in Python
+dev-python/irc 15.0.6: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
 dev-python/iso8601 0.1.10 0.1.11 0.1.12: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.5.4: ISO 8601 date/time/duration parser and formatter
