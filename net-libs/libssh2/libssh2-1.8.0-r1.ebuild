@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0-libgcrypt-prefix.patch
 	"${FILESDIR}"/${PN}-1.8.0-mansyntax_sh.patch
 	"${FILESDIR}"/${PN}-1.8.0-openssl11.patch
+	"${FILESDIR}"/${PN}-1.8.0-openssl11-memleak.patch
 )
 
 multilib_src_configure() {
