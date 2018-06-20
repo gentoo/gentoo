@@ -309,6 +309,14 @@ gentoo_urls() {
 #			ten Brugge's bounds-checking patches. If you want to use a patch
 #			for an older gcc version with a new gcc, make sure you set
 #			HTB_GCC_VER to that version of gcc.
+#
+#	CYGWINPORTS_GITREV
+#			If set, this variable signals that we should apply additional patches
+#			maintained by upstream Cygwin developers at github/cygwinports/gcc,
+#			using the specified git commit id there.  The list of patches to
+#			apply is extracted from gcc.cygport, maintained there as well.
+#			This is done for compilers running on Cygwin, not for cross compilers
+#			with a Cygwin target.
 get_gcc_src_uri() {
 	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
 	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
@@ -374,6 +382,11 @@ get_gcc_src_uri() {
 			GCC_SRC_URI+=" gcj? ( ftp://sourceware.org/pub/java/ecj-4.3.jar )"
 		fi
 	fi
+
+	# Cygwin patches from https://github.com/cygwinports/gcc
+	[[ -n ${CYGWINPORTS_GITREV} ]] && \
+		GCC_SRC_URI+=" elibc_Cygwin? ( https://github.com/cygwinports/gcc/archive/${CYGWINPORTS_GITREV}.tar.gz
+			-> gcc-cygwinports-${CYGWINPORTS_GITREV}.tar.gz )"
 
 	echo "${GCC_SRC_URI}"
 }
@@ -481,6 +494,8 @@ gcc_quick_unpack() {
 
 	use_if_iuse boundschecking && unpack "bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
 
+	[[ -n ${CYGWINPORTS_GITREV} ]] && use elibc_Cygwin && unpack "gcc-cygwinports-${CYGWINPORTS_GITREV}.tar.gz"
+
 	popd > /dev/null
 }
 
@@ -505,6 +520,7 @@ toolchain_src_prepare() {
 	fi
 	do_gcc_HTB_patches
 	do_gcc_PIE_patches
+	do_gcc_CYGWINPORTS_patches
 	epatch_user
 
 	if ( tc_version_is_at_least 4.8.2 || use_if_iuse hardened ) && ! use vanilla ; then
@@ -643,6 +659,18 @@ do_gcc_PIE_patches() {
 	fi
 
 	BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, pie-${PIE_VER}"
+}
+
+do_gcc_CYGWINPORTS_patches() {
+	[[ -n ${CYGWINPORTS_GITREV} ]] || return 0
+	use elibc_Cygwin || return 0
+
+	local -a patches
+	local p d="${WORKDIR}/gcc-${CYGWINPORTS_GITREV}"
+	readarray -t patches < <(sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport)
+	for p in ${patches[*]}; do
+		epatch "${d}/${p}"
+	done
 }
 
 # configure to build with the hardened GCC specs as the default
