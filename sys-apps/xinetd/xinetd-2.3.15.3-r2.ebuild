@@ -36,6 +36,10 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+
+	sed -i \
+		-e 's:/usr/bin/kill:/bin/kill:' \
+		"contrib/${PN}.service" || die
 }
 
 src_configure() {
@@ -53,7 +57,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/xinetd.rc6 xinetd
 	newconfd "${FILESDIR}"/xinetd.confd xinetd
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	systemd_dounit "contrib/${PN}.service"
 
 	newdoc contrib/xinetd.conf xinetd.conf.dist.sample
 	dodoc README.md CHANGELOG
