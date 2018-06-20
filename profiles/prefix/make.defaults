@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Some USE-flags that only die-hards don't want:
@@ -8,13 +8,10 @@
 # ssl:       encrypted connections are a nice feature
 USE="readline zlib ncurses ssl"
 
-FEATURES="collision-protect"
+# Python 3.6 is unmasked for us, build stuff by default with latest to
+# avoid unnecessary builds
+PYTHON_TARGETS="python2_7 python3_6"
+PYTHON_SINGLE_TARGET="python3_6"
 
-# Python 3.5 is unmasked for us, build stuff by default, in particular
-# for bug #572502 where the default python is set to 3.5 for it was
-# built first.  Drop Python 3.4 to avoid unnecessary builds.
-PYTHON_TARGETS="python2_7 python3_5"
-PYTHON_SINGLE_TARGET="python3_5"
-
-# Move away from ruby21, fast forward to ruby24, we don't have ruby23
-RUBY_TARGETS="ruby22 ruby24"
+# Move away from ruby22 fast forward to ruby24, we don't have ruby23
+RUBY_TARGETS="ruby24"
