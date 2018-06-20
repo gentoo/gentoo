@@ -52,7 +52,7 @@ multilib_src_configure() {
 multilib_src_test() {
 	env	LD_LIBRARY_PATH="${BUILD_DIR}/libelf:${BUILD_DIR}/libebl:${BUILD_DIR}/libdw:${BUILD_DIR}/libasm" \
 		LC_ALL="C" \
-		emake check
+		emake check VERBOSE=1
 }
 
 multilib_src_install_all() {
