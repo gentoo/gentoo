@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 Jun 2018)
-# dev-python/PyQt5 is not stable.
-media-sound/pulseaudio qt5
-
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Jun 2018)
 # Requires not yet stable dev-qt/qtpositioning:5
 sci-astronomy/stellarium gps
