@@ -4103,7 +4103,6 @@ net-libs/ldns:ecdsa - Enable ECDSA support
 net-libs/ldns:gost - Enable GOST support
 net-libs/libbitcoinconsensus:asm - Enable assembly for optimization
 net-libs/libbitcoinconsensus:knots - Build enhanced Bitcoin Knots version, rather than Bitcoin Core
-net-libs/libeXosip:srv - enable support for SRV records DNS queries
 net-libs/libesmtp:ntlm - Enable support for NTLM authentication
 net-libs/libetpan:liblockfile - Enable support for liblockfile library
 net-libs/libgsasl:gcrypt - Use dev-libs/libgcrypt for low-level crypto
@@ -4713,11 +4712,6 @@ net-proxy/tsocks:dns - Force DNS queries to use SOCKS server via tcp
 net-proxy/tsocks:envconf - Allow TSOCKS_CONF_FILE to specify configuration file
 net-proxy/tsocks:server-lookups - Allow hostname resolution _for_ SOCKS servers
 net-proxy/tsocks:tordns - Apply tordns patch which allows transparent TORification of the DNS queries
-net-voip/linphone:assistant - Turn on assistant compiling (needs gtk enabled)
-net-voip/linphone:gsm-nonstandard - Support non-standard GSM frequencies
-net-voip/linphone:sqlite - Turn on compilation of message storage
-net-voip/linphone:tools - Compile tools
-net-voip/linphone:video - Enable video support (display/capture)
 net-voip/telepathy-gabble:plugins - Enable plugin loader
 net-vpn/badvpn:client - Build the badvpn-client program, a daemon that runs on endpoints of the VPN.
 net-vpn/badvpn:ncd - Build NCD, a lightweight scripting language especially suited for network configurations.

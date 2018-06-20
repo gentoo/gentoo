@@ -7615,7 +7615,7 @@ media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.2-r2: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lv2 1.10.0-r1 1.14.0 1.14.0-r1: A simple but extensible successor of LADSPA
-media-libs/mediastreamer 2.8.2 2.9.0-r2: Mediastreaming library for telephony application
+media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 17.3.9: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
@@ -8605,7 +8605,6 @@ net-libs/libbitcoinconsensus 0.15.1: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2: C implementation of getblocktemplate (BIP 22)
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
-net-libs/libeXosip 3.5.0: library to use the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r1: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.8: A portable, efficient middleware for different kinds of mail access
@@ -8678,7 +8677,7 @@ net-libs/nodejs 0.12.18 4.8.7 4.9.1 6.11.5 6.14.1 8.11.1: A JavaScript runtime b
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0-r4: An open-source implementation of Service Location Protocol
-net-libs/ortp 0.20.0 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
+net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.1: Open source SIP, Media, and NAT Traversal Library
 net-libs/qxmpp 0.9.3-r2: A cross-platform C++ XMPP client library based on the Qt framework
@@ -9078,7 +9077,6 @@ net-proxy/tinyproxy 1.8.3-r4: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r8: Transparent SOCKS v4 proxying library
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
-net-voip/linphone 3.5.2: Video softphone based on the SIP protocol
 net-voip/telepathy-gabble 0.18.4: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-haze 0.8.0-r1 0.8.0-r2: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
