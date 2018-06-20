@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
-IUSE="daemon debug geoip nls remote stats unicode upnp +X"
+IUSE="daemon debug geoip nls remote stats upnp +X"
 
 COMMON_DEPEND="
 	dev-libs/boost:=
@@ -27,8 +27,7 @@ COMMON_DEPEND="
 	stats? ( media-libs/gd:=[jpeg,png] )
 	geoip? ( dev-libs/geoip )
 	upnp? ( net-libs/libupnp:* )
-	remote? ( media-libs/libpng:0=
-	unicode? ( media-libs/gd:= ) )
+	remote? ( media-libs/libpng:0= )
 	!net-p2p/imule"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
