@@ -5160,10 +5160,6 @@ sys-apps/net-tools:plipconfig - build the plipconfig tool (for working with old 
 sys-apps/net-tools:slattach - build the slattach tool (for working with old serial ports)
 sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
 sys-apps/openrc:newnet - enable the new network stack (experimental)
-sys-apps/paludis:pbins - Enable binary package support. Adds dependency upon app-arch/libarchive
-sys-apps/paludis:pink - Use a less boring colourscheme than the default
-sys-apps/paludis:search-index - Enable cave search --index. Requires dev-db/sqlite.
-sys-apps/paludis:xml - Build xml things for metadata.xml and GLSA support (needs dev-libs/libxml2).
 sys-apps/pciutils:dns - Enable support for querying the central database of PCI IDs using DNS
 sys-apps/pciutils:kmod - Enable sys-apps/kmod support for the -k switch in lspci command
 sys-apps/pciutils:zlib - Support compressed pci.ids database
