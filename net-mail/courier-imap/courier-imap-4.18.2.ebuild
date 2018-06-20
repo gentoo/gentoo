@@ -1,9 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit autotools libtool systemd
+inherit autotools libtool readme.gentoo-r1 systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
 HOMEPAGE="http://www.courier-mta.org/"
@@ -12,8 +11,8 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="berkdb debug fam +gdbm gnutls ipv6 libressl selinux trashquota"
 
+IUSE="berkdb debug fam +gdbm gnutls ipv6 libressl selinux trashquota"
 REQUIRED_USE="|| ( berkdb gdbm )"
 
 CDEPEND="
@@ -22,29 +21,45 @@ CDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	>=net-libs/courier-authlib-0.61
+	>=net-libs/courier-authlib-0.66.4
 	>=net-libs/courier-unicode-2
 	>=net-mail/mailbase-0.00-r8
 	berkdb? ( sys-libs/db:= )
 	fam? ( virtual/fam )
-	gdbm? ( >=sys-libs/gdbm-1.8.0 )"
+	gdbm? ( >=sys-libs/gdbm-1.8.0 )
+"
 DEPEND="${CDEPEND}
 	dev-lang/perl
 	!mail-mta/courier
-	userland_GNU? ( sys-process/procps )"
+	userland_GNU? ( sys-process/procps )
+"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-courier )"
+	selinux? ( sec-policy/selinux-courier )
+"
 
 # get rid of old style virtual - bug 350792
-# all blockers really needed?
 RDEPEND="${RDEPEND}
 	!mail-mta/courier
 	!net-mail/bincimap
 	!net-mail/cyrus-imapd
-	!net-mail/uw-imap"
+	!net-mail/uw-imap
+"
 
 RC_VER="4.0.6-r1"
 INITD_VER="4.0.6-r1"
+
+# make check is not supported by this package due to the
+# --enable-workarounds-for-imap-client-bugs option.
+RESTRICT="test"
+
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="
+Please read http://www.courier-mta.org/imap/INSTALL.html#upgrading
+and remove TLS_DHPARAMS from configuration files or run mkdhparams
+
+For a quick-start howto please refer to
+${PN}-gentoo.readme in /usr/share/doc/${PF}
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.17-disable-fam-configure.ac.patch"
@@ -108,13 +123,15 @@ src_configure() {
 		die "sed failed"
 }
 
-src_compile() {
-	# spurious failures with parallel compiles
-	emake -j1
-}
+#src_compile() {
+	# spurious failures with parallel compiles, bug #????
+#	emake -j1
+#}
 
 src_install() {
 	dodir "/var/lib/${PN}" /etc/pam.d
+	keepdir /var/lib/courier-imap
+
 	default
 	rm -r "${D}/etc/pam.d" || die
 
@@ -203,6 +220,7 @@ src_install() {
 		|| die "failed to rename maildirmake.1 to courier-maildirmake.1"
 
 	dodoc AUTHORS INSTALL NEWS README ChangeLog
+	readme.gentoo_create_doc
 	dodoc "${FILESDIR}/${PN}-gentoo.readme"
 	docinto imap
 	dodoc libs/imap/ChangeLog libs/imap/BUGS* libs/imap/README*
@@ -215,17 +233,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Please read http://www.courier-mta.org/imap/INSTALL.html#upgrading"
-	elog "and remove TLS_DHPARAMS from configuration files or run mkdhparams"
-
-	elog "For a quick-start howto please refer to"
-	elog "${PN}-gentoo.readme in /usr/share/doc/${PF}"
 	# Some users have been reporting that permissions on this directory were
 	# getting scrambled, so let's ensure that they are sane.
 	fperms 0755 "${ROOT}/usr/$(get_libdir)/${PN}"
-}
 
-src_test() {
-	ewarn "make check is not supported by this package due to the"
-	ewarn "--enable-workarounds-for-imap-client-bugs option."
+	readme.gentoo_print_elog
 }
