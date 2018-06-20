@@ -47,6 +47,13 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local myconf=()
+	if use opengl || use gles2; then
+		myconf+=( --enable-gl )
+	else
+		myconf+=( --disable-gl )
+	fi
+
 	# Always enable shm (shm_open) and ipcpipeline (sys/socket.h); no extra deps
 	gstreamer_multilib_src_configure \
 		$(multilib_native_use_enable introspection) \
@@ -59,7 +66,8 @@ multilib_src_configure() {
 		--disable-debug \
 		--without-player-tests \
 		--enable-shm \
-		--enable-ipcpipeline
+		--enable-ipcpipeline \
+		"${myconf[@]}"
 
 	if multilib_is_native_abi; then
 		local x
