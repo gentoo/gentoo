@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=virtual/pkgconfig net-im/pidgin sys-libs/zlib:= gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( dev-libs/openssl:0= ) nls? ( sys-devel/gettext ) webp? ( media-libs/libwebp:= )
+DESCRIPTION=A libpurple protocol plugin that adds support for the Telegram messenger
+EAPI=6
+HOMEPAGE=https://github.com/majn/telegram-purple
+IUSE=gcrypt +nls +webp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=net-im/pidgin sys-libs/zlib:= gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( dev-libs/openssl:0= ) nls? ( sys-devel/gettext ) webp? ( media-libs/libwebp:= )
+SLOT=0
+SRC_URI=https://github.com/majn/telegram-purple/releases/download/v1.3.1/telegram-purple_1.3.1.orig.tar.gz
+_md5_=21b835dfa2d5d93fac40b82c06e57e63

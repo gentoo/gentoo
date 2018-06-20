@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=media-libs/fontconfig-2.6.0 >=media-libs/freetype-2.3.9 sys-libs/zlib cairo? ( dev-libs/glib:2 >=x11-libs/cairo-1.10.0 introspection? ( >=dev-libs/gobject-introspection-1.32.1:= ) ) curl? ( net-misc/curl ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:2= ) lcms? ( media-libs/lcms:2 ) nss? ( >=dev-libs/nss-3.19:0 ) png? ( media-libs/libpng:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 ) tiff? ( media-libs/tiff:0 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=PDF rendering library based on the xpdf-3.0 code base
+EAPI=6
+HOMEPAGE=https://poppler.freedesktop.org/
+IUSE=cairo cjk curl cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt5 tiff +utils
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=media-libs/fontconfig-2.6.0 >=media-libs/freetype-2.3.9 sys-libs/zlib cairo? ( dev-libs/glib:2 >=x11-libs/cairo-1.10.0 introspection? ( >=dev-libs/gobject-introspection-1.32.1:= ) ) curl? ( net-misc/curl ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:2= ) lcms? ( media-libs/lcms:2 ) nss? ( >=dev-libs/nss-3.19:0 ) png? ( media-libs/libpng:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 ) tiff? ( media-libs/tiff:0 ) cjk? ( >=app-text/poppler-data-0.4.7 )
+RESTRICT=test
+SLOT=0/77
+SRC_URI=https://poppler.freedesktop.org/poppler-0.66.0.tar.xz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=1791f9347929a7fc3b7c511843588795
