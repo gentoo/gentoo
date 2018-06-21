@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>herb@hlmjr.com</email>
+		<name>Herb Miller Jr. (herbmillerjr)</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		VS Code is a new type of tool that combines the simplicity of a code editor
+		with what developers need for their core edit-build-debug cycle. Code provides
+		comprehensive editing and debugging support, an extensibility model, and
+		lightweight integration with existing tools.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Microsoft/vscode</remote-id>
+	</upstream>
+</pkgmetadata>
