@@ -76,9 +76,6 @@ esac
 # @DESCRIPTION:
 # List of gdk-pixbuf loaders provided by the package
 
-DEPEND=">=sys-apps/sed-4"
-
-
 # @FUNCTION: gnome2_environment_reset
 # @DESCRIPTION:
 # Reset various variables inherited from root's evironment to a reasonable
@@ -95,7 +92,7 @@ gnome2_environment_reset() {
 	# Ensure we don't rely on dconf/gconf while building, bug #511946
 	export GSETTINGS_BACKEND="memory"
 
-	if has ${EAPI:-0} 6; then
+	if [[ ${EAPI:-0} != [012345] ]]; then
 		# Try to cover the packages honoring this variable, bug #508124
 		export GST_INSPECT="$(type -P true)"
 
@@ -110,7 +107,6 @@ gnome2_environment_reset() {
 # in the GNOME2_ECLASS_SCHEMAS environment variable.
 # This function should be called from pkg_preinst.
 gnome2_gconf_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCHEMAS=$(find 'etc/gconf/schemas/' -name '*.schemas' 2> /dev/null)
 	popd > /dev/null || die
@@ -122,8 +118,8 @@ gnome2_gconf_savelist() {
 # using gconftool-2.
 # This function should be called from pkg_postinst.
 gnome2_gconf_install() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${GCONFTOOL_BIN}"
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater="${BROOT%/}${GCONFTOOL_BIN}"
 
 	if [[ ! -x "${updater}" ]]; then
 		debug-print "${updater} is not executable"
@@ -143,9 +139,9 @@ gnome2_gconf_install() {
 
 	local F
 	for F in ${GNOME2_ECLASS_SCHEMAS}; do
-		if [[ -e "${EROOT}${F}" ]]; then
+		if [[ -e "${EROOT%/}${F}" ]]; then
 			debug-print "Installing schema: ${F}"
-			"${updater}" --makefile-install-rule "${EROOT}${F}" 1>/dev/null
+			"${updater}" --makefile-install-rule "${EROOT%/}${F}" 1>/dev/null
 		fi
 	done
 
@@ -163,8 +159,8 @@ gnome2_gconf_install() {
 # Removes schema files previously installed by the current ebuild from Gconf's
 # database.
 gnome2_gconf_uninstall() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${GCONFTOOL_BIN}"
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater="${BROOT%/}${GCONFTOOL_BIN}"
 
 	if [[ ! -x "${updater}" ]]; then
 		debug-print "${updater} is not executable"
@@ -183,9 +179,9 @@ gnome2_gconf_uninstall() {
 
 	local F
 	for F in ${GNOME2_ECLASS_SCHEMAS}; do
-		if [[ -e "${EROOT}${F}" ]]; then
+		if [[ -e "${EROOT%/}${F}" ]]; then
 			debug-print "Uninstalling gconf schema: ${F}"
-			"${updater}" --makefile-uninstall-rule "${EROOT}${F}" 1>/dev/null
+			"${updater}" --makefile-uninstall-rule "${EROOT%/}${F}" 1>/dev/null
 		fi
 	done
 
@@ -206,10 +202,15 @@ gnome2_gconf_uninstall() {
 # gnome2_icon_cache_update conditionally.
 # This function should be called from pkg_preinst.
 gnome2_icon_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" > /dev/null || die
-	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
-	popd > /dev/null || die
+	if [[ ${EAPI:-0} == [0123456] ]]; then
+		pushd "${ED}" > /dev/null || die
+		export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
+		popd > /dev/null || die
+	else
+		eerror "gnome2_icon_savelist is banned in EAPI ${EAPI}"
+		eerror "please migrate to the related functions in xdg-utils and xdg"
+		die
+	fi
 }
 
 # @FUNCTION: gnome2_icon_cache_update
@@ -217,7 +218,13 @@ gnome2_icon_savelist() {
 # Updates Gtk+ icon cache files under /usr/share/icons.
 # Deprecated. Please use xdg_icon_cache_update from xdg-utils.eclass
 gnome2_icon_cache_update() {
-	xdg_icon_cache_update
+	if [[ ${EAPI:-0} == [0123456] ]]; then
+		xdg_icon_cache_update
+	else
+		eerror "gnome2_icon_cache_update is banned in EAPI ${EAPI}"
+		eerror "please migrate to xdg_icon_cache_update in xdg-utils"
+		die
+	fi
 }
 
 # @FUNCTION: gnome2_omf_fix
@@ -277,7 +284,6 @@ gnome2_omf_fix() {
 # in the GNOME2_ECLASS_SCROLLS environment variable.
 # This function should be called from pkg_preinst.
 gnome2_scrollkeeper_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCROLLS=$(find 'usr/share/omf' -type f -name "*.omf" 2> /dev/null)
 	popd > /dev/null || die
@@ -288,8 +294,8 @@ gnome2_scrollkeeper_savelist() {
 # Updates the global scrollkeeper database.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_scrollkeeper_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${SCROLLKEEPER_UPDATE_BIN}"
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater="${BROOT%/}${SCROLLKEEPER_UPDATE_BIN}"
 
 	if [[ ! -x "${updater}" ]] ; then
 		debug-print "${updater} is not executable"
@@ -302,7 +308,7 @@ gnome2_scrollkeeper_update() {
 	fi
 
 	ebegin "Updating scrollkeeper database ..."
-	"${updater}" -q -p "${EROOT}${SCROLLKEEPER_DIR}"
+	"${updater}" -q -p "${EROOT%/}${SCROLLKEEPER_DIR}"
 	eend $?
 }
 
@@ -313,7 +319,6 @@ gnome2_scrollkeeper_update() {
 # implementations that call gnome2_schemas_update conditionally.
 # This function should be called from pkg_preinst.
 gnome2_schemas_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GLIB_SCHEMAS=$(find 'usr/share/glib-2.0/schemas' -name '*.gschema.xml' 2>/dev/null)
 	popd > /dev/null || die
@@ -325,8 +330,8 @@ gnome2_schemas_savelist() {
 # Updates GSettings schemas.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_schemas_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${GLIB_COMPILE_SCHEMAS}"
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater="${BROOT%/}${GLIB_COMPILE_SCHEMAS}"
 
 	if [[ ! -x ${updater} ]]; then
 		debug-print "${updater} is not executable"
@@ -344,7 +349,6 @@ gnome2_schemas_update() {
 # GNOME2_ECLASS_GDK_PIXBUF_LOADERS variable.
 # This function should be called from pkg_preinst.
 gnome2_gdk_pixbuf_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GDK_PIXBUF_LOADERS=$(find usr/lib*/gdk-pixbuf-2.0 -type f 2>/dev/null)
 	popd > /dev/null || die
@@ -356,11 +360,11 @@ gnome2_gdk_pixbuf_savelist() {
 # Updates gdk-pixbuf loader cache if GNOME2_ECLASS_GDK_PIXBUF_LOADERS has some.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_gdk_pixbuf_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater="${BROOT%/}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
 
 	if [[ ! -x ${updater} ]]; then
-		updater="${EROOT}/usr/bin/gdk-pixbuf-query-loaders"
+		updater="${BROOT%/}/usr/bin/gdk-pixbuf-query-loaders"
 	fi
 
 	if [[ ! -x ${updater} ]]; then
@@ -377,7 +381,7 @@ gnome2_gdk_pixbuf_update() {
 	local tmp_file=$(emktemp)
 	${updater} 1> "${tmp_file}" &&
 	chmod 0644 "${tmp_file}" &&
-	cp -f "${tmp_file}" "${EROOT}usr/$(get_libdir)/gdk-pixbuf-2.0/2.10.0/loaders.cache" &&
+	cp -f "${tmp_file}" "${EROOT%/}/usr/$(get_libdir)/gdk-pixbuf-2.0/2.10.0/loaders.cache" &&
 	rm "${tmp_file}" # don't replace this with mv, required for SELinux support
 	eend $?
 }
@@ -387,11 +391,20 @@ gnome2_gdk_pixbuf_update() {
 # @DESCRIPTION:
 # Updates gtk2 immodules/gdk-pixbuf loaders listing.
 gnome2_query_immodules_gtk2() {
-	local updater=${EPREFIX}/usr/bin/${CHOST}-gtk-query-immodules-2.0
-	[[ ! -x ${updater} ]] && updater=${EPREFIX}/usr/bin/gtk-query-immodules-2.0
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater=${BROOT%/}/usr/bin/${CHOST}-gtk-query-immodules-2.0
+
+	if [[ ! -x ${updater} ]]; then
+		updater="${BROOT%/}/usr/bin/gtk-query-immodules-2.0"
+	fi
+
+	if [[ ! -x ${updater} ]]; then
+		debug-print "${updater} is not executable"
+		return
+	fi
 
 	ebegin "Updating gtk2 input method module cache"
-	GTK_IM_MODULE_FILE="${EROOT}usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache" \
+	GTK_IM_MODULE_FILE="${EROOT%/}/usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache" \
 		"${updater}" --update-cache
 	eend $?
 }
@@ -401,11 +414,20 @@ gnome2_query_immodules_gtk2() {
 # @DESCRIPTION:
 # Updates gtk3 immodules/gdk-pixbuf loaders listing.
 gnome2_query_immodules_gtk3() {
-	local updater=${EPREFIX}/usr/bin/${CHOST}-gtk-query-immodules-3.0
-	[[ ! -x ${updater} ]] && updater=${EPREFIX}/usr/bin/gtk-query-immodules-3.0
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater=${BROOT%/}/usr/bin/${CHOST}-gtk-query-immodules-3.0
+
+	if [[ -x ${updater} ]]; then
+		updater=${BROOT%/}/usr/bin/gtk-query-immodules-3.0
+	fi
+
+	if [[ ! -x ${updater} ]]; then
+		debug-print "${updater} is not executable"
+		return
+	fi
 
 	ebegin "Updating gtk3 input method module cache"
-	GTK_IM_MODULE_FILE="${EROOT}usr/$(get_libdir)/gtk-3.0/3.0.0/immodules.cache" \
+	GTK_IM_MODULE_FILE="${EROOT%/}/usr/$(get_libdir)/gtk-3.0/3.0.0/immodules.cache" \
 		"${updater}" --update-cache
 	eend $?
 }
@@ -416,11 +438,11 @@ gnome2_query_immodules_gtk3() {
 # Updates glib's gio modules cache.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_giomodule_cache_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}/usr/bin/${CHOST}-gio-querymodules"
+	[[ ${EAPI:-0} == [0123456] ]] && BROOT=${EROOT}
+	local updater="${BROOT%/}/usr/bin/${CHOST}-gio-querymodules"
 
 	if [[ ! -x ${updater} ]]; then
-		updater="${EROOT}/usr/bin/gio-querymodules"
+		updater="${BROOT%/}/usr/bin/gio-querymodules"
 	fi
 
 	if [[ ! -x ${updater} ]]; then
