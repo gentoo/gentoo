@@ -1795,13 +1795,13 @@ toolchain_src_install() {
 
 	cd "${S}"
 	if is_crosscompile; then
-		rm -rf "${ED}"usr/share/{man,info}
+		rm -rf "${ED}"/usr/share/{man,info}
 		rm -rf "${D}"${DATAPATH}/{man,info}
 	else
 		if tc_version_is_at_least 3.0 ; then
 			local cxx_mandir=$(find "${WORKDIR}/build/${CTARGET}/libstdc++-v3" -name man)
 			if [[ -d ${cxx_mandir} ]] ; then
-				cp -r "${cxx_mandir}"/man? "${D}/${DATAPATH}"/man/
+				cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/
 			fi
 		fi
 		has noinfo ${FEATURES} \
@@ -1852,7 +1852,7 @@ toolchain_src_install() {
 	# libvtv.la: gcc itself handles linkage correctly.
 	# lib*san.la: Sanitizer linkage is handled internally by gcc, and they
 	# do not support static linking. #487550 #546700
-	find "${D}/${LIBPATH}" \
+	find "${D}${LIBPATH}" \
 		'(' \
 			-name libstdc++.la -o \
 			-name libstdc++fs.la -o \
@@ -1918,7 +1918,7 @@ gcc_movelibs() {
 	# code to run on the target.
 	if tc_version_is_at_least 5 && is_crosscompile ; then
 		dodir "${HOSTLIBPATH#${EPREFIX}}"
-		mv "${ED}"usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
+		mv "${ED}"/usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
 	fi
 
 	# For all the libs that are built for CTARGET, move them into the
@@ -2115,7 +2115,7 @@ gcc_slot_java() {
 
 toolchain_pkg_postinst() {
 	do_gcc_config
-	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+	if [[ ! ${ROOT%/} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow update all
 	fi
 
@@ -2130,17 +2130,17 @@ toolchain_pkg_postinst() {
 		echo
 
 		# Clean up old paths
-		rm -f "${EROOT}"*/rcscripts/awk/fixlafiles.awk "${EROOT}"sbin/fix_libtool_files.sh
-		rmdir "${EROOT}"*/rcscripts{/awk,} 2>/dev/null
+		rm -f "${EROOT%/}"/*/rcscripts/awk/fixlafiles.awk "${EROOT%/}"/sbin/fix_libtool_files.sh
+		rmdir "${EROOT%/}"/*/rcscripts{/awk,} 2>/dev/null
 
-		mkdir -p "${EROOT}"usr/{share/gcc-data,sbin,bin}
+		mkdir -p "${EROOT%/}"/usr/{share/gcc-data,sbin,bin}
 		# DATAPATH has EPREFIX already, use ROOT with it
-		cp "${ROOT}${DATAPATH}"/fixlafiles.awk "${EROOT}"usr/share/gcc-data/ || die
-		cp "${ROOT}${DATAPATH}"/fix_libtool_files.sh "${EROOT}"usr/sbin/ || die
+		cp "${ROOT%/}${DATAPATH}"/fixlafiles.awk "${EROOT%/}"/usr/share/gcc-data/ || die
+		cp "${ROOT%/}${DATAPATH}"/fix_libtool_files.sh "${EROOT%/}"/usr/sbin/ || die
 
 		# Since these aren't critical files and portage sucks with
 		# handling of binpkgs, don't require these to be found
-		cp "${ROOT}${DATAPATH}"/c{89,99} "${EROOT}"usr/bin/ 2>/dev/null
+		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
 	fi
 
 	if use regression-test ; then
@@ -2156,7 +2156,7 @@ toolchain_pkg_postinst() {
 }
 
 toolchain_pkg_postrm() {
-	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+	if [[ ! ${ROOT%/} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow clean all
 	fi
 
@@ -2167,16 +2167,16 @@ toolchain_pkg_postrm() {
 
 	# clean up the cruft left behind by cross-compilers
 	if is_crosscompile ; then
-		if [[ -z $(ls "${EROOT}"etc/env.d/gcc/${CTARGET}* 2>/dev/null) ]] ; then
-			rm -f "${EROOT}"etc/env.d/gcc/config-${CTARGET}
-			rm -f "${EROOT}"etc/env.d/??gcc-${CTARGET}
-			rm -f "${EROOT}"usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
+		if [[ -z $(ls "${EROOT%/}"/etc/env.d/gcc/${CTARGET}* 2>/dev/null) ]] ; then
+			rm -f "${EROOT%/}"/etc/env.d/gcc/config-${CTARGET}
+			rm -f "${EROOT%/}"/etc/env.d/??gcc-${CTARGET}
+			rm -f "${EROOT%/}"/usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
 		fi
 		return 0
 	fi
 
 	# ROOT isnt handled by the script
-	[[ ${ROOT} != "/" ]] && return 0
+	[[ ${ROOT%/} ]] && return 0
 
 	if [[ ! -e ${LIBPATH}/libstdc++.so ]] ; then
 		# make sure the profile is sane during same-slot upgrade #289403
@@ -2209,7 +2209,7 @@ do_gcc_config() {
 		[[ -n ${current_specs} ]] && use_specs=-${current_specs}
 
 		if [[ -n ${use_specs} ]] && \
-		   [[ ! -e ${ROOT}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
+		   [[ ! -e ${ROOT%/}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
 		then
 			ewarn "The currently selected specs-specific gcc config,"
 			ewarn "${current_specs}, doesn't exist anymore. This is usually"
