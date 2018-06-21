@@ -23,7 +23,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"
 
-#python_install() {
-#	distutils-r1_python_install
-#	find "${ED}" -name '*.pth' -delete || die
-#}
+python_install() {
+	distutils-r1_python_install
+	find "${ED}" -name '*.pth' -delete || die
+}
