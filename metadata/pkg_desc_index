@@ -7780,7 +7780,7 @@ media-plugins/gst-plugins-libpng 0.10.31-r1 1.12.3 1.12.4: PNG image encoder/dec
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.12.3 1.12.4: Visualization elements for GStreamer
 media-plugins/gst-plugins-lv2 1.12.3 1.12.4: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1: plugin for gstreamer
-media-plugins/gst-plugins-meta 0.10-r11 1.12.3 1.12.4: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r11 1.12.4: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.12.3 1.12.4: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.12.3 1.12.4: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.12.3 1.12.4: MPEG-1/2 video encoding plugin for GStreamer
