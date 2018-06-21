@@ -18,4 +18,8 @@ RDEPEND="
 			)
 			!prefix? ( sys-freebsd/freebsd-lib )
 		)
+	)
+	prefix-guest? (
+		!sys-kernel/linux-headers
+		!sys-freebsd/freebsd-lib
 	)"
