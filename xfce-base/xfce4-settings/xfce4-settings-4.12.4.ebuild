@@ -1,9 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit xfconf
+EAPI=6
+inherit gnome2-utils
 
 DESCRIPTION="Configuration system for the Xfce desktop environment"
 HOMEPAGE="https://www.xfce.org/projects/"
@@ -11,8 +10,8 @@ SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="debug input_devices_libinput libcanberra libnotify upower +xklavier"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+IUSE="input_devices_libinput libcanberra libnotify upower +xklavier"
 
 RDEPEND=">=dev-libs/dbus-glib-0.100
 	>=dev-libs/glib-2.24
@@ -38,17 +37,19 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	x11-base/xorg-proto"
 
-pkg_setup() {
-	XFCONF=(
-		$(use_enable upower upower-glib)
-		$(use_enable input_devices_libinput xorg-libinput)
-		$(use_enable libnotify)
-		$(use_enable xklavier libxklavier)
+src_configure() {
+	econf \
+		$(use_enable upower upower-glib) \
+		$(use_enable input_devices_libinput xorg-libinput) \
+		$(use_enable libnotify) \
+		$(use_enable xklavier libxklavier) \
 		$(use_enable libcanberra sound-settings)
-		$(xfconf_use_debug)
-		)
+}
 
-	DOCS=( AUTHORS ChangeLog NEWS TODO )
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
 
-	PATCHES=( "${FILESDIR}/${P}-HDMI-power-cycling.patch" )
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
