@@ -21,6 +21,10 @@
       PulseAudio plugin enabled. This ensures that clients supporting
       ALSA only will use PulseAudio.
     </flag>
+    <flag name="gconf">
+      Ensure <pkg>gnome-base/gconf</pkg> is present for pulseaudio GConf
+      to GSettings module automatic migration (keeping the user configuration)
+    </flag>
     <flag name="gnome">
       Use GConf to store user preferences on streams and so on. Don't
       enable this flag if you want to use a system wide instance. If
