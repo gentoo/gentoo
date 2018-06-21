@@ -256,7 +256,7 @@ gnome2_src_install() {
 	# create bogus directories in /var/lib/
 	if has ${EAPI:-0} 4 5; then
 		dodir "${sk_tmp_dir}" || die "dodir failed"
-		emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED}${sk_tmp_dir} " "$@" install || die "install failed"
+		emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED%/}${sk_tmp_dir} " "$@" install || die "install failed"
 	else
 		default
 	fi
@@ -282,14 +282,14 @@ gnome2_src_install() {
 
 	# Do not keep /var/lib/scrollkeeper because:
 	# 1. The scrollkeeper database is regenerated at pkg_postinst()
-	# 2. ${ED}/var/lib/scrollkeeper contains only indexes for the current pkg
+	# 2. ${ED%/}/var/lib/scrollkeeper contains only indexes for the current pkg
 	#    thus it makes no sense if pkg_postinst ISN'T run for some reason.
-	rm -rf "${ED}${sk_tmp_dir}"
-	rmdir "${ED}/var/lib" 2>/dev/null
-	rmdir "${ED}/var" 2>/dev/null
+	rm -rf "${ED%/}${sk_tmp_dir}"
+	rmdir "${ED%/}/var/lib" 2>/dev/null
+	rmdir "${ED%/}/var" 2>/dev/null
 
 	# Make sure this one doesn't get in the portage db
-	rm -fr "${ED}/usr/share/applications/mimeinfo.cache"
+	rm -fr "${ED%/}/usr/share/applications/mimeinfo.cache"
 
 	# Delete all .la files
 	if has ${EAPI:-0} 4; then
