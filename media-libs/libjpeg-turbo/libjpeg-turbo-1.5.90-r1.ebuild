@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-multilib java-pkg-opt-2 libtool toolchain-funcs versionator
+inherit cmake-multilib eapi7-ver java-pkg-opt-2 libtool toolchain-funcs
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 
 LICENSE="BSD IJG"
 SLOT="0"
-[[ "$(get_version_component_range 3)" -ge 90 ]] || \
+[[ "$(ver_cut 3)" -ge 90 ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="java static-libs"
 
@@ -33,6 +33,10 @@ DEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jdk-1.5 )"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-divzero_fix.patch #658624
+)
 
 src_prepare() {
 	default
