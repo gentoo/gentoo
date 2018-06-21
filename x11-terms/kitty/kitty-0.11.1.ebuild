@@ -45,7 +45,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	dev-python/sphinx[${PYTHON_USEDEP}]
+	>=dev-python/sphinx-1.7[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
