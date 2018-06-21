@@ -149,6 +149,12 @@ HTTP_LDAP_MODULE_P="nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 HTTP_LDAP_MODULE_URI="https://github.com/kvspb/nginx-auth-ldap/archive/${HTTP_LDAP_MODULE_PV}.tar.gz"
 HTTP_LDAP_MODULE_WD="${WORKDIR}/nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 
+# geoip2 (https://github.com/leev/ngx_http_geoip2_module, BSD-2)
+GEOIP2_MODULE_PV="2.0"
+GEOIP2_MODULE_P="ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
+GEOIP2_MODULE_URI="https://github.com/leev/ngx_http_geoip2_module/archive/${GEOIP2_MODULE_PV}.tar.gz"
+GEOIP2_MODULE_WD="${WORKDIR}/ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
+
 # njs-module (https://github.com/nginx/njs, as-is)
 NJS_MODULE_PV="0.2.1"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
@@ -172,6 +178,7 @@ SRC_URI="https://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_dav_ext? ( ${HTTP_DAV_EXT_MODULE_URI} -> ${HTTP_DAV_EXT_MODULE_P}.tar.gz )
 	nginx_modules_http_echo? ( ${HTTP_ECHO_MODULE_URI} -> ${HTTP_ECHO_MODULE_P}.tar.gz )
 	nginx_modules_http_fancyindex? ( ${HTTP_FANCYINDEX_MODULE_URI} -> ${HTTP_FANCYINDEX_MODULE_P}.tar.gz )
+	nginx_modules_http_geoip2? ( ${GEOIP2_MODULE_URI} -> ${GEOIP2_MODULE_P}.tar.gz )
 	nginx_modules_http_headers_more? ( ${HTTP_HEADERS_MORE_MODULE_URI} -> ${HTTP_HEADERS_MORE_MODULE_P}.tar.gz )
 	nginx_modules_http_javascript? ( ${NJS_MODULE_URI} -> ${NJS_MODULE_P}.tar.gz )
 	nginx_modules_http_lua? ( ${HTTP_LUA_MODULE_URI} -> ${HTTP_LUA_MODULE_P}.tar.gz )
@@ -186,6 +193,7 @@ SRC_URI="https://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_upload_progress? ( ${HTTP_UPLOAD_PROGRESS_MODULE_URI} -> ${HTTP_UPLOAD_PROGRESS_MODULE_P}.tar.gz )
 	nginx_modules_http_upstream_check? ( ${HTTP_UPSTREAM_CHECK_MODULE_URI} -> ${HTTP_UPSTREAM_CHECK_MODULE_P}.tar.gz )
 	nginx_modules_http_vhost_traffic_status? ( ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_URI} -> ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_P}.tar.gz )
+	nginx_modules_stream_geoip2? ( ${GEOIP2_MODULE_URI} -> ${GEOIP2_MODULE_P}.tar.gz )
 	nginx_modules_stream_javascript? ( ${NJS_MODULE_URI} -> ${NJS_MODULE_P}.tar.gz )
 	rtmp? ( ${RTMP_MODULE_URI} -> ${RTMP_MODULE_P}.tar.gz )"
 
@@ -219,6 +227,7 @@ NGINX_MODULES_3RD="
 	http_dav_ext
 	http_echo
 	http_fancyindex
+	http_geoip2
 	http_headers_more
 	http_javascript
 	http_lua
@@ -233,6 +242,7 @@ NGINX_MODULES_3RD="
 	http_upload_progress
 	http_upstream_check
 	http_vhost_traffic_status
+	stream_geoip2
 	stream_javascript
 "
 
@@ -286,6 +296,7 @@ CDEPEND="
 	)
 	nginx_modules_http_brotli? ( app-arch/brotli:= )
 	nginx_modules_http_geoip? ( dev-libs/geoip )
+	nginx_modules_http_geoip2? ( dev-libs/libmaxminddb:= )
 	nginx_modules_http_gunzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip_static? ( sys-libs/zlib )
@@ -581,6 +592,10 @@ src_configure() {
 		myconf+=( --add-module=${HTTP_VHOST_TRAFFIC_STATUS_MODULE_WD} )
 	fi
 
+	if use nginx_modules_http_geoip2 || use nginx_modules_stream_geoip2; then
+		myconf+=( --add-module=${GEOIP2_MODULE_WD} )
+	fi
+
 	if use nginx_modules_http_javascript || use nginx_modules_stream_javascript; then
 		myconf+=( --add-module="${NJS_MODULE_WD}/nginx" )
 	fi
@@ -617,7 +632,7 @@ src_configure() {
 		fi
 	done
 
-	if use nginx_modules_stream_javascript; then
+	if use nginx_modules_stream_geoip2 || use nginx_modules_stream_javascript; then
 		stream_enabled=1
 	fi
 
