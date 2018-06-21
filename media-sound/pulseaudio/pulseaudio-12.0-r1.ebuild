@@ -258,11 +258,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# Drop the script entirely if X is disabled
-	if ! use X ; then
-		rm "${ED%/}"/usr/bin/start-pulseaudio-x11 || die
-	fi
-
 	if use system-wide; then
 		newconfd "${FILESDIR}/pulseaudio.conf.d" pulseaudio
 
