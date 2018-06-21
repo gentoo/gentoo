@@ -47,7 +47,7 @@ python_prepare_all() {
 
 python_compile_all() {
 	pushd html-src > /dev/null || die "html-src not found"
-	PYTHONPATH=../pysollib "${EPYTHON}" gen-html.py || die "gen-html failed"
+	PYTHONPATH=.. "${EPYTHON}" gen-html.py || die "gen-html failed"
 	mv images html/ || die "mv images failed"
 	popd > /dev/null
 }
