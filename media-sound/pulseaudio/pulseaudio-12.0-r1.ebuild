@@ -18,8 +18,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 
 # +alsa-plugin as discussed in bug #519530
-IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer +gdbm +glib
-gnome gsettings gtk ipv6 jack libsamplerate libressl lirc native-headset neon ofono-headset
+IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer gconf +gdbm
++glib gtk ipv6 jack libsamplerate libressl lirc native-headset neon ofono-headset
 +orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test +udev
 +webrtc-aec +X zeroconf"
 
@@ -30,11 +30,10 @@ REQUIRED_USE="
 	ofono-headset? ( bluetooth )
 	native-headset? ( bluetooth )
 	udev? ( || ( alsa oss ) )
-	gsettings? ( !gnome )
 "
 
 # libpcre needed in some cases, bug #472228
-RDEPEND="
+CDEPEND="
 	|| (
 		elibc_glibc? ( virtual/libc )
 		elibc_uclibc? ( virtual/libc )
@@ -51,15 +50,13 @@ RDEPEND="
 	caps? ( >=sys-libs/libcap-2.22-r2[${MULTILIB_USEDEP}] )
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.1-r1 )
 	alsa? ( >=media-libs/alsa-lib-1.0.19 )
-	glib? ( >=dev-libs/glib-2.4.0:2[${MULTILIB_USEDEP}] )
+	glib? ( >=dev-libs/glib-2.26.0:2[${MULTILIB_USEDEP}] )
 	zeroconf? ( >=net-dns/avahi-0.6.12[dbus] )
 	jack? ( virtual/jack )
 	tcpd? ( sys-apps/tcp-wrappers[${MULTILIB_USEDEP}] )
 	lirc? ( app-misc/lirc )
 	dbus? ( >=sys-apps/dbus-1.0.0[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:3 )
-	gnome? ( >=gnome-base/gconf-2.4.0 )
-	gsettings? ( >=dev-libs/glib-2.26.0 )
 	bluetooth? (
 		>=net-wireless/bluez-5
 		>=sys-apps/dbus-1.0.0
@@ -76,7 +73,6 @@ RDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	>=media-libs/speex-1.2.0
 	media-libs/speexdsp
 	gdbm? ( sys-libs/gdbm:= )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
@@ -85,6 +81,9 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-pulseaudio )
 "
 # it's a valid RDEPEND, libltdl.so is used for native abi
+RDEPEND="${CDEPEND}
+	gconf? ( >=gnome-base/gconf-3.2.6 )
+"
 
 DEPEND="${RDEPEND}
 	sys-devel/m4
@@ -161,6 +160,7 @@ multilib_src_configure() {
 		--disable-adrian-aec
 		--disable-bluez4
 		--disable-esound
+		--disable-gconf
 		--disable-solaris
 		--enable-largefile
 		--localstatedir="${EPREFIX}"/var
@@ -168,8 +168,7 @@ multilib_src_configure() {
 		--with-udev-rules-dir="${EPREFIX}/$(get_udevdir)"/rules.d
 		$(multilib_native_use_enable alsa)
 		$(multilib_native_use_enable bluetooth bluez5)
-		$(multilib_native_use_enable gnome gconf)
-		$(multilib_native_use_enable gsettings)
+		$(multilib_native_use_enable glib gsettings)
 		$(multilib_native_use_enable gtk gtk3)
 		$(multilib_native_use_enable jack)
 		$(multilib_native_use_enable libsamplerate samplerate)
