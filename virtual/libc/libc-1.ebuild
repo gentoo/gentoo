@@ -18,4 +18,9 @@ RDEPEND="!prefix-guest? (
 	)
 	prefix-guest? (
 		elibc_Cygwin? ( sys-libs/cygwin-crypt )
+		!sys-libs/glibc
+		!sys-libs/musl
+		!sys-libs/uclibc-ng
+		!sys-libs/uclibc
+		!sys-freebsd/freebsd-lib
 	)"
