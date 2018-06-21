@@ -110,7 +110,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-darwin14.patch
 
 	# bootstrapping might fail with host provided gcc on 10.4/x86
-	if ! is_crosscompile && ! echo "int main(){return 0;}" | gcc -o "${T}"/foo \
+	if ! is_crosscompile && ! echo "int main(){return 0;}" | $(tc-getCC) -o "${T}"/foo \
 		-mdynamic-no-pic -x c - >/dev/null 2>&1;
 	then
 		einfo "-mdynamic-no-pic doesn't work - disabling..."
@@ -119,6 +119,14 @@ src_prepare() {
 		awk 'BEGIN{x=1}{if ($0 ~ "use -mdynamic-no-pic to build x86")
 		{x=1-x} else if (x) print}' $XD > t && mv t $XD \
 			|| die "Failed to rewrite $XD"
+	fi
+
+	if [[ ${CHOST} == powerpc*-darwin* ]] && \
+		! echo "int main(){return 0;}" | \
+			$(tc-getCC) -o "${T}"/foo -no-cpp-precomp -x c - >/dev/null 2>&1;
+	then
+		einfo "-no-cpp-precomp not supported by compiler - disabling ..."
+		sed -i -e 's/-no-cpp-precomp//' configure.in configure || die
 	fi
 
 	epatch "${FILESDIR}"/${P}-perl-5.18.patch
