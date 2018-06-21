@@ -1,5 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michael Haubenwallner <haubi@gentoo.org> (21 Jun 2018)
+# sys-libs/libseccomp is a linux interface, not sure if it will work
+# in prefix for Linux either, bug #585756
+seccomp
 
 # Mask all glibc/linux combination, unmasked in the appropriate profiles
 elibc_glibc
