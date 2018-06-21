@@ -41,7 +41,7 @@ app-admin/chroot_safe 1.4: a tool to chroot any dynamically linked application i
 app-admin/chrootuid 1.3-r1: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF executables
 app-admin/clustershell 1.6: Python framework for efficient cluster administration
-app-admin/conky 1.10.4 1.10.8 1.10.8-r1: An advanced, highly configurable system monitor for X
+app-admin/conky 1.10.4 1.10.8-r1: An advanced, highly configurable system monitor for X
 app-admin/conserver 8.1.18-r1: Serial Console Manager
 app-admin/cpulimit 1.8: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r5: Log rotation software
