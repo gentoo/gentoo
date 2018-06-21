@@ -464,7 +464,7 @@ src_install() {
 	einfo "Building default configuration ..."
 	insinto "${MY_SYSCONFDIR#${EPREFIX}}"
 	[[ -f "${S}/scripts/mysqlaccess.conf" ]] && doins "${S}"/scripts/mysqlaccess.conf
-	local mycnf_src="my.cnf-5.6"
+	local mycnf_src="my.cnf-5.6-r1"
 	sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
 		"${FILESDIR}/${mycnf_src}" \
 		> "${TMPDIR}/my.cnf.ok" || die
