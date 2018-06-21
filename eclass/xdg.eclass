@@ -26,6 +26,7 @@ DEPEND="
 	dev-util/desktop-file-utils
 	x11-misc/shared-mime-info
 "
+[[ ${EAPI:-0} == [0123456] ]] || BDEPEND="${DEPEND}"
 fi
 
 # @FUNCTION: xdg_src_prepare
@@ -34,7 +35,7 @@ fi
 xdg_src_prepare() {
 	xdg_environment_reset
 
-	has ${EAPI:-0} 6 && default
+	[[ ${EAPI:-0} == [012345] ]] || default
 }
 
 # @FUNCTION: xdg_pkg_preinst
