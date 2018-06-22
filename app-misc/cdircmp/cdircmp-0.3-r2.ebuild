@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,28 +11,25 @@ SRC_URI="http://home.hccnet.nl/paul.schuurmans/linux/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND=">=sys-libs/ncurses-5.4"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+RDEPEND=">=sys-libs/ncurses-5.4:0="
 
 src_prepare() {
 	sed -i Makefile \
 		-e 's| -o | $(LDFLAGS)&|g' \
 		|| die "sed Makefile"
+	default
 }
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		|| die "emake failed"
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	dodoc AUTHORS ChangeLog README
-
-	dobin ${PN} || die "dobin failed"
+	einstalldocs
+	dobin ${PN}
 }
