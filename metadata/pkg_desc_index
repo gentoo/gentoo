@@ -1883,7 +1883,7 @@ dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.8.1: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
-dev-db/phpmyadmin 4.0.10.20 4.7.0 4.7.7-r1 4.7.8: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.7.0 4.7.8: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.3.22 9.4.17 9.5.12 9.6.8 10.3: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
