@@ -9723,7 +9723,7 @@ sys-apps/ethtool 4.8 4.13: Utility for examining and tuning ethernet-based netwo
 sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.22: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
-sys-apps/file 5.32-r1 5.33-r2: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.33-r2: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.6.0-r1: GNU utilities for finding files
 sys-apps/firejail 0.9.44.8 0.9.50: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS branch
