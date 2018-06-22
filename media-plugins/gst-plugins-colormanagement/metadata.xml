@@ -6,9 +6,9 @@
 	<name>GStreamer package maintainers</name>
 </maintainer>
 <longdescription lang="en">
-	GStreamer plugin for calculating Chromaprint fingerprint from audio files.
+	GStreamer plugin for color management correction.
 
 	Includes the following elements:
-	* chromaprint - Find an audio fingerprint using the Chromaprint library
+	* lcms - Uses LittleCMS 2 to perform ICC profile correction
 </longdescription>
 </pkgmetadata>
