@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		LinSSID displays the information available
+		from the 'iw list' tool in a graphical format.
+		It displays a table of all of the local wireless networks
+		that your device can receive and information about them.
+		It also displays charts of the signal strength of each network by
+		channel number and over time.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/linssid/discussion/bugs/</bugs-to>
+		<remote-id type="sourceforge">linssid</remote-id>
+	</upstream>
+</pkgmetadata>
