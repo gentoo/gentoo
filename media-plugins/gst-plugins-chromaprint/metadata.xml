@@ -9,6 +9,6 @@
 	GStreamer plugin for calculating Chromaprint fingerprint from audio files.
 
 	Includes the following elements:
-	* chromeprint - Find an audio fingerprint using the Chromaprint library
+	* chromaprint - Find an audio fingerprint using the Chromaprint library
 </longdescription>
 </pkgmetadata>
