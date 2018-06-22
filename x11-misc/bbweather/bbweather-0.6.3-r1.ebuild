@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -6,8 +6,8 @@ EAPI=2
 inherit autotools eutils
 
 DESCRIPTION="blackbox weather monitor"
-HOMEPAGE="http://www.netmeister.org/apps/bbweather/"
-SRC_URI="http://www.netmeister.org/apps/${P}.tar.bz2"
+HOMEPAGE="https://www.netmeister.org/apps/bbweather/"
+SRC_URI="https://www.netmeister.org/apps/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
