@@ -9941,7 +9941,7 @@ sys-boot/os-prober 1.76-r1: Utility to detect other OSs on a set of drives
 sys-boot/plymouth 0.9.2-r1 0.9.3-r1: Graphical boot animation (splash) and logger
 sys-boot/refind 0.10.4-r2: The UEFI Boot Manager by Rod Smith
 sys-boot/syslinux 3.86 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
-sys-boot/unetbootin 657: UNetbootin installs Linux/BSD distributions to a partition or USB drive
+sys-boot/unetbootin 657 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
 sys-cluster/ceph 10.2.3-r2: Ceph distributed filesystem

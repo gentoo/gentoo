@@ -1,7 +1,7 @@
 DEFINED_PHASES=install
 DESCRIPTION=Cli interface for dropbox (python), part of nautilus-dropbox
 EAPI=6
-HOMEPAGE=http://www.dropbox.com/
+HOMEPAGE=https://www.dropbox.com/
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
@@ -10,4 +10,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/dropbox-cli-1.6.0.py.xz
 _eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	ffa9c3284c6b07b8c9f7933911f63812	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=69aa7591d26b5d30afa7b11d9e5f6a12
+_md5_=3d7b8d12421e3e74f23d59c83df87db9
