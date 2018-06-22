@@ -15,7 +15,7 @@ SRC_URI="https://github.com/rhinstaller/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="bcache +cryptsetup dmraid doc escrow lvm kbd test"
+IUSE="bcache +cryptsetup dmraid doc escrow lvm kbd test vdo"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -38,13 +38,13 @@ RDEPEND="
 		sys-fs/lvm2
 		virtual/udev
 	)
+	vdo? ( dev-libs/libyaml )
 	${PYTHON_DEPS}
 "
 
 DEPEND="
 	${RDEPEND}
 	>=dev-libs/gobject-introspection-1.3.0
-	dev-libs/libyaml
 	doc? ( dev-util/gtk-doc )
 "
 
@@ -80,6 +80,7 @@ src_configure() {
 		$(use_with kbd)
 		$(use_with python_single_target_python2_7 python2)
 		$(use_with !python_single_target_python2_7 python3)
+		$(use_with vdo)
 	)
 	econf "${myeconfargs[@]}"
 }
