@@ -11,6 +11,6 @@
 	</maintainer>
 	<longdescription>
 		The SPS decoder library will load IPF and CT Raw files in the emulator of your choice.
-		Kryofluxes <pkg>app-misc/dtc</pkg> also will need this.
+		Kryofluxes <pkg>app-misc/kryoflux-dtc</pkg> also will need this.
 	</longdescription>
 </pkgmetadata>
