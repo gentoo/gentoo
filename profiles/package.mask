@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Auty <ikelos@gentoo.org> (22 Jun 2018)
+# Not maintained upstream, at least one bug and three upstream bugs
+# Removal in 30 days. Bug #658264
+dev-vcs/giggle
+
 # Matt Turner <mattst88@gentoo.org> (20 Jun 2018)
 # No reverse deps after removal of app-i18n/fbiterm
 # Removal in 30 days. Bug #658528
