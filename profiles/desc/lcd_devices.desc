@@ -80,7 +80,7 @@ pertelian - Add support for the Pertelian X2040 displays
 phanderson - Add support for the PHAnderson serial-to-HD44780 controller
 picgraphic - Add support for PIC graphic displays
 picolcd - Add support for Mini-Box's picoLCD
-picolcdgraphic Add support for Mini-Box's graphical picoLCD
+picolcdgraphic - Add support for Mini-Box's graphical picoLCD
 png - Add support for PNG output
 ppm - Add support for PNG output
 pyramid - Add support for the Pyramid LCD device
