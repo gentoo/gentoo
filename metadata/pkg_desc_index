@@ -7599,7 +7599,7 @@ media-libs/libtheora 1.1.1-r1: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
-media-libs/libuninameslist 20091231: Library of unicode annotation data
+media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.1: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.6: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
@@ -9006,6 +9006,7 @@ net-nntp/pan 0.142: A newsreader for GNOME
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-nntp/xrn 9.02-r1: A small and fast news reader for X
+net-p2p/amule 2.3.2-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.15.1: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.15.1: Original Bitcoin crypto-currency wallet for automated services
