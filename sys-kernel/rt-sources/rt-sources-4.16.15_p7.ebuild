@@ -7,9 +7,9 @@ KEYWORDS="~amd64"
 
 HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
 
-inherit versionator
+inherit eapi7-ver
 
-CKV="$(get_version_component_range 1-3)"
+CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 RT_PATCHSET="${PV/*_p}"
@@ -30,10 +30,6 @@ S="${WORKDIR}/linux-${KV_FULL}"
 
 UNIPATCH_LIST="${DISTDIR}/${RT_FILE}"
 UNIPATCH_STRICTORDER="yes"
-
-PATCHES=(
-	"${FILESDIR}"/rt-sources-posix-printf.patch # 627068
-)
 
 src_prepare() {
 	default
