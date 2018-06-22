@@ -3,10 +3,16 @@
 
 EAPI=7
 
-inherit git-r3
+if [[ ${PV} != *9999* ]]; then
+	SRC_URI="https://github.com/dylanaraps/${PN}/archive/${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~amd64-fbsd"
+else
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/dylanaraps/neofetch.git"
+fi
+
 DESCRIPTION="Simple information system script"
 HOMEPAGE="https://github.com/dylanaraps/neofetch"
-EGIT_REPO_URI="https://github.com/dylanaraps/neofetch.git"
 LICENSE="MIT-with-advertising"
 SLOT="0"
 IUSE="X"
