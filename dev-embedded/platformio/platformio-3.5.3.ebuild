@@ -20,13 +20,15 @@ IUSE=""
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-	>=dev-python/semantic_version-2.5.0[${PYTHON_USEDEP}]
-	>=dev-python/pyserial-3[${PYTHON_USEDEP}]
-	<dev-python/pyserial-4[${PYTHON_USEDEP}]
-	>=dev-python/lockfile-0.9.1[${PYTHON_USEDEP}]
-	<dev-python/lockfile-0.13[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	<dev-python/arrow-1[${PYTHON_USEDEP}]
+	<dev-python/bottle-0.13[${PYTHON_USEDEP}]
 	>=dev-python/click-5[${PYTHON_USEDEP}]
 	<dev-python/click-6[${PYTHON_USEDEP}]
-	<dev-python/bottle-0.13[${PYTHON_USEDEP}]
-	<dev-python/arrow-1[${PYTHON_USEDEP}]"
+	dev-python/colorama[${PYTHON_USEDEP}]
+	<dev-python/lockfile-0.13[${PYTHON_USEDEP}]
+	>=dev-python/lockfile-0.9.1[${PYTHON_USEDEP}]
+	>=dev-python/pyserial-3[${PYTHON_USEDEP}]
+	<dev-python/pyserial-4[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.4[${PYTHON_USEDEP}]
+	<dev-python/requests-3[${PYTHON_USEDEP}]
+	>=dev-python/semantic_version-2.5.0[${PYTHON_USEDEP}]"
