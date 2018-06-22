@@ -82,8 +82,8 @@ python_compile() {
 
 python_compile_all() {
 	if use doc; then
-		emake -C doc SPHINXBUILD='"${EPYTHON}" "${S}/sphinx-build.py"' html
-		HTML_DOCS=( doc/_build/html/. )
+		esetup.py build_sphinx
+		HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
 	fi
 }
 
