@@ -6166,9 +6166,7 @@ x11-wm/enlightenment:enlightenment_modules_wl-wl - Wayland-in-Wayland module
 x11-wm/enlightenment:enlightenment_modules_wl-x11 - Wayland-in-X11 module
 x11-wm/enlightenment:enlightenment_modules_xkbswitch - Keyboard layout configuration and switcher
 x11-wm/enlightenment:enlightenment_modules_xwayland - X/Wayland integration
-x11-wm/enlightenment:pango - Enable pango font rendering
 x11-wm/enlightenment:ukit - Use upower/udisks to automount devices
-x11-wm/enlightenment:xrandr - Enable support for the X xrandr extension
 x11-wm/fluxbox:bidi - Enable bidirectional language support with dev-libs/fribidi
 x11-wm/fluxbox:slit - Enables the Fluxbox slit (or dock)
 x11-wm/fluxbox:systray - Enables the system tray in the Fluxbox toolbar
