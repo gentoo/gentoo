@@ -35,7 +35,7 @@ goldelox - Add support for Goldelox MD1 display modules
 graphlcd - Meta-driver to support drivers via app-misc/graphlcd-base
 hd44780 - Add support for Hitachi HD44780 and compatible displays
 hd44780i2c - Enable hd44780 via i2c instead of parallel port driver
-hd44780-i2c Enable hd44780 via i2c instead of parallel port driver
+hd44780-i2c - Enable hd44780 via i2c instead of parallel port driver
 i2500vfd - Add support for the Intra2net Intranator 2500 VFD display
 i2c - Add generic support for i2c based modules
 icpa106 - Add support for ICP A106 alarm/LCD boards for 19" racks
