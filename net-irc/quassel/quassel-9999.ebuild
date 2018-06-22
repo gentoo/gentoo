@@ -17,7 +17,7 @@ DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
 HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+breeze crypt +dbus debug kde ldap monolithic oxygen postgres +server
+IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server
 snorenotify +ssl syslog urlpreview X"
 
 SERVER_RDEPEND="
@@ -33,7 +33,10 @@ GUI_RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
-	breeze? ( kde-frameworks/breeze-icons:5 )
+	!bundled-icons? (
+		kde-frameworks/breeze-icons:5
+		oxygen? ( kde-frameworks/oxygen-icons:5 )
+	)
 	dbus? (
 		>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt5(+)]
 		dev-qt/qtdbus:5
@@ -48,7 +51,6 @@ GUI_RDEPEND="
 		kde-frameworks/kxmlgui:5
 		kde-frameworks/sonnet:5
 	)
-	oxygen? ( kde-frameworks/oxygen-icons:5 )
 	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 	urlpreview? ( dev-qt/qtwebengine:5[widgets] )
 "
@@ -78,11 +80,9 @@ REQUIRED_USE="
 	crypt? ( || ( server monolithic ) )
 	kde? ( || ( X monolithic ) dbus )
 	ldap? ( || ( server monolithic ) )
-	monolithic? ( || ( breeze oxygen ) )
 	postgres? ( || ( server monolithic ) )
 	snorenotify? ( || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
-	X? ( || ( breeze oxygen ) )
 "
 
 pkg_setup() {
@@ -99,18 +99,18 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT4=OFF
 		-DUSE_QT5=ON
-		-DWITH_BREEZE=OFF
-		-DWITH_WEBKIT=OFF
-		-DWITH_BREEZE_DARK=OFF
-		-DWITH_OXYGEN=OFF
-		-DEMBED_DATA=OFF
+		-DUSE_CCACHE=OFF
 		-DCMAKE_SKIP_RPATH=ON
+		-DEMBED_DATA=OFF
+		-DWITH_WEBKIT=OFF
+		-DWITH_BUNDLED_ICONS=$(usex bundled-icons)
 		$(cmake-utils_use_find_package crypt QCA2-QT5)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
 		$(cmake-utils_use_find_package dbus Qt5DBus)
 		-DWITH_KDE=$(usex kde)
 		-DWITH_LDAP=$(usex ldap)
 		-DWANT_MONO=$(usex monolithic)
+		-DWITH_OXYGEN_ICONS=$(usex oxygen)
 		-DWANT_CORE=$(usex server)
 		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
 		-DWITH_WEBENGINE=$(usex urlpreview)
