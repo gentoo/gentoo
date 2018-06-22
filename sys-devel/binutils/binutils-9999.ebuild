@@ -19,25 +19,25 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                      for the patchsets
 #                      Default: dilfridge :)
 
+PATCH_VER=1
+
 case ${PV} in
 	9999)
-		BVER="git"
 		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
 		inherit git-r3
 		S=${WORKDIR}/binutils
 		EGIT_CHECKOUT_DIR=${S}
 		;;
 	*)
-		BVER=${PV}
-		SRC_URI="mirror://gnu/binutils/binutils-${BVER}.tar.xz"
+		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		;;
 esac
-SLOT="${BVER}"
+SLOT="${PV}"
 
 #
 # The Gentoo patchset
 #
-PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${BVER}}
+PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${PV}}
 PATCH_DEV=${PATCH_DEV:-dilfridge}
 
 [[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
@@ -80,7 +80,8 @@ MY_BUILDDIR=${WORKDIR}/build
 src_unpack() {
 	case ${PV} in
 		9999)
-			git-r3_src_unpack;
+			git-r3_src_unpack
+			default
 			;;
 		*)
 			default
@@ -136,21 +137,21 @@ toolchain-binutils_bugurl() {
 	printf "https://bugs.gentoo.org/"
 }
 toolchain-binutils_pkgversion() {
-	printf "Gentoo ${BVER}"
+	printf "Gentoo ${PV}"
 	[[ -n ${PATCH_VER} ]] && printf " p${PATCH_VER}"
 }
 
 src_configure() {
 	# Setup some paths
-	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${BVER}
+	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
 	INCPATH=${LIBPATH}/include
-	DATAPATH=/usr/share/binutils-data/${CTARGET}/${BVER}
+	DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
 	if is_cross ; then
 		TOOLPATH=/usr/${CHOST}/${CTARGET}
 	else
 		TOOLPATH=/usr/${CTARGET}
 	fi
-	BINPATH=${TOOLPATH}/binutils-bin/${BVER}
+	BINPATH=${TOOLPATH}/binutils-bin/${PV}
 
 	# Make sure we filter $LINGUAS so that only ones that
 	# actually work make it through #42033
@@ -282,7 +283,7 @@ src_install() {
 	# Newer versions of binutils get fancy with ${LIBPATH} #171905
 	cd "${ED}"/${LIBPATH}
 	for d in ../* ; do
-		[[ ${d} == ../${BVER} ]] && continue
+		[[ ${d} == ../${PV} ]] && continue
 		mv ${d}/* . || die
 		rmdir ${d} || die
 	done
@@ -323,10 +324,10 @@ src_install() {
 	insinto /etc/env.d/binutils
 	cat <<-EOF > "${T}"/env.d
 		TARGET="${CTARGET}"
-		VER="${BVER}"
+		VER="${PV}"
 		LIBPATH="${EPREFIX}${LIBPATH}"
 	EOF
-	newins "${T}"/env.d ${CTARGET}-${BVER}
+	newins "${T}"/env.d ${CTARGET}-${PV}
 
 	# Handle documentation
 	if ! is_cross ; then
@@ -358,7 +359,7 @@ src_install() {
 pkg_postinst() {
 	# Make sure this ${CTARGET} has a binutils version selected
 	[[ -e ${EROOT}/etc/env.d/binutils/config-${CTARGET} ]] && return 0
-	binutils-config ${CTARGET}-${BVER}
+	binutils-config ${CTARGET}-${PV}
 }
 
 pkg_postrm() {
@@ -370,7 +371,7 @@ pkg_postrm() {
 	#       rerun binutils-config if this is a remerge, as
 	#       we want the mtimes on the symlinks updated (if
 	#       it is the same as the current selected profile)
-	if [[ ! -e ${EPREFIX}${BINPATH}/ld ]] && [[ ${current_profile} == ${CTARGET}-${BVER} ]] ; then
+	if [[ ! -e ${EPREFIX}${BINPATH}/ld ]] && [[ ${current_profile} == ${CTARGET}-${PV} ]] ; then
 		local choice=$(binutils-config -l | grep ${CTARGET} | awk '{print $2}')
 		choice=${choice//$'\n'/ }
 		choice=${choice/* }
@@ -379,8 +380,8 @@ pkg_postrm() {
 		else
 			binutils-config ${choice}
 		fi
-	elif [[ $(CHOST=${CTARGET} binutils-config -c) == ${CTARGET}-${BVER} ]] ; then
-		binutils-config ${CTARGET}-${BVER}
+	elif [[ $(CHOST=${CTARGET} binutils-config -c) == ${CTARGET}-${PV} ]] ; then
+		binutils-config ${CTARGET}-${PV}
 	fi
 }
 
@@ -410,4 +411,4 @@ pkg_postrm() {
 # - at build-time set scriptdir to point to symlinked location:
 #   ${TOOLPATH}: /usr/${CHOST} (or /usr/${CHOST}/${CTARGET} for cross-case)
 # - at install-time set scriptdir to point to slotted location:
-#   ${LIBPATH}: /usr/$(get_libdir)/binutils/${CTARGET}/${BVER}
+#   ${LIBPATH}: /usr/$(get_libdir)/binutils/${CTARGET}/${PV}
