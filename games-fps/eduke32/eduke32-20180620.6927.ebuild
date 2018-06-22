@@ -12,12 +12,14 @@ MY_PN_HRP="duke3d_hrp"
 MY_PN_OPL="duke3d_musopl"
 MY_PN_PSX="duke3d_psx"
 MY_PN_SC55="duke3d_music-sc55"
+MY_PN_VOXELS="duke3d_voxels"
 MY_PN_XXX="duke3d_xxx"
 
 MY_PV_HRP="5.4"
 MY_PV_OPL="2.01"
 MY_PV_PSX="1.11"
 MY_PV_SC55="4.02"
+MY_PV_VOXELS="1.21"
 MY_PV_XXX="1.33"
 
 DESCRIPTION="An open source engine port of the classic PC first person shooter Duke Nukem 3D"
@@ -28,21 +30,24 @@ SRC_URI="http://dukeworld.com/eduke32/synthesis/${MY_DATE}-${MY_BUILD}/${PN}_src
 	offensive? ( http://www.duke4.org/files/nightfright/related/${MY_PN_XXX}.zip -> ${MY_PN_XXX}-${MY_PV_XXX}.zip )
 	opl? ( http://www.moddb.com/downloads/mirror/95750/102/ce9e8f422c6cccdb297852426e96740a -> ${MY_PN_OPL}-${MY_PV_OPL}.zip )
 	psx? ( http://www.duke4.org/files/nightfright/related/duke3d_psx.zip -> ${MY_PN_PSX}-${MY_PV_PSX}.zip )
-	sc-55? ( http://www.duke4.org/files/nightfright/music/${MY_PN_SC55}.zip -> ${MY_PN_SC55}-${MY_PV_SC55}.zip )"
+	sc-55? ( http://www.duke4.org/files/nightfright/music/${MY_PN_SC55}.zip -> ${MY_PN_SC55}-${MY_PV_SC55}.zip )
+	voxels? ( https://www.dropbox.com/s/yaxfahyvskyvt4r/duke3d_voxels.zip -> ${MY_PN_VOXELS}-${MY_PV_VOXELS}.zip )"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="Art BUILDLIC GPL-2"
 SLOT="0"
-IUSE="cdinstall demo flac fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis vpx xmp"
+IUSE="cdinstall demo flac fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis voxels vpx xmp"
 REQUIRED_USE="cdinstall? ( !demo )
 	demo? ( !cdinstall )
-	hrp? ( ^^ ( demo cdinstall ) )
+	hrp? ( ^^ ( demo cdinstall )
+		!voxels )
 	offensive? ( ^^ ( demo cdinstall ) )
 	opl? ( ^^ ( demo cdinstall )
 		!sc-55 )
 	psx? ( ^^ ( demo cdinstall ) )
 	sc-55? ( ^^ ( demo cdinstall )
 		!opl )
+	voxels? ( !hrp )
 	vpx? ( opengl )"
 
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
@@ -69,7 +74,7 @@ DEPEND="${MY_DEPEND_RDEPEND}
 	app-arch/unzip
 	x86? ( dev-lang/nasm )"
 
-PATCHES=( "${FILESDIR}/fix-build-transpal.patch" "${FILESDIR}/log-to-tmpdir.patch" "${FILESDIR}/search-duke3d-path.patch" )
+PATCHES=( "${FILESDIR}/log-to-tmpdir.patch" "${FILESDIR}/search-duke3d-path.patch" )
 
 src_unpack() {
 	# Extract only the eduke32 archive
@@ -87,6 +92,9 @@ src_unpack() {
 	fi
 	if use sc-55; then
 		unzip -q "${DISTDIR}"/${MY_PN_SC55}-${MY_PV_SC55}.zip readme/music_readme.txt || die
+	fi
+	if use voxels; then
+		unzip -q "${DISTDIR}"/${MY_PN_VOXELS}-${MY_PV_VOXELS}.zip voxelpack_readme.txt || die
 	fi
 }
 
@@ -198,6 +206,9 @@ src_install() {
 	if use sdk; then
 		doins -r package/sdk
 	fi
+	if use voxels; then
+		doins "${DISTDIR}"/${MY_PN_VOXELS}-${MY_PV_VOXELS}.zip
+	fi
 
 	newicon "${DISTDIR}"/eduke32_classic.png eduke32.png
 
@@ -216,6 +227,9 @@ src_install() {
 	fi
 	if use sc-55; then
 		DOCS+=( "${WORKDIR}"/readme/music_readme.txt )
+	fi
+	if use voxels; then
+		DOCS+=( "${WORKDIR}"/voxelpack_readme.txt )
 	fi
 	einstalldocs
 }
