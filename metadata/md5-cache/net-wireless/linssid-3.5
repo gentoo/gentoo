@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 x11-libs/qwt:6[opengl,qt5,svg]
+DESCRIPTION=Graphical wireless scanning for Linux
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/linssid/
+IUSE=policykit
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=net-wireless/iw x11-libs/libxkbcommon[X] policykit? ( sys-auth/polkit ) !policykit? ( app-admin/sudo x11-libs/gksu ) dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 x11-libs/qwt:6[opengl,qt5,svg]
+SLOT=0
+SRC_URI=mirror://sourceforge/linssid/linssid_3.5.orig.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	990448b067cb3cfe1443bc25fb57239c	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=ec59f64c96d3a4b959f20689766af0b8
