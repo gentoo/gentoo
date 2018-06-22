@@ -23,9 +23,9 @@ DEVEL_KIT_MODULE_URI="https://github.com/simpl/ngx_devel_kit/archive/v${DEVEL_KI
 DEVEL_KIT_MODULE_WD="${WORKDIR}/ngx_devel_kit-${DEVEL_KIT_MODULE_PV}"
 
 # ngx_brotli (https://github.com/eustas/ngx_brotli, BSD-2)
-HTTP_BROTLI_MODULE_PV="37ab9b2933a0b756ba3447000b7f31d432ed8228"
+HTTP_BROTLI_MODULE_PV="0.1.2"
 HTTP_BROTLI_MODULE_P="ngx_brotli-${HTTP_BROTLI_MODULE_PV}"
-HTTP_BROTLI_MODULE_URI="https://github.com/eustas/ngx_brotli/archive/${HTTP_BROTLI_MODULE_PV}.tar.gz"
+HTTP_BROTLI_MODULE_URI="https://github.com/eustas/ngx_brotli/archive/v${HTTP_BROTLI_MODULE_PV}.tar.gz"
 HTTP_BROTLI_MODULE_WD="${WORKDIR}/ngx_brotli-${HTTP_BROTLI_MODULE_PV}"
 
 # http_uploadprogress (https://github.com/masterzen/nginx-upload-progress-module, BSD-2 license)
@@ -83,7 +83,7 @@ HTTP_METRICS_MODULE_URI="https://github.com/madvertise/ngx_metrics/archive/v${HT
 HTTP_METRICS_MODULE_WD="${WORKDIR}/ngx_metrics-${HTTP_METRICS_MODULE_PV}"
 
 # http_vhost_traffic_status (https://github.com/vozlt/nginx-module-vts, BSD license)
-HTTP_VHOST_TRAFFIC_STATUS_MODULE_PV="0.1.16"
+HTTP_VHOST_TRAFFIC_STATUS_MODULE_PV="0.1.17"
 HTTP_VHOST_TRAFFIC_STATUS_MODULE_P="ngx_http_vhost_traffic_status-${HTTP_VHOST_TRAFFIC_STATUS_MODULE_PV}"
 HTTP_VHOST_TRAFFIC_STATUS_MODULE_URI="https://github.com/vozlt/nginx-module-vts/archive/v${HTTP_VHOST_TRAFFIC_STATUS_MODULE_PV}.tar.gz"
 HTTP_VHOST_TRAFFIC_STATUS_MODULE_WD="${WORKDIR}/nginx-module-vts-${HTTP_VHOST_TRAFFIC_STATUS_MODULE_PV}"
@@ -156,7 +156,7 @@ GEOIP2_MODULE_URI="https://github.com/leev/ngx_http_geoip2_module/archive/${GEOI
 GEOIP2_MODULE_WD="${WORKDIR}/ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
 
 # njs-module (https://github.com/nginx/njs, as-is)
-NJS_MODULE_PV="0.2.1"
+NJS_MODULE_PV="0.2.2"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
 NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
 NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
@@ -201,7 +201,7 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 # Package doesn't provide a real test suite
@@ -324,7 +324,7 @@ CDEPEND="
 	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	nginx_modules_http_brotli? ( virtual/pkgconfig )
 	nginx_modules_http_security? ( ${AUTOTOOLS_DEPEND} )
@@ -412,12 +412,6 @@ src_prepare() {
 	if use nginx_modules_http_upload_progress; then
 		cd "${HTTP_UPLOAD_PROGRESS_MODULE_WD}" || die
 		eapply "${FILESDIR}"/http_uploadprogress-issue_50-r1.patch
-		cd "${S}" || die
-	fi
-
-	if use nginx_modules_http_vhost_traffic_status; then
-		cd "${HTTP_VHOST_TRAFFIC_STATUS_MODULE_WD}" || die
-		eapply "${FILESDIR}"/http_vhost_traffic_status-0.1.15-allow-compilation-without-HTTP-cache.patch
 		cd "${S}" || die
 	fi
 
@@ -859,7 +853,7 @@ pkg_postinst() {
 	if use nginx_modules_http_lua && use http2; then
 		ewarn ""
 		ewarn "Lua 3rd party module author warns against using ${P} with"
-		ewarn "NGINX_MODULES_HTTP=\"lua http2\". For more info, see http://git.io/OldLsg"
+		ewarn "NGINX_MODULES_HTTP=\"lua http2\". For more info, see https://git.io/OldLsg"
 	fi
 
 	local _n_permission_layout_checks=0
