@@ -3164,7 +3164,7 @@ developers and volunteer mentors.</description>
     <subproject ref="devmanual@gentoo.org"/>
     <subproject ref="pms@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
-    <member>
+    <member is-lead="1">
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
       <role>Developer</role>
@@ -3189,7 +3189,7 @@ developers and volunteer mentors.</description>
       <name>Patrick Lauer</name>
       <role>Developer</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>pinkbyte@gentoo.org</email>
       <name>Sergey Popov</name>
       <role>Lead</role>
