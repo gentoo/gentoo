@@ -35,6 +35,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 src_configure() {
