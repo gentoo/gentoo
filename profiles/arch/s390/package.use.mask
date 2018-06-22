@@ -6,6 +6,7 @@
 app-crypt/pinentry fltk
 dev-python/cssselect doc
 dev-vcs/subversion kwallet
+app-text/ghostscript-gpl cups
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
