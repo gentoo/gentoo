@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools toolchain-funcs
 
@@ -20,14 +20,18 @@ RDEPEND="|| (
 	)"
 S="${WORKDIR}/${PN}"
 
+HTML_DOCS=( ${PN}.html )
+
 src_prepare() {
 	sed -i -e "6s/scm, snow/scm gosh, gosh/" configure.in
+
+	default
 	eautoconf
 	tc-export CC
 }
 
 src_install() {
-	dobin escm
-	doman escm.1
-	dodoc ChangeLog escm.html
+	dobin ${PN}
+	doman ${PN}.1
+	einstalldocs
 }
