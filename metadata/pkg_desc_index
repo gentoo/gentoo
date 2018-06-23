@@ -1036,7 +1036,7 @@ app-misc/jq 1.5-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khard 0.12.2: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
-app-misc/ktoblzcheck 1.48: Library to check account numbers and bank codes of German banks
+app-misc/ktoblzcheck 1.48 1.49: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
 app-misc/lcdproc 0.5.2-r1: Client/Server suite to drive all kinds of LCD (-like) devices
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
@@ -6920,15 +6920,15 @@ lxde-base/lxde-common 0.99.1: LXDE Session default configuration files and nuove
 lxde-base/lxde-icon-theme 0.5.0-r1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r5 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.5.3-r1: LXDE Display Manager
-lxde-base/lxinput 0.3.5: LXDE keyboard and mouse configuration tool
+lxde-base/lxinput 0.3.5 0.3.5-r1: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
-lxde-base/lxpanel 0.9.3: Lightweight X11 desktop panel for LXDE
-lxde-base/lxrandr 0.3.1: LXDE GUI interface to RandR extention
+lxde-base/lxpanel 0.9.3 0.9.3-r1: Lightweight X11 desktop panel for LXDE
+lxde-base/lxrandr 0.3.1 0.3.1-r1: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.2: LXDE session manager
 lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
-lxde-base/lxtask 0.1.8: LXDE Task manager
+lxde-base/lxtask 0.1.8 0.1.8-r1: LXDE Task manager
 lxde-base/lxterminal 0.3.1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.0.2: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.11.0-r1: Common base library for the LXQt desktop environment
@@ -8569,7 +8569,7 @@ net-irc/weechat 2.0.1: Portable and multi-interface IRC client
 net-irc/znc 1.6.5 1.6.6: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
-net-libs/aqbanking 5.6.10: Generic Online Banking Interface
+net-libs/aqbanking 5.6.10 5.7.8: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/biblesync 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
@@ -10153,7 +10153,7 @@ sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2: Standard GNU database libraries
 sys-libs/glibc 2.25-r11 2.26-r7: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
-sys-libs/gwenhywfar 4.19.0-r1: A multi-platform helper library for other libraries
+sys-libs/gwenhywfar 4.19.0-r1 4.20.0: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.3.0: Library for managing partitions
 sys-libs/ldb 1.1.26 1.1.29-r1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6: library required by reiser4progs
@@ -10162,7 +10162,7 @@ sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Di
 sys-libs/libblockdev 2.14-r1: A library for manipulating block devices
 sys-libs/libcap 2.24-r2: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
-sys-libs/libchipcard 5.0.2: Library for accessing chip cards via chip card readers (terminals)
+sys-libs/libchipcard 5.0.2 5.0.4: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.9.1 4.0.1 5.0.1 5.0.2: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 3.9.1 4.0.1 5.0.1 5.0.2: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20170515: C++ Runtime from PathScale, FreeBSD and NetBSD
@@ -10840,7 +10840,7 @@ x11-misc/gxmessage 2.20.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
-x11-misc/i3lock 2.8: Simple screen locker
+x11-misc/i3lock 2.8 2.10: Simple screen locker
 x11-misc/i3status 2.11: generates a status bar for dzen2, xmobar or similar
 x11-misc/icewmcp 3.2-r4: A complete control panel for IceWM using gtk & python
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
