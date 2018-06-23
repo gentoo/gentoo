@@ -118,7 +118,7 @@ DEPEND="${CDEPEND}
 # Live ebuild builds man pages and HTML docs, additionally
 if [[ ${PV} == *9999 ]]; then
 	DEPEND="${DEPEND}
-		dev-ruby/asciidoctor"
+		dev-ruby/asciidoctor
 fi
 
 SITEFILE="50${PN}-gentoo.el"
