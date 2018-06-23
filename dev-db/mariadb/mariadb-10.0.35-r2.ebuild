@@ -269,7 +269,7 @@ src_configure(){
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
 		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr"
-		-DINSTALL_SYSCONFDIR="${EPREFIX%/}/etc/mysql"
+		-DDEFAULT_SYSCONFDIR="${EPREFIX%/}/etc/mysql"
 		-DINSTALL_BINDIR=bin
 		-DINSTALL_DOCDIR=share/doc/${PF}
 		-DINSTALL_DOCREADMEDIR=share/doc/${PF}
