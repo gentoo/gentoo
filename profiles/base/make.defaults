@@ -123,14 +123,14 @@ PYTHONDONTWRITEBYTECODE="1"
 # This MUST be kept in sync with the PYTHON_TARGETS below
 # Mike Gilbert <floppym@gentoo.org> (23 May 2018)
 # sys-apps/baslayout-2.5 needs split-usr enabled.
-BOOTSTRAP_USE="cxx unicode internal-glib split-usr python_targets_python3_6 python_targets_python2_7"
+BOOTSTRAP_USE="cxx unicode internal-glib split-usr python_targets_python3_5 python_targets_python2_7"
 
 # Mike Gilbert <floppym@gentoo.org> (15 May 2012)
 # Default target(s) for python-r1.eclass
 # Michał Górny <mgorny@gentoo.org> (22 Jun 2018)
 # Updated to python3_6
-PYTHON_TARGETS="python2_7 python3_6"
-PYTHON_SINGLE_TARGET="python3_6"
+PYTHON_TARGETS="python2_7 python3_5"
+PYTHON_SINGLE_TARGET="python3_5"
 
 # Michał Górny <mgorny@gentoo.org> (10 Aug 2013)
 # Moved from portage's make.globals.
