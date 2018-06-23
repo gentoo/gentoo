@@ -5988,6 +5988,7 @@ dev-ruby/yard 0.9.11: Documentation generation tool for the Ruby programming lan
 dev-ruby/zentest 4.11.0 4.11.1: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/chicken 4.13.0-r1: Scheme interpreter and native Scheme to C compiler
 dev-scheme/gambit 4.8.8-r1: Gambit-C is a native Scheme to C compiler and interpreter
+dev-scheme/gauche 0.9.5: A Unix system friendly Scheme Interpreter
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-cairo 1.4.0 1.9.91: Wraps the Cairo graphics library for Guile Scheme
