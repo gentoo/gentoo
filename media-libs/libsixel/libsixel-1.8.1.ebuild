@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ inherit bash-completion-r1
 
 DESCRIPTION="A lightweight, fast implementation of DEC SIXEL graphics codec"
 HOMEPAGE="https://github.com/saitoha/libsixel"
-SRC_URI="https://github.com/saitoha/libsixel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/saitoha/libsixel/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0"
@@ -29,8 +29,8 @@ src_configure() {
 		$(use_with gtk gdk-pixbuf2) \
 		$(use_with jpeg) \
 		$(use_with png) \
-		--disable-python \
-		--with-bashcompletiondir=$(get_bashcompdir)
+		--with-bashcompletiondir=$(get_bashcompdir) \
+		--disable-python
 }
 
 src_test() {
