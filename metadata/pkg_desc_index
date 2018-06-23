@@ -1414,7 +1414,7 @@ app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
 app-text/pastebinit 1.5: A software that lets you send anything you want directly to a pastebin
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
-app-text/pdfgrep 1.4.1-r1: A tool similar to grep which searches text in PDFs
+app-text/pdfgrep 1.4.1-r1 2.0.1: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20140328: Python tool for extracting information from PDF documents
 app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
