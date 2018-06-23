@@ -6,6 +6,7 @@ EAPI=6
 VIRTUALX_REQUIRED="manual"
 
 inherit eutils toolchain-funcs flag-o-matic virtualx
+# inherit eutils toolchain-funcs virtualx
 
 DESCRIPTION="Lua bindings using gobject-introspection"
 HOMEPAGE="https://github.com/pavouk/lgi"
@@ -15,6 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="examples test"
+PATCHES="${FILESDIR}/${P}.patch"
 
 RDEPEND="dev-lang/lua:*
 		dev-libs/gobject-introspection
@@ -29,7 +31,8 @@ DEPEND="${RDEPEND}
 		)"
 
 src_prepare() {
-	default
+	default_src_prepare
+	eapply_user
 }
 
 src_compile() {
