@@ -499,11 +499,6 @@ sys-libs/uclibc
 # mpv >= 0.28.0 requires currently masked ffmpeg >= 4.0.
 >=media-video/mpv-0.28.0
 
-# Matthias Maier <tamiko@gentoo.org> (26 Dec 2017)
-# gcc depends on mpfr and this version changes soname. Spare users with
-# FEATURES=-preserve-libs from completely frying their system.
->=dev-libs/mpfr-4.0.0
-
 # Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
 # To adapt to changed version naming by upstream
 # (pcb-yyyymmdd to pcb-x.y.z) we move the ebuild to
