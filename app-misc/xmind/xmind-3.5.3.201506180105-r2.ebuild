@@ -9,7 +9,7 @@ MY_PN="${PN}-portable"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A brainstorming and mind mapping software tool"
-HOMEPAGE="http://www.xmind.net"
+HOMEPAGE="https://www.xmind.net"
 SRC_URI="http://dl2.xmind.net/xmind-downloads/${MY_P}.zip
 	https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz"
 LICENSE="EPL-1.0 LGPL-3"
