@@ -6,6 +6,7 @@
     <name>Cjk</name>
   </maintainer>
   <use>
+    <flag name="brltty">Enable support for <pkg>app-accessibilty/brltty</pkg></flag>
     <flag name="fcitx">Enable support for <pkg>app-i18n/fcitx</pkg></flag>
     <flag name="gtk2">
       Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3
@@ -18,6 +19,7 @@
     <flag name="skk">Enable support for SKK (<pkg>virtual/skkserv</pkg> or <pkg>app-i18n/skk-jisyo</pkg>)</flag>
     <flag name="uim">Enable support for <pkg>app-i18n/uim</pkg></flag>
     <flag name="utempter">Enable support for <pkg>sys-libs/libutempter</pkg></flag>
+    <flag name="wayland">Enable support for Wayland</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">mlterm</remote-id>
