@@ -34,7 +34,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	sys-apps/acl
-	app-text/asciidoc
+	dev-ruby/asciidoctor
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
 "

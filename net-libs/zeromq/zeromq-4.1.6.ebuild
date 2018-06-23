@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/libsodium:=
 	pgm? ( =net-libs/openpgm-5.2.122 )"
 DEPEND="${RDEPEND}
-	app-text/asciidoc
+	dev-ruby/asciidoctor
 	app-text/xmlto
 	sys-apps/util-linux
 	pgm? ( virtual/pkgconfig )"

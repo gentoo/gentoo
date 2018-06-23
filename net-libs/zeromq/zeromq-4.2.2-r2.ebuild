@@ -21,7 +21,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!elibc_Darwin? ( sys-apps/util-linux )
 	doc? (
-		app-text/asciidoc
+		dev-ruby/asciidoctor
 		app-text/xmlto
 	)
 	pgm? ( virtual/pkgconfig )"
