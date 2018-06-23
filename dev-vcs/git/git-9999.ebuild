@@ -107,7 +107,7 @@ RDEPEND="${CDEPEND}
 #   .texi         --(makeinfo)---------> .info
 DEPEND="${CDEPEND}
 	doc? (
-		app-text/asciidoc
+		dev-ruby/asciidoctor
 		app-text/docbook2X
 		sys-apps/texinfo
 		app-text/xmlto
@@ -118,7 +118,7 @@ DEPEND="${CDEPEND}
 # Live ebuild builds man pages and HTML docs, additionally
 if [[ ${PV} == *9999 ]]; then
 	DEPEND="${DEPEND}
-		app-text/asciidoc"
+		dev-ruby/asciidoctor
 fi
 
 SITEFILE="50${PN}-gentoo.el"
@@ -160,7 +160,6 @@ pkg_setup() {
 # pick up these exports if we export them in src_unpack()
 exportmakeopts() {
 	local myopts=(
-		ASCIIDOC_NO_ROFF=YesPlease
 		$(usex cvs '' NO_CVS=YesPlease)
 		$(usex elibc_musl NO_REGEX=YesPlease '')
 		$(usex iconv '' NO_ICONV=YesPlease)
@@ -240,8 +239,6 @@ exportmakeopts() {
 			myopts+=( HAVE_GETDELIM=1 )
 	fi
 
-	has_version '>=app-text/asciidoc-8.0' \
-		&& myopts+=( ASCIIDOC8=YesPlease )
 
 	# Bug 290465:
 	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
