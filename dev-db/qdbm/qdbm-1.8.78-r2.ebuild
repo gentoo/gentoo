@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 RUBY_OPTIONAL="yes"
 
-inherit autotools java-pkg-opt-2 perl-functions ruby-ng
+inherit autotools flag-o-matic java-pkg-opt-2 perl-functions ruby-ng
 
 DESCRIPTION="Quick Database Manager"
 HOMEPAGE="http://fallabs.com/qdbm/"
@@ -88,6 +88,9 @@ qdbm_foreach_api() {
 src_prepare() {
 	default
 	java-pkg-opt-2_src_prepare
+
+	# fix build with >=sys-devel/gcc-7, bug #638878
+	append-cflags $(test-flags-CC -fno-tree-vrp)
 
 	sed -i \
 		-e "/^CFLAGS/s|$| ${CFLAGS}|" \
