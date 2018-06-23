@@ -11,15 +11,17 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="bidi cairo canna debug fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
 	bidi? ( dev-libs/fribidi )
+	brltty? ( app-accessibility/brltty )
 	cairo? ( x11-libs/cairo[X(+)] )
 	canna? ( app-i18n/canna )
+	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx )
 	freewnn? ( app-i18n/freewnn )
 	gtk? (
@@ -46,18 +48,20 @@ RDEPEND="x11-libs/libICE
 	)
 	uim? ( app-i18n/uim )
 	utempter? ( sys-libs/libutempter )
+	wayland? ( dev-libs/wayland )
 	xft? ( x11-libs/libXft )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 REQUIRED_USE="gtk2? ( gtk )"
 
+PATCHES=( "${FILESDIR}"/${PN}-font.patch )
 DOCS=( doc/{en,ja} )
 
 src_prepare() {
 	# default config
 	sed -i \
-		-e "/ icon_path =/aicon_path = ${EPREFIX}/usr/share/pixmaps/mlterm-icon.svg" \
+		-e "/ icon_path =/aicon_path = ${EPREFIX}/usr/share/pixmaps/${PN}-icon.svg" \
 		-e "/ scrollbar_view_name =/ascrollbar_view_name = sample" \
 		etc/main
 
@@ -67,6 +71,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		$(use_enable bidi fribidi)
+		$(use_enable brltty brlapi)
 		$(use_enable canna)
 		$(use_enable debug)
 		$(use_enable fcitx)
@@ -80,6 +85,7 @@ src_configure() {
 		$(use_enable skk)
 		$(use_enable uim)
 		$(use_enable utempter utmp)
+		--with-gui=xlib$(usex fbcon ",fb" "")$(usex wayland ",wayland" "")
 		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
 		--enable-optimize-redrawing
 		--enable-vt52
@@ -87,7 +93,7 @@ src_configure() {
 	)
 
 	local scrollbars="sample,extra"
-	local tools="mlclient,mlcc,mlfc,mlmenu,mlterm-zoom"
+	local tools="mlclient,mlcc,mlfc,mlmenu,${PN}-zoom"
 	if use gtk; then
 		myconf+=(
 			$(use_with gtk gtk $(usex gtk2 2.0 3.0))
@@ -117,6 +123,6 @@ src_install () {
 	docinto contrib/icon
 	dodoc contrib/icon/README
 
-	doicon contrib/icon/mlterm*
-	make_desktop_entry mlterm mlterm mlterm-icon "System;TerminalEmulator"
+	doicon contrib/icon/${PN}*
+	make_desktop_entry ${PN} ${PN} ${PN}-icon "System;TerminalEmulator"
 }
