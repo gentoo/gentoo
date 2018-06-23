@@ -10,4 +10,4 @@ LICENSE=LGPL-3
 RDEPEND=>=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses:0= ) readline? ( sys-libs/libtermcap-compat )
 SLOT=0
 SRC_URI=http://groups.csail.mit.edu/mac/ftpdir/scm/scm-5e6.zip
-_md5_=a2dae683ee978c5167db9ebb43a01f9e
+_md5_=a531c126620062194af7bbb59d80a9be
