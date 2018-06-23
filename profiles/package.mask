@@ -493,15 +493,6 @@ sys-libs/uclibc
 # Mask experimental software
 =mail-mta/postfix-3.4*
 
-# Thomas Deutschmann <whissi@gentoo.org> (07 Feb 2018)
-# Intel recommends to pull these versions because they could
-# cause higher than expected reboots and other unpredictable
-# system behavior. Bug #646646
-=sys-firmware/intel-microcode-20171117_p20171215
-=sys-firmware/intel-microcode-20171117_p20171215-r1
-=sys-firmware/intel-microcode-20180108
-=sys-firmware/intel-microcode-20180108-r1
-
 # Eray Aslan <eras@gentoo.org> (22 Jan 2018)
 # Vulnerable - see https://bugs.gentoo.org/630684
 # Please migrate to cyrus-imapd-3.0 releases
