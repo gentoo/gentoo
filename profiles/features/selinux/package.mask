@@ -39,4 +39,5 @@ sys-apps/dbus-broker
 # Gilles Dartiguelongue <eva@gentoo.org> (24 May 2018)
 # Packages use systemd unconditionally for now
 >=app-admin/abrt-2.10
+app-admin/gnome-abrt
 >=dev-libs/libreport-2.9
