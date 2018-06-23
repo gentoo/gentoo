@@ -41,63 +41,63 @@ RDEPEND="
 		elibc_uclibc? ( virtual/libc )
 		dev-libs/libpcre
 	)
+	dev-libs/libltdl:0
 	>=media-libs/libsndfile-1.0.20[${MULTILIB_USEDEP}]
-	X? (
-		>=x11-libs/libX11-1.4.0[${MULTILIB_USEDEP}]
-		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
-		x11-libs/libSM[${MULTILIB_USEDEP}]
-		x11-libs/libICE[${MULTILIB_USEDEP}]
-		x11-libs/libXtst[${MULTILIB_USEDEP}]
-	)
-	caps? ( >=sys-libs/libcap-2.22-r2[${MULTILIB_USEDEP}] )
-	libsamplerate? ( >=media-libs/libsamplerate-0.1.1-r1 )
+	media-libs/speexdsp
 	alsa? ( >=media-libs/alsa-lib-1.0.19 )
-	glib? ( >=dev-libs/glib-2.4.0:2[${MULTILIB_USEDEP}] )
-	zeroconf? ( >=net-dns/avahi-0.6.12[dbus] )
-	jack? ( virtual/jack )
-	tcpd? ( sys-apps/tcp-wrappers[${MULTILIB_USEDEP}] )
-	lirc? ( app-misc/lirc )
-	dbus? ( >=sys-apps/dbus-1.0.0[${MULTILIB_USEDEP}] )
-	gtk? ( x11-libs/gtk+:3 )
-	gnome? ( >=gnome-base/gconf-2.4.0 )
+	asyncns? ( net-libs/libasyncns[${MULTILIB_USEDEP}] )
 	bluetooth? (
+		media-libs/sbc
 		>=net-wireless/bluez-5
 		>=sys-apps/dbus-1.0.0
-		media-libs/sbc
 	)
-	asyncns? ( net-libs/libasyncns[${MULTILIB_USEDEP}] )
-	udev? ( >=virtual/udev-143[hwdb(+)] )
-	realtime? ( sys-auth/rtkit )
+	caps? ( >=sys-libs/libcap-2.22-r2[${MULTILIB_USEDEP}] )
+	dbus? ( >=sys-apps/dbus-1.0.0[${MULTILIB_USEDEP}] )
 	equalizer? ( sci-libs/fftw:3.0 )
+	gdbm? ( sys-libs/gdbm:= )
+	glib? ( >=dev-libs/glib-2.4.0:2[${MULTILIB_USEDEP}] )
+	gnome? ( >=gnome-base/gconf-2.4.0 )
+	gtk? ( x11-libs/gtk+:3 )
+	jack? ( virtual/jack )
+	libsamplerate? ( >=media-libs/libsamplerate-0.1.1-r1 )
+	lirc? ( app-misc/lirc )
 	ofono-headset? ( >=net-misc/ofono-1.13 )
 	orc? ( >=dev-lang/orc-0.4.15 )
+	realtime? ( sys-auth/rtkit )
+	selinux? ( sec-policy/selinux-pulseaudio )
 	sox? ( >=media-libs/soxr-0.1.1 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	media-libs/speexdsp
-	gdbm? ( sys-libs/gdbm:= )
-	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
-	dev-libs/libltdl:0
-	selinux? ( sec-policy/selinux-pulseaudio )
+	tcpd? ( sys-apps/tcp-wrappers[${MULTILIB_USEDEP}] )
+	udev? ( >=virtual/udev-143[hwdb(+)] )
+	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
+	X? (
+		x11-libs/libICE[${MULTILIB_USEDEP}]
+		x11-libs/libSM[${MULTILIB_USEDEP}]
+		>=x11-libs/libX11-1.4.0[${MULTILIB_USEDEP}]
+		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
+		x11-libs/libXtst[${MULTILIB_USEDEP}]
+	)
+	zeroconf? ( >=net-dns/avahi-0.6.12[dbus] )
 "
 # it's a valid RDEPEND, libltdl.so is used for native abi
 
 DEPEND="${RDEPEND}
+	dev-libs/libatomic_ops
+	dev-util/intltool
+	>=sys-devel/gettext-0.18.1
 	sys-devel/m4
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
+	system-wide? ( || ( dev-util/unifdef sys-freebsd/freebsd-ubin ) )
 	test? ( >=dev-libs/check-0.9.10 )
 	X? (
 		x11-base/xorg-proto
 		>=x11-libs/libXtst-1.0.99.2[${MULTILIB_USEDEP}]
 	)
-	dev-libs/libatomic_ops
-	virtual/pkgconfig
-	system-wide? ( || ( dev-util/unifdef sys-freebsd/freebsd-ubin ) )
-	dev-util/intltool
-	>=sys-devel/gettext-0.18.1
 "
 # This is a PDEPEND to avoid a circular dep
 PDEPEND="
