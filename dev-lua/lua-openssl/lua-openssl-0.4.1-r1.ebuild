@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libressl luajit"
 
 RDEPEND="
-	luajit? ( dev-lang/luajit:2 )
+	luajit? ( dev-lang/luajit:* )
 	!luajit? ( >=dev-lang/lua-5.1:* )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
