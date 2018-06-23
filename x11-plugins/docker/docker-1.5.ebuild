@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Openbox app which acts as a system tray for KDE and GNOME2"
-HOMEPAGE="http://icculus.org/openbox/2/docker/"
-SRC_URI="http://icculus.org/openbox/2/${PN}/${P}.tar.gz"
+HOMEPAGE="https://icculus.org/openbox/2/docker/"
+SRC_URI="https://icculus.org/openbox/2/${PN}/${P}.tar.gz"
 
 RDEPEND=">=dev-libs/glib-2.0.4
 	x11-libs/libX11
