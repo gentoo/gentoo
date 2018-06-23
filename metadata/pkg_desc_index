@@ -1459,7 +1459,7 @@ app-text/teckit 2.5.6: Text Encoding Conversion toolkit
 app-text/tesseract 3.05.01: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2017: A complete TeX distribution
-app-text/texlive-core 2016-r6 2017-r3: A complete TeX distribution
+app-text/texlive-core 2016-r6 2017-r3 2017-r4: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
