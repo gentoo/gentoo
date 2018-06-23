@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="cd83f4cb83aad4b279642beb9e9d6bd988b66338"
+	EGIT_COMMIT="0ec7ce985fba34d5303f84f09fab79cd2b9874a8"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-ValidationLayers-${EGIT_COMMIT}"
@@ -37,7 +37,6 @@ DEPEND="${PYTHON_DEPS}
 		   )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-Use-usr-for-vulkan-headers.patch"
 	"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
 	 )
 
@@ -50,6 +49,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DBUILD_TESTS=False
 		-DGLSLANG_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
 	)
 	cmake-utils_src_configure
 }
