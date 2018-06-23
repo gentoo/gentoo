@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy{,3} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
@@ -24,7 +24,7 @@ RDEPEND="
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
 		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
