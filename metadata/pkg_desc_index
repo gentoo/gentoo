@@ -10105,7 +10105,7 @@ sys-fs/mtpfs 1.0: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1 0.6.4-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2016.2.22-r2: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2016.2.22-r2 2017.3.23: Open source read-write NTFS driver that runs under FUSE
 sys-fs/owfs 3.1_p4-r1: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
