@@ -2952,7 +2952,7 @@ dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 2.0.1 3.0.0: Binary-decimal and decimal-binary conversion routines for IEEE doubles
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
-dev-libs/efl 1.17.0-r1: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.17.0-r1 1.18.4: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.169-r1 0.170-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.1 2.2.5: Stream-oriented XML parser library
