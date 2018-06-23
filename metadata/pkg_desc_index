@@ -1888,7 +1888,7 @@ dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.3.22 9.4.17 9.5.12 9.6.8 10.3: PostgreSQL RDBMS
 dev-db/pspg 0.8.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
-dev-db/qdbm 1.8.78-r1: Quick Database Manager
+dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/redis 3.0.7 3.0.7-r1 3.2.5 3.2.8-r2 3.2.8-r5 3.2.12 4.0.2-r1 4.0.10: A persistent caching system, key-value and data structures database
 dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management System
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
