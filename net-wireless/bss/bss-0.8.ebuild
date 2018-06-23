@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 inherit toolchain-funcs
 
 DESCRIPTION="Bluetooth stack smasher / fuzzer"
-HOMEPAGE="http://securitech.homeunix.org/blue/"
-SRC_URI="http://securitech.homeunix.org/blue/${P}.tar.gz"
+HOMEPAGE="http://www.secuobs.com/news/15022006-bss_0_8.shtml"
+SRC_URI="http://www.secuobs.com/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
