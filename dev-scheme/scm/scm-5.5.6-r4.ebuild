@@ -161,7 +161,7 @@ regen_catalog() {
 }
 
 pkg_postinst() {
-	[ "${ROOT}" == "/" ] && regen_catalog
+	[[ -z ${ROOT%/} ]] && regen_catalog
 }
 
 pkg_config() {
