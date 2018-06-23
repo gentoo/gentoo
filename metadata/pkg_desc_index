@@ -178,7 +178,7 @@ app-arch/gnome-autoar 0.2.2: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.8: Standard GNU compressor
 app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
-app-arch/innoextract 1.4: A tool to unpack installers created by Inno Setup
+app-arch/innoextract 1.4 1.6: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
 app-arch/libarchive 3.3.1: BSD tar command
@@ -347,7 +347,7 @@ app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
 app-crypt/mit-krb5 1.16-r2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
-app-crypt/monkeysphere 0.37: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
+app-crypt/monkeysphere 0.37 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/openpgp-keys-gentoo-release 20180323 20180530: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/p11-kit 0.23.2 0.23.9: Provides a standard configuration setup for installing PKCS#11
@@ -749,7 +749,7 @@ app-emulation/lxc 2.1.1: LinuX Containers userspace utilities
 app-emulation/lxd 2.21: Fast, dense and secure container management
 app-emulation/nemu 1.4.0: ncurses interface for QEMU
 app-emulation/q4wine 1.3.6-r1: Qt GUI configuration tool for Wine
-app-emulation/qemu 2.11.1-r2: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.11.1-r2 2.12.0-r3: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0 2.11.1: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/runc 1.0.0_rc4 1.0.0_rc5-r1: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
@@ -898,7 +898,7 @@ app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.35: Data resources for Rime Input Method Engine
-app-i18n/scim 1.4.17: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
+app-i18n/scim 1.4.17 1.4.18: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
 app-i18n/scim-anthy 1.2.7-r1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-hangul 0.4.0: Hangul IMEngine for SCIM ported from imhangul
 app-i18n/scim-input-pad 0.1.3: Input pad for SCIM used to input symbols and special characters
@@ -1278,7 +1278,7 @@ app-text/ansifilter 2.10: Handles text files containing ANSI terminal escape cod
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.9-r2 8.6.10: AsciiDoc is a plain text human readable/writable document format
+app-text/asciidoc 8.6.9-r2 8.6.10: A plain text human readable/writable document format
 app-text/aspell 0.60.7_rc1: A spell checker replacement for ispell
 app-text/atril 1.12.2-r5: Atril document viewer for MATE
 app-text/barcode 0.98-r1: barcode generator
@@ -4949,7 +4949,7 @@ dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted 
 dev-python/jaraco-classes 1.4: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 1.5: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-functools 1.15.1: Additional functions used by other projects by developer jaraco
-dev-python/jaraco-itertools 2.0: Additional functions used by other projects by developer jaraco
+dev-python/jaraco-itertools 2.0: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 1.5: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 4.1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 1.1.1: Routines for handling streaming data
@@ -6862,11 +6862,11 @@ kde-misc/kdirstat 3.1.3: GUI equivalent to the du command based on KDE Framework
 kde-misc/kio-gdrive 1.2.3: KIO Slave for Google Drive service
 kde-misc/kmarkdownwebview 0.5.2: KPart for rendering Markdown content
 kde-misc/krename 5.0.0: Powerful batch file renamer
-kde-misc/krusader 2.6.0: Advanced twin-panel (commander-style) file-manager with many extras
+kde-misc/krusader 2.6.0 2.7.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/latte-dock 0.7.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
-kde-misc/rsibreak 0.12.7: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.7 0.12.8: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.2: A collection manager based on KDE Frameworks
@@ -9048,7 +9048,7 @@ net-print/foomatic-db-engine 4.0.11 4.0.12: Generates ppds out of xml foomatic p
 net-print/foomatic-db-ppds 4.0.20170331: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.12 5.2.13: Ghostscript and cups printer drivers
-net-print/hplip 3.17.10: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.17.10 3.18.6: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/ink 0.5.1: A command line utility to display the ink level of your printer
 net-print/libgnomecups 0.2.3-r3 0.2.3-r5: GNOME cups library
 net-print/libinklevel 0.9.2: A library to get the ink level of your printer
@@ -10046,12 +10046,12 @@ sys-firmware/edk2-ovmf 2017_pre20170505-r1 2017_p20180211: UEFI firmware for 64-
 sys-firmware/intel-microcode 20180616: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
-sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
+sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620 1.0.0_p20180211: Open source network boot (PXE) firmware
 sys-firmware/ivtv-firmware 20080701-r1: firmware for Hauppauge PVR-x50 and Conexant 2341x based cards
 sys-firmware/iwl1000-ucode 39.31.5.1: Intel (R) Wireless WiFi Link 1000BGN ucode
 sys-firmware/iwl6050-ucode 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
-sys-firmware/seabios 1.10.2: Open Source implementation of a 16-bit x86 BIOS
-sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
+sys-firmware/seabios 1.10.2 1.11.0: Open Source implementation of a 16-bit x86 BIOS
+sys-firmware/sgabios 0.1_pre8 0.1_pre8-r1: serial graphics adapter bios option rom for x86
 sys-firmware/tt-s2-6400-firmware 0.5.0: Firmware for the Technotrend S2-6400 DVB Card
 sys-firmware/vgabios 0.6c-r1 0.7a: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
