@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools eutils
+inherit autotools
 
 MY_P="${P^g}"
 
@@ -34,10 +34,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-bsd.patch
 	"${FILESDIR}"/${P}-unicode.patch
 )
+DOCS=( AUTHORS ChangeLog HACKING README )
 
 src_prepare() {
 	default
-
 	use ipv6 && sed -i "s/ -4//" ext/tls/ssltest-mod.scm
 
 	eautoconf
@@ -56,5 +56,5 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" install-pkg install-doc
-	dodoc AUTHORS ChangeLog HACKING README
+	einstalldocs
 }
