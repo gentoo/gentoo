@@ -6862,11 +6862,11 @@ kde-misc/kdirstat 3.1.3: GUI equivalent to the du command based on KDE Framework
 kde-misc/kio-gdrive 1.2.3: KIO Slave for Google Drive service
 kde-misc/kmarkdownwebview 0.5.2: KPart for rendering Markdown content
 kde-misc/krename 5.0.0: Powerful batch file renamer
-kde-misc/krusader 2.6.0 2.7.0: Advanced twin-panel (commander-style) file-manager with many extras
+kde-misc/krusader 2.7.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/latte-dock 0.7.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
-kde-misc/rsibreak 0.12.7 0.12.8: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.8: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.2: A collection manager based on KDE Frameworks
@@ -10894,7 +10894,7 @@ x11-misc/rofi 1.3.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screengrab 1.97: Qt application for getting screenshots
 x11-misc/sct 0.3: Set color temperature of the screen
-x11-misc/sddm 0.15.0 0.17.0-r3 0.17.0-r4: Simple Desktop Display Manager
+x11-misc/sddm 0.15.0 0.17.0-r4: Simple Desktop Display Manager
 x11-misc/shared-mime-info 1.9: The Shared MIME-info Database specification
 x11-misc/shutterbug 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
