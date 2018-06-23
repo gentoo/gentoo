@@ -5672,7 +5672,7 @@ dev-python/xlwt 1.0.0 1.2.0: Python library to create spreadsheet files compatib
 dev-python/xmltodict 0.11.0: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
 dev-python/xvfbwrapper 0.2.8: Python wrapper for running a display inside X virtual framebuffer
-dev-python/yapsy 1.11.223-r1: A fat-free DIY Python plugin management toolkit
+dev-python/yapsy 1.11.223-r1 1.11.223-r2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.1 1.1.3: YAQL: Yet Another Query Language
 dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
 dev-python/yolk-portage 0.1-r1: Gentoo Portage plugin for yolk
