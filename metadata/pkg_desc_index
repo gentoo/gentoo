@@ -4538,7 +4538,7 @@ dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/webmozart-assert 1.2.0: Assertions to validate method input/output with nice error messages
 dev-php/xdebug 2.4.1 2.5.3: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.4.1 2.5.3: Xdebug client for the Common Debugger Protocol (DBGP)
-dev-python/3to2 1.1.1: Tool to refactor valid 3.x syntax into valid 2.x syntax
+dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/Babel 2.5.0 2.5.3 2.5.3-r1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.4: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
