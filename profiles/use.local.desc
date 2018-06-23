@@ -3988,7 +3988,7 @@ net-im/bitlbee:otr - Enable support for encrypted conversations
 net-im/bitlbee:plugins - Enable support for plugins
 net-im/bitlbee:purple - Use libpurple instead of the built-in IM protocol support
 net-im/bitlbee:twitter - Enable Twitter protocol support
-net-im/choqok:attica - Build Open Collaboration Services plugin using dev-libs/libattica
+net-im/choqok:attica - Build Open Collaboration Services plugin using kde-frameworks/attica
 net-im/choqok:konqueror - Build Konqueror Choqok plugin
 net-im/choqok:telepathy - Enable support for the real-time communication framework telepathy
 net-im/climm:otr - Enable encrypted conversations
@@ -6013,6 +6013,10 @@ x11-misc/mate-notification-daemon:gtk3 - Build with GTK+3 instead of GTK+2
 x11-misc/mozo:gtk3 - Build with GTK+3 instead of GTK+2
 x11-misc/openbox-menu:icons - Enable support for icons in menus
 x11-misc/openbox-menu:svg - Support SVG icons
+x11-misc/polybar:i3wm - Add support for i3 window manager
+x11-misc/polybar:ipc - Add support for Inter-Process Messaging
+x11-misc/polybar:mpd - Add support for Music Player Daemon
+x11-misc/polybar:network - Enable network support
 x11-misc/qt5ct:dbus - Enable system tray and global menu support
 x11-misc/redshift:geoclue - Control dependency on app-misc/geoclue
 x11-misc/rofi:windowmode - Enable normal window mode

@@ -251,7 +251,7 @@ app-backup/fsarchiver 0.8.1 0.8.4: Flexible filesystem archiver for backup and d
 app-backup/furball 0.5: A small perl script utilizing tar
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.9: Powerful and flexible backup (and syncing) tool, using RSync and Qt
-app-backup/rdiff-backup 1.3.3-r1: Local/remote mirroring+incremental backup
+app-backup/rdiff-backup 1.3.3-r1 1.3.3-r3: Local/remote mirroring+incremental backup
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
@@ -2543,7 +2543,7 @@ dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components fo
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea-bin 3.7.0 3.8.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
-dev-java/icedtea-web 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
+dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
 dev-java/invokebinder 1.6: Provide a friendly DSL for binding method handles
@@ -4992,7 +4992,7 @@ dev-python/lazy-object-proxy 1.2.1: A fast and thorough lazy object proxy
 dev-python/ldappool 1.0 2.0.0 2.1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j: A compiler written in Python for the LESS language
 dev-python/libbonobo-python 2.28.1-r1: Python bindings for the Bonobo framework
-dev-python/libcloud 0.15.1 1.2.1: Unified Interface to the Cloud - python support libs
+dev-python/libcloud 0.15.1 1.2.1 2.3.0: Unified Interface to the Cloud - python support libs
 dev-python/libextractor-python 0.6-r1: A library used to extract metadata from files of arbitrary type
 dev-python/libgnome-python 2.28.1-r1: Python bindings for essential GNOME libraries
 dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas library
@@ -8667,7 +8667,7 @@ net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/loudmouth 1.5.2-r1 1.5.3-r1: Lightweight C Jabber library
-net-libs/mbedtls 2.7.2: Cryptographic library for embedded systems
+net-libs/mbedtls 2.7.2 2.10.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.0.20170509 2.0.20171212 2.0.20180222: UPnP client library and a simple UPnP client
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
@@ -10878,6 +10878,7 @@ x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 1.2.3 1.2.5: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.11.1: Fast lightweight tabbed filemanager (Qt port)
+x11-misc/polybar 3.1.0: A fast and easy-to-use tool for creating status bars
 x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
