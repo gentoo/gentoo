@@ -35,7 +35,7 @@ RDEPEND="
 	sys-libs/zlib
 	charset? ( virtual/libiconv )
 	guile? ( >=dev-scheme/guile-2.0 )
-	lua? ( dev-lang/lua:0[deprecated] )
+	lua? ( dev-lang/lua:* )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:* )
