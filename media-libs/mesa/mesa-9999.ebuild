@@ -52,7 +52,9 @@ REQUIRED_USE="
 	vulkan? ( || ( video_cards_i965 video_cards_radeonsi )
 			  video_cards_radeonsi? ( llvm ) )
 	wayland? ( egl gbm )
-	xa?  ( gallium )
+	xa?  ( gallium
+		   || ( video_cards_freedreno video_cards_i915
+				video_cards_nouveau video_cards_vmware ) )
 	video_cards_freedreno?  ( gallium )
 	video_cards_intel?  ( classic )
 	video_cards_i915?   ( || ( classic gallium ) )
