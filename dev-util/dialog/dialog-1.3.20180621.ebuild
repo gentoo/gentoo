@@ -4,14 +4,13 @@
 EAPI=6
 inherit eutils multilib versionator
 
-MY_P="${PN}-$(replace_version_separator 2 '-')"
-S="${WORKDIR}/${MY_P}"
+DIA_P="${PN}-$(replace_version_separator 2 '-')"
 DESCRIPTION="tool to display dialog boxes from a shell"
-HOMEPAGE="http://invisible-island.net/dialog/dialog.html"
-SRC_URI="ftp://invisible-island.net/${PN}/${MY_P}.tgz"
+HOMEPAGE="https://invisible-island.net/dialog/"
+SRC_URI="https://dev.gentoo.org/~jer/${DIA_P}.tgz"
 
 LICENSE="GPL-2"
-SLOT="0/14"
+SLOT="0/15"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="examples minimal nls static-libs unicode"
 
@@ -24,6 +23,7 @@ DEPEND="
 	!minimal? ( sys-devel/libtool )
 	!<=sys-freebsd/freebsd-contrib-8.9999
 "
+S=${WORKDIR}/${DIA_P}
 
 src_prepare() {
 	default
