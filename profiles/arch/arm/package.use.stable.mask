@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Akinori Hattori <hattya@gentoo.org> (23 Jun 2018)
+# No stable Java
+dev-db/qdbm java
+
 # Pacho Ramos <pacho@gentoo.org> (28 May 2018)
 # Don't rely on stable inkscape
 app-text/dblatex inkscape
