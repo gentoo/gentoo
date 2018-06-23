@@ -27,7 +27,7 @@ DEPEND="
 	${PYTHON_DEPS}
 	dev-util/re2c
 	doc? (
-		app-text/asciidoc
+		dev-ruby/asciidoctor
 		app-doc/doxygen
 		dev-libs/libxslt
 	)

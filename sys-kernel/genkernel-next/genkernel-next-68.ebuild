@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="cryptsetup dmraid gpg iscsi mdadm plymouth selinux"
 DOCS=( AUTHORS )
 
-DEPEND="app-text/asciidoc
+DEPEND="dev-ruby/asciidoctor
 	sys-fs/e2fsprogs
 	!sys-fs/eudev[-kmod,modutils]
 	selinux? ( sys-libs/libselinux )"

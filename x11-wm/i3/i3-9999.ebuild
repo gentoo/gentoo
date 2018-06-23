@@ -31,7 +31,7 @@ CDEPEND="dev-libs/libev
 	>=x11-libs/cairo-1.14.4[X,xcb]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
-	doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl )
+	doc? ( dev-ruby/asciidoctor app-text/xmlto dev-lang/perl )
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	dev-lang/perl

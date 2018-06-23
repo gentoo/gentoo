@@ -38,7 +38,7 @@ RDEPEND="${CDEPEND}
 	!net-analyzer/arping
 	"
 DEPEND="${CDEPEND}
-	app-text/asciidoc
+	dev-ruby/asciidoctor
 	>=dev-libs/libxslt-1.1.26
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2
