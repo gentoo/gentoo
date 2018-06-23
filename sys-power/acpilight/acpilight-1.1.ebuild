@@ -1,25 +1,32 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python3_5 python3_6 )
 
 inherit python-r1 udev
 
+MY_P="${PN}-v${PV}"
+
 DESCRIPTION="Replacement for xbacklight that uses the ACPI interface to set brightness"
-HOMEPAGE="https://github.com/wavexx/acpilight/"
-SRC_URI="https://github.com/wavexx/acpilight/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://gitlab.com/wavexx/acpilight/"
+SRC_URI="https://gitlab.com/wavexx/acpilight/-/archive/v${PV}/${MY_P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+S="${WORKDIR}/${MY_P}"
+
 RDEPEND="virtual/udev
 	${PYTHON_DEPS}
 	!x11-apps/xbacklight"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-DOCS=( README.rst )
+DOCS=( README.rst NEWS.rst )
+
+# Disable Makefile that installs by default
+src_compile() { :; }
 
 src_install() {
 	python_foreach_impl python_doscript xbacklight
