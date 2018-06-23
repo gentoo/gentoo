@@ -68,7 +68,9 @@ REQUIRED_USE="
 	|| ( client server )
 "
 
-RDEPEND="server? ( !dev-util/gdbserver )
+RDEPEND="
+	dev-libs/mpfr:=
+	server? ( !dev-util/gdbserver )
 	client? (
 		>=sys-libs/ncurses-5.2-r2:0=
 		sys-libs/readline:0=
@@ -117,6 +119,7 @@ src_configure() {
 	local myconf=(
 		--with-pkgversion="$(gdb_branding)"
 		--with-bugurl='https://bugs.gentoo.org/'
+		--with-mpfr
 		--disable-werror
 		# Disable modules that are in a combined binutils/gdb tree. #490566
 		--disable-{binutils,etc,gas,gold,gprof,ld}
