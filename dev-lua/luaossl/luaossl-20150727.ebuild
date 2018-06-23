@@ -16,7 +16,7 @@ IUSE="luajit"
 
 RDEPEND="
 	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( >=dev-lang/lua-5.1:0 )
+	!luajit? ( >=dev-lang/lua-5.1:* )
 	dev-libs/openssl:0[-bindist]
 	!dev-lua/lua-openssl"
 DEPEND="${RDEPEND}

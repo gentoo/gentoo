@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="luajit test"
 
 CDEPEND="
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:* )
 	luajit? ( dev-lang/luajit:2 )"
 RDEPEND="${CDEPEND}
 	>=dev-lua/say-1.2_p1[luajit=]"

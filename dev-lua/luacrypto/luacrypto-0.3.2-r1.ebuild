@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libressl"
 
 RDEPEND="
-	>=dev-lang/lua-5.1:0
+	>=dev-lang/lua-5.1:*
 	!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:0 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
