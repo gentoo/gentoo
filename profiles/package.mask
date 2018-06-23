@@ -352,13 +352,6 @@ app-i18n/ibus-tutcode
 # x11-drivers/nvidia-drivers. Work in progress.
 media-libs/libglvnd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
-# Depends on dead Qt4. Masked for removal in 30 days. Bug #629018
-dev-libs/libattica
-kde-frameworks/kdelibs
-kde-frameworks/kdelibs-env
-kde-plasma/qguiplatformplugin_kde
-
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # Breaking consumers by internal header cleanup and removal of deprecated
 # qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream

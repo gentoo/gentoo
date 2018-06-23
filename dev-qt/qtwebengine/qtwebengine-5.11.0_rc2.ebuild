@@ -11,7 +11,8 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-IUSE="alsa bindist geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
+IUSE="alsa bindist designer geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
+REQUIRED_USE="designer? ( widgets )"
 
 RDEPEND="
 	app-arch/snappy:=
@@ -58,6 +59,7 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	alsa? ( media-libs/alsa-lib )
+	designer? ( ~dev-qt/designer-${PV} )
 	geolocation? ( ~dev-qt/qtpositioning-${PV} )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( media-video/ffmpeg:0= )
@@ -87,6 +89,8 @@ src_prepare() {
 
 	qt_use_disable_config alsa webengine-alsa src/core/config/linux.pri
 	qt_use_disable_config pulseaudio webengine-pulseaudio src/core/config/linux.pri
+
+	qt_use_disable_mod designer webenginewidgets src/plugins/plugins.pro
 
 	qt_use_disable_mod geolocation positioning \
 		mkspecs/features/configure.prf \

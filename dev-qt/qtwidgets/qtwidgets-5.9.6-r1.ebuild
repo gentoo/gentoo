@@ -26,6 +26,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-QDockWidget-revert-restore-geometry.patch" )
+
 QT5_TARGET_SUBDIRS=(
 	src/tools/uic
 	src/widgets

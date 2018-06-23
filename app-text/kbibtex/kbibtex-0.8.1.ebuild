@@ -3,7 +3,6 @@
 
 EAPI=6
 
-MY_PV=0.7.95
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
@@ -12,7 +11,7 @@ inherit kde5
 DESCRIPTION="BibTeX editor to edit bibliographies used with LaTeX"
 HOMEPAGE="https://userbase.kde.org/KBibTeX"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	SRC_URI="mirror://kde/unstable/KBibTeX/${PN}-${MY_PV}.tar.xz"
+	SRC_URI="mirror://kde/stable/KBibTeX/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -61,8 +60,6 @@ RDEPEND="${DEPEND}
 "
 
 RESTRICT+=" test"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_configure() {
 	local mycmakeargs=(
