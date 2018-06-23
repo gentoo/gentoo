@@ -5367,7 +5367,7 @@ dev-python/python-cinderclient 3.1.0 3.5.0: A client for the OpenStack Cinder AP
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-daemon 1.6-r1: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.6.1: Extensions to the standard Python datetime module
-dev-python/python-debian 0.1.28: Python modules to work with Debian-related data formats
+dev-python/python-debian 0.1.28 0.1.31: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.7.0 2.9.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.1: Python bindings for libdiscid
@@ -5388,7 +5388,7 @@ dev-python/python-keystoneclient 2.3.1 3.5.1 3.10.0 3.13.0 3.15.0: Client Librar
 dev-python/python-ldap 2.4.19-r1: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.11.2 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lzo 1.08-r1: Python interface to lzo
-dev-python/python-magic 0.4.10: Access the libmagic file type identification library
+dev-python/python-magic 0.4.10 0.4.15: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.3.1 2.9.0: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.14.0 1.21.0: A client for the OpenStack Manila API
 dev-python/python-memcached 1.53-r1 1.58: Pure python memcached client
@@ -8927,7 +8927,7 @@ net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
 net-misc/rygel 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
-net-misc/s3cmd 1.6.1: Command line client for Amazon S3
+net-misc/s3cmd 1.6.1 2.0.0: Command line client for Amazon S3
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/sendfile 2.1b-r1: SAFT implementation for asynchronous sending of files in the Internet
