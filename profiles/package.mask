@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
+# Doesn't pass QA full boot test
+=sys-kernel/ck-sources-4.16.17
+
 # Mike Auty <ikelos@gentoo.org> (22 Jun 2018)
 # Not maintained upstream, at least one bug and three upstream bugs
 # Removal in 30 days. Bug #658264
