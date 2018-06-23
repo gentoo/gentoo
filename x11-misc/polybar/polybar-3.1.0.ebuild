@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jaagr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 IUSE="alsa curl i3wm ipc mpd network"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
