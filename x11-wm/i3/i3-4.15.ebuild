@@ -31,7 +31,7 @@ CDEPEND="dev-libs/libev
 	>=x11-libs/cairo-1.14.4[X,xcb]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
-	app-text/asciidoc
+	dev-ruby/asciidoctor
 	doc? ( app-text/xmlto dev-lang/perl )
 	test? (
 		dev-perl/AnyEvent
