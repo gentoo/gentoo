@@ -4,11 +4,11 @@ DESCRIPTION=Intel IA32/IA64 microcode update data
 EAPI=6
 HOMEPAGE=http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID=27776
 IUSE=hostonly initramfs +split-ucode vanilla
-KEYWORDS=-* ~amd64 ~x86
+KEYWORDS=-* amd64 x86
 LICENSE=intel-ucode
 RDEPEND=!<sys-apps/microcode-ctl-1.17-r2 hostonly? ( sys-apps/iucode_tool )
 REQUIRED_USE=|| ( initramfs split-ucode )
 SLOT=0
 SRC_URI=https://downloadmirror.intel.com/27776/eng/microcode-20180425.tgz https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-20180616.tar.xz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	aedb720bff5a5dec9b87edd351382bfc	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=3b78af2a366dff9b9bd83ab59c61bd8b
+_md5_=6df4b26d259b04f8d52f8a35b4952390

@@ -5503,7 +5503,6 @@ sys-fabric/opensm:tools - Install ssld extra tool
 sys-firmware/edk2-ovmf:binary - Use pre-built binaries
 sys-firmware/intel-microcode:hostonly - only install ucode(s) supported by currently available (=online) processor(s)
 sys-firmware/intel-microcode:initramfs - install a small initramfs for use with CONFIG_MICROCODE_EARLY
-sys-firmware/intel-microcode:monolithic - install the large text microcode.dat (used by older kernels via microcode_ctl)
 sys-firmware/intel-microcode:split-ucode - install the split binary ucode files (used by the kernel directly)
 sys-firmware/intel-microcode:vanilla - install only microcode updates from Intel's official microcode tarball
 sys-firmware/ipxe:binary - Use pre-built binaries
