@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <upstream>
+    <bugs-to>https://github.com/cyrusimap/cyrus-sasl/issues</bugs-to>
+    <doc lang="en">https://www.cyrusimap.org/sasl/</doc>
+  </upstream>
 <maintainer type="project">
   <email>net-mail@gentoo.org</email>
   <name>Net-Mail</name>
