@@ -11103,7 +11103,7 @@ x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
 x11-terms/guake 0.8.8: Drop-down terminal for GTK+ desktops
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/mate-terminal 1.12.1: The MATE Terminal
-x11-terms/mlterm 3.8.0 3.8.4: A multi-lingual terminal emulator
+x11-terms/mlterm 3.8.4: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: rxvt compatible terminal emulator with transparency and tab support
 x11-terms/qterminal 0.7.1: Qt-based multitab terminal emulator

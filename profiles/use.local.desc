@@ -6053,6 +6053,7 @@ x11-terms/eterm:utempter - Include libutempter support
 x11-terms/gnome-terminal:gnome-shell - Integrate with gnome-base/gnome-shell search
 x11-terms/gnome-terminal:nautilus - Build gnome-base/nautilus extension
 x11-terms/mate-terminal:gtk3 - Build with GTK+3 instead of GTK+2
+x11-terms/mlterm:brltty - Enable support for app-accessibilty/brltty
 x11-terms/mlterm:fcitx - Enable support for app-i18n/fcitx
 x11-terms/mlterm:gtk2 - Build with x11-libs/gtk+:2 instead of x11-libs/gtk+:3
 x11-terms/mlterm:harfbuzz - Enable support for OpenType Layout (media-libs/harfbuzz)
@@ -6063,6 +6064,7 @@ x11-terms/mlterm:scim - Enable support for app-i18n/scim
 x11-terms/mlterm:skk - Enable support for SKK (virtual/skkserv or app-i18n/skk-jisyo)
 x11-terms/mlterm:uim - Enable support for app-i18n/uim
 x11-terms/mlterm:utempter - Enable support for sys-libs/libutempter
+x11-terms/mlterm:wayland - Enable support for Wayland
 x11-terms/mrxvt:menubar - Enable mrxvt menubar
 x11-terms/mrxvt:utempter - REcords user logins. Useful on multi-user systems
 x11-terms/rxvt-unicode:256-color - Enable 256 color support
