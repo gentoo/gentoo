@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="b7940409945face40657080b6074fc5588a0c0ad"
+	EGIT_COMMIT="384fff68c802a10b5d7f4f352a4bb43b3efe5f23"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
@@ -36,8 +36,6 @@ DEPEND="${PYTHON_DEPS}
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	   )"
 
-PATCHES=( "${FILESDIR}/${PN}-Use-usr-for-vulkan-headers.patch" )
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
@@ -46,6 +44,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DGLSLANG_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
 	)
 	cmake-utils_src_configure
 }
