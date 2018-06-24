@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-multilib
 
 DESCRIPTION="High-performance messaging interface for distributed applications"
-HOMEPAGE="http://nanomsg.org/"
+HOMEPAGE="https://nanomsg.org/"
 SRC_URI="https://github.com/nanomsg/nanomsg/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
