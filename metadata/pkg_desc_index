@@ -5042,7 +5042,7 @@ dev-python/micawber 0.3.3: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.1.4: A simple parser for OpenStack microversion headers
 dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in python
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
-dev-python/minidb 2.0.1-r1: Simple SQLite-based object store
+dev-python/minidb 2.0.1-r1 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 2.0.20180222: Python bindings for UPnP client library
 dev-python/mistune 0.7.2 0.7.4: The fastest markdown parser in pure Python
@@ -7287,7 +7287,7 @@ media-gfx/gscan2pdf 1.8.11: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.4.5: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
-media-gfx/hugin 2016.2.0: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2016.2.0 2018.0.0: GUI for the creation & processing of panoramic images
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.0 0.32.2: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
@@ -10545,7 +10545,7 @@ www-misc/monitorix 3.9.0 3.10.0-r1: A lightweight system monitoring tool
 www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
-www-misc/urlwatch 2.5: A tool for monitoring webpages for updates
+www-misc/urlwatch 2.5 2.13: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
