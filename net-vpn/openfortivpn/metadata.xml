@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>johu@gentoo.de</email>
+		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
 	<upstream>
