@@ -1,8 +1,8 @@
 if our toolchain generates PIC by default, then do not use the hand written
 assembly files as none of it is PIC friendly.
 
---- unix/configure
-+++ unix/configure
+--- zip/unix/configure
++++ zip/unix/configure
 @@ -29,6 +29,9 @@
  echo Check if we can use asm code
  OBJA=""
