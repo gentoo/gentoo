@@ -19,7 +19,7 @@ DEPEND="dev-libs/boost:=
 	dev-qt/qtopengl:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	x11-libs/qwt:6[opengl,qt5,svg]"
+	x11-libs/qwt:6[opengl,qt5(+),svg]"
 
 RDEPEND="net-wireless/iw
 	x11-libs/libxkbcommon[X]
