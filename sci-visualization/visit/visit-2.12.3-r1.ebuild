@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r1 qmake-utils
 
 DESCRIPTION="A software that delivers parallel interactive visualizations"
 HOMEPAGE="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -62,7 +62,7 @@ src_configure() {
 		-DVISIT_HEADERS_SKIP_INSTALL=false
 		-DVISIT_QWT_DIR="${EPREFIX}/usr"
 		-DVISIT_QT5=true
-		-DVISIT_QT_DIR=/usr/lib/qt5/
+		-DVISIT_QT_DIR=$(qt5_get_libdir)/qt5/
 		-DUSE_VISIT_THREAD=$(usex threads)
 	)
 	if use hdf5; then
