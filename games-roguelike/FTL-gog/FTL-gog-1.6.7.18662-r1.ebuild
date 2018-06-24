@@ -42,12 +42,14 @@ src_prepare() {
 	if ! use amd64; then
 		rm game/data/FTL.amd64 || die
 	fi
+
+	sed -i start.sh -e '/chmod/d'
 }
 
 src_install() {
 	insinto /opt/gog/FTL
 	doins -r .
-	fperms +x /opt/gog/FTL/{start.sh,game/FTL}
+	fperms +x /opt/gog/FTL/{start.sh,game/FTL,game/data/FTL}
 
 	if use x86; then
 		fperms +x /opt/gog/FTL/game/data/FTL.x86
