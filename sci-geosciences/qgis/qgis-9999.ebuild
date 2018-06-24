@@ -131,6 +131,7 @@ src_configure() {
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 		-DPEDANTIC=OFF
+		-DUSE_CCACHE=OFF
 		-DWITH_APIDOC=OFF
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
