@@ -16,17 +16,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cgns debug hdf5 mpi netcdf silo tcmalloc threads xdmf2"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
-	${PYTHON_DEPS}
-	tcmalloc? ( dev-util/google-perftools )
+RDEPEND="${PYTHON_DEPS}
+	dev-qt/qtx11extras:5
+	=sci-libs/vtk-6.1.0*[imaging,mpi=,python,rendering,qt5,xdmf2?,${PYTHON_USEDEP}]
+	sys-libs/zlib
+	x11-libs/qwt:6[qt5(+)]
 	cgns? ( sci-libs/cgnslib )
 	hdf5? ( sci-libs/hdf5 )
 	netcdf? ( sci-libs/netcdf )
 	silo? ( sci-libs/silo )
-	=sci-libs/vtk-6.1.0*[imaging,mpi=,python,rendering,qt5,xdmf2?,${PYTHON_USEDEP}]
-	dev-qt/qtx11extras:5
-	sys-libs/zlib
-	x11-libs/qwt:6[qt5(+)]"
+	tcmalloc? ( dev-util/google-perftools )
+"
 DEPEND="${RDEPEND}
 	xdmf2? ( sci-libs/xdmf2 )
 "
