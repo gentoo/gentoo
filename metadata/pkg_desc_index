@@ -1207,7 +1207,7 @@ app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/eclass-manpages 20180302 20180607: Collection of Gentoo eclass manpages
 app-portage/eix 0.32.9: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1: Curses based utility to parse the contents of elogs created by Portage
-app-portage/elogviewer 2.7-r2: Elog viewer for Gentoo
+app-portage/elogviewer 2.7-r2 2.9: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.6.2 3.7.2-r1: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.4-r1: A simple portage wrapper which works like other package managers
@@ -5142,7 +5142,7 @@ dev-python/oslotest 3.2.0: Oslo test framework
 dev-python/osprofiler 1.11.0 1.15.2: OpenStack Profiler Library
 dev-python/ovs 2.7.0 2.7.2 2.8.1: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0 0.10.0: A library for creating OVSDB applications
-dev-python/owslib 0.16.0: Library for client programming with Open Geospatial Consortium web service
+dev-python/owslib 0.16.0 0.16.0-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 16.8: Core utilities for Python packages
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
@@ -5316,7 +5316,7 @@ dev-python/pypgsql 2.5.1-r1: Python Interface to PostgreSQL
 dev-python/pyphen 0.9.4: Python module for hyphenation using hunspell dictionaries
 dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.6 1.1.10: Python binding for the PowerVM REST API
-dev-python/pyproj 1.9.5.1: Python interface to PROJ.4 library
+dev-python/pyproj 1.9.5.1 1.9.5.1-r1: Python interface to PROJ.4 library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
@@ -8552,7 +8552,7 @@ net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
-net-irc/hexchat 2.12.4-r1: Graphical IRC client based on XChat
+net-irc/hexchat 2.12.4-r1 2.12.4-r2: Graphical IRC client based on XChat
 net-irc/inspircd 2.0.23 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
@@ -9002,7 +9002,7 @@ net-nds/rpcbind 0.2.4-r3: portmap replacement which supports RPC over various pr
 net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 4.2.2-r2: Network Information Service tools
-net-news/liferea 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
+net-news/liferea 1.12_rc3 1.12.3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.10.2: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.9-r1: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19: Rawdog - RSS Aggregator Without Delusions Of Grandeur
@@ -9321,6 +9321,7 @@ sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/exodusii 6.02: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transform
+sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gdal 2.2.3-r1: Translator library for raster geospatial data formats (includes OGR support)
