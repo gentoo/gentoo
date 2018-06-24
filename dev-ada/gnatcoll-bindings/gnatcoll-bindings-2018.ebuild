@@ -38,10 +38,8 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	GCC_PV=7.3.0
-	GCC=${CHOST}-gcc-${GCC_PV}
 	build () {
-		GCC=${CHOST}-gcc-${GCC_PV} gprbuild -j$(makeopts_jobs) -m -p -v \
+		GCC=${CHOST}-gcc-7.3.0 gprbuild -j$(makeopts_jobs) -m -p -v \
 			-XLIBRARY_TYPE=$2 -P $1/gnatcoll_$1.gpr -XBUILD="PROD" \
 			-XGNATCOLL_ICONV_OPT= -XGNATCOLL_PYTHON_CFLAGS="-I$(python_get_includedir)" \
 			-XGNATCOLL_PYTHON_LIBS=$(python_get_library_path) \
@@ -62,9 +60,8 @@ src_compile() {
 
 src_install() {
 	build () {
-		gprinstall -p -f -XBUILD=PROD --prefix="${D}"/usr \
-			-XLIBRARY_TYPE=$2 -P $1/gnatcoll_$1.gpr \
-			--build-name=$2
+		gprinstall -p -f -XBUILD=PROD --prefix="${D}"/usr -XLIBRARY_TYPE=$2 \
+			-XGNATCOLL_ICONV_OPT= -P $1/gnatcoll_$1.gpr --build-name=$2
 	}
 	for kind in shared static-libs static-pic ; do
 		if use $kind; then
