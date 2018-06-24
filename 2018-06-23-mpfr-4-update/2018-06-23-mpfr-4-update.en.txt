@@ -1,16 +1,22 @@
 Title: dev-libs/mpfr 4 upgrade
 Author: Matthias Maier <tamiko@gentoo.org>
 Posted: 2018-06-23
-Revision: 1
+Revision: 2
 News-Item-Format: 2.0
 Display-If-Installed: <dev-libs/mpfr-4
 
 dev-libs/mpfr-4 introduced an ABI and soname change that has the potential
 of breaking the compiler toolchain. In order to minimize potential problems
-it is strongly recommended to rebuild mpc and gcc immediately after mpfr.
-You can do this by running
+it is strongly recommended to rebuild mpc and gcc immediately after mpfr
+has been updated to version 4.
+
+If you have enabled testing keywords globally (e.g. ~amd64), or keyworded
+mpfr-4 you are advised to update mpfr, mpc and gcc first:
 
   emerge --ask --oneshot ">=dev-libs/mpfr-4" dev-libs/mpc sys-devel/gcc
+
+If this command requires you to unmask  dev-libs/mpfr-4 first, then do not
+do anything!
 
 Detailed explanation:
 
