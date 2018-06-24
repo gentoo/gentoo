@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Nick Sarnie <sarnex@gentoo.org> (24 Jun 2018)
+# Does not build if previous version is installed
+# Bug #658900
+=media-libs/vulkan-loader-1.1.77.0
+
 # Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
