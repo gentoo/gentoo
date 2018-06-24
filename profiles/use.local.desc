@@ -6070,7 +6070,7 @@ x11-terms/eterm:utempter - Include libutempter support
 x11-terms/gnome-terminal:gnome-shell - Integrate with gnome-base/gnome-shell search
 x11-terms/gnome-terminal:nautilus - Build gnome-base/nautilus extension
 x11-terms/mate-terminal:gtk3 - Build with GTK+3 instead of GTK+2
-x11-terms/mlterm:brltty - Enable support for app-accessibilty/brltty
+x11-terms/mlterm:brltty - Enable support for app-accessibility/brltty
 x11-terms/mlterm:fcitx - Enable support for app-i18n/fcitx
 x11-terms/mlterm:gtk2 - Build with x11-libs/gtk+:2 instead of x11-libs/gtk+:3
 x11-terms/mlterm:harfbuzz - Enable support for OpenType Layout (media-libs/harfbuzz)
