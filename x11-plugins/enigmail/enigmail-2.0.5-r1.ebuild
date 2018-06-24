@@ -21,7 +21,7 @@ else
 		SRC_URI="http://www.enigmail.net/download/beta/${P/_/-}.tar.gz"
 	else
 		SRC_URI="http://www.enigmail.net/download/source/${P}.tar.gz"
-		KEYWORDS="~alpha amd64 ~arm ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+		KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 	fi
 	PATCHES=( "${FILESDIR}"/${P}-fix-missing-missingMdcError.patch )
 	S="${WORKDIR}/${PN}"
