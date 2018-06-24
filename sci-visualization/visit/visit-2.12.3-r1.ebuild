@@ -17,6 +17,14 @@ IUSE="cgns debug hdf5 mpi netcdf silo tcmalloc threads xdmf2"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-qt/designer:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtopengl:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	dev-qt/qtx11extras:5
 	=sci-libs/vtk-6.1.0*[imaging,mpi=,python,rendering,qt5,xdmf2?,${PYTHON_USEDEP}]
 	sys-libs/zlib
