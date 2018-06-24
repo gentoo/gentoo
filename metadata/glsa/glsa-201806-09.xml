@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201806-09">
+  <title>PNP4Nagios: Root privilege escalation</title>
+  <synopsis>A vulnerability in PNP4Nagios which may allow local attackers to
+    gain root privileges.
+  </synopsis>
+  <product type="ebuild">pnp4nagios</product>
+  <announced>2018-06-24</announced>
+  <revised count="1">2018-06-24</revised>
+  <bug>637640</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/pnp4nagios" auto="yes" arch="*">
+      <unaffected range="ge">0.6.26-r9</unaffected>
+      <vulnerable range="lt">0.6.26-r9</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PNP4Nagios is an addon for the Nagios Network Monitoring System.</p>
+  </background>
+  <description>
+    <p>It was found that PHP4Nagios creates files owned by an unprivileged user
+      that are used by root.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges to root.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PNP4Nagios users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/pnp4nagios-0.6.26-r9"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16834">CVE-2017-16834</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-06-19T23:53:20Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-06-24T03:10:22Z">irishluck83</metadata>
+</glsa>
