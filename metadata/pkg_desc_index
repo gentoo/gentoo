@@ -4815,8 +4815,9 @@ dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean test
 dev-python/flake8 2.1.0 2.2.5 2.5.4 3.5.0: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flaky 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.12.2: A microframework based on Werkzeug, Jinja2 and good intentions
-dev-python/flask-admin 1.0.6: Simple and extensible admin interface framework for Flask
-dev-python/flask-babel 0.11.2: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-admin 1.0.6 1.5.1: Simple and extensible admin interface framework for Flask
+dev-python/flask-babel 0.11.2 0.11.2-r1: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-evolution 0.5-r1: Simple migrations for Flask/SQLAlchemy projects
@@ -4824,22 +4825,23 @@ dev-python/flask-gravatar 0.4.2: Small extension for Flask to make usage of Grav
 dev-python/flask-htmlmin 1.2.1: Minimize your flask rendered html
 dev-python/flask-login 0.3.2-r1: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
-dev-python/flask-migrate 2.1.1: SQLAlchemy database migrations for Flask applications using Alembic
-dev-python/flask-mongoengine 0.9.3: Flask support for MongoDB and with WTF model forms
+dev-python/flask-migrate 2.1.1 2.1.1-r1: SQLAlchemy database migrations for Flask applications using Alembic
+dev-python/flask-mongoengine 0.9.3 0.9.3-r1: Flask support for MongoDB and with WTF model forms
 dev-python/flask-openid 1.2.4: OpenID support for Flask
 dev-python/flask-paranoid 0.1.0: Simple user session protection extension for Flask
 dev-python/flask-peewee 0.6.5: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
-dev-python/flask-pymongo 0.3.0: PyMongo support for Flask
+dev-python/flask-pymongo 0.3.0 0.4.1: PyMongo support for Flask
 dev-python/flask-restful 0.3.5-r1: Simple framework for creating REST APIs
 dev-python/flask-restless 0.17.0: Flask extension for easy ReSTful API generation
-dev-python/flask-script 2.0.5-r1: Flask support for writing external scripts
-dev-python/flask-security 1.7.5-r1: Simple security for Flask apps
+dev-python/flask-script 2.0.5-r1 2.0.6: Flask support for writing external scripts
+dev-python/flask-security 1.7.5-r1 3.0.0: Simple security for Flask apps
+dev-python/flask-sphinx-themes 1.0.1: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.1: SQLAlchemy support for Flask applications
-dev-python/flask-testing 0.4.2: Unit testing for Flask
+dev-python/flask-testing 0.4.2 0.6.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
-dev-python/flask-wtf 0.14.2: Simple integration of Flask and WTForms
+dev-python/flask-wtf 0.14.2 0.14.2-r1: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
@@ -4848,7 +4850,7 @@ dev-python/foolscap 0.7.0: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
 dev-python/freezegun 0.3.9 0.3.10: Let your Python tests travel through time
-dev-python/frozen-flask 0.11-r1: Freezes a Flask application into a set of static files
+dev-python/frozen-flask 0.11-r1 0.15: Freezes a Flask application into a set of static files
 dev-python/fudge 0.9.6-r1 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 0.4 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -4865,6 +4867,7 @@ dev-python/gcs-oauth2-boto-plugin 1.8-r1: OAuth 2.0 plugin for Google Cloud Stor
 dev-python/gdata 2.0.18: Python client library for Google data APIs
 dev-python/genshi 0.7: Python toolkit for stream-based generation of output for the web
 dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
+dev-python/geoalchemy2 0.3: Geospatial extension to SQLAlchemy with PostGIS support
 dev-python/geoip-python 1.3.2 1.3.2-r1: Python bindings for GeoIP
 dev-python/geopy 1.11.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0.1 1.2.1: Coroutine-based network library
@@ -5669,6 +5672,7 @@ dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
 dev-python/wsgiproxy2 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
+dev-python/wtf-peewee 3.0.0: WTForms integration for peewee models
 dev-python/wtforms 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xapp 1.0.1-r2: Python bindings for x11-libs/xapps
@@ -9291,6 +9295,7 @@ sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SE
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
 sci-geosciences/tcd-utils 20120115: Utilities for working with Tidal Constituent Databases
 sci-geosciences/xtide 2.13.2: XTide provides tide and current predictions in a wide variety of formats
+sci-libs/Shapely 1.5.17-r1: Geometric objects, predicates, and operations
 sci-libs/adolc 2.4.1: Automatic differentiation system for C/C++
 sci-libs/alglib 3.8.2-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
