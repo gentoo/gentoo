@@ -4,10 +4,10 @@ DESCRIPTION=Compile an Apache log format string to perl-code
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Apache-LogFormat-Compiler/
 IUSE=test examples
-KEYWORDS=~alpha amd64 ia64 ppc ~ppc64 sparc x86
+KEYWORDS=~alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/POSIX-strftime-Compiler-0.300.0 virtual/perl-Time-Local >=dev-lang/perl-5.8.4 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.35.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=a707f3d6b6097108747bed294f0d4fa7
+_md5_=36311ac5d7afe9bf974bdce8c0f58a6d
