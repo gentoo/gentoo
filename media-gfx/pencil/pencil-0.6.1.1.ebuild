@@ -26,6 +26,12 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P/_/-}"
 
+src_prepare() {
+	default
+	sed -e "/^QT/s/xmlpatterns //" \
+		-i core_lib/core_lib.pro tests/tests.pro || die
+}
+
 src_configure() {
 	eqmake5
 }
