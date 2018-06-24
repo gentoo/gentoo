@@ -6466,7 +6466,7 @@ gnome-extra/gnome-calendar 3.24.3: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.24.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.24.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.24.0: Color profile manager for the GNOME desktop
-gnome-extra/gnome-commander 1.6.1 1.6.3: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.6.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.22.1-r1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.24.3: A document manager application for GNOME
