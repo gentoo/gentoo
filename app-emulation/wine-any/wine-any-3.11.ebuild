@@ -24,23 +24,39 @@ else
 fi
 S="${WORKDIR}/${MY_P}"
 
+STAGING_P="wine-staging-${PV}"
+STAGING_DIR="${WORKDIR}/${STAGING_P}"
+D3D9_P="wine-d3d9-${PV}"
+D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
 GWP_V="20180120"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with optional external patchsets"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~np-hardass/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
 "
 
+if [[ ${PV} == "9999" ]] ; then
+	STAGING_EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
+	D3D9_EGIT_REPO_URI="https://github.com/sarnex/wine-d3d9-patches.git"
+else
+	SRC_URI="${SRC_URI}
+	staging? ( https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )
+	d3d9? ( https://github.com/sarnex/wine-d3d9-patches/archive/${D3D9_P}.tar.gz )"
+fi
+
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks v4l vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags d3d9 dos elibc_glibc +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
 	osmesa? ( opengl )
-	test? ( abi_x86_32 )" # osmesa-opengl #286560 # X-truetype #551124
+	pipelight? ( staging )
+	test? ( abi_x86_32 )
+	themes? ( staging )
+	vaapi? ( staging )" # osmesa-opengl #286560 # X-truetype #551124
 
 # FIXME: the test suite is unsuitable for us; many tests require net access
 # or fail due to Xvfb's opengl limitations.
@@ -58,6 +74,12 @@ COMMON_DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
+	d3d9? (
+		media-libs/mesa[d3d9,egl,${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libxcb[${MULTILIB_USEDEP}]
+	)
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
@@ -67,7 +89,7 @@ COMMON_DEPEND="
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
+	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
@@ -88,10 +110,18 @@ COMMON_DEPEND="
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2:=[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	staging? ( sys-apps/attr[${MULTILIB_USEDEP}] )
+	themes? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		x11-libs/cairo[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+	)
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
+	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
+	vkd3d? ( app-emulation/vkd3d[${MULTILIB_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
@@ -126,6 +156,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/yacc
 	X? ( x11-base/xorg-proto )
 	prelink? ( sys-devel/prelink )
+	staging? (
+		dev-lang/perl
+		dev-perl/XML-Simple
+	)
 	xinerama? ( x11-base/xorg-proto )"
 
 # These use a non-standard "Wine" category, which is provided by
@@ -237,9 +271,18 @@ wine_env_vcs_vars() {
 	local pn_live_var="${PN//[-+]/_}_LIVE_COMMIT"
 	local pn_live_val="${pn_live_var}"
 	eval pn_live_val='$'${pn_live_val}
+	if [[ ! -z ${pn_live_val} ]]; then
+		if use staging || use d3d9; then
+			eerror "Because of the multi-repo nature of ${MY_PN}, ${pn_live_var}"
+			eerror "cannot be used to set the commit. Instead, you may use the"
+			eerror "environmental variables WINE_COMMIT, STAGING_COMMIT, and D3D9_COMMIT."
+			eerror
+			return 1
+		fi
+	fi
 	if [[ ! -z ${EGIT_COMMIT} ]]; then
 		eerror "Commits must now be specified using the environmental variables"
-		eerror "WINE_COMMIT"
+		eerror "WINE_COMMIT, STAGING_COMMIT, and D3D9_COMMIT"
 		eerror
 		return 1
 	fi
@@ -279,6 +322,24 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
 		EGIT_CHECKOUT_DIR="${S}" EGIT_COMMIT="${WINE_COMMIT}" git-r3_src_unpack
+		if use staging; then
+			local CURRENT_WINE_COMMIT=${EGIT_VERSION}
+
+			git-r3_fetch "${STAGING_EGIT_REPO_URI}" "${STAGING_COMMIT}"
+			git-r3_checkout "${STAGING_EGIT_REPO_URI}" "${STAGING_DIR}"
+
+			local COMPAT_WINE_COMMIT=$("${STAGING_DIR}/patches/patchinstall.sh" --upstream-commit) || die
+
+			if [[ "${CURRENT_WINE_COMMIT}" != "${COMPAT_WINE_COMMIT}" ]]; then
+				einfo "The current Staging patchset is not guaranteed to apply on this WINE commit."
+				einfo "If src_prepare fails, try emerging with the env var WINE_COMMIT."
+				einfo "Example: WINE_COMMIT=${COMPAT_WINE_COMMIT} emerge -1 wine"
+			fi
+		fi
+		if use d3d9; then
+			git-r3_fetch "${D3D9_EGIT_REPO_URI}" "${D3D9_COMMIT}"
+			git-r3_checkout "${D3D9_EGIT_REPO_URI}" "${D3D9_DIR}"
+		fi
 	fi
 
 	default
@@ -296,6 +357,31 @@ src_prepare() {
 	}
 
 	local md5="$(md5sum server/protocol.def)"
+
+	if use staging; then
+		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
+		ewarn "Wine bugzilla should explicitly state that staging was used."
+
+		local STAGING_EXCLUDE=""
+		use pipelight || STAGING_EXCLUDE="${STAGING_EXCLUDE} -W Pipelight"
+
+		# Launch wine-staging patcher in a subshell, using eapply as a backend, and gitapply.sh as a backend for binary patches
+		ebegin "Running Wine-Staging patch installer"
+		(
+			set -- DESTDIR="${S}" --backend=eapply --no-autoconf --all ${STAGING_EXCLUDE}
+			cd "${STAGING_DIR}/patches"
+			source "${STAGING_DIR}/patches/patchinstall.sh"
+		)
+		eend $? || die "Failed to apply Wine-Staging patches"
+	fi
+	if use d3d9; then
+		if use staging; then
+			PATCHES+=( "${D3D9_DIR}/staging-helper.patch" )
+		else
+			PATCHES+=( "${D3D9_DIR}/d3d9-helper.patch" )
+		fi
+		PATCHES+=( "${D3D9_DIR}/wine-d3d9.patch" )
+	fi
 
 	default
 	eapply_bin
@@ -402,6 +488,7 @@ multilib_src_configure() {
 		$(use_with truetype freetype)
 		$(use_with udev)
 		$(use_with v4l)
+		$(use_with vkd3d)
 		$(use_with vulkan)
 		$(use_with X x)
 		$(use_with X xfixes)
@@ -410,6 +497,13 @@ multilib_src_configure() {
 		$(use_with xml)
 		$(use_with xml xslt)
 	)
+
+	use staging && myconf+=(
+		--with-xattr
+		$(use_with themes gtk3)
+		$(use_with vaapi va)
+	)
+	use d3d9 && myconf+=( $(use_with d3d9 d3d9-nine) )
 
 	local PKG_CONFIG AR RANLIB
 	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
@@ -495,6 +589,13 @@ pkg_postinst() {
 	eselect wine register ${P}
 	if [[ ${PN} == "wine-vanilla" ]]; then
 		eselect wine register --vanilla ${P} || die
+	else
+		if use staging; then
+			eselect wine register --staging ${P} || die
+		fi
+		if use d3d9; then
+			eselect wine register --d3d9 ${P} || die
+		fi
 	fi
 
 	eselect wine update --all --if-unset || die
@@ -519,6 +620,13 @@ pkg_prerm() {
 	eselect wine deregister ${P}
 	if [[ ${PN} == "wine-vanilla" ]]; then
 		eselect wine deregister --vanilla ${P} || die
+	else
+		if use staging; then
+			eselect wine deregister --staging ${P} || die
+		fi
+		if use d3d9; then
+			eselect wine deregister --d3d9 ${P} || die
+		fi
 	fi
 
 	eselect wine update --all --if-unset || die
