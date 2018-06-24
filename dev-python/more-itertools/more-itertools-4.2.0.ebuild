@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	test? (
 		${RDEPEND}
@@ -35,5 +36,6 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test --doctest-modules || die "tests fail with ${EPYTHON}"
+	py.test --doctest-modules more_itertools \
+		|| die "tests fail with ${EPYTHON}"
 }
