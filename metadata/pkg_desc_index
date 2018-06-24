@@ -3028,7 +3028,7 @@ dev-libs/libburn 1.4.8-r2: Open-source library for reading, mastering and writin
 dev-libs/libbytesize 1.2-r1: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcdio 0.93: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1: an advanced CDDA reader with error correction
-dev-libs/libcec 3.1.0-r1 4.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
+dev-libs/libcec 3.1.0-r1 4.0.2 4.0.2-r2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r4: Tools and libraries to configure and manage kernel control groups
 dev-libs/libclc 0.2.0_pre20160921 0.2.0_pre20170929: OpenCL C library
 dev-libs/libcli 1.9.4-r1 1.9.7: Cisco-style (telnet) command-line interface library
@@ -4540,7 +4540,7 @@ dev-php/xdebug 2.4.1 2.5.3: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.4.1 2.5.3: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/Babel 2.5.0 2.5.3 2.5.3-r1: Collection of tools for internationalizing Python applications
-dev-python/BitVector 3.4.4: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/BitVector 3.4.4 3.4.7: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 2.0.1: Jinja2 adapter for Django
 dev-python/CommonMark 0.5.4: Python parser for the CommonMark Markdown spec
@@ -4566,7 +4566,7 @@ dev-python/alabaster 0.7.9: A configurable sidebar-enabled Sphinx theme
 dev-python/alembic 0.9.3 0.9.7: database migrations tool, written by the author of SQLAlchemy
 dev-python/amqplib 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
 dev-python/aniso8601 1.3.0: A library for parsing ISO 8601 strings
-dev-python/ansi2html 1.1.1 1.2.0: Convert text with ANSI color codes to HTML
+dev-python/ansi2html 1.1.1 1.2.0 1.4.2: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
 dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
@@ -4627,8 +4627,8 @@ dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
 dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.41.0: Amazon Web Services API
-dev-python/boto3 1.4.7 1.5.27: The AWS SDK for Python
-dev-python/botocore 1.7.39 1.8.41: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.4.7 1.5.27 1.7.19: The AWS SDK for Python
+dev-python/botocore 1.7.39 1.8.41 1.10.19: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.16: Syntax highlighting and autocompletion for the Python interpreter
@@ -5438,7 +5438,7 @@ dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifica
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
 dev-python/pyyaml 3.12: YAML parser and emitter for Python
 dev-python/pyzmq 16.0.2: Lightweight and super-fast messaging library built on top of the ZeroMQ library
-dev-python/pyzor 1.0.0: A distributed, collaborative spam detection and filtering network
+dev-python/pyzor 1.0.0 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.3: Python bindings for Qscintilla
@@ -6200,7 +6200,7 @@ dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.89: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 0.5.3.5-r1: standalone debugedit taken from rpm
-dev-util/dejagnu 1.4.4-r3: framework for testing other programs
+dev-util/dejagnu 1.4.4-r3 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.24.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131: tool to display dialog boxes from a shell
@@ -9342,7 +9342,7 @@ sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Librar
 sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libspatialindex 1.8.1: General framework for developing spatial indices
-sci-libs/libsvm 3.21: Library for Support Vector Machines
+sci-libs/libsvm 3.21 3.22: Library for Support Vector Machines
 sci-libs/linux-gpib 4.1.0: Kernel module and driver library for GPIB (IEEE 488.2) hardware
 sci-libs/lrslib 042c-r2: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
@@ -10011,7 +10011,7 @@ sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across sev
 sys-devel/flex 2.6.1 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 6.4.0-r1 7.3.0-r3: The GNU Compiler Collection
 sys-devel/gcc-config 1.8-r1: utility to manage compilers
-sys-devel/gdb 7.10.1 7.12.1: GNU debugger
+sys-devel/gdb 7.10.1 7.12.1 8.1-r1: GNU debugger
 sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20161104 20170101: Updated config.sub and config.guess file from GNU
 sys-devel/libtool 2.4.6-r3: A shared library tool for developers
