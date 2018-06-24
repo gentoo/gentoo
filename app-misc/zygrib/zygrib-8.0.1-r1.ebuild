@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ DEPEND="app-arch/bzip2
 	sci-libs/libnova
 	sci-libs/proj
 	sys-libs/zlib
-	x11-libs/qwt:6[qt5]"
+	x11-libs/qwt:6[qt5(+)]"
 
 RDEPEND="${DEPEND}"
 
