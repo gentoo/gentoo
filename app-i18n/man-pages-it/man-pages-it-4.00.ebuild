@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="A somewhat comprehensive collection of Italian Linux man pages"
-HOMEPAGE="http://it.tldp.org/man/"
+HOMEPAGE="http://www.pluto.it/ildp/man/"
 SRC_URI="ftp://ftp.pluto.it/pub/pluto/ildp/man/${P}.tar.xz"
 
 LICENSE="man-pages GPL-2+ BSD MIT FDL-1.1+ public-domain man-pages-posix"
