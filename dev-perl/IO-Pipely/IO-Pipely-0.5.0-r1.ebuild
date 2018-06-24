@@ -10,5 +10,5 @@ inherit perl-module
 DESCRIPTION="Portably create pipe() or pipe-like handles, one way or another"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
