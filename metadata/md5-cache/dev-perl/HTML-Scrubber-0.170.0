@@ -4,10 +4,10 @@ DESCRIPTION=Perl extension for scrubbing/sanitizing html
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/HTML-Scrubber/
 IUSE=test
-KEYWORDS=amd64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/HTML-Parser dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NI/NIGELM/HTML-Scrubber-0.17.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=d6035edfeeb78d5b0015f8f4b95434c3
+_md5_=886c951049b852f4ed265f50d3018da5

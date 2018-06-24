@@ -4,10 +4,10 @@ DESCRIPTION=Fast, compact, powerful binary serialization
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Sereal-Encoder/
 IUSE=test
-KEYWORDS=amd64 ia64 ~ppc ~ppc64 sparc x86
+KEYWORDS=amd64 ia64 ppc ~ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-XSLoader app-arch/zstd:= dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Y/YV/YVES/Sereal-Encoder-4.004.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=ee0738d8f6f38754a8966fe4f0bcff82
+_md5_=f2d511053a0d45fe3d015796f9aec4e8

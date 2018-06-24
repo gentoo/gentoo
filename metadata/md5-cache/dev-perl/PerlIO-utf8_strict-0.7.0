@@ -4,10 +4,10 @@ DESCRIPTION=Fast and correct UTF-8 IO
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/PerlIO-utf8_strict/
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LE/LEONT/PerlIO-utf8_strict-0.007.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=b753745031be2b1f93c8f3d5bc1da367
+_md5_=3248b298a1972d23f393c516e787dda4
