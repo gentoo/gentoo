@@ -1,6 +1,6 @@
 diff -ur visit2.8.2-old/src/engine/main/CMakeLists.txt visit2.8.2-new/src/engine/main/CMakeLists.txt
---- visit2.8.2-old/src/engine/main/CMakeLists.txt	2014-10-01 00:28:19.000000000 +0200
-+++ visit2.8.2-new/src/engine/main/CMakeLists.txt	2015-01-05 15:14:43.850783973 +0100
+--- a/engine/main/CMakeLists.txt	2014-10-01 00:28:19.000000000 +0200
++++ b/engine/main/CMakeLists.txt	2015-01-05 15:14:43.850783973 +0100
 @@ -188,8 +188,8 @@
      ${engine_ser_exe_EPlot_ser}
      engine_ser 
@@ -24,8 +24,8 @@ diff -ur visit2.8.2-old/src/engine/main/CMakeLists.txt visit2.8.2-new/src/engine
          ${VTK_FREETYPE_LIBRARIES}
          vtkftgl
 diff -ur visit2.8.2-old/src/mdserver/main/CMakeLists.txt visit2.8.2-new/src/mdserver/main/CMakeLists.txt
---- visit2.8.2-old/src/mdserver/main/CMakeLists.txt	2014-08-11 23:45:16.000000000 +0200
-+++ visit2.8.2-new/src/mdserver/main/CMakeLists.txt	2015-01-05 15:15:41.810784062 +0100
+--- a/mdserver/main/CMakeLists.txt	2014-08-11 23:45:16.000000000 +0200
++++ b/mdserver/main/CMakeLists.txt	2015-01-05 15:15:41.810784062 +0100
 @@ -119,10 +119,10 @@
      visit_verdict 
      vtkCommonCore
@@ -41,8 +41,8 @@ diff -ur visit2.8.2-old/src/mdserver/main/CMakeLists.txt visit2.8.2-new/src/mdse
      ${CMAKE_THREAD_LIBS} 
      ${DL_LIB}
 diff -ur visit2.8.2-old/src/tools/convert/CMakeLists.txt visit2.8.2-new/src/tools/convert/CMakeLists.txt
---- visit2.8.2-old/src/tools/convert/CMakeLists.txt	2014-08-11 23:46:08.000000000 +0200
-+++ visit2.8.2-new/src/tools/convert/CMakeLists.txt	2015-01-05 15:14:28.880783951 +0100
+--- a/tools/convert/CMakeLists.txt	2014-08-11 23:46:08.000000000 +0200
++++ b/tools/convert/CMakeLists.txt	2015-01-05 15:14:28.880783951 +0100
 @@ -105,8 +105,8 @@
  )
  
@@ -55,8 +55,8 @@ diff -ur visit2.8.2-old/src/tools/convert/CMakeLists.txt visit2.8.2-new/src/tool
  ${VTK_FREETYPE_LIBRARIES}
  vtkftgl
 diff -ur visit2.8.2-old/src/tools/dataserver/CMakeLists.txt visit2.8.2-new/src/tools/dataserver/CMakeLists.txt
---- visit2.8.2-old/src/tools/dataserver/CMakeLists.txt	2014-08-11 23:46:12.000000000 +0200
-+++ visit2.8.2-new/src/tools/dataserver/CMakeLists.txt	2015-01-05 15:13:02.000783818 +0100
+--- a/tools/dataserver/CMakeLists.txt	2014-08-11 23:46:12.000000000 +0200
++++ b/tools/dataserver/CMakeLists.txt	2015-01-05 15:13:02.000783818 +0100
 @@ -70,9 +70,9 @@
  )
  
@@ -71,8 +71,8 @@ diff -ur visit2.8.2-old/src/tools/dataserver/CMakeLists.txt visit2.8.2-new/src/t
  ${VTK_FREETYPE_LIBRARIES}
  vtkftgl
 diff -ur visit2.8.2-old/src/tools/mcurvit/CMakeLists.txt visit2.8.2-new/src/tools/mcurvit/CMakeLists.txt
---- visit2.8.2-old/src/tools/mcurvit/CMakeLists.txt	2014-08-11 23:46:11.000000000 +0200
-+++ visit2.8.2-new/src/tools/mcurvit/CMakeLists.txt	2015-01-05 15:16:02.400784093 +0100
+--- a/tools/mcurvit/CMakeLists.txt	2014-08-11 23:46:11.000000000 +0200
++++ b/tools/mcurvit/CMakeLists.txt	2015-01-05 15:16:02.400784093 +0100
 @@ -104,9 +104,9 @@
  )
  
@@ -87,8 +87,8 @@ diff -ur visit2.8.2-old/src/tools/mcurvit/CMakeLists.txt visit2.8.2-new/src/tool
  ${VTK_FREETYPE_LIBRARIES}
  vtkftgl
 diff -ur visit2.8.2-old/src/tools/protocol/CMakeLists.txt visit2.8.2-new/src/tools/protocol/CMakeLists.txt
---- visit2.8.2-old/src/tools/protocol/CMakeLists.txt	2014-08-11 23:46:14.000000000 +0200
-+++ visit2.8.2-new/src/tools/protocol/CMakeLists.txt	2015-01-05 15:12:46.480783795 +0100
+--- a/tools/protocol/CMakeLists.txt	2014-08-11 23:46:14.000000000 +0200
++++ b/tools/protocol/CMakeLists.txt	2015-01-05 15:12:46.480783795 +0100
 @@ -76,9 +76,9 @@
  )
  
@@ -103,8 +103,8 @@ diff -ur visit2.8.2-old/src/tools/protocol/CMakeLists.txt visit2.8.2-new/src/too
  ${VTK_FREETYPE_LIBRARIES}
  vtkftgl
 diff -ur visit2.8.2-old/src/viewer/main/CMakeLists.txt visit2.8.2-new/src/viewer/main/CMakeLists.txt
---- visit2.8.2-old/src/viewer/main/CMakeLists.txt	2014-08-11 23:46:26.000000000 +0200
-+++ visit2.8.2-new/src/viewer/main/CMakeLists.txt	2015-01-05 15:12:11.380783741 +0100
+--- a/viewer/main/CMakeLists.txt	2014-08-11 23:46:26.000000000 +0200
++++ b/viewer/main/CMakeLists.txt	2015-01-05 15:12:11.380783741 +0100
 @@ -279,8 +279,8 @@
      ${viewer_exe_IPlot}
      ${viewer_exe_VPlot}
@@ -117,8 +117,8 @@ diff -ur visit2.8.2-old/src/viewer/main/CMakeLists.txt visit2.8.2-new/src/viewer
      ${VTK_FREETYPE_LIBRARIES}
      vtkftgl
 diff -ur visit2.8.2-old/src/visit_vtk/full/CMakeLists.txt visit2.8.2-new/src/visit_vtk/full/CMakeLists.txt
---- visit2.8.2-old/src/visit_vtk/full/CMakeLists.txt	2014-08-11 23:45:14.000000000 +0200
-+++ visit2.8.2-new/src/visit_vtk/full/CMakeLists.txt	2015-01-05 15:11:17.680783659 +0100
+--- a/visit_vtk/full/CMakeLists.txt	2014-08-11 23:45:14.000000000 +0200
++++ b/visit_vtk/full/CMakeLists.txt	2015-01-05 15:11:17.680783659 +0100
 @@ -125,9 +125,9 @@
  ADD_LIBRARY(visit_vtk ${VISIT_VTK_SOURCES})
  

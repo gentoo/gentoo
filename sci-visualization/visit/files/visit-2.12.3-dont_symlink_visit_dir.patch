@@ -1,6 +1,6 @@
 diff -ru visit2.7.1.old2/src/CMakeLists.txt visit2.7.1/src/CMakeLists.txt
---- visit2.7.1.old2/src/CMakeLists.txt	2014-01-27 22:10:06.520297262 +0100
-+++ visit2.7.1/src/CMakeLists.txt	2014-01-27 22:11:30.520298002 +0100
+--- a/CMakeLists.txt	2014-01-27 22:10:06.520297262 +0100
++++ b/CMakeLists.txt	2014-01-27 22:11:30.520298002 +0100
 @@ -807,14 +807,6 @@
              \"${VISIT_VERSION}\"
              \"${CMAKE_INSTALL_PREFIX}/beta\")
