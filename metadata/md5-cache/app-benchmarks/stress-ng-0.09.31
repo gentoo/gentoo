@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= net-misc/lksctp-tools sys-apps/attr sys-apps/keyutils sys-libs/libapparmor sys-libs/libcap sys-libs/zlib:=
 SLOT=0
-SRC_URI=http://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.09.30.tar.xz
-_md5_=8364a0caf56c3652ec1a9ccfcfbf1679
+SRC_URI=http://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.09.31.tar.xz
+_md5_=03ff24a4271d0eecfd593cf44598f1aa
