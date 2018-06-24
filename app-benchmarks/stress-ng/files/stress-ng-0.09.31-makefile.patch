@@ -1,20 +1,21 @@
---- a/Makefile	2018-04-27 17:02:16.000000000 +0200
-+++ b/Makefile	2018-05-13 20:54:08.741008488 +0200
+--- a/Makefile	2018-06-21 15:39:27.000000000 +0200
++++ b/Makefile	2018-06-24 14:46:41.773596760 +0200
 @@ -21,7 +21,7 @@
  # Codename "portable pressure producer"
  #
  
 -CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -O2 -std=gnu99
-+CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"'
++CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -std=gnu99
  
  #
  # Pedantic flags
-@@ -314,12 +314,9 @@
+@@ -319,12 +319,10 @@
  .o: stress-ng.h Makefile
  
  .c.o: stress-ng.h Makefile $(SRC)
 -	@echo "CC $<"
 -	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
  
  stress-ng: info $(OBJS)
 -	@echo "LD $@"
@@ -23,50 +24,32 @@
  	@sync
  
  .PHONY: info
-@@ -339,8 +336,7 @@
+@@ -344,8 +342,7 @@
  		sed '$$ s/.$$//' >> apparmor-data.c
  	@echo "};" >> apparmor-data.c
  	@echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
 -	@echo "CC $<"
 -	@$(CC) -c apparmor-data.c -o apparmor-data.o
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -c apparmor-data.c -o apparmor-data.o
- 	@rm -rf apparmor-data.c
++	$(CC) -c apparmor-data.c -o apparmor-data.o
+ 	@rm -rf apparmor-data.c apparmor-data.bin
  
  #
-@@ -353,20 +349,15 @@
- stress-personality.c: personality.h
- 
+@@ -360,12 +357,10 @@
  perf.o: perf.c perf-event.c
--	@$(CC) -E perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | awk {'print "#define _SNG_" $$1 " (1)"'} > perf-event.h
+ 	@$(CC) $(CFLAGS) -E perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | \
+ 	awk {'print "#define _SNG_" $$1 " (1)"'} > perf-event.h
 -	@echo CC $<
 -	@$(CC) $(CFLAGS) -c -o $@ $<
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -E perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | awk {'print "#define _SNG_" $$1 " (1)"'} > perf-event.h
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
  
  stress-vecmath.o: stress-vecmath.c
 -	@echo CC $<
 -	@$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
-+	$(CC) $(CFLAGS) $(CPPFLAGS) -fno-builtin -c -o $@ $<
++	$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
  	@touch stress-ng.c
  
  $(OBJS): stress-ng.h Makefile
- 
--stress-ng.1.gz: stress-ng.1
--	gzip -c $< > $@
--
- .PHONY: dist
- dist:
- 	rm -rf stress-ng-$(VERSION)
-@@ -386,7 +377,7 @@
- 
- .PHONY: clean
- clean:
--	@rm -f stress-ng $(OBJS) stress-ng.1.gz stress-ng.pdf
-+	@rm -f stress-ng $(OBJS) stress-ng.pdf
- 	@rm -f stress-ng-$(VERSION).tar.xz
- 	@rm -f personality.h
- 	@rm -f perf-event.h
-@@ -398,10 +389,10 @@
+@@ -405,10 +400,10 @@
  	STRESS_NG=./stress-ng debian/tests/fast-test-all
  
  .PHONY: install
