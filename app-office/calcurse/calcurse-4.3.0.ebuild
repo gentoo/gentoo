@@ -11,10 +11,13 @@ SRC_URI="https://calcurse.org/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
+KEYWORDS="amd64 x86 ppc ppc64"
 
-RDEPEND="sys-libs/ncurses:0="
-DEPEND="${RDEPEND}"
+RDEPEND="
+	sys-libs/ncurses:0="
+
+DEPEND="
+	${RDEPEND}"
 
 # Most tests fail.
 RESTRICT="test"
