@@ -4715,7 +4715,7 @@ dev-python/decorator 4.1.2 4.2.1: Simplifies the usage of decorators for the ave
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/demjson 2.2.4: encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
+dev-python/demjson 2.2.4: Encoder, decoder, and lint/validator for JSON compliant with RFC 4627
 dev-python/deprecation 1.0.1: A library to handle automated deprecations
 dev-python/dib-utils 0.0.10: Standalone tools related to diskimage-builder.
 dev-python/dicttoxml 1.7.4: Converts a Python dictionary or other data type to a valid XML string
