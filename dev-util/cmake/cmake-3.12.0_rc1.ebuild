@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
 
 	# upstream fixes (can usually be removed with a version bump)
+	"${FILESDIR}"/${PN}-3.11.4-libuv-1.21.patch
 )
 
 cmake_src_bootstrap() {
