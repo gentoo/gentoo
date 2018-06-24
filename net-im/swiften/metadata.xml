@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Swiften is a robust, high-quality, standards-compliant,
+		cross-platform, and performant C++ library for
+		implementing XMPP applications.
+	</longdescription>
+	<use>
+		<flag name="experimental">Build experimental features.</flag>
+		<flag name="ft">Build experimental upnp file transfer.</flag>
+	</use>
+</pkgmetadata>
