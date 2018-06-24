@@ -12,8 +12,7 @@ SRC_URI="https://github.com/supercollider/supercollider/releases/download/Versio
 LICENSE="GPL-2 gpl3? ( GPL-3 )"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="avahi cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack +portaudio qt5 server +sndfile static-libs vim wiimote"
-REQUIRED_USE="^^ ( jack portaudio )"
+IUSE="avahi cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim"
 RESTRICT="mirror"
 
 RDEPEND="
@@ -24,7 +23,7 @@ RDEPEND="
 	avahi? ( net-dns/avahi )
 	fftw? ( sci-libs/fftw:3.0= )
 	jack? ( virtual/jack )
-	portaudio? ( media-libs/portaudio )
+	!jack? ( media-libs/portaudio )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -35,7 +34,6 @@ RDEPEND="
 	)
 	server? ( !app-admin/supernova )
 	sndfile? ( media-libs/libsndfile )
-	wiimote? ( app-misc/cwiid )
 "
 DEPEND="${RDEPEND}
 	dev-libs/icu
@@ -53,19 +51,18 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/SuperCollider-Source"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-no-opengl.patch
-	"${FILESDIR}"/${P}-no-qtsensors.patch
-	"${FILESDIR}"/${P}-no-qtpositioning.patch
-	"${FILESDIR}"/${P}-multilib.patch
-	"${FILESDIR}"/${P}-gcc-7.patch
-	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${PN}-3.8.0-no-opengl.patch
+	"${FILESDIR}"/${PN}-3.8.0-no-qtsensors.patch
+	"${FILESDIR}"/${PN}-3.8.0-no-qtpositioning.patch
+	"${FILESDIR}"/${PN}-3.8.0-multilib.patch
+	"${FILESDIR}"/${PN}-3.8.0-gcc-7.patch
+	"${FILESDIR}"/${PN}-3.8.0-desktop.patch
 )
 
 src_configure() {
 	local mycmakeargs=(
 		-DAUDIOAPI=$(usex jack jack portaudio)
 		-DINSTALL_HELP=ON
-		-DNATIVE=ON
 		-DSYSTEM_BOOST=OFF
 		-DSYSTEM_YAMLCPP=OFF
 		-DNO_AVAHI=$(usex !avahi)
@@ -82,7 +79,6 @@ src_configure() {
 		-DSC_ED=$(usex gedit)
 		-DSC_VIM=$(usex vim)
 		-DSC_EL=$(usex emacs)
-		-DSC_WII=$(usex wiimote)
 	)
 
 	use debug && mycmakeargs+=(
