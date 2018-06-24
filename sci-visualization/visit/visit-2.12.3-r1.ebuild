@@ -55,7 +55,8 @@ src_prepare() {
 	cmake-utils_src_prepare
 	use mpi && eapply "${FILESDIR}/${P}-vtkmpi.patch"
 
-	sed -i 's/exec python $frontendlauncherpy $0 ${1+"$@"}/exec '${EPYTHON}' $frontendlauncherpy $0 ${1+"$@"}/g' "bin/frontendlauncher"
+	sed -i 's/exec python $frontendlauncherpy $0 ${1+"$@"}/exec '${EPYTHON}' \
+		$frontendlauncherpy $0 ${1+"$@"}/g' "bin/frontendlauncher" || die
 }
 
 src_configure() {
