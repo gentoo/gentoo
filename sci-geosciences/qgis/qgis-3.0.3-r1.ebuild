@@ -102,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
 	# TODO upstream
 	"${FILESDIR}/${PN}-3.0.0-featuresummary.patch"
+	"${FILESDIR}/${P}-qt-5.11.0.patch"
 )
 
 pkg_setup() {
