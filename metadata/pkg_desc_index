@@ -10487,6 +10487,7 @@ www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/icingaweb2 2.5.3: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2-module-graphite 1.0.1-r1: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111: A wiki compiler
 www-apps/mediawiki 1.27.3: The MediaWiki wiki web application (as used on wikipedia.org)
