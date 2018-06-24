@@ -111,8 +111,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
-PATCHES=(
-)
 
 bazel-get-cpu-flags() {
 	local i f=()
@@ -304,6 +302,7 @@ src_compile() {
 }
 
 src_install() {
+	local i j
 	do_install() {
 		einfo "Installing ${EPYTHON} files"
 		local srcdir="${T}/src-${EPYTHON/./_}"
@@ -338,6 +337,9 @@ src_install() {
 		cd "${S}-${MULTIBUILD_VARIANT}" || die
 	fi
 
+	local base_suffix="${MULTIBUILD_VARIANT+-}${MULTIBUILD_VARIANT}"
+	local output_base="${WORKDIR}/bazel-base${base_suffix}"
+
 	einfo "Installing headers"
 	# Install c c++ and core header files
 	for i in $(find ${PN}/{c,cc,core} -name "*.h"); do
@@ -345,9 +347,23 @@ src_install() {
 		doins ${i}
 	done
 
-	# Eigen headers
-	insinto /usr/include/${PN}/third_party/eigen3/Eigen/
-	doins third_party/eigen3/Eigen/*
+	einfo "Installing generated headers"
+	for i in $(find bazel-genfiles/${PN}/{cc,core} -name "*.h"); do
+		j=${i#bazel-genfiles/}
+		insinto /usr/include/${PN}/${j%/*}
+		doins ${i}
+	done
+
+	einfo "Installing Eigen headers"
+	insinto /usr/include/${PN}/third_party/eigen3/
+	doins -r third_party/eigen3/Eigen
+	insinto /usr/include/${PN}/third_party/eigen3/unsupported/
+	doins -r third_party/eigen3/unsupported/Eigen
+
+	insinto /usr/include/${PN}/
+	doins -r "$output_base"/external/eigen_archive/Eigen
+	insinto /usr/include/${PN}/unsupported/
+	doins -r "$output_base"/external/eigen_archive/unsupported/Eigen
 
 	einfo "Installing libs"
 	# Generate pkg-config file
