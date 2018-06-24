@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/videolabs/${PN}"
 else
 	SRC_URI="https://github.com/videolabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 fi
 
 LICENSE="LGPL-2.1"
