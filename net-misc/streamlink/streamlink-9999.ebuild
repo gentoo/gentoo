@@ -21,7 +21,7 @@ RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
-	dev-python/backports-shutil_which[$(python_gen_usedep 'python2*')]
+	$(python_gen_cond_dep 'dev-python/backports-shutil_which[${PYTHON_USEDEP}]' 'python2*')
 	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/pycountry[${PYTHON_USEDEP}]
 	dev-python/websocket-client[${PYTHON_USEDEP}]
