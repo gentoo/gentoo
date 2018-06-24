@@ -149,6 +149,7 @@ src_prepare() {
 
 	eapply_user
 
+	xdg_environment_reset
 	distutils-r1_src_prepare
 }
 
