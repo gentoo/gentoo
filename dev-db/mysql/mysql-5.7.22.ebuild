@@ -347,10 +347,6 @@ multilib_src_configure() {
 			mycmakeargs+=( -DWITH_PIC=1 )
 		fi
 
-		if use jemalloc || use tcmalloc ; then
-			mycmakeargs+=( -DWITH_SAFEMALLOC=OFF )
-		fi
-
 		# Storage engines
 		mycmakeargs+=(
 			-DWITH_EXAMPLE_STORAGE_ENGINE=0
