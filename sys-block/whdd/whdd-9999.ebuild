@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-util/dialog
+	dev-util/dialog:=
 	sys-libs/ncurses:0=[unicode]"
 RDEPEND="${DEPEND}
 	sys-apps/smartmontools"
