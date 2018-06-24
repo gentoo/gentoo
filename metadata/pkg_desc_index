@@ -11216,7 +11216,7 @@ x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
 x11-themes/oxygen-molecule 3.2: Unified KDE and GTK+ theme
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
-x11-themes/qtcurve 1.9.0_rc1-r1 1.9.0_rc1-r2: Widget styles for Qt and GTK2
+x11-themes/qtcurve 1.9.0_rc1-r2: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
 x11-themes/silver-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
