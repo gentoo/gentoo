@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+ROOT_DIR="/usr/share/gebuilder"
+
+pushd "${ROOT_DIR}"
+gebuild stemgentoo update
+for file in roots/*/.gentoo/
+do
+	gebuild "$file" update
+done
+popd
