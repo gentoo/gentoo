@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_5 )
+PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="sqlite"
 QT_MIN_VER="5.9.4"
 
@@ -23,12 +23,9 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass mapserver oracle polar postgres python webkit"
+IUSE="3d examples georeferencer grass mapserver oracle polar postgres python qml webkit"
 
-REQUIRED_USE="
-	grass? ( python )
-	mapserver? ( python )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
@@ -48,7 +45,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtsql-${QT_MIN_VER}:5
 	>=dev-qt/qtwidgets-${QT_MIN_VER}:5
 	>=dev-qt/qtxml-${QT_MIN_VER}:5
-	>=sci-libs/gdal-2.2.3:=[geos,python?,${PYTHON_USEDEP}]
+	>=sci-libs/gdal-2.2.3:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
 	sci-libs/proj
@@ -64,7 +61,8 @@ COMMON_DEPEND="
 	)
 	polar? ( >=x11-libs/qwtpolar-1.1.1-r1[qt5(+)] )
 	postgres? ( dev-db/postgresql:= )
-	python? ( ${PYTHON_DEPS}
+	python? (
+		${PYTHON_DEPS}
 		dev-python/future[${PYTHON_USEDEP}]
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
@@ -79,8 +77,10 @@ COMMON_DEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/sip:=[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
+		>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	)
+	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
 	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -89,6 +89,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtxmlpatterns-${QT_MIN_VER}:5
 	sys-devel/bison
 	sys-devel/flex
+	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
 	sci-geosciences/gpsbabel
@@ -105,7 +106,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -131,6 +132,7 @@ src_configure() {
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 		-DPEDANTIC=OFF
+		-DUSE_CCACHE=OFF
 		-DWITH_APIDOC=OFF
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
@@ -143,6 +145,7 @@ src_configure() {
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
+		-DWITH_QUICK=$(usex qml)
 		-DWITH_QTWEBKIT=$(usex webkit)
 	)
 
@@ -187,10 +190,10 @@ src_install() {
 
 	if use python; then
 		python_optimize "${ED%/}"/usr/share/qgis/python
+	fi
 
-		if use grass; then
-			python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
-		fi
+	if use grass; then
+		python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
 	fi
 }
 
