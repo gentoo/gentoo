@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Convert plain text to HTML"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc x86"
+KEYWORDS="amd64 ~arm ~hppa ~mips ppc x86"
 IUSE="test"
 
 # Email::Find::addrspec -> Email-Find 0.09
