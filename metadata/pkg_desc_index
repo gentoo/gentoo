@@ -10207,6 +10207,7 @@ sys-libs/musl 1.1.18 1.1.19: Light, fast and simple C library focused on standar
 sys-libs/ncurses 5.9-r101 6.1-r2: console display library
 sys-libs/nss_wrapper 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
+sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's obstack.
 sys-libs/openipmi 2.0.22: Library interface to IPMI
 sys-libs/pam 1.2.1-r2: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62-r1: Password database
