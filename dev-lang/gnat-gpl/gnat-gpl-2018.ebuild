@@ -39,7 +39,7 @@ LICENSE+=" GPL-2 GPL-3"
 KEYWORDS="~amd64 ~x86"
 IUSE="bootstrap"
 
-RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
+RDEPEND="!sys-devel/gcc:${GCC_CONFIG_VER}"
 DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.13 )
 	>=sys-devel/binutils-2.20"
