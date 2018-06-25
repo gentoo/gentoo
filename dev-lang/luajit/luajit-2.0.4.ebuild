@@ -12,7 +12,7 @@ DESCRIPTION="Just-In-Time Compiler for the Lua programming language"
 HOMEPAGE="http://luajit.org/"
 SRC_URI="http://luajit.org/download/${MY_P}.tar.gz"
 LICENSE="MIT"
-SLOT="2.0.5"
+SLOT="2.0.4"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 S="${WORKDIR}/${MY_P}"
