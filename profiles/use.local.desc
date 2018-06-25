@@ -2662,7 +2662,6 @@ media-fonts/terminus-font:pcf - Install Portable Compiled Font (PCF) (required f
 media-fonts/terminus-font:pcf-unicode-only - Remove non-unicode PCF fonts that could be problematic. See bug #520222.
 media-fonts/terminus-font:psf - Install PC Screen Font (PSF) with unicode data (for linux console)
 media-fonts/terminus-font:quote - Changes view of quotes: symmetric ` and ' instead of asymmetric one (see homepage)
-media-fonts/terminus-font:raw-font-data - Install RAW font data which should be compatible with most UNIX systems (you don't need this on linux)
 media-fonts/terminus-font:ru-dv - Changes view of Russian letters 'de' and 've' (see homepage)
 media-fonts/terminus-font:ru-g - Changes view of Russian letter 'ge' (see homepage)
 media-fonts/terminus-font:ru-i - Changes view of Russian letter 'i' - not like Latin u, but like "mirrored" N (see homepage)

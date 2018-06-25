@@ -7198,7 +7198,7 @@ media-fonts/stix-fonts 1.1.1: Comprehensive OpenType font set of mathematical sy
 media-fonts/symbola 8.00 9.17: Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.40 4.46: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.46: A clean fixed font for the console and X11
 media-fonts/tex-gyre 2.005: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
 media-fonts/thaifonts-scalable 0.6.1: A collection of Free fonts for Thai
@@ -10984,7 +10984,7 @@ x11-misc/xpad 4.2: a sticky note application for jotting down things to remember
 x11-misc/xplanet 1.3.1-r1: Render images of the earth into the X root window
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrootconsole 0.6-r1: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.36 5.38: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.38: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70-r1: A hardware health information viewer, interface to lm-sensors
