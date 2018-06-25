@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit distutils-r1 versionator
+inherit distutils-r1
 
-MY_PV=$(replace_version_separator 2 '.fb' ${PV})
+MY_PV=$(ver_rs 2 .fb)
 
 DESCRIPTION="Command shell for managing Linux LIO kernel target"
 HOMEPAGE="https://github.com/open-iscsi/targetcli-fb"
@@ -17,7 +17,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/configshell-fb[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-python/rtslib-fb-2.1.62[${PYTHON_USEDEP}]
