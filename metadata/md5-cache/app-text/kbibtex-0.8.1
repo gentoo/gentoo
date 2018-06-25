@@ -4,7 +4,7 @@ DESCRIPTION=BibTeX editor to edit bibliographies used with LaTeX
 EAPI=6
 HOMEPAGE=https://userbase.kde.org/KBibTeX
 IUSE=webengine webkit zotero test debug +handbook test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=kde-frameworks/kcompletion-5.46.0:5 >=kde-frameworks/kconfig-5.46.0:5 >=kde-frameworks/kconfigwidgets-5.46.0:5 >=kde-frameworks/kcoreaddons-5.46.0:5 >=kde-frameworks/kcrash-5.46.0:5 >=kde-frameworks/ki18n-5.46.0:5 >=kde-frameworks/kiconthemes-5.46.0:5 >=kde-frameworks/kio-5.46.0:5 >=kde-frameworks/kitemviews-5.46.0:5 >=kde-frameworks/kjobwidgets-5.46.0:5 >=kde-frameworks/kparts-5.46.0:5 >=kde-frameworks/kservice-5.46.0:5 >=kde-frameworks/ktextwidgets-5.46.0:5 >=kde-frameworks/kwallet-5.46.0:5 >=kde-frameworks/kwidgetsaddons-5.46.0:5 >=kde-frameworks/kxmlgui-5.46.0:5 >=dev-qt/qtdbus-5.9.4:5 >=dev-qt/qtgui-5.9.4:5 >=dev-qt/qtnetwork-5.9.4:5 >=dev-qt/qtwidgets-5.9.4:5 >=dev-qt/qtxml-5.9.4:5 >=dev-qt/qtxmlpatterns-5.9.4:5 app-text/poppler[qt5] dev-libs/icu:= virtual/tex-base webengine? ( >=dev-qt/qtwebengine-5.9.4:5[widgets] ) webkit? ( >=dev-qt/qtwebkit-5.9.1:5 ) zotero? ( app-crypt/qca[qt5(+)] dev-libs/qoauth:5 ) !app-text/kbibtex:4 dev-tex/bibtex2html x11-misc/shared-mime-info >=kde-frameworks/kf-env-4 || ( >=kde-frameworks/breeze-icons-5.46.0:5 kde-frameworks/oxygen-icons:* ) >=dev-qt/qtcore-5.9.4:5
 REQUIRED_USE=?? ( webengine webkit )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=5
 SRC_URI=mirror://kde/stable/KBibTeX/0.8.1/kbibtex-0.8.1.tar.xz
 _eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	kde5	0afda9a43e3d76e470f447753ad056af	kde5-functions	5023dbcb3c1a817f64e2c51cc71f08ab	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=cc9d13569b432e1e305ba9a67e00527d
+_md5_=c4a8c150b7d4a7ddaeee7e0138adae0b

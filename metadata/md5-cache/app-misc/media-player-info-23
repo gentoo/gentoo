@@ -3,11 +3,11 @@ DEPEND=>=virtual/udev-208 || ( dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/
 DESCRIPTION=A repository of data files describing media player capabilities
 EAPI=7
 HOMEPAGE=https://cgit.freedesktop.org/media-player-info/
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86
 LICENSE=BSD
 RDEPEND=>=virtual/udev-208
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/media-player-info/media-player-info-23.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	ffa9c3284c6b07b8c9f7933911f63812	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=b3ec873b3fae8800d86020367c53300f
+_md5_=52558342293f30af51705c7ab03e31c8
