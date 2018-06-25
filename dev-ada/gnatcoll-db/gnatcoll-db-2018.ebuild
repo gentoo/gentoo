@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnatcoll_db2ada gnatinspect postgres
 	+shared sql sqlite static-libs static-pic xref"
 
-RDEPEND="dev-lang/gnat-gpl:7.3.0
+RDEPEND="dev-lang/gnat-gpl:7.3.1
 	dev-ada/gnatcoll-core[gnat_2018,shared?,static-libs?,static-pic?]
 	dev-ada/libgpr[gnat_2018,shared?,static-libs?,static-pic?]
 	dev-ada/xmlada[gnat_2018,shared?,static-libs?,static-pic?]
@@ -41,7 +41,7 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	GCC_PV=7.3.0
+	GCC_PV=7.3.1
 	build () {
 		GCC=${CHOST}-gcc-${GCC_PV} \
 			GPR_PROJECT_PATH="${S}/sql":"${S}/sqlite":"${S}/xref" \
