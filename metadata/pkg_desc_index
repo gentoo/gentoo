@@ -5817,7 +5817,7 @@ dev-ruby/haml 4.0.7-r1: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.5: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 1.3.4-r1 3.2.2 3.4.3: A simple pluggable Hierarchical Database
+dev-ruby/hiera 3.2.2 3.4.3: A simple pluggable Hierarchical Database
 dev-ruby/highline 1.7.8: Highline is a high-level command-line IO library for ruby
 dev-ruby/hocon 1.2.5: This is a port of the Typesafe Config library to Ruby.
 dev-ruby/hoe 3.16.0: Hoe extends rake to provide full project automation
@@ -6154,7 +6154,7 @@ dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/aruba 0.5.4-r1 0.6.2-r1: Cucumber steps for driving out command line applications
+dev-util/aruba 0.6.2-r1: Cucumber steps for driving out command line applications
 dev-util/astyle 3.0.1-r1: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/babeltrace 1.2.4: A command-line tool and library to read and convert trace files
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
