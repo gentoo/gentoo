@@ -24,7 +24,7 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 	dev-ada/gnatcoll-core[gnat_2018,shared?,static-libs?,static-pic?]
 	dev-ada/libgpr[gnat_2018,shared?,static-libs?,static-pic?]
 	dev-ada/xmlada[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-lang/gnat-gpl:7.3.0
+	dev-lang/gnat-gpl:7.3.1
 	gmp? ( dev-libs/gmp:* )"
 
 DEPEND="${RDEPEND}
@@ -39,7 +39,7 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
 	build () {
-		GCC=${CHOST}-gcc-7.3.0 gprbuild -j$(makeopts_jobs) -m -p -v \
+		GCC=${CHOST}-gcc-7.3.1 gprbuild -j$(makeopts_jobs) -m -p -v \
 			-XLIBRARY_TYPE=$2 -P $1/gnatcoll_$1.gpr -XBUILD="PROD" \
 			-XGNATCOLL_ICONV_OPT= -XGNATCOLL_PYTHON_CFLAGS="-I$(python_get_includedir)" \
 			-XGNATCOLL_PYTHON_LIBS=$(python_get_library_path) \
