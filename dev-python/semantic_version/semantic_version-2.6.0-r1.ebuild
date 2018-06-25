@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rbarrois/python-semanticversion/archive/v${PV}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
