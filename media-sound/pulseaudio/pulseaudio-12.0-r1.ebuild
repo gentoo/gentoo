@@ -324,6 +324,14 @@ pkg_postinst() {
 		elog "which is required to set equalizer levels will not work."
 	fi
 
+	if use equalizer && use qt5; then
+		elog "You will need to load some extra modules to make qpaeq work."
+		elog "You can do that by adding the following two lines in"
+		elog "/etc/pulse/default.pa and restarting pulseaudio:"
+		elog "load-module module-equalizer-sink"
+		elog "load-module module-dbus-protocol"
+	fi
+
 	if use native-headset && use ofono-headset; then
 		elog "You have enabled both native and ofono headset profiles. The runtime decision"
 		elog "which to use is done via the 'headset' argument of module-bluetooth-discover."
