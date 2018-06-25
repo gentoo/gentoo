@@ -5824,7 +5824,7 @@ dev-ruby/hoe-seattlerb 1.3.4 1.3.5: Hoe plugins providing tasks used by seattle.
 dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
 dev-ruby/http 0.9.8-r2: An easy-to-use client library for making requests from Ruby
-dev-ruby/http-cookie 1.0.2-r1: A ruby library to handle HTTP cookies
+dev-ruby/http-cookie 1.0.2-r1 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.3: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.16.0: Makes http fun! Also, makes consuming restful web services dead easy
