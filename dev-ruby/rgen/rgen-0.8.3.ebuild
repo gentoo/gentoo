@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.rdoc"
 RUBY_FAKEGEM_GEMSPEC="rgen.gemspec"
@@ -25,7 +25,7 @@ ruby_add_bdepend "doc? ( >=dev-ruby/rdoc-4.2.0 )
 
 each_ruby_prepare() {
 	case ${RUBY} in
-		*ruby24)
+		*ruby24|*ruby25)
 			sed -i -e 's/Can not use a Fixnum/Can not use a Integer/' test/metamodel_builder_test.rb || die
 			;;
 	esac
