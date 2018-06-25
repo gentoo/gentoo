@@ -4297,6 +4297,11 @@ developers and volunteer mentors.</description>
       <role>keywording/stabilization</role>
     </member>
     <member>
+      <email>whissi@gentoo.org</email>
+      <name>Thomas Deutschmann</name>
+      <role>Developer (stabilization primarily)</role>
+    </member>
+    <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
       <role>Developer (Gentoo/x86)</role>
