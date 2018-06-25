@@ -140,7 +140,7 @@ app-admin/testdisk 7.1_pre20180322: Checks and undeletes partitions + PhotoRec, 
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
-app-admin/ulogd 2.0.5_p20161017: A userspace logging daemon for netfilter/iptables related logging
+app-admin/ulogd 2.0.5_p20161017 2.0.7: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
@@ -1418,7 +1418,7 @@ app-text/pdfgrep 1.4.1-r1 2.0.1: A tool similar to grep which searches text in P
 app-text/pdfjam 2.08: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20140328: Python tool for extracting information from PDF documents
 app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
-app-text/pelican 3.6.0 3.7.0: A tool to generate a static blog, with restructured text or markdown input files
+app-text/pelican 3.6.0 3.7.0 3.7.1: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
@@ -4698,7 +4698,7 @@ dev-python/cssutils 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.1.1 0.1.2 0.2.1: Cursive implements OpenStack-specific validation of digital signatures.
 dev-python/curtsies 0.2.10 0.2.11: Curses-like terminal wrapper, with colored strings
-dev-python/cx_Freeze 4.3.4: Create standalone executables from Python scripts
+dev-python/cx_Freeze 4.3.4 5.0.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0: Composable style cycles
 dev-python/cython 0.25.2: A Python to C compiler
 dev-python/cytoolz 0.8.0: Cython implementation of Toolz: High performance functional utilities
@@ -4890,7 +4890,7 @@ dev-python/google-api-python-client 1.5.3 1.6.2 1.6.5: Google API Client for Pyt
 dev-python/google-apputils 0.4.2-r2: Collection of utilities for building Python applications
 dev-python/google-auth 1.0.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.2: httplib2 Transport for Google Auth
-dev-python/graph-tool 2.19: An efficient python module for manipulation and statistical analysis of graphs
+dev-python/graph-tool 2.19 2.23: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.12: Lightweight in-process concurrent programming
@@ -4969,7 +4969,7 @@ dev-python/jmespath 0.9.3: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.11: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
 dev-python/josepy 1.0.1 1.1.0: JOSE protocol implementation in Python
-dev-python/jpype 0.6.1: JPype is an effort to allow Python programs full access to Java class librairies
+dev-python/jpype 0.6.1 0.6.2: JPype is an effort to allow Python programs full access to Java class librairies
 dev-python/jsmin 2.2.1: JavaScript minifier
 dev-python/json-rpc 1.10.1: JSON-RPC transport implementation for python
 dev-python/json-tools 0.4.0: A set of tools to manipulate JSON: diff, patch, and pretty-printing
@@ -5001,7 +5001,7 @@ dev-python/libcloud 0.15.1 1.2.1 2.3.0: Unified Interface to the Cloud - python 
 dev-python/libextractor-python 0.6-r1: A library used to extract metadata from files of arbitrary type
 dev-python/libgnome-python 2.28.1-r1: Python bindings for essential GNOME libraries
 dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas library
-dev-python/libnacl 1.4.4: Python ctypes wrapper for libsodium
+dev-python/libnacl 1.4.4 1.6.1: Python ctypes wrapper for libsodium
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
 dev-python/libvirt-python 4.1.0 4.3.0-r1: libvirt Python bindings
@@ -5039,7 +5039,7 @@ dev-python/mccabe 0.2.1 0.6.1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
-dev-python/meld3 1.0.2-r1: meld3 is an HTML/XML templating engine
+dev-python/meld3 1.0.2-r1 1.0.2-r2: meld3 is an HTML/XML templating engine
 dev-python/mergedict 0.2.0: A Python 'dict' with a merge() method
 dev-python/micawber 0.3.3: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.1.4: A simple parser for OpenStack microversion headers
@@ -5147,7 +5147,7 @@ dev-python/ovs 2.7.0 2.7.2 2.8.1: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0 0.10.0: A library for creating OVSDB applications
 dev-python/owslib 0.16.0 0.16.0-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 16.8: Core utilities for Python packages
-dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
+dev-python/paho-mqtt 1.1 1.3.1: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.19.1: Powerful data structures for data analysis and statistics
 dev-python/pandocfilters 1.4.2-r1: Utilities for writing pandoc filters in python
@@ -7976,7 +7976,7 @@ media-sound/erec 2.2.0.1: A shared audio recording server
 media-sound/exaile 3.4.5: a media player aiming to be similar to AmaroK, but for GTK+
 media-sound/fapg 0.41: Fast Audio Playlist Generator
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
-media-sound/flacon 4.0.0: Extracts audio tracks from an audio CD image to separate tracks
+media-sound/flacon 4.0.0 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6-r1: Software real-time synthesizer based on the Soundfont 2 specifications
@@ -8200,7 +8200,7 @@ media-video/ffmpeg 3.2.6 3.3.4 3.3.5 3.3.6: Complete solution to record, convert
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
-media-video/gaupol 0.91: A subtitle editor for text-based subtitles
+media-video/gaupol 0.91 1.4: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
