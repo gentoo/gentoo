@@ -5810,7 +5810,7 @@ dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ffi 1.9.18: Ruby extension for programmatically loading dynamic libraries
 dev-ruby/flexmock 2.3.5: Simple mock object library for Ruby unit testing
 dev-ruby/gettext-setup 0.30: A gem to ease i18n
-dev-ruby/gherkin 2.12.2 4.1.3: Fast Gherkin lexer and parser
+dev-ruby/gherkin 4.1.3: Fast Gherkin lexer and parser
 dev-ruby/git 1.3.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r1: A ruby web page templating engine
@@ -6194,7 +6194,7 @@ dev-util/cpuinfo-collection 20070104: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/cscope 15.8a-r1: Interactively examine a C program
 dev-util/ctags 20161028: Exuberant Ctags creates tags files for code browsing in editors
-dev-util/cucumber 1.3.20-r1 2.4.0-r1: Executable feature scenarios
+dev-util/cucumber 2.4.0-r1: Executable feature scenarios
 dev-util/cucumber-core 1.5.0: Executable feature scenarios
 dev-util/cucumber-wire 0.0.1: Executable feature scenarios
 dev-util/cunit 2.1_p2-r1: CUnit - C Unit Test Framework
