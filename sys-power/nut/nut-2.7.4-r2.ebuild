@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools bash-completion-r1 eutils fixheadtails multilib user systemd flag-o-matic toolchain-funcs
+PYTHON_COMPAT=( python2_7 )
+inherit autotools bash-completion-r1 eutils fixheadtails multilib user systemd flag-o-matic toolchain-funcs python-single-r1
 
 MY_P=${P/_/-}
 
@@ -16,9 +17,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
-IUSE="cgi ipmi snmp +usb selinux ssl tcpd xml zeroconf"
+IUSE="cgi gui ipmi snmp +usb selinux ssl tcpd xml zeroconf"
 CDEPEND="
 	cgi? ( >=media-libs/gd-2[png] )
+	gui? ( dev-python/pygtk )
 	snmp? ( net-analyzer/net-snmp )
 	usb? ( virtual/libusb:0 )
 	ssl? ( >=dev-libs/openssl-1 )
@@ -83,6 +85,7 @@ pkg_setup() {
 	# in some cases on old systems it wasn't in the nut group either!
 	gpasswd -a nut nut 2>/dev/null
 	warningmsg ewarn
+	use gui && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -103,6 +106,8 @@ src_prepare() {
 	sed -i \
 		-e 's:@LIBSSL_LDFLAGS@:@LIBSSL_LIBS@:' \
 		lib/libupsclient{.pc,-config}.in || die #361685
+
+	use gui && epatch "${FILESDIR}"/NUT-Monitor-1.3-paths.patch
 
 	eapply_user
 
@@ -167,6 +172,24 @@ src_install() {
 		elog "copy them to your web server's ScriptPath to activate (this is a"
 		elog "change from the old location)."
 		elog "If you use lighttpd, see lighttpd_nut.conf in the documentation."
+	fi
+
+	if use gui; then
+		python_fix_shebang scripts/python/app
+		python_domodule scripts/python/module/PyNUT.py
+		python_doscript scripts/python/app/NUT-Monitor
+
+		insinto /usr/share/nut
+		doins scripts/python/app/gui-1.3.glade
+
+		dodir /usr/share/nut/pixmaps
+		insinto /usr/share/nut/pixmaps
+		doins scripts/python/app/pixmaps/*
+
+		sed -i -e 's/nut-monitor.png/nut-monitor/' -e 's/Application;//'  scripts/python/app/${PN}-monitor.desktop
+
+		doicon scripts/python/app/${PN}-monitor.png
+		domenu scripts/python/app/${PN}-monitor.desktop
 	fi
 
 	# this must be done after all of the install phases
