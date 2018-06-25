@@ -24,7 +24,8 @@ RDEPEND="
 	>=dev-libs/tinyxml2-6:=
 	dev-libs/libtar
 	dev-cpp/tbb
-	>=dev-games/ogre-1.7.4[freeimage]
+	>=dev-games/ogre-1.7.4:=[freeimage]
+	<dev-games/ogre-1.10
 	>=media-libs/freeimage-3.15.4[png]
 	sci-libs/libccd
 	libav? ( >=media-video/libav-9:0= )
@@ -46,7 +47,7 @@ RDEPEND="
 	net-libs/ignition-msgs:1=
 	sci-libs/ignition-math:4=
 	net-libs/ignition-transport:4=
-	x11-libs/qwt:6=[qt5]
+	x11-libs/qwt:6=[qt5(+)]
 "
 DEPEND="${RDEPEND}
 	dev-qt/qttest:5
@@ -57,7 +58,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PATCHES=( "${FILESDIR}/qwt.patch" "${FILESDIR}/ffmpeg4.patch" )
+PATCHES=( "${FILESDIR}/qwt.patch" )
 
 src_configure() {
 	# doesnt build without it

@@ -46,7 +46,7 @@ RDEPEND="
 	net-libs/ignition-msgs:1=
 	sci-libs/ignition-math:4=
 	net-libs/ignition-transport:4=
-	x11-libs/qwt:6=[qt5]
+	x11-libs/qwt:6=[qt5(+)]
 "
 DEPEND="${RDEPEND}
 	dev-qt/qttest:5
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PATCHES=( "${FILESDIR}/qwt.patch" )
+PATCHES=( "${FILESDIR}/qwt.patch" "${FILESDIR}/ffmpeg4.patch" )
 
 src_configure() {
 	# doesnt build without it

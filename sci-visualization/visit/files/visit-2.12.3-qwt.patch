@@ -1,5 +1,5 @@
---- CMake/FindQwt.cmake.orig	2017-07-12 07:46:34.560120549 +0200
-+++ CMake/FindQwt.cmake	2017-07-12 07:46:58.120121063 +0200
+--- a/CMake/FindQwt.cmake.orig	2017-07-12 07:46:34.560120549 +0200
++++ b/CMake/FindQwt.cmake	2017-07-12 07:46:58.120121063 +0200
 @@ -54,7 +54,10 @@
      SET(QWT_LIBRARY ${QWT_LIBRARY_DIR}/${QWT_LIB}/qwt)
    ENDIF(VISIT_STATIC)
