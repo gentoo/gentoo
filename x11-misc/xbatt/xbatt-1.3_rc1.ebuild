@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator
+inherit toolchain-funcs eapi7-ver
 
 MY_PV=${PV/_rc/pr}
 DESCRIPTION="Notebook battery indicator for X"
@@ -29,7 +29,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-implicits.patch
 )
-S="${WORKDIR}"/${PN}-$(get_version_component_range 1-2)
+S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
 
 src_compile() {
 	xmkmf || die
