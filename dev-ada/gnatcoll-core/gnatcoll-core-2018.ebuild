@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 
-RDEPEND="dev-lang/gnat-gpl:7.3.0
+RDEPEND="dev-lang/gnat-gpl:7.3.1
 	dev-ada/libgpr[gnat_2018,shared?,static-libs?,static-pic?]
 	dev-ada/xmlada[gnat_2018,shared?,static-libs?,static-pic?]"
 DEPEND="${RDEPEND}
@@ -30,7 +30,7 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
-	GCC_PV=7.3.0
+	GCC_PV=7.3.1
 	default
 	sed -i \
 		-e "s:@GNATLS@:${CHOST}-gnatls-${GCC_PV}:g" \
