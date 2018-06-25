@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Yuri Konotopov <ykonotopov@gnome.org> (24 Jun 2018)
+# natspec patch is broken and will be removed
+app-arch/zip natspec
+
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # dev-libs/DirectFB is being removed (#606194)
 media-libs/libsdl2 fusionsound
