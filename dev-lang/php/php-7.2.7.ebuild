@@ -150,9 +150,6 @@ REQUIRED_USE="
 	zip-encryption? ( zip )
 "
 PATCHES=(
-	# hopefully upstream will include the same version check fixes in upcoming releases
-	# patch added 20180429
-	"${FILESDIR}/libressl-compatibility.patch"
 	"${FILESDIR}/php-freetype-2.9.1.patch"
 )
 
