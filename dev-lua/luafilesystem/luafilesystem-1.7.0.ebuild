@@ -41,4 +41,3 @@ src_compile() {
 src_test() {
 	LUA_CPATH=./src/?.so $(usex luajit 'luajit' 'lua') tests/test.lua
 }
-
