@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit cmake-utils python-single-r1 python-utils-r1 ruby-single eutils multilib
 
