@@ -93,13 +93,13 @@ COMMON_DEPEND="
 		>=dev-libs/boost-1.65.0:=
 		numa? ( sys-process/numactl )
 	)
+	!client-libs? ( dev-db/mysql-connector-c[${MULTILIB_USEDEP},static-libs?] )
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
-	abi_x86_32? ( !app-emulation/emul-linux-x86-db[-abi_x86_32(-)] )
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
@@ -107,8 +107,7 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
-PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	!client-libs? ( dev-db/mysql-connector-c[${MULTILIB_USEDEP},static-libs?] )"
+PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
