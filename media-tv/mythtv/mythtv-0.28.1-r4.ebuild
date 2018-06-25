@@ -175,6 +175,7 @@ src_prepare() {
 	echo "setting.extra -= -ldconfig" >> "${S}"/programs/mythfrontend/mythfrontend.pro
 
 	eapply "${FILESDIR}/${P}-glibc225.patch"
+	eapply -p2 "${FILESDIR}/${PN}-29.2-freetype_pkgconfig.patch" #658534
 }
 
 src_configure() {
