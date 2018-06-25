@@ -10,7 +10,7 @@ QT_MIN_VER="5.9.4"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 else
 	GIT_ECLASS="git-r3"
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
