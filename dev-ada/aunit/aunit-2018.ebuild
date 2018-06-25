@@ -19,7 +19,7 @@ IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
 RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
-	gnat_2018? ( dev-lang/gnat-gpl:7.3.0 )"
+	gnat_2018? ( dev-lang/gnat-gpl:7.3.1 )"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
