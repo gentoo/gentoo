@@ -21,6 +21,10 @@ RDEPEND="
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+	)
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
