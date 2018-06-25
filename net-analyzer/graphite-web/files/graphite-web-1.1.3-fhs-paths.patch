@@ -10,11 +10,11 @@ Install FHS-style paths
  from graphite.wsgi import application
 --- a/setup.py
 +++ b/setup.py
-@@ -59,8 +59,7 @@
+@@ -59,8 +59,8 @@
        ],
        package_data={'graphite' :
          ['templates/*', 'local_settings.py.example']},
--      scripts=glob('bin/*'),
+       scripts=glob('bin/*'),
 -      data_files=list(webapp_content.items()) + storage_dirs + conf_files + examples,
 +      data_files=list(webapp_content.items()),
        install_requires=['Django>=1.8,<1.11.99', 'django-tagging==0.4.3', 'pytz', 'pyparsing', 'cairocffi', 'urllib3', 'scandir', 'six'],
@@ -36,7 +36,7 @@ Install FHS-style paths
  #INDEX_FILE = '/opt/graphite/storage/index'     # Search index file
 +CONF_DIR = '@GENTOO_PORTAGE_EPREFIX@/etc/graphite-web'
 +STORAGE_DIR = '@GENTOO_PORTAGE_EPREFIX@/var/lib/carbon'
-+STATIC_ROOT = '@GENTOO_PORTAGE_EPREFIX@/usr/share/graphite-web'
++STATIC_ROOT = '@GENTOO_PORTAGE_EPREFIX@/usr/share/graphite-web/webapp/content'
 +LOG_DIR = '@GENTOO_PORTAGE_EPREFIX@/var/log/graphite-web'
 +INDEX_FILE = '@GENTOO_PORTAGE_EPREFIX@/var/lib/graphite-web/index'  # Search index file
  
@@ -51,3 +51,12 @@ Install FHS-style paths
  #
  # Data directories using the "Standard" metrics finder (i.e. not Ceres)
  #STANDARD_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
+@@ -244,7 +244,7 @@
+ #
+ #DATABASES = {
+ #    'default': {
+-#        'NAME': '/opt/graphite/storage/graphite.db',
++#        'NAME': '@GENTOO_PORTAGE_EPREFIX@/var/lib/graphite-web/graphite.db',
+ #        'ENGINE': 'django.db.backends.sqlite3',
+ #        'USER': '',
+ #        'PASSWORD': '',
