@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test windowmode"
 
 RDEPEND="
