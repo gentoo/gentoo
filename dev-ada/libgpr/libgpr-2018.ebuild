@@ -40,7 +40,7 @@ src_compile() {
 	elif use gnat_2017; then
 		GCC_PV=6.3.0
 	else
-		GCC_PV=7.3.0
+		GCC_PV=7.3.1
 	fi
 	GCC=${CHOST}-gcc-${GCC_PV}
 	if use shared; then
