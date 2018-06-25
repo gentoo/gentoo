@@ -11,4 +11,4 @@ REQUIRED_USE=opengl? ( X )
 SLOT=4.0
 SRC_URI=https://github.com/sphair/ClanLib/archive/v4.0.0.tar.gz -> clanlib-4.0.0.tar.gz
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=dd78f30b012720d38925ebbf48c45629
+_md5_=c0c618ee0086c1644fd2d7ce66b14af3
