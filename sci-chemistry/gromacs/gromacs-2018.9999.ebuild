@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -158,7 +158,6 @@ src_configure() {
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
-		-DGMX_LIB_INSTALL_DIR="$(get_libdir)"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
