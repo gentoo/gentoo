@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs test threads tinfo trace unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
@@ -251,26 +251,36 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 #	if ! use berkdb ; then
-		# We need the basic terminfo files in /etc, bug #37026
+		# We need the basic terminfo files in /etc for embedded/recovery. #37026
 		einfo "Installing basic terminfo files in /etc..."
+		local terms=(
+			# Dumb/simple values that show up when using the in-kernel VT.
+			ansi console dumb linux
+			vt{52,100,102,200,220}
+			# [u]rxvt users used to be pretty common.  Probably should drop this
+			# since upstream is dead and people are moving away from it.
+			rxvt{,-unicode}{,-256color}
+			# xterm users are common, as is terminals re-using/spoofing it.
+			xterm xterm-{,256}color
+			# screen is common (and reused by tmux).
+			screen{,-256color}
+			screen.xterm-256color
+		)
 		local x
-		for x in ansi console dumb linux rxvt rxvt-unicode screen{,-256color} vt{52,100,102,200,220} \
-				 xterm xterm-{,256}color
-		do
+		for x in "${terms[@]}"; do
 			local termfile=$(find "${ED}"/usr/share/terminfo/ -name "${x}" 2>/dev/null)
-			local basedir=$(basename $(dirname "${termfile}"))
+			local basedir=$(basename "$(dirname "${termfile}")")
 
 			if [[ -n ${termfile} ]] ; then
-				dodir /etc/terminfo/${basedir}
-				mv ${termfile} "${ED}"/etc/terminfo/${basedir}/
-				dosym ../../../../etc/terminfo/${basedir}/${x} \
-					/usr/share/terminfo/${basedir}/${x}
+				dodir "/etc/terminfo/${basedir}"
+				mv "${termfile}" "${ED}/etc/terminfo/${basedir}/" || die
+				dosym "../../../../etc/terminfo/${basedir}/${x}" \
+					"/usr/share/terminfo/${basedir}/${x}"
 			fi
 		done
 #	fi
 
-	echo "CONFIG_PROTECT_MASK=\"/etc/terminfo\"" > "${T}"/50ncurses
-	doenvd "${T}"/50ncurses
+	echo "CONFIG_PROTECT_MASK=\"/etc/terminfo\"" | newenvd - 50ncurses
 
 	use minimal && rm -r "${ED}"/usr/share/terminfo*
 	# Because ncurses5-config --terminfo returns the directory we keep it
