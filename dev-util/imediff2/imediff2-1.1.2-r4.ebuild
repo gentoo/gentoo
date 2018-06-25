@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 PYTHON_REQ_USE="ncurses"
 
 inherit python-single-r1 versionator
@@ -24,6 +24,8 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S=${WORKDIR}/${PN}
+
+PATCHES=( "${FILESDIR}/${PV}-python-3.patch" )
 
 src_compile() {
 	# Otherwise the docs get regenerated :)
