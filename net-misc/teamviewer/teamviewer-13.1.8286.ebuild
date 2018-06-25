@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_PN=${PN}${PV/\.*}
-inherit eutils gnome2-utils systemd
+inherit desktop gnome2-utils systemd
 
 DESCRIPTION="All-In-One Solution for Remote Access and Support over the Internet"
 HOMEPAGE="https://www.teamviewer.com"
