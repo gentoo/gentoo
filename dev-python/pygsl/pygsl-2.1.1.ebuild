@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 DEPEND="
