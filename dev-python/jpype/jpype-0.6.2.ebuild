@@ -13,7 +13,7 @@ SRC_URI="https://github.com/originell/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
 S="${WORKDIR}/${P}"
