@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib-minimal
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="a text-based calendar and scheduling application"
 HOMEPAGE="https://calcurse.org/"
@@ -18,9 +18,17 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.2.1-tinfo.patch
+)
 
 # Most tests fail.
 RESTRICT="test"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf
