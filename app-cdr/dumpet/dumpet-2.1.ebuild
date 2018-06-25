@@ -7,7 +7,7 @@ inherit rpm
 
 DESCRIPTION="A tool to dump and debug bootable CD-like images"
 HOMEPAGE="https://fedora.pkgs.org/rawhide/fedora-x86_64/dumpet-2.1-15.fc27.x86_64.rpm.html"
-SRC_URI="http://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/d/dumpet-2.1-15.fc27.src.rpm"
+SRC_URI="http://dl.fedoraproject.org/pub/fedora/linux/releases/27/Everything/source/tree/Packages/d/dumpet-${PV}-15.fc27.src.rpm"
 
 LICENSE="GPL-2"
 SLOT="0"
