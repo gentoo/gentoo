@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/net-ssh/bcrypt_pbkdf-ruby"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/rbnacl )"
