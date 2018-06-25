@@ -6308,7 +6308,7 @@ dev-util/regexxer 0.10: An interactive tool for performing search and replace op
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
-dev-util/scala-ide 4.3.0: The Scala IDE
+dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/schroot 1.6.10-r4: Utility to execute commands in a chroot environment
 dev-util/scons 2.4.1 2.5.1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
