@@ -1940,7 +1940,7 @@ dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer 
 dev-embedded/ponyprog 2.07c-r2: Serial device programmer
 dev-embedded/sdcc 3.5.0: Small device C compiler (for various microprocessors)
 dev-embedded/tigcc 0.96_beta7: Cross compiler for Texas Instruments TI-89, TI-92(+) and V200 calculators
-dev-embedded/u-boot-tools 2016.03: utilities for working with Das U-Boot
+dev-embedded/u-boot-tools 2016.03 2017.09: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10: Tool for communicating over JTAG with flash chips, CPUs, and many more
