@@ -1,0 +1,3 @@
+#!/bin/bash
+cleaned_args=$(echo $* | sed -e 's/--nohttpinterface//')
+/usr/bin/mongod ${cleaned_args}
