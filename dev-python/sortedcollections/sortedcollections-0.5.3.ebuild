@@ -19,7 +19,3 @@ IUSE="test"
 RDEPEND="dev-python/sortedcontainers[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-python_test() {
-	py.test -v || die
-}
