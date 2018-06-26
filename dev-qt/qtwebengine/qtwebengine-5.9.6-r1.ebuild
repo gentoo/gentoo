@@ -83,6 +83,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.9.4-jpeg-9-1.patch"
 	"${FILESDIR}/${PN}-5.9.4-jpeg-9-2.patch"
 	"${FILESDIR}/${PN}-5.9.6-gcc8.patch" # bug 657124
+	"${FILESDIR}/${PN}-5.11.1-nouveau-disable-gpu.patch" # bug 609752
 )
 
 src_prepare() {
