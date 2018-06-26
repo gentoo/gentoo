@@ -18,8 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-	KEYWORDS=""
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 
@@ -28,12 +27,12 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=6
+PATCH_VER=2
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
+IUSE="audit caps compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -78,10 +77,8 @@ DEPEND="${COMMON_DEPEND}
 	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
 	doc? ( sys-apps/texinfo )
-	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
-	>=net-dns/libidn2-2.0.5
 	sys-apps/gentoo-functions
 	!sys-kernel/ps3-sources
 	!sys-libs/nss-db
@@ -801,6 +798,7 @@ glibc_do_configure() {
 	#    https://sourceware.org/PR23273
 	# Note: Passing CFLAGS via CPPFLAGS overrides glibc's arch-specific CFLAGS
 	# and breaks multiarch support. See 659030#c3 for an example.
+
 	# The glibc configure script doesn't properly use LDFLAGS all the time.
 	export CC="$(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS}"
 	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
