@@ -328,7 +328,7 @@ app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.2.4 2.2.4-r2 2.2.8: The GNU Privacy Gu
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
-app-crypt/gpgme 1.10.0: GnuPG Made Easy is a library for making GnuPG easier to use
+app-crypt/gpgme 1.10.0 1.11.1: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
 app-crypt/heimdal 7.5.0: Kerberos 5 implementation from KTH
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
