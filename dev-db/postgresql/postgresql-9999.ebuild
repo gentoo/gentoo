@@ -11,7 +11,7 @@ inherit eutils flag-o-matic git-r3 linux-info multilib pam prefix \
 KEYWORDS=""
 
 # Bump when rc released.
-SLOT="11"
+SLOT="12"
 
 EGIT_REPO_URI="https://git.postgresql.org/git/postgresql.git"
 
@@ -97,9 +97,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Work around PPC{,64} compilation bug where bool is already defined
-	sed '/#ifndef __cplusplus/a #undef bool' -i src/include/c.h || die
-
 	# Set proper run directory
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
