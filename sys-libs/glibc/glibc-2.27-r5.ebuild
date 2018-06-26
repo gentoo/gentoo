@@ -32,7 +32,7 @@ PATCH_VER=2
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -412,6 +412,8 @@ want__thread() {
 }
 
 use_multiarch() {
+	# Allow user to disable runtime arch detection in multilib.
+	use multiarch || return 1
 	# Make sure binutils is new enough to support indirect functions,
 	# #336792. This funky sed supports gold and bfd linkers.
 	local bver nver
