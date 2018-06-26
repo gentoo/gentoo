@@ -78,6 +78,5 @@ src_install() {
 	dosbin usr/sbin/${PN}
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
 }
