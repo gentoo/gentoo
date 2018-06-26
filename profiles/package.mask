@@ -40,6 +40,7 @@
 
 # Mike Auty <ikelos@gentoo.org> (22 Jun 2018)
 # Not maintained upstream, at least one bug and three upstream bugs
+# Alternatives include gitg and git-cola.
 # Removal in 30 days. Bug #658264
 dev-vcs/giggle
 
