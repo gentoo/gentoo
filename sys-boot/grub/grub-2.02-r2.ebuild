@@ -1,19 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTOGEN=1
-fi
+GRUB_AUTOGEN=1
+GRUB_AUTORECONF=1
 
 if [[ -n ${GRUB_AUTOGEN} ]]; then
 	PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-	WANT_LIBTOOL=none
-	inherit autotools python-any-r1
+	inherit python-any-r1
 fi
 
-inherit autotools bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs versionator
+if [[ -n ${GRUB_AUTORECONF} ]]; then
+	WANT_LIBTOOL=none
+	inherit autotools
+fi
+
+inherit bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -25,7 +28,7 @@ if [[ ${PV} != 9999 ]]; then
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="git://git.sv.gnu.org/grub.git
@@ -35,6 +38,10 @@ fi
 PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/2.02-multiple-early-initrd.patch
+	"${FILESDIR}"/2.02-freetype-capitalise-variables.patch
+	"${FILESDIR}"/2.02-freetype-pkg-config.patch
+	"${FILESDIR}"/2.02-xfs-sparse-inodes.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
@@ -62,7 +69,7 @@ REQUIRED_USE="
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-RDEPEND="
+COMMON_DEPEND="
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
 	debug? (
@@ -70,19 +77,22 @@ RDEPEND="
 	)
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 	libzfs? ( sys-fs/zfs )
-	mount? ( sys-fs/fuse )
+	mount? ( sys-fs/fuse:0 )
 	truetype? ( media-libs/freetype:2= )
 	ppc? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
 	ppc64? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	app-misc/pax-utils
 	sys-devel/flex
 	sys-devel/bison
 	sys-apps/help2man
 	sys-apps/texinfo
-	fonts? ( media-libs/freetype:2 )
+	fonts? (
+		media-libs/freetype:2
+		virtual/pkgconfig
+	)
 	grub_platforms_xen? ( app-emulation/xen-tools:= )
 	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
@@ -91,6 +101,7 @@ DEPEND="${RDEPEND}
 			app-arch/bzip2[static-libs(+)]
 			media-libs/freetype[static-libs(+)]
 			sys-libs/zlib[static-libs(+)]
+			virtual/pkgconfig
 		)
 	)
 	test? (
@@ -106,9 +117,11 @@ DEPEND="${RDEPEND}
 	themes? (
 		app-arch/unzip
 		media-libs/freetype:2
+		virtual/pkgconfig
 	)
+	truetype? ( virtual/pkgconfig )
 "
-RDEPEND+="
+RDEPEND="${COMMON_DEPEND}
 	kernel_linux? (
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
@@ -116,8 +129,6 @@ RDEPEND+="
 	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
 	nls? ( sys-devel/gettext )
 "
-
-DEPEND+=" !!=media-libs/freetype-2.5.4"
 
 RESTRICT="strip !test? ( test )"
 
@@ -153,6 +164,9 @@ src_prepare() {
 	if [[ -n ${GRUB_AUTOGEN} ]]; then
 		python_setup
 		bash autogen.sh || die
+	fi
+
+	if [[ -n ${GRUB_AUTORECONF} ]]; then
 		autopoint() { :; }
 		eautoreconf
 	fi
