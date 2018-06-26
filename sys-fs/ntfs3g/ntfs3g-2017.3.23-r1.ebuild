@@ -13,7 +13,7 @@ SRC_URI="http://tuxera.com/opensource/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
-SLOT="0/87"
+SLOT="0/88"
 KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="acl debug +external-fuse ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
@@ -24,8 +24,7 @@ RDEPEND="!<sys-apps/util-linux-2.20.1-r2
 		>=net-libs/gnutls-1.4.4
 	)
 	external-fuse? (
-		>=sys-fs/fuse-2.8.0
-		<sys-fs/fuse-3.0.0_pre
+		>=sys-fs/fuse-2.8.0:0
 	)"
 DEPEND="${RDEPEND}
 	sys-apps/attr
