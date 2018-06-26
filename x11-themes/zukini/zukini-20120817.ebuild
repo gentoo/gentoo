@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more"
 HOMEPAGE="http://lassekongo83.deviantart.com/#/d4ic1u2"
@@ -14,9 +14,9 @@ IUSE=""
 
 RESTRICT="binchecks strip"
 
+BDEPEND="app-arch/unzip"
 RDEPEND=">=x11-themes/gtk-engines-murrine-0.98.2
 	>=x11-themes/gtk-engines-unico-1.0.2"
-DEPEND="app-arch/unzip"
 
 S=${WORKDIR}
 
@@ -24,8 +24,8 @@ src_unpack() {
 	unpack ${A}
 
 	local x=${S}/Zukini-awn
-	mkdir -p "${x}"
-	tar -zxf Zukini-awn.tgz -C "${x}"
+	mkdir -p "${x}" || die
+	tar -zxf Zukini-awn.tgz -C "${x}" || die
 }
 
 src_install() {
