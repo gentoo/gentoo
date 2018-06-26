@@ -3,56 +3,69 @@
 
 EAPI=6
 
+# Used, when it's an unstable, beta or release candidate
+RC_SUFFIX="5c442c6b54"
+
 inherit systemd user
 
-# for not-stable releases set RC_SUFFIX="-xxxxxxxxxx"
-RC_SUFFIX="-5c442c6b54"
+DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
+HOMEPAGE="https://www.ubnt.com"
+SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
-DESCRIPTION="Management Controller for UniFi APs"
-HOMEPAGE="https://www.ubnt.com/download/unifi"
-SRC_URI="http://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
+KEYWORDS="~amd64 ~x86"
+LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
+SLOT="0/5.7"
 
-LICENSE="GPL-3"
-SLOT="0"
-KEYWORDS="~amd64"
-IUSE=""
-RESTRICT="mirror"
-
-DEPEND=""
 RDEPEND="dev-db/mongodb
-	virtual/jre"
+	dev-java/tomcat-native
+	virtual/jre:1.8"
 
-S=${WORKDIR}/UniFi
-QA_PREBUILT="/usr/lib64/unifi/lib/native/*"
+DEPEND="app-arch/unzip"
+
+RESTRICT="bindist mirror"
+
+S="${WORKDIR}/UniFi"
+
+DOCS=( "readme.txt" )
+
+QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
 
 pkg_setup() {
-	enewuser ${PN}
-	enewgroup ${PN}
+	enewgroup unifi
+	enewuser unifi -1 -1 /var/lib/unifi unifi
 }
 
-src_install(){
-	static_dir="/usr/$(get_libdir)/${PN}"
-	#install static data
-	insinto ${static_dir}
-	doins -r *
-	#prepare runtime-data dirs which live in /var but are symlinked from static
-	#data dir, and are writable by non-root user
-	dodir /var/log/${PN}
-	fowners ${PN}:${PN} /var/log/${PN}
-	dosym ../../../var/log/${PN} ${static_dir}/logs
+src_prepare() {
+	# Remove unneeded files Linux, Mac and Windows
+	rm -r lib/native/Linux/{aarch64,armv7} lib/native/{Mac,Windows} || die
 
-	dodir /var/lib/${PN}/work
-	fowners ${PN}:${PN} /var/lib/${PN}/work
-	dosym ../../../var/lib/${PN}/work ${static_dir}/work
+	default
+}
 
-	keepdir /var/lib/${PN}/data
-	fowners ${PN}:${PN} /var/lib/${PN}/data
-	dosym ../../../var/lib/${PN}/data ${static_dir}/data
+src_install() {
+	# Install MongoDB wrapper script, to avoid problems with >= 3.6.0
+	# See https://community.ubnt.com/t5/UniFi-Routing-Switching/MongoDB-3-6/td-p/2195435
+	exeinto /usr/lib/unifi/bin
+	newexe "${FILESDIR}"/mongod-wrapper mongod
 
-	echo "CONFIG_PROTECT=\"/var/lib/${PN}/data/system.properties\"" > "${T}"/99${PN}
-	doenvd "${T}"/99${PN}
+	insinto /usr/lib/unifi
+	doins -r dl lib webapps
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	diropts -o unifi -g unifi
+	keepdir /var/lib/unifi/{conf,data,run,tmp,work} /var/log/unifi
+
+	for symlink in conf data run tmp work; do
+		dosym ../../../var/lib/unifi/${symlink} /usr/lib/unifi/${symlink}
+	done
+	dosym ../../../var/log/unifi /usr/lib/unifi/logs
+
+	newinitd "${FILESDIR}"/unifi.initd unifi
+	systemd_dounit "${FILESDIR}"/unifi.service
+
+	newconfd "${FILESDIR}"/unifi.confd unifi
+
+	echo 'CONFIG_PROTECT="/var/lib/unifi"' > "${T}"/99unifi || die
+	doenvd "${T}"/99unifi
+
+	einstalldocs
 }
