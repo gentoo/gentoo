@@ -7449,7 +7449,7 @@ media-libs/game-music-emu 0.6.1: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5: A graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image processing framework
-media-libs/gexiv2 0.10.3 0.10.3-r1 0.10.8: GObject-based wrapper around the Exiv2 library
+media-libs/gexiv2 0.10.8: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.1.4: Library to handle, display and manipulate GIF images
 media-libs/glew 1.10.0-r2 1.13.0 2.1.0: The OpenGL Extension Wrangler Library
