@@ -14,11 +14,12 @@ HOMEPAGE="https://techbase.kde.org/Kirigami"
 EGIT_REPO_URI="${EGIT_REPO_URI/${PN}2/${PN}}"
 
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 # drop qtdeclarative subslot operator when QT_MINIMAL >= 5.10.0
 RDEPEND="
+	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative '' '' '5=')
 	$(add_qt_dep qtgraphicaleffects)
 	$(add_qt_dep qtgui)
