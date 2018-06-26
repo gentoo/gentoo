@@ -1,0 +1,11 @@
+[Unit]
+Description=UniFi Video Server
+Requires=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/unifi-video -D start
+ExecStop=/usr/sbin/unifi-video -D stop
+
+[Install]
+WantedBy=network.target
