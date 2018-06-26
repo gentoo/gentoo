@@ -82,6 +82,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.9.4-jpeg-9-1.patch"
 	"${FILESDIR}/${PN}-5.9.4-jpeg-9-2.patch"
+	"${FILESDIR}/${PN}-5.9.6-gcc8.patch" # bug 657124
 )
 
 src_prepare() {
