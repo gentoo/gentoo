@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PID_FILE="/run/unifi.pid"
+DAEMON="${JAVA_HOME-/usr}"/bin/java
+UNIFI_PATH="/usr/lib/unifi"
+
+start() {
+	ebegin "Starting unifi"
+	cd "${UNIFI_PATH}"
+	start-stop-daemon --start --quiet -b \
+	--pidfile "${PID_FILE}" -m \
+	--exec ${DAEMON} -- -jar lib/ace.jar start
+	eend $?
+	#--user nobody --group nobody \
+}
+
+stop() {
+	ebegin "Stopping unifi"
+	start-stop-daemon --quiet --stop -R 20 --pidfile "${PID_FILE}"
+	eend $?
+}
