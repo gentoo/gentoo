@@ -12,7 +12,10 @@ PARCH=${P/_}
 HPN_VER="14v15-gentoo2" HPN_PATCH="${PARCH}-hpnssh${HPN_VER}.patch.xz"
 SCTP_VER="1.1" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
 X509_VER="11.3.1" X509_PATCH="${PARCH}-x509-${X509_VER}.patch.xz"
-LDAP_VER="20180327" LDAP_PATCH="${PARCH}-ldap-${LDAP_VER}.patch.xz"
+
+# Disable LDAP support until someone will rewrite the patch,
+# upstream removed auth_parse_options() via commit 7c856857607112a3dfe6414696bf4c7ab7fb0cb3
+#LDAP_VER="0.3.14" LDAP_PATCH="${PN}-lpk-7.7p1-${LDAP_VER}.patch.xz"
 
 PATCH_SET="openssh-7.7p1-patches-1.1"
 
@@ -28,7 +31,7 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldap ldns libedit libressl livecd pam +pie sctp selinux skey +ssl static test X X509"
 REQUIRED_USE="ldns? ( ssl )
@@ -146,9 +149,6 @@ src_prepare() {
 	fi
 
 	if use ldap ; then
-		sed -i \
-			-e "s/ -lfipscheck//" \
-			"${WORKDIR}"/${LDAP_PATCH%.*} || die "Failed to remove fipscheck from LDAP patch"
 		eapply "${WORKDIR}"/${LDAP_PATCH%.*}
 
 		einfo "Patching version.h to expose LDAP patch set ..."
@@ -330,18 +330,34 @@ src_test() {
 
 # Gentoo tweaks to default config files.
 tweak_ssh_configs() {
+	local locale_vars=(
+		# These are language variables that POSIX defines.
+		# http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_02
+		LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
+
+		# These are the GNU extensions.
+		# https://www.gnu.org/software/autoconf/manual/html_node/Special-Shell-Variables.html
+		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
+	)
+
 	# First the server config.
 	cat <<-EOF >> "${ED%/}"/etc/ssh/sshd_config
 
-	# Allow client to pass locale environment variables #367017
-	AcceptEnv LANG LC_*
+	# Allow client to pass locale environment variables. #367017
+	AcceptEnv ${locale_vars[*]}
+
+	# Allow client to pass COLORTERM to match TERM. #658540
+	AcceptEnv COLORTERM
 	EOF
 
 	# Then the client config.
 	cat <<-EOF >> "${ED%/}"/etc/ssh/ssh_config
 
-	# Send locale environment variables #367017
-	SendEnv LANG LC_*
+	# Send locale environment variables. #367017
+	SendEnv ${locale_vars[*]}
+
+	# Send COLORTERM to match TERM. #658540
+	SendEnv COLORTERM
 	EOF
 
 	if use pam ; then
@@ -373,7 +389,7 @@ src_install() {
 
 	if use ldap && [[ -n ${LDAP_PATCH} ]] ; then
 		insinto /etc/openldap/schema/
-		doins openssh-lpk-{sun,openldap}.schema
+		newins openssh-lpk_openldap.schema openssh-lpk.schema
 	fi
 
 	doman contrib/ssh-copy-id.1
@@ -437,12 +453,5 @@ pkg_postinst() {
 		elog ""
 		elog "Otherwise you maybe unable to connect to this sshd using any AES CTR cipher."
 		elog ""
-	fi
-
-	if use ldap && [[ -n ${LDAP_PATCH} ]] && has_version "<${CATEGORY}/${PN}-7.7_p1" ; then
-		elog "Starting with openssh-7.7_p1, the LDAP implementation was changed."
-		elog "You must revise your configuration or your previous LDAP setup will stop working."
-		elog ""
-		elog "See https://wiki.gentoo.org/wiki/SSH/LDAP_migration for migration details."
 	fi
 }
