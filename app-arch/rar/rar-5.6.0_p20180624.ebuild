@@ -4,7 +4,7 @@
 EAPI="6"
 
 DESCRIPTION="RAR compressor/uncompressor"
-HOMEPAGE="http://www.rarsoft.com/"
+HOMEPAGE="https://rarlab.com/"
 URI_x86="https://mirror.whissi.de/distfiles/rar/rarlinux-${PV}.tar.gz"
 URI_amd64="https://mirror.whissi.de/distfiles/rar/rarlinux-x64-${PV}.tar.gz"
 URI_w64="https://mirror.whissi.de/distfiles/rar/winrar-x64-${PV}.exe"
