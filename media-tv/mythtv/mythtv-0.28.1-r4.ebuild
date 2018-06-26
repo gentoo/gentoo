@@ -129,6 +129,7 @@ RDEPEND="${COMMON}
 "
 DEPEND="${COMMON}
 	dev-lang/yasm
+	virtual/pkgconfig
 	x11-base/xorg-proto
 "
 
