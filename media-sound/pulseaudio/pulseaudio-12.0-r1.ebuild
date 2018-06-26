@@ -282,7 +282,9 @@ multilib_src_install_all() {
 		systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles" "${PN}.conf"
 	else
 		# Prevent warnings when system-wide is not used, bug #447694
-		rm "${ED%/}"/etc/dbus-1/system.d/pulseaudio-system.conf || die
+		if use dbus ; then
+			rm "${ED%/}"/etc/dbus-1/system.d/pulseaudio-system.conf || die
+		fi
 	fi
 
 	if use zeroconf ; then
