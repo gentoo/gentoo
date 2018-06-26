@@ -21,7 +21,7 @@ inherit enlightenment gnome2-utils pax-utils xdg-utils
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
-IUSE="avahi +bmp dds connman debug drm +eet egl examples fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz hyphen +ico ibus ivi jpeg2k libressl libuv luajit neon opengl ssl pdf physics pixman postscript +ppm +psd pulseaudio raw scim sdl sound svg systemd tga tgv tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpresent xpm"
+IUSE="avahi +bmp connman dds debug drm +eet egl examples fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz hyphen +ico ibus ivi jpeg2k libuv libressl +luajit neon opengl pdf physics pixman +png postscript +ppm +psd pulseaudio raw scim sdl sound ssl svg systemd tga tgv tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpresent xpm"
 
 REQUIRED_USE="
 	?? ( opengl gles )
@@ -40,6 +40,7 @@ REQUIRED_USE="
 	vnc? ( X fbcon )
 	wayland? ( egl !opengl gles )
 	xim? ( X )
+	xpresent? ( X )
 "
 
 RDEPEND="
@@ -137,51 +138,11 @@ RDEPEND="
 	>=sys-apps/util-linux-2.20.0
 	sys-libs/zlib
 	virtual/jpeg:0=
-
-	!dev-libs/ecore
-	!dev-libs/edbus
-	!dev-libs/eet
-	!dev-libs/eeze
-	!dev-libs/efreet
-	!dev-libs/eina
-	!dev-libs/eio
-	!dev-libs/embryo
-	!dev-libs/eobj
-	!dev-libs/ephysics
-	!media-libs/edje
-	!media-libs/elementary
-	!media-libs/emotion
-	!media-libs/ethumb
-	!media-libs/evas
-	!media-plugins/emotion_generic_players
-	!media-plugins/evas_generic_loaders
 "
 #external lz4 support currently broken because of unstable ABI/API
 #	app-arch/lz4
 
-#soft blockers added above for binpkg users
-#hard blocks are needed for building
-CORE_EFL_CONFLICTS="
-	!!dev-libs/ecore
-	!!dev-libs/edbus
-	!!dev-libs/eet
-	!!dev-libs/eeze
-	!!dev-libs/efreet
-	!!dev-libs/eina
-	!!dev-libs/eio
-	!!dev-libs/embryo
-	!!dev-libs/eobj
-	!!dev-libs/ephysics
-	!!media-libs/edje
-	!!media-libs/emotion
-	!!media-libs/ethumb
-	!!media-libs/evas
-"
-
-DEPEND="
-	${CORE_EFL_CONFLICTS}
-
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
@@ -214,15 +175,6 @@ src_prepare() {
 }
 
 src_configure() {
-	if use ssl && use gnutls ; then
-		einfo "You enabled both USE=ssl and USE=gnutls, but only one can be used;"
-		einfo "gnutls has been selected for you."
-	fi
-	if use opengl && use gles ; then
-		einfo "You enabled both USE=opengl and USE=gles, but only one can be used;"
-		einfo "opengl has been selected for you."
-	fi
-
 	E_ECONF=(
 		--with-profile=$(usex debug debug release)
 		--with-net-control=$(usex connman connman none)
@@ -312,7 +264,6 @@ src_configure() {
 	)
 
 	use fbcon && use egl &&	E_ECONF="${E_ECONF} --enable-eglfs"
-	use X && use xpresent && E_ECONF="${E_ECONF} --enable xpresent"
 
 	enlightenment_src_configure
 }
