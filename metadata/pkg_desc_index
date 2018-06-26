@@ -5779,7 +5779,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/builder 3.2.2-r1 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.12.5 1.16.1: An easy way to vendor gem dependencies
 dev-ruby/capistrano 2.15.5-r2: A distributed application deployment system
-dev-ruby/capybara 2.16.1: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.16.1 2.18.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/childprocess 0.6.3 0.9.0: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby

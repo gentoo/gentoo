@@ -485,6 +485,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
     <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain. It is also used in other Gentoo projects, such as GNAP.</description>
     <member>
+      <email>bkohler@gentoo.org</email>
+      <name>Ben Kohler</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
       <role>Member</role>
@@ -3301,6 +3306,11 @@ developers and volunteer mentors.</description>
     <description>Release Engineering ("RelEng") is the official Gentoo project focused on coordinating and improving the creation of official media releases of Gentoo Linux and the associated tools used by the installation process.</description>
     <subproject ref="catalyst@gentoo.org"/>
     <subproject ref="grs@gentoo.org"/>
+    <member>
+      <email>bkohler@gentoo.org</email>
+      <name>Ben Kohler</name>
+      <role>Autobuild bug fixer</role>
+    </member>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
