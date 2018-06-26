@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=dev-libs/json-c:0= >=sys-apps/dbus-1.4 sys-libs/ncurses:0 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=An ncurses UI for connman
+EAPI=6
+HOMEPAGE=https://github.com/eurogiciel-oss/connman-json-client
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/json-c:0= >=sys-apps/dbus-1.4 sys-libs/ncurses:0
+SLOT=0
+SRC_URI=https://github.com/eurogiciel-oss/connman-json-client/archive/3c34b2ee62d2e188090d20e7ed2fd94bab9c47f2.tar.gz -> connman-json-client-1.0_p20150721.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=bcf73adf1be048cc7525f15be4fabe30
