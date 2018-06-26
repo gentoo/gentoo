@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MY_P=${PN}${PV:1:2}
 DESCRIPTION="A Hacker magazine by the community, for the community"
@@ -16,6 +16,5 @@ IUSE=""
 S=${WORKDIR}/${MY_P}
 
 src_install() {
-	insinto /usr/share/doc/${PN}
-	doins *
+	dodoc -r *
 }
