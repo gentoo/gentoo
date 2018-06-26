@@ -74,7 +74,6 @@ src_configure() {
 		-DENABLE_QT4=OFF
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-DQTC_QT4_ENABLE_KDE=OFF
-		-DQTC_QT4_ENABLE_KWIN=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
 		-DENABLE_GTK2="$(usex gtk)"
 		-DENABLE_QT5="$(usex qt5)"
