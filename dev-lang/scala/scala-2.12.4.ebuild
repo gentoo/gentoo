@@ -70,7 +70,7 @@ SRC_URI="
 		https://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.xz )"
 LICENSE="BSD"
 SLOT="${SV}/${PV}"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="binary emacs"
 
