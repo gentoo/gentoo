@@ -1,0 +1,46 @@
+--- a/config.tests/xml2/xml2.cpp
++++ b/config.tests/xml2/xml2.cpp
+@@ -27,9 +27,6 @@
+ ****************************************************************************/
+ 
+ #include <libxml/xmlversion.h>
+-#if defined(LIBXML_CATALOG_ENABLED)
+-#error "libxml catalog enabled"
+-#endif
+ #if !defined(LIBXML_ICU_ENABLED)
+ #error "libxml icu not enabled"
+ #endif
+--- a/src/3rdparty/chromium/third_party/WebKit/Source/core/xml/parser/XMLDocumentParser.cpp
++++ b/src/3rdparty/chromium/third_party/WebKit/Source/core/xml/parser/XMLDocumentParser.cpp
+@@ -28,6 +28,10 @@
+ 
+ #include <libxml/parser.h>
+ #include <libxml/parserInternals.h>
++#include <libxml/xmlversion.h>
++#if defined(LIBXML_CATALOG_ENABLED)
++#include <libxml/catalog.h>
++#endif
+ #include <libxslt/xslt.h>
+ #include <memory>
+ #include "core/css/StyleEngine.h"
+@@ -538,10 +542,6 @@
+ static bool ShouldAllowExternalLoad(const KURL& url) {
+   String url_string = url.GetString();
+ 
+-  // libxml should not be configured with catalogs enabled, so it
+-  // should not be asking to load default catalogs.
+-  CHECK(!IsLibxmlDefaultCatalogFile(url));
+-
+   // The most common DTD. There isn't much point in hammering www.w3c.org by
+   // requesting this URL for every XHTML document.
+   if (url_string.StartsWithIgnoringASCIICase("http://www.w3.org/TR/xhtml"))
+@@ -646,6 +646,9 @@
+   if (did_init)
+     return;
+ 
++#if defined(LIBXML_CATALOG_ENABLED)
++  xmlCatalogSetDefaults(XML_CATA_ALLOW_NONE);
++#endif
+   xmlInitParser();
+   xmlRegisterInputCallbacks(MatchFunc, OpenFunc, ReadFunc, CloseFunc);
+   xmlRegisterOutputCallbacks(MatchFunc, OpenFunc, WriteFunc, CloseFunc);
