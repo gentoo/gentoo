@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="Openbox app which acts as a system tray for KDE and GNOME2"
 HOMEPAGE="https://icculus.org/openbox/2/docker/"
@@ -18,17 +18,10 @@ RDEPEND=">=dev-libs/glib-2.0.4
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-makefile_rename.patch"
-}
+PATCHES=( "${FILESDIR}/${P}-makefile_rename.patch" )
 
 src_compile() {
 	emake CC="$(tc-getCC)"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc README
 }
 
 pkg_postinst() {
