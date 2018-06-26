@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PLOCALES="cs de fi fr ru sv"
+PLOCALES="cs de fi fr pl ru sv"
 inherit qmake-utils l10n xdg-utils gnome2-utils
 
 MY_PN="GPXSee"
@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files"
 HOMEPAGE="http://www.gpxsee.org/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/tumic0/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -45,12 +45,17 @@ src_compile() {
 }
 
 src_install() {
+	local lang
 	newbin ${MY_PN} ${PN}
 	dodoc README.md
 	insinto /usr/share/${PN}
 	doins -r pkg/maps pkg/csv
+
 	insinto /usr/share/${PN}/translations
-	doins lang/*.qm
+	for lang in lang/*.qm; do
+		[ -f "${lang}" ] && doins "${lang}"
+	done
+
 	insinto /usr/share/applications
 	doins pkg/${PN}.desktop
 	insinto /usr/share/mime/packages
