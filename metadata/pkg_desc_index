@@ -1362,7 +1362,7 @@ app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.75 3.76: ISO language, territory, currency, script codes and their translations
 app-text/jabref 2.10-r2: Java GUI for managing BibTeX and other bibliographies
-app-text/jabref-bin 2.10 3.2 3.4 3.7 3.8.2: Java GUI for managing BibTeX and other bibliographies
+app-text/jabref-bin 3.7 3.8.2: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
 app-text/jist 1.5.1-r1: A ruby gem to publish a gist
 app-text/kbibtex 0.8.1: BibTeX editor to edit bibliographies used with LaTeX
