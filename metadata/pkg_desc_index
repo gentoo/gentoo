@@ -437,7 +437,7 @@ app-dicts/myspell-af 20080701: Afrikaans dictionaries for myspell/hunspell
 app-dicts/myspell-bg 4.3: Bulgarian dictionaries for myspell/hunspell
 app-dicts/myspell-ca 2.3.0: Catalan dictionaries for myspell/hunspell
 app-dicts/myspell-cs 20110224: Czech dictionaries for myspell/hunspell
-app-dicts/myspell-cy 20060316 20130708: Welsh dictionaries for myspell/hunspell
+app-dicts/myspell-cy 20130708: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de_1901 20120929: German (traditional orthography) dictionaries for myspell/hunspell
@@ -613,7 +613,7 @@ app-emacs/csharp-mode 0.7.0-r1 0.9.0: A derived Emacs mode implementing most of 
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
 app-emacs/dash 2.13.0: A modern list library for Emacs
-app-emacs/ddskk 16.1 16.2: One Japanese input methods on Emacs
+app-emacs/ddskk 16.2: One Japanese input methods on Emacs
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509: Minor mode to show space left on devices in the mode line
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
