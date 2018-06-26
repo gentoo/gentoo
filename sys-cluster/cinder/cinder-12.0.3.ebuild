@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1 eutils linux-info user
 
@@ -196,7 +196,7 @@ python_install_all() {
 	doins "etc/cinder/rootwrap.conf"
 	doins "etc/cinder/api-paste.ini"
 	doins "etc/cinder/resource_filters.json"
-	newins "${DISTDIR}/pike-cinder.conf.sample" "cinder.conf.sample"
+	newins "${DISTDIR}/queens-cinder.conf.sample" "cinder.conf.sample"
 	insinto /etc/cinder/rootwrap.d
 	doins "etc/cinder/rootwrap.d/volume.filters"
 
