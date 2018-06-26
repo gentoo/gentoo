@@ -15,7 +15,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/colorful[${PYTHON_USEDEP}]"
+
+DEPEND="
+	${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install() {
 	distutils-r1_python_install
