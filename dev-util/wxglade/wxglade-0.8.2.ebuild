@@ -24,6 +24,8 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 
+RESTRICT="test" #656934
+
 S="${WORKDIR}/${MY_P}"
 
 src_compile() {
