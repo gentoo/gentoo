@@ -335,11 +335,6 @@ app-crypt/openpgp-keys-gentoo-mirror
 # Masked for removal in 30 days. Bug #646118
 net-misc/urlview
 
-# Andreas Sturmlechner <asturm@gentoo.org> (27 May 2018)
-# Depends on dead Qt4. No more revdeps. Masked for removal in 30 days.
-dev-util/automoc
-media-libs/phonon-qt7
-
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
 # Retained in tree only for users who need older versions
