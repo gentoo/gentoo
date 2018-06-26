@@ -14,7 +14,7 @@ SRC_URI="https://github.com/numba/llvmlite/archive/v${PV}.tar.gz -> ${P}.gh.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 LLVM_MAX_SLOT=5
