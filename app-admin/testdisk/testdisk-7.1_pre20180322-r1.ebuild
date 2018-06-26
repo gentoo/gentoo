@@ -4,7 +4,7 @@
 EAPI=6
 
 COMMIT=9eb2aa12ce051d8d3d31e6b440389d5abf5efaf1
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic gnome2-utils
 
 DESCRIPTION="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
 HOMEPAGE="https://www.cgsecurity.org/wiki/TestDisk"
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 		sys-fs/e2fsprogs[static-libs]
 		sys-libs/ncurses:0[static-libs]
 		jpeg? ( virtual/jpeg:0[static-libs] )
-		ntfs? ( sys-fs/ntfs3g[static-libs] )
+		ntfs? ( sys-fs/ntfs3g:=[static-libs] )
 		reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] )
 		zlib? ( sys-libs/zlib[static-libs] )
 		!arm? ( ewf? ( app-forensics/libewf:=[static-libs] ) )
@@ -88,4 +88,12 @@ src_configure() {
 	if use jpeg && egrep -q 'undef HAVE_LIBJPEG\>' "${S}"/config.h ; then
 		die "Failed to find jpeg library."
 	fi
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
