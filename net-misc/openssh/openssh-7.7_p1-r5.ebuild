@@ -291,6 +291,7 @@ src_configure() {
 		$(use_with ssl openssl)
 		$(use_with ssl md5-passwords)
 		$(use_with ssl ssl-engine)
+		$(use_with !elibc_Cygwin hardening) #659210
 	)
 
 	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
