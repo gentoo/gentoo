@@ -80,6 +80,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES+=(
+	"${FILESDIR}/${PN}-5.9.6-gcc8.patch" # bug 657124
 	"${FILESDIR}/${P}-libxml2-disable-catalogs.patch" # bug 653078
 	"${FILESDIR}/${P}-ffmpeg4.patch"
 	"${FILESDIR}/${P}-eglGetProcAddress-fallback-lookup.patch" # 5.11 branch
