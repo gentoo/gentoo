@@ -226,8 +226,8 @@ src_prepare() {
 }
 
 src_configure() {
-	addpredict /usr/share/snmp/mibs/.index
-	addpredict /var/lib/net-snmp/mib_indexes
+	addpredict /usr/share/snmp/mibs/.index #nowarn
+	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
@@ -480,8 +480,8 @@ src_configure() {
 
 src_compile() {
 	# snmp seems to run during src_compile, too (bug #324739)
-	addpredict /usr/share/snmp/mibs/.index
-	addpredict /var/lib/net-snmp/mib_indexes
+	addpredict /usr/share/snmp/mibs/.index #nowarn
+	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
 	for sapi in ${SAPIS} ; do
 		if use "${sapi}"; then
@@ -494,7 +494,7 @@ src_compile() {
 
 src_install() {
 	# see bug #324739 for what happens when we don't have that
-	addpredict /usr/share/snmp/mibs/.index
+	addpredict /usr/share/snmp/mibs/.index #nowarn
 
 	# grab the first SAPI that got built and install common files from there
 	local first_sapi=""
