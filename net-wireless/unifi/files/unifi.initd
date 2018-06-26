@@ -2,22 +2,25 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-PID_FILE="/run/unifi.pid"
-DAEMON="${JAVA_HOME-/usr}"/bin/java
+ACE_LIB="lib/ace.jar"
+DAEMON="${JAVA_HOME-/etc/java-config-2/current-system-vm}"/bin/java
+JAVA_OPTS="-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp"
+UNIFI_GROUP="unifi"
 UNIFI_PATH="/usr/lib/unifi"
+UNIFI_USER="unifi"
+
+depend() {
+	need net
+}
 
 start() {
-	ebegin "Starting unifi"
-	cd "${UNIFI_PATH}"
-	start-stop-daemon --start --quiet -b \
-	--pidfile "${PID_FILE}" -m \
-	--exec ${DAEMON} -- -jar lib/ace.jar start
+	ebegin "Starting UniFi Controller"
+	cd "${UNIFI_PATH}" && start-stop-daemon --start --quiet --background --user ${UNIFI_USER} --group ${UNIFI_GROUP} --chdir ${UNIFI_PATH} --exec ${DAEMON} -- ${JAVA_OPTS} -jar ${ACE_LIB} start
 	eend $?
-	#--user nobody --group nobody \
 }
 
 stop() {
-	ebegin "Stopping unifi"
-	start-stop-daemon --quiet --stop -R 20 --pidfile "${PID_FILE}"
+	ebegin "Stopping UniFi Controller"
+	start-stop-daemon --start --quiet --background --user ${UNIFI_USER} --group ${UNIFI_GROUP} --chdir ${UNIFI_PATH} --exec ${DAEMON} -- ${JAVA_OPTS} -jar ${ACE_LIB} stop
 	eend $?
 }
