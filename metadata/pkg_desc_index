@@ -613,7 +613,7 @@ app-emacs/csharp-mode 0.7.0-r1 0.9.0: A derived Emacs mode implementing most of 
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
 app-emacs/dash 2.13.0: A modern list library for Emacs
-app-emacs/ddskk 16.1: One Japanese input methods on Emacs
+app-emacs/ddskk 16.1 16.2: One Japanese input methods on Emacs
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509: Minor mode to show space left on devices in the mode line
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
@@ -1340,7 +1340,7 @@ app-text/glark 1.10.5-r1: File searcher similar to grep but with fancy output
 app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
-app-text/gocr 0.49: An OCR (Optical Character Recognition) reader
+app-text/gocr 0.49 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.5.0_rc2-r2: Feature-rich dictionary lookup program
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 1.4.2: Spell check library for GTK+ applications
@@ -1365,7 +1365,7 @@ app-text/jabref 2.10-r2: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 3.2 3.4 3.7 3.8.2: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
 app-text/jist 1.5.1-r1: A ruby gem to publish a gist
-app-text/kbibtex 0.8_pre20171110-r1: BibTeX editor to edit bibliographies used with LaTeX
+app-text/kbibtex 0.8_pre20171110-r1 0.8.1: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
@@ -2876,7 +2876,7 @@ dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/jimtcl 0.76: Small footprint implementation of Tcl programming language
 dev-lang/lazarus 1.0.12: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lua 5.1.5-r4: A powerful light-weight programming language designed for extending applications
-dev-lang/luajit 2.0.2 2.0.3-r1 2.0.4: Just-In-Time Compiler for the Lua programming language
+dev-lang/luajit 2.0.2 2.0.3-r1 2.0.4 2.0.5-r1: Just-In-Time Compiler for the Lua programming language
 dev-lang/mercury 13.05.2 14.01.1: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 13.05.2 14.01.1: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
@@ -4685,6 +4685,7 @@ dev-python/configobj 5.0.6: Simple config file reader and writer
 dev-python/configparser 3.3.0.2 3.5.0 3.5.0-r1: Backport of Python-3 built-in configparser
 dev-python/constantly 15.1.0: Symbolic constants in Python
 dev-python/contextlib2 0.5.4 0.5.5: Backports and enhancements for the contextlib module
+dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 1.1: Python library for working with CouchDB
 dev-python/cov-core 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
@@ -4909,7 +4910,7 @@ dev-python/happydoc 3.1-r2: Tool for extracting documentation from Python source
 dev-python/hcs-utils 1.5: A library containing some useful snippets
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hgtools 6.5.1: Classes and setuptools plugin for Mercurial repositories
-dev-python/hiredis 0.2.0: Python extension that wraps hiredis
+dev-python/hiredis 0.2.0 0.2.0-r1: Python extension that wraps hiredis
 dev-python/hiro 0.2: Time manipulation utilities for python
 dev-python/hpack 2.3.0-r1: Pure-Python HPACK header compression
 dev-python/html2text 2016.5.29 2018.1.9: Turn HTML into equivalent Markdown-structured text
@@ -5060,7 +5061,7 @@ dev-python/mongoengine 0.10.6: A Python Object-Document-Mapper for working with 
 dev-python/monotonic 1.3 1.4: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/morbid 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
 dev-python/more-itertools 3.0.0 4.2.0: More routines for operating on iterables, beyond itertools
-dev-python/moto 0.4.30: Mock library for boto
+dev-python/moto 0.4.30 1.0.1-r1: Mock library for boto
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.10.0 0.24.0: Mock object framework for Python
 dev-python/mpi4py 2.0.0: Message Passing Interface for Python
@@ -5188,7 +5189,7 @@ dev-python/pkgconfig 1.2.2: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/pluggy 0.5.2: plugin and hook calling mechanisms for python
-dev-python/plumbum 1.6.0: A library for shell script-like programs in python
+dev-python/plumbum 1.6.0 1.6.4: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/pmw 1.3.3-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
@@ -5338,7 +5339,8 @@ dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pyside 1.2.2-r2: Python bindings for the Qt framework
-dev-python/pysnmp 4.3.3: Python SNMP library
+dev-python/pysmi 0.1.3: Python Lex & Yacc
+dev-python/pysnmp 4.3.3 4.4.4: Python SNMP library
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 1.1.1: Python library used to edit or create SubRip files
@@ -5431,14 +5433,14 @@ dev-python/python-zunclient 0.4.1 1.1.0: A client for the OpenStack Zun API
 dev-python/python3-openid 3.1.0: Python 3 port of the python-openid library
 dev-python/pythondialog 3.2.2 3.3.0: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2016.2.6-r1: A collection of tools missing from the Python standard library
+dev-python/pytools 2016.2.6-r1 2017.4-r1: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.3: A pure Python implementation of the trie data structure.
 dev-python/pytz 2016.3 2017.2: World timezone definitions for Python
 dev-python/pyudev 0.20.0-r1 0.21.0: Python binding to libudev
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyx 0.12.1-r1 0.14.1: Python package for the generation of encapsulated PostScript figures
-dev-python/pyxattr 0.5.5: Python interface to xattr
+dev-python/pyxattr 0.5.5 0.6.0-r1: Python interface to xattr
 dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
 dev-python/pyyaml 3.12: YAML parser and emitter for Python
@@ -5472,6 +5474,7 @@ dev-python/requests-mock 1.2.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.7.0: This project provides first-class OAuth library support for Requests
 dev-python/requests-toolbelt 0.8.0: A utility belt for advanced users of python-requests
 dev-python/requestsexceptions 1.1.3 1.4.0: Finds the correct path to exceptions in the requests library.
+dev-python/responses 0.6.0: Utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
 dev-python/restructuredtext-lint 0.12.2: Created out of frustration, it sucks to find out your reST is invalid after uploading it.
 dev-python/retry-decorator 1.0.0: Decorator for retrying when exceptions occur
@@ -5769,6 +5772,7 @@ dev-ruby/atomic 1.1.99 1.1.101: An atomic reference implementation for JRuby, Ru
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.11-r1: An easy way to keep your users' passwords secure
+dev-ruby/bcrypt_pbkdf 1.0.0: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/blankslate 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
@@ -5862,10 +5866,10 @@ dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/net-http-digest_auth 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
-dev-ruby/net-scp 1.1.2-r1: A pure Ruby implementation of the SCP client protocol
+dev-ruby/net-scp 1.1.2-r1 1.2.1-r1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r2: SFTP in pure Ruby
-dev-ruby/net-ssh 2.10.0: Non-interactive SSH processing in pure Ruby
-dev-ruby/net-ssh-gateway 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
+dev-ruby/net-ssh 2.10.0 4.2.0: Non-interactive SSH processing in pure Ruby
+dev-ruby/net-ssh-gateway 1.2.0-r1 1.3.0: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-telnet 0.1.1-r1: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/nokogiri 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
@@ -5873,7 +5877,7 @@ dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML 
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/ox 2.8.2: A fast XML parser and Object marshaller
 dev-ruby/patron 0.10.0: Patron is a Ruby HTTP client library based on libcurl
-dev-ruby/pg 0.18.4-r1: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg 0.18.4-r1 0.21.0: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pkg-config 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 0.3.1 1.1.1: Shows each value of variables and method calls in the expression
 dev-ruby/public_suffix 3.0.2: Parse and decompose a domain name into top level domain, domain and subdomains
@@ -5891,6 +5895,7 @@ dev-ruby/rainbow 1.1.4-r1 2.2.2: Colorize printed text on ANSI terminals
 dev-ruby/rake 10.5.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rb-inotify 0.9.10: A thorough inotify wrapper for Ruby using FFI
+dev-ruby/rbnacl 4.0.2-r1: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rcairo 1.15.10: Ruby bindings for cairo
 dev-ruby/rdiscount 2.1.8 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.3.0: An extended version of the RDoc library from Ruby 1.8
@@ -5966,7 +5971,7 @@ dev-ruby/sinatra 1.4.8: A DSL for quickly creating web applications in Ruby with
 dev-ruby/slim 3.0.9: A template language aiming to reduce the syntax to the essential parts
 dev-ruby/sparklines 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
 dev-ruby/spork 0.9.2-r2: Spork is Tim Harper's implementation of test server
-dev-ruby/sqlite3 1.3.11: An extension library to access a SQLite database from Ruby
+dev-ruby/sqlite3 1.3.11 1.3.13: An extension library to access a SQLite database from Ruby
 dev-ruby/stomp 1.4.3 1.4.4: Ruby bindings for the stomp messaging protocol
 dev-ruby/syntax 1.2.0-r1 1.2.2: Syntax highlighting for sourcecode and HTML
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
@@ -6373,7 +6378,7 @@ dev-vcs/gitolite 2.3.1-r1 3.6 3.6.3 3.6.6: Highly flexible server for git direct
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
-dev-vcs/hgsubversion 1.8.5: hgsubversion is a Mercurial extension for working with Subversion repositories
+dev-vcs/hgsubversion 1.8.5 1.8.6: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 4.5.2: Scalable distributed SCM
 dev-vcs/mr 1.20170129: Multiple Repository management tool
@@ -6481,7 +6486,7 @@ gnome-extra/gnome-calendar 3.24.3: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.24.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.24.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.24.0: Color profile manager for the GNOME desktop
-gnome-extra/gnome-commander 1.6.3: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.6.3 1.8.1: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.22.1-r1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.24.3: A document manager application for GNOME
@@ -6945,7 +6950,7 @@ lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.8 0.1.8-r1: LXDE Task manager
 lxde-base/lxterminal 0.3.1: Lightweight vte-based tabbed terminal emulator for LXDE
-lxde-base/menu-cache 1.0.2: Library to create and utilize caches to speed up freedesktop application menus
+lxde-base/menu-cache 1.0.2 1.1.0: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.11.0-r1: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.3.2: A Qt-based interface to system statistics
 lxqt-base/lxqt-about 0.11.0: LXQt about dialog
@@ -7994,7 +7999,7 @@ media-sound/gmusicbrowser 1.1.15-r3: An open-source jukebox for large collection
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.24.2: Music management for Gnome
 media-sound/gnome-sound-recorder 3.24.0.1: Simple sound recorder
-media-sound/gnump3d 3.0-r1: A streaming server for MP3, OGG vorbis and other streamable files
+media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
 media-sound/grip 3.4.3: GTK+ based Audio CD Player/Ripper
@@ -9290,7 +9295,7 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
-sci-geosciences/qgis 3.0.2: User friendly Geographic Information System
+sci-geosciences/qgis 3.0.2 3.0.3-r1: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3: GPS mapping utility
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
@@ -9713,7 +9718,7 @@ sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* 
 sys-apps/bleachbit 2.0: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.28.0: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
-sys-apps/checkpolicy 2.7: SELinux policy compiler
+sys-apps/checkpolicy 2.7 2.8: SELinux policy compiler
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4: Performance monitoring tool capable of interactive reporting and logging to disk
@@ -9801,7 +9806,7 @@ sys-apps/man-pages 4.14: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20150503 1.3.4_p20161120: an (often faster than gawk) awk-interpreter
-sys-apps/mcstrans 2.7: SELinux context translation to human readable names
+sys-apps/mcstrans 2.7 2.8: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 4.20-r1 5.01-r2: Memory tester based on memtest86
 sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
@@ -9826,7 +9831,7 @@ sys-apps/pciutils 3.4.1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.22: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
-sys-apps/policycoreutils 2.7: SELinux core utilities
+sys-apps/policycoreutils 2.7 2.8: SELinux core utilities
 sys-apps/portage 2.3.8 2.3.13-r1 2.3.19-r1 2.3.24-r1 2.3.40-r1: Portage is the package management and distribution system for Gentoo
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
@@ -9837,15 +9842,15 @@ sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache t
 sys-apps/rename 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
-sys-apps/restorecond 2.7: Daemon to watch for creation and set default SELinux fcontexts
+sys-apps/restorecond 2.7 2.8: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/rng-tools 5-r2: Daemon to use hardware random number generators
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
 sys-apps/sandbox 2.12 2.13: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
-sys-apps/secilc 2.7: SELinux Common Intermediate Language (CIL) Compiler
+sys-apps/secilc 2.7 2.8: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.2 4.5: Super-useful stream editor
-sys-apps/selinux-python 2.7: SELinux core utilities
-sys-apps/semodule-utils 2.7: SELinux policy module utilities
+sys-apps/selinux-python 2.7 2.8: SELinux core utilities
+sys-apps/semodule-utils 2.7 2.8: SELinux policy module utilities
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.40 1.42: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.6: Utilities to deal with user accounts
@@ -9883,7 +9888,7 @@ sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and track
 sys-auth/elogind 235.2-r2: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.0-r1 13.0.0-r1: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.4.0-r1 0.5.0-r2: library to add support for consumer fingerprint readers
+sys-auth/libfprint 0.4.0-r1 0.5.0-r2 0.6.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-mysql 1.5_p20060915-r3: NSS MySQL Library
 sys-auth/libyubikey 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2: An authentication service for creating and validating credentials
@@ -10193,9 +10198,9 @@ sys-libs/libomp 4.0.1 5.0.1 5.0.2: OpenMP runtime library for LLVM/clang compile
 sys-libs/libosinfo 1.1.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1: library that provides direct access to the IEEE 1394 bus
 sys-libs/libseccomp 2.3.2 2.3.3: high level interface to Linux seccomp filter
-sys-libs/libselinux 2.7: SELinux userland library
-sys-libs/libsemanage 2.7: SELinux kernel and policy management library
-sys-libs/libsepol 2.7: SELinux binary policy representation library
+sys-libs/libselinux 2.7 2.8: SELinux userland library
+sys-libs/libsemanage 2.7 2.8: SELinux kernel and policy management library
+sys-libs/libsepol 2.7 2.8: SELinux binary policy representation library
 sys-libs/libsmbios 2.3.2: Provide access to (SM)BIOS information
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r1: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
