@@ -74,10 +74,10 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	qt5? (
 		dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		x11-libs/qwt:6=[qt5(+)]
-		dev-qt/qtwidgets:5=
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		x11-libs/qwt:6[qt5(+)]
+		dev-qt/qtwidgets:5
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
