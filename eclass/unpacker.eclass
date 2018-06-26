@@ -433,7 +433,12 @@ unpacker_src_unpack() {
 unpacker_src_uri_depends() {
 	local uri deps d
 
-	[[ $# -eq 0 ]] && set -- ${SRC_URI}
+	if [[ $# -eq 0 ]] ; then
+		# Disable path expansion for USE conditionals. #654960
+		set -f
+		set -- ${SRC_URI}
+		set +f
+	fi
 
 	for uri in "$@" ; do
 		case ${uri} in
