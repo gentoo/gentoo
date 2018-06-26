@@ -13,5 +13,6 @@
 		<remote-id type="pypi">jaraco.packaging</remote-id>
 		<remote-id type="github">jaraco/jaraco.packaging</remote-id>
 		<bugs-to>https://github.com/jaraco/jaraco.packaging/issues</bugs-to>
+		<changelog>https://github.com/jaraco/jaraco.packaging/blob/master/CHANGES.rst</changelog>
 	</upstream>
 </pkgmetadata>

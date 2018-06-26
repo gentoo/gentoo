@@ -12,7 +12,7 @@ SRC_URI="https://github.com/pstavirs/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+#KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 #https://github.com/pstavirs/ostinato/issues/173
@@ -21,6 +21,7 @@ DEPEND="
 	dev-libs/protobuf:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtscript:5
 	dev-qt/qtwidgets:5
 	>=net-libs/libpcap-1.8.1-r2
 "
