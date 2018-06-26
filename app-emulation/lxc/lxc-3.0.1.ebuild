@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="examples pam seccomp selinux +templates"
+IUSE="examples pam python seccomp selinux +templates"
 
 RDEPEND="
 	net-libs/gnutls
@@ -31,7 +31,8 @@ RDEPEND="${RDEPEND}
 	app-misc/pax-utils
 	virtual/awk"
 
-PDEPEND="templates? ( app-emulation/lxc-templates )"
+PDEPEND="templates? ( app-emulation/lxc-templates )
+	python? ( dev-python/python3-lxc )"
 
 CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
 	~CPUSETS ~CGROUP_CPUACCT
