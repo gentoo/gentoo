@@ -43,3 +43,11 @@ python_test() {
 	"${PYTHON}" run_tests || die
 	popd > /dev/null
 }
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+}
