@@ -15,14 +15,9 @@ MY_PN="ClickHouse"
 TYPE="stable"
 
 CCTZ_COMMIT="4f9776a"
-LIBRDKAFKA_COMMIT="c3d50eb"
-LZ4_COMMIT="c10863b"
 ZSTD_COMMIT="2555975"
 SRC_URI="https://github.com/yandex/${MY_PN}/archive/v${PV}-${TYPE}.tar.gz -> ${P}.tar.gz
 	https://github.com/google/cctz/archive/${CCTZ_COMMIT}.tar.gz -> cctz-${CCTZ_COMMIT}.tar.gz
-	https://github.com/edenhill/librdkafka/archive/${LIBRDKAFKA_COMMIT}.tar.gz -> librdkafka-${LIBRDKAFKA_COMMIT}.tar.gz
-	https://github.com/lz4/lz4/archive/${LZ4_COMMIT}.tar.gz -> lz4-${LZ4_COMMIT}.tar.gz
-	https://github.com/facebook/zstd/archive/${ZSTD_COMMIT}.tar.gz -> zstd-${ZSTD_COMMIT}.tar.gz
 "
 
 SLOT="0/${TYPE}"
@@ -37,6 +32,8 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/re2:0=
 	!static? (
+		>=app-arch/lz4-1.8.0:=
+		>=app-arch/zstd-1.3.4:=
 		client? (
 			sys-libs/ncurses:0=
 			sys-libs/readline:0=
@@ -56,6 +53,7 @@ RDEPEND="
 		dev-libs/boost:=
 		dev-libs/openssl:0=
 		dev-libs/zookeeper-c
+		kafka? ( dev-libs/librdkafka:= )
 		mysql? ( virtual/libmysqlclient )
 	)
 
@@ -66,6 +64,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/mkdocs-0.17.3 )
 	static? (
+		>=app-arch/lz4-1.8.0[static-libs]
+		>=app-arch/zstd-1.3.4[static-libs]
 		client? (
 			sys-libs/ncurses:0=[static-libs]
 			sys-libs/readline:0=[static-libs]
@@ -85,6 +85,7 @@ DEPEND="${RDEPEND}
 		dev-libs/openssl[static-libs]
 		dev-libs/zookeeper-c[static-libs]
 		virtual/libmysqlclient[static-libs]
+		kafka? ( dev-libs/librdkafka[static-libs] )
 	)
 
 	sys-libs/libtermcap-compat
@@ -141,11 +142,8 @@ src_unpack() {
 	default_src_unpack
 	[[ ${PV} == 9999 ]] && return 0
 	cd "${S}/contrib" || die "failed to cd to contrib"
-	mkdir -p cctz librdkafka lz4 zookeeper zstd || die "failed to create directories"
+	mkdir -p cctz zookeeper zstd || die "failed to create directories"
 	tar --strip-components=1 -C cctz -xf "${DISTDIR}/cctz-${CCTZ_COMMIT}.tar.gz" || die "failed to unpack cctz"
-	tar --strip-components=1 -C librdkafka -xf "${DISTDIR}/librdkafka-${LIBRDKAFKA_COMMIT}.tar.gz" || die "failed to unpack librdkafka"
-	tar --strip-components=1 -C lz4 -xf "${DISTDIR}/lz4-${LZ4_COMMIT}.tar.gz" || die "failed to unpack lz4"
-	tar --strip-components=1 -C zstd -xf "${DISTDIR}/zstd-${ZSTD_COMMIT}.tar.gz" || die "failed to unpack zstd"
 }
 
 src_configure() {
