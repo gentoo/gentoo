@@ -41,10 +41,6 @@ CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
 	~NAMESPACES
 	~IPC_NS ~USER_NS ~PID_NS
 
-	~NETLINK_DIAG ~PACKET_DIAG
-	~INET_UDP_DIAG ~INET_TCP_DIAG
-	~UNIX_DIAG ~CHECKPOINT_RESTORE
-
 	~CGROUP_FREEZER
 	~UTS_NS ~NET_NS
 	~VETH ~MACVLAN
@@ -70,13 +66,6 @@ ERROR_NET_NS="CONFIG_NET_NS:  needed for unshared network"
 
 ERROR_VETH="CONFIG_VETH:  needed for internal (host-to-container) networking"
 ERROR_MACVLAN="CONFIG_MACVLAN:  needed for internal (inter-container) networking"
-
-ERROR_NETLINK_DIAG="CONFIG_NETLINK_DIAG:  needed for lxc-checkpoint"
-ERROR_PACKET_DIAG="CONFIG_PACKET_DIAG:  needed for lxc-checkpoint"
-ERROR_INET_UDP_DIAG="CONFIG_INET_UDP_DIAG:  needed for lxc-checkpoint"
-ERROR_INET_TCP_DIAG="CONFIG_INET_TCP_DIAG:  needed for lxc-checkpoint"
-ERROR_UNIX_DIAG="CONFIG_UNIX_DIAG:  needed for lxc-checkpoint"
-ERROR_CHECKPOINT_RESTORE="CONFIG_CHECKPOINT_RESTORE:  needed for lxc-checkpoint"
 
 ERROR_POSIX_MQUEUE="CONFIG_POSIX_MQUEUE:  needed for lxc-execute command"
 
