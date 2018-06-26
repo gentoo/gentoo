@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="examples pam seccomp selinux +templates"
+IUSE="examples pam python seccomp selinux +templates"
 
 RDEPEND="
 	net-libs/gnutls
@@ -31,7 +31,8 @@ RDEPEND="${RDEPEND}
 	app-misc/pax-utils
 	virtual/awk"
 
-PDEPEND="templates? ( app-emulation/lxc-templates )"
+PDEPEND="templates? ( app-emulation/lxc-templates )
+	python? ( dev-python/python3-lxc )"
 
 CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
 	~CPUSETS ~CGROUP_CPUACCT
@@ -39,10 +40,6 @@ CONFIG_CHECK="~CGROUPS ~CGROUP_DEVICE
 
 	~NAMESPACES
 	~IPC_NS ~USER_NS ~PID_NS
-
-	~NETLINK_DIAG ~PACKET_DIAG
-	~INET_UDP_DIAG ~INET_TCP_DIAG
-	~UNIX_DIAG ~CHECKPOINT_RESTORE
 
 	~CGROUP_FREEZER
 	~UTS_NS ~NET_NS
@@ -69,13 +66,6 @@ ERROR_NET_NS="CONFIG_NET_NS:  needed for unshared network"
 
 ERROR_VETH="CONFIG_VETH:  needed for internal (host-to-container) networking"
 ERROR_MACVLAN="CONFIG_MACVLAN:  needed for internal (inter-container) networking"
-
-ERROR_NETLINK_DIAG="CONFIG_NETLINK_DIAG:  needed for lxc-checkpoint"
-ERROR_PACKET_DIAG="CONFIG_PACKET_DIAG:  needed for lxc-checkpoint"
-ERROR_INET_UDP_DIAG="CONFIG_INET_UDP_DIAG:  needed for lxc-checkpoint"
-ERROR_INET_TCP_DIAG="CONFIG_INET_TCP_DIAG:  needed for lxc-checkpoint"
-ERROR_UNIX_DIAG="CONFIG_UNIX_DIAG:  needed for lxc-checkpoint"
-ERROR_CHECKPOINT_RESTORE="CONFIG_CHECKPOINT_RESTORE:  needed for lxc-checkpoint"
 
 ERROR_POSIX_MQUEUE="CONFIG_POSIX_MQUEUE:  needed for lxc-execute command"
 
