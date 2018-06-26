@@ -3,7 +3,7 @@ DEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap )
 DESCRIPTION=GNU libc C library
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/libc/
-IUSE=audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap test vanilla
+IUSE=audit caps compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla
 LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
 PDEPEND=!vanilla? ( sys-libs/timezone-data )
 RDEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) >=net-dns/libidn2-2.0.5 sys-apps/gentoo-functions !sys-kernel/ps3-sources !sys-libs/nss-db vanilla? ( !sys-libs/timezone-data )
@@ -11,4 +11,4 @@ RESTRICT=strip
 SLOT=2.2
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/glibc-9999-patches-6.tar.bz2 multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
 _eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=6531a0396427c3983da97c1790fdc6c4
+_md5_=d3bd2a278a19e47e06f168f8cb84babe
