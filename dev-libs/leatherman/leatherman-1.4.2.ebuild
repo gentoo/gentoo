@@ -31,8 +31,6 @@ src_configure() {
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DCMAKE_BUILD_TYPE=None
 		-DCMAKE_INSTALL_PREFIX=/usr
-		-DCMAKE_INSTALL_SYSCONFDIR=/etc
-		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 	)
 	if ! use static-libs; then
 		mycmakeargs+=(

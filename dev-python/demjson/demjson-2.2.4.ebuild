@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627"
+DESCRIPTION="Encoder, decoder, and lint/validator for JSON compliant with RFC 4627"
 HOMEPAGE="http://deron.meranda.us/python/demjson/ https://pypi.org/project/demjson/"
 SRC_URI="http://deron.meranda.us/python/${PN}/dist/${P}.tar.gz"
 

@@ -33,7 +33,7 @@ PATCH_VER=6
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap test vanilla"
+IUSE="audit caps compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -415,6 +415,8 @@ want__thread() {
 }
 
 use_multiarch() {
+	# Allow user to disable runtime arch detection in multilib.
+	use multiarch || return 1
 	# Make sure binutils is new enough to support indirect functions,
 	# #336792. This funky sed supports gold and bfd linkers.
 	local bver nver
@@ -793,19 +795,19 @@ glibc_do_configure() {
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
+	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
+	# To build .S (assembly) files with the same ABI-specific flags
+	# upstream currently recommends adding CFLAGS to CC/CXX:
+	#    https://sourceware.org/PR23273
+	# Note: Passing CFLAGS via CPPFLAGS overrides glibc's arch-specific CFLAGS
+	# and breaks multiarch support. See 659030#c3 for an example.
 	# The glibc configure script doesn't properly use LDFLAGS all the time.
-	export CC="$(tc-getCC ${CTARGET}) ${LDFLAGS}"
+	export CC="$(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS}"
 	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
-	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS)"
+	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS) ${CFLAGS}"
 	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
-
-	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
-	# To build .S (assembly) files with the same ABI-specific flags
-	# upstream currently recommends adding CFLAGS to CPPFLAGS: https://sourceware.org/PR23273
-	export CPPFLAGS="${CPPFLAGS} ${CFLAGS}"
-	einfo " $(printf '%15s' 'Manual CPPFLAGS:')   ${CPPFLAGS}"
 
 	echo
 

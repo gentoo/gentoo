@@ -21,7 +21,7 @@ IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
 DEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
-	gnat_2018? ( dev-lang/gnat-gpl:7.3.0 )"
+	gnat_2018? ( dev-lang/gnat-gpl:7.3.1 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}-src
@@ -35,7 +35,7 @@ src_prepare() {
 	elif use gnat_2017; then
 		GCC_PV=6.3.0
 	else
-		GCC_PV=7.3.0
+		GCC_PV=7.3.1
 	fi
 	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
 	default

@@ -18,7 +18,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
@@ -224,8 +224,8 @@ src_prepare() {
 }
 
 src_configure() {
-	addpredict /usr/share/snmp/mibs/.index
-	addpredict /var/lib/net-snmp/mib_indexes
+	addpredict /usr/share/snmp/mibs/.index #nowarn
+	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
@@ -478,8 +478,8 @@ src_configure() {
 
 src_compile() {
 	# snmp seems to run during src_compile, too (bug #324739)
-	addpredict /usr/share/snmp/mibs/.index
-	addpredict /var/lib/net-snmp/mib_indexes
+	addpredict /usr/share/snmp/mibs/.index #nowarn
+	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
 	for sapi in ${SAPIS} ; do
 		if use "${sapi}"; then
@@ -492,7 +492,7 @@ src_compile() {
 
 src_install() {
 	# see bug #324739 for what happens when we don't have that
-	addpredict /usr/share/snmp/mibs/.index
+	addpredict /usr/share/snmp/mibs/.index #nowarn
 
 	# grab the first SAPI that got built and install common files from there
 	local first_sapi=""

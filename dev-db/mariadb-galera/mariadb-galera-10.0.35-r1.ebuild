@@ -96,6 +96,7 @@ COMMON_DEPEND="
 		tokudb? ( app-arch/snappy )
 	)
 	>=dev-libs/libpcre-8.41-r1:3=
+	!client-libs? ( dev-db/mysql-connector-c[static-libs?] )
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
@@ -124,7 +125,6 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 # percona-xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	!client-libs? ( dev-db/mysql-connector-c[static-libs?] )
 	 server? ( sst-xtrabackup? ( || ( >=dev-db/percona-xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) )"
 
 pkg_setup() {

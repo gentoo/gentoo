@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
@@ -31,8 +31,7 @@ RDEPEND="
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
-	!~dev-python/eventlet-0.20.1[${PYTHON_USEDEP}]
-	<dev-python/eventlet-0.21.0[${PYTHON_USEDEP}]
+	<dev-python/eventlet-0.20.1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.6.0[${PYTHON_USEDEP}]

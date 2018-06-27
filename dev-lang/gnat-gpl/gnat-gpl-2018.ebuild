@@ -6,6 +6,7 @@ EAPI="5"
 PATCH_VER="1.4"
 
 TOOLCHAIN_GCC_PV=7.3.0
+GCC_CONFIG_VER=7.3.1
 
 inherit eutils toolchain-funcs toolchain
 
@@ -35,11 +36,10 @@ SRC_URI+="
 	)"
 
 LICENSE+=" GPL-2 GPL-3"
-SLOT="${TOOLCHAIN_GCC_PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="bootstrap"
 
-RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
+RDEPEND="!sys-devel/gcc:${GCC_CONFIG_VER}"
 DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.13 )
 	>=sys-devel/binutils-2.20"
@@ -113,8 +113,6 @@ src_prepare() {
 	ln -s $(which ${GNATBIND}) bin/gnatbind || die
 	ln -s $(which ${GNATLINK}) bin/gnatlink || die
 	ln -s $(which ${GNATLS}) bin/gnatls || die
-
-	echo ${TOOLCHAIN_GCC_PV} > gcc/BASE-VER
 
 	cd ..
 	mv ${P}-src/src/ada ${MYP}/gcc/ || die

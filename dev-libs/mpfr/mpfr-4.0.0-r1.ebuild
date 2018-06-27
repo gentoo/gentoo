@@ -4,7 +4,7 @@
 EAPI=6
 
 # NOTE: we cannot depend on autotools here starting with gcc-4.3.x
-inherit eutils libtool multilib-minimal
+inherit libtool multilib-minimal preserve-libs
 
 MY_PV=${PV/_p*}
 MY_P=${PN}-${MY_PV}

@@ -12,6 +12,5 @@ openal
 gimp
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
-# Mask qt4, qt5 for stabilisation timeout, bug #620334
+# Mask qt5 for stabilisation timeout, bug #620334
 qt5
-qt4

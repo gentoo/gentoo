@@ -20,7 +20,7 @@ DEPEND="dev-ada/gnat_util[gnat_2018]
 	dev-ada/gnatcoll-core[gnat_2018,shared]
 	dev-ada/gprbuild[gnat_2018]
 	dev-ada/xmlada[gnat_2018]
-	dev-lang/gnat-gpl:7.3.0"
+	dev-lang/gnat-gpl:7.3.1"
 RDEPEND="${RDEPEND}"
 REQUIRED_USE="!gnat_2016 !gnat_2017 gnat_2018"
 

@@ -8,3 +8,8 @@ USERNAME=buildbot
 
 # Extra options to pass to twistd.
 TWISTD_OPTS=""
+
+# Optional specific python version to run in
+# (if not the system default version)
+# ie: RUNTIME_PYTHON="/usr/bin/python2.7"
+RUNTIME_PYTHON=""

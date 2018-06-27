@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+EAPI=7
 
-inherit eutils python-any-r1
+PYTHON_COMPAT=( python3_{4,5,6} )
+inherit python-any-r1
 
 DESCRIPTION="A repository of data files describing media player capabilities"
 HOMEPAGE="https://cgit.freedesktop.org/media-player-info/"
@@ -12,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86"
 IUSE=""
 
 # https://cgit.freedesktop.org/media-player-info/commit/?id=d83dd01a0a1df6198ee08954da1c033b88a1004b

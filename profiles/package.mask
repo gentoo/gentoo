@@ -29,8 +29,126 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Mask Qt4 for removal. Bug #631788
+=dev-qt/assistant-4.8.7
+=dev-qt/designer-4.8.7
+=dev-qt/linguist-4.8.7
+=dev-qt/pixeltool-4.8.7
+=dev-qt/qdbusviewer-4.8.7
+=dev-qt/qt3support-4.8.7
+=dev-qt/qtbearer-4.8.7
+=dev-qt/qtcore-4.8.7-r4
+=dev-qt/qtdbus-4.8.7
+=dev-qt/qtdeclarative-4.8.7
+=dev-qt/qtdemo-4.8.7
+=dev-qt/qtgui-4.8.7
+=dev-qt/qthelp-4.8.7
+=dev-qt/qt-meta-4.8.6-r1
+=dev-qt/qtmultimedia-4.8.7
+=dev-qt/qtopengl-4.8.7
+=dev-qt/qtscript-4.8.7
+=dev-qt/qtsql-4.8.7-r1
+=dev-qt/qtsvg-4.8.7
+=dev-qt/qttest-4.8.7
+=dev-qt/qttranslations-4.8.7
+=dev-qt/qtxmlpatterns-4.8.7
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Bugs #644360, #644374, #656826, #655382
+<media-sound/mumble-1.3
+<media-sound/murmur-1.3
+<net-analyzer/ostinato-0.9_p20180522
+x11-libs/qwt:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Masked for removal. Bugs #644364, #644368, #644362
+dev-python/pivy
+media-libs/emfengine
+media-libs/quarter
+media-libs/SoQt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Masked for removal.
+dev-python/pyqwt
+dev-python/PyQt4
+dev-python/pyside:0
+dev-python/shiboken:0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Depends on dead Qt4. Masked for removal in 30 days, bug #644728
+app-i18n/ibus-qt
+app-i18n/qimhangul
+=app-i18n/tagainijisho-1.0*
+
+# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
+# Breaking consumers by internal header cleanup File bugs with
+# fixes upstream and against the qt-5.11 tracker (bug #653646).
+~dev-qt/assistant-5.11.1
+~dev-qt/designer-5.11.1
+~dev-qt/linguist-5.11.1
+~dev-qt/linguist-tools-5.11.1
+~dev-qt/pixeltool-5.11.1
+~dev-qt/qdbus-5.11.1
+~dev-qt/qdbusviewer-5.11.1
+~dev-qt/qdoc-5.11.1
+~dev-qt/qt3d-5.11.1
+~dev-qt/qtbluetooth-5.11.1
+~dev-qt/qtcharts-5.11.1
+~dev-qt/qtconcurrent-5.11.1
+~dev-qt/qtcore-5.11.1
+~dev-qt/qtdatavis3d-5.11.1
+~dev-qt/qtdbus-5.11.1
+~dev-qt/qtdeclarative-5.11.1
+~dev-qt/qtdiag-5.11.1
+~dev-qt/qtgraphicaleffects-5.11.1
+~dev-qt/qtgui-5.11.1
+~dev-qt/qthelp-5.11.1
+~dev-qt/qtimageformats-5.11.1
+~dev-qt/qtlocation-5.11.1
+~dev-qt/qtmultimedia-5.11.1
+~dev-qt/qtnetworkauth-5.11.1
+~dev-qt/qtnetwork-5.11.1
+~dev-qt/qtopengl-5.11.1
+~dev-qt/qtpaths-5.11.1
+~dev-qt/qtplugininfo-5.11.1
+~dev-qt/qtpositioning-5.11.1
+~dev-qt/qtprintsupport-5.11.1
+~dev-qt/qtquickcontrols2-5.11.1
+~dev-qt/qtquickcontrols-5.11.1
+~dev-qt/qtscript-5.11.1
+~dev-qt/qtscxml-5.11.1
+~dev-qt/qtsensors-5.11.1
+~dev-qt/qtserialbus-5.11.1
+~dev-qt/qtserialport-5.11.1
+~dev-qt/qtspeech-5.11.1
+~dev-qt/qtsql-5.11.1
+~dev-qt/qtsvg-5.11.1
+~dev-qt/qttest-5.11.1
+~dev-qt/qttranslations-5.11.1
+~dev-qt/qtvirtualkeyboard-5.11.1
+~dev-qt/qtwayland-5.11.1
+~dev-qt/qtwebchannel-5.11.1
+~dev-qt/qtwebengine-5.11.1
+~dev-qt/qtwebsockets-5.11.1
+~dev-qt/qtwebview-5.11.1
+~dev-qt/qtwidgets-5.11.1
+~dev-qt/qtx11extras-5.11.1
+~dev-qt/qtxmlpatterns-5.11.1
+~dev-qt/qtxml-5.11.1
+
+# Nick Sarnie <sarnex@gentoo.org> (24 Jun 2018)
+# Does not build if previous version is installed
+# Bug #658900
+=media-libs/vulkan-loader-1.1.77.0
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
+# Doesn't pass QA full boot test
+=sys-kernel/ck-sources-4.16.17
+
 # Mike Auty <ikelos@gentoo.org> (22 Jun 2018)
 # Not maintained upstream, at least one bug and three upstream bugs
+# Alternatives include gitg and git-cola.
 # Removal in 30 days. Bug #658264
 dev-vcs/giggle
 
@@ -326,11 +444,6 @@ app-crypt/openpgp-keys-gentoo-mirror
 # Masked for removal in 30 days. Bug #646118
 net-misc/urlview
 
-# Andreas Sturmlechner <asturm@gentoo.org> (27 May 2018)
-# Depends on dead Qt4. No more revdeps. Masked for removal in 30 days.
-dev-util/automoc
-media-libs/phonon-qt7
-
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
 # Retained in tree only for users who need older versions
@@ -347,70 +460,6 @@ app-i18n/ibus-tutcode
 # New package. Needs to interact with media-libs/mesa and
 # x11-drivers/nvidia-drivers. Work in progress.
 media-libs/libglvnd
-
-# Andreas Sturmlechner <asturm@gentoo.org> (24 May 2018)
-# Depends on dead Qt4. Masked for removal in 30 days. Bug #629018
-dev-libs/libattica
-kde-frameworks/kdelibs
-kde-frameworks/kdelibs-env
-kde-plasma/qguiplatformplugin_kde
-
-# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
-# Breaking consumers by internal header cleanup and removal of deprecated
-# qt5_use_modules from Qt5CoreMacros.cmake. File bugs with fixes upstream
-# and against the qt-5.11 tracker (bug #653646).
-~dev-qt/assistant-5.11.0_rc2
-~dev-qt/designer-5.11.0_rc2
-~dev-qt/linguist-5.11.0_rc2
-~dev-qt/linguist-tools-5.11.0_rc2
-~dev-qt/pixeltool-5.11.0_rc2
-~dev-qt/qdbus-5.11.0_rc2
-~dev-qt/qdbusviewer-5.11.0_rc2
-~dev-qt/qdoc-5.11.0_rc2
-~dev-qt/qt3d-5.11.0_rc2
-~dev-qt/qtbluetooth-5.11.0_rc2
-~dev-qt/qtcharts-5.11.0_rc2
-~dev-qt/qtconcurrent-5.11.0_rc2
-~dev-qt/qtcore-5.11.0_rc2
-~dev-qt/qtdatavis3d-5.11.0_rc2
-~dev-qt/qtdbus-5.11.0_rc2
-~dev-qt/qtdeclarative-5.11.0_rc2
-~dev-qt/qtdiag-5.11.0_rc2
-~dev-qt/qtgraphicaleffects-5.11.0_rc2
-~dev-qt/qtgui-5.11.0_rc2
-~dev-qt/qthelp-5.11.0_rc2
-~dev-qt/qtimageformats-5.11.0_rc2
-~dev-qt/qtlocation-5.11.0_rc2
-~dev-qt/qtmultimedia-5.11.0_rc2
-~dev-qt/qtnetworkauth-5.11.0_rc2
-~dev-qt/qtnetwork-5.11.0_rc2
-~dev-qt/qtopengl-5.11.0_rc2
-~dev-qt/qtpaths-5.11.0_rc2
-~dev-qt/qtplugininfo-5.11.0_rc2
-~dev-qt/qtpositioning-5.11.0_rc2
-~dev-qt/qtprintsupport-5.11.0_rc2
-~dev-qt/qtquickcontrols2-5.11.0_rc2
-~dev-qt/qtquickcontrols-5.11.0_rc2
-~dev-qt/qtscript-5.11.0_rc2
-~dev-qt/qtscxml-5.11.0_rc2
-~dev-qt/qtsensors-5.11.0_rc2
-~dev-qt/qtserialbus-5.11.0_rc2
-~dev-qt/qtserialport-5.11.0_rc2
-~dev-qt/qtspeech-5.11.0_rc2
-~dev-qt/qtsql-5.11.0_rc2
-~dev-qt/qtsvg-5.11.0_rc2
-~dev-qt/qttest-5.11.0_rc2
-~dev-qt/qttranslations-5.11.0_rc2
-~dev-qt/qtvirtualkeyboard-5.11.0_rc2
-~dev-qt/qtwayland-5.11.0_rc2
-~dev-qt/qtwebchannel-5.11.0_rc2
-~dev-qt/qtwebengine-5.11.0_rc2
-~dev-qt/qtwebsockets-5.11.0_rc2
-~dev-qt/qtwebview-5.11.0_rc2
-~dev-qt/qtwidgets-5.11.0_rc2
-~dev-qt/qtx11extras-5.11.0_rc2
-~dev-qt/qtxmlpatterns-5.11.0_rc2
-~dev-qt/qtxml-5.11.0_rc2
 
 # Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
 # SoQt does not build yet
@@ -493,15 +542,6 @@ sys-libs/uclibc
 # Mask experimental software
 =mail-mta/postfix-3.4*
 
-# Thomas Deutschmann <whissi@gentoo.org> (07 Feb 2018)
-# Intel recommends to pull these versions because they could
-# cause higher than expected reboots and other unpredictable
-# system behavior. Bug #646646
-=sys-firmware/intel-microcode-20171117_p20171215
-=sys-firmware/intel-microcode-20171117_p20171215-r1
-=sys-firmware/intel-microcode-20180108
-=sys-firmware/intel-microcode-20180108-r1
-
 # Eray Aslan <eras@gentoo.org> (22 Jan 2018)
 # Vulnerable - see https://bugs.gentoo.org/630684
 # Please migrate to cyrus-imapd-3.0 releases
@@ -510,11 +550,6 @@ sys-libs/uclibc
 # Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
 # mpv >= 0.28.0 requires currently masked ffmpeg >= 4.0.
 >=media-video/mpv-0.28.0
-
-# Matthias Maier <tamiko@gentoo.org> (26 Dec 2017)
-# gcc depends on mpfr and this version changes soname. Spare users with
-# FEATURES=-preserve-libs from completely frying their system.
->=dev-libs/mpfr-4.0.0
 
 # Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
 # To adapt to changed version naming by upstream

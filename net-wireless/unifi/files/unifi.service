@@ -1,0 +1,14 @@
+[Unit]
+Description=UniFi Controller
+After=network-online.target
+
+[Service]
+Type=simple
+User=unifi
+Group=unifi
+WorkingDirectory=/usr/lib/unifi
+ExecStart=/usr/bin/java -Djava.library.path= -Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -jar /usr/lib/unifi/lib/ace.jar start
+ExecStop=/usr/bin/java -Djava.library.path= -Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -jar /usr/lib/unifi/lib/ace.jar stop
+
+[Install]
+WantedBy=network.target

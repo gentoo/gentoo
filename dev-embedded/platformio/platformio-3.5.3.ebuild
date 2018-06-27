@@ -9,7 +9,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="An open source ecosystem for IoT development"
-HOMEPAGE="http://platformio.org/"
+HOMEPAGE="https://platformio.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

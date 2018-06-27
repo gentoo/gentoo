@@ -7,6 +7,18 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
+# Qt4 is dead and going away. Bugs #655382, #638260
+x11-libs/qwt qt4
+sci-libs/ViSP qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
+# dev-python/PyQt4 and dev-python/pyside are dead and going away.
+dev-python/pandas X
+media-sound/pulseaudio qt4
+media-video/syncplay gui
+net-wireless/gnuradio qt4
+
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # dev-libs/DirectFB is being removed (#606194)
 media-libs/libsdl2 fusionsound
@@ -110,13 +122,6 @@ dev-db/mariadb-galera client-libs
 dev-db/mysql client-libs
 dev-db/percona-server client-libs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2018)
-# Depends on obsolete media-libs/phonon[qt4]
-dev-qt/designer:4 phonon
-dev-qt/qtdemo:4 phonon
-dev-python/PyQt4 phonon
-dev-python/pyside:0 phonon
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2 Feb 2018)
 # This feature is not ready yet, see bug 146882 comment 26
 sys-libs/glibc compile-locales
@@ -153,16 +158,6 @@ media-libs/freeverb3 jack
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
 # USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
 sci-physics/root qt4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
-# Depends on masked dev-qt/qtwebkit:4, bug #620684
-dev-qt/assistant:4 webkit
-dev-qt/designer:4 webkit
-dev-qt/qt-meta:4 webkit
-dev-qt/qtdeclarative:4 webkit
-dev-qt/qtdemo:4 webkit
-dev-python/PyQt4 webkit
-dev-python/pyside:0 webkit
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)

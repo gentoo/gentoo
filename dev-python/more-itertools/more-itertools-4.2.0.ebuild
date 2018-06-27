@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc x86"
 IUSE="doc test"
 
 RDEPEND="<dev-python/six-2.0[${PYTHON_USEDEP}]"
@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	test? (
 		${RDEPEND}
@@ -35,5 +36,6 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test --doctest-modules || die "tests fail with ${EPYTHON}"
+	py.test --doctest-modules more_itertools \
+		|| die "tests fail with ${EPYTHON}"
 }

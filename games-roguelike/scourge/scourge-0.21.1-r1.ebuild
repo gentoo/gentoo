@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils wxwidgets
+inherit autotools desktop wxwidgets
 
 DESCRIPTION="A graphical rogue-like adventure game"
 HOMEPAGE="https://sourceforge.net/projects/scourge/"
@@ -25,14 +25,16 @@ RDEPEND="
 	virtual/opengl
 	virtual/glu"
 DEPEND="${RDEPEND}
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-automake-1.13.patch
+	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
 )
 
 src_prepare() {
@@ -50,9 +52,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--with-data-dir=/usr/share/${PN} \
+	local myeconfargs=(
+		--with-data-dir=/usr/share/${PN}
 		--localedir=/usr/share/locale
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
