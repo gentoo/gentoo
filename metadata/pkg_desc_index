@@ -9755,7 +9755,7 @@ sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/fxload 20081013-r1: USB firmware uploader
-sys-apps/gawk 4.0.2 4.1.3 4.1.4: GNU awk pattern-matching language
+sys-apps/gawk 4.1.4: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.12: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.24.1: Disk Utility for GNOME using udisks
