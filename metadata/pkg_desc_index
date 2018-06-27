@@ -4763,7 +4763,7 @@ dev-python/dogpile-cache 0.6.4: A locking API for expiring values while a single
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
 dev-python/doit 0.23.0-r1 0.29.0: Automation tool
 dev-python/doit-py 0.4.0: doit tasks for python stuff
-dev-python/dominate 2.2.1: Library for creating and manipulating HTML documents using an elegant DOM API
+dev-python/dominate 2.2.1 2.3.1: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.8.1: Python test doubles
 dev-python/doublex-expects 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing
