@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-DESCRIPTION="A python library for automating interaction with web sites"
+DESCRIPTION="A python library for automating interaction with websites"
 HOMEPAGE="https://pypi.org/project/MechanicalSoup/"
 
 LICENSE="MIT"
