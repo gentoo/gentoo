@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ccache doc kernel_linux"
+IUSE="ccache doc kernel_linux system-bootloader"
 
 DEPEND="
 	app-text/asciidoc
@@ -44,6 +44,10 @@ RDEPEND="
 	ccache? ( dev-util/ccache )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
 "
+PDEPEND="system-bootloader? ( >=sys-apps/memtest86+-5.01-r4
+				sys-boot/grub:2
+				sys-boot/syslinux
+				sys-boot/shim )"
 
 python_prepare_all() {
 	python_setup
