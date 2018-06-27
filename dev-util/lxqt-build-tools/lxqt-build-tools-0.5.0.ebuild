@@ -19,7 +19,7 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND="
-	>=dev-libs/glib-2.50.0:=
+	>=dev-libs/glib-2.50.0
 	dev-qt/qtcore:5
 "
 DEPEND="${RDEPEND}"
