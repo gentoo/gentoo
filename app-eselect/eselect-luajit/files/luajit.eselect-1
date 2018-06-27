@@ -19,7 +19,7 @@ remove_symlinks() {
 	for f in $HEADER_FILES ; do
 		unlink "${EROOT}"/usr/include/$f
 	done
-	unlink "${EROOT}"/usr/share/man/man1/luajit.1{,.gz,.bz2,.lzma} &>/dev/null
+	unlink "${EROOT}"/usr/share/man/man1/luajit.bz2 &>/dev/null
 }
 
 set_symlinks() {
