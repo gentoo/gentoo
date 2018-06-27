@@ -20,6 +20,7 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                      Default: dilfridge :)
 
 PATCH_VER=1
+PATCH_BINUTILS_VER=9999
 
 case ${PV} in
 	9999)
