@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f60caa1..9ff2211 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,13 +15,20 @@ set (WEBSOCKETPP_VERSION ${WEBSOCKETPP_MAJOR_VERSION}.${WEBSOCKETPP_MINOR_VERSIO
+ 
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
++get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
++if ("${LIB64}" STREQUAL "TRUE")
++  set(LIBSUFFIX 64)
++else()
++  set(LIBSUFFIX "")
++endif()
++
+ set(INSTALL_INCLUDE_DIR include CACHE PATH "Installation directory for header files")
++set(LIB_INSTALL_DIR "lib${LIB_SUFFIX}")
+ if (WIN32 AND NOT CYGWIN)
+-  set (DEF_INSTALL_CMAKE_DIR cmake)
++  set (INSTALL_CMAKE_DIR cmake)
+ else ()
+-  set (DEF_INSTALL_CMAKE_DIR lib/cmake/websocketpp)
++  set (INSTALL_CMAKE_DIR ${LIB_INSTALL_DIR}/cmake/websocketpp)
+ endif ()
+-set (INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Installation directory for CMake files")
+ 
+ # Make relative paths absolute (needed later on)
+ foreach (p INCLUDE CMAKE)
