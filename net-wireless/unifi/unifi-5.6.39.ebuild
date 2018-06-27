@@ -17,7 +17,6 @@ LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-
 SLOT="0/5.6"
 
 RDEPEND="dev-db/mongodb
-	dev-java/tomcat-native
 	virtual/jre:1.8"
 
 DEPEND="app-arch/unzip"
