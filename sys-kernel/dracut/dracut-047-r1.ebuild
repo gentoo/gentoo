@@ -39,7 +39,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	"
 DEPEND="${COMMON_DEPEND}
-	app-text/asciidoc
+	dev-ruby/asciidoctor
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26

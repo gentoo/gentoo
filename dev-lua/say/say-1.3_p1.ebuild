@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 MY_PV=1.3-1
 
 inherit toolchain-funcs
@@ -15,15 +15,16 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-COMMON_DEPEND=">=dev-lang/lua-5.1:="
+COMMON_DEPEND=">=dev-lang/lua-5.1:*"
 DEPEND="${COMMON_DEPEND}
 virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
+DOCS=( CONTRIBUTING.md README.md )
 src_install() {
-	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)"/${PN}
+	LUA_VERSION=$(readlink -e "${EROOT}"/usr/bin/lua | sed -ne 's:.*/usr/bin/lua\([\d.-]*\):\1:p')
+	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)"/$LUA_VERSION/${PN}
 doins src/init.lua
-dodoc CONTRIBUTING.md README.md
 }
