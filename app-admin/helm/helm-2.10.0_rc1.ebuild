@@ -5,6 +5,8 @@ EAPI=6
 
 EGO_PN="k8s.io/helm"
 
+MY_PV=${PV/_rc/-rc.}
+
 EGO_VENDOR=(
 "cloud.google.com/go 3b1ae45394a234c385be014e9a488f2bb6eef821 github.com/GoogleCloudPlatform/gcloud-golang"
 "github.com/aokoli/goutils 9c37978a95bd5c709a15883b6242714ea6709e64"
@@ -14,6 +16,7 @@ EGO_VENDOR=(
 "github.com/beorn7/perks 3ac7bf7a47d159a033b107610db8a1b6575507a4"
 "github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f0"
 "github.com/cpuguy83/go-md2man 71acacd42f85e5e82f70a55327789582a5200a90"
+"github.com/cyphar/filepath-securejoin 06bda8370f45268db985f7af15732444d94ed51c"
 "github.com/davecgh/go-spew 782f4967f2dc4564575ca782fe2d04090b5faca8"
 "github.com/dgrijalva/jwt-go 01aeca54ebda6e0fbfafd0a524d234159c05ec20"
 "github.com/docker/distribution edc3ab29cdff8694dd6feb85cfeb4b5f1b38ed9c"
@@ -21,7 +24,7 @@ EGO_VENDOR=(
 "github.com/docker/go-connections 3ede32e2033de7505e6500d6c868c2b9ed9f169d"
 "github.com/docker/go-units 9e638d38cf6977a37a8ea0078f3ee75a7cdb2dd1"
 "github.com/docker/spdystream 449fdfce4d962303d702fec724ef0ad181c92528"
-"github.com/evanphx/json-patch 944e07253867aacae43c04b2e6a239005443f33a"
+"github.com/evanphx/json-patch 94e38aa1586e8a6c8a75770bddf5ff84c48a106b"
 "github.com/exponent-io/jsonpath d6023ce2651d8eafb5c75bb0c7167536102ec9f5"
 "github.com/fatih/camelcase f6a740d52f961c60348ebb109adde9f4635d7540"
 "github.com/ghodss/yaml 73d445a93680fa1a78ae23a5839bad48f32ba1ee"
@@ -60,6 +63,7 @@ EGO_VENDOR=(
 "github.com/opencontainers/image-spec 372ad780f63454fbbbbcc7cf80e5b90245c13e13"
 "github.com/pborman/uuid ca53cad383cad2479bbba7f7a1a05797ec1386e4"
 "github.com/peterbourgon/diskv 5f041e8faa004a95c88a202771f4cc3e991971e6"
+"github.com/pkg/errors 645ef00459ed84a119197bfb8d8205042c6df63d"
 "github.com/prometheus/client_golang c5b7fccd204277076155f10851dad72b76a49317"
 "github.com/prometheus/client_model fa8ad6fec33561be4280a8f0514318c79d7f6cb6"
 "github.com/prometheus/common 13ba4ddd0caa9c28ca7b7bffe1dfa9ed8d5ef207"
@@ -71,7 +75,7 @@ EGO_VENDOR=(
 "github.com/sirupsen/logrus 89742aefa4b206dcf400792f3bd35b542998eb3b"
 "github.com/spf13/cobra f62e98d28ab7ad31d707ba837a966378465c7b57"
 "github.com/spf13/pflag 9ff6c6923cfffbcd502984b8e0c80539a94968b7"
-"github.com/technosophos/moniker ab470f5e105a44d0c87ea21bacd6a335c4816d83"
+"github.com/technosophos/moniker a5dbd03a2245d554160e3ae6bfdcf969fe58b431"
 "golang.org/x/crypto 81e90905daefcd6fd217b62423c0908922eadb30 github.com/golang/crypto"
 "golang.org/x/net 1c05540f6879653db88113bc4a2b70aec4bd491f github.com/golang/net"
 "golang.org/x/oauth2 a6bd8cefa1811bd24b86f8902872e4e8225f74c4 github.com/golang/oauth2"
@@ -83,23 +87,23 @@ EGO_VENDOR=(
 "google.golang.org/grpc 5ffe3083946d5603a0578721101dc8165b1d5b5f github.com/grpc/grpc-go"
 "gopkg.in/inf.v0 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4 github.com/go-inf/inf"
 "gopkg.in/square/go-jose.v2 f8f38de21b4dcd69d0413faf231983f5fd6634b1 github.com/square/go-jose"
-"gopkg.in/yaml.v2 53feefa2559fb8dfa8d81baad31be332c97d6c77 github.com/go-yaml/yaml"
-"k8s.io/api c699ec51538f0cfd4afa8bfcfe1e0779cafbe666 github.com/kubernetes/api"
+"gopkg.in/yaml.v2 670d4cfef0544295bc27a114dbac37980d83185a github.com/go-yaml/yaml"
+"k8s.io/api 8b7507fac302640dd5f1efbf9643199952cc58db github.com/kubernetes/api"
 "k8s.io/apiextensions-apiserver 898b0eda132e1aeac43a459785144ee4bf9b0a2e github.com/kubernetes/apiextensions-apiserver"
-"k8s.io/apimachinery 54101a56dda9a0962bc48751c058eb4c546dcbb9 github.com/kubernetes/apimachinery"
-"k8s.io/apiserver ea53f8588c655568158b4ff53f5ec6fa4ebfc332 github.com/kubernetes/apiserver"
+"k8s.io/apimachinery f6313580a4d36c7c74a3d845dda6e116642c4f90 github.com/kubernetes/apimachinery"
+"k8s.io/apiserver f7914ed3085badf66a1b6f3a5218ada28f7bd084 github.com/kubernetes/apiserver"
 "k8s.io/client-go 23781f4d6632d88e869066eaebb743857aa1ef9b github.com/kubernetes/client-go"
-"k8s.io/kube-openapi 50ae88d24ede7b8bad68e23c805b5d3da5c8abaf github.com/kubernetes/kube-openapi"
-"k8s.io/kubernetes a22f9fd34871d9dc9e5db2c02c713821d18ab2cd github.com/kubernetes/kubernetes"
+"k8s.io/kube-openapi 39cb288412c48cb533ba4be5d6c28620b9a0c1b4 github.com/kubernetes/kube-openapi"
+"k8s.io/kubernetes 32ac1c9073b132b8ba18aa830f46b77dcceb0723 github.com/kubernetes/kubernetes"
 "k8s.io/utils aedf551cdb8b0119df3a19c65fde413a13b34997 github.com/kubernetes/utils"
 "vbom.ml/util db5cfe13f5cc80a4990d98e2e1b0707a4d1a5394 github.com/fvbommel/util"
 )
 
 inherit golang-build golang-vcs-snapshot bash-completion-r1
 
-GIT_COMMIT="f6025bb9ee7daf9fee0026541c90a6f557a3e0bc"
+GIT_COMMIT="aa98e7e3dd2356bce72e8e367e8c87e8085c692b"
 
-ARCHIVE_URI="https://github.com/kubernetes/helm/archive/v${PV}.tar.gz -> ${P}.tar.gz
+ARCHIVE_URI="https://github.com/kubernetes/helm/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 KEYWORDS="~amd64"
 
