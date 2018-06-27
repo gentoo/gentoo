@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,9 +22,10 @@ RDEPEND="${DEPEND}
 # bug 630450
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/${P}-cmake-install.patch" )
+
 src_configure() {
 	local mycmakeargs=(
-		-DINSTALL_CMAKE_DIR="$(get_libdir)/cmake/${PN}"
 		-DENABLE_CPP11="$(usex !boost)"
 		-DBUILD_TESTS="$(usex test)"
 	)
