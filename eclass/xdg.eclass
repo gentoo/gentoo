@@ -14,7 +14,7 @@
 inherit xdg-utils
 
 case "${EAPI:-0}" in
-	4|5|6)
+	4|5|6|7)
 		EXPORT_FUNCTIONS src_prepare pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
