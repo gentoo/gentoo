@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
+# Catalyst has support for assembling bootloader on this arch
+dev-util/catalyst -system-bootloader
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (17 Jun 2018)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
