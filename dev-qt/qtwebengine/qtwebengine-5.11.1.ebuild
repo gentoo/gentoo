@@ -38,7 +38,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
 	media-libs/libwebp:=
-	media-libs/mesa
+	media-libs/mesa[egl]
 	media-libs/opus
 	net-libs/libsrtp:0=
 	sys-apps/dbus
@@ -79,7 +79,13 @@ DEPEND="${RDEPEND}
 	pax_kernel? ( sys-apps/elfix )
 "
 
-PATCHES+=( "${FILESDIR}/${PN}-5.11.0-fix-build-w-o-qtlocation.patch" )
+PATCHES+=(
+	"${FILESDIR}/${PN}-5.9.6-gcc8.patch" # bug 657124
+	"${FILESDIR}/${P}-libxml2-disable-catalogs.patch" # bug 653078
+	"${FILESDIR}/${P}-ffmpeg4.patch"
+	"${FILESDIR}/${P}-eglGetProcAddress-fallback-lookup.patch" # 5.11 branch
+	"${FILESDIR}/${P}-nouveau-disable-gpu.patch" # bug 609752
+)
 
 src_prepare() {
 	use pax_kernel && PATCHES+=( "${FILESDIR}/${PN}-5.9.3-paxmark-mksnapshot.patch" )

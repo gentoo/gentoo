@@ -37,7 +37,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
 	media-libs/libwebp:=
-	media-libs/mesa
+	media-libs/mesa[egl]
 	media-libs/opus
 	net-libs/libsrtp:0=
 	sys-apps/dbus
@@ -82,6 +82,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.9.4-jpeg-9-1.patch"
 	"${FILESDIR}/${PN}-5.9.4-jpeg-9-2.patch"
+	"${FILESDIR}/${PN}-5.9.6-gcc8.patch" # bug 657124
+	"${FILESDIR}/${PN}-5.11.1-nouveau-disable-gpu.patch" # bug 609752
 )
 
 src_prepare() {

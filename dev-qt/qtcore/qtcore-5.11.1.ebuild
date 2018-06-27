@@ -43,8 +43,6 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	!:xml
 )
 
-PATCHES=( "${FILESDIR}/${PN}-5.11.0-restore-qt5_use_modules.patch" )
-
 src_configure() {
 	local myconf=(
 		$(qt_use icu)
