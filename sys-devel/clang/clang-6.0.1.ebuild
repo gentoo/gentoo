@@ -72,9 +72,6 @@ PATCHES=(
 	# add Prefix include paths for Darwin
 	"${FILESDIR}"/5.0.1/darwin_prefix-include-paths.patch
 
-	# fix Driver crash with CHOST prefix and long command-line
-	# https://bugs.gentoo.org/650082
-	"${FILESDIR}"/6.0.0/0001-Driver-Avoid-invalidated-iterator-in-insertTargetAnd.patch
 	# fix test failure with default-compiler-rt
 	# https://bugs.gentoo.org/650316
 	"${FILESDIR}"/6.0.1/0002-test-Fix-Cross-DSO-CFI-Android-sanitizer-test-for-rt.patch
