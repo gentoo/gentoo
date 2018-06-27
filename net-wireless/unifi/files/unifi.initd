@@ -4,7 +4,7 @@
 
 ACE_LIB="lib/ace.jar"
 DAEMON="${JAVA_HOME-/etc/java-config-2/current-system-vm}"/bin/java
-JAVA_OPTS="-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp"
+JAVA_OPTS="-Djava.library.path= -Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp"
 UNIFI_GROUP="unifi"
 UNIFI_PATH="/usr/lib/unifi"
 UNIFI_USER="unifi"
@@ -15,7 +15,7 @@ depend() {
 
 start() {
 	ebegin "Starting UniFi Controller"
-	cd "${UNIFI_PATH}" && start-stop-daemon --start --quiet --background --user ${UNIFI_USER} --group ${UNIFI_GROUP} --chdir ${UNIFI_PATH} --exec ${DAEMON} -- ${JAVA_OPTS} -jar ${ACE_LIB} start
+	start-stop-daemon --start --quiet --background --user ${UNIFI_USER} --group ${UNIFI_GROUP} --chdir ${UNIFI_PATH} --exec ${DAEMON} -- ${JAVA_OPTS} -jar ${ACE_LIB} start
 	eend $?
 }
 
