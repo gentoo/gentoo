@@ -862,7 +862,6 @@ app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-libpinyin 1.9.2: Intelligent Pinyin engine based on libpinyin for IBus
 app-i18n/ibus-m17n 1.3.2: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese Pinyin and Bopomofo engines for IBus
-app-i18n/ibus-qt 1.3.3: Qt IBus library and Qt input method plugin
 app-i18n/ibus-skk 1.4.1-r1: Japanese SKK engine for IBus
 app-i18n/ibus-table 1.5.0-r1: Tables engines for IBus
 app-i18n/im-freewnn 0.0.2-r2: Japanese FreeWnn input method module for GTK+2
@@ -895,7 +894,6 @@ app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplifi
 app-i18n/poedit 2.0.6: GUI gettext translations editor
 app-i18n/pology 0.12: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
-app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.35: Data resources for Rime Input Method Engine
 app-i18n/scim 1.4.17 1.4.18: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
@@ -4552,7 +4550,6 @@ dev-python/PyContracts 1.7.9: Declare constraints on function parameters and ret
 dev-python/PyECLib 1.5.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.28: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt4 4.12.1: Python bindings for the Qt framework
 dev-python/PyQt5 5.9.2: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.6.7: SOCKS client module
@@ -5327,7 +5324,6 @@ dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.2.13: A jQuery-like library for python
-dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
 dev-python/pyramid 1.5.8: A small open source Python web framework
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
@@ -5338,7 +5334,6 @@ dev-python/pysaml2 4.0.2-r3 4.5.0: Python implementation of SAML Version 2 to be
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
-dev-python/pyside 1.2.2-r2: Python bindings for the Qt framework
 dev-python/pysmi 0.1.3: Python Lex & Yacc
 dev-python/pysnmp 4.3.3 4.4.4: Python SNMP library
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
@@ -5516,7 +5511,6 @@ dev-python/setuptools 34.0.2-r1 36.7.2: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1: package to manage versions by scm tags via setuptools
-dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
 dev-python/shortuuid 0.4.3: A generator library for concise, unambiguous and URL-safe UUIDs
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.13.2: Simple, fast, extensible JSON encoder/decoder for Python
@@ -5703,50 +5697,46 @@ dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-interface 4.1.1 4.3.2 4.4.3: Interfaces for Python
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
-dev-qt/assistant 4.8.7 5.9.4: Tool for viewing on-line documentation in Qt help file format
-dev-qt/designer 4.8.7 5.9.4: WYSIWYG tool for designing and building Qt-based GUIs
-dev-qt/linguist 4.8.7 5.9.4: Graphical tool for translating Qt applications
+dev-qt/assistant 5.9.4: Tool for viewing on-line documentation in Qt help file format
+dev-qt/designer 5.9.4: WYSIWYG tool for designing and building Qt-based GUIs
+dev-qt/linguist 5.9.4: Graphical tool for translating Qt applications
 dev-qt/linguist-tools 5.9.4: Tools for working with Qt translation data files
-dev-qt/pixeltool 4.8.7 5.9.4: Qt screen magnifier
+dev-qt/pixeltool 5.9.4: Qt screen magnifier
 dev-qt/qdbus 5.9.4: Interface to Qt applications communicating over D-Bus
-dev-qt/qdbusviewer 4.8.7 5.9.4: Graphical tool that lets you introspect D-Bus objects and messages
+dev-qt/qdbusviewer 5.9.4: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.9.4: Qt documentation generator
 dev-qt/qt-creator 4.5.2: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.9.4_p201801220610: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt-meta 4.8.6-r1: Cross-platform application development framework (metapackage)
-dev-qt/qt3support 4.8.7: The Qt3Support module for the Qt toolkit
-dev-qt/qtbearer 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.9.4: Bluetooth support library for the Qt5 framework
 dev-qt/qtchooser 0_p20151008 0_p20170803: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.9.4: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.7-r4 5.9.4-r2: Cross-platform application development framework
-dev-qt/qtdbus 4.8.7 5.9.4: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 4.8.7 5.9.4: The QML and Quick modules for the Qt5 framework
-dev-qt/qtdemo 4.8.7: Demonstration module and examples for the Qt toolkit
+dev-qt/qtcore 5.9.4-r2: Cross-platform application development framework
+dev-qt/qtdbus 5.9.4: Qt5 module for inter-process communication over the D-Bus protocol
+dev-qt/qtdeclarative 5.9.4: The QML and Quick modules for the Qt5 framework
 dev-qt/qtgraphicaleffects 5.9.4: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 4.8.7 5.9.4-r3: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 4.8.7 5.9.4: Qt5 module for integrating online documentation into applications
+dev-qt/qtgui 5.9.4-r3: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qthelp 5.9.4: Qt5 module for integrating online documentation into applications
 dev-qt/qtimageformats 5.9.4: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.9.4: The Location module for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 4.8.7 5.9.4-r1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtmultimedia 5.9.4-r1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.9.4: Network abstraction library for the Qt5 framework
-dev-qt/qtopengl 4.8.7 5.9.4: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtopengl 5.9.4: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtpaths 5.9.4: Command line client to QStandardPaths
 dev-qt/qtpositioning 5.9.4: Physical position determination library for the Qt5 framework
 dev-qt/qtprintsupport 5.9.4: Printing support library for the Qt5 framework
 dev-qt/qtquickcontrols 5.9.4: Set of controls used in conjunction with Qt Quick to build complete interfaces
 dev-qt/qtquickcontrols2 5.9.4: Set of next generation Qt Quick controls for the Qt5 framework
-dev-qt/qtscript 4.8.7 5.9.4: Application scripting library for the Qt5 framework (deprecated)
+dev-qt/qtscript 5.9.4: Application scripting library for the Qt5 framework (deprecated)
 dev-qt/qtscxml 5.9.4: State Chart XML (SCXML) support library for the Qt5 framework
 dev-qt/qtsensors 5.9.4: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.9.4: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
 dev-qt/qtspeech 5.9.4: Text-to-speech library for the Qt5 framework
-dev-qt/qtsql 4.8.7-r1 5.9.4-r1: SQL abstraction library for the Qt5 framework
-dev-qt/qtsvg 4.8.7 5.9.4-r2: SVG rendering library for the Qt5 framework
-dev-qt/qttest 4.8.7 5.9.4: Unit testing library for the Qt5 framework
-dev-qt/qttranslations 4.8.7 5.9.4: Translation files for the Qt5 framework
+dev-qt/qtsql 5.9.4-r1: SQL abstraction library for the Qt5 framework
+dev-qt/qtsvg 5.9.4-r2: SVG rendering library for the Qt5 framework
+dev-qt/qttest 5.9.4: Unit testing library for the Qt5 framework
+dev-qt/qttranslations 5.9.4: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.9.4: Virtual keyboard plugin for the Qt5 framework
 dev-qt/qtwayland 5.9.4-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.9.4: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
@@ -5756,7 +5746,7 @@ dev-qt/qtwebsockets 5.9.4: Implementation of the WebSocket protocol for the Qt5 
 dev-qt/qtwidgets 5.9.4-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
 dev-qt/qtx11extras 5.9.4: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.9.4: Implementation of SAX and DOM for the Qt5 framework
-dev-qt/qtxmlpatterns 4.8.7 5.9.4: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
+dev-qt/qtxmlpatterns 5.9.4: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/actionpack 5.1.4: Eases web-request routing, handling, and response
@@ -8061,8 +8051,6 @@ media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for 
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
-media-sound/murmur 1.2.19: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.24: A ncurses client for the Music Player Daemon (MPD)
@@ -8369,7 +8357,6 @@ net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
-net-analyzer/ostinato 0.5.1: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
@@ -9295,7 +9282,7 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
-sci-geosciences/qgis 3.0.2 3.0.3-r1: User friendly Geographic Information System
+sci-geosciences/qgis 3.0.3-r1: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3: GPS mapping utility
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
@@ -10794,7 +10781,7 @@ x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.10.3: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1: Qt terminal emulator widget
-x11-libs/qwt 5.2.3-r2 6.1.3-r1 6.1.3-r2: 2D plotting library for Qt5
+x11-libs/qwt 6.1.3-r1 6.1.3-r2: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework

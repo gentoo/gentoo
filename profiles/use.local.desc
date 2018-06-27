@@ -1734,22 +1734,6 @@ dev-php/pecl-memcached:json - Enable support for json serialization
 dev-php/pecl-redis:igbinary - Enables igbinary serialisation support
 dev-python/Kivy:camera - Install libraries needed to support camera
 dev-python/Kivy:garden - Install garden tool to manage user maintained widgets
-dev-python/PyQt4:X - Build bindings for the QtGui module
-dev-python/PyQt4:compat - Install the deprecated pyqtconfig module for backward compatibility
-dev-python/PyQt4:dbus - Build bindings for the QtDBus module
-dev-python/PyQt4:declarative - Build bindings for the QtDeclarative module
-dev-python/PyQt4:designer - Build bindings for the QtDesigner module and enable the designer plugin
-dev-python/PyQt4:help - Build bindings for the QtHelp module
-dev-python/PyQt4:multimedia - Build bindings for the QtMultimedia module
-dev-python/PyQt4:opengl - Build bindings for the QtOpenGL module
-dev-python/PyQt4:phonon - Build bindings for the phonon module
-dev-python/PyQt4:script - Build bindings for the QtScript module
-dev-python/PyQt4:scripttools - Build bindings for the QtScriptTools module
-dev-python/PyQt4:sql - Build bindings for the QtSql module
-dev-python/PyQt4:svg - Build bindings for the QtSvg module
-dev-python/PyQt4:testlib - Build bindings for the QtTest module
-dev-python/PyQt4:webkit - Build bindings for the QtWebKit module
-dev-python/PyQt4:xmlpatterns - Build bindings for the QtXmlPatterns module
 dev-python/PyQt5:bluetooth - Build bindings for the QtBluetooth module
 dev-python/PyQt5:dbus - Build bindings for the QtDBus module
 dev-python/PyQt5:declarative - Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
@@ -1832,19 +1816,6 @@ dev-python/py-amqp:extras - Install extra tools to generate initial Python mod f
 dev-python/pygame:midi - Enable midi support using media-libs/portmidi
 dev-python/pypax:ptpax - Enable PT_PAX_FLAGS support.
 dev-python/pypax:xtpax - Enable XATTR_PAX_FLAGS support.
-dev-python/pyside:X - Build QtGui and QtTest modules
-dev-python/pyside:declarative - Build QtDeclarative module
-dev-python/pyside:designer - Build QtDesigner and QtUiTools modules
-dev-python/pyside:help - Build QtHelp module
-dev-python/pyside:multimedia - Build QtMultimedia module
-dev-python/pyside:opengl - Build QtOpenGL module
-dev-python/pyside:phonon - Build phonon module
-dev-python/pyside:script - Build QtScript module
-dev-python/pyside:scripttools - Build QtScriptTools module
-dev-python/pyside:sql - Build QtSql module
-dev-python/pyside:svg - Build QtSvg module
-dev-python/pyside:webkit - Build QtWebKit module
-dev-python/pyside:xmlpatterns - Build QtXmlPatterns module
 dev-python/python-caja:gtk3 - Build with GTK+3 instead of GTK+2
 dev-python/pyudev:pygobject - Install PyGobject bindings
 dev-python/pyudev:qt5 - Install PyQt5 bindings
@@ -1921,9 +1892,6 @@ dev-qt/qt-docs:script - Install documentation for dev-qt/qtscript
 dev-qt/qt-docs:speech - Install documentation for dev-qt/qtspeech
 dev-qt/qt-docs:virtualkeyboard - Install documentation for dev-qt/qtvirtualkeyboard
 dev-qt/qt-docs:webengine - Install documentation for dev-qt/qtwebengine
-dev-qt/qt-meta:qt3support - Enable the Qt3Support library for Qt4
-dev-qt/qt3support:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
-dev-qt/qtbearer:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtbluetooth:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtcore:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtcore:glib - Enable dev-libs/glib eventloop support
@@ -1937,14 +1905,6 @@ dev-qt/qtdeclarative:qt3support - Enable the Qt3Support libraries for Qt4. Note 
 dev-qt/qtdeclarative:webkit - Build the WebView QML component
 dev-qt/qtdeclarative:widgets - Enable QtWidgets support
 dev-qt/qtdeclarative:xml - Build the XmlListModel import for QtQuick (requires QtXmlPatterns)
-dev-qt/qtdemo:dbus - Build QtDBus examples and demos
-dev-qt/qtdemo:declarative - Build QtDeclarative examples and demos
-dev-qt/qtdemo:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
-dev-qt/qtdemo:multimedia - Build QtMultimedia examples and demos
-dev-qt/qtdemo:opengl - Build QtOpenGL examples and demos
-dev-qt/qtdemo:phonon - Build Phonon examples and demos
-dev-qt/qtdemo:webkit - Build QtWebKit examples and demos
-dev-qt/qtdemo:xmlpatterns - Build QtXmlPatterns examples and demos
 dev-qt/qtgui:egl - Enable EGL integration
 dev-qt/qtgui:eglfs - Build the EGL Full Screen/Single Surface platform plugin
 dev-qt/qtgui:evdev - Enable support for input devices via evdev
@@ -3222,10 +3182,6 @@ media-sound/mpd:wildmidi - Enable MIDI support via wildmidi
 media-sound/mpd:zip - Support for ZIP files
 media-sound/mpfc:wav - Enable wav audio codec support
 media-sound/mpg123:int-quality - Use rounding instead of fast truncation for integer output, where possible
-media-sound/mumble:g15 - Enable support for the Logitech G15 LCD (and compatible devices).
-media-sound/mumble:opus - Enable Opus codec support via media-libs/opus.
-media-sound/mumble:speech - Enable text-to-speech support in Mumble.
-media-sound/murmur:ice - Use dev-libs/Ice to enable remote control capabilities.
 media-sound/ncmpc:artist-screen - Enable artist screen
 media-sound/ncmpc:chat-screen - Enable the chat screen
 media-sound/ncmpc:colors - Enable color support
