@@ -15,7 +15,7 @@ depend() {
 
 start() {
 	ebegin "Starting UniFi Controller"
-	cd "${UNIFI_PATH}" && start-stop-daemon --start --quiet --background --user ${UNIFI_USER} --group ${UNIFI_GROUP} --chdir ${UNIFI_PATH} --exec ${DAEMON} -- ${JAVA_OPTS} -jar ${ACE_LIB} start
+	start-stop-daemon --start --quiet --background --user ${UNIFI_USER} --group ${UNIFI_GROUP} --chdir ${UNIFI_PATH} --exec ${DAEMON} -- ${JAVA_OPTS} -jar ${ACE_LIB} start
 	eend $?
 }
 
