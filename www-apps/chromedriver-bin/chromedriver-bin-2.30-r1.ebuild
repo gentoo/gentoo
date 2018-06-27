@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="www-client/google-chrome"
+RDEPEND="!www-client/chromium
+	www-client/google-chrome"
 
 S="${WORKDIR}"
 QA_PREBUILT="usr/bin/chromedriver"
