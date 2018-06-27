@@ -24,7 +24,7 @@ DEPEND="
 	dev-qt/linguist-tools:5
 "
 K_LANGS="
-	ar bg cs da de el en es fr it lt nl no pl pt_BR ro ru sv tr uk
+	ar bg cs da de el en es fr it lt nl no pl pt_BR pt ro ru sv tr uk
 "
 for K_LANG in ${K_LANGS}; do
 	IUSE+=" l10n_${K_LANG/_/-}"

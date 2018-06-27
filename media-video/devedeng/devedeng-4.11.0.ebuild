@@ -25,7 +25,7 @@ RDEPEND="dev-python/pycairo[${PYTHON_USEDEP}]
 	media-video/dvdauthor
 	media-video/vcdimager
 	virtual/cdrtools
-	|| ( app-cdr/brasero kde-apps/k3b )"
+	|| ( app-cdr/brasero kde-apps/k3b app-cdr/xfburn )"
 
 DEPEND="${PYTHON_DEPS}"
 
