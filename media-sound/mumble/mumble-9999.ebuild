@@ -74,7 +74,7 @@ src_configure() {
 		$(myuse opus)
 		$(myuse oss)
 		$(myuse portaudio)
-		$(myuse speech)
+		$(usex speech '' no-speechd)
 		$(usex zeroconf '' no-bonjour)
 	)
 
