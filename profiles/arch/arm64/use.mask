@@ -155,7 +155,6 @@ sid
 mms
 mtp
 ieee1394
-sctp
 pm-utils
 darcs
 bs2b
