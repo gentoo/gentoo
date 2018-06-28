@@ -1,0 +1,36 @@
+
+# HG changeset patch
+# User Gregory Szorc <gps@mozilla.com>
+# Date 1526410966 25200
+# Node ID e4ce7b97291627f2186dc23be0dadd3c56dfe938
+# Parent  f288a2c9c4390898a17ad9f964218b52b87d8028
+Bug 1461221 - Account for psutil.disk_io_counters() returning None; r=mshal
+
+Apparently it can do this.
+
+MozReview-Commit-ID: 6gMTGtcRAw6
+
+diff --git a/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py b/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py
+--- a/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py
++++ b/testing/mozbase/mozsystemmonitor/mozsystemmonitor/resourcemonitor.py
+@@ -60,16 +60,19 @@ except Exception:
+         psutil = None
+ 
+     have_psutil = False
+ 
+ 
+ def get_disk_io_counters():
+     try:
+         io_counters = psutil.disk_io_counters()
++
++        if io_counters is None:
++            return PsutilStub().disk_io_counters()
+     except RuntimeError:
+         io_counters = PsutilStub().disk_io_counters()
+ 
+     return io_counters
+ 
+ 
+ def _collect(pipe, poll_interval):
+     """Collects system metrics.
+
