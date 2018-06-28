@@ -28,7 +28,7 @@ python_prepare() {
 		sed -e s':test_simple:_&:' -e s':test_empty_production:_&:' \
 			-i tests/test_parsergenerator.py
 	fi
-	distutils-r1_python_prepare
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
