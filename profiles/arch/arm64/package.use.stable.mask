@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (28 Jun 2018)
+# net-misc/lksctp-tools not stable yet
+dev-libs/openssl sctp
+net-misc/openssh sctp
+
 # Mart Raudsepp <leio@gentoo.org> (30 May 2018)
 # app-text/docbook2X not stable yet, fails tests (bug #511902)
 dev-vcs/git doc
