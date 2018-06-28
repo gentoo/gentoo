@@ -53,6 +53,7 @@
 =dev-qt/qttest-4.8.7
 =dev-qt/qttranslations-4.8.7
 =dev-qt/qtxmlpatterns-4.8.7
+app-eselect/eselect-qtgraphicssystem
 
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
 # Depends on dead Qt4. Bugs #644360, #644374, #656826, #655382
