@@ -29,7 +29,7 @@ REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	ruby? ( || ( $(ruby_get_use_targets) ) )"
 
-COMMONDEPEND="dev-libs/xapian:0/30
+COMMONDEPEND=">=dev-libs/xapian-1.4.5:0/30
 	lua? ( dev-lang/lua:= )
 	perl? ( dev-lang/perl:= )
 	python? (
@@ -275,7 +275,7 @@ src_install() {
 	fi
 
 	if use java; then
-		java-pkg_dojar java/built/xapian_jni.jar
+		java-pkg_dojar java/built/xapian.jar
 		# TODO: make the build system not install this...
 		java-pkg_doso java/.libs/libxapian_jni.so
 		rm -rf "${D}var" || die "could not remove java cruft!"
