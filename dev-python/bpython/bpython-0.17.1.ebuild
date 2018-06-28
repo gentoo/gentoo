@@ -36,6 +36,8 @@ DOCS=( AUTHORS CHANGELOG sample.theme light.theme )
 # Req'd for clean build by each impl
 DISTUTILS_IN_SOURCE_BUILD=1
 
+RESTRICT="test" #659110
+
 python_compile_all() {
 	if use doc; then
 		sphinx-build -b html -c doc/sphinx/source/ \

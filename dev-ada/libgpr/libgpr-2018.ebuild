@@ -63,5 +63,6 @@ src_install() {
 			emake DESTDIR="${D}" libgpr.install.${kind}
 		fi
 	done
+	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
 }

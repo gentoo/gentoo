@@ -76,4 +76,5 @@ src_install () {
 	einstalldocs
 	dodoc xmlada-roadmap.txt
 	rm "${D}"/usr/share/doc/${PN}/.buildinfo || die
+	rm -r "${D}"/usr/share/gpr/manifests || die
 }

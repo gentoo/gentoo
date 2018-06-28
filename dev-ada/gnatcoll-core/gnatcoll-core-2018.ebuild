@@ -17,13 +17,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 
 RDEPEND="
-	dev-ada/libgpr[gnat_2017=,gnat_2017=,gnat_2018=]
+	dev-ada/libgpr[gnat_2016=,gnat_2017=,gnat_2018=]
 	dev-ada/libgpr[shared?,static-libs?,static-pic?]"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2017=,gnat_2017=,gnat_2018=]
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]
 	!dev-ada/gnatcoll"
 
-REQUIRED_USE="!gnat_2016 || ( gnat_2017 gnat_2018 )"
+REQUIRED_USE="!gnat_2016"
 
 S="${WORKDIR}"/${MYP}-src
 
@@ -74,5 +74,6 @@ src_install() {
 	if use static-libs; then
 		emake install-static
 	fi
+	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
 }

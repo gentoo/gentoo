@@ -67,6 +67,9 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
+	if use examples; then
+		insinto "/usr/share/doc/${PF}/examples/"
+		doins examples/*
+	fi
 	distutils-r1_python_install_all
 }

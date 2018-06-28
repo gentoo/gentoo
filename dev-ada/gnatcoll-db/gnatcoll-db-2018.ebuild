@@ -18,19 +18,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnatcoll_db2ada gnatinspect postgres
 	+shared sql sqlite static-libs static-pic xref"
 
-RDEPEND="dev-lang/gnat-gpl:7.3.1
-	dev-ada/gnatcoll-core[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-ada/libgpr[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-ada/xmlada[gnat_2018,shared?,static-libs?,static-pic?]
+RDEPEND="dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=]
+	dev-ada/gnatcoll-core[shared?,static-libs?,static-pic?]
 	sqlite? ( dev-db/sqlite:3 )
 	postgres? ( dev-db/postgresql:* )
 	xref? (
 		dev-ada/gnatcoll-bindings[iconv,shared?,static-libs?,static-pic?]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2018]"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018]"
 
-REQUIRED_USE="!gnat_2016 !gnat_2017 gnat_2018
+REQUIRED_USE="!gnat_2016
 	sqlite? ( sql )
 	xref? ( sqlite )
 	gnatinspect? ( xref )
@@ -100,5 +98,6 @@ src_install() {
 			build $dir $lib ${dir}
 		fi
 	done
+	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
 }

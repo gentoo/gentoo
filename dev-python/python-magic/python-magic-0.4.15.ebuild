@@ -20,6 +20,9 @@ RDEPEND="sys-apps/file[-python]"
 DEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+# Needs MacOS python module, bug #659102
+RESTRICT="test"
+
 python_test() {
 	esetup.py test
 }

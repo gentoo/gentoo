@@ -28,6 +28,7 @@ DEPEND="
 	sys-devel/gettext
 	test? (
 		${RDEPEND}
+		dev-python/pyenchant[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
