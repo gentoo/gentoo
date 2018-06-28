@@ -10212,7 +10212,7 @@ sys-libs/tevent 0.9.28 0.9.31-r1: Samba tevent library
 sys-libs/timezone-data 2017c 2018d: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.26 1.0.30-r1: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
-sys-libs/zlib 1.2.11 1.2.11-r1: Standard (de)compression library
+sys-libs/zlib 1.2.11 1.2.11-r1 1.2.11-r2: Standard (de)compression library
 sys-power/acpi 1.6: Displays information about ACPI devices
 sys-power/acpid 2.0.28 2.0.29-r1: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.0 1.1: Replacement for xbacklight that uses the ACPI interface to set brightness
