@@ -469,10 +469,6 @@ media-libs/phonon vlc
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
 
-# Michael Sterrett <mr_bones_@gentoo.org> (04 Mar 2012)
-# arm is missing keywords for >=dev-libs/json-glib-0.12
-app-admin/syslog-ng json
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
 # it's masked in base profile and unmasked here (bug #396313).
