@@ -16,13 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 
-RDEPEND="dev-ada/xmlada[static-libs,gnat_2016=,gnat_2017=,gnat_2018=]"
+RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?]
+	dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018=]"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
 S="${WORKDIR}"/${MYP}-src
 
-REQUIRED_USE="|| ( shared static-libs static-pic )"
 PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
 
 src_configure() {
@@ -63,4 +63,5 @@ src_install() {
 			emake DESTDIR="${D}" libgpr.install.${kind}
 		fi
 	done
+	einstalldocs
 }
