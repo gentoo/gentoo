@@ -1048,7 +1048,7 @@ app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
 app-misc/mc 4.8.20-r1: GNU Midnight Commander is a text based file manager
-app-misc/media-player-info 22 23: A repository of data files describing media player capabilities
+app-misc/media-player-info 23: A repository of data files describing media player capabilities
 app-misc/mencal 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45-r1: Self-employed-mode software for 3COM/USR message modems
 app-misc/mime-types 9: Provides /etc/mime.types file
