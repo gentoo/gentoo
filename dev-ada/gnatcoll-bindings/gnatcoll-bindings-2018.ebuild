@@ -18,20 +18,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gmp iconv python readline +shared
 	static-libs static-pic syslog"
-# gtk iconv postgres pygobject projects sqlite tools
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
-	dev-ada/gnatcoll-core[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-ada/libgpr[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-ada/xmlada[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-lang/gnat-gpl:7.3.1
+	dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=]
+	dev-ada/gnatcoll-core[shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )"
-
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2018]"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	!gnat_2016 !gnat_2017 gnat_2018"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) !gnat_2016"
 
 S="${WORKDIR}"/${MYP}-src
 
@@ -74,5 +69,6 @@ src_install() {
 			done
 		fi
 	done
+	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
 }
