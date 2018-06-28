@@ -36,7 +36,7 @@ REQUIRED_USE="
 	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
 "
 
-PATCHES=( "${FILESDIR}/libdirpc.patch" "${FILESDIR}/pthread_lib.patch" )
+PATCHES=( "${FILESDIR}/libdirpc2.patch" "${FILESDIR}/pthread_lib2.patch" )
 
 src_prepare() {
 	sed -e 's/lib"/lib${LIB_SUFFIX}"/' -i CMakeLists.txt || die
