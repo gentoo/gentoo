@@ -116,7 +116,6 @@ dev-python/PyQt5 bluetooth location webengine
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
-kde-frameworks/kdelibs handbook policykit
 net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde

@@ -70,7 +70,6 @@ net-libs/libpcap bluetooth
 www-client/links livecd
 
 # needs udev
-kde-frameworks/kdelibs udisks upower
 media-libs/libsdl2 kms
 media-libs/mesa gbm dri3 d3d9
 x11-base/xorg-drivers video_cards_radeonsi
