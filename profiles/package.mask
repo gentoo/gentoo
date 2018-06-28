@@ -30,6 +30,10 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (28 Jun 2018)
+# Doesn't work at all (#645388). Removal in a month
+net-misc/whatportis
+
+# Pacho Ramos <pacho@gentoo.org> (28 Jun 2018)
 # Doesn't work, dead since 2005, bug #658984. Removal in a month.
 dev-python/pyrtf
 
