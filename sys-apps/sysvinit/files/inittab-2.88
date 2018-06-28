@@ -48,6 +48,10 @@ c6:2345:respawn:/sbin/agetty 38400 tty6 linux
 #s0:12345:respawn:/sbin/agetty -L 9600 ttyS0 vt100
 #s1:12345:respawn:/sbin/agetty -L 9600 ttyS1 vt100
 
+# CONTAINER CONSOLE (systemd-nspawn)
+# Be sure to disable the c1 - c6 entries to avoid a respawn loop.
+#cons:12345:respawn:/sbin/agetty --noclear --keep-baud console 115200,38400,9600 $TERM
+
 # What to do at the "Three Finger Salute".
 ca:12345:ctrlaltdel:/sbin/shutdown -r now
 
