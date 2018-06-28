@@ -805,7 +805,6 @@ app-eselect/eselect-php 0.9.4-r5: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 2.3: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20160516 20171204: Eselect module for management of multiple Python versions
-app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 3: Manage repos.conf via eselect
