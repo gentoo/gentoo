@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/pillow-4.3.0-no-scripts.patch
+)
+
 python_compile() {
 	# raqm not in portage yet
 	local args=(
