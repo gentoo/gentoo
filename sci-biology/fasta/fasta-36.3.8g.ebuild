@@ -43,6 +43,7 @@ src_prepare() {
 	export ALT="${ALT}"
 
 	epatch "${FILESDIR}"/${P}-ldflags.patch
+	epatch "${FILESDIR}"/${P}-replace_OVERFLOW.patch
 
 	sed \
 		-e 's:-ffast-math::g' \

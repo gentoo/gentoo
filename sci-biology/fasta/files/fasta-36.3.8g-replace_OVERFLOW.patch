@@ -1,0 +1,11 @@
+--- fasta-36.3.5e/src/dropnnw2.c
++++ fasta-36.3.5e/src/dropnnw2.c
+@@ -575,7 +575,7 @@ void do_work (const unsigned char *aa0, int n0,
+      * be rerun with 16 bits. If it is more, and we have tried at least
+      * 500 sequences, we switch off the 8-bit mode.
+      */
+-    if (score == OVERFLOW) {
++    if (score == OVERFLOW_SCORE) {
+       f_str->done_16bit++;
+       if(f_str->done_8bit>500 && (3*f_str->done_16bit)>(f_str->done_8bit))
+         f_str->try_8bit = 0;
