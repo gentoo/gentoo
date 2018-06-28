@@ -38,6 +38,9 @@ src_configure() {
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
 		-DINSTALL_UDEV_RULES=OFF
 	)
+	#https://gcc.gnu.org/bugzilla/show_bug.cgi?id=49653
+	replace-flags -O0 -O2
+	replace-flags -Os -O2
 	cmake-utils_src_configure
 }
 
