@@ -7,7 +7,6 @@
 	</longdescription>
 	<use>
 		<flag name="boost">Enable boost support</flag>
-		<flag name="desktop">Install the GUI desktop control panel</flag>
 		<flag name="gui">Install the GUI backup tool</flag>
 	</use>
 	<upstream>
