@@ -11,4 +11,4 @@ REQUIRED_USE=pcsc-lite? ( !openct !ctapi ) openct? ( !pcsc-lite !ctapi ) ctapi? 
 SLOT=0
 SRC_URI=https://github.com/OpenSC/OpenSC/releases/download/0.18.0/opensc-0.18.0.tar.gz
 _eclasses_=ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=45257d6cded78af11ff7990c8bb5e3da
+_md5_=d8fddc80a0e6fb83061dd6554b86130c
