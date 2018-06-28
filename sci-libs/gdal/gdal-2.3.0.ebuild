@@ -74,10 +74,9 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-soname.patch"
-	"${FILESDIR}/${P}-json-c-0.13.patch" # bug 641658
-	"${FILESDIR}/${P}-bashcomp-path.patch" # bug 641866
-	"${FILESDIR}/${P}-goocast.patch" # bug 656252
+	"${FILESDIR}/${PN}-2.2.3-soname.patch"
+	"${FILESDIR}/${PN}-2.2.3-bashcomp-path.patch" # bug 641866
+	"${FILESDIR}/${PN}-2.2.3-goocast.patch" # bug 656252
 )
 
 src_prepare() {
