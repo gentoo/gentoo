@@ -16,3 +16,4 @@ move kde-apps/okteta app-editors/okteta
 move games-puzzle/triptych-demo games-puzzle/triptych
 move media-sound/teamspeak-client-bin media-sound/teamspeak-client
 move media-sound/teamspeak-server-bin media-sound/teamspeak-server
+move sci-chemistry/mdanalysis sci-chemistry/MDAnalysis
