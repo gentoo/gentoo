@@ -40,4 +40,5 @@ src_install() {
 	rmdir "${D}"usr/share/doc/${PN} || die
 	mv "${D}"usr/share/examples/${PN} "${D}"usr/share/doc/${PF}/examples || die
 	rmdir "${D}"usr/share/examples || die
+	rm -r "${D}"/usr/share/gpr/manifests || die
 }
