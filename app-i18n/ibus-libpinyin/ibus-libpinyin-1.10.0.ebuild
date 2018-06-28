@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit autotools python-single-r1 gnome2-utils
+inherit autotools gnome2-utils python-single-r1
 
 BOOST_M4_GIT_VERSION=282b1e01f5bc5ae94347474fd8c35cb2f7a7e65d
 
@@ -49,10 +49,6 @@ src_configure() {
 		$(use_enable boost) \
 		$(use_enable lua lua-extension) \
 		$(use_enable opencc)
-}
-
-pkg_preinst() {
-	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
