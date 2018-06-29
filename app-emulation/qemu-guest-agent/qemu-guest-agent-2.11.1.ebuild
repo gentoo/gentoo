@@ -44,6 +44,7 @@ src_configure() {
 		--disable-linux-user
 		--disable-system
 		--disable-strip
+		--disable-tools
 		--disable-werror
 		--enable-guest-agent
 		--python="${PYTHON}"
