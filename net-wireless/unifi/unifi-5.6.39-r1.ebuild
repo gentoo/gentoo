@@ -58,7 +58,7 @@ src_install() {
 	done
 	dosym ../../../var/log/unifi /usr/lib/unifi/logs
 
-	newinitd "${FILESDIR}"/unifi.initd unifi
+	newinitd "${FILESDIR}"/unifi.initd-r1 unifi
 	systemd_dounit "${FILESDIR}"/unifi.service
 
 	newconfd "${FILESDIR}"/unifi.confd unifi

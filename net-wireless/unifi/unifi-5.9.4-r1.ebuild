@@ -4,7 +4,7 @@
 EAPI=6
 
 # Used, when it's an unstable, beta or release candidate
-RC_SUFFIX=""
+RC_SUFFIX="-b647df56b7"
 
 inherit systemd user
 
@@ -12,9 +12,8 @@ DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
 SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
-KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
-SLOT="0/5.6"
+SLOT="0/5.9"
 
 RDEPEND="dev-db/mongodb
 	virtual/jre:1.8"
@@ -36,7 +35,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Remove unneeded files Linux, Mac and Windows
-	rm -r lib/native/Linux/armhf lib/native/{Mac,Windows} || die
+	rm -r lib/native/Linux/{aarch64,armv7} lib/native/{Mac,Windows} || die
 
 	default
 }
@@ -58,7 +57,7 @@ src_install() {
 	done
 	dosym ../../../var/log/unifi /usr/lib/unifi/logs
 
-	newinitd "${FILESDIR}"/unifi.initd unifi
+	newinitd "${FILESDIR}"/unifi.initd-r1 unifi
 	systemd_dounit "${FILESDIR}"/unifi.service
 
 	newconfd "${FILESDIR}"/unifi.confd unifi
