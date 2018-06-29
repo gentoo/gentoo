@@ -13,11 +13,10 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/${PN}s.git/snapsho
 LICENSE="GPL-3 LGPL-3 LGPL-2.1 CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="libressl"
+IUSE=""
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-apps/util-linux"
 DEPEND="${RDEPEND}
 	sys-apps/help2man
