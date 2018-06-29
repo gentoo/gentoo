@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}/arm.patch"
 	"${FILESDIR}/neon.patch"
 	"${FILESDIR}/ppc64.patch"
+	"${FILESDIR}/non_x86.patch"
 )
 
 src_unpack() {
