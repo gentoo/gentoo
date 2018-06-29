@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit mount-boot toolchain-funcs
 
@@ -16,17 +16,13 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/popt
-	sys-libs/efivar
+	>=sys-libs/efivar-32-r1
 	>=sys-libs/libsmbios-2.3.2
 "
 DEPEND="
 	${RDEPEND}
 	sys-boot/gnu-efi
 "
-
-PATCHES=(
-	"${FILESDIR}/${P}-objcopy_detection.patch"
-)
 
 do_make() {
 	emake \
@@ -49,4 +45,5 @@ src_compile() {
 
 src_install() {
 	do_make DESTDIR="${D}" install
+	keepdir /var/lib/${PN}
 }
