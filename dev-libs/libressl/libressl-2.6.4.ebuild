@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Free version of the SSL/TLS protocol forked from OpenSSL"
 HOMEPAGE="https://www.libressl.org/"
@@ -37,6 +37,7 @@ src_prepare() {
 		configure || die "fixing CFLAGS failed"
 
 	default
+	eautoreconf
 }
 
 multilib_src_configure() {
