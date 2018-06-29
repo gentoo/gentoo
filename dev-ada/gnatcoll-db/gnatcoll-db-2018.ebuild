@@ -24,6 +24,7 @@ RDEPEND="dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=]
 	postgres? ( dev-db/postgresql:* )
 	xref? (
 		dev-ada/gnatcoll-bindings[iconv,shared?,static-libs?,static-pic?]
+		dev-ada/gnatcoll-bindings[gnat_2016=,gnat_2017=,gnat_2018=]
 	)"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018]"
