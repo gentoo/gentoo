@@ -33,8 +33,13 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
+	if use gnat_2017; then
+		GCC_VER=6.3.0
+	else
+		GCC_VER=7.3.1
+	fi
 	build () {
-		GCC=${CHOST}-gcc-7.3.1 gprbuild -j$(makeopts_jobs) -m -p -v \
+		GCC=${CHOST}-gcc-${GCC_VER} gprbuild -j$(makeopts_jobs) -m -p -v \
 			-XLIBRARY_TYPE=$2 -P $1/gnatcoll_$1.gpr -XBUILD="PROD" \
 			-XGNATCOLL_ICONV_OPT= -XGNATCOLL_PYTHON_CFLAGS="-I$(python_get_includedir)" \
 			-XGNATCOLL_PYTHON_LIBS=$(python_get_library_path) \
