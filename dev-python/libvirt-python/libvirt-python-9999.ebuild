@@ -11,7 +11,7 @@ inherit distutils-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://libvirt.org/libvirt-python.git"
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt-python.git"
 	SRC_URI=""
 	KEYWORDS=""
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"

@@ -26,6 +26,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export VARTEXFONTS=${T}/fonts
 	emake all \
 		CFLAGS="${CFLAGS}" \
 		CC="$(tc-getCC)"

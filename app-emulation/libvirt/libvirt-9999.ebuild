@@ -7,7 +7,7 @@ inherit autotools eutils user linux-info systemd readme.gentoo-r1 bash-completio
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
@@ -122,7 +122,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.2.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-4.5.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
 )
@@ -237,12 +237,6 @@ src_prepare() {
 }
 
 src_configure() {
-	#
-	# With 4.1.0 we should always enable networking support - otherwise not
-	# even minimal networking is available. Yes, this degrades
-	# USE=virt-network to a mere runtime-dep USE flag. But let's keep it
-	# for compatibility and convenience.
-	#
 	local myeconfargs=(
 		$(use_with apparmor)
 		$(use_with apparmor apparmor-profiles)
@@ -276,14 +270,13 @@ src_configure() {
 		$(use_with udev)
 		$(use_with uml)
 		$(use_with vepa virtualport)
+		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
 		$(use_with xen)
 		$(use_with xen xen-inotify)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
-
-		--with-network
 
 		--without-hal
 		--without-netcf
@@ -343,9 +336,7 @@ src_install() {
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var/cache
-	rm -rf "${D}"/var/run
-	rm -rf "${D}"/var/log
+	rm -rf "${D}"/var
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!

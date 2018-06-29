@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_P="${P/_rc/-rc}"
 
@@ -11,13 +11,13 @@ inherit distutils-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://libvirt.org/libvirt-python.git"
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt-python.git"
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 	RDEPEND="app-emulation/libvirt:=[-python(-)]"
 else
 	SRC_URI="http://libvirt.org/sources/python/${MY_P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 fi
 S="${WORKDIR}/${P%_rc*}"
