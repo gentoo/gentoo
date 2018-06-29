@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax"
 
-CDEPEND="
+DEPEND="
 	idn? ( net-dns/libidn:= )
 	libsecret? ( app-crypt/libsecret )
 	nls? ( virtual/libintl )
@@ -28,7 +28,7 @@ CDEPEND="
 	)
 "
 
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	net-mail/mailbase
 	mta? (
 		!mail-mta/courier
@@ -46,7 +46,7 @@ RDEPEND="${CDEPEND}
 	)
 "
 
-DEPEND="${CDEPEND}
+BDEPEND="${DEPEND}
 	doc? ( virtual/texi2dvi )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
