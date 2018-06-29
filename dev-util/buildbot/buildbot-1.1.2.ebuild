@@ -87,7 +87,6 @@ pkg_setup() {
 		The scripts can	run as a different user if desired."
 }
 
-
 src_install() {
 	distutils-r1_src_install
 
