@@ -71,7 +71,15 @@ python_compile_all() {
 
 python_test() {
 	"${PYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
-	virtx nosetests -vx Tests/test_*.py
+	# These excluded tests below depend heavily on freetype being at the exact
+	# same as the one pinned upstream. However, pillow supports a wider range
+	# of freetype versions. These tests are more useful to upstream developer
+	# than to us. Disabling. See bug 593816.
+	virtx nosetests -vx \
+		-e "test_multiline_spacing" \
+		-e "test_render_multiline(_text)?" \
+		-e "test_textsize_equal" \
+		Tests/test_*.py
 }
 
 python_install() {
