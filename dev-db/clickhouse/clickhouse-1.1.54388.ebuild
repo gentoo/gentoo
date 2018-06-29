@@ -96,7 +96,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( ${FILESDIR}/clickhouse-concatenate-python3.patch )
 S="${WORKDIR}/${MY_PN}-${PV}-${TYPE}"
 
 _clang_fullversion() {
