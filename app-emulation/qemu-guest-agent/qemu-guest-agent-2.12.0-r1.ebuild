@@ -20,8 +20,7 @@ LICENSE="GPL-2 BSD-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-libs/glib
-	x11-libs/pixman"
+RDEPEND="dev-libs/glib"
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
