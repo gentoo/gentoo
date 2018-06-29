@@ -937,7 +937,7 @@ app-metrics/collectd 5.7.2-r3: Collects system statistics and provides mechanism
 app-metrics/node_exporter 0.15.2: Prometheus exporter for machine metrics
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
-app-misc/asciinema 1.4.0 2.0.1: Command line recorder for asciinema.org service
+app-misc/asciinema 2.0.1: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
 app-misc/away 0.9.5-r2: Terminal locking program with few additional features
