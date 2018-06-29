@@ -36,7 +36,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Remove unneeded files Linux, Mac and Windows
-	rm -r lib/native/Linux/{aarch64,armv7} lib/native/{Mac,Windows} || die
+	rm -r lib/native/Linux/armhf lib/native/{Mac,Windows} || die
 
 	default
 }
