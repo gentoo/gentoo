@@ -743,14 +743,14 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
-app-emulation/libvirt 4.1.0-r3 4.3.0: C toolkit to manipulate virtual machines
+app-emulation/libvirt 4.3.0: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/lxc 2.1.1: LinuX Containers userspace utilities
 app-emulation/lxd 2.21: Fast, dense and secure container management
 app-emulation/nemu 1.4.0: ncurses interface for QEMU
 app-emulation/q4wine 1.3.6-r1: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.11.1-r2 2.12.0-r3: QEMU + Kernel-based Virtual Machine userland tools
-app-emulation/qemu-guest-agent 2.5.0 2.11.1: QEMU Guest Agent (qemu-ga) for use when running inside a VM
+app-emulation/qemu-guest-agent 2.11.1: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/runc 1.0.0_rc4 1.0.0_rc5-r1: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/spectemu 0.99.3: 48k ZX Spectrum Emulator
@@ -5002,7 +5002,7 @@ dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas
 dev-python/libnacl 1.4.4 1.6.1: Python ctypes wrapper for libsodium
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 4.1.0 4.3.0-r1: libvirt Python bindings
+dev-python/libvirt-python 4.3.0-r1: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.4: Library for managing Bugzilla bug reports from the CLI
 dev-python/linecache2 1.0.0: Backports of the linecache module
