@@ -222,6 +222,7 @@ PATCHES=(
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
 
 QA_PREBUILT="
+	usr/share/qemu/hppa-firmware.img
 	usr/share/qemu/openbios-ppc
 	usr/share/qemu/openbios-sparc64
 	usr/share/qemu/openbios-sparc32
