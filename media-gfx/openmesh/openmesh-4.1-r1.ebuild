@@ -19,11 +19,17 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="qt5 static-libs test"
 
 RDEPEND="
-	qt5? ( dev-qt/qtgui:5
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
 		dev-qt/qtopengl:5
-		media-libs/freeglut )"
+		dev-qt/qtwidgets:5
+		media-libs/freeglut
+	)
+"
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+"
 
 DOCS=( LICENSE/{LICENSE,README.txt} README CHANGELOG )
 
