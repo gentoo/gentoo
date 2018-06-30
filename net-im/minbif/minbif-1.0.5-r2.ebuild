@@ -76,7 +76,6 @@ src_install() {
 	fperms 700 /var/lib/minbif
 	fowners minbif:minbif /var/lib/minbif
 
-	dodoc ChangeLog README
 	doman man/minbif.8
 
 	if use xinetd; then
