@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit cmake-utils eutils user
+EAPI=6
+
+inherit cmake-utils user
 
 DESCRIPTION="an IRC gateway to IM networks"
 HOMEPAGE="https://symlink.me/projects/minbif/wiki/"
@@ -57,10 +58,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DCONF_PREFIX="${EPREFIX}"/etc/minbif
 		-DENABLE_VIDEO=OFF
-		$(cmake-utils_use_enable libcaca CACA)
-		$(cmake-utils_use_enable imlib IMLIB)
-		$(cmake-utils_use_enable pam PAM)
-		$(cmake-utils_use_enable gnutls TLS)
+		-DENABLE_TLS=$(usex gnutls)
+		-DENABLE_IMLIB=$(usex imlib)
+		-DENABLE_CACA=$(usex libcaca)
+		-DENABLE_PAM=$(usex pam)
 	)
 
 	cmake-utils_src_configure
