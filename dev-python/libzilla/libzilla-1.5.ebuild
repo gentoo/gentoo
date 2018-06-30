@@ -11,7 +11,7 @@ DESCRIPTION="Library for managing Bugzilla bug reports from the CLI"
 HOMEPAGE="https://github.com/monsieurp/libzilla"
 SRC_URI="https://github.com/monsieurp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 
