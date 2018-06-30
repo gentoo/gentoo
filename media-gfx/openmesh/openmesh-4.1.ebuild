@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit eutils cmake-utils
+EAPI=6
+
+inherit cmake-utils
 
 MY_PN="OpenMesh"
 MY_PV="${PV/_rc/-RC}"
@@ -23,6 +24,8 @@ RDEPEND="
 		media-libs/freeglut )"
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )"
+
+DOCS=( LICENSE/{LICENSE,README.txt} README CHANGELOG )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -53,11 +56,6 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-	dodoc LICENSE/* README CHANGELOG
 }
 
 src_test() {
