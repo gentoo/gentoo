@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit desktop git-r3 qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
 HOMEPAGE="https://www.librecad.org/"
-EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
+SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="3d debug doc tools"
 
@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/LibreCAD-${PV}"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 src_configure() {
 	eqmake5 -r
