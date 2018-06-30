@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/smplayer/${P}.tar.bz2"
 
 LICENSE="CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 CC0-1.0 GPL-2 GPL-3+ LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="dev-qt/qtcore:5"
