@@ -7491,7 +7491,7 @@ media-libs/libbdplus 0.1.2: Blu-ray library for BD+ decryption
 media-libs/libbluray 0.9.3 1.0.2: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r1: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
-media-libs/libcaca 0.99_beta18-r2 0.99_beta19: A library that creates colored ASCII-art graphics
+media-libs/libcaca 0.99_beta19: A library that creates colored ASCII-art graphics
 media-libs/libcanberra 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
