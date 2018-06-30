@@ -14,8 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="boost doc +empty firebird mysql odbc oracle postgres sqlite static-libs test"
 
-DEPEND="
-	boost? ( dev-libs/boost )
+RDEPEND="
 	firebird? ( dev-db/firebird )
 	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
@@ -23,7 +22,9 @@ DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite:3 )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	boost? ( dev-libs/boost )
+"
 
 src_configure() {
 	local mycmakeargs=(
