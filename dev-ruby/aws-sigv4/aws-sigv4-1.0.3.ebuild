@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="Amazon Web Services Signature Version 4 signing library"
-HOMEPAGE="http://aws.amazon.com/sdkforruby"
+HOMEPAGE="https://aws.amazon.com/sdk-for-ruby/"
 
 LICENSE="Apache-2.0"
 SLOT="1"
