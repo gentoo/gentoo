@@ -5,7 +5,7 @@ EAPI=6
 
 inherit cmake-utils user
 
-DESCRIPTION="an IRC gateway to IM networks"
+DESCRIPTION="IRC gateway to IM networks"
 HOMEPAGE="https://symlink.me/projects/minbif/wiki/"
 SRC_URI="https://symlink.me/attachments/download/148/${P}.tar.gz"
 
@@ -19,10 +19,13 @@ REQUIRED_USE="
 
 DEPEND="
 	>=net-im/pidgin-2.6
-	libcaca? ( media-libs/libcaca media-libs/imlib2 )
-	imlib? ( media-libs/imlib2 )
-	pam? ( sys-libs/pam )
 	gnutls? ( net-libs/gnutls )
+	imlib? ( media-libs/imlib2 )
+	libcaca? (
+		media-libs/imlib2
+		media-libs/libcaca
+	)
+	pam? ( sys-libs/pam )
 "
 RDEPEND="${DEPEND}
 	virtual/logger
