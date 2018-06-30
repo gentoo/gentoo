@@ -27,7 +27,7 @@ RDEPEND="dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=]
 		dev-ada/gnatcoll-bindings[gnat_2016=,gnat_2017=,gnat_2018=]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018]"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
 REQUIRED_USE="!gnat_2016
 	sqlite? ( sql )
