@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Hybrid between a make utility and a shell scripting language"
-HOMEPAGE="https://fbb-git.github.io/icmake/ https://github.com/fbb-git/icmake"
-SRC_URI="https://github.com/fbb-git/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://fbb-git.gitlab.io/icmake/ https://gitlab.com/fbb-git/icmake"
+SRC_URI="https://gitlab.com/fbb-git/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
