@@ -581,7 +581,7 @@ app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
 app-editors/retext 7.0.0: Simple editor for Markdown and reStructuredText
 app-editors/scite 3.5.5 4.0.2: A very powerful, highly configurable, small editor with syntax coloring.
 app-editors/shed 1.12 1.13: Simple Hex EDitor
-app-editors/tea 44.1.0: Small, lightweight Qt text editor
+app-editors/tea 44.1.1: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208 4.0.15_p20180117: uEmacs/PK is an enhanced version of MicroEMACS
