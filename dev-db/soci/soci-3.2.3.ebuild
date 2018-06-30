@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="boost doc +empty firebird mysql odbc oracle postgres sqlite"
+IUSE="boost doc +empty firebird mysql odbc oracle postgres sqlite static-libs test"
 
 DEPEND="
 	boost? ( dev-libs/boost )
@@ -35,6 +35,8 @@ src_configure() {
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_SQLITE3=$(usex sqlite)
+		-DSOCI_STATIC=$(usex static-libs)
+		-DSOCI_TESTS=$(usex test)
 		-DWITH_DB2=OFF
 	)
 	#use MYCMAKEARGS if you want enable IBM DB2 support
