@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}-src
 
-REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 )"
+REQUIRED_USE="!gnat_2016 ^^ ( gnat_2017 gnat_2018 )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
