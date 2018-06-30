@@ -451,11 +451,6 @@ media-sound/puddletag
 # Removal in 30 days.
 app-crypt/openpgp-keys-gentoo-mirror
 
-# Chema Alonso Josa <nimiux@gentoo.org> (28 May 2018)
-# Upstream is dead.
-# Masked for removal in 30 days. Bug #646118
-net-misc/urlview
-
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
 # Retained in tree only for users who need older versions
