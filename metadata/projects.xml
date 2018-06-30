@@ -680,6 +680,7 @@
     <description>Community Resources is an umbrella project comprising the Recruiters, Retirement and Comminity Relations subprojects. It acts as a central place for all the human-resources related projects.</description>
     <subproject ref="comrel@gentoo.org" inherit-members="1"/>
     <subproject ref="mentors@gentoo.org" inherit-members="1"/>
+    <subproject ref="proctors@gentoo.org"/>
     <subproject ref="recruiters@gentoo.org" inherit-members="1"/>
   </project>
   <project>
@@ -2888,6 +2889,33 @@ developers and volunteer mentors.</description>
     <member>
       <email>stasibear@gentoo.org</email>
       <name>Erik Mackdanz</name>
+    </member>
+  </project>
+  <project>
+    <email>proctors@gentoo.org</email>
+    <name>Gentoo Proctors</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Proctors</url>
+    <description>The Gentoo Proctors make sure our communication mediums are a friendly and productive place.</description>
+    <member>
+      <email>dolsen@gentoo.org</email>
+      <name>Brian Dolbec</name>
+    </member>
+    <member>
+      <email>leio@gentoo.org</email>
+      <name>Mart Raudsepp</name>
+    </member>
+    <member>
+      <email>rich0@gentoo.org</email>
+      <name>Richard Freeman</name>
+    </member>
+    <member>
+      <email>tamiko@gentoo.org</email>
+      <name>Matthias Maier</name>
+    </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+      <role>comrel liaison</role>
     </member>
   </project>
   <project>
