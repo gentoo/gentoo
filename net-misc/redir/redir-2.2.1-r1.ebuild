@@ -11,7 +11,7 @@ SRC_URI="http://sammy.net/~sammy/hacks/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~sparc x86 ~amd64-fbsd"
 
 PATCHES=( "${FILESDIR}/${P}-include.patch" )
 DOCS=( CHANGES README transproxy.txt )
