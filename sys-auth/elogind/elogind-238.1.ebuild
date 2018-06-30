@@ -39,6 +39,8 @@ PDEPEND="
 	policykit? ( sys-auth/polkit )
 "
 
+DOCS=( src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
+
 PATCHES=( "${FILESDIR}/${P}-docs.patch" )
 
 pkg_setup() {

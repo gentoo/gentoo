@@ -76,7 +76,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DKEXI_MIGRATEMANAGER_DEBUG=$(usex debug)
-		-DKEXI_SCRIPTING_DEBUG=$(usex debug)
 		-DKEXI_AUTORISE_TABBED_TOOLBAR=$(usex experimental)
 		-DKEXI_SCRIPTS_SUPPORT=$(usex experimental)
 		$(cmake-utils_use_find_package marble KexiMarble)
@@ -84,5 +83,7 @@ src_configure() {
 		$(cmake-utils_use_find_package mysql MySQL)
 		$(cmake-utils_use_find_package postgres PostgreSQL)
 	)
+	use experimental && mycmakeargs+=( -DKEXI_SCRIPTING_DEBUG=$(usex debug) )
+
 	kde5_src_configure
 }
