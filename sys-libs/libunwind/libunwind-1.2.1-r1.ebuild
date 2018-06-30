@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-inherit eutils libtool multilib-minimal
+inherit autotools eutils libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2-ia64-undwarf.patch
 	"${FILESDIR}"/${PN}-1.2-ia64-ptrace-coredump.patch
 	"${FILESDIR}"/${PN}-1.2-ia64-missing.patch
+	"${FILESDIR}"/${PN}-1.2.1-fix_version_macros.patch
 )
 
 src_prepare() {
@@ -57,6 +58,7 @@ src_prepare() {
 	sed -i -e '/^SUBDIRS/s:tests::' Makefile.in || die
 
 	elibtoolize
+	eautoreconf
 }
 
 multilib_src_configure() {
