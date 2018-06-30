@@ -18,10 +18,10 @@ IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 
 RDEPEND="
 	dev-ada/libgpr[gnat_2016=,gnat_2017=,gnat_2018=]
-	dev-ada/libgpr[shared?,static-libs?,static-pic?]"
-DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]
+	dev-ada/libgpr[shared?,static-libs?,static-pic?]
 	!dev-ada/gnatcoll"
+DEPEND="${RDEPEND}
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
 REQUIRED_USE="!gnat_2016"
 
