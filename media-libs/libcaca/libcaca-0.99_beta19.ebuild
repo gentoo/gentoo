@@ -84,6 +84,9 @@ src_prepare() {
 		append-cflags -DX_DISPLAY_MISSING
 	fi
 
+	# bug 653400
+	append-cxxflags -std=c++11
+
 	# Removed 'has_version '>=dev-texlive/texlive-latex-2013' &&' that prefixed this
 	# patch before wrt #517474
 	epatch "${FILESDIR}"/${PN}-0.99_beta18-latex_hacks.patch
