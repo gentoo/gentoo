@@ -44,17 +44,13 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=""
-
-	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_UNIT_TESTS=TRUE"
-
-	# Disable python bindings until someone wants them.
-	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_PYTHON_BINDINGS=FALSE"
-	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_PYTHON_UNIT_TESTS=FALSE"
-
-	if ! use qt5; then
-		mycmakeargs="${mycmakeargs} -DBUILD_APPS=OFF"
-	fi
+	local mycmakeargs=(
+		-DOPENMESH_BUILD_UNIT_TESTS=TRUE
+		# Disable python bindings until someone wants them.
+		-DOPENMESH_BUILD_PYTHON_BINDINGS=FALSE
+		-DOPENMESH_BUILD_PYTHON_UNIT_TESTS=FALSE
+		-DBUILD_APPS=$(usex qt5)
+	)
 
 	cmake-utils_src_configure
 }
