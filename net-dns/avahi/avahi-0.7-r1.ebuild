@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	dev-libs/libdaemon
 	dev-libs/expat
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
-	gdbm? ( sys-libs/gdbm[${MULTILIB_USEDEP}] )
+	gdbm? ( sys-libs/gdbm:=[${MULTILIB_USEDEP}] )
 	qt5? ( dev-qt/qtcore:5 )
 	gtk? ( x11-libs/gtk+:2[${MULTILIB_USEDEP}] )
 	gtk3? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
