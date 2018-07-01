@@ -1,8 +1,17 @@
 diff --git a/Make.inc b/Make.inc
-index e30c150..e6fdbb2 100644
+index 7f3a37c..3560d93 100644
 --- a/Make.inc
 +++ b/Make.inc
-@@ -399,7 +399,7 @@ ifneq ($(OS), WINNT)
+@@ -180,7 +180,7 @@ USE_GPL_LIBS ?= 1
+ # Directories where said libraries get installed to
+ prefix ?= $(BUILDROOT)/julia-$(JULIA_COMMIT)
+ bindir := $(prefix)/bin
+-libdir := $(prefix)/lib
++libdir := $(prefix)/GENTOOLIBDIR
+ libexecdir := $(prefix)/libexec
+ datarootdir := $(prefix)/share
+ docdir := $(datarootdir)/doc/julia
+@@ -400,7 +400,7 @@ ifneq ($(OS), WINNT)
  JCXXFLAGS += -pedantic
  endif
  DEBUGFLAGS := -O0 -ggdb2 -DJL_DEBUG_BUILD -fstack-protector-all
@@ -11,7 +20,7 @@ index e30c150..e6fdbb2 100644
  endif
  
  ifeq ($(USECLANG),1)
-@@ -410,7 +410,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+@@ -411,7 +411,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS := -fasynchronous-unwind-tables
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti -pedantic
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -20,7 +29,7 @@ index e30c150..e6fdbb2 100644
  ifeq ($(OS), Darwin)
  ifeq ($(USE_LIBCPP), 1)
  MACOSX_VERSION_MIN := 10.8
-@@ -439,7 +439,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+@@ -440,7 +440,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS :=
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -60,7 +69,7 @@ index 743804d..e06dde0 100644
  cleanall: clean
  
 diff --git a/src/Makefile b/src/Makefile
-index f71f53d..7cdd23f 100644
+index 9fde74d..e01ab2e 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -85,20 +85,8 @@ PUBLIC_HEADER_TARGETS := $(addprefix $(build_includedir)/julia/,$(notdir $(PUBLI
