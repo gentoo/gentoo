@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~thev00d00/distfiles/dev-python/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

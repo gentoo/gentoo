@@ -1,12 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils toolchain-funcs xdg-utils
+EAPI=6
+inherit desktop gnome2-utils toolchain-funcs xdg-utils vcs-snapshot
 
 DESCRIPTION="Quick Image Viewer"
-HOMEPAGE="http://spiegl.de/qiv/"
-SRC_URI="http://spiegl.de/qiv/download/${P}.tgz"
+HOMEPAGE="http://spiegl.de/qiv/ https://bitbucket.org/ciberandy/qiv"
+SRC_URI="https://bitbucket.org/ciberandy/qiv/get/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,12 +16,20 @@ IUSE="exif lcms magic"
 RDEPEND=">=x11-libs/gtk+-2.12:2
 	media-libs/imlib2[X]
 	exif? ( media-libs/libexif )
-	lcms? ( media-libs/lcms:2 )
+	lcms? (
+		media-libs/lcms:2
+		media-libs/tiff:0
+		virtual/jpeg:0
+	)
 	magic? ( sys-apps/file )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-optional-tiff.patch )
+
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's:$(CC) $(CFLAGS):$(CC) $(LDFLAGS) $(CFLAGS):' \
 		Makefile || die
