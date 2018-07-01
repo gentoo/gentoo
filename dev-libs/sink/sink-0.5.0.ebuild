@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KDE_TEST="true" # build breaks otherwise. tests not isolated.
+KDE_TEST="false" # build breaks otherwise. tests not isolated.
 inherit kde5
 
 DESCRIPTION="A data access layer handling synchronization, caching and indexing"
