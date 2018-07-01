@@ -424,11 +424,6 @@ media-plugins/gst-plugins-schroedinger
 dev-lang/php:7.3
 virtual/httpd-php:7.3
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 Jun 2018)
-# Dead upstream, no more revdeps after LO dropped support.
-# Masked for removal in 30 days, bug #657400
-media-libs/libgltf
-
 # Mike Pagano <mpagano@gentoo.org> (30 May 2018)
 # Masking due to bad commit in the networking stack.
 =sys-kernel/gentoo-sources-4.14.46
