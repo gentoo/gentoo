@@ -224,12 +224,6 @@ dev-python/PyQt4
 dev-python/pyside:0
 dev-python/shiboken:0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal in 30 days, bug #644728
-app-i18n/ibus-qt
-app-i18n/qimhangul
-=app-i18n/tagainijisho-1.0*
-
 # Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
