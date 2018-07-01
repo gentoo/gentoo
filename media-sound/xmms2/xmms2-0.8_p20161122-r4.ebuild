@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
 
@@ -20,7 +20,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~x86"
 
-IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac fluidsynth gvfs ices
+IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac fluidsynth ices
 jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa opus oss
 perl phonehome pulseaudio python ruby samba +server sid sndfile speex
 test valgrind +vorbis vocoder wavpack xml zeroconf"
@@ -39,7 +39,6 @@ RDEPEND="server? (
 		ffmpeg? ( virtual/ffmpeg )
 		flac? ( media-libs/flac )
 		fluidsynth? ( media-sound/fluidsynth )
-		gvfs? ( gnome-base/gnome-vfs )
 		ices? ( media-libs/libogg
 			media-libs/libshout
 			media-libs/libvorbis )
@@ -123,6 +122,7 @@ src_prepare() {
 	cd .waf* || die
 	# needs port
 	#epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch #578778
+	eapply "${FILESDIR}/${PN}"-0.8_p20161122-perl-no-local.patch
 	cd "${S}"
 
 	eapply "${FILESDIR}/${PN}"-0.8-ffmpeg2.patch #536232
@@ -199,7 +199,7 @@ src_configure() {
 					"ffmpeg		flv"
 					"ffmpeg		tta"
 					"DISABLED	gme" # not in tree
-					"		gvfs"
+					"DISABLED	gvfs" # obsolete #647604
 					"ENABLED	html"
 					"		ices"
 					"ENABLED	icymetaint"
