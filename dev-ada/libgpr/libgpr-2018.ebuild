@@ -19,9 +19,7 @@ IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?]
 	dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018=]"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016?]
-	dev-ada/gprbuild[gnat_2017?]
-	dev-ada/gprbuild[gnat_2018?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]"
 
 S="${WORKDIR}"/${MYP}-src
 
