@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib toolchain-funcs multilib-minimal flag-o-matic
+inherit multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="Various utilities dealing with the PCI bus"
 HOMEPAGE="http://mj.ucw.cz/sw/pciutils/ https://git.kernel.org/?p=utils/pciutils/pciutils.git"
@@ -49,7 +49,7 @@ switch_config() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	if use static-libs ; then
 		cp -pPR "${S}" "${S}.static" || die
