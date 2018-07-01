@@ -21,7 +21,7 @@ SLOT="0"
 # Note: Do not list bitbang_spi as it is not a programmer; it's a backend used
 # by some other spi programmers.
 IUSE_PROGRAMMERS="
-atahpt +atapromise +atavia +buspirate_spi ch341a_spi dediprog +drkaiser +dummy
+atahpt +atapromise +atavia +buspirate_spi +ch341a_spi +dediprog +drkaiser +dummy
 +ft2232_spi +gfxnvidia +internal +it8212 +linux_spi mstarddc_spi +nic3com
 +nicintel +nicintel_eeprom +nicintel_spi nicnatsemi +nicrealtek +ogp_spi
 +pickit2_spi +pony_spi +rayer_spi +satamv +satasii +serprog +usbblaster_spi"
