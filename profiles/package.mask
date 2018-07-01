@@ -210,10 +210,6 @@ app-eselect/eselect-qtgraphicssystem
 <media-sound/murmur-1.3
 <net-analyzer/ostinato-0.9_p20180522
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal. Bugs #644364, #644368, #644362
-dev-python/pivy
-
 # Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
