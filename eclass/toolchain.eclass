@@ -1175,10 +1175,12 @@ toolchain_src_configure() {
 
 	### library options
 
-	if ! is_gcj ; then
-		confgcc+=( --disable-libgcj )
-	elif use awt ; then
-		confgcc+=( --enable-java-awt=gtk )
+	if tc_version_is_between 3.0 7.0 ; then
+		if ! is_gcj ; then
+			confgcc+=( --disable-libgcj )
+		elif use awt ; then
+			confgcc+=( --enable-java-awt=gtk )
+		fi
 	fi
 
 	if tc_version_is_at_least 4.2 ; then
