@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Fuzzy text selector (interactive grep) for console
+EAPI=6
+HOMEPAGE=https://github.com/jhawthorn/fzy
+IUSE=test savedconfig
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/jhawthorn/fzy/archive/2697c02618d908e5bdcae93ab4815b04c49bd25e.tar.gz -> fzy-2697c02618d908e5bdcae93ab4815b04c49bd25e.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=141b200183b4f6f91a010f14f746188a
