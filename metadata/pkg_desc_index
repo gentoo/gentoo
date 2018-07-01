@@ -6813,7 +6813,7 @@ kde-frameworks/kdewebkit 5.46.0: Framework providing KDE integration of QtWebKit
 kde-frameworks/kdnssd 5.46.0: Framework for network service discovery using Zeroconf
 kde-frameworks/kdoctools 5.46.0: Tools to generate documentation in various formats from DocBook files
 kde-frameworks/kemoticons 5.46.0: Framework for converting text emoticons to graphical representations
-kde-frameworks/kf-env 4: Environment setting required for all KDE Frameworks apps to run
+kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.46.0: Library for extracting file metadata
 kde-frameworks/kglobalaccel 5.46.0: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.46.0: Framework providing assorted high-level user interface components
