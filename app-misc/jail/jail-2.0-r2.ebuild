@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
+EAPI=7
 inherit eutils flag-o-matic
 
 DESCRIPTION="Builds a chroot and configures all the required files, directories and libraries"
@@ -11,20 +10,23 @@ SRC_URI="https://github.com/spiculator/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-DEPEND=">=sys-apps/sed-4"
-RDEPEND="dev-lang/perl
-	dev-util/strace"
+RDEPEND="
+	dev-lang/perl
+	dev-util/strace
+"
+DEPEND=""
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.9-gentoo.patch \
-		"${FILESDIR}"/${PN}-1.9-wrongshell.patch \
-		"${FILESDIR}"/${PN}-1.9-multiuser-rsa.patch \
-		"${FILESDIR}"/${PN}-1.9-ldflags.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9-gentoo.patch
+	"${FILESDIR}"/${PN}-1.9-wrongshell.patch
+	"${FILESDIR}"/${PN}-1.9-multiuser-rsa.patch
+	"${FILESDIR}"/${PN}-1.9-ldflags.patch
+	"${FILESDIR}"/${PN}-2.0-sysmacros.patch
+	"${FILESDIR}"/${PN}-2.0-symlinks.patch #659094
+)
 
 src_compile() {
 	# configuration files should be installed in /etc not /usr/etc
@@ -34,8 +36,6 @@ src_compile() {
 	sed -i -e "s:usr/local:${D}/usr:g" \
 		-e "s:^COPT =.*:COPT = -Wl,-z,no:g" src/Makefile || die
 
-	# Below didn't work. Don't know why
-	#append-ldflags -Wl,-z,now
 	emake -C src CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
