@@ -54,7 +54,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.0-fix_build_system.patch
+	"${FILESDIR}"/${PN}-0.6.3-fix_build_system.patch
 )
 
 src_prepare() {
@@ -85,12 +85,8 @@ src_prepare() {
 	liblapack="lib${liblapack#-l}"
 
 	sed -i \
-		-e "s|\(JULIA_EXECUTABLE = \)\(\$(JULIAHOME)/julia\)|\1 LD_LIBRARY_PATH=\$(BUILD)/$(get_libdir) \2|" \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|LIBDIR = lib|LIBDIR = $(get_libdir)|" \
-		-e "s|/usr/lib|${EPREFIX}/usr/$(get_libdir)|" \
-		-e "s|/usr/include|${EPREFIX}/usr/include|" \
-		-e "s|\$(BUILD)/lib|\$(BUILD)/$(get_libdir)|" \
+		-e "s|GENTOOLIBDIR|$(get_libdir)|" \
 		-e "s|^JULIA_COMMIT = .*|JULIA_COMMIT = v${PV}|" \
 		-e "s|-lblas|$($(tc-getPKG_CONFIG) --libs blas)|" \
 		-e "s|= libblas|= ${libblas}|" \
@@ -187,8 +183,4 @@ src_install() {
 	mv "${ED}"/usr/share/doc/julia/{examples,html} \
 		"${ED}"/usr/share/doc/${PF} || die
 	rmdir "${ED}"/usr/share/doc/julia || die
-	if [[ $(get_libdir) != lib ]]; then
-		mkdir -p "${ED}"/usr/$(get_libdir) || die
-		mv "${ED}"/usr/lib/julia "${ED}"/usr/$(get_libdir)/julia || die
-	fi
 }
