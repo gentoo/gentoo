@@ -577,10 +577,6 @@ virtual/jre:9
 # (<0.6) that have been punted from the tree.
 net-misc/cocaine-core
 
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Dec 2017)
-# Depends on dead Qt4, upstream porting inquiry pending. Bug #631788
-games-kids/crayon-physics
-
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
 # Depends on dead Qt4. Last-rites on hold for chance of Qt5-port. Bug #620702
 <media-gfx/freecad-0.17
