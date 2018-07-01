@@ -3,9 +3,14 @@
 
 # Mirror profile/amd64/no-multilib/package.use.mask
 
+# Matthias Maier <tamiko@gentoo.org> (01 Jul 2018)
+# xen suppor trequires app-emulation/xen-tools[hvm], which is masked
+app-emulation/libvirt xen
+
 # Yixun Lan <dlan@gentoo.org> (12 Jul 2017)
 # GLEP 73 Immutability, USE=ovmf requires hvm
 app-emulation/xen-tools ovmf
+
 
 # Mike Frysinger <vapier@gentoo.org> (12 Aug 2016)
 # Requires sys-boot/grub:0 which is masked here.
