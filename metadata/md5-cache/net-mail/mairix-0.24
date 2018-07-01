@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=zlib? ( sys-libs/zlib ) bzip2? ( app-arch/bzip2 ) sys-devel/flex sys-devel/bison
+DESCRIPTION=Indexes and searches Maildir/MH folders
+EAPI=6
+HOMEPAGE=http://www.rpcurnow.force9.co.uk/mairix/
+IUSE=zlib bzip2
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-macos
+LICENSE=GPL-2
+RDEPEND=zlib? ( sys-libs/zlib ) bzip2? ( app-arch/bzip2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/mairix/mairix-0.24.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=be923e355dd7f7ea23c2140aa7c7db93
