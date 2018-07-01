@@ -8152,7 +8152,7 @@ media-sound/wildmidi 0.2.3.5: Midi processing library and a midi player using th
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.2.3-r1: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8-r4 0.8_p20161122: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8_p20161122: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
 media-sound/zynaddsubfx 3.0.3: ZynAddSubFX is an opensource software synthesizer
