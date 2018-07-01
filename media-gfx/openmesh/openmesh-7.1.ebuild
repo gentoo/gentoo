@@ -1,16 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit eutils cmake-utils
+EAPI=6
+
+inherit cmake-utils
 
 MY_PN="OpenMesh"
 MY_PV="${PV/_rc/-RC}"
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 DESCRIPTION="A generic data structure to represent and manipulate polygonal meshes"
-HOMEPAGE="http://www.openmesh.org/"
-SRC_URI="http://openmesh.org/media/Releases/${MY_PV/-RC/RC}/${MY_PN}-${MY_PV}.tar.bz2"
+HOMEPAGE="https://www.openmesh.org/"
+SRC_URI="https://openmesh.org/media/Releases/${MY_PV/-RC/RC}/${MY_PN}-${MY_PV}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="4"
@@ -18,11 +19,17 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="qt5 static-libs test"
 
 RDEPEND="
-	qt5? ( dev-qt/qtgui:5
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
 		dev-qt/qtopengl:5
-		media-libs/freeglut )"
+		dev-qt/qtwidgets:5
+		media-libs/freeglut
+	)
+"
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+"
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -44,24 +51,12 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=""
-
-	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_UNIT_TESTS=TRUE"
-
-	# Disable python bindings until someone wants them.
-	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_PYTHON_BINDINGS=FALSE"
-	mycmakeargs="${mycmakeargs} -DOPENMESH_BUILD_PYTHON_UNIT_TESTS=FALSE"
-
-	if ! use qt5; then
-		mycmakeargs="${mycmakeargs} -DBUILD_APPS=OFF"
-	fi
+	local mycmakeargs=(
+		-DBUILD_APPS=$(usex qt5)
+		-DOPENMESH_BUILD_UNIT_TESTS=$(usex test)
+	)
 
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-	dodoc LICENSE/* README CHANGELOG
 }
 
 src_test() {

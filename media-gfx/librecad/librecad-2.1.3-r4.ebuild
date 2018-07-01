@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
 HOMEPAGE="https://www.librecad.org/"
-SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.zip -> ${P}.zip"
+SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,29 +15,24 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="3d debug doc tools"
 
-DEPEND="
+RDEPEND="
 	dev-cpp/muParser
 	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qthelp:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
 	media-libs/freetype:2"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+	dev-qt/qthelp:5
+	dev-qt/qtxml:5
+"
 
-RDEPEND="${DEPEND}"
 S="${WORKDIR}/LibreCAD-${PV}"
 
-src_prepare() {
-# 	epatch "${FILESDIR}/iota-fix-2.1.1.patch"
-
-	# currently RS_VECTOR3D causes an internal compiler error on GCC-4.8
-	if ! use 3d; then
-		sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
-	fi
-}
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 src_configure() {
 	eqmake5 -r

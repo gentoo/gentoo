@@ -1,20 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
-
-KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Makes the illusion of embedding SQL queries in the regular C++ code"
 HOMEPAGE="http://soci.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+
 LICENSE="Boost-1.0"
 SLOT="0"
-IUSE="boost doc +empty firebird mysql odbc oracle postgres sqlite"
+KEYWORDS="~amd64 ~x86"
+IUSE="boost doc +empty firebird mysql odbc oracle postgres sqlite static-libs test"
 
-DEPEND="boost? ( dev-libs/boost )
+RDEPEND="
 	firebird? ( dev-db/firebird )
 	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
@@ -22,25 +22,29 @@ DEPEND="boost? ( dev-libs/boost )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite:3 )
 "
-RDEPEND=${DEPEND}
+DEPEND="${RDEPEND}
+	boost? ( dev-libs/boost )
+"
 
 src_configure() {
-	local mycmakeargs="$(cmake-utils_use_with boost )
-		$(cmake-utils_use empty SOCI_EMPTY)
-		$(cmake-utils_use_with firebird FIREBIRD)
-		$(cmake-utils_use_with mysql MYSQL)
-		$(cmake-utils_use_with odbc ODBC)
-		$(cmake-utils_use_with oracle ORACLE)
-		$(cmake-utils_use_with postgres POSTGRESQL)
-		$(cmake-utils_use_with sqlite SQLITE3)
-		-DWITH_DB2=OFF" #use MYCMAKEARGS if you want enable IBM DB2 support
+	local mycmakeargs=(
+		-DWITH_BOOST=$(usex boost)
+		-DSOCI_EMPTY=$(usex empty)
+		-DWITH_FIREBIRD=$(usex firebird)
+		-DWITH_MYSQL=$(usex mysql)
+		-DWITH_ODBC=$(usex odbc)
+		-DWITH_ORACLE=$(usex oracle)
+		-DWITH_POSTGRESQL=$(usex postgres)
+		-DWITH_SQLITE3=$(usex sqlite)
+		-DSOCI_STATIC=$(usex static-libs)
+		-DSOCI_TESTS=$(usex test)
+		-DWITH_DB2=OFF
+	)
+	#use MYCMAKEARGS if you want enable IBM DB2 support
 	cmake-utils_src_configure
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( doc/. )
 	cmake-utils_src_install
-	dodoc AUTHORS CHANGES
-	if use doc; then
-		dohtml -r doc/*
-	fi
 }
