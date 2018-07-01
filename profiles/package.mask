@@ -213,7 +213,6 @@ app-eselect/eselect-qtgraphicssystem
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
 # Depends on dead Qt4. Masked for removal. Bugs #644364, #644368, #644362
 dev-python/pivy
-media-libs/emfengine
 
 # Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
 # Doesn't pass QA full boot test
