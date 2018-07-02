@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils eutils xdg-utils
+inherit cmake-utils desktop xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/tora-tool/tora"
@@ -15,7 +15,8 @@ fi
 
 DESCRIPTION="SQL IDE for Oracle, MySQL and PostgreSQL dbs"
 HOMEPAGE="https://github.com/tora-tool/tora/wiki"
-IUSE="doc mysql oracle postgres"
+IUSE="doc mysql oracle +postgres"
+REQUIRED_USE="|| ( mysql oracle postgres )"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -29,7 +30,7 @@ RDEPEND="
 	dev-qt/qtsql:5[mysql?,postgres?]
 	dev-qt/qtwidgets:5
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
-	oracle? ( =dev-db/oracle-instantclient-basic-11* )
+	oracle? ( || ( =dev-db/oracle-instantclient-basic-11* dev-db/oracle-instantclient ) )
 	postgres? ( dev-db/postgresql:* )
 "
 DEPEND="${RDEPEND}
@@ -38,20 +39,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
-PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
-
-pkg_setup() {
-	if use oracle && [[ -z "$ORACLE_HOME" ]]; then
-		eerror "ORACLE_HOME variable is not set."
-		eerror
-		eerror "You must install Oracle >= 8i client for Linux in"
-		eerror "order to compile TOra with Oracle support."
-		eerror
-		eerror "You can download the Oracle software from"
-		eerror "http://www.oracle.com/technetwork/database/features/instant-client/index.html"
-		die
-	fi
-}
+PATCHES=(
+	"${FILESDIR}/${P}-missing-header.patch"
+	"${FILESDIR}/${P}-qt-5.11.0.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
