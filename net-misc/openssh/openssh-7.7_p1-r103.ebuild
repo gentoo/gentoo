@@ -393,6 +393,11 @@ src_install() {
 	if use ldap && [[ -n ${LDAP_PATCH} ]] ; then
 		insinto /etc/openldap/schema/
 		doins openssh-lpk-{sun,openldap}.schema
+
+		# Set the same libexec directory as in src_configure
+		sed -i \
+			-e "s:libexec/openssh:$(get_libdir)/misc:" \
+			"${ED%/}/usr/$(get_libdir)/misc/ssh-ldap-wrapper" || die
 	fi
 
 	doman contrib/ssh-copy-id.1
