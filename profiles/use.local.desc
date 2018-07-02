@@ -947,6 +947,7 @@ dev-ada/gprbuild:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gprbuild:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/gtkada:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gtkada:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
+dev-ada/gtkada:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/gtkada:shared - Build gtkada as shared library
 dev-ada/libadalang:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/libadalang:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
