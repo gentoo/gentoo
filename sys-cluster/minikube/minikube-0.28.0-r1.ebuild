@@ -26,18 +26,19 @@ RESTRICT="test"
 
 src_prepare() {
 	default
-	sed -i -e 's/ -s -w/ -w/' -e 's#GOBIN=$(GOPATH)/bin go get github.com/jteeuwen/go-bindata/...##' -e 's#$(GOPATH)/bin/go-bindata#/usr/bin/go-bindata#g' src/${EGO_PN}/Makefile || die
+	sed -i -e 's/ -s -w/ -w/' -e 's#.*GOBIN=$(GOPATH)/bin go get github.com/jteeuwen/go-bindata/...##' -e 's#$(GOPATH)/bin/go-bindata#/usr/bin/go-bindata#g' src/${EGO_PN}/Makefile || die
 	sed -i -e "s/get_commit(), get_tree_state(), get_version()/get_commit(), 'gitTreeState=clean', get_version()/"  src/${EGO_PN}/hack/get_k8s_version.py || die
 }
 
 src_compile() {
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
-	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -C src/${EGO_PN}
+	LDFLAGS="" GOPATH="${WORKDIR}/${P}" emake -C src/${EGO_PN} out/docker-machine-driver-kvm2 out/localkube out/minikube-linux-amd64
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin out/minikube
+	newbin out/minikube-linux-amd64 minikube
+	dobin out/{docker-machine-driver-kvm2,localkube}
 	dodoc -r docs CHANGELOG.md README.md
 	popd || die
 }
