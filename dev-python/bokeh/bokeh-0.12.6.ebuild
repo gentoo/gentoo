@@ -47,6 +47,7 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/flexx[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/nbformat[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
