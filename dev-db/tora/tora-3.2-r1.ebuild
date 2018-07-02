@@ -15,7 +15,7 @@ fi
 
 DESCRIPTION="SQL IDE for Oracle, MySQL and PostgreSQL dbs"
 HOMEPAGE="https://github.com/tora-tool/tora/wiki"
-IUSE="doc mysql oracle pch +postgres"
+IUSE="doc mysql oracle +postgres"
 REQUIRED_USE="|| ( mysql oracle postgres )"
 
 SLOT="0"
@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
+
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -67,7 +69,7 @@ src_configure() {
 		-DLOKI_INCLUDE_DIR="$(pkg-config --variable=includedir ferrisloki)/FerrisLoki"
 		$(cmake-utils_use_find_package doc Doxygen)
 		-DENABLE_ORACLE=$(usex oracle)
-		-DUSE_PCH=$(usex pch)
+		-DUSE_PCH=OFF
 		-DENABLE_PGSQL=$(usex postgres)
 	)
 	cmake-utils_src_configure
