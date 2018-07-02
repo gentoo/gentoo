@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils xdg-utils
+inherit cmake-utils desktop xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/tora-tool/tora"
