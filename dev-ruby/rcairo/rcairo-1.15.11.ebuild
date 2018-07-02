@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_NAME="cairo"
 
@@ -24,7 +24,7 @@ IUSE=""
 
 SLOT="0"
 LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND="${RDEPEND}
 	>=x11-libs/cairo-1.2.0[svg]"
