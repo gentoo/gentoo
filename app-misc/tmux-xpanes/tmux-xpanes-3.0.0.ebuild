@@ -31,6 +31,6 @@ src_install() {
 	einstalldocs
 	if use zsh-completion; then
 		insinto /usr/share/zsh/site-functions
-		doins contrib/completion/zsh/*
+		doins completion/zsh/*
 	fi
 }
