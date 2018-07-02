@@ -3091,11 +3091,6 @@ developers and volunteer mentors.</description>
     <url>https://wiki.gentoo.org/wiki/Project:Python</url>
     <description>The Python project maintains dev-lang/python and most of dev-python/*.</description>
     <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
       <role>Member</role>
