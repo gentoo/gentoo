@@ -174,7 +174,7 @@ net-libs/gupnp connman
 dev-libs/libpcre jit
 
 # Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# media-sound/pulseaudio needs PyQt4[dbus] for making the equalizer module
+# media-sound/pulseaudio needs PyQt5[dbus] for making the equalizer module
 # usable. Mask until this is available.
 # Jeroen Roovers <jer@gentoo.org> (18 Feb 2014)
 # OSS is the only kernel audio interface that works on HPPA

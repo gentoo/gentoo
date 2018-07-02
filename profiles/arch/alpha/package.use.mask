@@ -398,10 +398,6 @@ www-client/seamonkey custom-optimization
 # quesoglc is not keyworded
 x11-misc/rss-glx quesoglc
 
-# Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
-# qtmultimedia is not keyworded, bug 293671
-dev-python/PyQt4 multimedia
-
 # Raúl Porcel <armin76@gentoo.org> (07 Jul 2008)
 # Make clisp deps minimal
 dev-lisp/clisp hyperspec pari svm
