@@ -17,7 +17,7 @@ IUSE="portaudio"
 
 CDEPEND="${PYTHON_DEPS}"
 DEPEND="${CDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-38.6.0[${PYTHON_USEDEP}]
 	"
 RDEPEND="${CDEPEND}
 	dev-libs/libappindicator:3
