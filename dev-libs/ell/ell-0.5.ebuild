@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="glib pie"
 
 RDEPEND="
-	glib? ( dev-libs/glib:2 )
+	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 
