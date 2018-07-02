@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Haubenwallner <haubi@gentoo.org> (02 Jul 2018)
+# Need to import Cygwin upstream patches still.
+~sys-devel/gettext-0.19.8.1
+
 # Michael Haubenwallner <haubi@gentoo.org> (20 May 2016)
 # Does not work with Cygwin.
 sys-apps/man-db
