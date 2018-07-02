@@ -323,7 +323,6 @@ app-crypt/certbot-apache 0.23.0 0.24.0: Apache plugin for certbot (Let's Encrypt
 app-crypt/certbot-nginx 0.23.0 0.24.0: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/easy-rsa 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
-app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gnupg 1.4.21 2.1.15 2.1.20-r1 2.2.4 2.2.4-r2 2.2.8: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
