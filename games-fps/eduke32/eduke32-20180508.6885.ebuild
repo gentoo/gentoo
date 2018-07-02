@@ -30,7 +30,7 @@ SRC_URI="http://dukeworld.com/eduke32/synthesis/${MY_DATE}-${MY_BUILD}/${PN}_src
 	psx? ( http://www.duke4.org/files/nightfright/related/duke3d_psx.zip -> ${MY_PN_PSX}-${MY_PV_PSX}.zip )
 	sc-55? ( http://www.duke4.org/files/nightfright/music/${MY_PN_SC55}.zip -> ${MY_PN_SC55}-${MY_PV_SC55}.zip )"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
 IUSE="cdinstall demo flac fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis vpx xmp"
