@@ -5826,7 +5826,7 @@ dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.3: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.16.0: Makes http fun! Also, makes consuming restful web services dead easy
-dev-ruby/httpclient 2.8.2.4: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
+dev-ruby/httpclient 2.8.2.4 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.9.1: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/instantiator 0.0.6 0.0.7: Instantiate an arbitrary Ruby class
@@ -5929,7 +5929,7 @@ dev-ruby/ruby-gtksourceview 3.0.8: Ruby bindings for gtksourceview
 dev-ruby/ruby-gtksourceview3 3.0.8: Ruby Gtk3 bindings
 dev-ruby/ruby-ldap 0.9.19: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-oci8 2.2.4.1: A Ruby library for Oracle OCI8
-dev-ruby/ruby-odbc 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
+dev-ruby/ruby-odbc 0.99997-r1 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 3.0.8: Ruby Pango bindings
