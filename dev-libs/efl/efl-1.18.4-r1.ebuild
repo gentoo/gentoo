@@ -21,7 +21,7 @@ inherit enlightenment pax-utils
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
-IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png postscript +ppm +psd pulseaudio raw scim sdl sound systemd tga tiff tslib unwind v4l valgrind wayland webp X xim xine xpm"
+IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl pdf physics pixman +png postscript +ppm +psd pulseaudio raw scim sdl sound systemd tga tiff tslib unwind v4l valgrind wayland webp X xim xine xpm"
 
 REQUIRED_USE="
 	pulseaudio?	( sound )
@@ -61,6 +61,7 @@ RDEPEND="
 	jpeg2k? ( media-libs/openjpeg:0 )
 	!oldlua? ( >=dev-lang/luajit-2.0.0 )
 	oldlua? ( dev-lang/lua:* )
+	pdf? ( app-text/poppler[cxx] )
 	physics? ( >=sci-physics/bullet-2.80 )
 	pixman? ( x11-libs/pixman )
 	postscript? ( app-text/libspectre )
@@ -222,6 +223,7 @@ src_configure() {
 		$(use_enable jpeg2k image-loader-jp2k)
 		$(use_enable neon)
 		$(use_enable nls)
+		$(use_enable pdf poppler)
 		$(use_enable oldlua lua-old)
 		$(use_enable physics)
 		$(use_enable pixman)
