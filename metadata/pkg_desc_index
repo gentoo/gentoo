@@ -2899,7 +2899,7 @@ dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
 dev-lang/tcl 8.5.17 8.6.6: Tool Command Language
 dev-lang/tk 8.5.17 8.6.6: Tk Widget Set
 dev-lang/tuprolog 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.32.1 0.34.9 0.34.16 0.36.7 0.36.13: Compiler for the GObject type system
+dev-lang/vala 0.32.1 0.34.9 0.34.16 0.36.13: Compiler for the GObject type system
 dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
