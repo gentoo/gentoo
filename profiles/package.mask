@@ -565,10 +565,6 @@ sys-libs/uclibc
 # Do not remove the mask until newer version gets stable
 >=sci-electronics/pcb-20000000
 
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Dec 2017)
-# Masked for testing
-~dev-libs/libical-3.0.3
-
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9 is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
