@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/coleifer/wtf-peewee/"
 SRC_URI="https://github.com/coleifer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples test"
 
 RDEPEND=">=dev-python/peewee-3[${PYTHON_USEDEP}]
