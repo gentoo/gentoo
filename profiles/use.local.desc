@@ -927,6 +927,7 @@ dev-ada/aunit:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/aunit:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/aws:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/aws:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
+dev-ada/aws:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/gnat_util:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gnat_util:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gnat_util:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
