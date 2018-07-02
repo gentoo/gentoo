@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Linux port of OpenBSD's ksh"
 HOMEPAGE="https://github.com/dimkr/loksh"
-SRC_URI="https://github.com/dimkr/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/dimkr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
