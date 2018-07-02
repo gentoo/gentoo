@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,5 +26,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	dbus-launch ${RUBY} test/run-test.rb || die
+	XDG_RUNTIME_DIR=${T} dbus-launch ${RUBY} test/run-test.rb || die
 }
