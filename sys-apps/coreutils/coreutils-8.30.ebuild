@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,17 +7,17 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit eutils flag-o-matic python-any-r1 toolchain-funcs
 
-PATCH_VER="1.0"
+PATCH_VER="01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz
-	https://dev.gentoo.org/~whissi/dist/${PN}/${P}-patches-${PATCH_VER}.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/dist/${P}-patches-${PATCH_VER}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~arm-linux ~x86-linux"
-IUSE="acl caps gmp hostname kill multicall nls selinux static test userland_BSD vanilla xattr"
+IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test userland_BSD vanilla xattr"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
@@ -89,7 +89,7 @@ src_configure() {
 		--enable-install-program="arch,$(usev hostname),$(usev kill)"
 		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime"
 		--enable-largefile
-		$(use caps || echo --disable-libcap)
+		$(usex caps '' --disable-libcap)
 		$(use_enable nls)
 		$(use_enable acl)
 		$(use_enable multicall single-binary)
@@ -163,18 +163,23 @@ src_install() {
 		local fhs="cat chgrp chmod chown cp date dd df echo false ln ls
 		           mkdir mknod mv pwd rm rmdir stty sync true uname"
 		mv ${fhs} ../../bin/ || die "could not move fhs bins"
+		if use hostname; then
+			mv hostname ../../bin/ || die
+		fi
 		if use kill; then
 			mv kill ../../bin/ || die
 		fi
-		# move critical binaries into /bin (common scripts)
-		local com="basename chroot cut dir dirname du env expr head mkfifo
-		           mktemp readlink seq sleep sort tail touch tr tty vdir wc yes"
-		mv ${com} ../../bin/ || die "could not move common bins"
-		# create a symlink for uname in /usr/bin/ since autotools require it
-		local x
-		for x in ${com} uname ; do
-			dosym ../../bin/${x} /usr/bin/${x}
-		done
+		if use split-usr ; then
+			# move critical binaries into /bin (common scripts)
+			local com="basename chroot cut dir dirname du env expr head mkfifo
+			           mktemp readlink seq sleep sort tail touch tr tty vdir wc yes"
+			mv ${com} ../../bin/ || die "could not move common bins"
+			# create a symlink for uname in /usr/bin/ since autotools require it
+			local x
+			for x in ${com} uname ; do
+				dosym ../../bin/${x} /usr/bin/${x}
+			done
+		fi
 	else
 		# For now, drop the man pages, collides with the ones of the system.
 		rm -rf "${ED%/}"/usr/share/man
