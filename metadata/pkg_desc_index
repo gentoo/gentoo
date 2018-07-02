@@ -8345,7 +8345,7 @@ net-analyzer/net-snmp 5.7.3-r5: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9: the network swiss army knife
 net-analyzer/netcat6 1.0-r2: netcat clone with better IPv6 support, improved code, etc...
 net-analyzer/nethogs 0.8.1: A small 'net top' tool, grouping bandwidth by process
-net-analyzer/netperf 2.6.0-r1 2.7.0-r1: Network performance benchmark
+net-analyzer/netperf 2.7.0-r1: Network performance benchmark
 net-analyzer/netselect 0.3-r3: Ultrafast implementation of ping
 net-analyzer/nettop 0.2.3-r2: top like program for network activity
 net-analyzer/netwatch 1.3.0.1-r3: Ethernet/PPP IP Packet Monitor
