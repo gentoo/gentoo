@@ -3,9 +3,9 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic libtool multilib toolchain-funcs versionator
+inherit eutils flag-o-matic libtool multilib toolchain-funcs eapi7-ver
 
-MY_P=ImageMagick-$(replace_version_separator 3 '-')
+MY_P=ImageMagick-$(ver_rs 3 '-')
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
@@ -64,7 +64,7 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="corefonts? ( truetype )
 	test? ( corefonts )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	local ati_cards mesa_cards nvidia_cards render_cards
@@ -162,7 +162,7 @@ src_install() {
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install
 
-	rm -f "${ED}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
+	rm -f "${ED%/}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
 	dodoc {AUTHORS,README}.txt ChangeLog
 
 	if use perl; then
