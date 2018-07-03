@@ -171,7 +171,6 @@ app-arch/libarchive:lz4 - Enable support for LZ4 compression using app-arch/lz4
 app-arch/libarchive:nettle - Use dev-libs/nettle as crypto backend
 app-arch/libarchive:zlib - Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files.
 app-arch/lz4:valgrind - Enable usage of dev-util/valgrind in tests
-app-arch/p7zip:rar - Enable support for non-free rar decoder
 app-arch/pbzip2:symlink - Install symlinks which override app-arch/bzip2 implementation
 app-arch/pigz:symlink - Install symlinks which override app-arch/gzip implementation
 app-arch/tar:minimal - just install `tar`

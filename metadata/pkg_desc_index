@@ -192,7 +192,6 @@ app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.g
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.4: Another uncompressor for compatibility
-app-arch/p7zip 16.02-r1 16.02-r2: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.7.3: A PAR-2.0 file verification and repair tool
 app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
@@ -3179,7 +3178,7 @@ dev-libs/m17n-lib 1.7.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5-r1: Mike's Arbitrary Precision Math Library
 dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
-dev-libs/mathjax 2.2 2.7.0: JavaScript display engine for LaTeX, MathML and AsciiMath
+dev-libs/mathjax 2.7.0: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mini-xml 2.10: Small XML parsing library to read XML and XML-like data files
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
