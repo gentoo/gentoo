@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="lz4"
 
 RDEPEND="
-	dev-ros/rosbag_storage
+	>=dev-ros/rosbag_storage-1.14
 	dev-ros/rosconsole
 	dev-ros/roscpp
 	dev-ros/topic_tools

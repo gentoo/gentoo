@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="lz4"
 
 RDEPEND="
-	dev-ros/rosbag_storage
+	>=dev-ros/rosbag_storage-1.14
 	dev-ros/rosconsole
 	dev-ros/roscpp
 	dev-ros/topic_tools
