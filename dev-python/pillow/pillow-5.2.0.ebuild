@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
-	test? (	dev-python/nose[${PYTHON_USEDEP}] )
+	test? (	dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 S="${WORKDIR}/${MY_P}"
