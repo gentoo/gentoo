@@ -49,7 +49,10 @@ RDEPEND="sys-apps/pciutils
 	)
 	zeromq? (
 		>=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
+		|| (
+			dev-python/pycryptodome[${PYTHON_USEDEP}]
+			>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
+		)
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
@@ -96,6 +99,7 @@ python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
 		tests/unit/modules/{rh_ip,win_network,random_org}_test.py || die
+	rm tests/unit/states/pip_test.py || die
 
 	# https://github.com/saltstack/salt/issues/39095
 	rm tests/unit/utils/parsers_test.py
