@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,15 +30,18 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/pyparsing[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )
 "
+RDEPEND="${RDEPEND}
+	!<dev-util/catkin-0.7.14"
 PATCHES=(
-	"${FILESDIR}/catkin_prefix.patch"
+	"${FILESDIR}/catkin_prefix2.patch"
 	"${FILESDIR}/argparse.patch"
 	"${FILESDIR}/ros_packages.patch"
-	"${FILESDIR}/infinite_loop2.patch"
+	"${FILESDIR}/infinite_loop3.patch"
 )
 
 python_test() {
