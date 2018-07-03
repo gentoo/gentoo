@@ -272,7 +272,6 @@ src_configure() {
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen xenapi)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
@@ -280,6 +279,7 @@ src_configure() {
 		--without-hal
 		--without-netcf
 		--without-sanlock
+		--without-xenapi
 
 		--with-esx
 		--with-init-script=systemd
