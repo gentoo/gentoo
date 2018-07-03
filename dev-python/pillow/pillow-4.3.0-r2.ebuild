@@ -28,7 +28,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lcms? ( media-libs/lcms:2= )
-	tiff? ( media-libs/tiff:0=[jpeg] )
+	tiff? ( media-libs/tiff:0=[jpeg,zlib] )
 	truetype? ( media-libs/freetype:2= )
 	webp? ( media-libs/libwebp:0= )
 	zlib? ( sys-libs/zlib:0= )"
