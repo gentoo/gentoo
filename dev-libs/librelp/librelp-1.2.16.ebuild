@@ -26,7 +26,10 @@ DEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${P}-fix-valgrind-usage.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-valgrind-usage.patch
+	"${FILESDIR}"/${P}-add-new-test-certificate.patch
+)
 
 src_prepare() {
 	sed -i \
