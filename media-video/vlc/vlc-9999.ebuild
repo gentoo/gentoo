@@ -89,7 +89,7 @@ RDEPEND="
 	fdk? ( media-libs/fdk-aac:0= )
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?] )
-		libav? ( >=media-video/libav-11.8:0=[vaapi?,vdpau?] )
+		libav? ( >=media-video/libav-12.2:0=[vaapi?,vdpau?] )
 	)
 	flac? (
 		media-libs/flac:0
