@@ -45,7 +45,7 @@ SRC_URI="
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="dedicated server"
+IUSE="dedicated libressl server"
 
 QT_VER=5.4
 QT_SLOT=5
@@ -55,7 +55,6 @@ RDEPEND="
 	>=dev-lang/R-2.11.1
 	>=dev-libs/boost-1.63:=
 	>=dev-libs/mathjax-2.7.4
-	dev-libs/openssl:0
 	sys-apps/util-linux
 	>=sys-devel/clang-3.5.0:*
 	sys-libs/zlib
@@ -81,7 +80,9 @@ RDEPEND="
 		>=dev-qt/qtxmlpatterns-${QT_VER}:${QT_SLOT}
 		server? ( virtual/pam )
 	)
-	dedicated? ( virtual/pam )"
+	dedicated? ( virtual/pam )
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl:0 )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-java/ant-core
