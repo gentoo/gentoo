@@ -28,7 +28,7 @@ SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace cephfs dpdk fuse jemalloc ldap lttng +mgr mgr-frontend nss"
+IUSE="babeltrace cephfs dpdk fuse jemalloc ldap lttng +mgr mgr-frontend"
 IUSE+=" +radosgw +ssl static-libs +system-boost systemd +tcmalloc test"
 IUSE+=" xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
@@ -47,6 +47,7 @@ COMMON_DEPEND="
 	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc?]
 	dev-libs/libaio:=[static-libs?]
 	dev-libs/libxml2:=[static-libs?]
+	dev-libs/nss:=
 	sys-auth/oath-toolkit:=
 	sys-apps/keyutils:=[static-libs?]
 	sys-apps/util-linux:=[static-libs?]
@@ -54,7 +55,6 @@ COMMON_DEPEND="
 	babeltrace? ( dev-util/babeltrace )
 	ldap? ( net-nds/openldap:=[static-libs?] )
 	lttng? ( dev-util/lttng-ust:= )
-	nss? ( dev-libs/nss:= )
 	fuse? ( sys-fs/fuse:0=[static-libs?] )
 	ssl? ( dev-libs/openssl:=[static-libs?] )
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
@@ -116,7 +116,6 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( $(python_gen_useflags 'python3*') )
 	mgr-frontend? ( mgr || ( $(python_gen_useflags 'python2*') ) )
-	?? ( ssl nss )
 	?? ( jemalloc tcmalloc )
 	"
 
@@ -203,7 +202,6 @@ ceph_src_configure() {
 		-DWITH_LTTNG=$(usex lttng)
 		-DWITH_MGR=$(usex mgr)
 		-DWITH_MGR_DASHBOARD_FRONTEND=$(usex mgr-frontend)
-		-DWITH_NSS=$(usex nss)
 		-DWITH_OPENLDAP=$(usex ldap)
 		-DWITH_RADOSGW=$(usex radosgw)
 		-DWITH_SSL=$(usex ssl)
