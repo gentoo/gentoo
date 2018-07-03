@@ -1,0 +1,10 @@
+Explicitly declare used CMake options
+
+Bug: https://bugs.gentoo.org/659880
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1 +1,4 @@
++option(DISABLE_STATIC "Avoid building/installing static libraries.")
++option(LONG_OUTPUT_NAMES "Use longer names for binaries and libraries: squirrel3 (not sq).")
++
+ if(MSVC)
