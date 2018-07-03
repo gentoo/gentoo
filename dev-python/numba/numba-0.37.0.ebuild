@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 python_test() {
 	cd "${BUILD_DIR}"/lib* || die
-	${PYTHON} -c "import numba; numba.test()" || die
+	${EPYTHON} -c "import numba; numba.test()" || die
 }
 
 python_install_all() {
