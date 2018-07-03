@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit eutils systemd distutils-r1
 
@@ -29,7 +29,6 @@ RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.3[${PYTHON_USEDEP}]
-	<dev-python/msgpack-0.5.5[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
@@ -52,10 +51,7 @@ RDEPEND="sys-apps/pciutils
 	)
 	zeromq? (
 		>=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}]
-		|| (
-			dev-python/pycryptodome[${PYTHON_USEDEP}]
-			>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
-		)
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
@@ -66,10 +62,10 @@ RDEPEND="sys-apps/pciutils
 		)
 	)
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
-	mysql? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
+	mysql? ( dev-python/mysql-python[$(python_gen_usedep 'python2*')] )
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
-	timelib? ( dev-python/timelib[${PYTHON_USEDEP}] )
+	timelib? ( dev-python/timelib[$(python_gen_usedep 'python2*')] )
 	nova? ( >=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}] )
 	neutron? ( >=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}] )
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
@@ -84,7 +80,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		dev-python/timelib[${PYTHON_USEDEP}]
+		dev-python/timelib[$(python_gen_usedep 'python2*')]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
 		!x86? ( >=dev-python/boto3-1.2.1[${PYTHON_USEDEP}] )
 		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
@@ -101,6 +97,7 @@ RESTRICT="x86? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2017.7.0-dont-realpath-tmpdir.patch"
 	"${FILESDIR}/${PN}-2017.7.3-tests.patch"
+	"${FILESDIR}/${PN}-2018.3.2-skip-zeromq-test-that-hangs.patch"
 )
 
 python_prepare() {
