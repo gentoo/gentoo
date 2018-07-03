@@ -31,7 +31,7 @@ COMMONDEPEND="
 	)
 	bogofilter? ( mail-filter/bogofilter )
 	calendar? (
-		>=dev-libs/libical-2.0.0
+		>=dev-libs/libical-2.0.0:=
 		>=net-misc/curl-7.9.7
 	)
 	dbus? ( >=dev-libs/dbus-glib-0.60 )
