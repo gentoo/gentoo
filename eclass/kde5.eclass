@@ -506,7 +506,7 @@ kde5_src_prepare() {
 	cmake-utils_src_prepare
 
 	# only build examples when required
-	if ! (in_iuse examples && use examples) ; then
+	if ! { in_iuse examples && use examples; } ; then
 		cmake_comment_add_subdirectory examples
 	fi
 
@@ -571,7 +571,7 @@ kde5_src_prepare() {
 	fi
 
 	# only build unit tests when required
-	if ! (in_iuse test && use test) ; then
+	if ! { in_iuse test && use test; } ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
 			punt_bogus_dep Qt5 Test
 			# if forceoptional, also cover non-kde categories
