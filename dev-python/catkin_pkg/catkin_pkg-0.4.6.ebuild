@@ -35,6 +35,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )
 "
+RDEPEND="${RDEPEND}
+	!<dev-util/catkin-0.7.14"
 PATCHES=(
 	"${FILESDIR}/catkin_prefix2.patch"
 	"${FILESDIR}/argparse.patch"
