@@ -13,7 +13,7 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.0-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.12-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -279,7 +279,7 @@ src_install() {
 	# Set the correct libdir
 	sed \
 		-e "s@MY_LIBDIR@$(get_libdir)@" \
-		-i "${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
+		-i "${ED%/}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
@@ -315,7 +315,7 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Headless,Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${D}"${vbox_inst_path}/${each}
+		pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
 	done
 
 	# Symlink binaries to the shipped wrapper
@@ -335,7 +335,7 @@ src_install() {
 
 	if ! use headless ; then
 		vbox_inst VBoxSDL 4750
-		pax-mark -m "${D}"${vbox_inst_path}/VBoxSDL
+		pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxSDL
 
 		for each in vboxsdl VBoxSDL ; do
 			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
@@ -343,11 +343,11 @@ src_install() {
 
 		if use qt5 ; then
 			vbox_inst VirtualBox 4750
-			pax-mark -m "${D}"${vbox_inst_path}/VirtualBox
+			pax-mark -m "${ED%/}"${vbox_inst_path}/VirtualBox
 
 			if use opengl ; then
 				vbox_inst VBoxTestOGL
-				pax-mark -m "${D}"${vbox_inst_path}/VBoxTestOGL
+				pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxTestOGL
 			fi
 
 			for each in virtualbox VirtualBox ; do
@@ -389,8 +389,8 @@ src_install() {
 		doins -r sdk
 
 		if use java ; then
-			java-pkg_regjar "${D}${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
-			java-pkg_regso "${D}${vbox_inst_path}/libvboxjxpcom.so"
+			java-pkg_regjar "${ED%/}/${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
+			java-pkg_regso "${ED%/}/${vbox_inst_path}/libvboxjxpcom.so"
 		fi
 	fi
 

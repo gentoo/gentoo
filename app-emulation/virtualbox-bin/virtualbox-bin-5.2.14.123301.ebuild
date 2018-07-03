@@ -1,21 +1,21 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils xdg-utils gnome2 pax-utils python-r1 udev unpacker versionator
+inherit xdg-utils gnome2 pax-utils python-r1 udev unpacker eapi7-ver
 
-MAIN_PV="$(get_version_component_range 1-3)"
+MAIN_PV="$(ver_cut 1-3)"
 if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then
-	MY_PV="${MAIN_PV}_$(get_version_component_range 5)"
+	MY_PV="${MAIN_PV}_$(ver_cut 5)"
 	MY_PV="${MY_PV/beta/BETA}"
 	MY_PV="${MY_PV/rc/RC}"
 else
 	MY_PV="${MAIN_PV}"
 fi
-VBOX_BUILD_ID="$(get_version_component_range 4)"
+VBOX_BUILD_ID="$(ver_cut 4)"
 VBOX_PV="${MY_PV}-${VBOX_BUILD_ID}"
 MY_P="VirtualBox-${VBOX_PV}-Linux"
 # needed as sometimes the extpack gets another build ID
@@ -207,7 +207,7 @@ src_install() {
 	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,TestOGL,ExtPackHelperApp}; do
 		fowners root:vboxusers /opt/VirtualBox/${each}
 		fperms 0750 /opt/VirtualBox/${each}
-		pax-mark -m "${D}"/opt/VirtualBox/${each}
+		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
 	done
 	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case..
 	fperms 4750 /opt/VirtualBox/VBoxNetAdpCtl
@@ -219,7 +219,7 @@ src_install() {
 		for each in VBox{SDL,Headless} VirtualBox; do
 			fowners root:vboxusers /opt/VirtualBox/${each}
 			fperms 4510 /opt/VirtualBox/${each}
-			pax-mark -m "${D}"/opt/VirtualBox/${each}
+			pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
 		done
 
 		dosym ../VirtualBox/VBox.sh /opt/bin/VirtualBox
@@ -228,7 +228,7 @@ src_install() {
 		# Hardened build: Mark selected binaries set-user-ID-on-execution
 		fowners root:vboxusers /opt/VirtualBox/VBoxHeadless
 		fperms 4510 /opt/VirtualBox/VBoxHeadless
-		pax-mark -m "${D}"/opt/VirtualBox/VBoxHeadless
+		pax-mark -m "${ED%/}"/opt/VirtualBox/VBoxHeadless
 	fi
 
 	exeinto /opt/VirtualBox
@@ -249,9 +249,9 @@ src_install() {
 	insinto ${udevdir}/rules.d
 	doins "${FILESDIR}"/10-virtualbox.rules
 	sed "s@%UDEVDIR%@${udevdir}@" \
-		-i "${D}"${udevdir}/rules.d/10-virtualbox.rules || die
+		-i "${ED%/}"${udevdir}/rules.d/10-virtualbox.rules || die
 	# move udev scripts into ${udevdir} (bug #372491)
-	mv "${D}"/opt/VirtualBox/VBoxCreateUSBNode.sh "${D}"${udevdir} || die
+	mv "${ED%/}"/opt/VirtualBox/VBoxCreateUSBNode.sh "${ED%/}"${udevdir} || die
 	fperms 0750 ${udevdir}/VBoxCreateUSBNode.sh
 }
 
