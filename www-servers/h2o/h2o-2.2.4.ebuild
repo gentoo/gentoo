@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
+CMAKE_MAKEFILE_GENERATOR="emake"
 USE_RUBY="ruby23 ruby24"
 
 inherit cmake-utils ruby-single systemd user
