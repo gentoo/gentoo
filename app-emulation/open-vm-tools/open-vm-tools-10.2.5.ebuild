@@ -74,6 +74,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/10.1.0-mount.vmhgfs.patch"
+	"${FILESDIR}/10.1.0-Werror.patch"
 	"${FILESDIR}/10.2.5-libtirpc.patch"
 )
 
