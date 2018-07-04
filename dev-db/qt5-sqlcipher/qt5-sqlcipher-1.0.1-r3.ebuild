@@ -7,16 +7,17 @@ inherit cmake-utils eapi7-ver
 
 DESCRIPTION="Qt SQL driver plugin for SQLCipher"
 HOMEPAGE="https://github.com/blizzard4591/qt5-sqlcipher"
-SRC_URI="https://github.com/blizzard4591/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/blizzard4591/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~ulm/distfiles/${P}-qt-5.11.1.tar.xz"
 
 LICENSE="LGPL-2.1" # version 2.1 only
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=">=dev-db/sqlcipher-3.4.1
+RDEPEND=">=dev-db/sqlcipher-3.4.1
 	>=dev-qt/qtcore-5.7.1:5=
-	>=dev-qt/qtsql-5.7.1:5=[sqlite]	<dev-qt/qtsql-5.10:5=[sqlite]"
-RDEPEND="${DEPEND}"
+	>=dev-qt/qtsql-5.7.1:5=[sqlite]	<dev-qt/qtsql-5.12:5=[sqlite]"
+DEPEND="${RDEPEND}"
 
 DOCS=(README.md)
 
@@ -32,6 +33,7 @@ src_prepare() {
 		case $(ver_cut 1-2 ${v}) in
 			5.7) vc=5.7.1 ;;
 			5.9) vc=5.9.3 ;;
+			5.11) vc=5.11.1 ;;
 			*) die "qtsql-${v} not supported" ;;
 		esac
 		elog "qtsql-${v} not in cache, using ${vc} instead"
