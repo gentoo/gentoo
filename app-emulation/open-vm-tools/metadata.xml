@@ -22,8 +22,6 @@
 		<flag name="doc">Generate API documentation</flag>
 		<flag name="fuse">Enable vmblock-fuse/vmhgfs-fuse</flag>
 		<flag name="grabbitmqproxy">Build grabbitmqproxy plugin</flag>
-		<flag name="gtk2">Compile with GTK+ 2</flag>
-		<flag name="gtk3">Compile with GTK+ 3 (Recommended)</flag>
 		<flag name="gtkmm">Compile with Gtkmm and sigc++ (Recommended)</flag>
 		<flag name="multimon">Enable multimon (Requires X)</flag>
 		<flag name="pic">Force shared libraries to be built as PIC</flag>

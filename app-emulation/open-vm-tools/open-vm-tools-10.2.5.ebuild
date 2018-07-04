@@ -13,12 +13,8 @@ SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV}/
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X caf +deploypkg +dnet doc +fuse +grabbitmqproxy gtk2 gtk3 gtkmm +icu multimon pam +resolutionkms +ssl static-libs test +vgauth +xml-security-c xmlsec"
+IUSE="X caf +deploypkg +dnet doc +fuse +grabbitmqproxy gtkmm +icu multimon pam +resolutionkms +ssl static-libs test +vgauth +xml-security-c xmlsec"
 REQUIRED_USE="
-	X? ( ^^ ( gtk2 gtk3 ) )
-	gtk2? ( X )
-	gtk3? ( X )
-	gtkmm? ( || ( gtk2 gtk3 ) )
 	multimon? ( X )
 	vgauth? (
 		^^ ( xmlsec xml-security-c )
@@ -49,15 +45,11 @@ RDEPEND="
 		x11-libs/libSM
 		x11-libs/libXcomposite
 		x11-libs/gdk-pixbuf:2
-		gtk3? (
-			x11-libs/gtk+:3
-			gtkmm? ( dev-cpp/gtkmm:3.0 )
+		x11-libs/gtk+:3
+		gtkmm? (
+			dev-cpp/gtkmm:3.0
+			dev-libs/libsigc++:2
 		)
-		gtk2? (
-			x11-libs/gtk+:2
-			gtkmm? ( dev-cpp/gtkmm:2.4 )
-		)
-		gtkmm? ( dev-libs/libsigc++:2 )
 	)
 	dnet? ( dev-libs/libdnet )
 	icu? ( dev-libs/icu:= )
@@ -108,10 +100,8 @@ src_configure() {
 		--without-root-privileges
 		$(use_enable multimon)
 		$(use_with X x)
-		$(use_with gtk3)
-		$(use_with gtk2)
-		$(use gtk3 && use_with gtkmm gtkmm3)
-		$(use gtk2 && use_with gtkmm)
+		$(use_with X gtk3)
+		$(use_with gtkmm gtkmm3)
 		$(use_enable doc docs)
 		$(use_enable test tests)
 		$(use_enable resolutionkms)
