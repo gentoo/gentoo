@@ -25,7 +25,7 @@ DEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( "${FILESDIR}/change-emoji4unicode-url.patch" "${FILESDIR}/initialize-e4u-tests.patch" )
+PATCHES=( "${FILESDIR}"/change-emoji4unicode-url.patch )
 
 python_test() {
 	esetup.py test
