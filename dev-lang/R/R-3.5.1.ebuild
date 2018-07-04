@@ -10,9 +10,8 @@ BCPV=78d6830e28ea90a046da79a9b4f70c39594bb6d6
 
 DESCRIPTION="Language and environment for statistical computing and graphics"
 HOMEPAGE="http://www.r-project.org/"
-# This release candidate is not on the CRAN mirrors
 SRC_URI="
-	https://stat.ethz.ch/R/daily/R-patched_2018-06-29.tar.gz
+	mirror://cran/src/base/R-3/${P}.tar.gz
 	https://raw.githubusercontent.com/deepayan/rcompletion/${BCPV}/bash_completion/R -> ${PN}-${BCPV}.bash_completion"
 
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1"
@@ -57,8 +56,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.1-parallel.patch
 	"${FILESDIR}"/${PN}-3.4.1-rmath-shared.patch
 )
-
-S="${WORKDIR}/R-rc"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
