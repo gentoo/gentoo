@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic libtool ltprune multilib-minimal python-any-r1 xdg-utils
+inherit flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -77,9 +77,6 @@ src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
 	elibtoolize # for Solaris
 
-	# failing test, https://bugs.freedesktop.org/show_bug.cgi?id=89190
-	sed -e 's#tests/arabic-fallback-shaping.tests##' -i test/shaping/Makefile.in || die "sed failed"
-
 	# bug 618772
 	append-cxxflags -std=c++14
 }
@@ -108,5 +105,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --modules
+	find "${ED}" -name "*.la" -delete || die
 }
