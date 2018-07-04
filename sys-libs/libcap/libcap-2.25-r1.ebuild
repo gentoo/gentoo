@@ -61,6 +61,10 @@ multilib_src_install() {
 		rm "${ED%/}"/usr/$(get_libdir)/libcap.a || die
 	fi
 
+	if [[ -d "${ED%/}"/usr/$(get_libdir)/security ]] ; then
+		rm -r "${ED%/}"/usr/$(get_libdir)/security || die
+	fi
+
 	if multilib_is_native_abi && use pam; then
 		dopammod pam_cap/pam_cap.so
 		dopamsecurity '' pam_cap/capability.conf
@@ -68,6 +72,5 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	rm -r "${ED%/}"/usr/$(get_libdir)/security || die
 	dodoc CHANGELOG README doc/capability.notes
 }
