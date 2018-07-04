@@ -7464,7 +7464,7 @@ media-libs/gstreamer-editing-services 1.12.4: SDK for making video editors and m
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.7.2 1.7.6: An OpenType text shaping engine
+media-libs/harfbuzz 1.7.6: An OpenType text shaping engine
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.1.0 2.2.0-r1: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
