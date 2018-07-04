@@ -187,6 +187,9 @@ src_test() {
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
 	done
 
+	# bug 660358
+	local -x COLUMNS=80
+
 	local -x PYTHONDONTWRITEBYTECODE=
 
 	emake test EXTRATESTOPTS="-u-network" CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
