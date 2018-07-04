@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ IUSE=""
 ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
-	sed -i -e '/rake/ s/12.0.0/12/' Gemfile || die
+	sed -i -e '/rake/ s/12.0.0/12/ ; /minitest/ s/5.10.1/5.10/' Gemfile || die
 }
 
 each_ruby_test() {
