@@ -3,7 +3,6 @@
 
 EAPI=5
 
-# ruby22, ruby23: fails due to minitest incompatabilities.
 USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST=""
