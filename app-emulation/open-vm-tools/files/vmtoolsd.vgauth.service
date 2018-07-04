@@ -2,6 +2,8 @@
 Description=Service for virtual machines hosted on VMware
 Documentation=https://github.com/vmware/open-vm-tools
 ConditionVirtualization=vmware
+Requires=vgauthd.service
+After=vgauthd.service
 
 [Service]
 ExecStart=/usr/bin/vmtoolsd
@@ -9,3 +11,4 @@ TimeoutStopSec=5
 
 [Install]
 WantedBy=multi-user.target
+Also=vgauthd.service
