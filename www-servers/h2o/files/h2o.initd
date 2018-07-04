@@ -13,7 +13,7 @@ description_reload="Reload the configuration file"
 start_stop_daemon_args="--group ${RC_SVCNAME}"
 command="/usr/bin/${RC_SVCNAME}"
 command_args="-m daemon -c \"${h2o_config}\""
-pidfile="$(grep pid-file "${h2o_config}" | cut -d' ' -f2-)"
+pidfile="$(grep pid-file "${h2o_config}" | cut -d' ' -f2)"
 name="H2O"
 
 depend() {
