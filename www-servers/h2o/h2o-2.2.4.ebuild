@@ -5,7 +5,7 @@ EAPI="6"
 CMAKE_MAKEFILE_GENERATOR="emake"
 USE_RUBY="ruby23 ruby24"
 
-inherit cmake-utils ruby-single systemd user
+inherit cmake-utils ruby-single systemd toolchain-funcs user
 
 DESCRIPTION="H2O - the optimized HTTP/1, HTTP/2 server"
 HOMEPAGE="https://h2o.examp1e.net/"
@@ -22,11 +22,16 @@ RDEPEND="dev-lang/perl
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
 	mruby? (
-		sys-devel/bison
 		${RUBY_DEPS}
+		dev-libs/oniguruma
+		sys-devel/bison
+		virtual/pkgconfig
 	)"
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-mruby.patch
+	"${FILESDIR}"/${P}-libressl.patch
+)
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -50,6 +55,10 @@ src_prepare() {
 	sed -i \
 		-e "s: ruby: ${ruby}:" \
 		CMakeLists.txt
+
+	sed -i "s:pkg-config:$(tc-getPKG_CONFIG):g" deps/mruby/lib/mruby/gem.rb
+	tc-export CC
+	export LD="$(tc-getCC)"
 }
 
 src_configure() {
