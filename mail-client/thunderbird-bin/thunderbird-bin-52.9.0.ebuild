@@ -36,7 +36,7 @@ SRC_URI="${SRC_URI}
 # the below only works when upstream releases the xpi with all locales bundled
 #	${MOZ_HTTP_URI/${MOZ_PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
 
-HOMEPAGE="http://www.mozilla.com/thunderbird"
+HOMEPAGE="https://www.thunderbird.net/"
 RESTRICT="strip mirror"
 
 KEYWORDS="-* amd64 x86"
