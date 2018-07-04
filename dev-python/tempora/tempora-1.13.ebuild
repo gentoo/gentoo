@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
@@ -14,10 +14,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
+	>=dev-python/jaraco-functools-1.20[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
