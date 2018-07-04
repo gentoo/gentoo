@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Dolbec <dolsen@gentoo.org> (4 July 2018)
+# No longer needed, newer gpg-2 versions have simple cli options
+# for generating new keys and doing key maintenance. Removal in a month
+app-crypt/gkeys-gen
+
 # Pacho Ramos <pacho@gentoo.org> (28 Jun 2018)
 # Doesn't work at all (#645388). Removal in a month
 net-misc/whatportis
@@ -217,7 +222,7 @@ app-misc/wyrd
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Not compatible with recent perl, not needed by anything in the tree
 # (#648582). Removal in a month.
-app-doc/mkdoxy 
+app-doc/mkdoxy
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Not compatible with recent PHP, upstream dead for ages (#650870, #650934)
