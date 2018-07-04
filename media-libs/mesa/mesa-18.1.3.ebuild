@@ -143,6 +143,7 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 7.
 # 3. Specify LLVM_MAX_SLOT, e.g. 6.
+LLVM_MAX_SLOT="6"
 LLVM_DEPSTR="
 	|| (
 		sys-devel/llvm:7[${MULTILIB_USEDEP}]
