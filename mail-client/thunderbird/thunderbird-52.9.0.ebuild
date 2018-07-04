@@ -4,7 +4,7 @@
 EAPI=6
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="5.4.6"
+MOZ_LIGHTNING_VER="5.4.9"
 MOZ_LIGHTNING_GDATA_VER="3.3"
 
 # This list can be updated using scripts/get_langs.sh from the mozilla overlay
@@ -44,7 +44,7 @@ RESTRICT="!bindist? ( bindist )"
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/${PATCHFF}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.xz
-	https://dev.gentoo.org/~chutzpah/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
+	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
 	lightning? ( https://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.tar.xz )
 	${PATCH_URIS[@]}"
 
@@ -63,7 +63,7 @@ DEPEND="rust? ( dev-lang/rust )
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-thunderbird )
-	crypt? ( >=x11-plugins/enigmail-1.9.8.3-r1 )
+	crypt? ( >=x11-plugins/enigmail-2.0.5 )
 "
 
 S="${WORKDIR}/${MOZ_P}"
