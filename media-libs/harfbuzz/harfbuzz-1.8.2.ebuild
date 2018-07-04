@@ -77,9 +77,6 @@ src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
 	elibtoolize # for Solaris
 
-	# failing test, https://bugs.freedesktop.org/show_bug.cgi?id=89190
-	sed -e 's#tests/arabic-fallback-shaping.tests##' -i test/shaping/Makefile.in || die "sed failed"
-
 	# bug 618772
 	append-cxxflags -std=c++14
 }
