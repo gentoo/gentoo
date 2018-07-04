@@ -33,6 +33,25 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	local ruby="ruby"
+	if use mruby; then
+		for ruby in ${RUBY_TARGETS_PREFERENCE}; do
+			if has_version dev-lang/ruby:${ruby:4:1}.${ruby:5}; then
+				break
+			fi
+			ruby=
+		done
+		[[ -z ${ruby} ]] && die "no suitable ruby version found"
+	fi
+
+	sed -i \
+		-e "s: ruby: ${ruby}:" \
+		CMakeLists.txt
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc/${PN}
