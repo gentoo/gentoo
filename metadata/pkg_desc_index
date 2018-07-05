@@ -9422,7 +9422,6 @@ sci-physics/lammps 20150210 20150515 20150810 20151207 20170109 20180316: Large-
 sci-physics/lhapdf 5.9.1: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1 1.2a-r3: OpenGL interactive relativistic simulator
 sci-physics/pythia 6.4.28 8.1.86: Lund Monte Carlo high-energy physics event generator
-sci-physics/root 5.34.36: C++ data analysis framework and interpreter from CERN
 sci-visualization/epix 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/ggobi 2.1.11: Visualization program for exploring high-dimensional data
