@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 inherit distutils-r1
 
 DESCRIPTION="Command line client for Amazon S3"
-HOMEPAGE="http://s3tools.org/s3cmd"
+HOMEPAGE="https://s3tools.org/s3cmd"
 SRC_URI="mirror://sourceforge/s3tools/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
