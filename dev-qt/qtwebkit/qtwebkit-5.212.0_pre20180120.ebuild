@@ -7,6 +7,7 @@ COMMIT=72cfbd7664f21fcc0e62b869a6b01bf73eb5e7da
 CMAKE_MAKEFILE_GENERATOR="ninja"
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby23 ruby24 ruby25"
+
 inherit check-reqs cmake-utils flag-o-matic python-any-r1 qmake-utils ruby-single toolchain-funcs
 
 DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
@@ -24,12 +25,12 @@ REQUIRED_USE="
 	?? ( gstreamer multimedia )
 "
 
-QT_MIN_VER="5.9.1:5"
 # Dependencies found at Source/cmake/OptionsQt.cmake
+QT_MIN_VER="5.9.1:5"
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/icu:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-qt/qtcore-${QT_MIN_VER}
 	>=dev-qt/qtgui-${QT_MIN_VER}
@@ -48,7 +49,7 @@ RDEPEND="
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_MIN_VER}[widgets] )
 	opengl? (
 		>=dev-qt/qtgui-${QT_MIN_VER}[gles2=]
-		>=dev-qt/qtopengl-${QT_MIN_VER}
+		>=dev-qt/qtopengl-${QT_MIN_VER}[gles2=]
 	)
 	orientation? ( >=dev-qt/qtsensors-${QT_MIN_VER} )
 	printsupport? ( >=dev-qt/qtprintsupport-${QT_MIN_VER} )
@@ -56,15 +57,13 @@ RDEPEND="
 		>=dev-qt/qtdeclarative-${QT_MIN_VER}
 		>=dev-qt/qtwebchannel-${QT_MIN_VER}[qml]
 	)
-	webp? ( media-libs/libwebp:0= )
+	webp? ( media-libs/libwebp:= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXcomposite
 		x11-libs/libXrender
 	)
 "
-
-# Need real bison, not yacc
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	${RUBY_DEPS}
@@ -75,25 +74,25 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-CHECKREQS_DISK_BUILD="16G" # Debug build requires much more see bug #417307
-
-S="${WORKDIR}/${COMMIT}"
+S=${WORKDIR}/${COMMIT}
 
 PATCHES=( "${FILESDIR}/${P}-functional.patch" )
 
+CHECKREQS_DISK_BUILD="16G" # bug 417307
+
 _check_reqs() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && is-flagq "-g*" && ! is-flagq "-g*0" ; then
-		einfo "Checking for sufficient disk space to build ${PN} with debugging CFLAGS"
-		check-reqs_pkg_pretend
+	if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0"; then
+		einfo "Checking for sufficient disk space to build ${PN} with debugging flags"
+		check-reqs_$1
 	fi
 }
 
 pkg_pretend() {
-	_check_reqs
+	_check_reqs pkg_pretend
 }
 
 pkg_setup() {
-	_check_reqs
+	_check_reqs pkg_setup
 	python-any-r1_pkg_setup
 }
 
