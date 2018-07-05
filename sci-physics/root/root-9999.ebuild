@@ -105,6 +105,7 @@ CDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
 	tbb? ( dev-cpp/tbb )
+	tmva? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	vc? ( dev-libs/vc )
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( net-libs/xrootd:0= )
