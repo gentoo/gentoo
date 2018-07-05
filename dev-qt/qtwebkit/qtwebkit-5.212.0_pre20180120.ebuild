@@ -98,7 +98,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	# Respect CC, otherwise fails on prefix #395875
+	# Respect CC, otherwise fails on prefix, bug #395875
 	tc-export CC
 
 	# Multiple rendering bugs on youtube, github, etc without this, bug #547224
@@ -134,7 +134,7 @@ src_install() {
 	cmake-utils_src_install
 
 	# bug 572056
-	if [[ ! -f ${D%/}$(qt5_get_libdir)/libQt5WebKit.so ]]; then
+	if [[ ! -f ${ED%/}$(qt5_get_libdir)/libQt5WebKit.so ]]; then
 		eerror "${CATEGORY}/${PF} could not build due to a broken ruby environment."
 		die 'Check "eselect ruby" and ensure you have a working ruby in your $PATH'
 	fi
