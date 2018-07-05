@@ -257,10 +257,6 @@ app-doc/linuxfromscratch:htmlsingle - Install all-on-one-page HTML version.
 app-doc/pms:binary - Download pre-built files instead of building from sources
 app-doc/pms:html - Generate PMS as .html as well
 app-doc/pms:twoside - Enable two-sided layout suitable for printing
-app-doc/root-docs:api - Generate html API documentation
-app-doc/root-docs:http - Build HttpServer documentation
-app-doc/root-docs:math - Provide all math related documentation
-app-doc/root-docs:metric - Default to A4 paper size and metric measurement. Letter will be used otherwise
 app-doc/tldp-howto:html - Install multi-chapter HTML docs
 app-doc/tldp-howto:htmlsingle - Install all-on-one-page HTML docs
 app-doc/tldp-howto:pdf - Install pdf docs
