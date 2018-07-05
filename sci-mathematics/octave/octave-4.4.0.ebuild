@@ -30,8 +30,11 @@ RDEPEND="
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
+		dev-qt/qthelp:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtopengl:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
 		x11-libs/qscintilla:=
 	)
 	hdf5? ( sci-libs/hdf5:0= )
