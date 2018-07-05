@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
@@ -9,15 +9,19 @@ DISTUTILS_OPTIONAL=1
 inherit distutils-r1
 
 DESCRIPTION="A generic library for injecting 802.11 frames"
-HOMEPAGE="http://802.11ninja.net/lorcon"
+HOMEPAGE="https://github.com/kismetwireless/lorcon"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://code.google.com/p/lorcon/"
+	#EGIT_REPO_URI="https://www.kismetwireless.net/lorcon.git"
+	EGIT_REPO_URI="https://github.com/kismetwireless/lorcon.git"
 	inherit git-r3
 	KEYWORDS=""
+	S="${WORKDIR}"/${P}
 else
-	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
-	KEYWORDS="amd64 arm ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	GIT_HASH="d8637792f2e857f31849f29759c1022eb0518c83"
+	SRC_URI="https://github.com/kismetwireless/lorcon/archive/${GIT_HASH}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/"${PN}-${GIT_HASH}"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -32,7 +36,6 @@ RDEPEND="${DEPEND}"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-S="${WORKDIR}"/${P}
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
@@ -44,6 +47,9 @@ src_unpack() {
 
 src_prepare() {
 	sed -i 's#<lorcon2/lorcon.h>#"../lorcon.h"#' pylorcon2/PyLorcon2.c
+	sed -i 's#<lorcon2/lorcon_multi.h>#"../lorcon_multi.h"#' pylorcon2/PyLorcon2.c
+	sed -i 's#<lorcon2/lorcon_multi.h>#"../lorcon_multi.h"#' pylorcon2/PyLorcon2.h
+	default
 	use python && distutils-r1_src_prepare
 }
 
