@@ -39,7 +39,7 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libvorbis
 	media-libs/speex
-	net-dns/libidn
+	net-dns/libidn:1.33
 	net-libs/libsoup:2.4
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
