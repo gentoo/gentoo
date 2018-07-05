@@ -58,7 +58,7 @@ RDEPEND="
 		net-libs/rabbitmq-c
 	)
 	resolutionkms? (
-		x11-libs/libdrm
+		x11-libs/libdrm[video_cards_vmware]
 		virtual/libudev
 	)
 "
