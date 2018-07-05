@@ -47,7 +47,7 @@ RDEPEND="sys-apps/kmod:=
 DEPEND="${RDEPEND}
 	amd64? ( ${X86_DEPEND} )
 	x86? ( ${X86_DEPEND} )
-	doc? ( >=dev-util/gtk-doc-1.25-r1 )"
+	>=dev-util/gtk-doc-1.25-r1"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-KBL-ICL-PCI-IDs.patch
