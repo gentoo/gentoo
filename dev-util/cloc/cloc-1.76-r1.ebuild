@@ -9,16 +9,17 @@ SRC_URI="https://github.com/AlDanial/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}
 	dev-perl/Algorithm-Diff
+	dev-perl/Parallel-ForkManager
 	dev-perl/Regexp-Common
 	virtual/perl-Digest-MD5
-	virtual/perl-Getopt-Long
 	virtual/perl-File-Spec
-	virtual/perl-File-Temp"
+	virtual/perl-File-Temp
+	virtual/perl-Getopt-Long"
 
 src_compile() {
 	pod2man "Unix/${PN}.1.pod" > "${PN}.1" || die
