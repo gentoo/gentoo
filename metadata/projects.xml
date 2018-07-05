@@ -94,11 +94,6 @@
       <role>Member (Gentoo/ARM)</role>
     </member>
     <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-      <role>Member (Gentoo/ARM)</role>
-    </member>
-    <member>
       <email>nerdboy@gentoo.org</email>
       <name>Steve Arnold</name>
       <role>Member (Gentoo/ARM Kernel)</role>
@@ -1212,10 +1207,6 @@
       <name>Gilles Dartiguelongue</name>
     </member>
     <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-    </member>
-    <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
     </member>
@@ -1859,11 +1850,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>mschiff@gentoo.org</email>
       <name>Marc Schiffbauer</name>
       <role>Developer</role>
@@ -1908,11 +1894,6 @@
     <member>
       <email>mpagano@gentoo.org</email>
       <name>Mike Pagano</name>
-      <role>Member (Kernel, gentoo-sources, genpatches)</role>
-    </member>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
       <role>Member (Kernel, gentoo-sources, genpatches)</role>
     </member>
     <member>
@@ -2023,10 +2004,6 @@
     <name>LXQt</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
     <description>Maintains LXQt DE related packages.</description>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-    </member>
   </project>
   <project>
     <email>layman@gentoo.org</email>
@@ -2859,11 +2836,6 @@ developers and volunteer mentors.</description>
       <role>Developer</role>
     </member>
     <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>tamiko@gentoo.org</email>
       <name>Matthias Maier</name>
       <role>Developer</role>
@@ -3431,11 +3403,6 @@ developers and volunteer mentors.</description>
       <email>graaff@gentoo.org</email>
       <name>Hans de Graaff</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>naota@gentoo.org</email>
@@ -4286,10 +4253,6 @@ developers and volunteer mentors.</description>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
     </member>
     <member>
       <email>remi@gentoo.org</email>
