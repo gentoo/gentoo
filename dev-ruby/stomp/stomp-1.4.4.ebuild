@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
