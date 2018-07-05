@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils qmake-utils
+inherit desktop gnome2-utils qmake-utils
 
 DESCRIPTION="The X2Go Qt client"
 HOMEPAGE="http://www.x2go.org"
@@ -31,6 +31,10 @@ RDEPEND="${COMMON_DEPEND}
 
 CLIENT_BUILD="${WORKDIR}"/${P}.client_build
 PLUGIN_BUILD="${WORKDIR}"/${P}.plugin_build
+
+PATCHES=(
+	"${FILESDIR}/${P}-qt511.patch"
+)
 
 src_prepare() {
 	default
