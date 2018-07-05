@@ -36,7 +36,6 @@ RDEPEND="${DEPEND}"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
 		git-r3_src_unpack
