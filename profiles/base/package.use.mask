@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
+# Dependency app-crypt/jitterentropy is keyworded for
+# only a subset of the archs rng-tools supports
+sys-apps/rng-tools jitterentropy
+
 # Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
 # Qt4 is dead and going away. Bug #638260
 sci-libs/ViSP qt4
