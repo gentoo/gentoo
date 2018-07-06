@@ -29,8 +29,8 @@ DEPEND="${RDEPEND}
 "
 
 python_test() {
-	cd "${BUILD_DIR}"/lib* || die
-	${EPYTHON} -c "import numba; numba.test()" || die
+	cd "${BUILD_DIR}/lib" || die
+	${EPYTHON} -m numba.runtests -v || die
 }
 
 python_install_all() {
