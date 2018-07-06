@@ -5,10 +5,11 @@ EAPI=6
 
 inherit vdr-plugin-2 ssl-cert
 
+MY_P="release_2-3-1"
+
 DESCRIPTION="VDR Plugin: Web Access To Settings"
 HOMEPAGE="http://live.vdr-developer.org"
-SRC_URI="mirror://gentoo/${P}.tar.bz2
-		https://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.bz2"
+SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-live.git/snapshot/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,17 +22,10 @@ DEPEND="media-video/vdr
 	pcre? ( >=dev-libs/libpcre-8.12[cxx] )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${P}"
+S="${WORKDIR}/${MY_P}"
 
-VDR_CONFD_FILE="${FILESDIR}/confd-0.3"
-VDR_RCADDON_FILE="${FILESDIR}/rc-addon-0.3.sh"
-
-KEEP_I18NOBJECT="yes"
-
-PATCHES=(
-	"${FILESDIR}"/${P}_vdr-2.1.2.diff
-	"${FILESDIR}"/${P}-c++11.patch
-)
+VDR_CONFD_FILE="${FILESDIR}/confd-2.3"
+VDR_RCADDON_FILE="${FILESDIR}/rc-addon-2.3.sh"
 
 make_live_cert() {
 	# TODO: still true?
@@ -59,11 +53,8 @@ make_live_cert() {
 src_prepare() {
 	default
 
-	# new Makefile handling ToDp
-#	cp "${FILESDIR}/live.mk" "${S}/Makefile"
-
 	# remove untranslated language files
-	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nl_NL,nn_NO,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po
+	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nl_NL,nn_NO,pt_PT,ro_RO,sl_SI,tr_TR}.po
 
 	vdr-plugin-2_src_prepare
 
