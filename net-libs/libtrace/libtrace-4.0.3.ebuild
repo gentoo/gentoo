@@ -8,7 +8,7 @@ DESCRIPTION="A library and tools for trace processing"
 HOMEPAGE="http://research.wand.net.nz/software/libtrace.php"
 SRC_URI="http://research.wand.net.nz/software/${PN}/${P/_/-}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc ncurses numa static-libs"

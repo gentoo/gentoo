@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Library for transparent file I/O with compression"
-HOMEPAGE="http://research.wand.net.nz/software/libwandio.php"
-SRC_URI="http://research.wand.net.nz/software/${PN}/${P}.tar.gz"
+HOMEPAGE="https://research.wand.net.nz/software/libwandio.php"
+SRC_URI="https://research.wand.net.nz/software/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-3"
 SLOT="0/2"
 KEYWORDS="~amd64 ~x86"
 IUSE="bzip2 http lzma lzo static-libs zlib"

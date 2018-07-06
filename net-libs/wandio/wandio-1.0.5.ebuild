@@ -7,7 +7,7 @@ DESCRIPTION="Library for transparent file I/O with compression"
 HOMEPAGE="https://research.wand.net.nz/software/libwandio.php"
 SRC_URI="https://research.wand.net.nz/software/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-3"
 SLOT="0/2"
 KEYWORDS="~amd64 ~x86"
 IUSE="bzip2 http lzma lzo static-libs zlib"
