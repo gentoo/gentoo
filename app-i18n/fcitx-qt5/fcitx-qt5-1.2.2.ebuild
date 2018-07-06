@@ -8,11 +8,11 @@ inherit cmake-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-qt5"
+	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-qt5.git"
 fi
 
 DESCRIPTION="Fcitx input method module for Qt 5"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-qt5"
+HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-qt5"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else
@@ -40,8 +40,8 @@ DEPEND="${RDEPEND}
 DOCS=()
 
 src_prepare() {
-	# https://github.com/fcitx/fcitx-qt5/issues/34
-	# https://github.com/fcitx/fcitx-qt5/commit/af033e3d5305108eecc568adff7f8b2da5831ed6
+	# https://gitlab.com/fcitx/fcitx-qt5/issues/34
+	# https://gitlab.com/fcitx/fcitx-qt5/commit/af033e3d5305108eecc568adff7f8b2da5831ed6
 	sed -e "/^#include \"batchdialog.h\"$/i\\#include <QIcon>" -i quickphrase-editor/batchdialog.cpp || die
 
 	cmake-utils_src_prepare
