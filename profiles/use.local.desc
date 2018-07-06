@@ -3892,6 +3892,7 @@ net-fs/cifs-utils:ads - Enable Active Directory support and create cifs.idmap bi
 net-fs/cifs-utils:caps - libcap support
 net-fs/cifs-utils:caps-ng - libcap-ng support
 net-fs/cifs-utils:creds - cifs credentials support
+net-fs/libnfs:utils - Build/install nfs-{cat,ls,cp} utils
 net-fs/netatalk:pgp - Add support pgp authentication module
 net-fs/netatalk:quota - Add support for user quota on various filesystems
 net-fs/netatalk:shadow - Add shadow support
