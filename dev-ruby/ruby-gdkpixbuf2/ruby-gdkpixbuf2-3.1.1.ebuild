@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,11 @@ IUSE=""
 
 RDEPEND+=" x11-libs/gtk+:2"
 
-ruby_add_rdepend ">=dev-ruby/ruby-glib2-${PV}"
+ruby_add_rdepend "
+	>=dev-ruby/ruby-gio2-${PV}
+	>=dev-ruby/ruby-glib2-${PV}
+	>=dev-ruby/ruby-gobject-introspection-${PV}
+"
 
 each_ruby_configure() {
 	:
