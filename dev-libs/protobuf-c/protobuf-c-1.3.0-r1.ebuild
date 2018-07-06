@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}
 	test? ( ${AUTOTOOLS_DEPEND} )
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3.0-restore-protobuf-2-compatibility.patch )
+PATCHES=(
+	"${FILESDIR}/${P}-restore-protobuf-2-compatibility.patch"
+	"${FILESDIR}/${P}-protobuf-3.6.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 
