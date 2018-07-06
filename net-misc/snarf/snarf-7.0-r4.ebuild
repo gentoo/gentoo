@@ -1,25 +1,27 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils
+inherit toolchain-funcs
 
-IUSE=""
 DESCRIPTION="Small and fast CLI resource grabber for http, gopher, finger, ftp"
-SRC_URI="https://www.xach.com/snarf/${P}.tar.gz"
 HOMEPAGE="https://www.xach.com/snarf/"
-KEYWORDS="alpha amd64 ppc sparc x86"
+SRC_URI="https://www.xach.com/snarf/${P}.tar.gz"
+
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
+IUSE=""
 
-DEPEND=""
+PATCHES=(
+	"${FILESDIR}"/snarf-basename-patch.diff
+	"${FILESDIR}"/snarf-unlink-empty.diff
+	"${FILESDIR}"/snarf-fix-off-by-ones.diff
+)
 
-src_unpack() {
-	unpack ${A}
-	epatch "${FILESDIR}"/snarf-basename-patch.diff
-	epatch "${FILESDIR}"/snarf-unlink-empty.diff
-	epatch "${FILESDIR}"/snarf-fix-off-by-ones.diff
+src_compile() {
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
