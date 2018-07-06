@@ -2,18 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24"
 
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby binding of GooCanvas"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/ruby-glib2-${PV}
 	>=dev-ruby/ruby-gobject-introspection-${PV}"
 
 all_ruby_prepare() {
+	epatch "${FILESDIR}/${P}-schema-path.patch"
+
 	# Avoid unneeded dependency on test-unit-notify.
 	sed -i -e '/notify/ s:^:#:' \
 		test/gio2-test-utils.rb || die
