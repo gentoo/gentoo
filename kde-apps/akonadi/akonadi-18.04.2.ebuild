@@ -36,10 +36,11 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtsql 'mysql?,postgres?')
+	$(add_qt_dep qtsql 'postgres?')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	x11-misc/shared-mime-info
+	mysql? ( $(add_qt_dep qtsql 'mysql' '' '5=') )
 	sqlite? ( dev-db/sqlite:3 )
 	xml? ( dev-libs/libxml2 )
 "
