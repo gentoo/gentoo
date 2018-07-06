@@ -62,7 +62,7 @@ RDEPEND="
 	designer? ( ~dev-qt/designer-${PV} )
 	geolocation? ( ~dev-qt/qtpositioning-${PV} )
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( media-video/ffmpeg:0= )
+	system-ffmpeg? ( <media-video/ffmpeg-4:0= )
 	system-icu? ( dev-libs/icu:= )
 	widgets? (
 		~dev-qt/qtdeclarative-${PV}[widgets]
