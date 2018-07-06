@@ -109,10 +109,9 @@ RDEPEND="${CDEPEND}
 	xinetd? ( sys-apps/xinetd )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.11.02-hsimple.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
-	"${FILESDIR}"/${PN}-6.12.04-no-opengl.patch
-	"${FILESDIR}"/${PN}-6.12.04-z3.patch
+	"${FILESDIR}"/${PN}-6.13.02-hsimple.patch
+	"${FILESDIR}"/${PN}-6.14.00-http.patch
 )
 
 pkg_setup() {
@@ -151,6 +150,7 @@ src_configure() {
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}/$(ver_cut 1-2)/share/man"
 		-DMCAKE_INSTALL_LIBDIR=$(get_libdir)
 		-DDEFAULT_SYSROOT="${EPREFIX}"
+		-DCLING_BUILD_PLUGINS=OFF
 		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
@@ -254,6 +254,8 @@ src_configure() {
 		-Dtcmalloc=OFF
 		-Dtesting=$(usex test)
 		-Dthread=$(usex threads)
+		-Dtmva-cpu=$(usex tmva)
+		-Dtmva-gpu=OFF
 		-Dtmva=$(usex tmva)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
@@ -310,5 +312,5 @@ src_install() {
 	fi
 
 	# clean up unnecessary files from installation
-	rm -r config emacs etc/vmc fonts || die
+	rm -r config emacs etc/vmc || die
 }
