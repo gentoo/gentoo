@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,10 +19,11 @@ KEYWORDS="~amd64"
 IUSE="pax_kernel"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="!dev-db/mongodb
+RDEPEND="!app-admin/mongo-tools
+	!dev-db/mongodb
+	!dev-libs/mongo-cxx-driver
 	${PYTHON_DEPS}
 	dev-libs/jemalloc
-	!dev-libs/mongo-cxx-driver
 	>=dev-libs/boost-1.50[threads(+)]
 	>=dev-libs/libpcre-8.30[cxx]
 	net-libs/libpcap"
@@ -40,6 +41,8 @@ CHECKREQS_DISK_BUILD="13G"
 src_prepare() {
 	eapply "${FILESDIR}/${P}-no-werror.patch"
 	eapply "${FILESDIR}/${P}-boost-57.patch"
+	eapply "${FILESDIR}/${P}-gcc-7.patch"
+	eapply "${FILESDIR}/${P}-undefined-reference.patch"
 	cmake-utils_src_prepare
 }
 

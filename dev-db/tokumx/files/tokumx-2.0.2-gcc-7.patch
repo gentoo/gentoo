@@ -1,0 +1,102 @@
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/mongo/db/client_load.cpp tokumx-enterprise-2.0.2/src/mongo/db/client_load.cpp
+--- tokumx-enterprise-2.0.2.ORIG/src/mongo/db/client_load.cpp	2018-07-03 15:57:40.709360944 +0100
++++ tokumx-enterprise-2.0.2/src/mongo/db/client_load.cpp	2018-07-03 15:57:48.127361253 +0100
+@@ -74,7 +74,7 @@
+     }
+ 
+     bool Client::loadInProgress() const {
+-        return _loadInfo;
++        return bool(_loadInfo);
+     }
+ 
+ } // namespace mongo
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/mongo/db/collection_map.h tokumx-enterprise-2.0.2/src/mongo/db/collection_map.h
+--- tokumx-enterprise-2.0.2.ORIG/src/mongo/db/collection_map.h	2018-07-03 15:57:40.709360944 +0100
++++ tokumx-enterprise-2.0.2/src/mongo/db/collection_map.h	2018-07-03 15:57:48.127361253 +0100
+@@ -66,7 +66,7 @@
+         // which must succeed, by the first invariant.
+         Collection *getCollection(const StringData &ns);
+ 
+-        bool allocated() const { return _metadb; }
++        bool allocated() const { return bool(_metadb); }
+ 
+         void getNamespaces( list<string>& tofill );
+ 
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/mongo/db/ops/query.cpp tokumx-enterprise-2.0.2/src/mongo/db/ops/query.cpp
+--- tokumx-enterprise-2.0.2.ORIG/src/mongo/db/ops/query.cpp	2018-07-03 15:57:40.703360944 +0100
++++ tokumx-enterprise-2.0.2/src/mongo/db/ops/query.cpp	2018-07-03 15:58:08.348362094 +0100
+@@ -635,7 +635,7 @@
+         shared_ptr<ExplainRecordingStrategy> ret
+         ( new SimpleCursorExplainStrategy( ancillaryInfo, _cursor ) );
+         ret->notePlan( queryPlan.valid() && queryPlan.scanAndOrderRequired,
+-                       queryPlan.keyFieldsOnly );
++                       bool(queryPlan.keyFieldsOnly) );
+         return ret;
+     }
+ 
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/mongo/db/pipeline/document_source_sort.cpp tokumx-enterprise-2.0.2/src/mongo/db/pipeline/document_source_sort.cpp
+--- tokumx-enterprise-2.0.2.ORIG/src/mongo/db/pipeline/document_source_sort.cpp	2018-07-03 15:57:40.707360944 +0100
++++ tokumx-enterprise-2.0.2/src/mongo/db/pipeline/document_source_sort.cpp	2018-07-03 15:57:48.128361253 +0100
+@@ -106,7 +106,7 @@
+     bool DocumentSourceSort::coalesce(const intrusive_ptr<DocumentSource> &pNextSource) {
+         if (!limitSrc) {
+             limitSrc = dynamic_cast<DocumentSourceLimit*>(pNextSource.get());
+-            return limitSrc; // false if next is not a $limit
++            return bool(limitSrc); // false if next is not a $limit
+         }
+         else {
+             return limitSrc->coalesce(pNextSource);
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/mongo/db/queryoptimizercursorimpl.cpp tokumx-enterprise-2.0.2/src/mongo/db/queryoptimizercursorimpl.cpp
+--- tokumx-enterprise-2.0.2.ORIG/src/mongo/db/queryoptimizercursorimpl.cpp	2018-07-03 15:57:40.702360944 +0100
++++ tokumx-enterprise-2.0.2/src/mongo/db/queryoptimizercursorimpl.cpp	2018-07-03 15:57:48.128361253 +0100
+@@ -370,7 +370,7 @@
+ 
+             // The query plan must have a matcher.  The matcher's constructor performs some aspects
+             // of query validation that should occur before a cursor is returned.
+-            fassert( 16449, singlePlan->matcher() );
++            fassert( 16449, bool(singlePlan->matcher()) );
+ 
+             if ( needMatcher ) {
+                 single->setMatcher( singlePlan->matcher() );
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/mongo/db/query_optimizer_internal.cpp tokumx-enterprise-2.0.2/src/mongo/db/query_optimizer_internal.cpp
+--- tokumx-enterprise-2.0.2.ORIG/src/mongo/db/query_optimizer_internal.cpp	2018-07-03 15:57:40.707360944 +0100
++++ tokumx-enterprise-2.0.2/src/mongo/db/query_optimizer_internal.cpp	2018-07-03 15:57:48.129361253 +0100
+@@ -234,7 +234,7 @@
+         // The query plan must have a matcher.  The matcher's constructor performs some aspects
+         // of query validation that should occur as part of this class's init() if not handled
+         // already.
+-        fassert( 16249, queryPlan().matcher() );
++        fassert( 16249, bool(queryPlan().matcher()) );
+         
+         // TODO This violates the current Cursor interface abstraction, but for now it's simpler to keep our own set of
+         // dups rather than avoid poisoning the cursor's dup set with unreturned documents.  Deduping documents
+@@ -257,7 +257,7 @@
+         _explainPlanInfo.reset( new ExplainPlanInfo() );
+         _explainPlanInfo->notePlan( *_c,
+                                     queryPlan().scanAndOrderRequired(),
+-                                    queryPlan().keyFieldsOnly() );
++                                    bool(queryPlan().keyFieldsOnly()) );
+         return _explainPlanInfo;
+     }
+ 
+@@ -1226,7 +1226,7 @@
+                 _explainPlanInfo.reset( new ExplainPlanInfo() );
+                 _explainPlanInfo->notePlan( *_c,
+                                             _queryPlan->scanAndOrderRequired(),
+-                                           _queryPlan->keyFieldsOnly() );
++                                           bool(_queryPlan->keyFieldsOnly()) );
+                 shared_ptr<ExplainClauseInfo> clauseInfo( new ExplainClauseInfo() );
+                 clauseInfo->addPlanInfo( _explainPlanInfo );
+                 _mps->addClauseInfo( clauseInfo );
+diff -uNr tokumx-enterprise-2.0.2.ORIG/src/mongo/db/query_plan_summary.h tokumx-enterprise-2.0.2/src/mongo/db/query_plan_summary.h
+--- tokumx-enterprise-2.0.2.ORIG/src/mongo/db/query_plan_summary.h	2018-07-03 15:57:40.705360944 +0100
++++ tokumx-enterprise-2.0.2/src/mongo/db/query_plan_summary.h	2018-07-03 15:57:48.129361253 +0100
+@@ -35,7 +35,7 @@
+          * The 'fieldRangeMulti' attribute is required, and its presence indicates the object has
+          * been configured with a query plan.
+          */
+-        bool valid() const { return fieldRangeSetMulti; }
++        bool valid() const { return bool(fieldRangeSetMulti); }
+ 
+         // A description of the valid values for the fields of a query, in the context of a multikey
+         // index or in memory sort.

@@ -1,0 +1,47 @@
+diff -uNr a/src/third_party/backup/copier.cc b/src/third_party/backup/copier.cc
+--- a/src/third_party/backup/copier.cc	2018-07-06 12:43:52.698825122 +0200
++++ b/src/third_party/backup/copier.cc	2018-07-06 12:41:40.066804121 +0200
+@@ -107,10 +107,12 @@
+     int r = 0;
+     char *fname = 0;
+     size_t n_known = 0;
++    char *dupname;
+     {
+         with_mutex_locked tm(&m_todo_mutex, BACKTRACE(NULL));
+         // Start with "."
+-        m_todo.push_back(strdup("."));
++	dupname = strdup(".");
++        m_todo.push_back(dupname);
+         n_known = m_todo.size();
+     }
+     while (n_known != 0) {
+@@ -697,6 +699,7 @@
+     int error = 0;
+     with_mutex_locked tm(&m_todo_mutex, BACKTRACE(NULL));
+     struct dirent const *e = NULL;
++    char *dupname;
+     while((e = readdir(dir)) != NULL) {
+         if (!the_manager.copy_is_enabled()) break;
+         if(is_dot(e)) {
+@@ -716,8 +719,9 @@
+                 goto out;
+             }
+             
++	    dupname = strdup(new_name);
+             // Add it to our todo list.
+-            m_todo.push_back(strdup(new_name));
++            m_todo.push_back(dupname);
+             TRACE("~~~Added this file to todo list:", new_name);
+         }
+     }
+@@ -730,7 +734,9 @@
+ //
+ void copier::add_file_to_todo(const char *file) throw() {
+     with_mutex_locked tm(&m_todo_mutex, BACKTRACE(NULL));
+-    m_todo.push_back(strdup(file));
++    char *dupname;
++    dupname = strdup(file);
++    m_todo.push_back(dupname);
+ }
+ 
+ ////////////////////////////////////////////////////////////////////////////////
