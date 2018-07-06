@@ -135,7 +135,13 @@ _handle_multilib() {
 # so it doesn't try to rebuild libraries that can't be rebuilt.
 _mask_plex_libraries_revdep() {
 	dodir /etc/revdep-rebuild/
-	echo "SEARCH_DIRS_MASK=\"${EPREFIX}/usr/$(get_libdir)/plexmediaserver\"" > "${ED}"/etc/revdep-rebuild/80plexmediaserver
+
+	# Bug: 659702. The upstream plex binary installs its precompiled package to /usr/lib.
+	# Due to profile 17.1 splitting /usr/lib and /usr/lib64, we can no longer rely
+	# on the implicit symlink automatically satisfying our revdep requirement when we use $(get_libdir).
+	# Thus we will match upstream's directory automatically. If upstream switches their location,
+	# then so should we.
+	echo "SEARCH_DIRS_MASK=\"${EPREFIX}/usr/lib/plexmediaserver\"" > "${ED}"/etc/revdep-rebuild/80plexmediaserver
 }
 
 # Remove execstack flags from some libraries/executables
