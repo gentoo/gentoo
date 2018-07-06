@@ -14,7 +14,6 @@ media-video/mpv -vulkan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2018)
 # LO kde support on x86 is broken, see bug 650208
-=app-office/libreoffice-6.0* kde
 =app-office/libreoffice-bin-6.0* kde
 =app-office/libreoffice-bin-debug-6.0* kde
 
