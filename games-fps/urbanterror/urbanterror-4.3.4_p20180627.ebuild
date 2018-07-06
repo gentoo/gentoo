@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit eapi7-ver flag-o-matic toolchain-funcs xdg-utils
+
+inherit desktop eapi7-ver flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
-HOMEPAGE="http://urbanterror.info https://github.com/mickael9/ioq3"
+HOMEPAGE="https://urbanterror.info https://github.com/mickael9/ioq3"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 	EGIT_BRANCH="urt"
 else
-	COMMIT_ID="d93f05de38a6cae60fbf0f073aace64b3adc7aaf"
+	COMMIT_ID="e8c941ec8b753b9ecb4f8c4fcec07e4fe3babc64"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
 	KEYWORDS="~amd64 ~x86"
@@ -25,6 +26,7 @@ REQUIRED_USE="|| ( client server )
 		voip? ( opus )"
 
 DOCS=( ChangeLog README.md README.ioq3.md md4-readme.txt )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-fix-build_system.patch
 	"${FILESDIR}"/${PN}-4.3.3_p20180218-fix-loop.patch
@@ -39,7 +41,7 @@ RDEPEND="
 		vorbis? ( media-libs/libvorbis:= )
 	)
 	curl? ( net-misc/curl )
-	~games-fps/urbanterror-data-4.3.3
+	~games-fps/urbanterror-data-4.3.4
 	sys-libs/zlib:=[minizip]
 	virtual/jpeg:0
 "
@@ -66,51 +68,52 @@ src_compile() {
 	# wrt bug #449510
 	append-cppflags "-DOF=_Z_OF"
 
-	local my_arch=$(usex amd64 "x86_64" "i386")
-
-	emake \
-		ARCH=${my_arch} \
-		DEFAULT_BASEDIR="/usr/share/urbanterror" \
-		BUILD_CLIENT=$(usex "client" 1 0) \
-		BUILD_SERVER=$(usex "server" 1 0) \
-		BUILD_BASEGAME=1 \
-		BUILD_MISSIONPACK=0 \
-		BUILD_GAME_SO=0 \
-		BUILD_GAME_QVM=0 \
-		BUILD_STANDALONE=1 \
-		SERVERBIN="Quake3-UrT-Ded" \
-		CLIENTBIN="Quake3-UrT" \
-		USE_RENDERER_DLOPEN=0 \
-		USE_YACC=0 \
-		BASEGAME="q3ut4"\
-		BASEGAME_CFLAGS="${CFLAGS}" \
-		USE_OPENAL=$(usex "openal" 1 0) \
-		USE_OPENAL_DLOPEN=$(usex "openal" 1 0) \
-		USE_CURL=$(usex "curl" 1 0) \
-		USE_CURL_DLOPEN=$(usex "curl" 1 0) \
-		USE_CODEC_VORBIS=$(usex "vorbis" 1 0) \
-		USE_CODEC_OPUS=$(usex "opus" 1 0) \
-		USE_MUMBLE=$(usex "mumble" 1 0) \
-		USE_SKEETMOD=$(usex "skeetshootmod" 1 0) \
-		USE_VOIP=$(usex "mumble" 1 0) \
-		USE_INTERNAL_LIBS=0 \
-		USE_LOCAL_HEADERS=0 \
-		USE_ALTGAMMA=$(usex "altgamma" 1 0) \
+	local myemakeargs=(
+		ARCH=$(usex amd64 "x86_64" "i686" )
+		DEFAULT_BASEDIR="/usr/share/urbanterror"
+		BUILD_CLIENT=$(usex "client" 1 0)
+		BUILD_SERVER=$(usex "server" 1 0)
+		BUILD_BASEGAME=1
+		BUILD_MISSIONPACK=0
+		BUILD_GAME_SO=0
+		BUILD_GAME_QVM=0
+		BUILD_STANDALONE=1
+		SERVERBIN="Quake3-UrT-Ded"
+		CLIENTBIN="Quake3-UrT"
+		USE_RENDERER_DLOPEN=0
+		USE_YACC=0
+		BASEGAME="q3ut4"
+		BASEGAME_CFLAGS="${CFLAGS}"
+		USE_OPENAL=$(usex "openal" 1 0)
+		USE_OPENAL_DLOPEN=$(usex "openal" 1 0)
+		USE_CURL=$(usex "curl" 1 0)
+		USE_CURL_DLOPEN=$(usex "curl" 1 0)
+		USE_CODEC_VORBIS=$(usex "vorbis" 1 0)
+		USE_CODEC_OPUS=$(usex "opus" 1 0)
+		USE_MUMBLE=$(usex "mumble" 1 0)
+		USE_SKEETMOD=$(usex "skeetshootmod" 1 0)
+		USE_VOIP=$(usex "mumble" 1 0)
+		USE_INTERNAL_LIBS=0
+		USE_LOCAL_HEADERS=0
+		USE_ALTGAMMA=$(usex "altgamma" 1 0)
 		$(usex "debug" "debug" "release")
+	)
+	emake "${myemakeargs[@]}"
 }
 
 src_install() {
-	local my_arch=$(usex amd64 "x86_64" "i386")
+	local myarch=$(usex amd64 "x86_64" "i386")
+	local myreleasetype=$(usex debug "debug" "release")
 
 	if use client; then
-		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT.${my_arch} ${PN}
+		newbin build/${myreleasetype}-linux-${myarch}/Quake3-UrT.${myarch} ${PN}
 		# Shooter as defined in https://specifications.freedesktop.org/menu-spec/latest/apas02.html
 		make_desktop_entry ${PN} "UrbanTerror" ${PN}
 	fi
 
 	if use server && ! use client; then
 		# dedicated server only
-		newbin build/$(usex debug "debug" "release")-linux-${my_arch}/Quake3-UrT-Ded.${my_arch} ${PN}-ded
+		newbin build/${myreleasetype}-linux-${myarch}/Quake3-UrT-Ded.${myarch} ${PN}-ded
 	fi
 
 	einstalldocs
