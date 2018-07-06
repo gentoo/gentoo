@@ -8558,7 +8558,7 @@ net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 1.0.7: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
-net-irc/konversation 1.7.4-r1: A user friendly IRC Client
+net-irc/konversation 1.7.5: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20180401054732: Advanced IRC Client
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/ngircd 23-r1 24: An IRC server written from scratch
