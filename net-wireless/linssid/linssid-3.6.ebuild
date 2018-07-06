@@ -37,9 +37,7 @@ src_prepare() {
 	sed -i -e 's/CONFIG += release/CONFIG += release qwt/' linssid-app.pro || die
 
 	# Fix lib path for x11-libs/qwt
-	if use amd64; then
-		sed -i -e "s/lib\/libqwt-qt5.so.6/\/$(get_libdir)\/libqwt6-qt5.so.6/" linssid-app.pro || die
-	fi
+	sed -i -e '/libqwt-qt5.so.6/c\LIBS += -lqwt6-qt5' linssid-app.pro || die
 
 	# Enable 'gksu' when a user don't want policykit
 	if ! use policykit; then
