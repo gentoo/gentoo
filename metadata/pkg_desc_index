@@ -5906,7 +5906,7 @@ dev-ruby/rspec-expectations 2.99.2 3.5.0 3.6.0: A Behaviour Driven Development (
 dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.99.2 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-support 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/ruby-atk 3.0.8: Ruby Atk bindings
+dev-ruby/ruby-atk 3.0.8 3.1.1: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
 dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
 dev-ruby/ruby-cairo-gobject 3.0.8 3.1.1: Ruby cairo-gobject bindings
@@ -5914,10 +5914,10 @@ dev-ruby/ruby-clutter 3.0.8: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gstreamer 3.0.8: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gtk 3.0.8: Ruby Clutter bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
-dev-ruby/ruby-gdk3 3.0.8: Ruby GDK-3.x bindings
-dev-ruby/ruby-gdkpixbuf2 3.0.8: Ruby GdkPixbuf2 bindings
+dev-ruby/ruby-gdk3 3.0.8 3.1.1: Ruby GDK-3.x bindings
+dev-ruby/ruby-gdkpixbuf2 3.0.8 3.1.1: Ruby GdkPixbuf2 bindings
 dev-ruby/ruby-gettext 3.2.2 3.2.9: Native Language Support Library and Tools modeled after GNU gettext package
-dev-ruby/ruby-gio2 3.0.8: Ruby binding of GooCanvas
+dev-ruby/ruby-gio2 3.0.8 3.1.1: Ruby binding of GooCanvas
 dev-ruby/ruby-glib2 3.0.8 3.1.1: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.0.8-r1: Ruby Gnome2 bindings
 dev-ruby/ruby-gobject-introspection 3.0.8 3.1.1: Ruby GObjectIntrospection bindings
@@ -5935,7 +5935,7 @@ dev-ruby/ruby-pango 3.0.8 3.1.1: Ruby Pango bindings
 dev-ruby/ruby-poppler 3.0.8: Ruby poppler-glib bindings
 dev-ruby/ruby-progressbar 1.4.2-r1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
-dev-ruby/ruby-rsvg 3.0.8: Ruby bindings for librsvg
+dev-ruby/ruby-rsvg 3.0.8 3.1.1: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
 dev-ruby/ruby-termios 1.0.2-r1: A Ruby interface to termios
