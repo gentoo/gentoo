@@ -684,12 +684,6 @@ sanity_prechecks() {
 
 	# When we actually have to compile something...
 	if ! just_headers ; then
-		local run_kv build_kv want_kv
-
-		run_kv=$(g_get_running_KV)
-		build_kv=$(g_int_to_KV $(get_kheader_version))
-		want_kv=${MIN_KERN_VER}
-
 		ebegin "Checking gcc for __thread support"
 		if ! eend $(want__thread ; echo $?) ; then
 			echo
@@ -698,21 +692,29 @@ sanity_prechecks() {
 			die "No __thread support in gcc!"
 		fi
 
-		if ! is_crosscompile && ! tc-is-cross-compiler ; then
-			# Building fails on an non-supporting kernel
-			ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
-			if ! eend_KV ${run_kv} ${want_kv} ; then
-				echo
-				eerror "You need a kernel of at least ${want_kv}!"
-				die "Kernel version too low!"
-			fi
-		fi
+		if [[ ${CTARGET} == *-linux* ]] ; then
+			local run_kv build_kv want_kv
 
-		ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-		if ! eend_KV ${build_kv} ${want_kv} ; then
-			echo
-			eerror "You need linux-headers of at least ${want_kv}!"
-			die "linux-headers version too low!"
+			run_kv=$(g_get_running_KV)
+			build_kv=$(g_int_to_KV $(get_kheader_version))
+			want_kv=${MIN_KERN_VER}
+
+			if ! is_crosscompile && ! tc-is-cross-compiler ; then
+				# Building fails on an non-supporting kernel
+				ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
+				if ! eend_KV ${run_kv} ${want_kv} ; then
+					echo
+					eerror "You need a kernel of at least ${want_kv}!"
+					die "Kernel version too low!"
+				fi
+			fi
+
+			ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
+			if ! eend_KV ${build_kv} ${want_kv} ; then
+				echo
+				eerror "You need linux-headers of at least ${want_kv}!"
+				die "linux-headers version too low!"
+			fi
 		fi
 	fi
 }
