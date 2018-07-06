@@ -46,6 +46,9 @@ src_unpack() {
 
 src_prepare() {
 	sed -i 's#<lorcon2/lorcon.h>#"../lorcon.h"#' pylorcon2/PyLorcon2.c
+	sed -i 's#<lorcon2/lorcon.h>#"../lorcon.h"#' pylorcon2/PyLorcon2.h
+	sed -i 's#<lorcon2/lorcon_packet.h>#"../lorcon_packet.h"#' pylorcon2/PyLorcon2.c
+	sed -i 's#<lorcon2/lorcon_packet.h>#"../lorcon_packet.h"#' pylorcon2/PyLorcon2.h
 	sed -i 's#<lorcon2/lorcon_multi.h>#"../lorcon_multi.h"#' pylorcon2/PyLorcon2.c
 	sed -i 's#<lorcon2/lorcon_multi.h>#"../lorcon_multi.h"#' pylorcon2/PyLorcon2.h
 	default
