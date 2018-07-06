@@ -321,5 +321,5 @@ src_install() {
 	fi
 
 	# clean up unnecessary files from installation
-	rm -r bin/clang* config emacs etc/vmc fonts || die
+	rm -r bin/clang* config emacs etc/vmc || die
 }
