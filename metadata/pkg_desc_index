@@ -2892,7 +2892,7 @@ dev-lang/rust-bin 1.25.0: Systems programming language from Mozilla
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.11.4-r1 2.11.11 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.2.1_rc0: Stand-alone JavaScript C library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.3.0: Stand-alone JavaScript C library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.2: free, small, and standard compliant Prolog compiler
 dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
@@ -9123,6 +9123,7 @@ net-wireless/hostapd 2.6-r1 2.6-r4: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2016.07.1-r1: IEEE 802.11 wireless LAN sniffer
+net-wireless/lorcon 0.0_p20150109: A generic library for injecting 802.11 frames
 net-wireless/ndiswrapper 1.61: Wrapper for using Windows drivers for some wireless cards
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities
 net-wireless/rfkill 0.5-r2: Tool to read and control rfkill status through /dev/rfkill
