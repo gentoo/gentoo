@@ -6,10 +6,10 @@ WANT_AUTOCONF="2.1"
 inherit autotools toolchain-funcs pax-utils mozcoreconf-v4
 
 MY_PN="mozjs"
-MY_P="${MY_PN}-${PV/_/.}"
+MY_P="${MY_PN}-${PV/_/.}sfink2"
 DESCRIPTION="Stand-alone JavaScript C library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
-SRC_URI="https://people.mozilla.org/~sstangl/${MY_P}.tar.bz2
+SRC_URI="https://archive.mozilla.org/pub/${PN}/releases/${PV}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~axs/distfiles/${PN}-slot38-patches-01.tar.xz"
 
 LICENSE="NPL-1.1"
@@ -20,7 +20,7 @@ IUSE="debug +jit minimal static-libs +system-icu test"
 RESTRICT="ia64? ( test )"
 
 #S="${WORKDIR}/${MY_P%.rc*}"
-S="${WORKDIR}/${MY_PN}-${SLOT}.0.0"
+S="${WORKDIR}/${MY_P}"
 BUILDDIR="${S}/js/src"
 
 RDEPEND=">=dev-libs/nspr-4.10.10
