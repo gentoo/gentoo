@@ -1,34 +1,30 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="tool to reliably distribute binary data using UDP broadcasting techniques"
 HOMEPAGE="https://www.wudika.de/~jan/netpipe/"
-SRC_URI="https://www.wudika.de/~jan/netpipe/${PN}.tar.gz"
+SRC_URI="https://www.wudika.de/~jan/${PN}/${PN}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 S="${WORKDIR}/${PN}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	sed -i \
-		-e "s:^OPT=.*:OPT = ${CFLAGS}:" \
+		-e "s:^OPT=.*:OPT = ${CFLAGS} ${LDFLAGS}:" \
 		-e "s:^CC=.*:CC = $(tc-getCC):" \
-		Makefile
+		Makefile || die "sed failed"
+	default
 }
 
 src_install() {
-	dobin netpipe || die "dobin failed"
+	dobin netpipe
 	dodoc DOCUMENTATION INSTALL TECH-NOTES
 }
