@@ -17,6 +17,9 @@ RESTRICT="test"
 
 DEPEND="sys-devel/libtool
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+PATCHES=(
+	"${FILESDIR}"/${P}-UV_FS_LCHOWN.patch
+)
 
 src_prepare() {
 	default
