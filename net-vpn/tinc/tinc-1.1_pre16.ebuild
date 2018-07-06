@@ -60,8 +60,8 @@ src_prepare() {
 	# Fix the static (failing UNKNOWN) version in the autoconf
 	# NOTE: When updating the ebuild, make sure to check that this
 	# line number hasn't changed in the upstream sources.
-	sed -i "4d" configure.ac
-	sed -i "4iAC_INIT([tinc], ${PVR})" configure.ac
+	sed -i "6d" configure.ac
+	sed -i "6iAC_INIT([tinc], ${PVR})" configure.ac
 }
 
 src_configure() {
