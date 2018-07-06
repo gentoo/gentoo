@@ -9,7 +9,7 @@ MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Protocol Buffers implementation in C"
-HOMEPAGE="https://github.com/protobuf-c/protobuf-c/"
+HOMEPAGE="https://github.com/protobuf-c/protobuf-c"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
@@ -20,7 +20,6 @@ IUSE="static-libs test"
 
 RDEPEND=">=dev-libs/protobuf-2.6.0:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	test? ( ${AUTOTOOLS_DEPEND} )
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
 PATCHES=(
@@ -32,7 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	if ! use test ; then
+	if ! use test; then
 		eapply "${FILESDIR}"/${PN}-1.3.0-no-build-tests.patch
 	fi
 
@@ -41,5 +40,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
-	econf "${myeconfargs[@]}"
+	econf \
+		$(use_enable static-libs static)
 }
