@@ -94,7 +94,7 @@ COMMONDEPEND="
 	groupwise? ( app-crypt/qca:2[qt5(+)] )
 	jingle? (
 		dev-libs/expat
-		dev-libs/openssl:0
+		dev-libs/openssl:0=
 		>=media-libs/mediastreamer-2.3.0
 		media-libs/speex
 		net-libs/libsrtp:=
@@ -110,8 +110,8 @@ COMMONDEPEND="
 	)
 	xmpp? (
 		app-crypt/qca:2[qt5(+)]
-		net-dns/libidn
-		sys-libs/zlib
+		net-dns/libidn:0=
+		sys-libs/zlib:=
 	)
 	yahoo? ( media-libs/jasper )
 	zeroconf? (
@@ -135,6 +135,8 @@ DEPEND="${COMMONDEPEND}
 	x11-base/xorg-proto
 	jingle? ( dev-libs/jsoncpp )
 "
+
+PATCHES=( "${FILESDIR}/${P}-pipes.patch" )
 
 src_configure() {
 	local x x2

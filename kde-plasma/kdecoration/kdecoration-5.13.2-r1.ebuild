@@ -12,5 +12,8 @@ LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-DEPEND="$(add_qt_dep qtgui)"
+DEPEND="
+	$(add_frameworks_dep ki18n)
+	$(add_qt_dep qtgui)
+"
 RDEPEND="${DEPEND}"
