@@ -136,6 +136,8 @@ DEPEND="${COMMONDEPEND}
 	jingle? ( dev-libs/jsoncpp )
 "
 
+PATCHES=( "${FILESDIR}/${P}-pipes.patch" )
+
 src_configure() {
 	local x x2
 	# Handle common stuff
