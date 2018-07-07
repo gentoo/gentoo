@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,11 +22,19 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
-	econf \
-		$(use_with audiofile libaudiofile) \
-		$(use_with bzip2 bzip2) \
-		$(use_with gcrypt libgcrypt) \
-		$(use_with zlib zlib)
+	local myconf=(
+		$(use_with audiofile libaudiofile)
+		$(use_with bzip2)
+		$(use_with gcrypt libgcrypt)
+		$(use_with zlib)
+	)
+	econf "${myconf[@]}"
+}
+
+src_test() {
+	# check only builds test executable but doesn't run it
+	emake check
+	./test/test || die
 }
 
 src_install() {

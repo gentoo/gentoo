@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="audiofile gcrypt jpeg png zlib"
 
-RDEPEND=">=app-emulation/libspectrum-1.4.1[gcrypt?,zlib?]
+RDEPEND=">=app-emulation/libspectrum-1.4.4[gcrypt?,zlib?]
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0 )
@@ -21,10 +21,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
-	econf \
-		$(use_with audiofile) \
-		$(use_with gcrypt libgcrypt) \
-		$(use_with jpeg libjpeg) \
-		$(use_with png libpng) \
+	local myconf=(
+		$(use_with audiofile)
+		$(use_with gcrypt libgcrypt)
+		$(use_with jpeg libjpeg)
+		$(use_with png libpng)
 		$(use_with zlib)
+	)
+	econf "${myconf[@]}"
 }

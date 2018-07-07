@@ -16,7 +16,7 @@ IUSE="alsa ao backend-fbcon backend-sdl backend-svga backend-X gpm joystick meml
 REQUIRED_USE="?? ( backend-fbcon backend-sdl backend-svga backend-X )"
 
 RDEPEND="
-	>=app-emulation/libspectrum-1.4.1
+	>=app-emulation/libspectrum-1.4.4
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
@@ -61,4 +61,8 @@ src_configure() {
 	fi
 
 	econf "${myconf[@]}"
+}
+
+src_test() {
+	emake test
 }
