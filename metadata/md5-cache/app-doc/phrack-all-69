@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Hacker magazine by the community, for the community (all issues)
+EAPI=7
+HOMEPAGE=http://www.phrack.org/
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=metapackage
+RDEPEND==app-doc/phrack-01 =app-doc/phrack-02 =app-doc/phrack-03 =app-doc/phrack-04 =app-doc/phrack-05 =app-doc/phrack-06 =app-doc/phrack-07 =app-doc/phrack-08 =app-doc/phrack-09 =app-doc/phrack-10 =app-doc/phrack-11 =app-doc/phrack-12 =app-doc/phrack-13 =app-doc/phrack-14 =app-doc/phrack-15 =app-doc/phrack-16 =app-doc/phrack-17 =app-doc/phrack-18 =app-doc/phrack-19 =app-doc/phrack-20 =app-doc/phrack-21 =app-doc/phrack-22 =app-doc/phrack-23 =app-doc/phrack-24 =app-doc/phrack-25 =app-doc/phrack-26 =app-doc/phrack-27 =app-doc/phrack-28 =app-doc/phrack-29 =app-doc/phrack-30 =app-doc/phrack-31 =app-doc/phrack-32 =app-doc/phrack-33 =app-doc/phrack-34 =app-doc/phrack-35 =app-doc/phrack-36 =app-doc/phrack-37 =app-doc/phrack-38 =app-doc/phrack-39 =app-doc/phrack-40 =app-doc/phrack-41 =app-doc/phrack-42 =app-doc/phrack-43 =app-doc/phrack-44 =app-doc/phrack-45 =app-doc/phrack-46 =app-doc/phrack-47 =app-doc/phrack-48 =app-doc/phrack-49 =app-doc/phrack-50 =app-doc/phrack-51 =app-doc/phrack-52 =app-doc/phrack-53 =app-doc/phrack-54 =app-doc/phrack-55 =app-doc/phrack-56 =app-doc/phrack-57 =app-doc/phrack-58 =app-doc/phrack-59 =app-doc/phrack-60 =app-doc/phrack-61 =app-doc/phrack-62 =app-doc/phrack-63 =app-doc/phrack-64 =app-doc/phrack-65 =app-doc/phrack-66 =app-doc/phrack-67 =app-doc/phrack-68 =app-doc/phrack-69
+SLOT=0
+_md5_=b193e76b5109df6472812b4bd616f0c3
