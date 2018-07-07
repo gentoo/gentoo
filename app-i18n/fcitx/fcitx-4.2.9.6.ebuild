@@ -8,11 +8,11 @@ inherit cmake-utils gnome2-utils xdg-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx"
+	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx.git"
 fi
 
 DESCRIPTION="Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI="https://download.fcitx-im.org/data/pinyin.tar.gz -> fcitx-data-pinyin.tar.gz
 		https://download.fcitx-im.org/data/table.tar.gz -> fcitx-data-table.tar.gz
@@ -82,7 +82,7 @@ src_prepare() {
 		ln -s "${DISTDIR}/fcitx-data-en_dict-20121020.tar.gz" src/module/spell/dict/en_dict-20121020.tar.gz || die
 	fi
 
-	# https://github.com/fcitx/fcitx/issues/250
+	# https://gitlab.com/fcitx/fcitx/issues/250
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
 		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \
