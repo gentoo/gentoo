@@ -4,11 +4,11 @@ DESCRIPTION=Stand-alone JavaScript C library
 EAPI=6
 HOMEPAGE=https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 IUSE=debug +jit minimal static-libs +system-icu test custom-cflags custom-optimization
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
 LICENSE=NPL-1.1
 RDEPEND=>=dev-libs/nspr-4.10.10 virtual/libffi sys-libs/readline:0= >=sys-libs/zlib-1.2.3 system-icu? ( >=dev-libs/icu-51.1:= )
 RESTRICT=ia64? ( test )
 SLOT=38
 SRC_URI=https://archive.mozilla.org/pub/spidermonkey/releases/38.3.0/mozjs-38.3.0sfink2.tar.bz2 https://dev.gentoo.org/~axs/distfiles/spidermonkey-slot38-patches-01.tar.xz
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	mozcoreconf-v4	45c0b61c53e2dbbcf728355c62f8de3c	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	ffa9c3284c6b07b8c9f7933911f63812	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=059933bb5d21e438d2dd0e0dc0b1937b
+_md5_=b6f4c29f2de58fd0b4a30d65fe2ab840
