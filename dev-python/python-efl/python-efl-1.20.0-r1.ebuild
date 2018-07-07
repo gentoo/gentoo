@@ -59,7 +59,7 @@ python_test() {
 	sed -i 's/>= 13/>= 10/g' ecore/test_08_exe.py || die
 
 	sed -i 's:verbosity=1:verbosity=3:' 00_run_all_tests.py || die
-	${PYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
+	${EPYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
