@@ -26,12 +26,14 @@ IUSE="layers wayland X"
 
 PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
-	dev-util/vulkan-headers
+	>=dev-util/vulkan-headers-1.1.77.0-r1
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)"
+
+PATCHES=( "${FILESDIR}"/vulkan-loader-1.1.77.0-loader-Rework-include-dependencies.patch )
 
 multilib_src_configure() {
 	local mycmakeargs=(
