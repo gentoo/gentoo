@@ -3,11 +3,13 @@
 
 EAPI="5"
 
+MY_PN="${PN::-1}"
+
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Utilities for signing and verifying files for UEFI Secure Boot"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/sbsigntool"
-SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${MY_PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,6 +24,8 @@ DEPEND="${RDEPEND}
 	sys-boot/gnu-efi
 	sys-libs/binutils-libs
 	virtual/pkgconfig"
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	local iarch

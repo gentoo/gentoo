@@ -3,12 +3,14 @@
 
 EAPI="6"
 
+MY_PN="${PN::-1}"
+
 inherit eutils autotools
 
 DESCRIPTION="Utilities for signing and verifying files for UEFI Secure Boot"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jejb/sbsigntools.git/"
-SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/${PN}s.git/snapshot/${PN}s-${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~tamiko/distfiles/${PN}-0.8-ccan.tar.gz"
+SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/${PN}.git/snapshot/${P}.tar.gz
+	https://dev.gentoo.org/~tamiko/distfiles/${MY_PN}-0.8-ccan.tar.gz"
 
 LICENSE="GPL-3 LGPL-3 LGPL-2.1 CC0-1.0"
 SLOT="0"
@@ -23,8 +25,6 @@ DEPEND="${RDEPEND}
 	sys-boot/gnu-efi
 	sys-libs/binutils-libs
 	virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}s-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-openssl-1.1.0-compat.patch
