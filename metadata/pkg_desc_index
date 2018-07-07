@@ -5906,43 +5906,43 @@ dev-ruby/rspec-expectations 2.99.2 3.5.0 3.6.0: A Behaviour Driven Development (
 dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.99.2 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-support 3.5.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/ruby-atk 3.0.8 3.1.1: Ruby Atk bindings
+dev-ruby/ruby-atk 3.1.1: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
 dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
-dev-ruby/ruby-cairo-gobject 3.0.8 3.1.1: Ruby cairo-gobject bindings
-dev-ruby/ruby-clutter 3.0.8 3.1.1: Ruby Clutter bindings
+dev-ruby/ruby-cairo-gobject 3.1.1: Ruby cairo-gobject bindings
+dev-ruby/ruby-clutter 3.1.1: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gdk 3.1.1: Ruby binding of GDK specific API of Clutter
-dev-ruby/ruby-clutter-gstreamer 3.0.8 3.1.1: Ruby Clutter bindings
-dev-ruby/ruby-clutter-gtk 3.0.8 3.1.1: Ruby Clutter bindings
+dev-ruby/ruby-clutter-gstreamer 3.1.1: Ruby Clutter bindings
+dev-ruby/ruby-clutter-gtk 3.1.1: Ruby Clutter bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
-dev-ruby/ruby-gdk3 3.0.8 3.1.1: Ruby GDK-3.x bindings
-dev-ruby/ruby-gdkpixbuf2 3.0.8 3.1.1: Ruby GdkPixbuf2 bindings
+dev-ruby/ruby-gdk3 3.1.1: Ruby GDK-3.x bindings
+dev-ruby/ruby-gdkpixbuf2 3.1.1: Ruby GdkPixbuf2 bindings
 dev-ruby/ruby-gettext 3.2.2 3.2.9: Native Language Support Library and Tools modeled after GNU gettext package
-dev-ruby/ruby-gio2 3.0.8 3.1.1: Ruby binding of GooCanvas
-dev-ruby/ruby-glib2 3.0.8 3.1.1: Ruby Glib2 bindings
-dev-ruby/ruby-gnome2 3.0.8-r1 3.1.1: Ruby Gnome2 bindings
-dev-ruby/ruby-gobject-introspection 3.0.8 3.1.1: Ruby GObjectIntrospection bindings
-dev-ruby/ruby-gstreamer 3.0.8 3.1.1: Ruby GStreamer bindings
-dev-ruby/ruby-gtk2 3.0.8 3.1.1: Ruby Gtk2 bindings
-dev-ruby/ruby-gtk3 3.0.8 3.1.1: Ruby Gtk3 bindings
-dev-ruby/ruby-gtksourceview 3.0.8 3.1.1: Ruby bindings for gtksourceview
-dev-ruby/ruby-gtksourceview3 3.0.8 3.1.1: Ruby Gtk3 bindings
+dev-ruby/ruby-gio2 3.1.1: Ruby binding of GooCanvas
+dev-ruby/ruby-glib2 3.1.1: Ruby Glib2 bindings
+dev-ruby/ruby-gnome2 3.1.1: Ruby Gnome2 bindings
+dev-ruby/ruby-gobject-introspection 3.1.1: Ruby GObjectIntrospection bindings
+dev-ruby/ruby-gstreamer 3.1.1: Ruby GStreamer bindings
+dev-ruby/ruby-gtk2 3.1.1: Ruby Gtk2 bindings
+dev-ruby/ruby-gtk3 3.1.1: Ruby Gtk3 bindings
+dev-ruby/ruby-gtksourceview 3.1.1: Ruby bindings for gtksourceview
+dev-ruby/ruby-gtksourceview3 3.1.1: Ruby Gtk3 bindings
 dev-ruby/ruby-ldap 0.9.19: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-oci8 2.2.4.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
-dev-ruby/ruby-pango 3.0.8 3.1.1: Ruby Pango bindings
-dev-ruby/ruby-poppler 3.0.8 3.1.1: Ruby poppler-glib bindings
+dev-ruby/ruby-pango 3.1.1: Ruby Pango bindings
+dev-ruby/ruby-poppler 3.1.1: Ruby poppler-glib bindings
 dev-ruby/ruby-progressbar 1.4.2-r1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
-dev-ruby/ruby-rsvg 3.0.8 3.1.1: Ruby bindings for librsvg
+dev-ruby/ruby-rsvg 3.1.1: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
 dev-ruby/ruby-termios 1.0.2-r1: A Ruby interface to termios
-dev-ruby/ruby-vte 3.0.8 3.1.1: Ruby vte bindings
-dev-ruby/ruby-vte3 3.0.8-r1 3.1.1: Ruby VTE bindings
-dev-ruby/ruby-webkit2-gtk 3.0.8 3.1.1: Ruby WebKitGtk+ for Gtk 3.0 bindings
+dev-ruby/ruby-vte 3.1.1: Ruby vte bindings
+dev-ruby/ruby-vte3 3.1.1: Ruby VTE bindings
+dev-ruby/ruby-webkit2-gtk 3.1.1: Ruby WebKitGtk+ for Gtk 3.0 bindings
 dev-ruby/ruby-xslt 0.9.10: A Ruby class for processing XSLT
 dev-ruby/ruby2ruby 2.3.2: Generates readable ruby from ParseTree
 dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitable for a gemspec file
