@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby Glib2 bindings"
-#KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 RDEPEND+=" >=dev-libs/glib-2"
 DEPEND+=" >=dev-libs/glib-2"
@@ -17,10 +17,13 @@ ruby_add_bdepend "dev-ruby/pkg-config
 
 all_ruby_prepare() {
 	# Skip spawn tests since our sandbox also provides items in the environment and this makes the test fragile.
-	rm -f test/test_spawn.rb || die
+	rm -f test/test-spawn.rb || die
 
 	# Remove pregenerated Makefile since it will otherwise be shared by all targets.
 	rm -f Makefile Makefile.lib ext/glib2/Makefile || die
+
+	# Avoid native installer
+	sed -i -e '/native-package-installer/ s:^:#:' lib/mkmf-gnome2.rb || die
 }
 
 each_ruby_test() {
