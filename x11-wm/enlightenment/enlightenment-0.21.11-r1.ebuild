@@ -42,7 +42,7 @@ IUSE_E_MODULES=(
 IUSE="acpi connman doc egl nls pam static-libs systemd udisks wayland ${IUSE_E_MODULES[@]/#/+}"
 
 RDEPEND="
-	>=dev-libs/efl-1.18.0[eet,X]
+	>=dev-libs/efl-1.20.0[eet,X]
 	virtual/udev
 	x11-libs/libXext
 	x11-libs/libxcb
@@ -50,12 +50,12 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 	acpi? ( sys-power/acpid )
 	connman? ( net-misc/connman )
-	egl? ( >=dev-libs/efl-1.18.0[egl,wayland] )
+	egl? ( >=dev-libs/efl-1.20.0[egl,wayland] )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd )
 	udisks? ( sys-fs/udisks:2 )
 	wayland? (
-		>=dev-libs/efl-1.18.0[drm,wayland]
+		>=dev-libs/efl-1.20.0[drm,wayland]
 		>=dev-libs/wayland-1.11.0
 		x11-libs/libxkbcommon
 		x11-libs/pixman
@@ -125,9 +125,7 @@ src_install() {
 	einstalldocs
 	V=1 emake install DESTDIR="${D}" || die
 
-	if ! use static-libs ; then
-		find "${D}" -name '*.la' -delete || die
-	fi
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
