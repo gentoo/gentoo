@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-libs/efl-${PV}
+	=dev-libs/efl-1.20*
 	>=dev-python/dbus-python-0.83[${PYTHON_USEDEP}]
 "
 DEPEND="
@@ -50,7 +50,7 @@ python_test() {
 	# Tries to use that file which failed to download
 	rm -f ecore/test_10_file_monitor.py || die
 
-	# Seems to need connman up and running during the test, requires: 
+	# Seems to need connman up and running during the test, requires:
 	# net-misc/connman
 	# dev-libs/efl[connman]
 	rm -f ecore/test_11_con.py || die
@@ -59,7 +59,7 @@ python_test() {
 	sed -i 's/>= 13/>= 10/g' ecore/test_08_exe.py || die
 
 	sed -i 's:verbosity=1:verbosity=3:' 00_run_all_tests.py || die
-	${PYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
+	${EPYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
