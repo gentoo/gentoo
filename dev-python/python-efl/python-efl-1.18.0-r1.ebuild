@@ -32,6 +32,9 @@ DEPEND="
 	test? ( =dev-libs/efl-1.18*[X] )
 "
 
+# Broken beyond repair. Fixed upstream for 1.20.
+RESTRICT="test"
+
 python_compile_all() {
 	if use doc ; then
 		# Point sphinx to right location with built sources
@@ -48,7 +51,7 @@ python_test() {
 	# violates sandbox
 	rm -f ecore/test_09_file_download.py || die
 	sed -i 's:verbosity=1:verbosity=3:' 00_run_all_tests.py || die
-	${PYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
+	${EPYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
