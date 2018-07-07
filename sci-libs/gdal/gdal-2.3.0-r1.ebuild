@@ -13,10 +13,10 @@ DESCRIPTION="Translator library for raster geospatial data formats (includes OGR
 HOMEPAGE="http://www.gdal.org/"
 SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
-SLOT="0/2.2"
+SLOT="0/2.3"
 LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls"
+IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls"
 
 COMMON_DEPEND="
 	dev-libs/expat
@@ -33,8 +33,12 @@ COMMON_DEPEND="
 	gif? ( media-libs/giflib:= )
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[szip] )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( virtual/jpeg:0= )
 	jpeg2k? ( media-libs/openjpeg:2= )
+	lzma? ( || (
+		app-arch/xz-utils
+		app-arch/lzma
+	) )
 	mdb? ( dev-java/jackcess:1 )
 	mysql? ( virtual/mysql )
 	netcdf? ( sci-libs/netcdf:= )
@@ -112,6 +116,7 @@ src_prepare() {
 		-i swig/python/setup.cfg || die "sed python setup.cfg failed"
 
 	default
+
 	eautoreconf
 }
 
@@ -119,97 +124,115 @@ src_configure() {
 	# bug 619148
 	append-cxxflags -std=c++14
 
+	local myconf=(
+		# kakadu, mrsid jp2mrsid - another jpeg2k stuff, ignore
+		# bsb - legal issues
+		# ingres - same story as oracle oci
+		# jasper - disabled because unmaintained and vulnerable; openjpeg will be used as JPEG-2000 provider instead
+		# podofo - we use poppler instead they are exclusive for each other
+		# tiff is a hard dep
+		--includedir="${EPREFIX}/usr/include/${PN}"
+		--disable-pdf-plugin
+		--disable-static
+		--enable-shared
+		--with-expat
+		--with-cryptopp=no
+		--with-geotiff
+		--with-grib
+		--with-hide-internal-symbols
+		--with-libjson-c="${EPREFIX}/usr/"
+		--with-libtiff
+		--with-libtool
+		--with-libz="${EPREFIX}/usr/"
+		--with-gnm
+		--without-bsb
+		--without-dods-root
+		--without-ecw
+		--without-epsilon
+		--without-fgdb
+		--without-fme
+		--without-gta
+		--without-grass
+		--without-hdf4
+		--without-idb
+		--without-ingres
+		--without-jasper
+		--without-jp2lura
+		--without-jp2mrsid
+		--without-kakadu
+		--without-kea
+		--without-libkml
+		--without-mongocxx
+		--without-mrsid
+		--without-mrsid_lidar
+		--without-msg
+		--without-mrf
+		--without-rasdaman
+		--without-rasterlite2
+		--without-pcraster
+		--without-pdfium
+		--without-php
+		--without-podofo
+		--without-qhull
+		--without-sde
+		--without-sfcgal
+		--without-sosi
+		--without-teigha
+		--disable-lto
+		$(use_enable debug)
+		$(use_with armadillo)
+		$(use_with aux_xml pam)
+		$(use_with curl)
+		$(use_with fits cfitsio)
+		$(use_with geos)
+		$(use_with gif)
+		$(use_with gml xerces)
+		$(use_with hdf5)
+		$(use_with jpeg pcidsk) # pcidsk is internal, because there is no such library yreleased developer by gdal
+		$(use_with jpeg)
+		$(use_with jpeg2k openjpeg)
+		$(use_with lzma liblzma)
+		$(use_with mysql mysql "${EPREFIX}"/usr/bin/mysql_config)
+		$(use_with netcdf)
+		$(use_with oracle oci)
+		$(use_with odbc)
+		$(use_with ogdi ogdi "${EPREFIX}"/usr)
+		$(use_with opencl)
+		$(use_with pdf poppler)
+		$(use_with perl)
+		$(use_with png)
+		$(use_with postgres pg)
+		$(use_with python)
+		$(use_with spatialite)
+		$(use_with sqlite sqlite3 "${EPREFIX}"/usr)
+		$(use_with threads)
+		$(use_with webp)
+		$(use_with xls freexl) )
+
 	tc-export AR RANLIB
-	local myopts=()
 
 	if use java; then
-		myopts+=(
+		myconf+=(
 			--with-java=$(java-config --jdk-home 2>/dev/null)
 			--with-jvm-lib=dlopen
 			$(use_with mdb)
 		)
 	else
-		myopts+=( --without-java --without-mdb )
+		myconf+=( --without-java --without-mdb )
 	fi
 
 	if use sqlite; then
 		append-libs -lsqlite3
 	fi
 
-	# pcidsk is internal, because there is no such library yet released
-	#     also that thing is developed by the gdal people
-	# kakadu, mrsid jp2mrsid - another jpeg2k stuff, ignore
-	# bsb - legal issues
-	# ingres - same story as oracle oci
-	# jasper - disabled because unmaintained and vulnerable; openjpeg will be used as JPEG-2000 provider instead
-	# podofo - we use poppler instead they are exclusive for each other
-	# tiff is a hard dep
-	ECONF_SOURCE="${S}" econf \
-		--includedir="${EPREFIX}/usr/include/${PN}" \
-		--disable-pdf-plugin \
-		--disable-static \
-		--enable-shared \
-		--with-expat \
-		--with-geotiff \
-		--with-grib \
-		--with-hide-internal-symbols \
-		--with-libjson-c="${EPREFIX}/usr/" \
-		--with-libtiff \
-		--with-libtool \
-		--with-libz="${EPREFIX}/usr/" \
-		--with-gnm \
-		--with-cryptopp=no \
-		--without-bsb \
-		--without-dods-root \
-		--without-ecw \
-		--without-epsilon \
-		--without-fme \
-		--without-grass \
-		--without-hdf4 \
-		--without-idb \
-		--without-ingres \
-		--without-jasper \
-		--without-jp2mrsid \
-		--without-kakadu \
-		--without-mrsid \
-		--without-msg \
-		--without-mrf \
-		--without-pcraster \
-		--without-pdfium \
-		--without-sde \
-		--without-sosi \
-		--without-mongocxx \
-		--without-podofo \
-		--disable-lto \
-		$(use_enable debug) \
-		$(use_with armadillo) \
-		$(use_with aux_xml pam) \
-		$(use_with curl) \
-		$(use_with fits cfitsio) \
-		$(use_with geos) \
-		$(use_with gif) \
-		$(use_with gml xerces) \
-		$(use_with hdf5) \
-		$(use_with jpeg pcidsk) \
-		$(use_with jpeg) \
-		$(use_with jpeg2k openjpeg) \
-		$(use_with mysql mysql "${EPREFIX}"/usr/bin/mysql_config) \
-		$(use_with netcdf) \
-		$(use_with oracle oci) \
-		$(use_with odbc) \
-		$(use_with ogdi ogdi "${EPREFIX}"/usr) \
-		$(use_with opencl) \
-		$(use_with perl) \
-		$(use_with png) \
-		$(use_with pdf poppler) \
-		$(use_with postgres pg) \
-		$(use_with python) \
-		$(use_with spatialite) \
-		$(use_with sqlite sqlite3 "${EPREFIX}"/usr) \
-		$(use_with threads) \
-		$(use_with webp) \
-		$(use_with xls freexl) \
-		${myopts}
+	# bug #632660
+	if use ogdi; then
+		tc-export PKG_CONFIG
+		append-cflags $(${PKG_CONFIG} --cflags libtirpc)
+		append-cxxflags $(${PKG_CONFIG} --cflags libtirpc)
+	fi
+
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
 	# mysql-config puts this in (and boy is it a PITA to get it out)
 	if use mysql; then
