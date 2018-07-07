@@ -5922,8 +5922,8 @@ dev-ruby/ruby-glib2 3.0.8 3.1.1: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.0.8-r1: Ruby Gnome2 bindings
 dev-ruby/ruby-gobject-introspection 3.0.8 3.1.1: Ruby GObjectIntrospection bindings
 dev-ruby/ruby-gstreamer 3.0.8: Ruby GStreamer bindings
-dev-ruby/ruby-gtk2 3.0.8: Ruby Gtk2 bindings
-dev-ruby/ruby-gtk3 3.0.8: Ruby Gtk3 bindings
+dev-ruby/ruby-gtk2 3.0.8 3.1.1: Ruby Gtk2 bindings
+dev-ruby/ruby-gtk3 3.0.8 3.1.1: Ruby Gtk3 bindings
 dev-ruby/ruby-gtksourceview 3.0.8: Ruby bindings for gtksourceview
 dev-ruby/ruby-gtksourceview3 3.0.8: Ruby Gtk3 bindings
 dev-ruby/ruby-ldap 0.9.19: A Ruby interface to some LDAP libraries
