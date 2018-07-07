@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Provides an alternate implementation for open, link, rename, and unlink"
 HOMEPAGE="https://untroubled.org/syncdir"
@@ -11,10 +11,11 @@ SRC_URI="https://untroubled.org/syncdir/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 src_prepare() {
+	default
 	if ! use static-libs; then
 		sed -i Makefile \
 			-e '/^all:/s|libsyncdir.a||' \

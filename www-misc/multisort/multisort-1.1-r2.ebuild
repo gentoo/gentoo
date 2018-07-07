@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -14,9 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-
 src_prepare() {
+	default
 	# respect LDFLAGS wrt bug #337359
 	sed -i -e 's/$(CFLAGS)/& \$(LDFLAGS)/' Makefile || die 'sed on Makefile failed'
 }
