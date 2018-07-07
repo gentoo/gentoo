@@ -43,6 +43,10 @@ src_prepare() {
 		-e "s:@GNATBIND@:gnatbind-${GCC_PV}:g" \
 		src/gprlib.adb \
 		|| die
+	sed -i \
+		-e "s:\"-Wl,-r\":\"-r\":g" \
+		share/gprconfig/linker.xml \
+		|| die
 }
 
 src_configure() {

@@ -74,6 +74,12 @@ src_install() {
 			done
 		fi
 	done
+	if use iconv; then
+		sed -i \
+			-e "s:GNATCOLL_ICONV_BUILD:LIBRARY_TYPE:" \
+			"${D}"/usr/share/gpr/gnatcoll_iconv.gpr \
+			|| die
+	fi
 	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
 }
