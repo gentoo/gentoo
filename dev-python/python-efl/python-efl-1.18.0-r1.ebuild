@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for Enlightenment Foundation Libraries"
@@ -16,19 +17,23 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-libs/efl-${PV}
-	>=dev-python/dbus-python-0.83[${PYTHON_USEDEP}]
+	=dev-libs/efl-1.18*
+	dev-python/dbus-python[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
-	>=dev-python/cython-0.21[${PYTHON_USEDEP}]
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
-		>=dev-python/sphinx-1.1[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		media-gfx/graphviz
 	)
+	test? ( =dev-libs/efl-1.18*[X] )
 "
+
+# Broken beyond repair. Fixed upstream for 1.20.
+RESTRICT="test"
 
 python_compile_all() {
 	if use doc ; then
@@ -43,23 +48,10 @@ python_compile_all() {
 
 python_test() {
 	cd "${S}"/tests || die
-
-	# Tries to download a file under /tmp
+	# violates sandbox
 	rm -f ecore/test_09_file_download.py || die
-
-	# Tries to use that file which failed to download
-	rm -f ecore/test_10_file_monitor.py || die
-
-	# Seems to need connman up and running during the test, requires: 
-	# net-misc/connman
-	# dev-libs/efl[connman]
-	rm -f ecore/test_11_con.py || die
-
-	# Test fails because of deleted files above
-	sed -i 's/>= 13/>= 10/g' ecore/test_08_exe.py || die
-
 	sed -i 's:verbosity=1:verbosity=3:' 00_run_all_tests.py || die
-	${PYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
+	${EPYTHON} 00_run_all_tests.py --verbose || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
