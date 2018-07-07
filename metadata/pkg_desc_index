@@ -178,7 +178,7 @@ app-arch/gnome-autoar 0.2.2: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.8: Standard GNU compressor
 app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
-app-arch/innoextract 1.4 1.6: A tool to unpack installers created by Inno Setup
+app-arch/innoextract 1.6: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
 app-arch/libarchive 3.3.1: BSD tar command
