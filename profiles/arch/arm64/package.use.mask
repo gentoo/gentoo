@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (07 Jul 2018)
+# Unkeyworded dependencies.
+dev-python/matplotlib doc
+net-libs/gnome-online-accounts gnome
+x11-libs/gksu gnome
+
 # Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
 # dev-libs/xxhash not keyworded for arm64
 app-admin/rsyslog xxhash
