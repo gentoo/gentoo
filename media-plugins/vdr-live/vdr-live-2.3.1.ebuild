@@ -27,6 +27,8 @@ S="${WORKDIR}/${MY_P}"
 VDR_CONFD_FILE="${FILESDIR}/confd-2.3"
 VDR_RCADDON_FILE="${FILESDIR}/rc-addon-2.3.sh"
 
+KEEP_I18NOBJECT="yes"
+
 make_live_cert() {
 	# TODO: still true?
 	# ssl-cert eclass creates a "invalid" cert, create our own one
