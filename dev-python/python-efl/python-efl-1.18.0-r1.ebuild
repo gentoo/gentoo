@@ -16,17 +16,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-RDEPEND=">=dev-libs/efl-${PV}
-	>dev-python/dbus-python-0.83[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+RDEPEND="
+	=dev-libs/efl-1.18*
+	dev-python/dbus-python[${PYTHON_USEDEP}]
+"
+DEPEND="
+	${RDEPEND}
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/cython-0.21[${PYTHON_USEDEP}]
+	virtual/pkgconfig
 	doc? (
-		media-gfx/graphviz[python]
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		media-gfx/graphviz
 	)
-	doc? ( >dev-python/sphinx-1.0[${PYTHON_USEDEP}] )"
+	test? ( =dev-libs/efl-1.18*[X] )
+"
 
 python_compile_all() {
 	if use doc ; then
