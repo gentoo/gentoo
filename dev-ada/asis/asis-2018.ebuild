@@ -39,4 +39,5 @@ src_install() {
 		-XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable"
 	rm -r "${D}"/usr/share/gpr/manifests || die
+	mv "${D}"/usr/bin/gnatpp{,-asis} || die
 }

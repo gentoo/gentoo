@@ -23,14 +23,15 @@ SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 LICENSE="ISC BSD"
 SLOT="0"
 if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
 fi
-IUSE="gcrypt ldap nls pam offensive openssl selinux skey +sendmail"
+IUSE="gcrypt ldap nls pam offensive openssl sasl selinux +sendmail skey"
 
 CDEPEND="
 	gcrypt? ( dev-libs/libgcrypt:= )
 	openssl? ( dev-libs/openssl:0= )
 	pam? ( virtual/pam )
+	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
@@ -67,16 +68,23 @@ src_prepare() {
 	elibtoolize
 }
 
-set_rootpath() {
-	# FIXME: secure_path is a compile time setting. using ROOTPATH
-	# is not perfect, env-update may invalidate this, but until it
+set_secure_path() {
+	# FIXME: secure_path is a compile time setting. using PATH or
+	# ROOTPATH is not perfect, env-update may invalidate this, but until it
 	# is available as a sudoers setting this will have to do.
 	einfo "Setting secure_path ..."
 
 	# first extract the default ROOTPATH from build env
-	ROOTPATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env; echo "${ROOTPATH}")
-	if [[ -z ${ROOTPATH} ]] ; then
-		ewarn "	Failed to find ROOTPATH, please report this"
+	SECURE_PATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env;
+		echo "${ROOTPATH}")
+		case "${SECURE_PATH}" in
+			*/usr/sbin*) ;;
+			*) SECURE_PATH=$(unset PATH;
+				. "${EPREFIX}"/etc/profile.env; echo "${PATH}")
+				;;
+		esac
+	if [[ -z ${SECURE_PATH} ]] ; then
+		ewarn "	Failed to detect SECURE_PATH, please report this"
 	fi
 
 	# then remove duplicate path entries
@@ -89,18 +97,18 @@ set_rootpath() {
 				einfo "   Duplicate entry ${thisp} removed..."
 			fi
 		done
-		ROOTPATH=${newpath#:}
+		SECURE_PATH=${newpath#:}
 	}
-	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${ROOTPATH:+:${ROOTPATH}}
+	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
 
 	# finally, strip gcc paths #136027
 	rmpath() {
 		local e newpath thisp IFS=:
-		for thisp in ${ROOTPATH} ; do
+		for thisp in ${SECURE_PATH} ; do
 			for e ; do [[ $thisp == $e ]] && continue 2 ; done
 			newpath+=:$thisp
 		done
-		ROOTPATH=${newpath#:}
+		SECURE_PATH=${newpath#:}
 	}
 	rmpath '*/gcc-bin/*' '*/gnat-gcc-bin/*' '*/gnat-gcc/*'
 
@@ -108,8 +116,8 @@ set_rootpath() {
 }
 
 src_configure() {
-	local ROOTPATH
-	set_rootpath
+	local SECURE_PATH
+	set_secure_path
 
 	# audit: somebody got to explain me how I can test this before I
 	# enable it.. - Diego
@@ -122,13 +130,14 @@ src_configure() {
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/var/run/sudo
-		--with-secure-path="${ROOTPATH}"
+		--with-secure-path="${SECURE_PATH}"
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
 		--without-opie
 		$(use_enable gcrypt)
 		$(use_enable nls)
 		$(use_enable openssl)
+		$(use_enable sasl)
 		$(use_with offensive insults)
 		$(use_with offensive all-insults)
 		$(use_with ldap ldap_conf_file /etc/ldap.conf.sudo)
@@ -146,7 +155,6 @@ src_install() {
 
 	if use ldap ; then
 		dodoc README.LDAP
-		dosbin plugins/sudoers/sudoers2ldif
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
 		# See ldap.conf(5) and README.LDAP for details
@@ -167,15 +175,22 @@ src_install() {
 
 	pamd_mimic system-auth sudo auth account session
 
-	keepdir /var/db/sudo
-	fperms 0700 /var/db/sudo
+	keepdir /var/db/sudo/lectured
+	fperms 0700 /var/db/sudo/lectured
+	fperms 0711 /var/db/sudo #652958
 
 	# Don't install into /var/run as that is a tmpfs most of the time
 	# (bug #504854)
-	rm -rf "${D}"/var/run
+	rm -rf "${ED}"/var/run
 }
 
 pkg_postinst() {
+	#652958
+	local sudo_db="${EROOT}/var/db/sudo"
+	if [[ "$(stat -c %a "${sudo_db}")" -ne 711 ]] ; then
+		chmod 711 "${sudo_db}" || die
+	fi
+
 	if use ldap ; then
 		ewarn
 		ewarn "sudo uses the /etc/ldap.conf.sudo file for ldap configuration."

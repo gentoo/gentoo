@@ -9,12 +9,8 @@
 		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
 		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
 		<flag name="gnat_2018">Compile with dev-lang/gnat-gpl-2018</flag>
-		<flag name="shared">Build shared library</flag>
 	</use>
 	<longdescription lang="en">
-		Libadalang is a project to build a high performance semantic engine for
-		the Ada programming language. It is meant to provide a basis to write
-		Ada tooling, including tools working on potentially changing and
-		incorrect code, such as IDEs.
+		Libadalang-based tools: gnatpp, gnatmetric and gnatstub
 	</longdescription>
 </pkgmetadata>
