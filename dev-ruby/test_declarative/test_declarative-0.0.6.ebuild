@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -22,10 +22,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/minitest:5 )"
+ruby_add_bdepend "test? ( dev-ruby/bundler >=dev-ruby/minitest-5.10:5 )"
 
 all_ruby_prepare() {
-	sed -i -e '/rake/ s/12.0.0/12/ ; /minitest/ s/5.10.1/5.10/' Gemfile || die
+	sed -i -e '/rake/ s/~> 12.0.0/>= 10/ ; /minitest/ s/5.10.1/5.10/' Gemfile || die
 }
 
 each_ruby_test() {
