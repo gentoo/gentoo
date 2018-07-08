@@ -13,12 +13,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	!net-misc/uftp
-	!net-ftp/atftp
 	dev-libs/libite
 	dev-libs/libuev"
 
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!net-misc/uftp
+	!net-ftp/atftp"
 
 src_install() {
 	emake DESTDIR="${D}" install doc_DATA=README.md
