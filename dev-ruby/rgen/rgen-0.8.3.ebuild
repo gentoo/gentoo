@@ -23,6 +23,10 @@ ruby_add_bdepend "doc? ( >=dev-ruby/rdoc-4.2.0 )
 	test? ( >=dev-ruby/minitest-5.10:5 >=dev-ruby/nokogiri-1.6.8.1 )
 "
 
+all_ruby_prepare() {
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+}
+
 each_ruby_prepare() {
 	case ${RUBY} in
 		*ruby24|*ruby25)
