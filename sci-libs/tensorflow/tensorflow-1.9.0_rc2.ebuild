@@ -371,7 +371,7 @@ src_install() {
 	if use python; then
 		python_foreach_impl run_in_build_dir do_install
 
-		rm -f "${D}/usr/lib/python-exec/*/tensorboard" || die "failed to remove tensorboard"
+		rm -f "${D}"/usr/lib/python-exec/*/tensorboard || die "failed to remove tensorboard"
 
 		# Symlink to python-exec scripts
 		for i in "${D}"/usr/lib/python-exec/*/*; do
