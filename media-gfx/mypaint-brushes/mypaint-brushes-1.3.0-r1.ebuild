@@ -14,7 +14,7 @@ SLOT="1.0"  # due to pkgconfig name "mypaint-brushes-1.0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DOCS=( AUTHORS NEWS README )  # to exclude README.md
+DOCS=( AUTHORS NEWS README.md )  # to exclude README symlink
 
 src_prepare() {
 	eapply_user
