@@ -1,0 +1,34 @@
+Title: Portage rsync hardlink support
+Author: Zac Medico <zmedico@gentoo.org>
+Posted: 2018-07-11
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: sys-apps/portage
+
+For users of the rsync tree, beginning with sys-apps/portage-2.3.42,
+the default behavior for sync operations will use hardlinks in order
+to ensure that a repository remains in a valid state if something
+goes wrong [1]. For example, if signature verification fails during a
+sync operation, the new hardlink behavior will preserve the previous
+state of the repository.
+
+The new behavior may conflict with configurations that restrict the
+use of hardlinks, such as overlay filesystems. Therefore, users will
+have to set "sync-allow-hardlinks = no" in repos.conf if they have
+a configuration that restricts the use of hardlinks, but this should
+not be very common:
+
+[DEFAULT]
+sync-allow-hardlinks = no
+
+Note that it is possible to sync more efficiently using git [2]
+instead of rsync, though git consumes an increasing amount of disk
+space over time unless shallow pull is enabled via the sync-depth
+option in repos.conf [3] (requires sys-apps/portage-2.3.42 or later).
+
+[1] https://bugs.gentoo.org/660410 sys-apps/portage: use rsync
+    --link-dest to implement atomic repository updates (and abort if
+    signature verification fails)
+[2] https://wiki.gentoo.org/wiki/Portage_Security#git-mirror_repo
+[3] https://bugs.gentoo.org/552814 sys-apps/portage: support shallow
+    git pull by setting sync-depth = 1 in repos.conf
