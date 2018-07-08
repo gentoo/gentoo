@@ -12,4 +12,4 @@ REQUIRED_USE=?? ( aqua X )
 SLOT=26
 SRC_URI=mirror://gnu/emacs/emacs-26.1.tar.xz https://dev.gentoo.org/~ulm/emacs/emacs-26.1-patches-1.tar.xz
 _eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	5b8ce72259e08104b337fe28c6de5dbc	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
-_md5_=8d31e83176015ae17e81bd6958534b6f
+_md5_=9c504bbea66c84d8cf667d8146453514
