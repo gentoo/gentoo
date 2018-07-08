@@ -370,6 +370,9 @@ src_configure() {
 	# Fixes bug #143895 on gcc-4.1.1
 	filter-flags "-fsched2-use-superblocks"
 
+	# Generic LTO broken since 5.28, triggers EUMM failures
+	filter-flags "-flto"
+
 	use sparc && myconf -Ud_longdbl
 
 	export BUILD_BZIP2=0
