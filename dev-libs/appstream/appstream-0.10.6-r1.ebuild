@@ -35,6 +35,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.5
+	app-text/xmlto
 	dev-util/itstool
 	sys-devel/gettext
 	test? (
