@@ -15,11 +15,10 @@ SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 -*"
-IUSE="ayatana pax_kernel"
+IUSE="ayatana gnome-keyring pax_kernel"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-crypt/libsecret:0[${MULTILIB_USEDEP}]
-	dev-libs/atk:0[${MULTILIB_USEDEP}]
+RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
@@ -48,7 +47,8 @@ RDEPEND="app-crypt/libsecret:0[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
-	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
+	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )
+	gnome-keyring? ( app-crypt/libsecret:0[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="opt/slack/slack
 	opt/slack/resources/app.asar.unpacked/node_modules/*
