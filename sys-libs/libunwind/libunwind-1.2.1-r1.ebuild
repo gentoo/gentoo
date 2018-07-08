@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2-ia64-missing.patch
 	"${FILESDIR}"/${PN}-1.2.1-fix_version_macros.patch
 	"${FILESDIR}"/${PN}-1.2.1-only-include-execinfo_h-if-avaliable.patch
+	"${FILESDIR}"/${PN}-1.2.1-no-PROTECTED.patch #659732
 )
 
 src_prepare() {
