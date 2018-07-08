@@ -53,7 +53,8 @@ _CMAKE_UTILS_ECLASS=1
 # @DESCRIPTION:
 # Specify a makefile generator to be used by cmake.
 # At this point only "emake" and "ninja" are supported.
-: ${CMAKE_MAKEFILE_GENERATOR:=emake}
+# In EAPI 7 and above, the default is set to "ninja",
+# whereas in EAPIs below 7, it is set to "emake".
 
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
@@ -112,8 +113,13 @@ esac
 inherit toolchain-funcs ninja-utils flag-o-matic multiprocessing xdg-utils
 
 case ${EAPI} in
-	7) ;;
-	*) inherit eapi7-ver eutils multilib ;;
+	[56])
+		: ${CMAKE_MAKEFILE_GENERATOR:=emake}
+		inherit eapi7-ver eutils multilib
+		;;
+	*)
+		: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+		;;
 esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
