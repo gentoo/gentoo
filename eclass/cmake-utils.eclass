@@ -53,7 +53,8 @@ _CMAKE_UTILS_ECLASS=1
 # @DESCRIPTION:
 # Specify a makefile generator to be used by cmake.
 # At this point only "emake" and "ninja" are supported.
-: ${CMAKE_MAKEFILE_GENERATOR:=emake}
+# In EAPI 7 and above, the default is set to "ninja",
+# whereas in EAPIs below 7, it is set to "emake".
 
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
@@ -112,8 +113,13 @@ esac
 inherit toolchain-funcs ninja-utils flag-o-matic multiprocessing xdg-utils
 
 case ${EAPI} in
-	7) ;;
-	*) inherit eapi7-ver eutils multilib ;;
+	[56])
+		: ${CMAKE_MAKEFILE_GENERATOR:=emake}
+		inherit eapi7-ver eutils multilib
+		;;
+	*)
+		: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+		;;
 esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
@@ -487,7 +493,8 @@ cmake-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! ${_CMAKE_UTILS_SRC_PREPARE_HAS_RUN} ]]; then
-		eqawarn "cmake-utils_src_prepare has not been run, please open a bug on https://bugs.gentoo.org/"
+		local msg="cmake-utils_src_prepare has not been run, please open a bug on https://bugs.gentoo.org/"
+		[[ ${EAPI} != [56] ]] && die "${msg}" || eqawarn "${msg}"
 	fi
 
 	[[ ${EAPI} == 5 ]] && _cmake_cleanup_cmake
@@ -617,6 +624,7 @@ cmake-utils_src_configure() {
 	if [[ ${EAPI} != [56] ]]; then
 		cat >> "${common_config}" <<- _EOF_ || die
 			SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
+			SET (BUILD_SHARED_LIBS ON CACHE BOOLEAN "")
 		_EOF_
 	fi
 
