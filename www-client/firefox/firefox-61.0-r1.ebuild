@@ -125,6 +125,7 @@ src_prepare() {
 	eapply "${WORKDIR}/firefox"
 
 	eapply "${FILESDIR}/bug_1461221.patch"
+	eapply "${FILESDIR}/${PN}-61.0-mozHunspell.patch"
 
 	# Enable gnomebreakpad
 	if use debug ; then
