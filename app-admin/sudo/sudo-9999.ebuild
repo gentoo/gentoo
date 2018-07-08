@@ -74,16 +74,23 @@ src_prepare() {
 	elibtoolize
 }
 
-set_rootpath() {
-	# FIXME: secure_path is a compile time setting. using ROOTPATH
-	# is not perfect, env-update may invalidate this, but until it
+set_secure_path() {
+	# FIXME: secure_path is a compile time setting. using PATH or
+	# ROOTPATH is not perfect, env-update may invalidate this, but until it
 	# is available as a sudoers setting this will have to do.
 	einfo "Setting secure_path ..."
 
 	# first extract the default ROOTPATH from build env
-	ROOTPATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env; echo "${ROOTPATH}")
-	if [[ -z ${ROOTPATH} ]] ; then
-		ewarn "	Failed to find ROOTPATH, please report this"
+	SECURE_PATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env;
+		echo "${ROOTPATH}")
+		case "${SECURE_PATH}" in
+			*/usr/sbin*) ;;
+			*) SECURE_PATH=$(unset PATH;
+				. "${EPREFIX}"/etc/profile.env; echo "${PATH}")
+				;;
+		esac
+	if [[ -z ${SECURE_PATH} ]] ; then
+		ewarn "	Failed to detect SECURE_PATH, please report this"
 	fi
 
 	# then remove duplicate path entries
@@ -96,18 +103,18 @@ set_rootpath() {
 				einfo "   Duplicate entry ${thisp} removed..."
 			fi
 		done
-		ROOTPATH=${newpath#:}
+		SECURE_PATH=${newpath#:}
 	}
-	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${ROOTPATH:+:${ROOTPATH}}
+	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
 
 	# finally, strip gcc paths #136027
 	rmpath() {
 		local e newpath thisp IFS=:
-		for thisp in ${ROOTPATH} ; do
+		for thisp in ${SECURE_PATH} ; do
 			for e ; do [[ $thisp == $e ]] && continue 2 ; done
 			newpath+=:$thisp
 		done
-		ROOTPATH=${newpath#:}
+		SECURE_PATH=${newpath#:}
 	}
 	rmpath '*/gcc-bin/*' '*/gnat-gcc-bin/*' '*/gnat-gcc/*'
 
@@ -115,8 +122,8 @@ set_rootpath() {
 }
 
 src_configure() {
-	local ROOTPATH
-	set_rootpath
+	local SECURE_PATH
+	set_secure_path
 
 	# audit: somebody got to explain me how I can test this before I
 	# enable it.. - Diego
@@ -129,7 +136,7 @@ src_configure() {
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/var/run/sudo
-		--with-secure-path="${ROOTPATH}"
+		--with-secure-path="${SECURE_PATH}"
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
 		--without-opie
