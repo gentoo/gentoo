@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (10 Jul 2018)
+# Perl 5.28 Staging block
+=dev-lang/perl-5.28.0
+
 # Aaron W. Swenson <titanofold@gentoo.org> (9 Jul 2018)
 # Hasn’t been updated in years, upstream’s download source is blank, and depends
 # on an outdated twisted-core (Bug 660668). Removal after 2018-08-08.
