@@ -3,9 +3,9 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic libtool multilib toolchain-funcs versionator
+inherit eutils flag-o-matic libtool multilib toolchain-funcs eapi7-ver
 
-MY_P=ImageMagick-$(replace_version_separator 3 '-')
+MY_P=ImageMagick-$(ver_rs 3 '-')
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
@@ -13,7 +13,7 @@ SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
 
 LICENSE="imagemagick"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 
 RESTRICT="perl? ( userpriv )"
@@ -38,7 +38,7 @@ RDEPEND="
 	perl? ( >=dev-lang/perl-5.8.8:0= )
 	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/ghostscript-gpl )
-	raw? ( media-gfx/ufraw )
+	raw? ( media-libs/libraw:= )
 	svg? ( gnome-base/librsvg )
 	tiff? ( media-libs/tiff:0= )
 	truetype? (
@@ -64,10 +64,10 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="corefonts? ( truetype )
 	test? ( corefonts )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	local ati_cards mesa_cards nvidia_cards render_cards
+	local mesa_cards ati_cards nvidia_cards render_cards
 	default
 
 	elibtoolize # for Darwin modules
@@ -82,7 +82,7 @@ src_prepare() {
 	if test -n "${mesa_cards}"; then
 		addpredict "${mesa_cards}"
 	fi
-	nvidia_cards=$(echo -n /dev/nvidia* | sed 's/ /:/g')
+	nvidia_cards=$(echo -n /dev/nvidia** | sed 's/ /:/g')
 	if test -n "${nvidia_cards}"; then
 		addpredict "${nvidia_cards}"
 	fi
@@ -137,6 +137,7 @@ src_configure() {
 		$(use_with openexr)
 		$(use_with pango)
 		$(use_with png)
+		$(use_with raw)
 		$(use_with svg rsvg)
 		$(use_with tiff)
 		$(use_with webp)
@@ -161,7 +162,7 @@ src_install() {
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install
 
-	rm -f "${ED}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
+	rm -f "${ED%/}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
 	dodoc {AUTHORS,README}.txt ChangeLog
 
 	if use perl; then

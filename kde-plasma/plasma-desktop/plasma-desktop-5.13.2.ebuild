@@ -130,6 +130,7 @@ src_configure() {
 		$(cmake-utils_use_find_package fontconfig Fontconfig)
 		$(cmake-utils_use_find_package ibus IBus)
 		$(cmake-utils_use_find_package mouse Evdev)
+		$(cmake-utils_use_find_package mouse XorgLibinput)
 		$(cmake-utils_use_find_package pulseaudio PulseAudio)
 		$(cmake-utils_use_find_package scim SCIM)
 		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
