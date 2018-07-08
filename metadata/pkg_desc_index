@@ -123,7 +123,7 @@ app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
 app-admin/sshguard 2.1.0-r1: protects hosts from brute force attacks against ssh
-app-admin/sudo 1.8.20_p2 1.8.22-r2: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.22-r2: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supervisor 3.1.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher

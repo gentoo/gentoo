@@ -10,4 +10,4 @@ RDEPEND=dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=,shared]
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27ab8 -> asis-gpl-2018-src.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=f90c67aabb591a0094a61b89910cc5b6
+_md5_=37da4f2f8308dc7659450b542aab8099
