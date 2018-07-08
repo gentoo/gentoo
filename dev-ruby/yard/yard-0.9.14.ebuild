@@ -28,7 +28,7 @@ IUSE=""
 
 ruby_add_bdepend "doc? ( || ( dev-ruby/maruku dev-ruby/rdiscount dev-ruby/bluecloth dev-ruby/kramdown ) )"
 
-ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 )"
+ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 dev-ruby/rack )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/ s:^:#:' spec/spec_helper.rb || die
