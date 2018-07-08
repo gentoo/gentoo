@@ -21,7 +21,6 @@ IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flag
 RDEPEND=">=dev-libs/glib-2.54.2:2
 	>=dev-libs/atk-2.2.0
 	>=x11-libs/gtk+-2.24.10:2
-	dev-util/gtk-update-icon-cache
 	>=x11-libs/gdk-pixbuf-2.31:2
 	>=x11-libs/cairo-1.12.2
 	>=x11-libs/pango-1.29.4
