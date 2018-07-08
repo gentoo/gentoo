@@ -16,6 +16,7 @@ IUSE=""
 
 RDEPEND="media-libs/fontconfig"
 DEPEND="
+	dev-libs/appstream
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
