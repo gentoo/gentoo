@@ -493,7 +493,8 @@ cmake-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! ${_CMAKE_UTILS_SRC_PREPARE_HAS_RUN} ]]; then
-		eqawarn "cmake-utils_src_prepare has not been run, please open a bug on https://bugs.gentoo.org/"
+		local msg="cmake-utils_src_prepare has not been run, please open a bug on https://bugs.gentoo.org/"
+		[[ ${EAPI} != [56] ]] && die "${msg}" || eqawarn "${msg}"
 	fi
 
 	[[ ${EAPI} == 5 ]] && _cmake_cleanup_cmake
