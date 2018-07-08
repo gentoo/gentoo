@@ -7,7 +7,7 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.9
-PATCH_BASE="perl-5.28.0-RC2-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.28.0-patches-${PATCH_VER}"
 
 DIST_AUTHOR=XSAWYERX
 
@@ -549,6 +549,8 @@ src_configure() {
 
 src_test() {
 	export NO_GENTOO_NETWORK_TESTS=1;
+	export GENTOO_ASSUME_SANDBOXED="${GENTOO_ASSUME_SANDBOXED:-1}"
+	export GENTOO_NO_PORTING_TESTS="${GENTOO_NO_PORTING_TESTS:-1}"
 	if [[ ${EUID} == 0 ]] ; then
 		ewarn "Test fails with a sandbox error (#328793) if run as root. Skipping tests..."
 		return 0
