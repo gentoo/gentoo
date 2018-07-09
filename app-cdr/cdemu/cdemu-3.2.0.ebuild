@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	cdemu-daemon? ( app-cdr/cdemu-daemon:0/7 )"
-DEPEND="${RDEPEND}
+DEPEND="
 	dev-util/desktop-file-utils
 	>=dev-util/intltool-0.21
 	>=sys-devel/gettext-0.18
