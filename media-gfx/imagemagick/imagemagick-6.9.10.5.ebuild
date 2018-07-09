@@ -64,6 +64,8 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="corefonts? ( truetype )
 	test? ( corefonts )"
 
+PATCHES=( "${FILESDIR}"/${PN}-7.0.26-FTBFS-on-i386.patch )
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
