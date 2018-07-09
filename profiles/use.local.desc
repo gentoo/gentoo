@@ -5143,6 +5143,7 @@ sys-apps/iproute2:elf - support loading eBPF programs from ELFs (e.g. LLVM's eBP
 sys-apps/iproute2:iptables - include support for iptables filtering
 sys-apps/iproute2:minimal - only install ip and tc programs, without eBPF support
 sys-apps/irqbalance:numa - Support balancing IRQs across NUMA nodes
+sys-apps/irqbalance:tui - Enable build of irqbalance terminal user interface
 sys-apps/kexec-tools:booke - Include support for Book-E memory management
 sys-apps/kexec-tools:lzma - Enables support for LZMA compressed kernel images
 sys-apps/kexec-tools:xen - Enable extended xen support

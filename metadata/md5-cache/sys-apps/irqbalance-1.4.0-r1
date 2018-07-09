@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-libs/glib:2 sys-libs/ncurses:0=[unicode] caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) tui? ( sys-libs/ncurses:0=[unicode] ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Distribute hardware interrupts across processors on a multiprocessor system
 EAPI=6
 HOMEPAGE=https://github.com/Irqbalance/irqbalance
-IUSE=caps +numa selinux
+IUSE=caps +numa selinux tui
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/glib:2 sys-libs/ncurses:0=[unicode] caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) selinux? ( sec-policy/selinux-irqbalance )
+RDEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) tui? ( sys-libs/ncurses:0=[unicode] ) selinux? ( sec-policy/selinux-irqbalance )
 SLOT=0
 SRC_URI=https://github.com/Irqbalance/irqbalance/archive/v1.4.0.tar.gz -> irqbalance-1.4.0.tar.gz
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	linux-info	aedb720bff5a5dec9b87edd351382bfc	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
-_md5_=fa6bd67c54e0fab69c6146227c3236c4
+_md5_=1aee4b027c8f1b4a4d485a30d403d113
