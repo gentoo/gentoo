@@ -53,8 +53,8 @@ src_prepare() {
 
 src_install() {
 	into "/opt/amdgpu"
-	dolib opt/${SUPER_PN}/lib/x86_64-linux-gnu/*
-	dolib opt/amdgpu/lib/x86_64-linux-gnu/*
+	dolib.so opt/${SUPER_PN}/lib/x86_64-linux-gnu/*
+	dolib.so opt/amdgpu/lib/x86_64-linux-gnu/*
 	insinto "/opt/amdgpu"
 	doins -r opt/amdgpu/share
 
