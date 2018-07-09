@@ -21,6 +21,6 @@
       <pkg>media-libs/speexdsp</pkg>.</flag>
   </use>
   <upstream>
-    <remote-id type="github">jp9000/obs-studio</remote-id>
+    <remote-id type="github">obsproject/obs-studio</remote-id>
   </upstream>
 </pkgmetadata>
