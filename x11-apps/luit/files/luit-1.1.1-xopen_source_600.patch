@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,7 +62,7 @@ case $host_os in
+     linux*)
+         AC_CHECK_HEADERS([poll.h])
+         AC_CHECK_FUNCS([poll])
+-        OS_CFLAGS="-D_XOPEN_SOURCE=500"
++        OS_CFLAGS="-D_XOPEN_SOURCE=600"
+         ;;
+     *)
+         AC_CHECK_HEADERS([poll.h])
