@@ -197,10 +197,10 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
-s390            default/linux/s390/13.0                         exp
-s390            default/linux/s390/13.0/s390x                   exp
-s390            default/linux/s390/17.0                         exp
-s390            default/linux/s390/17.0/s390x                   exp
+s390            default/linux/s390/13.0                         stable
+s390            default/linux/s390/13.0/s390x                   stable
+s390            default/linux/s390/17.0                         stable
+s390            default/linux/s390/17.0/s390x                   stable
 
 # SH Profiles
 # @MAINTAINER: sh@gentoo.org
