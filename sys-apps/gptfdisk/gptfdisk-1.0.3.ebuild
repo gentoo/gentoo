@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="kernel_linux ncurses static"
 # libuuid from util-linux is required.
 LIB_DEPEND="
 	dev-libs/popt[static-libs(+)]
-	ncurses? ( >=sys-libs/ncurses-5.7-r7:0=[static-libs(+)] )
+	ncurses? ( >=sys-libs/ncurses-5.7-r7:0=[unicode,static-libs(+)] )
 	kernel_linux? ( sys-apps/util-linux[static-libs(+)] )
 "
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
