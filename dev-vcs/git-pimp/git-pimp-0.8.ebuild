@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Code review or pull requests as patch email series"
 HOMEPAGE="https://github.com/roman-neuhauser/git-mailz/"
@@ -11,11 +10,11 @@ SRC_URI="http://codex.sigpipe.cz/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="test"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
-
+DEPEND="test? ( dev-util/cram )"
 RDEPEND="
 	dev-vcs/git
 	app-shells/zsh
@@ -24,5 +23,7 @@ RDEPEND="
 "
 
 src_install(){
+	# Do not install in /usr/local
 	emake PREFIX="${ED}/usr" install
+	einstalldocs
 }

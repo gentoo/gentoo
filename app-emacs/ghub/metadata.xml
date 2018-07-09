@@ -23,6 +23,7 @@ wide adoption would make life easier for users and maintainers alike,
 because then all packages that talk to the Github API could be
 configured the same way.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">magit/ghub</remote-id>
 </upstream>

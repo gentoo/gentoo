@@ -11,7 +11,8 @@ inherit cmake-utils eutils flag-o-matic gnome2 python-single-r1 xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz
+https://dev.gentoo.org/~asturm/distfiles/${P}.patches.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -94,10 +95,10 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-fpic.patch
-	"${FILESDIR}"/${P}-cmake-openssl.patch
-	"${FILESDIR}"/${P}-poppler-0.58.patch
-	"${FILESDIR}"/${P}-x86-fpic.patch
-	"${FILESDIR}"/${P}-qt-5.11.patch
+	"${WORKDIR}"/${P}-cmake-openssl.patch
+	"${WORKDIR}"/${P}-poppler-0.58.patch
+	"${WORKDIR}"/${P}-x86-fpic.patch
+	"${WORKDIR}"/${P}-qt-5.11.patch
 )
 
 src_prepare() {

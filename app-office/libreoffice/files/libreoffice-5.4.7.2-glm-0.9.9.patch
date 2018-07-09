@@ -1,0 +1,82 @@
+From 7984347b9a2fce74cdce0c1c5b27f6e2b55a2f49 Mon Sep 17 00:00:00 2001
+From: Rene Engelhard <rene@debian.org>
+Date: Sun, 28 Jan 2018 19:48:25 +0100
+Subject: fix build with glm 0.9.9
+
+In file included from /usr/include/glm/gtx/norm.hpp:18:0,
+                 from /data/rene/git/LibreOffice/master/vcl/inc/opengl/VertexUti
+ls.hxx:16,
+                 from /data/rene/git/LibreOffice/master/vcl/inc/opengl/LineRende
+rUtils.hxx:14,
+                 from /data/rene/git/LibreOffice/master/vcl/opengl/LineRenderUti
+ls.cxx:11:
+/usr/include/glm/gtx/quaternion.hpp:23:3: error: #error "GLM: GLM_GTX_quaternion
+ is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
+ # error "GLM: GLM_GTX_quaternion is an experimental extension and may change in the future. Use #define GLM_ENABLE_EXPERIMENTAL before including it, if you really want to use it."
+   ^~~~~
+
+so just define it.
+
+Change-Id: I981bfb5fd944f32a3774b3f9b183989773bf235f
+Reviewed-on: https://gerrit.libreoffice.org/48799
+Tested-by: Jenkins <ci@libreoffice.org>
+Tested-by: Rene Engelhard <rene@debian.org>
+Reviewed-by: Rene Engelhard <rene@debian.org>
+---
+ chart2/Library_chartcore.mk   | 6 ++++++
+ chart2/Library_chartopengl.mk | 6 ++++++
+ vcl/Library_vcl.mk            | 6 ++++++
+ 3 files changed, 18 insertions(+)
+
+diff --git a/chart2/Library_chartcore.mk b/chart2/Library_chartcore.mk
+index f785d09..08455f9 100644
+--- a/chart2/Library_chartcore.mk
++++ b/chart2/Library_chartcore.mk
+@@ -23,6 +23,12 @@ $(eval $(call gb_Library_add_defs,chartcore,\
+     -DOOO_DLLIMPLEMENTATION_CHARTVIEW \
+ ))
+ 
++ifeq ($(SYSTEM_GLM),TRUE)
++$(eval $(call gb_Library_add_defs,chartcore,\
++        -DGLM_ENABLE_EXPERIMENTAL \
++))
++endif
++
+ $(eval $(call gb_Library_set_precompiled_header,chartcore,$(SRCDIR)/chart2/inc/pch/precompiled_chartcore))
+ 
+ $(eval $(call gb_Library_use_externals,chartcore,\
+diff --git a/chart2/Library_chartopengl.mk b/chart2/Library_chartopengl.mk
+index f999f94..8b5a22c 100644
+--- a/chart2/Library_chartopengl.mk
++++ b/chart2/Library_chartopengl.mk
+@@ -54,5 +54,11 @@ $(eval $(call gb_Library_add_exception_objects,chartopengl,\
+     chart2/source/view/main/DummyXShape \
+     chart2/source/view/main/OpenGLRender \
+ ))
++
++ifeq ($(SYSTEM_GLM),TRUE)
++$(eval $(call gb_Library_add_defs,chartopengl,\
++        -DGLM_ENABLE_EXPERIMENTAL \
++))
++endif
+  
+ # vim: set noet sw=4 ts=4:
+diff --git a/vcl/Library_vcl.mk b/vcl/Library_vcl.mk
+index 699d6ab..a2caa8e 100644
+--- a/vcl/Library_vcl.mk
++++ b/vcl/Library_vcl.mk
+@@ -49,6 +49,12 @@ $(eval $(call gb_Library_add_defs,vcl,\
+ 	-DENABLE_MERGELIBS=$(if $(MERGELIBS),1,0) \
+ ))
+ 
++ifeq ($(SYSTEM_GLM),TRUE)
++$(eval $(call gb_Library_add_defs,vcl,\
++        -DGLM_ENABLE_EXPERIMENTAL \
++))
++endif
++
+ $(eval $(call gb_Library_use_sdk_api,vcl))
+ 
+ $(eval $(call gb_Library_use_custom_headers,vcl,\
+-- 
+cgit v1.1

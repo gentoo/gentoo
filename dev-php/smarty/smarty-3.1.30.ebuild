@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,9 @@ EAPI=6
 DOC_PV="3.1.14"
 
 DESCRIPTION="A template engine for PHP"
-HOMEPAGE="http://www.smarty.net/"
+HOMEPAGE="https://www.smarty.net/"
 SRC_URI="https://github.com/smarty-php/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	doc? ( http://www.smarty.net/files/docs/manual-en.${DOC_PV}.zip )"
+	doc? ( https://www.smarty.net/files/docs/manual-en.${DOC_PV}.zip )"
 
 LICENSE="LGPL-3"
 SLOT="0"

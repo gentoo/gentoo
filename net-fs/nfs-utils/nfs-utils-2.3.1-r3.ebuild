@@ -15,7 +15,7 @@ if [[ "${PV}" = *_rc* ]] ; then
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 else
 	SRC_URI="mirror://sourceforge/nfs/${P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -59,6 +59,7 @@ RDEPEND="${DEPEND_COMMON}
 	)
 "
 DEPEND="${DEPEND_COMMON}
+	net-libs/rpcsvc-proto
 	virtual/pkgconfig"
 
 PATCHES=(
@@ -85,6 +86,7 @@ src_configure() {
 		--enable-tirpc
 		--with-tirpcinclude="${EPREFIX%/}"/usr/include/tirpc/
 		--with-pluginpath="${EPREFIX%/}"/usr/$(get_libdir)/libnfsidmap
+		--with-rpcgen
 		--with-systemd="$(systemd_get_systemunitdir)"
 		--without-gssglue
 		$(use_enable caps)

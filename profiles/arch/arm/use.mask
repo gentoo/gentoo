@@ -5,6 +5,10 @@
 -cpu_flags_arm_iwmmxt
 -iwmmxt
 
+# Andrey Utkin <andrey_utkin@gentoo.org> (13 Jun 2018)
+# No ACPI support on arm. Bug #657332
+acpi
+
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unmask elogind since it is keyworded here.
 -elogind

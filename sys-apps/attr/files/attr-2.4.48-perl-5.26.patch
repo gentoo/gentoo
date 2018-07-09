@@ -1,13 +1,17 @@
+From 406eab7aa09da9df787a964d3c152c0bda6e23c4 Mon Sep 17 00:00:00 2001
+From: Troy Dawson <tdawson@redhat.com>
+Date: Mon, 24 Jul 2017 14:42:06 +0200
+Subject: [PATCH attr] test: escape left brace in a regex in test/run
+
 ... to fix test-suite failure with perl-5.26.0
 
 Bug: https://bugzilla.redhat.com/1473853
-Upstream: http://lists.nongnu.org/archive/html/acl-devel/2017-07/msg00001.html
 ---
  test/run | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/test/run b/test/run
-index 4b1f8d0..07e916c 100755
+index 4b1f8d0d6134..07e916c41947 100755
 --- a/test/run
 +++ b/test/run
 @@ -106,7 +106,7 @@ for (;;) {
@@ -20,4 +24,4 @@ index 4b1f8d0..07e916c 100755
    if (defined $line) {
      if ($line =~ s/^\s*< ?//) {
 -- 
-2.13.0
+2.16.1

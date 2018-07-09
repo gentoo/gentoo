@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,10 +37,11 @@ DEPEND="${RDEPEND}
 		media-gfx/graphviz
 	)"
 
-S=${WORKDIR}/${MY_PN}-${PV}
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.0-fix-build-system.patch
+	"${FILESDIR}"/${PN}-4.0.0-freetype_pkgconfig.patch #658424
 )
 
 src_prepare() {
@@ -49,15 +50,17 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable doc docs) \
-		$(use_enable cpu_flags_x86_sse2 sse2) \
-		$(use_enable opengl clanGL) \
-		$(use_enable opengl clanUI) \
-		$(use_enable X clanDisplay) \
-		$(use_enable sound clanSound) \
-		$(use_enable ipv6 getaddr) \
+	local myeconfargs=(
+		$(use_enable doc docs)
+		$(use_enable cpu_flags_x86_sse2 sse2)
+		$(use_enable opengl clanGL)
+		$(use_enable opengl clanUI)
+		$(use_enable X clanDisplay)
+		$(use_enable sound clanSound)
+		$(use_enable ipv6 getaddr)
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -72,5 +75,5 @@ src_install() {
 	use examples && dodoc -r Examples Resources
 
 	# package provides .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

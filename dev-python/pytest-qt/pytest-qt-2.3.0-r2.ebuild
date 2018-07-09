@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="pytest plugin for PyQt4 or PyQt5 applications"

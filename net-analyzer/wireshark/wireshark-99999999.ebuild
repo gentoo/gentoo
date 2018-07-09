@@ -13,8 +13,8 @@ SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
 	adns androiddump bcg729 +capinfos +caps +captype ciscodump +dftest doc
-	+dumpcap +editcap gtk kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
-	nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump +reordercap sbc selinux
+	+dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
+	nghttp2 +pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux
 	+sharkd smi snappy spandsp sshdump ssl +text2pcap tfshark +tshark +udpdump
 	zlib
 "
@@ -28,12 +28,6 @@ CDEPEND="
 	adns? ( >=net-dns/c-ares-1.5 )
 	bcg729? ( media-libs/bcg729 )
 	caps? ( sys-libs/libcap )
-	gtk? (
-		x11-libs/gdk-pixbuf
-		x11-libs/gtk+:3
-		x11-libs/pango
-		x11-misc/xdg-utils
-	)
 	kerberos? ( virtual/krb5 )
 	sshdump? ( >=net-libs/libssh-0.6 )
 	ciscodump? ( >=net-libs/libssh-0.6 )
@@ -43,7 +37,6 @@ CDEPEND="
 	maxminddb? ( dev-libs/libmaxminddb )
 	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
-	portaudio? ( media-libs/portaudio )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -81,15 +74,15 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	gtk? ( virtual/freedesktop-icon-theme )
 	qt5? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
-	"${FILESDIR}"/${PN}-2.6.0-androiddump-wsutil.patch
-	"${FILESDIR}"/${PN}-2.6.0-qtsvg.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-99999999-androiddump-wsutil.patch
+	"${FILESDIR}"/${PN}-99999999-qtsvg.patch
+	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
 )
 
 pkg_setup() {
@@ -142,7 +135,6 @@ src_configure() {
 		-DBUILD_tshark=$(usex tshark)
 		-DBUILD_udpdump=$(usex udpdump)
 		-DBUILD_wireshark=$(usex qt5)
-		-DBUILD_wireshark_gtk=$(usex gtk)
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
 		-DENABLE_CAP=$(usex caps)
@@ -155,7 +147,6 @@ src_configure() {
 		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex nghttp2)
 		-DENABLE_PCAP=$(usex pcap)
-		-DENABLE_PORTAUDIO=$(usex portaudio)
 		-DENABLE_SBC=$(usex sbc)
 		-DENABLE_SMI=$(usex smi)
 		-DENABLE_SNAPPY=$(usex snappy)
@@ -205,7 +196,7 @@ src_install() {
 	insinto /usr/include/wiretap
 	doins wiretap/wtap.h
 
-	if use gtk || use qt5; then
+	if use qt5; then
 		local s
 		for s in 16 32 48 64 128 256 512 1024; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/apps

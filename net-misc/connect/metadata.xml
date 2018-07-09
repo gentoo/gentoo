@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wschlich@gentoo.org</email>
-		<name>Wolfram Schlich</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 connect is the simple relaying command to make network connection via
 SOCKS and https proxy. It is mainly intended to be used as proxy
@@ -19,3 +16,4 @@ Connect は SOCKS 経由のネットワーク接続と HTTP プロクシを実�
 		<remote-id type="bitbucket">gotoh/connect</remote-id>
 	</upstream>
 </pkgmetadata>
+

@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="DSSI Soft Synth Interface"
 HOMEPAGE="http://dssi.sourceforge.net/"
@@ -19,8 +19,3 @@ RDEPEND=">=media-libs/dssi-0.9.0
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc ChangeLog README TODO
-}

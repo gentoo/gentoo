@@ -47,10 +47,9 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND=">=sys-fs/udev-init-scripts-26
 	hwdb? ( >=sys-apps/hwids-20140304[udev] )"
 
-# The multilib-build.eclass doesn't handle situation where the installed headers
-# are different in ABIs. In this case, we install libgudev headers in native
-# ABI but not for non-native ABI.
-multilib_check_headers() { :; }
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/udev.h
+)
 
 pkg_pretend() {
 	ewarn

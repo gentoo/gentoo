@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
-HOMEPAGE="http://www.syslinux.org/"
+HOMEPAGE="https://www.syslinux.org/"
 # Final releases in 6.xx/$PV.tar.* (literal "xx")
 # Testing releases in Testing/$PV/$PV.tar.*
 SRC_URI_DIR=${PV:0:1}.xx

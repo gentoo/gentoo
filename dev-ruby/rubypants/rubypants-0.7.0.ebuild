@@ -17,7 +17,7 @@ HOMEPAGE="http://chneukirchen.org/repos/rubypants/README"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 all_ruby_prepare() {

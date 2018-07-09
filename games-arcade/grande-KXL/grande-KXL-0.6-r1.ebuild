@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools desktop
 
 DESCRIPTION="ZANAC type game"
@@ -15,20 +16,25 @@ IUSE=""
 
 DEPEND="dev-games/KXL"
 RDEPEND="${DEPEND}
-	media-fonts/font-adobe-100dpi
-"
+	media-fonts/font-adobe-100dpi"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-configure.in.patch
+	"${FILESDIR}"/${P}-cflags.patch
+)
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/${P}-{configure.in,cflags}.patch
-	mv configure.{in,ac}
-	rm aclocal.m4
+
+	mv configure.{in,ac} || die
+	rm aclocal.m4 || die
 	eautoreconf
 }
 
 src_install() {
 	dodir /var/lib
 	default
+
 	newicon src/bmp/boss1.bmp ${PN}.bmp
 	make_desktop_entry grande Grande /usr/share/pixmaps/${PN}.bmp
 }

@@ -1,0 +1,26 @@
+From bf0e0b71360cfbc690a29f4abe15d7b9b61b8479 Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sat, 22 Jun 2013 12:11:54 +0100
+Subject: [PATCH 12/15] Avoid pixel artifacts when compositing
+
+Change src_over alpha to avoid pixel artifacts by reordering computations.
+---
+ include/agg_pixfmt_rgba.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/agg_pixfmt_rgba.h b/include/agg_pixfmt_rgba.h
+index 5d6b511..bb255cd 100644
+--- a/include/agg_pixfmt_rgba.h
++++ b/include/agg_pixfmt_rgba.h
+@@ -346,7 +346,7 @@ namespace agg
+             p[Order::R] = (value_type)(sr + ((p[Order::R] * s1a + base_mask) >> base_shift));
+             p[Order::G] = (value_type)(sg + ((p[Order::G] * s1a + base_mask) >> base_shift));
+             p[Order::B] = (value_type)(sb + ((p[Order::B] * s1a + base_mask) >> base_shift));
+-            p[Order::A] = (value_type)(sa + p[Order::A] - ((sa * p[Order::A] + base_mask) >> base_shift));
++            p[Order::A] = (value_type)(sa + ((p[Order::A] * s1a + base_mask) >> base_shift));
+         }
+     };
+ 
+-- 
+1.8.1.4
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Additional functions used by other projects by developer jaraco"
+DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
 HOMEPAGE="https://github.com/jaraco/jaraco.itertools"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 

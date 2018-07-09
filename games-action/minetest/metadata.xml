@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Minetest is an infinite-world block sandbox game and a game
 		engine, inspired by InfiniMiner, Minecraft and the like. It has
@@ -30,7 +29,16 @@
 		* Runs natively on Windows, Linux, OS X and FreeBSD.
 		* Supports multiple languages, translated by the community.
 	</longdescription>
+	<maintainer type="person">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
+		<flag name="jsoncpp">Enable using a system-wide JSONCPP</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
 		<flag name="postgres">Optionally use PostgreSQL as map backend</flag>
 		<flag name="redis">Enable redis backend via

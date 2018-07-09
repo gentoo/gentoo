@@ -1,0 +1,15 @@
+diff --git a/work/Blender-Exporter-3.3.0/__init__.py b/work/Blender-Exporter-3.3.0/__init__.py
+index 85dc1c2..70a79e8 100644
+--- a/__init__.py
++++ b/__init__.py
+@@ -22,8 +22,8 @@ import sys
+ import os
+ import ctypes
+ 
+-PLUGIN_PATH = os.path.join(__path__[0], 'bin', 'yafaray-plugins')
+-BIN_PATH = os.path.join(__path__[0], 'bin')
++PLUGIN_PATH = '/usr/lib/yafaray-plugins'
++BIN_PATH = '/usr/bin'
+ YAF_ID_NAME = "YAFA_V3_RENDER"
+ 
+ # Version to be automatically populated during the cmake build process, getting the version from git tags

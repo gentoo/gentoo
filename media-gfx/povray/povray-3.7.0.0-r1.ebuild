@@ -112,6 +112,7 @@ src_configure() {
 		$(use_with X x "${EPREFIX}/usr/$(get_libdir)") \
 		$(use_enable static-libs static) \
 		$(usex tiff "" "NON_REDISTRIBUTABLE_BUILD=yes") \
+		--with-boost-libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--without-libmkl \
 		--disable-pipe \
 		--disable-strip \

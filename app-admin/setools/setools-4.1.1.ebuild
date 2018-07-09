@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	sed -i "s/'-Werror', //" "${S}"/setup.py || die "failed to remove Werror"
+	sed -i "s@^base_lib_dirs = .*@base_lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@g" "${S}"/setup.py || \
+		die "failed to set base_lib_dirs"
 
 	use X || local PATCHES=( "${FILESDIR}"/setools-4.1.1-remove-gui.patch )
 	distutils-r1_python_prepare_all

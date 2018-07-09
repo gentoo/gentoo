@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="A utility that provides information about a computer system"
 HOMEPAGE="https://www.kde.org/applications/system/kinfocenter/"
 SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-small.png"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="gles2 ieee1394 +opengl +pci wayland"
 
 REQUIRED_USE="wayland? ( || ( gles2 opengl ) )"
@@ -60,13 +60,17 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package gles2 OpenGLES)
 		$(cmake-utils_use_find_package ieee1394 RAW1394)
-		$(cmake-utils_use_find_package opengl OpenGL)
 		$(cmake-utils_use_find_package pci PCIUTILS)
 		$(cmake-utils_use_find_package wayland EGL)
 		$(cmake-utils_use_find_package wayland KF5Wayland)
 	)
+
+	if has_version "dev-qt/qtgui[gles2]"; then
+		mycmakeargs+=( $(cmake-utils_use_find_package gles2 OpenGLES) )
+	else
+		mycmakeargs+=( $(cmake-utils_use_find_package opengl OpenGL) )
+	fi
 
 	kde5_src_configure
 }

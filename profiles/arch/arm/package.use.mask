@@ -1,11 +1,34 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
+# dev-libs/xxhash not keyworded for arm
+app-admin/rsyslog xxhash
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# kde-plasma/plasma-browser-integration not yet keyworded, bug #659936
+kde-plasma/plasma-meta browser-integration
+
+# Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
+# Needs dev-libs/libmaxminddb which isn't keyworded
+www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
+
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Jun 2018)
+# net-wireless/soapysdr not keyworded
+net-wireless/gr-osmosdr soapy
+
+# Markus Meier <maekke@gentoo.org> (30 May 2018)
+# unkeyworded deps for bug #621434
+net-analyzer/zmap mongo
+
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # media-libs/libaom not yet keyworded
-# net-libs/libmicrodns not yet keyworded for arm, bug #653800
 # projectm not yet keyworded, bug #314969
-media-video/vlc aom chromaprint microdns opencv projectm
+media-video/vlc aom chromaprint opencv projectm
 
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded dep masks moved from default/linux.
@@ -271,10 +294,6 @@ media-libs/clutter-gtk wayland
 dev-python/ipython doc
 dev-python/oct2py doc
 
-# Patrick Lauer <patrick@gentoo.org> (19 Nov 2014)
-# Missing keywords #529820
-app-office/libreoffice collada
-
 # Michael Weber <xmw@gentoo.org> (15 Nov 2014)
 # missing keywords on media-libs/libharu
 www-client/netsurf pdf-writer
@@ -454,7 +473,7 @@ sci-astronomy/kstars indi
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
-app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher coinmp gltf
+app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher coinmp
 
 # Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
 # No java on ARM
@@ -497,11 +516,11 @@ sys-auth/polkit kde
 app-text/asciidoc test
 
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-frameworks/kdelibs is not stable for arm
+# kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
 dev-vcs/subversion kwallet
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)

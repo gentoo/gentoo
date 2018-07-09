@@ -20,7 +20,7 @@ srp ssl static-libs urandom"
 DEPEND="net-mail/mailbase
 	authdaemond? ( || ( net-mail/courier-imap mail-mta/courier ) )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
-	gdbm? ( >=sys-libs/gdbm-1.10-r1[${MULTILIB_USEDEP}] )
+	gdbm? ( >=sys-libs/gdbm-1.10-r1:=[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	openldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
 	mysql? ( virtual/mysql )
@@ -28,8 +28,8 @@ DEPEND="net-mail/mailbase
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( >=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}] )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 	)
 	java? ( >=virtual/jdk-1.4:= )"
 RDEPEND="${DEPEND}

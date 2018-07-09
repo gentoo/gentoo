@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use>
-		<flag name="extras">Install additional script that tag files based on cue/toc file information</flag>
-	</use>
 	<longdescription lang="en">
 		cuetools is a set of utilities for working with Cue Sheet (cue) and Table of Contents (toc) files.
 		It includes:

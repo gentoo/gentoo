@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools flag-o-matic versionator
 
 DESCRIPTION="Terminal multiplexer"
-HOMEPAGE="http://tmux.github.io/"
+HOMEPAGE="https://tmux.github.io/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV/_*}/${P/_/-}.tar.gz"
 
 LICENSE="ISC"

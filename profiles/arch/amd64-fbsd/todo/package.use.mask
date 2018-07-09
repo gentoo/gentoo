@@ -139,11 +139,6 @@ x11-drivers/xf86-video-ati glamor
 # x11-drivers/xf86-video-tdfx
 x11-base/xorg-drivers video_cards_tdfx
 
-# >=sys-auth/polkit-qt-0.103.0
-# >=kde-misc/polkit-kde-kcmodules-0.98_pre20101127
-# >=sys-auth/polkit-kde-agent-0.99
-kde-frameworks/kdelibs policykit
-
 # <=sci-geosciences/gpsd-2.95-r1
 app-misc/geoclue gps
 

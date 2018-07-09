@@ -1,0 +1,18 @@
+--- gcc-7-gpl-2018-src/gcc/ada/osint.adb.old	2017-03-10 21:58:02.600710156 +0100
++++ gcc-7-gpl-2018-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+@@ -2229,14 +2229,11 @@
+       for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
+          if Name_Buffer (J .. J + Prog'Length - 1) = Prog then
+             End_Of_Prefix := J - 1;
++            Start_Of_Suffix := J + Prog'Length;
+             exit;
+          end if;
+       end loop;
+ 
+-      if End_Of_Prefix > 1 then
+-         Start_Of_Suffix := End_Of_Prefix + Prog'Length + 1;
+-      end if;
+-
+       --  Create the new program name
+ 
+       return new String'

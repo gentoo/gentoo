@@ -39,8 +39,8 @@ all_ruby_install() {
 	all_fakegem_install
 	insinto /etc/fluent
 	doins "${FILESDIR}"/fluent.conf
-newconfd "${FILESDIR}"/${PN}.confd ${PN}
-newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 }
 
 pkg_postinst() {

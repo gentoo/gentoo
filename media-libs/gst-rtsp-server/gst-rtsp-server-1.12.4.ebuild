@@ -8,7 +8,7 @@ inherit eutils gstreamer
 DESCRIPTION="A GStreamer based RTSP server"
 HOMEPAGE="https://people.freedesktop.org/~wtay/"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 KEYWORDS="amd64 x86"
 IUSE="examples +introspection static-libs test"
 

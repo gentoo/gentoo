@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack"
-HOMEPAGE="http://www.dockapps.net/wmmatrix"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmmatrix"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 CDEPEND="x11-libs/libX11
 	x11-libs/libXext

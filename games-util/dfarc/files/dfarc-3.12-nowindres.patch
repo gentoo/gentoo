@@ -1,5 +1,5 @@
---- a/src/Makefile.in.orig	2016-04-05 12:49:17.997412757 -0400
-+++ b/src/Makefile.in	2016-04-05 12:50:42.058496766 -0400
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -100,7 +100,6 @@
  	Package.$(OBJEXT) RecursiveDelete.$(OBJEXT) Tar.$(OBJEXT) \
  	DFArcFrame_Base.$(OBJEXT) Options_Base.$(OBJEXT) \

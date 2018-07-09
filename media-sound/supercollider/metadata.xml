@@ -3,9 +3,9 @@
 <pkgmetadata>
 <!-- maintainer-needed -->
 	<longdescription>
-		SuperCollider is a platform for audio synthesis and algorithmic 
-		composition, used by musicians, artists, and researchers 
-		working with sound. It is free and open source software 
+		SuperCollider is a platform for audio synthesis and algorithmic
+		composition, used by musicians, artists, and researchers
+		working with sound. It is free and open source software
 		available for Windows, Mac OS X, and Linux.
 	</longdescription>
 	<upstream>
@@ -17,6 +17,5 @@
 		<flag name="gedit">Enable the SCED user interface</flag>
 		<flag name="gpl3">Build GPL-3 licensed code (recommended)</flag>
 		<flag name="server">Build with internal server</flag>
-		<flag name="wiimote">Build sclang with Wii Remote support</flag>
 	</use>
 </pkgmetadata>

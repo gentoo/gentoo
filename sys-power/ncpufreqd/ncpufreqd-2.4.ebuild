@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 inherit cmake-utils
 
@@ -15,13 +15,14 @@ KEYWORDS="amd64 x86"
 
 IUSE=""
 
-DEPEND="virtual/logger
-	app-arch/xz-utils"
+DEPEND="
+	app-arch/xz-utils
+	virtual/logger"
 RDEPEND="${DEPEND}"
 
 src_install() {
 	cmake-utils_src_install
 
 	doinitd gentoo-init.d/ncpufreqd
-	dodoc AUTHORS ChangeLog README
+	einstalldocs
 }

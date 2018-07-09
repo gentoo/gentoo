@@ -1,5 +1,5 @@
---- mp32ogg.orig	2004-02-03 01:09:20.000000000 -0800
-+++ mp32ogg	2004-02-03 01:25:01.000000000 -0800
+--- a/mp32ogg
++++ b/mp32ogg
 @@ -6,6 +6,9 @@
  # <http://www.opensource.org/licenses/artistic-license.html>
  

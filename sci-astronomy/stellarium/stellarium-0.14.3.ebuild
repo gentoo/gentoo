@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 	nls? ( dev-qt/linguist-tools:5 )"
 
 src_prepare() {
+	cmake-utils_src_prepare
 	if [[ -n ${LINGUAS} ]] ; then
 		sed -i \
 			-e '/aa ab ae/d' \

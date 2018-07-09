@@ -150,7 +150,7 @@ RDEPEND="${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (} kernel_linux? ( vir
 DEPEND="${RDEPEND}
     ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
 	sys-apps/sed
-	kernel_linux? ( virtual/linux-sources )
+	kernel_linux? ( virtual/linux-sources virtual/libelf )
 	${MODULES_OPTIONAL_USE:+)}"
 
 # eclass utilities

@@ -37,10 +37,7 @@ UIRDEPEND="
 	x11-libs/libXxf86vm
 "
 UIDEPEND="
-	x11-proto/xextproto
-	x11-proto/xf86dgaproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 RDEPEND="
 	net-misc/curl

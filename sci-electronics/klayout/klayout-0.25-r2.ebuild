@@ -16,12 +16,12 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_CHECKOUT_DIR=${WORKDIR}/all/${P}
 else
-	SRC_URI="http://www.klayout.org/downloads/source/${P}.tar.gz"
+	SRC_URI="https://www.klayout.org/downloads/source/${P}.tar.gz"
 	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
-HOMEPAGE="http://www.klayout.de/"
+HOMEPAGE="https://www.klayout.de/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

@@ -11,7 +11,7 @@ MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A simple CalDAV calendar server"
-HOMEPAGE="http://radicale.org/"
+HOMEPAGE="https://radicale.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -42,7 +42,7 @@ pkg_pretend() {
 		eerror "6. Run \`mv ~/radicale-exported \"${RDIR}/collections\"\`."
 		eerror
 		eerror "For more details, or if you are have a more complex configuration,"
-		eerror "please see the migration guide: http://radicale.org/1to2/"
+		eerror "please see the migration guide: https://radicale.org/1to2/"
 		eerror "If you do a custom migration, please ensure the database is cleaned out of"
 		eerror "${RDIR}, including the hidden .props file."
 		die

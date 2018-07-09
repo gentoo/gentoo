@@ -30,6 +30,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# Prevent access violations from completion generation.
+	# See Gentoo bug 656086.
+	addpredict /dev/dri
+
 	$(usex luajit 'luajit' 'lua') gen.lua > mpv || die
 }
 

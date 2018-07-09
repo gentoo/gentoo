@@ -20,7 +20,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="hwloc kernel_linux ompt test"
 RESTRICT="!test? ( test )"
 

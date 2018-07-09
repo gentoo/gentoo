@@ -138,8 +138,6 @@ darcs
 mercurial
 kerberos
 gpg
-gnome
-doc
 emacs
 gphoto2
 afs
@@ -157,7 +155,6 @@ sid
 mms
 mtp
 ieee1394
-sctp
 pm-utils
 darcs
 bs2b

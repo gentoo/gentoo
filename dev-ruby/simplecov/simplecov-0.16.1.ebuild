@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 SLOT="0.8"
 IUSE="doc"
 
-ruby_add_rdepend ">=dev-ruby/json-1.8:0 <dev-ruby/json-3:0
+ruby_add_rdepend "|| ( dev-ruby/json:2 >=dev-ruby/json-1.8:0 )
 	dev-ruby/simplecov-html:0.10
 	>=dev-ruby/docile-1.1:0"
 

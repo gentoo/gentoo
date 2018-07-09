@@ -1,0 +1,32 @@
+From a568ded46a678eac8139cb06595819c5ae874177 Mon Sep 17 00:00:00 2001
+From: Xiaohan Wang <xhwang@chromium.org>
+Date: Mon, 29 Jan 2018 21:28:28 +0000
+Subject: [PATCH] media: Increase DecoderBuffer::kPaddingSize to 64
+
+AV_INPUT_BUFFER_PADDING_SIZE has been increased to 64 in FFmpeg:
+https://github.com/FFmpeg/FFmpeg/commit/6e80079a2840ee407c5d126030eb1066bcbfdfc5
+
+BUG=777484
+
+Change-Id: I1bd68d1c1b0c3131f28d6e07e1444b89800c09db
+Reviewed-on: https://chromium-review.googlesource.com/889686
+Reviewed-by: Dale Curtis <dalecurtis@chromium.org>
+Commit-Queue: Xiaohan Wang <xhwang@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#532593}
+---
+ src/3rdparty/chromium/media/base/decoder_buffer.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/3rdparty/chromium/media/base/decoder_buffer.h b/src/3rdparty/chromium/media/base/decoder_buffer.h
+index 0341e5784f725..60ffba708b0e5 100644
+--- a/src/3rdparty/chromium/media/base/decoder_buffer.h
++++ b/src/3rdparty/chromium/media/base/decoder_buffer.h
+@@ -37,7 +37,7 @@ class MEDIA_EXPORT DecoderBuffer
+     : public base::RefCountedThreadSafe<DecoderBuffer> {
+  public:
+   enum {
+-    kPaddingSize = 32,
++    kPaddingSize = 64,
+ #if defined(ARCH_CPU_ARM_FAMILY)
+     kAlignmentSize = 16
+ #else

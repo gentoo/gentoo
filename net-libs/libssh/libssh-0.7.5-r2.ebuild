@@ -18,8 +18,8 @@ IUSE="debug doc examples gcrypt gssapi libressl pcap server +sftp ssh1 static-li
 
 RDEPEND="
 	!gcrypt? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 	)
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )

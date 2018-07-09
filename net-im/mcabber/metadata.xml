@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wschlich@gentoo.org</email>
-		<name>Wolfram Schlich</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		MCabber is a small Jabber console client that features
 		such as GPG encryption, SSL support, MUC (Multi-User Chat) support,
@@ -18,3 +15,4 @@
 		</flag>
 	</use>
 </pkgmetadata>
+

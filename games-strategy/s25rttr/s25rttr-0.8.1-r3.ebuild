@@ -1,11 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils cmake-utils gnome2-utils readme.gentoo-r1
+EAPI=6
+
+inherit cmake-utils desktop gnome2-utils readme.gentoo-r1
 
 DESCRIPTION="Open Source remake of The Settlers II game (needs original game files)"
-HOMEPAGE="http://www.siedler25.org/"
+HOMEPAGE="https://www.siedler25.org/"
 # no upstream source tarball yet
 # https://bugs.launchpad.net/s25rttr/+bug/1069546
 SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
@@ -29,6 +30,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
 
+DOCS=( RTTR/texte/{keyboardlayout.txt,readme.txt} )
+
+DOC_CONTENTS="Copy your Settlers2 game files into ~/.${PN}/S2"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${P}-soundconverter.patch
@@ -38,8 +43,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake-3.patch
 	"${FILESDIR}"/${P}-gcc6.patch
 )
-
-DOC_CONTENTS="Copy your Settlers2 game files into ~/.${PN}/S2"
 
 src_configure() {
 	local arch
@@ -94,12 +97,8 @@ src_install() {
 	dobin src/s25client
 	make_desktop_entry "s25client" "Settlers RTTR" "${PN}"
 
-	dodoc RTTR/texte/{keyboardlayout.txt,readme.txt}
+	einstalldocs
 	readme.gentoo_create_doc
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

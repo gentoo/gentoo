@@ -1,0 +1,17 @@
+https://github.com/gentoo-haskell/gentoo-haskell/issues/704
+
+Allow users to specify -W,--relax externally and pass
+-Wl,-no-relax unconditonally on all arches.
+
+Reported-by: wmyrda
+diff --git a/compiler/main/DriverPipeline.hs b/compiler/main/DriverPipeline.hs
+index acd0d61..5830517 100644
+--- a/compiler/main/DriverPipeline.hs
++++ b/compiler/main/DriverPipeline.hs
+@@ -2172,5 +2172,3 @@ joinObjectFiles dflags o_files output_fn = do
+                         -- disable --relax explicitly.
+-                     ++ (if platformArch (targetPlatform dflags)
+-                                `elem` [ArchSPARC, ArchSPARC64]
+-                         && ldIsGnuLd
++                     ++ (if ldIsGnuLd
+                             then [SysTools.Option "-Wl,-no-relax"]

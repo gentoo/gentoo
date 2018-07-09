@@ -1,0 +1,11 @@
+--- a/gmp/gnatcoll_gmp.gpr	2018-06-18 21:48:15.289991113 +0200
++++ b/gmp/gnatcoll_gmp.gpr	2018-06-18 21:48:46.869507399 +0200
+@@ -65,7 +65,7 @@
+             for Switches ("Ada") use ("-O2", "-gnatn", "-gnatwaCJ");
+             for Switches ("C") use ("-O2", "-Wunreachable-code");
+       end case;
+-
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Binder is

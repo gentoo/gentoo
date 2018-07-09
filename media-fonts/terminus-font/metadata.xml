@@ -22,10 +22,6 @@
       Changes view of quotes: symmetric ` and '
       instead of asymmetric one (see homepage)
     </flag>
-    <flag name="raw-font-data">
-      Install RAW font data which should be compatible with most
-      UNIX systems (you don't need this on linux)
-    </flag>
     <flag name="ru-dv">
       Changes view of Russian letters 'de' and 've' (see homepage)
     </flag>

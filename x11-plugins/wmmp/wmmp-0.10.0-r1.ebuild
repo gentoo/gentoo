@@ -1,7 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
+
 MY_P=${P/wm/WM}
 
 DESCRIPTION="A Window Maker dock app client for Music Player Daemon(media-sound/mpd)"
@@ -21,13 +22,4 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	econf --with-default-port=6600
-}
-
-src_compile() {
-	emake LDFLAGS="${LDFLAGS}" || die "make failed"
-}
-
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS ChangeLog README THANKS TODO
 }

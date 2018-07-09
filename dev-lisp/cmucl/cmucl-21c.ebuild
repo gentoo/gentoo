@@ -14,7 +14,7 @@ SRC_URI="http://common-lisp.net/project/cmucl/downloads/release/${MY_PV}/cmucl-s
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="X doc source"
 
 CDEPEND=">=dev-lisp/asdf-2.33-r3:=

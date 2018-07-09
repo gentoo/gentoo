@@ -55,6 +55,9 @@ src_configure() {
 	# don't redefine stat on Solaris
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		export ac_cv_func_stat64=yes
+
+		# if your headers strictly adhere to POSIX, you'll need this too
+		[[ ${CHOST##*solaris2.} -le 10 ]] && append-cppflags -DNAME_MAX=255
 	fi
 	append-cppflags -DJOBS=$(usex libedit 1 0)
 	use static && append-ldflags -static

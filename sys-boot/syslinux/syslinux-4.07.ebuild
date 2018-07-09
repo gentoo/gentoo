@@ -6,7 +6,7 @@ EAPI=0
 inherit eutils toolchain-funcs
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
-HOMEPAGE="http://syslinux.zytor.com/"
+HOMEPAGE="https://syslinux.zytor.com/"
 SRC_URI="mirror://kernel/linux/utils/boot/syslinux/${PV:0:1}.xx/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"

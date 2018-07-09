@@ -1,13 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils git-r3 qmake-utils
+inherit desktop git-r3 qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
-HOMEPAGE="http://www.librecad.org/"
-SRC_URI=""
+HOMEPAGE="https://www.librecad.org/"
 EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
 
 LICENSE="GPL-2"
@@ -16,25 +15,22 @@ KEYWORDS=""
 
 IUSE="3d debug doc tools"
 
-DEPEND="
+RDEPEND="
 	dev-cpp/muParser
 	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qthelp:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
 	media-libs/freetype:2"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+	dev-qt/qthelp:5
+	dev-qt/qtxml:5
+"
 
-RDEPEND="${DEPEND}"
-S="${WORKDIR}/librecad-${PV}"
-
-src_prepare() {
-	# currently RS_VECTOR3D causes an internal compiler error on GCC-4.8
-	use 3d || sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
-}
+S="${WORKDIR}/LibreCAD-${PV}"
 
 src_configure() {
 	eqmake5 -r
@@ -43,8 +39,6 @@ src_configure() {
 src_install() {
 	dobin unix/librecad
 	use tools && dobin unix/ttf2lff
-	insinto /usr/share
-	doins -r unix/appdata
 	insinto /usr/share/${PN}
 	doins -r unix/resources/*
 	use doc && docinto html && dodoc -r librecad/support/doc/*

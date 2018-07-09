@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -35,6 +35,8 @@ DOCS=( AUTHORS CHANGELOG sample.theme light.theme )
 
 # Req'd for clean build by each impl
 DISTUTILS_IN_SOURCE_BUILD=1
+
+RESTRICT="test" #659110
 
 python_compile_all() {
 	if use doc; then

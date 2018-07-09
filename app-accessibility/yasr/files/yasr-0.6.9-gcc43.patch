@@ -1,6 +1,5 @@
-diff -NrU5 yasr-0.6.9.orig/yasr/yasr.h yasr-0.6.9/yasr/yasr.h
---- yasr-0.6.9.orig/yasr/yasr.h	2008-06-29 01:23:44.000000000 +0200
-+++ yasr-0.6.9/yasr/yasr.h	2008-06-29 01:37:00.000000000 +0200
+--- a/yasr/yasr.h
++++ b/yasr/yasr.h
 @@ -306,22 +306,10 @@
  extern void opt_say(int num, int flag);
  extern void opt_set(int num, void *val);

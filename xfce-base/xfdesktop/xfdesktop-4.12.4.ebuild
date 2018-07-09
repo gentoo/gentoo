@@ -29,7 +29,7 @@ RDEPEND=">=x11-libs/cairo-1.6:=
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	thunar? (
 		>=dev-libs/glib-2.38:=
-		>=xfce-base/thunar-1.6:=[dbus]
+		=xfce-base/thunar-1.6*:=[dbus]
 		)"
 DEPEND="${RDEPEND}
 	dev-util/intltool

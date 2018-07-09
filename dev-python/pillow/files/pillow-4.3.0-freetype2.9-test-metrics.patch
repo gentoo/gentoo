@@ -1,0 +1,12 @@
+--- a/Tests/test_imagefont.py
++++ b/Tests/test_imagefont.py
+@@ -58,6 +58,9 @@ class TestImageFont(PillowTestCase):
+                 ('2', '8'): {'multiline': 6.2,
+                              'textsize': 2.5,
+                              'getters': (12, 16)},
++                ('2', '9'): {'multiline': 6.2,
++                             'textsize': 2.5,
++                             'getters': (12, 16)},
+                 'Default': {'multiline': 0.5,
+                             'textsize': 0.5,
+                             'getters': (12, 16)},

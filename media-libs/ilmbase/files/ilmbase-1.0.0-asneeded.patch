@@ -1,5 +1,5 @@
---- IlmThread/Makefile.in
-+++ IlmThread/Makefile.in
+--- a/IlmThread/Makefile.in
++++ b/IlmThread/Makefile.in
 @@ -209,7 +209,7 @@
  			  IlmThreadMutexPosix.cpp
  

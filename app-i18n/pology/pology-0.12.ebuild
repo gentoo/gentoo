@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 ESVN_REPO_URI="svn://anonsvn.kde.org/home/kde/trunk/l10n-support/pology"
 PYTHON_COMPAT=( python2_7 )
@@ -18,7 +18,7 @@ HOMEPAGE="http://pology.nedohodnik.net"
 LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

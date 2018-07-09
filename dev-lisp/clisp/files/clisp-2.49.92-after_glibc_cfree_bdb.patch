@@ -1,0 +1,185 @@
+diff -r -U3 clisp-2.49.90.orig/modules/berkeley-db/bdb.c clisp-2.49.90/modules/berkeley-db/bdb.c
+--- clisp-2.49.90.orig/modules/berkeley-db/bdb.c	2018-01-27 12:03:01.000000000 +0100
++++ clisp-2.49.90/modules/berkeley-db/bdb.c	2018-02-12 20:37:24.203803219 +0100
+@@ -2216,7 +2216,13 @@
+   c_data.compact_timeout = timeout;
+   c_data.compact_pages = pages;
+   SYSCALL(db->compact,(db,txn,pstart,pstop,&c_data,flags,&end));
+-  pushSTACK(uint32_to_I(c_data.compact_empty_buckets));
++  /* ====
++   * compact_empty_buckets is in bdb-5.3 as part of output stats
++   * however this version use bdb-4.8 which does not have it
++   * ====
++   *
++   * pushSTACK(uint32_to_I(c_data.compact_empty_buckets));
++   * */
+   pushSTACK(uint32_to_I(c_data.compact_pages_free));
+   pushSTACK(uint32_to_I(c_data.compact_pages_examine));
+   pushSTACK(uint32_to_I(c_data.compact_levels));
+diff -r -U3 clisp-2.49.90.orig/modules/bindings/glibc/linux.lisp clisp-2.49.90/modules/bindings/glibc/linux.lisp
+--- clisp-2.49.90.orig/modules/bindings/glibc/linux.lisp	2018-01-10 00:32:25.000000000 +0100
++++ clisp-2.49.90/modules/bindings/glibc/linux.lisp	2018-02-12 20:48:22.467775536 +0100
+@@ -1,7 +1,7 @@
+ ;; Foreign functions provided by the Linux C library version 6,
+ ;; i.e. the GNU C library version 2.0.7.
+ ;; Bruno Haible 10.4.1998, 19.4.1998
+-;; Sam Steingold 2002-2008, 2011
++;; Sam Steingold 2002-2008, 2011, 2013, 2016-2017
+ 
+ ;; NB: quite a few functions here have more portable counterparts in POSIX
+ 
+@@ -686,9 +686,8 @@
+ (def-call-out system? (:arguments (null c-string))
+   (:return-type boolean) (:name "system"))
+ 
+-; You can uncomment this if your compiler sets __USE_GNU
+-; (def-call-out canonicalize_file_name (:arguments (name c-string))
+-;  (:return-type c-string :malloc-free))
++(def-call-out canonicalize_file_name (:arguments (name c-string))
++ (:return-type c-string :malloc-free))
+ 
+ (def-call-out realpath
+     (:arguments (name c-string)
+@@ -1040,9 +1039,8 @@
+ (def-call-out access (:arguments (name c-string) (type int))
+   (:return-type int))
+ 
+-; You can uncomment this if your compiler sets __USE_GNU
+-; (def-call-out euidaccess (:arguments (name c-string) (type int))
+-;   (:return-type int))
++(def-call-out euidaccess (:arguments (name c-string) (type int))
++  (:return-type int))
+ 
+ (defconstant SEEK_SET 0)
+ (defconstant SEEK_CUR 1)
+@@ -1093,9 +1091,8 @@
+ ;(def-call-out getcwd (:arguments (buf c-string :out) (size size_t)) ; ??
+ ;  (:return-type c-string))
+ 
+-; You can uncomment this if your compiler sets __USE_GNU
+-; (def-call-out get_current_dir_name (:arguments)
+-;   (:return-type c-string :malloc-free))
++(def-call-out get_current_dir_name (:arguments)
++  (:return-type c-string :malloc-free))
+ 
+ ;(def-call-out getwd (:arguments (buf c-string :out)) ; ??
+ ;  (:return-type c-string))
+@@ -1323,8 +1320,7 @@
+ ;    (:arguments (size int) (list (c-ptr (c-array gid_t ??)) :out)) ; ??
+ ;  (:return-type int))
+ 
+-; You can uncomment this if your compiler sets __USE_GNU
+-; (def-call-out group_member (:arguments (gid gid_t)) (:return-type boolean))
++(def-call-out group_member (:arguments (gid gid_t)) (:return-type boolean))
+ (def-call-out setuid (:arguments (uid uid_t)) (:return-type int))
+ (def-call-out setreuid (:arguments (ruid uid_t) (euid uid_t))
+   (:return-type int))
+@@ -1821,8 +1817,7 @@
+   (:return-type c-string :malloc-free))
+ (def-call-out ungetc (:arguments (c int) (fp FILE))
+   (:return-type int))
+-; You can uncomment this if your compiler sets __USE_GNU
+-; (def-call-out fcloseall (:arguments) (:return-type int))
++(def-call-out fcloseall (:arguments) (:return-type int))
+ (def-call-out fdopen (:arguments (fildes int) (mode c-string))
+   (:return-type c-pointer))
+ (def-call-out fileno (:arguments (fp FILE)) (:return-type int))
+@@ -1900,11 +1895,11 @@
+   (:return-type (c-ptr-null dirent)))
+ (def-call-out readdir64 (:arguments (dirp c-pointer))
+   (:return-type (c-ptr-null dirent64)))
+-(def-call-out readdir_r
++(def-call-out readdir_r                 ; deprecated
+     (:arguments (dirp c-pointer) (entry (c-ptr dirent) :out :alloca)
+                 (result (c-ptr (c-ptr dirent)) :out :alloca)) ; ??
+   (:return-type int))
+-(def-call-out readdir64_r
++(def-call-out readdir64_r               ; deprecated
+     (:arguments (dirp c-pointer) (entry (c-ptr dirent64) :out :alloca)
+                 (result (c-ptr (c-ptr dirent64)) :out :alloca)) ; ??
+   (:return-type int))
+diff -r -U3 clisp-2.49.90.orig/modules/bindings/glibc/test.tst clisp-2.49.90/modules/bindings/glibc/test.tst
+--- clisp-2.49.90.orig/modules/bindings/glibc/test.tst	2018-01-10 00:04:26.000000000 +0100
++++ clisp-2.49.90/modules/bindings/glibc/test.tst	2018-02-12 20:50:48.225769407 +0100
+@@ -14,6 +14,16 @@
+ (= linux:DT_DIR (linux:dirent64-d_type (show (linux:readdir64 *d*)))) T
+ (linux:closedir *d*) 0
+ 
++(stringp (show (linux:get-domain-name))) T
++(stringp (show (linux:get-host-name))) T
++
++;; usually __USE_GNU is defined, so this should work:
++(let* ((d (linux:get_current_dir_name))
++       (c (linux:canonicalize_file_name (concatenate 'string d "/."))))
++  (or (string= d c)
++      (list :cur-dir d :canonical c)))
++T
++
+ (defparameter *d* (show (linux:opendir "."))) *D*
+ (linux:dirent-d_name (show (linux:readdir *d*))) "."
+ (linux:dirent-d_name (show (linux:readdir *d*))) ".."
+diff -r -U3 clisp-2.49.90.orig/src/foreign1.lisp clisp-2.49.90/src/foreign1.lisp
+--- clisp-2.49.90.orig/src/foreign1.lisp	2018-01-10 00:04:26.000000000 +0100
++++ clisp-2.49.90/src/foreign1.lisp	2018-02-12 21:03:56.768736245 +0100
+@@ -805,14 +805,17 @@
+                 c-name (to-c-string c-name) (third variable) (first variable))
+         (when *foreign-guard* (format *coutput-stream* "# endif~%"))))
+     (dolist (function *function-list*)
+-      (let ((c-name (first function)))
+-        (when *foreign-guard*
+-          (format *coutput-stream* "# if defined(HAVE_~A)~%"
+-                  (string-upcase c-name)))
++      (let ((c-name (first function))
++            (guard (fourth function)))
++        (when guard
++          (format *coutput-stream* "# if ~A~%"
++                  (if (eq guard t)
++                      (format nil "defined(HAVE_~A)" (string-upcase c-name))
++                      guard)))
+         (format *coutput-stream*
+                 "  register_foreign_function((void*)&~A,~A,~D);~%"
+                 c-name (to-c-string c-name) (svref (second function) 3))
+-        (when *foreign-guard* (format *coutput-stream* "# endif~%"))))
++        (when guard (format *coutput-stream* "# endif~%"))))
+     (maphash (lambda (type fun-vec)
+                (declare (ignore type))
+                (let ((c-name (to-c-name (car fun-vec))))
+@@ -1083,7 +1086,7 @@
+ (defmacro DEF-CALL-OUT (&whole whole-form name &rest options)
+   (setq name (check-symbol name (first whole-form)))
+   (let* ((alist
+-          (parse-options options '(:name :arguments :return-type :language
++          (parse-options options '(:name :arguments :return-type :language :guard
+                                    :built-in :library :version :documentation)
+                          whole-form))
+          (def (gensym "DEF-CALL-OUT-"))
+@@ -1095,6 +1098,7 @@
+          (version (second (assoc :version alist)))
+          (c-name (foreign-name name (assoc :name alist)))
+          (built-in (second (assoc :built-in alist)))
++         (guard (get-assoc :guard alist '*foreign-guard*))
+          ;; Maximize sharing in .fas file, reuse options
+          ;; parse-c-function ignores unknown options, e.g. :name
+          (ctype `(PARSE-C-FUNCTION ',options ',whole-form)))
+@@ -1102,7 +1106,7 @@
+                   ',c-name ,ctype ',properties ,library ,version NIL)))
+        (EXT:COMPILER-LET ((,def ,ctype))
+          (EVAL-WHEN (COMPILE)
+-           (UNLESS ,LIBRARY (NOTE-C-FUN ',c-name ,def ',built-in)))
++           (UNLESS ,LIBRARY (NOTE-C-FUN ',c-name ,def ',built-in ,guard)))
+          (SYSTEM::EVAL-WHEN-COMPILE
+            (SYSTEM::C-DEFUN ',name (C-TYPE-TO-SIGNATURE ,ctype))))
+        (WHEN ,def                       ; found library function
+@@ -1110,10 +1114,10 @@
+          (SYSTEM::%PUTD ',name ,def))
+        ',name)))
+ 
+-(defun note-c-fun (c-name ctype built-in) ; not ABI, compile-time only
++(defun note-c-fun (c-name ctype built-in guard) ; not ABI, compile-time only
+   (when (system::prepare-coutput-file)
+     (prepare-module)
+-    (push (list c-name ctype built-in)
++    (push (list c-name ctype built-in guard)
+           *function-list*)))
+ 
+ (defun count-inarguments (arg-vector)

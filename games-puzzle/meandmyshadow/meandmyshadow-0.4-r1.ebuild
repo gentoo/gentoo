@@ -1,7 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit cmake-utils gnome2-utils
 
 DESCRIPTION="A puzzle/platform game with a player and its shadow"
@@ -13,18 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="opengl"
 
-DEPEND="media-libs/libsdl[sound,video,X]
-	media-libs/sdl-gfx
-	media-libs/sdl-ttf
-	media-libs/sdl-mixer[vorbis]
-	media-libs/sdl-image[png]
-	dev-libs/openssl:0=
-	net-misc/curl
+DEPEND="
 	app-arch/libarchive
+	dev-libs/openssl:0=
+	media-libs/libsdl[sound,video,X]
+	media-libs/sdl-gfx
+	media-libs/sdl-image[png]
+	media-libs/sdl-mixer[vorbis]
+	media-libs/sdl-ttf
+	net-misc/curl
 	x11-libs/libX11
 	opengl? ( virtual/opengl )
 "
 RDEPEND="${DEPEND}"
+
+DOCS=( AUTHORS ChangeLog README docs/{Controls,ThemeDescription}.txt )
 
 PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
@@ -36,18 +40,9 @@ src_configure() {
 		-DDATAROOTDIR="/usr/share"
 		-DICONDIR=/usr/share/icons
 		-DDESKTOPDIR=/usr/share/applications
-		$(cmake-utils_use opengl HARDWARE_ACCELERATION)
-		)
+		-DHARDWARE_ACCELERATION=$(usex opengl)
+	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-	dodoc AUTHORS ChangeLog README docs/{Controls,ThemeDescription}.txt
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

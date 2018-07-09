@@ -1,0 +1,23 @@
+--- a/meson.build	2018-06-25 16:41:00.000000000 +0200
++++ b/meson.build	2018-06-30 21:45:52.139755680 +0200
+@@ -2928,11 +2928,6 @@
+ # install_data('modprobe.d/systemd.conf',
+ #              install_dir : modprobedir)
+ #endif // 0
+-install_data('LICENSE.GPL2',
+-             'LICENSE.LGPL2.1',
+-             'NEWS',
+-             'README',
+-             'doc/CODING_STYLE',
+ #if 0 /// irrelevant for elogind
+ #              'doc/DISTRO_PORTING',
+ #              'doc/ENVIRONMENT.md',
+@@ -2941,8 +2936,6 @@
+ #              'doc/TRANSLATORS',
+ #              'doc/UIDS-GIDS.md',
+ #endif // 0
+-             'src/libelogind/sd-bus/GVARIANT-SERIALIZATION',
+-             install_dir : docdir)
+ 
+ #if 0 /// UNNEEDED by elogind
+ # meson.add_install_script('sh', '-c', mkdir_p.format(systemdstatedir))

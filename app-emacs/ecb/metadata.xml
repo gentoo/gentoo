@@ -32,6 +32,7 @@
   informational windows should be displayed where. ECB comes with a number of
   ready-made window layouts to choose from.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="sourceforge">ecb</remote-id>
 </upstream>

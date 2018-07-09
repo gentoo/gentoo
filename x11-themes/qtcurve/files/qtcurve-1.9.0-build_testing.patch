@@ -1,0 +1,44 @@
+From 237912b291dcc706fcc1d9b02a8398385d19f38f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 26 Jun 2018 18:03:06 +0200
+Subject: [PATCH] Switch from ENABLE_TEST to the ECM/CMake standard
+ BUILD_TESTING
+
+Summary:
+BUILD_TESTING is used throughout KDE projects as provided by
+CTest and/or KDECMakeSettings.
+
+Reviewers: yuyichao
+
+Reviewed By: yuyichao
+
+Differential Revision: https://phabricator.kde.org/D13741
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 70e21b3a..15f6b177 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,7 +52,7 @@ qtc_option(ENABLE_QT4 "Building Qt4 theme." On)
+ qtc_option(ENABLE_QT5 "Building Qt5 theme." On)
+ qtc_option(ENABLE_GTK2 "Building Gtk2 theme." On)
+ # option(ENABLE_GTK3 "Building Gtk3 theme." On)
+-option(ENABLE_TEST "Enable testing." On)
++option(BUILD_TESTING "Enable testing." On)
+ option(QTC_ENABLE_X11 "Enable X11" On)
+ option(QTC_INSTALL_PO "Install translation files." On)
+ 
+@@ -247,7 +247,7 @@ if(ENABLE_GTK2)
+     add_subdirectory(gtk2)
+ endif()
+ add_subdirectory(tools)
+-if(ENABLE_TEST)
++if(BUILD_TESTING)
+   enable_testing()
+   add_subdirectory(test)
+ endif()
+-- 
+2.18.0
+

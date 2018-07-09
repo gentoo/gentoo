@@ -1,9 +1,29 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Mikle Kolyada <zlogene@gentoo.org> (03 Jun 2018)
+# Not tested
+app-crypt/pinentry fltk
+dev-python/cssselect doc
+dev-vcs/subversion kwallet
+app-text/ghostscript-gpl cups
+# not really interested in supporting alternative
+# VCS for oberlays yet.
+app-portage/layman darcs mercurial
+
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan
+
+# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Upstream Git is switching to PCRE2 w/ JIT.
+# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
+dev-vcs/git pcre-jit
+
+# Lars Wendler <polynomial-c@gentoo.org> (17 Nov 2016)
+# jit not supported on ia64 (bug #600052).
+dev-libs/libpcre2 jit
 
 # Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
 # Not tested

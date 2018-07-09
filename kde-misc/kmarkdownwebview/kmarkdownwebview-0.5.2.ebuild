@@ -10,7 +10,7 @@ HOMEPAGE="https://frinring.wordpress.com/2017/09/14/kmarkdownwebview-0-1-0/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="!webkit? ( BSD ) LGPL-2.1+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="webkit"
 
 DEPEND="

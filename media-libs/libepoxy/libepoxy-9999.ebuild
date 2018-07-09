@@ -26,11 +26,12 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test +X"
 
+RDEPEND="media-libs/mesa[egl,${MULTILIB_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
-	media-libs/mesa[egl,${MULTILIB_USEDEP}]
+	${RDEPEND}
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
-	>=dev-util/meson-0.44.0"
-RDEPEND=""
+	>=dev-util/meson-0.44.0
+	virtual/pkgconfig"
 
 src_unpack() {
 	default

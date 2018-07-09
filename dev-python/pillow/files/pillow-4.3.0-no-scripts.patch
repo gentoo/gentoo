@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/562682
+
+--- a/setup.py
++++ b/setup.py
+@@ -779,7 +779,6 @@ try:
+           ext_modules=[Extension("PIL._imaging", ["_imaging.c"])],
+           include_package_data=True,
+           packages=find_packages(),
+-          scripts=glob.glob("Scripts/*.py"),
+           install_requires=['olefile'],
+           test_suite='nose.collector',
+           keywords=["Imaging", ],

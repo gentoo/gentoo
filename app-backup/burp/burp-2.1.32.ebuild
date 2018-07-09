@@ -6,12 +6,12 @@ EAPI=6
 inherit autotools systemd user versionator
 
 DESCRIPTION="Network backup and restore client and server for Unix and Windows"
-HOMEPAGE="http://burp.grke.org/"
+HOMEPAGE="https://burp.grke.org/"
 SRC_URI="https://github.com/grke/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="acl ipv6 libressl test xattr"
 
 CDEPEND="dev-libs/uthash

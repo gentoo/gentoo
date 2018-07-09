@@ -1,6 +1,40 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (07 Jul 2018)
+# Unkeyworded dependencies.
+dev-python/matplotlib doc
+net-libs/gnome-online-accounts gnome
+x11-libs/gksu gnome
+
+# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
+# dev-libs/xxhash not keyworded for arm64
+app-admin/rsyslog xxhash
+
+# Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
+# Needs dev-libs/libmaxminddb which isn't keyworded
+www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
+
+# Jan Vesely <jano.vesely@gmail.com> (15 June 2018)
+# Mesa clover only works on r600 or radeonsi GPUs. The corresponding
+# video_cards useflags are not available on arm
+media-libs/mesa opencl
+
+# Alex Bennee <alex@bennee.com> (31 May 2018)
+# bunch of dev-perl packages not yet keyworded
+# and the i3 ebuild currently has RESTRICT="test" due to upstream bug
+x11-wm/i3 test
+
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# app-text/pandoc not keyworded yet
+app-emulation/xen-tools doc
+dev-python/notebook doc
+
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# Require old gnome2 libraries, not keywording legacy on purpose
+<=app-editors/gvim-8.0.1699 gnome
+sys-devel/distcc gnome
+
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # media-libs/libaom not yet keyworded
 # net-libs/srt not yet keyworded
@@ -8,6 +42,7 @@
 # projectm not yet keyworded, bug #314969
 # net-misc/freerdp not yet keyworded
 media-video/vlc aom chromaprint microdns opencv projectm rdp srt
+>=media-video/vlc-3.0.3 chromecast
 
 # Mart Raudsepp <leio@gentoo.org> (13 May 2018)
 # Not bothering with otherwise p.masked old gcc for the
@@ -128,10 +163,8 @@ dev-libs/dbus-c++ ecore
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # USE=eds requires USE=gnome that is masked here.
-# USE=collada requires media-libs/opencollada.
-# USE=gltf requires media-libs/libgltf.
 # USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
-app-office/libreoffice collada eds gltf postgres
+app-office/libreoffice eds postgres
 
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # Requires mail-client/thunderbird* that is not keyworded here.
@@ -221,13 +254,6 @@ app-crypt/libsecret test
 # app-misc/dtach & dev-tcltk/tcllib are not keyworded, and tests are
 # restricted anyway, so no point in pursuing it right now.
 app-shells/bash-completion test
-
-# Alexis Ballier <aballier@gentoo.org> (27 Jun 2017)
-# qtwebkit:4 is old and doesnt build with gcc7, skip it
-dev-python/PyQt4 webkit
-dev-qt/designer:4 webkit
-dev-qt/qtdeclarative:4 webkit
-dev-python/pyside webkit
 
 # Alexis Ballier <aballier@gentoo.org> (21 Jun 2017)
 # Appends -mfpu=neon that doesnt work on arm64
@@ -453,10 +479,6 @@ media-libs/phonon vlc
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
 
-# Michael Sterrett <mr_bones_@gentoo.org> (04 Mar 2012)
-# arm is missing keywords for >=dev-libs/json-glib-0.12
-app-admin/syslog-ng json
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
 # it's masked in base profile and unmasked here (bug #396313).
@@ -488,11 +510,11 @@ sys-auth/polkit kde
 app-text/asciidoc test
 
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-frameworks/kdelibs is not stable for arm
+# kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
 dev-vcs/subversion kwallet
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)

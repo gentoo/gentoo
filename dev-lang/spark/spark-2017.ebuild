@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,8 +20,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="dev-lang/gnat-gpl:6.3.0
-	>=dev-ada/gnatcoll-2017[gnat_2017,projects]
-	|| ( dev-ada/gnatcoll[shared] dev-ada/gnatcoll[static] )
+	>=dev-ada/gnatcoll-2017[gnat_2017,projects,shared]
 	sci-mathematics/alt-ergo
 	sci-mathematics/why3-for-spark"
 DEPEND="${RDEPEND}
@@ -43,7 +42,8 @@ src_prepare() {
 }
 
 src_compile() {
-	emake gnat2why gnatprove
+	emake GPRARGS="-XLIBRARY_TYPE=relocatable" gnat2why
+	emake PROD="-XLIBRARY_TYPE=relocatable" gnatprove
 }
 
 src_install() {

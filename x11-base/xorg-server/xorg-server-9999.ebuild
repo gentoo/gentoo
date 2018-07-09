@@ -69,7 +69,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-10.3.4-r1
 	)
-	udev? ( >=virtual/udev-150 )
+	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0

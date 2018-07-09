@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit git-2 autotools flag-o-matic
+inherit autotools flag-o-matic git-r3
 
 DESCRIPTION="OsmocomBB MS-side GSM Protocol stack (L1, L2, L3) excluding firmware"
 HOMEPAGE="http://bb.osmocom.org"

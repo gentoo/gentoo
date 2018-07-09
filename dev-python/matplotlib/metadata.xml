@@ -19,7 +19,6 @@
 		<flag name="excel">Pull <pkg>dev-python/xlwt</pkg> for the exceltools toolkit</flag>
 		<flag name="gtk2">Enable <pkg>x11-libs/gtk+</pkg>:2 support</flag>
 		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
-		<flag name="pyside">Qt support via <pkg>dev-python/pyside</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="pypi">matplotlib</remote-id>

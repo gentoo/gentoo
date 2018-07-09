@@ -6,17 +6,17 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.1.8
-PATCH_BASE="perl-5.27.7-patches-${PATCH_VER}"
+CROSS_VER=1.1.9
+PATCH_BASE="perl-5.28.0-patches-${PATCH_VER}"
 
-DIST_AUTHOR=ABIGAIL
+DIST_AUTHOR=XSAWYERX
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
 # BIN_OLDVERSEN is contains only C-ABI-intercompatible versions
 PERL_BIN_OLDVERSEN=""
 if [[ "${PV##*.}" == "9999" ]]; then
-	DIST_VERSION=5.27.8
+	DIST_VERSION=5.28.0
 else
 	DIST_VERSION="${PV/_rc/-RC}"
 fi
@@ -56,7 +56,7 @@ IUSE="berkdb debug doc gdbm ithreads"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
-	gdbm? ( >=sys-libs/gdbm-1.8.3 )
+	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
 	sys-libs/zlib
 "
@@ -75,20 +75,20 @@ PDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
-	src_remove_dual      perl-core/Archive-Tar        2.260.0       ptar ptardiff ptargrep
+	src_remove_dual      perl-core/Archive-Tar        2.280.0       ptar ptardiff ptargrep
 	src_remove_dual      perl-core/CPAN               2.200.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         6.10.0        shasum
-	src_remove_dual      perl-core/Encode             2.940.0       enc2xs piconv
-	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.300.0       instmodsh
-	src_remove_dual      perl-core/ExtUtils-ParseXS   3.360.0       xsubpp
+	src_remove_dual      perl-core/Encode             2.970.0       enc2xs piconv
+	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.340.0       instmodsh
+	src_remove_dual      perl-core/ExtUtils-ParseXS   3.390.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.970.10      json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.801.200 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.806.220 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
-	src_remove_dual      perl-core/Test-Harness       3.390.0       prove
-	src_remove_dual      perl-core/podlators          4.100.0        pod2man pod2text
-	src_remove_dual_man  perl-core/podlators          4.100.0        /usr/share/man/man1/perlpodstyle.1
+	src_remove_dual      perl-core/Test-Harness       3.420.0       prove
+	src_remove_dual      perl-core/podlators          4.100.0       pod2man pod2text
+	src_remove_dual_man  perl-core/podlators          4.100.0       /usr/share/man/man1/perlpodstyle.1
 }
 
 check_rebuild() {
@@ -306,6 +306,13 @@ src_prepare_dynamic() {
 src_prepare() {
 	local patch
 	EPATCH_OPTS+=" -p1"
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# do NOT mess with nsl, on Solaris this is always necessary,
+		# when -lsocket is used e.g. to get h_errno
+		sed -i '/gentoo\/no-nsl\.patch/d' "${WORKDIR}/patches/series" || die "Can't exclude libnsl patch"
+	fi
+
 	einfo "Applying patches from ${PATCH_BASE} ..."
 	while read patch ; do
 		EPATCH_SINGLE_MSG="  ${patch} ..."
@@ -321,6 +328,11 @@ src_prepare() {
 	if use gdbm; then
 		sed -i "s:INC => .*:INC => \"-I${EROOT}usr/include/gdbm\":g" \
 			ext/NDBM_File/Makefile.PL || die
+	fi
+
+	# Use errno.h from prefix rather than from host system, bug #645804
+	if use prefix && ! use prefix-guest; then
+		sed -i "/my..sysroot/s:'':'${EPREFIX}':" ext/Errno/Errno_pm.PL || die
 	fi
 
 	default
@@ -357,6 +369,9 @@ src_configure() {
 
 	# Fixes bug #143895 on gcc-4.1.1
 	filter-flags "-fsched2-use-superblocks"
+
+	# Generic LTO broken since 5.28, triggers EUMM failures
+	filter-flags "-flto"
 
 	use sparc && myconf -Ud_longdbl
 
@@ -537,6 +552,8 @@ src_configure() {
 
 src_test() {
 	export NO_GENTOO_NETWORK_TESTS=1;
+	export GENTOO_ASSUME_SANDBOXED="${GENTOO_ASSUME_SANDBOXED:-1}"
+	export GENTOO_NO_PORTING_TESTS="${GENTOO_NO_PORTING_TESTS:-1}"
 	if [[ ${EUID} == 0 ]] ; then
 		ewarn "Test fails with a sandbox error (#328793) if run as root. Skipping tests..."
 		return 0

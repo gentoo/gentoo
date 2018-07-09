@@ -16,7 +16,6 @@
 	<flag name="launch">Install weston-launch utility</flag>
 	<flag name="rdp">Enable Remote Desktop Protocol compositor support</flag>
 	<flag name="resize-optimization">Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi</flag>
-	<flag name="rpi">Raspberry Pi GPU support</flag>
 	<flag name="screen-sharing">Enable screen-sharing through RDP</flag>
 	<flag name="unwind">Enable libunwind usage for backtraces</flag>
 	<flag name="wayland-compositor">Enable Wayland compositor support</flag>

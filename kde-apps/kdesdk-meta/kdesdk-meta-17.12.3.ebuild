@@ -22,7 +22,6 @@ RDEPEND="
 	$(add_kdeapps_dep kross-interpreters)
 	$(add_kdeapps_dep libkomparediff2)
 	$(add_kdeapps_dep lokalize)
-	$(add_kdeapps_dep okteta)
 	$(add_kdeapps_dep poxml)
 	$(add_kdeapps_dep umbrello)
 	cvs? ( $(add_kdeapps_dep cervisia) )

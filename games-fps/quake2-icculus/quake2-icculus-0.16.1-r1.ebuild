@@ -29,7 +29,7 @@ RDEPEND="${UIDEPEND}
 	cdinstall? ( games-fps/quake2-data )
 	demo? ( games-fps/quake2-demodata )"
 DEPEND="${UIDEPEND}
-	X? ( x11-proto/xf86dgaproto )
+	X? ( x11-base/xorg-proto )
 	rogue? ( || ( sys-freebsd/freebsd-ubin app-arch/sharutils ) )
 	xatrix? ( || ( sys-freebsd/freebsd-ubin app-arch/sharutils ) )"
 

@@ -12,12 +12,11 @@ SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT=0
 IUSE="gles2 jack libav libressl pulseaudio v4l vaapi vdpau"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 HWDEC_DEPEND="
 	libav? ( media-video/libav:0=[vaapi?,vdpau?] )
 	!libav? ( media-video/ffmpeg:0=[vaapi?,vdpau?] )
-	x11-libs/libva:=
 	x11-libs/libvdpau
 "
 
@@ -33,6 +32,7 @@ COMMON_DEPEND="
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/libdrm:=
+	x11-libs/libva:=
 	x11-libs/pango:=[X]
 	jack? (
 		media-sound/jack-audio-connection-kit

@@ -1,10 +1,21 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
+# Requires unported sys-libs/netbsd-csu
+sys-devel/clang-runtime crt
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
+# sys-devel/llvmgold not yet keyworded
+sys-devel/llvm gold
+
+# Tomáš Mózes <hydrapolic@gmail.com> (05 Jun 2018)
+# Unkeyworded dependencies.
+app-admin/syslog-ng mongodb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
 # media-libs/libaom not yet keyworded
-# net-libs/libmicrodns not yet keyworded for ppc, bug #653800
-media-video/vlc aom microdns
+media-video/vlc aom
 
 # Anthony G. Basile <blueness@gentoo.org> (14 Apr 2018)
 # net-vpn/tor, tests are broken on ppc/ppc64, bug #653098
@@ -105,16 +116,11 @@ dev-python/PyQt5 bluetooth location webengine
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
-kde-frameworks/kdelibs handbook policykit
 net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-python/PyQt5
-net-print/hplip qt5
 
 # Johannes Huber <johu@gentoo.org> (26 Mar 2016)
 # Unkeyworded dependency x11-libs/snorenotify
@@ -204,7 +210,7 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (14 Aug 2014)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib mongodb nbconvert notebook qt4 test
+dev-python/ipython doc matplotlib mongodb nbconvert notebook test
 
 # Anthony G. Basile <blueness@gentoo.org> (12 Aug 2014)
 # Ultimately pulls in nodejs which is broken.

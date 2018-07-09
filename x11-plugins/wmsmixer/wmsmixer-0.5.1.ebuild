@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils
 IUSE=""
 DESCRIPTION="fork of wmmixer adding scrollwheel support and other features"
-HOMEPAGE="http://www.dockapps.net/wmsmixer"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmsmixer"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

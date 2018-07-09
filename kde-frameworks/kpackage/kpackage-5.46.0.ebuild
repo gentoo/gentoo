@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Framework to install and load packages of non binary content"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="man"
 
 RDEPEND="
@@ -29,6 +29,6 @@ src_configure() {
 
 src_test() {
 	#bug 650214
-	local myctestargs=( -E "(kdatecomboboxtest)" )
+	local myctestargs=( -E "(plasma-plasmoidpackagetest)" )
 	kde5_src_test
 }

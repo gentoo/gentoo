@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="GPL Electronic Design Automation (gEDA):gaf core package"
-HOMEPAGE="http://www.gpleda.org/"
+HOMEPAGE="http://wiki.geda-project.org/geda:gaf"
 SRC_URI="http://ftp.geda-project.org/${MY_PN}/unstable/v$(get_version_component_range 1-2)/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

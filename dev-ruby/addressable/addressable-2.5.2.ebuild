@@ -19,7 +19,7 @@ HOMEPAGE="https://rubygems.org/gems/addressable https://github.com/sporkmonger/a
 LICENSE="Apache-2.0"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="doc test"
 
 ruby_add_rdepend ">=dev-ruby/public_suffix-2.0.2:* <dev-ruby/public_suffix-4:*"

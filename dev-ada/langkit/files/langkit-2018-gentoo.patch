@@ -1,0 +1,21 @@
+--- a/langkit/templates/project_file.mako	2017-07-11 14:19:12.841221846 +0200
++++ b/langkit/templates/project_file.mako	2017-07-11 14:12:39.104981170 +0200
+@@ -111,6 +111,7 @@
+                   --  ... and this prevents OOM on other platforms
+             end case;
+       end case;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Binder is
+--- a/langkit/compile_context.py	2018-07-04 19:17:08.329346507 +0200
++++ b/langkit/compile_context.py	2018-07-04 19:17:57.276615724 +0200
+@@ -1684,7 +1684,7 @@
+             generate_lexer
+         ):
+             quex_py_file = path.join(os.environ["QUEX_PATH"], "quex-exe.py")
+-            subprocess.check_call([sys.executable, quex_py_file, "-i",
++            subprocess.check_call(["quex", "-i",
+                                    quex_file,
+                                    "-o", "quex_lexer",
+                                    "--buffer-element-size", "4",

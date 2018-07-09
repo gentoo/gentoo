@@ -19,7 +19,7 @@ DESCRIPTION="A Ruby interface to termios"
 HOMEPAGE="http://arika.org/ruby/termios"
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86 ~x86-macos"
+KEYWORDS="amd64 ~hppa ~mips ~ppc x86 ~x86-macos"
 IUSE=""
 
 each_ruby_configure() {

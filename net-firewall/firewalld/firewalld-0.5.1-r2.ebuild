@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="gui"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}
 	dev-libs/glib:2
 	>=dev-util/intltool-0.35
 	sys-devel/gettext"
+
+RESTRICT="test" # bug 650760
 
 PATCHES=( "${FILESDIR}"/${P}-errorcodes{1,2}.patch )
 

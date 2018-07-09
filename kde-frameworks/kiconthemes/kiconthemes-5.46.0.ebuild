@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for icon theming and configuration"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 RDEPEND="

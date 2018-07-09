@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,15 +14,21 @@ LICENSE="MIT"
 KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	>=app-vim/vim-misc-1.17.6
 	dev-util/ctags"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
-S=${WORKDIR}/vim-${P}
+S="${WORKDIR}/vim-${P}"
+
+PATCHES=(
+    "${FILESDIR}/${P}-fix-ctags-detection.patch"
+)
 
 src_prepare() {
+	epatch "${PATCHES[@]}"
 	# remove unnecessary files
 	rm addon-info.json INSTALL.md README.md || die
 }

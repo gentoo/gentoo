@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# media-sound/mumble is masked/not keyworded at this point, bug #656826.
+mumble
+
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
 # Bug #606132.
@@ -12,10 +16,6 @@ video_cards_tdfx
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # ... since audacious is being last-rited ... bug 632513
 audacious
-
-# Patrick Lauer <patrick@gentoo.org> (22 Oct 2017)
-# postgres-9.2 is EOL and masked
-postgres_targets_postgres9_2
 
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unkeyworded on most arches, unmasked in supported arch profiles.

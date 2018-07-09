@@ -207,7 +207,9 @@ gnome2_gconf_uninstall() {
 # @FUNCTION: gnome2_icon_savelist
 # @DESCRIPTION:
 # Find the icons that are about to be installed and save their location
-# in the GNOME2_ECLASS_ICONS environment variable.
+# in the GNOME2_ECLASS_ICONS environment variable. This is only
+# necessary for eclass implementations that call
+# gnome2_icon_cache_update conditionally.
 # This function should be called from pkg_preinst.
 gnome2_icon_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
@@ -218,8 +220,7 @@ gnome2_icon_savelist() {
 
 # @FUNCTION: gnome2_icon_cache_update
 # @DESCRIPTION:
-# Updates Gtk+ icon cache files under /usr/share/icons if the current ebuild
-# have installed anything under that location.
+# Updates Gtk+ icon cache files under /usr/share/icons.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_icon_cache_update() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
@@ -358,7 +359,8 @@ gnome2_scrollkeeper_update() {
 # @FUNCTION: gnome2_schemas_savelist
 # @DESCRIPTION:
 # Find if there is any GSettings schema to install and save the list in
-# GNOME2_ECLASS_GLIB_SCHEMAS variable.
+# GNOME2_ECLASS_GLIB_SCHEMAS variable. This is only necessary for eclass
+# implementations that call gnome2_schemas_update conditionally.
 # This function should be called from pkg_preinst.
 gnome2_schemas_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
@@ -370,7 +372,7 @@ gnome2_schemas_savelist() {
 # @FUNCTION: gnome2_schemas_update
 # @USAGE: gnome2_schemas_update
 # @DESCRIPTION:
-# Updates GSettings schemas if GNOME2_ECLASS_GLIB_SCHEMAS has some.
+# Updates GSettings schemas.
 # This function should be called from pkg_postinst and pkg_postrm.
 gnome2_schemas_update() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"

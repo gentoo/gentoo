@@ -4,8 +4,7 @@
 EAPI=0
 
 DESCRIPTION="GTK+2 themes which copy and improve the look of XP Luna"
-HOMEPAGE="https://art.gnome.org/themes/gtk2/1058"
-#SRC_URI="https://art.gnome.org/download/themes/gtk2/1058/GTK2-EXperience.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20130730053042/https://art.gnome.org/themes/gtk2/1058"
 SRC_URI="http://freshmeat.net/redir/${PN}/50795/url_tgz/${PN}-gtk-${PV}.tar.gz"
 
 KEYWORDS="amd64 ~ppc sparc x86"

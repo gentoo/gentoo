@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ~ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd"
 fi
 
 DESCRIPTION="HTTP/2 C Library"
@@ -23,8 +23,8 @@ SLOT="0/1.14" # <C++>.<C> SONAMEs
 IUSE="cxx debug hpack-tools jemalloc libressl static-libs test +threads utils xml"
 
 SSL_DEPEND="
-	!libressl? ( >=dev-libs/openssl-1.0.2:0[-bindist,${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	!libressl? ( >=dev-libs/openssl-1.0.2:0=[-bindist,${MULTILIB_USEDEP}] )
+	libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	cxx? (

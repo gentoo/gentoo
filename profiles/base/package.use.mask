@@ -7,13 +7,46 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
+# Dependency app-crypt/jitterentropy is keyworded for
+# only a subset of the archs rng-tools supports
+sys-apps/rng-tools jitterentropy
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
+# Qt4 is dead and going away. Bug #638260
+sci-libs/ViSP qt4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
+# dev-python/PyQt4 and dev-python/pyside are dead and going away.
+dev-python/pandas X
+media-sound/pulseaudio qt4
+media-video/syncplay gui
+net-wireless/gnuradio qt4
+
+# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
+# dev-libs/DirectFB is being removed (#606194)
+media-libs/libsdl2 fusionsound
+media-libs/xine-lib fusionsound
+www-plugins/gnash directfb
+
+# Michał Górny <mgorny@gentoo.org> (13 Jun 2018)
+# Requires app-arch/snappy[static-libs] that is no longer available.
+# Bugs #651604, #651606.
+app-emulation/qemu static
+<dev-libs/leveldb-1.20 static-libs
+sys-block/fio static
+sys-cluster/ceph static-libs
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Jun 2018)
+# Qt 4 not available.
+app-i18n/fcitx:4 qt4
+app-i18n/scim qt4
+app-i18n/scim-bridge qt4
+app-i18n/uim qt4
+
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl
-
-# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
-# Depends on obsolete dev-libs/sni-qt and dead Qt4.
-kde-plasma/plasma-desktop qt4
 
 # Mike Gilbert <floppym@gentoo.org> (01 May 2018)
 # Requires >=media-video/ffmpeg-4 (bug 654208).
@@ -93,13 +126,6 @@ dev-db/mariadb-galera client-libs
 dev-db/mysql client-libs
 dev-db/percona-server client-libs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2018)
-# Depends on obsolete media-libs/phonon[qt4]
-dev-qt/designer:4 phonon
-dev-qt/qtdemo:4 phonon
-dev-python/PyQt4 phonon
-dev-python/pyside:0 phonon
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2 Feb 2018)
 # This feature is not ready yet, see bug 146882 comment 26
 sys-libs/glibc compile-locales
@@ -136,16 +162,6 @@ media-libs/freeverb3 jack
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
 # USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
 sci-physics/root qt4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
-# Depends on masked dev-qt/qtwebkit:4, bug #620684
-dev-qt/assistant:4 webkit
-dev-qt/designer:4 webkit
-dev-qt/qt-meta:4 webkit
-dev-qt/qtdeclarative:4 webkit
-dev-qt/qtdemo:4 webkit
-dev-python/PyQt4 webkit
-dev-python/pyside:0 webkit
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)

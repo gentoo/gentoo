@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils
 MY_P="EasyRSA-${PV}"
 
 DESCRIPTION="Small RSA key management package, based on OpenSSL"
-HOMEPAGE="http://openvpn.net/"
+HOMEPAGE="https://openvpn.net/"
 SRC_URI="https://github.com/OpenVPN/easy-rsa/releases/download/${PV}/${MY_P}.tgz"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@ EAPI="5"
 
 JAVA_PKG_IUSE="source"
 
-inherit eutils fdo-mime java-pkg-2 java-ant-2 versionator
+inherit eutils java-pkg-2 java-ant-2 versionator xdg-utils
 
 MY_PV=$(replace_all_version_separators "")
 MY_SRC="Vuze_${MY_PV}"
@@ -128,9 +128,9 @@ pkg_postinst() {
 	elog "rather than the startup script.  You can enable the console UI by"
 	elog "editing this config file."
 	echo
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

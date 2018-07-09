@@ -12,7 +12,7 @@ SRC_URI="https://github.com/KhronosGroup/SPIRV-Headers/archive/${EGIT_COMMIT}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-Get-rid-of-custom-target.patch )
 

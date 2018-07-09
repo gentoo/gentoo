@@ -20,7 +20,6 @@ RDEPEND="dev-libs/confuse:=
 	media-libs/alsa-lib
 	pulseaudio? ( media-sound/pulseaudio )"
 DEPEND="${RDEPEND}
-	app-text/asciidoc
 	virtual/pkgconfig"
 
 src_prepare() {

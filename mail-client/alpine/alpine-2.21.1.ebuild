@@ -11,7 +11,7 @@ SRC_URI="http://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ~ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND="virtual/pam

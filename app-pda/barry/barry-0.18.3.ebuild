@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,17 +11,16 @@ SRC_URI="mirror://sourceforge/barry/${P}.tar.bz2"
 LICENSE="CC-BY-SA-3.0 GPL-2" #See logo/README for CCPL
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="boost desktop doc gui nls static-libs"
+IUSE="boost doc gui nls static-libs"
 
 RDEPEND=">=dev-cpp/libxmlpp-2.6:2.6
-	>=dev-libs/glib-2
+	dev-libs/glib:2
 	>=dev-libs/libtar-1.2.11-r2
 	>=media-libs/libsdl-1.2
 	>=sys-fs/fuse-2.5:=
 	sys-libs/zlib
 	virtual/libusb:1
 	boost? ( >=dev-libs/boost-1.33 )
-	desktop? ( >=net-libs/libgcal-0.9.6 )
 	gui? (
 		dev-cpp/glibmm:2
 		dev-cpp/gtkmm:2.4
@@ -49,7 +48,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable boost) \
 		$(use_enable gui) \
-		$(use_enable desktop) \
+		--disable-desktop \
 		--disable-rpath
 }
 
@@ -86,7 +85,6 @@ src_install() {
 	dobashcomp "${S}"/bash/btool "${S}"/bash/bjavaloader
 
 	newicon -s scalable "${S}"/logo/${PN}_logo_icon.svg ${PN}.svg
-	use desktop && domenu "${S}"/menu/barrydesktop.desktop
 	use gui && domenu "${S}"/menu/barrybackup.desktop
 
 	prune_libtool_files
@@ -98,14 +96,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-
-	elog "Barry requires you to be a member of the \"usb\" group."
-	ewarn
-	ewarn "Barry and the in-kernel module 'BERRY_CHARGE' are incompatible."
-	ewarn
-	ewarn "Kernel-based USB suspending can discharge your blackberry."
-	ewarn "Use at least kernel 2.6.22 and/or disable CONFIG_USB_SUSPEND."
-	ewarn
 }
 
 pkg_postrm() {

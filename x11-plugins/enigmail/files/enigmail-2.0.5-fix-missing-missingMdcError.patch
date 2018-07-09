@@ -1,0 +1,30 @@
+https://gitlab.com/enigmail/enigmail/commit/f196a31a9e56b8a0bd7b4ebe9af08f6e78d78e2d
+
+From 94fb482e3463e756d76f9309cdc2fb7560822eb0 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Mon, 21 May 2018 15:55:03 -0400
+Subject: [PATCH] Use correct mdcError string
+
+Without this change, the build process fails with:
+
+MISSING PROPERTY: missingMdcError
+---
+ package/errorHandling.jsm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package/errorHandling.jsm b/package/errorHandling.jsm
+index 8173fa72..bc8bdcb3 100644
+--- a/package/errorHandling.jsm
++++ b/package/errorHandling.jsm
+@@ -309,7 +309,7 @@ function decryptionInfo(c) {
+       c.statusFlags |= EnigmailConstants.DECRYPTION_FAILED; // be sure to fail
+       c.flag = EnigmailConstants.MISSING_MDC;
+       EnigmailLog.DEBUG("errorHandling.jsm: missing MDC!\n");
+-      c.retStatusObj.statusMsg += EnigmailLocale.getString("missingMdcError") + "\n";
++      c.retStatusObj.statusMsg += EnigmailLocale.getString("mdcError") + "\n";
+     }
+   }
+ }
+-- 
+2.16.3
+

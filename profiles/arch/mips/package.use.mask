@@ -99,14 +99,6 @@ dev-libs/efl physics
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
 
-# Davide Pesavento <pesa@gentoo.org> (02 Jun 2014)
-# dev-qt/qtdeclarative:4 is not keyworded on mips
-dev-qt/designer:4 declarative
-
-# Davide Pesavento <pesa@gentoo.org> (02 Jun 2014)
-# connman and networkmanager are not keyworded on mips
-dev-qt/qtbearer:4 connman networkmanager
-
 # Sergey Popov <pinkbyte@gentoo.org> (02 Feb 2014)
 # media-gfx/nvidia-texture-tools is not keyworded on mips
 media-libs/devil	nvtt

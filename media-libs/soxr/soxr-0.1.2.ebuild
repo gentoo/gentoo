@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,9 +21,9 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
 DOCS=( "README" "TODO" "NEWS" "AUTHORS" )
 PATCHES=(
-	"${FILESDIR}/nodoc.patch"
+	"${FILESDIR}/${PN}-0.1.1-nodoc.patch"
 	"${FILESDIR}/noexamples.patch"
-	)
+)
 
 src_install() {
 	cmake-multilib_src_install

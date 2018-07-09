@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20180510"
+MY_RELEASEDATE="20180524"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
@@ -116,7 +116,7 @@ multilib_src_install() {
 pkg_postinst() {
 	# Migrate the SELinux semanage configuration store if not done already
 	local selinuxtype=$(awk -F'=' '/SELINUXTYPE=/ {print $2}' "${EROOT}"/etc/selinux/config 2>/dev/null)
-	if [ -n "${selinuxtype}" ] && [ ! -d "${EROOT}"/var/lib/selinux/${mcs}/active ] ; then
+	if [ -n "${selinuxtype}" ] && [ ! -d "${EROOT}"/var/lib/selinux/${selinuxtype}/active ] ; then
 		ewarn "Since the 2.4 SELinux userspace, the policy module store is moved"
 		ewarn "from /etc/selinux to /var/lib/selinux. The migration will be run now."
 		ewarn "If there are any issues, it can be done manually by running:"

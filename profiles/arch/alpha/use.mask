@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
+# Andrey Utkin <andrey_utkin@gentoo.org> (13 Jun 2018)
+# No ACPI support on alpha. Bug #657332
+acpi
+
 # Tobias Klausmann <klausman@gentoo.org> (03 March 2017)
 # There is no luajit support on alpha. Bugs #554376, #608322.
 luajit

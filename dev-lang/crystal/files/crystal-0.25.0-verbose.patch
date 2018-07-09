@@ -1,0 +1,9 @@
+diff --git a/Makefile b/Makefile
+index 63a9687..995299f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,3 +29,3 @@ SOURCES := $(shell find src -name '*.cr')
+ SPEC_SOURCES := $(shell find spec -name '*.cr')
+-override FLAGS += $(if $(release),--release )$(if $(stats),--stats )$(if $(progress),--progress )$(if $(threads),--threads $(threads) )$(if $(debug),-d )$(if $(static),--static )$(if $(LDFLAGS),--link-flags="$(LDFLAGS)" )
++override FLAGS += $(if $(release),--release )$(if $(stats),--stats )$(if $(progress),--progress )$(if $(threads),--threads $(threads) )$(if $(debug),-d )$(if $(static),--static )$(if $(LDFLAGS),--link-flags="$(LDFLAGS)" )$(if $(verbose),--verbose )
+ SPEC_FLAGS := $(if $(verbose),-v )$(if $(junit_output),--junit_output $(junit_output) )

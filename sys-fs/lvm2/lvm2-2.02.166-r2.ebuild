@@ -11,7 +11,7 @@ SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="readline static static-libs systemd clvm cman corosync lvm1 lvm2create_initrd openais sanlock selinux +udev +thin device-mapper-only"
 REQUIRED_USE="device-mapper-only? ( !clvm !cman !corosync !lvm1 !lvm2create_initrd !openais !sanlock !thin )
 	systemd? ( udev )
@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.02.139-dynamic-static-ldflags.patch #332905
 	"${FILESDIR}"/${PN}-2.02.129-static-pkgconfig-libs.patch #370217, #439414 + blkid
 	"${FILESDIR}"/${PN}-2.02.130-pthread-pkgconfig.patch #492450
+	"${FILESDIR}"/${PN}-2.02.166-HPPA-no-O_DIRECT.patch #657446
 	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
 )
 

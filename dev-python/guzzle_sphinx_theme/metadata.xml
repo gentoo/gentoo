@@ -5,6 +5,7 @@
 		<email>andrey_utkin@gentoo.org</email>
 		<name>Andrey Utkin</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">guzzle_sphinx_theme</remote-id>
 		<remote-id type="github">guzzle/guzzle_sphinx_theme</remote-id>

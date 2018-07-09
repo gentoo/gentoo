@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 
-HOMEPAGE="http://mycli.net"
+HOMEPAGE="https://www.mycli.net"
 SRC_URI="https://github.com/dbcli/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD MIT"
 SLOT="0"

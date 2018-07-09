@@ -11,7 +11,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 
 IUSE="botan debug doc examples gcrypt gpg libressl logger nss pkcs11 sasl softstore +ssl test"
 
@@ -33,9 +33,11 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	dev-qt/qtnetwork:5
 	doc? ( app-doc/doxygen )
-	test? ( dev-qt/qttest:5 )
+	test? (
+		dev-qt/qtnetwork:5
+		dev-qt/qttest:5
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	!app-crypt/qca-cyrus-sasl
@@ -48,6 +50,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-disable-pgp-test.patch"
 	"${FILESDIR}/${P}-c++11.patch"
+	"${FILESDIR}/${P}-deps.patch"
 )
 
 qca_plugin_use() {
@@ -82,7 +85,7 @@ src_install() {
 
 	if use doc; then
 		pushd "${BUILD_DIR}" >/dev/null || die
-		doxygen Doxyfile.in || die
+		doxygen Doxyfile || die
 		dodoc -r apidocs/html
 		popd >/dev/null || die
 	fi

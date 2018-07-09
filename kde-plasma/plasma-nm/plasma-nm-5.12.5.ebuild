@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="KDE Plasma applet for NetworkManager"
 LICENSE="GPL-2 LGPL-2.1"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="modemmanager openconnect teamd"
 
 DEPEND="
@@ -56,7 +56,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package modemmanager ModemManager)
+		-DDISABLE_MODEMMANAGER_SUPPORT=$(usex !modemmanager)
 		$(cmake-utils_use_find_package modemmanager KF5ModemManagerQt)
 		$(cmake-utils_use_find_package openconnect OpenConnect)
 	)

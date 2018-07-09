@@ -1,11 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit git-r3
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
+EGIT_BRANCH="master"
 DESCRIPTION="Gentoo Package Manager Specification (draft)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
 
@@ -13,7 +14,11 @@ LICENSE="CC-BY-SA-3.0"
 SLOT="live"
 IUSE="html twoside"
 
-DEPEND="dev-tex/leaflet
+# texlive-bibtexextra: plainurl.bst
+# texlive-latexextra: chngcntr, isodate, marginnote, paralist, tocbibind
+# texlive-mathscience: algorithm, algorithmic
+# leaflet used by eapi-cheatsheet
+BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex

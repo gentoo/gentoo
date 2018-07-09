@@ -17,7 +17,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> net-ssh-git-${P
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 IUSE="sodium test"
 
 ruby_add_rdepend "virtual/ruby-ssl sodium? ( dev-ruby/rbnacl:4 dev-ruby/bcrypt_pbkdf )"
@@ -26,6 +26,11 @@ ruby_add_bdepend "test? ( dev-ruby/test-unit:2 >=dev-ruby/mocha-0.13 )"
 all_ruby_prepare() {
 	# Don't use a ruby-bundled version of libsodium
 	sed -i -e '/rbnacl\/libsodium/ s:^:#:' lib/net/ssh/authentication/ed25519.rb || die
+
+	# Don' try to use libsodium-related tests with USE=-sodium
+	if ! use sodium ; then
+		rm -f test/authentication/test_ed25519.rb
+	fi
 
 	# Avoid bundler dependency
 	sed -i -e '/\(bundler\|:release\)/ s:^:#:' Rakefile || die

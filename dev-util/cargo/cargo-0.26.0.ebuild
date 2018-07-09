@@ -151,6 +151,11 @@ SRC_URI="https://github.com/rust-lang/cargo/archive/${PV}.tar.gz -> ${P}.tar.gz
 	amd64? (
 		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-x86_64-unknown-linux-gnu.tar.gz
 	)
+	arm? (
+		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-arm-unknown-linux-gnueabi.tar.gz
+		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-arm-unknown-linux-gnueabihf.tar.gz
+		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-armv7-unknown-linux-gnueabihf.tar.gz
+	)
 	arm64? (
 		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-aarch64-unknown-linux-gnu.tar.gz
 	)"
@@ -168,6 +173,12 @@ elif [[ ${ARCH} = "x86" ]]; then
 	TRIPLE="i686-unknown-linux-gnu"
 elif [[ ${ARCH} = "arm64" ]]; then
 	TRIPLE="aarch64-unknown-linux-gnu"
+elif [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv6* ]]; then
+	TRIPLE="arm-unknown-linux-gnueabi"
+elif [[ ${CHOST} == armv6*h* ]]; then
+	TRIPLE="arm-unknown-linux-gnueabihf"
+elif [[ ${CHOST} == armv7*h* ]]; then
+	TRIPLE="armv7-unknown-linux-gnueabihf"
 fi
 
 COMMON_DEPEND="sys-libs/zlib

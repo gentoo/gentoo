@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net
+}
+
+start() {
+	checkpath -q -d -m 0750 -o wesnoth:wesnoth /run/wesnothd
+	ebegin "Starting wesnothd"
+	start-stop-daemon --start --quiet -b -m \
+		--pidfile /run/wesnothd/wesnothd.pid \
+		-c wesnoth:wesnoth \
+		--exec /usr/bin/wesnothd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping wesnothd"
+	start-stop-daemon --stop --quiet --pidfile /run/wesnothd/wesnothd.pid
+	eend $?
+}

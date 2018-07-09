@@ -69,5 +69,5 @@ src_install() {
 	rm "${ED%/}"/sbin/mount.fuse || die
 
 	# handled by the device manager
-	rm -r "${ED%/}"/dev || die
+	rm -r "${D%/}"/dev || die
 }

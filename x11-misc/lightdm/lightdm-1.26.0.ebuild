@@ -55,7 +55,6 @@ src_prepare() {
 
 	# use correct version of qmake. bug #566950
 	sed \
-		-e "/AC_CHECK_TOOLS(MOC4/a AC_SUBST(MOC4,$(qt4_get_bindir)/moc)" \
 		-e "/AC_CHECK_TOOLS(MOC5/a AC_SUBST(MOC5,$(qt5_get_bindir)/moc)" \
 		-i configure.ac || die
 

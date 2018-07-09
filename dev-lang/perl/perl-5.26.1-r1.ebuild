@@ -56,7 +56,7 @@ IUSE="berkdb debug doc gdbm ithreads"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
-	gdbm? ( >=sys-libs/gdbm-1.8.3 )
+	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
 	sys-libs/zlib
 "

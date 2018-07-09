@@ -5,9 +5,13 @@
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
 	<maintainer type="project">
-		<email>qemu@gentoo.org</email>
-		<name>Gentoo QEMU Project</name>
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
 		<flag name="binary">Use pre-built binaries</flag>

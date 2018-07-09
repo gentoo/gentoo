@@ -65,24 +65,24 @@
 # files by dodoc in src_install().
 
 inherit elisp-common
-
 case ${EAPI:-0} in
-	0|1)
-		inherit epatch
-		EXPORT_FUNCTIONS src_{unpack,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
-	2|3|4|5)
-		inherit epatch
-		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
-	6|7)
-		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
+	0|1|2|3|4|5) inherit epatch ;;
+	6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
-DEPEND=">=virtual/emacs-${NEED_EMACS:-23}"
-RDEPEND="${DEPEND}"
+case ${EAPI:-0} in
+	0|1) EXPORT_FUNCTIONS src_{unpack,compile,install} \
+			pkg_{setup,postinst,postrm} ;;
+	*) EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+			pkg_{setup,postinst,postrm} ;;
+esac
+
+RDEPEND=">=virtual/emacs-${NEED_EMACS:-23}"
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6) DEPEND="${RDEPEND}" ;;
+	*) BDEPEND="${RDEPEND}" ;;
+esac
 
 # @FUNCTION: elisp_pkg_setup
 # @DESCRIPTION:
@@ -137,14 +137,14 @@ elisp_src_prepare() {
 		fi
 		case ${EAPI:-0} in
 			0|1|2|3|4|5) epatch "${file}" ;;
-			6) eapply "${file}" ;;
+			*) eapply "${file}" ;;
 		esac
 	done
 
 	# apply any user patches
 	case ${EAPI:-0} in
 		0|1|2|3|4|5) epatch_user ;;
-		6) eapply_user ;;
+		*) eapply_user ;;
 	esac
 
 	if [[ -n ${ELISP_REMOVE} ]]; then

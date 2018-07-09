@@ -13,7 +13,7 @@ SRC_URI="https://github.com/elementary/${PN}/archive/$(get_version_component_ran
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="demo nls test"
 
 RDEPEND="

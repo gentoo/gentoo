@@ -13,12 +13,15 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
+KEYWORDS="amd64 ~hppa ia64 x86"
 IUSE=""
 
 RDEPEND="sys-apps/file[-python]"
 DEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
+
+# Needs MacOS python module, bug #659102
+RESTRICT="test"
 
 python_test() {
 	esetup.py test

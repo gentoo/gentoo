@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ RDEPEND="
 	logrotate? ( app-admin/logrotate )
 	upnp? ( net-libs/miniupnpc )
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
-	>=dev-libs/leveldb-1.18-r1
+	>=dev-libs/leveldb-1.18-r1:=
 "
 DEPEND="${RDEPEND}
 	>=app-shells/bash-4.1

@@ -37,9 +37,6 @@ app-emulation/winetricks
 app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-lang/icc
-dev-lang/idb
-dev-lang/ifc
 dev-perl/Archive-Rar
 dev-util/android-sdk-update-manager
 dev-util/android-studio

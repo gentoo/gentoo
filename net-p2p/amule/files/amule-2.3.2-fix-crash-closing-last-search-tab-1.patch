@@ -1,0 +1,97 @@
+From 0f0c5c220228aea81142c7c00f73414cdb1b507a Mon Sep 17 00:00:00 2001
+From: gaffa <gaffa@confuseacat.dk>
+Date: Wed, 12 Oct 2016 19:36:21 +0200
+Subject: [PATCH] A workaround for inconsistent behaviour in wxWidgets, where
+ the button release signal is falling through. Instead of calling DeletePage
+ directly an event is added to delete the page after the button release event
+ has been processed by all handlers.
+
+---
+ src/MuleNotebook.cpp | 17 ++++++++++++++++-
+ src/MuleNotebook.h   | 13 +++++++++++++
+ 2 files changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/src/MuleNotebook.cpp b/src/MuleNotebook.cpp
+index ff3ba294e..4ab23ce18 100644
+--- a/src/MuleNotebook.cpp
++++ b/src/MuleNotebook.cpp
+@@ -32,6 +32,7 @@
+ 
+ DEFINE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_PAGE_CLOSING)
+ DEFINE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_ALL_PAGES_CLOSED)
++DEFINE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE)
+ 
+ BEGIN_EVENT_TABLE(CMuleNotebook, wxNotebook)
+ 	EVT_RIGHT_DOWN(CMuleNotebook::OnRMButton)
+@@ -44,6 +45,7 @@ BEGIN_EVENT_TABLE(CMuleNotebook, wxNotebook)
+ 	EVT_LEFT_UP(CMuleNotebook::OnMouseButtonRelease)
+ 	EVT_MIDDLE_UP(CMuleNotebook::OnMouseButtonRelease)
+ 	EVT_MOTION(CMuleNotebook::OnMouseMotion)
++	EVT_MULENOTEBOOK_DELETE_PAGE(wxID_ANY, CMuleNotebook::OnDeletePage)
+ END_EVENT_TABLE()
+ 
+ CMuleNotebook::CMuleNotebook( wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name )
+@@ -60,6 +62,12 @@ CMuleNotebook::~CMuleNotebook()
+ 	DeleteAllPages();
+ }
+ 
++void CMuleNotebook::OnDeletePage(wxBookCtrlEvent& evt)
++{
++	int page = evt.GetSelection();
++	DeletePage(page);
++}
++
+ 
+ bool CMuleNotebook::DeletePage(int nPage)
+ {
+@@ -216,7 +224,14 @@ void CMuleNotebook::OnMouseButtonRelease(wxMouseEvent &event)
+ 	if ((tab != -1) &&  (((flags == wxNB_HITTEST_ONICON) && event.LeftUp()) ||
+ 			((flags == wxNB_HITTEST_ONLABEL) && event.MiddleUp()))) {
+ 		// User did click on a 'x' or middle click on the label
+-		DeletePage(tab);
++
++		/*	WORKAROUND: Instead of calling DeletePage, we need to wait for the
++		 *	mouse release signal to reach Gtk. Inconsistent with normal wxEvent
++		 *	behaviour the button release handler in wxWidgets don't evaluate
++		 *	the result of the signal handling. */
++		wxNotebookEvent evt( wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE, GetId(), tab );
++		evt.SetEventObject(this);
++		AddPendingEvent( evt );
+ 	} else {
+ 		// Is not a 'x'. Send this event up.
+ 		event.Skip();
+diff --git a/src/MuleNotebook.h b/src/MuleNotebook.h
+index dda097d07..ab2809d88 100644
+--- a/src/MuleNotebook.h
++++ b/src/MuleNotebook.h
+@@ -31,7 +31,16 @@
+ 
+ DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_PAGE_CLOSING, -1)
+ DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_ALL_PAGES_CLOSED, -1)
++DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE, -1)
+ 
++#define EVT_MULENOTEBOOK_DELETE_PAGE(id, fn)						\
++	DECLARE_EVENT_TABLE_ENTRY(							\
++		wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE,					\
++		id,									\
++		-1,									\
++		(wxObjectEventFunction)(wxEventFunction)(wxNotebookEventFunction) &fn,  \
++		NULL                                                                    \
++	),
+ #define EVT_MULENOTEBOOK_PAGE_CLOSING(id, fn)						\
+ 	DECLARE_EVENT_TABLE_ENTRY(							\
+ 		wxEVT_COMMAND_MULENOTEBOOK_PAGE_CLOSING,					\
+@@ -107,6 +116,10 @@ public:
+ 	 */
+ 	void SetPopupHandler( wxWindow* widget );
+ 
++private:
++	// Internal handler. Workaround for wxWidgets Tab-Crash bug.
++	void OnDeletePage(wxBookCtrlEvent& evt);
++
+ protected:
+ 	/**
+ 	 * Event handler for left or middle mouse button release (for closing pages)
+-- 
+2.16.4
+

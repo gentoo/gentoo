@@ -76,6 +76,7 @@ dotmpfiles() {
 	done
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d
 		doins "$@"
 	)
@@ -93,6 +94,7 @@ newtmpfiles() {
 	fi
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d
 		newins "$@"
 	)

@@ -27,7 +27,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 COMMON_DEPEND="
 	>=media-libs/libebur128-1.2.2
 	ffmpeg? (
-		libav? ( media-video/libav:0=[vdpau?] )
+		libav? ( >=media-video/libav-12:0=[vdpau?] )
 		!libav? ( media-video/ffmpeg:0=[vdpau?] )
 	)
 	fftw? ( sci-libs/fftw:3.0= )

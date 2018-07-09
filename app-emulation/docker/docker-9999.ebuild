@@ -261,6 +261,9 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins contrib/completion/zsh/_*
 
+	insinto /usr/share/fish/vendor_completions.d/
+	doins contrib/completion/fish/docker.fish
+
 	insinto /usr/share/vim/vimfiles
 	doins -r contrib/syntax/vim/ftdetect
 	doins -r contrib/syntax/vim/syntax

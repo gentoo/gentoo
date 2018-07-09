@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils linux-info
+inherit eutils linux-info autotools
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/fenrus75/powertop.git"
 	inherit git-r3 autotools
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-v${PV}"
 	SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${MY_P}.tar.gz"
-	KEYWORDS="amd64 arm ~ppc sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~arm64 ppc sparc x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -40,6 +40,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libc++.patch
+	"${FILESDIR}"/${PN}-2.8-ncurses_tinfo.patch
 )
 
 pkg_setup() {
@@ -105,8 +106,11 @@ src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
 		chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
 		scripts/version || die "Failed to extract version information"
-		eautoreconf
 	fi
+
+	# Call eautoreconf since ncurses patch touches configure.ac.
+	$(which aclocal) --install -Im4 2>/dev/null #599114
+	eautoreconf
 }
 
 src_configure() {

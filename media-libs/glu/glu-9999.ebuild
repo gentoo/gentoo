@@ -1,24 +1,23 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/glu.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/glu.git"
 
 if [[ ${PV} = 9999* ]]; then
 	AUTOTOOLS_AUTORECONF=1
-	GIT_ECLASS="git-2"
+	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 fi
 
-inherit autotools-multilib multilib ${GIT_ECLASS}
+inherit autotools multilib-minimal ${GIT_ECLASS}
 
 DESCRIPTION="The OpenGL Utility Library"
-HOMEPAGE="https://cgit.freedesktop.org/mesa/glu/"
+HOMEPAGE="https://gitlab.freedesktop.org/mesa/glu"
 
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/glu/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
@@ -32,9 +31,18 @@ DEPEND=">=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}
 	!<media-libs/mesa-9"
 
-src_unpack() {
+src_prepare() {
+	eapply_user
+	[[ ${PV} == 9999 ]] && eautoreconf
+}
+
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
+}
+
+multilib_src_install() {
 	default
-	[[ $PV = 9999* ]] && git-2_src_unpack
+	find "${D}" -name '*.la' -delete || die
 }
 
 src_test() {

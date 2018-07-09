@@ -1,0 +1,22 @@
+--- a/gnatcoll.gpr	2018-06-12 21:37:42.664733336 +0200
++++ b/gnatcoll.gpr	2018-06-12 21:38:07.965360000 +0200
+@@ -115,6 +115,7 @@
+ 
+       for Switches ("gnatcoll_support.c") use
+          Compiler'Switches ("C") & Extra_Switches;
++      for Driver ("C") use External ("GCC", "gcc");
+ 
+    end Compiler;
+ 
+--- a/src/gnatcoll-projects.ads.old	2017-11-25 14:50:06.919939453 +0100
++++ b/src/gnatcoll-projects.ads	2017-11-25 14:50:38.932387204 +0100
+@@ -1917,7 +1917,8 @@
+       Predefined_Source_Files : GNATCOLL.VFS.File_Array_Access;
+       --  The list of source files in Predefined_Source_Path
+ 
+-      Default_Gnatls : GNAT.Strings.String_Access := new String'("gnatls");
++      Default_Gnatls : GNAT.Strings.String_Access :=
++         new String'("@GNATLS@");
+       --  The default gnatls command to run.
+ 
+       Xrefs_Subdir : GNAT.Strings.String_Access;

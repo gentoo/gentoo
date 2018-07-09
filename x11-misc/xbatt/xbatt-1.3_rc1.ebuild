@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator
+inherit toolchain-funcs eapi7-ver
 
 MY_PV=${PV/_rc/pr}
 DESCRIPTION="Notebook battery indicator for X"
@@ -11,7 +11,7 @@ SRC_URI="http://www.clave.gr.jp/~eto/xbatt/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="xbatt"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXmu
@@ -29,7 +29,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-implicits.patch
 )
-S="${WORKDIR}"/${PN}-$(get_version_component_range 1-2)
+S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
 
 src_compile() {
 	xmkmf || die

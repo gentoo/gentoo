@@ -8,3 +8,12 @@ move x11-proto/xcb-proto x11-base/xcb-proto
 move dev-db/xtrabackup-bin dev-db/percona-xtrabackup-bin
 move ros-meta/geometry_experimental ros-meta/geometry2
 slotmove =dev-ruby/websocket-driver-0.7.0 0 0.7
+move kde-plasma/oxygen-fonts media-fonts/oxygen-fonts
+move media-libs/vulkan-tools dev-util/vulkan-tools
+move games-strategy/ufo-ai games-strategy/ufoai
+slotmove =net-mail/getmail-5.4 4 0
+move kde-apps/okteta app-editors/okteta
+move games-puzzle/triptych-demo games-puzzle/triptych
+move media-sound/teamspeak-client-bin media-sound/teamspeak-client
+move media-sound/teamspeak-server-bin media-sound/teamspeak-server
+move sci-chemistry/mdanalysis sci-chemistry/MDAnalysis

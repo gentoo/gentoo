@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -23,13 +23,13 @@ SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ia64 ~mips ~ppc ppc64 ~sparc ~x86"
 IUSE="java lua mono perl php python ruby tcl"
 REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	ruby? ( || ( $(ruby_get_use_targets) ) )"
 
-COMMONDEPEND="dev-libs/xapian:0/30
+COMMONDEPEND=">=dev-libs/xapian-1.4.5:0/30
 	lua? ( dev-lang/lua:= )
 	perl? ( dev-lang/perl:= )
 	python? (
@@ -275,7 +275,7 @@ src_install() {
 	fi
 
 	if use java; then
-		java-pkg_dojar java/built/xapian_jni.jar
+		java-pkg_dojar java/built/xapian.jar
 		# TODO: make the build system not install this...
 		java-pkg_doso java/.libs/libxapian_jni.so
 		rm -rf "${D}var" || die "could not remove java cruft!"

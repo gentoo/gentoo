@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="flac fluidsynth mad midi mikmod mod modplug mp3 playtools smpeg static-libs timidity tremor vorbis +wav"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )

@@ -1,6 +1,22 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gmail.com> (17 Jun 2018)
+# Optional dependency not available for this arch
+dev-libs/efl vlc
+
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
+# Tomáš Mózes <hydrapolic@gmail.com> (05 Jun 2018)
+# Unkeyworded dependencies.
+app-admin/syslog-ng amqp mongodb
+
+# Thomas Deutschmann <whissi@gentoo.org> (02 Jun 2018)
+# Needs dev-ruby/asciidoctor which has a lot of unstable deps
+net-analyzer/wireshark doc
+
 # Tobias Klausmann <klausman@gentoo.org> (22 Mar 2018)
 # Masked due to missing deps. Some *could* have their deps keyworded,
 # but we're trying to keep the maintenance load low.
@@ -327,14 +343,6 @@ gnome-extra/libgda reports
 >=dev-db/mysql-5.5 tcmalloc
 >=dev-db/mariadb-5.5 tcmalloc
 >=dev-db/percona-server-5.5 tcmalloc
-
-# Raúl Porcel <armin76@gentoo.org> (25 Jun 2012)
-# dev-qt/qtwebkit doesn't seem to work
-dev-python/PyQt4 webkit
-dev-qt/assistant webkit
-dev-qt/designer webkit
-dev-qt/qtdeclarative webkit
-net-irc/kvirc webkit
 
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)

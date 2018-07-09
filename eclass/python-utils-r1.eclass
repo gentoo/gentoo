@@ -43,7 +43,7 @@ _PYTHON_ALL_IMPLS=(
 	jython2_7
 	pypy pypy3
 	python2_7
-	python3_4 python3_5 python3_6
+	python3_4 python3_5 python3_6 python3_7
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -79,7 +79,7 @@ _python_impl_supported() {
 	# keep in sync with _PYTHON_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		python2_7|python3_[456]|jython2_7)
+		python2_7|python3_[4567]|jython2_7)
 			return 0
 			;;
 		pypy1_[89]|pypy2_0|python2_[56]|python3_[123])
@@ -789,6 +789,7 @@ python_newexe() {
 
 	(
 		dodir "${wrapd}"
+		exeopts -m 0755
 		exeinto "${d}"
 		newexe "${f}" "${newfn}" || return ${?}
 	)
@@ -920,6 +921,7 @@ python_domodule() {
 	fi
 
 	(
+		insopts -m 0644
 		insinto "${d}"
 		doins -r "${@}" || return ${?}
 	)
@@ -954,6 +956,7 @@ python_doheader() {
 	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
 
 	(
+		insopts -m 0644
 		insinto "${d}"
 		doins -r "${@}" || return ${?}
 	)

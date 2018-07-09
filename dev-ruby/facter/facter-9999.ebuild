@@ -71,9 +71,6 @@ src_configure() {
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DCMAKE_BUILD_TYPE=None
 		-DCMAKE_INSTALL_PREFIX=/usr
-		-DCMAKE_INSTALL_SYSCONFDIR=/etc
-		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
-		-DUSE_JRUBY_SUPPORT=FALSE
 		-DBLKID_LIBRARY=/$(get_libdir)/libblkid.so.1
 	)
 	if use debug; then

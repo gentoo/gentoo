@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="Fast mail searching for mutt using namazu"
-HOMEPAGE="http://www.ecademix.com/JohannesHofmann/nmzmail.html"
-SRC_URI="http://www.ecademix.com/JohannesHofmann/${P}.tar.gz"
+HOMEPAGE="https://www.ecademix.com/JohannesHofmann/nmzmail.html"
+SRC_URI="https://www.ecademix.com/JohannesHofmann/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,8 +15,3 @@ IUSE=""
 DEPEND="sys-libs/readline"
 RDEPEND="${DEPEND}
 	>=app-text/namazu-2"
-
-src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
-	dodoc README AUTHORS ChangeLog || die
-}

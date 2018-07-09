@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.mumble.info"
 if [[ "${PV}" = 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
-	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble )
+	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src )
 else
 	MY_P="${PN}-${PV/_/~}"
 	SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
@@ -74,7 +74,7 @@ src_configure() {
 		$(myuse opus)
 		$(myuse oss)
 		$(myuse portaudio)
-		$(myuse speech)
+		$(usex speech '' no-speechd)
 		$(usex zeroconf '' no-bonjour)
 	)
 

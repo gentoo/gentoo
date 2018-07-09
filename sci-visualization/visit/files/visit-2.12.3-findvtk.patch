@@ -1,5 +1,5 @@
---- visit2.8.2/src/CMake/FindVisItVTK.cmake.orig	2015-01-09 12:18:54.467780216 +0100
-+++ visit2.8.2/src/CMake/FindVisItVTK.cmake	2015-01-09 12:19:59.737780932 +0100
+--- a/CMake/FindVisItVTK.cmake.orig	2015-01-09 12:18:54.467780216 +0100
++++ b/CMake/FindVisItVTK.cmake	2015-01-09 12:19:59.737780932 +0100
 @@ -234,15 +234,22 @@
  
  # check for python wrappers

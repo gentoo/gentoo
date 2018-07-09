@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_P="eggdrop${PV}"
 PATCHSET_V="1.0"
 
 DESCRIPTION="An IRC bot extensible with C or TCL"
-HOMEPAGE="http://www.eggheads.org/"
+HOMEPAGE="https://www.eggheads.org/"
 SRC_URI="
 	ftp://ftp.eggheads.org/pub/eggdrop/source/1.6/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~binki/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCHSET_V}.tar.bz2"

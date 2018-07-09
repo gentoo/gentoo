@@ -17,12 +17,29 @@
 
 #--- END OF EXAMPLES ---
 
+# Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
+# Dependency app-crypt/jitterentropy is keyworded for amd64
+sys-apps/rng-tools -jitterentropy
+
+# Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
+# Catalyst has support for assembling bootloader on this arch
+dev-util/catalyst -system-bootloader
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (17 Jun 2018)
+# Vulkan support is only available on few selected arches atm.
+# Mask everywhere, unmask where appropriate.
+media-video/mpv -vulkan
+
+# Mikle Kolyada <zlogene@gentoo.org> (02 Jun 2018)
+# Too many untested ruby dependencies
+<dev-ruby/haml-5 test
+
 # Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
-# media-libs/vulkan-loader is keyworded on amd64
-app-emulation/wine-any -vulkan
-app-emulation/wine-d3d9 -vulkan
-app-emulation/wine-staging -vulkan
-app-emulation/wine-vanilla -vulkan
+# media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
+app-emulation/wine-any -vkd3d -vulkan
+app-emulation/wine-d3d9 -vkd3d -vulkan
+app-emulation/wine-staging -vkd3d -vulkan
+app-emulation/wine-vanilla -vkd3d -vulkan
 
 # Richard Yao <ryao@gentoo.org> (16 Apr 2018)
 # sys-fs/zfs is keyworded on amd64
@@ -43,7 +60,7 @@ net-wireless/pyrit cuda
 
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # nexpose and openvas work on amd64
-net-analyzer/metasploit nexpose openvas
+net-analyzer/metasploit -nexpose -openvas
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is keyworded on amd64

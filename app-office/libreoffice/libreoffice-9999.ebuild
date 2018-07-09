@@ -94,6 +94,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.1
+	app-text/libnumbertext
 	>=app-text/libodfgen-0.1.0
 	app-text/libqxp
 	app-text/libstaroffice
@@ -235,6 +236,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
 	test? (
+		app-crypt/gnupg
 		dev-util/cppunit
 		media-fonts/dejavu
 	)
@@ -340,7 +342,7 @@ src_prepare() {
 
 	if use branding; then
 		# hack...
-		mv -v "${WORKDIR}/branding-intro.png" "icon-themes/galaxy/brand/intro.png" || die
+		mv -v "${WORKDIR}/branding-intro.png" "icon-themes/colibre/brand/intro.png" || die
 	fi
 
 	# Don't list pdfimport support in desktop when built with none, bug # 605464
