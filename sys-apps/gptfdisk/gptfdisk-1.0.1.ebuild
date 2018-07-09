@@ -18,7 +18,7 @@ LIB_DEPEND="
 	dev-libs/popt[static-libs(+)]
 	ncurses? ( >=sys-libs/ncurses-5.7-r7:0=[unicode,static-libs(+)] )
 	kernel_linux? ( sys-apps/util-linux[static-libs(+)] )" # libuuid
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+RDEPEND="!static? ( ${LIB_DEPEND//,static-libs(+)} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	virtual/pkgconfig"

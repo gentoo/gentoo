@@ -20,7 +20,7 @@ LIB_DEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.7-r7:0=[unicode,static-libs(+)] )
 	kernel_linux? ( sys-apps/util-linux[static-libs(+)] )
 "
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+RDEPEND="!static? ( ${LIB_DEPEND//,static-libs(+)} )"
 DEPEND="
 	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
