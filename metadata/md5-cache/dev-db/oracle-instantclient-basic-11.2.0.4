@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install nofetch postinst prepare test unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Oracle 11g Instant Client with SDK
+EAPI=4
+HOMEPAGE=http://www.oracle.com/technetwork/database/features/instant-client/index.html
+IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=amd64 x86
+LICENSE=OTN
+RDEPEND=>=dev-libs/libaio-0.3.109-r5[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+RESTRICT=fetch splitdebug
+SLOT=0
+SRC_URI=abi_x86_32? ( instantclient-basic-linux-11.2.0.4.0.zip !abi_x86_64? ( instantclient-sdk-linux-11.2.0.4.0.zip ) ) abi_x86_64? ( instantclient-basic-linux.x64-11.2.0.4.0.zip instantclient-sdk-linux.x64-11.2.0.4.0.zip )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=8456a5c04379f0529ee8239e3d75d954

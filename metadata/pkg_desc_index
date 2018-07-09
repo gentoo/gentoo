@@ -1865,6 +1865,10 @@ dev-db/mysql-workbench 6.3.4-r1: MySQL Workbench
 dev-db/mysqltuner 1.6.18: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.6-r4: mytop - a top clone for mysql
 dev-db/opendbx 1.4.5-r1: OpenDBX - A database abstraction layer
+dev-db/oracle-instantclient-basic 11.2.0.3 11.2.0.4: Oracle 11g Instant Client with SDK
+dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: JDBC supplement
+dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: ODBC supplement
+dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
 dev-db/percona-toolkit 2.2.11 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.9: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
