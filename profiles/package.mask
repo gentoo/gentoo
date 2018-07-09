@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (9 Jul 2018)
+# Hasn’t been updated in years, upstream’s download source is blank, and depends
+# on an outdated twisted-core (Bug 660668). Removal after 2018-08-08.
+dev-python/pgasync
+
 # Louis Sautier <sbraz@gentoo.org> (8 July 2018)
 # Superseded, respectively by dev-python/setuptools_scm
 # and dev-python/jaraco-* + dev-python/tempora.
