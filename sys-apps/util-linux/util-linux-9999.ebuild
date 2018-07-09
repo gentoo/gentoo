@@ -212,6 +212,14 @@ multilib_src_install_all() {
 		newpamd "${FILESDIR}/runuser.pamd" runuser
 		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
 	fi
+
+	# Note:
+	# Bash completion for "runuser" command is provided by same file which
+	# would also provide bash completion for "su" command. However, we don't
+	# use "su" command from this package.
+	# This triggers a known QA warning which we ignore for now to magically
+	# keep bash completion for "su" command which shadow package does not
+	# provide.
 }
 
 pkg_postinst() {
