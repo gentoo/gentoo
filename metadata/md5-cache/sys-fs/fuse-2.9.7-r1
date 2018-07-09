@@ -3,12 +3,12 @@ DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170422 virtual/pkgconfig
 DESCRIPTION=An interface for filesystems implemented in userspace
 EAPI=6
 HOMEPAGE=https://github.com/libfuse/libfuse
-IUSE=examples kernel_linux kernel_FreeBSD static-libs
+IUSE=examples kernel_linux kernel_FreeBSD static-libs kernel_linux
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=GPL-2
 PDEPEND=kernel_FreeBSD? ( sys-fs/fuse4bsd )
 RDEPEND=sys-fs/fuse-common
 SLOT=0
 SRC_URI=https://github.com/libfuse/libfuse/releases/download/fuse-2.9.7/fuse-2.9.7.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	linux-info	aedb720bff5a5dec9b87edd351382bfc	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	linux-info	ee2d911941350f117c3c9032783bb0e2	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=ecfcb5a05a54f574dc6c17954196281d

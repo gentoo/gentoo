@@ -3,11 +3,11 @@ DEPEND=!app-mobilephone/smstools bluetooth? ( kernel_linux? ( net-wireless/bluez
 DESCRIPTION=User space driver and tools for use with mobile phones
 EAPI=6
 HOMEPAGE=http://www.gnokii.org/
-IUSE=bluetooth debug ical irda mysql nls +pcsc-lite postgres sms usb X
+IUSE=bluetooth debug ical irda mysql nls +pcsc-lite postgres sms usb X kernel_linux
 KEYWORDS=amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=!app-mobilephone/smstools bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) ical? ( dev-libs/libical:= ) pcsc-lite? ( sys-apps/pcsc-lite ) sms? ( dev-libs/glib:2 postgres? ( dev-db/postgresql:* ) mysql? ( virtual/mysql:= ) ) usb? ( virtual/libusb:0 ) X? ( x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=http://www.gnokii.org/download/gnokii/gnokii-0.6.31.tar.bz2
-_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	libtool	0081a71a261724730ec4c248494f044d	linux-info	aedb720bff5a5dec9b87edd351382bfc	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	5b8ce72259e08104b337fe28c6de5dbc	libtool	0081a71a261724730ec4c248494f044d	linux-info	ee2d911941350f117c3c9032783bb0e2	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
 _md5_=e3b2a16259100547c759e314f3a22d7b
