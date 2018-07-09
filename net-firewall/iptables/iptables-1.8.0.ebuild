@@ -41,12 +41,15 @@ RDEPEND="${COMMON_DEPEND}
 	nftables? ( net-misc/ethertypes )
 "
 
+PATCHES=( "${FILESDIR}"/iptables-1.8.0-fix-building-without-nft-backend.patch )
+
 src_prepare() {
 	# use the saner headers from the kernel
 	rm -f include/linux/{kernel,types}.h
 
-	# Only run autotools if user patched something
-	eapply_user && eautoreconf || elibtoolize
+	default
+
+	eautoreconf
 }
 
 src_configure() {

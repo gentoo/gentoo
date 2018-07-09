@@ -20,7 +20,7 @@ fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="+alsa +dbus debug g15 libressl +opus oss pch portaudio pulseaudio speech zeroconf"
+IUSE="+alsa +dbus debug g15 libressl +opus oss pch portaudio pulseaudio +rnnoise speech zeroconf"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -74,6 +74,7 @@ src_configure() {
 		$(myuse opus)
 		$(myuse oss)
 		$(myuse portaudio)
+		$(myuse rnnoise)
 		$(usex speech '' no-speechd)
 		$(usex zeroconf '' no-bonjour)
 	)
