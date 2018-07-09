@@ -1,18 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4 python3_5 )
+PYTHON_COMPAT=( python3_4 python3_{5,6} )
 
-inherit eutils flag-o-matic python-single-r1 systemd xdg-utils
+inherit eutils flag-o-matic linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
 HOMEPAGE="http://www.lirc.org/"
 
 LIRC_DRIVER_DEVICE="/dev/lirc0"
 
-MY_P=${PN}-${PV/_/}
+MY_P=${PN}-${PV/_/-}
 
 if [[ "${PV/_pre/}" = "${PV}" ]]; then
 	SRC_URI="mirror://sourceforge/lirc/${MY_P}.tar.bz2"
@@ -22,8 +22,8 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="audio doc ftdi gtk inputlirc static-libs systemd usb X"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -66,16 +66,17 @@ RDEPEND="
 	inputlirc? ( app-misc/inputlircd )
 "
 
-PATCHES=(
-	# https://bugs.gentoo.org/show_bug.cgi?id=589246 https://sourceforge.net/p/lirc/tickets/214/
-	"${FILESDIR}"/lirc-0.9.4-doc-path-fix.patch
-)
+pkg_setup() {
+	use uinput && CONFIG_CHECK="INPUT_UINPUT"
+}
 
 src_configure() {
 	xdg_environment_reset
 	econf \
 		--localstatedir="${EPREFIX}/var" \
 		$(use_enable static-libs static) \
+		$(use_enable devinput) \
+		$(use_enable uinput) \
 		$(use_with X x)
 }
 
@@ -90,7 +91,7 @@ src_install() {
 	newinitd "${FILESDIR}"/lircd-0.8.6-r2 lircd
 	newinitd "${FILESDIR}"/lircmd-0.9.4a-r2 lircmd
 	newconfd "${FILESDIR}"/lircd.conf.4 lircd
-	newconfd "${FILESDIR}"/lircmd.conf lircmd
+	newconfd "${FILESDIR}"/lircmd-0.10.0.conf lircmd
 
 	insinto /etc/modprobe.d/
 	newins "${FILESDIR}"/modprobed.lirc lirc.conf

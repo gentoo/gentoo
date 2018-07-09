@@ -9,7 +9,7 @@ SUPER_PN='amdgpu-pro'
 MY_PV=$(ver_rs 2 '-')
 
 DESCRIPTION="Proprietary OpenCL implementation for AMD GPUs"
-HOMEPAGE="https://support.amd.com/en-us/kb-articles/Pages/Radeon-Software-for-Linux-Release-Notes.aspx"
+HOMEPAGE="https://support.amd.com/en-us/kb-articles/Pages/Radeon-Software-for-Linux-with-Vulkan-1.1-support.aspx"
 SRC_URI="${SUPER_PN}-${MY_PV}.tar.xz"
 
 LICENSE="AMD-GPU-PRO-EULA"
@@ -53,8 +53,8 @@ src_prepare() {
 
 src_install() {
 	into "/opt/amdgpu"
-	dolib opt/${SUPER_PN}/lib/x86_64-linux-gnu/*
-	dolib opt/amdgpu/lib/x86_64-linux-gnu/*
+	dolib.so opt/${SUPER_PN}/lib/x86_64-linux-gnu/*
+	dolib.so opt/amdgpu/lib/x86_64-linux-gnu/*
 	insinto "/opt/amdgpu"
 	doins -r opt/amdgpu/share
 
