@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (27 May 2018)
+# kde-frameworks/kdelibs4support not keyworded on ppc
+# Michał Górny <mgorny@gentoo.org> (09 Jul 2018)
+# Moved to parent powerpc profile as it applies to ppc64 as well
+x11-wm/sawfish kde
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
 # Requires unported sys-libs/netbsd-csu
 sys-devel/clang-runtime crt
