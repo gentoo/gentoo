@@ -5168,7 +5168,6 @@ dev-python/peewee 2.7.4 3.1.0: Small python ORM
 dev-python/pep8 1.5.6 1.5.7 1.7.0: Python style guide checker
 dev-python/peppercorn 0.5: A library for converting a token stream into a data structure for use in web form posts
 dev-python/pexpect 4.2.1: Python module for spawning child applications and responding to expected patterns
-dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pickleshare 0.7.3 0.7.4-r1: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.1.1 2.2.0: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15-r1: Cross-media, cross-platform 2D graphics package
