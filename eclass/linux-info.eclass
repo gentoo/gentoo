@@ -110,6 +110,8 @@ inherit toolchain-funcs versionator
 
 EXPORT_FUNCTIONS pkg_setup
 
+IUSE="kernel_linux"
+
 # Overwritable environment Var's
 # ---------------------------------------
 KERNEL_DIR="${KERNEL_DIR:-${ROOT}usr/src/linux}"
@@ -238,6 +240,10 @@ linux_config_qa_check() {
 		ewarn "QA: You called $f before any linux_config_exists!"
 		ewarn "QA: The return value of $f will NOT guaranteed later!"
 	fi
+
+	if ! use kernel_linux; then
+		die "$f called on non-Linux system, please fix the ebuild"
+	fi
 }
 
 # @FUNCTION: linux_config_src_exists
@@ -246,7 +252,7 @@ linux_config_qa_check() {
 # It returns true if .config exists in a build directory otherwise false
 linux_config_src_exists() {
 	export _LINUX_CONFIG_EXISTS_DONE=1
-	[[ -n ${KV_OUT_DIR} && -s ${KV_OUT_DIR}/.config ]]
+	use kernel_linux && [[ -n ${KV_OUT_DIR} && -s ${KV_OUT_DIR}/.config ]]
 }
 
 # @FUNCTION: linux_config_bin_exists
@@ -255,7 +261,7 @@ linux_config_src_exists() {
 # It returns true if .config exists in /proc, otherwise false
 linux_config_bin_exists() {
 	export _LINUX_CONFIG_EXISTS_DONE=1
-	[[ -s /proc/config.gz ]]
+	use kernel_linux && [[ -s /proc/config.gz ]]
 }
 
 # @FUNCTION: linux_config_exists
@@ -288,6 +294,10 @@ linux_config_path() {
 # This function verifies that the current kernel is configured (it checks against the existence of .config)
 # otherwise it dies.
 require_configured_kernel() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	if ! linux_config_src_exists; then
 		qeerror "Could not find a usable .config in the kernel source directory."
 		qeerror "Please ensure that ${KERNEL_DIR} points to a configured set of Linux sources."
@@ -295,6 +305,7 @@ require_configured_kernel() {
 		qeerror "it points to the necessary object directory so that it might find .config."
 		die "Kernel not configured; no .config found in ${KV_OUT_DIR}"
 	fi
+	get_version || die "Unable to determine configured kernel version"
 }
 
 # @FUNCTION: linux_chkconfig_present
@@ -366,6 +377,10 @@ linux_chkconfig_string() {
 
 # Note: duplicated in kernel-2.eclass
 kernel_is() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need to.
 	linux-info_get_any_version
 
@@ -390,8 +405,13 @@ kernel_is() {
 get_localversion() {
 	local lv_list i x
 
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local files=( ${1}/localversion* )
+	${shopt_save}
+
 	# ignore files with ~ in it.
-	for i in $(ls ${1}/localversion* 2>/dev/null); do
+	for i in "${files[@]}"; do
 		[[ -n ${i//*~*} ]] && lv_list="${lv_list} ${i}"
 	done
 
@@ -431,6 +451,10 @@ get_version_warning_done=
 # KBUILD_OUTPUT (in a decreasing priority list, we look for the env var, makefile var or the
 # symlink /lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}/build).
 get_version() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	local tmplocal
 
 	# no need to execute this twice assuming KV_FULL is populated.
@@ -584,6 +608,10 @@ get_version() {
 # It gets the version of the current running kernel and the result is the same as get_version() if the
 # function can find the sources.
 get_running_version() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	KV_FULL=$(uname -r)
 
 	if [[ -f ${ROOT}/lib/modules/${KV_FULL}/source/Makefile && -f ${ROOT}/lib/modules/${KV_FULL}/build/Makefile ]]; then
@@ -623,10 +651,15 @@ get_running_version() {
 # This attempts to find the version of the sources, and otherwise falls back to
 # the version of the running kernel.
 linux-info_get_any_version() {
-	get_version
-	if [[ $? -ne 0 ]]; then
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
+	if ! get_version; then
 		ewarn "Unable to calculate Linux Kernel version for build, attempting to use running version"
-		get_running_version
+		if ! get_running_version; then
+			die "Unable to determine any Linux Kernel version, please report a bug"
+		fi
 	fi
 }
 
@@ -638,9 +671,12 @@ linux-info_get_any_version() {
 # @DESCRIPTION:
 # This function verifies that the current kernel sources have been already prepared otherwise it dies.
 check_kernel_built() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need to
 	require_configured_kernel
-	get_version
 
 	local versionh_path
 	if kernel_is -ge 3 7; then
@@ -668,9 +704,12 @@ check_kernel_built() {
 # @DESCRIPTION:
 # This function verifies that the current kernel support modules (it checks CONFIG_MODULES=y) otherwise it dies.
 check_modules_supported() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need too.
 	require_configured_kernel
-	get_version
 
 	if ! linux_chkconfig_builtin "MODULES"; then
 		eerror "These sources do not support loading external modules."
@@ -683,8 +722,10 @@ check_modules_supported() {
 # @FUNCTION: check_extra_config
 # @DESCRIPTION:
 # It checks the kernel config options specified by CONFIG_CHECK. It dies only when a required config option (i.e.
-# the prefix ~ is not used) doesn't satisfy the directive.
+# the prefix ~ is not used) doesn't satisfy the directive. Ignored on non-Linux systems.
 check_extra_config() {
+	use kernel_linux || return
+
 	local config negate die error reworkmodulenames
 	local soft_errors_count=0 hard_errors_count=0 config_required=0
 	# store the value of the QA check, because otherwise we won't catch usages
@@ -823,9 +864,12 @@ check_extra_config() {
 }
 
 check_zlibinflate() {
+	if ! use kernel_linux; then
+		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
+	fi
+
 	# if we haven't determined the version yet, we need to
 	require_configured_kernel
-	get_version
 
 	# although I restructured this code - I really really really dont support it!
 
@@ -843,13 +887,11 @@ check_zlibinflate() {
 
 	ebegin "checking ZLIB_INFLATE"
 	linux_chkconfig_builtin CONFIG_ZLIB_INFLATE
-	eend $?
-	[ "$?" != 0 ] && die
+	eend $? || die
 
 	ebegin "checking ZLIB_DEFLATE"
 	linux_chkconfig_builtin CONFIG_ZLIB_DEFLATE
-	eend $?
-	[ "$?" != 0 ] && die
+	eend $? || die
 
 	local LINENO_START
 	local LINENO_END
@@ -900,6 +942,8 @@ check_zlibinflate() {
 # Force a get_version() call when inherited from linux-mod.eclass and then check if the kernel is configured
 # to support the options specified in CONFIG_CHECK (if not null)
 linux-info_pkg_setup() {
+	use kernel_linux || return
+
 	linux-info_get_any_version
 
 	if kernel_is 2 4; then
