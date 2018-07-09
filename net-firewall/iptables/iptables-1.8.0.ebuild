@@ -6,7 +6,7 @@ EAPI=6
 # Force users doing their own patches to install their own tools
 AUTOTOOLS_AUTO_DEPEND=no
 
-inherit ltprune multilib systemd toolchain-funcs autotools flag-o-matic
+inherit multilib systemd toolchain-funcs autotools flag-o-matic
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://www.netfilter.org/projects/iptables/"
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	netlink? ( net-libs/libnfnetlink )
 	nftables? (
 		>=net-libs/libmnl-1.0:0=
-		>=net-libs/libnftnl-1.0.5:0=
+		>=net-libs/libnftnl-1.1.1:0=
 	)
 	pcap? ( net-libs/libpcap )
 "
@@ -38,10 +38,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	nftables? (
-		!<net-firewall/ebtables-2.0.10.4-r2
-		!net-misc/ethertypes
-	)
+	nftables? ( net-misc/ethertypes )
 "
 
 src_prepare() {
@@ -109,6 +106,11 @@ src_install() {
 		newconfd "${FILESDIR}"/ip6tables-1.4.13.confd ip6tables
 	fi
 
+	if use nftables; then
+		# Bug 647458
+		rm "${ED%/}"/etc/ethertypes || die
+	fi
+
 	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
 	if use ipv6 ; then
 		systemd_dounit "${FILESDIR}"/systemd/ip6tables-{re,}store.service
@@ -117,5 +119,5 @@ src_install() {
 	# Move important libs to /lib #332175
 	gen_usr_ldscript -a ip{4,6}tc iptc xtables
 
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 }
