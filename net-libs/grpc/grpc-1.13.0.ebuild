@@ -32,7 +32,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2:0=[-bindist]
-	~dev-libs/protobuf-${PROTOBUF_VERSION}:=
+	>=dev-libs/protobuf-${PROTOBUF_VERSION}:=
 	dev-util/google-perftools
 	net-dns/c-ares:=
 	sys-libs/zlib:=
