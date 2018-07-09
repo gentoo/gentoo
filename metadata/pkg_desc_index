@@ -1351,7 +1351,7 @@ app-text/html-xml-utils 7.1: A number of simple utilities for manipulating HTML 
 app-text/html2text 1.3.2a: A HTML to text converter
 app-text/html401 19991224-r3: DTDs for the HyperText Markup Language 4.01
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
-app-text/htmlmin 0.1.11_pre20170909: A configurable HTML Minifier with safety features
+app-text/htmlmin 0.1.11_pre20170909 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/hunspell 1.6.1-r1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
@@ -1869,7 +1869,7 @@ dev-db/percona-toolkit 2.2.11 2.2.20: Advanced command-line tools to perform a v
 dev-db/percona-xtrabackup 2.4.9: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.2: wxWidgets GUI for PostgreSQL
-dev-db/pgadmin4 2.0-r1: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 2.0-r1 3.0: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.8.1: Lightweight connection pooler for PostgreSQL
@@ -4622,7 +4622,7 @@ dev-python/boto3 1.4.7 1.5.27 1.7.19: The AWS SDK for Python
 dev-python/botocore 1.7.39 1.8.41 1.10.19: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
-dev-python/bpython 0.16: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/bpython 0.16 0.17.1: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
@@ -4813,14 +4813,14 @@ dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-evolution 0.5-r1: Simple migrations for Flask/SQLAlchemy projects
-dev-python/flask-gravatar 0.4.2: Small extension for Flask to make usage of Gravatar service easy
-dev-python/flask-htmlmin 1.2.1: Minimize your flask rendered html
+dev-python/flask-gravatar 0.4.2 0.5.0: Small extension for Flask to make usage of Gravatar service easy
+dev-python/flask-htmlmin 1.2.1 1.3.2: Minimize your flask rendered html
 dev-python/flask-login 0.3.2-r1: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 2.1.1 2.1.1-r1: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.9.3 0.9.3-r1: Flask support for MongoDB and with WTF model forms
 dev-python/flask-openid 1.2.4: OpenID support for Flask
-dev-python/flask-paranoid 0.1.0: Simple user session protection extension for Flask
+dev-python/flask-paranoid 0.1.0 0.2.0: Simple user session protection extension for Flask
 dev-python/flask-peewee 0.6.5: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-pymongo 0.3.0 0.4.1: PyMongo support for Flask
@@ -4829,7 +4829,7 @@ dev-python/flask-restless 0.17.0: Flask extension for easy ReSTful API generatio
 dev-python/flask-script 2.0.5-r1 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 1.7.5-r1 3.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.1: Sphinx Themes for Flask related projects and Flask itself
-dev-python/flask-sqlalchemy 2.1: SQLAlchemy support for Flask applications
+dev-python/flask-sqlalchemy 2.1 2.3.2: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.2 0.6.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
@@ -9860,7 +9860,7 @@ sys-apps/usbredir 0.7.1_p20170503: TCP daemon and set of libraries for usbredir 
 sys-apps/usbutils 008-r1 009: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.30.2-r1: Various useful Linux utilities
+sys-apps/util-linux 2.30.2-r1 2.32-r4: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
