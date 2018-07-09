@@ -41,3 +41,4 @@ ubuntu		http://mirror.internode.on.net/pub/ubuntu/ubuntu/ http://mirror.tcc.wa.e
 vdr-developerorg http://projects.vdr-developer.org/attachments/download
 vdrfiles	http://gentoo.fh-luh.de/files
 xfce		http://archive.xfce.org
+xorg		https://www.x.org/releases/individual
