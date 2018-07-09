@@ -767,8 +767,8 @@ app-emulation/virtualbox-guest-additions 5.1.36: VirtualBox kernel modules and u
 app-emulation/virtualbox-modules 5.1.36: Kernel Modules for Virtualbox
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
-app-emulation/wine-mono 4.6.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-vanilla 2.0-r1 2.0.1-r1 2.0.2-r1 2.0.3: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-mono 4.6.4 4.7.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
+app-emulation/wine-vanilla 2.0-r1 2.0.1-r1 2.0.2-r1 2.0.3 3.0.1: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.9.1-r1 4.9.2: The Xen virtual machine monitor
