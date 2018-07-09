@@ -55,6 +55,8 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES="${FILESDIR}/${PN}-21.0.2-qt-5.11.0.patch"
+
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
 src_configure() {
