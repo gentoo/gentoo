@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-AUTOTOOLS_AUTORECONF=true
 
 inherit autotools systemd linux-info
 
@@ -27,6 +26,10 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-irqbalance )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.4.0-configure.patch"
+)
 
 pkg_setup() {
 	CONFIG_CHECK="~PCI_MSI"
