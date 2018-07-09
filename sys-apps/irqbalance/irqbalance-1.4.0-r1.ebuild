@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-AUTOTOOLS_AUTORECONF=true
 
 inherit autotools systemd linux-info
 
@@ -13,13 +12,13 @@ SRC_URI="https://github.com/Irqbalance/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="caps +numa selinux"
+IUSE="caps +numa selinux tui"
 
 CDEPEND="
 	dev-libs/glib:2
-	sys-libs/ncurses:0=[unicode]
 	caps? ( sys-libs/libcap-ng )
 	numa? ( sys-process/numactl )
+	tui? ( sys-libs/ncurses:0=[unicode] )
 "
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -27,6 +26,10 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-irqbalance )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-configure.patch"
+)
 
 pkg_setup() {
 	CONFIG_CHECK="~PCI_MSI"
@@ -50,8 +53,8 @@ src_configure() {
 	local myeconfargs=(
 		$(use_with caps libcap-ng)
 		$(use_enable numa)
-		)
-
+		$(use_with tui irqbalance-ui)
+	)
 	econf "${myeconfargs[@]}"
 }
 
