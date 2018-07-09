@@ -5893,7 +5893,7 @@ dev-ruby/redcarpet 3.4.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2: A module for using Textile in Ruby
 dev-ruby/rest-client 1.8.0-r3: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
-dev-ruby/rgen 0.8.0: Ruby Modelling and Generator Framework
+dev-ruby/rgen 0.8.0 0.8.3: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/rmagick 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
