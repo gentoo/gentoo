@@ -94,6 +94,7 @@ app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tri
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.14 3.2.17 3.4.10: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.23.0 5.25.1: Monitoring and managing daemons or similar programs running on a Unix system
+app-admin/needrestart 3.3: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit-base 1.1.7-r1: Manage packages in a secure way using a cross-distro and cross-architecture API
@@ -565,7 +566,7 @@ app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
 app-editors/leo 5.6: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20171014: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20171014 20180408: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0-r1: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 2.8.7: GNU GPL'd Pico clone with more functionality
@@ -2937,7 +2938,7 @@ dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID libra
 dev-libs/crypto++ 5.6.5-r1: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
-dev-libs/cyberjack 3.99.5_p03-r1: REINER SCT cyberJack pinpad/e-com USB user space driver library
+dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p11: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cyrus-sasl 2.1.26-r9: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
@@ -5440,7 +5441,7 @@ dev-python/pyzmq 16.0.2: Lightweight and super-fast messaging library built on t
 dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.10.3: Python bindings for Qscintilla
+dev-python/qscintilla-python 2.10.3 2.10.4: Python bindings for Qscintilla
 dev-python/qtconsole 4.3.1: Qt-based console for Jupyter with support for rich media output
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -6370,7 +6371,7 @@ dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.8.5 1.8.6: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 4.5.2: Scalable distributed SCM
-dev-vcs/mr 1.20170129: Multiple Repository management tool
+dev-vcs/mr 1.20170129 1.20171231: Multiple Repository management tool
 dev-vcs/qgit 2.7: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3: Revision Control System
@@ -7460,12 +7461,12 @@ media-libs/gstreamer 0.10.36-r2 1.12.3 1.12.4: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.12.4: SDK for making video editors and more
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
-media-libs/hamlib 3.1: Ham radio backend rig control libraries
+media-libs/hamlib 3.1 3.2: Ham radio backend rig control libraries
 media-libs/harfbuzz 1.7.6: An OpenType text shaping engine
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.1.0 2.2.0-r1: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
-media-libs/imlib2 1.4.9: Version 2 of an advanced replacement library for libraries like libXpm
+media-libs/imlib2 1.4.9 1.5.1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/jasper 2.0.14: Implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.13-r4: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
@@ -8254,7 +8255,7 @@ media-video/vcdimager 0.7.24: GNU VCDimager
 media-video/vdr 2.0.6-r1 2.2.0-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
-media-video/vlc 2.2.8-r1 3.0.2-r1: Media player and framework with support for most multimedia files and streaming
+media-video/vlc 2.2.8-r1 3.0.2-r1 3.0.3-r1: Media player and framework with support for most multimedia files and streaming
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/x264-encoder 0.0.20170701: A free commandline encoder for X264/AVC streams
 media-video/xine-ui 0.99.9: Xine movie player
@@ -8329,6 +8330,7 @@ net-analyzer/munin 2.0.34: Munin Server Monitoring Tool
 net-analyzer/nagios 4.3.3: The Nagios metapackage
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
 net-analyzer/nagios-check_ipmi_sensor 3.1 3.2: IPMI Sensor Monitoring Plugin for Nagios/Icinga
+net-analyzer/nagios-check_linux_bonding 1.4: Nagios plugin to monitor bonding status of network interfaces
 net-analyzer/nagios-check_logfiles 3.7.6.3: A nagios plugin for checking logfiles
 net-analyzer/nagios-check_mysql_health 2.1.9.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
@@ -9710,7 +9712,7 @@ sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.3: Tools for logs with ANSI color
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
-sys-apps/coreutils 8.28-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
+sys-apps/coreutils 8.28-r1 8.29-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpuid 20170122: Utility to get detailed information about the CPU(s) using the CPUID instruction
 sys-apps/cracklib-words 20080507: large set of crack/cracklib dictionaries
 sys-apps/daemonize 1.7.4: Runs a command as a Unix daemon
@@ -9954,6 +9956,7 @@ sys-boot/refind 0.10.4-r2: The UEFI Boot Manager by Rod Smith
 sys-boot/syslinux 3.86 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
+sys-boot/woeusb 3.1.5: Creates windows installer on usb media from an iso image
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
 sys-cluster/ceph 10.2.3-r2: Ceph distributed filesystem
 sys-cluster/cinder 11.1.1 12.0.2 12.0.3: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
@@ -10778,7 +10781,7 @@ x11-libs/neXtaw 0.15.1-r3: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.40.14-r1: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.34.0: Low-level pixel manipulation routines
-x11-libs/qscintilla 2.10.3: A Qt port of Neil Hodgson's Scintilla C++ editor class
+x11-libs/qscintilla 2.10.3 2.10.4: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.7.1: Qt terminal emulator widget
 x11-libs/qwt 6.1.3-r2: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system

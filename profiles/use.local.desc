@@ -627,9 +627,7 @@ app-misc/lirc:devinput - Support the devinput input device
 app-misc/lirc:ftdi - Support FTDI devices
 app-misc/lirc:gtk - Include GTK support which enables the use of lirc-setup
 app-misc/lirc:hardware-carrier - The transmitter device generates its clock signal in hardware
-app-misc/lirc:iguanair - Support iguanaIR devices
 app-misc/lirc:inputlirc - Add a dependency on app-misc/inputlircd
-app-misc/lirc:irman - Add a dependency on media-libs/libirman
 app-misc/lirc:transmitter - Add transmitter support to some lirc-drivers (e.g. serial)
 app-misc/lirc:uinput - Enable support for uinput
 app-misc/mc:edit - Compile and install the mcedit application
@@ -5315,6 +5313,7 @@ sys-boot/refind:hfs - Builds the EFI binary hfs filesystem driver
 sys-boot/refind:iso9660 - Builds the EFI binary iso9660 filesystem driver
 sys-boot/refind:ntfs - Builds the EFI binary ntfs filesystem driver
 sys-boot/refind:reiserfs - Builds the EFI binary reiserfs filesystem driver
+sys-boot/woeusb:minimal - Install only woeusb tool
 sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace
 sys-cluster/ceph:cephfs - Build support for cephfs, a POSIX compatible filesystem built on top of ceph
 sys-cluster/ceph:cryptopp - Use dev-libs/crypto++ for cryptography
