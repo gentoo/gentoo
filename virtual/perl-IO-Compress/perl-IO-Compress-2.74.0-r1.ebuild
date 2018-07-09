@@ -12,4 +12,8 @@ RDEPEND="
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
+	>=virtual/perl-Compress-Raw-Zlib-${PV}
+	>=virtual/perl-Compress-Raw-Bzip2-${PV}
 "
+# Dependencies on Compress-Raw* must be kept in step
+# but sometimes not .... use ${PV} when you can.
