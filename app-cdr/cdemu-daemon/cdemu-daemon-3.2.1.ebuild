@@ -14,15 +14,16 @@ SLOT="0/7" # subslot = CDEMU_DAEMON_INTERFACE_VERSION_MAJOR in CMakeLists.txt
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
-RDEPEND=">=dev-libs/glib-2.32:2
+COMMON_DEPEND=">=dev-libs/glib-2.32:2
 	>=dev-libs/libmirage-3.2.0:=
-	>=media-libs/libao-0.8.0:=
-	sys-apps/dbus
-	>=sys-fs/vhba-20130607"
-DEPEND="${RDEPEND}
+	>=media-libs/libao-0.8.0:="
+DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
+RDEPEND="${COMMON_DEPEND}
+	sys-apps/dbus
+	>=sys-fs/vhba-20130607"
 
 DOCS=( AUTHORS README )
 
