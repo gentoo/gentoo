@@ -50,7 +50,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DTOKU_DEBUG_PARANOID=OFF
 		-DUSE_VALGRIND=OFF
-		-DUSE_BDB=OFF
 		-DBUILD_TESTING=OFF
 		-DTOKUMX_DISTNAME=${PV}
 		-DLIBJEMALLOC="jemalloc"
