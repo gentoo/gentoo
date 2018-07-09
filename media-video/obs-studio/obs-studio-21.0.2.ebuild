@@ -9,10 +9,10 @@ inherit cmake-utils gnome2-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jp9000/obs-studio.git"
+	EGIT_REPO_URI="https://github.com/obsproject/obs-studio.git"
 	EGIT_SUBMODULES=()
 else
-	SRC_URI="https://github.com/jp9000/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
