@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="osinfo database files"
-HOMEPAGE="http://libosinfo.org/"
+HOMEPAGE="https://libosinfo.org/"
 SRC_URI="https://releases.pagure.org/libosinfo/${P}.tar.xz"
 S="${WORKDIR}"
 
