@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="yard"
 RUBY_FAKEGEM_TASK_TEST="test"
@@ -28,5 +28,5 @@ ruby_add_rdepend "=dev-ruby/ast-2.4*"
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
-	sed -i -e "/simplecov/,+35d" test/helper.rb || die
+	sed -i -e '/simplecov/ s:^:#:' test/helper.rb || die
 }
