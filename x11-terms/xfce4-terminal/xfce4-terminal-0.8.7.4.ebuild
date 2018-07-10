@@ -7,7 +7,7 @@ inherit eapi7-ver
 
 DESCRIPTION="A terminal emulator for the Xfce desktop environment"
 HOMEPAGE="https://docs.xfce.org/apps/terminal/start"
-SRC_URI="mirror://xfce/src/apps/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
