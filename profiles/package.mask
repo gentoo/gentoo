@@ -80,6 +80,12 @@
 =virtual/perl-threads-2.220.0
 =virtual/perl-version-0.992.300
 
+# Andreas Schuerch <nativemad@gentoo.org> (10 Jul 2018)
+# Packages have open bugs and mayor component is not working since years
+# Removal in 30 days. Bug 608540
+net-misc/guacamole-server
+www-apps/guacamole
+
 # Aaron W. Swenson <titanofold@gentoo.org> (9 Jul 2018)
 # Hasn’t been updated in years, upstream’s download source is blank, and depends
 # on an outdated twisted-core (Bug 660668). Removal after 2018-08-08.
