@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A thumbnail service for Thunar"
 HOMEPAGE="https://docs.xfce.org/xfce/thunar/start"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
