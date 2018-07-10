@@ -148,6 +148,7 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_POCO_MONGODB="$(usex mongodb)"
+		-DENABLE_RDKAFKA="$(usex kafka)"
 		-DENABLE_TESTS="$(usex test)"
 		-DUSE_STATIC_LIBRARIES="$(usex static)"
 		-DMAKE_STATIC_LIBRARIES="$(usex static)"
@@ -157,7 +158,9 @@ src_configure() {
 		-DENABLE_CLICKHOUSE_LOCAL="$(usex tools)"
 		-DENABLE_CLICKHOUSE_BENCHMARK="$(usex tools)"
 		-DENABLE_CLICKHOUSE_PERFORMANCE="$(usex tools)"
-		-DENABLE_CLICKHOUSE_TOOLS="$(usex tools)"
+		-DENABLE_CLICKHOUSE_EXTRACT_FROM_CONFIG="$(usex tools)"
+		-DENABLE_CLICKHOUSE_COMPRESSOR="$(usex tools)"
+		-DENABLE_CLICKHOUSE_COPIER="$(usex tools)"
 		-DENABLE_CLICKHOUSE_COPIER="$(usex tools)"
 		-DENABLE_CLICKHOUSE_ALL=OFF
 		-DUSE_INTERNAL_CITYHASH_LIBRARY=ON # Clickhouse explicitly requires bundled patched cityhash
