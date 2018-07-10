@@ -17,12 +17,12 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="ayatana gnome"
 
 RDEPEND="
-	>=x11-themes/gtk-engines-murrine-0.90
 	>=x11-libs/gtk+-3.22:3
+	>=x11-themes/gtk-engines-murrine-0.90
 "
 DEPEND="${RDEPEND}
-	dev-ruby/sass
 	dev-libs/glib:2
+	dev-ruby/sass
 "
 
 S=${WORKDIR}/${MY_PN}-${PV}
