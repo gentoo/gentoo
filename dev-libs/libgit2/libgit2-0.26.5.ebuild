@@ -17,7 +17,7 @@ DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.github.com/"
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="0/27"
+SLOT="0/26"
 IUSE="+curl examples gssapi libressl +ssh test +threads trace"
 
 RDEPEND="
@@ -40,7 +40,7 @@ DOCS=( AUTHORS CONTRIBUTING.md CONVENTIONS.md README.md )
 
 src_prepare() {
 	# skip online tests
-	sed -i '/libgit2_clar/s/-ionline/-xonline/' tests/CMakeLists.txt || die
+	sed -i '/libgit2_clar/s/-ionline/-xonline/' CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
