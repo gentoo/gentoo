@@ -8,7 +8,7 @@ case ${PV} in
 *)      UP_PV=${PV} ;;
 esac
 
-inherit toolchain-funcs eutils multilib-minimal
+inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="e2fsprogs libraries (common error and subsystem)"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
