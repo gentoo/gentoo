@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-libs/popt
 	>=sys-libs/efivar-32-r1
-	>=sys-libs/libsmbios-2.3.2
+	>=sys-libs/libsmbios-2.3.3
 "
 DEPEND="
 	${RDEPEND}
