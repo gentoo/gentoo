@@ -128,6 +128,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-12.2.4-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-rocksdb-cflags.patch"
+	"${FILESDIR}/ceph-12.2.5-no-werror.patch"
 )
 
 check-reqs_export_vars() {
@@ -163,7 +164,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-12.2.4-boost-sonames.patch"
+		eapply "${FILESDIR}/ceph-12.2.5-boost-sonames.patch"
 	fi
 
 	# remove tests that need root access
