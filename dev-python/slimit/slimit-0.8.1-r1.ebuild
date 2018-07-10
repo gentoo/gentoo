@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-python/ply[${PYTHON_USEDEP}]
+RDEPEND="dev-python/ply:=[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
@@ -24,6 +24,17 @@ DEPEND="${RDEPEND}
 	)"
 
 PATCHES=( "${FILESDIR}/${P}-fix-python3.patch" )
+
+python_compile() {
+	distutils-r1_python_compile
+
+	rm "${BUILD_DIR}"/lib/slimit/*tab.py || die
+
+	# Regenerate yacctab.py and lextab.py files to avoid warnings whenever
+	# the module is imported. See https://github.com/rspivak/slimit/issues/97
+	# for details
+	"${EPYTHON}" -B -c 'import slimit;slimit.minify("")' || die
+}
 
 python_test() {
 	esetup.py pytest --addopts "${BUILD_DIR}" || die "Testing failed with ${EPYTHON}"
