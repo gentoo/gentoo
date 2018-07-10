@@ -7,13 +7,19 @@ EGO_PN="github.com/jedisct1/${PN}"
 
 inherit fcaps golang-build systemd user
 
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://${EGO_PN}.git"
+else
+	SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
+
 DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
 HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
-SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
@@ -40,7 +46,7 @@ src_install() {
 	doins "src/${EGO_PN}"/example-{blacklist.txt,whitelist.txt}
 	doins "src/${EGO_PN}"/example-{cloaking-rules.txt,forwarding-rules.txt}
 
-	insinto "/usr/share/dnscrypt-proxy"
+	insinto /usr/share/dnscrypt-proxy
 	doins -r "utils/generate-domains-blacklists/."
 
 	newinitd "${FILESDIR}"/dnscrypt-proxy.initd dnscrypt-proxy
