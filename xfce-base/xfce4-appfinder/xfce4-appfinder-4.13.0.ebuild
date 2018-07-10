@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A tool to find and launch installed applications for the Xfce desktop"
 HOMEPAGE="https://docs.xfce.org/xfce/xfce4-appfinder/start"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

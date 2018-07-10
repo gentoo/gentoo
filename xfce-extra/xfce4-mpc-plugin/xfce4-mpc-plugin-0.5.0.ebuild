@@ -7,7 +7,7 @@ inherit gnome2-utils xdg-utils
 
 DESCRIPTION="Music Player Daemon (mpd) panel plugin"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-mpc-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"

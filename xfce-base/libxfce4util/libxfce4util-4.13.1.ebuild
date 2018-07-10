@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A basic utility library for the Xfce desktop environment"
 HOMEPAGE="https://git.xfce.org/xfce/libxfce4util/"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0/7"
