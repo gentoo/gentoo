@@ -4949,7 +4949,7 @@ dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted 
 dev-python/jaraco-classes 1.4 1.5: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 1.5 1.5.3: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-functools 1.19: Additional functions used by other projects by developer jaraco
-dev-python/jaraco-itertools 2.0 2.3: Tools for working with iterables. Complements itertools and more_itertools
+dev-python/jaraco-itertools 2.3: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 1.5 1.5.2: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 4.1 5.1: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 1.1.1 1.2: Routines for handling streaming data
