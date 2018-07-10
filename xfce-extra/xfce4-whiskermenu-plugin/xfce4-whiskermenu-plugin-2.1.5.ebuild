@@ -7,7 +7,7 @@ inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Alternate application launcher for Xfce"
 HOMEPAGE="https://gottcode.org/xfce4-whiskermenu-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
