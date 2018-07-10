@@ -7,6 +7,6 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.16 >=x11-libs/gtk+-2.12:2
 SLOT=0
-SRC_URI=mirror://xfce/src/apps/gigolo/0.4/gigolo-0.4.2.tar.bz2
+SRC_URI=https://archive.xfce.org/src/apps/gigolo/0.4/gigolo-0.4.2.tar.bz2
 _eclasses_=xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=33b97de7df58f4e6a19fb721abd566f8
+_md5_=ca1b565bab72e3b772de533e1e00db2a

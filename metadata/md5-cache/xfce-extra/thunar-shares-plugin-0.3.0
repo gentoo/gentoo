@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.18 >=x11-libs/gtk+-3.22:3 >=xfce-base/thunar-1.7:=
 SLOT=0
-SRC_URI=mirror://xfce/src/thunar-plugins/thunar-shares-plugin/0.3/thunar-shares-plugin-0.3.0.tar.bz2
-_md5_=290463fd8987f402a6a5eae1e4b2ae32
+SRC_URI=https://archive.xfce.org/src/thunar-plugins/thunar-shares-plugin/0.3/thunar-shares-plugin-0.3.0.tar.bz2
+_md5_=3ebc4ca124375e5b741e42b80d23708c

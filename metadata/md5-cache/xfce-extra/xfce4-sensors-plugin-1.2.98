@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-3.20:3= >=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:= hddtemp? ( app-admin/hddtemp net-analyzer/gnu-netcat ) libnotify? ( >=x11-libs/libnotify-0.7:= ) lm_sensors? ( >=sys-apps/lm_sensors-3.1.0:= ) video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
 REQUIRED_USE=|| ( hddtemp lm_sensors acpi )
 SLOT=0
-SRC_URI=mirror://xfce/src/panel-plugins/xfce4-sensors-plugin/1.2/xfce4-sensors-plugin-1.2.98.tar.bz2
-_md5_=f5533a57e43bfa6cbeee580a3ae12e5b
+SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/1.2/xfce4-sensors-plugin-1.2.98.tar.bz2
+_md5_=e9a98fff3a19ca424fea61723af12183

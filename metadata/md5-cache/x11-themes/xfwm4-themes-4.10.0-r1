@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=>=xfce-base/xfwm4-4.10
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=mirror://xfce/src/art/xfwm4-themes/4.10/xfwm4-themes-4.10.0.tar.bz2
-_md5_=131e8970bc40f73737c417d643443d47
+SRC_URI=https://archive.xfce.org/src/art/xfwm4-themes/4.10/xfwm4-themes-4.10.0.tar.bz2
+_md5_=0f7c5aab5efbd340504ce61f1b4a88e4

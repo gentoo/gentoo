@@ -7,5 +7,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~am
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.30:= >=x11-libs/gtk+-3.2:3= >=xfce-base/garcon-0.3:= >=xfce-base/libxfce4util-4.11:= >=xfce-base/libxfce4ui-4.11:=[gtk3(+)] >=xfce-base/xfconf-4.10:= !xfce-base/xfce-utils
 SLOT=0
-SRC_URI=mirror://xfce/src/xfce/xfce4-appfinder/4.12/xfce4-appfinder-4.12.0.tar.bz2
-_md5_=0adf6ddbb64909e32ccc33d075f8b0a0
+SRC_URI=https://archive.xfce.org/src/xfce/xfce4-appfinder/4.12/xfce4-appfinder-4.12.0.tar.bz2
+_md5_=3f978446eca37efb01968bc21d51a1b0
