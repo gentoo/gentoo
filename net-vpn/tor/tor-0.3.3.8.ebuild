@@ -18,12 +18,13 @@ SLOT="0"
 # We need to keyword app-arch/zstd
 #KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
-IUSE="libressl lzma scrypt seccomp selinux systemd tor-hardening test web zstd"
+IUSE="caps libressl lzma scrypt seccomp selinux systemd tor-hardening test web zstd"
 
 DEPEND="
 	app-text/asciidoc
 	dev-libs/libevent[ssl]
 	sys-libs/zlib
+	caps? ( sys-libs/libcap )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 	lzma? ( app-arch/xz-utils )
@@ -47,6 +48,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	export ac_cv_lib_cap_cap_init=$(usex caps)
 	econf \
 		--localstatedir="${EPREFIX}/var" \
 		--enable-system-torrc \
