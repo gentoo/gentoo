@@ -1,7 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit fcaps toolchain-funcs
 
 DESCRIPTION="generates a status bar for dzen2, xmobar or similar"
@@ -13,20 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="pulseaudio"
 
-RDEPEND="
-	>=dev-libs/yajl-2.0.2
+BDEPEND="virtual/pkgconfig"
+DEPEND="
 	dev-libs/confuse:=
 	dev-libs/libnl:3
+	>=dev-libs/yajl-2.0.2
 	media-libs/alsa-lib
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.11-pulseaudio.patch
-)
+RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.11-pulseaudio.patch )
 
 src_prepare() {
 	default
