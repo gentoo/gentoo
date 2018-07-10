@@ -1,0 +1,87 @@
+commit 5007d7067918fb3d950d34c01d059e5222db679a
+Author:     Aric Belsito <lluixhi@gmail.com>
+AuthorDate: Mon Dec 4 00:10:29 2017 +0100
+Commit:     Thomas Deutschmann <whissi@gentoo.org>
+CommitDate: Wed Jul 11 01:33:28 2018 +0200
+
+    Fix build on MUSL
+    
+    Add missing AI_IDN and NI_IDN declarations.
+    
+    Bug: https://bugs.gentoo.org/503914
+    Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+
+diff --git a/arping.c b/arping.c
+index c2f2129..d753345 100644
+--- a/arping.c
++++ b/arping.c
+@@ -44,6 +44,13 @@
+ 
+ #ifdef USE_IDN
+ #include <locale.h>
++
++#ifndef AI_IDN
++#define AI_IDN 0x0040
++#endif
++#ifndef AI_CANONIDN
++#define AI_CANONIDN 0x0080
++#endif
+ #endif
+ 
+ #include "SNAPSHOT.h"
+diff --git a/ping.h b/ping.h
+index 3e09685..1e51c67 100644
+--- a/ping.h
++++ b/ping.h
+@@ -37,6 +37,17 @@
+ 
+ #ifdef USE_IDN
+ #include <idn2.h>
++
++#ifndef AI_IDN
++#define AI_IDN 0x0040
++#endif
++#ifndef AI_CANONIDN
++#define AI_CANONIDN 0x0080
++#endif
++#ifndef NI_IDN
++#define NI_IDN 32
++#endif
++
+ #define getaddrinfo_flags (AI_CANONNAME | AI_IDN | AI_CANONIDN)
+ #define getnameinfo_flags NI_IDN
+ #else
+diff --git a/tracepath.c b/tracepath.c
+index 53bda16..9558e49 100644
+--- a/tracepath.c
++++ b/tracepath.c
+@@ -29,6 +29,14 @@
+ 
+ #ifdef USE_IDN
+ #include <locale.h>
++
++#ifndef AI_IDN
++#define AI_IDN 0x0040
++#endif
++#ifndef NI_IDN
++#define NI_IDN 32
++#endif
++
+ #define getnameinfo_flags	NI_IDN
+ #else
+ #define getnameinfo_flags	0
+diff --git a/traceroute6.c b/traceroute6.c
+index a1022f9..ab34615 100644
+--- a/traceroute6.c
++++ b/traceroute6.c
+@@ -246,6 +246,10 @@
+ #ifdef USE_IDN
+ #include <locale.h>
+ 
++#ifndef NI_IDN
++#define NI_IDN 32
++#endif
++
+ #define ADDRINFO_IDN_FLAGS	AI_IDN
+ #define getnameinfo_flags	NI_IDN
+ #else
