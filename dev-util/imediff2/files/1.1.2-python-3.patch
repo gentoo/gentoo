@@ -1,6 +1,6 @@
 --- a/imediff2	2017-11-14 09:28:57.007929569 -0500
 +++ b/imediff2	2017-11-14 10:11:12.618496692 -0500
-@@ -18,10 +18,12 @@
+@@ -18,20 +18,20 @@
  # License along with the program; if not, write to the Free Software
  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
@@ -15,7 +15,9 @@
  import curses
  import tempfile
  import gettext
-@@ -31,7 +33,6 @@
+ import difflib
+ import getopt
+-import string
  import types
  import time
  import pty
@@ -35,11 +37,11 @@
 -  except IOError, (error, message):
 -    if error == errno.ENOENT and assume_empty:
 +  except IOError as e:
-+    if e.error == errno.ENOENT and assume_empty:
++    if e.errno == errno.ENOENT and assume_empty:
        return ""
      else:
 -      sys.stderr.write(_("Could not read '%s': %s\n") % (filename, message))
-+      sys.stderr.write(_("Could not read '%s': %s\n") % (filename, e.message))
++      sys.stderr.write(_("Could not read '%s': %s\n") % (filename, e.strerror))
        sys.exit(3)
  
  def strip_end_lines( txt ):
@@ -57,6 +59,27 @@
            decor, color_pair] )
          j+=1
  
+@@ -287,9 +287,9 @@
+   def sel_next( dir ):
+     global sel, active_chunks
+     if dir == 'up':
+-      rng = range(sel-1, -1, -1)
++      rng = list(range(sel-1, -1, -1))
+     else:
+-      rng = range(sel+1, len(active_chunks))
++      rng = list(range(sel+1, len(active_chunks)))
+     for j in rng:
+       if active_chunks[j][1] > y and active_chunks[j][0] < y+winh:
+         sel = j
+@@ -442,7 +441,7 @@
+     elif c == ord('h') or c == ord('?') or c == curses.KEY_HELP:
+       helpw = 0
+       helph = 0
+-      for l in string.split(helptext(), "%c"%10):
++      for l in helptext().split("%c"%10):
+         helpw = max(helpw, len(l))
+         helph += 1
+       helppad = curses.newpad(helph+2, helpw+2)
 @@ -512,21 +513,21 @@
  try:
    opts, args = getopt.getopt(sys.argv[1:], "hmuo:abcNV",
@@ -65,26 +88,44 @@
 -  print _("Error: ") + str(e)
 -  print usagetext()
 +except getopt.GetoptError as e:
-+  print(_("Error: ") + str(e))
-+  print(usagetext())
++  print((_("Error: ") + str(e)))
++  print((usagetext()))
    sys.exit(2)
  
  for o, a in opts:
    if o in ("-h", "--help"):
 -    print usagetext()
-+    print(usagetext())
++    print((usagetext()))
      sys.exit()
    elif o in ("-V", "--version"):
 -    print "%s %s" % (PACKAGE, VERSION)
-+    print("%s %s" % (PACKAGE, VERSION))
++    print(("%s %s" % (PACKAGE, VERSION)))
      sys.exit()
  
  if len(args)<2:
 -  print usagetext()
-+  print(usagetext())
++  print((usagetext()))
    sys.exit(2)
  
  for o, a in opts:
+@@ -592,15 +592,15 @@
+   if launch_editor:
+     assert( not editor is None )
+     try:
+       (of, of_name) = tempfile.mkstemp(prefix='imediff2')
+-      os.write( of, output )
++      os.write( of, output.encode() )
+       os.close(of)
+       time.sleep(0.1) # make the change visible - many editor look a lot like imediff2
+       editor_ret = os.system('%s %s' % (editor, of_name))
+       time.sleep(0.1)
+       if editor_ret == 0:
+         new_b_lines = read_lines(of_name)
+-        if string.join(new_b_lines, '') == output:
++        if ''.join(new_b_lines) == output:
+           chunk_mode = 'old'
+         elif new_b_lines != lines_a:
+           lines_b = new_b_lines
 @@ -607,8 +608,8 @@
          else:
            chunks = 'old'
@@ -92,7 +133,7 @@
 -    except IOError, (error, message):
 -      sys.stderr.write(_("Could not write to '%s': %s\n") % (of_name, message));
 +    except IOError as e:
-+      sys.stderr.write(_("Could not write to '%s': %s\n") % (of_name, e.message));
++      sys.stderr.write(_("Could not write to '%s': %s\n") % (of_name, e.strerror));
  
    if not launch_editor:
      break
@@ -101,13 +142,14 @@
    try:
      if ofile is not None:
 -      of = file(ofile, 'wb')
-+      of = open(ofile, 'w')
-       of.write( output )
++      of = open(ofile, 'wb')
+-      of.write( output )
++      of.write( output.encode() )
        of.close()
      sys.exit(0)
 -  except IOError, (error, message):
 -    sys.stderr.write(_("Could not write to '%s': %s\n") % (ofile, message));
 +  except IOError as e:
-+    sys.stderr.write(_("Could not write to '%s': %s\n") % (ofile, e.message));
++    sys.stderr.write(_("Could not write to '%s': %s\n") % (ofile, e.strerror));
  
  sys.exit(3)
