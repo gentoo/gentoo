@@ -27,3 +27,5 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-wrong-port-avail.patch" )
