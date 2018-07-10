@@ -6,7 +6,7 @@ inherit flag-o-matic multilib xfconf
 
 DESCRIPTION="V4L radio device control plug-in for the Xfce desktop environment"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-radio-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
