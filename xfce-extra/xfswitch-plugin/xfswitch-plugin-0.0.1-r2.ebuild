@@ -6,7 +6,7 @@ inherit multilib xfconf
 
 DESCRIPTION="A panel plug-in for user switching (using lightdm or gdm or ldm)"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfswitch-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.gz"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
