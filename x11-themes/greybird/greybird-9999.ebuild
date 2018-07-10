@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/glib:2
-	dev-ruby/sass
+	dev-ruby/sass:3.5
 "
 
 src_prepare() {
