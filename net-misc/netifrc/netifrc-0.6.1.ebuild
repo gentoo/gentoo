@@ -51,7 +51,7 @@ src_compile() {
 
 src_install() {
 	emake ${MAKE_ARGS} DESTDIR="${D}" install
-	dodoc README CREDITS FEATURE-REMOVAL-SCHEDULE STYLE TODO ChangeLog
+	dodoc README CREDITS FEATURE-REMOVAL-SCHEDULE STYLE TODO
 
 	# Install the service file
 	LIBEXECDIR=${EPREFIX}/lib/${PN}
