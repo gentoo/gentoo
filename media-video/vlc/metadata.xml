@@ -41,7 +41,6 @@
 		<flag name="macosx-quartztext">Enable Mac OS X quartz text module</flag>
 		<flag name="macosx-qtkit">Enable Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module</flag>
 		<flag name="matroska">Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
-		<flag name="microdns">Enable Chromecast auto-detection using <pkg>net-libs/libmicrodns</pkg></flag>
 		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
 		<flag name="nfs">Enable support for nfs protocol via <pkg>net-fs/libnfs</pkg></flag>
 		<flag name="omxil">Enable OpenMAX Integration Layer codec module</flag>
