@@ -224,11 +224,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Artwork</url>
     <description>The Artwork project manages Gentoo artwork and related assets. This includes wallpapers, logos, themes, icons sets, etc.</description>
     <member>
-      <email>a3li@gentoo.org</email>
-      <name>Alex Legler</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
       <role>Developer</role>
@@ -1704,7 +1699,7 @@
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>General system administration, Kernel</role>
+      <role>General system administration, Kernel, gitolite, wiki</role>
     </member>
     <member>
       <email>antarus@gentoo.org</email>
