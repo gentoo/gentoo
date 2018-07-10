@@ -57,8 +57,6 @@ src_install() {
 			BASHCOMPDIR="$(get_bashcompdir)" \
 			PREFIX="${EPREFIX}/usr" \
 			-C src/tools install
-		insinto /$(get_libdir)/netifrc/net
-		newins "${FILESDIR}"/wireguard-openrc.sh wireguard.sh
 	fi
 	use module-src && emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src dkms-install
 }
