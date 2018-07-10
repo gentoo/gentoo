@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,12 +17,12 @@ KEYWORDS=""
 IUSE="ayatana gnome"
 
 RDEPEND="
+	>=x11-libs/gtk+-3.22:3
 	>=x11-themes/gtk-engines-murrine-0.90
-	>=x11-libs/gtk+-3.20.0:3
 "
 DEPEND="${RDEPEND}
-	dev-ruby/sass
 	dev-libs/glib:2
+	dev-ruby/sass
 "
 
 src_prepare() {
@@ -37,4 +37,15 @@ src_install() {
 	use ayatana || rm -rf unity
 	use gnome || rm -rf metacity-1
 	popd > /dev/null || die
+}
+
+pkg_postinst() {
+	if ! has_version x11-themes/elementary-xfce-icon-theme ; then
+		elog "For upstream's default icon theme, please emerge"
+		elog "x11-themes/elementary-xfce-icon-theme"
+	fi
+	if ! has_version x11-themes/vanilla-dmz-xcursors ; then
+		elog "For upstream's default cursor theme, please emerge"
+		elog "x11-themes/vanilla-dmz-xcursors"
+	fi
 }
