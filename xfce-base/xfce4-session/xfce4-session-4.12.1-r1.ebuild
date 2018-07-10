@@ -7,7 +7,7 @@ inherit xfconf
 
 DESCRIPTION="A session manager for the Xfce desktop environment"
 HOMEPAGE="https://docs.xfce.org/xfce/xfce4-session/start"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
