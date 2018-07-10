@@ -29,6 +29,7 @@ net-vpn/tor test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (27 Mar 2018)
 # dev-qt/qtwebengine is not ported to powerpc
+net-irc/quassel urlpreview
 www-client/otter webengine
 
 # Matthias Maier <tamiko@gentoo.org> (18 Mar 2018)

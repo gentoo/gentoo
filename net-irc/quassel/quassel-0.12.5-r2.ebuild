@@ -18,7 +18,7 @@ HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="crypt dbus debug kde monolithic phonon postgres +server
-snorenotify +ssl syslog webkit X"
+snorenotify +ssl syslog urlpreview X"
 
 SERVER_RDEPEND="
 	dev-qt/qtscript:5
@@ -47,7 +47,7 @@ GUI_RDEPEND="
 	)
 	phonon? ( media-libs/phonon[qt5(+)] )
 	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
-	webkit? ( dev-qt/qtwebkit:5 )
+	urlpreview? ( dev-qt/qtwebengine:5[widgets] )
 "
 
 RDEPEND="
@@ -79,7 +79,6 @@ REQUIRED_USE="
 	postgres? ( || ( server monolithic ) )
 	snorenotify? ( || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
-	webkit? ( || ( X monolithic ) )
 "
 
 PATCHES=( "${FILESDIR}/${P}-qt511.patch" )
@@ -99,6 +98,7 @@ src_configure() {
 		-DUSE_QT5=ON
 		-DEMBED_DATA=OFF
 		-DCMAKE_SKIP_RPATH=ON
+		-DWITH_WEBKIT=OFF
 		$(cmake-utils_use_find_package crypt QCA2-QT5)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
 		$(cmake-utils_use_find_package dbus Qt5DBus)
@@ -108,7 +108,7 @@ src_configure() {
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
 		-DWANT_CORE=$(usex server)
 		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
-		-DWITH_WEBKIT=$(usex webkit)
+		-DWITH_WEBENGINE=$(usex urlpreview)
 		-DWANT_QTCLIENT=$(usex X)
 	)
 
