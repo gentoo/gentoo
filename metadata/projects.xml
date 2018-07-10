@@ -2441,11 +2441,6 @@ developers and volunteer mentors.</description>
     <url>https://wiki.gentoo.org/wiki/Project:Ops</url>
     <description>The &lt;span style="font-family: monospace; font-size: 95%;"&gt;[irc://irc.gentoo.org/gentoo #gentoo]&lt;/span&gt; Operators project describes the tasks and policies carried out by the operators of the #gentoo channel on the Freenode network.</description>
     <member>
-      <email>a3li@gentoo.org</email>
-      <name>Alex Legler</name>
-      <role>Operator</role>
-    </member>
-    <member>
       <email>blackace@gentoo.org</email>
       <name>Matt Kasa</name>
       <role>Operator</role>
@@ -4135,11 +4130,6 @@ developers and volunteer mentors.</description>
     <name>Wiki</name>
     <url>https://wiki.gentoo.org/wiki/Project:Wiki</url>
     <description>The wiki project oversees the community and the content surrounding wiki.gentoo.org</description>
-    <member>
-      <email>a3li@gentoo.org</email>
-      <name>Alex Legler</name>
-      <role>Administrator</role>
-    </member>
     <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
