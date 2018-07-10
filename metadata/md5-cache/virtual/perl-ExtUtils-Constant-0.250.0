@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for ExtUtils-Constant
+EAPI=6
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-fbsd
+RDEPEND=|| ( =dev-lang/perl-5.28* ~perl-core/ExtUtils-Constant-0.250.0 ) dev-lang/perl:= !<perl-core/ExtUtils-Constant-0.250.0 !>perl-core/ExtUtils-Constant-0.250.0-r999
+SLOT=0
+_md5_=a061b8656d63260b44a83a4a5d74cf43
