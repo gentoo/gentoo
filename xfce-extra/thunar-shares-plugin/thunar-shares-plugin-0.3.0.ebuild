@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Thunar plugin to share files using Samba"
 HOMEPAGE="https://goodies.xfce.org/projects/thunar-plugins/thunar-shares-plugin"
-SRC_URI="mirror://xfce/src/thunar-plugins/thunar-shares-plugin/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/thunar-plugins/thunar-shares-plugin/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
