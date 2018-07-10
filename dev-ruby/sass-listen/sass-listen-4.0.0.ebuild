@@ -21,7 +21,7 @@ RUBY_S="listen-${PV}"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/rb-inotify-0.9.7"
