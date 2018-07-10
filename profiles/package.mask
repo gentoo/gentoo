@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Corentin Pazdera <nado@troglodyte.be> (12 Jul 2018)
+# Pulseeffects depends on atoms only found in gnome overlay
+=media-sound/pulseeffects-9999
+=media-sound/pulseeffects-4.1.3
+
 # Michał Górny <mgorny@gentoo.org> (12 Jul 2018)
 # Abandoned upstream, no reverse dependencies.  Collides with
 # dev-python/promises (that has revdeps).
