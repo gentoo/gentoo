@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Easy to use task manager"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-taskmanager"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
