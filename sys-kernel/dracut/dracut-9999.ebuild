@@ -58,7 +58,6 @@ DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
-	"${FILESDIR}/045-systemdutildir.patch"
 )
 
 src_configure() {
