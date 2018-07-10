@@ -117,9 +117,9 @@ REQUIRED_USE="!minimal? (
 	)
 	xephyr? ( kdrive )"
 
-#UPSTREAMED_PATCHES=(
-#	"${WORKDIR}/patches/"
-#)
+UPSTREAMED_PATCHES=(
+	"${FILESDIR}"/${P}-xfree86-Inline-xf86-Read-Write-Mmio-8-16-32-on-alpha.patch
+)
 
 PATCHES=(
 	"${UPSTREAMED_PATCHES[@]}"

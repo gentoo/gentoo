@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0/${PV}"
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug doc +glamor ipv6 libressl minimal selinux static-libs systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug doc +glamor ipv6 libressl minimal selinux static-libs +suid systemd tslib +udev unwind xcsecurity"
 
 CDEPEND="
 	>=app-eselect/eselect-opengl-1.3.0
@@ -29,7 +29,7 @@ CDEPEND="
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
 	x11-apps/xkbcomp
-	>=x11-libs/libdrm-2.4.89
+	>=x11-libs/libdrm-2.4.46
 	>=x11-libs/libpciaccess-0.12.901
 	>=x11-libs/libXau-1.0.4
 	>=x11-libs/libXdmcp-1.0.2
@@ -75,7 +75,8 @@ CDEPEND="
 		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-10.3.4-r1
 	)
-	udev? ( virtual/libudev:= )
+	tslib? ( >=x11-libs/tslib-1.0 )
+	udev? ( >=virtual/udev-150 )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
@@ -93,7 +94,7 @@ DEPEND="
 	>=media-fonts/font-util-1.2.0
 	sys-devel/flex
 	>=x11-misc/util-macros-1.18
-	>=x11-base/xorg-proto-2018.3
+	x11-base/xorg-proto
 	dmx? (
 		doc? (
 			|| (
@@ -126,6 +127,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12-unloadsubmodule.patch
 	# needed for new eselect-opengl, bug #541232
 	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
+	"${FILESDIR}"/${PN}-1.19.4-sysmacros.patch #633530
+	"${FILESDIR}"/${PN}-1.19.5-glx-do-not-pick-sRGB-config-for-32-bit-RGBA-visual.patch #653688
 )
 
 pkg_pretend() {
@@ -158,7 +161,12 @@ src_configure() {
 		$(use_enable dmx)
 		$(use_enable glamor)
 		$(use_enable kdrive)
+		$(use_enable kdrive kdrive-kbd)
+		$(use_enable kdrive kdrive-mouse)
+		$(use_enable kdrive kdrive-evdev)
+		$(use_enable suid install-setuid)
 		$(use_enable static-libs static)
+		$(use_enable tslib)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
@@ -176,8 +184,6 @@ src_configure() {
 		$(use_with doc xmlto)
 		$(use_with systemd systemd-daemon)
 		$(use_enable systemd systemd-logind)
-		$(use_enable systemd suid-wrapper)
-		$(use_enable !systemd install-setuid)
 		--enable-libdrm
 		--sysconfdir="${EPREFIX%/}"/etc/X11
 		--localstatedir="${EPREFIX%/}"/var
