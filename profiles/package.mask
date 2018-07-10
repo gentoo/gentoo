@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (10 Jul 2018)
+# Package is not maintained, has a broken SRC_URI and 
+# we may not mirror the files.
+# Removal on (10 Aug 2018) Bug #660750
+media-sound/neroaac
+
 # Kent Fredric <kentnl@gentoo.org> (10 Jul 2018)
 # Perl 5.28 Staging block
 =dev-lang/perl-5.28.0
