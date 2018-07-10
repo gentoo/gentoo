@@ -1,4 +1,4 @@
-From 3d3060a744500702e43c7deaec25c69cbf1ef532 Mon Sep 17 00:00:00 2001
+From 0d5b3bc1cc492c10072def017fe704782bc4b274 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Fri, 4 May 2018 17:40:04 +0200
 Subject: [PATCH] Use pkg-config to find freetype
@@ -6,22 +6,13 @@ Subject: [PATCH] Use pkg-config to find freetype
 As of freetype-2.9.1 the freetype-config script has been deprecated and
 is no longer shipped by default.
 ---
- configure.ac | 36 ++++++++++--------------------------
- 1 file changed, 10 insertions(+), 26 deletions(-)
+ configure.in | 30 +++++++-----------------------
+ 1 file changed, 7 insertions(+), 23 deletions(-)
 
-diff --git a/configure.ac b/configure.ac
-index 95943a0b..3d9f1874 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -247,7 +247,7 @@ AC_CHECK_LIB(X11, XGetImage, XLIB="-lX11", XLIB="")
- 
- AC_ARG_ENABLE(
- [freetype],
--[  --enable-freetype       Enable freetype support (default: enabled)],
-+[  --disable-freetype      Disable freetype support (default: enabled)],
- [case "${enableval}" in
-   yes) freetype_support=yes ;;
-    no) freetype_support=no ;;
+diff --git a/configure.in b/configure.in
+index 361db86c..cb9423f5 100644
+--- a/configure.in
++++ b/configure.in
 @@ -257,26 +257,10 @@ freetype_support=yes)
  
  if test "$freetype_support" = "yes"; then
@@ -66,19 +57,6 @@ index 95943a0b..3d9f1874 100644
  fi
  
  AM_CONDITIONAL(GIFLIB_GIFERRORSTRING, test x"$ac_cv_lib_gif_GifErrorString" = xyes)
-@@ -504,10 +488,10 @@ else
- 	echo "  ZLIB enabled ($ZLIB)"
- fi
- 
--if test x"$ft_config" = "x"; then
-+if test x"$HAS_FREETYPE" = "x"; then
- 	echo "  Freetype library disabled"
- else
--	echo "  Freetype library enabled ($ft_config)"
-+	echo "  Freetype library enabled ($FREETYPE_LIBS)"
- fi
- 
- if test x"$GIFLIB" = "x" -o x"$GIFINC" = "x"; then
 -- 
-2.18.0
+2.17.0
 
