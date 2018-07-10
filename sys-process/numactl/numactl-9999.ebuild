@@ -7,11 +7,11 @@ inherit autotools toolchain-funcs multilib-minimal
 
 DESCRIPTION="Utilities and libraries for NUMA systems"
 HOMEPAGE="https://github.com/numactl/numactl"
-if [[ "${PV}" = 9999* ]] ; then
+if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/numactl/numactl.git"
 else
-	SRC_URI="ftp://oss.sgi.com/www/projects/libnuma/download/${P}.tar.gz"
+	SRC_URI="https://github.com/numactl/numactl/releases/download/v${PV}/${P}.tar.gz"
 	# ARM lacks the __NR_migrate_pages syscall.
 	KEYWORDS="~amd64 -arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux"
 fi
@@ -58,7 +58,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	local DOCS=( README TODO CHANGES DESIGN )
+	local DOCS=( README.md )
 	einstalldocs
 	# delete man pages provided by the man-pages package #238805
 	rm -r "${ED%/}"/usr/share/man/man[25] || die
