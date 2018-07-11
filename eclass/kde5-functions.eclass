@@ -92,17 +92,6 @@ fi
 
 debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
 
-# @ECLASS-VARIABLE: KDE_SCM
-# @DESCRIPTION:
-# SCM to use if KDE_BUILD_TYPE is determined to be "live".
-# Currently, only git is supported.
-: ${KDE_SCM:=git}
-
-case ${KDE_SCM} in
-	git) ;;
-	*) die "KDE_SCM: ${KDE_SCM} is not supported" ;;
-esac
-
 # @FUNCTION: _check_gcc_version
 # @INTERNAL
 # @DESCRIPTION:
