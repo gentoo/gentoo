@@ -149,7 +149,7 @@ if [[ ${MY_EXTRAS_VER} != "live" && ${MY_EXTRAS_VER} != "none" ]]; then
 fi
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
-HOMEPAGE="http://www.mysql.com/"
+HOMEPAGE="https://www.mysql.com/"
 LICENSE="GPL-2"
 SLOT="0/${SUBSLOT:-0}"
 
