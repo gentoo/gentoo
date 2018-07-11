@@ -1989,6 +1989,8 @@ dev-ruby/ruby-sdl:image - Enable media-libs/sdl-image support
 dev-ruby/ruby-sdl:mixer - Enable media-libs/sdl-mixer support
 dev-ruby/ruby-sdl:sge - Enable sdl-sge support
 dev-ruby/rubygems:server - Install support for the rubygems server
+dev-scheme/gauche:mbedtls - Enable support for net-libs/mbedtls
+dev-scheme/gauche-gl:cg - Enable NVidia Cg binding
 dev-scheme/guile:debug-freelist - Include garbage collector freelist debugging code
 dev-scheme/guile:debug-malloc - Include malloc debugging code
 dev-scheme/guile:deprecated - Enable deprecated features
