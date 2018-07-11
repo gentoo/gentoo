@@ -22,6 +22,13 @@ DEPEND="
 	mercurial? ( dev-vcs/mercurial )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
+python_prepare_all() {
+	# network access
+	sed -i -e 's:test_pip_download:_&:' testing/test_regressions.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	distutils_install_for_testing
 	py.test -v -v -x -k testing/test_basic_api.py || die "tests failed under ${EPYTHON}"
