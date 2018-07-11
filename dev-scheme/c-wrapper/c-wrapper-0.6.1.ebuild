@@ -18,7 +18,7 @@ RDEPEND="dev-scheme/gauche
 	virtual/libffi"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-system-libffi.patch )
+PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
 HTML_DOCS=( doc/${PN}-ref{e,j}.html )
 
 src_prepare() {
