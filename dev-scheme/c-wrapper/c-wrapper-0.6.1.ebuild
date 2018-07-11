@@ -18,7 +18,7 @@ RDEPEND="dev-scheme/gauche
 	virtual/libffi"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-system-libffi.diff )
+PATCHES=( "${FILESDIR}"/${PN}-system-libffi.patch )
 HTML_DOCS=( doc/${PN}-ref{e,j}.html )
 
 src_prepare() {
