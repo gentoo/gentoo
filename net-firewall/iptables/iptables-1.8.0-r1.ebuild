@@ -42,8 +42,11 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	eapply "${FILESDIR}"/iptables-1.8.0-fix-building-without-nft-backend.patch
+	eapply "${FILESDIR}"/${P}-fix-building-without-nft-backend.patch
 	touch -r configure extensions/GNUmakefile.in || die
+
+	eapply "${FILESDIR}"/${P}-support-nft-suffix-for-arptables-and-ebtables.patch
+	touch -r configure iptables/Makefile.{am,in} || die
 
 	# use the saner headers from the kernel
 	rm -f include/linux/{kernel,types}.h
@@ -112,6 +115,9 @@ src_install() {
 	if use nftables; then
 		# Bug 647458
 		rm "${ED%/}"/etc/ethertypes || die
+
+		# Bug 660886
+		rm "${ED%/}"/sbin/{arptables,ebtables} || die
 	fi
 
 	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
