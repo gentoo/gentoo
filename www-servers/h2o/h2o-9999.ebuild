@@ -3,9 +3,10 @@
 
 EAPI="6"
 CMAKE_MAKEFILE_GENERATOR="emake"
+SSL_DEPS_SKIP=1
 USE_RUBY="ruby23 ruby24"
 
-inherit cmake-utils git-r3 ruby-single systemd toolchain-funcs user
+inherit cmake-utils git-r3 ruby-single ssl-cert systemd toolchain-funcs user
 
 DESCRIPTION="H2O - the optimized HTTP/1, HTTP/2 server"
 HOMEPAGE="https://h2o.examp1e.net/"
@@ -50,6 +51,8 @@ src_prepare() {
 	fi
 
 	sed -i \
+		-e "/INSTALL/s:\(/doc/${PN}\) :\1/html :" \
+		-e "/INSTALL/s:\(/doc\)/${PN}:\1/${PF}:" \
 		-e "s: ruby: ${ruby}:" \
 		CMakeLists.txt
 
@@ -84,4 +87,11 @@ src_install() {
 	keepdir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
 	fperms 0750 /var/log/${PN}
+}
+
+pkg_postinst() {
+	if [[ ! -f "${EROOT}"etc/ssl/${PN}/server.key ]]; then
+		install_cert /etc/ssl/${PN}/server
+		chown ${PN}:${PN} "${EROOT}"etc/ssl/${PN}/server.*
+	fi
 }
