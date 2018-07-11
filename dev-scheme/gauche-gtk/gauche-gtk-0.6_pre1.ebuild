@@ -1,21 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-inherit autotools eutils
+inherit autotools vcs-snapshot
 
 MY_P="${P/g/G}"
 MY_PN="${PN/g/G}2"
-PV_COMMIT="598828842a339a44c32ab8c16f5f9a77f3c1c799"
+PV_COMMIT="6fca535f7bb950f81db066bd1afdca9d55e9b460"
 
 DESCRIPTION="GTK2 binding for Gauche"
 HOMEPAGE="http://practical-scheme.net/gauche/"
-SRC_URI="https://github.com/shirok/${MY_PN}/tarball/${PV_COMMIT} -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/shirok/${MY_PN}/archive/${PV_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="examples glgd nls opengl"
 RESTRICT="test"
 
@@ -27,29 +27,28 @@ RDEPEND="x11-libs/gtk+:2
 		x11-libs/gtkglext
 		dev-scheme/gauche-gl
 	)"
-S="${WORKDIR}/shirok-${MY_PN}-${PV_COMMIT:0:7}"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-h2s-gdk-pixbuf.diff
-	epatch "${FILESDIR}"/${PN}-gtk-lib.hints.diff
-	epatch "${FILESDIR}"/${PN}-h2s-cpp.diff
+	default
 	eautoconf
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
 	if use opengl; then
 		if use glgd; then
-			myconf="--enable-glgd"
 			if use nls; then
-				myconf="${myconf}-pango"
+				myconf+=( --enable-glgd-pango )
+			else
+				myconf+=( --enable-glgd )
 			fi
 		else
-			myconf="--enable-gtkgl"
+			myconf+=( --enable-gtkgl )
 		fi
 	fi
 
-	econf ${myconf}
+	econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -58,8 +57,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc ChangeLog README
+	default
 
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
