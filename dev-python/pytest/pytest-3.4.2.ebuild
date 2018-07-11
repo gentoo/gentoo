@@ -55,6 +55,11 @@ python_prepare_all() {
 	# https://bugs.gentoo.org/598442
 	rm testing/test_pdb.py || die
 
+	# broken and disabled upstream
+	# https://github.com/pytest-dev/pytest/commit/321f66f71148c978c1bf45dace61886b5e263bd4
+	sed -i -e 's:test_wrapped_getfuncargnames_patching:_&:' \
+		testing/python/integration.py || die
+
 	distutils-r1_python_prepare_all
 }
 
