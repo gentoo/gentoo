@@ -12,17 +12,19 @@ SRC_URI="https://packages.graylog2.org/releases/graylog/graylog-${PV}.tgz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-
-MY_PN="graylog"
-S="${WORKDIR}/${MY_PN}-${PV}"
-
-INSTALL_DIR="/usr/share/graylog2"
-DATA_DIR="/var/lib/graylog2"
-
-QA_PREBUILT="${INSTALL_DIR}/lib/sigar/libsigar*"
 RESTRICT="strip"
 
 RDEPEND="virtual/jdk:1.8"
+
+DOCS=(
+	COPYING README.markdown UPGRADING.rst
+)
+
+GRAYLOG_DATA_DIR="/var/lib/graylog2"
+GRAYLOG_INSTALL_DIR="/usr/share/graylog2"
+QA_PREBUILT="${GRAYLOG_INSTALL_DIR}/lib/sigar/libsigar*"
+
+S="${WORKDIR}/graylog-${PV}"
 
 pkg_setup() {
 	enewgroup graylog
@@ -31,9 +33,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# graylogctl is replaced by our own initd
-	rm -r bin || die
 
 	# Stick to architecture of build host
 	if ! use amd64; then
@@ -57,28 +56,32 @@ src_prepare() {
 		lib/sigar/*winnt* || die "Failed in removing unsupported platform libraries"
 
 	# gentoo specific paths
-	sed -i "s@\(node_id_file = \).*@\1${DATA_DIR}/node-id@g; \
-		s@\(message_journal_dir = \).*@\1${DATA_DIR}/data/journal@g; \
-		s@#\(content_packs_dir = \).*@\1/${DATA_DIR}/data/contentpacks@g" \
+	sed -i "s@\(node_id_file = \).*@\1${GRAYLOG_DATA_DIR}/node-id@g; \
+		s@\(message_journal_dir = \).*@\1${GRAYLOG_DATA_DIR}/data/journal@g; \
+		s@#\(content_packs_dir = \).*@\1${GRAYLOG_DATA_DIR}/data/contentpacks@g" \
 		graylog.conf.example || die
 }
 
-src_compile() {
-	einfo "Nothing to compile; upstream supplies JAR only"
-}
-
 src_install() {
+	default
+
 	insinto /etc/graylog2
 	doins graylog.conf.example
 
-	insinto ${DATA_DIR}/data/contentpacks
+	insinto "${GRAYLOG_DATA_DIR}/data/contentpacks"
 	doins data/contentpacks/grok-patterns.json
 
-	insinto "${INSTALL_DIR}"
-	doins *
-
+	insinto "${GRAYLOG_INSTALL_DIR}"
+	doins graylog.jar
 	doins -r lib plugin
 
-	newinitd "${FILESDIR}/initd-r1" graylog2
-	newconfd "${FILESDIR}/confd-r1" graylog2
+	newconfd "${FILESDIR}/confd-r2" graylog2
+	newinitd "${FILESDIR}/initd-r2" graylog2
+}
+
+pkg_postinst() {
+	ewarn "Graylog does not depend on need.net any more (#439092)."
+	ewarn
+	ewarn "Please configure rc_need according to your binding address in:"
+	ewarn "/etc/conf.d/graylog2"
 }

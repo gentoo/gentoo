@@ -1,0 +1,12 @@
+GRAYLOG_CONFIG_FILE="/etc/graylog2/graylog.conf"
+GRAYLOG_DATA_DIR="/var/lib/graylog2"
+GRAYLOG_GROUP="graylog"
+GRAYLOG_INSTALL_DIR="/usr/share/graylog2"
+GRAYLOG_LOG_DIR="/var/log/graylog2"
+GRAYLOG_OPTIONS=""
+GRAYLOG_USER="graylog"
+
+JAVA_OPTS="-Djava.library.path=$GRAYLOG_INSTALL_DIR/lib/sigar -Xms1g -Xmx1g -XX:NewRatio=1 -server -XX:+ResizeTLAB -XX:+UseConcMarkSweepGC -XX:+CMSConcurrentMTEnabled -XX:+CMSClassUnloadingEnabled -XX:+UseParNewGC -XX:-OmitStackTraceInFastThrow"
+
+# Please adjust according to your bind address
+rc_need="net.lo"
