@@ -29,5 +29,5 @@ DEPEND="${RDEPEND}
 
 python_test() {
 	distutils_install_for_testing
-	py.test -vv || die "Tests failed under ${EPYTHON}"
+	py.test -vv testing || die "Tests failed under ${EPYTHON}"
 }
