@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -22,9 +22,7 @@ RDEPEND=">=dev-scheme/gauche-0.9.4
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-simple.viewer.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-simple.viewer.patch )
 
 src_configure() {
 	econf $(usex cg --enable-cg "")
