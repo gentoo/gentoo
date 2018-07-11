@@ -54,6 +54,8 @@ src_prepare() {
 	fi
 
 	sed -i \
+		-e "/INSTALL/s:\(/doc/${PN}\) :\1/html :" \
+		-e "/INSTALL/s:\(/doc\)/${PN}:\1/${PF}:" \
 		-e "s: ruby: ${ruby}:" \
 		CMakeLists.txt
 
