@@ -48,3 +48,14 @@ multilib_src_configure() {
 	)
 	cmake-utils_src_configure
 }
+
+multilib_src_install() {
+	default
+	mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
+	mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
+}
+
+pkg_postinst() {
+	einfo "The cube and cubepp demos have been renamed to"
+	einfo "vulkancube and vulkancubecpp to prevent collisions"
+}
