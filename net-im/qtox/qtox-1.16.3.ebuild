@@ -3,17 +3,19 @@
 
 EAPI=6
 
-inherit cmake-utils eutils git-r3 gnome2-utils xdg-utils
+inherit cmake-utils gnome2-utils xdg-utils
 
+MY_P="qTox-${PV}"
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/qTox/qTox.git"
+SRC_URI="https://github.com/qTox/qTox/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="notification test X"
+
+S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
 	dev-db/sqlcipher
@@ -57,6 +59,7 @@ src_configure() {
 		-DENABLE_GTK_SYSTRAY=$(usex notification)
 		-DPLATFORM_EXTENSIONS=$(usex X)
 		-DUSE_FILTERAUDIO=OFF
+		-DGIT_DESCRIBE="${PV}"
 	)
 
 	cmake-utils_src_configure
