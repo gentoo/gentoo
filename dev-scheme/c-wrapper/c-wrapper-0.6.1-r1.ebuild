@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-closure.patch
+	"${FILESDIR}"/${PN}-gcc-5.patch
 	"${FILESDIR}"/${PN}-gentoo.patch
 )
 HTML_DOCS=( doc/${PN}-ref{e,j}.html )
