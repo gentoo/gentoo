@@ -9968,7 +9968,7 @@ sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
-sys-cluster/galera 25.3.20 25.3.23: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.23: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/glusterfs 4.0.0-r1: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
