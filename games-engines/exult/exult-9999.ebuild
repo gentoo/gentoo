@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,18 +11,18 @@ EGIT_REPO_URI="https://github.com/exult/exult"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="timidity zlib"
+IUSE="+sdl2 timidity zlib"
 
 DEPEND="
 	>=media-libs/libpng-1.2.43-r2:0
 	games-misc/exult-sound
-	media-libs/libsdl[sound,video,X]
+	media-libs/libvorbis
+	sdl2? ( media-libs/libsdl2[sound,video,X] )
+	!sdl2? ( media-libs/libsdl[sound,video,X] )
 	timidity? ( >=media-sound/timidity++-2 )
 	zlib? ( sys-libs/zlib )
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${P/_/}
 DOCS=(
@@ -42,6 +42,7 @@ src_configure() {
 		--enable-mods \
 		--with-desktopdir=/usr/share/applications \
 		--with-icondir=/usr/share/pixmaps \
+		--with-sdl=$(usex sdl2 sdl2 sdl12) \
 		$(use_enable timidity timidity-midi) \
 		$(use_enable zlib zip-support)
 }
