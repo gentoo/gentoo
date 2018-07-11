@@ -49,10 +49,6 @@ python_prepare_all() {
 		"${FILESDIR}"/pytest-3.4.2-pypy-syntaxerror-offset.patch
 	)
 
-	chmod o-w *egg*/* || die
-	# Disable versioning of py.test script to avoid collision with
-	# versioning performed by the eclass.
-	sed -e "s/return points/return {'py.test': target}/" -i setup.py || die "sed failed"
 	grep -qF "py>=${PY_VER}" setup.py || die "Incorrect dev-python/py dependency"
 
 	# Something in the ebuild environment causes this to hang/error.
