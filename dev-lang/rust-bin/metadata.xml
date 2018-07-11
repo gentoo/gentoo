@@ -5,4 +5,7 @@
     <email>rust@gentoo.org</email>
     <name>Rust Project</name>
   </maintainer>
+  <use>
+    <flag name="cargo">Install cargo component</flag>
+  </use>
 </pkgmetadata>
