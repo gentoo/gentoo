@@ -26,6 +26,8 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep kfilemetadata)
 	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep kio)
+	$(add_frameworks_dep kitemviews)
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
