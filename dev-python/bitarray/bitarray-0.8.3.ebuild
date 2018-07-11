@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/b/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="PSF-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~amd64-fbsd"
 
 python_test() {
 	"${PYTHON}" ${PN}/test_${PN}.py || die "Tests fail with ${EPYTHON}"
