@@ -45,6 +45,10 @@ RDEPEND="
 	!<dev-python/logilab-common-1.3.0"
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}"/pytest-3.4.2-pypy-syntaxerror-offset.patch
+	)
+
 	chmod o-w *egg*/* || die
 	# Disable versioning of py.test script to avoid collision with
 	# versioning performed by the eclass.
