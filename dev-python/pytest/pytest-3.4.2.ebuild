@@ -64,6 +64,11 @@ python_prepare_all() {
 	sed -i -e 's:test_wrapped_getfuncargnames_patching:_&:' \
 		testing/python/integration.py || die
 
+	# those tests appear to hang with python3.5+;  TODO: investigate why
+	sed -i -e 's:test_runtest_location_shown_before_test_starts:_&:' \
+		testing/test_terminal.py || die
+	sed -i -e 's:test_trial_pdb:_&:' testing/test_unittest.py || die
+
 	distutils-r1_python_prepare_all
 }
 
