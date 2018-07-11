@@ -29,6 +29,7 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtprintsupport:5
+		dev-qt/qtsql:5
 		dev-qt/qtwebkit:5
 		dev-qt/qtwidgets:5
 	)
@@ -54,9 +55,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.8.0-no-opengl.patch
 	"${FILESDIR}"/${PN}-3.8.0-no-qtsensors.patch
 	"${FILESDIR}"/${PN}-3.8.0-no-qtpositioning.patch
-	"${FILESDIR}"/${PN}-3.8.0-multilib.patch
-	"${FILESDIR}"/${PN}-3.8.0-gcc-7.patch
-	"${FILESDIR}"/${PN}-3.8.0-desktop.patch
 )
 
 src_configure() {
