@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Foreign function interface for C and Objective-C libraries"
 HOMEPAGE="http://www.koguro.net/prog/c-wrapper/"
@@ -11,15 +11,23 @@ SRC_URI="http://www.koguro.net/prog/${PN}/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~ia64 x86"
 IUSE="examples"
 
 RDEPEND="dev-scheme/gauche
 	virtual/libffi"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-closure.patch
+	"${FILESDIR}"/${PN}-gcc-5.patch
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-glibc-2.25.patch
+)
+HTML_DOCS=( doc/${PN}-ref{e,j}.html )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-system-libffi.diff
+	default
 	eautoreconf
 }
 
@@ -29,7 +37,6 @@ src_test() {
 
 src_install() {
 	default
-	dohtml doc/*
 
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
