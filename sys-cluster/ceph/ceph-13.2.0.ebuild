@@ -17,7 +17,7 @@ else
 		mgr-frontend? ( mirror://gentoo/${P}-frontend-node-modules.tar.xz )"
 	# unkeyworded for testing that this actually works
 	# had to do a lot of hackery for the mgr frontend, dunno if anything broke
-	#KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
