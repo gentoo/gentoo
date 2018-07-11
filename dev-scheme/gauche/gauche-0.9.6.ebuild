@@ -13,26 +13,23 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="ipv6 libressl test"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+IUSE="ipv6 libressl mbedtls test"
 
-RDEPEND="sys-libs/gdbm"
+RDEPEND="sys-libs/gdbm
+	mbedtls? ( net-libs/mbedtls )"
 DEPEND="${RDEPEND}
 	test? (
 		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		libressl? ( dev-libs/libressl:0 )
 	)"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-rpath.patch
 	"${FILESDIR}"/${PN}-gauche.m4.patch
+	"${FILESDIR}"/${PN}-ext-ldflags.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
-	"${FILESDIR}"/${PN}-0.9-ext-ldflags.patch
-	"${FILESDIR}"/${PN}-0.9-rfc.tls.patch
-	"${FILESDIR}"/${P}-bsd.patch
-	"${FILESDIR}"/${P}-libressl.patch
-	"${FILESDIR}"/${P}-unicode.patch
+	"${FILESDIR}"/${PN}-rfc.tls.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING README )
 
@@ -47,7 +44,8 @@ src_configure() {
 	econf \
 		$(use_enable ipv6) \
 		--with-libatomic-ops=no \
-		--with-slib="${EPREFIX}"/usr/share/slib
+		--with-slib="${EPREFIX}"/usr/share/slib \
+		--with-tls=axtls$(usex mbedtls ',mbedtls' '')
 }
 
 src_test() {

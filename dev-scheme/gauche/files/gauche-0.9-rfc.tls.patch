@@ -4,8 +4,8 @@
       ($ format #t "~a\n" $ regexp-replace-all* line
          #/\.\.\/ssl\// srcpath-replace
          #/openssl /    kicker-replace
--        #/system\s*\(/      "safe_system(")))
-+        #/system\s*\(/ "safe_system("
+-        #/system/      "safe_system")))
++        #/system/      "safe_system"
 +        #/(s_server) / "\\1 -4 ")))
  
    (p "#include <errno.h>"
