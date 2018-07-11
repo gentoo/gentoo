@@ -18,7 +18,8 @@ if [[ ${PV} =~ "9999" ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://www.gnuradio.org/releases/gnuradio/${P}.tar.gz
-			https://dev.gentoo.org/~zerochaos/patches/${PN}-3.7.12-qt5.tar.xz"
+		https://dev.gentoo.org/~zerochaos/patches/${PN}-3.7.13-1-qt5.tar.xz
+		https://dev.gentoo.org/~zerochaos/patches/${PN}-3.7.13-codec2.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 if [[ ${PV} == "3.7.9999" ]]; then
@@ -82,9 +83,13 @@ RDEPEND="${PYTHON_DEPS}
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
 	utils? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
-	vocoder? ( media-sound/gsm )
+	vocoder? ( media-sound/gsm
+		 >=media-libs/codec2-0.8.1 )
 	wavelet? (
 		>=sci-libs/gsl-1.10
+	)
+	wxwidgets? (
+		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	)
 	zeromq? ( >=net-libs/zeromq-2.1.11 )
 	"
@@ -114,6 +119,8 @@ src_prepare() {
 	# Useless UI element would require qt3support, bug #365019
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
 	epatch "${WORKDIR}"/qt5-maint-00*.patch
+	epatch "${WORKDIR}"/codec2-next-00*.patch
+
 	cmake-utils_src_prepare
 }
 
@@ -152,6 +159,7 @@ src_configure() {
 		-DENABLE_GR_UTILS="$(usex utils)"
 		-DENABLE_GR_VOCODER="$(usex vocoder)"
 		-DENABLE_GR_WAVELET="$(usex wavelet)"
+		-DENABLE_GR_WXGUI="$(usex wxwidgets)"
 		-DENABLE_GR_QTGUI="$(usex qt5)"
 		-DDESIRED_QT_VERSION="$(usex qt5 5)"
 		-DENABLE_GR_VIDEO_SDL="$(usex sdl)"
