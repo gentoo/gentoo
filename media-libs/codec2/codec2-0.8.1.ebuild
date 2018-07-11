@@ -12,7 +12,7 @@ SRC_URI="https://hobbes1069.fedorapeople.org/freetel/codec2/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
-IUSE=""
+IUSE="examples"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -20,4 +20,13 @@ RDEPEND="${DEPEND}"
 multilib_src_configure() {
 	local mycmakeargs=( -DUNITTEST=OFF )
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-multilib_src_install
+
+	if use examples; then
+		insinto /usr/share/codec2
+		doins -r wav raw
+	fi
 }
