@@ -22,7 +22,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python truetype v4l"
+IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speexdsp truetype v4l"
 
 COMMON_DEPEND="
 	>=dev-libs/jansson-2.5
@@ -49,6 +49,7 @@ COMMON_DEPEND="
 	nvenc? ( media-video/ffmpeg:=[nvenc] )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
+	speexdsp? ( media-libs/speexdsp )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -73,6 +74,7 @@ src_configure() {
 		-DDISABLE_JACK=$(usex !jack)
 		-DDISABLE_LIBFDK=$(usex !fdk)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
+		-DDISABLE_SPEEXDSP=$(usex !speexdsp)
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
@@ -110,14 +112,6 @@ pkg_postinst() {
 		elog "and sleeping.  Where it is not installed,"
 		elog "'xdg-screensaver reset' is used instead"
 		elog "(if 'x11-misc/xdg-utils' is installed)."
-		elog
-	fi
-
-	if ! has_version "media-libs/speexdsp"; then
-		elog
-		elog "For the speexdsp-based noise suppression filter"
-		elog "to be available, the 'media-libs/speexdsp' package needs"
-		elog "to be installed."
 		elog
 	fi
 }
