@@ -7,7 +7,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit readme.gentoo-r1 chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
+inherit chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="The web browser from Google"
 HOMEPAGE="https://www.google.com/chrome"
@@ -69,33 +69,6 @@ QA_DESKTOP_FILE="usr/share/applications/google-chrome.*\\.desktop"
 S=${WORKDIR}
 CHROME_HOME="opt/google/chrome${PN#google-chrome}"
 
-DISABLE_AUTOFORMATTING="yes"
-DOC_CONTENTS="
-Some web pages may require additional fonts to display properly.
-Try installing some of the following packages if some characters
-are not displayed properly:
-- media-fonts/arphicfonts
-- media-fonts/bitstream-cyberbit
-- media-fonts/droid
-- media-fonts/ipamonafont
-- media-fonts/ja-ipafonts
-- media-fonts/takao-fonts
-- media-fonts/wqy-microhei
-- media-fonts/wqy-zenhei
-
-Depending on your desktop environment, you may need
-to install additional packages to get icons on the Downloads page.
-
-For KDE, the required package is kde-frameworks/oxygen-icons.
-
-For other desktop environments, try one of the following:
-- x11-themes/adwaita-icon-theme
-- x11-themes/tango-icon-theme
-
-Please notice the bundled flash player (PepperFlash).
-You can (de)activate all flash plugins via chrome://plugins
-"
-
 pkg_nofetch() {
 	eerror "Please wait 24 hours and sync your tree before reporting a bug for google-chrome fetch failures."
 }
@@ -136,8 +109,6 @@ src_install() {
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}_beta.png" ${PN}.png
 	done
 
-	pax-mark m "${CHROME_HOME}/chrome"
-
 	readme.gentoo_create_doc
 }
 
@@ -153,5 +124,4 @@ pkg_postrm() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
-	readme.gentoo_print_elog
 }
