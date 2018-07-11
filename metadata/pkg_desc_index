@@ -1263,7 +1263,7 @@ app-shells/sash 3.8: A small (static) UNIX Shell
 app-shells/scsh 0.6.7-r2: Unix shell embedded in Scheme
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
-app-shells/zsh 5.5: UNIX Shell similar to the Korn shell
+app-shells/zsh 5.5 5.5.1-r1: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.27.0: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
@@ -7463,7 +7463,7 @@ media-libs/gstreamer-editing-services 1.12.4: SDK for making video editors and m
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1 3.2: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.7.6: An OpenType text shaping engine
+media-libs/harfbuzz 1.7.6 1.8.1: An OpenType text shaping engine
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.1.0 2.2.0-r1: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
@@ -8567,7 +8567,7 @@ net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.24.2: An IRC client for Gnome
-net-irc/quassel 0.12.5: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
+net-irc/quassel 0.12.5 0.12.5-r2: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
@@ -9415,7 +9415,7 @@ sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-misc/nco 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/netlogo-bin 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
 sci-physics/bullet 2.86: Continuous Collision Detection and Physics Library
-sci-physics/clhep 2.2.0.5: High Energy Physics C++ library
+sci-physics/clhep 2.2.0.5 2.4.0.4: High Energy Physics C++ library
 sci-physics/hepmc 2.06.09-r1: Event Record for Monte Carlo Generators
 sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
 sci-physics/lammps 20150210 20150515 20150810 20151207 20170109 20180316: Large-scale Atomic/Molecular Massively Parallel Simulator
