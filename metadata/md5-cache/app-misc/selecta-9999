@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A fuzzy text selector for files and anything else you need to select
+EAPI=6
+HOMEPAGE=https://github.com/garybernhardt/selecta
+LICENSE=MIT
+RDEPEND=>=dev-lang/ruby-1.9.3
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=3121a5fe9c5109e92972ce831556cfef
