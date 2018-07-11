@@ -21,7 +21,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-apps/help2man
 	>=sys-boot/gnu-efi-3.0u
-	app-crypt/sbsigntool
+	app-crypt/sbsigntools
 	virtual/pkgconfig
 	dev-perl/File-Slurp"
 
