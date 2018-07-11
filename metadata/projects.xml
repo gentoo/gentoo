@@ -4112,6 +4112,10 @@ developers and volunteer mentors.</description>
     <url>https://wiki.gentoo.org/wiki/Project:Website</url>
     <description>The Website team maintains the Gentoo website and develops new sites for the community.</description>
     <member>
+      <email>chrisadr@gentoo.org</email>
+      <name>Christopher Díaz Riveros</name>
+    </member>
+    <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
     </member>
