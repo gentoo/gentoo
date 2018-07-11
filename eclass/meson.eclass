@@ -34,7 +34,7 @@
 # @CODE
 
 case ${EAPI:-0} in
-	6) ;;
+	6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -69,7 +69,11 @@ MESON_DEPEND=">=dev-util/meson-0.40.0
 # their own DEPEND string.
 : ${MESON_AUTO_DEPEND:=yes}
 if [[ ${MESON_AUTO_DEPEND} != "no" ]] ; then
-	DEPEND=${MESON_DEPEND}
+	if [[ ${EAPI:-0} == [0123456] ]]; then
+		DEPEND=${MESON_DEPEND}
+	else
+		BDEPEND=${MESON_DEPEND}
+	fi
 fi
 __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 
@@ -260,7 +264,7 @@ meson_src_test() {
 meson_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install
+	DESTDIR="${D%/}" eninja -C "${BUILD_DIR}" install
 	einstalldocs
 }
 
