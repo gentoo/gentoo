@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit gnome2-utils qmake-utils
 
 DESCRIPTION="A word unscrambling game"
@@ -14,18 +15,19 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-qt/qtcore-5.2:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	>=dev-qt/qtgui-5.2:5
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
+
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
 	default
-
-	eapply "${FILESDIR}"/${P}-gentoo.patch
-
 	sed -i \
 		-e "s#@GAMES_BINDIR@#/usr/bin#" \
 		-e "s#@GAMES_DATADIR@#/usr/share#" \
@@ -39,10 +41,6 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

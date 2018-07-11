@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit gnome2-utils qmake-utils
 
-DESCRIPTION="A color matching game"
-HOMEPAGE="https://gottcode.org/hexalate/"
+DESCRIPTION="A simple, top-down game in which mazes are randomly generated"
+HOMEPAGE="https://gottcode.org/cutemaze/"
 SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3+"
@@ -17,6 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 "
 DEPEND="${RDEPEND}

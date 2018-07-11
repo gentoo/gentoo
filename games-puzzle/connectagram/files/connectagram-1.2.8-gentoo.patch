@@ -1,6 +1,6 @@
---- connectagram-1.2.1.orig/connectagram.pro
-+++ connectagram-1.2.1/connectagram.pro
-@@ -74,16 +74,16 @@
+--- a/connectagram.pro	2018-07-11 19:19:33.058534696 +0200
++++ b/connectagram.pro	2018-07-11 19:20:30.536282297 +0200
+@@ -90,16 +90,16 @@
  	RESOURCES += icons/icon.qrc
  
  	isEmpty(PREFIX) {
@@ -21,17 +21,17 @@
  
  	pixmap.files = icons/connectagram.xpm
  	pixmap.path = $$PREFIX/share/pixmaps/
-@@ -98,7 +98,7 @@
- 	appdata.path = $$PREFIX/share/appdata/
+@@ -114,7 +114,7 @@
+ 	appdata.path = $$PREFIX/share/metainfo/
  
- 	qm.files = translations/*.qm
+ 	qm.files = $$replace(TRANSLATIONS, .ts, .qm)
 -	qm.path = $$PREFIX/share/connectagram/translations
 +	qm.path = @GAMES_DATADIR@/connectagram/translations
+ 	qm.CONFIG += no_check_exist
  
  	man.files = doc/connectagram.6
- 	man.path = $$PREFIX/share/man/man6
---- connectagram-1.2.1.orig/src/locale_dialog.cpp
-+++ connectagram-1.2.1/src/locale_dialog.cpp
+--- a/src/locale_dialog.cpp
++++ b/src/locale_dialog.cpp
 @@ -88,6 +88,7 @@
  		paths.append(appdir);
  		paths.append(appdir + "/../share/" + QCoreApplication::applicationName().toLower());
@@ -40,8 +40,8 @@
  	}
  	for (const QString& path : paths) {
  		if (QFile::exists(path + "/translations/")) {
---- connectagram-1.2.1.orig/src/new_game_dialog.cpp
-+++ connectagram-1.2.1/src/new_game_dialog.cpp
+--- a/src/new_game_dialog.cpp
++++ b/src/new_game_dialog.cpp
 @@ -48,7 +48,7 @@
  	m_wordlist = new WordList(this);
  	m_wordlist->setLanguage(WordList::defaultLanguage());
@@ -51,8 +51,8 @@
  	for (const QString& language : languages) {
  		m_languages_box->addItem(LocaleDialog::languageName(language), language);
  	}
---- connectagram-1.2.1.orig/src/wordlist.cpp
-+++ connectagram-1.2.1/src/wordlist.cpp
+--- a/src/wordlist.cpp
++++ b/src/wordlist.cpp
 @@ -91,9 +91,9 @@
  
  QString WordList::defaultLanguage() {

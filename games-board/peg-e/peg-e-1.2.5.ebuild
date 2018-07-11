@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils qmake-utils
+inherit desktop gnome2-utils qmake-utils
 
 DESCRIPTION="A peg solitaire game"
 HOMEPAGE="https://gottcode.org/peg-e/"
@@ -23,19 +23,15 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
 src_configure() {
 	eqmake5
 }
 
 src_install() {
-	dobin ${PN}
-	doicon -s 48 icons/hicolor/48x48/apps/${PN}.png
-	domenu icons/${PN}.desktop
-	dodoc CREDITS ChangeLog
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
+	emake INSTALL_ROOT="${D}" install
+	einstalldocs
 }
 
 pkg_postinst() {
