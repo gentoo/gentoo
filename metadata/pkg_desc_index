@@ -248,7 +248,7 @@ app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup
 app-backup/duplicity 0.7.10: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
-app-backup/fsarchiver 0.8.1 0.8.4: Flexible filesystem archiver for backup and deployment tool
+app-backup/fsarchiver 0.8.4: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A small perl script utilizing tar
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.9: Powerful and flexible backup (and syncing) tool, using RSync and Qt
@@ -5592,7 +5592,7 @@ dev-python/toolz 0.8.0: List processing tools and functional utilities
 dev-python/tooz 1.60.1: Library centralizing the most common distributed primitives
 dev-python/tox 2.9.1: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
-dev-python/tqdm 4.10.0 4.23.3: Add a progress meter to your loops in a second
+dev-python/tqdm 4.23.3: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.8: Debug log/trace messages
 dev-python/traitlets 4.3.2: A configuration system for Python applications
