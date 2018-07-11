@@ -66,11 +66,11 @@ python_prepare_all() {
 python_test() {
 	# test_nose.py not written to suit py3.2 in pypy3
 	if [[ "${EPYTHON}" == pypy3 ]]; then
-		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX \
+		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX -vv \
 			--ignore=testing/BUILD_nose.py \
 			|| die "tests failed with ${EPYTHON}"
 	else
-		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX testing || die "tests failed with ${EPYTHON}"
+		"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX -vv testing || die "tests failed with ${EPYTHON}"
 	fi
 }
 
