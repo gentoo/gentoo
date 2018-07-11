@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Tool for managing multiple xterms simultaneously"
-HOMEPAGE="http://www.heiho.net/pconsole/"
+HOMEPAGE="https://github.com/walterdejong/pconsole"
 SRC_URI="http://www.xs4all.nl/~walterj/pconsole/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
