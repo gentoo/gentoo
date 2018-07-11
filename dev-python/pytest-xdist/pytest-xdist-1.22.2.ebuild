@@ -18,7 +18,7 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/execnet-1.1[${PYTHON_USEDEP}]
-	>=dev-python/pytest-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pytest-3.4.2[${PYTHON_USEDEP}]
 	dev-python/pytest-forked[${PYTHON_USEDEP}]
 	>=dev-python/py-1.4.22[${PYTHON_USEDEP}]
 "
