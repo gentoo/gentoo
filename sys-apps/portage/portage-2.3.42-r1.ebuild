@@ -94,6 +94,10 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply 36dca004be44 so that sync-allow-hardlinks can
+	# be set in the DEFAULT section.
+	sed -e 's:^sync-allow-hardlinks:#\0:' -i cnf/repos.conf || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
