@@ -76,8 +76,11 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-	mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
-	mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
+
+	if use cube; then
+		mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
+		mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
+	fi
 }
 
 pkg_postinst() {
