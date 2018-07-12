@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="X.Org libdrm library"
 HOMEPAGE="https://dri.freedesktop.org/"
@@ -23,7 +23,7 @@ done
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="${IUSE_VIDEO_CARDS} libkms valgrind"
+IUSE="${IUSE_VIDEO_CARDS} libkms static-libs valgrind"
 RESTRICT="test" # see bug #236845
 
 RDEPEND="
@@ -36,41 +36,43 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=dev-util/meson-0.43.0
 	valgrind? ( dev-util/valgrind )
 "
 
+src_prepare() {
+	default
+	if [[ ${PV} == 9999* ]]; then
+		# tests are restricted, no point in building them
+		sed -ie 's/tests //' "${S}"/Makefile.am
+	fi
+}
+
 multilib_src_configure() {
-	local emesonargs=(
+	local econfargs=(
 		# Udev is only used by tests now.
-		-Dudev=false
-		-Dcairo-tests=false
-		-Damdgpu=$(usex video_cards_amdgpu true false)
-		-Dexynos=$(usex video_cards_exynos true false)
-		-Dfreedreno=$(usex video_cards_freedreno true false)
-		-Dintel=$(usex video_cards_intel true false)
-		-Dnouveau=$(usex video_cards_nouveau true false)
-		-Domap=$(usex video_cards_omap true false)
-		-Dradeon=$(usex video_cards_radeon true false)
-		-Dtegra=$(usex video_cards_tegra true false)
-		-Dvc4=$(usex video_cards_vc4 true false)
-		-Detnaviv=$(usex video_cards_vivante true false)
-		-Dvmwgfx=$(usex video_cards_vmware true false)
-		-Dlibkms=$(usex libkms true false)
+		--disable-udev
+		--disable-cairo-tests
+		$(use_enable static-libs static)
+		$(use_enable video_cards_amdgpu amdgpu)
+		$(use_enable video_cards_exynos exynos-experimental-api)
+		$(use_enable video_cards_freedreno freedreno)
+		$(use_enable video_cards_intel intel)
+		$(use_enable video_cards_nouveau nouveau)
+		$(use_enable video_cards_omap omap-experimental-api)
+		$(use_enable video_cards_radeon radeon)
+		$(use_enable video_cards_tegra tegra-experimental-api)
+		$(use_enable video_cards_vc4 vc4)
+		$(use_enable video_cards_vivante etnaviv-experimental-api)
+		$(use_enable video_cards_vmware vmwgfx)
+		$(use_enable libkms)
 		# valgrind installs its .pc file to the pkgconfig for the primary arch
-		-Dvalgrind=$(usex valgrind auto false)
+		--enable-valgrind=$(usex valgrind auto no)
 	)
-	meson_src_configure
-}
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
+	ECONF_SOURCE="${S}" econf "${econfargs[@]}"
 }
 
 multilib_src_install() {
-	meson_src_install
+	default
+	find "${D}" -name '*.la' -delete || die
 }
