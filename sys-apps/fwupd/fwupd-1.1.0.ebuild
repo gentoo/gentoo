@@ -17,9 +17,10 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc gpg +man pkcs7 systemd test uefi uefi_labels"
+IUSE="colorhug dell doc gpg +man pkcs7 redfish systemd test uefi"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	dell? ( uefi )
 "
 
 RDEPEND="
@@ -40,23 +41,24 @@ RDEPEND="
 	colorhug? ( >=x11-misc/colord-1.2.12:0= )
 	dell? (
 		sys-libs/efivar
-		>=sys-libs/libsmbios-2.3.3
+		>=sys-libs/libsmbios-2.4.0
 	)
 	gpg? (
 		app-crypt/gpgme
 		dev-libs/libgpg-error
 	)
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
-	systemd? ( >=sys-apps/systemd-231 )
+	redfish? (
+		dev-libs/json-glib
+		sys-libs/efivar
+	)
+	systemd? ( >=sys-apps/systemd-211 )
 	!systemd? ( >=sys-auth/consolekit-1.0.0 )
-	uefi? ( >=sys-apps/fwupdate-10 )
-	uefi_labels? (
-		x11-libs/pango
-		x11-libs/cairo
-		media-libs/freetype
+	uefi? (
 		media-libs/fontconfig
-		media-fonts/dejavu
-		media-fonts/source-han-sans
+		media-libs/freetype
+		>=sys-libs/efivar-33
+		x11-libs/cairo
 	)
 "
 DEPEND="
@@ -72,11 +74,10 @@ DEPEND="
 	test? ( net-libs/gnutls[tools] )
 "
 
-REQUIRED_USE="dell? ( uefi )"
-
 src_prepare() {
 	default
-	sed -i -e "s/'--create'/'--absolute-name', '--create'/" data/tests/builder/meson.build || die
+	sed -e "s/'--create'/'--absolute-name', '--create'/" \
+		-i data/tests/builder/meson.build || die
 	vala_src_prepare
 }
 
@@ -88,13 +89,12 @@ src_configure() {
 		-Dgtkdoc="$(usex doc true false)"
 		-Dman="$(usex man true false)"
 		-Dpkcs7="$(usex pkcs7 true false)"
-		-Dplugin_colorhug="$(usex colorhug true false)"
 		-Dplugin_dell="$(usex dell true false)"
+		-Dplugin_redfish="$(usex redfish true false)"
 		-Dplugin_synaptics="$(usex dell true false)"
 		# requires libtbtfwu which is not packaged (yet?)
 		-Dplugin_thunderbolt=false
 		-Dplugin_uefi="$(usex uefi true false)"
-		-Dplugin_uefi-labels="$(usex uefi_labels true false)"
 		-Dsystemd="$(usex systemd true false)"
 		-Dtests="$(usex test true false)"
 	)
