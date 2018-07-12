@@ -8196,7 +8196,7 @@ media-video/ffmpeg 3.2.6 3.3.4 3.3.5 3.3.6: Complete solution to record, convert
 media-video/ffmpeg2theora 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
-media-video/gaupol 0.91 1.4: A subtitle editor for text-based subtitles
+media-video/gaupol 1.4: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
