@@ -28,6 +28,7 @@ src_prepare() {
 			-i Makefile.in || die
 	fi
 	multilib_copy_sources
+	eapply_user
 }
 
 multilib_src_install() {
