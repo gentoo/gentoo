@@ -50,7 +50,6 @@ DEPEND="${RDEPEND}
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-0.9[${PYTHON_USEDEP}]
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
