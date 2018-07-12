@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs user
 
@@ -38,7 +38,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	[[ ${PV} = 9999* ]] && eautoreconf
+	[[ ${PV} = *9999 ]] && eautoreconf
 	# Brand the version with Gentoo
 	sed -i \
 		-e "/VERSION=/s:'$: Gentoo-${PR}':" \
