@@ -33,7 +33,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/secretstorage[${PYTHON_USEDEP}]
 	>=dev-python/python-xlib-0.19[${PYTHON_USEDEP}]
 	dev-python/requests-kerberos[${PYTHON_USEDEP}]
-	dev-python/typing[${PYTHON_USEDEP}]"
+	virtual/python-typing[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 

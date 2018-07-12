@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	dev-python/cheetah[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/typing[${PYTHON_USEDEP}]
+	virtual/python-typing[${PYTHON_USEDEP}]
 	<dev-util/scons-3
 	sys-libs/ncurses
 	sys-libs/readline

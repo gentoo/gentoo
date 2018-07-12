@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE='readline,sqlite,threads(+)'
 
 inherit distutils-r1 eutils
@@ -14,8 +14,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test wxwidgets"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="doc examples matplotlib notebook nbconvert qt5 smp test"
 
 CDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
@@ -23,26 +23,24 @@ CDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/pickleshare[${PYTHON_USEDEP}]
 	>=dev-python/prompt_toolkit-1.0.4[${PYTHON_USEDEP}]
+	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/simplegeneric[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
 	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
-	wxwidgets? ( $(python_gen_cond_dep 'dev-python/wxpython:*[${PYTHON_USEDEP}]' 'python2*') )
 "
 
 RDEPEND="${CDEPEND}
-	virtual/python-pathlib[${PYTHON_USEDEP}]
-	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )"
+	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )
+"
+
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep \
-		'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
-	dev-python/typing[${PYTHON_USEDEP}]
+	virtual/python-typing[${PYTHON_USEDEP}]
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
@@ -50,7 +48,8 @@ DEPEND="${CDEPEND}
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 PDEPEND="
 	notebook? (
@@ -58,11 +57,12 @@ PDEPEND="
 		dev-python/ipywidgets[${PYTHON_USEDEP}]
 	)
 	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
-	smp? ( dev-python/ipyparallel[${PYTHON_USEDEP}] )"
+	smp? ( dev-python/ipyparallel[${PYTHON_USEDEP}] )
+"
 
 PATCHES=( "${FILESDIR}"/2.1.0-substitute-files.patch )
 
-DISTUTILS_IN_SOURCE_BUILD=1
+#DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	# Remove out of date insource files
@@ -73,7 +73,6 @@ python_prepare_all() {
 	if use doc; then
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
 	fi
-
 	distutils-r1_python_prepare_all
 }
 
@@ -105,7 +104,6 @@ python_install() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples

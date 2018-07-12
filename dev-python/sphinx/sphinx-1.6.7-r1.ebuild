@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 eutils versionator
 
 DESCRIPTION="Python documentation generator"
 HOMEPAGE="http://www.sphinx-doc.org/"
@@ -25,14 +25,13 @@ RDEPEND="
 	dev-python/imagesize[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0.1-r1[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	>=dev-python/six-1.5[${PYTHON_USEDEP}]
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	>=dev-python/sphinx_rtd_theme-0.1[${PYTHON_USEDEP}]
 	<dev-python/sphinx_rtd_theme-2.0[${PYTHON_USEDEP}]
-	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
-	dev-python/typing[${PYTHON_USEDEP}]
+	virtual/python-typing[${PYTHON_USEDEP}]
 	latex? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
@@ -60,6 +59,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P^}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.1-fix-pycode-grammar.patch
+)
+
 python_prepare_all() {
 	# remove tests that fail due to network-sandbox
 	rm tests/test_websupport.py || die "Failed to remove web tests"
@@ -82,8 +85,8 @@ python_compile() {
 
 python_compile_all() {
 	if use doc; then
-		esetup.py build_sphinx
-		HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
+		emake -C doc SPHINXBUILD='"${EPYTHON}" "${S}/sphinx-build.py"' html
+		HTML_DOCS=( doc/_build/html/. )
 	fi
 }
 
@@ -93,4 +96,22 @@ python_test() {
 	cp -r -l tests "${BUILD_DIR}"/ || die "Failed to copy tests"
 	cp Makefile "${BUILD_DIR}"/ || die "Failed to copy Makefile"
 	emake test
+}
+
+pkg_postinst() {
+	replacing_python_eclass() {
+		local pv
+		for pv in ${REPLACING_VERSIONS}; do
+			if ! version_is_at_least 1.1.3-r4 ${pv}; then
+				return 0
+			fi
+		done
+
+		return 1
+	}
+
+	if replacing_python_eclass; then
+		ewarn "Replaced a very old sphinx version. If you are"
+		ewarn "experiencing problems, please re-emerge sphinx."
+	fi
 }

@@ -7,11 +7,12 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1
 
-MY_P=${PN%s}-${PV}
+MY_PN=${PN%s}
+MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="An implementation of Promises in Python"
 HOMEPAGE="https://github.com/syrusakbary/promise"
-SRC_URI="https://github.com/syrusakbary/${PN%s}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 S=${WORKDIR}/${MY_P}
 
@@ -21,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-python/typing[${PYTHON_USEDEP}]
+	virtual/python-typing[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
