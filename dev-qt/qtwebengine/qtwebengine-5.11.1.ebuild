@@ -29,7 +29,6 @@ RDEPEND="
 	dev-libs/libevent:=
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
-	dev-libs/protobuf:=
 	dev-libs/re2:=
 	media-libs/fontconfig
 	media-libs/freetype

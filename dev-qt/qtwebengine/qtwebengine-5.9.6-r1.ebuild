@@ -29,7 +29,6 @@ RDEPEND="
 	dev-libs/libevent:=
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
-	dev-libs/protobuf:=
 	dev-libs/re2:=
 	media-libs/fontconfig
 	media-libs/freetype
@@ -62,7 +61,7 @@ RDEPEND="
 	designer? ( ~dev-qt/designer-${PV} )
 	geolocation? ( ~dev-qt/qtpositioning-${PV} )
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( media-video/ffmpeg:0= )
+	system-ffmpeg? ( <media-video/ffmpeg-4:0= )
 	system-icu? ( dev-libs/icu:= )
 	widgets? (
 		~dev-qt/qtdeclarative-${PV}[widgets]
