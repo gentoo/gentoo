@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/docker-pycreds-0.2.2[${PYTHON_USEDEP}]
+	>=dev-python/docker-pycreds-0.3.0[${PYTHON_USEDEP}]
 	!~dev-python/requests-2.18.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
@@ -37,11 +37,6 @@ DEPEND="
 		>=dev-python/sphinx-1.4.6[${PYTHON_USEDEP}]
 	)
 "
-
-python_prepare_all() {
-	sed -i -e "s/import pip//" -e "s/if 'docker-py'.*/if False:/" setup.py || die
-	distutils-r1_python_prepare_all
-}
 
 python_compile_all() {
 	if use doc; then

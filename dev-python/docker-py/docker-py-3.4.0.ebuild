@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/docker-pycreds-0.2.3[${PYTHON_USEDEP}]
+	>=dev-python/docker-pycreds-0.3.0[${PYTHON_USEDEP}]
 	!~dev-python/requests-2.18.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
