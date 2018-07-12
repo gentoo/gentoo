@@ -4,7 +4,8 @@
 EAPI=6
 
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libetonyek.git"
-[[ ${PV} == 9999 ]] && inherit autotools git-r3
+[[ ${PV} == 9999 ]] && inherit git-r3
+inherit autotools
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
@@ -20,7 +21,7 @@ RDEPEND="
 	app-text/liblangtag
 	dev-libs/librevenge
 	dev-libs/libxml2
-	sys-libs/zlib
+	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
@@ -32,10 +33,12 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=( "${FILESDIR}/${P}-glm-0.9.9.patch" )
+
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
