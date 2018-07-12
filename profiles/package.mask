@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (12 Jul 2018)
+# Abandoned upstream, no reverse dependencies.  Collides with
+# dev-python/promises (that has revdeps).
+# Removal in 30 days.  Bug #651156.
+dev-python/promise
+
 # Jonas Stein <jstein@gentoo.org> (10 Jul 2018)
 # Package is not maintained, has a broken SRC_URI and 
 # we may not mirror the files.
