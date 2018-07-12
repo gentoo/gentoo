@@ -3520,7 +3520,7 @@ media-video/mpv:sdl - Enable media-libs/libsdl2 based video and audio outputs (N
 media-video/mpv:tools - Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv
 media-video/mpv:uchardet - Enable subtitles charset discovery via app-i18n/uchardet
 media-video/mpv:vulkan - Enable support for various Vulkan-based video backends
-media-video/noad:libmpeg2 - Support for libmpeg2 library
+media-video/noad:libmpeg2 - Build support for mpeg2 over media-libs/libmpeg2 rather than using ffmpeg
 media-video/nvidia_video_sdk:tools - Build and install example tools.
 media-video/parole:clutter - Compile in Clutter GTK+ support
 media-video/smplayer:autoshutdown - Enable the option to shutdown your computer after finishing the playlist. This requires dev-qt/qtdbus as dependency.
