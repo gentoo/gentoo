@@ -27,7 +27,7 @@ IUSE="+cube +vulkaninfo X wayland"
 # Old packaging will cause file collisions
 RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
-	dev-util/glslang:=[${MULTILIB_USEDEP}]
+	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
 	dev-util/vulkan-headers
 	media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
@@ -76,8 +76,11 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-	mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
-	mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
+
+	if use cube; then
+		mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
+		mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
+	fi
 }
 
 pkg_postinst() {
