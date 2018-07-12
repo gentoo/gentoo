@@ -10127,7 +10127,7 @@ sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfsprogs 3.6.25: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
 sys-fs/shake 0.999: defragmenter that runs in userspace while the system is used
-sys-fs/simple-mtpfs 0.1 0.3.0: Simple MTP fuse filesystem driver
+sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/squashfs-tools 3.2_p2 3.4 4.3-r2: Tool for creating compressed filesystem type squashfs
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
