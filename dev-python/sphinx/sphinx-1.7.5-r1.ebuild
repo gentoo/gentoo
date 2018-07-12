@@ -50,7 +50,6 @@ DEPEND="${RDEPEND}
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-0.9[${PYTHON_USEDEP}]
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
@@ -64,6 +63,10 @@ python_prepare_all() {
 	# remove tests that fail due to network-sandbox
 	rm tests/test_websupport.py || die "Failed to remove web tests"
 	rm tests/test_build_linkcheck.py || die "Failed to remove web tests"
+	sed -i -e 's:test_latex_remote_images:_&:' tests/test_build_latex.py || die
+
+	# fails when additional sphinx themes are installed
+	sed -i -e 's:test_theme_api:_&:' tests/test_theming.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -90,7 +93,5 @@ python_compile_all() {
 python_test() {
 	mkdir -p "${BUILD_DIR}/sphinx_tempdir" || die
 	local -x SPHINX_TEST_TEMPDIR="${BUILD_DIR}/sphinx_tempdir"
-	cp -r -l tests "${BUILD_DIR}"/ || die "Failed to copy tests"
-	cp Makefile "${BUILD_DIR}"/ || die "Failed to copy Makefile"
-	emake test
+	py.test -vv || die "Tests fail with ${EPYTHON}"
 }
