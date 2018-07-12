@@ -7,5 +7,6 @@
   </maintainer>
   <use>
     <flag name="cargo">Install cargo component</flag>
+    <flag name="rustfmt">Install rustfmt component</flag>
   </use>
 </pkgmetadata>
