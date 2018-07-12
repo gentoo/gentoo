@@ -93,7 +93,5 @@ python_compile_all() {
 python_test() {
 	mkdir -p "${BUILD_DIR}/sphinx_tempdir" || die
 	local -x SPHINX_TEST_TEMPDIR="${BUILD_DIR}/sphinx_tempdir"
-	cp -r -l tests "${BUILD_DIR}"/ || die "Failed to copy tests"
-	cp Makefile "${BUILD_DIR}"/ || die "Failed to copy Makefile"
-	emake test
+	py.test -vv || die "Tests fail with ${EPYTHON}"
 }
