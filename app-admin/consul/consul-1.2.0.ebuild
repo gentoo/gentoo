@@ -4,7 +4,7 @@
 EAPI=6
 
 inherit golang-vcs-snapshot systemd user
-GIT_COMMIT="12345"
+GIT_COMMIT="2814197"
 KEYWORDS="~amd64"
 EGO_PN="github.com/hashicorp/consul"
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
