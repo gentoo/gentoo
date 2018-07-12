@@ -716,8 +716,8 @@
       <role>Council member</role>
     </member>
     <member>
-      <email>mgorny@gentoo.org</email>
-      <name>Michał Górny</name>
+      <email>leio@gentoo.org</email>
+      <name>Mart Raudsepp</name>
       <role>Council member</role>
     </member>
     <member>
@@ -726,13 +726,13 @@
       <role>Council member</role>
     </member>
     <member>
-      <email>tamiko@gentoo.org</email>
-      <name>Matthias Maier</name>
+      <email>ulm@gentoo.org</email>
+      <name>Ulrich Müller</name>
       <role>Council member</role>
     </member>
     <member>
-      <email>ulm@gentoo.org</email>
-      <name>Ulrich Müller</name>
+      <email>whissi@gentoo.org</email>
+      <name>Thomas Deutschmann</name>
       <role>Council member</role>
     </member>
     <member>
@@ -3447,12 +3447,12 @@ developers and volunteer mentors.</description>
     <name>SELinux</name>
     <url>https://wiki.gentoo.org/wiki/Project:SELinux</url>
     <description>This project manages SELinux support in Gentoo. This includes providing kernels with SELinux support, providing patches to userland utilities, writing strong Gentoo-specific default profiles, and maintaining a good default set of policies.</description>
-    <member>
+    <member is-lead="1">
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
       <role>Documentation, Policy, Userland</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Documentation, Policy, Userland</role>
@@ -3959,6 +3959,11 @@ developers and volunteer mentors.</description>
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
       <role>Member</role>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Member (who is not lead)</role>
     </member>
     <member is-lead="1">
       <email>pacho@gentoo.org</email>

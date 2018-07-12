@@ -3244,6 +3244,10 @@ media-sound/pulseaudio:ssl - Use dev-libs/openssl to provide support for RAOP (A
 media-sound/pulseaudio:system-wide - Allow preparation and installation of the system-wide init script for PulseAudio. Since this support is only supported for embedded situations, do not enable without reading the upstream instructions at https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/ .
 media-sound/pulseaudio:systemd - Build with sys-apps/systemd support to replace standalone ConsoleKit.
 media-sound/pulseaudio:webrtc-aec - Uses the webrtc.org AudioProcessing library for enhancing VoIP calls greatly in applications that support it by performing acoustic echo cancellation, analog gain control, noise suppression and other processing.
+media-sound/pulseeffects:bs2b - Enable use of media-libs/libbs2b
+media-sound/pulseeffects:calf - Enable use of media-plugins/calf for adding various FX
+media-sound/pulseeffects:mda-lv2 - Enable use of media-plugins/mda-lv2 for the loudness FX
+media-sound/pulseeffects:rubberband - Enable usse of media-libs/rubberband for the pitch shifting FX
 media-sound/qmmp:analyzer - Enable visual analyzer
 media-sound/qmmp:archive - Enable archiving plugin via app-arch/libarchive.
 media-sound/qmmp:bs2b - Enable Bauer stereophonic-to-binaural headphone filter
