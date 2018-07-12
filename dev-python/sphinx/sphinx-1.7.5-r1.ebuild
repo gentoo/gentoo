@@ -63,6 +63,7 @@ python_prepare_all() {
 	# remove tests that fail due to network-sandbox
 	rm tests/test_websupport.py || die "Failed to remove web tests"
 	rm tests/test_build_linkcheck.py || die "Failed to remove web tests"
+	sed -i -e 's:test_latex_remote_images:_&:' tests/test_build_latex.py || die
 
 	# fails when additional sphinx themes are installed
 	sed -i -e 's:test_theme_api:_&:' tests/test_theming.py || die
