@@ -35,6 +35,9 @@ RDEPEND=">=app-emulation/dynamips-0.2.12
 		>=dev-python/yarl-0.11[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
+# https://github.com/GNS3/gns3-server/pull/1368
+PATCHES=( "${FILESDIR}/${P}-typing.patch" )
+
 src_prepare() {
 	default
 
