@@ -27,7 +27,7 @@ IUSE="+cube +vulkaninfo X wayland"
 # Old packaging will cause file collisions
 RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
-	dev-util/glslang:=[${MULTILIB_USEDEP}]
+	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
 	dev-util/vulkan-headers
 	media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
