@@ -11,8 +11,8 @@ SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="aac flac mac mp3 musepack opus vorbis wavpack"
+KEYWORDS="amd64 ~ppc x86"
+IUSE="flac mac mp3 musepack opus vorbis wavpack"
 
 COMMON_DEPEND=">=media-libs/libcddb-0.9.5
 	media-sound/cdparanoia
@@ -22,7 +22,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
 RDEPEND="${COMMON_DEPEND}
-	aac? ( media-sound/neroaac )
 	flac? ( media-libs/flac )
 	mac? ( media-sound/mac )
 	mp3? ( media-sound/lame )
