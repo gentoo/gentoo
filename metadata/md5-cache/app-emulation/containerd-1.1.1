@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=btrfs? ( sys-fs/btrfs-progs ) >=dev-lang/go-1.9
+DESCRIPTION=A daemon to control runC
+EAPI=6
+HOMEPAGE=https://containerd.tools
+IUSE=+btrfs hardened
+KEYWORDS=~amd64 ~arm ~ppc64
+LICENSE=Apache-2.0
+RDEPEND=|| ( >=app-emulation/docker-runc-1.0.0_rc4 >=app-emulation/runc-1.0.0_rc4 ) sys-libs/libseccomp
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containerd/containerd/archive/v1.1.1.tar.gz -> containerd-1.1.1.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=b73d5b7f8aaceb58de8eb77d31a4139d
