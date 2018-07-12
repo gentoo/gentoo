@@ -1,0 +1,22 @@
+--- a/scanpci/Makefile.am
++++ b/scanpci/Makefile.am
+@@ -21,7 +21,7 @@
+ # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ # DEALINGS IN THE SOFTWARE.
+ 
+-noinst_PROGRAMS = scanpci
++bin_PROGRAMS = scanpci
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/src
+ LDADD =  $(top_builddir)/src/libpciaccess.la
+--- a/scanpci/Makefile.in
++++ b/scanpci/Makefile.in
+@@ -111,7 +111,7 @@ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ build_triplet = @build@
+ host_triplet = @host@
+-noinst_PROGRAMS = scanpci$(EXEEXT)
++bin_PROGRAMS = scanpci$(EXEEXT)
+ subdir = scanpci
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/m4/ax_define_dir.m4 \
