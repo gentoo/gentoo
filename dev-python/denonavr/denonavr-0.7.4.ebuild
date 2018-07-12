@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -21,13 +21,13 @@ RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
-		${RDEPEND}
 	)
 "
 
 python_test() {
-	py.test ||  die "tests failed with ${EPYTHON}"
+	py.test || die "tests failed with ${EPYTHON}"
 }
