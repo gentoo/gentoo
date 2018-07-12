@@ -21,7 +21,6 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="bs2b calf mda-lv2 rubberband"
 
-#TODO: optional : lilv, zam-plugins (check from archlinux pkg)
 DEPEND="
 	>=dev-libs/boost-1.41
 	>=dev-cpp/glibmm-2.56.0
