@@ -292,10 +292,6 @@ games-strategy/gorky17-demo
 net-vpn/miredo
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to build (#642996). Removal in a month.
-games-engines/gargoyle
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Fails to compile (#648430), crashes from time to time (#222065). Removal
 # in a month.
 app-misc/wyrd
