@@ -1,15 +1,20 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-
-IUSE="gtk doc static debug threads +ocamlopt test"
+EAPI=7
 
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
+SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
+	doc? (
+		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
+		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html
+	)"
+
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+IUSE="gtk doc static debug threads +ocamlopt test"
 
 # ocaml version so we are sure it has ocamlopt use flag
 DEPEND="dev-lang/ocaml[ocamlopt?]
@@ -19,9 +24,6 @@ RDEPEND="gtk? ( dev-ml/lablgtk
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
-SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
-	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
-		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
 S="${WORKDIR}"/src
 
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
