@@ -1403,6 +1403,7 @@ dev-lang/rust:extended - Build and install rls, rustfmt and cargo alongside the 
 dev-lang/rust:jemalloc - Use dev-libs/jemalloc as the standard memory allocator
 dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
 dev-lang/rust-bin:cargo - Install cargo component
+dev-lang/rust-bin:rustfmt - Install rustfmt component
 dev-lang/scala:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/spidermonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 dev-lang/spidermonkey:debug - Enable assertions to allow for easier debugging of programs that link to spidermonkey -- note this will often crash software on regular end-user systems
