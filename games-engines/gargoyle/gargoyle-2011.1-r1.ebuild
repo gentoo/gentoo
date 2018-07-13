@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Regarding licenses: libgarglk is licensed under the GPLv2. Bundled
@@ -8,8 +8,8 @@
 # Since we don't compile or install any of the bundled fonts, their licenses
 # don't apply. (Fonts are installed through dependencies instead.)
 
-EAPI=5
-inherit eutils flag-o-matic multiprocessing toolchain-funcs gnome2-utils games
+EAPI=6
+inherit eutils flag-o-matic gnome2-utils multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="An Interactive Fiction (IF) player supporting all major formats"
 HOMEPAGE="http://ccxvii.net/gargoyle/"
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=media-fonts/libertine-5
+	media-fonts/libertine
 	media-fonts/liberation-fonts
 	media-libs/freetype:2
 	media-libs/libpng:0
@@ -52,11 +52,10 @@ src_prepare() {
 	# Convert garglk.ini to UNIX format.
 	edos2unix garglk/garglk.ini
 
-	# The font name of Linux Libertine changed in version 5.
-	sed -i -e 's/Linux Libertine O/Linux Libertine/g' garglk/garglk.ini || die
-
 	epatch "${FILESDIR}"/${P}-desktopfile.patch
 	append-cflags -std=gnu89 # build with gcc5 (bug #573378)
+	append-cxxflags -std=gnu++11 # code assumes C++11 semantics (bug #642996)
+	default
 }
 
 src_compile() {
@@ -69,7 +68,7 @@ src_compile() {
 		-sC++="$(tc-getCXX) ${CXXFLAGS}" \
 		-sCXX="$(tc-getCXX) ${CXXFLAGS}" \
 		-sC++FLAGS="" \
-		-sGARGLKINI="${GAMES_SYSCONFDIR}/garglk.ini" \
+		-sGARGLKINI="/etc/garglk.ini" \
 		-sUSESDL=yes \
 		-sBUNDLEFONTS=no \
 		-dx \
@@ -78,15 +77,15 @@ src_compile() {
 
 src_install() {
 	DESTDIR="${D}" \
-	_BINDIR="${GAMES_PREFIX}/libexec/${PN}" \
-	_APPDIR="${GAMES_PREFIX}/libexec/${PN}" \
-	_LIBDIR="$(games_get_libdir)" \
+	_BINDIR="/usr/libexec/${PN}" \
+	_APPDIR="/usr/libexec/${PN}" \
+	_LIBDIR="/usr/$(get_libdir)" \
 	EXEMODE=755 \
 	FILEMODE=755 \
 	jam install || die
 
 	# Install config file.
-	insinto "${GAMES_SYSCONFDIR}"
+	insinto "/etc"
 	newins garglk/garglk.ini garglk.ini
 
 	# Install application entry and icon.
@@ -97,24 +96,20 @@ src_install() {
 	for terp in advsys agility alan2 alan3 frotz geas git glulxe hugo jacl \
 		level9 magnetic nitfol scare tadsr
 	do
-		dosym "${GAMES_PREFIX}/libexec/${PN}/${terp}" \
-			"${GAMES_BINDIR}/${PN}-${terp}"
+		dosym "../libexec/${PN}/${terp}" \
+			"/usr/bin/${PN}-${terp}"
 	done
 
 	# Also symlink the main binary since it resides in libexec.
-	dosym "${GAMES_PREFIX}/libexec/${PN}/${PN}" \
-		"${GAMES_BINDIR}/${PN}"
-
-	prepgamesdirs
+	dosym "../libexec/${PN}/${PN}" \
+		"/usr/bin/${PN}"
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
