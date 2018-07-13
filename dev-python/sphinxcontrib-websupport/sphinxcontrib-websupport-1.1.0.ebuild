@@ -39,5 +39,5 @@ python_install_all() {
 }
 
 python_test() {
-	"${EPYTHON}" -m pytest tests/ || die "Tests fail with ${EPYTHON}"
+	pytest -vv tests || die "Tests fail with ${EPYTHON}"
 }
