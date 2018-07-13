@@ -4,7 +4,7 @@
 EAPI=6
 
 inherit golang-vcs-snapshot systemd user
-
+GIT_COMMIT="39f3f0"
 KEYWORDS="~amd64"
 EGO_PN="github.com/hashicorp/consul"
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
@@ -30,26 +30,26 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	sed -e 's:^\(GIT_DESCRIBE=\).*:\1v'${PV}':' \
-		-e 's:^\(GIT_COMMIT=\).*:\1:' \
-		-e 's:^\(GIT_DIRTY=\).*:\1:' \
-		-e 's:go get -u -v $(GOTOOLS)::' \
+	sed -e 's:go get -u -v $(GOTOOLS)::' \
 		-e 's:vendorfmt dev-build:dev-build:' \
-		-i "${S}/src/${EGO_PN}/GNUmakefile" || die
+		-i "src/${EGO_PN}/GNUmakefile" || die
 }
 
 src_compile() {
 	# The dev target sets causes build.sh to set appropriate XC_OS
 	# and XC_ARCH, and skips generation of an unused zip file,
 	# avoiding a dependency on app-arch/zip.
-	GOPATH="${S}" GOBIN="${S}/bin" \
-		emake -C "${S}/src/${EGO_PN}" dev
+	GOPATH="${S}" \
+	GIT_DESCRIBE="v${PV}" \
+	GIT_DIRTY="" \
+	GIT_COMMIT="${GIT_COMMIT}" \
+	emake -C "src/${EGO_PN}" dev-build
 }
 
 src_install() {
 	local x
 
-	dobin "${S}/bin/${PN}"
+	dobin bin/consul
 
 	keepdir /etc/consul.d
 	insinto /etc/consul.d
