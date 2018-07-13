@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit gnome2-utils
+
 DESCRIPTION="An mount plug-in for the Xfce panel"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-mount-plugin"
 SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
@@ -22,4 +24,12 @@ DEPEND="${RDEPEND}
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
