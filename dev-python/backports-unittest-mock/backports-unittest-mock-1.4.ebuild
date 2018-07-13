@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # It is the developer's intention that backports.unittest_mock will be
 # used even for Python 3: https://github.com/jaraco/jaraco.timing/pull/1
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
@@ -17,16 +17,20 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
 IUSE="doc test"
 
-RDEPEND="dev-python/backports[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/backports[${PYTHON_USEDEP}]
+	dev-python/mock[${PYTHON_USEDEP}]
+"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/rst-linker[${PYTHON_USEDEP}]
+		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
+		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.5.2[${PYTHON_USEDEP}]
 	)
 	test? (
 		${RDEPEND}
@@ -45,11 +49,13 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test -v || die "tests failed with ${EPYTHON}"
+	# Override pytest options to skip flake8
+	py.test -v --override-ini="addopts=--doctest-modules" \
+		|| die "tests failed with ${EPYTHON}"
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
-
-	find "${D}" -name '*.pth' -delete || die
+python_install() {
+	# avoid a collision with dev-python/backports
+	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
+	distutils-r1_python_install --skip-build
 }

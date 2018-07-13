@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="dev-haskell/aeson:=[profile?]
 	>=dev-haskell/gitrev-1.3.1:=[profile?]
-	>=dev-haskell/language-docker-6.0.1:=[profile?] <dev-haskell/language-docker-7:=[profile?]
+	>=dev-haskell/language-docker-6.0.3:=[profile?] <dev-haskell/language-docker-7:=[profile?]
 	>=dev-haskell/megaparsec-6.4:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	>=dev-haskell/optparse-applicative-0.14.0:=[profile?]
