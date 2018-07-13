@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	default
 	if ! use static-libs ; then
 		sed -e '/^all:/s/$(STATIC_TARGET)//' \
 			-e '/^\tcp $(STATIC_TARGET)/d' \
