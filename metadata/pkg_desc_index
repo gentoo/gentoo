@@ -5707,7 +5707,7 @@ dev-qt/qdoc 5.9.4: Qt documentation generator
 dev-qt/qt-creator 4.5.2: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.9.4_p201801220610: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qtbluetooth 5.9.4: Bluetooth support library for the Qt5 framework
-dev-qt/qtchooser 0_p20151008 0_p20170803: Qt4/Qt5 version chooser
+dev-qt/qtchooser 0_p20170803: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.9.4: Multi-threading concurrence support library for the Qt5 framework
 dev-qt/qtcore 5.9.4-r2: Cross-platform application development framework
 dev-qt/qtdbus 5.9.4: Qt5 module for inter-process communication over the D-Bus protocol
