@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/freezegun-0.3.10-py37.patch
+)
+
 python_test() {
 	nosetests -v || die "Tests fail with ${EPYTHON}"
 }
