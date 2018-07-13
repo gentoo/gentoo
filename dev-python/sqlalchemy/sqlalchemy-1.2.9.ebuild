@@ -50,17 +50,7 @@ python_compile() {
 }
 
 python_test() {
-	# Create copies of necessary files in BUILD_DIR.
-	# https://bitbucket.org/zzzeek/sqlalchemy/issue/3144/
-	cp -pR examples sqla_nose.py setup.cfg test "${BUILD_DIR}" || die
-	pushd "${BUILD_DIR}" > /dev/null || die
-	if [[ "${EPYTHON}" == "python3.2" ]]; then
-		2to3 --no-diffs -w test || die
-	fi
-	# Recently upstream elected to make the testsuite also pytest capable
-	# "${PYTHON}" sqla_nose.py || die "Testsuite failed under ${EPYTHON}"
-	py.test --verbose test || die "Testsuite failed under ${EPYTHON}"
-	popd > /dev/null
+	pytest -vv test || die "Testsuite failed under ${EPYTHON}"
 }
 
 python_install_all() {
