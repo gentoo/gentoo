@@ -5747,6 +5747,21 @@ www-apps/nikola:jinja - Add support for dev-python/jinja as alternative templati
 www-apps/nikola:watchdog - Use dev-python/watchdog to monitor file system events
 www-apps/nikola:webmedia - Use dev-python/micawber to extract metadata from web media links
 www-apps/nikola:websocket - Add websocket support thru dev-python/ws4py
+www-apps/phpsysinfo:apcupsd - Install sys-power/apcupsd to display those stats.
+www-apps/phpsysinfo:dmraid - Install sys-fs/dmraid to display those stats.
+www-apps/phpsysinfo:freeipmi - Install sys-libs/freeipmi to display those stats.
+www-apps/phpsysinfo:hddtemp - Install app-admin/hddtemp to display those stats.
+www-apps/phpsysinfo:ipmitool - Install sys-apps/ipmitool to display those stats.
+www-apps/phpsysinfo:ipmiutil - Install sys-apps/ipmiutil to display those stats.
+www-apps/phpsysinfo:iptables - Install net-firewall/iptables to display those stats.
+www-apps/phpsysinfo:lm_sensors - Install sys-apps/lm_sensors to display those stats.
+www-apps/phpsysinfo:mdadm - Install sys-fs/mdadm to display those stats.
+www-apps/phpsysinfo:megactl - Install sys-block/megactl to display those stats.
+www-apps/phpsysinfo:nut - Install sys-power/nut to display those stats.
+www-apps/phpsysinfo:quota - Install sys-fs/quota to display those stats.
+www-apps/phpsysinfo:smart - Install sys-apps/smartmontools to display those stats.
+www-apps/phpsysinfo:snmp - Install net-analyzer/net-snmp to display those stats.
+www-apps/phpsysinfo:uptime - Install app-misc/uptimed to display those stats.
 www-apps/postfixadmin:vacation - Install vacation.pl script and dependencies
 www-apps/sitebar:plugins - Install optional plugins
 www-apps/trac:highlight - Enable syntax highlighting

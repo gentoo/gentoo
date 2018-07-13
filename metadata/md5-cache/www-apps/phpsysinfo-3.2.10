@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=A customizable PHP script that displays information about your system nicely
+EAPI=6
+HOMEPAGE=https://rk4an.github.com/phpsysinfo/
+IUSE=apcupsd dmraid freeipmi hddtemp ipmitool ipmiutil iptables lm_sensors mdadm megactl nut quota smart snmp uptime vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php[simplexml,xml,xsl(+),xslt(+),unicode] virtual/httpd-php apcupsd? ( sys-power/apcupsd ) dmraid? ( sys-fs/dmraid ) freeipmi? ( sys-libs/freeipmi ) hddtemp? ( app-admin/hddtemp ) ipmitool? ( sys-apps/ipmitool ) ipmiutil? ( sys-apps/ipmiutil ) iptables? ( net-firewall/iptables ) lm_sensors? ( sys-apps/lm_sensors ) mdadm? ( sys-fs/mdadm ) megactl? ( sys-block/megactl ) nut? ( sys-power/nut ) quota? ( sys-fs/quota ) smart? ( sys-apps/smartmontools ) snmp? ( net-analyzer/net-snmp ) uptime? ( app-misc/uptimed ) >=app-admin/webapp-config-1.50.15
+SLOT=3.2.10
+SRC_URI=https://github.com/rk4an/phpsysinfo/archive/v3.2.10.tar.gz -> phpsysinfo-3.2.10.tar.gz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=31135705415d79bdd146ca20eee41a17
