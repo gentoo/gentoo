@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils user
 
-DESCRIPTION="Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable"
-HOMEPAGE="https://gbin.github.com/err/"
+DESCRIPTION="Plugin based chatbot designed to be easily deployable, extensible and maintainable"
+HOMEPAGE="https://errbot.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
@@ -27,8 +27,7 @@ RDEPEND="
 	virtual/python-dnspython[${PYTHON_USEDEP}]
 	irc? (
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/twisted-core[${PYTHON_USEDEP}]
-		dev-python/twisted-words[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
 	)
 	plugins? ( dev-vcs/git )"
 
@@ -68,7 +67,7 @@ python_install_all() {
 	newconfd "${FILESDIR}"/errd.confd errd
 
 	dodir /etc/${PN}
-	dodir /var/lib/${PN}
+	keepdir /var/lib/${PN}
 	keepdir /var/log/${PN}
 	fowners -R err:err /var/lib/${PN}
 	fowners -R err:err /var/log/${PN}
