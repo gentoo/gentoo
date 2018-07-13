@@ -106,7 +106,8 @@
 # KBUILD_OUTPUT is used. This should be used for referencing .config.
 
 # And to ensure all the weirdness with crosscompile
-inherit toolchain-funcs versionator
+inherit toolchain-funcs
+[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
 
 EXPORT_FUNCTIONS pkg_setup
 
@@ -634,9 +635,9 @@ get_running_version() {
 		# This handles a variety of weird kernel versions.  Make sure to update
 		# tests/linux-info_get_running_version.sh if you want to change this.
 		local kv_full=${KV_FULL//[-+_]*}
-		KV_MAJOR=$(get_version_component_range 1 ${kv_full})
-		KV_MINOR=$(get_version_component_range 2 ${kv_full})
-		KV_PATCH=$(get_version_component_range 3 ${kv_full})
+		KV_MAJOR=$(ver_cut 1 ${kv_full})
+		KV_MINOR=$(ver_cut 2 ${kv_full})
+		KV_PATCH=$(ver_cut 3 ${kv_full})
 		KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
 		: ${KV_PATCH:=0}
 	fi
