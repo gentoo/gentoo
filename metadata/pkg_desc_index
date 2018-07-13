@@ -3390,7 +3390,7 @@ dev-perl/Authen-SASL 2.160.0-r1: A Perl SASL interface
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
-dev-perl/B-Hooks-EndOfScope 0.210.0 0.240.0: Execute code after a scope finished compilation
+dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.220.0: Wrap OP check callbacks
 dev-perl/B-Keywords 1.150.0 1.180.0: Lists of reserved barewords and symbol names
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
@@ -3431,7 +3431,7 @@ dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
 dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0: Perl interface to the cairo library
-dev-perl/Calendar-Simple 1.210.0-r1 1.230.0: Perl extension to create simple calendars
+dev-perl/Calendar-Simple 1.230.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.460.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
@@ -4377,7 +4377,7 @@ dev-perl/ZMQ-LibZMQ2 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0-r1: Use shorter versions of class names
 dev-perl/asa 1.30.0-r1: Lets your class/object say it works like something else
-dev-perl/autobox 2.850.0 2.860.0: Call methods on native types
+dev-perl/autobox 2.860.0: Call methods on native types
 dev-perl/autovivification 0.170.0 0.180.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.5.0: Disables bareword filehandles
 dev-perl/boolean 0.460.0: Boolean support for Perl
