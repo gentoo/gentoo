@@ -28,7 +28,6 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		${PDEPEND}
-		dev-python/tox[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)"
