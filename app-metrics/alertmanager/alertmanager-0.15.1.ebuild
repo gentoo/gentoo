@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/alertmanager"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-ALERTMANAGER_COMMIT="5e86f61"
+ALERTMANAGER_COMMIT="8397de1"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
