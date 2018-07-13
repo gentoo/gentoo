@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,15 +51,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local extra_opts=()
-
-	use compat && extra_opts+=( --enable-talloc-compat1 )
-	if ! multilib_is_native_abi || ! use python; then
-		extra_opts+=( --disable-python )
-	fi
-
-	waf-utils_src_configure \
-		"${extra_opts[@]}"
+	local extra_opts=(
+		$(usex compat --enable-talloc-compat1 '')
+		$(multilib_native_usex python '' --disable-python)
+	)
+	waf-utils_src_configure "${extra_opts[@]}"
 }
 
 multilib_src_compile() {

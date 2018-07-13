@@ -23,8 +23,8 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gnutls gpg iprint ldap pam python
-quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
+IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gnutls gpg iprint json ldap
+pam python quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/policy.h
@@ -49,13 +49,13 @@ CDEPEND="
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.3.3[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.4.1[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.1.11[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.15[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.36[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.14[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.16[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.37[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( virtual/pam )
@@ -78,6 +78,7 @@ CDEPEND="
 		>=net-libs/gnutls-1.4.0
 	)
 	gpg? ( app-crypt/gpgme )
+	json? ( dev-libs/jansson )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.15.1[${MULTILIB_USEDEP}] )
@@ -109,7 +110,7 @@ RDEPEND="${CDEPEND}
 "
 
 REQUIRED_USE="
-	addc? ( python gnutls winbind )
+	addc? ( python gnutls json winbind )
 	addns? ( python )
 	ads? ( acl gnutls ldap winbind )
 	cluster? ( ads )
@@ -130,7 +131,6 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
-	"${FILESDIR}/${PN}-4.8-without_ads_build_fix.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -199,6 +199,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with dmapi)
 		$(multilib_native_use_with fam)
 		$(multilib_native_use_with gpg gpgme)
+		$(multilib_native_use_with json json-audit)
 		$(multilib_native_use_enable iprint)
 		$(multilib_native_use_with pam)
 		$(multilib_native_usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')

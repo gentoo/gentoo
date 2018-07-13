@@ -14,16 +14,17 @@ SRC_URI="https://www.samba.org/ftp/pub/${PN}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="doc +ldap +python"
+IUSE="doc +ldap +lmdb +python"
 
 RDEPEND="
 	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.1.11[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.15[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.36[python(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.14[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.16[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.37[python(+)?,${MULTILIB_USEDEP}]
 	ldap? ( net-nds/openldap )
+	lmdb? ( >=dev-db/lmdb-0.9.16[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 "
 
@@ -41,7 +42,7 @@ WAF_BINARY="${S}/buildtools/bin/waf"
 MULTILIB_WRAPPED_HEADERS=( /usr/include/pyldb.h )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.31-optional_packages.patch
+	"${FILESDIR}"/${PN}-1.4.0-optional_packages.patch
 	"${FILESDIR}"/${PN}-1.1.31-fix_PKGCONFIGDIR-when-python-disabled.patch
 )
 
@@ -57,6 +58,7 @@ src_prepare() {
 multilib_src_configure() {
 	local myconf=(
 		$(usex ldap '' --disable-ldap)
+		$(usex lmdb '' --without-ldb-lmdb)
 		--disable-rpath
 		--disable-rpath-install --bundled-libraries=NONE
 		--with-modulesdir="${EPREFIX}"/usr/$(get_libdir)/samba
