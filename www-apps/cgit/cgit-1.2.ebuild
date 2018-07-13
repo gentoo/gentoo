@@ -9,7 +9,7 @@ inherit webapp eutils multilib user toolchain-funcs
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
-GIT_V="2.7.0"
+GIT_V="2.18.0"
 
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
@@ -18,7 +18,7 @@ SRC_URI="mirror://kernel/software/scm/git/git-${GIT_V}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc +highlight +lua +jit"
 
 RDEPEND="
