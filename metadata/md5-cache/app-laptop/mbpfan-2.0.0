@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/dgraziotin/mbpfan/archive/v2.0.0.tar.gz -> mbpfan-2.0.0.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	ee2d911941350f117c3c9032783bb0e2	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	8e77ea4def23d38cdf0e8ffa69187d34	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=6cc7951d6ba3224af9a9cfd92e4c6c97
