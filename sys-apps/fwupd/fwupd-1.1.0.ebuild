@@ -78,6 +78,8 @@ src_prepare() {
 	default
 	sed -e "s/'--create'/'--absolute-name', '--create'/" \
 		-i data/tests/builder/meson.build || die
+	sed -e "/'-Werror',/d" \
+		-i plugins/uefi/efi/meson.build || die
 	vala_src_prepare
 }
 
