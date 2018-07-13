@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ else
 	SRC_URI="mirror://sourceforge/pyqt/${P}.tar.gz"
 fi
 
-# Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
+# Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
 SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS=""
@@ -54,7 +54,7 @@ src_prepare() {
 
 	# Sub-slot sanity check
 	local sub_slot=${SLOT#*/}
-	local sip_api_major_nr=$(sed -nre 's:^#define SIP_API_MAJOR_NR\s+([0-9]+):\1:p' siplib/sip.h.in)
+	local sip_api_major_nr=$(sed -nre 's:^#define SIP_API_MAJOR_NR\s+([0-9]+):\1:p' siplib/sip.h || die)
 	if [[ ${sub_slot} != ${sip_api_major_nr} ]]; then
 		eerror
 		eerror "Ebuild sub-slot (${sub_slot}) does not match SIP_API_MAJOR_NR (${sip_api_major_nr})"
