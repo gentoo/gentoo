@@ -1399,8 +1399,11 @@ dev-lang/ruby:jemalloc - Use dev-libs/jemalloc for memory allocation.
 dev-lang/ruby:rdoc - Install dev-ruby/rdoc after installing Ruby.
 dev-lang/ruby:readline - Use the sys-libs/readline library to provide the readline extension, used for instance by the irb tool. This flag is meaningful only if the libedit USE flag is disabled. If neither libedit nor readline USE flags are enabled, the readline extension will not be built (and irb will lose line editing functionality).
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
+dev-lang/rust:cargo - Install cargo component
 dev-lang/rust:extended - Build and install rls, rustfmt and cargo alongside the compiler and stdlib
 dev-lang/rust:jemalloc - Use dev-libs/jemalloc as the standard memory allocator
+dev-lang/rust:rls - Install rls component
+dev-lang/rust:rustfmt - Install rustfmt component
 dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
 dev-lang/rust-bin:cargo - Install cargo component
 dev-lang/rust-bin:rustfmt - Install rustfmt component
