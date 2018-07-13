@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+        need net
+}
+
+start() {
+        ebegin "Starting ASSP"
+        start-stop-daemon -b -m --start --quiet --exec /usr/bin/perl --make-pidfile \
+                --pidfile /var/run/assp/asspd.pid -- /usr/share/assp/assp.pl /var/lib/assp/
+                       2<&1 >> /var/log/assp/assp.log
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping ASSP"
+        start-stop-daemon --stop --quiet --pidfile /var/run/assp/asspd.pid
+        eend $?
+}
