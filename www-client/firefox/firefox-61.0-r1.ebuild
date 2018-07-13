@@ -224,6 +224,7 @@ src_configure() {
 	# Default mozilla_five_home, system-hunspell no longer valid option
 	sed '/with-default-mozilla-five-home=/d' -i "${S}"/.mozconfig
 	sed '/enable-system-hunspell/d' -i "${S}"/.mozconfig
+	sed '/disable-stylo/d' -i "${S}"/.mozconfig
 
 	# Finalize and report settings
 	mozconfig_final
