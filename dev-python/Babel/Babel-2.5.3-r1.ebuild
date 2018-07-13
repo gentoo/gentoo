@@ -34,6 +34,8 @@ python_prepare_all() {
 }
 
 python_test() {
+	local -x TZ=UTC
+
 	# Create implementation-specific datadir for tests.
 	cp -R -l tests/messages/data "${BUILD_DIR}"/ || die
 	py.test -vv || die
