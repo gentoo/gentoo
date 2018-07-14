@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk2 kde libressl mysql odk pdfimport postgres test vlc
+gstreamer +gtk gtk2 kde mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -116,8 +116,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
-	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
-	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
 	>=dev-libs/xmlsec-1.2.24[nss]
 	media-gfx/graphite2
@@ -405,6 +403,7 @@ src_configure() {
 		--disable-fetch-external
 		--disable-gstreamer-0-10
 		--disable-online-update
+		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
 		--with-alloc=system
@@ -417,6 +416,7 @@ src_configure() {
 		--with-lang=""
 		--with-parallelism=$(makeopts_jobs)
 		--with-system-ucpp
+		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
 		--with-x
 		--without-fonts
