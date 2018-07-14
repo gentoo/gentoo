@@ -267,6 +267,7 @@ _check_reqs() {
 	else
 		CHECKREQS_DISK_BUILD="6G"
 	fi
+	check-reqs_$1
 }
 
 pkg_pretend() {
@@ -279,10 +280,7 @@ pkg_pretend() {
 		ewarn "See also: https://wiki.documentfoundation.org/ReleaseNotes/5.3#Base"
 	fi
 
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		_check_reqs
-		check-reqs_pkg_pretend
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_pretend
 }
 
 pkg_setup() {
@@ -290,10 +288,7 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	xdg_environment_reset
 
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		_check_reqs
-		check-reqs_pkg_setup
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_setup
 }
 
 src_unpack() {
