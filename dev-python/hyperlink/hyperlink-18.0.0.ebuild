@@ -21,12 +21,9 @@ DEPEND="${RDEPEND}
 	dev-python/idna[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/pytest-2.9.2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-cov-2.3.0[${PYTHON_USEDEP}]
 	)
 "
 
 python_test() {
-	PYTHONPATH="${S}/test:${BUILD_DIR}/lib" \
-		py.test -v || die
-	cd test
+	pytest -vv || die
 }
