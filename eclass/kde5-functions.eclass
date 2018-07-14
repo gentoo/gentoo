@@ -52,7 +52,6 @@ case ${CATEGORY} in
 			: ${FRAMEWORKS_MINIMAL:=5.43.0}
 			: ${QT_MINIMAL:=5.9.1}
 		fi
-		[[ ${PV} = 18.04.2* ]] && : ${FRAMEWORKS_MINIMAL:=5.44.0}
 		;;
 esac
 
