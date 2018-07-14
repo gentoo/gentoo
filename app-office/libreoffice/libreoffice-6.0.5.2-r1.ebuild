@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk2 jemalloc kde libressl mysql odk pdfimport postgres test vlc
+gstreamer +gtk gtk2 jemalloc kde mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -113,10 +113,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libgpg-error
 	>=dev-libs/liborcus-0.13.3
 	dev-libs/librevenge
+	dev-libs/libxml2
+	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
-	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
-	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
 	>=dev-libs/xmlsec-1.2.24[nss]
 	media-gfx/graphite2
@@ -135,6 +135,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
@@ -162,10 +163,12 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		media-libs/mesa[egl]
 		x11-libs/gtk+:3
+		x11-libs/pango
 	)
 	gtk2? (
 		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
+		x11-libs/pango
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	kde? (
@@ -211,10 +214,7 @@ fi
 #        after everything upstream is under gbuild
 #        as dmake execute tests right away
 DEPEND="${COMMON_DEPEND}
-	!<sys-devel/make-3.82
 	>=dev-libs/libatomic_ops-7.2d
-	>=dev-libs/libxml2-2.7.8
-	dev-libs/libxslt
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
@@ -225,7 +225,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	sys-devel/gettext
 	sys-devel/ucpp
-	sys-libs/zlib
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	x11-libs/libXt
@@ -251,6 +250,9 @@ PATCHES=(
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
 	"${FILESDIR}/${PN}-6.0.3.2-testTdf108947.patch" #bug 656600
+
+	# 6.0 branch
+	"${FILESDIR}/${P}-enable-gio-w-gtk3.patch" #bug 661062
 
 	# gtk3-kde5 vcl plugin backported from master
 	"${WORKDIR}"/${PATCHSET/.tar.xz/}
@@ -408,6 +410,7 @@ src_configure() {
 		--disable-fetch-external
 		--disable-gstreamer-0-10
 		--disable-online-update
+		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system")
@@ -420,6 +423,7 @@ src_configure() {
 		--with-lang=""
 		--with-parallelism=$(makeopts_jobs)
 		--with-system-ucpp
+		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
 		--with-x
 		--without-fonts
