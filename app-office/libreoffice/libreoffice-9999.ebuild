@@ -209,7 +209,6 @@ fi
 #        after everything upstream is under gbuild
 #        as dmake execute tests right away
 DEPEND="${COMMON_DEPEND}
-	!<sys-devel/make-3.82
 	>=dev-libs/libatomic_ops-7.2d
 	>=dev-libs/libxml2-2.7.8
 	dev-libs/libxslt
