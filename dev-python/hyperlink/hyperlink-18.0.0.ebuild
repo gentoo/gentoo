@@ -21,7 +21,6 @@ DEPEND="${RDEPEND}
 	dev-python/idna[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/pytest-2.9.2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-cov-2.3.0[${PYTHON_USEDEP}]
 	)
 "
 
