@@ -2,4 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="zstd">Enable support for ZSTD compression using <pkg>app-arch/zstd</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">rpm-software-management/rpm</remote-id>
+	</upstream>
 </pkgmetadata>
