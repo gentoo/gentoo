@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Crossplatform log viewer for Android, iOS and text files"
 HOMEPAGE="https://github.com/alopatindev/qdevicemonitor"
@@ -26,6 +26,11 @@ RDEPEND="
 	dev-util/android-tools
 	app-pda/usbmuxd"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-qt-5.11.patch
+	"${FILESDIR}"/${P}-crash-after-fresh-install.patch
+)
 
 src_configure() {
 	cd "${PN}" || die
