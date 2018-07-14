@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Crossplatform log viewer for Android, iOS and text files"
 HOMEPAGE="https://github.com/alopatindev/qdevicemonitor"
