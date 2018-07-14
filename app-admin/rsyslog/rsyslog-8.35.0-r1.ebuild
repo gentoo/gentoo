@@ -40,7 +40,7 @@ else
 		unset _tmp_last_index
 		unset _tmp_suffix
 	else
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+		KEYWORDS="amd64 ~arm ~arm64 ~hppa x86"
 	fi
 
 	SRC_URI="
@@ -48,18 +48,21 @@ else
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
 	"
 
-	PATCHES=()
+	PATCHES=(
+		"${FILESDIR}"/${BRANCH}/${PN}-8.35.0-fix-issue2719.patch
+		"${FILESDIR}"/${BRANCH}/${PN}-8.35.0-fix-issue2726.patch
+	)
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="curl dbi debug doc elasticsearch +gcrypt grok gnutls jemalloc kafka kerberos kubernetes libressl mdblookup"
-IUSE+=" mongodb mysql normalize omhttpfs omudpspoof openssl postgres rabbitmq redis relp rfc3195 rfc5424hmac"
-IUSE+=" snmp ssl systemd test usertools +uuid xxhash zeromq"
+IUSE="curl dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos kubernetes libressl mdblookup mongodb mysql"
+IUSE+=" normalize omhttpfs omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid zeromq"
 
 RDEPEND="
 	>=dev-libs/libfastjson-0.99.8:=
 	>=dev-libs/libestr-0.1.9
+	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
 	curl? ( >=net-misc/curl-7.35.0 )
 	dbi? ( >=dev-db/libdbi-0.8.3 )
@@ -89,16 +92,9 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:= )
 	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
-	ssl? (
-		gnutls? ( >=net-libs/gnutls-2.12.23:0= )
-		openssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
-	)
+	ssl? ( >=net-libs/gnutls-2.12.23:0= )
 	systemd? ( >=sys-apps/systemd-234 )
 	uuid? ( sys-apps/util-linux:0= )
-	xxhash? ( dev-libs/xxhash:= )
 	zeromq? (
 		>=net-libs/czmq-3.0.2
 	)"
@@ -111,10 +107,7 @@ DEPEND="${RDEPEND}
 		${PYTHON_DEPS}
 	)"
 
-REQUIRED_USE="
-	kubernetes? ( normalize )
-	ssl ( || ( gnutls openssl ) )
-"
+REQUIRED_USE="kubernetes? ( normalize )"
 
 if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
@@ -189,8 +182,8 @@ src_configure() {
 		--disable-debug-symbols
 		--disable-generate-man-pages
 		--without-valgrind-testbench
-		--disable-liblogging-stdlog
 		$(use_enable test testbench)
+		$(use_enable curl libcurl)
 		# Input Plugins without depedencies
 		--enable-imdiag
 		--enable-imfile
@@ -213,8 +206,6 @@ src_configure() {
 		--enable-omstdout
 		--enable-omuxsock
 		# Misc
-		--enable-fmhash
-		$(use_enable xxhash fmhash-xxhash)
 		--enable-pmaixforwardedfrom
 		--enable-pmciscoios
 		--enable-pmcisconames
@@ -230,6 +221,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable debug diagtools)
 		$(use_enable debug memcheck)
+		$(use_enable debug rtinst)
 		$(use_enable debug valgrind)
 		# Misc
 		$(use_enable curl fmhttp)
@@ -251,8 +243,7 @@ src_configure() {
 		$(use_enable rfc5424hmac mmrfc5424addhmac)
 		$(use_enable snmp)
 		$(use_enable snmp mmsnmptrapd)
-		$(use_enable gnutls)
-		$(use_enable openssl)
+		$(use_enable ssl gnutls)
 		$(use_enable systemd imjournal)
 		$(use_enable systemd omjournal)
 		$(use_enable usertools)
@@ -329,7 +320,7 @@ src_install() {
 	newins "${FILESDIR}/${BRANCH}/50-default-r1.conf" 50-default.conf
 
 	insinto /etc/logrotate.d/
-	newins "${FILESDIR}/${BRANCH}/${PN}.logrotate" ${PN}
+	newins "${FILESDIR}/${BRANCH}/${PN}-r1.logrotate" ${PN}
 
 	if use mysql; then
 		insinto /usr/share/doc/${PF}/scripts/mysql
