@@ -1413,6 +1413,7 @@ dev-lang/spidermonkey:system-icu - Use the system-wide dev-libs/icu instead of b
 dev-lang/spidermonkey:threadsafe - Build a threadsafe version of spidermonkey
 dev-lang/swi-prolog:archive - Use libarchive for extension packs
 dev-lang/swi-prolog:uuid - Use ossp-uuid for UUID pack
+dev-lang/swi-prolog:yaml - Use libyaml for YAML pack
 dev-lang/swig:ccache - build ccache-swig(a fast compiler cache)
 dev-lang/yap:R - Enable support for connecting R to Prolog
 dev-libs/ace:ciao - Include Component Intergraced Ace ORB into the build of ace
