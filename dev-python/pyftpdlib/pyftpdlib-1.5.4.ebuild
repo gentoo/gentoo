@@ -64,8 +64,9 @@ python_test() {
 		test_nlst
 	)
 	skipped_tests=${skipped_tests[@]/%/ or}
+	# Don't load the relaxed plugin, see https://bugs.gentoo.org/661082
 	py.test --ignore ${PN}/test/test_misc.py -k "not (${skipped_tests% or})" \
-		|| die "Tests failed with ${EPYTHON}"
+		-p no:relaxed || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

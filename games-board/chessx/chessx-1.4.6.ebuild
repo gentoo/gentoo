@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils qmake-utils
+EAPI=7
+
+inherit desktop qmake-utils
 
 DESCRIPTION="Qt5-based Chess Database Utility"
 HOMEPAGE="http://chessx.sourceforge.net/"
@@ -14,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
@@ -21,13 +23,19 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sys-libs/zlib"
+	sys-libs/zlib:="
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-zlib.patch
+	"${FILESDIR}"/${PN}-1.4.0-zlib.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
 )
+
+src_prepare() {
+	default
+	"$(qt5_get_bindir)/lrelease" i18n/* || die
+}
 
 src_configure() {
 	eqmake5
