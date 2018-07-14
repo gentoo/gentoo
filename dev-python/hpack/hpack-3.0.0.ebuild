@@ -20,7 +20,6 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/pytest-2.9.2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-cov-2.3.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-1.14.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.4.2[${PYTHON_USEDEP}]
 		!!dev-python/pytest-relaxed[${PYTHON_USEDEP}]
@@ -35,7 +34,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	PYTHONPATH="${S}/test:${BUILD_DIR}/lib" \
-		py.test -v hpack test/|| die
-	cd test
+	py.test -vv hpack test || die "Tests fail with ${EPYTHON}"
 }
