@@ -18,7 +18,8 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/pyjwt[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pyjwt[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.14.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
