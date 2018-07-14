@@ -34,7 +34,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	PYTHONPATH="${S}/test:${BUILD_DIR}/lib" \
-		py.test -v hpack test/|| die
-	cd test
+	py.test -vv hpack test || die "Tests fail with ${EPYTHON}"
 }
