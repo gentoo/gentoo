@@ -9036,7 +9036,7 @@ net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.19.1: ncurses directconnect client
-net-p2p/qbittorrent 4.0.4: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.0.4 4.1.1: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.3-r1: P2P private sharing application
 net-p2p/rtorrent 0.9.6 0.9.6-r1: BitTorrent Client using libtorrent
 net-p2p/syncthing 0.14.38: Open Source Continuous File Synchronization
