@@ -37,6 +37,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 PATCHES=(
 	"${FILESDIR}"/${P}-test-backport.patch
 	"${FILESDIR}"/${P}-test-backport1.patch
+	"${FILESDIR}"/${P}-test-backport2.patch
 )
 
 python_test() {
