@@ -33,7 +33,6 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		>=www-servers/tornado-4.2.1[$(python_gen_usedep 'python*')]
-		<www-servers/tornado-5.0.0[$(python_gen_usedep 'python*')]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 	doc? (
@@ -45,6 +44,11 @@ DEPEND="
 # Testsuite written requiring mock to be installed under all Cpythons
 
 python_prepare_all() {
+	local PATCHES=(
+		# support tornado-5
+		"${FILESDIR}"/urllib3-1.23-tornado5.patch
+	)
+
 	# skip appengine tests
 	rm -r test/appengine || die
 
