@@ -5737,9 +5737,6 @@ www-apache/mod_security:mlogc - Build and install the ModSecurity Audit Log Coll
 www-apps/ampache:transcode - Install optional dependencies for transcoding support
 www-apps/bugzilla:extras - Optional Perl modules
 www-apps/bugzilla:modperl - Enable www-apache/mod_perl support
-www-apps/cgit:highlight - Enable source code highlighting
-www-apps/cgit:jit - If the lua flag is enabled, jit uses LuaJIT instead of vanilla Lua
-www-apps/cgit:lua - Enable support for Lua scripting
 www-apps/icingaweb2:nginx - Adds support for nginx
 www-apps/ikiwiki:extras - Installs additional modules used by ikiwiki plugins
 www-apps/nikola:assets - Support web asset management through dev-python/assets

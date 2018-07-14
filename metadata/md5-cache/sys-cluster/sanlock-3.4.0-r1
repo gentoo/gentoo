@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libaio sys-apps/util-linux python? ( python_targets_python2_7? 
 REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 ) )
 SLOT=0
 SRC_URI=https://git.fedorahosted.org/cgit/sanlock.git/snapshot/sanlock-3.4.0.tar.xz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	ee2d911941350f117c3c9032783bb0e2	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	8e77ea4def23d38cdf0e8ffa69187d34	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=b9f4c8cb1ce92d8270d9bddf1277c83e
