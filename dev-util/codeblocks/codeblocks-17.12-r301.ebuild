@@ -12,7 +12,9 @@ HOMEPAGE="http://www.codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
-SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.tar.xz https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz"
+SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.tar.xz
+https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz
+https://dev.gentoo.org/~leio/distfiles/${P}_update_astyle_plugin_to_v3.1.patch.xz"
 
 # USE="fortran" enables FortranProject plugin (v1.5)
 # that is delivered with Code::Blocks 17.12 source code.
@@ -42,7 +44,7 @@ PATCHES=(
 src_prepare() {
 	default
 	if has_version ">=dev-util/astyle-3.1" ; then
-		epatch "${FILESDIR}"/codeblocks-17.12_update_astyle_plugin_to_v3.1.patch
+		epatch "${WORKDIR}"/codeblocks-17.12_update_astyle_plugin_to_v3.1.patch
 	fi
 	eautoreconf
 }
