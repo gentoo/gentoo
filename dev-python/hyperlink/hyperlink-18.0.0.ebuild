@@ -25,7 +25,5 @@ DEPEND="${RDEPEND}
 "
 
 python_test() {
-	PYTHONPATH="${S}/test:${BUILD_DIR}/lib" \
-		py.test -v || die
-	cd test
+	pytest -vv || die
 }
