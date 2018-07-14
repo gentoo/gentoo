@@ -5,17 +5,21 @@ EAPI=6
 
 WX_GTK_VER="3.0"
 
-inherit autotools gnome2-utils subversion wxwidgets xdg-utils
+inherit autotools gnome2-utils wxwidgets xdg-utils
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="http://www.codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-SRC_URI=""
-ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.tar.xz https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz"
 
-IUSE="contrib debug pch"
+# USE="fortran" enables FortranProject plugin (v1.5)
+# that is delivered with Code::Blocks 17.12 source code.
+# https://sourceforge.net/projects/fortranproject
+# http://cbfortran.sourceforge.net
+
+IUSE="contrib debug fortran pch"
 
 RDEPEND="app-arch/zip
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
@@ -27,29 +31,37 @@ RDEPEND="app-arch/zip
 
 DEPEND="${RDEPEND}
 	>=dev-libs/tinyxml-2.6.2-r3
-	>=dev-util/astyle-3.1-r2:0/3.1
+	>=dev-util/astyle-3.0.1-r1:0=
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/codeblocks-17.12-nodebug.diff )
+PATCHES=(
+	"${FILESDIR}"/codeblocks-17.12-nodebug.diff
+	"${WORKDIR}"/patches/
+	)
 
 src_prepare() {
 	default
-	# Let's make the autorevision work.
-	subversion_wc_info
-	CB_LCD=$(LC_ALL=C svn info "${ESVN_WC_PATH}" | grep "^Last Changed Date:" | cut -d" " -f4,5)
-	echo "m4_define([SVN_REV], ${ESVN_WC_REVISION})" > revision.m4
-	echo "m4_define([SVN_DATE], ${CB_LCD})" >> revision.m4
+	if has_version ">=dev-util/astyle-3.1" ; then
+		epatch "${FILESDIR}"/codeblocks-17.12_update_astyle_plugin_to_v3.1.patch
+	fi
 	eautoreconf
 }
 
 src_configure() {
 	setup-wxwidgets
 
+	# USE="contrib -fortran" setup:
+	use fortran || CONF_WITH_LST=$(use_with contrib contrib-plugins all,-FortranProject)
+	# USE="contrib fortran" setup:
+	use fortran && CONF_WITH_LST=$(use_with contrib contrib-plugins all)
+	# USE="-contrib fortran" setup:
+	use contrib || CONF_WITH_LST=$(use_with fortran contrib-plugins FortranProject)
+
 	econf \
 		--disable-static \
 		$(use_enable debug) \
 		$(use_enable pch) \
-		$(use_with contrib contrib-plugins all)
+		${CONF_WITH_LST}
 }
 
 pkg_postinst() {
