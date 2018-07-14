@@ -232,6 +232,16 @@ src_install() {
 		/usr/bin/rust-gdb
 		/usr/bin/rust-lldb
 	EOF
+	if use cargo; then
+	    echo /usr/bin/cargo >> "${T}/provider-${P}"
+	fi
+	if use rls; then
+	    echo /usr/bin/rls >> "${T}/provider-${P}"
+	fi
+	if use rustfmt; then
+	    echo /usr/bin/rustfmt >> "${T}/provider-${P}"
+	    echo /usr/bin/cargo-fmt >> "${T}/provider-${P}"
+	fi
 	dodir /etc/env.d/rust
 	insinto /etc/env.d/rust
 	doins "${T}/provider-${P}"
