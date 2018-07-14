@@ -2895,7 +2895,7 @@ dev-lang/scala 2.11.4-r1 2.11.11 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.3.0: Stand-alone JavaScript C library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
-dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.4.2: free, small, and standard compliant Prolog compiler
+dev-lang/swi-prolog 7.4.2: free, small, and standard compliant Prolog compiler
 dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
 dev-lang/tcl 8.5.17 8.6.6: Tool Command Language
 dev-lang/tk 8.5.17 8.6.6: Tk Widget Set
