@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 	media-gfx/graphviz
 "
 
+PATCHES=( "${FILESDIR}"/${P}-qt-5.11.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=OFF
