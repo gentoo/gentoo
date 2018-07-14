@@ -3,6 +3,7 @@
 
 EAPI=6
 
+ECM_KDEINSTALLDIRS="false"
 KDE_HANDBOOK="false" # buildsystem applies broken python hacks, bug #614950
 inherit kde5
 
