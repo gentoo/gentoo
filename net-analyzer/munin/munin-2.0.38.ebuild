@@ -120,6 +120,8 @@ src_prepare() {
 
 	eapply "${WORKDIR}"/patches/*.patch
 
+	sed -i -e '/hp-ux/ s/done/fi/' Makefile || die
+
 	eapply_user
 
 	java-pkg-opt-2_src_prepare
