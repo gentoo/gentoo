@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -29,9 +29,6 @@ all_ruby_prepare() {
 
 	# Avoid test failing inconsistently
 	sed -i -e '/phased_restart_via_pumactl/,/^  end/ s:^:#:' test/test_integration.rb || die
-
-	# Avoid test we did not run previously that is failing
-	rm -f test/test_cli.rb || die
 
 	# Avoid test that trigger a bug in ruby very easily and lead to
 	# failure. This affects all current puma versions in combination
