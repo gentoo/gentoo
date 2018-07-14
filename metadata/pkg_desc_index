@@ -314,14 +314,14 @@ app-cdr/xbiso 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.5.5: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.23.0 0.24.0: An implementation of the ACME protocol
+app-crypt/acme 0.24.0 0.25.1: An implementation of the ACME protocol
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
 app-crypt/bcwipe 1.9.13: Secure file removal utility
 app-crypt/ccid 1.4.27: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
-app-crypt/certbot 0.23.0 0.24.0: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.23.0 0.24.0: Apache plugin for certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 0.23.0 0.24.0: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.24.0 0.25.1: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.24.0 0.25.1: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 0.24.0 0.25.1: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/easy-rsa 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gnupg 1.4.21 2.2.8: The GNU Privacy Guard, a GPL OpenPGP implementation
