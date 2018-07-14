@@ -113,7 +113,7 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="
 	kubernetes? ( normalize )
-	ssl ( || ( gnutls openssl ) )
+	ssl? ( || ( gnutls openssl ) )
 "
 
 if [[ ${PV} == "9999" ]]; then
