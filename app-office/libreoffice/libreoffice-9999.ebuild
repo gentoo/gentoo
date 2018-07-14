@@ -164,10 +164,12 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		media-libs/mesa[egl]
 		x11-libs/gtk+:3
+		x11-libs/pango
 	)
 	gtk2? (
 		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
+		x11-libs/pango
 	)
 	kde? (
 		dev-qt/qtcore:5
