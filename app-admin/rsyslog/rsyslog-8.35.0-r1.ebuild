@@ -320,7 +320,7 @@ src_install() {
 	newins "${FILESDIR}/${BRANCH}/50-default-r1.conf" 50-default.conf
 
 	insinto /etc/logrotate.d/
-	newins "${FILESDIR}/${BRANCH}/${PN}.logrotate" ${PN}
+	newins "${FILESDIR}/${BRANCH}/${PN}-r1.logrotate" ${PN}
 
 	if use mysql; then
 		insinto /usr/share/doc/${PF}/scripts/mysql
