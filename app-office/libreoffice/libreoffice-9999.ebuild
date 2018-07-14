@@ -114,6 +114,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libgpg-error
 	>=dev-libs/liborcus-0.13.3
 	dev-libs/librevenge
+	dev-libs/libxml2
+	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
@@ -134,6 +136,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
@@ -210,8 +213,6 @@ fi
 #        as dmake execute tests right away
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/libatomic_ops-7.2d
-	>=dev-libs/libxml2-2.7.8
-	dev-libs/libxslt
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
@@ -222,7 +223,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	sys-devel/gettext
 	sys-devel/ucpp
-	sys-libs/zlib
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	x11-libs/libXt
