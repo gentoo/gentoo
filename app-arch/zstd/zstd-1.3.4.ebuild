@@ -12,15 +12,17 @@ SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="static-libs"
+IUSE="lz4 static-libs"
 
-RDEPEND="app-arch/xz-utils"
+RDEPEND="app-arch/xz-utils
+	lz4? ( app-arch/lz4 )"
 DEPEND="${RDEPEND}"
 
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		AR="$(tc-getAR)" \
+		HAVE_LZ4=$(usex lz4 1 0) \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" zstd
 
