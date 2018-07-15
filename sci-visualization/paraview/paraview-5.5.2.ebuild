@@ -4,10 +4,10 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils desktop python-single-r1 toolchain-funcs versionator
+inherit cmake-utils desktop eapi7-ver python-single-r1 toolchain-funcs
 
-MAIN_PV=$(get_major_version)
-MAJOR_PV=$(get_version_component_range 1-2)
+MAIN_PV=$(ver_cut 0-1)
+MAJOR_PV=$(ver_cut 1-2)
 MY_P="ParaView-v${PV}"
 
 DESCRIPTION="Powerful scientific data visualization application"
