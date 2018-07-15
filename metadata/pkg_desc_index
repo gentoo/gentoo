@@ -5799,7 +5799,7 @@ dev-ruby/domain_name 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/erubi 1.7.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
-dev-ruby/eventmachine 1.2.0.1: EventMachine is a fast, simple event-processing library for Ruby programs
+dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.6.0 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/facter 2.4.6 3.9.2 3.11.1 3.11.2: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/fakefs 0.11.3: A fake filesystem. Use it in your tests
@@ -5841,7 +5841,7 @@ dev-ruby/libxml 2.9.0: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.1.5-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/locale 2.1.2-r1: A pure ruby library which provides basic APIs for localization
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
-dev-ruby/logue 1.0.4 1.0.11: A module that adds logging/trace functionality
+dev-ruby/logue 1.0.11 1.0.13-r1: A module that adds logging/trace functionality
 dev-ruby/loofah 2.2.1: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/maruku 0.7.2-r1 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/maxitest 2.8.0: Minitest + all the features you always wanted
@@ -5871,6 +5871,7 @@ dev-ruby/nokogiri 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/ox 2.8.2: A fast XML parser and Object marshaller
+dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/patron 0.10.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pg 0.18.4-r1 0.21.0: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pkg-config 1.2.8: A pkg-config implementation by Ruby
@@ -5886,7 +5887,7 @@ dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
 dev-ruby/rails-dom-testing 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
 dev-ruby/railties 5.1.4: Tools for creating, working with, and running Rails applications
-dev-ruby/rainbow 1.1.4-r1 2.2.2: Colorize printed text on ANSI terminals
+dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 10.5.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rb-inotify 0.9.10: A thorough inotify wrapper for Ruby using FFI
@@ -8557,7 +8558,7 @@ net-irc/eggdrop 1.6.21-r1: An IRC bot extensible with C or TCL
 net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
-net-irc/epic5 1.1.10-r1: Epic5 IRC Client
+net-irc/epic5 1.1.10-r2: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r1 2.12.4-r2: Graphical IRC client based on XChat
 net-irc/inspircd 2.0.23 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
