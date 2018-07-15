@@ -1,5 +1,5 @@
---- Gauche-qdbm-0.2.orig/Makefile.in
-+++ Gauche-qdbm-0.2/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -10,79 +10,57 @@
  VPATH       = $(srcdir)
  
@@ -18,7 +18,9 @@
 -GOSH     = @GOSH@
 -GAUCHE_CONFIG = @GAUCHE_CONFIG@
 +DESTDIR        =
++CFLAGS         = @CFLAGS@
 +CPPFLAGS       = @CPPFLAGS@  # AC_LIB_LINKFLAGS adds to this..
++LDFLAGS        = @LDFLAGS@
 +GOSH           = "@GOSH@"
 +GAUCHE_CONFIG  = "@GAUCHE_CONFIG@"
 +GAUCHE_PACKAGE = "@GAUCHE_PACKAGE@"
@@ -79,9 +81,7 @@
 -$(MODULE)_head.c $(MODULE)_tail.c :
 -	$(GAUCHE_CONFIG) --fixup-extension $(MODULE)
 +$(PACKAGE).$(SOEXT): $(qdbm_SRCS)
-+	$(GAUCHE_PACKAGE) compile --verbose \
-+	    --libs="$(qdbm_LIBS)" --cppflags="$(CPPFLAGS)" \
-+	    $(PACKAGE) $(qdbm_SRCS)
++	$(GAUCHE_PACKAGE) compile --verbose --cppflags="$(CPPFLAGS)" --cflags="$(CFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(qdbm_LIBS)" $(PACKAGE) $(qdbm_SRCS)
  
  check : all
  	@rm -f test.log
@@ -112,8 +112,8 @@
  
  distclean : clean
  	rm -rf $(CONFIG_GENERATED)
---- Gauche-qdbm-0.2.orig/configure.ac
-+++ Gauche-qdbm-0.2/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -4,18 +4,11 @@
  AC_INIT(Gauche-qdbm, 0.2)
  AC_CONFIG_SRCDIR(qdbm.c)
@@ -134,3 +134,14 @@
 +AC_GAUCHE_MAKE_GPD
  echo $PACKAGE_VERSION > VERSION
  AC_OUTPUT(Makefile)
+--- a/depot.stub
++++ b/depot.stub
+@@ -219,7 +219,7 @@
+   SCM_RETURN(SCM_MAKE_INT(r));")
+ 
+ (define-cproc qdbm-dpprimenum (num::<fixnum>)
+-  (return <int> "dpprimenum"))
++  "  SCM_RETURN(SCM_MAKE_INT(dpprimenum(num)));")
+ 
+ (define-enum DP_OREADER)
+ (define-enum DP_OWRITER)

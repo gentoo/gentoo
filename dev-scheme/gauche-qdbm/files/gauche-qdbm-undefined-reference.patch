@@ -1,5 +1,5 @@
---- Gauche-qdbm-0.2.orig/qdbm.scm
-+++ Gauche-qdbm-0.2/qdbm.scm
+--- a/qdbm.scm
++++ b/qdbm.scm
 @@ -72,7 +72,7 @@
    (unless (slot-bound? self 'path)
      (error "path must be set to open qdbm database"))
