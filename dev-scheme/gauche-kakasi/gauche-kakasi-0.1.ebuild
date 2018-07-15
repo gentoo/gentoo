@@ -3,6 +3,8 @@
 
 EAPI="6"
 
+inherit autotools
+
 MY_P="${P^g}"
 
 DESCRIPTION="Kakasi binding for Gauche"
@@ -18,3 +20,12 @@ RDEPEND="dev-scheme/gauche
 	>=app-i18n/kakasi-2.3.4"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}"/${PN}-gauche-package.patch )
+
+src_prepare() {
+	default
+
+	mv configure.{in,ac}
+	eautoreconf
+}
