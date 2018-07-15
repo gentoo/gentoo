@@ -50,10 +50,12 @@ _CMAKE_UTILS_ECLASS=1
 # Set to enable in-source build.
 
 # @ECLASS-VARIABLE: CMAKE_MAKEFILE_GENERATOR
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify a makefile generator to be used by cmake.
 # At this point only "emake" and "ninja" are supported.
-: ${CMAKE_MAKEFILE_GENERATOR:=emake}
+# In EAPI 7 and above, the default is set to "ninja",
+# whereas in EAPIs below 7, it is set to "emake".
 
 # @ECLASS-VARIABLE: CMAKE_MIN_VERSION
 # @DESCRIPTION:
@@ -112,7 +114,13 @@ esac
 inherit toolchain-funcs ninja-utils flag-o-matic multiprocessing xdg-utils
 
 case ${EAPI} in
-	5|6) inherit eutils multilib ;;
+	[56])
+		: ${CMAKE_MAKEFILE_GENERATOR:=emake}
+		inherit eutils multilib
+		;;
+	*)
+		: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+		;;
 esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
