@@ -8582,7 +8582,7 @@ net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 3.2.10.7: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.0.1: Portable and multi-interface IRC client
-net-irc/znc 1.6.6: An advanced IRC Bouncer
+net-irc/znc 1.6.6 1.7.1_rc1: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.7.8: Generic Online Banking Interface
