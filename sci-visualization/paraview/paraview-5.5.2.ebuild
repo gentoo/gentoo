@@ -89,8 +89,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:0= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	>=dev-util/cmake-3.4
-	boost? ( >=dev-libs/boost-1.40.0[mpi?,${PYTHON_USEDEP}] )
+	boost? ( dev-libs/boost[mpi?,${PYTHON_USEDEP}] )
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}/${MY_P}"
