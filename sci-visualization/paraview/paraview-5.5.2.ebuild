@@ -99,6 +99,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch
 	"${FILESDIR}"/${PN}-5.3.0-fix_buildsystem.patch
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
 )
 
 pkg_pretend() {
