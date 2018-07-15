@@ -1717,7 +1717,6 @@ dev-perl/Mail-IMAPClient:md5 - Install support for DIGEST-MD5 and CRAM-MD5 Authe
 dev-perl/Mail-IMAPClient:ntlm - Install support for NTLM Authentication
 dev-perl/Mail-IMAPClient:ssl - Install support for SSL Connections
 dev-perl/Mail-IMAPClient:zlib - Install support for COMPRESS DEFLATE connections
-dev-perl/Net-OpenSSH:sftp - Enable SFTP protocol support.
 dev-perl/PDL:badval - Enable bad values support
 dev-perl/PDL:hdf - Enable HDF (version 4) format support
 dev-perl/PDL:netpbm - Enable NETPBM and MPEG support
