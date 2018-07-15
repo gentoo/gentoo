@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Jul 2018)
+# Unmask ICU 58 only for 13.0 based profiles
+-<dev-libs/icu-59
+-<dev-libs/icu-layoutex-59
+
 # Patrick McLean <chutzpah@gentoo.org> (10 Jul 2018)
 # requires >=nodejs-8.10 which is not available in 13.0 based profiles.
 # Please migrate to one of the 17.0 release profiles
