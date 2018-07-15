@@ -23,6 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-gauche-package.patch
+	"${FILESDIR}"/${PN}-test.patch
 	"${FILESDIR}"/${PN}-undefined-reference.patch
 )
 
