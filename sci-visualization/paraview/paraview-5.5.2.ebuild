@@ -102,15 +102,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-qt-5.11.patch
 )
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp && [[ $(tc-getCC)$ == *gcc* ]] && ! tc-has-openmp; then
-		eerror "For USE=openmp a gcc with openmp support is required"
-		eerror
-		return 1
-	fi
-}
-
 pkg_setup() {
+	[[ ${MERGE_TYPE} != "binary" ]] && use openmp && tc-check-openmp
 	python-single-r1_pkg_setup
 	PVLIBDIR=$(get_libdir)/${PN}-${MAJOR_PV}
 }
