@@ -12,8 +12,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+introspection gcr +modemmanager selinux teamd"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+IUSE="ayatana +introspection +gcr +modemmanager selinux teamd"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=app-crypt/libsecret-0.18
@@ -28,6 +28,9 @@ RDEPEND="
 	>=net-misc/networkmanager-1.7:=[introspection?,modemmanager?,teamd?]
 	net-misc/mobile-broadband-provider-info
 
+	ayatana? (
+		dev-libs/libappindicator:3
+		>=dev-libs/libdbusmenu-16.04.0 )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 	virtual/freedesktop-icon-theme
 	virtual/libgudev:=
@@ -46,7 +49,7 @@ PDEPEND="virtual/notification-daemon" #546134
 
 src_configure() {
 	local myconf=(
-		--without-appindicator
+		--with-appindicator=$(usex ayatana ubuntu no)
 		--disable-lto
 		--disable-ld-gc
 		--disable-more-warnings
