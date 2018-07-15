@@ -13,13 +13,13 @@ MY_P="ParaView-v${PV}"
 DESCRIPTION="Powerful scientific data visualization application"
 HOMEPAGE="https://www.paraview.org"
 SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.gz"
-RESTRICT="mirror"
 
 LICENSE="paraview GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol openmp plugins python +qt5 sqlite tcl test tk"
-RESTRICT="test"
+
+RESTRICT="mirror test"
 
 REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
 	mysql? ( sqlite )" # "vtksqlite, needed by vtkIOSQL" and "vtkIOSQL, needed by vtkIOMySQL"
