@@ -30,6 +30,7 @@ COMMON_DEPEND="
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)"
 
+# pytest-capturelog causes a number of tests to fail
 DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
@@ -38,6 +39,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		!!dev-python/pytest-capturelog
 	)"
 
 RDEPEND="

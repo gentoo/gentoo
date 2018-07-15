@@ -10,6 +10,7 @@ inherit distutils-r1 flag-o-matic toolchain-funcs
 
 # should match pinned git submodule version of third_party/protobuf
 # look it up here https://github.com/grpc/grpc/tree/v"${PV}"/third_party
+# also should ~depend on same version of dev-libs/protobuf below
 PROTOBUF_VERSION="3.5.2"
 
 DESCRIPTION="Modern open source high performance RPC framework"
@@ -22,16 +23,16 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples doc python systemtap tools"
+IUSE="examples doc python systemtap static-libs tools"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tools? ( python )
 "
 
-DEPEND="
+RDEPEND="
 	>=dev-libs/openssl-1.0.2:0=[-bindist]
-	>=dev-libs/protobuf-3.5:=
+	>=dev-libs/protobuf-${PROTOBUF_VERSION}:=
 	dev-util/google-perftools
 	net-dns/c-ares:=
 	sys-libs/zlib:=
@@ -43,25 +44,26 @@ DEPEND="
 		dev-python/wheel[${PYTHON_USEDEP}]
 		virtual/python-enum34[${PYTHON_USEDEP}]
 		virtual/python-futures[${PYTHON_USEDEP}]
-		doc? (
-			dev-python/sphinx[${PYTHON_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		)
 	)
 	systemtap? ( dev-util/systemtap )
 "
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+	doc? (
+		python? (
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		)
+	)
+"
 
 PATCHES=(
-	"${FILESDIR}/0001-grpc-1.11.0-Fix-cross-compiling.patch"
+	"${FILESDIR}/0001-grpc-1.13.0-fix-host-ar-handling.patch"
 	"${FILESDIR}/0002-grpc-1.3.0-Fix-unsecure-.pc-files.patch"
 	"${FILESDIR}/0003-grpc-1.3.0-Don-t-run-ldconfig.patch"
 	"${FILESDIR}/0004-grpc-1.11.0-fix-cpp-so-version.patch"
 	"${FILESDIR}/0005-grpc-1.11.0-pkgconfig-libdir.patch"
-	"${FILESDIR}/0006-grpc-1.12.1-allow-system-openssl.patch"
-	"${FILESDIR}/0007-grpc-1.12.1-allow-system-zlib.patch"
-	"${FILESDIR}/0008-grpc-1.12.1-allow-system-cares.patch"
 	"${FILESDIR}/0009-grpc-1.12.1-gcc8-fixes.patch"
 )
 
@@ -76,19 +78,22 @@ python_prepare() {
 		rm -r third_party/protobuf || die "removing empty protobuf dir failed"
 		ln -s "${S}"/../protobuf-"${PROTOBUF_VERSION}" third_party/protobuf || die
 		pushd tools/distrib/python/grpcio_tools >/dev/null || die
-		# absolute symlinks will fail because out-of-source build
+		# absolute symlinks will fail
 		# ./src -> ${S}/src
 		ln -s ../../../../src ./ || die
 		# ./third_party -> ${S}/third_party
 		ln -s ../../../../third_party ./ || die
 		# ./grpc_root -> ${S}
 		ln -s ../../../../ ./grpc_root || die
+		# https://bugs.gentoo.org/661244
+		echo "prune grpc_root/tools/distrib/python/grpcio_tools" >> MANIFEST.in
 		popd >/dev/null || die
 	fi
 }
 
 src_compile() {
 	tc-export CC CXX PKG_CONFIG
+
 	emake \
 		V=1 \
 		prefix=/usr \
@@ -96,9 +101,10 @@ src_compile() {
 		AR="$(tc-getAR)" \
 		AROPTS="rcs" \
 		CFLAGS="${CFLAGS}" \
+		CXXFLAGS="${CXXFLAGS}" \
 		LD="${CC}" \
 		LDXX="${CXX}" \
-		STRIP=true \
+		STRIP=/bin/true \
 		HOST_CC="$(tc-getBUILD_CC)" \
 		HOST_CXX="$(tc-getBUILD_CXX)" \
 		HOST_LD="$(tc-getBUILD_CC)" \
@@ -134,19 +140,26 @@ src_install() {
 	emake \
 		prefix="${D}"/usr \
 		INSTALL_LIBDIR="$(get_libdir)" \
-		STRIP=true \
+		STRIP=/bin/true \
 		install
 
+	use static-libs || find "${ED}" -name '*.a' -delete
+
 	if use examples; then
-		docinto examples
-		dodoc -r examples/.
+		find examples -name '.gitignore' -delete || die
+		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
-	use doc && local DOCS=( AUTHORS README.md doc/. )
+	if use doc; then
+		find doc -name '.gitignore' -delete || die
+		local DOCS=( AUTHORS README.md doc/. )
+	fi
+
 	einstalldocs
 
 	use python && distutils-r1_src_install
+
 }
 
 python_install() {
