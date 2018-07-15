@@ -2420,8 +2420,6 @@ mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not 
 mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
 mail-client/alpine:smime - Enable support for S/MIME
 mail-client/balsa:crypt - Adds support for GnuPG encryption
-mail-client/balsa:gtkhtml - Use gtkhtml for HTML rendering
-mail-client/balsa:gtkspell - Use gtkspell for dictionary support
 mail-client/balsa:rubrica - Adds support for rubrica addressbook
 mail-client/claws-mail:archive - Enable archiving plugin
 mail-client/claws-mail:bogofilter - Build mail-filter/bogofilter plugin

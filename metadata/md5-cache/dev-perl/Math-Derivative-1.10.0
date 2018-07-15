@@ -4,10 +4,10 @@ DESCRIPTION=1st and 2nd order differentiation of data
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Math-Derivative/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JG/JGAMBLE/Math-Derivative-1.01.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=9ac853b1c623dc4c50eab8c39a6275b6
+_md5_=1b1b556ea649dcacde438064643bcc98
