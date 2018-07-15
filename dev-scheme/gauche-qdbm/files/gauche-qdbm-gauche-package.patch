@@ -134,3 +134,14 @@
 +AC_GAUCHE_MAKE_GPD
  echo $PACKAGE_VERSION > VERSION
  AC_OUTPUT(Makefile)
+--- a/depot.stub
++++ b/depot.stub
+@@ -219,7 +219,7 @@
+   SCM_RETURN(SCM_MAKE_INT(r));")
+ 
+ (define-cproc qdbm-dpprimenum (num::<fixnum>)
+-  (return <int> "dpprimenum"))
++  "  SCM_RETURN(SCM_MAKE_INT(dpprimenum(num)));")
+ 
+ (define-enum DP_OREADER)
+ (define-enum DP_OWRITER)
