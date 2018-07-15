@@ -28,6 +28,5 @@ DEPEND="
 "
 
 python_test() {
-	PYTHONPATH="${S}/test:${BUILD_DIR}/lib" py.test -v || die "Tests failed under ${EPYTHON}"
-	cd test
+	py.test -vv || die "Tests failed under ${EPYTHON}"
 }
