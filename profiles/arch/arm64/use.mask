@@ -140,7 +140,6 @@ pkcs11
 bazaar
 darcs
 mercurial
-kerberos
 gpg
 emacs
 gphoto2
@@ -152,7 +151,6 @@ xemacs
 rpm
 scanner
 zvbi
-ldap
 mysql
 fluidsynth
 sid
