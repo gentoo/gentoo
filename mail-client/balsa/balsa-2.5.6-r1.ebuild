@@ -37,7 +37,7 @@ RDEPEND="
 	rubrica? ( dev-libs/libxml2:2 )
 	webkit? (
 		net-libs/webkit-gtk:4
-		dev-python/html2text
+		app-text/html2text
 	)
 	xface? ( >=media-libs/compface-1.5.1:= )
 "
