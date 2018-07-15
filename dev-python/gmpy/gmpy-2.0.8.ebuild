@@ -20,10 +20,10 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd
 IUSE="doc mpir"
 
 RDEPEND="
-	>=dev-libs/mpc-1.0.2
-	>=dev-libs/mpfr-3.1.2
+	>=dev-libs/mpc-1.0.2:=
+	>=dev-libs/mpfr-3.1.2:=
 	!mpir? ( dev-libs/gmp:0= )
-	mpir? ( sci-libs/mpir )"
+	mpir? ( sci-libs/mpir:= )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"

@@ -1,15 +1,20 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit desktop toolchain-funcs
+
+MY_PV=$(ver_rs 3 '-')
+MY_P="${PN}-${MY_PV}"
+BASE_PV=$(ver_cut 1-3)
+BASE_P="${PN}-${BASE_PV}"
 
 DESCRIPTION="The Ur-Quan Masters: Port of Star Control 2"
 HOMEPAGE="http://sc2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sc2/${P}-source.tgz
-	mirror://sourceforge/sc2/${P}-content.uqm
-	music? ( mirror://sourceforge/sc2/${P}-3domusic.uqm )
-	voice? ( mirror://sourceforge/sc2/${P}-voice.uqm )
+SRC_URI="mirror://sourceforge/sc2/${MY_P}-source.tgz
+	mirror://sourceforge/sc2/${BASE_P}-content.uqm
+	music? ( mirror://sourceforge/sc2/${BASE_P}-3domusic.uqm )
+	voice? ( mirror://sourceforge/sc2/${BASE_P}-voice.uqm )
 	remix? ( mirror://sourceforge/sc2/${PN}-remix-disc1.uqm \
 		mirror://sourceforge/sc2/${PN}-remix-disc2.uqm \
 		mirror://sourceforge/sc2/${PN}-remix-disc3.uqm \
@@ -34,18 +39,17 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${BASE_P}-tempdir.patch"
+	"${FILESDIR}/${BASE_P}-warning.patch"
+)
+
 src_prepare() {
 	default
 
-	local myopengl
-
-	use opengl \
-		&& myopengl=opengl \
-		|| myopengl=pure
-
-	eapply \
-		"${FILESDIR}"/${P}-tempdir.patch \
-		"${FILESDIR}"/${P}-warning.patch
+	local myopengl=$(usex opengl 'opengl' 'pure')
 
 	cat <<-EOF > config.state
 	CHOICE_debug_VALUE='nodebug'
@@ -89,16 +93,16 @@ src_install() {
 	doexe uqm
 
 	insinto /usr/share/${PN}/content/packages
-	doins "${DISTDIR}"/${P}-content.uqm
-	echo ${P} > "${ED}"/usr/share/${PN}/content/version || die
+	doins "${DISTDIR}"/${BASE_P}-content.uqm
+	echo ${BASE_P} > "${ED}"/usr/share/${PN}/content/version || die
 
 	insinto /usr/share/${PN}/content/addons
 	if use music; then
-		doins "${DISTDIR}"/${P}-3domusic.uqm
+		doins "${DISTDIR}"/${BASE_P}-3domusic.uqm
 	fi
 
 	if use voice; then
-		doins "${DISTDIR}"/${P}-voice.uqm
+		doins "${DISTDIR}"/${BASE_P}-voice.uqm
 	fi
 
 	if use remix; then
