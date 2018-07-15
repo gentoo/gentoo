@@ -1375,7 +1375,7 @@ app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorizat
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
-app-text/libmspub 0.1.2 0.1.4: Library parsing Microsoft Publisher documents
+app-text/libmspub 0.1.4: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.13: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
