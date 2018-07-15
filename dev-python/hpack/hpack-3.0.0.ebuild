@@ -20,7 +20,6 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/pytest-2.9.2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-xdist-1.14.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.4.2[${PYTHON_USEDEP}]
 		!!dev-python/pytest-relaxed[${PYTHON_USEDEP}]
 	)
