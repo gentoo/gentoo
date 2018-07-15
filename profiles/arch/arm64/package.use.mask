@@ -41,7 +41,7 @@ sys-devel/distcc gnome
 # net-libs/libmicrodns not yet keyworded, bug #653800
 # projectm not yet keyworded, bug #314969
 # net-misc/freerdp not yet keyworded
-media-video/vlc aom chromaprint microdns opencv projectm rdp srt
+media-video/vlc aom chromaprint opencv projectm rdp srt
 >=media-video/vlc-3.0.3 chromecast
 
 # Mart Raudsepp <leio@gentoo.org> (13 May 2018)
@@ -403,10 +403,6 @@ dev-libs/weston rdp
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2013)
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
-
-# Markus Meier <maekke@gentoo.org> (10 May 2013)
-# unkeyworded deps for dev-python/ipython
-dev-python/ipython mongodb
 
 # Christoph Junghans <junghans@gentoo.org> (29 Apr 2013)
 # MKL not available on this arch
