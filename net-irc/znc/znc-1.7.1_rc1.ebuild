@@ -16,11 +16,14 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://github.com/znc/znc.git"}
 	SRC_URI=""
 else
+	MY_PV=${PV/_/-}
+	MY_P=${PN}-${MY_PV}
 	SRC_URI="
-		https://znc.in/releases/archive/${P}.tar.gz
+		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
 	KEYWORDS="~amd64 ~arm ~x86"
+	S=${WORKDIR}/${MY_P}
 fi
 
 HOMEPAGE="https://znc.in"
@@ -52,10 +55,7 @@ DEPEND="
 	test? ( dev-qt/qtnetwork:5 )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.0-inttest-fix-make-warning.patch
-	"${FILESDIR}"/${PN}-1.7.0-inttest-dir.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-1.7.1-inttest-dir.patch )
 
 pkg_setup() {
 	if use python; then

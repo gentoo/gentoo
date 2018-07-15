@@ -1,3 +1,12 @@
+commit 95f1c7e9081866ea1e716743ea039a74565f80c6
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sun Jul 15 15:36:21 2018 +0200
+
+    Allow integration tests to be run inside a different root
+    
+    Based on DarthGandalf's patch submitted in
+    https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=15112014e7605d13624297d7601504b5d187a6de
+
 diff --git a/include/znc/znc.h b/include/znc/znc.h
 index ecb2b41a..a791a648 100644
 --- a/include/znc/znc.h
@@ -28,15 +37,15 @@ index 5aec7805..6f9c34ae 100644
      return ret;
  }
 diff --git a/src/WebModules.cpp b/src/WebModules.cpp
-index 19ece50a..8ea4d9fa 100644
+index a5841987..f1b8a421 100644
 --- a/src/WebModules.cpp
 +++ b/src/WebModules.cpp
-@@ -563,7 +563,7 @@ CString CWebSock::GetSkinPath(const CString& sSkinName) {
-         sRet = CZNC::Get().GetCurPath() + "/webskins/" + sSkinName;
+@@ -565,7 +565,7 @@ CString CWebSock::GetSkinPath(const CString& sSkinName) {
+         sRet = CZNC::Get().GetCurPath() + "/webskins/" + sSkin;
  
          if (!CFile::IsDir(sRet)) {
--            sRet = CString(_SKINDIR_) + "/" + sSkinName;
-+            sRet = CZNC::UnusualRoot() + CString(_SKINDIR_) + "/" + sSkinName;
+-            sRet = CString(_SKINDIR_) + "/" + sSkin;
++            sRet = CZNC::UnusualRoot() + CString(_SKINDIR_) + "/" + sSkin;
          }
      }
  
