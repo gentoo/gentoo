@@ -591,10 +591,6 @@ media-libs/avidemux-core system-ffmpeg
 # PGO is known to be busted with most configurations
 www-client/firefox pgo
 
-# Sergey Popov <pinkbyte@gentoo.org> (26 Nov 2012)
-# PDF docs building failed with sandbox violation
-media-libs/opencolorio pdf
-
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp pci
