@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Mail::Box connector via IMAP4"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE="test"
 
 RDEPEND="
