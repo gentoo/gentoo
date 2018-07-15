@@ -28,7 +28,7 @@ IUSE=""
 
 ruby_add_bdepend "doc? ( || ( dev-ruby/maruku dev-ruby/rdiscount dev-ruby/bluecloth dev-ruby/kramdown ) )"
 
-ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 dev-ruby/rack dev-ruby/redcloth )"
+ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 dev-ruby/rack )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/ s:^:#:' spec/spec_helper.rb || die
@@ -37,4 +37,7 @@ all_ruby_prepare() {
 	# true for us. This may be related to how we install in Gentoo. This
 	# also drops a test requirement on dev-ruby/rack.
 	rm -f spec/cli/server_spec.rb || die
+
+	# Avoid redcarpet-specific spec that is not optional
+	sed -i -e '/autolinks URLs/askip "make redcarpet optional"' spec/templates/helpers/html_helper_spec.rb || die
 }
