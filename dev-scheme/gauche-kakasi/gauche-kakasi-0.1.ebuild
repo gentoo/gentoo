@@ -6,7 +6,7 @@ EAPI="6"
 MY_P="${P^g}"
 
 DESCRIPTION="Kakasi binding for Gauche"
-HOMEPAGE="http://gauche.sf.net/"
+HOMEPAGE="http://sourceforge.jp/projects/gauche/"
 SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
