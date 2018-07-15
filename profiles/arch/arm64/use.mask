@@ -134,7 +134,6 @@ mssql
 # havent tested yet
 ruby
 ctypes-python
-sasl
 libproxy
 pkcs11
 bazaar
