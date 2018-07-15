@@ -9,7 +9,7 @@ inherit ruby-ng prefix
 
 DESCRIPTION="Centralized Ruby extension management system"
 HOMEPAGE="https://rubygems.org/"
-LICENSE="|| ( Ruby MIT )"
+LICENSE="GPL-2 || ( Ruby MIT )"
 
 SRC_URI="https://rubygems.org/rubygems/${P}.tgz"
 
