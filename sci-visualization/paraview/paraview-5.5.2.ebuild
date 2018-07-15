@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils cmake-utils multilib python-single-r1 toolchain-funcs versionator
+inherit eutils cmake-utils python-single-r1 toolchain-funcs versionator
 
 MAIN_PV=$(get_major_version)
 MAJOR_PV=$(get_version_component_range 1-2)
