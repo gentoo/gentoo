@@ -10,7 +10,7 @@ SRC_URI="http://pawsa.fedorapeople.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 
 IUSE="crypt gnome gnome-keyring kerberos ldap libnotify libressl rubrica sqlite webkit xface"
 
@@ -37,7 +37,7 @@ RDEPEND="
 	rubrica? ( dev-libs/libxml2:2 )
 	webkit? (
 		net-libs/webkit-gtk:4
-		dev-python/html2text
+		app-text/html2text
 	)
 	xface? ( >=media-libs/compface-1.5.1:= )
 "
