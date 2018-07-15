@@ -140,5 +140,4 @@ sci-chemistry/mars
 sci-chemistry/xdsstat-bin
 sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
 <sys-boot/grub-1.99
