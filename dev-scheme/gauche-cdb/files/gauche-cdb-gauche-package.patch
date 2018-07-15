@@ -1,5 +1,5 @@
---- Gauche-cdb-0.3.1.orig/Makefile.in
-+++ Gauche-cdb-0.3.1/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -10,76 +10,57 @@
  VPATH       = $(srcdir)
  
@@ -18,7 +18,9 @@
 -GOSH     = @GOSH@
 -GAUCHE_CONFIG = @GAUCHE_CONFIG@
 +DESTDIR        =
++CFLAGS         = @CFLAGS@
 +CPPFLAGS       = @CPPFLAGS@  # AC_LIB_LINKFLAGS adds to this..
++LDFLAGS        = @LDFLAGS@
 +GOSH           = "@GOSH@"
 +GAUCHE_CONFIG  = "@GAUCHE_CONFIG@"
 +GAUCHE_PACKAGE = "@GAUCHE_PACKAGE@"
@@ -76,9 +78,7 @@
 -$(MODULE)_head.c $(MODULE)_tail.c :
 -	$(GAUCHE_CONFIG) --fixup-extension $(MODULE)
 +$(PACKAGE).$(SOEXT): $(cdb_SRCS)
-+	$(GAUCHE_PACKAGE) compile --verbose \
-+	    --libs="$(cdb_LIBS)" --cppflags="$(CPPFLAGS)" \
-+	    $(PACKAGE) $(cdb_SRCS)
++	$(GAUCHE_PACKAGE) compile --verbose --cppflags="$(CPPFLAGS)" --cflags="$(CFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(cdb_LIBS)" $(PACKAGE) $(cdb_SRCS)
  
  check : all
  	@rm -f test.log
@@ -109,8 +109,8 @@
  
  distclean : clean
  	rm -rf $(CONFIG_GENERATED)
---- Gauche-cdb-0.3.1.orig/configure.ac
-+++ Gauche-cdb-0.3.1/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -4,18 +4,11 @@
  AC_INIT(Gauche-cdb, 0.3.1)
  AC_CONFIG_SRCDIR(cdb.stub)

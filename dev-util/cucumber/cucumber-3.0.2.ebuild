@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
@@ -26,8 +26,6 @@ IUSE="examples test"
 ruby_add_bdepend "
 	test? (
 		dev-ruby/rspec:3
-		dev-ruby/bundler
-		>=dev-ruby/diff-lcs-1.3
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
 		>=dev-util/aruba-0.6.1 =dev-util/aruba-0.6*
