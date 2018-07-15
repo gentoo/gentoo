@@ -630,6 +630,7 @@ cmake-utils_src_configure() {
 	if [[ ${EAPI} != [56] ]]; then
 		cat >> "${common_config}" <<- _EOF_ || die
 			SET (CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
+			SET (BUILD_SHARED_LIBS ON CACHE BOOLEAN "")
 		_EOF_
 	fi
 
