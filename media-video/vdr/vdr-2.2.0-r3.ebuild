@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 # Switches supported by extensions-patch
 EXT_PATCH_FLAGS="alternatechannel graphtft naludump permashift_v1 pinplugin
@@ -186,7 +186,7 @@ src_prepare() {
 				tr ' ' '\n' |sort > "${T}"/old.IUSE
 			local DIFFS=$(diff -u "${T}"/old.IUSE "${T}"/new.IUSE|grep '^[+-][^+-]')
 			if [[ -z ${DIFFS} ]]; then
-				einfo "EXT_PATCH_FLAGS is up to date."
+				einfo "EXT_PATCH_FLAGS are up to date."
 			else
 				ewarn "IUSE differences!"
 				local diff
@@ -215,7 +215,9 @@ src_prepare() {
 		eend $? "make depend failed"
 	fi
 
-	eapply "${FILESDIR}/${P}-r2_gentoo.patch"
+	eapply "${FILESDIR}/${P}_gentoo.patch"
+	#gcc-7.2, this will fix only the core vdr, not the extpatch
+	eapply "${FILESDIR}/${P}_unsignedtosigned.patch"
 
 	# fix some makefile issues
 	sed -e "s:ifndef NO_KBD:ifeq (\$(USE_KBD),1):" \
@@ -234,16 +236,16 @@ src_prepare() {
 
 	echo -e ${CAPS} > "${CAP_FILE}"
 
-	# L10N support
-	einfo "\n \t VDR supports the L10N values"
+	# LINGUAS support
+	einfo "\n \t VDR supports the LINGUAS values"
 
 	lang_po
 
 	einfo "\t Please set one of this values in your sytem make.conf"
-	einfo "\t L10N=\"${LING_PO}\"\n"
+	einfo "\t LINGUAS=\"${LING_PO}\"\n"
 
-	if [[ -z ${L10N} ]]; then
-		einfo "\n \t No values in L10N="
+	if [[ -z ${LINGUAS} ]]; then
+		einfo "\n \t No values in LINGUAS="
 		einfo "\t You will get only english text on OSD \n"
 	fi
 
@@ -255,7 +257,7 @@ src_install() {
 	# directory
 	emake install \
 	VIDEODIR="/" \
-	DESTDIR="${D}" install || die "emake install failed"
+	DESTDIR="${D%/}" install || die "emake install failed"
 
 	keepdir "${PLUGIN_LIBDIR}"
 
@@ -278,7 +280,7 @@ src_install() {
 		doins "${FILESDIR}"/channel_alternative.conf
 	fi
 
-	chown -R vdr:vdr "${D}/${CONF_DIR}"
+	chown -R vdr:vdr "${D%/}/${CONF_DIR}"
 }
 
 pkg_postinst() {
