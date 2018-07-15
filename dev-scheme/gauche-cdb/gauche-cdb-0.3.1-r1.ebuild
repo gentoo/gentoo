@@ -22,8 +22,8 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gauche-package.diff
-	"${FILESDIR}"/${P}-undefined-reference.diff
+	"${FILESDIR}"/${PN}-gauche-package.patch
+	"${FILESDIR}"/${PN}-undefined-reference.patch
 )
 
 src_prepare() {
