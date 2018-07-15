@@ -40,6 +40,7 @@ src_compile() {
 	# and XC_ARCH, and skips generation of an unused zip file,
 	# avoiding a dependency on app-arch/zip.
 	GOPATH="${S}" \
+	GOBIN="${S}/bin" \
 	GIT_DESCRIBE="v${PV}" \
 	GIT_DIRTY="" \
 	GIT_COMMIT="${GIT_COMMIT}" \
