@@ -10860,7 +10860,7 @@ x11-misc/habak 0.2.5-r2: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.10: Simple screen locker
-x11-misc/i3status 2.11: generates a status bar for dzen2, xmobar or similar
+x11-misc/i3status 2.11 2.12: generates a status bar for dzen2, xmobar or similar
 x11-misc/icewmcp 3.2-r4: A complete control panel for IceWM using gtk & python
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
 x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
