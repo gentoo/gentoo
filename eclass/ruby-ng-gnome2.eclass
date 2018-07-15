@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng-gnome2.eclass
@@ -10,6 +10,14 @@
 # @DESCRIPTION:
 # This eclass simplifies installation of the various pieces of
 # ruby-gnome2 since they share a very common installation procedure.
+
+case "${EAPI:-0}" in
+	0|1|2|3|4|5|6)
+		;;
+	*)
+		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
+		;;
+esac
 
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"
 RUBY_FAKEGEM_TASK_TEST=""
