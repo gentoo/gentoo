@@ -82,10 +82,6 @@ net-mail/fetchmail hesiod
 sys-freebsd/freebsd-lib hesiod
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# app-misc/cwiid will be removed (#608780)
-media-sound/supercollider wiimote
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # sys-fabric/mstflint will be removed (#594908)
 sys-fabric/ofed mstflint
 
@@ -594,10 +590,6 @@ media-libs/avidemux-core system-ffmpeg
 # Jory A. Pratt <anarchy@gentoo.org> (15 Dec 2012)
 # PGO is known to be busted with most configurations
 www-client/firefox pgo
-
-# Sergey Popov <pinkbyte@gentoo.org> (26 Nov 2012)
-# PDF docs building failed with sandbox violation
-media-libs/opencolorio pdf
 
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.

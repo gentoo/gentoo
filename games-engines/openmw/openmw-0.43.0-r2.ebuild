@@ -16,13 +16,8 @@ IUSE="doc devtools +qt5"
 
 RDEPEND="
 	dev-games/mygui
-	|| (
-		(
-			>=dev-games/openscenegraph-3.5.5[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
-			dev-games/openscenegraph-qt
-		)
-		<dev-games/openscenegraph-3.5.5[ffmpeg,jpeg,png,qt5,sdl,svg,truetype,zlib]
-	)
+	>=dev-games/openscenegraph-3.5.5[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
+	dev-games/openscenegraph-qt
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video,X]
