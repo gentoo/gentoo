@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">yabause</remote-id>
+		<remote-id type="github">Yabause/yabause</remote-id>
 	</upstream>
 </pkgmetadata>
