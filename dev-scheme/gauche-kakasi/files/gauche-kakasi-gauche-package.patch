@@ -143,3 +143,14 @@
  
  dnl Output
  AC_GAUCHE_MAKE_GPD
+--- a/kakasilib.stub
++++ b/kakasilib.stub
+@@ -43,7 +43,7 @@
+   SCM_RETURN(sr);")
+ 
+ (define-cproc kakasi-close-kanwadict ()
+-  (return <fixnum> "kakasi_close_kanwadict"))
++  "SCM_RETURN(SCM_MAKE_INT(kakasi_close_kanwadict()));")
+ 
+ ;; Local variables:
+ ;; mode: scheme
