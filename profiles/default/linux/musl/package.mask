@@ -82,7 +82,6 @@ games-fps/ut2004-muralis
 games-fps/ut2004-strikeforce
 games-fps/ut2004-troopers
 games-fps/ut2004-unwheel
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/hoh-bin

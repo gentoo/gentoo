@@ -14,7 +14,6 @@ games-action/swordandsworcery
 games-action/beathazardultra
 games-action/solar2
 games-arcade/dynamitejack
-games-kids/crayon-physics
 games-misc/katawa-shoujo
 games-misc/papers-please
 games-rpg/dungeon-defenders

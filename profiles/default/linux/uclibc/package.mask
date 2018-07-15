@@ -80,7 +80,6 @@ games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/dynamitejack
 games-arcade/thinktanks-demo
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-rpg/dear-esther
