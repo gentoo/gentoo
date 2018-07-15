@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">yabause</remote-id>
 	</upstream>
