@@ -2,6 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (15 Jul 2018)
-# Old ICU is unsupported. ICU 58 only remains for 13.0 based profiles.
-<dev-libs/icu-59
-<dev-libs/icu-layoutex-59
+# Requires >=icu-60, which is not available in 13.0 based profiles.
+# Please migrate to one of the 17.0 release profiles.
+>=dev-qt/qtwebengine-5.11.1 system-icu

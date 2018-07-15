@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.zip"
+SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-oss-${PV}.tar.gz"
 
 # source: LICENSE.txt and NOTICE.txt
 LICENSE="Apache-2.0 MIT"
@@ -20,7 +20,6 @@ KEYWORDS="~amd64"
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
 
-DEPEND="app-arch/unzip"
 RDEPEND="virtual/jre:1.8"
 
 S="${WORKDIR}/${MY_P}"
@@ -38,29 +37,24 @@ src_install() {
 	insinto "/usr/share/${MY_PN}"
 	newins "${FILESDIR}/agent.conf.sample" agent.conf
 
-	rm -v config/startup.options || die
+	rm -v config/{pipelines.yml,startup.options} || die
 	insinto /etc/${MY_PN}
 	doins -r config/.
+	doins "${FILESDIR}/pipelines.yml"
 	rm -rv config data || die
 
 	insinto "/opt/${MY_PN}"
 	doins -r .
 	fperms 0755 "/opt/${MY_PN}/bin/${MY_PN}" "/opt/${MY_PN}/vendor/jruby/bin/jruby" "/opt/${MY_PN}/bin/logstash-plugin"
 
-	newconfd "${FILESDIR}/${MY_PN}.confd-r1" "${MY_PN}"
-	newinitd "${FILESDIR}/${MY_PN}.initd-r1" "${MY_PN}"
+	newconfd "${FILESDIR}/${MY_PN}.confd-r2" "${MY_PN}"
+	newinitd "${FILESDIR}/${MY_PN}.initd-r2" "${MY_PN}"
 
 	insinto /usr/share/eselect/modules
 	doins "${FILESDIR}"/logstash-plugin.eselect
 }
 
 pkg_postinst() {
-	ewarn "The default pidfile directory has been changed from /run/logstash to /run."
-	ewarn "Please ensure any running logstash processes are shut down cleanly."
-	ewarn
-	ewarn "The default data directory has been moved from /opt/logstash/data to"
-	ewarn "/var/lib/logstash/data. Please check and move its contents as necessary."
-	ewarn
 	ewarn "Self installed plugins are removed during Logstash upgrades (Bug #622602)"
 	ewarn "Install the plugins via eselect module that will automatically re-install"
 	ewarn "all self installed plugins after Logstash upgrades."
@@ -75,4 +69,7 @@ pkg_postinst() {
 	elog
 	elog "Sample configuration:"
 	elog "${EROOT%/}/usr/share/${MY_PN}"
+	elog
+	elog "The default pipeline configuration expects the configuration(s) to be found in:"
+	elog "${EROOT%/}/etc/logstash/conf.d/*.conf"
 }

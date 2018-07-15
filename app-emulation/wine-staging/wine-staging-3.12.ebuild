@@ -48,6 +48,7 @@ IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc ffmp
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
+	ffmpeg? ( staging )
 	osmesa? ( opengl )
 	pipelight? ( staging )
 	test? ( abi_x86_32 )

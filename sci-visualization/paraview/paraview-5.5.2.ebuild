@@ -4,22 +4,22 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils cmake-utils multilib python-single-r1 toolchain-funcs versionator
+inherit cmake-utils desktop eapi7-ver gnome2-utils python-single-r1 toolchain-funcs
 
-MAIN_PV=$(get_major_version)
-MAJOR_PV=$(get_version_component_range 1-2)
+MAIN_PV=$(ver_cut 0-1)
+MAJOR_PV=$(ver_cut 1-2)
 MY_P="ParaView-v${PV}"
 
-DESCRIPTION="ParaView is a powerful scientific data visualization application"
-HOMEPAGE="http://www.paraview.org"
-SRC_URI="http://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.gz"
-RESTRICT="mirror"
+DESCRIPTION="Powerful scientific data visualization application"
+HOMEPAGE="https://www.paraview.org"
+SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.gz"
 
 LICENSE="paraview GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol openmp plugins python +qt5 sqlite tcl test tk"
-RESTRICT="test"
+
+RESTRICT="mirror test"
 
 REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
 	mysql? ( sqlite )" # "vtksqlite, needed by vtkIOSQL" and "vtkIOSQL, needed by vtkIOMySQL"
@@ -89,8 +89,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:0= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	>=dev-util/cmake-3.4
-	boost? ( >=dev-libs/boost-1.40.0[mpi?,${PYTHON_USEDEP}] )
+	boost? ( dev-libs/boost[mpi?,${PYTHON_USEDEP}] )
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}/${MY_P}"
@@ -99,17 +98,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch
 	"${FILESDIR}"/${PN}-5.3.0-fix_buildsystem.patch
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
 )
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp && [[ $(tc-getCC)$ == *gcc* ]] && ! tc-has-openmp; then
-		eerror "For USE=openmp a gcc with openmp support is required"
-		eerror
-		return 1
-	fi
-}
-
 pkg_setup() {
+	[[ ${MERGE_TYPE} != "binary" ]] && use openmp && tc-check-openmp
 	python-single-r1_pkg_setup
 	PVLIBDIR=$(get_libdir)/${PN}-${MAJOR_PV}
 }
@@ -164,8 +157,7 @@ src_configure() {
 		-DVTK_USE_SYSTEM_PNG=ON
 		-DVTK_USE_SYSTEM_PROTOBUF=ON
 		-DVTK_USE_SYSTEM_TIFF=ON
-		-DVTK_USE_SYSTEM_XDMF2=ON
-		-DVTK_USE_SYSTEM_XDMF2=OFF
+		-DVTK_USE_SYSTEM_XDMF2=OFF # does not compile with sci-libs/xdmf2-1.0_p141226
 		-DVTK_USE_SYSTEM_ZLIB=ON
 		# force this module due to incorrect build system deps
 		# wrt bug 460528
@@ -254,10 +246,6 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_compile() {
-	cmake-utils_src_compile
-}
-
 src_install() {
 	cmake-utils_src_install
 
@@ -282,4 +270,12 @@ src_install() {
 	make_desktop_entry paraview "Paraview" paraview
 
 	use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
