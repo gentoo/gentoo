@@ -82,10 +82,6 @@ net-mail/fetchmail hesiod
 sys-freebsd/freebsd-lib hesiod
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# app-misc/cwiid will be removed (#608780)
-media-sound/supercollider wiimote
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # sys-fabric/mstflint will be removed (#594908)
 sys-fabric/ofed mstflint
 
