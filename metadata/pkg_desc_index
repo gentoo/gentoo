@@ -4921,7 +4921,7 @@ dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar fi
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 2.3: Iterative JSON parser with a Pythonic interface
-dev-python/imagesize 0.7.1: Getting image size from png/jpeg/jpeg2000/gif file
+dev-python/imagesize 0.7.1: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 0.13: easy-to-use, pythonic, and complete IMAP client library
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/incremental 16.10.1: Incremental is a small library that versions your Python projects
