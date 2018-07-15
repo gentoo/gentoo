@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Base class for Email Message Exchange"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE="test"
 
 RDEPEND="
