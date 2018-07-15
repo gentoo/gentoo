@@ -11,8 +11,8 @@ MAJOR_PV=$(get_version_component_range 1-2)
 MY_P="ParaView-v${PV}"
 
 DESCRIPTION="ParaView is a powerful scientific data visualization application"
-HOMEPAGE="http://www.paraview.org"
-SRC_URI="http://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.paraview.org"
+SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="paraview GPL-2"
