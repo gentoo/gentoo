@@ -7842,7 +7842,7 @@ media-plugins/kipi-plugins 5.9.0: Plugins for the KDE Image Plugin Interface
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2017.01.26 2017.10.28: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2017.10.28: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
 media-plugins/mediastreamer-bcg729 1.0.0: Backported G729 implementation for Linphone
