@@ -37,6 +37,7 @@ src_prepare() {
 		-e "s:gnatmake:gnatmake-${GCC_PV}:g" \
 		-e "s:gnatls:gnatls-${GCC_PV}:g" \
 		Makefile \
+		gnatprove/configuration.adb \
 		gnat2why/Makefile || die
 	default
 }
