@@ -26,7 +26,6 @@ RDEPEND="
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10[xkb]
 "
-DEPEND=""
 
 S="${WORKDIR}/Telegram"
 
