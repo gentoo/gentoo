@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit toolchain-funcs
 
-DESCRIPTION="small and fast portage helper tools written in C"
+DESCRIPTION="Small and fast Portage helper tools written in C"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Portage-utils"
 SRC_URI="mirror://gentoo/${P}.tar.xz
 	https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
