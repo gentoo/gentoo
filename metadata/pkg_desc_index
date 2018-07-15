@@ -10901,7 +10901,7 @@ x11-misc/qt5ct 0.35: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1: A BBS client for Linux
 x11-misc/qtfm 5.9-r1: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/read-edid 1.4.2 3.0.2: Program that can get information from a PnP monitor
-x11-misc/redshift 1.11-r1: A screen color temperature adjusting software
+x11-misc/redshift 1.11-r1 1.12: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
