@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils desktop eapi7-ver python-single-r1 toolchain-funcs
+inherit cmake-utils desktop eapi7-ver gnome2-utils python-single-r1 toolchain-funcs
 
 MAIN_PV=$(ver_cut 0-1)
 MAJOR_PV=$(ver_cut 1-2)
@@ -270,4 +270,12 @@ src_install() {
 	make_desktop_entry paraview "Paraview" paraview
 
 	use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
