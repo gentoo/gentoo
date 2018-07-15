@@ -157,8 +157,7 @@ src_configure() {
 		-DVTK_USE_SYSTEM_PNG=ON
 		-DVTK_USE_SYSTEM_PROTOBUF=ON
 		-DVTK_USE_SYSTEM_TIFF=ON
-		-DVTK_USE_SYSTEM_XDMF2=ON
-		-DVTK_USE_SYSTEM_XDMF2=OFF
+		-DVTK_USE_SYSTEM_XDMF2=OFF # does not compile with sci-libs/xdmf2-1.0_p141226
 		-DVTK_USE_SYSTEM_ZLIB=ON
 		# force this module due to incorrect build system deps
 		# wrt bug 460528
