@@ -12,10 +12,11 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="libedit nls readline static static-libs"
+IUSE="icu libedit nls readline static static-libs"
 REQUIRED_USE="static? ( static-libs )"
 
 LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
+	icu? ( dev-libs/icu:=[static-libs(+)] )
 	readline? ( sys-libs/readline:0=[static-libs(+)] )
 	!readline? ( libedit? ( dev-libs/libedit[static-libs(+)] ) )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
@@ -68,8 +69,10 @@ src_configure() {
 
 	local myconf=(
 		--disable-lto #655638
+		--enable-blkid
 		--with-crond-dir="${EPREFIX}/etc/cron.d"
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
+		$(use_enable icu libicu)
 		$(use_enable nls gettext)
 		$(use_enable readline)
 		$(usex readline --disable-editline $(use_enable libedit editline))
