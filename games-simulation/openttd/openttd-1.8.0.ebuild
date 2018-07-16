@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils
+inherit gnome2-utils
 
 MY_PV="${PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
@@ -51,14 +51,20 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.8.0-icu61.patch
 )
 
 src_configure() {
-	local myopts=()
+	local myopts=(
+		$(use_with iconv)
+		$(use_with png)
+		$(use_with cpu_flags_x86_sse sse)
+		$(use_with lzo liblzo2)
+	)
 	# there is an allegro interface available as well as sdl, but
 	# the configure for it looks broken so the sdl interface is
 	# always built instead.
-	local myopts+=( --without-allegro )
+	myopts+=( --without-allegro )
 
 	# libtimidity not needed except for some embedded platform
 	# nevertheless, it will be automagically linked if it is
@@ -70,8 +76,8 @@ src_configure() {
 	if use dedicated ; then
 		myopts+=( --enable-dedicated )
 	else
-		use aplaymidi && myopts+=( --with-midi='/usr/bin/aplaymidi' )
 		myopts+=(
+			$(usex aplaymidi '--with-midi=/usr/bin/aplaymidi' '')
 			$(use_with truetype freetype)
 			$(use_with icu)
 			--with-sdl
@@ -92,10 +98,6 @@ src_configure() {
 		--install-dir="${D}" \
 		--menu-group="Game;Simulation;" \
 		${myopts[@]} \
-		$(use_with iconv) \
-		$(use_with png) \
-		$(use_with cpu_flags_x86_sse sse) \
-		$(use_with lzo liblzo2) \
 		|| die
 }
 
@@ -107,9 +109,9 @@ src_install() {
 	default
 	if use dedicated ; then
 		newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
-		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps}
+		rm -rf "${ED%/}"/usr/share/{applications,icons,pixmaps}
 	fi
-	rm -f "${ED}"/usr/share/doc/${PF}/COPYING
+	rm -f "${ED%/}"/usr/share/doc/${PF}/COPYING
 }
 
 pkg_preinst() {
