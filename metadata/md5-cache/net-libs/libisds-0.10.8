@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/expat dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) openssl? ( dev-libs/openssl:= ) !openssl? ( app-crypt/gpgme dev-libs/libgcrypt:= ) virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( >=net-libs/gnutls-2.12.0 )
+DESCRIPTION=Client library for accessing ISDS Soap services
+EAPI=7
+HOMEPAGE=http://xpisar.wz.cz/libisds/
+IUSE=+curl debug nls openssl static-libs test
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-libs/expat dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) openssl? ( dev-libs/openssl:= ) !openssl? ( app-crypt/gpgme dev-libs/libgcrypt:= ) !openssl? ( >=app-crypt/gnupg-2 )
+SLOT=0
+SRC_URI=http://xpisar.wz.cz/libisds/dist/libisds-0.10.8.tar.xz
+_md5_=4070166dda397e0087fed1bee4d967fb
