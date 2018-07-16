@@ -24,6 +24,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	eapply_user
-	eapply "${FILESDIR}"/fix-bashism.patch
+	eapply -p0 "${FILESDIR}"/fix-bashism.patch
 	eautoreconf
 }
