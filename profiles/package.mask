@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
+# Parallel-installable old versions with no remaining consumers
+# in main tree. Use applications ported to wxGTK:3.0 and
+# wxpython:3.0 instead. Bug #661284
+x11-libs/wxGTK:2.8
+dev-python/wxpython:2.8
+
 # Corentin Pazdera <nado@troglodyte.be> (12 Jul 2018)
 # Pulseeffects depends on atoms only found in gnome overlay
 >=media-sound/pulseeffects-4.0.0
