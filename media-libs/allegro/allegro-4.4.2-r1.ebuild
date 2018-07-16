@@ -1,9 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 CMAKE_IN_SOURCE_BUILD=1
-inherit cmake-utils eutils
+inherit cmake-utils desktop
 
 DESCRIPTION="cross-platform multimedia library"
 HOMEPAGE="http://alleg.sourceforge.net/"
@@ -14,7 +15,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 x86"
 IUSE="alsa fbcon jack jpeg opengl oss png svga test vga vorbis X"
 
-RDEPEND="alsa? ( media-libs/alsa-lib )
+RDEPEND="
+	alsa? ( media-libs/alsa-lib )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0= )
@@ -55,44 +57,40 @@ src_prepare() {
 src_configure() {
 	# WANT_LINUX_CONSOLE is by default OFF
 	# WANT_EXAMPLES doesn't install anything
-
-	mycmakeargs=(
-		"-DDOCDIR=share/doc"
-		"-DINFODIR=share/info"
-		"-DMANDIR=share/man"
-		$(cmake-utils_use_want alsa)
-		"-DWANT_EXAMPLES=OFF"
-		$(cmake-utils_use_want jack)
-		$(cmake-utils_use_want jpeg JPGALLEG)
-		"-DWANT_LINUX_CONSOLE=OFF"
-		$(cmake-utils_use_want fbcon LINUX_FBCON)
-		$(cmake-utils_use_want svga LINUX_SVGALIB)
-		$(cmake-utils_use_want vga LINUX_VGA)
-		$(cmake-utils_use_want png LOADPNG)
-		$(cmake-utils_use_want vorbis LOGG)
-		$(cmake-utils_use_want oss)
-		$(cmake-utils_use_want test TESTS)
-		$(cmake-utils_use_want X TOOLS)
-		$(cmake-utils_use_want X X11)
-		)
+	local mycmakeargs=(
+		-DDOCDIR=share/doc
+		-DINFODIR=share/info
+		-DMANDIR=share/man
+		-DWANT_ALSA=$(usex alsa)
+		-DWANT_EXAMPLES=OFF
+		-DWANT_JACK=$(usex jack)
+		-DWANT_JPGALLEG=$(usex jpeg)
+		-DWANT_LINUX_CONSOLE=OFF
+		-DWANT_LINUX_FBCON=$(usex fbcon)
+		-DWANT_LINUX_SVGALIB=$(usex svga)
+		-DWANT_LINUX_VGA=$(usex vga)
+		-DWANT_LOADPNG=$(usex png)
+		-DWANT_LOGG=$(usex vorbis)
+		-DWANT_OSS=$(usex oss)
+		-DWANT_TESTS=$(usex test)
+		-DWANT_TOOLS=$(usex X)
+		-DWANT_X11=$(usex X)
+	)
 
 	if use X; then
-		mycmakeargs+=(
-			$(cmake-utils_use_want opengl ALLEGROGL)
-			)
+		mycmakeargs+=( -DWANT_ALLEGROGL=$(usex opengl) )
 	else
-		mycmakeargs+=(
-			"-DWANT_ALLEGROGL=OFF"
-			)
+		mycmakeargs+=( -DWANT_ALLEGROGL=OFF )
 	fi
 
 	cmake-utils_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	rm -r docs/html/{build,tmpfile.txt} || die
+	local HTML_DOCS=( docs/html/. )
 
-	dohtml docs/html/*.html
+	cmake-utils_src_install
 
 	#176020 (init_dialog.3), #409305 (key.3)
 	pushd docs/man >/dev/null
