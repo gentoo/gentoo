@@ -16,6 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-util/catkin
+	dev-ros/class_loader
 	dev-ros/cmake_modules
 	ros-meta/common_msgs
 	dev-ros/gencpp
@@ -26,9 +27,11 @@ RDEPEND="
 	dev-ros/genpy
 	dev-ros/message_generation
 	dev-ros/message_runtime
+	dev-ros/pluginlib
 	ros-meta/ros
 	ros-meta/ros_comm
 	dev-ros/rosbag_migration_rule
+	dev-ros/rosconsole
 	dev-ros/rosconsole_bridge
 	ros-meta/roscpp_core
 	dev-ros/rosgraph_msgs

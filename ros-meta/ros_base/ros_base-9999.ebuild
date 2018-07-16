@@ -17,9 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/actionlib
 	ros-meta/bond_core
-	dev-ros/class_loader
 	dev-ros/dynamic_reconfigure
 	ros-meta/nodelet_core
-	dev-ros/pluginlib
 "
 DEPEND="${RDEPEND}"
