@@ -53,7 +53,7 @@
     </flag>
     <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
     <flag name="doc">Build the doxygen-described API documentation.</flag>
-    <flag name="realtime" restrict="&gt;=media-sound/pulseaudio-0.9.21.2-r1">
+    <flag name="realtime">
       Makes PulseAudio use RealtimeKit (<pkg>sys-auth/rtkit</pkg>) to get
       real-time priority while running.
     </flag>
