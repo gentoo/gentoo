@@ -40,7 +40,7 @@ src_install() {
 
 	local x
 	for x in diff draw draw2 dump; do
-		mv -vf "${D}/etc"/map${x} "${D}/etc"/kq-map${x}
+		mv -vf "${D}/etc"/map${x} "${D}/etc"/kq-map${x} || die
 	done
 
 	doicon "${FILESDIR}"/${PN}.xpm
