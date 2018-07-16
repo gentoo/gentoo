@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit systemd
+inherit linux-info systemd
 
 DESCRIPTION="Reliability, Availability and Serviceability logging tool"
 HOMEPAGE="http://www.infradead.org/~mchehab/rasdaemon/"
@@ -20,17 +20,25 @@ RDEPEND="
 	sys-devel/gettext
 	dev-db/sqlite
 	sys-apps/dmidecode
+	dev-perl/DBD-SQLite
 "
 
+pkg_setup() {
+	linux-info_pkg_setup
+	local CONFIG_CHECK="~FUNCTION_TRACER ~FUNCTION_GRAPH_TRACER ~STACK_TRACER ~DYNAMIC_FTRACE"
+	check_extra_config
+}
+
 src_configure() {
-	econf --enable-mce \
+	econf --enable-abrt-report \
 		--enable-aer \
-		--enable-sqlite3 \
+		--enable-arm \
 		--enable-extlog \
-		--enable-abrt-report \
-		--enable-non-standard \
 		--enable-hisi-ns-decode \
-		--enable-arm
+		--enable-mce \
+		--enable-non-standard \
+		--enable-sqlite3 \
+		--localstatedir=/var
 }
 
 src_install() {
