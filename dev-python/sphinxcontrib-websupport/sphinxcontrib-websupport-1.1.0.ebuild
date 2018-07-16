@@ -37,6 +37,11 @@ python_install_all() {
 	find "${ED}" -name '*.pth' -delete || die
 }
 
+src_test() {
+	cd tests || die
+	distutils-r1_src_test
+}
+
 python_test() {
-	pytest -vv tests || die "Tests fail with ${EPYTHON}"
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
