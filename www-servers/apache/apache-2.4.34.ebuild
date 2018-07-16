@@ -4,9 +4,9 @@
 EAPI=6
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20180529"
+GENTOO_PATCHSTAMP="20180716"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.33-r1"
+GENTOO_PATCHNAME="gentoo-apache-2.4.34"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
