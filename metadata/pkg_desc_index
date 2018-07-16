@@ -7801,7 +7801,7 @@ media-plugins/gst-plugins-libpng 0.10.31-r1 1.12.4 1.14.1: PNG image encoder/dec
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.12.4 1.14.1: Visualization elements for GStreamer
 media-plugins/gst-plugins-lv2 1.12.4 1.14.1: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1: plugin for gstreamer
-media-plugins/gst-plugins-meta 0.10-r11 1.12.4: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r11 1.12.4 1.14.1: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.12.4 1.14.1: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.12.4 1.14.1: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.12.4 1.14.1: MPEG-1/2 video encoding plugin for GStreamer
@@ -7816,32 +7816,32 @@ media-plugins/gst-plugins-opus 0.10.23-r1 1.12.4 1.14.1: Opus audio parser plugi
 media-plugins/gst-plugins-oss 0.10.31-r1 1.12.4 1.14.1: OSS (Open Sound System) support plugin for GStreamer
 media-plugins/gst-plugins-pango 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-pulse 0.10.31-r2 1.12.4 1.14.1: PulseAudio sound server plugin for GStreamer
-media-plugins/gst-plugins-raw1394 0.10.31-r1 1.12.4: Fiwewire DV/HDV capture plugin for GStreamer
-media-plugins/gst-plugins-resindvd 0.10.23-r1 1.12.4: DVD playback support plugin for GStreamer
-media-plugins/gst-plugins-rtmp 0.10.23-r1 1.12.4: RTMP source/sink plugin for GStreamer
-media-plugins/gst-plugins-shout2 0.10.31-r1 1.12.4: Icecast server sink plugin for GStreamer
-media-plugins/gst-plugins-sidplay 0.10.19-r1 1.12.4: Sid decoder plugin for GStreamer
-media-plugins/gst-plugins-smoothstreaming 1.12.4: Smooth Streaming plugin for GStreamer
-media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.12.4: Beats-per-minute detection and pitch controlling plugin for GStreamer
-media-plugins/gst-plugins-soup 0.10.31-r2 1.12.4: HTTP client source/sink plugin for GStreamer
-media-plugins/gst-plugins-speex 0.10.31-r1 1.12.4: Speex encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-raw1394 0.10.31-r1 1.12.4 1.14.1: Fiwewire DV/HDV capture plugin for GStreamer
+media-plugins/gst-plugins-resindvd 0.10.23-r1 1.12.4 1.14.1: DVD playback support plugin for GStreamer
+media-plugins/gst-plugins-rtmp 0.10.23-r1 1.12.4 1.14.1: RTMP source/sink plugin for GStreamer
+media-plugins/gst-plugins-shout2 0.10.31-r1 1.12.4 1.14.1: Icecast server sink plugin for GStreamer
+media-plugins/gst-plugins-sidplay 0.10.19-r1 1.12.4 1.14.1: Sid decoder plugin for GStreamer
+media-plugins/gst-plugins-smoothstreaming 1.12.4 1.14.1: Smooth Streaming plugin for GStreamer
+media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.12.4 1.14.1: Beats-per-minute detection and pitch controlling plugin for GStreamer
+media-plugins/gst-plugins-soup 0.10.31-r2 1.12.4 1.14.1: HTTP client source/sink plugin for GStreamer
+media-plugins/gst-plugins-speex 0.10.31-r1 1.12.4 1.14.1: Speex encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-srtp 1.12.4 1.14.1: SRTP encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-taglib 0.10.31-r1 1.12.4: ID3v2/APEv2 tagger plugin for GStreamer
+media-plugins/gst-plugins-taglib 0.10.31-r1 1.12.4 1.14.1: ID3v2/APEv2 tagger plugin for GStreamer
 media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-twolame 0.10.19-r1 1.12.4: MPEG2 encoder plugin for GStreamer
-media-plugins/gst-plugins-uvch264 1.12.4: UVC compliant H264 encoding cameras plugin for GStreamer
-media-plugins/gst-plugins-v4l2 0.10.31-r1 1.12.4: plugin for gstreamer
-media-plugins/gst-plugins-vaapi 1.12.4: Hardware accelerated video decoding through VA-API plugin for GStreamer
-media-plugins/gst-plugins-voaacenc 1.12.4: AAC encoder plugin for GStreamer
-media-plugins/gst-plugins-voamrwbenc 1.12.4: AMR-WB audio encoder plugin for GStreamer
+media-plugins/gst-plugins-twolame 0.10.19-r1 1.12.4 1.14.1: MPEG2 encoder plugin for GStreamer
+media-plugins/gst-plugins-uvch264 1.12.4 1.14.1: UVC compliant H264 encoding cameras plugin for GStreamer
+media-plugins/gst-plugins-v4l2 0.10.31-r1 1.12.4 1.14.1: plugin for gstreamer
+media-plugins/gst-plugins-vaapi 1.12.4 1.14.1: Hardware accelerated video decoding through VA-API plugin for GStreamer
+media-plugins/gst-plugins-voaacenc 1.12.4 1.14.1: AAC encoder plugin for GStreamer
+media-plugins/gst-plugins-voamrwbenc 1.12.4 1.14.1: AMR-WB audio encoder plugin for GStreamer
 media-plugins/gst-plugins-vorbis 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-vp8 0.10.23-r3: GStreamer decoder for vpx video format
-media-plugins/gst-plugins-vpx 1.12.4: VP8/VP9 video encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-wavpack 0.10.31-r1 1.12.4: Wavpack audio encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-vpx 1.12.4 1.14.1: VP8/VP9 video encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-wavpack 0.10.31-r1 1.12.4 1.14.1: Wavpack audio encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-x 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-x264 0.10.19-r1 1.12.4: H.264 encoder plugin for GStreamer
-media-plugins/gst-plugins-x265 1.12.4: H.265 encoder plugin for GStreamer
-media-plugins/gst-plugins-ximagesrc 0.10.31-r2 1.12.4: X11 video capture stream plugin for GStreamer
+media-plugins/gst-plugins-x264 0.10.19-r1 1.12.4 1.14.1: H.264 encoder plugin for GStreamer
+media-plugins/gst-plugins-x265 1.12.4 1.14.1: H.265 encoder plugin for GStreamer
+media-plugins/gst-plugins-ximagesrc 0.10.31-r2 1.12.4 1.14.1: X11 video capture stream plugin for GStreamer
 media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
 media-plugins/gst-plugins-xvideo 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
@@ -8117,7 +8117,7 @@ media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settin
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
-media-sound/soundconverter 3.0.0_beta1: A simple audiofile converter application for the GNOME environment
+media-sound/soundconverter 3.0.0_beta1 3.0.0: A simple audiofile converter application for the GNOME environment
 media-sound/sox 14.4.2 14.4.2-r1: The swiss army knife of sound processing programs
 media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
