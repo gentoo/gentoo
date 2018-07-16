@@ -77,7 +77,7 @@ src_compile() {
 
 	# Build Mercury using bootstrap grade
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		|| die "emake failed"
 
 	# We can now patch .m Mercury compiler files since we
@@ -95,7 +95,7 @@ src_compile() {
 
 	# Rebuild Mercury compiler using the just built mercury_compiler
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		compiler || die "emake compiler failed"
 
@@ -103,7 +103,7 @@ src_compile() {
 	# grade. Since src_test() is run before src_install() we compile
 	# the default grade now
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		default_grade || die "emake default_grade failed"
 }
@@ -147,7 +147,7 @@ src_test() {
 
 src_install() {
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		DESTDIR="${D}" \
 		INSTALL_PREFIX="${D}"/usr \

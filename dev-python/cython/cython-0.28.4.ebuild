@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 toolchain-funcs elisp-common
@@ -31,6 +31,14 @@ DEPEND="${RDEPEND}
 
 SITEFILE=50cython-gentoo.el
 S="${WORKDIR}/${MY_PN}-${PV%_*}"
+
+python_prepare_all() {
+	# tests behavior that is illegal in Python 3.7+
+	# https://github.com/cython/cython/issues/2454
+	sed -i -e '/with_outer_raising/,/return/d' tests/run/generators_py.py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_compile() {
 	if ! python_is_python3; then
