@@ -3846,15 +3846,15 @@ dev-perl/LWP-Authen-Wsse 0.50.0-r1: Library for enabling X-WSSE authentication i
 dev-perl/LWP-MediaTypes 6.20.0-r1: Media types and mailcap processing
 dev-perl/LWP-Online 1.80.0-r2: Does your process have access to the web
 dev-perl/LWP-Protocol-http10 6.30.0: Legacy HTTP/1.0 support for LWP
-dev-perl/LWP-Protocol-https 6.60.0: Provide https support for LWP::UserAgent
-dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects you from harm
-dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
-dev-perl/LaTeX-Encode 0.91.6-r1: Encode characters for LaTeX formatting
-dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
-dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
+dev-perl/LWP-Protocol-https 6.60.0 6.70.0: Provide https support for LWP::UserAgent
+dev-perl/LWPx-ParanoidAgent 1.100.0 1.120.0: Subclass of LWP::UserAgent that protects you from harm
+dev-perl/LaTeX-Driver 0.200.4 0.300.2: Perl encapsulation of invoking the Latex programs
+dev-perl/LaTeX-Encode 0.91.6-r1 0.92.0: Encode characters for LaTeX formatting
+dev-perl/LaTeX-Table 1.0.6 1.0.6-r1: Perl extension for the automatic generation of LaTeX tables
+dev-perl/Lchown 1.10.0-r1 1.10.0-r2: Use the lchown(2) system call from Perl
 dev-perl/Lexical-SealRequireHints 0.11.0: Prevent leakage of lexical hints
-dev-perl/Lingua-EN-Inflect 1.899.0: Perl module to pluralize English words
-dev-perl/Lingua-EN-NameParse 1.330.0: routines for manipulating a person's name
+dev-perl/Lingua-EN-Inflect 1.899.0 1.902.0: Perl module to pluralize English words
+dev-perl/Lingua-EN-NameParse 1.330.0 1.360.0: routines for manipulating a person's name
 dev-perl/Lingua-EN-Numbers-Ordinate 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
 dev-perl/Lingua-PT-Stemmer 0.20.0: Portuguese language stemming
 dev-perl/Lingua-Preferred 0.2.4-r1: Pick a language based on user's preferences
@@ -3863,8 +3863,8 @@ dev-perl/Lingua-Stem-Fr 0.20.0-r1: Perl French Stemming
 dev-perl/Lingua-Stem-It 0.20.0-r1: Porter's stemming algorithm for Italian
 dev-perl/Lingua-Stem-Ru 0.40.0: Porter's stemming algorithm for Russian (KOI8-R only)
 dev-perl/Lingua-Stem-Snowball-Da 1.10.0-r1: Porters stemming algorithm for Denmark
-dev-perl/Lingua-Translit 0.250.0: Transliterates text between writing systems
-dev-perl/Linux-DesktopFiles 0.90.0: Perl module to get and parse the Linux .desktop files
+dev-perl/Lingua-Translit 0.250.0 0.280.0: Transliterates text between writing systems
+dev-perl/Linux-DesktopFiles 0.90.0 0.250.0: Perl module to get and parse the Linux .desktop files
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
@@ -3875,9 +3875,9 @@ dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated st
 dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-PO 0.270.0: Perl module for manipulating .po entries from GNU gettext
 dev-perl/Locale-gettext 1.70.0: A Perl module for accessing the GNU locale utilities
-dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
+dev-perl/LockFile-Simple 0.208.0-r1 0.208.0-r2: File locking module for Perl
 dev-perl/Log-Agent 1.1.0: A general logging framework
-dev-perl/Log-Any 1.38.0: Bringing loggers and listeners together
+dev-perl/Log-Any 1.38.0 1.701.0: Bringing loggers and listeners together
 dev-perl/Log-Dispatch 2.540.0 2.580.0: Dispatches messages to one or more outputs
 dev-perl/Log-Dispatch-Array 1.3.0: log events to an array (reference)
 dev-perl/Log-Log4perl 1.490.0: Log4j implementation for Perl
@@ -4401,11 +4401,11 @@ dev-perl/gtk2-spell 1.40.0-r1 1.40.0-r2: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r1 0.60.0-r2: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1 0.50.0-r2: Perl bindings for EggTrayManager
 dev-perl/indirect 0.360.0 0.370.0: Lexically warn about using the indirect method call syntax
-dev-perl/libintl-perl 1.240.0-r2: High-Level Interface to Uniforum Message Translation
+dev-perl/libintl-perl 1.240.0-r2 1.280.0: High-Level Interface to Uniforum Message Translation
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
 dev-perl/libwww-perl 6.150.0: A collection of Perl Modules for the WWW
-dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
-dev-perl/local-lib 2.0.19: create and use a local lib/ for perl modules with PERL5LIB
+dev-perl/libxml-perl 0.80.0-r1 0.80.0-r2: Collection of Perl modules for working with XML
+dev-perl/local-lib 2.0.19 2.0.24: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1 1.1100.0-r1: construct and optionally mail MIME messages
 dev-perl/multidimensional 0.13.0: disables multidimensional array emulation
@@ -8147,7 +8147,7 @@ media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder
 media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
 media-sound/volumeicon 0.4.6: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
-media-sound/vorbis-tools 1.4.0-r3 1.4.0-r5: Tools for using the Ogg Vorbis sound file format
+media-sound/vorbis-tools 1.4.0-r5: Tools for using the Ogg Vorbis sound file format
 media-sound/vorbisgain 0.37-r2: Calculator of perceived sound level for Ogg Vorbis files
 media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
