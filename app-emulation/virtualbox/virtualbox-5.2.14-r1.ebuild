@@ -356,6 +356,7 @@ src_install() {
 
 			insinto /usr/share/${PN}
 			doins -r nls
+			doins -r UnattendedTemplates
 
 			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
