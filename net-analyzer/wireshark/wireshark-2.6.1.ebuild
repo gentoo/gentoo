@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~hppa ia64 ~ppc64 ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~ppc64 x86"
 IUSE="
 	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc
 	+dumpcap +editcap gtk kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-androiddump-wsutil.patch
 	"${FILESDIR}"/${PN}-2.6.0-qtsvg.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-2.6.1-Qt-5.11.patch
 	"${FILESDIR}"/${PN}-99999999-androiddump.patch
 )
 
@@ -175,31 +176,24 @@ src_install() {
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
 
 	# install headers
-	local wsheader
-	for wsheader in \
-		epan/*.h \
-		epan/crypt/*.h \
-		epan/dfilter/*.h \
-		epan/dissectors/*.h \
-		epan/ftypes/*.h \
-		epan/wmem/*.h \
-		wiretap/*.h \
-		ws_diag_control.h \
-		ws_symbol_export.h \
-		wsutil/*.h
-	do
-		echo "Installing ${wsheader}"
-		insinto /usr/include/wireshark/$( dirname ${wsheader} )
-		doins ${wsheader}
-	done
+	insinto /usr/include/wireshark
+	doins ws_diag_control.h ws_symbol_export.h \
+		"${BUILD_DIR}"/config.h "${BUILD_DIR}"/version.h
 
-	for wsheader in \
-		../${P}_build/config.h \
-		../${P}_build/version.h
+	local dir dirs=(
+		epan
+		epan/crypt
+		epan/dfilter
+		epan/dissectors
+		epan/ftypes
+		epan/wmem
+		wiretap
+		wsutil
+	)
+	for dir in "${dirs[@]}"
 	do
-		echo "Installing ${wsheader}"
-		insinto /usr/include/wireshark
-		doins ${wsheader}
+		insinto /usr/include/wireshark/${dir}
+		doins ${dir}/*.h
 	done
 
 	#with the above this really shouldn't be needed, but things may be looking

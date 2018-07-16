@@ -4,8 +4,8 @@
 EAPI=0
 
 DESCRIPTION="Validation tool for tinydns-data zone files"
-SRC_URI="http://x42.com/software/valtz/${PN}.tgz"
-HOMEPAGE="http://x42.com/software/valtz/"
+SRC_URI="https://x42.com/software/valtz/${PN}.tgz"
+HOMEPAGE="https://x42.com/software/valtz/"
 IUSE=""
 
 SLOT="0"

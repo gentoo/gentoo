@@ -28,12 +28,12 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=5
+PATCH_VER=6
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps compile-locales doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -73,12 +73,15 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
+	sys-devel/bison
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
 	doc? ( sys-apps/texinfo )
+	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
+	>=net-dns/libidn2-2.0.5
 	sys-apps/gentoo-functions
 	!sys-kernel/ps3-sources
 	!sys-libs/nss-db
@@ -412,6 +415,8 @@ want__thread() {
 }
 
 use_multiarch() {
+	# Allow user to disable runtime arch detection in multilib.
+	use multiarch || return 1
 	# Make sure binutils is new enough to support indirect functions,
 	# #336792. This funky sed supports gold and bfd linkers.
 	local bver nver
@@ -679,12 +684,6 @@ sanity_prechecks() {
 
 	# When we actually have to compile something...
 	if ! just_headers ; then
-		local run_kv build_kv want_kv
-
-		run_kv=$(g_get_running_KV)
-		build_kv=$(g_int_to_KV $(get_kheader_version))
-		want_kv=${MIN_KERN_VER}
-
 		ebegin "Checking gcc for __thread support"
 		if ! eend $(want__thread ; echo $?) ; then
 			echo
@@ -693,21 +692,29 @@ sanity_prechecks() {
 			die "No __thread support in gcc!"
 		fi
 
-		if ! is_crosscompile && ! tc-is-cross-compiler ; then
-			# Building fails on an non-supporting kernel
-			ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
-			if ! eend_KV ${run_kv} ${want_kv} ; then
-				echo
-				eerror "You need a kernel of at least ${want_kv}!"
-				die "Kernel version too low!"
-			fi
-		fi
+		if [[ ${CTARGET} == *-linux* ]] ; then
+			local run_kv build_kv want_kv
 
-		ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-		if ! eend_KV ${build_kv} ${want_kv} ; then
-			echo
-			eerror "You need linux-headers of at least ${want_kv}!"
-			die "linux-headers version too low!"
+			run_kv=$(g_get_running_KV)
+			build_kv=$(g_int_to_KV $(get_kheader_version))
+			want_kv=${MIN_KERN_VER}
+
+			if ! is_crosscompile && ! tc-is-cross-compiler ; then
+				# Building fails on an non-supporting kernel
+				ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
+				if ! eend_KV ${run_kv} ${want_kv} ; then
+					echo
+					eerror "You need a kernel of at least ${want_kv}!"
+					die "Kernel version too low!"
+				fi
+			fi
+
+			ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
+			if ! eend_KV ${build_kv} ${want_kv} ; then
+				echo
+				eerror "You need linux-headers of at least ${want_kv}!"
+				die "linux-headers version too low!"
+			fi
 		fi
 	fi
 }
@@ -790,12 +797,18 @@ glibc_do_configure() {
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
+	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
+	# To build .S (assembly) files with the same ABI-specific flags
+	# upstream currently recommends adding CFLAGS to CC/CXX:
+	#    https://sourceware.org/PR23273
+	# Note: Passing CFLAGS via CPPFLAGS overrides glibc's arch-specific CFLAGS
+	# and breaks multiarch support. See 659030#c3 for an example.
 	# The glibc configure script doesn't properly use LDFLAGS all the time.
-	export CC="$(tc-getCC ${CTARGET}) ${LDFLAGS}"
+	export CC="$(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS}"
 	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
-	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS)"
+	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS) ${CFLAGS}"
 	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
 
 	echo

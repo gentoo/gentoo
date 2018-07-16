@@ -1,0 +1,10 @@
+--- octave-4.4.0-orig/libgui/src/settings-dialog.cc	2018-05-01 03:03:56.000000000 +1000
++++ octave-4.4.0/libgui/src/settings-dialog.cc	2018-07-03 19:35:41.865149269 +1000
+@@ -41,6 +41,7 @@
+ #include <QHash>
+ #include <QMessageBox>
+ #include <QTextCodec>
++#include <QButtonGroup>
+ 
+ #if defined (HAVE_QSCINTILLA)
+ #  include "octave-qscintilla.h"

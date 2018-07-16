@@ -31,6 +31,7 @@ RDEPEND="
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.10[${PYTHON_USEDEP}]
+	>=dev-python/requests-toolbelt-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 "
 DEPEND="

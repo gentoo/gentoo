@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Automatic theorem prover"
-HOMEPAGE="http://alt-ergo.ocamlpro.com"
+HOMEPAGE="https://alt-ergo.ocamlpro.com"
 SRC_URI="https://alt-ergo.ocamlpro.com/http/${P}/${P}.tar.gz"
 
 LICENSE="CeCILL-C"

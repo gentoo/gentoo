@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=(python2_7)
 
-inherit cmake-utils flag-o-matic gnome2-utils multilib python-single-r1 xdg-utils
+inherit cmake-utils flag-o-matic gnome2-utils python-single-r1 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3

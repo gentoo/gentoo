@@ -25,6 +25,7 @@ DEPEND="${DEPEND}
 	dev-libs/check
 	>=sys-devel/gcc-4.4
 	>=dev-cpp/asio-1.10.1[ssl]
+	<dev-cpp/asio-1.12.0
 	"
 #Run time only
 RDEPEND="${CDEPEND}"

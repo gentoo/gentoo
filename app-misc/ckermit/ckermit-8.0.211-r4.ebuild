@@ -34,23 +34,24 @@ src_prepare() {
 		makefile || die
 }
 
-ck_use() {
-	use $1 && append-cppflags $2 && libs+=" $3"
-}
 src_compile() {
 	# we don't enable any of the telnet/ftp authentication stuff
 	# since there are other packages which do these things better
 	# USE="kerberos pam shadow ssl zlib"
 	append-cppflags -DNO_AUTHENTICATION -DNOLOGIN -DNOFTP
 
-	local libs
-	ck_use ncurses -DCK_NCURSES -lncurses
+	if use ncurses; then
+		append-cppflags "-DCK_NCURSES"
+		append-cppflags "$($(tc-getPKG_CONFIG) --cflags ncurses)"
+		append-libs "$($(tc-getPKG_CONFIG) --libs ncurses)"
+	fi
+
 	append-cppflags -DHAVE_PTMX -D_XOPEN_SOURCE -D_BSD_SOURCE -D_DEFAULT_SOURCE #202840
 	append-cppflags -DHAVE_CRYPT_H
 	emake \
 		CC="$(tc-getCC)" \
 		KFLAGS="${CPPFLAGS}" \
-		LIBS="-lcrypt -lresolv ${libs}" \
+		LIBS="-lcrypt -lresolv ${LIBS}" \
 		LNKFLAGS="${LDFLAGS}" \
 		linuxa
 }

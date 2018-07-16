@@ -45,7 +45,6 @@ dmi
 scanner
 gphoto2
 dvb
-qt4
 kde
 diet
 lirc

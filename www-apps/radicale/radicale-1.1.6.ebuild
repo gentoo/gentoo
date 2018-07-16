@@ -11,7 +11,7 @@ MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A simple CalDAV calendar server"
-HOMEPAGE="http://radicale.org/"
+HOMEPAGE="https://radicale.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

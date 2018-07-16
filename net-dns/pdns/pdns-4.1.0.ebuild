@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -36,7 +36,7 @@ RDEPEND="
 	ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 )
 	sqlite? ( dev-db/sqlite:3 )
 	opendbx? ( dev-db/opendbx )
-	geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip )
+	geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip )
 	sodium? ( dev-libs/libsodium:= )
 	tinydns? ( >=dev-db/tinycdb-0.77 )
 	protobuf? ( dev-libs/protobuf )"

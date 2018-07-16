@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/assimp/assimp"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="samples static test tools"
 SLOT="0"
 

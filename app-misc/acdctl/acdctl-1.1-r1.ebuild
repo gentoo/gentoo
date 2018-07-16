@@ -9,7 +9,7 @@ SRC_URI="http://www.technocage.com/~caskey/acdctl/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc"
+KEYWORDS="ppc"
 
 RDEPEND="virtual/libusb:0"
 DEPEND="${RDEPEND}"

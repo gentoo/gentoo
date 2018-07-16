@@ -11,7 +11,7 @@ inherit kde5
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${KMNAME}-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"

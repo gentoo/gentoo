@@ -1,0 +1,21 @@
+diff -Nuar mp3info-0.8.5a.orig/textfunc.c mp3info-0.8.5a/textfunc.c
+--- mp3info-0.8.5a.orig/textfunc.c	2018-06-09 21:56:18.450985762 +0300
++++ mp3info-0.8.5a/textfunc.c	2018-06-09 22:09:07.164948467 +0300
+@@ -227,7 +227,7 @@
+ 
+ 	while((percent=strchr(format,'%'))) {
+ 		*percent=0;
+-		printf(format);
++		printf("%s", format);
+ 		*percent='%';
+ 		code=percent+1;
+ 		while(*code && (code[0] != '%' && !isalpha(*code))) code++;
+@@ -354,7 +354,7 @@
+ 		}
+ 		
+ 	}
+-	printf(format);
++	printf("%s", format);
+ }
+ 
+ 

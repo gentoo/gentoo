@@ -10,8 +10,9 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/sdk-${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/Vulkan-Loader-sdk-${PV}"
+	EGIT_COMMIT="c71d5027a9d7fe4b170c0ff69bad67efd1d530cf"
+	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/Vulkan-Loader-${EGIT_COMMIT}"
 fi
 
 inherit python-any-r1 cmake-multilib
@@ -25,16 +26,12 @@ IUSE="layers wayland X"
 
 PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
-	dev-util/vulkan-headers
+	>=dev-util/vulkan-headers-1.1.77.0-r1
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)"
-
-PATCHES=(
-	"${FILESDIR}/${P}-Use-usr-for-vulkan-headers.patch"
-)
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -45,6 +42,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
+		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
 	)
 	cmake-utils_src_configure
 }
@@ -57,5 +55,5 @@ multilib_src_install() {
 
 pkg_postinst() {
 	einfo "USE=demos has been dropped as per upstream packaging"
-	einfo "vulkaninfo is now available in the media-libs/vulkan-tools package"
+	einfo "vulkaninfo is now available in the dev-util/vulkan-tools package"
 }

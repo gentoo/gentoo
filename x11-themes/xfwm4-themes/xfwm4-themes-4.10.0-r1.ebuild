@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Additional themes for the Xfce window manager"
 HOMEPAGE="https://www.xfce.org/projects/"
-SRC_URI="mirror://xfce/src/art/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/art/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

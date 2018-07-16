@@ -39,7 +39,6 @@ lucene
 bluetooth
 pcmcia
 cdr
-qt4
 gpm
 3dfx
 acpi
@@ -50,6 +49,7 @@ directfb
 lirc
 java
 hardened
+qt5
 
 # Needs java
 pdfannotextractor

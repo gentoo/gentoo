@@ -13,7 +13,7 @@ SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="spell test"
 
 RDEPEND="app-text/iso-codes
@@ -28,6 +28,7 @@ DEPEND="
 	sys-devel/gettext
 	test? (
 		${RDEPEND}
+		dev-python/pyenchant[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)

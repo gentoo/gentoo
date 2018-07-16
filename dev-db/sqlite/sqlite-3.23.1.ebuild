@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	tcl? ( app-arch/unzip )
 	test? (
 		app-arch/unzip
-		dev-lang/tcl:0[${MULTILIB_USEDEP}]
+		>=dev-lang/tcl-8.6:0[${MULTILIB_USEDEP}]
 	)
 	tools? ( app-arch/unzip )"
 

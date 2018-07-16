@@ -25,7 +25,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-
 
 IUSE="doc test"
 
-RDEPEND="${RDEPEND} !!<dev-ruby/haml-3.1.8-r2"
+RDEPEND="${RDEPEND} !!<dev-ruby/haml-4.0.7-r2"
 
 ruby_add_rdepend ">=dev-ruby/temple-0.8.0 dev-ruby/tilt:*"
 

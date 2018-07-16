@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
@@ -112,9 +112,10 @@ RDEPEND="sys-libs/ncurses:0=
 	)"
 
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	gzip-el? ( app-arch/gzip )
 	X? ( x11-base/xorg-proto )"
+
+BDEPEND="virtual/pkgconfig
+	gzip-el? ( app-arch/gzip )"
 #	pax_kernel? ( sys-apps/attr )
 
 if [[ ${PV##*.} = 9999 ]]; then

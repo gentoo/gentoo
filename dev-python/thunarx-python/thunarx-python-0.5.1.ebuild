@@ -8,7 +8,7 @@ inherit python-single-r1
 
 DESCRIPTION="Python bindings for the Thunar file manager"
 HOMEPAGE="https://goodies.xfce.org/projects/bindings/thunarx-python"
-SRC_URI="mirror://xfce/src/bindings/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/bindings/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -6,8 +6,8 @@ EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="Merges httpd logfiles in the Common Log Format"
-HOMEPAGE="http://www.xach.com/multisort/"
-SRC_URI="http://www.xach.com/${PN}/${PN}-${PV}.tar.gz"
+HOMEPAGE="https://www.xach.com/multisort/"
+SRC_URI="https://www.xach.com/${PN}/${PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

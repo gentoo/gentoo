@@ -18,7 +18,7 @@ DEV_URI="
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
-PATCHSET="${PN}-6.0.3.2-patchset-01.tar.xz"
+PATCHSET="${PN}-6.0.5.2-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && SCM_ECLASS="git-r3"
 inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic gnome2-utils java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg-utils ${SCM_ECLASS}
@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk2 jemalloc kde libressl mysql odk pdfimport postgres test vlc
+gstreamer +gtk gtk2 jemalloc kde mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -79,7 +79,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -113,10 +113,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libgpg-error
 	>=dev-libs/liborcus-0.13.3
 	dev-libs/librevenge
+	dev-libs/libxml2
+	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
-	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
-	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
 	>=dev-libs/xmlsec-1.2.24[nss]
 	media-gfx/graphite2
@@ -135,6 +135,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
@@ -162,10 +163,12 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		media-libs/mesa[egl]
 		x11-libs/gtk+:3
+		x11-libs/pango
 	)
 	gtk2? (
 		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
+		x11-libs/pango
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	kde? (
@@ -211,10 +214,7 @@ fi
 #        after everything upstream is under gbuild
 #        as dmake execute tests right away
 DEPEND="${COMMON_DEPEND}
-	!<sys-devel/make-3.82
 	>=dev-libs/libatomic_ops-7.2d
-	>=dev-libs/libxml2-2.7.8
-	dev-libs/libxslt
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
@@ -225,7 +225,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	sys-devel/gettext
 	sys-devel/ucpp
-	sys-libs/zlib
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	x11-libs/libXt
@@ -265,6 +264,7 @@ _check_reqs() {
 	else
 		CHECKREQS_DISK_BUILD="6G"
 	fi
+	check-reqs_$1
 }
 
 pkg_pretend() {
@@ -277,10 +277,7 @@ pkg_pretend() {
 		ewarn "See also: https://wiki.documentfoundation.org/ReleaseNotes/5.3#Base"
 	fi
 
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		_check_reqs
-		check-reqs_pkg_pretend
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_pretend
 }
 
 pkg_setup() {
@@ -288,10 +285,7 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	xdg_environment_reset
 
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		_check_reqs
-		check-reqs_pkg_setup
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_setup
 }
 
 src_unpack() {
@@ -408,6 +402,7 @@ src_configure() {
 		--disable-fetch-external
 		--disable-gstreamer-0-10
 		--disable-online-update
+		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system")
@@ -420,6 +415,7 @@ src_configure() {
 		--with-lang=""
 		--with-parallelism=$(makeopts_jobs)
 		--with-system-ucpp
+		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
 		--with-x
 		--without-fonts

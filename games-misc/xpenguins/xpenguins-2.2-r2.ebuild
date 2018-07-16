@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_install() {
 	default

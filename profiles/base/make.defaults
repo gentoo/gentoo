@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -127,7 +127,8 @@ BOOTSTRAP_USE="cxx unicode internal-glib split-usr python_targets_python3_5 pyth
 
 # Mike Gilbert <floppym@gentoo.org> (15 May 2012)
 # Default target(s) for python-r1.eclass
-# Updated to python3_5 on 28 Nov 2017
+# Michał Górny <mgorny@gentoo.org> (22 Jun 2018)
+# Updated to python3_6
 PYTHON_TARGETS="python2_7 python3_5"
 PYTHON_SINGLE_TARGET="python3_5"
 
@@ -151,7 +152,7 @@ TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
 
 # Aaron W. Swenson <titanofold@gentoo.org> (9 Jul 2017)
 # Default target(s) for postgres{,-multi}.eclass
-POSTGRES_TARGETS="postgres9_5"
+POSTGRES_TARGETS="postgres9_5 postgres10"
 
 # Michael Orlitzky <mjo@gentoo.org> (17 Nov 2017)
 #

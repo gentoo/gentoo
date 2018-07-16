@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (13 Jun 2018)
+# Upstream is transitioning to Meson, but does not yet have any configuration
+# options. Until those configuration options are provided, force USE flags on
+# to avoid automagic deps.
+>=x11-apps/intel-gpu-tools-9999 alsa chamelium doc glib gsl sound valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xrandr xv
+
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
 # www-apache/mod_python is masked for removal, force agent-only builds.
@@ -56,6 +62,7 @@ dev-lang/python-exec python_targets_python2_7
 dev-lang/python-exec python_targets_python3_4
 dev-lang/python-exec python_targets_python3_5
 dev-lang/python-exec python_targets_python3_6
+dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_jython2_7
 dev-lang/python-exec python_targets_pypy
 dev-lang/python-exec python_targets_pypy3

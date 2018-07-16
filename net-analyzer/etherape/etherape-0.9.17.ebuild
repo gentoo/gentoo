@@ -14,10 +14,12 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=gnome-base/libglade-2.0
+	dev-libs/popt
 	gnome-base/libgnomecanvas[glade]
 	net-libs/libpcap
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=sys-devel/gettext-0.11.5
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/gnome-doc-utils

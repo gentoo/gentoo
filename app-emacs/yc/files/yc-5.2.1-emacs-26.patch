@@ -1,0 +1,11 @@
+--- a/yc.el
++++ b/yc.el
+@@ -2071,7 +2071,7 @@
+ ;; 文節を指定しない場合、現在の文節が対象となる
+ ;; 読みを取得した文節はその読みをキャッシュする
+ ;; cut が 非nil の場合、指定文節以降の読みを削除する
+-(defun yc-yomi (&optional idx &optional cut)
++(defun yc-yomi (&optional idx cut)
+   (if (integerp idx)
+       (yc-put-bunsetsu-yomi idx (yc-get-bunsetsu-yomi idx cut) cut)
+     (yc-put-bunsetsu-yomi yc-mark (yc-get-bunsetsu-yomi yc-mark cut) cut)))

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,10 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 PDEPEND=">=dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]"
+
+PATCHES=(
+	"${FILESDIR}"/testtools-2.3.0-py37.patch
+)
 
 python_compile_all() {
 	use doc && emake -C doc html

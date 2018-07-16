@@ -6,7 +6,7 @@ EAPI="6"
 inherit systemd user
 
 DESCRIPTION="A lightweight system monitoring tool"
-HOMEPAGE="http://www.monitorix.org/"
+HOMEPAGE="https://www.monitorix.org/"
 SRC_URI="https://github.com/mikaku/Monitorix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"

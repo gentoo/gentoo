@@ -1,6 +1,26 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
+# dev-libs/xxhash not keyworded for arm
+app-admin/rsyslog xxhash
+
+# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
+# kde-plasma/plasma-browser-integration not yet keyworded, bug #659936
+kde-plasma/plasma-meta browser-integration
+
+# Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
+# Needs dev-libs/libmaxminddb which isn't keyworded
+www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
+
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Jun 2018)
+# net-wireless/soapysdr not keyworded
+net-wireless/gr-osmosdr soapy
+
 # Markus Meier <maekke@gentoo.org> (30 May 2018)
 # unkeyworded deps for bug #621434
 net-analyzer/zmap mongo
@@ -496,11 +516,11 @@ sys-auth/polkit kde
 app-text/asciidoc test
 
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-frameworks/kdelibs is not stable for arm
+# kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
 dev-vcs/subversion kwallet
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)

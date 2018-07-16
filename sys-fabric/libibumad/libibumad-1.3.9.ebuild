@@ -11,7 +11,7 @@ OFED_SUFFIX="1"
 inherit openib
 
 DESCRIPTION="OpenIB User MAD lib functions which sit on top of the user MAD kernel modules"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE=""
 
 DEPEND="

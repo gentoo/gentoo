@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,8 +35,12 @@ src_unpack() {
 	git-r3_checkout '' '' '' bindings/python
 }
 
+python_test() {
+	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
+}
+
 src_test() {
-	python_foreach_impl python -m unittest discover -v || die
+	python_foreach_impl python_test
 }
 
 src_install() {

@@ -7,7 +7,7 @@ KDE_QTHELP="false"
 inherit kde5
 
 DESCRIPTION="Style for QtQuickControls 2 that uses QWidget's QStyle for painting"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 LICENSE="|| ( GPL-2+ LGPL-3+ )"
 IUSE=""
 

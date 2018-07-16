@@ -28,6 +28,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
+	dev-util/gdbus-codegen
 	sys-devel/gettext
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig

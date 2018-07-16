@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils cmake-utils gnome2-utils
+EAPI=6
+
+inherit cmake-utils desktop gnome2-utils
 
 DESCRIPTION="Alf's PDF Viewer Like Vim"
 HOMEPAGE="https://naihe2010.github.com/apvlv/"
@@ -10,7 +11,7 @@ SRC_URI="https://github.com/naihe2010/apvlv/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug djvu"
 
 RDEPEND="
@@ -38,20 +39,15 @@ src_configure() {
 		-DAPVLV_WITH_HTML=OFF
 		-DAPVLV_WITH_UMD=OFF
 		-DAPVLV_WITH_TXT=ON
-		$(cmake-utils_use djvu APVLV_WITH_DJVU)
-		$(cmake-utils_use debug APVLV_ENABLE_DEBUG)
+		-DAPVLV_WITH_DJVU=$(usex djvu)
+		-DAPVLV_ENABLE_DEBUG=$(usex debug)
 	)
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
-	dodoc AUTHORS NEWS README THANKS TODO
 	newicon -s 32 icons/pdf.png ${PN}.png
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

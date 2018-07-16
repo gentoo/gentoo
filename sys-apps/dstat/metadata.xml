@@ -1,10 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wschlich@gentoo.org</email>
-		<name>Wolfram Schlich</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 Dstat is a versatile replacement for vmstat, iostat and ifstat. Dstat overcomes
 some of the limitations and adds some extra features.
@@ -21,3 +18,4 @@ same interval).
 		<remote-id type="github">dagwieers/dstat</remote-id>
 	</upstream>
 </pkgmetadata>
+

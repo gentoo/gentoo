@@ -43,7 +43,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.29-config.patch"
-	eapply -p0 "${FILESDIR}/${PN}-Werror.patch"
+	eapply "${FILESDIR}/${PN}-Werror.patch"
 
 	eapply_user
 

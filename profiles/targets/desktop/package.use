@@ -1,6 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (09 Jun 2018)
+# Required by app-office/libreoffice
+dev-libs/xmlsec nss
+
+# Andreas Sturmlechner <asturm@gentoo.org> (09 Jun 2018)
+# Enable sensible defaults for desktop users
+dev-qt/qtwebkit:5 printsupport
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
 # Not required, but makes life easier with Qt; bug #457934
 app-arch/unzip natspec

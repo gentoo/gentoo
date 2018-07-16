@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
-CDEPEND=">=dev-python/pbr-0.11[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}"
 RDEPEND="${CDEPEND}"

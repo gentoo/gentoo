@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit linux-info python-single-r1 qmake-utils
+inherit eutils linux-info python-single-r1 qmake-utils
 
 DESCRIPTION="A personal full text search package"
 HOMEPAGE="http://www.lesbonscomptes.com/recoll/"

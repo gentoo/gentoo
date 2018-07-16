@@ -1,3 +1,4 @@
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,34 +33,34 @@ EANT_BUILD_TARGET=build
 INSTALL_DIR=/usr/share/${PN}
 
 src_unpack() {
-    unpack ${P}.tar.gz
-    cd "${S}" || die
-    # unpack ${NBZ}
-    unpack ${S}/${NBZ}  # archive is included in the main archive
+	unpack ${P}.tar.gz
+	cd "${S}" || die
+	# unpack ${NBZ}
+	unpack "${S}"/"${NBZ}"  # archive is included in the main archive
 }
 
 src_prepare() {
-    default
+	default
 
-    # Remove unneeded binaries
-    rm -rv netbeans/platform/lib/*.{dll,exe} \
-       netbeans/platform/modules/lib/{amd64/*.dll,i386,x86} || die
-    find netbeans/profiler/lib/deployed/jdk1? -mindepth 1 \
-         -maxdepth 1 ! -name linux-amd64 -exec rm -rv {} + || die
+	# Remove unneeded binaries
+	rm -rv netbeans/platform/lib/*.{dll,exe} \
+		netbeans/platform/modules/lib/{amd64/*.dll,i386,x86} || die
+	find netbeans/profiler/lib/deployed/jdk1? -mindepth 1 \
+		-maxdepth 1 ! -name linux-amd64 -exec rm -rv {} + || die
 }
 
 src_install() {
-    # this is the visualvm cluster
-    insinto ${INSTALL_DIR}
-    doins -r build/cluster netbeans/{platform,profiler}
+	# this is the visualvm cluster
+	insinto ${INSTALL_DIR}
+	doins -r build/cluster netbeans/{platform,profiler}
 
-    # configuration file that can be used to tweak visualvm startup parameters
-    insinto /etc/${PN}
-    newins "${FILESDIR}"/${PN}-r1.conf ${PN}.conf
+	# configuration file that can be used to tweak visualvm startup parameters
+	insinto /etc/${PN}
+	newins "${FILESDIR}"/${PN}-r1.conf ${PN}.conf
 
-    # visualvm runtime script
-    newbin "${FILESDIR}"/${PN}-r1.sh ${PN}
+	# visualvm runtime script
+	newbin "${FILESDIR}"/${PN}-r1.sh ${PN}
 
-    # makes visualvm entry
-    make_desktop_entry ${PN} VisualVM java "Development;Java;"
+	# makes visualvm entry
+	make_desktop_entry ${PN} VisualVM java "Development;Java;"
 }

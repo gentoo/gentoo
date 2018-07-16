@@ -9,7 +9,7 @@ inherit python-any-r1 qt5-build
 DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
 fi
 
 # TODO: qttestlib
@@ -20,7 +20,7 @@ REQUIRED_USE="?? ( gstreamer multimedia )"
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/icu:=
-	>=dev-libs/leveldb-1.18-r1
+	>=dev-libs/leveldb-1.18-r1:=
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=dev-qt/qtcore-${QT_MIN_VER}[icu]

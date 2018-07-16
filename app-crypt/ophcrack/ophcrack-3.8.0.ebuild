@@ -17,7 +17,7 @@ CDEPEND="!libressl? ( dev-libs/openssl:0= )
 		 libressl? ( dev-libs/libressl:0= )
 		 net-libs/netwib
 		 qt5? ( dev-qt/qtcharts:5
-		 		dev-qt/qtgui:5 )"
+		 dev-qt/qtgui:5 )"
 DEPEND="app-arch/unzip
 		 virtual/pkgconfig
 		 ${CDEPEND}"

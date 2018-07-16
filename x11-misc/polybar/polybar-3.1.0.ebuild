@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jaagr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="alsa curl i3wm ipc mpd network"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -26,8 +26,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	${PYTHON_DEPS}
 	x11-base/xcb-proto
-	x11-libs/cairo
-	x11-libs/libxcb
+	x11-libs/cairo[xcb]
+	x11-libs/libxcb[xkb]
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm

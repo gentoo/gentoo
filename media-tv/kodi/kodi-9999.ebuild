@@ -12,9 +12,9 @@ inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 LIBDVDCSS_VERSION="1.4.1-Leia-Alpha-1"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-1"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-1"
-FFMPEG_VERSION="4.0"
+FFMPEG_VERSION="4.0.1"
 CODENAME="Leia"
-FFMPEG_KODI_VERSION="Alpha-1"
+FFMPEG_KODI_VERSION="Alpha3-1"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
@@ -28,7 +28,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql nfs +opengl pulseaudio samba sftp systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql nfs +opengl pulseaudio samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	gbm? ( gles )
@@ -84,7 +84,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	libressl? ( dev-libs/libressl:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
-	sftp? ( net-libs/libssh[sftp] )
 	>=sys-libs/zlib-1.2.11
 	udev? ( virtual/udev )
 	vaapi? (
@@ -235,18 +234,16 @@ src_configure() {
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
-		-DENABLE_LIRC=$(usex lirc)
+		-DENABLE_LIRCCLIENT=$(usex lirc)
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
 		-DENABLE_OPENGLES=$(usex gles)
 		-DENABLE_OPENGL=$(usex opengl)
-		-DENABLE_OPENSSL=ON
 		-DENABLE_OPTICAL=$(usex dvd)
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
-		-DENABLE_SSH=$(usex sftp)
 		-DENABLE_UDEV=$(usex udev)
 		-DENABLE_UPNP=$(usex upnp)
 		-DENABLE_VAAPI=$(usex vaapi)
@@ -299,7 +296,7 @@ src_install() {
 
 	pax-mark Em "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
 
-	rm "${ED%/}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
+	rm "${ED%/}"/usr/share/doc/*/{LICENSE.md,copying.txt}* || die
 
 	newicon media/icon48x48.png kodi.png
 
@@ -308,5 +305,5 @@ src_install() {
 		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
-	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send
+	python_newscript "tools/EventClients/Clients/KodiSend/kodi-send.py" kodi-send
 }

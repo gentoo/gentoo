@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="An assortment of high-level widgets for common tasks"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="nls"
 
 RDEPEND="
@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 "
 
 src_test() {
-	# bug 650216
-	local myctestargs=( -E "(kdatecomboboxtest)" )
+	# bug 650216, 653186
+	local myctestargs=( -E "(kdatecomboboxtest|ktooltipwidgettest)" )
 	kde5_src_test
 }

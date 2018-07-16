@@ -29,8 +29,8 @@ UIRDEPEND="
 	net-misc/curl
 "
 UIDEPEND="
-	dga? ( x11-proto/xf86dgaproto )
-	vidmode? ( x11-proto/xf86vidmodeproto )
+	dga? ( x11-base/xorg-proto )
+	vidmode? ( x11-base/xorg-proto )
 "
 RDEPEND="!dedicated? ( ${UIRDEPEND} )"
 DEPEND="${RDEPEND}

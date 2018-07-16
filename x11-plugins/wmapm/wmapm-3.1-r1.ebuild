@@ -4,8 +4,8 @@
 EAPI=0
 
 DESCRIPTION="WindowMaker DockApp: Battery/Power status monitor for laptops"
-HOMEPAGE="http://www.dockapps.net/wmapm"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmapm"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

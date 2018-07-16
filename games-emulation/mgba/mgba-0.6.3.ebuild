@@ -37,6 +37,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-qt511.patch"
+)
+
 src_prepare() {
 	cmake-utils_src_prepare
 

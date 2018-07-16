@@ -22,11 +22,11 @@ IUSE="alsa ao bluetooth doc egl +evdev ffmpeg libav llvm log lto openal +pch por
 RDEPEND="
 	>=media-libs/libsfml-2.1
 	>net-libs/enet-1.3.7
-	>=net-libs/mbedtls-2.1.1
+	>=net-libs/mbedtls-2.1.1:=
 	dev-libs/lzo
 	media-libs/libpng:0=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	sys-libs/zlib:=
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
@@ -44,7 +44,7 @@ RDEPEND="
 		libav? ( media-video/libav:= )
 		!libav? ( media-video/ffmpeg:= )
 	)
-	llvm? ( sys-devel/llvm )
+	llvm? ( sys-devel/llvm:* )
 	openal? (
 		media-libs/openal
 		media-libs/libsoundtouch

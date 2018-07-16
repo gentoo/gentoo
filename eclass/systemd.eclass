@@ -151,6 +151,7 @@ systemd_dounit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_systemunitdir)"
 		doins "${@}"
 	)
@@ -165,6 +166,7 @@ systemd_newunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_systemunitdir)"
 		newins "${@}"
 	)
@@ -179,6 +181,7 @@ systemd_douserunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_userunitdir)"
 		doins "${@}"
 	)
@@ -193,6 +196,7 @@ systemd_newuserunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_userunitdir)"
 		newins "${@}"
 	)
@@ -222,6 +226,7 @@ systemd_install_serviced() {
 	[[ ${service} == *.d ]] && die "Service must not have .d suffix"
 
 	(
+		insopts -m 0644
 		insinto /etc/systemd/system/"${service}".d
 		newins "${src}" 00gentoo.conf
 	)
@@ -241,6 +246,7 @@ systemd_dotmpfilesd() {
 	done
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d/
 		doins "${@}"
 	)
@@ -258,6 +264,7 @@ systemd_newtmpfilesd() {
 		|| die 'tmpfiles.d files need to have .conf suffix.'
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d/
 		newins "${@}"
 	)
@@ -320,6 +327,7 @@ systemd_enable_ntpunit() {
 	done
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_utildir)"/ntp-units.d
 		doins "${T}"/${ntpunit_name}.list
 	)

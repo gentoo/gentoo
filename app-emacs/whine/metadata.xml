@@ -12,4 +12,5 @@
   anything to do with reality. The main lossage is C-l, which refreshes the
   screen and then whines about it so that you can't get a clear message line.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

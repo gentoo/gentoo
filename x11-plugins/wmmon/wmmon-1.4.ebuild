@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="Dockable system resources monitor applet for WindowMaker"
-HOMEPAGE="http://www.dockapps.net/wmmon"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmmon"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
