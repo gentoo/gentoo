@@ -6883,7 +6883,7 @@ kde-misc/kmarkdownwebview 0.5.2: KPart for rendering Markdown content
 kde-misc/krename 5.0.0: Powerful batch file renamer
 kde-misc/krusader 2.7.0: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
-kde-misc/latte-dock 0.7.4 0.7.5: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.7.5: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/rsibreak 0.12.8: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
@@ -8576,7 +8576,7 @@ net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.24.2: An IRC client for Gnome
-net-irc/quassel 0.12.5 0.12.5-r2: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
+net-irc/quassel 0.12.5-r2: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
@@ -10863,7 +10863,7 @@ x11-misc/habak 0.2.5-r2: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.10: Simple screen locker
-x11-misc/i3status 2.11 2.12: generates a status bar for dzen2, xmobar or similar
+x11-misc/i3status 2.12: generates a status bar for dzen2, xmobar or similar
 x11-misc/icewmcp 3.2-r4: A complete control panel for IceWM using gtk & python
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
 x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
@@ -10910,7 +10910,7 @@ x11-misc/qt5ct 0.35: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1: A BBS client for Linux
 x11-misc/qtfm 5.9-r1: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/read-edid 1.4.2 3.0.2: Program that can get information from a PnP monitor
-x11-misc/redshift 1.11-r1 1.12: A screen color temperature adjusting software
+x11-misc/redshift 1.12: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
