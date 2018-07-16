@@ -15,7 +15,9 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="app-arch/brotli"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 src_configure() {
 	local mycmakeargs=(
