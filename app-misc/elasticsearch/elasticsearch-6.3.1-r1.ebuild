@@ -55,8 +55,9 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.conf.3" ${PN}
 	newinitd "${FILESDIR}/${PN}.init.4" ${PN}
 
+	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d" ${PN}.conf
-	systemd_newunit "${FILESDIR}"/${PN}.service.2 ${PN}.service
+	systemd_newunit "${FILESDIR}"/${PN}.service.3 ${PN}.service
 }
 
 pkg_postinst() {
@@ -66,7 +67,11 @@ pkg_postinst() {
 	elog "ln -sf /etc/init.d/${PN} /etc/init.d/${PN}.instance"
 	elog
 	elog "Please make sure you put elasticsearch.yml, log4j2.properties and scripts"
-	elog "from /etc/elasticsearch into the configuration directory of the instance:"
+	elog "from /etc/${PN} into the configuration directory of the instance:"
 	elog "/etc/${PN}/instance"
 	elog
+	ewarn "Please make sure you have proper permissions on /etc/${PN}"
+	ewarn "prior to keystore generation or you may experience startup fails."
+	ewarn "chown root:${PN} /etc/${PN} && chmod 2750 /etc/${PN}"
+	ewarn "chown root:${PN} /etc/${PN}/${PN}.keystore && chmod 0660 /etc/${PN}/${PN}.keystore"
 }
