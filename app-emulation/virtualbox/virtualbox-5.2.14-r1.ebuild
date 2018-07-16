@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
+inherit flag-o-matic gnome2-utils java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -423,6 +423,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 
 	if use udev ; then
@@ -465,5 +466,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
