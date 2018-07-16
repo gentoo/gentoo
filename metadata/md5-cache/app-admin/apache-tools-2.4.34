@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/apr-1.5.0:1= dev-libs/apr-util:1= dev-libs/expat dev-libs/lib
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/httpd/httpd-2.4.34.tar.bz2
-_eclasses_=eutils	5b8ce72259e08104b337fe28c6de5dbc	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_eclasses_=eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=7017fa6d30cee91f72b7b7ceb966216e
