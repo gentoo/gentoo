@@ -4,9 +4,9 @@
 EAPI=6
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20160303"
+GENTOO_PATCHSTAMP="20180716"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.18-r1"
+GENTOO_PATCHNAME="gentoo-apache-2.4.34"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
@@ -36,7 +36,7 @@ authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 brotli cache cache_disk cache_socache cern_meta charset_lite cgi cgid dav dav_fs dav_lock
 dbd deflate dir dumpio env expires ext_filter file_cache filter headers http2
 ident imagemap include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
-lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiation
+lbmethod_heartbeat log_config log_forensic logio macro md mime mime_magic negotiation
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
 slotmem_shm speling socache_shmcb status substitute unique_id userdir usertrack
@@ -65,6 +65,7 @@ MODULE_DEPENDS="
 	logio:log_config
 	cache_disk:cache
 	cache_socache:cache
+	md:watchdog
 	mime_magic:mime
 	proxy_ajp:proxy
 	proxy_balancer:proxy
@@ -94,6 +95,7 @@ MODULE_DEFINES="
 	http2:HTTP2
 	info:INFO
 	ldap:LDAP
+	md:SSL
 	proxy:PROXY
 	proxy_ajp:PROXY
 	proxy_balancer:PROXY
@@ -120,7 +122,7 @@ MODULE_CRITICAL="
 	mime
 	unixd
 "
-inherit eutils apache-2 systemd toolchain-funcs
+inherit apache-2 systemd toolchain-funcs
 
 DESCRIPTION="The Apache Web Server"
 HOMEPAGE="https://httpd.apache.org/"
@@ -128,15 +130,20 @@ HOMEPAGE="https://httpd.apache.org/"
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+# Enable http2 by default (bug #563452)
+# FIXME: Move to apache-2.eclass once this has reached stable.
+IUSE="${IUSE/apache2_modules_http2/+apache2_modules_http2}"
 
 CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
-	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )"
+	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
+	apache2_modules_md? ( >=dev-libs/jansson-2.10 )"
 
 DEPEND+="${CDEPEND}"
 RDEPEND+="${CDEPEND}"
 
-REQUIRED_USE="apache2_modules_http2? ( ssl )"
+REQUIRED_USE="apache2_modules_http2? ( ssl )
+	apache2_modules_md? ( ssl )"
 
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
@@ -169,26 +176,22 @@ src_compile() {
 
 src_install() {
 	apache-2_src_install
-	for i in /usr/bin/{htdigest,logresolve,htpasswd,htdbm,ab,httxt2dbm}; do
-		rm "${ED}"/$i || die "Failed to prune apache-tools bits"
-	done
-	for i in /usr/share/man/man8/{rotatelogs.8,htcacheclean.8}; do
-		rm "${ED}"/$i || die "Failed to prune apache-tools bits"
-	done
-	for i in /usr/share/man/man1/{logresolve.1,htdbm.1,htdigest.1,htpasswd.1,dbmmanage.1,ab.1}; do
-		rm "${ED}"/$i || die "Failed to prune apache-tools bits"
-	done
-	for i in /usr/sbin/{checkgid,fcgistarter,htcacheclean,rotatelogs}; do
-		rm "${ED}/"$i || die "Failed to prune apache-tools bits"
+	local i
+	local apache_tools_prune_list=(
+		/usr/bin/{htdigest,logresolve,htpasswd,htdbm,ab,httxt2dbm}
+		/usr/sbin/{checkgid,fcgistarter,htcacheclean,rotatelogs}
+		/usr/share/man/man1/{logresolve.1,htdbm.1,htdigest.1,htpasswd.1,dbmmanage.1,ab.1}
+		/usr/share/man/man8/{rotatelogs.8,htcacheclean.8}
+	)
+	for i in ${apache_tools_prune_list[@]} ; do
+		rm "${ED%/}"/$i || die "Failed to prune apache-tools bits"
 	done
 
 	# install apxs in /usr/bin (bug #502384) and put a symlink into the
 	# old location until all ebuilds and eclasses have been modified to
 	# use the new location.
-	local apxs="/usr/bin/apxs"
-	cp "${S}"/support/apxs "${ED%/}/${apxs}" || die "Failed to install apxs"
-	ln -s ../bin/apxs "${ED%/}/usr/sbin/apxs" || die
-	chmod 0755 "${ED%/}${apxs}" || die
+	dobin support/apxs
+	dosym ../bin/apxs /usr/sbin/apxs
 
 	# Note: wait for mod_systemd to be included in some forthcoming release,
 	# Then apache2.4.service can be used and systemd support controlled
@@ -201,12 +204,16 @@ src_install() {
 	# Install http2 module config
 	insinto /etc/apache2/modules.d
 	doins "${FILESDIR}"/41_mod_http2.conf
+
+	# Fix path to apache libdir
+	sed "s|@LIBDIR@|$(get_libdir)|" -i "${ED%/}"/usr/sbin/apache2ctl || die
 }
 
 pkg_postinst() {
 	apache-2_pkg_postinst || die "apache-2_pkg_postinst failed"
 	# warnings that default config might not work out of the box
-	for mod in $MODULE_CRITICAL; do
+	local mod cmod
+	for mod in ${MODULE_CRITICAL} ; do
 		if ! use "apache2_modules_${mod}"; then
 			echo
 			ewarn "Warning: Critical module not installed!"
@@ -214,7 +221,7 @@ pkg_postinst() {
 			ewarn "are highly recomended but might not be in the base profile yet."
 			ewarn "Default config for ssl needs module 'socache_shmcb'."
 			ewarn "Enabling the following flags is highly recommended:"
-			for cmod in $MODULE_CRITICAL; do
+			for cmod in ${MODULE_CRITICAL} ; do
 				use "apache2_modules_${cmod}" || \
 					ewarn "+ apache2_modules_${cmod}"
 			done

@@ -4,7 +4,7 @@
 EAPI=6
 inherit toolchain-funcs
 
-MY_P=${P/-/_}
+MY_P="${P/-/_}"
 DESCRIPTION="improved Whois Client"
 HOMEPAGE="https://www.linux.it/~md/software/"
 SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
@@ -42,7 +42,7 @@ src_prepare() {
 	fi
 }
 
-src_configure() { :;} # expected no-op
+src_configure() { :; } # expected no-op
 
 src_compile() {
 	unset HAVE_ICONV HAVE_LIBIDN

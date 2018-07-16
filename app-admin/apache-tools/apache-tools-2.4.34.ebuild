@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic eutils multilib toolchain-funcs
 
 DESCRIPTION="Useful Apache tools - htdigest, htpasswd, ab, htdbm"
@@ -10,12 +10,12 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
 IUSE="libressl ssl"
 RESTRICT="test"
 
-RDEPEND=">=dev-libs/apr-1.5.0:1
-	dev-libs/apr-util:1
+RDEPEND=">=dev-libs/apr-1.5.0:1=
+	dev-libs/apr-util:1=
 	dev-libs/expat
 	dev-libs/libpcre
 	kernel_linux? ( sys-apps/util-linux )
@@ -58,22 +58,21 @@ src_configure() {
 
 	tc-export PKG_CONFIG
 
-	# Instead of filtering --as-needed (bug #128505), append --no-as-needed
-	#append-ldflags $(no-as-needed)
-
+	local myeconfargs=(
+		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/apache2/modules
+		--sbindir="${EPREFIX}"/usr/sbin
+		--with-perl="${EPREFIX}"/usr/bin/perl
+		--with-expat="${EPREFIX}"/usr
+		--with-z="${EPREFIX}"/usr
+		--with-apr="${SYSROOT}${EPREFIX}"/usr
+		--with-apr-util="${SYSROOT}${EPREFIX}"/usr
+		--with-pcre="${T}"/pcre-config
+		$(use_enable ssl)
+		$(usex ssl '--with-ssl="${EPREFIX}"/usr' '')
+	)
 	# econf overwrites the stuff from config.layout.
 	ac_cv_path_PKGCONFIG=${PKG_CONFIG} \
-	econf \
-		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/apache2/modules \
-		--sbindir="${EPREFIX}"/usr/sbin \
-		--with-perl="${EPREFIX}"/usr/bin/perl \
-		--with-expat="${EPREFIX}"/usr \
-		--with-z="${EPREFIX}"/usr \
-		--with-apr="${SYSROOT}${EPREFIX}"/usr \
-		--with-apr-util="${SYSROOT}${EPREFIX}"/usr \
-		--with-pcre="${T}"/pcre-config \
-		$(use_enable ssl) \
-		$(usex ssl '--with-ssl="${EPREFIX}"/usr' '')
+	econf "${myeconfargs[@]}"
 	sed -i \
 		-e '/^LTFLAGS/s:--silent::' \
 		build/rules.mk build/config_vars.mk || die
@@ -91,7 +90,7 @@ src_install() {
 
 	# Providing compatiblity symlinks for #177697 (which we'll stop to install
 	# at some point).
-	pushd "${ED}"/usr/sbin >/dev/null || die
+	pushd "${ED%/}"/usr/sbin >/dev/null || die
 	local i
 	for i in *; do
 		dosym ${i} /usr/sbin/${i}2
@@ -99,7 +98,7 @@ src_install() {
 	popd >/dev/null || die
 
 	# Provide a symlink for ab-ssl
-	if use ssl; then
+	if use ssl ; then
 		dosym ab /usr/bin/ab-ssl
 		dosym ab /usr/bin/ab2-ssl
 	fi
