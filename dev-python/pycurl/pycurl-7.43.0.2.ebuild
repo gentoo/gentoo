@@ -63,6 +63,7 @@ python_compile() {
 
 python_test() {
 	nosetests -a '!standalone,!gssapi' -v --with-flaky || die "Tests fail with ${EPYTHON}"
+	nosetests -a 'standalone' -v --with-flaky || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
