@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 		dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2,kerberos]
+		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 	)"
 # Needed for individual runs of testsuite by python impls.
@@ -62,7 +62,7 @@ python_compile() {
 }
 
 python_test() {
-	nosetests -a '!standalone' -v --with-flaky || die "Tests fail with ${EPYTHON}"
+	nosetests -a '!standalone,!gssapi' -v --with-flaky || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
