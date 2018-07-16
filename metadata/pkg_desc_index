@@ -5678,7 +5678,7 @@ dev-python/wsgiproxy2 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
 dev-python/wtf-peewee 3.0.0: WTForms integration for peewee models
 dev-python/wtforms 2.1: Flexible forms validation and rendering library for python web development
-dev-python/wxpython 2.8.12.1-r2 3.0.2.0: A blending of the wxWindows C++ class library with Python
+dev-python/wxpython 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xapp 1.0.1-r2: Python bindings for x11-libs/xapps
 dev-python/xcffib 0.4.0 0.5.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xlrd 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
@@ -10797,7 +10797,7 @@ x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
 x11-libs/vte 0.28.2-r208 0.36.5 0.48.4: Library providing a virtual terminal emulator widget
-x11-libs/wxGTK 2.8.12.1-r2 3.0.3 3.0.3-r300: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
+x11-libs/wxGTK 3.0.3 3.0.3-r300: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.0.4: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0-r1: X C-language Bindings sample implementations
