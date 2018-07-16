@@ -21,6 +21,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-dash.patch"
 	"${FILESDIR}/${P}-resources.patch"
 )
+
 src_prepare() {
 	default
 
@@ -37,10 +38,6 @@ src_install() {
 		default
 	doicon -s scalable resources/garden.svg
 	make_desktop_entry garden "Garden of coloured lights"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
