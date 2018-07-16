@@ -34,8 +34,7 @@ src_prepare() {
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog NEWS README" \
-		default
+	default
 	doicon -s scalable resources/garden.svg
 	make_desktop_entry garden "Garden of coloured lights"
 }
