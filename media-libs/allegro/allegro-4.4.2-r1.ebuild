@@ -7,7 +7,7 @@ CMAKE_IN_SOURCE_BUILD=1
 inherit cmake-utils desktop
 
 DESCRIPTION="cross-platform multimedia library"
-HOMEPAGE="http://alleg.sourceforge.net/"
+HOMEPAGE="https://liballeg.org/"
 SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
 
 LICENSE="Allegro MIT GPL-2+ ZLIB"

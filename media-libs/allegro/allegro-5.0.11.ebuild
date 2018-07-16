@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-multilib
 
 DESCRIPTION="A game programming library"
-HOMEPAGE="http://alleg.sourceforge.net/"
+HOMEPAGE="https://liballeg.org/"
 SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
 
 LICENSE="BSD ZLIB"
