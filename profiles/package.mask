@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
+# Obsolete GNOME 2 print libraries, bug #352952
+gnome-base/libgnomeprintui
+gnome-base/libgnomeprint
+
+# Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
 # Parallel-installable old versions with no remaining consumers
 # in main tree. Use applications ported to wxGTK:3.0 and
 # wxpython:3.0 instead. Bug #661284
