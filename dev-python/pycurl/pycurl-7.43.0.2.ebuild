@@ -40,7 +40,6 @@ DEPEND="${RDEPEND}
 		dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/nose-show-skipped[${PYTHON_USEDEP}]
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2,kerberos]
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 	)"
@@ -49,7 +48,6 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
-	sed -e '/pyflakes/d' -i Makefile || die
 	distutils-r1_python_prepare_all
 }
 
@@ -64,7 +62,7 @@ python_compile() {
 }
 
 python_test() {
-	emake -j1 do-test
+	nosetests -a '!standalone' -v --with-flaky || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
