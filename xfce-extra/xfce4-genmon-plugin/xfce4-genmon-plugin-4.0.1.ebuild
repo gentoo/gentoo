@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Cyclically spawned executable output on the panel"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

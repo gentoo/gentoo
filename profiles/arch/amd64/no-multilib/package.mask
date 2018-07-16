@@ -113,7 +113,6 @@ games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
 games-fps/ut2004-demo
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/hoh-bin

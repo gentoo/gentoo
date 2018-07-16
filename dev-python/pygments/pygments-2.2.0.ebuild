@@ -32,6 +32,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# fix generators for python3.7+
+	"${FILESDIR}"/pygments-2.2.0-pep479.patch
+)
+
 python_compile_all() {
 	use doc && emake -C doc html
 }

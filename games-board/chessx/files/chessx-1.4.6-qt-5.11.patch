@@ -1,0 +1,44 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2018-06-18 13:16:31 +0200
+Subject: Add missing include statements
+References: https://sourceforge.net/p/chessx/bugs/254
+Upstream: submitted
+
+A few explicit include statements are required with Qt 5.11
+---
+Index: chessx-1.4.6/src/gui/gamewindow.cpp
+===================================================================
+--- chessx-1.4.6.orig/src/gui/gamewindow.cpp
++++ chessx-1.4.6/src/gui/gamewindow.cpp
+@@ -9,6 +9,7 @@
+ #include "settings.h"
+ 
+ #include <QToolButton>
++#include <QAction>
+ 
+ #if defined(_MSC_VER) && defined(_DEBUG)
+ #define DEBUG_NEW new( _NORMAL_BLOCK, __FILE__, __LINE__ )
+Index: chessx-1.4.6/src/dialogs/savedialog.cpp
+===================================================================
+--- chessx-1.4.6.orig/src/dialogs/savedialog.cpp
++++ chessx-1.4.6/src/dialogs/savedialog.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <QLineEdit>
+ #include <QCompleter>
++#include <QButtonGroup>
+ 
+ #if defined(_MSC_VER) && defined(_DEBUG)
+ #define DEBUG_NEW new( _NORMAL_BLOCK, __FILE__, __LINE__ )
+Index: chessx-1.4.6/src/dialogs/preferences.cpp
+===================================================================
+--- chessx-1.4.6.orig/src/dialogs/preferences.cpp
++++ chessx-1.4.6/src/dialogs/preferences.cpp
+@@ -33,6 +33,7 @@
+ #include <QFileDialog>
+ #include <QDesktopServices>
+ #include <QTextStream>
++#include <QAction>
+ 
+ #if defined(_MSC_VER) && defined(_DEBUG)
+ #define DEBUG_NEW new( _NORMAL_BLOCK, __FILE__, __LINE__ )

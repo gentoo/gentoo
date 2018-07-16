@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="World timezone definitions for Python"
-HOMEPAGE="http://pythonhosted.org/pytz/ https://pypi.org/project/pytz/"
+HOMEPAGE="https://pythonhosted.org/pytz/ https://pypi.org/project/pytz/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

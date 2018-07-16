@@ -57,6 +57,7 @@ net-dns/avahi howl-compat python
 # Requires xorg-server[xvfb] for tests
 dev-util/cmake test
 dev-libs/glib test
+app-crypt/heimdal test
 
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
 # Requires masked dependent flags.

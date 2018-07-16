@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
-PATCHSET_VER="9"
+PATCHSET_VER="10"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"

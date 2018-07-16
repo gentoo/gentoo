@@ -24,10 +24,6 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0-utils.patch"
-)
-
 src_prepare() {
 	default
 	eautoreconf

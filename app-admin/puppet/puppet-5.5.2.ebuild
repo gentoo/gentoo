@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -19,7 +19,7 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64	~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE="augeas diff doc emacs ldap rrdtool selinux shadow sqlite vim-syntax"
 RESTRICT="test"
 

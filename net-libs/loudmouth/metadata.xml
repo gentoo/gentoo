@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
 	<use>
 		<flag name="asyncns">Use <pkg>net-libs/libasyncns</pkg> for asynchronous name resolution.</flag>
 		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> support instead of gnutls (which is the default).</flag>

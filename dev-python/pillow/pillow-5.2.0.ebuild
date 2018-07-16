@@ -38,7 +38,10 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
-	test? (	dev-python/pytest[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		media-gfx/imagemagick[png]
+	)
 "
 
 S="${WORKDIR}/${MY_P}"

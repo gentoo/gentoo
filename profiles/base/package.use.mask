@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Nick Sarnie <sarnex@gentoo.org> (15 Jul 2018)
+# Requires media-video/ffmpeg-4 which is masked
+app-emulation/wine-any ffmpeg
+app-emulation/wine-staging ffmpeg
+
 # Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
 # Dependency app-crypt/jitterentropy is keyworded for
 # only a subset of the archs rng-tools supports
@@ -80,10 +85,6 @@ net-analyzer/scapy visual
 # net-dns/hesiod will be removed (#606652)
 net-mail/fetchmail hesiod
 sys-freebsd/freebsd-lib hesiod
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# app-misc/cwiid will be removed (#608780)
-media-sound/supercollider wiimote
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
 # sys-fabric/mstflint will be removed (#594908)
@@ -594,10 +595,6 @@ media-libs/avidemux-core system-ffmpeg
 # Jory A. Pratt <anarchy@gentoo.org> (15 Dec 2012)
 # PGO is known to be busted with most configurations
 www-client/firefox pgo
-
-# Sergey Popov <pinkbyte@gentoo.org> (26 Nov 2012)
-# PDF docs building failed with sandbox violation
-media-libs/opencolorio pdf
 
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.

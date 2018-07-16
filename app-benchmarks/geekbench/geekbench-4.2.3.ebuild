@@ -11,9 +11,6 @@ KEYWORDS="-* amd64 x86"
 LICENSE="geekbench"
 SLOT="4"
 
-RDEPEND="sys-devel/gcc
-	sys-libs/glibc"
-
 RESTRICT="bindist fetch mirror strip"
 
 S="${WORKDIR}/Geekbench-${PV}-Linux"

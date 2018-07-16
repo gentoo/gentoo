@@ -3,6 +3,7 @@
 
 EAPI=6
 
+ECM_KDEINSTALLDIRS="false"
 KDE_HANDBOOK="false" # buildsystem applies broken python hacks, bug #614950
 inherit kde5
 
@@ -12,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="acoustid flac kde mp3 mp4 +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"

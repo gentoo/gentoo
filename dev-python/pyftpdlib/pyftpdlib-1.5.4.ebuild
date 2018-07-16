@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ia64 ~m68k ~mips ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ~hppa ia64 ~m68k ~mips ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="doc examples ssl test"
 
 RDEPEND="
@@ -64,8 +64,9 @@ python_test() {
 		test_nlst
 	)
 	skipped_tests=${skipped_tests[@]/%/ or}
+	# Don't load the relaxed plugin, see https://bugs.gentoo.org/661082
 	py.test --ignore ${PN}/test/test_misc.py -k "not (${skipped_tests% or})" \
-		|| die "Tests failed with ${EPYTHON}"
+		-p no:relaxed || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

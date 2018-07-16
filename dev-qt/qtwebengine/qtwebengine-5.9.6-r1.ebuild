@@ -8,7 +8,7 @@ inherit multiprocessing pax-utils python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 IUSE="alsa bindist designer geolocation pax_kernel pulseaudio +system-ffmpeg +system-icu widgets"
@@ -29,7 +29,6 @@ RDEPEND="
 	dev-libs/libevent:=
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
-	dev-libs/protobuf:=
 	dev-libs/re2:=
 	media-libs/fontconfig
 	media-libs/freetype
@@ -62,7 +61,7 @@ RDEPEND="
 	designer? ( ~dev-qt/designer-${PV} )
 	geolocation? ( ~dev-qt/qtpositioning-${PV} )
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( media-video/ffmpeg:0= )
+	system-ffmpeg? ( <media-video/ffmpeg-4:0= )
 	system-icu? ( dev-libs/icu:= )
 	widgets? (
 		~dev-qt/qtdeclarative-${PV}[widgets]

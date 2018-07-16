@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -39,6 +39,9 @@ all_ruby_prepare() {
 
 	# Avoid test that works standalone but fails in the suite
 	sed -i -e '/calls block given to perform with each redirect/,/^        end/ s:^:#:' spec/httparty/request_spec.rb
+
+	# Avoid test that is not fully compatible with newer multi_xml
+	sed -i -e '/should be able parse response type xml automatically/askip "multi_xml"' spec/httparty_spec.rb || die
 }
 
 all_ruby_install() {

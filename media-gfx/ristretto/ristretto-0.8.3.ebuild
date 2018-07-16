@@ -7,7 +7,7 @@ inherit gnome2-utils xdg-utils
 
 DESCRIPTION="A fast and lightweight picture viewer for Xfce"
 HOMEPAGE="https://docs.xfce.org/apps/ristretto/start"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
