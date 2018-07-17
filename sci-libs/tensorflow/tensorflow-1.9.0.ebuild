@@ -48,27 +48,27 @@ bazel_external_uris="
 		https://github.com/hfp/libxsmm/archive/1.8.1.tar.gz -> libxsmm-1.8.1.tar.gz
 		https://github.com/intel/ARM_NEON_2_x86_SSE/archive/0f77d9d182265259b135dad949230ecbf1a2633d.tar.gz -> ARM_NEON_2_x86_SSE-0f77d9d182265259b135dad949230ecbf1a2633d.tar.gz
 		https://github.com/intel/mkl-dnn/archive/v0.12.tar.gz -> mkl_dnn-v0.12.tar.gz
-		https://github.com/llvm-mirror/llvm/archive/fe1e7736763a8577ac081eca525e05d3b52de414.tar.gz -> llvm-fe1e7736763a8577ac081eca525e05d3b52de414.tar.gz
+		https://github.com/llvm-mirror/llvm/archive/bf13d093f13a295d71080614c3036ada591201d5.tar.gz -> llvm-bf13d093f13a295d71080614c3036ada591201d5.tar.gz
 		https://mirror.bazel.build/docs.python.org/2.7/_sources/license.txt -> tensorflow-python-license.txt
 		https://pypi.python.org/packages/5c/78/ff794fcae2ce8aa6323e789d1f8b3b7765f601e7702726f430e814822b96/gast-0.2.0.tar.gz
 		https://pypi.python.org/packages/bc/cc/3cdb0a02e7e96f6c70bd971bc8a90b8463fda83e264fa9c5c1c98ceabd81/backports.weakref-1.0rc1.tar.gz
 		!system-libs? (
-			http://ftp.exim.org/pub/pcre/pcre-8.42.tar.gz
+			http://ftp.exim.org/pub/pcre/pcre-8.39.tar.gz
 			http://ufpr.dl.sourceforge.net/project/swig/swig/swig-3.0.8/swig-3.0.8.tar.gz
-			https://curl.haxx.se/download/curl-7.60.0.tar.gz
+			https://curl.haxx.se/download/curl-7.49.1.tar.gz
 			https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz
 			https://pypi.python.org/packages/d8/be/c4276b3199ec3feee2a88bc64810fbea8f26d961e0a4cd9c68387a9f35de/astor-0.6.2.tar.gz
 			https://pypi.python.org/packages/source/s/six/six-1.10.0.tar.gz
-			https://github.com/google/flatbuffers/archive/v1.9.0.tar.gz -> flatbuffers-v1.9.0.tar.gz
+			https://github.com/google/flatbuffers/archive/971a68110e4fc1bace10fcb6deeb189e7e1a34ce.tar.gz -> flatbuffers-971a68110e4fc1bace10fcb6deeb189e7e1a34ce.tar.gz
 			https://github.com/cython/cython/archive/3732784c45cfb040a5b0936951d196f83a12ea17.tar.gz -> cython-3732784c45cfb040a5b0936951d196f83a12ea17.tar.gz
 		)
 	)
 	!system-libs? (
 		http://pilotfiber.dl.sourceforge.net/project/giflib/giflib-5.1.4.tar.gz
 		http://pkgs.fedoraproject.org/repo/pkgs/nasm/nasm-2.12.02.tar.bz2/d15843c3fb7db39af80571ee27ec6fad/nasm-2.12.02.tar.bz2
-		https://github.com/LMDB/lmdb/archive/LMDB_0.9.22.tar.gz
+		https://github.com/LMDB/lmdb/archive/LMDB_0.9.19.tar.gz
 		https://github.com/glennrp/libpng/archive/v1.6.34.tar.gz -> libpng-v1.6.34.tar.gz
-		https://github.com/google/re2/archive/2018-04-01.tar.gz -> re2-2018-04-01.tar.gz
+		https://github.com/google/re2/archive/26cd968b735e227361c9703683266f01e5df7857.tar.gz -> re2-26cd968b735e227361c9703683266f01e5df7857.tar.gz
 		https://github.com/google/snappy/archive/1.1.7.tar.gz -> snappy-1.1.7.tar.gz
 		https://github.com/grpc/grpc/archive/d184fa229d75d336aedea0041bd59cb93e7e267f.tar.gz -> grpc-d184fa229d75d336aedea0041bd59cb93e7e267f.tar.gz
 		https://github.com/libjpeg-turbo/libjpeg-turbo/archive/1.5.3.tar.gz -> libjpeg_turbo-1.5.3.tar.gz
