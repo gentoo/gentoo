@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 DISTUTILS_OPTIONAL="1"
 
 inherit cmake-utils distutils-r1 eapi7-ver
