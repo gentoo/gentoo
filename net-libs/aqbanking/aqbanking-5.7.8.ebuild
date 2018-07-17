@@ -10,7 +10,7 @@ SRC_URI="https://www.aquamaniac.de/sites/download/download.php?package=03&releas
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="chipcard debug doc ebics examples gtk ofx"
 
 RDEPEND="

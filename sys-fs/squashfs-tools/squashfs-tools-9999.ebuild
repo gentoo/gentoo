@@ -1,29 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils git-r3 toolchain-funcs flag-o-matic
-
-DEB_VER="3"
+inherit flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs"
 HOMEPAGE="http://squashfs.sourceforge.net"
-EGIT_REPO_URI="
-	https://git.kernel.org/pub/scm/fs/squashfs/squashfs-tools.git
-"
-
+EGIT_REPO_URI="https://github.com/plougher/squashfs-tools"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug lz4 lzma lzo static xattr +xz zstd"
+KEYWORDS=""
 
 LIB_DEPEND="
-	sys-libs/zlib[static-libs(+)]
 	!xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) )
 	lz4? ( app-arch/lz4[static-libs(+)] )
 	lzma? ( app-arch/xz-utils[static-libs(+)] )
 	lzo? ( dev-libs/lzo[static-libs(+)] )
+	sys-libs/zlib[static-libs(+)]
 	xattr? ( sys-apps/attr[static-libs(+)] )
 	xz? ( app-arch/xz-utils[static-libs(+)] )
 	zstd? ( app-arch/zstd[static-libs(+)] )
@@ -66,8 +60,6 @@ src_compile() {
 }
 
 src_install() {
-	cd "${WORKDIR}"/${P}/${PN} || die
-	dobin mksquashfs unsquashfs
-	cd .. || die
+	dobin "${WORKDIR}"/${P}/${PN}/{mksquashfs,unsquashfs}
 	dodoc CHANGES README RELEASE-README RELEASE-READMEs/*
 }

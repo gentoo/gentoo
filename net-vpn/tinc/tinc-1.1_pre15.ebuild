@@ -49,13 +49,19 @@ if [[ -n ${UPSTREAM_VER} ]]; then
 fi
 
 PATCHES+=(
-	"${FILESDIR}"/${PN}-1.1-fix-paths.patch #560528
+	"${FILESDIR}"/${PF}-fix-paths.patch #560528
 	"${FILESDIR}"/${PN}-1.1-tinfo.patch #621868
 )
 
 src_prepare() {
 	default
 	eautoreconf
+
+	# Fix the static (failing UNKNOWN) version in the autoconf
+	# NOTE: When updating the ebuild, make sure to check that this
+	# line number hasn't changed in the upstream sources.
+	sed -i "4d" configure.ac
+	sed -i "4iAC_INIT([tinc], ${PVR})" configure.ac
 }
 
 src_configure() {

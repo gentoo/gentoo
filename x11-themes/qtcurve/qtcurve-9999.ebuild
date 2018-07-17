@@ -3,6 +3,7 @@
 
 EAPI=6
 
+ECM_KDEINSTALLDIRS="false"
 KDE_AUTODEPS="false"
 inherit kde5
 
@@ -74,11 +75,9 @@ src_configure() {
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-DENABLE_QT4=OFF
 		-DQTC_QT4_ENABLE_KDE=OFF
-		-DQTC_QT4_ENABLE_KWIN=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
 		-DENABLE_GTK2="$(usex gtk)"
 		-DENABLE_QT5="$(usex qt5)"
-		-DENABLE_TEST="$(usex test)"
 		-DQTC_ENABLE_X11="$(usex X)"
 		-DQTC_INSTALL_PO="$(usex nls)"
 		-DQTC_QT5_ENABLE_KDE="$(usex plasma)"

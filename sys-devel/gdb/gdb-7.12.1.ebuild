@@ -92,6 +92,7 @@ pkg_setup() {
 src_prepare() {
 	[[ -n ${RPM} ]] && rpm_spec_epatch "${WORKDIR}"/gdb.spec
 	! use vanilla && [[ -n ${PATCH_VER} ]] && EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
+	epatch "${FILESDIR}"/${P}-ia64-include.patch #655270
 	epatch_user
 	strip-linguas -u bfd/po opcodes/po
 }

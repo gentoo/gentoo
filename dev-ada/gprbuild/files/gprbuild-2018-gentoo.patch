@@ -1,5 +1,5 @@
---- gprbuild-2017/gpr/gpr.gpr.old	2017-05-27 20:59:07.061135892 +0200
-+++ gprbuild-2017/gpr/gpr.gpr	2017-05-27 20:59:38.022638398 +0200
+--- a/gpr/gpr.gpr	2017-05-27 20:59:07.061135892 +0200
++++ b/gpr/gpr.gpr	2017-05-27 20:59:38.022638398 +0200
 @@ -67,6 +67,7 @@
              for Switches ("gpr*.ad?") use
                Compiler'Default_Switches ("Ada") & ("-g1");
@@ -8,8 +8,8 @@
     end Compiler;
  
  end GPR;
---- gprbuild-gpl-2017-src/gpr/src/gpr-names.ads.old	2017-11-19 13:09:18.947527738 +0100
-+++ gprbuild-gpl-2017-src/gpr/src/gpr-names.ads	2017-11-19 13:10:08.125654595 +0100
+--- a/gpr/src/gpr-names.ads	2017-11-19 13:09:18.947527738 +0100
++++ b/gpr/src/gpr-names.ads	2017-11-19 13:10:08.125654595 +0100
 @@ -27,6 +27,8 @@
     Name_Buffer : String (1 .. 1_000_000);
     Name_Len    : Natural := 0;
@@ -19,8 +19,8 @@
     procedure Get_Name_String (Id : Name_Id);
     procedure Get_Name_String (Id : Unit_Name_Type);
     procedure Get_Name_String (Id : File_Name_Type);
---- gprbuild-gpl-2017-src/gpr/src/gpr-names.adb.old	2017-11-19 13:10:27.674316703 +0100
-+++ gprbuild-gpl-2017-src/gpr/src/gpr-names.adb	2017-11-19 13:14:38.360963627 +0100
+--- a/gpr/src/gpr-names.adb	2017-11-19 13:10:27.674316703 +0100
++++ b/gpr/src/gpr-names.adb	2017-11-19 13:14:38.360963627 +0100
 @@ -354,6 +354,8 @@
  
        Name_Chars.Append (ASCII.NUL);
@@ -39,8 +39,8 @@
        return Name_Entries.Last;
     end Name_Find;
  
---- gprbuild-gpl-2017-src/gpr/src/gpr-snames.adb.old	2017-11-19 13:12:41.592995718 +0100
-+++ gprbuild-gpl-2017-src/gpr/src/gpr-snames.adb	2017-11-19 13:16:31.980979696 +0100
+--- a/gpr/src/gpr-snames.adb	2017-11-19 13:12:41.592995718 +0100
++++ b/gpr/src/gpr-snames.adb	2017-11-19 13:16:31.980979696 +0100
 @@ -53,6 +53,10 @@
           return;
        end if;
@@ -52,18 +52,20 @@
        Add_Name ("a");
        Add_Name ("b");
        Add_Name ("c");
---- gprbuild-gpl-2017/src/gprlib.adb.old	2017-12-18 12:20:02.937317216 +0100
-+++ gprbuild-gpl-2017/src/gprlib.adb	2017-12-18 12:21:36.519604590 +0100
-@@ -263,7 +263,7 @@
+--- a/src/gprlib.adb	2017-12-18 12:20:02.937317216 +0100
++++ b/src/gprlib.adb	2017-12-18 12:21:36.519604590 +0100
+@@ -263,7 +263,9 @@
  
     Driver_Name                   : Name_Id := No_Name;
  
 -   Gnatbind_Name                 : String_Access := new String'("gnatbind");
 +   Gnatbind_Name                 : String_Access := new String'("@GNATBIND@");
++
++   Gnatbind_Path_Option          : constant String := "--gnatbind_path=";
  
     Compiler_Name                 : String_Access := new String'("gcc");
  
-@@ -2237,13 +2237,13 @@
+@@ -1944,13 +1946,13 @@
                            and then Line (Last - 2 .. Last) = "gcc"
                          then
                             Gnatbind_Name :=
@@ -79,3 +81,18 @@
                          end if;
                       end if;
  
+@@ -2100,7 +2102,13 @@
+                Mapping_File_Name := new String'(Line (1 .. Last));
+ 
+             when Binding_Options =>
+-               Binding_Options_Table.Append (Line (1 .. Last));
++               if Last > Gnatbind_Path_Option'Length
++                  and then Line (1 .. Gnatbind_Path_Option'Length) =
++                     Gnatbind_Path_Option then
++                     null;
++               else
++                  Binding_Options_Table.Append (Line (1 .. Last));
++               end if;
+ 
+             when Copy_Source_Dir =>
+                Copy_Source_Directory := new String'(Line (1 .. Last));

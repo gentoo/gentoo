@@ -18,30 +18,28 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gmp iconv python readline +shared
 	static-libs static-pic syslog"
-# gtk iconv postgres pygobject projects sqlite tools
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
-	dev-ada/gnatcoll-core[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-ada/libgpr[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-ada/xmlada[gnat_2018,shared?,static-libs?,static-pic?]
-	dev-lang/gnat-gpl:7.3.0
+	dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=]
+	dev-ada/gnatcoll-core[shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )"
-
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2018]"
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	!gnat_2016 !gnat_2017 gnat_2018"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) !gnat_2016"
 
 S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	GCC_PV=7.3.0
-	GCC=${CHOST}-gcc-${GCC_PV}
+	if use gnat_2017; then
+		GCC_VER=6.3.0
+	else
+		GCC_VER=7.3.1
+	fi
 	build () {
-		GCC=${CHOST}-gcc-${GCC_PV} gprbuild -j$(makeopts_jobs) -m -p -v \
+		GCC=${CHOST}-gcc-${GCC_VER} gprbuild -j$(makeopts_jobs) -m -p -v \
 			-XLIBRARY_TYPE=$2 -P $1/gnatcoll_$1.gpr -XBUILD="PROD" \
 			-XGNATCOLL_ICONV_OPT= -XGNATCOLL_PYTHON_CFLAGS="-I$(python_get_includedir)" \
 			-XGNATCOLL_PYTHON_LIBS=$(python_get_library_path) \
@@ -62,9 +60,8 @@ src_compile() {
 
 src_install() {
 	build () {
-		gprinstall -p -f -XBUILD=PROD --prefix="${D}"/usr \
-			-XLIBRARY_TYPE=$2 -P $1/gnatcoll_$1.gpr \
-			--build-name=$2
+		gprinstall -p -f -XBUILD=PROD --prefix="${D}"/usr -XLIBRARY_TYPE=$2 \
+			-XGNATCOLL_ICONV_OPT= -P $1/gnatcoll_$1.gpr --build-name=$2
 	}
 	for kind in shared static-libs static-pic ; do
 		if use $kind; then
@@ -77,5 +74,12 @@ src_install() {
 			done
 		fi
 	done
+	if use iconv; then
+		sed -i \
+			-e "s:GNATCOLL_ICONV_BUILD:LIBRARY_TYPE:" \
+			"${D}"/usr/share/gpr/gnatcoll_iconv.gpr \
+			|| die
+	fi
+	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
 }

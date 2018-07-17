@@ -62,6 +62,7 @@ dev-lang/python-exec python_targets_python2_7
 dev-lang/python-exec python_targets_python3_4
 dev-lang/python-exec python_targets_python3_5
 dev-lang/python-exec python_targets_python3_6
+dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_jython2_7
 dev-lang/python-exec python_targets_pypy
 dev-lang/python-exec python_targets_pypy3

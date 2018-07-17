@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib-minimal
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="a text-based calendar and scheduling application"
 HOMEPAGE="https://calcurse.org/"
@@ -11,13 +11,24 @@ SRC_URI="https://calcurse.org/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
+KEYWORDS="amd64 x86 ppc ppc64"
 
-RDEPEND="sys-libs/ncurses:0="
-DEPEND="${RDEPEND}"
+RDEPEND="
+	sys-libs/ncurses:0="
+
+DEPEND="
+	${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.2.1-tinfo.patch
+)
 
 # Most tests fail.
 RESTRICT="test"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf

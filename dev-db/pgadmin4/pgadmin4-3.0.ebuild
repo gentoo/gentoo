@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-single-r1 qmake-utils
@@ -13,7 +13,7 @@ HOMEPAGE="https://www.pgadmin.org/"
 SRC_URI="mirror://postgresql/pgadmin/${PN}/v${PV}/source/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="doc"
 

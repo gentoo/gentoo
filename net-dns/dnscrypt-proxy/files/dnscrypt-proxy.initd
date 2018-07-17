@@ -9,11 +9,11 @@ pidfile="/run/${RC_SVCNAME}.pid"
 start_stop_daemon_args="--background --make-pidfile"
 
 depend() {
-	use net logger
+	use logger net
 	provide dns
 }
 
 start_pre() {
-        checkpath -q -d -m 0775 -o "${command_user}" /var/cache/"${RC_SVCNAME}"
-        checkpath -q -d -m 0775 -o "${command_user}" /var/log/"${RC_SVCNAME}"
+	checkpath -q -d -m 0775 -o "${command_user}" /var/cache/"${RC_SVCNAME}"
+	checkpath -q -d -m 0775 -o "${command_user}" /var/log/"${RC_SVCNAME}"
 }

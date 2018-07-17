@@ -1,0 +1,27 @@
+From af16d8a344b9bafc9131508fecfcdbfdc53cf100 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Mon, 25 Jun 2018 15:14:31 +0200
+Subject: [PATCH] Use pkg-config to find freetype.
+
+As of freetype-2.9.1 the freetype-config file no longer gets installed
+by default.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6b9def916..c97e959f7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -307,7 +307,7 @@ echo ""
+ if test "$enable_clanDisplay" != "no"; then
+ 	echo "Checking for clanDisplay stuff"
+ 	echo "=============================="
+-	CLANLIB_CHECK_LIB(ttf, [`cat $srcdir/Setup/Unix/Tests/ttf.cpp`], clanDisplay, [ *** Cannot find ttf (freetype) (See http://freetype.sourceforge.net )  (Try libfreetype6-dev or better) ], [`freetype-config --libs` ], [ `freetype-config --cflags`])
++	CLANLIB_CHECK_LIB(ttf, [`cat $srcdir/Setup/Unix/Tests/ttf.cpp`], clanDisplay, [ *** Cannot find ttf (freetype) (See http://freetype.sourceforge.net )  (Try libfreetype6-dev or better) ], [`pkg-config --libs freetype2` ], [ `pkg-config --cflags freetype2`])
+ 
+ 	dnl  Optional linux/joystick.h
+ 	AC_CHECK_HEADERS(linux/joystick.h, has_linux_joystick=yes)
+-- 
+2.18.0
+

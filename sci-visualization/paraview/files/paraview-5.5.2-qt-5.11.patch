@@ -1,0 +1,142 @@
+From 931c779dde8460fe32aa8a3d19956b175b96e4f9 Mon Sep 17 00:00:00 2001
+From: Robert O'Bara <bob.obara@kitware.com>
+Date: Thu, 24 May 2018 09:49:28 -0400
+Subject: [PATCH] ENH: Changes needed to support Qt 5.11
+
+Basically needed to add missing header files.
+---
+ Plugins/SLACTools/pqSLACDataLoadManager.cxx                     | 1 +
+ Qt/ApplicationComponents/pqColorMapEditor.cxx                   | 1 +
+ Qt/ApplicationComponents/pqDoubleRangeSliderPropertyWidget.cxx  | 1 +
+ .../pqStandardViewFrameActionsImplementation.cxx                | 1 +
+ Qt/ApplicationComponents/pqTimeInspectorWidget.cxx              | 1 +
+ .../pqTransferFunctionWidgetPropertyDialog.cxx                  | 2 ++
+ Qt/ApplicationComponents/pqViewResolutionPropertyWidget.cxx     | 1 +
+ Qt/Components/pqChangeInputDialog.cxx                           | 1 +
+ Qt/Components/pqCinemaTrackSelection.cxx                        | 1 +
+ Qt/Python/pqPythonShell.cxx                                     | 1 +
+ 10 files changed, 11 insertions(+)
+
+diff --git a/Plugins/SLACTools/pqSLACDataLoadManager.cxx b/Plugins/SLACTools/pqSLACDataLoadManager.cxx
+index 3ba019c26b..ce38396f68 100644
+--- a/Plugins/SLACTools/pqSLACDataLoadManager.cxx
++++ b/Plugins/SLACTools/pqSLACDataLoadManager.cxx
+@@ -34,6 +34,7 @@
+ #include "vtkSMProperty.h"
+ #include "vtkSMSourceProxy.h"
+ 
++#include <QAction>
+ #include <QPushButton>
+ #include <QtDebug>
+ 
+diff --git a/Qt/ApplicationComponents/pqColorMapEditor.cxx b/Qt/ApplicationComponents/pqColorMapEditor.cxx
+index 0395185e0a..88b56745eb 100644
+--- a/Qt/ApplicationComponents/pqColorMapEditor.cxx
++++ b/Qt/ApplicationComponents/pqColorMapEditor.cxx
+@@ -59,6 +59,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include <QDebug>
+ #include <QKeyEvent>
+ #include <QPointer>
++#include <QStyle>
+ #include <QVBoxLayout>
+ 
+ class pqColorMapEditor::pqInternals
+diff --git a/Qt/ApplicationComponents/pqDoubleRangeSliderPropertyWidget.cxx b/Qt/ApplicationComponents/pqDoubleRangeSliderPropertyWidget.cxx
+index 908e4598e0..820361a2b3 100644
+--- a/Qt/ApplicationComponents/pqDoubleRangeSliderPropertyWidget.cxx
++++ b/Qt/ApplicationComponents/pqDoubleRangeSliderPropertyWidget.cxx
+@@ -43,6 +43,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include "vtkSMUncheckedPropertyHelper.h"
+ 
+ #include <QGridLayout>
++#include <QStyle>
+ 
+ class pqDoubleRangeSliderPropertyWidget::pqInternals
+ {
+diff --git a/Qt/ApplicationComponents/pqStandardViewFrameActionsImplementation.cxx b/Qt/ApplicationComponents/pqStandardViewFrameActionsImplementation.cxx
+index c297dc3d9e..501633f63a 100644
+--- a/Qt/ApplicationComponents/pqStandardViewFrameActionsImplementation.cxx
++++ b/Qt/ApplicationComponents/pqStandardViewFrameActionsImplementation.cxx
+@@ -69,6 +69,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include <QPushButton>
+ #include <QSet>
+ #include <QShortcut>
++#include <QStyle>
+ 
+ //-----------------------------------------------------------------------------
+ pqStandardViewFrameActionsImplementation::pqStandardViewFrameActionsImplementation(
+diff --git a/Qt/ApplicationComponents/pqTimeInspectorWidget.cxx b/Qt/ApplicationComponents/pqTimeInspectorWidget.cxx
+index 6774c2e48e..e85e614f04 100644
+--- a/Qt/ApplicationComponents/pqTimeInspectorWidget.cxx
++++ b/Qt/ApplicationComponents/pqTimeInspectorWidget.cxx
+@@ -49,6 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include "vtkSMPropertyHelper.h"
+ #include "vtkSMSourceProxy.h"
+ 
++#include <QHeaderView>
+ #include <QLineF>
+ #include <QPainter>
+ #include <QVariant>
+diff --git a/Qt/ApplicationComponents/pqTransferFunctionWidgetPropertyDialog.cxx b/Qt/ApplicationComponents/pqTransferFunctionWidgetPropertyDialog.cxx
+index 55d3146447..93cd995d92 100644
+--- a/Qt/ApplicationComponents/pqTransferFunctionWidgetPropertyDialog.cxx
++++ b/Qt/ApplicationComponents/pqTransferFunctionWidgetPropertyDialog.cxx
+@@ -36,6 +36,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include "vtkPiecewiseFunction.h"
+ #include <QString>
+ 
++#include <QDoubleValidator>
++
+ class pqTransferFunctionWidgetPropertyDialog::pqInternals
+ {
+ public:
+diff --git a/Qt/ApplicationComponents/pqViewResolutionPropertyWidget.cxx b/Qt/ApplicationComponents/pqViewResolutionPropertyWidget.cxx
+index 6d2865431e..8d2c4b61cd 100644
+--- a/Qt/ApplicationComponents/pqViewResolutionPropertyWidget.cxx
++++ b/Qt/ApplicationComponents/pqViewResolutionPropertyWidget.cxx
+@@ -39,6 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include "vtkSMProxy.h"
+ 
+ #include <QIntValidator>
++#include <QStyle>
+ 
+ class pqViewResolutionPropertyWidget::pqInternals
+ {
+diff --git a/Qt/Components/pqChangeInputDialog.cxx b/Qt/Components/pqChangeInputDialog.cxx
+index 8a67b10095..86db3de01c 100644
+--- a/Qt/Components/pqChangeInputDialog.cxx
++++ b/Qt/Components/pqChangeInputDialog.cxx
+@@ -45,6 +45,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include "vtkSMProxy.h"
+ #include "vtkSmartPointer.h"
+ 
++#include <QHeaderView>
+ #include <QItemSelectionModel>
+ #include <QLineEdit>
+ #include <QRadioButton>
+diff --git a/Qt/Components/pqCinemaTrackSelection.cxx b/Qt/Components/pqCinemaTrackSelection.cxx
+index 3d6d9dde19..eea2e37680 100644
+--- a/Qt/Components/pqCinemaTrackSelection.cxx
++++ b/Qt/Components/pqCinemaTrackSelection.cxx
+@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ ========================================================================*/
+ #include <QDebug>
++#include <QHeaderView>
+ 
+ #include "vtkPVArrayInformation.h"
+ #include "vtkPVDataInformation.h"
+diff --git a/Qt/Python/pqPythonShell.cxx b/Qt/Python/pqPythonShell.cxx
+index 3d01fd0a96..bc1a014936 100644
+--- a/Qt/Python/pqPythonShell.cxx
++++ b/Qt/Python/pqPythonShell.cxx
+@@ -52,6 +52,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include "vtkStringOutputWindow.h"
+ #include "vtkWeakPointer.h"
+ 
++#include <QAbstractItemView>
+ #include <QApplication>
+ #include <QCursor>
+ #include <QFile>
+-- 
+2.17.1

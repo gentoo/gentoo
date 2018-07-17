@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.10-ncurses-check.patch
 	"${FILESDIR}"/${PN}-0.6.10-libc-basename.patch
 	"${FILESDIR}"/${PN}-0.6.10-clearfilenameprefix.patch
+	"${FILESDIR}"/${PN}-0.6.10-gcc-7-inline.patch
 )
 
 src_prepare() {

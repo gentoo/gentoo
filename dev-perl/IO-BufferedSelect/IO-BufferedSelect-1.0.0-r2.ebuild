@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl module that implements a line-buffered select interface"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${PN}"

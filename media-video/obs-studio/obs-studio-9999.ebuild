@@ -3,16 +3,17 @@
 
 EAPI=6
 
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 CMAKE_MIN_VERSION=3.9.6
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils gnome2-utils python-any-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jp9000/obs-studio.git"
+	EGIT_REPO_URI="https://github.com/obsproject/obs-studio.git"
 	EGIT_SUBMODULES=()
 else
-	SRC_URI="https://github.com/jp9000/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -21,7 +22,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack pulseaudio truetype v4l"
+IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speexdsp truetype v4l"
 
 COMMON_DEPEND="
 	>=dev-libs/jansson-2.5
@@ -44,15 +45,24 @@ COMMON_DEPEND="
 	fdk? ( media-libs/fdk-aac:= )
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
+	luajit? ( dev-lang/luajit:2 )
+	nvenc? ( media-video/ffmpeg:=[nvenc(+),video_cards_nvidia(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
+	python? ( ${PYTHON_DEPS} )
+	speexdsp? ( media-libs/speexdsp )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
 	)
 	v4l? ( media-libs/libv4l )
 "
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	luajit? ( dev-lang/swig )
+	python? ( dev-lang/swig )
+"
 RDEPEND="${COMMON_DEPEND}"
+
+PATCHES="${FILESDIR}/${PN}-21.1.2-use-less-automagic.patch"
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
@@ -64,11 +74,23 @@ src_configure() {
 		-DDISABLE_JACK=$(usex !jack)
 		-DDISABLE_LIBFDK=$(usex !fdk)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
+		-DDISABLE_SPEEXDSP=$(usex !speexdsp)
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
 		-DUNIX_STRUCTURE=1
 	)
+
+	if use luajit || use python; then
+		mycmakeargs+=(
+			-DDISABLE_LUA=$(usex !luajit)
+			-DDISABLE_PYTHON=$(usex !python)
+			-DENABLE_SCRIPTING=yes
+		)
+	else
+		mycmakeargs+=( -DENABLE_SCRIPTING=no )
+	fi
+
 	cmake-utils_src_configure
 }
 
@@ -90,14 +112,6 @@ pkg_postinst() {
 		elog "and sleeping.  Where it is not installed,"
 		elog "'xdg-screensaver reset' is used instead"
 		elog "(if 'x11-misc/xdg-utils' is installed)."
-		elog
-	fi
-
-	if ! has_version "media-libs/speexdsp"; then
-		elog
-		elog "For the speexdsp-based noise suppression filter"
-		elog "to be available, the 'media-libs/speexdsp' package needs"
-		elog "to be installed."
 		elog
 	fi
 }

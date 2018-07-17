@@ -1,6 +1,16 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (07 Jul 2018)
+# Unkeyworded dependencies.
+dev-python/matplotlib doc
+net-libs/gnome-online-accounts gnome
+x11-libs/gksu gnome
+
+# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
+# dev-libs/xxhash not keyworded for arm64
+app-admin/rsyslog xxhash
+
 # Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
 # Needs dev-libs/libmaxminddb which isn't keyworded
 www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
@@ -31,7 +41,7 @@ sys-devel/distcc gnome
 # net-libs/libmicrodns not yet keyworded, bug #653800
 # projectm not yet keyworded, bug #314969
 # net-misc/freerdp not yet keyworded
-media-video/vlc aom chromaprint microdns opencv projectm rdp srt
+media-video/vlc aom chromaprint opencv projectm rdp srt
 >=media-video/vlc-3.0.3 chromecast
 
 # Mart Raudsepp <leio@gentoo.org> (13 May 2018)
@@ -245,13 +255,6 @@ app-crypt/libsecret test
 # restricted anyway, so no point in pursuing it right now.
 app-shells/bash-completion test
 
-# Alexis Ballier <aballier@gentoo.org> (27 Jun 2017)
-# qtwebkit:4 is old and doesnt build with gcc7, skip it
-dev-python/PyQt4 webkit
-dev-qt/designer:4 webkit
-dev-qt/qtdeclarative:4 webkit
-dev-python/pyside webkit
-
 # Alexis Ballier <aballier@gentoo.org> (21 Jun 2017)
 # Appends -mfpu=neon that doesnt work on arm64
 media-libs/speexdsp cpu_flags_arm_neon
@@ -401,10 +404,6 @@ dev-libs/weston rdp
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
 
-# Markus Meier <maekke@gentoo.org> (10 May 2013)
-# unkeyworded deps for dev-python/ipython
-dev-python/ipython mongodb
-
 # Christoph Junghans <junghans@gentoo.org> (29 Apr 2013)
 # MKL not available on this arch
 media-gfx/povray mkl
@@ -476,10 +475,6 @@ media-libs/phonon vlc
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
 
-# Michael Sterrett <mr_bones_@gentoo.org> (04 Mar 2012)
-# arm is missing keywords for >=dev-libs/json-glib-0.12
-app-admin/syslog-ng json
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
 # jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
 # it's masked in base profile and unmasked here (bug #396313).
@@ -511,11 +506,11 @@ sys-auth/polkit kde
 app-text/asciidoc test
 
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-frameworks/kdelibs is not stable for arm
+# kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
 dev-vcs/subversion kwallet
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)

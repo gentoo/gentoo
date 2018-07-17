@@ -1,35 +1,31 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI="6"
 
-IUSE=""
+inherit autotools
 
-MY_P="${P/g/G}"
+MY_P="${P^g}"
 
 DESCRIPTION="Kakasi binding for Gauche"
-HOMEPAGE="http://gauche.sf.net/"
-SRC_URI="mirror://sourceforge/gauche/${MY_P}.tgz"
+HOMEPAGE="http://sourceforge.jp/projects/gauche/"
+SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
 SLOT="0"
+KEYWORDS="~amd64 ~ia64 x86"
+IUSE=""
+
+RDEPEND="dev-scheme/gauche
+	>=app-i18n/kakasi-2.3.4"
+DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
-DEPEND=">=dev-scheme/gauche-0.8
-	>=app-i18n/kakasi-2.3.4"
+PATCHES=( "${FILESDIR}"/${PN}-gauche-package.patch )
 
-src_compile() {
+src_prepare() {
+	default
 
-	econf || die
-	emake || die
-
-}
-
-src_install() {
-
-	make DESTDIR=${D} install || die
-
-	dodoc AUTHORS ChangeLog README*
-
+	mv configure.{in,ac}
+	eautoreconf
 }

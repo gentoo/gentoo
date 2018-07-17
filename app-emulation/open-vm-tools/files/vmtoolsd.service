@@ -1,6 +1,6 @@
 [Unit]
 Description=Service for virtual machines hosted on VMware
-Documentation=http://open-vm-tools.sourceforge.net/about.php
+Documentation=https://github.com/vmware/open-vm-tools
 ConditionVirtualization=vmware
 
 [Service]

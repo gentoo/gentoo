@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 #RESTRICT="test"
 
@@ -33,7 +33,6 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		>=www-servers/tornado-4.2.1[$(python_gen_usedep 'python*')]
-		<www-servers/tornado-5.0.0[$(python_gen_usedep 'python*')]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 	doc? (
@@ -45,6 +44,11 @@ DEPEND="
 # Testsuite written requiring mock to be installed under all Cpythons
 
 python_prepare_all() {
+	local PATCHES=(
+		# support tornado-5
+		"${FILESDIR}"/urllib3-1.23-tornado5.patch
+	)
+
 	# skip appengine tests
 	rm -r test/appengine || die
 

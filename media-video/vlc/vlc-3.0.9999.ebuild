@@ -33,7 +33,7 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 	debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth fontconfig
 	+gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav libcaca
 	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
-	macosx-qtkit matroska microdns modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
+	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
 	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp
 	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl svg
 	taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
@@ -89,7 +89,7 @@ RDEPEND="
 	fdk? ( media-libs/fdk-aac:0= )
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?] )
-		libav? ( >=media-video/libav-11.8:0=[vaapi?,vdpau?] )
+		libav? ( >=media-video/libav-12.2:0=[vaapi?,vdpau?] )
 	)
 	flac? (
 		media-libs/flac:0
