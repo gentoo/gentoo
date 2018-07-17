@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
   <slots>
     <subslots>Reflect ABI of libonigmo.so.</subslots>
   </slots>

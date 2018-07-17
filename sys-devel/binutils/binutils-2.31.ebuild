@@ -100,6 +100,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	# this file is missing in the 2.31 tarball, affects gold testsuite
+	cp "${FILESDIR}/${P}-test-driver" "${S}/test-driver" || die
+	chmod +x "${S}/test-driver" || die
+
 	if [[ ! -z ${PATCH_VER} ]] ; then
 		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
 		eapply "${WORKDIR}/patch"/*.patch

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 WEBAPP_NO_AUTO_INSTALL="yes"
 
-inherit bash-completion-r1 distutils-r1 eutils versionator webapp
+inherit bash-completion-r1 distutils-r1 eutils eapi7-ver webapp
 
 MY_PN="Django"
 MY_P="${MY_PN}-${PV}"
@@ -15,7 +15,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="High-level Python web framework"
 HOMEPAGE="https://www.djangoproject.com/ https://pypi.org/project/Django/"
 SRC_URI="
-	https://www.djangoproject.com/m/releases/$(get_version_component_range 1-2)/${MY_P}.tar.gz
+	https://www.djangoproject.com/m/releases/$(ver_cut 1-2)/${MY_P}.tar.gz
 	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz
 	"
 
@@ -39,6 +39,8 @@ DEPEND="${RDEPEND}
 		dev-python/numpy[$(python_gen_usedep 'python*')]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		virtual/python-enum34[${PYTHON_USEDEP}]
 		)"
 
 S="${WORKDIR}/${MY_P}"

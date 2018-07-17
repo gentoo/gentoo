@@ -1,23 +1,26 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -174,6 +174,16 @@
+@@ -174,6 +174,19 @@
      SET(WSLAY_LIBRARIES -lwslay)
  ENDIF (NOT WSLAY_FOUND)
  
 +IF (PKG_CONFIG_FOUND)
-+    PKG_CHECK_MODULES(ONIG oniguruma)
++    PKG_CHECK_MODULES(ONIG onigmo)
++    IF (NOT ONIG_FOUND)
++	PKG_CHECK_MODULES(ONIG oniguruma)
++    ENDIF (NOT ONIG_FOUND)
 +    IF (ONIG_FOUND)
 +        LINK_DIRECTORIES(${ONIG_LIBRARY_DIRS})
 +    ENDIF (ONIG_FOUND)
 +ENDIF (PKG_CONFIG_FOUND)
-+IF (NOT ONIG_FOUND AND WITH_RUBY)
-+    MESSAGE(FATAL_ERROR "Oniguruma not found")
-+ENDIF (NOT ONIG_FOUND AND WITH_RUBY)
++IF (NOT ONIG_FOUND AND WITH_MRUBY)
++    MESSAGE(FATAL_ERROR "Onigmo/Oniguruma not found")
++ENDIF (NOT ONIG_FOUND AND WITH_MRUBY)
 +
  IF (ZLIB_FOUND)
      INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIRS})
      LINK_DIRECTORIES(${ZLIB_LIBRARY_DIRS})
-@@ -533,7 +543,7 @@
+@@ -533,7 +546,7 @@
      ELSE ()
          SET(MRUBY_TOOLCHAIN "gcc")
      ENDIF ()
@@ -26,7 +29,7 @@
          WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/deps/mruby)
      LIST(APPEND STANDALONE_SOURCE_FILES
          lib/handler/mruby.c
-@@ -560,7 +570,7 @@
+@@ -560,7 +573,7 @@
      # note: the paths need to be determined before libmruby.flags.mak is generated
      TARGET_LINK_LIBRARIES(h2o
          "${CMAKE_CURRENT_BINARY_DIR}/mruby/host/lib/libmruby.a"
@@ -37,23 +40,17 @@
  ENDIF (WITH_MRUBY)
 --- a/deps/mruby-onig-regexp/mrbgem.rake
 +++ b/deps/mruby-onig-regexp/mrbgem.rake
-@@ -101,15 +101,9 @@
-     file "#{dir}/src/mruby_onig_regexp.c" => [:mruby_onig_regexp_with_compile_option, oniguruma_lib]
-   end
+@@ -103,10 +103,8 @@
  
--  if spec.respond_to? :search_package and spec.search_package 'onigmo'
--    spec.cc.defines += ['HAVE_ONIGMO_H']
+   if spec.respond_to? :search_package and spec.search_package 'onigmo'
+     spec.cc.defines += ['HAVE_ONIGMO_H']
 -    spec.linker.libraries << 'onig'
--  elsif spec.respond_to? :search_package and spec.search_package 'oniguruma'
-+  if spec.respond_to? :search_package and spec.search_package 'oniguruma'
+   elsif spec.respond_to? :search_package and spec.search_package 'oniguruma'
      spec.cc.defines += ['HAVE_ONIGURUMA_H']
-     spec.linker.libraries << 'onig'
--  elsif build.cc.respond_to? :search_header_path and build.cc.search_header_path 'onigmo.h'
--    spec.cc.defines += ['HAVE_ONIGMO_H']
--    spec.linker.libraries << 'onigmo'
-   elsif build.cc.respond_to? :search_header_path and build.cc.search_header_path 'oniguruma.h'
-     spec.cc.defines += ['HAVE_ONIGURUMA_H']
-     spec.linker.libraries << 'onig'
+-    spec.linker.libraries << 'onig'
+   elsif build.cc.respond_to? :search_header_path and build.cc.search_header_path 'onigmo.h'
+     spec.cc.defines += ['HAVE_ONIGMO_H']
+     spec.linker.libraries << 'onigmo'
 --- a/misc/mruby_config.rb
 +++ b/misc/mruby_config.rb
 @@ -15,13 +15,7 @@
