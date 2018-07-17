@@ -1,0 +1,40 @@
+From 6c392e903e162b9283e88f53006e929663f2e883 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Mon, 11 Jun 2018 10:44:00 +0200
+Subject: [PATCH] fix build with Qt 5.11
+
+The new Qt removed some implicit inclusions of headers. To avoid build
+errors, add explicit includes of those we use in the sources.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ librecad/src/ui/forms/qg_commandwidget.cpp | 1 +
+ librecad/src/ui/generic/colorwizard.cpp    | 1 +
+ librecad/src/ui/generic/widgetcreator.cpp  | 2 ++
+ 3 files changed, 4 insertions(+)
+
+diff --git a/librecad/src/ui/forms/qg_commandwidget.cpp b/librecad/src/ui/forms/qg_commandwidget.cpp
+index 835e47d67..2c878e833 100644
+--- a/librecad/src/ui/forms/qg_commandwidget.cpp
++++ b/librecad/src/ui/forms/qg_commandwidget.cpp
+@@ -27,6 +27,7 @@
+ **
+ **********************************************************************/
+ #include "qg_commandwidget.h"
++#include <QAction>
+ #include <QKeyEvent>
+ #include <algorithm>
+
+diff --git a/librecad/src/ui/generic/widgetcreator.cpp b/librecad/src/ui/generic/widgetcreator.cpp
+index 7c35144ff..d51190842 100644
+--- a/librecad/src/ui/generic/widgetcreator.cpp
++++ b/librecad/src/ui/generic/widgetcreator.cpp
+@@ -27,6 +27,8 @@
+ #include "widgetcreator.h"
+ #include "ui_widgetcreator.h"
+ 
++#include <QAction>
++#include <QActionGroup>
+ #include <QSettings>
+ #include <QLineEdit>
+ #include <QPushButton>

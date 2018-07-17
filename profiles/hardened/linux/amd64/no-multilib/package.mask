@@ -14,7 +14,6 @@ games-action/swordandsworcery
 games-action/beathazardultra
 games-action/solar2
 games-arcade/dynamitejack
-games-kids/crayon-physics
 games-misc/katawa-shoujo
 games-misc/papers-please
 games-rpg/dungeon-defenders
@@ -141,5 +140,4 @@ sci-chemistry/mars
 sci-chemistry/xdsstat-bin
 sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
 <sys-boot/grub-1.99

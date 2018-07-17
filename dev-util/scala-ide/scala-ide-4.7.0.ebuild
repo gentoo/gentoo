@@ -16,11 +16,10 @@ SRC_URI_X86="http://downloads.typesafe.com/${S_PACK}/${PV}-vfinal-oxygen-212-201
 
 DESCRIPTION="The Scala IDE"
 HOMEPAGE="http://www.scala-ide.org"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SRC_URI="
 	amd64? ( ${SRC_URI_AMD64} )
-	x86? ( ${SRC_URI_X86} )
-"
+	x86? ( ${SRC_URI_X86} )"
 
 SLOT="0"
 LICENSE="BSD"

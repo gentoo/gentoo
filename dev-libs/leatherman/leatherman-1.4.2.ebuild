@@ -11,7 +11,7 @@ SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 IUSE="debug static-libs test"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 SLOT="0/1.4"
 
 RDEPEND="net-misc/curl"
@@ -31,8 +31,6 @@ src_configure() {
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DCMAKE_BUILD_TYPE=None
 		-DCMAKE_INSTALL_PREFIX=/usr
-		-DCMAKE_INSTALL_SYSCONFDIR=/etc
-		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 	)
 	if ! use static-libs; then
 		mycmakeargs+=(

@@ -1,0 +1,30 @@
+diff -rau openl2tp-1.8.o/Makefile openl2tp-1.8/Makefile
+--- openl2tp-1.8.o/Makefile	2011-06-03 18:21:09.000000000 +0200
++++ openl2tp-1.8/Makefile	2011-06-03 18:54:43.000000000 +0200
+@@ -197,7 +197,7 @@
+ 
+ .PHONY:			$(SUBDIRS:%=subdir-%)
+ 
+-$(SUBDIRS:%=subdir-%):	FORCE
++$(SUBDIRS:%=subdir-%):	FORCE generated-files
+ 			$(MAKE) -C $(@:subdir-%=%) $(MFLAGS) EXTRA_CFLAGS="$(CPPFLAGS)"
+ 
+ ifeq ($(L2TP_FEATURE_LOCAL_CONF_FILE),y)
+@@ -211,7 +211,7 @@
+ %.h %.c: %.y
+ 			$(YACC) -d -o l2tp_config_parse.c $<
+ 
+-l2tp_config_token.o:	l2tp_config_token.c
++l2tp_config_token.o:	l2tp_config_token.c l2tp_config_parse.h
+ 			$(CC) -I. -MMD -w $(CFLAGS.optimize) -c -DYY_NO_UNPUT $<
+ 
+ l2tp_config_parse.o:	l2tp_config_parse.c l2tp_config_parse.h
+@@ -271,7 +271,7 @@
+ l2tpconfig:		$(L2TPCONFIG_SRCS.o)
+ 			$(CC) $(LDFLAGS) -o $@ $^ $(LDFLAGS.l2tpconfig)
+ 
+-%.o:	%.c
++%.o:	%.c generated-files
+ 			$(CC) -c $(CFLAGS) $< -o $@
+ 
+ l2tp_options.h:	FORCE

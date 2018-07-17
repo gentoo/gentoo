@@ -148,7 +148,6 @@ make_wrapper() {
 
 	(
 	echo '#!/bin/sh'
-	[[ -n ${chdir} ]] && printf 'cd "%s"\n' "${EPREFIX}${chdir}"
 	if [[ -n ${libdir} ]] ; then
 		local var
 		if [[ ${CHOST} == *-darwin* ]] ; then
@@ -164,6 +163,7 @@ make_wrapper() {
 			fi
 		EOF
 	fi
+	[[ -n ${chdir} ]] && printf 'cd "%s" &&\n' "${EPREFIX}${chdir}"
 	# We don't want to quote ${bin} so that people can pass complex
 	# things as ${bin} ... "./someprog --args"
 	printf 'exec %s "$@"\n' "${bin/#\//${EPREFIX}/}"

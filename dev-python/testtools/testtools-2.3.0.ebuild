@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 python3_7 pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -37,6 +37,10 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 PDEPEND=">=dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]"
+
+PATCHES=(
+	"${FILESDIR}"/testtools-2.3.0-py37.patch
+)
 
 python_compile_all() {
 	use doc && emake -C doc html

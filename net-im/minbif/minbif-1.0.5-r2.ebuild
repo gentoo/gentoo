@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit cmake-utils eutils user
+EAPI=6
 
-DESCRIPTION="an IRC gateway to IM networks"
+inherit cmake-utils user
+
+DESCRIPTION="IRC gateway to IM networks"
 HOMEPAGE="https://symlink.me/projects/minbif/wiki/"
 SRC_URI="https://symlink.me/attachments/download/148/${P}.tar.gz"
 
@@ -18,10 +19,13 @@ REQUIRED_USE="
 
 DEPEND="
 	>=net-im/pidgin-2.6
-	libcaca? ( media-libs/libcaca media-libs/imlib2 )
-	imlib? ( media-libs/imlib2 )
-	pam? ( sys-libs/pam )
 	gnutls? ( net-libs/gnutls )
+	imlib? ( media-libs/imlib2 )
+	libcaca? (
+		media-libs/imlib2
+		media-libs/libcaca
+	)
+	pam? ( sys-libs/pam )
 "
 RDEPEND="${DEPEND}
 	virtual/logger
@@ -57,10 +61,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DCONF_PREFIX="${EPREFIX}"/etc/minbif
 		-DENABLE_VIDEO=OFF
-		$(cmake-utils_use_enable libcaca CACA)
-		$(cmake-utils_use_enable imlib IMLIB)
-		$(cmake-utils_use_enable pam PAM)
-		$(cmake-utils_use_enable gnutls TLS)
+		-DENABLE_TLS=$(usex gnutls)
+		-DENABLE_IMLIB=$(usex imlib)
+		-DENABLE_CACA=$(usex libcaca)
+		-DENABLE_PAM=$(usex pam)
 	)
 
 	cmake-utils_src_configure
@@ -72,7 +76,6 @@ src_install() {
 	fperms 700 /var/lib/minbif
 	fowners minbif:minbif /var/lib/minbif
 
-	dodoc ChangeLog README
 	doman man/minbif.8
 
 	if use xinetd; then

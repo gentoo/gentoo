@@ -49,7 +49,7 @@ PATCHES=(
 
 src_prepare() {
 	sed -i -e 's#/usr/sbin/logrotate#/usr/bin/logrotate#' "${S}"/examples/logrotate.{cron,service} || die
-	eapply_user
+	default
 }
 
 src_configure() {

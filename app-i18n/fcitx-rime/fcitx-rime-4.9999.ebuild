@@ -8,11 +8,11 @@ inherit cmake-utils gnome2-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-rime"
+	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-rime.git"
 fi
 
-DESCRIPTION="Chinese RIME input method for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-rime"
+DESCRIPTION="Chinese RIME input methods for Fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-rime"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else

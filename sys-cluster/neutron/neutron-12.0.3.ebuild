@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 # still no 34 :( https://bugs.launchpad.net/neutron/+bug/1630439
 
 inherit distutils-r1 linux-info user
@@ -19,7 +19,7 @@ else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/configs.tar.gz -> neutron-configs-${PV}.tar.gz
 	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"

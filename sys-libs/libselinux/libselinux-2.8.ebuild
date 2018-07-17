@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 python3_7 )
 USE_RUBY="ruby23"
 
 # No, I am not calling ruby-ng
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/${MY_P}/${PN}"
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

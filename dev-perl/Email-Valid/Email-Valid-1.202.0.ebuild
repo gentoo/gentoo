@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Check validity of Internet email addresses"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~hppa ~mips ppc ppc64 x86 ~x86-linux"
 IUSE="test"
 
 RDEPEND="

@@ -8,11 +8,11 @@ inherit cmake-utils gnome2-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx-unikey"
+	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx-unikey.git"
 fi
 
 DESCRIPTION="Vietnamese Unikey input methods for Fcitx"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx-unikey"
+HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx-unikey"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI=""
 else

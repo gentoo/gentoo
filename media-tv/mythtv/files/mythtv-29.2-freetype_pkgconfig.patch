@@ -1,0 +1,28 @@
+From 8cbb51a829ca4602da75c359bc598130c19264c4 Mon Sep 17 00:00:00 2001
+From: Peter Bennett <pbennett@mythtv.org>
+Date: Wed, 9 May 2018 19:17:12 -0400
+Subject: [PATCH] configure: new version of freetype2 does not support
+ freetype-config
+
+freetype2 v2.9.1 uses only pkgconfig and removes support for freetype-config
+
+Fixes #13262
+---
+ mythtv/configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mythtv/configure b/mythtv/configure
+index 8b55291685b..a378fc44dde 100755
+--- a/mythtv/configure
++++ b/mythtv/configure
+@@ -7406,8 +7406,8 @@ if enabled darwin_da; then
+ fi
+ 
+ if enabled freetype2; then
+-    echo "FREETYPE_CFLAGS=`freetype-config --cflags`" >> $TMPMAK
+-    echo "FREETYPE_LIBS=`freetype-config --libs`" >> $TMPMAK
++    echo "FREETYPE_CFLAGS=$($pkg_config --cflags $pkg_config_flags freetype2)" >> $TMPMAK
++    echo "FREETYPE_LIBS=$($pkg_config --libs $pkg_config_flags freetype2)" >> $TMPMAK
+ fi
+ 
+ if test $target_os = darwin; then

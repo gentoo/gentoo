@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,14 +16,14 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
 IUSE="libressl"
 
 RDEPEND="
 	!libressl? ( >=dev-libs/openssl-0.9.8:0=[-bindist(-)] )
 	libressl? ( dev-libs/libressl:0= )
-	dev-python/typing[${PYTHON_USEDEP}]
+	virtual/python-typing[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	>=dev-lang/swig-1.3.28:0

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -33,7 +33,7 @@ all_ruby_prepare() {
 	sed -i -e 's/1.1.0/1.1/' \
 		-e "s/spec.version.*$/spec.version = '${PV}'/" ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	sed -i -e '/simplecov/,/^end/ s:^:#:' spec/spec_helper.rb || die
+	sed -i -e '/simplecov/,/^end/ s:^:#: ; 1irequire "date"' spec/spec_helper.rb || die
 
 	# Avoid spec with specific locale requirements
 	sed -i -e '/can clear the locale/,/^    end/ s:^:#:' spec/lib/gettext-setup/gettext_setup_spec.rb || die

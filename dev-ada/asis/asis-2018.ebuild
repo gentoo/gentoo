@@ -16,13 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
-DEPEND="dev-ada/gnat_util[gnat_2018]
-	dev-ada/gnatcoll-core[gnat_2018,shared]
-	dev-ada/gprbuild[gnat_2018]
-	dev-ada/xmlada[gnat_2018]
-	dev-lang/gnat-gpl:7.3.0"
-RDEPEND="${RDEPEND}"
-REQUIRED_USE="!gnat_2016 !gnat_2017 gnat_2018"
+RDEPEND="dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=,shared]"
+DEPEND="${RDEPEND}
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
 S="${WORKDIR}"/${MYP}
 
@@ -42,4 +38,6 @@ src_install() {
 		GPRINSTALL="gprinstall \
 		-XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable"
+	rm -r "${D}"/usr/share/gpr/manifests || die
+	mv "${D}"/usr/bin/gnatpp{,-asis} || die
 }

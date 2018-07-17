@@ -11,7 +11,7 @@ if [[ ${PV} =~ 9999$ ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="A small but very powerful text-based mail client"

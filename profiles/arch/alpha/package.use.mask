@@ -344,13 +344,6 @@ gnome-extra/libgda reports
 >=dev-db/mariadb-5.5 tcmalloc
 >=dev-db/percona-server-5.5 tcmalloc
 
-# Raúl Porcel <armin76@gentoo.org> (25 Jun 2012)
-# dev-qt/qtwebkit doesn't seem to work
-dev-python/PyQt4 webkit
-dev-qt/assistant webkit
-dev-qt/designer webkit
-dev-qt/qtdeclarative webkit
-
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login

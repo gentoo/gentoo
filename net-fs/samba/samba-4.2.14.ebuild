@@ -5,7 +5,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+),xml(+)'
 
-inherit python-single-r1 waf-utils multilib-minimal linux-info systemd eutils
+inherit python-single-r1 waf-utils multilib-minimal linux-info systemd versionator eutils
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"

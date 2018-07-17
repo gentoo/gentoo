@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 
-RDEPEND="dev-lang/gnat-gpl:7.3.0"
+RDEPEND="dev-lang/gnat-gpl:7.3.1"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2018]"
 REQUIRED_USE="!gnat_2016 !gnat_2017 gnat_2018"
@@ -27,7 +27,7 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
 
 src_compile() {
-	GCC_PV=7.3.0
+	GCC_PV=7.3.1
 	GCC=${CHOST}-gcc-${GCC_PV}
 	GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 	emake GNATMAKE="${GNATMAKE} ${ADAFLAGS}" \

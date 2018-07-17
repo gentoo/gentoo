@@ -14,6 +14,7 @@ SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
+IUSE="test"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )

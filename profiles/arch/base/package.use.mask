@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
+# Catalyst only has support for assembling bootloader on some arches
+dev-util/catalyst system-bootloader
+
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (17 Jun 2018)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.

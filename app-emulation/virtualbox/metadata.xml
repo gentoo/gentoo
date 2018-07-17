@@ -5,13 +5,7 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <maintainer type="person">
-    <email>masterzorag@gmail.com</email>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-  </maintainer>
-<use>
+  <use>
   <flag name="headless">Build without any graphic frontend</flag>
   <flag name="lvm">Build VBoxVolInfo that needs devicemapper from <pkg>sys-fs/lvm2</pkg>.</flag>
   <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
@@ -20,3 +14,4 @@
   <flag name="vboxwebsrv">Build and install the VirtualBox webservice</flag>
 </use>
 </pkgmetadata>
+

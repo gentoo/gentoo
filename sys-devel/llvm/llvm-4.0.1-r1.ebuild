@@ -79,6 +79,9 @@ src_prepare() {
 	# e.g. https://bugs.gentoo.org/617154
 	eapply "${FILESDIR}"/4.0.1/0001-cmake-Pass-Wl-z-nodelete-on-Linux-to-prevent-unloadi.patch
 
+	# gcc-8 build failure
+	eapply "${FILESDIR}"/5.0.2/0001-Fix-return-type-in-ORC-readMem-client-interface.patch
+
 	# Remove failing test (fixed in newer versions)
 	rm test/tools/llvm-symbolizer/print_context.c || die
 
