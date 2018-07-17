@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Devel-PPPort
+EAPI=6
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x64-cygwin ~x86-fbsd
+RDEPEND=|| ( =dev-lang/perl-5.26* ~perl-core/Devel-PPPort-3.350.0 ) dev-lang/perl:= !<perl-core/Devel-PPPort-3.350.0 !>perl-core/Devel-PPPort-3.350.0-r999
+SLOT=0
+_md5_=4d6952d8c38b6d123be6a8f90f4aea19

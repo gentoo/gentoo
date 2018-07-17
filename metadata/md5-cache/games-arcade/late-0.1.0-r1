@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[video] media-libs/sdl-image[jpeg]
+DESCRIPTION=A game, similar to Barrack by Ambrosia Software
+EAPI=6
+HOMEPAGE=http://late.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[video] media-libs/sdl-image[jpeg]
+SLOT=0
+SRC_URI=mirror://sourceforge/late/late-0.1.0.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=c993bd66f42ba9e4b12393252c7cb338

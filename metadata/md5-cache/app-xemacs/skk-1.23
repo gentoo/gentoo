@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-xemacs/viper app-xemacs/mule-base app-xemacs/elib app-xemacs/xemacs-base app-xemacs/apel
+DESCRIPTION=MULE: Japanese Language Input Method
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2+
+RDEPEND=app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/skk-1.23-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=7d2d24d6af2567b02f415d8c3913c44c

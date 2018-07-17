@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Flameeyes's Ruleset for ModSecurity
+EAPI=6
+HOMEPAGE=http://www.flameeyes.eu/projects/modsec
+KEYWORDS=~amd64
+LICENSE=CC-BY-SA-3.0
+RDEPEND=>=www-apache/mod_security-2.5.1
+SLOT=0
+SRC_URI=https://github.com/Flameeyes/modsec-flameeyes/archive/20130216.tar.gz -> modsec-flameeyes-20130216.tar.gz
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=36128a6f73fe78bca98f196139a59f98

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=net-libs/libmnl-1.0.3:0= gmp? ( dev-libs/gmp:0= ) json? ( dev-libs/jansson ) readline? ( sys-libs/readline:0= ) >=net-libs/libnftnl-1.1.1:0= >=app-text/docbook2X-0.8.8-r4 doc? ( >=app-text/dblatex-0.3.7 ) sys-devel/bison sys-devel/flex virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Linux kernel (3.13+) firewall, NAT and packet mangling tools
+EAPI=6
+HOMEPAGE=https://netfilter.org/projects/nftables/
+IUSE=debug doc +gmp json +readline kernel_linux
+KEYWORDS=~amd64 ~arm ~ia64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libmnl-1.0.3:0= gmp? ( dev-libs/gmp:0= ) json? ( dev-libs/jansson ) readline? ( sys-libs/readline:0= ) >=net-libs/libnftnl-1.1.1:0=
+SLOT=0
+SRC_URI=https://git.netfilter.org/nftables/snapshot/v0.9.0.tar.gz -> nftables-0.9.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	libtool	0081a71a261724730ec4c248494f044d	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=7ee47f8ba45fa26be80aaec8c6b1f9c2

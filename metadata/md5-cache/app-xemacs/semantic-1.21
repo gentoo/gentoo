@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Semantic bovinator (Yacc/Lex for XEmacs). Includes Senator
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/ede app-xemacs/cedet-common app-xemacs/eieio app-xemacs/xemacs-base app-xemacs/xemacs-devel app-xemacs/edit-utils app-xemacs/speedbar app-xemacs/texinfo app-xemacs/fsf-compat app-xemacs/cc-mode app-xemacs/edebug app-xemacs/sgml app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/semantic-1.21-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=c3c7d01a7f283e9eaaa7eb1046208028

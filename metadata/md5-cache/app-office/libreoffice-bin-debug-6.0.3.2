@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install unpack
+DEPEND=dev-util/xdelta:3
+DESCRIPTION=LibreOffice, a full office productivity suite. Binary package, debug info
+EAPI=6
+HOMEPAGE=https://www.libreoffice.org
+IUSE=gnome java kde
+KEYWORDS=-* amd64 x86
+LICENSE=LGPL-3
+RDEPEND==app-office/libreoffice-bin-6.0.3.2[gnome=,java=,kde=]
+RESTRICT=test strip
+SLOT=0
+SRC_URI=amd64? ( http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-debug-libreoffice-6.0.3.2.tar.xz kde? ( !java? ( http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-debug-libreoffice-kde-6.0.3.2.xd3 ) java? ( http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-debug-libreoffice-kde-java-6.0.3.2.xd3 ) ) gnome? ( !java? ( http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-debug-libreoffice-gnome-6.0.3.2.xd3 ) java? ( http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-debug-libreoffice-gnome-java-6.0.3.2.xd3 ) ) !kde? ( !gnome? ( java? ( http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-debug-libreoffice-java-6.0.3.2.xd3 ) ) ) ) x86? ( http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-debug-libreoffice-6.0.3.2.tar.xz kde? ( !java? ( http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-debug-libreoffice-kde-6.0.3.2.xd3 ) java? ( http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-debug-libreoffice-kde-java-6.0.3.2.xd3 ) ) gnome? ( !java? ( http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-debug-libreoffice-gnome-6.0.3.2.xd3 ) java? ( http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-debug-libreoffice-gnome-java-6.0.3.2.xd3 ) ) !kde? ( !gnome? ( java? ( http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-debug-libreoffice-java-6.0.3.2.xd3 ) ) ) )
+_md5_=e038bdcfc6c1bd6bcbc04efb2cff4f87

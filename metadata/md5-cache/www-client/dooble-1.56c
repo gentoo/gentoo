@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=dev-db/sqlite:3 dev-libs/libgcrypt:0 dev-libs/libgpg-error dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 dev-qt/qtxml:5 dev-qt/linguist-tools:5
+DESCRIPTION=A Secure and Open Source Web Browser
+EAPI=5
+HOMEPAGE=http://dooble.sourceforge.net/
+KEYWORDS=~amd64
+LICENSE=BSD GPL-3 LGPL-2.1
+RDEPEND=dev-db/sqlite:3 dev-libs/libgcrypt:0 dev-libs/libgpg-error dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 dev-qt/qtxml:5
+SLOT=0
+SRC_URI=mirror://sourceforge/dooble/Version%201.56c/Dooble.d.tar.gz -> dooble-1.56c.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=e529a4da4947e48c44b18db05c7e2206

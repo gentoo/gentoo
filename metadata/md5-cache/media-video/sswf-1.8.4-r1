@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/jpeg media-libs/freetype virtual/pkgconfig
+DESCRIPTION=A C++ Library and a script language tool to create Flash (SWF) movies up to version 8
+EAPI=5
+HOMEPAGE=https://www.m2osw.com/sswf.html
+IUSE=debug doc examples
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=virtual/jpeg media-libs/freetype
+SLOT=0
+SRC_URI=mirror://sourceforge/sswf/sswf-1.8.4-src.tar.bz2 mirror://sourceforge/sswf/sswf-1.8.4-doc.tar.bz2
+_md5_=2a6dbf3b3b31ec9e4fcaefa6722e502f

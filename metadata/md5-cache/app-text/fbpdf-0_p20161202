@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=app-text/mupdf-1.10:0= app-text/djvu:0= dev-lang/mujs:0= dev-libs/openssl:0= !media-gfx/fbida[fbcon] media-libs/freetype:2= media-libs/jbig2dec:0= media-libs/openjpeg:0= virtual/jpeg:0=
+DESCRIPTION=framebuffer pdf and djvu viewer
+EAPI=6
+HOMEPAGE=http://repo.or.cz/fbpdf.git
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=app-text/mupdf-1.10:0= app-text/djvu:0= dev-lang/mujs:0= dev-libs/openssl:0= !media-gfx/fbida[fbcon] media-libs/freetype:2= media-libs/jbig2dec:0= media-libs/openjpeg:0= virtual/jpeg:0=
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/fbpdf-0_p20161202.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=0d75993ad87dee9a56e9f11b0915afd6

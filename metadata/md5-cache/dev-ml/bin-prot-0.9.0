@@ -1,0 +1,11 @@
+DEFINED_PHASES=install test
+DEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_compare:= dev-ml/ppx_custom_printf:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_fields_conv:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ppx_variants_conv:= dev-ml/sexplib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Binary protocol generator
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/bin_prot
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_compare:= dev-ml/ppx_custom_printf:= dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_fields_conv:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ppx_variants_conv:= dev-ml/sexplib:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/bin_prot/archive/v0.9.0.tar.gz -> bin-prot-0.9.0.tar.gz
+_md5_=ca7055131f1fcafb82f0ccb0307cf5d6

@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure postinst prepare unpack
+DEPEND=dev-util/confix >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
+EAPI=6
+HOMEPAGE=https://github.com/haubi/parity
+IUSE=+vc_x86 +vc7_0 +vc7_1 +vc8_0 +vc9_0 +vc10_0 +vc11_0 +vc12_0 +vc14_0 +vc15_0
+LICENSE=LGPL-3
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=c9b8c94e5b2d0c442a7f034c0fd4bf8b

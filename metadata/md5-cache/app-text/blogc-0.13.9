@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=virtual/pkgconfig test? ( git? ( dev-vcs/git ) dev-util/cmocka )
+DESCRIPTION=A blog compiler
+EAPI=6
+HOMEPAGE=https://blogc.rgm.io/
+IUSE=git httpd make test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=git? ( dev-vcs/git ) !dev-vcs/blogc-git-receiver !www-servers/blogc-runserver
+SLOT=0
+SRC_URI=https://github.com/blogc/blogc/releases/download/v0.13.9/blogc-0.13.9.tar.xz
+_md5_=d29b445bf33556bb45f8817f5e617c58

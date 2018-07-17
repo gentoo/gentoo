@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure postinst prepare test
+DEPEND=ssl? ( dev-libs/openssl:0= ) test? ( dev-libs/openssl:0 )
+DESCRIPTION=M(easuring)buffer is a replacement for buffer with additional functionality
+EAPI=6
+HOMEPAGE=http://www.maier-komor.de/mbuffer.html
+IUSE=debug ssl test
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:0= )
+SLOT=0
+SRC_URI=http://www.maier-komor.de/software/mbuffer/mbuffer-20171011.tgz
+_md5_=278d561fe7ef5f7d45447c847ffd9c09

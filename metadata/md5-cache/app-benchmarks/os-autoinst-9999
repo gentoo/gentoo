@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=media-libs/libogg:= media-libs/libsndfile:= media-libs/libtheora:= >=media-libs/opencv-2.4:= sci-libs/fftw:3.0= >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=automated testing of Operating Systems
+EAPI=6
+HOMEPAGE=http://os-autoinst.org/
+LICENSE=GPL-2
+RDEPEND=media-libs/libogg:= media-libs/libsndfile:= media-libs/libtheora:= >=media-libs/opencv-2.4:= sci-libs/fftw:3.0= dev-lang/perl[ithreads] dev-perl/JSON app-emulation/qemu app-text/gocr media-gfx/imagemagick media-video/ffmpeg2theora
+SLOT=0
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	git-r3	8f6de46b0aa318aea0e8cac62ece098b	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=cc5fd4a53dc4adac639e5e4b58f6a6ca

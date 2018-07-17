@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Compatibility package for running binaries linked against a <gcc-3.4 libstdc++
+EAPI=0
+HOMEPAGE=https://gcc.gnu.org/libstdc++/
+KEYWORDS=ia64 ppc64
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=sys-libs/glibc
+RESTRICT=strip
+SLOT=0
+SRC_URI=ia64? ( mirror://gentoo/libstdc++-v3-bin-ia64-3.3.6.tbz2 ) ppc64? ( mirror://gentoo/libstdc++-v3-bin-ppc64-3.3.6.tbz2 )
+_md5_=d06000e21577588429928fd54f579e64

@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=dev-lang/mono-1.2.5.1-r1 || ( ( >=dev-dotnet/gtk-sharp-2.10.0 >=dev-dotnet/glade-sharp-2.10.0 ) >=dev-dotnet/gtk-sharp-2.12.21 ) sys-devel/gettext
+DESCRIPTION=GNU Student's Timetable for polish users
+EAPI=6
+HOMEPAGE=http://gnutu.devnull.pl/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/mono-1.2.5.1-r1 || ( ( >=dev-dotnet/gtk-sharp-2.10.0 >=dev-dotnet/glade-sharp-2.10.0 ) >=dev-dotnet/gtk-sharp-2.12.21 )
+SLOT=0
+SRC_URI=http://gnutu.devnull.pl/download/sources/gnutu-2.5.tar.gz
+_md5_=b8b86a22799a17edc7ccd237d4e82867

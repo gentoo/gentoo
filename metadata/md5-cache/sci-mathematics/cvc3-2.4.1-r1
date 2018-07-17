@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-libs/gmp:0= isabelle? ( >=sci-mathematics/isabelle-2011.1-r1:= ) doc? ( app-doc/doxygen media-gfx/graphviz ) emacs? ( virtual/emacs )
+DESCRIPTION=CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems
+EAPI=6
+HOMEPAGE=http://www.cs.nyu.edu/acsys/cvc3/index.html
+IUSE=doc emacs isabelle test zchaff
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD MIT HPND zchaff? ( zchaff )
+RDEPEND=dev-libs/gmp:0= isabelle? ( >=sci-mathematics/isabelle-2011.1-r1:= )
+RESTRICT=mirror zchaff? ( bindist )
+SLOT=0/2.4.1
+SRC_URI=http://www.cs.nyu.edu/acsys/cvc3/releases/2.4.1/cvc3-2.4.1.tar.gz
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=8608106c2cd70e714c86a2517952dc13

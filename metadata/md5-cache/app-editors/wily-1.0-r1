@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/9libs >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libICE-1.0.0 >=x11-libs/libSM-1.0.0
+DESCRIPTION=An emulation of ACME, Plan9's hybrid window system, shell and editor
+EAPI=0
+HOMEPAGE=http://www.netlib.org/research/9libs/
+KEYWORDS=x86
+LICENSE=Artistic
+RDEPEND=dev-libs/9libs >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libICE-1.0.0 >=x11-libs/libSM-1.0.0
+SLOT=0
+SRC_URI=ftp://www.netlib.org/research/9libs/wily-9libs.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=4e7c2e0d0349764504793e87eb62dc67

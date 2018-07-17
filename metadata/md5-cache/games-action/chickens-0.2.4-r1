@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=<media-libs/allegro-5
+DESCRIPTION=Target chickens with rockets and shotguns. Funny
+EAPI=6
+HOMEPAGE=http://www.chickensforlinux.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=<media-libs/allegro-5
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.chickensforlinux.com/ChickensForLinux-Linux-0.2.4.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b28f6cb0b4156bb8cb92842c07b8ce3f

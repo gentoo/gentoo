@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test
+DEPEND=sys-devel/gettext sys-apps/groff test? ( app-arch/sharutils ) sys-devel/bison
+DESCRIPTION=File history and comparison tools
+EAPI=0
+HOMEPAGE=http://fhist.sourceforge.net/fhist.html
+IUSE=test
+KEYWORDS=~ppc x86
+LICENSE=GPL-2
+RDEPEND=sys-devel/gettext sys-apps/groff
+SLOT=0
+SRC_URI=http://fhist.sourceforge.net/fhist-1.16.tar.gz
+_md5_=9d147d9f98125a49c6a2eee5dd80e368

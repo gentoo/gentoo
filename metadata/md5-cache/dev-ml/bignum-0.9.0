@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/core_kernel:= dev-ml/core_kernel:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/typerep:= dev-ml/zarith:= <dev-ml/ppx_driver-100 <dev-ml/ppx_jane-100 dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Core-flavoured wrapper around zarith's arbitrary-precision rationals
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/bignum
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/core_kernel:= dev-ml/core_kernel:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/typerep:= dev-ml/zarith:= <dev-ml/ppx_driver-100 <dev-ml/ppx_jane-100
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/bignum/archive/v0.9.0.tar.gz -> bignum-0.9.0.tar.gz
+_md5_=8c9f18b6be5bfdfc66aa8c08adbff327

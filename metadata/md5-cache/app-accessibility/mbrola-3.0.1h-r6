@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Speech synthesizer based on the concatenation of diphones. Includes samples
+EAPI=0
+HOMEPAGE=http://tcts.fpms.ac.be/synthesis/mbrola.html
+IUSE=l10n_de l10n_es l10n_fr l10n_it l10n_la l10n_pl l10n_ro l10n_sv
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=MBROLA
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://tcts.fpms.ac.be/synthesis/mbrola/bin/pclinux/mbr301h.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/us1/us1-980512.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/us1/us2-980812.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/us3/us3-990208.zip l10n_de? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/de1/de1-980227.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/de2/de2-990106.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/de3/de3-000307.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/de4/de4.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/de5/de5.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/de8/de8.zip ) l10n_es? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/es1/es1-980610.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/es2/es2-989825.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/es4/es4.zip ) l10n_fr? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr1/fr1-990204.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr2/fr2-980806.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr3/fr3-990324.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr6/fr6-010330.zip ) l10n_it? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/it3/it3-010304.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/it4/it4-010926.zip ) l10n_la? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/la1/la1.zip ) l10n_pl? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/pl1/pl1.zip ) l10n_ro? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/ro1/ro1-980317.zip ) l10n_sv? ( http://tcts.fpms.ac.be/synthesis/mbrola/dba/sw1/sw1-980623.zip http://tcts.fpms.ac.be/synthesis/mbrola/dba/sw2/sw2-140102.zip )
+_md5_=908d067bfa3b3d1a5e8265841b778609

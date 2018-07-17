@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[video]
+DESCRIPTION=A simple pipe connecting game
+EAPI=6
+HOMEPAGE=http://www.users.waitrose.com/~thunor/pipepanic/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 FreeArt
+SLOT=0
+SRC_URI=http://www.users.waitrose.com/~thunor/pipepanic/dload/pipepanic-0.1.3-source.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=18b1ddd84168a77f76f89b2e4322ba4b

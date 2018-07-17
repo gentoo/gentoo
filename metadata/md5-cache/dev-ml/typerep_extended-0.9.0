@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/bin-prot:= dev-ml/core_kernel:= dev-ml/ppx_bin_prot:= dev-ml/ppx_driver:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_sexp_value:= dev-ml/ppx_type_conv:= dev-ml/ppx_typerep_conv:= dev-ml/sexplib:= dev-ml/typerep:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Runtime types for OCaml (Extended)
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/typerep_extended
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/bin-prot:= dev-ml/core_kernel:= dev-ml/ppx_bin_prot:= dev-ml/ppx_driver:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_sexp_value:= dev-ml/ppx_type_conv:= dev-ml/ppx_typerep_conv:= dev-ml/sexplib:= dev-ml/typerep:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/typerep_extended/archive/v0.9.0.tar.gz -> typerep_extended-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=9e4d8c11b58317bd92eccfdc93555e1e

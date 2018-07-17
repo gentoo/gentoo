@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=A perl script to convert MP3 files to Ogg Vorbis files
+EAPI=6
+HOMEPAGE=http://faceprint.com/code/
+KEYWORDS=amd64 x86
+LICENSE=Artistic
+RDEPEND=media-sound/mpg123 dev-perl/MP3-Info dev-perl/String-ShellQuote media-sound/vorbis-tools
+SLOT=0
+SRC_URI=ftp://ftp.faceprint.com/pub/software/scripts/mp32ogg
+_md5_=6c273b20bb122af0140e24a6d66fec05

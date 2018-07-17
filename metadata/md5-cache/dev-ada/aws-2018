@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018(-)=] dev-ada/xmlada[shared,static-libs] dev-ada/asis[gnat_2016=,gnat_2017=,gnat_2018(-)=] dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018(-)=]
+DESCRIPTION=A complete Web development framework
+EAPI=6
+HOMEPAGE=http://libre.adacore.com/tools/aws/
+IUSE=gnat_2016 gnat_2017 +gnat_2018
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018(-)=] dev-ada/xmlada[shared,static-libs]
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27abd -> aws-gpl-2018-src.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
+_md5_=5725a55b07cfdd3535f4aee32687545e

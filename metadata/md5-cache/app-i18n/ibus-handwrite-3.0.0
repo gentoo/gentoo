@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=app-i18n/ibus x11-libs/gtk+:3 x11-libs/gtkglext nls? ( virtual/libintl ) zinnia? ( app-i18n/zinnia app-i18n/zinnia-tomoe ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Hand write recognition/input for IBus
+EAPI=6
+HOMEPAGE=https://github.com/microcai/ibus-handwrite
+IUSE=nls +zinnia
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-i18n/ibus x11-libs/gtk+:3 x11-libs/gtkglext nls? ( virtual/libintl ) zinnia? ( app-i18n/zinnia app-i18n/zinnia-tomoe )
+SLOT=0
+SRC_URI=https://github.com/microcai/ibus-handwrite/releases/download/3.0/ibus-handwrite-3.0.0.tar.bz2
+_md5_=7907dbadfc39a258197e7b7f8b46093e

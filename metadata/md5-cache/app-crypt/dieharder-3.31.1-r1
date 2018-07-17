@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup
+DEPEND=sci-libs/gsl doc? ( dev-tex/latex2html )
+DESCRIPTION=An advanced suite for testing the randomness of RNG's
+EAPI=6
+HOMEPAGE=http://www.phy.duke.edu/~rgb/General/dieharder.php
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=sci-libs/gsl
+SLOT=0
+SRC_URI=http://www.phy.duke.edu/~rgb/General/dieharder/dieharder-3.31.1.tgz
+_md5_=06f4e2952e2b70a8581048c0351453e0

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst unpack
+DEPEND=media-libs/libsdl2[joystick,opengl?,sound,video,X] media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?] sys-libs/zlib:= flac? ( media-libs/flac ) gtk? ( x11-libs/gtk+:2 ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) timidity? ( media-sound/timidity-freepats ) vpx? ( media-libs/libvpx:= ) vorbis? ( media-libs/libogg media-libs/libvorbis ) xmp? ( media-libs/exempi:= ) app-arch/unzip x86? ( dev-lang/nasm ) >=sys-apps/sed-4
+DESCRIPTION=An open source engine port of the classic PC first person shooter Duke Nukem 3D
+EAPI=6
+HOMEPAGE=http://www.eduke32.com/
+IUSE=cdinstall demo flac fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis voxels vpx xmp
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=BUILDLIC GPL-2 HRP
+RDEPEND=media-libs/libsdl2[joystick,opengl?,sound,video,X] media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?] sys-libs/zlib:= flac? ( media-libs/flac ) gtk? ( x11-libs/gtk+:2 ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) timidity? ( media-sound/timidity-freepats ) vpx? ( media-libs/libvpx:= ) vorbis? ( media-libs/libogg media-libs/libvorbis ) xmp? ( media-libs/exempi:= ) cdinstall? ( games-fps/duke3d-data ) demo? ( games-fps/duke3d-demodata )
+REQUIRED_USE=cdinstall? ( !demo ) demo? ( !cdinstall ) hrp? ( ^^ ( demo cdinstall ) !voxels ) offensive? ( ^^ ( demo cdinstall ) ) opl? ( ^^ ( demo cdinstall ) !sc-55 ) psx? ( ^^ ( demo cdinstall ) ) sc-55? ( ^^ ( demo cdinstall ) !opl ) voxels? ( !hrp ) vpx? ( opengl )
+SLOT=0
+SRC_URI=http://dukeworld.com/eduke32/synthesis/20180702-6937/eduke32_src_20180702-6937.tar.xz http://www.eduke32.com/images/eduke32_classic.png hrp? ( http://www.duke4.org/files/nightfright/hrp/duke3d_hrp.zip -> duke3d_hrp-5.4.zip ) offensive? ( http://www.duke4.org/files/nightfright/related/duke3d_xxx.zip -> duke3d_xxx-1.33.zip ) opl? ( http://www.moddb.com/downloads/mirror/95750/102/ce9e8f422c6cccdb297852426e96740a -> duke3d_musopl-2.01.zip ) psx? ( http://www.duke4.org/files/nightfright/related/duke3d_psx.zip -> duke3d_psx-1.11.zip ) sc-55? ( http://www.duke4.org/files/nightfright/music/duke3d_music-sc55.zip -> duke3d_music-sc55-4.02.zip ) voxels? ( https://www.dropbox.com/s/yaxfahyvskyvt4r/duke3d_voxels.zip -> duke3d_voxels-1.21.zip )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=1be49671d65817925c0fc186be820422

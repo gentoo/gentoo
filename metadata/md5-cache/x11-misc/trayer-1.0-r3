@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/libX11 virtual/pkgconfig
+DESCRIPTION=Lightweight GTK+ based systray for UNIX desktop
+EAPI=6
+HOMEPAGE=http://home.gna.org/fvwm-crystal/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/libX11
+SLOT=0
+SRC_URI=http://download.gna.org/fvwm-crystal/trayer/trayer-1.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6b0c4401900f47273932b272e3e0c4bf

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Command-line trash can emulation
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=ftp://www.iq-computing.de/perltrash/perltrash-0.3.tar.bz2
+_md5_=f662737efc237931402bca1da52d3f06

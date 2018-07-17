@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/libdnet-1.4 >=dev-libs/libevent-0.6 net-libs/libpcap !sys-apps/iproute2 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=ARP server claiming all unassigned addresses (for network monitoring/simulation)
+EAPI=6
+HOMEPAGE=http://www.citi.umich.edu/u/provos/honeyd/
+KEYWORDS=amd64 hppa ppc ~ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/libdnet-1.4 >=dev-libs/libevent-0.6 net-libs/libpcap !sys-apps/iproute2
+SLOT=0
+SRC_URI=http://www.citi.umich.edu/u/provos/honeyd/arpd-0.2.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=86132883cc0d97ba9c8bef6a0cf005f3

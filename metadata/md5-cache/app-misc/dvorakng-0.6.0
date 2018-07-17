@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:* virtual/pkgconfig
+DESCRIPTION=Dvorak typing tutor
+EAPI=6
+HOMEPAGE=http://freshmeat.net/projects/dvorakng/?topic_id=71%2C861
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:*
+SLOT=0
+SRC_URI=http://www.free.of.pl/n/nopik/dvorakng-0.6.0rc1.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c2e5f98378a56e2f467b7b701c506f62

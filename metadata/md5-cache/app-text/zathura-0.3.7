@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=dev-libs/girara-0.2.7:3= >=dev-libs/glib-2.32:2= x11-libs/cairo:= >=x11-libs/gtk+-3.6:3 magic? ( sys-apps/file:= ) sqlite? ( dev-db/sqlite:3= ) synctex? ( >=app-text/texlive-core-2015 ) sys-devel/gettext virtual/pkgconfig test? ( dev-libs/check ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A highly customizable and functional document viewer
+EAPI=5
+HOMEPAGE=http://pwmt.org/projects/zathura/
+IUSE=+magic sqlite synctex test test
+KEYWORDS=amd64 arm x86 ~amd64-linux ~x86-linux
+LICENSE=ZLIB
+RDEPEND=>=dev-libs/girara-0.2.7:3= >=dev-libs/glib-2.32:2= x11-libs/cairo:= >=x11-libs/gtk+-3.6:3 magic? ( sys-apps/file:= ) sqlite? ( dev-db/sqlite:3= ) synctex? ( >=app-text/texlive-core-2015 )
+SLOT=0
+SRC_URI=http://pwmt.org/projects/zathura/download/zathura-0.3.7.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=715e8a2205306fb36400601406467377

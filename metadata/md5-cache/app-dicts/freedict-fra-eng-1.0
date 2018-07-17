@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Freedict for language translation from French to English
+EAPI=6
+HOMEPAGE=http://freedict.sourceforge.net/
+KEYWORDS=alpha ~amd64 ~hppa ~mips ppc sparc x86
+LICENSE=GPL-2+
+RDEPEND=app-text/dictd
+SLOT=0
+SRC_URI=http://freedict.sourceforge.net/download/linux/fra-eng.tar.gz
+_eclasses_=freedict	2bc659a64b6743fb2efcb7d2cea78f22
+_md5_=af42562528271e26d87b4507ac5fde02

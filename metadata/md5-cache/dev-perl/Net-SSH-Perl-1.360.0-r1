@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Digest-MD5 >=dev-perl/String-CRC32-1.2 >=dev-perl/Math-GMP-1.04 >=dev-perl/Math-Pari-2.001804 >=dev-perl/Digest-SHA1-2.10 dev-perl/Digest-HMAC dev-perl/Crypt-DH >=dev-perl/Crypt-DSA-0.110.0 virtual/perl-MIME-Base64 >=dev-perl/Convert-PEM-0.05 dev-perl/Crypt-Blowfish dev-perl/Crypt-DES dev-perl/Crypt-IDEA dev-perl/Crypt-OpenSSL-RSA dev-perl/Crypt-RSA dev-perl/Digest-BubbleBabble dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl client Interface to SSH
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Net-SSH-Perl/
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Digest-MD5 >=dev-perl/String-CRC32-1.2 >=dev-perl/Math-GMP-1.04 >=dev-perl/Math-Pari-2.001804 >=dev-perl/Digest-SHA1-2.10 dev-perl/Digest-HMAC dev-perl/Crypt-DH >=dev-perl/Crypt-DSA-0.110.0 virtual/perl-MIME-Base64 >=dev-perl/Convert-PEM-0.05 dev-perl/Crypt-Blowfish dev-perl/Crypt-DES dev-perl/Crypt-IDEA dev-perl/Crypt-OpenSSL-RSA dev-perl/Crypt-RSA dev-perl/Digest-BubbleBabble dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-1.36.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=95101da4852525ddcb1e63395ddf8fe7

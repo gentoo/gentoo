@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare test unpack
+DEPEND=>=dev-lang/go-1.9.2 >=dev-lang/go-1.9
+DESCRIPTION=A command line tool for compiling Arduino sketches
+EAPI=6
+HOMEPAGE=https://github.com/arduino/arduino-builder
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-devel/crossdev dev-embedded/avrdude dev-embedded/arduino-ctags
+SLOT=0
+SRC_URI=https://github.com/arduino/arduino-builder/archive/1.3.25.tar.gz -> arduino-builder-1.3.25.tar.gz https://github.com/go-errors/errors/archive/a41850380601eeb43f4350f7d17c6bbd8944aaf8.tar.gz -> github.com-go-errors-errors-a41850380601eeb43f4350f7d17c6bbd8944aaf8.tar.gz https://github.com/jstemmer/go-junit-report/archive/833f8ea2b99d36d5f018698333834f3df200a0c2.tar.gz -> github.com-jstemmer-go-junit-report-833f8ea2b99d36d5f018698333834f3df200a0c2.tar.gz https://github.com/stretchr/testify/archive/1661650f989674e3e5bcdcb805536e5d31481526.tar.gz -> github.com-stretchr-testify-1661650f989674e3e5bcdcb805536e5d31481526.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=3118c3cec4fa668f6a82354803185d84

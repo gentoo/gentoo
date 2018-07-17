@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=A set of additional compression profiles for app-arch/zpaq
+EAPI=5
+HOMEPAGE=http://mattmahoney.net/dc/zpaq.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-arch/zpaq-6.19
+SLOT=0
+SRC_URI=http://mattmahoney.net/dc/bwt_j3.zip http://mattmahoney.net/dc/bwt_slowmode1.zip http://mattmahoney.net/dc/exe_j1.zip http://mattmahoney.net/dc/jpg_test2.zip http://mattmahoney.net/dc/min.zip http://mattmahoney.net/dc/fast.cfg -> zpaq-fast.cfg http://mattmahoney.net/dc/mid.cfg -> zpaq-mid.cfg http://mattmahoney.net/dc/max.cfg -> zpaq-max.cfg http://mattmahoney.net/dc/bmp_j4c.zip http://mattmahoney.net/dc/lz1.zip http://mattmahoney.net/dc/lazy100.zip http://mattmahoney.net/dc/lazy210.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e3a0bfc5f838e817937b88dbf7a9c041

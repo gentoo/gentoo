@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Transparent application input fuzzer
+EAPI=6
+HOMEPAGE=http://caca.zoy.org/wiki/zzuf
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=WTFPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/samhocevar/zzuf/releases/download/v0.15/zzuf-0.15.tar.bz2
+_md5_=ff46021b46701275315cd0a4bb55f149

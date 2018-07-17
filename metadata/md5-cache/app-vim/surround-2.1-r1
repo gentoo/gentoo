@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: Delete/change/add parentheses/quotes/XML-tags & much more
+EAPI=5
+HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=1697
+KEYWORDS=amd64 x86
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/surround-2.1.tar.bz2 https://dev.gentoo.org/~radhermit/vim/surround-2.1.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=c58999fc8c5e5fff5696a104ad21083b

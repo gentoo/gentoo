@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-python/pyyaml dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] dev-ada/langkit
+DESCRIPTION=high performance semantic engine for the Ada programming language
+EAPI=6
+HOMEPAGE=https://libre.adacore.com/
+IUSE=gnat_2016 +gnat_2017 python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-3 gcc-runtime-library-exception-3.1
+RDEPEND=dev-python/pyyaml dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7 ^^ ( gnat_2016 gnat_2017 )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed042 -> libadalang-2017-src.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2719810feabc9e3132ecedce1689da64

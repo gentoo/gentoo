@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND==www-servers/apache-2* >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A QOS module for the apache webserver
+EAPI=5
+HOMEPAGE=http://mod-qos.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre dev-libs/openssl:0 media-libs/libpng:0= sys-libs/zlib =www-servers/apache-2*
+SLOT=0
+SRC_URI=mirror://sourceforge/mod-qos/mod_qos-11.12.tar.gz
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	autotools	d0e5375d47f4c809f406eb892e531513	depend.apache	0917334d570e07f9743a04ff85b3bf1b	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1ebaeb5e3331309a94114bc9833c9594

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Small and powerful script to merge two or more logfiles
+EAPI=6
+HOMEPAGE=https://github.com/ildar-shaimordanov/logmerge
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=https://github.com/ildar-shaimordanov/logmerge/archive/v0.5.2b.tar.gz -> logmerge-0.5.2b.tar.gz
+_md5_=cb7bbe18c816e4ff396ba1dd1c0f34af

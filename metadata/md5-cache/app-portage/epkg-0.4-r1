@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A simple portage wrapper which works like other package managers
+EAPI=5
+HOMEPAGE=https://github.com/jdhore/epkg
+KEYWORDS=amd64 x86
+LICENSE=BSD-2
+RDEPEND=app-portage/eix app-portage/gentoolkit || ( sys-apps/portage sys-apps/portage-mgorny )
+SLOT=0
+SRC_URI=https://github.com/jdhore/epkg/archive/epkg-0.4.tar.gz
+_md5_=91ba5b6dd2161ea70a007211bad570ba

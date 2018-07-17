@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install test
+DEPEND=virtual/libiconv nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( dev-libs/check )
+DESCRIPTION=Library for hangul input method logic, hanja dictionary
+EAPI=6
+HOMEPAGE=https://github.com/choehwanjin/libhangul
+IUSE=nls static-libs test
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=LGPL-2.1+
+RDEPEND=virtual/libiconv nls? ( virtual/libintl )
+SLOT=0/1
+SRC_URI=https://libhangul.googlecode.com/files/libhangul-0.1.0.tar.gz
+_md5_=6e46444416fafce43166ce0e73d43376

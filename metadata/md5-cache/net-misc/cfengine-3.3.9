@@ -1,0 +1,14 @@
+DEFINED_PHASES=config configure install postinst
+DEPEND=>=sys-libs/db-4 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) selinux? ( sys-libs/libselinux ) tokyocabinet? ( dev-db/tokyocabinet ) qdbm? ( dev-db/qdbm ) libvirt? ( app-emulation/libvirt ) >=dev-libs/openssl-0.9.7 dev-libs/libpcre
+DESCRIPTION=An automated suite of programs for configuring and maintaining Unix-like computers
+EAPI=4
+HOMEPAGE=http://www.cfengine.org/
+IUSE=examples html libvirt mysql postgres +qdbm selinux tests tokyocabinet vim-syntax
+KEYWORDS=amd64 ~arm ~ppc ~s390 ~sparc x86
+LICENSE=GPL-3
+PDEPEND=vim-syntax? ( app-vim/cfengine-syntax )
+RDEPEND=>=sys-libs/db-4 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) selinux? ( sys-libs/libselinux ) tokyocabinet? ( dev-db/tokyocabinet ) qdbm? ( dev-db/qdbm ) libvirt? ( app-emulation/libvirt ) >=dev-libs/openssl-0.9.7 dev-libs/libpcre
+REQUIRED_USE=^^ ( qdbm tokyocabinet )
+SLOT=3
+SRC_URI=http://cfengine.com/source-code/download?file=cfengine-3.3.9.tar.gz -> cfengine-3.3.9.tar.gz
+_md5_=573c0e527648d3d04409a4338d882196

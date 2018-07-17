@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-apps/acl sys-apps/groff app-text/ghostscript-gpl >=sys-kernel/linux-headers-2.6.35 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library which may be used to explain Unix and Linux system call errors
+EAPI=6
+HOMEPAGE=http://libexplain.sourceforge.net/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3 LGPL-3
+RDEPEND=sys-apps/acl sys-apps/groff app-text/ghostscript-gpl >=sys-kernel/linux-headers-2.6.35 sys-libs/libcap sys-process/lsof sys-libs/glibc
+RESTRICT=test
+SLOT=0
+SRC_URI=http://libexplain.sourceforge.net/libexplain-1.4.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=7ac9b7662dccb3b6cef2441a758c72d6

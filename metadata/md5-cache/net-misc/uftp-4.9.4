@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=ssl? ( dev-libs/openssl:0= )
+DESCRIPTION=Encrypted UDP based FTP with multicast
+EAPI=6
+HOMEPAGE=http://uftp-multicast.sourceforge.net/
+IUSE=+server ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=ssl? ( dev-libs/openssl:0= )
+SLOT=0
+SRC_URI=mirror://sourceforge/uftp-multicast/uftp-4.9.4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=29e21cf551ad4eb7effeee6a4701bdbd

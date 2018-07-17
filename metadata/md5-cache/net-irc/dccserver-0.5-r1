@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=linux implementation of the mirc dccserver command
+EAPI=6
+HOMEPAGE=https://www.nih.at/dccserver/
+KEYWORDS=amd64 ppc x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://www.nih.at/dccserver/dccserver-0.5.tar.gz
+_md5_=6bcb5a5c098cc0f01cc72bc37cf165cc

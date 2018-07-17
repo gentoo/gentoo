@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=dev-db/libzdb sieve? ( >=mail-filter/libsieve-2.2.1 ) ldap? ( >=net-nds/openldap-2.3.33 ) app-text/asciidoc app-text/xmlto app-crypt/mhash sys-libs/zlib dev-libs/gmime:2.6 >=dev-libs/glib-2.16 dev-libs/libevent ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=Enables storage of mail messages in a relational database
+EAPI=6
+HOMEPAGE=http://www.dbmail.org/
+IUSE=ldap libressl sieve ssl static
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-db/libzdb sieve? ( >=mail-filter/libsieve-2.2.1 ) ldap? ( >=net-nds/openldap-2.3.33 ) app-text/asciidoc app-text/xmlto app-crypt/mhash sys-libs/zlib dev-libs/gmime:2.6 >=dev-libs/glib-2.16 dev-libs/libevent ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=http://www.dbmail.org/download/3.2/dbmail-3.2.3.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=818b4705c7769abca6739ddbe6e28e4d

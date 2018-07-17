@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=media-libs/libsdl2-2.0.0[sound,joystick,video] zlib? ( sys-libs/zlib ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) theora? ( media-libs/libtheora ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) flac? ( media-libs/flac ) opengl? ( virtual/opengl ) truetype? ( media-libs/freetype:2 ) fluidsynth? ( media-sound/fluidsynth ) app-arch/xz-utils truetype? ( virtual/pkgconfig ) x86? ( dev-lang/nasm ) >=sys-apps/sed-4
+DESCRIPTION=Reimplementation of the SCUMM game engine used in Lucasarts adventures
+EAPI=6
+HOMEPAGE=http://scummvm.sourceforge.net/
+IUSE=aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype unsupported vorbis zlib
+KEYWORDS=~amd64 ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception
+RDEPEND=>=media-libs/libsdl2-2.0.0[sound,joystick,video] zlib? ( sys-libs/zlib ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) theora? ( media-libs/libtheora ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) flac? ( media-libs/flac ) opengl? ( virtual/opengl ) truetype? ( media-libs/freetype:2 ) fluidsynth? ( media-sound/fluidsynth )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://scummvm.org/frs/scummvm/2.0.0/scummvm-2.0.0.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=77d778d47f4f99317578b32dc57d9de7

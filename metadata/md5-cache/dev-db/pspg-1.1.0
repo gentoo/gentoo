@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=sys-libs/ncurses:*
+DESCRIPTION=A better pager for psql and mysql
+EAPI=6
+HOMEPAGE=https://github.com/okbob/pspg
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-libs/ncurses:*
+SLOT=0
+SRC_URI=https://github.com/okbob/pspg/archive/1.1.0.tar.gz -> pspg-1.1.0.tar.gz
+_md5_=584f8a3d3cb871e00337361288a09afa

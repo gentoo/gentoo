@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch
+DEPEND=app-arch/unzip
+DESCRIPTION=An in-band utility for configuring Supermicro IPMI devices
+EAPI=6
+HOMEPAGE=https://www.supermicro.com
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=supermicro
+RDEPEND=sys-libs/glibc
+RESTRICT=bindist fetch mirror strip
+SLOT=0
+SRC_URI=ftp://ftp.supermicro.com/utility/IPMICFG/IPMICFG_1.28.0_build.180302.zip
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f
+_md5_=f62e5a59fc3ad5aa8540200e1703ff7e

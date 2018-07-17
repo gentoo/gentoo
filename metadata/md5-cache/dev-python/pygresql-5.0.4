@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+DESCRIPTION=A Python interface for the PostgreSQL database
+EAPI=6
+HOMEPAGE=http://www.pygresql.org/
+IUSE=python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
+KEYWORDS=alpha amd64 ~hppa ia64 ppc sparc x86
+LICENSE=POSTGRESQL
+RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 ) || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
+SLOT=0
+SRC_URI=mirror://pypi/P/PyGreSQL/PyGreSQL-5.0.4.tar.gz
+_eclasses_=distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	postgres	a3ad839d319097167f1802b25f50d9c0	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=9490706bf92a240b95093d099181b736

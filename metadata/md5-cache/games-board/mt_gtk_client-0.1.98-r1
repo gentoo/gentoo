@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-games/libmaitretarot dev-games/libmt_client gnome-base/libgnomeui x11-libs/gtk+:2
+DESCRIPTION=client for the french tarot game maitretarot
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/maitretarot/
+IUSE=gnome
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-games/libmaitretarot dev-games/libmt_client gnome-base/libgnomeui x11-libs/gtk+:2 dev-games/cardpics
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/maitretarot/mt_gtk_client.pkg/0.1.98/mt_gtk_client-0.1.98.tar.bz2
+_md5_=8c98df89cb671be785b297213910ca01

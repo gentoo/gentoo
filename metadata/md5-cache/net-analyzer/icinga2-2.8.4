@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=dev-libs/boost-1.58-r1 console? ( dev-libs/libedit ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) sys-devel/bison >=sys-devel/flex-2.5.35 apache2? ( =www-servers/apache-2* ) sys-devel/make >=dev-util/cmake-3.9.6 virtual/pkgconfig
+DESCRIPTION=Distributed, general purpose, network monitoring engine
+EAPI=6
+HOMEPAGE=http://icinga.org/icinga2
+IUSE=+mysql postgres classicui console libressl lto mail minimal nano-syntax +plugins studio +vim-syntax apache2
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=dev-libs/boost-1.58-r1 console? ( dev-libs/libedit ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) plugins? ( || ( net-analyzer/monitoring-plugins net-analyzer/nagios-plugins ) ) mail? ( virtual/mailx ) classicui? ( net-analyzer/icinga[web] ) studio? ( x11-libs/wxGTK:3.0 ) apache2? ( =www-servers/apache-2* )
+REQUIRED_USE=!minimal? ( || ( mysql postgres ) )
+SLOT=0
+SRC_URI=https://github.com/Icinga/icinga2/archive/v2.8.4.tar.gz -> icinga2-2.8.4.tar.gz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	depend.apache	0917334d570e07f9743a04ff85b3bf1b	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b1e5ba709ebe917cd2595038ba6a6069

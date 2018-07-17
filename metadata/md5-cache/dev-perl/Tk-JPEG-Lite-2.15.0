@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/jpeg:0 >=dev-perl/Tk-800.15.0 >=virtual/perl-ExtUtils-MakeMaker-6.580.0 dev-perl/Devel-CheckLib dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=lite JPEG loader for Tk::Photo
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Tk-JPEG-Lite/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/jpeg:0 >=dev-perl/Tk-800.15.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SR/SREZIC/Tk-JPEG-Lite-2.015.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=22cef1cfe1ee8844de499dbddf730918

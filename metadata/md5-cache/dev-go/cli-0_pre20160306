@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=A small package for building command line apps in Go
+EAPI=5
+HOMEPAGE=https://github.com/codegangsta/cli
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0/0_pre20160306
+SRC_URI=https://github.com/codegangsta/cli/archive/aca5b047ed14d17224157c3434ea93bf6cdaadee.tar.gz -> cli-0_pre20160306.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=d150131e115e0b94ed374b03ca9e38b6

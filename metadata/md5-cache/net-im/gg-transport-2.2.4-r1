@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=net-im/jabber-base-0.01 >=dev-libs/glib-2.6.4 net-dns/libidn >=net-libs/libgadu-1.9.0_rc3 dev-libs/expat virtual/pkgconfig
+DESCRIPTION=Gadu-Gadu transport for Jabber
+EAPI=6
+HOMEPAGE=https://github.com/Jajcus/jggtrans
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=net-im/jabber-base-0.01 >=dev-libs/glib-2.6.4 net-dns/libidn >=net-libs/libgadu-1.9.0_rc3 dev-libs/expat
+SLOT=0
+SRC_URI=mirror://github/Jajcus/jggtrans/jggtrans-2.2.4.tar.gz
+_md5_=d257c2c5f3e2935262faff1dd3c4e263

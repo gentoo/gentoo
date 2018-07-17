@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Minor mode to show space left on devices in the mode line
+EAPI=4
+HOMEPAGE=https://web.archive.org/web/20061001221337/http://www.coli.uni-saarland.de/~fouvry/software.html https://www.emacswiki.org/emacs/DfMode
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://gentoo/df-mode-20050509.el.bz2
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f
+_md5_=9bbc4fbdede67fdfe43d2becb8296e58

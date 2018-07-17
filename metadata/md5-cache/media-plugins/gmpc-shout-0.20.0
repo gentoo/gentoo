@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=media-sound/gmpc-0.20.0 media-sound/vorbis-tools[ogg123] dev-libs/libxml2:= x11-libs/cairo:= virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DESCRIPTION=This plugin calls ogg123 and points it at mpd's shoutstream
+EAPI=6
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_SHOUT
+IUSE=nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/gmpc-0.20.0 media-sound/vorbis-tools[ogg123] dev-libs/libxml2:= x11-libs/cairo:=
+SLOT=0
+SRC_URI=mirror://sourceforge/musicpd/gmpc-shout-0.20.0.tar.gz
+_md5_=b64d8f7c75e22e464214067b7113fd8c

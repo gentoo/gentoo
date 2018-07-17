@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=dev-perl/File-HomeDir-0.610.0 virtual/perl-File-Path virtual/perl-File-Spec dev-perl/File-Tempdir dev-perl/MIME-tools >=dev-perl/MailTools-1.15 dev-perl/Mail-POP3Client dev-perl/Parse-RecDescent virtual/perl-parent >=virtual/perl-ExtUtils-MakeMaker-6.300.0 test? ( >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Mail sorting/delivery module for Perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Mail-Audit/
+IUSE=test
+KEYWORDS=amd64 ppc x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=dev-perl/File-HomeDir-0.610.0 virtual/perl-File-Path virtual/perl-File-Spec dev-perl/File-Tempdir dev-perl/MIME-tools >=dev-perl/MailTools-1.15 dev-perl/Mail-POP3Client dev-perl/Parse-RecDescent virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Mail-Audit-2.228.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=f41c4508b4cfa4604864db9a605103f4

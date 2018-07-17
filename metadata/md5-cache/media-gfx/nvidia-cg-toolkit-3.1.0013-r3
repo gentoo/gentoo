@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst test unpack
+DESCRIPTION=NVIDIA's C graphics compiler toolkit
+EAPI=5
+HOMEPAGE=http://developer.nvidia.com/cg_toolkit
+IUSE=doc examples abi_x86_32 abi_x86_64
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=NVIDIA-r1
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXmu x11-libs/libXt media-libs/glu media-libs/mesa media-libs/freeglut amd64? ( abi_x86_32? ( >=media-libs/glu-9.0.0-r1[abi_x86_32(-)] >=media-libs/mesa-9.1.6[abi_x86_32(-)] >=media-libs/freeglut-2.8.1[abi_x86_32(-)] >=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)] >=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXi-1.7.2[abi_x86_32(-)] >=x11-libs/libXmu-1.1.1-r1[abi_x86_32(-)] >=x11-libs/libXt-1.1.4[abi_x86_32(-)] ) ) x86? ( virtual/libstdc++:3.3 )
+REQUIRED_USE=|| ( abi_x86_32 abi_x86_64 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=abi_x86_32? ( http://developer.download.nvidia.com/cg/Cg_3.1/Cg-3.1_April2012_x86.tgz ) abi_x86_64? ( http://developer.download.nvidia.com/cg/Cg_3.1/Cg-3.1_April2012_x86_64.tgz )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=0b2368542dfd0fa00ce67ed99d1302bf

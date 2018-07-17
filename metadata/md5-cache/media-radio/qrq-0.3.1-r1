@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses:= pulseaudio? ( media-sound/pulseaudio )
+DESCRIPTION=Yet another CW trainer for Linux/Unix
+EAPI=6
+HOMEPAGE=http://fkurz.net/ham/qrq.html
+IUSE=pulseaudio
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:= pulseaudio? ( media-sound/pulseaudio )
+SLOT=0
+SRC_URI=http://fkurz.net/ham/qrq/qrq-0.3.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=7b95f88079b2a6a98ab1f612c5092ae8

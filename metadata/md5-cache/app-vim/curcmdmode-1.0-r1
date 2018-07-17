@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: library for extending vim's mode() function
+EAPI=6
+HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=745
+KEYWORDS=alpha amd64 ia64 ~mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=app-vim/genutils || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/curcmdmode-1.0.tar.bz2 https://dev.gentoo.org/~radhermit/vim/curcmdmode-1.0.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=ad72e66b14d51b454503aec2e560d770

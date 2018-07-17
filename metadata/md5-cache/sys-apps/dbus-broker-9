@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=audit? ( sys-process/audit ) launcher? ( >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux ) dev-python/docutils virtual/pkgconfig >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2
+DESCRIPTION=Linux D-Bus Message Broker
+EAPI=6
+HOMEPAGE=https://github.com/bus1/dbus-broker/wiki
+IUSE=audit +launcher selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=audit? ( sys-process/audit ) launcher? ( >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux )
+SLOT=0
+SRC_URI=https://github.com/bus1/dbus-broker/archive/v9.tar.gz -> dbus-broker-9.tar.gz https://github.com/c-util/c-dvar/archive/7706828ecda2d8c508d6fc233dc9d198bab482ad.tar.gz -> c-dvar-7706828ecda2d8c508d6fc233dc9d198bab482ad.tar.gz https://github.com/c-util/c-list/archive/72c59181d677a3f50b201d51f190b1bff02d4279.tar.gz -> c-list-72c59181d677a3f50b201d51f190b1bff02d4279.tar.gz https://github.com/c-util/c-rbtree/archive/825f626a16257c5f0b0c523c11ce1bca16851180.tar.gz -> c-rbtree-825f626a16257c5f0b0c523c11ce1bca16851180.tar.gz https://github.com/c-util/c-sundry/archive/50c8ccf01b39b3f11e59c69d1cafea5bef5a9769.tar.gz -> c-sundry-50c8ccf01b39b3f11e59c69d1cafea5bef5a9769.tar.gz
+_eclasses_=meson	eb124b9e9d7a5f1ebc89589fe73c816f	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=50798d8458c4ca23bad7120339d34102

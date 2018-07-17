@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=A Go function to provide sanitized anchor names
+EAPI=5
+HOMEPAGE=https://github.com/shurcooL/sanitized_anchor_name
+KEYWORDS=~amd64 ~arm64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/shurcooL/sanitized_anchor_name/archive/244f5ac.tar.gz -> sanitized-anchor-name-0_pre20150822.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=14510d36dbafb3ab11e1db6849adbea7

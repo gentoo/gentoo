@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install
+DEPEND=sys-boot/grub:2=[grub_platforms_xen] app-emulation/xen-tools:=
+DESCRIPTION=Grub2 built as a PV grub per the Xen PV Boot Protocol
+EAPI=5
+HOMEPAGE=https://blog.xenproject.org/2015/01/07/using-grub-2-as-a-bootloader-for-xen-pv-guests/
+KEYWORDS=amd64
+LICENSE=BSD-2
+RDEPEND=sys-boot/grub:2=[grub_platforms_xen] app-emulation/xen-tools:=
+RESTRICT=test
+SLOT=0
+_md5_=0b8f13ec2a3cae4ff0e3b123895f511a

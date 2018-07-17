@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=sys-devel/binutils-config lto? ( app-arch/xar ) sys-devel/llvm:* sys-libs/libcxx test? ( >=dev-lang/perl-5.8.8 )
+DESCRIPTION=Darwin assembler as(1) and static linker ld(1), Xcode Tools 7.3.1
+EAPI=5
+HOMEPAGE=http://www.opensource.apple.com/darwinsource/
+IUSE=lto test multitarget
+KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+LICENSE=APSL-2
+RDEPEND=sys-devel/binutils-config lto? ( app-arch/xar ) sys-devel/llvm:* sys-libs/libcxx
+SLOT=7
+SRC_URI=http://www.opensource.apple.com/tarballs/ld64/ld64-264.3.102.tar.gz http://www.opensource.apple.com/tarballs/cctools/cctools-886.tar.gz http://www.opensource.apple.com/tarballs/dyld/dyld-360.18.tar.gz http://www.opensource.apple.com/tarballs/libunwind/libunwind-35.3.tar.gz https://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-4.3-r1.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-5.1-r2.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-6.1-r1.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-6.3-r1.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-7.0-r2.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-7.2-r0.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-7.3-r1.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=6f3a6a0e104c7910468a553d41342a24

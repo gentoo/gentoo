@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Text-Iconv dev-lang/perl:=
+DESCRIPTION=Encode.pm emulation layer
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Encode-compat/
+KEYWORDS=amd64 ia64 ~ppc sparc x86
+LICENSE=Artistic
+RDEPEND=dev-perl/Text-Iconv dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AU/AUTRIJUS/Encode-compat-0.07.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=91a8c35e5e3a39ca922845760a6ad1e8

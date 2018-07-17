@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=virtual/libusb virtual/udev dev-libs/go-fuse dev-libs/go-usb dev-lang/go media-libs/libmtp >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=a simple FUSE filesystem for mounting Android devices as a MTP device
+EAPI=5
+HOMEPAGE=https://github.com/hanwen/go-mtpfs
+LICENSE=BSD
+RDEPEND=virtual/libusb virtual/udev
+RESTRICT=test
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=cf12761ca3f8656bb8d8cdbb5e16d061

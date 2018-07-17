@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare test
+DESCRIPTION=Scheme interpreter and native Scheme to C compiler
+EAPI=6
+HOMEPAGE=http://www.call-cc.org/
+IUSE=doc
+KEYWORDS=alpha amd64 ppc ppc64 x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://code.call-cc.org/releases/4.13.0/chicken-4.13.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=9082693385e50ca4c701c54f60866c61

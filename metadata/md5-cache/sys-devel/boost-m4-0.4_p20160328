@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile configure install
+DESCRIPTION=Another set of autoconf macros for compiling against boost
+EAPI=6
+HOMEPAGE=https://github.com/tsuna/boost.m4
+KEYWORDS=alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~soap/distfiles/boost-m4-0.4_p20160328.tar.gz
+_md5_=a31141e767e67a54c43c49c34552419d

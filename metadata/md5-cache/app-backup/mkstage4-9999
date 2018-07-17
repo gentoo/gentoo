@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Bash Utility for Creating Stage 4 Tarballs
+EAPI=6
+HOMEPAGE=https://github.com/TheChymera/mkstage4
+LICENSE=GPL-3
+RDEPEND=app-shells/bash app-arch/tar
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=7b0983df0b48ef5140d312cdb36dd359

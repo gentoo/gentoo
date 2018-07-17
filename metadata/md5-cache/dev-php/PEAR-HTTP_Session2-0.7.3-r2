@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test
+DEPEND=test? ( dev-php/PEAR-PEAR )
+DESCRIPTION=Wraps PHP's session functions providing extras like db storage for session data
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/HTTP_Session2
+IUSE=minimal test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=!minimal? ( >=dev-php/PEAR-MDB2-2.4.1 >=dev-php/PEAR-DB-1.7.11 ) >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTTP_Session2-0.7.3.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=f059ba0357347270fb83ce4e62353895

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Video chat browser plug-in for Google Talk
+EAPI=5
+HOMEPAGE=https://www.google.com/chat/video
+IUSE=libnotify selinux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Google-TOS openssl BSD
+RDEPEND=|| ( media-sound/pulseaudio media-libs/alsa-lib ) dev-libs/expat dev-libs/glib:2 sys-libs/glibc x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXrender x11-libs/pango sys-apps/lsb-release selinux? ( sec-policy/selinux-googletalk ) libnotify? ( x11-libs/libnotify )
+RESTRICT=fetch strip
+SLOT=0
+SRC_URI=x86? ( https://dl.google.com/linux/talkplugin/deb/pool/main/g/google-talkplugin/google-talkplugin_5.41.0.0-1_i386.deb ) amd64? ( https://dl.google.com/linux/talkplugin/deb/pool/main/g/google-talkplugin/google-talkplugin_5.41.0.0-1_amd64.deb )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	mozextension	89a560beaf496e7cb89f3d79d4aef09e	multilib	97f470f374f2e94ccab04a2fb21d811e	nsplugins	2049586e425364a1c5bdb004205d1758	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=9a6df4ae3ad01f47f93c1ed623addcc9

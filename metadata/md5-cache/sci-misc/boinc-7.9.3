@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=app-text/docbook-xml-dtd:4.4 app-text/docbook2X sys-devel/gettext X? ( virtual/imagemagick-tools[png,tiff] ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=The Berkeley Open Infrastructure for Network Computing
+EAPI=6
+HOMEPAGE=http://boinc.ssl.berkeley.edu/
+IUSE=X cuda curl_ssl_gnutls curl_ssl_libressl +curl_ssl_openssl kernel_linux
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=app-misc/ca-certificates-20080809 cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)] sys-apps/util-linux sys-libs/zlib X? ( dev-db/sqlite:3 media-libs/freeglut virtual/jpeg:0= x11-libs/gtk+:3 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:3.0-gtk3[X,opengl,webkit] ) !app-admin/quickswitch
+REQUIRED_USE=^^ ( curl_ssl_gnutls curl_ssl_libressl curl_ssl_openssl )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/BOINC/boinc/archive/client_release/7.10/7.9.3.tar.gz -> boinc-7.9.3.tar.gz X? ( https://boinc.berkeley.edu/logo/boinc_glossy2_512_F.tif -> boinc.tif )
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=54e41e1fd3294f98259cf0ed6d4462af

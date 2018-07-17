@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DEPEND=>=app-text/duali-0.2.0-r1
+DESCRIPTION=Dictionary data for the Arab dictionary project duali
+EAPI=6
+HOMEPAGE=https://www.arabeyes.org/Duali
+KEYWORDS=alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/arabeyes/duali-data-0.1b.tar.gz
+_md5_=80ada95f80fd2c3a8ca7db33aa638f2d

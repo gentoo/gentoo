@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-3.9.6 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+DESCRIPTION=Evaluation of electrostatic properties of nanoscale biomolecular systems
+EAPI=5
+HOMEPAGE=http://www.poissonboltzmann.org/apbs/
+IUSE=debug doc examples fast +fetk iapbs mpi openmp python tools python_targets_python2_7
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=dev-cpp/eigen:3 dev-libs/maloc[mpi=] virtual/blas sys-libs/readline fetk? ( sci-libs/fetk sci-libs/amd sci-libs/umfpack sci-libs/superlu ) mpi? ( virtual/mpi ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+REQUIRED_USE=iapbs? ( fetk ) mpi? ( !python ) python? ( tools fetk iapbs python_targets_python2_7 ) python_targets_python2_7
+SLOT=0
+SRC_URI=https://github.com/Electrostatics/apbs-pdb2pqr/archive/74fcb8676de69ed04ddab8976a8b05a6caaf4d65.zip -> apbs-1.4.1.zip
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b04838eb8d0fe55b17589c3ab6d29280

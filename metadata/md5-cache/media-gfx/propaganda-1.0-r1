@@ -1,0 +1,9 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Propaganda Volume 1-14 + E. Tiling images for your desktop
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=mirror://gentoo/Propaganda-Vol-01.tar.gz mirror://gentoo/Propaganda-Vol-02.tar.gz mirror://gentoo/Propaganda-Vol-03.tar.gz mirror://gentoo/Propaganda-Vol-04.tar.gz mirror://gentoo/Propaganda-Vol-05.tar.gz mirror://gentoo/Propaganda-Vol-06.tar.gz mirror://gentoo/Propaganda-Vol-07.tar.gz mirror://gentoo/Propaganda-Vol-08.tar.gz mirror://gentoo/Propaganda-Vol-09.tar.gz mirror://gentoo/Propaganda-Vol-10.tar.gz mirror://gentoo/Propaganda-Vol-11.tar.gz mirror://gentoo/Propaganda-Vol-12.tar.gz mirror://gentoo/Propaganda-13.tar.gz mirror://gentoo/Propaganda-14.tar.gz mirror://gentoo/Propaganda-For-E.tar.gz
+_md5_=6fe82bf2bc90b01a5af6c0ca893c655a

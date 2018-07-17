@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXt >=x11-libs/motif-2.3:0 ) cups? ( net-print/cups ) virtual/libusb:0
+DESCRIPTION=mtink is a status monitor and inkjet cartridge changer for some Epson printers
+EAPI=6
+HOMEPAGE=http://xwtools.automatix.de/
+IUSE=cups doc X
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXt >=x11-libs/motif-2.3:0 ) cups? ( net-print/cups ) virtual/libusb:0
+SLOT=0
+SRC_URI=http://xwtools.automatix.de/files/mtink-1.0.16.tar.gz
+_md5_=6d5d7b7347151e8f7a3c8169d1ea55d3

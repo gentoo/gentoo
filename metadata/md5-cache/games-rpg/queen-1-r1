@@ -1,0 +1,14 @@
+DEFINED_PHASES=install unpack
+DEPEND=l10n_de? ( games-engines/scummvm[vorbis] ) l10n_en? ( games-engines/scummvm[mp3?] ) l10n_fr? ( games-engines/scummvm[vorbis] ) l10n_he? ( games-engines/scummvm[vorbis] ) l10n_it? ( games-engines/scummvm[vorbis] ) l10n_de? ( app-arch/unzip ) l10n_en? ( mp3? ( app-arch/unzip ) ) l10n_fr? ( app-arch/unzip ) l10n_he? ( app-arch/unzip ) l10n_it? ( app-arch/unzip )
+DESCRIPTION=Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s
+EAPI=6
+HOMEPAGE=http://scummvm.sourceforge.net/
+IUSE=mp3 l10n_de +l10n_en l10n_fr l10n_he l10n_it
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=queen
+RDEPEND=l10n_de? ( games-engines/scummvm[vorbis] ) l10n_en? ( games-engines/scummvm[mp3?] ) l10n_fr? ( games-engines/scummvm[vorbis] ) l10n_he? ( games-engines/scummvm[vorbis] ) l10n_it? ( games-engines/scummvm[vorbis] )
+REQUIRED_USE=|| ( l10n_de l10n_en l10n_fr l10n_he l10n_it )
+SLOT=0
+SRC_URI=l10n_de? ( mirror://sourceforge/scummvm/FOTAQ_Ger_talkie-1.0.zip http://www.lysator.liu.se/~zino/scummvm/queen/readme.txt -> queen-readme.txt ) l10n_en? ( mp3? ( mirror://sourceforge/scummvm/FOTAQ_Talkie-1.1.zip ) !mp3? ( http://www.lysator.liu.se/~zino/scummvm/queen/queen.1.bz2 http://www.lysator.liu.se/~zino/scummvm/queen/readme.txt -> queen-readme.txt ) ) l10n_fr? ( mirror://sourceforge/scummvm/FOTAQ_Fr_Talkie_1.0.zip ) l10n_he? ( mirror://sourceforge/scummvm/FOTAQ_Heb_talkie.zip http://www.lysator.liu.se/~zino/scummvm/queen/readme.txt -> queen-readme.txt ) l10n_it? ( mirror://sourceforge/scummvm/FOTAQ_It_Talkie_1.0.zip ) http://www.scummvm.org/images/cat-queen.png
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4dd867ef6ff08929f6191b45dd339901

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=The Csound reference manual
+EAPI=6
+HOMEPAGE=http://csounds.com/
+IUSE=html l10n_fr
+KEYWORDS=~amd64 ~x86
+LICENSE=FDL-1.2+
+SLOT=0
+SRC_URI=https://github.com/csound/csound/releases/download/6.08.0/Csound6.08_manual_pdf.zip l10n_fr? ( https://github.com/csound/csound/releases/download/6.08.0/Csound6.08_manual-fr_pdf.zip ) html? ( https://github.com/csound/csound/releases/download/6.08.0/Csound6.08_manual_html.zip l10n_fr? ( https://github.com/csound/csound/releases/download/6.08.0/Csound6.08_manual-fr_html.zip ) )
+_md5_=09c303215feed375148367efae0abf5f

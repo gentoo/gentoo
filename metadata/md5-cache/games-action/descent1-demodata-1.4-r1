@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=app-arch/unzip app-arch/unarj
+DESCRIPTION=Demo data files for Descent 1
+EAPI=6
+HOMEPAGE=http://www.interplay.com/games/descent.php
+KEYWORDS=~amd64 ~x86
+LICENSE=free-noncomm
+RDEPEND=!games-action/descent1-data
+SLOT=0
+SRC_URI=http://icculus.org/d2x/data/desc14sw.exe ftp://ftp.funet.fi/pub/msdos/games/interplay/desc14sw.exe
+_eclasses_=unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_md5_=eccd090b8ffa2f31c6dfd19a3a50b6bf

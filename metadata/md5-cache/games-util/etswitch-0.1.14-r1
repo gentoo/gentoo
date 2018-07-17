@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=x11-libs/libX11 x11-libs/libXxf86vm x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-base/xorg-proto
+DESCRIPTION=*nix minimizer for a few games
+EAPI=6
+HOMEPAGE=http://hem.bredband.net/b400150/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXxf86vm x11-libs/libXmu x11-libs/libXpm
+SLOT=0
+SRC_URI=http://hem.bredband.net/b400150/etswitch/etswitch-0.1.14.tar.gz
+_md5_=4407ff455dbc7a77b085ffc520162f93

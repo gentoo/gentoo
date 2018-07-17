@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=app-text/sablotron media-libs/libpng:= media-libs/tiff:= www-client/lynx x11-libs/libXaw x11-libs/libXpm x11-libs/motif:0 opengl? ( media-libs/glew:= media-libs/freeglut || ( media-libs/mesa[motif] ( media-libs/mesa x11-libs/libGLw ) ) ) sys-process/time x11-misc/makedepend
+DESCRIPTION=Tools for DNA/RNA sequence database handling and phylogenetic analysis
+EAPI=6
+HOMEPAGE=http://www.arb-home.de/
+IUSE=debug +opengl test
+KEYWORDS=~amd64 ~x86
+LICENSE=arb
+RDEPEND=app-text/sablotron media-libs/libpng:= media-libs/tiff:= www-client/lynx x11-libs/libXaw x11-libs/libXpm x11-libs/motif:0 opengl? ( media-libs/glew:= media-libs/freeglut || ( media-libs/mesa[motif] ( media-libs/mesa x11-libs/libGLw ) ) ) sci-visualization/gnuplot
+RESTRICT=debug? ( test )
+SLOT=0
+SRC_URI=http://download.arb-home.de/release/arb-6.0.6/arb-6.0.6-source.tgz -> arb-6.0.6.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c13fb556a26877506fa69c3a46586bbd

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst test
+DEPEND=doc? ( app-doc/doxygen )
+DESCRIPTION=OO-DBMS with interfaces for C/C++/Java/PHP/Perl
+EAPI=6
+HOMEPAGE=http://www.garret.ru/~knizhnik/gigabase.html
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://sourceforge/gigabase/gigabase-3.83.tar.gz
+_md5_=27d01a92ce8d4864bbe399c1ab41b241

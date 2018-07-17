@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ml/core_kernel:= dev-ml/ocaml-extunix:= dev-ml/ocplib-endian:= dev-ml/res:= dev-ml/ocaml-uint:= dev-libs/capnproto:= test? ( dev-ml/core:= dev-ml/ounit ) dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=OCaml code generator plugin for the Cap'n Proto serialization framework
+EAPI=5
+HOMEPAGE=https://github.com/pelzlpj/capnp-ocaml
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=dev-ml/core_kernel:= dev-ml/ocaml-extunix:= dev-ml/ocplib-endian:= dev-ml/res:= dev-ml/ocaml-uint:= dev-libs/capnproto:= >=dev-lang/ocaml-4:=
+SLOT=0/3.0.0
+SRC_URI=https://github.com/pelzlpj/capnp-ocaml/archive/v3.0.0.tar.gz -> capnp-ocaml-3.0.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=a1e142261b117d0c118b1c79b7e385d5

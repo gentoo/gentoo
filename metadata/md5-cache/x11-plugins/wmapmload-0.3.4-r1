@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm
+DESCRIPTION=dockapp that monitors your apm battery status
+EAPI=6
+HOMEPAGE=http://tnemeth.free.fr/projets/dockapps.html
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm
+SLOT=0
+SRC_URI=http://tnemeth.free.fr/projets/programmes/wmapmload-0.3.4.tar.gz
+_md5_=12acf68356ea95af4b4dfd827883e543

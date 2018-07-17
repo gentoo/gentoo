@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Carp-Clan dev-perl/Class-Load dev-perl/Data-Visitor >=dev-perl/DateTime-0.51 dev-perl/DateTime-Format-Strptime >=dev-perl/Devel-StackTrace-1.21 virtual/perl-Digest-SHA virtual/perl-Encode dev-perl/HTML-Parser dev-perl/HTTP-Message >=dev-perl/IO-Socket-SSL-2.5.0 dev-perl/JSON-MaybeXS dev-perl/LWP-Protocol-https virtual/perl-Scalar-List-Utils >=dev-perl/Moose-0.940.0 dev-perl/MooseX-Role-Parameterized dev-perl/Net-HTTP !=dev-perl/Net-HTTP-6.40.0 !=dev-perl/Net-HTTP-6.50.0 virtual/perl-libnet >=dev-perl/Net-OAuth-0.25 virtual/perl-Time-HiRes >=dev-perl/Try-Tiny-0.30.0 >=dev-perl/URI-1.400.0 virtual/perl-libnet dev-perl/namespace-autoclean >=virtual/perl-ExtUtils-MakeMaker-7.110.100 test? ( virtual/perl-Carp virtual/perl-File-Spec virtual/perl-IO >=dev-perl/libwww-perl-5.819.0 dev-perl/Test-Deep dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.980.0 dev-perl/Test-Warn ) dev-lang/perl:=
+DESCRIPTION=A perl interface to the Twitter API
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-Twitter/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86 ~x64-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Carp-Clan dev-perl/Class-Load dev-perl/Data-Visitor >=dev-perl/DateTime-0.51 dev-perl/DateTime-Format-Strptime >=dev-perl/Devel-StackTrace-1.21 virtual/perl-Digest-SHA virtual/perl-Encode dev-perl/HTML-Parser dev-perl/HTTP-Message >=dev-perl/IO-Socket-SSL-2.5.0 dev-perl/JSON-MaybeXS dev-perl/LWP-Protocol-https virtual/perl-Scalar-List-Utils >=dev-perl/Moose-0.940.0 dev-perl/MooseX-Role-Parameterized dev-perl/Net-HTTP !=dev-perl/Net-HTTP-6.40.0 !=dev-perl/Net-HTTP-6.50.0 virtual/perl-libnet >=dev-perl/Net-OAuth-0.25 virtual/perl-Time-HiRes >=dev-perl/Try-Tiny-0.30.0 >=dev-perl/URI-1.400.0 virtual/perl-libnet dev-perl/namespace-autoclean dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MM/MMIMS/Net-Twitter-4.01042.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=2b6b294af1491e9d427100ab98a5666d

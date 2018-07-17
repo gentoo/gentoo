@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=app-arch/libarchive:= app-arch/xz-utils:= app-crypt/gpgme:= dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= dev-libs/openssl:= net-misc/curl:= sys-apps/util-linux:= sys-fs/fuse:= sys-libs/zlib:= grub? ( sys-boot/grub:* ) selinux? ( sys-libs/libselinux:= ) soup? ( net-libs/libsoup:= ) systemd? ( sys-apps/systemd:= ) zeroconf? ( net-dns/avahi:* ) sys-devel/bison sys-devel/flex
+DESCRIPTION=Operating system and container binary deployment and upgrades
+EAPI=6
+HOMEPAGE=https://ostree.readthedocs.io/en/latest/
+IUSE=grub selinux soup systemd zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2+
+RDEPEND=app-arch/libarchive:= app-arch/xz-utils:= app-crypt/gpgme:= dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= dev-libs/openssl:= net-misc/curl:= sys-apps/util-linux:= sys-fs/fuse:= sys-libs/zlib:= grub? ( sys-boot/grub:* ) selinux? ( sys-libs/libselinux:= ) soup? ( net-libs/libsoup:= ) systemd? ( sys-apps/systemd:= ) zeroconf? ( net-dns/avahi:* )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/ostreedev/ostree/releases/download/v2018.5/libostree-2018.5.tar.xz -> ostree-2018.5.tar.xz
+_md5_=0274150ecbc2043e93654da4273d4086

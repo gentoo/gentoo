@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Digest-SHA dev-perl/HTTP-Message dev-perl/JSON dev-perl/libwww-perl virtual/perl-MIME-Base64 >=dev-perl/Net-OpenID-Common-1.190.0 virtual/perl-Storable virtual/perl-Time-Local virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/CGI virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Library for consumers of OpenID identities
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-OpenID-Consumer/
+IUSE=test
+KEYWORDS=amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Digest-SHA dev-perl/HTTP-Message dev-perl/JSON dev-perl/libwww-perl virtual/perl-MIME-Base64 >=dev-perl/Net-OpenID-Common-1.190.0 virtual/perl-Storable virtual/perl-Time-Local dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/W/WR/WROG/Net-OpenID-Consumer-1.18.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=15f5d1aa2b653348a76673f5d0fbfca0

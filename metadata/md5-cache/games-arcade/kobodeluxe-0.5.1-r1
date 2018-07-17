@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=media-libs/libsdl media-libs/sdl-image[png] opengl? ( virtual/opengl )
+DESCRIPTION=An SDL port of xkobo, a addictive space shoot-em-up
+EAPI=6
+HOMEPAGE=http://www.olofson.net/kobodl/
+IUSE=opengl
+KEYWORDS=~alpha ~amd64 ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/sdl-image[png] opengl? ( virtual/opengl )
+SLOT=0
+SRC_URI=http://www.olofson.net/kobodl/download/KoboDeluxe-0.5.1.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=e545e86aa8ae4eafc4446ce1e19918d2

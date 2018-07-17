@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Top-down roguelike space ship simulator
+EAPI=6
+HOMEPAGE=https://www.gog.com/game/faster_than_light
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GOG-EULA
+RDEPEND=media-libs/freetype media-libs/libsdl[X,sound,opengl,video] media-libs/libpng sys-libs/zlib virtual/opengl
+RESTRICT=bindist fetch mirror strip test
+SLOT=0
+SRC_URI=ftl_advanced_edition_en_1_6_7_18662.sh
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_md5_=8de35f33686a2047b6f7e3be5158bf2d

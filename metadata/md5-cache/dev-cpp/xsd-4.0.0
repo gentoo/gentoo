@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=>=dev-libs/xerces-c-3.0.0 dev-libs/boost:=[threads] dev-cpp/libcutl >=dev-cpp/libxsd-frontend-2.0.0 ace? ( dev-libs/ace ) zlib? ( sys-libs/zlib ) dev-util/build doc? ( app-doc/doxygen )
+DESCRIPTION=An open-source, cross-platform W3C XML Schema to C++ data binding compiler
+EAPI=6
+HOMEPAGE=https://www.codesynthesis.com/products/xsd/
+IUSE=ace doc examples test zlib
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/xerces-c-3.0.0 dev-libs/boost:=[threads] dev-cpp/libcutl >=dev-cpp/libxsd-frontend-2.0.0 ace? ( dev-libs/ace ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=https://www.codesynthesis.com/download/xsd/4.0/xsd-4.0.0.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=c6ef9fc8d144242eb1588ac0ad75880d

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=sys-apps/kbd >=sys-apps/sed-4
+DESCRIPTION=The Alpha MIniLOader, for Alpha Machines without SRM
+EAPI=0
+HOMEPAGE=http://milo.core-systems.de/
+KEYWORDS=-* ~alpha
+LICENSE=MILO
+RDEPEND=sys-fs/mtools
+SLOT=0
+SRC_URI=http://www.suse.de/~stepan/source/milo-2.2-18.tar.bz2 mirror://kernel/linux/kernel/v2.2/linux-2.2.25.tar.bz2 https://dev.gentoo.org/~taviso/milo/ldmilo-patched-20010430 http://ftp.namesys.com/pub/reiserfs-for-2.2/linux-2.2.20-reiserfs-3.5.35.diff.bz2 https://dev.gentoo.org/~taviso/milo/linload.exe http://www.ibiblio.org/pub/Linux/docs/HOWTO/MILO-HOWTO
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=aebd27efcffff55978c210b4106a10fb

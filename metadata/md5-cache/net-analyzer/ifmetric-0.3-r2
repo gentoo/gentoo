@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DEPEND=sys-kernel/linux-headers
+DESCRIPTION=Set metrics of all IPv4 routes attached to a given network interface at once
+EAPI=6
+HOMEPAGE=http://0pointer.de/lennart/projects/ifmetric/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://0pointer.de/lennart/projects/ifmetric/ifmetric-0.3.tar.gz
+_md5_=3751f1104cb707b6d6b792ac6e38519f

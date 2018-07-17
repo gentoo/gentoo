@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=X? ( || ( x11-misc/xclip x11-misc/xsel ) ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-misc/curl dev-libs/libxml2 pinentry? ( app-crypt/pinentry ) app-text/asciidoc virtual/pkgconfig
+DESCRIPTION=Interfaces with LastPass.com from the command line.
+EAPI=6
+HOMEPAGE=https://github.com/lastpass/lastpass-cli
+IUSE=libressl X +pinentry
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=X? ( || ( x11-misc/xclip x11-misc/xsel ) ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-misc/curl dev-libs/libxml2 pinentry? ( app-crypt/pinentry )
+SLOT=0
+SRC_URI=https://github.com/lastpass/lastpass-cli/archive/v1.0.0.tar.gz -> lastpass-cli-1.0.0.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=4fb7673cd9f4b3d9ec2b422a1285148b

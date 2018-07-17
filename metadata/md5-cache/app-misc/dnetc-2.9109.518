@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DESCRIPTION=distributed.net client
+EAPI=2
+HOMEPAGE=http://www.distributed.net
+KEYWORDS=~amd64 ~ppc
+LICENSE=distributed.net GPL-2
+RDEPEND=net-dns/bind-tools
+RESTRICT=mirror
+SLOT=0
+SRC_URI=amd64? ( http://http.distributed.net/pub/dcti/v2.9109/dnetc518-linux-amd64.tar.gz ) ppc? ( http://http.distributed.net/pub/dcti/v2.9109/dnetc518-linux-ppc-uclibc.tar.gz )
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=13943035d88731dd6733082125814463

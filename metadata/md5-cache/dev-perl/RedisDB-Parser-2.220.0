@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-Encode-2.100.0 dev-perl/Try-Tiny >=virtual/perl-ExtUtils-MakeMaker-6.300.200 >=virtual/perl-ExtUtils-CBuilder-0.270.0 test? ( dev-perl/Test-FailWarnings >=dev-perl/Test-Most-0.220.0 >=virtual/perl-Test-Simple-0.940.0 ) dev-lang/perl:=
+DESCRIPTION=Redis protocol parser for RedisDB
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/RedisDB-Parser/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-Encode-2.100.0 dev-perl/Try-Tiny dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/Z/ZW/ZWON/RedisDB-Parser-2.22.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=b80bbbc3b6302c81d86ca845132afee1

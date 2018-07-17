@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Yet another snippet extension for Emacs
+EAPI=6
+HOMEPAGE=http://joaotavora.github.com/yasnippet/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/joaotavora/yasnippet/archive/0.13.0.tar.gz -> yasnippet-0.13.0.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=bd888dc018b439f9ef025d6d6d9c8afa

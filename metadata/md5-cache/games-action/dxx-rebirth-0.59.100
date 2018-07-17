@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=dev-games/physfs:0=[hog,mvl,zip] media-libs/libsdl:0=[joystick,opengl?,sound,video] music? ( media-libs/sdl-mixer:0= ) opengl? ( virtual/opengl virtual/glu ) dev-util/scons[python_targets_python2_7] dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Descent Rebirth - enhanced Descent 1 & 2 engine
+EAPI=6
+HOMEPAGE=https://www.dxx-rebirth.com/
+IUSE=+data debug +descent1 +descent2 ipv6 l10n_de +music +opengl opl3-musicpack sc55-musicpack +textures
+KEYWORDS=~amd64 ~x86
+LICENSE=DXX-Rebirth GPL-3 public-domain
+RDEPEND=dev-games/physfs:0=[hog,mvl,zip] media-libs/libsdl:0=[joystick,opengl?,sound,video] music? ( media-libs/sdl-mixer:0= ) opengl? ( virtual/opengl virtual/glu ) data? ( descent1? ( || ( games-action/descent1-data games-action/descent1-demodata ) ) descent2? ( || ( games-action/descent2-data games-action/descent2-demodata ) ) ) music? ( !opl3-musicpack? ( !sc55-musicpack? ( media-libs/sdl-mixer:0=[midi] ) ) opl3-musicpack? ( media-libs/sdl-mixer:0=[vorbis] ) sc55-musicpack? ( media-libs/sdl-mixer:0=[vorbis] ) ) !games-action/d1x-rebirth !games-action/d2x-rebirth
+REQUIRED_USE=|| ( descent1 descent2 ) ?? ( opl3-musicpack sc55-musicpack ) opl3-musicpack? ( music ) sc55-musicpack? ( music )
+SLOT=0
+SRC_URI=https://www.dxx-rebirth.com/download/dxx/dxx-rebirth_v0.59.100-src.tar.gz opl3-musicpack? ( descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-opl3-music.dxa ) descent2? ( https://www.dxx-rebirth.com/download/dxx/res/d2xr-opl3-music.dxa ) ) sc55-musicpack? ( descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa ) descent2? ( https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa ) ) l10n_de? ( descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-briefings-ger.dxa ) descent2? ( https://www.dxx-rebirth.com/download/dxx/res/d2xr-briefings-ger.dxa ) ) textures? ( descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa ) )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=c0865e5009077d1ec4befbe1d87d85c1

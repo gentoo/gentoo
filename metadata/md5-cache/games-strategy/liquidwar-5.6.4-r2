@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=media-libs/allegro-4.2:0[X]
+DESCRIPTION=Unique multiplayer wargame
+EAPI=6
+HOMEPAGE=http://www.ufoot.org/liquidwar/
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/allegro-4.2:0[X]
+RESTRICT=test
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/liquidwar/liquidwar-5.6.4.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=b96bac4be5d2f69f910c3f9fdc066195

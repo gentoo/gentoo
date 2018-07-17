@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=app-arch/sharutils
+DESCRIPTION=PDB Record I/O Libraries -- c++ version
+EAPI=6
+HOMEPAGE=http://www.cgl.ucsf.edu/Overview/software.html
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://gentoo/libpdb++-040728.shar
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6a898b56f1363b0d1a06ce2650bbee9b

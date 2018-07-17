@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Free implementation of the DVB Common Scrambling Algorithm - DVB/CSA
+EAPI=6
+HOMEPAGE=https://www.videolan.org/developers/libdvbcsa.html
+IUSE=debug cpu_flags_x86_mmx cpu_flags_x86_sse2 static-libs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://download.videolan.org/pub/videolan/libdvbcsa/1.1.0/libdvbcsa-1.1.0.tar.gz
+_md5_=aa94181a6b0b99f027c23e44dc3d8d82

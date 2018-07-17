@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=app-text/dictd-1.5.5
+DESCRIPTION=Webster's Revised Unabridged Dictionary (1913) for dict
+EAPI=0
+HOMEPAGE=http://www.dict.org/
+KEYWORDS=x86 ppc sparc amd64 ppc64
+LICENSE=GPL-2
+RDEPEND=>=app-text/dictd-1.5.5
+SLOT=0
+SRC_URI=ftp://ftp.dict.org/pub/dict/pre/dict-web1913-1.4-pre.tar.gz
+_md5_=6445bca1041509b3ecb96fb721c51a30

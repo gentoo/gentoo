@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-libs/zlib openssl? ( dev-libs/openssl:0= ) !openssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) mhash? ( app-crypt/mhash ) ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=portable CVS repository synchronization utility
+EAPI=6
+HOMEPAGE=https://github.com/cvsync/cvsync
+IUSE=gcrypt mhash +openssl
+LICENSE=BSD
+RDEPEND=sys-libs/zlib openssl? ( dev-libs/openssl:0= ) !openssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) mhash? ( app-crypt/mhash ) )
+REQUIRED_USE=!openssl? ( ^^ ( gcrypt mhash ) )
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=cd74f7e212df95a483e096717e169aa4

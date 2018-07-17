@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-util/patchutils
+DESCRIPTION=Run a command in a virtual X server environment
+EAPI=5
+HOMEPAGE=https://packages.debian.org/sid/xvfb
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=x11-apps/xauth x11-base/xorg-server[xvfb]
+SLOT=0
+SRC_URI=http://snapshot.debian.org/archive/debian/20160906T162237Z/pool/main/x/xorg-server/xorg-server_1.18.4-2.diff.gz
+_md5_=b1136d6c53ec405606789583be532eba

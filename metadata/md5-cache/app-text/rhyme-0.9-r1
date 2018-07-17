@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=sys-libs/readline-4.3 >=sys-libs/gdbm-1.8.0
+DESCRIPTION=Console based Rhyming Dictionary
+EAPI=2
+HOMEPAGE=http://rhyme.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/readline-4.3 >=sys-libs/gdbm-1.8.0
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/rhyme/rhyme-0.9.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=428d953de7eb80e54fbc82190c5be3c7

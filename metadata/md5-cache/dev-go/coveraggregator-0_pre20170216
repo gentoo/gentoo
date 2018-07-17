@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-go/go-tools:= >=dev-lang/go-1.9
+DESCRIPTION=Cover profile aggregator for golang
+EAPI=6
+HOMEPAGE=https://github.com/chouquette/coveraggregator
+KEYWORDS=~amd64
+LICENSE=WTFPL-2
+SLOT=0
+SRC_URI=https://github.com/chouquette/coveraggregator/archive/af12d4d73479a1b49a16bbed8e5c182999dd62be.tar.gz -> coveraggregator-0_pre20170216.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=63ef8c713cb98485f2677bc7a0a4bc7d

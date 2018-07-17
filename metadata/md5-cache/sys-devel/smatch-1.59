@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-db/sqlite
+DESCRIPTION=static analysis tool for C
+EAPI=4
+HOMEPAGE=http://smatch.sourceforge.net/
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=OSL-1.1
+RDEPEND=dev-db/sqlite
+SLOT=0
+SRC_URI=http://repo.or.cz/w/smatch.git/snapshot/1.59.tar.gz -> smatch-1.59.tar.gz mirror://gentoo/smatch-1.59.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=56543250af4c114a7bbb389c4ddaab5c

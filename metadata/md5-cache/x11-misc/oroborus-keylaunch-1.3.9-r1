@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile prepare
+DEPEND=x11-libs/libX11 !x11-wm/oroborus-extras
+DESCRIPTION=utility for binding keys in Oroborus
+EAPI=6
+HOMEPAGE=https://www.oroborus.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 !x11-wm/oroborus-extras
+SLOT=0
+SRC_URI=mirror://debian/pool/main/k//keylaunch//keylaunch_1.3.9.tar.gz
+_md5_=402a02a3a742fef11303143fe9907091

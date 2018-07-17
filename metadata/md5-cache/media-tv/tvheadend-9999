@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst setup unpack
+DEPEND=virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0/55.57.57[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) sys-devel/gettext virtual/pkgconfig dvb? ( virtual/linuxtv-dvb-headers ) ffmpeg? ( opus? ( media-libs/opus ) vpx? ( media-libs/libvpx ) x264? ( media-libs/x264 ) x265? ( media-libs/x265 ) ) >=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
+DESCRIPTION=Tvheadend is a TV streaming server and digital video recorder
+EAPI=6
+HOMEPAGE=https://tvheadend.org/
+IUSE=+capmt +constcw +cwc dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib kernel_linux
+LICENSE=GPL-3
+RDEPEND=virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) ffmpeg? ( media-video/ffmpeg:0/55.57.57[opus?,vpx?,x264?,x265?] ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( media-tv/dtv-scan-tables ) xmltv? ( media-tv/xmltv )
+REQUIRED_USE=dvbcsa? ( || ( capmt constcw cwc ) ) ddci? ( dvb )
+SLOT=0
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	git-r3	8f6de46b0aa318aea0e8cac62ece098b	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=88a30c1227af309240af544a8d749a8f

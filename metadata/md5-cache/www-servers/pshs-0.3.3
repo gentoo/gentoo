@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) upnp? ( net-libs/miniupnpc:0= ) netlink? ( sys-apps/iproute2[-minimal] >=sys-kernel/linux-headers-2.6.27 )
+DESCRIPTION=Pretty small HTTP server -- a command-line tool to share files
+EAPI=6
+HOMEPAGE=https://github.com/mgorny/pshs/
+IUSE=libressl +magic +netlink qrcode ssl upnp
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) upnp? ( net-libs/miniupnpc:0= )
+SLOT=0
+SRC_URI=https://github.com/mgorny/pshs/releases/download/v0.3.3/pshs-0.3.3.tar.bz2
+_md5_=23dc0af29a5bde288f971f627a6b31b8

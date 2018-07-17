@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare test
+DEPEND=test? ( dev-lang/php:*[curl?,fileinfo?,ssl?,zlib?] >=dev-php/PEAR-Net_URL2-2.2.0 dev-php/phpunit )
+DESCRIPTION=Provides an easy way to perform HTTP requests
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/HTTP_Request2
+IUSE=+curl +fileinfo +ssl test +zlib
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86
+LICENSE=BSD
+RDEPEND=dev-lang/php:*[curl?,fileinfo?,ssl?,zlib?] >=dev-php/PEAR-Net_URL2-2.2.0 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTTP_Request2-2.3.0.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=95858d34b676329d8caa816b2e348e80

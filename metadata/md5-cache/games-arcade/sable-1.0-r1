@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/opengl media-libs/libsdl[joystick,opengl,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer
+DESCRIPTION=A frantic 3D space shooter
+EAPI=6
+HOMEPAGE=http://jeuxlibres.net/showgame/sable.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/opengl media-libs/libsdl[joystick,opengl,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer
+SLOT=0
+SRC_URI=mirror://gentoo/sable-1.0-src.tgz mirror://gentoo/sable.png
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=d2f1b08ba5c8870ebd67a8afa84537b1

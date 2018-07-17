@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-lang/lua:0 >=gnome-base/libglade-2.4 media-libs/aldumb media-libs/allegro:0 >=x11-libs/gtk+-2.8:2 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A console-style role playing game
+EAPI=6
+HOMEPAGE=http://kqlives.sourceforge.net/
+IUSE=cheats nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/lua:0 >=gnome-base/libglade-2.4 media-libs/aldumb media-libs/allegro:0 >=x11-libs/gtk+-2.8:2 nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/kqlives/kq-0.99.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=4e48d7194edcfee7d693f79dda955a4d

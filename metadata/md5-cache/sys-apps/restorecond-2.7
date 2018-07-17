@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=sys-libs/libsepol-2.7:= >=sys-libs/libselinux-2.7:= dev-libs/dbus-glib dev-libs/libpcre:= >=sys-libs/libcap-1.10-r10:=
+DESCRIPTION=Daemon to watch for creation and set default SELinux fcontexts
+EAPI=6
+HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
+KEYWORDS=amd64 ~arm ~arm64 ~mips x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libsepol-2.7:= >=sys-libs/libselinux-2.7:= dev-libs/dbus-glib dev-libs/libpcre:= >=sys-libs/libcap-1.10-r10:= !<sys-apps/policycoreutils-2.7_pre
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/restorecond-2.7.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1b86e8d107022025d4d3c3b489ad93e9

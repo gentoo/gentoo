@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=dev-libs/openssl:0= virtual/pkgconfig
+DESCRIPTION=P2P mesh VPN
+EAPI=6
+HOMEPAGE=https://github.com/peervpn/peervpn
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/openssl:0=
+SLOT=0
+SRC_URI=https://github.com/peervpn/peervpn/archive/eb35174277fbf745c5ee0d5875d659dad819adfc.tar.gz -> peervpn-0.044.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=a007d43a7e9198ef983ff6c46432e0c7

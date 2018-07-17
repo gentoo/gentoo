@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/keybinder:0= x11-libs/gtk+:2 >=x11-libs/libfm-1.2.0[gtk] x11-libs/libwnck:1 x11-libs/libXmu x11-libs/libXpm x11-libs/cairo x11-libs/gdk-pixbuf[X] x11-libs/libX11 lxde-base/lxmenu-data lxde-base/menu-cache alsa? ( media-libs/alsa-lib ) wifi? ( net-wireless/wireless-tools ) virtual/pkgconfig sys-devel/gettext
+DESCRIPTION=Lightweight X11 desktop panel for LXDE
+EAPI=6
+HOMEPAGE=https://wiki.lxde.org/en/LXPanel
+IUSE=+alsa wifi
+KEYWORDS=~alpha amd64 arm ~arm64 ~ppc x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/keybinder:0= x11-libs/gtk+:2 >=x11-libs/libfm-1.2.0[gtk] x11-libs/libwnck:1 x11-libs/libXmu x11-libs/libXpm x11-libs/cairo x11-libs/gdk-pixbuf[X] x11-libs/libX11 lxde-base/lxmenu-data lxde-base/menu-cache alsa? ( media-libs/alsa-lib ) wifi? ( net-wireless/wireless-tools )
+SLOT=0
+SRC_URI=mirror://sourceforge/lxde/lxpanel-0.9.3.tar.xz
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=bf3e19a668d4593cc75d6c453477d7ff

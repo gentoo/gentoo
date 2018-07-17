@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=>=dev-libs/gdl-3.6:3 >=dev-libs/glib-2.31:2 >=dev-libs/libxml2-2.7.7:2 >=dev-util/anjuta-3.6 >=media-libs/libgpod-0.8.2:= >=media-libs/libid3tag-0.15 >=x11-libs/gtk+-3.0.8:3 aac? ( media-libs/faad2 ) clutter? ( >=media-libs/clutter-gtk-1.2:1.0 ) curl? ( >=net-misc/curl-7.10 ) flac? ( media-libs/flac ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 cdr? ( >=app-cdr/brasero-3 >=media-libs/libdiscid-0.2.2 media-libs/musicbrainz:5 ) ) mp3? ( media-sound/lame ) vorbis? ( media-libs/libvorbis media-sound/vorbis-tools ) dev-util/intltool sys-devel/flex sys-devel/gettext virtual/os-headers virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A graphical user interface to the Apple productline
+EAPI=5
+HOMEPAGE=http://www.gtkpod.org/
+IUSE=aac clutter curl cdr flac gstreamer mp3 vorbis
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 FDL-1.2
+RDEPEND=>=dev-libs/gdl-3.6:3 >=dev-libs/glib-2.31:2 >=dev-libs/libxml2-2.7.7:2 >=dev-util/anjuta-3.6 >=media-libs/libgpod-0.8.2:= >=media-libs/libid3tag-0.15 >=x11-libs/gtk+-3.0.8:3 aac? ( media-libs/faad2 ) clutter? ( >=media-libs/clutter-gtk-1.2:1.0 ) curl? ( >=net-misc/curl-7.10 ) flac? ( media-libs/flac ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 cdr? ( >=app-cdr/brasero-3 >=media-libs/libdiscid-0.2.2 media-libs/musicbrainz:5 ) ) mp3? ( media-sound/lame ) vorbis? ( media-libs/libvorbis media-sound/vorbis-tools ) gstreamer? ( media-plugins/gst-plugins-meta:1.0 )
+REQUIRED_USE=cdr? ( gstreamer )
+SLOT=0
+SRC_URI=mirror://sourceforge/gtkpod/gtkpod-2.1.5.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=d875a64a537dcc0ea61e0bcbeaa5d38f

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5[-gles2] dev-qt/qtcore:5 net-misc/curl sys-libs/zlib media-libs/assimp fmod? ( media-libs/fmod ) fluidsynth? ( media-sound/fluidsynth ) openal? ( media-libs/openal ) tools? ( sys-libs/ncurses:0 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=A modern gaming engine for Doom, Heretic, and Hexen
+EAPI=6
+HOMEPAGE=http://www.dengine.net
+IUSE=fluidsynth openal +doom demo freedoom heretic hexen tools fmod python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+ LGPL-3+
+PDEPEND=demo? ( games-fps/doom-data ) freedoom? ( games-fps/freedoom )
+RDEPEND=dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtgui:5[-gles2] dev-qt/qtcore:5 net-misc/curl sys-libs/zlib media-libs/assimp fmod? ( media-libs/fmod ) fluidsynth? ( media-sound/fluidsynth ) openal? ( media-libs/openal ) tools? ( sys-libs/ncurses:0 )
+REQUIRED_USE=|| ( python_targets_python2_7 ) demo? ( doom ) freedoom? ( doom )
+SLOT=0
+SRC_URI=https://downloads.sourceforge.net/project/deng/Doomsday%20Engine/2.0.3/doomsday-2.0.3.tar.gz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=a1a09408d6e19f3a06c9fc0c03d11d82

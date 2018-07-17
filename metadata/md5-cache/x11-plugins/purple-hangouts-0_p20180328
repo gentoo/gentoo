@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/protobuf-c:= net-im/pidgin sys-libs/zlib virtual/pkgconfig
+DESCRIPTION=Hangouts Plugin for libpurple
+EAPI=6
+HOMEPAGE=https://bitbucket.org/EionRobb/purple-hangouts
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+RDEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/protobuf-c:= net-im/pidgin sys-libs/zlib
+SLOT=0
+SRC_URI=https://bitbucket.org/EionRobb/purple-hangouts/get/0e137e6bf9e9.tar.gz -> purple-hangouts-0_p20180328.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2754c82de5a76108c07d299e3334d568

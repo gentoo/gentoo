@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Very gentle 1-band dynamic range compressor
+EAPI=0
+HOMEPAGE=https://beesbuzz.biz/code/audiocompress.php
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=https://beesbuzz.biz/code/audiocompress/AudioCompress-2.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=cbb7c216737fc2cdb9b721bc81598ec8

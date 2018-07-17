@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare
+DEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) sys-libs/zlib pam? ( virtual/pam ) sys-libs/db:= dev-libs/libevent app-misc/ca-certificates net-mail/mailbase net-libs/libasr !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp[mta] >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Lightweight but featured SMTP daemon from OpenBSD
+EAPI=5
+HOMEPAGE=https://www.opensmtpd.org
+IUSE=libressl pam +mta
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ISC BSD BSD-1 BSD-2 BSD-4
+RDEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) sys-libs/zlib pam? ( virtual/pam ) sys-libs/db:= dev-libs/libevent app-misc/ca-certificates net-mail/mailbase net-libs/libasr !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp[mta]
+SLOT=0
+SRC_URI=https://www.opensmtpd.org/archives/opensmtpd-6.0.2p1.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=27faf579875ba0c61d006c262bd97137

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=>=net-misc/asterisk-1.4
+DESCRIPTION=asterisk moh music
+EAPI=2
+HOMEPAGE=http://www.asterisk.org/
+IUSE=alaw g722 g729 +gsm siren7 siren14 sln16 ulaw wav
+KEYWORDS=amd64 x86
+LICENSE=CC-BY-SA-3.0
+RDEPEND=>=net-misc/asterisk-1.4
+SLOT=0
+SRC_URI=alaw? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-alaw-2.03.tar.gz ) g722? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-g722-2.03.tar.gz ) g729? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-g729-2.03.tar.gz ) gsm? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-gsm-2.03.tar.gz ) siren7? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-siren7-2.03.tar.gz ) siren14? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-siren14-2.03.tar.gz ) sln16? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-sln16-2.03.tar.gz ) ulaw? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-ulaw-2.03.tar.gz ) wav? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-moh-opsound-wav-2.03.tar.gz )
+_md5_=dfa9400386246c6119e285505afeb1f0

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare test
+DEPEND=dev-libs/libev >=dev-libs/libpcre-3 dns? ( net-libs/udns ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Proxies incoming HTTP and TLS connections based on the hostname
+EAPI=6
+HOMEPAGE=https://github.com/dlundquist/sniproxy
+IUSE=+dns +largefile rfc3339
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=dev-libs/libev >=dev-libs/libpcre-3 dns? ( net-libs/udns )
+SLOT=0
+SRC_URI=https://github.com/dlundquist/sniproxy/archive/0.5.0.tar.gz -> sniproxy-0.5.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=3353a16ba09f36f75e981b7d0b2f32c3

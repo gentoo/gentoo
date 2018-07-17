@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=app-text/dictd-1.5.5
+DESCRIPTION=WordNet for dict
+EAPI=6
+HOMEPAGE=https://wordnet.princeton.edu/
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=Princeton
+SLOT=0
+SRC_URI=mirror://debian/pool/main/w/wordnet/dict-wn_3.0-33_all.deb
+_eclasses_=unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_md5_=247b7e277af3b96a1f943cde15d42e5f

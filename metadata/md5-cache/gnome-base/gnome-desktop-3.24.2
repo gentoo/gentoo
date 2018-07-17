@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=app-text/iso-codes >=dev-libs/glib-2.44.0:2[dbus] >=x11-libs/gdk-pixbuf-2.36.5:2[introspection?] >=x11-libs/gtk+-3.3.6:3[X,introspection?] x11-libs/cairo:=[X] x11-libs/libX11 x11-misc/xkeyboard-config >=gnome-base/gsettings-desktop-schemas-3.5.91 introspection? ( >=dev-libs/gobject-introspection-0.9.7:= ) udev? ( sys-apps/hwids virtual/libudev:= ) app-text/docbook-xml-dtd:4.1.2 dev-util/gdbus-codegen >=dev-util/gtk-doc-am-1.14 >=dev-util/intltool-0.40.6 dev-util/itstool sys-devel/gettext x11-base/xorg-proto virtual/pkgconfig >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Libraries for the gnome desktop that are not part of the UI
+EAPI=6
+HOMEPAGE=https://git.gnome.org/browse/gnome-desktop
+IUSE=debug +introspection udev test
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2+ FDL-1.1+ LGPL-2+
+RDEPEND=app-text/iso-codes >=dev-libs/glib-2.44.0:2[dbus] >=x11-libs/gdk-pixbuf-2.36.5:2[introspection?] >=x11-libs/gtk+-3.3.6:3[X,introspection?] x11-libs/cairo:=[X] x11-libs/libX11 x11-misc/xkeyboard-config >=gnome-base/gsettings-desktop-schemas-3.5.91 introspection? ( >=dev-libs/gobject-introspection-0.9.7:= ) udev? ( sys-apps/hwids virtual/libudev:= ) !<gnome-base/gnome-desktop-2.32.1-r1:2[doc]
+SLOT=3/12
+SRC_URI=mirror://gnome/sources/gnome-desktop/3.24/gnome-desktop-3.24.2.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=2b6371aae5cba78b0d4fff7b565b67eb

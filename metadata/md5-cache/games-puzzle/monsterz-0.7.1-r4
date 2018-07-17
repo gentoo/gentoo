@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygame[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-libs/sdl-image[png] media-libs/sdl-mixer[mod]
+DESCRIPTION=A little puzzle game, similar to the famous Bejeweled or Zookeeper
+EAPI=6
+HOMEPAGE=http://sam.zoy.org/projects/monsterz/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=GPL-1+ LGPL-2+ WTFPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygame[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-libs/sdl-image[png] media-libs/sdl-mixer[mod]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://sam.zoy.org/projects/monsterz/monsterz-0.7.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e46ffe7dc890d1c777c5087567866d6a

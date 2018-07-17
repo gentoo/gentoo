@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install test
+DEPEND=dev-db/tokyocabinet
+DESCRIPTION=A fulltext search engine for Tokyo Cabinet
+EAPI=7
+HOMEPAGE=http://fallabs.com/tokyodystopia/
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-db/tokyocabinet
+SLOT=0
+SRC_URI=http://fallabs.com/tokyodystopia/tokyodystopia-0.9.15.tar.gz
+_md5_=3bd0d48820a38f026f0a2dc926767012

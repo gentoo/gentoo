@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=>=dev-qt/qtcore-5.8:5 >=dev-qt/qtgui-5.8:5 >=dev-qt/qtnetwork-5.8:5 >=dev-qt/qtsql-5.8:5 >=dev-qt/qtwidgets-5.8:5 >=dev-qt/qtxml-5.8:5 webengine? ( >=dev-qt/qtwebengine-5.8:5[widgets] ) >=dev-qt/linguist-tools-5.8:5 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A tiny RSS and Atom feed reader
+EAPI=6
+HOMEPAGE=https://github.com/martinrotter/rssguard
+IUSE=debug webengine
+LICENSE=GPL-3
+RDEPEND=>=dev-qt/qtcore-5.8:5 >=dev-qt/qtgui-5.8:5 >=dev-qt/qtnetwork-5.8:5 >=dev-qt/qtsql-5.8:5 >=dev-qt/qtwidgets-5.8:5 >=dev-qt/qtxml-5.8:5 webengine? ( >=dev-qt/qtwebengine-5.8:5[widgets] )
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=66fba58023df0df30df4dca91f3692df

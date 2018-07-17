@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=app-text/aspell-0.60
+DESCRIPTION=German and Swiss-German language dictionary for aspell
+EAPI=6
+HOMEPAGE=http://aspell.net
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=GPL-2
+RDEPEND=>=app-text/aspell-0.60
+SLOT=0
+SRC_URI=mirror://gnu/aspell/dict/de/aspell6-de-20030222-1.tar.bz2
+_eclasses_=aspell-dict-r1	340906f655106dec40252eccc43e3503
+_md5_=001310c1e656f497b74645701d1aa1f7

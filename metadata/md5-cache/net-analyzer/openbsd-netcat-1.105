@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=virtual/pkgconfig
+DESCRIPTION=the OpenBSD network swiss army knife
+EAPI=6
+HOMEPAGE=http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x64-macos
+LICENSE=BSD
+RDEPEND=dev-libs/libbsd
+SLOT=0
+SRC_URI=http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.105.orig.tar.gz http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.105-7.debian.tar.gz
+_md5_=36cbee506ef168d2c65f5cfe890a8b37

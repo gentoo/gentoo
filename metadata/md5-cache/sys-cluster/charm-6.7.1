@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup test
+DEPEND=mpi? ( virtual/mpi ) doc? ( >=app-text/poppler-0.12.3-r3[utils] dev-tex/latex2html virtual/tex-base || ( ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-python/beautifulsoup-4[python_targets_python2_7(-),python_single_target_python2_7(+)] dev-python/lxml[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) media-libs/netpbm || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) net-libs/libtirpc virtual/fortran
+DESCRIPTION=Message-passing parallel language and runtime system
+EAPI=5
+HOMEPAGE=http://charm.cs.uiuc.edu/
+IUSE=charmdebug charmtracing charmproduction cmkopt doc examples mlogft mpi ampi numa smp static-libs syncft tcp
+KEYWORDS=~amd64 ~x86
+LICENSE=charm
+RDEPEND=mpi? ( virtual/mpi ) virtual/fortran
+REQUIRED_USE=cmkopt? ( !charmdebug !charmtracing ) charmproduction? ( !charmdebug !charmtracing )
+SLOT=0
+SRC_URI=http://charm.cs.uiuc.edu/distrib/charm-6.7.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=2cc02533e174b68ab61f7d862654824d

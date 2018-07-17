@@ -1,0 +1,12 @@
+DEFINED_PHASES=install preinst unpack
+DESCRIPTION=HTML documentation for PHP
+EAPI=4
+HOMEPAGE=http://www.php.net/download-docs.php
+IUSE=+l10n_en l10n_de l10n_es l10n_fa l10n_fr l10n_ja l10n_pl l10n_pt-BR l10n_ro l10n_tr
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2
+REQUIRED_USE=|| ( l10n_en l10n_de l10n_es l10n_fa l10n_fr l10n_ja l10n_pl l10n_pt-BR l10n_ro l10n_tr )
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=l10n_en? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_en-20101029.tar.gz ) l10n_de? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_de-20101029.tar.gz ) l10n_es? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_es-20101029.tar.gz ) l10n_fa? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_fa-20101029.tar.gz ) l10n_fr? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_fr-20101029.tar.gz ) l10n_ja? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_ja-20101029.tar.gz ) l10n_pl? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_pl-20101029.tar.gz ) l10n_pt-BR? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_pt_BR-20101029.tar.gz ) l10n_ro? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_ro-20101029.tar.gz ) l10n_tr? ( http://olemarkus.org/~olemarkus/gentoo/php_manual_tr-20101029.tar.gz )
+_md5_=224d06b85ff7522de1898c138e31057b

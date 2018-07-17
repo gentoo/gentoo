@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-libs/xapian:0/1.2.22 dev-lang/perl dev-libs/libpcre sys-libs/zlib
+DESCRIPTION=An application built on Xapian, consisting of indexers and a CGI search frontend
+EAPI=5
+HOMEPAGE=https://xapian.org/
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/xapian:0/1.2.22 dev-lang/perl dev-libs/libpcre sys-libs/zlib
+SLOT=0
+SRC_URI=http://www.oligarchy.co.uk/xapian/1.2.25/xapian-omega-1.2.25.tar.xz
+_md5_=53d801fcee3275682b212bd09d8b6670

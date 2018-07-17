@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/libsdl[sound,video,joystick] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] virtual/pkgconfig
+DESCRIPTION=Syobon Action (also known as Cat Mario or Neko Mario)
+EAPI=6
+HOMEPAGE=http://zapek.com/?p=189
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video,joystick] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis]
+SLOT=0
+SRC_URI=http://download.zapek.com/software/syobon/syobon_1.0.1_src.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=048edf46c3a5dbb0d59f683b56473d98

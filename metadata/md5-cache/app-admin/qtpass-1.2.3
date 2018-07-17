@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=app-admin/pass dev-qt/qtcore:5 dev-qt/qtgui:5[xcb] dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 net-misc/x11-ssh-askpass dev-qt/linguist-tools:5 dev-qt/qtsvg:5 test? ( dev-qt/qttest:5 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=multi-platform GUI for pass, the standard unix password manager
+EAPI=6
+HOMEPAGE=https://qtpass.org/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-admin/pass dev-qt/qtcore:5 dev-qt/qtgui:5[xcb] dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 net-misc/x11-ssh-askpass
+SLOT=0
+SRC_URI=https://github.com/IJHack/qtpass/archive/v1.2.3.tar.gz -> qtpass-1.2.3.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=c5fa173197dc15aeb3a2b64b8dbda5f6

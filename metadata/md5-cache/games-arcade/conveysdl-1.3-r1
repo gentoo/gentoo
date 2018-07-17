@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer
+DESCRIPTION=Guide the blob along the conveyer belt collecting the red blobs
+EAPI=6
+HOMEPAGE=http://www.cloudsprinter.com/software/conveysdl/
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer
+SLOT=0
+SRC_URI=http://www.cloudsprinter.com/software/conveysdl/conveysdl.1.3.tar
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5e473b952280b7732a958ee87b834947

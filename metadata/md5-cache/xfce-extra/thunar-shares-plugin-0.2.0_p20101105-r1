@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/glib-2.18 >=x11-libs/gtk+-2.12:2 <xfce-base/thunar-1.7 dev-util/intltool dev-util/xfce4-dev-tools virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Thunar plugin to share files using Samba
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/thunar-plugins/thunar-shares-plugin
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.18 >=x11-libs/gtk+-2.12:2 <xfce-base/thunar-1.7
+SLOT=0
+SRC_URI=mirror://gentoo/thunar-shares-plugin-0.2.0_p20101105.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3bfc232b833e5152b1d673a9399b878c

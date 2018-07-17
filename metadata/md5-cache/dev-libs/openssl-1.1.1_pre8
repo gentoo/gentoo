@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=app-misc/c_rehash-1.7-r1 zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) >=dev-lang/perl-5 sctp? ( >=net-misc/lksctp-tools-1.0.12 ) test? ( sys-apps/diffutils sys-devel/bc )
+DESCRIPTION=full-strength general purpose cryptography library (including SSL and TLS)
+EAPI=6
+HOMEPAGE=https://www.openssl.org/
+IUSE=+asm bindist elibc_musl rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-heartbeat vanilla zlib abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+LICENSE=openssl
+PDEPEND=app-misc/ca-certificates
+RDEPEND=>=app-misc/c_rehash-1.7-r1 zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+RESTRICT=!bindist? ( bindist )
+SLOT=0/1.1
+SRC_URI=mirror://openssl/source/openssl-1.1.1-pre8.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=44f5070e88bf2897db1e2aa19a4e5c4d

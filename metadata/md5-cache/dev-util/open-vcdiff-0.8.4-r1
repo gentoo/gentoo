@@ -1,0 +1,9 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=An encoder/decoder for the VCDIFF (RFC3284) format
+EAPI=6
+HOMEPAGE=https://github.com/google/open-vcdiff
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+SLOT=0/0
+SRC_URI=https://dev.gentoo.org/~floppym/dist/open-vcdiff-0.8.4.tar.gz
+_md5_=47994412feab61e6395777d26f8c2351

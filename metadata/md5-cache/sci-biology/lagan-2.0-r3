@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=The LAGAN suite of tools for whole-genome multiple alignment of genomic DNA
+EAPI=6
+HOMEPAGE=http://lagan.stanford.edu/lagan_web/index.shtml
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://lagan.stanford.edu/lagan_web/lagan20.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c9dbddd6a22f2e20ff25d0aa1e6f4280

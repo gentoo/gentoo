@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) app-arch/unzip static? ( dev-libs/openssl:0[static-libs] )
+DESCRIPTION=Offline Windows NT Password & Registry Editor
+EAPI=6
+HOMEPAGE=http://pogostick.net/~pnh/ntpasswd/
+IUSE=libressl static
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
+SLOT=0
+SRC_URI=http://pogostick.net/~pnh/ntpasswd/chntpw-source-140201.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=77356ef8569a0524274709cd9413055c

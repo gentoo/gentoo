@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare
+DEPEND=dev-libs/openssl:0= >=dev-libs/boost-1.41:0= dev-libs/check >=sys-devel/gcc-4.4 >=dev-cpp/asio-1.10.1[ssl] <dev-cpp/asio-1.12.0 dev-util/scons[python_targets_python2_7]
+DESCRIPTION=Synchronous multi-master replication engine that provides the wsrep API
+EAPI=6
+HOMEPAGE=http://galeracluster.com
+IUSE=cpu_flags_x86_sse4_2 garbd test
+KEYWORDS=amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86
+LICENSE=GPL-2 BSD
+RDEPEND=dev-libs/openssl:0= >=dev-libs/boost-1.41:0=
+SLOT=0
+SRC_URI=http://releases.galeracluster.com/galera-3/source/galera-3-25.3.23.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=5641d94d3fa77bfb9690832f3669bf56

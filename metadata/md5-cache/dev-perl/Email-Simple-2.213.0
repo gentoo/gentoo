@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Email-Date-Format virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-CPAN-Meta-2.120.900 >=virtual/perl-Test-Simple-0.960.0 virtual/perl-File-Spec ) dev-lang/perl:=
+DESCRIPTION=Simple parsing of RFC2822 message format and headers
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Email-Simple/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Email-Date-Format dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-Simple-2.213.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=eabc88290b3656e67990322c4954956a

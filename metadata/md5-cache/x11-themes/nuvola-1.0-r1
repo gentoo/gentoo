@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=!=kde-apps/kdeartwork-iconthemes-4*
+DESCRIPTION=Nuvola SVG icon theme
+EAPI=0
+HOMEPAGE=http://www.kde-look.org/content/show.php?content=5358
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=!=kde-apps/kdeartwork-iconthemes-4*
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=http://www.icon-king.com/files/nuvola-1.0.tar.gz
+_md5_=c5b93256a4f9f5f85f219444e78f41bb

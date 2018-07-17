@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae dev-lang/cfortran virtual/latex-base x11-misc/imake x11-misc/makedepend virtual/fortran
+DESCRIPTION=CERN's Physics Analysis Workstation data analysis program
+EAPI=5
+HOMEPAGE=https://paw.web.cern.ch/paw/
+KEYWORDS=amd64 hppa sparc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2 LGPL-2 BSD
+RDEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae virtual/fortran
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2.orig.tar.gz mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2-8.debian.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=ddbd51cbfbc9e5e11b98ad138e71d053

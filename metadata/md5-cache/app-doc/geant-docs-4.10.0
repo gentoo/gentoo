@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=User documentation for Geant4 physics simulation toolkit
+EAPI=5
+HOMEPAGE=https://geant4.web.cern.ch/geant4/support/userdocuments.shtml
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=geant4
+SLOT=4
+SRC_URI=http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/fo/BookInstalGuide.pdf -> BookInstalGuide-4.10.0.pdf http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/ForApplicationDeveloper/fo/BookForAppliDev.pdf -> BookForAppliDev-4.10.0.pdf http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/ForToolkitDeveloper/fo/BookForToolDev.pdf -> BookForToolDev-4.10.0.pdf http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/PhysicsReferenceManual/fo/PhysicsReferenceManual.pdf -> PhysicsReferenceManual-4.10.0.pdf
+_md5_=49930fae56ec8283eab613396f390704

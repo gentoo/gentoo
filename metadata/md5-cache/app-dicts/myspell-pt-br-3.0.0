@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Brazilian dictionaries for myspell/hunspell
+EAPI=6
+HOMEPAGE=http://pt-br.libreoffice.org/projetos/projeto-vero-verificador-ortografico/
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-3 MPL-1.1
+SLOT=0
+SRC_URI=http://pt-br.libreoffice.org/assets/VeroptBRV300AOG.oxt http://wiki.documentfoundation.org/images/f/ff/DicSin-BR.oxt -> myspell-pt-br-3.0.0-thes.oxt
+_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
+_md5_=ae1bc4b1285385dfa12e1688376f7a64

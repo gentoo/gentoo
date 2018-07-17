@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=app-eselect/eselect-timidity
+DESCRIPTION=Eric Welsh's GUS patches for TiMidity
+EAPI=0
+HOMEPAGE=http://www.stardate.bc.ca/eawpatches/html/default.htm
+KEYWORDS=amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=free-noncomm
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://5hdumat.samizdat.net/music/eawpats12_full.tar.gz
+_md5_=ccae35867c63ce71f9d4875eb16325aa

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=start dynamically linked applications under debugging environment
+EAPI=6
+HOMEPAGE=http://dev.inversepath.com/trac/pretrace
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://dev.inversepath.com/pretrace/libpretrace-0.4.tar.gz
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=3e58a3fda80a67003d78d887b2f1894c

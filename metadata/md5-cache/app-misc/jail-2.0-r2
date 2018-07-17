@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Builds a chroot and configures all the required files, directories and libraries
+EAPI=7
+HOMEPAGE=https://github.com/spiculator/jail
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-util/strace
+SLOT=0
+SRC_URI=https://github.com/spiculator/jail/archive/v2.0.tar.gz -> jail-2.0.tar.gz
+_eclasses_=eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=d3e5786a4935459c60b54c61bad38fd6

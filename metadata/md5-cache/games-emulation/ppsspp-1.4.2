@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=sys-libs/zlib system-ffmpeg? ( !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) ) sdl? ( media-libs/libsdl media-libs/libsdl2 ) qt5? ( dev-db/sqlite dev-qt/assistant:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=A PSP emulator written in C++.
+EAPI=6
+HOMEPAGE=https://www.ppsspp.org/
+IUSE=+qt5 sdl headless libav +system-ffmpeg
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib system-ffmpeg? ( !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) ) sdl? ( media-libs/libsdl media-libs/libsdl2 ) qt5? ( dev-db/sqlite dev-qt/assistant:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=!headless? ( || ( qt5 sdl ) ) ?? ( qt5 sdl )
+SLOT=0
+SRC_URI=https://github.com/hrydgard/ppsspp/archive/v1.4.2.tar.gz -> ppsspp-1.4.2.tar.gz !system-ffmpeg? ( https://github.com/hrydgard/ppsspp-ffmpeg/archive/a2e98d7ba4c7c5cac08608732c3058cb46e3e0ef.tar.gz -> ppsspp-1.4.2-ffmpeg.tar.gz ) https://github.com/hrydgard/ppsspp-lang/archive/f32328a88cbf368af90eb79bc7ad5420795d6585.tar.gz -> ppsspp-1.4.2-assets_lang.tar.gz https://github.com/hrydgard/pspautotests/archive/e18cface3db64ccb96738dc128fe769b28fff65c.tar.gz -> ppsspp-1.4.2-pspautotests.tar.gz https://github.com/hrydgard/minidx9/archive/7751cf73f5c06f1be21f5f31c3e2d9a7bacd3a93.tar.gz -> ppsspp-1.4.2-dx9sdk.tar.gz https://github.com/hrydgard/glslang/archive/b16f7e6819267e57c3c244808d1981f0ce34acbc.tar.gz -> ppsspp-1.4.2-ext_glslang.tar.gz https://github.com/Kingcom/armips/archive/770365d44df35d6e675c58bb2a774ca412278ef5.tar.gz -> ppsspp-1.4.2-ext_armips.tar.gz https://github.com/Kingcom/tinyformat/archive/b7f5a22753c81d834ab5133d655f1fd525280765.tar.gz -> ppsspp-1.4.2-ext_armips_ext_tinyformat.tar.gz https://github.com/KhronosGroup/SPIRV-Cross/archive/6381b2ff9c0d975af8fd2974c97aa12a69ab6cc6.tar.gz -> ppsspp-1.4.2-ext_SPIRV-Cross.tar.gz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=51f56903f7d727d96be60e4e4d54c802

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/XML-Parser-2.31 >=virtual/perl-Scalar-List-Utils-1.230.0 >=virtual/perl-Encode-2.240.100_rc >=dev-libs/expat-1.95.5 dev-perl/Tie-IxHash dev-perl/XML-XPath >=dev-perl/libwww-perl-6.40.0 >=dev-perl/HTML-Parser-3.690.0 nls? ( >=dev-perl/Text-Iconv-1.2-r1 ) virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/XML-Handler-YAWriter-0.230.0 >=dev-perl/XML-SAX-Writer-0.530.0 ) dev-lang/perl:=
+DESCRIPTION=Process huge XML documents in tree mode
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/XML-Twig/
+IUSE=nls test
+KEYWORDS=alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/XML-Parser-2.31 >=virtual/perl-Scalar-List-Utils-1.230.0 >=virtual/perl-Encode-2.240.100_rc >=dev-libs/expat-1.95.5 dev-perl/Tie-IxHash dev-perl/XML-XPath >=dev-perl/libwww-perl-6.40.0 >=dev-perl/HTML-Parser-3.690.0 nls? ( >=dev-perl/Text-Iconv-1.2-r1 ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MI/MIROD/XML-Twig-3.52.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=117be991caa181a405e37e199636da15

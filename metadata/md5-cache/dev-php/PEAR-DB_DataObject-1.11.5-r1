@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DESCRIPTION=SQL builder and data modeling layer
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/DB_DataObject
+IUSE=minimal
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=PHP-3.01
+RDEPEND=|| ( dev-php/PEAR-MDB2 dev-php/PEAR-DB ) dev-php/PEAR-Date !minimal? ( dev-php/PEAR-Validate ) >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/DB_DataObject-1.11.5.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=0f3e045142f15d9da1aa58c70c961c23

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Class-Load virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/Getopt-Long-Descriptive dev-perl/JSON-MaybeXS dev-perl/Module-Pluggable dev-perl/Module-Runtime dev-perl/Path-Tiny dev-perl/URI dev-perl/WWW-Mechanize >=dev-perl/namespace-clean-0.190.0 pastebin? ( >=dev-perl/WWW-Pastebin-PastebinCom-Create-1.3.0 ) clipboard? ( dev-perl/Clipboard ) github? ( dev-vcs/git[perl] ) browser? ( dev-perl/Browser-Open ) >=virtual/perl-CPAN-Meta-Requirements-2.120.620 virtual/perl-ExtUtils-MakeMaker virtual/perl-Module-Metadata test? ( virtual/perl-File-Spec dev-perl/libwww-perl dev-perl/Test-Deep dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DESCRIPTION=Easy access to any pastebin
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/App-Nopaste/
+IUSE=+pastebin +browser clipboard github test
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Class-Load virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-File-Temp dev-perl/Getopt-Long-Descriptive dev-perl/JSON-MaybeXS dev-perl/Module-Pluggable dev-perl/Module-Runtime dev-perl/Path-Tiny dev-perl/URI dev-perl/WWW-Mechanize >=dev-perl/namespace-clean-0.190.0 pastebin? ( >=dev-perl/WWW-Pastebin-PastebinCom-Create-1.3.0 ) clipboard? ( dev-perl/Clipboard ) github? ( dev-vcs/git[perl] ) browser? ( dev-perl/Browser-Open ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/App-Nopaste-1.011.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=c200aa408f21607b1e37e34e17ff834f

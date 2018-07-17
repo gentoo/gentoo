@@ -1,0 +1,14 @@
+DEFINED_PHASES=install setup test
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] || ( dev-ada/gnatcoll[gnat_2017,iconv,shared] dev-ada/gnatcoll-bindings[gnat_2018,iconv,shared] ) dev-python/mako dev-python/pyyaml dev-python/enum34 dev-python/funcy dev-python/docutils dev-python/quex
+DESCRIPTION=A Python framework to generate language parsers
+EAPI=6
+HOMEPAGE=https://www.adacore.com/community
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] || ( dev-ada/gnatcoll[gnat_2017,iconv,shared] dev-ada/gnatcoll-bindings[gnat_2018,iconv,shared] ) dev-python/mako dev-python/pyyaml dev-python/enum34 dev-python/funcy dev-python/docutils dev-python/quex
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5b0cfbefc7a4475263382c2a -> langkit-gpl-2018.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a3a754c485b5a85f4bf9bef6acee6c8d

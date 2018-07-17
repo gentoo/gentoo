@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=uum? ( sys-libs/ncurses:= ) uum? ( virtual/pkgconfig )
+DESCRIPTION=Network-Extensible Kana-to-Kanji Conversion System
+EAPI=6
+HOMEPAGE=http://freewnn.sourceforge.jp/ http://www.freewnn.org/
+IUSE=ipv6 uum
+KEYWORDS=~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=uum? ( sys-libs/ncurses:= )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/freewnn/63271/FreeWnn-1.1.1-a023.tar.bz2
+_md5_=cd3ba0f7e5b474a070bb8683ad20b72b

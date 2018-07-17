@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup test unpack
+DEPEND=dev-lang/R postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3=[server] ) virtual/pkgconfig
+DESCRIPTION=R language extension for postgresql database
+EAPI=6
+HOMEPAGE=http://www.joeconway.com/plr/
+IUSE=postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-lang/R postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3=[server] )
+REQUIRED_USE=|| ( postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 )
+SLOT=0
+SRC_URI=https://github.com/postgres-plr/plr/archive/REL8_3_0_17.tar.gz -> plr-8.3.0.17.tar.gz
+_eclasses_=multibuild	35719a9cd25ec71ee49c966f6868454c	postgres	a3ad839d319097167f1802b25f50d9c0	postgres-multi	4ad3669c874bed68b375f87035e46db8	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=42c0644425c6bf490f2330ed7e1470ae

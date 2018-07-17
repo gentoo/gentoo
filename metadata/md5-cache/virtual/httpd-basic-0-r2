@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for static HTML-enabled webservers
+EAPI=5
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+RDEPEND=|| ( www-servers/apache www-servers/lighttpd www-servers/boa www-servers/bozohttpd www-servers/cherokee www-servers/fnord www-servers/hiawatha www-servers/monkeyd www-servers/nginx www-servers/resin www-servers/thttpd www-servers/tomcat )
+SLOT=0
+_md5_=37ec295664526d3f9fbf45a6c4f6c338

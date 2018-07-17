@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=media-libs/mediastreamer-2.7.0:=[video] >=media-libs/x264-0.0.20100118:= libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) virtual/pkgconfig
+DESCRIPTION=mediastreamer plugin: add H264 support
+EAPI=6
+HOMEPAGE=https://www.linphone.org/
+IUSE=libav
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/mediastreamer-2.7.0:=[video] >=media-libs/x264-0.0.20100118:= libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= )
+SLOT=0
+SRC_URI=mirror://nongnu/linphone/plugins/sources/msx264-1.4.2.tar.gz
+_md5_=5e938529d6568316944c470196d33d11

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=virtual/glu virtual/opengl media-libs/freeglut
+DESCRIPTION=OpenGL-based 3D File Manager
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/innolab/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=virtual/glu virtual/opengl media-libs/freeglut
+SLOT=0
+SRC_URI=mirror://sourceforge/innolab/3dfm-1.0.tar.gz
+_md5_=e3c6d9d26e1a1196079279ab916e7a65

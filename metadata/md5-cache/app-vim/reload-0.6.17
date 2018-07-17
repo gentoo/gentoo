@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: automatic reloading of vim scripts
+EAPI=5
+HOMEPAGE=http://peterodding.com/code/vim/reload/
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=app-vim/vim-misc-1.8.5 || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/xolox/vim-reload/archive/0.6.17.tar.gz -> reload-0.6.17.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=0bb163e78140db9105f01189f6ab6e68

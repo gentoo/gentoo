@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=x11-libs/gtk+:2 media-fonts/font-schumacher-misc gnome-base/librsvg:2 virtual/pkgconfig
+DESCRIPTION=Play trading card games (Magic: the Gathering etc.) against other people
+EAPI=6
+HOMEPAGE=http://mindless.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 media-fonts/font-schumacher-misc
+RESTRICT=mirror
+SLOT=0
+SRC_URI=mirror://sourceforge/mindless/mindless-1.6.tar.gz http://www.wizards.com/dci/oracle/OracleAll_050523.txt http://mindless.sourceforge.net/images/logo.png -> mindless.png
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=27140614cc9cf4cccdb3d4fe45d8994f

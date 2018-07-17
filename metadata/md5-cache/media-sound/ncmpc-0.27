@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=dev-libs/glib-2.30:2 >=media-libs/libmpdclient-2.9 sys-libs/ncurses:0=[unicode] lirc? ( app-misc/lirc ) app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=A ncurses client for the Music Player Daemon (MPD)
+EAPI=6
+HOMEPAGE=https://www.musicpd.org/clients/ncmpc/ https://github.com/MusicPlayerDaemon/ncmpc
+IUSE=artist-screen chat-screen colors debug +help-screen key-screen lirc lyrics-screen mouse nls search-screen song-screen
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.30:2 >=media-libs/libmpdclient-2.9 sys-libs/ncurses:0=[unicode] lirc? ( app-misc/lirc )
+SLOT=0
+SRC_URI=http://www.musicpd.org/download/ncmpc/0/ncmpc-0.27.tar.xz
+_md5_=008e24c5ad7be65597559f3a7f4cd911

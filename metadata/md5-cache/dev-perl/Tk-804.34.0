@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/freetype >=media-libs/libpng-1.4:0 virtual/jpeg x11-libs/libX11 x11-libs/libXft dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A Perl Module for Tk
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Tk/
+IUSE=examples test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ ) tcltk BSD
+RDEPEND=media-libs/freetype >=media-libs/libpng-1.4:0 virtual/jpeg x11-libs/libX11 x11-libs/libXft dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SR/SREZIC/Tk-804.034.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=44a32c59998d9375053373d3763616af

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION='Dive Into Python' by Mark Pilgrim - Python 2
+EAPI=6
+HOMEPAGE=http://www.diveintopython.net/
+IUSE=pdf
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=FDL-1.1
+SLOT=2
+SRC_URI=http://www.diveintopython.net/download/diveintopython-html-5.4.zip -> diveintopython-2.zip pdf? ( http://www.diveintopython.net/download/diveintopython-pdf-5.4.zip -> diveintopython-2-pdf.zip )
+_md5_=f9c811fbfe1b588ef881a0bb9336c4ca

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libXext x11-misc/imake
+DESCRIPTION=Lode-Runner-like arcade game
+EAPI=6
+HOMEPAGE=http://www.xdr.com/dash/scavenger.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXext
+SLOT=0
+SRC_URI=http://www.xdr.com/dash/xscavenger-1.4.4.tgz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e38c46e6377921db4994ae8bc9b816cc

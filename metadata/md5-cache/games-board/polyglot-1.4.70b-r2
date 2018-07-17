@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Protocol adapter to run UCI chess engines under xboard
+EAPI=6
+HOMEPAGE=http://hardy.uhasselt.be/Toga/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=http://hardy.uhasselt.be/Toga/polyglot-release/polyglot-1.4.70b.tar.gz
+_md5_=78baf8254cfb91ef1920d51fd88e4f5b

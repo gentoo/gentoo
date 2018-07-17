@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libgcrypt:0= net-libs/gnutls:= perl? ( dev-lang/perl:= virtual/perl-ExtUtils-MakeMaker ) lua? ( dev-lang/lua:* ) ruby? ( || ( dev-lang/ruby:2.3 ) virtual/rubygems ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) doc? ( dev-util/gtk-doc ) sys-devel/flex virtual/yacc >=dev-lang/swig-3.0.7 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Prelude-SIEM Framework Library
+EAPI=6
+HOMEPAGE=https://www.prelude-siem.org
+IUSE=doc lua python ruby perl python_targets_python2_7 python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/libgcrypt:0= net-libs/gnutls:= perl? ( dev-lang/perl:= virtual/perl-ExtUtils-MakeMaker ) lua? ( dev-lang/lua:* ) ruby? ( || ( dev-lang/ruby:2.3 ) virtual/rubygems ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] )
+REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 ) )
+SLOT=0
+SRC_URI=https://www.prelude-siem.org/pkg/src/3.1.0/libprelude-3.1.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	ruby-single	da74609cfc48267b7201d50b0367af82	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=db7828c87c59fc2c314f4eb33ff6212e

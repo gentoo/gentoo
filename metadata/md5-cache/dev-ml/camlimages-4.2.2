@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-util/omake virtual/pkgconfig dev-ml/findlib >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=An image manipulation library for ocaml
+EAPI=5
+HOMEPAGE=http://gallium.inria.fr/camlimages/
+IUSE=exif gif gtk jpeg png postscript tiff truetype X xpm
+KEYWORDS=~amd64 ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ocaml-3.10.2:=[X?,ocamlopt] exif? ( media-libs/libexif ) gif? ( media-libs/giflib ) gtk? ( dev-ml/lablgtk ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff ) png? ( >=media-libs/libpng-1.4:0 ) postscript? ( app-text/ghostscript-gpl ) truetype? ( >=media-libs/freetype-2 ) xpm? ( x11-libs/libXpm ) X? ( x11-apps/rgb ) sys-libs/zlib
+SLOT=0/4.2.2
+SRC_URI=https://bitbucket.org/camlspotter/camlimages/get/4.2.2.tar.bz2 -> camlimages-4.2.2.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	findlib	45d6030075064a68da8d7143726a1150	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=4f677aece91eed2f7412d4e6a1418989

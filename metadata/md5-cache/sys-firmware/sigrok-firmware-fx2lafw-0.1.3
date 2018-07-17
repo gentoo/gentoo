@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=!binary? ( >=dev-embedded/sdcc-2.9.0[device-lib(+),mcs51(+)] )
+DESCRIPTION=Firmware for Cypress FX2 chips for use as simple logic analyzer hardware
+EAPI=6
+HOMEPAGE=https://sigrok.org/wiki/Fx2lafw
+IUSE=binary
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=binary? ( https://sigrok.org/download/binary/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-bin-0.1.3.tar.gz ) !binary? ( https://sigrok.org/download/source/sigrok-firmware-fx2lafw/sigrok-firmware-fx2lafw-0.1.3.tar.gz )
+_md5_=51a973f8ab322ce5220663214c88925b

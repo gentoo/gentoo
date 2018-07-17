@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Meta ebuild for MATE, a traditional desktop environment
+EAPI=6
+HOMEPAGE=http://mate-desktop.org
+IUSE=+base -bluetooth help +notification +themes +extras
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=metapackage
+PDEPEND=notification? ( =x11-misc/mate-notification-daemon-1.18*:0 ) virtual/notification-daemon:0
+RDEPEND==mate-base/mate-desktop-1.18*:0 =mate-base/mate-menus-1.18*:0 =mate-base/mate-panel-1.18*:0 =mate-base/mate-session-manager-1.18*:0 =mate-base/mate-settings-daemon-1.18*:0 =x11-wm/marco-1.18*:0 base? ( =mate-base/caja-1.18*:0 =mate-base/mate-applets-meta-1.18*:0 =mate-base/mate-control-center-1.18*:0 =mate-extra/mate-media-1.18*:0 =x11-misc/mozo-1.18*:0 =x11-terms/mate-terminal-1.18*:0 ) bluetooth? ( net-wireless/blueman:0 ) themes? ( =x11-themes/mate-backgrounds-1.18*:0 =x11-themes/mate-icon-theme-1.18*:0 >=x11-themes/mate-themes-meta-3:0 ) extras? ( =app-arch/engrampa-1.18*:0 =app-editors/pluma-1.18*:0 =app-text/atril-1.18*:0 =mate-extra/caja-extensions-1.18*:0 =mate-extra/mate-calc-1.18*:0 =mate-extra/mate-netbook-1.18*:0 =mate-extra/mate-power-manager-1.18*:0 =mate-extra/mate-screensaver-1.18*:0 =mate-extra/mate-system-monitor-1.18*:0 =mate-extra/mate-utils-1.18*:0 =media-gfx/eom-1.18*:0 sys-apps/gnome-disk-utility:0 ) help? ( gnome-extra/yelp:0 =mate-extra/mate-user-guide-1.18*:0 )
+SLOT=0
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=780af243e5276309396dbdd4e006b7ce

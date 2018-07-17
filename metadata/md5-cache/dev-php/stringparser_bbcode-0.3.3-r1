@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=A PHP class to parse BB codes
+EAPI=6
+HOMEPAGE=http://christian-seiler.de/projekte/php/bbcode/index_en.html
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php
+SLOT=0
+SRC_URI=http://christian-seiler.de/projekte/php/bbcode/download/stringparser_bbcode-0.3.3.tar.gz
+_md5_=81f919a85a2ae71f09247154231c3319

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=dev-lang/perl-5.8.8-r8 >=dev-perl/SNMP_Session-1.13 >=net-analyzer/fping-2.4_beta2-r2[suid] >=net-analyzer/rrdtool-1.2[graph,perl] dev-perl/CGI dev-perl/CGI-Session dev-perl/Config-Grammar dev-perl/Digest-HMAC dev-perl/FCGI dev-perl/IO-Socket-SSL dev-perl/IO-Tty dev-perl/Net-DNS dev-perl/Net-OpenSSH dev-perl/Net-SNMP dev-perl/Net-Telnet dev-perl/libwww-perl dev-perl/perl-ldap virtual/perl-libnet || ( dev-perl/CGI-Fast <dev-perl/CGI-4 ) !apache2? ( virtual/httpd-cgi ) apache2? ( >=www-apache/mod_perl-2.0.1 www-apache/mod_fcgid ) curl? ( >=net-misc/curl-7.21.4 ) dig? ( net-dns/bind-tools ) echoping? ( >=net-analyzer/echoping-6.0.2 ) ipv6? ( >=dev-perl/Socket6-0.20 ) radius? ( dev-perl/Authen-Radius ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A powerful latency measurement tool
+EAPI=6
+HOMEPAGE=https://oss.oetiker.ch/smokeping/
+IUSE=apache2 curl dig echoping ipv6 radius
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.8.8-r8 >=dev-perl/SNMP_Session-1.13 >=net-analyzer/fping-2.4_beta2-r2[suid] >=net-analyzer/rrdtool-1.2[graph,perl] dev-perl/CGI dev-perl/CGI-Session dev-perl/Config-Grammar dev-perl/Digest-HMAC dev-perl/FCGI dev-perl/IO-Socket-SSL dev-perl/IO-Tty dev-perl/Net-DNS dev-perl/Net-OpenSSH dev-perl/Net-SNMP dev-perl/Net-Telnet dev-perl/libwww-perl dev-perl/perl-ldap virtual/perl-libnet || ( dev-perl/CGI-Fast <dev-perl/CGI-4 ) !apache2? ( virtual/httpd-cgi ) apache2? ( >=www-apache/mod_perl-2.0.1 www-apache/mod_fcgid ) curl? ( >=net-misc/curl-7.21.4 ) dig? ( net-dns/bind-tools ) echoping? ( >=net-analyzer/echoping-6.0.2 ) ipv6? ( >=dev-perl/Socket6-0.20 ) radius? ( dev-perl/Authen-Radius )
+SLOT=0
+SRC_URI=https://oss.oetiker.ch/smokeping/pub/smokeping-2.7.1.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=da8064c5b5d6814adadb9c789630578b

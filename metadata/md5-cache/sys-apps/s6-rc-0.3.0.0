@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sys-devel/make-3.81 static? ( >=dev-lang/execline-2.3.0.3[static-libs] >=dev-libs/skalibs-2.6.0.1[static-libs] >=sys-apps/s6-2.6.1.1[static-libs] ) !static? ( >=dev-lang/execline-2.3.0.3[static=] >=dev-libs/skalibs-2.6.0.1 >=sys-apps/s6-2.6.1.1[static=] )
+DESCRIPTION=service manager for the s6 supervision suite
+EAPI=6
+HOMEPAGE=https://www.skarnet.org/software/s6-rc/
+IUSE=static static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=>=dev-lang/execline-2.3.0.3:=[!static?] >=sys-apps/s6-2.6.1.1:=[!static?] !static? ( >=dev-libs/skalibs-2.6.0.1:= )
+SLOT=0/0.3
+SRC_URI=https://www.skarnet.org/software/s6-rc/s6-rc-0.3.0.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=d7ab3e7eac2d9fa6b73c5320f905f191

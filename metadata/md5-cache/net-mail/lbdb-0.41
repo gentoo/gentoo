@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/libvformat evo? ( mail-client/evolution ) finger? ( net-misc/netkit-fingerd ) abook? ( app-misc/abook ) crypt? ( app-crypt/gnupg )
+DESCRIPTION=Little Brother database
+EAPI=6
+HOMEPAGE=http://www.spinnaker.de/lbdb/
+IUSE=pda ldap finger abook crypt evo
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libvformat evo? ( mail-client/evolution ) finger? ( net-misc/netkit-fingerd ) abook? ( app-misc/abook ) crypt? ( app-crypt/gnupg ) pda? ( dev-perl/Palm ) ldap? ( dev-perl/perl-ldap )
+SLOT=0
+SRC_URI=http://www.spinnaker.de/debian/lbdb_0.41.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=f3142b0997bc75ba4bb9787b87b01fe2

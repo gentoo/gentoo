@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A cross-platform C++ thread pool library (built on top of Boost)
+EAPI=6
+HOMEPAGE=http://threadpool.sourceforge.net/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=Boost-1.0
+RDEPEND=dev-libs/boost
+SLOT=0
+SRC_URI=mirror://sourceforge/threadpool/threadpool/0.2.5%20%28Stable%29/threadpool-0_2_5-src.zip doc? ( mirror://sourceforge/threadpool/threadpool/0.2.5%20%28Stable%29/threadpool-0_2_5-doc.zip )
+_md5_=d45994fd4ef8075f135fba95a14527d2

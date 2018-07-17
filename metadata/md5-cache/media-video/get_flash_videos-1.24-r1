@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=dev-perl/WWW-Mechanize virtual/perl-Module-CoreList dev-perl/HTML-TokeParser-Simple dev-perl/UNIVERSAL-require test? ( media-video/rtmpdump dev-perl/Tie-IxHash dev-perl/XML-Simple dev-perl/Crypt-Rijndael dev-perl/Data-AMF virtual/perl-IO-Compress ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Downloads videos from various Flash-based video hosting sites
+EAPI=5
+HOMEPAGE=https://github.com/monsieurvideo/get-flash-videos
+IUSE=test
+KEYWORDS=amd64 x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=Apache-2.0
+RDEPEND=dev-perl/WWW-Mechanize virtual/perl-Module-CoreList dev-perl/HTML-TokeParser-Simple dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=https://github.com/monsieurvideo/get-flash-videos/archive/v1.24.tar.gz -> get_flash_videos-1.24.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo	da528e0e6c88b426c83f9b3bce3df2ef	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=3bdaf04caf985ffaf06e0777c966d71b

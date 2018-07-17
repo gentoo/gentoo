@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libX11
+DESCRIPTION=A Doom level (wad) editor
+EAPI=6
+HOMEPAGE=http://www.teaser.fr/~amajorel/yadex/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 games-fps/freedoom
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.teaser.fr/~amajorel/yadex/yadex-1.7.0.tar.gz http://www.teaser.fr/~amajorel/yadex/logo_small.png -> yadex.png http://glbsp.sourceforge.net/yadex/Yadex_170_ALL.diff https://dev.gentoo.org/~pacho/yadex/yadex-1.7.0-mrmeval-differential-patch.patch
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=89a7d9a4136c9cf0265af1a14d00c152

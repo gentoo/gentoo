@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup test unpack
+DEPEND=>=dev-lang/go-1.9 virtual/pkgconfig
+DESCRIPTION=Open Source Continuous File Synchronization
+EAPI=6
+HOMEPAGE=https://syncthing.net
+IUSE=selinux tools
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MPL-2.0
+RDEPEND=selinux? ( sec-policy/selinux-syncthing )
+SLOT=0
+SRC_URI=https://github.com/syncthing/syncthing/archive/v0.14.47.tar.gz -> syncthing-0.14.47.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=543b4941b763914a1307a86e3e2c8722

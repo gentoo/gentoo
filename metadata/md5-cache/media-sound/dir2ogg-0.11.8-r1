@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
+EAPI=7
+HOMEPAGE=http://jak-linux.org/projects/dir2ogg/
+IUSE=aac cdparanoia flac mac mp3 musepack wavpack wma
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/python-2.5 dev-python/pyid3lib media-sound/vorbis-tools[ogg123] >=media-libs/mutagen-1.11 aac? ( || ( media-libs/faad2 media-video/mplayer ) ) cdparanoia? ( || ( dev-libs/libcdio-paranoia media-sound/cdparanoia ) ) flac? ( || ( media-libs/flac media-video/mplayer ) ) mac? ( || ( media-sound/mac media-video/mplayer ) ) mp3? ( || ( media-sound/mpg123 media-sound/lame media-video/mplayer media-sound/mpg321 ) ) musepack? ( || ( >=media-sound/musepack-tools-444 media-video/mplayer ) ) wavpack? ( || ( media-sound/wavpack media-video/mplayer ) ) wma? ( media-video/mplayer )
+SLOT=0
+SRC_URI=http://jak-linux.org/projects/dir2ogg/0.11/dir2ogg-0.11.8.tar.gz
+_md5_=0fc687cde44f7318601580b69fc25a7d

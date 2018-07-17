@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=>=virtual/emacs-24
+DESCRIPTION=A major emacs mode for editing Rust source code
+EAPI=6
+HOMEPAGE=https://github.com/rust-lang/rust-mode
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT Apache-2.0 )
+RDEPEND=>=virtual/emacs-24
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rust-mode-0.3.0_p20180221.tar.xz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=072f698d4157029219fc8b6f466d3e77

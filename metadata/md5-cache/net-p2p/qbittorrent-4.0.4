@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=dev-libs/boost-1.62.0-r1:= dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5(+),X?] dev-qt/qtxml:5 >=net-libs/libtorrent-rasterbar-1.0.6:0= sys-libs/zlib dbus? ( dev-qt/qtdbus:5 ) X? ( dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) dev-qt/linguist-tools:5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4
+DESCRIPTION=BitTorrent client in C++ and Qt
+EAPI=6
+HOMEPAGE=https://www.qbittorrent.org/
+IUSE=+dbus debug webui +X
+KEYWORDS=amd64 ~arm ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.62.0-r1:= dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5(+),X?] dev-qt/qtxml:5 >=net-libs/libtorrent-rasterbar-1.0.6:0= sys-libs/zlib dbus? ( dev-qt/qtdbus:5 ) X? ( dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=dbus? ( X )
+SLOT=0
+SRC_URI=mirror://sourceforge/qbittorrent/qbittorrent-4.0.4.tar.xz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=2e2e66c06d6500379a95c9d1f2869071

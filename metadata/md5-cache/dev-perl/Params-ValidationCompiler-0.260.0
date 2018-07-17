@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Eval-Closure dev-perl/Exception-Class virtual/perl-Exporter >=virtual/perl-Scalar-List-Utils-1.400.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec >=dev-perl/Specio-0.140.0 >=virtual/perl-Test-Simple-1.302.15 dev-perl/Test-Without-Module >=dev-perl/Test2-Suite-0.0.72 dev-perl/Test2-Plugin-NoWarnings ) dev-lang/perl:=
+DESCRIPTION=Build an optimized subroutine parameter validator once, use it forever
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Params-ValidationCompiler/
+IUSE=test examples
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=Artistic-2
+RDEPEND=virtual/perl-Carp dev-perl/Eval-Closure dev-perl/Exception-Class virtual/perl-Exporter >=virtual/perl-Scalar-List-Utils-1.400.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Params-ValidationCompiler-0.26.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=b1fd2b7674b47ea38ce8449c620785dd

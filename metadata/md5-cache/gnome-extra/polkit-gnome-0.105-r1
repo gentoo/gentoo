@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-libs/glib-2.30 >=sys-auth/polkit-0.102 x11-libs/gtk+:3 !lxde-base/lxpolkit dev-util/intltool virtual/pkgconfig sys-devel/gettext app-arch/xz-utils
+DESCRIPTION=A dbus session bus service that is used to bring up authentication dialogs
+EAPI=4
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/polkit
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=>=dev-libs/glib-2.30 >=sys-auth/polkit-0.102 x11-libs/gtk+:3 !lxde-base/lxpolkit
+SLOT=0
+SRC_URI=mirror://gnome/sources/polkit-gnome/0.105/polkit-gnome-0.105.tar.xz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=2b63a1ed5634305b94684bf86779045d

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=sys-libs/zlib media-libs/libpng media-libs/gd truetype? ( media-libs/freetype ) virtual/jpeg dev-perl/GD dev-perl/Config-IniFiles virtual/perl-File-Spec dev-perl/HTML-Tagset dev-perl/HTML-Parser dev-perl/GDGraph virtual/perl-File-Temp dev-perl/GD-Graph3d
+DESCRIPTION=Makes usable statistics from your web site log file analysis
+EAPI=5
+HOMEPAGE=http://www.reportmagic.org/
+IUSE=truetype
+KEYWORDS=x86 ppc amd64
+LICENSE=Artistic
+SLOT=0
+SRC_URI=http://www.reportmagic.org/rmagic-2.21.tar.gz
+_md5_=59d4cf1e2110241a173fa0fd2a88a4fa

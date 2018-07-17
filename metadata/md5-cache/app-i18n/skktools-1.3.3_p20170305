@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm unpack
+DEPEND=dev-libs/glib:2 sys-libs/gdbm emacs? ( virtual/emacs ) virtual/pkgconfig
+DESCRIPTION=SKK utilities to manage dictionaries
+EAPI=6
+HOMEPAGE=http://openlab.jp/skk/
+IUSE=emacs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 sys-libs/gdbm emacs? ( virtual/emacs )
+SLOT=0
+SRC_URI=https://github.com/skk-dev/skktools/archive/e14d98e734d2fdff611385c7df65826e94d929db.tar.gz -> skktools-1.3.3_p20170305.tar.gz
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=7a8f3122d9ac37aa47baacd1e708c7f4

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Load home brewed code onto the GameCube with Phantasy Star Online
+EAPI=0
+HOMEPAGE=http://www.gc-linux.org/
+KEYWORDS=-* x86
+LICENSE=freedist
+SLOT=0
+SRC_URI=http://www.gcdev.com/download/PSOloadV2.0_Linux.zip
+_md5_=8e28ffe0bb3cdf9e4215b5d1953fbf88

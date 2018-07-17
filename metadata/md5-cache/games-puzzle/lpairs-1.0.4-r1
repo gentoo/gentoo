@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libsdl[sound?,video] nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=A classical memory game
+EAPI=6
+HOMEPAGE=http://lgames.sourceforge.net/LPairs/
+IUSE=nls sound
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=media-libs/libsdl[sound?,video] nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/lgames/lpairs-1.0.4.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=779780f0046420930872d322047081d6

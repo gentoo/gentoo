@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Regular, validated releases of the GNU Toolchain for arm processors
+EAPI=0
+HOMEPAGE=http://www.codesourcery.com/sgpp/lite/arm
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/glibc
+RESTRICT=strip
+SLOT=2010.09.51
+SRC_URI=http://www.codesourcery.com/public/gnu_toolchain/arm-none-eabi/arm-2010.09-51-arm-none-eabi-i686-pc-linux-gnu.tar.bz2
+_md5_=5bf4dc2e505100a9e338c55bcf8fd44e

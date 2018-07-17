@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Gnulib is a library of common routines intended to be shared at the source level
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/gnulib
+IUSE=doc
+KEYWORDS=~ppc-aix ~x86-fbsd ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://git.savannah.gnu.org/cgit/gnulib.git/snapshot/gnulib-3a0b7b74982f44c735f4cfc2dccf538c3c4ef9e2.tar.gz
+_md5_=8978b903eb761670994273d8799a2a8b

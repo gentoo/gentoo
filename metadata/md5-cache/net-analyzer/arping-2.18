@@ -1,0 +1,13 @@
+DEFINED_PHASES=postinst
+DEPEND=net-libs/libpcap net-libs/libnet:1.1 test? ( dev-libs/check ) filecaps? ( sys-libs/libcap )
+DESCRIPTION=A utility to see if a specific IP address is taken and what MAC address owns it
+EAPI=6
+HOMEPAGE=http://www.habets.pp.se/synscan/programs.php?prog=arping
+IUSE=test +filecaps
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2
+RDEPEND=net-libs/libpcap net-libs/libnet:1.1 !net-misc/iputils[arping(+)]
+SLOT=2
+SRC_URI=http://www.habets.pp.se/synscan/files/arping-2.18.tar.gz
+_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16
+_md5_=2e684d5a60d73864d809e9749bea4603

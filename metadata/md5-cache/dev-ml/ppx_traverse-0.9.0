@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Automatic generation of open recursion classes
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_traverse
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_traverse/archive/v0.9.0.tar.gz -> ppx_traverse-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=ea43b4900c7d52031ecc6dddcca7c011

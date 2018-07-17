@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Scmxlate is a configuration tool for software packages written in Scheme
+EAPI=6
+HOMEPAGE=http://www.ccs.neu.edu/home/dorai/scmxlate/scmxlate.html
+KEYWORDS=~amd64 ~x86
+LICENSE=freedist
+SLOT=0
+SRC_URI=http://evalwhen.com/scmxlate/scmxlate.tar.bz2 -> scmxlate-20090410.tar.bz2
+_md5_=726267dbe54f7c87887083640afe4f4f

@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= app-arch/xz-utils:= sys-libs/libcap gcrypt? ( dev-libs/libgcrypt:0= ) gpg? ( app-crypt/gpgme ) lzo? ( dev-libs/lzo:= ) xattr? ( sys-apps/attr:= ) ) static? ( app-arch/bzip2[static-libs] app-arch/xz-utils[static-libs] sys-libs/libcap[static-libs] sys-libs/zlib[static-libs] gcrypt? ( dev-libs/libgcrypt:0=[static-libs] ) gpg? ( app-crypt/gpgme[static-libs] dev-libs/libassuan[static-libs] dev-libs/libgpg-error[static-libs] ) lzo? ( dev-libs/lzo[static-libs] ) xattr? ( sys-apps/attr[static-libs] ) ) nls? ( sys-devel/gettext virtual/libintl ) doc? ( app-doc/doxygen )
+DESCRIPTION=A full featured backup tool, aimed for disks
+EAPI=6
+HOMEPAGE=http://dar.linux.free.fr/
+IUSE=dar32 dar64 doc gcrypt gpg lzo nls static static-libs xattr
+KEYWORDS=amd64 ppc sparc x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= app-arch/xz-utils:= sys-libs/libcap gcrypt? ( dev-libs/libgcrypt:0= ) gpg? ( app-crypt/gpgme ) lzo? ( dev-libs/lzo:= ) xattr? ( sys-apps/attr:= ) )
+REQUIRED_USE=?? ( dar32 dar64 ) gpg? ( gcrypt )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/dar/dar-2.5.11.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=7818d9c6ed14868f0b3b892a664d8b8f

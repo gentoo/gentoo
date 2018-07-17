@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=sys-apps/policycoreutils-2.8 virtual/udev sys-devel/m4 >=sys-apps/checkpolicy-2.8 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Gentoo base policy for SELinux
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+IUSE=doc +open_perms +peer_perms systemd +ubac +unconfined
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-2.8 virtual/udev
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=2fc724b9e2781b1ce6541d1eb4045c0a

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=>=dev-libs/onigmo-6.1.1:0= benchmark? ( >=dev-libs/glib-2.8 ) jemalloc? ( dev-libs/jemalloc:0= ) libedit? ( >=dev-libs/libedit-3 ) libevent? ( dev-libs/libevent:0= ) lzo? ( dev-libs/lzo ) mecab? ( >=app-text/mecab-0.80 ) msgpack? ( dev-libs/msgpack ) sphinx? ( >=dev-python/sphinx-1.0.1 ) zeromq? ( net-libs/zeromq:0= ) zlib? ( sys-libs/zlib:0= ) zstd? ( app-arch/zstd:0= ) virtual/pkgconfig sphinx? ( dev-python/sphinx ) >=app-portage/elt-patches-20170422
+DESCRIPTION=An Embeddable Fulltext Search Engine
+EAPI=6
+HOMEPAGE=https://groonga.org/
+IUSE=abort benchmark debug doc dynamic-malloc-change +exact-alloc-count examples fmalloc futex jemalloc libedit libevent lzo +mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib zstd
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/onigmo-6.1.1:0= benchmark? ( >=dev-libs/glib-2.8 ) jemalloc? ( dev-libs/jemalloc:0= ) libedit? ( >=dev-libs/libedit-3 ) libevent? ( dev-libs/libevent:0= ) lzo? ( dev-libs/lzo ) mecab? ( >=app-text/mecab-0.80 ) msgpack? ( dev-libs/msgpack ) sphinx? ( >=dev-python/sphinx-1.0.1 ) zeromq? ( net-libs/zeromq:0= ) zlib? ( sys-libs/zlib:0= ) zstd? ( app-arch/zstd:0= )
+REQUIRED_USE=abort? ( dynamic-malloc-change ) fmalloc? ( dynamic-malloc-change ) sphinx? ( doc )
+SLOT=0
+SRC_URI=https://packages.groonga.org/source/groonga/groonga-8.0.2.tar.gz
+_eclasses_=libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=6fe3c64c8178576f7a55eb526128a9f0

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Cyberbit Unicode (including CJK) font
+EAPI=7
+HOMEPAGE=http://www.bitstream.com/
+IUSE=X
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=BitstreamCyberbit
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=http://ftp.netscape.com/pub/communicator/extras/fonts/windows/Cyberbit.ZIP -> bitstream-cyberbit-2.0.zip ftp://ftp.netscape.com.edgesuite.net/pub/communicator/extras/fonts/windows/Cyberbit.ZIP -> bitstream-cyberbit-2.0.zip
+_eclasses_=eutils	b43d08fe0771faf2f5e7be19c2789d33	font	82836641e7d4639329d8c195234ad0e3
+_md5_=f9684575a9fe1b15f71759ae0f06b8ca

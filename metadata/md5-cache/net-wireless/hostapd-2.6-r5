@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend
+DEPEND=libressl? ( dev-libs/libressl:0= ) !libressl? ( internal-tls? ( dev-libs/libtommath ) !internal-tls? ( dev-libs/openssl:0=[-bindist] ) ) kernel_linux? ( dev-libs/libnl:3 crda? ( net-wireless/crda ) ) netlink? ( net-libs/libnfnetlink ) sqlite? ( >=dev-db/sqlite-3 ) virtual/pkgconfig
+DESCRIPTION=IEEE 802.11 wireless LAN Host AP daemon
+EAPI=6
+HOMEPAGE=http://w1.fi
+IUSE=internal-tls ipv6 libressl logwatch netlink sqlite +wps +crda savedconfig
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~x86
+LICENSE=BSD
+RDEPEND=libressl? ( dev-libs/libressl:0= ) !libressl? ( internal-tls? ( dev-libs/libtommath ) !internal-tls? ( dev-libs/openssl:0=[-bindist] ) ) kernel_linux? ( dev-libs/libnl:3 crda? ( net-wireless/crda ) ) netlink? ( net-libs/libnfnetlink ) sqlite? ( >=dev-db/sqlite-3 )
+SLOT=0
+SRC_URI=http://w1.fi/releases/hostapd-2.6.tar.gz https://dev.gentoo.org/~andrey_utkin/distfiles/net-wireless_hostapd_2.6-r5_extras.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=21b8b1d2800197c0a0f4d40afbfef986

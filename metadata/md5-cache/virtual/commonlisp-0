@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Common Lisp
+EAPI=6
+KEYWORDS=alpha amd64 ia64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris
+RDEPEND=|| ( dev-lisp/sbcl dev-lisp/clisp dev-lisp/clozurecl dev-lisp/cmucl dev-lisp/ecls dev-lisp/gcl dev-lisp/abcl )
+SLOT=0
+_md5_=b97d8f8e5f6d9e152cbd17366d6de6fe

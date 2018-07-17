@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=sys-libs/zlib !app-misc/beagle !dev-libs/libbeagle doc? ( app-doc/doxygen )
+DESCRIPTION=Open BEAGLE, a versatile EC/GA/GP framework
+EAPI=6
+HOMEPAGE=http://beagle.gel.ulaval.ca/
+IUSE=doc examples static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=sys-libs/zlib !app-misc/beagle !dev-libs/libbeagle
+SLOT=0
+SRC_URI=mirror://sourceforge/beagle/beagle-3.0.3.tar.gz
+_md5_=1e81f0869b776cd0dade6682bf761faf

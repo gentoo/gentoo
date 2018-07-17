@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Performance monitoring tool capable of interactive reporting and logging to disk
+EAPI=6
+HOMEPAGE=http://collectl.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~ia64 ~x86
+LICENSE=GPL-2 Artistic
+RDEPEND=>=dev-lang/perl-5.8.8 virtual/perl-Time-HiRes >=dev-perl/Archive-Zip-1.20 sys-apps/ethtool sys-apps/pciutils
+SLOT=0
+SRC_URI=mirror://sourceforge/collectl/collectl-4.3.0.src.tar.gz
+_md5_=e2c661607154a2846864bb897feb786b

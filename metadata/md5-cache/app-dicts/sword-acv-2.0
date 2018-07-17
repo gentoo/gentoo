@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=A Conservative Version
+EAPI=5
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=ACV
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=public-domain
+RDEPEND=app-text/sword
+SLOT=0
+SRC_URI=mirror://gentoo/ACV-2.0.zip
+_eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
+_md5_=3af82e36bb702e00909b0c37ac2be55a

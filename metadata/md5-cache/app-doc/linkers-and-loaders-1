@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/xz-utils
+DESCRIPTION=the Linkers and Loaders book
+EAPI=4
+HOMEPAGE=http://linker.iecc.com/
+IUSE=doc
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=all-rights-reserved
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://wh0rd.org/books/linkers-and-loaders-1.tar.lzma
+_md5_=4982aa3fd9347c497e199a5a9734fe6c

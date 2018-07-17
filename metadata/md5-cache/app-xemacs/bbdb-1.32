@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=The Big Brother Data Base
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/edit-utils app-xemacs/gnus app-xemacs/mh-e app-xemacs/rmail app-xemacs/supercite app-xemacs/vm app-xemacs/tm app-xemacs/apel app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/w3 app-xemacs/fsf-compat app-xemacs/xemacs-eterm app-xemacs/sh-script app-xemacs/net-utils app-xemacs/os-utils app-xemacs/ecrypto app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/bbdb-1.32-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=ec49af7af943d26ba96439934e6cd97c

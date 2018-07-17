@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=A P2P framework and client
+EAPI=0
+HOMEPAGE=http://xnap.sf.net
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=>=virtual/jre-1.3
+SLOT=0
+SRC_URI=mirror://sourceforge/xnap/xnap-2.5r3.jar
+_md5_=93b995e365780c117d41196e44ba0369

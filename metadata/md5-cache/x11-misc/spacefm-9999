@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure postinst postrm setup unpack
+DEPEND=dev-libs/glib:2 dev-util/desktop-file-utils >=virtual/udev-143 virtual/freedesktop-icon-theme x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/pango x11-libs/libX11 x11-misc/shared-mime-info gtk2? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) ) !gtk2? ( x11-libs/gtk+:3 ) startup-notification? ( x11-libs/startup-notification ) video-thumbnails? ( media-video/ffmpegthumbnailer ) dev-util/intltool sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A multi-panel tabbed file manager
+EAPI=6
+HOMEPAGE=https://ignorantguru.github.com/spacefm/
+IUSE=gtk2 +gtk3 +startup-notification +video-thumbnails kernel_linux
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=dev-libs/glib:2 dev-util/desktop-file-utils >=virtual/udev-143 virtual/freedesktop-icon-theme x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/pango x11-libs/libX11 x11-misc/shared-mime-info gtk2? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) ) !gtk2? ( x11-libs/gtk+:3 ) startup-notification? ( x11-libs/startup-notification ) video-thumbnails? ( media-video/ffmpegthumbnailer )
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=5b20622ac1c47d1e72e31dc15fe8a142

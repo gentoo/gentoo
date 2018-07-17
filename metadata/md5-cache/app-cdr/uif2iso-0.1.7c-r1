@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=sys-libs/zlib app-arch/unzip
+DESCRIPTION=Convert CD images from uif (MagicISO) to iso
+EAPI=6
+HOMEPAGE=http://aluigi.altervista.org/mytoolz.htm#uif2iso
+IUSE=test
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=GPL-2+
+RDEPEND=sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://gentoo/uif2iso-0.1.7c.zip test? ( https://yegortimoshenko.s3.amazonaws.com/uif2iso-test.iso https://yegortimoshenko.s3.amazonaws.com/uif2iso-test.uif )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=b0cf5e275bacabc3afbca4092681efa4

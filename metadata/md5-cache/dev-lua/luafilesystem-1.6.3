@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=!luajit? ( >=dev-lang/lua-5.1 ) luajit? ( dev-lang/luajit:2 ) virtual/pkgconfig
+DESCRIPTION=File System Library for the Lua Programming Language
+EAPI=6
+HOMEPAGE=https://keplerproject.github.io/luafilesystem/
+IUSE=luajit
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=MIT
+RDEPEND=!luajit? ( >=dev-lang/lua-5.1 ) luajit? ( dev-lang/luajit:2 )
+SLOT=0
+SRC_URI=https://github.com/keplerproject/luafilesystem/archive/v1_6_3.tar.gz -> luafilesystem-1.6.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=364b3e2570438baa46e27ddf7f165710

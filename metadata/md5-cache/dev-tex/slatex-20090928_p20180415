@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=dev-scheme/guile dev-scheme/scmxlate virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=SLaTeX is a Scheme program allowing you to write Scheme in your (La)TeX source
+EAPI=6
+HOMEPAGE=http://www.ccs.neu.edu/home/dorai/slatex/slatxdoc.html
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-scheme/guile virtual/latex-base
+SLOT=0
+SRC_URI=http://www.ccs.neu.edu/home/dorai/slatex/slatex.tar.bz2 -> slatex-20090928_p20180415.tar.bz2
+_eclasses_=latex-package	773c51c2ef26eaff025998531e7c6731
+_md5_=907926208f4c69a18fa23a8d42f816ca

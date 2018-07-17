@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=app-crypt/mhash-0.8.18-r1
+DESCRIPTION=Generate or check digests or MACs of files
+EAPI=6
+HOMEPAGE=http://mcrypt.hellug.gr/shash/
+IUSE=static
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=>=app-crypt/mhash-0.8.18-r1
+SLOT=0
+SRC_URI=ftp://mcrypt.hellug.gr/pub/mcrypt/shash/shash-0.2.6.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=d2ee8df2d025cf2f9e9af1588047d755

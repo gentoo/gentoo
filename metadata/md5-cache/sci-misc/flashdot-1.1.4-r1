@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=dev-lang/ocaml-3.10[ocamlopt?] dev-ml/gsl-ocaml dev-ml/lablgl[glut] dev-ml/ocamlsdl x11-apps/xdpyinfo
+DESCRIPTION=Generator for psychophysical experiments
+EAPI=6
+HOMEPAGE=http://www.flashdot.info/
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/ocaml-3.10[ocamlopt?] dev-ml/gsl-ocaml dev-ml/lablgl[glut] dev-ml/ocamlsdl x11-apps/xdpyinfo
+SLOT=0
+SRC_URI=mirror://gentoo/flashdot-1.1.4.tar.bz2 https://dev.gentoo.org/~tomka/files/flashdot-1.1.4.tar.bz2
+_md5_=0116275040884ebfc5f42361a3c1c3be

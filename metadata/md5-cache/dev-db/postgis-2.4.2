@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3=[server] ) dev-libs/json-c:= dev-libs/libxml2:2 >=sci-libs/geos-3.5.0 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0 address-standardizer? ( dev-libs/libpcre ) gtk? ( x11-libs/gtk+:2 ) mapbox? ( dev-libs/protobuf ) doc? ( app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.5 dev-libs/libxslt || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] ) ) virtual/pkgconfig test? ( dev-util/cunit ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Geographic Objects for PostgreSQL
+EAPI=6
+HOMEPAGE=http://postgis.net
+IUSE=address-standardizer doc gtk static-libs mapbox test topology postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3=[server] ) dev-libs/json-c:= dev-libs/libxml2:2 >=sci-libs/geos-3.5.0 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0 address-standardizer? ( dev-libs/libpcre ) gtk? ( x11-libs/gtk+:2 ) mapbox? ( dev-libs/protobuf )
+REQUIRED_USE=test? ( doc ) || ( postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.osgeo.org/postgis/source/postgis-2.4.2.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	postgres	a3ad839d319097167f1802b25f50d9c0	postgres-multi	4ad3669c874bed68b375f87035e46db8	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=9daaddabb54f47f358377ba82ebd77a9

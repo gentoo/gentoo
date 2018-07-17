@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2:= || ( x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2[jpeg] ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DESCRIPTION=Plugin for fetching cover art, artist art, album and artist information
+EAPI=6
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_MDCOVER
+IUSE=nls
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2:= || ( x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2[jpeg] )
+SLOT=0
+SRC_URI=mirror://sourceforge/musicpd/gmpc-mdcover-0.20.0.tar.gz
+_md5_=518b2a24de40569d48454842e7dce2b8

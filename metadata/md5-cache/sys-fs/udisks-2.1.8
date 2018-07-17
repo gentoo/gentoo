@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare setup
+DEPEND=>=dev-libs/glib-2.36:2 >=dev-libs/libatasmart-0.19 >=sys-auth/polkit-0.110 >=virtual/libgudev-165:= virtual/udev acl? ( virtual/acl ) introspection? ( >=dev-libs/gobject-introspection-1.30:= ) systemd? ( >=sys-apps/systemd-209 ) app-text/docbook-xsl-stylesheets dev-libs/libxslt >=dev-util/gdbus-codegen-2.32 >=dev-util/gtk-doc-am-1.3 dev-util/intltool >=sys-kernel/linux-headers-3.1 virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Daemon providing interfaces to work with storage devices
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/udisks
+IUSE=acl debug cryptsetup +gptfdisk +introspection selinux systemd kernel_linux
+KEYWORDS=alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.36:2 >=dev-libs/libatasmart-0.19 >=sys-auth/polkit-0.110 >=virtual/libgudev-165:= virtual/udev acl? ( virtual/acl ) introspection? ( >=dev-libs/gobject-introspection-1.30:= ) systemd? ( >=sys-apps/systemd-209 ) >=sys-apps/util-linux-2.20.1-r2 >=sys-block/parted-3 virtual/eject cryptsetup? ( sys-fs/cryptsetup[udev(+)] sys-fs/lvm2[udev(+)] ) gptfdisk? ( >=sys-apps/gptfdisk-0.8 ) selinux? ( sec-policy/selinux-devicekit )
+SLOT=2
+SRC_URI=https://udisks.freedesktop.org/releases/udisks-2.1.8.tar.bz2
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=9801a814eedac69d8dffe0f67750cea6

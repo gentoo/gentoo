@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Spouts silly mad-lib-style porn-like text
+EAPI=6
+HOMEPAGE=http://spatula.net/software/sex/
+KEYWORDS=~alpha ~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=!sci-astronomy/sextractor
+SLOT=0
+SRC_URI=http://spatula.net/software/sex/sex-1.0.tar.gz
+_md5_=33b3fea8b8baf912660aec1bf445d867

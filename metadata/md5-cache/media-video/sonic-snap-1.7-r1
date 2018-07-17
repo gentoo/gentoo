@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=x11-libs/fltk:1 mpeg? ( >=media-libs/libfame-0.9.1 ) sys-libs/zlib x11-libs/libXdmcp x11-libs/libXau x11-libs/libXrender x11-libs/libX11 x11-libs/libXext x11-libs/libXft
+DESCRIPTION=Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
+EAPI=6
+HOMEPAGE=http://www.stolk.org/sonic-snap/
+IUSE=mpeg kernel_linux
+KEYWORDS=~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-1
+RDEPEND=x11-libs/fltk:1 mpeg? ( >=media-libs/libfame-0.9.1 ) sys-libs/zlib x11-libs/libXdmcp x11-libs/libXau x11-libs/libXrender x11-libs/libX11 x11-libs/libXext x11-libs/libXft
+SLOT=0
+SRC_URI=http://www.stolk.org/sonic-snap/downloads/sonic-snap-1.7.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=8657c1e2323e7b6b1c656801d04c5868

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=app-crypt/gcr-3.11.91:= >=dev-libs/glib-2.10:2 >=x11-libs/gtk+-3.4:3 >=app-crypt/libsecret-0.16 >=net-libs/libsoup-2.33.92:2.4 x11-misc/shared-mime-info net-misc/openssh >=app-crypt/gpgme-1 >=app-crypt/gnupg-2.0.12 ldap? ( net-nds/openldap:= ) zeroconf? ( >=net-dns/avahi-0.6:= ) app-text/yelp-tools dev-util/gdbus-codegen >=dev-util/intltool-0.35 dev-util/itstool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A GNOME application for managing encryption keys
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Apps/Seahorse
+IUSE=debug ldap zeroconf
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
+LICENSE=GPL-2+ FDL-1.1+
+RDEPEND=>=app-crypt/gcr-3.11.91:= >=dev-libs/glib-2.10:2 >=x11-libs/gtk+-3.4:3 >=app-crypt/libsecret-0.16 >=net-libs/libsoup-2.33.92:2.4 x11-misc/shared-mime-info net-misc/openssh >=app-crypt/gpgme-1 >=app-crypt/gnupg-2.0.12 ldap? ( net-nds/openldap:= ) zeroconf? ( >=net-dns/avahi-0.6:= ) !<app-crypt/seahorse-plugins-2.91.0_pre20110114
+SLOT=0
+SRC_URI=mirror://gnome/sources/seahorse/3.20/seahorse-3.20.0.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=8514b9ee7c24319ba3a6c73078ea61c7

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare test
+DESCRIPTION=tRNA detection in large-scale genome sequences
+EAPI=6
+HOMEPAGE=http://lowelab.ucsc.edu/tRNAscan-SE/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://lowelab.ucsc.edu/software/tRNAscan-SE.tar.gz -> trnascan-se-1.31.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3f4bcdf31fe276f90a95e2f4b311deae

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=X Steps Recorder
+EAPI=6
+HOMEPAGE=https://github.com/nonnymoose/xsr
+IUSE=cursor
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-lang/perl media-gfx/scrot cursor? ( media-gfx/imagemagick x11-misc/xdotool )
+SLOT=0
+SRC_URI=https://github.com/nonnymoose/xsr/archive/v1.0.0.tar.gz -> xsr-1.0.0.tar.gz
+_md5_=1dff5fbc017b62139ba04dfdd945b4c2

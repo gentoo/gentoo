@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/allegro:0[X] app-arch/unzip
+DESCRIPTION=Tetanus On Drugs simulates playing Tetris under the influence of drugs
+EAPI=6
+HOMEPAGE=http://www.pineight.com/tod/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/allegro:0[X]
+SLOT=0
+SRC_URI=http://www.pineight.com/pc/wintod.zip
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=8049a612202b49240ebcdba0b6b521d8

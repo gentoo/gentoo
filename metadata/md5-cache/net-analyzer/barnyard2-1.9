@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=net-libs/libpcap mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) odbc? ( dev-db/unixODBC )
+DESCRIPTION=Parser for Snort unified/unified2 files
+EAPI=2
+HOMEPAGE=http://www.securixlive.com/barnyard2/
+IUSE=static debug gre mpls mysql odbc postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libpcap mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) odbc? ( dev-db/unixODBC )
+SLOT=0
+SRC_URI=http://www.securixlive.com/download/barnyard2/barnyard2-1.9.tar.gz
+_md5_=74d4ee97e2996102b637a65ddec23744

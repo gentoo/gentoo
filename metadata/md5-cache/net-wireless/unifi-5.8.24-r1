@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=app-arch/unzip virtual/pkgconfig
+DESCRIPTION=A Management Controller for Ubiquiti Networks UniFi APs
+EAPI=6
+HOMEPAGE=https://www.ubnt.com
+IUSE=systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti
+RDEPEND=dev-db/mongodb virtual/jre:1.8
+RESTRICT=bindist mirror
+SLOT=0/5.8
+SRC_URI=https://dl.ubnt.com/unifi/5.8.24/UniFi.unix.zip -> unifi-5.8.24.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b3b61683b8eb3af8049c0f26b54b279c

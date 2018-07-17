@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=app-emacs/websocket >=virtual/emacs-25
+DESCRIPTION=Edit text area on Chrome with Emacs using Atomic Chrome
+EAPI=6
+HOMEPAGE=https://github.com/alpha22jp/atomic-chrome
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-emacs/websocket >=virtual/emacs-25
+SLOT=0
+SRC_URI=https://github.com/alpha22jp/atomic-chrome/archive/v2.0.0.tar.gz -> atomic-chrome-2.0.0.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=05fb60580edb6036dc0dd7411f3e627c

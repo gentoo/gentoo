@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=sys-devel/flex sys-devel/bison sys-devel/m4
+DESCRIPTION=A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
+EAPI=6
+HOMEPAGE=http://bird.network.cz
+IUSE=+client debug ipv6
+KEYWORDS=~amd64 ~arm64 ~x86 ~x64-macos
+LICENSE=GPL-2
+RDEPEND=client? ( sys-libs/ncurses ) client? ( sys-libs/readline )
+SLOT=0
+SRC_URI=ftp://bird.network.cz/pub/bird/bird-1.6.4.tar.gz
+_md5_=4b8cf262256087f8739f5254ad67e6fb

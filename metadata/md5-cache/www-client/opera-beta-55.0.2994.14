@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=A fast and secure web browser
+EAPI=5
+HOMEPAGE=http://www.opera.com/
+IUSE=kernel_linux +l10n_be +l10n_bg +l10n_bn +l10n_ca +l10n_cs +l10n_da +l10n_de +l10n_el +l10n_en-GB +l10n_es-419 +l10n_es +l10n_fil +l10n_fi +l10n_fr-CA +l10n_fr +l10n_hi +l10n_hr +l10n_hu +l10n_id +l10n_it +l10n_ja +l10n_ko +l10n_lt +l10n_lv +l10n_ms +l10n_nb +l10n_nl +l10n_pl +l10n_pt-BR +l10n_pt-PT +l10n_ro +l10n_ru +l10n_sk +l10n_sr +l10n_sv +l10n_sw +l10n_ta +l10n_te +l10n_th +l10n_tr +l10n_uk +l10n_vi +l10n_zh-CN +l10n_zh-TW
+KEYWORDS=~amd64
+LICENSE=OPERA-2014
+RDEPEND=dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss gnome-base/gconf:2 media-libs/alsa-lib media-libs/fontconfig media-libs/freetype net-misc/curl net-print/cups sys-apps/dbus x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/libnotify x11-libs/pango[X]
+SLOT=0
+SRC_URI=amd64? ( http://download1.operacdn.com/pub/opera-beta/55.0.2994.14/linux/opera-beta_55.0.2994.14_amd64.deb http://download2.operacdn.com/pub/opera-beta/55.0.2994.14/linux/opera-beta_55.0.2994.14_amd64.deb http://download3.operacdn.com/pub/opera-beta/55.0.2994.14/linux/opera-beta_55.0.2994.14_amd64.deb http://download4.operacdn.com/pub/opera-beta/55.0.2994.14/linux/opera-beta_55.0.2994.14_amd64.deb )
+_eclasses_=chromium-2	3d468f3fc7ed63c78db7408ea04246e3	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=70606416ac2911b0691c3d0d0018e07a

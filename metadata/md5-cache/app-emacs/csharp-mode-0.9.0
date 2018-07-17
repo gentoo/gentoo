@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=A derived Emacs mode implementing most of the C# rules
+EAPI=6
+HOMEPAGE=https://github.com/josteink/csharp-mode
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/josteink/csharp-mode/archive/v0.9.0.tar.gz -> csharp-mode-0.9.0.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=6866f35edbe30391a54f6474bd9c79ed

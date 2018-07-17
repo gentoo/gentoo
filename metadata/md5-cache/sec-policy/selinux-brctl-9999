@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst postrm prepare unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl] >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999 sys-devel/m4 >=sys-apps/checkpolicy-2.0.21
+DESCRIPTION=SELinux policy for brctl
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	selinux-policy-2	e7b396fb2057f9eb5785a7a3539613aa
+_md5_=92d641643aab6f44f1a1f8ed004ca1e5

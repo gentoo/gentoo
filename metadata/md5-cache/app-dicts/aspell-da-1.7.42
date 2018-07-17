@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=app-text/aspell-0.50
+DESCRIPTION=Danish language dictionary for aspell
+EAPI=6
+HOMEPAGE=http://da.speling.org
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=>=app-text/aspell-0.50
+SLOT=0
+SRC_URI=http://da.speling.org/filer/new_aspell-da-1.7.42.tar.bz2
+_eclasses_=aspell-dict-r1	340906f655106dec40252eccc43e3503
+_md5_=2e5d599d9eb434429456b97d61bda976

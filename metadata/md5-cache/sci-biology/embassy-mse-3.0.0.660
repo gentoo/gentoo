@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot:= sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu:= ) png? ( media-libs/gd:2=[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt ) >=sci-biology/emboss-6.6.0-r1[mysql=,pdf=,png=,postgres=,static-libs=,X=]
+DESCRIPTION=EMBOSS integrated version of MSE - Multiple Sequence Screen Editor
+EAPI=6
+HOMEPAGE=http://emboss.sourceforge.net/
+IUSE=ncurses mysql pdf png postgres static-libs X
+KEYWORDS=~amd64 ~x86 ~x86-linux
+LICENSE=LGPL-2 GPL-2
+RDEPEND=ncurses? ( sys-libs/ncurses:0= ) dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot:= sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu:= ) png? ( media-libs/gd:2=[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt ) >=sci-biology/emboss-6.6.0-r1[mysql=,pdf=,png=,postgres=,static-libs=,X=]
+SLOT=0
+SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/MSE-3.0.0.660.tar.gz -> embassy-mse-3.0.0.660.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	emboss-r2	e6c8236c06e1e543b4feef45c31dd618	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=84df94b7c4b0f044de45cef524cbf453

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Environment variable manager for Bitrise CLI.
+EAPI=6
+HOMEPAGE=https://www.bitrise.io/cli
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/bitrise-io/envman/archive/1.2.0.tar.gz -> envman-1.2.0.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1
+_md5_=f625531e7763fdbe3dfde64b372712c6

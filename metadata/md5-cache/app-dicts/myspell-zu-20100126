@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Zulu dictionaries for myspell/hunspell
+EAPI=6
+HOMEPAGE=https://extensions.openoffice.org/en/project/zulu-spell-checker
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://sourceforge/aoo-extensions/dict-zu_za-2010.01.26.oxt -> myspell-zu-20100126.oxt
+_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
+_md5_=81771e80e31eb7c61dbb0695649d3b7e

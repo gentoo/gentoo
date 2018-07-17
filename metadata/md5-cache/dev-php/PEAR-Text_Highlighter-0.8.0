@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=A package for syntax highlighting
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Text_Highlighter
+KEYWORDS=~amd64 ~x86
+LICENSE=PHP-3.01
+RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 dev-php/PEAR-XML_Serializer >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Text_Highlighter-0.8.0.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=d0de43a38cda5f44f0e421f819b297cc

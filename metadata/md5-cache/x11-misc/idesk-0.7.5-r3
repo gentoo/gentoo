@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/glib:2 dev-libs/libxml2 media-libs/freetype >=media-libs/imlib2-1.4[X] media-libs/libart_lgpl x11-libs/gtk+:2 x11-libs/pango x11-libs/startup-notification virtual/pkgconfig
+DESCRIPTION=Utility to place icons on the root window
+EAPI=6
+HOMEPAGE=http://idesk.sourceforge.net/
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=dev-libs/glib:2 dev-libs/libxml2 media-libs/freetype >=media-libs/imlib2-1.4[X] media-libs/libart_lgpl x11-libs/gtk+:2 x11-libs/pango x11-libs/startup-notification
+SLOT=0
+SRC_URI=mirror://sourceforge/idesk/idesk-0.7.5.tar.bz2
+_md5_=9f6ae8873b32738472aa483d93d77cf3

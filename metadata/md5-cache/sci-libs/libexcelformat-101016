@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=reading, writing, and editing of XLS (BIFF8 format) files using C++
+EAPI=6
+HOMEPAGE=http://www.codeproject.com/KB/office/ExcelFormat.aspx
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=CPOL
+SLOT=0
+SRC_URI=mirror://gentoo/libexcelformat-101016.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9019cf084ce97d16212726579bc152b6

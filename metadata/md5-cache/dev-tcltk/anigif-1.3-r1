@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Image rotation package
+EAPI=5
+HOMEPAGE=http://cardtable.sourceforge.net/tcltk/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=tcltk
+RDEPEND=dev-lang/tcl:0
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/anigif-1.3.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=085ef2b3c509381f31d36a296957e283

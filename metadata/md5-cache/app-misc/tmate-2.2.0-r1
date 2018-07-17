@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/zlib[static-libs?] sys-libs/libutempter[static-libs?] dev-libs/openssl[static-libs?] dev-libs/libevent[static-libs?] dev-libs/msgpack[static-libs?] >=net-libs/libssh-0.6.0[static-libs?] virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Instant terminal sharing
+EAPI=5
+HOMEPAGE=http://tmate.io/
+IUSE=debug static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=sys-libs/zlib[static-libs?] sys-libs/libutempter[static-libs?] dev-libs/openssl[static-libs?] dev-libs/libevent[static-libs?] dev-libs/msgpack[static-libs?] >=net-libs/libssh-0.6.0[static-libs?]
+SLOT=0
+SRC_URI=https://github.com/tmate-io/tmate/archive/2.2.0.tar.gz -> tmate-2.2.0.tar.gz https://dev.gentoo.org/~dlan/distfiles/tmate-2.2.0-upstream-patches-0.tar.xz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=efc85a06338b6af412ff496de3f4e805

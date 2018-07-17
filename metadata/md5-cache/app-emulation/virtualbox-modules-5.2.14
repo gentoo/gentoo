@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=Kernel Modules for Virtualbox
+EAPI=6
+HOMEPAGE=https://www.virtualbox.org/
+IUSE=pax_kernel kernel_linux kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!=app-emulation/virtualbox-9999 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~polynomial-c/virtualbox/vbox-kernel-module-src-5.2.14.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	linux-info	bb73a1f0c3db9ff796439bf44bed8467	linux-mod	8ce5c5f548ed010d6499eb792ac1a638	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=bccf9dfb12387664d9fd8ca9af9f9601

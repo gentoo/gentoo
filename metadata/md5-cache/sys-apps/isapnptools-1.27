@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Tools for configuring ISA PnP devices
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=-* amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://metalab.unc.edu/pub/Linux/system/hardware/isapnptools-1.27.tgz
+_md5_=8883f4bb07d4bf23302d8e10afe6ec52

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=sdl? ( x11-libs/libX11 media-libs/libsdl[video] ) X? ( x11-libs/libX11 ) !sdl? ( !X? ( sys-libs/ncurses:0= ) )
+DESCRIPTION=Portable redcode simulator's sdl port for core war
+EAPI=6
+HOMEPAGE=http://corewar.co.uk/pihlaja/pmars-sdl/
+IUSE=sdl X
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD GPL-2
+RDEPEND=sdl? ( x11-libs/libX11 media-libs/libsdl[video] ) X? ( x11-libs/libX11 ) !sdl? ( !X? ( sys-libs/ncurses:0= ) )
+SLOT=0
+SRC_URI=http://corewar.co.uk/pihlaja/pmars-sdl/pmars-0.9.2-5.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=86ab54130f1149f89e68ccf344797170

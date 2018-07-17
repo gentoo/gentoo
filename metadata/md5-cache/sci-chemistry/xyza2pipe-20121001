@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Cross conversion environment of NMR spectra
+EAPI=6
+HOMEPAGE=http://fermi.pharm.hokudai.ac.jp/olivia/api/index.php/Xyza2pipe_src
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=olivia
+SLOT=0
+SRC_URI=http://fermi.pharm.hokudai.ac.jp/olivia/documents/xyza2pipe.tgz -> xyza2pipe-20121001.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c93da6bf85d6833951ad1ba692d826ed

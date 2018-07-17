@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure prepare
+DEPEND=!>=app-shells/bash-4.5
+DESCRIPTION=bash source code debugging
+EAPI=6
+HOMEPAGE=http://bashdb.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/bashdb/bashdb-4.4-0.92.tar.bz2
+_md5_=89ef710ab9f5b0805309b5dc83fe1e3b

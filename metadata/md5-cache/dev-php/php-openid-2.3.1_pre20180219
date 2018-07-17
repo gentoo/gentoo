@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=PHP OpenID implementation
+EAPI=6
+HOMEPAGE=https://github.com/openid/php-openid
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=|| ( dev-lang/php[gmp] dev-lang/php[bcmath] ) dev-lang/php[curl,xml,ssl] net-misc/curl[ssl]
+SLOT=0
+SRC_URI=https://github.com/openid/php-openid/archive/26d5e12ea2a1eae180b11b061160d6f78fbedd17.tar.gz -> php-openid-26d5e12ea2a1eae180b11b061160d6f78fbedd17.tar.gz
+_md5_=f1e259ab0d80db8ba6a81f6f5e57a67f

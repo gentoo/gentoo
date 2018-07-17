@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-db/postgresql:*[ssl?] !iodbc? ( dev-db/unixODBC ) iodbc? ( dev-db/libiodbc )
+DESCRIPTION=Official ODBC driver for PostgreSQL
+EAPI=6
+HOMEPAGE=https://www.postgresql.org/
+IUSE=doc iodbc ssl threads
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2
+RDEPEND=dev-db/postgresql:*[ssl?] !iodbc? ( dev-db/unixODBC ) iodbc? ( dev-db/libiodbc )
+SLOT=0
+SRC_URI=mirror://postgresql/odbc/versions/src/psqlodbc-10.01.0000.tar.gz
+_md5_=d544f5eb52c39104afa9575921239e5c

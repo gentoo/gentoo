@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=SLiM (Simple Login Manager) themes pack
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/slim.berlios/
+KEYWORDS=amd64 arm ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=x11-misc/slim
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://sourceforge/project/slim.berlios/slim-1.2.3-themepack1a.tar.gz mirror://sourceforge/project/slim.berlios/slim-gentoo-simple.tar.bz2 mirror://gentoo/slim-archlinux.tar.gz mirror://sourceforge/project/slim.berlios/slim-debian-moreblue.tar.bz2 mirror://sourceforge/project/slim.berlios/slim-fingerprint.tar.gz mirror://sourceforge/project/slim.berlios/slim-flat.tar.gz mirror://sourceforge/project/slim.berlios/slim-lunar-0.4.tar.bz2 mirror://sourceforge/project/slim.berlios/slim-previous.tar.gz mirror://sourceforge/project/slim.berlios/slim-rainbow.tar.gz mirror://sourceforge/project/slim.berlios/slim-rear-window.tar.gz mirror://sourceforge/project/slim.berlios/slim-scotland-road.tar.gz mirror://sourceforge/project/slim.berlios/slim-subway.tar.gz mirror://sourceforge/project/slim.berlios/slim-wave.tar.gz mirror://sourceforge/project/slim.berlios/slim-zenwalk.tar.gz mirror://sourceforge/project/slim.berlios/slim-archlinux-simple.tar.gz mirror://sourceforge/project/slim.berlios/slim-lake.tar.gz mirror://gentoo/slim-gentoo-1.0.tar.bz2 http://www.xfce-look.org/CONTENT/content-files/48605-xfce-g-box-slim-0.1.tar.gz http://www.konstantinhansen.de/source/slim_themes/gentoo_10_purple/gentoo_10_purple.tar.bz2 -> gentoo_10_purple-r1.tar.bz2 http://www.konstantinhansen.de/source/slim_themes/gentoo_10_blue/gentoo_10_blue.tar.bz2 -> gentoo_10_blue-r1.tar.bz2 http://www.konstantinhansen.de/source/slim_themes/gentoo_10_dark/gentoo_10_dark.tar.bz2 -> gentoo_10_dark-r1.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=e59b3afd1f588aea763a4d93ecc063d0

@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Music for the pyDDR game
+EAPI=6
+HOMEPAGE=http://icculus.org/pyddr/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://gentoo/pydance-songs-20040410.tar.bz2
+_md5_=ceb4c73ab3a98ac70da4adaf4e21bea1

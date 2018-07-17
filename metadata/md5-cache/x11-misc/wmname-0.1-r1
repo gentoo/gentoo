@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11
+DESCRIPTION=utility to set the name of your window manager
+EAPI=6
+HOMEPAGE=https://tools.suckless.org/x/wmname
+KEYWORDS=amd64 ~arm ~ppc ~sparc x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=https://dl.suckless.org/tools/wmname-0.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=910aea3aaf6dc3dc44fb4661ad90404d

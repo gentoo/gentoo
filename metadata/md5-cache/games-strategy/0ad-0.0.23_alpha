@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst setup test
+DEPEND=dev-libs/boost:= dev-libs/icu:= dev-libs/libsodium dev-libs/libxml2 dev-libs/nspr ~games-strategy/0ad-data-0.0.23_alpha media-libs/libpng:0 media-libs/libsdl2[X,opengl,video] media-libs/libvorbis media-libs/openal net-libs/enet:1.3 net-libs/miniupnpc:= net-misc/curl sys-libs/zlib virtual/jpeg:0 virtual/opengl x11-libs/libX11 x11-libs/libXcursor editor? ( x11-libs/wxGTK:3.0[X,opengl] ) lobby? ( >=net-libs/gloox-1.0.20 ) nvtt? ( media-gfx/nvidia-texture-tools ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads,ssl] ) virtual/pkgconfig test? ( dev-lang/perl ) >=sys-apps/sed-4
+DESCRIPTION=A free, real-time strategy game
+EAPI=6
+HOMEPAGE=https://play0ad.com/
+IUSE=editor +lobby nvtt pch test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1 MIT CC-BY-SA-3.0 ZLIB
+RDEPEND=dev-libs/boost:= dev-libs/icu:= dev-libs/libsodium dev-libs/libxml2 dev-libs/nspr ~games-strategy/0ad-data-0.0.23_alpha media-libs/libpng:0 media-libs/libsdl2[X,opengl,video] media-libs/libvorbis media-libs/openal net-libs/enet:1.3 net-libs/miniupnpc:= net-misc/curl sys-libs/zlib virtual/jpeg:0 virtual/opengl x11-libs/libX11 x11-libs/libXcursor editor? ( x11-libs/wxGTK:3.0[X,opengl] ) lobby? ( >=net-libs/gloox-1.0.20 ) nvtt? ( media-gfx/nvidia-texture-tools )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://releases.wildfiregames.com/0ad-0.0.23-alpha-unix-build.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=abc7af71b215f9d7334e907f192555d5

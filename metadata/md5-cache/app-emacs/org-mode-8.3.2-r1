@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=doc? ( virtual/texi2dvi ) >=virtual/emacs-23
+DESCRIPTION=An Emacs mode for notes and project planning
+EAPI=5
+HOMEPAGE=https://www.orgmode.org/
+IUSE=contrib doc odt-schema
+KEYWORDS=amd64 ppc x86 ~x86-fbsd ~x86-macos
+LICENSE=GPL-3+ FDL-1.3+ contrib? ( GPL-2+ MIT ) odt-schema? ( OASIS-Open )
+RDEPEND=>=virtual/emacs-23
+RESTRICT=test
+SLOT=0
+SRC_URI=http://orgmode.org/org-8.3.2.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=9fb4c436babce6a6ed8400299d8a9dda

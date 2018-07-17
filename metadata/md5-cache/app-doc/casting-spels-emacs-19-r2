@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
+EAPI=6
+HOMEPAGE=http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html https://www.gnu.org/software/emacs/casting-spels-emacs/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+ FDL-1.2
+RDEPEND=virtual/emacs
+SLOT=0
+SRC_URI=https://casting-spels-emacs.googlecode.com/files/casting-spels-emacs-v19.zip
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=357860abed4b4ee6f8e46490069aa866

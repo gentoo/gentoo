@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=virtual/mysql dev-libs/openssl
+DESCRIPTION=Policy daemon for postfix and other MTAs
+EAPI=0
+HOMEPAGE=http://policyd.sf.net/
+KEYWORDS=amd64 ~hppa x86
+LICENSE=GPL-2
+RDEPEND=virtual/mysql dev-libs/openssl
+SLOT=0
+SRC_URI=http://policyd.sourceforge.net/policyd-1.82.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=a4a22d282a4b8ccc7df8f6c561f79755

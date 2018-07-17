@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=x11-libs/gtk+:2 x11-libs/cairo virtual/pkgconfig
+DESCRIPTION=A RS-274X (Gerber) and NC drill (Excellon) file viewer
+EAPI=4
+HOMEPAGE=http://gerbv.geda-project.org/
+IUSE=doc examples static-libs unit-mm
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 x11-libs/cairo
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/gerbv/gerbv-2.6.0.tar.gz
+_eclasses_=fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7
+_md5_=b322ca6030de9fd6e6bcd453d240f3a8

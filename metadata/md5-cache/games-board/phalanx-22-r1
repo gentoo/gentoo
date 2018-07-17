@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A chess engine suitable for beginner and intermediate players
+EAPI=6
+HOMEPAGE=http://phalanx.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/phalanx/Phalanx-XXII.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=67f40b93a4fc852c0b01c1c2ff87c240

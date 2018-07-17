@@ -1,0 +1,9 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Embeddable Javascript engine
+EAPI=6
+HOMEPAGE=http://duktape.org
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://duktape.org/duktape-2.2.0.tar.xz
+_md5_=e5d2030fc55087782371b6900cf7e135

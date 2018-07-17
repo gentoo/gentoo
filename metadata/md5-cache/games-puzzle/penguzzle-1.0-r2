@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Tcl/Tk variant of the well-known 15-puzzle game
+EAPI=6
+HOMEPAGE=http://www.naskita.com/linux/penguzzle/penguzzle.shtml
+KEYWORDS=~amd64 ~x86
+LICENSE=penguzzle
+RDEPEND=dev-lang/tk:0= dev-tcltk/tclx
+SLOT=0
+SRC_URI=http://www.naskita.com/linux/penguzzle/penguzzle.zip
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=1541fd8ee0d9ee97371e3e1e5148f1b4

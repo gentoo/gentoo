@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=media-libs/libsdl-1.2 >=media-libs/sdl-mixer-1.2 >=media-libs/sdl-image-1.2
+DESCRIPTION=Create as many words as you can before the time runs out
+EAPI=6
+HOMEPAGE=http://www.coralquest.com/anagramarama/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libsdl-1.2 >=media-libs/sdl-mixer-1.2 >=media-libs/sdl-image-1.2 sys-apps/miscfiles
+SLOT=0
+SRC_URI=http://www.omega.clara.net/anagramarama/dist/anagramarama-0.2.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1b9a4977cc7752821cb6985c79003ad0

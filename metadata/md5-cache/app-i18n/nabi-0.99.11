@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=app-i18n/libhangul-0.1.0 dev-libs/glib:2 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.4:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/pango virtual/libintl virtual/pkgconfig sys-devel/gettext
+DESCRIPTION=Simple Hanguk X Input Method
+EAPI=5
+HOMEPAGE=https://code.google.com/p/nabi/
+IUSE=debug nls
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-i18n/libhangul-0.1.0 dev-libs/glib:2 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.4:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/pango virtual/libintl
+SLOT=0
+SRC_URI=https://nabi.googlecode.com/files/nabi-0.99.11.tar.gz
+_md5_=c387f820ca18fe34fc458c8e72b57dc2

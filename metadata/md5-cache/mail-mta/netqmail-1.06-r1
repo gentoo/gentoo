@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile config install postinst preinst prepare setup unpack
+DEPEND=!mail-mta/qmail net-mail/queue-repair ssl? ( dev-libs/openssl ) >=sys-apps/sed-4
+DESCRIPTION=qmail -- a secure, reliable, efficient, simple message transfer agent
+EAPI=5
+HOMEPAGE=http://netqmail.org http://cr.yp.to/qmail.html http://qmail.org
+IUSE=authcram gencertdaily highvolume qmail-spp ssl vanilla
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=public-domain
+RDEPEND=!mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp[mta] !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] >=sys-apps/ucspi-tcp-0.88-r17 ssl? ( >=sys-apps/ucspi-ssl-0.70-r1 ) virtual/daemontools >=net-mail/dot-forward-0.71-r3 virtual/checkpassword authcram? ( >=net-mail/cmd5checkpw-0.30 ) !mail-mta/qmail net-mail/queue-repair ssl? ( dev-libs/openssl )
+REQUIRED_USE=vanilla? ( !ssl !qmail-spp !highvolume )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://qmail/netqmail-1.06.tar.gz https://dev.gentoo.org/~hollow/distfiles/genqmail-20080406.tar.bz2 http://www.ckdhr.com/ckd/qmail-103.patch !vanilla? ( highvolume? ( mirror://qmail/big-todo.103.patch ) qmail-spp? ( mirror://sourceforge/qmail-spp/qmail-spp-0.42.tar.gz ) ssl? ( http://shupp.org/patches/netqmail-1.05-tls-smtpauth-20070417.patch ) )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmail	0cddcd9f34297dbca4a09fbdafa7398a	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b2087023a776686b05e29b2e38e90742

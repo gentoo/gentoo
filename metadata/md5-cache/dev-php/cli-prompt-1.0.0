@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Allows you to prompt for user input on the command line
+EAPI=6
+HOMEPAGE=https://github.com/Seldaek/cli-prompt
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+SLOT=0
+SRC_URI=https://github.com/Seldaek/cli-prompt/archive/1.0.0.tar.gz -> cli-prompt-1.0.0.tar.gz
+_md5_=5b64df8ad164552d4708d8255651439b

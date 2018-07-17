@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Moaning Goat Meter: load and status meter written in Perl
+EAPI=6
+HOMEPAGE=http://www.linuxmafia.com/mgm
+KEYWORDS=~amd64 ppc x86
+LICENSE=public-domain
+RDEPEND=>=dev-lang/perl-5.6.1 >=dev-perl/Tk-800.024
+SLOT=0
+SRC_URI=http://downloads.xiph.org/releases/mgm/mgm-1.2.tgz
+_md5_=bfdfa9d22bb6210fdc0fa56c9d16f595

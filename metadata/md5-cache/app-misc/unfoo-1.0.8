@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=test? ( || ( app-arch/bzip2 app-arch/lbzip2[symlink] app-arch/pbzip2[symlink] ) || ( app-arch/gzip app-arch/pigz[symlink] ) app-arch/p7zip || ( app-arch/rar app-arch/unrar ) app-arch/unace app-arch/unzip app-arch/xz-utils )
+DESCRIPTION=A simple bash driven frontend to simplify decompression of files
+EAPI=6
+HOMEPAGE=http://obsoleet.org/code/unfoo
+IUSE=+minimal test
+KEYWORDS=amd64 ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=!minimal? ( || ( app-arch/bzip2 app-arch/lbzip2[symlink] app-arch/pbzip2[symlink] ) || ( app-arch/gzip app-arch/pigz[symlink] ) app-arch/p7zip || ( app-arch/rar app-arch/unrar ) app-arch/unace app-arch/unzip app-arch/xz-utils )
+SLOT=0
+SRC_URI=https://github.com/jlec/unfoo/archive/v1.0.8.tar.gz -> unfoo-1.0.8.tar.gz
+_md5_=9cabfccf2f1312f19c39cb40453553d7

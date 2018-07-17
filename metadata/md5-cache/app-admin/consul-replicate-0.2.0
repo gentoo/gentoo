@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=>=dev-lang/go-1.4:= >=dev-lang/go-1.9
+DESCRIPTION=Consul cross-DC KV replication daemon
+EAPI=5
+HOMEPAGE=https://github.com/hashicorp/consul-replicate
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+SLOT=0
+SRC_URI=https://github.com/hashicorp/consul-replicate/archive/v0.2.0.tar.gz -> consul-replicate-0.2.0.tar.gz https://github.com/hashicorp/consul-template/archive/v0.8.0.tar.gz -> consul-template-0.8.0.tar.gz https://github.com/fatih/structs/archive/a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz -> structs-a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz https://github.com/hashicorp/consul/archive/v0.6.3.tar.gz -> consul-0.6.3.tar.gz https://github.com/hashicorp/errwrap/archive/7554cd9344cec97297fa6649b055a8c98c2a1e55.tar.gz -> errwrap-7554cd9344cec97297fa6649b055a8c98c2a1e55.tar.gz https://github.com/hashicorp/go-cleanhttp/archive/ce617e79981a8fff618bb643d155133a8f38db96.tar.gz -> go-cleanhttp-ce617e79981a8fff618bb643d155133a8f38db96.tar.gz https://github.com/hashicorp/go-multierror/archive/d30f09973e19c1dfcd120b2d9c4f168e68d6b5d5.tar.gz -> go-multierror-d30f09973e19c1dfcd120b2d9c4f168e68d6b5d5.tar.gz https://github.com/hashicorp/go-syslog/archive/42a2b573b664dbf281bd48c3cc12c086b17a39ba.tar.gz -> go-syslog-42a2b573b664dbf281bd48c3cc12c086b17a39ba.tar.gz https://github.com/hashicorp/hcl/archive/578dd9746824a54637686b51a41bad457a56bcef.tar.gz -> hcl-578dd9746824a54637686b51a41bad457a56bcef.tar.gz https://github.com/hashicorp/logutils/archive/0dc08b1671f34c4250ce212759ebd880f743d883.tar.gz -> logutils-0dc08b1671f34c4250ce212759ebd880f743d883.tar.gz https://github.com/hashicorp/serf/archive/64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz -> serf-64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz https://github.com/mitchellh/mapstructure/archive/281073eb9eb092240d33ef253c404f1cca550309.tar.gz -> mapstructure-281073eb9eb092240d33ef253c404f1cca550309.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c
+_md5_=863b1e2da42a810e3032fcebfee9a31a

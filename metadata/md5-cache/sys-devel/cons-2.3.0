@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl virtual/perl-Digest-MD5
+DESCRIPTION=Extensible perl-based build utility
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/cons/
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl virtual/perl-Digest-MD5 !sci-biology/emboss
+SLOT=2.2
+SRC_URI=https://www.gnu.org/software/cons/stable/cons-2.3.0.tgz https://www.gnu.org/software/cons/dev/cons-2.3.0.tgz
+_md5_=24506cd91e9bc900444ca8e2a283463b

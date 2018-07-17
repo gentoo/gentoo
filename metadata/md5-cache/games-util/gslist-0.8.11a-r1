@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/geoip app-arch/unzip
+DESCRIPTION=A GameSpy server browser
+EAPI=6
+HOMEPAGE=http://aluigi.altervista.org/papers.htm#gslist
+IUSE=web
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/geoip
+SLOT=0
+SRC_URI=mirror://gentoo/gslist-0.8.11a.zip
+_md5_=6a3efca613eb4d37f26220266ea9dcdc

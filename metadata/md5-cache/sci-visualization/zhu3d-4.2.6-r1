@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 virtual/glu virtual/opengl
+DESCRIPTION=Interactive 3D mathematical function viewer
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/zhu3d
+IUSE=l10n_cs l10n_de l10n_es l10n_fr l10n_zh
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=mirror://sourceforge/zhu3d/zhu3d-4.2.6.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=79d9b531e4469b900d92fcf301f6c866

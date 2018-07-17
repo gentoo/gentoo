@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=sys-devel/autogen-5.11.7 sys-devel/libtool
+DESCRIPTION=a tool designed for analyzing the complexity of C program functions
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/complexity/
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=GPL-3
+RDEPEND=>=sys-devel/autogen-5.11.7
+SLOT=0
+SRC_URI=mirror://gnu/complexity/complexity-1.10.tar.xz
+_md5_=a60097793ec051ca18c5e977ea0140ea

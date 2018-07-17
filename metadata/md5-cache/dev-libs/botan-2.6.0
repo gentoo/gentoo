@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install test
+DEPEND=bzip2? ( >=app-arch/bzip2-1.0.5 ) zlib? ( >=sys-libs/zlib-1.2.3 ) boost? ( >=dev-libs/boost-1.48 ) lzma? ( app-arch/xz-utils ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) ) dev-lang/python:* doc? ( dev-python/sphinx )
+DESCRIPTION=A C++ crypto library
+EAPI=6
+HOMEPAGE=https://botan.randombit.net/
+IUSE=bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
+KEYWORDS=amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos
+LICENSE=BSD
+RDEPEND=bzip2? ( >=app-arch/bzip2-1.0.5 ) zlib? ( >=sys-libs/zlib-1.2.3 ) boost? ( >=dev-libs/boost-1.48 ) lzma? ( app-arch/xz-utils ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=2/6
+SRC_URI=https://botan.randombit.net/releases/Botan-2.6.0.tgz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=064cba2d783a9c6e08040c6b7fb73a8e

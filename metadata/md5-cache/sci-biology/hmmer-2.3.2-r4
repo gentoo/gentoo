@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=test? ( dev-lang/perl )
+DESCRIPTION=Sequence analysis using profile hidden Markov models
+EAPI=6
+HOMEPAGE=http://hmmer.org/
+IUSE=altivec test threads
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=2
+SRC_URI=http://eddylab.org/software/hmmer/2.3.2/hmmer-2.3.2.tar.gz
+_md5_=2f631b79914f25875fd00c05fd144807

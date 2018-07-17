@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Apply binary patches without git
+EAPI=6
+HOMEPAGE=https://github.com/wine-compholio/wine-staging
+IUSE=userland_BSD userland_GNU
+LICENSE=LGPL-2.1
+RDEPEND=app-shells/bash sys-apps/coreutils sys-apps/gawk sys-apps/grep userland_BSD? ( sys-freebsd/freebsd-bin sys-freebsd/freebsd-ubin ) userland_GNU? ( sys-apps/util-linux sys-devel/patch )
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=161ff1c3aa7b500f035ff5d2b45050c2

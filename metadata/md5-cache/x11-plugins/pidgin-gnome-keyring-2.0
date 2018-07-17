@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=app-crypt/libsecret net-im/pidgin virtual/pkgconfig
+DESCRIPTION=Integrates Pidgin (and libpurple) with the system keyring
+EAPI=6
+HOMEPAGE=https://github.com/aebrahim/pidgin-gnome-keyring
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=app-crypt/libsecret net-im/pidgin
+SLOT=0
+SRC_URI=https://github.com/aebrahim/pidgin-gnome-keyring/archive/2.0.tar.gz -> pidgin-gnome-keyring-2.0.tar.gz
+_md5_=64685d11aca52203e4ab5d4ff87b634f

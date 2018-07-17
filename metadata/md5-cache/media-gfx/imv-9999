@@ -1,0 +1,11 @@
+DEFINED_PHASES=postinst postrm unpack
+DEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf media-libs/freeimage test? ( dev-util/cmocka ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Minimal image viewer designed for tiling window manager users
+EAPI=6
+HOMEPAGE=https://github.com/eXeC64/imv
+IUSE=test
+LICENSE=GPL-2+
+RDEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf media-libs/freeimage
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=f7d3d7859aeac6d9af299dd9a388b092

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup test
+DEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.30 >=dev-libs/libatasmart-0.19 >=sys-auth/polkit-0.110 >=sys-apps/dbus-1.6 >=sys-apps/sg3_utils-1.27.20090411 >=sys-block/parted-3 >=sys-fs/lvm2-2.02.66 virtual/libgudev:= virtual/libudev:= virtual/udev selinux? ( sec-policy/selinux-devicekit ) app-text/docbook-xsl-stylesheets dev-libs/libxslt dev-util/intltool virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Daemon providing interfaces to work with storage devices
+EAPI=5
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/udisks
+IUSE=debug nls remote-access selinux kernel_linux
+KEYWORDS=alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.30 >=dev-libs/libatasmart-0.19 >=sys-auth/polkit-0.110 >=sys-apps/dbus-1.6 >=sys-apps/sg3_utils-1.27.20090411 >=sys-block/parted-3 >=sys-fs/lvm2-2.02.66 virtual/libgudev:= virtual/libudev:= virtual/udev selinux? ( sec-policy/selinux-devicekit ) >=sys-apps/util-linux-2.20.1-r2 virtual/eject remote-access? ( net-dns/avahi )
+SLOT=0
+SRC_URI=https://hal.freedesktop.org/releases/udisks-1.0.5.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1eff6a8af3e8ca9366835aa28f61ae5b

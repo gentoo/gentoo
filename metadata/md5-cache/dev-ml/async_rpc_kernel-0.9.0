@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/async_kernel:= dev-ml/core_kernel:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Platform-independent core of Async RPC library
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/async_rpc_kernel
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/async_kernel:= dev-ml/core_kernel:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/async_rpc_kernel/archive/v0.9.0.tar.gz -> async_rpc_kernel-0.9.0.tar.gz
+_md5_=ea739718576ba2e125e1a3fb7dbed3f9

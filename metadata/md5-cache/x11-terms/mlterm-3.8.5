@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo[X(+)] ) canna? ( app-i18n/canna ) fbcon? ( media-fonts/unifont ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) harfbuzz? ( media-libs/harfbuzz[truetype(+)] ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) xft? ( x11-libs/libXft ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A multi-lingual terminal emulator
+EAPI=6
+HOMEPAGE=http://mlterm.sourceforge.net/
+IUSE=bidi cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo[X(+)] ) canna? ( app-i18n/canna ) fbcon? ( media-fonts/unifont ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) harfbuzz? ( media-libs/harfbuzz[truetype(+)] ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) xft? ( x11-libs/libXft )
+REQUIRED_USE=gtk2? ( gtk )
+SLOT=0
+SRC_URI=mirror://sourceforge/mlterm/mlterm-3.8.5.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=ce72cfeb7ffbf7d2aa0926d5e22f120f

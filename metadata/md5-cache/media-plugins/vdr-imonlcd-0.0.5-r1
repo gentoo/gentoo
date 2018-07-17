@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
+DEPEND=media-libs/freetype nls? ( sys-devel/gettext ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers virtual/pkgconfig
+DESCRIPTION=VDR Plugin: shows information about the current state of VDR on iMON LCD
+EAPI=5
+HOMEPAGE=http://projects.vdr-developer.org/wiki/plg-imonlcd
+IUSE=nls kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/freetype >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=mirror://vdr-developerorg/408/vdr-imonlcd-0.0.5.tgz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vdr-plugin-2	786b4f5aa9f17e2d5cec5e628f462c01
+_md5_=6913c02b9072468a724ecc971d920c2c

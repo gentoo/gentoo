@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Graphical viewer for chromatogram files
+EAPI=5
+HOMEPAGE=http://www.geospiza.com/finchtv/
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=finchtv
+SLOT=0
+SRC_URI=http://www.geospiza.com/finchtv/download/programs/linux/finchtv_1_3_1.tar.gz
+_md5_=ae49772a5dce24695f0ae65993bae0c1

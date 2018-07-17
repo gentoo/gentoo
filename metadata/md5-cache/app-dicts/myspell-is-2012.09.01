@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Icelandic dictionaries for myspell/hunspell
+EAPI=6
+HOMEPAGE=http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=CC-BY-SA-3.0
+SLOT=0
+SRC_URI=http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project/releases/2012.09.01/hunspell-is-2012.09.01.oxt
+_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
+_md5_=fdcc6bbb63b126c851bf6f4e33a3470e

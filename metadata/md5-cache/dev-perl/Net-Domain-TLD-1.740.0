@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-Storable virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Current top level domain names including new ICANN additions and ccTLDs
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-Domain-TLD/
+KEYWORDS=amd64 ~arm hppa ~mips ppc ppc64 ~sparc x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Storable dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AL/ALEXP/Net-Domain-TLD-1.74.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=db2897c03aa6550efa15a9e78640d1f6

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/jbuilder test? ( dev-ml/rresult dev-ml/bos dev-ml/alcotest ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Library for radix-64 representation (de)coding
+EAPI=6
+HOMEPAGE=https://github.com/mirage/ocaml-base64
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-4:=
+SLOT=0/2.2.0
+SRC_URI=https://github.com/mirage/ocaml-base64/archive/v2.2.0.tar.gz -> ocaml-base64-2.2.0.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=9232f5a16cae33937ada6cc94028e909

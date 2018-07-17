@@ -1,0 +1,10 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=a smaller, cheaper and faster sed implementation
+EAPI=6
+HOMEPAGE=http://www.exactcode.de/oss/minised/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://dl.exactcode.de/oss/minised/minised-1.15.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f2602f23d62f495ba5b050220e1b48ff

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Top-down adventure game set in a gritty futuristic/dystopian city
+EAPI=6
+HOMEPAGE=http://wiki.scummvm.org/index.php/Dreamweb
+IUSE=doc l10n_de l10n_en l10n_en-GB l10n_es l10n_fr l10n_it
+KEYWORDS=~amd64 ~x86
+LICENSE=Dreamweb
+RDEPEND=>=games-engines/scummvm-1.7[flac]
+SLOT=0
+SRC_URI=doc? ( mirror://sourceforge/scummvm/dreamweb-manuals-en-highres.zip ) l10n_de? ( mirror://sourceforge/scummvm/dreamweb-cd-de-1.1.zip ) l10n_en? ( mirror://sourceforge/scummvm/dreamweb-cd-us-1.1.zip ) l10n_en-GB? ( mirror://sourceforge/scummvm/dreamweb-cd-uk-1.1.zip ) l10n_es? ( mirror://sourceforge/scummvm/dreamweb-cd-es-1.1.zip ) l10n_fr? ( mirror://sourceforge/scummvm/dreamweb-cd-fr-1.1.zip ) l10n_it? ( mirror://sourceforge/scummvm/dreamweb-cd-it-1.1.zip ) !l10n_de? ( !l10n_en? ( !l10n_en-GB? ( !l10n_es? ( !l10n_fr? ( !l10n_it? ( mirror://sourceforge/scummvm/dreamweb-cd-us-1.1.zip ) ) ) ) ) ) http://www.scummvm.org/images/cat-dreamweb.png
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=43106d26fdb6db352e51bd3b81f17d6e

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare unpack
+DEPEND=app-admin/chrpath app-arch/unzip >=sys-apps/sed-4
+DESCRIPTION=A physics-based action game with character-dependent solutions to challenges
+EAPI=6
+HOMEPAGE=https://www.frozenbyte.com/games/trine-enchanted-edition
+IUSE=+launcher
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=frozenbyte-eula
+RDEPEND=media-gfx/nvidia-cg-toolkit >=media-libs/libsdl-1.2[opengl,video] >=media-libs/sdl-image-1.2 >=media-libs/sdl-ttf-2.0 >=media-libs/libvorbis-1.3 >=media-libs/openal-1.15 >=sys-devel/gcc-4.3.0 >=sys-libs/glibc-2.4 sys-libs/zlib x11-libs/gtk+:2 launcher? ( dev-libs/glib:2 gnome-base/libglade:2.0 )
+RESTRICT=bindist fetch strip
+SLOT=0
+SRC_URI=TrineUpdate4.64.run
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=5f9e04e0f615f5ae156d2f44510e2a69

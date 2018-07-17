@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A somewhat comprehensive collection of Italian Linux man pages
+EAPI=5
+HOMEPAGE=http://it.tldp.org/man/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=man-pages GPL-2+ BSD MIT FDL-1.1+ public-domain man-pages-posix
+RDEPEND=virtual/man
+SLOT=0
+SRC_URI=ftp://ftp.pluto.it/pub/pluto/ildp/man/man-pages-it-4.00.tar.xz
+_md5_=4feea08f9ad69ea3e3064849b2be7ce5

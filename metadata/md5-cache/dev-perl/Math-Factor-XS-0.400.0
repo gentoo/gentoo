@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/boolean dev-perl/List-MoreUtils dev-perl/Params-Validate virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils virtual/perl-XSLoader >=dev-perl/Module-Build-0.400.0 virtual/perl-ExtUtils-CBuilder test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Factorize numbers and calculate matching multiplications
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Math-Factor-XS/
+IUSE=test
+KEYWORDS=~amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/boolean dev-perl/List-MoreUtils dev-perl/Params-Validate virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils virtual/perl-XSLoader dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KR/KRYDE/Math-Factor-XS-0.40.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=943c1b0ac2401c1c1043ab0ade721b47

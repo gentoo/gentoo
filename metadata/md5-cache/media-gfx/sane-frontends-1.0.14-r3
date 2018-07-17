@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=media-gfx/sane-backends gimp? ( media-gfx/gimp:2 ) gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+DESCRIPTION=Scanner Access Now Easy
+EAPI=6
+HOMEPAGE=http://www.sane-project.org
+IUSE=gimp gtk
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=media-gfx/sane-backends gimp? ( media-gfx/gimp:2 ) gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+REQUIRED_USE=gimp? ( gtk )
+SLOT=0
+SRC_URI=https://alioth.debian.org/frs/download.php/file/1140/sane-frontends-1.0.14.tar.gz
+_md5_=8ee6cb01f909e34d77180557bccfba6c

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare pretend setup test
+DEPEND=!minimal? ( >=dev-dotnet/libgdiplus-2.10 ) ia64? ( sys-libs/libunwind ) nls? ( sys-devel/gettext ) sys-devel/bc virtual/yacc pax_kernel? ( sys-apps/elfix ) dev-util/cmake >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Mono runtime and class libraries, a C# compiler/interpreter
+EAPI=6
+HOMEPAGE=https://www.mono-project.com/Main_Page
+IUSE=nls minimal pax_kernel xen doc kernel_linux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~arm64
+LICENSE=MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL
+RDEPEND=!minimal? ( >=dev-dotnet/libgdiplus-2.10 ) ia64? ( sys-libs/libunwind ) nls? ( sys-devel/gettext ) || ( www-client/links www-client/lynx )
+SLOT=0
+SRC_URI=https://download.mono-project.com/sources/mono/mono-5.4.1.6.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	mono-env	1f24c032c78290b0d9a07d5b343051a7	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=97da6929f62ec503eed8fc3e81ed55f2

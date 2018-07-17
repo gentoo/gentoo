@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=net-libs/libnfnetlink
+DESCRIPTION=MiniSSDP Daemon
+EAPI=6
+HOMEPAGE=http://miniupnp.free.fr/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=net-libs/libnfnetlink || ( net-misc/miniupnpd net-libs/miniupnpc )
+SLOT=0
+SRC_URI=http://miniupnp.free.fr/files/minissdpd-1.5.20180223.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2b309864472005ca1c5671c8c6ff82d6

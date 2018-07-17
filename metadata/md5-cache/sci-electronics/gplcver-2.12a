@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install test unpack
+DESCRIPTION=Verilog simulator
+EAPI=0
+HOMEPAGE=https://sourceforge.net/projects/gplcver
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.pragmatic-c.com/gpl-cver/downloads/gplcver-2.12a.src.tar.bz2
+_md5_=5e55cdbb1c7bc0effb9ba8040434cd11

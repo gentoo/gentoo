@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst setup unpack
+DEPEND=>=sys-apps/kmod-23[tools] virtual/pkgconfig virtual/udev app-text/asciidoc app-text/docbook-xml-dtd:4.5 >=app-text/docbook-xsl-stylesheets-1.75.2 >=dev-libs/libxslt-1.1.26 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Generic initramfs generation tool
+EAPI=6
+HOMEPAGE=https://dracut.wiki.kernel.org
+IUSE=debug selinux kernel_linux
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/kmod-23[tools] virtual/pkgconfig virtual/udev app-arch/cpio >=app-shells/bash-4.0:0 sys-apps/coreutils[xattr(-)] || ( >=sys-apps/sysvinit-2.87-r3 sys-apps/systemd[sysv-utils] ) >=sys-apps/util-linux-2.21 debug? ( dev-util/strace ) selinux? ( sec-policy/selinux-dracut sys-libs/libselinux sys-libs/libsepol )
+RESTRICT=test
+SLOT=0
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=bf0443c23ae437a5d0b898bfb4eeae1b

@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=sys-kernel/dracut
+DESCRIPTION=early unlocking of encrypted systems via ssh for dracut
+EAPI=6
+HOMEPAGE=https://github.com/dracut-crypt-ssh/dracut-crypt-ssh
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-kernel/dracut net-misc/dhcp net-misc/dropbear
+SLOT=0
+SRC_URI=https://github.com/dracut-crypt-ssh/dracut-crypt-ssh/archive/v1.0.6.tar.gz -> dracut-crypt-ssh-1.0.6.tar.gz
+_md5_=15332960869d765f29e86fc8f593fe47

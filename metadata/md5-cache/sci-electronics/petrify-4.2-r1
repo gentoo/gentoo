@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Synthesize Petri nets into asynchronous circuits
+EAPI=5
+HOMEPAGE=http://www.lsi.upc.edu/~jordicf/petrify/
+KEYWORDS=~amd64 ~x86
+LICENSE=Old-MIT
+RDEPEND=media-gfx/graphviz
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.lsi.upc.edu/~jordicf/petrify/distrib/petrify-4.2-linux.tgz
+_md5_=5882c726ee03b7ea516c9376262fc8f0

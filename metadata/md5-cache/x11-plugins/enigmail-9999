@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND=|| ( ( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt4(-)] app-crypt/pinentry[qt5(-)] ) ) =app-crypt/gnupg-1.4* ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) app-arch/zip dev-lang/perl >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Mozilla extension to provide GPG support in mail clients
+EAPI=6
+HOMEPAGE=http://www.enigmail.net/
+LICENSE=MPL-2.0 GPL-3
+RDEPEND=|| ( ( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt4(-)] app-crypt/pinentry[qt5(-)] ) ) =app-crypt/gnupg-1.4* )
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=545208a35488c9892166ac790b9fd17f

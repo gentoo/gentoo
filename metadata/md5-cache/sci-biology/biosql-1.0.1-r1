@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg )
+DESCRIPTION=A generic bioinformatics relational database model
+EAPI=6
+HOMEPAGE=http://www.biosql.org/
+IUSE=mysql postgres
+KEYWORDS=amd64 x86
+LICENSE=LGPL-3
+RDEPEND=mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) dev-lang/perl
+SLOT=0
+SRC_URI=http://biosql.org/DIST/biosql-1.0.1.tar.bz2
+_md5_=c3363146ed9daed7fd12e748db91abe0

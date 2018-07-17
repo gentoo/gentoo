@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Open Clip Art Library (openclipart.org)
+EAPI=2
+HOMEPAGE=http://www.openclipart.org/
+IUSE=svg png gzip
+KEYWORDS=amd64 ppc x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://download.openclipart.org/downloads/0.20/openclipart-0.20.tar.bz2
+_md5_=9f8eb1cddb4b8c27176fd2f56bf8c177

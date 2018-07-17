@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Quake4 SDK
+EAPI=6
+HOMEPAGE=https://www.iddevnet.com/quake4/
+KEYWORDS=-* amd64 x86
+LICENSE=QUAKE4
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://idsoftware/quake4/source/linux/quake4-linux-1.4.2-sdk.x86.run
+_eclasses_=unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_md5_=f7079bc3d63e41fb824d24bced588b39

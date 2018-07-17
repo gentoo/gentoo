@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=net-analyzer/icinga2-2.4.0 >=www-apps/icingaweb2-2.5.0
+DESCRIPTION=Icinga Web 2 plugin for Graphite
+EAPI=7
+HOMEPAGE=https://www.icinga.com/docs/graphite/latest/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/icinga2-2.4.0 >=www-apps/icingaweb2-2.5.0
+SLOT=0
+SRC_URI=https://github.com/Icinga/icingaweb2-module-graphite/archive/v1.0.1.tar.gz -> icingaweb2-module-graphite-1.0.1.tar.gz
+_md5_=bb7a72679a2c00135852818b983065b3

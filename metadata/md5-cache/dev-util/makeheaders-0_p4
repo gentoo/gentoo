@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=simple utility that will automatically generate header files
+EAPI=6
+HOMEPAGE=http://www.hwaci.com/sw/mkhdr/
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=http://www.hwaci.com/sw/mkhdr/makeheaders.c -> makeheaders-0_p4.c http://www.hwaci.com/sw/mkhdr/makeheaders.html -> makeheaders-0_p4.html
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2f7cf0c64c8492ab06e2b6533c6b54ca

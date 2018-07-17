@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=lzma? ( app-arch/xz-utils:= )
+DESCRIPTION=Computes changes between binary or text files and creates deltas
+EAPI=6
+HOMEPAGE=http://xdelta.org/
+IUSE=examples lzma
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-fbsd
+LICENSE=GPL-2
+RDEPEND=lzma? ( app-arch/xz-utils:= )
+SLOT=3
+SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.0.11/xdelta3-3.0.11.tar.gz
+_md5_=62c0a7dcd3d85916f7cce39848a668da

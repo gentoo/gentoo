@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Run a network service at low privilege level and restricted file system access
+EAPI=7
+HOMEPAGE=ftp://ftp.porcupine.org/pub/security/index.html
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=ftp://ftp.porcupine.org/pub/security/chrootuid1.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9af3669e224edd0f47baa724747a3f59

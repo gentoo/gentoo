@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( >=dev-perl/Params-Util-0.10 >=virtual/perl-File-Spec-0.80 >=virtual/perl-Test-Simple-0.42 >=dev-perl/Test-Exception-0.27 >=dev-perl/Test-Warn-0.11 ) dev-lang/perl:=
+DESCRIPTION=Parse and examine a Perl distribution MANIFEST file
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Module-Manifest/
+IUSE=test
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Params-Util-0.10 >=virtual/perl-File-Spec-0.80 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Module-Manifest-1.08.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=cc93a8938bc6b48cbceb40a3125fbd2c

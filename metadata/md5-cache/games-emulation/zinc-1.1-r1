@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
+EAPI=6
+HOMEPAGE=http://caesar.logiqx.com/php/emulator.php?id=zinc_linux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=freedist
+RDEPEND=x11-libs/libXext[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)]
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://caesar.logiqx.com/zips/emus/linux/zinc_linux/zinc11-lnx.tar.bz2
+_md5_=aa975e33c2aea099ec2a2d8a26464e5a

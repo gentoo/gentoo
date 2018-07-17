@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-analyzer/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn2:= ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( nettle? ( dev-libs/nettle ) !nettle? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) ) ) ) ) ) static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn2:=[static-libs(+)] ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] ) !gcrypt? ( nettle? ( dev-libs/nettle[static-libs(+)] ) !nettle? ( libressl? ( dev-libs/libressl:0=[static-libs(+)] ) !libressl? ( dev-libs/openssl:0=[static-libs(+)] ) ) ) ) ) ) virtual/os-headers app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Network monitoring tools including ping and ping6
+EAPI=6
+HOMEPAGE=https://wiki.linuxfoundation.org/networking/iputils
+IUSE=+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute +filecaps
+LICENSE=BSD GPL-2+ rdisc
+RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-analyzer/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn2:= ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( nettle? ( dev-libs/nettle ) !nettle? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) ) ) ) ) )
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fcaps	9445d60c1eb084a91c38ef4c070b2f16	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=560d5f1343b3306834ddeeb5495b2105

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer[vorbis]
+DESCRIPTION=Puzzle game like the known tetromino and the average pipe games
+EAPI=6
+HOMEPAGE=http://tamentis.com/projects/rezerwar/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer[vorbis]
+SLOT=0
+SRC_URI=http://tamentis.com/projects/rezerwar/files/rezerwar-0.4.2.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=e3167945521888ff630b1232d03b7d82

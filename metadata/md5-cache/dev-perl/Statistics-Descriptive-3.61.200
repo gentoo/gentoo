@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/List-MoreUtils virtual/perl-Scalar-List-Utils >=dev-perl/Module-Build-0.360.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Module of basic descriptive statistical functions
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Statistics-Descriptive/
+IUSE=test examples
+KEYWORDS=amd64 ~ppc x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/List-MoreUtils virtual/perl-Scalar-List-Utils dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SH/SHLOMIF/Statistics-Descriptive-3.0612.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=6a6ca712aaa7c736925d7fb07d7506b2

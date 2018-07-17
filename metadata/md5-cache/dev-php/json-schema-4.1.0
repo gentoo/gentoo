@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare test
+DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader dev-php/phpunit )
+DESCRIPTION=PHP implementation of JSON schema
+EAPI=6
+HOMEPAGE=https://github.com/justinrainbow/json-schema
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/justinrainbow/json-schema/archive/4.1.0.tar.gz -> json-schema-4.1.0.tar.gz
+_md5_=69ba20a11fab1b69857eb7eec27a1978

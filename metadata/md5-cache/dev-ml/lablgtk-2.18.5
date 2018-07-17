@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=>=x11-libs/gtk+-2.10:2 >=dev-lang/ocaml-3.10:=[ocamlopt?] svg? ( >=gnome-base/librsvg-2.2:2 ) glade? ( >=gnome-base/libglade-2.0.1 ) gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 ) opengl? ( >=dev-ml/lablgl-0.98:= >=x11-libs/gtkglarea-1.9:2 ) spell? ( app-text/gtkspell:2 ) sourceview? ( x11-libs/gtksourceview:2.0 ) dev-ml/camlp4:= virtual/pkgconfig >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Objective CAML interface for Gtk+2
+EAPI=5
+HOMEPAGE=http://lablgtk.forge.ocamlcore.org/
+IUSE=debug examples glade gnomecanvas sourceview +ocamlopt opengl spell svg
+KEYWORDS=alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )
+RDEPEND=>=x11-libs/gtk+-2.10:2 >=dev-lang/ocaml-3.10:=[ocamlopt?] svg? ( >=gnome-base/librsvg-2.2:2 ) glade? ( >=gnome-base/libglade-2.0.1 ) gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 ) opengl? ( >=dev-ml/lablgl-0.98:= >=x11-libs/gtkglarea-1.9:2 ) spell? ( app-text/gtkspell:2 ) sourceview? ( x11-libs/gtksourceview:2.0 ) dev-ml/camlp4:=
+SLOT=2/2.18.5
+SRC_URI=https://forge.ocamlcore.org/frs/download.php/1627/lablgtk-2.18.5.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ac377eb2285034882e30884579b82b4c

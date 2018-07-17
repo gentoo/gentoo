@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gmp? ( dev-libs/gmp:0 ) java? ( >=virtual/jdk-1.8 ) >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=An efficient theorem prover
+EAPI=6
+HOMEPAGE=http://z3.codeplex.com/
+IUSE=doc examples gmp isabelle java python elibc_FreeBSD elibc_FreeBSD python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gmp? ( dev-libs/gmp:0 ) >=dev-java/java-config-2.2.0-r3
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://github.com/Z3Prover/z3/archive/z3-4.4.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	3e71074eb6884746b37b70b2c9c881f4	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=5275679ea56da8a004b54cd1851db62e

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=app-text/mecab[unicode=]
+DESCRIPTION=NAIST Japanese Dictionary
+EAPI=5
+HOMEPAGE=http://sourceforge.jp/projects/naist-jdic/
+IUSE=unicode
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/naist-jdic/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz
+_md5_=979635e5600153f048fd056edfc42a89

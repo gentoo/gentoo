@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Generates 2D displays of RNA/DNA secondary structures with tertiary interactions
+EAPI=6
+HOMEPAGE=http://ndbserver.rutgers.edu/services/download/index.html
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://gentoo/rnaview-20040713.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=788c156d45287bef4f6aa876055bde4c

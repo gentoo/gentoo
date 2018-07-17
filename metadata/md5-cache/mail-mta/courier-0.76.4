@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile config configure install postinst prepare test
+DEPEND=>=net-libs/courier-authlib-0.66.3 >=net-libs/courier-unicode-1.4 !gnutls? ( !libressl? ( dev-libs/openssl:0= ) ) libressl? ( dev-libs/libressl:= ) gnutls? ( net-libs/gnutls ) >=sys-libs/gdbm-1.8.0 dev-libs/libpcre app-misc/mime-types fax? ( >=media-libs/netpbm-9.12 app-text/ghostscript-gpl >=net-dialup/mgetty-1.1.28 ) pam? ( virtual/pam ) mysql? ( virtual/mysql ) ldap? ( >=net-nds/openldap-1.2.11 ) postgres? ( dev-db/postgresql:= ) spell? ( app-text/aspell ) fam? ( virtual/fam ) !mail-filter/maildrop !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd !net-mail/dot-forward !sys-apps/ucspi-tcp
+DESCRIPTION=An MTA designed specifically for maildirs
+EAPI=5
+HOMEPAGE=http://www.courier-mta.org/
+IUSE=postgres ldap libressl mysql pam nls ipv6 spell fax crypt norewrite fam web webmail gnutls
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+PDEPEND=pam? ( net-mail/mailbase ) crypt? ( >=app-crypt/gnupg-1.0.4 )
+RDEPEND=>=net-libs/courier-authlib-0.66.3 >=net-libs/courier-unicode-1.4 !gnutls? ( !libressl? ( dev-libs/openssl:0= ) ) libressl? ( dev-libs/libressl:= ) gnutls? ( net-libs/gnutls ) >=sys-libs/gdbm-1.8.0 dev-libs/libpcre app-misc/mime-types fax? ( >=media-libs/netpbm-9.12 app-text/ghostscript-gpl >=net-dialup/mgetty-1.1.28 ) pam? ( virtual/pam ) mysql? ( virtual/mysql ) ldap? ( >=net-nds/openldap-1.2.11 ) postgres? ( dev-db/postgresql:= ) spell? ( app-text/aspell ) fam? ( virtual/fam ) !mail-filter/maildrop !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd !net-mail/dot-forward !sys-apps/ucspi-tcp dev-lang/perl sys-process/procps !net-mail/bincimap !net-mail/courier-imap !net-mail/cyrus-imapd !net-mail/uw-imap
+REQUIRED_USE=?? ( gnutls libressl )
+SLOT=0
+SRC_URI=mirror://sourceforge/courier/courier-0.76.4.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=c2a67a801d2b50371a1a0ce66d4ff608

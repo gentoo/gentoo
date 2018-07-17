@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare setup
+DESCRIPTION=Mails anomalies in the system logfiles to the administrator
+EAPI=6
+HOMEPAGE=https://packages.debian.org/sid/logcheck
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=!app-admin/logsentry app-misc/lockfile-progs dev-lang/perl dev-perl/mime-construct virtual/mailx
+SLOT=0
+SRC_URI=mirror://debian/pool/main/l/logcheck/logcheck_1.3.18.tar.xz
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=28c1e4f3e54d7917cbcdb4e231c2a254

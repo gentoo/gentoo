@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:0
+DESCRIPTION=A small, stable MUD client for the console
+EAPI=6
+HOMEPAGE=http://dw.nl.eu.org/mudix.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0
+SLOT=0
+SRC_URI=http://dw.nl.eu.org/mudix/mudix-4.3.tar.gz
+_md5_=1058362e634376f4cd7f39dc2827d92a

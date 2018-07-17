@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=app-text/asciidoc dev-libs/libevent[ssl] sys-libs/zlib !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd ) virtual/pkgconfig
+DESCRIPTION=Anonymizing overlay network for TCP
+EAPI=6
+HOMEPAGE=http://www.torproject.org/
+IUSE=libressl lzma scrypt seccomp selinux systemd tor-hardening test web zstd
+KEYWORDS=amd64 arm ~mips ppc ppc64 x86 ~ppc-macos
+LICENSE=BSD GPL-2
+RDEPEND=app-text/asciidoc dev-libs/libevent[ssl] sys-libs/zlib !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd ) selinux? ( sec-policy/selinux-tor )
+SLOT=0
+SRC_URI=https://www.torproject.org/dist/tor-0.3.1.10.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.3.1.10.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=420fcbffbb37c6a94767c26aa19067ec

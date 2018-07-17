@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Git extensions to provide high-level repository operations
+EAPI=6
+HOMEPAGE=https://github.com/petervanderdoes/gitflow-avh
+KEYWORDS=amd64 x86
+LICENSE=BSD MIT
+RDEPEND=dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/petervanderdoes/gitflow-avh/archive/1.11.0.tar.gz -> git-flow-1.11.0.tar.gz https://github.com/petervanderdoes/git-flow-completion/archive/0.6.0.tar.gz -> git-flow-completion-0.6.0.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8f9b4b3fcf4468c698278e92ecf54a5f

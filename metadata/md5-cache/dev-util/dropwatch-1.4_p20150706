@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=dev-libs/libnl:3 sys-libs/binutils-libs:= sys-libs/readline:= virtual/pkgconfig
+DESCRIPTION=A utility to interface to the kernel to monitor for dropped network packets
+EAPI=6
+HOMEPAGE=https://fedorahosted.org/dropwatch/
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libnl:3 sys-libs/binutils-libs:= sys-libs/readline:=
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~bircoph/distfiles/dropwatch-1.4_p20150706.tar.xz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=214846a1889f7a7012fc43bd47accbdd

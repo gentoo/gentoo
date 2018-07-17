@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=x11-libs/libX11 x11-libs/libXScrnSaver
+DESCRIPTION=Monitors inactivity in X and runs the specified program when a timeout occurs
+EAPI=6
+HOMEPAGE=http://www.freebsdsoftware.org/x11/xidle.html
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=BSD-2
+RDEPEND=x11-libs/libX11 x11-libs/libXScrnSaver
+SLOT=0
+SRC_URI=http://distcache.freebsd.org/local-distfiles/novel/xidle-26052015.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=98b8584f36cfec700c71b5df6f15713a

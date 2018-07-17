@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=A high-level tool for configuring Netfilter
+EAPI=6
+HOMEPAGE=http://www.shorewall.net/
+IUSE=doc +init +ipv4 ipv6 lite4 lite6 selinux kernel_linux
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=net-firewall/iptables-1.4.20 >=sys-apps/iproute2-3.8.0[-minimal] >=sys-devel/bc-1.06.95 ipv4? ( >=dev-lang/perl-5.16 virtual/perl-Digest-SHA ) ipv6? ( >=dev-perl/Socket6-0.230.0 >=net-firewall/iptables-1.4.20[ipv6] >=sys-apps/iproute2-3.8.0[ipv6] ) lite6? ( >=net-firewall/iptables-1.4.20[ipv6] >=sys-apps/iproute2-3.8.0[ipv6] ) init? ( >=sys-apps/coreutils-8.20 ) selinux? ( >=sec-policy/selinux-shorewall-2.20161023-r3 ) !net-firewall/shorewall-core !net-firewall/shorewall6 !net-firewall/shorewall-lite !net-firewall/shorewall6-lite !net-firewall/shorewall-init !<sys-apps/systemd-214
+REQUIRED_USE=ipv6? ( ipv4 ) || ( ipv4 lite4 lite6 )
+SLOT=0
+SRC_URI=http://www.shorewall.net/pub/shorewall/5.2/shorewall-5.2.0/shorewall-core-5.2.0.4.tar.bz2 ipv4? ( http://www.shorewall.net/pub/shorewall/5.2/shorewall-5.2.0/shorewall-5.2.0.4.tar.bz2 ) ipv6? ( http://www.shorewall.net/pub/shorewall/5.2/shorewall-5.2.0/shorewall6-5.2.0.4.tar.bz2 ) lite4? ( http://www.shorewall.net/pub/shorewall/5.2/shorewall-5.2.0/shorewall-lite-5.2.0.4.tar.bz2 ) lite6? ( http://www.shorewall.net/pub/shorewall/5.2/shorewall-5.2.0/shorewall6-lite-5.2.0.4.tar.bz2 ) init? ( http://www.shorewall.net/pub/shorewall/5.2/shorewall-5.2.0/shorewall-init-5.2.0.4.tar.bz2 ) doc? ( http://www.shorewall.net/pub/shorewall/5.2/shorewall-5.2.0/shorewall-docs-html-5.2.0.4.tar.bz2 )
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=fa7a39ed24d6bb5cf35533a498669df3

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-apps/sed virtual/awk
+DESCRIPTION=A different patch queue manager
+EAPI=6
+HOMEPAGE=https://github.com/greenrd/topgit
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/greenrd/topgit/archive/topgit-0.9.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ba256bdcd88ac785dfe63097750361bf

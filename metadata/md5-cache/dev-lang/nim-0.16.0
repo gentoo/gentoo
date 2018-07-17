@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test
+DEPEND=readline? ( sys-libs/readline:0= )
+DESCRIPTION=compiled, garbage-collected systems programming language
+EAPI=6
+HOMEPAGE=https://nim-lang.org/
+IUSE=doc +readline test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=readline? ( sys-libs/readline:0= )
+SLOT=0
+SRC_URI=https://nim-lang.org/download/nim-0.16.0.tar.xz
+_md5_=cffbdda5cb22c7e19c45dc65d125911c

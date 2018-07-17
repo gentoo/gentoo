@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig
+DESCRIPTION=A simple entropy daemon using the HAVEGE algorithm
+EAPI=6
+HOMEPAGE=http://www.issihosts.com/haveged/
+IUSE=selinux static-libs
+KEYWORDS=amd64 arm ~arm64 ~ppc x86
+LICENSE=GPL-3+
+RDEPEND=!<sys-apps/openrc-0.11.8 selinux? ( sec-policy/selinux-entropyd )
+SLOT=0
+SRC_URI=http://www.issihosts.com/haveged/haveged-1.9.2.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=54af39607e51d421d7ebde614048be3d

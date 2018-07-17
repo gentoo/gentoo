@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=mercurial to git converter using git-fast-import
+EAPI=6
+HOMEPAGE=https://github.com/frej/fast-export
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-vcs/git dev-vcs/mercurial
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://github.com/frej/fast-export/archive/v160914.tar.gz -> hg-fast-export-160914.tar.gz
+_eclasses_=multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=b0e532d159c50a1bcb474888676fe509

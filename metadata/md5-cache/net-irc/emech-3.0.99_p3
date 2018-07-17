@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare
+DESCRIPTION=UNIX compatible IRC bot programmed in the C language
+EAPI=6
+HOMEPAGE=http://www.energymech.net/
+IUSE=debug session tcl
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.energymech.net/files/emech-3.0.99p3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=4fe629a06694f423a134068560621ebc

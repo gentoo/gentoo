@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ml/result:= dev-ml/topkg dev-ml/ocamlbuild >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Result value combinators for OCaml
+EAPI=6
+HOMEPAGE=http://erratique.ch/software/rresult https://github.com/dbuenzli/rresult
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-ml/result:= >=dev-lang/ocaml-4:=
+SLOT=0/0.5.0
+SRC_URI=http://erratique.ch/software/rresult/releases/rresult-0.5.0.tbz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=9ebd0f5b91bf437a8aedc844fa976268

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Binary Delta - Efficient difference algorithm and format
+EAPI=6
+HOMEPAGE=https://github.com/jjwhitney/BDelta
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~x86-linux
+LICENSE=MPL-2.0
+SLOT=0
+SRC_URI=https://github.com/jjwhitney/BDelta/tarball/v0.3.1 -> bdelta-0.3.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=3e5575c4e0cf3d6bab822f8ad3a95377

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DESCRIPTION=Weighted Policy daemon for Postfix
+EAPI=6
+HOMEPAGE=http://www.policyd-weight.org/
+KEYWORDS=~alpha amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/perl-File-Spec virtual/perl-Sys-Syslog dev-perl/Net-DNS dev-perl/Net-IP >=mail-mta/postfix-2.1 virtual/tmpfiles
+SLOT=0
+SRC_URI=http://www.policyd-weight.org/releases/policyd-weight-0.1.15.2.tar.gz mirror://gentoo/policyd-weight-0.1.15.2-patches-1.0.tar.xz https://dev.gentoo.org/~whissi/dist/policyd-weight/policyd-weight-0.1.15.2-patches-1.0.tar.xz
+_eclasses_=tmpfiles	d7dc36a24e327d58f0728badddca6448	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=20eefce102d70a133d336d3ce5d8043e

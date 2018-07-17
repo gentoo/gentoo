@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=app-arch/xz-utils
+DESCRIPTION=A stand-alone client/server 9P library including ixpc client
+EAPI=4
+HOMEPAGE=https://libs.suckless.org/deprecated/libixp
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://gentoo/libixp-0.5_p20110208.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=cbaacb82bba28004a5a4700fdb3cdf8b

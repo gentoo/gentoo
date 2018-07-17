@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Autofill a table with data
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/HTML_Table_Matrix
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 ~sparc x86
+LICENSE=PHP-3
+RDEPEND=>=dev-php/PEAR-HTML_Table-1.5-r1 >=dev-php/PEAR-Numbers_Words-0.13.1-r1 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTML_Table_Matrix-1.0.10.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=0c9d914154ce4344f8a069e734fe6015

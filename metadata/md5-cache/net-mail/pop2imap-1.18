@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Synchronize mailboxes between a pop and an imap servers
+EAPI=4
+HOMEPAGE=http://www.linux-france.org/prj/pop2imap/
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Mail-POP3Client dev-perl/Mail-IMAPClient dev-perl/Email-Simple dev-perl/Date-Manip dev-perl/IO-Socket-SSL
+SLOT=0
+SRC_URI=http://www.linux-france.org/prj/pop2imap/dist/pop2imap-1.18.tgz
+_md5_=9f1eb79637b0dec1d5bde3c7ecc3a057

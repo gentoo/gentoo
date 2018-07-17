@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile config configure install postinst prepare
+DEPEND=sys-apps/sed net-misc/openssh quota? ( sys-fs/quota ) rsync? ( net-misc/rsync ) subversion? ( dev-vcs/subversion )
+DESCRIPTION=A tiny pseudoshell which only permits scp and sftp
+EAPI=5
+HOMEPAGE=https://github.com/scponly/scponly
+IUSE=+sftp scp winscp gftp rsync unison subversion wildcards quota passwd logging
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=BSD-2
+RDEPEND=sys-apps/sed net-misc/openssh quota? ( sys-fs/quota ) rsync? ( net-misc/rsync ) subversion? ( dev-vcs/subversion )
+REQUIRED_USE=|| ( sftp scp winscp rsync unison subversion )
+SLOT=0
+SRC_URI=mirror://sourceforge/scponly/scponly-4.8.tgz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo	da528e0e6c88b426c83f9b3bce3df2ef	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=bd3210e8d2cf1c2a3dabf3abb9023ee6

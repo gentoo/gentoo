@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=polymorphs bytecode to a printable ASCII string
+EAPI=6
+HOMEPAGE=http://www.securiteam.com/tools/5MP0L2KFPA.html
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=ISC
+SLOT=0
+SRC_URI=https://repo.palkeo.com/repositories/mirror7.meh.or.id/Tools/OTHER_TOOLS/ShellCode/dissembler_0.9.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ca4137327bf77994da13e8c8d4c45aea

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=>=dev-libs/boehm-gc-7.2 dev-libs/libmoe dev-lang/perl sys-libs/ncurses:0= sys-libs/zlib imlib? ( media-libs/imlib xface? ( media-libs/compface ) ) gpm? ( sys-libs/gpm ) nls? ( sys-devel/gettext ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=A variant of w3m with support for multiple character encodings
+EAPI=6
+HOMEPAGE=http://pub.ks-and-ks.ne.jp/prog/w3mmee/
+IUSE=gpm imlib libressl nls ssl xface
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=>=dev-libs/boehm-gc-7.2 dev-libs/libmoe dev-lang/perl sys-libs/ncurses:0= sys-libs/zlib imlib? ( media-libs/imlib xface? ( media-libs/compface ) ) gpm? ( sys-libs/gpm ) nls? ( sys-devel/gettext ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=http://pub.ks-and-ks.ne.jp/prog/pub/w3mmee-p24-22.tar.gz
+_eclasses_=alternatives	6c575717515f030736d1b718d507d2f9	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e386791130cb5cf2678a32bca2852b06

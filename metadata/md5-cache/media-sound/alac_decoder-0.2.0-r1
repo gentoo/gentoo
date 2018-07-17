@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Basic decoder for Apple Lossless Audio Codec files (ALAC)
+EAPI=6
+HOMEPAGE=http://craz.net/programs/itunes/alac.html
+KEYWORDS=amd64 ppc x86 ~ppc-macos ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://craz.net/programs/itunes/files/alac_decoder-0.2.0.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=dcdfe8edb42f474ad92ea11b60d6d68f

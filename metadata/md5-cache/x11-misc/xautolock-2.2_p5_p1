@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=|| ( x11-misc/alock x11-misc/i3lock x11-misc/slim x11-misc/slock x11-misc/xlockmore x11-misc/xtrlock ) x11-libs/libXScrnSaver app-text/rman x11-base/xorg-proto x11-misc/imake
+DESCRIPTION=An automatic X screen-locker/screen-saver
+EAPI=6
+HOMEPAGE=http://www.ibiblio.org/pub/Linux/X11/screensavers/
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=|| ( x11-misc/alock x11-misc/i3lock x11-misc/slim x11-misc/slock x11-misc/xlockmore x11-misc/xtrlock ) x11-libs/libXScrnSaver
+SLOT=0
+SRC_URI=http://www.ibiblio.org/pub/Linux/X11/screensavers//xautolock-2.2.tgz mirror://debian/pool/main/x/xautolock/xautolock_2.2-5.1.debian.tar.xz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=b268bfd71c1cd9d310e5317ac22096c1

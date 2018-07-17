@@ -1,0 +1,11 @@
+DEFINED_PHASES=install nofetch prepare
+DESCRIPTION=Oracle SQLcl is the new SQL*Plus
+EAPI=6
+HOMEPAGE=http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html
+KEYWORDS=~amd64 ~x86
+LICENSE=OTN
+RDEPEND=virtual/jre:1.8 dev-java/java-config:2 dev-db/oracle-instantclient
+RESTRICT=bindist fetch mirror
+SLOT=0
+SRC_URI=sqlcl-17.4.0.354.2224-no-jre.zip
+_md5_=4e2a1b93ee667095767d784ff82734a0

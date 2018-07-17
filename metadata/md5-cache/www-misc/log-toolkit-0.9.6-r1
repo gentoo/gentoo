@@ -1,0 +1,12 @@
+DEFINED_PHASES=setup
+DEPEND==www-servers/apache-2*
+DESCRIPTION=set of tools to manipulate and maintain webserver logfiles
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/log-toolkit/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND==www-servers/apache-2*
+SLOT=0
+SRC_URI=mirror://sourceforge/log-toolkit/log-toolkit-0.9.6.tar.bz2
+_eclasses_=depend.apache	0917334d570e07f9743a04ff85b3bf1b
+_md5_=ca230131ca3e047726b2bcafca3c0ec5

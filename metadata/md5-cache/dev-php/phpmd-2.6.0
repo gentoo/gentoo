@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=PHP mess detector
+EAPI=6
+HOMEPAGE=http://www.phpmd.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/php[xml] dev-php/phpdepend
+SLOT=0
+SRC_URI=https://github.com/phpmd/phpmd/archive/2.6.0.tar.gz -> phpmd-2.6.0.tar.gz
+_md5_=92e96440b0f407f0928eac1af09981dc

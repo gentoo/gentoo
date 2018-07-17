@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=dev-libs/libgcrypt:0= sys-fs/lvm2:0= nls? ( virtual/libintl ) ssl? ( dev-libs/openssl:0= ) systemd? ( sys-apps/systemd ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=A utility for management and user-mode mounting of encrypted filesystems
+EAPI=6
+HOMEPAGE=http://cryptmount.sourceforge.net/
+IUSE=nls +ssl systemd kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libgcrypt:0= sys-fs/lvm2:0= nls? ( virtual/libintl ) ssl? ( dev-libs/openssl:0= ) systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=mirror://sourceforge/cryptmount/cryptmount-5.2.2.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=71f330d64cd78706227d4afa06f5b42d

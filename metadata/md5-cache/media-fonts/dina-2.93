@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings ) X? ( media-gfx/ebdftopcf )
+DESCRIPTION=A monospace bitmap font, primarily aimed at programmers
+EAPI=6
+HOMEPAGE=http://www.donationcoder.com/Software/Jibz/Dina/index.html
+IUSE=X X
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=http://www.donationcoder.com/forum/index.php?action=dlattach;topic=36049.0;attach=78562 -> dina-2.93.zip
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	font	82836641e7d4639329d8c195234ad0e3	font-ebdftopcf	e23db122fd578442f37e3e79267eedd8	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=5b465e9a9c8eabb96fa873e7e86ee3c7

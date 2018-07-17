@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=dev-java/commons-cli:1 dev-java/commons-lang:2.1 dev-java/json-simple:0 dev-java/log4j:0 dev-java/swt:3.8[cairo] >=virtual/jre-1.6:* app-arch/unzip dev-util/desktop-file-utils >=virtual/jdk-1.6:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=BitTorrent client in Java, formerly called Azureus
+EAPI=5
+HOMEPAGE=http://www.vuze.com/
+IUSE=elibc_FreeBSD source elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=GPL-2 BSD
+PDEPEND=~net-p2p/vuze-coreplugins-5.7.2.0
+RDEPEND=dev-java/commons-cli:1 dev-java/commons-lang:2.1 dev-java/json-simple:0 dev-java/log4j:0 dev-java/swt:3.8[cairo] >=virtual/jre-1.6:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=mirror://sourceforge/azureus/vuze/Vuze_5720/Vuze_5720_source.zip
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	java-ant-2	ea15ab9e838d1062abd6b53de2045d50	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b5f7164ba64c37a748618f68a7478560

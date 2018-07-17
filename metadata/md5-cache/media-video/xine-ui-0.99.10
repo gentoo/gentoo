@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=|| ( app-arch/tar app-arch/libarchive ) media-libs/libpng:0= >=media-libs/xine-lib-1.2:=[aalib?,libcaca?] virtual/jpeg:0 aalib? ( media-libs/aalib:= ) curl? ( >=net-misc/curl-7.10.2:= ) libcaca? ( media-libs/libcaca:= ) lirc? ( app-misc/lirc:= ) nls? ( virtual/libintl ) readline? ( >=sys-libs/readline-6.2:= ) X? ( x11-libs/libICE:= x11-libs/libSM:= x11-libs/libX11:= x11-libs/libXext:= x11-libs/libXft:= x11-libs/libXrender:= x11-libs/libXScrnSaver:= x11-libs/libXtst:= x11-libs/libXv:= x11-libs/libXxf86vm:= xinerama? ( x11-libs/libXinerama:= ) ) nls? ( >=sys-devel/gettext-0.18.3 ) X? ( x11-base/xorg-proto x11-libs/libXt ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Xine movie player
+EAPI=5
+HOMEPAGE=http://xine.sourceforge.net/
+IUSE=aalib curl debug libcaca lirc nls readline vdr X xinerama
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=|| ( app-arch/tar app-arch/libarchive ) media-libs/libpng:0= >=media-libs/xine-lib-1.2:=[aalib?,libcaca?] virtual/jpeg:0 aalib? ( media-libs/aalib:= ) curl? ( >=net-misc/curl-7.10.2:= ) libcaca? ( media-libs/libcaca:= ) lirc? ( app-misc/lirc:= ) nls? ( virtual/libintl ) readline? ( >=sys-libs/readline-6.2:= ) X? ( x11-libs/libICE:= x11-libs/libSM:= x11-libs/libX11:= x11-libs/libXext:= x11-libs/libXft:= x11-libs/libXrender:= x11-libs/libXScrnSaver:= x11-libs/libXtst:= x11-libs/libXv:= x11-libs/libXxf86vm:= xinerama? ( x11-libs/libXinerama:= ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/xine/xine-ui-0.99.10.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=eef56a4294a69c691a8ca0dcfc6a9f52

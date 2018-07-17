@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Returns the http host software of a website
+EAPI=5
+HOMEPAGE=http://httptype.sourceforge.net
+KEYWORDS=amd64 ppc ppc64 x86 ~amd64-linux
+LICENSE=GPL-1
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://sourceforge/httptype/httptype-1.3.9.tar.gz
+_md5_=1cd93fc1f6dd40038da26cd850e60fc1

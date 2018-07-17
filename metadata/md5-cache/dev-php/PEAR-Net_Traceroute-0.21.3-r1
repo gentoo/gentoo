@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=OS independet wrapper class for executing traceroute calls
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Net_Traceroute
+KEYWORDS=amd64 x86
+LICENSE=PHP-3.01
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Net_Traceroute-0.21.3.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=5d0ed792541d0c435a190aa5aa04432a

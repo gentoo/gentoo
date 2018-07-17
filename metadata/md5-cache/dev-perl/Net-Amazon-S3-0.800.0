@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Data-Stream-Bulk dev-perl/DateTime-Format-HTTP dev-perl/Digest-HMAC virtual/perl-Digest-MD5 dev-perl/Digest-MD5-File dev-perl/File-Find-Rule virtual/perl-Getopt-Long dev-perl/HTTP-Date dev-perl/HTTP-Message virtual/perl-IO >=dev-perl/libwww-perl-6.30.0 dev-perl/LWP-UserAgent-Determined virtual/perl-MIME-Base64 dev-perl/MIME-Types >=dev-perl/Moose-0.850.0 >=dev-perl/MooseX-StrictConstructor-0.160.0 >=dev-perl/MooseX-Types-DateTime-MoreCoercions-0.70.0 dev-perl/Path-Class dev-perl/Regexp-Common dev-perl/Term-Encoding dev-perl/Term-ProgressBar-Simple dev-perl/URI dev-perl/VM-EC2-Security-CredentialCache dev-perl/XML-LibXML virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Temp dev-perl/Test-Exception virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Framework for accessing the Amazon S3 Simple Storage Service
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-Amazon-S3/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Data-Stream-Bulk dev-perl/DateTime-Format-HTTP dev-perl/Digest-HMAC virtual/perl-Digest-MD5 dev-perl/Digest-MD5-File dev-perl/File-Find-Rule virtual/perl-Getopt-Long dev-perl/HTTP-Date dev-perl/HTTP-Message virtual/perl-IO >=dev-perl/libwww-perl-6.30.0 dev-perl/LWP-UserAgent-Determined virtual/perl-MIME-Base64 dev-perl/MIME-Types >=dev-perl/Moose-0.850.0 >=dev-perl/MooseX-StrictConstructor-0.160.0 >=dev-perl/MooseX-Types-DateTime-MoreCoercions-0.70.0 dev-perl/Path-Class dev-perl/Regexp-Common dev-perl/Term-Encoding dev-perl/Term-ProgressBar-Simple dev-perl/URI dev-perl/VM-EC2-Security-CredentialCache dev-perl/XML-LibXML dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RC/RCONOVER/Net-Amazon-S3-0.80.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=ce1fcc19472b76ba92dbcd3eb352f7bb

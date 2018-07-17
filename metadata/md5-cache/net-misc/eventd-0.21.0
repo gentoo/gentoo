@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst prepare setup test
+DEPEND=>=dev-libs/glib-2.40:2 sys-apps/util-linux introspection? ( >=dev-libs/gobject-introspection-1.42 ) libcanberra? ( media-libs/libcanberra ) libnotify? ( x11-libs/gdk-pixbuf:2 ) notification? ( x11-libs/cairo x11-libs/pango x11-libs/gdk-pixbuf:2 X? ( x11-libs/cairo[xcb] x11-libs/libxcb:= x11-libs/xcb-util x11-libs/xcb-util-wm ) ) pulseaudio? ( media-libs/libsndfile media-sound/pulseaudio ) purple? ( net-im/pidgin ) speech? ( app-accessibility/speech-dispatcher ) systemd? ( sys-apps/systemd:= ) upnp? ( net-libs/gssdp:= ) websocket? ( >=net-libs/libsoup-2.50:2.4 ) zeroconf? ( net-dns/avahi[dbus] ) app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt virtual/pkgconfig fbcon? ( virtual/os-headers ) virtual/pkgconfig
+DESCRIPTION=A small daemon to act on remote or local events
+EAPI=6
+HOMEPAGE=https://www.eventd.org/
+IUSE=debug fbcon +introspection ipv6 libcanberra libnotify +notification pulseaudio purple speech systemd test upnp websocket +X zeroconf kernel_linux
+KEYWORDS=~amd64
+LICENSE=GPL-3+ LGPL-3+ MIT
+RDEPEND=>=dev-libs/glib-2.40:2 sys-apps/util-linux introspection? ( >=dev-libs/gobject-introspection-1.42 ) libcanberra? ( media-libs/libcanberra ) libnotify? ( x11-libs/gdk-pixbuf:2 ) notification? ( x11-libs/cairo x11-libs/pango x11-libs/gdk-pixbuf:2 X? ( x11-libs/cairo[xcb] x11-libs/libxcb:= x11-libs/xcb-util x11-libs/xcb-util-wm ) ) pulseaudio? ( media-libs/libsndfile media-sound/pulseaudio ) purple? ( net-im/pidgin ) speech? ( app-accessibility/speech-dispatcher ) systemd? ( sys-apps/systemd:= ) upnp? ( net-libs/gssdp:= ) websocket? ( >=net-libs/libsoup-2.50:2.4 ) zeroconf? ( net-dns/avahi[dbus] ) net-libs/glib-networking[ssl]
+REQUIRED_USE=X? ( notification ) fbcon? ( notification ) notification? ( || ( X fbcon ) )
+SLOT=0
+SRC_URI=https://www.eventd.org/download/eventd/eventd-0.21.0.tar.xz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b7b7e632f2cf86da3393f3dc0e458d4a

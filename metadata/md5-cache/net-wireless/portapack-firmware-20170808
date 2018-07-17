@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Firmware and scripts for controlling the Portapack from Sharebrained
+EAPI=5
+HOMEPAGE=https://github.com/sharebrained/portapack-hackrf/releases
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=>=net-wireless/hackrf-tools-2015.07.2-r1 >=app-mobilephone/dfu-util-0.7
+SLOT=0
+SRC_URI=https://github.com/sharebrained/portapack-hackrf/releases/download/20170808/portapack-h1-firmware-20170808.tar.bz2
+_md5_=838d8445166ebe47d160a4c16787ab99

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.24.0 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0 >=media-libs/suil-0.6.0 >=media-libs/sratom-0.6.0 gtk? ( >=x11-libs/gtk+-3.0.0:3 ) gtk2? ( >=x11-libs/gtk+-2.18.0:2 ) gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 ) portaudio? ( media-libs/portaudio ) !portaudio? ( virtual/jack ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) || ( dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) virtual/pkgconfig
+DESCRIPTION=Simple but fully featured LV2 host for Jack
+EAPI=6
+HOMEPAGE=http://drobilla.net/software/jalv/
+IUSE=gtk gtk2 gtkmm portaudio qt5
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.24.0 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0 >=media-libs/suil-0.6.0 >=media-libs/sratom-0.6.0 gtk? ( >=x11-libs/gtk+-3.0.0:3 ) gtk2? ( >=x11-libs/gtk+-2.18.0:2 ) gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 ) portaudio? ( media-libs/portaudio ) !portaudio? ( virtual/jack ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+SLOT=0
+SRC_URI=http://download.drobilla.net/jalv-1.6.0.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=9a29f83b35bd8a4ce3e766a0e8092972

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Library that allows a direct access to a USB device
+EAPI=5
+HOMEPAGE=http://www.ftdichip.com/Drivers/D2XX.htm
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=FTDI LGPL-2.1+
+SLOT=0
+SRC_URI=amd64? ( http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx0.4.16_x86_64.tar.gz ) x86? ( http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx0.4.16.tar.gz )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ee73e2bf4bf02b08f54457734adc6ab4

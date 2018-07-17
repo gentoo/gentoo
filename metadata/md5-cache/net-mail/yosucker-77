@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-lang/perl dev-perl/TermReadKey virtual/perl-Digest-MD5 dev-perl/IO-Socket-SSL virtual/perl-MIME-Base64
+DESCRIPTION=Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
+EAPI=0
+HOMEPAGE=http://yosucker.sourceforge.net
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/yosucker/YoSucker-pr77.tar.gz
+_md5_=2bab80ec6b1806e1859de2751eb0f95f

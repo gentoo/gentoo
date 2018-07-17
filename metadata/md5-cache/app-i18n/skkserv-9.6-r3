@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DEPEND=app-i18n/skk-jisyo
+DESCRIPTION=Dictionary server for the SKK Japanese-input software
+EAPI=6
+HOMEPAGE=http://openlab.ring.gr.jp/skk/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://openlab.ring.gr.jp/skk/maintrunk/museum/skk9.6mu.tar.gz
+_md5_=f5b25020ffded539b3a63fa80ff47992

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-lang/ocaml:= dev-ml/sedlex:= dev-ml/ocamlbuild >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=JavaScript parser written in OCaml
+EAPI=6
+HOMEPAGE=https://github.com/facebook/flow/tree/master/src/parser
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-lang/ocaml:= dev-ml/sedlex:=
+SLOT=0/0.51.0
+SRC_URI=https://github.com/facebook/flow/archive/v0.51.0.tar.gz -> flow-0.51.0.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=2117e50326d7c232c53edc83efcc5ea0

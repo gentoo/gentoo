@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Filesystem benchmarking program
+EAPI=6
+HOMEPAGE=http://www.iozone.org/
+KEYWORDS=amd64 arm ia64 ppc ppc64 ~sparc x86
+LICENSE=freedist
+SLOT=0
+SRC_URI=http://www.iozone.org/src/current/iozone3_471.tar
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e2f234feb701d03d0993715a25c1dc41

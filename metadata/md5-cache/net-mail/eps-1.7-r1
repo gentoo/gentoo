@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-apps/sed
+DESCRIPTION=Inter7 Email Processing and mht System library
+EAPI=6
+HOMEPAGE=http://www.inter7.com/eps
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.inter7.com/eps/eps-1.7.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=055ee98f2dcc2db46d8da30b20afe338

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=sys-libs/ncurses:0= x11-libs/libdrm x11-libs/libpciaccess x11-libs/libxcb nls? ( sys-libs/ncurses:0=[unicode] virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Utility to view Radeon GPU utilization
+EAPI=6
+HOMEPAGE=https://github.com/clbr/radeontop
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=sys-libs/ncurses:0= x11-libs/libdrm x11-libs/libpciaccess x11-libs/libxcb nls? ( sys-libs/ncurses:0=[unicode] virtual/libintl )
+SLOT=0
+SRC_URI=https://github.com/clbr/radeontop/archive/v1.0.tar.gz -> radeontop-1.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=85a05fbb471eaac27b0e99934edb217f

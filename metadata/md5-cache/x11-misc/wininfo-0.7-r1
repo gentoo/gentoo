@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXres x11-libs/libXext virtual/pkgconfig
+DESCRIPTION=An X app that follows your pointer providing information about the windows below
+EAPI=6
+HOMEPAGE=https://freedesktop.org/Software/wininfo
+KEYWORDS=amd64 ~ppc x86
+LICENSE=MIT
+RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXres x11-libs/libXext
+SLOT=0
+SRC_URI=https://www.freedesktop.org/software/wininfo/wininfo-0.7.tar.gz
+_md5_=593176b25021c885b8b8c39cf0cffca4

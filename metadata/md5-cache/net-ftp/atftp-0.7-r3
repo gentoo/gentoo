@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=tcpd? ( sys-apps/tcp-wrappers ) readline? ( sys-libs/readline ) pcre? ( dev-libs/libpcre ) virtual/pkgconfig
+DESCRIPTION=Advanced TFTP implementation client/server
+EAPI=5
+HOMEPAGE=ftp://ftp.mamalinux.com/pub/atftp/
+IUSE=selinux tcpd readline pcre
+KEYWORDS=amd64 arm ppc ppc64 ~s390 sparc x86
+LICENSE=GPL-2
+RDEPEND=tcpd? ( sys-apps/tcp-wrappers ) readline? ( sys-libs/readline ) pcre? ( dev-libs/libpcre ) !net-ftp/netkit-tftp !net-ftp/tftp-hpa !net-ftp/uftpd selinux? ( sec-policy/selinux-tftp )
+SLOT=0
+SRC_URI=ftp://ftp.mamalinux.com/pub/atftp/atftp-0.7.tar.gz mirror://debian/pool/main/a/atftp/atftp_0.7-11.diff.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b0f4b7d8670decdd639558bf215652c6

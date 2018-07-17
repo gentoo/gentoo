@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=media-libs/libpng:0= media-libs/tiff:0 virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-libs/motif:0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk(-)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] x11-base/xorg-proto
+DESCRIPTION=Open-source graphical front end for computational chemistry programs
+EAPI=6
+HOMEPAGE=http://viewmol.sourceforge.net/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng:0= media-libs/tiff:0 virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXi x11-libs/libXmu x11-libs/libXt x11-libs/motif:0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk(-)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=mirror://sourceforge/viewmol/viewmol-2.4.1.src.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5c16e9f922010a805910e336d46f96ba

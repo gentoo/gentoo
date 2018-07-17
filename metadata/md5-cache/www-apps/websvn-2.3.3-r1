@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web-based browsing tool for Subversion (SVN) repositories in PHP
+EAPI=6
+HOMEPAGE=http://www.websvn.info/ http://websvn.tigris.org/
+IUSE=enscript vhosts
+KEYWORDS=amd64 ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php:*[xml] dev-vcs/subversion virtual/httpd-php:* enscript? ( app-text/enscript ) >=app-admin/webapp-config-1.50.15
+RESTRICT=mirror
+SLOT=2.3.3-r1
+SRC_URI=http://websvn.tigris.org/files/documents/1380/49056/websvn-2.3.3.tar.gz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=8e2a9bf29813c065d799010c2304dbae

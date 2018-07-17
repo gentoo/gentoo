@@ -1,0 +1,12 @@
+DEFINED_PHASES=install pretend setup
+DESCRIPTION=Firmware for Intel (R) Wireless 8260 and 4165
+EAPI=6
+HOMEPAGE=https://wireless.kernel.org/en/users/Drivers/iwlwifi
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=ipw3945
+RDEPEND=!sys-kernel/linux-firmware[-savedconfig]
+SLOT=0
+SRC_URI=https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-8000-ucode-16.242414.0.tgz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a148adbff178027a90f38e51621a9fec

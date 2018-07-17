@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Puzzle game that puts you inside and ambient and mysterious universe
+EAPI=5
+HOMEPAGE=http://www.nicalis.com/nightsky/
+IUSE=bundled-libs
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXxf86vm !bundled-libs? ( media-libs/freealut media-libs/freeglut media-libs/libogg media-libs/libvorbis media-libs/openal sys-libs/zlib ) games-misc/games-envd
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=nightskyhd-linux-1324519044.tar.gz
+_eclasses_=base	983774947da124fb7d542ce25a218bb1	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	games	2bb3ede665927a68ffdb7c41eec7efde	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=4a9e34cca2a59985323f7b97aab9407d

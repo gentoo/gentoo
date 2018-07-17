@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=C style enumerated types and bitmask flags in Perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/enum/
+KEYWORDS=~amd64 ~x86 ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NE/NEILB/enum-1.11.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=9d6d6c05a67dc4b65ba685c8c075a7f1

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Folding over record fields
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/fieldslib
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/fieldslib/archive/v0.9.0.tar.gz -> fieldslib-0.9.0.tar.gz
+_md5_=7fc12f245029bde75fedbae3f1d28111

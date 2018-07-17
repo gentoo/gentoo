@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/base64-bytestring-0.1.1.1:=[profile?] >=dev-haskell/cereal-0.3:=[profile?] >=dev-haskell/cipher-aes-0.1.7:=[profile?] >=dev-haskell/cprng-aes-0.2:=[profile?] >=dev-haskell/crypto-api-0.8:=[profile?] dev-haskell/crypto-random:=[profile?] >=dev-haskell/entropy-0.2.1:=[profile?] dev-haskell/setenv:=[profile?] >=dev-haskell/skein-1.0:=[profile?] <dev-haskell/skein-1.1:=[profile?] >=dev-haskell/tagged-0.1:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/hspec-1.3 dev-haskell/hunit >=dev-haskell/quickcheck-2 dev-haskell/transformers ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Securely store session data in a client-side cookie
+EAPI=5
+HOMEPAGE=https://github.com/yesodweb/clientsession/tree/master
+IUSE=test doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/base64-bytestring-0.1.1.1:=[profile?] >=dev-haskell/cereal-0.3:=[profile?] >=dev-haskell/cipher-aes-0.1.7:=[profile?] >=dev-haskell/cprng-aes-0.2:=[profile?] >=dev-haskell/crypto-api-0.8:=[profile?] dev-haskell/crypto-random:=[profile?] >=dev-haskell/entropy-0.2.1:=[profile?] dev-haskell/setenv:=[profile?] >=dev-haskell/skein-1.0:=[profile?] <dev-haskell/skein-1.1:=[profile?] >=dev-haskell/tagged-0.1:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.9.1.1
+SRC_URI=mirror://hackage/packages/archive/clientsession/0.9.1.1/clientsession-0.9.1.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ghc-package	a0d34e2f5f204f01c404ae1ce539542a	haskell-cabal	45605f3898bdc59eb016fb50ca27bf18	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=031d824458f7493fcabaa90a9fd9f073

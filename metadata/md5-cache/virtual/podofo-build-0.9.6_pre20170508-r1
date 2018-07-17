@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual package for building against PoDoFo
+EAPI=6
+IUSE=+boost idn debug test +tools
+KEYWORDS=amd64 ~arm hppa ppc ppc64 ~sparc x86
+RDEPEND=app-text/podofo:0/0.9.6_pre20170508-r1[boost=,idn=,debug=,test=,tools=] boost? ( dev-libs/boost )
+SLOT=0/0.9.6_pre20170508-r1
+_md5_=3d5e61852c841432b45171945e52b12b

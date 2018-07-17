@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=x11-libs/libX11 x11-base/xorg-proto
+DESCRIPTION=A tiny vt100 terminal emulator for X
+EAPI=6
+HOMEPAGE=ftp://ftp.x.org/R5contrib/xvt-1.0.README
+KEYWORDS=alpha amd64 ppc x86
+LICENSE=xvt
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=ftp://ftp.x.org/R5contrib/xvt-1.0.tar.Z mirror://gentoo/xvt-2.1.diff.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=319f0dd701b03aec3e2e373739c0060c

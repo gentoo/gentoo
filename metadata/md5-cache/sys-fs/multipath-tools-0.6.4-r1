@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare pretend setup unpack
+DEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio dev-libs/userspace-rcu sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd ) virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Device mapper target autoconfig
+EAPI=6
+HOMEPAGE=http://christophe.varoqui.free.fr/
+IUSE=systemd rbd kernel_linux
+KEYWORDS=amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio dev-libs/userspace-rcu sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=http://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=0.6.4;sf=tgz -> multipath-tools-0.6.4.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=743a0ba01f7f047ad9b1757ab2ca119a

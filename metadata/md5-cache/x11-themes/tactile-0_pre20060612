@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Nice, calm and dark low contrast GTK+ theme
+EAPI=4
+HOMEPAGE=http://gnome-look.org/content/show.php/Tactile?content=40771
+KEYWORDS=~amd64 ~x86
+LICENSE=CC-BY-2.0
+SLOT=0
+SRC_URI=http://gnome-look.org/CONTENT/content-files/40771-Tactile.tar.gz
+_md5_=d9b6499783c59bfcc4f14605b3c3f30f

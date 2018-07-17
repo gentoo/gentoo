@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=dev-libs/glib:2 net-libs/libpcap sys-apps/dbus x11-libs/cairo x11-libs/pango gnome-base/libglade:2.0 test? ( dev-haskell/hunit dev-haskell/quickcheck dev-haskell/test-framework dev-haskell/test-framework-hunit ) >=dev-haskell/cabal-1.8 dev-haskell/cairo:0 >=dev-haskell/dbus-0.10 dev-haskell/glib:0 >=dev-haskell/gtk-0.12.3:2 dev-haskell/mtl dev-haskell/pango:0 dev-haskell/parsec dev-haskell/pcap dev-haskell/text >=dev-lang/ghc-6.10.4
+DESCRIPTION=Draw pretty sequence diagrams of D-Bus traffic
+EAPI=5
+HOMEPAGE=http://willthompson.co.uk/bustle/
+IUSE=test
+KEYWORDS=~alpha amd64 ~ia64 ppc ppc64 sparc x86
+LICENSE=LGPL-2 GPL-2
+RDEPEND=dev-libs/glib:2 net-libs/libpcap sys-apps/dbus x11-libs/cairo x11-libs/pango gnome-base/libglade:2.0
+SLOT=0
+SRC_URI=http://willthompson.co.uk/bustle/releases/0.4.2/bustle-0.4.2.tar.gz https://dev.gentoo.org/~slyfox/bustle-0.4.0-tests.tar.gz
+_eclasses_=base	983774947da124fb7d542ce25a218bb1	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ghc-package	a0d34e2f5f204f01c404ae1ce539542a	haskell-cabal	45605f3898bdc59eb016fb50ca27bf18	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=1d4b246ba8606bf682503b7617902d63

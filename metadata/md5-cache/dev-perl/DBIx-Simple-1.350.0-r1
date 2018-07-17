@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/DBI-1.210.0 virtual/perl-ExtUtils-MakeMaker test? ( !minimal? ( >=dev-perl/DBD-SQLite-1.0.0 ) ) dev-lang/perl:=
+DESCRIPTION=Very complete easy-to-use OO interface to DBI
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/DBIx-Simple/
+IUSE=test minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( AFL-3.0 AGPL-3 APL-1.0 Apache-2.0 BSD-2 Boost-1.0 CDDL CPAL-1.0 EPL-1.0 ECL-2.0 EUPL-1.1 GPL-2 GPL-3 LGPL-2.1 LGPL-3 HPND IBM IPAfont ISC LPPL-1.3c 9base MIT MPL-2.0 NOSA nethack PHP-3 POSTGRESQL PYTHON CNRI QPL-1.0 OFL-1.1 Sleepycat Watcom-1.0 W3C wxWinLL-3 ZLIB libpng )
+RDEPEND=>=dev-perl/DBI-1.210.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JU/JUERD/DBIx-Simple-1.35.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=e44835f2d846547061acfcc6fa6a7360

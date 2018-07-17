@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=dev-libs/gmp:0= dev-libs/mpfr:0= >=sci-mathematics/flint-2.5.0:=
+DESCRIPTION=C library for arbitrary-precision interval arithmetic
+EAPI=6
+HOMEPAGE=http://fredrikj.net/arb/
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos
+LICENSE=GPL-2+
+RDEPEND=dev-libs/gmp:0= dev-libs/mpfr:0= >=sci-mathematics/flint-2.5.0:=
+SLOT=0/2
+SRC_URI=https://github.com/fredrik-johansson/arb/archive/2.11.1.tar.gz -> arb-2.11.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=81a6e94cbcb7509e7d060e29b4ef5ae8

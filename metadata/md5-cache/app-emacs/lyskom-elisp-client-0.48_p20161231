@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Elisp client for the LysKOM conference system
+EAPI=6
+HOMEPAGE=http://www.lysator.liu.se/lyskom/klienter/emacslisp/index.en.html
+IUSE=l10n_sv
+KEYWORDS=amd64 ~sparc x86
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/lyskom-elisp-client-0.48_p20161231.tar.xz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=fb4b47d61f1b02648354ebe2ce153ca3

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A tool to parse smaps statistics
+EAPI=0
+HOMEPAGE=http://bmaurer.blogspot.de/2006/03/memory-usage-with-smaps.html
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/perl dev-perl/Linux-Smaps
+SLOT=0
+SRC_URI=mirror://gentoo/smem.pl.20071119_p1.bz2 https://dev.gentoo.org/~tove/distfiles/dev-util/smem/smem.pl.20071119_p1.bz2
+_md5_=43e357993f915ecda22022fe0b66c729

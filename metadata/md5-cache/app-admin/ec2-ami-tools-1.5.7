@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Command-line tools that serve as client interface to the Amazon EC2 web service
+EAPI=6
+HOMEPAGE=http://developer.amazonwebservices.com/connect/entry.jspa?externalID=368&categoryID=88
+KEYWORDS=~amd64 ~x86
+LICENSE=Amazon || ( Ruby GPL-2 )
+RDEPEND=|| ( dev-lang/ruby:2.3 dev-lang/ruby:2.4 dev-lang/ruby:2.5 ) virtual/rubygems virtual/ruby-ssl net-misc/rsync net-misc/curl
+SLOT=0
+SRC_URI=http://s3.amazonaws.com/ec2-downloads/ec2-ami-tools-1.5.7.zip
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	ruby-single	da74609cfc48267b7201d50b0367af82	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=702057d13f2574567374494b5077069e

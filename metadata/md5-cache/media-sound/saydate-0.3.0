@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND==sys-apps/sed-4*
+DESCRIPTION=A Linux shell program that talks the date and system uptime
+EAPI=0
+HOMEPAGE=http://unihedron.com/projects/saydate/saydate.php
+KEYWORDS=amd64 ~ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND==sys-apps/sed-4*
+SLOT=0
+SRC_URI=http://unihedron.com/projects/saydate/saydate-0.3.0.tar.gz
+_md5_=f8bbd93cb5b4380f4c3b89a8aea6acd4

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: open-close pair of characters
+EAPI=6
+HOMEPAGE=https://github.com/Townk/vim-autoclose
+KEYWORDS=amd64 x86
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~monsieurp/packages/vim-autoclose-2.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=35a0d0487429c1c0ae670cab8175ebf5

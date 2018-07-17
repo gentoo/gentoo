@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=media-libs/libjpeg-turbo media-libs/libpng:* >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=farbfeld simple image format tools
+EAPI=6
+HOMEPAGE=https://tools.suckless.org/farbfeld/
+LICENSE=ISC
+RDEPEND=media-libs/libjpeg-turbo media-libs/libpng:*
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=54998af7dd2ae6e36f86609aa25f39ca

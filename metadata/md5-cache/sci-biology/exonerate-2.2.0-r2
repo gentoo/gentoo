@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/glib:2 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Generic tool for pairwise sequence comparison
+EAPI=6
+HOMEPAGE=https://www.ebi.ac.uk/about/vertebrate-genomics/software/exonerate
+IUSE=test threads utils
+KEYWORDS=~amd64 ~x86 ~ppc-macos ~x64-macos
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2
+REQUIRED_USE=test? ( utils )
+SLOT=0
+SRC_URI=http://ftp.ebi.ac.uk/pub/software/vertebrategenomics/exonerate/exonerate-2.2.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2efd53d13e6f08e4144477038f41e4af

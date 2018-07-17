@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=ssl? ( dev-libs/openssl:0= )
+DESCRIPTION=Simple command line utility to create BitTorrent metainfo files
+EAPI=6
+HOMEPAGE=https://github.com/Rudde/mktorrent
+IUSE=threads +ssl debug
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:0= )
+SLOT=0
+SRC_URI=https://github.com/Rudde/mktorrent/archive/96090fb175f3cef17ae2499e98c2868363106927.tar.gz -> mktorrent-96090fb175f3cef17ae2499e98c2868363106927.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9cc3fe19c64612653209719f81184390

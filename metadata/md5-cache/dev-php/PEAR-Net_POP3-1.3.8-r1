@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Provides a POP3 class to access POP3 server
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Net_POP3
+IUSE=+sasl
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 ~sparc x86
+LICENSE=BSD
+RDEPEND=>=dev-php/PEAR-Net_Socket-1.0.6-r1 sasl? ( >=dev-php/PEAR-Auth_SASL-1.0.2 ) >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Net_POP3-1.3.8.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=50d1c04c4fad12d31cdcf7b547919aa6

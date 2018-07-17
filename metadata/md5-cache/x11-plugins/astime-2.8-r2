@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=x11-libs/libXpm x11-libs/libSM jpeg? ( virtual/jpeg:0 ) x11-base/xorg-proto
+DESCRIPTION=Analogue clock utility for X Windows
+EAPI=6
+HOMEPAGE=http://www.tigr.net/
+IUSE=jpeg
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXpm x11-libs/libSM jpeg? ( virtual/jpeg:0 )
+SLOT=0
+SRC_URI=http://www.tigr.net/afterstep/download/astime/astime-2.8.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=0f42db735430ca6b06e58ce6b215ddc5

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Module-Pluggable dev-perl/Moose dev-perl/MooseX-FollowPBP virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit virtual/perl-version virtual/perl-File-Spec dev-perl/Module-Build test? ( dev-perl/Test-NoWarnings ) dev-lang/perl:=
+DESCRIPTION=Perl extension for the automatic generation of LaTeX tables
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/LaTeX-Table/
+IUSE=test examples
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd
+LICENSE=|| ( GPL-1+ Artistic )
+RDEPEND=virtual/perl-Carp dev-perl/Module-Pluggable dev-perl/Moose dev-perl/MooseX-FollowPBP virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit virtual/perl-version dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LI/LIMAONE/LaTeX-Table-v1.0.6.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=ed0e42a6cb89ea078ae36b78a9dc9840

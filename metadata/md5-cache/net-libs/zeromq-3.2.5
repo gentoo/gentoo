@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=|| ( sys-devel/gcc sys-devel/gcc-apple ) pgm? ( virtual/pkgconfig >=net-libs/openpgm-5.2 ) elibc_glibc? ( sys-apps/util-linux ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=ZeroMQ is a brokerless kernel
+EAPI=5
+HOMEPAGE=http://www.zeromq.org/
+IUSE=pgm test static-libs elibc_glibc
+KEYWORDS=amd64 arm hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=LGPL-3
+SLOT=0/3
+SRC_URI=http://download.zeromq.org/zeromq-3.2.5.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6c0fadda3ab8c57e422c5c896f1416d1

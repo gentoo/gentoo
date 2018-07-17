@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=Set of stable and portable shell scripts
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/shtool/shtool.html
+KEYWORDS=amd64 arm hppa ia64 ppc s390 sh sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gnu/shtool/shtool-2.0.8.tar.gz
+_md5_=197f57f94e60f63aed77b5f051c6a288

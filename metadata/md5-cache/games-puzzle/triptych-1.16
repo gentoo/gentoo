@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare prerm setup
+DESCRIPTION=Fast-paced Tetris-like puzzler
+EAPI=7
+HOMEPAGE=http://www.chroniclogic.com/triptych.htm
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=>=media-libs/libsdl-1.2[abi_x86_32,opengl,sound,video] virtual/opengl[abi_x86_32] x11-libs/libX11[abi_x86_32] x11-libs/libXext[abi_x86_32]
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=http://www.chroniclogic.com/demos/triptych.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eutils	b43d08fe0771faf2f5e7be19c2789d33	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=f8e37850043c49b74558caac64337947

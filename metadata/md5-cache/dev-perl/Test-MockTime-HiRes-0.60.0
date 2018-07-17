@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Test-MockTime virtual/perl-Test-Simple virtual/perl-Time-HiRes >=dev-perl/Module-Build-Tiny-0.35.0 test? ( dev-perl/Test-Base dev-perl/Test-Class dev-perl/Test-Requires ) dev-lang/perl:=
+DESCRIPTION=Replace actual time with simulated high resolution time
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Test-MockTime-HiRes/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Test-MockTime virtual/perl-Test-Simple virtual/perl-Time-HiRes dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TA/TARAO/Test-MockTime-HiRes-0.06.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=b8a7e3a7c9e29628e58ba1da3e697d7f

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/expat sys-libs/zlib
+DESCRIPTION=Library to extract valid data from an Open Street Map input file
+EAPI=6
+HOMEPAGE=https://www.gaia-gis.it/spatialite
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MPL-1.1
+RDEPEND=dev-libs/expat sys-libs/zlib
+SLOT=0
+SRC_URI=https://www.gaia-gis.it/gaia-sins/readosm-sources/readosm-1.0.0e.tar.gz
+_md5_=ea406a9f3efaa2b91912e15e482dc323

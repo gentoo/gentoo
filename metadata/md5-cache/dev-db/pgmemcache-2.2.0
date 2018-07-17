@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-db/postgresql dev-libs/cyrus-sasl >=dev-libs/libmemcached-1.0.18[sasl]
+DESCRIPTION=A PostgreSQL API based on libmemcached to interface with memcached
+EAPI=5
+HOMEPAGE=http://pgfoundry.org/projects/pgmemcache https://github.com/ohmu/pgmemcache
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-db/postgresql dev-libs/cyrus-sasl >=dev-libs/libmemcached-1.0.18[sasl]
+SLOT=0
+SRC_URI=https://github.com/ohmu/pgmemcache/archive/2.2.0.tar.gz -> pgmemcache-2.2.0.tar.gz
+_md5_=80917920576e1c309bec2702eeab8025

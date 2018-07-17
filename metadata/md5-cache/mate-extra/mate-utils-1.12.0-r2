@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=app-text/rarian:0 dev-libs/atk:0 >=dev-libs/glib-2.36:2 >=gnome-base/libgtop-2.12:2= sys-libs/zlib:0 x11-libs/cairo:0 x11-libs/gdk-pixbuf:2 x11-libs/libICE:0 x11-libs/libSM:0 x11-libs/libX11:0 x11-libs/libXext:0 x11-libs/pango:0 applet? ( >=mate-base/mate-panel-1.6[gtk3(-)=] ) !gtk3? ( >=x11-libs/gtk+-2.24:2 >=media-libs/libcanberra-0.4:0[gtk] ) gtk3? ( >=x11-libs/gtk+-3.0:3 >=media-libs/libcanberra-0.4:0[gtk3] ) >=app-text/scrollkeeper-dtd-1:1.0 app-text/yelp-tools:0 dev-util/gtk-doc dev-util/gtk-doc-am >=dev-util/intltool-0.50.1:* sys-devel/gettext:* virtual/pkgconfig:* x11-base/xorg-proto >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=mate-base/mate-common-1.12
+DESCRIPTION=Utilities for the MATE desktop
+EAPI=6
+HOMEPAGE=https://mate-desktop.org
+IUSE=X applet debug gtk3 ipv6 test
+KEYWORDS=amd64 ~arm x86
+LICENSE=GPL-2
+RDEPEND=app-text/rarian:0 dev-libs/atk:0 >=dev-libs/glib-2.36:2 >=gnome-base/libgtop-2.12:2= sys-libs/zlib:0 x11-libs/cairo:0 x11-libs/gdk-pixbuf:2 x11-libs/libICE:0 x11-libs/libSM:0 x11-libs/libX11:0 x11-libs/libXext:0 x11-libs/pango:0 applet? ( >=mate-base/mate-panel-1.6[gtk3(-)=] ) !gtk3? ( >=x11-libs/gtk+-2.24:2 >=media-libs/libcanberra-0.4:0[gtk] ) gtk3? ( >=x11-libs/gtk+-3.0:3 >=media-libs/libcanberra-0.4:0[gtk3] )
+SLOT=0
+SRC_URI=https://pub.mate-desktop.org/releases/1.12/mate-utils-1.12.0.tar.xz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	mate	58aa134cca4a230873e4bde7fd57233c	mate-desktop.org	e10a19aa1a06b2fe47e07bf61d17f9ce	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=80f6d0f44765335659cfcd8448030acf

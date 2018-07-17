@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=ICC color profiles by OpenICC
+EAPI=4
+HOMEPAGE=https://www.freedesktop.org/wiki/OpenIcc/ProfilePackages
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB
+SLOT=0
+SRC_URI=mirror://sourceforge/openicc/OpenICC-Profiles/icc-profiles-openicc-1.3.0.tar.bz2
+_md5_=f286ecbe311d67b090f0d7374948c00c

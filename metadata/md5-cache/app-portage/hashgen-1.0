@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang-runtime:*[openmp] ) ) app-crypt/libb2 dev-libs/openssl:* sys-libs/zlib app-crypt/gpgme
+DESCRIPTION=Manifest generation and verification tool written in C
+EAPI=6
+HOMEPAGE=https://prefix.gentoo.org/
+IUSE=+openmp
+KEYWORDS=~amd64 ~ppc64 ~x64-macos ~sparc-solaris ~x64-solaris
+LICENSE=GPL-2
+RDEPEND=openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang-runtime:*[openmp] ) ) app-crypt/libb2 dev-libs/openssl:* sys-libs/zlib app-crypt/gpgme
+SLOT=0
+SRC_URI=https://gitweb.gentoo.org/repo/proj/prefix.git/plain/scripts/rsync-generation/hashgen.c?id=7fc3cf2b4baddc8b98c994b8ee024330d8f29956 -> hashgen-1.0.c
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=e77408472d5961dec77da07a062dd33a

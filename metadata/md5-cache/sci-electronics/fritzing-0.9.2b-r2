@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtserialport:5 dev-qt/qtsql:5[sqlite] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 >=dev-libs/quazip-0.7.2[qt5(+)] >=dev-libs/boost-1.40
+DESCRIPTION=Electronic Design Automation
+EAPI=6
+HOMEPAGE=http://fritzing.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=CC-BY-SA-3.0 GPL-3+
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtserialport:5 dev-qt/qtsql:5[sqlite] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 >=dev-libs/quazip-0.7.2[qt5(+)]
+SLOT=0
+SRC_URI=https://github.com/fritzing/fritzing-app/archive/0.9.2b.tar.gz -> fritzing-0.9.2b.tar.gz https://github.com/fritzing/fritzing-parts/archive/0.9.2b.tar.gz -> fritzing-parts-0.9.2b.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=cdab196758e13680634232213f12786a

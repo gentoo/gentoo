@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/elfutils
+DESCRIPTION=DWARF optimization and duplicate removal tool
+EAPI=6
+HOMEPAGE=https://sourceware.org/git/?p=dwz.git;a=summary
+KEYWORDS=~amd64
+LICENSE=GPL-2+ GPL-3+
+RDEPEND=dev-libs/elfutils
+SLOT=0
+SRC_URI=https://src.fedoraproject.org/repo/pkgs/dwz/dwz-0.12.tar.bz2/1624afa75b94633e03c6e1bb952fb348/dwz-0.12.tar.bz2
+_md5_=1a3c921d78a75ffe54771de01866f431

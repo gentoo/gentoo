@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm pretend unpack
+DEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0
+DESCRIPTION=Systems programming language from Mozilla
+EAPI=5
+HOMEPAGE=https://www.rust-lang.org/
+IUSE=doc
+KEYWORDS=amd64 x86
+LICENSE=|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA
+RDEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0
+SLOT=stable
+SRC_URI=amd64? ( https://static.rust-lang.org/dist/rust-1.25.0-x86_64-unknown-linux-gnu.tar.gz ) arm? ( https://static.rust-lang.org/dist/rust-1.25.0-arm-unknown-linux-gnueabi.tar.gz https://static.rust-lang.org/dist/rust-1.25.0-arm-unknown-linux-gnueabihf.tar.gz https://static.rust-lang.org/dist/rust-1.25.0-armv7-unknown-linux-gnueabihf.tar.gz ) x86? ( https://static.rust-lang.org/dist/rust-1.25.0-i686-unknown-linux-gnu.tar.gz )
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=99562245f63f6a80ede4738752168a5a

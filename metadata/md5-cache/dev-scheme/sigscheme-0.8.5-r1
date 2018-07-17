@@ -1,0 +1,9 @@
+DEFINED_PHASES=configure
+DESCRIPTION=SigScheme is an R5RS Scheme interpreter for embedded use
+EAPI=6
+HOMEPAGE=https://code.google.com/p/sigscheme/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://sigscheme.googlecode.com/files/sigscheme-0.8.5.tar.bz2
+_md5_=7076696d14cd907e728ff9fad67247b3

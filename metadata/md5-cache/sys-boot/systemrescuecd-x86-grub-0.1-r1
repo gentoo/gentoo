@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Grub menu entries for the .iso image of systemrescuecd-x86
+EAPI=7
+HOMEPAGE=http://www.sysresccd.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-admin/systemrescuecd-x86 sys-boot/grub
+SLOT=0
+_md5_=52fc627f4ebcb3a29ec2f60378ecb30a

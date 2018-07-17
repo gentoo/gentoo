@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DEPEND=net-print/cups
+DESCRIPTION=Epson Inkjet Printer Driver (ESC/P-R)
+EAPI=6
+HOMEPAGE=http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=net-print/cups
+SLOT=0
+SRC_URI=https://download3.ebz.epson.net/dsc/f/03/00/06/66/09/4ac2bf69bb1ddf4a9ad525596615cbb40fe4dad5/epson-inkjet-printer-escpr-1.6.17-1lsb3.2.tar.gz
+_md5_=d352fe9ec8cc51fb112dbebd911af384

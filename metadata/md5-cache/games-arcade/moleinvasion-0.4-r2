@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[opengl,video] virtual/opengl media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf
+DESCRIPTION=Mole infested 2D platform game
+EAPI=6
+HOMEPAGE=http://moleinvasion.tuxfamily.org/
+IUSE=music
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[opengl,video] virtual/opengl media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf
+SLOT=0
+SRC_URI=ftp://download.tuxfamily.org/minvasion/packages/MoleInvasion-0.4.tar.bz2 music? ( mirror://gentoo/moleinvasion-music-20090731.tar.gz )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=003ef87e5d8b5968949d50fc5e1bf514

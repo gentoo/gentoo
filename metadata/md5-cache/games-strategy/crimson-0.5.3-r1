@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-net zlib? ( sys-libs/zlib ) dev-libs/libxslt test? ( app-text/docbook-xml-dtd:4.2 dev-libs/libxml2 )
+DESCRIPTION=Tactical war game in the tradition of Battle Isle
+EAPI=6
+HOMEPAGE=http://crimson.seul.org/
+IUSE=test zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-net zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=http://crimson.seul.org/files/crimson-0.5.3.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=44f49e27fa1305345c0db056d701f072

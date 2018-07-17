@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=>=dev-lang/tk-8.0
+DESCRIPTION=full-featured 2D table widget
+EAPI=6
+HOMEPAGE=http://tktable.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/tk-8.0
+SLOT=0
+SRC_URI=mirror://sourceforge/tktable/Tktable2.10.tar.gz
+_md5_=e4086f072f03c60a733ea9f194bf79f8

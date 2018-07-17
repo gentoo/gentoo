@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=libedit? ( dev-libs/libedit ) net-libs/libnsl:0=
+DESCRIPTION=Xdebug client for the Common Debugger Protocol (DBGP)
+EAPI=6
+HOMEPAGE=http://www.xdebug.org/
+IUSE=libedit
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=Xdebug
+RDEPEND=libedit? ( dev-libs/libedit ) net-libs/libnsl:0=
+SLOT=0
+SRC_URI=http://pecl.php.net/get/xdebug-2.6.0.tgz
+_md5_=892015333cc32025dddc3f18746c7927

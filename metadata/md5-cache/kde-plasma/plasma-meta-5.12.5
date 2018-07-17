@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DESCRIPTION=Merge this to pull in all Plasma 5 packages
+EAPI=6
+HOMEPAGE=https://www.kde.org/workspaces/plasmadesktop/
+IUSE=bluetooth crypt +display-manager grub gtk +handbook legacy-systray networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers
+KEYWORDS=amd64 ~arm x86
+LICENSE=metapackage
+RDEPEND=>=kde-plasma/breeze-5.12.5:5 >=kde-plasma/drkonqi-5.12.5:5 >=kde-plasma/kactivitymanagerd-5.12.5:5 >=kde-plasma/kde-cli-tools-5.12.5:5 >=kde-plasma/kdecoration-5.12.5:5 >=kde-plasma/kdeplasma-addons-5.12.5:5 >=kde-plasma/kgamma-5.12.5:5 >=kde-plasma/khotkeys-5.12.5:5 >=kde-plasma/kinfocenter-5.12.5:5 >=kde-plasma/kmenuedit-5.12.5:5 >=kde-plasma/kscreen-5.12.5:5 >=kde-plasma/kscreenlocker-5.12.5:5 >=kde-plasma/ksshaskpass-5.12.5:5 >=kde-plasma/ksysguard-5.12.5:5 >=kde-plasma/kwayland-integration-5.12.5:5 >=kde-plasma/kwin-5.12.5:5 >=kde-plasma/kwrited-5.12.5:5 >=kde-plasma/libkscreen-5.12.5:5 >=kde-plasma/libksysguard-5.12.5:5 >=kde-plasma/milou-5.12.5:5 >=kde-plasma/oxygen-5.12.5:5 >=kde-plasma/plasma-desktop-5.12.5:5 >=kde-plasma/plasma-integration-5.12.5:5 >=kde-plasma/plasma-workspace-5.12.5:5 >=kde-plasma/polkit-kde-agent-5.12.5:5 >=kde-plasma/powerdevil-5.12.5:5 >=kde-plasma/systemsettings-5.12.5:5 >=kde-plasma/user-manager-5.12.5:5 bluetooth? ( >=kde-plasma/bluedevil-5.12.5:5 ) crypt? ( >=kde-plasma/plasma-vault-5.12.5:5 ) display-manager? ( sddm? ( >=kde-plasma/sddm-kcm-5.12.5:5 x11-misc/sddm ) !sddm? ( x11-misc/lightdm ) ) grub? ( >=kde-plasma/breeze-grub-5.12.5:5 ) gtk? ( >=kde-plasma/breeze-gtk-5.12.5:5 >=kde-plasma/kde-gtk-config-5.12.5:5 legacy-systray? ( dev-libs/libappindicator:3 dev-libs/libappindicator:2 ) ) handbook? ( >=kde-apps/khelpcenter-17.12.3:5 ) networkmanager? ( >=kde-plasma/plasma-nm-5.12.5:5 ) pam? ( >=kde-plasma/kwallet-pam-5.12.5:5 ) plymouth? ( >=kde-plasma/breeze-plymouth-5.12.5:5 >=kde-plasma/plymouth-kcm-5.12.5:5 ) pulseaudio? ( >=kde-plasma/plasma-pa-5.12.5:5 ) sdk? ( >=kde-plasma/plasma-sdk-5.12.5:5 ) wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-5.12.5:5 )
+REQUIRED_USE=legacy-systray? ( gtk )
+SLOT=5
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	kde5-functions	475002208a2233f4ab555934b2b0ed0b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=da48830feda220cf32272c1e6808bdd0

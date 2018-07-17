@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=!dev-scheme/scheme48
+DESCRIPTION=Unix shell embedded in Scheme
+EAPI=6
+HOMEPAGE=http://www.scsh.net/
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=BSD
+RDEPEND=!dev-scheme/scheme48
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://ftp.scsh.net/pub/scsh/0.6/scsh-0.6.7.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=562b5610d6dcf17ab7406f3bf5bdaf08

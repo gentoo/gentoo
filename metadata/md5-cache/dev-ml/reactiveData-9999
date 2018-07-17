@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-ml/react:= dev-ml/findlib dev-ml/ocamlbuild >=dev-lang/ocaml-4:= dev-ml/opam >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Functional reactive programming with incremental changes in data structures
+EAPI=5
+HOMEPAGE=https://github.com/ocsigen/reactiveData
+IUSE=+ocamlopt
+LICENSE=LGPL-3-with-linking-exception
+RDEPEND=dev-ml/react:= >=dev-lang/ocaml-4:=
+SLOT=0/9999
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=98d9f05c2bc8dc841646d2e6d240b8e3

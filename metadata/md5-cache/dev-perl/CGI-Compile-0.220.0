@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/File-pushd >=dev-perl/Module-Build-Tiny-0.34.0 test? ( dev-perl/Test-NoWarnings dev-perl/Test-Requires virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Compile .cgi scripts to a code reference like ModPerl::Registry
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/CGI-Compile/
+IUSE=test
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/File-pushd dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/CGI-Compile-0.22.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=32797bf5c55a29470de68c44c9166684

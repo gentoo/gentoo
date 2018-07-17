@@ -1,0 +1,9 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Audio video multiplexer for 8 audio channels
+EAPI=6
+HOMEPAGE=http://panteltje.com/panteltje/dvd/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://panteltje.com/panteltje/dvd/tcmplex-panteltje-0.4.7.tgz
+_md5_=b62238bdc2924474c269cc5e4812d0e2

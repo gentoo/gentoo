@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=>=dev-libs/json-c-0.10-r1 dev-libs/glib:2 dev-libs/libpcre sys-apps/pciutils sys-power/iasl sys-power/pmtools sys-apps/dmidecode sys-devel/libtool >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Firmware Test Suite
+EAPI=5
+HOMEPAGE=https://wiki.ubuntu.com/Kernel/Reference/fwts
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/json-c-0.10-r1 dev-libs/glib:2 dev-libs/libpcre sys-apps/pciutils sys-power/iasl sys-power/pmtools sys-apps/dmidecode
+SLOT=0
+SRC_URI=https://launchpad.net/ubuntu/+archive/primary/+files/fwts_15.12.00.orig.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=d8d50c0af60f618760db2f532db81440

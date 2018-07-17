@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=app-crypt/gcr-3:=[gtk] >=dev-db/sqlite-3.6.19:3 >=dev-libs/glib-2.32.3:2 dev-libs/libxml2 >=net-libs/libsoup-2.38:2.4 >=x11-libs/libnotify-0.7 >=x11-libs/gtk+-3.10.0:3 >=net-libs/webkit-gtk-2.3.91:4[jit=] granite? ( >=dev-libs/granite-0.2 ) xscreensaver? ( x11-libs/libX11 x11-libs/libXScrnSaver ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) || ( dev-lang/vala:0.36 ) dev-util/intltool gnome-base/librsvg sys-devel/gettext doc? ( dev-util/gtk-doc ) sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A lightweight web browser based on WebKitGTK+
+EAPI=6
+HOMEPAGE=http://www.midori-browser.org/
+IUSE=doc granite xscreensaver +jit test
+KEYWORDS=~amd64 ~arm ~mips ~x86 ~x86-fbsd
+LICENSE=LGPL-2.1 MIT
+RDEPEND=>=app-crypt/gcr-3:=[gtk] >=dev-db/sqlite-3.6.19:3 >=dev-libs/glib-2.32.3:2 dev-libs/libxml2 >=net-libs/libsoup-2.38:2.4 >=x11-libs/libnotify-0.7 >=x11-libs/gtk+-3.10.0:3 >=net-libs/webkit-gtk-2.3.91:4[jit=] granite? ( >=dev-libs/granite-0.2 ) xscreensaver? ( x11-libs/libX11 x11-libs/libXScrnSaver )
+SLOT=0
+SRC_URI=http://www.midori-browser.org/downloads/midori_0.5.11_all_.tar.bz2
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vala	103e6885c83965507391cdc5b6fa0e67	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=583ba0ae936f2a4532f3a555d38c1f20

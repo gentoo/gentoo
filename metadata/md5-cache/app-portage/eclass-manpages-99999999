@@ -1,0 +1,8 @@
+DEFINED_PHASES=compile install
+DEPEND=|| ( sys-apps/portage sys-apps/portage-mgorny )
+DESCRIPTION=Collection of Gentoo eclass manpages
+EAPI=6
+HOMEPAGE=https://www.gentoo.org/
+LICENSE=GPL-2
+SLOT=0
+_md5_=6d2c0aecb4412449dfb3e08d6bdff741

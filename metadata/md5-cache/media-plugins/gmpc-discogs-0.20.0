@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2:= || ( x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2[jpeg] ) virtual/pkgconfig
+DESCRIPTION=This plugin fetches artist and album images from discogs
+EAPI=6
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_DISCOGS
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2:= || ( x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2[jpeg] )
+SLOT=0
+SRC_URI=mirror://sourceforge/musicpd/gmpc-discogs-0.20.0.tar.gz
+_md5_=4ba03897fcf6586a685e2db98d3ff450

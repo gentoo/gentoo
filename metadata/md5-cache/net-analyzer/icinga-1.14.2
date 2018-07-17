@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=idoutils? ( dev-db/libdbi-drivers[mysql?,postgres?] ) perl? ( dev-lang/perl:= ) virtual/mailx web? ( media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd ) ) !net-analyzer/nagios-core apache2? ( =www-servers/apache-2* )
+DESCRIPTION=Nagios Fork - Check daemon, CGIs, docs, IDOutils
+EAPI=6
+HOMEPAGE=http://www.icinga.org/
+IUSE=+apache2 contrib eventhandler +idoutils lighttpd +mysql perl +plugins postgres ssl +vim-syntax +web apache2
+KEYWORDS=amd64 ~arm ~hppa ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=idoutils? ( dev-db/libdbi-drivers[mysql?,postgres?] ) perl? ( dev-lang/perl:= ) virtual/mailx web? ( media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd ) ) !net-analyzer/nagios-core plugins? ( || ( net-analyzer/monitoring-plugins net-analyzer/nagios-plugins ) ) apache2? ( =www-servers/apache-2* )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/icinga/icinga-core/archive/v1.14.2/icinga-1.14.2.tar.gz
+_eclasses_=depend.apache	0917334d570e07f9743a04ff85b3bf1b	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=0f3dc0dd05f9dd25a984a8e5a41ef491

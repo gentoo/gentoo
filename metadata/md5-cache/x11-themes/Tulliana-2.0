@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Tulliana icon set for KDE
+EAPI=0
+HOMEPAGE=http://www.kde-look.org/content/show.php?content=38757
+KEYWORDS=amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=http://cekirdek.pardus.org.tr/~caglar/Tulliana-2.0.tar.gz
+_md5_=d6d0e7b320ed69353004b1cc04501c99

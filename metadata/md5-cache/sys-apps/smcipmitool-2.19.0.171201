@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch postinst postrm prerm setup
+DEPEND=>=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+DESCRIPTION=An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI
+EAPI=6
+HOMEPAGE=https://www.supermicro.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=supermicro
+RDEPEND=net-misc/stunnel sys-libs/ncurses:5 virtual/jre >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+RESTRICT=bindist fetch mirror strip
+SLOT=0
+SRC_URI=amd64? ( ftp://ftp.supermicro.com/utility/SMCIPMItool/Linux/SMCIPMITool_2.19.0_build.171201_bundleJRE_Linux_x64.tar.gz ) x86? ( ftp://ftp.supermicro.com/utility/SMCIPMItool/Linux/SMCIPMITool_2.19.0_build.171201_bundleJRE_Linux.tar.gz )
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	java-vm-2	771452d15e0b51ec559962d22c627449	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=ab5d947c9bada81ff1a120844455acc8

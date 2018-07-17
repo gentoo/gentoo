@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=sys-libs/readline:0= app-crypt/libsecret
+DESCRIPTION=Save environment variables in a secret vault
+EAPI=6
+HOMEPAGE=https://github.com/sorah/envchain
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=sys-libs/readline:0= app-crypt/libsecret
+SLOT=0
+SRC_URI=https://github.com/sorah/envchain/archive/v1.0.0.tar.gz -> envchain-1.0.0.tar.gz
+_md5_=708cef91978635241d9d0cfeada8f412

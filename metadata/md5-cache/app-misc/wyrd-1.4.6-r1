@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses:0=[unicode?] >=app-misc/remind-03.01 dev-ml/camlp4:= >=dev-lang/ocaml-3.08
+DESCRIPTION=Text-based front-end to Remind
+EAPI=5
+HOMEPAGE=http://pessimization.com/software/wyrd/
+IUSE=unicode
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=[unicode?] >=app-misc/remind-03.01 dev-ml/camlp4:=
+SLOT=0
+SRC_URI=http://pessimization.com/software/wyrd/wyrd-1.4.6.tar.gz
+_md5_=3e9c770deb2b6347f68ec8eb2ad8d3c9

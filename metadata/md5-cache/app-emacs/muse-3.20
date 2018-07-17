@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=test? ( app-emacs/htmlize ) >=virtual/emacs-23
+DESCRIPTION=An authoring and publishing environment for Emacs
+EAPI=4
+HOMEPAGE=http://mwolson.org/projects/EmacsMuse.html
+IUSE=test
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-3 FDL-1.2 GPL-2 MIT
+RDEPEND=>=virtual/emacs-23
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.gna.org/muse-el/muse-3.20.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f
+_md5_=786cec026029bd3dcad409eacfa548ed

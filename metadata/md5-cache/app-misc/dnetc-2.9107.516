@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DESCRIPTION=distributed.net client
+EAPI=2
+HOMEPAGE=http://www.distributed.net
+KEYWORDS=~sparc
+LICENSE=distributed.net GPL-2
+RDEPEND=net-dns/bind-tools
+RESTRICT=mirror
+SLOT=0
+SRC_URI=sparc? ( http://http.distributed.net/pub/dcti/v2.9107/dnetc516-linux-sparc-v7.tar.gz )
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=5a82ea50be1170c5914e0f60892f1f90

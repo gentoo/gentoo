@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta package for utilities for the GNOME desktop
+EAPI=5
+HOMEPAGE=https://wiki.gnome.org/Apps/Attic/GnomeUtils
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=metapackage
+RDEPEND=>=app-admin/gnome-system-log-3.8.0 >=app-dicts/gnome-dictionary-3.8.0 >=gnome-extra/gnome-search-tool-3.6.0 >=media-gfx/gnome-font-viewer-3.8.0 >=media-gfx/gnome-screenshot-3.8.0 >=sys-apps/baobab-3.8.0
+SLOT=0
+_md5_=583ea1e638c00340f9125dc85cb42377

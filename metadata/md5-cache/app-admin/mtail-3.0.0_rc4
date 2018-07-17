@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=A tool for extracting metrics from application logs
+EAPI=6
+HOMEPAGE=https://github.com/google/mtail
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=!app-misc/mtail
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/google/mtail/archive/v3.0.0-rc4.tar.gz -> mtail-3.0.0_rc4.tar.gz https://github.com/golang/tools/archive/f57adc18217d779aa42266ea71a545827755a77b.tar.gz -> github.com-golang-tools-f57adc18217d779aa42266ea71a545827755a77b.tar.gz https://github.com/fsnotify/fsnotify/archive/4da3e2cfbabc9f751898f250b49f2439785783a1.tar.gz -> github.com-fsnotify-fsnotify-4da3e2cfbabc9f751898f250b49f2439785783a1.tar.gz https://github.com/golang/glog/archive/23def4e6c14b4da8ac2ed8007337bc5eb5007998.tar.gz -> github.com-golang-glog-23def4e6c14b4da8ac2ed8007337bc5eb5007998.tar.gz https://github.com/pkg/errors/archive/2b3a18b5f0fb6b4f9190549597d3f962c02bc5eb.tar.gz -> github.com-pkg-errors-2b3a18b5f0fb6b4f9190549597d3f962c02bc5eb.tar.gz https://github.com/spf13/afero/archive/e67d870304c4bca21331b02f414f970df13aa694.tar.gz -> github.com-spf13-afero-e67d870304c4bca21331b02f414f970df13aa694.tar.gz https://github.com/golang/sys/archive/43eea11bc92608addb41b8a406b0407495c106f6.tar.gz -> github.com-golang-sys-43eea11bc92608addb41b8a406b0407495c106f6.tar.gz https://github.com/golang/text/archive/825fc78a2fd6fa0a5447e300189e3219e05e1f25.tar.gz -> github.com-golang-text-825fc78a2fd6fa0a5447e300189e3219e05e1f25.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=fc901649c24d7a7e608c1ccf36215191

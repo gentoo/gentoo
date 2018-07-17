@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/mtkbabel/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Device-SerialPort dev-perl/TimeDate
+SLOT=0
+SRC_URI=mirror://sourceforge/mtkbabel/mtkbabel-0.8.2.tar.gz
+_md5_=f68a1d46d4833aef0b01680710c978c1

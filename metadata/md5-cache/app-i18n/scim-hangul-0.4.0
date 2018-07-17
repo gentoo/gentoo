@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=app-i18n/scim-0.99.8 >=app-i18n/libhangul-0.0.4 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Hangul IMEngine for SCIM ported from imhangul
+EAPI=6
+HOMEPAGE=http://www.scim-im.org/
+IUSE=nls
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=app-i18n/scim-0.99.8 >=app-i18n/libhangul-0.0.4 nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/scim/scim-hangul-0.4.0.tar.gz
+_md5_=98a0cd78a792fd33b38b32cdb6b129a8

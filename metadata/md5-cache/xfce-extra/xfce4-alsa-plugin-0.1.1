@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=media-libs/alsa-lib xfce-base/xfce4-panel x11-libs/gtk+:2 || ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) || ( dev-lang/vala:0.36 dev-lang/vala:0.34 dev-lang/vala:0.32 ) dev-util/intltool
+DESCRIPTION=Simple ALSA volume control for xfce4-panel
+EAPI=6
+HOMEPAGE=https://github.com/equeim/xfce4-alsa-plugin
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/alsa-lib xfce-base/xfce4-panel x11-libs/gtk+:2
+SLOT=0
+SRC_URI=https://github.com/equeim/xfce4-alsa-plugin/archive/0.1.1.tar.gz -> xfce4-alsa-plugin-0.1.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vala	103e6885c83965507391cdc5b6fa0e67	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=2fcea52f356ef92a2132ac6a6cafeac3

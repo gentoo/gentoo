@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Modular widget library for x11-wm/awesome
+EAPI=6
+HOMEPAGE=https://github.com/Mic92/vicious
+IUSE=contrib
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=x11-wm/awesome
+SLOT=0
+SRC_URI=https://github.com/Mic92/vicious/archive/v2.2.0.tar.gz -> vicious-2.2.0.tar.gz
+_md5_=00af3460dcb645d6934aaa1b0f744b7c

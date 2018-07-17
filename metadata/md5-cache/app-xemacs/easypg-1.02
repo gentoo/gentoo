@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=GnuPG interface for Emacs
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~amd64
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/xemacs-base app-xemacs/dired app-xemacs/mail-lib app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/easypg-1.02-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=097fc92ca00c632a6ba7dd3e154c4928

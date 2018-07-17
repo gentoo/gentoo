@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp >=virtual/perl-ExtUtils-MakeMaker-6.170.0 test? ( >=virtual/perl-Test-Simple-0.960.0 virtual/perl-version ) dev-lang/perl:=
+DESCRIPTION=Change directory temporarily for a limited scope
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/File-pushd/
+IUSE=test
+KEYWORDS=alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=Apache-2.0
+RDEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/File-pushd-1.014.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=e257348f637fe7ec38394e8b1d7c5133

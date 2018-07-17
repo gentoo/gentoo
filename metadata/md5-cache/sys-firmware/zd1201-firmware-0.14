@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
+EAPI=5
+HOMEPAGE=http://linux-lc100020.sourceforge.net/
+KEYWORDS=amd64 ppc64 x86
+LICENSE=|| ( GPL-3 MPL-1.1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz
+_md5_=dede965140d27d719f9d1e83b77598f2

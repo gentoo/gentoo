@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=The MediaWiki wiki web application (as used on wikipedia.org)
+EAPI=5
+HOMEPAGE=http://www.mediawiki.org
+IUSE=imagemagick mysql postgres sqlite vhosts
+KEYWORDS=~alpha amd64 ~arm ~arm64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/php-5.5.9[json,mysql?,postgres?,session,xml,xmlreader] imagemagick? ( virtual/imagemagick-tools ) !imagemagick? ( dev-lang/php[gd] ) sqlite? ( dev-db/sqlite:3[fts3(+)] >=dev-lang/php-5.5.9[pdo] || ( dev-lang/php[sqlite] dev-lang/php[sqlite3] ) ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+RESTRICT=test
+SLOT=1.27.3
+SRC_URI=http://releases.wikimedia.org/mediawiki/1.27/mediawiki-1.27.3.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=8d5d734667d59dd18445bf4fa050e6b4

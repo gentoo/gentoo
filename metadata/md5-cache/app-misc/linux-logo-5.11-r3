@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare prerm
+DEPEND=nls? ( virtual/libintl ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=A utility that displays an ANSI/ASCII logo and some system information
+EAPI=5
+HOMEPAGE=http://www.deater.net/weave/vmwprod/linux_logo/
+IUSE=nls
+KEYWORDS=amd64 ~arm hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=http://www.deater.net/weave/vmwprod/linux_logo/linux_logo-5.11.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=0b5e41ebc4a28d75362848765e48de2d

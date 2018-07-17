@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=dev-cpp/gtkmm:2.4= sci-libs/libh2oxx:0= sci-libs/plotmm:0=
+DESCRIPTION=GTK+ UI for libh2o -- water & steam properties
+EAPI=7
+HOMEPAGE=https://github.com/mgorny/h2o-gtk/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-cpp/gtkmm:2.4= sci-libs/libh2oxx:0= sci-libs/plotmm:0=
+SLOT=0
+SRC_URI=https://github.com/mgorny/h2o-gtk/releases/download/h2o-gtk-0.1/h2o-gtk-0.1.tar.bz2
+_md5_=faffeee1c7540cdcb8a45169b8f20b61

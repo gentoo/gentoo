@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/base:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=OCaml variants as first class values
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/variantslib
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/base:= dev-ml/ppx_driver:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/variantslib/archive/v0.9.0.tar.gz -> variantslib-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=d886530b2ff32238ab5fec6fc318d0e1

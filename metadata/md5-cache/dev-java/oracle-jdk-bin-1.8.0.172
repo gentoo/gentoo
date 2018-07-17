@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare prerm setup unpack
+DEPEND=app-arch/zip examples? ( x64-macos? ( app-arch/unzip ) ) >=sys-apps/sed-4 >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+DESCRIPTION=Oracle's Java SE Development Kit
+EAPI=6
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=alsa commercial cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source visualvm
+KEYWORDS=-* amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris
+LICENSE=Oracle-BCLA-JavaSE examples? ( BSD )
+RDEPEND=!x64-macos? ( !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst ) javafx? ( dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libxslt media-libs/freetype:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXtst x11-libs/libXxf86vm x11-libs/pango virtual/opengl ) ) alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) doc? ( dev-java/java-sdk-docs:1.8 ) fontconfig? ( media-libs/fontconfig:1.0 ) !prefix? ( sys-libs/glibc:* ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+REQUIRED_USE=javafx? ( alsa fontconfig )
+RESTRICT=fetch preserve-libs strip
+SLOT=1.8
+SRC_URI=amd64? ( jdk-8u172-linux-x64.tar.gz examples? ( jdk-8u172-linux-x64-demos.tar.gz ) ) arm? ( jdk-8u172-linux-arm32-vfp-hflt.tar.gz examples? ( jdk-8u172-linux-arm32-vfp-hflt-demos.tar.gz ) ) arm64? ( jdk-8u172-linux-arm64-vfp-hflt.tar.gz examples? ( jdk-8u172-linux-arm64-vfp-hflt-demos.tar.gz ) ) x86? ( jdk-8u172-linux-i586.tar.gz examples? ( jdk-8u172-linux-i586-demos.tar.gz ) ) x64-macos? ( jdk-8u172-macosx-x64.dmg examples? ( jdk-8u172-macosx-x86_64-demos.zip ) ) sparc64-solaris? ( jdk-8u172-solaris-sparcv9.tar.gz examples? ( jdk-8u172-solaris-sparcv9-demos.tar.gz ) ) x64-solaris? ( jdk-8u172-solaris-x64.tar.gz examples? ( jdk-8u172-solaris-x64-demos.tar.gz ) )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	java-vm-2	771452d15e0b51ec559962d22c627449	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=9cc1578dd07091766e58cfcf4237b86f

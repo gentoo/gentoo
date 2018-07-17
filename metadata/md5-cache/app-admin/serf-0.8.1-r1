@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=>=dev-lang/go-1.6:= >=dev-go/go-tools-0_pre20160121 >=dev-lang/go-1.9 virtual/pkgconfig
+DESCRIPTION=Service orchestration and management tool
+EAPI=6
+HOMEPAGE=https://www.serfdom.io/
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/hashicorp/serf/archive/v0.8.1.tar.gz -> serf-0.8.1.tar.gz https://github.com/mitchellh/gox/archive/c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz -> github.com-mitchellh-gox-c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> github.com-mitchellh-iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=019100a5cfecb8bdd5b8b5e4e1ff4a34

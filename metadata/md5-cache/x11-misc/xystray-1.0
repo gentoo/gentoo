@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXaw
+DESCRIPTION=A simple implementation of freedesktop.org notification area for X
+EAPI=6
+HOMEPAGE=http://steelman.github.com/xystray/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=x11-libs/libX11 x11-libs/libXt
+SLOT=0
+SRC_URI=https://github.com/steelman/xystray/archive/v1.0.tar.gz -> xystray-1.0.tar.gz
+_md5_=cda555ec2c861ce8bd0de71cacb63ab1

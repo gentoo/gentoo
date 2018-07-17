@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup test
+DEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) dev-libs/icu:= dev-libs/libxml2:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
+DESCRIPTION=PostgreSQL Database Modeler
+EAPI=6
+HOMEPAGE=https://pgmodeler.io
+IUSE=postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) dev-libs/icu:= dev-libs/libxml2:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=https://github.com/pgmodeler/pgmodeler/archive/v0.9.1.tar.gz -> pgmodeler-0.9.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	postgres	a3ad839d319097167f1802b25f50d9c0	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b4859e718a6bf19f1c385d7af2bbd6c6

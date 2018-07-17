@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-image
+DESCRIPTION=Help West Muldune escape from a futuristic mental hospital
+EAPI=6
+HOMEPAGE=http://members.fortunecity.com/rivalentertainment/iox.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-image
+SLOT=0
+SRC_URI=mirror://gentoo/io000311.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=4a66e348891eb0ae3e0eb5f7c6389398

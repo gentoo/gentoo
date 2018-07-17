@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=idn? ( net-dns/libidn ) libsecret? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=A small, fast, and portable POP3 client
+EAPI=6
+HOMEPAGE=http://mpop.sourceforge.net/
+IUSE=gnutls idn libressl libsecret nls sasl ssl vim-syntax
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=idn? ( net-dns/libidn ) libsecret? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) )
+REQUIRED_USE=gnutls? ( ssl )
+SLOT=0
+SRC_URI=mirror://sourceforge/mpop/mpop-1.2.6.tar.xz
+_md5_=3a86788e86f83578d326cdbae12a8ac6

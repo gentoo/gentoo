@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext icarus? ( x11-libs/gtksourceview:2.0 x11-libs/gtk+:2 x11-libs/pango dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf dev-libs/glib:2 media-libs/fontconfig media-libs/freetype ) ao? ( media-libs/libao ) openal? ( media-libs/openal ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) xv? ( x11-libs/libXv ) opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl[X,joystick,video] ) udev? ( virtual/udev ) app-arch/p7zip virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A multi-system game emulator formerly known as bsnes
+EAPI=6
+HOMEPAGE=https://byuu.org/emulation/higan/ https://gitlab.com/higan/higan
+IUSE=ao +alsa +icarus openal opengl oss pulseaudio +sdl udev xv
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext icarus? ( x11-libs/gtksourceview:2.0 x11-libs/gtk+:2 x11-libs/pango dev-libs/atk x11-libs/cairo x11-libs/gdk-pixbuf dev-libs/glib:2 media-libs/fontconfig media-libs/freetype ) ao? ( media-libs/libao ) openal? ( media-libs/openal ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) xv? ( x11-libs/libXv ) opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl[X,joystick,video] ) udev? ( virtual/udev )
+REQUIRED_USE=|| ( ao openal alsa pulseaudio oss ) || ( xv opengl sdl )
+SLOT=0
+SRC_URI=https://gitlab.com/higan/higan/repository/41efdba45afa770db99bc7484a8ad340ccc597d2/archive.tar.bz2 -> higan-106_p1.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=92b402fce5ca880e1840c756303f5e3c

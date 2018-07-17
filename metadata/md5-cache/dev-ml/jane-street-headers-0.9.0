@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Jane Street header files
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/jane-street-headers
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/jane-street-headers/archive/v0.9.0.tar.gz -> jane-street-headers-0.9.0.tar.gz
+_md5_=6ef42218f48fa6b61eb33f32782d9f86

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Fast-paced first-person-shooter online multiplayer game, similar to Tribes
+EAPI=6
+HOMEPAGE=http://legendsthegame.net/
+IUSE=+dedicated
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Legends LGPL-2.1+
+RDEPEND=sys-libs/glibc amd64? ( sys-libs/glibc[multilib] ) media-fonts/font-adobe-75dpi media-libs/libsdl[video,sound,opengl,abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] media-libs/libogg[abi_x86_32(-)] media-libs/libvorbis[abi_x86_32(-)] media-libs/openal[abi_x86_32(-)]
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://legendsthegame.net/files/legends_linux-0.4.1.43.run mirror://gentoo/legends.png
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=cd5481e39a51bd057b18ba8b2d615422

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=The Linux Documentation Project HOWTOs
+EAPI=5
+HOMEPAGE=http://www.tldp.org
+IUSE=+html htmlsingle pdf text
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=FDL-1.2
+REQUIRED_USE=|| ( html htmlsingle pdf text )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=html? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/html/Linux-html-HOWTOs-20120707.tar.bz2 ) htmlsingle? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/html_single/Linux-html-single-HOWTOs-20120707.tar.bz2 ) pdf? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/pdf/Linux-pdf-HOWTOs-20120707.tar.bz2 ) text? ( http://www.ibiblio.org/pub/Linux/docs/HOWTO/Linux-HOWTOs-20120707.tar.bz2 )
+_md5_=60c14dd3c0f0a0bf925eff68f9ad3978

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/boost dev-qt/qtcore:5 dev-qt/qtgui:5 app-arch/unzip dev-cpp/tree doc? ( app-doc/doxygen )
+DESCRIPTION=Library for reading OriginLab OPJ project files
+EAPI=6
+HOMEPAGE=http://soft.proindependent.com/liborigin2/
+IUSE=doc
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-libs/boost dev-qt/qtcore:5 dev-qt/qtgui:5
+SLOT=2
+SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/liborigin2-20110829.zip
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=adb2d15b726752af53eca019cbe306b0

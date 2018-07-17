@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=An open-world, sandbox game set in an infinite abstract universe
+EAPI=5
+HOMEPAGE=http://murudai.com/solar/
+IUSE=bundled-libs
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=virtual/opengl amd64? ( >=media-libs/flac-1.2.1-r5[abi_x86_32(-)] >=media-libs/libsdl-1.2.15-r4[X,sound,video,joystick,abi_x86_32(-)] >=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)] >=virtual/opengl-7.0-r1[abi_x86_32(-)] !bundled-libs? ( >=media-libs/libmad-0.15.1b-r8[abi_x86_32(-)] >=media-libs/openal-1.15.1[abi_x86_32(-)] >=media-libs/sdl-mixer-1.2.12-r4[flac,mikmod,mad,mp3,vorbis,abi_x86_32(-)] >=media-libs/libmikmod-3.2.0[abi_x86_32(-)] ) ) x86? ( media-libs/flac media-libs/libsdl[X,sound,video,joystick] media-libs/libvorbis !bundled-libs? ( dev-lang/mono media-libs/libmad media-libs/libmikmod media-libs/openal media-libs/sdl-mixer[flac,mikmod,mad,mp3,vorbis] ) ) games-misc/games-envd
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=solar2-linux-1.10.tar.gz https://dev.gentoo.org/~chewi/distfiles/solar2.png
+_eclasses_=base	983774947da124fb7d542ce25a218bb1	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	games	2bb3ede665927a68ffdb7c41eec7efde	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=d99222fdb99181f959cd00238241d9d3

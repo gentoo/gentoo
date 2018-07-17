@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=virtual/opengl virtual/glu dev-games/physfs media-libs/libsdl[opengl,video] media-libs/libmikmod x11-libs/libXt
+DESCRIPTION=A Tetris clone written in OpenGL
+EAPI=6
+HOMEPAGE=http://fbg.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/opengl virtual/glu dev-games/physfs media-libs/libsdl[opengl,video] media-libs/libmikmod x11-libs/libXt
+SLOT=0
+SRC_URI=mirror://sourceforge/fbg/fbg-0.9.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=6496846e678673ab39646f9b6685c86c

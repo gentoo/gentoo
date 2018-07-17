@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test
+DEPEND=test? ( dev-lang/php:*[xml] >=dev-php/PEAR-XML_Parser-1.2.7 >=dev-php/PEAR-XML_Util-1.1.1-r1 )
+DESCRIPTION=Swiss-army knife for reading and writing XML files
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/XML_Serializer
+IUSE=examples test
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
+LICENSE=BSD
+RDEPEND=dev-lang/php:*[xml] >=dev-php/PEAR-XML_Parser-1.2.7 >=dev-php/PEAR-XML_Util-1.1.1-r1 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/XML_Serializer-0.21.0.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=cd02b985731e118c0b366d38d35c39c0

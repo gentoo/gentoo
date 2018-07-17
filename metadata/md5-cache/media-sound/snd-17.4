@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=media-libs/audiofile alsa? ( media-libs/alsa-lib ) fftw? ( sci-libs/fftw:3.0= ) gmp? ( dev-libs/gmp:0= dev-libs/mpc dev-libs/mpfr:0= ) gsl? ( sci-libs/gsl:= ) gtk? ( x11-libs/gtk+:3 x11-libs/pango x11-libs/cairo opengl? ( x11-libs/gtkglext ) ) jack? ( media-sound/jack-audio-connection-kit ) ladspa? ( media-libs/ladspa-sdk ) motif? ( >=x11-libs/motif-2.3:0 ) opengl? ( virtual/opengl ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) readline? ( sys-libs/readline:* ) ruby? ( dev-lang/ruby:* ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Snd is a sound editor
+EAPI=6
+HOMEPAGE=https://ccrma.stanford.edu/software/snd/
+IUSE=alsa doc fftw gmp gsl gtk jack ladspa motif opengl oss portaudio pulseaudio readline ruby +s7
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=Snd BSD-2 HPND GPL-2+ LGPL-2.1+ LGPL-3+ ruby? ( free-noncomm ) s7? ( free-noncomm )
+RDEPEND=media-libs/audiofile alsa? ( media-libs/alsa-lib ) fftw? ( sci-libs/fftw:3.0= ) gmp? ( dev-libs/gmp:0= dev-libs/mpc dev-libs/mpfr:0= ) gsl? ( sci-libs/gsl:= ) gtk? ( x11-libs/gtk+:3 x11-libs/pango x11-libs/cairo opengl? ( x11-libs/gtkglext ) ) jack? ( media-sound/jack-audio-connection-kit ) ladspa? ( media-libs/ladspa-sdk ) motif? ( >=x11-libs/motif-2.3:0 ) opengl? ( virtual/opengl ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) readline? ( sys-libs/readline:* ) ruby? ( dev-lang/ruby:* )
+REQUIRED_USE=?? ( portaudio pulseaudio ) ?? ( ruby s7 )
+SLOT=0
+SRC_URI=ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-17.4.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b42ee17f071df39be88ec238d4cf058e

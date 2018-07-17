@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DESCRIPTION=disassembly/disassembler framework + bindings
+EAPI=6
+HOMEPAGE=http://www.capstone-engine.org/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+SLOT=0/3
+SRC_URI=https://github.com/aquynh/capstone/archive/3.0.5-rc2.tar.gz -> capstone-3.0.5_rc2.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1f358585a274a39998a7cafa53de75dd

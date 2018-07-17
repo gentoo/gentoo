@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test
+DESCRIPTION=MINPACK-1 Least Squares Fitting Library in C
+EAPI=6
+HOMEPAGE=http://www.physics.wisc.edu/~craigm/idl/cmpfit.html
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain minpack
+SLOT=0
+SRC_URI=http://www.physics.wisc.edu/~craigm/idl/down/cmpfit-1.2.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=467dbfe34d6da72607c2b33fc3905ca3

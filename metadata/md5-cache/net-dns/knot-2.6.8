@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst test
+DEPEND=dev-db/lmdb dev-libs/libedit dev-libs/userspace-rcu dev-python/lmdb net-libs/gnutls caps? ( sys-libs/libcap-ng ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( !libidn2? ( net-dns/libidn ) libidn2? ( net-dns/libidn2 ) ) systemd? ( sys-apps/systemd ) virtual/pkgconfig doc? ( dev-python/sphinx ) virtual/pkgconfig
+DESCRIPTION=High-performance authoritative-only DNS server
+EAPI=6
+HOMEPAGE=https://www.knot-dns.cz/
+IUSE=doc caps +fastparser idn libidn2 systemd +utils +dnsproxy dnstap +noudp +onlinesign rosedb +rrl +stats +synthrecord +whoami
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-db/lmdb dev-libs/libedit dev-libs/userspace-rcu dev-python/lmdb net-libs/gnutls caps? ( sys-libs/libcap-ng ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( !libidn2? ( net-dns/libidn ) libidn2? ( net-dns/libidn2 ) ) systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=https://secure.nic.cz/files/knot-dns/knot-2.6.8.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b9ff11e73ec11667a0353cc204a79f95

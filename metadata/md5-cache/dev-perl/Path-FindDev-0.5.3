@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=dev-perl/Class-Tiny-0.10.0 >=dev-perl/Path-IsDev-0.2.2 >=dev-perl/Path-Tiny-0.54.0 virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter virtual/perl-ExtUtils-MakeMaker !minimal? ( >=virtual/perl-ExtUtils-MakeMaker-7.0.0 ) test? ( !minimal? ( >=virtual/perl-CPAN-Meta-2.120.900 >=virtual/perl-Test-Simple-0.990.0 ) virtual/perl-File-Spec virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Find a development path somewhere in an upper hierarchy
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Path-FindDev/
+IUSE=test minimal
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=dev-perl/Class-Tiny-0.10.0 >=dev-perl/Path-IsDev-0.2.2 >=dev-perl/Path-Tiny-0.54.0 virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KE/KENTNL/Path-FindDev-v0.5.3.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=ce4ccde203c486ddf75364fde707b9d6

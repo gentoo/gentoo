@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft
+DESCRIPTION=Simple plaintext presentation tool
+EAPI=6
+HOMEPAGE=https://tools.suckless.org/sent/
+IUSE=savedconfig
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=media-libs/fontconfig x11-libs/libX11 x11-libs/libXft !savedconfig? ( media-gfx/farbfeld )
+SLOT=0
+SRC_URI=https://dl.suckless.org/tools/sent-1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=b37b7e4fcd292576275c19f35744a6af

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install nofetch
+DESCRIPTION=Shotgun assembly and alignment utilities
+EAPI=6
+HOMEPAGE=http://www.phrap.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=phrap
+RDEPEND=dev-lang/perl dev-perl/Tk
+RESTRICT=fetch
+SLOT=0
+SRC_URI=phrap-1.080812-distrib.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e72f3e08accb23ebf55562689dad5f46

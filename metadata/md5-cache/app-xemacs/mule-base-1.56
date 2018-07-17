@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=MULE: Basic Mule support, required for building with Mule
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ~arm64 hppa ppc ppc64 sparc x86 ~amd64-fbsd
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/fsf-compat app-xemacs/xemacs-base app-xemacs/apel app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/mule-base-1.56-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=29353237e922c56091c47d21cd469ebd

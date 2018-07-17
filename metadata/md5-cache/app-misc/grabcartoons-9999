@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Comic-summarizing utility
+EAPI=6
+HOMEPAGE=https://zzamboni.org/code/grabcartoons/
+LICENSE=BSD
+RDEPEND=dev-lang/perl virtual/perl-Getopt-Long
+RESTRICT=test
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=6a4955d2488327be4a7516962e96d53b

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=net-analyzer/munin
+DESCRIPTION=A Munin plugin for monitoring ZFS on Linux
+EAPI=6
+HOMEPAGE=https://github.com/alexclear/ZoL-munin-plugin
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=net-analyzer/munin sys-devel/bc
+SLOT=0
+SRC_URI=https://github.com/alexclear/ZoL-munin-plugin/archive/385f9e4cda592ace95b47c69db76553bcb6a42d6.tar.gz -> munin-plugins-zfs-0.20170127.tar.gz
+_md5_=5996e8bd7a1e32f1c9af5a288c9e1b6d

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=!gtk3? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) dev-lang/perl virtual/pkgconfig doc? ( >=app-doc/halibut-1.2 ) >=sys-apps/sed-4 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Simon Tatham's Portable Puzzle Collection
+EAPI=6
+HOMEPAGE=https://www.chiark.greenend.org.uk/~sgtatham/puzzles/
+IUSE=+doc gtk3
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=!gtk3? ( x11-libs/gtk+:2 ) gtk3? ( x11-libs/gtk+:3 ) x11-misc/xdg-utils
+SLOT=0
+SRC_URI=https://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-20171029.69773d8.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=e602c2fa5ba2bca72e78f24bf3570910

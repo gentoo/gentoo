@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm
+DEPEND=dev-libs/libltdl:0= dev-qt/qtgui:5 dev-qt/qtwidgets:5 !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) doc? ( app-text/linuxdoc-tools )
+DESCRIPTION=A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
+EAPI=6
+HOMEPAGE=http://hohnstaedt.de/xca/
+IUSE=bindist doc libressl
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=dev-libs/libltdl:0= dev-qt/qtgui:5 dev-qt/qtwidgets:5 !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) doc? ( app-text/linuxdoc-tools )
+SLOT=0
+SRC_URI=https://github.com/chris2511/xca/releases/download/RELEASE.1.4.1/xca-1.4.1.tar.gz
+_eclasses_=xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=34e9862d76457b88710a794b7ebca3be

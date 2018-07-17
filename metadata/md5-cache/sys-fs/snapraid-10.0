@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=a backup program for disk array for home media centers
+EAPI=6
+HOMEPAGE=http://snapraid.sourceforge.net/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/amadvance/snapraid/releases/download/v10.0/snapraid-10.0.tar.gz
+_md5_=d2cbedbf643e49476eafc901e6637ceb

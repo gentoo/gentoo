@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=virtual/pkgconfig
+DESCRIPTION=LogMeIn Hamachi VPN tunneling engine
+EAPI=6
+HOMEPAGE=https://www.vpn.net/
+IUSE=kernel_linux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=LogMeIn
+RDEPEND=!net-misc/hamachi
+RESTRICT=mirror
+SLOT=0
+SRC_URI=x86? ( https://www.vpn.net/installers/logmein-hamachi-2.1.0.174-x86.tgz ) amd64? ( https://www.vpn.net/installers/logmein-hamachi-2.1.0.174-x64.tgz )
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=dd4776d2afcb973b8378e6921dec51ac

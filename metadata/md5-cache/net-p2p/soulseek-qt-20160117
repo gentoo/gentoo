@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Official binary Qt SoulSeek client
+EAPI=5
+HOMEPAGE=http://www.soulseekqt.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=free-noncomm
+RDEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libxcb media-libs/freetype x11-libs/libXau x11-libs/libXdmcp dev-libs/libbsd dev-libs/expat
+RESTRICT=mirror
+SLOT=0
+SRC_URI=x86? ( https://www.dropbox.com/s/kebk1b5ib1m3xxw/SoulseekQt-2016-1-17-32bit.tgz ) amd64? ( https://www.dropbox.com/s/7qh902qv2sxyp6p/SoulseekQt-2016-1-17-64bit.tgz )
+_md5_=3c55eeba944f9e2dce57a70b56318b3a

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) jpeg2k? ( media-libs/jasper:= ) gimp? ( media-gfx/gimp ) nls? ( sys-devel/gettext ) gimp? ( virtual/pkgconfig )
+DESCRIPTION=Command-line decoder for raw digital photos
+EAPI=6
+HOMEPAGE=https://www.cybercom.net/~dcoffin/dcraw/
+IUSE=nls gimp jpeg jpeg2k lcms
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) jpeg2k? ( media-libs/jasper:= ) gimp? ( media-gfx/gimp ) media-libs/netpbm
+SLOT=0
+SRC_URI=https://www.cybercom.net/~dcoffin/dcraw/archive/dcraw-9.28.0.tar.gz mirror://gentoo/parse-1.73.tar.bz2 gimp? ( mirror://gentoo/rawphoto-1.32.tar.bz2 )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=be6f81e547da7691680f1c68dcce2ac1

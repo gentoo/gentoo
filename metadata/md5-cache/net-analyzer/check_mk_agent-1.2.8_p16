@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=!!net-analyzer/check_mk app-shells/bash:* xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) ) virtual/pkgconfig
+DESCRIPTION=Agent to report data to Check_MK for monitoring
+EAPI=6
+HOMEPAGE=http://mathias-kettner.de/check_mk.html
+IUSE=apache_status logwatch mysql nfsexports oracle postgres smart +xinetd zypper
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!!net-analyzer/check_mk app-shells/bash:* xinetd? ( || ( sys-apps/xinetd sys-apps/systemd ) )
+SLOT=0
+SRC_URI=http://mathias-kettner.de/download/check_mk-1.2.8p16.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=133df97ee2cc60e5305b0e4455693193

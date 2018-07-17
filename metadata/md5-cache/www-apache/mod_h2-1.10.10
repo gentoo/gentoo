@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=>=net-libs/nghttp2-1.0 >=www-servers/apache-2.4.20[-apache2_modules_http2,ssl?] =www-servers/apache-2.4*
+DESCRIPTION=HTTP/2 module for Apache
+EAPI=6
+HOMEPAGE=https://github.com/icing/mod_h2
+IUSE=ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=net-libs/nghttp2-1.0 >=www-servers/apache-2.4.20[-apache2_modules_http2,ssl?] =www-servers/apache-2.4*
+SLOT=0
+SRC_URI=https://github.com/icing/mod_h2/releases/download/v1.10.10/mod_http2-1.10.10.tar.gz
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	0917334d570e07f9743a04ff85b3bf1b
+_md5_=a3ece310a2dcd91523e4c4cd93aed8e0

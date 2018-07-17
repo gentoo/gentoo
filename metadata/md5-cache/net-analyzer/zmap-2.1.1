@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-libs/gmp:0 net-libs/libpcap dev-libs/json-c:= mongo? ( dev-db/mongodb ) redis? ( dev-libs/hiredis ) dev-util/gengetopt sys-devel/flex dev-util/byacc sys-devel/make >=dev-util/cmake-3.9.6 filecaps? ( sys-libs/libcap )
+DESCRIPTION=Fast network scanner designed for Internet-wide network surveys
+EAPI=6
+HOMEPAGE=https://zmap.io/
+IUSE=json mongo redis +filecaps
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/gmp:0 net-libs/libpcap dev-libs/json-c:= mongo? ( dev-db/mongodb ) redis? ( dev-libs/hiredis )
+SLOT=0
+SRC_URI=https://github.com/zmap/zmap/archive/v2.1.1.tar.gz -> zmap-2.1.1.tar.gz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fcaps	9445d60c1eb084a91c38ef4c070b2f16	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=26e8b683b841ea7bbfbb247bb116bdd2

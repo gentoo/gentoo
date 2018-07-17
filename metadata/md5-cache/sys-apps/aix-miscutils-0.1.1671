@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Miscellaneous helpers for AIX (currently just ldd)
+EAPI=6
+HOMEPAGE=https://prefix.gentoo.org
+KEYWORDS=~ppc-aix
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~haubi/distfiles/aix-miscutils-0.1.1671.tar.bz2
+_md5_=1c2bccde4e14912210ab525e2840aa5b

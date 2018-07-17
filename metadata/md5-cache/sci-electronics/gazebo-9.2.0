@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-libs/protobuf-2:= virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml >=dev-libs/tinyxml2-6:= dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4:=[freeimage] <dev-games/ogre-1.10 >=media-libs/freeimage-3.15.4[png] sci-libs/libccd libav? ( >=media-video/libav-9:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= ) sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-6.0:= dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-libs/boost:=[threads] sci-libs/gdal:= virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:=[cxx] sys-apps/util-linux media-gfx/graphviz net-libs/ignition-msgs:1= sci-libs/ignition-math:4= net-libs/ignition-transport:4= x11-libs/qwt:6=[qt5(+)] dev-qt/qttest:5 app-text/ronn app-arch/gzip virtual/pkgconfig x11-apps/mesa-progs test? ( dev-libs/libxslt ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=A 3D multiple robot simulator with dynamics
+EAPI=5
+HOMEPAGE=http://gazebosim.org/
+IUSE=cpu_flags_x86_sse2 libav test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/protobuf-2:= virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml >=dev-libs/tinyxml2-6:= dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4:=[freeimage] <dev-games/ogre-1.10 >=media-libs/freeimage-3.15.4[png] sci-libs/libccd libav? ( >=media-video/libav-9:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= ) sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-6.0:= dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-libs/boost:=[threads] sci-libs/gdal:= virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:=[cxx] sys-apps/util-linux media-gfx/graphviz net-libs/ignition-msgs:1= sci-libs/ignition-math:4= net-libs/ignition-transport:4= x11-libs/qwt:6=[qt5(+)]
+SLOT=0/9
+SRC_URI=https://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-9.2.0.tar.bz2
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=bcef1cded60ba9cc0cd99369ba44af10

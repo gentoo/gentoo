@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=GDL library from D. Fannings IDL courses
+EAPI=6
+HOMEPAGE=http://www.idlcoyote.com/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD GPL-2
+RDEPEND=dev-lang/gdl
+SLOT=0
+SRC_URI=http://www.idlcoyote.com/programs/zip_files/coyoteprograms.zip -> idlcoyote-20161220.zip
+_md5_=99b27f681db45fbdc3c706419591c898

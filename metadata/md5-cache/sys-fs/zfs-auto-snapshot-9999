@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=ZFS Automatic Snapshot Service for Linux
+EAPI=6
+HOMEPAGE=https://github.com/zfsonlinux/zfs-auto-snapshot
+IUSE=+default-exclude
+LICENSE=GPL-2+
+RDEPEND=sys-fs/zfs virtual/cron
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=38ee8a0fd1a8ae8428fe25fe197e58d6

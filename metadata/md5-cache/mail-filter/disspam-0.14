@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-lang/perl-5.6.1 >=virtual/perl-libnet-1.11 >=sys-apps/sed-4 >=dev-perl/Net-DNS-0.12
+DESCRIPTION=A Perl script that removes spam from POP3 mailboxes based on RBLs
+EAPI=0
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=alpha ~amd64 ~hppa ~mips ppc sparc x86
+LICENSE=Artistic
+RDEPEND=>=dev-lang/perl-5.6.1 >=virtual/perl-libnet-1.11 >=sys-apps/sed-4 >=dev-perl/Net-DNS-0.12
+SLOT=0
+SRC_URI=https://fossies.org/linux/privat/old/disspam-0.14.tar.gz
+_md5_=dee26f3b7a22cd40caf52420f154153a

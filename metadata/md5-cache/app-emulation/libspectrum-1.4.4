@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install test
+DEPEND=dev-libs/glib:2 audiofile? ( >=media-libs/audiofile-0.3.6 ) bzip2? ( >=app-arch/bzip2-1.0 ) gcrypt? ( dev-libs/libgcrypt:0 ) zlib? ( sys-libs/zlib ) dev-lang/perl virtual/pkgconfig
+DESCRIPTION=Spectrum emulation library
+EAPI=6
+HOMEPAGE=http://fuse-emulator.sourceforge.net/libspectrum.php
+IUSE=audiofile bzip2 gcrypt zlib
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 audiofile? ( >=media-libs/audiofile-0.3.6 ) bzip2? ( >=app-arch/bzip2-1.0 ) gcrypt? ( dev-libs/libgcrypt:0 ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/fuse-emulator/libspectrum-1.4.4.tar.gz
+_md5_=ab4110610577af61ba8b1a926ef8fda3

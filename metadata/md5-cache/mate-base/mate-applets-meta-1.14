@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta package for MATE panel applets
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+IUSE=appindicator gtk3 sensors
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=metapackage
+RDEPEND==mate-base/mate-applets-1.14*[gtk3(-)=] appindicator? ( =mate-extra/mate-indicator-applet-1.14*[gtk3(-)=] ) sensors? ( =mate-extra/mate-sensors-applet-1.14*[gtk3(-)=] )
+SLOT=0
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=881b3a35ad093eeb8dc0f4c0f9c096bf

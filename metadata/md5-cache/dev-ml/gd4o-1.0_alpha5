@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] media-libs/gd[jpeg,png] virtual/jpeg:0 sys-libs/zlib media-libs/libpng:0= media-libs/freetype:2 >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=OCaml interface to the GD graphics library
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/gd4o/
+IUSE=doc +ocamlopt
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] media-libs/gd[jpeg,png] virtual/jpeg:0 sys-libs/zlib media-libs/libpng:0= media-libs/freetype:2
+SLOT=0/1.0_alpha5
+SRC_URI=mirror://sourceforge/gd4o/gd4o-1.0a5.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=340a184eea9fd03ab7ba7c7f684ce5e1

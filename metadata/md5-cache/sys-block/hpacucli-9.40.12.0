@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
+EAPI=6
+HOMEPAGE=http://h18000.www1.hp.com/products/servers/linux/documentation.html
+KEYWORDS=-* amd64 x86
+LICENSE=hp-proliant-essentials
+RDEPEND=sys-apps/coreutils sys-process/procps >=sys-apps/util-linux-2.20.1
+SLOT=0
+SRC_URI=amd64? ( ftp://ftp.hp.com/pub/softlib2/software1/pubsw-linux/p1257348637/v80070/hpacucli-9.40-12.0.x86_64.rpm ) x86? ( ftp://ftp.hp.com/pub/softlib2/software1/pubsw-linux/p414707558/v80071/hpacucli-9.40-12.0.i386.rpm )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=2eaf5c83ce7e781a71a3e76d877d41ef

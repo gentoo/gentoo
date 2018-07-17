@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=dev-lang/ocaml:= dev-ml/yojson:= >=dev-ml/findlib-1.0.4-r1 || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=Context sensitive completion for OCaml in Vim and Emacs
+EAPI=6
+HOMEPAGE=https://github.com/ocaml/merlin
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-lang/ocaml:= dev-ml/yojson:= || ( app-editors/vim[python] app-editors/gvim[python] ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0/2.5.5
+SRC_URI=https://github.com/ocaml/merlin/archive/v2.5.5.tar.gz -> merlin-2.5.5.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	findlib	45d6030075064a68da8d7143726a1150	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=8f11d3c8ca5ff7c5ca6556735193bc36

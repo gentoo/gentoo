@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=media-libs/netpbm-9.12 doc? ( >=media-gfx/transfig-3.2 app-text/ghostscript-gpl ) tk? ( dev-lang/tk )
+DESCRIPTION=An OCR (Optical Character Recognition) reader
+EAPI=4
+HOMEPAGE=http://jocr.sourceforge.net
+IUSE=doc scanner tk
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=>=media-libs/netpbm-9.12 doc? ( >=media-gfx/transfig-3.2 app-text/ghostscript-gpl ) tk? ( dev-lang/tk ) tk? ( media-gfx/xli scanner? ( media-gfx/xsane ) )
+SLOT=0
+SRC_URI=http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-0.49.tar.gz
+_md5_=625b9c2ca1e903395999b0b489c732b9

@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for BSD-like make (to be used with get_bmake)
+EAPI=6
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos ~x86-macos
+RDEPEND=kernel_linux? ( sys-devel/bmake ) kernel_SunOS? ( sys-devel/bmake ) kernel_Darwin? ( sys-devel/bsdmake )
+SLOT=0
+_md5_=bd49c3d55b356ae02ae9790435a939f8

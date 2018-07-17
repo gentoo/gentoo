@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/lzo:2= sys-apps/util-linux:0=[static-libs(+)?] sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27 ) ) zstd? ( app-arch/zstd:0= ) convert? ( sys-apps/acl ) >=app-text/asciidoc-8.6.0 app-text/docbook-xml-dtd:4.5 app-text/xmlto static? ( dev-libs/lzo:2[static-libs(+)] sys-apps/util-linux:0[static-libs(+)] sys-libs/zlib:0[static-libs(+)] convert? ( sys-fs/e2fsprogs:0[static-libs(+)] sys-libs/e2fsprogs-libs:0[static-libs(+)] reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27[static-libs(+)] ) ) zstd? ( app-arch/zstd:0[static-libs(+)] ) )
+DESCRIPTION=Btrfs filesystem utilities
+EAPI=6
+HOMEPAGE=https://btrfs.wiki.kernel.org
+IUSE=+convert reiserfs static static-libs +zstd
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/lzo:2= sys-apps/util-linux:0=[static-libs(+)?] sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= reiserfs? ( >=sys-fs/reiserfsprogs-3.6.27 ) ) zstd? ( app-arch/zstd:0= )
+RESTRICT=test
+SLOT=0/0
+SRC_URI=https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v4.15.1.tar.xz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8f27ab1e83c311783ca271b091511021

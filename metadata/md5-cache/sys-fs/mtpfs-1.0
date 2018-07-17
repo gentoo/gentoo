@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure postinst prepare
+DEPEND=dev-libs/glib:2 media-libs/libid3tag media-libs/libmad media-libs/libmtp sys-fs/fuse
+DESCRIPTION=A FUSE filesystem providing access to MTP devices
+EAPI=4
+HOMEPAGE=https://www.adebenham.com/mtpfs/
+IUSE=debug
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2 media-libs/libid3tag media-libs/libmad media-libs/libmtp sys-fs/fuse
+SLOT=0
+SRC_URI=https://www.adebenham.com/debian/mtpfs-1.0.tar.gz
+_md5_=c8571d16f7f272ad277edf0d2308bc9d

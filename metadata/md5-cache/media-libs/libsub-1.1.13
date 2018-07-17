@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-cpp/glibmm:2 dev-cpp/libxmlpp:2.6 dev-libs/boost:= <dev-libs/libcxml-0.15.4 dev-libs/openssl:0 media-libs/libasdcp-cth dev-util/waf virtual/pkgconfig || ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] )
+DESCRIPTION=read and write subtitles in a few different formats
+EAPI=6
+HOMEPAGE=http://carlh.net/libsub
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-cpp/glibmm:2 dev-cpp/libxmlpp:2.6 dev-libs/boost:= <dev-libs/libcxml-0.15.4 dev-libs/openssl:0 media-libs/libasdcp-cth
+SLOT=1.0
+SRC_URI=http://carlh.net/downloads/libsub/libsub-1.1.13.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=49788254b4c0c6557205c33258f45ac4

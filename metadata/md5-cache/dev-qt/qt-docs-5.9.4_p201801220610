@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/p7zip
+DESCRIPTION=Qt5 documentation, for use with Qt Creator and other tools
+EAPI=6
+HOMEPAGE=https://www.qt.io/
+IUSE=charts datavis networkauth script speech virtualkeyboard webengine
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
+LICENSE=FDL-1.3
+SLOT=5
+SRC_URI=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc/5.9.4-0-201801220610qt-everywhere-documentation.7z charts? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtcharts/5.9.4-0-201801220610qtcharts-documentation.7z ) datavis? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtdatavis3d/5.9.4-0-201801220610qtdatavisualization-documentation.7z ) networkauth? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtnetworkauth/5.9.4-0-201801220610qtnetworkauth-documentation.7z ) script? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtscript/5.9.4-0-201801220610qtscript-documentation.7z https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtscript/5.9.4-0-201801220610qtscripttools-documentation.7z ) speech? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtspeech/5.9.4-0-201801220610qtspeech-documentation.7z ) virtualkeyboard? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtvirtualkeyboard/5.9.4-0-201801220610qtvirtualkeyboard-documentation.7z ) webengine? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_594_src_doc_examples/qt.594.doc.qtwebengine/5.9.4-0-201801220610qtwebengine-documentation.7z )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=25cb87c05ba9746210b73ae7c4813a83

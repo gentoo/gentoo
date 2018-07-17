@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=nls? ( sys-devel/gettext )
+DESCRIPTION=Disk Information Utility
+EAPI=6
+HOMEPAGE=http://www.gentoo.com/di/
+IUSE=nls
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=ZLIB
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.gentoo.com/di/di-4.46.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=bc02ba77d0fc34ca1b3c65cd8f3b4f4c

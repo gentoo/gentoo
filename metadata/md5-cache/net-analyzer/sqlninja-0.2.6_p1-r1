@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DESCRIPTION=A SQL Server injection & takeover tool
+EAPI=5
+HOMEPAGE=http://sqlninja.sourceforge.net/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/IO-Socket-SSL dev-perl/List-MoreUtils dev-perl/Net-DNS dev-perl/Net-Pcap dev-perl/Net-RawIP dev-perl/NetPacket
+RESTRICT=mirror
+SLOT=0
+SRC_URI=mirror://sourceforge/sqlninja/sqlninja-0.2.6-r1.tgz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=84b7ff98adf89115ee42970d521f7df8

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=sys-libs/ncurses:0= dev-util/yacc
+DESCRIPTION=ext2fs and minix disk editor for linux
+EAPI=6
+HOMEPAGE=http://lde.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/lde/lde-2.6.1.tar.gz
+_md5_=62fd03a974b0c0530587312aff02223e

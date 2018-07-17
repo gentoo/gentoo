@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby23? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby23] ) ) ruby_targets_ruby24? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby24] ) ) ruby_targets_ruby25? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby25] ) ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) test? ( ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) )
+DESCRIPTION=Pure Ruby library that can read and write PNG images
+EAPI=6
+HOMEPAGE=https://wiki.github.com/wvanbergen/chunky_png
+IUSE=elibc_FreeBSD ruby_targets_ruby23 ruby_targets_ruby24 ruby_targets_ruby25 test test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] )
+REQUIRED_USE=|| ( ruby_targets_ruby23 ruby_targets_ruby24 ruby_targets_ruby25 )
+SLOT=0
+SRC_URI=mirror://rubygems/chunky_png-1.3.10.gem
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-fakegem	28631ba8ae1b3218596c0eb3e38c438e	ruby-ng	c1f44e746d7656dd6e02d8815ff9518a	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=84b2f30c82315df9aed17cc510a335ab

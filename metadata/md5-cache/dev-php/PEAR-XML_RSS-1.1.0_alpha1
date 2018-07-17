@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=PHP parser for RDF and RSS documents
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/XML_RSS
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR dev-php/PEAR-XML_Parser
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/XML_RSS-1.1.0a1.tgz
+_md5_=c75ede56958ed520a613e0da39572b26

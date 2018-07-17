@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Small and simple weblog engine written in Bash for the command-line
+EAPI=6
+HOMEPAGE=http://nanoblogger.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=app-shells/bash
+SLOT=0
+SRC_URI=mirror://sourceforge/nanoblogger/nanoblogger-3.5-rc1.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=289fb0a5080e154688e9981318a01d3b

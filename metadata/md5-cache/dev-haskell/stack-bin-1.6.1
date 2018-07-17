@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=The Haskell Tool Stack (Binary)
+EAPI=6
+HOMEPAGE=https://github.com/commercialhaskell/stack
+IUSE=symlink
+KEYWORDS=~amd64 ~x86 ~arm
+LICENSE=BSD
+RDEPEND=sys-libs/zlib dev-libs/gmp:0 symlink? ( !dev-haskell/stack )
+SLOT=0
+SRC_URI=arm? ( https://github.com/commercialhaskell/stack/releases/download/v1.6.1/stack-1.6.1-linux-arm.tar.gz ) x86? ( https://github.com/commercialhaskell/stack/releases/download/v1.6.1/stack-1.6.1-linux-i386.tar.gz ) amd64? ( https://github.com/commercialhaskell/stack/releases/download/v1.6.1/stack-1.6.1-linux-x86_64.tar.gz )
+_md5_=8984adae787aa0a22d6c79fb3a0ded3b

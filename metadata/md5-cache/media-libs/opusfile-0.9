@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=media-libs/libogg media-libs/opus http? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) doc? ( app-doc/doxygen )
+DESCRIPTION=A high-level decoding and seeking API for .opus files
+EAPI=6
+HOMEPAGE=https://www.opus-codec.org/
+IUSE=doc fixed-point +float +http libressl static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=media-libs/libogg media-libs/opus http? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
+REQUIRED_USE=^^ ( fixed-point float )
+SLOT=0
+SRC_URI=https://downloads.xiph.org/releases/opus/opusfile-0.9.tar.gz
+_md5_=7ad3fb01f1d54039bfa27d85ac960687

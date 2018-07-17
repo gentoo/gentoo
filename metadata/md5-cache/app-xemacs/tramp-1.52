@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Remote shell-based file editing
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/xemacs-base app-xemacs/vc app-xemacs/efs app-xemacs/dired app-xemacs/mail-lib app-xemacs/gnus app-xemacs/ediff app-xemacs/sh-script app-xemacs/edebug app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/tramp-1.52-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=93f1d3ac1f3dc4d01f16ab6a0203f85d

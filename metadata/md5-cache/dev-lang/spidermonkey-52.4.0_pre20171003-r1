@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=>=dev-libs/nspr-4.13.1 virtual/libffi sys-libs/readline:0= >=sys-libs/zlib-1.2.3 system-icu? ( >=dev-libs/icu-58.1:= ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) ~sys-devel/autoconf-2.13 >=sys-devel/libtool-2.4 virtual/pkgconfig || ( >=dev-lang/python-2.7.5-r2:2.7[ncurses,sqlite,ssl,threads] )
+DESCRIPTION=Stand-alone JavaScript C++ library
+EAPI=6
+HOMEPAGE=https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
+IUSE=debug +jit minimal +system-icu test custom-cflags custom-optimization
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=NPL-1.1
+RDEPEND=>=dev-libs/nspr-4.13.1 virtual/libffi sys-libs/readline:0= >=sys-libs/zlib-1.2.3 system-icu? ( >=dev-libs/icu-58.1:= )
+RESTRICT=ia64? ( test )
+SLOT=52
+SRC_URI=https://dev.gentoo.org/~axs/distfiles/mozjs-52.4.0_pre20171003.tar.bz2 https://dev.gentoo.org/~axs/distfiles/spidermonkey-52.0-patches-0.tar.xz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	mozcoreconf-v5	602c3c0a642bafeabb149c49a6df941f	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=50f9f9350a32f0c3044b89ae328e3399

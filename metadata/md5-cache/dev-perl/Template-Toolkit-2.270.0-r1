@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Text-Autoformat mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) >=dev-perl/AppConfig-1.56 test? ( dev-perl/CGI ) dev-lang/perl:=
+DESCRIPTION=The Template Toolkit
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Template-Toolkit/
+IUSE=xml gd mysql postgres latex vim-syntax test
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~ppc-aix ~x86-fbsd ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+PDEPEND=dev-perl/Text-Autoformat vim-syntax? ( app-vim/tt2-syntax ) xml? ( dev-perl/Template-XML ) gd? ( dev-perl/Template-GD ) mysql? ( dev-perl/Template-DBI ) latex? ( dev-perl/Template-Plugin-Latex ) postgres? ( dev-perl/Template-DBI )
+RDEPEND=dev-perl/Text-Autoformat mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) >=dev-perl/AppConfig-1.56 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AB/ABW/Template-Toolkit-2.27.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=754c573da720a53f70b649d2eb690de0

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A simple podcast aggregator optimized for running as a scheduled job
+EAPI=6
+HOMEPAGE=http://podget.sourceforge.net/ https://github.com/dvehrs/podget
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3+
+RDEPEND=net-misc/wget virtual/libiconv
+SLOT=0
+SRC_URI=https://github.com/dvehrs/podget/archive/v0.7.14.tar.gz -> podget-0.7.14.tar.gz
+_md5_=984b7d66065d5645b4c9c5b82b58152c

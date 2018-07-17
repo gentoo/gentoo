@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-admin/gkrellm:2[X] virtual/pkgconfig
+DESCRIPTION=Superslim VAIO LCD Brightness Control Plugin for Gkrellm
+EAPI=6
+HOMEPAGE=http://nerv-un.net/~dragorn/
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-admin/gkrellm:2[X]
+SLOT=2
+SRC_URI=http://nerv-un.net/~dragorn/code/vaiobright-2.5.tar.gz
+_eclasses_=gkrellm-plugin	e3548dfd06a50087a45520f52934a39c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2bf3973b2dfd419e4f538430569ccdf3

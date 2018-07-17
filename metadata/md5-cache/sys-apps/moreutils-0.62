@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=app-admin/eselect doc? ( dev-lang/perl >=app-text/docbook2X-0.8.8-r2 app-text/docbook-xml-dtd:4.4 )
+DESCRIPTION=a collection of tools that nobody thought to write when Unix was young
+EAPI=6
+HOMEPAGE=https://joeyh.name/code/moreutils/
+IUSE=+doc +perl
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-linux
+LICENSE=GPL-2
+RDEPEND=perl? ( dev-lang/perl dev-perl/IPC-Run dev-perl/Time-Duration dev-perl/TimeDate )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~radhermit/dist/moreutils-0.62.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=66632dc04da4948b5b7f5d1b88a56edd

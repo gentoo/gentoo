@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prerm setup
+DEPEND=dev-java/ecj-gcj:* dev-lang/perl ~sys-devel/gcc-5.4.0[awt?,gcj] >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+DESCRIPTION=Java wrappers around GCJ
+EAPI=6
+HOMEPAGE=https://www.gentoo.org/
+IUSE=awt
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-java/ecj-gcj:* dev-lang/perl ~sys-devel/gcc-5.4.0[awt?,gcj] >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+SLOT=0
+_eclasses_=java-vm-2	771452d15e0b51ec559962d22c627449	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=f46d2f52bd5860c1666574872420e4b3

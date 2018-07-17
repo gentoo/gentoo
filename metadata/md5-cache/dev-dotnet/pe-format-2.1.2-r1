@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-util/desktop-file-utils virtual/pkgconfig
+DESCRIPTION=Intelligent PE executable wrapper for binfmt_misc
+EAPI=6
+HOMEPAGE=https://bitbucket.org/mgorny/pe-format2/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=!<sys-apps/openrc-0.9.4
+SLOT=0
+SRC_URI=https://www.bitbucket.org/mgorny/pe-format2/downloads/pe-format-2.1.2.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=5dfb65489415b2c03d68e5f56a2e4baa

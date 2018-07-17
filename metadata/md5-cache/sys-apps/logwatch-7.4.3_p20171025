@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Analyzes and Reports on system logs
+EAPI=6
+HOMEPAGE=http://www.logwatch.org/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=MIT
+RDEPEND=virtual/cron virtual/mta virtual/mailx dev-lang/perl dev-perl/Date-Calc dev-perl/Date-Manip dev-perl/Tie-IxHash dev-perl/Sys-CPU dev-perl/Sys-MemInfo virtual/tmpfiles
+SLOT=0
+SRC_URI=https://sourceforge.net/code-snapshots/git/l/lo/logwatch/git.git/logwatch-git-d36589f22a322a5ec4d77618b408803f4d193c2e.zip -> logwatch-7.4.3_p20171025.zip
+_eclasses_=tmpfiles	d7dc36a24e327d58f0728badddca6448
+_md5_=57bacf4bcc327d83bcb79470e06b252b

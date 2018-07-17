@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install nofetch setup
+DEPEND=app-shells/tcsh virtual/fortran
+DESCRIPTION=Checks the stereochemical quality of a protein structure
+EAPI=6
+HOMEPAGE=http://www.biochem.ucl.ac.uk/~roman/procheck/procheck.html
+IUSE=doc
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=procheck
+RDEPEND=app-shells/tcsh virtual/fortran
+RESTRICT=fetch
+SLOT=0
+SRC_URI=procheck-3.5.4.tar.gz procheck-3.5.4-README doc? ( procheck-3.5.4-manual.tar.gz )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=712cf16ac2d7b8f289d352d7444dd58e

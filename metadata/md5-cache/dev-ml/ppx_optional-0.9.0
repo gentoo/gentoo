@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Pattern matching on flat options
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_optional
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_optional/archive/v0.9.0.tar.gz -> ppx_optional-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=5dd1adaf06b098bdf0a2da2f1f53866a

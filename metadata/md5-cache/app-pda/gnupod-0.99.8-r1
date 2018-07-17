@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/TimeDate dev-perl/XML-Parser >=dev-perl/MP3-Info-1.01 dev-perl/Unicode-String dev-perl/Digest-SHA1 dev-perl/libwww-perl ffmpeg? ( virtual/ffmpeg ) flac? ( dev-perl/Audio-FLAC-Header media-libs/flac aac? ( >=media-libs/faac-1.24 ) mp3? ( media-sound/lame ) !aac? ( media-sound/lame ) ) ogg? ( dev-perl/Ogg-Vorbis-Header-PurePerl media-sound/vorbis-tools aac? ( >=media-libs/faac-1.24 ) mp3? ( media-sound/lame ) !aac? ( media-sound/lame ) ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=A collection of Perl-scripts for iPod
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/gnupod/
+IUSE=aac ffmpeg flac mp3 ogg
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-3
+RDEPEND=dev-perl/TimeDate dev-perl/XML-Parser >=dev-perl/MP3-Info-1.01 dev-perl/Unicode-String dev-perl/Digest-SHA1 dev-perl/libwww-perl ffmpeg? ( virtual/ffmpeg ) flac? ( dev-perl/Audio-FLAC-Header media-libs/flac aac? ( >=media-libs/faac-1.24 ) mp3? ( media-sound/lame ) !aac? ( media-sound/lame ) ) ogg? ( dev-perl/Ogg-Vorbis-Header-PurePerl media-sound/vorbis-tools aac? ( >=media-libs/faac-1.24 ) mp3? ( media-sound/lame ) !aac? ( media-sound/lame ) ) dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=http://blinkenlights.ch/gnupod-dist/stable/gnupod-0.99.8.tgz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=e7c232f61364d84a9e4b555c27ca88d0

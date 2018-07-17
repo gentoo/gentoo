@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[video] media-sound/pulseaudio media-libs/alsa-lib virtual/pkgconfig
+DESCRIPTION=Full Screen Sinclair Spectrum emulator
+EAPI=6
+HOMEPAGE=https://github.com/rastersoft/fbzx
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=media-libs/libsdl[video] media-sound/pulseaudio media-libs/alsa-lib
+SLOT=0
+SRC_URI=https://github.com/rastersoft/fbzx/archive/3.0.0.tar.gz -> fbzx-3.0.0.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=34b8ad3379d74e63b272024ae661fa9b

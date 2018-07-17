@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Gameboy Advance (GBA) emulator for Linux
+EAPI=6
+HOMEPAGE=http://www.komkon.org/fms/VGBA/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=VGBA
+RDEPEND=x11-libs/libXext sys-libs/zlib
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://fms.komkon.org/VGBA/VGBA48-Linux-Ubuntu-bin.tgz
+_md5_=0cf8b7f16a9363ec6441ddfa9edf70b4

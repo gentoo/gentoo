@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libsdl[sound,video] x11-libs/libXpm
+DESCRIPTION=a cool Jump'n Run game offering some unique visual effects
+EAPI=6
+HOMEPAGE=http://homepage.hispeed.ch/loehrer/amph/amph.html
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] x11-libs/libXpm
+SLOT=0
+SRC_URI=http://homepage.hispeed.ch/loehrer/amph/files/amphetamine-0.8.10.tar.bz2 http://homepage.hispeed.ch/loehrer/amph/files/amphetamine-data-0.8.6.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=e89726d03c801bb0d6e5255e92a51eee

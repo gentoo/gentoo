@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild:=[ocamlopt?] >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=An equivalent of the C preprocessor for OCaml programs
+EAPI=5
+HOMEPAGE=http://mjambon.com/cppo.html https://github.com/mjambon/cppo/
+IUSE=examples +ocamlopt
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocamlbuild:=[ocamlopt?]
+SLOT=0/1.5.0
+SRC_URI=https://github.com/mjambon/cppo/archive/v1.5.0.tar.gz -> cppo-1.5.0.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=7984fbcff953ecdf60fd061da222bb85

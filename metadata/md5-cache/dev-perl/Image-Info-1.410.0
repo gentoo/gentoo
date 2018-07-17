@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/IO-stringy-1.01 dev-perl/XML-LibXML dev-perl/XML-Simple dev-lang/perl:=
+DESCRIPTION=The Perl Image-Info Module
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Image-Info/
+IUSE=examples
+KEYWORDS=amd64 ~hppa ppc ppc64 sparc x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/IO-stringy-1.01 dev-perl/XML-LibXML dev-perl/XML-Simple dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SR/SREZIC/Image-Info-1.41.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=c9aa68190a6c45fd22e1f81ec23c279e

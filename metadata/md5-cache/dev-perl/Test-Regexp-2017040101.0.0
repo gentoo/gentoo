@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( >=virtual/perl-Test-Simple-1.1.14 ) virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Provide commonly requested regular expressions
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Test-Regexp/
+IUSE=test
+KEYWORDS=alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=MIT
+RDEPEND=virtual/perl-Test-Simple virtual/perl-Exporter dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AB/ABIGAIL/Test-Regexp-2017040101.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=c5be20279756fa9c70d906b27d45c835

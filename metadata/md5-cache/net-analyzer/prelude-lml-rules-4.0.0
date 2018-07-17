@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=~net-analyzer/prelude-lml-4.0.0
+DESCRIPTION=Prelude LML community ruleset
+EAPI=6
+HOMEPAGE=https://www.prelude-siem.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=~net-analyzer/prelude-lml-4.0.0
+SLOT=0
+SRC_URI=https://www.prelude-siem.org/pkg/src/4.0.0/prelude-lml-rules-4.0.0.tar.gz
+_md5_=5c1720a84af28e36281710ba826fb746

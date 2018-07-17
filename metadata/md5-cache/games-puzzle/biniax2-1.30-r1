@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer[mod]
+DESCRIPTION=Logic game with arcade and tactics modes
+EAPI=6
+HOMEPAGE=http://biniax.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB
+RDEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer[mod]
+SLOT=0
+SRC_URI=http://mordred.dir.bg/biniax/biniax2-1.30-fullsrc.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=45bf1bd59dfbe0011583d41638962045

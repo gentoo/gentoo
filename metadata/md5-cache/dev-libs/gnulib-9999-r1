@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Gnulib is a library of common routines intended to be shared at the source level
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/gnulib
+IUSE=doc
+LICENSE=GPL-2
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=e9573a93c839c0d5b0f0ae1e4ebf6cd2

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install test
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig test? ( valgrind? ( dev-util/valgrind ) )
+DESCRIPTION=Zile is a small Emacs clone
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/zile/
+IUSE=test valgrind
+KEYWORDS=alpha amd64 ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-3+
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=mirror://gnu/zile/zile-2.3.24.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3df0de92ae5a0e3ffad8d08176b08cf3

@@ -1,0 +1,10 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=remove #ifdef'ed lines from a file while otherwise leaving the file alone
+EAPI=5
+HOMEPAGE=http://dotat.at/prog/unifdef/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://dotat.at/prog/unifdef/unifdef-2.11.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8b525297aa016d1683aec25c9575eb9f

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=CLI-supported framework for extensible Kubernetes configurations
+EAPI=6
+HOMEPAGE=https://github.com/ksonnet/ksonnet http://ksonnet.heptio.com/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/ksonnet/ksonnet/archive/v0.8.0.tar.gz -> ksonnet-0.8.0.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=de0c7b9182f84d4511d2d64c3ce0846a

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=<media-libs/allegro-5 media-libs/aldumb dev-util/scons[python_targets_python2_7]
+DESCRIPTION=Space shoot-em-up game
+EAPI=6
+HOMEPAGE=http://raptorv2.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=<media-libs/allegro-5 media-libs/aldumb
+SLOT=0
+SRC_URI=mirror://sourceforge/raptorv2/rafkill-1.2.3.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8731cdc24d4bbc73326612fa70f7c281

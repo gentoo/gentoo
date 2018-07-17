@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
+EAPI=6
+HOMEPAGE=http://www.xcpc-emulator.net/doku.php/index
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=app-emulation/libdsk
+SLOT=0
+SRC_URI=http://sourceforge.net/projects/xcpc/files/xcpc/xcpc-20070122/xcpc-20070122.tar.gz
+_md5_=e395855f32a11502b05de845feb2c7d1

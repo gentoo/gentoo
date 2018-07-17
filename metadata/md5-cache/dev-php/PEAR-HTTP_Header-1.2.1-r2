@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Handle and modify HTTP headers and status codes in PHP
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/HTTP_Header
+KEYWORDS=amd64 x86
+LICENSE=BSD-2
+RDEPEND=dev-lang/php:* dev-php/PEAR-HTTP
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/HTTP_Header-1.2.1.tgz
+_md5_=63f3a31b7ca6bae0f4a1cece3a1ca2b9

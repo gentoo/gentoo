@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=net-libs/libesmtp !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) sys-devel/flex
+DESCRIPTION=User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
+EAPI=5
+HOMEPAGE=http://esmtp.sourceforge.net/
+IUSE=libressl
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2
+RDEPEND=net-libs/libesmtp !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) !mail-mta/courier !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
+SLOT=0
+SRC_URI=mirror://sourceforge/esmtp/esmtp-1.2.tar.bz2
+_md5_=e24d44b19c1f53d88cccd8552f7afad0

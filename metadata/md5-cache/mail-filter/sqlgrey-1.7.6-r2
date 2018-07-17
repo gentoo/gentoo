@@ -1,0 +1,13 @@
+DEFINED_PHASES=config install postinst setup unpack
+DEPEND=dev-lang/perl dev-perl/DBI dev-perl/Net-Server dev-perl/Date-Calc virtual/mailx postgres? ( dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBD-SQLite ) mysql? ( dev-perl/DBD-mysql ) !postgres? ( !mysql? ( !sqlite? ( dev-perl/DBD-Pg ) ) ) sys-apps/sed virtual/pkgconfig
+DESCRIPTION=SQLgrey is a postfix policy service implementing a grey-listing policy
+EAPI=0
+HOMEPAGE=http://sqlgrey.sourceforge.net/
+IUSE=mysql postgres sqlite
+KEYWORDS=amd64 ~arm ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/DBI dev-perl/Net-Server dev-perl/Date-Calc virtual/mailx postgres? ( dev-perl/DBD-Pg ) sqlite? ( dev-perl/DBD-SQLite ) mysql? ( dev-perl/DBD-mysql ) !postgres? ( !mysql? ( !sqlite? ( dev-perl/DBD-Pg ) ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/sqlgrey/sqlgrey-1.7.6.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=37f677ad1025eb8ad4adda5438f5c635

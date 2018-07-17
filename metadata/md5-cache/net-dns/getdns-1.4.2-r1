@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-libs/libbsd:= dev-libs/libyaml:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) idn? ( net-dns/libidn2:= ) unbound? ( >=net-dns/unbound-1.4.16:= ) libevent? ( dev-libs/libevent:= ) libev? ( dev-libs/libev:= ) libuv? ( dev-libs/libuv:= ) filecaps? ( sys-libs/libcap ) virtual/pkgconfig
+DESCRIPTION=Modern asynchronous DNS API
+EAPI=6
+HOMEPAGE=https://getdnsapi.net/
+IUSE=stubby +getdns_query +getdns_server_mon libressl +idn +unbound libevent libev libuv +threads static-libs +filecaps
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/libbsd:= dev-libs/libyaml:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) idn? ( net-dns/libidn2:= ) unbound? ( >=net-dns/unbound-1.4.16:= ) libevent? ( dev-libs/libevent:= ) libev? ( dev-libs/libev:= ) libuv? ( dev-libs/libuv:= ) stubby? ( sys-libs/libcap:= )
+SLOT=0
+SRC_URI=https://getdnsapi.net/releases/getdns-1-4-2/getdns-1.4.2.tar.gz
+_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=7a4d91fb1409333b84e0465ab08fb72f

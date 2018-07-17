@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-apps/sed
+DESCRIPTION=dcetest is a clone of the Windows rpcinfo
+EAPI=0
+HOMEPAGE=http://www.atstake.com/research/tools/info_gathering/
+KEYWORDS=ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.atstake.com/research/tools/info_gathering/dcetest.tar
+_md5_=be28b6120260012726eaadeaa5bb79f5

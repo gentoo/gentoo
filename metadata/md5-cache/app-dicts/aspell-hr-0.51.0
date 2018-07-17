@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=app-text/aspell-0.50
+DESCRIPTION=Croatian language dictionary for aspell
+EAPI=6
+HOMEPAGE=http://aspell.net
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=app-text/aspell-0.50
+SLOT=0
+SRC_URI=mirror://gnu/aspell/dict/hr/aspell-hr-0.51-0.tar.bz2
+_eclasses_=aspell-dict-r1	340906f655106dec40252eccc43e3503
+_md5_=e16e9dc2def41612d17bb601d892139e

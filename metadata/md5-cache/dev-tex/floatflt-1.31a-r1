@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=LaTeX package used to warp text around figures
+EAPI=6
+HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/floatflt/
+KEYWORDS=~amd64 hppa ~x86
+LICENSE=LPPL-1.2
+RDEPEND=virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/floatflt-1.31a.zip
+_eclasses_=latex-package	773c51c2ef26eaff025998531e7c6731
+_md5_=960205806dfb6a41c56d60ffd6c265ae

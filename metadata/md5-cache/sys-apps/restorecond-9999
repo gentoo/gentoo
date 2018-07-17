@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=>=sys-libs/libsepol-9999:= >=sys-libs/libselinux-9999:= dev-libs/dbus-glib dev-libs/libpcre:= >=sys-libs/libcap-1.10-r10:= >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Daemon to watch for creation and set default SELinux fcontexts
+EAPI=6
+HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libsepol-9999:= >=sys-libs/libselinux-9999:= dev-libs/dbus-glib dev-libs/libpcre:= >=sys-libs/libcap-1.10-r10:= !<sys-apps/policycoreutils-2.7_pre
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9ca8985a7f9b39c0b2c4efe1a43dabee

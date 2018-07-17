@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Various methods to check files to update an existing package.xml file
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/PEAR_PackageFileManager_Plugins
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 >=dev-php/PEAR-XML_Serializer-0.19.0 >=dev-lang/php-5.3:*[xml,simplexml] >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/PEAR_PackageFileManager_Plugins-1.0.4.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=71317eba4096a569fd3ce878bd6351a1

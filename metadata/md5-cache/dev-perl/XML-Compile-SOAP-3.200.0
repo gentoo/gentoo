@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/File-Slurp-Tiny >=dev-perl/libwww-perl-6.80.0 >=dev-perl/Log-Report-1.50.0 virtual/perl-Time-HiRes >=dev-perl/XML-Compile-1.510.0 >=dev-perl/XML-Compile-Cache-1.30.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.540.0 >=dev-perl/XML-Compile-Tester-0.900.0 ) dev-lang/perl:=
+DESCRIPTION=Soap 1.1 XML Compiler
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/XML-Compile-SOAP/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/File-Slurp-Tiny >=dev-perl/libwww-perl-6.80.0 >=dev-perl/Log-Report-1.50.0 virtual/perl-Time-HiRes >=dev-perl/XML-Compile-1.510.0 >=dev-perl/XML-Compile-Cache-1.30.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/XML-Compile-SOAP-3.20.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=ca1c5adef9cab7292c9bc98a07e279cf

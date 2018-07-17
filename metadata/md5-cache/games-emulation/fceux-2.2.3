@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=lua? ( dev-lang/lua:0 ) media-libs/libsdl[opengl?,video] logo? ( media-libs/gd[png] ) opengl? ( virtual/opengl ) gtk? ( x11-libs/gtk+:3 ) sys-libs/zlib[minizip] dev-util/scons[python_targets_python2_7]
+DESCRIPTION=A portable Famicom/NES emulator, an evolution of the original FCE Ultra
+EAPI=5
+HOMEPAGE=http://fceux.com/
+IUSE=gtk logo +lua +opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=lua? ( dev-lang/lua:0 ) media-libs/libsdl[opengl?,video] logo? ( media-libs/gd[png] ) opengl? ( virtual/opengl ) gtk? ( x11-libs/gtk+:3 ) sys-libs/zlib[minizip]
+SLOT=0
+SRC_URI=mirror://sourceforge/fceultra/fceux-2.2.3.src.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	abbc7625ff457854eae0edaa1fd55cc7
+_md5_=25c7f2802fd46a71d1acdca0754a8f7f

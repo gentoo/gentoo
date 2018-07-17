@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=app-cdr/dvd+rw-tools-7.1 media-libs/libexif:= >=media-libs/wxsvg-1.5.11:= >=media-video/dvdauthor-0.7.1 >=media-video/xine-ui-0.99.7 virtual/cdrtools libav? ( >=media-video/libav-9:0=[encode] ) !libav? ( >=media-video/ffmpeg-2.6:0=[encode] ) virtual/jpeg:0 x11-libs/wxGTK:3.0=[gstreamer,X] sys-apps/dbus udev? ( >=virtual/libudev-215:= ) app-arch/zip app-text/xmlto sys-devel/gettext virtual/yacc virtual/pkgconfig
+DESCRIPTION=A cross-platform free DVD authoring application
+EAPI=5
+HOMEPAGE=http://www.dvdstyler.org/
+IUSE=debug libav +udev
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-cdr/dvd+rw-tools-7.1 media-libs/libexif:= >=media-libs/wxsvg-1.5.11:= >=media-video/dvdauthor-0.7.1 >=media-video/xine-ui-0.99.7 virtual/cdrtools libav? ( >=media-video/libav-9:0=[encode] ) !libav? ( >=media-video/ffmpeg-2.6:0=[encode] ) virtual/jpeg:0 x11-libs/wxGTK:3.0=[gstreamer,X] sys-apps/dbus udev? ( >=virtual/libudev-215:= ) >=app-cdr/dvdisaster-0.72.4 media-video/mjpegtools
+SLOT=0
+SRC_URI=mirror://sourceforge/dvdstyler/DVDStyler-3.0.4.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05
+_md5_=8d03c8deb3fe216724cd4ebc3d42e58b

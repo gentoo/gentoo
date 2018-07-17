@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=net-print/cups
+DESCRIPTION=ssh-lpr backend for cups -- print to remote systems over ssh
+EAPI=4
+HOMEPAGE=http://www.masella.name/technical/sshlpr.html
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=net-print/cups net-misc/openssh sys-apps/shadow
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~radhermit/distfiles/sshlpr-1.tar.gz
+_md5_=30d7b167c7c8f3071f58881a223c3361

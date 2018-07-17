@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Chained EPREFIX utilities and wrappers
+EAPI=6
+HOMEPAGE=https://dev.gentoo.org/~haubi
+KEYWORDS=~ppc-aix ~x86-linux ~sparc-solaris ~x86-solaris ~x86-winnt
+LICENSE=GPL-3
+RDEPEND=sys-devel/gcc-config
+SLOT=0
+_eclasses_=prefix	e51c7882b7b721e54e684f7eb143cbfe
+_md5_=0630c084ec45399c62ad35f2751c5ec0

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Comic-summarizing utility
+EAPI=6
+HOMEPAGE=https://zzamboni.org/code/grabcartoons/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/perl virtual/perl-Getopt-Long
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/zzamboni/grabcartoons/archive/cb230f01fb288a0b9f0fc437545b97d06c846bd3.tar.gz -> grabcartoons-2.8.4_p20141112.tar.gz
+_eclasses_=vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=6a4955d2488327be4a7516962e96d53b

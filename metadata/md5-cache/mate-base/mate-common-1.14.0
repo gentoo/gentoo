@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Common files for development of MATE packages
+EAPI=6
+HOMEPAGE=https://mate-desktop.org
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://pub.mate-desktop.org/releases/1.14/mate-common-1.14.0.tar.xz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	mate-desktop.org	e10a19aa1a06b2fe47e07bf61d17f9ce	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=48cf07ce3b13ebc3b6bf61ca9632bc55

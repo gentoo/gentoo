@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prerm pretend unpack
+DESCRIPTION=LSI MPT-SAS3 controller management tool
+EAPI=5
+HOMEPAGE=https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8e#downloads
+IUSE=efi doc
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd ~ppc64 ~amd64-fbsd ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=LSI
+RESTRICT=strip fetch mirror
+SLOT=0
+SRC_URI=https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_12g_p15/SAS3IRCU_P15.zip doc? ( https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/SAS3_IR_UG.pdf )
+_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646
+_md5_=58df7704466321ac85487deb7036d039

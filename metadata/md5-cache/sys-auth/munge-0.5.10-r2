@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup test
+DEPEND=app-arch/bzip2 sys-libs/zlib gcrypt? ( dev-libs/libgcrypt:0 ) !gcrypt? ( dev-libs/openssl )
+DESCRIPTION=An authentication service for creating and validating credentials
+EAPI=4
+HOMEPAGE=https://code.google.com/p/munge/
+IUSE=gcrypt
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
+LICENSE=GPL-3
+RDEPEND=app-arch/bzip2 sys-libs/zlib gcrypt? ( dev-libs/libgcrypt:0 ) !gcrypt? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=https://munge.googlecode.com/files/munge-0.5.10.tar.bz2
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b4a8c288926e9f5bded891786c6c547e

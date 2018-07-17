@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Easily manipulate archives in PHP
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/File_Archive
+IUSE=minimal
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/php[bzip2,zlib] dev-php/PEAR-MIME_Type dev-php/PEAR-PEAR !minimal? ( dev-php/PEAR-Mail_Mime dev-php/PEAR-Mail dev-php/PEAR-Cache_Lite )
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/File_Archive-1.5.5.tgz
+_md5_=c17b1abf422b1d0d0d93eb67deea2bd2

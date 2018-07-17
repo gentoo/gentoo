@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=>=net-misc/asterisk-1.4
+DESCRIPTION=Extra sounds for asterisk
+EAPI=2
+HOMEPAGE=http://www.asterisk.org/
+IUSE=alaw g722 g729 +gsm siren7 siren14 sln16 ulaw wav l10n_fr
+KEYWORDS=amd64 x86
+LICENSE=CC-BY-SA-3.0
+RDEPEND=>=net-misc/asterisk-1.4
+SLOT=0
+SRC_URI=alaw? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-alaw-1.4.11.tar.gz ) g722? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-g722-1.4.11.tar.gz ) g729? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-g729-1.4.11.tar.gz ) gsm? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-gsm-1.4.11.tar.gz ) siren7? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-siren7-1.4.11.tar.gz ) siren14? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-siren14-1.4.11.tar.gz ) sln16? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-sln16-1.4.11.tar.gz ) ulaw? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-ulaw-1.4.11.tar.gz ) wav? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-en-wav-1.4.11.tar.gz ) l10n_fr? ( alaw? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-alaw-1.4.11.tar.gz ) g722? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-g722-1.4.11.tar.gz ) g729? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-g729-1.4.11.tar.gz ) gsm? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-gsm-1.4.11.tar.gz ) siren7? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-siren7-1.4.11.tar.gz ) siren14? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-siren14-1.4.11.tar.gz ) sln16? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-sln16-1.4.11.tar.gz ) ulaw? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-ulaw-1.4.11.tar.gz ) wav? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/asterisk-extra-sounds-fr-wav-1.4.11.tar.gz ) )
+_md5_=a9cdeb194ed825afd382be51c3bea4bc

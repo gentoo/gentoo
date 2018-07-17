@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=dev-lang/perl test? ( dev-perl/IO-stringy virtual/perl-Test-Harness dev-perl/Test-Output )
+DESCRIPTION=GNU Stow is a symlink farm manager
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/stow/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://gnu/stow/stow-2.2.2.tar.gz
+_eclasses_=perl-functions	01e8c68d5a528bbcda4d3c60205983df
+_md5_=2f5f8e9b73ffaf1f90dbe8e9450f9005

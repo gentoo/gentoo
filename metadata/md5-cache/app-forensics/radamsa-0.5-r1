@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A general purpose fuzzer
+EAPI=6
+HOMEPAGE=https://github.com/aoh/radamsa
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/aoh/radamsa/releases/download/v0.5/radamsa-0.5.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3f5a8cc3d2144c76f202ac83ff79d8b8

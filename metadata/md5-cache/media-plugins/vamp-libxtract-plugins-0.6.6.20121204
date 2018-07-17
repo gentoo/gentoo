@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND==sci-libs/fftw-3* >=media-libs/libxtract-0.6.6 media-libs/vamp-plugin-sdk
+DESCRIPTION=Vamp plugin encapsulating many of the functions of the LibXtract library
+EAPI=6
+HOMEPAGE=http://www.vamp-plugins.org/
+KEYWORDS=amd64 ~ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND==sci-libs/fftw-3* >=media-libs/libxtract-0.6.6 media-libs/vamp-plugin-sdk
+SLOT=0
+SRC_URI=http://code.soundsoftware.ac.uk/attachments/download/618/vamp-libxtract-plugins-0.6.6.20121204.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9be4a9d9216f25fe9b0e28911c6781b4

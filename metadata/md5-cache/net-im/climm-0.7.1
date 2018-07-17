@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=xmpp? ( || ( >=dev-libs/iksemel-1.4[ssl] >=dev-libs/iksemel-1.3[gnutls] ) ) ssl? ( gnutls? ( >=net-libs/gnutls-0.8.10 dev-libs/libgcrypt:0 ) !gnutls? ( dev-libs/openssl ) ) tcl? ( dev-lang/tcl:0 ) otr? ( <net-libs/libotr-4 ) ssl? ( gnutls? ( virtual/pkgconfig ) )
+DESCRIPTION=ICQ text-mode client with many features
+EAPI=4
+HOMEPAGE=http://www.climm.org/
+IUSE=xmpp gnutls otr tcl ssl
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=xmpp? ( || ( >=dev-libs/iksemel-1.4[ssl] >=dev-libs/iksemel-1.3[gnutls] ) ) ssl? ( gnutls? ( >=net-libs/gnutls-0.8.10 dev-libs/libgcrypt:0 ) !gnutls? ( dev-libs/openssl ) ) tcl? ( dev-lang/tcl:0 ) otr? ( <net-libs/libotr-4 )
+REQUIRED_USE=xmpp? ( ssl gnutls )
+SLOT=0
+SRC_URI=http://www.climm.org/source/climm-0.7.1.tgz
+_md5_=1baf8f9226b11837be94429e9e435579

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Library of routines for IF97 water & steam properties
+EAPI=7
+HOMEPAGE=https://github.com/mgorny/libh2o/
+IUSE=debug static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/mgorny/libh2o/releases/download/libh2o-0.2.1/libh2o-0.2.1.tar.bz2
+_md5_=986440100859fbe293cac4d1ea5d5c7c

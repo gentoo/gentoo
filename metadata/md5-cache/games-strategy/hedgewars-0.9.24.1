@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=dev-games/physfs-3.0.1 dev-lang/lua:0= dev-qt/qtcore:5= dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 media-libs/libpng:0= media-libs/libsdl2:= media-libs/sdl2-image:= media-libs/sdl2-mixer:=[vorbis] media-libs/sdl2-net:= media-libs/sdl2-ttf:= sys-libs/zlib:= libav? ( media-video/libav:= ) !libav? ( media-video/ffmpeg:= ) >=dev-lang/fpc-2.4 dev-qt/linguist-tools:5 server? ( >=dev-lang/ghc-6.10 dev-haskell/entropy dev-haskell/hslogger >=dev-haskell/mtl-2 >=dev-haskell/network-2.3 dev-haskell/random dev-haskell/regex-tdfa dev-haskell/sandi dev-haskell/sha dev-haskell/vector dev-haskell/utf8-string >=dev-haskell/zlib-0.5.3 <dev-haskell/zlib-0.6 ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=A turn-based strategy, artillery, action and comedy game
+EAPI=6
+HOMEPAGE=https://www.hedgewars.org/
+IUSE=libav server
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 Apache-2.0 FDL-1.3
+RDEPEND=>=dev-games/physfs-3.0.1 dev-lang/lua:0= dev-qt/qtcore:5= dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 media-libs/libpng:0= media-libs/libsdl2:= media-libs/sdl2-image:= media-libs/sdl2-mixer:=[vorbis] media-libs/sdl2-net:= media-libs/sdl2-ttf:= sys-libs/zlib:= libav? ( media-video/libav:= ) !libav? ( media-video/ffmpeg:= ) app-arch/xz-utils >=media-fonts/dejavu-2.28 media-fonts/wqy-zenhei
+SLOT=0
+SRC_URI=https://www.hedgewars.org/download/releases/hedgewars-src-0.9.24.1.tar.bz2 mirror://debian/pool/main/h/hedgewars/hedgewars_0.9.23-dfsg-2.debian.tar.xz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=e3bcd50f1a8718040d8a8793d96668c7

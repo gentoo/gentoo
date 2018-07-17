@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=Group-Office is a powerful modular Intranet application framework
+EAPI=4
+HOMEPAGE=http://group-office.sourceforge.net/
+IUSE=vhosts
+KEYWORDS=amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=AGPL-3
+RDEPEND=app-arch/zip app-arch/unzip virtual/httpd-cgi dev-lang/php[calendar,cli,curl,gd,imap,mysqli,zlib] >=app-admin/webapp-config-1.50.15
+SLOT=4.0.97
+SRC_URI=mirror://sourceforge/group-office/groupoffice-com-4.0.97.tar.gz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=c25909850f4c729ed63463a0735a3dd1

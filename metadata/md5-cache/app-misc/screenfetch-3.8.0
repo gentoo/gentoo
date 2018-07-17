@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Bash Screenshot Information Tool
+EAPI=6
+HOMEPAGE=https://github.com/KittyKatt/screenFetch
+IUSE=curl X
+KEYWORDS=amd64 x86 ~x64-macos
+LICENSE=GPL-3
+RDEPEND=curl? ( net-misc/curl ) X? ( media-gfx/scrot x11-apps/xdpyinfo )
+SLOT=0
+SRC_URI=https://github.com/KittyKatt/screenFetch/archive/v3.8.0.tar.gz -> screenfetch-3.8.0.tar.gz
+_md5_=485f50a37043d0f131d3dea853e2794a

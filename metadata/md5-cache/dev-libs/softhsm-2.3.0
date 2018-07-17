@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-devel/gcc:=[cxx] migration-tool? ( dev-db/sqlite:3 ) !libressl? ( dev-libs/openssl:=[bindist=] ) libressl? ( dev-libs/libressl ) !=dev-libs/softhsm-2.0.0:0 virtual/pkgconfig test? ( dev-util/cppunit )
+DESCRIPTION=A software PKCS#11 implementation
+EAPI=6
+HOMEPAGE=https://www.opendnssec.org/
+IUSE=bindist libressl migration-tool test
+KEYWORDS=~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=sys-devel/gcc:=[cxx] migration-tool? ( dev-db/sqlite:3 ) !libressl? ( dev-libs/openssl:=[bindist=] ) libressl? ( dev-libs/libressl ) !=dev-libs/softhsm-2.0.0:0
+SLOT=2
+SRC_URI=https://www.opendnssec.org/files/source/softhsm-2.3.0.tar.gz
+_eclasses_=ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=647d65dfaaaa7d3712aa2fda88e2e3c5

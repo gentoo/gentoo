@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=media-libs/coin-3.0.0[javascript] dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 virtual/opengl virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170422
+DESCRIPTION=A glue between Nokia Qt4 and Coin3D
+EAPI=5
+HOMEPAGE=http://www.coin3d.org/lib/quarter
+IUSE=debug doc static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/coin-3.0.0[javascript] dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 virtual/opengl
+SLOT=0
+SRC_URI=ftp://ftp.coin3d.org/pub/coin/src/all/Quarter-1.0.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=bc9a3d7569654bbd24db133e7b7e5e26

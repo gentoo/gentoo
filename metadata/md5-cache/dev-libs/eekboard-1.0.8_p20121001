@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup test unpack
+DEPEND=app-accessibility/at-spi2-core dev-libs/glib:2 dev-libs/libcroco virtual/libintl x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxklavier x11-libs/pango introspection? ( dev-libs/gobject-introspection ) libcanberra? ( media-libs/libcanberra[gtk3(+)] ) vala? ( || ( dev-lang/vala:0.36[vapigen(+)] dev-lang/vala:0.34[vapigen(+)] dev-lang/vala:0.32[vapigen(+)] ) ) xtest? ( x11-libs/libXtst ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/gtk-doc dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=An easy to use virtual keyboard toolkit
+EAPI=6
+HOMEPAGE=https://github.com/ueno/eekboard
+IUSE=doc +introspection libcanberra static-libs +vala +xtest test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-accessibility/at-spi2-core dev-libs/glib:2 dev-libs/libcroco virtual/libintl x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libxklavier x11-libs/pango introspection? ( dev-libs/gobject-introspection ) libcanberra? ( media-libs/libcanberra[gtk3(+)] ) vala? ( || ( dev-lang/vala:0.36[vapigen(+)] dev-lang/vala:0.34[vapigen(+)] dev-lang/vala:0.32[vapigen(+)] ) ) xtest? ( x11-libs/libXtst )
+REQUIRED_USE=vala? ( introspection )
+SLOT=0
+SRC_URI=https://github.com/ueno/eekboard/archive/e212262f29e022bdf7047861263ceea0c373e916.tar.gz -> eekboard-1.0.8_p20121001.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vala	103e6885c83965507391cdc5b6fa0e67	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=1f07bdc5193b427e609306d816b1e2bb

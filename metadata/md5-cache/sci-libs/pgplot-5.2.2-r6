@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libXt motif? ( >=x11-libs/motif-2.3:0 ) tk? ( dev-lang/tk ) doc? ( virtual/latex-base ) virtual/fortran
+DESCRIPTION=FORTRAN/C device-independent scientific graphic library
+EAPI=4
+HOMEPAGE=http://www.astro.caltech.edu/~tjp/pgplot/
+IUSE=doc motif static-libs tk
+KEYWORDS=amd64 ~arm ~ia64 ~ppc x86 ~amd64-linux ~x86-linux
+LICENSE=free-noncomm
+RDEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libXt motif? ( >=x11-libs/motif-2.3:0 ) tk? ( dev-lang/tk ) virtual/fortran
+SLOT=0
+SRC_URI=ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot522.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=db242ba721c8a3bdf3cd15c399052f0d

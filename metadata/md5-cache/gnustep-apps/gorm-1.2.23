@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=gnustep-base/gnustep-gui-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+DESCRIPTION=A clone of the NeXTstep Interface Builder application for GNUstep
+EAPI=6
+HOMEPAGE=http://www.gnustep.org/experience/Gorm.html
+IUSE=debug doc
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=gnustep-base/gnustep-gui-0.22.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
+SLOT=0
+SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-1.2.23.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnustep-2	08755606aae625944316a7bd6d8228f5	gnustep-base	7a6c767d10a6758f97c305691b7d7a2a	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=5a18df5982715394cd0f5ba76d123268

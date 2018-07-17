@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=PHP project build system based on Apache Ant
+EAPI=6
+HOMEPAGE=https://www.phing.info/
+IUSE=doc examples minimal zip
+KEYWORDS=~amd64 ~x86
+LICENSE=FDL-1.3 LGPL-2.1
+RDEPEND=dev-lang/php:*[cli,xml,xslt,zip?] dev-php/symfony-yaml !minimal? ( dev-php/PEAR-HTTP_Request2 dev-php/PEAR-PEAR_PackageFileManager dev-php/PEAR-VersionControl_SVN dev-php/PHP_CodeCoverage dev-php/phpDocumentor dev-php/phpmd dev-php/phpunit dev-php/simpletest dev-php/xdebug )
+SLOT=0
+SRC_URI=https://www.phing.info/get/phing-2.16.1.tgz
+_md5_=4b1969ef12d00a035e0c35280860d299

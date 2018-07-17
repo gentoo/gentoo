@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Combine weight maps and polygon for astronomical images weighting
+EAPI=6
+HOMEPAGE=http://www.astromatic.net/software/weightwatcher/
+IUSE=doc
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://www.astromatic.net/download/weightwatcher/weightwatcher-1.12.tar.gz
+_md5_=6e5ab4fbb41d421d3c18005ea7444de2

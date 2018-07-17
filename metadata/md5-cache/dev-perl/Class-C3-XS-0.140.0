@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-XSLoader virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-Module-Metadata virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=XS speedups for Class::C3
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Class-C3-XS/
+IUSE=test
+KEYWORDS=amd64 ia64 ppc sparc x86 ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-XSLoader dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Class-C3-XS-0.14.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=83a2d8c49fd0c6cc69e48dd8214cd94a

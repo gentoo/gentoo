@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-text/hunspell dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtconcurrent:5
+DESCRIPTION=Cross-platform, aesthetic, distraction-free markdown editor
+EAPI=6
+HOMEPAGE=http://wereturtle.github.io/ghostwriter/
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-text/hunspell dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=https://github.com/wereturtle/ghostwriter/archive/v1.5.0.tar.gz -> ghostwriter-1.5.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2206c4ff81734288b2ec5b0f254bd17b

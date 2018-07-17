@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Finnish diphones and text to speech script for festival
+EAPI=6
+HOMEPAGE=http://www.ling.helsinki.fi/suopuhe
+IUSE=perl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2
+RDEPEND=>=app-accessibility/festival-1.96_beta dev-lang/perl
+SLOT=0
+SRC_URI=http://www.ling.helsinki.fi/suopuhe/download/hy_fi_mv_diphone-20041119.tgz http://phon.joensuu.fi/suopuhe/tulosaineisto/suo_fi_lj-1.0g-20051204.tgz http://www.ling.helsinki.fi/suopuhe/download/lavennin-20041119.tgz
+_md5_=fd95a5a0edd734635bbabb19a2620b55

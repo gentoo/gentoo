@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=|| ( net-print/cups net-print/lprng ) app-text/ghostscript-gpl >=app-text/psutils-1.17 >=app-text/a2ps-4.13b-r4 virtual/awk virtual/imagemagick-tools virtual/mta
+DESCRIPTION=Apsfilter Prints So Fine, It Leads To Extraordinary Results
+EAPI=4
+HOMEPAGE=http://www.apsfilter.org
+IUSE=cups
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( net-print/cups net-print/lprng ) app-text/ghostscript-gpl >=app-text/psutils-1.17 >=app-text/a2ps-4.13b-r4 virtual/awk virtual/imagemagick-tools virtual/mta
+SLOT=0
+SRC_URI=http://www.apsfilter.org/download/apsfilter-7.2.8.tar.bz2
+_md5_=c15518796df4d8b3d0d7868de10c842f

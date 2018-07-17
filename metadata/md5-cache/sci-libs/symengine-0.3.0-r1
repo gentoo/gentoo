@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=dev-libs/gmp:= sys-libs/binutils-libs:= arb? ( sci-mathematics/arb:= ) boost? ( dev-libs/boost:= ) mpc? ( dev-libs/mpc:= ) tcmalloc? ( dev-util/google-perftools ) doc? ( app-doc/doxygen[dot] ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Fast symbolic manipulation library, written in C++
+EAPI=6
+HOMEPAGE=https://github.com/sympy/symengine
+IUSE=arb benchmarks boost debug doc flint llvm mpc mpfr openmp test tcmalloc threads
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=dev-libs/gmp:= sys-libs/binutils-libs:= arb? ( sci-mathematics/arb:= ) boost? ( dev-libs/boost:= ) mpc? ( dev-libs/mpc:= ) tcmalloc? ( dev-util/google-perftools )
+SLOT=0/0.3
+SRC_URI=https://github.com/sympy/symengine/archive/v0.3.0.tar.gz -> symengine-0.3.0.tar.gz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=a946a796f2963a036408f23a277f2f29

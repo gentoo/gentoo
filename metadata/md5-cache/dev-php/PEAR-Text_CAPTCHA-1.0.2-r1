@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DESCRIPTION=Generation of CAPTCHAs
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Text_CAPTCHA
+IUSE=minimal
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=dev-php/PEAR-PEAR >=dev-lang/php-5.3:*[gd,truetype] >=dev-php/PEAR-Text_Password-1.1.1 !minimal? ( dev-php/PEAR-Numbers_Words dev-php/PEAR-Text_Figlet >=dev-php/PEAR-Image_Text-0.7.0 ) >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Text_CAPTCHA-1.0.2.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=87f02af334d9daec3f66524e7b266bcb

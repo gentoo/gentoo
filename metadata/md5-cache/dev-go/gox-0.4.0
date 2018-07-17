@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=A dead simple, no frills Go cross compile tool
+EAPI=6
+HOMEPAGE=https://github.com/mitchellh/gox
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+RESTRICT=test
+SLOT=0/0.4.0
+SRC_URI=https://github.com/mitchellh/gox/archive/v0.4.0.tar.gz -> gox-0.4.0.tar.gz https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> github.com-mitchellh-iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=49c16796528036e8e14f6a1b17aa82a0

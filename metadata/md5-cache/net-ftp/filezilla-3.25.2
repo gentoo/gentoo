@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm prepare pretend
+DEPEND=>=app-eselect/eselect-wxwidgets-0.7-r1 >=dev-libs/nettle-3.1:= >=dev-db/sqlite-3.7 =dev-libs/libfilezilla-0.9* >=dev-libs/pugixml-1.7 net-dns/libidn:= >=net-libs/gnutls-3.4.0 >=x11-libs/wxGTK-3.0.2.0-r1:3.0[X] x11-misc/xdg-utils dbus? ( sys-apps/dbus ) virtual/pkgconfig >=sys-devel/libtool-1.4 nls? ( >=sys-devel/gettext-0.11 ) test? ( dev-util/cppunit ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=FTP client with lots of useful features and an intuitive interface
+EAPI=6
+HOMEPAGE=https://filezilla-project.org/
+IUSE=dbus nls test
+KEYWORDS=amd64 ~arm ~ia64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=app-eselect/eselect-wxwidgets-0.7-r1 >=dev-libs/nettle-3.1:= >=dev-db/sqlite-3.7 =dev-libs/libfilezilla-0.9* >=dev-libs/pugixml-1.7 net-dns/libidn:= >=net-libs/gnutls-3.4.0 >=x11-libs/wxGTK-3.0.2.0-r1:3.0[X] x11-misc/xdg-utils dbus? ( sys-apps/dbus )
+SLOT=0
+SRC_URI=mirror://sourceforge/filezilla/FileZilla_3.25.2_src.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=34e0268459a8dcd662968135f56cbf95

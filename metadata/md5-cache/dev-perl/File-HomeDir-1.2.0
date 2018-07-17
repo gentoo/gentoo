@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=virtual/perl-File-Path-2.10.0 >=virtual/perl-File-Spec-3 >=virtual/perl-File-Temp-0.190.0 >=dev-perl/File-Which-0.50.0 xdg? ( x11-misc/xdg-user-dirs ) virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.900.0 ) dev-lang/perl:=
+DESCRIPTION=Get home directory for self or other user
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/File-HomeDir/
+IUSE=+xdg test
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~ppc-aix ~x86-fbsd ~ppc-macos ~x64-macos ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=virtual/perl-File-Path-2.10.0 >=virtual/perl-File-Spec-3 >=virtual/perl-File-Temp-0.190.0 >=dev-perl/File-Which-0.50.0 xdg? ( x11-misc/xdg-user-dirs ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RE/REHSACK/File-HomeDir-1.002.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=696187e0a6e8a0c4adfd73668b8cd492

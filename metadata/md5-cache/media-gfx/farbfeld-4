@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libjpeg-turbo media-libs/libpng:*
+DESCRIPTION=farbfeld simple image format tools
+EAPI=6
+HOMEPAGE=https://tools.suckless.org/farbfeld/
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=media-libs/libjpeg-turbo media-libs/libpng:*
+SLOT=0
+SRC_URI=https://dl.suckless.org/farbfeld/farbfeld-4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=10b4cb71ca246267e92e13f58636f767

@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=app-i18n/librime
+DESCRIPTION=Data resources for Rime Input Method Engine
+EAPI=6
+HOMEPAGE=http://rime.im/ https://github.com/rime/brise
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-3
+RDEPEND=app-i18n/librime
+SLOT=0
+SRC_URI=https://dl.bintray.com/lotem/rime/brise-0.35.tar.gz
+_md5_=fcdbfd387836c545e5c36ddc663026ea

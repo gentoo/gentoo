@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-apps/texinfo
+DESCRIPTION=Binary I/O stream class library
+EAPI=6
+HOMEPAGE=http://libbinio.sourceforge.net/
+IUSE=static-libs
+KEYWORDS=alpha amd64 arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://sourceforge/libbinio/libbinio-1.4.tar.bz2
+_md5_=6f00d73420c53ee35fc5ee912765d1b5

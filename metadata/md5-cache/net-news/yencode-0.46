@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=yEnc encoder/decoder package
+EAPI=0
+HOMEPAGE=http://www.yencode.org
+IUSE=nls
+KEYWORDS=x86 ppc ~sparc arm ~amd64
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/yencode/yencode-0.46.tar.gz
+_md5_=ab7c0fd7f11110e419c63436dac93dc5

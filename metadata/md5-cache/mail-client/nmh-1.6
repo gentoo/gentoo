@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=gdbm? ( sys-libs/gdbm ) !gdbm? ( sys-libs/db:= ) >=sys-libs/ncurses-5.2:0= net-libs/liblockfile readline? ( sys-libs/readline:0= ) sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl:0= ) !!media-gfx/pixie !!sys-apps/pick !!sci-mathematics/snns
+DESCRIPTION=New MH mail reader
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/nmh/
+IUSE=gdbm readline sasl ssl
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=BSD
+RDEPEND=gdbm? ( sys-libs/gdbm ) !gdbm? ( sys-libs/db:= ) >=sys-libs/ncurses-5.2:0= net-libs/liblockfile readline? ( sys-libs/readline:0= ) sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl:0= ) !!media-gfx/pixie !!sys-apps/pick !!sci-mathematics/snns virtual/editor virtual/pager
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/nmh/nmh-1.6.tar.gz
+_md5_=9558f82080b18e58b2e523972e40d4e3

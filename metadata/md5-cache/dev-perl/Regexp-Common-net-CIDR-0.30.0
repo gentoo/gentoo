@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Regexp-Common >=virtual/perl-ExtUtils-MakeMaker-6.590.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Provides patterns for CIDR blocks
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Regexp-Common-net-CIDR/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Regexp-Common dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BP/BPS/Regexp-Common-net-CIDR-0.03.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=ece36d8eb0f330a8638ddc387a9d7d9a

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/IO-AIO dev-perl/AnyEvent dev-perl/AnyEvent-HTTP dev-perl/File-Slurp >=dev-perl/MogileFS-Client-1.16 dev-perl/Try-Tiny dev-perl/namespace-clean dev-lang/perl:=
+DESCRIPTION=MogileFS Client using AnyEvent non-blocking IO
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/MogileFS-Client-Async/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/IO-AIO dev-perl/AnyEvent dev-perl/AnyEvent-HTTP dev-perl/File-Slurp >=dev-perl/MogileFS-Client-1.16 dev-perl/Try-Tiny dev-perl/namespace-clean dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DL/DLAMBLEY/MogileFS-Client-Async-0.030.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=b560046b3c2acc77d3132593ff798db9

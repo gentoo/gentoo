@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=x11-libs/gtk+:2 media-libs/tiff:= virtual/jpeg:= media-libs/libpng:= x11-libs/libXft x11-libs/libXpm virtual/pkgconfig
+DESCRIPTION=X-based rich text editor
+EAPI=5
+HOMEPAGE=https://www.nllgg.nl/Ted/
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 media-libs/tiff:= virtual/jpeg:= media-libs/libpng:= x11-libs/libXft x11-libs/libXpm
+SLOT=0
+SRC_URI=ftp://ftp.nluug.nl/pub/editors/ted/ted-2.23.src.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=371add749fef968ed832c875fe3dae78

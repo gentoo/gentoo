@@ -1,0 +1,11 @@
+DEFINED_PHASES=setup
+DESCRIPTION=Additional themes for the Xfce window manager
+EAPI=6
+HOMEPAGE=https://www.xfce.org/projects/
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=>=xfce-base/xfwm4-4.10
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://archive.xfce.org/src/art/xfwm4-themes/4.10/xfwm4-themes-4.10.0.tar.bz2
+_md5_=0f7c5aab5efbd340504ce61f1b4a88e4

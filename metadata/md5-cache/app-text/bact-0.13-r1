@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install test
+DESCRIPTION=Boosting Algorithm for Classification of Trees
+EAPI=6
+HOMEPAGE=http://chasen.org/~taku/software/bact/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://chasen.org/~taku/software/bact/bact-0.13.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=01607b957dca6a3f5f6ce0396f69c04e

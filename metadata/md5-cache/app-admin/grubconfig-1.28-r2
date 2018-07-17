@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Simple Tool to configure Grub-Bootloader
+EAPI=6
+HOMEPAGE=https://web.archive.org/web/20100410042718/http://www.tux.org/pub/people/kent-robotti/looplinux
+KEYWORDS=-* amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-util/dialog-0.7
+SLOT=0
+SRC_URI=http://gentoo/grubconfig-1.28.tar.gz
+_md5_=be4ff88be3fa125e1d49f744f8e15ebf

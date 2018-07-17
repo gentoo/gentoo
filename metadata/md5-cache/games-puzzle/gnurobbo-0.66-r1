@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/libsdl[sound,video,joystick] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf
+DESCRIPTION=Robbo, a popular Atari XE/XL game ported to Linux
+EAPI=6
+HOMEPAGE=http://gnurobbo.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 BitstreamVera
+RDEPEND=media-libs/libsdl[sound,video,joystick] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf
+SLOT=0
+SRC_URI=mirror://sourceforge/gnurobbo/gnurobbo-0.66-source.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=0a434e079fbb44a64b5fb3bd81037b16

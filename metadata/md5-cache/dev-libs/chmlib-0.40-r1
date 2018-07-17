@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install test
+DESCRIPTION=Library for MS CHM (compressed html) file format
+EAPI=6
+HOMEPAGE=http://www.jedrea.com/chmlib/
+IUSE=+examples static-libs
+KEYWORDS=alpha amd64 ~arm hppa ~ia64 ppc ppc64 x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=http://www.jedrea.com/chmlib/chmlib-0.40.tar.bz2
+_eclasses_=out-of-source	a3c199a333bdfa25e7c84f4ef0616759
+_md5_=7cf9a2059ebb8dee6a7b139c23e8cef8

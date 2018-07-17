@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-games/libmaitretarot dev-games/libmt_client sys-libs/ncurses:0
+DESCRIPTION=client for the french tarot game maitretarot
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/maitretarot/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-games/libmaitretarot dev-games/libmt_client sys-libs/ncurses:0
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/maitretarot/mt_ncurses_client.pkg/0.1.98/mt_ncurses_client-0.1.98.tar.bz2
+_md5_=a76cb0d9cf3060da1751a3ac888a72d1

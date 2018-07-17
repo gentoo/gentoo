@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=app-arch/unzip python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info virtual/pkgconfig
+DESCRIPTION=Family of powerful x86 virtualization products for enterprise and home use
+EAPI=5
+HOMEPAGE=https://www.virtualbox.org/
+IUSE=+additions +chm headless python vboxwebsrv rdesktop-vrdp sdk debug python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 PUEL
+RDEPEND=!!app-emulation/virtualbox !app-emulation/virtualbox-additions ~app-emulation/virtualbox-modules-5.1.36 !headless? ( dev-libs/glib media-libs/fontconfig media-libs/freetype media-libs/libpng media-libs/libsdl[X] x11-libs/libXcursor x11-libs/libXext x11-libs/libXfixes x11-libs/libXft x11-libs/libXi x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXrender chm? ( dev-libs/expat ) ) dev-libs/libxml2 sys-fs/lvm2 x11-libs/libXau x11-libs/libX11 x11-libs/libXt x11-libs/libXmu x11-libs/libSM x11-libs/libICE x11-libs/libXdmcp python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=amd64? ( https://download.virtualbox.org/virtualbox/5.1.36/VirtualBox-5.1.36-122089-Linux_amd64.run ) x86? ( https://download.virtualbox.org/virtualbox/5.1.36/VirtualBox-5.1.36-122089-Linux_x86.run ) https://download.virtualbox.org/virtualbox/5.1.36/Oracle_VM_VirtualBox_Extension_Pack-5.1.36-122089.vbox-extpack -> Oracle_VM_VirtualBox_Extension_Pack-5.1.36-122089.tar.gz sdk? ( https://download.virtualbox.org/virtualbox/5.1.36/VirtualBoxSDK-5.1.36-122089.zip )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=cd2c915f805e4f7998048f0d6fe7c488

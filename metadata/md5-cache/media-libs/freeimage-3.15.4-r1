@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/zlib jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:0= ) mng? ( media-libs/libmng:= ) openexr? ( media-libs/openexr:= ) png? ( media-libs/libpng:0= ) raw? ( media-libs/libraw:= ) tiff? ( media-libs/ilmbase:= media-libs/tiff:0 ) virtual/pkgconfig app-arch/unzip
+DESCRIPTION=Image library supporting many formats
+EAPI=6
+HOMEPAGE=http://freeimage.sourceforge.net/
+IUSE=jpeg jpeg2k mng openexr png raw static-libs tiff
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( GPL-2 FIPL-1.0 )
+RDEPEND=sys-libs/zlib jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:0= ) mng? ( media-libs/libmng:= ) openexr? ( media-libs/openexr:= ) png? ( media-libs/libpng:0= ) raw? ( media-libs/libraw:= ) tiff? ( media-libs/ilmbase:= media-libs/tiff:0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/freeimage/FreeImage3154.zip mirror://sourceforge/freeimage/FreeImage3154.pdf
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=74a601c6a7d040048feae5ff109910ba

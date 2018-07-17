@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/krb5 afs? ( net-fs/openafs )
+DESCRIPTION=Modified versions of kinit for refreshing kerberos tickets automatically
+EAPI=6
+HOMEPAGE=https://www.eyrie.org/~eagle/software/kstart/
+IUSE=afs
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT Stanford ISC )
+RDEPEND=virtual/krb5 afs? ( net-fs/openafs )
+SLOT=0
+SRC_URI=https://archives.eyrie.org/software/kerberos/kstart-4.2.tar.gz
+_md5_=ec0517148b579db67bb99da4d923eb65

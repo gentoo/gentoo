@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-apps/file
+DESCRIPTION=tapecat is a tape utility used to describe the physical content of a tape
+EAPI=0
+HOMEPAGE=http://www.inventivetechnology.at/tapecat/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/file
+SLOT=0
+SRC_URI=http://downloads.inventivetechnology.at/tapecat/tapecat-1.0.0.tar.bz2
+_md5_=22bfe6717d2aeabd319a66e12f15f0a8

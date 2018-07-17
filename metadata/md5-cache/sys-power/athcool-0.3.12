@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=sys-apps/pciutils
+DESCRIPTION=small utility to toggle Powersaving mode for AMD Athlon/Duron processors
+EAPI=6
+HOMEPAGE=http://members.jcom.home.ne.jp/jacobi/linux/softwares.html#athcool
+KEYWORDS=-* x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://members.jcom.home.ne.jp/jacobi/linux/files/athcool-0.3.12.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=cf1e4fdc1acb084898b629889f581d98

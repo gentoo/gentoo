@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/libusb:0 ncurses? ( sys-libs/ncurses ) gtk? ( x11-libs/gtk+:2 ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
+EAPI=4
+HOMEPAGE=https://www.kismetwireless.net/spectools/
+IUSE=ncurses gtk
+KEYWORDS=amd64 arm ~ppc x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0 ncurses? ( sys-libs/ncurses ) gtk? ( x11-libs/gtk+:2 )
+SLOT=0
+SRC_URI=https://www.kismetwireless.net/code/spectools-2011-08-R1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88
+_md5_=38a04e5c9ef258d878700b7273891ea6

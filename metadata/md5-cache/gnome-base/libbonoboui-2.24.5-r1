@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=>=gnome-base/libgnomecanvas-1.116 >=gnome-base/libbonobo-2.22 >=gnome-base/libgnome-2.13.7 >=dev-libs/libxml2-2.4.20:2 >=gnome-base/gconf-2:2 >=x11-libs/gtk+-2.8.12:2 >=dev-libs/glib-2.6.0:2 >=gnome-base/libglade-1.99.11:2.0 >=dev-libs/popt-1.5 dev-util/gtk-doc-am x11-apps/xrdb sys-devel/gettext virtual/pkgconfig >=dev-util/intltool-0.40 >=app-portage/elt-patches-20170422 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=User Interface part of libbonobo
+EAPI=5
+HOMEPAGE=https://developer.gnome.org/libbonoboui/
+IUSE=examples test test
+KEYWORDS=alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=>=gnome-base/libgnomecanvas-1.116 >=gnome-base/libbonobo-2.22 >=gnome-base/libgnome-2.13.7 >=dev-libs/libxml2-2.4.20:2 >=gnome-base/gconf-2:2 >=x11-libs/gtk+-2.8.12:2 >=dev-libs/glib-2.6.0:2 >=gnome-base/libglade-1.99.11:2.0 >=dev-libs/popt-1.5
+SLOT=0
+SRC_URI=mirror://gnome/sources/libbonoboui/2.24/libbonoboui-2.24.5.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=c82fc02d1930bef744088a6bcf267bf4

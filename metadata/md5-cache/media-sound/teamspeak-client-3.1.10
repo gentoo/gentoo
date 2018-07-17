@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm prepare unpack
+DESCRIPTION=A client software for quality voice communication via the internet
+EAPI=6
+HOMEPAGE=https://www.teamspeak.com/
+IUSE=alsa pulseaudio
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=teamspeak3
+RDEPEND=app-arch/snappy:= <dev-libs/openssl-1.1:0= dev-libs/quazip dev-qt/qtcore:5 dev-qt/qtgui:5[accessibility,dbus,xcb] dev-qt/qtnetwork:5 dev-qt/qtsql:5[sqlite] dev-qt/qtsvg:5 dev-qt/qtwebchannel:5 dev-qt/qtwebengine:5[geolocation,widgets] dev-qt/qtwidgets:5 net-libs/libsrtp:= sys-libs/libcxx[libcxxabi] sys-libs/zlib:= virtual/udev alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio )
+REQUIRED_USE=|| ( alsa pulseaudio )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/3.1.10/TeamSpeak3-Client-linux_amd64-3.1.10.run ) x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/3.1.10/TeamSpeak3-Client-linux_x86-3.1.10.run )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	unpacker	87633b2194cdb56adaa1f5a5c8862c44	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=53a0cb98f5f4373f9a2c815289d1687a

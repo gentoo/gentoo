@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile
+DESCRIPTION=Tools from Intel to detect and mitigate the AMT/MEI vulnerability
+EAPI=6
+HOMEPAGE=https://downloadcenter.intel.com/download/26799/INTEL-SA-00075-Linux-Detection-and-Mitigation-Tools
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 BSD
+SLOT=0
+SRC_URI=https://github.com/intel/INTEL-SA-00075-Linux-Detection-And-Mitigation-Tools/archive/1.0.tar.gz -> intel-sa-00075-tools-1.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=49747bae71466a85257dc3f65b36aa3b

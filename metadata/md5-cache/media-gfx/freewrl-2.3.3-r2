@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare setup
+DEPEND=x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libX11 motif? ( x11-libs/motif:0= ) !motif? ( x11-libs/libXaw ) media-libs/mesa virtual/opengl media-libs/libpng:0= virtual/jpeg:0= media-libs/imlib2 >=media-libs/freetype-2 media-libs/fontconfig curl? ( net-misc/curl ) osc? ( media-libs/liblo ) opencl? ( virtual/opencl ) dev-lang/spidermonkey:0= virtual/pkgconfig java? ( >=virtual/jdk-1.4 ) nsplugin? ( net-misc/npapi-sdk ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/unzip java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=VRML97 and X3D compliant browser, library, and web-browser plugin
+EAPI=5
+HOMEPAGE=http://freewrl.sourceforge.net/
+IUSE=curl debug java libeai motif +nsplugin opencl osc +sox static-libs elibc_FreeBSD java
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libX11 motif? ( x11-libs/motif:0= ) !motif? ( x11-libs/libXaw ) media-libs/mesa virtual/opengl media-libs/libpng:0= virtual/jpeg:0= media-libs/imlib2 >=media-libs/freetype-2 media-libs/fontconfig curl? ( net-misc/curl ) osc? ( media-libs/liblo ) opencl? ( virtual/opencl ) dev-lang/spidermonkey:0= media-fonts/dejavu app-arch/unzip virtual/imagemagick-tools java? ( >=virtual/jre-1.4 ) sox? ( media-sound/sox ) java? ( >=dev-java/java-config-2.2.0-r3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/freewrl/freewrl-2.3.3.1.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	0ee72667014428e01a01df2345244cf3	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	mozextension	89a560beaf496e7cb89f3d79d4aef09e	multilib	97f470f374f2e94ccab04a2fb21d811e	nsplugins	2049586e425364a1c5bdb004205d1758	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=cc3c47e418351414d09bdff9dd5c1fe6

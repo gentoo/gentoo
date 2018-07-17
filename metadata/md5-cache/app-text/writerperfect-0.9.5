@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure
+DEPEND==app-text/libodfgen-0.1* >=dev-libs/librevenge-0.0.1 media-libs/libeot abiword? ( =app-text/libabw-0.1* ) cdr? ( =media-libs/libcdr-0.1* ) ebook? ( =app-text/libebook-0.1* ) freehand? ( =media-libs/libfreehand-0.1* ) gsf? ( gnome-extra/libgsf ) keynote? ( =app-text/libetonyek-0.1* ) mspub? ( =app-text/libmspub-0.1* ) mwaw? ( =app-text/libmwaw-0.3* ) pagemaker? ( media-libs/libpagemaker ) visio? ( =media-libs/libvisio-0.1* ) wpd? ( app-text/libwpd:0.10 ) wpg? ( =app-text/libwpg-0.3* ) wps? ( =app-text/libwps-0.4* ) virtual/pkgconfig
+DESCRIPTION=Various formats to Open document format converter
+EAPI=6
+HOMEPAGE=http://libwpd.sf.net
+IUSE=abiword +cdr debug ebook freehand gsf keynote +mspub +mwaw pagemaker +visio +wpd +wpg +wps
+KEYWORDS=amd64 x86 ~x86-linux ~x86-solaris
+LICENSE=|| ( LGPL-2.1 MPL-2.0 )
+RDEPEND==app-text/libodfgen-0.1* >=dev-libs/librevenge-0.0.1 media-libs/libeot abiword? ( =app-text/libabw-0.1* ) cdr? ( =media-libs/libcdr-0.1* ) ebook? ( =app-text/libebook-0.1* ) freehand? ( =media-libs/libfreehand-0.1* ) gsf? ( gnome-extra/libgsf ) keynote? ( =app-text/libetonyek-0.1* ) mspub? ( =app-text/libmspub-0.1* ) mwaw? ( =app-text/libmwaw-0.3* ) pagemaker? ( media-libs/libpagemaker ) visio? ( =media-libs/libvisio-0.1* ) wpd? ( app-text/libwpd:0.10 ) wpg? ( =app-text/libwpg-0.3* ) wps? ( =app-text/libwps-0.4* )
+REQUIRED_USE=|| ( abiword cdr ebook freehand keynote mspub mwaw pagemaker visio wpd wpg wps )
+SLOT=0
+SRC_URI=mirror://sourceforge/libwpd/writerperfect-0.9.5.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=32c0025ccfd7091acc81e2858a070c23

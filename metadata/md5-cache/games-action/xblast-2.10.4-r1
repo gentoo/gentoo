@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libpng:0 x11-libs/libICE x11-libs/libX11 x11-libs/libXt >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Bomberman clone w/network support for up to 6 players
+EAPI=6
+HOMEPAGE=http://xblast.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng:0 x11-libs/libICE x11-libs/libX11
+SLOT=0
+SRC_URI=mirror://sourceforge/xblast/xblast-2.10.4.tar.gz mirror://sourceforge/xblast/images-2005-01-06.tar.gz mirror://sourceforge/xblast/levels-2005-01-06.tar.gz mirror://sourceforge/xblast/models-2005-01-06.tar.gz mirror://sourceforge/xblast/musics-2005-01-06.tar.gz mirror://sourceforge/xblast/sounds.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=74e67c10d6173ff166a1b2fa6a42d21e

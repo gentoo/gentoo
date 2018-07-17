@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-ExtUtils-MakeMaker-6.300.0 !<dev-perl/File-pushd-1.4.0 virtual/perl-Carp virtual/perl-Exporter virtual/perl-Test-Simple virtual/perl-parent test? ( suggested? ( >=dev-perl/CPAN-Meta-Check-0.11.0 ) >=virtual/perl-CPAN-Meta-2.120.900 virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.108.0 virtual/perl-if virtual/perl-version ) dev-lang/perl:=
+DESCRIPTION=Test for warnings and the lack of them
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Test-Warnings/
+IUSE=test suggested
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!<dev-perl/File-pushd-1.4.0 virtual/perl-Carp virtual/perl-Exporter virtual/perl-Test-Simple virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Test-Warnings-0.026.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=9da5ff7b5af9f1b6755eded28f90cbb0

@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=alsa? ( media-libs/alsa-lib )
+DESCRIPTION=DTS Coherent Acoustics audio encoder
+EAPI=5
+HOMEPAGE=http://aepatrakov.narod.ru/index/0-2
+IUSE=alsa
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1+
+SLOT=0
+SRC_URI=http://aepatrakov.narod.ru/olderfiles/1/dcaenc-2.tar.gz
+_md5_=007b81ad4c97fee2a3a122b1f18ed410

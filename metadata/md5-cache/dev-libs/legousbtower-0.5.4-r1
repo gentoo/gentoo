@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=virtual/pkgconfig
+DESCRIPTION=The lego mindstorms usb tower headers and/or modules
+EAPI=6
+HOMEPAGE=http://legousb.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=MPL-1.0
+SLOT=0
+SRC_URI=mirror://sourceforge/legousb/legousbtower-0.5.4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88
+_md5_=e92a99341038a7857aace614775d1bae

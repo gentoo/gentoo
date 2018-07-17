@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!<=dev-perl/Dist-Zilla-Plugin-MakeMaker-Fallback-0.11.0 >=virtual/perl-CPAN-Meta-Requirements-2.121.0 >=dev-perl/Dist-Zilla-5.1.0 dev-perl/Moose dev-perl/MooseX-Types-Stringlike dev-perl/Path-Tiny >=virtual/perl-Scalar-List-Utils-1.290.0 dev-perl/namespace-autoclean virtual/perl-version >=dev-perl/Module-Build-Tiny-0.34.0 test? ( >=dev-perl/CPAN-Meta-Check-0.11.0 virtual/perl-File-Spec dev-perl/File-pushd virtual/perl-Module-Metadata dev-perl/Test-Deep dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.960.0 virtual/perl-if ) dev-lang/perl:=
+DESCRIPTION=A more awesome MakeMaker plugin for Dist::Zilla
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Dist-Zilla-Plugin-MakeMaker-Awesome/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!<=dev-perl/Dist-Zilla-Plugin-MakeMaker-Fallback-0.11.0 >=virtual/perl-CPAN-Meta-Requirements-2.121.0 >=dev-perl/Dist-Zilla-5.1.0 dev-perl/Moose dev-perl/MooseX-Types-Stringlike dev-perl/Path-Tiny >=virtual/perl-Scalar-List-Utils-1.290.0 dev-perl/namespace-autoclean virtual/perl-version dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-MakeMaker-Awesome-0.39.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=fbdb6b7a299f061310078cf04489f754

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-gfx media-libs/sdl-mixer media-libs/sdl-image[jpeg] media-libs/sdl-net media-libs/sdl-ttf
+DESCRIPTION=Space-shooter written in C++, using the SDL
+EAPI=6
+HOMEPAGE=http://www.hackl.dhs.org/spacerider/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-gfx media-libs/sdl-mixer media-libs/sdl-image[jpeg] media-libs/sdl-net media-libs/sdl-ttf
+SLOT=0
+SRC_URI=mirror://gentoo/spacerider-0.13.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=1e4ae2a7db821235c4e32ad38b0e2622

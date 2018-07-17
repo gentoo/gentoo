@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9 virtual/pkgconfig
+DESCRIPTION=Keybase Filesystem (KBFS)
+EAPI=6
+HOMEPAGE=https://keybase.io/docs/kbfs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-crypt/gnupg sys-fs/fuse
+SLOT=0
+SRC_URI=https://github.com/keybase/kbfs/archive/v2.0.0.tar.gz -> kbfs-2.0.0.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6f9bd0e2820ba4c031d4486b6e6d409b

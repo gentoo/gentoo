@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare pretend setup unpack
+DEPEND=sys-apps/dbus client? ( sys-libs/readline:0= ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Wireless daemon for linux
+EAPI=6
+HOMEPAGE=https://git.kernel.org/pub/scm/network/wireless/iwd.git/
+IUSE=+client +monitor cpu_flags_x86_aes cpu_flags_x86_ssse3 kernel_linux
+LICENSE=GPL-2
+RDEPEND=sys-apps/dbus client? ( sys-libs/readline:0= )
+SLOT=0
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	git-r3	8f6de46b0aa318aea0e8cac62ece098b	libtool	0081a71a261724730ec4c248494f044d	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=35c45517a8079fc91dbb08a73b9ea3a6

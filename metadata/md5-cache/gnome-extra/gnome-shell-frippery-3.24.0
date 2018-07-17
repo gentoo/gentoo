@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Unofficial extension pack providing GNOME 2-like features for GNOME 3
+EAPI=6
+HOMEPAGE=http://frippery.org/extensions/index.html
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=app-eselect/eselect-gnome-shell-extensions >=dev-libs/gjs-1.29 dev-libs/gobject-introspection:= gnome-base/gnome-menus:3[introspection] >=gnome-base/gnome-shell-3.20 media-libs/clutter:1.0[introspection] x11-libs/pango[introspection]
+SLOT=0
+SRC_URI=http://frippery.org/extensions/gnome-shell-frippery-3.24.0.tgz
+_md5_=4a3bc6af78986fb17898f6f0e669a8d5

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lisp/asdf-2.33-r3:=
+DESCRIPTION=Common Lisp implementation, derived from Digitool's MCL product
+EAPI=6
+HOMEPAGE=https://ccl.clozure.com
+IUSE=doc
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=Apache-2.0
+RDEPEND=>=dev-lisp/asdf-2.33-r3:=
+SLOT=0
+SRC_URI=x86? ( https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz ) amd64? ( https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxx86.tar.gz ) arm? ( https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-linuxarm.tar.gz ) x86-macos? ( https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-darwinx86.tar.gz ) x64-macos? ( https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-darwinx86.tar.gz ) x86-solaris? ( https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-solarisx86.tar.gz ) x64-solaris? ( https://github.com/Clozure/ccl/releases/download/v1.11.5/ccl-1.11.5-solarisx86.tar.gz ) doc? ( https://ccl.clozure.com/docs/ccl.html )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4f095790181be0abc20545bfc887cd06

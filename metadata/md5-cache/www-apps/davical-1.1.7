@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prerm setup
+DEPEND=>=dev-php/awl-0.59 sys-devel/gettext || ( virtual/httpd-basic virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=A CalDAV and CardDAV Server
+EAPI=6
+HOMEPAGE=https://davical.org/
+IUSE=vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/DBI dev-perl/DBD-Pg dev-perl/YAML >=dev-php/awl-0.59 virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=1.1.7
+SRC_URI=https://www.davical.org/downloads/davical_1.1.7.orig.tar.xz -> davical-1.1.7.tar.xz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=f7f85b9195cdfe5765040a91fae33808

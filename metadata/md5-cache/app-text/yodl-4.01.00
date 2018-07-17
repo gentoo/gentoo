@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-util/icmake-8.00.00
+DESCRIPTION=Your Own Document Language: a pre-document language and tools to process it
+EAPI=6
+HOMEPAGE=https://fbb-git.github.io/yodl/ https://github.com/fbb-git/yodl
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/fbb-git/yodl/archive/4.01.00.tar.gz -> yodl-4.01.00.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=d602193c249b5a3bdb06f96a9a8f1ad3

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Class-Accessor dev-perl/DateTime-Format-Mail dev-perl/DateTime-Format-W3CDTF virtual/perl-Encode dev-perl/UNIVERSAL-require >=dev-perl/XML-LibXML-1.660.0 >=dev-perl/Module-Build-0.380.0 virtual/perl-CPAN-Meta test? ( !minimal? ( dev-perl/Test-Exception dev-perl/Test-Warn ) ) dev-lang/perl:=
+DESCRIPTION=XML::RSS with XML::LibXML
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/XML-RSS-LibXML/
+IUSE=test minimal
+KEYWORDS=amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Class-Accessor dev-perl/DateTime-Format-Mail dev-perl/DateTime-Format-W3CDTF virtual/perl-Encode dev-perl/UNIVERSAL-require >=dev-perl/XML-LibXML-1.660.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DM/DMAKI/XML-RSS-LibXML-0.3105.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=cdd52822c0d1fb8b22600261aa385d6c

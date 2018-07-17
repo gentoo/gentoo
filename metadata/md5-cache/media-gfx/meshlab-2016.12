@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-cpp/eigen:3 dev-cpp/muParser dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtxmlpatterns:5 >=media-gfx/jhead-3.00-r2 media-libs/glew:0 media-libs/qhull =media-libs/lib3ds-1* media-libs/openctm sci-libs/levmar sci-libs/mpir
+DESCRIPTION=the open source system for processing and editing 3D triangular meshes
+EAPI=6
+HOMEPAGE=http://www.meshlab.net
+IUSE=-minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/eigen:3 dev-cpp/muParser dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtxmlpatterns:5 >=media-gfx/jhead-3.00-r2 media-libs/glew:0 media-libs/qhull =media-libs/lib3ds-1* media-libs/openctm sci-libs/levmar sci-libs/mpir
+SLOT=0
+SRC_URI=https://github.com/cnr-isti-vclab/meshlab/archive/v2016.12.tar.gz -> meshlab-2016.12.tar.gz https://github.com/cnr-isti-vclab/vcglib/archive/v1.0.1.tar.gz -> vcglib-1.0.1.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c0d470daa50fba379aca40876253728c

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Control battery thresholds of recent ThinkPads, not supported by tp_smapi
+EAPI=6
+HOMEPAGE=https://github.com/teleshoes/tpacpi-bat
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=sys-power/acpi_call dev-lang/perl
+SLOT=0
+SRC_URI=https://github.com/teleshoes/tpacpi-bat/archive/v3.0.tar.gz -> tpacpi-bat-3.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=743a2a01ea7cbe2dc59a569982db9ff4

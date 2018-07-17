@@ -1,0 +1,6 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for LeechCraft plugins displaying quarks near window edges
+EAPI=6
+RDEPEND=~app-leechcraft/lc-sb2-9999
+SLOT=0
+_md5_=5544d9008d692f1f0edb49e3e62a8336

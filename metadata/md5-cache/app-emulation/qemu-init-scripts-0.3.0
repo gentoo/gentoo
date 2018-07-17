@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Kvm and qemu init scripts
+EAPI=5
+HOMEPAGE=https://gitweb.gentoo.org/proj/kvm-tools.git/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-emulation/qemu || ( net-misc/socat net-analyzer/netcat6 )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~dolsen/releases/qemu-init-scripts/qemu-init-scripts-0.3.0.tar.xz
+_md5_=0a77af1b1697b14eca50ef774c8fec25

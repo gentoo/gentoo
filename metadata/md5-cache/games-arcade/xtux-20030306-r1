@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libXpm
+DESCRIPTION=Multiplayer Gauntlet-style arcade game
+EAPI=6
+HOMEPAGE=http://xtux.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXpm media-fonts/font-adobe-75dpi
+SLOT=0
+SRC_URI=mirror://sourceforge/xtux/xtux-src-20030306.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=26a208fb7ff196e7456c8195b25c3a20

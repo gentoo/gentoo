@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Inputlirc daemon to utilize /dev/input/event*
+EAPI=6
+HOMEPAGE=https://github.com/ferdinandhuebner/inputlirc
+KEYWORDS=alpha amd64 ~arm64 ia64 ppc ppc64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://gentooexperimental.org/~genstef/dist/inputlircd-0.0.1_pre15.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=25cadce26b12a574bbd2f539be256130

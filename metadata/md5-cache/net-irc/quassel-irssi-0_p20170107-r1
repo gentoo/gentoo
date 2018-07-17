@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=net-irc/irssi-1.0.0 net-libs/quasselc
+DESCRIPTION=Irssi module to connect to Quassel cores.
+EAPI=6
+HOMEPAGE=https://github.com/phhusson/quassel-irssi/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=net-irc/irssi-1.0.0
+SLOT=0
+SRC_URI=https://github.com/phhusson/quassel-irssi/archive/f23e97a6188129cfae4c52f7e1a75940185454f4.zip -> quassel-irssi-0_p20170107-r1.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=36bb71815b3782d2db8fdce030640ec0

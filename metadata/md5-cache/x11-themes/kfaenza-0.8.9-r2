@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Faenza-Cupertino icon theme for KDE Plasma
+EAPI=6
+HOMEPAGE=https://kde-look.org/content/show.php/KFaenza?content=143890 https://kde-look.org/content/show.php/KFaenza+icon+patch?content=153813 https://kde-look.org/content/show.php/Additional+KFaenza+Icons?content=147483
+IUSE=+additional branding
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://ompldr.org/vYjR0NQ/kfaenza-0.8.9.tar.gz http://kde-look.org/CONTENT/content-files/153813-kfaenza-icon-patch-0.3.tar.gz additional? ( http://kde-look.org/CONTENT/content-files/147483-additional-KFaenza.tar.gz )
+_md5_=07bab2e770059ad4026298583a540514

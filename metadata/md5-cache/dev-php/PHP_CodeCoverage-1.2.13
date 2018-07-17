@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=>=dev-php/pear-1.9.4
+DESCRIPTION=Collection, processing, and rendering for PHP code coverage
+EAPI=6
+HOMEPAGE=http://pear.phpunit.de
+KEYWORDS=amd64 hppa x86
+LICENSE=BSD
+RDEPEND=>=dev-php/pear-1.9.4 >=dev-php/File_Iterator-1.3.0 >=dev-php/PHP_TokenStream-1.1.3 >=dev-php/Text_Template-1.1.1 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http:///get/PHP_CodeCoverage-1.2.13.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=d71408183084dbfc7bed97434d11be08

@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=VirtIO drivers for Windows virtual machines running on KVM
+EAPI=6
+HOMEPAGE=https://fedoraproject.org/wiki/Windows_Virtio_Drivers
+KEYWORDS=~amd64
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.96/virtio-win-0.1.96.iso
+_md5_=9bd784e5ccddcf6709428cb169fb6cd5

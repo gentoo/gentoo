@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 media-libs/libmpdclient
+DESCRIPTION=Qt5 MPD client with experimental UI
+EAPI=6
+HOMEPAGE=http://qt-apps.org/content/show.php?content=137091
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 media-libs/libmpdclient
+SLOT=0
+SRC_URI=https://sourceforge.net/code-snapshots/git/b/be/be-mpc/code.git/be-mpc-code-783ea4e61cbfe54250e809498b1496d6cbd5afa1.zip -> bempc-0.11_p20160207.zip
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=90bfafadab45ec3dc72ee4c09dd504ea

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer[mod]
+DESCRIPTION=clone of the Atari 2600 game "Circus Atari"
+EAPI=6
+HOMEPAGE=http://www.newbreedsoftware.com/circus-linux/
+KEYWORDS=~alpha ~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer[mod]
+SLOT=0
+SRC_URI=ftp://ftp.sonic.net/pub/users/nbs/unix/x/circus-linux/circuslinux-1.0.3.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=12bd2147479b280a9c24883e81f135b2

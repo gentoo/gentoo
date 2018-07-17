@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl sys-libs/libcap >=sys-libs/libhx-3.12.1 sys-apps/pciutils
+DESCRIPTION=A collection of tools and scripts
+EAPI=5
+HOMEPAGE=http://inai.de/projects/hxtools/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl sys-libs/libcap >=sys-libs/libhx-3.12.1 sys-apps/pciutils
+SLOT=0
+SRC_URI=http://jftp.inai.de/hxtools/hxtools-20121125.tar.xz
+_md5_=eb1001d509fecaa9522b2473d80dfd44

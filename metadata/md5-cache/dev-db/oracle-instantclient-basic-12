@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Transition package moving to single dev-db/oracle-instantclient package
+EAPI=6
+HOMEPAGE=https://bugs.gentoo.org/show_bug.cgi?id=524922#c12
+KEYWORDS=~x86 ~amd64
+LICENSE=metapackage
+RDEPEND=>=dev-db/oracle-instantclient-12[sdk]
+SLOT=0
+_md5_=44117f11650738441e331266656b49c4

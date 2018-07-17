@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-crypt/qca:2[debug?,qt5(+)] dev-qt/qtnetwork:5 doc? ( app-doc/doxygen ) test? ( dev-qt/qttest:5 )
+DESCRIPTION=Qt-based library for OAuth support
+EAPI=6
+HOMEPAGE=https://github.com/ayoy/qoauth/wiki
+IUSE=debug doc test
+KEYWORDS=amd64 ~ppc64 x86
+LICENSE=LGPL-2.1
+RDEPEND=app-crypt/qca:2[debug?,qt5(+)] dev-qt/qtnetwork:5 app-crypt/qca:2[ssl] !dev-libs/qoauth:0
+SLOT=5
+SRC_URI=https://dev.gentoo.org/~johu/distfiles/qoauth-2.0.1_pre20160315.tar.xz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=33d70d16ccb0e6e83873216d6e2fd75b

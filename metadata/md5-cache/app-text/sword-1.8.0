@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=sys-libs/zlib curl? ( net-misc/curl ) icu? ( dev-libs/icu:= ) clucene? ( dev-cpp/clucene ) virtual/pkgconfig
+DESCRIPTION=Library for Bible reading software
+EAPI=7
+HOMEPAGE=http://www.crosswire.org/sword/
+IUSE=clucene curl debug doc icu static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib curl? ( net-misc/curl ) icu? ( dev-libs/icu:= ) clucene? ( dev-cpp/clucene )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.crosswire.org/ftpmirror/pub/sword/source/v1.8/sword-1.8.0.tar.gz
+_eclasses_=eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=10e8bdb05503552c697cf19d30b26f2d

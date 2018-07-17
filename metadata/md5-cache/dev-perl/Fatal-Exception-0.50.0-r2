@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Exception-Died >=dev-perl/Exception-Base-0.22.01 dev-perl/Module-Build test? ( >=dev-perl/Test-Unit-Lite-0.12 dev-perl/Test-Assert dev-perl/Exception-Warning ) dev-lang/perl:=
+DESCRIPTION=Succeed or throw exception
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Fatal-Exception/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Exception-Died >=dev-perl/Exception-Base-0.22.01 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DE/DEXTER/Fatal-Exception-0.05.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=814c94ccbc687b2ad53549d855d0a54c

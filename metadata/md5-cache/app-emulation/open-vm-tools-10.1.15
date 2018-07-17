@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=dev-libs/glib:2 dev-libs/libdnet net-libs/libtirpc:0= sys-fs/fuse:0 >=sys-process/procps-3.3.2 grabbitmqproxy? ( dev-libs/openssl:0 ) icu? ( dev-libs/icu:= ) pam? ( virtual/pam ) vgauth? ( dev-libs/openssl:0 dev-libs/xerces-c dev-libs/xml-security-c ) X? ( dev-cpp/gtkmm:3.0 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst xinerama? ( x11-libs/libXinerama ) ) doc? ( app-doc/doxygen ) net-libs/rpcsvc-proto virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 modules? ( kernel_linux? ( virtual/modutils ) ) modules? ( sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf ) ) virtual/pkgconfig
+DESCRIPTION=Opensourced tools for VMware guests
+EAPI=6
+HOMEPAGE=https://github.com/vmware/open-vm-tools
+IUSE=X doc grabbitmqproxy icu pam +pic vgauth xinerama kernel_linux kernel_linux modules
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libdnet net-libs/libtirpc:0= sys-fs/fuse:0 >=sys-process/procps-3.3.2 grabbitmqproxy? ( dev-libs/openssl:0 ) icu? ( dev-libs/icu:= ) pam? ( virtual/pam ) vgauth? ( dev-libs/openssl:0 dev-libs/xerces-c dev-libs/xml-security-c ) X? ( dev-cpp/gtkmm:3.0 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst xinerama? ( x11-libs/libXinerama ) ) modules? ( kernel_linux? ( virtual/modutils ) )
+SLOT=0
+SRC_URI=https://github.com/vmware/open-vm-tools/releases/download/stable-10.1.15/open-vm-tools-10.1.15-6677369.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	linux-info	bb73a1f0c3db9ff796439bf44bed8467	linux-mod	8ce5c5f548ed010d6499eb792ac1a638	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=7941941ae48ae7a3d6c074252dedc69d

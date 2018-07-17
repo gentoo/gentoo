@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=An interactive vi tutorial comprised of 5 tutorials for the vi-impaired
+EAPI=5
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=amd64 ppc x86 ~ppc-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=app-editors/vim
+SLOT=0
+SRC_URI=mirror://gentoo/vilearn-1.0.tar.gz
+_md5_=1058271ffe1ec53ee43ccf2044c30e29

@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=vmips cross-development tools
+EAPI=0
+HOMEPAGE=http://vmips.sourceforge.net/
+KEYWORDS=-* ppc
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ppc? ( mirror://gentoo/vmips-cross-bin-1.0.ppc.tar.bz2 )
+_md5_=720b4b6b24f3d6a2cbd6140eecc3b591

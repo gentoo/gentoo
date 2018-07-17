@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/protobuf:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 >=net-libs/libpcap-1.8.1-r2
+DESCRIPTION=A packet generator and analyzer
+EAPI=6
+HOMEPAGE=https://ostinato.org/
+LICENSE=GPL-3
+RDEPEND=dev-libs/protobuf:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 >=net-libs/libpcap-1.8.1-r2
+SLOT=0
+SRC_URI=https://github.com/pstavirs/ostinato/archive/9a4e7e7550c6b20a8f0f1393a55036492c1b7703.tar.gz -> ostinato-0.9_p20180522.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=10eef3c58d877b77d76a43949f2d237d

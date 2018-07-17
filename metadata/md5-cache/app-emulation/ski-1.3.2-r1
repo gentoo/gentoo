@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/libltdl:0= sys-libs/ncurses:0= virtual/libelf gtk? ( gnome-base/libglade:2.0 gnome-base/libgnomeui x11-libs/gtk+:2 ) motif? ( x11-libs/motif:0= ) sys-devel/bison sys-devel/flex dev-util/gperf >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=ia64 instruction set simulator
+EAPI=6
+HOMEPAGE=http://ski.sourceforge.net/ http://www.gelato.unsw.edu.au/IA64wiki/SkiSimulator
+IUSE=+gtk motif
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libltdl:0= sys-libs/ncurses:0= virtual/libelf gtk? ( gnome-base/libglade:2.0 gnome-base/libgnomeui x11-libs/gtk+:2 ) motif? ( x11-libs/motif:0= )
+SLOT=0
+SRC_URI=mirror://sourceforge/ski/ski-1.3.2.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e7a0f574b4851efd1dcdb23b11ab67e7

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install nofetch postinst
+DEPEND=app-arch/unzip
+DESCRIPTION=3ware SATA/PATA/SAS RAID controller Command Line Interface tool
+EAPI=5
+HOMEPAGE=http://www.lsi.com/products/raid-controllers/pages/3ware-sas-9750-8i.aspx
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd ~amd64-fbsd
+LICENSE=LSI-tw_cli
+RESTRICT=strip primaryuri
+SLOT=0
+SRC_URI=kernel_linux? ( http://www.lsi.com/downloads/Public/SATA/SATA%20Common%20Files//CLI_linux-from_the_10.2.2.1_9.5.5.1_codesets.zip ) kernel_FreeBSD? ( http://www.lsi.com/downloads/Public/SATA/SATA%20Common%20Files//CLI_freebsd-from_the_10.2.2.1_9.5.5.1_codesets.zip ) https://gitweb.gentoo.org/repo/gentoo.git/plain/licenses/LSI-tw_cli
+_md5_=f478236e8ce6c53ac0f69e5ad8919366

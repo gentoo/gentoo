@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libsdl[X,sound,joystick,video] sys-libs/zlib dev-util/scons[python_targets_python2_7]
+DESCRIPTION=An accuracy-focused Gameboy / Gameboy Color emulator
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/gambatte
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[X,sound,joystick,video] sys-libs/zlib
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/gambatte-0.5.0_p20131102.tar.xz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	abbc7625ff457854eae0edaa1fd55cc7
+_md5_=12675c7e7c10deaeff9a28623a866254

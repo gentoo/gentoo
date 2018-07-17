@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=dev-libs/glib:2 dev-libs/libxml2 virtual/pkgconfig
+DESCRIPTION=backend library for the maitretarot games
+EAPI=5
+HOMEPAGE=http://www.nongnu.org/maitretarot/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libxml2
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/maitretarot/libmaitretarot.pkg/0.1.98/libmaitretarot-0.1.98.tar.bz2
+_md5_=e324b114abfad10a9ac5fb255a35bb77

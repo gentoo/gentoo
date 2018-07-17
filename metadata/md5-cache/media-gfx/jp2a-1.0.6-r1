@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=sys-libs/ncurses virtual/jpeg curl? ( net-misc/curl )
+DESCRIPTION=JPEG image to ASCII art converter
+EAPI=6
+HOMEPAGE=http://csl.sublevel3.org/jp2a/
+IUSE=curl
+KEYWORDS=amd64 ~ia64 ppc ppc64 ~sparc x86 ~x64-macos ~x86-macos ~x64-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses virtual/jpeg curl? ( net-misc/curl )
+SLOT=0
+SRC_URI=mirror://sourceforge/jp2a/jp2a-1.0.6.tar.bz2
+_md5_=1d08522367aca2625c4513a8b70eed3c

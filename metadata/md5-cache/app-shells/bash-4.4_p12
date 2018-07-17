@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=sys-libs/ncurses-5.2-r2:0= readline? ( >=sys-libs/readline-7.0:0= ) nls? ( virtual/libintl )
+DESCRIPTION=The standard GNU Bourne again shell
+EAPI=5
+HOMEPAGE=http://tiswww.case.edu/php/chet/bash/bashtop.html
+IUSE=afs bashlogger examples mem-scramble +net nls plugins +readline
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=>=sys-libs/ncurses-5.2-r2:0= readline? ( >=sys-libs/readline-7.0:0= ) nls? ( virtual/libintl ) !<sys-apps/portage-2.1.6.7_p1 !<sys-apps/paludis-0.26.0_alpha5
+SLOT=0
+SRC_URI=mirror://gnu/bash/bash-4.4.tar.gz ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-001 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-002 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-003 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-004 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-005 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-006 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-007 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-008 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-009 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-010 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-011 ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/bash44-012 mirror://gnu/bash/bash-4.4-patches/bash44-001 mirror://gnu/bash/bash-4.4-patches/bash44-002 mirror://gnu/bash/bash-4.4-patches/bash44-003 mirror://gnu/bash/bash-4.4-patches/bash44-004 mirror://gnu/bash/bash-4.4-patches/bash44-005 mirror://gnu/bash/bash-4.4-patches/bash44-006 mirror://gnu/bash/bash-4.4-patches/bash44-007 mirror://gnu/bash/bash-4.4-patches/bash44-008 mirror://gnu/bash/bash-4.4-patches/bash44-009 mirror://gnu/bash/bash-4.4-patches/bash44-010 mirror://gnu/bash/bash-4.4-patches/bash44-011 mirror://gnu/bash/bash-4.4-patches/bash44-012
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=59ef5b11fb32fbdb595e5476786b4394

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Skins for SMPlayer
+EAPI=5
+HOMEPAGE=http://www.smplayer.info/
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 GPL-2 LGPL-3
+RDEPEND=media-video/smplayer
+SLOT=0
+SRC_URI=mirror://sourceforge/smplayer/smplayer-skins-15.2.0.tar.bz2
+_md5_=4c7a8e023a5368e5c00b4aaa00c3eba9

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=media-libs/lv2 >=dev-libs/boost-1.40.0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] gtk2? ( dev-cpp/gtkmm:2.4 ) doc? ( app-doc/doxygen media-gfx/graphviz ) virtual/pkgconfig
+DESCRIPTION=A set of C++ wrappers around the LV2 C API
+EAPI=6
+HOMEPAGE=http://lvtoolkit.org/
+IUSE=debug doc examples +gtk2 +tools python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=media-libs/lv2 >=dev-libs/boost-1.40.0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] gtk2? ( dev-cpp/gtkmm:2.4 )
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://github.com/lvtk/lvtk/archive/1.2.0.tar.gz -> lvtk-1.2.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=fb0de1af5a6764eb256e853a3e726130

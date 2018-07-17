@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=sys-apps/pcsc-lite-1.6.4 virtual/libusb:0 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Non CCID driver for ACR38 AC1038-based Smart Card Reader
+EAPI=6
+HOMEPAGE=https://www.acs.com.hk
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=sys-apps/pcsc-lite-1.6.4 virtual/libusb:0
+SLOT=0
+SRC_URI=https://www.linuxunderground.be/ACR38_LINUX_100711_P.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=f67053d770658fd55736ba830be53a2c

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=sys-process/cronbase
+DESCRIPTION=a periodic command scheduler
+EAPI=6
+HOMEPAGE=http://anacron.sourceforge.net/
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=sys-process/cronbase virtual/mta
+SLOT=0
+SRC_URI=mirror://sourceforge/anacron/anacron-2.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=b488069272aa72020a79b8d5beb00298

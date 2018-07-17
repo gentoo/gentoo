@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/libltdl-2:0 sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) cache? ( >=sys-libs/db-4:= ) curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) flac? ( media-libs/flac ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad sys-libs/zlib media-libs/libid3tag ) magic? ( sys-apps/file ) modplug? ( media-libs/libmodplug ) musepack? ( media-sound/musepack-tools media-libs/taglib ) sid? ( >=media-libs/libsidplay-2 ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex ) timidity? ( media-libs/libtimidity media-sound/timidity++ ) vorbis? ( media-libs/libogg tremor? ( media-libs/tremor ) !tremor? ( media-libs/libvorbis ) ) wavpack? ( media-sound/wavpack ) app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=Music On Console - ncurses interface for playing audio files
+EAPI=6
+HOMEPAGE=http://moc.daper.net
+IUSE=aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modplug musepack oss sid sndfile speex timidity tremor +unicode vorbis wavpack
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libltdl-2:0 sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) cache? ( >=sys-libs/db-4:= ) curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) flac? ( media-libs/flac ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad sys-libs/zlib media-libs/libid3tag ) magic? ( sys-apps/file ) modplug? ( media-libs/libmodplug ) musepack? ( media-sound/musepack-tools media-libs/taglib ) sid? ( >=media-libs/libsidplay-2 ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex ) timidity? ( media-libs/libtimidity media-sound/timidity++ ) vorbis? ( media-libs/libogg tremor? ( media-libs/tremor ) !tremor? ( media-libs/libvorbis ) ) wavpack? ( media-sound/wavpack )
+SLOT=0
+SRC_URI=http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.2.tar.bz2
+_md5_=a0a9fdcb43ce113cd314ff8deb6fc4f9

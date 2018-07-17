@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=A makefile generation tool
+EAPI=6
+HOMEPAGE=https://premake.github.io/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+SLOT=4
+SRC_URI=mirror://sourceforge/premake/premake-4.4-beta5-src.zip
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=c5f19e469950cc1d15ee94369df711b5

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Geek code generator
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/geekcode
+KEYWORDS=alpha amd64 arm ~mips ppc ppc64 x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/geekcode/geekcode-1.7.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6cb380e87736e124e34e2a4a605c39af

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=A command-line tool for mass tagging/renaming of audio files
+EAPI=0
+HOMEPAGE=https://github.com/Daenyth/audiotag
+IUSE=aac flac mp3 vorbis
+KEYWORDS=amd64 ~ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl flac? ( media-libs/flac ) vorbis? ( media-sound/vorbis-tools ) mp3? ( media-libs/id3lib ) aac? ( || ( media-video/atomicparsley media-video/atomicparsley-wez ) )
+SLOT=0
+SRC_URI=https://github.com/downloads/Daenyth/audiotag/audiotag-0.19.tar.bz2
+_md5_=c8907f727ebf65543f05beb5e2fe13a6

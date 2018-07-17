@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=Simple information system script
+EAPI=7
+HOMEPAGE=https://github.com/dylanaraps/neofetch
+IUSE=X
+KEYWORDS=~amd64 ~x86 ~amd64-fbsd
+LICENSE=MIT-with-advertising
+RDEPEND=sys-apps/pciutils X? ( media-gfx/imagemagick media-libs/imlib2 www-client/w3m[imlib] x11-apps/xprop x11-apps/xrandr x11-apps/xwininfo )
+SLOT=0
+SRC_URI=https://github.com/dylanaraps/neofetch/archive/5.0.0/neofetch-5.0.0.tar.gz
+_md5_=f853e59744382d9b09b33a96ee6ac38b

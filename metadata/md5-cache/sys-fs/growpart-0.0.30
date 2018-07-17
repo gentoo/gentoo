@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A script that can grow your rootfs on first boot
+EAPI=6
+HOMEPAGE=http://manpages.ubuntu.com/manpages/natty/man1/growpart.1.html
+KEYWORDS=amd64 ppc64 x86
+LICENSE=GPL-3
+RDEPEND=sys-apps/gptfdisk
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~prometheanfire/dist/growpart/growpart-0.0.30.gz
+_md5_=50805ea08ddf1e0d32af93a6a85d5a3b

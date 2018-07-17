@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=games-board/gnuchess-6.2.3
+DESCRIPTION=Opening book for gnuchess
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/chess/chess.html
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=games-board/gnuchess-6.2.3
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://gnu/chess/book_1.02.pgn.gz
+_md5_=f9508e51af77e305a2c123d52c24f5cd

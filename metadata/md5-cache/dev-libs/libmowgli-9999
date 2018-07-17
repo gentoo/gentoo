@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure unpack
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Useful set of performance and usability-oriented extensions to C
+EAPI=6
+HOMEPAGE=https://github.com/atheme/libmowgli-2
+IUSE=libressl ssl
+LICENSE=BSD-2
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=2
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=c3b38b5572c2ad78fb590aa1c531b8f4

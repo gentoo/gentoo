@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Carp-Assert virtual/perl-Scalar-List-Utils test? ( dev-perl/Test-Exception ) dev-lang/perl:=
+DESCRIPTION=convenience wrappers around Carp::Assert
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Carp-Assert-More/
+IUSE=test
+KEYWORDS=amd64 ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Carp-Assert virtual/perl-Scalar-List-Utils dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.16.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=519709f8a8f6405be58a5de5762a4263

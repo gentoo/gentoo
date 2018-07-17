@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=sys-apps/pcsc-lite dev-libs/openct virtual/pkgconfig
+DESCRIPTION=Schlumberger Reflex 72 Serial Smartcard Reader
+EAPI=6
+HOMEPAGE=http://www.linuxnet.com/sourcedrivers.html
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved BSD LGPL-2.1+
+RDEPEND=sys-apps/pcsc-lite dev-libs/openct
+SLOT=0
+SRC_URI=mirror://gentoo/slb_rf72-drv-1.1.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9f83d30f4d6e486c36b7aa88d11ae62a

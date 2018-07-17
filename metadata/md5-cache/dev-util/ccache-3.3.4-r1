@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare prerm
+DEPEND=app-arch/xz-utils sys-libs/zlib
+DESCRIPTION=fast compiler cache
+EAPI=6
+HOMEPAGE=https://ccache.samba.org/
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd
+LICENSE=GPL-3
+RDEPEND=app-arch/xz-utils sys-libs/zlib dev-util/shadowman sys-apps/gentoo-functions
+SLOT=0
+SRC_URI=https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.xz
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=0c417645b7a323b27d0d4ac133d46852

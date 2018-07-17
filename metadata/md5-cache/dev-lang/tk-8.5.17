@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=!aqua? ( media-libs/fontconfig media-libs/freetype:2 x11-libs/libX11 x11-libs/libXt truetype? ( x11-libs/libXft ) xscreensaver? ( x11-libs/libXScrnSaver ) ) ~dev-lang/tcl-8.5.17:0= !aqua? ( x11-base/xorg-proto ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Tk Widget Set
+EAPI=5
+HOMEPAGE=http://www.tcl.tk/
+IUSE=debug threads truetype aqua xscreensaver test
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=tcltk
+RDEPEND=!aqua? ( media-libs/fontconfig media-libs/freetype:2 x11-libs/libX11 x11-libs/libXt truetype? ( x11-libs/libXft ) xscreensaver? ( x11-libs/libXScrnSaver ) ) ~dev-lang/tcl-8.5.17:0=
+SLOT=0/8.5
+SRC_URI=mirror://sourceforge/tcl/tk8.5.17-src.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=9f8538112584831fb88f6f51362432e2

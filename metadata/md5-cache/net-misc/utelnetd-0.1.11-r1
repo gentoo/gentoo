@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=virtual/shadow
+DESCRIPTION=A small Telnet daemon, derived from the Axis tools
+EAPI=6
+HOMEPAGE=http://www.pengutronix.de/software/utelnetd/index_en.html
+KEYWORDS=~amd64 ~ppc ~s390 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.pengutronix.de/software/utelnetd/utelnetd-0.1.11.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c6457c79d96ae55cab5a942ac7de2cd3

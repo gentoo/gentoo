@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst test
+DESCRIPTION=Secure file removal utility
+EAPI=6
+HOMEPAGE=http://www.jetico.com/
+IUSE=doc
+KEYWORDS=amd64 ~arm ppc x86
+LICENSE=bestcrypt
+SLOT=0
+SRC_URI=https://www.jetico.com/linux/BCWipe-1.9-13.tar.gz doc? ( http://www.jetico.com/linux/BCWipe.doc.tgz )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=602d8b75c983e92395aec82a77529bf4

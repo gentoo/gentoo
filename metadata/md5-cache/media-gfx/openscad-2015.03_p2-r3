@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/mpfr:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 >=media-libs/glew-2.0.0:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs )
+DESCRIPTION=The Programmers Solid 3D CAD Modeller
+EAPI=6
+HOMEPAGE=http://www.openscad.org/
+IUSE=emacs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/mpfr:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 >=media-libs/glew-2.0.0:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs )
+SLOT=0
+SRC_URI=http://files.openscad.org/openscad-2015.03-2.src.tar.gz
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=955a9f18cbc76eff4d81ac27d82850cf

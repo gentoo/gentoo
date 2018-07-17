@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch postinst prepare unpack
+DEPEND=cdinstall? ( app-arch/unarj dev-util/xdelta:3 ) !cdinstall? ( app-arch/innoextract )
+DESCRIPTION=Data files for Descent 2
+EAPI=6
+HOMEPAGE=http://www.interplay.com/games/descent.php
+IUSE=doc videos cdinstall
+KEYWORDS=~amd64 ~x86
+LICENSE=descent-data
+PROPERTIES=cdinstall? ( interactive )
+RDEPEND=!<games-action/d2x-0.2.5-r3 !games-action/descent2-demodata
+RESTRICT=bindist !cdinstall? ( fetch )
+SLOT=0
+SRC_URI=cdinstall? ( http://www.dxx-rebirth.com/download/dxx/misc/d2xptch12.tgz ) !cdinstall? ( setup_descent2_2.1.0.10.exe )
+_eclasses_=cdrom	c64e4c5e9cbf2a58be31431e015a6210	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=eb08f4a705614e35f573df706df9c464

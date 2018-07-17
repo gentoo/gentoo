@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_here:= dev-ml/ppx_metaquot:= dev-ml/ppx_sexp_conv:= dev-ml/sexplib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=A ppx rewriter for easy construction of s-expressions
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_sexp_message
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_here:= dev-ml/ppx_metaquot:= dev-ml/ppx_sexp_conv:= dev-ml/sexplib:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_sexp_message/archive/v0.9.0.tar.gz -> ppx_sexp_message-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=f381bdbc035f18f7fdab24cb4a9e13c8

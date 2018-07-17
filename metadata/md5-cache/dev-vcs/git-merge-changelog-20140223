@@ -1,0 +1,9 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=Git merge driver for GNU style ChangeLog files
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/gnulib/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/git-merge-changelog-20140223.tar.xz
+_md5_=730609538ab3bd754c6134cce1ab3f79

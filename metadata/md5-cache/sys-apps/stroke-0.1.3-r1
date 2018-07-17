@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=A powerful tool to change file timestamps (including ctimes)
+EAPI=6
+HOMEPAGE=http://stroke.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/stroke/stroke-0.1.3.tar.gz
+_md5_=36f7715b8fb853c466e936d3f6c70577

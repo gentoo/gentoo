@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A voice enabled application to bring your desktop under your command
+EAPI=6
+HOMEPAGE=http://perlbox.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Tk app-accessibility/sphinx2 app-accessibility/festival app-accessibility/mbrola
+SLOT=0
+SRC_URI=mirror://sourceforge/perlbox/perlbox-voice-0.09.noarch.tgz
+_md5_=73633848e089f3582f3e5ad480947bfd

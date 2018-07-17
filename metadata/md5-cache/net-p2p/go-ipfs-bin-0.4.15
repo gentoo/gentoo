@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Main implementation of IPFS
+EAPI=6
+HOMEPAGE=https://ipfs.io/
+KEYWORDS=-* ~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=sys-fs/fuse
+SLOT=0
+SRC_URI=amd64? ( https://dist.ipfs.io/go-ipfs/v0.4.15/go-ipfs_v0.4.15_linux-amd64.tar.gz ) x86? ( https://dist.ipfs.io/go-ipfs/v0.4.15/go-ipfs_v0.4.15_linux-386.tar.gz ) arm? ( https://dist.ipfs.io/go-ipfs/v0.4.15/go-ipfs_v0.4.15_linux-arm.tar.gz ) https://raw.githubusercontent.com/ipfs/go-ipfs/v0.4.15/misc/completion/ipfs-completion.bash -> go-ipfs-bin-0.4.15.bash
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f622369109aba99f26b4bd88b98641b7

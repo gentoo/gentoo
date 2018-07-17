@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-text/hunspell sys-libs/zlib x11-libs/libX11 x11-libs/libXext app-text/poppler[qt5] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtlockedfile dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtwebkit:5[printsupport] dev-qt/qtwidgets:5 dev-qt/qtxml:5 virtual/pkgconfig
+DESCRIPTION=A nice LaTeX-IDE
+EAPI=6
+HOMEPAGE=http://www.xm1math.net/texmaker/
+KEYWORDS=amd64 ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=app-text/hunspell sys-libs/zlib x11-libs/libX11 x11-libs/libXext app-text/poppler[qt5] dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtlockedfile dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtwebkit:5[printsupport] dev-qt/qtwidgets:5 dev-qt/qtxml:5 app-text/ghostscript-gpl app-text/psutils media-libs/netpbm virtual/latex-base
+SLOT=0
+SRC_URI=http://www.xm1math.net/texmaker/texmaker-5.0.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=93c3f3099a68ddd406116f940be02555

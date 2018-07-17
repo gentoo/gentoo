@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=virtual/opengl virtual/glu media-libs/libsdl[sound,video] media-libs/sdl-mixer[vorbis?] media-libs/sdl-image[jpeg,png] x11-libs/gtk+:2 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=3D tabletennis game
+EAPI=6
+HOMEPAGE=http://cannonsmash.sourceforge.net/
+IUSE=vorbis nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/opengl virtual/glu media-libs/libsdl[sound,video] media-libs/sdl-mixer[vorbis?] media-libs/sdl-image[jpeg,png] x11-libs/gtk+:2 nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/cannonsmash/csmash-0.6.6.tar.gz vorbis? ( http://nan.p.utmc.or.jp/danslatristesse2-48.ogg )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=f362e4c841491dc21b6796281ae71a30

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=app-text/docbook-xsl-stylesheets-1.62.0-r1 app-text/docbook-xml-dtd:4.2 app-shells/bash:0 dev-libs/libxslt sys-apps/sed || ( >=sys-apps/coreutils-6.10-r1 sys-freebsd/freebsd-ubin ) || ( sys-apps/util-linux app-misc/getopt ) || ( sys-apps/which sys-freebsd/freebsd-ubin ) text? ( || ( virtual/w3m www-client/lynx www-client/links ) ) latex? ( >=app-text/passivetex-1.25 >=dev-tex/xmltex-1.9-r2 )
+DESCRIPTION=script for converting XML and DocBook documents to a variety of output formats
+EAPI=5
+HOMEPAGE=https://pagure.io/xmlto
+IUSE=latex text
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=app-text/docbook-xsl-stylesheets-1.62.0-r1 app-text/docbook-xml-dtd:4.2 app-shells/bash:0 dev-libs/libxslt sys-apps/sed || ( >=sys-apps/coreutils-6.10-r1 sys-freebsd/freebsd-ubin ) || ( sys-apps/util-linux app-misc/getopt ) || ( sys-apps/which sys-freebsd/freebsd-ubin ) text? ( || ( virtual/w3m www-client/lynx www-client/links ) ) latex? ( >=app-text/passivetex-1.25 >=dev-tex/xmltex-1.9-r2 )
+SLOT=0
+SRC_URI=https://releases.pagure.org/xmlto/xmlto-0.0.26.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=acb86d362b8236d52798b8f10b51f5dc

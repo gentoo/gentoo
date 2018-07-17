@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1:=[ppx] dev-ml/ppx_deriving:= dev-ml/calendar:= dev-ml/lwt:= >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=User interface widgets for Ocsigen applications
+EAPI=6
+HOMEPAGE=https://github.com/ocsigen/ocsigen-toolkit
+IUSE=+ocamlopt debug
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1:=[ppx] dev-ml/ppx_deriving:= dev-ml/calendar:= dev-ml/lwt:= >=dev-lang/ocaml-4:=
+SLOT=0/9999
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	8f6de46b0aa318aea0e8cac62ece098b	opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=3c71932883f9e7b977c7d9ea22525c89

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Pretty printing for Go
+EAPI=6
+HOMEPAGE=https://github.com/kylelemons/godebug
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0/0_p20170819
+SRC_URI=https://github.com/kylelemons/godebug/archive/d65d576e9348f5982d7f6d83682b694e731a45c6.tar.gz -> godebug-pretty-0_p20170819.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=be63015f09f5d45c4eecf605af2da4ce

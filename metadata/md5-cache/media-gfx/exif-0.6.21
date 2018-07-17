@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/popt >=media-libs/libexif-0.6.21 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Small CLI util to show EXIF infos hidden in JPEG files
+EAPI=4
+HOMEPAGE=http://libexif.sourceforge.net/
+IUSE=nls
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=dev-libs/popt >=media-libs/libexif-0.6.21
+SLOT=0
+SRC_URI=mirror://sourceforge/libexif/exif-0.6.21.tar.bz2
+_md5_=f76957ddd2548cd17b0832f710a136b4

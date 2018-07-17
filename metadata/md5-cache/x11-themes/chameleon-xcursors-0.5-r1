@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Style neutral scalable cursor theme
+EAPI=6
+HOMEPAGE=http://www.egregorion.net/2007/03/26/chameleon/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.egregorion.net/works/Chameleon-Anthracite-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-DarkSkyBlue-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-SkyBlue-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-Pearl-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-White-0.5.tar.bz2
+_md5_=bf08567f354c4f4efc359ab9ef524032

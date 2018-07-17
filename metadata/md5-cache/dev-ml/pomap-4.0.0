@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Partially Ordered Map ADT for O'Caml
+EAPI=5
+HOMEPAGE=http://mmottl.github.io/pomap/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4:=
+SLOT=0/4.0.0
+SRC_URI=https://github.com/mmottl/pomap/releases/download/4.0.0/pomap-4.0.0.tbz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=76b6e916d62bc93fd283eecf3aa8af19

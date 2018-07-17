@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=media-libs/libsdl-1.0.1 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A simple block-pushing game
+EAPI=6
+HOMEPAGE=http://kenn.frap.net/wakkabox/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libsdl-1.0.1
+SLOT=0
+SRC_URI=http://kenn.frap.net/wakkabox/wakkabox-1.1.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f1b7249ac8506af28067b012f338d2bb

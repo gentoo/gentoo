@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=app-crypt/gnupg-2:= >=app-crypt/gpgme-1.5.0:= >=dev-libs/libassuan-1.1.0 >=dev-libs/libgpg-error-1.4 >=x11-libs/gtk+-2.10.0:2 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
+EAPI=6
+HOMEPAGE=http://gpa.wald.intevation.org
+IUSE=nls
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-3
+RDEPEND=>=app-crypt/gnupg-2:= >=app-crypt/gpgme-1.5.0:= >=dev-libs/libassuan-1.1.0 >=dev-libs/libgpg-error-1.4 >=x11-libs/gtk+-2.10.0:2
+SLOT=0
+SRC_URI=mirror://gnupg/gpa/gpa-0.9.10.tar.bz2
+_md5_=732a5452b69b3b91858084d2472c3a41

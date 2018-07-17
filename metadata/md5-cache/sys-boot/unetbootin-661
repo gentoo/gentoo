@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5
+DESCRIPTION=UNetbootin installs Linux/BSD distributions to a partition or USB drive
+EAPI=6
+HOMEPAGE=https://github.com/unetbootin/unetbootin
+IUSE=l10n_am l10n_ar l10n_ast l10n_be l10n_bg l10n_bn l10n_ca l10n_cs l10n_da l10n_de l10n_el l10n_eo l10n_es l10n_et l10n_eu l10n_fa l10n_fi l10n_fo l10n_fr l10n_gl l10n_he l10n_hr l10n_hu l10n_id l10n_it l10n_ja l10n_lt l10n_lv l10n_ml l10n_ms l10n_nan l10n_nb l10n_nl l10n_nn l10n_pl l10n_pt-BR l10n_pt l10n_ro l10n_ru l10n_si l10n_sk l10n_sl l10n_sr l10n_sv l10n_sw l10n_tr l10n_uk l10n_ur l10n_vi l10n_zh-CN l10n_zh-TW
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 app-arch/p7zip sys-boot/syslinux sys-fs/mtools
+SLOT=0
+SRC_URI=https://github.com/unetbootin/unetbootin/archive/661.tar.gz -> unetbootin-661.tar.gz https://dev.gentoo.org/~asturm/distfiles/unetbootin-661-qt5.patch.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1495f9f48d3529b872ebb6e711be12f3

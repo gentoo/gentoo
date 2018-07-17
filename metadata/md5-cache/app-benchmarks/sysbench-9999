@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure prepare test unpack
+DEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) dev-lang/luajit:= app-editors/vim-core dev-libs/concurrencykit dev-libs/libxslt sys-devel/libtool virtual/pkgconfig test? ( dev-util/cram ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=System performance benchmark
+EAPI=6
+HOMEPAGE=https://github.com/akopytov/sysbench
+IUSE=aio mysql postgres test
+LICENSE=GPL-2+
+RDEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) dev-lang/luajit:=
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=ee34b89c506cc5e172027819b4de1edc

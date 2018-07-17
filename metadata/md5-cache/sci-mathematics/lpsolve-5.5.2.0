@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=sci-libs/colamd
+DESCRIPTION=Mixed Integer Linear Programming (MILP) solver
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/lpsolve/
+IUSE=static-libs
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1
+RDEPEND=sci-libs/colamd
+SLOT=0
+SRC_URI=http://dev.gentooexperimental.org/~scarabeus/lpsolve-5.5.2.0.tar.xz
+_md5_=3f0f22e86bb551ddf705770d755392b4

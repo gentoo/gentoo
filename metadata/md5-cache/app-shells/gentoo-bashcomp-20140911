@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
+EAPI=5
+HOMEPAGE=https://www.gentoo.org/
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~mgorny/dist/gentoo-bashcomp-20140911.tar.bz2
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1104cf86f7019a051435612970f83704

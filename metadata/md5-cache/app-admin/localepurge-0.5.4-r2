@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Script to recover diskspace on unneeded locale files & localized man pages
+EAPI=6
+HOMEPAGE=https://gentoo.org https://cgit.gentoo.org/proj/localepurge.git
+KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=app-shells/bash
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/localepurge-0.5.4.tbz2
+_eclasses_=prefix	e51c7882b7b721e54e684f7eb143cbfe
+_md5_=1b5a9d0eca8609cb21f5cc2c4c1a8572

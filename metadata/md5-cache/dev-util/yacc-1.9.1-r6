@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postrm preinst prepare
+DESCRIPTION=Yacc: Yet Another Compiler-Compiler
+EAPI=6
+HOMEPAGE=http://dinosaur.compilertools.net/#yacc
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=ftp://metalab.unc.edu/pub/Linux/devel/compiler-tools/yacc-1.9.1.tar.Z
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=fcb0112607288d1fbcafdb2b701c8dfb

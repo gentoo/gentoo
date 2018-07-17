@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl media-libs/sdl-mixer
+DESCRIPTION=Asteroids Clone for X using SDL
+EAPI=6
+HOMEPAGE=http://david.hedbor.org/projects/sdlroids/
+KEYWORDS=~alpha ~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/sdl-mixer
+SLOT=0
+SRC_URI=mirror://sourceforge/sdlroids/sdlroids-1.3.4.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=ca3ec1c275b1c0ab44120b296d0e9def

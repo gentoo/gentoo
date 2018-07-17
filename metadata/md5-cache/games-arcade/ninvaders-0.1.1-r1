@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=ASCII space invaders clone
+EAPI=6
+HOMEPAGE=http://ninvaders.sourceforge.net/
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=mirror://sourceforge/ninvaders/ninvaders-0.1.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=539283765616b32492e1a80415235bd3

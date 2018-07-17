@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5
+DESCRIPTION=Qt C++ widget for plotting and data visualization
+EAPI=6
+HOMEPAGE=http://www.qcustomplot.com/
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5
+SLOT=0
+SRC_URI=http://www.qcustomplot.com/release/2.0.0/QCustomPlot-sharedlib.tar.gz -> qcustomplot-sharedlib-2.0.0.tar.gz http://www.qcustomplot.com/release/2.0.0/QCustomPlot-source.tar.gz -> qcustomplot-source-2.0.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=27b9a6432908cd91df70330e312a8cc2

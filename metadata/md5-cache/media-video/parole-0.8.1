@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.32:2= media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= sys-apps/dbus:0= >=x11-libs/gtk+-3.2:3= x11-libs/libX11:0= >=xfce-base/libxfce4ui-4.11:0=[gtk3(+)] >=xfce-base/libxfce4util-4.11:0= >=xfce-base/xfconf-4.10:0= clutter? ( >=media-libs/clutter-1.16.4:1.0= >=media-libs/clutter-gtk-1.4.4:1.0= ) libnotify? ( >=x11-libs/libnotify-0.7:0= ) taglib? ( >=media-libs/taglib-1.6:0= ) dev-util/intltool sys-devel/gettext virtual/pkgconfig x11-base/xorg-proto >=app-portage/elt-patches-20170422 >=sys-apps/sed-4
+DESCRIPTION=a simple media player based on the GStreamer framework for the Xfce4 desktop
+EAPI=5
+HOMEPAGE=https://docs.xfce.org/apps/parole/start
+IUSE=clutter debug libnotify taglib
+KEYWORDS=amd64 ~mips x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.32:2= media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= sys-apps/dbus:0= >=x11-libs/gtk+-3.2:3= x11-libs/libX11:0= >=xfce-base/libxfce4ui-4.11:0=[gtk3(+)] >=xfce-base/libxfce4util-4.11:0= >=xfce-base/xfconf-4.10:0= clutter? ( >=media-libs/clutter-1.16.4:1.0= >=media-libs/clutter-gtk-1.4.4:1.0= ) libnotify? ( >=x11-libs/libnotify-0.7:0= ) taglib? ( >=media-libs/taglib-1.6:0= ) media-plugins/gst-plugins-meta:1.0
+SLOT=0
+SRC_URI=https://archive.xfce.org/src/apps/parole/0.8/parole-0.8.1.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25	xfconf	1bef4c887fcfc2e1c92175a26bbe1865
+_md5_=eee3c5baa99c59e53051a2e89cb255e6

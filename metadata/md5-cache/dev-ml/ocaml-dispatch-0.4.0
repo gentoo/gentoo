@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ml/result:= dev-lang/ocaml:= dev-ml/jbuilder dev-ml/opam test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Path-based dispatching for client- and server-side applications
+EAPI=5
+HOMEPAGE=https://github.com/inhabitedtype/ocaml-dispatch
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ml/result:= dev-lang/ocaml:=
+SLOT=0/0.4.0
+SRC_URI=https://github.com/inhabitedtype/ocaml-dispatch/archive/0.4.0.tar.gz -> ocaml-dispatch-0.4.0.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=5ba3990520dbb30f7b5915532ee0a3cc

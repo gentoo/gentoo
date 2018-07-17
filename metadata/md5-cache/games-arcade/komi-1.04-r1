@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libsdl[video] media-libs/sdl-mixer
+DESCRIPTION=Komi the Space Frog - simple SDL game of collection
+EAPI=6
+HOMEPAGE=http://komi.sourceforge.net
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[video] media-libs/sdl-mixer
+SLOT=0
+SRC_URI=mirror://sourceforge/komi/komi-1.04.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=2319b06f53e427d5283e611c9c943df3

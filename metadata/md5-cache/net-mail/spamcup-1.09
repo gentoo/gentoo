@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/perl-5.8.0 dev-perl/Getopt-ArgvFile || ( ( >dev-perl/libwww-perl-6 dev-perl/HTML-Form ) <dev-perl/libwww-perl-6 )
+DESCRIPTION=This script does the same you would do when you report spam with your browser in Spamcop.net
+EAPI=0
+HOMEPAGE=https://sourceforge.net/projects/spamcup/
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.8.0 dev-perl/Getopt-ArgvFile || ( ( >dev-perl/libwww-perl-6 dev-perl/HTML-Form ) <dev-perl/libwww-perl-6 )
+SLOT=0
+SRC_URI=mirror://sourceforge/spamcup/spamcup-1.09.tar.gz
+_md5_=478a116c3aaf31608828f72fb2d121fd

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile prepare
+DEPEND=dev-lang/perl
+DESCRIPTION=A tool allowing incremental and recursive imap transfer from one mailbox to another
+EAPI=5
+HOMEPAGE=http://ks.lamiral.info/imapsync/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=WTFPL-2
+RDEPEND=dev-lang/perl dev-perl/Digest-HMAC dev-perl/File-Copy-Recursive dev-perl/IO-Socket-SSL dev-perl/IO-Tee dev-perl/Mail-IMAPClient dev-perl/TermReadKey dev-perl/Unicode-String virtual/perl-Digest-MD5 virtual/perl-MIME-Base64
+RESTRICT=test
+SLOT=0
+SRC_URI=https://fedorahosted.org/released/imapsync/imapsync-1.644.tgz
+_md5_=f57b7128a575a6045a2920cde641fd8d

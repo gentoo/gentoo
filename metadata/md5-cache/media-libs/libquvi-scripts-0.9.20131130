@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=Embedded lua scripts for libquvi
+EAPI=5
+HOMEPAGE=http://quvi.sourceforge.net/
+IUSE=offensive
+KEYWORDS=amd64 ~arm ~hppa ~mips x86
+LICENSE=AGPL-3
+RDEPEND=>=dev-lua/LuaBitOp-1.0.1 >=dev-lua/luaexpat-1.2.0 >=dev-lua/luajson-1.1.1 >=dev-lua/luasocket-2.0.2
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/quvi/libquvi-scripts-0.9.20131130.tar.xz
+_md5_=b2f366d45ba73c0623f3b821487b9331

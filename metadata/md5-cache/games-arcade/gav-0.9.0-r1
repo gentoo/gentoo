@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/sdl-image[jpeg,png] media-libs/sdl-net media-libs/libsdl[joystick,video]
+DESCRIPTION=GPL Arcade Volleyball
+EAPI=6
+HOMEPAGE=http://gav.sourceforge.net/
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/sdl-image[jpeg,png] media-libs/sdl-net media-libs/libsdl[joystick,video]
+SLOT=0
+SRC_URI=mirror://sourceforge/gav/gav-0.9.0.tar.gz mirror://gentoo/fabeach.tgz mirror://gentoo/florindo.tgz mirror://gentoo/inverted.tgz mirror://gentoo/naive.tgz mirror://gentoo/unnamed.tgz mirror://gentoo/yisus.tgz mirror://gentoo/yisus2.tgz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=93cb214a464f9c35223c91f019136ab1

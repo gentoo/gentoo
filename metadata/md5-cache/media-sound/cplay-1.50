@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) ) sys-devel/gettext
+DESCRIPTION=A Curses front-end for various audio players
+EAPI=6
+HOMEPAGE=https://github.com/hukka/cplay/
+IUSE=mp3 vorbis python_targets_python2_7
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 media-sound/mpg321 media-sound/madplay media-sound/splay ) )
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://github.com/hukka/cplay/archive/v1.50.tar.gz -> cplay-1.50.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9ae5bd27701e4373b858515418629efc

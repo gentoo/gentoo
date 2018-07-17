@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/comonad-3.0.3:=[profile?] >=dev-haskell/dlist-0.6:=[profile?] <dev-haskell/dlist-1.0:=[profile?] >=dev-haskell/dlist-instances-0.1:=[profile?] <dev-haskell/dlist-instances-0.2:=[profile?] dev-haskell/hashable:=[profile?] >=dev-haskell/semigroupoids-3.0:=[profile?] >=dev-haskell/semigroups-0.10:=[profile?] >=dev-haskell/text-0.11:=[profile?] >=dev-haskell/transformers-0.3:=[profile?] >=dev-haskell/unordered-containers-0.2:=[profile?] >=dev-haskell/vector-0.10:=[profile?] >=dev-haskell/vector-algorithms-0.6:=[profile?] dev-haskell/vector-instances:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.10 test? ( dev-haskell/foldl dev-haskell/hspec dev-haskell/quickcheck ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Type classes for mapping, folding, and traversing monomorphic containers
+EAPI=5
+HOMEPAGE=https://github.com/snoyberg/mono-traversable
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-haskell/comonad-3.0.3:=[profile?] >=dev-haskell/dlist-0.6:=[profile?] <dev-haskell/dlist-1.0:=[profile?] >=dev-haskell/dlist-instances-0.1:=[profile?] <dev-haskell/dlist-instances-0.2:=[profile?] dev-haskell/hashable:=[profile?] >=dev-haskell/semigroupoids-3.0:=[profile?] >=dev-haskell/semigroups-0.10:=[profile?] >=dev-haskell/text-0.11:=[profile?] >=dev-haskell/transformers-0.3:=[profile?] >=dev-haskell/unordered-containers-0.2:=[profile?] >=dev-haskell/vector-0.10:=[profile?] >=dev-haskell/vector-algorithms-0.6:=[profile?] dev-haskell/vector-instances:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.7.0
+SRC_URI=mirror://hackage/packages/archive/mono-traversable/0.7.0/mono-traversable-0.7.0.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ghc-package	a0d34e2f5f204f01c404ae1ce539542a	haskell-cabal	45605f3898bdc59eb016fb50ca27bf18	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=f46afbeda618f05af9db4b08f0e0fe99

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=dev-lang/perl dev-perl/Archive-Zip dev-perl/DateTime-Format-Strptime dev-perl/Gtk2 dev-perl/HTML-Parser dev-perl/libwww-perl dev-perl/URI dev-perl/XML-Parser dev-perl/XML-Simple virtual/perl-Archive-Tar virtual/perl-Encode virtual/perl-Getopt-Long virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO-Compress virtual/perl-libnet virtual/perl-Storable virtual/perl-Time-Piece cddb? ( dev-perl/Net-FreeDB ) gnome? ( dev-perl/gnome2-vfs-perl ) mp3? ( dev-perl/MP3-Info dev-perl/MP3-Tag ) spell? ( dev-perl/gtk2-spell ) stats? ( dev-perl/Date-Calc dev-perl/GD[png,truetype] ) tellico? ( virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 ) vorbis? ( dev-perl/Ogg-Vorbis-Header-PurePerl ) >=sys-apps/sed-4
+DESCRIPTION=Manage your collections of movies, games, books, music and more
+EAPI=4
+HOMEPAGE=http://www.gcstar.org/
+IUSE=cddb gnome mp3 spell stats tellico vorbis
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Archive-Zip dev-perl/DateTime-Format-Strptime dev-perl/Gtk2 dev-perl/HTML-Parser dev-perl/libwww-perl dev-perl/URI dev-perl/XML-Parser dev-perl/XML-Simple virtual/perl-Archive-Tar virtual/perl-Encode virtual/perl-Getopt-Long virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO-Compress virtual/perl-libnet virtual/perl-Storable virtual/perl-Time-Piece cddb? ( dev-perl/Net-FreeDB ) gnome? ( dev-perl/gnome2-vfs-perl ) mp3? ( dev-perl/MP3-Info dev-perl/MP3-Tag ) spell? ( dev-perl/gtk2-spell ) stats? ( dev-perl/Date-Calc dev-perl/GD[png,truetype] ) tellico? ( virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 ) vorbis? ( dev-perl/Ogg-Vorbis-Header-PurePerl )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~tetromino/distfiles/gcstar/gcstar-1.7.0.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=b935c7677395e2e490d9e4748a23b9c0

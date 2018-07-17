@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=cronolog wrapper for use with dumb daemons like squid, varnish and so on
+EAPI=6
+HOMEPAGE=https://cgit.gentoo.org/proj/fifo-cronolog.git
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2 GPL-2
+RDEPEND=app-admin/cronolog
+SLOT=0
+SRC_URI=mirror://gentoo/fifo-cronolog-1.1.1.tar.bz2
+_md5_=c170a6335c99eb8a54109216ab950867

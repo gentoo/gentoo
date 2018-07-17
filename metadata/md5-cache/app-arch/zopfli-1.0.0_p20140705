@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Very good, but slow, deflate or zlib compression
+EAPI=5
+HOMEPAGE=https://github.com/Hello71/zopfli/
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=Apache-2.0
+SLOT=0/1
+SRC_URI=https://github.com/Hello71/zopfli/archive/1c07f374419ccb352412fd6403acc2b59ab6cce7.tar.gz -> zopfli-1.0.0_p20140705.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=3ca4c641070da20737690bd0bdbeac93

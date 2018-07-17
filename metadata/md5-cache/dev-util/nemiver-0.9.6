@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.16:2[dbus] >=dev-cpp/glibmm-2.30:2 >=dev-cpp/gtkmm-3:3.0 >=dev-cpp/gtksourceviewmm-3:3.0 >=gnome-base/gsettings-desktop-schemas-0.0.1 >=gnome-base/libgtop-2.19 x11-libs/vte:2.91 >=dev-db/sqlite-3:3 sys-devel/gdb dev-libs/boost memoryview? ( >=app-editors/ghex-2.90:2 ) app-text/docbook-xml-dtd:4.1.2 >=dev-util/intltool-0.40 dev-util/itstool >=sys-devel/gettext-0.17 virtual/pkgconfig >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A gtkmm front end to the GNU Debugger (gdb)
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Apps/Nemiver
+IUSE=debug memoryview
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.16:2[dbus] >=dev-cpp/glibmm-2.30:2 >=dev-cpp/gtkmm-3:3.0 >=dev-cpp/gtksourceviewmm-3:3.0 >=gnome-base/gsettings-desktop-schemas-0.0.1 >=gnome-base/libgtop-2.19 x11-libs/vte:2.91 >=dev-db/sqlite-3:3 sys-devel/gdb dev-libs/boost memoryview? ( >=app-editors/ghex-2.90:2 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/nemiver/0.9/nemiver-0.9.6.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=cdacea6f313a6772418f831e89af7375

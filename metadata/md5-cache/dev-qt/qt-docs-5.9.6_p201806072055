@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/p7zip
+DESCRIPTION=Qt5 documentation, for use with Qt Creator and other tools
+EAPI=6
+HOMEPAGE=https://doc.qt.io/
+IUSE=3d bluetooth charts datavis declarative graphicaleffects +html location multimedia networkauth +qch script sensors speech virtualkeyboard webengine
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
+LICENSE=FDL-1.3
+REQUIRED_USE=|| ( html qch )
+SLOT=5
+SRC_URI=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc/5.9.6-0-201806072055qt-everywhere-documentation.7z charts? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtcharts/5.9.6-0-201806072055qtcharts-documentation.7z ) datavis? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtdatavis3d/5.9.6-0-201806072055qtdatavisualization-documentation.7z ) networkauth? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtnetworkauth/5.9.6-0-201806072055qtnetworkauth-documentation.7z ) script? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtscript/5.9.6-0-201806072055qtscript-documentation.7z https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtscript/5.9.6-0-201806072055qtscripttools-documentation.7z ) speech? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtspeech/5.9.6-0-201806072055qtspeech-documentation.7z ) virtualkeyboard? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtvirtualkeyboard/5.9.6-0-201806072055qtvirtualkeyboard-documentation.7z ) webengine? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_596_src_doc_examples/qt.596.doc.qtwebengine/5.9.6-0-201806072055qtwebengine-documentation.7z )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=6329240545f3427b3f4b4b62e2ca1649

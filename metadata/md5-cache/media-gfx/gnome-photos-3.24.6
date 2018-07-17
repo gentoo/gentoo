@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEPEND=>=app-misc/tracker-1:=[miner-fs] >=dev-libs/glib-2.44:2 gnome-base/gsettings-desktop-schemas >=dev-libs/libgdata-0.15.2:0=[gnome-online-accounts] media-libs/babl >=media-libs/gegl-0.3.14:0.3[cairo,jpeg2k,raw] media-libs/gexiv2 >=media-libs/grilo-0.3.0:0.3= >=media-libs/libpng-1.6:0= >=net-libs/gnome-online-accounts-3.8:= >=net-libs/libgfbgraph-0.2.1:0.2 sci-geosciences/geocode-glib >=x11-libs/cairo-1.14 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3.22.15:3 app-text/yelp-tools dev-util/desktop-file-utils >=dev-util/intltool-0.50.1 virtual/pkgconfig test? ( || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-util/dogtail[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) ) >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Access, organize and share your photos on GNOME
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Apps/Photos
+IUSE=flickr test upnp-av test
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+ LGPL-2+
+RDEPEND=>=app-misc/tracker-1:=[miner-fs] >=dev-libs/glib-2.44:2 gnome-base/gsettings-desktop-schemas >=dev-libs/libgdata-0.15.2:0=[gnome-online-accounts] media-libs/babl >=media-libs/gegl-0.3.14:0.3[cairo,jpeg2k,raw] media-libs/gexiv2 >=media-libs/grilo-0.3.0:0.3= >=media-libs/libpng-1.6:0= >=net-libs/gnome-online-accounts-3.8:= >=net-libs/libgfbgraph-0.2.1:0.2 sci-geosciences/geocode-glib >=x11-libs/cairo-1.14 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3.22.15:3 net-misc/gnome-online-miners[flickr?] upnp-av? ( media-plugins/grilo-plugins:0.3[upnp-av] ) flickr? ( media-plugins/grilo-plugins:0.3[flickr] )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-photos/3.24/gnome-photos-3.24.6.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	virtualx	3a3c4637ea6d5a2113707a644766337c	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=9c87a0449b99adcfa6f4972db1c5598e

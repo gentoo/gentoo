@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Merges httpd logfiles in the Common Log Format
+EAPI=7
+HOMEPAGE=https://www.xach.com/multisort/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://www.xach.com/multisort/multisort-1.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5c34b737cf3465545a66fc0a9d948e0b

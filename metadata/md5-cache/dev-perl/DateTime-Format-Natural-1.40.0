@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Clone dev-perl/Date-Calc dev-perl/DateTime dev-perl/DateTime-TimeZone virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/List-MoreUtils dev-perl/Params-Validate virtual/perl-Scalar-List-Utils virtual/perl-Storable virtual/perl-Term-ReadLine dev-perl/boolean >=dev-perl/Module-Build-0.420.0 test? ( dev-perl/Module-Util dev-perl/Test-MockTime virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Parse informal natural language date/time strings
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/DateTime-Format-Natural/
+IUSE=test
+KEYWORDS=amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Clone dev-perl/Date-Calc dev-perl/DateTime dev-perl/DateTime-TimeZone virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/List-MoreUtils dev-perl/Params-Validate virtual/perl-Scalar-List-Utils virtual/perl-Storable virtual/perl-Term-ReadLine dev-perl/boolean dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.04.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=81b4d1eb333003070eec5437f8a791ad

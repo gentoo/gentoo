@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=net-misc/rsync >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Web frontend for sys-cluster/ganglia
+EAPI=6
+HOMEPAGE=http://ganglia.sourceforge.net
+IUSE=vhosts vhosts
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=net-misc/rsync >=app-admin/webapp-config-1.50.15 >=sys-cluster/ganglia-3.3.7[-minimal] dev-lang/php[gd,xml,ctype] virtual/httpd-php media-fonts/dejavu >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=https://github.com/ganglia/ganglia-web/archive/3.7.3.tar.gz -> ganglia-web-3.7.3.tar.gz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=0fa614d07585d48c7ae927e332fa88ae

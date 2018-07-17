@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
+EAPI=6
+HOMEPAGE=https://www.percona.com/software/percona-xtrabackup
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libaio dev-libs/libgcrypt:11/11 dev-libs/libgpg-error dev-perl/DBD-mysql sys-libs/zlib
+SLOT=0
+SRC_URI=amd64? ( https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.4.9/binary/tarball/percona-xtrabackup-2.4.9-Linux-x86_64.tar.gz ) x86? ( https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.4.9/binary/tarball/percona-xtrabackup-2.4.9-Linux-i686.tar.gz )
+_md5_=7863434d61f62c05fa855f5af29e2b5a

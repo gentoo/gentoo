@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm prepare setup unpack
+DEPEND=nls? ( sys-devel/gettext )
+DESCRIPTION=A graphical front-end for ClamAV
+EAPI=6
+HOMEPAGE=https://dave-theunsub.github.io/clamtk/
+IUSE=kde nautilus nemo +nls thunar python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=app-antivirus/clamav dev-perl/File-chdir dev-perl/Gtk2 dev-perl/JSON dev-perl/LWP-Protocol-https dev-perl/LWP-UserAgent-Cached dev-perl/Locale-gettext dev-perl/Text-CSV dev-perl/glib-perl dev-perl/libwww-perl virtual/perl-Digest-MD5 virtual/perl-Digest-SHA virtual/perl-Encode virtual/perl-MIME-Base64 virtual/perl-Time-Piece nautilus? ( dev-python/nautilus-python[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] )
+REQUIRED_USE=nautilus? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://bitbucket.org/davem_/clamtk/downloads/clamtk-5.25.tar.xz kde? ( https://bitbucket.org/davem_/clamtk-kde/downloads/clamtk-kde-0.18.tar.xz ) nautilus? ( https://bitbucket.org/davem_/clamtk-gnome/downloads/clamtk-gnome-0.02.tar.xz ) nemo? ( https://bitbucket.org/davem_/nemo-sendto-clamtk/downloads/nemo-sendto-clamtk-0.04.tar.xz ) thunar? ( https://bitbucket.org/davem_/thunar-sendto-clamtk/downloads/thunar-sendto-clamtk-0.06.tar.xz )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=7cdd2b21e1de89b5ffb96600f98f2184

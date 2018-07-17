@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=FlightGear data files
+EAPI=6
+HOMEPAGE=http://www.flightgear.org/
+LICENSE=GPL-2
+RDEPEND=!<games-simulation/flightgear-2.10.0
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=bde9fe5b13b85f270b9a654f588685c0

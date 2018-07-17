@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=media-fonts/dejavu dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtserialport:5 dev-qt/qtwidgets:5 virtual/opengl sys-libs/zlib media? ( dev-qt/qtmultimedia:5[widgets] ) gps? ( dev-qt/qtpositioning:5 ) dev-qt/qttest:5 dev-qt/qtconcurrent:5 nls? ( dev-qt/linguist-tools:5 ) sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4
+DESCRIPTION=3D photo-realistic skies in real time
+EAPI=6
+HOMEPAGE=http://www.stellarium.org/
+IUSE=debug gps media nls stars l10n_af l10n_am l10n_ar l10n_as l10n_ast l10n_az l10n_be l10n_bg l10n_bn l10n_bo l10n_br l10n_bs l10n_ca l10n_cs l10n_cy l10n_da l10n_de l10n_el l10n_en l10n_en-GB l10n_en-US l10n_eo l10n_es l10n_et l10n_eu l10n_fa l10n_fi l10n_fil l10n_fr l10n_ga l10n_gd l10n_gl l10n_gu l10n_he l10n_hi l10n_hr l10n_hu l10n_hy l10n_ia l10n_id l10n_is l10n_it l10n_ja l10n_ka l10n_kk l10n_kn l10n_ko l10n_ky l10n_la l10n_lb l10n_lo l10n_lt l10n_lv l10n_mk l10n_ml l10n_mn l10n_mr l10n_ms l10n_nb l10n_nl l10n_nn l10n_oc l10n_pa l10n_pl l10n_pt l10n_pt-BR l10n_ro l10n_ru l10n_se l10n_si l10n_sk l10n_sl l10n_sq l10n_sr l10n_sv l10n_sw l10n_ta l10n_te l10n_tg l10n_th l10n_tl l10n_tr l10n_tt l10n_uk l10n_uz l10n_vi l10n_zh-CN l10n_zh-HK l10n_zh-TW l10n_zu
+KEYWORDS=amd64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2+
+RDEPEND=media-fonts/dejavu dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtserialport:5 dev-qt/qtwidgets:5 virtual/opengl sys-libs/zlib media? ( dev-qt/qtmultimedia:5[widgets] ) gps? ( dev-qt/qtpositioning:5 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/stellarium/stellarium-0.16.0.tar.gz stars? ( mirror://sourceforge/stellarium/stars_4_1v0_1.cat mirror://sourceforge/stellarium/stars_5_2v0_1.cat mirror://sourceforge/stellarium/stars_6_2v0_1.cat mirror://sourceforge/stellarium/stars_7_2v0_1.cat mirror://sourceforge/stellarium/stars_8_2v0_1.cat )
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=9ffb39c205bd27cb7d63d089ccd439b5

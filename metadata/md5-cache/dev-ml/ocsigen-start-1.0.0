@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/pgocaml:= dev-ml/macaque:= dev-ml/ocaml-safepass:= >=dev-ml/eliom-6.2:= dev-ml/ocsigen-toolkit:= dev-ml/ppx_deriving:= dev-ml/yojson:= dev-ml/OCaml-ImageMagick:= >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Eliom Base Application with users, (pre)registration, notifications, etc.
+EAPI=5
+HOMEPAGE=https://github.com/ocsigen/ocsigen-start
+KEYWORDS=~amd64
+LICENSE=LGPL-3
+RDEPEND=dev-lang/ocaml:= dev-ml/pgocaml:= dev-ml/macaque:= dev-ml/ocaml-safepass:= >=dev-ml/eliom-6.2:= dev-ml/ocsigen-toolkit:= dev-ml/ppx_deriving:= dev-ml/yojson:= dev-ml/OCaml-ImageMagick:=
+SLOT=0/1.0.0
+SRC_URI=https://github.com/ocsigen/ocsigen-start/archive/1.0.0.tar.gz -> ocsigen-start-1.0.0.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=e1dd4ef3b85d3c53be1810f6687852a3

@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=linux port of Thierry Zollers' BTCrack
+EAPI=5
+HOMEPAGE=https://github.com/mikeryan/btcrack
+LICENSE=GPL-3
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=e6c3ff79c7811db6b83fcd9abd1f594f

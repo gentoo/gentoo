@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-libs/expat dev-scheme/scm[libscm]
+DESCRIPTION=A lightweight Relax NG Compact Syntax validator
+EAPI=6
+HOMEPAGE=http://www.davidashen.net/rnv.html
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=dev-libs/expat dev-scheme/scm[libscm]
+SLOT=0
+SRC_URI=mirror://sourceforge/rnv/rnv-1.7.11.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_md5_=7300efb2c06eb0abeecce9f659cad466

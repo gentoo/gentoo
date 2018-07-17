@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-apps/dbus virtual/pkgconfig
+DESCRIPTION=lib for D-Bus daemon messages, querying HAL or PolicyKit privileges
+EAPI=6
+HOMEPAGE=https://freedesktop.org/wiki/Software/liblazy
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=sys-apps/dbus
+SLOT=0
+SRC_URI=https://people.freedesktop.org/~homac/liblazy/liblazy-0.2.tar.bz2
+_md5_=726900764679424d6066638d81f5b469

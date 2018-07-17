@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=The Coordinate Library for working with CCP4 coordinate files
+EAPI=6
+HOMEPAGE=https://launchpad.net/mmdb/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=GPL-2 LGPL-3
+SLOT=2
+SRC_URI=ftp://ftp.ccp4.ac.uk/opensource/mmdb2-2.0.5.tar.gz
+_md5_=cff5bca7f5bd0fe90a564a345be34080

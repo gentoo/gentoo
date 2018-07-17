@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare setup
+DEPEND=dev-libs/glib:2 dev-libs/json-c:= gegl? ( media-libs/babl media-libs/gegl:0.3[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1.32 ) openmp? ( sys-devel/gcc:*[openmp] ) nls? ( sys-devel/gettext ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) nls? ( dev-util/intltool )
+DESCRIPTION=Library for making brushstrokes
+EAPI=6
+HOMEPAGE=https://github.com/mypaint/libmypaint
+IUSE=+gegl introspection nls openmp
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86
+LICENSE=ISC
+RDEPEND=dev-libs/glib:2 dev-libs/json-c:= gegl? ( media-libs/babl media-libs/gegl:0.3[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1.32 ) openmp? ( sys-devel/gcc:*[openmp] ) nls? ( sys-devel/gettext ) !<media-gfx/mypaint-1.2.2
+SLOT=0/0
+SRC_URI=https://github.com/mypaint/libmypaint/releases/download/v1.3.0-beta.1/libmypaint-1.3.0-beta.1.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=f459c3bb884998f4bd035e0d0e6c787e

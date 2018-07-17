@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure prepare setup
+DESCRIPTION=xDMS - Amiga DMS disk image decompressor
+EAPI=6
+HOMEPAGE=http://zakalwe.fi/~shd/foss/xdms
+KEYWORDS=amd64 ~hppa ppc x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://zakalwe.fi/~shd/foss/xdms/xdms-1.3.2.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=bb550ab228f9d72bf6c9ae62222d49fd

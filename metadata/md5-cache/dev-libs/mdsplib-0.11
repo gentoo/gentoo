@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install
+DESCRIPTION=METAR Decoder Software Package Library
+EAPI=6
+HOMEPAGE=http://limulus.net/mdsplib/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=http://limulus.net/mdsplib/mdsplib-0.11.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=dbc181ea3863646b84a622dac37c1f5c

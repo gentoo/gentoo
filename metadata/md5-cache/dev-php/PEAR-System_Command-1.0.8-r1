@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=PHP command-line execution interface
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/System_Command
+IUSE=examples
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/System_Command-1.0.8.tgz
+_md5_=6fdcf4e24f319c2b4249ff3214a8e6e4

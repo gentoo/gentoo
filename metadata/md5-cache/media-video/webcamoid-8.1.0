@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtquickcontrols:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ffmpeg? ( libav? ( media-video/libav:= ) !libav? ( media-video/ffmpeg:= ) ) gstreamer? ( >=media-libs/gstreamer-1.6.0 ) jack? ( virtual/jack ) libuvc? ( media-libs/libuvc ) pulseaudio? ( media-sound/pulseaudio ) qtaudio? ( dev-qt/qtmultimedia:5 ) v4l? ( media-libs/libv4l ) dev-qt/linguist-tools:5 >=sys-kernel/linux-headers-3.6 virtual/pkgconfig
+DESCRIPTION=A full featured webcam capture application
+EAPI=6
+HOMEPAGE=https://webcamoid.github.io
+IUSE=alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers libav v4l
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtquickcontrols:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ffmpeg? ( libav? ( media-video/libav:= ) !libav? ( media-video/ffmpeg:= ) ) gstreamer? ( >=media-libs/gstreamer-1.6.0 ) jack? ( virtual/jack ) libuvc? ( media-libs/libuvc ) pulseaudio? ( media-sound/pulseaudio ) qtaudio? ( dev-qt/qtmultimedia:5 ) v4l? ( media-libs/libv4l )
+REQUIRED_USE=libav? ( ffmpeg ) v4lutils? ( v4l )
+SLOT=0
+SRC_URI=https://github.com/webcamoid/webcamoid/archive/8.1.0.tar.gz -> webcamoid-8.1.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f0e2749892858ad1ff949ade5fe45777

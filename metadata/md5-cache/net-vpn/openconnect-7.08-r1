@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare pretend setup unpack
+DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) libressl? ( dev-libs/libressl:0=[static-libs?] ) ) gnutls? ( app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) virtual/pkgconfig doc? ( || ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) sys-apps/groff ) java? ( >=virtual/jdk-1.6 ) nls? ( sys-devel/gettext ) java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
+EAPI=6
+HOMEPAGE=http://www.infradead.org/openconnect.html
+IUSE=doc +gnutls gssapi java libproxy libressl lz4 nls smartcard static-libs stoken elibc_FreeBSD java kernel_linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=LGPL-2.1 GPL-2
+RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h:0=[static-libs?] ) libressl? ( dev-libs/libressl:0=[static-libs?] ) ) gnutls? ( app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3:0=[static-libs?] ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken ) sys-apps/iproute2 !<sys-apps/openrc-0.13 java? ( >=dev-java/java-config-2.2.0-r3 )
+SLOT=0/5
+SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-7.08.tar.gz ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20180227.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	0ee72667014428e01a01df2345244cf3	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=00b773f86cbf55118872b54bdd2c6bc1

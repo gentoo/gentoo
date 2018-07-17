@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Just-In-Time Compiler for the Lua programming language
+EAPI=6
+HOMEPAGE=http://luajit.org/
+IUSE=lua52compat static-libs
+KEYWORDS=amd64 arm ppc x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+SLOT=2
+SRC_URI=http://luajit.org/download/LuaJIT-2.0.5.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=e671593bbc501382f0d5148640c8c21d

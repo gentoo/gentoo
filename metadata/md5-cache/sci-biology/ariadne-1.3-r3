@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=sci-biology/ncbi-tools-0.20041020-r1
+DESCRIPTION=Protein sequences and profiles comparison
+EAPI=6
+HOMEPAGE=http://www.well.ox.ac.uk/ariadne/
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=ARIADNE
+RDEPEND=>=sci-biology/ncbi-tools-0.20041020-r1
+SLOT=0
+SRC_URI=http://www.well.ox.ac.uk/ariadne/ariadne-1.3.tar.Z
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a99266aecef97d81f48df25aa43fbb4a

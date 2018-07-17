@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=gtk? ( dev-libs/glib:2= x11-libs/gtk+:2= )
+DESCRIPTION=Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
+EAPI=6
+HOMEPAGE=https://www.gentoo.org/
+IUSE=gtk
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=gtk? ( dev-libs/glib:2= x11-libs/gtk+:2= )
+SLOT=0
+SRC_URI=mirror://gentoo/ipsorc-2.0.9.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=02dea6f2efaf1f412e815d76908eac6a

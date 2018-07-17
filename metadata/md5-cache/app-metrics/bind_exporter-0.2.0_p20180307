@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare setup test unpack
+DEPEND=dev-util/promu >=dev-lang/go-1.9
+DESCRIPTION=Prometheus exporter for BIND
+EAPI=6
+HOMEPAGE=https://github.com/digitalocean/bind_exporter
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/digitalocean/bind_exporter/archive/38ef3a6caa68e8c42a08e72d51e90b00333e6894.tar.gz -> bind_exporter-0.2.0_p20180307.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=7517c6be43747e992eed4b6bdca14c5f

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=x11-libs/libX11 x11-base/xorg-proto
+DESCRIPTION=yeahconsole turns an xterm or rxvt-unicode into a game-like console
+EAPI=6
+HOMEPAGE=http://phrat.de/yeahtools.html
+KEYWORDS=amd64 hppa x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=http://phrat.de/yeahconsole-0.3.4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=38b2842b3437bedd8a9ef9b5a41effdf

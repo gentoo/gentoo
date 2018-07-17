@@ -1,0 +1,10 @@
+BDEPEND=dev-tex/leaflet dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience html? ( app-text/recode >=dev-tex/tex4ht-20090611_p1038-r5 ) >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Gentoo Package Manager Specification (draft)
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification
+IUSE=html twoside
+LICENSE=CC-BY-SA-3.0
+SLOT=live
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=28b8216069a3c1e73a25f6c11f1c2077

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=gnome-base/gnome-vfs-2 >=dev-perl/glib-perl-1.120 >=dev-perl/ExtUtils-Depends-0.2 >=dev-perl/ExtUtils-PkgConfig-1.03 virtual/pkgconfig dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl interface to the 2.x series of the Gnome Virtual File System libraries
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Gnome2-VFS/
+KEYWORDS=alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=LGPL-2.1
+RDEPEND=>=gnome-base/gnome-vfs-2 >=dev-perl/glib-perl-1.120 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TS/TSCH/Gnome2-VFS-1.081.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=813348ba3ddf403c54f867c26a72f12c

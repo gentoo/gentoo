@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Generic O'Caml Makefile for GNU Make
+EAPI=4
+HOMEPAGE=http://mmottl.github.io/ocaml-makefile/ https://github.com/mmottl/ocaml-makefile
+IUSE=examples
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ocaml-3.06-r1 >=dev-ml/findlib-0.8
+SLOT=0
+SRC_URI=https://github.com/mmottl/ocaml-makefile/releases/download/6.39.0/ocaml-makefile-6.39.0.tbz
+_md5_=08682ba84fcd504cf4eb76df7348270c

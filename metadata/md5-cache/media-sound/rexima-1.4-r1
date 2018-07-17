@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
+DESCRIPTION=A curses-based interactive mixer which can also be used from the command-line
+EAPI=6
+HOMEPAGE=http://www.svgalib.org/rus/rexima.html
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=ftp://ftp.ibiblio.org/pub/Linux/apps/sound/mixers/rexima-1.4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=487ab9ce8a7e2df37d3f06a9b677b75c

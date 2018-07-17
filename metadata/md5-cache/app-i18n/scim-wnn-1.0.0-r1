@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst prepare
+DEPEND=>=app-i18n/scim-1.4[-gtk3] dev-libs/wnn7sdk freewnn? ( app-i18n/freewnn ) virtual/pkgconfig
+DESCRIPTION=Japanese input method Wnn IMEngine for SCIM
+EAPI=7
+HOMEPAGE=http://nop.net-p.org/modules/pukiwiki/index.php?%5B%5Bscim-wnn%5D%5D
+IUSE=+freewnn
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-i18n/scim-1.4[-gtk3] dev-libs/wnn7sdk freewnn? ( app-i18n/freewnn )
+SLOT=0
+SRC_URI=http://nop.net-p.org/files/scim-wnn/scim-wnn-1.0.0.tar.gz
+_md5_=d3b2aac80af256c46a4746b6c2d4dd99

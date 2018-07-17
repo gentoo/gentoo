@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-libs/glib:2 gnome-base/libglade:2.0 virtual/pkgconfig
+DESCRIPTION=WBFS manager for Linux using GTK+
+EAPI=5
+HOMEPAGE=https://code.google.com/p/linux-wbfs-manager/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 gnome-base/libglade:2.0
+SLOT=0
+SRC_URI=https://linux-wbfs-manager.googlecode.com/files/linux-wbfs-manager-0.1.12.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f7882b5aee292f3f826a4cb53deef04e

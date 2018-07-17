@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install test unpack
+DEPEND=pv? ( sys-apps/pv ) doc? ( dev-python/sphinx dev-python/sphinx_rtd_theme net-misc/rsync ) test? ( app-arch/pigz )
+DESCRIPTION=Lightweight user-defined software stacks for high-performance computing
+EAPI=7
+HOMEPAGE=https://hpc.github.io/charliecloud/
+IUSE=doc examples +pv test
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=bd1ed0af4a1667156e50f4ffcf22d2fb

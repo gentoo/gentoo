@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=mp3? ( media-libs/libmad media-libs/libid3tag ) mp4? ( media-libs/libmp4v2:0 ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis ) archive? ( app-arch/libarchive ) mysql? ( virtual/mysql ) =www-servers/apache-2*
+DESCRIPTION=mod_musicindex allows nice displaying of directories containing music files
+EAPI=5
+HOMEPAGE=http://www.parisc-linux.org/~varenet/musicindex/
+IUSE=+mp3 +mp4 +flac +vorbis +cache mysql archive
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=mp3? ( media-libs/libmad media-libs/libid3tag ) mp4? ( media-libs/libmp4v2:0 ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis ) archive? ( app-arch/libarchive ) mysql? ( virtual/mysql ) sys-devel/libtool =www-servers/apache-2*
+SLOT=0
+SRC_URI=http://hacks.slashdirt.org/musicindex/mod_musicindex-1.4.1.tar.gz http://validator.w3.org/feed/images/valid-rss.png -> mod_musicindex-1.4.1_valid-rss.png http://jigsaw.w3.org/css-validator/images/vcss -> mod_musicindex-1.4.1_vcss http://www.w3.org/Icons/valid-xhtml11 -> mod_musicindex-1.4.1_valid-xhtml11
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	0917334d570e07f9743a04ff85b3bf1b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=be8cd500ba1c232ba1bd9ad69ad46f7d

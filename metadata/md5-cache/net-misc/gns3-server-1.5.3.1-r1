@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-python/setuptools[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)]
+DESCRIPTION=GNS3 server to asynchronously manage emulators
+EAPI=6
+HOMEPAGE=http://www.gns3.net/
+IUSE=python_targets_python3_4
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=app-emulation/dynamips-0.2.12 >=dev-python/aiohttp-1.2.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/aiohttp-cors-0.5.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/docker-py-1.4.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/netifaces-0.8-r2[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/jinja-2.7.3[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/jsonschema-2.4.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/libcloud-0.14.1[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/raven-5.2.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/psutil-3.0.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/pyzmq-14.3.1[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/python-zipstream-1.1.4[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=www-servers/tornado-3.1.1[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] virtual/python-typing[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-python/yarl-0.7.0[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)]
+REQUIRED_USE=|| ( python_targets_python3_4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/GNS3/gns3-server/archive/v1.5.3.1.tar.gz -> gns3-server-1.5.3.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=a41e572c684709b3d11f3e82287e5fbb

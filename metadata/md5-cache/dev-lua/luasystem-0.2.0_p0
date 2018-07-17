@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/lua-5.1:= virtual/pkgconfig
+DESCRIPTION=platform independent system calls for lua
+EAPI=6
+HOMEPAGE=https://github.com/LuaDist2/luasystem
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/lua-5.1:=
+SLOT=0
+SRC_URI=https://github.com/LuaDist2/luasystem/archive/0.2.0-0.tar.gz -> luasystem-0.2.0_p0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5a8aa7ddc2800f0cd2e461a7293f036f

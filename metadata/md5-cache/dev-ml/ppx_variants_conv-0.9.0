@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/variantslib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Generation of accessor and iteration functions for ocaml variant types
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_variants_conv
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/variantslib:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_variants_conv/archive/v0.9.0.tar.gz -> ppx_variants_conv-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=85b8cf52cb554cc85eb56bd818a193ea

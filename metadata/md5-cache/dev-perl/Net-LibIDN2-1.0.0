@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=net-dns/libidn2 virtual/perl-ExtUtils-CBuilder virtual/perl-ExtUtils-ParseXS dev-perl/Module-Build test? ( >=virtual/perl-Test-Simple-0.10.0 ) dev-lang/perl:=
+DESCRIPTION=Perl bindings for GNU Libidn2
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-LibIDN2/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=net-dns/libidn2 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TH/THOR/Net-LibIDN2-1.00.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=3508383a9c992738fd32fa7c17628778

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure preinst prepare setup
+DEPEND=dev-libs/json-glib net-im/pidgin[gtk?,ncurses?] talkfilters? ( app-text/talkfilters ) spell? ( app-text/gtkspell:2 ) || ( >=dev-lang/python-2.7.5-r2:2.7 )
+DESCRIPTION=A package with many different plugins for pidgin and libpurple
+EAPI=6
+HOMEPAGE=https://bitbucket.org/rekkanoryo/purple-plugin-pack/
+IUSE=debug gtk ncurses spell talkfilters
+KEYWORDS=amd64 hppa ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/json-glib net-im/pidgin[gtk?,ncurses?] talkfilters? ( app-text/talkfilters ) spell? ( app-text/gtkspell:2 )
+SLOT=0
+SRC_URI=https://bitbucket.org/rekkanoryo/purple-plugin-pack/downloads/purple-plugin-pack-2.7.0.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f4d324f635c0920828305df66201e224

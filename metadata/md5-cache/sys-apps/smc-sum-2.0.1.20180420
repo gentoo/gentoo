@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch
+DESCRIPTION=Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
+EAPI=6
+HOMEPAGE=https://www.supermicro.com
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=supermicro
+RDEPEND=sys-apps/smc-sum-driver
+RESTRICT=bindist fetch mirror strip
+SLOT=0
+SRC_URI=sum_2.0.1_Linux_x86_64_20180420.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f
+_md5_=b1954815a5695f2a01a82f7b115e83cb

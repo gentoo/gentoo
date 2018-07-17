@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-libs/efl-1.17.0[fbcon?,sdl?,png,wayland?,X?] javascript? ( net-libs/nodejs ) >=app-portage/elt-patches-20170317 >=app-portage/elt-patches-20170422 doc? ( app-doc/doxygen )
+DESCRIPTION=Basic widget set, based on EFL for mobile touch-screen devices
+EAPI=5
+HOMEPAGE=https://trac.enlightenment.org/e/wiki/Elementary
+IUSE=debug examples fbcon javascript quicklaunch sdl wayland X static-libs nls doc
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/efl-1.17.0[fbcon?,sdl?,png,wayland?,X?] javascript? ( net-libs/nodejs ) nls? ( sys-devel/gettext )
+SLOT=0
+SRC_URI=https://download.enlightenment.org/rel/libs/elementary/elementary-1.17.0.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	enlightenment	e2ebae76ba56501855712c5fd3c4c77c	epatch	9a5f039771f143195164a15a4faa41a1	epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=7117a130e5fb585f4097e3ac336860ad

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst prepare setup unpack
+DEPEND=>=dev-libs/openssl-1.0.0b:0= >=dev-libs/protobuf-2.2.0:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 || ( dev-qt/qtsql:5[sqlite] dev-qt/qtsql:5[mysql] ) dev-qt/qtxml:5 sys-apps/lsb-release >=sys-libs/libcap-2.15 dbus? ( dev-qt/qtdbus:5 ) ice? ( dev-libs/Ice:= ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) >=dev-libs/boost-1.41.0 virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Mumble is an open source, low-latency, high quality voice chat software
+EAPI=6
+HOMEPAGE=https://wiki.mumble.info
+IUSE=+dbus debug +ice pch zeroconf
+LICENSE=BSD
+RDEPEND=>=dev-libs/openssl-1.0.0b:0= >=dev-libs/protobuf-2.2.0:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 || ( dev-qt/qtsql:5[sqlite] dev-qt/qtsql:5[mysql] ) dev-qt/qtxml:5 sys-apps/lsb-release >=sys-libs/libcap-2.15 dbus? ( dev-qt/qtdbus:5 ) ice? ( dev-libs/Ice:= ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
+SLOT=0
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=5b4ad67298ac31bda885bd36dcb20ae7

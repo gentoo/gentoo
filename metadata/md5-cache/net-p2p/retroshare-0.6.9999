@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm preinst pretend unpack
+DEPEND=app-arch/bzip2 dev-libs/openssl:0= >=dev-libs/rapidjson-1.1.0 net-libs/libupnp:0= sys-libs/zlib control-socket? ( dev-qt/qtnetwork:5 ) gnome-keyring? ( gnome-base/libgnome-keyring ) gui? ( dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) settings-api? ( dev-qt/qtcore:5 ) sqlcipher? ( dev-db/sqlcipher ) !sqlcipher? ( dev-db/sqlite:3 ) webui? ( net-libs/libmicrohttpd ) gui? ( dev-qt/designer:5 ) dev-qt/qtcore:5 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl] >=sys-apps/sed-4
+DESCRIPTION=P2P private sharing application
+EAPI=6
+HOMEPAGE=http://retroshare.net
+IUSE=cli control-socket gnome-keyring +gui settings-api +sqlcipher +webui
+LICENSE=AGPL-3 GPL-2 GPL-3 Apache-2.0 LGPL-2.1
+RDEPEND=app-arch/bzip2 dev-libs/openssl:0= >=dev-libs/rapidjson-1.1.0 net-libs/libupnp:0= sys-libs/zlib control-socket? ( dev-qt/qtnetwork:5 ) gnome-keyring? ( gnome-base/libgnome-keyring ) gui? ( dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) settings-api? ( dev-qt/qtcore:5 ) sqlcipher? ( dev-db/sqlcipher ) !sqlcipher? ( dev-db/sqlite:3 ) webui? ( net-libs/libmicrohttpd )
+REQUIRED_USE=|| ( cli gui ) settings-api? ( || ( control-socket webui ) )
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=e763ff1800c7e999c76f1d2bea1f2e44

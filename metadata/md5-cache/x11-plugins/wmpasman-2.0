@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=app-crypt/libsecret >=x11-libs/gtk+-3.8.0:3 virtual/pkgconfig
+DESCRIPTION=Password storage/retrieval in a dockapp
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/wmpasman/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-crypt/libsecret >=x11-libs/gtk+-3.8.0:3
+SLOT=0
+SRC_URI=mirror://sourceforge/wmpasman/wmpasman-2.0.tar.gz
+_md5_=d66d3a5fc78fe3b210986d41803675e0

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 xinerama? ( x11-libs/libXinerama ) app-text/ghostscript-gpl x11-base/xorg-proto
+DESCRIPTION=A tool to display full-screen PostScript presentations
+EAPI=6
+HOMEPAGE=http://www.cse.unsw.edu.au/~matthewc/pspresent/
+IUSE=xinerama
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 xinerama? ( x11-libs/libXinerama ) app-text/ghostscript-gpl
+SLOT=0
+SRC_URI=http://www.cse.unsw.edu.au/~matthewc/pspresent/pspresent-1.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=fc0353b614822ca0409c1274193ae1b2

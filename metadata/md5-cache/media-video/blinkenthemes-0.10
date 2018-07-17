@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/blib virtual/pkgconfig
+DESCRIPTION=Themes for blinkensim
+EAPI=0
+HOMEPAGE=http://www.blinkenlights.net/project/developer-tools
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.blinkenlights.de/dist/blinkenthemes-0.10.tar.gz
+_md5_=42d7c22f03f56aabf31f55f604f61d52

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/gtk+:2 virtual/pkgconfig
+DESCRIPTION=a convert program for decimal, hexadecimal, octal and binary values
+EAPI=6
+HOMEPAGE=http://www.fluxcode.net
+KEYWORDS=amd64 x86
+LICENSE=Artistic
+RDEPEND=x11-libs/gtk+:2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.fluxcode.net/files/gbase-0.5.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9845afd9a2d1f8f82cec3d48a51d59a8

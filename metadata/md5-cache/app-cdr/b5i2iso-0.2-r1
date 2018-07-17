@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Convert CD images from b5i (BlindWrite) to iso
+EAPI=6
+HOMEPAGE=https://web.archive.org/web/20100116120705/b5i2iso.berlios.de
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/b5i2iso.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=b2804221fd50de1eb57797d9c6542099

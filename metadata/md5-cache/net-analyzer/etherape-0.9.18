@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=dev-libs/glib:2 dev-libs/popt net-libs/libpcap x11-libs/goocanvas:2.0 >=sys-devel/gettext-0.11.5 app-text/docbook-xml-dtd:4.1.2 app-text/yelp-tools virtual/pkgconfig
+DESCRIPTION=A graphical network monitor for Unix modeled after etherman
+EAPI=6
+HOMEPAGE=http://etherape.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/popt net-libs/libpcap x11-libs/goocanvas:2.0
+SLOT=0
+SRC_URI=mirror://sourceforge/etherape/etherape-0.9.18.tar.gz
+_md5_=5a37dae41cdf8ff4e8ed0ee3c8ff6e70

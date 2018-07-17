@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=sys-cluster/torque
+DESCRIPTION=replacement for mpirun, integrates MPI with PBS
+EAPI=0
+HOMEPAGE=http://www.osc.edu/~djohnson/mpiexec/index.php
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=sys-cluster/torque net-misc/openssh
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.osc.edu/~djohnson/mpiexec/mpiexec-0.83.tgz
+_md5_=79437157258cc22fbfb42b4002a6f19f

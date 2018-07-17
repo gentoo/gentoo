@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=virtual/os-headers
+DESCRIPTION=Preloads files into the page cache to accelerate program loading
+EAPI=6
+HOMEPAGE=https://github.com/robbat2/readahead-list
+IUSE=doc
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/readahead-list-1.20060421.1016.tar.bz2
+_md5_=58567cb9f17d79203b513ad2f9fbcc24

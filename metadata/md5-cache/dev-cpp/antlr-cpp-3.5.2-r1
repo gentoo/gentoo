@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=The ANTLR 3 C++ Runtime
+EAPI=6
+HOMEPAGE=http://www.antlr3.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=3.5
+SRC_URI=https://github.com/antlr/antlr3/archive/3.5.2.tar.gz -> antlr-cpp-3.5.2.tar.gz
+_md5_=3d69219f4d729e78acfc35b3c8c57d65

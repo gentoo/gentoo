@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
+EAPI=6
+HOMEPAGE=https://stesie.github.com/geierlein/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=|| ( www-client/firefox www-client/firefox-bin )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/stesie/geierlein/archive/V0.10.0.tar.gz -> geierlein-0.10.0.tar.gz
+_md5_=a748c8435400c5e6c06c40ce96a8da8b

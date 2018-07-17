@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/alsa-lib:= virtual/pkgconfig
+DESCRIPTION=Audio-entropyd generates entropy-data for the /dev/random device
+EAPI=6
+HOMEPAGE=http://www.vanheusden.com/aed/
+IUSE=selinux
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/alsa-lib:= media-sound/alsa-utils selinux? ( sec-policy/selinux-entropyd )
+SLOT=0
+SRC_URI=http://www.vanheusden.com/aed/audio-entropyd-2.0.3.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=46cd76d062b8e0d7469d7fcf7883eb8b

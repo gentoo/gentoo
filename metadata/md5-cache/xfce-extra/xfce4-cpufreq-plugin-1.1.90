@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-libs/glib-2.20:= >=x11-libs/gtk+-3.20:3= >=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:= dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=A panel plugin for showing information about cpufreq settings
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-cpufreq-plugin
+KEYWORDS=amd64 ~arm ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.20:= >=x11-libs/gtk+-3.20:3= >=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:=
+SLOT=0
+SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-cpufreq-plugin/1.1/xfce4-cpufreq-plugin-1.1.90.tar.bz2
+_md5_=4701dea0f7f94e33c068ddc0b5016b3a

@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst postrm setup
+DEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.24 >=gnome-base/libglade-2.6 >=x11-libs/gtk+-2.20:2 >=xfce-base/libxfce4util-4.8 >=xfce-base/libxfcegui4-4.8 >=xfce-base/xfce4-panel-4.8 dev-util/intltool virtual/pkgconfig
+DESCRIPTION=A panel plug-in to mount remote filesystems for the Xfce desktop environment
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-gvfs-mount
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.24 >=gnome-base/libglade-2.6 >=x11-libs/gtk+-2.20:2 >=xfce-base/libxfce4util-4.8 >=xfce-base/libxfcegui4-4.8 >=xfce-base/xfce4-panel-4.8
+SLOT=0
+SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-gvfs-mount/0.0/xfce4-gvfs-mount-0.0.4-6d2684b.tar.bz2
+_eclasses_=xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=5fe7752a1a56f5c1f622be7c067b2eee

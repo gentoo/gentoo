@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=|| ( app-accessibility/espeak[portaudio] app-accessibility/espeak[pulseaudio] )
+DESCRIPTION=espeakup is a small lightweight connector for espeak and speakup
+EAPI=6
+HOMEPAGE=https://github.com/williamh/espeakup
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=|| ( app-accessibility/espeak[portaudio] app-accessibility/espeak[pulseaudio] )
+SLOT=0
+SRC_URI=https://github.com/williamh/espeakup/archive/v0.80.tar.gz -> espeakup-0.80.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=60b78cdd982f72a42c1d740bdcbc6ff4

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/gtk+:3[X] virtual/pkgconfig
+DESCRIPTION=Dockable clipboard history application for Window Maker
+EAPI=6
+HOMEPAGE=https://www.dockapps.net/wmcliphist
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:3[X]
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/wmcliphist-2.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=368169127663ba21e45b6ec40ea7853c

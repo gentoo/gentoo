@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-scheme/guile-1.8 >=x11-libs/cairo-1.4 virtual/pkgconfig test? ( dev-scheme/guile-lib )
+DESCRIPTION=Wraps the Cairo graphics library for Guile Scheme
+EAPI=2
+HOMEPAGE=http://home.gna.org/guile-cairo/
+IUSE=test
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-scheme/guile-1.8 >=x11-libs/cairo-1.4
+SLOT=0
+SRC_URI=http://download.gna.org/guile-cairo/guile-cairo-1.4.0.tar.gz
+_md5_=10fedb78319cc3ac856bac1067f2cabd

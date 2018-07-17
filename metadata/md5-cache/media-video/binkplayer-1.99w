@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Bink Video! Player
+EAPI=5
+HOMEPAGE=http://www.radgametools.com/default.htm
+KEYWORDS=-* amd64 x86
+LICENSE=freedist
+RDEPEND=>=media-libs/libsdl-1.2.15-r5[abi_x86_32(-)] >=media-libs/openal-1.15.1-r1[abi_x86_32(-)]
+SLOT=0
+SRC_URI=mirror://gentoo/binkplayer-1.99w.zip
+_md5_=2e330060774287326ebf08a277178247

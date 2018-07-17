@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.9
+EAPI=6
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://dev.gentoo.org/~mpagano/genpatches/ http://kernel.kolivas.org/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
+IUSE=symlink build deblob
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 !deblob? ( linux-firmware )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=4.9.107
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.9.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.9-gnu/deblob-4.9 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.9-gnu/deblob-check -> deblob-check-4.9 ) mirror://gentoo/genpatches-4.9-110.base.tar.xz mirror://gentoo/genpatches-4.9-110.extras.tar.xz mirror://gentoo/genpatches-4.9-110.experimental.tar.xz http://ck.kolivas.org/patches/4.0/4.9/4.9-ck1/patch-4.9-ck1.xz https://github.com/ckolivas/linux/commit/7de569950716147ed436b27936628ee3ab5b45cc.patch -> ck-sources-4.9-freezer-fix.patch
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	kernel-2	9c959482618084f1edf862d4783a73b4	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=ed1e034cc51699d9fcffe9cb2989963c

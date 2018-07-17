@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-lua/luafilesystem[luajit=] !luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) virtual/pkgconfig doc? ( dev-python/sphinx ) test? ( dev-lua/busted )
+DESCRIPTION=A tool for linting and static analysis of Lua code
+EAPI=6
+HOMEPAGE=https://github.com/mpeterv/luacheck
+IUSE=doc luajit test
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lua/luafilesystem[luajit=] !luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
+SLOT=0
+SRC_URI=https://github.com/mpeterv/luacheck/archive/0.20.0.tar.gz -> luacheck-0.20.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=be439d5b68b8731ad0ba2a07ea106d81

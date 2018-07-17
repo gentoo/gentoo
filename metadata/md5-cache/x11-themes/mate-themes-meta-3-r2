@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta package to facilitate easy use of x11-themes/mate-themes
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+IUSE=gtk2-only
+KEYWORDS=amd64 ~arm ~arm64 x86
+LICENSE=metapackage
+RDEPEND=|| ( gtk2-only? ( !!x11-libs/gtk+:3 x11-themes/mate-themes:0 ) ( =x11-libs/gtk+-3.22*:3 =x11-themes/mate-themes-3.22*:0/3.22 ) )
+SLOT=0
+_md5_=206ac1140cc12b1facff4ad29e571b1e

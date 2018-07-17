@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A Java client for the Kiseido Go Server, and a SGF editor
+EAPI=6
+HOMEPAGE=http://www.gokgs.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=freedist
+RDEPEND=>=virtual/jre-1.3
+SLOT=0
+SRC_URI=mirror://gentoo/cgoban-unix-2.6.12.tar.bz2
+_md5_=3e884225c56e941e2d881b1cd20b500f

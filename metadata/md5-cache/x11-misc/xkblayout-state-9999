@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/libX11 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A small program to get/set the current XKB layout
+EAPI=6
+HOMEPAGE=https://github.com/nonpop/xkblayout-state
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=7bdbda28ec8c69531fa5973a816ba829

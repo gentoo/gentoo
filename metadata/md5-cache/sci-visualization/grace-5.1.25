@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=media-libs/t1lib media-libs/tiff:0 sys-libs/zlib >=x11-libs/motif-2.3:0 x11-libs/xbae fftw? ( sci-libs/fftw:2.1= ) jpeg? ( virtual/jpeg:0 ) netcdf? ( sci-libs/netcdf ) png? ( media-libs/libpng:0= ) fortran? ( virtual/fortran )
+DESCRIPTION=Motif based XY-plotting tool
+EAPI=6
+HOMEPAGE=http://plasma-gate.weizmann.ac.il/Grace/
+IUSE=fftw fortran jpeg netcdf png
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2 LGPL-2
+RDEPEND=media-libs/t1lib media-libs/tiff:0 sys-libs/zlib >=x11-libs/motif-2.3:0 x11-libs/xbae fftw? ( sci-libs/fftw:2.1= ) jpeg? ( virtual/jpeg:0 ) netcdf? ( sci-libs/netcdf ) png? ( media-libs/libpng:0= ) x11-misc/xdg-utils fortran? ( virtual/fortran )
+SLOT=0
+SRC_URI=http://pkgs.fedoraproject.org/cgit/grace.git/plain/grace.png https://dev.gentoo.org/~jlec/distfiles/grace.png.tar ftp://plasma-gate.weizmann.ac.il/pub/grace/src/stable/grace-5.1.25.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=0ba2c2bf96dcbb7a829325a3c3e3a3f1

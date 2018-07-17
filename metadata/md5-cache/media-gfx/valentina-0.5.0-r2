@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=app-text/poppler dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 app-arch/unzip >=sys-apps/sed-4
+DESCRIPTION=Cloth patternmaking software
+EAPI=6
+HOMEPAGE=https://valentinaproject.bitbucket.io/
+IUSE=gnome l10n_cs l10n_de l10n_el l10n_en l10n_en l10n_es l10n_fi l10n_fr l10n_he l10n_id l10n_it l10n_nl l10n_pt-BR l10n_ro l10n_ru l10n_uk l10n_zh-CN
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-text/poppler dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5
+SLOT=0
+SRC_URI=https://bitbucket.org/dismine/valentina/get/v0.5.0.zip -> valentina-0.5.0.zip https://bitbucket.org/dismine/valentina/commits/d78ca13c4891ccf3542b0704a7d66af0f9b02938/raw -> valentina-4798.patch https://bitbucket.org/dismine/valentina/commits/98e869c4146204ef31822087fa826cfa1cd7e0f4/raw -> valentina-4802.patch https://bitbucket.org/dismine/valentina/commits/572fe909f75e013be310905c118e1afe4368db1c/raw -> valentina-5406.patch
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=84311c4aeafd0d6bf770e2b229020d6d

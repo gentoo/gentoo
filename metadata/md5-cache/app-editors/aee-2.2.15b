@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=X? ( x11-libs/libX11 )
+DESCRIPTION=An easy to use text editor
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+IUSE=X
+KEYWORDS=amd64 x86 ~amd64-linux
+LICENSE=Artistic
+RDEPEND=X? ( x11-libs/libX11 )
+SLOT=0
+SRC_URI=mirror://gentoo/aee-2.2.15b.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2d0c5046915f0ac09912e1e85e0476c1

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure prepare
+DEPEND=sys-devel/flex
+DESCRIPTION=the programmers calculator
+EAPI=6
+HOMEPAGE=https://github.com/vapier/pcalc
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/pcalc/pcalc-4.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f0dc702f22f3f5964ae2889e44e44ea2

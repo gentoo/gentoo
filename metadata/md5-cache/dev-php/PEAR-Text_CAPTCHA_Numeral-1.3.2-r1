@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test
+DEPEND=test? ( dev-php/PEAR-PEAR )
+DESCRIPTION=Generates mathematical operations and answers to prove user is human
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Text_CAPTCHA_Numeral
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Text_CAPTCHA_Numeral-1.3.2.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=d8a49c1ffd401301758cfe243d826a36

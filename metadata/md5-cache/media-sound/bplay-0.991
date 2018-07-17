@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=No-frills command-line buffered player and recorder
+EAPI=0
+HOMEPAGE=http://www.amberdata.demon.co.uk/bplay/
+KEYWORDS=amd64 hppa ~ppc sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.amberdata.demon.co.uk/bplay/bplay-0.991.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=7bf1220f2d73c5c9d59976242ddf26a7

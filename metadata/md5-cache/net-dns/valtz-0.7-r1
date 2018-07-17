@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Validation tool for tinydns-data zone files
+EAPI=7
+HOMEPAGE=https://x42.com/software/valtz/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=https://x42.com/software/valtz/valtz.tgz
+_md5_=6489d804cf748e2c336e1b91fede121c

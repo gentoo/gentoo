@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=sys-apps/pcsc-lite dev-lang/lua:5.2 x11-libs/gtk+:3 net-misc/curl !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) virtual/pkgconfig
+DESCRIPTION=Tool to read the contents of smartcards
+EAPI=6
+HOMEPAGE=http://pannetrat.com/Cardpeek
+IUSE=libressl
+LICENSE=GPL-3
+RDEPEND=sys-apps/pcsc-lite dev-lang/lua:5.2 x11-libs/gtk+:3 net-misc/curl !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
+SLOT=0
+SRC_URI=http://downloads.pannetrat.com/install/cardpeek-0.8.4.tar.gz
+_md5_=915caf4380fcfd81fc52ce8ce60079ff

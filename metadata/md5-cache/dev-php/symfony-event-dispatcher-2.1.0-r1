@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare test
+DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader >=dev-php/symfony-dependency-injection-2.1.0 dev-php/phpunit )
+DESCRIPTION=Symfony EventDispatcher Component
+EAPI=6
+HOMEPAGE=https://github.com/symfony/event-dispatcher
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader >=dev-php/symfony-dependency-injection-2.1.0
+SLOT=0
+SRC_URI=https://github.com/symfony/event-dispatcher/archive/v2.1.0.tar.gz -> symfony-event-dispatcher-2.1.0.tar.gz
+_md5_=282c9b3bbad5a6d489412aed848880be

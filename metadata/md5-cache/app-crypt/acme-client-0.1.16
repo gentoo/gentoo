@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/libressl dev-libs/libbsd
+DESCRIPTION=a secure ACME client
+EAPI=6
+HOMEPAGE=https://kristaps.bsd.lv/acme-client
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=dev-libs/libressl dev-libs/libbsd
+SLOT=0
+SRC_URI=https://kristaps.bsd.lv/acme-client/snapshots/acme-client-portable-0.1.16.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=930601e638d964e15d024c54d0f68e77

@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=sys-libs/zlib:0= ssl? ( app-misc/ca-certificates gnutls? ( >=net-libs/gnutls-1.2.9:0= ) !gnutls? ( dev-libs/openssl:0= ) ) adns? ( >=net-dns/c-ares-1.5.0:0= ) bittorrent? ( ssl? ( gnutls? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) !ssl? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) jemalloc? ( dev-libs/jemalloc ) libuv? ( >=dev-libs/libuv-1.13:0= ) metalink? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) sqlite? ( dev-db/sqlite:3= ) ssh? ( net-libs/libssh2:= ) tcmalloc? ( dev-util/google-perftools ) xmlrpc? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) app-arch/xz-utils virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( >=dev-util/cppunit-1.12.0:0 )
+DESCRIPTION=A download utility with segmented downloading with BitTorrent support
+EAPI=6
+HOMEPAGE=https://aria2.github.io/
+IUSE=adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle nls sqlite scripts ssh ssl tcmalloc test xmlrpc
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib:0= ssl? ( app-misc/ca-certificates gnutls? ( >=net-libs/gnutls-1.2.9:0= ) !gnutls? ( dev-libs/openssl:0= ) ) adns? ( >=net-dns/c-ares-1.5.0:0= ) bittorrent? ( ssl? ( gnutls? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) !ssl? ( nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) ) jemalloc? ( dev-libs/jemalloc ) libuv? ( >=dev-libs/libuv-1.13:0= ) metalink? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) sqlite? ( dev-db/sqlite:3= ) ssh? ( net-libs/libssh2:= ) tcmalloc? ( dev-util/google-perftools ) xmlrpc? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) nls? ( virtual/libiconv virtual/libintl ) scripts? ( dev-lang/ruby )
+REQUIRED_USE=?? ( jemalloc tcmalloc ) metalink? ( xmlrpc )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/aria2/aria2/releases/download/release-1.34.0/aria2-1.34.0.tar.xz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2c9edd4a599b795349bfc16ffb5e2e4c

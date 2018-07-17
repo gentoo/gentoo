@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=media-libs/alsa-lib media-libs/munt-mt32emu X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXt )
+DESCRIPTION=ALSA MIDI driver for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
+EAPI=6
+HOMEPAGE=https://github.com/munt/munt
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=media-libs/alsa-lib media-libs/munt-mt32emu X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXt )
+SLOT=0
+SRC_URI=https://github.com/munt/munt/archive/munt_2_3_0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=fa1e6d19714b9f84ef84e6e6bb55942e

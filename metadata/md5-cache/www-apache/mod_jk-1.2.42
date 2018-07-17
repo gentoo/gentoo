@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup
+DEPEND=java? ( >=virtual/jdk-1.4 ) =www-servers/apache-2* java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=JK module for connecting Tomcat and Apache using the ajp13 protocol
+EAPI=5
+HOMEPAGE=https://tomcat.apache.org/connectors-doc/
+IUSE=java elibc_FreeBSD java
+KEYWORDS=amd64 ~ppc x86
+LICENSE=Apache-2.0
+RDEPEND==www-servers/apache-2* java? ( >=dev-java/java-config-2.2.0-r3 )
+SLOT=0
+SRC_URI=mirror://apache/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.42-src.tar.gz
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	0917334d570e07f9743a04ff85b3bf1b	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=2172363acfc09e49266a84195e4758c7

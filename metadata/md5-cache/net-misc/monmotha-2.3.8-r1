@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=MonMotha IPTables-based firewall script
+EAPI=6
+HOMEPAGE=http://monmotha.mplug.org/firewall/
+KEYWORDS=x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=>=net-firewall/iptables-1.2.5
+SLOT=0
+SRC_URI=http://monmotha.mplug.org/~monmotha/firewall/firewall/2.3/rc.firewall-2.3.8
+_md5_=8a3c6c7b73a98a89a5c135a8a1ad9eed

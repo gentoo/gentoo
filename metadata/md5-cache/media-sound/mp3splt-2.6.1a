@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=~media-libs/libmp3splt-0.9.1a[flac?] virtual/pkgconfig sys-devel/gettext
+DESCRIPTION=a command line utility to split mp3 and ogg files without decoding
+EAPI=4
+HOMEPAGE=http://mp3splt.sourceforge.net
+IUSE=flac
+KEYWORDS=alpha amd64 ~hppa ~ppc ~ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=~media-libs/libmp3splt-0.9.1a[flac?]
+SLOT=0
+SRC_URI=mirror://sourceforge/mp3splt/mp3splt-2.6.1a.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=0547fa284151a9bcbfacd53097884325

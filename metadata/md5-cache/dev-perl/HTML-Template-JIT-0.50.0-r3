@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/HTML-Template-2.8 dev-perl/Inline dev-perl/Inline-C dev-lang/perl:=
+DESCRIPTION=a just-in-time compiler for HTML::Template
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/HTML-Template-JIT/
+IUSE=examples
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/HTML-Template-2.8 dev-perl/Inline dev-perl/Inline-C dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SA/SAMTREGAR/HTML-Template-JIT-0.05.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=f1abb919a0f08d706dafb8a10589dff4

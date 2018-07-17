@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure unpack
+DEPEND=gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=Graphical tool to show free disk space like df
+EAPI=6
+HOMEPAGE=https://gitlab.com/mazes_80/gtkdiskfree
+IUSE=gtk2
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 )
+SLOT=0
+SRC_URI=https://gitlab.com/mazes_80/gtkdiskfree/repository/archive.tar.bz2?ref=2.0.3 -> gtkdiskfree-2.0.3.tar.bz2
+_eclasses_=vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=81d57e833063a6b9f9293f732cd09e75

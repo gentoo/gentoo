@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 >=media-libs/libsamplerate-0.1.8 >=media-libs/libsndfile-1.0.11 sci-libs/fftw:3.0 sys-libs/zlib >=x11-libs/fltk-1.3.0_rc3:1 alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) jack? ( virtual/jack ) libgig? ( media-libs/libgig ) ogg? ( media-libs/libogg media-libs/libvorbis ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl >=media-libs/sdl-sound-1.0.1 ) soundio? ( media-libs/libsoundio ) stk? ( media-libs/stk ) vst? ( virtual/wine ) dev-qt/linguist-tools:5 >=dev-util/cmake-2.4.5 sys-devel/make >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Cross-platform music production software
+EAPI=6
+HOMEPAGE=https://lmms.io
+IUSE=alsa debug fluidsynth jack libgig ogg portaudio pulseaudio sdl soundio stk vst
+LICENSE=GPL-2 LGPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 >=media-libs/libsamplerate-0.1.8 >=media-libs/libsndfile-1.0.11 sci-libs/fftw:3.0 sys-libs/zlib >=x11-libs/fltk-1.3.0_rc3:1 alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) jack? ( virtual/jack ) libgig? ( media-libs/libgig ) ogg? ( media-libs/libogg media-libs/libvorbis ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl >=media-libs/sdl-sound-1.0.1 ) soundio? ( media-libs/libsoundio ) stk? ( media-libs/stk ) vst? ( virtual/wine ) media-libs/ladspa-cmt media-plugins/calf media-plugins/caps-plugins media-plugins/swh-plugins media-plugins/tap-plugins
+SLOT=0
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=8d6ae56d559d3d23f8b2c569cd0a0e5a

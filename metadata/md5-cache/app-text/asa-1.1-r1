@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=ASA Carriage control conversion for ouput by Fortran programs
+EAPI=5
+HOMEPAGE=http://www.ibiblio.org/pub/Linux/devel/lang/fortran/
+KEYWORDS=amd64
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.ibiblio.org/pub/Linux/devel/lang/fortran/asa-1.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=bdafa3b9ec1e1a81c600012cc4a6498c

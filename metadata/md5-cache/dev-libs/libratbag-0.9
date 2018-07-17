@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2 virtual/pkgconfig
+DESCRIPTION=Library to configure gaming mice
+EAPI=6
+HOMEPAGE=https://github.com/libratbag/libratbag
+IUSE=doc test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-libs/libevdev virtual/libudev
+SLOT=0
+SRC_URI=https://github.com/libratbag/libratbag/archive/v0.9.tar.gz -> libratbag-0.9.tar.gz
+_eclasses_=meson	eb124b9e9d7a5f1ebc89589fe73c816f	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88
+_md5_=44850f6152995a59cceb90d025aaa2c5

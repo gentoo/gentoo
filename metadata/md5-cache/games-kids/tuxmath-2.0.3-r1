@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=dev-games/t4k-common[svg?] dev-libs/libxml2:2 media-libs/libsdl:0[video] media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[mod] media-libs/sdl-net media-libs/sdl-pango nls? ( virtual/libintl ) svg? ( gnome-base/librsvg:2 x11-libs/cairo ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=sys-apps/sed-4
+DESCRIPTION=Educational arcade game where you have to solve maths problems
+EAPI=6
+HOMEPAGE=http://tux4kids.alioth.debian.org/tuxmath/
+IUSE=nls svg
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 OFL-1.1
+RDEPEND=dev-games/t4k-common[svg?] dev-libs/libxml2:2 media-libs/libsdl:0[video] media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[mod] media-libs/sdl-net media-libs/sdl-pango nls? ( virtual/libintl ) svg? ( gnome-base/librsvg:2 x11-libs/cairo )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/t/tuxmath/tuxmath_2.0.3.orig.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=13d7d159efd4e202f151cc3b1a27560c

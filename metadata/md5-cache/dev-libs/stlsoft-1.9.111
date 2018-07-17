@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Robust, Lightweight, Cross-platform, Template Software
+EAPI=4
+HOMEPAGE=http://www.stlsoft.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=1.9
+SRC_URI=mirror://sourceforge/stlsoft/stlsoft-1.9.111-hdrs.zip
+_md5_=4f7d28f4a1e8e08a07cc2f603118e163

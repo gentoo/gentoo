@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-erlang/fast_tls-1.0.11 >=dev-erlang/p1_utils-1.0.7 >=dev-lang/erlang-17.1 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=STUN and TURN library for Erlang and Elixir
+EAPI=6
+HOMEPAGE=https://github.com/processone/stun
+KEYWORDS=amd64 ~arm ~ia64 ppc ~sparc x86
+LICENSE=BSD
+RDEPEND=>=dev-erlang/fast_tls-1.0.11 >=dev-erlang/p1_utils-1.0.7 >=dev-lang/erlang-17.1 dev-lang/erlang
+SLOT=0
+SRC_URI=https://github.com/processone/stun/archive/1.0.10.tar.gz -> stun-1.0.10.tar.gz
+_eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8
+_md5_=19703a74ec7956782097c6fe3db0a8ff

@@ -1,0 +1,10 @@
+DEFINED_PHASES=unpack
+DEPEND=net-im/pidgin dev-libs/json-glib virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=SkypeWeb Plugin for Pidgin
+EAPI=5
+HOMEPAGE=https://github.com/EionRobb/skype4pidgin
+LICENSE=GPL-3+
+RDEPEND=net-im/pidgin dev-libs/json-glib
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=1f83946d74eac1c1d51e413dcd26c431

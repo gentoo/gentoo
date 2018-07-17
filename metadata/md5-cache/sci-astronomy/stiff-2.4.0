@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=media-libs/tiff:0= virtual/jpeg:0 sys-libs/zlib:0=
+DESCRIPTION=Converts astronomical FITS images to the TIFF format
+EAPI=6
+HOMEPAGE=http://www.astronomatic.net/software/stiff
+IUSE=doc threads
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=media-libs/tiff:0= virtual/jpeg:0 sys-libs/zlib:0=
+SLOT=0
+SRC_URI=http://www.astromatic.net/download/stiff/stiff-2.4.0.tar.gz
+_md5_=2fccafaf875bc1dcb2d75295e6489021

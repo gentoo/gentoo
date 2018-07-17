@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gost? ( >=dev-libs/openssl-1.0.0:0=[-bindist] ) xml? ( dev-libs/libxml2 ) idn? ( <net-dns/idnkit-2:= ) libidn2? ( net-dns/libidn2 ) gssapi? ( virtual/krb5 ) libedit? ( dev-libs/libedit ) !libedit? ( readline? ( sys-libs/readline:0= ) ) seccomp? ( sys-libs/libseccomp ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+EAPI=5
+HOMEPAGE=http://www.isc.org/software/bind
+IUSE=doc gost gssapi idn ipv6 libedit libidn2 libressl readline seccomp ssl urandom xml
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gost? ( >=dev-libs/openssl-1.0.0:0=[-bindist] ) xml? ( dev-libs/libxml2 ) idn? ( <net-dns/idnkit-2:= ) libidn2? ( net-dns/libidn2 ) gssapi? ( virtual/krb5 ) libedit? ( dev-libs/libedit ) !libedit? ( readline? ( sys-libs/readline:0= ) ) seccomp? ( sys-libs/libseccomp ) !<net-dns/bind-9.10.2
+REQUIRED_USE=gost? ( !libressl ssl ) idn? ( !libidn2 ) libidn2? ( !idn )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.isc.org/downloads/file/bind-9.12.2/?version=tar-gz -> bind-9.12.2.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=f2951a1d170465b8c5583fbda28befb5

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare test unpack
+DEPEND=boost? ( dev-libs/boost:0= ) mpi? ( sys-cluster/ampi:0= ) sparse? ( sci-libs/colpack:0= ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Automatic differentiation system for C/C++
+EAPI=6
+HOMEPAGE=https://projects.coin-or.org/ADOL-C/
+IUSE=+boost mpi sparse static-libs
+LICENSE=|| ( EPL-1.0 GPL-2 )
+RDEPEND=boost? ( dev-libs/boost:0= ) mpi? ( sys-cluster/ampi:0= ) sparse? ( sci-libs/colpack:0= )
+SLOT=0/2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=345e34f817d2e057d0c1024a89b0a32f

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prerm setup unpack
+DEPEND==www-servers/apache-2* >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Jukebox-style music server
+EAPI=0
+HOMEPAGE=http://www.mserv.org
+IUSE=vorbis vhosts
+KEYWORDS=amd64 ~ppc sparc x86
+LICENSE=mserv
+RDEPEND=>=dev-lang/perl-5.6.1 media-sound/mpg123 media-sound/sox vorbis? ( media-sound/vorbis-tools ) =www-servers/apache-2* >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=mirror://sourceforge/mserv/mserv-0.35.tar.gz
+_eclasses_=depend.apache	0917334d570e07f9743a04ff85b3bf1b	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=c497195b508c3e21ef9316a74b17944f

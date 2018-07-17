@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Elle Stone's well-behaved RGB and grey ICC profiles
+EAPI=6
+HOMEPAGE=https://ninedegreesbelow.com/photography/lcms-make-icc-profiles.html
+KEYWORDS=amd64
+LICENSE=CC-BY-SA-3.0
+SLOT=0
+SRC_URI=https://github.com/ellelstone/elles_icc_profiles/archive/20160501-0932EST.tar.gz -> elles_icc_profiles-20160501.0932.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=7df94b10d6243685f46614262aec96ca

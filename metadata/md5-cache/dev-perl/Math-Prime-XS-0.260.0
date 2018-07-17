@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/boolean dev-perl/Params-Validate virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils virtual/perl-XSLoader >=dev-perl/Module-Build-0.380.0 test? ( virtual/perl-Test-Simple ) virtual/perl-ExtUtils-CBuilder dev-lang/perl:=
+DESCRIPTION=Detect and calculate prime numbers with deterministic tests
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Math-Prime-XS/
+IUSE=test
+KEYWORDS=~amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/boolean dev-perl/Params-Validate virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils virtual/perl-XSLoader dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KR/KRYDE/Math-Prime-XS-0.26.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=10af4afc0366d871a00bd56699d85d2e

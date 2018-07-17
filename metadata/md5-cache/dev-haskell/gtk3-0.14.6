@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/cairo-0.13.0.0:=[profile?] <dev-haskell/cairo-0.14:=[profile?] >=dev-haskell/glib-0.13.0.0:=[profile?] <dev-haskell/glib-0.14:=[profile?] dev-haskell/mtl:=[profile?] >=dev-haskell/pango-0.13.0.0:=[profile?] <dev-haskell/pango-0.14:=[profile?] >=dev-haskell/text-0.11.0.6:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-7.4.1:= dev-libs/glib:2 x11-libs/gtk+:3 gio? ( >=dev-haskell/gio-0.13.0:=[profile?] <dev-haskell/gio-0.14:=[profile?] ) >=dev-haskell/cabal-1.24 virtual/pkgconfig doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Binding to the Gtk+ 3 graphical user interface library
+EAPI=6
+HOMEPAGE=http://projects.haskell.org/gtk2hs/
+IUSE=+fmode-binary +gio doc hscolour profile
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-haskell/cairo-0.13.0.0:=[profile?] <dev-haskell/cairo-0.14:=[profile?] >=dev-haskell/glib-0.13.0.0:=[profile?] <dev-haskell/glib-0.14:=[profile?] dev-haskell/mtl:=[profile?] >=dev-haskell/pango-0.13.0.0:=[profile?] <dev-haskell/pango-0.14:=[profile?] >=dev-haskell/text-0.11.0.6:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-7.4.1:= dev-libs/glib:2 x11-libs/gtk+:3 gio? ( >=dev-haskell/gio-0.13.0:=[profile?] <dev-haskell/gio-0.14:=[profile?] )
+SLOT=0/0.14.6
+SRC_URI=mirror://hackage/packages/archive/gtk3/0.14.6/gtk3-0.14.6.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ghc-package	a0d34e2f5f204f01c404ae1ce539542a	haskell-cabal	45605f3898bdc59eb016fb50ca27bf18	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=c10a3b9f067ad3edc1f6ef45e2ff3564

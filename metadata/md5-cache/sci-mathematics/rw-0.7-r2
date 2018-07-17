@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=executable? ( >=dev-libs/igraph-0.6 )
+DESCRIPTION=Compute rank-width decompositions of graphs
+EAPI=6
+HOMEPAGE=http://pholia.tdi.informatik.uni-frankfurt.de/~philipp/software/rw.shtml
+IUSE=+executable
+KEYWORDS=~amd64 ~amd64-linux ~x86 ~x86-linux ~ppc-macos ~x86-macos ~x64-macos
+LICENSE=GPL-2+
+RDEPEND=executable? ( >=dev-libs/igraph-0.6 ) !media-gfx/xpaint
+SLOT=0
+SRC_URI=http://pholia.tdi.informatik.uni-frankfurt.de/~philipp/software/rw-0.7.tar.gz
+_md5_=2de0637b9c5b9ad67f9462048e1a7b8c

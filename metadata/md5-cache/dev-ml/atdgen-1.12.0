@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/atd:= dev-ml/biniou:= dev-ml/yojson:= dev-ml/jbuilder dev-ml/opam >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Generates boilerplate OCaml code for JSON and Biniou IO from type definitions
+EAPI=6
+HOMEPAGE=https://github.com/mjambon/atd
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/atd:= dev-ml/biniou:= dev-ml/yojson:=
+SLOT=0/1.12.0
+SRC_URI=https://github.com/mjambon/atd/archive/v1.12.0.tar.gz -> atd-1.12.0.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150
+_md5_=8f1b88749673137817dd51c9e760d696

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/perl
+DESCRIPTION=Count Lines of Code
+EAPI=6
+HOMEPAGE=https://github.com/AlDanial/cloc
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-lang/perl dev-perl/Algorithm-Diff dev-perl/Regexp-Common virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-File-Spec virtual/perl-File-Temp
+SLOT=0
+SRC_URI=https://github.com/AlDanial/cloc/releases/download/1.74/cloc-1.74.tar.gz
+_md5_=42f738dd7b6e5363465cbb1292957dee

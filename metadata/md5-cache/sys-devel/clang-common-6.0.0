@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install test unpack
+DESCRIPTION=Common files shared between multiple slots of clang
+EAPI=6
+HOMEPAGE=https://llvm.org/
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=UoI-NCSA
+PDEPEND=sys-devel/clang:*
+SLOT=0
+SRC_URI=https://releases.llvm.org/6.0.0/cfe-6.0.0.src.tar.xz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ef8b42a259076e53709ad59424042241

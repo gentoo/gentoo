@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/async:= dev-ml/base:= dev-ml/configurator:= dev-ml/core:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/stdio:= dev-ml/ocaml-ctypes:= dev-libs/openssl:0= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=An Async-pipe-based interface with OpenSSL.
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/async_ssl
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/ocaml:= dev-ml/async:= dev-ml/base:= dev-ml/configurator:= dev-ml/core:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/stdio:= dev-ml/ocaml-ctypes:= dev-libs/openssl:0= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/async_ssl/archive/v0.9.0.tar.gz -> async_ssl-0.9.0.tar.gz
+_md5_=6f4af3aaa0308eb114f3ea43e305604f

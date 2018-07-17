@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=>app-shells/bash-3.0
+DESCRIPTION=String-threaded Forth interpreter in Bash
+EAPI=4
+HOMEPAGE=http://www.forthfreak.net/index.cgi?BashForth
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://forthfreak.net/bashforth.versions/bashforth-0.58a
+_md5_=c3a8040f166ae18d3511f57afbeac034

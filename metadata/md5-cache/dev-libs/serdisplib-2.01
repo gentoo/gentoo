@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=media-libs/gd[jpeg,png,tiff] lcd_devices_acoolsdcm? ( virtual/libusb:1= ) lcd_devices_directgfx? ( media-libs/libsdl ) lcd_devices_displaylink? ( x11-libs/libdlo ) lcd_devices_glcd2usb? ( virtual/libusb:1= ) virtual/pkgconfig
+DESCRIPTION=Library to drive several displays with built-in controllers or display modules
+EAPI=6
+HOMEPAGE=http://serdisplib.sourceforge.net
+IUSE=threads tools lcd_devices_acoolsdcm lcd_devices_ddusbt lcd_devices_directgfx lcd_devices_displaylink lcd_devices_framebuffer lcd_devices_glcd2usb lcd_devices_goldelox lcd_devices_i2c lcd_devices_ks0108 lcd_devices_l4m lcd_devices_lc7981 lcd_devices_lh155 lcd_devices_nokcol lcd_devices_pcd8544 lcd_devices_remote lcd_devices_rs232 lcd_devices_sed133x lcd_devices_sed153x lcd_devices_sed156x lcd_devices_ssdoled lcd_devices_stv8105 lcd_devices_t6963
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/gd[jpeg,png,tiff] lcd_devices_acoolsdcm? ( virtual/libusb:1= ) lcd_devices_directgfx? ( media-libs/libsdl ) lcd_devices_displaylink? ( x11-libs/libdlo ) lcd_devices_glcd2usb? ( virtual/libusb:1= )
+REQUIRED_USE=|| ( lcd_devices_acoolsdcm lcd_devices_ddusbt lcd_devices_directgfx lcd_devices_displaylink lcd_devices_framebuffer lcd_devices_glcd2usb lcd_devices_goldelox lcd_devices_i2c lcd_devices_ks0108 lcd_devices_l4m lcd_devices_lc7981 lcd_devices_lh155 lcd_devices_nokcol lcd_devices_pcd8544 lcd_devices_remote lcd_devices_rs232 lcd_devices_sed133x lcd_devices_sed153x lcd_devices_sed156x lcd_devices_ssdoled lcd_devices_stv8105 lcd_devices_t6963 )
+SLOT=0
+SRC_URI=mirror://sourceforge/serdisplib/serdisplib-2.01.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88
+_md5_=67ad897e3e85a4b5f9d68f06abf4d339

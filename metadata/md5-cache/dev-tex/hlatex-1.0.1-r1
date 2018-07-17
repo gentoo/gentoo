@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=HLaTeX is a LaTeX package to use Hangul with LaTeX
+EAPI=6
+HOMEPAGE=http://project.ktug.or.kr/hlatex/
+KEYWORDS=alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=virtual/latex-base
+SLOT=0
+SRC_URI=ftp://ftp.ktug.or.kr/pub/ktug/hlatex/HLaTeX-1.0.1.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-fonts-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-myoungjo-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-gothic-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-taza-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-graphic-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-gungseo-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-shinmun-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-pilgi-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-pen-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-bom-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-yetgul-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-jamo-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-vada-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-pilgia-1.0.tar.gz ftp://ftp.ktug.or.kr/pub/ktug/hlatex/fonts/uhc-dinaru-1.0.tar.gz
+_eclasses_=latex-package	773c51c2ef26eaff025998531e7c6731	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f6e1a8eec5a00992f94b5df6994fe74e

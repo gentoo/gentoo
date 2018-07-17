@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=x11-libs/gtk+:2 >=app-text/gtkspell-2:2 >=dev-perl/glib-perl-1.240.0 >=dev-perl/Gtk2-1.012 dev-perl/ExtUtils-Depends dev-perl/ExtUtils-PkgConfig virtual/pkgconfig dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Bindings for GtkSpell with Gtk2.x
+EAPI=6
+HOMEPAGE=http://gtk2-perl.sf.net/ http://search.cpan.org/dist/Gtk2-Spell/
+IUSE=test
+KEYWORDS=amd64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=LGPL-2.1
+RDEPEND=x11-libs/gtk+:2 >=app-text/gtkspell-2:2 >=dev-perl/glib-perl-1.240.0 >=dev-perl/Gtk2-1.012 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TS/TSCH/Gtk2-Spell-1.04.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=4a248b64cbe0d8aab769b7cb3be30c80

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=JSON NIFs for Erlang
+EAPI=6
+HOMEPAGE=https://github.com/davisp/jiffy
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+LICENSE=MIT BSD
+RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang
+SLOT=0
+SRC_URI=https://github.com/davisp/jiffy/archive/0.14.11.tar.gz -> jiffy-0.14.11.tar.gz
+_eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8
+_md5_=586010ad9b0a0dfca6a7c710a46e248f

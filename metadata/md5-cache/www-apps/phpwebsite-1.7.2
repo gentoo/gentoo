@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=phpWebSite Content Management System
+EAPI=4
+HOMEPAGE=http://phpwebsite.appstate.edu
+IUSE=+mysql postgres vhosts
+KEYWORDS=~amd64 ppc ~ppc64 x86
+LICENSE=LGPL-2.1
+RDEPEND=virtual/httpd-php dev-lang/php[gd,mysql?,postgres?] >=app-admin/webapp-config-1.50.15
+REQUIRED_USE=|| ( mysql postgres )
+SLOT=1.7.2
+SRC_URI=mirror://sourceforge/phpwebsite/phpwebsite_1_7_2.tar.gz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=74cc9acc6ca63c29763a67f453fc9518

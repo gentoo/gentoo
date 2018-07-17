@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Implements a deep pretty printer for Go data structures to aid in debugging
+EAPI=5
+HOMEPAGE=https://github.com/davecgh/go-spew
+KEYWORDS=~amd64
+LICENSE=ISC
+SLOT=0/0_pre20150619
+SRC_URI=https://github.com/davecgh/go-spew/archive/2df174808ee097f90d259e432cc04442cf60be21.tar.gz -> go-spew-0_pre20150619.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=f353cb14060c8213ba6f2c173c665ccb

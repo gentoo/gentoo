@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Protocol Buffers for Go with Gadgets
+EAPI=6
+HOMEPAGE=https://github.com/gogo/protobuf
+KEYWORDS=~amd64
+LICENSE=BSD
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/gogo/protobuf/archive/fcdc5011193ff531a548e9b0301828d5a5b97fd8.tar.gz -> gogo-protobuf-0.4_p20170815.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=1e8177eadd50e2572d19516f62667d03

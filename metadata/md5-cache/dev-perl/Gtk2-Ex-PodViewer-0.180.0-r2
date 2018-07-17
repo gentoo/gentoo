@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=x11-libs/gtk+:2 dev-perl/Gtk2 dev-perl/IO-stringy virtual/perl-Pod-Parser virtual/perl-Pod-Simple dev-perl/Gtk2-Ex-Simple-List dev-perl/Locale-gettext dev-lang/perl:=
+DESCRIPTION=a Gtk2 widget for displaying Plain old Documentation (POD)
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Gtk2-Ex-PodViewer/
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=x11-libs/gtk+:2 dev-perl/Gtk2 dev-perl/IO-stringy virtual/perl-Pod-Parser virtual/perl-Pod-Simple dev-perl/Gtk2-Ex-Simple-List dev-perl/Locale-gettext dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/G/GB/GBROWN/Gtk2-Ex-PodViewer-0.18.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=844ac7f31fcc3ac42b307fbb99fe49e4

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND=sys-devel/flex app-arch/xz-utils[static-libs] sys-libs/ncurses[static-libs] dev-libs/expat[static-libs] app-arch/bzip2[static-libs] dev-libs/libedit[static-libs] dev-libs/libxml2:2[static-libs] dev-libs/openssl:0=[static-libs] sys-libs/zlib[static-libs] sys-libs/readline[static-libs] =sys-freebsd/freebsd-lib-11.1*[atm?,netware?] =sys-freebsd/freebsd-sources-11.1* =sys-freebsd/freebsd-mk-defs-11.1* zfs? ( =sys-freebsd/freebsd-cddl-11.1* ) virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD's rescue binaries
+EAPI=5
+HOMEPAGE=http://www.freebsd.org/
+IUSE=atm netware nis zfs profile
+KEYWORDS=~amd64-fbsd ~x86-fbsd
+LICENSE=BSD zfs? ( CDDL )
+SLOT=0
+SRC_URI=mirror://freebsd/releases/i386/11.1-RELEASE/src.txz -> freebsd-src-11.1.tar.xz
+_eclasses_=bsdmk	f76f6fc364f04987bc60c4ea3cad594c	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	freebsd	11f01cb2f2075a8c7bd1add8a60013a1	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=2748a1439ba39dd4bd7ba053a1d86ed1

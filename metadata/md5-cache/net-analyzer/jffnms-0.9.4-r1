@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst setup
+DESCRIPTION=Network Management and Monitoring System
+EAPI=6
+HOMEPAGE=http://www.jffnms.org/
+IUSE=mysql postgres snmp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php[apache2,cli,gd,mysql?,postgres?,session,snmp,sockets,wddx] dev-php/PEAR-PEAR media-gfx/graphviz media-libs/gd net-analyzer/fping net-analyzer/net-snmp net-analyzer/nmap net-analyzer/rrdtool[graph] sys-apps/diffutils
+SLOT=0
+SRC_URI=mirror://sourceforge/jffnms/jffnms-0.9.4.tgz
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=3f090697390bb1a24cf052459ac921e1

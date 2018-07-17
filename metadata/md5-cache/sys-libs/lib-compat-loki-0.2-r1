@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Compatibility libc6 libraries for Loki games
+EAPI=5
+HOMEPAGE=https://www.gentoo.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/lib-compat >=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)]
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.blfh.de/gentoo/distfiles/lib-compat-loki-0.2.tar.bz2 https://dev.gentoo.org/~wolf31o2/sources/lib-compat-loki/lib-compat-loki-0.2.tar.bz2
+_md5_=1cac90a9b05de71c5ee15c86d5349809

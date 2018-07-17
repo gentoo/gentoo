@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=dev-libs/glib:2
+DESCRIPTION=Moves legacy tray icons to top panel
+EAPI=6
+HOMEPAGE=https://extensions.gnome.org/extension/1031/topicons/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.16
+SLOT=0
+SRC_URI=https://github.com/phocean/TopIcons-plus/archive/v21.tar.gz -> gnome-shell-extensions-topicons-plus-21.tar.gz
+_eclasses_=vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=b6e9cca81ec5de0e51e3cb4c786fd3d9

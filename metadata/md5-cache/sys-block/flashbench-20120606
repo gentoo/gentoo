@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Tool for benchmarking and classifying flash memory drives
+EAPI=6
+HOMEPAGE=http://git.linaro.org/people/arnd.bergmann/flashbench.git
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~bircoph/distfiles/flashbench-20120606.tar.xz
+_md5_=010a8b9f640501c4cb84169bffe843cf

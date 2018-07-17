@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=canna-2ch? ( app-dicts/canna-2ch ) emacs? ( virtual/emacs )
+DESCRIPTION=Anthy -- free and secure Japanese input system
+EAPI=6
+HOMEPAGE=http://anthy.osdn.jp/
+IUSE=canna-2ch emacs static-libs
+KEYWORDS=alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=canna-2ch? ( app-dicts/canna-2ch ) emacs? ( virtual/emacs )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/anthy/37536/anthy-9100h.tar.gz
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8e4ded9ef1b66257393ef5bff424fc2d

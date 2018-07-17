@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=dev-vcs/mercurial dev-python/iniparse[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygments[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/PyQt5[network,svg,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/qscintilla-python-2.9.4:=[qt5(+),python_targets_python2_7(-)?,-python_single_target_python2_7(-)] doc? ( >=dev-python/sphinx-1.0.3 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-vcs/mercurial
+DESCRIPTION=Set of graphical tools for Mercurial
+EAPI=6
+HOMEPAGE=https://tortoisehg.bitbucket.io/
+IUSE=doc python_targets_python2_7
+LICENSE=GPL-2
+RDEPEND=dev-vcs/mercurial dev-python/iniparse[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygments[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/PyQt5[network,svg,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/qscintilla-python-2.9.4:=[qt5(+),python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	mercurial	9813bb616cb1bd0c943177ab52204409	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=3f74f7d737859a466638d0da94761f0f

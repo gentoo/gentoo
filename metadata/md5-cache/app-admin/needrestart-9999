@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-apps/init-system-helpers sys-devel/gettext >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Restart daemons after library updates
+EAPI=6
+HOMEPAGE=https://fiasko-nw.net/~thomas/tag/needrestart.html https://github.com/liske/needrestart
+LICENSE=GPL-2+
+RDEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-apps/init-system-helpers
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=9a2dab53d70ba2d12004431ca7e70adb

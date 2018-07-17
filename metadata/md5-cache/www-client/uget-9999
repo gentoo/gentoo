@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure postinst postrm prepare unpack
+DEPEND=>=net-misc/curl-7.19.1 dev-libs/libpcre >=dev-libs/glib-2.32:2 >=x11-libs/gtk+-3.4:3 gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0 ) aria2? ( net-misc/aria2[xmlrpc] ) ayatana? ( dev-libs/libappindicator:3 ) gstreamer? ( media-libs/gstreamer:1.0 ) libnotify? ( x11-libs/libnotify ) dev-util/intltool virtual/pkgconfig sys-devel/gettext >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Download manager using gtk+ and libcurl
+EAPI=6
+HOMEPAGE=http://www.ugetdm.com
+IUSE=aria2 ayatana control-socket +gnutls gstreamer libnotify nls openssl rss
+LICENSE=LGPL-2.1
+RDEPEND=>=net-misc/curl-7.19.1 dev-libs/libpcre >=dev-libs/glib-2.32:2 >=x11-libs/gtk+-3.4:3 gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0 ) aria2? ( net-misc/aria2[xmlrpc] ) ayatana? ( dev-libs/libappindicator:3 ) gstreamer? ( media-libs/gstreamer:1.0 ) libnotify? ( x11-libs/libnotify )
+SLOT=0
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=c840c2d88fdaae8ef021f35b92bf1bb2

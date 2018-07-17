@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=sys-apps/sed >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=All-In-One Solution for Remote Access and Support over the Internet
+EAPI=6
+HOMEPAGE=https://www.teamviewer.com
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=TeamViewer MIT
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtquickcontrols:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 sys-apps/dbus
+RESTRICT=bindist mirror
+SLOT=13
+SRC_URI=amd64? ( https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.1.8286_amd64.tar.xz ) x86? ( https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.1.8286_i386.tar.xz )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=8cce873b625449ffef2bc006f2356c81

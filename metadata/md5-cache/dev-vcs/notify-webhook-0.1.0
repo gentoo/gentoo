@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-python/simplejson
+DESCRIPTION=Git post-receive web hook notifier in Python.
+EAPI=5
+HOMEPAGE=https://github.com/metajack/notify-webhook
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-python/simplejson
+SLOT=0
+SRC_URI=https://github.com/metajack/notify-webhook/archive/v0.1.0.tar.gz -> notify-webhook-0.1.0.tar.gz
+_md5_=3154affc144eb26c9625e2652b4feb82

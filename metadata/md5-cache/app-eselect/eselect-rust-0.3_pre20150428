@@ -1,0 +1,10 @@
+DEFINED_PHASES=postinst preinst prerm
+DESCRIPTION=eselect module for rust
+EAPI=5
+HOMEPAGE=https://github.com/jauhien/eselect-rust
+KEYWORDS=amd64 ~arm64 x86
+LICENSE=GPL-2
+RDEPEND=app-admin/eselect
+SLOT=0
+SRC_URI=https://github.com/jauhien/eselect-rust/archive/0.3_pre20150428.tar.gz -> eselect-rust-0.3_pre20150428.tar.gz
+_md5_=0093ab8f77b584c700b0fe19ae87a32d

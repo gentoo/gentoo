@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=Classic networked version of T*tris
+EAPI=6
+HOMEPAGE=http://www.netris.org/
+KEYWORDS=~amd64 ~mips ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=ftp://ftp.netris.org/pub/netris/netris-0.52.tar.gz mirror://debian/pool/main/n/netris/netris_0.52-9.diff.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=228ce291a40346545e8a631cf5394229

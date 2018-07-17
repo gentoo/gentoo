@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=>=media-gfx/splashutils-1.1.9.5[png]
+DESCRIPTION=A collection of Gentoo themes for splashutils
+EAPI=5
+HOMEPAGE=https://dev.gentoo.org/~spock/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=freedist
+RDEPEND=>=media-gfx/splashutils-1.1.9.5[png]
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=mirror://gentoo/fbsplash-theme-emergence-r2.tar.bz2 mirror://gentoo/fbsplash-theme-gentoo-r2.tar.bz2 mirror://gentoo/fbsplash-theme-emerge-world-1.0.tar.bz2 http://fbsplash.berlios.de/themes/repo/natural_gentoo-9.0-r2.tar.bz2
+_md5_=2a83a548f4fd7706f51b347e5f559d4c

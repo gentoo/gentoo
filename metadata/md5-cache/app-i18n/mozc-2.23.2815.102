@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( virtual/emacs ) fcitx4? ( app-i18n/fcitx:4 ) gui? ( app-i18n/zinnia dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese ) handwriting-tomoe? ( app-i18n/zinnia-tomoe ) ) ibus? ( >=app-i18n/ibus-1.4.1 dev-libs/glib:2 x11-libs/libxcb ) renderer? ( dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/gyp dev-util/ninja virtual/pkgconfig test? ( >=dev-cpp/gtest-1.8.0 dev-libs/jsoncpp )
+DESCRIPTION=Mozc - Japanese input method editor
+EAPI=6
+HOMEPAGE=https://github.com/google/mozc
+IUSE=debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test
+KEYWORDS=amd64 ~ppc64 x86
+LICENSE=BSD BSD-2 ipadic public-domain unicode
+RDEPEND=>=dev-libs/protobuf-3.0.0:= emacs? ( virtual/emacs ) fcitx4? ( app-i18n/fcitx:4 ) gui? ( app-i18n/zinnia dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 handwriting-tegaki? ( app-i18n/tegaki-zinnia-japanese ) handwriting-tomoe? ( app-i18n/zinnia-tomoe ) ) ibus? ( >=app-i18n/ibus-1.4.1 dev-libs/glib:2 x11-libs/libxcb ) renderer? ( dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/pango )
+REQUIRED_USE=|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )
+SLOT=0
+SRC_URI=https://github.com/google/mozc/archive/afb03ddfe72dde4cf2409863a3bfea160f7a66d8.tar.gz -> mozc-2.23.2815.102.tar.gz https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/e5b3425575734c323e1d947009dd74709437b684.tar.gz -> japanese-usage-dictionary-20120416091336.tar.gz fcitx4? ( https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch )
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=cf71561ab1f84c8c7e5d8a5fb2380e24

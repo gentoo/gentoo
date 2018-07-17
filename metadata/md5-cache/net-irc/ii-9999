@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A minimalist FIFO and filesystem-based IRC client
+EAPI=6
+HOMEPAGE=https://tools.suckless.org/ii/
+LICENSE=MIT
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=87e5fb124a9c4f1cea229d47ffda8bd8

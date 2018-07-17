@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=x11-libs/libX11 xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm ) virtual/pkgconfig x11-base/xorg-proto
+DESCRIPTION=a general purpose messaging, notification and menuing program for X11
+EAPI=5
+HOMEPAGE=https://github.com/robm/dzen
+IUSE=minimal xft xinerama xpm
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm )
+SLOT=2
+SRC_URI=https://github.com/robm/dzen/tarball/f7907da3a42a6d59e27ede88f5f01e4e41c4c9e0 -> dzen-0.9.5.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=368b5f70d67e6dcb0702042b34aea6f2

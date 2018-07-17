@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/perl-5.6.0
+DESCRIPTION=Utility to switch network profiles on the fly
+EAPI=6
+HOMEPAGE=http://quickswitch.sf.net
+IUSE=ncurses
+KEYWORDS=x86 ppc sparc s390 amd64
+LICENSE=GPL-2
+RDEPEND=ncurses? ( dev-perl/CursesWidgets )
+SLOT=0
+SRC_URI=mirror://sourceforge/quickswitch/quickswitch-1.05.tar.gz
+_md5_=0a72e435579658f8d40db3e97c715faa

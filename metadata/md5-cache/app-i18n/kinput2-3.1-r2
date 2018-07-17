@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt !freewnn? ( app-i18n/canna ) freewnn? ( app-i18n/freewnn ) x11-misc/gccmakedep x11-misc/imake
+DESCRIPTION=A Japanese input server which supports the XIM protocol
+EAPI=6
+HOMEPAGE=http://www.nec.co.jp/canna
+IUSE=freewnn
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=HPND
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt !freewnn? ( app-i18n/canna ) freewnn? ( app-i18n/freewnn )
+SLOT=0
+SRC_URI=ftp://ftp.sra.co.jp/pub/x11/kinput2/kinput2-v3.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=57058f99f61d55f223e269591d7eec29

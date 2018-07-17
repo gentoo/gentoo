@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install test
+DESCRIPTION=Randomize lines from text files or stdin
+EAPI=6
+HOMEPAGE=https://arthurdejong.org/rl
+IUSE=debug abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=amd64 ia64 ~mips ppc s390 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://arthurdejong.org/rl/rl-0.2.7.tar.gz
+_eclasses_=multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3c07e7badb54f1e8f050e8a1f61688a1

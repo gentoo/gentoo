@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Library of common routines intended to be shared
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/gnulib
+IUSE=doc
+KEYWORDS=~ppc-aix ~x86-fbsd ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://git.savannah.gnu.org/cgit/gnulib.git/snapshot/gnulib-f583f328bec489dd59b54ecc1cc640843ea261cf.tar.gz
+_md5_=a57c19ed922545b6ee7e878b5f987f0b

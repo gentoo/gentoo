@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Enable colorization of man pages
+EAPI=5
+HOMEPAGE=https://www.gentoo.org/
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=53c338de81998a80426c5c53c1edad49

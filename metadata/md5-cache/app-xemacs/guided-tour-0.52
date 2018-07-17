@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Phil Sung's Guided Tour of Emacs
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~amd64
+LICENSE=GPL-2+
+RDEPEND=app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/guided-tour-0.52-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=e75f85e73b2aa44bf6e0d8d3bef8d366

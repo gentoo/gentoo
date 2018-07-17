@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/zlib
+DESCRIPTION=verifies the integrity of PNG, JNG and MNG files with internal checksums
+EAPI=2
+HOMEPAGE=http://www.libpng.org/pub/png/apps/pngcheck.html
+KEYWORDS=amd64 x86
+LICENSE=HPND GPL-2+
+RDEPEND=sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/png-mng/pngcheck-2.3.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e09c05b952198aca95edd1196ad4fc98

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/findlib
+DESCRIPTION=I18n made easy for web sites written with eliom
+EAPI=6
+HOMEPAGE=https://github.com/besport/ocsigen-i18n
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/ocaml:=
+SLOT=0/3.1.0
+SRC_URI=https://github.com/besport/ocsigen-i18n/archive/3.1.0.tar.gz -> ocsigen-i18n-3.1.0.tar.gz
+_md5_=3a6d4f130e52a64217fce33daa9a8122

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=app-arch/unzip
+DESCRIPTION=A flexible, cross-platform scripting library
+EAPI=6
+HOMEPAGE=http://www.angelcode.com/angelscript/
+IUSE=doc static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB
+SLOT=0/2.32.0
+SRC_URI=http://www.angelcode.com/angelscript/sdk/files/angelscript_2.32.0.zip
+_eclasses_=multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ec19da5858f84136eb49c4b8c3a1b15d

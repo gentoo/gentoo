@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=menu generator for *box, WindowMaker, and Enlightenment
+EAPI=6
+HOMEPAGE=http://f00l.de/genmenu/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=app-shells/bash
+SLOT=0
+SRC_URI=http://f00l.de/genmenu/genmenu-1.1.0.tar.bz2
+_md5_=b303a390540531dd9ee4f71b12e67878

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=Client/server to synchronize media playback
+EAPI=6
+HOMEPAGE=https://syncplay.pl
+IUSE=+client +server gui vlc python_targets_python2_7
+KEYWORDS=~amd64 ~ppc64 x86
+LICENSE=Apache-2.0
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] || ( >=dev-python/twisted-16.0.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/twisted-core[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) gui? ( dev-python/pyside[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) vlc? ( media-video/vlc[lua] )
+REQUIRED_USE=vlc? ( client ) gui? ( client ) || ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://github.com/Syncplay/syncplay/archive/v1.5.1.tar.gz -> syncplay-1.5.1.tar.gz
+_eclasses_=multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=91e9ed2ff38f8074b237f33d08af57df

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=!mhash? ( dev-libs/libgcrypt:0= dev-libs/libgpg-error ) mhash? ( app-crypt/mhash ) dev-libs/libpcre acl? ( virtual/acl ) audit? ( sys-process/audit ) curl? ( net-misc/curl ) e2fs? ( sys-fs/e2fsprogs ) postgres? ( dev-db/postgresql:= ) prelink? ( dev-libs/elfutils ) selinux? ( sys-libs/libselinux ) xattr? ( sys-apps/attr ) zlib? ( sys-libs/zlib ) sys-devel/bison sys-devel/flex virtual/pkgconfig static? ( !mhash? ( dev-libs/libgcrypt:0[static-libs] dev-libs/libgpg-error[static-libs] ) mhash? ( app-crypt/mhash[static-libs] ) dev-libs/libpcre[static-libs] acl? ( virtual/acl[static-libs] ) e2fs? ( sys-fs/e2fsprogs[static-libs] ) prelink? ( dev-libs/elfutils[static-libs] ) selinux? ( sys-libs/libselinux[static-libs] ) xattr? ( sys-apps/attr[static-libs] ) zlib? ( sys-libs/zlib[static-libs] ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
+EAPI=6
+HOMEPAGE=http://aide.sourceforge.net/
+IUSE=acl audit curl e2fs mhash postgres prelink selinux static xattr zlib
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=!static? ( !mhash? ( dev-libs/libgcrypt:0= dev-libs/libgpg-error ) mhash? ( app-crypt/mhash ) dev-libs/libpcre acl? ( virtual/acl ) audit? ( sys-process/audit ) curl? ( net-misc/curl ) e2fs? ( sys-fs/e2fsprogs ) postgres? ( dev-db/postgresql:= ) prelink? ( dev-libs/elfutils ) selinux? ( sys-libs/libselinux ) xattr? ( sys-apps/attr ) zlib? ( sys-libs/zlib ) ) prelink? ( sys-devel/prelink ) selinux? ( sec-policy/selinux-aide )
+REQUIRED_USE=postgres? ( !mhash ) static? ( !audit !curl !postgres )
+SLOT=0
+SRC_URI=mirror://sourceforge/aide/aide-0.16.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=7c956dc7579ba2b0d6dd7e953936fb1e

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Filter IPv4 and IPv6 addresses matching CIDR patterns
+EAPI=5
+HOMEPAGE=http://www.pc-tools.net/unix/grepcidr/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://www.pc-tools.net/files/unix/grepcidr-2.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a1b58902fca877e56c401e0fa5dd33d1

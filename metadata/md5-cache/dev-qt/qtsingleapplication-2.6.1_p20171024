@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtlockedfile[qt5(+)] dev-qt/qtnetwork:5 X? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+DESCRIPTION=Qt library to start applications only once per user
+EAPI=6
+HOMEPAGE=https://code.qt.io/cgit/qt-solutions/qt-solutions.git/
+IUSE=doc X
+KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 x86
+LICENSE=|| ( LGPL-2.1 GPL-3 )
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtlockedfile[qt5(+)] dev-qt/qtnetwork:5 X? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~pesa/distfiles/qt-solutions-20171024.tar.xz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=4883a3321f9434d56efcc718fea422c4

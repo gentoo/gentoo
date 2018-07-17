@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=X? ( x11-libs/libSM x11-libs/libXext x11-libs/libXrender ) gif? ( media-libs/giflib:0= ) jpeg? ( virtual/jpeg:0 ) opengl? ( virtual/opengl ) png? ( >=media-libs/libpng-1.4:0= ) svg? ( gnome-base/librsvg:2 ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype ) X? ( x11-base/xorg-proto ) virtual/pkgconfig !!x11-wm/afterstep >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Afterstep's standalone generic image manipulation library
+EAPI=6
+HOMEPAGE=http://www.afterstep.org/afterimage/index.php
+IUSE=+X cpu_flags_x86_mmx examples gif jpeg nls opengl png static-libs shm +shaping svg tiff truetype
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1
+RDEPEND=X? ( x11-libs/libSM x11-libs/libXext x11-libs/libXrender ) gif? ( media-libs/giflib:0= ) jpeg? ( virtual/jpeg:0 ) opengl? ( virtual/opengl ) png? ( >=media-libs/libpng-1.4:0= ) svg? ( gnome-base/librsvg:2 ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype )
+REQUIRED_USE=opengl? ( X ) shaping? ( X ) shm? ( X )
+SLOT=0
+SRC_URI=ftp://ftp.afterstep.org/stable/libAfterImage/libAfterImage-1.20.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=03b4f76a2234216eaeda151672965d2a

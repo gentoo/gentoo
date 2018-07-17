@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DEPEND=app-arch/unzip
+DESCRIPTION=encode / decode binary file as five letter codegroups
+EAPI=6
+HOMEPAGE=http://www.fourmilab.ch/codegroup/
+KEYWORDS=~amd64 ~arm ~ppc ~sparc ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://www.fourmilab.ch/codegroup/codegroup.zip -> codegroup-20080907.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3ee88048c2a35aea0e841a66ba7528e8

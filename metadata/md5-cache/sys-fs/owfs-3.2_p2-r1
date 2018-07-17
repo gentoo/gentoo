@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=ftdi? ( dev-embedded/libftdi:0 ) fuse? ( sys-fs/fuse:0= ) perl? ( dev-lang/perl:= ) parport? ( sys-kernel/linux-headers ) php? ( dev-lang/php:=[cli] ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) tcl? ( dev-lang/tcl:0= ) usb? ( virtual/libusb:0 ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) perl? ( dev-lang/swig ) php? ( dev-lang/swig ) python? ( dev-lang/swig ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Access 1-Wire devices like a filesystem
+EAPI=6
+HOMEPAGE=http://owfs.org/ https://sourceforge.net/projects/owfs/
+IUSE=debug ftdi ftpd fuse httpd parport perl php python tcl usb zeroconf python_targets_python2_7 kernel_linux
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=ftdi? ( dev-embedded/libftdi:0 ) fuse? ( sys-fs/fuse:0= ) perl? ( dev-lang/perl:= ) parport? ( sys-kernel/linux-headers ) php? ( dev-lang/php:=[cli] ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) tcl? ( dev-lang/tcl:0= ) usb? ( virtual/libusb:0 ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
+REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
+SLOT=0/3.2_p2
+SRC_URI=mirror://sourceforge/owfs/owfs-3.2p2.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	libtool	0081a71a261724730ec4c248494f044d	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=91db8fa32cfd2c5ca70f01ab84d29d32

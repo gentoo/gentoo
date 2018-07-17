@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND==x11-libs/gtk+-2* !x11-wm/oroborus-extras virtual/pkgconfig
+DESCRIPTION=root menu program for Oroborus
+EAPI=6
+HOMEPAGE=https://www.oroborus.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==x11-libs/gtk+-2* !x11-wm/oroborus-extras
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d//deskmenu//deskmenu_1.4.5.tar.gz
+_md5_=cf178d6ff224ae905e07fef0f8442d24

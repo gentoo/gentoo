@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Support for messaging encryption with PGP
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/mail-lib app-xemacs/fsf-compat app-xemacs/xemacs-base app-xemacs/cookie app-xemacs/gnus app-xemacs/mh-e app-xemacs/rmail app-xemacs/vm app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/mailcrypt-2.14-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=d0ea43c3fb9f1fe2245b5505ab943075

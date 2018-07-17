@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=General purpose multiple alignment program for DNA and proteins
+EAPI=6
+HOMEPAGE=http://www.embl-heidelberg.de/~seqanal/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=clustalw
+SLOT=1
+SRC_URI=ftp://ftp.ebi.ac.uk/pub/software/unix/clustalw/clustalw1.83.UNIX.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5c8ba46cd87128b1ddae72e6ca3d07db

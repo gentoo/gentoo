@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=A filemanager for shell scripts
+EAPI=6
+HOMEPAGE=http://www.rninet.de/darkstar/sel.html
+KEYWORDS=amd64 ppc s390 sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=http://www.rninet.de/darkstar/files/sel-0.08.4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f0f91488b8bb75fd025b3c4710a31171

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=PHP library to query DNS blacklists
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/Net_DNSBL
+IUSE=examples
+KEYWORDS=alpha amd64 hppa ia64 sparc x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php:* dev-php/PEAR-Cache_Lite dev-php/PEAR-HTTP_Request2 dev-php/PEAR-Net_DNS dev-php/PEAR-PEAR examples? ( dev-lang/php:*[cli] dev-php/PEAR-Console_Getopt )
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/Net_DNSBL-1.3.7.tgz
+_md5_=fa91c73eb613929bc6e48b3de52db7eb

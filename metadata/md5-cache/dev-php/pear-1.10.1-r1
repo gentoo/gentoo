@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=PEAR - PHP Extension and Application Repository
+EAPI=6
+HOMEPAGE=http://pear.php.net/
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
+LICENSE=MIT
+RDEPEND=>=dev-php/PEAR-PEAR-1.10.1-r1
+SLOT=0
+_md5_=c82f0c5c3086b82b738d1040c1ae0361

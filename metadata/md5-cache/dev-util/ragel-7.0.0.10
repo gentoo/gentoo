@@ -1,0 +1,12 @@
+DEFINED_PHASES=install test
+DEPEND=~dev-util/colm-0.13.0.5
+DESCRIPTION=Compiles finite state machines from regular languages into executable code
+EAPI=6
+HOMEPAGE=https://www.colm.net/open-source/ragel/
+IUSE=vim-syntax
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~x86
+LICENSE=GPL-2
+RDEPEND=~dev-util/colm-0.13.0.5
+SLOT=0
+SRC_URI=https://www.colm.net/files/ragel/ragel-7.0.0.10.tar.gz
+_md5_=64eb79a47a3bbc1a85d57e5d8cdb50e2

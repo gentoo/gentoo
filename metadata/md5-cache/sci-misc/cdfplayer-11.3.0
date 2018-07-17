@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch unpack
+DESCRIPTION=Wolfram Player for the interactive Computable Document Format (CDF)
+EAPI=6
+HOMEPAGE=http://www.wolfram.com/cdf-player/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=WolframCDFPlayer
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXcursor x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXmu x11-libs/libXrandr x11-libs/libXrender x11-libs/libXt media-libs/alsa-lib dev-libs/expat media-libs/fontconfig dev-libs/icu x11-libs/libxcb dev-libs/libxml2 sys-libs/ncurses:5/5 media-libs/freetype
+RESTRICT=strip mirror bindist fetch
+SLOT=0
+SRC_URI=CDFPlayer_11.3.0_LINUX.sh
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=5a55b5c61c95a22e19cc5fe25de26824

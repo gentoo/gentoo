@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=dbus? ( sys-apps/dbus ) kernel_linux? ( dev-libs/libnl:3 net-wireless/crda eap-sim? ( sys-apps/pcsc-lite ) ) !kernel_linux? ( net-libs/libpcap ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) ssl? ( gnutls? ( dev-libs/libgcrypt:0= net-libs/gnutls:= ) !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.2k:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) ) ) !ssl? ( dev-libs/libtommath ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=IEEE 802.1X/WPA supplicant for secure wireless transfers
+EAPI=6
+HOMEPAGE=https://w1.fi/wpa_supplicant/
+IUSE=ap dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl p2p privsep ps3 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD
+KEYWORDS=~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd
+LICENSE=|| ( GPL-2 BSD )
+RDEPEND=dbus? ( sys-apps/dbus ) kernel_linux? ( dev-libs/libnl:3 net-wireless/crda eap-sim? ( sys-apps/pcsc-lite ) ) !kernel_linux? ( net-libs/libpcap ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) ssl? ( gnutls? ( dev-libs/libgcrypt:0= net-libs/gnutls:= ) !gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.2k:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) ) ) !ssl? ( dev-libs/libtommath ) selinux? ( sec-policy/selinux-networkmanager )
+REQUIRED_USE=smartcard? ( ssl )
+SLOT=0
+SRC_URI=https://w1.fi/releases/wpa_supplicant-2.6.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=9f41fe42e1fbd62c983f8d2ebf2c38b7

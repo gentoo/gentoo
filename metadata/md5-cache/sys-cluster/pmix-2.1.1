@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/libevent:0= sys-cluster/ucx sys-libs/zlib:0= munge? ( sys-auth/munge ) pmi? ( !sys-cluster/slurm )
+DESCRIPTION=The Process Management Interface (PMI) Exascale
+EAPI=6
+HOMEPAGE=https://pmix.github.io/pmix/
+IUSE=debug +munge pmi
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=dev-libs/libevent:0= sys-cluster/ucx sys-libs/zlib:0= munge? ( sys-auth/munge ) pmi? ( !sys-cluster/slurm )
+SLOT=0
+SRC_URI=https://github.com/pmix/pmix/releases/download/v2.1.1/pmix-2.1.1.tar.bz2
+_md5_=ab0b92b191a80affda877daf15f4d072

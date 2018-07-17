@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Maori dictionaries for myspell/hunspell
+EAPI=6
+HOMEPAGE=http://lingucomponent.openoffice.org/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://gentoo/myspell-mi_NZ-20060316.zip
+_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
+_md5_=e15aa9cc6db6b8c9b9aa5dfb556d8563

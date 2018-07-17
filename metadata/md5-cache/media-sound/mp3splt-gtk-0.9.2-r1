@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=~media-libs/libmp3splt-0.9.2 x11-libs/gtk+:3 audacious? ( >=media-sound/audacious-3.0 ) !audacious? ( dev-libs/dbus-glib ) gstreamer? ( media-libs/gstreamer:1.0 media-plugins/gst-plugins-meta:1.0[mp3] ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=a GTK+ based utility to split mp3 and ogg files without decoding
+EAPI=6
+HOMEPAGE=http://mp3splt.sourceforge.net
+IUSE=audacious doc gstreamer nls
+KEYWORDS=amd64 ~hppa ~ppc ~ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=~media-libs/libmp3splt-0.9.2 x11-libs/gtk+:3 audacious? ( >=media-sound/audacious-3.0 ) !audacious? ( dev-libs/dbus-glib ) gstreamer? ( media-libs/gstreamer:1.0 media-plugins/gst-plugins-meta:1.0[mp3] )
+SLOT=0
+SRC_URI=mirror://sourceforge/mp3splt/mp3splt-gtk-0.9.2.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=4cef774c2925038a07194efe56bd0cc7

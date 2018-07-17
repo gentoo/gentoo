@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=sys-libs/zlib dev-libs/tinyxml2:= >=media-libs/libzen-0.4.37[static-libs=] curl? ( net-misc/curl ) mms? ( >=media-libs/libmms-0.6.1[static-libs=] ) virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=MediaInfo libraries
+EAPI=6
+HOMEPAGE=https://mediaarea.net/mediainfo/ https://github.com/MediaArea/MediaInfoLib
+IUSE=curl doc mms static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-libs/zlib dev-libs/tinyxml2:= >=media-libs/libzen-0.4.37[static-libs=] curl? ( net-misc/curl ) mms? ( >=media-libs/libmms-0.6.1[static-libs=] )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://mediaarea.net/download/source/libmediainfo/18.05/libmediainfo_18.05.tar.xz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=3234ef6f196b63e9b256fe5126a0f175

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-Scalar-List-Utils-1.180.0 >=virtual/perl-ExtUtils-CBuilder-0.270.0 >=virtual/perl-ExtUtils-MakeMaker-6.520.0 >=virtual/perl-File-Spec-0.800.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Utility functions to aid in parameter checking
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Params-Util/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-Scalar-List-Utils-1.180.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Params-Util-1.07.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=7ebcbb56dd3bd76f5aab81dbcfa5a546

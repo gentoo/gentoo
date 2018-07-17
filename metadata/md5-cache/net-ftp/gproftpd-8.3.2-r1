@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=x11-libs/gtk+:2 dev-libs/glib:2 >=x11-libs/pango-1.0 >=dev-libs/atk-1.0 >=media-libs/freetype-2.0 ssl? ( >=dev-libs/openssl-0.9.6f ) >=net-ftp/proftpd-1.2.9 virtual/pkgconfig
+DESCRIPTION=GTK frontend to proftpd
+EAPI=5
+HOMEPAGE=http://mange.dynup.net/linux.html
+IUSE=gnome ssl
+KEYWORDS=amd64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 dev-libs/glib:2 >=x11-libs/pango-1.0 >=dev-libs/atk-1.0 >=media-libs/freetype-2.0 ssl? ( >=dev-libs/openssl-0.9.6f ) >=net-ftp/proftpd-1.2.9
+SLOT=0
+SRC_URI=http://mange.dynup.net/linux/gproftpd/gproftpd-8.3.2.tar.gz
+_md5_=d2a3ba981cd567a7fc7c409130b0da84

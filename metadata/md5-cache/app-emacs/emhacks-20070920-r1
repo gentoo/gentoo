@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
+EAPI=6
+HOMEPAGE=http://emhacks.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/emhacks-20070920.tar.bz2
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=2865aeb84bbd72d2a7ca214d2e7fd99c

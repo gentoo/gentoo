@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo sys-cluster/pmix[-pmi] mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0= ) lua? ( dev-lang/lua:0= ) !lua? ( !dev-lang/lua ) X? ( net-libs/libssh2 ) >=sys-apps/hwloc-1.1.1-r1 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=
+DESCRIPTION=A Highly Scalable Resource Manager
+EAPI=6
+HOMEPAGE=https://www.schedmd.com
+IUSE=debug lua multiple-slurmd +munge mysql pam perl ssl static-libs torque X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo sys-cluster/pmix[-pmi] mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0= ) lua? ( dev-lang/lua:0= ) !lua? ( !dev-lang/lua ) X? ( net-libs/libssh2 ) >=sys-apps/hwloc-1.1.1-r1 dev-libs/libcgroup dev-lang/perl:=
+REQUIRED_USE=torque? ( perl )
+RESTRICT=primaryuri test
+SLOT=0
+SRC_URI=https://download.schedmd.com/slurm/slurm-17.11.7.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	pam	3e788d86170dfcd5b06824d898315e18	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=8842fd6826542dfbf6609caf54dad875

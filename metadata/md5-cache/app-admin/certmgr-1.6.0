@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Automated certificate management using a CFSSL CA
+EAPI=6
+HOMEPAGE=https://github.com/cloudflare/certmgr
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/cloudflare/certmgr/archive/v1.6.0.tar.gz -> certmgr-1.6.0.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=78b15da68325cd1f2f8edbc7fbad766c

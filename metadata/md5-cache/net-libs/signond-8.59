@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5 net-libs/libproxy doc? ( app-doc/doxygen ) test? ( dev-qt/qttest:5 )
+DESCRIPTION=Signon daemon for libaccounts-glib
+EAPI=6
+HOMEPAGE=https://01.org/gsso/
+IUSE=doc test
+KEYWORDS=amd64 ~arm x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5 net-libs/libproxy !<net-libs/libproxy-0.4.12[kde]
+RESTRICT=test
+SLOT=0
+SRC_URI=https://gitlab.com/accounts-sso/signond/repository/archive.tar.gz?ref=VERSION_8.59 -> signond-8.59.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=1703378845beef3520f33c93c9d8bcf7

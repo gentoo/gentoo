@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-shells/bash
+DESCRIPTION=A shell script for burning optical media
+EAPI=4
+HOMEPAGE=http://bashburn.dose.se/
+KEYWORDS=amd64 ppc ~ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-shells/bash app-cdr/cdrdao app-cdr/dvd+rw-tools media-libs/flac || ( dev-libs/libcdio-paranoia media-sound/cdparanoia ) media-sound/lame || ( media-sound/mpg123 media-sound/mpg321 ) media-sound/normalize media-sound/vorbis-tools virtual/cdrtools virtual/eject
+SLOT=0
+SRC_URI=http://bashburn.dose.se/index.php?s=file_download&id=25 -> BashBurn-3.1.0.tar.gz
+_md5_=66fa9e9e14c6e1309f4e21bd57a9023d

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-base/xorg-proto x11-libs/libxkbfile app-text/rman x11-misc/imake >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=An X11 based presentation tool
+EAPI=5
+HOMEPAGE=http://member.wide.ad.jp/wg/mgp/
+IUSE=cjk contrib doc emacs examples fontconfig gif imlib m17n-lib mng nls png truetype
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) contrib? ( dev-lang/perl ) nls? ( sys-devel/gettext ) truetype? ( cjk? ( media-fonts/sazanami ) )
+REQUIRED_USE=imlib? ( !gif !png )
+SLOT=0
+SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/mgp-snap-20121015.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1b8dbd18dddb40460b6cf70f8dca1236

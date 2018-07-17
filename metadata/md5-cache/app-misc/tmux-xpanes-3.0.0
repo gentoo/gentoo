@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=app-misc/tmux dev-lang/perl dev-libs/openssl:0= zsh-completion? ( app-shells/zsh )
+DESCRIPTION=tmux-based terminal divider
+EAPI=6
+HOMEPAGE=https://github.com/greymd/tmux-xpanes
+IUSE=zsh-completion
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-misc/tmux dev-lang/perl dev-libs/openssl:0= zsh-completion? ( app-shells/zsh )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/greymd/tmux-xpanes/archive/v3.0.0.tar.gz -> tmux-xpanes-3.0.0.tar.gz
+_md5_=beefed40bc7f934a21dd6fe83455d441

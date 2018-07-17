@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) brotli? ( app-arch/brotli ) bzip2? ( >=app-arch/bzip2-1.0.2 ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] ) idn? ( net-dns/libidn ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= ) lua? ( >=dev-lang/lua-5:0= ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tre? ( dev-libs/tre ) X? ( x11-libs/libX11 x11-libs/libXt ) xml? ( >=dev-libs/expat-1.95.4 ) zlib? ( >=sys-libs/zlib-1.1.4 ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Advanced and well-established text-mode web browser
+EAPI=6
+HOMEPAGE=http://elinks.or.cz/
+IUSE=bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6 javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib
+LICENSE=GPL-2
+RDEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) brotli? ( app-arch/brotli ) bzip2? ( >=app-arch/bzip2-1.0.2 ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] ) idn? ( net-dns/libidn ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= ) lua? ( >=dev-lang/lua-5:0= ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tre? ( dev-libs/tre ) X? ( x11-libs/libX11 x11-libs/libXt ) xml? ( >=dev-libs/expat-1.95.4 ) zlib? ( >=sys-libs/zlib-1.1.4 )
+SLOT=0
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	git-r3	8f6de46b0aa318aea0e8cac62ece098b	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6537a6c42946e36baca6e479087f6a2a

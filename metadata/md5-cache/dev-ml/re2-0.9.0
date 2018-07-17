@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/core_kernel:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=OCaml bindings for RE2
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/re2
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/core_kernel:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/re2/archive/v0.9.0.tar.gz -> re2-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=335c4c39c1a9d5394e07bbee3c2d66de

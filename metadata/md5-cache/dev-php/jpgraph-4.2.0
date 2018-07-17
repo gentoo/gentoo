@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Object-oriented graphing library for PHP
+EAPI=6
+HOMEPAGE=http://jpgraph.net/
+IUSE=truetype examples
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=QPL-1.0
+RDEPEND=truetype? ( media-fonts/corefonts ) dev-lang/php[gd,truetype?]
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~grknight/distfiles/jpgraph-4.2.0.tar.gz
+_md5_=17081e5fb3cf0cf84f3b4e5143a98a1f

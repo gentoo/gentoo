@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=virtual/cdrtools sys-devel/m4
+DESCRIPTION=A set of tools for DVD+RW/-RW drives
+EAPI=6
+HOMEPAGE=http://fy.chalmers.se/~appro/linux/DVD+RW/
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=virtual/cdrtools
+SLOT=0
+SRC_URI=http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-7.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a9a18ba3c2b71dd64c9b50086f5ad81e

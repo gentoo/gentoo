@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=display misc information about your hardware
+EAPI=6
+HOMEPAGE=http://syscriptor.sourceforge.net/
+KEYWORDS=~alpha amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/syscriptor/syscriptor-1.5.15.tar.bz2
+_md5_=af770b8c389c314d96b65c06d1c38a71

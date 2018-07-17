@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=virtual/ooo
+DESCRIPTION=OOExtras: Extra Templates for OpenOffice.org!
+EAPI=0
+HOMEPAGE=http://ooextras.sourceforge.net/
+KEYWORDS=amd64 -sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=virtual/ooo
+SLOT=0
+SRC_URI=mirror://sourceforge/ooextras/ooextras20060909.tgz
+_md5_=1573f655f72ed595260d5807226df920

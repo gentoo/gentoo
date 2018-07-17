@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=dev-perl/File-HomeDir-0.570.0 >=virtual/perl-File-Path-2.40.0 virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Getopt-Long >=virtual/perl-IO-Compress-1.20 >=dev-perl/libwww-perl-5 >=dev-perl/URI-1 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Create a minimal mirror of CPAN
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/CPAN-Mini/
+IUSE=test
+KEYWORDS=amd64 x86 ~ppc-aix
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=dev-perl/File-HomeDir-0.570.0 >=virtual/perl-File-Path-2.40.0 virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Getopt-Long >=virtual/perl-IO-Compress-1.20 >=dev-perl/libwww-perl-5 >=dev-perl/URI-1 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/CPAN-Mini-1.111016.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=f11f3615ea6170c93db24dd0437b9f75

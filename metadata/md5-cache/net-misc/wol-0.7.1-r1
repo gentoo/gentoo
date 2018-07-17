@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DESCRIPTION=Wake up hardware that is Magic Packet compliant
+EAPI=5
+HOMEPAGE=http://ahh.sourceforge.net/wol/
+IUSE=nls
+KEYWORDS=amd64 arm ppc ~ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/ahh/wol-0.7.1.tar.gz
+_md5_=0b1fa676b9185c90e6cd55ceb9d6a85c

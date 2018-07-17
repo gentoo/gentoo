@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=fuse? ( sys-fs/fuse ) ncurses? ( sys-libs/ncurses:0= ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib ) >=sys-apps/util-linux-2.30 dev-util/indent app-admin/genromfs virtual/pkgconfig
+DESCRIPTION=User space utilities for the zSeries (s390) Linux kernel and device drivers
+EAPI=5
+HOMEPAGE=https://www.ibm.com/developerworks/linux/linux390/s390-tools.html
+IUSE=fuse ncurses pfm snmp zlib
+KEYWORDS=-* s390
+LICENSE=GPL-2
+RDEPEND=fuse? ( sys-fs/fuse ) ncurses? ( sys-libs/ncurses:0= ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib ) >=sys-apps/util-linux-2.30
+SLOT=0
+SRC_URI=https://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/s390-tools-1.36.1.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88
+_md5_=10f689e1b9457f98bf01b9b0e8536b5c

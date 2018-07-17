@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-libs/glib-2.26:2 !gtk3? ( >=x11-libs/gtk+-2.12:2 ) gtk3? ( x11-libs/gtk+:3 ) acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A file manager that implements the popular two-pane design
+EAPI=5
+HOMEPAGE=http://emelfm2.net/
+IUSE=acl ansi gimp gtk3 kernel_linux nls policykit spell udisks
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3 LGPL-3
+RDEPEND=>=dev-libs/glib-2.26:2 !gtk3? ( >=x11-libs/gtk+-2.12:2 ) gtk3? ( x11-libs/gtk+:3 ) acl? ( sys-apps/acl ) gimp? ( media-gfx/gimp ) policykit? ( sys-auth/polkit ) spell? ( >=app-text/gtkspell-2.0.14:2 ) udisks? ( sys-fs/udisks:2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://emelfm2.net/rel/emelfm2-0.9.1.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=c09f96cc6c5cc294458d6e232781f8a6

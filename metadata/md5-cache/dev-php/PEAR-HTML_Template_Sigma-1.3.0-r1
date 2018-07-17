@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test
+DEPEND=test? ( dev-lang/php:*[ctype] dev-php/phpunit )
+DESCRIPTION=An implementation of Integrated Templates API with template 'compilation' added
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/HTML_Template_Sigma
+IUSE=test
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php:*[ctype] >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTML_Template_Sigma-1.3.0.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=19a2f818ab861673ec95358ae8646270

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=!games-misc/bsd-games media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-image media-libs/sdl-ttf
+DESCRIPTION=The classic word guessing game
+EAPI=6
+HOMEPAGE=http://www.shiftygames.com/hangman/hangman.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!games-misc/bsd-games media-libs/libsdl media-libs/sdl-mixer media-libs/sdl-image media-libs/sdl-ttf sys-apps/miscfiles
+SLOT=0
+SRC_URI=http://www.shiftygames.com/hangman/hangman-0.9.2.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=ee3bcaf5cbb1c580b0fd4fdf851f1629

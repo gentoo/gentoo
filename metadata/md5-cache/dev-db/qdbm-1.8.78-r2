@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test unpack
+DEPEND=bzip2? ( app-arch/bzip2 ) java? ( >=virtual/jre-1.4:* ) lzo? ( dev-libs/lzo ) perl? ( dev-lang/perl ) ruby? ( ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ) zlib? ( sys-libs/zlib ) java? ( >=virtual/jdk-1.4:* ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=Quick Database Manager
+EAPI=6
+HOMEPAGE=http://fallabs.com/qdbm/
+IUSE=bzip2 cxx debug java lzo perl ruby zlib elibc_FreeBSD java elibc_FreeBSD ruby_targets_ruby23 ruby_targets_ruby24
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=bzip2? ( app-arch/bzip2 ) java? ( >=virtual/jre-1.4:* ) lzo? ( dev-libs/lzo ) perl? ( dev-lang/perl ) ruby? ( ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ) zlib? ( sys-libs/zlib ) java? ( >=dev-java/java-config-2.2.0-r3 )
+SLOT=0
+SRC_URI=http://fallabs.com/qdbm/qdbm-1.8.78.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	0ee72667014428e01a01df2345244cf3	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	perl-functions	01e8c68d5a528bbcda4d3c60205983df	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-ng	c1f44e746d7656dd6e02d8815ff9518a	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=7b80f9d12c3898ac9bb5e5c495c789a4

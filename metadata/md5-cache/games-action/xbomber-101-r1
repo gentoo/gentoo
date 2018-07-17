@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/libX11
+DESCRIPTION=Bomberman clone w/multiplayer support
+EAPI=6
+HOMEPAGE=http://www.xdr.com/dash/bomber.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!sci-biology/emboss x11-libs/libX11
+SLOT=0
+SRC_URI=http://www.xdr.com/dash/xbomber-101.tgz
+_md5_=8f60cb8ba174f56e88e6a8acd69e2067

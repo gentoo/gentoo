@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Doom 3 Hell Campaign - map pack for Doom 3
+EAPI=5
+HOMEPAGE=http://www.gamefront.com/files/listing/gamingfiles/Doom_III/Maps/Map_Packs/
+IUSE=dedicated opengl dedicated opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=GameFront
+RDEPEND=games-misc/games-envd dedicated? ( games-fps/doom3[dedicated] ) opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) !dedicated? ( !opengl? ( || ( games-fps/doom3[opengl] games-fps/doom3[-dedicated] ) ) )
+RESTRICT=fetch bindist
+SLOT=0
+SRC_URI=sp_hc_final.zip hardcorehellcampaign_patch.zip
+_eclasses_=base	983774947da124fb7d542ce25a218bb1	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	games	2bb3ede665927a68ffdb7c41eec7efde	games-mods	717d443e8308768de4178537c370a7ab	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1ea6f2fde43722b670df268d9ee03dc4

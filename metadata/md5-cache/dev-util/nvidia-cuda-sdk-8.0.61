@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=~dev-util/nvidia-cuda-toolkit-8.0.61 media-libs/freeglut examples? ( media-libs/freeimage media-libs/glew:0= >=x11-drivers/nvidia-drivers-375.26[uvm] mpi? ( virtual/mpi ) )
+DESCRIPTION=NVIDIA CUDA Software Development Kit
+EAPI=6
+HOMEPAGE=https://developer.nvidia.com/cuda-zone
+IUSE=+cuda debug +doc +examples opencl mpi
+KEYWORDS=~amd64 ~amd64-linux
+LICENSE=CUDPP
+RDEPEND=~dev-util/nvidia-cuda-toolkit-8.0.61 media-libs/freeglut examples? ( media-libs/freeimage media-libs/glew:0= >=x11-drivers/nvidia-drivers-375.26[uvm] mpi? ( virtual/mpi ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run -> cuda_8.0.61_375.26_linux.run
+_eclasses_=cuda	626969678b9c5735753d8a380c6f295b	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=83ec1bd3dd5c1985da3918ce52fc0dc2

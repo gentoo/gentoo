@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=app-arch/bzip2:0/1 dev-libs/expat:0/0 dev-libs/libffi:0/0 sys-devel/gcc:* sys-libs/glibc sys-libs/ncurses:0/6 sys-libs/zlib:0/1 gdbm? ( sys-libs/gdbm:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) sqlite? ( dev-db/sqlite:3= ) tk? ( dev-lang/tk:0= dev-tcltk/tix:0= ) !dev-python/pypy3:0 app-arch/lzip app-arch/xz-utils test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 >=virtual/pypy-5:0 ) )
+DESCRIPTION=A fast, compliant alternative implementation of Python 3.3 (binary package)
+EAPI=6
+HOMEPAGE=http://pypy.org/
+IUSE=gdbm +jit libressl sqlite cpu_flags_x86_sse2 test tk
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-arch/bzip2:0/1 dev-libs/expat:0/0 dev-libs/libffi:0/0 sys-devel/gcc:* sys-libs/glibc sys-libs/ncurses:0/6 sys-libs/zlib:0/1 gdbm? ( sys-libs/gdbm:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) sqlite? ( dev-db/sqlite:3= ) tk? ( dev-lang/tk:0= dev-tcltk/tix:0= ) !dev-python/pypy3:0
+REQUIRED_USE=x86? ( !cpu_flags_x86_sse2? ( !jit ) )
+SLOT=0/510
+SRC_URI=https://bitbucket.org/pypy/pypy/downloads/pypy3-v5.10.1-src.tar.bz2 amd64? ( jit? ( https://dev.gentoo.org/~mgorny/dist/pypy3-bin/5.10.1/pypy3-bin-5.10.1-amd64+bzip2+jit+ncurses.tar.lz ) !jit? ( https://dev.gentoo.org/~mgorny/dist/pypy3-bin/5.10.1/pypy3-bin-5.10.1-amd64+bzip2+ncurses.tar.lz ) ) x86? ( cpu_flags_x86_sse2? ( jit? ( https://dev.gentoo.org/~mgorny/dist/pypy3-bin/5.10.1/pypy3-bin-5.10.1-x86+bzip2+jit+ncurses+sse2.tar.lz ) !jit? ( https://dev.gentoo.org/~mgorny/dist/pypy3-bin/5.10.1/pypy3-bin-5.10.1-x86+bzip2+ncurses+sse2.tar.lz ) ) !cpu_flags_x86_sse2? ( !jit? ( https://dev.gentoo.org/~mgorny/dist/pypy3-bin/5.10.1/pypy3-bin-5.10.1-x86+bzip2+ncurses.tar.lz ) ) )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=ada20145a5a99743efeb2ee405c3e6d0

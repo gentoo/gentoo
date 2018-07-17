@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-text/editorconfig-core-c:= dev-util/geany
+DESCRIPTION=EditorConfig plugin for Geany
+EAPI=6
+HOMEPAGE=https://github.com/editorconfig/editorconfig-geany/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-text/editorconfig-core-c:=
+SLOT=0
+SRC_URI=https://github.com/editorconfig/editorconfig-geany/archive/9dce3bb476728a8f4124aefe12e0a4ffc8567dff.tar.gz -> editorconfig-geany-0.1_p20160725.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ef94698a0fae12eba9b638c15e204445

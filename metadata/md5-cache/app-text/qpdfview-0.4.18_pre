@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.35[qt5] dev-qt/qtxml:5 ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) !svg? ( virtual/freedesktop-icon-theme ) synctex? ( app-text/texlive-core ) dev-qt/linguist-tools:5 virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A tabbed document viewer
+EAPI=6
+HOMEPAGE=https://launchpad.net/qpdfview
+IUSE=cups +dbus djvu fitz +pdf postscript +sqlite +svg synctex
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2+
+RDEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.35[qt5] dev-qt/qtxml:5 ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) !svg? ( virtual/freedesktop-icon-theme ) synctex? ( app-text/texlive-core )
+REQUIRED_USE=?? ( fitz pdf )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~grozin/qpdfview-0.4.18_pre.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=2bebf23a8f9606ec9e07418e53d417fd

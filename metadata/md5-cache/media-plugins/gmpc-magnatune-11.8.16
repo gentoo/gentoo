@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2 dev-db/sqlite:3 >=gnome-base/libglade-2 || ( x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2[jpeg] ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DESCRIPTION=This plugin allows you to browse and preview available albums on magnatune.com
+EAPI=4
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_MAGNATUNE
+IUSE=nls
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/libxml2 dev-db/sqlite:3 >=gnome-base/libglade-2 || ( x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2[jpeg] )
+SLOT=0
+SRC_URI=mirror://sourceforge/musicpd/gmpc-magnatune-11.8.16.tar.gz
+_md5_=cde758064f4da7a125221b5da44b2e13

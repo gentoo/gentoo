@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Server for Mednafen emulator
+EAPI=6
+HOMEPAGE=http://mednafen.fobby.net/releases/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=http://mednafen.fobby.net/releases/files/mednafen-server-0.5.2.tar.gz
+_md5_=2fde62915ef59ddab55484dce9a1cb67

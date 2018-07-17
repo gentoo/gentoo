@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=net-nds/openldap sys-fs/fuse >=sys-libs/libhx-3.12 app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=A virtual filesystem for FUSE which allows navigation of an LDAP tree
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/ldapfuse/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=net-nds/openldap sys-fs/fuse >=sys-libs/libhx-3.12
+SLOT=0
+SRC_URI=mirror://sourceforge/ldapfuse/ldapfuse-1.0.tar.xz
+_md5_=7c86ba7f199a0edf7a238e45be069007

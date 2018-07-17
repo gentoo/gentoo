@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Class-XSAccessor virtual/perl-File-Spec virtual/perl-Pod-Parser >=dev-perl/Pod-POM-0.270.0 >=virtual/perl-ExtUtils-MakeMaker-6.59 test? ( dev-perl/Test-Differences >=virtual/perl-Test-Simple-0.470.0 ) dev-lang/perl:=
+DESCRIPTION=Parse error messages from the perl interpreter
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Parse-ErrorString-Perl/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Class-XSAccessor virtual/perl-File-Spec virtual/perl-Pod-Parser >=dev-perl/Pod-POM-0.270.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MANWAR/Parse-ErrorString-Perl-0.27.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=4e7a2d1952b52bec12456f76fe0471c6

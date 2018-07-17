@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst pretend setup test
+DEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.57[threads(+)] >=dev-libs/libpcre-8.39[cxx] dev-libs/snowball-stemmer net-libs/libpcap sys-libs/zlib mms-agent? ( app-admin/mms-agent ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1g:0= ) libressl? ( dev-libs/libressl:0= ) ) >=sys-devel/gcc-4.8.2:* sys-libs/ncurses sys-libs/readline kerberos? ( dev-libs/cyrus-sasl[kerberos] ) >=dev-util/scons-2.3.0[python_targets_python2_7] virtual/pkgconfig
+DESCRIPTION=A high-performance, open source, schema-free document-oriented database
+EAPI=6
+HOMEPAGE=http://www.mongodb.org
+IUSE=debug kerberos libressl mms-agent ssl +tools
+KEYWORDS=amd64 x86
+LICENSE=AGPL-3 Apache-2.0
+PDEPEND=tools? ( >=app-admin/mongo-tools-3.0.14 )
+RDEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.57[threads(+)] >=dev-libs/libpcre-8.39[cxx] dev-libs/snowball-stemmer net-libs/libpcap sys-libs/zlib mms-agent? ( app-admin/mms-agent ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1g:0= ) libressl? ( dev-libs/libressl:0= ) )
+SLOT=0
+SRC_URI=http://downloads.mongodb.org/src/mongodb-src-r3.0.14.tar.gz
+_eclasses_=check-reqs	fd05cf75484aa28d307cf4ee6e1db056	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	b963274a93e76570a88168c1f1db4cd7	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=c3dc23a16603633f83356d5e5bf7ffd3

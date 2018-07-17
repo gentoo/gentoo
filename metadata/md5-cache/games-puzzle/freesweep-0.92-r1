@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
+DESCRIPTION=Console Minesweeper
+EAPI=6
+HOMEPAGE=http://freshmeat.net/projects/freesweep
+KEYWORDS=~amd64 ~x86 ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=http://www.upl.cs.wisc.edu/~hartmann/sweep/freesweep-0.92.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=b75af3d4dc92cd83588e18171e0064c6

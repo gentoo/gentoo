@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] app-text/asciidoc doc? ( app-text/xmlto dev-lang/perl ) test? ( dev-perl/Module-Install ) virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=An improved dynamic tiling window manager
+EAPI=6
+HOMEPAGE=https://i3wm.org/
+IUSE=doc debug test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] dev-lang/perl dev-perl/AnyEvent-I3 dev-perl/JSON-XS
+REQUIRED_USE=test? ( debug )
+SLOT=0
+SRC_URI=https://github.com/i3/i3/archive/4.14.tar.gz -> i3-4.14.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6fff9e5d8df64448428968c8b9b8b268

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=media-libs/libmpdclient-2.2 iconv? ( virtual/libiconv ) virtual/pkgconfig
+DESCRIPTION=A commandline client for Music Player Daemon (media-sound/mpd)
+EAPI=6
+HOMEPAGE=https://www.musicpd.org
+IUSE=iconv
+KEYWORDS=amd64 arm hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libmpdclient-2.2 iconv? ( virtual/libiconv )
+SLOT=0
+SRC_URI=https://www.musicpd.org/download/mpc/0/mpc-0.27.tar.xz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=753ea6ccb98d82aa526b423aa2034a6c

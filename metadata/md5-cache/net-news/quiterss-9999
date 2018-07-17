@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install postinst postrm unpack
+DEPEND=>=dev-db/sqlite-3.11.1:3 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 virtual/pkgconfig >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A Qt-based RSS/Atom feed reader
+EAPI=6
+HOMEPAGE=https://quiterss.org
+LICENSE=GPL-3
+RDEPEND=>=dev-db/sqlite-3.11.1:3 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsql:5[sqlite] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=aaf11d5f7815063c03c5f427b7b80e88

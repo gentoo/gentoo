@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=gif? ( media-libs/giflib:= ) jpeg? ( virtual/jpeg:0= ) opengl? ( media-libs/freeglut virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A lossy image compression format
+EAPI=6
+HOMEPAGE=https://developers.google.com/speed/webp/download
+IUSE=cpu_flags_x86_avx2 cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 gif +jpeg neon opengl +png static-libs swap-16bit-csp tiff abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~m68k-mint
+LICENSE=BSD
+RDEPEND=gif? ( media-libs/giflib:= ) jpeg? ( virtual/jpeg:0= ) opengl? ( media-libs/freeglut virtual/opengl ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0= )
+SLOT=0/7
+SRC_URI=http://downloads.webmproject.org/releases/webp/libwebp-1.0.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=93827dcba39f9c925192e17f1bc9086b

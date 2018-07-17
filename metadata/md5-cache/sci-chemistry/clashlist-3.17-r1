@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=sci-chemistry/cluster-1.3.081231-r1 sci-chemistry/probe
+DESCRIPTION=Build lists of van der Waals clashes from an input PDB file
+EAPI=4
+HOMEPAGE=http://kinemage.biochem.duke.edu/software/index.php
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=richardson
+RDEPEND=>=sci-chemistry/cluster-1.3.081231-r1 sci-chemistry/probe
+SLOT=0
+SRC_URI=mirror://gentoo/molprobity-3.17.tgz
+_md5_=a77e7433a491d66a2fbf450027a02d66

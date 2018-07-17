@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=A redesign of Liece IRC client
+EAPI=4
+HOMEPAGE=http://www.nongnu.org/riece/
+IUSE=l10n_ja
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2+ FDL-1.1+
+RDEPEND=>=virtual/emacs-23
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/riece/riece-8.0.0.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f
+_md5_=71a44dbf6f3b2ddb5f7ecf394be66aa7

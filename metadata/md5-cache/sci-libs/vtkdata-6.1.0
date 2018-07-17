@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Example data file for VTK
+EAPI=5
+HOMEPAGE=http://www.vtk.org
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=!<sci-libs/vtk-6
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://www.vtk.org/files/release/6.1/VTKData-6.1.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=62b6a150b72caa7998208bc588f05ae7

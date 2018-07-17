@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=PEAR class for IP v4 calculations
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Net_IPv4
+KEYWORDS=amd64 x86
+LICENSE=PHP-3.01
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Net_IPv4-1.3.4.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=68819fd995d9e978e3748a4b526a7689

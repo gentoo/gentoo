@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-libs/json-c-0.11:= dev-libs/libxml2 sys-libs/ncurses:0=[unicode] app-text/asciidoc virtual/pkgconfig sys-devel/gettext test? ( >=dev-cpp/catch-2 )
+DESCRIPTION=An RSS/Atom feed reader for text terminals
+EAPI=6
+HOMEPAGE=https://newsboat.org/ https://github.com/newsboat/newsboat
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-libs/json-c-0.11:= dev-libs/libxml2 sys-libs/ncurses:0=[unicode]
+SLOT=0
+SRC_URI=https://newsboat.org/releases/2.12/newsboat-2.12.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1fe840a2550c9f518879c5975de22dcf

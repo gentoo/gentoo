@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=x11-libs/libXrender x11-libs/libXext dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Client-side interface to the X11 Protocol
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/X11-Protocol/
+IUSE=examples test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ ) MIT
+RDEPEND=x11-libs/libXrender x11-libs/libXext dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SM/SMCCAM/X11-Protocol-0.56.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=722481fa1e126b986d8b22e5f6ebd1ae

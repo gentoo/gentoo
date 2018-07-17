@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=app-arch/unzip
+DESCRIPTION=Freedoom - Open Source Doom resources
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/freedoom/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/freedoom/freedoom/releases/download/v0.10.1/freedoom-0.10.1.zip https://github.com/freedoom/freedoom/releases/download/v0.10.1/freedm-0.10.1.zip
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=8692ada031f3b3a1ef2e1c005621b824

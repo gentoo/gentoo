@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst setup
+DESCRIPTION=NewRelic System Monitor
+EAPI=6
+HOMEPAGE=http://www.newrelic.com/
+KEYWORDS=-* ~x86 ~amd64
+LICENSE=newrelic Apache-2.0 MIT ISC openssl GPL-2
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://download.newrelic.com/server_monitor/archive/1.1.2.124/newrelic-sysmond-1.1.2.124-linux.tar.gz
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=36d4cd7e7bb7af5742184365796fddd3

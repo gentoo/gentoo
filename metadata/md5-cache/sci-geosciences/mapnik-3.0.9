@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=>=dev-libs/boost-1.48[threads] dev-libs/icu:= sys-libs/zlib media-libs/freetype media-libs/harfbuzz dev-libs/libxml2 media-libs/libpng:0= media-libs/tiff:0= virtual/jpeg:0= media-libs/libwebp sci-libs/proj media-fonts/dejavu x11-libs/agg[truetype] cairo? ( x11-libs/cairo dev-cpp/cairomm ) postgres? ( >=dev-db/postgresql-8.3:* ) gdal? ( sci-libs/gdal ) sqlite? ( dev-db/sqlite:3 ) dev-util/scons[python_targets_python2_7]
+DESCRIPTION=A Free Toolkit for developing mapping applications
+EAPI=6
+HOMEPAGE=http://www.mapnik.org/
+IUSE=cairo debug doc gdal postgres sqlite
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=>=dev-libs/boost-1.48[threads] dev-libs/icu:= sys-libs/zlib media-libs/freetype media-libs/harfbuzz dev-libs/libxml2 media-libs/libpng:0= media-libs/tiff:0= virtual/jpeg:0= media-libs/libwebp sci-libs/proj media-fonts/dejavu x11-libs/agg[truetype] cairo? ( x11-libs/cairo dev-cpp/cairomm ) postgres? ( >=dev-db/postgresql-8.3:* ) gdal? ( sci-libs/gdal ) sqlite? ( dev-db/sqlite:3 )
+SLOT=0
+SRC_URI=https://github.com/mapnik/mapnik/archive/v3.0.9.tar.gz -> mapnik-3.0.9.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=c3b6072934ea683c96d52ecfd0567df5

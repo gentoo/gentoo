@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-libs/jansson-2.2 dev-libs/libpcre dev-libs/libyaml net-libs/libnet:* net-libs/libnfnetlink dev-libs/nspr dev-libs/nss >=net-libs/libhtp-0.5.20 net-libs/libpcap sys-apps/file cuda? ( dev-util/nvidia-cuda-toolkit ) geoip? ( dev-libs/geoip ) lua? ( dev-lang/lua:* ) luajit? ( dev-lang/luajit:* ) nflog? ( net-libs/libnetfilter_log ) nfqueue? ( net-libs/libnetfilter_queue ) redis? ( dev-libs/hiredis ) logrotate? ( app-admin/logrotate ) sys-libs/libcap-ng >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=High performance Network IDS, IPS and Network Security Monitoring engine
+EAPI=5
+HOMEPAGE=https://suricata-ids.org/
+IUSE=+af-packet control-socket cuda debug +detection geoip hardened logrotate lua luajit nflog +nfqueue redis +rules test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/jansson-2.2 dev-libs/libpcre dev-libs/libyaml net-libs/libnet:* net-libs/libnfnetlink dev-libs/nspr dev-libs/nss >=net-libs/libhtp-0.5.20 net-libs/libpcap sys-apps/file cuda? ( dev-util/nvidia-cuda-toolkit ) geoip? ( dev-libs/geoip ) lua? ( dev-lang/lua:* ) luajit? ( dev-lang/luajit:* ) nflog? ( net-libs/libnetfilter_log ) nfqueue? ( net-libs/libnetfilter_queue ) redis? ( dev-libs/hiredis ) logrotate? ( app-admin/logrotate ) sys-libs/libcap-ng
+SLOT=0
+SRC_URI=https://www.openinfosecfoundation.org/download/suricata-4.0.4.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1a731be859598a54d703695c3f32a101

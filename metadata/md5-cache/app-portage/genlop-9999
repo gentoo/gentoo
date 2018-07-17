@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=dev-lang/perl dev-perl/Date-Manip dev-perl/libwww-perl >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A nice emerge.log parser
+EAPI=5
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Perl
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Date-Manip dev-perl/libwww-perl
+SLOT=0
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=7064f07533b5d95fe2800e67723a4e90

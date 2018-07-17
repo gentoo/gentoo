@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=Visual binary diff utility
+EAPI=6
+HOMEPAGE=https://www.cjmweb.net/vbindiff/
+IUSE=debug
+KEYWORDS=amd64 ~arm x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=https://www.cjmweb.net/vbindiff/vbindiff-3.0_beta4.tar.gz
+_md5_=701f39dd01ef0744cff3fb1f65fd27ac

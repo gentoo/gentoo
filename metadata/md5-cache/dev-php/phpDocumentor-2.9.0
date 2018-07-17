@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Automatic documenting of php api directly from the source
+EAPI=6
+HOMEPAGE=http://phpdoc.org
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=!dev-php/PEAR-PhpDocumentor media-gfx/graphviz dev-lang/php:*[cli,iconv,intl,phar,xmlreader,xslt]
+SLOT=0
+SRC_URI=https://github.com/phpDocumentor/phpDocumentor2/releases/download/v2.9.0/phpDocumentor.phar -> phpDocumentor-2.9.0.phar
+_md5_=83ea7f0ed8622e3265963aab3ef3db05

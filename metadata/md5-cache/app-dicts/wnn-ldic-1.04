@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=app-i18n/freewnn
+DESCRIPTION=Wnn dictionary for librarian
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=~amd64 ~x86
+LICENSE=HPND
+SLOT=0
+SRC_URI=mirror://gentoo/ldic-1.04-wnn.txt
+_md5_=9137555a948f55afd532d8b751f4ab00

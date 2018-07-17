@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=OS independent wrapper class for executing ping calls
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/Net_Ping
+IUSE=examples
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/Net_Ping-2.4.5.tgz
+_md5_=8ce9be1d3eb54e8a50f876345061143e

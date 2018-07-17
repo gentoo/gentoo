@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis]
+DESCRIPTION=Tetris and Pong in the same place at the same time
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/tong/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis]
+SLOT=0
+SRC_URI=http://www.nongnu.org/tong/tong-1.2.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=6aa120c4e5260a069b954a092b3bca49

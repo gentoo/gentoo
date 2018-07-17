@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/erlang
+DESCRIPTION=Lisp-flavoured Erlang
+EAPI=5
+HOMEPAGE=http://lfe.github.io/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=dev-lang/erlang
+SLOT=0
+SRC_URI=https://github.com/rvirding/lfe/archive/v1.0.zip -> lfe-1.0.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=916ec18494330028d4fa26a6abb3094f

@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prepare test
+DEPEND=app-arch/xz-utils test? ( >=app-shells/bash-4.3_p30-r1 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc app-misc/dtach dev-util/dejagnu dev-tcltk/tcllib )
+DESCRIPTION=Programmable Completion for bash
+EAPI=6
+HOMEPAGE=https://github.com/scop/bash-completion
+IUSE=test
+KEYWORDS=alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris
+LICENSE=GPL-2
+PDEPEND=>=app-shells/gentoo-bashcomp-20140911
+RDEPEND=>=app-shells/bash-4.3_p30-r1 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/scop/bash-completion/releases/download/2.7/bash-completion-2.7.tar.xz https://bitbucket.org/mgorny/bashcomp2/downloads/bashcomp-2.0.2.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=a05253a4d5925832556adf69def88578

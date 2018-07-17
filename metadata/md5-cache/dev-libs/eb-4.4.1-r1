@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=sys-libs/zlib nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=EB is a C library and utilities for accessing CD-ROM books
+EAPI=5
+HOMEPAGE=http://www.sra.co.jp/people/m-kasahr/eb/
+IUSE=ipv6 nls threads
+KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=sys-libs/zlib nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.1.tar.lzma
+_md5_=bb78fe184a43f1a4ea47ba3f812aa00f

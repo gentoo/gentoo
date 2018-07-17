@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=sci-libs/flann-1.7.1 dev-libs/boost:=[threads] dev-cpp/eigen:3 opengl? ( virtual/opengl media-libs/freeglut ) openni? ( dev-libs/OpenNI ) openni2? ( dev-libs/OpenNI2 ) pcap? ( net-libs/libpcap ) png? ( media-libs/libpng:0= ) qhull? ( media-libs/qhull ) qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtopengl:5 ) usb? ( virtual/libusb:1 ) vtk? ( >=sci-libs/vtk-5.6:=[imaging,rendering] ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4 ) !!dev-cpp/metslib doc? ( app-doc/doxygen ) tutorials? ( dev-python/sphinx dev-python/sphinxcontrib-doxylink ) test? ( >=dev-cpp/gtest-1.6.0 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=2D/3D image and point cloud processing
+EAPI=5
+HOMEPAGE=http://pointclouds.org/
+IUSE=cuda doc opengl openni openni2 pcap png +qhull qt5 usb vtk cpu_flags_x86_sse test tutorials
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=>=sci-libs/flann-1.7.1 dev-libs/boost:=[threads] dev-cpp/eigen:3 opengl? ( virtual/opengl media-libs/freeglut ) openni? ( dev-libs/OpenNI ) openni2? ( dev-libs/OpenNI2 ) pcap? ( net-libs/libpcap ) png? ( media-libs/libpng:0= ) qhull? ( media-libs/qhull ) qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtopengl:5 ) usb? ( virtual/libusb:1 ) vtk? ( >=sci-libs/vtk-5.6:=[imaging,rendering] ) cuda? ( >=dev-util/nvidia-cuda-toolkit-4 )
+REQUIRED_USE=openni? ( usb ) openni2? ( usb ) tutorials? ( doc )
+SLOT=0/1.8
+SRC_URI=https://github.com/PointCloudLibrary/pcl/archive/pcl-1.8.1.tar.gz
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=564ebb1091b2e6eea7784cfc48dd33c7

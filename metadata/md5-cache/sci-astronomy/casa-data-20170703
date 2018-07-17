@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Data and tables for the CASA software
+EAPI=6
+HOMEPAGE=https://github.com/casacore/casacore/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-3
+SLOT=0
+SRC_URI=ftp://ftp.astron.nl/outgoing/Measures/WSRT_Measures_20170703-000001.ztar -> casa-data-20170703.tar.Z
+_md5_=5b1f8c531f0f3ec67f9adf2700b4f992

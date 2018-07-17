@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Manages PACKAGE_MANAGER environment variable
+EAPI=6
+HOMEPAGE=https://www.gentoo.org/proj/en/eselect/
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2+
+RDEPEND=>=app-admin/eselect-1.1.1
+SLOT=0
+SRC_URI=mirror://gentoo/eselect-package-manager-20110108.tar.bz2
+_md5_=c990e3dcb64102249425164c0290d18f

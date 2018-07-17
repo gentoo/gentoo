@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Simple, lightweight, dependable CLI for ZooKeeper
+EAPI=6
+HOMEPAGE=https://github.com/outbrain/zookeepercli
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/outbrain/zookeepercli/archive/v1.0.10.tar.gz -> zookeepercli-1.0.10.tar.gz https://github.com/outbrain/golib/archive/2418949ac30d9933e7412ccce41f1aa2ae8d5ae8.tar.gz -> golib-2418949ac30d9933e7412ccce41f1aa2ae8d5ae8.tar.gz https://github.com/samuel/go-zookeeper/archive/218e9c81c0dd8b3b18172b2bbfad92cc7d6db55f.tar.gz -> go-zookeeper-218e9c81c0dd8b3b18172b2bbfad92cc7d6db55f.tar.gz
+_md5_=cecf726fd063a431d5413df7a0559f7e

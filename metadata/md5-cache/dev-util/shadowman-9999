@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-admin/eselect >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Unified compiler shadow link directory updater
+EAPI=6
+HOMEPAGE=https://github.com/mgorny/shadowman
+LICENSE=GPL-2
+RDEPEND=app-admin/eselect
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=c1e230bbbbb4ce15e2415e377f9e44b5

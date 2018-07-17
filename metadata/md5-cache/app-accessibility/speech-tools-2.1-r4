@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=nas? ( media-libs/nas ) X? ( x11-libs/libX11 x11-libs/libXt ) >=media-libs/alsa-lib-1.0.20-r1 !<app-accessibility/festival-1.96_beta !sys-power/powerman >=sys-libs/ncurses-5.6-r2:0= virtual/pkgconfig
+DESCRIPTION=Speech tools for Festival Text to Speech engine
+EAPI=5
+HOMEPAGE=http://www.cstr.ed.ac.uk/projects/speech_tools/
+IUSE=nas X
+KEYWORDS=alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=FESTIVAL HPND BSD rc regexp-UofT
+RDEPEND=nas? ( media-libs/nas ) X? ( x11-libs/libX11 x11-libs/libXt ) >=media-libs/alsa-lib-1.0.20-r1 !<app-accessibility/festival-1.96_beta !sys-power/powerman >=sys-libs/ncurses-5.6-r2:0=
+SLOT=0
+SRC_URI=http://www.festvox.org/packed/festival/2.1/speech_tools-2.1-release.tar.gz https://dev.gentoo.org/~neurogeek/speech-tools/speech_tools-2.1-r3-patches.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=60a9a13eef714fed10171ab32b87721e

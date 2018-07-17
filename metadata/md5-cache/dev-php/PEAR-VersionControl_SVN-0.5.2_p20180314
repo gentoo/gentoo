@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare test unpack
+DEPEND=test? ( dev-vcs/subversion dev-php/phpunit )
+DESCRIPTION=Simple OO wrapper interface for the Subversion command-line client
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/VersionControl_SVN
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://github.com/pear/VersionControl_SVN/archive/6c9580df92f0cc77a6eb6fcc216c56913bf308e7.tar.gz -> PEAR-VersionControl_SVN-0.5.2_p20180314.tar.gz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=7c89bc31a6cda70419c0e67a101727ae

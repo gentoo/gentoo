@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=dev-lang/perl dev-perl/Jcode sys-libs/readline:0 sys-libs/zlib alsa? ( media-libs/alsa-lib ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile ) sys-devel/flex
+DESCRIPTION=Large Vocabulary Continuous Speech Recognition Engine
+EAPI=6
+HOMEPAGE=http://julius.sourceforge.jp/
+IUSE=+alsa l10n_ja oss portaudio pulseaudio sndfile
+KEYWORDS=amd64 x86
+LICENSE=julius
+RDEPEND=dev-lang/perl dev-perl/Jcode sys-libs/readline:0 sys-libs/zlib alsa? ( media-libs/alsa-lib ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( media-libs/libsndfile )
+REQUIRED_USE=^^ ( alsa oss portaudio pulseaudio )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/julius/56549/julius-4.2.2.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=79b1a15e5dfb0e800c975924ca9683c6

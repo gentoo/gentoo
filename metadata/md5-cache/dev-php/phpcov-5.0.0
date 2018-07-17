@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=CLI frontend for PHP_CodeCoverage
+EAPI=6
+HOMEPAGE=https://github.com/sebastianbergmann/phpcov
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/php:*[phar] dev-php/xdebug
+SLOT=0
+SRC_URI=https://phar.phpunit.de/phpcov-5.0.0.phar
+_md5_=8d13c2ca32252a7ec25eb16766561464

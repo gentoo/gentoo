@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare
+DEPEND=sys-libs/glibc sys-libs/pam media-libs/libsdl media-libs/sdl-ttf media-fonts/dejavu alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) cdda? ( media-sound/cdparanoia ) mp3? ( media-sound/mpg123 ) fallback? ( virtual/ffmpeg )
+DESCRIPTION=Digital vinyl emulation software
+EAPI=5
+HOMEPAGE=http://xwax.org/
+IUSE=alsa jack oss cdda mp3 +fallback
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/glibc sys-libs/pam media-libs/libsdl media-libs/sdl-ttf media-fonts/dejavu alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) cdda? ( media-sound/cdparanoia ) mp3? ( media-sound/mpg123 ) fallback? ( virtual/ffmpeg )
+REQUIRED_USE=|| ( cdda mp3 fallback ) || ( alsa jack oss )
+SLOT=0
+SRC_URI=http://xwax.org/releases/xwax-1.5.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=6ab913c5d1be2757bd532724157fef73

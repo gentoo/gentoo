@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=app-i18n/ibus dev-libs/m17n-lib gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) nls? ( virtual/libintl ) dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=M17N engine for IBus
+EAPI=6
+HOMEPAGE=https://github.com/ibus/ibus/wiki
+IUSE=gtk gtk2 nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-i18n/ibus dev-libs/m17n-lib gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) nls? ( virtual/libintl ) >=dev-db/m17n-db-1.7
+REQUIRED_USE=gtk2? ( gtk )
+SLOT=0
+SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ibus/ibus-m17n-1.3.2.tar.gz
+_md5_=5207c3d646f18d7c1438225f2a20e0c4

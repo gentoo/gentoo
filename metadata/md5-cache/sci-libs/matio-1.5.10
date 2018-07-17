@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=sys-libs/zlib hdf5? ( sci-libs/hdf5 ) sys-devel/libtool doc? ( virtual/latex-base )
+DESCRIPTION=Library for reading and writing matlab files
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/matio/
+IUSE=doc examples hdf5 sparse static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD-2
+RDEPEND=sys-libs/zlib hdf5? ( sci-libs/hdf5 )
+SLOT=0/4
+SRC_URI=mirror://sourceforge/matio/matio-1.5.10.tar.gz
+_md5_=e0d5ac22ee1053f662f7fb844653f819

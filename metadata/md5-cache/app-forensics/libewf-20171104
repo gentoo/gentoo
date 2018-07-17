@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=fuse? ( sys-fs/fuse:0= ) nls? ( virtual/libintl virtual/libiconv ) uuid? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl:0= ) zlib? ( sys-libs/zlib ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Implementation of the EWF (SMART and EnCase) image format
+EAPI=6
+HOMEPAGE=https://github.com/libyal/libewf
+IUSE=bfio bzip2 debug +fuse nls +ssl static-libs +uuid unicode zlib
+KEYWORDS=amd64 ~hppa ppc x86
+LICENSE=BSD
+RDEPEND=fuse? ( sys-fs/fuse:0= ) nls? ( virtual/libintl virtual/libiconv ) uuid? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl:0= ) zlib? ( sys-libs/zlib )
+RESTRICT=test
+SLOT=0/3
+SRC_URI=https://github.com/libyal/libewf/releases/download/20171104/libewf-experimental-20171104.tar.gz
+_md5_=abcec0c62a72aa4d3f8fcbd59cc298af

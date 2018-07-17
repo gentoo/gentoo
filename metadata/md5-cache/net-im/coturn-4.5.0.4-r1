@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-libs/libevent[ssl] dev-libs/openssl:* mongodb? ( dev-libs/mongo-c-driver ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) redis? ( dev-libs/hiredis ) sqlite? ( dev-db/sqlite ) virtual/pkgconfig
+DESCRIPTION=coturn TURN server project
+EAPI=6
+HOMEPAGE=https://github.com/coturn/coturn
+IUSE=mongodb mysql postgres redis sqlite
+KEYWORDS=~x86 ~amd64
+LICENSE=BSD
+RDEPEND=dev-libs/libevent[ssl] dev-libs/openssl:* mongodb? ( dev-libs/mongo-c-driver ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) redis? ( dev-libs/hiredis ) sqlite? ( dev-db/sqlite ) virtual/tmpfiles
+SLOT=0
+SRC_URI=https://github.com/coturn/coturn/archive/4.5.0.4.tar.gz -> coturn-4.5.0.4.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	tmpfiles	d7dc36a24e327d58f0728badddca6448	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=bdf236bcced3fc2b5383cf095b869c4b

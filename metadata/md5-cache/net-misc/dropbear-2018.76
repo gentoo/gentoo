@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare
+DEPEND=!static? ( zlib? ( sys-libs/zlib ) dev-libs/libtommath ) pam? ( virtual/pam ) static? ( zlib? ( sys-libs/zlib[static-libs(+)] ) dev-libs/libtommath[static-libs(+)] )
+DESCRIPTION=small SSH 2 client/server designed for small memory environments
+EAPI=5
+HOMEPAGE=https://matt.ucc.asn.au/dropbear/dropbear.html
+IUSE=bsdpty minimal multicall pam +shadow static +syslog zlib savedconfig
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=!static? ( zlib? ( sys-libs/zlib ) dev-libs/libtommath ) pam? ( virtual/pam ) pam? ( >=sys-auth/pambase-20080219.1 )
+REQUIRED_USE=pam? ( !static )
+SLOT=0
+SRC_URI=https://matt.ucc.asn.au/dropbear/releases/dropbear-2018.76.tar.bz2 https://matt.ucc.asn.au/dropbear/testing/dropbear-2018.76.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=66063e79eee02498bb5589030aa38bcc

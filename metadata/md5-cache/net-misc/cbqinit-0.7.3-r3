@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Sets up class-based queue traffic control (QoS) with iproute2
+EAPI=6
+HOMEPAGE=https://www.sourceforge.net/projects/cbqinit/
+KEYWORDS=alpha amd64 ~arm hppa ~mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/iproute2
+SLOT=0
+SRC_URI=mirror://sourceforge/cbqinit/cbq.init-v0.7.3 -> cbqinit-0.7.3
+_md5_=6ac6dc5f046c7c53ab032a9203581a23

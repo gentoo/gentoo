@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=The Fluid R3 soundfont
+EAPI=4
+HOMEPAGE=http://musescore.org/en/handbook/soundfont
+IUSE=timidity
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=timidity? ( app-eselect/eselect-timidity )
+SLOT=0
+SRC_URI=http://prereleases.musescore.org/soundfont/fluid-soundfont_3.1.tar.gz timidity? ( https://dev.gentoo.org/~hwoarang/distfiles/timidity.cfg.bz2 )
+_md5_=6573713309c22bf4a10f74b6d069c4e4

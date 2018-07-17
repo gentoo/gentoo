@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) net-libs/libnsl:0= memcached? ( dev-libs/libmemcached ) pam? ( sys-auth/pambase ) ssl? ( dev-libs/openssl:* ) sys-devel/bison !!dev-db/pgpool >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Connection pool server for PostgreSQL
+EAPI=6
+HOMEPAGE=http://www.pgpool.net/
+IUSE=doc memcached pam ssl static-libs postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
+LICENSE=BSD
+RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) net-libs/libnsl:0= memcached? ( dev-libs/libmemcached ) pam? ( sys-auth/pambase ) ssl? ( dev-libs/openssl:* )
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multibuild	35719a9cd25ec71ee49c966f6868454c	postgres	a3ad839d319097167f1802b25f50d9c0	postgres-multi	4ad3669c874bed68b375f87035e46db8	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=2ead6d4345a7d1fd0707736bb4a63881

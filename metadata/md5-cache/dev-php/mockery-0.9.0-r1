@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Simple yet flexible PHP mock object framework for use in unit testing
+EAPI=6
+HOMEPAGE=https://github.com/padraic/mockery
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http:///get/Mockery-0.9.0.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=dc93f92f30c41c5e7c7d8e06406b7cd2

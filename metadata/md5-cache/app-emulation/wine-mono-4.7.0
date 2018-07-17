@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=!!app-emulation/wine:0
+DESCRIPTION=Wine Mono is a replacement for the .NET runtime and class libraries in Wine
+EAPI=6
+HOMEPAGE=https://www.winehq.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2 GPL-2 LGPL-2.1 MIT MPL-1.1
+SLOT=4.7.0
+SRC_URI=https://dl.winehq.org/wine/wine-mono/4.7.0/wine-mono-4.7.0.msi
+_md5_=12ab50ec3454dff3a5c3ad80cc06e314

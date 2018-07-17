@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=lightweight, extensible meta-backup system
+EAPI=6
+HOMEPAGE=http://riseuplabs.org/backupninja/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-util/dialog
+SLOT=0
+SRC_URI=https://labs.riseup.net/code/attachments/download/275/backupninja-1.0.1.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c5deed87a52e0f08feaba1ac69ab3920

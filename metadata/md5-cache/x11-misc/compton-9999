@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-libs/libconfig:= x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXrender dbus? ( sys-apps/dbus ) opengl? ( virtual/opengl ) pcre? ( dev-libs/libpcre:3 ) xinerama? ( x11-libs/libXinerama ) app-text/asciidoc virtual/pkgconfig x11-base/xorg-proto drm? ( x11-libs/libdrm ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A compositor for X, and a fork of xcompmgr-dana
+EAPI=6
+HOMEPAGE=https://github.com/chjj/compton
+IUSE=dbus +drm opengl +pcre xinerama python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
+LICENSE=MIT
+RDEPEND=python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-libs/libconfig:= x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXrender dbus? ( sys-apps/dbus ) opengl? ( virtual/opengl ) pcre? ( dev-libs/libpcre:3 ) xinerama? ( x11-libs/libXinerama ) x11-apps/xprop x11-apps/xwininfo
+REQUIRED_USE=|| ( python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=4d98b3d30f90fb30e16af0260c36c2aa

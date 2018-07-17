@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=games-util/catcodec
+DESCRIPTION=OpenSFX data files for OpenTTD
+EAPI=6
+HOMEPAGE=http://bundles.openttdcoop.org/opensfx/
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+LICENSE=CC-Sampling-Plus-1.0
+SLOT=0
+SRC_URI=http://bundles.openttdcoop.org/opensfx/releases/opensfx-0.2.3-source.tar.gz
+_md5_=0a0ba19e6cdab698d5ba9e74eddd74a0

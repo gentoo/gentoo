@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: heuristically set buffer options
+EAPI=5
+HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=4375 https://github.com/tpope/vim-sleuth
+KEYWORDS=~amd64 ~x86
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/sleuth-1.0.tar.bz2 https://dev.gentoo.org/~radhermit/vim/sleuth-1.0.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=58b84c785968427d828580d2fda8474e

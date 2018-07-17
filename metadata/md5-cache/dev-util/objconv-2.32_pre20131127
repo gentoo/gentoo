@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=object code file converted (COFF, ELF, OMF, MACHO)
+EAPI=5
+HOMEPAGE=http://agner.org/optimize/#objconv
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/objconv-2.32_pre20131127.zip
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_md5_=f5fe1988ea0adbdb8b803e1eb78aafe8

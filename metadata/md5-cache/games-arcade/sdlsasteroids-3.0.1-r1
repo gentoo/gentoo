@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=virtual/opengl media-libs/sdl-mixer media-libs/libsdl[sound,joystick,video] media-libs/sdl-image[png] media-libs/sdl-ttf
+DESCRIPTION=Rework of Sasteroids using SDL
+EAPI=6
+HOMEPAGE=http://sdlsas.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 freedist
+RDEPEND=virtual/opengl media-libs/sdl-mixer media-libs/libsdl[sound,joystick,video] media-libs/sdl-image[png] media-libs/sdl-ttf
+SLOT=0
+SRC_URI=mirror://sourceforge/sdlsas/SDLSasteroids-3.0.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=ca56d0412fff2812d7374e3a865fdf7f

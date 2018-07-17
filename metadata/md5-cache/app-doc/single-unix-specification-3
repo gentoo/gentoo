@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=The Single UNIX Specification, Version 3, 2004 Edition (8 Volumes)
+EAPI=0
+HOMEPAGE=http://www.opengroup.org/bookstore/catalog/t041.htm
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86
+LICENSE=sus3-copyright
+RESTRICT=mirror
+SLOT=3
+SRC_URI=http://www.opengroup.org/onlinepubs/009695399/download/susv3.tar.bz2
+_md5_=f23234f6827a93955c6735189a561410

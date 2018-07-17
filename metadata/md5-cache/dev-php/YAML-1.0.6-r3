@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=The Symfony YAML Component
+EAPI=6
+HOMEPAGE=http://pear.symfony-project.com/
+KEYWORDS=amd64 hppa x86
+LICENSE=MIT
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.symfony-project.com/get/YAML-1.0.6.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=ccefb3986461ac59b6b3af3186283868

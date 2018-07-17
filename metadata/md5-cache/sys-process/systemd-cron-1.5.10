@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare setup
+DEPEND=sys-process/cronbase test? ( sys-apps/man-db dev-python/pyflakes ) virtual/pkgconfig
+DESCRIPTION=systemd units to create timers for cron directories and crontab
+EAPI=5
+HOMEPAGE=https://github.com/systemd-cron/systemd-cron/
+IUSE=cron-boot etc-crontab-systemd minutely setgid test yearly python_targets_pypy3 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_pypy3 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=sys-apps/systemd-217 sys-apps/debianutils !etc-crontab-systemd? ( !sys-process/dcron ) python_single_target_pypy3? ( >=virtual/pypy3-5:0= ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_7(-),python_single_target_pypy3(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] sys-process/cronbase
+REQUIRED_USE=^^ ( python_single_target_pypy3 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_pypy3? ( python_targets_pypy3 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
+SLOT=0
+SRC_URI=https://github.com/systemd-cron/systemd-cron/archive/v1.5.10.tar.gz -> systemd-cron-1.5.10.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=0dcda276babb4fa6e6deeb0cae02ee8b

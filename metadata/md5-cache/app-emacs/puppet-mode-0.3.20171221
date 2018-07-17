@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Emacs major mode for editing Puppet manifests
+EAPI=6
+HOMEPAGE=https://github.com/voxpupuli/puppet-mode
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=virtual/emacs-23
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/voxpupuli/puppet-mode/archive/b3ed5057166a4f49dfa9be638523a348b55a2fd2.tar.gz -> puppet-mode-0.3.20171221.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=bbb591e196ab9e0f8ab1527b583ec63e

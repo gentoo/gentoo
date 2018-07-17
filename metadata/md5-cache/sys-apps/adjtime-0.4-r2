@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=A perl script to adjust the clock tick of the hardware clock on the system board
+EAPI=5
+HOMEPAGE=https://groups.yahoo.com/neo/groups/LinkStation_General/info
+KEYWORDS=ppc
+LICENSE=all-rights-reserved
+RDEPEND=dev-lang/perl >=net-misc/ntp-4.2
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.gentoogeek.org/files/adjtime.zip
+_md5_=01098999d4cae30655fc95ee57965dca

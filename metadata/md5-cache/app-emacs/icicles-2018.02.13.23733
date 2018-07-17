@@ -1,0 +1,12 @@
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Minibuffer input completion and cycling
+EAPI=7
+HOMEPAGE=https://www.emacswiki.org/emacs/Icicles
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/icicles-2018.02.13.23733.tar.xz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=2d73a2a1b120177c8ca359abc399f902

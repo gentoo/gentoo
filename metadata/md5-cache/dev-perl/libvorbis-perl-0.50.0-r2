@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/libogg media-libs/libvorbis dev-lang/perl:=
+DESCRIPTION=Ogg::Vorbis - Perl extension for Ogg Vorbis streams
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/libvorbis-perl/
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=media-libs/libogg media-libs/libvorbis dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/F/FO/FOOF/libvorbis-perl-0.05.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=3a91ac20729f7eff06bd23195456c789

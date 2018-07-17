@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Serve embedded files from jteeuwen/go-bindata with net/http
+EAPI=5
+HOMEPAGE=https://github.com/elazarl/go-bindata-assetfs
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-go/go-bindata
+SLOT=0/0_pre20160822
+SRC_URI=https://github.com/elazarl/go-bindata-assetfs/archive/9a6736ed45b44bf3835afeebb3034b57ed329f3e.tar.gz -> go-bindata-assetfs-0_pre20160822.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=00e416a421efc34792ba337bd841eedf

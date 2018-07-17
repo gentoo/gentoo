@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare setup unpack
+DEPEND=>=net-libs/nghttp2-1.0 >=www-servers/apache-2.4.20[-apache2_modules_http2,ssl?] =www-servers/apache-2.4* >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=HTTP/2 module for Apache
+EAPI=6
+HOMEPAGE=https://github.com/icing/mod_h2
+IUSE=ssl
+LICENSE=Apache-2.0
+RDEPEND=>=net-libs/nghttp2-1.0 >=www-servers/apache-2.4.20[-apache2_modules_http2,ssl?] =www-servers/apache-2.4*
+SLOT=0
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	autotools	d0e5375d47f4c809f406eb892e531513	depend.apache	0917334d570e07f9743a04ff85b3bf1b	git-r3	8f6de46b0aa318aea0e8cac62ece098b	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a3ece310a2dcd91523e4c4cd93aed8e0

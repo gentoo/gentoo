@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=!sci-astronomy/ast x11-base/xorg-proto x11-libs/libXt x11-libs/libICE x11-libs/libSM x11-libs/libX11 media-libs/freetype imlib? ( media-libs/imlib2 ) pcre? ( dev-libs/libpcre )
+DESCRIPTION=LIBrary of Assorted Spiffy Things
+EAPI=6
+HOMEPAGE=http://www.eterm.org/download/
+IUSE=imlib cpu_flags_x86_mmx pcre
+KEYWORDS=alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=!sci-astronomy/ast x11-base/xorg-proto x11-libs/libXt x11-libs/libICE x11-libs/libSM x11-libs/libX11 media-libs/freetype imlib? ( media-libs/imlib2 ) pcre? ( dev-libs/libpcre )
+SLOT=0
+SRC_URI=http://www.eterm.org/download/libast-0.7.tar.gz
+_md5_=7fb9e3c22d8fbd42c02b6a5f6a04f3cc

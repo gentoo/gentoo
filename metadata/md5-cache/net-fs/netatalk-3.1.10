@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=!app-editors/yudit dev-libs/libevent:0= >=dev-libs/libgcrypt-1.2.3:0 sys-apps/coreutils >=sys-libs/db-4.2.52:= sys-libs/tdb acl? ( sys-apps/attr sys-apps/acl ) cracklib? ( sys-libs/cracklib ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) tcpd? ( sys-apps/tcp-wrappers ) tracker? ( app-misc/tracker ) utils? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) zeroconf? ( net-dns/avahi[dbus] ) virtual/yacc sys-devel/flex >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Open Source AFP server
+EAPI=5
+HOMEPAGE=http://netatalk.sourceforge.net/
+IUSE=acl cracklib dbus debug pgp kerberos ldap pam quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf python_targets_python2_7
+KEYWORDS=amd64 arm ~ppc ~ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2 BSD
+RDEPEND=!app-editors/yudit dev-libs/libevent:0= >=dev-libs/libgcrypt-1.2.3:0 sys-apps/coreutils >=sys-libs/db-4.2.52:= sys-libs/tdb acl? ( sys-apps/attr sys-apps/acl ) cracklib? ( sys-libs/cracklib ) dbus? ( sys-apps/dbus dev-libs/dbus-glib ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) tcpd? ( sys-apps/tcp-wrappers ) tracker? ( app-misc/tracker ) utils? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) zeroconf? ( net-dns/avahi[dbus] ) utils? ( dev-lang/perl dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+REQUIRED_USE=ldap? ( acl ) tracker? ( dbus ) utils? ( || ( python_targets_python2_7 ) )
+RESTRICT=test
+SLOT=0/17.0
+SRC_URI=mirror://sourceforge/project/netatalk/netatalk/3.1.10/netatalk-3.1.10.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=20123902615bac788fb06d21614ace7a

@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=sci-geosciences/libtcd-2.2.4
+DESCRIPTION=Utilities for working with Tidal Constituent Databases
+EAPI=5
+HOMEPAGE=http://www.flaterco.com/xtide/
+KEYWORDS=amd64 x86
+LICENSE=public-domain
+RDEPEND=>=sci-geosciences/libtcd-2.2.4
+SLOT=0
+SRC_URI=ftp://ftp.flaterco.com/xtide/tcd-utils-20120115.tar.bz2
+_md5_=85a72bc9a747406b83f41525af7bcc61

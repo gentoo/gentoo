@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-arch/unzip !bloodsuckermaps? ( !games-rpg/eternal-lands-bloodsucker )
+DESCRIPTION=An online MMORPG written in C and SDL
+EAPI=6
+HOMEPAGE=http://www.eternal-lands.com
+IUSE=bloodsuckermaps music sound
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=eternal_lands
+PDEPEND=bloodsuckermaps? ( >=games-rpg/eternal-lands-bloodsucker-3.0_p20110618 )
+SLOT=0
+SRC_URI=http://www.eternal-lands.com/el_linux_193.zip music? ( mirror://gentoo/el_music_full-20060803.zip ) sound? ( http://www.eternallands.co.uk/EL_sound_191.zip )
+_md5_=050f11c1291f2a92e80f143292a748eb

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=~app-i18n/sunpinyin-2.0.3 x11-libs/gtk+:2 x11-libs/libX11 dev-util/scons[python_targets_python2_7]
+DESCRIPTION=The SunPinyin IMEngine Wrapper for XIM Framework
+EAPI=5
+HOMEPAGE=https://sunpinyin.googlecode.com
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 CDDL
+RDEPEND=~app-i18n/sunpinyin-2.0.3 x11-libs/gtk+:2 x11-libs/libX11
+SLOT=0
+SRC_URI=https://sunpinyin.googlecode.com/files/xsunpinyin-2.0.3.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=58a5ea7d5d7b1f420d560f4575c29ff4

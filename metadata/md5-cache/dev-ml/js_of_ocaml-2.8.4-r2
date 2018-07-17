@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?,X?] >=dev-ml/lwt-2.4.4:=[camlp4(+)] react? ( dev-ml/react:= dev-ml/reactiveData:= ) xml? ( >=dev-ml/tyxml-4:= ) ppx? ( dev-ml/ppx_tools:= dev-ml/ppx_deriving:= dev-ml/ppx_driver:= ) dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= dev-ml/uchar:= dev-ml/ocamlbuild:= dev-ml/yojson:= dev-ml/ocaml-migrate-parsetree:= deriving? ( >=dev-ml/deriving-0.6:= ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=A compiler from OCaml bytecode to javascript
+EAPI=5
+HOMEPAGE=http://ocsigen.org/js_of_ocaml/
+IUSE=+ocamlopt doc +deriving +ppx +react +xml X
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?,X?] >=dev-ml/lwt-2.4.4:=[camlp4(+)] react? ( dev-ml/react:= dev-ml/reactiveData:= ) xml? ( >=dev-ml/tyxml-4:= ) ppx? ( dev-ml/ppx_tools:= dev-ml/ppx_deriving:= dev-ml/ppx_driver:= ) dev-ml/cmdliner:= dev-ml/menhir:= dev-ml/ocaml-base64:= dev-ml/camlp4:= dev-ml/cppo:= dev-ml/uchar:= dev-ml/ocamlbuild:= dev-ml/yojson:= dev-ml/ocaml-migrate-parsetree:= deriving? ( >=dev-ml/deriving-0.6:= )
+SLOT=0/2.8.4
+SRC_URI=https://github.com/ocsigen/js_of_ocaml/archive/2.8.4.tar.gz -> js_of_ocaml-2.8.4.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	findlib	45d6030075064a68da8d7143726a1150	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=d1076348e2e995e922fb6497b7e252ba

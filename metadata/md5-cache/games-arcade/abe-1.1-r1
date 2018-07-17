@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=media-libs/libsdl[sound,video] x11-libs/libXi media-libs/sdl-mixer[vorbis]
+DESCRIPTION=A scrolling, platform-jumping, key-collecting, ancient pyramid exploring game
+EAPI=6
+HOMEPAGE=http://abe.sourceforge.net/
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] x11-libs/libXi media-libs/sdl-mixer[vorbis]
+SLOT=0
+SRC_URI=mirror://sourceforge/abe/abe-1.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a7620659099894ea7e3a63d7cbb3f913

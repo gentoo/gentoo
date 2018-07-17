@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=x11-libs/motif-2.3:0 x11-libs/libXt x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw
+DESCRIPTION=GUI FTP client for X Window System (former WXftp)
+EAPI=5
+HOMEPAGE=http://freecode.com/projects/axyftp/ http://www.wxftp.seul.org
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=Artistic LGPL-2.1
+RDEPEND=>=x11-libs/motif-2.3:0 x11-libs/libXt x11-libs/libX11 x11-libs/libXpm x11-libs/libXaw
+SLOT=0
+SRC_URI=http://www.wxftp.seul.org/download/axyftp-0.5.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4a4f4996f7f72d1fcecb00a985823c1f

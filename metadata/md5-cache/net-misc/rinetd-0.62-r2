@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=redirects TCP connections from one IP address and port to another
+EAPI=6
+HOMEPAGE=http://www.boutell.com/rinetd/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.boutell.com/rinetd/http/rinetd.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=4dd850afaf419615ad9e7277f9c72502

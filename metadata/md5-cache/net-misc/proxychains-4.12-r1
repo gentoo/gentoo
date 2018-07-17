@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=force any tcp connections to flow through a proxy (or proxy chain)
+EAPI=6
+HOMEPAGE=https://github.com/rofl0r/proxychains-ng/
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/rofl0r/proxychains-ng/releases/download/v4.12/proxychains-ng-4.12.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=38438cf810409f6a439cdeaea9e7e08c

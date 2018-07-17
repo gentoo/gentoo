@@ -1,0 +1,9 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Tool for diagnosing cdrom drive and digital data (audio) extraction
+EAPI=4
+HOMEPAGE=http://cdstatus.sourceforge.net
+KEYWORDS=~amd64 ~ppc ppc64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/cdstatus/cdstatus-0.97.03.tar.gz
+_md5_=7a09ddb2f63286e8a01549058d2aa3df

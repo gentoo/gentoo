@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=kerberos? ( virtual/krb5 ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) upnp? ( net-libs/miniupnpc:= ) userland_GNU? ( virtual/shadow ) sys-devel/bison sys-devel/flex >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A free socks4,5 and msproxy implementation
+EAPI=6
+HOMEPAGE=https://www.inet.no/dante/
+IUSE=debug kerberos pam selinux static-libs tcpd upnp
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=BSD GPL-2
+RDEPEND=kerberos? ( virtual/krb5 ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) upnp? ( net-libs/miniupnpc:= ) userland_GNU? ( virtual/shadow ) selinux? ( sec-policy/selinux-dante )
+SLOT=0
+SRC_URI=https://www.inet.no/dante/files/dante-1.4.1.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=c41f540f7cef6582c689ae41b5df45b0

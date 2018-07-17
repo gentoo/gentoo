@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=A collection of miscellaneous Gentoo Linux logos and artwork
+EAPI=5
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Artwork
+IUSE=kde offensive +icons +pixmaps +grub lilo
+KEYWORDS=alpha amd64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=pixmaps? ( mirror://gentoo/gentoo-artwork-0.2.tar.bz2 mirror://gentoo/gentoo-artwork-0.3.tar.bz2 mirror://gentoo/gentoo-artwork-0.4.tar.bz2 mirror://gentoo/gentoo-artwork-0.4.1.tar.bz2 mirror://gentoo/gentoo-artwork-0.4.2.tar.bz2 icons? ( mirror://gentoo/gentoo-bubble-icons-20060811.tar.gz ) ) !pixmaps? ( icons? ( mirror://gentoo/gentoo-artwork-0.2.tar.bz2 mirror://gentoo/gentoo-artwork-0.3.tar.bz2 mirror://gentoo/gentoo-artwork-0.4.tar.bz2 mirror://gentoo/gentoo-artwork-0.4.2.tar.bz2 mirror://gentoo/gentoo-bubble-icons-20060811.tar.gz ) !icons? ( kde? ( mirror://gentoo/gentoo-artwork-0.2.tar.bz2 ) !kde? ( grub? ( mirror://gentoo/gentoo-artwork-0.2.tar.bz2 ) ) lilo? ( mirror://gentoo/gentoo-artwork-0.4.tar.bz2 ) ) )
+_md5_=3f463e98d1380d559eb317d25b241f2b

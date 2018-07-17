@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=net-analyzer/icinga2-2.1.1 >=www-apps/icingaweb2-2.0.0 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Icinga Web 2 plugin for pnp4nagios
+EAPI=6
+HOMEPAGE=http://www.icinga.org/
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/icinga2-2.1.1 >=www-apps/icingaweb2-2.0.0
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=2b85730b1799b56fb5d1e223e71a7ac8

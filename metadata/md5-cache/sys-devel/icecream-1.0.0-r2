@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prerm setup
+DEPEND=sys-libs/libcap-ng
+DESCRIPTION=Distributed compiling of C(++) code across several machines; based on distcc
+EAPI=6
+HOMEPAGE=https://github.com/icecc/icecream
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/libcap-ng dev-util/shadowman
+SLOT=0
+SRC_URI=ftp://ftp.suse.com/pub/projects/icecream/icecc-1.0.0.tar.bz2
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=9671d6ba5c4e88e39a0ae1d220b83e18

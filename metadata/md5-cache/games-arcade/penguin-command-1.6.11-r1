@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer[mod] media-libs/sdl-image[jpeg,png]
+DESCRIPTION=A clone of the classic Missile Command game
+EAPI=6
+HOMEPAGE=http://www.linux-games.com/penguin-command/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer[mod] media-libs/sdl-image[jpeg,png]
+SLOT=0
+SRC_URI=mirror://sourceforge/penguin-command/penguin-command-1.6.11.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=3b9f5d11349f991ded77149310c5c9df

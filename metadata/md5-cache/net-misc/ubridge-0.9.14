@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=net-libs/libpcap dev-libs/iniparser:= filecaps? ( sys-libs/libcap )
+DESCRIPTION=Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
+EAPI=6
+HOMEPAGE=https://github.com/GNS3/ubridge
+IUSE=+filecaps
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=net-libs/libpcap dev-libs/iniparser:=
+SLOT=0
+SRC_URI=https://github.com/GNS3/ubridge/archive/v0.9.14.tar.gz -> ubridge-0.9.14.tar.gz
+_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b596dca5f3d15740f5068a56878def76

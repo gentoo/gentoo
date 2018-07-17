@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=>=sys-libs/ncurses-5.7-r7:0= X? ( >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 ) app-eselect/eselect-vi X? ( x11-base/xorg-proto ) virtual/pkgconfig
+DESCRIPTION=A vi/ex clone
+EAPI=5
+HOMEPAGE=ftp://ftp.cs.pdx.edu/pub/elvis/
+IUSE=X
+KEYWORDS=amd64 ppc ppc64 x86 ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris
+LICENSE=Artistic
+RDEPEND=>=sys-libs/ncurses-5.7-r7:0= X? ( >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 ) app-eselect/eselect-vi
+SLOT=0
+SRC_URI=ftp://ftp.cs.pdx.edu/pub/elvis/elvis-2.2_0.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=ff2cc91fc4991810ff1f5ea93c09592b

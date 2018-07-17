@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=sci-mathematics/pari >=virtual/emacs-23
+DESCRIPTION=sci-mathematics/pari emacs mode
+EAPI=6
+HOMEPAGE=http://iml.univ-mrs.fr/~ramare/ServeurPerso/GP-PARI/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sci-mathematics/pari >=virtual/emacs-23
+SLOT=0
+SRC_URI=http://iml.univ-mrs.fr/~ramare/ServeurPerso/GP-PARI/latest-pari-distrib/pariemacs-3.14.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=8ee143a7579375bbf2417a32b2dce359

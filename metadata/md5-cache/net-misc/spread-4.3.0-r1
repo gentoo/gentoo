@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare setup
+DESCRIPTION=Distributed network messaging system
+EAPI=6
+HOMEPAGE=http://www.spread.org
+KEYWORDS=~x86 ~amd64
+LICENSE=Spread-1.0 GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/spread-src-4.3.0.tar.gz
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=29223b8c6afdf99095859130bff8e348

@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=prepare pretend setup unpack
+DEPEND=>=x11-misc/util-macros-1.18 dev-libs/libevdev sys-libs/mtdev virtual/libudev:= >=x11-base/xorg-server-1.18[udev] >=sys-kernel/linux-headers-2.6 x11-base/xorg-proto x11-misc/util-macros >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Generic Linux input driver
+EAPI=7
+HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
+IUSE=kernel_linux
+LICENSE=MIT
+RDEPEND=dev-libs/libevdev sys-libs/mtdev virtual/libudev:= >=x11-base/xorg-server-1.18[udev]
+SLOT=0
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	git-r3	8f6de46b0aa318aea0e8cac62ece098b	libtool	0081a71a261724730ec4c248494f044d	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=335c814de1e01e80140f71feef9e403f

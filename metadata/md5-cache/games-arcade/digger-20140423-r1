@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=media-libs/libsdl[X,video] x11-libs/libX11
+DESCRIPTION=Digger Remastered
+EAPI=6
+HOMEPAGE=http://www.digger.org/
+KEYWORDS=~amd64 ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[X,video] x11-libs/libX11
+SLOT=0
+SRC_URI=mirror://gentoo/digger-20140423.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=db4f020b11bb4ba4ac264dfab19c9425

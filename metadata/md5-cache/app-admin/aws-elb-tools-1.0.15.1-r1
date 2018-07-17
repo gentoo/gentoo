@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Serves as the client interface to the Elastic Load Balancing web service
+EAPI=6
+HOMEPAGE=http://aws.amazon.com/developertools/Amazon-EC2/2536
+KEYWORDS=~amd64 ~x86
+LICENSE=Amazon
+RDEPEND=virtual/jre
+RESTRICT=mirror
+SLOT=0
+SRC_URI=mirror://sabayon/app-admin/ElasticLoadBalancing-1.0.15.1.zip
+_md5_=72f77899636853606a4a8529cbaebda4

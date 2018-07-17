@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-devel/llvm:4= sys-devel/clang:4= dev-libs/double-conversion:0= dev-libs/gmp:0= dev-libs/libgit2:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= >=sys-libs/libunwind-1.1:7= sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack dev-vcs/git dev-util/patchelf virtual/pkgconfig
+DESCRIPTION=High-performance programming language for technical computing
+EAPI=6
+HOMEPAGE=https://julialang.org/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=sys-devel/llvm:4= sys-devel/clang:4= dev-libs/double-conversion:0= dev-libs/gmp:0= dev-libs/libgit2:0= dev-libs/mpfr:0= dev-libs/openspecfun sci-libs/arpack:0= sci-libs/camd:0= sci-libs/cholmod:0= sci-libs/fftw:3.0=[threads] sci-libs/openlibm:0= sci-libs/spqr:0= >=dev-libs/libpcre2-10.23:0=[jit] sci-libs/umfpack:0= sci-mathematics/glpk:0= >=sys-libs/libunwind-1.1:7= sys-libs/readline:0= sys-libs/zlib:0= >=virtual/blas-3.6 virtual/lapack
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/JuliaLang/julia/releases/download/v0.6.3/julia-0.6.3.tar.gz https://dev.gentoo.org/~tamiko/distfiles/julia-0.6.3-bundled.tar.gz
+_eclasses_=llvm	f9e74238f1b5743ea5d7214fcc7dbb36	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3962a563c0df36a8faefca701ffa7efd

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=app-eselect/eselect-java
+DESCRIPTION=Project Management and Comprehension Tool for Java
+EAPI=4
+HOMEPAGE=http://maven.apache.org/
+KEYWORDS=amd64 x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jdk-1.5 app-eselect/eselect-java
+SLOT=1.1
+SRC_URI=mirror://apache/maven/maven-1/1.1/binaries/maven-1.1.tar.gz
+_md5_=8f4924ab03dc46d411e973d362aa5942

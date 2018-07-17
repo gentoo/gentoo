@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Email-Address-XS >=dev-perl/Email-MIME-ContentType-1.22.0 >=dev-perl/Email-MIME-Encodings-1.314.0 dev-perl/Email-MessageID >=dev-perl/Email-Simple-2.212.0 >=virtual/perl-Encode-1.980.100 virtual/perl-MIME-Base64 >=dev-perl/MIME-Types-1.130.0 dev-perl/Module-Runtime virtual/perl-Scalar-List-Utils virtual/perl-parent virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=Easy MIME message parsing
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Email-MIME/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~sparc-solaris ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Email-Address-XS >=dev-perl/Email-MIME-ContentType-1.22.0 >=dev-perl/Email-MIME-Encodings-1.314.0 dev-perl/Email-MessageID >=dev-perl/Email-Simple-2.212.0 >=virtual/perl-Encode-1.980.100 virtual/perl-MIME-Base64 >=dev-perl/MIME-Types-1.130.0 dev-perl/Module-Runtime virtual/perl-Scalar-List-Utils virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-MIME-1.946.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=e216b6dd476582fe0ebe29a790e3dc70

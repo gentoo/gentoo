@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Render text using FIGlet fonts
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/Text_Figlet
+IUSE=examples
+KEYWORDS=amd64 x86
+LICENSE=PHP-3.01 examples? ( GPL-2+ OFL-1.1 )
+RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/Text_Figlet-1.0.2.tgz
+_md5_=77031f4642dd015a7dea53f4d9cbac46

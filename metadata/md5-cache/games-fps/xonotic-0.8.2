@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare pretend setup
+DEPEND=sys-libs/zlib virtual/jpeg:0 media-libs/libpng:0 net-misc/curl ~dev-libs/d0_blind_id-1.0 !dedicated? ( media-libs/libogg media-libs/libtheora media-libs/libvorbis media-libs/libmodplug x11-libs/libX11 x11-libs/libXau x11-libs/libXpm x11-libs/libXext x11-libs/libXdmcp x11-libs/libXxf86dga x11-libs/libXxf86vm virtual/opengl media-libs/freetype:2 alsa? ( media-libs/alsa-lib ) ode? ( dev-games/ode[double-precision] ) sdl? ( media-libs/libsdl2[X,sound,joystick,opengl,video,alsa?] ) ) !dedicated? ( x11-base/xorg-proto )
+DESCRIPTION=Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
+EAPI=6
+HOMEPAGE=http://www.xonotic.org/
+IUSE=alsa debug dedicated doc ode sdl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib virtual/jpeg:0 media-libs/libpng:0 net-misc/curl ~dev-libs/d0_blind_id-1.0 !dedicated? ( media-libs/libogg media-libs/libtheora media-libs/libvorbis media-libs/libmodplug x11-libs/libX11 x11-libs/libXau x11-libs/libXpm x11-libs/libXext x11-libs/libXdmcp x11-libs/libXxf86dga x11-libs/libXxf86vm virtual/opengl media-libs/freetype:2 alsa? ( media-libs/alsa-lib ) ode? ( dev-games/ode[double-precision] ) sdl? ( media-libs/libsdl2[X,sound,joystick,opengl,video,alsa?] ) )
+SLOT=0
+SRC_URI=http://dl.xonotic.org/xonotic-0.8.2.zip
+_eclasses_=check-reqs	fd05cf75484aa28d307cf4ee6e1db056	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=07e311ba364cacb31f65fb6bc28b923e

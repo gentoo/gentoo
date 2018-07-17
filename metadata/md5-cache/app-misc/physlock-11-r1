@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=virtual/pam
+DESCRIPTION=lightweight Linux console locking tool
+EAPI=6
+HOMEPAGE=https://github.com/muennich/physlock
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/pam
+SLOT=0
+SRC_URI=https://github.com/muennich/physlock/archive/v11.tar.gz -> physlock-11.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=78d8a68367ed86a5f3b845080c6be7f6

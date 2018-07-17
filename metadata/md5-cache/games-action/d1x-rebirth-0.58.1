@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=dev-games/physfs[hog,zip] media-libs/libsdl[X,sound,joystick,opengl?,video] cdinstall? ( !games-action/descent1-demodata ) music? ( media-libs/sdl-mixer[timidity] ) opengl? ( virtual/opengl virtual/glu ) app-arch/unzip dev-util/scons[python_targets_python2_7]
+DESCRIPTION=Descent Rebirth - enhanced Descent 1 engine
+EAPI=5
+HOMEPAGE=https://www.dxx-rebirth.com/
+IUSE=cdinstall debug demo ipv6 l10n_de +music opengl opl3-musicpack sc55-musicpack cdinstall
+KEYWORDS=~amd64 ~x86
+LICENSE=D1X GPL-2 public-domain
+PDEPEND=demo? ( games-action/descent1-demodata )
+PROPERTIES=cdinstall? ( interactive )
+RDEPEND=dev-games/physfs[hog,zip] media-libs/libsdl[X,sound,joystick,opengl?,video] cdinstall? ( !games-action/descent1-demodata ) music? ( media-libs/sdl-mixer[timidity] ) opengl? ( virtual/opengl virtual/glu ) games-misc/games-envd
+REQUIRED_USE=?? ( cdinstall demo ) ?? ( opl3-musicpack sc55-musicpack ) opl3-musicpack? ( music ) sc55-musicpack? ( music )
+SLOT=0
+SRC_URI=https://www.dxx-rebirth.com/download/dxx/d1x-rebirth_v0.58.1-src.tar.gz https://www.dxx-rebirth.com/download/dxx/res/d1xrdata.zip https://www.dxx-rebirth.com/download/dxx/res/dxx-rebirth_icons.zip opl3-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-opl3-music.zip ) sc55-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.zip ) cdinstall? ( https://www.dxx-rebirth.com/download/dxx/res/d1datapt.zip ) l10n_de? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-briefings-ger.zip )
+_eclasses_=base	983774947da124fb7d542ce25a218bb1	cdrom	c64e4c5e9cbf2a58be31431e015a6210	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	games	2bb3ede665927a68ffdb7c41eec7efde	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	portability	2b88d3ecc35035a3b8ab628b49cafb0e	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=0309c659cee14354d79ae02e80b43a4a

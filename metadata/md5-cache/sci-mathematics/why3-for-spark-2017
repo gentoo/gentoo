@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lang/ocaml-4.02.3[ocamlopt?] dev-ml/menhir coq? ( sci-mathematics/coq ) doc? ( dev-tex/rubber ) gtk? ( dev-ml/lablgtk[sourceview] ) emacs? ( app-editors/emacs:* ) html? ( dev-tex/hevea ) hypothesis-selection? ( dev-ml/ocamlgraph ) zarith? ( dev-ml/zarith ) zip? ( >=dev-ml/camlzip-1.07 ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Platform for deductive program verification
+EAPI=6
+HOMEPAGE=http://why3.lri.fr/
+IUSE=coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=dev-lang/ocaml-4.02.3[ocamlopt?] dev-ml/menhir coq? ( sci-mathematics/coq ) doc? ( dev-tex/rubber ) gtk? ( dev-ml/lablgtk[sourceview] ) emacs? ( app-editors/emacs:* ) html? ( dev-tex/hevea ) hypothesis-selection? ( dev-ml/ocamlgraph ) zarith? ( dev-ml/zarith ) zip? ( >=dev-ml/camlzip-1.07 )
+REQUIRED_USE=html? ( doc )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed055 -> why3-for-spark-gpl-2017-src.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c6edcb2b36d5403551c7413d1403f075

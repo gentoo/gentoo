@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libsdl[sound,joystick,opengl,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] virtual/opengl
+DESCRIPTION=Block-clearing puzzle game
+EAPI=6
+HOMEPAGE=http://wizznic.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=media-libs/libsdl[sound,joystick,opengl,video] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] virtual/opengl
+SLOT=0
+SRC_URI=mirror://sourceforge/wizznic/Wizznic_src_build_369.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=1b30b1885ab03355271e7807c9717595

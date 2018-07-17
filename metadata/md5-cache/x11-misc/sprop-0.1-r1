@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-base/xorg-proto
+DESCRIPTION=a simple X property utility
+EAPI=6
+HOMEPAGE=https://tools.suckless.org/x/sprop
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=https://dl.suckless.org/tools/sprop-0.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=071d63b82cb9d29e844a9fda89e24f23

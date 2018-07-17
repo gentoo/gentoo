@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-perl/libwww-perl dev-perl/HTTP-Date dev-perl/Sys-Syscall >=dev-perl/Danga-Socket-1.440.0 dev-perl/HTTP-Message dev-perl/BSD-Resource dev-perl/IO-AIO dev-lang/perl:=
+DESCRIPTION=Reverse-proxy load balancer and webserver
+EAPI=6
+HOMEPAGE=http://www.danga.com/perlbal/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/libwww-perl dev-perl/HTTP-Date dev-perl/Sys-Syscall >=dev-perl/Danga-Socket-1.440.0 dev-perl/HTTP-Message dev-perl/BSD-Resource dev-perl/IO-AIO dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DO/DORMANDO/Perlbal-1.80.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=8b2927ceb69f86cc9531798bbd772206

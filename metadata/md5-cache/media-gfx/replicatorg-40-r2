@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst setup
+DEPEND=dev-java/oracle-jre-bin:*
+DESCRIPTION=ReplicatorG is a simple, open source 3D printing program
+EAPI=6
+HOMEPAGE=http://replicat.org/start https://github.com/makerbot/ReplicatorG
+LICENSE=GPL-2
+RDEPEND=dev-java/oracle-jre-bin:* gnome-base/gsettings-desktop-schemas
+SLOT=0
+SRC_URI=https://replicatorg.googlecode.com/files/replicatorg-0040-linux.tgz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	user	8bc2845510e2109af75e3eeac607ec81	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=2e798f75c61bc4136c0822db9e5287ce

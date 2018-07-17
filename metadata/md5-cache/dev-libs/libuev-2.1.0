@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=A collection of useful BSD APIs
+EAPI=6
+HOMEPAGE=https://github.com/troglobit/libuev
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/troglobit/libuev/releases/download/v2.1.0/libuev-2.1.0.tar.xz
+_md5_=23a4edfde0f76bcb9ede97c2aec85914

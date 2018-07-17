@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=POSIX compliant version of the espresso logic minimization tool
+EAPI=5
+HOMEPAGE=http://www.cs.man.ac.uk/apt/projects/balsa/
+KEYWORDS=amd64 ~ppc ~sparc x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=ftp://ftp.cs.man.ac.uk/pub/amulet/balsa/other-software/espresso-ab-1.0.tar.gz
+_md5_=d91d38cea9b97b162f152eff64d7e674

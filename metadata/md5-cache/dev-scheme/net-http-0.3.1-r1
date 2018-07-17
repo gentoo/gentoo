@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-scheme/guile
+DESCRIPTION=Library for doing HTTP client-side programming in Guile
+EAPI=4
+HOMEPAGE=http://evan.prodromou.name/software/net-http/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=dev-scheme/guile
+SLOT=0
+SRC_URI=http://evan.prodromou.name/software/net-http/net-http-0.3.1.tar.gz
+_md5_=85d980b4e048b0f7e1173b1e829ffe5a

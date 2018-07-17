@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=test? ( dev-libs/libxml2 ) app-arch/xz-utils
+DESCRIPTION=Database of mobile broadband service providers
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Projects/NetworkManager/MobileBroadband
+IUSE=test
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=CC-PD
+SLOT=0
+SRC_URI=mirror://gnome/sources/mobile-broadband-provider-info/20170310/mobile-broadband-provider-info-20170310.tar.xz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=361795e5220a472d5b7c27d9a99888ee

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Interface over GNU patch
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/pcl-cvs app-xemacs/elib app-xemacs/dired app-xemacs/xemacs-base app-xemacs/edebug app-xemacs/prog-modes app-xemacs/gnus app-xemacs/tramp app-xemacs/vc app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/ediff-1.77-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=f8fe3c962548a9eb1500a69789d57d86

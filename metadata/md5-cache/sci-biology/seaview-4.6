@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-libs/zlib x11-libs/fltk:1 x11-libs/libX11 xft? ( x11-libs/libXft x11-libs/fltk:1[xft] ) sci-biology/clustalw:2 || ( sci-libs/libmuscle sci-biology/muscle ) sci-biology/phyml virtual/pkgconfig
+DESCRIPTION=A graphical multiple sequence alignment editor
+EAPI=6
+HOMEPAGE=http://pbil.univ-lyon1.fr/software/seaview.html
+IUSE=+xft
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=sys-libs/zlib x11-libs/fltk:1 x11-libs/libX11 xft? ( x11-libs/libXft x11-libs/fltk:1[xft] ) sci-biology/clustalw:2 || ( sci-libs/libmuscle sci-biology/muscle ) sci-biology/phyml
+SLOT=0
+SRC_URI=ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/seaview/archive/seaview_4.6.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1a6723f1ab0e67cc0d63dd54a902900f

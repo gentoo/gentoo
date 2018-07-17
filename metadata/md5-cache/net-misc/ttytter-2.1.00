@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=A multi-functional, console-based Twitter client
+EAPI=6
+HOMEPAGE=http://www.floodgap.com/software/ttytter/
+KEYWORDS=amd64 x86
+LICENSE=FFSL
+RDEPEND=>=dev-lang/perl-5.8 || ( net-misc/curl www-client/lynx )
+SLOT=0
+SRC_URI=http://www.floodgap.com/software/ttytter/dist2/2.1.00.txt -> ttytter-2.1.00.txt
+_eclasses_=readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3
+_md5_=410e252c6b550a9fd63cd0f72c0b3867

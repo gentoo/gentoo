@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=Indents C/C++ source code
+EAPI=6
+HOMEPAGE=http://invisible-island.net/bcpp/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=MIT
+SLOT=0
+SRC_URI=ftp://invisible-island.net/bcpp/bcpp-20150811.tgz
+_md5_=85385c7a14d6f698440f4f29284201f5

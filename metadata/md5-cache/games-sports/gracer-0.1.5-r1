@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-lang/tcl:0 media-libs/freeglut media-libs/giflib media-libs/libpng:0 media-libs/plib x11-libs/libXi x11-libs/libXmu virtual/glu virtual/jpeg:0 virtual/opengl
+DESCRIPTION=3D motor sports simulator
+EAPI=6
+HOMEPAGE=http://gracer.sourceforge.net/
+IUSE=joystick
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/tcl:0 media-libs/freeglut media-libs/giflib media-libs/libpng:0 media-libs/plib x11-libs/libXi x11-libs/libXmu virtual/glu virtual/jpeg:0 virtual/opengl
+SLOT=0
+SRC_URI=mirror://sourceforge/gracer/gracer-0.1.5.tar.gz
+_md5_=fef1fffd7c2900c6db1d021fc423d2e2

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test
+DEPEND=doc? ( app-doc/doxygen )
+DESCRIPTION=C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
+EAPI=5
+HOMEPAGE=http://pstreams.sourceforge.net/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/pstreams/pstreams-1.0.0.tar.gz doc? ( mirror://sourceforge/pstreams/pstreams-docs-1.0.0.tar.gz )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=0bcb95a4a42e755eb77250bd1498a532

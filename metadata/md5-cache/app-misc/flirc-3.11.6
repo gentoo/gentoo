@@ -1,0 +1,14 @@
+DEFINED_PHASES=install unpack
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Allows you to pair any remote control with your computer or media center
+EAPI=6
+HOMEPAGE=https://flirc.tv/
+IUSE=+qt5
+KEYWORDS=-* ~amd64 ~arm
+LICENSE=all-rights-reserved
+RDEPEND=virtual/libusb:1 dev-libs/hidapi qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 )
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://packagecloud.io/Flirc/repo/packages/ubuntu/artful/flirc_3.11.6_amd64.deb/download.deb -> flirc-3.11.6_amd64.deb ) arm? ( https://packagecloud.io/Flirc/repo/packages/debian/stretch/flirc_3.11.6_armhf.deb/download.deb -> flirc-3.11.6_armhf.deb )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_md5_=bfaf6c6aca5976790a5c289f9acb7656

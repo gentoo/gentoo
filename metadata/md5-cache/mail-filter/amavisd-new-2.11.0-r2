@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst preinst prepare
+DEPEND=>=sys-apps/sed-4 >=dev-lang/perl-5.10.0 virtual/pkgconfig
+DESCRIPTION=High-performance interface between the MTA and content checkers
+EAPI=6
+HOMEPAGE=https://www.ijs.si/software/amavisd/
+IUSE=clamav courier dkim ldap mysql postgres qmail razor snmp spamassassin zmq
+KEYWORDS=~amd64 ~hppa ~ppc64 ~sparc ~x86
+LICENSE=GPL-2 BSD-2
+RDEPEND=>=sys-apps/sed-4 >=dev-lang/perl-5.10.0 >=sys-apps/coreutils-5.0-r3 app-arch/cpio app-arch/gzip app-arch/bzip2 app-arch/arc app-arch/cabextract app-arch/freeze app-arch/lha app-arch/lrzip app-arch/lzop app-arch/ncompress app-arch/p7zip app-arch/pax app-arch/unarj app-arch/unrar app-arch/xz-utils app-arch/zoo net-mail/ripole >=dev-perl/Archive-Zip-1.14 >=virtual/perl-IO-Compress-1.35 >=virtual/perl-Compress-Raw-Zlib-2.017 net-mail/tnef virtual/perl-MIME-Base64 >=dev-perl/MIME-tools-5.415 >=dev-perl/MailTools-1.58 >=dev-perl/Net-Server-0.91 virtual/perl-Digest-MD5 dev-perl/IO-stringy virtual/perl-IO-Socket-IP >=virtual/perl-Time-HiRes-1.49 dev-perl/Unix-Syslog dev-perl/Net-LibIDN sys-apps/file >=sys-libs/db-4.4.20 dev-perl/BerkeleyDB dev-perl/Convert-BinHex >=dev-perl/Mail-DKIM-0.31 virtual/mta clamav? ( app-antivirus/clamav ) ldap? ( >=dev-perl/perl-ldap-0.33 ) mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) razor? ( mail-filter/razor ) snmp? ( net-analyzer/net-snmp[perl] ) spamassassin? ( mail-filter/spamassassin ) zmq? ( dev-perl/ZMQ-LibZMQ3 )
+SLOT=0
+SRC_URI=https://www.ijs.si/software/amavisd/amavisd-new-2.11.0.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=ca00788c8de730b94b3995b1975d7ef4

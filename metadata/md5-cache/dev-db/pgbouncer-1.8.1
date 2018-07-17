@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup test
+DEPEND=>=dev-libs/libevent-2.0 >=sys-libs/glibc-2.10 c-ares? ( >=net-dns/c-ares-1.10 ) ssl? ( >=dev-libs/openssl-1.0.1:=[-bindist] ) udns? ( >=net-libs/udns-0.1 )
+DESCRIPTION=Lightweight connection pooler for PostgreSQL
+EAPI=6
+HOMEPAGE=https://pgbouncer.github.io
+IUSE=+c-ares debug doc pam ssl -udns
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/libevent-2.0 >=sys-libs/glibc-2.10 c-ares? ( >=net-dns/c-ares-1.10 ) ssl? ( >=dev-libs/openssl-1.0.1:=[-bindist] ) udns? ( >=net-libs/udns-0.1 )
+REQUIRED_USE=?? ( c-ares udns )
+SLOT=0
+SRC_URI=https://pgbouncer.github.io/downloads/files/1.8.1/pgbouncer-1.8.1.tar.gz
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=82f64d37ddc8e13652b3089389c84c85

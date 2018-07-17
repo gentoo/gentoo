@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/jbuilder test? ( dev-ml/ounit ppx? ( dev-ml/ppx_driver dev-ml/ppx_sexp_conv ) ) async? ( dev-ml/async_kernel:= dev-ml/async_unix:= dev-ml/core_kernel:= ) lwt? ( dev-ml/lwt:= ) ppx? ( dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= >=dev-ml/ppx_tools_versioned-5.0.1:= ) dev-ml/ocplib-endian:= dev-ml/sexplib:= dev-ml/type-conv:= >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Map OCaml arrays onto C-like structs
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-cstruct https://mirage.io
+IUSE=async +lwt +ppx test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=async? ( dev-ml/async_kernel:= dev-ml/async_unix:= dev-ml/core_kernel:= ) lwt? ( dev-ml/lwt:= ) ppx? ( dev-ml/ppx_tools:= dev-ml/ocaml-migrate-parsetree:= >=dev-ml/ppx_tools_versioned-5.0.1:= ) dev-ml/ocplib-endian:= dev-ml/sexplib:= dev-ml/type-conv:= >=dev-lang/ocaml-4:=
+SLOT=0/3.1.1
+SRC_URI=https://github.com/mirage/ocaml-cstruct/archive/v3.1.1.tar.gz -> ocaml-cstruct-3.1.1.tar.gz
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=60a5b9226fb3932386dc49b611ae6b0a

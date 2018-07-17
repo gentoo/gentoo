@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=dev-libs/glib-2.16 >=x11-libs/gtk+-2.12:2 virtual/pkgconfig >=dev-util/intltool-0.35.0 sys-devel/gettext
+DESCRIPTION=Cross platform library for using desktop wide hotkeys
+EAPI=6
+HOMEPAGE=https://launchpad.net/gtkhotkey
+KEYWORDS=amd64 x86
+LICENSE=LGPL-3
+RDEPEND=>=dev-libs/glib-2.16 >=x11-libs/gtk+-2.12:2 virtual/libintl
+RESTRICT=test
+SLOT=0
+SRC_URI=https://launchpad.net/gtkhotkey/0.2/0.2.1/+download/gtkhotkey-0.2.1.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=42f872eed0e15dc36bed3d9f566d00cc

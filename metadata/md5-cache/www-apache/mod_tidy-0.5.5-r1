@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=app-text/htmltidy =www-servers/apache-2*
+DESCRIPTION=TidyLib module to clean-up and pretty-print the webserver (X)HTML output
+EAPI=2
+HOMEPAGE=http://mod-tidy.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=app-text/htmltidy =www-servers/apache-2*
+SLOT=0
+SRC_URI=http://mod-tidy.sourceforge.net/src/mod_tidy-0.5.5.tar.gz
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	0917334d570e07f9743a04ff85b3bf1b	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=020180e7931fd261aa6d57d7f7fd21ca

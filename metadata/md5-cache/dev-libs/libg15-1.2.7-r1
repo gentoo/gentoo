@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DEPEND==virtual/libusb-0*
+DESCRIPTION=The libg15 library gives low-level access to the Logitech G15 keyboard
+EAPI=4
+HOMEPAGE=https://sourceforge.net/projects/g15tools/
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND==virtual/libusb-0*
+SLOT=0
+SRC_URI=mirror://sourceforge/g15tools/libg15-1.2.7.tar.bz2
+_md5_=2cbd5d0cb92f50775843e71c18a2afb3

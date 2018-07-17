@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare prerm setup
+DEPEND=|| ( dev-lang/php[xml,gd] dev-lang/php[xml,gd-external] ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=ruTorrent is a front-end for the popular Bittorrent client rTorrent
+EAPI=6
+HOMEPAGE=https://github.com/Novik/ruTorrent
+IUSE=vhosts
+KEYWORDS=~alpha ~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=3.8-r1
+SRC_URI=https://github.com/Novik/ruTorrent/archive/v3.8.tar.gz -> rutorrent-3.8.tar.gz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=aedbdca363febe9f4a87b952a8d423ad

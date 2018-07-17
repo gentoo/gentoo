@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-libs/libX11
+DESCRIPTION=X interface to Z-code based text games
+EAPI=6
+HOMEPAGE=http://www.eblong.com/zarf/xzip.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.eblong.com/zarf/ftp/xzip182.tar.Z
+_md5_=a4536b44b332dac798dc1df304c5248f

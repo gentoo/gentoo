@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure postinst postrm
+DEPEND=app-eselect/eselect-notify-send x11-libs/libtinynotify:0= ~x11-libs/libtinynotify-cli-1.2.1 virtual/pkgconfig
+DESCRIPTION=A notification sending utility (using libtinynotify)
+EAPI=6
+HOMEPAGE=https://github.com/mgorny/tinynotify-send/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-eselect/eselect-notify-send x11-libs/libtinynotify:0= ~x11-libs/libtinynotify-cli-1.2.1
+SLOT=0
+SRC_URI=https://github.com/mgorny/tinynotify-send/releases/download/tinynotify-send-1.2.1/tinynotify-send-1.2.1.tar.bz2
+_md5_=c7d4d2f000f31bfe886564e301d904b7

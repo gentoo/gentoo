@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi sys-libs/readline:0= >=sys-libs/zlib-1.1.4 || ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) app-arch/zip virtual/pkgconfig
+DESCRIPTION=Stand-alone JavaScript C library
+EAPI=6
+HOMEPAGE=https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
+IUSE=debug jit minimal static-libs test
+KEYWORDS=alpha amd64 arm -hppa ia64 -mips ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd
+LICENSE=NPL-1.1
+RDEPEND=>=dev-libs/nspr-4.9.4 virtual/libffi sys-libs/readline:0= >=sys-libs/zlib-1.1.4
+REQUIRED_USE=debug? ( jit )
+RESTRICT=ia64? ( test )
+SLOT=17
+SRC_URI=http://archive.mozilla.org/pub/js/mozjs17.0.0.tar.gz https://dev.gentoo.org/~axs/distfiles/spidermonkey-slot17-patches-01.tar.xz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	pax-utils	b963274a93e76570a88168c1f1db4cd7	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=aa8ecf92a16532e703e2187f9a0957a5

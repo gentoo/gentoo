@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=!static? ( >=sys-apps/util-linux-2.17.2 readline? ( sys-libs/readline:0= ) !readline? ( libedit? ( dev-libs/libedit ) ) ) !<sys-fs/xfsdump-3 static? ( >=sys-apps/util-linux-2.17.2[static-libs(+)] readline? ( sys-libs/readline:0=[static-libs(+)] ) !readline? ( libedit? ( dev-libs/libedit[static-libs(+)] ) ) readline? ( sys-libs/ncurses:0=[static-libs] ) ) nls? ( sys-devel/gettext )
+DESCRIPTION=xfs filesystem utilities
+EAPI=6
+HOMEPAGE=https://xfs.wiki.kernel.org/
+IUSE=libedit nls readline static static-libs
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=!static? ( >=sys-apps/util-linux-2.17.2 readline? ( sys-libs/readline:0= ) !readline? ( libedit? ( dev-libs/libedit ) ) ) !<sys-fs/xfsdump-3
+REQUIRED_USE=static? ( static-libs )
+SLOT=0
+SRC_URI=https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.14.0.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a62e4ebcbd13274bf39f05aa467c60d5

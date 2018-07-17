@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=sys-libs/zlib
+DESCRIPTION=Small yet efficient SAT solver with reference paper
+EAPI=6
+HOMEPAGE=http://minisat.se/Main.html
+IUSE=debug doc extended-solver
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=sys-libs/zlib
+SLOT=0
+SRC_URI=http://minisat.se/downloads/minisat-2.2.0.tar.gz doc? ( http://minisat.se/downloads/MiniSat.pdf )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=19af9292a93ca9655fc444e6041a67bd

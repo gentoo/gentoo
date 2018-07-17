@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.13* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
+EAPI=5
+HOMEPAGE=http://vegan.net/tony/supersmack/
+IUSE=+mysql postgres
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] )
+REQUIRED_USE=|| ( mysql postgres )
+SLOT=0
+SRC_URI=http://vegan.net/tony/supersmack/super-smack-1.3.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=9760a13f3019b4ab60c020aea68c93b3

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=sys-libs/zlib:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/libpcre virtual/rubygems
+DESCRIPTION=Android platform tools (adb, fastboot, and mkbootimg)
+EAPI=6
+HOMEPAGE=https://android.googlesource.com/platform/system/core.git/
+IUSE=libressl
+KEYWORDS=amd64 x86 ~arm-linux ~x86-linux
+LICENSE=Apache-2.0 BSD-2
+RDEPEND=sys-libs/zlib:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/libpcre
+SLOT=0
+SRC_URI=https://git.archlinux.org/svntogit/community.git/snapshot/community-6a03c4736c9734f5ac3d6b5b912605690a6eaa5f.tar.gz -> android-tools-6.0.1_r79-arch.tar.gz https://github.com/android/platform_system_core/archive/android-6.0.1_r79.tar.gz -> android-tools-6.0.1_r79-core.tar.gz mirror://gentoo/android-tools-6.0.1_r79-extras.tar.gz mirror://gentoo/android-tools-6.0.1_r79-libselinux.tar.gz mirror://gentoo/android-tools-6.0.1_r79-f2fs-tools.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=95c1d667326557854417bcbfea156fe0

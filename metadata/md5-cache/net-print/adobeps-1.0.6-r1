@@ -1,0 +1,14 @@
+DEFINED_PHASES=install setup unpack
+DEPEND=app-arch/cabextract
+DESCRIPTION=Adobe PostScript drivers for Windows for use with CUPS
+EAPI=5
+HOMEPAGE=http://www.adobe.com/support/downloads/product.jsp?product=44&platform=Windows
+IUSE=cups l10n_en l10n_da l10n_de l10n_es l10n_fi l10n_fr l10n_it l10n_ja l10n_ko l10n_nl l10n_no l10n_pt-BR l10n_sv l10n_zh-CN l10n_zh-TW
+KEYWORDS=~amd64 ~x86
+LICENSE=AdobePS
+RDEPEND=cups? ( >=net-print/cups-1.2 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=l10n_en? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winsteng.exe ) l10n_da? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstDan.exe ) l10n_de? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstger.exe ) l10n_es? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstspa.exe ) l10n_fi? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstfin.exe ) l10n_fr? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstfre.exe ) l10n_it? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstita.exe ) l10n_ja? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstjpn.exe ) l10n_ko? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstkor.exe ) l10n_nl? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstdut.exe ) l10n_no? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstnor.exe ) l10n_pt-BR? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstbrz.exe ) l10n_sv? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstswe.exe ) l10n_zh-CN? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/Winstchs.exe ) l10n_zh-TW? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winstcht.exe ) !l10n_en? ( !l10n_da? ( !l10n_de? ( !l10n_es? ( !l10n_fi? ( !l10n_fr? ( !l10n_it? ( !l10n_ja? ( !l10n_ko? ( !l10n_nl? ( !l10n_no? ( !l10n_pt-BR? ( !l10n_sv? ( !l10n_zh-CN? ( !l10n_zh-TW? ( ftp://ftp.adobe.com/pub/adobe/printerdrivers/win/1.x/winsteng.exe ) ) ) ) ) ) ) ) ) ) ) ) ) ) )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=475006422361842d1a4bfc849c60cf2c

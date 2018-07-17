@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst
+DEPEND=virtual/udev virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Simple udev-based automounter for removable USB media
+EAPI=6
+HOMEPAGE=https://github.com/mgorny/uam/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=virtual/udev
+SLOT=0
+SRC_URI=https://github.com/mgorny/uam/releases/download/uam-0.3.2/uam-0.3.2.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=e01929d43d3dcf33d80c622fefd12b28

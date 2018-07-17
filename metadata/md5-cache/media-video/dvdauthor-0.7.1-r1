@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-libs/fribidi-0.19.2 dev-libs/libxml2 >=media-libs/freetype-2 media-libs/libdvdread media-libs/libpng:0= graphicsmagick? ( media-gfx/graphicsmagick:= ) imagemagick? ( media-gfx/imagemagick:= ) virtual/pkgconfig
+DESCRIPTION=Tools for generating DVD files to be played on standalone DVD players
+EAPI=6
+HOMEPAGE=http://dvdauthor.sourceforge.net/
+IUSE=graphicsmagick +imagemagick
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/fribidi-0.19.2 dev-libs/libxml2 >=media-libs/freetype-2 media-libs/libdvdread media-libs/libpng:0= graphicsmagick? ( media-gfx/graphicsmagick:= ) imagemagick? ( media-gfx/imagemagick:= )
+REQUIRED_USE=^^ ( graphicsmagick imagemagick )
+SLOT=0
+SRC_URI=mirror://sourceforge/dvdauthor/dvdauthor-0.7.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=f10739a52d2e9803baaa8a67c615164e

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/perl
+DESCRIPTION=PostScript Utilities
+EAPI=6
+HOMEPAGE=http://web.archive.org/web/20110722005140/http://www.tardis.ed.ac.uk/~ajcd/psutils/
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=psutils
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/psutils/psutils_1.17.dfsg.orig.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=576ca65d9a1d6d3c0c21adbdec04eba0

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: collection of vimscripts for Haskell development
+EAPI=6
+HOMEPAGE=https://github.com/dag/vim2hs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/ghc || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/dag/vim2hs/archive/f2afd55704bfe0a2d66e6b270d247e9b8a7b1664.tar.gz -> vim2hs-0.1_p20171106.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=136d66c3be6e260b9d18e8a72ef71dbc

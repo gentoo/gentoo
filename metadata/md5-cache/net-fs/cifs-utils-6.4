@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=!net-fs/mount-cifs !<net-fs/samba-3.6_rc1 ads? ( sys-apps/keyutils sys-libs/talloc virtual/krb5 ) caps? ( !caps-ng? ( sys-libs/libcap ) ) caps? ( caps-ng? ( sys-libs/libcap-ng ) ) creds? ( sys-apps/keyutils )
+DESCRIPTION=Tools for Managing Linux CIFS Client Filesystems
+EAPI=5
+HOMEPAGE=https://wiki.samba.org/index.php/LinuxCIFS_utils
+IUSE=+acl +ads +caps +caps-ng creds kernel_linux
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~arm-linux ~x86-linux
+LICENSE=GPL-3
+PDEPEND=!net-fs/mount-cifs !<net-fs/samba-3.6_rc1 ads? ( sys-apps/keyutils sys-libs/talloc virtual/krb5 ) caps? ( !caps-ng? ( sys-libs/libcap ) ) caps? ( caps-ng? ( sys-libs/libcap-ng ) ) creds? ( sys-apps/keyutils ) acl? ( || ( =net-fs/samba-3.6*[winbind] >=net-fs/samba-4.0.0_alpha1 ) )
+REQUIRED_USE=acl? ( ads )
+SLOT=0
+SRC_URI=https://www.samba.org/ftp/pub/linux-cifs/cifs-utils/cifs-utils-6.4.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b8337886583f23d65660184207abd84b

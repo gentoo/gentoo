@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Detect the content format of a disk or disk image
+EAPI=4
+HOMEPAGE=http://disktype.sourceforge.net/
+KEYWORDS=amd64 arm ppc sh sparc x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge/disktype/disktype-9.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=e17e1ba15eac8f37655cabba0cbd8023

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=!!app-emulation/wine:0
+DESCRIPTION=A Mozilla Gecko based version of Internet Explorer for Wine
+EAPI=6
+HOMEPAGE=https://winehq.org
+IUSE=abi_x86_32 abi_x86_64
+KEYWORDS=amd64 x86
+LICENSE=Apache-2.0 BSD BSD-2 MIT MPL-2.0
+SLOT=2.47
+SRC_URI=abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86.msi ) abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86_64.msi )
+_md5_=18b83d2d8be9f71e7615d61d15ca168d

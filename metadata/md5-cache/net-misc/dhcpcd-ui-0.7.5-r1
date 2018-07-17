@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/libintl gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) gtk3? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 ) libnotify? ( x11-libs/libnotify ) virtual/pkgconfig
+DESCRIPTION=Desktop notification and configuration for dhcpcd
+EAPI=6
+HOMEPAGE=https://roy.marples.name/projects/dhcpcd-ui/
+IUSE=debug gtk gtk3 libnotify
+KEYWORDS=amd64 x86
+LICENSE=BSD-2
+RDEPEND=virtual/libintl gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) gtk3? ( dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 ) libnotify? ( x11-libs/libnotify ) >=net-misc/dhcpcd-6.4.4
+REQUIRED_USE=?? ( gtk gtk3 ) libnotify? ( || ( gtk gtk3 ) )
+SLOT=0
+SRC_URI=https://roy.marples.name/downloads/dhcpcd/dhcpcd-ui-0.7.5.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=fa393488fb19ee3d0629a648a17fc8ed

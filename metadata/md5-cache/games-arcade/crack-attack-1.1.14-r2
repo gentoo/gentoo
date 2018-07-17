@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/freeglut sdl? ( media-libs/libsdl media-libs/sdl-mixer ) gtk? ( >=x11-libs/gtk+-2.6:2 ) virtual/pkgconfig
+DESCRIPTION=Addictive OpenGL-based block game
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/crack-attack/
+IUSE=gtk sdl
+KEYWORDS=~amd64 ~arm ~hppa ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/freeglut sdl? ( media-libs/libsdl media-libs/sdl-mixer ) gtk? ( >=x11-libs/gtk+-2.6:2 )
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/crack-attack/crack-attack-1.1.14.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=1d3cdd51c63d4fb0eea0fa7ab552d661

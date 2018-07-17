@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm test
+DEPEND=>=dev-libs/glib-2.44 >=x11-libs/gtk+-3.20:3 >=media-video/mpv-0.27[libmpv] media-libs/libepoxy virtual/pkgconfig >=sys-apps/sed-4 >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2
+DESCRIPTION=A simple GTK+ frontend for mpv
+EAPI=6
+HOMEPAGE=https://gnome-mpv.github.io/
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+RDEPEND=>=dev-libs/glib-2.44 >=x11-libs/gtk+-3.20:3 >=media-video/mpv-0.27[libmpv] media-libs/libepoxy
+SLOT=0
+SRC_URI=https://github.com/gnome-mpv/gnome-mpv/releases/download/v0.14/gnome-mpv-0.14.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	meson	eb124b9e9d7a5f1ebc89589fe73c816f	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=fec7625ab79c92edbfac7175e5c28f2b

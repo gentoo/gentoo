@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=>=sys-kernel/linux-headers-2.6.24 !sys-cluster/dlm-headers !sys-cluster/dlm-kernel =sys-cluster/dlm-lib-2.03.09* kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=General-purpose Distributed Lock Manager
+EAPI=0
+HOMEPAGE=https://sourceware.org/cluster/wiki/
+IUSE=kernel_linux kernel_linux
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-kernel/linux-headers-2.6.24 !sys-cluster/dlm-headers !sys-cluster/dlm-kernel =sys-cluster/dlm-lib-2.03.09* kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=ftp://sourceware.org/pub/cluster/releases/cluster-2.03.09.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	linux-info	bb73a1f0c3db9ff796439bf44bed8467	linux-mod	8ce5c5f548ed010d6499eb792ac1a638	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=e3f1fd1f0f9e7d86c002abd86915bf8a

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Launch and control background processes
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Proc-Simple/
+IUSE=test examples
+KEYWORDS=amd64 ppc x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-IO dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MS/MSCHILLI/Proc-Simple-1.32.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=f0d382fa345aa585f95c92cef04a75d9

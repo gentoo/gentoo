@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=In-circuit programming (ISP) tool for the NXP microcontrollers
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/lpc21isp/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/lpc21isp/lpc21isp_185.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=f2595c55beea73f714dd58b694f4aca2

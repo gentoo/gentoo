@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: syntax checking using external tools
+EAPI=6
+HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=2736 https://github.com/scrooloose/syntastic/
+KEYWORDS=amd64 x86
+LICENSE=WTFPL-2
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/scrooloose/syntastic/archive/3.8.0.tar.gz -> syntastic-3.8.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=2ed62fc9d6b5522a27f0fd4a22a776ce

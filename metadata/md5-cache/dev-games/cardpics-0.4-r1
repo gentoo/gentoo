@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=set of free cards sets
+EAPI=6
+HOMEPAGE=http://www.nongnu.org/cardpics/
+KEYWORDS=amd64 ~hppa x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/cardpics/cardpics-0.4.tar.bz2
+_md5_=048d29bf453850784f3fd2362cd3a4cc

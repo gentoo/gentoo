@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=net-im/pidgin[gtk] x11-libs/gtk+:2 sys-devel/libtool virtual/pkgconfig
+DESCRIPTION=Pidgin plugin that renders latex formulae
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/pidgin-latex/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=net-im/pidgin[gtk] x11-libs/gtk+:2 virtual/latex-base app-text/dvipng
+SLOT=0
+SRC_URI=mirror://sourceforge/pidgin-latex/pidgin-latex_1.5.0.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c97b049f0cb25cdc670209b0f3fd5f1f

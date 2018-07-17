@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test unpack
+DEPEND=test? ( >=dev-php/PEAR-Text_Wiki-1.2.2_p20170904 dev-php/phpunit )
+DESCRIPTION=Mediawiki parser for Text_Wiki
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Text_Wiki_Mediawiki
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/PEAR-Text_Wiki-1.2.2_p20170904 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://github.com/pear/Text_Wiki_Mediawiki/archive/11a902741d3f8cc6010fb97b825d66345143e4dc.tar.gz -> Text_Wiki_Mediawiki-0.2.0_p20140604.tar.gz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=325124f60446464f4fc3508066524d62

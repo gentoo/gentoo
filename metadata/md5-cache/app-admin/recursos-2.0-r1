@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Script to create html and text report about your system
+EAPI=4
+HOMEPAGE=http://www.josealberto.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-shells/bash net-analyzer/rrdtool[graph] virtual/imagemagick-tools
+SLOT=0
+SRC_URI=mirror://gentoo/recursos-2.0.tbz2
+_md5_=b0c71a9a0ab32d8809e71d8b422eb1c4

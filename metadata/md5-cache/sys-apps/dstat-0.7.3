@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DESCRIPTION=Versatile replacement for vmstat, iostat and ifstat
+EAPI=6
+HOMEPAGE=http://dag.wieers.com/home-made/dstat/
+IUSE=wifi doc examples python_targets_python2_7
+KEYWORDS=~alpha amd64 ~arm64 hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=wifi? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-wireless/python-wifi )
+REQUIRED_USE=wifi? ( || ( python_targets_python2_7 ) )
+SLOT=0
+SRC_URI=https://github.com/dagwieers/dstat/archive/0.7.3.tar.gz -> dstat-0.7.3.tar.gz
+_eclasses_=multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	0b5829eb6369d7af3a834b6eed7b7107	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=45581a4aa2befa2619893755e1ef2426

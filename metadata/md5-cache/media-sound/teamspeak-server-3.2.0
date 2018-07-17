@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=virtual/pkgconfig
+DESCRIPTION=A server software for hosting quality voice communication via the internet
+EAPI=6
+HOMEPAGE=https://www.teamspeak.com/
+IUSE=doc mysql tsdns
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=LGPL-2.1 teamspeak3
+RDEPEND=mysql? ( <dev-libs/openssl-1.1:0= sys-libs/zlib:= )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/3.2.0/teamspeak3-server_linux_amd64-3.2.0.tar.bz2 ) x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/3.2.0/teamspeak3-server_linux_x86-3.2.0.tar.bz2 )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=96fc11cb02860ac171cc892511a061ba

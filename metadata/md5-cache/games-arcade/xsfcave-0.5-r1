@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=x11-libs/libXext x11-libs/libSM
+DESCRIPTION=A X11 sfcave clone
+EAPI=6
+HOMEPAGE=http://xsfcave.idios.org
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=public-domain
+RDEPEND=x11-libs/libXext x11-libs/libSM
+SLOT=0
+SRC_URI=mirror://sourceforge/scrap/xsfcave-0.5.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=f97b5feca54f489c514fb5365a41f5f9

@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Recycle Bin Analyzer
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/odessa/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge/odessa/rifiuti_20040505_1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3b8036332bef4f39719eac92ad146835

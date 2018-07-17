@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Polish dictionaries for myspell/hunspell
+EAPI=6
+HOMEPAGE=http://www.sjp.pl/slownik/en/ https://sourceforge.net/projects/synonimy/
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=CC-SA-1.0 LGPL-3 GPL-3 MPL-1.1
+SLOT=0
+SRC_URI=http://sjp.pl/slownik/ort/sjp-myspell-pl-20130306.zip http://www.openoffice.org/pl/pliki/hyph_pl_PL.zip -> myspell-pl-20130306-hyph.zip mirror://sourceforge/synonimy/OOo2-Thesaurus-1.5.zip -> myspell-pl-20130306-thes.zip
+_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
+_md5_=dafb93ad087ffdbbcc68222cb173c93c

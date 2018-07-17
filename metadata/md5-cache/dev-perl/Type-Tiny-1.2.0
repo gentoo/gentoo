@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!<dev-perl/Kavorka-0.13.0 !<dev-perl/Types-ReadOnly-0.1.0 >=dev-perl/Exporter-Tiny-0.26.0 >=virtual/perl-Test-Simple-1.1.10 !minimal? ( >=dev-perl/Devel-LexAlias-0.50.0 dev-perl/Devel-StackTrace >=dev-perl/Ref-Util-XS-0.116.0 >=dev-perl/Regexp-Util-0.3.0 virtual/perl-Scalar-List-Utils dev-perl/Type-Tie >=dev-perl/Type-Tiny-XS-0.11.0 ) >=virtual/perl-ExtUtils-MakeMaker-6.170.0 >=virtual/perl-CPAN-Meta-Requirements-2.0.0 test? ( dev-perl/Test-Warnings ) dev-lang/perl:=
+DESCRIPTION=tiny, yet Moo(se)-compatible type constraint
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Type-Tiny/
+IUSE=test minimal examples
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!<dev-perl/Kavorka-0.13.0 !<dev-perl/Types-ReadOnly-0.1.0 >=dev-perl/Exporter-Tiny-0.26.0 >=virtual/perl-Test-Simple-1.1.10 !minimal? ( >=dev-perl/Devel-LexAlias-0.50.0 dev-perl/Devel-StackTrace >=dev-perl/Ref-Util-XS-0.116.0 >=dev-perl/Regexp-Util-0.3.0 virtual/perl-Scalar-List-Utils dev-perl/Type-Tie >=dev-perl/Type-Tiny-XS-0.11.0 ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TO/TOBYINK/Type-Tiny-1.002000.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=3f3a4d27dcca11f2ec34b17feab99931

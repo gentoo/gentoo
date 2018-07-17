@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support
+EAPI=6
+HOMEPAGE=https://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/
+IUSE=experimental module vanilla symlink build
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 linux-firmware
+PDEPEND==sys-fs/aufs-util-4*
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=4.4.136
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.4.tar.xz https://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.4_p20180611.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.4-138.base.tar.xz mirror://gentoo/genpatches-4.4-138.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.4-138.experimental.tar.xz ) )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	kernel-2	9c959482618084f1edf862d4783a73b4	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=965929b9ea3ebf37fe4dec18c84505ce

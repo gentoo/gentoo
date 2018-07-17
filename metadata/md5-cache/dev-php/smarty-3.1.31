@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=doc? ( app-arch/unzip )
+DESCRIPTION=A template engine for PHP
+EAPI=6
+HOMEPAGE=https://www.smarty.net/
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-lang/php:*[unicode]
+SLOT=0
+SRC_URI=https://github.com/smarty-php/smarty/archive/v3.1.31.tar.gz -> smarty-3.1.31.tar.gz doc? ( https://www.smarty.net/files/docs/manual-en.3.1.14.zip )
+_md5_=a36576a188e93b16233776af02b6a5c3

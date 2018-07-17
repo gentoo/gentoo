@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DESCRIPTION=Unified Communication X
+EAPI=6
+HOMEPAGE=http://www.openucx.org
+IUSE=+numa +openmp
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=numa? ( sys-process/numactl )
+SLOT=0
+SRC_URI=https://github.com/openucx/ucx/releases/download/v1.3.0/ucx-1.3.0.tar.gz
+_md5_=0851324f78ac3927d960c423a6512000

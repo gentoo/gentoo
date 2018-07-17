@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/cudf:= >=dev-ml/extlib-1.7.0:= dev-ml/ocaml-re:= dev-ml/cppo:= parmap? ( dev-ml/parmap:= ) zip? ( dev-ml/camlzip:= ) bzip2? ( dev-ml/camlbz2:= ) >=dev-ml/ocamlgraph-1.8.6:= xml? ( dev-ml/ocaml-expat:= dev-ml/xml-light:= ) curl? ( dev-ml/ocurl:= ) rpm4? ( app-arch/rpm ) dev-ml/findlib dev-ml/ocamlbuild test? ( dev-python/pyyaml[libyaml] )
+DESCRIPTION=Library to perform analysis on package repositories
+EAPI=5
+HOMEPAGE=http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose
+IUSE=+ocamlopt parmap zip bzip2 xml curl rpm4 test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=LGPL-3
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/cudf:= >=dev-ml/extlib-1.7.0:= dev-ml/ocaml-re:= dev-ml/cppo:= parmap? ( dev-ml/parmap:= ) zip? ( dev-ml/camlzip:= ) bzip2? ( dev-ml/camlbz2:= ) >=dev-ml/ocamlgraph-1.8.6:= xml? ( dev-ml/ocaml-expat:= dev-ml/xml-light:= ) curl? ( dev-ml/ocurl:= ) rpm4? ( app-arch/rpm )
+RESTRICT=test
+SLOT=0/5.0.1
+SRC_URI=https://gforge.inria.fr/frs/download.php/file/36063/dose3-5.0.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=0bd92c44c5624b8fac4e4e806e1d3556

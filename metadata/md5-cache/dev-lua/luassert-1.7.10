@@ -1,0 +1,13 @@
+DEFINED_PHASES=install test
+DEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) virtual/pkgconfig test? ( dev-lua/busted )
+DESCRIPTION=Lua Assertions Extension
+EAPI=6
+HOMEPAGE=http://olivinelabs.com/busted/
+IUSE=luajit test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 ) >=dev-lua/say-1.2_p1[luajit=]
+SLOT=0
+SRC_URI=https://github.com/Olivine-Labs/luassert/archive/v1.7.10.tar.gz -> luassert-1.7.10.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=43f527b9e910b7f08b4045e4f867b39f

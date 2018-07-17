@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=sys-apps/sed virtual/pkgconfig
+DESCRIPTION=A lightweight system monitoring tool
+EAPI=5
+HOMEPAGE=https://www.monitorix.org/
+IUSE=apcupsd hddtemp httpd lm_sensors postfix
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Config-General dev-perl/DBI dev-perl/HTTP-Server-Simple dev-perl/IO-Socket-SSL dev-perl/libwww-perl dev-perl/MIME-Lite dev-perl/XML-Simple net-analyzer/rrdtool[graph,perl] dev-perl/CGI apcupsd? ( sys-power/apcupsd ) hddtemp? ( app-admin/hddtemp ) httpd? ( virtual/httpd-cgi ) lm_sensors? ( sys-apps/lm_sensors ) postfix? ( net-mail/pflogsumm dev-perl/MailTools )
+SLOT=0
+SRC_URI=https://www.monitorix.org/old-versions/monitorix-3.5.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b149cd6615ef136ea10b93eb141750b6

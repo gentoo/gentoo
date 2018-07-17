@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure postinst test
+DEPEND=>=dev-libs/libpcre2-10.21[pcre32] sys-libs/ncurses:0= sys-devel/bc nls? ( sys-devel/gettext )
+DESCRIPTION=Friendly Interactive SHell
+EAPI=6
+HOMEPAGE=http://fishshell.com/
+IUSE=nls
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libpcre2-10.21[pcre32] sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=https://github.com/fish-shell/fish-shell/releases/download/2.6.0/fish-2.6.0.tar.gz
+_md5_=ebf8abcdb103ca5193eb229863127e3c

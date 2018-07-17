@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Quotes from Dr. Strangelove
+EAPI=5
+HOMEPAGE=http://seiler.us/wiki/index.php/Strangelove
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=fairuse
+RDEPEND=games-misc/fortune-mod
+SLOT=0
+SRC_URI=http://seiler.us/wiki/images/4/48/Strangelove_20041203.tar.gz
+_md5_=be83ac3bf6f3df8776334506aa8f46be

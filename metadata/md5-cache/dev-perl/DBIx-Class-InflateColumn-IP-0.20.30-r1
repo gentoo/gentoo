@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/NetAddr-IP >=dev-perl/DBIx-Class-0.81.70 test? ( dev-perl/DBD-SQLite ) dev-lang/perl:=
+DESCRIPTION=Auto-create NetAddr::IP objects from columns
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/DBIx-Class-InflateColumn-IP/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/NetAddr-IP >=dev-perl/DBIx-Class-0.81.70 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/DBIx-Class-InflateColumn-IP-0.02003.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=040a49337d125f68fa2efeddb8f57fab

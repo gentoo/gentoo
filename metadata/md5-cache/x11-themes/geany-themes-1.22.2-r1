@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A collection of colour schemes for Geany
+EAPI=6
+HOMEPAGE=https://github.com/codebrainz/geany-themes
+KEYWORDS=amd64 x86
+LICENSE=GPL-3 LGPL-2.1 BSD-2 MIT
+RDEPEND=>=dev-util/geany-1.22
+SLOT=0
+SRC_URI=mirror://github/codebrainz/geany-themes/geany-themes-1.22.2.tar.bz2
+_md5_=741d8dbdae60d50404e06d2b55499db1

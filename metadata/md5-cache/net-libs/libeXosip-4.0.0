@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=net-libs/libosip-4.0.0:= ssl? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) )
+DESCRIPTION=library to use the SIP protocol for multimedia session establishement
+EAPI=6
+HOMEPAGE=https://savannah.nongnu.org/projects/exosip/
+IUSE=libressl +srv ssl
+KEYWORDS=~amd64 ~ppc ~x86 ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libosip-4.0.0:= ssl? ( libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) )
+SLOT=0/4.0
+SRC_URI=mirror://nongnu/exosip/libeXosip2-4.0.0.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=dea7b247d46655ce9198eea52cbd59e8

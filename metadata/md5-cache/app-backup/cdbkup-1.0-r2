@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=net-misc/openssh virtual/cdrtools virtual/eject
+DESCRIPTION=performs full/incremental backups of local/remote filesystems onto CD-R(W)s
+EAPI=6
+HOMEPAGE=http://cdbkup.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=net-misc/openssh virtual/cdrtools virtual/eject !app-misc/cdcat
+SLOT=0
+SRC_URI=mirror://sourceforge/cdbkup/cdbkup-1.0.tar.gz
+_md5_=5d6404a4d7695af61a00aa3ce03e0ee7

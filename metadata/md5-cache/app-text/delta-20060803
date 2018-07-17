@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/perl
+DESCRIPTION=Heuristically minimizes interesting files
+EAPI=4
+HOMEPAGE=http://delta.tigris.org/
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ppc ppc64 s390 sh sparc x86 ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://delta.tigris.org/files/documents/3103/33566/delta-2006.08.03.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8837ac664bf7ba47db4198724de38b74

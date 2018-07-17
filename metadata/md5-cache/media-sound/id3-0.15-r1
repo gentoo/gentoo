@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile prepare
+DESCRIPTION=changes the id3 tag in an mp3 file
+EAPI=6
+HOMEPAGE=http://lly.org/~rcw/abcde/page
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://lly.org/~rcw/id3/id3_0.15.orig.tar.gz -> id3-0.15.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=46a992ae75cc5d0bb7da3d87352f787c

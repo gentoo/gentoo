@@ -1,0 +1,13 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=compile config install postinst test
+DEPEND=>=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses:0= ) readline? ( sys-libs/libtermcap-compat )
+DESCRIPTION=SCM is a Scheme implementation from the author of slib
+EAPI=7
+HOMEPAGE=http://swiss.csail.mit.edu/~jaffer/SCM
+IUSE=arrays bignums cautious dynamic-linking engineering-notation gsubr inexact ioext libscm macro ncurses posix readline regex sockets unix
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-macos
+LICENSE=LGPL-3
+RDEPEND=>=dev-scheme/slib-3.1.5 dev-util/cproto ncurses? ( sys-libs/ncurses:0= ) readline? ( sys-libs/libtermcap-compat )
+SLOT=0
+SRC_URI=http://groups.csail.mit.edu/mac/ftpdir/scm/scm-5e6.zip
+_md5_=a531c126620062194af7bbb59d80a9be

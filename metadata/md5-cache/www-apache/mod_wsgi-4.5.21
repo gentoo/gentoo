@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND==www-servers/apache-2*
+DESCRIPTION=An Apache2 module for running Python WSGI applications
+EAPI=5
+HOMEPAGE=https://github.com/GrahamDumpleton/mod_wsgi
+IUSE=python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=Apache-2.0
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) python_single_target_python3_4? ( dev-lang/python:3.4[threads] ) python_single_target_python3_5? ( dev-lang/python:3.5[threads] ) python_single_target_python3_6? ( dev-lang/python:3.6[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] =www-servers/apache-2*
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
+SLOT=0
+SRC_URI=https://github.com/GrahamDumpleton/mod_wsgi/archive/4.5.21.tar.gz -> mod_wsgi-4.5.21.tar.gz
+_eclasses_=apache-module	bd30ba4d834196e81cf2b76c52d26b93	depend.apache	0917334d570e07f9743a04ff85b3bf1b	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=722385070c4a5c5b7fc489a62adcb004

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=dev-libs/openssl:0 dev-libs/libpcre net-dns/libidn sys-libs/zlib
+DESCRIPTION=A fully automated, active web application security reconnaissance tool
+EAPI=5
+HOMEPAGE=https://github.com/spinkham/skipfish
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0 LGPL-3
+RDEPEND=dev-libs/openssl:0 dev-libs/libpcre net-dns/libidn sys-libs/zlib
+SLOT=0
+SRC_URI=https://github.com/spinkham/skipfish/archive/093800c9de4116706258982376abce01928a3f7b.tar.gz -> skipfish-2.10_beta.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=d4b8fa19870d8cb8f449052d98c126cc

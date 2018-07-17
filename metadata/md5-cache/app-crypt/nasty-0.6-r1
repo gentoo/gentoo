@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=app-crypt/gpgme
+DESCRIPTION=Proof-of-concept GPG passphrase recovery tool
+EAPI=6
+HOMEPAGE=http://www.vanheusden.com/nasty/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-crypt/gpgme
+SLOT=0
+SRC_URI=http://www.vanheusden.com/nasty/nasty-0.6.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6e6437202d2beb3a44d57f93feb507c0

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-games/physfs media-libs/libsdl[opengl] media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-image[png] media-libs/openal media-libs/freealut
+DESCRIPTION=A fast paced action game
+EAPI=6
+HOMEPAGE=http://icculus.org/excido/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-games/physfs media-libs/libsdl[opengl] media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-image[png] media-libs/openal media-libs/freealut
+SLOT=0
+SRC_URI=http://icculus.org/excido/excido-0.1.5c-src.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=603d42b17cd9fc3ec8b6684115771cfc

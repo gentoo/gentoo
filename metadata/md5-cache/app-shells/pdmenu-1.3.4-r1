@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=sys-libs/slang gpm? ( sys-libs/gpm ) nls? ( sys-devel/gettext )
+DESCRIPTION=A simple console menu program
+EAPI=6
+HOMEPAGE=http://joeyh.name/code/pdmenu/
+IUSE=nls gpm examples
+KEYWORDS=amd64 ~mips x86
+LICENSE=GPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/pdmenu/pdmenu_1.3.4.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ab61ce04d7e8115be9dde1f52576fe13

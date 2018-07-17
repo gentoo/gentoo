@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ml/cudf:= sci-mathematics/glpk:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Multi Criteria CUDF Solver
+EAPI=6
+HOMEPAGE=http://www.i3s.unice.fr/~cpjm/misc/ https://github.com/AltGr/ocaml-mccs/issues
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ml/cudf:= sci-mathematics/glpk:= >=dev-lang/ocaml-4:=
+SLOT=0/1.1.2c
+SRC_URI=https://github.com/AltGr/ocaml-mccs/archive/1.1+2c.tar.gz -> mccs-1.1.2c.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	opam	24b4a2529c1fd12f1304856d6c5a690d	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=7ebcdca046cbdc52757a030e540c7ab4

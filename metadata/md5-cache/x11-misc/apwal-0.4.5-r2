@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=x11-libs/gtk+:2 x11-libs/gdk-pixbuf dev-libs/libxml2 dev-libs/glib:2 virtual/pkgconfig
+DESCRIPTION=A simple application launcher and combined editor
+EAPI=6
+HOMEPAGE=http://apwal.free.fr/
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 x11-libs/gdk-pixbuf dev-libs/libxml2 dev-libs/glib:2
+SLOT=0
+SRC_URI=http://apwal.free.fr/download/apwal-0.4.5.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=29f7a37a05c707eee1b8ff69b33a2530

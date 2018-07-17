@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DESCRIPTION=relatively thin, simple and robust network communication layer on top of UDP
+EAPI=6
+HOMEPAGE=http://enet.bespin.org/
+IUSE=static-libs
+KEYWORDS=amd64 ppc ~ppc64 x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://enet.bespin.org/download/enet-1.2.2.tar.gz
+_md5_=b44bcc4be9834336044a3c7634ac6b13

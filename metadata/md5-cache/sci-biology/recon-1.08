@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Automated de novo identification of repeat families from genomic sequences
+EAPI=6
+HOMEPAGE=http://www.repeatmasker.org/RepeatModeler.html
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://www.repeatmasker.org/RECON-1.08.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2ddd537d912c7c88b6f0b0d203a51613

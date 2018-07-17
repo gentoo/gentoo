@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare pretend setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout
+EAPI=5
+HOMEPAGE=https://wasteland.inxile-entertainment.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=>=dev-libs/atk-2.12.0-r1[abi_x86_32(-)] >=dev-libs/glib-2.40.0-r1:2[abi_x86_32(-)] >=media-libs/fontconfig-2.10.92:1.0[abi_x86_32(-)] >=media-libs/freetype-2.5.3-r1:2[abi_x86_32(-)] >=x11-libs/cairo-1.12.16-r2[abi_x86_32(-)] >=x11-libs/gdk-pixbuf-2.30.8:2[abi_x86_32(-)] >=x11-libs/gtk+-2.24.24:2[abi_x86_32(-)] >=x11-libs/pango-1.36.5[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXcursor-1.1.14[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXrandr-1.4.2[abi_x86_32(-)] >=virtual/glu-9.0-r1[abi_x86_32(-)] virtual/opengl games-misc/games-envd
+RESTRICT=bindist fetch mirror
+SLOT=0
+SRC_URI=gog_wasteland_2_1.9.0.13.tar.gz
+_eclasses_=base	983774947da124fb7d542ce25a218bb1	check-reqs	fd05cf75484aa28d307cf4ee6e1db056	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	games	2bb3ede665927a68ffdb7c41eec7efde	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=59d5f4594800a80ee26d0c8a165a76ef

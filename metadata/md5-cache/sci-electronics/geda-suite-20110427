@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Metapackage for all components for a full-featured gEDA/gaf system
+EAPI=0
+HOMEPAGE=http://www.geda.seul.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sci-electronics/geda sci-electronics/gerbv >=sci-electronics/gnucap-0.35.20091207 >=sci-electronics/gwave-20090213-r1 sci-electronics/pcb >=sci-electronics/geda-xgsch2pcb-0.1.3-r2 >=sci-electronics/iverilog-0.9.1 sci-electronics/ngspice sci-electronics/gspiceui >=sci-electronics/gnetman-0.0.1_pre20060522-r2 sci-electronics/gtkwave
+SLOT=0
+_md5_=9363a5d54d2666c99b23dc48fc29c72e

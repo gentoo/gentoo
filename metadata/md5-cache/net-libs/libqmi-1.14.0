@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/glib-2.32 doc? ( dev-util/gtk-doc ) virtual/pkgconfig
+DESCRIPTION=QMI modem protocol helper library
+EAPI=5
+HOMEPAGE=https://cgit.freedesktop.org/libqmi/
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~arm ~mips ~x86
+LICENSE=LGPL-2
+RDEPEND=>=dev-libs/glib-2.32
+SLOT=0
+SRC_URI=https://www.freedesktop.org/software/libqmi/libqmi-1.14.0.tar.xz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=965fdf97c84b2432645f578a0afcd042

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Storable >=dev-perl/XML-Twig-3.160.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Parse nmap scan data with perl
+EAPI=6
+HOMEPAGE=https://nmapparser.wordpress.com/ http://search.cpan.org/dist/Nmap-Parser/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=virtual/perl-Storable >=dev-perl/XML-Twig-3.160.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AP/APERSAUD/Nmap-Parser-1.34.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=ea1b7b9865b41c5dfd52cb7d6d014af0

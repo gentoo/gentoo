@@ -1,0 +1,9 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Console based speech recognition system
+EAPI=7
+HOMEPAGE=http://www.kiecza.net/daniel/linux
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.kiecza.net/daniel/linux/cvoicecontrol-0.9alpha.tar.bz2
+_md5_=1b23ff7195fd5c1e6fac140730aa8b63

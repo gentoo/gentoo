@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Rules for Sagan log analyzer
+EAPI=6
+HOMEPAGE=http://sagan.softwink.com/
+IUSE=+lognorm
+KEYWORDS=amd64 x86
+LICENSE=BSD
+PDEPEND=app-admin/sagan
+SLOT=0
+SRC_URI=http://sagan.quadrantsec.com/rules/sagan-rules-06172014.tar.gz
+_md5_=552208e92e20bbe31a86a3bd57c50ba8

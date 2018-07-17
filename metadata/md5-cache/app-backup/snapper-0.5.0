@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/boost:=[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl sys-apps/dbus sys-apps/util-linux sys-libs/zlib virtual/libintl btrfs? ( >=sys-fs/btrfs-progs-3.17.1 ) ext4? ( sys-fs/e2fsprogs ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) xattr? ( sys-apps/attr ) sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=Command-line program for btrfs and ext4 snapshot management
+EAPI=6
+HOMEPAGE=http://snapper.io/
+IUSE=+btrfs ext4 lvm pam xattr
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/boost:=[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl sys-apps/dbus sys-apps/util-linux sys-libs/zlib virtual/libintl btrfs? ( >=sys-fs/btrfs-progs-3.17.1 ) ext4? ( sys-fs/e2fsprogs ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) xattr? ( sys-apps/attr )
+REQUIRED_USE=|| ( btrfs ext4 lvm )
+SLOT=0
+SRC_URI=ftp://ftp.suse.com/pub/projects/snapper/snapper-0.5.0.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=bcb7391c01ba82a9cf186b382ca21cf2

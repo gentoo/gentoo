@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Puppet Server is the next-generation application for managing Puppet agents.
+EAPI=6
+HOMEPAGE=http://docs.puppetlabs.com/puppetserver/
+IUSE=puppetdb
+KEYWORDS=amd64 x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jdk-1.8.0 app-admin/puppet-agent[puppetdb?] virtual/tmpfiles
+SLOT=0
+SRC_URI=https://downloads.puppetlabs.com/puppet/puppetserver-5.3.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	tmpfiles	d7dc36a24e327d58f0728badddca6448	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b84af374ead41af6acd604c5cb319caa

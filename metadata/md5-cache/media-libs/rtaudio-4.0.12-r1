@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-libs/alsa-lib media-sound/jack-audio-connection-kit ) pulseaudio? ( media-sound/pulseaudio ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A set of cross-platform C++ classes for realtime audio I/O
+EAPI=5
+HOMEPAGE=https://www.music.mcgill.ca/~gary/rtaudio/
+IUSE=+alsa doc jack pulseaudio static-libs
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-libs/alsa-lib media-sound/jack-audio-connection-kit ) pulseaudio? ( media-sound/pulseaudio )
+REQUIRED_USE=|| ( alsa jack pulseaudio )
+SLOT=0
+SRC_URI=https://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-4.0.12.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4f3e0029a631463bf2aed7f11cf6f360

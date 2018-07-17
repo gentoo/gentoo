@@ -1,0 +1,9 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=A text file colorizer using powerful regular expressions
+EAPI=6
+HOMEPAGE=http://supercat.nosredna.net
+KEYWORDS=amd64 ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://supercat.nosredna.net/supercat-0.5.5.tar.gz
+_md5_=c58c0eeadba50da3f8e87f993d843246

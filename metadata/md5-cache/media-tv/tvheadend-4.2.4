@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) dvben50221? ( media-tv/linuxtv-dvb-apps ) ffmpeg? ( media-video/ffmpeg:0/55.57.57 ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) sys-devel/gettext virtual/pkgconfig dvb? ( virtual/linuxtv-dvb-headers ) virtual/pkgconfig
+DESCRIPTION=Tvheadend is a TV streaming server and digital video recorder
+EAPI=6
+HOMEPAGE=https://tvheadend.org/
+IUSE=+capmt +constcw +cwc dbus debug dvbcsa dvben50221 +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl satip systemd +timeshift uriparser xmltv zeroconf zlib kernel_linux
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=virtual/libiconv dbus? ( sys-apps/dbus ) dvbcsa? ( media-libs/libdvbcsa ) dvben50221? ( media-tv/linuxtv-dvb-apps ) ffmpeg? ( media-video/ffmpeg:0/55.57.57 ) hdhomerun? ( media-libs/libhdhomerun ) !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) uriparser? ( dev-libs/uriparser ) zeroconf? ( net-dns/avahi ) zlib? ( sys-libs/zlib ) dvb? ( media-tv/dtv-scan-tables ) xmltv? ( media-tv/xmltv )
+REQUIRED_USE=dvbcsa? ( || ( capmt constcw cwc dvben50221 ) )
+SLOT=0
+SRC_URI=https://github.com/tvheadend/tvheadend/archive/v4.2.4.tar.gz -> tvheadend-4.2.4.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=54e659f06192620044ca9c0e7b6dcc5e

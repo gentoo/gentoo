@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=>=sys-devel/gcc-4.8:* dev-cpp/cpp-hocon >=dev-libs/leatherman-1.0.0:= dev-libs/openssl:* sys-apps/util-linux app-emulation/virt-what net-misc/curl >=dev-libs/boost-1.54:=[nls] >=dev-cpp/yaml-cpp-0.5.1 !<app-admin/puppet-4.0.0 sys-devel/make >=dev-util/cmake-3.9.6 ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A cross-platform ruby library for retrieving facts from operating systems
+EAPI=6
+HOMEPAGE=http://www.puppetlabs.com/puppet/related-projects/facter/
+IUSE=debug test elibc_FreeBSD ruby_targets_ruby23 ruby_targets_ruby24
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/leatherman-1.0.0:= dev-libs/openssl:* sys-apps/util-linux app-emulation/virt-what net-misc/curl >=dev-libs/boost-1.54:=[nls] >=dev-cpp/yaml-cpp-0.5.1 !<app-admin/puppet-4.0.0 ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 )
+REQUIRED_USE=|| ( ruby_targets_ruby23 ruby_targets_ruby24 )
+SLOT=0
+_eclasses_=cmake-utils	57384a259cf0c7985ce651b2c0865405	desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-ng	c1f44e746d7656dd6e02d8815ff9518a	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=232b548d18e629568289ce2fe9420645

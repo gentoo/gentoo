@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Export PHP variables for visualization
+EAPI=6
+HOMEPAGE=http://phpunit.de
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
+LICENSE=BSD
+RDEPEND=dev-php/fedora-autoloader =dev-php/sebastian-recursion-context-2* >=dev-lang/php-5.6:*
+SLOT=0
+SRC_URI=https://github.com/sebastianbergmann//exporter/archive/2.0.0.tar.gz -> sebastian-exporter-2.0.0.tar.gz
+_md5_=ad94a6d99d7a7dbdb636e0e10807f50a

@@ -1,0 +1,12 @@
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Service edit requests from a web browser for editing of textareas
+EAPI=7
+HOMEPAGE=https://github.com/stsquad/emacs_chrome
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/stsquad/emacs_chrome/archive/v1.15.tar.gz -> emacs_chrome-1.15.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=c4ba721291f40f8820688ec4f7d711c4

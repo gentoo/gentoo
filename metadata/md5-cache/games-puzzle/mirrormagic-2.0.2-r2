@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=!sdl? ( x11-libs/libX11 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-mixer media-libs/sdl-image ) !sdl? ( x11-libs/libXt )
+DESCRIPTION=A game like Deflektor (C 64) or Mindbender (Amiga)
+EAPI=6
+HOMEPAGE=http://www.artsoft.org/mirrormagic/
+IUSE=sdl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!sdl? ( x11-libs/libX11 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-mixer media-libs/sdl-image )
+SLOT=0
+SRC_URI=http://www.artsoft.org/RELEASES/unix/mirrormagic/mirrormagic-2.0.2.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c9f3f0d80a3f5569451ef709b84b4f74

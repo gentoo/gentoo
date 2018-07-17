@@ -1,0 +1,10 @@
+DEFINED_PHASES=install test
+DESCRIPTION=Copy data while enforcing a specified maximum transfer rate
+EAPI=6
+HOMEPAGE=https://www.fourmilab.ch/webtools/valve/
+IUSE=test doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=https://www.fourmilab.ch/webtools/valve/valve-1.0.tar.gz
+_md5_=85a70e416926d3c55ffc4e9dfc59a2e3

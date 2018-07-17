@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst postrm setup
+DEPEND=>=dev-libs/glib-2.18:2= >=media-libs/libmpd-0.15:= >=x11-libs/gtk+-2.16:2= >=xfce-base/libxfce4ui-4.8:= >=xfce-base/libxfce4util-4.8:= dev-util/intltool virtual/pkgconfig
+DESCRIPTION=Music Player Daemon (MPD) client for the Xfce desktop environment
+EAPI=6
+HOMEPAGE=https://goodies.xfce.org/projects/applications/xfmpc
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.18:2= >=media-libs/libmpd-0.15:= >=x11-libs/gtk+-2.16:2= >=xfce-base/libxfce4ui-4.8:= >=xfce-base/libxfce4util-4.8:=
+SLOT=0
+SRC_URI=https://archive.xfce.org/src/apps/xfmpc/0.2/xfmpc-0.2.3.tar.bz2
+_eclasses_=xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=fa07dc1d84c060104f2a194de2749ce1

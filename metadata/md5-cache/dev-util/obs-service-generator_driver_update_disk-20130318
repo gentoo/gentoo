@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Open Build Service client module - generator_driver_update_disk service
+EAPI=5
+HOMEPAGE=http://en.opensuse.org/openSUSE:OSC
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-util/osc dev-util/suse-build
+SLOT=0
+SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-generator_driver_update_disk/generator_driver_update_disk -> generator_driver_update_disk-20130318 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-generator_driver_update_disk/generator_driver_update_disk.service -> generator_driver_update_disk-20130318.service https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-generator_driver_update_disk/BSKiwiXML.pm -> BSKiwiXML-20130318.pm
+_eclasses_=obs-download	dee642b7a40967b3fee1c026a6ba33dd	obs-service	165dda862c81ee0013948ebe7c8d8b78
+_md5_=fa21a94f1be7d5656bdeef409876d7e1

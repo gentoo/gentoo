@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch
+DEPEND=app-arch/unzip
+DESCRIPTION=PPD description files for (some) Kyocera Mita Printers
+EAPI=6
+HOMEPAGE=http://www.kyoceramita.it/
+IUSE=l10n_de +l10n_en l10n_es l10n_fr l10n_it l10n_pt
+KEYWORDS=~amd64 ~x86
+LICENSE=kyocera-mita-ppds
+RDEPEND=net-print/cups
+REQUIRED_USE=|| ( l10n_de l10n_en l10n_es l10n_fr l10n_it l10n_pt )
+RESTRICT=fetch bindist
+SLOT=0
+SRC_URI=Linux_PPDs_KSL8_4.zip
+_md5_=06bb124304178e00d03acc0a8b0f1459

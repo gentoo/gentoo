@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install prepare pretend setup
+DEPEND=>=x11-base/xorg-server-1.10:= >=dev-libs/libinput-1.5.0:0= x11-base/xorg-proto
+DESCRIPTION=X.org input driver based on libinput
+EAPI=7
+HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
+IUSE=kernel_linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=>=x11-base/xorg-server-1.10:= >=dev-libs/libinput-1.5.0:0=
+SLOT=0
+SRC_URI=mirror://xorg/driver/xf86-input-libinput-0.28.0.tar.bz2
+_eclasses_=linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8a937a321b78cb1662a62b4047e74e83

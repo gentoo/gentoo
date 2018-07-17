@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=!libressl? ( dev-libs/openssl:0[static-libs?] ) libressl? ( dev-libs/libressl[static-libs?] ) javascript? ( >=dev-lang/mujs-0_p20160504 ) media-libs/freetype:2[static-libs?] media-libs/harfbuzz[static-libs?] media-libs/jbig2dec[static-libs?] media-libs/libpng:0[static-libs?] >=media-libs/openjpeg-2.1:2[static-libs?] net-misc/curl[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) opengl? ( >=media-libs/glfw-3.2 ) virtual/pkgconfig static-libs? ( !libressl? ( dev-libs/openssl:0[static-libs?] ) libressl? ( dev-libs/libressl[static-libs?] ) javascript? ( >=dev-lang/mujs-0_p20160504 ) media-libs/freetype:2[static-libs?] media-libs/harfbuzz[static-libs?] media-libs/jbig2dec[static-libs?] media-libs/libpng:0[static-libs?] >=media-libs/openjpeg-2.1:2[static-libs?] net-misc/curl[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) opengl? ( >=media-libs/glfw-3.2 ) ) static? ( app-arch/bzip2[static-libs] x11-libs/libXau[static-libs] x11-libs/libXdmcp[static-libs] x11-libs/libxcb[static-libs] )
+DESCRIPTION=a lightweight PDF viewer and toolkit written in portable C
+EAPI=6
+HOMEPAGE=https://mupdf.com/
+IUSE=X +curl javascript libressl opengl +openssl static static-libs vanilla
+KEYWORDS=alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=AGPL-3
+RDEPEND=!libressl? ( dev-libs/openssl:0[static-libs?] ) libressl? ( dev-libs/libressl[static-libs?] ) javascript? ( >=dev-lang/mujs-0_p20160504 ) media-libs/freetype:2[static-libs?] media-libs/harfbuzz[static-libs?] media-libs/jbig2dec[static-libs?] media-libs/libpng:0[static-libs?] >=media-libs/openjpeg-2.1:2[static-libs?] net-misc/curl[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) opengl? ( >=media-libs/glfw-3.2 )
+REQUIRED_USE=opengl? ( X !static !static-libs )
+SLOT=0/1.11
+SRC_URI=https://mupdf.com/downloads/mupdf-1.11-source.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=8598fc436ac76c5fcc2b3afc536e79e6

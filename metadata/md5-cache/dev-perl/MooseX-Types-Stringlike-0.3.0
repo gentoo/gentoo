@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/MooseX-Types >=virtual/perl-ExtUtils-MakeMaker-6.170.0 test? ( virtual/perl-File-Spec virtual/perl-Scalar-List-Utils dev-perl/Moose virtual/perl-File-Temp >=virtual/perl-Test-Simple-0.960.0 virtual/perl-version ) dev-lang/perl:=
+DESCRIPTION=Moose type constraints for strings or string-like objects
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/MooseX-Types-Stringlike/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-perl/MooseX-Types dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/MooseX-Types-Stringlike-0.003.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=20dcad4c4a0e6ef4c1633b630237ca80

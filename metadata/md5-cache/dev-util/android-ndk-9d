@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install
+DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
+EAPI=5
+HOMEPAGE=http://developer.android.com/sdk/ndk/
+KEYWORDS=~amd64 ~x86
+LICENSE=android
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81
+RESTRICT=mirror strip installsources test
+SLOT=0
+SRC_URI=x86? ( https://dl.google.com/android/ndk/android-ndk-r9d-linux-x86.tar.bz2 ) amd64? ( https://dl.google.com/android/ndk/android-ndk-r9d-linux-x86_64.tar.bz2 )
+_md5_=abc2d357e133d2e97115f0f9f6a591cc

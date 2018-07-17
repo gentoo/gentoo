@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Freedink game data
+EAPI=6
+HOMEPAGE=http://www.freedink.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB CC-BY-SA-3.0 CC-BY-3.0 FreeArt GPL-2 GPL-3 WTFPL-2 OAL-1.0.1 public-domain
+SLOT=0
+SRC_URI=mirror://gnu/freedink/freedink-data-1.08.20140901.tar.gz
+_md5_=d4d7ad4de5190e01896c21682fba95dc

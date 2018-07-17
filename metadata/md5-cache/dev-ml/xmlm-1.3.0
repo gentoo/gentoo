@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/findlib >=dev-ml/topkg-0.9 >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Ocaml XML manipulation module
+EAPI=5
+HOMEPAGE=http://erratique.ch/software/xmlm https://github.com/dbuenzli/xmlm
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-4:=
+SLOT=0/1.3.0
+SRC_URI=http://erratique.ch/software/xmlm/releases/xmlm-1.3.0.tbz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=cc99bd1b9a9bfefa7d74b4d59f8be67b

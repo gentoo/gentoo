@@ -1,0 +1,14 @@
+DEFINED_PHASES=config install postinst prepare setup
+DEPEND=media-libs/libpng:0 virtual/pkgconfig
+DESCRIPTION=An Open source Ticket Request System
+EAPI=6
+HOMEPAGE=https://www.otrs.com/
+IUSE=apache2 fastcgi +gd ldap mod_perl +mysql pdf postgres soap
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3+
+RDEPEND=dev-perl/Apache-Reload dev-perl/Archive-Zip dev-perl/DBI dev-perl/IO-Socket-SSL dev-perl/JSON-XS dev-perl/LWP-UserAgent-Determined dev-perl/Mail-POP3Client dev-perl/Mail-IMAPClient >dev-perl/Net-DNS-0.60 dev-perl/Template-Toolkit dev-perl/Text-CSV_XS dev-perl/TimeDate dev-perl/DateTime dev-perl/XML-LibXML-Simple dev-perl/XML-Parser dev-perl/YAML-LibYAML apache2? ( mod_perl? ( www-servers/apache:2 =www-apache/libapreq2-2* www-apache/mod_perl ) !fastcgi? ( !mod_perl? ( www-servers/apache:2[suexec] ) ) ) fastcgi? ( dev-perl/FCGI virtual/httpd-fastcgi ) !fastcgi? ( !apache2? ( virtual/httpd-cgi ) ) gd? ( dev-perl/GD dev-perl/GDTextUtil dev-perl/GDGraph ) ldap? ( dev-perl/perl-ldap ) mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg ) pdf? ( >=dev-perl/PDF-API2-0.73 virtual/perl-Compress-Raw-Zlib ) soap? ( dev-perl/SOAP-Lite !=dev-perl/SOAP-Lite-0.711 !=dev-perl/SOAP-Lite-0.712 )
+REQUIRED_USE=|| ( mysql postgres )
+SLOT=0
+SRC_URI=https://ftp.otrs.org/pub/otrs/otrs-6.0.3.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=23c8bc622480bd643e2bcfd9dc4624c6

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-apps/sed
+DESCRIPTION=Info Browser in TK
+EAPI=6
+HOMEPAGE=http://math-www.uni-paderborn.de/~axel/tkinfo/
+KEYWORDS=alpha amd64 hppa ia64 ppc sparc x86
+LICENSE=freedist
+RDEPEND=dev-lang/tk
+SLOT=0
+SRC_URI=http://math-www.uni-paderborn.de/~axel/tkinfo/tkinfo-2.8.tar.gz
+_md5_=1e203ce4ae032579e9c4ebf14bd2e44f

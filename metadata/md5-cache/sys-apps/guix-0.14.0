@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=dev-libs/libgcrypt:0= >=dev-scheme/guile-2:=[regex,networking,threads] dev-scheme/bytestructures dev-scheme/guile-git dev-scheme/guile-json net-libs/gnutls[guile] sys-libs/zlib app-arch/bzip2 dev-db/sqlite >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GNU package manager (nix sibling)
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/guix/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/libgcrypt:0= >=dev-scheme/guile-2:=[regex,networking,threads] dev-scheme/bytestructures dev-scheme/guile-git dev-scheme/guile-json net-libs/gnutls[guile] sys-libs/zlib app-arch/bzip2 dev-db/sqlite
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnu-alpha/guix/guix-0.14.0.tar.gz mirror://gnu-alpha/guix/bootstrap/aarch64-linux/20170217/guile-2.0.14.tar.xz -> guix-bootstrap-aarch64-linux-20170217-guile-2.0.14.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/armhf-linux/20150101/guile-2.0.11.tar.xz -> guix-bootstrap-armhf-linux-20150101-guile-2.0.11.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/i686-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-i686-linux-20131110-guile-2.0.9.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/mips64el-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-mips64el-linux-20131110-guile-2.0.9.tar.xz.bootstrap mirror://gnu-alpha/guix/bootstrap/x86_64-linux/20131110/guile-2.0.9.tar.xz -> guix-bootstrap-x86_64-linux-20131110-guile-2.0.9.tar.xz.bootstrap
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=b3a6c0d859733f15b11d899a145842b6

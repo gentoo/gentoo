@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=app-i18n/anthy virtual/libiconv x11-libs/gtk+:2 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Anthy dictionary maintenance tool
+EAPI=6
+HOMEPAGE=http://kasumi.osdn.jp/
+IUSE=nls
+KEYWORDS=alpha amd64 ppc sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=app-i18n/anthy virtual/libiconv x11-libs/gtk+:2 nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/kasumi/41436/kasumi-2.5.tar.gz
+_md5_=37846cc1d6f66270d1cc2d34de523fcc

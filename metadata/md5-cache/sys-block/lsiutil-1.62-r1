@@ -1,0 +1,11 @@
+DEFINED_PHASES=install nofetch
+DEPEND=app-arch/unzip
+DESCRIPTION=LSI Logic Fusion MPT Command Line Interface management tool
+EAPI=5
+HOMEPAGE=http://www.lsi.com/
+KEYWORDS=~amd64 ~ia64 ~x86
+LICENSE=LSI
+RESTRICT=fetch mirror bindist
+SLOT=0
+SRC_URI=http://www.lsi.com/downloads/Public/Obsolete/Obsolete%20Common%20Files/LSIUtil_1.62.zip
+_md5_=92ceb1910f714643d897373ee34649b0

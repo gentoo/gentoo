@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Gearman-1.07 >=dev-perl/Danga-Socket-1.57 test? ( dev-perl/Gearman-Server ) dev-lang/perl:=
+DESCRIPTION=Asynchronous client module for Gearman for Danga::Socket applications
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Gearman-Client-Async/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Gearman-1.07 >=dev-perl/Danga-Socket-1.57 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BR/BRADFITZ/Gearman-Client-Async-0.94.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=0d7d6d0d51bb67bd610d46498efd0d0e

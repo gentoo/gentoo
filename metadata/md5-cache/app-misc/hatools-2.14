@@ -1,0 +1,10 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=High availability environment tools for shell scripting
+EAPI=4
+HOMEPAGE=http://www.fatalmind.com/software/hatools/
+IUSE=test
+KEYWORDS=~mips ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.fatalmind.com/software/hatools/hatools-2.14.tar.gz
+_md5_=10665cb47cf729056577724332a37262

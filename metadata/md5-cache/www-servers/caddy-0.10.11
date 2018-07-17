@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Fast, cross-platform HTTP/2 web server with automatic HTTPS
+EAPI=6
+HOMEPAGE=https://github.com/mholt/caddy
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/mholt/caddy/archive/v0.10.11.tar.gz -> caddy-0.10.11.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=54e80c898faeb02889e12e218e3d9055

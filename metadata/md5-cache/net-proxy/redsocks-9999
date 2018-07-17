@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup unpack
+DEPEND=dev-libs/libevent:0= virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Transparent redirector of any TCP connection to proxy
+EAPI=6
+HOMEPAGE=http://darkk.net.ru/redsocks/
+IUSE=doc
+LICENSE=Apache-2.0 LGPL-2.1+ ZLIB
+RDEPEND=dev-libs/libevent:0= net-firewall/iptables
+RESTRICT=test
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=7b480d19274527eba55f9a1ecf991d1c

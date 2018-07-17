@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] ) python_single_target_python3_4? ( dev-lang/python:3.4[ssl] ) python_single_target_python3_5? ( dev-lang/python:3.5[ssl] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( dev-python/PySocks[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) virtual/pkgconfig
+DESCRIPTION=Submission tools for IRC notifications
+EAPI=6
+HOMEPAGE=http://www.catb.org/esr/irker/
+IUSE=socks5 python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] ) python_single_target_python3_4? ( dev-lang/python:3.4[ssl] ) python_single_target_python3_5? ( dev-lang/python:3.5[ssl] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?]
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
+SLOT=0
+SRC_URI=http://www.catb.org/esr/irker/irker-2.18.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8229af94c4187b4fbc77fa747fa259c7

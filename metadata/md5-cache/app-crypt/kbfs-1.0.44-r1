@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.6:0 virtual/pkgconfig
+DESCRIPTION=Keybase Filesystem (KBFS)
+EAPI=6
+HOMEPAGE=https://keybase.io/docs/kbfs
+IUSE=git
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-crypt/gnupg sys-fs/fuse
+SLOT=0
+SRC_URI=https://github.com/keybase/kbfs/archive/v1.0.44.tar.gz -> kbfs-1.0.44.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a99b2a0ddccd22d2f25a6167e90b1bc1

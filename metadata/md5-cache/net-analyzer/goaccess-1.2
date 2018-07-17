@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure preinst
+DEPEND=sys-libs/ncurses:0=[unicode?] geoip? ( !geoipv2? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb:0= ) ) !tokyocabinet? ( dev-libs/glib:2 ) tokyocabinet? ( dev-db/tokyocabinet[bzip2?,zlib?] btree? ( bzip2? ( app-arch/bzip2 ) zlib? ( sys-libs/zlib ) ) ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) virtual/pkgconfig
+DESCRIPTION=A real-time web log analyzer and interactive viewer that runs in a terminal
+EAPI=6
+HOMEPAGE=https://goaccess.io
+IUSE=btree bzip2 debug geoip geoipv2 getline libressl tokyocabinet ssl unicode zlib
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=MIT
+RDEPEND=sys-libs/ncurses:0=[unicode?] geoip? ( !geoipv2? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb:0= ) ) !tokyocabinet? ( dev-libs/glib:2 ) tokyocabinet? ( dev-db/tokyocabinet[bzip2?,zlib?] btree? ( bzip2? ( app-arch/bzip2 ) zlib? ( sys-libs/zlib ) ) ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+REQUIRED_USE=btree? ( tokyocabinet ) bzip2? ( btree ) geoipv2? ( geoip ) zlib? ( btree )
+SLOT=0
+SRC_URI=https://tar.goaccess.io/goaccess-1.2.tar.gz
+_md5_=a591a736aff7c2da52464a2015307a08

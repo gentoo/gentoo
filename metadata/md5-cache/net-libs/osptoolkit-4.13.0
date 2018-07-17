@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=dev-libs/openssl:0=
+DESCRIPTION=Open Settlement Protocol development kit
+EAPI=6
+HOMEPAGE=http://www.transnexus.com/OSP%20Toolkit/OSP%20Toolkit%20Documents/OSP%20Toolkit%20Documents.htm
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/openssl:0=
+SLOT=0
+SRC_URI=mirror://sourceforge/osp-toolkit/OSPToolkit-4.13.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=4e6be9f858cceb46d2a0948c7c02aa19

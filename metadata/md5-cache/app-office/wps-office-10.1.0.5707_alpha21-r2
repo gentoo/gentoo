@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings ) >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=WPS Office is an office productivity suite
+EAPI=6
+HOMEPAGE=http://linux.wps.cn/ http://wps-community.org/
+IUSE=+sharedfonts X
+KEYWORDS=~amd64 ~x86
+LICENSE=WPS-EULA
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXrender x11-libs/libxcb media-libs/fontconfig:1.0 media-libs/freetype:2 dev-libs/glib:2 sys-libs/zlib:0 net-print/cups media-libs/libpng:1.2 virtual/glu dev-libs/libpcre:3 dev-libs/libffi media-sound/pulseaudio app-arch/bzip2:0 media-libs/libpng:0 dev-libs/expat sys-apps/util-linux dev-libs/libbsd x11-libs/libXau x11-libs/libXdmcp sys-apps/dbus x11-libs/libXtst sys-apps/tcp-wrappers media-libs/libsndfile net-libs/libasyncns dev-libs/libgcrypt:0 app-arch/xz-utils app-arch/lz4 sys-libs/libcap media-libs/flac media-libs/libogg media-libs/libvorbis dev-libs/libgpg-error sys-apps/attr
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=x86? ( http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office_10.1.0.5707~a21_i386.deb ) amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office_10.1.0.5707~a21_amd64.deb )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	font	82836641e7d4639329d8c195234ad0e3	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=3560d502b0190cf3e16fd0253c9d3ec2

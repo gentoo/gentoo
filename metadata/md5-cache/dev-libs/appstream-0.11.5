@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=dev-libs/glib:2 dev-libs/gobject-introspection dev-libs/libxml2:2 dev-libs/libyaml dev-libs/snowball-stemmer qt5? ( dev-qt/qtcore:5 ) app-text/docbook-xml-dtd:4.5 dev-util/itstool >=dev-util/meson-0.42.0 sys-devel/gettext test? ( qt5? ( dev-qt/qttest:5 ) ) >=dev-util/meson-0.40.0 >=dev-util/ninja-1.7.2
+DESCRIPTION=Cross-distro effort for providing metadata for software in the Linux ecosystem
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/wiki/Distributions/AppStream/
+IUSE=apt doc qt5 test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=LGPL-2.1+ GPL-2+
+RDEPEND=dev-libs/glib:2 dev-libs/gobject-introspection dev-libs/libxml2:2 dev-libs/libyaml dev-libs/snowball-stemmer qt5? ( dev-qt/qtcore:5 )
+SLOT=0/4
+SRC_URI=https://github.com/ximion/appstream/archive/APPSTREAM_0_11_5.tar.gz -> appstream-0.11.5.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	meson	eb124b9e9d7a5f1ebc89589fe73c816f	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	d2e7e7d290428bb25c56dcf2502badc1	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=280e450f2650693b1339a0340f89ffbf

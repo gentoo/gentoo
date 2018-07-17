@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=sys-libs/slang-2 gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 xft? ( >=media-libs/freetype-2 x11-libs/libXft ) ) X? ( x11-libs/libXt x11-base/xorg-proto )
+DESCRIPTION=Console S-Lang-based editor
+EAPI=4
+HOMEPAGE=http://www.jedsoft.org/jed/
+IUSE=X gpm xft
+KEYWORDS=~alpha amd64 ~arm ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2+
+RDEPEND=>=sys-libs/slang-2 gpm? ( sys-libs/gpm ) X? ( x11-libs/libX11 xft? ( >=media-libs/freetype-2 x11-libs/libXft ) )
+SLOT=0
+SRC_URI=ftp://space.mit.edu/pub/davis/jed/v0.99/jed-0.99-19.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=c7b7cf056662d8b5a6a45e204aae2de3

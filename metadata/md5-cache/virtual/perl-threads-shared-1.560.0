@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for threads-shared
+EAPI=6
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-cygwin
+RDEPEND=|| ( =dev-lang/perl-5.26* ~perl-core/threads-shared-1.560.0 ) dev-lang/perl:= !<perl-core/threads-shared-1.560.0 !>perl-core/threads-shared-1.560.0-r999
+SLOT=0
+_md5_=9a4fef3d178c6fc6cf16ca001a3b60b3

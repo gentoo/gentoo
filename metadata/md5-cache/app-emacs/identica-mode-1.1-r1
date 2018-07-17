@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=sys-apps/texinfo >=virtual/emacs-23
+DESCRIPTION=Identi.ca mode for Emacs
+EAPI=4
+HOMEPAGE=http://blog.nethazard.net/identica-mode-for-emacs/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ FDL-1.2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://gentoo/identica-mode-1.1.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f
+_md5_=9f493811f73c2ca8c9a52129836ba2df

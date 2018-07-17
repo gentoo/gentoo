@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=>=dev-libs/libpo6-0.7.0 >=dev-libs/libe-0.10.0
+DESCRIPTION=Hyperdex libtreadstone support library
+EAPI=4
+HOMEPAGE=http://hyperdex.org
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=>=dev-libs/libpo6-0.7.0 >=dev-libs/libe-0.10.0
+SLOT=0
+SRC_URI=http://hyperdex.org/src/libtreadstone-0.2.0.tar.gz
+_md5_=e934dd3ff16a78d13a4e1f6d0e98a203

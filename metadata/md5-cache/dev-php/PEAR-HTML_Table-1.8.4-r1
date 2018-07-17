@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm test
+DEPEND=test? ( >=dev-php/PEAR-PEAR-1.5.0 >=dev-php/PEAR-HTML_Common-1.2.3 )
+DESCRIPTION=Makes the design of HTML tables easy, flexible, reusable and efficient
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/HTML_Table
+IUSE=test
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=>=dev-php/PEAR-HTML_Common-1.2.3 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTML_Table-1.8.4.tgz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3
+_md5_=5b7648e1df0eac7c9dbe8c62c91df464

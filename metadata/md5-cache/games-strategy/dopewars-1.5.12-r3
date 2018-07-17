@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=ncurses? ( >=sys-libs/ncurses-5.2:0= ) gtk? ( x11-libs/gtk+:2 ) dev-libs/glib:2 nls? ( virtual/libintl ) sdl? ( media-libs/libsdl media-libs/sdl-mixer ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Re-Write of the game Drug Wars
+EAPI=6
+HOMEPAGE=http://dopewars.sourceforge.net/
+IUSE=nls ncurses gtk gnome sdl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=ncurses? ( >=sys-libs/ncurses-5.2:0= ) gtk? ( x11-libs/gtk+:2 ) dev-libs/glib:2 nls? ( virtual/libintl ) sdl? ( media-libs/libsdl media-libs/sdl-mixer )
+SLOT=0
+SRC_URI=mirror://sourceforge/dopewars/dopewars-1.5.12.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=d48af901b202d3bfd667757f70352d6a

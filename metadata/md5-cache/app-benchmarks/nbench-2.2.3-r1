@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
+EAPI=6
+HOMEPAGE=http://www.tux.org/~mayer/linux/bmark.html
+KEYWORDS=alpha amd64 arm hppa ~mips ppc ppc64 sh sparc x86
+LICENSE=freedist
+SLOT=0
+SRC_URI=http://www.tux.org/~mayer/linux/nbench-byte-2.2.3.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9c928c9c61037cb323082470b1361173

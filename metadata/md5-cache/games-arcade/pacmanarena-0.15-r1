@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=virtual/opengl virtual/glu media-libs/libsdl[sound] media-libs/sdl-mixer[vorbis] media-libs/sdl-net app-arch/unzip >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=3D Pacman clone with a few surprises. Rockets, bombs and explosions abound
+EAPI=6
+HOMEPAGE=http://pacmanarena.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/opengl virtual/glu media-libs/libsdl[sound] media-libs/sdl-mixer[vorbis] media-libs/sdl-net
+SLOT=0
+SRC_URI=mirror://sourceforge/pacmanarena/pacman-arena-0.15.tar.bz2 mirror://sourceforge/pacmanarena/pacman-data-0.0.zip
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=db85c450907dc49ebe741319274893e6

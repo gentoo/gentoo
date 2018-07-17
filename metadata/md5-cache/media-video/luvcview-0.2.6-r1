@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libsdl media-libs/libv4l x11-libs/libX11 virtual/pkgconfig
+DESCRIPTION=USB Video Class grabber
+EAPI=6
+HOMEPAGE=https://packages.qa.debian.org/l/luvcview.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl media-libs/libv4l x11-libs/libX11
+SLOT=0
+SRC_URI=mirror://debian/pool/main/l/luvcview/luvcview_0.2.6.orig.tar.gz mirror://debian/pool/main/l/luvcview/luvcview_0.2.6-4.diff.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=19dd3ac1aeee4b72951035068a32c254

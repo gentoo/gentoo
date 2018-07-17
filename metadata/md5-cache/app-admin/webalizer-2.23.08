@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare prerm setup
+DEPEND=>=sys-libs/db-4.2:* >=sys-libs/zlib-1.1.4 >=media-libs/libpng-1.2:0= >=media-libs/gd-1.8.3[png] dev-libs/geoip bzip2? ( app-arch/bzip2 ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Webserver log file analyzer
+EAPI=5
+HOMEPAGE=http://www.webalizer.org/
+IUSE=bzip2 xtended geoip nls vhosts
+KEYWORDS=alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/db-4.2:* >=sys-libs/zlib-1.1.4 >=media-libs/libpng-1.2:0= >=media-libs/gd-1.8.3[png] dev-libs/geoip bzip2? ( app-arch/bzip2 ) >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=ftp://ftp.mrunix.net/pub/webalizer/webalizer-2.23-08-src.tar.bz2 xtended? ( http://patrickfrei.ch/webalizer/rb30/webalizer-2.23-08-RB30-patch.tar.gz ) https://dev.gentoo.org/~blueness/webalizer/webalizer.conf.gz ftp://ftp.mrunix.net/pub/webalizer/geodb//webalizer-geodb-20140201.tgz
+_eclasses_=db-use	582140d1a711279e50ce284fc7b609f5	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=6b483a71ed26e54f178ce8e206386025

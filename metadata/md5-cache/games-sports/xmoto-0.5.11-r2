@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-games/ode[double-precision=] dev-lang/lua:0[deprecated] dev-libs/libxdg-basedir dev-libs/libxml2 media-fonts/dejavu media-libs/libpng:0 media-libs/libsdl[joystick,opengl] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf net-misc/curl virtual/jpeg:0 virtual/opengl virtual/glu nls? ( virtual/libintl ) app-arch/xz-utils nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A challenging 2D motocross platform game
+EAPI=6
+HOMEPAGE=http://xmoto.tuxfamily.org
+IUSE=double-precision editor nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 dev-db/sqlite:3 dev-games/ode[double-precision=] dev-lang/lua:0[deprecated] dev-libs/libxdg-basedir dev-libs/libxml2 media-fonts/dejavu media-libs/libpng:0 media-libs/libsdl[joystick,opengl] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf net-misc/curl virtual/jpeg:0 virtual/opengl virtual/glu nls? ( virtual/libintl ) editor? ( media-gfx/inkscape )
+SLOT=0
+SRC_URI=http://download.tuxfamily.org/xmoto/xmoto/0.5.11/xmoto-0.5.11-src.tar.gz mirror://debian/pool/main/x/xmoto/xmoto_0.5.11+dfsg-7.debian.tar.xz editor? ( http://download.tuxfamily.org/xmoto/svg2lvl/0.7.0/inksmoto-0.7.0.tar.gz )
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=a1ff0eaf1835e75ff71c9a385e6e5290

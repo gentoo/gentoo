@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=The Single UNIX Specification, Version 4, 2016 Edition
+EAPI=6
+HOMEPAGE=https://www2.opengroup.org/ogsys/catalog/T101
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos
+LICENSE=sus4-copyright
+RESTRICT=mirror
+SLOT=4
+SRC_URI=http://pubs.opengroup.org/onlinepubs/9699919799/download/susv4tc2.tar.bz2
+_md5_=45260757834e6f0a3b3376214fa291bb

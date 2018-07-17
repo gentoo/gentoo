@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=sys-apps/texinfo >=virtual/emacs-24
+DESCRIPTION=Use the Emacsclient as the $EDITOR of child processes
+EAPI=6
+HOMEPAGE=https://magit.vc/manual/with-editor
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3+
+RDEPEND=!!<app-emacs/magit-2.5.0 >=virtual/emacs-24
+SLOT=0
+SRC_URI=https://github.com/magit/with-editor/archive/v2.6.0.tar.gz -> with-editor-2.6.0.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=dc3c2676a35393f51aaf7231721280f6

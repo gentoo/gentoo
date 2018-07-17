@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Performance Test of Filesystem I/O using standard C library calls
+EAPI=6
+HOMEPAGE=http://www.textuality.com/bonnie/
+KEYWORDS=alpha amd64 ia64 ~mips ppc ppc64 sparc x86
+LICENSE=bonnie
+SLOT=0
+SRC_URI=http://www.textuality.com/bonnie/bonnie.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ff5b900c79cc39799906bba07bea3cc5

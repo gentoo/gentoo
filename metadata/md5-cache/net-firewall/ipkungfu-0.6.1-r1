@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=net-firewall/iptables
+DESCRIPTION=A nice iptables firewall script
+EAPI=6
+HOMEPAGE=http://www.linuxkungfu.org/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables virtual/logger
+SLOT=0
+SRC_URI=http://www.linuxkungfu.org/ipkungfu/ipkungfu-0.6.1.tar.bz2
+_md5_=6b28954ed28d3892e8414417d4cee4a6

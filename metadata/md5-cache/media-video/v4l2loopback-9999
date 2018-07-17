@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf ) >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=v4l2 loopback device which output is it's own input
+EAPI=6
+HOMEPAGE=https://github.com/umlaeute/v4l2loopback
+IUSE=examples kernel_linux kernel_linux
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	linux-info	bb73a1f0c3db9ff796439bf44bed8467	linux-mod	8ce5c5f548ed010d6499eb792ac1a638	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=3691a70f1cce9341fb9dff9f8d0890c0

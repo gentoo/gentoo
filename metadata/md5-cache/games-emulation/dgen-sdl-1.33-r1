@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=media-libs/libsdl[joystick?,opengl?] app-arch/libarchive opengl? ( virtual/opengl ) x86? ( dev-lang/nasm )
+DESCRIPTION=A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
+EAPI=6
+HOMEPAGE=http://dgen.sourceforge.net/
+IUSE=joystick opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=dgen-sdl BSD BSD-2 free-noncomm LGPL-2.1+ GPL-2+
+RDEPEND=media-libs/libsdl[joystick?,opengl?] app-arch/libarchive opengl? ( virtual/opengl )
+SLOT=0
+SRC_URI=mirror://sourceforge/dgen/files/dgen-sdl-1.33.tar.gz
+_md5_=830a2beccd34f2f593e83ef279fbc1d4

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=dev-db/sqlite:3 test? ( sys-libs/ncurses[unicode] )
+DESCRIPTION=Intelligent phonetic (Zhuyin/Bopomofo) input method library
+EAPI=6
+HOMEPAGE=http://chewing.im/ https://github.com/chewing/libchewing
+IUSE=static-libs test
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-db/sqlite:3
+SLOT=0/3
+SRC_URI=https://github.com/chewing/libchewing/releases/download/v0.5.1/libchewing-0.5.1.tar.bz2
+_md5_=2373b585020293fc65d170d3018e03c6

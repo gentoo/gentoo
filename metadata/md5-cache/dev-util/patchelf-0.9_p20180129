@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare unpack
+DEPEND=>=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Small utility to modify the dynamic linker and RPATH of ELF executables
+EAPI=6
+HOMEPAGE=http://nixos.org/patchelf.html
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/NixOS/Patchelf/archive/1fa4d36fead44333528cbee4b5c04c207ce77ca4.tar.gz -> patchelf-0.9_p20180129.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=f9e6d5b7079d46a5cdf8d513c900cc1d

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup test
+DEPEND=app-arch/xz-utils test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.14* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Computes changes between binary or text files and creates deltas
+EAPI=6
+HOMEPAGE=http://xdelta.org/
+IUSE=examples test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd
+LICENSE=GPL-2
+RDEPEND=app-arch/xz-utils
+SLOT=3
+SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=14a01e537d2aa95b5479d2dc7de8a661

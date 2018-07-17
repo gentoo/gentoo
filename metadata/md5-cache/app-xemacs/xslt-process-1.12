@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=XSLT processing support
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/jde app-xemacs/cc-mode app-xemacs/semantic app-xemacs/debug app-xemacs/speedbar app-xemacs/edit-utils app-xemacs/xemacs-eterm app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/elib app-xemacs/eieio app-xemacs/sh-script app-xemacs/fsf-compat app-xemacs/xemacs-devel app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/xslt-process-1.12-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=39a44fdae4a11d7dfd610c8bd39204ab

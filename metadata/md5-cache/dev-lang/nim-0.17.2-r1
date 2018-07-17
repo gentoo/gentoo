@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=readline? ( sys-libs/readline:0= )
+DESCRIPTION=compiled, garbage-collected systems programming language
+EAPI=6
+HOMEPAGE=https://nim-lang.org/
+IUSE=doc +readline test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=readline? ( sys-libs/readline:0= )
+SLOT=0
+SRC_URI=https://nim-lang.org/download/nim-0.17.2.tar.xz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=51083b49d86718a507eacaab26e88fed

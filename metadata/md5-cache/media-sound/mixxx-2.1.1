@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-db/sqlite dev-libs/glib:2 dev-libs/protobuf:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtscript:5[scripttools] dev-qt/qtsql:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/chromaprint media-libs/flac media-libs/libid3tag media-libs/libogg media-libs/libsndfile >=media-libs/libsoundtouch-1.5 media-libs/libvorbis >=media-libs/portaudio-19_pre media-libs/portmidi media-libs/rubberband media-libs/taglib media-libs/vamp-plugin-sdk sci-libs/fftw:3.0= virtual/libusb:1 virtual/opengl x11-libs/libX11 aac? ( media-libs/faad2 media-libs/libmp4v2:0 ) hid? ( dev-libs/hidapi ) mp3? ( media-libs/libmad ) mp4? ( media-libs/libmp4v2:= ) opus? ( media-libs/opusfile ) shout? ( media-libs/libshout ) wavpack? ( media-sound/wavpack ) ffmpeg? ( media-video/ffmpeg:0= ) virtual/pkgconfig dev-qt/qttest:5 dev-qt/qtxmlpatterns:5 dev-util/scons[python_targets_python2_7]
+DESCRIPTION=Advanced Digital DJ tool based on Qt
+EAPI=6
+HOMEPAGE=https://www.mixxx.org/
+IUSE=aac doc ffmpeg hid mp3 mp4 opus shout wavpack
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite dev-libs/glib:2 dev-libs/protobuf:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtscript:5[scripttools] dev-qt/qtsql:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/chromaprint media-libs/flac media-libs/libid3tag media-libs/libogg media-libs/libsndfile >=media-libs/libsoundtouch-1.5 media-libs/libvorbis >=media-libs/portaudio-19_pre media-libs/portmidi media-libs/rubberband media-libs/taglib media-libs/vamp-plugin-sdk sci-libs/fftw:3.0= virtual/libusb:1 virtual/opengl x11-libs/libX11 aac? ( media-libs/faad2 media-libs/libmp4v2:0 ) hid? ( dev-libs/hidapi ) mp3? ( media-libs/libmad ) mp4? ( media-libs/libmp4v2:= ) opus? ( media-libs/opusfile ) shout? ( media-libs/libshout ) wavpack? ( media-sound/wavpack ) ffmpeg? ( media-video/ffmpeg:0= )
+SLOT=0
+SRC_URI=https://github.com/mixxxdj/mixxx/archive/release-2.1.1.tar.gz -> mixxx-2.1.1.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	abbc7625ff457854eae0edaa1fd55cc7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b87b5031482d6c611d99a26c1dcde875

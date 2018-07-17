@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mongodb? ( >=dev-libs/mongo-c-driver-0.8.1-r1 <dev-libs/mongo-c-driver-0.98 ) mysql? ( virtual/mysql ) ndpi? ( net-libs/nDPI ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= ) virtual/pkgconfig
+DESCRIPTION=A network tool to gather IP traffic information
+EAPI=6
+HOMEPAGE=http://www.pmacct.net/
+IUSE=64bit geoip geoipv2 ipv6 jansson kafka mongodb mysql ndpi nflog postgres rabbitmq sqlite threads zmq
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mongodb? ( >=dev-libs/mongo-c-driver-0.8.1-r1 <dev-libs/mongo-c-driver-0.98 ) mysql? ( virtual/mysql ) ndpi? ( net-libs/nDPI ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= )
+REQUIRED_USE=?? ( geoip geoipv2 ) kafka? ( jansson ) rabbitmq? ( jansson )
+SLOT=0
+SRC_URI=http://www.pmacct.net/pmacct-1.7.0.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=98ef57dcf5cd86390d41fb34a8aa298c

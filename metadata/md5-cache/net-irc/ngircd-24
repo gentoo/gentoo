@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=iconv? ( virtual/libiconv ) ident? ( net-libs/libident ) pam? ( virtual/pam ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib ) >=sys-apps/sed-4 test? ( dev-tcltk/expect net-misc/netkit-telnetd )
+DESCRIPTION=An IRC server written from scratch
+EAPI=6
+HOMEPAGE=https://ngircd.barton.de/
+IUSE=debug gnutls iconv ident ipv6 libressl pam ssl tcpd test zlib
+KEYWORDS=amd64 x86 ~x64-macos
+LICENSE=GPL-2
+RDEPEND=iconv? ( virtual/libiconv ) ident? ( net-libs/libident ) pam? ( virtual/pam ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) tcpd? ( sys-apps/tcp-wrappers ) zlib? ( sys-libs/zlib )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://arthur.barton.de/pub/ngircd/ngircd-24.tar.gz
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=c2a6df2c9d141696c241b58c3b70440a

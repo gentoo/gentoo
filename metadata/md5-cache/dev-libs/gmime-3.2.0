@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.32.0:2 sys-libs/zlib crypt? ( >=app-crypt/gpgme-1.8.0:1= ) idn? ( net-dns/libidn:= ) vala? ( || ( dev-lang/vala:0.36[vapigen(+)] dev-lang/vala:0.34[vapigen(+)] dev-lang/vala:0.32[vapigen(+)] ) >=dev-libs/gobject-introspection-1.30.0:= ) >=dev-util/gtk-doc-am-1.8 virtual/libiconv virtual/pkgconfig doc? ( app-text/docbook-sgml-utils ) test? ( app-crypt/gnupg ) >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Utilities for creating and parsing messages using MIME
+EAPI=6
+HOMEPAGE=http://spruce.sourceforge.net/gmime/ https://developer.gnome.org/gmime/stable/
+IUSE=crypt doc idn static-libs test vala
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.32.0:2 sys-libs/zlib crypt? ( >=app-crypt/gpgme-1.8.0:1= ) idn? ( net-dns/libidn:= ) vala? ( || ( dev-lang/vala:0.36[vapigen(+)] dev-lang/vala:0.34[vapigen(+)] dev-lang/vala:0.32[vapigen(+)] ) >=dev-libs/gobject-introspection-1.30.0:= )
+SLOT=3.0
+SRC_URI=mirror://gnome/sources/gmime/3.2/gmime-3.2.0.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vala	103e6885c83965507391cdc5b6fa0e67	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=a17c0a61ad7646c9e0345332bbf03b9a

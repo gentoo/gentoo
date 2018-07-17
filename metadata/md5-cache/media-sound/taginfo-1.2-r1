@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/taglib
+DESCRIPTION=a simple ID3 tag reader for use in shell scripts
+EAPI=2
+HOMEPAGE=http://freshmeat.net/projects/taginfo
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=media-libs/taglib
+SLOT=0
+SRC_URI=http://grecni.com/software/taginfo/taginfo-1.2.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=6703f3feba5e91a84923dca191a1ad84

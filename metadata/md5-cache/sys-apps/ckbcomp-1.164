@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Compile an XKB keymap for loadkeys
+EAPI=6
+HOMEPAGE=https://anonscm.debian.org/cgit/d-i/console-setup.git
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl:* sys-apps/kbd x11-misc/xkeyboard-config
+SLOT=0
+SRC_URI=https://anonscm.debian.org/cgit/d-i/console-setup.git/snapshot/e327df26fa9dbdf363b778ada91e83967f4bd500.tar.gz -> ckbcomp-1.164.tar.gz
+_md5_=fdba1c195abba5d2670ef54ad59be927

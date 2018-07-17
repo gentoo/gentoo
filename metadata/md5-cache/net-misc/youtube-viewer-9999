@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=dev-perl/Module-Build >=sys-apps/sed-4 dev-lang/perl:= >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A command line utility for viewing youtube-videos in Mplayer
+EAPI=6
+HOMEPAGE=https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html
+IUSE=gtk
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-lang/perl-5.16.0 dev-perl/Data-Dump dev-perl/JSON dev-perl/libwww-perl[ssl] dev-perl/Term-ReadLine-Gnu media-video/ffmpeg[openssl] virtual/perl-Encode virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long virtual/perl-Scalar-List-Utils virtual/perl-Term-ANSIColor virtual/perl-Term-ReadLine virtual/perl-Text-ParseWords virtual/perl-Text-Tabs+Wrap gtk? ( dev-perl/File-ShareDir >=dev-perl/Gtk2-1.244.0 virtual/freedesktop-icon-theme x11-libs/gdk-pixbuf:2[X,jpeg] ) || ( media-video/mpv media-video/mplayer media-video/smplayer media-video/vlc ) dev-lang/perl:=
+SLOT=0
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	git-r3	8f6de46b0aa318aea0e8cac62ece098b	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=d0a31e2fad4b3697e28e67fde1e4ecfa

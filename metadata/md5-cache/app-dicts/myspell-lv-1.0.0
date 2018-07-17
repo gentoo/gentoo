@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Latvian dictionaries for myspell/hunspell
+EAPI=5
+HOMEPAGE=http://dict.dv.lv/home.php?prj=lv http://extensions.libreoffice.org/extension-center/latviesu-valodas-pareizrakstibas-parbaudes-modulis
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=http://dict.dv.lv/download/lv_LV-1.0.0.zip
+_eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
+_md5_=c3ec140dece99d77c6a4d1b1bf81700e

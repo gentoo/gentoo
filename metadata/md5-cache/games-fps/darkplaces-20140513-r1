@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=lights? ( || ( app-arch/unrar app-arch/rar ) ) opengl? ( virtual/jpeg:0 media-libs/libogg media-libs/libvorbis virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl ) x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm x11-base/xorg-proto ) !opengl? ( sdl? ( virtual/jpeg:0 media-libs/libogg media-libs/libvorbis virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl ) x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm x11-base/xorg-proto ) ) !opengl? ( !sdl? ( !dedicated? ( virtual/jpeg:0 media-libs/libogg media-libs/libvorbis virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl ) x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm x11-base/xorg-proto ) ) ) virtual/pkgconfig app-arch/unzip
+DESCRIPTION=Enhanced engine for iD Software's Quake 1
+EAPI=6
+HOMEPAGE=http://icculus.org/twilight/darkplaces/
+IUSE=alsa cdinstall cdsound debug dedicated demo lights opengl oss sdl textures
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-misc/curl cdinstall? ( games-fps/quake1-data ) demo? ( games-fps/quake1-demodata ) textures? ( >=games-fps/quake1-textures-20050820 ) opengl? ( virtual/jpeg:0 media-libs/libogg media-libs/libvorbis virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl ) x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm ) !opengl? ( sdl? ( virtual/jpeg:0 media-libs/libogg media-libs/libvorbis virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl ) x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm ) ) !opengl? ( !sdl? ( !dedicated? ( virtual/jpeg:0 media-libs/libogg media-libs/libvorbis virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl ) x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm ) ) )
+SLOT=0
+SRC_URI=http://icculus.org/twilight/darkplaces/files/darkplacesengine20140513.zip lights? ( http://www.fuhquake.net/files/extras/fuhquake-lits.rar http://www.kgbsyndicate.com/romi/id1.pk3 )
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4abef158208be99ef6fe60c6411e1b6a

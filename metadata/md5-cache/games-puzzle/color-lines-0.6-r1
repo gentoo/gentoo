@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libsdl[X,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[wav,mod]
+DESCRIPTION=Color lines game written with SDL with bonus features
+EAPI=6
+HOMEPAGE=https://github.com/OpenA/color-lines-sdl
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[X,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer[wav,mod]
+SLOT=0
+SRC_URI=https://color-lines.googlecode.com/files/lines_0.6.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=8bdaad715e716713d0f8c0d61f1a109d

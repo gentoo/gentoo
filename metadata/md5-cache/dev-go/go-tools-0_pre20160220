@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=dev-go/go-net:= >=dev-lang/go-1.5 >=dev-lang/go-1.9
+DESCRIPTION=Go Tools
+EAPI=5
+HOMEPAGE=https://godoc.org/golang.org/x/tools
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=!<dev-lang/go-1.5
+SLOT=0/0_pre20160220
+SRC_URI=https://github.com/golang/tools/archive/ee8cb08bfe4453a27a4bd7c86a917800d339c5ac.tar.gz -> go-tools-0_pre20160220.tar.gz http://golang.org/favicon.ico -> go-favicon.ico
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_md5_=6aa9efe6b5d459a5c876d99d767ea66e

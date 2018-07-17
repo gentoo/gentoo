@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare test
+DEPEND=octave? ( sci-mathematics/octave ) doc? ( app-doc/doxygen[latex] ) python? ( dev-lang/swig )
+DESCRIPTION=Les Houches Parton Density Function unified library
+EAPI=5
+HOMEPAGE=http://projects.hepforge.org/lhapdf/
+IUSE=cxx doc examples octave python test
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=octave? ( sci-mathematics/octave )
+SLOT=0
+SRC_URI=http://www.hepforge.org/archive/lhapdf/lhapdf-5.9.1.tar.gz test? ( http://lhapdf.hepforge.org/svn/pdfsets/5/CT10.LHgrid http://lhapdf.hepforge.org/svn/pdfsets/5/cteq61.LHgrid http://lhapdf.hepforge.org/svn/pdfsets/5/MRST2004nlo.LHgrid http://lhapdf.hepforge.org/svn/pdfsets/5/cteq61.LHpdf octave? ( http://lhapdf.hepforge.org/svn/pdfsets/5/cteq5l.LHgrid ) )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=d84cb88d57df7d84d0a5aea1fe22930e

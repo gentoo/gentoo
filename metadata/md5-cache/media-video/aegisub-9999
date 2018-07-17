@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure postinst postrm preinst prepare test unpack
+DEPEND=x11-libs/wxGTK:3.0[X,opengl,debug?] dev-lang/luajit:2[lua52compat] dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= media-libs/ffmpegsource:= media-libs/fontconfig media-libs/freetype media-libs/libass:=[fontconfig] sys-libs/zlib virtual/libiconv virtual/opengl alsa? ( media-libs/alsa-lib ) fftw? ( >=sci-libs/fftw-3.3:= ) openal? ( media-libs/openal ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) spell? ( app-text/hunspell:= ) uchardet? ( app-i18n/uchardet ) dev-util/intltool sys-devel/gettext virtual/pkgconfig test? ( ~dev-cpp/gtest-1.7.0 dev-lua/busted dev-lua/luarocks ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Advanced subtitle editor
+EAPI=6
+HOMEPAGE=http://www.aegisub.org/ https://github.com/Aegisub/Aegisub
+IUSE=+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet
+LICENSE=BSD MIT
+RDEPEND=x11-libs/wxGTK:3.0[X,opengl,debug?] dev-lang/luajit:2[lua52compat] dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= media-libs/ffmpegsource:= media-libs/fontconfig media-libs/freetype media-libs/libass:=[fontconfig] sys-libs/zlib virtual/libiconv virtual/opengl alsa? ( media-libs/alsa-lib ) fftw? ( >=sci-libs/fftw-3.3:= ) openal? ( media-libs/openal ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) spell? ( app-text/hunspell:= ) uchardet? ( app-i18n/uchardet )
+REQUIRED_USE=|| ( alsa openal oss portaudio pulseaudio )
+SLOT=0
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	04e063b0eff26daaea83d859dd9d6e05	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=8adba77664c64a1e143a8b129653d61c

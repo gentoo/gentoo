@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Advanced Linux Sound Architecture firmware
+EAPI=5
+HOMEPAGE=https://alsa-project.org/
+IUSE=alsa_cards_cs46xx alsa_cards_pcxhr alsa_cards_vx222 alsa_cards_usb-usx2y alsa_cards_hdsp alsa_cards_hdspm alsa_cards_mixart alsa_cards_asihpi alsa_cards_sb16 alsa_cards_korg1212 alsa_cards_maestro3 alsa_cards_ymfpci alsa_cards_wavefront alsa_cards_msnd-pinnacle alsa_cards_aica alsa_cards_ca0132 alsa_cards_darla20 alsa_cards_gina20 alsa_cards_layla20 alsa_cards_darla24 alsa_cards_gina24 alsa_cards_layla24 alsa_cards_mona alsa_cards_mia alsa_cards_indigo alsa_cards_indigoio alsa_cards_echo3g alsa_cards_emu1212 alsa_cards_emu1616 alsa_cards_emu1820 alsa_cards_emu10k1
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=alsa_cards_usb-usx2y? ( sys-apps/fxload ) alsa_cards_hdsp? ( media-sound/alsa-tools ) alsa_cards_hdspm? ( media-sound/alsa-tools )
+SLOT=0
+SRC_URI=mirror://alsaproject/firmware/alsa-firmware-1.0.29.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88
+_md5_=ca0f8a96c6582c6e3b39ea0a49aa97df

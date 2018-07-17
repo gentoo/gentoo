@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 media-libs/musicbrainz:5= media-libs/taglib
+DESCRIPTION=GUI audio tagger based on Qt and taglib
+EAPI=6
+HOMEPAGE=https://www.linux-apps.com/content/show.php/Coquillo?content=141896
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 media-libs/musicbrainz:5= media-libs/taglib
+SLOT=0
+SRC_URI=https://github.com/sjuvonen/coquillo/archive/v2.0.0.tar.gz -> coquillo-2.0.0.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=071aef8e665e572c2352fac0f6015d40

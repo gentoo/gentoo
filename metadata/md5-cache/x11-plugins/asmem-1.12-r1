@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=x11-libs/libX11 x11-libs/libICE x11-libs/libSM x11-libs/libXpm x11-libs/libXext jpeg? ( virtual/jpeg:0 ) x11-base/xorg-proto
+DESCRIPTION=Monitor the utilization level of memory, cache and swap space
+EAPI=6
+HOMEPAGE=http://www.tigr.net/
+IUSE=jpeg
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libICE x11-libs/libSM x11-libs/libXpm x11-libs/libXext jpeg? ( virtual/jpeg:0 )
+SLOT=0
+SRC_URI=http://www.tigr.net/afterstep/download/asmem/asmem-1.12.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2c9ae2fc9ecee7242cd4c2963ce9f282

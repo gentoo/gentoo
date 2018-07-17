@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer[vorbis] media-libs/sdl-image[jpeg,png] media-libs/sdl-ttf
+DESCRIPTION=The classic memory game with some new life
+EAPI=6
+HOMEPAGE=https://packages.gentoo.org/package/games-puzzle/concentration
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer[vorbis] media-libs/sdl-image[jpeg,png] media-libs/sdl-ttf
+SLOT=0
+SRC_URI=mirror://gentoo/concentration-1.2.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=d5aebd2609f1d4af129b817feb7ed6cb

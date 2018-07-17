@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup test
+DEPEND=tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl:0= ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) srv? ( net-dns/c-ares ) websockets? ( net-libs/libwebsockets ) virtual/pkgconfig
+DESCRIPTION=An Open Source MQTT v3 Broker
+EAPI=6
+HOMEPAGE=https://mosquitto.org/
+IUSE=bridge examples +persistence +srv ssl tcpd test websockets
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=EPL-1.0
+RDEPEND=tcpd? ( sys-apps/tcp-wrappers ) ssl? ( dev-libs/openssl:0= )
+REQUIRED_USE=test? ( bridge )
+SLOT=0
+SRC_URI=https://mosquitto.org/files/source/mosquitto-1.4.15.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=06d01440237f7fcfe0af237ad4ccd5df

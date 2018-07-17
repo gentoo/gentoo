@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fastcgi ) || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
+EAPI=6
+HOMEPAGE=https://practical-scheme.net/wiliki/
+IUSE=cgi fastcgi vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+SLOT=0
+SRC_URI=mirror://sourceforge/wiliki/WiLiKi-0.6.1.tgz
+_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_md5_=91d63fac441a803e430ca2452155719f

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Password hashing software that won the Password Hashing Competition (PHC)
+EAPI=6
+HOMEPAGE=https://github.com/P-H-C/phc-winner-argon2
+IUSE=static-libs
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=|| ( Apache-2.0 CC0-1.0 )
+SLOT=0/0
+SRC_URI=https://github.com/P-H-C/phc-winner-argon2/archive/20161029.tar.gz -> argon2-20161029.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=298a05ebd204437ae73bb4f8960df6dc

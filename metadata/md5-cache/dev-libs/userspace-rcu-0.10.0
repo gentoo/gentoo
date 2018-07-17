@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure test
+DEPEND=test? ( sys-process/time )
+DESCRIPTION=userspace RCU (read-copy-update) library
+EAPI=6
+HOMEPAGE=http://lttng.org/urcu
+IUSE=static-libs regression-test test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+SLOT=0/6
+SRC_URI=http://lttng.org/files/urcu/userspace-rcu-0.10.0.tar.bz2
+_md5_=6b136254710ddcb0b0edc87534856db9

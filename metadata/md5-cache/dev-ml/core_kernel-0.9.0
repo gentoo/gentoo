@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/bin-prot:= dev-ml/configurator:= dev-ml/fieldslib:= dev-ml/jane-street-headers:= dev-ml/ppx_assert:= dev-ml/ppx_base:= dev-ml/ppx_driver:= dev-ml/ppx_hash:= dev-ml/ppx_inline_test:= dev-ml/ppx_jane:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_sexp_message:= dev-ml/sexplib:= dev-ml/stdio:= dev-ml/typerep:= dev-ml/variantslib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=System-independent part of Core
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/core_kernel
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/bin-prot:= dev-ml/configurator:= dev-ml/fieldslib:= dev-ml/jane-street-headers:= dev-ml/ppx_assert:= dev-ml/ppx_base:= dev-ml/ppx_driver:= dev-ml/ppx_hash:= dev-ml/ppx_inline_test:= dev-ml/ppx_jane:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_sexp_message:= dev-ml/sexplib:= dev-ml/stdio:= dev-ml/typerep:= dev-ml/variantslib:= dev-ml/ocaml-migrate-parsetree:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/core_kernel/archive/v0.9.0.tar.gz -> core_kernel-0.9.0.tar.gz
+_md5_=6a1ecf3e5686e9d758f7d1f42218ef02

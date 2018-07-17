@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/ocaml-4.02.0:= dev-ml/async_kernel:= dev-ml/core:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:= <dev-ml/ppx_driver-100 <dev-ml/ppx_jane-100 dev-ml/opam dev-ml/jbuilder
+DESCRIPTION=Jane Street Capital's asynchronous execution library (unix)
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/async_unix
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=dev-lang/ocaml-4.02.0:= dev-ml/async_kernel:= dev-ml/core:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-migrate-parsetree:= <dev-ml/ppx_driver-100 <dev-ml/ppx_jane-100
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/async_unix/archive/v0.9.0.tar.gz -> async_unix-0.9.0.tar.gz
+_md5_=b0b006d85d758f578834c3ea13c6f922

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/glib:2 dev-libs/libxdg-basedir sys-apps/dbus x11-libs/cairo[X,glib] x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXinerama x11-libs/libXrandr x11-libs/pango[X] dunstify? ( x11-libs/libnotify ) dev-lang/perl virtual/pkgconfig
+DESCRIPTION=Customizable and lightweight notification-daemon
+EAPI=6
+HOMEPAGE=http://www.knopwob.org/dunst/ https://github.com/dunst-project/dunst
+IUSE=dunstify
+KEYWORDS=amd64 ~arm x86
+LICENSE=BSD
+RDEPEND=dev-libs/glib:2 dev-libs/libxdg-basedir sys-apps/dbus x11-libs/cairo[X,glib] x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXinerama x11-libs/libXrandr x11-libs/pango[X] dunstify? ( x11-libs/libnotify )
+SLOT=0
+SRC_URI=https://github.com/dunst-project/dunst/archive/v1.3.2.tar.gz -> dunst-1.3.2.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=fa8c0cee4b31edf25f8a41dcedb69cf8

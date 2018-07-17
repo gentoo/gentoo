@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install
+DESCRIPTION=Multicast DNS repeater
+EAPI=6
+HOMEPAGE=https://bitbucket.org/geekman/mdns-repeater/
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://bitbucket.org/geekman/mdns-repeater/get/28ecc2ab9a0e.tar.gz -> mdns-repeater-28ecc2ab9a0e.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=9f0dacd3d4ba61d2343b7e98f79cecc5

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=media-libs/alsa-lib
+DESCRIPTION=AWE32 Sound Driver Utility Programs
+EAPI=5
+HOMEPAGE=http://ftp.suse.com/pub/people/tiwai/awesfx
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/alsa-lib
+SLOT=0
+SRC_URI=http://ftp.suse.com/pub/people/tiwai/awesfx/awesfx-0.5.1e.tar.bz2
+_md5_=89172b244b2b17aa403238b1c7e03d7c

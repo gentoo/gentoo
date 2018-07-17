@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=/usr/bin wrapper scripts for FreeBSD script compatibility
+EAPI=5
+HOMEPAGE=https://www.gentoo.org
+IUSE=userland_BSD userland_GNU
+KEYWORDS=~amd64-fbsd ~x86-fbsd
+LICENSE=public-domain
+SLOT=0
+_md5_=6e8e57c897c5a9f038d0cb6eef54507a

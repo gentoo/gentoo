@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=SNMP Trap Translator
+EAPI=0
+HOMEPAGE=http://www.snmptt.org/
+IUSE=mysql postgres
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6.1 dev-perl/Config-IniFiles >=net-analyzer/net-snmp-5.1 mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg )
+SLOT=0
+SRC_URI=mirror://sourceforge/snmptt/snmptt_1.2.tgz
+_md5_=81e18438c09208de2d0230d4b81d0956

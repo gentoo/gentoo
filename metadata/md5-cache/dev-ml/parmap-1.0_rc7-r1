@@ -1,0 +1,13 @@
+DEFINED_PHASES=install test
+DEPEND=>=dev-lang/ocaml-4.03:=[ocamlopt?] dev-ml/findlib dev-ml/ocamlbuild dev-ml/ocaml-autoconf
+DESCRIPTION=Library to exploit multicore architectures for OCaml programs
+EAPI=5
+HOMEPAGE=http://www.dicosmo.org/code/parmap/
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4.03:=[ocamlopt?]
+SLOT=0/1.0_rc7
+SRC_URI=https://github.com/rdicosmo/parmap/archive/1.0-rc7-fix-for4.03+3.tar.gz -> parmap-1.0_rc7-ocaml-4.03.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a68d927fca4397863f7270c216dfcdaa

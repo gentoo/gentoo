@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsingleapplication[qt5(+),X] dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXmu x11-libs/libXpm
+DESCRIPTION=Helper to dock any application into the system tray
+EAPI=6
+HOMEPAGE=https://github.com/user-none/KDocker
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsingleapplication[qt5(+),X] dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXmu x11-libs/libXpm
+SLOT=0
+SRC_URI=https://github.com/user-none/KDocker/archive/5.0.tar.gz -> kdocker-5.0.tar.gz
+_eclasses_=bash-completion-r1	6af26c1ffe65d92d3f525cb715f6250c	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f2de377756b12c885ef6926d5f3d1222

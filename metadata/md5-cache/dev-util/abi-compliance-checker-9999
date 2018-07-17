@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=dev-lang/perl >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A tool for checking backward compatibility of a C/C++ library
+EAPI=6
+HOMEPAGE=http://ispras.linuxbase.org/index.php/ABI_compliance_checker
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/perl dev-util/abi-dumper dev-util/ctags
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_md5_=1d57c8502ec31829d441911ad0fb687f

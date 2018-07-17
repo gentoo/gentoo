@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Gentoo-based Network Appliance building system development tools
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+IUSE=minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-util/catalyst-2.0_rc40 sys-fs/squashfs-tools:0 app-cdr/cdrtools
+SLOT=0
+SRC_URI=mirror://gentoo/gnap-sources-2.0.tar.bz2 !minimal? ( mirror://gentoo/gnap-stageseed-2.0.tar.bz2 mirror://gentoo/gnap-portagesnapshot-2.0.tar.bz2 )
+_md5_=6c170c319d1db993a28c119dc124bd11

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=sys-apps/policycoreutils-2.7 virtual/udev sys-devel/m4 >=sys-apps/checkpolicy-2.7
+DESCRIPTION=Gentoo base policy for SELinux
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+IUSE=doc +open_perms +peer_perms systemd +ubac +unconfined
+KEYWORDS=amd64 -arm ~arm64 ~mips x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-2.7 virtual/udev
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20180114.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180114-r2.tar.bz2
+_md5_=33d5edd44734d130fcc7b2e11c7b0f00

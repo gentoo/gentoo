@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-libs/openssl:= sys-libs/zlib virtual/opencl python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+DESCRIPTION=A sub-package that adds OpenCL-capability to Pyrit
+EAPI=6
+HOMEPAGE=https://github.com/JPaulMora/Pyrit
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+ GPL-3+-with-opencl-exception GPL-3+-with-opencl-openssl-exception
+PDEPEND=~net-wireless/pyrit-0.5.0
+RDEPEND=dev-libs/openssl:= sys-libs/zlib virtual/opencl python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://github.com/JPaulMora/Pyrit/archive/v0.5.0.tar.gz -> pyrit-0.5.0.tar.gz
+_eclasses_=distutils-r1	63fea93ca1cc4fdc5fa2247afc4e3a15	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=efa669a76c6c65b74295a1844099dfed

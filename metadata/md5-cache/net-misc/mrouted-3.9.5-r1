@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=|| ( dev-util/yacc sys-devel/bison )
+DESCRIPTION=IP multicast routing daemon
+EAPI=6
+HOMEPAGE=http://troglobit.com/mrouted.shtml
+KEYWORDS=amd64 ppc x86
+LICENSE=Stanford GPL-2
+SLOT=0
+SRC_URI=ftp://ftp.vmlinux.org/pub/People/jocke/mrouted/mrouted-3.9.5.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=8bcc56b84edef2b81f236b4e0468468b

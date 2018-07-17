@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Devel-Caller >=dev-perl/Moose-2.120.0 >=dev-perl/Params-Validate-1.150.0 virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
+DESCRIPTION=An extension of Params::Validate using Moose types
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/MooseX-Params-Validate/
+IUSE=test
+KEYWORDS=amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Devel-Caller >=dev-perl/Moose-2.120.0 >=dev-perl/Params-Validate-1.150.0 virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/MooseX-Params-Validate-0.21.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=9dccd78b6b3b2f722899aec11669c001

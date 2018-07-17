@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DESCRIPTION=AMT status checker
+EAPI=6
+HOMEPAGE=https://github.com/mjg59/mei-amt-check/
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/mjg59/mei-amt-check/archive/d07672120ce7a0c79e949e537f3d19efecec1700.tar.gz -> mei-amt-check-0_p20170515.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=84a83d459cb2c0fefb1aa1a67ec433ff

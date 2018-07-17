@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl] >=dev-lang/go-1.9 virtual/pkgconfig
+DESCRIPTION=Keybase Filesystem (KBFS)
+EAPI=6
+HOMEPAGE=https://keybase.io/docs/kbfs
+IUSE=git
+LICENSE=BSD
+RDEPEND=app-crypt/gnupg sys-fs/fuse
+SLOT=0
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a48cab71135d8b1a2a79247256b95b7a

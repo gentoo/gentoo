@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A package for syntax highlighting
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/Text_Highlighter
+KEYWORDS=~amd64 ~x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php dev-php/PEAR-PEAR dev-php/PEAR-XML_Serializer
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/Text_Highlighter-0.7.3.tgz
+_md5_=450f7edf323d5f38500f6ddf072ca66c

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-libs/zlib fortran? ( dev-lang/cfortran ) >=app-portage/elt-patches-20170422 fortran? ( virtual/fortran )
+DESCRIPTION=C and Fortran library for manipulating FITS files
+EAPI=5
+HOMEPAGE=https://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html
+IUSE=doc examples fortran static-libs +tools threads
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris
+LICENSE=MIT
+RDEPEND=sys-libs/zlib fortran? ( virtual/fortran )
+SLOT=0/1
+SRC_URI=https://dev.gentoo.org/~bicatali/distfiles/cfitsio-3.360.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	5a4611dfba155b1659528663fad4cd5e	desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	fortran-2	9e7f20c99213f0627ff7f873d4aaa25d	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=d4423247fde99e7894a60da52c9a5e71

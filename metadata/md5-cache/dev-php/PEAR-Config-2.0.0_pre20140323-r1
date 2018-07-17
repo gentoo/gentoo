@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare test unpack
+DEPEND=test? ( xml? ( dev-php/PEAR-XML_Parser dev-php/PEAR-XML_Util ) )
+DESCRIPTION=Provides multiple methods for configuration manipulation
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Config
+IUSE=test xml
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=PHP-2.02
+RDEPEND=xml? ( dev-php/PEAR-XML_Parser dev-php/PEAR-XML_Util ) >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://github.com/pear/Config/archive/606a24034ad80f9d6ccb5a8b698b702b392e4674.tar.gz -> Config-2.0.0_pre20140323.tar.gz
+_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=7f1a4d7b439d08115f04f71012cc2c99

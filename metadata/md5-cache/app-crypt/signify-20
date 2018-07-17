@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Cryptographically sign and verify files
+EAPI=5
+HOMEPAGE=http://www.openbsd.org/ https://github.com/aperezdc/signify
+KEYWORDS=~amd64
+LICENSE=BSD-1
+RDEPEND=>=dev-libs/libbsd-0.7
+SLOT=0
+SRC_URI=https://github.com/aperezdc/signify/archive/v20.tar.gz -> signify-20.tar.gz
+_md5_=f212f558583c3f13dc0cb52e6a69c473

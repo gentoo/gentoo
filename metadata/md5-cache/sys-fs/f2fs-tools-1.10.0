@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-apps/util-linux selinux? ( sys-libs/libselinux )
+DESCRIPTION=Tools for Flash-Friendly File System (F2FS)
+EAPI=6
+HOMEPAGE=https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/about/
+IUSE=selinux
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/util-linux selinux? ( sys-libs/libselinux )
+SLOT=0/4
+SRC_URI=https://dev.gentoo.org/~blueness/f2fs-tools/f2fs-tools-1.10.0.tar.xz
+_md5_=e933e7cf8af390393f03967f24bc844b

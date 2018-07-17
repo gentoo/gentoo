@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=net-libs/libnet:1.1 net-libs/libpcap
+DESCRIPTION=Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
+EAPI=5
+HOMEPAGE=http://www.laurentconstantin.com/en/netw/netwib/ http://ntwib.sourceforge.net/
+IUSE=doc
+KEYWORDS=~amd64 ~hppa ~ppc x86
+LICENSE=GPL-3
+RDEPEND=net-libs/libnet:1.1 net-libs/libpcap
+SLOT=0
+SRC_URI=mirror://sourceforge/ntwib/netwib-5.39.0-src.tgz doc? ( mirror://sourceforge/ntwib/netwib-5.39.0-doc_html.tgz )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1e4308fc7657d5e05234b26d1244351f

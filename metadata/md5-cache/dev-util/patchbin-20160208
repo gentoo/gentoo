@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Apply binary patches without git
+EAPI=6
+HOMEPAGE=https://github.com/wine-compholio/wine-staging
+IUSE=userland_BSD userland_GNU
+KEYWORDS=amd64 x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=app-shells/bash sys-apps/coreutils sys-apps/gawk sys-apps/grep userland_BSD? ( sys-freebsd/freebsd-bin sys-freebsd/freebsd-ubin ) userland_GNU? ( sys-apps/util-linux sys-devel/patch )
+SLOT=0
+SRC_URI=https://github.com/wine-compholio/wine-staging/archive/4ffcf184bb71c6c3512b3a8c144dcf4a3a76d23c.tar.gz -> patchbin-20160208.tar.gz
+_md5_=c689d3e961e428818a6a28ea9847d051

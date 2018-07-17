@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=Calendar to track menstruation cycles
+EAPI=6
+HOMEPAGE=http://www.kyberdigi.cz/projects/mencal/english.html
+KEYWORDS=amd64 ~ppc sparc ~mips alpha ~hppa ia64 ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://www.kyberdigi.cz/projects/mencal/files/mencal-3.0.tar.gz
+_md5_=d5b09c20d58f531f94589d9a6f974eef

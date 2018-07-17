@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=app-arch/bzip2 app-arch/xz-utils net-misc/curl sys-libs/zlib auth? ( mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !mysql? ( ( !sqlite? ( virtual/mysql ) ) ) ) readline? ( sys-libs/readline:0= ) dedicated? ( aimodules? ( dev-libs/libltdl:0 ) ) !dedicated? ( media-libs/libpng:0 gtk? ( x11-libs/gtk+:2 ) mapimg? ( media-gfx/imagemagick:= ) modpack? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sdl? ( media-libs/libsdl2[video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-ttf ) server? ( aimodules? ( sys-devel/libtool:2 ) ) sound? ( media-libs/libsdl2[sound] media-libs/sdl2-mixer[vorbis] ) !sdl? ( !gtk? ( x11-libs/gtk+:2 ) ) ) system-lua? ( >=dev-lang/lua-5.3 ) virtual/pkgconfig !dedicated? ( x11-base/xorg-proto nls? ( sys-devel/gettext ) ) >=sys-apps/sed-4
+DESCRIPTION=multiplayer strategy game (Civilization Clone)
+EAPI=6
+HOMEPAGE=http://www.freeciv.org/
+IUSE=auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua
+LICENSE=GPL-2+
+RDEPEND=app-arch/bzip2 app-arch/xz-utils net-misc/curl sys-libs/zlib auth? ( mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !mysql? ( ( !sqlite? ( virtual/mysql ) ) ) ) readline? ( sys-libs/readline:0= ) dedicated? ( aimodules? ( dev-libs/libltdl:0 ) ) !dedicated? ( media-libs/libpng:0 gtk? ( x11-libs/gtk+:2 ) mapimg? ( media-gfx/imagemagick:= ) modpack? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sdl? ( media-libs/libsdl2[video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-ttf ) server? ( aimodules? ( sys-devel/libtool:2 ) ) sound? ( media-libs/libsdl2[sound] media-libs/sdl2-mixer[vorbis] ) !sdl? ( !gtk? ( x11-libs/gtk+:2 ) ) ) system-lua? ( >=dev-lang/lua-5.3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/freeciv/freeciv-2.6.0-beta3.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=c64af87fd31ad1da601732a61c93c59d

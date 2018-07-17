@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Open Build Service client module - extract_file service
+EAPI=5
+HOMEPAGE=http://en.opensuse.org/openSUSE:OSC
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 app-arch/gzip app-arch/tar app-arch/unzip app-arch/xz-utils dev-util/osc dev-util/suse-build
+SLOT=0
+SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-extract_file/extract_file -> extract_file-20130318 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-extract_file/extract_file.service -> extract_file-20130318.service
+_eclasses_=obs-download	dee642b7a40967b3fee1c026a6ba33dd	obs-service	165dda862c81ee0013948ebe7c8d8b78
+_md5_=b8130284f8807b586fee0c4e24aeab9e

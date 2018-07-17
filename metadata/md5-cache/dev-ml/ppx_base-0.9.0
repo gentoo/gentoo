@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/ppx_compare:= dev-ml/ppx_driver:= dev-ml/ppx_enumerate:= dev-ml/ppx_hash:= dev-ml/ppx_js_style:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= dev-ml/jbuilder >=dev-lang/ocaml-4:= dev-ml/opam
+DESCRIPTION=Base set of ppx rewriters
+EAPI=6
+HOMEPAGE=https://github.com/janestreet/ppx_base
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/ppx_compare:= dev-ml/ppx_driver:= dev-ml/ppx_enumerate:= dev-ml/ppx_hash:= dev-ml/ppx_js_style:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
+SLOT=0/0.9.0
+SRC_URI=https://github.com/janestreet/ppx_base/archive/v0.9.0.tar.gz -> ppx_base-0.9.0.tar.gz
+_eclasses_=opam	24b4a2529c1fd12f1304856d6c5a690d
+_md5_=d2eda158fb743ca8beea2f0c327bd1ef

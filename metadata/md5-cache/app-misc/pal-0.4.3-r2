@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-libs/glib-2.0 nls? ( virtual/libintl ) sys-libs/ncurses:0 sys-libs/readline:0 nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Command-line calendar program
+EAPI=6
+HOMEPAGE=http://palcal.sourceforge.net/
+IUSE=nls
+KEYWORDS=amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.0 nls? ( virtual/libintl ) sys-libs/ncurses:0 sys-libs/readline:0
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/palcal/pal-0.4.3.tgz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a2d7f4c0f1571122fbb124cced8d86f8

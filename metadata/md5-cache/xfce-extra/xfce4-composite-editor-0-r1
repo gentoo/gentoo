@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-shells/bash:* >=x11-misc/gtkdialog-0.8
+DESCRIPTION=An graphical interface to modify composite settings
+EAPI=6
+HOMEPAGE=http://keithhedger.hostingsiteforfree.com/pages/apps.html#xfcecomp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-shells/bash:* >=x11-misc/gtkdialog-0.8
+SLOT=0
+SRC_URI=http://keithhedger.hostingsiteforfree.com/zips/Xfce4-Composite-Editor.tar.gz -> Xfce4-Composite-Editor-0.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=50e3f830a0d0bfcd567f4da1d2c63235

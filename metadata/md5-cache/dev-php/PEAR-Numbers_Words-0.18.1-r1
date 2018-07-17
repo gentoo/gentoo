@@ -1,0 +1,12 @@
+DEFINED_PHASES=install test
+DEPEND=test? ( dev-lang/php:* dev-php/PEAR-Math_BigInteger dev-php/phpunit )
+DESCRIPTION=Provides methods for spelling numerals in words
+EAPI=6
+HOMEPAGE=http://pear.php.net/package/Numbers_Words
+IUSE=test
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=PHP-3.01
+RDEPEND=dev-lang/php:* dev-php/PEAR-Math_BigInteger
+SLOT=0
+SRC_URI=http://download.pear.php.net/package/Numbers_Words-0.18.1.tgz
+_md5_=11027944426635bf6bcf10cc191ba218

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=CD cover, tray card and envelope generator
+EAPI=6
+HOMEPAGE=https://www.aczoom.com/tools/cdinsert
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=aczoom
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=https://www.aczoom.com/pub/tools/cdlabelgen-4.3.0.tgz
+_md5_=7a57d27a863e1d10959c381eb71b3fe3

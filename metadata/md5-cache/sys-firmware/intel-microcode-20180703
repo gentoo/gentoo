@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare prerm pretend setup
+DEPEND=sys-apps/iucode_tool
+DESCRIPTION=Intel IA32/IA64 microcode update data
+EAPI=6
+HOMEPAGE=http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID=27945
+IUSE=hostonly initramfs +split-ucode vanilla kernel_linux
+KEYWORDS=-* amd64 x86
+LICENSE=intel-ucode
+RDEPEND=!<sys-apps/microcode-ctl-1.17-r2 hostonly? ( sys-apps/iucode_tool )
+REQUIRED_USE=|| ( initramfs split-ucode )
+SLOT=0
+SRC_URI=https://downloadmirror.intel.com/27945/eng/microcode-20180703.tgz https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-20180630.tar.xz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	bb73a1f0c3db9ff796439bf44bed8467	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5cc9cff5f7c7e9c9dae4210f6a913106

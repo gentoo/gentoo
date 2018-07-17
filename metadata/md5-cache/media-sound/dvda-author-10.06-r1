@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=media-sound/sox-14.1[png] >=media-libs/flac-1.2.1[ogg] >=sys-devel/libtool-2
+DESCRIPTION=Author a DVD-Audio DVD
+EAPI=5
+HOMEPAGE=http://dvd-audio.sourceforge.net
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=media-sound/sox-14.1[png] >=media-libs/flac-1.2.1[ogg]
+SLOT=0
+SRC_URI=mirror://sourceforge/dvd-audio/dvda-author-10.06-300.tar.gz
+_md5_=c44f77cd0994ed78268619419c7b5d37

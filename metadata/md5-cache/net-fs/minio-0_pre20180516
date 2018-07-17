@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=An Amazon S3 compatible object storage server
+EAPI=6
+HOMEPAGE=https://github.com/minio/minio
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/minio/minio/archive/64288d6eb53cc134a1f85851dcaf7dee76fecca6.tar.gz -> minio-0_pre20180516.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=845409bc7c54ce155809cda2f5f2080d

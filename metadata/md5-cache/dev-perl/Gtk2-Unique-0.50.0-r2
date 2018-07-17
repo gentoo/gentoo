@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/libunique:1 dev-perl/Gtk2 dev-perl/glib-perl dev-perl/ExtUtils-Depends dev-perl/ExtUtils-PkgConfig dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Perl binding for C libunique library
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Gtk2-Unique/
+IUSE=examples test
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-libs/libunique:1 dev-perl/Gtk2 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PO/POTYL/Gtk2-Unique-0.05.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	virtualx	3a3c4637ea6d5a2113707a644766337c
+_md5_=217f1d91739f74cfd296ac2ecd693c2e

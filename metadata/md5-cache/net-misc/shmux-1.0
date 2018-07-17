@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=pcre? ( dev-libs/libpcre ) sys-libs/ncurses virtual/awk
+DESCRIPTION=Program for executing the same command on many hosts in parallel
+EAPI=0
+HOMEPAGE=http://web.taranis.org/shmux/
+IUSE=pcre
+KEYWORDS=amd64 ppc x86
+LICENSE=shmux
+RDEPEND=pcre? ( dev-libs/libpcre ) sys-libs/ncurses
+RESTRICT=test
+SLOT=0
+SRC_URI=http://web.taranis.org/shmux/dist/shmux-1.0.tgz
+_md5_=e7f731879163b51ed772b0c47f9bff3d

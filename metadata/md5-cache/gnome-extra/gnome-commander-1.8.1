@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=app-text/yelp-tools >=dev-libs/glib-2.44.0:2 unique? ( >=dev-libs/libunique-0.9.3:1 ) gnome-base/gnome-keyring >=gnome-base/gnome-vfs-2.0.0 >=gnome-base/libgnome-2.0.0 >=gnome-base/libgnomeui-2.4.0 >=x11-libs/gtk+-2.18.0:2 chm? ( dev-libs/chmlib ) exif? ( >=media-gfx/exiv2-0.14 ) gsf? ( >=gnome-extra/libgsf-1.12.0 ) samba? ( >=gnome-base/gnome-vfs-2.0.0[samba] ) pdf? ( >=app-text/poppler-0.18 ) taglib? ( >=media-libs/taglib-1.4 ) dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig test? ( >=dev-cpp/gtest-1.7.0 ) >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A graphical, full featured, twin-panel file manager
+EAPI=6
+HOMEPAGE=https://gcmd.github.io/
+IUSE=chm exif gsf pdf taglib samba test +unique
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-text/yelp-tools >=dev-libs/glib-2.44.0:2 unique? ( >=dev-libs/libunique-0.9.3:1 ) gnome-base/gnome-keyring >=gnome-base/gnome-vfs-2.0.0 >=gnome-base/libgnome-2.0.0 >=gnome-base/libgnomeui-2.4.0 >=x11-libs/gtk+-2.18.0:2 chm? ( dev-libs/chmlib ) exif? ( >=media-gfx/exiv2-0.14 ) gsf? ( >=gnome-extra/libgsf-1.12.0 ) samba? ( >=gnome-base/gnome-vfs-2.0.0[samba] ) pdf? ( >=app-text/poppler-0.18 ) taglib? ( >=media-libs/taglib-1.4 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-commander/1.8/gnome-commander-1.8.1.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	6e4acb9c9da2cfa25f2dfedb93bb4a43	gnome2-utils	29bb8f7881c95139e532a2d5e47ff834	libtool	0081a71a261724730ec4c248494f044d	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	26ca8a8bd95d6a74122c08ba98a4ee72	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=4962f1883eba6c2019ce6875e18050d0

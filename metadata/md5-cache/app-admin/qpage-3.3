@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=tcpd? ( sys-apps/tcp-wrappers )
+DESCRIPTION=Sends messages to an alphanumeric pager via TAP protocol
+EAPI=6
+HOMEPAGE=http://www.qpage.org/
+IUSE=tcpd
+KEYWORDS=alpha amd64 x86
+LICENSE=qpage
+RDEPEND=tcpd? ( sys-apps/tcp-wrappers ) virtual/mta
+SLOT=0
+SRC_URI=http://www.qpage.org/download/qpage-3.3.tar.Z
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=dd24ca2ebb39a2b6060232cd61b938ce

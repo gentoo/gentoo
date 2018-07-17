@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile prepare
+DEPEND=dev-libs/efl
+DESCRIPTION=Color schemes for the Terminology terminal emulator
+EAPI=6
+HOMEPAGE=https://charlesmilette.net/terminology-themes/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=x11-terms/terminology
+SLOT=0
+SRC_URI=https://github.com/sylveon/terminology-themes/archive/ba7b71ffd290cbce4bf87d47276fa516c6563345.tar.gz -> terminology-themes-0_p20180106.tgz
+_eclasses_=xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_md5_=a921623d570ba2eb20d49edd84dc920c

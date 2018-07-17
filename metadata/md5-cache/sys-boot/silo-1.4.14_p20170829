@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare prerm pretend unpack
+DEPEND=sys-fs/e2fsprogs sys-apps/sparc-utils
+DESCRIPTION=SPARC/UltraSPARC Improved Loader, a boot loader for sparc
+EAPI=6
+HOMEPAGE=https://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary
+KEYWORDS=-* ~sparc
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://git.kernel.org/pub/scm/linux/kernel/git/davem/silo.git/snapshot/silo-2506051d55dd5cb9fe10b4e978e22fa00363044b.tar.gz -> silo-1.4.14_p20170829.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_md5_=1ad3500e3b15f495e613cb15d57d660c

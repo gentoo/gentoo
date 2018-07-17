@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup test
+DEPEND=jpeg? ( >=virtual/jpeg-0-r2:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) virtual/libudev !media-tv/v4l2-ctl !<media-tv/ivtv-utils-1.4.0-r2 sys-devel/gettext virtual/os-headers virtual/pkgconfig
+DESCRIPTION=Separate libraries ebuild from upstream v4l-utils package
+EAPI=6
+HOMEPAGE=https://git.linuxtv.org/v4l-utils.git
+IUSE=jpeg kernel_linux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1+
+RDEPEND=jpeg? ( >=virtual/jpeg-0-r2:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) virtual/libudev !media-tv/v4l2-ctl !<media-tv/ivtv-utils-1.4.0-r2
+SLOT=0/0
+SRC_URI=https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.12.3.tar.bz2
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	linux-info	bb73a1f0c3db9ff796439bf44bed8467	ltprune	607e058da37aa6dabfa408b7d61da72e	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b3ef803523bbb3eb61bf6d740c7bc356

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=A simple mail management system for Emacs
+EAPI=0
+HOMEPAGE=http://cmail.sourceforge.jp/
+IUSE=l10n_ja
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=app-emacs/apel virtual/emacs-flim app-emacs/semi >=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/cmail/2191/cmail-2.62.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f
+_md5_=c9cd281334ace0d142e2187b3255d1bd

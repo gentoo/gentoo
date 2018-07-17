@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/File-HomeDir virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Scalar-List-Utils >=dev-perl/Math-Factor-XS-0.400.0 dev-perl/Math-Libm >=dev-perl/Math-Prime-XS-0.260.0 virtual/perl-Module-Load >=dev-perl/Module-Pluggable-4.700.0 dev-perl/Module-Util >=dev-perl/constant-defer-1.0.0 virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/Data-Float virtual/perl-Test ) dev-lang/perl:=
+DESCRIPTION=number sequences (for example from OEIS)
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Math-NumSeq/
+IUSE=test examples examples
+KEYWORDS=~amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/File-HomeDir virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Scalar-List-Utils >=dev-perl/Math-Factor-XS-0.400.0 dev-perl/Math-Libm >=dev-perl/Math-Prime-XS-0.260.0 virtual/perl-Module-Load >=dev-perl/Module-Pluggable-4.700.0 dev-perl/Module-Util >=dev-perl/constant-defer-1.0.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KR/KRYDE/Math-NumSeq-72.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=80ea71736a17bec099e89d3a110b2eac

@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for acl support (sys/acl.h)
+EAPI=5
+KEYWORDS=alpha amd64 arm ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+RDEPEND=kernel_linux? ( sys-apps/acl ) kernel_FreeBSD? ( sys-freebsd/freebsd-lib )
+SLOT=0
+_md5_=13b50578a9de13666a4701638874645d

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl sys-devel/gettext
+DESCRIPTION=Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
+EAPI=0
+HOMEPAGE=https://www.remlab.net/ndisc6/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://www.remlab.net/files/ndisc6/ndisc6-0.9.9.tar.bz2
+_md5_=72c0ea43bdf8ef1983ef9f11062428fe

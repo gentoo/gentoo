@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=readline? ( sys-libs/readline:0= ) >=sys-libs/ncurses-5.2-r3:0=
+DESCRIPTION=A Go-playing program
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/gnugo/devel.html
+IUSE=readline
+KEYWORDS=amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-3
+RDEPEND=readline? ( sys-libs/readline:0= ) >=sys-libs/ncurses-5.2-r3:0=
+SLOT=0
+SRC_URI=mirror://gentoo/gnugo-3.9.1.tar.gz
+_md5_=6007e2ab439c1be111489489da374d96

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm test
+DESCRIPTION=XSL Stylesheets for Docbook
+EAPI=5
+HOMEPAGE=https://github.com/docbook/wiki/wiki
+IUSE=ruby
+KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=app-text/build-docbook-catalog-1.4 ruby? ( dev-lang/ruby )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/docbook/docbook-xsl-ns-1.78.0.tar.bz2
+_md5_=67dfed049de2d68162cb5ef42583a6fb

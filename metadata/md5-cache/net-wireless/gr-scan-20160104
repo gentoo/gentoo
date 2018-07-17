@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=net-wireless/gnuradio net-wireless/gr-osmosdr
+DESCRIPTION=Frequency scanner for GNU Radio
+EAPI=5
+HOMEPAGE=http://git.zx2c4.com/gr-scan/about
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-3
+RDEPEND=net-wireless/gnuradio net-wireless/gr-osmosdr
+SLOT=0
+SRC_URI=http://git.zx2c4.com/gr-scan/snapshot/gr-scan-20160104.tar.xz
+_md5_=5b22b3d5ab75ec190115086452ee0249

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/MIME-Charset virtual/perl-Encode dev-lang/perl:=
+DESCRIPTION=UAX #14 Unicode Line Breaking Algorithm
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Unicode-LineBreak/
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-fbsd
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/MIME-Charset virtual/perl-Encode dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NE/NEZUMI/Unicode-LineBreak-2017.004.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
+_md5_=e75f61f19766b0d38c90fda2eba6d657

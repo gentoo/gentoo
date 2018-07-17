@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Carp-Clan >=dev-perl/DBI-1.540.0 virtual/perl-Digest-SHA >=dev-perl/File-ShareDir-1.0.0 >=dev-perl/List-MoreUtils-0.90.0 >=dev-perl/Moo-1.0.3 >=dev-perl/Package-Variant-1.1.1 >=dev-perl/Parse-RecDescent-1.967.9 >=dev-perl/Try-Tiny-0.40.0 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 >=dev-perl/JSON-2 >=dev-perl/XML-Writer-0.500.0 >=dev-perl/YAML-0.660.0 test? ( dev-perl/HTML-Parser dev-perl/Spreadsheet-ParseExcel >=dev-perl/Template-Toolkit-2.200.0 dev-perl/Test-Exception dev-perl/Test-Differences >=dev-perl/XML-LibXML-1.690.0 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Manipulate structured data definitions (SQL and more)
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/SQL-Translator/
+IUSE=test
+KEYWORDS=~amd64 ~x86 ~ppc-aix ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Carp-Clan >=dev-perl/DBI-1.540.0 virtual/perl-Digest-SHA >=dev-perl/File-ShareDir-1.0.0 >=dev-perl/List-MoreUtils-0.90.0 >=dev-perl/Moo-1.0.3 >=dev-perl/Package-Variant-1.1.1 >=dev-perl/Parse-RecDescent-1.967.9 >=dev-perl/Try-Tiny-0.40.0 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/SQL-Translator-0.11021.tar.gz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	ltprune	607e058da37aa6dabfa408b7d61da72e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	unpacker	87633b2194cdb56adaa1f5a5c8862c44	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4e633a4f6b99e291b06222c0ecad636b
