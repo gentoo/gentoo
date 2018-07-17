@@ -14,7 +14,9 @@ net-analyzer/wireshark doc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
 # Depends on unstable media-libs/libaom, net-libs/srt
+# >=media-video/libav-12 not stable yet, bug #617508
 media-video/vlc aom srt
+>=media-video/vlc-3.0.3-r1 libav
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
 # Depends on lots of unstable dependencies

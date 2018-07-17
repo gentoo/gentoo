@@ -29,7 +29,7 @@ RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
 		dev-util/glslang:=[${MULTILIB_USEDEP}]
 		>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
-		dev-util/vulkan-headers
+		>=dev-util/vulkan-headers-1.1.77.0-r1
 		wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 		X? (
 		   x11-libs/libX11:=[${MULTILIB_USEDEP}]
@@ -38,6 +38,7 @@ DEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
+	"${FILESDIR}/${PN}-1.1.77.0-layers-Rework-include-dependencies.patch"
 	 )
 
 multilib_src_configure() {

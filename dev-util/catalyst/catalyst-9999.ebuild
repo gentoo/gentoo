@@ -46,6 +46,8 @@ RDEPEND="
 "
 PDEPEND="system-bootloader? ( >=sys-apps/memtest86+-5.01-r4
 				sys-boot/grub:2
+				amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
+				x86? ( sys-boot/grub[grub_platforms_efi-32] )
 				sys-boot/syslinux
 				sys-boot/shim )"
 

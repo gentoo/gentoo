@@ -8,7 +8,7 @@ MY_P=${P^}
 
 DESCRIPTION="File manager for the Xfce desktop environment"
 HOMEPAGE="https://www.xfce.org/projects/ https://docs.xfce.org/xfce/thunar/start"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${MY_P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/3"

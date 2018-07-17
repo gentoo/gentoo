@@ -10,7 +10,7 @@ JAVA_PKG_OPT_USE="jdbc"
 
 inherit toolchain-funcs java-pkg-opt-2 mysql-multilib-r1
 
-HOMEPAGE="http://mariadb.org/"
+HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 
 IUSE="bindist jdbc odbc oqgraph pam sphinx tokudb xml"

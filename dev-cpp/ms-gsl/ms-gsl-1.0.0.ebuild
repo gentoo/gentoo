@@ -26,7 +26,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DGSL_TEST=$(usex test)
-		-DFORCE_SYSTEM_CATCH=ON
 	)
+	use test && mycmakeargs+=( -DFORCE_SYSTEM_CATCH=ON )
 	cmake-utils_src_configure
 }

@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}-src
 
-REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 )"
+REQUIRED_USE="!gnat_2016 ^^ ( gnat_2017 gnat_2018 )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
@@ -42,6 +42,10 @@ src_prepare() {
 	sed -i \
 		-e "s:@GNATBIND@:gnatbind-${GCC_PV}:g" \
 		src/gprlib.adb \
+		|| die
+	sed -i \
+		-e "s:\"-Wl,-r\":\"-r\":g" \
+		share/gprconfig/linker.xml \
 		|| die
 }
 

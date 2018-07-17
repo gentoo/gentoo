@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
+inherit flag-o-matic gnome2-utils java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -13,7 +13,7 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.0-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.12-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -422,6 +422,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 
 	if use udev ; then
@@ -464,5 +465,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }

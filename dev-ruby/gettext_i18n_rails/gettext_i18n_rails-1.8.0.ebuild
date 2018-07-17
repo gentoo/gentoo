@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="Readme.md"
@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/rails:4.2 dev-ruby/activerecord:4.2[sqlite] dev-ruby/temple )"
+ruby_add_bdepend "test? ( dev-ruby/rails:5.2 dev-ruby/activerecord:5.2[sqlite] dev-ruby/temple )"
 ruby_add_rdepend ">=dev-ruby/fast_gettext-0.9.0"
 
 all_ruby_prepare() {
@@ -31,5 +31,5 @@ all_ruby_prepare() {
 	rm spec/gettext_i18n_rails/slim_parser_spec.rb spec/gettext_i18n_rails/haml_parser_spec.rb || die
 
 	# Test against Rails 4.2.0
-	sed -e '1igem "rails", "~>4.2.0"' -i spec/spec_helper.rb || die
+	sed -e '1igem "rails", "~>5.2.0"' -i spec/spec_helper.rb || die
 }

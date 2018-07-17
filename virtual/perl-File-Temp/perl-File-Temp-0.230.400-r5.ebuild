@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,4 +13,4 @@ RDEPEND="
 	dev-lang/perl:=
 "
 
-# this is the dev-lang/perl-5.20, 5.22, 5.24, 5.26 version but we need the security patch
+# this is the dev-lang/perl-5.20, 5.22, 5.24, 5.26, 5.28 version but we need the security patch

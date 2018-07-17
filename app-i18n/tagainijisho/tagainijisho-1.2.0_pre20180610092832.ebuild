@@ -173,7 +173,7 @@ src_configure() {
 	done
 
 	local mycmakeargs=(
-		-DDICT_LANG="${dict_langs}${dict_langs:-;}"
+		-DDICT_LANG="${dict_langs:-;}"
 		-DEMBED_SQLITE=OFF
 	)
 

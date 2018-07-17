@@ -3,6 +3,7 @@
 
 EAPI=6
 
+GNOME2_LA_PUNT="yes"
 VALA_MIN_API_VERSION="0.28"
 
 inherit gnome2 meson vala

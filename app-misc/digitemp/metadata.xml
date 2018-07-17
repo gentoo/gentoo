@@ -1,10 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wschlich@gentoo.org</email>
-		<name>Wolfram Schlich</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 DigiTemp is a simple to use program for reading values from 1-wire devices. Its
 main use is for reading temperature sensors, but it also reads counters, and
@@ -23,3 +20,4 @@ humidity sensor.
 		<remote-id type="github">bcl/digitemp</remote-id>
 	</upstream>
 </pkgmetadata>
+

@@ -23,7 +23,7 @@ if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]]; then
 		https://dev.gentoo.org/~jmbsvicetto/distfiles/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
 fi
 
-HOMEPAGE="http://mariadb.org/"
+HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="0/${SUBSLOT:-0}"
@@ -737,7 +737,7 @@ pkg_config() {
 	local sqltmp="$(emktemp)"
 
 	# Fix bug 446200. Don't reference host my.cnf, needs to come first,
-	# see http://bugs.mysql.com/bug.php?id=31312
+	# see https://bugs.mysql.com/bug.php?id=31312
 	use prefix && options="${options} '--defaults-file=${MY_SYSCONFDIR}/my.cnf'"
 
 	# Figure out which options we need to disable to do the setup
@@ -766,7 +766,7 @@ pkg_config() {
 	pushd "${TMPDIR}" &>/dev/null || die
 
 	# Filling timezones, see
-	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
+	# https://dev.mysql.com/doc/mysql/en/time-zone-support.html
 	"${EROOT}/usr/bin/mysql_tzinfo_to_sql" "${EROOT}/usr/share/zoneinfo" > "${sqltmp}" 2>/dev/null
 
 	local cmd=( "${EROOT}usr/share/mariadb/scripts/mysql_install_db" )

@@ -49,6 +49,13 @@ fi
 
 EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
+# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# For any other value, assume the package is using KDEInstallDirs macro and switch
+# KDE_INSTALL_USE_QT_SYS_PATHS to ON.
+: ${ECM_KDEINSTALLDIRS:=true}
+
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -506,12 +513,12 @@ kde5_src_prepare() {
 	cmake-utils_src_prepare
 
 	# only build examples when required
-	if ! use_if_iuse examples || ! use examples ; then
+	if ! { in_iuse examples && use examples; } ; then
 		cmake_comment_add_subdirectory examples
 	fi
 
 	# only enable handbook when required
-	if ! use_if_iuse handbook ; then
+	if in_iuse handbook && ! use handbook ; then
 		cmake_comment_add_subdirectory ${KDE_DOC_DIR}
 
 		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
@@ -571,7 +578,7 @@ kde5_src_prepare() {
 	fi
 
 	# only build unit tests when required
-	if ! use_if_iuse test ; then
+	if ! { in_iuse test && use test; } ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
 			punt_bogus_dep Qt5 Test
 			# if forceoptional, also cover non-kde categories
@@ -615,7 +622,7 @@ kde5_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	# we rely on cmake-utils.eclass to append -DNDEBUG too
-	if ! use_if_iuse debug; then
+	if in_iuse debug && ! use debug; then
 		append-cppflags -DQT_NO_DEBUG
 	fi
 
@@ -629,11 +636,11 @@ kde5_src_configure() {
 		fi
 	fi
 
-	if ! use_if_iuse handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
+	if in_iuse handbook && ! use handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
 	fi
 
-	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
+	if in_iuse designer && ! use designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DesignerPlugin=ON )
 	fi
 
@@ -641,8 +648,12 @@ kde5_src_configure() {
 		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
 	fi
 
-	# install mkspecs in the same directory as qt stuff
-	cmakeargs+=(-DKDE_INSTALL_USE_QT_SYS_PATHS=ON)
+	if [[ ${ECM_KDEINSTALLDIRS} != false ]] ; then
+		cmakeargs+=(
+			# install mkspecs in the same directory as qt stuff
+			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+		)
+	fi
 
 	# allow the ebuild to override what we set here
 	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")

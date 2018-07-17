@@ -86,6 +86,9 @@ src_prepare() {
 	# Fix appending -Wl,-rpath-link on non-Linux (-> FreeBSD).
 	eapply "${FILESDIR}"/6.0.9999/0001-cmake-Append-Wl-rpath-link-conditionally-to-GNULD.patch
 
+	# gcc-8 build failure
+	eapply "${FILESDIR}"/5.0.2/0001-Fix-return-type-in-ORC-readMem-client-interface.patch
+
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 

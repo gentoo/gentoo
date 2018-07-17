@@ -2,8 +2,8 @@ Fixing build with as-needed
 
 https://bugs.gentoo.org/248556
 
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -56,15 +56,10 @@
  AC_PATH_X
  AC_PATH_XTRA
@@ -22,8 +22,8 @@ https://bugs.gentoo.org/248556
  
  dnl Checks for header files.
  AC_HEADER_STDC
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1,5 +1,4 @@
 -CPPFLAGS =	@CPPFLAGS@ \
 -		-DDEFAULT_CONF=\"$(datadir)/bbtools/bbweather.conf\" \

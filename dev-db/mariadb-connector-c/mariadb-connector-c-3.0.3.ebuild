@@ -25,7 +25,7 @@ MULTILIB_WRAPPED_HEADERS+=(
 )
 
 DESCRIPTION="C client library for MariaDB/MySQL"
-HOMEPAGE="http://mariadb.org/"
+HOMEPAGE="https://mariadb.org/"
 LICENSE="LGPL-2.1"
 
 SLOT="0/3"

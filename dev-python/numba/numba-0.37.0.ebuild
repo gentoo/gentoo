@@ -28,9 +28,13 @@ DEPEND="${RDEPEND}
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
+PATCHES=(
+	"${FILESDIR}"/numba-skip-tests.patch
+)
+
 python_test() {
-	cd "${BUILD_DIR}"/lib* || die
-	${PYTHON} -c "import numba; numba.test()" || die
+	cd "${BUILD_DIR}/lib" || die
+	${EPYTHON} -m numba.runtests -v || die
 }
 
 python_install_all() {

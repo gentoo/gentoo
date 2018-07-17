@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit ruby-ng-gnome2
 RUBY_S=ruby-gnome2-all-${PV}/rsvg2
 
 DESCRIPTION="Ruby bindings for librsvg"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND+=" >=gnome-base/librsvg-2.16.1"
 DEPEND+=" >=gnome-base/librsvg-2.16.1"
