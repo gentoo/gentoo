@@ -24,7 +24,10 @@ RDEPEND="dev-lang/perl
 DEPEND="${RDEPEND}
 	mruby? (
 		${RUBY_DEPS}
-		dev-libs/oniguruma
+		|| (
+			dev-libs/onigmo
+			dev-libs/oniguruma
+		)
 		sys-devel/bison
 		virtual/pkgconfig
 	)"
