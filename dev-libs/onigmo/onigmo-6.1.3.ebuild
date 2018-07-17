@@ -6,15 +6,13 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Onigmo is a regular expressions library forked from Oniguruma"
-HOMEPAGE="https://github.com/k-takata/onigmo"
-SRC_URI="https://github.com/k-takata/${PN}/archive/Onigmo-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/k-takata/Onigmo"
+SRC_URI="https://github.com/k-takata/${PN^o}/releases/download/${P^o}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/6"
 KEYWORDS="~amd64 ~x86"
 IUSE="combination-explosion-check crnl-as-line-terminator static-libs"
-
-S="${WORKDIR}/Onigmo-Onigmo-${PV}"
 
 DOCS=(AUTHORS HISTORY README{,.ja} doc/{API,FAQ,RE}{,.ja} doc/UnicodeProps.txt)
 
