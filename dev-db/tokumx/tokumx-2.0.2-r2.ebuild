@@ -43,6 +43,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-boost-57.patch"
 	eapply "${FILESDIR}/${P}-gcc-7.patch"
 	eapply "${FILESDIR}/${P}-undefined-reference.patch"
+	eapply "${FILESDIR}/${P}-no-delete-null-pointer-checks.patch"
 	cmake-utils_src_prepare
 }
 
