@@ -115,7 +115,7 @@ IUSE="kernel_linux"
 
 # Overwritable environment Var's
 # ---------------------------------------
-KERNEL_DIR="${KERNEL_DIR:-${ROOT}usr/src/linux}"
+KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 
 
 # Bug fixes
@@ -554,7 +554,7 @@ get_version() {
 	# caught before this if they are.
 	if [[ -z ${OUTPUT_DIR} ]] ; then
 		# Try to locate a kernel that is most relevant for us.
-		for OUTPUT_DIR in "${SYSROOT}" "${ROOT}" "" ; do
+		for OUTPUT_DIR in "${SYSROOT}" "${ROOT%/}/" "" ; do
 			OUTPUT_DIR+="/lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}/build"
 			if [[ -e ${OUTPUT_DIR} ]] ; then
 				break
@@ -615,19 +615,19 @@ get_running_version() {
 
 	KV_FULL=$(uname -r)
 
-	if [[ -f ${ROOT}/lib/modules/${KV_FULL}/source/Makefile && -f ${ROOT}/lib/modules/${KV_FULL}/build/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT}/lib/modules/${KV_FULL}/source)
-		KBUILD_OUTPUT=$(readlink -f ${ROOT}/lib/modules/${KV_FULL}/build)
+	if [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/source/Makefile && -f ${ROOT%/}/lib/modules/${KV_FULL}/build/Makefile ]]; then
+		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/source)
+		KBUILD_OUTPUT=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/build)
 		unset KV_FULL
 		get_version
 		return $?
-	elif [[ -f ${ROOT}/lib/modules/${KV_FULL}/source/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT}/lib/modules/${KV_FULL}/source)
+	elif [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/source/Makefile ]]; then
+		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/source)
 		unset KV_FULL
 		get_version
 		return $?
-	elif [[ -f ${ROOT}/lib/modules/${KV_FULL}/build/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f ${ROOT}/lib/modules/${KV_FULL}/build)
+	elif [[ -f ${ROOT%/}/lib/modules/${KV_FULL}/build/Makefile ]]; then
+		KERNEL_DIR=$(readlink -f ${ROOT%/}/lib/modules/${KV_FULL}/build)
 		unset KV_FULL
 		get_version
 		return $?
