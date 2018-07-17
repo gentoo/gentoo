@@ -18,8 +18,8 @@ RDEPEND="dev-scheme/gauche"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-doc-encoding.diff
-	"${FILESDIR}"/${PN}-gauche-0.9.diff
+	"${FILESDIR}"/${PN}-doc-encoding.patch
+	"${FILESDIR}"/${PN}-gauche-0.9.patch
 )
 HTML_DOCS=( doc/{${PN},scbayes}{,-ja}.html )
 

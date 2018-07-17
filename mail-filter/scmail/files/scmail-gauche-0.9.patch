@@ -1,5 +1,5 @@
---- scmail-1.3.orig/scbayes.in
-+++ scmail-1.3/scbayes.in
+--- a/scbayes.in
++++ b/scbayes.in
 @@ -16,6 +16,7 @@
  
  (use gauche.parseopt)
