@@ -49,7 +49,7 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] eautoreconf
+	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
