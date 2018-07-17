@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/controller_interface
+	>=dev-ros/controller_interface-0.15
 	>=dev-ros/controller_manager_msgs-0.10.0[${CATKIN_MESSAGES_PYTHON_USEDEP},${CATKIN_MESSAGES_CXX_USEDEP}]
 	>=dev-ros/hardware_interface-0.10.0
 	dev-ros/pluginlib
