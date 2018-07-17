@@ -34,7 +34,11 @@ PATCHES=(
 
 python_prepare_all() {
 	# avoid replacing PYTHONPATH in tests.
-	sed -i '/sys\.path/d' test.py || die
+	sed -i -e '/sys\.path/d' test.py || die
+
+	# apparently logs have changed with libxslt upgrade
+	# https://bugs.launchpad.net/lxml/+bug/1782078
+	sed -i -e '/assertEqual(4, len(log)/d' src/lxml/tests/test_threading.py || die
 
 	distutils-r1_python_prepare_all
 }
