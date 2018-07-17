@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 VIRTUALX_REQUIRED="manual"
 
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="examples test"
 
-RDEPEND=">=dev-lang/lua-5.1
+RDEPEND="dev-lang/lua:*
 		dev-libs/gobject-introspection
 		dev-libs/glib
 		virtual/libffi"
@@ -29,10 +29,7 @@ DEPEND="${RDEPEND}
 		)"
 
 src_prepare() {
-	sed -i \
-		-e "s:^LUA_LIBDIR.*$:LUA_LIBDIR = $($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua):" \
-		-e "s:^LUA_SHAREDIR.*$:LUA_SHAREDIR = $($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua):" \
-		"${S}"/lgi/Makefile || die "sed failed"
+	default
 }
 
 src_compile() {
@@ -40,12 +37,12 @@ src_compile() {
 }
 
 src_test() {
-	Xemake CC="$(tc-getCC)" COPTFLAGS="-Wall -Wextra ${CFLAGS}" LIBFLAG="-shared ${LDFLAGS}" check
+	virtx emake CC="$(tc-getCC)" COPTFLAGS="-Wall -Wextra ${CFLAGS}" LIBFLAG="-shared ${LDFLAGS}" check
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dohtml -r docs/*
+	dodoc -r docs/*
 	dodoc README.md
 	if use examples; then
 		dodoc -r samples

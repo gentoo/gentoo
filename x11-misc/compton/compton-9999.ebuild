@@ -35,7 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xprop
 	x11-apps/xwininfo"
 DEPEND="${COMMON_DEPEND}
-	app-text/asciidoc
+	dev-ruby/asciidoctor
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	drm? ( x11-libs/libdrm )"
