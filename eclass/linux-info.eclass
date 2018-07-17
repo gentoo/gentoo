@@ -554,7 +554,7 @@ get_version() {
 	# caught before this if they are.
 	if [[ -z ${OUTPUT_DIR} ]] ; then
 		# Try to locate a kernel that is most relevant for us.
-		for OUTPUT_DIR in "${SYSROOT}" "${ROOT%/}/" "" ; do
+		for OUTPUT_DIR in "${SYSROOT}" "${ROOT%/}" "" ; do
 			OUTPUT_DIR+="/lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}/build"
 			if [[ -e ${OUTPUT_DIR} ]] ; then
 				break
