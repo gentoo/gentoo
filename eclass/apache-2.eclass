@@ -277,7 +277,9 @@ setup_modules() {
 		elog "through the following environment variables:"
 		elog
 		elog " SUEXEC_SAFEPATH: Default PATH for suexec (default: '${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin')"
-		elog "  SUEXEC_LOGFILE: Path to the suexec logfile (default: '${EPREFIX}/var/log/apache2/suexec_log')"
+		if { ver_test ${PV} -ge 2.4.34 && ! use suexec-syslog ; } || ver_test ${PV} -lt 2.4.34 ; then
+			elog "  SUEXEC_LOGFILE: Path to the suexec logfile (default: '${EPREFIX}/var/log/apache2/suexec_log')"
+		fi
 		elog "   SUEXEC_CALLER: Name of the user Apache is running as (default: apache)"
 		elog "  SUEXEC_DOCROOT: Directory in which suexec will run scripts (default: '${EPREFIX}/var/www')"
 		elog "   SUEXEC_MINUID: Minimum UID, which is allowed to run scripts via suexec (default: 1000)"
@@ -287,7 +289,13 @@ setup_modules() {
 		elog
 
 		MY_CONF+=( --with-suexec-safepath="${SUEXEC_SAFEPATH:-${EPREFIX}/usr/local/bin:${EPREFIX}/usr/bin:${EPREFIX}/bin}" )
-		MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
+		if ver_test ${PV} -ge 2.4.34 ; then
+			MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
+			MY_CONF+=( $(use_with suexec-syslog) )
+			MY_CONF+=( $(use_with suexec-caps suexec-capabilities) )
+		else
+			MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
+		fi
 		MY_CONF+=( --with-suexec-bin="${EPREFIX}/usr/sbin/suexec" )
 		MY_CONF+=( --with-suexec-userdir=${SUEXEC_USERDIR:-public_html} )
 		MY_CONF+=( --with-suexec-caller=${SUEXEC_CALLER:-apache} )
