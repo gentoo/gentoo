@@ -219,6 +219,7 @@ pkg_postinst()
 
 	if use grc ; then
 		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 		xdg_mime_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource install --noupdate --context mimetypes --size ${size} \
@@ -238,6 +239,7 @@ pkg_postrm()
 
 	if use grc ; then
 		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 		xdg_mime_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource uninstall --noupdate --context mimetypes --size ${size} \
