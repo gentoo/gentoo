@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} pypy )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
 inherit distutils-r1
