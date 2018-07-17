@@ -29,9 +29,9 @@ if [ "${PV%9999}" = "${PV}" ] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="+drm wayland X"
+IUSE="wayland X"
 
-RDEPEND=">=x11-libs/libva-2.0.0:=[X?,wayland?,drm?,${MULTILIB_USEDEP}]
+RDEPEND=">=x11-libs/libva-2.0.0:=[X?,wayland?,drm,${MULTILIB_USEDEP}]
 	>=x11-libs/libdrm-2.4.52[video_cards_intel,${MULTILIB_USEDEP}]
 	wayland? ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] >=dev-libs/wayland-1.11[${MULTILIB_USEDEP}] )"
 
@@ -48,7 +48,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		$(use_enable drm)
 		$(use_enable wayland)
 		$(use_enable X x11)
 	)
