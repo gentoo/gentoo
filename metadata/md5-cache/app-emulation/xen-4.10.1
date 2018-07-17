@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) efi? ( >=sys-devel/binutils-2.22[multitarget] ) !efi? ( >=sys-devel/binutils-2.22 )
+DESCRIPTION=The Xen virtual machine monitor
+EAPI=6
+HOMEPAGE=https://www.xenproject.org
+IUSE=custom-cflags debug efi flask
+KEYWORDS=~amd64 ~arm -x86
+LICENSE=GPL-2
+PDEPEND=~app-emulation/xen-tools-4.10.1
+REQUIRED_USE=arm? ( debug )
+RESTRICT=test splitdebug strip
+SLOT=0
+SRC_URI=https://downloads.xenproject.org/release/xen/4.10.1/xen-4.10.1.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-4.10.1-upstream-patches-0.tar.xz https://github.com/hydrapolic/gentoo-dist/raw/master/xen/xen-4.10.1-upstream-patches-0.tar.xz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	607e058da37aa6dabfa408b7d61da72e	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=f3d1b4254814525ae78d2dad6a1e8c27
