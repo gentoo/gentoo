@@ -57,7 +57,7 @@ mercury_pkgs()
 		$(use glut && echo graphics/mercury_glut)
 		$(use opengl && echo graphics/mercury_opengl)
 		$(use tcl && use tk && echo graphics/mercury_tcltk)
-		$(use odbc && echo odbc || use iodbc && echo odbc)
+		$(use odbc && echo odbc || (use iodbc && echo odbc) )
 		$(has_version dev-lang/mercury[trail] && echo references)
 		$(usev xml)"
 }
