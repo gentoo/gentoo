@@ -20,8 +20,6 @@
   graphics, GUI toolkit, and a complete visualization framework.
   </longdescription>
   <use>
-    <flag name="c++11"> Build ROOT using the C++11 standard</flag>
-    <flag name="c++14"> Build ROOT using the C++14 standard</flag>
     <flag name="asimage">Enable support for <pkg>media-libs/libafterimage</pkg></flag>
     <flag name="davix">Enable support for DAVIX Data Management Client (https://cern.ch/davix)</flag>
     <flag name="fits">Enable support for images and data from FITS files with <pkg>sci-libs/cfitsio</pkg></flag>
@@ -36,7 +34,6 @@
     <flag name="pythia6">Build the interface for <pkg>sci-physics/pythia</pkg> version 6.x </flag>
     <flag name="pythia8">Build the interface for <pkg>sci-physics/pythia</pkg> version 8.x </flag>
     <flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
-    <flag name="reflex">Build the reflection database for the C++ interpreter</flag>
     <flag name="roofit">Build RooFit function fitting package</flag>
     <flag name="root7">Build experimental features to be released with ROOT 7</flag>
     <flag name="shadow">Enable shadow authentication in rootd and proofd</flag>

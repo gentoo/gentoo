@@ -6,7 +6,7 @@ inherit xfconf
 
 DESCRIPTION="Xfce4 screenshooter application and panel plugin"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-screenshooter"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

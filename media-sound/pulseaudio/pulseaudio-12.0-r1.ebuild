@@ -311,13 +311,6 @@ pkg_postinst() {
 		elog "    https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/"
 		elog "    https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/SystemWide/"
 		elog "    https://wiki.gentoo.org/wiki/PulseAudio#Headless_server"
-		if use gnome ; then
-			elog
-			elog "By enabling gnome USE flag, you enabled gconf support. Please note"
-			elog "that you might need to remove the gnome USE flag or disable the"
-			elog "gconf module on /etc/pulse/system.pa to be able to use PulseAudio"
-			elog "with a system-wide instance."
-		fi
 	fi
 
 	if use equalizer && ! use qt5; then

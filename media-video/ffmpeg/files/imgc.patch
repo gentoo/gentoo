@@ -1,0 +1,29 @@
+commit c1e172c2e14ef059dac632f7c67f081dfecd30dc
+Author: Simon Thelen <ffmpeg-dev@c-14.de>
+Date:   Tue Apr 3 14:41:33 2018 +0200
+
+    avcodec/imgconvert: fix possible null pointer dereference
+    
+    regression since 354b26a3945eadd4ed8fcd801dfefad2566241de
+    
+    (cherry picked from commit 8c2c97403baf95d0facb53f03e468f023eb943e1)
+
+diff --git a/libavcodec/imgconvert.c b/libavcodec/imgconvert.c
+index 7b0005b308..1fd636c83d 100644
+--- a/libavcodec/imgconvert.c
++++ b/libavcodec/imgconvert.c
+@@ -72,11 +72,12 @@ enum AVPixelFormat avcodec_find_best_pix_fmt_of_list(const enum AVPixelFormat *p
+     int loss;
+ 
+     for (i=0; pix_fmt_list[i] != AV_PIX_FMT_NONE; i++) {
+-        loss = *loss_ptr;
++        loss = loss_ptr ? *loss_ptr : 0;
+         best = avcodec_find_best_pix_fmt_of_2(best, pix_fmt_list[i], src_pix_fmt, has_alpha, &loss);
+     }
+ 
+-    *loss_ptr = loss;
++    if (loss_ptr)
++        *loss_ptr = loss;
+     return best;
+ }
+ 

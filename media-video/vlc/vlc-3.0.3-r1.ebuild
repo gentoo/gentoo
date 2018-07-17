@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc x86 ~x86-fbsd"
 fi
 inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
 
@@ -89,7 +89,7 @@ RDEPEND="
 	fdk? ( media-libs/fdk-aac:0= )
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?] )
-		libav? ( >=media-video/libav-11.8:0=[vaapi?,vdpau?] )
+		libav? ( >=media-video/libav-12.2:0=[vaapi?,vdpau?] )
 	)
 	flac? (
 		media-libs/flac:0

@@ -41,7 +41,6 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/listen-3.0.5:3
 	dev-ruby/rack
 	dev-ruby/mocha:0.14
-	<dev-ruby/minitest-5.4
 	)"
 
 all_ruby_prepare() {

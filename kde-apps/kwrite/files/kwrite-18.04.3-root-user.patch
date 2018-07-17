@@ -1,0 +1,62 @@
+From bf6d5b7532968763bdc629aa90426c53500af13f Mon Sep 17 00:00:00 2001
+From: Nathaniel Graham <nate@kde.org>
+Date: Sat, 26 May 2018 14:50:24 -0600
+Subject: Re-allow running Kate and KWrite as the actual root user (but still
+ not using sudo)
+
+Summary:
+The original change (9adcebd3c2e476c8a32e9b455cc99f46b0e12a7e) to prevent sudo usage broke the use case of running KWrite or Kate while logged in as the actual `root` user with a GUI session. This is how the Kali distro is set up by default, so the original change amounted to making Kate and KWrite not launch at all on this KDE distro.
+
+This patch re-enables running as the actual root user, but keeps blocking usage via `sudo` or `kdesu`. There are no negative security implications associated with re-allowing usage via the root user, since if you're running a GUI session, you were already exposed to the original security threat and Kate and KWrite do not increase the attack surface.
+
+I have submitted a similar change for Dolphin that has been accepted (D12795), but @elvisangelaccio wants that to go in at the same time as this, to keep them in sync.
+
+BUG: 387973
+FIXED-IN: 18.08.0
+
+Test Plan:
+- Log in as normal user and run `sudo kate` or `sudo kwrite`: you get an error message.
+- Log in as normal user and run `kdesu kate` or `kdesu kwrite`: you get an error message.
+- Log in as the root user and run Kate or KWrite normally: it works.
+
+Reviewers: #kate, dhaumann, cullmann, #ktexteditor
+
+Reviewed By: #kate, dhaumann, #ktexteditor
+
+Subscribers: kwrite-devel, elvisangelaccio
+
+Tags: #kate
+
+Differential Revision: https://phabricator.kde.org/D13138
+---
+ kwrite/main.cpp | 14 ++++++++------
+ 2 files changed, 16 insertions(+), 12 deletions(-)
+
+diff --git a/kwrite/main.cpp b/kwrite/main.cpp
+index 62f4f2d..d3f3ca9 100644
+--- a/kwrite/main.cpp
++++ b/kwrite/main.cpp
+@@ -50,13 +50,15 @@
+ extern "C" Q_DECL_EXPORT int main(int argc, char **argv)
+ {
+ #ifndef Q_OS_WIN
+-    /**
+-     * Check whether we are running as root
+-     **/
++    // Prohibit using sudo or kdesu (but allow using the root user directly)
+     if (getuid() == 0) {
+-        std::cout << "Executing KWrite as root is not possible. To edit files as root use:" << std::endl;
+-        std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
+-        return 0;
++        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
++            std::cout << "Executing Kate with sudo is not possible due to unfixable security vulnerabilities." << std::endl;
++            return EXIT_FAILURE;
++        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
++            std::cout << "Executing Kate with kdesu is not possible due to unfixable security vulnerabilities." << std::endl;
++            return EXIT_FAILURE;
++        }
+     }
+ #endif
+     /**
+-- 
+cgit v0.11.2

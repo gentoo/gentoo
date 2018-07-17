@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/libxml2:2
 	dev-db/sqlite:3
 
-	chromaprint? ( media-libs/gstreamer:1.0 )
+	chromaprint? ( media-plugins/gst-plugins-chromaprint:1.0 )
 	daap? ( >=net-libs/libdmapsharing-2.9.12:3.0 )
 	dvd? ( >=dev-libs/totem-pl-parser-3.4.1 )
 	flickr? ( net-libs/liboauth )

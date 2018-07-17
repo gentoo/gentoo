@@ -99,7 +99,6 @@ src_configure() {
 		-DWITH_Cairo=$(usex cairo)
 		-DENABLE_LIBCURL=$(usex curl)
 		-DENABLE_CPP=$(usex cxx)
-		-DWITH_GObjectIntrospection=$(usex introspection)
 		-DWITH_JPEG=$(usex jpeg)
 		-DENABLE_DCTDECODER=$(usex jpeg libjpeg none)
 		-DENABLE_LIBOPENJPEG=$(usex jpeg2k openjpeg2 none)
@@ -110,6 +109,7 @@ src_configure() {
 		-DWITH_TIFF=$(usex tiff)
 		-DENABLE_UTILS=$(usex utils)
 	)
+	use cairo && mycmakeargs+=( -DWITH_GObjectIntrospection=$(usex introspection) )
 
 	cmake-utils_src_configure
 }

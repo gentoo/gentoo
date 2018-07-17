@@ -39,9 +39,6 @@ media-libs/libmediaart gtk -qt5
 # and net-voip/telepathy-butterfly)
 net-libs/libproxy python
 
-# Required by net-misc/vinagre-3
-net-libs/gtk-vnc gtk3
-
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3
 

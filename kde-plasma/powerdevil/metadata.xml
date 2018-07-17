@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="brightness-control">Enable screen brightness control using <pkg>app-misc/ddcutil</pkg></flag>
 		<flag name="consolekit">Enable <pkg>sys-auth/consolekit</pkg> support instead of logind session tracking</flag>
 		<flag name="wireless">Enable wireless energy saving actions via <pkg>kde-frameworks/bluez-qt</pkg> and <pkg>kde-frameworks/networkmanager-qt</pkg></flag>
 	</use>

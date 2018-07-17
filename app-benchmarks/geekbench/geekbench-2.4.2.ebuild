@@ -11,9 +11,6 @@ KEYWORDS="-* arm"
 LICENSE="geekbench"
 SLOT="2"
 
-RDEPEND="sys-devel/gcc
-	sys-libs/glibc"
-
 RESTRICT="bindist fetch mirror strip"
 
 S="${WORKDIR}/dist/Geekbench-${PV}-LinuxARM"

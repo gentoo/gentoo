@@ -6,8 +6,8 @@ EAPI=0
 inherit toolchain-funcs
 
 DESCRIPTION="tool to reliably distribute binary data using UDP broadcasting techniques"
-HOMEPAGE="http://www.wudika.de/~jan/netpipe/"
-SRC_URI="http://www.wudika.de/~jan/${PN}/${PN}.tar.gz"
+HOMEPAGE="https://www.wudika.de/~jan/netpipe/"
+SRC_URI="https://www.wudika.de/~jan/${PN}/${PN}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,22 @@
+Make tiff header usage conditional on LCMS support as intended.
+
+--- ciberandy-qiv-14b562fe2fc3/qiv.h
++++ ciberandy-qiv-14b562fe2fc3/qiv.h
+@@ -12,6 +12,7 @@
+ #ifdef SUPPORT_LCMS
+ #include <lcms2.h>
+ #include <jpeglib.h>
++#include <tiffio.h>
+ #endif
+ 
+ /*
+--- ciberandy-qiv-14b562fe2fc3/utils.c
++++ ciberandy-qiv-14b562fe2fc3/utils.c
+@@ -17,7 +17,6 @@
+ #include <dirent.h>
+ #include <fcntl.h>
+ #include <errno.h>
+-#include <tiffio.h>
+ #include <X11/extensions/dpms.h>
+ #ifdef HAVE_EXIF
+ #include <libexif/exif-loader.h>

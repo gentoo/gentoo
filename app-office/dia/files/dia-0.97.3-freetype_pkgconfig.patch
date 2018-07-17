@@ -1,0 +1,66 @@
+--- dia-0.97.3/configure.in
++++ dia-0.97.3/configure.in
+@@ -62,43 +62,26 @@
+ 
+ AC_ARG_WITH(freetype,
+ [  --without-freetype        compile without FreeType support],,with_freetype=yes)
+-if test "x$with_freetype" = "xyes"; then
+-PKG_CHECK_MODULES(PANGOFT2,pangoft2,have_pangoft2=true,have_pangoft2=false)
+-if test "$have_pangoft2" = "true"; then
+-  dnl On Solaris with Forte C, at least, need to link app/dia with -lfreetype.
+-  dnl It's not enough that -lpangoft2 implicitly pulls it in.
+-  have_freetype=false
+-  AC_CHECK_LIB(freetype,FT_Init_FreeType,have_freetype=true,have_freetype=false,`freetype-config --libs`)
+-  if test "$have_freetype" = "true"; then
+-    dnl Need 2.0.9, as a bug was fixed for us there.
+-    dnl However, freetype-config doesn't give a meaningful version, so we must
+-    dnl do it like this.
+-    AC_MSG_CHECKING([if FreeType version is 2.0.9 or higher])
+-    old_CPPFLAGS="$CPPFLAGS"
+-    CPPFLAGS="$CPPFLAGS `freetype-config --cflags`"
+-    AC_TRY_CPP([#include <ft2build.h>
+-#include FT_FREETYPE_H
+-#if (FREETYPE_MAJOR*1000+FREETYPE_MINOR)*1000+FREETYPE_PATCH < 2000009
+-#error Freetype version too low.
+-#endif
+-],
+-        [AC_MSG_RESULT(yes)
+-	 FREETYPE_LIBS=`freetype-config --libs`
+-	 AC_SUBST(FREETYPE_LIBS)
+-	 FREETYPE_CFLAGS=`freetype-config --cflags`
+-	 AC_SUBST(FREETYPE_CFLAGS)
+-	 GTK_MODULES="$GTK_MODULES pangoft2"
+-	 AC_DEFINE(HAVE_FREETYPE,1,[Define if you have the FreeType2 library])]
+-    ,
+-	[AC_MSG_ERROR([Need FreeType library version 2.0.9 or higher])])
+-    CPPFLAGS="$old_CPPFLAGS"
+-  else
+-    AC_MSG_ERROR(Can't find FreeType library)
+-  fi
+-else
+-  AC_MSG_ERROR(Can't find PangoFT2 library)
+-fi
+-fi
++AS_IF([test "x$with_freetype" = "xyes"],[
++	dnl freetype2.pc uses the libtool specific version number and not the
++	dnl package version. See
++	dnl https://git.savannah.gnu.org/cgit/freetype/freetype2.git/tree/docs/VERSIONS.TXT
++	dnl Let's raise minimum dependency to freetype-2.4.0 because that's the
++	dnl lowest freetype libtool version I could find.
++	dnl freetype-2.4.0 is from July 2010 and should be reasonably old
++	dnl enough.
++	PKG_CHECK_MODULES(FREETYPE, freetype2 >= 11.0.5,
++		[
++			CPPFLAGS="$CPPFLAGS $FREETYPE_CFLAGS"
++			AC_DEFINE(HAVE_FREETYPE,1,[Define if you have the FreeType2 library])
++		],
++		AC_MSG_ERROR([Need FreeType library version 2.4.0 or higher])
++	)
++	PKG_CHECK_MODULES(PANGOFT2,pangoft2,
++		GTK_MODULES="$GTK_MODULES pangoft2",
++		AC_MSG_ERROR(Can't find PangoFT2 library)
++	)
++])
+ AM_CONDITIONAL(WITH_FREETYPE, test "x$with_freetype" != "xno")
+ 
+ CFLAGS="$FREETYPE_CFLAGS $CFLAGS"

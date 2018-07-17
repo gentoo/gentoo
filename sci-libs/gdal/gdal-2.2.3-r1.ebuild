@@ -59,7 +59,6 @@ RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.7:* )"
 
 DEPEND="${COMMON_DEPEND}
-	app-shells/bash-completion
 	doc? ( app-doc/doxygen )
 	java? ( >=virtual/jdk-1.7:* )
 	perl? ( dev-lang/swig:0 )
