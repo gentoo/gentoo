@@ -1,9 +1,0 @@
-DEFINED_PHASES=compile install unpack
-DESCRIPTION=Relative Expression-Based Object Language
-EAPI=6
-HOMEPAGE=http://rebol.com
-KEYWORDS=~amd64 ~x86
-LICENSE=Apache-2.0
-SLOT=0
-SRC_URI=amd64? ( http://rebolsource.net/downloads/experimental/r3-linux-x64-gbf237fc ) x86? ( http://rebolsource.net/downloads/linux-x86/r3-g25033f8 )
-_md5_=ae5487371abb11a3e4b10e0c2d64a498

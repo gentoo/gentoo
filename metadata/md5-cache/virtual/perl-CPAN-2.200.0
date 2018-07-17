@@ -1,7 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for CPAN
-EAPI=6
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x64-cygwin
-RDEPEND=|| ( =dev-lang/perl-5.28* ~perl-core/CPAN-2.200.0 ) dev-lang/perl:= !<perl-core/CPAN-2.200.0 !>perl-core/CPAN-2.200.0-r999
-SLOT=0
-_md5_=c7ffcb93d11b17dfafc0d935e3369df2

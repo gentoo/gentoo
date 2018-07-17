@@ -1,9 +1,0 @@
-DEFINED_PHASES=install prepare
-DESCRIPTION=Data files for 0ad
-EAPI=6
-HOMEPAGE=https://play0ad.com/
-KEYWORDS=~amd64 ~x86
-LICENSE=GPL-2 CC-BY-SA-3.0 LPPL-1.3c BitstreamVera
-SLOT=0
-SRC_URI=http://releases.wildfiregames.com/0ad-0.0.23-alpha-unix-data.tar.xz
-_md5_=24409256c806f1dba6c0baf4989b2e64

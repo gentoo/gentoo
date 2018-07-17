@@ -1,7 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Convenience virtual for perl6
-EAPI=5
-KEYWORDS=~amd64 ~x86
-RDEPEND=dev-lang/rakudo
-SLOT=0
-_md5_=3d1ea416ba10ee921f88cbe1a8aa6d1d

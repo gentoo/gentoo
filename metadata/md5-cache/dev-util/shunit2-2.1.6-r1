@@ -1,9 +1,0 @@
-DEFINED_PHASES=install
-DESCRIPTION=Unit-test framework for Bourne-based shell scripts
-EAPI=6
-HOMEPAGE=https://github.com/kward/shunit2
-KEYWORDS=amd64 ~ppc x86
-LICENSE=LGPL-2.1
-SLOT=0
-SRC_URI=https://shunit2.googlecode.com/files/shunit2-2.1.6.tgz
-_md5_=76bbf8a885b69266c84925119a3d5ad5
