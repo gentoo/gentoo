@@ -9,7 +9,7 @@
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools eutils flag-o-matic multilib ssl-cert user toolchain-funcs versionator
+inherit autotools eutils flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -21,7 +21,7 @@ case ${EAPI:-0} in
 esac
 
 # settings which are version specific go in here:
-case $(get_version_component_range 1-2) in
+case $(ver_cut 1-2) in
 	2.4)
 		DEFAULT_MPM_THREADED="event" #509922
 		CDEPEND=">=dev-libs/apr-1.5.1:=
@@ -119,7 +119,7 @@ _apache2_set_mpms() {
 		REQUIRED_USE+=" )"
 	done
 
-	if [[ "${PV}" != 2.2* ]] ; then
+	if [[ "$(ver_cut 1-2)" != 2.2 ]] ; then
 		REQUIRED_USE+=" apache2_mpms_prefork? ( !apache2_modules_http2 )"
 	fi
 }
