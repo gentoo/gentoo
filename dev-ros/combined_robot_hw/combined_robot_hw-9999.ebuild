@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/hardware_interface-0.11
+	>=dev-ros/hardware_interface-0.15
 	dev-ros/pluginlib
 		dev-libs/tinyxml2:=
 	dev-ros/roscpp

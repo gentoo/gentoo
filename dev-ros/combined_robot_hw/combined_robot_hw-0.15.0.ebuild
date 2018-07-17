@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/hardware_interface-0.11
+	>=dev-ros/hardware_interface-0.15
 	dev-ros/pluginlib
 		dev-libs/tinyxml2:=
 	dev-ros/roscpp
