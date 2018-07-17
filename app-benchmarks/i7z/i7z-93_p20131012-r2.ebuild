@@ -40,7 +40,7 @@ PATCHES=(
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_configure() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 	cd GUI || die
 	use qt5 && eqmake5 ${PN}_GUI.pro
 }
