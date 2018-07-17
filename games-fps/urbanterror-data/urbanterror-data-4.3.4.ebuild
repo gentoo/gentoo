@@ -47,7 +47,7 @@ src_prepare() {
 		MY_CTR=0
 		while [[ "${MY_CTR}" -lt "${PV/4.3./}" ]]; do
 			cp -dfpr \
-				"${WORKDIR}"/${MY_PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 ))/* "${S}"
+				"${WORKDIR}"/${MY_PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 ))/* "${S}" || die
 			MY_CTR=$(( ${MY_CTR} + 1 ))
 		done
 	fi
