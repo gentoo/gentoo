@@ -10,7 +10,7 @@ MY_PN=UrbanTerror
 MY_PV=43_full
 
 DESCRIPTION="Data files for UrbanTerror"
-HOMEPAGE="http://www.urbanterror.info"
+HOMEPAGE="https://www.urbanterror.info"
 
 # load the base image and save it as .0 file
 # use 43_full-2.zip as upstream fixed something back then
