@@ -5,20 +5,25 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros-controls/ros_control"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
+PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Combined Robot HW class"
+DESCRIPTION="Tests for the controller manager"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/hardware_interface-0.15
-	dev-ros/pluginlib
-		dev-libs/tinyxml2:=
-	dev-ros/roscpp
+	dev-ros/controller_manager[${PYTHON_USEDEP}]
+	dev-ros/controller_interface
+	dev-ros/control_toolbox
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-ros/rosservice[${PYTHON_USEDEP}]
+	)"

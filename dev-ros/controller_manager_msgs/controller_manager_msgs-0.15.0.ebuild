@@ -5,20 +5,16 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros-controls/ros_control"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
+PYTHON_COMPAT=( python2_7 )
+CATKIN_HAS_MESSAGES=yes
+CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Combined Robot HW class"
+DESCRIPTION="The controller manager"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	>=dev-ros/hardware_interface-0.15
-	dev-ros/pluginlib
-		dev-libs/tinyxml2:=
-	dev-ros/roscpp
-	dev-libs/boost:=
-	dev-libs/console_bridge:=
-"
+RDEPEND="dev-ros/rospy[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

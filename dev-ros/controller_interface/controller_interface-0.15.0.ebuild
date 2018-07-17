@@ -8,17 +8,14 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Combined Robot HW class"
+DESCRIPTION="Interface base class for controllers"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/hardware_interface-0.15
-	dev-ros/pluginlib
-		dev-libs/tinyxml2:=
 	dev-ros/roscpp
-	dev-libs/boost:=
-	dev-libs/console_bridge:=
+	dev-ros/hardware_interface
+	dev-ros/pluginlib
 "
 DEPEND="${RDEPEND}"

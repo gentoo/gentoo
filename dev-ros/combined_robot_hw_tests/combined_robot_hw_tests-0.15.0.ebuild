@@ -9,21 +9,17 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="The controller manager"
+DESCRIPTION="Combined Robot HW class tests"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/controller_interface-0.15
-	>=dev-ros/controller_manager_msgs-0.10.0[${CATKIN_MESSAGES_PYTHON_USEDEP},${CATKIN_MESSAGES_CXX_USEDEP}]
-	>=dev-ros/hardware_interface-0.10.0
-	dev-ros/pluginlib
-		dev-libs/tinyxml2:=
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rosparam[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-ros/combined_robot_hw
+	dev-ros/controller_manager
+	dev-ros/controller_manager_tests
+	dev-ros/hardware_interface
+	dev-ros/roscpp
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "

@@ -2,23 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-ROS_REPO_URI="https://github.com/ros-controls/ros_control"
+ROS_REPO_URI="https://github.com/ros/geometry2"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Combined Robot HW class"
+DESCRIPTION="TF2 bullet support"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/hardware_interface-0.15
-	dev-ros/pluginlib
-		dev-libs/tinyxml2:=
-	dev-ros/roscpp
-	dev-libs/boost:=
-	dev-libs/console_bridge:=
+	dev-ros/tf2
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	sci-physics/bullet
 "
 DEPEND="${RDEPEND}"
