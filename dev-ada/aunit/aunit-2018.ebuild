@@ -30,7 +30,7 @@ S="${WORKDIR}"/${MYP}
 PATCHES=( "${FILESDIR}"/${PN}-2016-gentoo.patch )
 
 src_compile() {
-	emake GPRBUILD="gprbuild -j$(makeopts_jobs)"
+	emake GPRBUILD="gprbuild -j$(makeopts_jobs) -v"
 }
 
 src_install() {
