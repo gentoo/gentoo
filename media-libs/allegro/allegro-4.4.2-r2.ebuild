@@ -5,7 +5,7 @@ EAPI=6
 inherit cmake-multilib
 
 DESCRIPTION="cross-platform multimedia library"
-HOMEPAGE="http://alleg.sourceforge.net/"
+HOMEPAGE="https://liballeg.org/"
 SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
 
 LICENSE="Allegro MIT GPL-2+ ZLIB"
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="alsa fbcon jack jpeg opengl oss png svga test vga vorbis X"
 
-RDEPEND="alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
+RDEPEND="
+	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	jack? ( media-sound/jack-audio-connection-kit[${MULTILIB_USEDEP}] )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
@@ -79,7 +80,7 @@ src_configure() {
 	if use X; then
 		mycmakeargs+=( -DWANT_ALLEGROGL=$(usex opengl) )
 	else
-		mycmakeargs+=( -DWANT_ALLEGROGL=OFF	)
+		mycmakeargs+=( -DWANT_ALLEGROGL=OFF )
 	fi
 
 	cmake-multilib_src_configure

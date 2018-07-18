@@ -72,6 +72,6 @@ src_install() {
 	cmake-multilib_src_install
 
 	dodoc CHANGES-5.0.txt
-	dodoc -r docs/html/refman/*
+	dodoc -r docs/html/refman/
 	doman docs/man/*.3
 }
