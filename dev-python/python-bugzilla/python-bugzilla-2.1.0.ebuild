@@ -21,10 +21,6 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/coverage
-		dev-python/pep8
-	)
 "
 
 python_test() {
