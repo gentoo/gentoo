@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201807-01">
+  <title>tqdm: Arbitrary code execution</title>
+  <synopsis>A vulnerability in tqdm could allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">tqdm</product>
+  <announced>2018-07-18</announced>
+  <revised count="1">2018-07-18</revised>
+  <bug>636384</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/tqdm" auto="yes" arch="*">
+      <unaffected range="ge">4.23.3</unaffected>
+      <vulnerable range="lt">4.23.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>tqdm is a smart progress meter.</p>
+  </background>
+  <description>
+    <p>A vulnerablility was discovered in tqdm._version that could allow a
+      malicious git log within the current working directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary commands by enticing a user to
+      clone a crafted repo.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All tqdm users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/tqdm-4.23.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-10075">CVE-2016-10075</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-07-02T03:06:02Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-07-18T03:57:26Z">irishluck83</metadata>
+</glsa>
