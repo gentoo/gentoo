@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/antlr-c dev-libs/boost cln? ( sci-libs/cln ) !cln? ( dev-libs/gmp:= )
+DESCRIPTION=automatic theorem prover for satisfiability modulo theories (SMT) problems
+EAPI=6
+HOMEPAGE=http://cvc4.cs.stanford.edu/web/
+IUSE=+cln
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/antlr-c dev-libs/boost cln? ( sci-libs/cln ) !cln? ( dev-libs/gmp:= )
+SLOT=0
+SRC_URI=http://cvc4.cs.stanford.edu/downloads/builds/src/cvc4-1.6.tar.gz
+_md5_=9d9dce446d3c17959a26e76252e8fbee
