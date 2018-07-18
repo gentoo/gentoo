@@ -4,7 +4,7 @@
 EAPI=6
 CMAKE_MAKEFILE_GENERATOR="ninja"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit check-reqs cmake-utils eutils flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs versionator virtualx
 
@@ -188,17 +188,17 @@ src_configure() {
 	# Multiple rendering bugs on youtube, github, etc without this, bug #547224
 	append-flags $(test-flags -fno-strict-aliasing)
 
+	# Ruby situation is a bit complicated. See bug 513888
+	local rubyimpl
 	local ruby_interpreter=""
-
-	if has_version "virtual/rubygems[ruby_targets_ruby24]"; then
-		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby24)"
-	elif has_version "virtual/rubygems[ruby_targets_ruby23]"; then
-		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby23)"
-	elif has_version "virtual/rubygems[ruby_targets_ruby22]"; then
-		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby22)"
-	else
-		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby21)"
-	fi
+	for rubyimpl in ${USE_RUBY}; do
+		if has_version "virtual/rubygems[ruby_targets_${rubyimpl}]"; then
+			ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ${rubyimpl})"
+		fi
+	done
+	# This will rarely occur. Only a couple of corner cases could lead us to
+	# that failure. See bug 513888
+	[[ -z $ruby_interpreter ]] && die "No suitable ruby interpreter found"
 
 	# TODO: Check Web Audio support
 	# should somehow let user select between them?
