@@ -74,6 +74,10 @@ DEPEND="
 	test? ( net-libs/gnutls[tools] )
 "
 
+# required for fwupd daemon to run.
+# NOT a build time dependency. The build system does not check for dbus.
+PDEPEND="sys-apps/dbus"
+
 src_prepare() {
 	default
 	sed -e "s/'--create'/'--absolute-name', '--create'/" \
@@ -101,4 +105,16 @@ src_configure() {
 		-Dtests="$(usex test true false)"
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+	doinitd "${FILESDIR}"/${PN}
+}
+
+pkg_postinst() {
+	elog "In case you are using openrc as init system"
+	elog "and you're upgrading from <fwupd-1.1.0, you"
+	elog "need to start the fwupd daemon via the openrc"
+	elog "init script that comes with this package."
 }
