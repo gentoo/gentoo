@@ -6,7 +6,7 @@ EAPI=6
 inherit user systemd
 
 DESCRIPTION="Extensible continuous integration server"
-HOMEPAGE="http://jenkins-ci.org/"
+HOMEPAGE="https://jenkins.io/"
 LICENSE="MIT"
 SRC_URI="http://mirrors.jenkins-ci.org/war-stable/${PV}/${PN/-bin/}.war -> ${P}.war"
 RESTRICT="mirror"
