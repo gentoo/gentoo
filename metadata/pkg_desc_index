@@ -6851,7 +6851,7 @@ kde-frameworks/kpty 5.46.0: Framework for pseudo terminal devices and running ch
 kde-frameworks/kross 5.46.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.46.0: Framework for providing different actions given a string query
 kde-frameworks/kservice 5.46.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.46.0 5.46.0-r1: Framework providing a full text editor component
+kde-frameworks/ktexteditor 5.46.0-r1: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.46.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.46.0: Framework for converting units
 kde-frameworks/kwallet 5.46.0: Framework providing desktop-wide storage for passwords
