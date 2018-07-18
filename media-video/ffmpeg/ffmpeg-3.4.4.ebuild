@@ -290,7 +290,6 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium.patch
-	"${FILESDIR}"/imgc.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
