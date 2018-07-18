@@ -57,6 +57,7 @@ RDEPEND="
 	uefi? (
 		media-libs/fontconfig
 		media-libs/freetype
+		sys-boot/gnu-efi
 		>=sys-libs/efivar-33
 		x11-libs/cairo
 	)
