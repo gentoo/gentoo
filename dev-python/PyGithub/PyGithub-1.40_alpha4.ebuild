@@ -25,6 +25,13 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+python_prepare_all() {
+	# tests requiring network access
+	sed -i -e 's:testDecodeJson:_&:' github/tests/Issue142.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	esetup.py test
 }
