@@ -21,7 +21,9 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<use>
+	<flag name="apparmor">Support for AppArmor</flag>
 	<flag name="btrfs">Support for BTRFS snapshot driver</flag>
+	<flag name="cri">Support for Kubernetes CRI</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">docker/containerd</remote-id>

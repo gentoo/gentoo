@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,8 +23,8 @@ RDEPEND="
 	net-libs/libpcap
 	smi? ( net-libs/libsmi )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6m:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( >=dev-libs/openssl-0.9.6m:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 "
 DEPEND="

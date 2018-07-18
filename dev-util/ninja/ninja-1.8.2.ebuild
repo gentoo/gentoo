@@ -91,8 +91,9 @@ src_test() {
 src_install() {
 	dodoc README HACKING.md
 	if use doc; then
-		dohtml -r doc/doxygen/html/*
-		dohtml doc/manual.html
+		docinto html
+		dodoc -r doc/doxygen/html/.
+		dodoc doc/manual.html
 	fi
 	dobin ninja
 

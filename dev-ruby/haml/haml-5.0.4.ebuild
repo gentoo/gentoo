@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true test"
 RUBY_FAKEGEM_TASK_DOC="-Ilib doc"
@@ -25,7 +25,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-
 
 IUSE="doc test"
 
-RDEPEND="${RDEPEND} !!<dev-ruby/haml-3.1.8-r2"
+RDEPEND="${RDEPEND} !!<dev-ruby/haml-4.0.7-r2"
 
 ruby_add_rdepend ">=dev-ruby/temple-0.8.0 dev-ruby/tilt:*"
 
@@ -33,9 +33,9 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/minitest:5
 		dev-ruby/nokogiri
-		dev-ruby/railties:4.2
-		dev-ruby/activemodel:4.2
-		dev-ruby/actionpack:4.2
+		dev-ruby/railties:5.2
+		dev-ruby/activemodel:5.2
+		dev-ruby/actionpack:5.2
 	)
 	doc? (
 		dev-ruby/yard
@@ -47,9 +47,9 @@ all_ruby_prepare() {
 
 	sed -i -e '/bundler/I s:^:#:' \
 		-e 's/gem "minitest"/gem "minitest", "~>5.0"/'\
-		-e '1igem "actionpack", "~>4.2"'\
-		-e '1igem "activesupport", "~>4.2"; gem "activemodel", "~>4.2"'\
-		-e '1igem "railties", "~>4.2"'\
+		-e '1igem "actionpack", "~>5.2"'\
+		-e '1igem "activesupport", "~>5.2"; gem "activemodel", "~>5.2"'\
+		-e '1igem "railties", "~>5.2"'\
 		test/test_helper.rb || die
 	# Remove test that fails when RedCloth is available
 	sed -i -e "/should raise error when a Tilt filters dependencies are unavailable for extension/,/^  end/ s/^/#/"\

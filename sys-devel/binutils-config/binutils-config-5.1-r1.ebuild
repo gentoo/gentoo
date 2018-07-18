@@ -16,9 +16,7 @@ IUSE=""
 
 # We also RDEPEND on sys-apps/findutils which is in base @system
 RDEPEND="sys-apps/gentoo-functions
-	!<app-admin/eselect-1.4.5
-	!<sys-devel/binutils-2.25.1
-"
+	!<app-admin/eselect-1.4.5"
 
 S=${WORKDIR}
 

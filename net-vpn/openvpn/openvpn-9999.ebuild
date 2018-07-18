@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic user systemd linux-info git-r3
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
 EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
 EGIT_SUBMODULES=(-cmocka)
-HOMEPAGE="http://openvpn.net/"
+HOMEPAGE="https://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"

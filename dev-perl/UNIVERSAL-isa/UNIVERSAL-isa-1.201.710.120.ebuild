@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Attempt to recover from people calling UNIVERSAL::isa as a function"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~ppc-aix"
+KEYWORDS="amd64 ~arm ~ppc sparc x86 ~ppc-aix"
 IUSE="test"
 
 RDEPEND="

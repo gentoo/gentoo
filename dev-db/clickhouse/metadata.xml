@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>civil@gentoo.org</email>
+		<name>Vladimir Smirnov</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">yandex/Clickhouse</remote-id>
+	</upstream>
+	<use>
+		<flag name="client">Build CLI client.</flag>
+		<flag name="server">Build server.</flag>
+		<flag name="kafka">Enables support for kafka consumer.</flag>
+		<flag name="mongodb">Enabled support for MongoDB-based dictionaries</flag>
+		<flag name="tools">Build various tools, like benchmark, copier, etc.</flag>
+		<flag name="zookeeper">Enable support for clustering (based on Zookeeper).</flag>
+	</use>
+</pkgmetadata>

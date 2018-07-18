@@ -1,7 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit flag-o-matic
 
 DESCRIPTION="Various formats to Open document format converter"
 HOMEPAGE="http://libwpd.sf.net"
@@ -41,6 +43,9 @@ REQUIRED_USE="
 # configure fails if no import library is selected...
 
 src_configure() {
+	# bug 651620
+	append-cxxflags -std=c++11
+
 	econf \
 		--disable-werror \
 		$(use_enable debug) \

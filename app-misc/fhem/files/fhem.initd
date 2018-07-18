@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+home="/opt/fhem"
+command="${home}/fhem.pl"
+command_args="${home}/fhem.cfg"
+command_group="fhem"
+command_user="fhem"
+name="FHEM"
+pidfile_path="/run/fhem"
+pidfile="${pidfile_path}/fhem.pid"
+start_stop_daemon_args="--chdir ${home}"
+
+start_pre() {
+	checkpath -d  -o "${command_user}:${command_group}" -q "${pidfile_path}"
+}

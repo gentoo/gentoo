@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/${PN}/tomcat-7/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="7"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="extra-webapps websockets"
 
 RESTRICT="test" # can we run them on a production system?

@@ -1,0 +1,119 @@
+From 91aa70c6320461ae65600dce954b5ffb905b7039 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 9 Apr 2018 12:36:35 -0400
+Subject: [PATCH] Do not vendor the pugixml library
+
+This prevents trying to co-install pugixml with existing system
+libraries, and also fixes the includes for pugixml.hpp to actually use
+the include path added by find_package/add_subdirectory instead of a
+hardcoded relative path.
+---
+ CMakeLists.txt             |     3 +-
+ pugixml/CMakeLists.txt     |    80 -
+ pugixml/src/pugiconfig.hpp |    74 -
+ pugixml/src/pugixml.cpp    | 12622 -------------------------------------------
+ pugixml/src/pugixml.hpp    |  1434 -----
+ src/MeshData.cpp           |     7 +-
+ src/Scene.cpp              |     2 +-
+ src/SceneNode.cpp          |     3 +-
+ src/ThreeMFParser.h        |     4 +-
+ 9 files changed, 7 insertions(+), 14222 deletions(-)
+ delete mode 100644 pugixml/CMakeLists.txt
+ delete mode 100644 pugixml/src/pugiconfig.hpp
+ delete mode 100644 pugixml/src/pugixml.cpp
+ delete mode 100644 pugixml/src/pugixml.hpp
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5e991a7..1077c7f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,8 +7,7 @@ include(CMakePackageConfigHelpers)
+ option(BUILD_PYTHON "Build " ON)
+ option(BUILD_STATIC "Build as a static library" OFF)
+ 
+-
+-add_subdirectory(pugixml)
++find_package(pugixml REQUIRED)
+ 
+ if(BUILD_PYTHON)
+     set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+diff --git a/src/MeshData.cpp b/src/MeshData.cpp
+index 03e5089..701122d 100644
+--- a/src/MeshData.cpp
++++ b/src/MeshData.cpp
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "MeshData.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <iostream>
+ 
+ using namespace Savitar;
+@@ -85,7 +85,7 @@ bytearray MeshData::getFlatVerticesAsBytes()
+         int v1 = faces.at(i).getV1();
+         int v2 = faces.at(i).getV2();
+         int v3 = faces.at(i).getV3();
+-        
++
+         // Add vertices for face 1
+         float x = vertices.at(v1).getX();
+         float y = vertices.at(v1).getY();
+@@ -188,6 +188,3 @@ std::vector< Vertex > MeshData::getVertices()
+ {
+     return vertices;
+ }
+-
+-
+-
+diff --git a/src/Scene.cpp b/src/Scene.cpp
+index 4612f78..f218b71 100644
+--- a/src/Scene.cpp
++++ b/src/Scene.cpp
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "Scene.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <iostream>
+ #include <string>
+ using namespace Savitar;
+diff --git a/src/SceneNode.cpp b/src/SceneNode.cpp
+index 5c95b6f..c4782bc 100644
+--- a/src/SceneNode.cpp
++++ b/src/SceneNode.cpp
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "SceneNode.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <iostream>
+ using namespace Savitar;
+ 
+@@ -121,4 +121,3 @@ std::vector< SceneNode*> SceneNode::getAllChildren()
+     }
+     return all_children;
+ }
+-
+diff --git a/src/ThreeMFParser.h b/src/ThreeMFParser.h
+index 3394683..89da659 100644
+--- a/src/ThreeMFParser.h
++++ b/src/ThreeMFParser.h
+@@ -21,7 +21,7 @@
+ 
+ #include "SavitarExport.h"
+ #include "SceneNode.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ #include <string>
+ namespace Savitar
+@@ -44,4 +44,4 @@ namespace Savitar
+         std::string sceneToString(Scene scene);
+     };
+ }
+-#endif
+\ No newline at end of file
++#endif

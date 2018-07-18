@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="WMaker DockApp: A Calendar clock with antialiased text"
-HOMEPAGE="http://www.dockapps.net/wmcalclock"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmcalclock"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext

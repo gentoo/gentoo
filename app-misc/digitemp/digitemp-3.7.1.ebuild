@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol"
-HOMEPAGE="http://www.digitemp.com/ http://www.ibutton.com/"
+HOMEPAGE="https://www.digitemp.com/ https://www.ibutton.com/"
 SRC_URI="https://github.com/bcl/digitemp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 IUSE="ds9097 ds9097u ds2490"

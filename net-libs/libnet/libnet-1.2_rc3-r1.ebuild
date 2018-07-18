@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="library providing an API for commonly used low-level network functions"
-HOMEPAGE="http://libnet-dev.sourceforge.net/"
+HOMEPAGE="http://libnet-dev.sourceforge.net/ https://github.com/sam-github/libnet"
 SRC_URI="mirror://sourceforge/project/${PN}-dev/${P/_/-}.tar.gz"
 
 LICENSE="BSD BSD-2 HPND"

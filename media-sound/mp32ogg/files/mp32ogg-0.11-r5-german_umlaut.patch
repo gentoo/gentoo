@@ -1,5 +1,5 @@
---- mp32ogg_old	2008-01-29 10:45:06.000000000 +0100
-+++ mp32ogg	2008-01-29 10:44:34.000000000 +0100
+--- a/mp32ogg
++++ b/mp32ogg
 @@ -6,6 +6,10 @@
  # <http://www.opensource.org/licenses/artistic-license.html>
  

@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>masterzorag@gmail.com</email>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="additions">Install Guest System Tools ISO</flag>
 		<flag name="chm">Install kchmviewer binary to enable online help (in MS CHM format)</flag>
@@ -17,3 +11,4 @@
 		<flag name="rdesktop-vrdp">Install the rdesktop client integration</flag>
 	</use>
 </pkgmetadata>
+

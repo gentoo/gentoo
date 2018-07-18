@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Daemon to control volume up/down and mute keys for pulseaudio"
 HOMEPAGE="https://git.xfce.org/apps/xfce4-volumed-pulse/"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

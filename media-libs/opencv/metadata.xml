@@ -27,6 +27,7 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag restrict="&gt;=media-libs/opencv-3.3.0" name="contrib_dnn">DNN module contrib requires tiny dnn</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_hdf">HDF module requires <pkg>sci-libs/hdf5</pkg></flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_sfm">SFM module requires eigen, gflags, and glog</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.4.0" name="dnn_samples">Download dnn caffeemodel samples</flag>
 		<flag name="opencl">Add support for OpenCL</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>

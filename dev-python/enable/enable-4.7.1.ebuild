@@ -14,8 +14,10 @@ SRC_URI="https://github.com/enthought/enable/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
+
+RESTRICT="test" # Until https://github.com/enthought/enable/issues/303 is solved
 
 RDEPEND="
 	dev-python/apptools[${PYTHON_USEDEP}]
@@ -34,6 +36,7 @@ DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/fonttools[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -61,9 +64,9 @@ python_compile_all() {
 
 python_test() {
 	pushd "${BUILD_DIR}"/lib > /dev/null
-	# https://github.com/enthought/enable/issues/158
-	PYTHONPATH=.:kiva \
-		virtx nosetests --verbose
+	# https://github.com/enthought/enable/issues/303
+	virtx coverage run -m nose.core enable -v
+	virtx coverage run -a -m nose.core kiva -v
 	popd > /dev/null
 }
 

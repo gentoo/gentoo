@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit linux-info python-r1 systemd user
 
 DESCRIPTION="shared storage lock manager"
@@ -12,7 +12,7 @@ SRC_URI="https://git.fedorahosted.org/cgit/${PN}.git/snapshot/${P}.tar.xz"
 
 LICENSE="LGPL-2+ GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

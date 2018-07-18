@@ -9,4 +9,5 @@
   This module provides support for writing and executing regression
   tests for Emacs Lisp code.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

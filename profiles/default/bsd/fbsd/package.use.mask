@@ -97,10 +97,6 @@ net-dns/bind gssapi
 www-client/firefox wifi
 www-client/seamonkey wifi
 
-# Naohiro Aota <naota@gentoo.org> (03 Oct 2012)
-# Mask gbm, udev is not supported on FreeBSD.
-media-libs/mesa gbm
-
 # Naohiro Aota <naota@gentoo.org> (06 Oct 2012)
 # Mask rpm, app-arch/rpm needs elfutils
 net-analyzer/net-snmp rpm

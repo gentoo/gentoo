@@ -12,6 +12,7 @@
   communicates with Emacs on standard output/input instead of using a
   socket as the Emacsclient does.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">magit/with-editor</remote-id>
 </upstream>

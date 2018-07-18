@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -18,10 +18,10 @@ RDEPEND="x11-libs/libX11
 	xinerama? ( x11-libs/libXinerama )
 	app-text/ghostscript-gpl"
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-	>=sys-apps/sed-4"
+	x11-base/xorg-proto"
 
 src_prepare() {
+	default
 	if ! use xinerama ; then
 		sed -i -e "/^XINERAMA/s/^/#/g" Makefile || die "sed Makefile"
 	fi
@@ -32,7 +32,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) || die
+	emake CC=$(tc-getCC)
 }
 
 src_install() {

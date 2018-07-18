@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,9 +51,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
-
-	eapply_user
+	default
 
 	# Sledgehammer:
 	# - respect CFLAGS
@@ -73,12 +71,8 @@ src_prepare() {
 	liblapack="lib${liblapack#-l}"
 
 	sed -i \
-		-e "s|\(JULIA_EXECUTABLE = \)\(\$(JULIAHOME)/julia\)|\1 LD_LIBRARY_PATH=\$(BUILD)/$(get_libdir) \2|" \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|LIBDIR = lib|LIBDIR = $(get_libdir)|" \
-		-e "s|/usr/lib|${EPREFIX}/usr/$(get_libdir)|" \
-		-e "s|/usr/include|${EPREFIX}/usr/include|" \
-		-e "s|\$(BUILD)/lib|\$(BUILD)/$(get_libdir)|" \
+		-e "s|GENTOOLIBDIR|$(get_libdir)|" \
 		-e "s|^JULIA_COMMIT = .*|JULIA_COMMIT = v${PV}|" \
 		-e "s|-lblas|$($(tc-getPKG_CONFIG) --libs blas)|" \
 		-e "s|= libblas|= ${libblas}|" \
@@ -138,7 +132,8 @@ src_compile() {
 
 	emake cleanall
 	emake VERBOSE=1 julia-release \
-		prefix="/usr" DESTDIR="${D}" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
+		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
+		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	pax-mark m $(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')
 	emake
 }
@@ -149,7 +144,8 @@ src_test() {
 
 src_install() {
 	emake install \
-		prefix="/usr" DESTDIR="${D}" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
+		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
+		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	cat > 99julia <<-EOF
 		LDPATH=${EROOT%/}/usr/$(get_libdir)/julia
 	EOF
@@ -162,8 +158,4 @@ src_install() {
 	mv "${ED}"/usr/share/doc/julia/{examples,html} \
 		"${ED}"/usr/share/doc/${PF} || die
 	rmdir "${ED}"/usr/share/doc/julia || die
-	if [[ $(get_libdir) != lib ]]; then
-		mkdir -p "${ED}"/usr/$(get_libdir) || die
-		mv "${ED}"/usr/lib/julia "${ED}"/usr/$(get_libdir)/julia || die
-	fi
 }

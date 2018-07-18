@@ -14,13 +14,6 @@ x11-base/xorg-drivers video_cards_glint
 # Requires masked USE flags.
 sci-libs/gdal mdb
 
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-qt/qtwebkit:5, which is a PITA to maintain on
-# minor arches and has been declared deprecated by upstream. So we'd like
-# to avoid keywording it, unless requested by users.
-dev-qt/designer webkit
-net-irc/kvirc webkit
-
 # Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
 # Masking due to unsolved dependencies
 app-admin/puppet rrdtool

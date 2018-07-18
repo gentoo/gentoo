@@ -70,13 +70,11 @@ net-libs/libpcap bluetooth
 www-client/links livecd
 
 # needs udev
-kde-frameworks/kdelibs udisks upower
+media-libs/libsdl2 kms
 media-libs/mesa gbm dri3 d3d9
 x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor
-
-# connman is Linux only
-dev-qt/qtbearer connman
+media-libs/gst-plugins-base gbm
 
 # udisks is linux only (for now?)
 gnome-base/gvfs udisks

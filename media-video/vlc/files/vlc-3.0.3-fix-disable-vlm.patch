@@ -1,0 +1,42 @@
+From 49450a4ab90bba8530764c5cdb95d648aeda7d52 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Hugo=20Beauz=C3=A9e-Luyssen?= <hugo@beauzee.fr>
+Date: Mon, 28 May 2018 18:25:15 +0200
+Subject: [PATCH] qt: Fix build with --disable-vlm
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+Fix #20495
+
+(cherry picked from commit 44a635bd4ae16fec5295f6f8aee4dd2ffd7e97d8)
+Signed-off-by: Hugo BeauzÃ©e-Luyssen <hugo@beauzee.fr>
+---
+ modules/gui/qt/Makefile.am | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/modules/gui/qt/Makefile.am b/modules/gui/qt/Makefile.am
+index cb77b14d96..c67f4afc13 100644
+--- a/modules/gui/qt/Makefile.am
++++ b/modules/gui/qt/Makefile.am
+@@ -191,7 +191,6 @@ nodist_libqt_plugin_la_SOURCES = \
+ 	gui/qt/dialogs/open.moc.cpp \
+ 	gui/qt/dialogs/openurl.moc.cpp \
+ 	gui/qt/dialogs/podcast_configuration.moc.cpp \
+-	gui/qt/dialogs/vlm.moc.cpp \
+ 	gui/qt/dialogs/firstrun.moc.cpp \
+ 	gui/qt/dialogs/extensions.moc.cpp \
+ 	gui/qt/dialogs/fingerprintdialog.moc.cpp \
+@@ -445,6 +444,10 @@ EXTRA_DIST += gui/qt/vlc.qrc $(libqt_plugin_la_RES)
+ 
+ nodist_libqt_plugin_la_SOURCES += gui/qt/resources.cpp
+ 
++if ENABLE_VLM
++nodist_libqt_plugin_la_SOURCES += gui/qt/dialogs/vlm.moc.cpp
++endif
++
+ gui/qt/resources.cpp: gui/qt/vlc.qrc $(libqt_plugin_la_RES)
+ 	$(AM_V_GEN)$(RCC) -name vlc -o $@ $<
+ 
+-- 
+2.11.0
+

@@ -23,7 +23,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	sys-devel/bc
-	x11-proto/xextproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {

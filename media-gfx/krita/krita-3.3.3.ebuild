@@ -58,7 +58,7 @@ COMMON_DEPEND="
 	)
 	pdf? ( app-text/poppler[qt5] )
 	qtmedia? ( $(add_qt_dep qtmultimedia) )
-	raw? ( media-libs/libraw:= )
+	raw? ( <media-libs/libraw-0.19:= )
 	tiff? ( media-libs/tiff:0 )
 "
 DEPEND="${COMMON_DEPEND}

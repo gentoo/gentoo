@@ -36,7 +36,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
 	media-libs/libwebp:=
-	media-libs/mesa
+	media-libs/mesa[egl]
 	media-libs/opus
 	net-libs/libsrtp:0=
 	sys-apps/dbus

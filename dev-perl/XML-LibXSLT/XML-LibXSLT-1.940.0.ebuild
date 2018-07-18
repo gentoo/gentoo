@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-maco
 IUSE=""
 
 RDEPEND="
-	>=dev-libs/libxslt-1.1.28
+	>=dev-libs/libxslt-1.1.32
 	>=dev-perl/XML-LibXML-1.700.0
 "
 DEPEND="${RDEPEND}

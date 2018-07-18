@@ -3,13 +3,13 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
 
 inherit python-r1
 
 DESCRIPTION="A Virtual for Python function signatures from PEP362 (py3.6 variant)"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="A usable configuration management system"
-HOMEPAGE="http://www.nico.schottelius.org/software/cdist/"
+HOMEPAGE="https://www.nico.schottelius.org/software/cdist/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

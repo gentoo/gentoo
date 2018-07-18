@@ -4,5 +4,7 @@
 <!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">gns-3</remote-id>
+		<remote-id type="github">GNS3/gns3-server</remote-id>
+		<bugs-to>https://github.com/GNS3/gns3-server/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

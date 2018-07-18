@@ -48,7 +48,7 @@ RDEPEND="
 		x11-libs/libXtst
 	)
 	udev? (
-		virtual/udev
+		virtual/libudev:=
 	)
 	xvmc? (
 		x11-libs/libXvMC

@@ -8,4 +8,11 @@
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
+<use>
+	<flag name="firefox">Install plugin for <pkg>www-client/firefox</pkg></flag>
+	<flag name="firefox-bin">Install plugin for <pkg>www-client/firefox-bin</pkg></flag>
+</use>
+<upstream>
+	<remote-id type="github">passff/passff</remote-id>
+</upstream>
 </pkgmetadata>

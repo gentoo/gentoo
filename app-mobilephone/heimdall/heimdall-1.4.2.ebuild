@@ -6,12 +6,12 @@ EAPI=6
 inherit cmake-utils udev
 
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="https://github.com/Benjamin-Dobell/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.com/BenjaminDobell/Heimdall/-/archive/v${PV}/Heimdall-v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/Heimdall-${PV}"
+	S="${WORKDIR}/Heimdall-v${PV}"
 else
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/Benjamin-Dobell/Heimdall.git"
+	EGIT_REPO_URI="https://gitlab.com/BenjaminDobell/Heimdall.git"
 fi
 
 DESCRIPTION="Tool suite used to flash firmware onto Samsung Galaxy S devices"

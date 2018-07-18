@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Breeze SVG icon theme binary resource"
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -30,4 +30,13 @@ src_configure() {
 		-DSKIP_INSTALL_ICONS=ON
 	)
 	kde5_src_configure
+}
+
+src_test() {
+	# bug: 655586
+	local myctestargs=(
+		-E "(scalable)"
+	)
+
+	kde5_src_test
 }

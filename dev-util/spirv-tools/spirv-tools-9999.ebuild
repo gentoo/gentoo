@@ -17,7 +17,7 @@ SLOT="0"
 RESTRICT="test"
 
 RDEPEND=""
-DEPEND="dev-util/spirv-headers"
+DEPEND=">=dev-util/spirv-headers-1.3.1_pre20180710"
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -32,6 +32,5 @@ multilib_src_install() {
 
 	# create a header file with the commit hash of the current revision
 	# vulkan-tools needs this to build
-	local revision="$(git-r3_peek_remote_ref)" &> /dev/null
-	echo "${revision}" > "${D}/usr/include/${PN}/${PN}-commit.h" || die
+	echo "${EGIT_VERSION}" > "${D}/usr/include/${PN}/${PN}-commit.h" || die
 }

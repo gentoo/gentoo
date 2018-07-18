@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="mouse tool for advanced features such as wheels and 3+ buttons"
 HOMEPAGE="http://imwheel.sourceforge.net/"
@@ -25,18 +25,12 @@ DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
 src_prepare() {
+	default
 	sed -i -e "s:/etc:${D}/etc:g" Makefile.am || die
 	eautoreconf
 }
 
 src_configure() {
-	local myconf
 	# don't build gpm stuff
-	myconf="--disable-gpm --disable-gpm-doc"
-	econf ${myconf} || die "configure failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS BUGS ChangeLog EMACS M-BA47 NEWS README TODO
+	econf --disable-gpm --disable-gpm-doc
 }

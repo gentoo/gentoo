@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Openbox app which acts as a system tray for KDE and GNOME2"
-HOMEPAGE="http://icculus.org/openbox/2/docker/"
-SRC_URI="http://icculus.org/openbox/2/${PN}/${P}.tar.gz"
+HOMEPAGE="https://icculus.org/openbox/2/docker/"
+SRC_URI="https://icculus.org/openbox/2/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -103,7 +103,7 @@ src_prepare() {
 
 	default
 	# build system is very eager to run automake itself: bug #625166
-	eautomake
+	eautoreconf
 
 	# guile is trying to avoid recompilation by checking if file
 	#     /usr/lib64/guile/2.2/site-ccache/guix/modules.go

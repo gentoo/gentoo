@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools linux-info
 
 DESCRIPTION="interactive process viewer"
-HOMEPAGE="http://hisham.hm/htop/"
-SRC_URI="http://hisham.hm/htop/releases/${PV}/${P}.tar.gz"
+HOMEPAGE="https://hisham.hm/htop/"
+SRC_URI="https://hisham.hm/htop/releases/${PV}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

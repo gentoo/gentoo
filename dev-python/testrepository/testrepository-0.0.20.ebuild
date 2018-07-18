@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -37,6 +37,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 PATCHES=(
 	"${FILESDIR}"/${P}-test-backport.patch
 	"${FILESDIR}"/${P}-test-backport1.patch
+	"${FILESDIR}"/${P}-test-backport2.patch
 )
 
 python_test() {

@@ -125,6 +125,9 @@ src_configure() {
 		replace-flags "-O[3-9]" -O2
 	fi
 
+	# Don't trigger a floating point exception for NaNs on alpha
+	use alpha && append-flags -mieee
+
 	local myconf
 
 	if use alsa; then

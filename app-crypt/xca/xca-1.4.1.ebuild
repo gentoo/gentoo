@@ -11,10 +11,11 @@ SRC_URI="https://github.com/chris2511/${PN}/releases/download/RELEASE.${PV}/${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="bindist doc libressl"
 
 RDEPEND="
+	dev-libs/libltdl:0=
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	!libressl? ( dev-libs/openssl:0=[bindist=] )

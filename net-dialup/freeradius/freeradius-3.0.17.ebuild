@@ -20,8 +20,8 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="
-	debug firebird iodbc kerberos ldap libressl mysql odbc oracle pam pcap
-	postgres python readline sqlite ssl
+	debug firebird iodbc kerberos ldap libressl memcached mysql odbc oracle pam
+	pcap postgres python readline rest samba sqlite ssl
 "
 RESTRICT="test firebird? ( bindist )"
 
@@ -34,12 +34,15 @@ RDEPEND="!net-dialup/cistronradius
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	pcap? ( net-libs/libpcap )
+	memcached? ( dev-libs/libmemcached )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )
+	rest? ( dev-libs/json-c:= )
+	samba? ( net-fs/samba )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
+		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	ldap? ( net-nds/openldap )
@@ -73,8 +76,12 @@ src_prepare() {
 	use ssl || { rm -r src/modules/rlm_eap/types/rlm_eap_{tls,ttls,peap} || die ; }
 	use ldap || { rm -r src/modules/rlm_ldap || die ; }
 	use kerberos || { rm -r src/modules/rlm_krb5 || die ; }
+	use memcached || { rm -r src/modules/rlm_cache/drivers/rlm_cache_memcached || die ; }
 	use pam || { rm -r src/modules/rlm_pam || die ; }
 	use python || { rm -r src/modules/rlm_python || die ; }
+	use rest || { rm -r src/modules/rlm_rest || die ; }
+	# can't just nuke rlm_mschap because many modules rely on smbdes.h
+	use samba || { rm -r src/modules/rlm_mschap/{configure,*.mk} || die ; }
 	# Do not install ruby rlm module, bug #483108
 	rm -r src/modules/rlm_ruby || die
 

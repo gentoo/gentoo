@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
-		CPUBurn is the ultimate stability testing tool for overclockers. The
-		program heats up any x86 CPU to the maximum possible operating
-		temperature that is achievable by using ordinary software.
+		CPU testing utilities in optimized assembler for maximum loading
+		P6 (Intel Pentium Pro/II/III and Celeron TM),
+		AMD K7 (Athlon/Duron/Thunderbird TM),
+		AMD K6, and Intel P5 Pentium chips. 
 	</longdescription>
 </pkgmetadata>

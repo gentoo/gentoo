@@ -15,7 +15,7 @@ EGIT_BRANCH="devel"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="doc test"
 
 RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
@@ -32,6 +32,7 @@ RDEPEND="
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
@@ -42,6 +43,14 @@ DEPEND="
 		dev-vcs/git
 	)"
 
+python_compile_all() {
+	if use doc; then
+		cd docs/docsite || die
+		export CPUS=4
+		emake -f Makefile.sphinx html
+	fi
+}
+
 python_prepare_all() {
 	rm -fv MANIFEST.in || die
 	distutils-r1_python_prepare_all
@@ -51,11 +60,8 @@ python_test() {
 	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
 }
 
-python_compile_all() {
-	emake -j1 docs
-}
-
 python_install_all() {
+	use doc && local HTML_DOCS=( docs/docsite/_build/html/. )
 	distutils-r1_python_install_all
 
 	doman docs/man/man1/*.1

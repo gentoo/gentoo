@@ -36,6 +36,10 @@ DEPEND="
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/vcrpy-skip-network-tests.patch
+)
+
 python_test() {
 	py.test -vv -x tests/unit || die
 }

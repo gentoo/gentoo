@@ -1,0 +1,11 @@
+--- a/configure.ac.~1~	2017-12-15 10:43:40.000000000 +0100
++++ b/configure.ac	2017-12-25 11:02:19.099076831 +0100
+@@ -3233,7 +3233,7 @@
+ 	[linux* | gnu* | k*bsd*-gnu | netbsd* | bsdi* | kopensolaris*-gnu | haiku*], [
+ 			: ${LDSHARED='$(CC) -shared'}
+ 			AS_IF([test "$rb_cv_binary_elf" = yes], [
+-			    LDFLAGS="$LDFLAGS -Wl,-export-dynamic"
++			    LDFLAGS="$LDFLAGS -Wl,-export-dynamic -Wl,--no-undefined"
+ 			])
+ 			rb_cv_dlopen=yes],
+ 	[interix*], [	: ${LDSHARED='$(CC) -shared'}

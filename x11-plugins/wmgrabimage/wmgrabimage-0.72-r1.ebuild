@@ -8,8 +8,8 @@ inherit eutils
 MY_PN=${PN/grabi/GrabI}
 
 DESCRIPTION="wmGrabImage grabs an image from the WWW and displays it"
-HOMEPAGE="http://www.dockapps.net/wmgrabimage"
-SRC_URI="http://www.dockapps.net/download/${MY_PN}-${PV}.tgz"
+HOMEPAGE="https://www.dockapps.net/wmgrabimage"
+SRC_URI="https://www.dockapps.net/download/${MY_PN}-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -34,7 +34,7 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="debug emacs fcitx4 +gui +handwriting-tegaki handwriting-tomoe ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus ) gui? ( ^^ ( handwriting-tegaki handwriting-tomoe ) ) !gui? ( !handwriting-tegaki !handwriting-tomoe )"
 
@@ -85,8 +85,8 @@ src_unpack() {
 
 		if use fcitx4; then
 			local EGIT_SUBMODULES=()
-			git-r3_fetch https://github.com/fcitx/mozc refs/heads/fcitx
-			git-r3_checkout https://github.com/fcitx/mozc "${WORKDIR}/fcitx-mozc"
+			git-r3_fetch https://gitlab.com/fcitx/mozc.git refs/heads/fcitx
+			git-r3_checkout https://gitlab.com/fcitx/mozc.git "${WORKDIR}/fcitx-mozc"
 		fi
 	else
 		unpack ${P}.tar.gz
@@ -99,6 +99,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_build.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_skipping.patch"
 

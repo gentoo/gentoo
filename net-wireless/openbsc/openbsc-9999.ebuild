@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools git-2 eutils
+inherit autotools eutils git-r3
 
 DESCRIPTION="OpenBSC, OsmoSGSN, OsmoBSC and other programs"
 HOMEPAGE="http://openbsc.osmocom.org/trac/wiki/OpenBSC"
@@ -25,7 +25,6 @@ RDEPEND="${DEPEND}
 	dev-db/sqlite:3"
 
 S="${WORKDIR}/${P}/${PN}"
-EGIT_SOURCEDIR="${WORKDIR}/${P}"
 
 src_prepare() {
 	epatch_user

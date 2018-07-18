@@ -1,0 +1,21 @@
+--- a/ada/testsuite/testsuite_support/capi_driver.py	2017-07-30 16:01:31.495287196 +0200
++++ b/ada/testsuite/testsuite_support/capi_driver.py	2017-07-30 16:00:08.104464440 +0200
+@@ -72,6 +72,7 @@
+                        --  different default standard.
+ 
+                        "-I{support_include_dir}", "-g");
++                   for Driver ("C") use External ("GCC", "gcc");
+                 end Compiler;
+             end P;
+             '''.format(main_source=compile_units[0],
+--- a/ada/testsuite/tests/c_api/unit_file_providers/test.out	2018-07-05 20:57:15.718357269 +0200
++++ b/ada/testsuite/tests/c_api/unit_file_providers/test.out	2018-07-05 20:58:47.363026320 +0200
+@@ -5,6 +5,8 @@
+ Calling ufp_get_unit_filename (some_field=42, kind=0) with name: "foo"
+ Calling ufp_get_file_from_name (some_field=42, kind=0) with name: "foo"
+ Calling ufp_get_file_from_name (some_field=42, kind=0) with name: "foo"
++Calling ufp_get_unit_filename (some_field=42, kind=0) with name: "foo"
++Calling ufp_get_file_from_name (some_field=42, kind=0) with name: "foo"
+ <DottedName 5:17-5:22> resolves to:
+   <ObjectDecl ["I"] 2:4-2:21>
+ Calling ufp_destroy (some_field=42)

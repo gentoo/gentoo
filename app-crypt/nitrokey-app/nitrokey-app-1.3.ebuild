@@ -36,10 +36,15 @@ DEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
-pkg_postinst(){
+src_prepare() {
+	cmake-utils_src_prepare
+	sed -i '/^qt5_add_resources/d' CMakeLists.txt || die
+}
+
+pkg_postinst() {
 	gnome2_icon_cache_update
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	gnome2_icon_cache_update
 }

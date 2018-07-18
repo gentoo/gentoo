@@ -5,7 +5,7 @@ EAPI=5
 
 JAVA_PKG_IUSE="source"
 
-inherit eutils fdo-mime java-pkg-2 java-ant-2 versionator
+inherit eutils java-pkg-2 java-ant-2 versionator xdg-utils
 
 MY_PV=$(replace_all_version_separators "")
 
@@ -129,9 +129,9 @@ pkg_postinst() {
 	elog "Using this config file you can start the console UI."
 	elog
 
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

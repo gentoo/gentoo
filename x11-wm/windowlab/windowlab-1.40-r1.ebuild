@@ -11,7 +11,7 @@ SRC_URI="http://www.nickgravgaard.com/${PN}/${P}.tar"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ppc x86"
 IUSE="truetype"
 
 RDEPEND="truetype? ( x11-libs/libXft )
@@ -33,8 +33,7 @@ pkg_setup() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc CHANGELOG README TODO
+	default
 
 	exeinto /etc/X11/Sessions
 	cat <<- EOF > "${T}"/${PN}

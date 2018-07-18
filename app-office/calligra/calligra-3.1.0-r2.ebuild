@@ -142,6 +142,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-arch-detection.patch
 	"${FILESDIR}"/${P}-doc.patch
 	"${FILESDIR}"/${P}-qt-5.11.patch
+	"${FILESDIR}"/${P}-stage-qt-5.11.patch
 )
 
 pkg_pretend() {

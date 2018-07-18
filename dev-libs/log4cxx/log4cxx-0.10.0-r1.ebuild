@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,7 @@ src_configure() {
 	econf \
 		--disable-doxygen \
 		--disable-html-docs \
-		--with-apr-util="${SYSROOT:-${EPREFIX}}/usr" \
+		--with-apr-util="${SYSROOT}${EPREFIX}/usr" \
 		$(use_with smtp SMTP libesmtp) \
 		$(use_with odbc ODBC $(usex iodbc iODBC unixODBC)) \
 		--with-charset=$(usex unicode utf-8 auto)

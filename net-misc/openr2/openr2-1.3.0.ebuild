@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="An open implementation of the MFC/R2 telephony signaling protocol"
-HOMEPAGE="http://libopenr2.org/"
+HOMEPAGE="https://libopenr2.org/"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

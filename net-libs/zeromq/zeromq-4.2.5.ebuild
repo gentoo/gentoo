@@ -12,7 +12,7 @@ SRC_URI="https://github.com/zeromq/libzmq/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="doc pgm +sodium static-libs test unwind elibc_Darwin"
+IUSE="doc drafts pgm +sodium static-libs test unwind elibc_Darwin"
 
 RDEPEND="
 	!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) )
@@ -39,6 +39,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--enable-shared
+		$(use_enable drafts)
 		$(use_enable static-libs static)
 		$(use_enable unwind libunwind)
 		$(use_with sodium libsodium)

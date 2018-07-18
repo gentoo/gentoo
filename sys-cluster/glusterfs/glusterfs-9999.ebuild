@@ -67,8 +67,6 @@ SITEFILE="50${PN}-mode-gentoo.el"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.12.2-poisoned-sysmacros.patch"
 	"${FILESDIR}/${PN}-4.1.0-silent_rules.patch"
-	"${FILESDIR}/${PN}-without-ipv6-default.patch"
-	"${FILESDIR}/${PN}-TIRPC-config-summary.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
@@ -102,6 +100,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# --without-ipv6-default and --with-libtirpc don't do what you they
+	# do. Chewi has given up fighting with upstream about this.
+	# https://bugzilla.redhat.com/show_bug.cgi?id=1553926
+
 	econf \
 		--disable-dependency-tracking \
 		--disable-silent-rules \
@@ -120,8 +122,8 @@ src_configure() {
 		$(use_enable test cmocka) \
 		$(use_enable tiering) \
 		$(use_enable xml xml-output) \
-		$(use_with ipv6 ipv6-default) \
-		$(use_with libtirpc) \
+		$(use libtirpc || echo --without-libtirpc) \
+		$(use ipv6 && echo --with-ipv6-default) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var

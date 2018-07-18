@@ -1,0 +1,112 @@
+--- advancemenu-2.9/advance/advance.mak
++++ advancemenu-2.9/advance/advance.mak
+@@ -284,45 +284,45 @@
+ # Common install
+ 
+ pkgdir = $(datadir)/advance
+-pkgdocdir = $(docdir)/advance
++pkgdocdir = $(docdir)
+ 
+ install-dirs:
+-	-$(INSTALL_PROGRAM_DIR) $(bindir)
+-	-$(INSTALL_DATA_DIR) $(pkgdir)
+-	-$(INSTALL_DATA_DIR) $(pkgdocdir)
+-	-$(INSTALL_MAN_DIR) $(mandir)/man1
++	-$(INSTALL_PROGRAM_DIR) $(DESTDIR)$(bindir)
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdocdir)
++	-$(INSTALL_MAN_DIR) $(DESTDIR)$(mandir)/man1
+ ifneq ($(wildcard $(EMUSRC)),)
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/rom
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/sample
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/artwork
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/image
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/crc
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/snap
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/rom
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/sample
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/artwork
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/image
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/crc
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/snap
+ endif
+ 
+ install-data: $(INSTALL_DATAFILES) $(INSTALL_ROMFILES) $(INSTALL_SAMPLEFILES) $(INSTALL_SNAPFILES)
+ ifdef INSTALL_DATAFILES
+ 	@for i in $(INSTALL_DATAFILES); do \
+ 		echo "$(INSTALL_DATA) $$i $(pkgdir)"; \
+-		$(INSTALL_DATA) $$i $(pkgdir); \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir); \
+ 	done
+ endif
+ ifdef INSTALL_ROMFILES
+ 	@for i in $(INSTALL_ROMFILES); do \
+ 		echo "$(INSTALL_DATA) $$i $(pkgdir)/rom"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/rom; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/rom; \
+ 	done
+ endif
+ ifdef INSTALL_SAMPLEFILES
+ 	@for i in $(INSTALL_SAMPLEFILES); do \
+ 		echo "$(INSTALL_DATA) $$i $(pkgdir)/sample"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/sample; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/sample; \
+ 	done
+ endif
+ ifdef INSTALL_SNAPFILES
+ 	@for i in $(INSTALL_SNAPFILES); do \
+ 		echo "$(INSTALL_DATA) $$i $(pkgdir)/snap"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/snap; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/snap; \
+ 	done
+ endif
+ 
+@@ -351,7 +351,7 @@
+ install-bin: $(INSTALL_BINFILES)
+ 	@for i in $(INSTALL_BINFILES); do \
+ 		echo "$(INSTALL_PROGRAM) $$i $(bindir)"; \
+-		$(INSTALL_PROGRAM) $$i $(bindir); \
++		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(bindir); \
+ 	done
+ 
+ uninstall-bin:
+@@ -363,7 +363,7 @@
+ ifdef INSTALL_DOCFILES
+ 	@for i in $(INSTALL_DOCFILES); do \
+ 		echo "$(INSTALL_DATA) $$i $(pkgdocdir)"; \
+-		$(INSTALL_DATA) $$i $(pkgdocdir); \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdocdir); \
+ 	done
+ endif
+ 
+@@ -378,7 +378,7 @@
+ ifdef INSTALL_MANFILES
+ 	@for i in $(INSTALL_MANFILES); do \
+ 		echo "$(INSTALL_DATA) $$i $(mandir)/man1"; \
+-		$(INSTALL_DATA) $$i $(mandir)/man1; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(mandir)/man1; \
+ 	done
+ endif
+ 
+@@ -401,7 +401,7 @@
+ 	-rmdir $(pkgdocdir)
+ endif
+ 
+-install: install-dirs install-bin install-data install-doc install-man
++install: install-dirs install-bin install-data
+ 
+ uninstall: uninstall-bin uninstall-data uninstall-doc uninstall-man uninstall-dirs
+ 
+--- advancemenu-2.9/configure.ac
++++ advancemenu-2.9/configure.ac
+@@ -1158,8 +1158,8 @@
+ 
+ dnl Final
+ AC_SUBST([CONF_LIB_DIRECT],[$ac_lib_direct_flag])
+-AC_SUBST([mandir],['${prefix}/man'])
+-AC_SUBST([docdir],['${prefix}/doc'])
++AC_SUBST([mandir],['${prefix}/share/man'])
++AC_SUBST([docdir],['${prefix}/share/doc/${PF}'])
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+ 

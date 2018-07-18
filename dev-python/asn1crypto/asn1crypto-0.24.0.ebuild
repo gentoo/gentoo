@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/wbond/asn1crypto/archive/${PV}.tar.gz -> ${P}.gh.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc ~x86 ~amd64-fbsd ~x64-macos ~x64-solaris"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc ~x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 
 RDEPEND=""

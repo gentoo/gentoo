@@ -13,6 +13,8 @@
 	</longdescription>
 	<use>
 		<flag name="suexec">Install suexec with apache</flag>
+		<flag name="suexec-caps">Install suexec with capabilities instead of SUID</flag>
+		<flag name="suexec-syslog">Log suexec to syslog instead of to a separate file</flag>
 		<flag name="static">Link in apache2 modules statically rather then plugins</flag>
 		<flag name="apache2_modules_access_compat">Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.</flag>
 		<flag name="apache2_modules_authn_core">Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).</flag>
@@ -28,6 +30,7 @@
 		<flag name="apache2_modules_lbmethod_bybusyness">Pending request counting load balancer scheduler algorithm for proxy_balancer.</flag>
 		<flag name="apache2_modules_lbmethod_heartbeat">Heartbeat traffic counting load balancer scheduler algorithm for proxy_balancer.</flag>
 		<flag name="apache2_modules_macro">Macros for the Apache config file.</flag>
+		<flag name="apache2_modules_md">Managing domains across virtual hosts, certificate provisioning via the ACME protocol.</flag>
 		<flag name="apache2_modules_slotmem_shm">Slot-based shared memory provider.</flag>
 		<flag name="apache2_modules_socache_shmcb">A shared object cache provider using a high-performance cyclic buffer inside a shared memory segment.</flag>
 		<flag name="apache2_modules_unixd">Basic (required) security for Unix-family platforms.</flag>

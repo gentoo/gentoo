@@ -20,9 +20,6 @@ app-emulation/winetricks
 app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-lang/icc
-dev-lang/idb
-dev-lang/ifc
 dev-perl/Archive-Rar
 dev-util/android-sdk-update-manager
 dev-util/android-ndk
@@ -118,7 +115,6 @@ sci-chemistry/cara-bin
 sci-chemistry/mars
 sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
 
 # AMD64 Team; <amd64@gentoo.org>
 # grub-1 is not available on no-multilib-profiles;

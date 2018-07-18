@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,10 +27,11 @@ CDEPEND="
 	sys-apps/systemd
 "
 DEPEND="${CDEPEND}
-	>=dev-libs/boost-1.45
 	sys-devel/gettext
 "
 RDEPEND="${CDEPEND}
 	!kde-misc/kcmsystemd:4
 	!kde-misc/systemd-kcm:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11b3.patch" )

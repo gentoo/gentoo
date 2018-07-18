@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_PN}-code-${COMMIT}"
 
-PATCHES=( "${FILESDIR}"/${P}-qt5.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-qt5.patch
+	"${FILESDIR}"/${P}-qt5.11.patch
+)
 
 src_configure() {
 	pushd src >/dev/null

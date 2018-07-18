@@ -3,17 +3,15 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="Extended-Rice lossless compression algorithm implementation"
 HOMEPAGE="http://www.hdfgroup.org/doc_resource/SZIP/"
 SRC_URI="ftp://ftp.hdfgroup.org/lib-external/${PN}/${PV}/src/${P}.tar.gz"
-LICENSE="szip"
 
+LICENSE="szip"
 SLOT="0/2"
 KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-
 IUSE="static-libs"
+
 RDEPEND="!sci-libs/libaec[szip]"
 DEPEND=""
 
@@ -25,5 +23,8 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }

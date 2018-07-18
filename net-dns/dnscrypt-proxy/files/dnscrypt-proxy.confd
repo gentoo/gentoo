@@ -1,0 +1,4 @@
+#rc_use="tor"
+#DNSCRYPT_PROXY_OPTS="-config /etc/dnscrypt-proxy/dnscrypt-proxy.toml"
+#DNSCRYPT_PROXY_USER="dnscrypt-proxy"
+#DNSCRYPT_PROXY_GROUP="dnscrypt-proxy"

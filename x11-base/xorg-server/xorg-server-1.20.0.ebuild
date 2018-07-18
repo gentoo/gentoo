@@ -3,6 +3,7 @@
 
 EAPI=5
 
+XORG_EAUTORECONF=yes
 XORG_DOC=doc
 inherit xorg-2 multilib versionator flag-o-matic
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
@@ -69,7 +70,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-10.3.4-r1
 	)
-	udev? ( >=virtual/udev-150 )
+	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
@@ -109,6 +110,7 @@ REQUIRED_USE="!minimal? (
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
+	"${FILESDIR}"/${P}-xfree86-Inline-xf86-Read-Write-Mmio-8-16-32-on-alpha.patch
 )
 
 PATCHES=(

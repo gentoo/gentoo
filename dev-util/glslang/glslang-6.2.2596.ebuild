@@ -7,7 +7,7 @@ inherit cmake-multilib cmake-utils vcs-snapshot
 
 SNAPSHOT_COMMIT="6.2.2596"
 SRC_URI="https://github.com/KhronosGroup/${PN}/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator"
 HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/"

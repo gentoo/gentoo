@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 libtool ltprune toolchain-funcs multilib-minimal
@@ -41,7 +41,7 @@ src_prepare() {
 	elibtoolize
 
 	# don't let python README kill main README #60043
-	mv python/README{,.python} || die
+	mv python/README.md README.python || die
 }
 
 multilib_src_configure() {
@@ -112,6 +112,11 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc ChangeLog MAINT README
+
+	# Required for `file -C`
+	dodir /usr/share/misc/magic
+	insinto /usr/share/misc/magic
+	doins -r magic/Magdir/*
 
 	if use python ; then
 		cd python || die
