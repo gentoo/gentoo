@@ -16,9 +16,7 @@ PATCHES=(
 	"${FILESDIR}"/${PF}-gentoo.patch
 )
 
-src_prepare() {
-	default
-
+src_configure() {
 	tc-export CC PKG_CONFIG
 }
 
