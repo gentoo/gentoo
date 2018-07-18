@@ -11,13 +11,14 @@ SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="nls"
 
 DEPEND="
-	sys-devel/gettext
+	nls? ( sys-devel/gettext )
 "
 
 RDEPEND="
-	virtual/libintl
+	nls? ( virtual/libintl )
 "
 
 PATCHES=(
@@ -25,6 +26,13 @@ PATCHES=(
 )
 
 src_configure() {
+	if ! use nls; then
+		sed -i \
+			-e '/^all:/s|locales||g' \
+			-e '/^install:/s|install-locale-data||g' \
+			Makefile || die
+	fi
+
 	tc-export CC PKG_CONFIG
 }
 
