@@ -50,7 +50,7 @@ RDEPEND="
 		)
 		dev-libs/icu:=
 		dev-libs/glib
-		dev-libs/boost:=
+		>=dev-libs/boost-1.65.0:=
 		dev-libs/openssl:0=
 		dev-libs/zookeeper-c
 		kafka? ( dev-libs/librdkafka:= )
@@ -81,7 +81,7 @@ DEPEND="${RDEPEND}
 		)
 		dev-libs/icu[static-libs]
 		dev-libs/glib[static-libs]
-		dev-libs/boost[static-libs]
+		>=dev-libs/boost-1.65.0[static-libs]
 		dev-libs/openssl[static-libs]
 		dev-libs/zookeeper-c[static-libs]
 		virtual/libmysqlclient[static-libs]
@@ -90,6 +90,7 @@ DEPEND="${RDEPEND}
 
 	sys-libs/libtermcap-compat
 	dev-util/patchelf
+	>=sys-devel/lld-6.0.0
 	|| (
 		>=sys-devel/gcc-7.0
 		>=sys-devel/clang-6.0
@@ -178,11 +179,11 @@ src_install() {
 	fi
 
 	if use doc; then
-		pushd "${S}/docs" || die "Failed to enter docs build directory"
-		./build.sh || die "Failed to build docs"
+		pushd "${S}/docs/tools" || die "Failed to enter docs build directory"
+		./build.py || die "Failed to build docs"
 		popd || die "Failed to exit docs build directory"
 
-		dodoc -r "${S}/docs/build/docs"
+		dodoc -r "${S}/docs/build"
 	fi
 
 	if use server; then
