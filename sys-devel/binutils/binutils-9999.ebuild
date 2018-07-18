@@ -20,6 +20,7 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                      Default: dilfridge :)
 
 PATCH_VER=1
+PATCH_BINUTILS_VER=9999
 
 case ${PV} in
 	9999)
@@ -34,13 +35,13 @@ case ${PV} in
 		inherit git-r3
 		S=${WORKDIR}/binutils
 		EGIT_CHECKOUT_DIR=${S}
-		EGIT_BRANCH=${PV%.9999}
+		EGIT_BRANCH=$(get_version_component_range 1-2)
 		EGIT_BRANCH="binutils-${EGIT_BRANCH/./_}-branch"
-		SLOT=${PV%.9999}
+		SLOT=$(get_version_component_range 1-2)
 		;;
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
-		SLOT=${PV}
+		SLOT=$(get_version_component_range 1-2)
 		;;
 esac
 

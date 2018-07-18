@@ -3,6 +3,8 @@
 
 EAPI=6
 
+export CTARGET=hppa64-${CHOST#*-}
+
 inherit eutils libtool flag-o-matic gnuconfig multilib versionator
 
 DESCRIPTION="Tools necessary to build programs"
@@ -20,35 +22,27 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                      Default: dilfridge :)
 
 PATCH_VER=1
-PATCH_BINUTILS_VER=9999
 
 case ${PV} in
 	9999)
+		BVER="git"
 		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
 		inherit git-r3
 		S=${WORKDIR}/binutils
 		EGIT_CHECKOUT_DIR=${S}
-		SLOT=${PV}
-		;;
-	*.9999)
-		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
-		inherit git-r3
-		S=${WORKDIR}/binutils
-		EGIT_CHECKOUT_DIR=${S}
-		EGIT_BRANCH=$(get_version_component_range 1-2)
-		EGIT_BRANCH="binutils-${EGIT_BRANCH/./_}-branch"
-		SLOT=$(get_version_component_range 1-2)
 		;;
 	*)
-		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
-		SLOT=$(get_version_component_range 1-2)
+		BVER=${PV}
+		SRC_URI="mirror://gnu/binutils/binutils-${BVER}.tar.xz https://sourceware.org/pub/binutils/releases/binutils-${BVER}.tar.xz"
 		;;
 esac
+SLOT=$(get_version_component_range 1-2)
+#KEYWORDS="-* ~hppa"
 
 #
 # The Gentoo patchset
 #
-PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${PV}}
+PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${BVER}}
 PATCH_DEV=${PATCH_DEV:-dilfridge}
 
 [[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
@@ -87,16 +81,17 @@ if is_cross ; then
 fi
 
 MY_BUILDDIR=${WORKDIR}/build
+S=${WORKDIR}/${P/-hppa64/}
 
 src_unpack() {
 	case ${PV} in
-		*9999)
-			git-r3_src_unpack
+		9999)
+			git-r3_src_unpack;
 			;;
 		*)
+			default
 			;;
 	esac
-	default
 	mkdir -p "${MY_BUILDDIR}"
 }
 
@@ -147,21 +142,20 @@ toolchain-binutils_bugurl() {
 	printf "https://bugs.gentoo.org/"
 }
 toolchain-binutils_pkgversion() {
-	printf "Gentoo ${PV}"
+	printf "Gentoo ${BVER}"
 	[[ -n ${PATCH_VER} ]] && printf " p${PATCH_VER}"
 }
 
 src_configure() {
 	# Setup some paths
-	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
+	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${BVER}
 	INCPATH=${LIBPATH}/include
-	DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
+	DATAPATH=/usr/share/binutils-data/${CTARGET}/${BVER}
 	if is_cross ; then
-		TOOLPATH=/usr/${CHOST}/${CTARGET}
+		BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${BVER}
 	else
-		TOOLPATH=/usr/${CTARGET}
+		BINPATH=/usr/${CTARGET}/binutils-bin/${BVER}
 	fi
-	BINPATH=${TOOLPATH}/binutils-bin/${PV}
 
 	# Make sure we filter $LINGUAS so that only ones that
 	# actually work make it through #42033
@@ -263,8 +257,7 @@ src_configure() {
 
 src_compile() {
 	cd "${MY_BUILDDIR}"
-	# see Note [tooldir hack for ldscripts]
-	emake tooldir="${EPREFIX}${TOOLPATH}" all
+	emake all
 
 	# only build info pages if the user wants them
 	if use doc ; then
@@ -285,7 +278,6 @@ src_install() {
 	local x d
 
 	cd "${MY_BUILDDIR}"
-	# see Note [tooldir hack for ldscripts]
 	emake DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
 	rm -rf "${ED}"/${LIBPATH}/bin
 	use static-libs || find "${ED}" -name '*.la' -delete
@@ -293,7 +285,7 @@ src_install() {
 	# Newer versions of binutils get fancy with ${LIBPATH} #171905
 	cd "${ED}"/${LIBPATH}
 	for d in ../* ; do
-		[[ ${d} == ../${PV} ]] && continue
+		[[ ${d} == ../${BVER} ]] && continue
 		mv ${d}/* . || die
 		rmdir ${d} || die
 	done
@@ -334,10 +326,10 @@ src_install() {
 	insinto /etc/env.d/binutils
 	cat <<-EOF > "${T}"/env.d
 		TARGET="${CTARGET}"
-		VER="${PV}"
+		VER="${BVER}"
 		LIBPATH="${EPREFIX}${LIBPATH}"
 	EOF
-	newins "${T}"/env.d ${CTARGET}-${PV}
+	newins "${T}"/env.d ${CTARGET}-${BVER}
 
 	# Handle documentation
 	if ! is_cross ; then
@@ -364,12 +356,17 @@ src_install() {
 
 	# Trim all empty dirs
 	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
+
+	# the hppa64 hack; this should go into 9999 as a PN-conditional
+	# tweak the default fake list a little bit
+	cd "${D}"/etc/env.d/binutils
+	sed -i '/FAKE_TARGETS=/s:"$: hppa64-linux":' ${CTARGET}-${BVER} || die
 }
 
 pkg_postinst() {
 	# Make sure this ${CTARGET} has a binutils version selected
 	[[ -e ${EROOT}/etc/env.d/binutils/config-${CTARGET} ]] && return 0
-	binutils-config ${CTARGET}-${PV}
+	binutils-config ${CTARGET}-${BVER}
 }
 
 pkg_postrm() {
@@ -381,7 +378,7 @@ pkg_postrm() {
 	#       rerun binutils-config if this is a remerge, as
 	#       we want the mtimes on the symlinks updated (if
 	#       it is the same as the current selected profile)
-	if [[ ! -e ${EPREFIX}${BINPATH}/ld ]] && [[ ${current_profile} == ${CTARGET}-${PV} ]] ; then
+	if [[ ! -e ${EPREFIX}${BINPATH}/ld ]] && [[ ${current_profile} == ${CTARGET}-${BVER} ]] ; then
 		local choice=$(binutils-config -l | grep ${CTARGET} | awk '{print $2}')
 		choice=${choice//$'\n'/ }
 		choice=${choice/* }
@@ -390,35 +387,7 @@ pkg_postrm() {
 		else
 			binutils-config ${choice}
 		fi
-	elif [[ $(CHOST=${CTARGET} binutils-config -c) == ${CTARGET}-${PV} ]] ; then
-		binutils-config ${CTARGET}-${PV}
+	elif [[ $(CHOST=${CTARGET} binutils-config -c) == ${CTARGET}-${BVER} ]] ; then
+		binutils-config ${CTARGET}-${BVER}
 	fi
 }
-
-# Note [slotting support]
-# -----------------------
-# Gentoo's layout for binutils files is non-standard as Gentoo
-# supports slotted installation for binutils. Many tools
-# still expect binutils to reside in known locations.
-# binutils-config package restores symlinks into known locations,
-# like:
-#    /usr/bin/${CTARGET}-<tool>
-#    /usr/bin/${CHOST}/${CTARGET}/lib/ldscrips
-#    /usr/include/
-#
-# Note [tooldir hack for ldscripts]
-# ---------------------------------
-# Build system does not allow ./configure to tweak every location
-# we need for slotting binutils hence all the shuffling in
-# src_install(). This note is about SCRIPTDIR define handling.
-#
-# SCRIPTDIR defines 'ldscripts/' directory location. SCRIPTDIR value
-# is set at build-time in ld/Makefile.am as: 'scriptdir = $(tooldir)/lib'
-# and hardcoded as -DSCRIPTDIR='"$(scriptdir)"' at compile time.
-# Thus we can't just move files around after compilation finished.
-#
-# Our goal is the following:
-# - at build-time set scriptdir to point to symlinked location:
-#   ${TOOLPATH}: /usr/${CHOST} (or /usr/${CHOST}/${CTARGET} for cross-case)
-# - at install-time set scriptdir to point to slotted location:
-#   ${LIBPATH}: /usr/$(get_libdir)/binutils/${CTARGET}/${PV}
