@@ -3062,7 +3062,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1 1.8.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.0 0.20.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.26.4 0.26.5: A linkable library for Git
+dev-libs/libgit2 0.26.5: A linkable library for Git
 dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29: Contains error handling functions used by GnuPG software
@@ -5263,7 +5263,7 @@ dev-python/pyftpdlib 1.5.1 1.5.3 1.5.4: Python FTP server library
 dev-python/pygal 2.1.1 2.4.0: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2 1.9.3: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4: Reimplementation of portions of the pygame API using SDL2
-dev-python/pygit2 0.26.3 0.26.4: Python bindings for libgit2
+dev-python/pygit2 0.26.4: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.1.1 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.22.0 3.24.1: GLib's GObject library bindings for Python
