@@ -24,5 +24,5 @@ DEPEND="${RDEPEND}
 "
 
 python_test() {
-	"${EPYTHON}" ./setup.py test
+	"${EPYTHON}" ./setup.py test || die "Tests fail with ${EPYTHON}"
 }
