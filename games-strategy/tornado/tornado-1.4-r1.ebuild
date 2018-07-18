@@ -12,6 +12,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+DEPEND="
+	sys-devel/gettext
+"
+
+RDEPEND="
+	virtual/libintl
+"
+
 PATCHES=(
 	"${FILESDIR}"/${PF}-gentoo.patch
 )
