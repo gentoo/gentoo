@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Matthew Thode <prometheanfire@gentoo.org> (18 Jul 2018)
-# dev-python/pandas not keyworded
-dev-python/networkx pandas
+# dev-python/pandas not keyworded and test uses pandas
+dev-python/networkx pandas test
 
 # Michał Górny <mgorny@gentoo.org> (07 Jul 2018)
 # Unkeyworded dependencies.
