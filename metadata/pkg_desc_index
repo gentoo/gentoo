@@ -5882,7 +5882,7 @@ dev-ruby/puppetdb-termini 5.2.2: Library needed to connect puppet to puppetdb
 dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.7 2.0.3: A modular Ruby webserver interface
 dev-ruby/rack-cache 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
-dev-ruby/rack-protection 1.5.3-r1: This gem protects against typical web attacks
+dev-ruby/rack-protection 1.5.5: This gem protects against typical web attacks
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
 dev-ruby/rails-dom-testing 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
