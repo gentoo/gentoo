@@ -8,7 +8,7 @@ EAPI=6
 
 inherit eutils linux-mod user
 
-MY_P=vbox-kernel-module-src-${PV}
+MY_P="vbox-kernel-module-src-${PV}"
 DESCRIPTION="Kernel Modules for Virtualbox"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
@@ -20,7 +20,7 @@ IUSE="pax_kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"

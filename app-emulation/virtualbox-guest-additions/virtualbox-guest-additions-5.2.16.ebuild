@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit eutils linux-mod systemd user toolchain-funcs
+inherit linux-mod systemd user toolchain-funcs
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
-MY_P=VirtualBox-${MY_PV}
+MY_P="VirtualBox-${MY_PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.1.30-patches-02.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.16-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -57,10 +57,6 @@ pkg_setup() {
 
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
-	enewgroup vboxguest
-	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
-	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
-	enewgroup vboxsf
 }
 
 src_unpack() {
@@ -87,6 +83,7 @@ src_prepare() {
 	use X || echo "VBOX_WITH_X11_ADDITIONS :=" >> LocalConfig.kmk
 
 	# stupid new header references...
+	local vboxheader mdir
 	for vboxheader in {product,revision,version}-generated.h ; do
 		for mdir in vbox{guest,sf} ; do
 			ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
@@ -97,7 +94,6 @@ src_prepare() {
 	# Remove pointless GCC version check
 	sed -e '/^check_gcc$/d' -i configure || die
 
-	rm "${WORKDIR}/patches/011_virtualbox-5.1.30-sysmacros.patch" || die
 	eapply "${WORKDIR}/patches"
 
 	eapply_user
@@ -171,10 +167,10 @@ src_install() {
 	local udev_rules_dir="/lib/udev/rules.d"
 	dodir ${udev_rules_dir}
 	echo 'KERNEL=="vboxguest", OWNER="vboxguest", GROUP="vboxguest", MODE="0660"' \
-		>> "${D}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
+		>> "${ED%/}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
 		|| die
 	echo 'KERNEL=="vboxuser", OWNER="vboxguest", GROUP="vboxguest", MODE="0660"' \
-		>> "${D}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
+		>> "${ED%/}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
 		|| die
 
 	# VBoxClient autostart file
@@ -186,6 +182,13 @@ src_install() {
 	doins "${FILESDIR}"/xorg.conf.vbox
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_preinst() {
+	enewgroup vboxguest
+	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
+	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
+	enewgroup vboxsf
 }
 
 pkg_postinst() {
