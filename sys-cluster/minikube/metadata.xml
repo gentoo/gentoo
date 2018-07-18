@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">kubernetes/minikube</remote-id>
 	</upstream>
+	<use>
+	<flag name="libvirt">Build plugin for kvm</flag>
+	</use>
 </pkgmetadata>
