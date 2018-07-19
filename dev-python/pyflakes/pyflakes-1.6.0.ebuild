@@ -18,5 +18,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 python_test() {
-	esetup.py test --quiet
+	esetup.py test
 }
