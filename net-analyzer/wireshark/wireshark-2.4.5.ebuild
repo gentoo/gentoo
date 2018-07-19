@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm ~arm64 hppa ia64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="~arm64 ppc ppc64 ~x86-fbsd"
 IUSE="
 	adns androiddump +capinfos +caps +captype ciscodump cpu_flags_x86_sse4_2
 	+dftest doc doc-pdf +dumpcap +editcap geoip gtk kerberos libssh libxml2 lua
@@ -61,7 +61,7 @@ CDEPEND="
 	snappy? ( app-arch/snappy )
 	spandsp? ( media-libs/spandsp )
 	ssl? ( net-libs/gnutls:= )
-	zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 )
+	zlib? ( sys-libs/zlib )
 "
 # We need perl for `pod2html`.  The rest of the perl stuff is to block older
 # and broken installs. #455122
