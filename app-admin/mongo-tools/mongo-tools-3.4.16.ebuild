@@ -27,32 +27,32 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	default
 
-	# do not substitute version because it uses git
-	sed -i '/^sed/,+3d' build.sh || die
-	sed -i '/^mv/d' build.sh || die
+	# 1) ensure we use bash wrt #582906
+	# 2) do not substitute version because it uses git
+	sed -e 's@/bin/sh@/bin/bash@g' \
+		-e '/^sed/,+3d' \
+		-e '/^mv/d' \
+		-i build.sh || die
 
 	# build pie to avoid text relocations wrt #582854
 	# skip on ppc64 wrt #610984
 	if ! use ppc64; then
 		sed -i 's/\(go build\)/\1 -buildmode=pie/g' build.sh || die
 	fi
-
-	# ensure we use bash wrt #582906
-	sed -i 's@/bin/sh@/bin/bash@g' build.sh || die
 }
 
 src_compile() {
 	local myconf=()
 
 	if use sasl; then
-	  myconf+=(sasl)
+		myconf+=(sasl)
 	fi
 
 	if use ssl; then
-	  myconf+=(ssl)
+		myconf+=(ssl)
 	fi
 
-	./build.sh ${myconf[@]} || die "build failed"
+	./build.sh "${myconf[@]}" || die "build failed"
 }
 
 src_install() {
