@@ -10,7 +10,7 @@
 # It is suggested that you use the latest EAPI approved by the Council.
 # The PMS contains specifications for all EAPIs. Eclasses will test for this
 # variable if they need to use features that are not universal in all EAPIs.
-EAPI=6
+EAPI=7
 
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
