@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-SCONS_MIN_VERSION="2.3.0"
+SCONS_MIN_VERSION="2.5.0"
 CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
@@ -38,30 +38,34 @@ RDEPEND=">=app-arch/snappy-1.1.3
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	dev-python/cheetah[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	virtual/python-typing[${PYTHON_USEDEP}]
 	dev-util/scons
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	debug? ( dev-util/valgrind )
 	test? (
 		dev-python/pymongo[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
 PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.4.0-fix-scons.patch"
-	"${FILESDIR}/${PN}-3.4.6-sysmacros-include.patch"
 	"${FILESDIR}/${PN}-3.4.7-no-boost-check.patch"
+	"${FILESDIR}/${PN}-3.6.1-fix-scons.patch"
+	"${FILESDIR}/${PN}-3.6.1-no-compass.patch"
 )
 
 S=${WORKDIR}/${MY_P}
 
 pkg_pretend() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		if ver_test "$REPLACING_VERSIONS" -lt 3.2; then
-			ewarn "To upgrade from a version earlier than the 3.2-series, you must"
+		if ver_test "$REPLACING_VERSIONS" -lt 3.4; then
+			ewarn "To upgrade from a version earlier than the 3.4-series, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
-			ewarn "to 3.2-series. Then upgrade to 3.4 series."
+			ewarn "to 3.4-series. Then upgrade to 3.6 series."
+		else
+			ewarn "Be sure to set featureCompatibilityVersion to 3.4 before upgrading."
 		fi
 	fi
 }
@@ -78,6 +82,9 @@ src_prepare() {
 
 	# remove bundled libs
 	rm -r src/third_party/{boost-*,pcre-*,scons-*,snappy-*,yaml-cpp-*,zlib-*} || die
+
+	# remove compass
+	rm -r src/mongo/installer/compass || die
 }
 
 src_configure() {
@@ -117,9 +124,6 @@ src_compile() {
 
 # FEATURES="test -usersandbox" emerge dev-db/mongodb
 src_test() {
-	# this one test fails
-	rm jstests/core/jsHeapLimit.js || die
-
 	"${EPYTHON}" ./buildscripts/resmoke.py --dbpathPrefix=test --suites core --jobs=$(makeopts_jobs) || die "Tests failed"
 }
 
