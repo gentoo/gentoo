@@ -96,7 +96,7 @@ python_prepare_all() {
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
-			-i pym/_emerge/create_depgraph_params.py || \
+			-i lib/_emerge/create_depgraph_params.py || \
 			die "failed to patch create_depgraph_params.py"
 
 		einfo "Enabling additional FEATURES for gentoo-dev..."
@@ -112,7 +112,7 @@ python_prepare_all() {
 	if ! use ipc ; then
 		einfo "Disabling ipc..."
 		sed -e "s:_enable_ipc_daemon = True:_enable_ipc_daemon = False:" \
-			-i pym/_emerge/AbstractEbuildProcess.py || \
+			-i lib/_emerge/AbstractEbuildProcess.py || \
 			die "failed to patch AbstractEbuildProcess.py"
 	fi
 
@@ -135,7 +135,7 @@ python_prepare_all() {
 			-e "s|^\(MOVE_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/mv\"\)|\\1${EPREFIX}\\2|" \
 			-e "s|^\(PRELINK_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/sbin/prelink\"\)|\\1${EPREFIX}\\2|" \
 			-e "s|^\(EPREFIX[[:space:]]*=[[:space:]]*\"\).*|\\1${EPREFIX}\"|" \
-			-i pym/portage/const.py || \
+			-i lib/portage/const.py || \
 			die "Failed to patch portage.const.EPREFIX"
 
 		einfo "Prefixing shebangs ..."
