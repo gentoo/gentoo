@@ -25,7 +25,7 @@ SRC_URI="
 
 LICENSE="Vivaldi"
 SLOT="0"
-KEYWORDS="-* amd64 ~arm x86"
+KEYWORDS="-* ~amd64 ~arm ~x86"
 RESTRICT="bindist mirror"
 
 DEPEND="
@@ -99,8 +99,6 @@ src_prepare() {
 	pushd "${VIVALDI_HOME}/locales" > /dev/null || die
 	chromium_remove_language_paks
 	popd > /dev/null || die
-
-	epatch "${FILESDIR}"/${PN}-1.14.1077.45_p1-libffmpeg.patch
 
 	epatch_user
 }
