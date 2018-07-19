@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm x11-base/xorg-proto
+DESCRIPTION=Dock app for monitoring the current battery status and CPU temperature
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/wmbatteries
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://sourceforge/wmbatteries/wmbatteries-0.1.3.tar.bz2
+_md5_=2d99cfe27c581470a2506c21f79e0416
