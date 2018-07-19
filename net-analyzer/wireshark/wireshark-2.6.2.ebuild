@@ -59,7 +59,7 @@ CDEPEND="
 	snappy? ( app-arch/snappy )
 	spandsp? ( media-libs/spandsp )
 	ssl? ( net-libs/gnutls:= )
-	zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 )
+	zlib? ( sys-libs/zlib )
 "
 # We need perl for `pod2html`. The rest of the perl stuff is to block older
 # and broken installs. #455122
