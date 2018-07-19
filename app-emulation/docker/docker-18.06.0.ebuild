@@ -17,7 +17,7 @@ else
 	else
 		MY_PV="$PV-ce"
 	fi
-	DOCKER_GITCOMMIT="f150324"
+	DOCKER_GITCOMMIT="0ffa825"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64"
@@ -61,10 +61,10 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	~app-emulation/containerd-1.0.3_p20180223
-	~app-emulation/runc-1.0.0_rc5[apparmor?,seccomp?]
-	~app-emulation/docker-proxy-0.8.0_p20180411
-	container-init? ( >=sys-process/tini-0.16.1[static] )
+	~app-emulation/containerd-1.1.1
+	~app-emulation/runc-1.0.0_rc5_p20180509[apparmor?,seccomp?]
+	~app-emulation/docker-proxy-0.8.0_p20180626
+	container-init? ( >=sys-process/tini-0.18.0[static] )
 "
 
 RESTRICT="installsources strip"
@@ -282,6 +282,8 @@ src_install() {
 	doman man/man*/*
 
 	dobashcomp contrib/completion/bash/*
+	insinto /usr/share/fish/vendor_completions.d/
+	doins contrib/completion/fish/docker.fish
 	insinto /usr/share/zsh/site-functions
 	doins contrib/completion/zsh/_*
 	popd || die # components/cli
