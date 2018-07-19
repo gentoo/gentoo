@@ -5,4 +5,11 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>devmanual@gentoo.org</email>
+		<description>
+			Bugs for the devmanual documentation must be assigned to
+			devmanual@gentoo.org
+		</description>
+	</maintainer>
 </pkgmetadata>
