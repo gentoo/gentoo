@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -20,22 +20,41 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="test"
 
-COMMONDEPEND="
+DEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/readline:0="
 
-DEPEND="${COMMONDEPEND}
-	test? ( dev-util/dejagnu )"
+BDEPEND="
+	test? (
+		dev-util/dejagnu
+		app-misc/dtach
+	)"
 
 RDEPEND="
-	${COMMONDEPEND}
+	${DEPEND}
 	sys-devel/gdb"
 
-DOCS=( AUTHORS ChangeLog INSTALL NEWS README.md FAQ )
+DOCS=( AUTHORS ChangeLog FAQ INSTALL NEWS README.md )
 
 src_prepare() {
 	default
 	./autogen.sh || die
+}
+
+multilib_src_test() {
+	# Tests need an interactive shell, #654986
+
+	# real-time output of the log ;-)
+	touch "${T}/dtach-test.log" || die
+	tail -f "${T}/dtach-test.log" &
+	local tail_pid=${!}
+
+	nonfatal dtach -N "${T}/dtach.sock" \
+		bash -c 'emake check &> "${T}"/dtach-test.log; echo ${?} > "${T}"/dtach-test.out'
+
+	kill "${tail_pid}"
+	[[ -f ${T}/dtach-test.out ]] || die "Unable to run tests"
+	[[ $(<"${T}"/dtach-test.out) == 0 ]] || die "Tests failed"
 }
 
 multilib_src_configure() {
