@@ -27,6 +27,8 @@ DEPEND="
 	test? ( dev-tcltk/expect )
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-printf-o-handling-on-ppc.patch" )
+
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
@@ -48,7 +50,11 @@ src_install() {
 }
 
 src_test() {
-	emake V=1 test
+	if has_version ~${CATEGORY}/${P} ; then
+		emake -j1 V=1 SHOW_INTERACTIVE_LOG=1 test
+	else
+		ewarn "Some tests only work when the package is already installed"
+	fi
 }
 
 pkg_postinst() {
