@@ -8,6 +8,7 @@
   <use>
   <flag name="headless">Build without any graphic frontend</flag>
   <flag name="lvm">Build VBoxVolInfo that needs devicemapper from <pkg>sys-fs/lvm2</pkg>.</flag>
+  <flag name="opus">Adds support for the Opus codec via <pkg>media-libs/opus</pkg></flag>
   <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
   <flag name="sdk">Enable building of SDK</flag>
   <flag name="udev">Controls installation of special USB udev rules.</flag>
