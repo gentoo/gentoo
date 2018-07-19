@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit check-reqs eutils
+
+inherit check-reqs
 
 ENGINE_PV=${PV}
 
@@ -10,7 +11,7 @@ MY_PN=UrbanTerror
 MY_PV=43_full
 
 DESCRIPTION="Data files for UrbanTerror"
-HOMEPAGE="http://www.urbanterror.info"
+HOMEPAGE="https://www.urbanterror.info"
 
 # load the base image and save it as .0 file
 # use 43_full-2.zip as upstream fixed something back then
@@ -46,7 +47,7 @@ src_prepare() {
 		MY_CTR=0
 		while [[ "${MY_CTR}" -lt "${PV/4.3./}" ]]; do
 			cp -dfpr \
-				"${WORKDIR}"/${MY_PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 ))/* "${S}"
+				"${WORKDIR}"/${MY_PN}-4.3.${MY_CTR}-to-4.3.$(( ${MY_CTR} + 1 ))/* "${S}" || die
 			MY_CTR=$(( ${MY_CTR} + 1 ))
 		done
 	fi

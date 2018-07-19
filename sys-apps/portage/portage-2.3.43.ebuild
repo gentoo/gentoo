@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=(
 	pypy
-	python3_4 python3_5 python3_6
+	python3_4 python3_5 python3_6 python3_7
 	python2_7
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
@@ -94,6 +94,10 @@ pkg_setup() {
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
+
+	# Apply ae8cc32ccd81 and e46dd735cd4d for python3.7 compat.
+	sed -e 's|\(def call_.*,*args\)):$|\1, **kwargs):|' \
+		-i pym/portage/util/_eventloop/EventLoop.py || die
 
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."

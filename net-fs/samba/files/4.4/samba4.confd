@@ -32,7 +32,7 @@ nmbd_reload="killall -HUP nmbd"
 
 samba4_start_options=""
 samba4_command="/usr/sbin/samba"
-samba4_pidfile="${piddir}/samba4.pid"
+samba4_pidfile="${piddir}/samba.pid"
 samba4_start="start-stop-daemon --start --exec ${samba4_command} --pidfile ${samba4_pidfile} -- ${samba4_start_options}"
 samba4_stop="start-stop-daemon --stop --exec ${samba4_command} --pidfile ${samba4_pidfile}"
 samba4_reload="killall -HUP samba"

@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils flag-o-matic gnome2-utils
+inherit cmake-utils flag-o-matic gnome2-utils virtualx
 
 MY_P="${P/_/-}"
 
@@ -131,6 +131,10 @@ src_configure() {
 	unset PLUGINS
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	virtx cmake-utils_src_test
 }
 
 pkg_postinst() {
