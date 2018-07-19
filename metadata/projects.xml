@@ -349,10 +349,6 @@
       <name>Mike Gilbert</name>
     </member>
     <member>
-      <email>hwoarang@gentoo.org</email>
-      <name>Markos Chandras</name>
-    </member>
-    <member>
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
     </member>
@@ -824,10 +820,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Desktop_Miscellaneous</url>
     <description>Maintains various small utilities for X11 that do not fit any other category.</description>
     <member>
-      <email>hwoarang@gentoo.org</email>
-      <name>Markos Chandras</name>
-    </member>
-    <member>
       <email>jer@gentoo.org</email>
       <name>Jeroen Roovers</name>
     </member>
@@ -849,10 +841,6 @@
     <member>
       <email>gokturk@gentoo.org</email>
       <name>Göktürk Yüksek</name>
-    </member>
-    <member is-lead="1">
-      <email>hwoarang@gentoo.org</email>
-      <name>Markos Chandras</name>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
@@ -3286,11 +3274,6 @@ developers and volunteer mentors.</description>
       <name>Brian Dolbec</name>
       <role>Catalyst Lead</role>
     </member>
-    <member>
-      <email>hwoarang@gentoo.org</email>
-      <name>Markos Chandras</name>
-      <role>MIPS Release Coordinator</role>
-    </member>
     <member is-lead="1">
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
@@ -3898,10 +3881,6 @@ developers and volunteer mentors.</description>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
       <role>Member</role>
-    </member>
-    <member is-lead="1">
-      <email>hwoarang@gentoo.org</email>
-      <name>Markos Chandras</name>
     </member>
     <member>
       <email>johu@gentoo.org</email>
