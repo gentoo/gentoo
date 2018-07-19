@@ -41,11 +41,10 @@ src_compile() {
 	fi
 	emake GCC=${CHOST}-gcc-${GCC_PV} \
 		PROCESSORS=$(makeopts_jobs) \
-		DEBUG=true \
 		GPRBUILD="/usr/bin/gprbuild -v"
 }
 
 src_install() {
-	emake DESTDIR="${D}" DEBUG=true install
+	emake DESTDIR="${D}" install
 	einstalldocs
 }
