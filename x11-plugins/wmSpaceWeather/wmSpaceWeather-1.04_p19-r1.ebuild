@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
-inherit eutils multilib toolchain-funcs
+inherit eutils toolchain-funcs
 
 MY_PN="wmspaceweather"
 MY_PV_ORIG="${PV/_p*}"
@@ -18,8 +18,9 @@ SRC_URI="mirror://debian/pool/main/w/${MY_PN}/${MY_P_ORIG}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 hppa ~mips ppc sparc x86"
-IUSE=""
+KEYWORDS="~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
+
+DOCS=( ../{BUGS,CHANGES,HINTS,README} )
 
 CDEPEND="x11-libs/libX11
 	x11-libs/libXext
@@ -37,22 +38,17 @@ src_unpack() {
 	epatch "${DISTDIR}"/${MY_P_PATCH}.gz
 
 	# need to apply patches from Debian first, do NOT change the order
-	cd "${S}"
-	mv ../debian/patches "${WORKDIR}"/patch
+	cd "${S}" || die
+	mv ../debian/patches "${WORKDIR}"/patch || die
 	EPATCH_SUFFIX="dpatch" EPATCH_FORCE="yes" \
 		EPATCH_MULTI_MSG="Applying Debian patches ..." epatch
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	epatch "${FILESDIR}"/${P}-getkp.patch
+	eapply "${FILESDIR}"/${P}-gentoo.patch
+	eapply "${FILESDIR}"/${P}-getkp.patch
 }
 
 src_compile() {
-	emake clean || die "make clean failed"
-	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)" || die "parallel make failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die install failed
-	dodoc ../{BUGS,CHANGES,HINTS,README}
+	emake clean
+	emake CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)"
 }
 
 pkg_postinst() {
