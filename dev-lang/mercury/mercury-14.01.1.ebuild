@@ -157,6 +157,14 @@ src_install() {
 		INSTALL_ELISP_DIR="${D}/${SITELISP}"/${PN} \
 		install || die "emake install failed"
 
+	if use java; then
+		keepdir /usr/$(get_libdir)/mercury/modules/java
+	fi
+
+	if use mono; then
+		keepdir /usr/$(get_libdir)/mercury/modules/csharp
+	fi
+
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
 			|| die "elisp-site-file-install failed"
