@@ -40,6 +40,10 @@ python_prepare_all() {
 	# https://bugs.launchpad.net/lxml/+bug/1782078
 	sed -i -e '/assertEqual(4, len(log)/d' src/lxml/tests/test_threading.py || die
 
+	# don't use some random SDK on Darwin
+	sed -i -e '/_ldflags =/s/=.*isysroot.*darwin.*None/= None/' \
+		setupinfo.py || die
+
 	distutils-r1_python_prepare_all
 }
 
