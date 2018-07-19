@@ -439,6 +439,7 @@ app-emulation/virt-viewer:vnc - Support connecting to VNC-enabled virtual machin
 app-emulation/virt-what:dmi - Use sys-apps/dmidecode to read firmware data
 app-emulation/virtualbox:headless - Build without any graphic frontend
 app-emulation/virtualbox:lvm - Build VBoxVolInfo that needs devicemapper from sys-fs/lvm2.
+app-emulation/virtualbox:opus - Adds support for the Opus codec via media-libs/opus
 app-emulation/virtualbox:pax_kernel - Apply patch needed for pax enabled kernels.
 app-emulation/virtualbox:sdk - Enable building of SDK
 app-emulation/virtualbox:udev - Controls installation of special USB udev rules.
