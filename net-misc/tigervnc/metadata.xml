@@ -3,19 +3,19 @@
 <pkgmetadata>
     <maintainer type="person">
         <email>otakuto.gentoo@gmail.com</email>
-        <name>Takuto Yoshida</name>
+        <name>Tact Yoshida</name>
     </maintainer>
     <maintainer type="project">
         <email>proxy-maint@gentoo.org</email>
         <name>Proxy Maintainers</name>
     </maintainer>
-  <use>
-    <flag name="drm">Build with DRM support</flag>
-    <flag name="server">Build TigerVNC server</flag>
-    <flag name="xorgmodule">Build the Xorg module</flag>
-    <flag name="dri3">Build with DRI3 support </flag>
-  </use>
-  <upstream>
-    <remote-id type="github">TigerVNC/tigervnc</remote-id>
-  </upstream>
+    <use>
+        <flag name="drm">Build with DRM support</flag>
+        <flag name="server">Build TigerVNC server</flag>
+        <flag name="xorgmodule">Build the Xorg module</flag>
+        <flag name="dri3">Build with DRI3 support </flag>
+    </use>
+    <upstream>
+        <remote-id type="github">TigerVNC/tigervnc</remote-id>
+    </upstream>
 </pkgmetadata>
