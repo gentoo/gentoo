@@ -64,6 +64,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/docsite/_build/html/. )
 	distutils-r1_python_install_all
 
-	doman docs/man/man1/*.1
 	dodoc -r examples
 }
