@@ -1219,10 +1219,8 @@ glibc_do_src_install() {
 		# gcc likes to use relative paths to get to its multilibs like
 		# /usr/lib/../lib64/.  So while we don't install any files into
 		# /usr/lib/, we do need it to exist.
-		cd "${ED}"$(alt_libdir)/..
-		[[ -e lib ]] || mkdir lib
-		cd "${ED}"$(alt_usrlibdir)/..
-		[[ -e lib ]] || mkdir lib
+		keepdir $(alt_prefix)/lib
+		keepdir $(alt_prefix)/usr/lib
 
 		dosym usr/include $(alt_prefix)/sys-include
 		return 0
