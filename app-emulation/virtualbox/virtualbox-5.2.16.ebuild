@@ -28,6 +28,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	dev-libs/libxml2
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
+	media-libs/opus:0=
 	sys-libs/zlib
 	!headless? (
 		media-libs/libsdl:0[X,video]
