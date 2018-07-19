@@ -90,17 +90,15 @@ src_compile() {
 }
 
 src_test() {
-	export GIO_USE_VFS="local" # prevents odd issues with deleting ${T}/.gvfs
-	export GIO_USE_VOLUME_MONITOR="unix" # prevent udisks-related failures in chroots, bug #449484
-	export SKIP_PEP8="yes"
+	local -x GIO_USE_VFS="local" # prevents odd issues with deleting ${T}/.gvfs
+	local -x GIO_USE_VOLUME_MONITOR="unix" # prevent udisks-related failures in chroots, bug #449484
+	local -x SKIP_PEP8="yes"
 
 	testing() {
-		export XDG_CACHE_HOME="${T}/${EPYTHON}"
-		run_in_build_dir virtx emake check
-		unset XDG_CACHE_HOME
+		local -x XDG_CACHE_HOME="${T}/${EPYTHON}"
+		emake -C "${BUILD_DIR}" check
 	}
-	python_foreach_impl testing
-	unset GIO_USE_VFS
+	virtx python_foreach_impl testing
 }
 
 src_install() {
