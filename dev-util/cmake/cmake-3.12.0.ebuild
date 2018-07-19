@@ -5,13 +5,13 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common eutils flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils cmake-utils
+inherit bash-completion-r1 elisp-common eutils flag-o-matic gnome2-utils toolchain-funcs eapi7-ver virtualx xdg-utils cmake-utils
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="Cross platform Make"
 HOMEPAGE="https://cmake.org/"
-SRC_URI="https://cmake.org/files/v$(get_version_component_range 1-2)/${MY_P}.tar.gz"
+SRC_URI="https://cmake.org/files/v$(ver_cut 1-2)/${MY_P}.tar.gz"
 
 LICENSE="CMake"
 SLOT="0"
@@ -58,6 +58,9 @@ PATCHES=(
 	# respect python eclasses
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
 	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
+
+	# boost (#660980)
+	"${FILESDIR}"/${PN}-3.11.4-fix-boost-detection.patch
 
 	# upstream fixes (can usually be removed with a version bump)
 )
