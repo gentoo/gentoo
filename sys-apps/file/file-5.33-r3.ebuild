@@ -33,10 +33,16 @@ DEPEND="
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
 
-PATCHES=( "${FILESDIR}"/${P}-CVE-2018-10360.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-CVE-2018-10360.patch
+	"${FILESDIR}"/${P}-gl_VISIBILITY-macro.patch
+)
 
 src_prepare() {
 	default
+
+	# We are patching configure script so fix timestamp to avoid autoreconf
+	touch -r compile configure
 
 	[[ ${PV} == "9999" ]] && eautoreconf
 	elibtoolize
