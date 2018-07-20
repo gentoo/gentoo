@@ -80,10 +80,10 @@ if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == [45] ]] && inherit eutils
 [[ ${EAPI} == [56] ]] && inherit xdg-utils
-inherit toolchain-funcs
+inherit multiprocessing toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-	inherit multiprocessing python-r1
+	inherit python-r1
 else
 	inherit python-single-r1
 fi
@@ -454,7 +454,23 @@ distutils-r1_python_compile() {
 
 	_distutils-r1_copy_egg_info
 
-	esetup.py build "${@}"
+	local build_args=()
+	# distutils is parallel-capable since py3.5
+	# to avoid breaking stable ebuilds, enable it only if either:
+	# a. we're dealing with EAPI 7
+	# b. we're dealing with Python 3.7 or PyPy3
+	if python_is_python3 && [[ ${EPYTHON} != python3.4 ]]; then
+		if [[ ${EAPI} != [56] || ${EPYTHON} != python3.[56] ]]; then
+			local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
+			if [[ ${jobs} == INF ]]; then
+				local nproc=$(get_nproc)
+				jobs=$(( nproc + 1 ))
+			fi
+			build_args+=( -j "${jobs}" )
+		fi
+	fi
+
+	esetup.py build "${build_args[@]}" "${@}"
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
