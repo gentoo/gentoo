@@ -865,7 +865,7 @@ app-i18n/ibus-table 1.5.0-r1: Tables engines for IBus
 app-i18n/im-freewnn 0.0.2-r2: Japanese FreeWnn input method module for GTK+2
 app-i18n/imhangul 2.1.0: Gtk+-2.0 Hangul Input Modules
 app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement with UTF-8 support
-app-i18n/kakasi 2.3.4-r1: Converts Japanese text between kanji, kana, and romaji
+app-i18n/kakasi 2.3.4-r2: Converts Japanese text between kanji, kana, and romaji
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
 app-i18n/kcm-fcitx 0.5.5: KDE configuration module for Fcitx
 app-i18n/kinput2 3.1-r2: A Japanese input server which supports the XIM protocol
