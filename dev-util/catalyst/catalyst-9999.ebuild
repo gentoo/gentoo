@@ -1,13 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} == *9999* ]]; then
-	SRC_ECLASS="git-2"
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/catalyst.git"
+	SRC_ECLASS="git-r3"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/catalyst.git"
 	EGIT_BRANCH="master"
-	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
 		https://dev.gentoo.org/~dolsen/releases/catalyst/${P}.tar.bz2
