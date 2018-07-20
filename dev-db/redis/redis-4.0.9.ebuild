@@ -18,7 +18,7 @@ SLOT="0"
 # This should link correctly with both unslotted & slotted Lua, without
 # changes.
 RDEPEND="
-	luajit? ( dev-lang/luajit:2 )
+	luajit? ( dev-lang/luajit:* )
 	!luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) )
 	tcmalloc? ( dev-util/google-perftools )
 	jemalloc? ( >=dev-libs/jemalloc-3.2 )"

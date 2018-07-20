@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86
 IUSE="+jemalloc tcmalloc luajit test"
 SLOT="0"
 
-RDEPEND="luajit? ( dev-lang/luajit:2 )
+RDEPEND="luajit? ( dev-lang/luajit:* )
 	!luajit? ( >=dev-lang/lua-5.1:* )
 	tcmalloc? ( dev-util/google-perftools )
 	jemalloc? ( >=dev-libs/jemalloc-3.2 )"
