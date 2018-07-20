@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit autotools eutils
 
@@ -22,12 +22,17 @@ PDEPEND="|| (
 		app-dicts/mecab-naist-jdic[unicode=]
 	)"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.98-iconv.patch )
+HTML_DOCS=( doc/. )
+
 src_prepare() {
+	default
 	sed -i \
 		-e "/CFLAGS/s/-O3/${CFLAGS}/" \
 		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
 		configure.in || die
-	epatch "${FILESDIR}/${PN}-0.98-iconv.patch"
+
+	mv configure.{in,ac}
 	eautoreconf
 }
 
@@ -39,8 +44,6 @@ src_configure() {
 
 src_install() {
 	default
-	dodoc AUTHORS README
-	dohtml -r doc/*
-
-	use static-libs || find "${ED}" -name '*.la' -delete
+	find "${ED}" -name 'Makefile*' -delete || die
+	use static-libs || find "${ED}" -name '*.la' -delete || die
 }
