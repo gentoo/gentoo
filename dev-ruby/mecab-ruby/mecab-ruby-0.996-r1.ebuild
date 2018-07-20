@@ -8,8 +8,8 @@ USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 inherit ruby-ng
 
 DESCRIPTION="Ruby binding for MeCab"
-HOMEPAGE="http://mecab.sourceforge.net/"
-SRC_URI="https://mecab.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="http://taku910.github.io/mecab/"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN%-*}/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"
