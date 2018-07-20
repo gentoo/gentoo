@@ -5711,7 +5711,7 @@ dev-qt/pixeltool 5.9.4 5.9.6: Qt screen magnifier
 dev-qt/qdbus 5.9.4 5.9.6: Interface to Qt applications communicating over D-Bus
 dev-qt/qdbusviewer 5.9.4 5.9.6: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.9.4 5.9.6: Qt documentation generator
-dev-qt/qt-creator 4.5.2: Lightweight IDE for C++/QML development centering around Qt
+dev-qt/qt-creator 4.6.2: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.9.4_p201801220610 5.9.6_p201806072055: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qtbluetooth 5.9.4 5.9.6: Bluetooth support library for the Qt5 framework
 dev-qt/qtchooser 0_p20170803: Qt4/Qt5 version chooser
@@ -6302,7 +6302,7 @@ dev-util/promu 0.1.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2017.3.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2017.3.4: Intelligent Python IDE with unique code assistance and analysis
-dev-util/qbs 1.10.1: Modern build tool for software projects
+dev-util/qbs 1.11.1: Modern build tool for software projects
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50: quilt patch manager
