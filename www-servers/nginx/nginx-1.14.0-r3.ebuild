@@ -201,8 +201,8 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+SLOT="0"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 # Package doesn't provide a real test suite
 RESTRICT="test"
@@ -321,10 +321,12 @@ CDEPEND="
 		net-misc/curl
 		www-servers/apache
 	)
-	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )"
+	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )
+	nginx_modules_stream_geoip? ( dev-libs/geoip )
+	nginx_modules_stream_geoip2? ( dev-libs/libmaxminddb:= )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	nginx_modules_http_brotli? ( virtual/pkgconfig )
 	nginx_modules_http_security? ( ${AUTOTOOLS_DEPEND} )
