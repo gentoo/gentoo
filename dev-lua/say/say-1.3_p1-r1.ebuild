@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="luajit test"
 
 RDEPEND="
-	!luajit? ( >=dev-lang/lua-5.1:= )
-	luajit? ( dev-lang/luajit:2 )"
+	!luajit? ( >=dev-lang/lua-5.1:* )
+	luajit? ( dev-lang/luajit:* )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-lua/busted )"
