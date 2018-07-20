@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="Perl binding for MeCab"
-# HOMEPAGE="http://mecab.sourceforge.net/" dead project, no homepage found anymore
-SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
+HOMEPAGE="http://taku910.github.io/mecab/"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN%-*}/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"
