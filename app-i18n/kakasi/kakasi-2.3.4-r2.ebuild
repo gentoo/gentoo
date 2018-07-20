@@ -22,6 +22,8 @@ src_compile() {
 
 src_install() {
 	default
-	doman doc/${PN}.1
 	einstalldocs
+
+	iconv -f EUC-JP -t UTF-8 doc/${PN}.1 > doc/${PN}.ja.1
+	doman doc/${PN}.ja.1
 }
