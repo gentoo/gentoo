@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/libevdev
 	sys-libs/mtdev
 	virtual/libudev:=
-	>=x11-base/xorg-server-1.18[udev]
+	>=x11-base/xorg-server-1.18:=[udev]
 "
 DEPEND="
 	${LIVE_DEPEND}
