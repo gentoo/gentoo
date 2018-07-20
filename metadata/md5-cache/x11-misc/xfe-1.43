@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=media-libs/libpng:0 x11-libs/fox:1.6[png,truetype] x11-libs/libX11 x11-libs/libXft startup-notification? ( x11-libs/startup-notification ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DESCRIPTION=MS-Explorer-like minimalist file manager for X
+EAPI=6
+HOMEPAGE=http://roland65.free.fr/xfe
+IUSE=debug nls startup-notification
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng:0 x11-libs/fox:1.6[png,truetype] x11-libs/libX11 x11-libs/libXft startup-notification? ( x11-libs/startup-notification )
+SLOT=0
+SRC_URI=mirror://sourceforge/xfe/xfe/1.43/xfe-1.43.tar.gz
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b
+_md5_=2a6d3153c9e29e69294ebdc7ffa5866f
