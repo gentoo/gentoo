@@ -540,7 +540,7 @@ app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r6: A vi/ex clone
 app-editors/emacs 18.59-r11 23.4-r17 24.5-r5 25.3-r4: The extensible, customizable, self-documenting real-time display editor
-app-editors/emact 2.56.0 2.58.0: EmACT, a fork of Conroy's MicroEmacs
+app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
 app-editors/focuswriter 1.6.10: A fullscreen and distraction-free word processor

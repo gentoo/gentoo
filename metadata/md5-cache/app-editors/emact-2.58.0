@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) X? ( x11-base/xorg-proto )
+DEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) virtual/pkgconfig X? ( x11-base/xorg-proto )
 DESCRIPTION=EmACT, a fork of Conroy's MicroEmacs
 EAPI=6
 HOMEPAGE=http://www.eligis.com/emacs/
@@ -9,4 +9,5 @@ LICENSE=GPL-2+ BSD
 RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 )
 SLOT=0
 SRC_URI=mirror://sourceforge/emact/emact-2.58.0.tar.gz
-_md5_=01cc6104871d4e78f76e7e32c5a0ebce
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ee0ac7349d58e68211c01870ac96235d
