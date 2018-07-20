@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Easily translate Moose code to Moo"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE="test"
 
 RDEPEND="
