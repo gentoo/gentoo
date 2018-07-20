@@ -3731,7 +3731,7 @@ dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other
 dev-perl/Getopt-Long-Descriptive 0.97.0 0.100.0: Getopt::Long with usage text
 dev-perl/Getopt-Mixed 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Glib-Object-Introspection 0.42.0 0.43.0: Dynamically create Perl language bindings
-dev-perl/GnuPG-Interface 0.520.0-r1 0.520.0-r2 0.520.0-r3: Perl module interface to interacting with GnuPG
+dev-perl/GnuPG-Interface 0.520.0-r2 0.520.0-r3: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1 0.60.0-r2: Perl interface to the GooCanvas
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
 dev-perl/GraphViz 2.240.0: Interface to AT&T's GraphViz
