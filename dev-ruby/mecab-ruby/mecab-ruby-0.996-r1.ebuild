@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
@@ -19,6 +19,9 @@ IUSE=""
 DEPEND="~app-text/mecab-${PV}"
 RDEPEND="${DEPEND}"
 
+DOCS=( AUTHORS README test.rb )
+HTML_DOCS=( bindings.html )
+
 each_ruby_configure() {
 	${RUBY} extconf.rb || die
 }
@@ -32,6 +35,5 @@ each_ruby_install() {
 }
 
 all_ruby_install() {
-	dodoc AUTHORS README test.rb
-	dohtml bindings.html
+	einstalldocs
 }
