@@ -17,7 +17,7 @@ fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit distutils-r1 multilib ${SRC_ECLASS}
+inherit distutils-r1 ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
