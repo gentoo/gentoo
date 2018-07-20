@@ -27,6 +27,7 @@ BDEPEND="
 RDEPEND="
 	>=x11-libs/libdrm-2.4.78[video_cards_radeon]
 	>=x11-libs/libpciaccess-0.8.0
+	x11-base/xorg-server:=
 	glamor? ( x11-base/xorg-server[glamor] )
 	udev? ( virtual/libudev:= )
 "
