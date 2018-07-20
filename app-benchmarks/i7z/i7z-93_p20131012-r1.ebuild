@@ -45,7 +45,7 @@ src_configure() {
 	# Looks to work fine for me with -O2 (pacho - 20170530)
 #	filter-flags "-O*"
 
-	tc-export CC
+	tc-export CC PKG_CONFIG
 	cd GUI || die
 
 	use qt5 && eqmake5 ${PN}_GUI.pro
