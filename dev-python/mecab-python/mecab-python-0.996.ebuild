@@ -18,6 +18,6 @@ IUSE=""
 DEPEND="~app-text/mecab-${PV}"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-py3.diff )
+PATCHES=( "${FILESDIR}"/${PN}-python3.patch )
 DOCS=( AUTHORS README test.py )
 HTML_DOCS=( bindings.html )
