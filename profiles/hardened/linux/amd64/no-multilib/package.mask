@@ -38,7 +38,6 @@ dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-perl/Archive-Rar
 dev-util/android-sdk-update-manager
-dev-util/android-studio
 dev-util/biew
 games-action/cs2d
 games-action/descent3

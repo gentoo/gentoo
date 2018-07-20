@@ -62,11 +62,14 @@ RDEPEND=">=virtual/jdk-1.7
 	>=x11-libs/libxcb-1.9.1
 	>=x11-libs/libxshmfence-1.1"
 S=${WORKDIR}/${PN}
+PATCHES=( "${FILESDIR}/0001-use-java-home-before-bundled.patch" )
 
 src_prepare() {
+	eapply "${PATCHES[@]}"
 	eapply_user
+
 	# This is really a bundled jdk not a jre
-	rm -R "${S}/jre" || die "Could not remove bundled jdk"
+	rm -rf "${S}/jre" || die "Could not remove bundled jdk"
 
 	# Replace bundled jars with system
 	# has problems with newer jdom:0 not updated to jdom:2
@@ -98,6 +101,7 @@ src_install() {
 	doins -r *
 
 	rm -rf "${D}${dir}/jre" || die
+	dosym "../../etc/java-config-2/current-system-vm" "${dir}/jre"
 
 	fperms 755 "${dir}/bin/studio.sh" "${dir}"/bin/fsnotifier{,64}
 	chmod 755 "${D}${dir}"/gradle/gradle-*/bin/gradle || die

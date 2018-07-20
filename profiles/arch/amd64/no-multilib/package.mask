@@ -38,7 +38,6 @@ dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-ndk
 dev-util/android-sdk-update-manager
-dev-util/android-studio
 dev-util/biew
 games-action/beathazardultra
 games-action/brutal-legend
