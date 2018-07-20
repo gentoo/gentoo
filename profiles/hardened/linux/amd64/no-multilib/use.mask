@@ -17,7 +17,3 @@ hvm
 # 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
 # Mask multilib, since we cannot use it.
 multilib
-
-# 2009/05/11 Doug Goldstein <cardoe@gentoo.org>
-# Mask 32bit since this will always require emulation packages
-32bit

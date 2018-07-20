@@ -4,6 +4,7 @@
 EAPI=6
 
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Text-based subtitles editor"
@@ -32,7 +33,7 @@ CDEPEND="
 	dev-libs/glib:2
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt5(+)]
 	mpv? ( media-video/mpv )
 	unicode? ( dev-libs/icu:= )
 	xine? (

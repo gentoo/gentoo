@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 CMAKE_BUILD_TYPE="Release"
 
 inherit python-any-r1 cmake-multilib flag-o-matic toolchain-funcs
@@ -17,7 +17,7 @@ IUSE="ocl-icd ocl20"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://anongit.freedesktop.org/beignet"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/beignet.git"
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64"
@@ -40,7 +40,7 @@ DEPEND="${COMMON}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.0_no-debian-multiarch.patch
-	"${FILESDIR}"/${PN}-1.3.1-oclicd_no_upstream_icdfile.patch
+	"${FILESDIR}"/${PN}-1.4.0-oclicd_no_upstream_icdfile.patch
 	"${FILESDIR}"/${PN}-1.2.0_no-hardcoded-cflags.patch
 	"${FILESDIR}"/llvm-terminfo.patch
 )

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="cln">Use sci-libs/cln</flag>
+	</use>
+	<longdescription lang="en">
+		CVC4 is an efficient open-source automatic theorem prover for
+		satisfiability modulo theories (SMT) problems. It can be used to prove
+		the validity (or, dually, the satisfiability) of first-order formulas
+		in a large number of built-in logical theories and their combination.
+	</longdescription>
+</pkgmetadata>

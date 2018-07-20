@@ -5,6 +5,8 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
+	<upstream>
+		<remote-id type="github">Icinga/icingaweb2-module-graphite</remote-id>
+		<bugs-to>https://github.com/Icinga/icingaweb2-module-graphite/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

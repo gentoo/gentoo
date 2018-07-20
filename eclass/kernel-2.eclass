@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -146,7 +146,7 @@
 # @DESCRIPTION:
 # This kernel was already deblobbed elsewhere.
 # If false, either optional deblobbing will be available
-# or the license will note the inclusion of freedist code.
+# or the license will note the inclusion of linux-firmware code.
 
 # @ECLASS-VARIABLE:  K_LONGTERM
 # @DEFAULT_UNSET
@@ -337,8 +337,8 @@ detect_version() {
 		KV_MINOR=$(get_version_component_range 2 ${OKV})
 		KV_PATCH=$(get_version_component_range 3 ${OKV})
 		if [[ ${KV_MAJOR}${KV_MINOR}${KV_PATCH} -ge 269 ]]; then
-	        KV_EXTRA=$(get_version_component_range 4- ${OKV})
-	        KV_EXTRA=${KV_EXTRA/[-_]*}
+			KV_EXTRA=$(get_version_component_range 4- ${OKV})
+			KV_EXTRA=${KV_EXTRA/[-_]*}
 		else
 			KV_PATCH=$(get_version_component_range 3- ${OKV})
 		fi
@@ -606,6 +606,7 @@ if [[ ${ETYPE} == sources ]]; then
 		sys-devel/make
 		dev-lang/perl
 		sys-devel/bc
+		virtual/libelf
 	)"
 
 	SLOT="${PVR}"
@@ -624,7 +625,7 @@ if [[ ${ETYPE} == sources ]]; then
 
 			# Reflect that kernels contain firmware blobs unless otherwise
 			# stripped
-			LICENSE="${LICENSE} !deblob? ( freedist )"
+			LICENSE="${LICENSE} !deblob? ( linux-firmware )"
 
 			DEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
@@ -642,7 +643,7 @@ if [[ ${ETYPE} == sources ]]; then
 			K_DEBLOB_TAG=${K_DEBLOB_TAG:--gnu}
 			DEBLOB_A="deblob-${DEBLOB_PV}"
 			DEBLOB_CHECK_A="deblob-check-${DEBLOB_PV}"
-			DEBLOB_HOMEPAGE="http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags"
+			DEBLOB_HOMEPAGE="https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/"
 			DEBLOB_URI_PATH="${DEBLOB_PV}${K_DEBLOB_TAG}"
 			if ! has "${EAPI:-0}" 0 1 ; then
 				DEBLOB_CHECK_URI="${DEBLOB_HOMEPAGE}/${DEBLOB_URI_PATH}/deblob-check -> ${DEBLOB_CHECK_A}"
@@ -661,13 +662,13 @@ if [[ ${ETYPE} == sources ]]; then
 		else
 			# We have no way to deblob older kernels, so just mark them as
 			# tainted with non-libre materials.
-			LICENSE="${LICENSE} freedist"
+			LICENSE="${LICENSE} linux-firmware"
 		fi
 	fi
 
 elif [[ ${ETYPE} == headers ]]; then
 	DESCRIPTION="Linux system headers"
-	IUSE="crosscompile_opts_headers-only"
+	IUSE="headers-only"
 
 	# Since we should NOT honour KBUILD_OUTPUT in headers
 	# lets unset it here.
@@ -693,7 +694,7 @@ kernel_header_destdir() {
 # @DESCRIPTION:
 # set use if necessary for cross compile support
 cross_pre_c_headers() {
-	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
 # @FUNCTION: env_setup_xmakeopts
@@ -748,7 +749,6 @@ unpack_2_6() {
 		touch .config
 		eerror "make defconfig failed."
 		eerror "assuming you dont have any headers installed yet and continuing"
-		epause 5
 	fi
 
 	make -s include/linux/version.h ${xmakeopts} 2>/dev/null \
@@ -1243,7 +1243,7 @@ unipatch() {
 					UNIPATCH_DROP+=" 5000_enable-additional-cpu-optimizations-for-gcc.patch"
 				fi
 			fi
- 		fi
+		fi
 	done
 
 	#populate KPATCH_DIRS so we know where to look to remove the excludes
@@ -1257,12 +1257,14 @@ unipatch() {
 	# bug #272676
 	if [[ "$(tc-arch)" = "sparc" || "$(tc-arch)" = "sparc64" ]]; then
 		if [[ ${KV_MAJOR} -ge 3 || ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} > 2.6.28 ]]; then
-			UNIPATCH_DROP="${UNIPATCH_DROP} *_fbcondecor-0.9.6.patch"
-			echo
-			ewarn "fbcondecor currently prevents sparc/sparc64 from booting"
-			ewarn "for kernel versions >= 2.6.29. Removing fbcondecor patch."
-			ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=272676 for details"
-			echo
+			if [[ ! -z ${K_WANT_GENPATCHES} ]] ; then
+				UNIPATCH_DROP="${UNIPATCH_DROP} *_fbcondecor*.patch"
+				echo
+				ewarn "fbcondecor currently prevents sparc/sparc64 from booting"
+				ewarn "for kernel versions >= 2.6.29. Removing fbcondecor patch."
+				ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=272676 for details"
+				echo
+			fi
 		fi
 	fi
 
@@ -1410,7 +1412,7 @@ getfilevar() {
 
 detect_arch() {
 
-	local ALL_ARCH LOOP_ARCH COMPAT_URI i
+	local ALL_ARCH LOOP_ARCH LOOP_ARCH_L COMPAT_URI i TC_ARCH_KERNEL
 
 	# COMPAT_URI is the contents of ${ARCH}_URI
 	# ARCH_URI is the URI for all the ${ARCH}_URI patches
@@ -1418,20 +1420,25 @@ detect_arch() {
 
 	ARCH_URI=""
 	ARCH_PATCH=""
+	TC_ARCH_KERNEL=""
 	ALL_ARCH="ALPHA AMD64 ARM HPPA IA64 M68K MIPS PPC PPC64 S390 SH SPARC X86"
 
 	for LOOP_ARCH in ${ALL_ARCH}; do
 		COMPAT_URI="${LOOP_ARCH}_URI"
 		COMPAT_URI="${!COMPAT_URI}"
 
-		[[ -n ${COMPAT_URI} ]] && \
-			ARCH_URI="${ARCH_URI} $(echo ${LOOP_ARCH} | tr '[:upper:]' '[:lower:]')? ( ${COMPAT_URI} )"
+		declare -l LOOP_ARCH_L=${LOOP_ARCH}
 
-		if [[ ${LOOP_ARCH} == "$(echo $(tc-arch-kernel) | tr '[:lower:]' '[:upper:]')" ]]; 	then
+		[[ -n ${COMPAT_URI} ]] && \
+			ARCH_URI="${ARCH_URI} ${LOOP_ARCH_L}? ( ${COMPAT_URI} )"
+
+		declare -u TC_ARCH_KERNEL=$(tc-arch-kernel)
+		if [[ ${LOOP_ARCH} == ${TC_ARCH_KERNEL} ]]; then
 			for i in ${COMPAT_URI}; do
 				ARCH_PATCH="${ARCH_PATCH} ${DISTDIR}/${i/*\//}"
 			done
 		fi
+
 	done
 }
 
@@ -1601,7 +1608,6 @@ kernel-2_pkg_setup() {
 			ewarn "Also be aware that bugreports about gcc-4 not working"
 			ewarn "with linux-2.4 based ebuilds will be closed as INVALID!"
 			echo
-			epause 10
 		fi
 	fi
 

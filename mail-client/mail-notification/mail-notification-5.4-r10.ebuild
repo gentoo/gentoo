@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,9 +17,6 @@ LICENSE="GPL-3"
 IUSE="+gnome-keyring libressl sasl ssl sylpheed"
 
 LANGS="bg ca cs de es fr ja nl pl pt pt_BR ru sr sr@Latn sv"
-for lang in ${LANGS}; do
-	IUSE+=" linguas_${lang}"
-done
 
 # gmime is actually optional, but it's used by so much of the package
 # it's pointless making it optional. gnome-keyring is required for
@@ -69,8 +66,6 @@ src_prepare() {
 	# Apply Fedora patches
 	# Fix gcc warning
 	eapply "${FILESDIR}/${PN}-jb-gcc-format.patch"
-	# Support aarch64
-	eapply "${FILESDIR}/${PN}-aarch64.patch"
 	# Fix build with latest libc
 	eapply "${FILESDIR}/${PN}-dont-link-against-bsd-compat.patch"
 
@@ -102,12 +97,14 @@ src_install() {
 	einstalldocs
 	rm -rf "${ED}/var/lib/scrollkeeper"
 
-	einfo "Cleaning up locales..."
-	for lang in ${LANGS}; do
-		use "linguas_${lang}" && {
-			einfo "- keeping ${lang}"
-			continue
-		}
-		rm -Rf "${D}"/usr/share/locale/"${lang}" || die
-	done
+	if [[ -n ${LINGUAS+set} ]]; then
+		einfo "Cleaning up locales..."
+		for lang in ${LANGS}; do
+			if has ${lang} ${LINGUAS}; then
+				einfo "- keeping ${lang}"
+			else
+				rm -Rf "${D}"/usr/share/locale/"${lang}" || die
+			fi
+		done
+	fi
 }

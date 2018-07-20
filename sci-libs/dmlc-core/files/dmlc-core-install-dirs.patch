@@ -1,0 +1,38 @@
+From 536ba11dfdaa7feacc7fe5726a3a50e4d663da13 Mon Sep 17 00:00:00 2001
+From: Maarten de Vries <maarten@de-vri.es>
+Date: Fri, 26 May 2017 15:29:29 +0200
+Subject: [PATCH] Use GNUInstallDirs for standard conforming install target.
+
+---
+ CMakeLists.txt | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0b3b3ec..316e2f5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,18 +121,13 @@ endif()
+ add_library(dmlc ${SOURCE})
+ target_link_libraries(dmlc ${dmlccore_LINKER_LIBS})
+ 
+-# ---[ Install Includes
+-if(INSTALL_INCLUDE_DIR)
+-  add_custom_command(TARGET dmlc POST_BUILD
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory
+-    ${PROJECT_SOURCE_DIR}/include ${INSTALL_INCLUDE_DIR}/
+-    )
+-endif()
+-
+ # ---[ Install the archive static lib and header files
+-install(TARGETS dmlc ARCHIVE DESTINATION lib) 
+-install(DIRECTORY include DESTINATION .)
+-install(DIRECTORY doc DESTINATION .)
++include(GNUInstallDirs)
++install(TARGETS dmlc
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++)
++install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ # ---[ Linter target
+ if(MSVC)

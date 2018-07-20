@@ -2,7 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>mlspamcb@noci.xs4all.nl</email>
+    <email>NP-Hardass@gentoo.org</email>
+    <name>NP-Hardass</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mlspamcb@noci.work</email>
+    <name>Nico Baggus</name>
   </maintainer>
   <maintainer type="person">
     <email>jmbsvicetto@gentoo.org</email>

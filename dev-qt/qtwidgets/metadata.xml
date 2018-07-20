@@ -7,12 +7,10 @@
 	</maintainer>
 	<use>
 		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
-		<flag name="gtkstyle">Build a Qt style called GTK+ that mimics the active
-			GTK+ theme</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
-		<doc>http://doc.qt.io/</doc>
+		<doc>https://doc.qt.io/</doc>
 	</upstream>
 	<slots>
 		<subslots>

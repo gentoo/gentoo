@@ -13,7 +13,7 @@ SRC_URI="${PN}_${PV}.tar.gz"
 
 LICENSE="CAPYBARA-EULA LGPL-3"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="bindist fetch splitdebug"
 

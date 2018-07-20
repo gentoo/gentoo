@@ -26,10 +26,6 @@
       Add support for <pkg>dev-python/jinja</pkg> as alternative templating
       engine to Mako
     </flag>
-    <flag name="markdown">
-      Add support for Markdown as alternative markup language to
-      reStructuredText
-    </flag>
     <flag name="watchdog">
       Use <pkg>dev-python/watchdog</pkg> to monitor file system events
     </flag>

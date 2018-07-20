@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( >=virtual/perl-Test-Simple-0.820.0 )
 "
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")
 src_test() {
 	perl_rm_files t/author-*.t t/00sig.t t/02pod.t t/03podcov.t
 	perl-module_src_test

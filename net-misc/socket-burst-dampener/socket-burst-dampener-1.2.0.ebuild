@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A daemon that spawns one command per connection, and dampens connection bursts"
-HOMEPAGE="https://github.com/zmedico/${PN}"
+HOMEPAGE="https://github.com/zmedico/socket-burst-damener"
 SRC_URI="https://github.com/zmedico/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

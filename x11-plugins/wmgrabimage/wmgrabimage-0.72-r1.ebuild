@@ -1,13 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
-MY_P=${PN/grabi/GrabI}
+MY_PN=${PN/grabi/GrabI}
 
 DESCRIPTION="wmGrabImage grabs an image from the WWW and displays it"
-SRC_URI="http://dockapps.windowmaker.org/files/12/19/${MY_P}-${PV}.tgz"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/12"
+HOMEPAGE="https://www.dockapps.net/wmgrabimage"
+SRC_URI="https://www.dockapps.net/download/${MY_PN}-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,11 +22,9 @@ RDEPEND=">=net-misc/wget-1.9-r2
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto
-	>=sys-apps/sed-4.1.5-r1"
+	x11-base/xorg-proto"
 
-S=${WORKDIR}/${MY_P}-${PV}/${MY_P}
+S=${WORKDIR}/${MY_PN}-${PV}/${MY_PN}
 
 src_unpack() {
 	unpack ${A}

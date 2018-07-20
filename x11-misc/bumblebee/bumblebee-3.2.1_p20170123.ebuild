@@ -7,7 +7,7 @@ inherit autotools multilib readme.gentoo-r1 systemd user
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/Bumblebee-Project/Bumblebee.git"
+	EGIT_REPO_URI="https://github.com/Bumblebee-Project/Bumblebee.git"
 	EGIT_BRANCH="develop"
 	KEYWORDS=""
 else
@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
-HOMEPAGE="http://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
+HOMEPAGE="https://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
 
 SLOT="0"
 LICENSE="GPL-3"

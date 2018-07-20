@@ -5,8 +5,8 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="person">
+	<email>zlogene@gentoo.org</email>
+	<name>Mikle Kolyada</name>
 	</maintainer>
 </pkgmetadata>

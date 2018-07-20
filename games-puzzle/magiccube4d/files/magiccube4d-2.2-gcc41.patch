@@ -1,5 +1,5 @@
---- EventHandler.h.old	2006-05-19 22:11:48.000000000 +0200
-+++ EventHandler.h	2006-05-19 22:11:58.000000000 +0200
+--- a/EventHandler.h.old	2006-05-19 22:11:48.000000000 +0200
++++ b/EventHandler.h	2006-05-19 22:11:58.000000000 +0200
 @@ -165,7 +165,7 @@
  
      int  number_of_reference_stickers_needed;
@@ -9,8 +9,8 @@
      void* cur_ui_data;
  
      bool quick_mode;
---- Machine.h.old	2006-05-19 22:12:17.000000000 +0200
-+++ Machine.h	2006-05-19 22:12:29.000000000 +0200
+--- a/Machine.h.old	2006-05-19 22:12:17.000000000 +0200
++++ b/Machine.h	2006-05-19 22:12:29.000000000 +0200
 @@ -31,7 +31,7 @@
  {
  public:

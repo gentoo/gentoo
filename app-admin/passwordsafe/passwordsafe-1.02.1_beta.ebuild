@@ -25,6 +25,7 @@ RDEPEND="xml? ( dev-libs/xerces-c )
 	!minimal? ( !!app-misc/pwsafe )
 	yubikey? ( sys-auth/ykpers )"
 DEPEND="${RDEPEND}
+	app-arch/zip
 	sys-devel/gettext
 	test? ( dev-cpp/gtest )"
 
@@ -36,7 +37,8 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
+
 	# binary name pwsafe is in use by app-misc/pwsafe, we use passwordsafe
 	# instead. Perform required changes in linking files
 	sed -i install/desktop/pwsafe.desktop -e "s/pwsafe/${PN}/g" || die

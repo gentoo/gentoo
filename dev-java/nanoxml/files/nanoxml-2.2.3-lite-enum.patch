@@ -1,5 +1,5 @@
---- Sources/Lite/nanoxml/XMLElement.java.orig	2016-03-04 09:16:52.339000000 +0000
-+++ Sources/Lite/nanoxml/XMLElement.java	2016-03-04 09:19:03.213000000 +0000
+--- a/Sources/Lite/nanoxml/XMLElement.java.orig	2016-03-04 09:16:52.339000000 +0000
++++ a/Sources/Lite/nanoxml/XMLElement.java	2016-03-04 09:19:03.213000000 +0000
 @@ -63,8 +63,8 @@
   * The following example shows how to list the attributes of an element:
   * <UL><CODE>

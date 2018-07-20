@@ -13,7 +13,7 @@ else
 	MY_PV="$(replace_all_version_separators '_')"
 	MY_P="APPSTREAM_${MY_PV}"
 	SRC_URI="https://github.com/ximion/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 	S="${WORKDIR}/${PN}-${MY_P}"
 fi
 
@@ -35,6 +35,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.5
+	app-text/xmlto
 	dev-util/itstool
 	sys-devel/gettext
 	test? (

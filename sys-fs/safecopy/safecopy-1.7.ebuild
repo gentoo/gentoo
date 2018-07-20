@@ -5,7 +5,7 @@ EAPI=4
 
 inherit base
 
-DESCRIPTION="Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files"
+DESCRIPTION="Tool for fault-tolerant data recovery from damaged (io-errors) devices or files"
 HOMEPAGE="http://safecopy.sourceforge.net"
 SRC_URI="mirror://sourceforge/safecopy/${P}.tar.gz"
 

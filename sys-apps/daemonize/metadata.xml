@@ -2,11 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hwoarang@gentoo.org</email>
-		<name>Markos Chandras</name>
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="github">bmc/daemonize</remote-id>
 	</upstream>

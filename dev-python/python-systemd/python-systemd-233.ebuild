@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/systemd/python-systemd/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm ppc ppc64 sparc x86"
 IUSE="test"
 
 COMMON_DEPEND="

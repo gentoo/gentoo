@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle Qt5
-#		remove emul-linux-x86* deps (bug 484060)
 
 EAPI=5
 inherit eutils games
@@ -13,7 +12,7 @@ SRC_URI="HotlineMiami_linux_1392944501.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bundled-libs +launcher"
 RESTRICT="bindist fetch splitdebug"
 

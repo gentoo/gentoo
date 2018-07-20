@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/tvision/rhtvision_${PV/_pre/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DOCS=( readme.txt THANKS TODO )
@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-flags.patch"
 	"${FILESDIR}/${P}-gcc6.patch" # bug #594176
 	"${FILESDIR}/${P}-build-system.patch" # for EAPI=6
+	"${FILESDIR}/${P}-perl-INC.patch" # dot-in-INC
 )
 
 src_prepare() {

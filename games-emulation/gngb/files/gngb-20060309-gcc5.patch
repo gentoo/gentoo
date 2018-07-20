@@ -1,0 +1,35 @@
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Thu, 10 Aug 2017 19:06:36 +0000
+Subject: gngb_fcc5_fix
+
+---
+ src/cpu.c  | 2 +-
+ src/vram.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cpu.c b/src/cpu.c
+index f03a811..57bc209 100644
+--- a/src/cpu.c
++++ b/src/cpu.c
+@@ -2826,7 +2826,7 @@ __inline__ void rom_timer_inc(void) {
+   }
+ }
+ 
+-__inline__ void cpu_run(void) {
++extern __inline__ void cpu_run(void) {
+   static Uint32 divid_cycle;
+   int v=0;
+   Uint8 a;
+diff --git a/src/vram.c b/src/vram.c
+index 206b625..7213b4e 100644
+--- a/src/vram.c
++++ b/src/vram.c
+@@ -242,7 +242,7 @@ void switch_fullscreen(void) {
+   conf.fs^=1;
+ }
+ 
+-__inline__ Uint8 get_nb_spr(void)
++extern __inline__ Uint8 get_nb_spr(void)
+ {
+   Uint8 *sp=oam_space;
+   Sint16 no_tile,x,y,att;

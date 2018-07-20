@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="MPD (music player daemon) plugin to G15daemon"
-HOMEPAGE="http://g15daemon.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
 SRC_URI="mirror://sourceforge/g15daemon/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -23,8 +23,7 @@ RDEPEND="
 	x11-libs/libXtst
 "
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-libmpd.patch

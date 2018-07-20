@@ -3,7 +3,7 @@
 
 EAPI=4
 
-DESCRIPTION="MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces"
+DESCRIPTION="MSMS very efficiently computes triangulations of Solvent Excluded Surfaces"
 HOMEPAGE="http://mgl.scripps.edu/people/sanner/html/msms_home.html"
 SRC_URI="
 			amd64? ( msms_i86_64Linux2_2.6.1.tar.gz )

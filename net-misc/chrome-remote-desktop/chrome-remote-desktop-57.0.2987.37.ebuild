@@ -32,7 +32,7 @@ SRC_URI="amd64? ( ${BASE_URI}_amd64.deb )"
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="${PLOCALES[*]/#/l10n_}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

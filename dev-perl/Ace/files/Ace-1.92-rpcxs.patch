@@ -1,0 +1,25 @@
+From f44e3b39758057e3a5af7654768d40de2b249ae5 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 13 Oct 2017 17:30:57 +1300
+Subject: Enable RPC and XS support
+
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 232bc42..7a312fd 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -10,7 +10,7 @@ while (!$choice) {
+ 		  "  1) Interface to Ace socket server and local databases (pure Perl)\n" .
+ 		  "  2) The above plus XS optimizations (requires C compiler)\n" .
+ 		  "  3) The above plus RPC server interface (requires C compiler)\n\n" .
+-		  "Enter your choice: ", "1");
++		  "Enter your choice: ", "3");
+   if ($reply =~ /(\d+)/) {
+     $choice = $1;
+     die "invalid choice: $choice!" if $choice < 1  ||  $choice > 3;
+-- 
+2.16.2
+

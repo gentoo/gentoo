@@ -1,33 +1,37 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Website Pre-processor"
 HOMEPAGE="http://www.wsmake.org/"
-SRC_URI="http://ftp.wsmake.org/pub/wsmake6/stable/wsmake-0.6.4.tar.bz2"
+SRC_URI="http://ftp.wsmake.org/pub/wsmake6/stable/${P}.tar.bz2"
 
-KEYWORDS="x86"
 LICENSE="GPL-2 Artistic"
 SLOT="0"
-IUSE=""
+KEYWORDS="x86"
+IUSE="examples"
 
-src_unpack () {
-	unpack ${A} && cd "${S}"
-	epatch "${FILESDIR}"/${P}-bv.diff
-	epatch "${FILESDIR}"/${P}-gcc43.patch	# 251745
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-bv.diff
+	"${FILESDIR}"/${P}-gcc43.patch	# 251745
+	"${FILESDIR}"/${P}-fix-const-va_list.patch
+)
 
-src_compile () {
-	econf || die "econf failed"
-	emake || die "emake failed"
-	cd doc
+src_unpack() {
+	default
+
+	cd "${S}"/doc || die
 	tar -cf examples.tar examples || die
 }
 
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS COPYING ChangeLog* DEVELOPERS LICENSE NEWS README TODO
-	cd doc
-	dodoc manual.txt examples.tar
+src_install() {
+	default
+	dodoc doc/manual.txt
+
+	if use examples; then
+		rm -r doc/examples/CVS || die
+		dodoc -r doc/examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }

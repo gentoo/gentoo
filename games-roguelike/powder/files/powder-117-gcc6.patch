@@ -1,0 +1,20 @@
+Bug: https://bugs.gentoo.org/598928
+
+--- a/source.txt
++++ b/source.txt
+@@ -13400,13 +13400,13 @@
+ 
+ BRANCH MAIN
+ {
+-    symbol	'\\207'
++    symbol	static_cast<u8>('\\207')
+     welcome	"%U <return> to the main dungeon."
+ }
+ 
+ BRANCH TRIDUDE
+ {
+-    symbol	'\\211'
++    symbol	static_cast<u8>('\\211')
+     welcome	"%U <enter> a cave made of metal."
+ }
+ 

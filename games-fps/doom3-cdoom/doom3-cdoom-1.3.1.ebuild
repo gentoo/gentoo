@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,11 +10,11 @@ MOD_ICON="cdoom.ico"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/classic-doom-3"
+HOMEPAGE="https://www.moddb.com/mods/classic-doom-3"
 SRC_URI="classic_doom_3_${PV//.}.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 

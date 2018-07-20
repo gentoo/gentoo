@@ -2,12 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-        <email>cinnamon@gentoo.org</email>
-        <name>Cinnamon Project</name>
+		<email>cinnamon@gentoo.org</email>
+		<name>Cinnamon Project</name>
 	</maintainer>
 	<use>
-		<flag name="packagekit">Use packagekit to search for programs to open
-		unknown file types</flag>
+		<flag name="packagekit">Use packagekit to search for programs to open unknown file types</flag>
 		<flag name="tracker">Add support for <pkg>app-misc/tracker</pkg> search</flag>
 	</use>
 	<upstream>

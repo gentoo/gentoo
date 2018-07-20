@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs git-r3
+inherit cmake-utils flag-o-matic git-r3 xdg-utils
 
-DESCRIPTION="Viewer for ICC and CGATS profiles, argylls gamut vrml visualisations and GPU gamma tables"
-HOMEPAGE="http://www.oyranos.org/wiki/index.php?title=ICC_Examin"
+DESCRIPTION="Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables"
+HOMEPAGE="http://www.oyranos.org/icc-examin/"
 EGIT_REPO_URI="https://github.com/oyranos-cms/${PN/_/-}.git"
 
 LICENSE="GPL-2"
@@ -14,30 +14,39 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="app-admin/elektra
+RDEPEND="
+	app-admin/elektra
+	media-libs/freetype
 	media-libs/ftgl
-	media-libs/libXcm
-	=media-libs/oyranos-9999
+	media-libs/libXcm[X]
+	media-libs/oyranos
 	media-libs/tiff:0
-	x11-libs/fltk
+	virtual/jpeg:0
+	virtual/opengl
+	x11-libs/fltk[opengl]
 	x11-libs/libX11
 	x11-libs/libXinerama
 	x11-libs/libXpm
 	x11-libs/libXrandr
-	x11-libs/libXxf86vm"
-
+	x11-libs/libXxf86vm
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	sys-devel/gettext
+	virtual/libintl
+	virtual/pkgconfig
+"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.55-fix-xrandr-test.patch
-
-	sed -e '/xdg-icon-resource\|xdg-desktop-menu/d' \
-		-i makefile.in
-}
+PATCHES=( "${FILESDIR}/${PN/_/-}-0.56-fltk.patch" )
 
 src_configure() {
-	tc-export CC CXX
-	econf --enable-verbose \
-		--disable-static
+	append-cxxflags -fpermissive
+	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

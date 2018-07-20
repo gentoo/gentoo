@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit autotools eutils linux-info
 
 HOMEPAGE="http://www.gnokii.org/"
@@ -32,11 +31,13 @@ RDEPEND="
 		mysql? ( virtual/mysql:= )
 	)
 	usb? ( virtual/libusb:0 )
-	X? ( x11-libs/gtk+:2 )"
+	X? ( x11-libs/gtk+:2 )
+"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	irda? ( virtual/os-headers )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 CONFIG_CHECK="~UNIX98_PTYS"
 
@@ -45,11 +46,11 @@ S="${WORKDIR}/${PN}-${PV%.1}"
 # Supported languages and translated documentation
 # Be sure all languages are prefixed with a single space!
 MY_AVAILABLE_LINGUAS=" cs de et fi fr it nl pl pt sk sl sv zh_CN"
-IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix_xgnokii_inclusion.patch
 	"${FILESDIR}"/${P}-gcc5.patch
+	"${FILESDIR}"/${P}-gcc7.patch
 )
 
 src_prepare() {

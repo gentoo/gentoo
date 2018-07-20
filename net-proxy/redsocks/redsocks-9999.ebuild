@@ -8,7 +8,7 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI="git://github.com/darkk/${PN}.git"
+	EGIT_REPO_URI="https://github.com/darkk/${PN}.git"
 fi
 
 inherit systemd toolchain-funcs user ${GIT_ECLASS}
@@ -18,6 +18,7 @@ HOMEPAGE="http://darkk.net.ru/redsocks/"
 LICENSE="Apache-2.0 LGPL-2.1+ ZLIB"
 SLOT="0"
 IUSE="doc"
+RESTRICT="test"
 
 DEPEND="dev-libs/libevent:0="
 RDEPEND="${DEPEND}

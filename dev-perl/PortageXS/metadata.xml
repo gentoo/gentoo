@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>kentnl@gentoo.org</email>
 		<name>Kent Fredric</name>
-		<description>Maintainer. Assign bugs to him</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>

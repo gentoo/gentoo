@@ -1,0 +1,100 @@
+From b97846017df57698f9e77c8aab077d5a3f17e7ea Mon Sep 17 00:00:00 2001
+From: Andreas Krutzler <andi.krutzler@gmail.com>
+Date: Fri, 29 Jun 2018 09:39:28 +0200
+Subject: Fix wrong availability of profiles and ports.
+
+Summary: Fixed bug where available ports are displayed as unavailable/unplugged and vice versa. It seems that this bug was introduced with D9671.
+
+Reviewers: nicolasfella, broulik, drosca
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D13694
+---
+ src/port.h    | 13 ++++++++++++-
+ src/profile.h | 30 ++++++++++++++++++------------
+ 2 files changed, 30 insertions(+), 13 deletions(-)
+
+diff --git a/src/port.h b/src/port.h
+index 8a8126e..bbf32db 100644
+--- a/src/port.h
++++ b/src/port.h
+@@ -40,7 +40,18 @@ public:
+     template<typename PAInfo>
+     void setInfo(const PAInfo *info)
+     {
+-        Profile::setInfo(info);
++        Availability newAvailability;
++        switch (info->available) {
++        case PA_PORT_AVAILABLE_NO:
++            newAvailability = Unavailable;
++            break;
++        case PA_PORT_AVAILABLE_YES:
++            newAvailability = Available;
++            break;
++        default:
++            newAvailability = Unknown;
++        }
++        setCommonInfo(info, newAvailability);
+     }
+ };
+ 
+diff --git a/src/profile.h b/src/profile.h
+index d8188a2..cd29c62 100644
+--- a/src/profile.h
++++ b/src/profile.h
+@@ -49,6 +49,24 @@ public:
+     template<typename PAInfo>
+     void setInfo(const PAInfo *info)
+     {
++        setCommonInfo(info, info->available ? Available : Unavailable);
++    }
++
++    QString name() const;
++    QString description() const;
++    quint32 priority() const;
++    Availability availability() const;
++
++signals:
++    void nameChanged();
++    void descriptionChanged();
++    void priorityChanged();
++    void availabilityChanged();
++
++protected:
++    template<typename PAInfo>
++    void setCommonInfo(const PAInfo *info, Availability newAvailability)
++    {
+         // Description is optional. Name not so much as we need some ID.
+         Q_ASSERT(info->name);
+         QString infoName = QString::fromUtf8(info->name);
+@@ -68,24 +86,12 @@ public:
+             emit priorityChanged();
+         }
+ 
+-        Availability newAvailability = info->available ? Available : Unavailable;
+         if (m_availability != newAvailability) {
+             m_availability = newAvailability;
+             emit availabilityChanged();
+         }
+     }
+ 
+-    QString name() const;
+-    QString description() const;
+-    quint32 priority() const;
+-    Availability availability() const;
+-
+-signals:
+-    void nameChanged();
+-    void descriptionChanged();
+-    void priorityChanged();
+-    void availabilityChanged();
+-
+ private:
+     QString m_name;
+     QString m_description;
+-- 
+cgit v0.11.2
+

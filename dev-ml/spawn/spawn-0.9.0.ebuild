@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit opam
+
 DESCRIPTION="Spawning sub-processes"
 HOMEPAGE="https://github.com/janestreet/spawn"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -12,16 +14,6 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="
-	dev-lang/ocaml:=
-	"
+DEPEND=""
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-}
+DEPEND="${DEPEND} dev-ml/jbuilder"

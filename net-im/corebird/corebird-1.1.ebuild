@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit eutils autotools-utils gnome2 vala
 
 DESCRIPTION="Native GTK+3 Twitter client"
-HOMEPAGE="http://corebird.baedert.org/"
+HOMEPAGE="https://corebird.baedert.org/"
 SRC_URI="https://github.com/baedert/corebird/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"

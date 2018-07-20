@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,12 @@ inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 	multilib-minimal python-single-r1 toolchain-funcs pax-utils prefix
 
 DESCRIPTION="Low Level Virtual Machine"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
-	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
-	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( https://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		https://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
+		https://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
+	lldb? ( https://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
 	!doc? ( https://dev.gentoo.org/~voyageur/distfiles/${PN}-3.7.0-manpages.tar.bz2 )
 	https://dev.gentoo.org/~mgorny/dist/llvm/${P}-patchset.tar.gz"
 
@@ -30,13 +30,12 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 
 LICENSE="UoI-NCSA rc BSD public-domain
 	arm? ( LLVM-Grant )
-	arm64? ( LLVM-Grant )
 	multitarget? ( LLVM-Grant )"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm ~arm64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="arm ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
 	python +static-analyzer test xml video_cards_radeon
-	kernel_Darwin kernel_FreeBSD"
+	kernel_Darwin"
 
 COMMON_DEPEND="
 	sys-libs/zlib:0=
@@ -76,9 +75,7 @@ DEPEND="${COMMON_DEPEND}
 	ocaml? ( test? ( dev-ml/ounit ) )
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
-	clang? ( !<=sys-devel/clang-${PV}-r99 )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	clang? ( !<=sys-devel/clang-${PV}-r99 )"
 PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
 	kernel_Darwin? ( =sys-libs/libcxx-${PV}* )"
 
@@ -253,12 +250,12 @@ src_prepare() {
 			-i tools/lldb/scripts/Python/finishSwigPythonLLDB.py || die
 
 		# Fix build with ncurses[tinfo], #560474
-		# http://llvm.org/viewvc/llvm-project?view=revision&revision=247842
+		# https://llvm.org/viewvc/llvm-project?view=revision&revision=247842
 		eapply "${WORKDIR}/${P}-patchset"/lldb/tinfo.patch
 	fi
 
-	# User patches
-	eapply_user
+	# User patches + QA
+	cmake-utils_src_prepare
 
 	# Native libdir is used to hold LLVMgold.so
 	NATIVE_LIBDIR=$(get_libdir)
@@ -453,11 +450,6 @@ src_install() {
 	fi
 
 	multilib-minimal_src_install
-
-	# Remove unnecessary headers on FreeBSD, bug #417171
-	if use kernel_FreeBSD && use clang; then
-		rm "${ED}"usr/lib/clang/${PV}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
-	fi
 }
 
 multilib_src_install() {
@@ -563,11 +555,5 @@ multilib_src_install_all() {
 		if use lldb && use python; then
 			python_optimize
 		fi
-	fi
-}
-
-pkg_postinst() {
-	if use clang && ! has_version sys-libs/libomp; then
-		elog "To enable OpenMP support in clang, install sys-libs/libomp."
 	fi
 }

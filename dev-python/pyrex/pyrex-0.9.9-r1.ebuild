@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,8 +10,8 @@ inherit distutils-r1
 MY_P="Pyrex-${PV}"
 
 DESCRIPTION="A language for writing Python extension modules"
-HOMEPAGE="http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/"
-SRC_URI="http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/${MY_P}.tar.gz"
+HOMEPAGE="https://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/"
+SRC_URI="https://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

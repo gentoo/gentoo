@@ -10,7 +10,7 @@ inherit xfconf vala
 
 DESCRIPTION="Vala bindings for the Xfce desktop environment"
 HOMEPAGE="https://wiki.xfce.org/vala-bindings"
-SRC_URI="mirror://xfce/src/bindings/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/bindings/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

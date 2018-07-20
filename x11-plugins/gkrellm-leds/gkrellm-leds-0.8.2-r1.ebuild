@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,15 +10,18 @@ MY_P="${P/rellm-/}"
 DESCRIPTION="GKrellM2 plugin for monitoring keyboard LEDs"
 HOMEPAGE="http://heim.ifi.uio.no/~oyvinha/gkleds/"
 SRC_URI="http://heim.ifi.uio.no/~oyvinha/e107_files/downloads/${MY_P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="alpha amd64 ~ppc ~sparc x86"
 IUSE=""
 
-COMMON_DEPEND="app-admin/gkrellm[X]"
-DEPEND+="  ${COMMON_DEPEND} x11-proto/inputproto"
-RDEPEND+=" ${COMMON_DEPEND} x11-libs/libXtst"
+RDEPEND="
+	app-admin/gkrellm:2[X]
+	x11-libs/libXtst"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 S="${WORKDIR}/${MY_P}"
 
-PLUGIN_SO="src/.libs/gkleds.so"
+PLUGIN_SO=( src/.libs/gkleds$(get_modname) )

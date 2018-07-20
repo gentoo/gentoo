@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MYPN=CCfits
 MYP=${MYPN}-${PV}
 
 DESCRIPTION="C++ interface for cfitsio"
-HOMEPAGE="http://heasarc.gsfc.nasa.gov/fitsio/CCfits/"
+HOMEPAGE="https://heasarc.gsfc.nasa.gov/fitsio/CCfits/"
 SRC_URI="${HOMEPAGE}/${MYP}.tar.gz"
 
 LICENSE="BSD"

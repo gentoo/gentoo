@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,6 +15,13 @@ SLOT="0"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 S=${WORKDIR}/Csu-${PV}
+
+# for now it seems FSF GCC can't compile this thing, so we need
+# gcc-apple or clang (which is also sort of "-apple")
+DEPEND="|| (
+		sys-devel/clang
+		=sys-devel/gcc-apple-4.2.1*
+	)"
 
 src_prepare() {
 	# since we don't have crt0, we can't build it either
@@ -39,6 +46,12 @@ src_prepare() {
 }
 
 src_compile() {
+	# FSF GCC-7.3.0 most notably complains about private_externs, but it
+	# also has issues with the assembly, so use gcc-apple, if it is
+	# installed.  Normally, (non-ppc) users will have clang installed,
+	# so this isn't used, should they have gcc-apple installed, then
+	# this wouldn't hurt either.
+	type -P gcc-4.2.1 > /dev/null && export CC=gcc-4.2.1
 	emake USRLIBDIR="${EPREFIX}"/lib || die
 }
 

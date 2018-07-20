@@ -10,7 +10,7 @@ MY_PN="Whoosh"
 inherit distutils-r1
 
 DESCRIPTION="Fast, pure-Python full text indexing, search and spell checking library"
-HOMEPAGE="https://bitbucket.org/mchaput/whoosh/wiki/Home/ https://pypi.python.org/pypi/Whoosh/"
+HOMEPAGE="https://bitbucket.org/mchaput/whoosh/wiki/Home/ https://pypi.org/project/Whoosh/"
 SRC_URI="mirror://pypi/W/${MY_PN}/${MY_PN}-${PV}.zip"
 
 DEPEND="app-arch/unzip

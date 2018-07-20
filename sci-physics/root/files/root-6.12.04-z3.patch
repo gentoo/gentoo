@@ -1,0 +1,39 @@
+From 4445e05660493841b5fb683c7e8a8dc6c08564ac Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Mon, 18 Dec 2017 11:49:55 +0100
+Subject: [PATCH] Only look for Z3 if necessary
+
+---
+ interpreter/llvm/src/tools/clang/CMakeLists.txt | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/interpreter/llvm/src/tools/clang/CMakeLists.txt b/interpreter/llvm/src/tools/clang/CMakeLists.txt
+index 2667b1d689..a1559d9b15 100644
+--- a/interpreter/llvm/src/tools/clang/CMakeLists.txt
++++ b/interpreter/llvm/src/tools/clang/CMakeLists.txt
+@@ -186,8 +186,6 @@ if (LIBXML2_FOUND)
+   set(CLANG_HAVE_LIBXML 1)
+ endif()
+ 
+-find_package(Z3 4.5)
+-
+ include(CheckIncludeFile)
+ check_include_file(sys/resource.h CLANG_HAVE_RLIMITS)
+ 
+@@ -381,11 +379,8 @@ if(NOT CLANG_ENABLE_STATIC_ANALYZER AND (CLANG_ENABLE_ARCMT OR CLANG_ANALYZER_BU
+ endif()
+ 
+ if(CLANG_ANALYZER_BUILD_Z3)
+-  if(Z3_FOUND)
+-    set(CLANG_ANALYZER_WITH_Z3 1)
+-  else()
+-    message(FATAL_ERROR "Cannot find Z3 header file or shared library")
+-  endif()
++  find_package(Z3 4.5 REQUIRED)
++  set(CLANG_ANALYZER_WITH_Z3 1)
+ endif()
+ 
+ if(CLANG_ENABLE_ARCMT)
+-- 
+2.15.1
+

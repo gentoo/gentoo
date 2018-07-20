@@ -1,0 +1,9 @@
+[Unit]
+Description=Kerberos 5 propagation server
+
+[Socket]
+ListenStream=754
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

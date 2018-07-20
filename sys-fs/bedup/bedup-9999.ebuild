@@ -6,8 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python3_{4,5,6} )
 
 #if LIVE
-EGIT_REPO_URI="git://github.com/g2p/bedup.git
-	https://github.com/g2p/bedup.git"
+EGIT_REPO_URI="https://github.com/g2p/bedup.git"
 inherit git-r3
 #endif
 

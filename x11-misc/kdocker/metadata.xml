@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>realnc@gmail.com</email>
+		<name>Nikos Chantziaras</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="launchpad">kdocker</remote-id>
-		<bugs-to>https://bugs.launchpad.net/kdocker</bugs-to>
+		<remote-id type="github">user-none/KDocker</remote-id>
+		<bugs-to>https://github.com/user-none/KDocker/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

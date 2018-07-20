@@ -1,18 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="WMaker DockApp: A Calendar clock with antialiased text"
-SRC_URI="http://dockapps.windowmaker.org/download.php/id/16/${P}.tar.gz"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/9"
+HOMEPAGE="https://www.dockapps.net/wmcalclock"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 SLOT="0"
 LICENSE="GPL-2"

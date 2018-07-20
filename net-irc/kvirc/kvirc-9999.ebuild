@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=(python2_7)
 
-inherit cmake-utils flag-o-matic multilib python-single-r1
+inherit cmake-utils flag-o-matic gnome2-utils python-single-r1 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -58,9 +58,9 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kxmlgui:5
 	)
 	perl? ( dev-lang/perl:0= )
-	phonon? ( media-libs/phonon:0[qt5] )
+	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:0= )
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
@@ -76,7 +76,7 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
 
-DOCS=(ChangeLog doc/FAQ)
+DOCS=()
 
 pkg_setup() {
 	if use python; then
@@ -135,4 +135,14 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

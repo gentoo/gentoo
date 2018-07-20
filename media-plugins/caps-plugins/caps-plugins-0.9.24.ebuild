@@ -12,7 +12,7 @@ HOMEPAGE="http://quitte.de/dsp/caps.html"
 SRC_URI="http://quitte.de/dsp/caps_${PV}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="media-libs/ladspa-sdk"

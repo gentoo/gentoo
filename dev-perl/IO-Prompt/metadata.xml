@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">IO-Prompt</remote-id>
+    <remote-id type="cpan-module">IO::Prompt</remote-id>
+    <remote-id type="cpan-module">IO::Prompt::ReturnVal</remote-id>
+  </upstream>
 </pkgmetadata>

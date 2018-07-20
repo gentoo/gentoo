@@ -1,0 +1,108 @@
+--- a/Include.make
++++ b/Include.make
+@@ -3,6 +3,3 @@
+ USRSBINDIR      := /usr/sbin
+ USRLIBDIR       := /usr/lib
+ MAN8            := /usr/share/man/man8
+-ifndef CFLAGS
+-CFLAGS          := -Wall -O2
+-endif
+--- a/kernel_test/Makefile
++++ b/kernel_test/Makefile
+@@ -20,7 +20,7 @@
+ #
+ 
+ .c:
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ #
+ # Delete all test programs.
+--- a/sbin/Makefile
++++ b/sbin/Makefile
+@@ -5,11 +5,11 @@
+ all: $(BUILD_FILES)
+ 
+ install: all
+-	mkdir -p -m 0755 $(INSTALLDIR)$(SBINDIR)
+-	$(INSTALL) -m 0700 $(BUILD_FILES) $(INSTALLDIR)$(SBINDIR)
++	mkdir -p -m 0755 $(DESTDIR)$(SBINDIR)
++	$(INSTALL) -m 0700 $(BUILD_FILES) $(DESTDIR)$(SBINDIR)
+ 
+ .c:
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ clean:
+ 	rm -f -- $(BUILD_FILES)
+--- a/usr_lib_ccs/Makefile
++++ b/usr_lib_ccs/Makefile
+@@ -6,12 +6,12 @@
+ all: $(BUILD_FILES)
+ 
+ install: all
+-	mkdir -p -m 0755 $(INSTALLDIR)/$(USRLIBDIR)/ccs
+-	$(INSTALL) -m 0755 $(BUILD_FILES) $(INSTALLDIR)/$(USRLIBDIR)/ccs/
+-	$(INSTALL) -m 0644 ../README.ccs ../COPYING.ccs $(INSTALLDIR)/$(USRLIBDIR)/ccs/
++	mkdir -p -m 0755 $(DESTDIR)/$(USRLIBDIR)/ccs
++	$(INSTALL) -m 0755 $(BUILD_FILES) $(DESTDIR)/$(USRLIBDIR)/ccs/
++	$(INSTALL) -m 0644 ../README.ccs ../COPYING.ccs $(DESTDIR)/$(USRLIBDIR)/ccs/
+ 
+ .c:
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ clean:
+ 	rm -f -- $(BUILD_FILES)
+--- a/usr_sbin/Makefile
++++ b/usr_sbin/Makefile
+@@ -19,27 +19,27 @@
+ LDFLAGS_PIC := $(filter-out -pie,$(filter-out -fPIE,$(LDFLAGS)))
+ 
+ libccstools.so: ccstools.c ccstools.h
+-	$(CC) $(CPPFLAGS) $(CFLAGS_PIC) $(LDFLAGS_PIC) -fPIC ccstools.c -shared -Wl,-soname,libccstools.so.3 -o libccstools.so.3.0.2
++	$(CC) $(CPPFLAGS) $(CFLAGS_PIC) $(LDFLAGS_PIC) -fPIC ccstools.c -shared -Wl,-soname,libccstools.so.3 -o libccstools.so.3.0.2 $(LIBS)
+ 	ln -sf libccstools.so.3.0.2 libccstools.so
+ 
+ .c:
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< -lccstools -L. 
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< -lccstools -L. $(LIBS)
+ 
+ ccs-editpolicy: ccstools.h editpolicy*.c readline.h /usr/include/curses.h libccstools.so
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o ccs-editpolicy editpolicy*.c -lncurses -lccstools -L. -DCOLOR_ON
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o ccs-editpolicy editpolicy*.c -lccstools -L. -DCOLOR_ON $(LIBS)
+ 
+ ccs-queryd: ccstools.h ccs-queryd.c readline.h /usr/include/curses.h libccstools.so
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o ccs-queryd ccs-queryd.c -lncurses -lccstools -L.
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o ccs-queryd ccs-queryd.c -lccstools -L. $(LIBS)
+ 
+ install: all
+-	mkdir -p -m 0755 $(INSTALLDIR)$(USRLIBDIR)
+-	$(INSTALL) -m 0755 libccstools.so.3.0.2 $(INSTALLDIR)$(USRLIBDIR)
+-	ln -sf libccstools.so.3.0.2 $(INSTALLDIR)$(USRLIBDIR)/libccstools.so.3
+-ifeq ($(INSTALLDIR),)
++	mkdir -p -m 0755 $(DESTDIR)$(USRLIBDIR)
++	$(INSTALL) -m 0755 libccstools.so.3.0.2 $(DESTDIR)$(USRLIBDIR)
++	ln -sf libccstools.so.3.0.2 $(DESTDIR)$(USRLIBDIR)/libccstools.so.3
++ifeq ($(DESTDIR),)
+ 	ldconfig || true
+ endif
+-	mkdir -p -m 0755 $(INSTALLDIR)$(USRSBINDIR)
+-	$(INSTALL) -m 0755 $(BUILD_FILES) $(INSTALLDIR)$(USRSBINDIR)
++	mkdir -p -m 0755 $(DESTDIR)$(USRSBINDIR)
++	$(INSTALL) -m 0755 $(BUILD_FILES) $(DESTDIR)$(USRSBINDIR)
+ 
+ clean:
+ 	rm -f -- $(BUILD_FILES) libccstools.so*
+--- a/usr_share_man/Makefile
++++ b/usr_share_man/Makefile
+@@ -1,7 +1,7 @@
+ include ../Include.make
+ 
+ install:
+-	mkdir -p -m 0755 $(INSTALLDIR)$(MAN8)
+-	$(INSTALL) -m 0644 man8/* $(INSTALLDIR)$(MAN8)
++	mkdir -p -m 0755 $(DESTDIR)$(MAN8)
++	$(INSTALL) -m 0644 man8/* $(DESTDIR)$(MAN8)
+ 
+ .PHONY: install

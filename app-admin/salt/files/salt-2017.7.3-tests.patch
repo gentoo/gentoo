@@ -1,0 +1,66 @@
+diff --git a/tests/unit/fileserver/test_roots.py b/tests/unit/fileserver/test_roots.py
+index cc9c8dbce9..a50a240c25 100644
+--- a/tests/unit/fileserver/test_roots.py
++++ b/tests/unit/fileserver/test_roots.py
+@@ -164,12 +164,6 @@ class RootsTest(TestCase, AdaptedConfigurationTestCaseMixin, LoaderModuleMockMix
+         ret = roots.dir_list({'saltenv': 'base'})
+         self.assertIn('empty_dir', ret)
+ 
+-    def test_symlink_list(self):
+-        if self.test_symlink_list_file_roots:
+-            self.opts['file_roots'] = self.test_symlink_list_file_roots
+-        ret = roots.symlink_list({'saltenv': 'base'})
+-        self.assertDictEqual(ret, {'dest_sym': 'source_sym'})
+-
+ 
+ class RootsLimitTraversalTest(TestCase, AdaptedConfigurationTestCaseMixin):
+ 
+diff --git a/tests/unit/modules/test_inspect_collector.py b/tests/unit/modules/test_inspect_collector.py
+index 0d37519a9e..c18be8d592 100644
+--- a/tests/unit/modules/test_inspect_collector.py
++++ b/tests/unit/modules/test_inspect_collector.py
+@@ -59,44 +59,6 @@ class InspectorCollectorTestCase(TestCase):
+             inspector.pidfile,
+             os.sep + os.sep.join(['foo', 'pid', 'bar.pid']))
+ 
+-    def test_file_tree(self):
+-        '''
+-        Test file tree.
+-
+-        :return:
+-        '''
+-
+-        inspector = Inspector(cachedir=os.sep + 'test',
+-                              piddir=os.sep + 'test',
+-                              pidfilename='bar.pid')
+-        tree_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'inspectlib', 'tree_test')
+-        expected_tree = ([os.sep + os.sep.join(['a', 'a', 'dummy.a']),
+-                          os.sep + os.sep.join(['a', 'b', 'dummy.b']),
+-                          os.sep + os.sep.join(['b', 'b.1']),
+-                          os.sep + os.sep.join(['b', 'b.2']),
+-                          os.sep + os.sep.join(['b', 'b.3'])],
+-                         [os.sep + 'a',
+-                          os.sep + os.sep.join(['a', 'a']),
+-                          os.sep + os.sep.join(['a', 'b']),
+-                          os.sep + os.sep.join(['a', 'c']),
+-                          os.sep + 'b',
+-                          os.sep + 'c'],
+-                         [os.sep + os.sep.join(['a', 'a', 'dummy.ln.a']),
+-                          os.sep + os.sep.join(['a', 'b', 'dummy.ln.b']),
+-                          os.sep + os.sep.join(['a', 'c', 'b.1']),
+-                          os.sep + os.sep.join(['b', 'b.4']),
+-                          os.sep + os.sep.join(['b', 'b.5']),
+-                          os.sep + os.sep.join(['c', 'b.1']),
+-                          os.sep + os.sep.join(['c', 'b.2']),
+-                          os.sep + os.sep.join(['c', 'b.3'])])
+-        tree_result = []
+-        for chunk in inspector._get_all_files(tree_root):
+-            buff = []
+-            for pth in chunk:
+-                buff.append(pth.replace(tree_root, ''))
+-            tree_result.append(buff)
+-        tree_result = tuple(tree_result)
+-        self.assertEqual(expected_tree, tree_result)
+ 
+     def test_get_unmanaged_files(self):
+         '''

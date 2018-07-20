@@ -20,6 +20,7 @@ RDEPEND=""
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-ldflags.patch
+	epatch "${FILESDIR}"/${P}-pic-code.patch
 	epatch "${FILESDIR}"/${P}-links.patch
 	epatch "${FILESDIR}"/${P}-nodocs.patch
 	epatch "${FILESDIR}"/${P}-txt-file.patch
@@ -30,11 +31,6 @@ src_configure() {
 
 	append-flags -fno-strict-aliasing
 	use debug && append-flags -DDEBUG
-
-	if gcc-specs-pie ; then
-		# gplc generates its own native ASM; disable PIE
-		append-ldflags -nopie
-	fi
 
 	cd "${S}"/src
 	econf \

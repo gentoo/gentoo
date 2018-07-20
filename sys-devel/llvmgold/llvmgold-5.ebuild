@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="LLVMgold plugin symlink for autoloading"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux"
 IUSE=""
 
 RDEPEND="sys-devel/llvm:${PV}[gold]

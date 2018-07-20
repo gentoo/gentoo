@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>git@marcbrinkmann.de</email>
+			<name>Marc Brinkmann</name>
+		</maintainer>
+		<remote-id type="pypi">shutilwhich</remote-id>
+		<remote-id type="github">mbr/shutilwhich</remote-id>
+	</upstream>
+	<longdescription>
+		shutilwhich will monkey-patch the shutil package, so from that 
+		point on you can simply import the which function.  On Python 
+		3.3 and above, the module never do anything but return the 
+		stdlib shutil.which function.
+	</longdescription>
+</pkgmetadata>

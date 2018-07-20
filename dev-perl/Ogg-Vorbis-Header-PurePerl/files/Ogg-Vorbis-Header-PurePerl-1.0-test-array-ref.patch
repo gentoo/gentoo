@@ -1,0 +1,38 @@
+From e7c90043efe460ce33d980482b383ef095576247 Mon Sep 17 00:00:00 2001
+From: James E Keenan <jkeenan@cpan.org>
+Date: Mon, 6 Apr 2015 21:44:12 -0400
+Subject: Eliminate deprecated use of array as reference
+
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=96578
+Bug: https://bugs.gentoo.org/623060
+---
+ test.pl | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test.pl b/test.pl
+index 365bef9..867e05e 100755
+--- a/test.pl
++++ b/test.pl
+@@ -19,16 +19,16 @@ ok(my $ogg = Ogg::Vorbis::Header::PurePerl->new('test.ogg'));
+ # Try all the routines
+ ok($ogg->info->{'rate'} == 44100);
+ ok($ogg->comment_tags);
+-ok(@{$ogg->comment('artist')}->[0] == 'maloi');
++ok($ogg->comment('artist')->[0] == 'maloi');
+ 
+ $ogg = 0;
+ 
+ # See if full load works
+ ok(my $ogg = Ogg::Vorbis::Header::PurePerl->new('test.ogg'));
+-ok(@{$ogg->comment('artist')}->[0] == 'maloi');
++ok($ogg->comment('artist')->[0] == 'maloi');
+ 
+ # and see if we can get comments including the '=' character
+-ok(@{$ogg->comment('album')}->[0] == 'this=that');
++ok($ogg->comment('album')->[0] == 'this=that');
+ 
+ # Make sure we're getting the right track length
+ ok($ogg->info->{'length'} == 0);
+-- 
+2.15.1
+

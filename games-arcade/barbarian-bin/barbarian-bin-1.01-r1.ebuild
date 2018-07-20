@@ -11,7 +11,7 @@ SRC_URI="http://www.pcpages.com/tomberrr/downloads/${MY_PN}${PV/./}_linux.zip"
 
 LICENSE="CC-BY-NC-ND-2.0"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="strip"
 IUSE=""
 

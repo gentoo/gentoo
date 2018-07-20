@@ -5,4 +5,15 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">IO-Event</remote-id>
+    <remote-id type="cpan-module">IO::Event</remote-id>
+    <remote-id type="cpan-module">IO::Event::AnyEvent</remote-id>
+    <remote-id type="cpan-module">IO::Event::Callback</remote-id>
+    <remote-id type="cpan-module">IO::Event::Emulate</remote-id>
+    <remote-id type="cpan-module">IO::Event::Event</remote-id>
+    <remote-id type="cpan-module">IO::Event::INET::Callback</remote-id>
+    <remote-id type="cpan-module">IO::Event::Socket::UNIX</remote-id>
+    <remote-id type="cpan-module">IO::Event::UNIX::Callback</remote-id>
+  </upstream>
 </pkgmetadata>

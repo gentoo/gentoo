@@ -1,0 +1,25 @@
+# If upgrading the old libraries gets linked first. So fix order of 
+# lib search path.
+--- src/console/Makefile.in.orig	2017-07-26 15:03:07.000000000 +0200
++++ src/console/Makefile.in	2017-07-23 18:31:57.000000000 +0200
+@@ -49,17 +49,17 @@
+ 
+ 
+ bconsole: Makefile $(CONSOBJS) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(LDFLAGS) $(CONS_LDFLAGS) -L../lib -L../cats -o $@ $(CONSOBJS) \
++	$(LIBTOOL_LINK) $(CXX) -L../lib -L../cats $(LDFLAGS) $(CONS_LDFLAGS) -o $@ $(CONSOBJS) \
+ 	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+ 	      $(OPENSSL_LIBS)
+ 
+ bbconsjson: Makefile $(JSONOBJS) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(LDFLAGS) $(CONS_LDFLAGS) -L../lib -L../cats -o $@ $(JSONOBJS) \
++	$(LIBTOOL_LINK) $(CXX) -L../lib -L../cats $(LDFLAGS) $(CONS_LDFLAGS) -o $@ $(JSONOBJS) \
+ 	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+ 	      $(OPENSSL_LIBS)
+ 
+ static-bconsole: Makefile $(CONSOBJS) ../lib/libbac.a ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) -static $(LDFLAGS) $(CONS_LDFLAGS) -L../lib -L../cats -o $@ $(CONSOBJS) \
++	$(LIBTOOL_LINK) $(CXX) -static -L../lib -L../cats $(LDFLAGS) $(CONS_LDFLAGS) -o $@ $(CONSOBJS) \
+ 	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+ 	      $(OPENSSL_LIBS)
+ 	strip $@

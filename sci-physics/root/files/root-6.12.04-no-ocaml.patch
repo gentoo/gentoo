@@ -1,0 +1,49 @@
+From 7405b8848e7c0d5ddcaa1f27b905b6931dc262e2 Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Mon, 18 Dec 2017 13:08:14 +0100
+Subject: [PATCH] Disable OCaml bindings in LLVM
+
+---
+ interpreter/llvm/src/cmake/config-ix.cmake | 28 ----------------------------
+ 1 file changed, 28 deletions(-)
+
+diff --git a/interpreter/llvm/src/cmake/config-ix.cmake b/interpreter/llvm/src/cmake/config-ix.cmake
+index 6fb589cfd3..d1c9a70d10 100644
+--- a/interpreter/llvm/src/cmake/config-ix.cmake
++++ b/interpreter/llvm/src/cmake/config-ix.cmake
+@@ -575,32 +575,4 @@ if(CMAKE_HOST_APPLE AND APPLE)
+   endif()
+ endif()
+ 
+-# Keep the version requirements in sync with bindings/ocaml/README.txt.
+-include(FindOCaml)
+-include(AddOCaml)
+-if(WIN32)
+-  message(STATUS "OCaml bindings disabled.")
+-else()
+-  find_package(OCaml)
+-  if( NOT OCAML_FOUND )
+-    message(STATUS "OCaml bindings disabled.")
+-  else()
+-    if( OCAML_VERSION VERSION_LESS "4.00.0" )
+-      message(STATUS "OCaml bindings disabled, need OCaml >=4.00.0.")
+-    else()
+-      find_ocamlfind_package(ctypes VERSION 0.4 OPTIONAL)
+-      if( HAVE_OCAML_CTYPES )
+-        message(STATUS "OCaml bindings enabled.")
+-        find_ocamlfind_package(oUnit VERSION 2 OPTIONAL)
+-        set(LLVM_BINDINGS "${LLVM_BINDINGS} ocaml")
+-
+-        set(LLVM_OCAML_INSTALL_PATH "${OCAML_STDLIB_PATH}" CACHE STRING
+-            "Install directory for LLVM OCaml packages")
+-      else()
+-        message(STATUS "OCaml bindings disabled, need ctypes >=0.4.")
+-      endif()
+-    endif()
+-  endif()
+-endif()
+-
+ string(REPLACE " " ";" LLVM_BINDINGS_LIST "${LLVM_BINDINGS}")
+-- 
+2.15.1
+

@@ -1,19 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
 IUSE=""
 DESCRIPTION="Window Maker dock applet resembling a miniature pinboard"
-SRC_URI="http://dockapps.windowmaker.org/download.php/id/131/${P}.tar.gz"
-HOMEPAGE="http://dockapps.windowmaker.org/file.php/id/93"
+SRC_URI="https://github.com/bbidulock/${PN}/releases/download/${PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/bbidulock/wmpinboard"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 SLOT="0"
 LICENSE="GPL-2"

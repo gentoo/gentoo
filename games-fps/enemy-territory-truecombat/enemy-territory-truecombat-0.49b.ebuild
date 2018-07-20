@@ -18,7 +18,7 @@ SRC_URI="http://dragons-perch.net/tce/tcetest049.zip
 	http://dragons-perch.net/tce/tce${MY_PV}_all_os_fixed.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 RDEPEND="~virtual/libstdc++-3.3"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: HTML and CSS hi-speed coding"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2981 http://mattn.github.io/emmet-vim/ http://emmet.io/"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2981 https://mattn.github.io/emmet-vim/ https://emmet.io/"
 LICENSE="BSD"
 KEYWORDS="amd64 x86"
 

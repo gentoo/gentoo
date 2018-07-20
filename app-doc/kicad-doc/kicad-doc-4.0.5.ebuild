@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ unset lang
 unset LUSE
 
 DEPEND=">=app-text/asciidoc-8.6.9
-	app-text/dblatex
+	>=app-text/dblatex-0.3.10
 	app-text/texlive:=[l10n_en?,l10n_fr?,l10n_it?,l10n_ja?,l10n_nl?,l10n_pl?]
 	>=app-text/po4a-0.45
 	>=sys-devel/gettext-0.18

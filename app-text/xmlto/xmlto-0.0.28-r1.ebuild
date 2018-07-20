@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils
 
 DESCRIPTION="script for converting XML and DocBook documents to a variety of output formats"
-HOMEPAGE="https://fedorahosted.org/xmlto/"
-SRC_URI="https://fedorahosted.org/releases/${PN:0:1}/${PN:1:1}/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://pagure.io/xmlto"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="latex text"
 
 RDEPEND=">=app-text/docbook-xsl-stylesheets-1.62.0-r1
@@ -34,7 +34,7 @@ src_prepare() {
 
 src_configure() {
 	# We don't want the script to detect /bin/sh if it is bash.
-	export ac_cv_path_BASH=/bin/bash
+	export ac_cv_path_BASH=${BASH}
 	has_version sys-apps/util-linux || export GETOPT=getopt-long
 	econf
 }

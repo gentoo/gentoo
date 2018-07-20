@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		SPARK is a software development technology specifically designed for
+		engineering high-reliability applications. It consists of a programming
+		language, a verification toolset and a design method which, taken
+		together, ensure that ultra-low defect software can be deployed in
+		application domains where high-reliability must be assured, for example
+		where safety and security are key requirements.
+	</longdescription>
+</pkgmetadata>

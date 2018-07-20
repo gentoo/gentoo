@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="list window names"
-HOMEPAGE="http://tools.suckless.org/x/lsw"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/x/lsw"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_prepare() {
 	sed -i config.mk \

@@ -1,18 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="an ncurses text editor with an easy-to-read, hackable C source"
-HOMEPAGE="http://tools.suckless.org/sandy"
-SRC_URI="http://git.suckless.org/${PN}/snapshot/${P}.tar.bz2"
+HOMEPAGE="https://tools.suckless.org/sandy"
+SRC_URI="https://git.suckless.org/${PN}/snapshot/${P}.tar.bz2"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="sys-libs/ncurses"
+DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
 src_prepare() {

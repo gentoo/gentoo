@@ -1,46 +1,60 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit python-r1 toolchain-funcs mercurial
+inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Python extension module generator for C and C++ libraries"
 HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
-EHG_REPO_URI="https://www.riverbankcomputing.com/hg/sip"
 
-# Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
+if [[ ${PV} == *9999 ]]; then
+	inherit mercurial
+	EHG_REPO_URI="https://www.riverbankcomputing.com/hg/sip"
+elif [[ ${PV} == *_pre* ]]; then
+	MY_P=${P/_pre/.dev}
+	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
+	S=${WORKDIR}/${MY_P}
+else
+	SRC_URI="mirror://sourceforge/pyqt/${P}.tar.gz"
+fi
+
+# Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
 SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS=""
 IUSE="debug doc"
 
 RDEPEND="${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
-	sys-devel/bison
-	sys-devel/flex
-	doc? ( dev-python/sphinx[$(python_gen_usedep 'python2*')] )
-"
+DEPEND="${RDEPEND}"
+if [[ ${PV} == *9999 ]]; then
+	DEPEND+="
+		sys-devel/bison
+		sys-devel/flex
+		doc? ( dev-python/sphinx[$(python_gen_usedep 'python2*')] )"
+fi
 
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	|| ( $(python_gen_useflags 'python2*') )
-"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+if [[ ${PV} == *9999 ]]; then
+	REQUIRED_USE+=" || ( $(python_gen_useflags 'python2*') )"
+fi
 
 PATCHES=( "${FILESDIR}"/${PN}-4.18-darwin.patch )
 
 src_prepare() {
-	python_setup 'python2*'
-	"${PYTHON}" build.py prepare || die
-	if use doc; then
-		"${PYTHON}" build.py doc || die
+	if [[ ${PV} == *9999 ]]; then
+		python_setup 'python2*'
+		"${PYTHON}" build.py prepare || die
+		if use doc; then
+			"${PYTHON}" build.py doc || die
+		fi
 	fi
 
 	# Sub-slot sanity check
 	local sub_slot=${SLOT#*/}
-	local sip_api_major_nr=$(sed -nre 's:^#define SIP_API_MAJOR_NR\s+([0-9]+):\1:p' siplib/sip.h.in)
+	local sip_api_major_nr=$(sed -nre 's:^#define SIP_API_MAJOR_NR\s+([0-9]+):\1:p' siplib/sip.h || die)
 	if [[ ${sub_slot} != ${sip_api_major_nr} ]]; then
 		eerror
 		eerror "Ebuild sub-slot (${sub_slot}) does not match SIP_API_MAJOR_NR (${sip_api_major_nr})"

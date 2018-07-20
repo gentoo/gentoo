@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Attributes without boilerplate"
 HOMEPAGE="
 	https://github.com/hynek/attrs
 	https://attrs.readthedocs.org/
-	http://pypi.python.org/pypi/attrs"
+	https://pypi.org/project/attrs/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

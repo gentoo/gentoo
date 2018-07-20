@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/hugin/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}-"$(get_version_component_range 1-3)"
@@ -24,7 +24,4 @@ RDEPEND="!media-gfx/autopano-sift
 	virtual/jpeg:0"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-lm.patch
-	epatch_user
-}
+PATCHES=( "${FILESDIR}"/${P}-lm.patch )

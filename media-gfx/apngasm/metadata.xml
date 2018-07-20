@@ -5,6 +5,10 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
+	<use>
+		<flag name="7z">Enable support for 7zip compression</flag>
+		<flag name="zopfli">Enable support for Zopfli compression</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">apngasm</remote-id>
 	</upstream>

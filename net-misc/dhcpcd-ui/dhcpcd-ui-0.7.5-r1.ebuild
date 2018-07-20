@@ -3,53 +3,46 @@
 
 EAPI=6
 
-inherit qmake-utils systemd
+inherit systemd
 
 DESCRIPTION="Desktop notification and configuration for dhcpcd"
-HOMEPAGE="http://roy.marples.name/projects/dhcpcd-ui/"
-SRC_URI="http://roy.marples.name/downloads/${PN%-ui}/${P}.tar.bz2"
+HOMEPAGE="https://roy.marples.name/projects/dhcpcd-ui/"
+SRC_URI="https://roy.marples.name/downloads/${PN%-ui}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug gtk gtk3 qt4 libnotify"
+IUSE="debug gtk gtk3 libnotify"
 
 REQUIRED_USE="
-	?? ( gtk gtk3 qt4 )
-	gtk3? ( !gtk )
-	gtk? ( !gtk3 )"
+	?? ( gtk gtk3 )
+	libnotify? ( || ( gtk gtk3 ) )"
 
 DEPEND="
 	virtual/libintl
-	libnotify? (
-		gtk?  ( x11-libs/libnotify )
-		gtk3? ( x11-libs/libnotify )
-		qt4?  ( kde-frameworks/kdelibs:4 kde-apps/knotify:4 )
+	gtk? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
 	)
-	gtk?  ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )
-	qt4?  ( dev-qt/qtgui:4 )"
+	gtk3? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:3
+	)
+	libnotify? ( x11-libs/libnotify )"
 
-RDEPEND="
-	>=net-misc/dhcpcd-6.4.4
-	qt4? ( dev-qt/qtsvg:4  )"
-
-pkg_setup() {
-	if use qt4 ; then
-		# This is required in case a user still has qt3 installed
-		export QTDIR="$(qt4_get_bindir)"
-	fi
-}
+RDEPEND="${DEPEND}
+	>=net-misc/dhcpcd-6.4.4"
 
 src_configure() {
 	local myeconfargs=(
+		--without-qt
 		$(use_enable debug)
 		$(usex gtk  '--with-gtk=gtk+-2.0 --with-icons' '')
 		$(usex gtk3 '--with-gtk=gtk+-3.0 --with-icons' '')
-		$(usex qt4 '--with-qt --with-icons' '--without-qt')
 		$(use_enable libnotify notification)
-		$(use gtk || use gtk3 || echo '--without-gtk')
-		$(use gtk || use gtk3 || use qt4 || echo '--without-icons')
+		$(use gtk || use gtk3 || echo '--without-icons --without-gtk')
 	)
 	econf "${myeconfargs[@]}"
 }

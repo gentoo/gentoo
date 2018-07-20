@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples test"
 
 REQUIRED_USE="doc? ( || ( $(python_gen_useflags -2) ) )"
@@ -32,7 +32,7 @@ DEPEND="
 	test? (
 		${COMMON_DEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'media-gfx/pydot[${PYTHON_USEDEP}]' -2)
+		$(python_gen_cond_dep 'dev-python/pydot[${PYTHON_USEDEP}]' -2)
 	)"
 RDEPEND="
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]

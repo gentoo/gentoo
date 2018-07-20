@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,16 +23,13 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/randrproto
-	x11-proto/xineramaproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-201003-desktop.patch \
-		"${FILESDIR}"/${PN}-201003-pthread.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-201003-desktop.patch
+	"${FILESDIR}"/${PN}-201003-pthread.patch
+)
 
 src_install() {
 	cmake-utils_src_install

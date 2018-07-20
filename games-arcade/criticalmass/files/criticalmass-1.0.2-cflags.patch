@@ -1,5 +1,5 @@
---- configure.in.orig	2011-07-20 11:23:19.849122541 -0400
-+++ configure.in	2011-07-20 11:24:28.169713094 -0400
+--- a/configure.in.orig	2011-07-20 11:23:19.849122541 -0400
++++ b/configure.in	2011-07-20 11:24:28.169713094 -0400
 @@ -35,9 +35,6 @@
  AM_CONDITIONAL(APPLE,test "x$TARGET" = xAPPLE)
  AM_CONDITIONAL(WIN32,test "x$TARGET" = xWIN32)

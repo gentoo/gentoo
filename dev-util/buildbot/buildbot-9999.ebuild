@@ -1,20 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
-MY_PV="${PV/_p/p}"
+MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot/"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -25,16 +25,22 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="crypt doc examples irc test"
+IUSE="crypt doc docker examples irc test"
 
 RDEPEND="
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	>=dev-python/twisted-17.5.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
+	dev-python/future[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
+	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
+	dev-python/pyjwt[${PYTHON_USEDEP}]
+	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
+	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
-		>=dev-python/twisted-17.5.0[${PYTHON_USEDEP},crypt]
+		>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt]
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/idna[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
@@ -42,13 +48,9 @@ RDEPEND="
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)
-	dev-python/future[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
-	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
-	dev-python/pyjwt[${PYTHON_USEDEP}]
-	dev-python/distro[${PYTHON_USEDEP}]
-	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
-	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+	docker? (
+		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
@@ -60,14 +62,12 @@ DEPEND="${RDEPEND}
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
 		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 		dev-python/pyjade[${PYTHON_USEDEP}]
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
@@ -75,10 +75,17 @@ DEPEND="${RDEPEND}
 		dev-python/treq[${PYTHON_USEDEP}]
 		dev-python/setuptools_trial[${PYTHON_USEDEP}]
 		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
 	)"
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
+
+if [[ ${PV} != *9999 ]]; then
+	PATCHES=(
+		"${FILESDIR}/Remove-distro-version-test.patch"
+	)
+fi
 
 pkg_setup() {
 	enewuser buildbot
@@ -113,7 +120,7 @@ src_install() {
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}
-		doins -r contrib docs/examples
+		doins -r docs/examples
 	fi
 
 	newconfd "${FILESDIR}/buildmaster.confd" buildmaster
@@ -163,6 +170,8 @@ pkg_postinst() {
 
 pkg_config() {
 	local buildmaster_path="/var/lib/buildmaster"
+	local log_path="/var/log/buildmaster"
+
 	einfo "This will prepare a new buildmaster instance in ${buildmaster_path}."
 	einfo "Press Control-C to abort."
 
@@ -171,6 +180,8 @@ pkg_config() {
 	[[ -z "${instance_name}" ]] && die "Invalid instance name"
 
 	local instance_path="${buildmaster_path}/${instance_name}"
+	local instance_log_path="${log_path}/${instance_name}"
+
 	if [[ -e "${instance_path}" ]]; then
 		eerror "The instance with the specified name already exists:"
 		eerror "${instance_path}"
@@ -187,6 +198,12 @@ pkg_config() {
 		|| die "Moving sample configuration failed"
 	ln --symbolic --relative "/etc/init.d/buildmaster" "/etc/init.d/buildmaster.${instance_name}" \
 		|| die "Unable to create link to init file"
+
+	if [[ ! -d "${instance_log_path}" ]]; then
+		mkdir --parents "${instance_log_path}" || die "Unable to create directory ${instance_log_path}"
+	fi
+	ln --symbolic --relative "${instance_log_path}/twistd.log" "${instance_path}/twistd.log" \
+		|| die "Unable to create link to log file"
 
 	einfo "Successfully created a buildmaster instance at ${instance_path}."
 	einfo "To change the default settings edit the master.cfg file in this directory."

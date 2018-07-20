@@ -9,7 +9,5 @@
 		<flag name="mbim">Enable MBIM modem protocol</flag>
 		<flag name="qmi">Enable support for the QMI modem protocol used by
 			devices with Qualcomm chipsets</flag>
-		<flag name="qmi-newest">Avoid deprecated QMI commands. Warning: may
-			cause incompatibility with older devices.</flag>
 	</use>
 </pkgmetadata>

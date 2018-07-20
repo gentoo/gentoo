@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-DESCRIPTION="collection of Gentoo eclass manpages"
+DESCRIPTION="Collection of Gentoo eclass manpages"
 HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
@@ -12,7 +12,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="sys-apps/portage"
+DEPEND="
+	|| (
+		sys-apps/portage
+		sys-apps/portage-mgorny
+	)"
 
 S=${WORKDIR}
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools-utils flag-o-matic
 
 DESCRIPTION="Class library (C++) for numbers"
-HOMEPAGE="http://www.ginac.de/CLN/"
-SRC_URI="http://www.ginac.de/CLN/${P}.tar.bz2"
+HOMEPAGE="https://www.ginac.de/CLN/"
+SRC_URI="https://www.ginac.de/CLN/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1"

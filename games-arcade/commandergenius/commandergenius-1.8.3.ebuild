@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gerstrong/Commander-Genius/archive/v${PV//./}release
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="opengl tremor"
 RESTRICT="mirror" # contains keen files, but we do not install them
 
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/Commander-Genius-${PV//./}release
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	rm -rf vfsroot || die
 	sed -i -e '/INCLUDE(package.cmake)/d' CMakeLists.txt || die
 	cp version.h src/ || die # Workaround buggy neard package - bug #558160

@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/421745
 
---- examples/read/read.cpp
-+++ examples/read/read.cpp
+--- a/examples/read/read.cpp
++++ b/examples/read/read.cpp
 @@ -43,6 +43,7 @@
  #include <cstdio>
  #include <cstdlib> // MAX_PATH

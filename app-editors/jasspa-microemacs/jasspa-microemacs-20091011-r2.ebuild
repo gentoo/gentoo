@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -27,7 +27,7 @@ RDEPEND="sys-libs/ncurses
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	X? ( x11-libs/libXt
-		x11-proto/xproto )"
+		x11-base/xorg-proto )"
 
 S="${WORKDIR}/me${PV:2}/src"
 

@@ -12,7 +12,7 @@ DESCRIPTION="vim plugin: run ack from vim"
 HOMEPAGE="https://github.com/mileszs/ack.vim"
 SRC_URI="https://github.com/mileszs/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-apps/ack"
 

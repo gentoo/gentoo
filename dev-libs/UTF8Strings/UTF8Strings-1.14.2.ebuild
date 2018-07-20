@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 inherit cmake-utils
 
 DESCRIPTION="C++ library providing ability to work natively with UTF8 string"
-HOMEPAGE="http://grigory.info/${PN}.About.html"
+HOMEPAGE="http://grigory.info/UTF8Strings.About.html"
 SRC_URI="http://grigory.info/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-3"

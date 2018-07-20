@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit cmake-utils python-single-r1
 
@@ -12,8 +12,7 @@ HOMEPAGE="https://github.com/ndarray/Boost.NumPy"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/ndarray/Boost.NumPy.git \
-		https://github.com/ndarray/Boost.NumPy.git"
+	EGIT_REPO_URI="https://github.com/ndarray/Boost.NumPy.git"
 else
 	SRC_URI="https://dev.gentoo.org/~heroxbd/${P}.tar.xz"
 fi

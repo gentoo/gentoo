@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,12 @@ PYTHON_REQ_USE="threads"
 inherit waf-utils multilib-minimal python-single-r1
 
 DESCRIPTION="A simple database API"
-HOMEPAGE="http://tdb.samba.org/"
-SRC_URI="http://samba.org/ftp/tdb/${P}.tar.gz"
+HOMEPAGE="https://tdb.samba.org/"
+SRC_URI="https://www.samba.org/ftp/tdb/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

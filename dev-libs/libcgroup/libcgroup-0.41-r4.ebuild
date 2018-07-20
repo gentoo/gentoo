@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit autotools eutils flag-o-matic linux-info pam
+inherit autotools flag-o-matic linux-info pam
 
 DESCRIPTION="Tools and libraries to configure and manage kernel control groups"
 HOMEPAGE="http://libcg.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/libcg/${PN}/v${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="+daemon elibc_musl pam static-libs +tools"
 
 RDEPEND="pam? ( virtual/pam )"
@@ -33,11 +33,14 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-replace_DECLS.patch
-	epatch "${FILESDIR}"/${P}-replace_INLCUDES.patch
-	epatch "${FILESDIR}"/${P}-reorder-headers.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-replace_DECLS.patch
+	"${FILESDIR}"/${P}-replace_INLCUDES.patch
+	"${FILESDIR}"/${P}-reorder-headers.patch
+)
 
+src_prepare() {
+	default
 	# Change rules file location
 	sed -e 's:/etc/cgrules.conf:/etc/cgroup/cgrules.conf:' \
 		-i src/libcgroup-internal.h || die "sed failed"

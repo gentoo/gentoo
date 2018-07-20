@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
-HOMEPAGE="http://dwm.suckless.org/"
-EGIT_REPO_URI="git://git.suckless.org/dwm"
+HOMEPAGE="https://dwm.suckless.org/"
+EGIT_REPO_URI="https://git.suckless.org/dwm"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	xinerama? ( x11-proto/xineramaproto )
+	xinerama? ( x11-base/xorg-proto )
 "
 
 src_prepare() {

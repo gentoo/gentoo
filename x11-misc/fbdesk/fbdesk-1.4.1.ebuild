@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="x11-libs/libX11
 	media-libs/imlib2[X]
 	png? ( media-libs/libpng:0= )"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gcc-4.3.patch"

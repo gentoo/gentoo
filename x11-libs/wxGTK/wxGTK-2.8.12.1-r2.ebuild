@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 inherit autotools eutils flag-o-matic versionator multilib-minimal
 
 DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
-HOMEPAGE="http://wxwidgets.org/"
+HOMEPAGE="https://wxwidgets.org/"
 
 BASE_PV="$(get_version_component_range 1-3)"
 BASE_P="${PN}-${BASE_PV}"
@@ -15,7 +15,7 @@ BASE_P="${PN}-${BASE_PV}"
 # docs, and are released more frequently than wxGTK.
 SRC_URI="mirror://sourceforge/wxpython/wxPython-src-${PV}.tar.bz2"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="+X aqua doc debug gnome gstreamer odbc opengl pch sdl tiff"
 
 SLOT="2.8"
@@ -51,11 +51,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	opengl? ( virtual/glu[${MULTILIB_USEDEP}] )
-	X? (
-		x11-proto/xproto[${MULTILIB_USEDEP}]
-		x11-proto/xineramaproto[${MULTILIB_USEDEP}]
-		x11-proto/xf86vidmodeproto[${MULTILIB_USEDEP}]
-	)
+	X? ( x11-base/xorg-proto )
 "
 
 PDEPEND=">=app-eselect/eselect-wxwidgets-0.7"

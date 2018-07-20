@@ -7,6 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Test2-Plugin-NoWarnings</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Warning</remote-id>
     <remote-id type="cpan-module">Test2::Plugin::NoWarnings</remote-id>
   </upstream>
 </pkgmetadata>

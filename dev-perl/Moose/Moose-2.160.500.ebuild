@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A postmodern object system for Perl 5"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd ~x64-macos"
 IUSE="test"
 
 CONFLICTS="

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ inherit gnome2-utils python-single-r1
 MY_PN="PlayOnLinux"
 
 DESCRIPTION="Set of scripts to easily install and use Windows games and software"
-HOMEPAGE="http://playonlinux.com/"
+HOMEPAGE="https://playonlinux.com/"
 SRC_URI="http://www.playonlinux.com/script_files/${MY_PN}/${PV}/${MY_PN}_${PV}.tar.gz"
 
 LICENSE="GPL-3"
@@ -24,7 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-arch/p7zip
 	app-arch/unzip
 	app-crypt/gnupg
-	|| ( app-emulation/wine virtual/wine )
+	virtual/wine
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	net-misc/wget
 	x11-apps/mesa-progs
@@ -42,7 +42,7 @@ S="${WORKDIR}/${PN}"
 # It will let using LANGUAGES easily
 # How to deal with Microsoft Fonts installation asked every time ?
 # How to deal with wine version installed ? (have a better mgmt of system one)
-# Look at debian pkg: http://packages.debian.org/sid/playonlinux
+# Look at debian pkg: https://packages.debian.org/sid/playonlinux
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.4-pol-bash.patch"

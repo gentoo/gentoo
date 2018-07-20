@@ -10,6 +10,17 @@
 		<name>Gentoo Geosciences Project</name>
 	</maintainer>
 	<use>
-		<flag name="gtk">Build shp2pgsql-gui a graphical interface to shp2pgsql</flag>
+		<flag name="address-standardizer">
+			Normalize US and CA postal addresses
+		</flag>
+		<flag name="gtk">
+			Build graphical interface for shp2pgsql (shp2pgsql-gui)
+		</flag>
+		<flag name="mapbox">
+			Add capability to transform geometry into Mapbox Vector Tile
+		</flag>
+		<flag name="topology">
+			Build topology spatial types and functions
+		</flag>
 	</use>
 </pkgmetadata>

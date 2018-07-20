@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ RDEPEND=">=x11-libs/libX11-1.4.3
 	>x11-libs/libxcb-1.6
 	>=x11-libs/xcb-util-0.3.8"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS=( AUTHORS ChangeLog NEWS doc/${PN}.txt )
 

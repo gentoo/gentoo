@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,9 +11,7 @@ IUSE="dga"
 
 RDEPEND=">=x11-base/xorg-server-1.0.99"
 DEPEND="${RDEPEND}
-	dga? (
-		x11-proto/xf86dgaproto
-	)"
+	dga? ( x11-base/xorg-proto )"
 
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(

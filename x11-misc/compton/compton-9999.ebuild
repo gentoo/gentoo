@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 inherit toolchain-funcs python-r1 git-r3
 
 DESCRIPTION="A compositor for X, and a fork of xcompmgr-dana"
 HOMEPAGE="https://github.com/chjj/compton"
 SRC_URI=""
 
-EGIT_REPO_URI="git://github.com/chjj/compton.git"
+EGIT_REPO_URI="https://github.com/chjj/compton.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,7 +19,7 @@ IUSE="dbus +drm opengl +pcre xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
-	dev-libs/libconfig
+	dev-libs/libconfig:=
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -37,7 +37,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	app-text/asciidoc
 	virtual/pkgconfig
-	x11-proto/xproto
+	x11-base/xorg-proto
 	drm? ( x11-libs/libdrm )"
 
 nobuildit() { use $1 || echo yes ; }

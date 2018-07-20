@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ SRC_URI="mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v$
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="crosscompile_opts_headers-only idl libraries tools"
+IUSE="headers-only idl libraries tools"
 RESTRICT="strip"
 
 S="${WORKDIR}/mingw-w64-v${PV}"
@@ -30,13 +30,14 @@ S="${WORKDIR}/mingw-w64-v${PV}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.1-winpthreads.patch"
 	"${FILESDIR}/${PN}-4.0.1-build.patch"
+	"${FILESDIR}/${PN}-5.0.2-implicit-fallthrough.patch"
 )
 
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 just_headers() {
-	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 crt_with() {
 	just_headers && echo --without-$1 || echo --with-$1

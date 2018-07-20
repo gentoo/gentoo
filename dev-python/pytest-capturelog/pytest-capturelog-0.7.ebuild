@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,13 +13,15 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd"
 IUSE="test"
 
-RDEPEND="dev-python/py[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+COMMON_DEPEND="dev-python/py[${PYTHON_USEDEP}]"
+DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+RDEPEND="${COMMON_DEPEND}
+	!dev-python/pytest-catchlog"
 
 # Not included
 # https://bitbucket.org/memedough/pytest-capturelog/issues/5

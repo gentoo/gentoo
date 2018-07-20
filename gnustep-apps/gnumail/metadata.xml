@@ -10,8 +10,4 @@ GNUMail.app is a fully featured mail application running on Linux (or FreeBSD, O
 
 GNUMail.app was written from scratch. It uses Pantomime as its mail handling framework.
 </longdescription>
-<use>
-	<flag name="emoticon">Enable extra Emoticon Bundle to see smiley's in e-mail
-		messages</flag>
-</use>
 </pkgmetadata>

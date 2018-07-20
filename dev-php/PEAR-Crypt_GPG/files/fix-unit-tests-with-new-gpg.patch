@@ -1,0 +1,55 @@
+From 14a884dd5127141929ef7a58185c298e92602c40 Mon Sep 17 00:00:00 2001
+From: Aleksander Machniak <machniak@kolabsys.com>
+Date: Sat, 16 Sep 2017 13:05:37 +0200
+Subject: [PATCH] Fix Bug #21242: PHPUnit tests fail sometimes while deleting
+ S.gpg-agent.extra
+
+---
+ tests/TestCase.php | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/tests/TestCase.php b/tests/TestCase.php
+index b91ea7d..1ad8028 100644
+--- a/tests/TestCase.php
++++ b/tests/TestCase.php
+@@ -583,7 +583,10 @@ private function _tearDownKeyring()
+                 $iterator = new DirectoryIterator($dirname);
+                 foreach ($iterator as $file) {
+                     if (!$file->isDot()) {
+-                        unlink($dirname . '/' . $file->getFilename());
++                        $filename = $dirname . '/' . $file->getFilename();
++                        if (file_exists($filename)) {
++                            unlink($filename);
++                        }
+                     }
+                 }
+                 rmdir($dirname);
+@@ -595,7 +598,10 @@ private function _tearDownKeyring()
+ 
+         foreach ($iterator as $file) {
+             if (!$file->isDot()) {
+-                unlink($homedir . '/' . $file->getFilename());
++                $filename = $homedir . '/' . $file->getFilename();
++                if (file_exists($filename)) {
++                    unlink($filename);
++                }
+             }
+         }
+ 
+@@ -614,10 +620,12 @@ private function _tearDownTempdir()
+         foreach ($iterator as $file) {
+             if (!$file->isDot()) {
+                 $filename = $this->getTempFilename($file->getFilename());
+-                if (is_dir($filename)) {
+-                    rmdir($filename);
+-                } else {
+-                    unlink($filename);
++                if (file_exists($filename)) {
++                    if (is_dir($filename)) {
++                        rmdir($filename);
++                    } else {
++                        unlink($filename);
++                    }
+                 }
+             }
+         }

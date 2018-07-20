@@ -1,0 +1,67 @@
+From e9c1dcd5e1a475a1974f0a6464637c4ab731bfae Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 13 Jan 2018 11:42:05 -0500
+Subject: [PATCH] Replace remaining references to
+ @libdir@/systemd/system-generators
+
+---
+ Makefile.in                            | 1 +
+ src/bin/crontab.py                     | 2 +-
+ src/man/systemd-crontab-generator.8.in | 6 +++---
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index b9a9b02..e5a2df8 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -60,6 +60,7 @@ define in2out
+ 		-e "s|\@bindir\@|$(bindir)|g" \
+ 		-e "s|\@libdir\@|$(libdir)|g" \
+ 		-e "s|\@unitdir\@|$(unitdir)|g" \
++		-e "s|\@generatordir\@|$(generatordir)|g" \
+ 		-e "s|\@runparts\@|$(runparts)|g" \
+ 		-e "s|\@version\@|$(version)|g" \
+ 		-e "s|\@persistent\@|$(persistent)|g" \
+diff --git a/src/bin/crontab.py b/src/bin/crontab.py
+index d95b31e..921db1a 100755
+--- a/src/bin/crontab.py
++++ b/src/bin/crontab.py
+@@ -333,7 +333,7 @@ if __name__ == '__main__':
+             'show': show,
+             }.get(args.action, replace)
+ 
+-    loader = importlib.machinery.SourceFileLoader('name', '@libdir@/systemd/system-generators/systemd-crontab-generator')
++    loader = importlib.machinery.SourceFileLoader('name', '@generatordir@/systemd-crontab-generator')
+     parser = loader.load_module()
+ 
+     action(cron_file, args)
+diff --git a/src/man/systemd-crontab-generator.8.in b/src/man/systemd-crontab-generator.8.in
+index ea69688..dedf1d2 100644
+--- a/src/man/systemd-crontab-generator.8.in
++++ b/src/man/systemd-crontab-generator.8.in
+@@ -4,7 +4,7 @@
+ systemd-crontab-generator - translate cron schedules in systemd Units
+ 
+ .SH SYNOPSIS
+-@libdir@/systemd/system-generators/systemd-crontab-generator output_folder
++@generatordir@/systemd-crontab-generator output_folder
+ 
+ .SH DESCRIPTION
+ systemd-crontab-generator is a generator that translates the legacy cron files (see FILES)
+@@ -77,11 +77,11 @@ to have a overview of timers and know when they will elapse.
+ 
+ If you get errors like
+ .br
+-.B @libdir@/systemd/system-generators/systemd-crontab-generator failed with error code 1.
++.B @generatordir@/systemd-crontab-generator failed with error code 1.
+ .br
+ in the journal, you can manually run
+ .br
+-.B "@libdir@/systemd/system-generators/systemd-crontab-generator /tmp"
++.B "@generatordir@/systemd-crontab-generator /tmp"
+ .br
+ to get a more verbose error message.
+ 
+-- 
+2.16.0.rc0
+

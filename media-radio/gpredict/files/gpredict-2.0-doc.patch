@@ -1,0 +1,13 @@
+--- Makefile.in.orig	2017-12-14 19:28:09.472375915 +0100
++++ Makefile.in	2017-12-14 19:28:23.631137893 +0100
+@@ -850,10 +850,6 @@
+ 
+ install-data-local:
+ 	@$(NORMAL_INSTALL)
+-	$(INSTALL_DATA) $(top_srcdir)/AUTHORS $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/NEWS $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/README $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/COPYING $(DESTDIR)$(pkgdatadir)
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

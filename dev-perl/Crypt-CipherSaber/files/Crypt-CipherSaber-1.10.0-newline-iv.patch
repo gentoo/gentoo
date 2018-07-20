@@ -1,0 +1,118 @@
+From 966c275a76fa33b57f41cb66a908362b526629a8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Wed, 27 Aug 2014 15:38:54 +0200
+Subject: Fix reading IV with new-lines from a file
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Decrypting filehandle data by fh_crypt() could produce bad decrypted
+data if the initizalization vector read from the filehandle contained
+a new-line character. This caused random failures of 'autogenerating
+and autoreading IV should also round-trip' test in t/fh_encrypt.t.
+
+This patch fixes it by reading first 10 characters regardless of
+current line separator.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=28370
+Bug: https://bugs.gentoo.org/632253
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ lib/Crypt/CipherSaber.pm | 14 +++++++++-----
+ t/fh_encrypt.t           | 40 +++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 48 insertions(+), 6 deletions(-)
+
+diff --git a/lib/Crypt/CipherSaber.pm b/lib/Crypt/CipherSaber.pm
+index 7cb7cc0..2db153c 100644
+--- a/lib/Crypt/CipherSaber.pm
++++ b/lib/Crypt/CipherSaber.pm
+@@ -67,6 +67,15 @@ sub fh_crypt
+         $iv = $self->_gen_iv() if length($iv) == 1;
+         $self->_setup_key($iv);
+         print OUT $iv;
++    } else {
++        if ( 10 != $in->read($iv, 10) )
++        {
++            require Carp;
++            Carp::carp( 'Could not read IV from input filehandle' );
++            return;
++        }
++        ( $iv ) = unpack( "a10", $iv );
++        $self->_setup_key($iv);
+     }
+ 
+     my $state = $self->[1];
+@@ -75,11 +84,6 @@ sub fh_crypt
+ 
+     while (<$in>)
+     {
+-        unless ($iv)
+-        {
+-            ( $iv, $_ ) = unpack( "a10a*", $_ );
+-            $self->_setup_key($iv);
+-        }
+         my $line;
+         ( $line, $state, @vars ) = _do_crypt( $state, $_, @vars );
+         print OUT $line;
+diff --git a/t/fh_encrypt.t b/t/fh_encrypt.t
+index 35a74fb..e595ff9 100644
+--- a/t/fh_encrypt.t
++++ b/t/fh_encrypt.t
+@@ -6,7 +6,7 @@ BEGIN
+ }
+ 
+ use strict;
+-use Test::More tests => 6;
++use Test::More tests => 7;
+ use_ok( 'Crypt::CipherSaber' );
+ 
+ # tests the fh_crypt() method
+@@ -114,6 +114,44 @@ while (<SOURCE>)
+ 
+ ok( ! $status, 'autogenerating and autoreading IV should also round-trip' );
+ 
++# IV retrieved from encrypted file can contain new-line characters. Check that
++# fh_encrypt can deal with it
++{
++	local $/ = "\012";
++
++	open( IN, 'smiles.png' )      or die "Cannot read smiles.png: $!";
++	open( OUT, '> smiles_2.cs1' ) or die "Cannot write to smiles_2.cs1: $!";
++	binmode( IN );
++	binmode( OUT );
++	$cs->fh_crypt( \*IN, \*OUT, $/ x 10 );
++	close IN;
++	close OUT;
++
++	open( IN, 'smiles_2.cs1'    ) or die "Cannot read smiles_2.cs1: $!";
++	open( OUT, '> smiles_2.png' ) or die "Cannot write to smiles_2.png $!";
++	binmode( IN );
++	binmode( OUT );
++	$cs->fh_crypt( \*IN, \*OUT );
++	close IN;
++	close OUT;
++
++	open( SOURCE, 'smiles.png' )   or die "Cannot read smiles.png: $!";
++	open( DEST,   'smiles_2.png' ) or die "Cannot read smiles_2.png: $!";
++	binmode SOURCE;
++	binmode DEST;
++	$status = 0;
++	while (<SOURCE>)
++	{
++		unless ($_ eq <DEST>)
++		{
++			$status = 1;
++			last;
++		}
++	}
++	ok( ! $status, 'IV with new-lines in the encrypted file' );
++}
++
++
+ END
+ {
+ 	1 while unlink qw( smiles_2.cs1 smiles_2.png outsmiles.cs1 outsmiles.png );
+-- 
+2.14.1
+

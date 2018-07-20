@@ -1,0 +1,17 @@
+--- a/wscript	2017-07-05 15:35:52.178964698 -0400
++++ b/wscript	2017-07-05 15:49:20.137977649 -0400
+@@ -208,6 +208,14 @@
+         ldb_headers = ('include/ldb.h include/ldb_errors.h '
+                        'include/ldb_module.h include/ldb_handlers.h')
+ 
++        # we're not currently linking against the ldap libs, but ldb.pc.in
++        # has @LDAP_LIBS@
++        bld.env.LDAP_LIBS = ''
++
++        if not 'PACKAGE_VERSION' in bld.env:
++            bld.env.PACKAGE_VERSION = VERSION
++            bld.env.PKGCONFIGDIR = '${LIBDIR}/pkgconfig'
++
+         bld.SAMBA_LIBRARY('ldb',
+                           COMMON_SRC + ' ' + LDB_MAP_SRC,
+                           deps='tevent LIBLDB_MAIN replace',

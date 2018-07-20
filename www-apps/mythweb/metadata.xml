@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>cardoe@gentoo.org</email>
-		<description>Do not CC me on bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>mythtv@gentoo.org</email>
-		<name>MythTV</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>

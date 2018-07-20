@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils multilib toolchain-funcs
+EAPI=6
 
-DESCRIPTION="Low-level feature extraction plugins using Jamie Bullock's libxtract library to provide around 50 spectral and other features"
+inherit multilib toolchain-funcs
+
+DESCRIPTION="Vamp plugin encapsulating many of the functions of the LibXtract library"
 HOMEPAGE="http://www.vamp-plugins.org/"
 SRC_URI="http://code.soundsoftware.ac.uk/attachments/download/618/${P}.tar.gz"
 
@@ -19,16 +20,16 @@ RDEPEND="=sci-libs/fftw-3*
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed -e "s/-O3//" -e "s/ -Wl,-Bstatic//" -i Makefile
+	default
+	sed -e "s/-O3//" -e "s/ -Wl,-Bstatic//" -i Makefile || die "sed Makefile failed"
 }
 
-src_compile() {
+src_configure() {
 	tc-export CXX
-	emake || die "emake failed"
 }
 
 src_install() {
 	insinto /usr/$(get_libdir)/vamp
-	doins vamp-libxtract.{so,cat} || die "doins failed"
-	dodoc README STATUS
+	doins vamp-libxtract.{so,cat}
+	einstalldocs
 }

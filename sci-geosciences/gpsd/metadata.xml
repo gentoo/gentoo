@@ -5,10 +5,14 @@
     <email>sci-geosciences@gentoo.org</email>
     <name>Gentoo Geosciences Project</name>
   </maintainer>
-  <longdescription>Unbundled GPS daemon and library to support USB and serial
- GPS devices and various GPS/mapping clients, such as GPSDrive, kismet, and
- pygps.
-</longdescription>
+  <longdescription>
+    Unbundled GPS daemon and library to support USB and serial
+    GPS devices and various GPS/mapping clients, such as GPSDrive,
+    kismet, and pygps.
+  </longdescription>
+  <slots>
+    <subslots>Reflect major ABI of libgps.so.</subslots>
+  </slots>
   <use>
     <flag name="dbus">export gpsd data over dbus connections</flag>
     <flag name="latency_timing">support latency timing information</flag>

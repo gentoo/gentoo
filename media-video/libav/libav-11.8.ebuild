@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -122,10 +122,6 @@ DEPEND="${RDEPEND}
 	v4l? ( sys-kernel/linux-headers )
 "
 
-RDEPEND="${RDEPEND}
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20140508-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
-
 # faac can't be binary distributed
 # openssl support marked as nonfree
 # faac and aac are concurent implementations
@@ -153,6 +149,7 @@ src_prepare() {
 	epatch_user
 
 	epatch "${FILESDIR}"/libav-11.3-libvpx-1.5.0.patch #565696
+	epatch "${FILESDIR}"/libav-11.8-perl526.patch      #634646
 
 	# if we have snapshot then we need to hardcode the version
 	if [[ ${PV%_p*} != ${PV} ]]; then

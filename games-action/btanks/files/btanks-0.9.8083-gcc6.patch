@@ -1,0 +1,34 @@
+Bug: https://bugs.gentoo.org/609692
+
+--- a/mrt/timespy.cpp
++++ b/mrt/timespy.cpp
+@@ -43,7 +43,7 @@
+ 		throw_io(("gettimeofday"));
+ }
+ 
+-TimeSpy::~TimeSpy() {
++TimeSpy::~TimeSpy() DTOR_NOEXCEPT {
+ 	struct timeval now;
+ 	if (gettimeofday(&now, NULL) == -1)
+ 		throw_io(("gettimeofday"));
+--- a/mrt/timespy.h
++++ b/mrt/timespy.h
+@@ -37,11 +37,17 @@
+ #include "fmt.h"
+ #include "export_mrt.h"
+ 
++#if __cplusplus >= 201103L
++#define DTOR_NOEXCEPT noexcept(false)
++#else
++#define DTOR_NOEXCEPT
++#endif
++
+ namespace mrt {
+ class MRTAPI TimeSpy {
+ public: 
+ 	TimeSpy(const std::string &message);
+-	~TimeSpy();
++	~TimeSpy() DTOR_NOEXCEPT;
+ private: 
+ 	TimeSpy(const TimeSpy&);
+ 	const TimeSpy& operator=(const TimeSpy&);

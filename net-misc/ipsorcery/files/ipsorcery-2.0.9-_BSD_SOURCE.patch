@@ -1,0 +1,13 @@
+--- a/wand.h
++++ b/wand.h
+@@ -19,8 +19,8 @@
+ #ifndef _WAND_H
+ #define _WAND_H
+ 
+-#ifndef _BSD_SOURCE
+-#define _BSD_SOURCE
++#ifndef _DEFAULT_SOURCE
++#define _DEFAULT_SOURCE
+ #endif
+ 
+ #ifndef __FAVOR_BSD

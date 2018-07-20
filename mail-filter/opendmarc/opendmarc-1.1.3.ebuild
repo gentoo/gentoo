@@ -17,6 +17,11 @@ DEPEND="dev-perl/DBI
 RDEPEND="${DEPEND}
 	dev-perl/Switch"
 
+src_prepare() {
+	# fix building with newer glibc, already fixed in later releases, #640012
+	sed -i -e 's/T_RRSIG/disabled_T_RRSIG/' libopendmarc/opendmarc_dns.c || die
+}
+
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \

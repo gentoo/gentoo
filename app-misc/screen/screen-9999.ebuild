@@ -1,15 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-EGIT_REPO_URI="git://git.savannah.gnu.org/screen.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
 
 inherit eutils flag-o-matic toolchain-funcs pam autotools user git-r3
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
+EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -53,7 +52,8 @@ src_prepare() {
 		-e "s:/usr/local/screens:${EPREFIX}/tmp/screen:g" \
 		-e "s:/local/etc/screenrc:${EPREFIX}/etc/screenrc:g" \
 		-e "s:/etc/utmp:${EPREFIX}/var/run/utmp:g" \
-		-e "s:/local/screens/S-:${EPREFIX}/tmp/screen/S-:g" \
+		-e 's:/local/screens/S\\-:'"${EPREFIX}"'/tmp/screen/S\\-:g' \
+		-e 's:/usr/tmp/screens/:'"${EPREFIX}"'/tmp/screen/:g' \
 		doc/screen.1 \
 		|| die
 

@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils fixheadtails flag-o-matic toolchain-funcs
 
-DESCRIPTION="program for applying patches that patch cannot apply because of conflicting changes"
-HOMEPAGE="http://neil.brown.name/wiggle http://neil.brown.name/git?p=wiggle"
-SRC_URI="http://neil.brown.name/${PN}/${P}.tar.gz"
+DESCRIPTION="tool for applying patches that patch cannot apply because of conflicting changes"
+HOMEPAGE="https://neil.brown.name/wiggle https://neil.brown.name/git?p=wiggle"
+SRC_URI="https://neil.brown.name/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

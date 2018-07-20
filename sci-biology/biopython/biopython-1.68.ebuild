@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Python modules for computational molecular biology"
-HOMEPAGE="http://www.biopython.org/ https://pypi.python.org/pypi/biopython/"
+HOMEPAGE="http://www.biopython.org/ https://pypi.org/project/biopython/"
 SRC_URI="http://www.biopython.org/DIST/${P}.tar.gz"
 
 LICENSE="HPND"
@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/rdflib[$(python_gen_usedep 'python*')]
 	dev-python/pygraphviz[$(python_gen_usedep 'python2*')]
 	dev-python/reportlab[$(python_gen_usedep 'python*')]
-	media-gfx/pydot[$(python_gen_usedep 'python2*')]
+	dev-python/pydot[$(python_gen_usedep 'python2*')]
 	"
 DEPEND="${RDEPEND}
 	sys-devel/flex"

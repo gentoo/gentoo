@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/files/${PV}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="libressl ssl"
 
 RDEPEND="
@@ -44,7 +44,7 @@ src_prepare() {
 	sed -e "s#/etc/opt#/var/lib#g" -i doc/unixconfig.txt doc/index.html doc/advancedopengl.txt \
 		server/vglrun.in server/vglgenkey server/vglserver_config || die
 
-	default
+	cmake-utils_src_prepare
 }
 
 src_configure() {

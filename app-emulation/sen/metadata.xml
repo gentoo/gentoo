@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nelo@wallus.de</email>
+		<name>Nelo-Thara Wallus</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">TomasTomecek/sen</remote-id>
+		<remote-id type="pypi">sen</remote-id>
+	</upstream>
+</pkgmetadata>

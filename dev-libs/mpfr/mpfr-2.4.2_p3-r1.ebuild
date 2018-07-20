@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # this ebuild is only for the libmpfr.so.1 ABI SONAME
@@ -10,12 +10,13 @@ inherit eutils libtool multilib multilib-minimal flag-o-matic
 MY_PV=${PV/_p*}
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="library for multiple-precision floating-point computations with exact rounding"
-HOMEPAGE="http://www.mpfr.org/"
-SRC_URI="http://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.mpfr.org/"
+SRC_URI="https://www.mpfr.org/mpfr-${MY_PV}/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/${MY_P}-patchset.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND=">=dev-libs/gmp-4.1.4-r2:0[${MULTILIB_USEDEP}]"
@@ -24,7 +25,7 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${MY_PV}/patch*
+	epatch "${WORKDIR}"/${MY_P}-patchset/patch*
 	sed -i '/if test/s:==:=:' configure #261016
 	find . -type f -exec touch -r configure {} +
 	elibtoolize

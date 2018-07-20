@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="Graphics program that can be used to give photos a cartoon-like appearance"
 HOMEPAGE="http://www.toonyphotos.com"
@@ -16,8 +16,3 @@ RDEPEND="x11-libs/gtk+:2
 	>=gnome-base/libglade-2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS README
-}

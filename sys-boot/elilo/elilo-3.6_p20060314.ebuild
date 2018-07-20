@@ -1,10 +1,12 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit toolchain-funcs eutils
 
 DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
-HOMEPAGE="http://elilo.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/elilo/"
 if [[ $PV == *_p* ]] ; then
 	MY_P=${PV#*_p}
 	MY_P=${PN}-nightly_${MY_P:0:4}-${MY_P:4:2}-${MY_P:6:2}

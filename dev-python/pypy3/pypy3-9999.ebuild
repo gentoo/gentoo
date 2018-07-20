@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,8 @@ HOMEPAGE="http://pypy.org/"
 SRC_URI=""
 
 LICENSE="MIT"
-# XX from pypy3-XX.so module suffix
-SLOT="0/57"
+# pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
+SLOT="0/60"
 KEYWORDS=""
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
@@ -36,30 +36,39 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	)
 	!dev-python/pypy3-bin:0"
 DEPEND="${RDEPEND}
-	low-memory? ( virtual/pypy:0 )
-	!low-memory? ( ${PYTHON_DEPS} )"
-#	doc? ( dev-python/sphinx )
+	low-memory? ( virtual/pypy )
+	!low-memory? (
+		|| (
+			virtual/pypy
+			(
+				dev-lang/python:2.7
+				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
+			)
+		)
+	)"
 
 # Who would care about predictable directory names?
 S="${WORKDIR}/pypy3-v${PV%_*}-src"
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
-		fi
-
-		check-reqs_pkg_pretend
+check_env() {
+	if use low-memory; then
+		CHECKREQS_MEMORY="1750M"
+		use amd64 && CHECKREQS_MEMORY="3500M"
+	else
+		CHECKREQS_MEMORY="3G"
+		use amd64 && CHECKREQS_MEMORY="6G"
 	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
+		check_env
 
 		# unset to allow forcing pypy below :)
 		use low-memory && local EPYTHON=
@@ -84,7 +93,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
-	eapply "${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -169,61 +178,10 @@ src_compile() {
 	cp -p "${T}"/usession*-0/testing_1/{pypy3-c,libpypy3-c.so} . || die
 	pax-mark m pypy3-c libpypy3-c.so
 
-	#use doc && emake -C pypy/doc html
-}
-
-src_test() {
-	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE
-
-	# Test runner requires Python 2 too. However, it spawns PyPy3
-	# internally so that we end up testing the correct interpreter.
-	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
-}
-
-src_install() {
-	local dest=/usr/$(get_libdir)/pypy3
-	einfo "Installing PyPy ..."
-	exeinto "${dest}"
-	doexe pypy3-c libpypy3-c.so
-	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
-	insinto "${dest}"
-	doins -r include lib_pypy lib-python
-	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
-	dodoc README.rst
-
-	if ! use gdbm; then
-		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
-			"${ED%/}${dest}"/lib-python/*3/test/test_gdbm.py || die
-	fi
-	if ! use sqlite; then
-		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
-			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
-			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
-	fi
-	if ! use tk; then
-		rm -r "${ED%/}${dest}"/lib-python/*3/{idlelib,tkinter} \
-			"${ED%/}${dest}"/lib_pypy/_tkinter \
-			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
-	fi
-
-	# Install docs
-	#use doc && dohtml -r pypy/doc/_build/html/
-
-	einfo "Generating caches and byte-compiling ..."
-
-	local -x PYTHON=${ED%/}${dest}/pypy3-c
-	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
-	# we can't use eclass function since PyPy is dumb and always gives
-	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
-	python_export pypy3 EPYTHON
-
-	echo "EPYTHON='${EPYTHON}'" > epython.py || die
-	python_domodule epython.py
+	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
-	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
+	./pypy3-c -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
 		|| die "Generation of Grammar and PatternGrammar pickles failed"
 
 	# Generate cffi modules
@@ -249,15 +207,66 @@ src_install() {
 	local t
 	# all modules except tkinter output to .
 	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${dest}"/lib_pypy || die
+	cd lib_pypy || die
 	for t in "${cffi_targets[@]}"; do
 		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
+		../pypy3-c "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
 	done
 
 	# Cleanup temporary objects
-	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${dest}" -type d -empty -delete || die
+	find -name "_cffi_*.[co]" -delete || die
+	find -type d -empty -delete || die
+}
+
+src_test() {
+	# (unset)
+	local -x PYTHONDONTWRITEBYTECODE
+
+	# Test runner requires Python 2 too. However, it spawns PyPy3
+	# internally so that we end up testing the correct interpreter.
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
+}
+
+src_install() {
+	local dest=/usr/$(get_libdir)/pypy3
+	einfo "Installing PyPy ..."
+	exeinto "${dest}"
+	doexe pypy3-c libpypy3-c.so
+	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
+	insinto "${dest}"
+	# preserve mtimes to avoid obsoleting caches
+	insopts -p
+	doins -r include lib_pypy lib-python
+	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
+	dodoc README.rst
+
+	if ! use gdbm; then
+		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
+			"${ED%/}${dest}"/lib-python/*3/test/test_gdbm.py || die
+	fi
+	if ! use sqlite; then
+		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
+			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
+	fi
+	if ! use tk; then
+		rm -r "${ED%/}${dest}"/lib-python/*3/{idlelib,tkinter} \
+			"${ED%/}${dest}"/lib_pypy/_tkinter \
+			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
+	fi
+
+	einfo "Generating caches and byte-compiling ..."
+
+	local -x PYTHON=${ED%/}${dest}/pypy3-c
+	# we can't use eclass function since PyPy is dumb and always gives
+	# paths relative to the interpreter
+	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
+	python_export pypy3 EPYTHON
+
+	echo "EPYTHON='${EPYTHON}'" > epython.py || die
+	python_domodule epython.py
+
+	einfo "Byte-compiling Python standard library..."
 
 	# compile the installed modules
 	python_optimize "${ED%/}${dest}"

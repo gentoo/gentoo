@@ -11,10 +11,11 @@ SRC_URI="http://webglimpse.net/trial/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 ia64 ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="static"
 
 RDEPEND="!dev-libs/tre
+	!dev-ruby/amatch
 	!app-text/agrep"
 
 PATCHES=( "${FILESDIR}/${PN}-4.18.6-makefile.patch" )

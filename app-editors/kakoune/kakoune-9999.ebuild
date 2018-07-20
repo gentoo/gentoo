@@ -16,15 +16,12 @@ IUSE="debug static"
 
 RDEPEND="
 	sys-libs/ncurses:0=[unicode]
-	dev-libs/boost:=
 "
 DEPEND="
 	app-text/asciidoc
 	virtual/pkgconfig
 	${RDEPEND}
 "
-
-PATCHES=( "${FILESDIR}/${PN}-0_pre20170523-makefile.patch" )
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -34,9 +31,14 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	sed -i -e '/CXXFLAGS += -O3/d' src/Makefile || \
+		die "Failed to patch makefile"
+}
+
 src_configure() {
-	append-cppflags $($(tc-getPKG_CONFIG) --cflags ncursesw)
-	append-libs $($(tc-getPKG_CONFIG) --libs ncursesw)
 	tc-export CXX
 	export debug=$(usex debug)
 	export static=$(usex static)

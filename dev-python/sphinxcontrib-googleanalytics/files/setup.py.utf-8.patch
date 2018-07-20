@@ -1,6 +1,6 @@
 https://bugs.gentoo.org/show_bug.cgi?id=429914
---- setup.py
-+++ setup.py
+--- a/setup.py
++++ b/setup.py
 @@ -1,10 +1,11 @@
  # -*- coding: utf-8 -*-
  

@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/261604
 
---- test/OfficialSuite.cpp
-+++ test/OfficialSuite.cpp
+--- a/test/OfficialSuite.cpp
++++ b/test/OfficialSuite.cpp
 @@ -21,6 +21,7 @@
   * Sebastian Pipping, sping@xiph.org
   */
@@ -10,8 +10,8 @@ http://bugs.gentoo.org/261604
  #include "OfficialSuite.h"
  #include <xspf/XspfReaderCallback.h>
  using namespace Xspf;
---- test/ProjectOpus/ProjectOpusSuite.cpp
-+++ test/ProjectOpus/ProjectOpusSuite.cpp
+--- a/test/ProjectOpus/ProjectOpusSuite.cpp
++++ b/test/ProjectOpus/ProjectOpusSuite.cpp
 @@ -21,6 +21,7 @@
   * Sebastian Pipping, sping@xiph.org
   */

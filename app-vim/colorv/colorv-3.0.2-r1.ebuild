@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: a color tool for vim"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3597 https://github.com/Rykka/colorv.vim/"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3597 https://github.com/Rykka/colorv.vim/"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -28,7 +28,7 @@ src_prepare() {
 	eapply_user
 
 	# fix shebangs in Python files (note: one of them is python3...)
-	sed -i -e "1s:python[23]:${EPYTHON}:" autoload/colorv/*.py || die 
+	sed -i -e "1s:python[23]:${EPYTHON}:" autoload/colorv/*.py || die
 	# use python colorpicker instead of C-based picker
 	rm autoload/colorv/{colorpicker.c,Makefile} || die
 }

@@ -1,19 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs versionator
 
 DESCRIPTION="Lossy speech compression library and tool"
-HOMEPAGE="http://packages.qa.debian.org/libg/libgsm.html"
+HOMEPAGE="https://packages.qa.debian.org/libg/libgsm.html"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="gsm"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
-RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
-DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}-"$(replace_version_separator 2 '-pl' )"
 

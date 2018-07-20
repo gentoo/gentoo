@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,7 @@ inherit autotools git-r3 user systemd
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git
-	git://github.com/TokTok/c-toxcore.git"
+EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git"
 
 LICENSE="GPL-3+"
 SLOT="0/0.1"

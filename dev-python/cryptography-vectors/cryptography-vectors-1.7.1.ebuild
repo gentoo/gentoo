@@ -11,7 +11,7 @@ MY_PN=${PN/-/_}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Test vectors for the cryptography package"
-HOMEPAGE="https://pypi.python.org/pypi/cryptography-vectors/"
+HOMEPAGE="https://pypi.org/project/cryptography-vectors/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"

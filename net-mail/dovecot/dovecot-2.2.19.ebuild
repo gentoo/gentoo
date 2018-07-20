@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,19 +12,19 @@ if [[ ${PV} == *_rc* ]] ; then
 else
 	rc_dir=""
 fi
-SRC_URI="http://dovecot.org/releases/${major_minor}/${rc_dir}${MY_P}.tar.gz
+SRC_URI="https://dovecot.org/releases/${major_minor}/${rc_dir}${MY_P}.tar.gz
 	sieve? (
-	http://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
+	https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
 	)
 	managesieve? (
-	http://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
+	https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
 	) "
 DESCRIPTION="An IMAP and POP3 server written with security primarily in mind"
-HOMEPAGE="http://www.dovecot.org/"
+HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="ia64 ~mips ~sh sparc"
+KEYWORDS="~sh"
 
 IUSE_DOVECOT_AUTH="kerberos ldap mysql pam postgres sqlite vpopmail"
 IUSE_DOVECOT_STORAGE="cydir imapc +maildir mbox mdbox pop3c sdbox"

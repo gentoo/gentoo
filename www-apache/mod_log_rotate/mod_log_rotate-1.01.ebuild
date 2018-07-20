@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit apache-module
 
 DESCRIPTION="Log rotation support for mod_log_config based on strftime(3)"
-HOMEPAGE="https://github.com/JBlond/${PN}"
+HOMEPAGE="https://github.com/JBlond/mod_log_rotate"
 SRC_URI="https://github.com/JBlond/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

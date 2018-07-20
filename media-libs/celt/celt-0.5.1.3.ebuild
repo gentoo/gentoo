@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 DESCRIPTION="CELT is a very low delay audio codec designed for high-quality communications"
 HOMEPAGE="http://www.celt-codec.org/"
@@ -22,8 +22,8 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc README TODO || die "dodoc failed."
-
-	use static-libs || find "${D}" -name '*.la' -delete
+	default
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die "Pruning failed"
+	fi
 }

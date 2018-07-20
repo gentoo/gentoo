@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="tiny, yet Moo(se)-compatible type constraint"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test minimal"
 
 # Test rdep for Test::TypeTiny

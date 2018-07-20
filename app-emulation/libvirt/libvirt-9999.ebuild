@@ -1,24 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils user linux-info systemd readme.gentoo-r1
+inherit autotools eutils user linux-info systemd readme.gentoo-r1 bash-completion-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
 else
 	# Versions with 4 numbers are stable updates:
 	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.xz"
+		SRC_URI="https://libvirt.org/sources/stable_updates/${P}.tar.xz"
 	else
-		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
+		SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -29,7 +29,7 @@ IUSE="
 	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
 	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
 	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
-	wireshark-plugins xen zeroconf zfs elibc_glibc
+	wireshark-plugins xen zeroconf zfs
 "
 
 REQUIRED_USE="
@@ -58,6 +58,8 @@ RDEPEND="
 	|| ( >=net-analyzer/netcat6-1.0-r2 >=net-analyzer/openbsd-netcat-1.105-r1 )
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
+	net-libs/libtirpc
+	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
 	>=sys-apps/util-linux-2.17
@@ -68,9 +70,8 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
 	dbus? ( sys-apps/dbus )
-	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
-	fuse? ( >=sys-fs/fuse-2.8.6 )
+	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	libssh? ( net-libs/libssh )
@@ -80,7 +81,6 @@ RDEPEND="
 		>sys-process/numactl-2.0.2
 		sys-process/numad
 	)
-	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
 		sys-fs/lvm2[-device-mapper-only(-)]
@@ -105,7 +105,7 @@ RDEPEND="
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
 		app-emulation/xen
-		app-emulation/xen-tools:=
+		app-emulation/xen-tools:=[api,hvm]
 	)
 	udev? (
 		virtual/udev
@@ -122,10 +122,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-4.5.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
-	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
+	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
 )
 
 pkg_setup() {
@@ -273,8 +272,7 @@ src_configure() {
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen)
-		$(use_with xen xen-inotify)
+		$(use_with xen xenapi)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
@@ -282,7 +280,6 @@ src_configure() {
 		--without-hal
 		--without-netcf
 		--without-sanlock
-		--without-xenapi
 
 		--with-esx
 		--with-init-script=systemd
@@ -337,9 +334,7 @@ src_install() {
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var/cache
-	rm -rf "${D}"/var/run
-	rm -rf "${D}"/var/log
+	rm -rf "${D}"/var
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
@@ -356,6 +351,9 @@ src_install() {
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
+
+	newbashcomp "${S}/tools/bash-completion/vsh" vsh
+	bashcomp_alias vsh virsh virt-admin
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true

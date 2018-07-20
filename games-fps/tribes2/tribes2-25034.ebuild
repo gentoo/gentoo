@@ -14,7 +14,7 @@ SLOT="0"
 # This package is broken and doesn't patch right on AMD64.  I've not taken the
 # time to try to figure it out but this definitely needs to stay -amd64 until
 # someone does fix the patching.
-KEYWORDS="-amd64 x86"
+KEYWORDS="-amd64 ~x86"
 IUSE=""
 RESTRICT="mirror strip"
 

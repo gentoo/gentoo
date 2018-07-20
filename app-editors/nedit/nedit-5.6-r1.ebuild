@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="Multi-purpose text editor for the X Window System"
 HOMEPAGE="https://sourceforge.net/projects/nedit"
 SRC_URI="
-	http://downloads.sourceforge.net/project/${PN}/${PN}-source/${P}a-src.tar.gz
+	https://downloads.sourceforge.net/project/${PN}/${PN}-source/${P}a-src.tar.gz
 	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.xz"
 
 LICENSE="GPL-2"
@@ -16,8 +16,6 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~mips ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=x11-libs/motif-2.3:0
-	x11-libs/libXp
-	x11-libs/libXpm
 	x11-libs/libXt
 	x11-libs/libX11"
 DEPEND="${RDEPEND}

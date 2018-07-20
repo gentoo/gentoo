@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils multilib qmake-utils
+inherit cmake-utils
 
 MY_P=Kst-${PV}
 
@@ -14,58 +14,48 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-2 LGPL-2 FDL-1.2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug qt5 test"
+IUSE="debug test"
 
 RESTRICT="test"
 
 RDEPEND="
-	!qt5? (
-		dev-qt/designer:4
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-		dev-qt/qtsvg:4
-	)
-	qt5? (
-		dev-qt/designer:5
-		dev-qt/qtconcurrent:5
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtopengl:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
+	dev-qt/designer:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtopengl:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	sci-libs/cfitsio
 	sci-libs/getdata
 	sci-libs/gsl
 	sci-libs/netcdf-cxx:3
 "
 DEPEND="${RDEPEND}
-	test? (
-		!qt5? ( dev-qt/qttest:4 )
-		qt5? ( dev-qt/qttest:5 )
-	)
+	test? ( dev-qt/qttest:5 )
 "
 
 S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS README.kstScript )
-PATCHES=( "${FILESDIR}/${P}-includes.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${P}-includes.patch"
+	"${FILESDIR}/${P}-qt-5.11b3.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-Dkst_install_libdir="$(get_libdir)"
 		-Dkst_pch=OFF
+		-Dkst_qt5=ON
 		-Dkst_release=$(usex debug OFF ON)
 		-Dkst_rpath=OFF
 		-Dkst_svnversion=OFF
-		$(cmake-utils_use test kst_test)
-		$(cmake-utils_use qt5 kst_qt5)
+		-Dkst_test=$(usex test)
 	)
-
-	use !qt5 && mycmakeargs+=( -DQT_LCONVERT_EXECUTABLE="$(qt4_get_bindir)/lconvert" )
 
 	cmake-utils_src_configure
 }

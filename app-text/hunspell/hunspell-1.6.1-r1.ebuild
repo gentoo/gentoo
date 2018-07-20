@@ -8,7 +8,7 @@ MY_P=${PN}-${PV/_beta/b}
 
 DESCRIPTION="Hunspell spell checker - an improved replacement for myspell in OOo"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-HOMEPAGE="http://hunspell.sourceforge.net/"
+HOMEPAGE="https://github.com/hunspell"
 
 SLOT="0/$(get_version_component_range 1-2)"
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
@@ -22,7 +22,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 LANGS="af bg ca cs cy da de de-1901 el en eo es et fo fr ga gl he hr hu ia id
-is it km ku lt lv mi mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk zu"
+is it kk km ku lt lv mi mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk
+zu"
 
 PDEPEND="app-dicts/myspell-en"
 for lang in ${LANGS}; do

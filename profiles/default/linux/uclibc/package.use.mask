@@ -1,5 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Those require USE=java that is masked in this profile.
+app-emulation/virtualbox vboxwebsrv
+app-office/libreoffice libreoffice_extensions_wiki-publisher
 
 # Thomas Deutschmann <whissi@gentoo.org> (21 Jan 2017)
 # Mask due Gnome3 not going to be stabilized on this arch

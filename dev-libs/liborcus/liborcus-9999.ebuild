@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,12 +13,12 @@ unset GITECLASS
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
 HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
-[[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/orcus/src/${P}.tar.xz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/0.13" # based on SONAME of liborcus.so
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="

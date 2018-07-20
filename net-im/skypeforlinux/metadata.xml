@@ -2,11 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>shentino@gmail.com</email>
-		<name>Raymond Jennings</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>krlgrudzinski+gentoo@gmail.com</email>
+		<email>krlgrudzinski@gmail.com</email>
 		<name>Karol Grudziński</name>
 	</maintainer>
 	<maintainer type="project">

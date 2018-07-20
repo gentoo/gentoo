@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -14,7 +14,6 @@ acl - Add support for Access Control Lists
 acpi - Add support for Advanced Configuration and Power Interface
 adns - Add support for asynchronous DNS resolution
 afs - Add OpenAFS support (distributed file system)
-aim - Enable AIM IM protocol support
 alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
 altivec - Add support for optimizations for G4 and G5/ppc970 processors
 ao - Use libao audio output library for sound playback
@@ -30,6 +29,7 @@ bash-completion - Enable bash-completion support
 bcmath - Add support for libbcmath
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
 bidi - Enable bidirectional language support
+big-endian - Big-endian toolchain support
 bindist - Flag to enable or disable options for prebuilt (GRP) packages (eg. due to licensing issues)
 blas - Add support for the virtual/blas numerical library
 bluetooth - Enable Bluetooth Support
@@ -118,7 +118,7 @@ gmp - Add support for dev-libs/gmp (GNU MP library)
 gnome - Add GNOME support
 gnome-keyring - Enable support for storing passwords via gnome-keyring
 gnuplot - Enable support for gnuplot (data and function plotting)
-gnutls - Add support for net-libs/gnutls (TLS 1.0 and SSL 3.0 support)
+gnutls - Prefer net-libs/gnutls as SSL/TLS provider (ineffective with USE=-ssl)
 gphoto2 - Add digital camera support
 gpm - Add support for sys-libs/gpm (Console-based mouse driver)
 gps - Add support for Global Positioning System
@@ -134,6 +134,7 @@ handbook - Enable handbooks generation for packages by KDE
 hardened - Activate default security enhancements for toolchain (gcc, glibc, binutils)
 hddtemp - Enable monitoring of hdd temperature (app-admin/hddtemp)
 hdf5 - Add support for the Hierarchical Data Format v5
+headers-only - Install only C headers instead of whole package. Mainly used by sys-devel/crossdev for toolchain bootstrap.
 hscolour - Include coloured haskell sources to generated documentation (dev-haskell/hscolour)
 ibm - Add support for IBM ppc64 specific systems
 iconv - Enable support for the iconv character set conversion library
@@ -164,7 +165,6 @@ jpeg - Add JPEG image support
 jpeg2k - Support for JPEG 2000, a wavelet-based image compression format
 kde - Add support for KDE (K Desktop Environment)
 kerberos - Add kerberos support
-kontact - Enable support for the KDE personal information manager (kde-apps/kdepim*)
 ladspa - Enable the ability to support ladspa plugins
 lame - Prefer using LAME libraries for MP3 encoding support
 lapack - Add support for the virtual/lapack numerical library
@@ -178,13 +178,14 @@ libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
 libffi - Enable support for Foreign Function Interface library
 libnotify - Enable desktop notification support
-libressl - Use dev-libs/libressl as SSL provider (might need ssl USE flag), packages should not depend on this USE flag
+libressl - Use dev-libs/libressl instead of dev-libs/openssl when applicable (see also the ssl useflag)
 libsamplerate - Build with support for converting sample rates using libsamplerate
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
 lm_sensors - Add linux lm_sensors (hardware sensors) support
 lua - Enable Lua scripting support
+luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
 lzma - Support for LZMA (de)compression algorithm
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support
@@ -318,7 +319,7 @@ sox - Add support for Sound eXchange (SoX)
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
 sqlite - Add support for sqlite - embedded sql database
-ssl - Add support for Secure Socket Layer connections
+ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer Security)
 startup-notification - Enable application startup event feedback mechanism
 static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
 static-libs - Build static versions of dynamic libraries as well
@@ -366,8 +367,8 @@ videos - Install optional video files (used in some games)
 vim-syntax - Pulls in related vim syntax scripts
 vnc - Enable VNC (remote desktop viewer) support
 vorbis - Add support for the OggVorbis audio codec
-wayland - Enable dev-libs/wayland backend
 wavpack - Add support for wavpack audio compression tools
+wayland - Enable dev-libs/wayland backend
 wddx - Add support for Web Distributed Data eXchange
 webkit - Add support for the WebKit HTML rendering/layout engine
 webp - Add support for the WebP image format
@@ -382,7 +383,7 @@ xemacs - Add support for XEmacs
 xface - Add xface support used to allow a small image of xface format to be included in an email via the header 'X-Face'
 xft - Build with support for XFT font renderer (x11-libs/libXft)
 xine - Add support for the XINE movie libraries
-xinerama - Add support for the xinerama X11 extension, which is mandatory if you work in multiple monitors setup
+xinerama - Add support for querying multi-monitor screen geometry through the Xinerama API
 xinetd - Add support for the xinetd super-server
 xml - Add support for XML files
 xmlrpc - Support for xml-rpc library

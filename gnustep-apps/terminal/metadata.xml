@@ -5,13 +5,8 @@
 	<email>gnustep@gentoo.org</email>
 	<name>Gentoo GNUstep Project</name>
 </maintainer>
-<maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
-</maintainer>
 <longdescription>
 Terminal.app - copyright (c) 2002 Alexander Malmberg alexander@malmberg.org
-
 a terminal emulator for GNUstep
 </longdescription>
 </pkgmetadata>

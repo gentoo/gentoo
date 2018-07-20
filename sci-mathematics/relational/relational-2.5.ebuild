@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit python-single-r1
 
 DESCRIPTION="Educational tool for relational algebra"
-HOMEPAGE="http://ltworf.github.io/relational/"
+HOMEPAGE="https://ltworf.github.io/relational/"
 SRC_URI="https://github.com/ltworf/${PN}/releases/download/${PV}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3"

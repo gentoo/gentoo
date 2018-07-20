@@ -1,8 +1,14 @@
 #!/sbin/openrc-run
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 extra_started_commands="reload"
+
+command="/usr/bin/atheme-services"
+command_user="atheme-services"
+pidfile="/var/run/atheme/atheme.pid"
+
+name="Atheme IRC Services"
 
 depend() {
 	need net
@@ -10,27 +16,12 @@ depend() {
 	provide irc-services
 }
 
-start() {
-	ATHEME_SERVICES_RUNDIR=/var/run/atheme
-	if ! [ -d "${ATHEME_SERVICES_RUNDIR}" ]; then
-	    ebegin "Creating \`${ATHEME_SERVICES_RUNDIR}'"
-	    install -o atheme-services -d "${ATHEME_SERVICES_RUNDIR}"
-	    eend $?
-	fi
-
-	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon --start --pidfile=/var/run/atheme/atheme.pid --user atheme-services --exec /usr/bin/atheme-services
-	eend $?
+start_pre() {
+	checkpath -d "/var/run/atheme" -o atheme-services
 }
 
 reload() {
 	ebegin "Reloading ${SVCNAME}"
-	start-stop-daemon --signal HUP --pidfile /var/run/atheme/atheme.pid
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop --quiet --pidfile /var/run/atheme/atheme.pid
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
 	eend $?
 }

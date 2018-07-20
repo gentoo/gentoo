@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/todbot/blink1/archive/v${MY_PV}.tar.gz -> ${MY_P}.ta
 ## selfmade tarball
 #MY_PVR=${PVR/_rc/rc}
 #MY_P="${PN}-${MY_PVR}"
-#SRC_URI="http://dev.gentoo.org/~wschlich/src/${CATEGORY}/${PN}/${MY_P}.tar.gz"
+#SRC_URI="https://dev.gentoo.org/~wschlich/src/${CATEGORY}/${PN}/${MY_P}.tar.gz"
 
 ## github commit tarball
 #MY_GIT_COMMIT="1e9c012bd79cb99a53a22980fbaa6f97801e7c03"

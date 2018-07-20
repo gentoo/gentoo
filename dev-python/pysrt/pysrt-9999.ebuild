@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library used to edit or create SubRip files"
-HOMEPAGE="https://github.com/byroot/pysrt https://pypi.python.org/pypi/pysrt"
+HOMEPAGE="https://github.com/byroot/pysrt https://pypi.org/project/pysrt/"
 EGIT_REPO_URI="https://github.com/byroot/pysrt.git"
 
 LICENSE="GPL-3"

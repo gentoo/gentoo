@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,13 @@ MY_PN=zope.component
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Zope Component Architecture"
-HOMEPAGE="https://github.com/zopefoundation/zope.component http://docs.zope.org/zope.component/"
+HOMEPAGE="https://github.com/zopefoundation/zope.component
+	https://docs.zope.org/zope.component/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="test"
 RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
 	dev-python/zope-event[${PYTHON_USEDEP}]

@@ -33,7 +33,7 @@ RDEPEND=">=dev-haskell/aeson-1.0:=[profile?] <dev-haskell/aeson-1.1:=[profile?]
 	>=dev-haskell/byteable-0.1.1:=[profile?] <dev-haskell/byteable-0.2:=[profile?]
 	>=dev-haskell/cabal-1.18.1.5:=[profile?] <dev-haskell/cabal-1.25:=[profile?]
 	>=dev-haskell/clock-0.7.2:=[profile?] <dev-haskell/clock-0.8:=[profile?]
-	>=dev-haskell/conduit-1.2.8:=[profile?] <dev-haskell/conduit-1.3:=[profile?]
+	>=dev-haskell/conduit-1.2.9:=[profile?] <dev-haskell/conduit-1.3:=[profile?]
 	>=dev-haskell/conduit-extra-1.1.7.1:=[profile?] <dev-haskell/conduit-extra-1.2:=[profile?]
 	>=dev-haskell/cryptohash-0.11.6:=[profile?] <dev-haskell/cryptohash-0.12:=[profile?]
 	>=dev-haskell/cryptohash-conduit-0.1.1:=[profile?] <dev-haskell/cryptohash-conduit-0.2:=[profile?]
@@ -117,6 +117,7 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/th-reify-many-0.1.6 <dev-haskell/th-reify-many-0.2
 		>=dev-haskell/vector-0.11.0.0 <dev-haskell/vector-0.12 )
 "
+RDEPEND+=" !dev-haskell/stack-bin[symlink]"
 
 src_prepare() {
 	default

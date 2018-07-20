@@ -1,0 +1,390 @@
+From 52b4a972c164d6900584f147ba4bf73f02e0bbe7 Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Tue, 28 Nov 2017 23:25:41 +0100
+Subject: [PATCH 6/6] Fall back to libtirpc if libc does not provide rpc/rpc.h
+
+---
+ config/generic.mak.in |   4 +-
+ configure             | 245 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ configure.in          |   6 ++
+ ogdi-config.in        |   4 +-
+ ogdi.pc.in            |   4 +-
+ 5 files changed, 255 insertions(+), 8 deletions(-)
+
+diff --git a/config/generic.mak.in b/config/generic.mak.in
+index 3b671d7..6ff7e33 100644
+--- a/config/generic.mak.in
++++ b/config/generic.mak.in
+@@ -35,7 +35,7 @@ AR		= ar cr
+ # Compilation and linking flags
+ #
+ SHLIB_CFLAGS	= @C_PIC@
+-COMMON_CFLAGS	= $(OPTIMIZATION) @CFLAGS@ @C_WFLAGS@ -DUNIX=1 @C_PIC@
++COMMON_CFLAGS	= $(OPTIMIZATION) @CFLAGS@ @C_WFLAGS@ -DUNIX=1 @C_PIC@ @RPC_CFLAGS@
+ 
+ SHLIB_LDFLAGS	= -shared 
+ COMMON_LDFLAGS  = $(OPTIMIZATION) 
+@@ -61,7 +61,7 @@ INST_BIN	= @bindir@
+ #
+ #RPC_LINKLIB	= -lrpcsvc -lnsl -lsocket
+ #RPC_LINKLIB	=	-ldl -ldbmalloc
+-RPC_LINKLIB	=	@LIBS@
++RPC_LINKLIB	=	@LIBS@ @RPC_LIBS@
+ 
+ #
+ # Endian definition, could be little or big
+diff --git a/configure b/configure
+index d7acc10..c6459e0 100755
+--- a/configure
++++ b/configure
+@@ -634,6 +634,8 @@ PROJ_INCLUDE
+ PROJ_SETTING
+ BIG_ENDIAN
+ RPC_INCLUDES
++RPC_LIBS
++RPC_CFLAGS
+ EGREP
+ GREP
+ CPP
+@@ -643,6 +645,9 @@ CXX_PIC
+ C_WFLAGS
+ CXX_WFLAGS
+ HAVE_ICONV
++PKG_CONFIG_LIBDIR
++PKG_CONFIG_PATH
++PKG_CONFIG
+ OBJEXT
+ EXEEXT
+ ac_ct_CC
+@@ -714,7 +719,12 @@ CFLAGS
+ LDFLAGS
+ LIBS
+ CPPFLAGS
+-CPP'
++PKG_CONFIG
++PKG_CONFIG_PATH
++PKG_CONFIG_LIBDIR
++CPP
++RPC_CFLAGS
++RPC_LIBS'
+ 
+ 
+ # Initialize some variables set by options.
+@@ -1343,7 +1353,14 @@ Some influential environment variables:
+   LIBS        libraries to pass to the linker, e.g. -l<library>
+   CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
+               you have headers in a nonstandard directory <include dir>
++  PKG_CONFIG  path to pkg-config utility
++  PKG_CONFIG_PATH
++              directories to add to pkg-config's search path
++  PKG_CONFIG_LIBDIR
++              path overriding pkg-config's built-in search path
+   CPP         C preprocessor
++  RPC_CFLAGS  C compiler flags for RPC, overriding pkg-config
++  RPC_LIBS    linker flags for RPC, overriding pkg-config
+ 
+ Use these variables to override the choices made by `configure' or to help
+ it to find libraries and programs with nonstandard names/locations.
+@@ -2867,6 +2884,126 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+ 
+ 
++
++
++
++
++if test "x$ac_cv_env_PKG_CONFIG_set" != "xset"; then
++	if test -n "$ac_tool_prefix"; then
++  # Extract the first word of "${ac_tool_prefix}pkg-config", so it can be a program name with args.
++set dummy ${ac_tool_prefix}pkg-config; ac_word=$2
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
++$as_echo_n "checking for $ac_word... " >&6; }
++if ${ac_cv_path_PKG_CONFIG+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  case $PKG_CONFIG in
++  [\\/]* | ?:[\\/]*)
++  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
++  ;;
++  *)
++  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++    for ac_exec_ext in '' $ac_executable_extensions; do
++  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
++    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++  done
++IFS=$as_save_IFS
++
++  ;;
++esac
++fi
++PKG_CONFIG=$ac_cv_path_PKG_CONFIG
++if test -n "$PKG_CONFIG"; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PKG_CONFIG" >&5
++$as_echo "$PKG_CONFIG" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++
++fi
++if test -z "$ac_cv_path_PKG_CONFIG"; then
++  ac_pt_PKG_CONFIG=$PKG_CONFIG
++  # Extract the first word of "pkg-config", so it can be a program name with args.
++set dummy pkg-config; ac_word=$2
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
++$as_echo_n "checking for $ac_word... " >&6; }
++if ${ac_cv_path_ac_pt_PKG_CONFIG+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  case $ac_pt_PKG_CONFIG in
++  [\\/]* | ?:[\\/]*)
++  ac_cv_path_ac_pt_PKG_CONFIG="$ac_pt_PKG_CONFIG" # Let the user override the test with a path.
++  ;;
++  *)
++  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++    for ac_exec_ext in '' $ac_executable_extensions; do
++  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_path_ac_pt_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
++    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++  done
++IFS=$as_save_IFS
++
++  ;;
++esac
++fi
++ac_pt_PKG_CONFIG=$ac_cv_path_ac_pt_PKG_CONFIG
++if test -n "$ac_pt_PKG_CONFIG"; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_pt_PKG_CONFIG" >&5
++$as_echo "$ac_pt_PKG_CONFIG" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++  if test "x$ac_pt_PKG_CONFIG" = x; then
++    PKG_CONFIG=""
++  else
++    case $cross_compiling:$ac_tool_warned in
++yes:)
++{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
++$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
++ac_tool_warned=yes ;;
++esac
++    PKG_CONFIG=$ac_pt_PKG_CONFIG
++  fi
++else
++  PKG_CONFIG="$ac_cv_path_PKG_CONFIG"
++fi
++
++fi
++if test -n "$PKG_CONFIG"; then
++	_pkg_min_version=0.9.0
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking pkg-config is at least version $_pkg_min_version" >&5
++$as_echo_n "checking pkg-config is at least version $_pkg_min_version... " >&6; }
++	if $PKG_CONFIG --atleast-pkgconfig-version $_pkg_min_version; then
++		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++	else
++		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++		PKG_CONFIG=""
++	fi
++fi
++
++
++
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for dlopen in -ldl" >&5
+ $as_echo_n "checking for dlopen in -ldl... " >&6; }
+ if ${ac_cv_lib_dl_dlopen+:} false; then :
+@@ -3045,7 +3182,6 @@ HAVE_ICONV=$HAVE_ICONV
+ 
+ 
+ 
+-
+ ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+@@ -3443,6 +3579,111 @@ fi
+ done
+ 
+ 
++for ac_header in rpc/rpc.h
++do :
++  ac_fn_c_check_header_mongrel "$LINENO" "rpc/rpc.h" "ac_cv_header_rpc_rpc_h" "$ac_includes_default"
++if test "x$ac_cv_header_rpc_rpc_h" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_RPC_RPC_H 1
++_ACEOF
++
++else
++
++pkg_failed=no
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for libtirpc" >&5
++$as_echo_n "checking for libtirpc... " >&6; }
++
++if test -n "$RPC_CFLAGS"; then
++    pkg_cv_RPC_CFLAGS="$RPC_CFLAGS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libtirpc\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libtirpc") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_RPC_CFLAGS=`$PKG_CONFIG --cflags "libtirpc" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++if test -n "$RPC_LIBS"; then
++    pkg_cv_RPC_LIBS="$RPC_LIBS"
++ elif test -n "$PKG_CONFIG"; then
++    if test -n "$PKG_CONFIG" && \
++    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libtirpc\""; } >&5
++  ($PKG_CONFIG --exists --print-errors "libtirpc") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; then
++  pkg_cv_RPC_LIBS=`$PKG_CONFIG --libs "libtirpc" 2>/dev/null`
++		      test "x$?" != "x0" && pkg_failed=yes
++else
++  pkg_failed=yes
++fi
++ else
++    pkg_failed=untried
++fi
++
++
++
++if test $pkg_failed = yes; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++
++if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
++        _pkg_short_errors_supported=yes
++else
++        _pkg_short_errors_supported=no
++fi
++        if test $_pkg_short_errors_supported = yes; then
++	        RPC_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "libtirpc" 2>&1`
++        else
++	        RPC_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "libtirpc" 2>&1`
++        fi
++	# Put the nasty error message in config.log where it belongs
++	echo "$RPC_PKG_ERRORS" >&5
++
++	as_fn_error $? "Package requirements (libtirpc) were not met:
++
++$RPC_PKG_ERRORS
++
++Consider adjusting the PKG_CONFIG_PATH environment variable if you
++installed software in a non-standard prefix.
++
++Alternatively, you may set the environment variables RPC_CFLAGS
++and RPC_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details." "$LINENO" 5
++elif test $pkg_failed = untried; then
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
++$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
++as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
++is in your PATH or set the PKG_CONFIG environment variable to the full
++path to pkg-config.
++
++Alternatively, you may set the environment variables RPC_CFLAGS
++and RPC_LIBS to avoid the need to call pkg-config.
++See the pkg-config man page for more details.
++
++To get pkg-config, see <http://pkg-config.freedesktop.org/>.
++See \`config.log' for more details" "$LINENO" 5; }
++else
++	RPC_CFLAGS=$pkg_cv_RPC_CFLAGS
++	RPC_LIBS=$pkg_cv_RPC_LIBS
++        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++
++fi
++fi
++
++done
++
++
+ for ac_header in rpc/pmap_clnt.h float.h dlfcn.h
+ do :
+   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+diff --git a/configure.in b/configure.in
+index 68b1c92..d5fe134 100644
+--- a/configure.in
++++ b/configure.in
+@@ -23,6 +23,7 @@ fi
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
++PKG_PROG_PKG_CONFIG
+ 
+ dnl We always want to check /usr/local for stuff.
+ dnl LIBS="$LIBS -L/usr/local/lib"
+@@ -38,6 +39,11 @@ AC_COMPILER_WFLAGS
+ AC_COMPILER_PIC
+ AC_LD_SHARED
+ 
++dnl ---------------------------------------------------------------------------
++dnl	Do we have rpc/rpc.h
++dnl ---------------------------------------------------------------------------
++AC_CHECK_HEADERS([rpc/rpc.h],,
++	[PKG_CHECK_MODULES([RPC], [libtirpc])])
+ 
+ dnl ---------------------------------------------------------------------------
+ dnl	Do we have rpc/pmap_clnt.h, float.h, dlfcn.h?
+diff --git a/ogdi-config.in b/ogdi-config.in
+index f3c9a03..c6dfc50 100644
+--- a/ogdi-config.in
++++ b/ogdi-config.in
+@@ -13,8 +13,8 @@ exec_prefix="@exec_prefix@"
+ libdir="@libdir@"
+ includedir="@includedir@/ogdi"
+ libs="-logdi"
+-all_libs="-logdi -lproj -lexpat -lz"
+-I_opts="-I${includedir}"
++all_libs="-logdi -lproj -lexpat -lz @RPC_LIBS@"
++I_opts="-I${includedir} @RPC_CFLAGS@"
+ L_opts=""
+ R_opts=""
+ cppflags=""
+diff --git a/ogdi.pc.in b/ogdi.pc.in
+index 8b919de..1f290d9 100644
+--- a/ogdi.pc.in
++++ b/ogdi.pc.in
+@@ -6,7 +6,7 @@ includedir=@includedir@
+ Name: ogdi
+ Description: Open Geographic Datastore Interface
+ Version: @OGDI_VERSION@
+-Cflags: -I${includedir}/ogdi
++Cflags: -I${includedir}/ogdi @RPC_CFLAGS@
+ Libs: -L${libdir} -logdi
+-Libs.private: -lproj -lexpat -lz
++Libs.private: -lproj -lexpat -lz @RPC_LIBS@
+ 
+-- 
+2.15.0
+

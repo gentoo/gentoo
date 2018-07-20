@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,27 +8,30 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic git-r3 llvm multilib-minimal \
-	python-single-r1 toolchain-funcs pax-utils versionator
+inherit cmake-utils eapi7-ver flag-o-matic git-r3 llvm \
+	multilib-minimal multiprocessing pax-utils python-single-r1 \
+	toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
-HOMEPAGE="http://llvm.org/"
+HOMEPAGE="https://llvm.org/"
 SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/clang.git
+EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
 
 # Keep in sync with sys-devel/llvm
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC RISCV Sparc SystemZ X86 XCore )
+	NVPTX PowerPC Sparc SystemZ X86 XCore
+	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
-SLOT="5"
+SLOT="7"
 KEYWORDS=""
-IUSE="debug default-compiler-rt default-libcxx +doc multitarget
-	+static-analyzer test xml z3 elibc_musl kernel_FreeBSD
-	${ALL_LLVM_TARGETS[*]}"
+IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
+	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
@@ -41,7 +44,6 @@ RDEPEND="
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
-	test? ( ~dev-python/lit-${PV}[${PYTHON_USEDEP}] )
 	xml? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
@@ -49,13 +51,13 @@ RDEPEND="${RDEPEND}
 	!<sys-devel/llvm-4.0.0_rc:0
 	!sys-devel/clang:0"
 PDEPEND="
+	sys-devel/clang-common
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
-	default-libcxx? ( sys-libs/libcxx )"
+	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )
-	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+	|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # We need extra level of indirection for CLANG_RESOURCE_DIR
 S=${WORKDIR}/x/y/${P}
@@ -84,43 +86,34 @@ src_unpack() {
 	mkdir -p x/y || die
 	cd x/y || die
 
-	git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
+	git-r3_fetch "https://git.llvm.org/git/clang-tools-extra.git
 		https://github.com/llvm-mirror/clang-tools-extra.git"
 	if use test; then
 		# needed for patched gtest
-		git-r3_fetch "http://llvm.org/git/llvm.git
+		git-r3_fetch "https://git.llvm.org/git/llvm.git
 			https://github.com/llvm-mirror/llvm.git"
 	fi
 	git-r3_fetch
 
-	git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
+	git-r3_checkout https://llvm.org/git/clang-tools-extra.git \
 		"${S}"/tools/extra
 	if use test; then
-		git-r3_checkout http://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+		git-r3_checkout https://llvm.org/git/llvm.git \
+			"${WORKDIR}"/llvm '' \
+			lib/Testing/Support utils/{lit,llvm-lit,unittest}
 	fi
 	git-r3_checkout "${EGIT_REPO_URI}" "${S}"
 }
 
-src_prepare() {
-	# fix finding compiler-rt libs
-	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
-
-	# fix stand-alone doc build
-	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
-
-	# User patches
-	eapply_user
-}
-
 multilib_src_configure() {
 	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-3 "${llvm_version}")
+	local clang_version=$(ver_cut 1-3 "${llvm_version}")
 
 	local mycmakeargs=(
 		# ensure that the correct llvm-config is used
 		-DLLVM_CONFIG="$(type -P "${CHOST}-llvm-config")"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
+		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		# relative to bindir
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
@@ -145,27 +138,38 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 		# z3 is not multilib-friendly
 		-DCLANG_ANALYZER_BUILD_Z3=$(multilib_native_usex z3)
-		-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			-DLLVM_BUILD_DOCS=$(usex doc)
-			-DLLVM_ENABLE_SPHINX=$(usex doc)
-			-DLLVM_ENABLE_DOXYGEN=OFF
+			# normally copied from LLVM_INCLUDE_DOCS but the latter
+			# is lacking value in stand-alone builds
+			-DCLANG_INCLUDE_DOCS=$(usex doc)
+			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=$(usex doc)
 		)
 		use doc && mycmakeargs+=(
+			-DLLVM_BUILD_DOCS=ON
+			-DLLVM_ENABLE_SPHINX=ON
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
+		use z3 && mycmakeargs+=(
+			-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
+		)
 	else
 		mycmakeargs+=(
 			-DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD=OFF
+		)
+	fi
+
+	if [[ -n ${EPREFIX} ]]; then
+		mycmakeargs+=(
+			-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
 		)
 	fi
 
@@ -215,19 +219,19 @@ src_install() {
 	# Apply CHOST and version suffix to clang tools
 	# note: we use two version components here (vs 3 in runtime path)
 	local llvm_version=$(llvm-config --version) || die
-	local clang_version=$(get_version_component_range 1-2 "${llvm_version}")
-	local clang_full_version=$(get_version_component_range 1-3 "${llvm_version}")
+	local clang_version=$(ver_cut 1 "${llvm_version}")
+	local clang_full_version=$(ver_cut 1-3 "${llvm_version}")
 	local clang_tools=( clang clang++ clang-cl clang-cpp )
 	local abi i
 
 	# cmake gives us:
-	# - clang-X.Y
-	# - clang -> clang-X.Y
+	# - clang-X
+	# - clang -> clang-X
 	# - clang++, clang-cl, clang-cpp -> clang
 	# we want to have:
-	# - clang-X.Y
-	# - clang++-X.Y, clang-cl-X.Y, clang-cpp-X.Y -> clang-X.Y
-	# - clang, clang++, clang-cl, clang-cpp -> clang*-X.Y
+	# - clang-X
+	# - clang++-X, clang-cl-X, clang-cpp-X -> clang-X
+	# - clang, clang++, clang-cl, clang-cpp -> clang*-X
 	# also in CHOST variant
 	for i in "${clang_tools[@]:1}"; do
 		rm "${ED%/}/usr/lib/llvm/${SLOT}/bin/${i}" || die
@@ -273,4 +277,23 @@ multilib_src_install_all() {
 	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
 	# +x for some reason; TODO: investigate
 	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
+}
+
+pkg_postinst() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow update all
+	fi
+
+	elog "You can find additional utility scripts in:"
+	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/clang"
+	elog "To use these scripts, you will need Python 2.7. Some of them are vim"
+	elog "integration scripts (with instructions inside). The run-clang-tidy.py"
+	elog "scripts requires the following additional package:"
+	elog "  dev-python/pyyaml"
+}
+
+pkg_postrm() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow clean all
+	fi
 }

@@ -5,9 +5,6 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<use>
-		<flag name="fuse">Mount archive as a FUSE filesystem.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">borgbackup/borg</remote-id>
 		<remote-id type="pypi">borgbackup</remote-id>

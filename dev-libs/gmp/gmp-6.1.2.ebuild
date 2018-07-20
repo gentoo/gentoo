@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,15 +10,15 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 PLEVEL=${PV/*p}
 DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
-HOMEPAGE="http://gmplib.org/"
+HOMEPAGE="https://gmplib.org/"
 SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
 	mirror://gnu/${PN}/${MY_P}.tar.xz
-	doc? ( http://gmplib.org/${PN}-man-${MY_PV}.pdf )"
+	doc? ( https://gmplib.org/${PN}-man-${MY_PV}.pdf )"
 
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
 SLOT="0/10.4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+asm doc cxx pgo static-libs"
 
 DEPEND="sys-devel/m4
@@ -39,6 +39,11 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-6.1.0-noexecstack-detect.patch
 
+	# https://bugs.gentoo.org/536894
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		epatch "${FILESDIR}"/${PN}-6.1.2-gcc-apple-4.0.1.patch
+	fi
+
 	# GMP uses the "ABI" env var during configure as does Gentoo (econf).
 	# So, to avoid patching the source constantly, wrap things up.
 	mv configure configure.wrapped || die
@@ -52,7 +57,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
-	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
+	# https://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
 		GMPABI="1.0"
 	fi

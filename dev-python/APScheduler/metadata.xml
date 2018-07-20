@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<upstream>
 		<remote-id type="pypi">APScheduler</remote-id>
-		<remote-id type="bitbucket">agronholm/apscheduler</remote-id>
+		<remote-id type="github">agronholm/apscheduler</remote-id>
 	</upstream>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>

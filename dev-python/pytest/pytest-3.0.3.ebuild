@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Simple powerful testing with Python"
-HOMEPAGE="http://pytest.org/ https://pypi.python.org/pypi/pytest"
+HOMEPAGE="http://pytest.org/ https://pypi.org/project/pytest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -20,13 +20,13 @@ IUSE="doc test"
 PY_VER="1.4.29"
 COMMON_DEPEND="
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hypothesis-3.5.2[${PYTHON_USEDEP}]
 		>dev-python/pytest-xdist-1.13[${PYTHON_USEDEP}]
@@ -36,7 +36,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	!dev-python/logilab-common
+	!<dev-python/logilab-common-1.3.0
 "
 
 python_prepare_all() {

@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-  <flag name="authonly">Allows one to build only authoritative DNS server</flag>
-</use>
+    <maintainer type="person">
+        <email>coyote@bks.tv</email>
+        <name>Victor Kustov</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+        <flag name="authonly">Allows one to build only authoritative DNS server</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">samboy/MaraDNS</remote-id>
+    </upstream>
 </pkgmetadata>

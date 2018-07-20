@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="User interface widgets for Ocsigen applications"
 HOMEPAGE="https://github.com/ocsigen/ocsigen-toolkit"
@@ -29,8 +29,7 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/ppx_deriving:=
 	dev-ml/calendar:=
 	dev-ml/lwt:="
-DEPEND="${RDEPEND}
-	dev-ml/opam"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	emake \
@@ -42,10 +41,6 @@ src_compile() {
 src_install() {
 	findlib_src_preinst
 	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
+	opam_src_install
 	dodoc README.md
 }

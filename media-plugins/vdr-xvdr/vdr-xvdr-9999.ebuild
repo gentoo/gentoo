@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 inherit vdr-plugin-2 git-2
 
-EGIT_REPO_URI="git://github.com/pipelka/vdr-plugin-xvdr.git"
+EGIT_REPO_URI="https://github.com/pipelka/vdr-plugin-xvdr.git"
 
 DESCRIPTION="VDR plugin: XVDR Streamserver Plugin"
 HOMEPAGE="https://github.com/pipelka/vdr-plugin-xvdr"

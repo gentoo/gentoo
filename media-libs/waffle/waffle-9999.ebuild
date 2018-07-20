@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/waffle-gl/waffle.git"
+EGIT_REPO_URI="https://github.com/waffle-gl/${PN}.git"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-2"
@@ -17,7 +17,7 @@ HOMEPAGE="https://people.freedesktop.org/~chadversary/waffle/"
 if [[ $PV = 9999* ]]; then
 	KEYWORDS=""
 else
-	SRC_URI="https://people.freedesktop.org/~chadversary/waffle/files/release/${P}/${P}.tar.xz"
+	SRC_URI="https://people.freedesktop.org/~chadversary/${PN}/files/release/${P}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -33,7 +33,7 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	>=x11-proto/xcb-proto-1.8-r3[${MULTILIB_USEDEP}]
+	>=x11-base/xcb-proto-1.8-r3[${MULTILIB_USEDEP}]
 	doc? (
 		dev-libs/libxslt
 		app-text/docbook-xml-dtd:4.2

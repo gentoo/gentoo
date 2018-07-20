@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="sound test"
 
 RDEPEND="
@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-include.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -43,10 +46,6 @@ src_configure() {
 
 src_test() {
 	virtx cmake-utils_src_test
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

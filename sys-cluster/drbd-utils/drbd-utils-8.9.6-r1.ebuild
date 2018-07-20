@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ DESCRIPTION="mirror/replicate block-devices across a network-connection"
 SRC_URI="http://oss.linbit.com/drbd/${P/_/}.tar.gz"
 HOMEPAGE="http://www.drbd.org"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="heartbeat pacemaker +udev xen"
 SLOT="0"
 
@@ -45,6 +45,9 @@ src_prepare() {
 	sed -i -e "s:\$(sysconfdir)/udev:$(get_udevdir):" scripts/Makefile.in || die
 
 	epatch "${FILESDIR}"/run-lock.patch
+
+	# bug 616758
+	epatch "${FILESDIR}/${P}"-sysmacros.patch
 
 	autoreconf
 }

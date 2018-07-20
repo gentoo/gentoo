@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1 virtualx xdg-utils
 
 DESCRIPTION="Library of IDL astronomy routines converted to Python"
-HOMEPAGE="https://pypi.python.org/pypi/pydl/"
+HOMEPAGE="https://pypi.org/project/pydl/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,15 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_4 pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="Best way to have Django DRY forms"
 HOMEPAGE="
-	https://pypi.python.org/pypi/django-crispy-forms/
+	https://pypi.org/project/django-crispy-forms/
 	https://github.com/maraujop/django-crispy-forms
 	https://django-crispy-forms.readthedocs.org/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

@@ -1,0 +1,50 @@
+From cbba564f60bacd30344f9bb5c7bebaf8283b6794 Mon Sep 17 00:00:00 2001
+From: Vasiliy Glazov <vascom2@gmail.com>
+Date: Fri, 8 Sep 2017 15:00:45 +0300
+Subject: [PATCH] Added LIB_INSTALL_DIR to correct libs install on 64-bit
+ systems (#636)
+
+* Added LIB_INSTALL_DIR to correct libs install on 64-bit systems
+* Add description for using LIB_INSTALL_DIR parameter.
+---
+ CMakeLists.txt   | 3 ++-
+ doc/compiling.md | 9 +++++++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 46790de..da99b6e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,8 @@ project(stlink C)
+ set(PROJECT_DESCRIPTION "Open source version of the STMicroelectronics Stlink Tools")
+ set(STLINK_UDEV_RULES_DIR "/etc/udev/rules.d" CACHE PATH "Udev rules directory")
+ set(STLINK_MODPROBED_DIR "/etc/modprobe.d" CACHE PATH "modprobe.d directory")
+-set(STLINK_LIBRARY_PATH "lib/${CMAKE_LIBRARY_PATH}" CACHE PATH "Target lib directory")
++set(LIB_INSTALL_DIR "lib" CACHE PATH "Main library directory")
++set(STLINK_LIBRARY_PATH "${LIB_INSTALL_DIR}/${CMAKE_LIBRARY_PATH}" CACHE PATH "Target lib directory")
+ 
+ option(STLINK_GENERATE_MANPAGES "Generate manpages with pandoc" OFF)
+ 
+diff --git a/doc/compiling.md b/doc/compiling.md
+index 3518d10..41d1fb7 100644
+--- a/doc/compiling.md
++++ b/doc/compiling.md
+@@ -118,6 +118,15 @@ $ cmake -DSTLINK_UDEV_RULES_DIR="/usr/lib/udev/rules.d" \
+         -DSTLINK_MODPROBED_DIR="/usr/lib/modprobe.d" ..
+ ```
+ 
++## Build using different directory for shared libs
++
++To put the compiled shared libs into a different directory during installation
++you can use the following cmake option:
++
++```
++$ cmake -DLIB_INSTALL_DIR:PATH="/usr/lib64"  ..
++```
++
+ ## Windows (MinGW64) 
+ 
+ ### Prequistes
+-- 
+2.13.6
+

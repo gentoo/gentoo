@@ -10,12 +10,12 @@ MY_PN=python-${PN}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Toolkit for safe and simple cryptography"
-HOMEPAGE="http://www.keyczar.org https://pypi.python.org/pypi/python-keyczar/"
+HOMEPAGE="http://www.keyczar.org https://pypi.org/project/python-keyczar/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 x86"
 IUSE="doc"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

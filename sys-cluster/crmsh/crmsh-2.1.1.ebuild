@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ KEYWORDS=""
 SRC_URI=""
 
 if [[ ${PV} == *9999 ]]; then
-	EGIT_REPO_URI="git://github.com/crmsh/crmsh"
+	EGIT_REPO_URI="https://github.com/crmsh/crmsh"
 	inherit git-2
 	S="${WORKDIR}/${PN}-${MY_TREE}"
 else
@@ -21,7 +21,7 @@ fi
 inherit autotools-utils python-r1
 
 DESCRIPTION="Pacemaker command line interface for management and configuration"
-HOMEPAGE="http://crmsh.github.io/"
+HOMEPAGE="https://crmsh.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -19,8 +19,8 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-misc/imake
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto
+	x11-misc/imake"
 
 src_prepare() {
 	# bug 251845

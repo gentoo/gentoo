@@ -7,8 +7,8 @@
   </maintainer>
   <use>
     <flag name="gui">
-			Installs GUIs for some tools
-		</flag>
+      Installs GUIs for some tools
+    </flag>
   </use>
   <upstream>
     <remote-id type="cpan">Panotools-Script</remote-id>

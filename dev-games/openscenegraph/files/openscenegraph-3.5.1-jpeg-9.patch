@@ -1,0 +1,34 @@
+From 34b4e7001522c1b47b4211dac34d2d6a6b994a6f Mon Sep 17 00:00:00 2001
+From: Robert Osfield <robert@openscenegraph.com>
+Date: Thu, 17 Aug 2017 10:52:59 +0100
+Subject: [PATCH] Added version check for boolean, TRUE and FALSE settings
+
+---
+ src/osgPlugins/jpeg/ReaderWriterJPEG.cpp | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp b/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp
+index 9f7f4c38937..115203322a5 100644
+--- a/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp
++++ b/src/osgPlugins/jpeg/ReaderWriterJPEG.cpp
+@@ -70,12 +70,14 @@ namespace osgDBJPEG
+ 
+ static int jpegerror = ERR_NO_ERROR;
+ 
+-/* Some versions of jmorecfg.h define boolean, some don't...
+-   Those that do also define HAVE_BOOLEAN, so we can guard using that. */
+-#ifndef HAVE_BOOLEAN
+-  typedef int boolean;
+-  #define FALSE 0
+-  #define TRUE 1
++#if JPEG_LIB_VERSION < 90
++    /* Some versions of jmorecfg.h define boolean, some don't...
++    Those that do also define HAVE_BOOLEAN, so we can guard using that. */
++    #ifndef HAVE_BOOLEAN
++    typedef int boolean;
++    #define FALSE 0
++    #define TRUE 1
++    #endif
+ #endif
+ 
+ /* CODE FOR READING/WRITING JPEG FROM STREAMS

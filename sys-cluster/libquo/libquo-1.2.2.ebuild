@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools-utils
 
 DESCRIPTION="run-time tuning of process binding policies made easy"
-HOMEPAGE="http://lanl.github.io/libquo/"
-SRC_URI="http://lanl.github.io/${PN}/dists/${P}.tar.gz"
+HOMEPAGE="https://lanl.github.io/libquo/"
+SRC_URI="https://lanl.github.io/${PN}/dists/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

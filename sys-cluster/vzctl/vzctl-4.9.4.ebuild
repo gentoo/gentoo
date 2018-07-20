@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ SRC_URI="http://download.openvz.org/utils/${PN}/${PV}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86 -amd64-fbsd -sparc-fbsd -x86-fbsd"
+KEYWORDS="amd64 ~ppc64 x86 -amd64-fbsd -x86-fbsd"
 IUSE="+ploop +vzmigrate"
 
 RDEPEND="net-firewall/iptables
@@ -41,11 +41,14 @@ DEPEND="${RDEPEND}
 	"
 
 src_prepare() {
-
 	# Set default OSTEMPLATE on gentoo
 	sed -i -e 's:=redhat-:=gentoo-:' etc/dists/default || die 'sed on etc/dists/default failed'
 	# Set proper udev directory
 	sed -i -e "s:/lib/udev:$(get_udevdir):" src/lib/dev.c || die 'sed on src/lib/dev.c failed'
+
+	epatch "${FILESDIR}/${P}-glibc225.patch"
+	epatch "${FILESDIR}/${P}-glibc225-2.patch"
+	epatch_user
 }
 
 src_configure() {

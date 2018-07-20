@@ -1,5 +1,5 @@
---- configure_xwin.orig	2008-04-02 22:58:44.973465484 +0100
-+++ configure_xwin	2008-04-03 00:02:15.950190359 +0100
+--- a/configure_xwin
++++ b/configure_xwin
 @@ -16,17 +16,17 @@
  #----- C++ compiler name
  echo "Input C++ compiler name (e.g. g++, no default)."
@@ -87,8 +87,8 @@
  echo ""                                                >> Makefile
  
  echo "### Socket libraries to be linked "              >> Makefile
---- FRSocketMacro.h.orig	2008-04-02 23:58:51.126518123 +0100
-+++ FRSocketMacro.h	2008-04-02 23:59:03.443220012 +0100
+--- a/FRSocketMacro.h
++++ b/FRSocketMacro.h
 @@ -14,8 +14,8 @@
  #elif defined SOCKET_REDHAT61
  	#define         CLIENT_ADDR_LENGTH    socklen_t
@@ -100,8 +100,8 @@
  #endif
  
  	//----- gethostname
---- configure.orig	2010-08-21 14:22:18.000000000 +0100
-+++ configure	2010-09-23 05:57:02.000000000 +0100
+--- a/configure
++++ b/configure
 @@ -13,22 +13,22 @@
  #----- C++ compiler name
  echo "Input C++ compiler name (e.g. g++, no default)."

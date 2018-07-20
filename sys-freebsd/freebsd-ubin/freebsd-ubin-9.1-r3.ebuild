@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit bsdmk freebsd flag-o-matic pam multilib multibuild multilib-build
 
 DESCRIPTION="FreeBSD's base system source for /usr/bin"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd ~x86-fbsd"
 IUSE="ar atm audit bluetooth ipv6 kerberos netware nis ssl usb build zfs"
 LICENSE="BSD zfs? ( CDDL )"
 

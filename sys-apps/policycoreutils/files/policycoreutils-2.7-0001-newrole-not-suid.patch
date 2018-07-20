@@ -8,6 +8,6 @@ index bdefbb8..9cff135 100644
  ifeq ($(IS_SUID),y)
 -	MODE := 4555
 +	MODE := 0555
- 	LDLIBS += -lcap-ng
+ 	override LDLIBS += -lcap-ng
  else
  	MODE := 0555

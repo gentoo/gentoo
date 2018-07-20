@@ -9,11 +9,11 @@ IUSE="zlib doc"
 
 DESCRIPTION="High-level language for document formatting"
 HOMEPAGE="http://savannah.nongnu.org/projects/lout"
-SRC_URI="http://download.savannah.nongnu.org/releases/lout/${P}.tar.gz"
+SRC_URI="mirror://nongnu/lout/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="zlib? ( >=sys-libs/zlib-1.1.4 )"
 RDEPEND="${DEPEND}"

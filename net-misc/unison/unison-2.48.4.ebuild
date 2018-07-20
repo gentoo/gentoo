@@ -11,7 +11,7 @@ DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
 LICENSE="GPL-2"
 SLOT="$(get_version_component_range 1-2 ${PV})"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 
 # ocaml version so we are sure it has ocamlopt use flag
 DEPEND="dev-lang/ocaml[ocamlopt?]
@@ -29,6 +29,11 @@ SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}
 	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
 		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
 S="${WORKDIR}"/src
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.48.4-Makefile-dep.patch
+	default
+}
 
 src_compile() {
 	local myconf
@@ -58,7 +63,7 @@ src_compile() {
 }
 
 src_test() {
-	emake selftest
+	emake selftest CFLAGS=""
 }
 
 src_install () {

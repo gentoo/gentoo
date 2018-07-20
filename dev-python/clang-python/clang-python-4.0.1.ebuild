@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1
 
 DESCRIPTION="Python bindings for sys-devel/clang"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/cfe-${PV/_/}.src/bindings/python
 
 src_test() {
-	python_foreach_impl nosetests -v
+	python_foreach_impl nosetests -v || die
 }
 
 src_install() {

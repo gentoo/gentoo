@@ -1,0 +1,2 @@
+# up the global pid max for ceph
+kernel.pid_max = 257256

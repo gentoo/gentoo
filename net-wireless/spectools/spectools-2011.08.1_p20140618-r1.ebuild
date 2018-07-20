@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ else
 fi
 
 DESCRIPTION="Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware"
-HOMEPAGE="http://www.kismetwireless.net/spectools/"
+HOMEPAGE="https://www.kismetwireless.net/spectools/"
 
 LICENSE="GPL-2"
 SLOT="0"

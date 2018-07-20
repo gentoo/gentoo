@@ -1,0 +1,25 @@
+Taken from https://negativo17.org/repos/multimedia/epel-7/SRPMS/makemkv-1.12.2-2.el7.src.rpm
+See https://github.com/FFmpeg/FFmpeg/commit/7c6eb0a1b7bf1aac7f033a7ec6d8cacc3b5c2615
+and https://github.com/FFmpeg/FFmpeg/commit/b79a7da36faa6bb5914b04800b548e99eb3b81ca
+diff --git a/libffabi/src/ffabi.c b/libffabi/src/ffabi.c
+index 20db4e9..f08d53c 100644
+--- a/libffabi/src/ffabi.c
++++ b/libffabi/src/ffabi.c
+@@ -517,7 +517,7 @@ FFM_AudioEncodeContext* __cdecl ffm_audio_encode_init(void* logctx,const char* n
+         info->profile : FF_PROFILE_UNKNOWN;
+ 
+     if ((CodecFlags&FFM_CODEC_FLAG_GLOBAL_HEADER)!=0)
+-        ctx->avctx->flags |= CODEC_FLAG_GLOBAL_HEADER;
++        ctx->avctx->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+ 
+     if (argp) {
+         for (i=0;argp[i];i+=2) {
+@@ -718,7 +718,7 @@ int __cdecl ffm_audio_encode_get_info(FFM_AudioEncodeContext* ctx,FFM_AudioEncod
+     info->delay = (int32_t)ctx->avctx->delay;
+     info->flags = 0;
+ 
+-    if ((ctx->avctx->flags&CODEC_FLAG_GLOBAL_HEADER)!=0)
++    if ((ctx->avctx->flags&AV_CODEC_FLAG_GLOBAL_HEADER)!=0)
+         info->flags |= FFM_CODEC_FLAG_GLOBAL_HEADER;
+ 
+     return 0;

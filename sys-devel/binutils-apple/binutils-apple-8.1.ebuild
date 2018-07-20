@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,11 +15,11 @@ HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
 SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r2.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r1.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-8.2-r0.tar.bz2"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r2.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r1.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-8.2-r0.tar.bz2"
 
 LICENSE="APSL-2"
 KEYWORDS="~x64-macos ~x86-macos"
@@ -32,7 +32,7 @@ IUSE="lto tapi classic test"
 RDEPEND="sys-devel/binutils-config
 	lto? ( app-arch/xar )
 	tapi? ( sys-libs/tapi )
-	sys-devel/llvm
+	sys-devel/llvm:*
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/perl-5.8.8 )"

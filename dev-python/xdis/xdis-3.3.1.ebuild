@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="Python cross-version byte-code disassembler and marshal routines"
-HOMEPAGE="https://github.com/rocky/python-xdis/ https://pypi.python.org/pypi/xdis"
+HOMEPAGE="https://github.com/rocky/python-xdis/ https://pypi.org/project/xdis/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -25,9 +25,9 @@ DEPEND="
 	)
 "
 
-#PATCHES=( "${FILESDIR}/xdis-test_magic_bytes_error.patch"
-#	"${FILESDIR}/xdis-3.3.0-remove-pytest-runner-dep.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/xdis-3.3.0-remove-pytest-runner-dep.patch"
+)
 
 python_test() {
 	# Need to rm any pyc files to prevent test failures.

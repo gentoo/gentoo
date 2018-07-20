@@ -1,33 +1,35 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/philsquared/Catch.git"
-inherit cmake-utils git-r3
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+inherit cmake-utils
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/catchorg/Catch2.git"
+else
+	MY_P=${PN^}2-${PV}
+	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+
+	S=${WORKDIR}/${MY_P}
+fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
-HOMEPAGE="https://github.com/philsquared/Catch"
-SRC_URI=""
+HOMEPAGE="https://github.com/catchorg/Catch2"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-# CMake is only used to build & run tests, so override phases
-src_configure() { :; }
-src_compile() { :; }
-
-src_test() {
+src_configure() {
+	local mycmakeargs=(
+		-DCATCH_ENABLE_WERROR=OFF
+		-DBUILD_TESTING=$(usex test)
+		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
+	)
 	cmake-utils_src_configure
-	cmake-utils_src_compile
-	cmake-utils_src_test
-}
-
-src_install() {
-	# same location as used in fedora
-	insinto /usr/include/catch
-	doins -r include/.
-	dodoc -r docs/.
 }

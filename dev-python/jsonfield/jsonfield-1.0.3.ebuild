@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
 DESCRIPTION="Reusable Django field that allows you to store validated JSON in your model"
-HOMEPAGE="https://pypi.python.org/pypi/jsonfield https://github.com/bradjasper/django-jsonfield"
+HOMEPAGE="https://pypi.org/project/jsonfield/ https://github.com/bradjasper/django-jsonfield"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

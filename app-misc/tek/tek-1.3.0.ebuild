@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ WX_GTK_VER=3.0
 inherit udev wxwidgets
 
 DESCRIPTION="GUI tool for upgrading the firmware of a Truly Ergonomic Keyboard"
-HOMEPAGE="http://trulyergonomic.com/ https://github.com/m-ou-se/tek"
+HOMEPAGE="https://trulyergonomic.com/ https://github.com/m-ou-se/tek"
 SRC_URI="https://github.com/m-ou-se/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="all-rights-reserved GPL-3+"

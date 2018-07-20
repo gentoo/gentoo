@@ -1,0 +1,177 @@
+From 751d8a334d0f3fbce9c74352004e9d3899ec8b38 Mon Sep 17 00:00:00 2001
+From: Jonathan Scruggs <j.scruggs@gmail.com>
+Date: Wed, 24 Jan 2018 11:08:16 +0000
+Subject: [PATCH 3/4] cmake fixes
+
+---
+ CMakeLists.txt           | 31 +++++++++++++++++--------------
+ cmake/modules/haru.cmake |  2 +-
+ src/CMakeLists.txt       | 19 ++++++++++++-------
+ src/hpdf_image_png.c     |  2 +-
+ 4 files changed, 31 insertions(+), 23 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 354ca75..4227f03 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,7 @@ endif(MSVC)
+ 
+ # information about libharu
+ set(LIBHPDF_MAJOR 2)
+-set(LIBHPDF_MINOR 2)
++set(LIBHPDF_MINOR 3)
+ set(LIBHPDF_PATCH 0)
+ set(LIBHPDF_VERSION ${LIBHPDF_MAJOR}.${LIBHPDF_MINOR}.${LIBHPDF_PATCH})
+ set(LIBHPDF_DESCRIPTION "libHaru is a free, cross platform, open source library for generating PDF files.")
+@@ -53,12 +53,17 @@ option(LIBHPDF_STATIC "Build static lib" YES)
+ option(LIBHPDF_EXAMPLES "Build libharu examples" NO)
+ option(DEVPAK "Create DevPackage" NO)
+ 
++if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
++  set(CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS "${CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS} -undefined dynamic_lookup")
++endif()
++
+ # Enable exceptions on linux if required
+ # (eg if you are using libharu in a C++ environment,
+ # and you want your error-callback to throw an exception,
+ # you will need to enable this for the exception to be
+ # able to throw through the libharu callstack).
+ if (CMAKE_COMPILER_IS_GNUCC OR ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang"))
++   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
+    option (LIBHPDF_ENABLE_EXCEPTIONS "Enable exceptions" NO)
+    if (LIBHPDF_ENABLE_EXCEPTIONS)
+       set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fexceptions")
+@@ -81,6 +86,7 @@ endif(BUILD_SHARED_LIBS)
+ # =======================================================================
+ # look for headers and libraries
+ # =======================================================================
++include(GNUInstallDirs)
+ include(haru)
+ include(summary)
+ 
+@@ -110,7 +116,7 @@ endif(PNG_FOUND)
+ if(MSVC_VERSION GREATER 1399)
+   add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_DEPRECATE)
+ endif(MSVC_VERSION GREATER 1399)
+-include_directories(${CMAKE_SOURCE_DIR}/include)
++include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+ 
+ 
+ # these are options
+@@ -149,16 +155,16 @@ endif (NOT ZLIB_FOUND)
+ 
+ # create hpdf_config.h
+ configure_file(
+-  ${CMAKE_SOURCE_DIR}/include/hpdf_config.h.cmake
+-  ${CMAKE_BINARY_DIR}/include/hpdf_config.h
++  ${CMAKE_CURRENT_SOURCE_DIR}/include/hpdf_config.h.cmake
++  ${CMAKE_CURRENT_BINARY_DIR}/include/hpdf_config.h
+ )
+-include_directories(${CMAKE_BINARY_DIR}/include)
++include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
+ 
+ # create DevPackage file
+ if(DEVPAK)
+   configure_file(
+-    ${CMAKE_SOURCE_DIR}/libharu.DevPackage.cmake
+-    ${CMAKE_BINARY_DIR}/libharu.DevPackage
++    ${CMAKE_CURRENT_SOURCE_DIR}/libharu.DevPackage.cmake
++    ${CMAKE_CURRENT_BINARY_DIR}/libharu.DevPackage
+   )
+ endif(DEVPAK)
+ # =======================================================================
+@@ -203,19 +209,16 @@ set(
+     include/hpdf_pdfa.h
+     include/hpdf_3dmeasure.h
+     include/hpdf_exdata.h
+-    ${CMAKE_BINARY_DIR}/include/hpdf_config.h
++    ${CMAKE_CURRENT_BINARY_DIR}/include/hpdf_config.h
+ )
+ 
+ # install header files
+-install(FILES ${haru_HDRS} DESTINATION include)
++install(FILES ${haru_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ # install various files
+-install(FILES README CHANGES INSTALL DESTINATION .)
+-if(NOT DEVPAK)
+-  install(DIRECTORY if DESTINATION .)
+-endif(NOT DEVPAK)
++install(FILES README CHANGES INSTALL DESTINATION ${CMAKE_INSTALL_DOCDIR})
+ if(DEVPAK)
+-  install(FILES ${CMAKE_BINARY_DIR}/libharu.DevPackage DESTINATION .)
++  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libharu.DevPackage DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif(DEVPAK)
+ 
+ # =======================================================================
+diff --git a/cmake/modules/haru.cmake b/cmake/modules/haru.cmake
+index 95647b9..f0b08b5 100644
+--- a/cmake/modules/haru.cmake
++++ b/cmake/modules/haru.cmake
+@@ -28,7 +28,7 @@ check_include_files(unistd.h LIBHPDF_HAVE_UNISTD_H)
+ # On windows systems the math library is not separated so do not specify
+ # it unless you are on a non-windows system.
+ if(NOT WIN32)
+-  find_library(MATH_LIB NAMES m PATHS /usr/local/lib /usr/lib)
++  find_library(MATH_LIB NAMES m PATHS ${CMAKE_INSTALL_FULL_LIBDIR})
+   if(NOT MATH_LIB)
+     message(FATAL_ERROR "Cannot find required math library")
+   endif(NOT MATH_LIB)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 9d2a604..6f93d18 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -72,16 +72,21 @@ set(
+ # =======================================================================
+ if(LIBHPDF_STATIC)
+   add_library(${LIBHPDF_NAME_STATIC} STATIC ${LIBHPDF_SRCS})
++
++  if( CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" )
++      set_target_properties(${LIBHPDF_NAME_STATIC} PROPERTIES COMPILE_FLAGS "-fPIC")
++  endif( CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" )
++
+   target_link_libraries(${LIBHPDF_NAME_STATIC} ${ADDITIONAL_LIBRARIES})
+   install(
+     TARGETS ${LIBHPDF_NAME_STATIC}
+-    ARCHIVE DESTINATION lib
+-    LIBRARY DESTINATION lib
+-    RUNTIME DESTINATION bin
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+   )
+   if(WIN32 AND NOT CYGWIN)
+ 		foreach(addlib ${ADDITIONAL_LIBRARIES})
+-			install(FILES ${addlib} DESTINATION lib)
++			install(FILES ${addlib} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 		endforeach(addlib)
+   endif(WIN32 AND NOT CYGWIN)
+ endif(LIBHPDF_STATIC)
+@@ -93,8 +98,8 @@ if(LIBHPDF_SHARED)
+   endif(WIN32 AND NOT CYGWIN)
+   install(
+     TARGETS ${LIBHPDF_NAME}
+-    ARCHIVE DESTINATION lib
+-    LIBRARY DESTINATION lib
+-    RUNTIME DESTINATION bin
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+   )
+ endif(LIBHPDF_SHARED)
+diff --git a/src/hpdf_image_png.c b/src/hpdf_image_png.c
+index 3a35f5c..4304ced 100644
+--- a/src/hpdf_image_png.c
++++ b/src/hpdf_image_png.c
+@@ -20,7 +20,7 @@
+ #include "hpdf_image.h"
+ 
+ #ifndef LIBHPDF_HAVE_NOPNGLIB
+-#include <png.h>
++#include "png.h"
+ #include <string.h>
+ 
+ static void
+-- 
+2.16.0
+

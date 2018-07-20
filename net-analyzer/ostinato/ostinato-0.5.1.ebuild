@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit qt4-r2
 
 DESCRIPTION="A packet generator and analyzer"
-HOMEPAGE="http://ostinato.org/"
+HOMEPAGE="https://ostinato.org"
 SRC_URI="https://ostinato.googlecode.com/files/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-3"

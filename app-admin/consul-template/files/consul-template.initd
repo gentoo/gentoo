@@ -1,31 +1,20 @@
 #!/sbin/openrc-run
-# Copyright 2015-2016 Gentoo Foundation
+# Copyright 2015-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="consul-template agent"
-group=${group:-${SVCNAME}}
-pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
-user=${user:-${SVCNAME}}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
 
-command="/usr/bin/${SVCNAME}"
-command_args="agent -config-dir=/etc/consul-template.d ${command_args}"
+command="/usr/bin/${RC_SVCNAME}"
+command_args="-config=/etc/consul-template.d ${command_args}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
-	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
-	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+stopsig="SIGINT"
 
 depend() {
 	need net
-	after net
-}
-
-start_pre() {
-	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
-}
-
-stop() {
-	# SIGINT is required for graceful shutdown of consul-template
-	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop --signal SIGINT --pidfile "${pidfile}"
-	eend $?
 }

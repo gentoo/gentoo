@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,14 +12,14 @@ HOMEPAGE="http://dblatex.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 arm x86"
 IUSE=""
 
 RDEPEND="
 	app-text/texlive
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
-	|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-mathextra )
+	dev-texlive/texlive-mathscience
 	dev-texlive/texlive-pictures
 	dev-texlive/texlive-xetex
 	dev-libs/libxslt
@@ -30,7 +30,9 @@ DEPEND="${RDEPEND}"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-	EPATCH_SOURCE="${FILESDIR}" EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" epatch
+	epatch "${FILESDIR}/${P}-no-inkscape-dependency.patch"
+	epatch "${FILESDIR}/${PN}-path-logging.patch"
+	epatch "${FILESDIR}/${PN}-setup.patch"
 }
 
 python_install_all() {

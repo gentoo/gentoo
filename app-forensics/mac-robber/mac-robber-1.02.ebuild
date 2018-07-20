@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 src_prepare() {
+	default
 	sed -i -e 's:$(GCC_CFLAGS):\0 $(LDFLAGS):' Makefile || die
 }
 

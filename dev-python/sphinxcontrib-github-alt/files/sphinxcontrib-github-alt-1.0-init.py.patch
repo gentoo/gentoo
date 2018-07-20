@@ -1,0 +1,8 @@
+__init__.py for sphinxcontrib_github_alt by Marius Brehler.
+
+Patch by Marius Brehler <marbrbre@linux.sungazer.de>.
+--- /dev/null
++++ b/sphinxcontrib_github_alt/__init__.py
+@@ -0,0 +1 @@
++from .sphinxcontrib_github_alt import *
+\ No newline at end of file

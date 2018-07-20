@@ -1,0 +1,10 @@
+--- thc-ipv6-3.2/dnsrevenum6.c
++++ thc-ipv6-3.2/dnsrevenum6.c
+@@ -17,6 +17,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <strings.h>
+ #include <string.h>

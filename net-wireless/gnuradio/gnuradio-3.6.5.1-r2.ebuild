@@ -1,26 +1,26 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils fdo-mime python-single-r1
+inherit cmake-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
-HOMEPAGE="http://gnuradio.org/"
+HOMEPAGE="https://www.gnuradio.org/"
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="http://gnuradio.org/git/gnuradio.git"
-	inherit git-2
+	EGIT_REPO_URI="https://www.gnuradio.org/cgit/gnuradio.git"
+	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://gnuradio.org/releases/${PN}/${P}.tar.gz"
+	SRC_URI="https://www.gnuradio.org/releases/gnuradio/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="alsa +analog +digital doc examples fcd +filter grc jack oss pager performance-counters portaudio qt4 sdl uhd +utils wavelet wxwidgets"
+IUSE="alsa +analog +digital doc examples fcd +filter grc jack oss pager performance-counters portaudio qt4 sdl uhd +utils wavelet"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		analog? ( filter )
@@ -29,8 +29,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		qt4? ( filter )
 		uhd? ( filter analog )
 		fcd? ( || ( alsa oss ) )
-		wavelet? ( analog )
-		wxwidgets? ( filter analog )"
+		wavelet? ( analog )"
 
 # bug #348206
 # comedi? ( >=sci-electronics/comedilib-0.7 )
@@ -66,10 +65,6 @@ RDEPEND="${PYTHON_DEPS}
 	wavelet? (
 		sci-libs/gsl
 	)
-	wxwidgets? (
-		dev-python/wxpython:2.8[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
 "
 DEPEND="${RDEPEND}
 	dev-lang/swig
@@ -91,6 +86,7 @@ src_prepare() {
 	# Useless UI element would require qt3support, bug #365019
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
 	epatch "${FILESDIR}"/${PN}-3.6.1-automagic-audio.patch
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -113,9 +109,9 @@ src_configure() {
 		$(cmake-utils_use_enable uhd GR_UHD) \
 		$(cmake-utils_use_enable utils GR_UTILS) \
 		$(cmake-utils_use_enable wavelet GR_WAVELET) \
-		$(cmake-utils_use_enable wxwidgets GR_WXGUI) \
 		$(cmake-utils_use_enable qt4 GR_QTGUI) \
 		$(cmake-utils_use_enable sdl GR_VIDEO_SDL) \
+		-DENABLE_GR_WXGUI=OFF \
 		-DENABLE_GR_CORE=ON \
 		-DSYSCONFDIR="${EPREFIX}"/etc \
 		-DPYTHON_EXECUTABLE="${PYTHON}"
@@ -162,8 +158,8 @@ pkg_postinst()
 	local GRC_ICON_SIZES="32 48 64 128 256"
 
 	if use grc ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		xdg_desktop_database_update
+		xdg_mime_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource install --noupdate --context mimetypes --size ${size} \
 				"${EROOT}/usr/share/pixmaps/grc-icon-${size}.png" application-gnuradio-grc \
@@ -181,8 +177,8 @@ pkg_postrm()
 	local GRC_ICON_SIZES="32 48 64 128 256"
 
 	if use grc ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		xdg_desktop_database_update
+		xdg_mime_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource uninstall --noupdate --context mimetypes --size ${size} \
 				application-gnuradio-grc || ewarn "icon uninstall failed"

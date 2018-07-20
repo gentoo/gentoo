@@ -1,0 +1,42 @@
+From 0edb7527fb17c313c17c1c2572d9c454040677a2 Mon Sep 17 00:00:00 2001
+From: Andy Jones <andy_jones@outgun.com>
+Date: Thu, 28 Aug 2014 15:37:01 +0100
+Subject: Support newer Net::DNS::Resolver
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=98386
+---
+ lib/ParaDNS/Resolver.pm | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/ParaDNS/Resolver.pm b/lib/ParaDNS/Resolver.pm
+index e147602..1a3f5dd 100644
+--- a/lib/ParaDNS/Resolver.pm
++++ b/lib/ParaDNS/Resolver.pm
+@@ -40,7 +40,7 @@ sub new {
+         }
+     } 
+     else {
+-        foreach my $ns (@{ $res->{nameservers} }) {
++        foreach my $ns ( $res->nameservers ) {
+             trace(2, "Using nameserver $ns:$res->{port}\n");
+             my $dst_sockaddr = sockaddr_in($res->{'port'}, inet_aton($ns));
+             push @{$self->{dst}}, $dst_sockaddr;
+@@ -216,7 +216,6 @@ sub event_read {
+     my $res = $self->{res};
+     
+     while (my $packet = $res->bgread($sock)) {
+-        my $err = $res->errorstring;
+         my $answers = 0;
+         my $header = $packet->header;
+         my $id = $header->id;
+@@ -278,6 +277,7 @@ sub event_read {
+             $answers++;
+         }
+         if (!$answers) {
++            my $err = $res->errorstring || $packet->header->rcode;
+             if ($err eq "NXDOMAIN") {
+                 # trace("found => NXDOMAIN\n");
+                 $qobj->run_callback("NXDOMAIN");
+-- 
+2.15.1
+

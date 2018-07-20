@@ -10,7 +10,7 @@ DESCRIPTION="Python extension to the AstroDienst Swiss Ephemeris"
 HOMEPAGE="https://github.com/astrorigin/pyswisseph"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/astrorigin/${PN}.git"
+	EGIT_REPO_URI="https://github.com/astrorigin/${PN}.git"
 else
 	COMMIT_ID=4f76befee7e39dff96b4c068cc6ce5fa66fb021c
 	SRC_URI="https://github.com/astrorigin/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"

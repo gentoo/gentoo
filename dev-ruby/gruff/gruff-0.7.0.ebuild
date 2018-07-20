@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/topfunky/gruff"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-macos"
+KEYWORDS="amd64 x86 ~x86-macos"
 IUSE=""
 
 # imagemagick is an indirect dependency through rmagick. However, for

@@ -15,7 +15,7 @@
 # the src_prepare, src_configure, src_compile, and src_install
 # phase hooks.
 
-inherit cmake-utils flag-o-matic multilib prefix eutils toolchain-funcs
+inherit cmake-utils flag-o-matic multilib prefix eutils toolchain-funcs versionator
 
 #
 # HELPER FUNCTIONS:
@@ -338,7 +338,7 @@ mysql-cmake_src_prepare() {
 		rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
 	fi
 
-	epatch_user
+	cmake-utils_src_prepare
 }
 
 # @FUNCTION: mysql-cmake_src_configure
@@ -500,27 +500,6 @@ mysql-cmake_src_install() {
 	fi
 	eprefixify "${TMPDIR}/my.cnf.ok"
 	newins "${TMPDIR}/my.cnf.ok" my.cnf
-
-	# Minimal builds don't have the MySQL server
-	if use_if_iuse minimal ; then
-		:
-	elif ! in_iuse server || use_if_iuse server ; then
-		einfo "Creating initial directories"
-		# Empty directories ...
-		diropts "-m0750"
-		if [[ ${PREVIOUS_DATADIR} != "yes" ]] ; then
-			dodir "${MY_DATADIR#${EPREFIX}}"
-			keepdir "${MY_DATADIR#${EPREFIX}}"
-			chown -R mysql:mysql "${D}/${MY_DATADIR}"
-		fi
-
-		diropts "-m0755"
-		for folder in "${MY_LOGDIR#${EPREFIX}}" ; do
-			dodir "${folder}"
-			keepdir "${folder}"
-			chown -R mysql:mysql "${ED}/${folder}"
-		done
-	fi
 
 	# Minimal builds don't have the MySQL server
 	if use_if_iuse minimal ; then

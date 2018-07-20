@@ -1,8 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Vbrfix fixes MP3s and re-constructs VBR headers"
 HOMEPAGE="http://home.gna.org/vbrfix/"
@@ -13,16 +12,13 @@ SLOT="0"
 # bin endian ones need vbrfixc-0.24-bigendian.diff from gentoo-x86 cvs Attic
 KEYWORDS="amd64 x86"
 IUSE=""
+
 DEPEND=""
 RDEPEND=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch
-
-}
+PATCHES=( "${FILESDIR}/${P}-gcc43.patch" )
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS README TODO
-	dohtml vbrfixc/docs/en/*.html
+	HTML_DOCS=( vbrfixc/docs/en/*.html )
+	default
 }

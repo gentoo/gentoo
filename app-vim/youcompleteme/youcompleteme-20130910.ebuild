@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib python-single-r1 cmake-utils vim-plugin
 
 if [[ ${PV} == 9999* ]] ; then
-	EGIT_REPO_URI="git://github.com/Valloric/YouCompleteMe.git"
+	EGIT_REPO_URI="https://github.com/Valloric/YouCompleteMe.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="vim plugin: a code-completion engine for Vim"
-HOMEPAGE="http://valloric.github.io/YouCompleteMe/"
+HOMEPAGE="https://valloric.github.io/YouCompleteMe/"
 
 LICENSE="GPL-3"
 IUSE="+clang test"
@@ -54,7 +54,7 @@ src_configure() {
 }
 
 src_test() {
-	# TODO: use system gmock/gtest
+	# TODO: use system gtest
 	cd "${S}"/cpp || die
 	emake ycm_core_tests
 	cd ycm/tests || die

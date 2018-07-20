@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit cmake-multilib
 
 if [[ ${PV} == 9999 ]]; then
@@ -13,7 +14,7 @@ else
 fi
 
 DESCRIPTION="MessagePack is a binary-based efficient data interchange format"
-HOMEPAGE="http://msgpack.org/ https://github.com/msgpack/msgpack-c/"
+HOMEPAGE="https://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -27,9 +28,11 @@ DEPEND="
 "
 
 DOCS=( README.md )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-cflags.patch
 	"${FILESDIR}"/${PN}-1.0.0-static.patch
+	"${FILESDIR}"/${P}-gcc6.patch
 )
 
 src_configure() {
@@ -38,5 +41,6 @@ src_configure() {
 		$(cmake-utils_use static-libs MSGPACK_STATIC)
 		$(cmake-utils_use test MSGPACK_BUILD_TESTS)
 	)
+
 	cmake-multilib_src_configure
 }

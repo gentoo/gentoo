@@ -1,5 +1,5 @@
---- drivers/xtk/tkpgplot.c.ORIG	2000-12-13 03:16:28.000000000 +0100
-+++ drivers/xtk/tkpgplot.c	2013-01-15 11:02:27.221231471 +0100
+--- a/drivers/xtk/tkpgplot.c	2000-12-13 03:16:28.000000000 +0100
++++ b/drivers/xtk/tkpgplot.c	2013-01-15 11:02:27.221231471 +0100
 @@ -417,7 +417,7 @@
  /*
   * If Tk_Init() hasn't been called, then there won't be a main window

@@ -1,0 +1,29 @@
+From 2ba6e380dd8a3575bd8f4d4e5d8d3883003e9f54 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Sat, 1 Oct 2016 14:27:55 +0200
+Subject: [PATCH] Don't restrict RowData.details to the generic type "string"
+
+This allows AbstractFieldDetails<G> based values to be assigned,
+like PostalAddressFieldDetails.
+
+Fixes a build-failure with vala 0.35+ due to stricter type-checking.
+---
+ src/contacts-contact-editor.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/contacts-contact-editor.vala b/src/contacts-contact-editor.vala
+index 3372f87..3978887 100644
+--- a/src/contacts-contact-editor.vala
++++ b/src/contacts-contact-editor.vala
+@@ -77,7 +77,7 @@ public class Contacts.ContactEditor : Grid {
+   }
+ 
+   struct RowData {
+-    AbstractFieldDetails<string> details;
++    AbstractFieldDetails details;
+   }
+ 
+   struct Field {
+-- 
+2.14.1
+

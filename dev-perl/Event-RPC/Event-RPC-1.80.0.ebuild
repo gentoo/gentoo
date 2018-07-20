@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Event based transparent Client/Server RPC framework"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ia64 ppc ppc64 ~sparc x86"
 IUSE="test"
 
 # Note: Storable not listed in final alternation like it is
@@ -33,3 +33,4 @@ DEPEND="${RDEPEND}
 # Before disabling test here again, please file a bug and help kentnl
 # track it down, so we can at least run some tests where its sensible.
 #SRC_TEST=skip
+PATCHES=("${FILESDIR}/${P}-no-dot-inc.patch")

@@ -57,15 +57,19 @@ DEPEND="dev-vcs/mercurial"
 : ${EHG_QUIET:="OFF"}
 [[ "${EHG_QUIET}" == "ON" ]] && EHG_QUIET_CMD_OPT="--quiet"
 
+# @ECLASS-VARIABLE: EHG_CONFIG
+# @DESCRIPTION:
+# Extra config option to hand to hg clone/pull
+
 # @ECLASS-VARIABLE: EHG_CLONE_CMD
 # @DESCRIPTION:
 # Command used to perform initial repository clone.
-[[ -z "${EHG_CLONE_CMD}" ]] && EHG_CLONE_CMD="hg clone ${EHG_QUIET_CMD_OPT} --pull --noupdate"
+[[ -z "${EHG_CLONE_CMD}" ]] && EHG_CLONE_CMD="hg clone ${EHG_CONFIG:+--config ${EHG_CONFIG}} ${EHG_QUIET_CMD_OPT} --pull --noupdate"
 
 # @ECLASS-VARIABLE: EHG_PULL_CMD
 # @DESCRIPTION:
 # Command used to update repository.
-[[ -z "${EHG_PULL_CMD}" ]] && EHG_PULL_CMD="hg pull ${EHG_QUIET_CMD_OPT}"
+[[ -z "${EHG_PULL_CMD}" ]] && EHG_PULL_CMD="hg pull ${EHG_CONFIG:+--config ${EHG_CONFIG}} ${EHG_QUIET_CMD_OPT}"
 
 # @ECLASS-VARIABLE: EHG_OFFLINE
 # @DESCRIPTION:
@@ -134,6 +138,7 @@ mercurial_fetch() {
 	hg clone \
 		${EHG_QUIET_CMD_OPT} \
 		--updaterev="${EHG_REVISION}" \
+		${EHG_CONFIG:+--config ${EHG_CONFIG}} \
 		"${EHG_STORE_DIR}/${EHG_PROJECT}/${module}" \
 		"${sourcedir}" || die "hg clone failed"
 	# An exact revision helps a lot for testing purposes, so have some output...

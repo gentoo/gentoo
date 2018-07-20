@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
 		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 x86"
 	docs_compile() { return 1; }
 fi
 

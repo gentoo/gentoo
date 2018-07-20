@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="Unified media experience for any device capable of running KDE Plasma"
-SRC_URI="mirror://kde/stable/plasma/${PV}/${P}.tar.xz"
+SRC_URI="mirror://kde/stable/plasma-mediacenter/${PV}/${P}.tar.xz"
 KEYWORDS="amd64 ~arm x86"
 IUSE="semantic-desktop"
 
@@ -41,7 +41,6 @@ RDEPEND="${DEPEND}
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
-		$(cmake-utils_use_find_package semantic-desktop KF5FileMetadata)
 	)
 
 	kde5_src_configure

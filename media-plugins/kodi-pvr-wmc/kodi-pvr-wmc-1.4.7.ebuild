@@ -12,7 +12,7 @@ SRC_URI=""
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="git://github.com/kodi-pvr/pvr.wmc.git"
+	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.wmc.git"
 	inherit git-r3
 	;;
 *)

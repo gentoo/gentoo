@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit toolchain-funcs
 
 DESCRIPTION="a nifty little binary clock dockapp"
-HOMEPAGE="http://wmbinclock.sourceforge.net"
+HOMEPAGE="https://www.dockapps.net/wmbinclock"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -16,7 +18,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" \

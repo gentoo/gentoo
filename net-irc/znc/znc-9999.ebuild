@@ -1,15 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5} )
-PLOCALES="ru"
+PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit cmake-utils l10n python-single-r1 readme.gentoo-r1 systemd user
+inherit cmake-utils python-single-r1 readme.gentoo-r1 systemd user
 
-GTEST_VER="1.8.0"
-GTEST_URL="https://github.com/google/googletest/archive/release-${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
+GTEST_VER="ba96d0b1161f540656efdaed035b3c062b60e006" # 1.8.0 is too old, but newer version not released yet
+GTEST_URL="https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
 if [[ ${PV} == *9999* ]]; then
@@ -17,14 +16,17 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://github.com/znc/znc.git"}
 	SRC_URI=""
 else
+	MY_PV=${PV/_/-}
+	MY_P=${PN}-${MY_PV}
 	SRC_URI="
-		http://znc.in/releases/archive/${P}.tar.gz
+		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
 	KEYWORDS="~amd64 ~arm ~x86"
+	S=${WORKDIR}/${MY_P}
 fi
 
-HOMEPAGE="http://znc.in"
+HOMEPAGE="https://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+ipv6 +icu libressl nls perl python +ssl sasl tcl test +zlib"
@@ -42,15 +44,18 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	tcl? ( dev-lang/tcl:0= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( sys-libs/zlib:0= )
 "
 DEPEND="
 	${RDEPEND}
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 	perl? ( >=dev-lang/swig-3.0.0 )
 	python? ( >=dev-lang/swig-3.0.0 )
+	test? ( dev-qt/qtnetwork:5 )
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-1.7.1-inttest-dir.patch )
 
 pkg_setup() {
 	if use python; then
@@ -66,19 +71,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	l10n_find_plocales_changes "${S}/src/po" "${PN}." '.po'
-
-	remove_locale() {
-		# Some language/module pairs can be missing
-		rm -f src/po/${PN}.${1}.po modules/po/*.${1}.po || die
-	}
-	l10n_for_each_disabled_locale_do remove_locale
-
 	# Let SWIG rebuild modperl/modpython to make user patching easier.
 	if [[ ${PV} != *9999* ]]; then
 		rm modules/modperl/generated.tar.gz || die
 		rm modules/modpython/generated.tar.gz || die
 	fi
+
+	sed -i -e "s|DZNC_BIN_DIR:path=|DZNC_BIN_DIR:path=${T}/inttest|" \
+		test/CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
@@ -99,17 +99,36 @@ src_configure() {
 	)
 
 	if [[ ${PV} != *9999* ]] && use test; then
-		export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googletest"
-		export GMOCK_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googlemock"
+		export GTEST_ROOT="${WORKDIR}/googletest-${GTEST_VER}/googletest"
+		export GMOCK_ROOT="${WORKDIR}/googletest-${GTEST_VER}/googlemock"
 	fi
 
 	cmake-utils_src_configure
 }
 
 src_test() {
-	pushd "${BUILD_DIR}" > /dev/null || die
-	${CMAKE_MAKEFILE_GENERATOR} unittest || die "Unit test failed"
-	popd > /dev/null || die
+	cmake-utils_src_make unittest
+	if has network-sandbox ${FEATURES}; then
+		cmake-utils_src_make install DESTDIR="${T}/inttest"
+		local filter='-'
+		if ! use perl; then
+			filter="${filter}:ZNCTest.Modperl*"
+		fi
+		if ! use python; then
+			filter="${filter}:ZNCTest.Modpython*"
+		fi
+		# CMAKE_PREFIX_PATH and CXXFLAGS are needed for znc-buildmod
+		# invocations from inside the test
+		GTEST_FILTER="${filter}" ZNC_UNUSUAL_ROOT="${T}/inttest" \
+			CMAKE_PREFIX_PATH="${T}/inttest/usr/share/znc/cmake" \
+			CXXFLAGS="${CXXFLAGS} -isystem ${T}/inttest/usr/include" \
+			cmake-utils_src_make inttest
+	else
+		# TODO: don't require sandbox after
+		# https://github.com/znc/znc/pull/1363 is implemented
+		ewarn "FEATURES=-network-sandbox; skipping integration tests which"
+		ewarn "temporary open local ports."
+	fi
 }
 
 src_install() {
@@ -147,8 +166,7 @@ pkg_config() {
 		ewarn "to generate a new configuration, remove the folder"
 		ewarn "and try again."
 	else
-		einfo "Press any key to interactively create a new configuration file"
-		einfo "for znc."
+		einfo "Press enter to interactively create a new configuration file for znc."
 		einfo "To abort, press Control-C"
 		read
 		mkdir -p "${EROOT%/}/var/lib/znc" || die
@@ -158,7 +176,7 @@ pkg_config() {
 			"${EROOT%/}"/usr/bin/znc -- --makeconf --datadir "${EROOT%/}/var/lib/znc" ||
 			die "Config failed"
 		einfo
-		einfo "Now you can start znc service using the init system of your choice."
-		einfo "Don't forget to enable znc service if you want to use znc on boot."
+		einfo "You can now start the znc service using the init system of your choice."
+		einfo "Don't forget to enable it if you want to use znc at boot."
 	fi
 }

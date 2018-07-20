@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
-inherit eutils pam
+inherit pam
 
 DESCRIPTION="a simple PAM module which uses libfprint's functionality for authentication"
 HOMEPAGE="http://www.reactivated.net/fprint/wiki/Pam_fprint"
@@ -14,17 +14,16 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="sys-auth/libfprint
+RDEPEND="
+	sys-auth/libfprint
 	sys-libs/pam"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-headers.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-headers.patch )
 
 src_install() {
-	dopammod src/${PN}.so || die
-	newbin src/pamtest pamtest.fprint || die
-	dobin src/pam_fprint_enroll || die
-	dodoc AUTHORS ChangeLog NEWS README || die
+	dopammod src/${PN}.so
+	newbin src/pamtest pamtest.fprint
+	dobin src/pam_fprint_enroll
+	einstalldocs
 }

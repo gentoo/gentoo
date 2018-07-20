@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Authen-SASL-SASLprep</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::SASLprep</remote-id>
+  </upstream>
 </pkgmetadata>

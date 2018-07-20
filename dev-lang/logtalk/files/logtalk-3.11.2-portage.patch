@@ -1,0 +1,17 @@
+--- a/scripts/logtalk_user_setup.sh
++++ b/scripts/logtalk_user_setup.sh
+@@ -130,14 +130,6 @@
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/lgt2*
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.dtd
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.xsd
+-ln -sf "$LOGTALKHOME"/BIBLIOGRAPHY.bib "$LOGTALKUSER"/BIBLIOGRAPHY.bib
+-ln -sf "$LOGTALKHOME"/CUSTOMIZE.md "$LOGTALKUSER"/CUSTOMIZE.md
+-ln -sf "$LOGTALKHOME"/INSTALL.md "$LOGTALKUSER"/INSTALL.md
+-ln -sf "$LOGTALKHOME"/LICENSE.txt "$LOGTALKUSER"/LICENSE.txt
+-ln -sf "$LOGTALKHOME"/QUICK_START.md "$LOGTALKUSER"/QUICK_START.md
+-ln -sf "$LOGTALKHOME"/README.md "$LOGTALKUSER"/README.md
+-ln -sf "$LOGTALKHOME"/RELEASE_NOTES.md "$LOGTALKUSER"/RELEASE_NOTES.md
+-ln -sf "$LOGTALKHOME"/UPGRADING.md "$LOGTALKUSER"/UPGRADING.md
+ ln -sf "$LOGTALKHOME"/adapters "$LOGTALKUSER"/adapters
+ ln -sf "$LOGTALKHOME"/manuals "$LOGTALKUSER"/manuals
+ ln -sf "$LOGTALKHOME"/paths "$LOGTALKUSER"/paths

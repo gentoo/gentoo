@@ -18,7 +18,7 @@
 #
 # Thanks for original eclass to Andrian Nord <NightNord@niifaq.ru>.
 #
-# Only EAPI >4 supported
+# Only EAPI >=6 is supported
 
 case ${EAPI:-0} in
 	6) ;;
@@ -28,8 +28,7 @@ esac
 inherit cmake-utils
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git
-	               https://github.com/0xd34df00d/leechcraft.git"
+	EGIT_REPO_URI="https://github.com/0xd34df00d/leechcraft.git"
 
 	inherit git-r3
 else

@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit toolchain-funcs
 
-HOMEPAGE="http://www.freepascal.org/"
+HOMEPAGE="https://www.freepascal.org/"
 DESCRIPTION="Free Pascal Compiler"
 SRC_URI="mirror://sourceforge/freepascal/fpcbuild-${PV}.tar.gz
 	mirror://sourceforge/freepascal/fpc-${PV}.source.tar.gz
@@ -20,7 +20,7 @@ SRC_URI="mirror://sourceforge/freepascal/fpcbuild-${PV}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc ide source"
 
 RDEPEND="ide? ( !dev-lang/fpc-ide )"

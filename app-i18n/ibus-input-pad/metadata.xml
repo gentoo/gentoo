@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Input Pad engine for IBus. It provides an input pad from
+    <pkg>dev-libs/input-pad</pkg>.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">fujiwarat/ibus-input-pad</remote-id>
+  </upstream>
+</pkgmetadata>

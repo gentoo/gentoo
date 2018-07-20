@@ -23,27 +23,6 @@
  
  #######################################################################
  #  install
-@@ -53,7 +53,7 @@
- #######################################################################
- #  install
- 
--GPRINST_OPTS=-p -f --prefix=${prefix} --install-name=gnatcoll \
-+GPRINST_OPTS=-p -f --prefix=$(DESTDIR)${prefix} --install-name=gnatcoll \
- 	--exec-subdir=${bindir} --project-subdir=lib/gnat \
- 	--build-var=LIBRARY_TYPE --build-name=$(@F) -XLIBRARY_TYPE=$(@F)
- 
-@@ -73,9 +73,9 @@
- 	${GPRINSTALL} --mode=usage ${GPRINST_OPTS} -Psrc/gnatcoll_tools
- 
- install_gps_plugin: force
--	mkdir -p $(prefix)/share/gps/plug-ins
-+	mkdir -p $(DESTDIR)$(prefix)/share/gps/plug-ins
- 	(cd distrib/ ; tar cf - gnatcoll) | \
--          (cd $(prefix)/share/gps/plug-ins ; tar xf -)
-+          (cd $(DESTDIR)$(prefix)/share/gps/plug-ins ; tar xf -)
- 
- # Regenerate part of the sources. Unfortunately, this can be run only after
- # we have build GNATCOLL, and then its tools, even though GNATCOLL itself
 --- gnatcoll-gpl-2015-src/src/gnatcoll_gmp.gpr.in.old	2017-01-07 08:52:14.921110195 +0100
 +++ gnatcoll-gpl-2015-src/src/gnatcoll_gmp.gpr.in	2017-01-07 08:55:35.718946607 +0100
 @@ -24,6 +24,7 @@

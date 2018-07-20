@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,14 +7,14 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit scons-utils fortran-2 flag-o-matic python-r1 toolchain-funcs
 
-DESCRIPTION="An automated pipeline for performing Poisson-Boltzmann electrostatics calculations"
+DESCRIPTION="Automated pipeline for performing Poisson-Boltzmann electrostatics calculations"
 HOMEPAGE="http://www.poissonboltzmann.org/"
 SRC_URI="https://github.com/Electrostatics/apbs-${PN}/releases/download/${P}/${PN}-src-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
 IUSE="doc examples opal +pdb2pka"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

@@ -7,6 +7,7 @@ LS_GROUP=${LS_GROUP:-$LS_USER}
 LS_LOG_DIR=${LS_LOG_DIR:-/var/log/logstash}
 LS_CONF_DIR=${LS_CONF_DIR:-/etc/logstash/conf.d}
 LS_HOME=${LS_HOME:-/var/lib/logstash}
+LS_DATA_DIR=${LS_DATA_DIR:-$LS_HOME/data}
 LS_HEAP_SIZE=${LS_HEAP_SIZE:-500m}
 LS_NICE=${LS_NICE:-19}
 LS_JAVA_OPTS=${LS_JAVA_OPTS:-"-Djava.io.tmpdir=${LS_HOME}"}
@@ -17,9 +18,9 @@ KILL_ON_STOP_TIMEOUT=${KILL_ON_STOP_TIMEOUT:-0}
 LS_INSTALL_DIR="/opt/logstash"
 
 command="${LS_INSTALL_DIR}/bin/logstash"
-command_args="--path.config ${LS_CONF_DIR} --path.logs ${LS_LOG_DIR} ${LS_OPTS}"
+command_args="--path.config ${LS_CONF_DIR} --path.logs ${LS_LOG_DIR} --path.data ${LS_DATA_DIR} ${LS_OPTS}"
 command_background="true"
-pidfile=${LS_PIDFILE:-"/run/logstash/logstash.pid"}
+pidfile="/run/${RC_SVCNAME}.pid"
 
 start_stop_daemon_args="--user ${LS_USER}:${LS_GROUP} \
 	--chdir ${LS_HOME}
@@ -38,7 +39,7 @@ checkconfig() {
 	fi
 
 	ebegin "Checking your configuration"
-	${command} ${command_args} --config.test_and_exit
+	${command} ${command_args} --path.logs "${LS_LOG_DIR}/configcheck" --config.test_and_exit
 	eend $? "Configuration error. Please fix your configuration files."
 }
 
@@ -55,11 +56,9 @@ start_pre() {
 	rc_ulimit="-n ${LS_OPEN_FILES}"
 
 	local d
-	for d in "${LS_INSTALL_DIR}/data" "$(dirname "${pidfile}")" "${LS_LOG_DIR}"; do
+	for d in "${LS_HOME}" "${LS_DATA_DIR}" "${LS_DATA_DIR}/queue" "${LS_DATA_DIR}/dead_letter_queue" "${LS_LOG_DIR}"; do
 		checkpath -d -o "${LS_USER}":"${LS_GROUP}" -m750 "$d"
-		chown -R "${LS_USER}":"${LS_GROUP}" "$d"
 	done
-
 }
 
 stop() {

@@ -1,0 +1,65 @@
+From fbc3111eec0b71d247d6588bf1f9397bae558a29 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Wed, 1 Jun 2016 00:06:12 +0200
+Subject: Minimal build system patching
+
+Bug: https://bugs.gentoo.org/584636
+---
+ Makefile.PL | 41 -----------------------------------------
+ 1 file changed, 41 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 97d88bf..e23dc89 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -163,47 +163,6 @@ EOC
+ 
+ package MY;
+ 
+-# FIXME: This is really a hack! Problem: Depending on the build system,
+-# we may or may not build and install the XS version.  If the XS version
+-# is being built, the directory blib/arch will be populated, if it is
+-# not being built, blib/arch will be empty.  Unfortunately, if blib/arch
+-# is not empty, *all* library files will be installed in the architecture
+-# dependent locations, if it is empty, they will be installed in the
+-# architecture independent tree.
+-#
+-# Unfortunately, ExtUtils::MakeMaker does not take care of uninstalling
+-# files from previous installations.  Consequently, we cannot determine
+-# which version of the library will be loaded, since this depends on the
+-# current value of @INC.
+-#
+-# The solution does not really make me happy.  The Makefile will be patched,
+-# so that instead of ExtUtils::Install a custom module MyInstall.pm will
+-# be used.  This custom module overwrites the subroutine that detects
+-# whether a directory is empty in ExtUtils::Install, and will lie if that
+-# directory happens to be "blib/arch".  This little hack effectively disables 
+-# the annoying behavior of ExtUtils::Install (and I sincerely hope that
+-# this is portable).
+-sub libscan 
+-{
+-	my ($self, $file) = @_;
+-
+-	return if 'MyInstall.pm' eq $file;
+-
+-	$self->SUPER::libscan ($file);	
+-}
+-
+-sub tools_other 
+-{
+-	my $self = shift;
+-
+-	my $fragment = $self->SUPER::tools_other (@_);
+-
+-	$fragment =~ s/^MOD_INSTALL\s*=\s*(.*?)-MExtUtils::Install
+-		/MOD_INSTALL =$1-I. -MMyInstall/msx;
+-
+-	return $fragment;
+-}
+-
+ package main;
+ 
+ my $name = $0;
+-- 
+2.14.3
+

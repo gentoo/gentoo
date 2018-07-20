@@ -1,5 +1,5 @@
---- SConstruct.orig
-+++ SConstruct
+--- a/SConstruct.orig
++++ b/SConstruct
 @@ -1,6 +1,7 @@
  EnsureSConsVersion(0, 96, 92)
  import sys
@@ -12,7 +12,7 @@
      env["TARFILE"] = env.Dir("#").abspath + "/glob2-" + env["VERSION"] + ".tar.gz"
      env["TARFLAGS"] = "-c -z"
      env.Alias("dist", env["TARFILE"])
-+    # Using suggestions for http://dev.gentoo.org/~vapier/scons-blows.txt
++    # Using suggestions for https://dev.gentoo.org/~vapier/scons-blows.txt
 +    if os.environ.has_key('CC'):
 +           env['CC'] = os.environ['CC']
 +    if os.environ.has_key('CXX'):

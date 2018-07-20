@@ -5,6 +5,10 @@
 	<email>bsd@gentoo.org</email>
 	<name>BSD Project</name>
 </maintainer>
+<maintainer type="project">
+	<email>prefix@gentoo.org</email>
+	<name>Prefix Project</name>
+</maintainer>
 <longdescription lang="en">
 libiconv is a standalone package which implements the iconv() related
 functions as glibc already embed. Libraries and applications needs it

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils scons-utils toolchain-funcs
+inherit desktop scons-utils toolchain-funcs
 
 DESCRIPTION="Space shoot-em-up game"
 HOMEPAGE="http://raptorv2.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/raptorv2/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="<media-libs/allegro-5

@@ -3,7 +3,7 @@
 
 EAPI=5
 
-DESCRIPTION="Programs for crystal structure determination from single-crystal diffraction data"
+DESCRIPTION="Crystal structure determination from single-crystal diffraction data"
 HOMEPAGE="http://shelx.uni-ac.gwdg.de/SHELX/"
 SRC_URI="
 	amd64? (

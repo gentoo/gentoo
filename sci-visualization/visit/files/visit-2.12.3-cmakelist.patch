@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2015-06-25 07:30:40.907149341 +0200
++++ b/CMakeLists.txt	2015-06-25 07:30:57.537148929 +0200
+@@ -991,7 +991,6 @@
+         DIRECTORY_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
+                               GROUP_READ GROUP_WRITE GROUP_EXECUTE
+                               WORLD_READ             WORLD_EXECUTE
+-        CONFIGURATIONS "" None Debug Release RelWithDebInfo MinSizeRel
+         FILES_MATCHING PATTERN "*.h"
+         PATTERN "*.hpp"
+         PATTERN ".svn" EXCLUDE

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ inherit eutils user
 
 MY_P="${P/_/-}"
 DESCRIPTION="High-performance interface between the MTA and content checkers"
-HOMEPAGE="http://www.ijs.si/software/amavisd/"
-SRC_URI="http://www.ijs.si/software/amavisd/${MY_P}.tar.gz"
+HOMEPAGE="https://www.ijs.si/software/amavisd/"
+SRC_URI="https://www.ijs.si/software/amavisd/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

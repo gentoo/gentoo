@@ -1,18 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# >=teamviewer-13 is amd64 native application without wine
+<net-misc/teamviewer-13
 # These are broken as reported by Halcy0n, Aug, 23, 2011
-net-misc/teamviewer
 dev-lang/rebol-bin
 
 games-action/brutal-legend
 games-action/hotline-miami
+games-action/trine-enchanted-edition
 games-action/trine2
 games-action/swordandsworcery
 games-action/beathazardultra
 games-action/solar2
 games-arcade/dynamitejack
-games-kids/crayon-physics
 games-misc/katawa-shoujo
 games-misc/papers-please
 games-rpg/dungeon-defenders
@@ -24,7 +25,7 @@ app-accessibility/mbrola
 app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
-=app-editors/emacs-18*
+app-editors/emacs:18
 app-emulation/crossover-bin
 app-emulation/genymotion-bin
 app-emulation/playonlinux
@@ -35,13 +36,8 @@ app-emulation/winetricks
 app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-lang/icc
-dev-lang/idb
-dev-lang/ifc
 dev-perl/Archive-Rar
-dev-python/skype4py
 dev-util/android-sdk-update-manager
-dev-util/android-studio
 dev-util/biew
 games-action/cs2d
 games-action/descent3
@@ -111,18 +107,9 @@ games-fps/ut2004-demo
 games-misc/little-inferno
 games-puzzle/hoh-bin
 games-roguelike/adom
-<games-roguelike/dwarf-fortress-0.43.0
 games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
 games-rpg/eschalon-book-1-demo
-games-rpg/nwmouse
-games-rpg/nwmovies
-games-rpg/nwn
-games-rpg/nwn-cep
-games-rpg/nwn-data
-games-rpg/nwn-penultima
-games-rpg/nwn-penultimarerolled
-games-rpg/nwn-shadowlordsdreamcatcherdemon
 games-server/etqw-ded
 games-server/nwn-ded
 games-server/ut2003-ded
@@ -138,12 +125,9 @@ games-strategy/smac
 games-strategy/spaz
 media-fonts/acroread-asianfonts
 media-sound/aucdtect
-media-sound/skype-call-recorder
 media-sound/ventrilo-server-bin
 media-video/binkplayer
 media-video/tsmuxer
-net-im/skype
-net-im/skypetab-ng
 net-misc/icaclient
 net-misc/ps3mediaserver
 net-print/cndrvcups-common-lb
@@ -151,13 +135,8 @@ net-print/cndrvcups-lb
 sci-biology/foldingathome
 sci-electronics/eagle
 sci-chemistry/cara-bin
-sci-chemistry/cyana
-sci-chemistry/icm
 sci-chemistry/mars
-sci-chemistry/xdsgui
 sci-chemistry/xdsstat-bin
 sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
-www-plugins/pipelight
 <sys-boot/grub-1.99

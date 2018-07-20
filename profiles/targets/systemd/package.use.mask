@@ -12,9 +12,7 @@ dev-libs/libusb static-libs
 # Pacho Ramos <pacho@gentoo.org> (29 May 2014)
 # upower support is not needed on setups running systemd, also
 # relies on old upower (#508920)
-# Add telepathy-mission-control because of the same logic.
 >=mate-base/mate-session-manager-1.8.1-r1 upower
->=net-im/telepathy-mission-control-5.16.2 upower
 
 # 'static-libs' support on sys-apps/systemd is not provided
 virtual/libgudev static-libs

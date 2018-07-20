@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils opam
 
 DESCRIPTION="OCaml module to access monotonic wall-clock time"
 HOMEPAGE="http://erratique.ch/software/mtime https://github.com/dbuenzli/mtime"
@@ -18,7 +18,6 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt]
 	javascript? ( dev-ml/js_of_ocaml:= )
 "
 DEPEND="${RDEPEND}
-	dev-ml/opam
 	dev-ml/topkg
 	dev-ml/ocamlbuild
 	dev-ml/findlib"
@@ -32,13 +31,4 @@ src_compile() {
 
 src_test() {
 	ocaml pkg/pkg.ml test || die
-}
-
-src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		${PN}.install || die
-	dodoc CHANGES.md README.md
 }

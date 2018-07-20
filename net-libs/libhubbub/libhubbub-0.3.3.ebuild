@@ -11,7 +11,7 @@ HOMEPAGE="http://www.netsurf-browser.org/projects/hubbub/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~m68k-mint"
+KEYWORDS="amd64 arm ~ppc x86 ~m68k-mint"
 IUSE="doc test"
 
 RDEPEND=">=dev-libs/libparserutils-0.2.1-r1[static-libs?,${MULTILIB_USEDEP}]
@@ -23,4 +23,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( README docs/{Architecture,Macros,Todo,Treebuilder,Updated} )
 
-#RESTRICT=test
+src_prepare() {
+	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
+		-i test/tree2.c || die
+
+	netsurf_src_prepare
+}

@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils llvm python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
-	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -51,7 +51,7 @@ src_prepare() {
 	eapply "${FILESDIR}/4.0.1/0002-test-Use-LLD-specific-binary-library-dirs-when-build.patch"
 	eapply "${FILESDIR}/4.0.1/0003-test-Fix-zlib-cond-when-building-stand-alone-clean-u.patch"
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A module used to generate random data"
 
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 sparc x86"
 IUSE="test"
 
 RDEPEND="
@@ -26,9 +26,9 @@ DEPEND="
 "
 
 src_prepare() {
-	sed -i -e '/jsonmeta;/d'        \
-                -e '/githubmeta;/d'     \
-                Makefile.PL || die
+	sed -i -e '/jsonmeta;/d'	\
+			-e '/githubmeta;/d'	\
+				Makefile.PL || die
 
 	sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL ||
 		die "Can't patch Makefile.PL for 5.26 dot-in-inc"

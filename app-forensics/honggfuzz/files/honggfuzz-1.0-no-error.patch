@@ -1,7 +1,0 @@
-diff --git a/Makefile b/Makefile
-index 378df7d..75a6b71 100644
---- a/Makefile
-+++ b/Makefile
-@@ -30 +30 @@ CC_SRCS := display.c log.c util.c files.c hfuzz_cc/hfuzz-clang.c
--COMMON_CFLAGS := -D_GNU_SOURCE -Wall -Werror -Wframe-larger-than=131072
-+COMMON_CFLAGS := -D_GNU_SOURCE -Wall -Wframe-larger-than=131072

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,16 +9,16 @@ SERIFV="2.000R"
 CODEV="2.030R-ro/1.050R-it"
 
 DESCRIPTION="Adobe's open source typeface family designed for UI environments"
-HOMEPAGE="http://adobe-fonts.github.io/source-sans-pro
-	http://adobe-fonts.github.io/source-serif-pro
-	http://adobe-fonts.github.io/source-code-pro"
+HOMEPAGE="https://adobe-fonts.github.io/source-sans-pro/
+	https://adobe-fonts.github.io/source-serif-pro/
+	https://adobe-fonts.github.io/source-code-pro/"
 SRC_URI="https://github.com/adobe-fonts/source-sans-pro/archive/${SANSV}.tar.gz -> source-sans-pro-${PV}.tar.gz
 	https://github.com/adobe-fonts/source-serif-pro/archive/${SERIFV}.tar.gz -> source-serif-pro-${PV}.tar.gz
 	https://github.com/adobe-fonts/source-code-pro/archive/${CODEV}.tar.gz -> source-code-pro-${PV}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE="cjk"
 
 RDEPEND="media-libs/fontconfig

@@ -6,12 +6,12 @@ EAPI=6
 inherit multilib-build
 
 DESCRIPTION="Meta-ebuild for clang runtime libraries"
-HOMEPAGE="http://clang.llvm.org/"
+HOMEPAGE="https://clang.llvm.org/"
 SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="${PV%_*}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+compiler-rt libcxx openmp +sanitize"
 
 RDEPEND="

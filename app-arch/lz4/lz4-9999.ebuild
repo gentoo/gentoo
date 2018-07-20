@@ -19,8 +19,6 @@ HOMEPAGE="https://github.com/lz4/lz4"
 
 LICENSE="BSD-2 GPL-2"
 # https://abi-laboratory.pro/tracker/timeline/lz4/
-# note: abi-tracker is most likely wrong about 1.7.3 changing ABI,
-# the maintainer is looking into fixing that
 SLOT="0/r131"
 IUSE="static-libs"
 

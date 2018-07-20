@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,6 +19,7 @@ IUSE=""
 DEPEND=">=dev-python/jaxml-3.01[${PYTHON_USEDEP}]
 	|| (
 		( >=sys-apps/portage-2.3.0_rc1[${PYTHON_USEDEP}] app-portage/repoman[${PYTHON_USEDEP}] )
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
 		<sys-apps/portage-2.3.0_rc1[${PYTHON_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"

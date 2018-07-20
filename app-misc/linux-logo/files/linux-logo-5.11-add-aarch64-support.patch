@@ -1,0 +1,13 @@
+diff -Nuar a/libsysinfo-0.2.2/Linux/Makefile b/libsysinfo-0.2.2/Linux/Makefile
+--- a/libsysinfo-0.2.2/Linux/Makefile	2010-02-15 18:15:07.000000000 +0100
++++ b/libsysinfo-0.2.2/Linux/Makefile	2018-01-03 20:16:48.299998620 +0100
+@@ -6,6 +6,9 @@
+ ifneq (,$(findstring arm,$(ARCH)))
+    ARCH := arm
+ endif
++ifneq (,$(findstring aarch64,$(ARCH)))
++   ARCH := arm
++endif
+ ifneq (,$(findstring sh,$(ARCH)))
+    ARCH := sh
+ endif

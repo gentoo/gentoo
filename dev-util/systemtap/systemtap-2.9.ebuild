@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit linux-info autotools eutils python-single-r1
 
 DESCRIPTION="A linux trace/probe tool"
-HOMEPAGE="http://www.sourceware.org/systemtap/"
-SRC_URI="http://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
+HOMEPAGE="https://www.sourceware.org/systemtap/"
+SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -46,7 +46,6 @@ src_prepare() {
 		Makefile.am \
 		staprun/Makefile.am \
 		stapdyn/Makefile.am \
-		buildrun.cxx \
 		testsuite/systemtap.unprivileged/unprivileged_probes.exp \
 		testsuite/systemtap.unprivileged/unprivileged_myproc.exp \
 		testsuite/systemtap.base/stmt_rel_user.exp \

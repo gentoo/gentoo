@@ -5,10 +5,8 @@
     <email>zerochaos@gentoo.org</email>
     <name>Rick Farina</name>
   </maintainer>
-  <longdescription lang="en">
-  </longdescription>
   <upstream>
     <remote-id type="github">vjoel/bit-struct</remote-id>
-    <remote-id type="rubygems">sshkey</remote-id>
+    <remote-id type="rubygems">bit-struct</remote-id>
   </upstream>
 </pkgmetadata>

@@ -3,20 +3,18 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
-	https://pypi.python.org/pypi/nose
-	http://readthedocs.org/docs/nose/
+	https://pypi.org/project/nose/
+	https://nose.readthedocs.io/en/latest/
 	https://github.com/nose-devs/nose"
 SRC_URI=""
-EGIT_REPO_URI="
-	git://github.com/nose-devs/${PN}.git
-	https://github.com/nose-devs/${PN}.git"
+EGIT_REPO_URI="https://github.com/nose-devs/${PN}.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

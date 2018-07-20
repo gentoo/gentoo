@@ -1,5 +1,5 @@
---- makemake.orig	2012-07-05 14:08:30.210815190 -0700
-+++ makemake	2012-07-05 14:26:28.353381906 -0700
+--- a/makemake	2012-07-05 14:08:30.210815190 -0700
++++ b/makemake	2012-07-05 14:26:28.353381906 -0700
 @@ -73,7 +73,7 @@
  
  # List the default make targets.
@@ -28,7 +28,7 @@
  if (echo $DRIV_LIST | grep -s tkdriv 2>&1 1>/dev/null); then
 -  DEFAULT_TARGETS="$DEFAULT_TARGETS libtkpgplot.a pgtkdemo pgtkdemo.tcl"
 -  INSTALL_LIST="$INSTALL_LIST libtkpgplot.a tkpgplot.h"
-+  DEFAULT_TARGETS="$DEFAULT_TARGETS libtkpgplot.so"
++  DEFAULT_TARGETS="$DEFAULT_TARGETS libtkpgplot.a"
 +  INSTALL_LIST="$INSTALL_LIST libtkpgplot.a tkpgplot.h"
  fi
  

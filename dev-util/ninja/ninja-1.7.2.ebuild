@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
@@ -95,8 +95,9 @@ src_test() {
 src_install() {
 	dodoc README HACKING.md
 	if use doc; then
-		dohtml -r doc/doxygen/html/*
-		dohtml doc/manual.html
+		docinto html
+		dodoc -r doc/doxygen/html/.
+		dodoc doc/manual.html
 	fi
 	dobin ninja
 

@@ -9,7 +9,7 @@ HOMEPAGE="http://icculus.org/~chunky/ut/aaut/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="|| (

@@ -1,0 +1,56 @@
+From: Markus Koschany <apo@debian.org>
+Date: Wed, 16 Aug 2017 23:25:30 +0200
+Subject: joystick axis
+
+Bug-Debian: https://bugs.debian.org/592777
+Forwarded: http://m.peponas.free.fr/gngb/news.html
+Origin: http://m.peponas.free.fr/gngb/download/memory.c.diff
+---
+ src/memory.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/src/memory.c b/src/memory.c
+index fd06738..9eaef1f 100644
+--- a/src/memory.c
++++ b/src/memory.c
+@@ -67,7 +67,11 @@ Uint8 ram_mask;
+ MEM_READ_ENTRY mem_read_tab[0x10];
+ MEM_WRITE_ENTRY mem_write_tab[0x10];
+ 
++/* doesn't work for negative joy_?_min */
++/*
+ Sint16 joy_x_min=0;joy_x_max=0;joy_y_min=0;joy_y_max=0;
++*/
++Sint16 joy_x_min=-32767;joy_x_max=32767;joy_y_min=-32767;joy_y_max=32767;
+ 
+ void (*select_rom_page)(Uint16 adr,Uint8 v);
+ void (*select_ram_page)(Uint16 adr,Uint8 v);
+@@ -755,15 +759,28 @@ extern __inline__ void update_gb_pad(void) {
+       Sint16 joy_x_pos=joy_axis[jmap[PAD_LEFT]];
+       Sint16 joy_y_pos=joy_axis[jmap[PAD_UP]];
+ 
++			/* unnecessary if joy_?_min and joy_?_max are minimum and maximum
++			 * values of Sint16
+       if (joy_x_pos>joy_x_max) joy_x_max=joy_x_pos;
+       if (joy_x_pos<joy_x_min) joy_x_min=joy_x_pos;
+       if (joy_y_pos>joy_y_max) joy_y_max=joy_y_pos;
+       if (joy_y_pos<joy_y_min) joy_y_min=joy_y_pos;
++      */
+ 
++			/* this doesn't work when joy_x_min or joy_y_min < 0 (mid should be ~0),
++			 * because ((+max) - (-min)) / 2 = ((+max) + (+min)) / 2
+       Sint16 joy_x_mid=(joy_x_max-joy_x_min) / 2;
+       Sint16 joy_y_mid=(joy_y_max-joy_y_min) / 2;
++      */
++      Sint16 joy_x_mid=(joy_x_max+joy_x_min) >> 1;
++      Sint16 joy_y_mid=(joy_y_max+joy_y_min) >> 1;
++      /* this doesn't work as joy_x_mid or joy_y_mid approaches 0
+       Sint16 joy_x_qua=joy_x_mid / 2;
+       Sint16 joy_y_qua=joy_y_mid / 2;
++      */
++      /* (difference) / 100 = 1% of possible values */
++      Sint16 joy_x_qua=(joy_x_max - joy_x_min) / 100;
++      Sint16 joy_y_qua=(joy_y_max - joy_y_min) / 100;
+ 
+       if ((joy_x_pos<(joy_x_mid-joy_x_qua)) || (key[kmap[PAD_LEFT]])) gb_pad|=0x20;
+       if ((joy_x_pos>(joy_x_mid+joy_x_qua)) || (key[kmap[PAD_RIGHT]])) gb_pad|=0x10;

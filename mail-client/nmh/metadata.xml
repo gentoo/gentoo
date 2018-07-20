@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>in-gentoo@baka.org</email>
-<name>Seth Robertson</name>
-<description>Maintainer</description>
-</maintainer>
-<maintainer type="project">
-<email>proxy-maint@gentoo.org</email>
-<name>Proxy Maintainers</name>
-</maintainer>
-<longdescription lang="en">
-</longdescription>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
 </pkgmetadata>

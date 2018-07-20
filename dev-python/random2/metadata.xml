@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grozin@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+	Python-2.7's random module ported to python3.
+	</longdescription>
+</pkgmetadata>

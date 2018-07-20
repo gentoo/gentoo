@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 ESVN_REPO_URI="svn://anonsvn.kde.org/home/kde/trunk/l10n-support/pology"
 PYTHON_COMPAT=( python2_7 )
@@ -40,6 +40,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 MAKEOPTS+=" -j1"
 
 src_prepare() {
+	cmake-utils_src_prepare
 	python_fix_shebang .
 }
 

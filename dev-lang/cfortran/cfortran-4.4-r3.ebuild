@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,14 +8,14 @@ inherit eutils
 DEB_PR="14"
 
 DESCRIPTION="Header file allowing to call Fortran routines from C and C++"
-HOMEPAGE="http://www-zeus.desy.de/~burow/cfortran/"
+HOMEPAGE="https://www-zeus.desy.de/~burow/cfortran/"
 SRC_URI="
 	mirror://debian/pool/main/c/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/c/${PN}/${PN}_${PV}-${DEB_PR}.diff.gz"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="examples"
 
 src_unpack() {

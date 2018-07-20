@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,10 +9,8 @@ if [[ ${PV} = 9999* ]]; then
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/multicoreware/x265"
 else
-	SRC_URI="
-		https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz
-		http://ftp.videolan.org/pub/videolan/x265/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	SRC_URI="https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
@@ -20,7 +18,7 @@ HOMEPAGE="http://x265.org/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/116"
+SLOT="0/161"
 IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"

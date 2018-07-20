@@ -13,8 +13,8 @@ inherit distutils-r1 eutils user webapp
 MY_PV=${PV/_p/.post}
 MY_P=Trac-${MY_PV}
 
-DESCRIPTION="Trac is a minimalistic web-based project management, wiki and bug/issue tracking system"
-HOMEPAGE="http://trac.edgewall.com/ https://pypi.python.org/pypi/Trac"
+DESCRIPTION="Enhanced wiki and issue tracking system for software development projects"
+HOMEPAGE="http://trac.edgewall.com/ https://pypi.org/project/Trac/"
 SRC_URI="http://ftp.edgewall.com/pub/trac/${MY_P}.tar.gz"
 
 LICENSE="BSD"

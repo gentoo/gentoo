@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="a dockapp for monitoring CPU usage with a LCD display"
-HOMEPAGE="http://www.dockapps.net/wmcpuload"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmcpuload"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

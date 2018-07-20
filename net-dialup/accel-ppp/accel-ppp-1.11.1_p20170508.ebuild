@@ -7,7 +7,7 @@ inherit cmake-utils flag-o-matic linux-info linux-mod
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
 HOMEPAGE="http://accel-ppp.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

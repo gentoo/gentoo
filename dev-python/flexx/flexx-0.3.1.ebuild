@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,9 +9,9 @@ inherit distutils-r1
 
 DESCRIPTION="Pure Python toolkit for creating GUI's using web technology"
 HOMEPAGE="
-	http://flexx.readthedocs.org
+	https://flexx.readthedocs.org
 	https://github.com/zoofio/flexx
-	http://pypi.python.org/pypi/flexx"
+	https://pypi.org/project/flexx/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"

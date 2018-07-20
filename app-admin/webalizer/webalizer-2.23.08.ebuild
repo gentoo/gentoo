@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # uses webapp.eclass to create directories with right permissions
@@ -27,11 +27,11 @@ SRC_URI="ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
 	${GEODB_URL}/webalizer-geodb-${GEODB_DATE}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
 IUSE="bzip2 xtended geoip nls"
 SLOT="0"
 
-DEPEND=">=sys-libs/db-4.2
+DEPEND=">=sys-libs/db-4.2:*
 	>=sys-libs/zlib-1.1.4
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/gd-1.8.3[png]
@@ -46,7 +46,7 @@ pkg_setup() {
 
 	# USE=nls has no real meaning if LINGUAS isn't set
 	if use nls && [[ -z "${LINGUAS}" ]]; then
-		ewarn "you must set LINGUAS in /etc/make.conf"
+		ewarn "you must set LINGUAS in /etc/portage/make.conf"
 		ewarn "if you want to USE=nls"
 		die "please either set LINGUAS or do not use nls"
 	fi
@@ -119,7 +119,7 @@ pkg_postinst() {
 		ewarn "Due to the limitations of this package, it was built"
 		ewarn "only with ${LINGUAS:0:2} support. If this is not what"
 		ewarn "you intended, please place the language you desire"
-		ewarn "_first_ in the list of LINGUAS in /etc/make.conf"
+		ewarn "_first_ in the list of LINGUAS in /etc/portage/make.conf"
 		ewarn
 	fi
 

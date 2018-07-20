@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes"
+DESCRIPTION="pKa-value prediction of ionizable groups in protein and protein-ligand complexes"
 HOMEPAGE="http://propka.ki.ku.dk/"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 

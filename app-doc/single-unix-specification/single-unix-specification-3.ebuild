@@ -1,5 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="The Single UNIX Specification, Version 3, 2004 Edition (8 Volumes)"
 HOMEPAGE="http://www.opengroup.org/bookstore/catalog/t041.htm"

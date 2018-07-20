@@ -3,16 +3,16 @@
 
 EAPI=5
 
-ESVN_REPO_URI="http://llvm.org/svn/llvm-project/libcxx/trunk"
+ESVN_REPO_URI="https://llvm.org/svn/llvm-project/libcxx/trunk"
 
 [ "${PV%9999}" != "${PV}" ] && SCM="subversion" || SCM=""
 
 inherit ${SCM} flag-o-matic toolchain-funcs multilib multilib-minimal
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
-HOMEPAGE="http://libcxx.llvm.org/"
+HOMEPAGE="https://libcxx.llvm.org/"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz"
+	SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz"
 	S="${WORKDIR}/${P}.src"
 else
 	SRC_URI=""
@@ -21,7 +21,7 @@ fi
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~mips ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 else
 	KEYWORDS=""
 fi

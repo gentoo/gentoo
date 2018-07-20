@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 WX_GTK_VER="3.0"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit mercurial python-single-r1 wxwidgets versionator cmake-utils
 
@@ -34,7 +34,7 @@ CDEPEND="
 	media-libs/libpng:0=
 	media-libs/openexr:=
 	media-libs/tiff:0
-	>=media-libs/vigra-1.9.0[openexr]
+	>=media-libs/vigra-1.11.0[openexr]
 	sci-libs/fftw:3.0=
 	sys-libs/zlib
 	virtual/glu
@@ -60,6 +60,7 @@ S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+	setup-wxwidgets
 }
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -47,8 +47,9 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	tc-export_build_env BUILD_CC
 	tc-export AR CC RANLIB
+	local BUILD_CC
+	tc-export_build_env BUILD_CC
 
 	default
 }

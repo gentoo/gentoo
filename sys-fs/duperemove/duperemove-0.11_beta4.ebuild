@@ -13,7 +13,7 @@ SRC_URI="https://github.com/markfasheh/duperemove/archive/v${PV/_/.}.tar.gz -> $
 # includes code from polarssl (GPL-2+)
 LICENSE="GPL-2 GPL-2+ BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -22,6 +22,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${P/_/.}
+
+PATCHES=( "${FILESDIR}/${P}-sysmacros.patch" )
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Wall"

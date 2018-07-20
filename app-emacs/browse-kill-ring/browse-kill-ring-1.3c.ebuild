@@ -6,7 +6,7 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="An improved interface to kill-ring"
-HOMEPAGE="http://www.emacswiki.org/emacs/BrowseKillRing
+HOMEPAGE="https://www.emacswiki.org/emacs/BrowseKillRing
 	https://github.com/T-J-Teru/browse-kill-ring"
 # taken from upstream git repo
 SRC_URI="mirror://gentoo/${P}.el.bz2"

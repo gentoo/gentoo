@@ -11,7 +11,7 @@ ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/trunk/${PN}-wip"
 inherit eutils linux-info perl-module python-r1 base subversion autotools
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
-HOMEPAGE="http://g15daemon.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
 [[ ${PV} = *9999* ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

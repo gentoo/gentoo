@@ -7,7 +7,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( ChangeLog README.markdown )
 
-USE_PHP="php5-6 php7-0"
+USE_PHP="php5-6 php7-0 php7-1 php7-2"
 
 inherit php-ext-pecl-r3
 
@@ -27,7 +27,11 @@ DEPEND="php_targets_php5-6? (
 		igbinary? ( dev-php/igbinary[php_targets_php5-6?] )
 	)"
 RDEPEND="${DEPEND}"
-PDEPEND="php_targets_php7-0? ( dev-php/pecl-memcached:7[php_targets_php7-0] )"
+PDEPEND="
+php_targets_php7-0? ( dev-php/pecl-memcached:7[php_targets_php7-0] )
+php_targets_php7-1? ( dev-php/pecl-memcached:7[php_targets_php7-1] )
+php_targets_php7-2? ( dev-php/pecl-memcached:7[php_targets_php7-2] )
+"
 
 src_prepare(){
 	if use php_targets_php5-6 ; then

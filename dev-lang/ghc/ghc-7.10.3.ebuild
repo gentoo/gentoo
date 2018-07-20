@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,17 +24,17 @@ HOMEPAGE="http://www.haskell.org/ghc/"
 arch_binaries=""
 
 # sorted!
-arch_binaries="$arch_binaries alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-${PV}-alpha.tbz2 )"
-#arch_binaries="$arch_binaries arm? ( http://code.haskell.org/~slyfox/ghc-arm/ghc-bin-${PV}-arm.tbz2 )"
-arch_binaries="$arch_binaries amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-${PVR}-amd64.tbz2 )"
-arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64.tbz2 )"
-arch_binaries="$arch_binaries ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-${PV}-ppc.tbz2 )"
-arch_binaries="$arch_binaries ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-${PV}-ppc64.tbz2 )"
-arch_binaries="$arch_binaries sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-${PV}-sparc.tbz2 )"
-arch_binaries="$arch_binaries x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-${PVR}-x86.tbz2 )"
+arch_binaries="$arch_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
+#arch_binaries="$arch_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-arm.tbz2 )"
+arch_binaries="$arch_binaries amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PVR}-amd64.tbz2 )"
+arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64.tbz2 )"
+arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
+arch_binaries="$arch_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
+arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
+arch_binaries="$arch_binaries x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PVR}-x86.tbz2 )"
 
 # various ports:
-#arch_binaries="$arch_binaries x86-fbsd? ( http://code.haskell.org/~slyfox/ghc-x86-fbsd/ghc-bin-${PV}-x86-fbsd.tbz2 )"
+#arch_binaries="$arch_binaries x86-fbsd? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86-fbsd.tbz2 )"
 
 # 0 - yet
 yet_binary() {
@@ -80,30 +80,32 @@ IUSE+=" elibc_glibc" # system stuff
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	>=dev-libs/gmp-5:=
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
 "
-# gentoo binaries are built against ncurses-5
-RDEPEND+="
-	binary? (
-		|| (
-			sys-libs/ncurses:0/5
-			sys-libs/ncurses:5/5
-		)
-	)
+
+# This set of dependencies is needed to run
+# prebuilt ghc. We specifically avoid ncurses
+# dependency with:
+#    utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING
+PREBUILT_BINARY_DEPENDS="
+	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
+"
+# This set of dependencies is needed to install
+# ghc[binary] in system. terminfo package is linked
+# against ncurses.
+PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
+	sys-libs/ncurses:5/5
 "
 
-# force dependency on >=gmp-5, even if >=gmp-4.1 would be enough. this is due to
-# that we want the binaries to use the latest versioun available, and not to be
-# built against gmp-4
+RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
-# similar for glibc. we have bootstrapped binaries against glibc-2.17
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
 		>=dev-libs/libxslt-1.1.2 )
-	!ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )"
+	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
 
 PDEPEND="!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )"
 
@@ -322,17 +324,6 @@ relocate_ghc() {
 	relocate_path "/usr" "${WORKDIR}/usr" "$gp_back"
 
 	if use prefix; then
-		# and insert LD_LIBRARY_PATH entry to EPREFIX dir tree
-		# TODO: add the same for darwin's CHOST and it's DYLD_
-		local new_ldpath='LD_LIBRARY_PATH="'${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)'${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"\nexport LD_LIBRARY_PATH'
-		sed -i -e '2i'"$new_ldpath" \
-			"${WORKDIR}/usr/bin/$(cross)ghc-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/$(cross)ghci-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/$(cross)ghc-pkg-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/$(cross)hsc2hs" \
-			"${WORKDIR}/usr/bin/$(cross)runghc-${GHC_PV}" \
-			"$gp_back" \
-			|| die "Adding LD_LIBRARY_PATH for wrappers failed"
 		hprefixify "${bin_libpath}"/${PN}*/settings
 	fi
 

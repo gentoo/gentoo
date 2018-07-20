@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-	  Apache module to limit the maximum number of simultaneous
-	  connections per IP address. Allows inclusion and exclusion of files
-	  based on MIME type.
+		Apache module to limit the maximum number of simultaneous
+		connections per IP address. Allows inclusion and exclusion of files
+		based on MIME type.
 	</longdescription>
 </pkgmetadata>

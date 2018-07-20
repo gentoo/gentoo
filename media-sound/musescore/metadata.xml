@@ -9,4 +9,7 @@
 		<remote-id type="sourceforge">mscore</remote-id>
 		<remote-id type="github">musescore/MuseScore</remote-id>
 	</upstream>
+	<use>
+		<flag name="portmidi">Enable support for building against <pkg>media-libs/portmidi</pkg></flag>
+	</use>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST="-Ilib test"
 RUBY_FAKEGEM_TASK_DOC="doc"
@@ -23,11 +23,8 @@ SRC_URI="https://github.com/nahi/httpclient/archive/v${PV}.tar.gz -> ${P}.tgz"
 LICENSE="Ruby"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
-
-RDEPEND="${RDEPEND}
-	!dev-ruby/http-access2"
 
 ruby_add_rdepend "virtual/ruby-ssl"
 
@@ -54,6 +51,12 @@ all_ruby_prepare() {
 	# Skip tests using rack-ntlm which is not packaged. Weirdly these
 	# only fail on jruby.
 	rm test/test_auth.rb || die
+
+	# Skip test failing due to hard-coded expired certificate
+	sed -i -e '/test_verification_without_httpclient/,/^  end/ s:^:#:' test/test_ssl.rb || die
+
+	# Skip test depending on obsolete and vulnerable SSLv3
+	sed -i -e '/test_no_sslv3/,/^  end/ s:^:#:' test/test_ssl.rb || die
 }
 
 each_ruby_test() {

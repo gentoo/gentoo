@@ -1,5 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl"
 HOMEPAGE="https://www.gentoo.org/proj/en/perl/"

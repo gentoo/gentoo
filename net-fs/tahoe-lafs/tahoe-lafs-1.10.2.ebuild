@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,8 +12,8 @@ MY_PN="allmydata-tahoe"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Secure, decentralized, data store"
-HOMEPAGE="http://tahoe-lafs.org/trac/tahoe-lafs"
-SRC_URI="http://tahoe-lafs.org/source/tahoe-lafs/releases/${MY_P}.tar.bz2"
+HOMEPAGE="https://tahoe-lafs.org/trac/tahoe-lafs"
+SRC_URI="https://tahoe-lafs.org/source/tahoe-lafs/releases/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

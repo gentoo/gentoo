@@ -1,0 +1,11 @@
+--- a/build.xml
++++ b/build.xml
+@@ -505,7 +505,7 @@
+ 	</target>
+ 
+ 	<target name="build"
+-		depends="init,retrieve,setup,compile,test"
++		depends="init,retrieve,setup,compile"
+ 		description="build the jEdit JAR-file with full debug-information">
+ 		<mkdir dir="${jar.location}"/>
+ 		<jar destfile="${jar.location}/${jar.filename}"

@@ -1,13 +1,21 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-SVCNAME=etcd
-PIDPATH=/var/run/${SVCNAME}
-PIDFILE=${PIDPATH}/${SVCNAME}.pid
-LOGPATH=/var/log/${SVCNAME}
-DATADIR=/var/lib/${SVCNAME}
-USER=$SVCNAME
+pidfile=/run/${RC_SVCNAME}.pid
+LOGPATH=/var/log/${RC_SVCNAME}
+DATADIR=/var/lib/${RC_SVCNAME}
+command_user=${RC_SVCNAME}
+command=/usr/bin/etcd
+command_args="
+	-name=${ETCD_NAME}
+	-data-dir=${ETCD_DATA_DIR}
+	${ETCD_OPTS}"
+command_background=true
+start_stop_daemon_args="
+	--chdir ${ETCD_DATA_DIR}
+	-1 ${LOGPATH}/${RC_SVCNAME}.log
+	-2 ${LOGPATH}/${RC_SVCNAME}.err"
 
 depend() {
 	need net
@@ -15,39 +23,13 @@ depend() {
 	after bootmisc
 }
 
-start() {
-	if [ ! -d "$PIDPATH" ] ; then
-		mkdir -p "$PIDPATH"
-		chown $USER:$USER "$PIDPATH"
+start_pre() {
+	if [ ! -d "${LOGPATH}" ] ; then
+		mkdir -p "${LOGPATH}"
+		chown "${command_user}:${command_user}" "${LOGPATH}"
 	fi
-	if [ ! -d "$LOGPATH" ] ; then
-		mkdir -p "$LOGPATH"
-		chown $USER:$USER "$LOGPATH"
+	if [ ! -d "${ETCD_DATA_DIR}" ] ; then
+		mkdir -p "${ETCD_DATA_DIR}"
+		chown "${command_user}:${command_user}" "${ETCD_DATA_DIR}"
 	fi
-	if [ ! -d "$ETCD_DATA_DIR" ] ; then
-		mkdir -p "$ETCD_DATA_DIR"
-		chown $USER:$USER "$ETCD_DATA_DIR"
-	fi
-
-	ebegin "Starting $SVCNAME"
-	start-stop-daemon --start \
-		--pidfile "$PIDFILE" \
-		--user $USER \
-		--chdir "$ETCD_DATA_DIR" \
-		-1 "$LOGPATH/$SVCNAME.log" \
-		-2 "$LOGPATH/$SVCNAME.err" \
-		--background \
-		--make-pidfile \
-		--exec /usr/bin/etcd -- \
-			-name=$ETCD_NAME \
-			-data-dir="$ETCD_DATA_DIR" \
-			$ETCD_OPTS
-	eend $? "Failed to start $SVCNAME"
-}
-
-stop() {
-	ebegin "Stopping $SVCNAME"
-	start-stop-daemon --stop --pidfile $PIDFILE
-	eend $? "Failed to stop $SVCNAME"
-	rm -f "$PIDFILE"
 }

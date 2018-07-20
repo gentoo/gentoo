@@ -1,5 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 #ECVS_SERVER="cvs.sourceforge.net:/cvsroot/enlightenment"
 ECVS_SERVER="anoncvs.enlightenment.org:/var/cvs/e"
@@ -16,8 +18,8 @@ KEYWORDS=""
 IUSE="imlib cpu_flags_x86_mmx pcre"
 
 RDEPEND="!sci-astronomy/ast
+	x11-base/xorg-proto
 	x11-libs/libXt
-	x11-proto/xproto
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11

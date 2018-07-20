@@ -6,10 +6,10 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <longdescription>
-		This package contains regular expressions for the following XML tokens:
-		BaseChar, Ideographic, Letter, Digit, Extender, CombiningChar, NameChar,
-		EntityRef, CharRef, Reference, Name, NmToken, and AttValue.
-	</longdescription>
+    This package contains regular expressions for the following XML tokens:
+    BaseChar, Ideographic, Letter, Digit, Extender, CombiningChar, NameChar,
+    EntityRef, CharRef, Reference, Name, NmToken, and AttValue.
+  </longdescription>
   <upstream>
     <remote-id type="cpan">XML-RegExp</remote-id>
     <remote-id type="cpan-module">XML::RegExp</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,11 +53,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.50.1:*
 	sys-devel/gettext:*
-	x11-proto/randrproto:0
-	x11-proto/scrnsaverproto:0
-	x11-proto/xextproto:0
-	x11-proto/xf86miscproto:0
-	virtual/pkgconfig:*"
+	virtual/pkgconfig:*
+	x11-base/xorg-proto"
 
 src_configure() {
 	mate_src_configure \
@@ -86,7 +83,7 @@ src_install() {
 
 	# Non PAM users will need this suid to read the password hashes.
 	# OpenPAM users will probably need this too when
-	# http://bugzilla.gnome.org/show_bug.cgi?id=370847
+	# https://bugzilla.gnome.org/show_bug.cgi?id=370847
 	# is fixed.
 	if ! use pam ; then
 		fperms u+s /usr/libexec/mate-screensaver-dialog

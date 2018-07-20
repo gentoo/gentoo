@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit linux-info
 
 DESCRIPTION="Command line tool to create/retrieve/delete accounting objects in NetFilter"
-HOMEPAGE="http://netfilter.org/projects/nfacct"
-SRC_URI="http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+HOMEPAGE="https://www.netfilter.org/projects/nfacct/"
+SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

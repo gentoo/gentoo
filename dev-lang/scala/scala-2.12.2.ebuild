@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -135,7 +135,7 @@ src_prepare() {
 		done
 
 		# gentoo patch (by gienah) to stop it calling git log in the build
-		eapply "${FILESDIR}/${P}-no-git.patch"
+		eapply "${FILESDIR}/${PN}-2.12.2-no-git.patch"
 
 		local SBT_PVR="$(java-config --query=PVR --package=sbt)"
 		sed -e "s@sbt.version=0.13.11@sbt.version=${SBT_PVR}@" \

@@ -1,11 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=5
 
 inherit cmake-utils
 
 DESCRIPTION="Client library to access metadata of mp3/vorbis/CD media"
-HOMEPAGE="http://musicbrainz.org/"
+HOMEPAGE="https://musicbrainz.org/"
 SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
@@ -26,3 +27,10 @@ CMAKE_IN_SOURCE_BUILD=true
 DOCS="README.txt NEWS.txt AUTHORS.txt"
 
 PATCHES=( "${FILESDIR}/${PN}-3.0.2-gcc44.patch" )
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake-utils_use_find_package test CppUnit)
+	)
+	cmake-utils_src_configure
+}

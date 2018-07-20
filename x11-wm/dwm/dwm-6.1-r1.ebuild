@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit savedconfig toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
-HOMEPAGE="http://dwm.suckless.org/"
-SRC_URI="http://dl.suckless.org/${PN}/${P}.tar.gz"
+HOMEPAGE="https://dwm.suckless.org/"
+SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="xinerama"
 
 RDEPEND="
@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	xinerama? ( x11-proto/xineramaproto )
+	xinerama? ( x11-base/xorg-proto )
 "
 
 src_prepare() {

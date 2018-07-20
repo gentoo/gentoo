@@ -6,6 +6,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">taku910/zinnia</remote-id>
 		<remote-id type="sourceforge">zinnia</remote-id>
 	</upstream>
 </pkgmetadata>

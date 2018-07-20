@@ -1,29 +1,27 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit libtool multilib udev
+EAPI=6
 
-DESCRIPTION="a C library and API for communicating with the Creative Nomad JukeBox digital audio player"
+inherit libtool udev
+
+DESCRIPTION="Library for communicating with the Creative Nomad JukeBox digital audio player"
 HOMEPAGE="http://libnjb.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
 IUSE="doc static-libs"
 
 RDEPEND="virtual/libusb:0"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
-DOCS="AUTHORS ChangeLog* FAQ HACKING README"
+PATCHES=( "${FILESDIR}"/${P}-exclude-samples.patch )
 
 src_prepare() {
-	sed -i \
-		-e 's:SUBDIRS = src sample doc:SUBDIRS = src doc:' \
-		Makefile.in || die
-
+	default
 	elibtoolize
 }
 
@@ -39,5 +37,6 @@ src_install() {
 
 	udev_newrules "${FILESDIR}"/${PN}.rules 80-${PN}.rules
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }

@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit flag-o-matic toolchain-funcs eutils multilib versionator
 
-DESCRIPTION="a simple, small, C++ XML parser that can be easily integrating into other programs"
+DESCRIPTION="Simple and small C++ XML parser"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV//./_}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd ~x64-macos ~x86-macos"
 IUSE="debug doc static-libs +stl"
 
 RDEPEND=""

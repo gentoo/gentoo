@@ -10,8 +10,8 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-    A repository of test results.
-  </longdescription>
+		A repository of test results.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">testrepository</remote-id>
 		<remote-id type="launchpad">testscenarios</remote-id>

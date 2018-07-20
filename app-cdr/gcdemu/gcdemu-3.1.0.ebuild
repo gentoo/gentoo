@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/cdemu/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -34,8 +34,8 @@ DEPEND="${COMMON_DEPEND}
 DOCS=( AUTHORS README )
 
 src_prepare() {
+	cmake-utils_src_prepare
 	python_fix_shebang src/gcdemu
-	eapply_user
 }
 
 src_configure() {

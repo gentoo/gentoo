@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 arm hppa ~mips ppc ppc64 sparc x86"
 IUSE="java pch"
 
 RDEPEND=">=dev-libs/popt-1.7-r1
-	sys-libs/binutils-libs
+	sys-libs/binutils-libs:=
 	>=sys-libs/glibc-2.3.2-r1
 	java? ( >=virtual/jdk-1.5:= )
 	ppc64? ( dev-libs/libpfm )"

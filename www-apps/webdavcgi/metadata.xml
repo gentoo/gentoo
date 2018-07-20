@@ -2,12 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>c.affolter@stepping-stone.ch</email>
-		<description>Maintainer</description>
+		<email>c.affolter@purplehaze.ch</email>
 	</maintainer>
 	<maintainer type="person">
 		<email>dev-zero@gentoo.org</email>
-		<description>Proxy maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

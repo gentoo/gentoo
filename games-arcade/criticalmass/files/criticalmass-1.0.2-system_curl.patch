@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -115,8 +115,6 @@ fi
  AC_CHECK_LIB(m, sin,, 
      AC_MSG_ERROR(libm is needed))
@@ -9,8 +9,8 @@
  AC_OUTPUT(Makefile utils/Makefile utilssdl/Makefile utilsgl/Makefile game/Makefile tools/Makefile data/Makefile data/music/Makefile tinyxml/Makefile)
  
  echo "Configuration:
---- game/Makefile.am
-+++ game/Makefile.am
+--- a/game/Makefile.am
++++ b/game/Makefile.am
 @@ -41,7 +41,7 @@ critter_SOURCES = \
          main.cpp
  
@@ -20,8 +20,8 @@
  	../utils/libutils.a \
  	../utilssdl/libutilssdl.a \
  	../utilsgl/libutilsgl.a \
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -4,7 +4,7 @@
  AUTOMAKE_OPTIONS = 1.4
  

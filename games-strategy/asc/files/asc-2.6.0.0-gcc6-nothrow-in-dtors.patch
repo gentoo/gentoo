@@ -1,0 +1,32 @@
+Bug: https://bugs.gentoo.org/612934
+Upstream Bug: https://sourceforge.net/p/asc-hq/patches/2/
+
+--- a/source/basestrm.cpp
++++ b/source/basestrm.cpp
+@@ -1728,7 +1728,6 @@
+       }
+    } catch ( ... ) {
+       displayLogMessage( 9, ASCString("~tn_c_lzw_filestream : caught exception") );
+-      throw;
+    }
+ }
+ 
+--- a/source/simplestream.cpp
++++ b/source/simplestream.cpp
+@@ -43,6 +43,7 @@
+  #endif
+ #endif
+ 
++#include "util/messaginghub.h"
+ 
+ tnbufstream::tnbufstream (  )
+ {
+@@ -270,7 +271,7 @@
+ 
+    int res = fclose( fp );
+    if ( res != 0 ) 
+-      throw  tfileerror ( getDeviceName() + " : " + strerror(errno));
++      displayLogMessage( 9, ASCString( getDeviceName() + " : " + strerror(errno) ) );
+       
+    _mode = uninitialized;
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MyPV="${PV/_/-}"
 MyPN="litecoin"
 MyP="${MyPN}-${MyPV}"
 
-DESCRIPTION="Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. It's based on Bitcoin and not so widely adapted."
+DESCRIPTION="P2P Internet currency based on Bitcoin but easier to mine"
 HOMEPAGE="https://litecoin.org/"
 SRC_URI="https://github.com/${MyPN}-project/${MyPN}/archive/v${MyPV}.tar.gz -> ${MyP}.tar.gz"
 
@@ -26,7 +26,7 @@ RDEPEND="
 	logrotate? ( app-admin/logrotate )
 	upnp? ( net-libs/miniupnpc )
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
-	>=dev-libs/leveldb-1.18-r1
+	>=dev-libs/leveldb-1.18-r1:=
 "
 DEPEND="${RDEPEND}
 	>=app-shells/bash-4.1

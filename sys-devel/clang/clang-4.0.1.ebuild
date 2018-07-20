@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,11 +12,11 @@ inherit cmake-utils flag-o-matic llvm multilib-minimal \
 	python-single-r1 toolchain-funcs pax-utils versionator
 
 DESCRIPTION="C language family frontend for LLVM"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz
-	http://releases.llvm.org/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/cfe-${PV/_/}.src.tar.xz
+	https://releases.llvm.org/${PV/_//}/clang-tools-extra-${PV/_/}.src.tar.xz
 	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-manpages-${PV}.tar.bz2 )
-	test? ( http://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
+	test? ( https://releases.llvm.org/${PV/_//}/llvm-${PV/_/}.src.tar.xz )"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -26,9 +26,9 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="$(get_major_version)"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="debug default-compiler-rt default-libcxx +doc multitarget
-	+static-analyzer test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+KEYWORDS="amd64 ~arm64 x86"
+IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
+	test xml elibc_musl kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
@@ -38,7 +38,6 @@ RDEPEND="
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
-	test? ( ~dev-python/lit-${PV}[${PYTHON_USEDEP}] )
 	xml? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
@@ -48,11 +47,10 @@ RDEPEND="${RDEPEND}
 PDEPEND="
 	~sys-devel/clang-runtime-${PV}
 	default-compiler-rt? ( =sys-libs/compiler-rt-${PV%_*}* )
-	default-libcxx? ( sys-libs/libcxx )"
+	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )
-	multitarget? ( ${ALL_LLVM_TARGETS[*]} )"
+	|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # We need extra level of indirection for CLANG_RESOURCE_DIR
 S=${WORKDIR}/x/y/cfe-${PV/_/}.src
@@ -83,18 +81,18 @@ src_unpack() {
 
 	default
 
-	mv clang-tools-extra-* "${S}"/tools/extra || die
+	mv clang-tools-extra-*.src "${S}"/tools/extra || die
 	if use test; then
-		mv llvm-* "${WORKDIR}"/llvm || die
+		mv llvm-*.src "${WORKDIR}"/llvm || die
 	fi
 }
 
 src_prepare() {
 	# fix finding compiler-rt libs
-	eapply "${FILESDIR}"/9999/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
+	eapply "${FILESDIR}"/5.0.1/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 
 	# fix stand-alone doc build
-	eapply "${FILESDIR}"/9999/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
+	eapply "${FILESDIR}"/4.0.1/0007-cmake-Support-stand-alone-Sphinx-doxygen-doc-build.patch
 
 	# fix value of ATOMIC_*_LOCK_FREE
 	# (backport, temporary reverted upstream because of FreeBSD issues)
@@ -107,7 +105,7 @@ src_prepare() {
 	cd - >/dev/null || die
 
 	# User patches
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 multilib_src_configure() {
@@ -118,6 +116,7 @@ multilib_src_configure() {
 		# ensure that the correct llvm-config is used
 		-DLLVM_CONFIG="$(type -P "${CHOST}-llvm-config")"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
+		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		# relative to bindir
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
@@ -143,7 +142,6 @@ multilib_src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 	)
 
 	if multilib_is_native_abi; then
@@ -163,6 +161,12 @@ multilib_src_configure() {
 	else
 		mycmakeargs+=(
 			-DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD=OFF
+		)
+	fi
+
+	if [[ -n ${EPREFIX} ]]; then
+		mycmakeargs+=(
+			-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
 		)
 	fi
 
@@ -194,7 +198,11 @@ multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
-	multilib_is_native_abi && cmake-utils_src_make check-clang-tools
+	# clang-tidy requires [static-analyzer] and tests are not split
+	# correctly, so they are all disabled when static-analyzer is off
+	if multilib_is_native_abi && use static-analyzer; then
+		cmake-utils_src_make check-clang-tools
+	fi
 }
 
 src_install() {
@@ -276,4 +284,16 @@ multilib_src_install_all() {
 	use doc && docompress -x "/usr/share/doc/${PF}/tools-extra"
 	# +x for some reason; TODO: investigate
 	use static-analyzer && fperms a-x "/usr/lib/llvm/${SLOT}/share/man/man1/scan-build.1"
+}
+
+pkg_postinst() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow update all
+	fi
+}
+
+pkg_postrm() {
+	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+		eselect compiler-shadow clean all
+	fi
 }

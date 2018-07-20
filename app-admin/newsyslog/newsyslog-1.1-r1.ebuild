@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.weird.com/pub/local/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha ~amd64 hppa ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 ~sparc x86"
 
 DEPEND="sys-apps/groff"
 
@@ -17,7 +17,7 @@ RDEPEND="
 	virtual/cron
 	app-arch/gzip"
 
-PATCHES=( "${FILESDIR}"/newsyslog-html.patch )
+PATCHES=( "${FILESDIR}/${P}-html.patch" )
 
 DOCS=( newsyslog.conf AUTHORS ChangeLog INSTALL NEWS ToDo )
 

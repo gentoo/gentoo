@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ DESCRIPTION="cloud initialisation magic"
 HOMEPAGE="https://launchpad.net/cloud-init"
 # Launchpad does not provide consistent checksums https://bugs.launchpad.net/launchpad/+bug/1576338
 # SRC_URI="http://bazaar.launchpad.net/~${PN}-dev/${PN}/trunk/tarball/${PV/*_p} -> ${P}.tar.gz"
-SRC_URI="mirror://gentoo/${P}.tar.gz http://dev.gentoo.org/~prometheanfire/dist/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz https://dev.gentoo.org/~prometheanfire/dist/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

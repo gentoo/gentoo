@@ -35,7 +35,6 @@
 		<flag name="scheduler-ram">ram scheduler</flag>
 		<flag name="scheduler-stub">stub scheduler</flag>
 		<flag name="scheduler-python">schedulre for interfacing with python</flag>
-		<flag name="luajit">Use JIT for Lua via dev-lang/luajit instead of dev-lang/lua</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenSMTPD/OpenSMTPD-extras</remote-id>

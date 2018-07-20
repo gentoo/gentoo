@@ -5,7 +5,7 @@ EAPI="5"
 
 inherit eutils fdo-mime flag-o-matic scons-utils
 
-DESCRIPTION="Oregano is an application for schematic capture and simulation of electrical circuits"
+DESCRIPTION="Application for the schematic capturing and simulation of electrical circuits"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 HOMEPAGE="http://oregano.gforge.lug.fi.uba.ar/" # broken
 SLOT="0"

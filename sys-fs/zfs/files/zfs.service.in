@@ -6,7 +6,7 @@ After=systemd-udev-settle.target local-fs.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStartPre=/sbin/modprobe zfs
+ExecStartPre=-/sbin/modprobe zfs
 ExecStartPre=/usr/bin/test -c /dev/zfs
 ExecStart=/usr/libexec/zfs-init.sh
 ExecStop=@sbindir@/zfs umount -a

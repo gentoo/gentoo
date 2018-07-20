@@ -10,17 +10,18 @@
  set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/config/")
 --- a/src/CMakeLists.txt	2017-06-07 00:14:25.368608098 +0200
 +++ b/src/CMakeLists.txt	2017-06-07 00:16:06.710831682 +0200
-@@ -317,9 +317,11 @@
+@@ -317,10 +317,12 @@
  
  # ******************************************************************************
  # exiv2 application
 -ADD_EXECUTABLE( exiv2 ${EXIV2_SRC}  ${EXIV2_HDR} )
--TARGET_LINK_LIBRARIES( exiv2 exiv2lib ${LIBINTL_LIBRARIES} )
--INSTALL( TARGETS exiv2 ${INSTALL_TARGET_STANDARD_ARGS} )
 +IF(EXIV2_ENABLE_TOOLS)
 +    ADD_EXECUTABLE( exiv2 ${EXIV2_SRC}  ${EXIV2_HDR} )
+ target_compile_definitions(exiv2 PRIVATE EXV_LOCALEDIR="${CMAKE_INSTALL_LOCALEDIR}" )
+-TARGET_LINK_LIBRARIES( exiv2 exiv2lib ${LIBINTL_LIBRARIES} )
+-INSTALL( TARGETS exiv2 RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 +    TARGET_LINK_LIBRARIES( exiv2 exiv2lib ${LIBINTL_LIBRARIES} )
-+    INSTALL( TARGETS exiv2 ${INSTALL_TARGET_STANDARD_ARGS} )
++    INSTALL( TARGETS exiv2 RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 +ENDIF( EXIV2_ENABLE_TOOLS )
  
  # ******************************************************************************

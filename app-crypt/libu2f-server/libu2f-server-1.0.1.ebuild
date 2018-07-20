@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 	libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 	dev-libs/hidapi[${MULTILIB_USEDEP}]
-	dev-libs/json-c[${MULTILIB_USEDEP}]
+	dev-libs/json-c:=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

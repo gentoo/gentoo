@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 inherit eutils cmake-utils vcs-snapshot
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
-HOMEPAGE="http://www.ogre3d.org/"
+HOMEPAGE="https://www.ogre3d.org/"
 SRC_URI="https://bitbucket.org/sinbad/ogre/get/v${PV//./-}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MIT public-domain"
@@ -23,7 +23,7 @@ REQUIRED_USE="threads? ( ^^ ( boost poco tbb ) )
 	examples? ( ois )
 	poco? ( threads )
 	tbb? ( threads )
-	?? ( gl3plus ( || ( gles2 gles3 ) ) )
+	gl3plus? ( !gles2 !gles3 )
 	gles3? ( gles2 )
 	gl3plus? ( opengl )"
 
@@ -51,9 +51,16 @@ RDEPEND="
 	tools? ( dev-libs/tinyxml[stl] )
 	zip? ( sys-libs/zlib dev-libs/zziplib )"
 DEPEND="${RDEPEND}
-	x11-proto/xf86vidmodeproto
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-remove_resource_path_to_bindir.patch"
+	"${FILESDIR}/${P}-remove_media_path_to_bindir.patch"
+	"${FILESDIR}/${P}-gcc52.patch"
+	"${FILESDIR}/${P}-samples.patch"
+)
 
 src_prepare() {
 	sed -i \
@@ -68,11 +75,7 @@ src_prepare() {
 	rm -f Tools/XMLConverter/{include,src}/tiny*.*
 
 	# Fix some path issues
-	epatch \
-		"${FILESDIR}/${P}-remove_resource_path_to_bindir.patch" \
-		"${FILESDIR}/${P}-remove_media_path_to_bindir.patch" \
-		"${FILESDIR}/${P}-gcc52.patch" \
-		"${FILESDIR}/${P}-samples.patch"
+	cmake-utils_src_prepare
 }
 
 src_configure() {

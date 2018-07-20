@@ -1,5 +1,79 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Joonas Niilola <juippis@gmail.com> (17 Jun 2018)
+# Optional dependency not available for this arch
+dev-libs/efl vlc
+
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unkeyworded deps.
+net-misc/curl curl_ssl_axtls
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unkeyworded dep masks moved from default/linux/ia64 tree.
+mail-client/mutt notmuch
+mail-mta/exim redis
+
+# Sergei Trofimovich <slyfox@gentoo.org> (18 Mar 2018)
+# Many unkeyworded rails deps, bug #650642
+net-analyzer/wireshark doc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (18 Mar 2018)
+# unkeyworded deps, bug #552330
+app-portage/g-sorcery bson
+
+# Mart Raudsepp <leio@gentoo.org> (08 Jan 2018)
+# mail-client/evolution[ytnef] requires net-mail/ytnef which is not keyworded
+mail-client/evolution ytnef
+
+# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2017)
+# net-firewall/nftables[doc] requires dblatex which is not keyworded
+net-firewall/nftables doc
+
+# Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
+# Both USE=fluidsynth and USE=timidity are masked in this profile.
+media-libs/sdl-mixer midi
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan
+
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=dvd that is masked in this profile.
+media-video/mplayer dvdnav
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=v4l that is masked in this profile.
+media-video/ffmpeg libv4l
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=bluetooth that is masked in this profile.
+media-sound/pulseaudio native-headset
+
+# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Requires USE=networkmanager that is masked in this profile.
+app-misc/geoclue skyhook
+
+# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Upstream Git is switching to PCRE2 w/ JIT.
+# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
+dev-vcs/git pcre-jit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded java
+sci-libs/gdal mdb
+
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Jul 2017)
+# pulls in unkeyworded lapack
+sci-libs/gdal armadillo
 
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
@@ -8,7 +82,7 @@ app-shells/bash-completion test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # Pulls in dev-db/redis which is not keyworded on ia64.
->=dev-python/pyzor-1.0.0 test
+dev-python/pyzor test
 
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
@@ -27,10 +101,6 @@ net-analyzer/rrdtool rados
 # Jason Zaman <perfinion@gentoo.org> (09 May 2017)
 # x11-libs/libXpresent is not keyworded on ia64
 xfce-base/xfwm4 xpresent
-
-# Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
-# Missing keywords, bug #559770
->=net-misc/networkmanager-1.4.4 consolekit
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
 # Don't keyword redis
@@ -55,6 +125,7 @@ net-misc/networkmanager ofono
  
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
+dev-db/mysql -numa
 dev-db/percona-server -numa
 
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
@@ -126,12 +197,8 @@ net-analyzer/wireshark doc-pdf
 net-misc/spice-gtk smartcard webdav
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# net-fs/libnfs lacks ia64 keyword, bug #551576
-gnome-base/gvfs nfs
-
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# dev-lang/luajit and dev-lua/lgi and lack ia64 keyword, bug #551540
-dev-libs/libpeas lua jit
+# dev-lang/luajit lacks ia64 keyword, bug #551540
+dev-libs/libpeas lua
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
@@ -163,10 +230,6 @@ net-misc/modemmanager mbim
 # Mike Frysinger <vapier@gentoo.org> (15 Mar 2014)
 # Various deps not ported to ia64.
 dev-python/ipython nbconvert notebook
-
-# Mike Frysinger <vapier@gentoo.org> (15 Mar 2014)
-# dev-python/greenlet is not ported to ia64.
-dev-python/pyzmq green test
 
 # Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
 # Missing keywords, bug #504672
@@ -208,18 +271,6 @@ dev-haskell/dataenc test
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
 
-# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
-# Fix per-arch mask of phonon[zeitgeist] #460140
-media-libs/phonon zeitgeist
-
-# Dirkjan Ochtman <djc@gentoo.org> (3 May 2013)
-# depends on net-libs/polarssl
->=net-vpn/openvpn-2.3.1 polarssl
-
-# Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
-# missing keyword on media-libs/tremor, bug #453200
-media-libs/gst-plugins-base ivorbis
-
 # Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
 # depends on mono/monodevelop
 >=net-irc/hexchat-2.9.4-r1 theme-manager
@@ -231,7 +282,7 @@ media-video/libav hardcoded-tables
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -260,21 +311,13 @@ media-libs/phonon gstreamer vlc
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
-# Requires gnutls[pkcs11], which is use.masked on ia64
-net-libs/glib-networking smartcard
-
 # Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Raúl Porcel <armin76@gentoo.org> (05 Nov 2011)
 # jit not supported on ia64
 dev-libs/libpcre jit
-
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
-dev-libs/libmemcached tcmalloc
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2011)
 # Needs sci-libs/umfpack keyworded. Bug #361947.
@@ -305,10 +348,6 @@ dev-python/PyQt4 multimedia
 # Raúl Porcel <armin76@gentoo.org>
 # Keep deps minimal
 x11-wm/fvwm lock
-
-# Raúl Porcel <armin76@gentoo.org> (11 Apr 2009)
-# net-libs/webkit-gtk segfaults but dev-qt/qtwebkit doesn't
-dev-python/PyQt4 -webkit
 
 # Raúl Porcel <armin76@gentoo.org> (07 Jul 2008)
 # Make clisp deps minimal

@@ -7,8 +7,8 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Unicode-LineBreak</remote-id>
+    <remote-id type="cpan-module">Text::LineFold</remote-id>
     <remote-id type="cpan-module">Unicode::GCString</remote-id>
     <remote-id type="cpan-module">Unicode::LineBreak</remote-id>
-    <remote-id type="cpan-module">Text::LineFold</remote-id>
   </upstream>
 </pkgmetadata>

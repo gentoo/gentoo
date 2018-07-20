@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>vapier@gentoo.org</email>
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
 		<flag name="hpack-tools">Install HPACK (header compression) helper tools</flag>
@@ -10,6 +11,6 @@
 		<flag name="utils">Install nghttp, nghttpd and nghttpx</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">tatsuhiro-t/nghttp2</remote-id>
+		<remote-id type="github">nghttp2/nghttp2</remote-id>
 	</upstream>
 </pkgmetadata>

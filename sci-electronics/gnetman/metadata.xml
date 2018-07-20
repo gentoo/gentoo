@@ -6,13 +6,13 @@
 		<name>Gentoo Electronics Project</name>
 	</maintainer>
 	<longdescription>
-  The gnetman project has one simple goal: Enabling interoperability between
-  open-source EDA tools. To date, gnetman can read and/or write (in theory)
-  formats used by the following tools :
-    * gschem
-    * iverilog
-    * ltspice, hspice, eldo, gnucap, tclspice
-    * confluence
+		The gnetman project has one simple goal: Enabling interoperability between
+		open-source EDA tools. To date, gnetman can read and/or write (in theory)
+		formats used by the following tools :
+		* gschem
+		* iverilog
+		* ltspice, hspice, eldo, gnucap, tclspice
+		* confluence
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gnetman</remote-id>

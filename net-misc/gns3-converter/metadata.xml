@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="pypi">gns3-converter</remote-id>
-    <remote-id type="github">dlintott/gns3-converter</remote-id>
-  </upstream>
+	<upstream>
+		<remote-id type="sourceforge">gns-3</remote-id>
+	</upstream>
 </pkgmetadata>

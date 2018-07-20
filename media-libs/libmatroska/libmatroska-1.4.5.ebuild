@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="Extensible multimedia container format based on EBML"
-HOMEPAGE="http://www.matroska.org/ https://github.com/Matroska-Org/libmatroska/"
-SRC_URI="http://dl.matroska.org/downloads/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.matroska.org/ https://github.com/Matroska-Org/libmatroska/"
+SRC_URI="https://dl.matroska.org/downloads/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/6" # subslot = soname major version

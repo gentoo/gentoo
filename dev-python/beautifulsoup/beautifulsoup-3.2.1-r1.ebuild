@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,8 +10,8 @@ MY_PN="BeautifulSoup"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="HTML/XML parser for quick-turnaround applications like screen-scraping"
-HOMEPAGE="http://www.crummy.com/software/BeautifulSoup/ https://pypi.python.org/pypi/BeautifulSoup"
-SRC_URI="http://www.crummy.com/software/${MY_PN}/download/3.x/${MY_P}.tar.gz"
+HOMEPAGE="https://www.crummy.com/software/BeautifulSoup/ https://pypi.org/project/BeautifulSoup/"
+SRC_URI="https://www.crummy.com/software/${MY_PN}/download/3.x/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="python-2"

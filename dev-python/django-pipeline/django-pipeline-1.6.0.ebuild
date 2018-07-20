@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="An asset packaging library for Django"
-HOMEPAGE="https://pypi.python.org/pypi/django-pipeline/ https://github.com/cyberdelia/django-pipeline"
+HOMEPAGE="https://pypi.org/project/django-pipeline/ https://github.com/cyberdelia/django-pipeline"
 
 # PyPi releases lack docs/ subdir:
 # https://github.com/cyberdelia/django-pipeline/pull/254
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/cyberdelia/django-pipeline/archive/${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RDEPEND="

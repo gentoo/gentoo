@@ -1,5 +1,12 @@
+# Copyright 1999-2017 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+
 # Unmask the flag which corresponds to ARCH.
 -m68k
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
 
 hardened
 
@@ -27,7 +34,6 @@ ldap
 slang
 diet
 gtk
-qt4
 mono
 python
 cairo
@@ -49,7 +55,6 @@ emf
 R
 octave
 bluetooth
-autotrace
 lqr
 policykit
 bash-completion

@@ -8,10 +8,10 @@
 # Tomáš Chvátal <scarabeus@gentoo.org>
 # @BLURB: Eclass for installing libreoffice/openoffice extensions
 # @DESCRIPTION:
-# Eclass for easing maitenance of libreoffice/openoffice extensions.
+# Eclass for easing maintenance of libreoffice/openoffice extensions.
 
 case "${EAPI:-0}" in
-	5) OEXT_EXPORTED_FUNCTIONS="src_unpack src_install pkg_postinst pkg_prerm" ;;
+	5|6) OEXT_EXPORTED_FUNCTIONS="src_unpack src_install pkg_postinst pkg_prerm" ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 

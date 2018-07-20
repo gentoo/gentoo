@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,5 +28,5 @@ src_install() {
 	mv "${D}/usr/contrib/plugins" "${D}/usr/share/${PN}/"
 	rmdir "${D}/usr/contrib"
 	mv "${D}/usr/tools" "${D}/usr/share/${PN}/"
-	dosym /usr/bin/vol.py /usr/bin/volatility
+	dosym vol.py /usr/bin/volatility
 }

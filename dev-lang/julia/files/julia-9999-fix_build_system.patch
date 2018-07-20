@@ -1,8 +1,17 @@
 diff --git a/Make.inc b/Make.inc
-index 651c9df..ff01872 100644
+index 8cb2c1014..d3be9de8e 100644
 --- a/Make.inc
 +++ b/Make.inc
-@@ -389,7 +389,7 @@ ifneq ($(OS), WINNT)
+@@ -178,7 +178,7 @@ USE_GPL_LIBS ?= 1
+ # Directories where said libraries get installed to
+ prefix ?= $(BUILDROOT)/julia-$(JULIA_COMMIT)
+ bindir := $(prefix)/bin
+-libdir := $(prefix)/lib
++libdir := $(prefix)/GENTOOLIBDIR
+ libexecdir := $(prefix)/libexec
+ datarootdir := $(prefix)/share
+ docdir := $(datarootdir)/doc/julia
+@@ -410,7 +410,7 @@ ifneq ($(OS), WINNT)
  JCXXFLAGS += -pedantic
  endif
  DEBUGFLAGS := -O0 -ggdb2 -DJL_DEBUG_BUILD -fstack-protector-all
@@ -11,7 +20,7 @@ index 651c9df..ff01872 100644
  endif
  
  ifeq ($(USECLANG),1)
-@@ -400,7 +400,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+@@ -421,7 +421,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS := -fasynchronous-unwind-tables
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti -pedantic
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -19,8 +28,8 @@ index 651c9df..ff01872 100644
 +SHIPFLAGS := GENTOOCFLAGS
  ifeq ($(OS), Darwin)
  ifeq ($(USE_LIBCPP), 1)
- CC += -stdlib=libc++ -mmacosx-version-min=10.7
-@@ -427,7 +427,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+ MACOSX_VERSION_MIN := 10.8
+@@ -450,7 +450,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS :=
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -30,41 +39,37 @@ index 651c9df..ff01872 100644
  
  ifeq ($(USECCACHE), 1)
 diff --git a/doc/Makefile b/doc/Makefile
-index 0749d73..f4d49ec 100644
+index 89b79880d..c3125fde1 100644
 --- a/doc/Makefile
 +++ b/doc/Makefile
-@@ -62,7 +62,7 @@ help:
- 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
+@@ -29,7 +29,7 @@ deps: UnicodeData.txt
+ 	$(JLCHECKSUM) UnicodeData.txt
  
  clean:
--	-rm -rf _build/*
+-	-rm -rf _build/* deps/* docbuild.log UnicodeData.txt
 +	@echo "Do not clean doc/_build/html. Just use it..."
  
  cleanall: clean
  
 diff --git a/src/Makefile b/src/Makefile
-index d7ec864..61d2470 100644
+index 257152d24..240a4a350 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -66,20 +66,8 @@ HEADERS := $(addprefix $(SRCDIR)/,julia.h julia_threads.h julia_internal.h optio
+@@ -85,16 +85,7 @@ UV_HEADERS += uv/*.h
+ endif
+ PUBLIC_HEADER_TARGETS := $(addprefix $(build_includedir)/julia/,$(notdir $(PUBLIC_HEADERS)) $(UV_HEADERS))
  
- # In LLVM < 3.4, --ldflags includes both options and libraries, so use it both before and after --libs
- # In LLVM >= 3.4, --ldflags has only options, and --system-libs has the libraries.
+-ifeq ($(JULIACODEGEN),LLVM)
+-# In LLVM < 3.4, --ldflags includes both options and libraries, so use it both before and after --libs
+-# In LLVM >= 3.4, --ldflags has only options, and --system-libs has the libraries.
 -ifneq ($(USE_LLVM_SHLIB),1)
 -LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --libs $(LLVM_LIBS)) $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --system-libs 2> /dev/null)
 -else
--ifeq ($(LLVM_USE_CMAKE),1)
 -LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM
--else
--ifeq ($(OS),WINNT)
--LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM-$(LLVM_VER_SHORT)
--else
--LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM-$(shell $(LLVM_CONFIG_HOST) --version)
--endif # OS == WINNT
--endif # LLVM_USE_CMAKE == 1
-+LLVMLINK = $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --libs) $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --system-libs)
- FLAGS += -DLLVM_SHLIB
+-FLAGS += -DLLVM_SHLIB
 -endif # USE_LLVM_SHLIB == 1
+-endif
++LLVMLINK = $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --libs) $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --system-libs)
  
  COMMON_LIBS := -L$(build_shlibdir) -L$(build_libdir) $(LIBUV) $(LIBUTF8PROC) $(NO_WHOLE_ARCHIVE) $(LLVMLINK) $(OSLIBS)
  DEBUG_LIBS := $(WHOLE_ARCHIVE) $(BUILDDIR)/flisp/libflisp-debug.a $(WHOLE_ARCHIVE) $(BUILDDIR)/support/libsupport-debug.a $(COMMON_LIBS)

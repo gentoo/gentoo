@@ -22,7 +22,7 @@ DEPEND="app-arch/unzip"
 
 mozversion_extension_location() {
 	case ${PN} in
-		firefox|firefox-bin)
+		firefox|firefox-bin|palemoon)
 			if [[ $(get_version_component_range 1) -ge 21 ]] ; then
 				return 0
 			fi
@@ -69,10 +69,18 @@ xpi_install() {
 	[[ ${#} -ne 1 ]] && die "$FUNCNAME takes exactly one argument, please specify an xpi to unpack"
 
 	x="${1}"
-	cd ${x}
+	#cd ${x}
 	# determine id for extension
+	if [[ -f "${x}"/install.rdf ]]; then
 	emid="$(sed -n -e '/install-manifest/,$ { /em:id/!d; s/.*[\">]\([^\"<>]*\)[\"<].*/\1/; p; q }' "${x}"/install.rdf)" \
-		|| die "failed to determine extension id"
+		|| die "failed to determine extension id from install.rdf"
+	elif [[ -f "${x}"/manifest.json ]]; then
+		emid="$( sed -n 's/.*"id": "\(.*\)",/\1/p' "${x}"/manifest.json )" \
+			|| die "failed to determine extension id from manifest.json"
+	else
+		die "failed to determine extension id"
+	fi
+
 	if [[ -n ${MOZEXTENSION_TARGET} ]]; then
 		insinto "${MOZILLA_FIVE_HOME}"/${MOZEXTENSION_TARGET%/}/${emid}
 	elif $(mozversion_extension_location) ; then

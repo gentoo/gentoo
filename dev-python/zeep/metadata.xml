@@ -13,6 +13,7 @@
 	</longdescription>
 	<use>
 		<flag name="async">Add async support</flag>
+		<flag name="tornado">Add tornado support</flag>
 	</use>
 	<upstream>
 		<remote-id type="pypi">zeep</remote-id>

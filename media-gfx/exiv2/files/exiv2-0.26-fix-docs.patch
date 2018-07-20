@@ -68,3 +68,16 @@
  
  # **********************************************************************
  # ======================================================================
+diff --git a/doc/cmake_doc.sh b/doc/cmake_doc.sh
+index 44dd6760..5910a86d 100755
+--- a/doc/cmake_doc.sh
++++ b/doc/cmake_doc.sh
+@@ -16,7 +16,7 @@ if [ $# == 1 ]; then
+         mv src/exv_conf.h.keep src/exv_conf.h
+     fi
+     mkdir -p  src/bin/
+-    cp    -f  "${CMAKE_BINARY_DIR}/bin/taglist" src/bin/
++    cp    -f  "${CMAKE_BINARY_DIR}/samples/taglist" src/bin/
+     make doc
+ fi
+ 

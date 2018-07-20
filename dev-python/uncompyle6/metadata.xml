@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>dolsen@gentoo.org</email>
-		<description>Primary maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -17,5 +16,4 @@
 		<remote-id type="pypi">uncompyle6</remote-id>
 		<remote-id type="github">rocky/python-uncompyle6</remote-id>
 	</upstream>
-	<longdescription/>
 </pkgmetadata>

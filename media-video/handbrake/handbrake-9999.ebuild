@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils gnome2-utils python-any-r1
+inherit autotools eutils gnome2-utils python-any-r1 xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
@@ -13,7 +13,7 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 else
 	MY_P="HandBrake-${PV}"
-	SRC_URI="http://handbrake.fr/rotation.php?file=${MY_P}.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="https://download2.handbrake.fr/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -42,8 +42,8 @@ RDEPEND="
 	media-libs/x264:=
 	media-sound/lame
 	sys-libs/zlib
-	libav? ( >=media-video/libav-10.1:0=[fdk?] )
-	!libav? ( >=media-video/ffmpeg-2.3:0=[fdk?] )
+	libav? ( >=media-video/libav-12.3:0=[fdk?] )
+	!libav? ( >=media-video/ffmpeg-3.4:0=[fdk?] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -99,7 +99,7 @@ src_prepare() {
 	default
 
 	# Get rid of libav specific code when using ffmpeg
-	use libav || eapply -R "${FILESDIR}/${PN}-0.10.3-nolibav.patch"
+	use libav || eapply -R "${FILESDIR}/${PN}-1.1.0-nolibav.patch"
 
 	cd "${S}/gtk"
 	# Don't run autogen.sh.
@@ -145,6 +145,7 @@ pkg_postinst() {
 	fi
 
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_preinst() {
@@ -153,4 +154,5 @@ pkg_preinst() {
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

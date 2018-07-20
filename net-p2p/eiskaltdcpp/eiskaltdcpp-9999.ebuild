@@ -1,31 +1,29 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-PLOCALES="be bg cs de el en es fr hu it pl pt_BR ru sk sr@latin sv_SE uk vi zh_CN"
+PLOCALES="be bg cs de el en es eu fr hu it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
-inherit cmake-utils eutils l10n fdo-mime gnome2-utils
+inherit cmake-utils gnome2-utils l10n xdg-utils
 [[ ${PV} = *9999* ]] && inherit git-r3
 
-DESCRIPTION="Qt based client for DirectConnect and ADC protocols, based on DC++ library"
+DESCRIPTION="Qt/DC++ based client for DirectConnect and ADC protocols"
 HOMEPAGE="https://github.com/eiskaltdcpp/eiskaltdcpp"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="cli daemon dbus +dht +emoticons examples -gtk idn -javascript json libcanberra libnotify lua +minimal pcre +qt4 sound spell sqlite upnp -xmlrpc"
+IUSE="cli daemon dbus +dht examples -gtk idn -javascript json libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp -xmlrpc"
 
 REQUIRED_USE="
+	?? ( json xmlrpc )
 	cli? ( ^^ ( json xmlrpc ) )
-	emoticons? ( || ( gtk qt4 ) )
-	dbus? ( qt4 )
-	javascript? ( qt4 )
-	json? ( !xmlrpc )
+	dbus? ( qt5 )
+	javascript? ( qt5 )
 	libcanberra? ( gtk )
 	libnotify? ( gtk )
-	spell? ( qt4 )
-	sound? ( || ( gtk qt4 ) )
-	sqlite? ( qt4 )
+	spell? ( qt5 )
+	sqlite? ( qt5 )
 "
 
 if [[ ${PV} != *9999* ]]; then
@@ -38,63 +36,61 @@ fi
 
 RDEPEND="
 	app-arch/bzip2
-	>=dev-libs/boost-1.38:=
-	>=dev-libs/openssl-0.9.8
+	dev-libs/boost:=
+	dev-libs/openssl:0=
 	sys-apps/attr
 	sys-libs/zlib
 	virtual/libiconv
 	virtual/libintl
-	idn? ( net-dns/libidn )
-	lua? ( >=dev-lang/lua-5.1 )
-	pcre? ( >=dev-libs/libpcre-4.2 )
-	upnp? ( >=net-libs/miniupnpc-1.6 )
 	cli? (
-		>=dev-lang/perl-5.10
-		virtual/perl-Getopt-Long
+		dev-lang/perl
 		dev-perl/Data-Dump
 		dev-perl/Term-ShellUI
+		virtual/perl-Getopt-Long
 		json? ( dev-perl/JSON-RPC )
 		xmlrpc? ( dev-perl/RPC-XML )
 	)
-	daemon? ( xmlrpc? ( >=dev-libs/xmlrpc-c-1.19.0[abyss,cxx] ) )
+	daemon? ( xmlrpc? ( dev-libs/xmlrpc-c[abyss,cxx] ) )
 	gtk? (
-		x11-libs/pango
+		dev-libs/glib:2
 		x11-libs/gtk+:3
-		>=dev-libs/glib-2.24:2
+		x11-libs/pango
 		x11-themes/hicolor-icon-theme
 		libcanberra? ( media-libs/libcanberra )
-		libnotify? ( >=x11-libs/libnotify-0.4.1 )
+		libnotify? ( x11-libs/libnotify )
 	)
-	qt4? (
-		>=dev-qt/qtcore-4.6.0:4
-		>=dev-qt/qtgui-4.6.0:4
-		dbus? ( >=dev-qt/qtdbus-4.6.0:4 )
+	idn? ( net-dns/libidn )
+	lua? ( dev-lang/lua:= )
+	pcre? ( dev-libs/libpcre )
+	qt5? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtmultimedia:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtxml:5
+		dbus? ( dev-qt/qtdbus:5 )
 		javascript? (
-			dev-qt/qtscript:4
-			x11-libs/qtscriptgenerator
+			dev-qt/qtdeclarative:5
+			dev-qt/qtscript:5
 		)
 		spell? ( app-text/aspell )
-		sqlite? ( dev-qt/qtsql:4[sqlite] )
+		sqlite? ( dev-qt/qtsql:5[sqlite] )
 	)
+	upnp? ( net-libs/miniupnpc )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
+	qt5? ( dev-qt/linguist-tools:5 )
 "
+
 DOCS=( AUTHORS ChangeLog.txt )
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		[[ $(gcc-major-version) -lt 4 ]] || \
-				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 4 ]] ) \
-			&& die "Sorry, but gcc-4.4 and earlier won't work."
-	fi
-}
-
 src_prepare() {
+	cmake-utils_src_prepare
 	l10n_find_plocales_changes 'eiskaltdcpp-qt/translations' '' '.ts'
-
-	epatch_user
 }
 
 src_configure() {
@@ -103,31 +99,50 @@ src_configure() {
 		-Dlinguas="$(l10n_get_locales)"
 		-DLOCAL_MINIUPNP=OFF
 		-DUSE_GTK=OFF
+		-DUSE_QT=OFF
+		-DUSE_QT_QML=OFF
 		-DUSE_LIBGNOME2=OFF
-		"$(use cli && cmake-utils_use json USE_CLI_JSONRPC)"
-		"$(use cli && cmake-utils_use xmlrpc USE_CLI_XMLRPC)"
-		"$(cmake-utils_use daemon NO_UI_DAEMON)"
-		"$(use daemon && cmake-utils_use json JSONRPC_DAEMON)"
-		"$(use daemon && cmake-utils_use xmlrpc XMLRPC_DAEMON)"
-		"$(cmake-utils_use dbus DBUS_NOTIFY)"
-		"$(cmake-utils_use dht WITH_DHT)"
-		"$(cmake-utils_use emoticons WITH_EMOTICONS)"
-		"$(cmake-utils_use examples WITH_EXAMPLES)"
-		"$(cmake-utils_use gtk USE_GTK3)"
-		"$(cmake-utils_use idn USE_IDNA)"
-		"$(cmake-utils_use javascript USE_JS)"
-		"$(cmake-utils_use libcanberra LIBCANBERRA)"
-		"$(cmake-utils_use libnotify USE_LIBNOTIFY)"
-		"$(cmake-utils_use lua LUA_SCRIPT)"
-		"$(cmake-utils_use lua WITH_LUASCRIPTS)"
-		"$(cmake-utils_use !minimal WITH_DEV_FILES)"
-		"$(cmake-utils_use pcre PERL_REGEX)"
-		"$(cmake-utils_use qt4 USE_QT)"
-		"$(cmake-utils_use sound WITH_SOUNDS)"
-		"$(cmake-utils_use spell USE_ASPELL)"
-		"$(cmake-utils_use sqlite USE_QT_SQLITE)"
-		"$(cmake-utils_use upnp USE_MINIUPNP)"
+		-DNO_UI_DAEMON=$(usex daemon)
+		-DDBUS_NOTIFY=$(usex dbus)
+		-DWITH_DHT=$(usex dht)
+		-DWITH_EXAMPLES=$(usex examples)
+		-DUSE_GTK3=$(usex gtk)
+		-DUSE_IDNA=$(usex idn)
+		-DUSE_JS=$(usex javascript)
+		-DUSE_LIBCANBERRA=$(usex libcanberra)
+		-DUSE_LIBNOTIFY=$(usex libnotify)
+		-DLUA_SCRIPT=$(usex lua)
+		-DWITH_LUASCRIPTS=$(usex lua)
+		-DWITH_DEV_FILES=$(usex !minimal)
+		-DPERL_REGEX=$(usex pcre)
+		-DUSE_QT5=$(usex qt5)
+		-DUSE_ASPELL=$(usex spell)
+		-DUSE_QT_SQLITE=$(usex sqlite)
+		-DUSE_MINIUPNP=$(usex upnp)
 	)
+	if use cli; then
+		mycmakeargs+=(
+			-DUSE_CLI_JSONRPC=$(usex json)
+			-DUSE_CLI_XMLRPC=$(usex xmlrpc)
+		)
+	fi
+	if use daemon; then
+		mycmakeargs+=(
+			-DJSONRPC_DAEMON=$(usex json)
+			-DXMLRPC_DAEMON=$(usex xmlrpc)
+		)
+	fi
+	if use qt5 || use gtk; then
+		mycmakeargs+=(
+			-DWITH_EMOTICONS=ON
+			-DWITH_SOUNDS=ON
+		)
+	else
+		mycmakeargs+=(
+			-DWITH_EMOTICONS=OFF
+			-DWITH_SOUNDS=OFF
+		)
+	fi
 	cmake-utils_src_configure
 }
 
@@ -136,11 +151,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

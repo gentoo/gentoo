@@ -9,10 +9,6 @@ sys-devel/gcc -pie
 # Requires x11-drivers/nvidia-drivers. Needs testing first.
 media-video/mpv cuda
 
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Skype doesn't work on hardened
-net-im/bitlbee skype
-
 sys-apps/hwloc gl
 
 sys-devel/gcc -hardened

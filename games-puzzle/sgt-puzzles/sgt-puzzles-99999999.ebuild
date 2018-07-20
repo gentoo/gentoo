@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ inherit eutils gnome2-utils toolchain-funcs autotools
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.tartarus.org/simon/puzzles.git"
+	EGIT_REPO_URI="https://git.tartarus.org/simon/puzzles.git"
 	GENTOO_ICONS="20160315"
 	SRC_URI="https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${PN}-icons-${GENTOO_ICONS}.tar.xz"
 	KEYWORDS=""
 else
-	MAGIC=7bdfda8
+	MAGIC=69773d8
 	SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MAGIC}.tar.gz"
 	S=${WORKDIR}/puzzles-${PV}.${MAGIC}
 	KEYWORDS="~amd64 ~x86"
@@ -50,7 +50,10 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e 's/-O2 -Wall -Werror -ansi -pedantic -g//' \
+		-e 's|-Werror||g' \
+		configure.ac || die
+	sed -i \
+		-e 's/-O2 -Wall .* -g/-Wall/' \
 		-e "s/libstr =/libstr = '\$(LDFLAGS) ' ./" \
 		mkfiles.pl || die
 	./mkfiles.pl || die

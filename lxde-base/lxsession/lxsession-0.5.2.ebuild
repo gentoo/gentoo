@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit vala autotools
 
 DESCRIPTION="LXDE session manager"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://wiki.lxde.org/en/LXSession"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm ppc x86 ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~arm-linux ~x86-linux"
 SLOT="0"
 
 # upower USE flag is enabled by default in the desktop profile
@@ -36,7 +36,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 PATCHES=(

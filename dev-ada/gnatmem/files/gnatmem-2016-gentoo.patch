@@ -1,9 +1,13 @@
 --- 1/configure.in.old	2016-12-08 20:57:53.942004080 +0100
 +++ 1/configure.in	2016-12-08 21:00:10.393677257 +0100
-@@ -6,19 +6,14 @@
- if test ${GNATBIND} = "no"; then
-    AC_MSG_ERROR(Ada compiler needed,1)
- fi
+@@ -2,23 +2,14 @@
+ AC_INIT(gnatmem.gpr.in)
+ AC_CANONICAL_SYSTEM
+ AC_PROG_CC(gcc)
+-AC_CHECK_TOOL(GNATBIND,gnatbind,"no")
+-if test ${GNATBIND} = "no"; then
+-   AC_MSG_ERROR(Ada compiler needed,1)
+-fi
 +AC_CONFIG_HEADERS(config.h:config.in)
 +AC_DEFINE_UNQUOTED(TARGET, "${target}", [Configured target name.])
  AC_ARG_WITH(binutils-buildtree,

@@ -13,7 +13,8 @@
     <email>php-bugs@gentoo.org</email>
   </maintainer>
   <longdescription>
-  	The Console component eases the creation of beautiful and testable command line interfaces.
+    The Console component eases the creation of beautiful and testable
+    command line interfaces.
   </longdescription>
   <upstream>
     <remote-id type="github">symfony/console</remote-id>

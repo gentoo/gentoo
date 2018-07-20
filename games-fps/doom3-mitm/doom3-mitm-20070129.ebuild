@@ -12,7 +12,7 @@ HOMEPAGE="http://www.jimwilkie.co.uk/mitm/"
 SRC_URI="MakeItToMorning1-6.zip"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="fetch"
 

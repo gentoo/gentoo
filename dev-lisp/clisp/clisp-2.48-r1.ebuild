@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
-inherit flag-o-matic eutils toolchain-funcs multilib
+inherit flag-o-matic eutils toolchain-funcs multilib xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="http://clisp.sourceforge.net/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="alpha amd64 ia64 ppc -sparc x86"
-IUSE="berkdb hyperspec X new-clx dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib"
+IUSE="berkdb hyperspec X new-clx dbus fastcgi gdbm gtk +pcre postgres +readline svm -threads +unicode +zlib"
 
 RDEPEND="virtual/libiconv
 		 >=dev-libs/libsigsegv-2.4
@@ -21,7 +21,6 @@ RDEPEND="virtual/libiconv
 		 fastcgi? ( dev-libs/fcgi )
 		 gdbm? ( sys-libs/gdbm )
 		 gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6:2.0 )
-		 pari? ( >=sci-mathematics/pari-2.3.0 )
 		 postgres? ( >=dev-db/postgresql-8.0 )
 		 readline? ( >=sys-libs/readline-5.0 )
 		 pcre? ( dev-libs/libpcre )
@@ -32,9 +31,12 @@ RDEPEND="virtual/libiconv
 		 berkdb? ( sys-libs/db:4.5 )"
 
 DEPEND="${RDEPEND}
-	X? ( new-clx? ( x11-misc/imake x11-proto/xextproto ) )"
+	X? ( new-clx? ( x11-base/xorg-proto x11-misc/imake ) )"
 
-PDEPEND="dev-lisp/gentoo-init"
+# dev-lisp/gentoo-init is obsolete, it will be dropped soon
+# This version of clisp is its last consumer
+# Bug 648448
+#PDEPEND="dev-lisp/gentoo-init"
 
 enable_modules() {
 	[[ $# = 0 ]] && die "${FUNCNAME[0]} must receive at least one argument"
@@ -58,6 +60,7 @@ src_prepare() {
 	if use alpha || use ia64; then
 		sed -i -e 's/-O2//g' src/makemake.in || die
 	fi
+	xdg_environment_reset
 }
 
 src_configure() {
@@ -103,7 +106,6 @@ src_configure() {
 	use fastcgi && enable_modules fastcgi
 	use gdbm && enable_modules gdbm
 	use gtk && enable_modules gtk2
-	use pari && enable_modules pari
 	use pcre && enable_modules pcre
 	use svm && enable_modules libsvm
 	use zlib && enable_modules zlib
@@ -141,9 +143,6 @@ src_install() {
 	doman clisp.1 || die
 	dodoc SUMMARY README* NEWS MAGIC.add ANNOUNCE || die
 	fperms a+x /usr/$(get_libdir)/clisp-${PV/_*/}/clisp-link || die
-	# stripping them removes common symbols (defined but uninitialised variables)
-	# which are then needed to build modules...
-	export STRIP_MASK="*/usr/$(get_libdir)/clisp-${PV}/*/*"
 	popd
 	dohtml doc/impnotes.{css,html} doc/regexp.html doc/clisp.png || die
 	dodoc doc/{CLOS-guide,LISP-tutorial}.txt || die

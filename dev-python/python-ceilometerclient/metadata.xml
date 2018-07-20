@@ -10,9 +10,9 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-    This is a client library for Ceilometer built on the Ceilometer API. It
-	provides a Python API (the ceilometerclient module) and a command-line tool (ceilometer).
-  </longdescription>
+		This is a client library for Ceilometer built on the Ceilometer API. It
+		provides a Python API (the ceilometerclient module) and a command-line tool (ceilometer).
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">python-ceilometerclient</remote-id>
 		<remote-id type="github">openstack/python-ceilometerclient</remote-id>

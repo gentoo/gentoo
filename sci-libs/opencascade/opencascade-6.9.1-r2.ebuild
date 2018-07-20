@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,9 +12,10 @@ SRC_URI="http://www.opencascade.com/sites/default/files/private/occt/OCC_${PV}_r
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc examples freeimage gl2ps java qt4 +tbb +vtk"
+IUSE="debug doc examples freeimage gl2ps java +tbb +vtk"
 
-DEPEND="app-eselect/eselect-opencascade
+DEPEND="
+	app-eselect/eselect-opencascade
 	dev-lang/tcl:0=
 	dev-lang/tk:0=
 	dev-tcltk/itcl
@@ -28,14 +29,16 @@ DEPEND="app-eselect/eselect-opencascade
 	gl2ps? ( x11-libs/gl2ps )
 	java? ( >=virtual/jdk-0:= )
 	tbb? ( dev-cpp/tbb )
-	vtk? ( || ( sci-libs/vtk[imaging] sci-libs/vtk[qt4] sci-libs/vtk[rendering] sci-libs/vtk[views] sci-libs/vtk[all-modules] ) )"
+	vtk? ( || ( sci-libs/vtk[imaging] sci-libs/vtk[rendering] sci-libs/vtk[views] sci-libs/vtk[all-modules] ) )"
 RDEPEND="${DEPEND}"
-
 CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
 
-PATCHES=( "${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch
-	"${FILESDIR}"/${PN}-6.9.1-vtk-configure.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch
+	"${FILESDIR}"/${PN}-6.9.1-vtk-configure.patch
+	"${FILESDIR}"/${PN}-6.9.1-vtk-8.1.patch
+)
 
 pkg_setup() {
 	check-reqs_pkg_setup
@@ -49,7 +52,7 @@ src_prepare() {
 	MY_VTK_PV=${MY_VTK_P/sci-libs\/vtk-}
 	MY_VTK_SUB=vtk-$(get_version_component_range 1-2 ${MY_VTK_PV})
 	if has_version ">=sci-libs/vtk-6.3" ; then #bug 605304
-		epatch "${FILESDIR}"/${PN}-6.9.1-vtk-6.3.patch
+		eapply "${FILESDIR}"/${PN}-6.9.1-vtk-6.3.patch
 	fi
 
 	java-pkg-opt-2_src_prepare
@@ -111,9 +114,15 @@ TCL_LIBRARY=${my_sys_lib}/tcl$(grep TCL_VER /usr/include/tcl.h | sed 's/^.*"\(.*
 
 	sed -e "/^AM_C_PROTOTYPES$/d" \
 		-e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" \
-		-e "s:\$qt/include:\$qt/include/qt4:g"\
-		-e "s:\$qt/lib:\$qt/$(get_libdir)/qt4:g"\
+		-e "/\$qt directory is not exists/s/AC_MSG_ERROR/AC_MSG_NOTICE/" \
 		-i configure.ac || die
+
+	# no longer needed https://tracker.dev.opencascade.org/view.php?id=28971
+	if has_version ">=sys-libs/glibc-2.26" ; then
+		sed -e '/#include <xlocale.h>/d' \
+			-i inc/Standard_CLocaleSentry.hxx || die
+	fi
+
 	eautoreconf
 }
 
@@ -123,9 +132,9 @@ src_configure() {
 		--with-tcl="${EROOT}usr/$(get_libdir)" --with-tk="${EROOT}usr/$(get_libdir)" \
 		--with-freetype="${EROOT}usr" \
 		--with-ftgl="${EROOT}usr" \
+		--without-qt \
 		$(usex freeimage "--with-freeimage=${EROOT}usr" "") \
 		$(usex gl2ps "--with-gl2ps=${EROOT}usr" "") \
-		$(usex qt4 "--with-qt=${EROOT}usr" "") \
 		$(usex tbb "--with-tbb-include=${EROOT}usr" "") \
 		$(usex tbb "--with-tbb-library=${EROOT}usr" "") \
 		$(use java && echo "--with-java-include=$(java-config -O)/include" || echo "--without-java-include") \
@@ -162,9 +171,7 @@ src_install() {
 
 pkg_postinst() {
 	eselect ${PN} set ${PV}
-	einfo
 	elog "After upgrading OpenCASCADE you may have to rebuild packages depending on it."
 	elog "You get a list by running \"equery depends sci-libs/opencascade\""
 	elog "revdep-rebuild does NOT suffice."
-	einfo
 }

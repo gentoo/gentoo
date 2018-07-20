@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ inherit base openib toolchain-funcs
 
 DESCRIPTION="OpenIB userspace rds-tools"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux"
 IUSE=""
 
 DEPEND="sys-fabric/libibverbs:${SLOT}"

@@ -39,6 +39,7 @@ DOCS=( AUTHORS )
 src_prepare() {
 	default
 	epatch "${FILESDIR}"/cron-confd.patch
+	epatch "${FILESDIR}/${P}"-gcc6.patch
 }
 
 src_configure() {

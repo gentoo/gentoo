@@ -15,7 +15,7 @@ test-makeopts_loadavg() {
 		tend 1 "Mismatch between MAKEOPTS/cli: '${indirect}' != '${direct}'"
 	else
 		[[ ${direct} == "${exp}" ]]
-		tend $? "Got back: ${act}"
+		tend $? "Got back: ${direct}"
 	fi
 }
 
@@ -35,6 +35,8 @@ tests=(
 	999 "-kl"
 	4 "-kl4"
 	5 "-kl 5"
+	2.3 "-l 2.3"
+	999 "-l 2.3.4"
 )
 for (( i = 0; i < ${#tests[@]}; i += 2 )) ; do
 	test-makeopts_loadavg "${tests[i]}" "${tests[i+1]}"

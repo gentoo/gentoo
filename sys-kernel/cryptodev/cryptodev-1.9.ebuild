@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit linux-info linux-mod
 
 DESCRIPTION="device that allows access to Linux kernel cryptographic drivers"
 HOMEPAGE="http://cryptodev-linux.org/index.html"
-SRC_URI="http://download.gna.org/cryptodev-linux/${PN}-linux-${PV}.tar.gz"
+SRC_URI="http://nwl.cc/pub/cryptodev-linux/${PN}-linux-${PV}.tar.gz"
 KEYWORDS="~amd64 ~arm ~x86"
 
 LICENSE="GPL-2+"
@@ -21,6 +21,8 @@ RESTRICT="test"
 S=${WORKDIR}/${PN}-linux-${PV}
 
 MODULE_NAMES="cryptodev(extra:${S})"
+
+PATCHES="${FILESDIR}/cryptodev-1.9-fix-build-with-4.14-629958.patch"
 
 pkg_pretend() {
 	if use kernel_linux ; then

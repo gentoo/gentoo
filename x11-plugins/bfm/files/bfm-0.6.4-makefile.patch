@@ -1,5 +1,5 @@
---- Makefile.orig	2015-01-20 10:56:34.791157688 +0100
-+++ Makefile	2015-01-20 10:56:48.135154215 +0100
+--- a/Makefile	2015-01-20 10:56:34.791157688 +0100
++++ b/Makefile	2015-01-20 10:56:48.135154215 +0100
 @@ -26,21 +26,21 @@
  EXTRA += $(WMAN)
  
@@ -33,7 +33,7 @@
  GKRELLM_OBJS = gkrellm-bfm.o
  GKRELLM_BFM = gkrellm-bfm.so
 -LDFLAGS = -shared -Wl
-+LDFLAGS += -shared -Wl
++LDFLAGS += -shared
  
 -STRIP = strip
 +STRIP = true

@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/623492
+Backported from: https://github.com/msgpack/msgpack-c/commit/66a5fcf8f1a9e57b02904a6ac55a86a9c74ea1de
+
+--- a/include/msgpack/adaptor/detail/cpp11_msgpack_tuple.hpp
++++ b/include/msgpack/adaptor/detail/cpp11_msgpack_tuple.hpp
+@@ -46,13 +46,14 @@
+     public:
+         using base = std::tuple<Types...>;
+ 
+-        using base::base;
+ 
+-        tuple() = default;
+         tuple(tuple const&) = default;
+         tuple(tuple&&) = default;
+ 
+         template<typename... OtherTypes>
++        tuple(OtherTypes&&... other):base(std::forward<OtherTypes>(other)...) {}
++
++        template<typename... OtherTypes>
+         tuple(tuple<OtherTypes...> const& other):base(static_cast<std::tuple<OtherTypes...> const&>(other)) {}
+         template<typename... OtherTypes>
+         tuple(tuple<OtherTypes...> && other):base(static_cast<std::tuple<OtherTypes...> &&>(other)) {}

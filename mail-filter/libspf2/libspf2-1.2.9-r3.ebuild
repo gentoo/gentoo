@@ -4,7 +4,7 @@
 EAPI=4
 inherit eutils autotools
 
-DESCRIPTION="libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocol pair"
+DESCRIPTION="libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols"
 HOMEPAGE="http://www.libspf2.org"
 SRC_URI="http://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
 

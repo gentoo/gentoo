@@ -2,8 +2,8 @@ Add more checks to prevent segfaults in ill-formatted files
 
 http://bugs.gentoo.org/show_bug.cgi?id=90540
 
---- bin2iso19b_linux.c
-+++ bin2iso19b_linux.c
+--- a/bin2iso19b_linux.c
++++ b/bin2iso19b_linux.c
 @@ -237,6 +237,10 @@
     // Get the 'mode'
     if (strncmp(&Line[2], "TRACK ", 6)==0) 

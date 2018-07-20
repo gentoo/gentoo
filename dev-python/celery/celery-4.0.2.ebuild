@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1 bash-completion-r1
 
 DESCRIPTION="Asynchronous task queue/job queue based on distributed message passing"
-HOMEPAGE="http://celeryproject.org/ https://pypi.python.org/pypi/celery"
+HOMEPAGE="http://celeryproject.org/ https://pypi.org/project/celery/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -32,6 +32,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
+		dev-python/eventlet[${PYTHON_USEDEP}]
 		dev-python/gevent[$(python_gen_usedep python2_7)]
 		>=dev-python/pymongo-2.6.2[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
@@ -43,6 +44,7 @@ DEPEND="
 		>=dev-python/boto-2.13.3[${PYTHON_USEDEP}]
 		>=dev-python/pyzmq-13.1.0[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
+		>=dev-python/unittest2-0.5.1[${PYTHON_USEDEP}]
 	)
 	doc? (
 		dev-python/docutils[${PYTHON_USEDEP}]

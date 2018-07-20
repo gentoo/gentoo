@@ -7,11 +7,11 @@ GIT_TAG="3a0b7b74982f44c735f4cfc2dccf538c3c4ef9e2"
 
 DESCRIPTION="Gnulib is a library of common routines intended to be shared at the source level"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
-SRC_URI="http://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.gz"
+SRC_URI="https://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${GIT_TAG}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc-aix ~x86-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~ppc-aix ~x86-fbsd ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc"
 
 S="${WORKDIR}/${PN}-${GIT_TAG}"
@@ -39,5 +39,5 @@ src_install() {
 	doexe gnulib-tool
 
 	# create and install the wrapper
-	dosym /usr/share/${PN}/gnulib-tool /usr/bin/gnulib-tool
+	dosym ../share/${PN}/gnulib-tool /usr/bin/gnulib-tool
 }

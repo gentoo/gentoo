@@ -32,8 +32,7 @@ DEPEND="${RDEPEND}
 	x11-libs/libXt
 	x11-libs/libXmu
 	x11-libs/libXrender
-	x11-proto/xproto
-	xrandr? ( x11-proto/randrproto )"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)-src
 

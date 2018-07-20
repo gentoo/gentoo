@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1 eutils
 
 DESCRIPTION="A fast and simple micro-framework for small web-applications"
-HOMEPAGE="https://pypi.python.org/pypi/bottle http://bottlepy.org/"
+HOMEPAGE="https://pypi.org/project/bottle/ http://bottlepy.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
 IUSE="test"
 
-DEPEND="test? ( dev-python/mako[$(python_gen_usedep 'python*')] )"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/mako[$(python_gen_usedep 'python*')] )"
 RDEPEND=""
 
 PATCHES=(

@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="A collection of pathological tools for testing and torturing HTTP clients and servers"
+DESCRIPTION="A collection of tools for testing and torturing HTTP clients and servers"
 HOMEPAGE="http://pathod.net/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

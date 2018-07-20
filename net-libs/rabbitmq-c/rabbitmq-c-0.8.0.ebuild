@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,10 +10,10 @@ HOMEPAGE="https://github.com/alanxz/rabbitmq-c"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/alanxz/rabbitmq-c.git"
+	EGIT_REPO_URI="https://github.com/alanxz/${PN}.git"
 else
-	SRC_URI="https://github.com/alanxz/rabbitmq-c/archive/v${PV}.zip -> ${PN}-v${PV}.zip"
-	KEYWORDS="amd64 arm ~arm64 hppa x86"
+	SRC_URI="https://github.com/alanxz/${PN}/archive/v${PV}.zip -> ${PN}-v${PV}.zip"
+	KEYWORDS="amd64 arm arm64 hppa ia64 ~ppc ~ppc64 ~sparc x86"
 fi
 
 LICENSE="MIT"

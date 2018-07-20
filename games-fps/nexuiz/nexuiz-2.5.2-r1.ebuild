@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa dedicated maps opengl sdl"
 
 # no headers for libpng needed
@@ -34,10 +34,7 @@ UIRDEPEND="
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	sdl? ( media-libs/libsdl[joystick,opengl,video] )"
-UIDEPEND="x11-proto/xextproto
-	x11-proto/xf86dgaproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xproto"
+UIDEPEND="x11-base/xorg-proto"
 RDEPEND="virtual/jpeg:0
 	net-misc/curl
 	opengl? ( ${UIRDEPEND} )

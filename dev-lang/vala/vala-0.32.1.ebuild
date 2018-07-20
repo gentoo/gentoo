@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,9 +24,13 @@ DEPEND="${RDEPEND}
 	virtual/yacc
 	test? (
 		dev-libs/dbus-glib
-		>=dev-libs/glib-2.26:2 )
+		>=dev-libs/glib-2.26:2
+		dev-libs/gobject-introspection )
 "
 
 src_configure() {
+	# bug 483134
+	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
+
 	gnome2_src_configure --disable-unversioned
 }

@@ -30,6 +30,8 @@
     <remote-id type="cpan-module">Mail::Message::Field::Address</remote-id>
     <remote-id type="cpan-module">Mail::Message::Field::Addresses</remote-id>
     <remote-id type="cpan-module">Mail::Message::Field::Attribute</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::AuthResults</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::DKIM</remote-id>
     <remote-id type="cpan-module">Mail::Message::Field::Date</remote-id>
     <remote-id type="cpan-module">Mail::Message::Field::Fast</remote-id>
     <remote-id type="cpan-module">Mail::Message::Field::Flex</remote-id>

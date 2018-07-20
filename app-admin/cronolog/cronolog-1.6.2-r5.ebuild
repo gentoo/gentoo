@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Log rotation software"
 HOMEPAGE="https://github.com/fordmason/cronolog"
@@ -11,7 +11,7 @@ SRC_URI="http://cronolog.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2+ Apache-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ppc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-patches
@@ -19,10 +19,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-umask.patch
 )
 
-DOCS=( AUTHORS ChangeLog INSTALL NEWS README TODO )
-
 src_prepare() {
 	default
-	mv configure.in configure.ac || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }

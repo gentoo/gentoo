@@ -1,15 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit prefix
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/openrc/${PN}"
+	EGIT_REPO_URI="https://github.com/openrc/${PN}"
 else
 	SRC_URI="https://github.com/openrc/${PN}/archive/${PV}.tar.gz ->
 		${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 DESCRIPTION="A standalone utility to process systemd-style tmpfiles.d files"
@@ -22,8 +23,13 @@ IUSE="selinux"
 RDEPEND="!<sys-apps/openrc-0.23
 	selinux? ( sec-policy/selinux-base-policy )"
 
-src_install() {
+src_prepare() {
 	default
+	hprefixify tmpfiles
+}
+src_install() {
+	emake DESTDIR="${ED}" install
+	einstalldocs
 	cd openrc
 	for f in opentmpfiles-dev opentmpfiles-setup; do
 		newconfd ${f}.confd ${f}

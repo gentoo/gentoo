@@ -16,6 +16,8 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
+inherit multiprocessing
+
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
 IUSE="${IUSE} debug"
@@ -31,9 +33,14 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 cargo_crate_uris() {
 	local crate
 	for crate in "$@"; do
-		local name version url
+		local name version url pretag
 		name="${crate%-*}"
 		version="${crate##*-}"
+		pretag="[a-zA-Z]+"
+		if [[ $version =~ $pretag ]]; then
+			version="${name##*-}-${version}"
+			name="${name%-*}"
+		fi
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
 		echo "${url}"
 	done
@@ -48,7 +55,7 @@ cargo_src_unpack() {
 	mkdir -p "${ECARGO_VENDOR}" || die
 	mkdir -p "${S}" || die
 
-	local archive
+	local archive shasum pkg
 	for archive in ${A}; do
 		case "${archive}" in
 			*.crate)
@@ -112,7 +119,7 @@ cargo_src_compile() {
 
 	export CARGO_HOME="${ECARGO_HOME}"
 
-	cargo build -v $(usex debug "" --release) \
+	cargo build -v -j $(makeopts_jobs) $(usex debug "" --release) \
 		|| die "cargo build failed"
 }
 
@@ -122,7 +129,7 @@ cargo_src_compile() {
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cargo install --root="${D}/usr" $(usex debug --debug "") \
+	cargo install -j $(makeopts_jobs) --root="${D}/usr" $(usex debug --debug "") \
 		|| die "cargo install failed"
 	rm -f "${D}/usr/.crates.toml"
 

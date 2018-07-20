@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Interface Python with pkg-config"
-HOMEPAGE="https://pypi.python.org/pypi/pkgconfig/ https://github.com/matze/pkgconfig"
+HOMEPAGE="https://pypi.org/project/pkgconfig/ https://github.com/matze/pkgconfig"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

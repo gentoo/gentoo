@@ -1,0 +1,30 @@
+From 39201312abf108ad5af4ff304484379154a237f1 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 27 Dec 2017 13:32:01 +1300
+Subject: Use NULL render device
+
+This absolves us from needing X11 for testing, while allowing
+explitly testing via X11 possible, including interactively if need be
+---
+ test.pl | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test.pl b/test.pl
+index d1b75ca..95f7c25 100755
+--- a/test.pl
++++ b/test.pl
+@@ -22,9 +22,9 @@ else {$note = ''}
+ if ($ENV{'PGPLOT_DEV'}) {
+     $dev = $ENV{'PGPLOT_DEV'};
+ } else {
+-print "Default Device for plot tests [recommend /XSERVE] ? $note ";
++print "Default Device for plot tests [recommend /NULL] ? $note ";
+ $dev = <STDIN>; chomp $dev;
+-$dev = "/XSERVE" unless $dev=~/\w/;
++$dev = "/NULL" unless $dev=~/\w/;
+ }
+ 
+ if($dev eq '/PNG' && $^O =~ /mswin32/i) {system "del /F /Q *.png"};
+-- 
+2.15.1
+

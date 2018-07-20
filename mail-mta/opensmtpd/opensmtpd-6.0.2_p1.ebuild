@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib user flag-o-matic eutils pam toolchain-funcs autotools systemd versionator
 
 DESCRIPTION="Lightweight but featured SMTP daemon from OpenBSD"
-HOMEPAGE="http://www.opensmtpd.org/"
+HOMEPAGE="https://www.opensmtpd.org"
 MY_P="${P}"
 if [ $(get_last_version_component_index) -eq 4 ]; then
 	MY_P="${PN}-$(get_version_component_range 4-)"

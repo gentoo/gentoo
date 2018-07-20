@@ -1,13 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/musl
 sys-libs/glibc
 sys-libs/pam
-
-# Currenlty =sys-apps/openrc-0.26.2 makes uclibc systems unbootable.
-# See bug #619370
->sys-apps/openrc-0.23.2
 
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
@@ -15,6 +11,7 @@ sys-fs/udev
 
 # Working on it, bug #470884
 dev-libs/elfutils
+>virtual/libelf-2
 
 # These binary pkgs have a hard dep on glibc; make repoman shut up
 app-arch/rar
@@ -24,7 +21,7 @@ games-action/descent3
 games-action/descent3-demo
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
-games-action/trine-bin
+games-action/trine
 games-arcade/marbleblastgold-demo
 games-fps/enemy-territory
 games-fps/enemy-territory-etpro
@@ -60,7 +57,6 @@ games-fps/ut2004-troopers
 games-fps/ut2004-unwheel
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
-games-rpg/nwmouse
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/ut2004-ded
@@ -80,10 +76,10 @@ games-action/hotline-miami
 games-action/intrusion2
 games-action/solar2
 games-action/swordandsworcery
+games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/dynamitejack
 games-arcade/thinktanks-demo
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-rpg/dear-esther

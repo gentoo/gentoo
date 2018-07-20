@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>mythtv@gentoo.org</email>
-		<name>MythTV</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="alsa">Allows MythTV to directly output sound to ALSA devices,
 		this is needed if you are using ALSA dmix or SPDIF. Note, you will have
@@ -26,9 +23,6 @@
 		'release' target. If your MythTV is crashing or you need a backtrace,
 		you need to compile it with this option otherwise the debugging data is
 		useless.</flag>
-		<flag name="dvb">Enables support for Linux DVB cards. These include all
-		cards that work with digital signals such as ATSC, DVB-T, DVB-C, and
-		DVB-S, QAM-64, and QAM-256.</flag>
 		<flag name="egl">Support EGL video output.</flag>
 		<flag name="fftw">Support visualizations via <pkg>sci-libs/fftw</pkg></flag>
 		<flag name="hls">HTTP Live Streaming support</flag>

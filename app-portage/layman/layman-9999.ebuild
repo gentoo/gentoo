@@ -6,11 +6,10 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 PYTHON_REQ_USE="xml(+),sqlite?"
 
-inherit eutils distutils-r1 git-2 linux-info prefix
+inherit eutils distutils-r1 git-r3 linux-info prefix
 
 DESCRIPTION="Tool to manage Gentoo overlays"
 HOMEPAGE="http://layman.sourceforge.net"
-SRC_URI=""
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/layman.git"
 
 LICENSE="GPL-2"
@@ -37,8 +36,18 @@ RDEPEND="
 		)
 	)
 	gpg? ( >=dev-python/pyGPG-0.2 )
-	sync-plugin-portage?  ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
-	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
+	sync-plugin-portage? (
+		|| (
+			>=sys-apps/portage-2.2.16[${PYTHON_USEDEP}]
+			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+		)
+	)
+	!sync-plugin-portage? (
+		|| (
+			sys-apps/portage[${PYTHON_USEDEP}]
+			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+		)
+	)
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 	"
 

@@ -3,14 +3,19 @@
 
 EAPI=6
 
+KDE_EXAMPLES="true"
+KDE_TEST="true"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Powerful libraries (KChart, KGantt) for creating business diagrams"
 HOMEPAGE="https://www.kde.org/"
 IUSE=""
 
+REQUIRED_USE="test? ( examples )"
+
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 fi
 

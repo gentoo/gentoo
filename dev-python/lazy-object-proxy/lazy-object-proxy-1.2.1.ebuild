@@ -10,13 +10,13 @@ inherit distutils-r1
 DESCRIPTION="A fast and thorough lazy object proxy"
 HOMEPAGE="
 	https://github.com/ionelmc/python-lazy-object-proxy
-	http://pypi.python.org/pypi/lazy-object-proxy
+	https://pypi.org/project/lazy-object-proxy/
 	https://python-lazy-object-proxy.readthedocs.org/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND=""

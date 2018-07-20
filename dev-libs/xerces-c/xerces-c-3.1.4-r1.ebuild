@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools
+inherit autotools prefix
 
 DESCRIPTION="A validating XML parser written in a portable subset of C++"
-HOMEPAGE="http://xerces.apache.org/xerces-c/"
+HOMEPAGE="https://xerces.apache.org/xerces-c/"
 SRC_URI="mirror://apache/xerces/c/3/sources/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="cpu_flags_x86_sse2 curl doc elibc_Darwin elibc_FreeBSD examples iconv icu static-libs test threads"
 
@@ -111,6 +111,6 @@ src_install () {
 	# To make sure an appropriate NLS msg file is around when using
 	# the iconv msgloader ICU has the messages compiled in.
 	if use iconv && ! use icu; then
-		doenvd "${FILESDIR}/50xerces-c"
+		doenvd "$(prefixify_ro "${FILESDIR}/50xerces-c")"
 	fi
 }

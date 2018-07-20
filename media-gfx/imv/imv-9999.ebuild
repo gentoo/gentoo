@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit fdo-mime git-r3
+inherit xdg-utils git-r3
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
@@ -26,9 +26,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

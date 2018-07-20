@@ -5,8 +5,8 @@ EAPI=6
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Simple X selection printer"
-HOMEPAGE="http://tools.suckless.org/x/sselp"
-EGIT_REPO_URI="git://git.suckless.org/sselp"
+HOMEPAGE="https://tools.suckless.org/x/sselp"
+EGIT_REPO_URI="https://git.suckless.org/sselp"
 
 LICENSE="MIT"
 SLOT="0"

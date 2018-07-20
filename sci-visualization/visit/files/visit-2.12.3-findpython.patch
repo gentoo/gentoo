@@ -1,0 +1,19 @@
+diff -ru visit2.7.1.old/src/CMake/FindVisItPython.cmake visit2.7.1.new/src/CMake/FindVisItPython.cmake
+--- a/CMake/FindVisItPython.cmake	2013-09-13 21:06:57.000000000 +0200
++++ b/CMake/FindVisItPython.cmake	2014-01-25 20:30:06.948654123 +0100
+@@ -141,11 +141,12 @@
+   FIND_LIBRARY(PYTHON_LIBRARY
+     NAMES python${_CURRENT_VERSION_NO_DOTS} python${_CURRENT_VERSION}
+     PATHS
+-      ${PYTHON_DIR}/lib
+-      ${PYTHON_DIR}/libs
+-      [HKEY_LOCAL_MACHINE\\SOFTWARE\\Python\\PythonCore\\${_CURRENT_VERSION}\\InstallPath]/libs
++    ${PYTHON_DIR}/lib
++    ${PYTHON_DIR}/lib64
++    ${PYTHON_DIR}/libs
++    [HKEY_LOCAL_MACHINE\\SOFTWARE\\Python\\PythonCore\\${_CURRENT_VERSION}\\InstallPath]/libs
+     NO_DEFAULT_PATH
+     NO_CMAKE_ENVIRONMENT_PATH
+     NO_CMAKE_PATH
+     NO_SYSTEM_ENVIRONMENT_PATH)
+ 

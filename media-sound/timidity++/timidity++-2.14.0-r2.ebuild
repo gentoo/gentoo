@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ DEPEND="ncurses? ( >=sys-libs/ncurses-5 )
 	nas? ( >=media-libs/nas-1.4 )
 	alsa? ( media-libs/alsa-lib )
 	slang? ( sys-libs/slang )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	vorbis? ( media-libs/libvorbis )
 	flac? ( media-libs/flac )
 	speex? ( media-libs/speex )

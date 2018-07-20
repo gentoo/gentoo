@@ -1,7 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
+
 inherit eutils
 
 DESCRIPTION="RATS - Rough Auditing Tool for Security"
@@ -13,21 +14,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
-DEPEND="dev-libs/expat"
+RDEPEND="dev-libs/expat:="
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.4-fix-build-system.patch )
 
 src_prepare() {
-	edos2unix $(find "${S}" -name '*.[chl]' -o -name '*.in' -o -name '*.am')
-	#epatch "${FILESDIR}"/${PN}-2.1-add-getopt-trailing-null.patch
-	#epatch "${FILESDIR}"/${PN}-2.1-fix-null-pointers.patch
+	default
+
+	local f
+	while IFS="" read -d $'\0' -r f; do
+		einfo "Converting ${f} from CRLF to LF"
+		edos2unix "${f}"
+	done < <(find \( -name '*.[chl]' -o -name '*.in' -o -name '*.am' \) -print0)
 }
 
 src_configure() {
 	econf --datadir="${EPREFIX}/usr/share/${PN}/"
-}
-
-src_install () {
-	einstall SHAREDIR="${ED}/usr/share/${PN}" MANDIR="${ED}/usr/share/man"
-	dodoc README README.win32
 }
 
 pkg_postinst() {

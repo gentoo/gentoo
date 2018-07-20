@@ -11,5 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">whisper</remote-id>
+		<remote-id type="github">graphite-project/whisper</remote-id>
+		<bugs-to>https://github.com/graphite-project/whisper/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

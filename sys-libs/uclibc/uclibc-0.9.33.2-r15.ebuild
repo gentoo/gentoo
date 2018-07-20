@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 inherit eutils flag-o-matic multilib toolchain-funcs savedconfig
@@ -27,7 +27,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug hardened iconv ipv6 nptl rpc ssp uclibc-compat wordexp crosscompile_opts_headers-only"
+IUSE="debug hardened iconv ipv6 nptl rpc ssp uclibc-compat wordexp headers-only"
 RESTRICT="strip"
 
 # We cannot migrate between uclibc and uclibc-ng because as soon as portage
@@ -49,7 +49,7 @@ alt_build_kprefix() {
 }
 
 just_headers() {
-	use crosscompile_opts_headers-only && is_crosscompile
+	use headers-only && is_crosscompile
 }
 
 uclibc_endian() {

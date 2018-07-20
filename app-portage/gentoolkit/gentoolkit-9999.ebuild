@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-PYTHON_COMPAT=(python{2_7,3_4,3_5} pypy)
+PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6} pypy)
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1 git-r3
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/gentoolkit.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
@@ -20,7 +20,11 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
+DEPEND="
+	|| (
+		sys-apps/portage[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)"
 RDEPEND="${DEPEND}
 	!app-portage/gentoolkit-dev
 	sys-apps/gawk

@@ -11,12 +11,12 @@ SRC_URI="http://xpenguins.seul.org/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 src_install() {
 	default

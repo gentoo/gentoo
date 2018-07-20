@@ -1,0 +1,21 @@
+--- src/qt-console/bat.pro.in.orig	2018-02-18 16:17:21.027921363 +0100
++++ src/qt-console/bat.pro.in	2018-02-18 16:18:12.554137528 +0100
+@@ -12,7 +12,7 @@
+ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+ 
+ bins.path = /$(DESTDIR)@sbindir@
+-bins.files = bat
++bins.files = .libs/bat
+ confs.path = /$(DESTDIR)@sysconfdir@
+ confs.commands = ./install_conf_file
+ help.path = /$(DESTDIR)@docdir@
+@@ -29,6 +29,9 @@
+ QMAKE_LINK   = $${LIBTOOL_LINK} $(CXX)
+ QMAKE_INSTALL_PROGRAM = $${LIBTOOL_INSTALL} install -m @SBINPERM@ -p
+ QMAKE_CLEAN += .libs/* bat
++QMAKE_LFLAGS += @LDFLAGS@
++QMAKE_CFLAGS += @CFLAGS@
++QMAKE_CXXFLAGS += @CXXFLAGS@
+ 
+ qwt {
+   INCLUDEPATH += @QWT_INC@

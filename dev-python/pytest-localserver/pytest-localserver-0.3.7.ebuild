@@ -7,12 +7,12 @@ PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6} pypy)
 inherit distutils-r1
 
 DESCRIPTION="Py.test plugin to test server connections locally"
-HOMEPAGE="https://pypi.python.org/pypi/pytest-localserver"
+HOMEPAGE="https://pypi.org/project/pytest-localserver/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/werkzeug-0.10[${PYTHON_USEDEP}]"

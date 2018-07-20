@@ -12,27 +12,34 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils flag-o-matic llvm python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
-HOMEPAGE="http://llvm.org/"
-SRC_URI="http://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
+HOMEPAGE="https://llvm.org/"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="${PV%_*}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+clang test"
 
-LLVM_SLOT=${SLOT%%.*}
+CLANG_SLOT=${SLOT%%.*}
 RDEPEND="!=sys-libs/compiler-rt-${SLOT}*:0"
 # llvm-4 needed for --cmakedir
 DEPEND="
 	>=sys-devel/llvm-4
 	clang? ( sys-devel/clang )
-	test? ( =sys-devel/clang-${PV%_*}*:${LLVM_SLOT} )
+	test? ( =sys-devel/clang-${PV%_*}*:${CLANG_SLOT} )
 	${PYTHON_DEPS}"
 
 S=${WORKDIR}/${P/_/}.src
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
+
+pkg_pretend() {
+	if ! use clang && ! tc-is-clang; then
+		ewarn "Building using a compiler other than clang may result in broken atomics"
+		ewarn "library. Enable USE=clang unless you have a very good reason not to."
+	fi
+}
 
 pkg_setup() {
 	llvm_pkg_setup
@@ -48,17 +55,17 @@ src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
 
+	local nolib_flags=( -nodefaultlibs -lc )
 	if use clang; then
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
 		# ensure we can use clang before installing compiler-rt
-		local -x LDFLAGS="${LDFLAGS} -nodefaultlibs -lc"
+		local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
 		strip-unsupported-flags
 	elif ! test_compiler; then
-		local extra_flags=( -nodefaultlibs -lc )
-		if test_compiler "${extra_flags[@]}"; then
-			local -x LDFLAGS="${LDFLAGS} ${extra_flags[*]}"
-			ewarn "${CC} seems to lack runtime, trying with ${extra_flags[*]}"
+		if test_compiler "${nolib_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
+			ewarn "${CC} seems to lack runtime, trying with ${nolib_flags[*]}"
 		fi
 	fi
 
@@ -81,9 +88,9 @@ src_test() {
 	# prepare a test compiler
 	# copy clang over since resource_dir is located relatively to binary
 	# therefore, we can put our new libraries in it
-	mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_SLOT}{/bin,$(get_libdir)},clang/${SLOT}/include} || die
-	cp "${EPREFIX}"/usr/lib/llvm/${LLVM_SLOT}/bin/clang{,++} \
-		"${BUILD_DIR}"/lib/llvm/${LLVM_SLOT}/bin/ || die
+	mkdir -p "${BUILD_DIR}"/lib/{llvm/${CLANG_SLOT}{/bin,$(get_libdir)},clang/${SLOT}/include} || die
+	cp "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/bin/clang{,++} \
+		"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/bin/ || die
 	cp "${EPREFIX}/usr/lib/clang/${SLOT}/include"/*.h \
 		"${BUILD_DIR}/lib/clang/${SLOT}/include/" || die
 
@@ -121,7 +128,7 @@ src_test() {
 		einfo "Running tests for ABI=${ABI}"
 		# use -k to run all tests even if some fail
 		emake -k \
-			CC="${BUILD_DIR}/lib/llvm/${LLVM_SLOT}/bin/clang" \
+			CC="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang" \
 			CFLAGS="$(get_abi_CFLAGS)" \
 			CPPFLAGS='-I../../../lib/builtins' \
 			LDFLAGS='-rtlib=compiler-rt' \

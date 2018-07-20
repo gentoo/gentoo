@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 
-inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib
+inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib xdg-utils
 
-PATCHSET_VER="0"
+PATCHSET_VER="1"
 MY_P=${PN}-srcdist-${PV}
 
 DESCRIPTION="Mercury is a modern general-purpose logic/functional programming language"
@@ -44,6 +44,8 @@ src_prepare() {
 
 	cd "${S}" || die
 	eautoconf
+
+	xdg_environment_reset
 }
 
 src_configure() {
@@ -67,7 +69,7 @@ src_configure() {
 src_compile() {
 	# Build Mercury using base llds grade
 	emake \
-		PARALLEL=${MAKEOPTS} \
+		PARALLEL="'${MAKEOPTS}'" \
 		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
 			    EXTRA_LDFLAGS='${LDFLAGS}' \
 			    EXTRA_LD_LIBFLAGS='${LDFLAGS}'" \
@@ -86,7 +88,7 @@ src_compile() {
 
 	# Rebuild Mercury compiler using the just built mercury_compiler
 	emake \
-		PARALLEL=${MAKEOPTS} \
+		PARALLEL="'${MAKEOPTS}'" \
 		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
 			    EXTRA_LDFLAGS='${LDFLAGS}' \
 			    EXTRA_LD_LIBFLAGS='${LDFLAGS}'" \
@@ -97,7 +99,7 @@ src_compile() {
 	# compile the llds base grade. Since src_test() is run before
 	# src_install() we compile the default grade now
 	emake \
-		PARALLEL=${MAKEOPTS} \
+		PARALLEL="'${MAKEOPTS}'" \
 		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
 			    EXTRA_LDFLAGS='${LDFLAGS}' \
 			    EXTRA_LD_LIBFLAGS='${LDFLAGS}'" \
@@ -139,8 +141,9 @@ src_test() {
 
 src_install() {
 	emake \
-		PARALLEL=${MAKEOPTS} \
-		MMAKEFLAGS="EXTRA_LDFLAGS='${LDFLAGS}' \
+		PARALLEL="'${MAKEOPTS}'" \
+		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
+			    EXTRA_LDFLAGS='${LDFLAGS}' \
 			    EXTRA_LD_LIBFLAGS='${LDFLAGS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		INSTALL_PREFIX="${D}"/usr \

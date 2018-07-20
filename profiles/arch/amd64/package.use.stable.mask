@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,13 +17,37 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+net-analyzer/wireshark -doc
+
+# Thomas Beierlein <tomjbe@gentoo.org> (20 Apr 2018)
+# Needs asciidoctor which pulls a lot unstable ruby deps
+media-radio/wsjtx doc
+
+# Mikle Kolyada <zlogene@gentoo.org> (18 Mar 2018)
+# Pulls too much unstable ruby deps (some are not even keyworded)
+net-misc/chrony html
+
+# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Required dependeny is not stable
+sci-libs/gdal oracle
+
+# NP-Hardass <NP-Hardass@gentoo.org> (27 Sep 2017)
+# patchset variants are not stable
+virtual/wine d3d9 staging
+
+# Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
+# Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
+# dep tree to be stabilized at this time.
+>=net-irc/weechat-1.7 doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
 # Requires not yet stabilised dev-db/oracle-instantclient.
 sci-geosciences/qgis oracle
 
 # Christoph Junghans <junghans@gentoo.org> (26 Feb 2017)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Brian Evans <grknight@gentoo.org> (17 Jan 2017)
 # Stable mask groonga on mariadb as I don't know how stable
@@ -35,28 +59,12 @@ dev-db/mariadb mroonga
 # and additional unstable dependencies
 gnustep-base/gnustep-make libobjc2
 
-# Yixun Lan <dlan@gentoo.org> (02 Apr 2015)
-# sys-fs/zfs is not stable.
-sys-cluster/ceph zfs
-
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
 dev-python/apptools test
-
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3
-
-# Mike Gilbert <floppym@gentoo.org> (22 Mar 2014)
-# sys-fs/zfs is not stable.
-sys-boot/grub libzfs
-
-# Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
-# [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
-www-apps/cgit jit

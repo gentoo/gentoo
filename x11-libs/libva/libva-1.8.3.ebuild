@@ -30,7 +30,7 @@ else
 fi
 IUSE="+drm egl opengl vdpau wayland X utils"
 
-VIDEO_CARDS="nvidia intel i965 fglrx nouveau"
+VIDEO_CARDS="nvidia intel i965 nouveau"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
@@ -50,10 +50,6 @@ DEPEND="${RDEPEND}
 PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
 	video_cards_nouveau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r3[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
-	video_cards_fglrx? (
-		|| ( >=x11-drivers/ati-drivers-14.12-r3[${MULTILIB_USEDEP}]
-			>=x11-libs/xvba-video-0.8.0-r1[${MULTILIB_USEDEP}] )
-		)
 	video_cards_intel? ( >=x11-libs/libva-intel-driver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	video_cards_i965? ( >=x11-libs/libva-intel-driver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	utils? ( media-video/libva-utils )

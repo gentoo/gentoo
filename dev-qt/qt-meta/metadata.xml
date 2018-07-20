@@ -6,7 +6,6 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="kde">Select <pkg>media-libs/phonon</pkg> as Phonon variant (needed for KDE)</flag>
 		<flag name="qt3support">Enable the Qt3Support library for Qt4</flag>
 	</use>
 </pkgmetadata>

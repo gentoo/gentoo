@@ -1,12 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
 IUSE=""
-DESCRIPTION="Small and fast CLI resource grabber with support for http, gopher, finger, and ftp protocols"
-SRC_URI="http://www.xach.com/snarf/${P}.tar.gz"
-HOMEPAGE="http://www.xach.com/snarf/"
+DESCRIPTION="Small and fast CLI resource grabber for http, gopher, finger, ftp"
+SRC_URI="https://www.xach.com/snarf/${P}.tar.gz"
+HOMEPAGE="https://www.xach.com/snarf/"
 KEYWORDS="alpha amd64 ppc sparc x86"
 LICENSE="GPL-2"
 SLOT="0"

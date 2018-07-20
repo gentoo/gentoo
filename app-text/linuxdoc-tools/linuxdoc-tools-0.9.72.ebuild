@@ -4,7 +4,7 @@
 # EAPI=6 is blocked by Gentoo bugs 497038, 497052.
 EAPI=5
 
-inherit autotools-utils latex-package perl-functions sgml-catalog toolchain-funcs vcs-snapshot
+inherit autotools epatch latex-package perl-functions sgml-catalog toolchain-funcs vcs-snapshot
 
 DESCRIPTION="A toolset for processing LinuxDoc DTD SGML files"
 HOMEPAGE="https://gitlab.com/agmartin/linuxdoc-tools"
@@ -31,7 +31,8 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	autotools-utils_src_prepare
+	[[ ${PATCHES} ]] && epatch -p1 "${PATCHES[@]}"
+	epatch_user
 
 	# Update the build system with Gentoo paths.
 	sed -i \
@@ -62,6 +63,7 @@ src_compile() {
 }
 
 src_install() {
+	# Override latex-package.eclass
 	default_src_install
 }
 

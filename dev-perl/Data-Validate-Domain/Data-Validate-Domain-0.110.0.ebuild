@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Domain and host name validation"
 
 SLOT="0"
-KEYWORDS="amd64 hppa x86"
+KEYWORDS="amd64 hppa sparc x86"
 IUSE="test"
 
 RDEPEND="

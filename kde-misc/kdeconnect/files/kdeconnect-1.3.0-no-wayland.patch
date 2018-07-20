@@ -1,0 +1,13 @@
+diff --git a/plugins/mousepad/CMakeLists.txt b/plugins/mousepad/CMakeLists.txt
+index ab9913ff..bfd52cd7 100644
+--- a/plugins/mousepad/CMakeLists.txt
++++ b/plugins/mousepad/CMakeLists.txt
+@@ -10,7 +10,7 @@ if (LibFakeKey_FOUND)
+     find_package(X11 REQUIRED)
+     find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS X11Extras)
+ endif()
+-find_package(KF5 ${KF5_MIN_VERSION} COMPONENTS Wayland)
++find_package(KF5Wayland ${KF5_MIN_VERSION} QUIET)
+ 
+ set(HAVE_X11 ${LibFakeKey_FOUND})
+ set(HAVE_WAYLAND ${KF5Wayland_FOUND})

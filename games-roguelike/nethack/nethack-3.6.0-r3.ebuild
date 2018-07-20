@@ -6,12 +6,12 @@ inherit eutils toolchain-funcs flag-o-matic user
 
 MY_PV=${PV//.}
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
-HOMEPAGE="http://www.nethack.org/"
+HOMEPAGE="https://www.nethack.org/"
 SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~x86 ~x86-fbsd"
 IUSE="experimental X"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -23,7 +23,7 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	X? (
-		x11-proto/xproto
+		x11-base/xorg-proto
 		x11-apps/bdftopcf
 		x11-apps/mkfontdir
 	)"

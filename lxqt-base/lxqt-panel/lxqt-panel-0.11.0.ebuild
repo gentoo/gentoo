@@ -1,18 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="LXQt desktop panel and plugins"
-HOMEPAGE="http://lxqt.org/"
+HOMEPAGE="https://lxqt.org"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}.git"
+	EGIT_REPO_URI="https://git.lxde.org/git/lxde/${PN}.git"
 else
-	SRC_URI="https://downloads.lxqt.org/lxqt/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -42,7 +42,7 @@ CDEPEND="
 	mount? ( kde-frameworks/solid:5 )
 	networkmonitor? ( sys-libs/libstatgrab )
 	sensors? ( sys-apps/lm_sensors )
-	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5] )
+	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	sysstat? ( =lxqt-base/libsysstat-0.3* )
 	tray? ( x11-libs/libXcomposite
 		x11-libs/libXdamage
@@ -54,6 +54,10 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	dev-qt/qtsvg:5
 	>=lxde-base/lxmenu-data-0.1.2"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-undef-explicit.patch
+)
 
 src_configure() {
 	local mycmakeargs i y

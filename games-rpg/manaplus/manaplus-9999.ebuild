@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,16 +62,17 @@ src_prepare() {
 }
 
 src_configure() {
-	CONFIG_SHELL=/bin/bash \
-	econf \
-		--localedir=/usr/share/locale \
-		--without-internalsdlgfx \
-		$(use_with mumble) \
-		$(use_enable nls) \
-		$(use_with opengl) \
-		--enable-libxml=$(usex pugixml pugixml libxml) \
-		$(use_with sdl2) \
+	local myeconfargs=(
+		--localedir=/usr/share/locale
+		--without-internalsdlgfx
+		$(use_with mumble)
+		$(use_enable nls)
+		$(use_with opengl)
+		--enable-libxml=$(usex pugixml pugixml libxml)
+		$(use_with sdl2)
 		$(use_enable test unittests)
+	)
+	CONFIG_SHELL=/bin/bash econf "${myeconfargs[@]}"
 }
 
 src_install() {

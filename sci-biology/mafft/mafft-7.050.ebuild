@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ inherit eutils flag-o-matic multilib toolchain-funcs
 EXTENSIONS="-without-extensions"
 
 DESCRIPTION="Multiple sequence alignments using a variety of algorithms"
-HOMEPAGE="http://mafft.cbrc.jp/alignment/software/index.html"
-SRC_URI="http://mafft.cbrc.jp/alignment/software/${P}${EXTENSIONS}-src.tgz"
+HOMEPAGE="https://mafft.cbrc.jp/alignment/software/index.html"
+SRC_URI="https://mafft.cbrc.jp/alignment/software/${P}${EXTENSIONS}-src.tgz"
 
 LICENSE="BSD"
 SLOT="0"

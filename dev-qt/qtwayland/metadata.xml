@@ -6,13 +6,11 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="egl">Use EGL instead of GLX to manage OpenGL contexts</flag>
-		<flag name="qml">Build QML/QtQuick bindings</flag>
-		<flag name="wayland-compositor">Build Qt compositor for wayland</flag>
+		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
-		<doc>http://doc.qt.io/</doc>
+		<doc>https://doc.qt.io/</doc>
 	</upstream>
 	<slots>
 		<subslots>

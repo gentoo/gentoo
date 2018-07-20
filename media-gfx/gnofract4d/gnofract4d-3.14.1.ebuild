@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 MY_PV=V_${PV//./_}
 
-inherit distutils-r1 fdo-mime
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="A program for drawing beautiful mathematically-based images known as fractals"
 HOMEPAGE="http://edyoung.github.io/gnofract4d/"
@@ -43,11 +43,11 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

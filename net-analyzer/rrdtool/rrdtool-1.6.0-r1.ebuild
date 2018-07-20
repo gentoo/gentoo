@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,13 +9,15 @@ GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib
 
+MY_P=${P/_/-}
+
 DESCRIPTION="A system to store and display time-series data"
-HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
-SRC_URI="http://oss.oetiker.ch/rrdtool/pub/${P/_/-}.tar.gz"
+HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
+SRC_URI="${HOMEPAGE}pub/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/8.0.0"
-KEYWORDS="alpha ~amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -48,8 +50,7 @@ RDEPEND="
 PDEPEND="
 	ruby? ( ~dev-ruby/rrdtool-bindings-${PV} )
 "
-
-S=${WORKDIR}/${P/_/-}
+S=${WORKDIR}/${MY_P}
 
 python_compile() {
 	cd bindings/python || die

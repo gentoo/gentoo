@@ -2,8 +2,8 @@ Fixes build with taglib-1.10
 
 Gentoo-bug: 571072
 
---- cmake/modules/FindTaglib.cmake	2015/11/16 18:32:25	1444332
-+++ cmake/modules/FindTaglib.cmake	2015/11/16 19:05:39	1444333
+--- a/cmake/modules/FindTaglib.cmake	2015/11/16 18:32:25	1444332
++++ b/cmake/modules/FindTaglib.cmake	2015/11/16 19:05:39	1444333
 @@ -29,10 +29,10 @@
  
    exec_program(${TAGLIBCONFIG_EXECUTABLE} ARGS --version RETURN_VALUE _return_VALUE OUTPUT_VARIABLE TAGLIB_VERSION)

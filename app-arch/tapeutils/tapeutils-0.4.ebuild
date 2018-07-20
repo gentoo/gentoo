@@ -1,5 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -12,13 +14,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
+DEPEND=""
 RDEPEND="!app-emulation/hercules"
 
-src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" || die
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4-fix-build-system.patch
+	"${FILESDIR}"/${PN}-0.4-fix-C-decl.patch
+)
+
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
-	dobin tapecopy tapedump || die
+	dobin tapecopy tapedump
 	# no docs to install
 }

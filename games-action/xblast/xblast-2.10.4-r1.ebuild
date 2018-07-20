@@ -22,7 +22,7 @@ SRC_URI="mirror://sourceforge/xblast/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -54,7 +54,7 @@ src_install() {
 	cp -pPR "${WORKDIR}/${IMAGES}"/* "${D}/${IMAGE_INSTALL_DIR}" || die
 
 	# Levels
-	insinto "$/usr/share/${PN}/level"
+	insinto "/usr/share/${PN}/level"
 	doins "${WORKDIR}/${LEVELS}"/*
 
 	# Models

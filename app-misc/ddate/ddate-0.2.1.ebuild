@@ -1,7 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit cmake-utils
 
 DESCRIPTION="Perpetual date converter from gregorian to poee calendar"
@@ -18,6 +19,8 @@ RDEPEND="!<sys-apps/util-linux-2.20
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	sed -i -e '/gzip/d' CMakeLists.txt || die
 }
 

@@ -6,11 +6,11 @@ EAPI="6"
 inherit autotools eutils
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/virglrenderer"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/virglrenderer.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~tamiko/distfiles/${P}.tar.xz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="library used implement a virtual 3D GPU used by qemu"

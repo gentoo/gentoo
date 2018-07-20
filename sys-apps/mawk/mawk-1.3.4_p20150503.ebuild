@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_P=${P/_p/-}
 DESCRIPTION="an (often faster than gawk) awk-interpreter"
-HOMEPAGE="http://invisible-island.net/mawk/mawk.html"
+HOMEPAGE="https://invisible-island.net/mawk/mawk.html"
 SRC_URI="ftp://invisible-island.net/mawk/${MY_P}.tgz"
 
 LICENSE="GPL-2"

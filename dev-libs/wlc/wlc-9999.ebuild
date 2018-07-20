@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/Cloudef/wlc.git"
 LICENSE="MIT ZLIB"
 SLOT="0"
 KEYWORDS=""
-IUSE="X static-libs systemd xwayland"
+IUSE="X static-libs systemd +xwayland"
 
 RDEPEND="virtual/opengl
 	virtual/libudev
@@ -24,12 +24,19 @@ RDEPEND="virtual/opengl
 	x11-misc/xkeyboard-config
 	dev-libs/libinput
 	dev-libs/wayland
-	X? ( x11-libs/libX11
-		 x11-libs/libxcb[xkb]
-		 x11-libs/xcb-util-image
-		 x11-libs/xcb-util-wm
-		 x11-libs/libXfixes )
-	xwayland? ( x11-base/xorg-server[wayland] )
+	X? (
+		x11-libs/libX11
+		x11-libs/libxcb[xkb]
+		x11-libs/xcb-util-image
+		x11-libs/xcb-util-wm
+		x11-libs/libXfixes
+	)
+	xwayland? (
+		x11-libs/libxcb[xkb]
+		x11-libs/xcb-util-image
+		x11-libs/xcb-util-wm
+		x11-base/xorg-server[wayland]
+	)
 	systemd? ( sys-apps/systemd sys-apps/dbus )"
 
 DEPEND="${RDEPEND}
@@ -43,7 +50,8 @@ src_configure() {
 
 		-DWLC_BUILD_STATIC=$(usex static-libs)
 
-		-DWLC_X11_SUPPORT=$(usex X)
+		-DWLC_X11_BACKEND_SUPPORT=$(usex X)
+		-DWLC_XWAYLAND_SUPPORT=$(usex xwayland)
 
 		$(cmake-utils_use_find_package systemd Systemd)
 		$(cmake-utils_use_find_package systemd Dbus)

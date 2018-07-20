@@ -12,7 +12,7 @@ HOMEPAGE="http://npadmin.sourceforge.net/"
 # this does NOT link against SNMP
 DEPEND=""
 
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"

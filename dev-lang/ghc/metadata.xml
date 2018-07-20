@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="binary">Install the binary version directly, rather than using it to build the source version.</flag>
-		<flag name="ghcbootstrap">Bootstrap from an existing GHC installation.</flag>
-		<flag name="ghcmakebinary">Build with less runtime depends (bundle libffi for building bootstrap binaries).</flag>
+		<flag name="ghcbootstrap">Internal: Bootstrap GHC from an existing GHC installation.</flag>
+		<flag name="ghcmakebinary">Internal: Build binary friendly for redistribution.</flag>
 	</use>
 </pkgmetadata>

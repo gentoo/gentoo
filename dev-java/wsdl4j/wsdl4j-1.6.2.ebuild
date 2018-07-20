@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -16,7 +18,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.zip
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.4
 	test? ( =dev-java/junit-3.8* )

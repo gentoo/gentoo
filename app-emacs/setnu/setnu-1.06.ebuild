@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Display line numbers in Emacs buffers"
 HOMEPAGE="http://www.wonderworks.com/
-	http://www.emacswiki.org/emacs/LineNumbers"
+	https://www.emacswiki.org/emacs/LineNumbers"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"

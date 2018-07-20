@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,12 +11,12 @@ MY_PN="Paste"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tools for using a Web Server Gateway Interface stack"
-HOMEPAGE="http://pythonpaste.org https://pypi.python.org/pypi/Paste"
+HOMEPAGE="https://pypi.org/project/Paste/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="doc flup openid"
 
 RDEPEND="dev-python/namespace-paste[${PYTHON_USEDEP}]

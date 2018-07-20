@@ -1,0 +1,61 @@
+Backported to 216 adapting headers locations
+
+From 27d13af71c3af6b2f9b60556d2c046dbb6e36e23 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 14 Mar 2016 17:44:49 -0400
+Subject: [PATCH] include sys/sysmacros.h in more places
+
+Since glibc is moving away from implicitly including sys/sysmacros.h
+all the time via sys/types.h, include the header directly in more
+places.  This seems to cover most makedev/major/minor usage.
+---
+ src/shared/macro.h       | 1 +
+ src/shared/util.h        | 1 +
+ src/libudev/libudev.h   | 1 +
+ src/udev/udev.h         | 1 +
+ 5 files changed, 5 insertions(+)
+
+diff --git a/src/shared/macro.h b/src/shared/macro.h
+index c34441d75d..b36a95675a 100644
+--- a/src/shared/macro.h
++++ b/src/shared/macro.h
+@@ -23,6 +23,7 @@
+ #include <inttypes.h>
+ #include <stdbool.h>
+ #include <sys/param.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #define _printf_(a,b) __attribute__ ((format (printf, a, b)))
+diff --git a/src/libudev/libudev.h b/src/libudev/libudev.h
+index eb58740d26..3f6d0ed16c 100644
+--- a/src/libudev/libudev.h
++++ b/src/libudev/libudev.h
+@@ -21,6 +21,7 @@
+ #define _LIBUDEV_H_
+ 
+ #include <stdarg.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #ifdef __cplusplus
+--- a/src/shared/util.h~  2014-08-19 16:47:52.000000000 +0200
++++ b/src/shared/util.h   2017-10-21 17:58:54.294946349 +0200
+@@ -35,6 +35,7 @@
+ #include <limits.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <dirent.h>
+ #include <sys/resource.h>
+ #include <stddef.h>
+--- a/src/udev/udev.h~    2014-07-29 19:51:00.000000000 +0200
++++ b/src/udev/udev.h     2017-10-21 17:59:50.026412561 +0200
+@@ -20,6 +20,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/param.h>
++#include <sys/sysmacros.h>
+ #include <signal.h>
+ 
+ #include "macro.h"

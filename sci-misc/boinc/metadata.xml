@@ -4,7 +4,6 @@
   <maintainer type="person">
     <email>yamakuzure@gmx.net</email>
     <name>Sven Eden</name>
-    <description>Proxied maintainer; set to assignee in all bugs</description>
   </maintainer>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
@@ -19,7 +18,7 @@
   Use nvidia cuda toolkit for speeding up computations.
   NOTE: works only for subset of nvidia graphic cards so make sure your card
   is supported before opening a bug about it.
-  </flag>
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">BOINC/boinc</remote-id>

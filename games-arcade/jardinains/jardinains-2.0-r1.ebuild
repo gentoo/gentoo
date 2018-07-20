@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/JN2_1_FREE_LIN.tar.gz"
 
 LICENSE="jardinains"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 QA_EXECSTACK="${GAMES_PREFIX_OPT:1}/jardinains/jardinains"

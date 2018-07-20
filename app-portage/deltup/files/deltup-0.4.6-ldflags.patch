@@ -1,0 +1,9 @@
+diff --git a/Makefile b/Makefile
+index 6a3aa95..6e7c5cf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -20,3 +20,3 @@ depend:
+ deltup: $(objfiles)
+-	${CC} $(objfiles) ${CXXFLAGS} -o deltup $(libs)
++	${CC} $(objfiles) ${LDFLAGS} -o deltup $(libs)
+ 

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Gentoo Portage plugin for yolk"
-HOMEPAGE="https://pypi.python.org/pypi/yolk-portage"
+HOMEPAGE="https://pypi.org/project/yolk-portage/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -6,9 +6,9 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  Gato - the Graph Animation Toolbox - is a software which visualizes
-  algorithms on mathematical graphs.
-</longdescription>
+		Gato - the Graph Animation Toolbox - is a software which visualizes
+		algorithms on mathematical graphs.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gato</remote-id>
 	</upstream>

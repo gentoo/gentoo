@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,7 +36,7 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="authcram gencertdaily highvolume libressl qmail-spp ssl vanilla"
 REQUIRED_USE='vanilla? ( !ssl !qmail-spp !highvolume )'
 RESTRICT="test"
@@ -154,7 +154,7 @@ pkg_postinst() {
 	qmail_supervise_config_notice
 	elog
 	elog "If you are looking for documentation, check those links:"
-	elog "https://www.gentoo.org/doc/en/qmail-howto.xml"
+	elog "https://wiki.gentoo.org/wiki/Virtual_mail_hosting_with_qmail"
 	elog "  -- qmail/vpopmail Virtual Mail Hosting System Guide"
 	elog "http://www.lifewithqmail.com/"
 	elog "  -- Life with qmail"

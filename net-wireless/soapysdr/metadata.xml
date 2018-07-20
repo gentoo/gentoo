@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="bladerf">Add support for bladerf hardware</flag>
+		<flag name="hackrf">Add support for hackrf hardware</flag>
+		<flag name="rtlsdr">Add support for rtlsdr hardware</flag>
+		<flag name="uhd">Add support for Ettus USRP hardware</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cpothosware/SoapySDR</remote-id>
+	</upstream>
+</pkgmetadata>

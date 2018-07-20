@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
 inherit distutils-r1
 
 DESCRIPTION="A class library for writing nagios-compatible plugins"
-HOMEPAGE="https://bitbucket.org/flyingcircus/nagiosplugin/ https://pypi.python.org/pypi/nagiosplugin/"
+HOMEPAGE="https://bitbucket.org/flyingcircus/nagiosplugin/ https://pypi.org/project/nagiosplugin/"
 if [[ ${PV} == "9999" ]] ; then
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/flyingcircus/nagiosplugin/"

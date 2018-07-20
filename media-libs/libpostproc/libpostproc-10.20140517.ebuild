@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,7 +6,7 @@ EAPI="4"
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-2"
-	EGIT_REPO_URI="git://github.com/lu-zero/postproc.git"
+	EGIT_REPO_URI="https://github.com/lu-zero/postproc.git"
 fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
@@ -24,7 +24,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 IUSE="pic static-libs"
 

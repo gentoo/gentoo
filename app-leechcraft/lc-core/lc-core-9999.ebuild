@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/0xd34df00d/leechcraft.git"
+EGIT_REPO_URI="https://github.com/0xd34df00d/leechcraft.git"
 
 inherit leechcraft
 
@@ -53,5 +53,5 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	use doc && dohtml -r "${CMAKE_BUILD_DIR}/${PN#lc-}"/out/html/*
+	use doc && dodoc -r "${CMAKE_BUILD_DIR}/${PN#lc-}"/out/html/*
 }

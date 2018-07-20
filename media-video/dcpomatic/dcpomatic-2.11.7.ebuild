@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 inherit python-any-r1 waf-utils wxwidgets
 
 DESCRIPTION="create Digital Cinema Packages (DCPs) from videos, images and sound files"
-HOMEPAGE="http://dcpomatic.com/"
+HOMEPAGE="https://dcpomatic.com/"
 SRC_URI="http://${PN}.com/downloads/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

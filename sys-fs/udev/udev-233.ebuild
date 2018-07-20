@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools bash-completion-r1 linux-info multilib-minimal toolchain-funcs udev user versionator
+inherit autotools bash-completion-r1 linux-info ltprune multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -29,11 +29,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1[${MULTILIB_USEDEP}]
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 	!<sys-libs/glibc-2.11
 	!sys-apps/gentoo-systemd-integration
-	!sys-apps/systemd
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r7
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	!sys-apps/systemd"
 # Force new make >= -r4 to skip some parallel build issues
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
@@ -57,6 +53,7 @@ S=${WORKDIR}/systemd-${PV}
 
 PATCHES=(
 	"${FILESDIR}"/233-format-warnings.patch
+	"${FILESDIR}"/233-fix-includes.patch
 )
 
 check_default_rules() {

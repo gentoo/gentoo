@@ -1,0 +1,24 @@
+From e24640e1043fe8914a2b86842645604a3d9e9698 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <brian.dolbec@sony.com>
+Date: Tue, 13 Mar 2018 19:59:13 +0000
+Subject: [PATCH] disable test-userpass-wait
+
+---
+ master/buildbot/test/integration/test_try_client.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/buildbot/test/integration/test_try_client.py b/buildbot/test/integration/test_try_client.py
+index 9bdc7a63a..48fcb1573 100644
+--- a/buildbot/test/integration/test_try_client.py
++++ b/buildbot/test/integration/test_try_client.py
+@@ -142,6 +142,8 @@ class Schedulers(RunMasterBase, www.RequiresWwwMixin):
+ 
+     @defer.inlineCallbacks
+     def test_userpass_wait(self):
++        if os.environ.get("DISABLE_TEST", False):
++            return
+         yield self.startMaster(
+             trysched.Try_Userpass('try', ['a'], 0, [('u', b'p')]))
+         yield self.runClient({
+-- 
+2.13.6

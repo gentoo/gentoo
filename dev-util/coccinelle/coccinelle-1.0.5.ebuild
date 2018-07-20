@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ SRC_URI="http://coccinelle.lip6.fr/distrib/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc emacs ocaml +ocamlopt pcre python test vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -25,7 +25,7 @@ CDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/parmap:=[ocamlopt?]
 	emacs? ( virtual/emacs )
 	ocaml? ( dev-ml/findlib:= )
-	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt?] )
+	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt(+)?] )
 	python? ( ${PYTHON_DEPS} )"
 
 RDEPEND="${CDEPEND}

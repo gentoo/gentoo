@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1 user
 
 DESCRIPTION="Fusil the fuzzer is a Python library used to write fuzzing programs"
-HOMEPAGE="https://bitbucket.org/haypo/fusil/wiki/Home https://pypi.python.org/pypi/fusil"
+HOMEPAGE="https://bitbucket.org/haypo/fusil/wiki/Home https://pypi.org/project/fusil/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

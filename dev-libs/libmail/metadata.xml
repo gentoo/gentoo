@@ -5,8 +5,6 @@
 	<use>
 		<flag name="apop">Enables the APOP authentication method</flag>
 	</use>
-	<longdescription lang="en">
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">libmail</remote-id>
 	</upstream>

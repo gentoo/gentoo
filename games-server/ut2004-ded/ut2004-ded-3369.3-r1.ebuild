@@ -19,7 +19,7 @@ SRC_URI="mirror://3dgamers/unrealtourn2k4/${BONUSPACK_P}
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror strip"
 

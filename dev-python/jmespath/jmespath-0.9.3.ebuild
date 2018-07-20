@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="JSON Matching Expressions"
-HOMEPAGE="https://github.com/boto/jmespath https://pypi.python.org/pypi/jmespath"
+HOMEPAGE="https://github.com/boto/jmespath https://pypi.org/project/jmespath/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 DEPEND="

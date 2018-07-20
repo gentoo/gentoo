@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,8 +15,8 @@ RDEPEND="x11-libs/libfontenc
 	sys-libs/zlib
 	app-arch/bzip2"
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	x11-misc/util-macros
-	x11-proto/xproto
 	app-arch/gzip"
 
 XORG_CONFIGURE_OPTIONS=(

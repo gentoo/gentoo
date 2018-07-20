@@ -1,5 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit toolchain-glibc
 
@@ -16,8 +18,7 @@ RELEASE_VER=""
 case ${PV} in
 9999*)
 	EGIT_REPO_URIS="git://sourceware.org/git/glibc.git"
-	EGIT_SOURCEDIRS="${S}"
-	inherit git-2
+	inherit git-r3
 	;;
 *)
 	RELEASE_VER=${PV}
@@ -27,7 +28,7 @@ GCC_BOOTSTRAP_VER="4.7.3-r1"
 PATCH_VER="3"                                  # Gentoo patchset
 NPTL_KERN_VER=${NPTL_KERN_VER:-"2.6.16"}       # min kernel version nptl requires
 
-IUSE="debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="debug gd hardened multilib nscd selinux systemtap profile suid vanilla headers-only"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -72,7 +73,7 @@ RDEPEND="!sys-kernel/ps3-sources
 	!sys-libs/nss-db"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
-	DEPEND+=" !crosscompile_opts_headers-only? (
+	DEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.20
 		>=${CATEGORY}/gcc-4.3
 	)"

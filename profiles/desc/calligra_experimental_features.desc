@@ -4,5 +4,4 @@
 # This file contains descriptions of CALLIGRA_EXPERIMENTAL_FEATURES USE_EXPAND flags.
 
 # Keep it sorted.
-braindump - CALLIGRA_EXPERIMENTAL_FEATURES option to build mindmap note collection application
 stage - CALLIGRA_EXPERIMENTAL_FEATURES option to build presentation processor

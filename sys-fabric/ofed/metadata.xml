@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-    	<email>cluster@gentoo.org</email>
-    	<name>Gentoo Cluster Project</name>
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<use>
 		<flag name="dapl">Add support for DAPL abstraction layer</flag>
@@ -14,6 +14,6 @@
 		<flag name="perftest">Add perftest utils</flag>
 		<flag name="qperf">Add rdma tests</flag>
 		<flag name="srp">Suport for userspace part for srp initiator</flag>
-    	<flag name="rds">Tools to manage rds sockets</flag>
-  </use>
+		<flag name="rds">Tools to manage rds sockets</flag>
+	</use>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='xml(+),threads(+)'
 
 inherit distutils-r1 git-r3
@@ -22,15 +22,20 @@ RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	dev-python/backports-shutil_which[$(python_gen_usedep 'python2*')]
-	dev-python/backports-shutil_get_terminal_size[$(python_gen_usedep 'python2*')]
+	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/pycountry[${PYTHON_USEDEP}]
+	dev-python/websocket-client[${PYTHON_USEDEP}]
 	media-video/rtmpdump
 	virtual/ffmpeg"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/docutils[${PYTHON_USEDEP}] )
-	test? ( dev-python/mock[$(python_gen_usedep 'python2*')]
-		${RDEPEND} )"
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/docutils[${PYTHON_USEDEP}]
+	)
+	test? (
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
+		${RDEPEND}
+	)"
 
 python_configure_all() {
 	# Avoid iso-639, iso3166 dependencies since we use pycountry.
@@ -38,7 +43,7 @@ python_configure_all() {
 }
 
 python_compile_all() {
-	use doc && emake -C docs html
+	use doc && emake -C docs html man
 }
 
 python_test() {
@@ -46,6 +51,9 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
+	if use doc; then
+		local HTML_DOCS=( docs/_build/html/. )
+		doman docs/_build/man/*
+	fi
 	distutils-r1_python_install_all
 }

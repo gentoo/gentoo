@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="a simple X property utility"
-HOMEPAGE="http://tools.suckless.org/x/sprop"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/x/sprop"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -17,7 +17,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 src_prepare() {
 	sed -i \

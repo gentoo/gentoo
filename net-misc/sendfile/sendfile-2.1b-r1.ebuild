@@ -1,9 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit toolchain-funcs
 
-DESCRIPTION="SAFT implementation for UNIX and serves as a tool for asynchronous sending of files in the Internet"
+DESCRIPTION="SAFT implementation for asynchronous sending of files in the Internet"
 HOMEPAGE="http://fex.rus.uni-stuttgart.de/saft/sendfile.html"
 SRC_URI="http://fex.rus.uni-stuttgart.de/download/${P}.tar.gz"
 

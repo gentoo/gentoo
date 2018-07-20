@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,23 +15,18 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 
-IUSE="gnome odbc static-libs"
+IUSE="odbc static-libs"
 
 RDEPEND="
 	dev-libs/glib:2
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	gnome? (
-		gnome-base/libglade:2.0
-		gnome-base/libgnomeui
-	)
 	odbc? ( >=dev-db/unixODBC-2.0 )"
 DEPEND="${RDEPEND}
 	app-text/txt2man
 	sys-devel/flex
 	virtual/pkgconfig
 	virtual/yacc
-	gnome? ( app-text/rarian )
 "
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README TODO )
@@ -41,7 +36,7 @@ PATCHES=( "${FILESDIR}/${P}-parallel-make.patch" )
 src_configure() {
 	local myeconfargs=(
 		--disable-gtk-doc
-		$(use_enable gnome gmdb2)
+		--disable-gmdb2
 		$(use odbc && echo "--with-unixodbc=${EPREFIX}/usr")
 	)
 	autotools-utils_src_configure

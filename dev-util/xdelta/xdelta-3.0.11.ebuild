@@ -5,13 +5,13 @@ EAPI=6
 
 MY_P=xdelta3-${PV}
 
-DESCRIPTION="a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression"
+DESCRIPTION="Computes changes between binary or text files and creates deltas"
 HOMEPAGE="http://xdelta.org/"
 SRC_URI="https://github.com/jmacd/xdelta-gpl/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="3"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-fbsd"
 IUSE="examples lzma"
 
 RDEPEND="lzma? ( app-arch/xz-utils:= )"

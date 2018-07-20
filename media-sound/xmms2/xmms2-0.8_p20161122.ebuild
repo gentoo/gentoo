@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby22 ruby23"
 
 inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
 
@@ -12,13 +12,13 @@ inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
 MY_P="${P%_p*}DrO_o-949-gca15e830"
 
 DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
-HOMEPAGE="http://xmms2.org/wiki/Main_Page"
+HOMEPAGE="https://xmms2.org/wiki/Main_Page"
 #SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="alpha amd64 ppc x86"
 
 IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac fluidsynth gvfs ices
 jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa opus oss
@@ -279,7 +279,7 @@ src_install() {
 
 pkg_postinst() {
 	elog "This version is built on experimental development code"
-	elog "If you encounter any errors report them at http://bugs.xmms2.org"
+	elog "If you encounter any errors report them at https://bugs.xmms2.org"
 	elog "and visit #xmms2 at irc://irc.freenode.net"
 	if use phonehome ; then
 		einfo ""

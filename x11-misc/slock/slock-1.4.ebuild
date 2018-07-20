@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit fcaps savedconfig toolchain-funcs
 
 DESCRIPTION="simple X display locker"
-HOMEPAGE="http://tools.suckless.org/slock"
-SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
+HOMEPAGE="https://tools.suckless.org/slock"
+SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -19,8 +19,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/randrproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {
@@ -34,10 +33,13 @@ src_prepare() {
 	sed -i \
 		-e 's|@${CC}|$(CC)|g' \
 		Makefile || die
+
 	if use elibc_FreeBSD; then
 		sed -i -e 's/-DHAVE_SHADOW_H//' config.mk || die
 	fi
+
 	restore_config config.h
+
 	tc-export CC
 }
 

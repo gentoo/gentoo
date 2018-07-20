@@ -15,7 +15,6 @@ if [[ -n ${BINUTILS_TYPE} ]] ; then
 	BTYPE=${BINUTILS_TYPE}
 else
 	case ${PV} in
-	9999)      BTYPE="git";;
 	9999_pre*) BTYPE="snap";;
 	*.*.90)    BTYPE="snap";;
 	*.*.*.*.*) BTYPE="hjlu";;
@@ -24,11 +23,6 @@ else
 fi
 
 case ${BTYPE} in
-git)
-	BVER="git"
-	EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
-	inherit git-2
-	;;
 snap)
 	BVER=${PV/9999_pre}
 	;;
@@ -58,7 +52,6 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 case ${BTYPE} in
-	git) SRC_URI="" ;;
 	snap)
 		SRC_URI="ftp://gcc.gnu.org/pub/binutils/snapshots/binutils-${BVER}.tar.bz2
 			ftp://sourceware.org/pub/binutils/snapshots/binutils-${BVER}.tar.bz2" ;;
@@ -75,11 +68,12 @@ add_src_uri() {
 	else
 		a+=".bz2"
 	fi
-	set -- mirror://gentoo https://dev.gentoo.org/~vapier/dist https://dev.gentoo.org/~tamiko/distfiles
+	set -- mirror://gentoo https://dev.gentoo.org/~vapier/dist https://dev.gentoo.org/~tamiko/distfiles https://dev.gentoo.org/~dilfridge/distfiles
 	SRC_URI="${SRC_URI} ${@/%//${a}}"
 }
-add_src_uri binutils-${BVER}-patches-${PATCHVER}.tar ${PATCHVER}
-add_src_uri binutils-${BVER}-uclibc-patches-${UCLIBC_PATCHVER}.tar ${UCLIBC_PATCHVER}
+PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${BVER}}
+add_src_uri binutils-${PATCH_BINUTILS_VER}-patches-${PATCHVER}.tar ${PATCHVER}
+add_src_uri binutils-${PATCH_BINUTILS_VER}-uclibc-patches-${UCLIBC_PATCHVER}.tar ${UCLIBC_PATCHVER}
 add_src_uri elf2flt-${ELF2FLT_VER}.tar ${ELF2FLT_VER}
 
 if version_is_at_least 2.18 ; then
@@ -111,11 +105,7 @@ if is_cross ; then
 	DEPEND+=" >=sys-libs/binutils-libs-${PV}"
 fi
 
-S=${WORKDIR}/binutils
-case ${BVER} in
-git) ;;
-*) S=${S}-${BVER} ;;
-esac
+S=${WORKDIR}/binutils-${BVER}
 
 LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${BVER}
 INCPATH=${LIBPATH}/include
@@ -128,10 +118,7 @@ else
 fi
 
 tc-binutils_unpack() {
-	case ${BTYPE} in
-	git) git-2_src_unpack ;;
-	*)   unpacker ${A} ;;
-	esac
+	unpacker ${A}
 	mkdir -p "${MY_BUILDDIR}"
 	[[ -d ${WORKDIR}/patch ]] && mkdir "${WORKDIR}"/patch/skip
 }
@@ -504,7 +491,7 @@ toolchain-binutils_pkg_postrm() {
 		choice=${choice//$'\n'/ }
 		choice=${choice/* }
 		if [[ -z ${choice} ]] ; then
-			env -i ROOT="${ROOT}" binutils-config -u ${CTARGET}
+			binutils-config -u ${CTARGET}
 		else
 			binutils-config ${choice}
 		fi

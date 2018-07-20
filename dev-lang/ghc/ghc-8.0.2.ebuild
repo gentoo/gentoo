@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ fi
 
 inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib pax-utils toolchain-funcs versionator prefix
-
+inherit check-reqs
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="http://www.haskell.org/ghc/"
 
@@ -24,18 +24,18 @@ HOMEPAGE="http://www.haskell.org/ghc/"
 arch_binaries=""
 
 # sorted!
-arch_binaries="$arch_binaries alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-${PV}-alpha.tbz2 )"
-#arch_binaries="$arch_binaries arm? ( http://code.haskell.org/~slyfox/ghc-arm/ghc-bin-${PV}-arm.tbz2 )"
-arch_binaries="$arch_binaries arm64? ( http://code.haskell.org/~slyfox/ghc-arm64/ghc-bin-${PV}-arm64.tbz2 )"
-arch_binaries="$arch_binaries amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-${PV}-amd64.tbz2 )"
-arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64.tbz2 )"
-arch_binaries="$arch_binaries ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-${PV}-ppc.tbz2 )"
-arch_binaries="$arch_binaries ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-${PV}-ppc64.tbz2 )"
-#arch_binaries="$arch_binaries sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-${PV}-sparc.tbz2 )"
-arch_binaries="$arch_binaries x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-${PV}-x86.tbz2 )"
+arch_binaries="$arch_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
+#arch_binaries="$arch_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-arm.tbz2 )"
+arch_binaries="$arch_binaries arm64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-arm64.tbz2 )"
+arch_binaries="$arch_binaries amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
+arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-unknown-linux-gnu.tbz2 )"
+arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
+arch_binaries="$arch_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
+#arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
+arch_binaries="$arch_binaries x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
 
 # various ports:
-#arch_binaries="$arch_binaries x86-fbsd? ( http://code.haskell.org/~slyfox/ghc-x86-fbsd/ghc-bin-${PV}-x86-fbsd.tbz2 )"
+#arch_binaries="$arch_binaries x86-fbsd? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86-fbsd.tbz2 )"
 
 # 0 - yet
 yet_binary() {
@@ -71,22 +71,32 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ia64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc ghcbootstrap ghcmakebinary +gmp +profile"
 IUSE+=" binary"
 
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:0=[unicode]
 	!ghcmakebinary? ( virtual/libffi:= )
 "
-# gentoo binaries are built against ncurses-6
-RDEPEND+="
-	binary? (
-		sys-libs/ncurses:0/6
-	)
+
+# This set of dependencies is needed to run
+# prebuilt ghc. We specifically avoid ncurses
+# dependency with:
+#    utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING
+PREBUILT_BINARY_DEPENDS="
+	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
 "
+# This set of dependencies is needed to install
+# ghc[binary] in system. terminfo package is linked
+# against ncurses.
+PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
+	sys-libs/ncurses:0/6
+"
+
+RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xml-dtd:4.2
@@ -94,9 +104,9 @@ DEPEND="${RDEPEND}
 		app-text/docbook-xsl-stylesheets
 		dev-python/sphinx
 		>=dev-libs/libxslt-1.1.2 )
-"
+	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
 
-PDEPEND="!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )"
+PDEPEND="!ghcbootstrap? ( >=app-admin/haskell-updater-1.2 )"
 
 REQUIRED_USE="?? ( ghcbootstrap binary )"
 
@@ -308,17 +318,6 @@ relocate_ghc() {
 	relocate_path "/usr" "${WORKDIR}/usr" "$gp_back"
 
 	if use prefix; then
-		# and insert LD_LIBRARY_PATH entry to EPREFIX dir tree
-		# TODO: add the same for darwin's CHOST and it's DYLD_
-		local new_ldpath='LD_LIBRARY_PATH="'${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)'${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"\nexport LD_LIBRARY_PATH'
-		sed -i -e '2i'"$new_ldpath" \
-			"${WORKDIR}/usr/bin/$(cross)ghc-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/$(cross)ghci-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/$(cross)ghc-pkg-${GHC_PV}" \
-			"${WORKDIR}/usr/bin/$(cross)hsc2hs" \
-			"${WORKDIR}/usr/bin/$(cross)runghc-${GHC_PV}" \
-			"$gp_back" \
-			|| die "Adding LD_LIBRARY_PATH for wrappers failed"
 		hprefixify "${bin_libpath}"/${PN}*/settings
 	fi
 
@@ -327,7 +326,25 @@ relocate_ghc() {
 	rm "$gp_back"
 }
 
+ghc-check-reqs() {
+	# These are pessimistic values (slightly bigger than worst-case)
+	# Worst case is UNREG USE=profile ia64. See bug #611866 for some
+	# numbers on various arches.
+	CHECKREQS_DISK_BUILD=8G
+	CHECKREQS_DISK_USR=2G
+	# USE=binary roughly takes
+	use binary && CHECKREQS_DISK_BUILD=4G
+
+	"$@"
+}
+
+pkg_pretend() {
+	ghc-check-reqs check-reqs_pkg_pretend
+}
+
 pkg_setup() {
+	ghc-check-reqs check-reqs_pkg_setup
+
 	# quiet portage about prebuilt binaries
 	use binary && QA_PREBUILT="*"
 
@@ -356,7 +373,7 @@ src_unpack() {
 	# unpacked separately, so prevent them from being unpacked
 	local ONLYA=${A}
 	case ${CHOST} in
-		*-darwin* | *-solaris*)  ONLYA=${GHC_P}-src.tar.bz2  ;;
+		*-darwin* | *-solaris*)  ONLYA=${GHC_P}-src.tar.xz  ;;
 	esac
 	unpack ${ONLYA}
 }
@@ -450,6 +467,7 @@ src_prepare() {
 
 		epatch "${FILESDIR}"/${PN}-8.0.1_rc1-cgen-constify.patch
 		epatch "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
+		epatch "${FILESDIR}"/${PN}-8.0.2-no-relax-everywhere.patch
 
 		epatch "${FILESDIR}"/${PN}-8.0.1-limit-jN.patch
 		epatch "${FILESDIR}"/${PN}-8.0.1-ww-args-limit.patch
@@ -457,6 +475,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-8.0.2_rc2-old-sphinx.patch
 		epatch "${FILESDIR}"/${PN}-8.0.2-libffi-alpha.patch
 		epatch "${FILESDIR}"/${PN}-8.0.2-O2-unreg.patch
+		epatch "${FILESDIR}"/${PN}-8.0.2-binutils-2.30.patch
 
 		bump_libs
 
@@ -486,6 +505,7 @@ src_configure() {
 		# app-text/dblatex is not in portage, can not build PDF or PS
 		echo "BUILD_SPHINX_PDF  = NO"  >> mk/build.mk
 		echo "BUILD_SPHINX_HTML = $(usex doc YES NO)" >> mk/build.mk
+		echo "BUILD_MAN = $(usex doc YES NO)" >> mk/build.mk
 
 		# this controls presence on 'xhtml' and 'haddock' in final install
 		echo "HADDOCK_DOCS       = YES" >> mk/build.mk

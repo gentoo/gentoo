@@ -30,7 +30,9 @@ DEPEND="
 		')
 		media-libs/netpbm
 		${PYTHON_DEPS}
-	)"
+	)
+	net-libs/libtirpc
+	"
 
 REQUIRED_USE="
 	cmkopt? ( !charmdebug !charmtracing )
@@ -73,20 +75,22 @@ get_opts() {
 }
 
 src_prepare() {
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags libtirpc)
+
 	sed \
-		-e "/CMK_CF77/s:[fg]77:$(usex mpi "mpif90" "$(tc-getF77)"):g" \
-		-e "/CMK_CF90/s:f95:$(usex mpi "mpif90" "$(tc-getFC)"):g" \
+		-e "/CMK_CF77/s:[fg]77:$(usex mpi "mpif90" "$(tc-getF77)") ${FCFLAGS}:g" \
+		-e "/CMK_CF90/s:f95:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
 		-e "/CMK_CF90/s:\`which f90.*$::g" \
-		-e "/CMK_CXX/s:g++:$(usex mpi "mpic++" "$(tc-getCXX)"):g" \
-		-e "/CMK_CC/s:gcc:$(usex mpi "mpicc" "$(tc-getCC)"):g" \
+		-e "/CMK_CXX/s:g++:$(usex mpi "mpic++" "$(tc-getCXX)") ${CPPFLAGS} ${CXXFLAGS}:g" \
+		-e "/CMK_CC/s:gcc:$(usex mpi "mpicc" "$(tc-getCC)") ${CPPFLAGS} ${CFLAGS}:g" \
 		-e '/CMK_F90_MODINC/s:-p:-I:g' \
 		-e "/CMK_LD/s:\"$: ${LDFLAGS} \":g" \
 		-i src/arch/$(usex mpi "mpi" "net")*-linux*/*sh || die
 	sed \
-		-e "/CMK_CF90/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)"):g" \
-		-e "/F90DIR/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)"):g" \
-		-e "/f95target/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)"):g" \
-		-e "/f95version/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)"):g" \
+		-e "/CMK_CF90/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
+		-e "/F90DIR/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
+		-e "/f95target/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
+		-e "/f95version/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
 		-i src/arch/common/*.sh || die
 
 	sed \
@@ -97,6 +101,7 @@ src_prepare() {
 		-e "s:-o charmrun:${LDFLAGS} &:g" \
 		-e "s:-o charmd_faceless:${LDFLAGS} &:g" \
 		-e "s:-o charmd:${LDFLAGS} &:g" \
+		-e "/^CHARMC/s:$: ${CPPFLAGS} ${CFLAGS}:g" \
 		-i \
 		src/scripts/Makefile \
 		src/util/charmrun-src/Makefile || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,10 +54,9 @@ DEPEND="${COMMON_DEPEND}
 	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools:0
 	>=dev-util/intltool-0.50.1:*
-	x11-proto/randrproto:0
-	>=x11-proto/xproto-7.0.15:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*
+	x11-base/xorg-proto
 	man? ( app-text/docbook-sgml-utils:0
 		>=app-text/docbook-sgml-dtd-4.3 )"
 

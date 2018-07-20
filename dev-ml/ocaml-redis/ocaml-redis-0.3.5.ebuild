@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib opam
 
 DESCRIPTION="Redis bindings for OCaml"
 HOMEPAGE="http://0xffea.github.io/ocaml-redis/ https://github.com/0xffea/ocaml-redis/"
@@ -21,21 +21,23 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ml/jbuilder
-	dev-ml/opam
-	test? ( dev-ml/ounit )"
+	test? ( dev-ml/ounit dev-db/redis dev-ml/lwt )"
 
 src_compile() {
 	jbuilder build -p redis || die
 }
 
 src_test() {
-	jbuilder runtest || die
+	einfo "Starting test redis server"
+	local port=4567
+	/usr/sbin/redis-server --port ${port} &
+	local rpid=$!
+	export OCAML_REDIS_TEST_PORT=${port}
+	sleep 1
+	jbuilder runtest || { kill ${rpid}; die; }
+	kill ${rpid} || die
 }
 
 src_install() {
-	opam-installer -i \
-		--prefix="${ED}/usr" \
-		--libdir="${D}/$(ocamlc -where)" \
-		--docdir="${ED}/usr/share/doc/${PF}" \
-		redis.install || die
+	opam_src_install redis
 }

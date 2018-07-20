@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,13 +8,13 @@ MY_P=${P/_}
 MY_P=${MY_P/_p/.}
 
 DESCRIPTION="Audio compression format designed for speech"
-HOMEPAGE="http://www.speex.org/"
-SRC_URI="http://downloads.xiph.org/releases/speex/${MY_P}.tar.gz"
+HOMEPAGE="https://www.speex.org/"
+SRC_URI="https://downloads.xiph.org/releases/speex/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="armv5te cpu_flags_x86_sse static-libs utils +vbr"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+IUSE="cpu_flags_arm_v4 cpu_flags_arm_v5 cpu_flags_arm_v6 cpu_flags_x86_sse static-libs utils +vbr"
 
 RDEPEND="
 	utils? (
@@ -41,16 +41,28 @@ src_prepare() {
 multilib_src_configure() {
 	append-lfs-flags
 
-	# Can also be configured without floating point
-	# --enable-fixed-point
+	local \
+		FIXED_ARG=--disable-fixed-point \
+		ARM4_ARG=--disable-arm4-asm \
+		ARM5_ARG=--disable-arm5e-asm
+
+	if use arm && ! use cpu_flags_arm_v6; then
+		FIXED_ARG=--enable-fixed-point
+
+		if use cpu_flags_arm_v5; then
+			ARM5_ARG=--enable-arm5e-asm
+		elif use cpu_flags_arm_v4; then
+			ARM4_ARG=--enable-arm4-asm
+		fi
+	fi
+
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable static-libs static) \
-		$(usex arm $(usex armv5te '--disable-arm4-asm' '--enable-arm4-asm') '--disable-arm4-asm') \
-		$(use_enable armv5te arm5e-asm) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable vbr) \
 		$(use_with utils speexdsp) \
-		$(use_enable utils binaries)
+		$(use_enable utils binaries) \
+		${FIXED_ARG} ${ARM4_ARG} ${ARM5_ARG}
 }
 
 multilib_src_install_all() {

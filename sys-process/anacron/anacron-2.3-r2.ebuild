@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
@@ -56,6 +58,6 @@ pkg_postinst() {
 	echo
 	einfo "You may wish to read the Gentoo Linux Cron Guide, which can be"
 	einfo "found online at:"
-	einfo "    https://www.gentoo.org/doc/en/cron-guide.xml"
+	einfo "    https://wiki.gentoo.org/wiki/Cron"
 	echo
 }

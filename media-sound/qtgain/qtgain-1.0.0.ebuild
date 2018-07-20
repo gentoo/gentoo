@@ -23,7 +23,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 "
-DEPEND="dev-qt/qtgui:4"
 
 S="${WORKDIR}/${PN}"
 

@@ -1,0 +1,25 @@
+mpfr-4.0.0 removed 'mpfr_add_one_ulp' and 'mpfr_sub_one_ulp'
+
+From 5eaa17651b759c7856a118835802fecbebcf46ad Mon Sep 17 00:00:00 2001
+From: Paul Zimmermann <Paul.Zimmermann@inria.fr>
+Date: Wed, 4 Oct 2017 22:09:40 +0200
+Subject: [PATCH] replace obsolete mpfr_add_one_ulp/mpfr_sub_one_ulp functions
+
+---
+ src/mpc-impl.h | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/mpc-impl.h b/src/mpc-impl.h
+index 4026765..5420691 100644
+--- a/src/mpc-impl.h
++++ b/src/mpc-impl.h
+@@ -60,2 +60,4 @@ along with this program. If not, see http://www.gnu.org/licenses/ .
+-#define MPFR_ADD_ONE_ULP(x) mpfr_add_one_ulp (x, GMP_RNDN)
+-#define MPFR_SUB_ONE_ULP(x) mpfr_sub_one_ulp (x, GMP_RNDN)
++#define MPFR_ADD_ONE_ULP(x) \
++  (mpfr_sgn (x) > 0 ? mpfr_nextabove (x) : mpfr_nextbelow (x))
++#define MPFR_SUB_ONE_ULP(x) \
++  (mpfr_sgn (x) > 0 ? mpfr_nextbelow (x) : mpfr_nextabove (x))
+-- 
+2.15.1
+

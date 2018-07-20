@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/libming/libming/archive/${P//./_}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="+perl php +python static-libs"
 
 RDEPEND="perl? ( dev-lang/perl:= )
@@ -28,13 +28,17 @@ RDEPEND="perl? ( dev-lang/perl:= )
 	!media-libs/libswf"
 DEPEND="${RDEPEND}
 	sys-devel/flex
+	virtual/pkgconfig
 	virtual/yacc"
 PDEPEND="php? ( dev-php/ming-php )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S=${WORKDIR}/${P//./_}
 
-PATCHES=( "${FILESDIR}"/${PN}-0.4.8-CVE-2017-8782.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.8-CVE-2017-8782.patch
+	"${FILESDIR}"/${PN}-0.4.8-freetype_pkgconfig.patch
+)
 
 # Tests only work when the package is tested on a system
 # which does not presently have any version of ming installed.

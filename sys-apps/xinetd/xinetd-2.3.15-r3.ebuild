@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ SRC_URI="http://www.xinetd.org/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd"
 IUSE="perl rpc tcpd"
 
 DEPEND="tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )
@@ -30,11 +30,13 @@ src_prepare() {
 }
 
 src_configure() {
-	if ! use rpc ; then
+	tc-export AR PKG_CONFIG
+	if use rpc ; then
+		append-cflags $(${PKG_CONFIG} --cflags libtirpc)
+	else
 		append-cppflags -DNO_RPC
 		export ac_cv_header_{rpc_{rpc,rpcent,pmap_clnt},netdb}_h=no
 	fi
-	tc-export AR PKG_CONFIG
 	LIBS=$(${PKG_CONFIG} --libs libtirpc) \
 	econf \
 		$(use_with tcpd libwrap) \

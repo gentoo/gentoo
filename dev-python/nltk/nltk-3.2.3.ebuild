@@ -4,7 +4,7 @@
 EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-PYTHON_REQ_USE="tk?,xml(+)"
+PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://nltk.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="numpy test tk"
 
 RDEPEND="numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )

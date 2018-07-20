@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,11 +6,11 @@ EAPI="6"
 inherit readme.gentoo-r1
 
 DESCRIPTION="Lightweight X11 desktop panel for LXDE"
-HOMEPAGE="http://lxde.org/"
+HOMEPAGE="https://wiki.lxde.org/en/LXPanel"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~amd64-linux ~arm-linux ~x86-linux"
 SLOT="0"
 IUSE="+alsa wifi"
 

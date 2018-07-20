@@ -1,0 +1,21 @@
+--- a/scripts/w3mman/w3mman.in
++++ b/scripts/w3mman/w3mman.in
+@@ -1,7 +1,7 @@
+ #!@PERL@
+ 
+ @W3M = split(' ', '@W3M@');
+-$ENV{'MAN'} = '@MAN@';
++$ENV{'MAN'} = 'env LC_MESSAGES=${LC_MESSAGES:-${LC_ALL:-${LANG}}} LANG=C @MAN@';
+ $SCRIPT = 'file:///$LIB/w3mman2html.cgi';
+ 
+ sub usage {
+--- a/scripts/w3mman/w3mman2html.cgi.in
++++ b/scripts/w3mman/w3mman2html.cgi.in
+@@ -1,6 +1,6 @@
+ #!@PERL@
+ 
+-$MAN = $ENV{'MAN'} || '@MAN@';
++$MAN = $ENV{'MAN'} || 'env LC_MESSAGES=${LC_MESSAGES:-${LC_ALL:-${LANG}}} LANG=C @MAN@';
+ $QUERY = $ENV{'QUERY_STRING'} || $ARGV[0];
+ $SCRIPT_NAME = $ENV{'SCRIPT_NAME'} || $0;
+ $CGI = "file://$SCRIPT_NAME";

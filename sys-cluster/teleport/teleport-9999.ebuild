@@ -9,7 +9,7 @@ HOMEPAGE="https://gravitational.com/teleport"
 
 EGO_PN="github.com/gravitational/${PN}/..."
 
-if [ ${PV} == "9999" ] ; then
+if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 golang-vcs
 	EGIT_REPO_URI="https://github.com/gravitational/${PN}.git"
 else
@@ -28,7 +28,7 @@ DEPEND="
 RDEPEND=""
 
 src_compile() {
-	GOPATH="${S}" emake -C src/${EGO_PN%/*}
+	BUILDFLAGS="" GOPATH="${S}" emake -C src/${EGO_PN%/*}
 	pushd src/${EGO_PN%/*}/web/dist >/dev/null || die
 	zip -qr "${S}/src/${EGO_PN%/*}/build/webassets.zip" . || die
 	popd >/dev/null || die
@@ -48,4 +48,8 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf ${PN}.service
+}
+
+src_test() {
+	GOPATH="${S}" emake -C src/${EGO_PN%/*} test
 }

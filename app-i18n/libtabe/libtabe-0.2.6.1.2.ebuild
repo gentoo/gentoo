@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 WANT_AUTOMAKE=1.11
 
@@ -11,7 +13,7 @@ ORIG_PV=${DEBIAN_PV%-*}
 ORIG_P=${PN}-${ORIG_PV}
 
 DESCRIPTION="Libtabe provides bimsphone support for xcin-2.5+"
-HOMEPAGE="http://packages.qa.debian.org/libt/libtabe.html"
+HOMEPAGE="https://packages.qa.debian.org/libt/libtabe.html"
 SRC_URI="mirror://debian/pool/main/${PN:0:4}/${PN}/${PN}_${ORIG_PV}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:4}/libtabe/${DEBIAN_PATCH}.gz"
 

@@ -1,0 +1,355 @@
+From 6d397faa7006e0f3a67595d317e10d3bb81d8792 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 22 Oct 2017 18:50:01 +1300
+Subject: Fix tests failing on Perl 5.26 without '.' in @INC
+
+eg: With PERL_USE_UNSAFE_INC=0 in ENV
+
+This patch additionally creates safeguards against tests being allowed
+to continue if the "do" call fails for any reason, as do does not
+auto-fatalize, only warns at best.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=121440
+Bug: https://bugs.gentoo.org/616954
+---
+ t/Gnome.t               | 4 +++-
+ t/GnomeApp.t            | 4 +++-
+ t/GnomeAppBar.t         | 4 +++-
+ t/GnomeAppHelper.t      | 4 +++-
+ t/GnomeColorPicker.t    | 4 +++-
+ t/GnomeConfig.t         | 4 +++-
+ t/GnomeDateEdit.t       | 4 +++-
+ t/GnomeDruid.t          | 4 +++-
+ t/GnomeEntry.t          | 4 +++-
+ t/GnomeFileEntry.t      | 4 +++-
+ t/GnomeFontPicker.t     | 4 +++-
+ t/GnomeHRef.t           | 4 +++-
+ t/GnomeIconEntry.t      | 4 +++-
+ t/GnomeIconList.t       | 4 +++-
+ t/GnomeIconSelection.t  | 4 +++-
+ t/GnomeIconTheme.t      | 4 +++-
+ t/GnomePasswordDialog.t | 4 +++-
+ t/GnomePixmapEntry.t    | 4 +++-
+ t/GnomePopupMenu.t      | 4 +++-
+ t/GnomeScores.t         | 4 +++-
+ t/GnomeThumbnail.t      | 4 +++-
+ 21 files changed, 63 insertions(+), 21 deletions(-)
+
+diff --git a/t/Gnome.t b/t/Gnome.t
+index 8b6d0c5..e62b662 100644
+--- a/t/Gnome.t
++++ b/t/Gnome.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeApp.t b/t/GnomeApp.t
+index d7fc143..49420c3 100644
+--- a/t/GnomeApp.t
++++ b/t/GnomeApp.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeAppBar.t b/t/GnomeAppBar.t
+index 22ac53d..b127b2c 100644
+--- a/t/GnomeAppBar.t
++++ b/t/GnomeAppBar.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeAppHelper.t b/t/GnomeAppHelper.t
+index 849bfe7..5ed6350 100644
+--- a/t/GnomeAppHelper.t
++++ b/t/GnomeAppHelper.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeColorPicker.t b/t/GnomeColorPicker.t
+index 7f7fba9..8dcee3e 100644
+--- a/t/GnomeColorPicker.t
++++ b/t/GnomeColorPicker.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeConfig.t b/t/GnomeConfig.t
+index 2c42a14..24973be 100644
+--- a/t/GnomeConfig.t
++++ b/t/GnomeConfig.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeDateEdit.t b/t/GnomeDateEdit.t
+index a8f2e33..addd98d 100644
+--- a/t/GnomeDateEdit.t
++++ b/t/GnomeDateEdit.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeDruid.t b/t/GnomeDruid.t
+index c209004..21a9fdd 100644
+--- a/t/GnomeDruid.t
++++ b/t/GnomeDruid.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeEntry.t b/t/GnomeEntry.t
+index c2d2b68..a0aa95a 100644
+--- a/t/GnomeEntry.t
++++ b/t/GnomeEntry.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeFileEntry.t b/t/GnomeFileEntry.t
+index 91befa8..1d572a9 100644
+--- a/t/GnomeFileEntry.t
++++ b/t/GnomeFileEntry.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeFontPicker.t b/t/GnomeFontPicker.t
+index a2e8e68..98520db 100644
+--- a/t/GnomeFontPicker.t
++++ b/t/GnomeFontPicker.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeHRef.t b/t/GnomeHRef.t
+index 256347b..484fa61 100644
+--- a/t/GnomeHRef.t
++++ b/t/GnomeHRef.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeIconEntry.t b/t/GnomeIconEntry.t
+index 35ef1e6..957efc0 100644
+--- a/t/GnomeIconEntry.t
++++ b/t/GnomeIconEntry.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeIconList.t b/t/GnomeIconList.t
+index 2bf9eb1..8067a70 100644
+--- a/t/GnomeIconList.t
++++ b/t/GnomeIconList.t
+@@ -11,7 +11,9 @@ use Test::More skip_all => "Seems to be broken", tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeIconSelection.t b/t/GnomeIconSelection.t
+index 35117c9..566ae85 100644
+--- a/t/GnomeIconSelection.t
++++ b/t/GnomeIconSelection.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeIconTheme.t b/t/GnomeIconTheme.t
+index 9baeb4c..dda3582 100644
+--- a/t/GnomeIconTheme.t
++++ b/t/GnomeIconTheme.t
+@@ -13,7 +13,9 @@ Gnome2::VFS -> init();
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   skip("GnomeIconTheme is new in 2.0.6", TESTS)
+     unless (Gnome2 -> CHECK_VERSION(2, 0, 6));
+diff --git a/t/GnomePasswordDialog.t b/t/GnomePasswordDialog.t
+index 51c548c..38b2dcb 100644
+--- a/t/GnomePasswordDialog.t
++++ b/t/GnomePasswordDialog.t
+@@ -10,7 +10,9 @@ use Test::More tests => TESTS;
+ ###############################################################################
+ 
+ SKIP: {
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   skip("GnomePasswordDialog and GnomeAuthenticationManager didn't appear until 2.4.0", TESTS)
+     unless (Gnome2 -> CHECK_VERSION(2, 4, 0));
+diff --git a/t/GnomePixmapEntry.t b/t/GnomePixmapEntry.t
+index 17e4996..dbfe42c 100644
+--- a/t/GnomePixmapEntry.t
++++ b/t/GnomePixmapEntry.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomePopupMenu.t b/t/GnomePopupMenu.t
+index 20275c9..151f410 100644
+--- a/t/GnomePopupMenu.t
++++ b/t/GnomePopupMenu.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeScores.t b/t/GnomeScores.t
+index 1b21ab2..82aa3a3 100644
+--- a/t/GnomeScores.t
++++ b/t/GnomeScores.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   #############################################################################
+ 
+diff --git a/t/GnomeThumbnail.t b/t/GnomeThumbnail.t
+index ec0095f..ba24928 100644
+--- a/t/GnomeThumbnail.t
++++ b/t/GnomeThumbnail.t
+@@ -11,7 +11,9 @@ use Test::More tests => TESTS;
+ 
+ SKIP: {
+   our $application;
+-  do "t/TestBoilerplate";
++  do "./t/TestBoilerplate";
++  die $@ if $@;
++  die $! if $!;
+ 
+   skip("GnomeThumbnail is new in 2.0.6", 4)
+     unless (Gnome2 -> CHECK_VERSION(2, 0, 6));
+-- 
+2.14.2
+

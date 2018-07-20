@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: epatch.eclass
@@ -10,6 +10,13 @@
 # patches to ebuilds. Mostly superseded by eapply* in EAPI 6.
 
 if [[ -z ${_EPATCH_ECLASS} ]]; then
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6)
+		;;
+	*)
+		die "${ECLASS}: banned in EAPI=${EAPI}; use eapply* instead";;
+esac
 
 inherit estack
 

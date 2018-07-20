@@ -6,9 +6,9 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-  Python wrapper for the Fast Light Tool Kit cross-platform graphical
-  user-interface library, using SWIG.
-</longdescription>
+		Python wrapper for the Fast Light Tool Kit cross-platform graphical
+		user-interface library, using SWIG.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pyfltk</remote-id>
 	</upstream>

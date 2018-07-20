@@ -1,0 +1,7 @@
+# /etc/conf.d/fcron
+
+# Options to fcron
+# See fcron(8) for more details
+# Notes:
+# * Do not specify another CONFIGFILE
+#FCRON_OPTS=""

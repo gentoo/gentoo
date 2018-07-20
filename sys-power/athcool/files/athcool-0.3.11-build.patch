@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -14,13 +14,13 @@
  SRCS = athcool.c scanpci.c
  OBJS = $(SRCS:.c=.o)

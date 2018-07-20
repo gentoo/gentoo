@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0/14" # SONAME of libplplot.so
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="cairo cxx doc +dynamic examples fortran gd java jpeg latex lua octave pdf
+IUSE="cairo cxx doc +dynamic examples fortran gd java jpeg latex lua ocaml octave pdf
 	pdl png python qhull qt5 shapefile svg tcl test	threads tk truetype wxwidgets X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) qt5? ( dynamic ) test? ( latex ) tk? ( tcl )"
 RESTRICT="octave? ( test )"
@@ -31,6 +31,11 @@ RDEPEND="
 		virtual/latex-base
 	)
 	lua? ( dev-lang/lua:0= )
+	ocaml? (
+		dev-lang/ocaml
+		dev-ml/camlidl
+		cairo? ( dev-ml/cairo-ocaml[gtk] )
+	)
 	octave? ( sci-mathematics/octave:0= )
 	pdf? ( media-libs/libharu:0= )
 	pdl? (
@@ -78,6 +83,7 @@ DEPEND="${RDEPEND}
 		>=virtual/jdk-1.5
 		dev-lang/swig
 	)
+	ocaml? ( dev-ml/findlib )
 	octave? ( >=dev-lang/swig-3.0.12 )
 	python? ( dev-lang/swig )
 	test? (
@@ -90,6 +96,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.11.0-octave.patch
 	"${FILESDIR}"/${PN}-5.12.0-multiarch.patch
 	"${FILESDIR}"/${PN}-5.12.0-java-install-path.patch
+	"${FILESDIR}"/${PN}-5.12.0-ocaml-remove-rpath.patch
 )
 
 pkg_setup() {
@@ -131,9 +138,6 @@ src_configure() {
 	# - Bindings:
 	#   * Ada is a mess in Gentoo, don't use
 	#   * D has been removed from Gentoo, don't use
-	#   * OCaml is a general disaster and randomly inserts RPATH
-	#     on the basis of absolute -L linker paths:
-	#       https://caml.inria.fr/mantis/view.php?id=5943
 	#   * Qt4 has been disabled, as it is deprecated and unsupported upstream
 	# - DPLD_* drivers need to use ON/OFF instead of the usex defaults yes/no, as
 	#   the testsuite performs a string comparison to determine which tests to run
@@ -149,8 +153,7 @@ src_configure() {
 		## Features
 		-DBUILD_DOC=OFF
 		-DBUILD_DOX_DOC=OFF
-		-DUSE_RPATH=OFF
-		-DCMAKE_SKIP_INSTALL_RPATH=ON
+		-DCMAKE_SKIP_RPATH=ON
 		-DPREBUILT_DOC=$(usex doc)
 		-DHAVE_SHAPELIB=$(usex shapefile)
 		-DWITH_FREETYPE=$(usex truetype)
@@ -165,7 +168,7 @@ src_configure() {
 		## Bindings
 		-DENABLE_ada=OFF
 		-DENABLE_d=OFF
-		-DENABLE_ocaml=OFF
+		-DENABLE_ocaml=$(usex ocaml)
 		-DENABLE_pyqt4=OFF
 		-DENABLE_cxx=$(usex cxx)
 		-DENABLE_DYNDRIVERS=$(usex dynamic)
@@ -241,6 +244,9 @@ src_configure() {
 	)
 	use shapefile && mycmakeargs+=(
 		-DSHAPELIB_INCLUDE_DIR="${EPREFIX}"/usr/include/libshp
+	)
+	use ocaml && mycmakeargs+=(
+		-DOCAML_INSTALL_DIR="$(ocamlc -where)"
 	)
 	use python && mycmakeargs+=(
 		-DENABLE_pyqt5=$(usex qt5)

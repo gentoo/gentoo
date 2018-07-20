@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ KV_min=2.6.39
 inherit autotools linux-info multilib multilib-minimal user
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://github.com/gentoo/eudev.git"
+	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
@@ -28,11 +28,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.20
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 	!<sys-libs/glibc-2.11
 	!sys-apps/gentoo-systemd-integration
-	!sys-apps/systemd
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r7
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	!sys-apps/systemd"
 DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	virtual/os-headers
@@ -51,10 +47,9 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND=">=sys-fs/udev-init-scripts-26
 	hwdb? ( >=sys-apps/hwids-20140304[udev] )"
 
-# The multilib-build.eclass doesn't handle situation where the installed headers
-# are different in ABIs. In this case, we install libgudev headers in native
-# ABI but not for non-native ABI.
-multilib_check_headers() { :; }
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/udev.h
+)
 
 pkg_pretend() {
 	ewarn
@@ -170,7 +165,7 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
@@ -236,7 +231,5 @@ pkg_postinst() {
 
 	elog
 	elog "For more information on eudev on Gentoo, writing udev rules, and"
-	elog "fixing known issues visit:"
-	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
-	elog
+	elog "fixing known issues visit: https://wiki.gentoo.org/wiki/Eudev"
 }

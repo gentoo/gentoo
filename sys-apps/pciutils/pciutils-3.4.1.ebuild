@@ -22,11 +22,7 @@ DEPEND="kmod? ( sys-apps/kmod )
 	!static-libs? ( ${LIB_DEPEND//static-libs(+),} )
 	udev? ( >=virtual/libudev-208[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
-	sys-apps/hwids
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r14
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+	sys-apps/hwids"
 DEPEND="${DEPEND}
 	kmod? ( virtual/pkgconfig )"
 

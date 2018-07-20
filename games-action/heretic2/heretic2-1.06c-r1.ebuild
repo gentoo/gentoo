@@ -13,7 +13,7 @@ SRC_URI="mirror://lokigames/${PN}/${P/%?/b}-unified-x86.run
 
 LICENSE="LOKI-EULA"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 QA_TEXTRELS="${GAMES_PREFIX_OPT:1}/${PN}/base/*.so"

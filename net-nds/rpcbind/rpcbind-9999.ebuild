@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,6 +19,7 @@ HOMEPAGE="https://sourceforge.net/projects/rpcbind/"
 LICENSE="BSD"
 SLOT="0"
 IUSE="debug selinux systemd tcpd warmstarts"
+REQUIRED_USE="systemd? ( warmstarts )"
 
 CDEPEND=">=net-libs/libtirpc-0.2.3:=
 	systemd? ( sys-apps/systemd:= )
@@ -35,9 +36,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--bindir="${EPREFIX}"/sbin \
 		--with-statedir="${EPREFIX}"/run/${PN} \
-		--with-rpcuser=root \
 		--with-systemdsystemunitdir=$(usex systemd "$(systemd_get_unitdir)" "no") \
 		$(use_enable tcpd libwrap) \
 		$(use_enable debug) \
@@ -49,6 +48,4 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-
-	systemd_dounit "${FILESDIR}"/${PN}.service
 }

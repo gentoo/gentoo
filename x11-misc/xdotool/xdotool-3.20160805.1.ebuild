@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jordansissel/xdotool/releases/download/v${PV}/${P}.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="examples"
 
 RDEPEND="
@@ -22,8 +22,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xineramaproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 # The test wants to manualy start Xvfb, wont use VirtualX and it tries
@@ -44,11 +43,11 @@ src_prepare() {
 src_compile() {
 	tc-export CC LD PKG_CONFIG
 
-	emake PREFIX="/usr"
+	emake PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {
-	emake PREFIX="${D}usr" INSTALLMAN="${D}usr/share/man" INSTALLLIB="${D}usr/$(get_libdir)" install
+	emake PREFIX="${ED}usr" INSTALLMAN="${ED}usr/share/man" INSTALLLIB="${ED}usr/$(get_libdir)" install
 
 	dodoc CHANGELIST README
 	if use examples; then

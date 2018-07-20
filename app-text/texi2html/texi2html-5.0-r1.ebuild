@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
+
+inherit prefix
 
 DESCRIPTION="Perl script that converts Texinfo to HTML"
 HOMEPAGE="http://www.nongnu.org/texi2html/"
@@ -28,6 +30,10 @@ src_prepare() {
 	# On FreeBSD this script is used instead of GNU install but it comes without
 	# executable pemissions... Fix it!
 	chmod +x install-sh || die
+
+	if use prefix; then
+		hprefixify $(find . -name '*.pl' | xargs)
+	fi
 }
 
 src_configure() {

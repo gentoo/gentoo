@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="A chess client and library for Emacs"
 HOMEPAGE="https://elpa.gnu.org/packages/chess.html
-	http://www.emacswiki.org/emacs/ChessMode"
+	https://www.emacswiki.org/emacs/ChessMode"
 # Taken from https://elpa.gnu.org/packages/${P}.tar
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 	mirror://gentoo/emacs-chess-sounds-${PV%.*}.tar.bz2
@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 
 # Free alternatives first, otherwise follow the ordering in the upstream
 # chess-default-engine (in chess.el). Rearrange chess-default-engine in

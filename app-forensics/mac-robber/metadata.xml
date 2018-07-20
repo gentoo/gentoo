@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>forensics@gentoo.org</email>
-		<name>Gentoo Forensics Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 mac-robber is a digital forensics and incident response tool that collects data from allocated files in a mounted file system. 
 The data can be used by the mactime tool in The Sleuth Kit to make a timeline of file activity. The mac-robber tool is based on 

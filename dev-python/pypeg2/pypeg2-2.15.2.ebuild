@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,9 @@ MY_PN=pyPEG2
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="An intrinsic PEG Parser-Interpreter for Python"
-HOMEPAGE="http://fdik.org/pyPEG/ https://bitbucket.org/fdik/pypeg/ https://pypi.python.org/pypi/pyPEG2"
+HOMEPAGE="https://fdik.org/pyPEG/
+	https://bitbucket.org/fdik/pypeg/
+	https://pypi.org/project/pyPEG2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

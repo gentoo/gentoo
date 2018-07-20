@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-2"
-	EGIT_REPO_URI="git://github.com/lu-zero/postproc.git"
+	EGIT_REPO_URI="https://github.com/lu-zero/postproc.git"
 fi
 
 inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
@@ -24,7 +24,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 IUSE="pic static-libs"
 
@@ -37,11 +37,12 @@ done
 
 RDEPEND="
 	>=media-video/libav-0.8.2-r2:0=
-	!media-video/ffmpeg:0
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20140508-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )
-"
+	!media-video/ffmpeg:0"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-support-MMXEXT.patch
+}
 
 multilib_src_configure() {
 	local myconf=( ${EXTRA_LIBPOSTPROC_CONF} )

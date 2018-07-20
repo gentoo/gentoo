@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,10 +25,10 @@ RDEPEND="
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXfixes[${MULTILIB_USEDEP}]
 		x11-libs/libXmu[${MULTILIB_USEDEP}]
-		x11-proto/xproto[${MULTILIB_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 [[ ${PV} != *9999 ]] && S="${WORKDIR}/${P,,}"
 

@@ -1,0 +1,30 @@
+From: Chris Lamb <lamby@debian.org>
+Date: Wed, 16 Aug 2017 22:53:10 +0200
+Subject: reproducible build
+
+Bug-Debian: https://bugs.debian.org/831773
+---
+ configure.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index 9b8aeec..145bd73 100644
+--- a/configure.in
++++ b/configure.in
+@@ -90,6 +90,7 @@ fi
+ dnl Arch
+ 
+ case `uname -m` in
++*x86_64) arch_info=x86_64 ;;
+ *686) arch_info=i686 ;;
+ *i586) arch_info=i586 ;;
+ *i486) arch_info=i486 ;;
+@@ -107,7 +108,7 @@ sys_info=`uname -s`
+ AC_MSG_RESULT(System: $sys_info)
+ 
+ case $arch_info in
+-i686|i586|i486|i386) OPT="-O3  -Wno-unused -funroll-loops -fstrength-reduce \
++x86_64|i686|i586|i486|i386) OPT="-O3  -Wno-unused -funroll-loops -fstrength-reduce \
+                           -ffast-math -falign-functions=2 -falign-jumps=2 \
+                           -falign-loops=2 -fomit-frame-pointer -Wall " ;;
+ sun4u)               OPT="-O3  -Wno-unused -funroll-loops -fstrength-reduce \

@@ -1,19 +1,20 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
 IUSE=""
 DESCRIPTION="WMnet is a dock.app network monitor"
-SRC_URI="http://www.digitalkaos.net/linux/wmnet/download/${P}.tar.gz
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz
 	mirror://gentoo/${P}-misc.patch.bz2"
-HOMEPAGE="http://www.digitalkaos.net/linux/wmnet/"
+HOMEPAGE="https://www.dockapps.net/wmnet"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	x11-misc/imake
 	app-text/rman"
 

@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 
 DOCS="ChangeLog"
 
+PATCHES=( "${FILESDIR}"/${P}-perl_brace_regex.patch )
+
 src_configure() {
 	econf \
 		$(use_with libnotify) \

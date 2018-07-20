@@ -11,8 +11,8 @@
   </maintainer>
   <use>
     <flag name="boost">Enable support for <pkg>dev-libs/boost</pkg></flag>
-    <flag name="doc">Enable support for documents</flag>
-    <flag name="opencc">Use <pkg>app-i18n/opencc</pkg> for input</flag>
+    <flag name="doc">Generate API documentation</flag>
+    <flag name="opencc">Enable support for <pkg>app-i18n/opencc</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">pyzy/pyzy</remote-id>

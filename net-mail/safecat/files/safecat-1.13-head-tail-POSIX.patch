@@ -1,0 +1,45 @@
+--- a/make-compile.sh
++++ b/make-compile.sh
+@@ -1 +1 @@
+-echo exec "$CC" "`head -1 conf-includes`" -c '${1+"$@"}'
++echo exec "$CC" "`head -n 1 conf-includes`" -c '${1+"$@"}'
+--- a/Makefile
++++ b/Makefile
+@@ -17,8 +17,8 @@
+ auto-ccld.sh: \
+ conf-cc conf-ld warn-auto.sh
+ 	( cat warn-auto.sh; \
+-	echo CC=\'`head -1 conf-cc`\'; \
+-	echo LD=\'`head -1 conf-ld`\'; \
++	echo CC=\'`head -n 1 conf-cc`\'; \
++	echo LD=\'`head -n 1 conf-ld`\'; \
+ 	) > auto-ccld.sh
+ 
+ auto-str: \
+@@ -31,7 +31,7 @@
+ 
+ auto_home.c: \
+ auto-str conf-root
+-	./auto-str auto_home `head -1 conf-root` > auto_home.c
++	./auto-str auto_home `head -n 1 conf-root` > auto_home.c
+ 
+ auto_home.o: \
+ compile auto_home.c
+@@ -161,7 +161,7 @@
+ maildir: \
+ warn-auto.sh maildir.sh conf-root
+ 	cat warn-auto.sh maildir.sh \
+-	| sed s}HOME}"`head -1 conf-root`"}g \
++	| sed s}HOME}"`head -n 1 conf-root`"}g \
+ 	> maildir
+ 	chmod 755 maildir
+ 
+@@ -407,7 +407,7 @@
+ version.h: \
+ conf-version
+ 	@echo 'static const char *const version_string="$$Version:' \
+-	`head -1 conf-version` 'built' `date +"%b %d, %Y"` at \
++	`head -n 1 conf-version` 'built' `date +"%b %d, %Y"` at \
+ 	`date +"%H:%M"`'$$";' > version.h
+ 
+ writefile.o: \

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,16 +7,17 @@ PYTHON_COMPAT=(python2_7)
 inherit eutils prefix user python-r1 multilib multilib-minimal systemd s6
 
 DESCRIPTION="NSS module for name lookups using LDAP"
-HOMEPAGE="http://arthurdejong.org/nss-pam-ldapd/"
-SRC_URI="http://arthurdejong.org/${PN}/${P}.tar.gz"
+HOMEPAGE="https://arthurdejong.org/nss-pam-ldapd/"
+SRC_URI="https://arthurdejong.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug kerberos +pam sasl test +utils"
 
 COMMON_DEP="
 	net-nds/openldap[${MULTILIB_USEDEP}]
+	dev-python/python-ldap[${PYTHON_USEDEP}]
 	sasl? ( dev-libs/cyrus-sasl[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	virtual/pam[${MULTILIB_USEDEP}]
@@ -80,7 +81,6 @@ multilib_src_install_all() {
 
 	newinitd "${FILESDIR}"/nslcd-init-r1 nslcd
 	newinitd "${FILESDIR}"/nslcd-init-r2 nslcd
-	newinitd "${FILESDIR}"/nslcd-init-s6 nslcd-s6
 	s6_install_service nslcd "${FILESDIR}"/nslcd-run-s6
 
 	insinto /usr/share/nss-pam-ldapd

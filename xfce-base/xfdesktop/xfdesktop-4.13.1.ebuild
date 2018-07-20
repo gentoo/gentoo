@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Desktop manager for the Xfce desktop environment"
 HOMEPAGE="https://www.xfce.org/projects/"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,7 +28,7 @@ RDEPEND=">=x11-libs/cairo-1.12:=
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	thunar? (
 		>=dev-libs/glib-2.38:=
-		>=xfce-base/thunar-1.6:=[dbus]
+		=xfce-base/thunar-1.6*:=[dbus]
 		)"
 DEPEND="${RDEPEND}
 	dev-util/intltool

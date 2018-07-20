@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="gtk3">Enable GTK+3 interface</flag>
-    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
     <flag name="netbeans">Include netbeans external editor integration support</flag>
     <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
   </use>

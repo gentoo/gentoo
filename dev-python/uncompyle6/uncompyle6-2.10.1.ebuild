@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="Python cross-version byte-code deparser"
-HOMEPAGE="https://github.com/rocky/python-uncompyle6/ https://pypi.python.org/pypi/uncompyle6"
+HOMEPAGE="https://github.com/rocky/python-uncompyle6/ https://pypi.org/project/uncompyle6/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

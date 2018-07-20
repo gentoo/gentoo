@@ -12,7 +12,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ultravideo/kvazaar"
 fi
 
-inherit eutils multilib autotools multilib-minimal toolchain-funcs ${SCM}
+inherit eutils multilib autotools multilib-minimal toolchain-funcs flag-o-matic ${SCM}
 
 DESCRIPTION="An open-source HEVC encoder"
 HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
@@ -20,12 +20,12 @@ HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	SRC_URI="https://github.com/ultravideo/kvazaar/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/silentbicycle/greatest/archive/v${GREATEST_PV}.tar.gz -> greatest-${GREATEST_PV}.tar.gz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
 # subslot = libkvazaar major
-SLOT="0/3"
+SLOT="0/4"
 IUSE="static-libs test"
 
 DEPEND=""
@@ -44,6 +44,8 @@ src_prepare() {
 		rmdir "${S}/greatest" || die
 		mv "${WORKDIR}/greatest-${GREATEST_PV}" "${S}/greatest" || die
 	fi
+	# Some m4 macros append Werror, we do not want that.
+	append-flags "-Wno-error"
 }
 
 multilib_src_configure() {

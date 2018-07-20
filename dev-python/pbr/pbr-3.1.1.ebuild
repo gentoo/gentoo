@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ~ppc ~ppc64 s390 x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
@@ -56,9 +56,7 @@ python_prepare_all() {
 	sed -e s':test_command_hooks:_&:' \
 		-e s':test_global_setup_hooks:_&:' \
 		-i pbr/tests/test_hooks.py || die
-	sed \
-		-e "s:test_wsgi_script_install:_&:" \
-		-i pbr/tests/test_wsgi.py || die
+	rm pbr/tests/test_wsgi.py || die "couldn't remove wsgi network tests"
 	einfo "rogue tests disabled"
 	sed -i '/^hacking/d' test-requirements.txt || die
 

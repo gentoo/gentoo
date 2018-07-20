@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,8 @@ inherit eutils linux-info multilib pam toolchain-funcs
 
 PATCH_VER="4"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
-HOMEPAGE="http://www.samba.org/ppp"
-SRC_URI="ftp://ftp.samba.org/pub/ppp/${P}.tar.gz
+HOMEPAGE="https://ppp.samba.org/"
+SRC_URI="https://www.samba.org/ftp/pub/ppp/${P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/${P}-patches-${PATCH_VER}.tar.xz
 	http://www.netservers.net.uk/gpl/ppp-dhcpc.tgz"
 
@@ -23,7 +23,7 @@ DEPEND="activefilter? ( net-libs/libpcap )
 	gtk? ( x11-libs/gtk+:2 )
 	eap-tls? (
 		net-misc/curl
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)"
 RDEPEND="${DEPEND}"

@@ -18,11 +18,11 @@ IUSE=""
 
 DEPEND="virtual/opengl
 		x11-libs/libX11
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtopengl:5=
-		dev-qt/qtwebkit:5=
-		dev-qt/qtserialport:5=
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qtwebkit:5
+		dev-qt/qtserialport:5
 		virtual/glu"
 RDEPEND="${DEPEND}"
 

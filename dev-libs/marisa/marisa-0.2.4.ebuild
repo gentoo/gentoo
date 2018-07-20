@@ -9,12 +9,12 @@ DISTUTILS_OPTIONAL=1
 inherit distutils-r1 eutils
 
 DESCRIPTION="Matching Algorithm with Recursively Implemented StorAge"
-HOMEPAGE="https://code.google.com/p/marisa-trie/"
+HOMEPAGE="https://github.com/s-yata/marisa-trie https://code.google.com/archive/p/marisa-trie/"
 SRC_URI="https://marisa-trie.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 IUSE="python doc static-libs cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_sse4a cpu_flags_x86_popcnt"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"

@@ -12,6 +12,7 @@
   the requested values.
 </longdescription>
   <use>
+    <flag name="boost">Use the boost allocator from <pkg>dev-libs/boost</pkg></flag>
     <flag name="sparse">Add support for sparse matrix algebra with <pkg>sci-libs/colpack</pkg></flag>
   </use>
 </pkgmetadata>

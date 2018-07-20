@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,13 @@ inherit autotools eutils
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="http://www.windowmaker.org/"
-SRC_URI=" http://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
+SRC_URI="http://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
 	http://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ~mips ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="media-libs/fontconfig
 	>=x11-libs/libXft-2.1.0

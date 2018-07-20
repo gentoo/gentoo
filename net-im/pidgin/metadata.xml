@@ -14,7 +14,6 @@
 		<flag name="gstreamer">Enables voice and video sessions</flag>
 		<flag name="gtk">Builds Pidgin, the GTK+ interface</flag>
 		<flag name="meanwhile">Enable meanwhile support for Sametime protocol</flag>
-		<flag name="mxit">Enable mxit protocol support</flag>
 		<flag name="ncurses">Build finch, console interface</flag>
 		<flag name="prediction">Enable Contact Availability Prediction plugin</flag>
 		<flag name="python">Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -27,7 +27,7 @@ HOMEPAGE="http://www.mico.org/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="gtk postgres qt4 ssl tcl threads X"
+IUSE="gtk postgres ssl tcl threads X"
 RESTRICT="test" #298101
 
 # doesn't compile:
@@ -36,7 +36,6 @@ RESTRICT="test" #298101
 RDEPEND="
 	gtk?       ( x11-libs/gtk+:2 )
 	postgres?  ( dev-db/postgresql:* )
-	qt4?       ( dev-qt/qtgui:4[qt3support] )
 	ssl?       ( dev-libs/openssl:* )
 	tcl?       ( dev-lang/tcl:0 )
 	X?         ( x11-libs/libXt )
@@ -65,11 +64,6 @@ src_prepare() {
 	# This assumes that the compiler (or -wrapper) uses
 	# gcc flag '-mminimal-toc' for compilation.
 	sed -i -e 's/,-bbigtoc//' "${S}"/configure || die
-
-	if use qt4; then
-		sed -i -e "s, -lqt\", $(pkg-config --libs Qt3Support)\"," configure ||
-			die "cannot update to use Qt3Support of qt4"
-	fi
 }
 
 src_configure() {
@@ -84,9 +78,6 @@ src_configure() {
 	# to disable openssl utilization seems to override the configure check.
 	use ssl || export ac_cv_lib_ssl_open=no
 
-	# CFLAGS aren't used when checking for <qapplication.h>, but CPPFLAGS are.
-	use qt4 && append-cppflags $(pkg-config --cflags Qt3Support)
-
 	local myconf=
 	myconf() {
 		myconf="${myconf} $*"
@@ -99,7 +90,6 @@ src_configure() {
 	# the value needs to be empty instead.
 	# This applies to: pgsql, qt, tcl, bluetooth.
 	myconf --with-pgsql=$(use postgres && echo "${EPREFIX}"/usr)
-	myconf --with-qt=$(   use qt4      && echo "${EPREFIX}"/usr)
 	myconf --with-tcl=$(  use tcl      && echo "${EPREFIX}"/usr)
 	# bluetooth and wireless both don't compile cleanly
 	myconf --with-bluetooth=''
@@ -134,6 +124,9 @@ src_install() {
 	mv "${ED}"usr/bin/{,mico-}nsd || die
 	mv "${ED}"usr/man/man8/{,mico-}nsd.8 || die
 
+	# avoid conflict with net-misc/eventd, bug#632170
+	mv "${ED}"usr/bin/{,mico-}eventd || die
+
 	dodir /usr/share
 	mv "${ED}"usr/man "${ED}"usr/share || die
 	dodir /usr/share/doc/${PF}
@@ -146,4 +139,8 @@ pkg_postinst() {
 	einfo "The MICO Name Service daemon 'nsd' is named 'mico-nsd'"
 	einfo "due to a name conflict with net-dns/nsd. For details"
 	einfo "please refer to https://bugs.gentoo.org/544488."
+	einfo
+	einfo "The MICO Event daemon 'eventd' is named 'mico-eventd'"
+	einfo "due to a name conflict with net-misc/eventd. For details"
+	einfo "please refer to https://bugs.gentoo.org/632170."
 }

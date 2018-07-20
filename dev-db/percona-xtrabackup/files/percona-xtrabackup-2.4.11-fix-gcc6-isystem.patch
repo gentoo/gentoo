@@ -1,0 +1,113 @@
+Do not use -isystem to add headers, as they break GCC 6's header wrapping.
+See also: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70129
+
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index dbf1c48..e5d7347 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -52,7 +52,7 @@ IF(NOT WITHOUT_SERVER)
+     upgrade/program.cc
+   )
+ ADD_COMPILE_FLAGS(
+-  upgrade/program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  upgrade/program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ TARGET_LINK_LIBRARIES(mysql_upgrade mysqlclient client_base mysqlcheck_core)
+ ADD_DEPENDENCIES(mysql_upgrade GenFixPrivs GenSysSchema)
+diff --git a/client/base/CMakeLists.txt b/client/base/CMakeLists.txt
+index b206de7..91cce4c 100644
+--- a/client/base/CMakeLists.txt
++++ b/client/base/CMakeLists.txt
+@@ -49,7 +49,7 @@ ADD_COMPILE_FLAGS(
+   mutex.cc
+   mysql_query_runner.cc
+   show_variable_query_extractor.cc
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ TARGET_LINK_LIBRARIES(client_base mysqlclient)
+diff --git a/client/dump/CMakeLists.txt b/client/dump/CMakeLists.txt
+index fdbb631..bae2ce7 100644
+--- a/client/dump/CMakeLists.txt
++++ b/client/dump/CMakeLists.txt
+@@ -50,7 +50,7 @@ IF(USING_LOCAL_BOOST)
+ 
+   ADD_COMPILE_FLAGS(
+     ${BOOST_LIB_SOURCES}
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+     )
+ 
+   IF(HAVE_clock_gettime_IN_rt)
+@@ -145,7 +145,7 @@ TARGET_LINK_LIBRARIES(mysqlpump_lib
+ 
+ ADD_COMPILE_FLAGS(
+   ${MYSQLPUMP_LIB_SOURCES}
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+ 
+ # Files that use Boost sources that trigger compilation warnings
+@@ -179,7 +179,7 @@ ADD_COMPILE_FLAGS(
+ )
+ MYSQL_ADD_EXECUTABLE(mysqlpump  program.cc)
+ ADD_COMPILE_FLAGS(
+-  program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  program.cc COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ TARGET_LINK_LIBRARIES(mysqlpump mysqlpump_lib ${LOCAL_BOOST_LIB})
+diff --git a/libmysqld/CMakeLists.txt b/libmysqld/CMakeLists.txt
+index 44c1d26..dac03d9 100644
+--- a/libmysqld/CMakeLists.txt
++++ b/libmysqld/CMakeLists.txt
+@@ -123,7 +123,7 @@ ADD_COMPILE_FLAGS(
+   ../sql/item_geofunc_setops.cc
+   ../sql/item_json_func.cc
+   ../sql/spatial.cc
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ ADD_COMPILE_FLAGS(
+diff --git a/sql/CMakeLists.txt b/sql/CMakeLists.txt
+index 1d1231f..9a35fa8 100644
+--- a/sql/CMakeLists.txt
++++ b/sql/CMakeLists.txt
+@@ -312,7 +312,7 @@ ADD_COMPILE_FLAGS(
+   item_geofunc_setops.cc
+   item_json_func.cc
+   spatial.cc
+-  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++  COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+ )
+ 
+ ADD_COMPILE_FLAGS(
+diff --git a/unittest/gunit/CMakeLists.txt b/unittest/gunit/CMakeLists.txt
+index f0123b8..f2169f9 100644
+--- a/unittest/gunit/CMakeLists.txt
++++ b/unittest/gunit/CMakeLists.txt
+@@ -385,7 +385,7 @@ IF (MERGE_UNITTESTS)
+   ENDIF()
+   ADD_COMPILE_FLAGS(
+     ${MERGE_SMALL_TESTS}
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+   # Fixes "C1128: number of sections exceeded object file format limit" in MSVC
+   IF(WIN32)
+@@ -467,11 +467,11 @@ ENDIF(MERGE_UNITTESTS)
+   ENDIF()
+   ADD_COMPILE_FLAGS(
+     bounded_queue-t.cc
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+   ADD_COMPILE_FLAGS(
+     pump_object_filter-t.cc
+-    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -isystem ${BOOST_INCLUDE_DIR}
++    COMPILE_FLAGS -I${BOOST_PATCHES_DIR} -I${BOOST_INCLUDE_DIR}
+   )
+ 
+   FOREACH(test ${SERVER_TESTS})

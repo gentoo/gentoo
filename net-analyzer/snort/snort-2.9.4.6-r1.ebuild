@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 inherit autotools multilib user
 
 DESCRIPTION="The de facto standard for intrusion detection/prevention"
-HOMEPAGE="http://www.snort.org/"
-SRC_URI="http://snort.org/downloads/2320 -> ${P}.tar.gz"
+HOMEPAGE="https://www.snort.org"
+SRC_URI="https://www.snort.org/downloads/archive/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
