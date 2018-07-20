@@ -14,7 +14,7 @@ KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="dbus doc elibc_FreeBSD gnome"
 
 COMMON_DEPEND="
-	>=dev-lang/lua-5.1:0
+	dev-lang/lua:5.1
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.7
