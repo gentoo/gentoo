@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=cracklib? ( sys-libs/cracklib )
+DESCRIPTION=Another Password Generator
+EAPI=7
+HOMEPAGE=http://www.adel.nursat.kz/apg/
+IUSE=cracklib
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.adel.nursat.kz/apg/download/apg-2.3.0b.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c7b1afae7508d282511a32855a56e859
