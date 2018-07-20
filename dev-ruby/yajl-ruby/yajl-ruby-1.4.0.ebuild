@@ -41,5 +41,5 @@ each_ruby_compile() {
 each_ruby_test() {
 	# Set RUBYLIB to pass search path on to additional interpreters that
 	# are started.
-	RUBYLIB=lib ruby-ng_rspec || die
+	RUBYLIB=lib RSPEC_VERSION=3 ruby-ng_rspec || die
 }
