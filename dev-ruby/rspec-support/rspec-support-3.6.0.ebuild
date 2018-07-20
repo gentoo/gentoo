@@ -22,7 +22,7 @@ SLOT="3"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_bdepend "test? ( >=dev-ruby/rspec-3.5.0:3 dev-ruby/thread_order )"
+ruby_add_bdepend "test? ( >=dev-ruby/rspec-3.6.0:3 dev-ruby/thread_order )"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
