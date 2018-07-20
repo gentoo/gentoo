@@ -19,19 +19,22 @@ SRC_URI="https://deponie.yamagi.org/quake2/quake2-${PV}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+client ctf dedicated ogg openal rogue xatrix"
-REQUIRED_USE="|| ( client dedicated )"
+IUSE="+client ctf dedicated ogg openal +opengl rogue softrender xatrix"
+REQUIRED_USE="|| ( client dedicated ) client? ( || ( opengl softrender ) )"
 
 RDEPEND="sys-libs/zlib:0=
 	client? (
-		media-libs/libsdl2[opengl,video]
-		virtual/opengl
+		media-libs/libsdl2[video]
 		ogg? (
 			media-libs/libogg
 			media-libs/libvorbis
 		)
 		openal? ( media-libs/openal )
 		!openal? ( media-libs/libsdl2[sound] )
+		opengl? (
+			media-libs/libsdl2[opengl]
+			virtual/opengl
+		)
 	)
 "
 
@@ -73,8 +76,10 @@ src_prepare() {
 
 src_compile() {
 	local targets=( game )
-	use client && targets+=( client ref_gl1 ref_gl3 )
+	use client && targets+=( client )
 	use dedicated && targets+=( server )
+	use opengl && targets+=( ref_gl1 ref_gl3 )
+	use softrender && targets+=( ref_soft )
 
 	mymake config
 	mymake "${targets[@]}"
