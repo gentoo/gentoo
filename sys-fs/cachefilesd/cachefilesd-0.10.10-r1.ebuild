@@ -44,6 +44,7 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 	newinitd "${FILESDIR}"/${PN}-3.init ${PN}
 
+	sed -i 's@ExecStart=/usr@ExecStart=@' ${PN}.service || die "failed to fix path"
 	systemd_dounit ${PN}.service
 	systemd_newtmpfilesd "${FILESDIR}"/${PN}-tmpfiles.d ${PN}.conf
 }
