@@ -43,6 +43,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable ipv6) \
+		--with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt \
 		--with-libatomic-ops=no \
 		--with-slib="${EPREFIX}"/usr/share/slib \
 		--with-tls=axtls$(usex mbedtls ',mbedtls' '')

@@ -5,13 +5,12 @@ EAPI="6"
 
 inherit autotools vcs-snapshot
 
-MY_P="${P/g/G}"
-MY_PN="${PN/g/G}2"
+MY_P="${PN^g}2-${PV}"
 PV_COMMIT="6fca535f7bb950f81db066bd1afdca9d55e9b460"
 
 DESCRIPTION="GTK2 binding for Gauche"
 HOMEPAGE="http://practical-scheme.net/gauche/"
-SRC_URI="https://github.com/shirok/${MY_PN}/archive/${PV_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/shirok/${PN^g}2/archive/${PV_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

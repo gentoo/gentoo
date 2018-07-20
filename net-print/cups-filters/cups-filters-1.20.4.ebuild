@@ -49,6 +49,10 @@ DEPEND="${RDEPEND}
 	test? ( media-fonts/dejavu )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.20.4-poppler-0.67.0.patch"
+)
+
 src_prepare() {
 	default
 	[[ "${PV}" == "9999" ]] && eautoreconf
