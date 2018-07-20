@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1 git-r3 virtualx
 
@@ -38,7 +38,7 @@ DEPEND="${CDEPEND}
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 python_prepare_all() {
@@ -60,7 +60,7 @@ python_compile_all() {
 
 python_test() {
 	cd "${BUILD_DIR}" || die
-	virtx nosetests -v || die
+	${EPYTHON} -c 'import statsmodels; statsmodels.test(exit=True)' || die
 }
 
 python_install_all() {
