@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit python-single-r1
 
@@ -25,6 +25,8 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	sys-apps/hwids
 	python? ( ${PYTHON_DEPS} )"
+
+PATCHES=( "${FILESDIR}"/${P}-fix-py3-support.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
