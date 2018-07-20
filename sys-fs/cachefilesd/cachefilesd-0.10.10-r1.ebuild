@@ -11,7 +11,7 @@ SRC_URI="https://people.redhat.com/~dhowells/fscache/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-cachefilesd )"
@@ -44,6 +44,7 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 	newinitd "${FILESDIR}"/${PN}-3.init ${PN}
 
+	sed -i 's@ExecStart=/usr@ExecStart=@' ${PN}.service || die "failed to fix path"
 	systemd_dounit ${PN}.service
 	systemd_newtmpfilesd "${FILESDIR}"/${PN}-tmpfiles.d ${PN}.conf
 }
