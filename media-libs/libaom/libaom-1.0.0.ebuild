@@ -12,7 +12,8 @@ else
 		SRC_URI="mirror://gentoo/${P}.tar.xz"
 		S="${WORKDIR}/${PN}"
 	else
-		SRC_URI="https://aomedia.googlesource.com/aom/+archive/v${PV}.tar.gz -> ${P}.tar.gz"
+		# SRC_URI="https://aomedia.googlesource.com/aom/+archive/v${PV}.tar.gz -> ${P}.tar.gz"
+		SRC_URI="mirror://gentoo/${P}.tar.gz"
 		S="${WORKDIR}"
 	fi
 	KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
