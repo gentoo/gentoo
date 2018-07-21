@@ -38,7 +38,7 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	# Set test environment to our hand.
 	rm "${S}/../Gemfile" || die "Unable to remove Gemfile"
-	sed -i -e '/\/load_paths/d' test/abstract_unit.rb || die "Unable to remove load paths"
+	sed -i -e '/\/load_paths/d ; 1igem "railties", "~>5.1.0"; gem "activejob", "~>5.1.0"' test/abstract_unit.rb || die "Unable to remove load paths"
 
 	# Avoid a test failing only on attachment ordering, since this is a
 	# security release.
