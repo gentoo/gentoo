@@ -80,7 +80,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		dev-texlive/texlive-fontsrecommended
-		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
+		dev-texlive/texlive-plaingeneric
 		dev-texlive/texlive-metapost
 		virtual/latex-base
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ IUSE="doc examples"
 
 RDEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-latexextra
-	dev-texlive/texlive-genericextra"
+	dev-texlive/texlive-plaingeneric"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}
