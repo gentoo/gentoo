@@ -103,11 +103,11 @@ for i in ${TEXLIVE_MODULE_CONTENTS}; do
 done
 
 # Forge doc SRC_URI
-[ -n "${PN##*documentation*}" ] && [ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} doc? ("
+[ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} doc? ("
 for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
 	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
 done
-[ -n "${PN##*documentation*}" ] && [ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} )"
+[ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} )"
 
 # Forge source SRC_URI
 if [ -n "${TEXLIVE_MODULE_SRC_CONTENTS}" ] ; then
@@ -120,7 +120,7 @@ fi
 
 RDEPEND="${COMMON_DEPEND}"
 
-[ -z "${PN##*documentation*}" ] || IUSE="${IUSE} doc"
+IUSE="${IUSE} doc"
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_OPTIONAL_ENGINE
 # @DESCRIPTION:
@@ -347,7 +347,7 @@ texlive-module_src_install() {
 	done
 
 	dodir /usr/share
-	if [ -z "${PN##*documentation*}" ] || use doc; then
+	if use doc; then
 		[ -d texmf-doc ] && cp -pR texmf-doc "${ED}/usr/share/"
 	else
 		[ -d texmf/doc ] && rm -rf texmf/doc
