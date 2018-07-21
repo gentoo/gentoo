@@ -10,7 +10,7 @@ HOMEPAGE="https://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm
 SRC_URI="http://mmix.cs.hm.edu/src/${P}.tgz"
 
 DEPEND="virtual/tex-base
-	doc? ( || ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended ) )"
+	doc? ( dev-texlive/texlive-plaingeneric )"
 RDEPEND=""
 
 SLOT="0"
