@@ -77,7 +77,7 @@ COMMON_DEPEND="
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
 	imap? ( virtual/imap-c-client[kerberos=,ssl=] )
-	intl? ( dev-libs/icu:= )
+	intl? ( <dev-libs/icu-61.1:= )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
 	ldap? ( >=net-nds/openldap-1.2.11 )
