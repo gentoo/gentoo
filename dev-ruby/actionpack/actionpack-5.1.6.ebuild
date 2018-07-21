@@ -52,5 +52,5 @@ all_ruby_prepare() {
 		-e '/:job/,/end/ s:^:#:' \
 		-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
 	rm ../Gemfile.lock || die
-	sed -i -e '1igem "rack-test", "~>0.6.3"' test/abstract_unit.rb || die
+	sed -i -e '1igem "rack-test", "~>0.6.3"; gem "activemodel", "~>5.1.0"; gem "railties", "~>5.1.0"' test/abstract_unit.rb || die
 }
