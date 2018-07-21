@@ -4024,7 +4024,7 @@ dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/Object-Realize-Later 0.190.0: Delayed creation of objects
 dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
-dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1 1.0.0-r2: Object-oriented interface to Ogg Vorbis information and comment fields
+dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r2: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/OpenGL 0.670.400: Perl interface providing graphics display using OpenGL
 dev-perl/PAR 1.14.0-r1: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
