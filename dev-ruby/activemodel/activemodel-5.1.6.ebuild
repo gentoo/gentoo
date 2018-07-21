@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR=""
@@ -40,5 +40,5 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	# Set test environment to our hand.
-	sed -i -e '/load_paths/d' test/cases/helper.rb || die "Unable to remove load paths"
+	sed -i -e '/load_paths/d ; 1igem "activesupport", "~>5.1.6" ; gem "railties", "~>5.1.6"' test/cases/helper.rb || die "Unable to remove load paths"
 }
