@@ -99,7 +99,7 @@ app-admin/needrestart 3.3: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit-base 1.1.7-r1: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-admin/packagekit-qt 1.0.0: Qt PackageKit backend library
+app-admin/packagekit-qt 1.0.0 1.0.1: Qt PackageKit backend library
 app-admin/pass 1.7.2: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/perl-cleaner 2.20 2.25: User land tool for cleaning up old perl installs
@@ -575,7 +575,7 @@ app-editors/nano 2.8.7: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
-app-editors/okteta 17.12.3: Hex editor by KDE
+app-editors/okteta 0.25.1 17.12.3: Hex editor by KDE
 app-editors/pluma 1.12.2-r1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
@@ -9111,7 +9111,7 @@ net-vpn/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.22: IPsec implementation for Linux, fork of Openswan
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConnect SSL VPN software
-net-vpn/openfortivpn 1.6.0: A Fortinet compatible VPN client
+net-vpn/openfortivpn 1.6.0 1.7.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.4 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
