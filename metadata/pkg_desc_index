@@ -575,7 +575,7 @@ app-editors/nano 2.8.7: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
-app-editors/okteta 0.25.1 17.12.3: Hex editor by KDE
+app-editors/okteta 0.25.1: Hex editor by KDE
 app-editors/pluma 1.12.2-r1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
