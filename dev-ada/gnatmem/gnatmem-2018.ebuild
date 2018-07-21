@@ -33,7 +33,14 @@ src_prepare() {
 }
 
 src_compile() {
-	gprbuild -v -Pgnatmem.gpr -j$(makeopts_jobs) \
+	if use gnat_2016; then
+		GCC_PV=4.9.0
+	elif use gnat_2017; then
+		GCC_PV=6.3.0
+	else
+		GCC_PV=7.3.1
+	fi
+	gprbuild -v -Pgnatmem.gpr -j$(makeopts_jobs) -XCC=gcc-${GCC_PV} \
 		-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS}
 }
 
