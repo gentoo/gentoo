@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Alir3z4/${PN}/archive/${PV}.tar.gz -> ${P}-1.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
