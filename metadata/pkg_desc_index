@@ -5048,7 +5048,7 @@ dev-python/micawber 0.3.3: A small library for extracting rich content from urls
 dev-python/microversion-parse 0.1.4: A simple parser for OpenStack microversion headers
 dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in python
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
-dev-python/minidb 2.0.1-r1 2.0.2: Simple SQLite-based object store
+dev-python/minidb 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 2.0.20180222: Python bindings for UPnP client library
 dev-python/mistune 0.7.2 0.7.4: The fastest markdown parser in pure Python
