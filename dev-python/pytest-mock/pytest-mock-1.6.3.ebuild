@@ -30,6 +30,6 @@ src_prepare() {
 }
 
 python_test() {
-	PYTHONPATH=${PWD}${PYTHONPATH:+:}${PYTHONPATH} \
-		py.test test_pytest_mock.py || die
+	local -x PYTHONPATH=${PWD}${PYTHONPATH:+:}${PYTHONPATH}
+	py.test -vv test_pytest_mock.py || die "Tests fail with ${EPYTHON}"
 }
