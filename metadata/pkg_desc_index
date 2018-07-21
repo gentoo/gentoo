@@ -4166,7 +4166,7 @@ dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r2: Access system calls that Perl doesn't normally provide access to
 dev-perl/Sys-Virt 1.1.2: Sys::Virt provides an API for using the libvirt library from Perl
-dev-perl/TAP-Parser-SourceHandler-pgTAP 3.310.0 3.330.0: Stream TAP from pgTAP test scripts
+dev-perl/TAP-Parser-SourceHandler-pgTAP 3.330.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Task-Weaken 1.40.0-r1: Ensure that a platform has weaken support
 dev-perl/Template-DBI 2.650.0-r2: DBI plugin for the Template Toolkit
@@ -4198,7 +4198,7 @@ dev-perl/Test-DistManifest 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
 dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
 dev-perl/Test-Exception 0.430.0: Test functions for exception based code
-dev-perl/Test-FailWarnings 0.8.0 0.8.0-r1: Add test failures if warnings are caught
+dev-perl/Test-FailWarnings 0.8.0-r1: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File 1.443.0: Test file attributes
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
@@ -4207,16 +4207,16 @@ dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.60.0: Check for memory leaks and circular memory references
-dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
+dev-perl/Test-MockModule 0.110.0: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.505.270-r1 1.201.612.20: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
-dev-perl/Test-MockTime 0.150.0 0.160.0: Replaces actual time with simulated time
-dev-perl/Test-MockTime-HiRes 0.70.0 0.80.0: Replace actual time with simulated high resolution time
+dev-perl/Test-MockTime 0.160.0: Replaces actual time with simulated time
+dev-perl/Test-MockTime-HiRes 0.80.0: Replace actual time with simulated high resolution time
 dev-perl/Test-Most 0.310.0-r1: Most commonly needed test functions and features
 dev-perl/Test-Needs 0.2.5: Skip tests when modules not available
 dev-perl/Test-NoTabs 2.0.0-r1: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r3: Make sure you didn't emit any warnings while testing
-dev-perl/Test-Number-Delta 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
+dev-perl/Test-Number-Delta 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
 dev-perl/Test-Output 1.30.0: Utilities to test STDOUT and STDERR messages
 dev-perl/Test-Pod 1.510.0: Check for POD errors in files
@@ -4231,7 +4231,7 @@ dev-perl/Test-Spec 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
 dev-perl/Test-TCP 2.190.0-r1: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
-dev-perl/Test-Time 0.40.0 0.50.0: Overrides the time() and sleep() core functions for testing
+dev-perl/Test-Time 0.50.0: Overrides the time() and sleep() core functions for testing
 dev-perl/Test-Trap 0.2.2-r1: Trap exit codes, exceptions, output, etc
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.300.0-r1: Perl extension to test methods for warnings
@@ -4245,7 +4245,7 @@ dev-perl/Text-CSV 1.940.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
 dev-perl/Text-CSV_XS 1.280.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
-dev-perl/Text-Diff 1.410.0-r1 1.440.0: Perform diffs on files and record sets
+dev-perl/Text-Diff 1.440.0: Perform diffs on files and record sets
 dev-perl/Text-Format 0.590.0: Various subroutines to format text
 dev-perl/Text-German 0.60.0-r1: German grundform reduction
 dev-perl/Text-Glob 0.90.0-r1: Match globbing patterns against text
@@ -4264,13 +4264,13 @@ dev-perl/Text-Soundex 3.50.0: Implementation of the soundex algorithm
 dev-perl/Text-Template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
 dev-perl/Text-Unidecode 0.40.0-r1 1.270.0: Plain ASCII transliterations of Unicode text
-dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into other formats
+dev-perl/Text-WikiFormat 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-Wrapper 1.50.0: Word wrap text by breaking long lines
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
 dev-perl/TheSchwartz 1.120.0-r1: Reliable job queue
 dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
-dev-perl/Throwable 0.200.11 0.200.13: A role for classes that can be thrown
+dev-perl/Throwable 0.200.13: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
 dev-perl/Tie-Cycle 1.221.0: Cycle through a list of values via a scalar
 dev-perl/Tie-EncryptedHash 1.240.0-r1: Hashes (and objects based on hashes) with encrypting fields
@@ -4280,8 +4280,8 @@ dev-perl/Tie-Simple 1.40.0: Module for creating easier variable ties
 dev-perl/Tie-StrictHash 1.0.0-r1: A hash with strict-like semantics
 dev-perl/Tie-Sub 1.1.0-r1: Tying a subroutine, function or method to a hash
 dev-perl/Time-Duration 1.200.0: Rounded or exact English expression of durations
-dev-perl/Time-ParseDate 2011.51.700-r1 2015.103.0: A Date/Time Parsing Perl Module
-dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
+dev-perl/Time-ParseDate 2015.103.0: A Date/Time Parsing Perl Module
+dev-perl/Time-Period 1.250.0: Time period Perl module
 dev-perl/Time-TZOffset 0.40.0: Show timezone offset strings like +0900
 dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
 dev-perl/Tk 804.33.0: A Perl Module for Tk
@@ -4290,10 +4290,10 @@ dev-perl/Tk-JPEG-Lite 2.14.30-r1: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
 dev-perl/Tree-DAG_Node 1.60.0-r1: (Super)class for representing nodes in a tree
 dev-perl/Tree-Simple 1.180.0-r1 1.270.0: A simple tree object
-dev-perl/Try-Tiny 0.220.0 0.240.0 0.300.0: Minimal try/catch with proper localization of $@
+dev-perl/Try-Tiny 0.240.0 0.300.0: Minimal try/catch with proper localization of $@
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
-dev-perl/Types-Serialiser 1.0.0 1.0.0-r1: simple data types for common serialisation formats
+dev-perl/Types-Serialiser 1.0.0-r1: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
 dev-perl/UNIVERSAL-isa 1.201.506.140 1.201.710.120: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
