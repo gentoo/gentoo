@@ -52,4 +52,6 @@ all_ruby_prepare() {
 	# Avoid tests failing due to missing logger setup in activerecord,
 	# most likely related to test environment setup.
 	rm -f test/activerecord/render_partial_with_record_identification_test.rb || die
+
+	sed -i -e '1igem "activerecord", "~>5.1.0"; gem "actionpack", "~>5.1.0"; gem "railties", "~>5.1.0"' test/abstract_unit.rb || die
 }
