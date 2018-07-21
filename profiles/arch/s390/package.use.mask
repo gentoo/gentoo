@@ -11,6 +11,8 @@ app-text/ghostscript-gpl cups
 # VCS for oberlays yet.
 app-portage/layman bazaar darcs mercurial
 dev-python/setuptools_scm mercurial test
+# no practical use of zsh completion here (at least now)
+dev-util/ninja zsh-completion
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
