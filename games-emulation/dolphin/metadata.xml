@@ -12,10 +12,7 @@
 Dolphin is a Gamecube and Wii emulator. Most games run perfectly or with minor
 bugs. Games are playable at HD quality, with 1080p and more.
 	</longdescription>
-	<maintainer type="person">
-		<email>twitch153@gentoo.org</email>
-		<name>Devan Franchini</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">dolphin-emu/dolphin</remote-id>
 	</upstream>
