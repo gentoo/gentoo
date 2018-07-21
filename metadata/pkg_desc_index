@@ -5014,7 +5014,7 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/lit 3.9.0 4.0.1 5.0.1 5.0.2: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.2: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.20.0 0.21.0 0.22.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.20.0 0.22.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 0.92: Python bindings for the Lightning Database
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1: Platform-independent file locking module
@@ -5757,10 +5757,10 @@ dev-qt/qtxml 5.9.4 5.9.6: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 5.9.4 5.9.6: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
-dev-ruby/actionpack 5.1.4: Eases web-request routing, handling, and response
-dev-ruby/actionview 5.1.4: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activemodel 5.1.4: Toolkit for building modeling frameworks like Active Record and Active Resource
-dev-ruby/activesupport 5.0.7 5.1.4: Utility Classes and Extension to the Standard Library
+dev-ruby/actionpack 5.1.4 5.1.6: Eases web-request routing, handling, and response
+dev-ruby/actionview 5.1.4 5.1.6: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activemodel 5.1.4 5.1.6: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activesupport 5.0.7 5.1.4 5.1.6: Utility Classes and Extension to the Standard Library
 dev-ruby/addressable 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
@@ -5889,7 +5889,7 @@ dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack app
 dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
 dev-ruby/rails-dom-testing 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
-dev-ruby/railties 5.1.4: Tools for creating, working with, and running Rails applications
+dev-ruby/railties 5.1.4 5.1.6: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 10.5.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
