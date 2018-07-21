@@ -10,6 +10,7 @@ app-text/ghostscript-gpl cups
 # not really interested in supporting alternative
 # VCS for oberlays yet.
 app-portage/layman bazaar darcs mercurial
+dev-python/setuptools_scm mercurial test
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
