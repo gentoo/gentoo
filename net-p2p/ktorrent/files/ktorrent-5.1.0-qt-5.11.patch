@@ -50,4 +50,27 @@ index 667e7a82..4be6cd5c 100644
  #include <QInputDialog>
 -- 
 2.16.2
+From c66233cd9f5b87f9e265beae0a16839d3a5645a3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Fri, 4 May 2018 00:33:44 +0200
+Subject: Fix build against Qt 5.11 (missing includes)
+
+---
+ plugins/syndication/syndicationactivity.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/plugins/syndication/syndicationactivity.cpp b/plugins/syndication/syndicationactivity.cpp
+index 61e8039..5736d52 100644
+--- a/plugins/syndication/syndicationactivity.cpp
++++ b/plugins/syndication/syndicationactivity.cpp
+@@ -21,6 +21,7 @@
+ #include <QHBoxLayout>
+ #include <QInputDialog>
+ #include <QToolButton>
++#include <QAction>
+ 
+ #include <KMainWindow>
+ #include <KMessageBox>
+-- 
+cgit v0.11.2
 

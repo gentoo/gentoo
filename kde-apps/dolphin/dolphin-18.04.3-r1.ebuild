@@ -63,9 +63,10 @@ RDEPEND="${DEPEND}
 RESTRICT+=" test"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-18.04.1-flto.patch"
-	"${FILESDIR}/${PN}-18.04.3-root-user.patch"
-	"${FILESDIR}/${PN}-18.04.3-root-warn.patch"
+	"${FILESDIR}"/${PN}-18.04.1-flto.patch
+	"${FILESDIR}"/${P}-root-user.patch
+	"${FILESDIR}"/${P}-root-warn.patch
+	"${FILESDIR}"/${P}-memleak-{1,2}.patch
 )
 
 src_configure() {
