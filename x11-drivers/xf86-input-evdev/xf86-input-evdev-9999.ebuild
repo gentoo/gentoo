@@ -49,3 +49,10 @@ src_prepare() {
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
+
+src_configure() {
+	local econfargs=(
+		--disable-selective-werror
+	)
+	econf "${econfargs[@]}"
+}
