@@ -5960,7 +5960,7 @@ dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sass 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
-dev-ruby/selenium-webdriver 3.8.0 3.10.0: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 3.10.0 3.12.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.2.0: A set of classes to drive external programs via pipe
 dev-ruby/sexp_processor 4.9.0: Processor for s-expressions created as part of the ParseTree project
@@ -8396,7 +8396,7 @@ net-analyzer/speedtest-cli 1.0.7: Command line interface for testing internet ba
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.10: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.10 1.11.11: Fast SSL configuration scanner
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/tcpdump 4.9.2: A Tool for network monitoring and data acquisition
