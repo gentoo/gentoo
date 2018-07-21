@@ -107,7 +107,7 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}"/icinga2.initd icinga2
+	newinitd "${FILESDIR}"/icinga2.initd-2 icinga2
 
 	if use mysql ; then
 		docinto schema
