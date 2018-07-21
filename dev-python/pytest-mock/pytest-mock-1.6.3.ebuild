@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,12 +16,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
-	python_targets_python2_7? (
-		>=dev-python/mock-2[python_targets_python2_7]
-	)
-	python_targets_pypy? (
-		>=dev-python/mock-2[python_targets_pypy]
-	)"
+	$(python_gen_cond_dep '>=dev-python/mock-2[${PYTHON_USEDEP}]' -2)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
