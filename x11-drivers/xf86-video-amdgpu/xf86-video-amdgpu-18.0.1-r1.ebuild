@@ -39,6 +39,7 @@ src_prepare() {
 
 src_configure() {
 	local econfargs=(
+		--disable-selective-werror
 		--enable-glamor
 	)
 
