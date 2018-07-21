@@ -4097,7 +4097,7 @@ dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-Shellish 0.930.0-r1: Regexp::Shellish - Shell-like regular expressions
 dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
-dev-perl/Role-Tiny 2.0.1 2.0.5: Roles. Like a nouvelle cuisine portion size slice of Moose
+dev-perl/Role-Tiny 2.0.5: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.170.0: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
