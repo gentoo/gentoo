@@ -1457,7 +1457,7 @@ app-text/teckit 2.5.6: Text Encoding Conversion toolkit
 app-text/tesseract 3.05.01: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2017: A complete TeX distribution
-app-text/texlive-core 2016-r6 2017-r3 2017-r4: A complete TeX distribution
+app-text/texlive-core 2017-r3 2017-r4: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
@@ -6057,7 +6057,7 @@ dev-tcltk/togl 2.0-r2: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/biber 2.5: A BibTeX replacement for users of biblatex
-dev-tex/biblatex 3.4-r1: Reimplementation of the bibliographic facilities provided by LaTeX
+dev-tex/biblatex 3.4-r2: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/bibtex2html 1.98: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20150521 3.71_p20160523 3.71_p20170524: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r1: DVI to plain text translator
@@ -6112,49 +6112,44 @@ dev-tex/translator 1.00: A package for translating words in TeX
 dev-tex/tth 3.77: Translate TEX into HTML
 dev-tex/xcolor 2.11 2.12: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
-dev-texlive/texlive-basic 2016 2017-r1: TeXLive Essential programs and files
-dev-texlive/texlive-bibtexextra 2016 2017: TeXLive BibTeX additional styles
-dev-texlive/texlive-context 2016 2017: TeXLive ConTeXt and packages
-dev-texlive/texlive-fontsextra 2016 2017: TeXLive Additional fonts
-dev-texlive/texlive-fontsrecommended 2016 2017: TeXLive Recommended fonts
-dev-texlive/texlive-fontutils 2016 2017: TeXLive Graphics and font utilities
-dev-texlive/texlive-formatsextra 2016 2017: TeXLive Additional formats
-dev-texlive/texlive-games 2016 2017: TeXLive Games typesetting
-dev-texlive/texlive-genericextra 2016: TeXLive Generic additional packages
-dev-texlive/texlive-genericrecommended 2016: TeXLive Generic recommended packages
-dev-texlive/texlive-humanities 2016 2017: TeXLive Humanities packages
-dev-texlive/texlive-langafrican 2016: TeXLive African scripts
-dev-texlive/texlive-langarabic 2016 2017: TeXLive Arabic
-dev-texlive/texlive-langchinese 2016 2017: TeXLive Chinese
-dev-texlive/texlive-langcjk 2016 2017: TeXLive Chinese/Japanese/Korean (base)
-dev-texlive/texlive-langcyrillic 2016 2017: TeXLive Cyrillic
+dev-texlive/texlive-basic 2017-r1: TeXLive Essential programs and files
+dev-texlive/texlive-bibtexextra 2017: TeXLive BibTeX additional styles
+dev-texlive/texlive-context 2017: TeXLive ConTeXt and packages
+dev-texlive/texlive-fontsextra 2017: TeXLive Additional fonts
+dev-texlive/texlive-fontsrecommended 2017: TeXLive Recommended fonts
+dev-texlive/texlive-fontutils 2017: TeXLive Graphics and font utilities
+dev-texlive/texlive-formatsextra 2017: TeXLive Additional formats
+dev-texlive/texlive-games 2017: TeXLive Games typesetting
+dev-texlive/texlive-humanities 2017: TeXLive Humanities packages
+dev-texlive/texlive-langarabic 2017: TeXLive Arabic
+dev-texlive/texlive-langchinese 2017: TeXLive Chinese
+dev-texlive/texlive-langcjk 2017: TeXLive Chinese/Japanese/Korean (base)
+dev-texlive/texlive-langcyrillic 2017: TeXLive Cyrillic
 dev-texlive/texlive-langczechslovak 2017: TeXLive Czech/Slovak
 dev-texlive/texlive-langenglish 2017: TeXLive US and UK English
 dev-texlive/texlive-langeuropean 2017: TeXLive Other European languages
 dev-texlive/texlive-langfrench 2017: TeXLive French
 dev-texlive/texlive-langgerman 2017: TeXLive German
 dev-texlive/texlive-langgreek 2017: TeXLive Greek
-dev-texlive/texlive-langitalian 2016 2017: TeXLive Italian
-dev-texlive/texlive-langjapanese 2016 2017: TeXLive Japanese
-dev-texlive/texlive-langkorean 2016 2017: TeXLive Korean
-dev-texlive/texlive-langother 2016 2017: TeXLive Other languages
-dev-texlive/texlive-langpolish 2016 2017: TeXLive Polish
-dev-texlive/texlive-langportuguese 2016 2017: TeXLive Portuguese
-dev-texlive/texlive-langspanish 2016 2017: TeXLive Spanish
-dev-texlive/texlive-latex 2016 2017: TeXLive LaTeX fundamental packages
-dev-texlive/texlive-latexextra 2016 2017: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2016 2017: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2016 2017: TeXLive LuaTeX packages
-dev-texlive/texlive-mathscience 2016 2017: TeXLive Mathematics and science packages
-dev-texlive/texlive-metapost 2016 2017: TeXLive MetaPost and Metafont packages
-dev-texlive/texlive-music 2016 2017: TeXLive Music packages
-dev-texlive/texlive-omega 2016: TeXLive Omega packages
-dev-texlive/texlive-pictures 2016 2017: TeXLive Graphics, pictures, diagrams
-dev-texlive/texlive-plainextra 2016: TeXLive Plain TeX packages
+dev-texlive/texlive-langitalian 2017: TeXLive Italian
+dev-texlive/texlive-langjapanese 2017: TeXLive Japanese
+dev-texlive/texlive-langkorean 2017: TeXLive Korean
+dev-texlive/texlive-langother 2017: TeXLive Other languages
+dev-texlive/texlive-langpolish 2017: TeXLive Polish
+dev-texlive/texlive-langportuguese 2017: TeXLive Portuguese
+dev-texlive/texlive-langspanish 2017: TeXLive Spanish
+dev-texlive/texlive-latex 2017: TeXLive LaTeX fundamental packages
+dev-texlive/texlive-latexextra 2017: TeXLive LaTeX additional packages
+dev-texlive/texlive-latexrecommended 2017: TeXLive LaTeX recommended packages
+dev-texlive/texlive-luatex 2017: TeXLive LuaTeX packages
+dev-texlive/texlive-mathscience 2017: TeXLive Mathematics and science packages
+dev-texlive/texlive-metapost 2017: TeXLive MetaPost and Metafont packages
+dev-texlive/texlive-music 2017: TeXLive Music packages
+dev-texlive/texlive-pictures 2017: TeXLive Graphics, pictures, diagrams
 dev-texlive/texlive-plaingeneric 2017: TeXLive Plain (La)TeX packages
-dev-texlive/texlive-pstricks 2016 2017: TeXLive PSTricks
-dev-texlive/texlive-publishers 2016 2017: TeXLive Publisher styles, theses, etc.
-dev-texlive/texlive-xetex 2016 2017: TeXLive XeTeX and packages
+dev-texlive/texlive-pstricks 2017: TeXLive PSTricks
+dev-texlive/texlive-publishers 2017: TeXLive Publisher styles, theses, etc.
+dev-texlive/texlive-xetex 2017: TeXLive XeTeX and packages
 dev-util/android-studio 3.1.2.0.173.4720617: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
@@ -10470,7 +10465,7 @@ virtual/skkserv 0: Virtual for SKK server
 virtual/ssh 0: Virtual for SSH client and server
 virtual/szip 2.1: Virtual for szip compression drop-in replacements
 virtual/tex-base 0: Virtual for basic TeX binaries (tex, kpathsea)
-virtual/texi2dvi 0-r1: Virtual for texi2dvi (and texi2pdf)
+virtual/texi2dvi 0-r2: Virtual for texi2dvi (and texi2pdf)
 virtual/tmpfiles 0: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
