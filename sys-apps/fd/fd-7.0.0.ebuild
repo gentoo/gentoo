@@ -88,5 +88,5 @@ src_install() {
 }
 
 src_test() {
-	cargo test -v
+	cargo test -v || die "tests failed"
 }
