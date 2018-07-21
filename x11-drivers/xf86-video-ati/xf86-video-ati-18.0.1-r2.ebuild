@@ -55,6 +55,7 @@ src_prepare() {
 
 src_configure() {
 	local econfargs=(
+		--disable-selective-werror
 		$(use_enable glamor)
 		$(use_enable udev)
 	)
