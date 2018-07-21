@@ -2,11 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic gnome2-utils ltprune xdg-utils
+inherit flag-o-matic gnome2-utils xdg-utils
+
+MY_PV="${PV/_beta/-beta}"
+MY_PV="${MY_PV/_rc/-RC}"
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
-SRC_URI="mirror://sourceforge/freeciv/${P/_/-}.tar.bz2"
+SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -58,7 +62,7 @@ DEPEND="${RDEPEND}
 		nls? ( sys-devel/gettext )
 	)"
 
-S="${WORKDIR}/${P/_/-}"
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use !dedicated && use !server ; then
@@ -170,7 +174,7 @@ src_install() {
 	find "${ED}" -name "freeciv-manual*" -delete
 
 	rm -f "${ED%/}/usr/$(get_libdir)"/*.a
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 }
 
 pkg_preinst() {
