@@ -572,6 +572,8 @@ src_test() {
 		_disable_test main.plugin_auth "Needs client libraries built"
 	fi
 
+	_disable_test sys_vars.sysvars_server_notembedded "Broken test" # bug #661700 required profiling always on
+
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
