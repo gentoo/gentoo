@@ -325,10 +325,6 @@ www-apps/openwebstats
 www-apps/phprojekt
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run, cannot bump it (#651146). Removal in a month.
-games-emulation/hatari
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Doesn't work even with current PHP versions, upstream dead (#651148),
 # removal in a month.
 www-apps/mypictures
