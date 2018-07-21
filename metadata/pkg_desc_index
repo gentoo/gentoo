@@ -9020,7 +9020,7 @@ net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
 net-nntp/inn 2.5.3-r1: The Internet News daemon, fully featured NNTP server
 net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
-net-nntp/nzbget 14.1: A command-line based binary newsgrabber supporting .nzb files
+net-nntp/nzbget 14.1 20.0: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.142: A newsreader for GNOME
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
