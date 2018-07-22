@@ -76,10 +76,12 @@ src_prepare() {
 
 src_compile() {
 	local targets=( game )
-	use client && targets+=( client )
+	if use client; then
+		targets+=( client )
+		use opengl && targets+=( ref_gl1 ref_gl3 )
+		use softrender && targets+=( ref_soft )
+	fi
 	use dedicated && targets+=( server )
-	use opengl && targets+=( ref_gl1 ref_gl3 )
-	use softrender && targets+=( ref_soft )
 
 	mymake config
 	mymake "${targets[@]}"
@@ -121,15 +123,17 @@ src_install() {
 		insinto /usr/lib/yamagi-quake2/${addon}
 		doins "${WORKDIR}"/quake2-${addon}-*/release/game.so
 
-		local addon_name
-		case ${addon} in
-			ctf)    addon_name="CTF" ;;
-			rogue)  addon_name="Ground Zero" ;;
-			xatrix) addon_name="The Reckoning" ;;
-		esac
+		if use client; then
+			local addon_name
+			case ${addon} in
+				ctf)    addon_name="CTF" ;;
+				rogue)  addon_name="Ground Zero" ;;
+				xatrix) addon_name="The Reckoning" ;;
+			esac
 
-		make_wrapper "yquake2-${addon}" "yquake2 +set game ${addon}"
-		make_desktop_entry "yquake2-${addon}" "Yamagi Quake II: ${addon_name}"
+			make_wrapper "yquake2-${addon}" "yquake2 +set game ${addon}"
+			make_desktop_entry "yquake2-${addon}" "Yamagi Quake II: ${addon_name}"
+		fi
 	done
 
 	einstalldocs
