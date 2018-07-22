@@ -5,7 +5,7 @@ EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit eutils gnome2-utils pax-utils rpm multilib-build xdg-utils
+inherit desktop gnome2-utils pax-utils rpm multilib-build xdg-utils
 
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
