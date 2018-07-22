@@ -110,6 +110,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	virtual/perl-Data-Dumper
 	virtual/perl-Carp
+	virtual/perl-JSON-PP
 
 	doc? ( >=dev-util/gtk-doc-1.10 )
 	geolocation? ( dev-util/gdbus-codegen )
