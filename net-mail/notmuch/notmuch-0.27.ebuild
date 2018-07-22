@@ -29,12 +29,19 @@ IUSE="crypt doc emacs mutt nmbug python test valgrind"
 CDEPEND="
 	!!<app-shells/bash-completion-1.9
 	>=dev-libs/glib-2.22:2
-	>=dev-libs/gmime-2.6.20-r2:2.6
+	|| (
+		>=dev-libs/gmime-3.0.3:3.0
+		>=dev-libs/gmime-2.6.21:2.6
+	)
 	>=dev-libs/xapian-1.2.7-r2:=
 	dev-python/sphinx[${PYTHON_USEDEP}]
+	sys-apps/texinfo
 	>=sys-libs/zlib-1.2.5.2
 	sys-libs/talloc
-	crypt? ( >=dev-libs/gmime-2.6.20-r2:2.6[smime] )
+	crypt? ( || (
+		>=dev-libs/gmime-3.0.3:3.0[crypt]
+		>=dev-libs/gmime-2.6.21:2.6[smime]
+	) )
 	emacs? ( >=virtual/emacs-23 )
 	python? ( ${PYTHON_DEPS} )
 	"
