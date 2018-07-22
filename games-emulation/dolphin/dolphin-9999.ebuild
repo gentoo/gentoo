@@ -1,13 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PLOCALES="ar ca cs da_DK de el en es fa fr hr hu it ja ko ms_MY nb nl pl pt pt_BR ro_RO ru sr sv tr zh_CN zh_TW"
+PLOCALES="ar ca cs da de el en es fa fr hr hu it ja ko ms nb nl pl pt pt_BR ro ru sr sv tr zh_CN zh_TW"
 PLOCALE_BACKUP="en"
-WX_GTK_VER="3.0"
 
-inherit cmake-utils desktop gnome2-utils l10n pax-utils toolchain-funcs versionator wxwidgets
+inherit cmake-utils desktop gnome2-utils l10n pax-utils
 
 if [[ ${PV} == *9999 ]]
 then
@@ -23,16 +22,19 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth doc egl +evdev ffmpeg libav llvm log lto openal +pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
+IUSE="alsa ao bluetooth discord-presence doc egl +evdev ffmpeg libav llvm log lto openal portaudio profile pulseaudio +qt5 sdl systemd upnp"
 
 RDEPEND="
 	>=media-libs/libsfml-2.1
 	>net-libs/enet-1.3.7
 	>=net-libs/mbedtls-2.1.1:=
-	dev-libs/lzo
+	dev-libs/hidapi:0=
+	dev-libs/lzo:2=
+	dev-libs/pugixml:0=
 	media-libs/libpng:0=
+	net-misc/curl:0=
 	sys-libs/readline:0=
-	sys-libs/zlib:=
+	sys-libs/zlib:0=
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
@@ -64,14 +66,12 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 	sdl? ( media-libs/libsdl2[haptic,joystick] )
+	systemd? ( sys-apps/systemd:0= )
 	upnp? ( >=net-libs/miniupnpc-1.7 )
-	wxwidgets? (
-		dev-libs/glib:2
-		x11-libs/gtk+:2
-		x11-libs/wxGTK:${WX_GTK_VER}[opengl,X]
-	)"
+"
 DEPEND="${RDEPEND}
 	app-arch/zip
+	dev-util/vulkan-headers
 	media-libs/freetype
 	sys-devel/gettext
 	virtual/pkgconfig"
@@ -102,20 +102,33 @@ src_prepare() {
 		sed -i -e '/check_lib(PULSEAUDIO/d' CMakeLists.txt || die
 	fi
 
-	# Remove ALL the bundled libraries, aside from:
-	# - SOIL: The sources are not public.
-	# - Bochs-disasm: Don't know what it is.
-	# - gtest: Their build set up solely relies on the build in gtest.
-	# - xxhash: Not on the tree.
-	mv Externals/SOIL . || die
-	mv Externals/Bochs_disasm . || die
-	mv Externals/gtest . || die
-	mv Externals/xxhash . || die
+	# Remove all the bundled libraries that support system-installed
+	# preference. See CMakeLists.txt for conditional 'add_subdirectory' calls.
+	local KEEP_SOURCES=(
+		Bochs_disasm
+		cpp-optparse
+		glslang
+		# FIXME: xxhash can't be found by cmake
+		xxhash
+		# soundtouch uses shorts, not floats
+		soundtouch
+		cubeb
+		discord-rpc
+		# Their build set up solely relies on the build in gtest.
+		gtest
+		# gentoo's version requires exception support.
+		# dolphin disables exceptions and fails the build.
+		picojson
+	)
+	local s
+	for s in "${KEEP_SOURCES[@]}"; do
+		mv -v "Externals/${s}" . || die
+	done
+	einfo "removing sources: $(echo Externals/*)"
 	rm -r Externals/* || die "Failed to delete Externals dir."
-	mv Bochs_disasm Externals || die
-	mv SOIL Externals || die
-	mv gtest Externals || die
-	mv xxhash Externals || die
+	for s in "${KEEP_SOURCES[@]}"; do
+		mv -v "${s}" "Externals/" || die
+	done
 
 	remove_locale() {
 		# Ensure preservation of the backup locale when no valid LINGUA is set
@@ -131,23 +144,20 @@ src_prepare() {
 }
 
 src_configure() {
-	if use wxwidgets; then
-		need-wxwidgets unicode
-	fi
-
 	local mycmakeargs=(
 		-DUSE_SHARED_ENET=ON
-		$( cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS )
-		$( cmake-utils_use log FASTLOG )
-		$( cmake-utils_use profile OPROFILING )
-		$( cmake-utils_use_disable wxwidgets WX )
-		$( cmake-utils_use_enable evdev EVDEV )
-		$( cmake-utils_use_enable lto LTO )
-		$( cmake-utils_use_enable pch PCH )
-		$( cmake-utils_use_enable qt5 QT2 )
-		$( cmake-utils_use_enable sdl SDL )
-		$( cmake-utils_use_use egl EGL )
-		$( cmake-utils_use_use upnp UPNP )
+		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
+		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
+		-DFASTLOG=$(usex log)
+		-DOPROFILING=$(usex profile)
+
+		-DENABLE_EVDEV=$(usex evdev)
+		-DENABLE_LTO=$(usex lto)
+		-DENABLE_QT=$(usex qt5)
+		-DENABLE_SDL=$(usex sdl)
+
+		-DUSE_EGL=$(usex egl)
+		-DUSE_UPNP=$(usex upnp)
 	)
 
 	cmake-utils_src_configure
