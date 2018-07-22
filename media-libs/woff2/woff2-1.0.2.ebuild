@@ -11,7 +11,7 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc"
+KEYWORDS="~amd64 ~arm ~sparc"
 IUSE=""
 
 RDEPEND="app-arch/brotli"
