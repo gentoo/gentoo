@@ -98,6 +98,7 @@ DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 PATCHES=(
 	"${FILESDIR}"/${P}-vorbis-ffmpeg-3.4.patch
 	"${FILESDIR}"/${P}-libav-{1,2,3}.patch
+	"${FILESDIR}"/${P}-png-segfault.patch
 )
 
 pkg_setup() {
