@@ -73,6 +73,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-CHAR_WIDTH-collision.patch
 	"${FILESDIR}"/${P}-xgetbv.patch
+	"${FILESDIR}"/${P}-no-pie.patch
 )
 
 src_prepare() {
