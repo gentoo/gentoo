@@ -24,6 +24,9 @@ RDEPEND="
 	=dev-python/whisper-${PV}*[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
+	# bug #661340, excerpt from upstream, next release should have it
+	sed -i -e "s/'r+'/'rb+'/" lib/carbon/log.py || die
+
 	# Do not install the configuration and data files. We install them
 	# somewhere sensible by hand.
 	sed -i -e '/data_files=install_files,/d' setup.py || die
