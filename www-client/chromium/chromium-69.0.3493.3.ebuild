@@ -137,7 +137,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-math.h-r0.patch"
 	"${FILESDIR}/chromium-stdint.patch"
-	"${FILESDIR}/chromium-ffmpeg-ebp-r0.patch"
+	"${FILESDIR}/chromium-ffmpeg-ebp-r1.patch"
 )
 
 pre_build_checks() {
