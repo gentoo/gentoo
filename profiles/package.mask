@@ -201,12 +201,6 @@ app-i18n/qimhangul
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
 
-# Mike Auty <ikelos@gentoo.org> (22 Jun 2018)
-# Not maintained upstream, at least one bug and three upstream bugs
-# Alternatives include gitg and git-cola.
-# Removal in 30 days. Bug #658264
-dev-vcs/giggle
-
 # Matt Turner <mattst88@gentoo.org> (20 Jun 2018)
 # No reverse deps after removal of app-i18n/fbiterm
 # Removal in 30 days. Bug #658528
