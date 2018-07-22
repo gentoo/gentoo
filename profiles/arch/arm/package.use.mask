@@ -5,10 +5,6 @@
 # dev-libs/xxhash not keyworded for arm
 app-admin/rsyslog xxhash
 
-# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
-# kde-plasma/plasma-browser-integration not yet keyworded, bug #659936
-kde-plasma/plasma-meta browser-integration
-
 # Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
 # Needs dev-libs/libmaxminddb which isn't keyworded
 www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
