@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic qmake-utils
 
@@ -41,24 +41,24 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=( README ChangeLog TODO AUTHORS )
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 src_configure() {
-	append-cxxflags '-std=c++11'
+	append-cxxflags -std=c++11
 	econf \
-		$(use_enable mad libmad) \
-		$(use_enable libsamplerate) \
-		$(use_enable vorbis libvorbis) \
-		$(use_enable osc liblo) \
 		--enable-ladspa \
-		$(use_enable dssi) \
 		--enable-lilv \
 		--disable-qt4 \
 		--with-qt5=$(qt5_get_libdir)/qt5 \
+		$(use_enable debug) \
+		$(use_enable dssi) \
+		$(use_enable libsamplerate) \
+		$(use_enable mad libmad) \
+		$(use_enable osc liblo) \
 		$(use_enable rubberband librubberband) \
 		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_enable zlib libz) \
-		$(use_enable debug)
+		$(use_enable vorbis libvorbis) \
+		$(use_enable zlib libz)
 
 	eqmake5 ${PN}.pro -o ${PN}.mak
 }
