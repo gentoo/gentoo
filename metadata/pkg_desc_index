@@ -861,7 +861,7 @@ app-i18n/ibus-cangjie 2.4: The IBus engine for users of the Cangjie and Quick in
 app-i18n/ibus-handwrite 2.1.4-r1: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-libpinyin 1.9.2: Intelligent Pinyin engine based on libpinyin for IBus
-app-i18n/ibus-m17n 1.3.2: M17N engine for IBus
+app-i18n/ibus-m17n 1.3.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-skk 1.4.1-r1: Japanese SKK engine for IBus
 app-i18n/ibus-table 1.5.0-r1: Tables engines for IBus
