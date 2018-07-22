@@ -99,6 +99,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-vorbis-ffmpeg-3.4.patch
 	"${FILESDIR}"/${P}-libav-{1,2,3}.patch
 	"${FILESDIR}"/${P}-png-segfault.patch
+	"${FILESDIR}"/${P}-gif-encoding.patch
 )
 
 pkg_setup() {
