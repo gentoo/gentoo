@@ -16,7 +16,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64"
 IUSE="component-build cups gnome-keyring +hangouts jumbo-build kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
@@ -80,6 +80,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	!=www-client/chromium-9999
 	!<www-plugins/chrome-binary-plugins-57
+	dev-util/gn
 	x11-misc/xdg-utils
 	virtual/opengl
 	virtual/ttf-fonts
@@ -130,15 +131,12 @@ GTK+ icon theme.
 "
 
 PATCHES=(
+	"${FILESDIR}/chromium-compiler-r4.patch"
 	"${FILESDIR}/chromium-widevine-r2.patch"
-	"${FILESDIR}/chromium-compiler-r2.patch"
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-math.h-r0.patch"
 	"${FILESDIR}/chromium-stdint.patch"
-	"${FILESDIR}/chromium-ffmpeg-r1.patch"
-	"${FILESDIR}/chromium-libwebp-shim-r0.patch"
-	"${FILESDIR}/chromium-disable_xml_catalogs.patch"
 )
 
 pre_build_checks() {
@@ -207,6 +205,7 @@ src_prepare() {
 		net/third_party/quic
 		net/third_party/spdy
 		third_party/WebKit
+		third_party/abseil-cpp
 		third_party/analytics
 		third_party/angle
 		third_party/angle/src/common/third_party/base
@@ -217,6 +216,9 @@ src_prepare() {
 		third_party/angle/third_party/glslang
 		third_party/angle/third_party/spirv-headers
 		third_party/angle/third_party/spirv-tools
+		third_party/angle/third_party/vulkan-headers
+		third_party/angle/third_party/vulkan-loader
+		third_party/angle/third_party/vulkan-tools
 		third_party/angle/third_party/vulkan-validation-layers
 		third_party/apple_apsl
 		third_party/blink
@@ -266,6 +268,7 @@ src_prepare() {
 		third_party/libXNVCtrl
 		third_party/libaddressinput
 		third_party/libaom
+		third_party/libaom/source/libaom/third_party/vector
 		third_party/libaom/source/libaom/third_party/x86inc
 		third_party/libjingle
 		third_party/libphonenumber
@@ -359,22 +362,6 @@ src_prepare() {
 
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
-}
-
-bootstrap_gn() {
-	if tc-is-cross-compiler; then
-		local -x AR=${BUILD_AR}
-		local -x CC=${BUILD_CC}
-		local -x CXX=${BUILD_CXX}
-		local -x NM=${BUILD_NM}
-		local -x CFLAGS=${BUILD_CFLAGS}
-		local -x CXXFLAGS=${BUILD_CXXFLAGS}
-		local -x LDFLAGS=${BUILD_LDFLAGS}
-	fi
-	einfo "Building GN..."
-	set -- tools/gn/bootstrap/bootstrap.py -s -v --no-clean
-	echo "$@"
-	"$@" || die
 }
 
 src_configure() {
@@ -569,10 +556,8 @@ src_configure() {
 		popd > /dev/null || die
 	fi
 
-	bootstrap_gn
-
 	einfo "Configuring Chromium..."
-	set -- out/Release/gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
+	set -- gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
 	echo "$@"
 	"$@" || die
 }
