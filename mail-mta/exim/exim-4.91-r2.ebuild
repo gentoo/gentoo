@@ -8,13 +8,20 @@ inherit db-use eutils toolchain-funcs multilib pam systemd
 IUSE="arc dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd +tpda X"
 REQUIRED_USE="
 	arc? ( dkim spf )
-	dane? ( ssl )
+	dane? ( ssl !gnutls )
 	dmarc? ( dkim spf )
 	gnutls? ( ssl )
 	pkcs11? ( ssl )
 	spf? ( exiscan-acl )
 	srs? ( exiscan-acl )
 "
+# NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
+# for x86 and amd64 only, due to this, repoman won't allow depending on
+# gnutls[dane] for all else.  Because we cannot express USE=dane when
+# USE=gnutls is in effect only in package.use.mask, the only option we
+# have left is to a) ignore the dependency (but that results in bug
+# #661164) or b) mask the usage of USE=dane with USE=gnutls.  Both are
+# incorrect, but b) is the only "correct" view from repoman.
 
 COMM_URI="https://downloads.exim.org/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
 
@@ -31,7 +38,7 @@ KEYWORDS="alpha amd64 arm ~hppa ia64 ~ppc ~ppc64 sparc x86 ~x86-fbsd ~x86-solari
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	( >=sys-libs/db-3.2:= <sys-libs/db-6:= )
 	dev-libs/libpcre
-	idn? ( net-dns/libidn net-dns/libidn2 )
+	idn? ( net-dns/libidn:= net-dns/libidn2:= )
 	perl? ( dev-lang/perl:= )
 	pam? ( virtual/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
@@ -40,7 +47,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 		libressl? ( dev-libs/libressl:= )
 	)
 	gnutls? (
-		net-libs/gnutls[pkcs11?]
+		net-libs/gnutls:0=[pkcs11?]
 		dev-libs/libtasn1
 	)
 	ldap? ( >=net-nds/openldap-2.0.7 )
