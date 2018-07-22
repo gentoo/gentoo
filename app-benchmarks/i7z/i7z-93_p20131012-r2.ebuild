@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/ajaiantilal/i7z"
 SRC_URI="https://github.com/ajaiantilal/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="qt5"
 
 RDEPEND="
