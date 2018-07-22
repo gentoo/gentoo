@@ -100,6 +100,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libav-{1,2,3}.patch
 	"${FILESDIR}"/${P}-png-segfault.patch
 	"${FILESDIR}"/${P}-gif-encoding.patch
+	"${FILESDIR}"/${P}-kdenlivetitle-crash.patch
 )
 
 pkg_setup() {
