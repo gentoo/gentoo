@@ -1,5 +1,5 @@
---- Makefile.orig	2015-04-17 13:43:08.122972280 +0200
-+++ Makefile	2015-04-17 13:43:11.569975854 +0200
+--- a/Makefile	2015-04-17 13:43:08.122972280 +0200
++++ b/Makefile	2015-04-17 13:43:11.569975854 +0200
 @@ -14,12 +14,12 @@
  PIXBUF_LIB := -rdynamic -L$(shell $(PIXBUF_CFG) --variable=prefix)/lib -lgdk_pixbuf_xlib-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0
  endif
