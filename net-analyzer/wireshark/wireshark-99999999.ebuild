@@ -12,11 +12,10 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump bcg729 +capinfos +caps +captype ciscodump +dftest doc
-	+dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
-	nghttp2 +pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux
-	+sharkd smi snappy spandsp sshdump ssl +text2pcap tfshark +tshark +udpdump
-	zlib
+	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc +dumpcap
+	+editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink nghttp2
+	+pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux +sharkd smi snappy
+	spandsp sshdump ssl +text2pcap tfshark +tshark +udpdump zlib
 "
 
 S=${WORKDIR}/${P/_/}
@@ -27,7 +26,7 @@ CDEPEND="
 	netlink? ( dev-libs/libnl:3 )
 	adns? ( >=net-dns/c-ares-1.5 )
 	bcg729? ( media-libs/bcg729 )
-	caps? ( sys-libs/libcap )
+	filecaps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
 	sshdump? ( >=net-libs/libssh-0.6 )
 	ciscodump? ( >=net-libs/libssh-0.6 )
@@ -137,7 +136,7 @@ src_configure() {
 		-DBUILD_wireshark=$(usex qt5)
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
-		-DENABLE_CAP=$(usex caps)
+		-DENABLE_CAP=$(usex filecaps caps)
 		-DENABLE_CARES=$(usex adns)
 		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_KERBEROS=$(usex kerberos)
