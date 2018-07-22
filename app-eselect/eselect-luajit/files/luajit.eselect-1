@@ -1,0 +1,151 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2014-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+inherit config multilib
+
+DESCRIPTION="Manage luajit symlinks"
+MAINTAINER="ilmostro7@gmail.com"
+
+HEADER_FILES="luajit.h"
+LVER=$(readlink -e "${EROOT}"/usr/bin/luajit | sed -ne "s:.*/usr/bin/luajit\([\d.-]*\):\1:p")
+
+remove_symlinks() {
+	unlink "${EROOT}"/usr/bin/luajit &>/dev/null 
+	for dir in $(get_libdirs) ; do
+		unlink "${EROOT}"${dir}/libluajit.so &>/dev/null && \
+		unlink "${EROOT}"${dir}/pkgconfig/luajit.pc &>/dev/null
+	done
+	for f in $HEADER_FILES ; do
+		unlink "${EROOT}"/usr/include/$f
+	done
+	unlink "${EROOT}"/usr/share/man/man1/luajit.bz2 &>/dev/null
+}
+
+set_symlinks() {
+	local ver=$1
+	ln -sf "${EROOT}"/usr/bin/luajit-$ver "${EROOT}"/usr/bin/luajit
+	for dir in $(get_libdirs) ; do
+		ln -sf "${dir}"/luajit-{$ver}/libluajit-$LVER.so "${dir}"/libluajit.so
+		ln -sf "${dir}"/luajit-{$ver}/libluajit-$LVER.a "${dir}"/libluajit.a
+		ln -sf "${dir}"/pkgconfig/luajit{-$ver,}.pc
+	done
+	for orig in "${EROOT}"/usr/share/man/man1/luajit*$ver.bz2 ; do
+		ln -s "${orig}" "${orig//-$ver}"
+	done
+	for f in $HEADER_FILES ; do
+		ln -s "${EROOT}"/usr/include/luajit-$ver/$f "${EROOT}"/usr/include
+	done
+}
+
+get_libdirs() {
+	local dir libdirs
+	for dir in $(list_libdirs); do
+		[[ -L ${EROOT}/usr/${dir} ]] && continue
+		ls "${EROOT}"/usr/${dir}/libluajit*.* > /dev/null 2>&1 || continue
+
+		libdirs+=' '${EPREFIX}/usr/${dir}
+	done
+	echo ${libdirs:-${EPREFIX}/usr/lib}
+}
+
+find_targets() {
+	local dirs
+	local prefix="${EROOT}/usr/bin/luajit-"
+	for f in ${prefix}2* ; do
+		dirs="${dirs} ${f##$prefix}"
+	done
+	echo $dirs
+}
+
+resolv_target() {
+	local targets=( $(find_targets) )
+	if is_number $1; then
+		[[ $1 -le ${#targets[@]} && $1 -gt 0 ]] && echo "${targets[ $(( $1 - 1 )) ]}"
+	elif has $1 ${targets[@]}; then
+	  echo $1
+	fi
+}
+
+get_active_version() {
+	readlink -e "${EROOT}"/usr/bin/luajit | sed -ne "s:.*/usr/bin/luajit\([\d.-]*\):\1:p"
+}
+
+## Actual actions
+
+## set action
+
+describe_set() {
+	echo "Sets the current version of luajit"
+}
+
+describe_set_parameters() {
+	echo '<target>'
+}
+
+describe_set_options() {
+	echo 'target:	Target name or number (from "list" action)'
+}
+
+
+do_set() {
+	local target=$(resolv_target $1)
+	if [[ -z "${target}" ]]; then
+	  die -q "You need to specify a version"
+	fi
+	remove_symlinks
+	set_symlinks $target
+}
+
+## List action
+
+describe_list() {
+	echo 'Lists available luajit versions'
+}
+
+do_list() {
+	local targets
+	local a
+	targets=( $(find_targets) )
+	a=$(get_active_version)
+	for (( i = 0; i < ${#targets[@]}; i++ )) ; do
+		[[ $a == ${targets[i]} ]] && targets[i]=$(highlight_marker "${targets[i]}")
+	done
+	write_numbered_list -m '(none found)' "${targets[@]}"
+}
+
+## Show action
+
+describe_show() {
+	echo 'Show the active luajit version'
+}
+
+do_show() {
+	get_active_version
+}
+
+## update action
+
+describe_update() {
+	echo 'Automatically update the luajit version'
+}
+
+describe_update_options() {
+	echo 'ifunset : Do not override existing implementation'
+}
+
+do_update() {
+	[[ -n ${1} && ! ( ${1} == ifunset || ${1} == '--if-unset' ) ]] && \
+		die -q 'Usage error'
+
+	[[ ( ${1} == ifunset || ${1} == '--if-unset' ) && -n $(get_active_version) ]] && \
+		return
+
+	remove_symlinks
+	
+	local targets=( $(find_targets) )
+	if [[ -n ${#targets[@]} ]] ; then
+		local target=${targets[${#targets[@]} - 1]}
+		set_symlinks $target || echo 'Nothing to update'
+	fi
+}
