@@ -22,12 +22,11 @@ IUSE="aqua coverage doc +egl +geolocation gles2 gnome-keyring +gstreamer +intros
 # webgl needs gstreamer, bug #560612
 REQUIRED_USE="
 	geolocation? ( introspection )
-	gles2? ( egl )
+	gles2? ( egl !opengl )
 	introspection? ( gstreamer )
 	nsplugin? ( X )
-	webgl? ( ^^ ( gles2 opengl ) )
-	!webgl? ( ?? ( gles2 opengl ) )
-	webgl? ( gstreamer )
+	webgl? ( gstreamer
+		|| ( gles2 opengl ) )
 	wayland? ( egl )
 	|| ( aqua wayland X )
 "
@@ -70,7 +69,7 @@ RDEPEND="
 	gstreamer? (
 		>=media-libs/gstreamer-1.2.3:1.0
 		>=media-libs/gst-plugins-base-1.2.3:1.0
-		>=media-libs/gst-plugins-bad-1.10:1.0[opengl?,egl?] )
+		>=media-libs/gst-plugins-bad-1.10:1.0[egl?,gles2?,opengl?] )
 
 	X? (
 		x11-libs/libX11
