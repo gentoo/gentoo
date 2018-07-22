@@ -70,7 +70,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 PATCHES=(
 	# add Prefix include paths for Darwin
-	"${FILESDIR}"/5.0.1/darwin_prefix-include-paths.patch
+	"${FILESDIR}"/6.0.1/darwin_prefix-include-paths.patch
 
 	# fix test failure with default-compiler-rt
 	# https://bugs.gentoo.org/650316
