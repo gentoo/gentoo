@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-libs/libserialport-0.1.1"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=virtual/jdk-1.8"
 
 S="${WORKDIR}/listSerialPortsC-${PV}"
 
