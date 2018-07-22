@@ -95,7 +95,10 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 
-PATCHES=( "${FILESDIR}"/${P}-vorbis-ffmpeg-3.4.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-vorbis-ffmpeg-3.4.patch
+	"${FILESDIR}"/${P}-libav-{1,2,3}.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
