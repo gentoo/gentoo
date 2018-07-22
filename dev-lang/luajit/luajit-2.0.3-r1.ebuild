@@ -13,7 +13,7 @@ HOMEPAGE="http://luajit.org/"
 SRC_URI="http://luajit.org/download/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="2.0.3-r1"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~ppc x86 ~amd64-linux ~x86-linux"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -25,6 +25,4 @@ src_install(){
 	default
 
 	pax-mark m "${ED}usr/bin/luajit-${MY_PV}"
-
-	einstalldocs
 }
