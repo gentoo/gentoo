@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=x11-libs/libX11 dev-lang/fpc
+DESCRIPTION=microwave CAD software
+EAPI=7
+HOMEPAGE=http://wwwhome.cs.utwente.nl/~ptdeboer/ham/puff/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=http://wwwhome.cs.utwente.nl/~ptdeboer/ham/puff/puff-20100127.tgz
+_eclasses_=eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=0ee30038d8602e612af38475fc003a06
