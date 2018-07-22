@@ -90,6 +90,7 @@ src_configure() {
 
 src_install() {
 	default
+	python_optimize #661706
 
 	keepdir /var/run/abrt
 	# /var/spool/abrt is created by dev-libs/libreport
