@@ -10,7 +10,7 @@ DESCRIPTION="A flexible and capable API layer for django utilising serialisers"
 HOMEPAGE="https://pypi.org/project/django-tastypie/ https://github.com/toastdriven/django-tastypie"
 SRC_URI="https://github.com/toastdriven/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="bip doc test"
 
 LICENSE="BSD"
