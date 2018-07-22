@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit font eutils
+inherit eutils font xdg-utils
 
 DESCRIPTION="Chinese TrueType Arphic Fonts"
 HOMEPAGE="http://www.arphic.com.tw/
@@ -59,6 +59,7 @@ src_prepare() {
 	find "${WORKDIR}" -mindepth 2 -maxdepth 2 -name '*.ttc' -exec mv {} . \;
 	find "${WORKDIR}" -name '*.conf' -exec mv "{}" . \;
 	epatch "${FILESDIR}"/${P}-fontconfig.patch
+	xdg_environment_reset
 	fontforge -script "${FILESDIR}"/${P}.pe b*.ttf || die
 }
 
@@ -68,7 +69,7 @@ src_install() {
 	do
 		cd "${WORKDIR}"/${myfont}
 		docinto ${myfont}
-		for doc in  FONTLOG KNOWN_ISSUES TODO README README.Bitmap NEWS CONTRIBUTERS
+		for doc in FONTLOG KNOWN_ISSUES TODO README README.Bitmap NEWS CONTRIBUTERS
 		do
 			[ -f ${doc} ] && dodoc ${doc}
 		done
