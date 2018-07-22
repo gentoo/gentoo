@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils multilib pax-utils toolchain-funcs
+inherit pax-utils toolchain-funcs
 
 MY_PV="$(ver_cut 1-3)"
 MY_P="LuaJIT-${MY_PV}"
