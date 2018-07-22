@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 # so USE_RUBY must contain only a single value (the latest stable) as the ebuild calls
 # /usr/bin/${USE_RUBY} directly
 USE_RUBY="ruby23"
-inherit eutils flag-o-matic multilib python-single-r1 ruby-single toolchain-funcs
+inherit flag-o-matic python-single-r1 ruby-single toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
