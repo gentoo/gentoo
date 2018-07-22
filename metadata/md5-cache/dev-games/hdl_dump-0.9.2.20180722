@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Game installer for PlayStation 2 HD Loader and Open PS2 Loader
+EAPI=7
+HOMEPAGE=https://github.com/AKuHAK/hdl-dump
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/AKuHAK/hdl-dump/archive/67e66ca0e0a0000563f75c573a046cb8614745ad.tar.gz -> hdl_dump-0.9.2.20180722.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f50135cec7d21ef816cf68b3fd9b0dcc
