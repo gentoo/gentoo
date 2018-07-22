@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 # this ebuild currently only supports installing ruby bindings for a single ruby version
 # so USE_RUBY must contain only a single value (the latest stable) as the ebuild calls
 # /usr/bin/${USE_RUBY} directly
 USE_RUBY="ruby23"
-inherit eutils flag-o-matic multilib python-single-r1 ruby-single toolchain-funcs
+inherit flag-o-matic python-single-r1 ruby-single toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
@@ -21,7 +22,7 @@ gtk jack kdenlive libav libsamplerate lua melt opencv opengl python qt5 rtaudio 
 # java perl php tcl vidstab
 IUSE="${IUSE} kernel_linux"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) sdl2? ( sdl )"
 
 #rtaudio will use OSS on non linux OSes
 COMMON_DEPEND="
@@ -62,12 +63,14 @@ COMMON_DEPEND="
 	)
 	ruby? ( ${RUBY_DEPS} )
 	sdl? (
-		>=media-libs/libsdl-1.2.10[X,opengl,video]
-		>=media-libs/sdl-image-1.2.4
-	)
-	sdl2? (
-		media-libs/libsdl2[X,opengl,video]
-		media-libs/sdl2-image
+		sdl2? (
+			media-libs/libsdl2[X,opengl,video]
+			media-libs/sdl2-image
+		)
+		!sdl2? (
+			>=media-libs/libsdl-1.2.10[X,opengl,video]
+			>=media-libs/sdl-image-1.2.4
+		)
 	)
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
 	xml? ( >=dev-libs/libxml2-2.5 )"
@@ -93,6 +96,14 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-vorbis-ffmpeg-3.4.patch
+	"${FILESDIR}"/${P}-libav-{1,2,3}.patch
+	"${FILESDIR}"/${P}-png-segfault.patch
+	"${FILESDIR}"/${P}-gif-encoding.patch
+	"${FILESDIR}"/${P}-kdenlivetitle-crash.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -128,8 +139,6 @@ src_configure() {
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable cpu_flags_x86_sse2 sse2)
 		$(use_enable gtk gtk2)
-		$(use_enable sdl)
-		$(use_enable sdl2)
 		$(use_enable jack jackrack)
 		$(use_enable ffmpeg avformat)
 		$(use ffmpeg && echo ' --avformat-swscale')
@@ -156,6 +165,14 @@ src_configure() {
 		)
 	else
 		myconf+=( --disable-qt )
+	fi
+
+	if use sdl ; then
+		if use sdl2 ; then
+			myconf+=( --enable-sdl2 --disable-sdl )
+		else
+			myconf+=( --enable-sdl --disable-sdl2 )
+		fi
 	fi
 
 	if use x86 || use amd64 ; then

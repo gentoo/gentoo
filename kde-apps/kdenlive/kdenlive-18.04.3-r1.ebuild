@@ -45,7 +45,7 @@ RDEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	>=media-libs/mlt-6.6.0[ffmpeg,kdenlive,melt,qt5,sdl,xml]
+	>=media-libs/mlt-6.6.0-r1[ffmpeg,kdenlive,melt,qt5,sdl,sdl2(+),xml]
 	virtual/ffmpeg[encode,sdl,X]
 	virtual/opengl
 	freesound? ( $(add_qt_dep qtwebkit) )
