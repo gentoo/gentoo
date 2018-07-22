@@ -35,3 +35,5 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-libpng:1.0
 	media-plugins/gst-plugins-meta:1.0[alsa,theora,vorbis,v4l]
 "
+
+RESTRICT+=" test" # bug 653674
