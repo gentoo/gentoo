@@ -916,6 +916,7 @@ app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.10 0.12.4: A command line interface for Transifex
 app-i18n/uchardet 0.0.6-r2: An encoding detector library
 app-i18n/uim 1.8.6-r1: A multilingual input method framework
+app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 31.0.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 9.0.0 10.0.0: Unicode data from unicode.org
 app-i18n/unicode-emoji 5.0: UTR #51 Unicode Emoji
@@ -1266,6 +1267,7 @@ app-shells/sash 3.8: A small (static) UNIX Shell
 app-shells/scsh 0.6.7-r2: Unix shell embedded in Scheme
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/tcsh 6.20.00: Enhanced version of the Berkeley C shell (csh)
+app-shells/yash 2.47: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.5 5.5.1-r1: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.27.0: Additional completion definitions for Zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs

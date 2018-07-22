@@ -2162,6 +2162,7 @@ games-board/stockfish:general-32 - Generic unoptimized 32-bits build
 games-board/stockfish:general-64 - Generic unoptimized 64-bits build
 games-board/stockfish:optimize - Enable upstream -O3 optimizations (default enabled)
 games-board/tablebase-syzygy:6-pieces - Install tablebases for 6 pieces (huge!)
+games-emulation/dolphin:discord-presence - Enables Discord Rich Presence, show the current game on Discord
 games-emulation/dolphin:egl - Enable EGL support
 games-emulation/dolphin:evdev - Enable evdev input support
 games-emulation/dolphin:llvm - Enable the LLVM-based disassembler for debugger mode
