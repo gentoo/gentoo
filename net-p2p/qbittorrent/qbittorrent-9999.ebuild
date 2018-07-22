@@ -42,7 +42,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
-PATCHES=( "${FILESDIR}/${PN}-4.0.4-werror.patch" )
+#PATCHES=( "${FILESDIR}/${PN}-4.0.4-werror.patch" )
+# they do not ship -Werror for the master branch yet
+# may be changed again.
 
 src_configure() {
 	local mycmakeargs=(
