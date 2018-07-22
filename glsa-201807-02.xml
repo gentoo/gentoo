@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201807-02">
+  <title>Passenger: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Passenger, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">passenger</product>
+  <announced>2018-07-22</announced>
+  <revised count="1">2018-07-22</revised>
+  <bug>658346</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apache/passenger" auto="yes" arch="*">
+      <unaffected range="ge">5.3.2</unaffected>
+      <vulnerable range="lt">5.3.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Passenger runs and manages your Ruby, Node.js, and Python apps.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Passenger. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could escalate privileges, execute arbitrary code,
+      cause a Denial of Service condition, or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Passenger users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apache/passenger-5.3.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12026">CVE-2018-12026</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12027">CVE-2018-12027</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12028">CVE-2018-12028</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12029">CVE-2018-12029</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-07-03T02:38:28Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-07-22T20:50:15Z">irishluck83</metadata>
+</glsa>
