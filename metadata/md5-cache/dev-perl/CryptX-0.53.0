@@ -4,10 +4,10 @@ DESCRIPTION=Self-contained crypto toolkit
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/CryptX/
 IUSE=test minimal
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Exporter-5.590.0 !minimal? ( || ( dev-perl/Cpanel-JSON-XS dev-perl/JSON-XS virtual/perl-JSON-PP ) ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIK/CryptX-0.053.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=f0c0b8834402f57012aa6e3ff14c0232
+_md5_=10b50c35817db9deff72362e44ca8511
