@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (22 Jul 2018)
+# Depends on an unsupported version of django (1.8, will be removed soon) and
+# is rendered obsolete by the direct inclusion of django support in
+# >=dev-python/celery-4.0. Removal in 30 days. Bug #661804
+dev-python/django-celery
+
 # Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
 # Obsolete early GNOME 2 era print libraries. Applications
 # use printing support found directly in x11-libs/gtk+ now.

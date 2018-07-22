@@ -54,9 +54,9 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_test() {
-	# bug 641730
+	# bugs 641730, 661330
 	local myctestargs=(
-		-E "(autocorrectiontest)"
+		-E "(autocorrectiontest|pimcommon-translator-translatortest)"
 	)
 
 	kde5_src_test

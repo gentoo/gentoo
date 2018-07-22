@@ -29,3 +29,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-apps/kdepim-l10n
 "
+
+src_test() {
+	# bug 653616
+	local myctestargs=(
+		-E "(kcalutils-testincidenceformatter)"
+	)
+
+	kde5_src_test
+}
