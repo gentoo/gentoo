@@ -6,8 +6,8 @@ EAPI="2"
 inherit autotools flag-o-matic eutils toolchain-funcs
 
 DESCRIPTION="Communication package providing the X, Y, and ZMODEM file transfer protocols"
-HOMEPAGE="http://www.ohse.de/uwe/software/lrzsz.html"
-SRC_URI="http://www.ohse.de/uwe/releases/${P}.tar.gz"
+HOMEPAGE="https://www.ohse.de/uwe/software/lrzsz.html"
+SRC_URI="https://www.ohse.de/uwe/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
