@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst preinst unpack
+DESCRIPTION=emerge-webrsync using patches to minimize bandwidth
+EAPI=5
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Portage
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=app-shells/bash || ( >=sys-apps/portage-2.1.10 sys-apps/portage-mgorny ) >=dev-util/diffball-0.6.5
+SLOT=0
+SRC_URI=https://gitweb.gentoo.org/proj/portage.git/plain/misc/emerge-delta-webrsync?id=52d5d444ffb144911ca9b6e70b383405a8bd8af6 -> emerge-delta-webrsync-3.7.4
+_md5_=cf3d4488f06aa4df7012201b707c890d
