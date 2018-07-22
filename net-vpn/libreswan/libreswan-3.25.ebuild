@@ -50,6 +50,8 @@ usetf() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}/${P}-no-curl.patch"
+
 	sed -i -e 's:/sbin/runscript:/sbin/openrc-run:' initsystems/openrc/ipsec.init.in || die
 	sed -i -e '/^install/ s/postcheck//' -e '/^doinstall/ s/oldinitdcheck//' initsystems/systemd/Makefile || die
 	default
