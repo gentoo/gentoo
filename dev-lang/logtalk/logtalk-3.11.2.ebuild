@@ -95,6 +95,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 
 	ewarn "The following integration scripts are installed"
@@ -122,5 +123,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 }
