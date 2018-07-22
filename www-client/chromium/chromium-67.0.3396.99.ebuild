@@ -138,6 +138,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-stdint.patch"
 	"${FILESDIR}/chromium-ffmpeg-r1.patch"
 	"${FILESDIR}/chromium-ffmpeg-clang.patch"
+	"${FILESDIR}/chromium-ffmpeg-ebp-r0.patch"
 )
 
 pre_build_checks() {
