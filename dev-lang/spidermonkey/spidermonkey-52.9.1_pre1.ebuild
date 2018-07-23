@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,10 +7,11 @@ inherit autotools toolchain-funcs pax-utils mozcoreconf-v5
 
 MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_rc/.rc}"
+MY_P="${MY_P/_pre/pre}"
 DESCRIPTION="Stand-alone JavaScript C++ library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 #SRC_URI="https://people.mozilla.org/~sfink/${MY_P}.tar.bz2"
-SRC_URI="https://dev.gentoo.org/~axs/distfiles/${MY_P}.tar.bz2
+SRC_URI="http://ftp.mozilla.org/pub/spidermonkey/prereleases/52/pre1/mozjs-52.9.1pre1.tar.bz2 -> ${MY_P}.tar.bz2
 	https://dev.gentoo.org/~axs/distfiles/${PN}-52.0-patches-0.tar.xz"
 
 LICENSE="NPL-1.1"
@@ -21,8 +22,7 @@ IUSE="debug +jit minimal +system-icu test"
 RESTRICT="ia64? ( test )"
 
 S="${WORKDIR}/${MY_P%.rc*}"
-S="${S%_pre*}"
-BUILDDIR="${S}/js/src"
+BUILDDIR="${S}/jsobj"
 
 RDEPEND=">=dev-libs/nspr-4.13.1
 	virtual/libffi
@@ -41,10 +41,11 @@ src_prepare() {
 	rm -f	"${WORKDIR}"/${PN}/0002-build-Add-major-version-to-make-parallel-installable.patch \
 		"${WORKDIR}"/${PN}/0005-headers-Fix-symbols-visibility.patch \
 		"${WORKDIR}"/${PN}/0007-build-Remove-unnecessary-NSPR-dependency.patch \
+		"${WORKDIR}"/${PN}/0008-tests-Skip-on-all-64-bit-archs.patch \
 		|| die
 
 	eapply "${WORKDIR}/${PN}"
-	eapply "${FILESDIR}"/${PN}-52-baseconfig.patch
+	#eapply "${FILESDIR}"/${PN}-52-baseconfig.patch
 
 	eapply_user
 
@@ -53,17 +54,20 @@ src_prepare() {
 		ln -sfn "${BUILDDIR}/config/Linux_All.mk" "${S}/config/$(uname -s)$(uname -r).mk" || die
 	fi
 
-	cd "${BUILDDIR}" || die
+	cd "${S}"/js/src || die
 	eautoconf old-configure.in
 	eautoconf
 
 	# there is a default config.cache that messes everything up
-	rm -f "${BUILDDIR}"/config.cache || die
+	rm -f "${S}"/js/src/config.cache || die
+
+	mkdir -p "${BUILDDIR}" || die
 }
 
 src_configure() {
 	cd "${BUILDDIR}" || die
 
+	ECONF_SOURCE="${S}/js/src" \
 	econf \
 		--enable-jemalloc \
 		--enable-readline \
