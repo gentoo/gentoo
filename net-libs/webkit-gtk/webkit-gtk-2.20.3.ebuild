@@ -112,11 +112,11 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-util/gtk-doc-1.10 )
 	geolocation? ( dev-util/gdbus-codegen )
 	introspection? ( jit? ( sys-apps/paxctl ) )
-	test? (
-		dev-python/pygobject:3[python_targets_python2_7]
-		x11-themes/hicolor-icon-theme
-		jit? ( sys-apps/paxctl ) )
 "
+#	test? (
+#		dev-python/pygobject:3[python_targets_python2_7]
+#		x11-themes/hicolor-icon-theme
+#		jit? ( sys-apps/paxctl ) )
 
 S="${WORKDIR}/${MY_P}"
 
