@@ -2,7 +2,7 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=796379
 https://bugs.gentoo.org/656902
 
 --- a/third_party/ffmpeg/BUILD.gn
---- b/third_party/ffmpeg/BUILD.gn
++++ b/third_party/ffmpeg/BUILD.gn
 @@ -239,11 +239,7 @@
    # Windows builds can't compile without EBP because we can't omit frame
    # pointers like we do on posix.
