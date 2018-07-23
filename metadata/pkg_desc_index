@@ -10903,7 +10903,7 @@ x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 1.2.3 1.2.5: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.11.1: Fast lightweight tabbed filemanager (Qt port)
-x11-misc/polybar 3.1.0: A fast and easy-to-use tool for creating status bars
+x11-misc/polybar 3.1.0 3.2.0: A fast and easy-to-use tool for creating status bars
 x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
