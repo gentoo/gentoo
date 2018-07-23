@@ -315,28 +315,8 @@ app-misc/wyrd
 app-doc/mkdoxy
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not compatible with recent PHP, upstream dead for ages (#650870, #650934)
-#, removal in a month.
-www-apps/gnopaste
-www-apps/openwebstats
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead, security vulnerable (#650936). Removal in a month.
-www-apps/phprojekt
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Doesn't run, cannot bump it (#651146). Removal in a month.
 games-emulation/hatari
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't work even with current PHP versions, upstream dead (#651148),
-# removal in a month.
-www-apps/mypictures
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't work with PHP7, dead upstream (#651184, #651194), removal in a month.
-www-apps/phpmp
-www-apps/polarblog
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Multiple bugs (#424383, #554944), upstream dead (#651340). Removal in a
