@@ -1,19 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit flag-o-matic perl-functions user
 
+MY_PN="atheme"
+MY_PV="7.2.10-r2"
+
 DESCRIPTION="A portable and secure set of open-source and modular IRC services"
 HOMEPAGE="https://github.com/atheme/atheme"
-SRC_URI="https://github.com/atheme/atheme/releases/download/v${PV}/atheme-${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://github.com/atheme/atheme/releases/download/v${MY_PV}/${MY_PN}-v${MY_PV}.tar.xz -> ${PN}-${PV}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="cracklib largenet ldap nls +pcre perl profile ssl"
-S="${WORKDIR}/atheme-${PV}"
+S="${WORKDIR}/${MY_PN}-v${MY_PV}"
 
 RDEPEND=">=dev-libs/libmowgli-2.1.0:2
 	cracklib? ( sys-libs/cracklib )
@@ -24,8 +27,7 @@ RDEPEND=">=dev-libs/libmowgli-2.1.0:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-fix-docdir.patch
-	"${FILESDIR}"/${P}-configure-logdir.patch)
+PATCHES=("${FILESDIR}"/${P}-configure-logdir.patch)
 
 pkg_setup() {
 	enewgroup ${PN}
