@@ -5,10 +5,6 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
-	</maintainer>
 	<use>
 		<flag name="jemalloc">Use dev-libs/jemalloc for allocations</flag>
 	</use>
