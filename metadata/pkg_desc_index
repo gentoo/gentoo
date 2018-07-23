@@ -200,7 +200,7 @@ app-arch/par2cmdline 0.7.3: A PAR-2.0 file verification and repair tool
 app-arch/pax 20161104: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
-app-arch/pigz 2.3.4: A parallel implementation of gzip
+app-arch/pigz 2.3.4 2.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6: Parallel Indexed XZ compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression utility
