@@ -3,10 +3,10 @@ player: make ffmpeg/libav version check non-fatal
 We already enforce mpv rebuilds when ffmpeg/libav SONAME changes.
 
 diff --git a/player/main.c b/player/main.c
-index 5a3fe4c1b7..8cfbb09c56 100644
+index f56191a297..4e51aebd66 100644
 --- a/player/main.c
 +++ b/player/main.c
-@@ -429,13 +429,12 @@ int mp_initialize(struct MPContext *mpctx, char **options)
+@@ -387,13 +387,12 @@ int mp_initialize(struct MPContext *mpctx, char **options)
          // Distro maintainers who patch this out should be aware that mpv
          // intentionally ignores ABI in some places where it's not possible to
          // get by without violating it.
@@ -25,4 +25,4 @@ index 5a3fe4c1b7..8cfbb09c56 100644
 +                "Please rebuild mpv in case of any problems.\n");
      }
 
-     if (!mpctx->playlist->first && !opts->player_idle_mode)
+     if (!mpctx->playlist->first && !opts->player_idle_mode) {
