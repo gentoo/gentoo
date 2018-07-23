@@ -323,11 +323,6 @@ www-apps/phprojekt
 games-emulation/hatari
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't work even with current PHP versions, upstream dead (#651148),
-# removal in a month.
-www-apps/mypictures
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Doesn't work with PHP7, dead upstream (#651184, #651194), removal in a month.
 www-apps/phpmp
 www-apps/polarblog
