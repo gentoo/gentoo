@@ -89,7 +89,7 @@ RDEPEND="
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
 		>=app-emulation/qemu-0.13.0
-		dev-libs/yajl
+		dev-libs/jansson
 	)
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl )
@@ -263,7 +263,7 @@ src_configure() {
 		$(use_with phyp)
 		$(use_with policykit polkit)
 		$(use_with qemu)
-		$(use_with qemu yajl)
+		$(use_with qemu jansson)
 		$(use_with rbd storage-rbd)
 		$(use_with sasl)
 		$(use_with selinux)
