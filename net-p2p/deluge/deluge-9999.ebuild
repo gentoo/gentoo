@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
-PLOCALES="af ar ast be bg bn bs ca cs cy da de el en_AU en_CA en_GB eo es et eu fa fi fo fr fy ga gl he hi hr hu id is it iu ja ka kk km kn ko ku ky la lb lt lv mk ml ms nap nb nds nl nn oc pl pms pt pt_BR ro ru si sk sl sr sv ta te th tl tlh tr uk ur vi zh_CN zh_HK zh_TW"
+PLOCALES="ar ast be bg bn bs ca cs cy da de el en_AU en_CA en_GB eo es et eu fa fi fr fy gl he hi hr hu id is it iu ja ka kk kn ko ku la lt lv mk ms nb nds nl pl pms pt pt_BR ro ru si sk sl sr sv ta th tl tlh tr uk vi zh_CN zh_HK zh_TW"
 inherit distutils-r1 eutils systemd user l10n
 
 DESCRIPTION="BitTorrent client with a client/server model"
@@ -13,11 +13,10 @@ HOMEPAGE="https://deluge-torrent.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://deluge-torrent.org/${PN}.git
-		http://git.deluge-torrent.org/${PN}"
+	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 	SRC_URI=""
 else
-	SRC_URI="http://download.deluge-torrent.org/source/${P}.tar.bz2"
+	SRC_URI="https://download.deluge-torrent.org/source/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 fi
 
@@ -29,13 +28,14 @@ REQUIRED_USE="
 	sound? ( gtk )
 	libnotify? ( gtk )
 "
-PATCHES=(
-	"${FILESDIR}/${PN}-1.3.12-fix_scheduler_plugin.patch"
-)
+#PATCHES=(
+#	"${FILESDIR}/${PN}-1.3.12-fix_scheduler_plugin.patch"
+#)
 
-CDEPEND=">=net-libs/libtorrent-rasterbar-0.14.9[python,${PYTHON_USEDEP}]"
+CDEPEND="net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/slimit[${PYTHON_USEDEP}]
 	dev-util/intltool"
 RDEPEND="${CDEPEND}
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -57,7 +57,7 @@ RDEPEND="${CDEPEND}
 
 python_prepare_all() {
 	local args=(
-		-e "/Compiling po file/a \\\tuptoDate = False"
+		-e "/Compiling po file/a \\\tupto_date = False"
 	)
 	sed -i "${args[@]}" -- 'setup.py' || die
 	args=(
