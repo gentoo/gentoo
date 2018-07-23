@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Provide information on conflicts for Module::Runtime"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND="
