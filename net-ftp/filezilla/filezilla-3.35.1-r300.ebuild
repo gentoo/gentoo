@@ -3,7 +3,7 @@
 
 EAPI=6
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 
 inherit autotools eutils flag-o-matic gnome2-utils multilib wxwidgets
 
@@ -23,7 +23,7 @@ IUSE="dbus nls test"
 RDEPEND=">=app-eselect/eselect-wxwidgets-0.7-r1
 	>=dev-libs/nettle-3.1:=
 	>=dev-db/sqlite-3.7
-	>=dev-libs/libfilezilla-0.12.2
+	>=dev-libs/libfilezilla-0.13.0
 	>=dev-libs/pugixml-1.7
 	net-dns/libidn:=
 	>=net-libs/gnutls-3.4.15
