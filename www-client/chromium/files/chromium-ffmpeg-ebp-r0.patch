@@ -2,7 +2,7 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=796379
 https://bugs.gentoo.org/656902
 
 --- a/third_party/ffmpeg/BUILD.gn
---- b/third_party/ffmpeg/BUILD.gn
++++ b/third_party/ffmpeg/BUILD.gn
 @@ -247,11 +247,7 @@
      # On POSIX x86, sanitizers will fail to compiler the H264 CABAC code due to
      # insufficient registers unless we disable EBP usage. crbug.com/786760
