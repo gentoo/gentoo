@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils toolchain-funcs
 
-PATCHLEVEL=40
+PATCHLEVEL=41
 DESCRIPTION="Standard Linux telnet client and server"
 #old HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
 # This might be the best HOMEPAGE now?
@@ -30,8 +30,8 @@ S=${WORKDIR}/netkit-telnet-${PV}
 
 src_prepare() {
 	# Patch: [0]
-	# Gentoo lacks a maintainer for this package right now. And a
-	# security problem arose. While reviewing our options for how
+	# Gentoo used to lack a maintainer for this package.
+	# A security problem arose. While reviewing our options for how
 	# should we proceed with the security bug we decided it would be
 	# better to just stay in sync with debian's own netkit-telnet
 	# package. Lots of bug fixes by them over time which were not in
