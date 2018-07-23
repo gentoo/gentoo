@@ -41,7 +41,7 @@ RESTRICT="test"
 # Various compile-time optionals for gtk+-3.22.0 - ensure it
 # Missing OpenWebRTC checks and conditionals, but ENABLE_MEDIA_STREAM/ENABLE_WEB_RTC is experimental upstream (PRIVATE OFF)
 RDEPEND="
-	>=x11-libs/cairo-1.10.2:=
+	>=x11-libs/cairo-1.10.2:=[X?]
 	>=media-libs/fontconfig-2.8.0:1.0
 	>=media-libs/freetype-2.4.2:2
 	>=dev-libs/libgcrypt-1.6.0:0=
@@ -73,7 +73,6 @@ RDEPEND="
 		>=media-libs/gst-plugins-bad-1.10:1.0[opengl?,egl?] )
 
 	X? (
-		x11-libs/cairo[X]
 		x11-libs/libX11
 		x11-libs/libXcomposite
 		x11-libs/libXdamage
@@ -85,10 +84,8 @@ RDEPEND="
 
 	egl? ( media-libs/mesa[egl] )
 	gles2? ( media-libs/mesa[gles2] )
-	opengl? ( virtual/opengl
-		x11-libs/cairo[opengl] )
+	opengl? ( virtual/opengl )
 	webgl? (
-		x11-libs/cairo[opengl]
 		x11-libs/libXcomposite
 		x11-libs/libXdamage )
 "
@@ -215,14 +212,6 @@ src_configure() {
 		opengl_enabled=OFF
 	fi
 
-	# support for webgl (aka 2d-canvas accelerating)
-	local canvas_enabled
-	if use webgl && ! use gles2 ; then
-		canvas_enabled=ON
-	else
-		canvas_enabled=OFF
-	fi
-
 	local mycmakeargs=(
 		-DENABLE_QUARTZ_TARGET=$(usex aqua)
 		-DENABLE_API_TESTS=$(usex test)
@@ -245,7 +234,6 @@ src_configure() {
 		$(cmake-utils_use_find_package opengl OpenGL)
 		-DENABLE_X11_TARGET=$(usex X)
 		-DENABLE_OPENGL=${opengl_enabled}
-		-DENABLE_ACCELERATED_2D_CANVAS=${canvas_enabled}
 		-DCMAKE_BUILD_TYPE=Release
 		-DPORT=GTK
 		${ruby_interpreter}
