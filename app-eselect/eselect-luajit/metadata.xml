@@ -5,6 +5,10 @@
 		<email>ilmostro7@gmail.com</email>
 		<name>ILMostro</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Luajit eselect module
 	</longdescription>
