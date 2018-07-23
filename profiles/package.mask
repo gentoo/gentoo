@@ -317,7 +317,6 @@ app-doc/mkdoxy
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Not compatible with recent PHP, upstream dead for ages (#650870, #650934)
 #, removal in a month.
-www-apps/gnopaste
 www-apps/openwebstats
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
