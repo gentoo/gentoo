@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils versionator
+inherit cmake-utils eapi7-ver
 
 DESCRIPTION="A set of extra plugins for Qmmp"
 HOMEPAGE="http://qmmp.ylsoftware.com/"
@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/libsamplerate
 	>=media-libs/taglib-1.10
 	media-sound/mpg123
-	=media-sound/qmmp-$(get_version_component_range 1-2)*
+	=media-sound/qmmp-$(ver_cut 1-2)*
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
