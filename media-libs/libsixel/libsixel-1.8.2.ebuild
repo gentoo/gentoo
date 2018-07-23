@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit bash-completion-r1 ltprune
+inherit bash-completion-r1
 
 DESCRIPTION="A lightweight, fast implementation of DEC SIXEL graphics codec"
 HOMEPAGE="https://github.com/saitoha/libsixel"
-SRC_URI="https://github.com/saitoha/libsixel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/saitoha/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0"
-KEYWORDS="amd64 ia64 x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="curl gd gtk jpeg png static-libs"
 
 RDEPEND="curl? ( net-misc/curl )
@@ -40,7 +40,7 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files
+	use static-libs || find "${ED}" -name '*.la' -delete || die
 
 	cd images
 	docompress -x /usr/share/doc/${PF}/images
