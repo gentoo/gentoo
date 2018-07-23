@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Arno's iptables firewall script
+EAPI=6
+HOMEPAGE=http://rocky.eld.leidenuniv.nl
+IUSE=+plugins
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-firewall/ipset net-firewall/iptables >=sys-apps/coreutils-8.21 sys-apps/iproute2 plugins? ( net-dns/bind-tools )
+SLOT=0
+SRC_URI=https://github.com/arno-iptables-firewall/aif/archive/2.0.3.tar.gz -> arno-iptables-firewall-2.0.3.tar.gz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	54aecea034d5e90bdb0684b80da5c9f3	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=1a9078246dcc86632db3a1d109aef820
