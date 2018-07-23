@@ -323,10 +323,6 @@ www-apps/phprojekt
 games-emulation/hatari
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't work with PHP7, dead upstream (#651184, #651194), removal in a month.
-www-apps/polarblog
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Multiple bugs (#424383, #554944), upstream dead (#651340). Removal in a
 # month.
 net-irc/ircservices
