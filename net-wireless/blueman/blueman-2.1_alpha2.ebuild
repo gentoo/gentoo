@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="appindicator network nls policykit pulseaudio"
 
 COMMON_DEPEND="
-	dev-python/pygobject:3
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=net-wireless/bluez-5:=
 	${PYTHON_DEPS}"
 DEPEND="${COMMON_DEPEND}
