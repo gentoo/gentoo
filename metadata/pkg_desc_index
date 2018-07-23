@@ -4756,7 +4756,7 @@ dev-python/django-recaptcha 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 1.0: An extensible user-registration application for Django
 dev-python/django-select2 4.2.2: A Django integration of Select2
 dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing via setup.py
-dev-python/django-tastypie 0.13.3 0.13.3-r1: A flexible and capable API layer for django utilising serialisers
+dev-python/django-tastypie 0.13.3-r1: A flexible and capable API layer for django utilising serialisers
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
