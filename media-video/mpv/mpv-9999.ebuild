@@ -137,7 +137,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-make-ffmpeg-version-check-non-fatal.patch"
+	"${FILESDIR}/${PN}-0.29.0-make-ffmpeg-version-check-non-fatal.patch"
 )
 
 src_prepare() {
