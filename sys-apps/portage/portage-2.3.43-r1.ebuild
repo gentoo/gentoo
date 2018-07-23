@@ -99,6 +99,14 @@ python_prepare_all() {
 	sed -e 's|\(def call_.*,*args\)):$|\1, **kwargs):|' \
 		-i pym/portage/util/_eventloop/EventLoop.py || die
 
+	# Apply dc1ba7729c42 and de9801740fcb for bug 661906.
+	sed -e 's|^\(					return \)(1, False)|\1False|' \
+		-i pym/portage/sync/modules/git/git.py || die
+
+	# Apply e356d53ceb10 for bug 661834.
+	sed -e 's|subprocess.call(rsynccommand)|portage.process.spawn(rsynccommand, **self.spawn_kwargs)|' \
+		-i pym/portage/sync/modules/rsync/rsync.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
