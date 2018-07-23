@@ -623,7 +623,7 @@ app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
-app-emacs/ebuild-mode 1.42 1.44: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.44: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
@@ -661,7 +661,7 @@ app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT generation
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
-app-emacs/lyskom-elisp-client 0.48_p20131231 0.48_p20161231 0.48_p20180410: Elisp client for the LysKOM conference system
+app-emacs/lyskom-elisp-client 0.48_p20161231 0.48_p20180410: Elisp client for the LysKOM conference system
 app-emacs/magit 2.11.0 2.12.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
@@ -1687,7 +1687,7 @@ app-xemacs/dictionary 1.16: Interface to RFC2229 dictionary servers
 app-xemacs/dired 1.17 1.20: Manage file systems
 app-xemacs/docbookide 0.08: DocBook editing support
 app-xemacs/easypg 1.03-r1: GnuPG interface for Emacs
-app-xemacs/ebuild-mode 1.42 1.44: Emacs modes for editing ebuilds and other Gentoo specific files
+app-xemacs/ebuild-mode 1.44: Emacs modes for editing ebuilds and other Gentoo specific files
 app-xemacs/ecrypto 0.20 0.21: Crypto functionality in Emacs Lisp
 app-xemacs/edebug 1.22: An Emacs Lisp debugger
 app-xemacs/edict 1.16 1.17: MULE: Lisp Interface to EDICT, Kanji Dictionary
