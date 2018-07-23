@@ -315,10 +315,6 @@ app-misc/wyrd
 app-doc/mkdoxy
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead, security vulnerable (#650936). Removal in a month.
-www-apps/phprojekt
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Doesn't run, cannot bump it (#651146). Removal in a month.
 games-emulation/hatari
 
