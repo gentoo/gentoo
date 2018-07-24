@@ -41,8 +41,12 @@ ruby_add_rdepend "
 	<dev-ruby/mime-types-3:*
 "
 
+# upstream specifies rake>=12 but it apparently doesn't need something this
+# recent. Because vagrant builds fine with rake 10 and because stabilizing rake
+# is tricky, we specify a lower dependency requirement here. This way, we'll be
+# able to stabilize vagrant sooner.
 ruby_add_bdepend "
-	>=dev-ruby/rake-12.0.0
+	>=dev-ruby/rake-10.0.0
 "
 
 all_ruby_prepare() {
