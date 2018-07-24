@@ -64,7 +64,7 @@ RDEPEND="!savedconfig? (
 	)"
 #add anything else that collides to this
 
-QA_PREBUILT="lib/firmware/*"
+RESTRICT="binchecks strip"
 
 src_unpack() {
 	if [[ ${PV} == 99999999* ]]; then

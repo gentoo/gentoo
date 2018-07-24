@@ -10,7 +10,7 @@ if [[ ${PV} == 99999999* ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
 	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 else
-	GIT_COMMIT="7518922bd5b98b137af7aaf3c836f5a498e91609"
+	GIT_COMMIT="8d69bab7a3da1913113ea98cefb73d5fa6988286"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
@@ -64,7 +64,7 @@ RDEPEND="!savedconfig? (
 	)"
 #add anything else that collides to this
 
-QA_PREBUILT="lib/firmware/*"
+RESTRICT="binchecks strip"
 
 src_unpack() {
 	if [[ ${PV} == 99999999* ]]; then

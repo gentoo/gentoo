@@ -28,6 +28,8 @@ DEPEND="sys-apps/iucode_tool"
 RDEPEND="!<sys-apps/microcode-ctl-1.17-r2
 	hostonly? ( sys-apps/iucode_tool )"
 
+RESTRICT="binchecks strip"
+
 S=${WORKDIR}
 
 # Blacklist bad microcode here.
