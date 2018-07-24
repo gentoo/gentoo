@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 PATCHLEVEL=41
 DESCRIPTION="Standard Linux telnet client and server"
@@ -36,18 +36,19 @@ src_prepare() {
 	# better to just stay in sync with debian's own netkit-telnet
 	# package. Lots of bug fixes by them over time which were not in
 	# our telnetd.
-	EPATCH_FORCE="yes" EPATCH_SUFFIX="diff" epatch "${WORKDIR}"/debian/patches
+	EPATCH_FORCE="yes" EPATCH_SUFFIX="diff" eapply "${WORKDIR}"/debian/patches
 
 	# Patch: [1]
 	# after the deb patch we need to add a small patch that defines
 	# gnu source. This is needed for gcc-3.4.x (needs to be pushed
 	# back to the deb folk?)
-	epatch "${FILESDIR}"/netkit-telnetd-0.17-cflags-gnu_source.patch
+	eapply "${FILESDIR}"/netkit-telnetd-0.17-cflags-gnu_source.patch
 
 	# Fix portability issues.
 	sed -i \
 		-e 's:echo -n:printf %s:' \
 		configure || die
+	default
 }
 
 src_configure() {
