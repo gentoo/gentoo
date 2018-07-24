@@ -74,13 +74,10 @@ src_test() {
 src_install() {
 	installing() {
 		default
-		[[ ${EPYTHON/.*} = "python2" ]] && use doc && dohtml -r api/*
+		[[ ${EPYTHON/.*} = "python2" ]] && use doc && dodoc -r api
 	}
 	python_foreach_impl run_in_build_dir installing
 	find "${D}" -name "*.la" -delete || die
 
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-	fi
+	use examples && dodoc -r examples
 }
