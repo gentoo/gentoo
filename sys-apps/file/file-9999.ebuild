@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 libtool ltprune toolchain-funcs multilib-minimal
+inherit distutils-r1 libtool toolchain-funcs multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/glensc/file.git"
@@ -122,5 +122,5 @@ multilib_src_install_all() {
 		cd python || die
 		distutils-r1_src_install
 	fi
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 }
