@@ -4,7 +4,7 @@
 EAPI=6
 inherit gnome2-utils meson readme.gentoo-r1
 
-DESCRIPTION="Moves legacy tray icons to top panel"
+DESCRIPTION="KDE Connect implementation for Gnome Shell"
 HOMEPAGE="https://github.com/andyholmes/gnome-shell-extension-gsconnect"
 SRC_URI="https://github.com/andyholmes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
