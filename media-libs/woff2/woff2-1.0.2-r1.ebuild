@@ -21,8 +21,8 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		# needed, causes QA warnings otherwise
-		-DCMAKE_SKIP_RPATH=ON
+		-DCMAKE_SKIP_RPATH=ON # needed, causes QA warnings otherwise
+		-DCANONICAL_PREFIXES=ON #661942
 	)
 	cmake-utils_src_configure
 }
