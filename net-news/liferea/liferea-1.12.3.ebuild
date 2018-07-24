@@ -4,7 +4,7 @@
 EAPI=6
 
 GNOME2_EAUTORECONF="yes"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit gnome2 pax-utils python-single-r1
 
