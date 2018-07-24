@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit autotools eutils python-r1
+inherit autotools python-r1
 
 DESCRIPTION="Python bindings for the D-Bus messagebus"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/DBusBindings https://dbus.freedesktop.org/doc/dbus-python/"
@@ -77,7 +77,7 @@ src_install() {
 		[[ ${EPYTHON/.*} = "python2" ]] && use doc && dohtml -r api/*
 	}
 	python_foreach_impl run_in_build_dir installing
-	prune_libtool_files --modules
+	find "${D}" -name "*.la" -delete || die
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}
