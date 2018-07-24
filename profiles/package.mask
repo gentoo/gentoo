@@ -404,10 +404,6 @@ games-fps/lsdldoom
 games-fps/soldieroffortune-demo
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to run (#654510). Removal in a month.
-games-puzzle/brainworkshop
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2003, not ported ever to amd64 (#654516). Removal in a month.
 games-puzzle/ensemblist
 
