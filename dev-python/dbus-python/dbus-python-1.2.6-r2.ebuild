@@ -44,20 +44,13 @@ src_prepare() {
 
 src_configure() {
 	configuring() {
-		local PYTHON_CONFIG
-		python_export PYTHON_CONFIG
-
 		# epydoc is python2-only, bug #447642
 		local apidocs=--disable-api-docs
 		[[ ${EPYTHON/.*} = "python2" ]] && apidocs=$(use_enable doc api-docs)
 
 		econf \
-			--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 			--disable-html-docs \
-			${apidocs} \
-			PYTHON_INCLUDES="$(${PYTHON_CONFIG} --includes)" \
-			PYTHON_LIBS="$(${PYTHON_CONFIG} --ldflags)"
-		# configure assumes that ${PYTHON}-config executable exists :/
+			${apidocs}
 	}
 	python_foreach_impl run_in_build_dir configuring
 }
