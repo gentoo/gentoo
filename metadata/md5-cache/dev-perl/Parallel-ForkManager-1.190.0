@@ -4,10 +4,10 @@ DESCRIPTION=A simple parallel processing fork manager
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Parallel-ForkManager/
 IUSE=test minimal examples
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc sparc ~x86 ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~ia64 ~ppc sparc ~x86 ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-File-Path virtual/perl-File-Temp virtual/perl-Storable dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Y/YA/YANICK/Parallel-ForkManager-1.19.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=f9110c2b21c65e78b4e960ec2a97142a
+_md5_=3aca9148b138d6a35653a938eb737a11

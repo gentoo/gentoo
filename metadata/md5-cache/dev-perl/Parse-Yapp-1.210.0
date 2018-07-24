@@ -4,10 +4,10 @@ DESCRIPTION=Compiles yacc-like LALR grammars to generate Perl OO parser modules
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Parse-Yapp/
 IUSE=examples
-KEYWORDS=~alpha ~amd64 hppa ~ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 hppa ~ia64 ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!=net-fs/samba-4* dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=376d757531efa09ae7b4c4fa3c3663f0
+_md5_=ba2c3d1cd4604a80a471cd11ab5e3c45
