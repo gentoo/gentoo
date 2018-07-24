@@ -207,11 +207,6 @@ app-i18n/qimhangul
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
 
-# Matt Turner <mattst88@gentoo.org> (20 Jun 2018)
-# No reverse deps after removal of app-i18n/fbiterm
-# Removal in 30 days. Bug #658528
-x11-libs/libiterm-mbt
-
 # Michał Górny <mgorny@gentoo.org> (20 Jun 2018)
 # Multiple serious bugs.  Upstream does not support Gentoo, and getting
 # any fixes applied is very difficult.  Regularly fails to build.
@@ -224,10 +219,6 @@ sys-apps/paludis
 # Doesn't work on amd64, upstream dead for ages, bug #254510
 # Removal in a month.
 games-arcade/xevil
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't work (#348124), dead since 2004. Removal in a month.
-x11-plugins/wmlaptop
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Package obsolete since many years ago (#398689). Removal in a month.
@@ -260,17 +251,8 @@ net-misc/openvpn-auth-ldap
 dev-libs/DirectFB
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not usable anymore after server shutdown (#608806). Removal in a month.
-games-fps/postal2mp-demo
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Segfaults at start (#612322). Removal in a month.
 games-arcade/snake3d
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# tests fail with python >= 3.4 (#620082), nothing requires this package,
-# removal in a month.
-dev-python/eliot
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Not compatible with recent python versions (#624668), needs a major
@@ -319,11 +301,6 @@ app-doc/mkdoxy
 games-emulation/hatari
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Multiple bugs (#424383, #554944), upstream dead (#651340). Removal in a
-# month.
-net-irc/ircservices
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2002, orphan, nothing requires it (#651344). Removal in a
 # month.
 app-text/rhyme
@@ -331,11 +308,6 @@ app-text/rhyme
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead lib not used by anything in the tree (#652186). Removal in a month.
 net-libs/libwhisker
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Obsolete package for the old documentation system (#653168). Removal in a
-# month.
-app-text/gentoo-guide-xml-dtd
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead for ages, nothing requires it, needs klibc (that is also completely
@@ -354,11 +326,6 @@ games-arcade/marbleblastgold-demo
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Crashes at start (#653998). Removal in a month.
 games-arcade/skystreets
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Merged in games-emulation/advancemame long time ago (#654286). Removal in
-# a month.
-games-emulation/advancemenu
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # This installs an older GUI than the one provided by fceux package
