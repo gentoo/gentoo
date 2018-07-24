@@ -5,6 +5,7 @@
 # Temporary mask due to test failures in sys-libs/libcxxabi
 # and sys-libs/compiler-rt-sanitizers
 sys-devel/clang-runtime libcxx sanitize
+sys-devel/clang default-libcxx
 
 # Mart Raudsepp <leio@gentoo.org> (28 Jun 2018)
 # net-misc/lksctp-tools not stable yet
