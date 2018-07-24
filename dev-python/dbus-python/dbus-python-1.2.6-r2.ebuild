@@ -84,9 +84,3 @@ src_install() {
 		doins -r examples
 	fi
 }
-
-run_in_build_dir() {
-	pushd "${BUILD_DIR}" > /dev/null || die
-	"$@"
-	popd > /dev/null
-}
