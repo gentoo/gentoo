@@ -29,15 +29,15 @@ DOCS+=( README.md DOCS/{client-api,interface}-changes.rst )
 LICENSE="LGPL-2.1+ GPL-2+ BSD ISC samba? ( GPL-3+ )"
 SLOT="0"
 IUSE="+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda doc drm dvb
-	dvd +egl gbm +iconv jack javascript jpeg lcms +libass libav libcaca libmpv
-	+lua luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
+	dvd +egl gbm +iconv jack javascript jpeg lcms +libass libcaca libmpv +lua
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl
 	selinux test tools +uchardet v4l vaapi vdpau vulkan wayland +X +xv zlib
 	zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
 	aqua? ( opengl )
-	cuda? ( !libav opengl )
+	cuda? ( opengl )
 	egl? ( || ( gbm X wayland ) )
 	gbm? ( drm egl opengl )
 	lcms? ( opengl )
@@ -59,8 +59,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	!libav? ( >=media-video/ffmpeg-4.0:0=[encode,threads,vaapi?,vdpau?] )
-	libav? ( ~media-video/libav-9999:0=[encode,threads,vaapi?,vdpau?] )
+	>=media-video/ffmpeg-4.0:0=[encode,threads,vaapi?,vdpau?]
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.0.0:= )
 	bluray? ( >=media-libs/libbluray-0.3.0:= )
