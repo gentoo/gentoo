@@ -217,6 +217,65 @@ tc-cpp-is-true() {
 	[[ ${RESULT} == true ]]
 }
 
+# @FUNCTION: tc-detect-is-softfloat
+# @RETURN:
+# Shell true if (positive or negative) detection was possible, shell
+# false otherwise. Also outputs a string when detection succeeds, see
+# tc-is-softfloat for the possible values.
+# @DESCRIPTION:
+# Detect whether the CTARGET (or CHOST) toolchain is a softfloat based
+# one by examining the toolchain's output, if possible.
+tc-detect-is-softfloat() {
+	# If fetching CPP falls back to the default (gcc -E) then fail
+	# detection as this may not be the correct toolchain.
+	[[ $(tc-getTARGET_CPP) == "gcc -E" ]] && return 1
+
+	case ${CTARGET:-${CHOST}} in
+		# arm-unknown-linux-gnueabi is ambiguous. We used to treat it as
+		# hardfloat but we now treat it as softfloat like most everyone
+		# else. Check existing toolchains to respect existing systems.
+		arm*)
+			if tc-cpp-is-true "defined(__ARM_PCS_VFP)"; then
+				echo "no"
+			else
+				# Confusingly __SOFTFP__ is defined only when
+				# -mfloat-abi is soft, not softfp.
+				if tc-cpp-is-true "defined(__SOFTFP__)"; then
+					echo "yes"
+				else
+					echo "softfp"
+				fi
+			fi
+
+			return 0 ;;
+		*)
+			return 1 ;;
+	esac
+}
+
+# @FUNCTION: tc-tuple-is-softfloat
+# @RETURN: See tc-is-softfloat for the possible values.
+# @DESCRIPTION:
+# Determine whether the CTARGET (or CHOST) toolchain is a softfloat
+# based one solely from the tuple.
+tc-tuple-is-softfloat() {
+	local CTARGET=${CTARGET:-${CHOST}}
+	case ${CTARGET//_/-} in
+		bfin*|h8300*)
+			echo "only" ;;
+		*-softfloat-*)
+			echo "yes" ;;
+		*-softfp-*)
+			echo "softfp" ;;
+		arm*-hardfloat-*|arm*eabihf)
+			echo "no" ;;
+		arm*)
+			echo "yes" ;;
+		*)
+			echo "no" ;;
+	esac
+}
+
 # @FUNCTION: tc-is-softfloat
 # @DESCRIPTION:
 # See if this toolchain is a softfloat based one.
@@ -231,20 +290,7 @@ tc-cpp-is-true() {
 # softfloat flags in the case where support is optional, but
 # rejects softfloat flags where the target always lacks an fpu.
 tc-is-softfloat() {
-	local CTARGET=${CTARGET:-${CHOST}}
-	case ${CTARGET} in
-		bfin*|h8300*)
-			echo "only" ;;
-		*)
-			if [[ ${CTARGET//_/-} == *-softfloat-* ]] ; then
-				echo "yes"
-			elif [[ ${CTARGET//_/-} == *-softfp-* ]] ; then
-				echo "softfp"
-			else
-				echo "no"
-			fi
-			;;
-	esac
+	tc-detect-is-softfloat || tc-tuple-is-softfloat
 }
 
 # @FUNCTION: tc-is-static-only
