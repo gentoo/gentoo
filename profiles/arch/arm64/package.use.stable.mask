@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (24 Jul 2018)
+# Temporary mask due to test failures in sys-libs/libcxxabi
+# and sys-libs/compiler-rt-sanitizers
+sys-devel/clang-runtime libcxx sanitize
+
 # Mart Raudsepp <leio@gentoo.org> (28 Jun 2018)
 # net-misc/lksctp-tools not stable yet
 dev-libs/openssl sctp
