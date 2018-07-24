@@ -4,8 +4,8 @@
 EAPI=0
 
 DESCRIPTION="a dockapp that lets you easily track time spent on different projects"
-HOMEPAGE="http://www.godisch.de/debian/wmwork"
-SRC_URI="http://www.godisch.de/debian/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmwork"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
