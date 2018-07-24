@@ -21,6 +21,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="bs2b calf mda-lv2 rubberband"
 
+#TODO: optional : lilv, zam-plugins (check from archlinux pkg)
 DEPEND="
 	>=dev-libs/boost-1.41
 	>=dev-cpp/glibmm-2.56.0
@@ -39,6 +40,8 @@ DEPEND="
 	calf? (	>=media-plugins/calf-0.90.0[lv2] )
 	mda-lv2? ( media-plugins/mda-lv2 )
 	rubberband? ( media-libs/rubberband )
+	>=media-libs/zita-convolver-3.0.0
+	dev-util/itstool
 "
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio
