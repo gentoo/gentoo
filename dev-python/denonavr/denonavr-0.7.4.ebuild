@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -29,5 +29,5 @@ DEPEND="
 "
 
 python_test() {
-	py.test || die "tests failed with ${EPYTHON}"
+	pytest -vv || die "tests failed with ${EPYTHON}"
 }
