@@ -37,6 +37,6 @@ python_compile_all() {
 
 python_test() {
 	# Avoid ImportMismatchError, see https://bugs.gentoo.org/661412
-	pytest --doctest-modules "${BUILD_DIR}"/lib/more_itertools \
+	pytest -vv --doctest-modules "${BUILD_DIR}"/lib/more_itertools \
 		|| die "tests fail with ${EPYTHON}"
 }
