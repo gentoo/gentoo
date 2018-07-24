@@ -10071,7 +10071,7 @@ sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 2017_pre20170505-r1 2017_p20180211: UEFI firmware for 64-bit x86 virtual machines
-sys-firmware/intel-microcode 20180721: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20180721-r1: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620 1.0.0_p20180211: Open source network boot (PXE) firmware
@@ -10164,7 +10164,7 @@ sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2 3.4.52.4-r3 3.5.3.3: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 66 68: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.87-r1 4.4.111-r1 4.4.128 4.9.49-r1 4.9.72 4.9.95 4.14.52: Full sources including the Gentoo patchset for the 4.14 kernel tree
-sys-kernel/linux-firmware 20180103-r1: Linux firmware files
+sys-kernel/linux-firmware 20180103-r2: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13: Linux system headers
 sys-kernel/spl 0.6.5.11 0.7.8 0.7.9: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
