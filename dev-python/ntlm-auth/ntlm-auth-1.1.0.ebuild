@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/jborean93/ntlm-auth"
 SRC_URI="https://github.com/jborean93/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="LGPL-3"
+LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
