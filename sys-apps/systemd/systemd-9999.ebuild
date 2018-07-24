@@ -11,7 +11,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_5,3_6} )
 
 inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
 
@@ -88,6 +88,7 @@ PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils:0
 	dev-util/gperf
+	>=dev-util/meson-0.46
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
 	>=sys-kernel/linux-headers-${MINKV}
