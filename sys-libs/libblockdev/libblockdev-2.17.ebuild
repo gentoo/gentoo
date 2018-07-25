@@ -81,8 +81,17 @@ src_configure() {
 		$(use_with lvm lvm)
 		$(use_with lvm lvm-dbus)
 		$(use_with kbd)
-		$(use_with python_single_target_python2_7 python2)
-		$(use_with !python_single_target_python2_7 python3)
 	)
+	if python_is_python3 ; then
+		myeconfargs+=(
+			--without-python2
+			--with-python3
+		)
+	else
+		myeconfargs+=(
+			--with-python2
+			--without-python3
+		)
+	fi
 	econf "${myeconfargs[@]}"
 }
