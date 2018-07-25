@@ -136,9 +136,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	if ! use minimal; then
-		if use jit; then
-			pax-mark m "${ED}"usr/bin/js${SLOT}
-		fi
+		pax-mark m "${ED}"usr/bin/js${SLOT}
 	else
 		rm -f "${ED}"usr/bin/js${SLOT}
 	fi
