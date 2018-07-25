@@ -60,6 +60,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-python/pillow[${PYTHON_USEDEP}]
 	>=dev-libs/libcdio-0.94
 	dev-libs/libfmt
+	dev-libs/libfstrcmp
 	gbm? (	media-libs/mesa[gbm] )
 	gles? ( media-libs/mesa[gles2] )
 	lcms? ( media-libs/lcms:2 )
@@ -232,6 +233,7 @@ src_configure() {
 		-DENABLE_DVDCSS=$(usex css)
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
+		-DENABLE_INTERNAL_FSTRCMP=OFF
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
