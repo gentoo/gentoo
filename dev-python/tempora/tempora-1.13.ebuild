@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{4,5,6,7}} )
 
 inherit distutils-r1
 
@@ -17,14 +17,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
+# The calc-prorate binary used to be part of jaraco.utils
 RDEPEND="
+	!<=dev-python/jaraco-utils-10.0.2
 	>=dev-python/jaraco-functools-1.20[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-# The calc-prorate binary used to be part of jaraco.utils
 DEPEND="
-	!<=dev-python/jaraco-utils-10.0.2
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
@@ -50,6 +50,6 @@ python_compile_all() {
 
 python_test() {
 	# Override pytest options to skip flake8
-	PYTHONPATH=. py.test --override-ini="addopts=--doctest-modules" \
+	PYTHONPATH=. pytest -vv --override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
