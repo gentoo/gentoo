@@ -4,7 +4,7 @@
 EAPI=7
 
 # Tests fail with PyPy and PyPy 3
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
 inherit distutils-r1
 
@@ -49,7 +49,7 @@ python_compile_all() {
 
 python_test() {
 	# Override pytest options to skip flake8
-	PYTHONPATH=. py.test --override-ini="addopts=--doctest-modules" \
+	PYTHONPATH=. pytest -v --override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
 
