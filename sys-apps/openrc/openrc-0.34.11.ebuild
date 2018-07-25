@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 LICENSE="BSD-2"
@@ -213,13 +213,11 @@ pkg_preinst() {
 
 	if ! has_version ">=sys-apps/openrc-0.11.3" ; then
 		migrate_udev_mount_script
-		add_boot_init tmpfiles.setup boot
 	fi
 
 	# these were added in 0.12.
 	if ! has_version ">=sys-apps/openrc-0.12"; then
 		add_boot_init loopback
-		add_boot_init tmpfiles.dev sysinit
 
 		# ensure existing /etc/conf.d/net is not removed
 		# undoes the hack to get around CONFIG_PROTECT in openrc-0.11.8 and earlier

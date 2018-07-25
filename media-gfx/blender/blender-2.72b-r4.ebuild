@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 ## BUNDLED-DEPS:
@@ -29,16 +29,16 @@ EAPI=6
 PYTHON_COMPAT=( python3_4 )
 #PATCHSET="1"
 
-inherit multilib fdo-mime gnome2-utils cmake-utils eutils python-single-r1 versionator flag-o-matic toolchain-funcs pax-utils check-reqs
+inherit multilib gnome2-utils cmake-utils eutils python-single-r1 versionator flag-o-matic toolchain-funcs pax-utils check-reqs xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
-HOMEPAGE="http://www.blender.org"
+HOMEPAGE="https://www.blender.org"
 
 case ${PV} in
 	*_p*)
 		SRC_URI="https://dev.gentoo.org/~lu_zero/${P}.tar.gz" ;;
 	*)
-		SRC_URI="http://download.blender.org/source/${P}.tar.gz" ;;
+		SRC_URI="https://download.blender.org/source/${P}.tar.gz" ;;
 esac
 
 if [[ -n ${PATCHSET} ]]; then
@@ -281,10 +281,10 @@ pkg_postinst() {
 	ewarn
 
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

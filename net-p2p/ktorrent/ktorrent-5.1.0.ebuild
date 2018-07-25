@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,6 +77,11 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	!net-p2p/ktorrent:4
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-cmake-3.11.patch" #650808
+)
 
 src_configure() {
 	local mycmakeargs=(

@@ -37,7 +37,7 @@ SRC_URI+=" mirror://kernel/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit debug +demangle +doc gtk numa perl python slang unwind"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -112,7 +112,9 @@ src_prepare() {
 	sed -i \
 		-e "s:\$(sysconfdir_SQ)/bash_completion.d:$(get_bashcompdir):" \
 		"${S}"/Makefile.perf || die
-	sed -i -e 's:-Werror::' "${S_K}"/tools/lib/api/Makefile || die
+	# A few places still use -Werror w/out $(WERROR) protection.
+	sed -i -e 's:-Werror::' \
+		"${S}"/Makefile.perf "${S_K}"/tools/lib/bpf/Makefile || die
 
 	# Avoid the call to make kernelversion
 	echo "#define PERF_VERSION \"${MY_PV}\"" > PERF-VERSION-FILE

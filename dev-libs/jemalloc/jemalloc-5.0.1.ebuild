@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools toolchain-funcs multilib-minimal
 
 DESCRIPTION="Jemalloc is a general-purpose scalable concurrent allocator"
-HOMEPAGE="http://www.canonware.com/jemalloc/"
+HOMEPAGE="http://jemalloc.net/ https://github.com/jemalloc/jemalloc"
 SRC_URI="https://github.com/jemalloc/jemalloc/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"

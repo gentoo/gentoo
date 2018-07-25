@@ -1,0 +1,33 @@
+--- libotf-0.9.16/configure.ac
++++ libotf-0.9.16/configure.ac
+@@ -48,23 +48,24 @@
+ AC_FUNC_ALLOCA
+ AC_FUNC_MALLOC
+ 
++PKG_PROG_PKG_CONFIG
++
+ # Check for Freetype2 usability.
+-AC_CHECK_PROG(HAVE_FREETYPE_CONFIG, freetype-config, yes)
+-if test "x$HAVE_FREETYPE_CONFIG" = "xyes"; then
+-  FREETYPE_INC=`freetype-config --cflags`
++PKG_CHECK_MODULES(FREETYPE, freetype2, [
++  FREETYPE_INC="$FREETYPE_CFLAGS"
+   CPPFLAGS="$CPPFLAGS $FREETYPE_INC"
+   AC_CHECK_HEADER(ft2build.h, HAVE_FREETYPE=yes,
+   			      HAVE_FREETYPE=no CPPFLAGS=$save_CPPFLAGS)
+   if test "x$HAVE_FREETYPE" = "xyes" ; then
+-    FREETYPE_LD_FLAGS=`freetype-config --libs`;
++    FREETYPE_LD_FLAGS="$FREETYPE_LIBS"
+     LIBS="$LIBS $FREETYPE_LD_FLAGS"
+     AC_CHECK_LIB(freetype, FT_Init_FreeType, HAVE_FREETYPE=yes,
+     			   		     HAVE_FREETYPE=no)
+   fi
+-fi
++])
+ 
+ if test "x$HAVE_FREETYPE" != "xyes" ; then
+-  echo "Freetype library wan't found in your system!"
++  echo "Freetype library not found in your system!"
+   exit 1
+ fi
+ AC_SUBST(FREETYPE_INC)

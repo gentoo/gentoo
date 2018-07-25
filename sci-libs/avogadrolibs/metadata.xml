@@ -6,8 +6,9 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<use>
+		<flag name="archive">Enable archive support using <pkg>app-arch/libarchive</pkg></flag>
 		<flag name="static-plugins">Build all plugins statically into main plugin modules</flag>
-		<flag name="vtk">include vtk support</flag>
+		<flag name="vtk">Enable <pkg>sci-libs/vtk</pkg> support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenChemistry/avogadrolibs</remote-id>

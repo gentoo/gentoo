@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Dockapp CPU monitor resembling Xosview, support for smp"
-SRC_URI="http://www.ne.jp/asahi/linux/timecop/wmmon+smp.tar.gz"
+SRC_URI="http://www.ne.jp/asahi/linux/timecop/software/wmmon+smp.tar.gz"
 HOMEPAGE="http://www.ne.jp/asahi/linux/timecop/"
 
 SLOT="0"
@@ -19,7 +19,7 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/wmmon.app/wmmon
 

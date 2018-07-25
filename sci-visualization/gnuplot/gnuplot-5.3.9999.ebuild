@@ -61,7 +61,8 @@ DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-latexextra
-		app-text/ghostscript-gpl )"
+		app-text/ghostscript-gpl )
+	qt5? ( dev-qt/linguist-tools:5 )"
 
 S="${WORKDIR}/${MY_P}"
 

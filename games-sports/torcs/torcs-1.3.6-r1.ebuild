@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ RDEPEND="media-libs/freealut
 	x11-libs/libX11
 	x11-libs/libXrandr"
 DEPEND="${RDEPEND}
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-no-automake.patch
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
 	"${FILESDIR}"/${P}-noXmuXt.patch
 	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-gcc7.patch
 )
 
 src_prepare() {

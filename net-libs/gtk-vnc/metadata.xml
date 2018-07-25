@@ -9,7 +9,4 @@
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
   </maintainer>
-  <use>
-    <flag name="gtk3">Build the gtk3 gtk-vnc library and other gtk3 assets</flag>
-  </use>
 </pkgmetadata>

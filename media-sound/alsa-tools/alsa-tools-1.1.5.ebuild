@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils flag-o-matic
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
-HOMEPAGE="http://www.alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/"
 SRC_URI="mirror://alsaproject/tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="HFS FS Access utils"
-HOMEPAGE="http://www.mars.org/home/rob/proj/hfs/"
+HOMEPAGE="https://www.mars.org/home/rob/proj/hfs/"
 SRC_URI="ftp://ftp.mars.org/pub/hfs/${P}.tar.gz"
 
 LICENSE="GPL-2"

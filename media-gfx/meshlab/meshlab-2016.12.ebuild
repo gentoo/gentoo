@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,6 +20,7 @@ DEPEND="dev-cpp/eigen:3
 	dev-cpp/muParser
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
+	dev-qt/qtscript:5
 	dev-qt/qtxmlpatterns:5
 	>=media-gfx/jhead-3.00-r2
 	media-libs/glew:0
@@ -43,7 +44,7 @@ PATCHES=(
 		"${FILESDIR}/${PV}/0001-disable-filter-ssynth.patch"
 		#this has been fixed in the tree
 		"${FILESDIR}/${PV}/0001-disable-edit-quality.patch"
-		#this causes segfaults 
+		#this causes segfaults
 		"${FILESDIR}/${PV}/0001-disable-filter-layer.patch"
 		#for when we use minimal
 		"${FILESDIR}/${PV}/0001-compile-server.patch"

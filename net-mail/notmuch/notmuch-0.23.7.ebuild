@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
 	distutils-r1 toolchain-funcs
 
 DESCRIPTION="Thread-based e-mail indexer, supporting quick search and tagging"
-HOMEPAGE="http://notmuchmail.org/"
+HOMEPAGE="https://notmuchmail.org/"
 SRC_URI="${HOMEPAGE%/}/releases/${P}.tar.gz
 	test? ( ${HOMEPAGE%/}/releases/test-databases/database-v1.tar.xz )"
 

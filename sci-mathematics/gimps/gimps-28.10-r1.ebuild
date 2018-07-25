@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit pax-utils systemd readme.gentoo-r1
 
 DESCRIPTION="The Great Internet Mersenne Prime Search"
-HOMEPAGE="http://mersenne.org/"
+HOMEPAGE="https://www.mersenne.org/"
 SRC_URI="
 	amd64? ( ftp://mersenne.org/gimps/p95v${PV/./}.linux64.tar.gz )
 	x86? ( ftp://mersenne.org/gimps/p95v${PV/./}.linux32.tar.gz )"

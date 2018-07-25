@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="evm">Build Ethereum Virtual Machine (EVM)</flag>
+		<flag name="devtools">Build Ethereum development tools (evm, abigen, puppeth, ...)</flag>
 		<flag name="opencl">Add OpenCL GPU mining support</flag>
 	</use>
 	<upstream>

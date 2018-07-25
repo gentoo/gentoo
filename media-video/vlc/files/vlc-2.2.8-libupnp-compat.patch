@@ -1,0 +1,28 @@
+From f9c5a343f1a8cad9c2c153f9c05e4e7201675a43 Mon Sep 17 00:00:00 2001
+From: Tristan Matthews <tmatth@videolan.org>
+Date: Wed, 29 Nov 2017 10:45:04 -0500
+Subject: [PATCH] upnp: don't clash with libupnp's own compat code
+
+Fixes build for upnp >= 1.6.23 and less than 1.8.
+
+Signed-off-by: Jean-Baptiste Kempf <jb@videolan.org>
+---
+ modules/services_discovery/upnp.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/services_discovery/upnp.cpp b/modules/services_discovery/upnp.cpp
+index bdd3c55ee5..82d43632f4 100644
+--- a/modules/services_discovery/upnp.cpp
++++ b/modules/services_discovery/upnp.cpp
+@@ -38,7 +38,7 @@
+ #include <set>
+ #include <string>
+ 
+-#if UPNP_VERSION < 10800
++#if UPNP_VERSION < 10623
+ /*
+  * Compat functions and typedefs for libupnp prior to 1.8
+  */
+-- 
+2.11.0
+

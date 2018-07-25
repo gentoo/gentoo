@@ -1,0 +1,19 @@
+https://github.com/edenhill/librdkafka/commit/8fed971043e642c195860cd77006622d23616c22
+
+--- a/src/rdkafka_msgset_writer.c
++++ b/src/rdkafka_msgset_writer.c
+@@ -436,10 +436,12 @@ rd_kafka_msgset_writer_write_msg_payload (rd_kafka_msgset_writer_t *msetw,
+          * room in the buffer we'll copy the payload to the buffer,
+          * otherwise we push a reference to the memory. */
+         if (rkm->rkm_len <= (size_t)rk->rk_conf.msg_copy_max_size &&
+-            rd_buf_write_remains(&rkbuf->rkbuf_buf) > rkm->rkm_len)
++            rd_buf_write_remains(&rkbuf->rkbuf_buf) > rkm->rkm_len) {
+                 rd_kafka_buf_write(rkbuf,
+                                    rkm->rkm_payload, rkm->rkm_len);
+-        else
++                if (free_cb)
++                        free_cb(rkm->rkm_payload);
++        } else
+                 rd_kafka_buf_push(rkbuf, rkm->rkm_payload, rkm->rkm_len,
+                                   free_cb);
+ }

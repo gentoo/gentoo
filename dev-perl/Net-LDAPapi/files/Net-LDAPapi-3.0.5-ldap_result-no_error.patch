@@ -1,0 +1,28 @@
+From 56f9ac5e45e63789012ae61c752f7aa7a3141da3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiziano=20M=C3=BCller?= <dev-zero@gentoo.org>
+Date: Thu, 10 Jun 2010 01:06:23 +1200
+Subject: Stop treating results from ldap_results as normal ldap return values
+
+Don't to treat results from ldap_results as normal ldap return
+values in 'sub error' ( as in 3.0.2 )
+---
+ LDAPapi.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/LDAPapi.pm b/LDAPapi.pm
+index 8fa91ce..fda4b12 100644
+--- a/LDAPapi.pm
++++ b/LDAPapi.pm
+@@ -1453,8 +1453,8 @@ sub result
+     $self->{"result"} = $result;
+     $self->{"status"} = $status;
+ 
+-    $self->errorize($status);
+     if( $status == -1 || $status == 0 ) {
++        $self->errorize($status);
+         return undef;
+     }
+ 
+-- 
+2.14.3
+

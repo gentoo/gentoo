@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 gnome2-utils
 
 DESCRIPTION="A graphical tool to install or upgrade Tails on a USB stick from an ISO image"
-HOMEPAGE="https://tails.boum.org http://git.tails.boum.org/liveusb-creator"
-SRC_URI="http://deb.tails.boum.org/pool/main/t/${PN}/${PN}_${PV}+dfsg.orig.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://tails.boum.org https://git.tails.boum.org/liveusb-creator"
+SRC_URI="https://deb.tails.boum.org/pool/main/t/${PN}/${PN}_${PV}+dfsg.orig.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

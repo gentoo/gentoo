@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="dmalloc">Enable debugging with the dmalloc library</flag>
-		<flag name="hesiod">Install hesiod module</flag>
 		<flag name="ldap">Install LDAP module</flag>
 		<flag name="libtirpc">Use TiRPC library instead of SunRPC</flag>
 		<flag name="mount-locking">

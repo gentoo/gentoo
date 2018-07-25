@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-libs/libsodium
-	dev-libs/json-c
+	dev-libs/json-c:=
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils flag-o-matic autotools multilib toolchain-funcs
 
 CHAPPA_PL=115
-DESCRIPTION="alpine is an easy to use text-based based mail and news client"
+DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://www.washington.edu/alpine/ http://alpine.freeiz.com/alpine/"
 SRC_URI="ftp://ftp.cac.washington.edu/alpine/${P}.tar.bz2
 	chappa? ( http://alpine.freeiz.com/alpine/patches/${P}/all.patch.gz

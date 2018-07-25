@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,8 @@ inherit distutils-r1
 MY_P="${P/pyx/PyX}"
 
 DESCRIPTION="Python package for the generation of encapsulated PostScript figures"
-HOMEPAGE="http://pyx.sourceforge.net/"
+HOMEPAGE="https://pyx.sourceforge.net/
+	https://pypi.org/project/PyX/"
 SRC_URI="mirror://sourceforge/pyx/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

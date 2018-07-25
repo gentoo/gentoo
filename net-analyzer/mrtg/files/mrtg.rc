@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -10,7 +10,7 @@ depend() {
 }
  
 checkconfig() {
-    if [[ ! -f ${MRTG_CONF} ]] ; then
+    if [ ! -f ${MRTG_CONF} ] ; then
 		eerror "Please create ${MRTG_CONF} (try man cfgmaker)"
 		return 1
 	fi
@@ -22,21 +22,21 @@ checkconfig() {
 start() {
 	# mrtg will not run if LANG=*utf8
 	# use grep instead of bash regexp for bug #159786
-	[[ "$(echo $LANG|grep -E '((^[A-Za-z0-9\_\@\-]+\.)|(^))([uU][tT][fF]-?8)$')" ]] \
+	[ "$(echo $LANG|grep -E '((^[A-Za-z0-9\_\@\-]+\.)|(^))([uU][tT][fF]-?8)$')" ] \
 	&& LANG='C'
 
 	checkconfig || return $?
 
 	# enable logging?
-	[[ -n "${MRTG_LOG}" ]] && \
+	[ -n "${MRTG_LOG}" ] && \
 		MRTG_OPTS="${MRTG_OPTS} --logging ${MRTG_LOG}"
 	
 	# run as a different user?
-	[[ -n "${MRTG_USER}" ]] && \
+	[ -n "${MRTG_USER}" ] && \
 		MRTG_OPTS="${MRTG_OPTS} --user ${MRTG_USER}"
 
 	# run as a different group?
-	[[ -n "${MRTG_GROUP}" ]] && \
+	[ -n "${MRTG_GROUP}" ] && \
 		MRTG_OPTS="${MRTG_OPTS} --group ${MRTG_GROUP}"
 
 	ebegin "Starting mrtg"

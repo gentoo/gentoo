@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils user
+
+inherit desktop user
 
 MY_P="ChickensForLinux-Linux-${PV}"
 DESCRIPTION="Target chickens with rockets and shotguns. Funny"

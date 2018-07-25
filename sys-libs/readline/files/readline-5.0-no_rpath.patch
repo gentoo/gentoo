@@ -1,7 +1,7 @@
 ripped from Fedora
 
---- support/shobj-conf
-+++ support/shobj-conf
+--- a/support/shobj-conf
++++ b/support/shobj-conf
 @@ -102,7 +102,7 @@
  	SHOBJ_LD='${CC}'
  	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'

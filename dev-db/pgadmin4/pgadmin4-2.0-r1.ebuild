@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,11 @@ PYTHON_REQ_USE="sqlite"
 inherit python-single-r1 qmake-utils
 
 DESCRIPTION="GUI administration and development platform for PostgreSQL"
-HOMEPAGE="http://www.pgadmin.org/"
+HOMEPAGE="https://www.pgadmin.org/"
 SRC_URI="mirror://postgresql/pgadmin/${PN}/v${PV}/source/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="doc"
 

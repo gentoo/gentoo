@@ -1,0 +1,23 @@
+We don't want libidn(2) being detected automagically.
+Partially reverting upstream stupidity.
+
+--- whois-5.3.0/Makefile
++++ whois-5.3.0/Makefile
+@@ -33,17 +33,9 @@
+ DEFS += -DLOCALEDIR=\"$(BASEDIR)$(prefix)/share/locale\"
+ endif
+ 
+-# libidn support has been autodetected since 5.2.18
+ ifdef HAVE_LIBIDN
+-$(error Please fix your build system to stop defining HAVE_LIBIDN!)
+-endif
+-
+-ifeq ($(shell $(PKG_CONFIG) --exists 'libidn2 >= 2.0.3' || echo NO),)
+ whois_LDADD += $(shell $(PKG_CONFIG) --libs libidn2)
+ DEFS += -DHAVE_LIBIDN2 $(shell $(PKG_CONFIG) --cflags libidn2)
+-else ifeq ($(shell $(PKG_CONFIG) --exists 'libidn' || echo NO),)
+-whois_LDADD += $(shell $(PKG_CONFIG) --libs libidn)
+-DEFS += -DHAVE_LIBIDN $(shell $(PKG_CONFIG) --cflags libidn)
+ endif
+ 
+ ifdef HAVE_ICONV

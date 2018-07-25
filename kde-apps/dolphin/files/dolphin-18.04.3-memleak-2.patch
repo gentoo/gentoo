@@ -1,0 +1,37 @@
+From 2cbf3cb11ea668577121fa755c1ddacc6f0acdd8 Mon Sep 17 00:00:00 2001
+From: David Hallas <david@davidhallas.dk>
+Date: Wed, 18 Jul 2018 16:43:25 -0600
+Subject: Fixes small memory leak in DolphinContextMenu
+
+Summary: When DolphinContextMenu::baseFileItem is called a KFileItem is allocated and stored in DolphinContextMenu::m_baseFileItem, which is of type KFileItem*, but the destructor failed to delete this.
+
+Test Plan: This leak was found using Address Sanitizer
+
+Reviewers: broulik, elvisangelaccio
+
+Reviewed By: broulik, elvisangelaccio
+
+Subscribers: ngraham, kfm-devel
+
+Tags: #dolphin
+
+Differential Revision: https://phabricator.kde.org/D14178
+---
+ src/dolphincontextmenu.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/dolphincontextmenu.cpp b/src/dolphincontextmenu.cpp
+index 7d7d7a4..8fdaab1 100644
+--- a/src/dolphincontextmenu.cpp
++++ b/src/dolphincontextmenu.cpp
+@@ -81,6 +81,8 @@ DolphinContextMenu::DolphinContextMenu(DolphinMainWindow* parent,
+ 
+ DolphinContextMenu::~DolphinContextMenu()
+ {
++    delete m_baseFileItem;
++    m_baseFileItem = nullptr;
+     delete m_selectedItemsProperties;
+     m_selectedItemsProperties = nullptr;
+ }
+-- 
+cgit v0.11.2

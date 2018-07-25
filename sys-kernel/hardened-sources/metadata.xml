@@ -15,7 +15,7 @@
 	</maintainer>
 	<longdescription>
 		hardened-sources is based upon genpatches, and adds the grsecurity
-		patch from http://www.grsecurity.net, which also includes PaX.
+		patch from https://www.grsecurity.net, which also includes PaX.
 	</longdescription>
 	<use>
 		<flag name="deblob">Remove binary blobs from kernel sources to provide libre license compliance.</flag>

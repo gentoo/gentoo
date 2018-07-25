@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
@@ -11,7 +11,7 @@
 
 inherit autotools
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install src_test
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 
 case ${EAPI} in
 	6) ;;
@@ -73,6 +73,33 @@ esac
 # the tree.
 [[ -z "${PHP_EXT_SAPIS}" ]] && PHP_EXT_SAPIS="apache2 cli cgi fpm embed phpdbg"
 
+# @ECLASS-VARIABLE: PHP_INI_NAME
+# @DESCRIPTION:
+# An optional file name of the saved ini file minis the ini extension
+# This allows ordering of extensions such that one is loaded before
+# or after another.  Defaults to the PHP_EXT_NAME.
+# Example (produces 40-foo.ini file):
+# @CODE@
+# PHP_INI_NAME="40-foo"
+# @CODE@
+: ${PHP_INI_NAME:=${PHP_EXT_NAME}}
+
+# @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A list of USE flags to append to each PHP target selected
+# as a valid USE-dependency string.  The value should be valid
+# for all targets so USE defaults may be necessary.
+# Example:
+# @CODE
+# PHP_EXT_NEEDED_USE="mysql?,pdo,pcre(+)"
+# @CODE
+#
+# The PHP dependencies will result in:
+# @CODE
+# php_targets_php7-0? ( dev-lang/php:7.0[mysql?,pdo,pcre(+)] )
+# @CODE
+
 
 # Make sure at least one target is installed. First, start a USE
 # conditional like "php?", but only when PHP_EXT_OPTIONAL_USE is
@@ -85,6 +112,9 @@ for _php_target in ${USE_PHP}; do
 	REQUIRED_USE+="php_targets_${_php_target} "
 	_php_slot=${_php_target/php}
 	_php_slot=${_php_slot/-/.}
+	if [[ ${PHP_EXT_NEEDED_USE} ]] ; then
+		_php_slot+=[${PHP_EXT_NEEDED_USE}]
+	fi
 	PHPDEPEND+=" php_targets_${_php_target}? ( dev-lang/php:${_php_slot} )"
 done
 
@@ -111,33 +141,33 @@ DEPEND="${DEPEND}
 # @ECLASS-VARIABLE: PHP_EXT_SKIP_PHPIZE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# By default, we run "phpize" in php-ext-source-r3_src_unpack(). Set
+# By default, we run "phpize" in php-ext-source-r3_src_prepare(). Set
 # PHP_EXT_SKIP_PHPIZE="yes" in your ebuild if you do not want to run
 # phpize (and the autoreconf that becomes necessary afterwards).
 
-# @FUNCTION: php-ext-source-r3_src_unpack
+# @ECLASS-VARIABLE: PHP_EXT_SKIP_PATCHES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Runs the default src_unpack and then makes a copy for each PHP slot.
-php-ext-source-r3_src_unpack() {
-	default
-
-	local slot orig_s="${PHP_EXT_S}"
-	for slot in $(php_get_slots); do
-		cp --recursive --preserve "${orig_s}" "${WORKDIR}/${slot}" || \
-			die "failed to copy sources from ${orig_s} to ${WORKDIR}/${slot}"
-	done
-}
-
+# By default, we run default_src_prepare to PHP_EXT_S.
+# Set PHP_EXT_SKIP_PATCHES="yes" in your ebuild if you
+# want to apply patches yourself.
 
 # @FUNCTION: php-ext-source-r3_src_prepare
 # @DESCRIPTION:
-# For each PHP slot, we initialize the environment, run the default
-# src_prepare() for PATCHES/eapply_user support, and then call
-# php-ext-source-r3_phpize.
+# Runs the default src_prepare() for PATCHES/eapply_user() support (optional),
+# and for each PHP slot, makes a copy of sources, initializes the environment,
+# and calls php-ext-source-r3_phpize().
 php-ext-source-r3_src_prepare() {
-	for slot in $(php_get_slots); do
-		php_init_slot_env "${slot}"
+	local slot orig_s="${PHP_EXT_S}"
+	if [[ "${PHP_EXT_SKIP_PATCHES}" != 'yes' ]] ; then
+		pushd "${orig_s}" > /dev/null || die
 		default
+		popd > /dev/null || die
+	fi
+	for slot in $(php_get_slots); do
+		cp --recursive --preserve "${orig_s}" "${WORKDIR}/${slot}" || \
+			die "failed to copy sources from ${orig_s} to ${WORKDIR}/${slot}"
+		php_init_slot_env "${slot}"
 		php-ext-source-r3_phpize
 	done
 }
@@ -295,7 +325,7 @@ php_slot_ini_files() {
 	local x
 	for x in ${PHP_EXT_SAPIS} ; do
 		if [[ -f "${EPREFIX}/etc/php/${x}-${1}/php.ini" ]] ; then
-			slot_ini_files+=" etc/php/${x}-${1}/ext/${PHP_EXT_NAME}.ini"
+			slot_ini_files+=" etc/php/${x}-${1}/ext/${PHP_INI_NAME}.ini"
 		fi
 	done
 
@@ -324,7 +354,7 @@ php-ext-source-r3_createinifiles() {
 				einfo "Added contents of ${FILESDIR}/${PHP_EXT_INIFILE}" \
 					  "to ${file}"
 			fi
-			inidir="${file/${PHP_EXT_NAME}.ini/}"
+			inidir="${file/${PHP_INI_NAME}.ini/}"
 			inidir="${inidir/ext/ext-active}"
 			dodir "/${inidir}"
 			dosym "/${file}" "/${file/ext/ext-active}"

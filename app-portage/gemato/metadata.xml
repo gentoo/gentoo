@@ -12,6 +12,9 @@
 			signature verification support</flag>
 		<flag name='sha3'>Install dependencies needed for SHA3 hash
 			functions</flag>
+		<flag name='tools'>Install additional utilities (benchmarks,
+			hash testing tools, fast Manifest generators)
+			to /usr/share/gemato.</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/mgorny/gemato/issues/</bugs-to>

@@ -2,18 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrey_utkin@fastmail.com</email>
+		<email>andrey_utkin@gentoo.org</email>
 		<name>Andrey Utkin</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>maksbotan@gentoo.org</email>
-		<name>Maxim Koltsov</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<upstream>
-		<remote-id type="github">krieger-od/whdd</remote-id>
+		<remote-id type="github">whdd/whdd</remote-id>
 	</upstream>
 </pkgmetadata>

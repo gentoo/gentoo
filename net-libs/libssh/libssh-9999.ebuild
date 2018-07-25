@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit cmake-multilib git-r3
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
-HOMEPAGE="http://www.libssh.org/"
-EGIT_REPO_URI="git://git.libssh.org/projects/libssh.git"
+HOMEPAGE="https://www.libssh.org/"
+EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 
 LICENSE="LGPL-2.1"
 KEYWORDS=""
@@ -17,8 +17,8 @@ IUSE="debug doc examples gcrypt gssapi libressl pcap server +sftp ssh1 static-li
 
 RDEPEND="
 	!gcrypt? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 	)
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-lin
 IUSE="nls python doc caps lua acl selinux"
 
 CDEPEND="!app-arch/rpm5
-	>=sys-libs/db-4.5
+	>=sys-libs/db-4.5:*
 	>=sys-libs/zlib-1.2.3-r1
 	>=app-arch/bzip2-1.0.1
 	>=dev-libs/popt-1.7
@@ -29,7 +29,7 @@ CDEPEND="!app-arch/rpm5
 	dev-libs/nss
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	lua? ( >=dev-lang/lua-5.1.0[deprecated] )
+	lua? ( >=dev-lang/lua-5.1.0:*[deprecated] )
 	acl? ( virtual/acl )
 	caps? ( >=sys-libs/libcap-2.0 )"
 

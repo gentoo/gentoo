@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -17,7 +17,7 @@ RDEPEND="x11-libs/libXext
 	x11-libs/libXpm
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/Src
 

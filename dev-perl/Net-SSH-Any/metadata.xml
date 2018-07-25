@@ -8,9 +8,44 @@
   <upstream>
     <remote-id type="cpan">Net-SSH-Any</remote-id>
     <remote-id type="cpan-module">Net::SSH::Any</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Autodetector</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Dbclient_Cmd</remote-id>
     <remote-id type="cpan-module">Net::SSH::Any::Backend::Net_OpenSSH</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Net_OpenSSH::DPipe</remote-id>
     <remote-id type="cpan-module">Net::SSH::Any::Backend::Net_SSH2</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Net_SSH2::DPipe</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Net_SSH2::DPipe::Tie</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Net_SSH2::SFTP</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Plink_Cmd</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Sexec_Cmd</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Ssh_Cmd</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Backend::Sshg3_Cmd</remote-id>
     <remote-id type="cpan-module">Net::SSH::Any::Constants</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::DPipe</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::OS::AnyEvent</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::OS::MSWin</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::OS::MSWin::DPipe</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::OS::MSWin::Process</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::OS::POSIX</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::OS::POSIX::DPipe</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::POSIXShellQuoter</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Base</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Getter</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Getter::Content</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Getter::Finder</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Getter::Standard</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Putter</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Putter::Content</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Putter::DirMaker</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::SCP::Putter::Standard</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Test</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Test::Backend::Cygwin</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Test::Backend::Dropbear_Daemon</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Test::Backend::OpenSSH_Daemon</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Test::Backend::Remote</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Test::Isolated</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::Test::Isolated::Util</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Any::URI</remote-id>
     <remote-id type="cpan-module">Net::SSH::Any::Util</remote-id>
   </upstream>
 </pkgmetadata>

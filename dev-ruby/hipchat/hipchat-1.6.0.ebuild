@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -25,7 +25,7 @@ ruby_add_rdepend "dev-ruby/httparty dev-ruby/mimemagic"
 ruby_add_bdepend "test? (
 		dev-ruby/rr
 		dev-ruby/rake
-		>dev-ruby/webmock-1.22.6:0
+		dev-ruby/webmock
 	)"
 
 all_ruby_prepare() {

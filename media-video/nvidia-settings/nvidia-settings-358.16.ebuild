@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,7 +34,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-drivers/nvidia-drivers:0/358"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_compile() {
 	einfo "Building libXNVCtrl..."

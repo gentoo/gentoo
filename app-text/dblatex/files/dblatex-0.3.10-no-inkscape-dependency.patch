@@ -1,14 +1,12 @@
-diff -Naur dblatex-0.3.10-orig/lib/dbtexmf/core/imagedata.py dblatex-0.3.10/lib/dbtexmf/core/imagedata.py
---- dblatex-0.3.10-orig/lib/dbtexmf/core/imagedata.py	2016-10-02 14:21:16.000000000 -0700
-+++ dblatex-0.3.10/lib/dbtexmf/core/imagedata.py	2017-06-25 18:26:00.302168655 -0700
-@@ -178,8 +178,8 @@
+diff -Naur dblatex-0.3.10.orig/lib/dbtexmf/core/imagedata.py dblatex-0.3.10/lib/dbtexmf/core/imagedata.py
+--- dblatex-0.3.10.orig/lib/dbtexmf/core/imagedata.py	2018-02-16 17:00:42.658484437 +0200
++++ dblatex-0.3.10/lib/dbtexmf/core/imagedata.py	2018-02-16 16:52:56.339441569 +0200
+@@ -178,7 +178,7 @@
  class SvgConverter(ImageConverter):
      def __init__(self, imgsrc, imgdst="", docformat="", backend=""):
          ImageConverter.__init__(self, imgsrc="svg", imgdst=imgdst)
 -        self.add_command(["inkscape", "-z", "-D", "--export-%(dst)s=%(output)s",
--                          "%(input)s"])
-+        self.add_command(["rsvg-convert", "-f", "%(dst)s", "-o","\"%(output)s\"",
-+                          "\"%(insput)s\""])
++        self.add_command(["rsvg-convert", "-f", "%(dst)s", "-o","%(output)s",
+                           "%(input)s"])
  
  
- class FormatRule:

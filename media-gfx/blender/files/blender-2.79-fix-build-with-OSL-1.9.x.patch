@@ -1,0 +1,26 @@
+From d089875c4c753f084e02849462ec1bd6f785eadf Mon Sep 17 00:00:00 2001
+From: Brecht Van Lommel <brechtvanlommel@gmail.com>
+Date: Sat, 18 Nov 2017 06:11:17 +0100
+Subject: [PATCH] Fix build with OSL 1.9.x, automatically aligns to 16 bytes
+ now.
+
+---
+ intern/cycles/kernel/osl/osl_closures.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/intern/cycles/kernel/osl/osl_closures.cpp b/intern/cycles/kernel/osl/osl_closures.cpp
+index e3e85705ebc..597d25e9f30 100644
+--- a/intern/cycles/kernel/osl/osl_closures.cpp
++++ b/intern/cycles/kernel/osl/osl_closures.cpp
+@@ -232,7 +232,11 @@ static void register_closure(OSL::ShadingSystem *ss, const char *name, int id, O
+ 	/* optimization: it's possible to not use a prepare function at all and
+ 	 * only initialize the actual class when accessing the closure component
+ 	 * data, but then we need to map the id to the class somehow */
++#if OSL_LIBRARY_VERSION_CODE >= 10900
++	ss->register_closure(name, id, params, prepare, NULL);
++#else
+ 	ss->register_closure(name, id, params, prepare, NULL, 16);
++#endif
+ }
+ 
+ void OSLShader::register_closures(OSLShadingSystem *ss_)

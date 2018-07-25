@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ L_P="${L_PN}-${PV}"
 SV="2.11"
 
 DESCRIPTION="sbt is a build tool for Scala and Java projects that aims to do the basics well"
-HOMEPAGE="http://www.scala-sbt.org/"
+HOMEPAGE="https://www.scala-sbt.org/"
 EGIT_COMMIT="v${PV}"
 EGIT_REPO_URI="https://github.com/sbt/sbt.git"
 SRC_URI="
@@ -27,7 +27,7 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="binary"
 
 DEPEND=">=virtual/jdk-1.8

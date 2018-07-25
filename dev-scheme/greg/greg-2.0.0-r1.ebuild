@@ -12,7 +12,7 @@ HOMEPAGE="http://gna.org/projects/greg/"
 SRC_URI="http://download.gna.org/${PN}/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2"
 IUSE="static-libs"
 

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="Django Template Blocks with extra functionality"
-HOMEPAGE="https://github.com/ojii/django-sekizai https://pypi.python.org/pypi/django-sekizai"
+HOMEPAGE="https://github.com/ojii/django-sekizai https://pypi.org/project/django-sekizai/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+	</maintainer>
+	<longdescription lang="en">
+		Minimal mDNS resolver (and announcer) library
+	</longdescription>
+	<upstream>
+		<remote-id type="github">videolabs/libmicrodns</remote-id>
+	</upstream>
+</pkgmetadata>

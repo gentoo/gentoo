@@ -1,0 +1,11 @@
+--- a/ee.c
++++ b/ee.c
+@@ -552,7 +552,7 @@
+ {
+ 	int counter;
+ 
+-	for (counter = 1; counter < SIGUNUSED; counter++)
++	for (counter = 1; counter < SIGSYS; counter++)
+ 		signal(counter, SIG_IGN);
+ 
+ 	signal(SIGCHLD, SIG_DFL);

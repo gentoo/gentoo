@@ -16,7 +16,7 @@ IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstrea
 REQUIRED_USE="regex"
 
 RDEPEND="
-	>=dev-libs/boehm-gc-7.0[threads?]
+	>=dev-libs/boehm-gc-7.0:=[threads?]
 	dev-libs/gmp:=
 	virtual/libffi
 	dev-libs/libltdl:=

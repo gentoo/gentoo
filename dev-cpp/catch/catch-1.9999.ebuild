@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/philsquared/Catch.git"
-EGIT_BRANCH=Catch1.x
+EGIT_REPO_URI="https://github.com/catchorg/Catch2.git"
+EGIT_BRANCH="Catch1.x"
 inherit cmake-utils git-r3
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
-HOMEPAGE="https://github.com/philsquared/Catch"
+HOMEPAGE="https://github.com/catchorg/Catch2"
 SRC_URI=""
 
 LICENSE="Boost-1.0"

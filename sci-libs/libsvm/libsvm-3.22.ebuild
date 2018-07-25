@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit flag-o-matic java-pkg-opt-2 python-r1 toolchain-funcs
 
 DESCRIPTION="Library for Support Vector Machines"
-HOMEPAGE="http://www.csie.ntu.edu.tw/~cjlin/libsvm/"
-SRC_URI="http://www.csie.ntu.edu.tw/~cjlin/libsvm/${P}.tar.gz"
+HOMEPAGE="https://www.csie.ntu.edu.tw/~cjlin/libsvm/"
+SRC_URI="https://www.csie.ntu.edu.tw/~cjlin/libsvm/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="java openmp python tools"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

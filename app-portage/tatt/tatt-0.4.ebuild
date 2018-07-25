@@ -13,7 +13,7 @@ SRC_URI="https://github.com/kensington/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+templates"
 
 RDEPEND="

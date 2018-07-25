@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-inherit elisp-common flag-o-matic eutils multilib
+inherit elisp-common flag-o-matic
 
 DESCRIPTION="GNU Smalltalk"
 HOMEPAGE="http://smalltalk.gnu.org"
@@ -29,11 +29,10 @@ S="${WORKDIR}/smalltalk-${PV}"
 
 SITEFILE=50gnu-smalltalk-gentoo.el
 
-src_prepare() {
+PATCHES=(
 	# fix misuse of the Tcl API, bug 492710
-	epatch "${FILESDIR}"/${PN}-3.2_use-result.patch
-	default
-}
+	"${FILESDIR}"/${PN}-3.2_use-result.patch
+)
 
 src_configure() {
 	replace-flags '-O3' '-O2'

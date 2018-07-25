@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -8,7 +8,7 @@ MY_P=Mixer.app-${PV}
 
 DESCRIPTION="mixer_app has volume controllers that can be configured to handle sound sources"
 HOMEPAGE="http://www.fukt.bsnet.se/~per/mixer/"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+SRC_URI="http://www.fukt.bsnet.se/~per/mixer/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,7 +20,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
 	virtual/os-headers
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${MY_P}
 

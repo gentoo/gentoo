@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit gnome2 python-any-r1 vala virtualx
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/CharacterMap"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="

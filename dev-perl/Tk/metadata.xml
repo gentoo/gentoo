@@ -8,9 +8,6 @@
   <upstream>
     <remote-id type="cpan">Tk</remote-id>
     <remote-id type="cpan-module">Tie::Watch</remote-id>
-    <remote-id type="cpan-module">Tie::Watch::Array</remote-id>
-    <remote-id type="cpan-module">Tie::Watch::Hash</remote-id>
-    <remote-id type="cpan-module">Tie::Watch::Scalar</remote-id>
     <remote-id type="cpan-module">Tk</remote-id>
     <remote-id type="cpan-module">Tk::Adjuster</remote-id>
     <remote-id type="cpan-module">Tk::Adjuster::Item</remote-id>

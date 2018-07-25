@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,8 +32,8 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	app-text/rman
+	x11-base/xorg-proto
 	x11-misc/imake
-	x11-proto/scrnsaverproto
 "
 
 S=${WORKDIR}/${P/_p*}

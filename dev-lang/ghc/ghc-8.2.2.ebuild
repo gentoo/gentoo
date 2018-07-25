@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,18 +23,18 @@ HOMEPAGE="http://www.haskell.org/ghc/"
 arch_binaries=""
 
 # sorted!
-#arch_binaries="$arch_binaries alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-${PV}-alpha.tbz2 )"
-#arch_binaries="$arch_binaries arm? ( http://code.haskell.org/~slyfox/ghc-arm/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
-#arch_binaries="$arch_binaries arm64? ( http://code.haskell.org/~slyfox/ghc-arm64/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tbz2 )"
+#arch_binaries="$arch_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
+#arch_binaries="$arch_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
+#arch_binaries="$arch_binaries arm64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tbz2 )"
 arch_binaries="$arch_binaries amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
-#arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
-#arch_binaries="$arch_binaries ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-${PV}-ppc.tbz2 )"
-#arch_binaries="$arch_binaries ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-${PV}-ppc64.tbz2 )"
-#arch_binaries="$arch_binaries sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-${PV}-sparc.tbz2 )"
+#arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
+#arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
+#arch_binaries="$arch_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
+#arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
 arch_binaries="$arch_binaries x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
 
 # various ports:
-#arch_binaries="$arch_binaries x86-fbsd? ( http://code.haskell.org/~slyfox/ghc-x86-fbsd/ghc-bin-${PV}-x86-fbsd.tbz2 )"
+#arch_binaries="$arch_binaries x86-fbsd? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86-fbsd.tbz2 )"
 
 # 0 - yet
 yet_binary() {
@@ -102,7 +102,7 @@ DEPEND="${RDEPEND}
 		>=dev-libs/libxslt-1.1.2 )
 	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
 
-PDEPEND="!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )"
+PDEPEND="!ghcbootstrap? ( >=app-admin/haskell-updater-1.2 )"
 
 REQUIRED_USE="?? ( ghcbootstrap binary )"
 
@@ -475,8 +475,10 @@ src_prepare() {
 
 		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-cgen-constify.patch
 		eapply "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
+		eapply "${FILESDIR}"/${PN}-8.0.2-no-relax-everywhere.patch
 
 		eapply "${FILESDIR}"/${PN}-8.2.1_rc2-O2-unreg.patch
+		eapply "${FILESDIR}"/${PN}-8.0.2-binutils-2.30.patch
 
 		# a bunch of crosscompiler patches
 		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-unphased-cross.patch

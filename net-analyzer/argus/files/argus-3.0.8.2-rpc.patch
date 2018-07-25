@@ -1,6 +1,5 @@
-diff -ruN argus-3.0.8.2.orig/common/Makefile.in argus-3.0.8.2/common/Makefile.in
---- argus-3.0.8.2.orig/common/Makefile.in	2015-04-14 14:32:33.000000000 -0000
-+++ argus-3.0.8.2/common/Makefile.in	2017-09-25 10:27:16.272856331 -0000
+--- a/common/Makefile.in
++++ b/common/Makefile.in
 @@ -35,12 +35,12 @@
  
  CC = @CC@
@@ -16,9 +15,8 @@ diff -ruN argus-3.0.8.2.orig/common/Makefile.in argus-3.0.8.2/common/Makefile.in
  
  INSTALL = @INSTALL@
  RANLIB = @V_RANLIB@
-diff -ruN argus-3.0.8.2.orig/configure.ac argus-3.0.8.2/configure.ac
---- argus-3.0.8.2.orig/configure.ac	2017-09-25 10:20:04.155174606 -0000
-+++ argus-3.0.8.2/configure.ac	2017-09-25 10:24:39.151904377 -0000
+--- a/configure.ac
++++ b/configure.ac
 @@ -120,6 +120,25 @@
  AC_CHECK_FUNCS(floorf remainderf)
  AC_CHECK_FUNCS(timegm)

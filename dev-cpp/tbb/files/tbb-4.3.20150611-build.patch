@@ -1,10 +1,3 @@
- build/FreeBSD.gcc.inc | 18 ++++--------------
- build/linux.clang.inc | 26 +++-----------------------
- build/linux.gcc.inc   | 38 +++++++-------------------------------
- 3 files changed, 14 insertions(+), 68 deletions(-)
-
-diff --git a/build/FreeBSD.gcc.inc b/build/FreeBSD.gcc.inc
-index 20f0027..8bbdeba 100644
 --- a/build/FreeBSD.gcc.inc
 +++ b/build/FreeBSD.gcc.inc
 @@ -28,14 +28,14 @@ WARNING_KEY = -Wall
@@ -49,8 +42,6 @@ index 20f0027..8bbdeba 100644
      TBB_ASM.OBJ = atomic_support.o lock_byte.o log2.o pause.o
      MALLOC_ASM.OBJ = atomic_support.o lock_byte.o pause.o
  endif 
-diff --git a/build/linux.clang.inc b/build/linux.clang.inc
-index de9aee5..3a366f1 100644
 --- a/build/linux.clang.inc
 +++ b/build/linux.clang.inc
 @@ -31,15 +31,15 @@ DYLIB_KEY = -shared
@@ -110,8 +101,6 @@ index de9aee5..3a366f1 100644
  ifeq ($(cfg),debug)
      ASM_FLAGS += -g
  endif
-diff --git a/build/linux.gcc.inc b/build/linux.gcc.inc
-index 4b7122b..e8ba711 100644
 --- a/build/linux.gcc.inc
 +++ b/build/linux.gcc.inc
 @@ -32,12 +32,12 @@ DYLIB_KEY = -shared

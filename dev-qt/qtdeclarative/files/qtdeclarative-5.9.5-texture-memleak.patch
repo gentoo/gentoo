@@ -1,0 +1,59 @@
+From 839f09c65523fb5c419b62e078f72bb39285449a Mon Sep 17 00:00:00 2001
+From: David Edmundson <davidedmundson@kde.org>
+Date: Wed, 28 Mar 2018 00:24:56 +0100
+Subject: [PATCH] Avoid marking hidden windows as updatePending in Gui render
+ loop
+
+Since eeb320bbd8763f3e72f79369cc3908e999a0da3c the GL context only
+deletes textures when all windows with pending updates have finished
+rendering.
+
+renderWindow will not process any window that is not visible. This
+leaves a logic bug that we can have the updatePending flag set but
+never cleared.
+
+If we have two windows, this leaves the other window still updating
+normally, but lastDirtyWindow will always be false and we never call
+endSync.
+
+This results in an effective memory leak of all textures.
+
+This patch resets the flag on hide() a move that can be considered safe
+given the show() method will reset this flag anyway.
+
+Change-Id: Iab0171716e27e31077a66b5e36a00bf28a2e7a8c
+Reviewed-by: Kai Uwe Broulik <kde@privat.broulik.de>
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+Reviewed-by: Dominik Holland <dominik.holland@pelagicore.com>
+Reviewed-by: Aleix Pol
+Reviewed-by: Andy Nichols <andy.nichols@qt.io>
+---
+ src/quick/scenegraph/qsgrenderloop.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/quick/scenegraph/qsgrenderloop.cpp b/src/quick/scenegraph/qsgrenderloop.cpp
+index 60f3538662..2eaed497ef 100644
+--- a/src/quick/scenegraph/qsgrenderloop.cpp
++++ b/src/quick/scenegraph/qsgrenderloop.cpp
+@@ -305,6 +305,8 @@ void QSGGuiThreadRenderLoop::hide(QQuickWindow *window)
+ {
+     QQuickWindowPrivate *cd = QQuickWindowPrivate::get(window);
+     cd->fireAboutToStop();
++    if (m_windows.contains(window))
++        m_windows[window].updatePending = false;
+ }
+ 
+ void QSGGuiThreadRenderLoop::windowDestroyed(QQuickWindow *window)
+@@ -494,7 +496,8 @@ QImage QSGGuiThreadRenderLoop::grab(QQuickWindow *window)
+ 
+ void QSGGuiThreadRenderLoop::maybeUpdate(QQuickWindow *window)
+ {
+-    if (!m_windows.contains(window))
++    QQuickWindowPrivate *cd = QQuickWindowPrivate::get(window);
++    if (!cd->isRenderable() || !m_windows.contains(window))
+         return;
+ 
+     m_windows[window].updatePending = true;
+-- 
+2.16.3
+

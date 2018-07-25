@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="LXDE Task manager"
-HOMEPAGE="http://lxde.sf.net/"
+HOMEPAGE="https://wiki.lxde.org/en/LXTask"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~arm-linux ~x86-linux"
 SLOT="0"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~arm-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

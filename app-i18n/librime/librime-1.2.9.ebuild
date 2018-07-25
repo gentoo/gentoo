@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -21,7 +21,7 @@ RDEPEND="app-i18n/opencc:=
 	dev-libs/leveldb:=
 	dev-libs/marisa:="
 DEPEND="${RDEPEND}
-	x11-proto/xproto
+	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )"
 
 src_configure() {

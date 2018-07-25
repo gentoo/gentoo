@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,13 +8,14 @@ inherit eutils cdrom scons-utils games
 DV=1
 MY_P=${PN}_v${PV}-src
 DESCRIPTION="Descent Rebirth - enhanced Descent ${DV} engine"
-HOMEPAGE="http://www.dxx-rebirth.com/"
-SRC_URI="http://www.dxx-rebirth.com/download/dxx/${MY_P}.tar.gz
-	http://www.dxx-rebirth.com/download/dxx/res/d1xrdata.zip
-	http://www.dxx-rebirth.com/download/dxx/res/dxx-rebirth_icons.zip
-	opl3-musicpack? ( http://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-opl3-music.zip )
-	sc55-musicpack? ( http://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-sc55-music.zip )	cdinstall? ( http://www.dxx-rebirth.com/download/dxx/res/d1datapt.zip )
-	l10n_de? ( http://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-briefings-ger.zip )"
+HOMEPAGE="https://www.dxx-rebirth.com/"
+SRC_URI="https://www.dxx-rebirth.com/download/dxx/${MY_P}.tar.gz
+	https://www.dxx-rebirth.com/download/dxx/res/d1xrdata.zip
+	https://www.dxx-rebirth.com/download/dxx/res/dxx-rebirth_icons.zip
+	opl3-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-opl3-music.zip )
+	sc55-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-sc55-music.zip )
+	cdinstall? ( https://www.dxx-rebirth.com/download/dxx/res/d1datapt.zip )
+	l10n_de? ( https://www.dxx-rebirth.com/download/dxx/res/d${DV}xr-briefings-ger.zip )"
 
 LICENSE="D1X GPL-2 public-domain"
 SLOT="0"

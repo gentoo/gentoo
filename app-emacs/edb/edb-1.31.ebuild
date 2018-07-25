@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="EDB, The Emacs Database"
 HOMEPAGE="http://www.gnuvola.org/software/edb/
-	http://www.emacswiki.org/emacs/EmacsDataBase"
+	https://www.emacswiki.org/emacs/EmacsDataBase"
 SRC_URI="http://www.gnuvola.org/software/edb/${P}.tar.gz"
 
 LICENSE="GPL-3+ Texinfo-manual"

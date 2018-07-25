@@ -2,7 +2,7 @@
 
 ZEROTIERONE_PIDFILE="/var/run/${SVCNAME}.pid"
 PN="zerotier-one"
-PN_PATH="/usr/bin/${PN}"
+PN_PATH="/usr/sbin/${PN}"
 
 depend() {
     need net

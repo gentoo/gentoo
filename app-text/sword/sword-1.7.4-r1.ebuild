@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,10 @@ src_prepare() {
 src_configure() {
 	# TODO: Why is this here and can we remove it?
 	strip-flags
+
+	# bug 618776
+	append-cxxflags -std=c++14
+
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable debug) \

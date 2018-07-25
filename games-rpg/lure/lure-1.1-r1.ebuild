@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,18 +10,18 @@ DESCRIPTION="Lure of the Temptress"
 HOMEPAGE="http://www.revolution.co.uk/_display.php?id=10"
 SRC_URI="
 	https://raw.githubusercontent.com/scummvm/scummvm/266aef932a8a052df897e4d79b4572e5d169916f/dists/engine-data/lure.dat -> lure-${DAT_PV}.dat
-	!linguas_en? ( !linguas_es? ( !linguas_fr? ( !linguas_de? ( !linguas_it?
+	!l10n_en? ( !l10n_es? ( !l10n_fr? ( !l10n_de? ( !l10n_it?
 		( mirror://sourceforge/scummvm/${P}.zip -> ${PN}-en-${PV}.zip ) ) ) ) )
-	linguas_en? ( mirror://sourceforge/scummvm/${P}.zip  -> ${PN}-en-${PV}.zip )
-	linguas_es? ( mirror://sourceforge/scummvm/${PN}-es-${PV}.zip )
-	linguas_fr? ( mirror://sourceforge/scummvm/${PN}-fr-${PV}.zip )
-	linguas_de? ( mirror://sourceforge/scummvm/${PN}-de-${PV}.zip )
-	linguas_it? ( mirror://sourceforge/scummvm/${PN}-it-${PV}.zip )"
+	l10n_en? ( mirror://sourceforge/scummvm/${P}.zip  -> ${PN}-en-${PV}.zip )
+	l10n_es? ( mirror://sourceforge/scummvm/${PN}-es-${PV}.zip )
+	l10n_fr? ( mirror://sourceforge/scummvm/${PN}-fr-${PV}.zip )
+	l10n_de? ( mirror://sourceforge/scummvm/${PN}-de-${PV}.zip )
+	l10n_it? ( mirror://sourceforge/scummvm/${PN}-it-${PV}.zip )"
 
 LICENSE="lure"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LANGS_IUSE="linguas_en linguas_es linguas_de linguas_fr linguas_it"
+LANGS_IUSE="l10n_en l10n_es l10n_de l10n_fr l10n_it"
 IUSE=${LANGS_IUSE}
 RESTRICT="mirror"
 
@@ -31,17 +31,17 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}
 
-any_linguas() {
-	use linguas_en || use linguas_es || use linguas_de || use linguas_fr || use linguas_it
+any_l10n() {
+	use l10n_en || use l10n_es || use l10n_de || use l10n_fr || use l10n_it
 }
 
 src_unpack() {
 	local lang
 
-	if any_linguas ; then
+	if any_l10n ; then
 		for lang in ${LANGS_IUSE}
 		do
-			use ${lang} && unpack ${PN}-${lang/linguas_}-${PV}.zip
+			use ${lang} && unpack ${PN}-${lang/l10n_}-${PV}.zip
 		done
 		mv lure lure-en 2> /dev/null
 	else
@@ -60,11 +60,11 @@ src_prepare() {
 		-o -iname LICENSE.txt \) \
 		-exec rm -f '{}' +
 	mkdir docs
-	if any_linguas ; then
+	if any_l10n ; then
 		for lang in ${LANGS_IUSE}
 		do
 			mkdir docs/${lang}
-			find lure-${lang/linguas_} \
+			find lure-${lang/l10n_} \
 				\( -iname "*pdf" \
 				-o -iname README \
 				-o -iname "*txt" \) \
@@ -86,18 +86,18 @@ src_prepare() {
 src_install() {
 	local lang
 
-	if any_linguas ; then
+	if any_l10n ; then
 		for lang in ${LANGS_IUSE}
 		do
 			if use ${lang} ; then
-				lang=${lang/linguas_}
+				lang=${lang/l10n_}
 				insinto "/usr/share/${PN}-${lang}"
 				newins "${DISTDIR}"/lure-${DAT_PV}.dat lure.dat
 				doins -r ${PN}-${lang}/*
 				make_wrapper ${PN}-${lang} "scummvm -q ${lang} -f -p \"/usr/share/${PN}-${lang}\" lure" .
 				make_desktop_entry ${PN}-${lang} "Lure of the Temptress (${lang})" ${PN}
-				docinto linguas_${lang}
-				dodoc docs/linguas_${lang}/*
+				docinto l10n_${lang}
+				dodoc docs/l10n_${lang}/*
 			fi
 		done
 	else

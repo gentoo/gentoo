@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,8 +6,8 @@ EAPI="5"
 inherit eutils toolchain-funcs flag-o-matic multilib
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
-	inherit git-2
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
+	inherit git-r3
 else
 	SRC_URI="mirror://kernel/linux/utils/net/${PN}/${P}.tar.xz"
 	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
@@ -21,20 +21,24 @@ SLOT="0"
 IUSE="atm berkdb +iptables ipv6 minimal selinux"
 
 # We could make libmnl optional, but it's tiny, so eh
-RDEPEND="!net-misc/arpd
+RDEPEND="
+	!net-misc/arpd
 	!minimal? ( net-libs/libmnl virtual/libelf )
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
 	berkdb? ( sys-libs/db:= )
 	atm? ( net-dialup/linux-atm )
-	selinux? ( sys-libs/libselinux )"
+	selinux? ( sys-libs/libselinux )
+"
 # We require newer linux-headers for ipset support #549948 and some defines #553876
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	app-arch/xz-utils
 	iptables? ( virtual/pkgconfig )
 	>=sys-devel/bison-2.4
 	sys-devel/flex
 	>=sys-kernel/linux-headers-3.16
-	elibc_glibc? ( >=sys-libs/glibc-2.7 )"
+	elibc_glibc? ( >=sys-libs/glibc-2.7 )
+"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907

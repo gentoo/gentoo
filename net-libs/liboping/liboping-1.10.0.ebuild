@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="https://noping.cc/files/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/0.3"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="alpha amd64 arm x86"
 IUSE="+filecaps ncurses perl"
 
 DEPEND="ncurses? ( sys-libs/ncurses:0= )"

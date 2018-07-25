@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,11 +8,11 @@ inherit cmake-utils gnome2-utils xdg-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx"
+	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx.git"
 fi
 
 DESCRIPTION="Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI="https://download.fcitx-im.org/data/pinyin.tar.gz -> fcitx-data-pinyin.tar.gz
 		https://download.fcitx-im.org/data/table.tar.gz -> fcitx-data-table.tar.gz
@@ -26,7 +26,7 @@ fi
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS=""
-IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
+IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
 REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
 
 RDEPEND="dev-libs/glib:2
@@ -82,7 +82,7 @@ src_prepare() {
 		ln -s "${DISTDIR}/fcitx-data-en_dict-20121020.tar.gz" src/module/spell/dict/en_dict-20121020.tar.gz || die
 	fi
 
-	# https://github.com/fcitx/fcitx/issues/250
+	# https://gitlab.com/fcitx/fcitx/issues/250
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
 		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \

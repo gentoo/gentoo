@@ -1,0 +1,91 @@
+https://github.com/ThomasDickey/original-mawk/issues/49
+
+Note: We hand modify the configure file here because the version of autotools
+used by upstream is very old/finicky, and it's a simple enough change.
+
+From 1ac333b97615c451d7a4743b4724edd46d37a8b2 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Tue, 7 Nov 2017 01:07:47 -0500
+Subject: [PATCH 2/2] add a configure flag to lock sandbox by default
+
+This lets us deploy systems with the sandbox always enabled.
+---
+ configure    | 23 +++++++++++++++++++++++
+ configure.in | 11 +++++++++++
+ init.c       |  4 ++++
+ 3 files changed, 38 insertions(+)
+
+diff --git a/configure.in b/configure.in
+index 8b795fbd264b..770092005386 100644
+--- a/configure.in
++++ b/configure.in
+@@ -112,6 +112,17 @@ fi
+ AC_MSG_RESULT($with_init_srand)
+ 
+ ###############################################################################
++AC_MSG_CHECKING(if you want mawk to always run in sandbox mode)
++CF_ARG_ENABLE([forced-sandbox],
++[  --enable-forced-sandbox always run in sandbox mode],
++	[with_forced_sandbox=yes],
++	[with_forced_sandbox=no])
++if test "x${with_forced_sandbox}" != xno; then
++	CPPFLAGS="$CPPFLAGS -DFORCED_SANDBOX"
++fi
++AC_MSG_RESULT($with_forced_sandbox)
++
++###############################################################################
+ 
+ AC_PROG_YACC
+ CF_PROG_LINT
+diff --git a/init.c b/init.c
+index f7babb337e04..e035d6ea2fc0 100644
+--- a/init.c
++++ b/init.c
+@@ -492,6 +492,10 @@ process_cmdline(int argc, char **argv)
+ 
+   no_more_opts:
+ 
++#ifdef FORCED_SANDBOX
++    sandbox_flag = 1;
++#endif
++
+     tail->link = (PFILE *) 0;
+     pfile_list = dummy.link;
+ 
+diff --git a/configure b/configure
+index a3bf42fe9245..442875b8e58a 100755
+--- a/configure
++++ b/configure
+@@ -4132,6 +4132,29 @@ echo "$as_me:4131: result: $with_init_srand" >&5
+ echo "${ECHO_T}$with_init_srand" >&6
+ 
+ ###############################################################################
++echo "$as_me:4109: checking if you want mawk to always run in sandbox mode" >&5
++echo $ECHO_N "checking if you want mawk to always run in sandbox mode... $ECHO_C" >&6
++
++if test "${enable_forced_sandbox+set}" = set; then
++  enableval="$enable_forced_sandbox"
++  test "$enableval" != yes && enableval=no
++	if test "$enableval" != "no" ; then
++    with_forced_sandbox=yes
++	else
++		with_forced_sandbox=no
++	fi
++else
++  enableval=no
++	with_forced_sandbox=no
++
++fi;
++if test "x${with_forced_sandbox}" != xno; then
++	CPPFLAGS="$CPPFLAGS -DFORCED_SANDBOX"
++fi
++echo "$as_me:4131: result: $with_forced_sandbox" >&5
++echo "${ECHO_T}$with_forced_sandbox" >&6
++
++###############################################################################
+ 
+ for ac_prog in 'bison -y' byacc
+ do
+-- 
+2.13.5
+

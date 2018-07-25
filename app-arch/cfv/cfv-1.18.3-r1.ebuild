@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,12 +19,7 @@ KEYWORDS="amd64 hppa ~ppc ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-maco
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}
 	dev-python/python-fchksum[${PYTHON_USEDEP}]
-	bittorrent? (
-		|| (
-			net-p2p/bittorrent[${PYTHON_USEDEP}]
-			net-p2p/bittornado[${PYTHON_USEDEP}]
-		)
-	)"
+	bittorrent? ( net-p2p/bittornado[${PYTHON_USEDEP}] )"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 

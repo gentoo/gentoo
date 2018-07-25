@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SRC_URI="mirror://gentoo/${JMI_ZIP}
 
 LICENSE="sun-bcla-jmi"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6"
@@ -42,7 +42,7 @@ src_prepare() {
 
 	# rename enum keywords because javadoc hates them
 	# even with -source 1.4, bummer
-	epatch "${FILESDIR}/${P}-enum.patch"
+	eapply "${FILESDIR}/${P}-enum.patch"
 }
 
 src_compile() {

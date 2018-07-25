@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,21 +20,23 @@ KEYWORDS="amd64 x86"
 
 IUSE="botan debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sqlite systemd tools tinydns test"
 
-REQUIRED_USE="mydns? ( mysql ) ?? ( lua luajit )"
+REQUIRED_USE="mydns? ( mysql )"
 
 RDEPEND="
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:= )
 	>=dev-libs/boost-1.35:=
 	botan? ( dev-libs/botan:2= )
-	lua? ( dev-lang/lua:= )
-	luajit? ( dev-lang/luajit:= )
+	lua? (
+		!luajit? ( dev-lang/lua:= )
+		luajit? ( dev-lang/luajit:= )
+	)
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )
 	ldap? ( >=net-nds/openldap-2.0.27-r4 )
 	sqlite? ( dev-db/sqlite:3 )
 	opendbx? ( dev-db/opendbx )
-	geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip )
+	geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip )
 	tinydns? ( >=dev-db/tinycdb-0.77 )
 	protobuf? ( dev-libs/protobuf )"
 DEPEND="${RDEPEND}
@@ -74,8 +76,8 @@ src_configure() {
 		$(use_enable test unit-tests) \
 		$(use_enable tools) \
 		$(use_enable systemd) \
-		$(use_with lua) \
-		$(use_with luajit) \
+		$(usex lua "$(use_with !luajit lua) $(use_with luajit)" \
+			'--without-lua --without-luajit') \
 		$(use_with protobuf) \
 		${myconf}
 }

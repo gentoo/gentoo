@@ -10,7 +10,7 @@ inherit distutils-r1
 EGIT_COMMIT="607e86011141e8885b1f52826d57c8b5ff588ffc"
 MY_PN=google-auth-library-python-httplib2
 DESCRIPTION="httplib2 Transport for Google Auth"
-HOMEPAGE="https://pypi.python.org/pypi/google-auth-httplib2 https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2"
+HOMEPAGE="https://pypi.org/project/google-auth-httplib2/ https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2"
 # PyPi tarball is missing unit tests
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"

@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
+		<flag name="gemini">Enable tablet and 2:1 devices support</flag>
 		<flag name="import-filter">Enable support for various import filter file formats like WordPerfect, Visio and Apple Keynote</flag>
 		<flag name="lcms">Build colorengine plugins using <pkg>media-libs/lcms</pkg></flag>
 		<flag name="okular">Enable bindings for <pkg>kde-apps/okular</pkg></flag>

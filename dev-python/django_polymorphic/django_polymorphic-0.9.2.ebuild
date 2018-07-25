@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Seamless Polymorphic Inheritance for Django Models"
-HOMEPAGE="https://pypi.python.org/pypi/django-polymorphic"
+HOMEPAGE="https://pypi.org/project/django-polymorphic/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

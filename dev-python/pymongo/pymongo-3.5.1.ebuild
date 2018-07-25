@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit check-reqs distutils-r1
 
 DESCRIPTION="Python driver for MongoDB"
-HOMEPAGE="https://github.com/mongodb/mongo-python-driver https://pypi.python.org/pypi/pymongo"
+HOMEPAGE="https://github.com/mongodb/mongo-python-driver https://pypi.org/project/pymongo/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa x86"
 IUSE="doc kerberos test"
 
 RDEPEND="

@@ -6,6 +6,12 @@
 
 # SECTION: Unmask
 
+# Michael Orlitzky <mjo@gentoo.org> (07 Jan 2018)
+# Oracle database stuff should work on amd64.
+-oci8
+-oci8-instant-client
+-oracle
+
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unmask elogind since it is keyworded here.
 -elogind
@@ -70,10 +76,6 @@
 # Unmask, works with v4l2, #350211
 -dxr3
 
-# Justin Lecher <jlec@gentoo.org> (04. Feb 2012)
-# Unmask because deps are keyworded
--zeitgeist
-
 # 2011/12/22 - Alexis Ballier <aballier@gentoo.org>
 # Unmask vdpau as its supported here
 -vdpau
@@ -100,11 +102,6 @@
 # Lilo works on amd64, so ...
 -lilo
 
-# 2007/08/19 - Christoph Mende <angelos@gentoo.org>
-# Unmask support for dev-db/oracle-instantclient-basic
--oci8-instant-client
--oracle
-
 # 2007/03/10 - Mike Frysinger <vapier@gentoo.org>
 # NVRAM works on x86/amd64 hosts
 -nvram
@@ -124,14 +121,11 @@
 -video_cards_intel
 -video_cards_nvidia
 -video_cards_siliconmotion
+-video_cards_vesa
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_vmware
 -video_cards_qxl
-
-# Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
-# Unmask the flags for PHP that are available only on x86/amd64
--oci8
 
 # Feb 16th 2007; Simon Stelling <blubb@gentoo.org>
 # Since this profile forces >=portage-2.1.2, we can unmask all
@@ -166,15 +160,6 @@
 -lcd_devices_luise
 
 # SECTION: Unavailable/Broken
-
-# 2006/06/07 - Danny van Dyk <kugelfang@gentoo.org>
-# FIXME. Unknown mask reason. Has effect on qpopper
-# and tpop3d.
-drac
-
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_i740
 
 # 2004/06/22 - Taken from 2004.0 profile
 # masked

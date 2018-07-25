@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+introspection"
 
 RDEPEND="

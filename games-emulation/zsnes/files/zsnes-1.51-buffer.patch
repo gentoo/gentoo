@@ -1,5 +1,5 @@
---- zsnes_1_51/src/initc.c.fortify
-+++ zsnes_1_51/src/initc.c
+--- src/initc.c.fortify
++++ src/initc.c
 @@ -1464,8 +1464,8 @@
    clearmem2();
  }
@@ -38,8 +38,8 @@
  
      if (yesoutofmemory) { asm_call(outofmemfix); }
      asm_call(GUIDoReset);
---- zsnes_1_51/src/zstate.c.fortify
-+++ zsnes_1_51/src/zstate.c
+--- src/zstate.c.fortify
++++ src/zstate.c
 @@ -99,15 +99,15 @@
    copy_func(buffer, &cycpbl, 4);
    copy_func(buffer, &cycpblt, 4);
@@ -68,8 +68,8 @@
      }
      */
    }
---- zsnes_1_51/src/gblvars.h.fortify
-+++ zsnes_1_51/src/gblvars.h
+--- src/gblvars.h.fortify
++++ src/gblvars.h
 @@ -33,9 +33,9 @@
  extern unsigned int SfxR0, *setaramdata, ramsize, *sram, nmiprevaddrh;
  extern unsigned int tempesi, tempedi, tempedx, tempebp;

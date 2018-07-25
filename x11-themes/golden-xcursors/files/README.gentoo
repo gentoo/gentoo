@@ -16,4 +16,4 @@ Note this will be overruled by a user's ~/.Xdefaults file.
 
 If you experience flickering, try setting the following line in the Device
 section of your xorg.conf file:
-	Option  \"HWCursor\"  \"false\"
+	Option "HWCursor" "false"

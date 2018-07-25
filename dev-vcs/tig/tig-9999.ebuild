@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,8 @@ HOMEPAGE="https://jonas.github.io/tig/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="unicode"
+IUSE="test unicode"
+REQUIRED_USE="test? ( unicode )"
 
 DEPEND="
 	sys-libs/ncurses:0=[unicode?]
@@ -26,6 +27,9 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-vcs/git"
 [[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc app-text/xmlto"
+
+# encoding/env issues
+RESTRICT="test"
 
 src_prepare() {
 	default

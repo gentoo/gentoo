@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # this ebuild is only for the libgmp.so.3 ABI SONAME
@@ -8,12 +8,12 @@ EAPI="5"
 inherit eutils libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
-HOMEPAGE="http://gmplib.org/"
+HOMEPAGE="https://gmplib.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="3"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="sys-devel/m4"
@@ -38,7 +38,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
-	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
+	# https://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
 		GMPABI="1.0"
 	fi

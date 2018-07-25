@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-glibc.eclass
@@ -227,6 +227,7 @@ setup_flags() {
 	strip-flags
 	strip-unsupported-flags
 	filter-flags -m32 -m64 -mabi=*
+	filter-ldflags -Wl,-rpath=*
 
 	# Bug 492892.
 	filter-flags -frecord-gcc-switches
@@ -362,11 +363,20 @@ setup_env() {
 		# and fall back on CFLAGS.
 		local VAR=CFLAGS_${CTARGET//[-.]/_}
 		CFLAGS=${!VAR-${CFLAGS}}
+		einfo " $(printf '%15s' 'Manual CFLAGS:')   ${CFLAGS}"
 	fi
 
 	setup_flags
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
+
+	if use headers-only ; then
+		# Avoid mixing host's CC and target's CFLAGS_${ABI}:
+		# At this bootstrap stage we have only binutils for
+		# target but not compiler yet.
+		einfo "Skip CC ABI injection. We can't use (cross-)compiler yet."
+		return 0
+	fi
 
 	local VAR=CFLAGS_${ABI}
 	# We need to export CFLAGS with abi information in them because glibc's
@@ -375,6 +385,7 @@ setup_env() {
 	# top of each other.
 	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET_OPT:-${CTARGET}})}
 	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
+	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 }
 
 foreach_abi() {
@@ -398,7 +409,7 @@ foreach_abi() {
 }
 
 just_headers() {
-	is_crosscompile && use crosscompile_opts_headers-only
+	is_crosscompile && use headers-only
 }
 
 glibc_banner() {
@@ -592,7 +603,7 @@ eend_KV() {
 
 get_kheader_version() {
 	printf '#include <linux/version.h>\nLINUX_VERSION_CODE\n' | \
-	$(tc-getCPP ${CTARGET}) -I "${EPREFIX}/$(alt_build_headers)" - | \
+	$(tc-getCPP ${CTARGET}) -I "$(alt_build_headers)" - | \
 	tail -n 1
 }
 
@@ -656,16 +667,7 @@ toolchain-glibc_do_src_unpack() {
 	# Check NPTL support _before_ we unpack things to save some time
 	want_nptl && check_nptl_support
 
-	if [[ -n ${EGIT_REPO_URIS} ]] ; then
-		local i d
-		for ((i=0; i<${#EGIT_REPO_URIS[@]}; ++i)) ; do
-			EGIT_REPO_URI=${EGIT_REPO_URIS[$i]}
-			EGIT_SOURCEDIR=${EGIT_SOURCEDIRS[$i]}
-			git-2_src_unpack
-		done
-	else
-		unpack_pkg
-	fi
+	unpack_pkg
 
 	cd "${S}"
 	touch locale/C-translit.h #185476 #218003
@@ -796,6 +798,11 @@ glibc_do_configure() {
 
 	if version_is_at_least 2.25 ; then
 		case ${CTARGET} in
+			mips*)
+				# dlopen() detects stack smash on mips n32 ABI.
+				# Cause is unknown: https://bugs.gentoo.org/640130
+				myconf+=( --enable-stack-protector=no )
+				;;
 			powerpc-*)
 				# Currently gcc on powerpc32 generates invalid code for
 				# __builtin_return_address(0) calls. Normally programs
@@ -809,6 +816,17 @@ glibc_do_configure() {
 				;;
 		esac
 	fi
+
+	# Keep a whitelist of targets supporing IFUNC. glibc's ./configure
+	# is not robust enough to detect proper support:
+	#    https://bugs.gentoo.org/641216
+	#    https://sourceware.org/PR22634#c0
+	case $(tc-arch ${CTARGET}) in
+		# Keep whitelist of targets where autodetection mostly works.
+		amd64|x86|sparc|ppc|ppc64|arm|arm64|s390) ;;
+		# Blacklist everywhere else
+		*) myconf+=( libc_cv_ld_gnu_indirect_function=no ) ;;
+	esac
 
 	if version_is_at_least 2.25 ; then
 		myconf+=( --enable-stackguard-randomization )

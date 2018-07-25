@@ -1,5 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Unresolved dependencies.
+app-admin/puppet rrdtool
+media-video/ffmpeg celt
+media-video/gpac dvb
+x11-base/xorg-drivers video_cards_glint
 
 # Thomas Deutschmann <whissi@gentoo.org> (17 Oct 2017)
 # No lua keyworded for this arch yet

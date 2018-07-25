@@ -17,6 +17,9 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+net-analyzer/wireshark -doc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
 # Requires not yet stabilised media-libs/qtav
 media-gfx/digikam mediaplayer
@@ -64,7 +67,3 @@ dev-python/apptools test
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3
-
-# Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
-# [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
-www-apps/cgit jit

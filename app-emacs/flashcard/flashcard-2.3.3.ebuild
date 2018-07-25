@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="An Emacs Lisp package for drilling on questions and answers"
-HOMEPAGE="http://ichi2.net/flashcard/
-	http://www.emacswiki.org/emacs/FlashCard"
+HOMEPAGE="https://www.emacswiki.org/emacs/FlashCard"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

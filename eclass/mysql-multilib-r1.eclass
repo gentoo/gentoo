@@ -149,7 +149,7 @@ if [[ ${MY_EXTRAS_VER} != "live" && ${MY_EXTRAS_VER} != "none" ]]; then
 fi
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
-HOMEPAGE="http://www.mysql.com/"
+HOMEPAGE="https://www.mysql.com/"
 LICENSE="GPL-2"
 SLOT="0/${SUBSLOT:-0}"
 
@@ -192,7 +192,6 @@ DEPEND="
 # prefix: first need to implement something for #196294
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mysql )
-	abi_x86_32? ( !app-emulation/emul-linux-x86-db[-abi_x86_32(-)] )
 "
 
 # Having different flavours at the same time is not a good idea

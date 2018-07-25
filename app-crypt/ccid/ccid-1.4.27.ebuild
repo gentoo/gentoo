@@ -1,19 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-STUPID_NUM="4218"
-
 inherit toolchain-funcs udev
 
 DESCRIPTION="CCID free software driver"
-HOMEPAGE="http://pcsclite.alioth.debian.org/ccid.html"
-SRC_URI="http://alioth.debian.org/frs/download.php/file/${STUPID_NUM}/${P}.tar.bz2"
+HOMEPAGE="https://ccid.apdu.fr/"
+SRC_URI="https://ccid.apdu.fr/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="twinserial kobil-midentity +usb"
 
 RDEPEND=">=sys-apps/pcsc-lite-1.8.3

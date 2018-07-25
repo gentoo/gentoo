@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 # There are no unit tests, only integration tests against a full Rails
 # 3.2 application. Skipping those for now due to difficulty in getting
@@ -17,7 +17,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="app"
 inherit ruby-fakegem
 
 DESCRIPTION="A popular and flexible JavaScript DatePicker for RubyOnRails"
-HOMEPAGE="https://code.google.com/p/calendardateselect/"
+HOMEPAGE="https://github.com/timcharper/calendar_date_select"
 
 LICENSE="MIT"
 SLOT="0"

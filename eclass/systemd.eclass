@@ -45,6 +45,7 @@ _systemd_get_dir() {
 
 	if $(tc-getPKG_CONFIG) --exists systemd; then
 		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
+		d=${d#${EPREFIX}}
 	else
 		d=${fallback}
 	fi
@@ -57,7 +58,7 @@ _systemd_get_dir() {
 # @DESCRIPTION:
 # Get unprefixed unitdir.
 _systemd_get_systemunitdir() {
-	_systemd_get_dir systemdsystemunitdir /usr/lib/systemd/system
+	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
 }
 
 # @FUNCTION: systemd_get_systemunitdir
@@ -106,7 +107,7 @@ systemd_get_userunitdir() {
 # @DESCRIPTION:
 # Get unprefixed utildir.
 _systemd_get_utildir() {
-	_systemd_get_dir systemdutildir /usr/lib/systemd
+	_systemd_get_dir systemdutildir /lib/systemd
 }
 
 # @FUNCTION: systemd_get_utildir
@@ -121,6 +122,26 @@ systemd_get_utildir() {
 	echo "${EPREFIX}$(_systemd_get_utildir)"
 }
 
+# @FUNCTION: _systemd_get_systemgeneratordir
+# @INTERNAL
+# @DESCRIPTION:
+# Get unprefixed systemgeneratordir.
+_systemd_get_systemgeneratordir() {
+	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
+}
+
+# @FUNCTION: systemd_get_systemgeneratordir
+# @DESCRIPTION:
+# Output the path for the systemd system generator directory (not including
+# ${D}). This function always succeeds, even if systemd is not
+# installed.
+systemd_get_systemgeneratordir() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+	debug-print-function ${FUNCNAME} "${@}"
+
+	echo "${EPREFIX}$(_systemd_get_systemgeneratordir)"
+}
+
 # @FUNCTION: systemd_dounit
 # @USAGE: <unit>...
 # @DESCRIPTION:
@@ -130,6 +151,7 @@ systemd_dounit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_systemunitdir)"
 		doins "${@}"
 	)
@@ -144,6 +166,7 @@ systemd_newunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_systemunitdir)"
 		newins "${@}"
 	)
@@ -158,6 +181,7 @@ systemd_douserunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_userunitdir)"
 		doins "${@}"
 	)
@@ -172,6 +196,7 @@ systemd_newuserunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_userunitdir)"
 		newins "${@}"
 	)
@@ -201,6 +226,7 @@ systemd_install_serviced() {
 	[[ ${service} == *.d ]] && die "Service must not have .d suffix"
 
 	(
+		insopts -m 0644
 		insinto /etc/systemd/system/"${service}".d
 		newins "${src}" 00gentoo.conf
 	)
@@ -220,6 +246,7 @@ systemd_dotmpfilesd() {
 	done
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d/
 		doins "${@}"
 	)
@@ -237,6 +264,7 @@ systemd_newtmpfilesd() {
 		|| die 'tmpfiles.d files need to have .conf suffix.'
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d/
 		newins "${@}"
 	)
@@ -299,6 +327,7 @@ systemd_enable_ntpunit() {
 	done
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_utildir)"/ntp-units.d
 		doins "${T}"/${ntpunit_name}.list
 	)

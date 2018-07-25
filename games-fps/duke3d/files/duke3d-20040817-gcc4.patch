@@ -1,6 +1,6 @@
 iff -ur duke3d/source/buildengine/a.c duke3d-gcc4/source/buildengine/a.c
---- duke3d/source/buildengine/a.c	2004-11-25 13:55:21.000000000 -0500
-+++ duke3d-gcc4/source/buildengine/a.c	2005-06-18 18:14:24.000000000 -0400
+--- source/buildengine/a.c	2004-11-25 13:55:21.000000000 -0500
++++ source/buildengine/a.c	2005-06-18 18:14:24.000000000 -0400
 @@ -186,7 +186,9 @@
      if (i3 == 0)
      {
@@ -13,8 +13,8 @@ iff -ur duke3d/source/buildengine/a.c duke3d-gcc4/source/buildengine/a.c
  	    *dest = ((unsigned char*)i2)[i4];
  	    return i1;
 diff -ur duke3d/source/buildengine/pragmas.c duke3d-gcc4/source/buildengine/pragmas.c
---- duke3d/source/buildengine/pragmas.c	2003-07-25 20:11:32.000000000 -0400
-+++ duke3d-gcc4/source/buildengine/pragmas.c	2005-06-18 18:25:37.000000000 -0400
+--- source/buildengine/pragmas.c	2003-07-25 20:11:32.000000000 -0400
++++ source/buildengine/pragmas.c	2005-06-18 18:25:37.000000000 -0400
 @@ -56,28 +56,39 @@
  
  void clearbufbyte(void *buffer, int size, long fill_value) {
@@ -74,8 +74,8 @@ diff -ur duke3d/source/buildengine/pragmas.c duke3d-gcc4/source/buildengine/prag
  	}
 
 diff -u -r duke3d/source/buildengine/a.h duke3d.gcc4.1.1/source/buildengine/a.h
---- duke3d/source/buildengine/a.h	2003-04-11 08:54:06.000000000 +0200
-+++ duke3d.gcc4.1.1/source/buildengine/a.h	2006-06-22 12:14:40.366393568 +0200
+--- source/buildengine/a.h	2003-04-11 08:54:06.000000000 +0200
++++ source/buildengine/a.h	2006-06-22 12:14:40.366393568 +0200
 @@ -116,56 +116,56 @@
  
    #if ((defined __GNUC__) && (!defined C_IDENTIFIERS_UNDERSCORED))

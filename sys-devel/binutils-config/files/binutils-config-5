@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Format of /etc/env.d/binutils/:
@@ -145,21 +145,26 @@ switch_profile() {
 	cd "${ROOT}/${LIBPATH}" || exit 1
 	if [[ ${TARGET} == ${HOST} ]] ; then
 		dstlib=${EROOT}/usr/${HOST}/lib
-	elif [[ -d ${EROOT}/usr/${TARGET}/lib ]] ; then
-		# true for at least avr and msp targets
-		dstlib=${EROOT}/usr/${TARGET}/lib
 	else
 		dstlib=${EROOT}/usr/${HOST}/${TARGET}/lib
 	fi
 	# When upgrading, we need to clean up ldscripts and libs.
 	# Don't symlink back in the libs -- the binutils-lib package handles
 	# these now.
-	# TODO: Stop requiring even the ldscripts symlink, except
-	# we can't for bare-metal toolchains, so...  bug #147155
+	# TODO: Stop requiring even the ldscripts symlink.
 	mkdir -p "${dstlib}"
 	rm -rf "${ROOT}/${BINPATH_LINKS}"/ldscripts
 	atomic_ln "${LIBPATH}/ldscripts" "${dstlib}" "ldscripts"
-	find -L "${dstlib}" -xtype l -name 'lib*' -exec rm -f {} +
+	find -L "${dstlib}" -xtype l -name 'lib*' -delete
+	# Detect older binutils w/broken rpaths. #562460
+	# We can hardcode the "/lib" part since that's what the binutils
+	# configure scripts have.  They did not include any other path.
+	if [[ $(scanelf -qF '%r#F' "${ROOT}/${BINPATH}/as") == */lib ]] ; then
+		ewarn "Old cross-binutils detected; please re-emerge to fix (see bug #562460)."
+		for x in lib* ; do
+			atomic_ln "${LIBPATH}/${x}" "${dstlib}" "${x}"
+		done
+	fi
 
 	#
 	# Clean out old generated include symlinks
@@ -252,7 +257,7 @@ uninstall_target() {
 
 	local x
 	for x in \
-		addr2line ar as c++filt elf2flt elfedit flthdr gprof \
+		addr2line ar as c++filt dwp elf2flt elfedit flthdr gprof \
 		ld ld.{bfd,gold,real} \
 		nm objcopy objdump ranlib readelf size strings strip
 	do

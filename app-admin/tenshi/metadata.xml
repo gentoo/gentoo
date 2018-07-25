@@ -4,12 +4,10 @@
 <maintainer type="person">
   <email>bldewolf@cpp.edu</email>
   <name>Brian De Wolf</name>
-  <description>Primary proxied maintainer; set to assignee in all bugs</description>
 </maintainer>
 <maintainer type="person">
   <email>atj@pulsewidth.org.uk</email>
   <name>Adam James</name>
-  <description>Proxied co-maintainer; CC in all bugs</description>
 </maintainer>
 <maintainer type="project">
   <email>proxy-maint@gentoo.org</email>

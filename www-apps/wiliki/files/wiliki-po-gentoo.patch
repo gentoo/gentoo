@@ -1,6 +1,6 @@
---- po/Makefile.in.orig	2008-01-31 21:38:35.000000000 -0500
-+++ po/Makefile.in	2009-01-09 14:34:08.000000000 -0500
-@@ -28,7 +28,7 @@
+--- a/po/Makefile.orig	2018-04-01 19:58:29.879110970 -0400
++++ b/po/Makefile.in	2018-04-01 19:59:14.929385523 -0400
+@@ -28,7 +28,7 @@ ALL_LINGUAS = @ALL_LINGUAS@
  PO_FILES = $(addsuffix .po,$(ALL_LINGUAS))
  MO_FILES = $(addsuffix .gmo,$(ALL_LINGUAS))
  

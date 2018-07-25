@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp eutils
 
 DESCRIPTION="Mode for editing Wikipedia articles off-line"
-HOMEPAGE="http://www.emacswiki.org/emacs/WikipediaMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/WikipediaMode"
 SRC_URI="mirror://gentoo/${P}.el.bz2"
 
 LICENSE="GPL-2+"

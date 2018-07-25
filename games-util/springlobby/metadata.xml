@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+The official lobby client for SpringRTS community games: Balanced Annihilation; Journeywar; Metal Factions; Spring:1944 World War II; Star Wars: Imperial Winter; Tech Annihilation; The Cursed; Evolution RTS; ...
+	</longdescription>
+	<longdescription lang="fr">
+Le client officiel du lobby pour les jeux de la communauté SpringRTS : Balanced Annihilation; Journeywar; Metal Factions; Spring:1944 World War II; Star Wars: Imperial Winter; Tech Annihilation; The Cursed; Evolution RTS; ...
+	</longdescription>
+	<maintainer type="person">
+		<email>totocoq@yahoo.fr</email>
+		<name>Thomas Coquelin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>fedja@protonmail.ch</email>
+		<name>Fedja Beader</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">springlobby/springlobby</remote-id>
+		<bugs-to>https://github.com/springlobby/springlobby/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

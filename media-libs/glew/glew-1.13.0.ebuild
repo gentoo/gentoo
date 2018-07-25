@@ -22,9 +22,7 @@ DEPEND="
 	>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
 "
-RDEPEND="${DEPEND}
-	abi_x86_32? ( !app-emulation/emul-linux-x86-opengl[-abi_x86_32(-)] )
-"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i \

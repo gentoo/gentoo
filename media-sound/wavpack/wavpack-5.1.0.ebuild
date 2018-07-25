@@ -15,9 +15,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="static-libs"
 
-RDEPEND=">=virtual/libiconv-0-r1
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r4
-					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
+RDEPEND=">=virtual/libiconv-0-r1"
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README )

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 autotools
+inherit python-single-r1 autotools desktop
 
 MYP=${PN}-gpl-${PV}-src
 
@@ -16,16 +16,15 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed03b
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-ada/gnatcoll-2017[gtk,iconv,projects,pygobject,shared,sqlite,tools]
+	>=dev-ada/gnatcoll-2017[gtk,iconv,pygobject,sqlite,static-libs,tools]
 	>=dev-ada/gtkada-2017
 	dev-ada/libadalang
 	dev-libs/gobject-introspection
 	dev-libs/libffi
-	sys-devel/llvm:=
 	sys-devel/clang:=
 	x11-themes/adwaita-icon-theme
 	x11-themes/hicolor-icon-theme
@@ -33,6 +32,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/jedi[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}"
+
+RESTRICT="test"
 
 S="${WORKDIR}"/${MYP}
 
@@ -43,9 +44,9 @@ src_prepare() {
 	GCC_PV=6.3.0
 	mv configure.{in,ac} || die
 	sed -i \
-		-e "s:@GNATMAKE@:gnatmake-${GCC_PV}:g" \
-		-e "s:@GNAT@:gnat-${GCC_PV}:g" \
-		-e "s:@GNATLS@:gnatls-${GCC_PV}:g" \
+		-e "s:@GNATMAKE@:${CHOST}-gnatmake-${GCC_PV}:g" \
+		-e "s:@GNAT@:${CHOST}-gnat-${GCC_PV}:g" \
+		-e "s:@GNATLS@:${CHOST}-gnatls-${GCC_PV}:g" \
 		aclocal.m4 \
 		share/support/core/gnat_help_menus.py \
 		share/support/core/toolchains.py \
@@ -56,8 +57,16 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf \
+		--with-clang=$(llvm-config --libdir)
+}
+
 src_compile() {
-	emake GPRBUILD_FLAGS="-v ${MAKEOPTS}"
+	ADAFLAGS+=" -fno-strict-aliasing"
+	emake GPRBUILD_FLAGS="-v ${MAKEOPTS} \
+		-XLIBRARY_TYPE=relocatable \
+		-XXMLADA_BUILD=relocatable"
 }
 
 src_install() {
@@ -66,4 +75,5 @@ src_install() {
 		insinto /usr/share/doc
 		doins -r "${WORKDIR}"/gnat-gpl-2017-x86_64-linux-bin/share/doc/gnat
 	fi
+	make_desktop_entry "${PN}" "GPS" "${EPREFIX}/usr/share/gps/icons/hicolor/32x32/apps/gps_32.png" "Development;IDE;"
 }

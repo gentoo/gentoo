@@ -27,6 +27,7 @@
   <flag name="libcerf">Enable special functions from
     <pkg>sci-libs/libcerf</pkg></flag>
   <flag name="bitmap">Enable dot-matrix printers and pbm terminal</flag>
+  <flag name="regis">Enable ReGIS terminal</flag>
 </use>
 <upstream>
   <remote-id type="sourceforge">gnuplot</remote-id>

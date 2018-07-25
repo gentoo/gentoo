@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{4,5}} )
 
-USE_RUBY="ruby21 ruby22"
+USE_RUBY="ruby22 ruby23"
 
 inherit autotools eutils python-r1 ruby-single
 

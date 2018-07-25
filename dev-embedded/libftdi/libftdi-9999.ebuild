@@ -21,6 +21,7 @@ HOMEPAGE="http://www.intra2net.com/en/developer/libftdi/"
 LICENSE="LGPL-2"
 SLOT="1"
 IUSE="cxx doc examples python static-libs test tools"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="virtual/libusb:1
 	cxx? ( dev-libs/boost )
@@ -33,8 +34,6 @@ DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )
 	doc? ( app-doc/doxygen )"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -42,7 +41,7 @@ pkg_setup() {
 S=${WORKDIR}/${MY_P}
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DFTDIPP=$(usex cxx)
 		-DDOCUMENTATION=$(usex doc)
 		-DEXAMPLES=$(usex examples)

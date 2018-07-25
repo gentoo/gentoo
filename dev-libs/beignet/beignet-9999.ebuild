@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 CMAKE_BUILD_TYPE="Release"
 
 inherit python-any-r1 cmake-multilib flag-o-matic toolchain-funcs

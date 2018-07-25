@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit java-pkg-2
 
 DESCRIPTION="sbt, a build tool for Scala"
-HOMEPAGE="http://scala-sbt.org"
+HOMEPAGE="https://scala-sbt.org"
 SRC_URI="https://dl.bintray.com/sbt/native-packages/sbt/${PV}/${PN/-bin}-${PV}.tgz"
 
 LICENSE="BSD"

@@ -18,12 +18,11 @@ SRC_URI="http://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_P
 LICENSE="NCSA-HDF"
 SLOT="0/${PV%%_p*}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="cxx debug examples fortran fortran2003 mpi static-libs szip threads zlib"
+IUSE="cxx debug examples fortran +hl mpi static-libs szip threads zlib"
 
 REQUIRED_USE="
 	cxx? ( !mpi ) mpi? ( !cxx )
-	threads? ( !cxx !mpi !fortran )
-	fortran2003? ( fortran )"
+	threads? ( !cxx !mpi !fortran !hl )"
 
 RDEPEND="
 	mpi? ( virtual/mpi[romio] )
@@ -40,15 +39,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.9-static_libgfortran.patch
 	"${FILESDIR}"/${PN}-1.8.9-mpicxx.patch
 	"${FILESDIR}"/${PN}-1.8.13-no-messing-ldpath.patch
-	"${FILESDIR}"/${PN}-1.8.15-implicits.patch
 )
 
 pkg_setup() {
 	tc-export CXX CC AR # workaround for bug 285148
-	if use fortran; then
-		use fortran2003 && FORTRAN_STANDARD=2003
-		fortran-2_pkg_setup
-	fi
+	use fortran && fortran-2_pkg_setup
+
 	if use mpi; then
 		if has_version 'sci-libs/hdf5[-mpi]'; then
 			ewarn "Installing hdf5 with mpi enabled with a previous hdf5 with mpi disabled may fail."
@@ -88,7 +84,7 @@ src_configure() {
 		$(use_enable debug codestack)
 		$(use_enable cxx)
 		$(use_enable fortran)
-		$(use_enable fortran2003)
+		$(use_enable hl)
 		$(use_enable mpi parallel)
 		$(use_enable threads threadsafe)
 		$(use_with szip szlib)

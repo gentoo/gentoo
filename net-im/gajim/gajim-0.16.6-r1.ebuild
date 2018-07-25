@@ -41,6 +41,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
+	!>=dev-python/pyopenssl-17.4.0[${PYTHON_USEDEP}]
 	>=dev-python/python-nbxmpp-0.5.3[${PYTHON_USEDEP}]
 	crypt? (
 		app-crypt/gnupg

@@ -18,7 +18,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
@@ -127,8 +127,16 @@ multilib_src_configure() {
 			# this can be any directory, it just needs to exist...
 			# FIXME: remove this once https://reviews.llvm.org/D25093 is merged
 			-DLLVM_MAIN_SRC_DIR="${T}"
-			-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
 		)
+		if has_version '>=sys-devel/llvm-6'; then
+			mycmakeargs+=(
+				-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
+			)
+		else
+			mycmakeargs+=(
+				-DLIT_COMMAND="${EPREFIX}"/usr/bin/lit
+			)
+		fi
 	fi
 	cmake-utils_src_configure
 }

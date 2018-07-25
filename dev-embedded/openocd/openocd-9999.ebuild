@@ -6,10 +6,9 @@ EAPI="5"
 inherit eutils multilib flag-o-matic toolchain-funcs udev user
 
 # One ebuild to rule them all
-if [[ ${PV} == "9999" ]] ; then
-	inherit autotools git-2
-	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
-	EGIT_PROJECT="${PN}"
+if [[ ${PV} == *9999 ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 else
 	MY_PV="${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"

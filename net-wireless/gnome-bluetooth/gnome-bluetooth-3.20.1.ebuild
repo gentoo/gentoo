@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/itstool
 	virtual/libudev
 	virtual/pkgconfig
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 # eautoreconf needs:
 #	gnome-base/gnome-common

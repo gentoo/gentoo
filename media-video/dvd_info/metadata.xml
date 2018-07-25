@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+<email>media-video@gentoo.org</email>
+</maintainer>
+<longdescription lang="en">
+DVD utilities to print information, copy tracks, etc.
+</longdescription>
+<upstream>
+<remote-id type="sourceforge">dvdinfo</remote-id>
+</upstream>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="
-	debug firebird iodbc kerberos ldap mysql odbc oracle pam pcap
+	debug firebird iodbc kerberos ldap libressl mysql odbc oracle pam pcap
 	postgres python readline sqlite ssl
 "
 RESTRICT="test firebird? ( bindist )"
@@ -29,7 +29,7 @@ RDEPEND="!net-dialup/cistronradius
 	!net-dialup/gnuradius
 	sys-devel/libtool
 	dev-lang/perl:=
-	sys-libs/gdbm
+	sys-libs/gdbm:=
 	sys-libs/talloc
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
@@ -38,7 +38,10 @@ RDEPEND="!net-dialup/cistronradius
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	ldap? ( net-nds/openldap )
 	kerberos? ( virtual/krb5 )
 	sqlite? ( dev-db/sqlite:3 )

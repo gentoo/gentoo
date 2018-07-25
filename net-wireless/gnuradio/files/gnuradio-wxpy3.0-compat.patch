@@ -1,0 +1,50 @@
+Description: Update for wxPython 3.0
+ wx.InitAllImageHandlers() issues a deprecation warning with wxPython 3.0
+ and is a no-op with wxPython 2.8.
+ Deprecated constants like wxSAVE are gone from the C++ API, so wx.SAVE, etc
+ are also likely to go from wxPython soon.
+ The alias "wx.Color" is gone in wxPython 3.0 - only "wx.Colour" is now
+ supported, so update docstring to use the correct class name.
+Author: Olly Betts <olly@survex.com>
+Forwarded: no
+Last-Update: 2014-08-21
+
+--- a/gr-wxgui/python/wxgui/plot.py
++++ b/gr-wxgui/python/wxgui/plot.py
+@@ -522,7 +522,7 @@
+                     self,
+                     "Choose a file with extension bmp, gif, xbm, xpm, png, or jpg", ".", "",
+                     "BMP files (*.bmp)|*.bmp|XBM files (*.xbm)|*.xbm|XPM file (*.xpm)|*.xpm|PNG files (*.png)|*.png|JPG files (*.jpg)|*.jpg",
+-                    wx.SAVE|wx.OVERWRITE_PROMPT
++                    wx.FD_SAVE|wx.FD_OVERWRITE_PROMPT
+                     )
+             try:
+                 while 1:
+@@ -1820,7 +1820,6 @@
+ 
+     class MyApp(wx.App):
+         def OnInit(self):
+-            wx.InitAllImageHandlers()
+             frame = TestFrame(None, -1, "PlotCanvas")
+             #frame.Show(True)
+             self.SetTopWindow(frame)
+--- a/gr-wxgui/python/wxgui/plotter/gltext.py
++++ b/gr-wxgui/python/wxgui/plotter/gltext.py
+@@ -50,7 +50,7 @@
+         """
+         text (String)         - Text
+         font (wx.Font)        - Font to draw with (None = System default)
+-        foreground (wx.Color) - Color of the text
++        foreground (wx.Colour)- Color of the text
+                 or (wx.Bitmap)- Bitmap to overlay the text with
+         centered (bool)       - Center the text
+ 
+@@ -317,7 +317,7 @@
+             text (string)           - displayed text
+             font (wx.Font)          - if None, system default font will be used with font_size
+             font_size (int)         - font size in points
+-            foreground (wx.Color)   - Color of the text
++            foreground (wx.Colour)  - Color of the text
+                     or (wx.Bitmap)  - Bitmap to overlay the text with
+             centered (bool)         - should the text drawn centered towards position?
+ 

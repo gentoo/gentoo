@@ -21,11 +21,7 @@ RDEPEND="app-eselect/eselect-mpg123
 	nas? ( media-libs/nas )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
-	sdl? ( media-libs/libsdl )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-soundlibs-20130224-r9
-		!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)]
-	)"
+	sdl? ( media-libs/libsdl )"
 DEPEND="${RDEPEND}
 	sys-devel/libtool
 	virtual/pkgconfig"

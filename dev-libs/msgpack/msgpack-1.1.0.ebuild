@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="MessagePack is a binary-based efficient data interchange format"
-HOMEPAGE="http://msgpack.org/ https://github.com/msgpack/msgpack-c/"
+HOMEPAGE="https://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 
 LICENSE="Apache-2.0"
 SLOT="0"

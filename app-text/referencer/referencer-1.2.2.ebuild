@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,7 +17,7 @@ IUSE=""
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=app-text/poppler-0.12.3-r3:=[cairo]
+	>=app-text/poppler-0.12.3-r3[cairo]
 	>=dev-cpp/gtkmm-2.8:*
 	>=dev-cpp/libglademm-2.6.0
 	>=dev-cpp/gconfmm-2.14.0

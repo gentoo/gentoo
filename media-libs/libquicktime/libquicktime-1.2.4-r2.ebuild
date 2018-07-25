@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit libtool eutils multilib-minimal
+EAPI=6
+
+inherit libtool multilib-minimal
 
 DESCRIPTION="An enhanced version of the quicktime4linux library"
 HOMEPAGE="http://libquicktime.sourceforge.net/"
@@ -10,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame libav cpu_flags_x86_mmx opengl png schroedinger static-libs vorbis X x264"
 
 RDEPEND=">=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
@@ -47,23 +48,31 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
-	X? ( >=x11-proto/videoproto-2.3.1-r1[${MULTILIB_USEDEP}] )"
+	X? ( x11-base/xorg-proto )"
 
 REQUIRED_USE="opengl? ( X )"
 
-DOCS="ChangeLog README TODO"
+DOCS=( ChangeLog README TODO )
+
+PATCHES=(
+	"${FILESDIR}"/${P}+libav-9.patch
+	"${FILESDIR}"/${P}-ffmpeg2.patch
+	"${FILESDIR}"/CVE-2016-2399.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}+libav-9.patch \
-		"${FILESDIR}"/${P}-ffmpeg2.patch \
-		"${FILESDIR}/CVE-2016-2399.patch"
+	default
 	if has_version '>=media-video/ffmpeg-2.9' ||
 		has_version '>=media-video/libav-12'; then
-		epatch "${FILESDIR}"/${P}-ffmpeg29.patch
+			eapply "${FILESDIR}"/${P}-ffmpeg29.patch
+	fi
+	if has_version '>media-video/ffmpeg-3.5' ; then
+		eapply "${FILESDIR}/${P}-ffmpeg4.patch"
 	fi
 
-	for FILE in lqt_ffmpeg.c video.c audio.c ; do
-		sed -i -e "s:CODEC_ID_:AV_&:g" "${S}/plugins/ffmpeg/${FILE}" || die
+	local x
+	for x in lqt_ffmpeg.c video.c audio.c ; do
+		sed -i -e "s:CODEC_ID_:AV_&:g" "plugins/ffmpeg/${x}" || die
 	done
 
 	elibtoolize # Required for .so versioning on g/fbsd
@@ -103,7 +112,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 
 	# Compatibility with software that uses quicktime prefix, but
 	# don't do that when building for Darwin/MacOS

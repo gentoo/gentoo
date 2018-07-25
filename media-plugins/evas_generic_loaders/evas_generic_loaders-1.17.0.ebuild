@@ -17,7 +17,7 @@ inherit enlightenment flag-o-matic
 
 DESCRIPTION="Provides external applications as generic loaders for Evas"
 HOMEPAGE="https://www.enlightenment.org/"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 LICENSE="GPL-2"
 IUSE="gstreamer pdf postscript raw svg"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="Flash plugin for django CMS"
-HOMEPAGE="https://pypi.python.org/pypi/djangocms-flash"
+HOMEPAGE="https://pypi.org/project/djangocms-flash/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

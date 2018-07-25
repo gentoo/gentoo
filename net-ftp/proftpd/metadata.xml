@@ -23,11 +23,6 @@ server.</longdescription>
 		<flag name="ident">Enable support for the mod_ident module</flag>
 		<flag name="ifsession">Enable support for the ifsession module</flag>
 		<flag name="ifversion">Enable support for the mod_ifversion module</flag>
-		<flag name="linguas_bg_BG">Language support for bg_BG</flag>
-		<flag name="linguas_fr_FR">Language support for fr_FR</flag>
-		<flag name="linguas_it_IT">Language support for it_IT</flag>
-		<flag name="linguas_ja_JP">Language support for ja_JP</flag>
-		<flag name="linguas_ru_RU">Language support for ru_RU</flag>
 		<flag name="log_forensic">Enable support for the mod_log_forensic module, log only suspicious actions.</flag>
 		<flag name="memcache">Enable support for the mod_memcache module, for using memcached servers</flag>
 		<flag name="msg">Enable support for the mod_msg module, allows system users to send messages to connected clients via the ftpdctl program.</flag>

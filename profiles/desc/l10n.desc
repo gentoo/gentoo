@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of L10N USE_EXPAND flags.
@@ -42,18 +42,21 @@ ca - Catalan
 ca-valencia - Catalan (Valencian)
 cak - Kaqchikel
 chr - Cherokee
+cnr - Montenegrin
 cs - Czech
-csb - Kashubian
 cy - Welsh
 da - Danish
 de - German
 de-1901 - German (traditional orthography)
+de-CH - German (Switzerland)
+de-DE - German (Germany)
 dgo - Dogri (individual language)
 doi - Dogri (macrolanguage)
 dsb - Lower Sorbian
 dz - Dzongkha
 el - Modern Greek
 en - English
+en-AU - English (Australia)
 en-GB - English (United Kingdom)
 en-US - English (United States)
 en-ZA - English (South Africa)
@@ -62,8 +65,12 @@ es - Spanish
 es-419 - Spanish (Latin America)
 es-AR - Spanish (Argentina)
 es-CL - Spanish (Chile)
+es-CO - Spanish (Colombia)
+es-DO - Spanish (Dominican Republic)
 es-ES - Spanish (Spain)
 es-MX - Spanish (Mexico)
+es-UY - Spanish (Uruguay)
+es-VE - Spanish (Venezuela)
 et - Estonian
 eu - Basque
 fa - Persian
@@ -82,7 +89,6 @@ gu - Gujarati
 gug - Paraguayan Guarani
 he - Hebrew
 hi - Hindi
-hne - Chhattisgarhi
 hr - Croatian
 hsb - Upper Sorbian
 hu - Hungarian
@@ -118,6 +124,7 @@ mni - Manipuri
 mr - Marathi
 ms - Malay (macrolanguage)
 my - Burmese
+nan - Min Nan Chinese
 nb - Norwegian Bokmål
 nds - Low German
 ne - Nepali
@@ -130,6 +137,7 @@ oc - Occitan
 om - Oromo
 or - Oriya (macrolanguage)
 pa - Punjabi
+pam - Kapampangan
 pl - Polish
 pt - Portuguese
 pt-BR - Portuguese (Brazil)
@@ -147,13 +155,14 @@ si - Sinhala
 sid - Sidamo
 sk - Slovak
 sl - Slovenian
+sn - Shona
+so - Somali
 son - Songhai languages
 sq - Albanian
 sr - Serbian
 sr-ijekavsk - Serbian (Ijekavian pronunciation)
 sr-Latn - Serbian (Latin script)
 sr-Latn-ijekavsk - Serbian (Latin script, Ijekavian pronunciation)
-sr-ME - Serbian (Montenegro)
 ss - Swati
 st - Southern Sotho
 sv - Swedish
@@ -173,6 +182,7 @@ ts - Tsonga
 tt - Tatar
 ug - Uyghur
 uk - Ukrainian
+ur - Urdu
 ur-PK - Urdu (Pakistan)
 uz - Uzbek
 uz-Cyrl - Uzbek (Cyrillic script)

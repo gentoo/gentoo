@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>grozin@gentoo.org</email>
-		<name>Andrey Grozin</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Navigate a large image collection using a thumbnail browser.
 		Import camera RAW files and edit with 16-bit color.

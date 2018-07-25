@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,8 +33,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/rgb"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	x11-proto/kbproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 DOCS=( README{,.i18n} ctlseqs.txt )
 

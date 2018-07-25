@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
+inherit autotools estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
@@ -26,7 +26,7 @@ S="${WORKDIR}/${MY_P}"
 
 D3D9_P="wine-d3d9-${PV}"
 D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
-GWP_V="20170830"
+GWP_V="20180120"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Gallium Nine patchset"
@@ -108,22 +108,6 @@ COMMON_DEPEND="
 	xml? (
 		dev-libs/libxml2[${MULTILIB_USEDEP}]
 		dev-libs/libxslt[${MULTILIB_USEDEP}]
-	)
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-baselibs-20140508-r14
-		!app-emulation/emul-linux-x86-db[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-db-20140508-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-medialibs-20140508-r6
-		!app-emulation/emul-linux-x86-opengl[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-opengl-20140508-r1
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-sdl-20140508-r1
-		!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-soundlibs-20140508
-		!app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)]
-		!<app-emulation/emul-linux-x86-xlibs-20140508
 	)"
 
 RDEPEND="${COMMON_DEPEND}
@@ -150,13 +134,9 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
 	virtual/yacc
-	X? (
-		x11-proto/inputproto
-		x11-proto/xextproto
-		x11-proto/xf86vidmodeproto
-	)
+	X? ( x11-base/xorg-proto )
 	prelink? ( sys-devel/prelink )
-	xinerama? ( x11-proto/xineramaproto )"
+	xinerama? ( x11-base/xorg-proto )"
 
 # These use a non-standard "Wine" category, which is provided by
 # /etc/xdg/applications-merged/wine.menu
@@ -169,9 +149,10 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
 	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
 	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
-	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch"
+	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
 	"${PATCHDIR}/patches/freetype-2.8.1-segfault.patch" #631676
 	"${PATCHDIR}/patches/freetype-2.8.1-drop-glyphs.patch" #631376
+	"${PATCHDIR}/patches/${MY_PN}-2.0-rearrange-manpages.patch" #469418 #617864
 )
 PATCHES_BIN=(
 	"${PATCHDIR}/patches/freetype-2.8.1-patch-fonts.patch" #631376
@@ -370,6 +351,32 @@ src_prepare() {
 	cp "${PATCHDIR}/files/oic_winlogo.ico" dlls/user32/resources/ || die
 
 	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
+
+	# Fix manpage generation for locales #469418 and abi_x86_64 #617864
+	# Requires wine-2.0-rearrange-manpages.patch
+
+	# Duplicate manpages input files for wine64
+	local f
+	for f in loader/*.man.in; do
+		cp ${f} ${f/wine/wine64} || die
+	done
+	# Add wine64 manpages to Makefile
+	if use abi_x86_64; then
+		sed -i "/wine.man.in/i \
+			\\\twine64.man.in \\\\" loader/Makefile.in || die
+		sed -i -E 's/(.*wine)(.*\.UTF-8\.man\.in.*)/&\
+\164\2/' loader/Makefile.in || die
+	fi
+
+	rm_man_file(){
+		local file="${1}"
+		loc=${2}
+		sed -i "/${loc}\.UTF-8\.man\.in/d" "${file}" || die
+	}
+
+	while read f; do
+		l10n_for_each_disabled_locale_do rm_man_file "${f}"
+	done < <(find -name "Makefile.in" -exec grep -q "UTF-8.man.in" "{}" \; -print)
 }
 
 src_configure() {
@@ -504,24 +511,15 @@ multilib_src_install_all() {
 		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
 	fi
 
-	# Failglob for bin and man loops
-	local glob_state=$(shopt -p failglob)
-	shopt -s failglob
-
+	# Failglob for binloops, shouldn't be necessary, but including to stay safe
+	eshopts_push -s failglob #615218
 	# Make wrappers for binaries for handling multiple variants
 	# Note: wrappers instead of symlinks because some are shell which use basename
 	local b
 	for b in "${D%/}${MY_PREFIX}"/bin/*; do
 		make_wrapper "${b##*/}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${b##*/}"
 	done
-
-	# respect LINGUAS when installing man pages, #469418
-	local l
-	for l in de fr pl; do
-		use linguas_${l} || rm -rf "${D%/}${MY_MANDIR}"/${l}*
-	done
-
-	eval "${glob_state}"
+	eshopts_pop
 }
 
 pkg_postinst() {

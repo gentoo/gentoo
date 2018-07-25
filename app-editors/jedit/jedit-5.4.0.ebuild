@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_IUSE="doc test"
 
-inherit java-pkg-2 java-ant-2 eutils fdo-mime
+inherit eutils java-pkg-2 java-ant-2 xdg-utils
 
 DESCRIPTION="Programmer's editor written in Java"
 HOMEPAGE="http://www.jedit.org"
@@ -39,7 +39,7 @@ JEDIT_HOME="/usr/share/${PN}"
 src_prepare() {
 	mkdir -p lib/{ant-contrib,compile,default-plugins,scripting,test} || die
 
-	epatch "${FILESDIR}"/${P}-build-xml.patch
+	eapply "${FILESDIR}"/${P}-build-xml.patch
 
 	java-ant_xml-rewrite -f "${S}/build.xml" -c \
 		-e javadoc \
@@ -87,7 +87,7 @@ src_install () {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	elog "The system directory for jEdit plugins is"
 	elog "${JEDIT_HOME}/jars"
 	elog "If you get plugin related errors on startup, first try updating them."
@@ -95,7 +95,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if [[ -z ${REPLACED_BY_VERSION} ]]; then
-		fdo-mime_desktop_database_update
+		xdg_desktop_database_update
 		elog "jEdit plugins installed into /usr/share/jedit/jars"
 		elog "(after installation of jEdit itself) haven't been"
 		elog "removed. To get rid of jEdit completely, you may"

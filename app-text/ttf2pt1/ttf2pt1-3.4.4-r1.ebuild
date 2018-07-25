@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,6 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-LDFLAGS.patch
 	epatch "${FILESDIR}"/${PN}-3.4.0-man-pages.diff
 	epatch "${FILESDIR}"/${P}-freetype.patch
-	epatch "${FILESDIR}"/${P}-freetype-2.5.patch
 
 	sed -i -e "/^CC=/ { s:gcc:$(tc-getCC): }" Makefile
 	sed -i -e "/^CFLAGS_SYS=/ { s:-O.*$:${CFLAGS}: }" Makefile

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<!--maintainer-needed-->
-<longdescription lang="en">
-BCOP is a code generator that provides an easy way to handle plugin options by
-generating parts of the plugin code directly from the xml metadata file. 
-</longdescription>
-</pkgmetadata>

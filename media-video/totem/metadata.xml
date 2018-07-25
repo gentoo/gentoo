@@ -21,6 +21,5 @@ Totem is movie player for the GNOME desktop. It features a playlist, fullscreen 
 			using <pkg>app-misc/lirc</pkg></flag>
 		<flag name="nautilus">Enable the nautilus extension</flag>
 		<flag name="python">Build support for <pkg>dev-lang/python</pkg> plugins</flag>
-		<flag name="zeitgeist">Build the plugin to inject events to <pkg>gnome-extra/zeitgeist</pkg></flag>
 	</use>
 </pkgmetadata>

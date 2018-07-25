@@ -41,7 +41,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	>=dev-util/xfce4-dev-tools-4.10
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	xfce-base/exo"
 REQUIRED_USE="glyr? ( peas )
 	grilo? ( peas )
 	libnotify? ( peas )

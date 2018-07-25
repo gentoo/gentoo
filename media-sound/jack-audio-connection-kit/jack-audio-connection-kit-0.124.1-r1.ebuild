@@ -22,9 +22,7 @@ RDEPEND="
 	>=media-libs/libsndfile-1.0.0
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	>=media-libs/libsamplerate-0.1.8-r1[${MULTILIB_USEDEP}]
-	!media-sound/jack-cvs
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r7
-					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
+	!media-sound/jack-cvs"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"

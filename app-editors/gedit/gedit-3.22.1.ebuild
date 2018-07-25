@@ -3,7 +3,7 @@
 
 EAPI="6"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
@@ -18,7 +18,7 @@ SLOT="0"
 IUSE="+introspection +python spell vala"
 REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 
 # X libs are not needed for OSX (aqua)
 COMMON_DEPEND="

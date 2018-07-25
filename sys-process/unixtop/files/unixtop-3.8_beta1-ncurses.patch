@@ -1,8 +1,8 @@
 * check ncurses first, such that we only link agains (system) termcap if
   necessary (never the case in prefix) -- grobian@gentoo.org
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -174,7 +174,7 @@
  AC_CHECK_LIB(kvm, kvm_open)
  # -lmld -lmach

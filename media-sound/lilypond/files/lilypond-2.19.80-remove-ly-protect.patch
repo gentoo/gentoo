@@ -1,0 +1,39 @@
+diff -purN a/lily/general-scheme.cc b/lily/general-scheme.cc
+--- a/lily/general-scheme.cc	2017-10-15 17:42:11.000000000 +0100
++++ b/lily/general-scheme.cc	2018-01-10 16:20:08.129066507 +0000
+@@ -267,6 +267,8 @@ LY_DEFINE (ly_dimension_p, "ly:dimension
+ /*
+   Debugging mem leaks:
+ */
++
++/*
+ LY_DEFINE (ly_protects, "ly:protects",
+            0, 0, 0, (),
+            "Return hash of protected objects.")
+@@ -278,6 +280,7 @@ LY_DEFINE (ly_protects, "ly:protects",
+   return programming_error ("ly:protects is not supported in Guile 2.1");
+ #endif
+ }
++*/
+ 
+ LY_DEFINE (ly_gettext, "ly:gettext",
+            1, 0, 0, (SCM original),
+diff -purN a/scm/lily.scm b/scm/lily.scm
+--- a/scm/lily.scm	2017-10-15 17:42:11.000000000 +0100
++++ b/scm/lily.scm	2018-01-10 16:22:54.914457450 +0000
+@@ -836,10 +836,11 @@ messages into errors.")
+ 
+ (define-public (dump-gc-protects)
+   (set! gc-protect-stat-count (1+ gc-protect-stat-count))
+-  (let* ((protects (sort (hash-table->alist (ly:protects))
+-                         (lambda (a b)
+-                           (< (object-address (car a))
+-                              (object-address (car b))))))
++  (let* (;(protects (sort (hash-table->alist (ly:protects))
++         ;                (lambda (a b)
++         ;                  (< (object-address (car a))
++         ;                     (object-address (car b))))))
++         (protects '())
+          (out-file-name (string-append
+                          "gcstat-" (number->string gc-protect-stat-count)
+                          ".scm"))

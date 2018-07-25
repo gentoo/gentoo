@@ -19,6 +19,8 @@
 		quite different to that of sendmail.
 	</longdescription>
 	<use>
+		<flag name="arc">Adds support for Authenticated Receive Chain
+			(ARC)</flag>
 		<flag name="dcc">Adds support for Distributed Checksum Clearinghouse
 			(DCC)</flag>
 		<flag name="dane">Adds support for DNS-based Authentication of Named Entities</flag>

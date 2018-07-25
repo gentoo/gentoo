@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils flag-o-matic git-r3 games
+EAPI=6
+inherit eutils gnome2-utils flag-o-matic git-r3
 
 DESCRIPTION="Crayon Physics-like drawing puzzle game using the same excellent Box2D engine"
 HOMEPAGE="http://thp.io/2015/numptyphysics/"
@@ -53,37 +53,21 @@ src_unpack() {
 
 src_prepare() {
 	append-cxxflags -std=c++11 -Isrc
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	sed -i \
-		-e "s^@GENTOO_DATADIR@^${GAMES_DATADIR}/${PN}/data^" \
+	sed -i '/-g -O2/d' external/Box2D/Source/Makefile \
+		external/glaserl/makefile || die
+	sed -i "/return thp::/s% thp::.*$%\"/usr/share/${PN}/data\";%" \
 		src/Os.cpp || die
-}
-
-src_install() {
-	dogamesbin ${PN}
-	insinto "${GAMES_DATADIR}/${PN}"
-	doins -r data
-
-	if use user-levels ; then
-		local f
-
-		for f in ${A} ; do
-			[[ ${f} = ${f/.tar.gz/} ]] && doins "${DISTDIR}"/${f}
-		done
-	fi
-	make_desktop_entry ${PN} 'Numpty Physics'
-	doicon -s 256 platform/freedesktop/numptyphysics.png
-	doman platform/freedesktop/numptyphysics.6
-	prepgamesdirs
+	sed -e '/CXXFLAGS +=/s/\(CXXFLAGS +=\).*\( -DAPP=.*\)/\1\2/' \
+		-e '/SILENTCMD/s/$(LIBS)$/$(LDFLAGS) $(LIBS)/' \
+		-i makefile || die
+	eapply_user
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

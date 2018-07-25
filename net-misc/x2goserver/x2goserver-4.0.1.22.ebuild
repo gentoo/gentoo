@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,17 +10,18 @@ SRC_URI="http://code.x2go.org/releases/source/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+fuse postgres +sqlite"
 
 REQUIRED_USE="|| ( postgres sqlite )"
 
-DEPEND=""
+DEPEND="virtual/perl-ExtUtils-MakeMaker"
 RDEPEND="dev-perl/Capture-Tiny
 	dev-perl/Config-Simple
 	dev-perl/File-BaseDir
 	dev-perl/File-ReadBackwards
 	dev-perl/File-Which
+	dev-perl/Try-Tiny
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-misc[nls]
 	>=net-misc/nx-3.5.0.25

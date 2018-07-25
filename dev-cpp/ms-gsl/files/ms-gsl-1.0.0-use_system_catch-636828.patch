@@ -1,0 +1,21 @@
+Add CMake option to disable upstream's catch download, we always want to use the 
+system wide installed version. Gentoo bug 636828.
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 86ce5a4..b36df56 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -10,7 +10,9 @@ list(APPEND CATCH_CMAKE_ARGS
+     "-DNO_SELFTEST=true"
+ )
+ 
+-if(GIT_FOUND)
++option(FORCE_SYSTEM_CATCH "Force usage of system-wide catch install" OFF)
++
++if(NOT ${FORCE_SYSTEM_CATCH} AND GIT_FOUND)
+     # add catch
+     ExternalProject_Add(
+         catch
+-- 
+2.13.6
+

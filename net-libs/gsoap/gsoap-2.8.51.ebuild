@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ RDEPEND="
 	gnutls? ( net-libs/gnutls )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
+		libressl? ( dev-libs/libressl:0= )
 	)
 "
 DEPEND="${RDEPEND}
@@ -40,6 +40,9 @@ src_prepare() {
 
 	# enable shared libs https://bugs.gentoo.org/583398
 	eapply "${FILESDIR}/${PN}-2.7.40-shared_libs.patch"
+
+	# fix building with libressl-2.6.x.  This will not be needed when 2.7.x goes stable
+	eapply "${FILESDIR}/${PN}-2.8.51-libressl-2.6-compatibility.patch"
 
 	eautoreconf
 }

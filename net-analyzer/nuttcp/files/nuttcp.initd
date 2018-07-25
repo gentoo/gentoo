@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/nuttcp"
+command_background="yes"
+command_args="${NUTTCP_OPTS}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}
+
+start_post() {
+	pgrep -n "${RC_SVCNAME%%.*}" > "${pidfile}"
+}

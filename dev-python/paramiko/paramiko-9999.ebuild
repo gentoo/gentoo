@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="SSH2 protocol library"
-HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.python.org/pypi/paramiko/"
+HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/paramiko/paramiko.git"
 

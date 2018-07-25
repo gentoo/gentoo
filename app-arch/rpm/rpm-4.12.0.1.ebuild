@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,13 +13,14 @@ SRC_URI="http://rpm.org/releases/rpm-$(get_version_component_range 1-2).x/${P}.t
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="nls python doc caps lua acl selinux"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="!app-arch/rpm5
 	app-arch/libarchive
-	>=sys-libs/db-4.5
+	>=sys-libs/db-4.5:*
 	>=sys-libs/zlib-1.2.3-r1
 	>=app-arch/bzip2-1.0.1
 	>=dev-libs/popt-1.7
@@ -30,19 +31,17 @@ CDEPEND="!app-arch/rpm5
 	dev-libs/nss
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	lua? ( >=dev-lang/lua-5.1.0[deprecated] )
+	lua? ( >=dev-lang/lua-5.1.0:*[deprecated] )
 	acl? ( virtual/acl )
-	caps? ( >=sys-libs/libcap-2.0 )"
-
+	caps? ( >=sys-libs/libcap-2.0 )
+"
 DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
-	doc? ( app-doc/doxygen )"
-
+	doc? ( app-doc/doxygen )
+	virtual/pkgconfig
+"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-rpm )"
-
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
+	selinux? ( sec-policy/selinux-rpm )
 "
 
 src_prepare() {

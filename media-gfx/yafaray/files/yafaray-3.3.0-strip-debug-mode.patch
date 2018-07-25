@@ -1,0 +1,12 @@
+diff --git a/work/Core-3.3.0/CMakeLists.txt b/work/Core-3.3.0/CMakeLists.txt
+index 75fd2c6..52c6b3d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,6 @@ option(WITH_YAF_PY_BINDINGS "Enable the YafaRay Python bindings" ON)
+ option(WITH_YAF_RUBY_BINDINGS "Enable the YafaRay Ruby bindings" OFF)
+ option(WITH_OSX_ADDON "Enable the use of blender's included python lib on OSX platforms" OFF)
+ option(WITH_OpenCV "Build OpenCV image processing support" ON)
+-option(DEBUG_BUILD "Enable debug build mode" OFF)
+ option(EMBED_FONT_QT "Embed font for QT GUI (usefull for some buggy QT installations)" OFF)
+ option(FAST_MATH "Enable mathematic approximations to make code faster" ON)
+ option(FAST_TRIG "Enable trigonometric approximations to make code faster" ON)

@@ -1,0 +1,13 @@
+diff --git a/lily/general-scheme.cc b/lily/general-scheme.cc
+index d25e6c9ef8..2fd2e4a4fa 100644
+--- a/lily/general-scheme.cc
++++ b/lily/general-scheme.cc
+@@ -275,7 +275,7 @@ LY_DEFINE (ly_protects, "ly:protects",
+ #if SCM_MAJOR_VERSION < 2 || SCM_MAJOR_VERSION == 2 && SCM_MINOR_VERSION < 1
+   return scm_protects;
+ #else
+-  return programming_error ("ly:protects is not supported in Guile 2.1");
++  programming_error ("ly:protects is not supported in Guile 2.1");
+ #endif
+ }
+ 

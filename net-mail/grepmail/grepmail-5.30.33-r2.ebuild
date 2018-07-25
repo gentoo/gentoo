@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ MY_P="${PN}-$(delete_version_separator 2)"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Search normal or compressed mailbox using a regular expression or dates"
-HOMEPAGE="http://grepmail.sourceforge.net/"
+HOMEPAGE="https://github.com/coppit/grepmail"
 SRC_URI="mirror://sourceforge/grepmail/${MY_P}.tar.gz"
 
 SLOT="0"

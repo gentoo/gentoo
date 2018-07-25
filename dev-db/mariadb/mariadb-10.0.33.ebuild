@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ JAVA_PKG_OPT_USE="jdbc"
 
 inherit toolchain-funcs java-pkg-opt-2 mysql-multilib-r1
 
-HOMEPAGE="http://mariadb.org/"
+HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 
 IUSE="bindist jdbc odbc oqgraph pam sphinx tokudb xml"
@@ -19,7 +19,7 @@ RESTRICT="!bindist? ( bindist )"
 REQUIRED_USE="jdbc? ( extraengine server !static ) server? ( tokudb? ( jemalloc !tcmalloc ) ) static? ( !pam )"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
-KEYWORDS="alpha ~amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 PATCHES=(

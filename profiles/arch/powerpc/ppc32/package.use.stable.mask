@@ -17,6 +17,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Jun 2018)
+# Requires not yet stable dev-qt/qtpositioning:5
+sci-astronomy/stellarium gps
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Jun 2018)
+# Requires not yet stable dependencies
+sys-libs/gwenhywfar sensors serialport webkit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Jun 2018)
+# dev-qt/qtwebkit:5 is not stable.
+dev-qt/designer webkit
+
 # Michael Weber <xmw@gentoo.org> (01 Mar 2017)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
@@ -28,13 +40,10 @@ sci-libs/plplot ocaml
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
-app-misc/gramps webkit
 dev-java/swt webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 mail-client/balsa webkit
-media-gfx/gimp webkit
->=net-libs/webkit-gtk-2.4 geoloc
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome

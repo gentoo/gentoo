@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,7 +47,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	tar xjf "${DISTDIR}/${A}" boost_${MY_PV}/tools/build || die "unpacking tar failed"
+	tar xojf "${DISTDIR}/${A}" boost_${MY_PV}/tools/build || die "unpacking tar failed"
 }
 
 src_prepare() {

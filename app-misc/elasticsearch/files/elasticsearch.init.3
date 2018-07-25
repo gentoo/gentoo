@@ -8,11 +8,11 @@ ES_INSTANCE=${SVCNAME#*.}
 if [ -n "${ES_INSTANCE}" ] && [ ${SVCNAME} != "elasticsearch" ]; then
 	ES_BASE_PATH="/var/lib/elasticsearch/${ES_INSTANCE}"
 	CONF_DIR="/etc/elasticsearch/${ES_INSTANCE}"
-	LOG_DIR="/var/log/elasticsearch/${ES_INSTANCE}"
+	DEFAULT_LOG_DIR="/var/log/elasticsearch/${ES_INSTANCE}"
 else
 	ES_BASE_PATH="/var/lib/elasticsearch/_default"
 	CONF_DIR="/etc/elasticsearch"
-	LOG_DIR="/var/log/elasticsearch/_default"
+	DEFAULT_LOG_DIR="/var/log/elasticsearch/_default"
 fi
 
 ES_HOME=${ES_HOME:="/usr/share/elasticsearch"}
@@ -23,6 +23,7 @@ MAX_OPEN_FILES=${MAX_OPEN_FILES:=65536}
 MAX_MAP_COUNT=${MAX_MAP_COUNT:=262144}
 
 DATA_DIR=${DATA_DIR:="${ES_BASE_PATH}/data"}
+LOG_DIR=${LOG_DIR:="${DEFAULT_LOG_DIR}"}
 
 if [ -f "${CONF_DIR}/elasticsearch.in.sh" ]; then
     ES_INCLUDE="${CONF_DIR}/elasticsearch.in.sh"

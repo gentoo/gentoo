@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ros/tf2_geometry_msgs
 	dev-ros/tf2_ros
 	dev-ros/nodelet
+	dev-libs/console_bridge:=
 	dev-ros/pluginlib
 	dev-ros/message_filters
 	dev-ros/dynamic_reconfigure

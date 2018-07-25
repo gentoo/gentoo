@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit cmake-utils eutils gnome2-utils user vcs-snapshot
 
 DESCRIPTION="An InfiniMiner/Minecraft inspired game"
-HOMEPAGE="http://minetest.net/"
+HOMEPAGE="https://www.minetest.net"
 SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"

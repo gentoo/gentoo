@@ -1,0 +1,26 @@
+From fca8c808b7fa4a947a0c60157f0eb5227b3ccfff Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@liri.io>
+Date: Mon, 26 Feb 2018 09:03:05 +0100
+Subject: [PATCH] Fix race between sddm and logind
+
+Make sure sddm is run after logind.
+An explicit dependency will make sddm run after logind every time.
+
+Closes: #978
+---
+ services/sddm.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/services/sddm.service.in b/services/sddm.service.in
+index df03d92a..9d7618c6 100644
+--- a/services/sddm.service.in
++++ b/services/sddm.service.in
+@@ -2,7 +2,7 @@
+ Description=Simple Desktop Display Manager
+ Documentation=man:sddm(1) man:sddm.conf(5)
+ Conflicts=getty@tty1.service
+-After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service
++After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service systemd-logind.service
+ 
+ [Service]
+ ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/sddm

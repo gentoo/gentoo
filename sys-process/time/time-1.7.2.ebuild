@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,9 +9,9 @@ DESCRIPTION="Displays info about resources used by a program"
 HOMEPAGE="https://www.gnu.org/directory/time.html"
 SRC_URI="http://git.savannah.gnu.org/cgit/time.git/snapshot/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="sys-apps/texinfo"

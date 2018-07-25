@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,16 +17,16 @@ if [[ -z ${PV%%*9999} ]]; then
 	ECVS_CVS_OPTIONS="-dP"
 	MY_P="${PN}"
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="alpha amd64 arm ia64 ppc ppc64 x86"
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="gnuplot bitmap? ( free-noncomm )"
 SLOT="0"
-IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline svga wxwidgets X"
+IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline regis svga wxwidgets X"
 
 RDEPEND="
 	cairo? (
@@ -61,7 +61,8 @@ DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-latexextra
-		app-text/ghostscript-gpl )"
+		app-text/ghostscript-gpl )
+	qt5? ( dev-qt/linguist-tools:5 )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -72,6 +73,7 @@ TEXMF="${EPREFIX}/usr/share/texmf-site"
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	eapply "${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	eapply "${FILESDIR}"/${PN}-5.2.2-regis.patch
 	eapply_user
 
 	if [[ -z ${PV%%*9999} ]]; then
@@ -137,6 +139,7 @@ src_configure() {
 		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")" \
 		$(use_with libcerf) \
 		$(use_with lua) \
+		$(use_with regis) \
 		$(use_with svga linux-vga) \
 		$(use_with X x) \
 		--enable-stats \

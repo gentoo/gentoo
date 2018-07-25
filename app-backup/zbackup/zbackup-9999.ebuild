@@ -17,7 +17,7 @@ IUSE="libressl tartool"
 
 DEPEND="app-arch/lzma
 	dev-libs/lzo:2
-	<dev-libs/protobuf-3:0=
+	dev-libs/protobuf:0=
 	sys-libs/libunwind:7
 	sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )

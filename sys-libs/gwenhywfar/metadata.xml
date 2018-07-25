@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>hanno@gentoo.org</email>
-  </maintainer>
-  <use>
-    <flag name="fox">Use <pkg>x11-libs/fox</pkg> graphical toolkit</flag>
-  </use>
+	<maintainer type="person">
+		<email>hanno@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="fox">Use <pkg>x11-libs/fox</pkg> graphical toolkit</flag>
+		<flag name="qml">Enable support for plugins using QML</flag>
+		<flag name="sensors">Enable support for <pkg>dev-qt/qtsensors</pkg> module</flag>
+		<flag name="serialport">Enable support for <pkg>dev-qt/qtserialport</pkg> module</flag>
+		<flag name="webkit">Enable support for <pkg>dev-qt/qtwebkit</pkg></flag>
+	</use>
 </pkgmetadata>

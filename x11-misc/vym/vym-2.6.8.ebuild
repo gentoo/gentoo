@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,10 +34,10 @@ DOCS=( README.md doc/vym.pdf )
 src_prepare() {
 	default
 
-	if use linguas_es ; then
+	if has es ${LINGUAS-es} ; then
 		DOCS+=( doc/vym_es.pdf )
 	fi
-	if use linguas_fr ; then
+	if has fr ${LINGUAS-fr} ; then
 		DOCS+=( doc/vym_fr.pdf )
 	fi
 

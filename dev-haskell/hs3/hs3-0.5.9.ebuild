@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ MY_PN="hS3"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Interface to Amazon's Simple Storage Service (S3)"
-HOMEPAGE="http://gregheartsfield.com/hS3/"
+HOMEPAGE="https://gregheartsfield.com/hS3/"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

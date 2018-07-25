@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,11 +14,6 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 # Package warrants IUSE doc and possibly examples
 IUSE="exif"
-
-LINS="de en it fr"
-for i in ${LINS}; do
-	IUSE="${IUSE} linguas_${i}"
-done
 
 RDEPEND="media-gfx/imagemagick
 	 dev-perl/Image-Size

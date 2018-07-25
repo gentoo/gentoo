@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit python-single-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="The SunPinYin IMEngine for IBus Framework"
 HOMEPAGE="https://sunpinyin.googlecode.com/"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-${PV}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/sunpinyin-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0"

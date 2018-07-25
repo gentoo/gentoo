@@ -3,7 +3,7 @@
 
 EAPI=6
 MODULES_OPTIONAL_USE="modules"
-inherit user linux-mod cmake-utils udev
+inherit flag-o-matic user linux-mod cmake-utils udev
 
 MY_P=${P/-/_}
 DESCRIPTION="Emulator driver for tpm"
@@ -46,6 +46,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_OPENSSL=$(usex ssl)
 	)
+	append-cflags -Wno-implicit-fallthrough
 	cmake-utils_src_configure
 
 	# only here we have BUILD_DIR

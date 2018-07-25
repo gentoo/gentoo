@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="http://www.dbmail.org/download/$(get_version_component_range 1-2)/${P}.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="ldap sieve ssl static"
+IUSE="ldap libressl sieve ssl static"
 
 DEPEND="dev-db/libzdb
 	sieve? ( >=mail-filter/libsieve-2.2.1 )
@@ -24,7 +24,10 @@ DEPEND="dev-db/libzdb
 	dev-libs/gmime:2.6
 	>=dev-libs/glib-2.16
 	dev-libs/libevent
-	ssl? ( dev-libs/openssl )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 RDEPEND="${DEPEND}"
 
 DOCS="AUTHORS README.md INSTALL THANKS UPGRADING"

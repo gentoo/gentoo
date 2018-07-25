@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Client Library for accessing the latest XML based MusicBrainz web service"
 HOMEPAGE="https://musicbrainz.org/doc/libmusicbrainz"
@@ -27,6 +27,13 @@ S="${WORKDIR}/lib${P}"
 src_prepare() {
 	use test || cmake_comment_add_subdirectory tests
 	cmake-utils_src_prepare
+}
+
+src_configure() {
+	# bug 619668
+	append-cxxflags -std=c++14
+
+	cmake-utils_src_configure
 }
 
 src_install() {

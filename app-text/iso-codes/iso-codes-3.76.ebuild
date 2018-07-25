@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://pkg-isocodes.alioth.debian.org/downloads/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 RDEPEND=""
@@ -64,7 +64,7 @@ src_prepare() {
 		pushd "${std}" >/dev/null || die
 		mylinguas=()
 		for loc in *.po; do
-			if use "linguas_${loc%.po}"; then
+			if has ${loc%.po} ${LINGUAS-${loc%.po}}; then
 				mylinguas+=( "${loc}" )
 			fi
 		done

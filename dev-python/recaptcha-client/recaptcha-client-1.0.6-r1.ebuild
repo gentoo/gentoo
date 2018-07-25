@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="A plugin for reCAPTCHA and reCAPTCHA Mailhide"
-HOMEPAGE="https://pypi.python.org/pypi/recaptcha-client/"
+HOMEPAGE="https://pypi.org/project/recaptcha-client/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 KEYWORDS="amd64 x86"
 IUSE=""

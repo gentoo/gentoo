@@ -1,0 +1,75 @@
+Description: Fixes by ZeroC, Inc.
+Author: ZeroC, Inc.
+Bug-Debian: http://bugs.debian.org/611749
+
+--- mcpp-2.7.2.orig/src/main.c
++++ mcpp-2.7.2/src/main.c
+@@ -326,6 +326,8 @@ static void     init_main( void)
+             = FALSE;
+     option_flags.trig = TRIGRAPHS_INIT;
+     option_flags.dig = DIGRAPHS_INIT;
++    sh_file = NULL;
++    sh_line = 0;
+ }
+ 
+ int     mcpp_lib_main
+--- mcpp-2.7.2.orig/src/support.c
++++ mcpp-2.7.2/src/support.c
+@@ -188,7 +188,7 @@ static char *   append_to_buffer(
+     size_t      length
+ )
+ {
+-    if (mem_buf_p->bytes_avail < length) {  /* Need to allocate more memory */
++    if (mem_buf_p->bytes_avail < length + 1) {  /* Need to allocate more memory */
+         size_t size = MAX( BUF_INCR_SIZE, length);
+ 
+         if (mem_buf_p->buffer == NULL) {            /* 1st append   */
+@@ -1722,6 +1722,8 @@ com_start:
+                     sp -= 2;
+                     while (*sp != '\n')     /* Until end of line    */
+                         mcpp_fputc( *sp++, OUT);
++                    mcpp_fputc( '\n', OUT);
++                    wrong_line = TRUE;
+                 }
+                 goto  end_line;
+             default:                        /* Not a comment        */
+--- mcpp-2.7.2.orig/src/internal.H
++++ mcpp-2.7.2/src/internal.H
+@@ -390,6 +390,8 @@ extern char * const     work_end;   /* E
+ extern char     identifier[];       /* Lastly scanned name          */
+ extern IFINFO   ifstack[];          /* Information of #if nesting   */
+ extern char     work_buf[];
++extern FILEINFO * sh_file;
++extern int      sh_line;
+         /* Temporary buffer for directive line and macro expansion  */
+ 
+ /* main.c   */
+@@ -557,6 +559,6 @@ extern void     init_system( void);
+ #endif
+ #endif
+ 
+-#if HOST_HAVE_STPCPY
++#if HOST_HAVE_STPCPY && !defined(stpcpy)
+ extern char *   stpcpy( char * dest, const char * src);
+ #endif
+--- mcpp-2.7.2.orig/src/system.c
++++ mcpp-2.7.2/src/system.c
+@@ -3858,6 +3858,9 @@ static int  chk_dirp(
+ }
+ #endif
+ 
++FILEINFO*       sh_file;
++int             sh_line;
++
+ void    sharp(
+     FILEINFO *  sharp_file,
+     int         flag        /* Flag to append to the line for GCC   */
+@@ -3868,8 +3871,6 @@ void    sharp(
+  * else (i.e. 'sharp_file' is NULL) 'infile'.
+  */
+ {
+-    static FILEINFO *   sh_file;
+-    static int  sh_line;
+     FILEINFO *  file;
+     int         line;
+ 

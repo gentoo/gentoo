@@ -1,5 +1,7 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Check the status of services running on local/remote machines"
 HOMEPAGE="http://www.linvision.com/checkservice/"

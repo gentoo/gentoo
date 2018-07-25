@@ -1,5 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils multilib toolchain-funcs
 
@@ -10,7 +12,7 @@ MY_P_ORIG="${MY_PN}_${MY_PV_ORIG}.orig"
 MY_P_PATCH="${MY_PN}_${MY_PV_PATCH}.diff"
 
 DESCRIPTION="dockapp showing weather at geosynchronous orbit"
-HOMEPAGE="http://packages.debian.org/sid/wmspaceweather"
+HOMEPAGE="https://www.dockapps.net/wmspaceweather"
 SRC_URI="mirror://debian/pool/main/w/${MY_PN}/${MY_P_ORIG}.tar.gz
 	    mirror://debian/pool/main/w/${MY_PN}/${MY_P_PATCH}.gz"
 
@@ -23,8 +25,7 @@ CDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${CDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 RDEPEND="${CDEPEND}
 	net-misc/curl
 	dev-lang/perl"

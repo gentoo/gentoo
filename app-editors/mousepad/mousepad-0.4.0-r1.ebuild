@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2-utils xdg-utils
 
 DESCRIPTION="GTK+-based editor for the Xfce Desktop Environment"
-HOMEPAGE="https://goodies.xfce.org/projects/applications/start"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+HOMEPAGE="https://git.xfce.org/apps/mousepad/about/"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dbus gtk3"
 
 RDEPEND=">=dev-libs/glib-2.30:2=

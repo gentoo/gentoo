@@ -1,0 +1,56 @@
+zsnes call C initialization code from assembler.
+
+Example backtrace:
+
+    Thread 1 "zsnes" received signal SIGSEGV, Segmentation fault.
+    => 0xf7550275 <+37>:    vmovdqa (%esp),%xmm1
+    ...
+    #13 0x5699ef82 in InitSound () at linux/audio.c:336
+    #14 0x569a25af in initwinvideo () at linux/sdllink.c:1080
+    #15 0x5699fc13 in initvideo () at linux/sdllink.c:1298
+    #16 0x56f9d5bc in regptwa ()
+    #17 0x56a34b50 in SA1tableG ()
+    #18 0x56f84788 in selcB800 ()
+    ...
+
+Call to 'initwinvideo' (first C function) looks like that:
+  NEWSYM InitPreGame   ; Executes before starting/continuing a game
+      mov byte[pressed+1],2
+      pushad
+      call Start60HZ
+  %ifdef __OPENGL__
+      call drawscreenwin
+  %endif
+      call initwinvideo
+
+Note: pushad / call does not 16-byte maintain stack alignment
+and breaks i386 ABI.
+
+We apply realignment attribute to all functions noticed by users.
+Bug: https://bugs.gentoo.org/503138
+--- src/linux/sdllink.c.old
++++ src/linux/sdllink.c
+@@ -773,11 +773,11 @@ BOOL InitInput()
+ {
+   InitJoystickInput();
+   return TRUE;
+ }
+ 
+-int startgame()
++int __attribute__((force_align_arg_pointer)) startgame()
+ {
+   static bool ranonce = false;
+   int status;
+ 
+   if (!ranonce)
+--- a/linux/sdllink.c
++++ b/linux/sdllink.c
+@@ -897,7 +897,7 @@ bool OGLModeCheck()
+    return(cvidmode > 4);
+ }
+ 
+-void initwinvideo(void)
++void __attribute__((force_align_arg_pointer)) initwinvideo(void)
+ {
+   DWORD newmode = 0;
+ 

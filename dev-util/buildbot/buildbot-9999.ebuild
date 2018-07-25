@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,11 +10,11 @@ EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
-MY_PV="${PV/_p/p}"
+MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.python.org/pypi/buildbot"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot/"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -25,7 +25,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="crypt doc examples irc test"
+IUSE="crypt doc docker examples irc test"
 
 RDEPEND="
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
@@ -48,6 +48,9 @@ RDEPEND="
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)
+	docker? (
+		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
@@ -59,14 +62,12 @@ DEPEND="${RDEPEND}
 		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
 		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
 		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
 		dev-python/pyjade[${PYTHON_USEDEP}]
 		dev-python/txgithub[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
@@ -74,10 +75,17 @@ DEPEND="${RDEPEND}
 		dev-python/treq[${PYTHON_USEDEP}]
 		dev-python/setuptools_trial[${PYTHON_USEDEP}]
 		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
 	)"
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
+
+if [[ ${PV} != *9999 ]]; then
+	PATCHES=(
+		"${FILESDIR}/Remove-distro-version-test.patch"
+	)
+fi
 
 pkg_setup() {
 	enewuser buildbot

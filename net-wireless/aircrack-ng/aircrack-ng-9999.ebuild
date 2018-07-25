@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,16 +6,15 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit toolchain-funcs distutils-r1 flag-o-matic
+inherit toolchain-funcs distutils-r1 flag-o-matic autotools
 
 DESCRIPTION="WLAN tools for breaking 802.11 WEP/WPA keys"
 HOMEPAGE="http://www.aircrack-ng.org"
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit subversion
-	ESVN_REPO_URI="http://svn.aircrack-ng.org/trunk"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
 	KEYWORDS=""
-	S="${WORKDIR}/${PN}"
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="http://download.${PN}.org/${PN}-${MY_PV}.tar.gz"
@@ -36,8 +35,8 @@ DEPEND="net-libs/libpcap
 	airgraph-ng? ( ${PYTHON_DEPS} )
 	experimental? ( sys-libs/zlib )
 	sqlite? ( >=dev-db/sqlite-3.4 )"
-RDEPEND="${DEPEND}
-	kernel_linux? (
+RDEPEND="${DEPEND}"
+PDEPEND="kernel_linux? (
 		net-wireless/iw
 		net-wireless/wireless-tools
 		sys-apps/ethtool
@@ -56,15 +55,24 @@ pkg_setup() {
 		AR="$(tc-getAR)" \
 		LD="$(tc-getLD)" \
 		RANLIB="$(tc-getRANLIB)" \
-		libnl=$(usex netlink true false) \
-		pcre=$(usex pcre true false) \
-		sqlite=$(usex sqlite true false) \
-		experimental=$(usex experimental true false)
-		prefix="${ED}/usr" \
+		DESTDIR="${ED}"
 	)
-	[[ ${PV} == "9999" ]] && MAKE_COMMON+=(
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
-	)
+}
+
+src_prepare() {
+	eapply_user
+	eautoreconf
+}
+
+src_configure() {
+	econf \
+		--disable-asan \
+		$(use_enable netlink libnl) \
+		$(use_with experimental) \
+		$(use_with sqlite sqlite3) \
+		--enable-shared \
+		--disable-static \
+		--without-opt
 }
 
 src_compile() {

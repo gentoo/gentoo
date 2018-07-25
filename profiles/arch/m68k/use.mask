@@ -34,7 +34,6 @@ ldap
 slang
 diet
 gtk
-qt4
 mono
 python
 cairo
@@ -56,7 +55,6 @@ emf
 R
 octave
 bluetooth
-autotrace
 lqr
 policykit
 bash-completion

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ SSL_CERT_MANDATORY=1
 inherit eutils pam rebar ssl-cert systemd
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
-HOMEPAGE="http://www.ejabberd.im/ https://github.com/processone/ejabberd/"
-SRC_URI="http://www.process-one.net/downloads/${PN}/${PV}/${P}.tgz
+HOMEPAGE="https://www.ejabberd.im/ https://github.com/processone/ejabberd/"
+SRC_URI="https://www.process-one.net/downloads/${PN}/${PV}/${P}.tgz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -41,6 +41,7 @@ CDEPEND="
 	>=dev-erlang/stringprep-1.0.6
 	>=dev-erlang/stun-1.0.7
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
+	!>=dev-lang/erlang-20.0
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( >=dev-erlang/p1_mysql-1.0.1 )
@@ -263,7 +264,7 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		echo
 		elog "For configuration instructions, please see"
-		elog "  http://www.process-one.net/en/ejabberd/docs/"
+		elog "  https://docs.ejabberd.im/"
 		echo
 		if [[ " ${REPLACING_VERSIONS} " =~ \ 2\. ]]; then
 			ewarn "If you have used pubsub in ejabberd-2.* you may encounter issues after"

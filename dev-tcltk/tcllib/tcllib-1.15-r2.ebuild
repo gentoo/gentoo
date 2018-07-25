@@ -8,8 +8,7 @@ inherit eutils virtualx
 DESCRIPTION="Tcl Standard Library"
 HOMEPAGE="http://www.tcl.tk/software/tcllib/"
 SRC_URI="
-	https://dev.gentoo.org/~jlec/distfiles/${P}-manpage-rename.patch.xz
-	https://dev.gentoo.org/~jlec/distfiles/${P}-test.patch.xz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.xz
 	mirror://sourceforge/tcllib/${P}.tar.bz2"
 
 LICENSE="BSD"
@@ -23,15 +22,15 @@ DEPEND="${RDEPEND}"
 DOCS=( DESCRIPTION.txt STATUS )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-tcl8.6-test.patch
-	"${WORKDIR}"/${P}-test.patch
-	"${WORKDIR}"/${P}-manpage-rename.patch
-	"${FILESDIR}"/${P}-XSS-vuln.patch
+	"${WORKDIR}"/${P}-patchset/${P}-tcl8.6-test.patch
+	"${WORKDIR}"/${P}-patchset/${P}-test.patch
+	"${WORKDIR}"/${P}-patchset/${P}-manpage-rename.patch
+	"${WORKDIR}"/${P}-patchset/${P}-XSS-vuln.patch
 )
 
 src_prepare() {
 	has_version ">=dev-lang/tcl-8.6" && \
-		PATCHES+=( "${FILESDIR}"/${P}-test.patch )
+		PATCHES+=( "${WORKDIR}"/${P}-patchset/${P}-tcl8.6-test-2.patch )
 	epatch "${PATCHES[@]}"
 }
 

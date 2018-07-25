@@ -89,6 +89,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtsql:5
 		dev-qt/qtwebkit:5
+		dev-qt/qtx11extras:5
 		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 	)
 	R? ( dev-lang/R )

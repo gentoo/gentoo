@@ -17,7 +17,7 @@
 			<email>mgorny@gentoo.org</email>
 			<name>Michał Górny</name>
 		</maintainer>
-		<bugs-to>https://bitbucket.org/mgorny/diffmask/issues/</bugs-to>
-		<remote-id type="bitbucket">mgorny/diffmask</remote-id>
+		<bugs-to>https://github.com/mgorny/diffmask/issues/</bugs-to>
+		<remote-id type="github">mgorny/diffmask</remote-id>
 	</upstream>
 </pkgmetadata>

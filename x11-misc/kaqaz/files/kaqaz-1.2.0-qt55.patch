@@ -2,8 +2,8 @@ Fix build with Qt 5.5.
 
 Gentoo-bug: 563678
 
---- databasedatatypes.h
-+++ databasedatatypes.h
+--- a/databasedatatypes.h
++++ b/databasedatatypes.h
 @@ -23,6 +23,7 @@
  #include <QColor>
  #include <QStringList>

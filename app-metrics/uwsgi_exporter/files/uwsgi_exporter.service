@@ -1,0 +1,16 @@
+[Unit]
+Description=uWSGI metrics exporter for prometheus.io
+Documentation=https://github.com/timonwong/uwsgi_exporter/
+After=network-online.target
+
+[Service]
+User=uwsgi_exporter
+Restart=on-failure
+Environment=UWSGI_EXPORTER_ARGS="--web.listen-address=:9117 --stats.uri=http://localhost:1717"
+ExecStart=/usr/bin/uwsgi_exporter $UWSGI_EXPORTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

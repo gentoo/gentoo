@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
 DESCRIPTION="Unicode Support version of Text.Regex, using regex-tdfa"
-HOMEPAGE="http://hub.darcs.net/shelarcy/regex-compat-tdfa"
+HOMEPAGE="https://hub.darcs.net/shelarcy/regex-compat-tdfa"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

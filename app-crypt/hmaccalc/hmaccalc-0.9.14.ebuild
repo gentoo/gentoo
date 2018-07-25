@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit multilib-minimal
 
 DESCRIPTION="Tools for computing and checking HMAC values for files"
-HOMEPAGE="https://fedorahosted.org/hmaccalc/"
-SRC_URI="https://fedorahosted.org/released/hmaccalc/hmaccalc-${PV}.tar.gz"
+HOMEPAGE="https://pagure.io/hmaccalc"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

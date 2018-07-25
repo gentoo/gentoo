@@ -38,7 +38,12 @@
     <flag name="phpdbg">
       Enable the PHP Debug Command Line SAPI (like gdb for php)
     </flag>
-    <flag name="sodium">Enable support for crypto through libsodium</flag>
+    <flag name="session-mm">
+      Include <pkg>dev-libs/mm</pkg> support for session storage
+    </flag>
+    <flag name="sodium">
+      Enable support for crypto through <pkg>dev-libs/libsodium</pkg>
+    </flag>
     <flag name="tokyocabinet">
       Enable support for <pkg>dev-db/tokyocabinet</pkg> db backend</flag>
     <flag name="xmlreader">Enable XMLReader support</flag>

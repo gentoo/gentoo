@@ -20,5 +20,7 @@
 		<flag name="spamassassin">Build <pkg>mail-filter/spamassassin</pkg>
 			plugin</flag>
 		<flag name="weather">Enable optional weather calendar support</flag>
+		<flag name="ytnef">Enable optional TNEF attachments parser support using
+			<pkg>net-mail/ytnef</pkg></flag>
 	</use>
 </pkgmetadata>

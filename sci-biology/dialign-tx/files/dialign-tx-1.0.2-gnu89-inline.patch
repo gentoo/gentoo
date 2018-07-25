@@ -1,0 +1,11 @@
+--- a/source/diag.c
++++ b/source/diag.c
+@@ -958,7 +958,7 @@
+  * The pointer returned (and the ones included in the struct)  
+  * has to be deallocted explicitely from memory. 
+  */ 
+-inline struct simple_diag_col* find_diags_dialign(struct scr_matrix *smatrix,  
++static inline struct simple_diag_col* find_diags_dialign(struct scr_matrix *smatrix,  
+ 				struct prob_dist *pdist, struct seq* seq1,  
+ 				struct seq* seq2, struct alignment *algn, 
+ 				 long double **tmp_dist, int round) { 

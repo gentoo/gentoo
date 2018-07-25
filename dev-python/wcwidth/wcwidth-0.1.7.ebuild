@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Measures number of Terminal column cells of wide-character codes"
-HOMEPAGE="https://pypi.python.org/pypi/wcwidth/ https://github.com/jquast/wcwidth"
+HOMEPAGE="https://pypi.org/project/wcwidth/ https://github.com/jquast/wcwidth"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

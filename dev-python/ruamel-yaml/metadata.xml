@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>fkmclane@gmail.com</email>
+		<name>Foster McLane</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="bitbucket">ruamel/yaml</remote-id>
+		<remote-id type="pypi">ruamel.yaml</remote-id>
+	</upstream>
+</pkgmetadata>

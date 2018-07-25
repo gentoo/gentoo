@@ -8,7 +8,6 @@
   <maintainer type="person">
     <email>rgkmg25@gmail.com</email>
     <name>Robert Kowalski</name>
-    <description>Proxy Maintainer. CC on bugs</description>
   </maintainer>
   <longdescription lang="en">
     Screenie is a small and lightweight GNU screen(1) frontend that is

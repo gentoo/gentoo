@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils autotools user
+inherit autotools user
 
 DESCRIPTION="mount and unmount removable devices without a password"
 HOMEPAGE="https://ignorantguru.github.com/udevil/"
@@ -28,12 +28,15 @@ pkg_setup(){
 	enewgroup plugdev
 }
 
-src_prepare() {
+PATCHES=(
 	# This works for 0.4.4 too, no sense copying the patch
-	epatch "${FILESDIR}"/${PN}-0.4.3-flags.patch
-	epatch "${FILESDIR}"/${P}-stat.patch
-	epatch "${FILESDIR}"/${P}-include-sysmacros-r1.patch
-	eapply_user
+	"${FILESDIR}"/${PN}-0.4.3-flags.patch
+	"${FILESDIR}"/${PN}-0.4.4-stat.patch
+	"${FILESDIR}"/${PN}-0.4.4-include-sysmacros.patch
+)
+
+src_prepare() {
+	default
 	eautoreconf
 }
 

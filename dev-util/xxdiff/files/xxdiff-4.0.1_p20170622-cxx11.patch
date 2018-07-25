@@ -1,0 +1,11 @@
+In gentoo qt5 already requires c++11 features:
+
+diff --git a/src/xxdiff.pro b/src/xxdiff.pro
+index 32b106b..16fcd1f 100644
+--- a/src/xxdiff.pro
++++ b/src/xxdiff.pro
+@@ -113,3 +113,3 @@ irix-n32:QMAKE_CFLAGS_RELEASE += -OPT:Olimit=4000
+ # auto_ptr deprecated in C++11, removed in C++17
+-linux: QMAKE_CXXFLAGS += -std=c++03
++linux: QMAKE_CXXFLAGS += -std=c++11
+ 

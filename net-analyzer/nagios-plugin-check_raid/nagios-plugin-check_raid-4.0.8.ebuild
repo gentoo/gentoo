@@ -14,7 +14,7 @@ SRC_URI="${HOMEPAGE}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="3ware aacraid dmraid hpa hpsa i2o megaraid-sas megaraid-scsi mpt mpt-sas2"
 
 DEPEND="dev-perl/Monitoring-Plugin

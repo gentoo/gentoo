@@ -1,0 +1,40 @@
+From e55f99e77f12ac5ece679e159e577ef91eee0ba4 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 15 Jan 2018 16:05:06 +1300
+Subject: Fix test failures on Perl 5.26+ w/ PERL_USE_UNSAFE_INC=0
+
+In future perls, CPAN.pm and Test::Harness will no longer be able to
+migitigate this failure mode by internally doing:
+
+  $ENV{PERL_USE_UNSAFE_INC}=1 unless exists $ENV{PERL_USE_UNSAFE_INC}
+
+This fixes this problem by avoiding the need for @INC traversal by
+using a literal path ( eg: one with a / or a ./ prefix ), not an
+"@INC-relative path" ( eg: Foo/Baz.pm ), and breaking the reliance on
+"." in @INC
+
+Additionally, this replaces "do" with "require" to give automatic error
+handling, instead of continuing when the library load fails.
+
+Bug: https://bugs.gentoo.org/623120
+Bug: https://rt.cpan.org/Ticket/Display.html?id=124080
+---
+ t/dbi.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/dbi.t b/t/dbi.t
+index 7193210..7b6dccf 100644
+--- a/t/dbi.t
++++ b/t/dbi.t
+@@ -16,7 +16,7 @@
+ use strict;
+ use warnings;
+ 
+-do "t/lib.pl";
++require "./t/lib.pl";
+ 
+ use Template::Test;
+ use Template::Stash;
+-- 
+2.15.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,10 +11,13 @@ SRC_URI="${HOMEPAGE}/releases/download/${P}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="command-args selinux ssl"
+IUSE="command-args libressl selinux ssl"
 
 DEPEND="sys-apps/tcp-wrappers
-	ssl? ( dev-libs/openssl:0 )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 RDEPEND="${DEPEND}
 	|| ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins )
 	selinux? ( sec-policy/selinux-nagios )"

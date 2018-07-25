@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="Extra preferences that are desired but are not worthy for Pidgin"
 HOMEPAGE="http://gaim-extprefs.sourceforge.net"
@@ -16,7 +16,3 @@ RDEPEND="net-im/pidgin[gtk]"
 DEPEND="
 	virtual/pkgconfig
 	${RDEPEND}"
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-}

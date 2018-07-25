@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.gz"
 
 LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug doc elogind selinux static-libs systemd test user-session X"
 
 #RESTRICT="test"
@@ -234,8 +234,8 @@ pkg_postinst() {
 	# Ensure unique id is generated and put it in /etc wrt #370451 but symlink
 	# for DBUS_MACHINE_UUID_FILE (see tools/dbus-launch.c) and reverse
 	# dependencies with hardcoded paths (although the known ones got fixed already)
-	dbus-uuidgen --ensure="${EROOT%/}"/etc/machine-id
-	ln -sf "${EPREFIX%/}"/etc/machine-id "${EROOT%/}"/var/lib/dbus/machine-id
+	dbus-uuidgen --ensure="${EROOT}"/etc/machine-id
+	ln -sf "${EPREFIX}"/etc/machine-id "${EROOT}"/var/lib/dbus/machine-id
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		local plist="org.freedesktop.dbus-session.plist"

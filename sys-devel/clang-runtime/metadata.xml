@@ -6,6 +6,8 @@
 	</maintainer>
 	<use>
 		<flag name="compiler-rt">Install <pkg>sys-libs/compiler-rt</pkg> for -rtlib=compiler-rt</flag>
+		<flag name="crt">Require a package providing crt*.o files to make it possible to build
+			software without GCC installed</flag>
 		<flag name="libcxx">Install <pkg>sys-libs/libcxx</pkg> for -stdlib=libc++</flag>
 		<flag name="openmp">Install <pkg>sys-libs/libomp</pkg> for -fopenmp support</flag>
 		<flag name="sanitize">Enable compiler-rt sanitizer (-fsanitize*) support</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ JAVA_PKG_OPT_USE="jdbc"
 
 inherit toolchain-funcs java-pkg-opt-2 mysql-multilib-r1
 
-HOMEPAGE="http://mariadb.org/"
+HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 
 IUSE="+backup bindist cracklib galera kerberos innodb-lz4 innodb-lzo innodb-snappy jdbc mroonga odbc oqgraph pam sphinx sst-rsync sst-mariabackup sst-xtrabackup tokudb systemd xml"
@@ -21,7 +21,7 @@ RESTRICT="!bindist? ( bindist )"
 REQUIRED_USE="jdbc? ( extraengine server !static ) server? ( tokudb? ( jemalloc !tcmalloc ) ) static? ( !pam )"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
-KEYWORDS="alpha ~amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 
@@ -76,8 +76,8 @@ RDEPEND="${RDEPEND} ${COMMON_DEPEND}
 		virtual/perl-Time-HiRes )
 	server? ( extraengine? ( jdbc? ( >=virtual/jre-1.6 ) ) )
 "
-# xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
-PDEPEND="galera? ( sst-xtrabackup? ( || ( >=dev-db/xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) )"
+# percona-xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
+PDEPEND="galera? ( sst-xtrabackup? ( || ( >=dev-db/percona-xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) )"
 
 MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h
 	/usr/include/mysql/private/probes_mysql_nodtrace.h

@@ -1,0 +1,35 @@
+diff -ur qp10.0.orig/src/xqp/term.cc qp10.0/src/xqp/term.cc
+--- qp10.0.orig/src/xqp/term.cc	2008-07-09 07:32:37.000000000 +0200
++++ qp10.0/src/xqp/term.cc	2018-01-27 14:06:54.101545854 +0100
+@@ -38,7 +38,7 @@
+ 
+ bool graphic_char(QChar c)
+ {
+-    switch (c.toAscii())
++    switch (c.toLatin1())
+     {
+        case '-':
+        case '/':
+diff -ur qp10.0.orig/src/xqp/xqp.cc qp10.0/src/xqp/xqp.cc
+--- qp10.0.orig/src/xqp/xqp.cc	2011-07-14 01:08:42.000000000 +0200
++++ qp10.0/src/xqp/xqp.cc	2018-01-27 14:07:53.902543353 +0100
+@@ -167,7 +167,7 @@
+ 
+ void Xqp::send_cmd_to_qp(QString cmd)
+ {
+-   write(qp_stdin, cmd.toAscii(), cmd.length());
++   write(qp_stdin, cmd.toLatin1(), cmd.length());
+ }
+ 
+   
+diff -ur qp10.0.orig/src/xqp/xqp.pro qp10.0/src/xqp/xqp.pro
+--- qp10.0.orig/src/xqp/xqp.pro	2008-07-09 07:32:37.000000000 +0200
++++ qp10.0/src/xqp/xqp.pro	2018-01-27 14:01:24.764559627 +0100
+@@ -4,6 +4,7 @@
+ 
+ TEMPLATE = app
+ INCLUDEPATH += .
++QT += widgets
+ 
+ # Input
+ HEADERS += interact.h qpconfig.h qthelp.h term.h xqp.h xqpqueries.h

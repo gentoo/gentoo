@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="Network address representation and manipulation library"
-HOMEPAGE="https://github.com/drkjam/netaddr https://pypi.python.org/pypi/netaddr"
+HOMEPAGE="https://github.com/drkjam/netaddr https://pypi.org/project/netaddr/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

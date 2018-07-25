@@ -1,10 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-inherit autotools-multilib
+EAPI=6
+
+inherit autotools multilib-minimal
 
 DESCRIPTION="Library for DVD navigation tools"
 HOMEPAGE="https://www.videolan.org/developers/libdvdnav.html"
@@ -20,10 +19,25 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="static-libs"
 
-RDEPEND=">=media-libs/libdvdread-5.0.2[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r4
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND=">=media-libs/libdvdread-5.0.3[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig" # To get pkg.m4 for eautoreconf #414391
 
 DOCS=( AUTHORS ChangeLog doc/dvd_structures doc/library_layout README TODO )
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+multilib_src_configure() {
+	local myeconfargs=(
+		--enable-shared
+		$(use_enable static-libs static)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	find "${ED}" -name "*.la" -delete || die
+}

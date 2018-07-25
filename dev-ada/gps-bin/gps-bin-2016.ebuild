@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-ada/gnatcoll[gnat_2016,iconv,postgresql,projects,readline,sqlite]
+	dev-ada/gnatcoll[gnat_2016,iconv,postgres,projects,readline,sqlite]
 	dev-libs/atk
 	dev-libs/glib
 	dev-libs/gobject-introspection

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,11 +8,12 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2 java-osgi
 
 DESCRIPTION="An ultra-thin bridge between different Java logging libraries"
-HOMEPAGE="http://commons.apache.org/logging/"
+HOMEPAGE="https://commons.apache.org/logging/"
 SRC_URI="mirror://apache/commons/logging/source/${P}-src.tar.gz"
+
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="avalon-framework avalon-logkit log4j servletapi test"
 RESTRICT="!servletapi? ( test )"
 
@@ -21,10 +22,12 @@ CDEPEND="avalon-framework? ( dev-java/avalon-framework:4.2 )
 	log4j? ( dev-java/log4j:0 )
 	servletapi? ( java-virtuals/servlet-api:3.1 )"
 
-RDEPEND="${CDEPEND}
+RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.6"
 
-DEPEND="${CDEPEND}
+DEPEND="
+	${CDEPEND}
 	>=virtual/jdk-1.6
 	test? ( dev-java/ant-junit:0 )"
 

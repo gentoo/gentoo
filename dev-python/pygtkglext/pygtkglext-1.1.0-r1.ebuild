@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools-utils python-r1
 
 DESCRIPTION="Python bindings to GtkGLExt"
-HOMEPAGE="http://gtkglext.sourceforge.net/"
+HOMEPAGE="https://projects-old.gnome.org/gtkglext/"
 SRC_URI="mirror://sourceforge/gtkglext/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 GPL-2"

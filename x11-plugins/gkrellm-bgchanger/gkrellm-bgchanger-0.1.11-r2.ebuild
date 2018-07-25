@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit gkrellm-plugin toolchain-funcs
 
 MY_PN="gkrellmbgchg2"
@@ -12,19 +13,19 @@ DESCRIPTION="Plugin for GKrellM2 to change your desktop background"
 HOMEPAGE="http://www.bender-suhl.de/stefan/english/comp/gkrellmbgchg.html"
 SRC_URI="http://www.bender-suhl.de/stefan/comp/sources/${MY_P}.tar.gz"
 
-SLOT="2"
 LICENSE="GPL-2"
+SLOT="2"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
-RDEPEND="app-admin/gkrellm[X]"
+RDEPEND="app-admin/gkrellm:2[X]"
 DEPEND="${RDEPEND}"
 
-PLUGIN_SO="gkrellmbgchg.so"
-PLUGIN_DOCS="bgchg_info.sh kdewallpaper.sh"
+PATCHES=( "${FILESDIR}"/${PN}-0.1.11-fix-build-system.patch )
 
-src_prepare() {
-	default
-	sed -i "s:local/::" Makefile || die
+PLUGIN_SO=( gkrellmbgchg$(get_modname) )
+PLUGIN_DOCS=( bgchg_info.sh kdewallpaper.sh )
+
+src_configure() {
 	tc-export CC
 }

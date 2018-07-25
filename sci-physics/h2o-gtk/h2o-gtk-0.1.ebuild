@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools-utils flag-o-matic
 
 DESCRIPTION="GTK+ UI for libh2o -- water & steam properties"
-HOMEPAGE="https://bitbucket.org/mgorny/h2o-gtk/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/h2o-gtk/"
+SRC_URI="https://github.com/mgorny/h2o-gtk/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

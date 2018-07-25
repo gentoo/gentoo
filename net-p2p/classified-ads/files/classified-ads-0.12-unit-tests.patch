@@ -1,0 +1,48 @@
+Patch-by: Antti Järvinen <antti.jarvinen@katiska.org>
+Fixes unit-tests that are in non-compiling condition in released source code.
+
+--- a/test/testca.pro	2017-11-17 18:30:27.000000000 +0300
++++ b/test/testca.pro	2017-11-21 21:55:00.000000000 +0300
+@@ -1,5 +1,5 @@
+ #
+-# Classified Ads is Copyright (c) Antti Järvinen 2013-2016.
++# Classified Ads is Copyright (c) Antti Järvinen 2013-2017.
+ #
+ # This file is part of Classified Ads.
+ #
+@@ -42,7 +42,8 @@ SOURCES = testca.cpp ../util/hash.cpp mockup_controller.cpp \
+            ../datamodel/voicecall.cpp ../datamodel/cadbrecord.cpp \
+            ../datamodel/cadbrecordmodel.cpp ../tcl/tclWrapper.cpp \
+            ../datamodel/tclprogram.cpp ../datamodel/tclmodel.cpp \
+-           ../tcl/tclCallbacks.cpp ../tcl/tclUtil.cpp ../ui/tclConsole.cpp
++           ../tcl/tclCallbacks.cpp ../tcl/tclUtil.cpp ../ui/tclConsole.cpp \
++           ../util/ungzip.cpp
+ HEADERS = ../util/hash.h ../mcontroller.h mockup_controller.h \
+ 	   ../datamodel/model.h ../datamodel/nodemodel.h \
+ 	   ../datamodel/contentencryptionmodel.h ../net/networklistener.h \
+@@ -68,13 +69,13 @@ HEADERS = ../util/hash.h ../mcontroller.h mockup_controller.h \
+            ../net/mvoicecallengine.h ../datamodel/voicecall.h ../datamodel/cadbrecord.h \
+            ../datamodel/cadbrecordmodel.h ../tcl/tclWrapper.h \
+            ../datamodel/tclprogram.h ../datamodel/tclmodel.h ../tcl/tclCallbacks.h \
+-           ../tcl/tclUtil.h ../ui/tclConsole.h
++           ../tcl/tclUtil.h ../ui/tclConsole.h ../util/ungzip.h
+ CONFIG  += debug qtestlib 
+ QT      += core network sql
+ greaterThan(QT_MAJOR_VERSION, 4) {
+     QT += widgets
+ }
+-LIBS = -lssl -lcrypto -lgcrypt -lnatpmp -lgcov -lminiupnpc -ltcl -ltk
++LIBS = -lssl -lcrypto -lgcrypt -lnatpmp -lgcov -lminiupnpc -ltcl -ltk -lz
+ lessThan(QT_MAJOR_VERSION, 5) {
+     LIBS += -lqjson
+ }
+--- a/util/ungzip.cpp	2017-11-17 18:30:27.000000000 +0300
++++ b/util/ungzip.cpp	2017-11-21 21:55:00.000000000 +0300
+@@ -23,6 +23,6 @@ static const unsigned KZLibBlockSize ( 1024 ) ;
+#include "ungzip.h"
+#include <zlib.h> // actual gzip functions and data-types
+-#include "log.h"
++#include "../log.h"
+ 
+ UnGZip::UnGZip() {
+     // not really used

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ PLOCALE_BACKUP="en"
 inherit l10n qmake-utils
 
 DESCRIPTION="Qt5 YouTube Client"
-HOMEPAGE="http://flavio.tordini.org/minitube"
+HOMEPAGE="https://flavio.tordini.org/minitube"
 SRC_URI="https://github.com/flaviotordini/${PN}/archive/${PV}.tar.gz ->
 ${P}.tar.gz"
 

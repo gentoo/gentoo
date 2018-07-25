@@ -19,5 +19,6 @@
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:andries_brouwer:util-linux</remote-id>
+	<remote-id type="github">karelzak/util-linux</remote-id>
 </upstream>
 </pkgmetadata>

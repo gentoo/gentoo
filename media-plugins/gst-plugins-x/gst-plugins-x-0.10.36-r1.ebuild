@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,8 +12,7 @@ IUSE=""
 RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
-	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]"
+	x11-base/xorg-proto"
 
 # xshm is a compile time option of ximage, which is in libXext
 GST_PLUGINS_BUILD="x xshm"

@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit flag-o-matic eutils python-single-r1
+inherit epatch eutils flag-o-matic python-single-r1
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -20,7 +20,7 @@ case ${PV} in
 9999*)
 	# live git tree
 	EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
-	inherit git-2
+	inherit git-r3
 	SRC_URI=""
 	;;
 *.*.50.2???????)
@@ -49,9 +49,13 @@ case ${PV} in
 esac
 
 PATCH_VER=""
+PATCH_DEV=""
 DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
-SRC_URI="${SRC_URI} ${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}"
+SRC_URI="${SRC_URI}
+	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz}
+	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
+"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
@@ -64,8 +68,10 @@ REQUIRED_USE="
 	|| ( client server )
 "
 
-RDEPEND="server? ( !dev-util/gdbserver )
+RDEPEND="
+	server? ( !dev-util/gdbserver )
 	client? (
+		dev-libs/mpfr:0=
 		>=sys-libs/ncurses-5.2-r2:0=
 		sys-libs/readline:0=
 		lzma? ( app-arch/xz-utils )
@@ -91,7 +97,9 @@ pkg_setup() {
 src_prepare() {
 	[[ -n ${RPM} ]] && rpm_spec_epatch "${WORKDIR}"/gdb.spec
 	! use vanilla && [[ -n ${PATCH_VER} ]] && EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
-	epatch_user
+
+	default
+
 	strip-linguas -u bfd/po opcodes/po
 }
 
@@ -161,6 +169,11 @@ src_configure() {
 			$(use_with python python "${EPYTHON}")
 		)
 	fi
+	if use sparc-solaris || use x86-solaris ; then
+		# disable largefile support
+		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
+		myconf+=( --disable-largefile )
+	fi
 
 	econf "${myconf[@]}"
 }
@@ -170,22 +183,26 @@ src_test() {
 }
 
 src_install() {
-	use server && ! use client && cd gdb/gdbserver
+	if use server && ! use client; then
+		cd gdb/gdbserver || die
+	fi
 	default
-	use client && find "${ED}"/usr -name libiberty.a -delete
-	cd "${S}"
+	if use client; then
+		find "${ED}"/usr -name libiberty.a -delete || die
+	fi
+	cd "${S}" || die
 
 	# Delete translations that conflict with binutils-libs. #528088
 	# Note: Should figure out how to store these in an internal gdb dir.
 	if use nls ; then
 		find "${ED}" \
 			-regextype posix-extended -regex '.*/(bfd|opcodes)[.]g?mo$' \
-			-delete
+			-delete || die
 	fi
 
 	# Don't install docs when building a cross-gdb
 	if [[ ${CTARGET} != ${CHOST} ]] ; then
-		rm -r "${ED}"/usr/share/{doc,info,locale}
+		rm -rf "${ED}"/usr/share/{doc,info,locale} || die
 		local f
 		for f in "${ED}"/usr/share/man/*/* ; do
 			if [[ ${f##*/} != ${CTARGET}-* ]] ; then
@@ -218,6 +235,11 @@ src_install() {
 
 	# Remove shared info pages
 	rm -f "${ED}"/usr/share/info/{annotate,bfd,configure,standards}.info*
+
+	# gcore is part of ubin on freebsd
+	if [[ ${CHOST} == *-freebsd* ]]; then
+		rm "${ED}"/usr/bin/gcore || die
+	fi
 }
 
 pkg_postinst() {

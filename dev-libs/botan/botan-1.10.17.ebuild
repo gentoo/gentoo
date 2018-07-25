@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit multilib python-r1 toolchain-funcs
 
 MY_PN="Botan"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A C++ crypto library"
-HOMEPAGE="http://botan.randombit.net/"
-SRC_URI="http://botan.randombit.net/releases/${MY_P}.tgz"
+HOMEPAGE="https://botan.randombit.net/"
+SRC_URI="https://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
 SLOT="0"

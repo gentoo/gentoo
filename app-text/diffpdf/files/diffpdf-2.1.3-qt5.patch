@@ -1,0 +1,173 @@
+Description: Build with Qt5
+ Enough changes to make things build with Qt5
+Author: Sune Vuorela <sune@debian.org>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2017-11-25
+
+--- diffpdf-2.1.3.orig/aboutform.cpp
++++ diffpdf-2.1.3/aboutform.cpp
+@@ -11,7 +11,6 @@
+ */
+ 
+ #include "aboutform.hpp"
+-#include <poppler-version.h>
+ #include <QApplication>
+ #include <QHBoxLayout>
+ #include <QSettings>
+@@ -52,7 +51,7 @@ AboutForm::AboutForm(QWidget *parent) :
+     "</ul>"
+     "I also provide training and consultancy in C++, Go, Python&nbsp;2, "
+     "Python&nbsp;3, C++/Qt, and PyQt4.").arg(qApp->applicationName())
+-            .arg(Version).arg(qVersion()).arg(POPPLER_VERSION));
++            .arg(Version).arg(qVersion()).arg("Qt 5"));
+     QTextBrowser *contributorsBrowser = new QTextBrowser;
+     contributorsBrowser->setReadOnly(true);
+     contributorsBrowser->setHtml(tr("<table>"
+--- diffpdf-2.1.3.orig/diffpdf.pro
++++ diffpdf-2.1.3/diffpdf.pro
+@@ -31,35 +31,39 @@ TRANSLATIONS += diffpdf_fr.ts
+ TRANSLATIONS += diffpdf_de.ts
+ TRANSLATIONS += diffpdf_es.ts
+ CODECFORTR    = UTF-8
+-LIBS	     += -lpoppler-qt4
++LIBS	     += -lpoppler-qt5
++ QMAKE_CFLAGS += $$(CPPFLAGS) $$(CFLAGS)
++ QMAKE_CXXFLAGS += $$(CPPFLAGS) $$(CXXFLAGS)
++ QMAKE_LFLAGS += $$(LDFLAGS)
++QT += widgets printsupport
+ win32 {
+     CONFIG += release
+ }
+ exists($(HOME)/opt/poppler024/) {
+     message(Using locally built Poppler library)
+     INCLUDEPATH += $(HOME)/opt/poppler024/include/poppler/cpp
+-    INCLUDEPATH += $(HOME)/opt/poppler024/include/poppler/qt4
++    INCLUDEPATH += $(HOME)/opt/poppler024/include/poppler/qt5
+     LIBS += -Wl,-rpath -Wl,$(HOME)/opt/poppler024/lib -L$(HOME)/opt/poppler024/lib
+ } else {
+     exists(/poppler_lib) {
+ 	message(Using locally built Poppler library on Windows)
+ 	INCLUDEPATH += /c/poppler_lib/include/poppler/cpp
+-	INCLUDEPATH += /c/poppler_lib/include/poppler/qt4
++	INCLUDEPATH += /c/poppler_lib/include/poppler/qt5
+ 	LIBS += -Wl,-rpath -Wl,/c/poppler_lib/bin -Wl,-L/c/poppler_lib/bin
+     } else {
+-	exists(/usr/include/poppler/qt4) {
++	exists(/usr/include/poppler/qt5) {
+ 	    INCLUDEPATH += /usr/include/poppler/cpp
+-	    INCLUDEPATH += /usr/include/poppler/qt4
++	    INCLUDEPATH += /usr/include/poppler/qt5
+ 	} else {
+ 	    INCLUDEPATH += /usr/local/include/poppler/cpp
+-	    INCLUDEPATH += /usr/local/include/poppler/qt4
++	    INCLUDEPATH += /usr/local/include/poppler/qt5
+ 	}
+     }
+ }
+ #exists($(HOME)/opt/podofo09/) {
+ #    message(Using locally built PoDoFo library)
+ #    INCLUDEPATH += $(HOME)/opt/podofo09/include/poppler/cpp
+-#    INCLUDEPATH += $(HOME)/opt/podofo09/include/poppler/qt4
++#    INCLUDEPATH += $(HOME)/opt/podofo09/include/poppler/qt5
+ #    LIBS += -Wl,-rpath -Wl,$(HOME)/opt/podofo09/lib64 -Wl,-L$(HOME)/opt/podofo09/lib64
+ #} else {
+ #    exists(/usr/include/podofo) {
+--- diffpdf-2.1.3.orig/generic.hpp
++++ diffpdf-2.1.3/generic.hpp
+@@ -12,7 +12,7 @@
+     for more details.
+ */
+ 
+-#include <poppler-qt4.h>
++#include <poppler-qt5.h>
+ #include <QMetaType>
+ #include <QPair>
+ #include <QPixmap>
+--- diffpdf-2.1.3.orig/helpform.cpp
++++ diffpdf-2.1.3/helpform.cpp
+@@ -11,7 +11,6 @@
+ */
+ 
+ #include "helpform.hpp"
+-#include <poppler-version.h>
+ #include <QApplication>
+ #include <QFile>
+ #include <QKeySequence>
+--- diffpdf-2.1.3.orig/label.cpp
++++ diffpdf-2.1.3/label.cpp
+@@ -15,6 +15,7 @@
+ #include <QDragEnterEvent>
+ #include <QDragEnterEvent>
+ #include <QMouseEvent>
++#include <QMimeData>
+ 
+ Label::Label(QWidget *parent) : QLabel(parent)
+ {
+--- diffpdf-2.1.3.orig/lineedit.cpp
++++ diffpdf-2.1.3/lineedit.cpp
+@@ -14,6 +14,7 @@
+ #include "lineedit.hpp"
+ #include <QDragEnterEvent>
+ #include <QDragEnterEvent>
++#include <QMimeData>
+ 
+ 
+ LineEdit::LineEdit(QWidget *parent) : QLineEdit(parent)
+--- diffpdf-2.1.3.orig/main.cpp
++++ diffpdf-2.1.3/main.cpp
+@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
+     app.setOrganizationDomain("qtrac.eu");
+     app.setApplicationName("DiffPDF");
+     app.setWindowIcon(QIcon(":/icon.png"));
+-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+ 
+     QTextStream out(stdout);
+     QStringList args = app.arguments().mid(1);
+--- diffpdf-2.1.3.orig/mainwindow.hpp
++++ diffpdf-2.1.3/mainwindow.hpp
+@@ -19,7 +19,7 @@
+ #else
+ #include <tr1/memory>
+ #endif
+-#include <poppler-qt4.h>
++#include <poppler-qt5.h>
+ #include <QBrush>
+ #include <QList>
+ #include <QMainWindow>
+--- diffpdf-2.1.3.orig/optionsform.cpp
++++ diffpdf-2.1.3/optionsform.cpp
+@@ -76,9 +76,9 @@ void OptionsForm::createWidgets()
+             << qMakePair(tr("Diagonal \\"), Qt::FDiagPattern)
+             << qMakePair(tr("Diagonal Cross"), Qt::DiagCrossPattern))
+         brushStyleComboBox->addItem(brushSwatch(pair.second, color),
+-                                                pair.first, pair.second);
++                                                pair.first, QVariant::fromValue(pair.second));
+     brushStyleComboBox->setCurrentIndex(brushStyleComboBox->findData(
+-                brush.style()));
++                QVariant::fromValue(brush.style())));
+ 
+     penStyleComboBox = new QComboBox;
+     typedef QPair<QString, Qt::PenStyle> PenPair;
+@@ -90,9 +90,9 @@ void OptionsForm::createWidgets()
+             << qMakePair(tr("Dash-Dotted"), Qt::DashDotLine)
+             << qMakePair(tr("Dash-Dot-Dotted"), Qt::DashDotDotLine))
+         penStyleComboBox->addItem(penStyleSwatch(pair.second, color),
+-                                  pair.first, pair.second);
++                                  pair.first, QVariant::fromValue(pair.second));
+     penStyleComboBox->setCurrentIndex(penStyleComboBox->findData(
+-                pen.style()));
++                QVariant::fromValue(pen.style())));
+ 
+     alphaSpinBox = new QSpinBox;
+     alphaSpinBox->setRange(1, 100);

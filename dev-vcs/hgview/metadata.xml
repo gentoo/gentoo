@@ -5,10 +5,6 @@
     <email>radhermit@gentoo.org</email>
     <name>Tim Harder</name>
   </maintainer>
-  <maintainer type="project">
-    <email>qt@gentoo.org</email>
-    <name>Gentoo Qt Project</name>
-  </maintainer>
   <upstream>
     <remote-id type="pypi">hgview</remote-id>
   </upstream>

@@ -1,0 +1,20 @@
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Thu, 5 Jul 2018 06:52:18 +0000 (+0200)
+Subject: src/printwidget.cpp: add QButtonGroup include, fixes compile errors with Qt 5.11+.
+X-Git-Url: https://code.x2go.org/gitweb?p=x2goclient.git;a=commitdiff_plain;h=ce14cfda34175b6456a8cc7d1e336dce2b0b0682
+
+src/printwidget.cpp: add QButtonGroup include, fixes compile errors with Qt 5.11+.
+---
+
+diff --git a/src/printwidget.cpp b/src/printwidget.cpp
+index 58a8af7..131d340 100644
+--- a/src/printwidget.cpp
++++ b/src/printwidget.cpp
+@@ -23,6 +23,7 @@
+ #include "x2gosettings.h"
+ #include "x2gologdebug.h"
+ #include <QDir>
++#include <QButtonGroup>
+ #ifdef Q_OS_WIN
+ #include "wapi.h"
+ #endif

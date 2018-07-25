@@ -13,8 +13,8 @@ On BSD platforms they remain defined in <sys/types.h>
 
 diff --git a/mythtv/libs/libmythtv/videosource.cpp b/mythtv/libs/libmythtv/videosource.cpp
 index 97618adc80..09dd95073d 100644
---- a/mythtv/libs/libmythtv/videosource.cpp
-+++ b/mythtv/libs/libmythtv/videosource.cpp
+--- mythtv/libs/libmythtv/videosource.cpp.old
++++ mythtv/libs/libmythtv/videosource.cpp
 @@ -3,7 +3,11 @@
  // Standard UNIX C headers
  #include <unistd.h>

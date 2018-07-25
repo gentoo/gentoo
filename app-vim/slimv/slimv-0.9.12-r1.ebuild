@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 vim-plugin vcs-snapshot
 
 DESCRIPTION="vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2531"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2531 https://github.com/kovisoft/slimv"
 SRC_URI="https://bitbucket.org/kovisoft/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="public-domain"
 KEYWORDS="amd64 x86"

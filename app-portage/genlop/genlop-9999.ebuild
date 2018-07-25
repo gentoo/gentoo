@@ -3,16 +3,14 @@
 
 EAPI=5
 
-inherit git-2 bash-completion-r1
+inherit git-r3 bash-completion-r1
 
 EGIT_REPO_URI="https://github.com/gentoo-perl/genlop.git"
 DESCRIPTION="A nice emerge.log parser"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Perl"
-SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-lang/perl

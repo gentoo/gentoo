@@ -1,0 +1,39 @@
+From c0cd1f8d49e6d63f1988d4749c366a0bef177790 Mon Sep 17 00:00:00 2001
+From: Eike Hein <hein@kde.org>
+Date: Wed, 9 May 2018 16:24:15 +0900
+Subject: Fix submenus not updating when switching between categories of the
+ same size
+
+Summary:
+This fixes a regression introduced in 38403268aad3, which forgot to
+handle the branch where the counts are the same.
+
+BUG:394013
+
+Reviewers: #plasma
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D12774
+---
+ applets/kicker/plugin/funnelmodel.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/applets/kicker/plugin/funnelmodel.cpp b/applets/kicker/plugin/funnelmodel.cpp
+index 26cad55..165e43d 100644
+--- a/applets/kicker/plugin/funnelmodel.cpp
++++ b/applets/kicker/plugin/funnelmodel.cpp
+@@ -81,6 +81,8 @@ void FunnelModel::setSourceModel(QAbstractItemModel *model)
+             setNewModel();
+             endRemoveRows();
+         }
++    } else {
++        setNewModel();
+     }
+ 
+     if (newCount > 0) {
+-- 
+cgit v0.11.2
+

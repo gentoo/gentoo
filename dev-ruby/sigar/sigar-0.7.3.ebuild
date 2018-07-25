@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -18,8 +18,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+DEPEND+=" || ( <sys-libs/glibc-2.26 net-libs/libtirpc )"
+
 all_ruby_prepare() {
-	sed -i -e '25i$CFLAGS += " -std=gnu89"' bindings/ruby/extconf.rb || die
+	sed -i -e '25i$CFLAGS += " -std=gnu89 -I/usr/include/tirpc"' \
+		-e '25i$LDFLAGS += " -ltirpc"' bindings/ruby/extconf.rb || die
 
 	# Fix compatibility with glibc 2.25
 	sed -i -e '26i#include <sys/sysmacros.h>' \

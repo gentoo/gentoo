@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -16,9 +16,7 @@ IUSE="readline svga +X"
 
 REQUIRED_USE="|| ( svga X )"
 
-DEPEND="X? ( >=x11-proto/xf86vidmodeproto-2.2.2
-		>=x11-proto/xextproto-7.0.2
-		>=x11-proto/xproto-7.0.4
+DEPEND="X? ( x11-base/xorg-proto
 		>=x11-libs/libX11-1.0.0
 		>=x11-libs/libXext-1.0.0
 		>=x11-libs/libXxf86vm-1.0.0 )

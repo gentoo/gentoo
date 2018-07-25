@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit linux-info python-single-r1 qmake-utils
+inherit eutils linux-info python-single-r1 qmake-utils
 
 DESCRIPTION="A personal full text search package"
 HOMEPAGE="http://www.lesbonscomptes.com/recoll/"
@@ -13,7 +13,7 @@ SRC_URI="http://www.lesbonscomptes.com/recoll/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 IUSE="camelcase doc +inotify qt5 session +spell"
 REQUIRED_USE="session? ( inotify ) ${PYTHON_REQUIRED_USE}"

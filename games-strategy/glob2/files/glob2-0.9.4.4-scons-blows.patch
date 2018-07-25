@@ -1,5 +1,5 @@
---- SConstruct.orig
-+++ SConstruct
+--- a/SConstruct.orig
++++ b/SConstruct
 @@ -1,6 +1,7 @@
  EnsureSConsVersion(0, 96, 92)
  import sys

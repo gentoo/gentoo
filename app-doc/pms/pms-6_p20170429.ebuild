@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,13 +24,12 @@ DEPEND="!binary? (
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-latexrecommended
-		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
+		dev-texlive/texlive-mathscience
 		html? (
 			app-text/recode
 			>=dev-tex/tex4ht-20090611_p1038-r5
 		)
 	)"
-RDEPEND=""
 
 src_compile() {
 	if ! use binary; then

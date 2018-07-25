@@ -5,20 +5,16 @@ EAPI=4
 
 inherit autotools toolchain-funcs
 
-RESTRICT="test"
-
 DESCRIPTION="OpenDylan language runtime environment"
-
 HOMEPAGE="http://opendylan.org"
 SRC_URI="http://opendylan.org/downloads/${PN}/${PV}/${P}-sources.tar.bz2"
 
 LICENSE="Opendylan"
 SLOT="0"
-
 # not tested on x86
 KEYWORDS="~amd64 ~x86"
-
 IUSE=""
+RESTRICT="test"
 
 # the boehm-gc check is "wrong" and reported upstream
 # but for now static-libs useflag is needed

@@ -1,12 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils
-
-DESCRIPTION="dnscap is a network capture utility designed specifically for DNS traffic"
-HOMEPAGE="http://dnscap.dns-oarc.net/"
+DESCRIPTION="network capture utility designed specifically for DNS traffic"
+HOMEPAGE="https://dnscap.dns-oarc.net/"
 
 ## github commit tarball
 MY_GIT_COMMIT="727ed7d5e46625abc2c8d988689a300589e948b6"
@@ -23,7 +21,4 @@ IUSE=""
 RDEPEND="net-libs/libpcap"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	## adds DESTDIR to install target
-	epatch "${FILESDIR}/${P}.install.patch"
-}
+PATCHES=( "${FILESDIR}/${P}.install.patch" )

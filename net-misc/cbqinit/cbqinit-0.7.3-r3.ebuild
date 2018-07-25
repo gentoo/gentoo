@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Sets up class-based queue traffic control (QoS) with iproute2"
-HOMEPAGE="http://www.sourceforge.net/projects/cbqinit"
+HOMEPAGE="https://www.sourceforge.net/projects/cbqinit/"
 SRC_URI="mirror://sourceforge/cbqinit/cbq.init-v${PV} -> ${P}"
 
 LICENSE="GPL-2"

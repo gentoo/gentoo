@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,8 @@ MY_PN=${PN}${MYSLOT}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python interface to the R Programming Language"
-HOMEPAGE="http://rpy.sourceforge.net/ https://pypi.python.org/pypi/rpy2"
+HOMEPAGE="https://rpy.sourceforge.net/
+	https://pypi.org/project/rpy2/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3 GPL-2 LGPL-2.1 MPL-1.1"

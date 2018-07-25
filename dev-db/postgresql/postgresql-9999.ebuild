@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,29 +11,25 @@ inherit eutils flag-o-matic git-r3 linux-info multilib pam prefix \
 KEYWORDS=""
 
 # Bump when rc released.
-SLOT="11"
+SLOT="12"
 
 EGIT_REPO_URI="https://git.postgresql.org/git/postgresql.git"
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
-HOMEPAGE="http://www.postgresql.org/"
+HOMEPAGE="https://www.postgresql.org/"
 
-LINGUAS="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr
-		 zh_CN zh_TW"
 IUSE="kerberos kernel_linux ldap libressl nls pam perl -pg_legacytimestamp python
 	  +readline selinux +server systemd ssl static-libs tcl threads uuid xml zlib"
-
-for lingua in ${LINGUAS}; do
-	IUSE+=" linguas_${lingua}"
-done
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 wanted_languages() {
-	local enable_langs
+	local linguas="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru
+		sk sl sv tr zh_CN zh_TW"
+	local enable_langs lingua
 
-	for lingua in ${LINGUAS} ; do
-		use linguas_${lingua} && enable_langs+="${lingua} "
+	for lingua in ${linguas} ; do
+		has ${lingua} ${LINGUAS-${lingua}} && enable_langs+="${lingua} "
 	done
 
 	echo -n ${enable_langs}
@@ -101,9 +97,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Work around PPC{,64} compilation bug where bool is already defined
-	sed '/#ifndef __cplusplus/a #undef bool' -i src/include/c.h || die
-
 	# Set proper run directory
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
@@ -342,8 +335,8 @@ pkg_config() {
 	einfo "    ${EROOT%/}/etc/conf.d/postgresql-${SLOT}"
 	einfo
 	einfo "Information on options that can be passed to initdb are found at:"
-	einfo "    http://www.postgresql.org/docs/${SLOT}/static/creating-cluster.html"
-	einfo "    http://www.postgresql.org/docs/${SLOT}/static/app-initdb.html"
+	einfo "    https://www.postgresql.org/docs/${SLOT}/static/creating-cluster.html"
+	einfo "    https://www.postgresql.org/docs/${SLOT}/static/app-initdb.html"
 	einfo
 	einfo "PG_INITDB_OPTS is currently set to:"
 	if [[ -z "${PG_INITDB_OPTS}" ]] ; then

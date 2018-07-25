@@ -51,9 +51,6 @@
     <flag name="contrib">Install contrib modules</flag>
     <flag name="doc">Include documentation</flag>
     <flag name="emacs">Add support for GNU Emacs</flag>
-    <flag name="clisp">Use CLISP for the runtime</flag>
-    <flag name="ecl">Use SCL for the runtime</flag>
-    <flag name="sbcl">Use SBCL for the runtime</flag>
   </use>
   <upstream>
     <remote-id type="github">stumpwm/stumpwm</remote-id>

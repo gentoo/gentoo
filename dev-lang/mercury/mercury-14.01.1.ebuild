@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib xdg-utils
 
-PATCHSET_VER="1"
+PATCHSET_VER="3"
 MY_P=${PN}-srcdist-${PV}
 
 DESCRIPTION="Mercury is a modern general-purpose logic/functional programming language"
@@ -15,7 +15,7 @@ SRC_URI="http://dl.mercurylang.org/release/${MY_P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="debug emacs erlang examples java mono profile readline threads trail"
 
@@ -77,7 +77,7 @@ src_compile() {
 
 	# Build Mercury using bootstrap grade
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		|| die "emake failed"
 
 	# We can now patch .m Mercury compiler files since we
@@ -95,7 +95,7 @@ src_compile() {
 
 	# Rebuild Mercury compiler using the just built mercury_compiler
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		compiler || die "emake compiler failed"
 
@@ -103,7 +103,7 @@ src_compile() {
 	# grade. Since src_test() is run before src_install() we compile
 	# the default grade now
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		default_grade || die "emake default_grade failed"
 }
@@ -147,7 +147,7 @@ src_test() {
 
 src_install() {
 	emake \
-		PARALLEL="${MAKEOPTS}" \
+		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
 		DESTDIR="${D}" \
 		INSTALL_PREFIX="${D}"/usr \
@@ -156,6 +156,14 @@ src_install() {
 		INSTALL_HTML_DIR="${D}"/usr/share/doc/${PF}/html \
 		INSTALL_ELISP_DIR="${D}/${SITELISP}"/${PN} \
 		install || die "emake install failed"
+
+	if use java; then
+		keepdir /usr/$(get_libdir)/mercury/modules/java
+	fi
+
+	if use mono; then
+		keepdir /usr/$(get_libdir)/mercury/modules/csharp
+	fi
 
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" \

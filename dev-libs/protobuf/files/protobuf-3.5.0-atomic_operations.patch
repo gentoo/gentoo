@@ -1,0 +1,21 @@
+https://github.com/google/protobuf/issues/3937
+https://github.com/google/protobuf/pull/3955
+https://github.com/google/protobuf/commit/642e1ac635f2563b4a14c255374f02645ae85dac
+
+--- /src/google/protobuf/stubs/atomicops_internals_generic_gcc.h
++++ /src/google/protobuf/stubs/atomicops_internals_generic_gcc.h
+@@ -146,6 +146,14 @@
+   return __atomic_load_n(ptr, __ATOMIC_RELAXED);
+ }
+ 
++inline Atomic64 Release_CompareAndSwap(volatile Atomic64* ptr,
++                                       Atomic64 old_value,
++                                       Atomic64 new_value) {
++  __atomic_compare_exchange_n(ptr, &old_value, new_value, false,
++                              __ATOMIC_RELEASE, __ATOMIC_ACQUIRE);
++  return old_value;
++}
++
+ #endif // defined(__LP64__)
+ 
+ }  // namespace internal

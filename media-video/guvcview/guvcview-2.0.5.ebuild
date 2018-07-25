@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -41,6 +41,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	sed -i '/^docdir/,/^$/d' Makefile.am || die
+	has_version '>=media-video/ffmpeg-4' && epatch "${FILESDIR}/ffmpeg4.patch"
 	eautoreconf
 }
 

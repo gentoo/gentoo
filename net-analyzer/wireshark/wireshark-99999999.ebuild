@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils fcaps flag-o-matic git-r3 gnome2-utils multilib qmake-utils user xdg-utils
+inherit cmake-utils eutils fcaps flag-o-matic git-r3 gnome2-utils ltprune multilib qmake-utils user xdg-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -12,15 +12,10 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump +capinfos +caps +captype ciscodump cpu_flags_x86_sse4_2
-	+dftest doc doc-pdf +dumpcap +editcap geoip gtk kerberos libssh libxml2 lua
-	+mergecap +netlink nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump
-	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl +text2pcap
-	tfshark +tshark +udpdump zlib
-"
-REQUIRED_USE="
-	ciscodump? ( libssh )
-	sshdump? ( libssh )
+	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc +dumpcap
+	+editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink nghttp2
+	+pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux +sharkd smi snappy
+	spandsp sshdump ssl +text2pcap tfshark +tshark +udpdump zlib
 "
 
 S=${WORKDIR}/${P/_/}
@@ -30,28 +25,25 @@ CDEPEND="
 	dev-libs/libgcrypt:0
 	netlink? ( dev-libs/libnl:3 )
 	adns? ( >=net-dns/c-ares-1.5 )
-	caps? ( sys-libs/libcap )
-	geoip? ( dev-libs/geoip )
-	gtk? (
-		x11-libs/gdk-pixbuf
-		x11-libs/gtk+:3
-		x11-libs/pango
-		x11-misc/xdg-utils
-	)
+	bcg729? ( media-libs/bcg729 )
+	filecaps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
-	libssh? ( >=net-libs/libssh-0.6 )
+	sshdump? ( >=net-libs/libssh-0.6 )
+	ciscodump? ( >=net-libs/libssh-0.6 )
 	libxml2? ( dev-libs/libxml2 )
 	lua? ( >=dev-lang/lua-5.1:* )
+	lz4? ( app-arch/lz4 )
+	maxminddb? ( dev-libs/libmaxminddb )
 	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
-	portaudio? ( media-libs/portaudio )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtmultimedia:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		media-libs/speex
+		>=media-libs/speex-1.2.0
+		media-libs/speexdsp
 		x11-misc/xdg-utils
 	)
 	sbc? ( media-libs/sbc )
@@ -59,9 +51,9 @@ CDEPEND="
 	snappy? ( app-arch/snappy )
 	spandsp? ( media-libs/spandsp )
 	ssl? ( net-libs/gnutls:= )
-	zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 )
+	zlib? ( sys-libs/zlib )
 "
-# We need perl for `pod2html`.  The rest of the perl stuff is to block older
+# We need perl for `pod2html`. The rest of the perl stuff is to block older
 # and broken installs. #455122
 DEPEND="
 	${CDEPEND}
@@ -70,11 +62,7 @@ DEPEND="
 	!<perl-core/Pod-Simple-3.170
 	doc? (
 		app-doc/doxygen
-		app-text/asciidoc
-		dev-libs/libxml2
-		dev-libs/libxslt
-		doc-pdf? ( dev-java/fop )
-		www-client/lynx
+		dev-ruby/asciidoctor
 	)
 	qt5? (
 		dev-qt/linguist-tools:5
@@ -85,33 +73,23 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	gtk? ( virtual/freedesktop-icon-theme )
 	qt5? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch
-	"${FILESDIR}"/${PN}-2.1.0-sse4_2-r1.patch
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
-	"${FILESDIR}"/${PN}-99999999-androiddump.patch
+	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-99999999-androiddump-wsutil.patch
+	"${FILESDIR}"/${PN}-99999999-qtsvg.patch
+	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
 )
 
 pkg_setup() {
 	enewgroup wireshark
 }
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
-
 src_configure() {
-	local myconf
+	local mycmakeargs
 
 	# Workaround bug #213705. If krb5-config --libs has -lcrypto then pass
 	# --with-ssl to ./configure. (Mimics code from acinclude.m4).
@@ -121,20 +99,9 @@ src_configure() {
 				ewarn "Kerberos was built with ssl support: linkage with openssl is enabled."
 				ewarn "Note there are annoying license incompatibilities between the OpenSSL"
 				ewarn "license and the GPL, so do your check before distributing such package."
-				myconf+=( "--with-ssl" )
+				mycmakeargs+=( -DENABLE_GNUTLS=$(usex ssl) )
 				;;
 		esac
-	fi
-
-	# Enable wireshark binary with any supported GUI toolkit (bug #473188)
-	if use gtk || use qt5; then
-		myconf+=( "--enable-wireshark" )
-	else
-		myconf+=( "--disable-wireshark" )
-	fi
-
-	if ! use qt5; then
-		myconf+=( "--with-qt=no" )
 	fi
 
 	if use qt5; then
@@ -142,91 +109,62 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	# Hack around inability to disable doxygen/fop doc generation
-	use doc || export ac_cv_prog_HAVE_DOXYGEN=false
-	use doc-pdf || export ac_cv_prog_HAVE_FOP=false
+	mycmakeargs+=(
+		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
+		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '')
+		$(usex qt5 MOC=$(qt5_get_bindir)/moc '')
+		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '')
+		$(usex qt5 UIC=$(qt5_get_bindir)/uic '')
+		-DBUILD_androiddump=$(usex androiddump)
+		-DBUILD_capinfos=$(usex capinfos)
+		-DBUILD_captype=$(usex captype)
+		-DBUILD_ciscodump=$(usex ciscodump)
+		-DBUILD_dftest=$(usex dftest)
+		-DBUILD_dumpcap=$(usex dumpcap)
+		-DBUILD_editcap=$(usex editcap)
+		-DBUILD_mergecap=$(usex mergecap)
+		-DBUILD_mmdbresolve=$(usex maxminddb)
+		-DBUILD_randpkt=$(usex randpkt)
+		-DBUILD_randpktdump=$(usex randpktdump)
+		-DBUILD_reordercap=$(usex reordercap)
+		-DBUILD_sharkd=$(usex sharkd)
+		-DBUILD_sshdump=$(usex sshdump)
+		-DBUILD_text2pcap=$(usex text2pcap)
+		-DBUILD_tfshark=$(usex tfshark)
+		-DBUILD_tshark=$(usex tshark)
+		-DBUILD_udpdump=$(usex udpdump)
+		-DBUILD_wireshark=$(usex qt5)
+		-DDISABLE_WERROR=yes
+		-DENABLE_BCG729=$(usex bcg729)
+		-DENABLE_CAP=$(usex filecaps caps)
+		-DENABLE_CARES=$(usex adns)
+		-DENABLE_GNUTLS=$(usex ssl)
+		-DENABLE_KERBEROS=$(usex kerberos)
+		-DENABLE_LIBXML2=$(usex libxml2)
+		-DENABLE_LUA=$(usex lua)
+		-DENABLE_LZ4=$(usex lz4)
+		-DENABLE_NETLINK=$(usex netlink)
+		-DENABLE_NGHTTP2=$(usex nghttp2)
+		-DENABLE_PCAP=$(usex pcap)
+		-DENABLE_SBC=$(usex sbc)
+		-DENABLE_SMI=$(usex smi)
+		-DENABLE_SNAPPY=$(usex snappy)
+		-DENABLE_SPANDSP=$(usex spandsp)
+		-DENABLE_ZLIB=$(usex zlib)
+	)
 
-	econf \
-		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
-		$(use dumpcap && use_with pcap dumpcap-group wireshark) \
-		$(use_enable androiddump) \
-		$(use_enable capinfos) \
-		$(use_enable captype) \
-		$(use_enable ciscodump) \
-		$(use_enable dftest) \
-		$(use_enable dumpcap) \
-		$(use_enable editcap) \
-		$(use_enable mergecap) \
-		$(use_enable randpkt) \
-		$(use_enable randpktdump) \
-		$(use_enable reordercap) \
-		$(use_enable sharkd) \
-		$(use_enable sshdump) \
-		$(use_enable text2pcap) \
-		$(use_enable tfshark) \
-		$(use_enable tshark) \
-		$(use_enable udpdump) \
-		$(use_with adns c-ares) \
-		$(use_with caps libcap) \
-		$(use_with geoip) \
-		$(use_with gtk gtk 3) \
-		$(use_with kerberos krb5) \
-		$(use_with libssh) \
-		$(use_with libxml2) \
-		$(use_with lua) \
-		$(use_with nghttp2) \
-		$(use_with pcap) \
-		$(use_with portaudio) \
-		$(use_with sbc) \
-		$(use_with smi libsmi) \
-		$(use_with snappy) \
-		$(use_with spandsp) \
-		$(use_with ssl gnutls) \
-		$(use_with zlib) \
-		$(usex cpu_flags_x86_sse4_2 --enable-sse4_2 '') \
-		$(usex netlink --with-libnl=3 --without-libnl) \
-		$(usex qt5 --with-qt=5 '') \
-		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '') \
-		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
-		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '') \
-		$(usex qt5 UIC=$(qt5_get_bindir)/uic '') \
-		--disable-warnings-as-errors \
-		--sysconfdir="${EPREFIX}"/etc/wireshark \
-		${myconf[@]}
-}
-
-src_compile() {
-	default
-
-	if use doc; then
-		emake -j1 -C docbook
-		if use doc-pdf; then
-			addpredict "/root/.java"
-			emake -C docbook all-pdf
-		fi
-	fi
+	cmake-utils_src_configure
 }
 
 src_install() {
-	default
+	cmake-utils_src_install
 
 	# FAQ is not required as is installed from help/faq.txt
-	dodoc AUTHORS ChangeLog NEWS README.* \
-		doc/{randpkt.txt,README*}
-
-	if use doc; then
-		docinto /usr/share/doc/${PF}/html
-		dodoc -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
-		if use doc-pdf; then
-			docinto /usr/share/doc/${PF}/pdf/
-			dodoc docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
-		fi
-	fi
+	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
 
 	# install headers
 	local wsheader
 	for wsheader in \
-		config.h \
 		epan/*.h \
 		epan/crypt/*.h \
 		epan/dfilter/*.h \
@@ -238,25 +176,34 @@ src_install() {
 		ws_symbol_export.h \
 		wsutil/*.h
 	do
+		echo "Installing ${wsheader}"
 		insinto /usr/include/wireshark/$( dirname ${wsheader} )
 		doins ${wsheader}
 	done
 
-	#with the above this really shouldn't be needed, but things may be looking in wiretap/ instead of wireshark/wiretap/
+	for wsheader in \
+		../${P}_build/config.h \
+		../${P}_build/version.h
+	do
+		echo "Installing ${wsheader}"
+		insinto /usr/include/wireshark
+		doins ${wsheader}
+	done
+
+	#with the above this really shouldn't be needed, but things may be looking
+	# in wiretap/ instead of wireshark/wiretap/
 	insinto /usr/include/wiretap
 	doins wiretap/wtap.h
 
-	if use gtk || use qt5; then
-		local c d
-		for c in hi lo; do
-			for d in 16 32 48; do
-				insinto /usr/share/icons/${c}color/${d}x${d}/apps
-				newins image/${c}${d}-app-wireshark.png wireshark.png
-			done
+	if use qt5; then
+		local s
+		for s in 16 32 48 64 128 256 512 1024; do
+			insinto /usr/share/icons/hicolor/${s}x${s}/apps
+			newins image/wsicon${s}.png wireshark.png
 		done
-		for d in 16 24 32 48 64 128 256 ; do
-			insinto /usr/share/icons/hicolor/${d}x${d}/mimetypes
-			newins image/WiresharkDoc-${d}.png application-vnd.tcpdump.pcap.png
+		for s in 16 24 32 48 64 128 256 ; do
+			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
+			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 
@@ -265,12 +212,13 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 
 	# Add group for users allowed to sniff.
 	enewgroup wireshark
 
-	if use pcap; then
+	if use dumpcap && use pcap; then
 		fcaps -o 0 -g wireshark -m 4710 -M 0710 \
 			cap_dac_read_search,cap_net_raw,cap_net_admin \
 			"${EROOT}"/usr/bin/dumpcap
@@ -283,5 +231,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }

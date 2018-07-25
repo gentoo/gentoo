@@ -1,0 +1,12 @@
+Gentoo-bug: https://bugs.gentoo.org/657820
+
+--- a/configure.ac	2018-03-18 14:51:31.000000000 +0100
++++ b/configure.ac	2018-07-11 23:13:14.901127036 +0200
+@@ -119,7 +119,6 @@
+ saved_CPPFLAGS="${CPPFLAGS}"
+ CPPFLAGS="${GLM_CFLAGS} ${CPPFLAGS}"
+ GLM_headers="glm/glm.hpp"
+-AS_IF([test "x$enable_tests" == "xyes"], [GLM_headers="$GLM_headers glm/gtx/io.hpp"], [])
+ AC_CHECK_HEADERS(
+     [$GLM_headers],
+     [],

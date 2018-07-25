@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,13 +31,13 @@ DEPEND="
 	tbb? ( dev-cpp/tbb )
 	vtk? ( || ( sci-libs/vtk[imaging] sci-libs/vtk[rendering] sci-libs/vtk[views] sci-libs/vtk[all-modules] ) )"
 RDEPEND="${DEPEND}"
-
 CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.8.0-fixed-DESTDIR.patch
 	"${FILESDIR}"/${PN}-6.9.1-vtk-configure.patch
+	"${FILESDIR}"/${PN}-6.9.1-vtk-8.1.patch
 )
 
 pkg_setup() {
@@ -52,7 +52,7 @@ src_prepare() {
 	MY_VTK_PV=${MY_VTK_P/sci-libs\/vtk-}
 	MY_VTK_SUB=vtk-$(get_version_component_range 1-2 ${MY_VTK_PV})
 	if has_version ">=sci-libs/vtk-6.3" ; then #bug 605304
-		epatch "${FILESDIR}"/${PN}-6.9.1-vtk-6.3.patch
+		eapply "${FILESDIR}"/${PN}-6.9.1-vtk-6.3.patch
 	fi
 
 	java-pkg-opt-2_src_prepare
@@ -116,6 +116,12 @@ TCL_LIBRARY=${my_sys_lib}/tcl$(grep TCL_VER /usr/include/tcl.h | sed 's/^.*"\(.*
 		-e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" \
 		-e "/\$qt directory is not exists/s/AC_MSG_ERROR/AC_MSG_NOTICE/" \
 		-i configure.ac || die
+
+	# no longer needed https://tracker.dev.opencascade.org/view.php?id=28971
+	if has_version ">=sys-libs/glibc-2.26" ; then
+		sed -e '/#include <xlocale.h>/d' \
+			-i inc/Standard_CLocaleSentry.hxx || die
+	fi
 
 	eautoreconf
 }

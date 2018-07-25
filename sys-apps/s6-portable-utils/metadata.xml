@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>aranea@aixah.de</email>
 		<name>Luis Ressel</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>samuel@sholland.org</email>

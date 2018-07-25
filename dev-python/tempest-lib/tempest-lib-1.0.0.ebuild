@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
 DESCRIPTION="Functional or integrated test suites for OpenStack projects"
-HOMEPAGE="https://pypi.python.org/pypi/tempest-lib https://github.com/openstack/tempest-lib"
+HOMEPAGE="https://pypi.org/project/tempest-lib/ https://github.com/openstack/tempest-lib"
 SRC_URI="mirror://pypi/t/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

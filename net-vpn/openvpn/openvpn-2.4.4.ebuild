@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,13 @@ EAPI=6
 inherit autotools flag-o-matic user systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-SRC_URI="http://swupdate.openvpn.net/community/releases/${P}.tar.gz
+SRC_URI="https://swupdate.openvpn.net/community/releases/${P}.tar.gz
 	test? ( https://raw.githubusercontent.com/OpenVPN/${PN}/v${PV}/tests/unit_tests/${PN}/mock_msg.h )"
-HOMEPAGE="http://openvpn.net/"
+HOMEPAGE="https://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x86-macos"
 
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"

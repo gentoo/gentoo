@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,6 @@ S="${WORKDIR}/${PN}-${PV%.1}"
 # Supported languages and translated documentation
 # Be sure all languages are prefixed with a single space!
 MY_AVAILABLE_LINGUAS=" cs de et fi fr it nl pl pt sk sl sv zh_CN"
-IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix_xgnokii_inclusion.patch

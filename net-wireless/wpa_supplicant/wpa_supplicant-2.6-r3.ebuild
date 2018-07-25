@@ -7,7 +7,7 @@ inherit eutils qmake-utils systemd toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="https://w1.fi/wpa_supplicant/"
-SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
+SRC_URI="https://w1.fi/releases/${P}.tar.gz"
 LICENSE="|| ( GPL-2 BSD )"
 
 SLOT="0"

@@ -55,12 +55,10 @@ userland_GNU
 tslib
 
 # Mask Xorg-modular drivers that are Linux-specific
-input_devices_aiptek
 input_devices_evdev
 input_devices_tslib
 input_devices_synaptics
 input_devices_vmmouse
-video_cards_sisusb
 video_cards_vmware
 video_cards_nvidia
 video_cards_nouveau

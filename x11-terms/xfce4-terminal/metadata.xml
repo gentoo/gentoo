@@ -5,4 +5,8 @@
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
+  <use>
+    <flag name='utempter'>Include utmp management support
+      via <pkg>sys-libs/libutempter</pkg></flag>
+  </use>
 </pkgmetadata>

@@ -1,5 +1,5 @@
---- monsterz.py.orig	2006-05-12 18:55:51.000000000 -0400
-+++ monsterz.py	2006-05-12 18:57:44.000000000 -0400
+--- a/monsterz.py.orig	2006-05-12 18:55:51.000000000 -0400
++++ b/monsterz.py	2006-05-12 18:57:44.000000000 -0400
 @@ -1907,7 +1906,7 @@
      print '          (C) Mike Kershaw <dragorn@kismetwireless.net>'
  

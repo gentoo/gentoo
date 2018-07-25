@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,14 @@ SRC_URI="https://github.com/ib/xarchiver/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="doc"
 
+# older pigz versions have incompatible command-line processing
+# https://bugs.gentoo.org/661464
 RDEPEND=">=dev-libs/glib-2:=
-	x11-libs/gtk+:3="
+	x11-libs/gtk+:3=
+	!!<app-arch/pigz-2.4[symlink]"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext

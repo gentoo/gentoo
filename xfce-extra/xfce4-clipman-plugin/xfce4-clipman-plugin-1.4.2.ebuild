@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ inherit gnome2-utils
 
 DESCRIPTION="A clipboard manager plug-in for the Xfce panel"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-clipman-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="qrcode"
 
 RDEPEND=">=dev-libs/glib-2.32:2=
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_configure() {
 	local myconf=(

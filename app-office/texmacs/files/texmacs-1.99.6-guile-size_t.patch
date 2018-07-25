@@ -1,0 +1,21 @@
+C compiler compiles this code for bot int-based and size_t-based
+guile. C++ compiler does not (and is what used by texmacs).
+
+https://bugs.gentoo.org/652054
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 37e9e87..5de2711 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -274,11 +274,11 @@ SET(CMAKE_REQUIRED_FLAGS "-Werror ${Guile_CFLAGS}")
+ SET(CMAKE_REQUIRED_INCLUDES ${Guile_INCLUDE_DIRS})
+ SET(CMAKE_REQUIRED_LIBRARIES ${Guile_LIBRARIES})
+ 
+ MESSAGE(STATUS "Checking the size_t of guile strings")
+ 
+-CHECK_C_SOURCE_COMPILES(  "#include <guile/gh.h>
++CHECK_CXX_SOURCE_COMPILES(  "#include <guile/gh.h>
+   #include <libguile.h>
+   void print_string (SCM s) {
+     int len_r;
+     char* r= gh_scm2newstr (s, &len_r); } int main() { return 0; }
+ " _guile_str_size_test)

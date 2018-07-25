@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://websvn.kde.org/trunk/kdesupport/qimageblitz/"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 SLOT="0"
 IUSE="altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug"
 

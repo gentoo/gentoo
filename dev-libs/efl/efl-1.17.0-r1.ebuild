@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,7 +23,7 @@ DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio scim sdl sound systemd tga tiff tslib unwind v4l valgrind wayland webp X xim xine xpm"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 REQUIRED_USE="
 	pulseaudio?	( sound )
@@ -92,7 +92,6 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXfixes
 		x11-libs/libXinerama
-		x11-libs/libXp
 		x11-libs/libXrandr
 		x11-libs/libXrender
 		x11-libs/libXtst

@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils multilib python-single-r1
+inherit cmake-utils flag-o-matic multilib python-single-r1
 
 DESCRIPTION="eXtensible Data Model and Format"
 HOMEPAGE="http://xdmf.org/index.php/Main_Page"
@@ -49,6 +49,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619604
+	append-cxxflags -std=c++14
+
 	local mycmakeargs=(
 		$(cmake-utils_use doc XDMF_BUILD_DOCUMENTATION)
 		$(cmake-utils_use_build test TESTING)

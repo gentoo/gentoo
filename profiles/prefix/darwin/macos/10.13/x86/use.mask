@@ -6,7 +6,6 @@
 # profile have a USE flag associated with (such as altivec, mmx, etc).
 
 # Unmask x86 instruction sets
--ifc
 -cpu_flags_x86_mmx
 -cpu_flags_x86_mmxext
 -cpu_flags_x86_sse

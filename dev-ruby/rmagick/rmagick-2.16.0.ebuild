@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/gemhome/rmagick"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-macos"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86 ~x86-macos"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.4.9:= =media-gfx/imagemagick-6*"
@@ -39,7 +39,8 @@ all_ruby_prepare() {
 	# Avoid some tests that seem to be very dependent on specific
 	# imagemagick versions. color defs?
 	sed -i -e '/test_\(gray\|compress_colormap\)/,/^  end/ s:^:#:' test/Image2.rb || die
-	sed -i -e '/test_optimize_layers/,/^  end/ s:^:#:' test/ImageList2.rb || die
+	sed -i -e '/test_iterations/,/^    end/ s:^:#:' test/ImageList1.rb || die
+	sed -i -e '/test_\(optimize_layers\|montage\)/,/^  end/ s:^:#:' test/ImageList2.rb || die
 	sed -i -e '/test_\(background_color\|border_color\|image_type\)/,/^  end/ s:^:#:' test/Image_attributes.rb || die
 }
 

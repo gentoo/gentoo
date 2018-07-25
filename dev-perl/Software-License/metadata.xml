@@ -16,6 +16,8 @@
     <remote-id type="cpan-module">Software::License::BSD</remote-id>
     <remote-id type="cpan-module">Software::License::CC0_1_0</remote-id>
     <remote-id type="cpan-module">Software::License::Custom</remote-id>
+    <remote-id type="cpan-module">Software::License::EUPL_1_1</remote-id>
+    <remote-id type="cpan-module">Software::License::EUPL_1_2</remote-id>
     <remote-id type="cpan-module">Software::License::FreeBSD</remote-id>
     <remote-id type="cpan-module">Software::License::GFDL_1_2</remote-id>
     <remote-id type="cpan-module">Software::License::GFDL_1_3</remote-id>

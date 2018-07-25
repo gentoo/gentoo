@@ -11,7 +11,7 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
 DEPEND="media-libs/alsa-lib"

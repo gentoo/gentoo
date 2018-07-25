@@ -1,12 +1,12 @@
---- Gauche-0.9.3.2.orig/ext/tls/Makefile.in
-+++ Gauche-0.9.3.2/ext/tls/Makefile.in
-@@ -77,6 +77,9 @@
- 	@sed -e "s@\.\./ssl/@../../$(srcdir)/axTLS/ssl/@g" \
-              -e "s/system/safe_system/g" \
-              -e "s@openssl @sh ../../$(srcdir)/kick_openssl @g" \
-+             -e "/do_reneg = 1;/i#if 0" \
-+             -e "/do_reneg = 0;/a#endif" \
-+             -e "/SSL_server_test(/,/)/s/ -tls1//" \
-              $(srcdir)/axTLS/ssl/test/ssltest.c >> $(SSLTEST_GENERATED)
- 	@cat $(srcdir)/system-fix.c >> $(SSLTEST_GENERATED)
+--- a/ext/tls/ssltest-mod.scm
++++ b/ext/tls/ssltest-mod.scm
+@@ -53,7 +53,8 @@
+      ($ format #t "~a\n" $ regexp-replace-all* line
+         #/\.\.\/ssl\// srcpath-replace
+         #/openssl /    kicker-replace
+-        #/system/      "safe_system")))
++        #/system/      "safe_system"
++        #/(s_server) / "\\1 -4 ")))
  
+   (p "#include <errno.h>"
+      "int safe_system(const char *commands)"

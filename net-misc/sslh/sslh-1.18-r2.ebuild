@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ MY_P="${PN}-v${PV}"
 inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Port multiplexer - accept both HTTPS and SSH connections on the same port"
-HOMEPAGE="http://www.rutschle.net/tech/sslh.shtml"
-SRC_URI="http://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.rutschle.net/tech/sslh/README.html"
+SRC_URI="https://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

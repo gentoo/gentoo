@@ -5,10 +5,6 @@
     <email>thev00d00@gentoo.org</email>
     <name>Ian Whyman</name>
   </maintainer>
-  <maintainer type="person">
-    <email>gurligebis@gentoo.org</email>
-    <name>Bjarke Istrup Pedersen</name>
-  </maintainer>
   <upstream>
     <remote-id type="sourceforge">pupnp</remote-id>
     <remote-id type="github">mrjimenez/pupnp</remote-id>

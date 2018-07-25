@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="xml"
 
 inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20170804"
+MY_RELEASEDATE="20180524"
 EXTRAS_VER="1.36"
 SEMNG_VER="${PV}"
 SELNX_VER="${PV}"
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DESCRIPTION="SELinux core utilities"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
 	SRC_URI="https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
@@ -31,7 +31,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz
 		https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
 	S1="${WORKDIR}/${MY_P}"
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
@@ -41,7 +41,6 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
-	>=sys-libs/glibc-2.4
 	>=sys-libs/libcap-1.10-r10:=
 	>=sys-libs/libsemanage-${SEMNG_VER}:=[python,${PYTHON_USEDEP}]
 	sys-libs/libcap-ng:=
@@ -114,7 +113,6 @@ src_compile() {
 			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
 			CC="$(tc-getCC)" \
-			PYLIBVER="${EPYTHON}" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)"
 	}
 	S="${S1}" # Regular policycoreutils
@@ -128,11 +126,12 @@ src_install() {
 	installation-policycoreutils() {
 		einfo "Installing policycoreutils"
 		emake -C "${BUILD_DIR}" DESTDIR="${D}" \
+			AUDIT_LOG_PRIVS="y" \
 			AUDITH="$(usex audit y n)" \
 			PAMH="$(usex pam y n)" \
 			INOTIFYH="$(usex dbus y n)" \
 			SESANDBOX="n" \
-			AUDIT_LOG_PRIV="y" \
+			CC="$(tc-getCC)" \
 			LIBDIR="\$(PREFIX)/$(get_libdir)" \
 			install
 		python_optimize
@@ -142,8 +141,6 @@ src_install() {
 		einfo "Installing policycoreutils-extra"
 		emake -C "${BUILD_DIR}" \
 			DESTDIR="${D}" \
-			INOTIFYH="$(usex dbus)" \
-			SHLIBDIR="${D}$(get_libdir)/rc" \
 			install
 		python_optimize
 	}

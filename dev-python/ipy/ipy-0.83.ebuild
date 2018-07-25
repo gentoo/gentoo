@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ MY_PN="IPy"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Class and tools for handling of IPv4 and IPv6 addresses and networks"
-HOMEPAGE="https://github.com/haypo/python-ipy/wiki https://pypi.python.org/pypi/IPy"
+HOMEPAGE="https://github.com/haypo/python-ipy/wiki https://pypi.org/project/IPy/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

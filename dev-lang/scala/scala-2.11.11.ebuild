@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -64,7 +64,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="${SV}/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="binary emacs"
 
@@ -131,7 +131,7 @@ java_prepare() {
 			cp -p "${DISTDIR}/${g}" "${S}/${j#${BURI}/*/}" || die
 		done
 		# gentoo patch (by gienah) to stop it calling git log in the build
-		epatch "${FILESDIR}/${P}-no-git.patch"
+		epatch "${FILESDIR}/${PN}-2.11.8-no-git.patch"
 		# Note: to bump scala, some things to try are:
 		# 1. update all the sha1s in JURI
 		# 2. remove the https://dev.gentoo.org/~gienah/snapshots/${P}-maven-deps.tar.gz from SRC_URI

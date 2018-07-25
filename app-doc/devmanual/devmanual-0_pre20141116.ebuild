@@ -1,31 +1,27 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit readme.gentoo
-
-[[ "${PV}" == "9999" ]] && inherit git-2
+inherit readme.gentoo-r1
 
 DESCRIPTION="The Gentoo Development Guide"
 HOMEPAGE="https://devmanual.gentoo.org/"
-if [[ "${PV}" == "9999" ]]; then
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/devmanual.git"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="git://anongit.gentoo.org/proj/devmanual.git"
 else
-SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-macos"
 fi
 
 LICENSE="CC-BY-SA-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-macos"
 IUSE=""
 
 DEPEND="dev-libs/libxslt
 	media-gfx/imagemagick[truetype,svg,png]"
-
-DOC_CONTENTS="In order to browse the Gentoo Development Guide in
-	offline mode, point your browser to the following url:
-	${EPREFIX}/usr/share/doc/devmanual/html/index.html"
 
 src_compile() {
 	# Imagemagick uses inkscape (if present) to delegate
@@ -38,9 +34,22 @@ src_compile() {
 }
 
 src_install() {
-	dohtml -r *
+	# clean out XML/XSL before installing
+	find . \( \
+		-iname '*.xml' -o \
+		-iname '*.xsl' -o \
+		-iname '*.svg' \) -delete || die
+	rm -r README.md xsl LICENSE Makefile || die
+
+	local HTML_DOCS=( . )
+	einstalldocs
+
 	einfo "Creating symlink from ${PF} to ${PN} for preserving bookmarks"
 	dosym ${PF} /usr/share/doc/${PN}
+
+	local DOC_CONTENTS="In order to browse the Gentoo Development Guide in
+		offline mode, point your browser to the following url:
+		${EPREFIX}/usr/share/doc/devmanual/html/index.html"
 	readme.gentoo_create_doc
 }
 

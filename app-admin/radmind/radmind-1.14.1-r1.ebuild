@@ -17,7 +17,8 @@ IUSE="libressl"
 DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!dev-util/repo"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.7.0-gentoo.patch

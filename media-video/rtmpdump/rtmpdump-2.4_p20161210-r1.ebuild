@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 inherit multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="RTMP client intended to stream audio or video flash content"
-HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
+HOMEPAGE="https://rtmpdump.mplayerhq.hu/"
 SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 # the library is LGPL-2.1, the command is GPL-2
@@ -17,7 +17,10 @@ IUSE="gnutls ssl libressl"
 
 DEPEND="ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
-		!gnutls? ( !libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) libressl? ( dev-libs/libressl ) )
+		!gnutls? (
+			!libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl )
+		)
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"

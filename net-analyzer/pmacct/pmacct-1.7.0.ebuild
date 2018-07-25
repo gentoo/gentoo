@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,10 @@ SRC_URI="http://www.pmacct.net/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="64bit debug geoip geoipv2 ipv6 jansson kafka mongodb mysql ndpi nflog postgres rabbitmq sqlite threads zmq"
+IUSE="
+	64bit geoip geoipv2 ipv6 jansson kafka mongodb mysql ndpi nflog postgres
+	rabbitmq sqlite threads zmq
+"
 REQUIRED_USE="
 	?? ( geoip geoipv2 )
 	kafka? ( jansson )
@@ -52,7 +55,6 @@ src_configure() {
 
 	econf \
 		$(use_enable 64bit) \
-		$(use_enable debug) \
 		$(use_enable geoip) \
 		$(use_enable geoipv2) \
 		$(use_enable ipv6) \

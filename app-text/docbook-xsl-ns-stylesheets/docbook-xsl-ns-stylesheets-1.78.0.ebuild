@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,12 +8,12 @@ MY_PN="${PN%-stylesheets}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="XSL Stylesheets for Docbook"
-HOMEPAGE="http://wiki.docbook.org/topic/DocBookXslStylesheets"
+HOMEPAGE="https://github.com/docbook/wiki/wiki"
 SRC_URI="mirror://sourceforge/docbook/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="ruby"
 
 RDEPEND=">=app-text/build-docbook-catalog-1.4

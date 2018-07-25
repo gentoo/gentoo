@@ -1,5 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (07 Jan 2018)
+# Requires 32-bit libraries.
+<net-misc/teamviewer-13
+
+# David Seifert <soap@gentoo.org> (03 Jan 2018)
+# Requires 32-bit multilib compatibility
+sys-block/megamgr
 
 # James Le Cuirot <chewi@gentoo.org> (13 Aug 2016)
 # Steam requires amd64 multilib. These are steam-overlay packages.
@@ -15,28 +23,21 @@ mail-client/novell-groupwise-client
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
-=app-editors/emacs-18*
 >=app-i18n/atokx3-3.0.0
-<games-roguelike/dwarf-fortress-0.43.0
 app-accessibility/mbrola
 app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
+app-editors/emacs:18
 app-emulation/crossover-bin
 app-emulation/playonlinux
 app-emulation/q4wine
 app-emulation/winetricks
 app-office/ooextras
-app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-lang/icc
-dev-lang/idb
-dev-lang/ifc
-dev-perl/Archive-Rar
 dev-util/android-ndk
 dev-util/android-sdk-update-manager
-dev-util/android-studio
 dev-util/biew
 games-action/beathazardultra
 games-action/brutal-legend
@@ -56,6 +57,7 @@ games-action/shadowgrounds-survivor-bin
 games-action/solar2
 games-action/spacetripper-demo
 games-action/swordandsworcery
+games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/aquaria
 games-arcade/barbarian-bin
@@ -110,10 +112,10 @@ games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
 games-fps/ut2004-demo
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/hoh-bin
+games-puzzle/triptych
 games-roguelike/adom
 games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
@@ -131,10 +133,10 @@ games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/heroes3
 games-strategy/heroes3-demo
+games-strategy/knights-demo
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz
-media-fonts/acroread-asianfonts
 media-sound/aucdtect
 media-sound/ventrilo-server-bin
 media-video/binkplayer
@@ -145,12 +147,10 @@ net-print/cndrvcups-common-lb
 net-print/cndrvcups-lb
 sci-biology/foldingathome
 sci-chemistry/cara-bin
-sci-chemistry/cyana
 sci-chemistry/mars
 sci-electronics/eagle
 sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
 
 
 # AMD64 Team; <amd64@gentoo.org>

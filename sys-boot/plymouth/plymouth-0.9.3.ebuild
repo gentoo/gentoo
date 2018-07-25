@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,22 +49,27 @@ DOC_CONTENTS="
 PATCHES=(
 )
 
-src_configure() {
-	local myconf
-	myconf="--with-system-root-install=no
-	--localstatedir=/var
-	--without-rhgb-compat-link
-	--enable-systemd-integration
-	--with-systemdunitdir="$(systemd_get_systemunitdir)"
-	$(use_enable !static-libs shared)
-	$(use_enable static-libs static)
-	$(use_enable debug tracing)
-	$(use_enable gtk gtk)
-	$(use_enable libkms drm)
-	$(use_enable pango)
-	$(use_enable gdm gdm-transition)"
+src_prepare() {
+	default
 	eautoreconf
-	econf ${myconf}
+}
+
+src_configure() {
+	local myconf=(
+		--with-system-root-install=no
+		--localstatedir=/var
+		--without-rhgb-compat-link
+		--enable-systemd-integration
+		--with-systemdunitdir="$(systemd_get_systemunitdir)"
+		$(use_enable !static-libs shared)
+		$(use_enable static-libs static)
+		$(use_enable debug tracing)
+		$(use_enable gtk gtk)
+		$(use_enable libkms drm)
+		$(use_enable pango)
+		$(use_enable gdm gdm-transition)
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {

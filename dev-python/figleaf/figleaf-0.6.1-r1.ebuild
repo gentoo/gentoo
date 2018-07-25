@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Code coverage tool"
-HOMEPAGE="http://darcs.idyll.org/~t/projects/figleaf/doc/ https://pypi.python.org/pypi/figleaf"
+HOMEPAGE="http://darcs.idyll.org/~t/projects/figleaf/doc/ https://pypi.org/project/figleaf/"
 SRC_URI="http://darcs.idyll.org/~t/projects/${P}.tar.gz"
 
 LICENSE="BSD"

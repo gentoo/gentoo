@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="vim plugin: an extensible and universal comment toggler"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1173 https://github.com/tomtom/tcomment_vim"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1173 https://github.com/tomtom/tcomment_vim"
 LICENSE="GPL-3"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"

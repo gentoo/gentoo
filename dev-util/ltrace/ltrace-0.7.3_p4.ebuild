@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ LTRACE_V=${PV/_p*/}
 DB_V=${PV/*_p/}
 
 DESCRIPTION="trace library calls made at runtime"
-HOMEPAGE="http://ltrace.alioth.debian.org/"
+HOMEPAGE="https://www.ltrace.org/"
 SRC_URI="
 	mirror://debian/pool/main/l/${PN}/${PN}_${LTRACE_V}.orig.tar.bz2
 	mirror://debian/pool/main/l/${PN}/${PN}_${LTRACE_V}-${DB_V}.debian.tar.gz

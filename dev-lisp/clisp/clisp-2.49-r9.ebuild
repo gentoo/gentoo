@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="http://clisp.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/clisp/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="2/${PV}"
 KEYWORDS="amd64 ~ppc ~sparc x86"
-IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk pari +pcre postgres +readline svm -threads +unicode +zlib"
+IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm -threads +unicode +zlib"
 # "jit" disabled ATM
 
 RDEPEND=">=dev-lisp/asdf-2.33-r3
@@ -22,7 +22,6 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 		 fastcgi? ( dev-libs/fcgi )
 		 gdbm? ( sys-libs/gdbm )
 		 gtk? ( >=x11-libs/gtk+-2.10 >=gnome-base/libglade-2.6 )
-		 pari? ( <sci-mathematics/pari-2.5.0 )
 		 postgres? ( >=dev-db/postgresql-8.0 )
 		 readline? ( >=sys-libs/readline-5.0 <sys-libs/readline-7.0 )
 		 pcre? ( dev-libs/libpcre )
@@ -34,7 +33,7 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 #		 jit? ( >=dev-libs/lightning-1.2 )
 
 DEPEND="${RDEPEND}
-	X? ( x11-misc/imake x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto x11-misc/imake )"
 
 enable_modules() {
 	[[ $# = 0 ]] && die "${FUNCNAME[0]} must receive at least one argument"
@@ -61,6 +60,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-bits_ipctypes_to_sys_ipc.patch
 	epatch "${FILESDIR}"/${P}-get_hostname.patch
 	epatch "${FILESDIR}"/${P}-tinfo.patch
+
+	xdg_environment_reset
 }
 
 src_configure() {
@@ -103,7 +104,6 @@ src_configure() {
 	use fastcgi && enable_modules fastcgi
 	use gdbm && enable_modules gdbm
 	use gtk && enable_modules gtk2
-	use pari && enable_modules pari
 	use pcre && enable_modules pcre
 	use svm && enable_modules libsvm
 	use zlib && enable_modules zlib
@@ -138,9 +138,6 @@ src_install() {
 	make DESTDIR="${D}" prefix=/usr install-bin || die "Installation failed"
 	doman clisp.1
 	dodoc ../SUMMARY README* ../src/NEWS ../unix/MAGIC.add ../ANNOUNCE
-	# stripping them removes common symbols (defined but uninitialised variables)
-	# which are then needed to build modules...
-	export STRIP_MASK="*/usr/$(get_libdir)/clisp-${PV}/*/*"
 	popd
 	dohtml doc/impnotes.{css,html} doc/regexp.html doc/clisp.png
 	dodoc doc/{CLOS-guide,LISP-tutorial}.txt

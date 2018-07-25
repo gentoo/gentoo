@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit autotools eutils linux-info linux-mod python-r1 systemd
 
 DESCRIPTION="Production quality, multilayer virtual switch"
-HOMEPAGE="http://openvswitch.org"
-SRC_URI="http://openvswitch.org/releases/${P}.tar.gz"
+HOMEPAGE="https://www.openvswitch.org"
+SRC_URI="https://www.openvswitch.org/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
@@ -18,10 +18,6 @@ IUSE="debug modules monitor +ssl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	|| (
-		>=sys-apps/openrc-0.10.5
-		sys-apps/systemd
-	)
 	ssl? ( dev-libs/openssl:0= )
 	${PYTHON_DEPS}
 	~dev-python/ovs-2.7.0[${PYTHON_USEDEP}]

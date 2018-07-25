@@ -41,10 +41,7 @@ RDEPEND=">=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	)
 	vorbis? (
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
-		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-sdl-20140406-r1
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
+		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	)"
 DEPEND=${RDEPEND}
 

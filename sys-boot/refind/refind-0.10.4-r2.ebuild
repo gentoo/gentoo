@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit toolchain-funcs flag-o-matic versionator
 
-DESCRIPTION="The rEFInd UEFI Boot Manager by Rod Smith"
-HOMEPAGE="http://www.rodsbooks.com/refind/"
+DESCRIPTION="The UEFI Boot Manager by Rod Smith"
+HOMEPAGE="https://www.rodsbooks.com/refind/"
 
 SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz"
 
@@ -177,7 +177,7 @@ pkg_postinst() {
 	elog ""
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "refind-install requires additional packages to be fully functional:"
-		elog " app-crypt/sbsigntool for binary signing for use with SecureBoot"
+		elog " app-crypt/sbsigntools for binary signing for use with SecureBoot"
 		elog " sys-boot/efibootmgr for writing to NVRAM"
 		elog " sys-block/parted for automatic ESP location and mount"
 		elog ""

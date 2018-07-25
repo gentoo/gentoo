@@ -13,4 +13,5 @@
     * Only files in topmost patch can be writable.
     * Some handy shortcut keys of quilt commands.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

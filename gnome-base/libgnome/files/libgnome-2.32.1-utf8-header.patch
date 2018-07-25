@@ -1,0 +1,26 @@
+From 33313713c4f5c1de500859ff128d6fd7e3af5722 Mon Sep 17 00:00:00 2001
+From: Colin Walters <walters@verbum.org>
+Date: Mon, 7 Aug 2017 12:57:43 -0400
+Subject: gnome-config.h: Fix invalid UTF-8 in header
+
+This breaks the new Python `glib-mkenums`.
+---
+ libgnome/gnome-config.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgnome/gnome-config.h b/libgnome/gnome-config.h
+index 0c3dfe6..b9d659d 100644
+--- a/libgnome/gnome-config.h
++++ b/libgnome/gnome-config.h
+@@ -270,7 +270,7 @@ void gnome_config_clean_key_ (const char *path, gboolean priv);
+ #define gnome_config_private_clean_key(path) \
+ 	(gnome_config_clean_key_((path),TRUE))
+ 
+-/* returns the true filename of the config file */
++/* returns the true filename of the config file */
+ #define gnome_config_get_real_path(path) \
+ 	(g_build_filename (gnome_user_dir_get(),(path),NULL))
+ #define gnome_config_private_get_real_path(path) \
+-- 
+cgit v0.12
+

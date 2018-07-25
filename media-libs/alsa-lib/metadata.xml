@@ -6,6 +6,7 @@
   </maintainer>
   <use>
     <flag name="alisp">Enable support for ALISP (ALSA LISP) interpreter for advanced features.</flag>
+    <flag name="thread-safety">thread-safe API functions</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:alsa-project:alsa-lib</remote-id>

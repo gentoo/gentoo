@@ -1,0 +1,44 @@
+--- a/openssh-7.6p1+x509-11.2.diff	2018-03-13 10:48:08.755434051 -0700
++++ b/openssh-7.6p1+x509-11.2.diff	2018-03-13 10:51:27.217980071 -0700
+@@ -29025,13 +29025,6 @@
+ diff -ruN openssh-7.6p1/servconf.c openssh-7.6p1+x509-11.2/servconf.c
+ --- openssh-7.6p1/servconf.c	2017-10-02 22:34:26.000000000 +0300
+ +++ openssh-7.6p1+x509-11.2/servconf.c	2018-02-11 12:07:01.000000000 +0200
+-@@ -1,5 +1,5 @@
+- 
+--/* $OpenBSD: servconf.c,v 1.312 2017/10/02 19:33:20 djm Exp $ */
+-+/* $OpenBSD: servconf.c,v 1.313 2017/10/04 18:49:30 djm Exp $ */
+- /*
+-  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+-  *                    All rights reserved
+ @@ -9,6 +9,29 @@
+   * software must be clearly marked as such, and if the derived work is
+   * incompatible with the protocol description in the RFC file, it must be
+@@ -29467,27 +29460,6 @@
+  	case sAllowUsers:
+  		while ((arg = strdelim(&cp)) && *arg != '\0') {
+  			if (options->num_allow_users >= MAX_ALLOW_USERS)
+-@@ -1663,9 +1931,9 @@
+- 		if (!arg || *arg == '\0')
+- 			fatal("%s line %d: missing PermitOpen specification",
+- 			    filename, linenum);
+--		i = options->num_permitted_opens;	/* modified later */
+-+		value = options->num_permitted_opens;	/* modified later */
+- 		if (strcmp(arg, "any") == 0 || strcmp(arg, "none") == 0) {
+--			if (*activep && i == 0) {
+-+			if (*activep && value == 0) {
+- 				options->num_permitted_opens = 1;
+- 				options->permitted_opens = xcalloc(1,
+- 				    sizeof(*options->permitted_opens));
+-@@ -1683,7 +1951,7 @@
+- 			if (arg == NULL || ((port = permitopen_port(arg)) < 0))
+- 				fatal("%s line %d: bad port number in "
+- 				    "PermitOpen", filename, linenum);
+--			if (*activep && i == 0) {
+-+			if (*activep && value == 0) {
+- 				options->permitted_opens = xrecallocarray(
+- 				    options->permitted_opens,
+- 				    options->num_permitted_opens,
+ @@ -1885,11 +2153,20 @@
+  
+  	case sDeprecated:

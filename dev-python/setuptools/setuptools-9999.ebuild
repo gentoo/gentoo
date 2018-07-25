@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Collection of extensions to Distutils"
-HOMEPAGE="https://github.com/pypa/setuptools https://pypi.python.org/pypi/setuptools"
+HOMEPAGE="https://github.com/pypa/setuptools https://pypi.org/project/setuptools/"
 
 LICENSE="MIT"
 SLOT="0"

@@ -1,0 +1,103 @@
+--- pjproject-2.7.1.ORIG/aconfigure.ac	2018-02-06 11:34:20.973411193 +0000
++++ pjproject-2.7.1/aconfigure.ac	2018-02-06 13:33:31.525015674 +0000
+@@ -1551,57 +1551,56 @@
+     enable_ssl=no
+ fi
+ 
+-dnl # Include SSL support
++dnl # Correct --enable vs --disable SSL flipflop logic
+ AC_SUBST(ac_no_ssl)
+ AC_SUBST(ac_ssl_has_aes_gcm,0)
+ AC_ARG_ENABLE(ssl,
+ 	      AS_HELP_STRING([--disable-ssl],
+ 			     [Exclude SSL support the build (default: autodetect)])
+-	      ,
+-	      [
+-		if test "$enable_ssl" = "no"; then
+-		 [ac_no_ssl=1]
+-		 AC_MSG_RESULT([Checking if SSL support is disabled... yes])
+-	        fi
+-	      ],
+-	      [
+-		AC_MSG_RESULT([checking for OpenSSL installations..])
+-                if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
+-                    CFLAGS="$CFLAGS -I$with_ssl/include"
+-                    LDFLAGS="$LDFLAGS -L$with_ssl/lib"
+-                    AC_MSG_RESULT([Using SSL prefix... $with_ssl])
+-                fi
+-		AC_SUBST(openssl_h_present)
+-		AC_SUBST(libssl_present)
+-		AC_SUBST(libcrypto_present)
+-		AC_CHECK_HEADER(openssl/ssl.h,[openssl_h_present=1])
+-		AC_CHECK_LIB(crypto,ERR_load_BIO_strings,[libcrypto_present=1 && LIBS="-lcrypto $LIBS"])
+-		AC_CHECK_LIB(ssl,SSL_CTX_new,[libssl_present=1 && LIBS="-lssl $LIBS"])
+-		if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
+-	        	AC_MSG_RESULT([OpenSSL library found, SSL support enabled])
+-			
+-			# Check if SRTP should be compiled with OpenSSL
+-			# support, to enable cryptos such as AES GCM.
+-			
+-			# EVP_CIPHER_CTX is now opaque in OpenSSL 1.1.0, libsrtp 1.5.4 uses it as a transparent type.
+-			# Update 2.7: our bundled libsrtp has been upgraded to 2.1.0,
+-			# so we can omit EVP_CIPHER_CTX definition check now.
+-			AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <openssl/evp.h>]],
+-							  [EVP_CIPHER_CTX *ctx;EVP_aes_128_gcm();])],
+-					  [AC_CHECK_LIB(crypto,EVP_aes_128_gcm,[ac_ssl_has_aes_gcm=1])])
+-			if test "x$ac_ssl_has_aes_gcm" = "x1"; then
+-				AC_MSG_RESULT([OpenSSL has AES GCM support, SRTP will use OpenSSL])
+-			else
+-				AC_MSG_RESULT([OpenSSL AES GCM support not found, SRTP will only support AES CM cryptos])
+-			fi
+-
+-			# PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
+-			#AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
+-			AC_DEFINE(PJ_HAS_SSL_SOCK, 1)
++	      ,	 [ac_no_ssl=1]
++)
++
++dnl # OpenSSL detection
++AC_MSG_CHECKING([OpenSSL installations])
++if test "x$ac_no_ssl" = "x1"; then
++	AC_MSG_RESULT([explicitly disabled])
++else
++	if test "x$with_ssl" != "xno" -a "x$with_ssl" != "x"; then
++		CFLAGS="$CFLAGS -I$with_ssl/include"
++		LDFLAGS="$LDFLAGS -L$with_ssl/lib"
++		AC_MSG_RESULT([Using SSL prefix... $with_ssl])
++	fi
++	AC_SUBST(openssl_h_present)
++	AC_SUBST(libssl_present)
++	AC_SUBST(libcrypto_present)
++	AC_CHECK_HEADER(openssl/ssl.h,[openssl_h_present=1])
++	AC_CHECK_LIB(crypto,ERR_load_BIO_strings,[libcrypto_present=1 && LIBS="-lcrypto $LIBS"])
++	AC_CHECK_LIB(ssl,SSL_CTX_new,[libssl_present=1 && LIBS="-lssl $LIBS"])
++	if test "x$openssl_h_present" = "x1" -a "x$libssl_present" = "x1" -a "x$libcrypto_present" = "x1"; then
++	       	AC_MSG_RESULT([OpenSSL library found, SSL support enabled])
++
++		# Check if SRTP should be compiled with OpenSSL
++		# support, to enable cryptos such as AES GCM.
++
++		# EVP_CIPHER_CTX is now opaque in OpenSSL 1.1.0, libsrtp 1.5.4 uses it as a transparent type.
++		# Update 2.7: our bundled libsrtp has been upgraded to 2.1.0,
++		# so we can omit EVP_CIPHER_CTX definition check now.
++		AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <openssl/evp.h>]],
++						  [EVP_CIPHER_CTX *ctx;EVP_aes_128_gcm();])],
++				  [AC_CHECK_LIB(crypto,EVP_aes_128_gcm,[ac_ssl_has_aes_gcm=1])])
++		if test "x$ac_ssl_has_aes_gcm" = "x1"; then
++			AC_MSG_RESULT([OpenSSL has AES GCM support, SRTP will use OpenSSL])
+ 		else
+-			AC_MSG_RESULT([** OpenSSL libraries not found, disabling SSL support **])
++			AC_MSG_RESULT([OpenSSL AES GCM support not found, SRTP will only support AES CM cryptos])
+ 		fi
+-	      ])
++
++		# PJSIP_HAS_TLS_TRANSPORT setting follows PJ_HAS_SSL_SOCK
++		#AC_DEFINE(PJSIP_HAS_TLS_TRANSPORT, 1)
++		AC_DEFINE(PJ_HAS_SSL_SOCK, 1)
++	else
++		AC_MSG_RESULT([** OpenSSL libraries not found, disabling SSL support **])
++	fi
++fi
+ 
+ dnl # Obsolete option --with-opencore-amrnb
+ AC_ARG_WITH(opencore-amrnb,

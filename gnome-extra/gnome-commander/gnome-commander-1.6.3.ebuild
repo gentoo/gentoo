@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,11 @@ GNOME2_LA_PUNT="yes"
 inherit eutils gnome2 python-single-r1
 
 DESCRIPTION="A graphical, full featured, twin-panel file manager"
-HOMEPAGE="http://gcmd.github.io/"
+HOMEPAGE="https://gcmd.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="chm exif gsf pdf python taglib samba test +unique"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

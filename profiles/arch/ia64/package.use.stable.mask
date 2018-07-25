@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (6 Jan 2018)
+# Please unmask after newer dietlibc is finally stable on ia64
+sys-fs/dmraid dietlibc
+
 # Hans de Graaff <graaff@gentoo.org> (16 Apr 2016)
 # Mask tests on thin-provisioning-tools since the required
 # packages are no longer stable, bug 610088
@@ -27,12 +31,9 @@ sys-block/thin-provisioning-tools test
 dev-util/geany-plugins gtkspell
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
->=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome
 
 # sufficiently recent wayland is not stable yet, bug #559062
-~dev-libs/efl-1.15.2 wayland
 ~dev-libs/efl-1.17.0 wayland
-~media-libs/elementary-1.15.2 wayland
 ~media-libs/elementary-1.17.0 wayland

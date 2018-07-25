@@ -1,0 +1,420 @@
+Index: libmavconn/src/interface.cpp
+===================================================================
+--- libmavconn.orig/src/interface.cpp
++++ libmavconn/src/interface.cpp
+@@ -133,7 +133,7 @@ void MAVConnInterface::log_recv(const ch
+ 
+ 	const char *proto_version_str = (msg.magic == MAVLINK_STX) ? "v2.0" : "v1.0";
+ 
+-	logDebug("%s%zu: recv: %s %4s Message-Id: %u [%u bytes] IDs: %u.%u Seq: %u",
++	CONSOLE_BRIDGE_logDebug("%s%zu: recv: %s %4s Message-Id: %u [%u bytes] IDs: %u.%u Seq: %u",
+ 			pfx, conn_id,
+ 			proto_version_str,
+ 			framing_str,
+@@ -144,7 +144,7 @@ void MAVConnInterface::log_send(const ch
+ {
+ 	const char *proto_version_str = (msg->magic == MAVLINK_STX) ? "v2.0" : "v1.0";
+ 
+-	logDebug("%s%zu: send: %s Message-Id: %u [%u bytes] IDs: %u.%u Seq: %u",
++	CONSOLE_BRIDGE_logDebug("%s%zu: send: %s Message-Id: %u [%u bytes] IDs: %u.%u Seq: %u",
+ 			pfx, conn_id,
+ 			proto_version_str,
+ 			msg->msgid, msg->len, msg->sysid, msg->compid, msg->seq);
+@@ -152,7 +152,7 @@ void MAVConnInterface::log_send(const ch
+ 
+ void MAVConnInterface::log_send_obj(const char *pfx, const mavlink::Message &msg)
+ {
+-	logDebug("%s%zu: send: %s", pfx, conn_id, msg.to_yaml().c_str());
++	CONSOLE_BRIDGE_logDebug("%s%zu: send: %s", pfx, conn_id, msg.to_yaml().c_str());
+ }
+ 
+ void MAVConnInterface::send_message_ignore_drop(const mavlink::mavlink_message_t *msg)
+@@ -161,7 +161,7 @@ void MAVConnInterface::send_message_igno
+ 		send_message(msg);
+ 	}
+ 	catch (std::length_error &e) {
+-		logError(PFX "%zu: DROPPED Message-Id %u [%u bytes] IDs: %u.%u Seq: %u: %s",
++		CONSOLE_BRIDGE_logError(PFX "%zu: DROPPED Message-Id %u [%u bytes] IDs: %u.%u Seq: %u: %s",
+ 				conn_id,
+ 				msg->msgid, msg->len, msg->sysid, msg->compid, msg->seq,
+ 				e.what());
+@@ -174,7 +174,7 @@ void MAVConnInterface::send_message_igno
+ 		send_message(msg);
+ 	}
+ 	catch (std::length_error &e) {
+-		logError(PFX "%zu: DROPPED Message %s: %s",
++		CONSOLE_BRIDGE_logError(PFX "%zu: DROPPED Message %s: %s",
+ 				conn_id,
+ 				msg.get_name().c_str(),
+ 				e.what());
+@@ -247,14 +247,14 @@ static void url_parse_query(std::string
+ 	auto ids_it = std::search(query.begin(), query.end(),
+ 			ids_end.begin(), ids_end.end());
+ 	if (ids_it == query.end()) {
+-		logWarn(PFX "URL: unknown query arguments");
++		CONSOLE_BRIDGE_logWarn(PFX "URL: unknown query arguments");
+ 		return;
+ 	}
+ 
+ 	std::advance(ids_it, ids_end.length());
+ 	auto comma_it = std::find(ids_it, query.end(), ',');
+ 	if (comma_it == query.end()) {
+-		logError(PFX "URL: no comma in ids= query");
++		CONSOLE_BRIDGE_logError(PFX "URL: no comma in ids= query");
+ 		return;
+ 	}
+ 
+@@ -264,7 +264,7 @@ static void url_parse_query(std::string
+ 	sysid = std::stoi(sys);
+ 	compid = std::stoi(comp);
+ 
+-	logDebug(PFX "URL: found system/component id = [%u, %u]", sysid, compid);
++	CONSOLE_BRIDGE_logDebug(PFX "URL: found system/component id = [%u, %u]", sysid, compid);
+ }
+ 
+ static MAVConnInterface::Ptr url_parse_serial(
+@@ -292,7 +292,7 @@ static MAVConnInterface::Ptr url_parse_u
+ 
+ 	auto sep_it = std::find(hosts.begin(), hosts.end(), '@');
+ 	if (sep_it == hosts.end()) {
+-		logError(PFX "UDP URL should contain @!");
++		CONSOLE_BRIDGE_logError(PFX "UDP URL should contain @!");
+ 		throw DeviceError("url", "UDP separator not found");
+ 	}
+ 
+@@ -360,7 +360,7 @@ MAVConnInterface::Ptr MAVConnInterface::
+ 			proto_end.begin(), proto_end.end());
+ 	if (proto_it == url.end()) {
+ 		// looks like file path
+-		logDebug(PFX "URL: %s: looks like file path", url.c_str());
++		CONSOLE_BRIDGE_logDebug(PFX "URL: %s: looks like file path", url.c_str());
+ 		return url_parse_serial(url, "", system_id, component_id, false);
+ 	}
+ 
+@@ -384,7 +384,7 @@ MAVConnInterface::Ptr MAVConnInterface::
+ 		++query_it;
+ 	query.assign(query_it, url.end());
+ 
+-	logDebug(PFX "URL: %s: proto: %s, host: %s, path: %s, query: %s",
++	CONSOLE_BRIDGE_logDebug(PFX "URL: %s: proto: %s, host: %s, path: %s, query: %s",
+ 			url.c_str(), proto.c_str(), host.c_str(),
+ 			path.c_str(), query.c_str());
+ 
+Index: libmavconn/src/mavlink_helpers.cpp.em
+===================================================================
+--- libmavconn.orig/src/mavlink_helpers.cpp.em
++++ libmavconn/src/mavlink_helpers.cpp.em
+@@ -27,20 +27,20 @@ using mavconn::MAVConnInterface;
+ 
+ void MAVConnInterface::init_msg_entry()
+ {
+-	logDebug("mavconn: Initialize message_entries map");
++	CONSOLE_BRIDGE_logDebug("mavconn: Initialize message_entries map");
+ 
+ 	auto load = [&](const char *dialect, const mavlink::mavlink_msg_entry_t & e) {
+ 		auto it = message_entries.find(e.msgid);
+ 		if (it != message_entries.end()) {
+ 			if (memcmp(&e, it->second, sizeof(e)) != 0) {
+-				logWarn("mavconn: init: message from %s, MSG-ID %d ignored! Table has different entry.", dialect, e.msgid);
++				CONSOLE_BRIDGE_logWarn("mavconn: init: message from %s, MSG-ID %d ignored! Table has different entry.", dialect, e.msgid);
+ 			}
+ 			else {
+-				logDebug("mavconn: init: message from %s, MSG-ID %d in table.", dialect, e.msgid);
++				CONSOLE_BRIDGE_logDebug("mavconn: init: message from %s, MSG-ID %d in table.", dialect, e.msgid);
+ 			}
+ 		}
+ 		else {
+-			logDebug("mavconn: init: add message entry for %s, MSG-ID %d", dialect, e.msgid);
++			CONSOLE_BRIDGE_logDebug("mavconn: init: add message entry for %s, MSG-ID %d", dialect, e.msgid);
+ 			message_entries[e.msgid] = &e;
+ 		}
+ 	};
+Index: libmavconn/src/serial.cpp
+===================================================================
+--- libmavconn.orig/src/serial.cpp
++++ libmavconn/src/serial.cpp
+@@ -43,7 +43,7 @@ MAVConnSerial::MAVConnSerial(uint8_t sys
+ {
+ 	using SPB = boost::asio::serial_port_base;
+ 
+-	logInform(PFXd "device: %s @ %d bps", conn_id, device.c_str(), baudrate);
++	CONSOLE_BRIDGE_logInform(PFXd "device: %s @ %d bps", conn_id, device.c_str(), baudrate);
+ 
+ 	try {
+ 		serial_dev.open(device);
+@@ -95,7 +95,7 @@ void MAVConnSerial::close()
+ void MAVConnSerial::send_bytes(const uint8_t *bytes, size_t length)
+ {
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+@@ -115,7 +115,7 @@ void MAVConnSerial::send_message(const m
+ 	assert(message != nullptr);
+ 
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+@@ -135,7 +135,7 @@ void MAVConnSerial::send_message(const m
+ void MAVConnSerial::send_message(const mavlink::Message &message)
+ {
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+@@ -159,7 +159,7 @@ void MAVConnSerial::do_read(void)
+ 			buffer(rx_buf),
+ 			[sthis] (error_code error, size_t bytes_transferred) {
+ 				if (error) {
+-					logError(PFXd "receive: %s", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logError(PFXd "receive: %s", sthis->conn_id, error.message().c_str());
+ 					sthis->close();
+ 					return;
+ 				}
+@@ -187,7 +187,7 @@ void MAVConnSerial::do_write(bool check_
+ 				assert(bytes_transferred <= buf_ref.len);
+ 
+ 				if (error) {
+-					logError(PFXd "write: %s", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logError(PFXd "write: %s", sthis->conn_id, error.message().c_str());
+ 					sthis->close();
+ 					return;
+ 				}
+Index: libmavconn/src/tcp.cpp
+===================================================================
+--- libmavconn.orig/src/tcp.cpp
++++ libmavconn/src/tcp.cpp
+@@ -46,11 +46,11 @@ static bool resolve_address_tcp(io_servi
+ 				ep = q_ep;
+ 				ep.port(port);
+ 				result = true;
+-				logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
++				CONSOLE_BRIDGE_logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
+ 			});
+ 
+ 	if (ec) {
+-		logWarn(PFXd "resolve error: %s", chan, ec.message().c_str());
++		CONSOLE_BRIDGE_logWarn(PFXd "resolve error: %s", chan, ec.message().c_str());
+ 		result = false;
+ 	}
+ 
+@@ -73,7 +73,7 @@ MAVConnTCPClient::MAVConnTCPClient(uint8
+ 	if (!resolve_address_tcp(io_service, conn_id, server_host, server_port, server_ep))
+ 		throw DeviceError("tcp: resolve", "Bind address resolve failed");
+ 
+-	logInform(PFXd "Server address: %s", conn_id, to_string_ss(server_ep).c_str());
++	CONSOLE_BRIDGE_logInform(PFXd "Server address: %s", conn_id, to_string_ss(server_ep).c_str());
+ 
+ 	try {
+ 		socket.open(tcp::v4());
+@@ -108,7 +108,7 @@ MAVConnTCPClient::MAVConnTCPClient(uint8
+ 
+ void MAVConnTCPClient::client_connected(size_t server_channel)
+ {
+-	logInform(PFXd "Got client, id: %zu, address: %s",
++	CONSOLE_BRIDGE_logInform(PFXd "Got client, id: %zu, address: %s",
+ 			server_channel, conn_id, to_string_ss(server_ep).c_str());
+ 
+ 	// start recv
+@@ -140,7 +140,7 @@ void MAVConnTCPClient::close()
+ void MAVConnTCPClient::send_bytes(const uint8_t *bytes, size_t length)
+ {
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+@@ -160,7 +160,7 @@ void MAVConnTCPClient::send_message(cons
+ 	assert(message != nullptr);
+ 
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+@@ -180,7 +180,7 @@ void MAVConnTCPClient::send_message(cons
+ void MAVConnTCPClient::send_message(const mavlink::Message &message)
+ {
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+@@ -204,7 +204,7 @@ void MAVConnTCPClient::do_recv()
+ 			buffer(rx_buf),
+ 			[sthis] (error_code error, size_t bytes_transferred) {
+ 				if (error) {
+-					logError(PFXd "receive: %s", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logError(PFXd "receive: %s", sthis->conn_id, error.message().c_str());
+ 					sthis->close();
+ 					return;
+ 				}
+@@ -232,7 +232,7 @@ void MAVConnTCPClient::do_send(bool chec
+ 				assert(bytes_transferred <= buf_ref.len);
+ 
+ 				if (error) {
+-					logError(PFXd "send: %s", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logError(PFXd "send: %s", sthis->conn_id, error.message().c_str());
+ 					sthis->close();
+ 					return;
+ 				}
+@@ -269,7 +269,7 @@ MAVConnTCPServer::MAVConnTCPServer(uint8
+ 	if (!resolve_address_tcp(io_service, conn_id, server_host, server_port, bind_ep))
+ 		throw DeviceError("tcp-l: resolve", "Bind address resolve failed");
+ 
+-	logInform(PFXd "Bind address: %s", conn_id, to_string_ss(bind_ep).c_str());
++	CONSOLE_BRIDGE_logInform(PFXd "Bind address: %s", conn_id, to_string_ss(bind_ep).c_str());
+ 
+ 	try {
+ 		acceptor.open(tcp::v4());
+@@ -302,7 +302,7 @@ void MAVConnTCPServer::close()
+ 	if (!is_open())
+ 		return;
+ 
+-	logInform(PFXd "Terminating server. "
++	CONSOLE_BRIDGE_logInform(PFXd "Terminating server. "
+ 			"All connections will be closed.", conn_id);
+ 
+ 	io_service.stop();
+@@ -395,7 +395,7 @@ void MAVConnTCPServer::do_accept()
+ 			acceptor_client->server_ep,
+ 			[sthis, acceptor_client] (error_code error) {
+ 				if (error) {
+-					logError(PFXd "accept: %s", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logError(PFXd "accept: %s", sthis->conn_id, error.message().c_str());
+ 					sthis->close();
+ 					return;
+ 				}
+@@ -416,7 +416,7 @@ void MAVConnTCPServer::client_closed(std
+ {
+ 	if (auto instp = weak_instp.lock()) {
+ 		bool locked = mutex.try_lock();
+-		logInform(PFXd "Client connection closed, id: %p, address: %s",
++		CONSOLE_BRIDGE_logInform(PFXd "Client connection closed, id: %p, address: %s",
+ 				conn_id, instp.get(), to_string_ss(instp->server_ep).c_str());
+ 
+ 		client_list.remove(instp);
+Index: libmavconn/src/udp.cpp
+===================================================================
+--- libmavconn.orig/src/udp.cpp
++++ libmavconn/src/udp.cpp
+@@ -46,11 +46,11 @@ static bool resolve_address_udp(io_servi
+ 				ep = q_ep;
+ 				ep.port(port);
+ 				result = true;
+-				logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
++				CONSOLE_BRIDGE_logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
+ 			});
+ 
+ 	if (ec) {
+-		logWarn(PFXd "resolve error: %s", chan, ec.message().c_str());
++		CONSOLE_BRIDGE_logWarn(PFXd "resolve error: %s", chan, ec.message().c_str());
+ 		result = false;
+ 	}
+ 
+@@ -75,7 +75,7 @@ MAVConnUDP::MAVConnUDP(uint8_t system_id
+ 	if (!resolve_address_udp(io_service, conn_id, bind_host, bind_port, bind_ep))
+ 		throw DeviceError("udp: resolve", "Bind address resolve failed");
+ 
+-	logInform(PFXd "Bind address: %s", conn_id, to_string_ss(bind_ep).c_str());
++	CONSOLE_BRIDGE_logInform(PFXd "Bind address: %s", conn_id, to_string_ss(bind_ep).c_str());
+ 
+ 	if (remote_host != "") {
+ 		if (remote_host != BROADCAST_REMOTE_HOST)
+@@ -86,9 +86,9 @@ MAVConnUDP::MAVConnUDP(uint8_t system_id
+ 		}
+ 
+ 		if (remote_exists)
+-			logInform(PFXd "Remote address: %s", conn_id, to_string_ss(remote_ep).c_str());
++			CONSOLE_BRIDGE_logInform(PFXd "Remote address: %s", conn_id, to_string_ss(remote_ep).c_str());
+ 		else
+-			logWarn(PFXd "Remote address resolve failed.", conn_id);
++			CONSOLE_BRIDGE_logWarn(PFXd "Remote address resolve failed.", conn_id);
+ 	}
+ 
+ 	try {
+@@ -144,12 +144,12 @@ void MAVConnUDP::close()
+ void MAVConnUDP::send_bytes(const uint8_t *bytes, size_t length)
+ {
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+ 	if (!remote_exists) {
+-		logDebug(PFXd "send: Remote not known, message dropped.", conn_id);
++		CONSOLE_BRIDGE_logDebug(PFXd "send: Remote not known, message dropped.", conn_id);
+ 		return;
+ 	}
+ 
+@@ -169,12 +169,12 @@ void MAVConnUDP::send_message(const mavl
+ 	assert(message != nullptr);
+ 
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+ 	if (!remote_exists) {
+-		logDebug(PFXd "send: Remote not known, message dropped.", conn_id);
++		CONSOLE_BRIDGE_logDebug(PFXd "send: Remote not known, message dropped.", conn_id);
+ 		return;
+ 	}
+ 
+@@ -194,12 +194,12 @@ void MAVConnUDP::send_message(const mavl
+ void MAVConnUDP::send_message(const mavlink::Message &message)
+ {
+ 	if (!is_open()) {
+-		logError(PFXd "send: channel closed!", conn_id);
++		CONSOLE_BRIDGE_logError(PFXd "send: channel closed!", conn_id);
+ 		return;
+ 	}
+ 
+ 	if (!remote_exists) {
+-		logDebug(PFXd "send: Remote not known, message dropped.", conn_id);
++		CONSOLE_BRIDGE_logDebug(PFXd "send: Remote not known, message dropped.", conn_id);
+ 		return;
+ 	}
+ 
+@@ -224,13 +224,13 @@ void MAVConnUDP::do_recvfrom()
+ 			remote_ep,
+ 			[sthis] (error_code error, size_t bytes_transferred) {
+ 				if (error) {
+-					logError(PFXd "receive: %s", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logError(PFXd "receive: %s", sthis->conn_id, error.message().c_str());
+ 					sthis->close();
+ 					return;
+ 				}
+ 
+ 				if (sthis->remote_ep != sthis->last_remote_ep) {
+-					logInform(PFXd "Remote address: %s", sthis->conn_id, to_string_ss(sthis->remote_ep).c_str());
++					CONSOLE_BRIDGE_logInform(PFXd "Remote address: %s", sthis->conn_id, to_string_ss(sthis->remote_ep).c_str());
+ 					sthis->remote_exists = true;
+ 					sthis->last_remote_ep = sthis->remote_ep;
+ 				}
+@@ -259,11 +259,11 @@ void MAVConnUDP::do_sendto(bool check_tx
+ 				assert(bytes_transferred <= buf_ref.len);
+ 
+ 				if (error == boost::asio::error::network_unreachable) {
+-					logWarn(PFXd "sendto: %s, retrying", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logWarn(PFXd "sendto: %s, retrying", sthis->conn_id, error.message().c_str());
+ 					// do not return, try to resend
+ 				}
+ 				else if (error) {
+-					logError(PFXd "sendto: %s", sthis->conn_id, error.message().c_str());
++					CONSOLE_BRIDGE_logError(PFXd "sendto: %s", sthis->conn_id, error.message().c_str());
+ 					sthis->close();
+ 					return;
+ 				}

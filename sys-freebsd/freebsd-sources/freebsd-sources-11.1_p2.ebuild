@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,16 +18,12 @@ UPSTREAM_PATCHES=( "SA-17:08/ptrace.patch"
 	"EN-17:08/pf.patch" )
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}
 		$(freebsd_upstream_patches)"
 fi
 
-EXTRACTONLY="
-	sys/
-	contrib/bmake/
-	usr.bin/bmake/
-"
+EXTRACTONLY="sys/"
 
 RDEPEND="dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 )
 	=sys-freebsd/freebsd-mk-defs-${RV}*
@@ -67,10 +63,6 @@ pkg_setup() {
 
 src_prepare() {
 	local conf="${S}/$(tc-arch-kernel)/conf/${KERN_BUILD}"
-
-	cd "${WORKDIR}" || die
-	epatch "${FILESDIR}/freebsd-ubin-10.3-bmake-workaround.patch"
-	cd "${S}" || die
 
 	# This replaces the gentoover patch, it doesn't need reapply every time.
 	sed -i -e 's:^REVISION=.*:REVISION="'${PVR}'":' \
@@ -115,11 +107,6 @@ src_configure() {
 
 src_compile() {
 	if use build-kernel ; then
-		if has_version "<sys-freebsd/freebsd-ubin-10.0"; then
-			cd "${WORKDIR}"/usr.bin/bmake || die
-			CC=${CHOST}-gcc freebsd_src_compile
-			export BMAKE="${WORKDIR}/usr.bin/bmake/make"
-		fi
 		cd "${S}/$(tc-arch-kernel)/compile/${KERN_BUILD}" || die
 		freebsd_src_compile depend
 		freebsd_src_compile
@@ -150,18 +137,18 @@ pkg_preinst() {
 		rm -f "${ROOT}/usr/src/sys"
 	fi
 
-	if use sparc-fbsd ; then
-		ewarn "WARNING: kldload currently causes kernel panics"
-		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
-		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
-		ewarn "Please compile all modules you need into the kernel"
-	fi
+#	if use sparc-fbsd ; then
+#		ewarn "WARNING: kldload currently causes kernel panics"
+#		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
+#		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
+#		ewarn "Please compile all modules you need into the kernel"
+#	fi
 
 	ewarn "If you want to manually compile (not recommended), please don't forget the following steps."
-	if ! use sparc-fbsd ; then
-		ewarn "export CC=clang"
-		ewarn "export CXX=clang++"
-	fi
+#	if ! use sparc-fbsd ; then
+#		ewarn "export CC=clang"
+#		ewarn "export CXX=clang++"
+#	fi
 	if ! use zfs ; then
 		ewarn "export WITHOUT_CDDL="
 		ewarn "Note, Please set USE=zfs if you want to enable modules under the CDDL."

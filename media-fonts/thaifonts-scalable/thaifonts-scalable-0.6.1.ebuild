@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit font
 
 DESCRIPTION="A collection of Free fonts for Thai"
-HOMEPAGE="http://linux.thai.net/projects/thaifonts-scalable"
+HOMEPAGE="https://linux.thai.net/projects/thaifonts-scalable"
 SRC_URI="ftp://linux.thai.net/pub/thailinux/software/thai-ttf/ttf-tlwg-${PV}.tar.xz"
 
 LICENSE="|| ( GPL-2-with-font-exception GPL-3-with-font-exception )"

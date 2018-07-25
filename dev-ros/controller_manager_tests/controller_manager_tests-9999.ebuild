@@ -19,6 +19,7 @@ RDEPEND="
 	dev-ros/controller_interface
 	dev-ros/control_toolbox
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	test? (

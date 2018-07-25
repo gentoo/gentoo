@@ -35,10 +35,10 @@ src_test() {
 }
 
 src_install() {
-	newbin "${PN}.sh" "${PN}"
-	dosym "${PN}" "/usr/bin/${PN}txt"
-	newbashcomp "${PN}_completion" "${PN}.sh"
-	bashcomp_alias "${PN}.sh" "${PN}txt"
+	newbin "${PN}.sh" "${PN}cli"
+	dosym "${PN}cli" "/usr/bin/${PN}txt"
+	newbashcomp "${PN}_completion" "${PN}cli.sh"
+	bashcomp_alias "${PN}cli.sh" "${PN}txt"
 	einstalldocs
 }
 

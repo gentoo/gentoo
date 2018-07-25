@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Robin H. Johnson <robbat2@gentoo.org>, 12 Nov 2007:
@@ -21,7 +21,7 @@ K_TARBALL_SUFFIX="xz"
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="A minimal libc subset for use with initramfs"
-HOMEPAGE="http://www.zytor.com/mailman/listinfo/klibc/ https://www.kernel.org/pub/linux/libs/klibc/"
+HOMEPAGE="https://www.zytor.com/mailman/listinfo/klibc/ https://www.kernel.org/pub/linux/libs/klibc/"
 KV_MAJOR="4" KV_MINOR="x" KV_SUB="4"
 PKV_EXTRA=""
 if [[ ${PKV_EXTRA} ]]; then
@@ -54,8 +54,9 @@ KEYWORDS="~alpha amd64 ~arm ia64 -mips ~ppc ~ppc64 ~sparc x86"
 SLOT="0"
 IUSE="debug test custom-cflags"
 
-DEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-lang/perl"
+DEPEND="${RDEPEND}
+	sys-devel/bc"
 
 KS="${WORKDIR}/linux-${OKV}"
 

@@ -6,10 +6,10 @@
 # Do not use it in new series.
 
 # @ECLASS: mysql_fx.eclass
-# @AUTHOR: Francesco Riosa (Retired) <vivo@gentoo.org>
 # @MAINTAINER:
-#	- MySQL Team <mysql-bugs@gentoo.org>
-#	- Luca Longinotti <chtekk@gentoo.org>
+#   - MySQL Team <mysql-bugs@gentoo.org>
+#   - Luca Longinotti <chtekk@gentoo.org>
+# @AUTHOR: Francesco Riosa (Retired) <vivo@gentoo.org>
 # @BLURB: This eclass provides some helper functions for mysql ebuilds
 # @DESCRIPTION:
 # This eclass providers helpers to build mysql servers including patching

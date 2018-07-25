@@ -2,8 +2,8 @@ Ripped from Mandrake
 
 http://bugs.gentoo.org/82192
 
---- bzip2-1.0.6/bzip2.1
-+++ bzip2-1.0.6/bzip2.1
+--- a/bzip2.1
++++ b/bzip2.1
 @@ -235,6 +235,10 @@
  Suppress non-essential warning messages.  Messages pertaining to
  I/O errors and other critical events will not be suppressed.
@@ -15,8 +15,8 @@ http://bugs.gentoo.org/82192
  .B \-v --verbose
  Verbose mode -- show the compression ratio for each file processed.
  Further \-v's increase the verbosity level, spewing out lots of
---- bzip2-1.0.6/bzip2.c
-+++ bzip2-1.0.6/bzip2.c
+--- a/bzip2.c
++++ b/bzip2.c
 @@ -145,6 +145,7 @@
  #include <signal.h>
  #include <math.h>

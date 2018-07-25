@@ -1,0 +1,66 @@
+From 17c92e43fda114bf5341e51d752e882238b8fe8c Mon Sep 17 00:00:00 2001
+From: Nils Goroll <nils.goroll@uplex.de>
+Date: Thu, 5 Oct 2017 13:39:23 +0200
+Subject: [PATCH] hack up vsctool to work with python 2 and 3
+
+StringIO does not exist any more in python3, yet requiring 2.7 would
+not pave the path forward, so try to be compatible with both.
+
+Works for me on Python 2.7.9 and Python 3.4
+
+I would appreciate if someone more fluent in serpentinous programming
+language reviewed and/or rewrote this.
+---
+ lib/libvcc/vsctool.py | 24 ++++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/lib/libvcc/vsctool.py b/lib/libvcc/vsctool.py
+index 854968e3b..829c6e518 100644
+--- a/lib/libvcc/vsctool.py
++++ b/lib/libvcc/vsctool.py
+@@ -37,7 +37,10 @@
+ import json
+ import sys
+ import gzip
+-import StringIO
++try:
++    import StringIO
++except ImportError:
++    import io
+ import collections
+ import struct
+ 
+@@ -54,9 +57,22 @@
+ 	"format":	[ "integer", FORMATS],
+ }
+ 
++# http://python3porting.com/problems.html#bytes-strings-and-unicode
++if sys.version_info < (3,):
++    def b(x):
++        return x
++else:
++    import codecs
++    def b(x):
++        return codecs.latin_1_encode(x)[0]
++
+ def gzip_str(s):
+-	out = StringIO.StringIO()
+-	gzip.GzipFile(fileobj=out, mode="w").write(s)
++	try:
++		out = StringIO.StringIO()
++	except NameError:
++		out = io.BytesIO()
++
++	gzip.GzipFile(fileobj=out, mode="w").write(b(s))
+ 	out.seek(4)
+ 	out.write(struct.pack("<L", 0x12bfd58))
+ 	return out.getvalue()
+@@ -285,7 +301,7 @@ class rst_vsc(directive):
+ 	def __init__(self, s):
+ 		super(rst_vsc, self).__init__(s)
+ 
+-		for i,v in PARAMS.iteritems():
++		for i,v in PARAMS.items():
+ 			if v is not True:
+ 				self.do_default(i, v[0], v[1])
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eutils.eclass
@@ -20,7 +20,8 @@ _EUTILS_ECLASS=1
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
 0|1|2|3|4|5|6)
-	inherit desktop epatch estack ltprune multilib toolchain-funcs
+	inherit desktop epatch estack ltprune multilib preserve-libs \
+		toolchain-funcs vcs-clean
 	;;
 esac
 
@@ -36,37 +37,6 @@ if ! declare -F eqawarn >/dev/null ; then
 		:
 	}
 fi
-
-# @FUNCTION: ecvs_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove CVS directories recursiveley.  Useful when a source tarball contains
-# internal CVS directories.  Defaults to $PWD.
-ecvs_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name 'CVS' -prune -print0 | xargs -0 rm -rf
-	find "$@" -type f -name '.cvs*' -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: esvn_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .svn directories recursiveley.  Useful when a source tarball contains
-# internal Subversion directories.  Defaults to $PWD.
-esvn_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: egit_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .git* directories/files recursiveley.  Useful when a source tarball
-# contains internal Git directories.  Defaults to $PWD.
-egit_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.git*' -prune -print0 | xargs -0 rm -rf
-}
 
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
@@ -164,167 +134,6 @@ strip-linguas() {
 	export LINGUAS=${newls:1}
 }
 
-# @FUNCTION: _eutils_eprefix_init
-# @INTERNAL
-# @DESCRIPTION:
-# Initialized prefix variables for EAPI<3.
-_eutils_eprefix_init() {
-	has "${EAPI:-0}" 0 1 2 && : ${ED:=${D}} ${EPREFIX:=} ${EROOT:=${ROOT}}
-}
-
-# @FUNCTION: preserve_old_lib
-# @USAGE: <libs to preserve> [more libs]
-# @DESCRIPTION:
-# These functions are useful when a lib in your package changes ABI SONAME.
-# An example might be from libogg.so.0 to libogg.so.1.  Removing libogg.so.0
-# would break packages that link against it.  Most people get around this
-# by using the portage SLOT mechanism, but that is not always a relevant
-# solution, so instead you can call this from pkg_preinst.  See also the
-# preserve_old_lib_notify function.
-preserve_old_lib() {
-	_eutils_eprefix_init
-	if [[ ${EBUILD_PHASE} != "preinst" ]] ; then
-		eerror "preserve_old_lib() must be called from pkg_preinst() only"
-		die "Invalid preserve_old_lib() usage"
-	fi
-	[[ -z $1 ]] && die "Usage: preserve_old_lib <library to preserve> [more libraries to preserve]"
-
-	# let portage worry about it
-	has preserve-libs ${FEATURES} && return 0
-
-	local lib dir
-	for lib in "$@" ; do
-		[[ -e ${EROOT}/${lib} ]] || continue
-		dir=${lib%/*}
-		dodir ${dir} || die "dodir ${dir} failed"
-		cp "${EROOT}"/${lib} "${ED}"/${lib} || die "cp ${lib} failed"
-		touch "${ED}"/${lib}
-	done
-}
-
-# @FUNCTION: preserve_old_lib_notify
-# @USAGE: <libs to notify> [more libs]
-# @DESCRIPTION:
-# Spit helpful messages about the libraries preserved by preserve_old_lib.
-preserve_old_lib_notify() {
-	if [[ ${EBUILD_PHASE} != "postinst" ]] ; then
-		eerror "preserve_old_lib_notify() must be called from pkg_postinst() only"
-		die "Invalid preserve_old_lib_notify() usage"
-	fi
-
-	# let portage worry about it
-	has preserve-libs ${FEATURES} && return 0
-
-	_eutils_eprefix_init
-
-	local lib notice=0
-	for lib in "$@" ; do
-		[[ -e ${EROOT}/${lib} ]] || continue
-		if [[ ${notice} -eq 0 ]] ; then
-			notice=1
-			ewarn "Old versions of installed libraries were detected on your system."
-			ewarn "In order to avoid breaking packages that depend on these old libs,"
-			ewarn "the libraries are not being removed.  You need to run revdep-rebuild"
-			ewarn "in order to remove these old dependencies.  If you do not have this"
-			ewarn "helper program, simply emerge the 'gentoolkit' package."
-			ewarn
-		fi
-		ewarn "  # revdep-rebuild --library '${lib}' && rm '${lib}'"
-	done
-}
-
-# @FUNCTION: built_with_use
-# @USAGE: [--hidden] [--missing <action>] [-a|-o] <DEPEND ATOM> <List of USE flags>
-# @DESCRIPTION:
-#
-# Deprecated: Use EAPI 2 use deps in DEPEND|RDEPEND and with has_version calls.
-#
-# A temporary hack until portage properly supports DEPENDing on USE
-# flags being enabled in packages.  This will check to see if the specified
-# DEPEND atom was built with the specified list of USE flags.  The
-# --missing option controls the behavior if called on a package that does
-# not actually support the defined USE flags (aka listed in IUSE).
-# The default is to abort (call die).  The -a and -o flags control
-# the requirements of the USE flags.  They correspond to "and" and "or"
-# logic.  So the -a flag means all listed USE flags must be enabled
-# while the -o flag means at least one of the listed IUSE flags must be
-# enabled.  The --hidden option is really for internal use only as it
-# means the USE flag we're checking is hidden expanded, so it won't be found
-# in IUSE like normal USE flags.
-#
-# Remember that this function isn't terribly intelligent so order of optional
-# flags matter.
-built_with_use() {
-	_eutils_eprefix_init
-	local hidden="no"
-	if [[ $1 == "--hidden" ]] ; then
-		hidden="yes"
-		shift
-	fi
-
-	local missing_action="die"
-	if [[ $1 == "--missing" ]] ; then
-		missing_action=$2
-		shift ; shift
-		case ${missing_action} in
-			true|false|die) ;;
-			*) die "unknown action '${missing_action}'";;
-		esac
-	fi
-
-	local opt=$1
-	[[ ${opt:0:1} = "-" ]] && shift || opt="-a"
-
-	local PKG=$(best_version $1)
-	[[ -z ${PKG} ]] && die "Unable to resolve $1 to an installed package"
-	shift
-
-	local USEFILE=${EROOT}/var/db/pkg/${PKG}/USE
-	local IUSEFILE=${EROOT}/var/db/pkg/${PKG}/IUSE
-
-	# if the IUSE file doesn't exist, the read will error out, we need to handle
-	# this gracefully
-	if [[ ! -e ${USEFILE} ]] || [[ ! -e ${IUSEFILE} && ${hidden} == "no" ]] ; then
-		case ${missing_action} in
-			true)	return 0;;
-			false)	return 1;;
-			die)	die "Unable to determine what USE flags $PKG was built with";;
-		esac
-	fi
-
-	if [[ ${hidden} == "no" ]] ; then
-		local IUSE_BUILT=( $(<"${IUSEFILE}") )
-		# Don't check USE_EXPAND #147237
-		local expand
-		for expand in $(echo ${USE_EXPAND} | tr '[:upper:]' '[:lower:]') ; do
-			if [[ $1 == ${expand}_* ]] ; then
-				expand=""
-				break
-			fi
-		done
-		if [[ -n ${expand} ]] ; then
-			if ! has $1 ${IUSE_BUILT[@]#[-+]} ; then
-				case ${missing_action} in
-					true)  return 0;;
-					false) return 1;;
-					die)   die "$PKG does not actually support the $1 USE flag!";;
-				esac
-			fi
-		fi
-	fi
-
-	local USE_BUILT=$(<${USEFILE})
-	while [[ $# -gt 0 ]] ; do
-		if [[ ${opt} = "-o" ]] ; then
-			has $1 ${USE_BUILT} && return 0
-		else
-			has $1 ${USE_BUILT} || return 1
-		fi
-		shift
-	done
-	[[ ${opt} = "-a" ]]
-}
-
 # @FUNCTION: make_wrapper
 # @USAGE: <wrapper> <target> [chdir] [libpaths] [installpath]
 # @DESCRIPTION:
@@ -333,13 +142,12 @@ built_with_use() {
 # first optionally setting LD_LIBRARY_PATH to the colon-delimited
 # libpaths followed by optionally changing directory to chdir.
 make_wrapper() {
-	_eutils_eprefix_init
 	local wrapper=$1 bin=$2 chdir=$3 libdir=$4 path=$5
 	local tmpwrapper=$(emktemp)
+	has "${EAPI:-0}" 0 1 2 && local EPREFIX=""
 
 	(
 	echo '#!/bin/sh'
-	[[ -n ${chdir} ]] && printf 'cd "%s"\n' "${EPREFIX}${chdir}"
 	if [[ -n ${libdir} ]] ; then
 		local var
 		if [[ ${CHOST} == *-darwin* ]] ; then
@@ -355,6 +163,7 @@ make_wrapper() {
 			fi
 		EOF
 	fi
+	[[ -n ${chdir} ]] && printf 'cd "%s" &&\n' "${EPREFIX}${chdir}"
 	# We don't want to quote ${bin} so that people can pass complex
 	# things as ${bin} ... "./someprog --args"
 	printf 'exec %s "$@"\n' "${bin/#\//${EPREFIX}/}"
@@ -363,6 +172,7 @@ make_wrapper() {
 
 	if [[ -n ${path} ]] ; then
 		(
+		exeopts -m 0755
 		exeinto "${path}"
 		newexe "${tmpwrapper}" "${wrapper}"
 		) || die
@@ -523,12 +333,14 @@ case ${EAPI:-0} in
 
 # @FUNCTION: einstalldocs
 # @DESCRIPTION:
-# Install documentation using DOCS and HTML_DOCS.
+# Install documentation using DOCS and HTML_DOCS, in EAPIs that do not
+# provide this function.  When available (i.e., in EAPI 6 or later),
+# the package manager implementation should be used instead.
 #
 # If DOCS is declared and non-empty, all files listed in it are
-# installed. The files must exist, otherwise the function will fail.
-# In EAPI 4 and subsequent EAPIs DOCS may specify directories as well,
-# in other EAPIs using directories is unsupported.
+# installed.  The files must exist, otherwise the function will fail.
+# In EAPI 4 and 5, DOCS may specify directories as well; in earlier
+# EAPIs using directories is unsupported.
 #
 # If DOCS is not declared, the files matching patterns given
 # in the default EAPI implementation of src_install will be installed.
@@ -585,10 +397,11 @@ einstalldocs() {
 # @FUNCTION: in_iuse
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Determines whether the given flag is in IUSE. Strips IUSE default prefixes
-# as necessary.
+# Determines whether the given flag is in IUSE.  Strips IUSE default
+# prefixes as necessary.  In EAPIs where it is available (i.e., EAPI 6
+# or later), the package manager implementation should be used instead.
 #
-# Note that this function should not be used in the global scope.
+# Note that this function must not be used in the global scope.
 in_iuse() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"

@@ -7,16 +7,14 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Emacs Speaks Statistics"
 HOMEPAGE="http://ess.r-project.org/"
-# ${P}.tgz is plain (uncompresses) tar, so use zip for this version
-SRC_URI="http://ess.r-project.org/downloads/ess/${P}.zip"
+SRC_URI="http://ess.r-project.org/downloads/ess/${P}.tgz"
 
 LICENSE="GPL-2+ GPL-3+ Texinfo-manual"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 DEPEND="app-text/texi2html
-	virtual/latex-base
-	app-arch/unzip"
+	virtual/latex-base"
 
 SITEFILE="50${PN}-gentoo.el"
 

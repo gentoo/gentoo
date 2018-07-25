@@ -1,7 +1,7 @@
 Temporary patch to disable mono until new gtk-sharp is in tree wrt bug #382491
 
---- bindings/Makefile.am
-+++ bindings/Makefile.am
+--- a/bindings/Makefile.am
++++ b/bindings/Makefile.am
 @@ -1,9 +1,5 @@
  SUBDIRS = 
  
@@ -12,8 +12,8 @@ Temporary patch to disable mono until new gtk-sharp is in tree wrt bug #382491
  if HAS_PYTHON
  SUBDIRS += python
  endif
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -124,61 +124,6 @@
  AC_PATH_PROG([VALA_API_GEN], [vapigen])
  

@@ -1,0 +1,55 @@
+--- a/Imakefile
++++ b/Imakefile
+@@ -23,6 +23,11 @@
+     PUCCPTYDDEF = -DPUCC_PTYD		/* does not need to be setuid */
+          PTYLIB = -lpucc
+ #endif
++#ifdef LinuxArchitecture
++         PTYLIB = -lutil
++#undef InstallXtermSetUID
++#define InstallXtermSetUID 0
++#endif
+ 
+  OSMAJORVERSION = OSMajorVersion
+  OSMINORVERSION = OSMinorVersion
+--- a/button.c
++++ b/button.c
+@@ -41,8 +41,6 @@
+ #include "error.h"
+ #include "menu.h"
+ 
+-extern char *malloc();
+-
+ extern void DoSecureKeyboard();
+ 
+ #define KeyState(x) (((x) & (ShiftMask|ControlMask)) + (((x) & Mod1Mask) ? 2 : 0))
+--- a/charproc.c
++++ b/charproc.c
+@@ -102,8 +102,6 @@
+ extern XtAppContext app_con;
+ extern Widget toplevel;
+ extern void exit();
+-extern char *malloc();
+-extern char *realloc();
+ extern fd_set Select_mask;
+ extern fd_set X_mask;
+ extern fd_set pty_mask;
+--- a/main.c
++++ b/main.c
+@@ -143,6 +143,7 @@
+ #define HAS_UTMP_UT_HOST
+ #define LASTLOG
+ #define WTMP
++#include <pty.h>
+ #endif
+ 
+ #include <sys/ioctl.h>
+@@ -1871,7 +1872,7 @@
+ get_pty (pty)
+     int *pty;
+ {
+-#ifdef __osf__
++#if defined(__osf__) || defined(linux)
+     int tty;
+     return (openpty(pty, &tty, ttydev, NULL, NULL));
+ #endif

@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/crossdev.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/crossdev.git"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
@@ -19,7 +19,11 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=sys-apps/portage-2.1
+RDEPEND="
+	|| (
+		>=sys-apps/portage-2.1
+		sys-apps/portage-mgorny
+	)
 	>=app-portage/portage-utils-0.55
 	app-shells/bash
 	sys-apps/gentoo-functions

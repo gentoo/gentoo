@@ -2,8 +2,8 @@ From: Julian Ospald <hasufell@gentoo.org>
 Date: Sun Feb 10 14:48:58 UTC 2013
 Subject: remove Werror compiler flag wrt #456654
 
---- inc/My/Builder.pm
-+++ inc/My/Builder.pm
+--- a/inc/My/Builder.pm
++++ b/inc/My/Builder.pm
 @@ -123,7 +123,7 @@
              push @ofiles, $cbuilder->compile(
                  source               => catfile($server_directory, $cfile),

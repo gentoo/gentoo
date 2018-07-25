@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG Readme.md"
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/bundler )"
@@ -31,7 +31,7 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency on git and development dependencies.
 	sed -e '/git ls-files/ s:^:#:' \
-		-e '/\(wwtd\|bump\)/ s:^:#:' \
+		-e '/\(wwtd\|bump\|sqlite3\|activerecord\|i18n\)/ s:^:#:' \
 		-i fast_gettext.gemspec || die
 
 	# Avoid a test dependency on activerecord since this is now in the

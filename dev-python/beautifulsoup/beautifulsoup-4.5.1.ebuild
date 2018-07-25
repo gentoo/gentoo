@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree"
 HOMEPAGE="https://bugs.launchpad.net/beautifulsoup/
-	https://pypi.python.org/pypi/beautifulsoup4"
+	https://pypi.org/project/beautifulsoup4/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

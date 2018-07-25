@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ fi
 inherit golang-build
 
 DESCRIPTION="Resiliency patterns for golang"
-HOMEPAGE="https://${EGO_SRC}"
+HOMEPAGE="https://github.com/eapache/go-resiliency"
 LICENSE="MIT"
 SLOT="0/${PV}"
 IUSE=""

@@ -11,7 +11,7 @@ HOMEPAGE="https://www.fefe.de/libowfat/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 hppa sparc ~x86"
+KEYWORDS="amd64 hppa sparc x86"
 IUSE="diet"
 
 RDEPEND="diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )"
@@ -24,7 +24,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	emake -j1 \
+	emake \
 		CC=$(tc-getCC) \
 		CFLAGS="-I. ${CFLAGS}" \
 		DIET="/usr/bin/diet -Os" \
@@ -34,7 +34,7 @@ src_compile() {
 }
 
 src_install () {
-	emake -j1 \
+	emake \
 		DESTDIR="${D}" \
 		LIBDIR="/usr/$(get_libdir)" \
 		MAN3DIR="/usr/share/man/man3" \

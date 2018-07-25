@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ inherit golang-vcs-snapshot
 KEYWORDS="~amd64"
 DESCRIPTION="Replicated SQLite using the Raft consensus protocol"
 
-HOMEPAGE="https://${EGO_PN} http://www.philipotoole.com/tag/rqlite/"
+HOMEPAGE="https://github.com/rqlite/rqlite http://www.philipotoole.com/tag/rqlite/"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""

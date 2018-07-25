@@ -1,0 +1,11 @@
+--- src/common.c.old        2018-02-25 22:23:32.382369471 +0800
++++ src/common.c    2018-02-25 22:23:02.236854316 +0800
+@@ -19,6 +19,7 @@
+ #include <termios.h>
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/mman.h>
+ #include <dirent.h>
+ #include <errno.h>
+

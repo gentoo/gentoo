@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,10 +10,10 @@ SRC_URI="https://dev.gentoo.org/~tranquility/distfiles/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="amd64 x86"
 
-DEPEND="sys-devel/libtool
+DEPEND="
+	sys-devel/libtool
 	virtual/pkgconfig"
 
 RDEPEND="!dev-libs/libvterm-neovim"
@@ -24,7 +24,9 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+	emake \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		DESTDIR="${D}" install
 	prune_libtool_files
 

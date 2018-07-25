@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Extensible vi layer for Emacs"
-HOMEPAGE="http://gitorious.org/evil"
+HOMEPAGE="https://github.com/emacs-evil/evil"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ inherit autotools fdo-mime toolchain-funcs
 MY_P=${P/_}
 
 DESCRIPTION="An amateur radio logging program"
-HOMEPAGE="http://www.nongnu.org/xlog"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/xlog"
+SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="media-libs/hamlib

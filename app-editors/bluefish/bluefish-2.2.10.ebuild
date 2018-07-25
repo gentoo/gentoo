@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils fdo-mime python-single-r1
+inherit autotools gnome2-utils python-single-r1 xdg-utils
 
 MY_P=${P/_/-}
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.bennewitz.com/bluefish/stable/source/${MY_P}.tar.bz2"
 HOMEPAGE="http://bluefish.openoffice.nl/"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 SLOT="0"
 IUSE="+gtk3 gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -77,12 +77,17 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 
 	einfo "Adding XML catalog entries..."
 	/usr/bin/xmlcatalog  --noout \
@@ -94,8 +99,9 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	einfo "Removing XML catalog entries..."
 	/usr/bin/xmlcatalog  --noout \
 		--del 'Bluefish/DTD/Bflang' \

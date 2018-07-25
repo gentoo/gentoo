@@ -1,5 +1,5 @@
---- src/scim_hangul_imengine_setup.cpp.orig	2012-07-08 07:52:07.000000000 -0400
-+++ src/scim_hangul_imengine_setup.cpp	2012-11-02 14:13:14.000000000 -0400
+--- a/src/scim_hangul_imengine_setup.cpp
++++ b/src/scim_hangul_imengine_setup.cpp
 @@ -346,7 +346,7 @@
      for (i = 0; i < n; i++) {
  	const char* name = hangul_ic_get_keyboard_name(i);

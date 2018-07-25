@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Convert vector graphic file formats like .cdr, .svg, wmf and more."
 HOMEPAGE="https://sk1project.net/modules.php?name=Products&product=uniconvertor"
@@ -51,4 +51,14 @@ python_test() {
 	#distutils_install_for_testing
 	cd src/unittests || die
 	${EPYTHON} all_tests.py || die
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }

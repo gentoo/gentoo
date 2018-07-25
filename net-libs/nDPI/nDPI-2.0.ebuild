@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
-DEPEND="dev-libs/json-c
+DEPEND="dev-libs/json-c:=
 	net-libs/libpcap"
 RDEPEND="${DEPEND}"
 

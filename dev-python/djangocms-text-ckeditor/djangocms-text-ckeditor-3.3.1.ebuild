@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4}} )
 inherit distutils-r1
 
 DESCRIPTION="Text Plugin for django CMS with CKEditor support"
-HOMEPAGE="https://pypi.python.org/pypi/djangocms-text-ckeditor/"
+HOMEPAGE="https://pypi.org/project/djangocms-text-ckeditor/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde5.eclass
@@ -19,7 +19,7 @@
 # of this eclass's API.
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
-# any phase functions are overriden the version here should also be called.
+# any phase functions are overridden the version here should also be called.
 
 if [[ -z ${_KDE5_ECLASS} ]]; then
 _KDE5_ECLASS=1
@@ -31,7 +31,11 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils eutils flag-o-matic gnome2-utils kde5-functions versionator virtualx xdg
+inherit cmake-utils flag-o-matic gnome2-utils kde5-functions virtualx xdg
+
+case ${EAPI} in
+	6) inherit eapi7-ver eutils ;;
+esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	case ${KDE_SCM} in
@@ -44,6 +48,13 @@ if [[ -v KDE_GCC_MINIMAL ]]; then
 fi
 
 EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+
+# @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# For any other value, assume the package is using KDEInstallDirs macro and switch
+# KDE_INSTALL_USE_QT_SYS_PATHS to ON.
+: ${ECM_KDEINSTALLDIRS:=true}
 
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
@@ -94,6 +105,11 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # @DESCRIPTION:
 # Specifies the location of the KDE handbook if not the default.
 : ${KDE_DOC_DIR:=doc}
+
+# @ECLASS-VARIABLE: KDE_PO_DIRS
+# @DESCRIPTION:
+# Specifies the possible locations of KDE l10n files if not the default.
+: ${KDE_PO_DIRS:="po poqm"}
 
 # @ECLASS-VARIABLE: KDE_QTHELP
 # @DESCRIPTION:
@@ -175,7 +191,7 @@ case ${KDE_SUBSLOT} in
 			kde-frameworks | \
 			kde-plasma | \
 			kde-apps)
-				SLOT+="/$(get_version_component_range 1-2)"
+				SLOT+="/$(ver_cut 1-2)"
 				;;
 			*)
 				SLOT+="/${PV}"
@@ -199,21 +215,14 @@ case ${KDE_AUTODEPS} in
 			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
 		fi
 
-		case ${CATEGORY} in
-			kde-frameworks | \
-			kde-plasma)
-				RDEPEND+=" !<kde-apps/kde4-l10n-15.12.3-r1"
-				;;
-			kde-apps)
-				[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
-				[[ $(get_version_component_range 1) -ge 17 ]] && \
-					RDEPEND+="
-						!kde-apps/kde-l10n
-						!<kde-apps/kde4-l10n-16.12.0:4
-						!kde-apps/kdepim-l10n:5
-					"
-				;;
-		esac
+		if [[ ${CATEGORY} = kde-apps ]]; then
+			[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
+			RDEPEND+="
+				!kde-apps/kde-l10n
+				!<kde-apps/kde4-l10n-16.12.0:4
+				!kde-apps/kdepim-l10n:5
+			"
+		fi
 		;;
 esac
 
@@ -228,11 +237,7 @@ case ${KDE_DESIGNERPLUGIN} in
 	false)  ;;
 	*)
 		IUSE+=" designer"
-		DEPEND+=" designer? (
-			$(add_frameworks_dep kdesignerplugin)
-			$(add_qt_dep designer)
-		)"
-		;;
+		DEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
 esac
 
 case ${KDE_EXAMPLES} in
@@ -344,7 +349,7 @@ _calculate_src_uri() {
 		kde-frameworks)
 			SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
 		kde-plasma)
-			local plasmapv=$(get_version_component_range 1-3)
+			local plasmapv=$(ver_cut 1-3)
 
 			case ${PV} in
 				5.?.[6-9]? | 5.??.[6-9]? )
@@ -413,11 +418,11 @@ _calculate_live_repo() {
 			fi
 
 			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-				EGIT_BRANCH="Applications/$(get_version_component_range 1-2)"
+				EGIT_BRANCH="Applications/$(ver_cut 1-2)"
 			fi
 
 			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
-				EGIT_BRANCH="Plasma/$(get_version_component_range 1-2)"
+				EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
 			fi
 
 			EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
@@ -508,12 +513,12 @@ kde5_src_prepare() {
 	cmake-utils_src_prepare
 
 	# only build examples when required
-	if ! use_if_iuse examples || ! use examples ; then
+	if ! { in_iuse examples && use examples; } ; then
 		cmake_comment_add_subdirectory examples
 	fi
 
 	# only enable handbook when required
-	if ! use_if_iuse handbook ; then
+	if in_iuse handbook && ! use handbook ; then
 		cmake_comment_add_subdirectory ${KDE_DOC_DIR}
 
 		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
@@ -524,18 +529,18 @@ kde5_src_prepare() {
 
 	# drop translations when nls is not wanted
 	if in_iuse nls && ! use nls ; then
-		if [[ -d po ]] ; then
-			rm -r po || die
-		fi
-		if [[ -d poqm ]] ; then
-			rm -r poqm || die
-		fi
+		local po
+		for po in ${KDE_PO_DIRS}; do
+			if [[ -d ${po} ]] ; then
+				rm -r ${po} || die
+			fi
+		done
 	fi
 
 	# enable only the requested translations when required
 	if [[ -v LINGUAS ]] ; then
 		local po
-		for po in po poqm; do
+		for po in ${KDE_PO_DIRS}; do
 		if [[ -d ${po} ]] ; then
 			pushd ${po} > /dev/null || die
 			local lang
@@ -573,7 +578,7 @@ kde5_src_prepare() {
 	fi
 
 	# only build unit tests when required
-	if ! use_if_iuse test ; then
+	if ! { in_iuse test && use test; } ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
 			punt_bogus_dep Qt5 Test
 			# if forceoptional, also cover non-kde categories
@@ -617,7 +622,7 @@ kde5_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	# we rely on cmake-utils.eclass to append -DNDEBUG too
-	if ! use_if_iuse debug; then
+	if in_iuse debug && ! use debug; then
 		append-cppflags -DQT_NO_DEBUG
 	fi
 
@@ -631,20 +636,24 @@ kde5_src_configure() {
 		fi
 	fi
 
-	if ! use_if_iuse handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
+	if in_iuse handbook && ! use handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
 	fi
 
-	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
+	if in_iuse designer && ! use designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DesignerPlugin=ON )
 	fi
 
 	if [[ ${KDE_QTHELP} != false ]]; then
 		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
 	fi
 
-	# install mkspecs in the same directory as qt stuff
-	cmakeargs+=(-DKDE_INSTALL_USE_QT_SYS_PATHS=ON)
+	if [[ ${ECM_KDEINSTALLDIRS} != false ]] ; then
+		cmakeargs+=(
+			# install mkspecs in the same directory as qt stuff
+			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+		)
+	fi
 
 	# allow the ebuild to override what we set here
 	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")

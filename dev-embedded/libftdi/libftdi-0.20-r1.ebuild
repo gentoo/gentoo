@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 inherit cmake-utils python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then
+	inherit git-r3
 	EGIT_REPO_URI="git://developer.intra2net.com/${PN}"
-	inherit git-2
 else
 	SRC_URI="http://www.intra2net.com/en/developer/${PN}/download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm ~arm64 ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="Userspace access to FTDI USB interface chips"
@@ -20,6 +20,7 @@ HOMEPAGE="http://www.intra2net.com/en/developer/libftdi/"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="cxx doc examples python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="virtual/libusb:0
 	cxx? ( dev-libs/boost )
@@ -28,7 +29,10 @@ DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )
 	doc? ( app-doc/doxygen )"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake-include.patch
+	"${FILESDIR}"/${P}-cmake-version.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -44,12 +48,11 @@ src_prepare() {
 		-e '/SET(LIB_SUFFIX /d' \
 		CMakeLists.txt || die
 
-	eapply "${FILESDIR}"/${P}-cmake-{include,version}.patch
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DFTDIPP=$(usex cxx)
 		-DDOCUMENTATION=$(usex doc)
 		-DEXAMPLES=$(usex examples)

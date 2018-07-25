@@ -26,7 +26,7 @@ CDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=dev-libs/libevent-2.0.21:0=[${MULTILIB_USEDEP}]
 	libressl? ( >=dev-libs/libressl-2.2.4:0[${MULTILIB_USEDEP}] )
 	!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-	dnscrypt? ( dev-libs/libsodium )
+	dnscrypt? ( dev-libs/libsodium[${MULTILIB_USEDEP}] )
 	dnstap? (
 		dev-libs/fstrm[${MULTILIB_USEDEP}]
 		>=dev-libs/protobuf-c-1.0.2-r1[${MULTILIB_USEDEP}]

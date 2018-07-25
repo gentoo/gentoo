@@ -1,13 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-#if LIVE
-EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
-
-inherit autotools git-r3
-#endif
+EAPI=6
 
 # Kids, don't do this at home!
 inherit python-utils-r1
@@ -15,15 +9,16 @@ PYTHON_COMPAT=( "${_PYTHON_ALL_IMPLS[@]}" )
 
 # Inherited purely to have PYTHON_TARGET flags which will satisfy USE
 # dependencies and trigger necessary rebuilds.
-inherit python-r1
+inherit autotools git-r3 python-r1
 
 DESCRIPTION="Python script wrapper"
 HOMEPAGE="https://github.com/mgorny/python-exec/"
-SRC_URI="https://github.com/mgorny/${PN}/releases/download/${P}/${P}.tar.bz2"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/mgorny/python-exec.git"
 
 LICENSE="BSD-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS=""
 IUSE=""
 
 # eselect-python because of /usr/bin/python* collisions and new config
@@ -35,14 +30,10 @@ RDEPEND="
 	!<dev-lang/python-3.4.3-r4:3.4
 	!<dev-lang/python-3.5.0-r3:3.5"
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-
 src_prepare() {
+	default
 	eautoreconf
 }
-#endif
 
 src_configure() {
 	local pyimpls=() i EPYTHON

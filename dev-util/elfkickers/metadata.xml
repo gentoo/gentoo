@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
-		<description>Primary Maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>hardened@gentoo.org</email>

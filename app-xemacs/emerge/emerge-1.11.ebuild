@@ -7,6 +7,6 @@ SLOT="0"
 DESCRIPTION="Another interface over GNU patch"
 XEMACS_PKG_CAT="standard"
 
-KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages

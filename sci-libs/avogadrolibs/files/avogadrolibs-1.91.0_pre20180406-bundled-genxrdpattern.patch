@@ -1,0 +1,44 @@
+From 0287e83eb8706f5237d66873cb6a1b3730891c07 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 8 Apr 2018 11:21:17 +0200
+Subject: [PATCH] Provide overrideable BUNDLED_GENXRDPATTERN location
+
+---
+ cmake/DownloadGenXrdPattern.cmake | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/DownloadGenXrdPattern.cmake b/cmake/DownloadGenXrdPattern.cmake
+index ab5c5f0..7d4ecb4 100644
+--- a/cmake/DownloadGenXrdPattern.cmake
++++ b/cmake/DownloadGenXrdPattern.cmake
+@@ -10,8 +10,12 @@ macro(DownloadGenXrdPattern)
+     set(GENXRDPATTERN_NAME "genXrdPattern")
+   endif(WIN32)
+ 
++  if(NOT BUNDLED_GENXRDPATTERN)
++    set(BUNDLED_GENXRDPATTERN "${CMAKE_CURRENT_BINARY_DIR}/bin/${GENXRDPATTERN_NAME}")
++  endif()
++
+   # If it already exists, don't download it again
+-  if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/bin/${GENXRDPATTERN_NAME}")
++  if(NOT EXISTS "${BUNDLED_GENXRDPATTERN}")
+     set(GENXRDPATTERN_V "1.0-static")
+     # Linux
+     if(UNIX AND NOT APPLE)
+@@ -52,11 +56,11 @@ macro(DownloadGenXrdPattern)
+     # Now remove the temporary directory
+     file(REMOVE_RECURSE "${CMAKE_CURRENT_BINARY_DIR}/tmp")
+ 
+-  endif(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/bin/${GENXRDPATTERN_NAME}")
++  endif(NOT EXISTS "${BUNDLED_GENXRDPATTERN}")
+ 
+   set(GENXRDPATTERN_DESTINATION "bin")
+ 
+-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/bin/${GENXRDPATTERN_NAME}"
++  install(FILES "${BUNDLED_GENXRDPATTERN}"
+           DESTINATION "${GENXRDPATTERN_DESTINATION}"
+           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
+                       GROUP_READ GROUP_EXECUTE
+-- 
+2.17.0
+

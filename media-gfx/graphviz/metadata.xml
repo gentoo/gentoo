@@ -36,7 +36,6 @@
 		<flag name="gtk">Enables gtk+ output plugin -Tgtk (needs cairo)</flag>
 		<flag name="gts">Enables support for gts</flag>
 		<flag name="lasi">Enables PostScript output via <pkg>media-libs/lasi</pkg>, for plugin -Tlasi (needs cairo)</flag>
-		<flag name="qt4">Builds gvedit front-end</flag>
 		<flag name="X">Builds lefty front-end, builds plugin -Txlib, and enables support for x11 in various other modules (needs cairo)</flag>
 	</use>
 </pkgmetadata>

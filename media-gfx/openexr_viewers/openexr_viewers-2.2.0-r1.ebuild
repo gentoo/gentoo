@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools flag-o-matic
 
 DESCRIPTION="OpenEXR Viewers"
-HOMEPAGE="http://openexr.com/"
-SRC_URI="http://download.savannah.gnu.org/releases/openexr/${P}.tar.gz"
+HOMEPAGE="https://openexr.com"
+SRC_URI="https://download.savannah.gnu.org/releases/openexr/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

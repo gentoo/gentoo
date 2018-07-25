@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A jazzy skin for the Django Admin-Interface"
 HOMEPAGE="
-	https://pypi.python.org/pypi/django-grappelli
+	https://pypi.org/project/django-grappelli/
 	https://django-grappelli.readthedocs.org
 	https://github.com/sehmaschine/django-grappelli"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

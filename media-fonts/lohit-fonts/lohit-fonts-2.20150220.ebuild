@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Meta ebuild for the Lohit family of Indic fonts"
-HOMEPAGE="https://fedorahosted.org/lohit"
+HOMEPAGE="https://pagure.io/lohit"
 LICENSE="OFL-1.1"
 
 SLOT="0"

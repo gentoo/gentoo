@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 DESCRIPTION="UTR #51 Unicode Emoji"
-HOMEPAGE="http://unicode.org/emoji"
-BASE_URI="http://${PN%-*}.org/Public/${PN/*-}/${PV}"
+HOMEPAGE="https://unicode.org/emoji"
+BASE_URI="https://${PN%-*}.org/Public/${PN/*-}/${PV}"
 SRC_URI="${BASE_URI}/${PN/*-}-data.txt -> ${PN}-data-${PV}.txt
 	${BASE_URI}/${PN/*-}-sequences.txt -> ${PN}-sequences-${PV}.txt
 	${BASE_URI}/${PN/*-}-test.txt -> ${PN}-test-${PV}.txt
@@ -14,7 +14,7 @@ SRC_URI="${BASE_URI}/${PN/*-}-data.txt -> ${PN}-data-${PV}.txt
 
 LICENSE="unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 S="${WORKDIR}"

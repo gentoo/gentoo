@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="daap dvd examples chromaprint flickr freebox gnome-online-accounts lua subtitles test thetvdb tracker upnp-av vimeo +youtube"
 
 # Bump gom requirement to avoid segfaults
@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/libxml2:2
 	dev-db/sqlite:3
 
-	chromaprint? ( media-libs/gstreamer:1.0 )
+	chromaprint? ( media-plugins/gst-plugins-chromaprint:1.0 )
 	daap? ( >=net-libs/libdmapsharing-2.9.12:3.0 )
 	dvd? ( >=dev-libs/totem-pl-parser-3.4.1 )
 	flickr? ( net-libs/liboauth )

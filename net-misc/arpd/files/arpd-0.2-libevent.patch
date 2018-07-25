@@ -1,5 +1,5 @@
---- arpd.orig/arpd.c	2010-02-03 20:03:07.098748175 +0100
-+++ arpd/arpd.c	2010-02-03 20:06:24.469749941 +0100
+--- a/arpd.c
++++ b/arpd.c
 @@ -445,9 +445,6 @@
  void
  terminate_handler(int sig)

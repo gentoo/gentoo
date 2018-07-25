@@ -23,4 +23,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( README docs/{Architecture,Macros,Todo,Treebuilder,Updated} )
 
-#RESTRICT=test
+src_prepare() {
+	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
+		-i test/tree2.c || die
+
+	netsurf_src_prepare
+}

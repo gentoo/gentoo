@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,6 +35,11 @@ src_configure() {
 		-DHTTP_SERVER=$(usex http-server)
 		-DREDIS_CLIENT=$(usex redis-client)
 		-DREDIS_SERVER=$(usex redis-server)
+		# they have no deps
+		-DTCP_SOCKET_CLIENT=ON
+		-DTCP_SOCKET_SERVER=ON
+		-DUNIX_DOMAIN_SOCKET_CLIENT=ON
+		-DUNIX_DOMAIN_SOCKET_SERVER=ON
 		# they are not installed
 		-DCOMPILE_EXAMPLES=OFF
 		-DCOMPILE_STUBGEN=$(usex stubgen)

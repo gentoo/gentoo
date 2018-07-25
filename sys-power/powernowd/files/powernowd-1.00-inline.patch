@@ -1,0 +1,11 @@
+--- a/powernowd.c
++++ b/powernowd.c
+@@ -322,7 +322,7 @@
+ /*
+  * The heart of the program... decide to raise or lower the speed.
+  */
+-enum modes inline decide_speed(cpuinfo_t *cpu)
++enum modes decide_speed(cpuinfo_t *cpu)
+ {
+ 	int err;
+ 	float pct;

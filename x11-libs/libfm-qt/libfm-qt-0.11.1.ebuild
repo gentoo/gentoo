@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,14 +7,14 @@ inherit cmake-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}"
+	EGIT_REPO_URI="https://git.lxde.org/git/lxde/${PN}"
 else
 	SRC_URI="https://github.com/lxde/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Qt port of libfm, a library providing components to build desktop file managers"
-HOMEPAGE="http://lxqt.org/"
+HOMEPAGE="https://lxqt.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/3"

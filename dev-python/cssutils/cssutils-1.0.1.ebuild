@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A CSS Cascading Style Sheets library"
-HOMEPAGE="https://pypi.python.org/pypi/cssutils/ https://bitbucket.org/cthedot/cssutils http://cthedot.de/cssutils/"
+HOMEPAGE="https://pypi.org/project/cssutils/ https://bitbucket.org/cthedot/cssutils http://cthedot.de/cssutils/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

@@ -1,5 +1,5 @@
---- scala-2.12.1-orig/src/compiler/scala/tools/ant/templates/tool-unix.tmpl	2016-12-05 20:45:09.000000000 +1100
-+++ scala-2.12.1/src/compiler/scala/tools/ant/templates/tool-unix.tmpl	2016-12-28 11:46:29.120052198 +1100
+--- a/src/compiler/scala/tools/ant/templates/tool-unix.tmpl
++++ b/src/compiler/scala/tools/ant/templates/tool-unix.tmpl
 @@ -197,14 +197,11 @@
  # to java to suppress "." from materializing.
  if [[ "$usebootcp" == "true" ]]; then

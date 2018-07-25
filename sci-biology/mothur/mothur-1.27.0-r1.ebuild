@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="A suite of algorithms for ecological bioinformatics"
-HOMEPAGE="http://www.mothur.org/"
-SRC_URI="http://www.mothur.org/w/images/c/cb/Mothur.${PV}.zip -> ${P}.zip"
+HOMEPAGE="https://www.mothur.org/"
+SRC_URI="https://www.mothur.org/w/images/c/cb/Mothur.${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -1,5 +1,5 @@
---- 4stattack.py
-+++ 4stattack.py
+--- a/4stattack.py
++++ b/4stattack.py
 @@ -28,6 +28,9 @@
  images	= None
  screen	= None

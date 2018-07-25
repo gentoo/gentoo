@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="+dbus gstreamer ipod +udev"
 
 RDEPEND="dev-libs/keybinder:3[introspection]
@@ -63,11 +63,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	xdg-utils_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg-utils_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

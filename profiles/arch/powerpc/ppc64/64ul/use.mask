@@ -43,14 +43,8 @@ dvb
 
 # 2006/03/20 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
-video_cards_chips
-video_cards_cirrus
 video_cards_glint
-video_cards_s3
-video_cards_s3virge
-video_cards_savage
 video_cards_tdfx
-video_cards_trident
 video_cards_voodoo
 # llvm is not keyworded
 video_cards_radeonsi

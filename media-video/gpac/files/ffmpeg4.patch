@@ -1,0 +1,44 @@
+Index: gpac-0.7.1/applications/dashcast/video_encoder.c
+===================================================================
+--- gpac-0.7.1.orig/applications/dashcast/video_encoder.c
++++ gpac-0.7.1/applications/dashcast/video_encoder.c
+@@ -144,7 +144,7 @@ int dc_video_encoder_open(VideoOutputFil
+ 	}
+ 
+ 	//the global header gives access to the extradata (SPS/PPS)
+-	video_output_file->codec_ctx->flags |= CODEC_FLAG_GLOBAL_HEADER;
++	video_output_file->codec_ctx->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+ 
+ 	video_output_file->vstream_idx = 0;//video_stream->index;
+ 
+Index: gpac-0.7.1/modules/ffmpeg_in/ffmpeg_decode.c
+===================================================================
+--- gpac-0.7.1.orig/modules/ffmpeg_in/ffmpeg_decode.c
++++ gpac-0.7.1/modules/ffmpeg_in/ffmpeg_decode.c
+@@ -49,7 +49,7 @@
+ static uint8_t * ffmpeg_realloc_buffer(uint8_t * oldBuffer, u32 size) {
+ 	uint8_t * buffer;
+ 	/* Size of buffer must be larger, see avcodec_decode_video2 documentation */
+-	u32 allocatedSz = sizeof( char ) * (FF_INPUT_BUFFER_PADDING_SIZE + size);
++	u32 allocatedSz = sizeof( char ) * (AV_INPUT_BUFFER_PADDING_SIZE + size);
+ 	if (oldBuffer)
+ 		gf_free(oldBuffer);
+ 	buffer = (uint8_t*)gf_malloc( allocatedSz );
+@@ -577,7 +577,7 @@ static GF_Err FFDEC_GetCapabilities(GF_B
+ 		capability->cap.valueInt = 1;
+ 		return GF_OK;
+ 	case GF_CODEC_PADDING_BYTES:
+-		capability->cap.valueInt = FF_INPUT_BUFFER_PADDING_SIZE;
++		capability->cap.valueInt = AV_INPUT_BUFFER_PADDING_SIZE;
+ 		return GF_OK;
+ 	case GF_CODEC_REORDER:
+ 		capability->cap.valueInt = 1;
+@@ -669,7 +669,7 @@ static GF_Err FFDEC_GetCapabilities(GF_B
+ 		break;
+ 
+ 	case GF_CODEC_PADDING_BYTES:
+-		capability->cap.valueInt = FF_INPUT_BUFFER_PADDING_SIZE;
++		capability->cap.valueInt = AV_INPUT_BUFFER_PADDING_SIZE;
+ 		break;
+ 	default:
+ 		capability->cap.valueInt = 0;

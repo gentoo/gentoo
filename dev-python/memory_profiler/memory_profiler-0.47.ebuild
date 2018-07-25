@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A module for monitoring memory usage of a python program"
-HOMEPAGE="https://pypi.python.org/pypi/memory_profiler https://github.com/fabianp/memory_profiler"
+HOMEPAGE="https://pypi.org/project/memory_profiler/ https://github.com/fabianp/memory_profiler"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

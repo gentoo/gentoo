@@ -6,6 +6,14 @@
 
 # This file contains a list of useflags that cannot be used on sparc.
 
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
 # Sergei Trofimovich <slyfox@gentoo.org> (19 Nov 2017)
 # There is no luajit support on sparc. Bug #554376
 luajit
@@ -43,7 +51,6 @@ nagios-game
 
 # Samuli Suominen <ssuominen@gentoo.org> (07 May 2012)
 # Missing keywording in www-client/firefox wrt #360427
-firefox
 mozilla
 thunderbird
 
@@ -83,10 +90,6 @@ romio
 # They're borked
 dar32
 dar64
-
-# 2006/09/05 - Tupone Alfredo <tupone@gentoo.org>
-# doomsday ebuild is not available on this architecture
-doomsday
 
 # Needs java
 pdfannotextractor
@@ -162,10 +165,6 @@ frei0r
 prelude
 redis
 
-# Asterisk use flag masking
-zaptel
-
-
 # USE-flags from differents origins
 brltty
 directfb
@@ -192,22 +191,7 @@ hdf5
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
-video_cards_s3
-video_cards_sis
-video_cards_tseng
-video_cards_s3virge
-video_cards_i128
-video_cards_trident
-video_cards_neomagic
-video_cards_cirrus
-video_cards_tga
-video_cards_i740
-video_cards_ark
-video_cards_rendition
-video_cards_chips
-video_cards_apm
 video_cards_nv
-video_cards_vesa
 video_cards_nouveau
 
 # Matt Turner <mattst88@gentoo.org>
@@ -240,8 +224,6 @@ phonon
 # libdlm and cman are not keyworded
 cman
 clvm
-
--zeitgeist
 
 # nvidia toolkit for binary drivers
 cg
