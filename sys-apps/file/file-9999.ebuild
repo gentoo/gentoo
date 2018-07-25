@@ -41,7 +41,7 @@ src_prepare() {
 	elibtoolize
 
 	# don't let python README kill main README #60043
-	mv python/README.md README.python || die
+	mv python/README.md README.python.md || die
 }
 
 multilib_src_configure() {
@@ -62,7 +62,7 @@ src_configure() {
 		mkdir -p "${WORKDIR}"/build || die
 		cd "${WORKDIR}"/build || die
 		tc-export_build_env BUILD_C{C,XX}
-		ECONF_SOURCE=${S} \
+		ECONF_SOURCE="${S}" \
 		ac_cv_header_zlib_h=no \
 		ac_cv_lib_z_gzopen=no \
 		CHOST=${CBUILD} \
