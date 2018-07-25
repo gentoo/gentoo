@@ -41,7 +41,8 @@ src_prepare() {
 	elibtoolize
 
 	# don't let python README kill main README #60043
-	mv python/README.md README.python.md || die
+	mv python/README.md python/README.python.md || die
+	sed 's@README.md@README.python.md@' -i python/setup.py || die #662090
 }
 
 multilib_src_configure() {
