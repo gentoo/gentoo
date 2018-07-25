@@ -5450,7 +5450,7 @@ dev-python/pyudev 0.20.0-r1 0.21.0: Python binding to libudev
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyx 0.12.1-r1 0.14.1: Python package for the generation of encapsulated PostScript figures
-dev-python/pyxattr 0.5.5 0.6.0-r1: Python interface to xattr
+dev-python/pyxattr 0.6.0-r1: Python interface to xattr
 dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
 dev-python/pyyaml 3.12: YAML parser and emitter for Python
