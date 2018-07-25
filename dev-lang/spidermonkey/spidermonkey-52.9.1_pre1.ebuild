@@ -17,7 +17,7 @@ SRC_URI="http://ftp.mozilla.org/pub/spidermonkey/prereleases/52/pre1/mozjs-52.9.
 LICENSE="NPL-1.1"
 SLOT="52"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE="debug +jit minimal +system-icu test"
+IUSE="debug minimal +system-icu test"
 
 RESTRICT="ia64? ( test )"
 
@@ -45,6 +45,7 @@ src_prepare() {
 		|| die
 
 	eapply "${WORKDIR}/${PN}"
+	eapply "${FILESDIR}"/moz38-dont-hardcode-libc-soname.patch
 	#eapply "${FILESDIR}"/${PN}-52-baseconfig.patch
 
 	eapply_user
@@ -76,7 +77,6 @@ src_configure() {
 		--with-intl-api \
 		$(use_with system-icu) \
 		$(use_enable debug) \
-		$(use_enable jit ion) \
 		$(use_enable test tests) \
 		XARGS="/usr/bin/xargs" \
 		SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
