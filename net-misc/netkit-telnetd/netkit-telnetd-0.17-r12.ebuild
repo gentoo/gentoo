@@ -36,19 +36,20 @@ src_prepare() {
 	# better to just stay in sync with debian's own netkit-telnet
 	# package. Lots of bug fixes by them over time which were not in
 	# our telnetd.
-	EPATCH_FORCE="yes" EPATCH_SUFFIX="diff" eapply "${WORKDIR}"/debian/patches
+	eapply "${WORKDIR}"/debian/patches
 
 	# Patch: [1]
 	# after the deb patch we need to add a small patch that defines
 	# gnu source. This is needed for gcc-3.4.x (needs to be pushed
 	# back to the deb folk?)
-	eapply "${FILESDIR}"/netkit-telnetd-0.17-cflags-gnu_source.patch
+	eapply -p0 "${FILESDIR}"/netkit-telnetd-0.17-cflags-gnu_source.patch
+
+	eapply_user
 
 	# Fix portability issues.
 	sed -i \
 		-e 's:echo -n:printf %s:' \
 		configure || die
-	default
 }
 
 src_configure() {
