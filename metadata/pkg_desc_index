@@ -1400,7 +1400,7 @@ app-text/mecab 0.996: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1: Tail with multiple windows
-app-text/mupdf 1.11-r1 1.12.0-r2: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.11-r1 1.12.0-r2 1.13.0: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21: Namazu is a full-text search engine
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
@@ -8800,7 +8800,7 @@ net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
 net-mail/vpopmail 5.4.33: Collection of programs to manage virtual email on Qmail servers
 net-mail/yosucker 73: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
-net-mail/ytnef 1.9.2: Yeraze's TNEF Stream Reader - for winmail.dat files
+net-mail/ytnef 1.9.2 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
@@ -8913,7 +8913,7 @@ net-misc/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-misc/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openvpn 1.8.4: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
-net-misc/networkmanager-vpnc 1.2.4: NetworkManager VPNC plugin
+net-misc/networkmanager-vpnc 1.2.4 1.2.6: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
 net-misc/ntp 4.2.8_p11: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365: A NTP (RFC-1305) client for unix-alike computers
