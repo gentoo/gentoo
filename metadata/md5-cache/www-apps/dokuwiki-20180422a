@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] 
 SLOT=20180422a
 SRC_URI=https://download.dokuwiki.org/src/dokuwiki/dokuwiki-2018-04-22a.tgz
 _eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
-_md5_=92956e6504c922423696cf558373de23
+_md5_=703050eb8a5e22b36f9fb368f0a0acdf

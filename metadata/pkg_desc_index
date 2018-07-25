@@ -4997,7 +4997,7 @@ dev-python/kaa-imlib2 0.2.3-r2: Imlib2 wrapper for Python
 dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files in Python, successor of MMPython
 dev-python/kazoo 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keyczar 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 11.0.0 12.2.1: Provides access to the system keyring service
+dev-python/keyring 12.2.1 13.2.1: Provides access to the system keyring service
 dev-python/keystoneauth 3.1.0 3.4.0: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 4.17.0 4.21.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
