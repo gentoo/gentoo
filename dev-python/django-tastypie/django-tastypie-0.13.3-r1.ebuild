@@ -28,8 +28,10 @@ RDEPEND="${COMMON_DEPEND}
 
 # test: django fails at current version of sci-libs/geos, making tests
 # explode immediately
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (	${COMMON_DEPEND}
+DEPEND="
+	${COMMON_DEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
 		dev-python/biplist[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -38,8 +40,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/pytz-2013b[${PYTHON_USEDEP}]
 		!!sci-libs/geos[python] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		>=dev-python/django-1.9[${PYTHON_USEDEP}]
-		<dev-python/django-1.10[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '>=dev-python/mock-1.1.0[${PYTHON_USEDEP}]' python2_7)
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}] )"
 
