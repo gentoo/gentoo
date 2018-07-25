@@ -147,6 +147,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}"/${PV}-jsc-build-fixes.patch
 	cmake-utils_src_prepare
 	gnome2_src_prepare
 }
