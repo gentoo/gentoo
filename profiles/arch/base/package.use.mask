@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikhail Klementev <jollheef@riseup.net> (25 Jul 2018)
+# Intel(R) PT are supported only on amd64
+sys-devel/gdb intel-pt
+
 # Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
 # Catalyst only has support for assembling bootloader on some arches
 dev-util/catalyst system-bootloader

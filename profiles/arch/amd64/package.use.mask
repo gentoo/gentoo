@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+
+# Mikhail Klementev <jollheef@riseup.net> (25 Jul 2018)
+# Intel(R) PT are supported only on amd64
+sys-devel/gdb -intel-pt
+
 # Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
 # Dependency app-crypt/jitterentropy is keyworded for amd64
 sys-apps/rng-tools -jitterentropy
