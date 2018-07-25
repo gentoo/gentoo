@@ -8,6 +8,6 @@
 	<upstream>
 		<remote-id type="pypi">python-ctags3</remote-id>
 		<remote-id type="github">jonashaag/python-ctags3</remote-id>
-		<bugs-to>https://github.com/jonashaag/python-ctags/issues</bugs-to>
+		<bugs-to>https://github.com/jonashaag/python-ctags3/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
