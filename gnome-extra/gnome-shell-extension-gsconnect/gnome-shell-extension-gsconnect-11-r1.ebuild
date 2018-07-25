@@ -13,20 +13,17 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="
+COMMON_DEPEND="dev-libs/glib:2"
+RDEPEND="${COMMON_DEPEND}
 	app-eselect/eselect-gnome-shell-extensions
-	dev-libs/folks:0=
 	>=dev-libs/gjs-1.48
-	dev-libs/glib:2
-	dev-libs/libgdata:0=
-	dev-python/nautilus-python
 	>=gnome-base/gnome-shell-3.24
-	gnome-base/nautilus
+	gnome-base/nautilus[introspection]
 	net-fs/sshfs
-	net-libs/gnome-online-accounts:0=
+	|| ( ( net-libs/gnome-online-accounts dev-libs/libgdata ) dev-libs/folks )
 	|| ( media-libs/libcanberra media-libs/gsound )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
