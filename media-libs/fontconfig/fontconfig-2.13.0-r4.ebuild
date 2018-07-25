@@ -52,6 +52,7 @@ src_prepare() {
 	sed -i -e 's/FC_GPERF_SIZE_T="unsigned int"/FC_GPERF_SIZE_T=size_t/' \
 		configure.ac || die # rest of gperf dependency fix, #631920
 	eautoreconf
+	rm test/out.expected || die #662048
 }
 
 multilib_src_configure() {
