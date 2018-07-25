@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6,7}} )
 
 inherit distutils-r1
 
@@ -47,7 +47,7 @@ python_compile_all() {
 python_test() {
 	# Skip one test which requires network access
 	# Override pytest options to skip flake8
-	PYTHONPATH=. py.test --ignore=jaraco/stream/test_gzip.py \
+	PYTHONPATH=. pytest -vv --ignore=jaraco/stream/test_gzip.py \
 		--override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
