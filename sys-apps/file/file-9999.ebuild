@@ -32,7 +32,7 @@ DEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )
-	seccomp? ( sys-libs/libseccomp )"
+	seccomp? ( sys-libs/libseccomp[${MULTILIB_USEDEP}] )"
 
 src_prepare() {
 	default
