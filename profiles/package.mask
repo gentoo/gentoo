@@ -144,10 +144,6 @@ app-crypt/gkeys-gen
 net-misc/whatportis
 
 # Pacho Ramos <pacho@gentoo.org> (28 Jun 2018)
-# Doesn't work, dead since 2005, bug #658984. Removal in a month.
-dev-python/pyrtf
-
-# Pacho Ramos <pacho@gentoo.org> (28 Jun 2018)
 # Cannot be imported, bug #659410. Removal in a month.
 app-misc/jira-cli
 
@@ -226,25 +222,10 @@ dev-java/servletapi
 dev-java/sun-jacc-api
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Needs a major version bump to stop relying on old versions of other libs
-# (#421427). Removal in a month.
-dev-java/easyneurons
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead for ages, relies on dead gstreamer:0.10 (#552528). Removal
-# in a month.
-x11-misc/winswitch
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Obsolete package not needed for a long time, bug #559994. Removal in a
 # month.
 dev-java/jdom-jaxen
 =dev-java/jdom-1.0-r4
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to build, nothing requires it (#561366, #579600, #618936). Removal
-# in a month.
-net-misc/openvpn-auth-ldap
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Upstream dead for a long time, bug #606194. Removal in a month.
@@ -301,11 +282,6 @@ app-doc/mkdoxy
 games-emulation/hatari
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead since 2002, orphan, nothing requires it (#651344). Removal in a
-# month.
-app-text/rhyme
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead lib not used by anything in the tree (#652186). Removal in a month.
 net-libs/libwhisker
 
@@ -313,10 +289,6 @@ net-libs/libwhisker
 # Dead for ages, nothing requires it, needs klibc (that is also completely
 # unmaintained in our side) (#653390). Removal in a month.
 sys-boot/getdvhoff
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not needed by anything anymore (#653664). Removal in a month.
-dev-python/pyxml
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Both games crash on start (#653812). Removal in a month.
