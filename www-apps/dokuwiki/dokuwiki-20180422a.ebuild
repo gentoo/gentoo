@@ -36,6 +36,8 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 src_prepare() {
 	# create initial changes file
 	touch data/changes.log
+
+	default
 }
 
 src_install() {
