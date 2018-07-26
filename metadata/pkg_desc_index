@@ -8129,7 +8129,7 @@ media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image wi
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
-media-sound/taginfo 1.2-r1: a simple ID3 tag reader for use in shell scripts
+media-sound/taginfo 1.2-r2: A simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
 media-sound/takcd 0.10-r1: Command line CD player
 media-sound/tapiir 0.7.3: A flexible audio effects processor, inspired by classical tape delay systems
