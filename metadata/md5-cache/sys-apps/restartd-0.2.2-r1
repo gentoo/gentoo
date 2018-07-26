@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=A daemon for checking your running and not running processes
+EAPI=7
+HOMEPAGE=https://packages.debian.org/unstable/utils/restartd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://debian/pool/main/r/restartd/restartd_0.2.2.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=0f867d6487b29048d31d386e2dbcba52
