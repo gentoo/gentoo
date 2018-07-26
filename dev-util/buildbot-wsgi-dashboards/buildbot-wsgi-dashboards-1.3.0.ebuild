@@ -10,8 +10,8 @@ EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Buildbot console-view plugin"
-HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-console-view/"
+DESCRIPTION="Buildbot plugin to integrate flask or bottle dashboards to buildbot UI"
+HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-wsgi-dashboards/"
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
@@ -28,14 +28,12 @@ fi
 
 IUSE="test"
 
-RDEPEND="
-	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
-	~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
-"
+RDEPEND=""
 
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
+	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
+	~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
 "
 
 S="${WORKDIR}/${MY_P}"

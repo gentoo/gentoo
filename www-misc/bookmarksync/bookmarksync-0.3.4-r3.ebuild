@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}
 	perl? ( dev-lang/perl )"
 
 src_prepare() {
+	default
 	sed -i Makefile \
 		-e 's|g++|$(CXX) $(CFLAGS)|g' \
 		-e 's| -o | $(LDFLAGS)&|g' \

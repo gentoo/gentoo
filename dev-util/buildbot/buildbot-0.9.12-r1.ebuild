@@ -3,14 +3,14 @@
 
 EAPI="6"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
-MY_PV="${PV/_p/.post}"
+MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="BuildBot build automation system"
@@ -25,7 +25,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="crypt doc docker examples irc test"
+IUSE="crypt examples irc test"
 
 RDEPEND="
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
@@ -48,22 +48,9 @@ RDEPEND="
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)
-	docker? (
-		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
-	)
 "
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	doc? (
-		>=dev-python/sphinx-1.4.3[${PYTHON_USEDEP}]
-		dev-python/sphinxcontrib-blockdiag[${PYTHON_USEDEP}]
-		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
-		dev-python/pyenchant[${PYTHON_USEDEP}]
-		>=dev-python/docutils-0.8[${PYTHON_USEDEP}]
-		<dev-python/docutils-0.13.0[${PYTHON_USEDEP}]
-		dev-python/sphinx-jinja[${PYTHON_USEDEP}]
-		dev-python/ramlfications[${PYTHON_USEDEP}]
-	)
 	test? (
 		>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
@@ -77,15 +64,14 @@ DEPEND="${RDEPEND}
 		dev-python/treq[${PYTHON_USEDEP}]
 		dev-python/setuptools_trial[${PYTHON_USEDEP}]
 		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
-		>=dev-python/docker-py-2.2.0[${PYTHON_USEDEP}]
 	)"
 
 S=${WORKDIR}/${MY_P}
 [[ ${PV} == *9999 ]] && S=${S}/master
 
-#PATCHES=(
-#	"${FILESDIR}/${P}-buildbotworkerdocker.py.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/Remove-distro-version-test.patch"
+)
 
 pkg_setup() {
 	enewuser buildbot
@@ -96,27 +82,10 @@ pkg_setup() {
 		The scripts can	run as a different user if desired."
 }
 
-src_compile() {
-	distutils-r1_src_compile
-
-	if use doc; then
-		einfo "Generation of documentation"
-		pushd docs > /dev/null
-		#'man' target is currently broken
-		emake html
-		popd > /dev/null
-	fi
-}
-
 src_install() {
 	distutils-r1_src_install
 
 	doman docs/buildbot.1
-
-	if use doc; then
-		dohtml -r docs/_build/html/
-		# TODO: install man pages
-	fi
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}

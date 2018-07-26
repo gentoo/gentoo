@@ -11,7 +11,7 @@ DESCRIPTION="Tool to requantize mpeg2 videos"
 HOMEPAGE="http://www.metakine.com/products/dvdremaster/modules.html"
 SRC_URI="mirror://vdrfiles/requant/${MY_P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 

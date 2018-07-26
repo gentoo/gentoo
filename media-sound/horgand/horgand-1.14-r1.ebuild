@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Opensource software organ"
 HOMEPAGE="http://horgand.berlios.de"
@@ -24,17 +25,17 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-overflow.patch
+	default
+	eapply "${FILESDIR}"/${P}-overflow.patch
 }
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} $(fltk-config --cxxflags) \
-		$(pkg-config --cflags jack) $(pkg-config --cflags sndfile)" || die "emake failed."
+		$(pkg-config --cflags jack) $(pkg-config --cflags sndfile)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS ChangeLog NEWS README
+	default
 	doman man/${PN}.1
 	newicon src/${PN}128.xpm ${PN}.xpm
 	make_desktop_entry ${PN} Horgand ${PN}
