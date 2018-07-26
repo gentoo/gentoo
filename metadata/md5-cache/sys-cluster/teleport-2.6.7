@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=app-arch/zip >=dev-lang/go-1.9 virtual/pkgconfig
+DESCRIPTION=Modern SSH server for teams managing distributed infrastructure
+EAPI=6
+HOMEPAGE=https://gravitational.com/teleport
+IUSE=pam
+KEYWORDS=~amd64 ~arm
+LICENSE=Apache-2.0
+RDEPEND=pam? ( sys-libs/pam )
+RESTRICT=test strip
+SLOT=0
+SRC_URI=https://github.com/gravitational/teleport/archive/v2.6.7.tar.gz -> teleport-2.6.7.tar.gz
+_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=08987f776267ac7714b3d71310f81996

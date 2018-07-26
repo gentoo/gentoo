@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/gtk+:2 x11-libs/libX11
+DESCRIPTION=A fun clock applet for your desktop featuring swimming fish
+EAPI=7
+HOMEPAGE=http://www.ne.jp/asahi/linux/timecop
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 x11-libs/libX11
+SLOT=0
+SRC_URI=http://www.ne.jp/asahi/linux/timecop/software/wmfishtime-1.24.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=2239f4ed512754df120164ea59f39000

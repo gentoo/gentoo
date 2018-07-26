@@ -963,7 +963,7 @@ app-misc/cbrpager 0.9.22: a simple comic book pager
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
 app-misc/cdcat 0.3: simple yet effective CD indexing program
 app-misc/cdctl 0.15: Utility to control your cd/dvd drive
-app-misc/cdircmp 0.3-r1: Compare directories and select files to copy
+app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r1: Change the speed of your CD drive
 app-misc/chkcrontab 1.6 1.7: A tool to detect crontab errors
 app-misc/ckermit 8.0.211-r4: combined serial and network communication software package
