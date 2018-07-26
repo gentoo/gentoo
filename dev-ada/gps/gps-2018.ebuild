@@ -66,10 +66,10 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C gps GPRBUILD_FLAGS="-v ${MAKEOPTS}" \
+	CC=/usr/bin/gcc-7.3.1 emake -C gps GPRBUILD_FLAGS="-v ${MAKEOPTS}" \
 		Build=Production
-	gprbuild -v -p -Pcli/cli.gpr -XLIBRARY_TYPE=relocatable
-	emake -C testsuite
+	gprbuild -v -p -Pcli/cli.gpr ${MAKEOPTS} -XLIBRARY_TYPE=relocatable \
+		-cargs:Ada ${ADAFLAGS}
 }
 
 src_install() {

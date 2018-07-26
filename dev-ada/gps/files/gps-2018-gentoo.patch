@@ -1,25 +1,15 @@
 --- a/gps/Makefile	2018-07-09 20:27:34.950424490 +0200
 +++ b/gps/Makefile	2018-07-09 20:37:39.510558817 +0200
-@@ -47,7 +47,7 @@
+@@ -47,7 +47,8 @@
  	for f in ../kernel/generated/*; do cat $$f | tr -d '\015' > $$f-aux; mv -f $$f-aux $$f; done
  endif
  	$(GPRBUILD) $(GPRBUILD_FLAGS) -m -p -ws \
 -	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs`
-+	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs` -lpython2.7
++	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs` -lpython2.7 \
++    -cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS}
  
  resources:
  ifeq ($(OS),Windows_NT)
---- a/testsuite/Makefile	2018-07-09 21:45:48.115937491 +0200
-+++ b/testsuite/Makefile	2018-07-09 21:46:15.896547268 +0200
-@@ -13,7 +13,7 @@
- endif
- 
- all default: package
--	$(GPRBUILD) -P testsuite_drivers.gpr -m -XOS=${OS} -j0 -XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
-+	$(GPRBUILD) -P testsuite_drivers.gpr -m -XOS=${OS} -j0 -XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable -largs -lpython2.7
- 
- package:
- 	mkdir -p share/doc
 --- a/Makefile.in	2018-07-09 21:51:08.422550386 +0200
 +++ b/Makefile.in	2018-07-09 21:51:32.187225891 +0200
 @@ -10,7 +10,7 @@
@@ -85,3 +75,43 @@
         <string />
     </project_attribute>
  
+--- a/gnatcoll_extras/gnatcoll_extras.gpr	2018-07-22 14:42:17.618161040 +0200
++++ b/gnatcoll_extras/gnatcoll_extras.gpr	2018-07-22 14:43:33.973070921 +0200
+@@ -14,6 +14,7 @@
+       for Switches ("C") use
+         ("-g", "-O2")
+         & Shared.Gtk_Cflags & Shared.Pygobject_Include & Shared.Python_Cflags;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+ end GNATCOLL_Extras;
+--- a/widgets/widgets.gpr	2018-07-22 21:46:23.907355738 +0200
++++ b/widgets/widgets.gpr	2018-07-22 21:47:02.673825994 +0200
+@@ -14,6 +14,7 @@
+       for Switches ("C") use
+         ("-g", "-O2")
+         & Shared.Gtk_Cflags;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+ end Widgets;
+--- a/common/common.gpr.in	2018-07-25 08:05:45.227060250 +0200
++++ b/common/common.gpr.in	2018-07-25 08:06:55.067009811 +0200
+@@ -23,6 +23,7 @@
+              for Switches ("dynamic_arrays.adb") use No_Checks;
+           when "Debug" =>
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Binder is
+--- a/shared.gpr.in	2018-07-25 08:11:47.317597391 +0200
++++ b/shared.gpr.in	2018-07-25 08:10:56.774362671 +0200
+@@ -60,6 +60,7 @@
+                );
+             for Switches ("C") use Optimize & ("-g", "-O2");
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Binder is
