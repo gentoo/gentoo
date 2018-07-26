@@ -244,15 +244,13 @@ domenu() {
 	(
 	# wrap the env here so that the 'insinto' call
 	# doesn't corrupt the env of the caller
-	local i j ret=0
+	local i ret=0
 	insopts -m 0644
 	insinto /usr/share/applications
 	for i in "$@" ; do
 		if [[ -d ${i} ]] ; then
-			for j in "${i}"/*.desktop ; do
-				doins "${j}"
-				((ret|=$?))
-			done
+			doins "${i}"/*.desktop
+			((ret|=$?))
 		else
 			doins "${i}"
 			((ret|=$?))
