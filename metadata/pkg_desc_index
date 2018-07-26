@@ -32,7 +32,7 @@ app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.4.6.0 2.5.5: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.33: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
-app-admin/apg 2.3.0b-r5: Another Password Generator
+app-admin/apg 2.3.0b-r6: Another Password Generator
 app-admin/augeas 1.8.1 1.10.1: A library for changing configuration files
 app-admin/ccze 0.2.1-r3: A flexible and fast logfile colorizer
 app-admin/cgmanager 0.41: Control Group manager daemon
