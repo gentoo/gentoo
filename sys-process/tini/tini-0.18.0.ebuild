@@ -17,8 +17,20 @@ IUSE="+args +static"
 
 src_prepare() {
 	cmake-utils_src_prepare
-	# Do not strip binary
-	sed -i -e 's/-Wl,-s")$/")/' \
+
+	local sed_args=(
+		# Do not strip binary
+		-e 's/-Wl,-s")$/")/'
+
+		# Remove -Werror and -pedantic-errors in order to allow macro
+		# redefinition, so that CFLAGS="-U_FORTIFY_SOURCE" does not
+		# trigger an error due to add_definitions(-D_FORTIFY_SOURCE=2)
+		# in CMakeLists.txt (bug 626438).
+		-e "s/ -Werror / /"
+		-e "s/ -pedantic-errors / /"
+	)
+
+	sed -i "${sed_args[@]}" \
 		-e "s/git.*status --porcelain.*/true/" \
 		-e "s/git.*log -n 1.*/true/" \
 		-e "s/git.\${tini_VERSION_GIT}/git.${GIT_COMMIT}/" \
