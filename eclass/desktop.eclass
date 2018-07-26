@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
@@ -248,16 +248,14 @@ domenu() {
 	insopts -m 0644
 	insinto /usr/share/applications
 	for i in "$@" ; do
-		if [[ -f ${i} ]] ; then
-			doins "${i}"
-			((ret+=$?))
-		elif [[ -d ${i} ]] ; then
+		if [[ -d ${i} ]] ; then
 			for j in "${i}"/*.desktop ; do
 				doins "${j}"
 				((ret+=$?))
 			done
 		else
-			((++ret))
+			doins "${i}"
+			((ret+=$?))
 		fi
 	done
 	exit ${ret}
