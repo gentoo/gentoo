@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
-inherit eutils
+inherit toolchain-funcs
 
 DESCRIPTION="A small utility for creating backups on DV tapes"
 HOMEPAGE="http://dvbackup.sourceforge.net/"
@@ -22,13 +22,15 @@ RDEPEND="${DEPEND}
 	media-libs/libdv"
 
 src_prepare() {
+	default
+
 	local i
 
-	epatch "${FILESDIR}/${P}-gcc4.diff"
+	eapply "${FILESDIR}/${P}-gcc4.diff"
 
 	# fix Makefile to respect $LDFLAGS
 	sed -i -e 's:gcc \$(CFLAGS):\$(CC) \$(CFLAGS) \$(LDFLAGS):g' \
-		-e 's:^\(CFLAGS=\):#\1:g' Makefile
+		-e 's:^\(CFLAGS=\):#\1:g' Makefile || die "sed failed"
 
 	# convert LATIN1 docs to UTF-8
 	for i in ChangeLog ReleaseNotes; do
@@ -40,13 +42,12 @@ src_prepare() {
 }
 
 src_compile() {
-	emake dvbackup || die "emake failed"
+	emake CC="$(tc-getCC)" dvbackup
 }
 
 src_install() {
 	dobin dvbackup
 	insinto /usr/share/${PN}
 	doins underrun-ntsc.dv underrun-pal.dv
-	dodoc AUTHORS ChangeLog ReleaseNotes
-	dohtml dvbackup.html
+	dodoc AUTHORS dvbackup.html ChangeLog ReleaseNotes
 }
