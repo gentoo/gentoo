@@ -10,14 +10,14 @@ CHROMIUM_LANGS="
 inherit chromium-2 gnome2-utils multilib unpacker xdg-utils
 
 DESCRIPTION="A fast and secure web browser"
-HOMEPAGE="http://www.opera.com/"
+HOMEPAGE="https://www.opera.com/"
 LICENSE="OPERA-2014"
 SLOT="0"
 SRC_URI_BASE="
-	http://download1.operacdn.com/pub/
-	http://download2.operacdn.com/pub/
-	http://download3.operacdn.com/pub/
-	http://download4.operacdn.com/pub/
+	https://download1.operacdn.com/pub/
+	https://download2.operacdn.com/pub/
+	https://download3.operacdn.com/pub/
+	https://download4.operacdn.com/pub/
 "
 SRC_URI="amd64? ("
 for uri in ${SRC_URI_BASE}; do
