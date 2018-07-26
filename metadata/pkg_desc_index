@@ -10148,7 +10148,7 @@ sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
-sys-fs/udev 216 225-r1 233 236-r1 238: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 236-r1 238: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 32: udev startup scripts for openrc
 sys-fs/udftools 1.1-r1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1: An automatic disk mounting service using udisks

@@ -5577,8 +5577,6 @@ sys-fs/quota:rpc - Enable quota interaction via RPC
 sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz4
 sys-fs/squashfs-tools:xz - Enable support for XZ ("LZMA2") compression using app-arch/xz-utils
 sys-fs/squashfs-tools:zstd - Enable support for ZSTD compression using app-arch/zstd
-sys-fs/udev:firmware-loader - Enable the userspace firmware loader (DEPRECATED, replaced by the in-kernel loader starting from 3.8)
-sys-fs/udev:gudev - Build the gobject interface library
 sys-fs/udev:kmod - Enable kernel module loading/unloading support using sys-apps/kmod
 sys-fs/udisks:cryptsetup - Enable sys-fs/cryptsetup support
 sys-fs/udisks:elogind - Use sys-auth/elogind for session tracking
