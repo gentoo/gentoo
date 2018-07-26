@@ -251,11 +251,11 @@ domenu() {
 		if [[ -d ${i} ]] ; then
 			for j in "${i}"/*.desktop ; do
 				doins "${j}"
-				((ret+=$?))
+				((ret|=$?))
 			done
 		else
 			doins "${i}"
-			((ret+=$?))
+			((ret|=$?))
 		fi
 	done
 	exit ${ret}
