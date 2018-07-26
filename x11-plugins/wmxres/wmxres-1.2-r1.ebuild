@@ -22,17 +22,13 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}.app"
 
-PATCHES=( "${FILESDIR}"/${PN}-debian-1.1-1.2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-debian-1.1-1.2.patch
+	"${FILESDIR}"/${PN}-1.2-r1-fix-build-system.patch
+)
 
-src_prepare() {
-	default
-	sed -e "s:-g -c -O2:${CFLAGS} -c:" \
-		-e "s:\tcc :\t $(tc-getCC) \$(LDFLAGS) :g" \
-		-i Makefile || die "sed failed"
-}
-
-src_compile() {
-	emake INCDIR="-I${EPREFIX}/usr/include" LIBDIR="-L${EPREFIX}/usr/$(get_libdir)"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
