@@ -3011,11 +3011,6 @@ developers and volunteer mentors.</description>
       <name>Patrick McLean</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>dev-zero@gentoo.org</email>
-      <name>Tiziano Müller</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>floppym@gentoo.org</email>
       <name>Mike Gilbert</name>
@@ -3049,11 +3044,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>rafaelmartins@gentoo.org</email>
-      <name>Rafael Martins</name>
       <role>Member</role>
     </member>
     <member>
