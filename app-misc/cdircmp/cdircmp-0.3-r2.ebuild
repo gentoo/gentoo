@@ -11,7 +11,7 @@ SRC_URI="http://home.hccnet.nl/paul.schuurmans/linux/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5.4:0="
