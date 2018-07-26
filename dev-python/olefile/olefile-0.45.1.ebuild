@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python package to parse, read and write Microsoft OLE2 files"
 HOMEPAGE="https://www.decalage.info/olefile"
-SRC_URI="https://github.com/decalage2/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/decalage2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
