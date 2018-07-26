@@ -1,9 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Subcheck checks srt subtitle files for errors"
 HOMEPAGE="http://subcheck.sourceforge.net/"
@@ -20,15 +18,13 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	sed -i -e "s:${PN}.pl:${PN}:g" all-checksub
-}
-
-src_compile() {
-	:  # nothing to do
+	default
+	sed -i -e "s:${PN}.pl:${PN}:g" all-checksub || die "sed failed"
 }
 
 src_install() {
-	doman man/subcheck.8.gz
+	gunzip man/subcheck.8.gz || die
+	doman man/subcheck.8
 	newbin subcheck.pl subcheck
 	dobin all-checksub
 	dodoc Changes
