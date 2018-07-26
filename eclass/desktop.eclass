@@ -174,7 +174,7 @@ make_desktop_entry() {
 		icon=${icon%.*}
 	fi
 
-	cat <<-EOF > "${desktop}"
+	cat <<-EOF > "${desktop}" || die
 	[Desktop Entry]
 	Name=${name}
 	Type=Application
@@ -190,7 +190,9 @@ make_desktop_entry() {
 		ewarn "make_desktop_entry: update your 5th arg to read Path=${fields}"
 		fields="Path=${fields}"
 	fi
-	[[ -n ${fields} ]] && printf '%b\n' "${fields}" >> "${desktop}"
+	if [[ -n ${fields} ]]; then
+		printf '%b\n' "${fields}" >> "${desktop}" || die
+	fi
 
 	(
 		# wrap the env here so that the 'insinto' call
@@ -217,7 +219,7 @@ make_session_desktop() {
 	local desktop=${T}/${wm:-${PN}}.desktop
 	shift 2
 
-	cat <<-EOF > "${desktop}"
+	cat <<-EOF > "${desktop}" || die
 	[Desktop Entry]
 	Name=${title}
 	Comment=This session logs you into ${title}
