@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=!sci-biology/ncbi-tools++
+DESCRIPTION=Subcheck checks srt subtitle files for errors
+EAPI=7
+HOMEPAGE=http://subcheck.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=!sci-biology/ncbi-tools++
+SLOT=0
+SRC_URI=mirror://sourceforge/subcheck/subcheck-0.78.2.tar.gz
+_md5_=9138df6e9c73461c40e309d1197c2333
