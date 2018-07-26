@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4 python3_{5,6} )
+PYTHON_COMPAT=( python3_4 python3_{5,6,7} )
 
 inherit eutils flag-o-matic linux-info python-single-r1 systemd xdg-utils
 
