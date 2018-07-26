@@ -32,6 +32,9 @@ checkconfig() {
 		eerror "${BUILDMASTER_PATH} does not contain buildbot.tac"
 		return 1
 	fi
+	if [ ! -e "${RUNTIME_PYTHON}" ]; then
+		RUNTIME_PYTHON="/usr/bin/python"
+	fi
 }
 
 start() {
