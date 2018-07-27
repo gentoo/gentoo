@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,15 +14,14 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/nav_core
 	dev-ros/costmap_2d
-	dev-ros/actionlib_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/nav_core
 	dev-ros/pluginlib
+	dev-ros/roscpp
+
 	dev-libs/boost:=[threads]
 	dev-cpp/eigen:3
-	sci-libs/pcl
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
