@@ -18,12 +18,13 @@ RDEPEND="
 	dev-ros/base_local_planner
 	dev-ros/costmap_2d
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-cpp/eigen:3
 	dev-ros/nav_core
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
 	dev-ros/roscpp
-	dev-ros/tf
-	dev-cpp/eigen:3
+	dev-ros/tf2_ros
+
 	dev-libs/boost:=[threads]
 	dev-libs/console_bridge:=
 "
