@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,14 +19,11 @@ IUSE=""
 RDEPEND="
 	dev-ros/costmap_2d
 	dev-ros/nav_core
-	dev-ros/pcl_conversions
-	dev-ros/pcl_ros
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/tf
 	dev-ros/visualization_msgs
 	dev-cpp/eigen:3
-	sci-libs/pcl
 	x11-libs/fltk
 	media-libs/netpbm
 	dev-libs/boost:=[threads]
