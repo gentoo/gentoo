@@ -82,6 +82,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DRUBY_LIB_INSTALL=${my_ruby_sitelibdir}
+		-DBLKID_LIBRARYDIR="${EPREFIX}/$(get_libdir)"
 	)
 	if use debug; then
 		mycmakeargs+=(
