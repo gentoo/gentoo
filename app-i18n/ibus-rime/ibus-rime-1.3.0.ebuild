@@ -5,7 +5,7 @@ EAPI="6"
 
 DESCRIPTION="Rime Input Method Engine for IBus"
 HOMEPAGE="https://rime.im/ https://github.com/rime/ibus-rime"
-SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
+SRC_URI="https://github.com/rime/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,7 +20,6 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	dev-util/cmake
 	virtual/pkgconfig"
-S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	sed -i \
