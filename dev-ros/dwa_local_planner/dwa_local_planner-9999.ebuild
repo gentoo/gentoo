@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,11 +21,9 @@ RDEPEND="
 	dev-ros/nav_core
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
-	dev-ros/pcl_conversions
 	dev-ros/roscpp
 	dev-ros/tf
 	dev-cpp/eigen:3
-	sci-libs/pcl
 	dev-libs/boost:=[threads]
 	dev-libs/console_bridge:=
 "
