@@ -1097,7 +1097,7 @@ app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
 app-misc/socnetv 2.2: Qt Social Network Visualizer
 app-misc/solaar 0.9.2-r3: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/spacenavd 0.5-r5 0.6: The spacenavd daemon provides free alternative to the 3dxserv daemon
-app-misc/sphinx 2.0.10 2.1.9 2.2.11: Full-text search engine with support for MySQL and PostgreSQL
+app-misc/sphinx 2.1.9 2.2.11: Full-text search engine with support for MySQL and PostgreSQL
 app-misc/splitvt 1.6.6-r3: Splitting terminals into two shells
 app-misc/srm 1.2.15: A command-line compatible rm which destroys file contents before unlinking
 app-misc/supercat 0.5.5-r2: A text file colorizer using powerful regular expressions
