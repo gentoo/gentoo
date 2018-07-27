@@ -13,7 +13,7 @@
 A pass extension for managing one-time-password (OTP) tokens.
 </longdescription>
 <use>
-	<flag name="qrcode">Add support for qtcodes using <pkg>media-gfx/qrencode</pkg></flag>
+	<flag name="qrcode">Add support for qrcodes using <pkg>media-gfx/qrencode</pkg></flag>
 </use>
 <upstream>
 	<remote-id type="github">tadfisher/pass-otp</remote-id>
