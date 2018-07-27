@@ -14,14 +14,15 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/tf
-	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-libs/boost:=
-	media-libs/sdl-image
-	>=dev-cpp/yaml-cpp-0.5:=
 	sci-physics/bullet:=
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/roscpp
+	media-libs/sdl-image
+	dev-ros/tf2
+	>=dev-cpp/yaml-cpp-0.5:=
+
+	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest dev-cpp/gtest )
+	test? ( dev-ros/rostest dev-ros/rospy dev-ros/rosunit )
 	virtual/pkgconfig"
