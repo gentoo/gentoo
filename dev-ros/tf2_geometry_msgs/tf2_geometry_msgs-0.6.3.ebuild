@@ -6,6 +6,7 @@ ROS_REPO_URI="https://github.com/ros/geometry2"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
+CATKIN_HAS_MESSAGES=yes
 
 inherit ros-catkin
 
