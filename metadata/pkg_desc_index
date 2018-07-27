@@ -3339,6 +3339,7 @@ dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocamlbuild 0.10.1: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamlnet 4.1.2: Modules for OCaml application-level Internet protocols
+dev-ml/ocplib-simplex 0.3: A library implementing a simplex algorithm
 dev-ml/ocurl 0.6.1: OCaml interface to the libcurl library
 dev-ml/ounit 2.0.0: Unit testing framework for OCaml
 dev-ml/pcre-ocaml 7.2.3: Perl Compatibility Regular Expressions for O'Caml
