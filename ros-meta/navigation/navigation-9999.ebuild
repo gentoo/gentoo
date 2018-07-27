@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,6 @@ RDEPEND="
 	dev-ros/move_slow_and_clear
 	dev-ros/nav_core
 	dev-ros/navfn
-	dev-ros/robot_pose_ekf
 	dev-ros/rotate_recovery
 	dev-ros/voxel_grid
 "
