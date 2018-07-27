@@ -213,6 +213,11 @@ multilib_src_configure() {
 			LIBSPEEX_CFLAGS=' '
 			LIBSPEEX_LIBS=' '
 		)
+	else
+		# Make padsp work for non-native ABI, supposedly only possible with glibc; this is used by /usr/bin/padsp that comes from native build, thus we need this argument for native build
+		if use elibc_glibc ; then
+			myconf+=( --with-pulsedsp-location="${EPREFIX}"'/usr/\\$$LIB/pulseaudio' )
+		fi
 	fi
 
 	ECONF_SOURCE=${S} \
