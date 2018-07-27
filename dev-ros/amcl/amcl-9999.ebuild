@@ -15,16 +15,15 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/tf2
-	dev-ros/tf2_ros
-	dev-ros/rosbag
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
-	dev-libs/boost:=
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/rosbag
+		dev-libs/boost:=
+	dev-ros/roscpp
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_ros
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/python_orocos_kdl[${PYTHON_USEDEP}] )
+	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/python_orocos_kdl[${PYTHON_USEDEP}] dev-ros/map_server[${PYTHON_USEDEP}] )
 "
