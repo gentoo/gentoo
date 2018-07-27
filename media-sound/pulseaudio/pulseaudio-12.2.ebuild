@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd user udev multilib-minimal
+inherit bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd user udev multilib-minimal
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -151,9 +151,8 @@ src_prepare() {
 	default
 
 	# Skip test that cannot work with sandbox, bug #501846
-	sed -i -e '/lock-autospawn-test/d' src/Makefile.am || die
-
-	eautoreconf
+	sed -i -e '/lock-autospawn-test /d' src/Makefile.am || die
+	sed -i -e 's/lock-autospawn-test$(EXEEXT) //' src/Makefile.in || die
 }
 
 multilib_src_configure() {
