@@ -52,6 +52,7 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/libxslt
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( app-doc/doxygen )
 	sys-apps/kmod
 	sys-kernel/linux-headers
