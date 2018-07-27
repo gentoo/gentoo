@@ -7,11 +7,11 @@ inherit cmake-utils vcs-snapshot
 
 DESCRIPTION="Rime Input Method Engine, the core library"
 HOMEPAGE="https://rime.im/ https://github.com/rime/librime"
-SRC_URI="https://github.com/rime/${PN}/archive/rime-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rime/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/1"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs test"
 
 RDEPEND="app-i18n/opencc:=
@@ -23,6 +23,8 @@ RDEPEND="app-i18n/opencc:=
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )"
+
+DOCS=( {CHANGELOG,README}.md )
 
 src_configure() {
 	local mycmakeargs=(
