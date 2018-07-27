@@ -4,10 +4,10 @@ DESCRIPTION=Represent a regular expression of some sort
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/PPIx-Regexp/
 IUSE=test examples examples
-KEYWORDS=~alpha amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=~alpha amd64 ppc ~ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Exporter dev-perl/List-MoreUtils >=dev-perl/PPI-1.117.0 virtual/perl-Scalar-List-Utils dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/W/WY/WYANT/PPIx-Regexp-0.053.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=50234e3965bd52849b4cb3649d419b22
+_md5_=36037b779918ccc463fe0159c8b47cc1
