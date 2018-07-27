@@ -21,17 +21,23 @@ RDEPEND="
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/laser_geometry
 	dev-ros/message_filters
-	dev-ros/nav_msgs
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_ros
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/tf
 	dev-ros/voxel_grid
+
 	dev-cpp/eigen:3
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml2:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? (
+		dev-ros/map_server
+		dev-ros/rosbag
+		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-ros/rosunit
+	)"
