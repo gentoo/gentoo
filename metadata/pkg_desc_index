@@ -29,7 +29,7 @@ app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech 
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.4.6.0 2.5.5: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.5.6 2.6.1: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.33: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r6: Another Password Generator
@@ -5082,7 +5082,7 @@ dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, B
 dev-python/munch 2.2.0: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/mygpoclient 1.7-r1: A gpodder.net client library
 dev-python/mysql-python 1.2.3-r1 1.2.5-r1: Python interface to MySQL
-dev-python/mysqlclient 1.3.12: Fork of MySQL-python
+dev-python/mysqlclient 1.3.12 1.3.13: Fork of MySQL-python
 dev-python/namespace-google 1: Namespace package declaration for google
 dev-python/namespace-jaraco 1: Namespace package declaration for jaraco
 dev-python/namespace-paste 1: Namespace package declaration for paste
@@ -9891,7 +9891,7 @@ sys-auth/bioapi 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
 sys-auth/elogind 235.2-r2: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
-sys-auth/keystone 12.0.0-r1 13.0.0-r1: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 12.0.1 13.0.1: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2 0.6.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-mysql 1.5_p20060915-r3: NSS MySQL Library
 sys-auth/libyubikey 1.13: Yubico C low-level library
