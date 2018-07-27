@@ -29,6 +29,7 @@ REQUIRED_USE="
 	equalizer? ( dbus )
 	ofono-headset? ( bluetooth )
 	native-headset? ( bluetooth )
+	realtime? ( dbus )
 	udev? ( || ( alsa oss ) )
 "
 
@@ -64,7 +65,6 @@ CDEPEND="
 	)
 	asyncns? ( net-libs/libasyncns[${MULTILIB_USEDEP}] )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
-	realtime? ( sys-auth/rtkit )
 	equalizer? ( sci-libs/fftw:3.0 )
 	ofono-headset? ( >=net-misc/ofono-1.13 )
 	orc? ( >=dev-lang/orc-0.4.15 )
@@ -79,9 +79,10 @@ CDEPEND="
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
 	dev-libs/libltdl:0
 	selinux? ( sec-policy/selinux-pulseaudio )
-"
-# it's a valid RDEPEND, libltdl.so is used for native abi
+" # libltdl is a valid RDEPEND, libltdl.so is used for native abi in pulsecore and daemon
+
 RDEPEND="${CDEPEND}
+	realtime? ( sys-auth/rtkit )
 	gconf? ( >=gnome-base/gconf-3.2.6 )
 "
 
