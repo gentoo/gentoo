@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	SRC_URI="mirror://xorg/driver/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
 fi
 
 LICENSE="MIT"
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/libevdev
 	sys-libs/mtdev
 	virtual/libudev:=
-	>=x11-base/xorg-server-1.18[udev]
+	>=x11-base/xorg-server-1.18:=[udev]
 "
 DEPEND="
 	${LIVE_DEPEND}
@@ -48,4 +48,11 @@ pkg_pretend() {
 src_prepare() {
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf
+}
+
+src_configure() {
+	local econfargs=(
+		--disable-selective-werror
+	)
+	econf "${econfargs[@]}"
 }
