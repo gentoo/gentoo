@@ -11,7 +11,7 @@ DESCRIPTION="Query a Google SafeBrowsing table"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="test"
 
 RDEPEND="dev-perl/URI
