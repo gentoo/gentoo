@@ -15,23 +15,30 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/actionlib
 	>=dev-ros/costmap_2d-1.15.1
-	dev-ros/roscpp
+	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/move_base_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/nav_core
 	dev-ros/pluginlib
 		dev-libs/tinyxml2:=
-	dev-ros/actionlib
+	dev-ros/roscpp
+	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_ros
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+
 	dev-ros/base_local_planner
 	dev-ros/clear_costmap_recovery
 	dev-ros/navfn
 	dev-ros/rotate_recovery
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
-	dev-ros/nav_core
-	dev-ros/tf
-	dev-ros/move_base_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+
 	dev-cpp/eigen:3
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
+
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules"
