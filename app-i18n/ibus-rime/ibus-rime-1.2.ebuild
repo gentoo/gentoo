@@ -4,7 +4,7 @@
 EAPI="6"
 
 DESCRIPTION="Rime Input Method Engine for IBus"
-HOMEPAGE="http://rime.im/"
+HOMEPAGE="https://rime.im/ https://github.com/rime/ibus-rime"
 SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
 
 LICENSE="GPL-3"
