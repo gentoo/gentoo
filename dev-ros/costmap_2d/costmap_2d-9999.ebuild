@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,8 +22,6 @@ RDEPEND="
 	dev-ros/laser_geometry
 	dev-ros/message_filters
 	dev-ros/nav_msgs
-	dev-ros/pcl_conversions
-	dev-ros/pcl_ros
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
@@ -31,7 +29,6 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/voxel_grid
 	dev-cpp/eigen:3
-	sci-libs/pcl:=
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml2:=
 "
