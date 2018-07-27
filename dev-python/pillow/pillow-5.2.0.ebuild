@@ -3,10 +3,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 eutils virtualx
+inherit distutils-r1 virtualx
 
 MY_PN=Pillow
 MY_P=${MY_PN}-${PV}
@@ -62,6 +62,15 @@ python_configure_all() {
 		$(use_enable webp webpmux)
 		$(use_enable zlib)
 	)
+}
+
+python_compile() {
+	# Pillow monkeypatches distutils to achieve parallel compilation. This
+	# conflicts with distutils' builtin parallel computation (since py35)
+	# and make builds hang. To avoid that, we set MAX_CONCURRENCY=1 to
+	# disable monkeypatching. Can be removed when/if
+	# https://github.com/python-pillow/Pillow/pull/3272 is merged.
+	MAX_CONCURRENCY=1 distutils-r1_python_compile
 }
 
 python_compile_all() {
