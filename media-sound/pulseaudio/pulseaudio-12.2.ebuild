@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd user udev multilib-minimal
+inherit bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd user udev multilib-minimal
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -29,6 +29,7 @@ REQUIRED_USE="
 	equalizer? ( dbus )
 	ofono-headset? ( bluetooth )
 	native-headset? ( bluetooth )
+	realtime? ( dbus )
 	udev? ( || ( alsa oss ) )
 "
 
@@ -64,7 +65,6 @@ CDEPEND="
 	)
 	asyncns? ( net-libs/libasyncns[${MULTILIB_USEDEP}] )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
-	realtime? ( sys-auth/rtkit )
 	equalizer? ( sci-libs/fftw:3.0 )
 	ofono-headset? ( >=net-misc/ofono-1.13 )
 	orc? ( >=dev-lang/orc-0.4.15 )
@@ -79,9 +79,10 @@ CDEPEND="
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
 	dev-libs/libltdl:0
 	selinux? ( sec-policy/selinux-pulseaudio )
-"
-# it's a valid RDEPEND, libltdl.so is used for native abi
+" # libltdl is a valid RDEPEND, libltdl.so is used for native abi in pulsecore and daemon
+
 RDEPEND="${CDEPEND}
+	realtime? ( sys-auth/rtkit )
 	gconf? ( >=gnome-base/gconf-3.2.6 )
 "
 
@@ -150,9 +151,8 @@ src_prepare() {
 	default
 
 	# Skip test that cannot work with sandbox, bug #501846
-	sed -i -e '/lock-autospawn-test/d' src/Makefile.am || die
-
-	eautoreconf
+	sed -i -e '/lock-autospawn-test /d' src/Makefile.am || die
+	sed -i -e 's/lock-autospawn-test$(EXEEXT) //' src/Makefile.in || die
 }
 
 multilib_src_configure() {
@@ -212,6 +212,11 @@ multilib_src_configure() {
 			LIBSPEEX_CFLAGS=' '
 			LIBSPEEX_LIBS=' '
 		)
+	else
+		# Make padsp work for non-native ABI, supposedly only possible with glibc; this is used by /usr/bin/padsp that comes from native build, thus we need this argument for native build
+		if use elibc_glibc ; then
+			myconf+=( --with-pulsedsp-location="${EPREFIX}"'/usr/\\$$LIB/pulseaudio' )
+		fi
 	fi
 
 	ECONF_SOURCE=${S} \
