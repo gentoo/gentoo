@@ -34,7 +34,7 @@ src_prepare() {
 	default
 
 	# Fix docdir installation path
-	sed '/^DOCDIR/s@$NAME@${PF}@' -i libinput-gestures-setup || die
+	sed '/^DOCDIR/s@$NAME@'"${PF}"'@' -i libinput-gestures-setup || die
 }
 
 pkg_postinst() {
