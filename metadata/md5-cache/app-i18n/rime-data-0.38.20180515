@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile prepare
+DEPEND=app-i18n/librime
+DESCRIPTION=Data resources for Rime Input Method Engine
+EAPI=6
+HOMEPAGE=https://rime.im/ https://github.com/rime/brise
+IUSE=extra
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-3 LGPL-3 extra? ( Apache-2.0 )
+RDEPEND=app-i18n/librime
+SLOT=0
+SRC_URI=https://github.com/rime/brise/releases/download/brise-0.38/brise-0.38.20180515.tar.gz
+_md5_=e86425c8a18c26c640c77de652382eb1
