@@ -17,19 +17,24 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/tf
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
-	dev-ros/nav_core
-	dev-ros/rostest
-	dev-ros/costmap_2d
-	dev-ros/pluginlib
 	dev-ros/angles
-	dev-libs/boost:=[threads]
+	dev-ros/costmap_2d
+	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-cpp/eigen:3
-	dev-libs/console_bridge:=
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/nav_core
+	dev-ros/pluginlib
+	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/rosconsole
+	dev-ros/roscpp
+	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/tf2_ros
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/voxel_grid
+	dev-libs/boost:=[threads]
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
-	test? ( dev-cpp/gtest )
+	test? ( dev-cpp/gtest dev-ros/rosunit[${PYTHON_USEDEP}] )
 "
