@@ -48,10 +48,10 @@ src_compile() {
 src_install() {
 	pushd src/${EGO_PN} || die
 	dobin bin/burrow_exporter
-	dodoc {README,CHANGELOG}.md
+	dodoc README.md
 	popd || die
-	keepdir /var/log/mongodb_exporter
-	fowners ${PN}:${PN} /var/log/mongodb_exporter
+	keepdir /var/log/burrow_exporter
+	fowners ${PN}:${PN} /var/log/burrow_exporter
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
