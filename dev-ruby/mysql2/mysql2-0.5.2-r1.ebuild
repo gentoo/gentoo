@@ -20,7 +20,7 @@ LICENSE="MIT"
 SLOT="0.5"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 IUSE="mysql mariadb"
-REQUIRED_USE="mysql? ( !mariadb ) mariadb? ( !mysql )"
+REQUIRED_USE="^^ ( mariadb mysql )"
 
 MDEPEND="mysql? ( dev-db/mysql-connector-c ) mariadb? ( dev-db/mariadb-connector-c )"
 DEPEND="${DEPEND} ${MDEPEND}"
