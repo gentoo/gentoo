@@ -22,7 +22,8 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="dev-python/Babel[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
