@@ -1,5 +1,5 @@
---- yatex1.76-orig/docs/yahtmle.tex
-+++ yatex1.76/docs/yahtmle.tex
+--- a/docs/yahtmle.tex
++++ b/docs/yahtmle.tex
 @@ -1,9 +1,10 @@
  \def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
  \input texinfo
@@ -13,8 +13,8 @@
  @end direntry
  
  @iftex
---- yatex1.76-orig/docs/yahtmlj.tex
-+++ yatex1.76/docs/yahtmlj.tex
+--- a/docs/yahtmlj.tex
++++ b/docs/yahtmlj.tex
 @@ -1,9 +1,10 @@
  \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
  \input texinfo
@@ -28,8 +28,8 @@
  @end direntry
  
  @iftex
---- yatex1.76-orig/docs/yatexe.tex
-+++ yatex1.76/docs/yatexe.tex
+--- a/docs/yatexe.tex
++++ b/docs/yatexe.tex
 @@ -1,9 +1,10 @@
  \def\lang{jp} % -*- texinfo -*-
  \input texinfo.tex
@@ -43,8 +43,8 @@
  @end direntry
  
  @iftex
---- yatex1.76-orig/docs/yatexj.tex
-+++ yatex1.76/docs/yatexj.tex
+--- a/docs/yatexj.tex
++++ b/docs/yatexj.tex
 @@ -1,9 +1,10 @@
  \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
  \input texinfo
