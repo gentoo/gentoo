@@ -44,13 +44,7 @@ DEPEND="virtual/pkgconfig"
 # @INTERNAL
 # @DESCRIPTION:
 # Get unprefixed udevdir.
-_udev_get_udevdir() {
-	if $($(tc-getPKG_CONFIG) --exists udev); then
-		echo "$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
-	else
-		echo /lib/udev
-	fi
-}
+_udev_get_udevdir() { echo /lib/udev; }
 
 # @FUNCTION: udev_get_udevdir
 # @DESCRIPTION:
