@@ -9,22 +9,24 @@ DESCRIPTION="Yet Another TeX mode for Emacs"
 HOMEPAGE="http://www.yatex.org/"
 SRC_URI="http://www.${PN}.org/${P/-}.tar.gz"
 
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"
-LICENSE="YaTeX"
+LICENSE="BSD-2"
 IUSE="l10n_ja"
 
 S="${WORKDIR}/${P/-}"
 
-ELISP_PATCHES="${PN}-1.76-gentoo.patch
-	${PN}-1.76-direntry.patch
-	${PN}-1.77-texinfo-5.patch"
+ELISP_PATCHES="${PN}-1.76-direntry.patch
+	${P}-texinfo-5.patch"
 SITEFILE="50${PN}-gentoo.el"
 
-src_compile() {
-	# byte-compilation fails (as of 1.74): yatexlib.el requires fonts
-	# that are only available under X
+src_prepare() {
+	sed -i "/(help-dir/,/)))/c\      (help-dir \"${SITEETC}/${PN}\"))" ${PN}hlp.el
 
+	elisp_src_prepare
+}
+
+src_compile() {
 	cd docs
 	makeinfo {${PN},yahtml}e.tex || die
 
@@ -42,11 +44,11 @@ src_install() {
 	insinto ${SITEETC}/${PN}
 	doins help/YATEXHLP.eng
 	doinfo docs/{${PN},yahtml}.info*
-	dodoc docs/*.eng
+	dodoc install docs/*.eng
 
 	if use l10n_ja; then
 		doins help/YATEXHLP.jp
 		doinfo docs/{${PN},yahtml}-ja.info*
-		dodoc 00readme install docs/{htmlqa,qanda,*.doc}
+		dodoc 00readme ${PN}.new docs/{htmlqa,qanda,*.doc}
 	fi
 }

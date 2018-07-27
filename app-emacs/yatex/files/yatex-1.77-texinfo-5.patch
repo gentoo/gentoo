@@ -1,21 +1,21 @@
---- yatex1.77-orig/docs/yahtmle.tex
-+++ yatex1.77/docs/yahtmle.tex
+--- a/docs/yahtmle.tex
++++ b/docs/yahtmle.tex
 @@ -1,4 +1,4 @@
 -\def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
 +@c \def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
  \input texinfo
  @setfilename yahtml.info
  @settitle Yet Another html-mode for Emacs
---- yatex1.77-orig/docs/yahtmlj.tex
-+++ yatex1.77/docs/yahtmlj.tex
+--- a/docs/yahtmlj.tex
++++ b/docs/yahtmlj.tex
 @@ -1,4 +1,4 @@
 -\def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
 +@c \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
  \input texinfo
  @setfilename yahtml-ja.info
  @settitle Yet Another html-mode for Emacs
---- yatex1.77-orig/docs/yatexe.tex
-+++ yatex1.77/docs/yatexe.tex
+--- a/docs/yatexe.tex
++++ b/docs/yatexe.tex
 @@ -1,4 +1,4 @@
 -\def\lang{jp} % -*- texinfo -*-
 +@c \def\lang{jp} % -*- texinfo -*-
@@ -76,8 +76,8 @@
    Check the current completion type is specified one and cause error if
  not. The variable @code{YaTeX-current-completion-type} holds the symbol
  according to the current completion type.
---- yatex1.77-orig/docs/yatexj.tex
-+++ yatex1.77/docs/yatexj.tex
+--- a/docs/yatexj.tex
++++ b/docs/yatexj.tex
 @@ -1,4 +1,4 @@
 -\def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
 +@c \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
