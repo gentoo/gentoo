@@ -20,9 +20,12 @@ RDEPEND="
 	dev-ros/costmap_2d
 	dev-ros/nav_core
 	dev-ros/pluginlib
+	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-ros/tf
-	dev-ros/visualization_msgs
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_ros
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+
 	dev-cpp/eigen:3
 	x11-libs/fltk
 	media-libs/netpbm
