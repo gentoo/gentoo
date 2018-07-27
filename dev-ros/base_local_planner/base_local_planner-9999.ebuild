@@ -18,11 +18,11 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/angles
-	dev-ros/costmap_2d
+	>=dev-ros/costmap_2d-1.16
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-cpp/eigen:3
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/nav_core
+	>=dev-ros/nav_core-1.16
 	dev-ros/pluginlib
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/rosconsole
