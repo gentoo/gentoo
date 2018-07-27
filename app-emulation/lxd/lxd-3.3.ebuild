@@ -8,7 +8,7 @@ HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE="+daemon +ipv6 +dnsmasq nls test"
 
@@ -175,6 +175,8 @@ pkg_postinst() {
 	einfo
 	einfo "Since these features can't be disabled at build-time they are"
 	einfo "not USE-conditional."
+	einfo
+	einfo "Be sure to add your local user to the lxd group."
 	einfo
 	einfo "Networks with bridge.mode=fan are unsupported due to requiring"
 	einfo "a patched kernel and iproute2."
