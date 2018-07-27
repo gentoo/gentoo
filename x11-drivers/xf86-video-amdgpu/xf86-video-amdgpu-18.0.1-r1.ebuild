@@ -25,7 +25,7 @@ BDEPEND="
 RDEPEND="
 	>=x11-libs/libdrm-2.4.78[video_cards_amdgpu]
 	x11-libs/libpciaccess
-	x11-base/xorg-server[glamor(-),-minimal]
+	x11-base/xorg-server:=[glamor(-),-minimal]
 "
 DEPEND="
 	${LIVE_DEPEND}
@@ -39,6 +39,7 @@ src_prepare() {
 
 src_configure() {
 	local econfargs=(
+		--disable-selective-werror
 		--enable-glamor
 	)
 
