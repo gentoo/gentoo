@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit autotools desktop
 
 DESCRIPTION="CD player applet for WindowMaker"
@@ -11,7 +11,6 @@ SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
@@ -19,11 +18,12 @@ RDEPEND="x11-libs/libX11
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
-S=${WORKDIR}/dockapps
+S="${WORKDIR}/dockapps"
 
 DOCS=( ARTWORK README )
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
