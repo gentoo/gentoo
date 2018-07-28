@@ -4,10 +4,10 @@ DESCRIPTION=Deconstructed Dynamic C Library Loading
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/DynaLoader-Functions/
 IUSE=test
-KEYWORDS=amd64 ~arm ~hppa ~sparc ~x86
+KEYWORDS=amd64 ~arm ~hppa ~ia64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Z/ZE/ZEFRAM/DynaLoader-Functions-0.003.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	01e8c68d5a528bbcda4d3c60205983df	perl-module	863b35d127db98823d439f8d73c2d011
-_md5_=aabd1ff50c9b8e40854061dc36832491
+_md5_=5d818f5cf66118e4900e05c6d0a80c3f
