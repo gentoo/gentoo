@@ -268,92 +268,8 @@ games-strategy/gorky17-demo
 net-vpn/miredo
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to compile (#648430), crashes from time to time (#222065). Removal
-# in a month.
-app-misc/wyrd
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not compatible with recent perl, not needed by anything in the tree
-# (#648582). Removal in a month.
-app-doc/mkdoxy
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Doesn't run, cannot bump it (#651146). Removal in a month.
 games-emulation/hatari
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead lib not used by anything in the tree (#652186). Removal in a month.
-net-libs/libwhisker
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead for ages, nothing requires it, needs klibc (that is also completely
-# unmaintained in our side) (#653390). Removal in a month.
-sys-boot/getdvhoff
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Both games crash on start (#653812). Removal in a month.
-games-arcade/marbleblast-demo
-games-arcade/marbleblastgold-demo
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Crashes at start (#653998). Removal in a month.
-games-arcade/skystreets
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# This installs an older GUI than the one provided by fceux package
-# (#654294). Removal in a month.
-games-emulation/gfceux
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead for ages, doesn't work on amd64, other distros killed it
-# long time ago (#654302). Removal in a month.
-games-emulation/hugo
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't support amd64, relies on virtual/libstdc++ (#654306). Removal in a
-# month.
-games-emulation/kigb
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Our version is completely outdated, a major version bump and rework of the
-# ebuild is needed (#654336). Removal in a month.
-games-emulation/raine
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead for a long time, not compatible with amd64, people can use
-# quake2-icculus with aalib under SDL (#654348). Removal in a month.
-games-fps/aaquake2
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not required by anything in the tree, upstream disappeared long time ago
-# (#654352). Removal in a month.
-games-fps/doomsday-resources
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to run, use eduke32 instead (#654480). Removal in a month.
-games-fps/duke3d
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run on amd64, prboom can be used instead (#654482). Removal in a
-# month.
-games-fps/lsdldoom
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to start (#654492). Removal in a month.
-games-fps/soldieroffortune-demo
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead since 2003, not ported ever to amd64 (#654516). Removal in a month.
-games-puzzle/ensemblist
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run (#654520). Removal in a month.
-games-puzzle/hoh-bin
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run (#654554, #654650). Removal in a month.
-games-sports/miniracer
-games-strategy/heroes3-demo
 
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
@@ -380,26 +296,12 @@ virtual/httpd-php:7.3
 =sys-kernel/vanilla-sources-4.9.104
 =sys-kernel/vanilla-sources-4.4.134
 
-# Michał Górny <mgorny@gentoo.org> (30 May 2018)
-# Gentoo repository mirrors are now running on Gentoo Infastructure,
-# and the key used to sign commits is appropriately part of the regular
-# keyring (>=app-crypt/openpgp-keys-gentoo-release-20180530).  Please
-# upgrade this keyring, and remove the custom sync-openpgp-key-path from
-# your repos.conf to make Portage use the release keys.
-# Removal in 30 days.
-app-crypt/openpgp-keys-gentoo-mirror
-
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
 # Retained in tree only for users who need older versions
 # for compatibility reasons.
 # Bug: #623942
 <dev-perl/DBD-mysql-4.44.0
-
-# Akinori Hattori <hattya@gentoo.org> (27 May 2018)
-# Dead upstream, for old versions of iBus
-# Masked for removal in 30 days.
-app-i18n/ibus-tutcode
 
 # Matt Turner <mattst88@gentoo.org> (25 May 2018)
 # New package. Needs to interact with media-libs/mesa and
@@ -428,12 +330,6 @@ media-libs/libglvnd
 # Likely to break a lot of software
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
-
-# Rick Farina <zerochaos@gentoo.org> (04 Apr 2018)
-# Violates PMS and does not work with stable portage.
-# Masked for removal in 60 days, lift mask if bug #650126 is fixed
-sys-fs/aufs3
-sys-fs/aufs4
 
 # Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
 # Requires >=dev-libs/icu-61.1
@@ -789,7 +685,6 @@ games-action/phobiaii
 games-fps/rtcw
 games-fps/unreal
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/smac
 
 # Mikle Kolyada <zlogene@gentoo.org> (27 Jun 2014)

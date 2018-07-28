@@ -39,7 +39,6 @@ games-arcade/aquaria
 games-arcade/barbarian-bin
 games-arcade/dynamitejack
 games-arcade/jardinains
-games-arcade/marbleblastgold-demo
 games-arcade/thinktanks-demo
 games-emulation/nestra
 games-emulation/zinc
@@ -56,7 +55,6 @@ games-fps/quake3-demo
 games-fps/rtcwmp-demo
 games-fps/rtcwsp-demo
 games-fps/soldieroffortune
-games-fps/soldieroffortune-demo
 games-fps/transfusion-bin
 games-fps/tribes2
 games-fps/ut2003

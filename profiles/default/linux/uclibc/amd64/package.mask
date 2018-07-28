@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # AMD64 Team <amd64@gentoo.org>
@@ -79,7 +79,6 @@ games-fps/sauerbraten
 games-fps/serious-sam-tfe
 games-fps/serious-sam-tse
 games-fps/soldieroffortune
-games-fps/soldieroffortune-demo
 games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
@@ -97,7 +96,6 @@ games-strategy/darwinia-demo
 games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz

@@ -84,10 +84,6 @@ net-im/telepathy-connection-managers -steam
 # Missing keywords
 app-misc/workrave mate
 
-# Patrick Lauer <patrick@gentoo.org> (13 Jan 2015)
-# Dependencies lack keywords
-games-fps/lsdldoom shareware
-
 # Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
