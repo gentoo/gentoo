@@ -22,7 +22,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth discord-presence doc egl +evdev ffmpeg libav llvm log lto openal portaudio profile pulseaudio +qt5 sdl systemd upnp"
+IUSE="alsa ao bluetooth discord-presence doc egl +evdev ffmpeg libav log lto openal portaudio profile pulseaudio +qt5 sdl systemd upnp"
 
 RDEPEND="
 	>=media-libs/libsfml-2.1
@@ -52,7 +52,6 @@ RDEPEND="
 		libav? ( media-video/libav:= )
 		!libav? ( media-video/ffmpeg:= )
 	)
-	llvm? ( sys-devel/llvm:* )
 	openal? (
 		media-libs/openal
 		media-libs/libsoundtouch
@@ -88,9 +87,6 @@ src_prepare() {
 	fi
 	if use !bluetooth; then
 		sed -i -e '/check_lib(BLUEZ/d' CMakeLists.txt || die
-	fi
-	if use !llvm; then
-		sed -i -e '/include(FindLLVM/d' CMakeLists.txt || die
 	fi
 	if use !openal; then
 		sed -i -e '/include(FindOpenAL/d' CMakeLists.txt || die
@@ -152,6 +148,7 @@ src_configure() {
 		-DOPROFILING=$(usex profile)
 
 		-DENABLE_EVDEV=$(usex evdev)
+		-DENABLE_LLVM=OFF
 		-DENABLE_LTO=$(usex lto)
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_SDL=$(usex sdl)
