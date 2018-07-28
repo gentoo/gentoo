@@ -29,4 +29,5 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-wrong-port-avail.patch"
 	"${FILESDIR}/${P}-optional_gconf.patch"
+	"${FILESDIR}/${P}-automagic_gconf.patch"
 )

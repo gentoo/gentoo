@@ -1,19 +1,19 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+inherit autotools git-r3
 
 DESCRIPTION="a terminal emulator based off of libvte that aims to be fast and lightweight"
 HOMEPAGE="https://lilyterm.luna.com.tw"
-LICENSE="GPL-3"
-SRC_URI="https://${PN}.luna.com.tw/file/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/Tetralet/LilyTerm"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+LICENSE="GPL-3"
+KEYWORDS=""
 
 RDEPEND="
-	x11-libs/vte:0
+	x11-libs/vte:2.91
 "
 DEPEND="
 	${RDEPEND}
@@ -23,7 +23,13 @@ DEPEND="
 "
 
 DOCS=( AUTHORS ChangeLog README TODO )
+PATCHES=(
+	"${FILESDIR}"/${PN}-99999-autogen.patch
+)
 
 src_prepare() {
-	./autogen.sh
+	default
+
+	./autogen.sh || die
+	eautoreconf
 }
