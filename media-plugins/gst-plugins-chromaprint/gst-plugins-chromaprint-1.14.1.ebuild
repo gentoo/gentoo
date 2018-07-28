@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="Calculate Chromaprint fingerprint from audio files for GStreamer"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-libs/chromaprint[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
