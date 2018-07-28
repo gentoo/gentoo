@@ -139,14 +139,6 @@ dev-python/jaraco-utils
 # for generating new keys and doing key maintenance. Removal in a month
 app-crypt/gkeys-gen
 
-# Pacho Ramos <pacho@gentoo.org> (28 Jun 2018)
-# Doesn't work at all (#645388). Removal in a month
-net-misc/whatportis
-
-# Pacho Ramos <pacho@gentoo.org> (28 Jun 2018)
-# Cannot be imported, bug #659410. Removal in a month.
-app-misc/jira-cli
-
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
 # Mask Qt4 for removal. Bug #631788
 =dev-qt/assistant-4.8.7
