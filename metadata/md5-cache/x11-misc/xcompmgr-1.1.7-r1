@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure prepare
+DEPEND=x11-libs/libXrender x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXcomposite x11-libs/libXext
+DESCRIPTION=X Compositing manager
+EAPI=7
+HOMEPAGE=https://freedesktop.org/wiki/Software/xapps
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libXrender x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXcomposite x11-libs/libXext
+SLOT=0
+SRC_URI=mirror://xorg/app/xcompmgr-1.1.7.tar.bz2
+_md5_=64e13c55b0ce17dfae193184fd77341f

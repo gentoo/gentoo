@@ -1,0 +1,11 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure prepare
+DEPEND=x11-base/xorg-proto
+DESCRIPTION=create a shadow directory of symbolic links to another directory tree
+EAPI=7
+HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://xorg/util/lndir-1.0.3.tar.bz2
+_md5_=a38070e869fd33e65976e48284b1ea93

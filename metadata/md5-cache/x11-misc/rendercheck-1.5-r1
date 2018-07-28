@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=x11-libs/libXrender x11-libs/libX11
+DESCRIPTION=Tests for compliance with X RENDER extension
+EAPI=7
+HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libXrender x11-libs/libX11
+SLOT=0
+SRC_URI=mirror://xorg/app/rendercheck-1.5.tar.bz2
+_md5_=e7e8511828cdbad1923766ce722b64d1
