@@ -142,7 +142,7 @@ app-admin/testdisk 7.1_pre20180322-r1: Checks and undeletes partitions + PhotoRe
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
-app-admin/ulogd 2.0.5_p20161017 2.0.7: A userspace logging daemon for netfilter/iptables related logging
+app-admin/ulogd 2.0.7: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
@@ -7989,7 +7989,7 @@ media-sound/erec 2.2.0.1: A shared audio recording server
 media-sound/exaile 3.4.5: a media player aiming to be similar to AmaroK, but for GTK+
 media-sound/fapg 0.41: Fast Audio Playlist Generator
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
-media-sound/flacon 4.0.0 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
+media-sound/flacon 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6-r1: Software real-time synthesizer based on the Soundfont 2 specifications
@@ -8257,7 +8257,7 @@ media-video/smplayer 18.3.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 17.5.0-r1: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
-media-video/subliminal 2.0.5-r1 2.0.5-r2: Python library to search and download subtitles
+media-video/subliminal 2.0.5-r2: Python library to search and download subtitles
 media-video/subtitlecomposer 0.6.4: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
