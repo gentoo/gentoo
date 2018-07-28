@@ -215,7 +215,8 @@ games-emulation/hatari
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
-# Marked for removal in 30 days, bug #658194
+# Please keep this package.mask entry until at least 16th Sep 2018 for
+# extra notification of the deprecation and replacement. Bug #658194
 media-plugins/gst-plugins-schroedinger
 
 # Mike Gilbert <floppym@gentoo.org> (15 Jun 2018)
@@ -280,13 +281,6 @@ media-libs/libglvnd
 # Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
 # Requires >=dev-libs/openssl-1.1.0
 =net-libs/nodejs-10*
-
-# Mart Raudsepp <leio@gentoo.org> (30 Mar 2018)
-# GStreamer mp3 decoder plugin based on libmad is removed with gstreamer-1.12.
-# media-plugins/gst-plugins-mpg123 is the suggested replacement.
-# Please keep this package.mask entry until at least 26th June 2018 for
-# extra notification of the deprecation and replacement. Bug #631128.
-media-plugins/gst-plugins-mad:1.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (27 Mar 2018)
 # Breaks a couple of revdeps. See tracker bug at
