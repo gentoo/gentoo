@@ -8,7 +8,6 @@
 		<flag name="discord-presence">Enables Discord Rich Presence, show the current game on Discord</flag>
 		<flag name="egl">Enable EGL support</flag>
 		<flag name="evdev">Enable evdev input support</flag>
-		<flag name="llvm">Enable the LLVM-based disassembler for debugger mode</flag>
 		<flag name="log">Increase logging output</flag>
 		<flag name="lto">Add support for link-time optimizations.</flag>
 	</use>
