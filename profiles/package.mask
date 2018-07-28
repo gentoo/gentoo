@@ -292,7 +292,6 @@ sys-boot/getdvhoff
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Both games crash on start (#653812). Removal in a month.
-games-arcade/marbleblast-demo
 games-arcade/marbleblastgold-demo
 
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
