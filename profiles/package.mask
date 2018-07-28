@@ -236,11 +236,6 @@ dev-libs/DirectFB
 games-arcade/snake3d
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not compatible with recent python versions (#624668), needs a major
-# version bump. Removal in a month.
-dev-python/django-two-factor-auth
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2013, not compatible with latest profiles (#642568). Removal in
 # a month
 net-vpn/miredo
