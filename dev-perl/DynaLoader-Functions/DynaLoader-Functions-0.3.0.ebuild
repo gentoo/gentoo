@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Deconstructed Dynamic C Library Loading"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
