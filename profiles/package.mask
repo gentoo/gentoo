@@ -350,10 +350,6 @@ games-puzzle/ensemblist
 # Doesn't run (#654520). Removal in a month.
 games-puzzle/hoh-bin
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run (#654650). Removal in a month.
-games-strategy/heroes3-demo
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
@@ -768,7 +764,6 @@ games-action/phobiaii
 games-fps/rtcw
 games-fps/unreal
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/smac
 
 # Mikle Kolyada <zlogene@gentoo.org> (27 Jun 2014)

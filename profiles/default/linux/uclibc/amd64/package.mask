@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # AMD64 Team <amd64@gentoo.org>
@@ -97,7 +97,6 @@ games-strategy/darwinia-demo
 games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz
