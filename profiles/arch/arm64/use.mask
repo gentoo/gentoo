@@ -62,10 +62,6 @@ gps
 # x11-misc/colord not tested on arm64 yet
 colord
 
-# Mart Raudsepp <leio@gentoo.org> (05 Feb 2017)
-# dev-libs/DirectFB not tested on arm64 (and we probably don't want it)
-directfb
-
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # net-fs/samba not tested on arm64 yet
 samba

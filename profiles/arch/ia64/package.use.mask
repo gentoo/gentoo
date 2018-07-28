@@ -255,10 +255,6 @@ dev-util/dbus-test-runner test
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
 
-# Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
-# no keyword for media-libs/tremor
->=dev-libs/DirectFB-1.7.1 tremor
-
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial
