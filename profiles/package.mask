@@ -309,11 +309,6 @@ games-emulation/gfceux
 # long time ago (#654302). Removal in a month.
 games-emulation/hugo
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't support amd64, relies on virtual/libstdc++ (#654306). Removal in a
-# month.
-games-emulation/kigb
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
