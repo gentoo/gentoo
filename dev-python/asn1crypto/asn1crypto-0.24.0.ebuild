@@ -15,7 +15,7 @@ SRC_URI="https://github.com/wbond/asn1crypto/archive/${PV}.tar.gz -> ${P}.gh.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc ~x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc ~x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 
 RDEPEND=""
