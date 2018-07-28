@@ -351,8 +351,7 @@ games-puzzle/ensemblist
 games-puzzle/hoh-bin
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run (#654554, #654650). Removal in a month.
-games-sports/miniracer
+# Doesn't run (#654650). Removal in a month.
 games-strategy/heroes3-demo
 
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
