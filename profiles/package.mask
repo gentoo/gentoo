@@ -222,11 +222,6 @@ dev-java/servletapi
 dev-java/sun-jacc-api
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Obsolete package not needed for a long time, bug #559994. Removal in a
-# month.
-dev-java/jdom-jaxen
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2013, not compatible with latest profiles (#642568). Removal in
 # a month
 net-vpn/miredo
