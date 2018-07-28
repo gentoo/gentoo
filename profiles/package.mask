@@ -212,11 +212,6 @@ app-i18n/qimhangul
 sys-apps/paludis
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't work on amd64, upstream dead for ages, bug #254510
-# Removal in a month.
-games-arcade/xevil
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2013, not compatible with latest profiles (#642568). Removal in
 # a month
 net-vpn/miredo
