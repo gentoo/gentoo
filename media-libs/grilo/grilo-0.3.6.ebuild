@@ -71,7 +71,8 @@ src_configure() {
 }
 
 src_test() {
-	virtx emake check
+	# /net/throttling/small-delay can fail with parallel tests
+	virtx emake -j1 check
 }
 
 src_install() {
