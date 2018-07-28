@@ -273,11 +273,6 @@ net-vpn/miredo
 app-misc/wyrd
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not compatible with recent perl, not needed by anything in the tree
-# (#648582). Removal in a month.
-app-doc/mkdoxy
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Doesn't run, cannot bump it (#651146). Removal in a month.
 games-emulation/hatari
 
