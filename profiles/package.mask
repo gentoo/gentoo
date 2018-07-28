@@ -259,10 +259,6 @@ games-simulation/dangerdeep
 media-gfx/postr
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to fetch (#640584). Removal in a month.
-games-strategy/gorky17-demo
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2013, not compatible with latest profiles (#642568). Removal in
 # a month
 net-vpn/miredo
