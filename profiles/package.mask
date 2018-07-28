@@ -212,57 +212,6 @@ app-i18n/qimhangul
 sys-apps/paludis
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't work on amd64, upstream dead for ages, bug #254510
-# Removal in a month.
-games-arcade/xevil
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Package obsolete since many years ago (#398689). Removal in a month.
-dev-java/servletapi
-dev-java/sun-jacc-api
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Obsolete package not needed for a long time, bug #559994. Removal in a
-# month.
-dev-java/jdom-jaxen
-=dev-java/jdom-1.0-r4
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead for a long time, bug #606194. Removal in a month.
-dev-libs/DirectFB
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Segfaults at start (#612322). Removal in a month.
-games-arcade/snake3d
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not compatible with recent python versions (#624668), needs a major
-# version bump. Removal in a month.
-dev-python/django-two-factor-auth
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to build (#624688). Removal in a month.
-sci-physics/hoomd-blue
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead, relies on obsolete gstreamer:0.10. Please use alternatives
-# (like soundconverter) instead (#629182). Removal in a month.
-media-sound/gnac
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to run (#630576). Removal in a month.
-games-simulation/dangerdeep
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# frogr is a good replacement for this old package still relying on dead
-# gnome2 python bindings (#640046). Removal in a month.
-media-gfx/postr
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to fetch (#640584). Removal in a month.
-games-strategy/gorky17-demo
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2013, not compatible with latest profiles (#642568). Removal in
 # a month
 net-vpn/miredo

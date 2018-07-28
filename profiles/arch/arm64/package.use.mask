@@ -360,10 +360,6 @@ dev-libs/efl physics
 # gcj-6.3 won't bootstrap icedtea 7
 >=sys-devel/gcc-6 gcj
 
-# Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
-# no keyword for media-libs/swfdec and media-libs/libtimidity
->=dev-libs/DirectFB-1.7.1 timidity swfdec
-
 # Markus Meier <maekke@gentoo.org> (26 Dec 2013)
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
