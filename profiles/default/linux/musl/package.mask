@@ -39,7 +39,6 @@ games-arcade/aquaria
 games-arcade/barbarian-bin
 games-arcade/dynamitejack
 games-arcade/jardinains
-games-arcade/marbleblastgold-demo
 games-arcade/thinktanks-demo
 games-emulation/nestra
 games-emulation/zinc
