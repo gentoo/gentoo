@@ -346,10 +346,6 @@ games-fps/soldieroffortune-demo
 # Dead since 2003, not ported ever to amd64 (#654516). Removal in a month.
 games-puzzle/ensemblist
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run (#654520). Removal in a month.
-games-puzzle/hoh-bin
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
