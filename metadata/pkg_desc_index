@@ -4031,9 +4031,9 @@ dev-perl/Number-Format 1.750.0: Package for formatting numbers for display
 dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/Object-Realize-Later 0.190.0: Delayed creation of objects
-dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
+dev-perl/Ogg-Vorbis-Header 0.30.0-r1 0.50.0: An object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r2: Object-oriented interface to Ogg Vorbis information and comment fields
-dev-perl/OpenGL 0.670.400: Perl interface providing graphics display using OpenGL
+dev-perl/OpenGL 0.670.400 0.700.0: Perl interface providing graphics display using OpenGL
 dev-perl/PAR 1.14.0-r1 1.15.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PDF-API2 2.27.0 2.33.0: Facilitates the creation and modification of PDF files
