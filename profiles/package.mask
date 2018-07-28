@@ -319,11 +319,6 @@ games-emulation/kigb
 # ebuild is needed (#654336). Removal in a month.
 games-emulation/raine
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead for a long time, not compatible with amd64, people can use
-# quake2-icculus with aalib under SDL (#654348). Removal in a month.
-games-fps/aaquake2
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
