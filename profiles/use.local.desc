@@ -2167,7 +2167,6 @@ games-board/tablebase-syzygy:6-pieces - Install tablebases for 6 pieces (huge!)
 games-emulation/dolphin:discord-presence - Enables Discord Rich Presence, show the current game on Discord
 games-emulation/dolphin:egl - Enable EGL support
 games-emulation/dolphin:evdev - Enable evdev input support
-games-emulation/dolphin:llvm - Enable the LLVM-based disassembler for debugger mode
 games-emulation/dolphin:log - Increase logging output
 games-emulation/dolphin:lto - Add support for link-time optimizations.
 games-emulation/dosbox:glide - Enable unofficial Glide emulation via media-libs/openglide
