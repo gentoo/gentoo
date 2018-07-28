@@ -432,7 +432,6 @@ media-libs/libglvnd
 # Rick Farina <zerochaos@gentoo.org> (04 Apr 2018)
 # Violates PMS and does not work with stable portage.
 # Masked for removal in 60 days, lift mask if bug #650126 is fixed
-sys-fs/aufs3
 sys-fs/aufs4
 
 # Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
