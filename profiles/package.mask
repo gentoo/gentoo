@@ -380,15 +380,6 @@ virtual/httpd-php:7.3
 =sys-kernel/vanilla-sources-4.9.104
 =sys-kernel/vanilla-sources-4.4.134
 
-# Michał Górny <mgorny@gentoo.org> (30 May 2018)
-# Gentoo repository mirrors are now running on Gentoo Infastructure,
-# and the key used to sign commits is appropriately part of the regular
-# keyring (>=app-crypt/openpgp-keys-gentoo-release-20180530).  Please
-# upgrade this keyring, and remove the custom sync-openpgp-key-path from
-# your repos.conf to make Portage use the release keys.
-# Removal in 30 days.
-app-crypt/openpgp-keys-gentoo-mirror
-
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
 # Retained in tree only for users who need older versions
