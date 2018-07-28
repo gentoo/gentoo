@@ -232,10 +232,6 @@ dev-java/jdom-jaxen
 dev-libs/DirectFB
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Segfaults at start (#612322). Removal in a month.
-games-arcade/snake3d
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Dead since 2013, not compatible with latest profiles (#642568). Removal in
 # a month
 net-vpn/miredo
