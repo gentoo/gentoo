@@ -298,8 +298,6 @@ src_install() {
 
 	pax-mark Em "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
 
-	rm "${ED%/}"/usr/share/doc/*/{LICENSE.md,copying.txt}* || die
-
 	newicon media/icon48x48.png kodi.png
 
 	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
