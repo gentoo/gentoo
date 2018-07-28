@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
 inherit distutils-r1
 
@@ -27,17 +27,18 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
-	test? (
-		${RDEPEND}
-		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
-		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
-	)
 	doc? (
 		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
 		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
+	)
+	test? (
+		${RDEPEND}
+		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
+		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 	)
 "
 
@@ -51,7 +52,7 @@ python_compile_all() {
 
 python_test() {
 	# Override pytest options to skip flake8
-	py.test --override-ini="addopts=--doctest-modules" \
+	pytest -vv --override-ini="addopts=--doctest-modules" \
 		|| die "Tests failed with ${EPYTHON}"
 }
 
