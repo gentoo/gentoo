@@ -333,11 +333,6 @@ games-fps/doomsday-resources
 # Fails to run, use eduke32 instead (#654480). Removal in a month.
 games-fps/duke3d
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run on amd64, prboom can be used instead (#654482). Removal in a
-# month.
-games-fps/lsdldoom
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
