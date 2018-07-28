@@ -314,11 +314,6 @@ games-emulation/hugo
 # month.
 games-emulation/kigb
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Our version is completely outdated, a major version bump and rework of the
-# ebuild is needed (#654336). Removal in a month.
-games-emulation/raine
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
