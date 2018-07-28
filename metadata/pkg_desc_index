@@ -8914,7 +8914,7 @@ net-misc/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-misc/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openvpn 1.8.4: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
-net-misc/networkmanager-vpnc 1.2.4 1.2.6: NetworkManager VPNC plugin
+net-misc/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
 net-misc/ntp 4.2.8_p11: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365: A NTP (RFC-1305) client for unix-alike computers
