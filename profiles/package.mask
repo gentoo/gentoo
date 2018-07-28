@@ -285,11 +285,6 @@ games-emulation/hatari
 # Dead lib not used by anything in the tree (#652186). Removal in a month.
 net-libs/libwhisker
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead for ages, nothing requires it, needs klibc (that is also completely
-# unmaintained in our side) (#653390). Removal in a month.
-sys-boot/getdvhoff
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
