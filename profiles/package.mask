@@ -304,11 +304,6 @@ games-arcade/skystreets
 # (#654294). Removal in a month.
 games-emulation/gfceux
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Upstream dead for ages, doesn't work on amd64, other distros killed it
-# long time ago (#654302). Removal in a month.
-games-emulation/hugo
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
