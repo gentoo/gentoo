@@ -1,12 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-IUSE=""
 DESCRIPTION="Simple application launcher for the Window Maker dock"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="https://www.dockapps.net/wmappl"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
@@ -17,13 +16,4 @@ DEPEND="${RDEPEND}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc amd64 ppc"
-
-src_compile() {
-	econf || die "Configuration failed"
-	emake || die "Compilation failed"
-}
-
-src_install () {
-	emake DESTDIR="${D}" install || die "Installation failed"
-}
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
