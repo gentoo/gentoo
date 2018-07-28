@@ -218,7 +218,6 @@ games-arcade/xevil
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # Package obsolete since many years ago (#398689). Removal in a month.
-dev-java/servletapi
 dev-java/sun-jacc-api
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
