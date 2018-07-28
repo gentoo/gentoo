@@ -324,11 +324,6 @@ games-emulation/raine
 # quake2-icculus with aalib under SDL (#654348). Removal in a month.
 games-fps/aaquake2
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Not required by anything in the tree, upstream disappeared long time ago
-# (#654352). Removal in a month.
-games-fps/doomsday-resources
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
