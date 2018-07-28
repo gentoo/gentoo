@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Custom OP checking attached to subroutines"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
