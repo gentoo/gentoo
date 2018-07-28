@@ -338,10 +338,6 @@ games-fps/duke3d
 # month.
 games-fps/lsdldoom
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Fails to start (#654492). Removal in a month.
-games-fps/soldieroffortune-demo
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
