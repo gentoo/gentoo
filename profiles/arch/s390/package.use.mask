@@ -13,6 +13,8 @@ app-portage/layman bazaar darcs mercurial
 dev-python/setuptools_scm mercurial test
 # no practical use of zsh completion here (at least now)
 dev-util/ninja zsh-completion
+# no nmap gui
+net-analyzer/nmap/nmap zenmap
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
