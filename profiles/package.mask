@@ -299,11 +299,6 @@ games-arcade/marbleblastgold-demo
 # Crashes at start (#653998). Removal in a month.
 games-arcade/skystreets
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# This installs an older GUI than the one provided by fceux package
-# (#654294). Removal in a month.
-games-emulation/gfceux
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
