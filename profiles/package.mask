@@ -281,10 +281,6 @@ app-doc/mkdoxy
 # Doesn't run, cannot bump it (#651146). Removal in a month.
 games-emulation/hatari
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead lib not used by anything in the tree (#652186). Removal in a month.
-net-libs/libwhisker
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
