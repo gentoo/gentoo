@@ -2301,6 +2301,27 @@ kde-apps/kmag:keyboardfocus - Enable keyboard focus tracking
 kde-apps/konqueror:activities - Enable kactivities support
 kde-apps/konqueror:speech - Build text-to-speech plugin
 kde-apps/konqueror:webengine - Enable dev-qt/qtwebengine as web browser engine (fallback is kde-misc/kwebkitpart)
+kde-apps/kopete:addbookmarks - Automatically add incoming urls to bookmarks.
+kde-apps/kopete:autoreplace - Automatically replace selected text
+kde-apps/kopete:contactnotes - Enables writing personal notes for contacts.
+kde-apps/kopete:gadu - Enable the Gadu protocol handler.
+kde-apps/kopete:groupwise - Enable the Groupwise protocol handler.
+kde-apps/kopete:highlight - Allows you to specify highlights on specific events.
+kde-apps/kopete:history - Enables saving chat history.
+kde-apps/kopete:latex - Embed latex formatted text into messages.
+kde-apps/kopete:meanwhile - Enable the Sametime protocol handler.
+kde-apps/kopete:nowlistening - Shows song you currently listen to in your status/etc. Bindings for many players.
+kde-apps/kopete:otr - Allows crypting your chat (drugs and talking nonsense are considered as good alternatives ;]).
+kde-apps/kopete:pipes - Send messages to external pipe.
+kde-apps/kopete:privacy - Filter for incoming messages
+kde-apps/kopete:statistics - Everybody loves statistic graphs, especially cake ones. ;]
+kde-apps/kopete:testbed - Enable the testbed protocol.
+kde-apps/kopete:texteffect - Various fancy text effects for your messages (don't ever consider writing us with this enabled ;]).
+kde-apps/kopete:translator - Translate incoming and outgoing messages.
+kde-apps/kopete:urlpicpreview - Enables in conversation pictures preview.
+kde-apps/kopete:webpresence - Show your status and some more information on web.
+kde-apps/kopete:winpopup - Enable pop-up messages sending on windows. (same as good old "net send" messages ;])
+kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-apps/kpimtextedit:designer - Build plugins for dev-qt/designer
 kde-apps/kpimtextedit:speech - Enable text-to-speech support
 kde-apps/ktp-accounts-kcm:experimental - Enables disabled telepathy services (currently only steam)
