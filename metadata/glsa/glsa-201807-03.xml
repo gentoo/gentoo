@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201807-03">
+  <title>ZNC:Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ZNC, the worst of which
+    could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">ZNC</product>
+  <announced>2018-07-29</announced>
+  <revised count="2">2018-07-29</revised>
+  <bug>661228</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/znc" auto="yes" arch="*">
+      <unaffected range="ge">1.7.1</unaffected>
+      <vulnerable range="lt">1.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ZNC is an advanced IRC bouncer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ZNC. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could read arbitary files and esclate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ZNC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/znc-1.7.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14055">CVE-2018-14055</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14056">CVE-2018-14056</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-07-16T11:02:53Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2018-07-29T21:57:06Z">irishluck83</metadata>
+</glsa>
