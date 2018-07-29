@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201807-04">
+  <title>cURL:Heap-based Buffer Overflow </title>
+  <synopsis>A heap-based buffer overflow in cURL might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2018-07-29</announced>
+  <revised count="1">2018-07-29</revised>
+  <bug>660894</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.61.0</unaffected>
+      <vulnerable range="lt">7.61.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A command line tool and library for transferring data with URLs.</p>
+    
+  </background>
+  <description>
+    <p>A heap-based buffer overflow was discovered in cURL’s
+      Curl_smtp_escape_eob() function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a Denial of Service condition or execute
+      arbitrary code via SMTP connections.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.61.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0500">CVE-2018-0500</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-07-21T22:56:00Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-07-29T22:11:16Z">irishluck83</metadata>
+</glsa>
