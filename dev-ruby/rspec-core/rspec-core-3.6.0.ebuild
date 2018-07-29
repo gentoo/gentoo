@@ -71,6 +71,10 @@ all_ruby_prepare() {
 	sed -i -e '/be_highlighted/,/end/ s/32/33/' \
 		-e '/highlights core RSpec keyword-like methods/,/^      end/ s:^:#:' \
 		spec/rspec/core/formatters/syntax_highlighter_spec.rb || die
+
+	# Avoid a spec that depens on dev-ruby/rspec to lessen circular
+	# dependencies, bug 662328
+	sed -i -e '/loads mocks and expectations when the constants are referenced/askip "gentoo: bug 662328"' spec/rspec/core_spec.rb || die
 }
 
 each_ruby_prepare() {
