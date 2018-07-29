@@ -548,36 +548,13 @@ get_version() {
 		return 1
 	fi
 
-	# and in newer versions we can also pull LOCALVERSION if it is set.
-	# but before we do this, we need to find if we use a different object directory.
-	# This *WILL* break if the user is using localversions, but we assume it was
-	# caught before this if they are.
-	if [[ -z ${OUTPUT_DIR} ]] ; then
-		# Try to locate a kernel that is most relevant for us.
-		for OUTPUT_DIR in "${SYSROOT}" "${ROOT%/}" "" ; do
-			OUTPUT_DIR+="/lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}/build"
-			if [[ -e ${OUTPUT_DIR} ]] ; then
-				break
-			fi
-		done
-	fi
-
-	[ -d "${OUTPUT_DIR}" ] && KV_OUT_DIR="${OUTPUT_DIR}"
-	if [ -n "${KV_OUT_DIR}" ];
-	then
-		qeinfo "Found kernel object directory:"
-		qeinfo "    ${KV_OUT_DIR}"
-	fi
-	# and if we STILL have not got it, then we better just set it to KV_DIR
-	KV_OUT_DIR="${KV_OUT_DIR:-${KV_DIR}}"
-
 	# Grab the kernel release from the output directory.
 	# TODO: we MUST detect kernel.release being out of date, and 'return 1' from
 	# this function.
-	if [ -s "${KV_OUT_DIR}"/include/config/kernel.release ]; then
-		KV_LOCAL=$(<"${KV_OUT_DIR}"/include/config/kernel.release)
-	elif [ -s "${KV_OUT_DIR}"/.kernelrelease ]; then
-		KV_LOCAL=$(<"${KV_OUT_DIR}"/.kernelrelease)
+	if [ -s "${KV_DIR}"/include/config/kernel.release ]; then
+		KV_LOCAL=$(<"${KV_DIR}"/include/config/kernel.release)
+	elif [ -s "${KV_DIR}"/.kernelrelease ]; then
+		KV_LOCAL=$(<"${KV_DIR}"/.kernelrelease)
 	else
 		KV_LOCAL=
 	fi
@@ -594,6 +571,29 @@ get_version() {
 	else
 		KV_LOCAL=$tmplocal
 	fi
+
+	# and in newer versions we can also pull LOCALVERSION if it is set.
+	# but before we do this, we need to find if we use a different object directory.
+	# This *WILL* break if the user is using localversions, but we assume it was
+	# caught before this if they are.
+	if [[ -z ${OUTPUT_DIR} ]] ; then
+		# Try to locate a kernel that is most relevant for us.
+		for OUTPUT_DIR in "${SYSROOT}" "${ROOT%/}" "" ; do
+			OUTPUT_DIR+="/lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}${KV_LOCAL}/build"
+			if [[ -e ${OUTPUT_DIR} ]] ; then
+				break
+			fi
+		done
+	fi
+
+	[ -d "${OUTPUT_DIR}" ] && KV_OUT_DIR="${OUTPUT_DIR}"
+	if [ -n "${KV_OUT_DIR}" ];
+	then
+		qeinfo "Found kernel object directory:"
+		qeinfo "    ${KV_OUT_DIR}"
+	fi
+	# and if we STILL have not got it, then we better just set it to KV_DIR
+	KV_OUT_DIR="${KV_OUT_DIR:-${KV_DIR}}"
 
 	# And we should set KV_FULL to the full expanded version
 	KV_FULL="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}${KV_LOCAL}"
