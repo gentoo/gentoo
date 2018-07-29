@@ -5464,7 +5464,7 @@ dev-python/qtconsole 4.3.1: Qt-based console for Jupyter with support for rich m
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
-dev-python/rarfile 2.8 3.0: Module for RAR archive reading
+dev-python/rarfile 3.0: Module for RAR archive reading
 dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
