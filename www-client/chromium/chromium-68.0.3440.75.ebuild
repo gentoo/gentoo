@@ -140,6 +140,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-libjpeg-r0.patch"
 	"${FILESDIR}/chromium-cors-string-r0.patch"
 	"${FILESDIR}/chromium-libwebp-shim-r0.patch"
+	"${FILESDIR}/chromium-ffmpeg-ebp-r1.patch"
 )
 
 pre_build_checks() {
