@@ -44,20 +44,6 @@ ${grub_string}
 		linux (loop)/isolinux/rescue64 ${SRCD_BOOTOPTIONS} isoloop=\${isofile}
 		initrd (loop)/isolinux/initram.igz
 	}
-	menuentry "${longname} (32bit alternative${bootops}" --class rescue {
-${grub_string}
-		set isofile=${path}
-		loopback loop \${isofile}
-		linux (loop)/isolinux/altker32 ${SRCD_BOOTOPTIONS} isoloop=\${isofile}
-		initrd (loop)/isolinux/initram.igz
-	}
-	menuentry "${longname} (64bit alternative${bootops}" --class rescue {
-${grub_string}
-		set isofile=${path}
-		loopback loop \${isofile}
-		linux (loop)/isolinux/altker64 ${SRCD_BOOTOPTIONS} isoloop=\${isofile}
-		initrd (loop)/isolinux/initram.igz
-	}
 }
 EOF
 
