@@ -7646,7 +7646,7 @@ media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony applicat
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 17.3.9: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
-media-libs/mlt 6.4.1-r6: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.4.1-r6 6.6.0-r1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
