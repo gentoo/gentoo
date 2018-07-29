@@ -9,7 +9,7 @@ inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="Drop-down terminal for GNOME"
 HOMEPAGE="https://github.com/Guake/guake https://pypi.org/project/Guake"
-SRC_URI="mirror://pypi/${PN^:0:1}/${PN^}/${P^}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN^}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -34,7 +34,6 @@ DEPEND="
 	sys-devel/make
 "
 
-S="${WORKDIR}/${P^}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.2-paths.patch
 )
