@@ -4907,7 +4907,7 @@ dev-python/graph-tool 2.19 2.23: An efficient python module for manipulation and
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.12: Lightweight in-process concurrent programming
-dev-python/gst-python 0.10.22-r1 1.12.3 1.14.1: A Python Interface to GStreamer
+dev-python/gst-python 0.10.22-r1 1.12.3 1.14.1-r1: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 2.1.4: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
