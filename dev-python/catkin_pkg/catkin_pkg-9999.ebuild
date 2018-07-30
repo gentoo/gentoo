@@ -33,7 +33,11 @@ RDEPEND="
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/mock[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/flake8[${PYTHON_USEDEP}]
+	)
 "
 RDEPEND="${RDEPEND}
 	!<dev-util/catkin-0.7.14"
