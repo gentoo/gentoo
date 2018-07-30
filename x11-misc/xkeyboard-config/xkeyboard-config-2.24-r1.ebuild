@@ -40,7 +40,6 @@ src_prepare() {
 
 src_configure() {
 	local econfargs=(
-		--disable-selective-werror
 		--with-xkb-base="${EPREFIX}/usr/share/X11/xkb"
 		--enable-compat-rules
 		# do not check for runtime deps
