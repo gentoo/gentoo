@@ -69,6 +69,8 @@ RDEPEND="
 
 pkg_setup() {
 	use uinput && CONFIG_CHECK="INPUT_UINPUT"
+	python-single-r1_pkg_setup
+	linux-info_pkg_setup
 }
 
 src_configure() {
