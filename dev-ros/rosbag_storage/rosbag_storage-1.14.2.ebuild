@@ -16,6 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/console_bridge
+	app-crypt/gpgme
 	dev-ros/cpp_common
 	dev-ros/roscpp_serialization
 	dev-ros/roscpp_traits
