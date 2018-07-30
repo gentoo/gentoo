@@ -25,6 +25,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-libs/tinyxml
 	dev-libs/tinyxml2:=
+	dev-ros/class_loader:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-cpp/gtest )"
