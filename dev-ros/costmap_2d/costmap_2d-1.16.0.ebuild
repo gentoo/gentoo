@@ -29,6 +29,9 @@ RDEPEND="
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/voxel_grid
 
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_sensor_msgs
+
 	dev-cpp/eigen:3
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml2:=

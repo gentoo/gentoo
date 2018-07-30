@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/costmap_2d
 	dev-cpp/eigen:3
-	dev-ros/nav_core
+	>=dev-ros/nav_core-1.16
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/tf2_ros
