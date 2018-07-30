@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6,7} )
-inherit meson multilib-minimal python-any-r1
+inherit xdg-utils meson multilib-minimal python-any-r1
 
 DESCRIPTION="A thin layer of types for graphic libraries"
 HOMEPAGE="https://ebassi.github.io/graphene/"
@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	xdg_environment_reset
 	default
 	# Disable installed-tests
 	sed -e 's/install: true/install: false/g' -i src/tests/meson.build || die
