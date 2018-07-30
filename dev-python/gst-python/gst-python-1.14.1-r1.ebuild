@@ -28,14 +28,11 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	xdg_environment_reset
-	prepare_gst() {
-		mkdir -p "${BUILD_DIR}" || die
-	}
-	python_foreach_impl prepare_gst
+	python_copy_sources
 }
 
 src_configure() {
-	ECONF_SOURCE="${S}" python_foreach_impl run_in_build_dir econf
+	python_foreach_impl run_in_build_dir econf
 }
 
 src_compile() {
