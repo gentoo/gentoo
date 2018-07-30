@@ -194,7 +194,7 @@ PYTHON_COMPAT=( python{2_6,2_7} )
 
 inherit toolchain-funcs python-any-r1
 [[ ${EAPI:-0} == [012345] ]] && inherit epatch
-[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
+[[ ${EAPI:-0} == [0123456] ]] && inherit estack eapi7-ver
 case ${EAPI:-0} in
 	2|3|4|5|6)
 		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
