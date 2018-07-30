@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
-	dev-python/django[${PYTHON_USEDEP}]
+	<dev-python/django-1.9[${PYTHON_USEDEP}]
 	>=dev-python/django-appconf-0.4[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
