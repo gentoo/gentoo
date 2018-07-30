@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
 
+PATCHES=( "${FILESDIR}"/${PV}-fix-32bit-rtpstorage-test.patch )
+
 multilib_src_configure() {
 	# Always enable optional bz2 support for matroska
 	# Always enable optional zlib support for qtdemux and matroska
