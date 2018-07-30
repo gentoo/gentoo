@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DOWNLOAD_URL="http://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html"
 
