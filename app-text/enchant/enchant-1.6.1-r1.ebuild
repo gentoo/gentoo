@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit versionator
+inherit autotools versionator
 
 MY_PV="$(replace_all_version_separators '-')"
 DESCRIPTION="Spellchecker wrapping library"
@@ -32,11 +32,13 @@ DOCS="AUTHORS BUGS ChangeLog HACKING MAINTAINERS NEWS README TODO"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-hunspell150_fix.patch
+	"${FILESDIR}"/${PN}-1.6.1-autoconf-zemberek.patch
 )
 
 src_prepare() {
 	default
 	sed -e "/SUBDIRS/ s/unittests//" -i "${S}"/Makefile.{am,in} || die
+	eautoreconf
 }
 
 src_configure() {
@@ -48,6 +50,7 @@ src_configure() {
 		--disable-ispell \
 		--disable-uspell \
 		--disable-voikko \
+		--disable-zemberek \
 		--with-myspell-dir="${EPREFIX}"/usr/share/myspell/
 }
 
