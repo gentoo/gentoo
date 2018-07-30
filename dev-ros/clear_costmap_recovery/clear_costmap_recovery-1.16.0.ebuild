@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/costmap_2d-1.13.1
+	>=dev-ros/costmap_2d-1.16
 	dev-cpp/eigen:3
 	dev-ros/nav_core
 	dev-ros/pluginlib
