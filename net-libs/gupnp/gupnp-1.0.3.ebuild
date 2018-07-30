@@ -3,11 +3,10 @@
 
 EAPI="6"
 VALA_USE_DEPEND="vapigen"
-# FIXME: Claims to works with python3 but appears to be wishful thinking
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="xml"
 
-inherit gnome2 multilib-minimal python-r1 vala
+inherit gnome2 multilib-minimal python-single-r1 vala
 
 DESCRIPTION="An object-oriented framework for creating UPnP devs and control points"
 HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
@@ -69,5 +68,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	python_foreach_impl python_doscript tools/gupnp-binding-tool
+	python_fix_shebang "${ED}"/usr/bin/gupnp-binding-tool
 }
