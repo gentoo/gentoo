@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/costmap_2d
+	>=dev-ros/costmap_2d-1.16
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nav_core
