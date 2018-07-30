@@ -109,7 +109,7 @@ src_install() {
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}_beta.png" ${PN}.png
 	done
 
-	readme.gentoo_create_doc
+	pax-mark m "${CHROME_HOME}/chrome"
 }
 
 pkg_preinst() {
