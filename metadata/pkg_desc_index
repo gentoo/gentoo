@@ -747,7 +747,8 @@ app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library em
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libvirt 4.3.0: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
-app-emulation/lxc 2.1.1: LinuX Containers userspace utilities
+app-emulation/lxc 2.1.1 3.0.1: LinuX Containers userspace utilities
+app-emulation/lxc-templates 3.0.1: Old style template scripts for LXC
 app-emulation/lxd 2.21 3.2: Fast, dense and secure container management
 app-emulation/nemu 1.4.0: ncurses interface for QEMU
 app-emulation/q4wine 1.3.6-r1: Qt GUI configuration tool for Wine
@@ -5441,6 +5442,7 @@ dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hos
 dev-python/python-xlib 0.15_rc1-r2: A fully functional X client library for Python, written in Python
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zunclient 0.4.1 1.1.0: A client for the OpenStack Zun API
+dev-python/python3-lxc 3.0.1: Python bindings for LXC
 dev-python/python3-openid 3.1.0: Python 3 port of the python-openid library
 dev-python/pythondialog 3.2.2 3.3.0: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
@@ -8729,7 +8731,7 @@ net-libs/telepathy-logger-qt 17.08.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
-net-libs/webkit-gtk 2.18.6 2.20.3: Open source web browser engine
+net-libs/webkit-gtk 2.20.3: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2: A brokerless kernel
@@ -9714,7 +9716,7 @@ sys-apps/accountsservice 0.6.45: D-Bus interfaces for querying and manipulating 
 sys-apps/ack 2.18-r1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apply-default-acl 0.0.6: Apply default POSIX ACLs to files and directories
+sys-apps/apply-default-acl 0.0.6 0.4.1: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
