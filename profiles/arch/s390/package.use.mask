@@ -15,6 +15,8 @@ dev-python/setuptools_scm mercurial test
 dev-util/ninja zsh-completion
 # no nmap gui
 net-analyzer/nmap/nmap zenmap
+# no lua support for vim
+app-editors/vim luajit lua
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
