@@ -18,6 +18,7 @@ DEPEND="
 	>=dev-libs/glib-2.50.0:2
 	virtual/libudev
 	virtual/udev
+	sys-apps/systemd:0=
 	sys-auth/polkit[introspection]
 	doc? ( app-text/asciidoc )"
 RDEPEND="${DEPEND}"

@@ -1,3 +1,6 @@
+# Matthew Thode <prometheanfire@gentoo.org> (30 Jul 2018)
+# sys-apps/bolt links against systemd, which gentoo SELinux does not support
+sys-apps/bolt
 
 # Göktürk Yüksek <gokturk@gentoo.org> (09 Nov 2016)
 # On behalf of proxy-maint
