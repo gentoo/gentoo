@@ -25,6 +25,8 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/tf2_ros
 
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+
 	dev-libs/boost:=[threads]
 	dev-libs/console_bridge:=
 "
