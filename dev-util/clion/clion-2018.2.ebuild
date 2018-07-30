@@ -13,6 +13,7 @@ LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="splitdebug"
 
 # RDEPENDS may cause false positives in repoman.
 # clion requires cmake and gdb at runtime to build and debug C/C++ projects
