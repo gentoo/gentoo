@@ -42,6 +42,7 @@ DEPEND="
 	rubberband? ( media-libs/rubberband )
 	>=media-libs/zita-convolver-3.0.0
 	dev-util/itstool
+	media-libs/libebur128
 "
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio
