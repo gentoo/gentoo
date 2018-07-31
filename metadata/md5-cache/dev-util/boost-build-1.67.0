@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) !<dev-libs/boost-1.35.0 !<=dev-util/boost-build-1.35.0-r1 test? ( sys-apps/diffutils python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] )
+DESCRIPTION=A system for large project software construction, simple to use and powerful
+EAPI=7
+HOMEPAGE=http://www.boost.org/doc/tools/build/index.html
+IUSE=examples python test python_targets_python2_7
+LICENSE=Boost-1.0
+RDEPEND=python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) !<dev-libs/boost-1.35.0 !<=dev-util/boost-build-1.35.0-r1
+REQUIRED_USE=python? ( python_targets_python2_7 ) test? ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://downloads.sourceforge.net/project/boost/boost/1.67.0/boost_1_67_0.tar.bz2
+_eclasses_=eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	26fdbe5e685d53f67303a3a43d9e4848	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3dfd9ab471572a832cc2aca28a7811e0
