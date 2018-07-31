@@ -14,7 +14,7 @@ case "${EAPI:-0}" in
 	0|1|2|3)
 		die "virtualx.eclass: EAPI ${EAPI} is too old."
 		;;
-	4|5|6)
+	4|5|6|7)
 		;;
 	*)
 		die "virtualx.eclass: EAPI ${EAPI} is not supported yet."
@@ -53,7 +53,11 @@ case ${VIRTUALX_REQUIRED} in
 	manual)
 		;;
 	always)
-		DEPEND="${VIRTUALX_DEPEND}"
+		if [[ ${EAPI:-0} != [0123456] ]]; then
+			BDEPEND="${VIRTUALX_DEPEND}"
+		else
+			DEPEND="${VIRTUALX_DEPEND}"
+		fi
 		RDEPEND=""
 		;;
 	optional|tests)
@@ -77,7 +81,11 @@ case ${VIRTUALX_REQUIRED} in
 		IUSE="${VIRTUALX_USE}"
 		;;
 	*)
-		DEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		if [[ ${EAPI:-0} != [0123456] ]]; then
+			BDEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		else
+			DEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		fi
 		RDEPEND=""
 		IUSE="${VIRTUALX_REQUIRED}"
 		;;
