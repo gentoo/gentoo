@@ -1397,7 +1397,7 @@ app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r3: Powerful Multilingual File Viewer
 app-text/manpager 1: Enable colorization of man pages
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
-app-text/mecab 0.996: Yet Another Part-of-Speech and Morphological Analyzer
+app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1: Tail with multiple windows
