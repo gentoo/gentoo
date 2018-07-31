@@ -30,10 +30,10 @@ src_prepare() {
 	sed -i \
 		-e "/CFLAGS/s/-O3/${CFLAGS}/" \
 		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
-		configure.in || die
+		configure.in
 	sed -i "s:/lib:/$(get_libdir):" ${PN}rc.in
 
-	mv configure.{in,ac}
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
