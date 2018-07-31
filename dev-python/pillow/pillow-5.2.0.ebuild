@@ -83,7 +83,8 @@ python_compile_all() {
 
 python_test() {
 	"${PYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
-	virtx pytest -vx Tests/test_*.py
+	# no:relaxed: pytest-relaxed plugin make our tests fail. deactivate if installed
+	virtx pytest -vx Tests/test_*.py -p no:relaxed
 }
 
 python_install() {
