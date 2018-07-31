@@ -891,7 +891,7 @@ app-i18n/man-pages-ru 4.08.2329.2329.20170422: A collection of Russian translati
 app-i18n/man-pages-zh_CN 1.5: A somewhat comprehensive collection of Chinese Linux man pages
 app-i18n/mozc 2.23.2815.102: Mozc - Japanese input method editor
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
-app-i18n/nkf 2.1.3: Network Kanji code conversion Filter with UTF-8/16 support
+app-i18n/nkf 2.1.3-r2: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
 app-i18n/poedit 2.0.6: GUI gettext translations editor
 app-i18n/pology 0.12: A framework for custom processing of PO files
