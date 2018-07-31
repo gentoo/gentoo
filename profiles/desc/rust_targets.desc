@@ -1,0 +1,8 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of RUST_TARGETS USE_EXPAND flags.
+
+rust1_25 - Build with Rust 1.25
+rust1_26 - Build with Rust 1.26
+rust1_27 - Build with Rust 1.27
