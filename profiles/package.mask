@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gmail.com> (31 Jul 2018)
+# Old and obsolete. Merged into one EFL package since 1.18 release. 
+# Removal in ~30 days. Bug #662510
+=dev-libs/efl-1.17.0-r1
+media-libs/elementary
+media-plugins/emotion_generic_players
+media-plugins/evas_generic_loaders
+x11-themes/ethemes
+
 # Virgil Dupras <vdupras@gentoo.org> (22 Jul 2018)
 # Depends on an unsupported version of django (1.8, will be removed soon) and
 # is rendered obsolete by the direct inclusion of django support in
