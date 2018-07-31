@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python3_5 python3_6 )
 inherit distutils-r1 gnome2-utils
 
 DESCRIPTION="An automatic disk mounting service using udisks"
@@ -18,9 +18,11 @@ RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-fs/udisks:2"
 DEPEND="app-text/asciidoc
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	sys-devel/gettext"
 
 src_compile() {
 	distutils-r1_src_compile
