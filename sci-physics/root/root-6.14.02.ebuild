@@ -111,7 +111,6 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
 	"${FILESDIR}"/${PN}-6.13.02-hsimple.patch
-	"${FILESDIR}"/${PN}-6.14.00-http.patch
 )
 
 pkg_setup() {
@@ -154,6 +153,7 @@ src_configure() {
 		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
+		-Dgnuinstall=OFF
 		-Dshared=ON
 		-Dsoversion=ON
 		-Dbuiltin_llvm=ON
@@ -208,7 +208,6 @@ src_configure() {
 		-Dglite=OFF # not implemented
 		-Dglobus=OFF
 		-Dgminimal=OFF
-		-Dgnuinstall=OFF
 		-Dgsl_shared=$(usex gsl)
 		-Dgviz=$(usex graphviz)
 		-Dhdfs=OFF
@@ -240,7 +239,7 @@ src_configure() {
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=$(usex test)
-		-Drpath=ON # needed for multi-slot to work
+		# -Drpath=ON # needed for multi-slot to work
 		-Druby=OFF # deprecated and broken
 		-Druntime_cxxmodules=OFF # does not work yet
 		-Dr=$(usex R)
