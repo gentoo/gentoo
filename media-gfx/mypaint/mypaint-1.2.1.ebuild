@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit fdo-mime gnome2-utils multilib scons-utils toolchain-funcs python-single-r1
+inherit fdo-mime gnome2-utils scons-utils toolchain-funcs python-single-r1
 
 DESCRIPTION="fast and easy graphics application for digital painters"
 HOMEPAGE="http://mypaint.org/"
@@ -38,14 +38,6 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-
-	# multilib support
-	sed -i -e "s:lib\/${PN}:$(get_libdir)\/${PN}:" \
-		SConstruct SConscript || die
 }
 
 src_compile() {
