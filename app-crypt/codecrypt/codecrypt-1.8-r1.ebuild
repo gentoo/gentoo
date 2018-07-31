@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,14 +15,13 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+cryptopp"
 
 DEPEND="dev-libs/gmp:=
-	cryptopp? ( dev-libs/crypto++ )
+	cryptopp? ( >=dev-libs/crypto++-7 )
 	sci-libs/fftw:3.0"
 RDEPEND="${DEPEND}"
-
 src_prepare() {
 	default
-	# workaround -- gentoo is missing crypto++ pkg-config file
-	sed -i -e 's/PKG_CHECK_MODULES(\[CRYPTOPP\],.*/LDFLAGS="$LDFLAGS -lcrypto++"/' configure.ac || die
+	# workaround -- the library renamed the pkg-config file
+	sed -i -e 's/PKG_CHECK_MODULES(\[CRYPTOPP\],.*/PKG_CHECK_MODULES([CRYPTOPP], [libcryptopp])/' configure.ac || die
 	eautoreconf
 }
 
