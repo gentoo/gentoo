@@ -6,8 +6,8 @@ EAPI=6
 inherit user systemd
 
 # version voodoo needed only for non-release tarballs: 4.0.0_rc1 => 4.0.0rc1
-MY_PV="${PV/_rc/rc}"
-MY_PV="${MY_PV/_beta/b}"
+MY_PV="${PV/_beta/b}"
+MY_PV="${MY_PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="An authoritative only, high performance, open source name server"
@@ -21,7 +21,6 @@ IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit ro
 S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
-	virtual/yacc
 	libevent? ( dev-libs/libevent )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -32,24 +31,24 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	sys-devel/flex
+	virtual/yacc
 "
 
-src_prepare() {
+PATCHES=(
 	# Fix the paths in the munin plugin to match our install
-	eapply "${FILESDIR}"/nsd_munin_.patch
-	eapply_user
-}
+	"${FILESDIR}"/nsd_munin_.patch
+)
 
 src_configure() {
 	local myeconfargs=(
+		--enable-largefile
 		--enable-pie
 		--enable-relro-now
-		--enable-largefile
+		--with-dbfile="${EPREFIX}"/var/db/nsd/nsd.db
 		--with-logfile="${EPREFIX}"/var/log/nsd.log
 		--with-pidfile="${EPREFIX}"/run/nsd/nsd.pid
-		--with-dbfile="${EPREFIX}"/var/db/nsd/nsd.db
-		--with-xfrdir="${EPREFIX}"/var/db/nsd
 		--with-xfrdfile="${EPREFIX}"/var/db/nsd/xfrd.state
+		--with-xfrdir="${EPREFIX}"/var/db/nsd
 		--with-zonelistfile="${EPREFIX}"/var/db/nsd/zone.list
 		--with-zonesdir="${EPREFIX}"/var/lib/nsd
 		$(use_enable bind8-stats)
