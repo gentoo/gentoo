@@ -20,12 +20,25 @@ inherit multiprocessing rust
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
-IUSE="${IUSE} debug"
+# @ECLASS-VARIABLE: CARGO_FEATURES
+# @DESCRIPTION:
+# This variable contains a list of cargo features
+
+IUSE="${IUSE} ${CARGO_FEATURES} debug"
 
 [[ ${CATEGORY}/${PN} != dev-util/cargo ]] && DEPEND=">=dev-util/cargo-0.13.0"
 
 ECARGO_HOME="${WORKDIR}/cargo_home"
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
+
+_enabled_cargo_features() {
+    features=()
+    for feat in ${CARGO_FEATURES[@]}; do
+        use ${feat} && _ENABLED_CARGO_FEATURES+=${feat}
+    done
+
+    echo ${features[@]}
+}
 
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
