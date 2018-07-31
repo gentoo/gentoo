@@ -31,6 +31,7 @@ src_prepare() {
 		-e "/CFLAGS/s/-O3/${CFLAGS}/" \
 		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
 		configure.in || die
+	sed -i "s:/lib:/$(get_libdir):" ${PN}rc.in
 
 	mv configure.{in,ac}
 	eautoreconf
