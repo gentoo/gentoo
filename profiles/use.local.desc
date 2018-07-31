@@ -2846,7 +2846,6 @@ media-libs/coin:qthelp - Build API documentation in QtHelp format
 media-libs/coin:simage - Texture loading via media-libs/simage library
 media-libs/devil:allegro - Add support for Allegro
 media-libs/devil:nvtt - Add support for media-gfx/nvidia-texture-tools
-media-libs/elementary:quicklaunch - Enable quick-launch support
 media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/flickcurl:raptor - Use media-libs/raptor for proper RDF serializing
