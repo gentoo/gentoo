@@ -9932,7 +9932,7 @@ sys-block/blktrace 1.2.0: show detailed info about what is happening on a block 
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/di 4.43: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
-sys-block/f3 6.0: Utilities to detect broken or counterfeit flash storage
+sys-block/f3 7.0: Utilities to detect broken or counterfeit flash storage
 sys-block/fio 2.15: Jens Axboe's Flexible IO tester
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
 sys-block/gparted 0.27.0 0.29.0: Gnome Partition Editor
@@ -10536,7 +10536,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 67.0.3396.87 68.0.3440.75: Open-source version of Google Chrome web browser
+www-client/chromium 68.0.3440.75: Open-source version of Google Chrome web browser
 www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
