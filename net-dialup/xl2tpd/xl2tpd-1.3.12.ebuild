@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 
 DEPEND="
-		net-libs/libpcap
-		>=sys-kernel/linux-headers-2.6"
+	net-libs/libpcap
+	>=sys-kernel/linux-headers-2.6"
 
 RDEPEND="
-		${DEPEND}
-		net-dialup/ppp"
+	${DEPEND}
+	net-dialup/ppp"
 
 DOCS=(CREDITS README.xl2tpd BUGS CHANGES TODO doc/README.patents)
 
