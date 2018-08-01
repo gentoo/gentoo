@@ -1,0 +1,28 @@
+diff --git a/src/colors.cxx b/src/colors.cxx
+index 3f20f29..f413a08 100644
+--- a/src/colors.cxx
++++ b/src/colors.cxx
+@@ -249,8 +249,8 @@ colors_use(WINDOW *w, enum color id)
+ 
+ 	assert(id > 0 && id < COLOR_END);
+ 
+-	attr_t attrs;
+-	short pair;
++	attr_t attrs = 0;
++	short pair = 0;
+ 	fix_wattr_get(w, &attrs, &pair, nullptr);
+ 
+ #ifdef ENABLE_COLORS
+diff --git a/src/hscroll.cxx b/src/hscroll.cxx
+index 7b52d8f..8f3a0c7 100644
+--- a/src/hscroll.cxx
++++ b/src/hscroll.cxx
+@@ -72,7 +72,7 @@ hscroll::Paint() const
+ 
+ 	/* set stored attributes and color */
+ 	attr_t old_attrs;
+-	short old_pair;
++	short old_pair = 0;
+ 	fix_wattr_get(w, &old_attrs, &old_pair, nullptr);
+ 	wattr_set(w, attrs, pair, nullptr);
+ 

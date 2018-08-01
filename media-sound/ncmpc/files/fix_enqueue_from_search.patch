@@ -1,0 +1,16 @@
+diff --git a/src/Queue.cxx b/src/Queue.cxx
+index f3bd612..de48ab9 100644
+--- a/src/Queue.cxx
++++ b/src/Queue.cxx
+@@ -90,7 +90,7 @@ MpdQueue::FindUri(const char *filename) const
+ 	for (size_type i = 0; i < size(); ++i) {
+ 		const auto &song = (*this)[i];
+ 		if (strcmp(mpd_song_get_uri(&song), filename) == 0)
+-			return i;
++			return mpd_song_get_id(&song);
+ 	}
+ 
+ 	return -1;
+-- 
+2.16.4
+
