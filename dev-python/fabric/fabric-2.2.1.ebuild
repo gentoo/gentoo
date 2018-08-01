@@ -52,7 +52,8 @@ python_compile_all() {
 }
 
 python_test() {
-	${EPYTHON} -m pytest -s -v || die "Tests failed"
+	# -p pytest_relaxed: this plugin has to be loaded explicitly
+	pytest -s -v -p pytest_relaxed.plugin || die "Tests failed"
 }
 
 python_install_all() {
