@@ -6,8 +6,8 @@ EAPI="2"
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="fuse-based filesystem for maintaining configuration files"
-HOMEPAGE="http://invaders.mars-attacks.org/~boklm/copyfs/"
-SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
+HOMEPAGE="https://boklm.eu/copyfs/"
+SRC_URI="https://boklm.eu/copyfs/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc"
