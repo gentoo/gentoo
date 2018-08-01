@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop
+inherit desktop gnome2-utils
 
 DESCRIPTION="A violent point-and-click shooting game"
 HOMEPAGE="http://lgames.sourceforge.net/Barrage/"
@@ -25,4 +25,12 @@ src_install() {
 	newicon barrage48.png ${PN}.png
 	make_desktop_entry ${PN} Barrage
 	rm "${ED%/}"/usr/share/applications/${PN}.desktop || die
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
