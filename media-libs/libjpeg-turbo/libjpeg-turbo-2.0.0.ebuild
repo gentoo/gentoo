@@ -76,8 +76,9 @@ multilib_src_install() {
 			INSTALL="install -m755" INSTALLDIR="install -d -m755" \
 			install
 
+		popd || die
 		if use java ; then
-			rm -rf "${ED%/}"/usr/classes
+			rm -rf "${ED%/}"/usr/classes || die
 			java-pkg_dojar java/turbojpeg.jar
 		fi
 	fi
