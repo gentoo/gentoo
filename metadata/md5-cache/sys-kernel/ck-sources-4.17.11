@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.17
+EAPI=6
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://dev.gentoo.org/~mpagano/genpatches/ http://kernel.kolivas.org/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
+IUSE=experimental symlink build deblob
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 !deblob? ( linux-firmware )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=4.17.11
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.17.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.17-gnu/deblob-4.17 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.17-gnu/deblob-check -> deblob-check-4.17 ) mirror://gentoo/genpatches-4.17-12.base.tar.xz mirror://gentoo/genpatches-4.17-12.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.17-12.experimental.tar.xz ) http://ck.kolivas.org/patches/4.0/4.17/4.17-ck1/patch-4.17-ck1.xz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	estack	43ddf5aaffa7a8d0482df54d25a66a1f	kernel-2	a06444ab36072f336c630b44b641ba95	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=553ebc779b59b8d3ded2653ecb83d1f4
