@@ -14,7 +14,7 @@ dev-python/setuptools_scm mercurial test
 # no practical use of zsh completion here (at least now)
 dev-util/ninja zsh-completion
 # no nmap gui
-net-analyzer/nmap/nmap zenmap
+net-analyzer/nmap zenmap
 # no lua support for vim
 app-editors/vim luajit lua
 
