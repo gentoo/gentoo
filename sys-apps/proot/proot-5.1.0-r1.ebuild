@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 MY_PN="PRoot"
 
 inherit eutils toolchain-funcs
@@ -26,13 +26,11 @@ RESTRICT="test"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-src_prepare() {
-	epatch  "${FILESDIR}/${PN}-3.2.1-makefile.patch" \
-		"${FILESDIR}/${PN}-2.3.1-lib-paths-fix.patch" \
-		"${FILESDIR}/${PN}-3.2.2-build-care.patch" \
-		"${FILESDIR}/${PN}-4.0.1-argv.patch"
-	epatch_user
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-5.1.0-makefile.patch"
+	"${FILESDIR}/${PN}-2.3.1-lib-paths-fix.patch"
+	"${FILESDIR}/${PN}-5.1.0-loader.patch"
+)
 
 src_compile() {
 	# build the proot and care targets
@@ -44,7 +42,10 @@ src_compile() {
 }
 
 src_install() {
-	use care && dobin src/care
+	if use care; then
+		dobin src/care
+		dodoc doc/care/*.txt
+	fi
 	dobin src/proot
 	newman doc/proot/man.1 proot.1
 	dodoc doc/proot/*.txt
@@ -56,6 +57,11 @@ src_test() {
 }
 
 pkg_postinst() {
+	elog "If you have segfaults on recent (>4.8) kernels"
+	elog "try to disable seccomp support like so:"
+	elog "'export PROOT_NO_SECCOMP=1'"
+	elog "prior to running proot"
+
 	if use care; then
 		elog "You have enabled 'care' USE flag, that builds and installs"
 		elog "dynamically linked care binary."
