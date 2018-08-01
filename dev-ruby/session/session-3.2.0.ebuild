@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -29,6 +29,9 @@ all_ruby_prepare() {
 	# needed to void a collision with the Timeout::Error alias in Ruby
 	# 1.8.7 at least.
 	sed -i -e 's:TimeoutError:SessionTimeoutError:' test/session.rb || die
+
+	# Fix broken test, bug 662514
+	sed -i -e '/cmd =/ s/sleep 0.1"/sleep 0.1";/' test/session.rb || die
 }
 
 each_ruby_test() {
