@@ -34,10 +34,6 @@ DEPEND="${COMMON_DEPEND}
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 
-PATCHES=(
-	"${FILESDIR}"/${P}-divzero_fix.patch #658624
-)
-
 src_prepare() {
 	default
 
