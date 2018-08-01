@@ -39,18 +39,18 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=(
+		$(use_enable upnp UPnP)
+	)
 
 	if use dedicated ; then
 		ewarn
 		ewarn "You are building a server-only copy of BZFlag"
 		ewarn
-		myconf="--disable-client --without-SDL"
+		myconf+=( --disable-client --without-SDL )
 	fi
 
-	econf \
-		$(use_enable upnp UPnP) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {
