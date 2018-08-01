@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic autotools
+inherit autotools desktop flag-o-matic ltprune
 
 DESCRIPTION="3D tank combat simulator game"
 HOMEPAGE="https://www.bzflag.org/"
