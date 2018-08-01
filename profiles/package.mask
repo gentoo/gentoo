@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (01 Aug 2018)
+# Multiprocessing versions of gemato.  They are known to hang on some
+# users, so let's keep them masked until somebody figures out what's
+# wrong.  Bug #647964.
+~app-portage/gemato-14.0m
+~app-portage/gemato-9999m
+
 # Joonas Niilola <juippis@gmail.com> (31 Jul 2018)
 # Old and obsolete. Merged into one EFL package since 1.18 release. 
 # Removal in ~30 days. Bug #662510
