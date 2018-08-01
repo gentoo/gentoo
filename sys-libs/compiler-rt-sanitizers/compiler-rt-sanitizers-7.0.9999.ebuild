@@ -16,10 +16,11 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
+EGIT_BRANCH="release_70"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="8.0.0"
+SLOT="7.0.0"
 KEYWORDS=""
 IUSE="+clang test elibc_glibc"
 RESTRICT="!test? ( test ) !clang? ( test )"
