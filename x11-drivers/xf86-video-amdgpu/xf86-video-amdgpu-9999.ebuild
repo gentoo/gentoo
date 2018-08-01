@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit flag-o-matic
+
 DESCRIPTION="Accelerated Open Source driver for AMDGPU cards"
 HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
 
@@ -38,6 +40,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-ldflags -Wl,-z,lazy  # bug #661502
+
 	local econfargs=(
 		--disable-selective-werror
 		--enable-glamor
