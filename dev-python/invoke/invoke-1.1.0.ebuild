@@ -29,5 +29,6 @@ PATCHES=(
 
 python_test() {
 	# -s flag is important: tests fail when pytest isn't in "no capture" mode
-	${EPYTHON} -m pytest -s -v
+	# -p pytest_relaxed: this plugin has to be loaded explicitly
+	pytest -s -v -p pytest_relaxed.plugin || die "Tests failed"
 }
