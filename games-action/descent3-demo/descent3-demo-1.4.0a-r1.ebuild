@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils unpacker xdg
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Indoor/outdoor 3D combat with evil robotic mining spacecraft"
 HOMEPAGE="http://www.lokigames.com/products/descent3/"
