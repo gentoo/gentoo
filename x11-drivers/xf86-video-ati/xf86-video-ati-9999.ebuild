@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info
+inherit flag-o-matic linux-info
 
 DESCRIPTION="ATI video driver"
 HOMEPAGE="https://www.x.org/wiki/ati/"
@@ -54,6 +54,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-ldflags -Wl,-z,lazy  # bug #661502
+
 	local econfargs=(
 		--disable-selective-werror
 		$(use_enable glamor)

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info
+inherit flag-o-matic linux-info
 
 DESCRIPTION="X.org input driver based on libinput"
 HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
@@ -45,6 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-ldflags -Wl,-z,lazy
+
 	local econfargs=(
 		--disable-selective-werror
 	)

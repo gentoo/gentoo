@@ -3,18 +3,18 @@
 
 EAPI=7
 
-inherit linux-info
+inherit flag-o-matic linux-info
 
-DESCRIPTION="Generic Linux input driver"
+DESCRIPTION="X.org input driver based on libinput"
 HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/driver/xf86-input-evdev.git"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/driver/xf86-input-libinput.git"
 	inherit autotools git-r3
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	SRC_URI="mirror://xorg/driver/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
@@ -25,23 +25,17 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	dev-libs/libevdev
-	sys-libs/mtdev
-	virtual/libudev:=
-	>=x11-base/xorg-server-1.18:=[udev]
+	>=x11-base/xorg-server-1.10:=
+	>=dev-libs/libinput-1.5.0:0=
 "
 DEPEND="
 	${LIVE_DEPEND}
 	${RDEPEND}
-	>=sys-kernel/linux-headers-2.6
 	x11-base/xorg-proto
-	x11-misc/util-macros
 "
 
 pkg_pretend() {
-	if use kernel_linux ; then
-		CONFIG_CHECK="~INPUT_EVDEV"
-	fi
+	CONFIG_CHECK="~TIMERFD"
 	check_extra_config
 }
 
@@ -51,8 +45,15 @@ src_prepare() {
 }
 
 src_configure() {
+	append-ldflags -Wl,-z,lazy
+
 	local econfargs=(
 		--disable-selective-werror
 	)
 	econf "${econfargs[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
