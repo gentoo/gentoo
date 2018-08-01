@@ -232,9 +232,9 @@ src_compile() {
 
 src_test() {
 	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE
+	local -x PYTHONDONTWRITEBYTECODE=
 
-	./pypy-c ./pypy/test_all.py --pypy=./pypy-c lib-python || die
+	./pypy-c ./pypy/test_all.py --pypy=./pypy-c -vv lib-python || die
 }
 
 src_install() {
