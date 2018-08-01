@@ -1,0 +1,272 @@
+commit 77d5ba4e5bb35f91d026a3240ad0a91a2d4b662a
+Author: Cédric VINCENT <cedric.vincent@st.com>
+Date:   Fri Feb 20 14:28:55 2015 +0100
+
+    Set tracee's stack executable when the loaded program requires this.
+    
+    This is required for UMEQ and for some older versions of PRoot.  For
+    example:
+    
+        $ proot -q umeq-arm64-dce01957 -R ~/gentoo-arm64-20140718
+    
+    Before:
+    
+        proot info: vpid 1 terminated with signal 11
+    
+    Now, it is OK.
+
+diff --git a/src/compat.h b/src/compat.h
+index 2b603f1..5009490 100644
+--- a/src/compat.h
++++ b/src/compat.h
+@@ -243,5 +243,17 @@
+ #    ifndef MAP_ANONYMOUS
+ #        define MAP_ANONYMOUS			0x20
+ #    endif
++#    ifndef PROT_READ
++#        define PROT_READ		0x1
++#    endif
++#    ifndef PROT_WRITE
++#        define PROT_WRITE		0x2
++#    endif
++#    ifndef PROT_EXEC
++#        define PROT_EXEC		0x4
++#    endif
++#    ifndef PROT_GROWSDOWN
++#        define PROT_GROWSDOWN		0x01000000
++#    endif
+ 
+ #endif /* COMPAT_H */
+diff --git a/src/execve/elf.h b/src/execve/elf.h
+index 3ced10c..a5b367b 100644
+--- a/src/execve/elf.h
++++ b/src/execve/elf.h
+@@ -108,7 +108,8 @@ typedef union {
+ typedef enum {
+ 	PT_LOAD    = 1,
+ 	PT_DYNAMIC = 2,
+-	PT_INTERP  = 3
++	PT_INTERP  = 3,
++	PT_GNU_STACK = 0x6474e551,
+ } SegmentType;
+ 
+ typedef struct {
+diff --git a/src/execve/enter.c b/src/execve/enter.c
+index cb84ec6..f0f3e7f 100644
+--- a/src/execve/enter.c
++++ b/src/execve/enter.c
+@@ -252,6 +252,11 @@ static int add_load_info(const ElfHeader *elf_header,
+ 			return status;
+ 		break;
+ 
++	case PT_GNU_STACK:
++		data->load_info->needs_executable_stack |=
++			((PROGRAM_FIELD(*elf_header, *program_header, flags) & PF_X) != 0);
++		break;
++
+ 	default:
+ 		break;
+ 	}
+diff --git a/src/execve/execve.h b/src/execve/execve.h
+index 11eca10..98b8d03 100644
+--- a/src/execve/execve.h
++++ b/src/execve/execve.h
+@@ -49,6 +49,7 @@ typedef struct load_info {
+ 	char *raw_path;
+ 	Mapping *mappings;
+ 	ElfHeader elf_header;
++	bool needs_executable_stack;
+ 
+ 	struct load_info *interp;
+ } LoadInfo;
+diff --git a/src/execve/exit.c b/src/execve/exit.c
+index e6eff44..36cc51f 100644
+--- a/src/execve/exit.c
++++ b/src/execve/exit.c
+@@ -174,6 +174,9 @@ static void *transcript_mappings(void *cursor, const Mapping *mappings)
+ static int transfer_load_script(Tracee *tracee)
+ {
+ 	const word_t stack_pointer = peek_reg(tracee, CURRENT, STACK_POINTER);
++	static word_t page_size = 0;
++	static word_t page_mask = 0;
++
+ 	word_t entry_point;
+ 
+ 	size_t script_size;
+@@ -190,10 +193,22 @@ static int transfer_load_script(Tracee *tracee)
+ 	void *buffer;
+ 	size_t buffer_size;
+ 
++	bool needs_executable_stack;
+ 	LoadStatement *statement;
+ 	void *cursor;
+ 	int status;
+ 
++	if (page_size == 0) {
++		page_size = sysconf(_SC_PAGE_SIZE);
++		if ((int) page_size <= 0)
++			page_size = 0x1000;
++		page_mask = ~(page_size - 1);
++	}
++
++	needs_executable_stack = (tracee->load_info->needs_executable_stack
++				|| (   tracee->load_info->interp != NULL
++				    && tracee->load_info->interp->needs_executable_stack));
++
+ 	/* Strings addresses are required to generate the load script,
+ 	 * for "open" actions.  Since I want to generate it in one
+ 	 * pass, these strings will be put right below the current
+@@ -208,7 +223,7 @@ static int transfer_load_script(Tracee *tracee)
+ 			: strlen(tracee->load_info->raw_path) + 1);
+ 
+ 	/* A padding will be appended at the end of the load script
+-	 * (a.k.a "strings area") to ensure this latter is aligned on
++	 * (a.k.a "strings area") to ensure this latter is aligned to
+ 	 * a word boundary, for sake of performance.  */
+ 	padding_size = (stack_pointer - string1_size - string2_size - string3_size)
+ 			% sizeof_word(tracee);
+@@ -229,6 +244,7 @@ static int transfer_load_script(Tracee *tracee)
+ 			: LOAD_STATEMENT_SIZE(*statement, open)
+ 			+ (LOAD_STATEMENT_SIZE(*statement, mmap)
+ 				* talloc_array_length(tracee->load_info->interp->mappings)))
++		+ (needs_executable_stack ? LOAD_STATEMENT_SIZE(*statement, make_stack_exec) : 0)
+ 		+ LOAD_STATEMENT_SIZE(*statement, start);
+ 
+ 	/* Allocate enough room for both the load script and the
+@@ -266,6 +282,16 @@ static int transfer_load_script(Tracee *tracee)
+ 	else
+ 		entry_point = ELF_FIELD(tracee->load_info->elf_header, entry);
+ 
++	if (needs_executable_stack) {
++		/* Load script statement: stack_exec.  */
++		statement = cursor;
++
++		statement->action = LOAD_ACTION_MAKE_STACK_EXEC;
++		statement->make_stack_exec.start = stack_pointer & page_mask;
++
++		cursor += LOAD_STATEMENT_SIZE(*statement, make_stack_exec);
++	}
++
+ 	/* Load script statement: start.  */
+ 	statement = cursor;
+ 
+@@ -352,7 +378,7 @@ static int transfer_load_script(Tracee *tracee)
+ 	 *   | mmap file  |
+ 	 *   +------------+
+ 	 *   |   open     |
+-	 *   +------------+ <- stack pointer, sysarg1 (word aligned)
++	 *   +------------+ <- stack pointer, userarg1 (word aligned)
+ 	 */
+ 
+ 	/* Remember we are in the sysexit stage, so be sure the
+diff --git a/src/loader/assembly-arm.h b/src/loader/assembly-arm.h
+index ee5bb85..59a7fe0 100644
+--- a/src/loader/assembly-arm.h
++++ b/src/loader/assembly-arm.h
+@@ -89,4 +89,5 @@
+ #define EXECVE	11
+ #define EXIT	1
+ #define PRCTL	172
++#define MPROTECT 125
+ 
+diff --git a/src/loader/assembly-x86.h b/src/loader/assembly-x86.h
+index c83b3ef..4045144 100644
+--- a/src/loader/assembly-x86.h
++++ b/src/loader/assembly-x86.h
+@@ -65,3 +65,4 @@ extern word_t syscall_1(word_t number, word_t arg1);
+ #define EXECVE	11
+ #define EXIT	1
+ #define PRCTL	172
++#define MPROTECT 125
+diff --git a/src/loader/assembly-x86_64.h b/src/loader/assembly-x86_64.h
+index c581208..6f431be 100644
+--- a/src/loader/assembly-x86_64.h
++++ b/src/loader/assembly-x86_64.h
+@@ -93,3 +93,4 @@
+ #define EXECVE	59
+ #define EXIT	60
+ #define PRCTL	157
++#define MPROTECT 10
+diff --git a/src/loader/loader.c b/src/loader/loader.c
+index 5b31b02..9c2037b 100644
+--- a/src/loader/loader.c
++++ b/src/loader/loader.c
+@@ -171,6 +171,14 @@ void _start(void *cursor)
+ 			cursor += LOAD_STATEMENT_SIZE(*stmt, mmap);
+ 			break;
+ 
++		case LOAD_ACTION_MAKE_STACK_EXEC:
++			SYSCALL(MPROTECT, 3,
++				stmt->make_stack_exec.start, 1,
++				PROT_READ | PROT_WRITE | PROT_EXEC | PROT_GROWSDOWN);
++
++			cursor += LOAD_STATEMENT_SIZE(*stmt, make_stack_exec);
++			break;
++
+ 		case LOAD_ACTION_START_TRACED:
+ 			traced = true;
+ 			/* Fall through.  */
+diff --git a/src/loader/script.h b/src/loader/script.h
+index bb48af5..6ae7621 100644
+--- a/src/loader/script.h
++++ b/src/loader/script.h
+@@ -42,6 +42,10 @@ struct load_statement {
+ 			word_t clear_length;
+ 		} mmap;
+ 
++		struct {
++			word_t start;
++		} make_stack_exec;
++
+ 		struct {
+ 			word_t stack_pointer;
+ 			word_t entry_point;
+@@ -67,7 +71,8 @@ typedef struct load_statement LoadStatement;
+ #define LOAD_ACTION_OPEN		1
+ #define LOAD_ACTION_MMAP_FILE		2
+ #define LOAD_ACTION_MMAP_ANON		3
+-#define LOAD_ACTION_START_TRACED	4
+-#define LOAD_ACTION_START		5
++#define LOAD_ACTION_MAKE_STACK_EXEC	4
++#define LOAD_ACTION_START_TRACED	5
++#define LOAD_ACTION_START		6
+ 
+ #endif /* SCRIPT */
+
+commit d649854ddb66779950954aac99d960379c631a71
+Author: Nicolas Cornu <ncornu@aldebaran.com>
+Date:   Wed Jul 29 14:52:57 2015 +0200
+
+    Fix use of size
+
+diff --git a/src/execve/enter.c b/src/execve/enter.c
+index 8f22d9c..4c163a1 100644
+--- a/src/execve/enter.c
++++ b/src/execve/enter.c
+@@ -454,10 +454,10 @@ static int expand_runner(Tracee* tracee, char host_path[PATH_MAX], char user_pat
+ }
+ 
+ extern unsigned char _binary_loader_exe_start;
+-extern unsigned char _binary_loader_exe_size;
++extern unsigned char _binary_loader_exe_end;
+ 
+ extern unsigned char WEAK _binary_loader_m32_exe_start;
+-extern unsigned char WEAK _binary_loader_m32_exe_size;
++extern unsigned char WEAK _binary_loader_m32_exe_end;
+ 
+ /**
+  * Extract the built-in loader.  This function returns NULL if an
+@@ -483,11 +483,11 @@ static char *extract_loader(const Tracee *tracee, bool wants_32bit_version)
+ 
+ 	if (wants_32bit_version) {
+ 		start = (void *) &_binary_loader_m32_exe_start;
+-		size  = (size_t) &_binary_loader_m32_exe_size;
++		size  = (size_t)(&_binary_loader_m32_exe_end-&_binary_loader_m32_exe_start);
+ 	}
+ 	else {
+ 		start = (void *) &_binary_loader_exe_start;
+-		size  = (size_t) &_binary_loader_exe_size;
++		size  = (size_t) (&_binary_loader_exe_end-&_binary_loader_exe_start);
+ 	}
+ 
+ 	status2 = write(fd, start, size);
