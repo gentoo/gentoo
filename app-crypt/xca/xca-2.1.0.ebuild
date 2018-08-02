@@ -17,6 +17,7 @@ IUSE="bindist doc libressl"
 RDEPEND="
 	dev-libs/libltdl:0=
 	dev-qt/qtgui:5
+	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:0= )
