@@ -23,7 +23,10 @@ RDEPEND="
 	dev-libs/libxml2:2
 	python? ( ${PYTHON_DEPS} )
 	"
+
+# TODO: fix builds for cmake 3.12+. See bug #661860
 DEPEND="${RDEPEND}
+	<=dev-util/cmake-3.12
 	doc? ( app-doc/doxygen )
 	python? ( dev-lang/swig:0 )
 "
