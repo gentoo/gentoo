@@ -38,6 +38,7 @@ dev-python/django-openstack-auth
 dev-python/django-tastypie
 dev-python/jingo
 dev-python/Coffin
+dev-python/jsonfield
 
 # Michał Górny <mgorny@gentoo.org> (01 Aug 2018)
 # Multiprocessing versions of gemato.  They are known to hang on some
