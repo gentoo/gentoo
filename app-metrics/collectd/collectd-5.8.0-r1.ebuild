@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 
 inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-functions python-single-r1 systemd tmpfiles user
@@ -13,7 +13,7 @@ DESCRIPTION="Collects system statistics and provides mechanisms to store the val
 HOMEPAGE="https://collectd.org/"
 SRC_URI="${HOMEPAGE%/}/files/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="MIT GPL-2 GPL-2+ GPL-3 GPL-3+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm x86"
 IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev xfs"
@@ -24,9 +24,11 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # apple_sensors: Requires libIOKit
 # aquaero:       Requires aerotools-ng/libaquaero5
 # barometer:     Requires libi2c (i2c_smbus_read_i2c_block_data)
+# dpdkevents:    Requires dpdk
 # dpdkstat:      Requires dpdk
 # grpc:          Requires libgrpc
-# intel_rdt      Requires libpqos from intel-cmt-cat project
+# intel_pmu:     Requires libjevents (pmu-tools)
+# intel_rdt:     Requires libpqos from intel-cmt-cat project
 # lpar:          Requires libperfstat (AIX only)
 # mic:           Requires Intel Many Integrated Core Architecture API
 #                (part of Intel's  Xeon Phi software)
@@ -34,13 +36,12 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # pf:            Requires BSD packet filter
 # pinba:         Requires MySQL Pinba engine (http://pinba.org/)
 # tape:          Requires libkstat (Solaris only)
-# write_mongodb: https://github.com/collectd/collectd/issues/492
 # write_riemann: Requires riemann-c-client
 # xmms:          Requires libxmms (v1)
 # zone:          Solaris only...
 COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors aquaero barometer dpdkstat grpc
-	intel_rdt lpar mic netapp pf pinba tape write_mongodb
-	write_riemann xmms zone"
+	intel_pmu intel_rdt lpar mic netapp pf pinba tape write_riemann
+	xmms zone"
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
 COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
@@ -49,18 +50,18 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	entropy ethstat exec fhcount filecount fscache gmond gps hddtemp
 	hugepages interface ipc ipmi iptables ipvs irq java lua
 	load logfile log_logstash lvm madwifi match_empty_counter
-	match_hashed match_regex match_timediff match_value mbmon md
+	match_hashed match_regex match_timediff match_value mbmon mcelog md
 	memcachec memcached memory modbus mqtt multimeter mysql netlink
 	network network nfs nginx notify_desktop notify_email notify_nagios
-	ntpd numa nut olsrd onewire openldap openvpn oracle perl ping
-	postgresql powerdns processes protocols python python redis
-	routeros rrdcached rrdtool sensors serial sigrok smart snmp statsd
-	swap syslog table tail tail_csv target_notification target_replace
-	target_scale target_set tcpconns teamspeak2 ted thermal threshold
-	tokyotyrant turbostat unixsock uptime users uuid varnish virt
-	vmem vserver wireless write_graphite write_http write_kafka
-	write_log write_prometheus write_redis write_sensu write_tsdb
-	xencpu zfs_arc zookeeper"
+	ntpd numa nut olsrd onewire openldap openvpn oracle ovs_events
+	ovs_stats perl ping postgresql powerdns processes protocols python
+	python redis routeros rrdcached rrdtool sensors serial sigrok smart
+	snmp snmp_agent statsd swap syslog table tail tail_csv
+	target_notification target_replace target_scale target_set tcpconns
+	teamspeak2 ted thermal threshold tokyotyrant turbostat unixsock
+	uptime users uuid varnish virt vmem vserver wireless write_graphite
+	write_http write_kafka write_log write_mongodb write_prometheus
+	write_redis write_sensu write_tsdb xencpu zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS}"
 
@@ -108,6 +109,8 @@ COMMON_DEPEND="
 	collectd_plugins_openldap?		( net-nds/openldap )
 	collectd_plugins_onewire?		( >=sys-fs/owfs-3.1:= )
 	collectd_plugins_oracle?		( dev-db/oracle-instantclient-basic )
+	collectd_plugins_ovs_events?		( dev-libs/yajl:= )
+	collectd_plugins_ovs_stats?		( dev-libs/yajl:= )
 	collectd_plugins_perl?			( dev-lang/perl:=[ithreads] )
 	collectd_plugins_ping?			( net-libs/liboping )
 	collectd_plugins_postgresql?		( dev-db/postgresql:= )
@@ -120,11 +123,13 @@ COMMON_DEPEND="
 	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4:= dev-libs/glib:2 )
 	collectd_plugins_smart?			( dev-libs/libatasmart )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
+	collectd_plugins_snmp_agent?		( net-analyzer/net-snmp )
 	collectd_plugins_tokyotyrant?		( net-misc/tokyotyrant )
 	collectd_plugins_varnish?		( www-servers/varnish )
 	collectd_plugins_virt?			( app-emulation/libvirt:= dev-libs/libxml2:2= )
 	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= dev-libs/yajl:= )
+	collectd_plugins_write_mongodb?		( >=dev-libs/mongo-c-driver-1.8.2:= )
 	collectd_plugins_write_prometheus?	( >=dev-libs/protobuf-c-1.2.1-r1:= net-libs/libmicrohttpd:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
 	collectd_plugins_xencpu?		( app-emulation/xen-tools:= )
@@ -154,12 +159,7 @@ REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
 	collectd_plugins_smart?			( udev )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.6.0-gentoo.patch
-	"${FILESDIR}"/${PN}-5.7.2-issue-2443.patch
-	"${FILESDIR}"/${PN}-5.7.2-CVE-2017-16820.patch
-	"${FILESDIR}"/${PN}-5.7.2-varnish-5.2+.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-disk-plugin-udev-fix.patch )
 
 # @FUNCTION: collectd_plugin_kernel_linux
 # @DESCRIPTION:
@@ -287,9 +287,6 @@ src_prepare() {
 	# paths like "/usr/var/..."
 	sed -i -e "s:@prefix@/var:/var:g" src/collectd.conf.in || die
 
-	# fix installdirs for perl, bug 444360
-	sed -i -e 's/INSTALL_BASE=$(DESTDIR)$(prefix) //' bindings/Makefile.am || die
-
 	# Adjust upstream's systemd unit
 	#   - Get rid of EnvironmentFile directive; These files don't exist on Gentoo!
 	#   - Add User=collectd to run collectd as user "collectd" per default
@@ -297,15 +294,6 @@ src_prepare() {
 		-e '/^EnvironmentFile=.*/d' \
 		-e '/^\[Service\]/aUser=collectd' \
 		contrib/systemd.${PN}.service || die
-
-	if use collectd_plugins_java; then
-		# Set javac -source and -target flags according to (R)DEPEND.
-		sed -i -e "s/\$(JAVAC)/\0 $(java-pkg_javac-args)/g" bindings/java/Makefile.am || die
-	fi
-
-	ebegin "Removing bundled libltdl"
-	rm -rf libltdl || die
-	eend 0
 
 	eautoreconf
 }
