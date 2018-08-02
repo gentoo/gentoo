@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils gnome2-utils
+inherit cmake-utils desktop gnome2-utils
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
 HOMEPAGE="https://supertuxkart.net/"
