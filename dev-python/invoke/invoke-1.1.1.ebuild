@@ -19,7 +19,7 @@ BDEPEND="
 	test? (
 		dev-python/mock
 		>=dev-python/pytest-3.0
-		dev-python/pytest-relaxed
+		>=dev-python/pytest-relaxed-1.1.4
 	)"
 RDEPEND=""
 
