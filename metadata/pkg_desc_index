@@ -5937,7 +5937,7 @@ dev-ruby/ruby-clutter-gtk 3.1.1: Ruby Clutter bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
 dev-ruby/ruby-gdk3 3.1.1: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.1.1: Ruby GdkPixbuf2 bindings
-dev-ruby/ruby-gettext 3.2.2 3.2.9: Native Language Support Library and Tools modeled after GNU gettext package
+dev-ruby/ruby-gettext 3.2.9: Native Language Support Library and Tools modeled after GNU gettext package
 dev-ruby/ruby-gio2 3.1.1: Ruby binding of GooCanvas
 dev-ruby/ruby-glib2 3.1.1: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.1.1: Ruby Gnome2 bindings
