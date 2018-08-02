@@ -4558,7 +4558,6 @@ dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x
 dev-python/Babel 2.5.0 2.5.3 2.5.3-r1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.4 3.4.7: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
-dev-python/Coffin 2.0.1: Jinja2 adapter for Django
 dev-python/CommonMark 0.5.4: Python parser for the CommonMark Markdown spec
 dev-python/Flask-KVSession 0.6.1: Transparent server-side session support for flask
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
@@ -4743,11 +4742,10 @@ dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.c
 dev-python/distlib 0.2.1: Distribution utilities
 dev-python/distributed 1.18.0: Python library for distributed computation
 dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
-dev-python/django 1.8.19 1.11.14: High-level Python web framework
+dev-python/django 1.11.14: High-level Python web framework
 dev-python/django-annoying 0.7.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2: Django LDAP authentication backend
-dev-python/django-compressor 1.5: Compresses linked and inline javascript or CSS into a single cached file
 dev-python/django-debug-toolbar 1.5: A configurable set of panels that display debug information
 dev-python/django-discover-runner 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
@@ -4764,7 +4762,6 @@ dev-python/django-recaptcha 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 1.0: An extensible user-registration application for Django
 dev-python/django-select2 4.2.2: A Django integration of Select2
 dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing via setup.py
-dev-python/django-tastypie 0.13.3-r1: A flexible and capable API layer for django utilising serialisers
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
@@ -4976,7 +4973,6 @@ dev-python/jaraco-text 1.8 1.10.1: Text utilities used by other projects by deve
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.10.2: Autocompletion library for Python
-dev-python/jingo 0.9.0: An adapter for using Jinja2 templates with Django
 dev-python/jinja 2.9.5 2.10: A full-featured template engine for Python
 dev-python/jmespath 0.9.3: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11: Tools to provide lightweight pipelining in Python
