@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-base/xorg-proto
+DESCRIPTION=dockapp for monitoring internet connections to and from your computer
+EAPI=7
+HOMEPAGE=http://www.improbability.net/#wminet
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=http://www.improbability.net/wmdock//wminet-3.0.0.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c2437ee68776d6f3314a0ea8712799d9

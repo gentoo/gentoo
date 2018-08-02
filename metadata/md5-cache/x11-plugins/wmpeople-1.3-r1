@@ -1,0 +1,11 @@
+DEFINED_PHASES=postinst
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm x11-base/xorg-proto >=net-mail/peephole-1.2
+DESCRIPTION=Nice, highly configurable WMaker DockApp that monitors your mail boxes
+EAPI=7
+HOMEPAGE=http://peephole.sourceforge.net/
+KEYWORDS=~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXt x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://sourceforge/peephole/wmpeople-1.3.tar.gz
+_md5_=6eb671d1f9b598d8ddcf7ca71e139c25
