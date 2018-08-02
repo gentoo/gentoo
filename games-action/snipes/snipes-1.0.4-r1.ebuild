@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs eutils
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="2D scrolling shooter, resembles the old DOS game of same name"
 HOMEPAGE="https://cyp.github.com/snipes/"
