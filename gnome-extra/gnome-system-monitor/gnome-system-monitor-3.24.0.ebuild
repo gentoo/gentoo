@@ -7,7 +7,7 @@ inherit gnome2
 DESCRIPTION="The Gnome System Monitor"
 HOMEPAGE="https://help.gnome.org/users/gnome-system-monitor/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="systemd X"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
