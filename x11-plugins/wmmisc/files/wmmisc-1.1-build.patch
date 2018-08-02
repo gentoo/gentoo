@@ -1,6 +1,6 @@
 diff -ur wmmisc-1.1.orig/src/general.mk wmmisc-1.1/src/general.mk
---- wmmisc-1.1.orig/src/general.mk	2006-01-07 19:50:31.000000000 +0200
-+++ wmmisc-1.1/src/general.mk	2008-01-16 20:44:59.000000000 +0200
+--- a/general.mk	2006-01-07 19:50:31.000000000 +0200
++++ b/general.mk	2008-01-16 20:44:59.000000000 +0200
 @@ -16,7 +16,7 @@
  MANDIR      = $(PREFIX)/share/man
  # Set some destination locations.
@@ -35,8 +35,8 @@ diff -ur wmmisc-1.1.orig/src/general.mk wmmisc-1.1/src/general.mk
  INCLUDES   += -I.
  # Set the include locations.
 diff -ur wmmisc-1.1.orig/src/Makefile wmmisc-1.1/src/Makefile
---- wmmisc-1.1.orig/src/Makefile	2006-01-07 20:45:59.000000000 +0200
-+++ wmmisc-1.1/src/Makefile	2008-01-16 20:43:31.000000000 +0200
+--- a/Makefile	2006-01-07 20:45:59.000000000 +0200
++++ b/Makefile	2008-01-16 20:43:31.000000000 +0200
 @@ -23,7 +23,7 @@
  
  $(package): $(objects)
