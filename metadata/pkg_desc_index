@@ -7736,7 +7736,7 @@ media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by 
 media-libs/vo-aacenc 0.1.3: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3: VisualOn AMR-WB encoder library
 media-libs/waffle 1.5.2: Library that allows selection of GL API and of window system at runtime
-media-libs/webrtc-audio-processing 0.1-r1 0.3: AudioProcessing library from the webrtc.org code base
+media-libs/webrtc-audio-processing 0.3: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20170701: A free library for encoding X264/AVC streams
