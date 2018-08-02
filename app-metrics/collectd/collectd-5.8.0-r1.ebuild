@@ -159,6 +159,8 @@ REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
 	collectd_plugins_smart?			( udev )"
 
+PATCHES=( "${FILESDIR}"/${P}-disk-plugin-udev-fix.patch )
+
 # @FUNCTION: collectd_plugin_kernel_linux
 # @DESCRIPTION:
 # USAGE: <plugin name> <kernel_options> <severity>
