@@ -8,8 +8,8 @@ DESCRIPTION="A library that provides top functionality to applications"
 HOMEPAGE="https://git.gnome.org/browse/libgtop"
 
 LICENSE="GPL-2+"
-SLOT="2/10" # libgtop soname version
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+SLOT="2/11" # libgtop soname version
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="+introspection"
 
 RDEPEND="
