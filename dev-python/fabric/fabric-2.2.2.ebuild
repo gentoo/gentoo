@@ -34,7 +34,7 @@ BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-relaxed[${PYTHON_USEDEP}]
+		>=dev-python/pytest-relaxed-1.1.4[${PYTHON_USEDEP}]
 	)"
 
 python_compile() {
