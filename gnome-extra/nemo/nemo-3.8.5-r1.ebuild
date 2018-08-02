@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="exif +introspection +nls packagekit tracker xmp"
+IUSE="exif +introspection +nls packagekit selinux tracker xmp"
 RESTRICT=test
 
 COMMON_DEPEND="
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 	tracker? ( >=app-misc/tracker-0.12:= )
 	xmp? ( >=media-libs/exempi-2.2.0:= )
-	sys-libs/libselinux
+	selinux? ( sys-libs/libselinux )
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
@@ -72,8 +72,9 @@ src_prepare() {
 src_configure() {
 	meson_src_configure \
 		-Dexif=$(usex exif true false) \
-		-Denable-tracker=$(usex tracker true false) \
-		-Dxmp=$(usex xmp true false)
+		-Dtracker=$(usex tracker true false) \
+		-Dxmp=$(usex xmp true false) \
+		-Dselinux=$(usex selinux true false)
 }
 
 src_install() {
