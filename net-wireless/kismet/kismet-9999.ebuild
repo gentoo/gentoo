@@ -28,7 +28,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="lm_sensors +pcre selinux +suid"
+IUSE="lm_sensors networkmanager +pcre selinux +suid"
 
 CDEPEND="
 	${PYTHON_DEPS}
@@ -67,18 +67,23 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/fix-setuptools.patch
 	eapply_user
+
 	if [[ ${PV} == "9999" ]] ; then
-		sed -i 's#-O3##' configure.ac
 		eautoreconf
-	else
-		sed -i 's#-O3##' configure
 	fi
+
+	if ! use lm_sensors; then
+		sed -i "s#HAVE_LMSENSORS_H=1#HAVE_LMSENSORS_H=0#" configure
+	fi
+	if use networkmanager; then
+		sed -i "s#havelibnm\=no#havelibnm\=yes#" configure
+	else
+		sed -i "s#havelibnm\=yes#havelibnm\=no#" configure
+	fi
+	sed -i 's#-O3##' configure
 }
 
 src_configure() {
-	if ! use lm_sensors; then
-		adddeny /usr/include/sensors/sensors.h
-	fi
 	econf \
 		$(use_enable pcre)
 }
