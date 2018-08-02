@@ -46,7 +46,7 @@ python_configure_all() {
 }
 
 python_compile_all() {
-	rm -r contrib/{win32,macosx} || die
+	rm -r contrib/win32 || die
 	if use emacs; then
 		cd contrib || die
 		elisp-compile mercurial.el || die "elisp-compile failed!"
@@ -74,8 +74,7 @@ python_install_all() {
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 	fi
 
-	local RM_CONTRIB=(hgk hg-ssh bash_completion zsh_completion wix buildrpm plan9
-	                  *.el mercurial.spec)
+	local RM_CONTRIB=(hgk hg-ssh bash_completion zsh_completion wix plan9 *.el)
 	for f in ${RM_CONTRIB[@]}; do
 		rm -r contrib/$f || die
 	done

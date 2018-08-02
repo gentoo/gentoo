@@ -57,4 +57,6 @@ src_install() {
 	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
+
+	keepdir /var/lib/ipmiutil
 }
