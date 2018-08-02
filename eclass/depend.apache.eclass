@@ -141,7 +141,7 @@ _init_apache2() {
 	APACHE_VHOSTS_CONFDIR="${APACHE_CONFDIR}/vhosts.d"
 
 	case ${EAPI:-0} in
-		0|2|3|4|5)
+		0|2|3|4|5|6)
 			_init_apache2_late
 			;;
 	esac
@@ -177,7 +177,7 @@ depend.apache_pkg_setup() {
 	local myiuse=${1:-apache2}
 
 	case ${EAPI:-0} in
-		0|2|3|4|5)
+		0|2|3|4|5|6)
 			if has ${myiuse} ${IUSE}; then
 				if use ${myiuse}; then
 					_init_apache2
