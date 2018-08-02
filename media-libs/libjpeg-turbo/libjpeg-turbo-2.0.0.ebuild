@@ -47,7 +47,7 @@ multilib_src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_DEFAULT_DOCDIR="/usr/share/doc/${PF}"
+		-DCMAKE_INSTALL_DEFAULT_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DENABLE_STATIC="$(usex static-libs)"
 		-DWITH_JAVA="$(multilib_native_usex java)"
 		-DWITH_MEM_SRCDST=ON
