@@ -265,7 +265,7 @@ app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different 
 app-benchmarks/cpuburn 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
-app-benchmarks/i7z 93_p20131012-r1 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
+app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/iozone 3.471: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
