@@ -21,10 +21,11 @@ RDEPEND="dev-perl/Capture-Tiny
 	dev-perl/File-BaseDir
 	dev-perl/File-ReadBackwards
 	dev-perl/File-Which
+	dev-perl/Switch
 	dev-perl/Try-Tiny
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-misc[nls]
-	>=net-misc/nx-3.5.0.25
+	>=net-misc/nx-3.5.99.14
 	net-misc/openssh
 	>=sys-apps/iproute2-4.3.0
 	x11-apps/xauth
@@ -35,6 +36,8 @@ RDEPEND="dev-perl/Capture-Tiny
 	sqlite? ( dev-perl/DBD-SQLite )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-4.1.0.0-Xresources.patch
+	"${FILESDIR}"/${PN}-4.1.0.0-skip_man2html.patch
 	)
 
 pkg_setup() {
@@ -46,25 +49,25 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Do not install Xresources symlink (#521126)
-	sed -e '\#$(INSTALL_SYMLINK) /etc/X11/Xresources# s/^/#/' -i x2goserver-xsession/Makefile || die
-	# Multilib clean
-	sed -e "/^LIBDIR=/s/lib/$(get_libdir)/" -i Makefile */Makefile || die
-	sed -e "s#/lib/#/$(get_libdir)/#" -i x2goserver/bin/x2gopath || die
-	# Skip man2html build
-	sed -e "s/build-indep: build_man2html/build-indep:/" -i Makefile */Makefile || die
-	# Use nxagent directly
-	sed -i -e "/NX_TEMP=/s/x2goagent/nxagent/" x2goserver/bin/x2gostartagent || die
-
 	default
+	# Multilib clean
+	sed -e "s#/lib/#/$(get_libdir)/#" -i x2goserver/bin/x2gopath || die
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" PREFIX=/usr
+	emake \
+		CC="$(tc-getCC)" \
+		LIBDIR="/usr/$(get_libdir)/x2go" \
+		PREFIX=/usr
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install
+	emake \
+		DESTDIR="${D}" \
+		LIBDIR="/usr/$(get_libdir)/x2go" \
+		NXLIBDIR="/usr/$(get_libdir)/nx" \
+		PREFIX=/usr \
+		install
 
 	fowners root:x2goprint /usr/bin/x2goprint
 	fperms 2755 /usr/bin/x2goprint
@@ -78,8 +81,14 @@ src_install() {
 
 pkg_postinst() {
 	if use sqlite ; then
-		elog "To use sqlite and create the initial database, run:"
-		elog " # x2godbadmin --createdb"
+		if [[ -f "${EROOT}"/var/lib/x2go/x2go_sessions ]] ; then
+			elog "To use sqlite and update your existing database, run:"
+			elog " # x2godbadmin --updatedb"
+		else
+			elog "To use sqlite and create the initial database, run:"
+			elog " # x2godbadmin --createdb"
+		fi
+
 	fi
 	if use postgres ; then
 		elog "To use a PostgreSQL database, more information is availabe here:"
