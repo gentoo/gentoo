@@ -9,8 +9,6 @@ inherit autotools eutils linux-info python-any-r1 systemd
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="https://www.rsyslog.com/"
 
-BRANCH="8-stable"
-
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/rsyslog/${PN}.git"
 
@@ -307,15 +305,15 @@ src_install() {
 	local DOCS=(
 		AUTHORS
 		ChangeLog
-		"${FILESDIR}"/${BRANCH}/README.gentoo
+		"${FILESDIR}"/README.gentoo
 	)
 
 	use doc && local HTML_DOCS=( "${S}/docs/build/." )
 
 	default
 
-	newconfd "${FILESDIR}/${BRANCH}/${PN}.confd-r1" ${PN}
-	newinitd "${FILESDIR}/${BRANCH}/${PN}.initd-r1" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
 
 	keepdir /var/empty/dev
 	keepdir /var/spool/${PN}
@@ -323,13 +321,13 @@ src_install() {
 	keepdir /etc/${PN}.d
 
 	insinto /etc
-	newins "${FILESDIR}/${BRANCH}/${PN}.conf" ${PN}.conf
+	newins "${FILESDIR}/${PN}.conf" ${PN}.conf
 
 	insinto /etc/rsyslog.d/
-	newins "${FILESDIR}/${BRANCH}/50-default-r1.conf" 50-default.conf
+	newins "${FILESDIR}/50-default-r1.conf" 50-default.conf
 
 	insinto /etc/logrotate.d/
-	newins "${FILESDIR}/${BRANCH}/${PN}-r1.logrotate" ${PN}
+	newins "${FILESDIR}/${PN}-r1.logrotate" ${PN}
 
 	if use mysql; then
 		insinto /usr/share/doc/${PF}/scripts/mysql
