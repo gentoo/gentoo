@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils multilib autotools multilib-minimal
 
@@ -21,7 +21,8 @@ DOCS=( ChangeLog README )
 MULTILIB_WRAPPED_HEADERS=( /usr/include/libelf/sys_elf.h )
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-build.patch"
+	eapply "${FILESDIR}/${P}-build.patch"
+	eapply_user
 	eautoreconf
 }
 
