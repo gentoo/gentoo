@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic
+
+inherit autotools desktop flag-o-matic
 
 PATCH=3989
 GLIDE_PATCH=3722fc563b737d2d7933df6a771651c2154e6f7b
@@ -31,7 +32,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-code-0-${PATCH}-dosbox-trunk
 
 PATCHES=(
-"${FILESDIR}"/dosbox-0.74-gcc46.patch
+	"${FILESDIR}"/${PN}-0.74-gcc46.patch
 )
 
 src_prepare() {
