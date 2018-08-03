@@ -17,17 +17,14 @@ SLOT="0"
 
 KEYWORDS=""
 
-IUSE="doc libressl memcached pam ssl static-libs"
+IUSE="doc memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
 	net-libs/libnsl:0=
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
-	ssl? (
-		!libressl? ( dev-libs/openssl:* )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:* )
 "
 DEPEND="${RDEPEND}
 	!!dev-db/pgpool
