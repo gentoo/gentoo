@@ -30,8 +30,19 @@ MODULE_NAMES="wireguard(kernel/drivers/net:src)"
 BUILD_TARGETS="module"
 CONFIG_CHECK="NET INET NET_UDP_TUNNEL CRYPTO_BLKCIPHER"
 
+wg_quick_optional_config_nob() {
+	CONFIG_CHECK="$CONFIG_CHECK ~$1"
+	declare -g ERROR_$1="CONFIG_$1: This option is required for automatic routing of default routes inside of wg-quick(8), though it is not required for general WireGuard usage."
+}
+
 pkg_setup() {
 	if use module; then
+		if use tools; then
+			wg_quick_optional_config_nob IP_ADVANCED_ROUTER
+			wg_quick_optional_config_nob IP_MULTIPLE_TABLES
+			wg_quick_optional_config_nob NETFILTER_XT_MARK
+		fi
+
 		linux-mod_pkg_setup
 		kernel_is -lt 3 10 0 && die "This version of ${PN} requires Linux >= 3.10"
 	fi
