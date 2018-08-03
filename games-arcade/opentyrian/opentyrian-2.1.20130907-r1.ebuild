@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop
+inherit desktop gnome2-utils
 
 DESCRIPTION="Open-source port of the DOS game Tyrian, vertical scrolling shooter"
 HOMEPAGE="https://bitbucket.org/opentyrian/opentyrian/wiki/Home"
@@ -46,4 +46,12 @@ src_install() {
 	cd "${WORKDIR}/tyrian21"
 	rm *.exe dpmi16bi.ovl loudness.awe || die "Failed to remove win32 binaries"
 	doins * || die "Failed to install game data"
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
