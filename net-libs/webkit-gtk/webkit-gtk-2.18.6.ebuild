@@ -15,7 +15,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="~alpha ~ppc ~ppc64 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~ppc ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="aqua coverage doc +egl +geolocation gles2 gnome-keyring +gstreamer +introspection +jit libnotify nsplugin +opengl spell wayland +webgl +X"
 
