@@ -37,9 +37,11 @@ wg_quick_optional_config_nob() {
 
 pkg_setup() {
 	if use module; then
-		wg_quick_optional_config_nob IP_ADVANCED_ROUTER
-		wg_quick_optional_config_nob IP_MULTIPLE_TABLES
-		wg_quick_optional_config_nob NETFILTER_XT_MARK
+		if use tools; then
+			wg_quick_optional_config_nob IP_ADVANCED_ROUTER
+			wg_quick_optional_config_nob IP_MULTIPLE_TABLES
+			wg_quick_optional_config_nob NETFILTER_XT_MARK
+		fi
 
 		linux-mod_pkg_setup
 		kernel_is -lt 3 10 0 && die "This version of ${PN} requires Linux >= 3.10"
