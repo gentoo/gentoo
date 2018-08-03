@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils toolchain-funcs qmake-utils
+inherit desktop gnome2-utils toolchain-funcs qmake-utils
 
 MY_COMMIT=41efdba45afa770db99bc7484a8ad340ccc597d2
 
@@ -47,6 +47,11 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PN}-${MY_COMMIT}-${MY_COMMIT}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-header-locations.patch
+	"${FILESDIR}"/${P}-QA.patch
+)
+
 disable_module() {
 	sed -i \
 		-e "s|$1\b||" \
@@ -54,14 +59,10 @@ disable_module() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-header-locations.patch
-	epatch "${FILESDIR}"/${P}-QA.patch
-
+	default
 	sed -i \
 		-e "/handle/s#/usr/local/lib#/usr/$(get_libdir)#" \
 		nall/dl.hpp || die "fixing libdir failed!"
-
-	eapply_user
 
 	# audio modules
 	use ao || disable_module audio.ao
