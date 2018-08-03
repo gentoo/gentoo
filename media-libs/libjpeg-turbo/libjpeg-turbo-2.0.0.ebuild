@@ -37,6 +37,7 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 src_prepare() {
 	default
 
+	cmake-utils_src_prepare
 	java-pkg-opt-2_src_prepare
 }
 
