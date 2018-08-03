@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,10 +10,11 @@ HOMEPAGE="https://github.com/hashcat/hashcat"
 SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
-IUSE="custom-cflags video_cards_nvidia"
-DEPEND="virtual/opencl"
+IUSE="video_cards_nvidia"
+DEPEND="virtual/opencl
+	video_cards_nvidia? ( >x11-drivers/nvidia-drivers-367.0 )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
