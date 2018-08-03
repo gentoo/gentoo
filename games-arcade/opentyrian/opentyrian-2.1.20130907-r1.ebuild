@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit desktop
 
 DESCRIPTION="Open-source port of the DOS game Tyrian, vertical scrolling shooter"
 HOMEPAGE="https://bitbucket.org/opentyrian/opentyrian/wiki/Home"
