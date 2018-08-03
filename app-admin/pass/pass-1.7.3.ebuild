@@ -11,7 +11,7 @@ SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm x86 ~x86-macos"
+KEYWORDS="~amd64 ~arm ~x86 ~x86-macos"
 IUSE="+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin"
 
 RDEPEND="
@@ -24,7 +24,7 @@ RDEPEND="
 	zsh-completion? ( app-shells/gentoo-zsh-completions )
 	fish-completion? ( app-shells/fish )
 	dmenu? ( x11-misc/dmenu x11-misc/xdotool )
-	emacs? ( virtual/emacs )
+	emacs? ( virtual/emacs >=app-emacs/f-0.11.0 >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 "
 
 S="${WORKDIR}/password-store-${PV}"
@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_compile() {
-	:;
+	use emacs && elisp-compile contrib/emacs/*.el
 }
 
 src_install() {
@@ -55,7 +55,7 @@ src_install() {
 		WITH_FISHCOMP=$(usex fish-completion)
 	use dmenu && dobin contrib/dmenu/passmenu
 	if use emacs; then
-		elisp-install ${PN} contrib/emacs/*.el
+		elisp-install ${PN} contrib/emacs/*.{el,elc}
 		elisp-site-file-install "${FILESDIR}/50${PN}-gentoo.el"
 	fi
 	if use importers; then
