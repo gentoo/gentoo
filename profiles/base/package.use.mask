@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (3 Aug 2018)
+# New and for Gentoo still quite experimental. You've been
+# warned. (Also, works only on x86_64 and with certain CPUs
+# and compiler/binutils combinations.)
+sys-libs/glibc cet
+
 # Nick Sarnie <sarnex@gentoo.org> (15 Jul 2018)
 # Requires media-video/ffmpeg-4 which is masked
 app-emulation/wine-any ffmpeg
