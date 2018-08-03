@@ -14,6 +14,7 @@
  <flag name="rpc">Enable obsolete RPC/NIS layers</flag>
  <flag name="suid">Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5</flag>
  <flag name="systemtap">enable systemtap static probe points</flag>
+ <flag name="cet">Enable Intel Control-flow Enforcement Technology (needs binutils 2.29 and gcc 8)</flag>
 </use>
 <upstream>
  <remote-id type="cpe">cpe:/a:gnu:glibc</remote-id>
