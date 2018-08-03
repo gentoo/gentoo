@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils gnome2-utils python-single-r1
+inherit desktop eutils gnome2-utils python-single-r1
 
 DESCRIPTION="A side scrolling shooter game starring a steamboat on the sea"
 HOMEPAGE="http://funnyboat.sourceforge.net/"
