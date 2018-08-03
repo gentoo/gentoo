@@ -16,34 +16,11 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	MY_PV=${PV%_rc*}
-	MY_FILENAME="${PN}-${PV}.tar.gz"
-	MY_FILENAME_DOCS="${PN}-docs-${PV}.tar.gz"
-	S="${WORKDIR}/${PN}-${MY_PV}"
-
-	# Upstream URL schema:
-	# RC:      https://www.rsyslog.com/files/download/rsyslog/rc/rsyslog-8.18.0.tar.gz
-	#          https://www.rsyslog.com/files/download/rsyslog/rc2/rsyslog-8.18.0.tar.gz
-	# Release: https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.18.0.tar.gz
-
-	MY_URL_PREFIX=
-	if [[ ${PV} = *_rc* ]]; then
-		_tmp_last_index=$(($(get_last_version_component_index ${PV})+1))
-		_tmp_suffix=$(get_version_component_range ${_tmp_last_index} ${PV})
-		if [[ ${_tmp_suffix} = *rc* ]]; then
-			MY_URL_PREFIX="${_tmp_suffix}/"
-		fi
-
-		# Cleaning up temporary variables
-		unset _tmp_last_index
-		unset _tmp_suffix
-	else
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
-	fi
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 
 	SRC_URI="
-		https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
-		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
+		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
+		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
 
 	PATCHES=()
@@ -156,7 +133,7 @@ src_unpack() {
 			cd "${S}" || die "Cannot change dir into '${S}'"
 			mkdir docs || die "Failed to create docs directory"
 			cd docs || die "Failed to change dir into '${S}/docs'"
-			unpack ${MY_FILENAME_DOCS}
+			unpack ${PN}-doc-${PV}.tar.gz
 		fi
 	fi
 }
