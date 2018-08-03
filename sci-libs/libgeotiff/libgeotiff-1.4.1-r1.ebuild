@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 MY_P=${P/_rc/RC}
 
@@ -30,7 +30,7 @@ S=${WORKDIR}/${MY_P/RC*/}
 DOCS=( README ChangeLog )
 
 src_prepare() {
-	epatch_user
+	default
 	sed -i \
 		-e "s:-O3::g" \
 		configure.ac || die
@@ -40,7 +40,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable static-libs static) \
-		--enable-debug=$(use debug && echo yes || echo no) \
+		--enable-debug=$(usex debug) \
 		--with-jpeg="${EPREFIX}"/usr/ \
 		--with-zip="${EPREFIX}"/usr/
 
@@ -49,8 +49,8 @@ src_compile() {
 	default
 
 	if use doc; then
-		mkdir -p docs/api
-		cp "${FILESDIR}"/Doxyfile Doxyfile
+		mkdir -p docs/api || die
+		cp "${FILESDIR}"/Doxyfile Doxyfile || die
 		doxygen -u Doxyfile || die "updating doxygen config failed"
 		doxygen Doxyfile || die "docs generation failed"
 	fi
@@ -60,14 +60,5 @@ src_install() {
 	default
 
 	use doc && dohtml docs/api/*
-	prune_libtool_files
-}
-
-pkg_postinst() {
-	echo
-	ewarn "You should rebuild any packages built against ${PN} by running:"
-	ewarn "# revdep-rebuild"
-	ewarn "or using preserved-rebuild features of portage-2.2:"
-	ewarn "# emerge @preserved-rebuild"
-	echo
+	find "${D}" -name '*.la' -delete || die
 }
