@@ -10510,6 +10510,7 @@ www-apache/passenger 5.3.2: Passenger makes deployment of Ruby on Rails applicat
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
+www-apps/cgit 1.2.1: a fast web-interface for git repositories
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
