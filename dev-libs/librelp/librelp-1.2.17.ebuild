@@ -70,6 +70,6 @@ src_install() {
 	default
 
 	if ! use static-libs; then
-		find "${ED}"usr/lib* -name '*.la' -delete || die
+		find "${ED%/}"/usr/lib* -name '*.la' -delete || die
 	fi
 }
