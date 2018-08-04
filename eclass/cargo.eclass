@@ -12,7 +12,7 @@ if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
 CARGO_DEPEND=""
-[[ ${CATEGORY}/${PN} != dev-util/cargo ]] && CARGO_DEPEND=">=dev-util/cargo-0.13.0"
+[[ ${CATEGORY}/${PN} != dev-util/cargo ]] && CARGO_DEPEND="virtual/cargo"
 
 case ${EAPI} in
 	6) : DEPEND="${DEPEND} ${CARGO_DEPEND}";;
