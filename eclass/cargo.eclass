@@ -121,7 +121,7 @@ cargo_src_compile() {
 
 	export CARGO_HOME="${ECARGO_HOME}"
 
-	cargo build -v -j $(makeopts_jobs) $(usex debug "" --release) \
+	cargo build -j $(makeopts_jobs) $(usex debug "" --release) \
 		|| die "cargo build failed"
 }
 
