@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
 	"${FILESDIR}/${PN}-2.2.3-bashcomp-path.patch" # bug 641866
 	"${FILESDIR}/${PN}-2.2.3-goocast.patch" # bug 656252
+	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 )
 
 src_prepare() {
