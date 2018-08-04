@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (04 Aug 2018)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-70
+
 # Virgil Dupras <vdupras@gentoo.org> (02 Aug 2018)
 # Django 1.8 is unsupported and insecure. These packages haven't been updated
 # to work with up-to-date django. Removal in 30 days. Bug #662632
@@ -245,11 +250,6 @@ games-emulation/hatari
 # Please keep this package.mask entry until at least 16th Sep 2018 for
 # extra notification of the deprecation and replacement. Bug #658194
 media-plugins/gst-plugins-schroedinger
-
-# Mike Gilbert <floppym@gentoo.org> (15 Jun 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-69
 
 # Brian Evans <grknight@gentoo.org> (14 Jun 2018)
 # Mask new php pre-releases for initial testing
