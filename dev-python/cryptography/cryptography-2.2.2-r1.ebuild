@@ -27,7 +27,7 @@ RDEPEND="
 		dev-libs/openssl:0= (
 			|| (
 				dev-libs/openssl:0[-bindist(-)]
-				>=dev-libs/openssl-1.0.2o-r2:0
+				>=dev-libs/openssl-1.0.2o-r6:0
 			)
 		)
 	)
