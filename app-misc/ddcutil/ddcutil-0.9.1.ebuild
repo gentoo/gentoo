@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rockowitz/ddcutil/archive/v${PV}.tar.gz -> ${P}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="drm usb-monitor user-permissions video_cards_nvidia X"
 REQUIRED_USE="drm? ( X )"
 
