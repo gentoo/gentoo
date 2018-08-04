@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Dirkjan Ochtman <rust@gentoo.org> (04 Aug 2018)
+# from rust-1.26.0 on, there is no rust-docs anymore but for amd64
+>=dev-lang/rust-1.26.0 doc
+>=dev-lang/rust-bin-1.26.0 doc
+
 # Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
 # Catalyst only has support for assembling bootloader on some arches
 dev-util/catalyst system-bootloader
