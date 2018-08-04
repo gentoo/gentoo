@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=An Emacs Lisp debugger
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/xemacs-base app-xemacs/xemacs-devel app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/edebug-1.24-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=8aef9d532ba870d42a08d35ff61c68b4
