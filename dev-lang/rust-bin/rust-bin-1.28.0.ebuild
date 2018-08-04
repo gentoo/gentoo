@@ -20,19 +20,20 @@ SRC_URI="amd64? ( https://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
+IUSE="cargo doc rustfmt"
 
 CARGO_DEPEND_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
 
 DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 	!dev-lang/rust:0
+	cargo? ( !dev-util/cargo )
+	rustfmt? ( !dev-util/rustfmt )
 "
 RDEPEND="${DEPEND}"
-PDEPEND=">=dev-util/cargo-${CARGO_DEPEND_VERSION}"
+PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
 
 QA_PREBUILT="
-	opt/${P}/bin/rustc-bin-${PV}
-	opt/${P}/bin/rustdoc-bin-${PV}
+	opt/${P}/bin/*-${PV}
 	opt/${P}/lib/*.so
 	opt/${P}/lib/rustlib/*/lib/*.so
 	opt/${P}/lib/rustlib/*/lib/*.rlib*
@@ -66,6 +67,8 @@ src_install() {
 	local std=$(grep 'std' ./components)
 	local components="rustc,${std}"
 	use doc && components="${components},rust-docs"
+	use cargo && components="${components},cargo"
+	use rustfmt && components="${components},rustfmt-preview"
 	./install.sh \
 		--components="${components}" \
 		--disable-verify \
@@ -85,6 +88,20 @@ src_install() {
 	dosym "../../opt/${P}/bin/${rustc}" "/usr/bin/${rustc}"
 	dosym "../../opt/${P}/bin/${rustdoc}" "/usr/bin/${rustdoc}"
 	dosym "../../opt/${P}/bin/${rustgdb}" "/usr/bin/${rustgdb}"
+
+	if use cargo; then
+		local cargo=cargo-${PV}
+		mv "${D}/opt/${P}/bin/cargo" "${D}/opt/${P}/bin/${cargo}" || die
+		dosym "../../opt/${P}/bin/${cargo}" "/usr/bin/${cargo}"
+	fi
+	if use rustfmt; then
+		local rustfmt=rustfmt-${PV}
+		local cargo_fmt=cargo-fmt-${PV}
+		mv "${D}/opt/${P}/bin/rustfmt" "${D}/opt/${P}/bin/${rustfmt}" || die
+		mv "${D}/opt/${P}/bin/cargo-fmt" "${D}/opt/${P}/bin/${cargo_fmt}" || die
+		dosym "../../opt/${P}/bin/${rustfmt}" "/usr/bin/${rustfmt}"
+		dosym "../../opt/${P}/bin/${cargo_fmt}" "/usr/bin/${cargo_fmt}"
+	fi
 
 	cat <<-EOF > "${T}"/50${P}
 	LDPATH="/opt/${P}/lib"
