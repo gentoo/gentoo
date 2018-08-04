@@ -15,6 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/angles
 	dev-ros/base_local_planner
 	dev-ros/costmap_2d
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
@@ -22,10 +23,12 @@ RDEPEND="
 	dev-ros/nav_core
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/roscpp
-	dev-ros/tf2_ros
 
+	dev-ros/tf2
 	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_ros
 
 	dev-libs/boost:=[threads]
 	dev-libs/console_bridge:=
