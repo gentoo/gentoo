@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit autotools
 
@@ -14,22 +14,29 @@ LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 # subslot = soname version
 SLOT="0/0.4.0"
 
-KEYWORDS="amd64 arm arm64 hppa sparc x86"
-IUSE="debug doc +ssl static-libs"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
+IUSE="debug doc +ssl +gnutls libressl openssl static-libs"
+REQUIRED_USE="ssl? ( ^^ ( gnutls openssl ) )
+	gnutls? ( ssl )
+	openssl? ( ssl )
+	libressl? ( openssl )"
 
-RDEPEND="
-	ssl? ( >=net-libs/gnutls-3.3.17.1:0= )
-"
+RDEPEND="ssl? (
+		gnutls? ( >=net-libs/gnutls-3.3.17.1:0= )
+		openssl? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+	)"
 
-DEPEND="
-	ssl? ( >=net-libs/gnutls-3.3.17.1:0= )
-	virtual/pkgconfig
-"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-valgrind-usage.patch
-	"${FILESDIR}"/${P}-add-new-test-certificate.patch
-)
+DEPEND="ssl? (
+		gnutls? ( >=net-libs/gnutls-3.3.17.1:0= )
+		openssl? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+	)
+	virtual/pkgconfig"
 
 src_prepare() {
 	sed -i \
@@ -43,8 +50,10 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-valgrind
 		$(use_enable debug)
-		$(use_enable ssl tls)
+		$(use_enable gnutls tls)
+		$(use_enable openssl tls-openssl)
 		$(use_enable static-libs static)
 	)
 
@@ -60,5 +69,7 @@ src_install() {
 	use doc && local HTML_DOCS=( doc/relp.html )
 	default
 
-	find "${ED}"usr/lib* -name '*.la' -delete || die
+	if ! use static-libs; then
+		find "${ED}"usr/lib* -name '*.la' -delete || die
+	fi
 }
