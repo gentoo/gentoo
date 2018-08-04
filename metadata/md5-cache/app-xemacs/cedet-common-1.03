@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Common files for CEDET development environment
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/xemacs-base app-xemacs/edebug app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/cedet-common-1.03-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=65c2d40bc11660561b54e8381702a14c

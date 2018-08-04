@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=New Clearcase Version Control for XEmacs (UNIX, Windows)
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/dired app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/sh-script app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/clearcase-1.12-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=e6c23a5bbcd30dcf63b1d9d3b56128ca
