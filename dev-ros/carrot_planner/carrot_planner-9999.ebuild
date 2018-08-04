@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/nav_core
 	dev-ros/pluginlib
 	dev-ros/roscpp
+	dev-ros/tf2
 	dev-ros/tf2_ros
 
 	dev-libs/boost:=
