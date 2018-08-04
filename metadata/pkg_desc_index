@@ -3275,7 +3275,7 @@ dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
-dev-lisp/asdf 3.1.5 3.3.2: ASDF is Another System Definition Facility for Common Lisp
+dev-lisp/asdf 3.1.5: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
