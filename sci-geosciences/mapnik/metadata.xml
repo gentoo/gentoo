@@ -11,6 +11,7 @@
     </longdescription>
     <use>
         <flag name="gdal">Enable <pkg>sci-libs/gdal</pkg> library support</flag>
+        <flag name="osmfonts">Enable openstreetmaps font styles</flag>
     </use>
     <upstream>
         <remote-id type="github">downloads/mapnik</remote-id>
