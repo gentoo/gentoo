@@ -158,6 +158,6 @@ src_install() {
 pkg_postinst() {
 	if [[ ${PV} != 9999 && -n ${REPLACING_VERSIONS} && ${REPLACING_VERSIONS} != ${PV} ]]; then
 		elog "DB IDO schema upgrade may be required required.
-		http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/upgrading-icinga-2"
+		https://www.icinga.com/docs/icinga2/latest/doc/16-upgrading-icinga-2/"
 	fi
 }
