@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Dirkjan Ochtman <rust@gentoo.org> (04 Aug 2018)
+# rust-docs is available for x86
+>=dev-lang/rust-1.26.0 -doc
+>=dev-lang/rust-bin-1.26.0 -doc
+
 # Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
 # Catalyst has support for assembling bootloader on this arch
 dev-util/catalyst -system-bootloader
