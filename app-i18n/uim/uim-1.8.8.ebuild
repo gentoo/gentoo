@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools elisp-common gnome2-utils
+inherit autotools elisp-common flag-o-matic gnome2-utils
 
 DESCRIPTION="A multilingual input method framework"
 HOMEPAGE="https://github.com/uim/uim"
@@ -95,6 +95,8 @@ src_prepare() {
 	sed -i "s:\$libedit_path/lib:/$(get_libdir):g" configure.ac
 	# fix build with >=dev-scheme/chicken-4, bug #656852
 	touch scm/json-parser-expanded.scm
+	# fix build with "-march=pentium4 -O2", bug #661806
+	is-flagq "-march=pentium4?" && append-cflags $(test-flags-CC -fno-inline-small-functions)
 
 	eautoreconf
 }
