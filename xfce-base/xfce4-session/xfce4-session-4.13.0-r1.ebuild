@@ -28,7 +28,6 @@ RDEPEND="${COMMON_DEPEND}
 	nls? ( x11-misc/xdg-user-dirs )
 	xscreensaver? ( || (
 		>=x11-misc/xscreensaver-5.26
-		x11-misc/light-locker
 		>=x11-misc/xlockmore-5.43
 		x11-misc/slock
 		x11-misc/alock[pam]
