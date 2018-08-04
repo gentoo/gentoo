@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-libs/boost:=[threads]
 	media-libs/assimp
-	dev-games/ogre
+	<dev-games/ogre-1.10:=
 	virtual/opengl
 	dev-qt/qtwidgets:5
 	dev-qt/qtcore:5

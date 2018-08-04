@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	dev-libs/boost:=[threads]
 	media-libs/assimp
-	dev-games/ogre
+	<dev-games/ogre-1.10:=
 	virtual/opengl
 	dev-qt/qtwidgets:5
 	dev-qt/qtcore:5
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-cpp/eigen:3
 	dev-cpp/yaml-cpp:=
 	dev-libs/urdfdom:=
-	dev-libs/tinyxml:=
+	dev-libs/tinyxml2:=
 
 	dev-ros/angles
 	dev-ros/image_geometry
@@ -34,7 +34,6 @@ RDEPEND="
 	dev-ros/laser_geometry
 	dev-ros/message_filters
 	dev-ros/pluginlib
-		dev-libs/tinyxml2:=
 	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
 	dev-ros/resource_retriever
 	dev-ros/rosbag[${PYTHON_USEDEP}]
