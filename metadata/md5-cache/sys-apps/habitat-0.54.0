@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare test
-DEPEND=dev-util/cargo >=virtual/rust-1.23 >=net-libs/zeromq-3.2 virtual/pkgconfig
+DEPEND=virtual/cargo >=virtual/rust-1.23 >=net-libs/zeromq-3.2 virtual/pkgconfig
 DESCRIPTION=Application automation framework
 EAPI=6
 HOMEPAGE=https://github.com/habitat-sh/habitat https://habitat.sh
@@ -8,4 +8,4 @@ LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/habitat-sh/habitat/archive/0.54.0.tar.gz -> habitat-0.54.0.tar.gz https://dev.gentoo.org/~mrueg/files/habitat-cargo-0.54.0.tar.xz
-_md5_=7200ba615699ae7907fce229b911f972
+_md5_=d103fbb3db7320e4f70a1ac5ceb31be3
