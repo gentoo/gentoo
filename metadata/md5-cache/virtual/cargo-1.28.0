@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Package manager for Rust
+EAPI=7
+KEYWORDS=~amd64 ~arm64 ~x86
+RDEPEND=|| ( =dev-lang/rust-1.28.0*[cargo] =dev-lang/rust-bin-1.28.0*[cargo] =dev-util/cargo-0.29.0* )
+SLOT=0
+_md5_=b40fcb86f6d778f2a83c95bafb1cadc0
