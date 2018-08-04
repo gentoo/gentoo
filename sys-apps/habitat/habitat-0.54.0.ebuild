@@ -12,7 +12,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="dev-util/cargo
+DEPEND="virtual/cargo
 	>=virtual/rust-1.23
 	>=net-libs/zeromq-3.2
 	virtual/pkgconfig"
