@@ -5,7 +5,7 @@ EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools bash-completion-r1 gnome2-utils ltprune python-r1 vala virtualx
+inherit autotools bash-completion-r1 gnome2-utils python-r1 vala virtualx
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -122,7 +122,7 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 
 	if use python; then
 		python_install() {
