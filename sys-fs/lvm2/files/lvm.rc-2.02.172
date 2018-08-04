@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 _get_lvm_path() {
@@ -125,6 +125,8 @@ then
 
         if [ "$VGS" ]
         then
+            local _ending="eend"
+            [ "$RC_RUNLEVEL" = shutdown ] && _ending="ewend"
             ebegin "  Shutting Down LVs & VGs"
 			#still echo stderr for debugging
 			lvm_commands="#!${lvm_path}\n"
@@ -134,7 +136,7 @@ then
 			lvm_commands="${lvm_commands}vgchange --config '${config}' --sysinit -a ln ${VGS}\n"
 			# Order of this is important, have to work around dash and LVM readline
 			printf "%b\n" "${lvm_commands}" | $lvm_path /proc/self/fd/0 --config "${config}" >/dev/null
-			eend $? "Failed (possibly some LVs still needed for /usr or root)"
+            ${_ending} $? "Failed (possibly some LVs still needed for /usr or root)"
         fi
 
 	einfo "Finished shutting down the Logical Volume Manager"
