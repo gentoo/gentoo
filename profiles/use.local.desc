@@ -1575,6 +1575,9 @@ dev-libs/libpcre2:zlib - Add support for pcregrep command to search within gzip-
 dev-libs/libpeas:glade - Install the glade catalog
 dev-libs/libpeas:python - Build support for loading dev-lang/python plugins
 dev-libs/librdkafka:lz4 - Enable support for Kafka's LZ4 compression based on KIP-57 (uses app-arch/lz4)
+dev-libs/librelp:gnutls - Use GnuTLS
+dev-libs/librelp:libressl - Use LibreSSL
+dev-libs/librelp:openssl - Use OpenSSL
 dev-libs/libressl:asm - Enables assembly
 dev-libs/libsecp256k1:asm - Enable x86_64 assembly optimisation
 dev-libs/libsecp256k1:ecdh - Enable ECDH shared secret computation

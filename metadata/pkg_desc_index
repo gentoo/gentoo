@@ -3129,7 +3129,7 @@ dev-libs/libpthread-stubs 0.4: Pthread functions stubs for platforms missing the
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 2.0.0: A Qt implementation of XDG standards
 dev-libs/librdkafka 0.11.4: Apache Kafka C/C++ client library
-dev-libs/librelp 1.2.15 1.2.16: An easy to use library for the RELP protocol
+dev-libs/librelp 1.2.16: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
 dev-libs/libressl 2.6.4 2.6.5: Free version of the SSL/TLS protocol forked from OpenSSL
