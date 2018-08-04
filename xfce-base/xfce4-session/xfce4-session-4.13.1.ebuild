@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbs
 IUSE="nls policykit systemd +xscreensaver"
 
 COMMON_DEPEND="x11-apps/iceauth
-	x11-libs/gtk+:3=
+	>=x11-libs/gtk+-3.20:3=
 	x11-libs/libSM:=
 	x11-libs/libwnck:3=
 	x11-libs/libX11:=
@@ -44,8 +44,6 @@ PATCHES=(
 # TODO: this patch needs updating for the new version, and finding
 # upstream bug.
 #	"${FILESDIR}"/${PN}-4.12.1-light-locker_support_to_xflock4.patch
-
-	"${FILESDIR}"/${P}-add-edit-autostart-segv.patch
 )
 
 src_configure() {
