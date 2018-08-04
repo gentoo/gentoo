@@ -11,8 +11,12 @@
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
+CARGO_DEPEND=""
+[[ ${CATEGORY}/${PN} != dev-util/cargo ]] && CARGO_DEPEND=">=dev-util/cargo-0.13.0"
+
 case ${EAPI} in
-	6) : ;;
+	6) : DEPEND="${DEPEND} ${CARGO_DEPEND}";;
+	7) : BDEPEND="${BDEPEND} ${CARGO_DEPEND}";;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -21,8 +25,6 @@ inherit multiprocessing
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
 IUSE="${IUSE} debug"
-
-[[ ${CATEGORY}/${PN} != dev-util/cargo ]] && DEPEND=">=dev-util/cargo-0.13.0"
 
 ECARGO_HOME="${WORKDIR}/cargo_home"
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
