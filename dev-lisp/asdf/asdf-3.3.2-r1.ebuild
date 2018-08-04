@@ -11,14 +11,15 @@ SRC_URI="http://common-lisp.net/project/${PN}/archives/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
-IUSE="doc"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+IUSE="doc test"
 
 SLOT="0/${PVR}"
 
 DEPEND="!dev-lisp/cl-${PN}
 		!<dev-lisp/asdf-2.33-r3
-		doc? ( virtual/texi2dvi )"
+		doc? ( virtual/texi2dvi )
+		test? ( virtual/commonlisp )"
 PDEPEND="virtual/commonlisp
 		~dev-lisp/uiop-${PV}"
 
