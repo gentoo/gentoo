@@ -28,11 +28,13 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/roscpp
 	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_ros
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/voxel_grid
 	dev-libs/boost:=[threads]
-	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules

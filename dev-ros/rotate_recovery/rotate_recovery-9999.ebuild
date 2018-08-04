@@ -14,14 +14,18 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/angles
+	dev-ros/base_local_planner
 	dev-ros/costmap_2d
 	dev-cpp/eigen:3
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	>=dev-ros/nav_core-1.16
 	dev-ros/pluginlib
 	dev-ros/roscpp
+	dev-ros/tf2
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf2_ros
 
-	dev-ros/base_local_planner
 	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "

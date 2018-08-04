@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,20 +21,27 @@ RDEPEND="
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/laser_geometry
 	dev-ros/message_filters
-	dev-ros/nav_msgs
-	dev-ros/pcl_conversions
-	dev-ros/pcl_ros
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2
+	dev-ros/tf2_ros
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/tf
 	dev-ros/voxel_grid
+
+	dev-ros/tf2_geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_sensor_msgs
+
 	dev-cpp/eigen:3
-	sci-libs/pcl:=
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml2:=
 "
 DEPEND="${RDEPEND}
 	dev-ros/cmake_modules
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+	test? (
+		dev-ros/map_server
+		dev-ros/rosbag
+		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-ros/rosunit
+	)"

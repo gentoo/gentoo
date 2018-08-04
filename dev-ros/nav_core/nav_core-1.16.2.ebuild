@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,19 +8,15 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Attempts to find a legal place to put a carrot for the robot to follow"
+DESCRIPTION="Common interfaces for navigation specific robot actions"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/tf
-	dev-ros/nav_core
 	dev-ros/costmap_2d
-	dev-ros/base_local_planner
-	dev-ros/pluginlib
-	dev-libs/boost:=
-	dev-libs/console_bridge:=
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2_ros
 "
 DEPEND="${RDEPEND}"

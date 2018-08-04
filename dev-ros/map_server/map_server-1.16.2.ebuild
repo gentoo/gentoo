@@ -8,19 +8,21 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Attempts to find a legal place to put a carrot for the robot to follow"
+DESCRIPTION="Offers map data as a ROS service"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
+	sci-physics/bullet:=
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/roscpp
-	dev-ros/tf
-	dev-ros/nav_core
-	dev-ros/costmap_2d
-	dev-ros/base_local_planner
-	dev-ros/pluginlib
+	media-libs/sdl-image
+	dev-ros/tf2
+	>=dev-cpp/yaml-cpp-0.5:=
+
 	dev-libs/boost:=
-	dev-libs/console_bridge:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-ros/rostest dev-ros/rospy dev-ros/rosunit )
+	virtual/pkgconfig"
