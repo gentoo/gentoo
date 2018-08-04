@@ -20,7 +20,7 @@ else
 fi
 
 TSV="0.1.2"
-OBJV="1.0.3"
+OBJV="1.0.2"
 SRC_URI+="
 	https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip
 		-> ${PN}-title-sequence-v${TSV}.zip
@@ -52,6 +52,10 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	test? ( dev-cpp/gtest )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.2.0-disable-tests-with-assets.patch"
+)
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -88,7 +92,12 @@ src_configure() {
 		-DDOWNLOAD_OBJECTS=OFF
 		-DBUILD_SHARED_LIBS=ON
 	)
-	use test && mycmakeargs+=( -DSYSTEM_GTEST=ON )
+	if use test ; then
+		mycmakeargs+=(
+			-DSYSTEM_GTEST=ON
+			-DDISABLE_RCT2_TESTS=ON
+		)
+	fi
 
 	cmake-utils_src_configure
 }
