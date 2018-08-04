@@ -21,7 +21,6 @@ REQUIRED_USE="emoji? ( gtk )
 	libnotify? ( gtk )
 	python? (
 		${PYTHON_REQUIRED_USE}
-		gtk
 		introspection
 	)
 	test? ( gtk )
