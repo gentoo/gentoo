@@ -111,10 +111,10 @@ src_install() {
 pkg_postinst() {
 	use emacs && elisp-site-regen
 
-	einfo
-	einfo "Since version 3, vim support is released separately."
-	einfo "See https://github.com/ledger/vim-ledger"
-	einfo
+	elog
+	elog "Since version 3, vim support is released separately."
+	elog "See https://github.com/ledger/vim-ledger"
+	elog
 }
 
 pkg_postrm() {
