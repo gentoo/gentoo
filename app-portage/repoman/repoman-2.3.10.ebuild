@@ -49,13 +49,15 @@ python_install() {
 }
 
 pkg_postinst() {
-	einfo ""
-	einfo "This release of repoman is from the new portage/repoman split"
-	einfo "release code base."
-	einfo "This new repoman code base is still being developed.  So its API's"
-	einfo "are not to be considered stable and are subject to change."
-	einfo "The code released has been tested and considered ready for use."
-	einfo "This however does not guarantee it to be completely bug free."
-	einfo "Please report any bugs you may encounter."
-	einfo ""
+	if [[ -z {REPLACING_VERSIONS} ]]; then
+		elog ""
+		elog "This release of repoman is from the new portage/repoman split"
+		elog "release code base."
+		elog "This new repoman code base is still being developed.  So its API's"
+		elog "are not to be considered stable and are subject to change."
+		elog "The code released has been tested and considered ready for use."
+		elog "This however does not guarantee it to be completely bug free."
+		elog "Please report any bugs you may encounter."
+		elog ""
+	fi
 }
