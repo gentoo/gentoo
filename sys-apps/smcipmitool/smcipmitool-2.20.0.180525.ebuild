@@ -1,26 +1,26 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-inherit desktop eapi7-ver java-pkg-2 prefix
+inherit eapi7-ver java-pkg-2 prefix
 
 MY_DATE="$(ver_cut 4)"
-MY_PN="IPMIView"
+MY_PN="SMCIPMITool"
+MY_PN_SRC_URI="SMCIPMItool"
 MY_PV="$(ver_cut 1-3)"
 
-DESCRIPTION="A GUI application that allows to manage multiple target systems through BMC"
+DESCRIPTION="An out-of-band utility for interfacing with SuperBlade and IPMI devices via CLI"
 HOMEPAGE="https://www.supermicro.com/"
-SRC_URI="amd64? ( ftp://ftp.supermicro.com/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz )
-	x86? ( ftp://ftp.supermicro.com/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux.tar.gz )"
+SRC_URI="amd64? ( ftp://ftp.supermicro.com/utility/${MY_PN_SRC_URI}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz )
+	x86? ( ftp://ftp.supermicro.com/utility/${MY_PN_SRC_URI}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux.tar.gz )"
 
 LICENSE="supermicro"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
-DEPEND="app-arch/unzip"
-
 RDEPEND="net-misc/stunnel
+	sys-libs/ncurses:5
 	virtual/jre:1.8"
 
 RESTRICT="bindist fetch mirror strip"
@@ -42,9 +42,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# Extract icons for menu entries
-	unzip -j -LL IPMIView20.jar images/ipmi{view,trap}.ico || die
-
 	# Don't use their scary launchers
 	rm -v lax.jar || die
 }
@@ -55,14 +52,13 @@ src_compile() {
 
 src_install() {
 	java-pkg_dojar *.jar
-	java-pkg_doso $(usex amd64 '*64.so' '*32.so')
+	java-pkg_doso libjcurses.so $(usex amd64 '*64.so' '*32.so')
 
 	local pre=$(prefixify_ro "${FILESDIR}"/launcher-pre.bash)
-	java-pkg_dolauncher ikvm --jar iKVM.jar -pre "${pre}"
-	java-pkg_dolauncher ikvmmicroblade --jar iKVMMicroBlade.jar -pre "${pre}"
-	java-pkg_dolauncher ipmiview --jar IPMIView20.jar -pre "${pre}"
-	java-pkg_dolauncher jviewerx9 --jar JViewerX9.jar -pre "${pre}"
-	java-pkg_dolauncher trapreceiver --jar TrapView.jar -pre "${pre}"
+	java-pkg_dolauncher smcipmitool-ikvm --jar iKVM.jar -pre "${pre}"
+	java-pkg_dolauncher smcipmitool-jviewersmc --jar JViewerSMC.jar -pre "${pre}"
+	java-pkg_dolauncher smcipmitool-jviewerx9 --jar JViewerX9.jar -pre "${pre}"
+	java-pkg_dolauncher smcipmitool --jar SMCIPMITool.jar -pre "${pre}"
 
 	exeinto ${DIR}/jre/bin
 	newexe $(prefixify_ro "${FILESDIR}"/fake-java.bash) java
@@ -76,10 +72,6 @@ src_install() {
 	dosym ../../../../../bin/stunnel ${DIR}/lib/BMCSecurity/linux/stunnel32
 	dosym ../../../../../bin/stunnel ${DIR}/lib/BMCSecurity/linux/stunnel64
 
-	doicon ipmi{view,trap}.ico
-	make_desktop_entry ipmiview IPMIView ipmiview.ico
-	make_desktop_entry trapreceiver "Trap Receiver" ipmitrap.ico
-
-	local DOCS=( *.pdf *.txt )
+	local DOCS=( "jcurses.README" "ReleaseNotes.txt" "SMCIPMITool_User_Guide.pdf" )
 	einstalldocs
 }
