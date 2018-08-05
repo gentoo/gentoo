@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome.org multilib-minimal xdg-utils
 
 DESCRIPTION="A library for sending desktop notifications"
-HOMEPAGE="https://git.gnome.org/browse/libnotify"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
