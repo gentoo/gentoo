@@ -85,9 +85,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Starting with 0.18.0, SDDM no longer installs /etc/sddm.conf"
-	einfo "Use it to override specific options. SDDM defaults are now"
-	einfo "found in: /usr/share/sddm/sddm.conf.d/00default.conf"
+	elog "Starting with 0.18.0, SDDM no longer installs /etc/sddm.conf"
+	elog "Use it to override specific options. SDDM defaults are now"
+	elog "found in: /usr/share/sddm/sddm.conf.d/00default.conf"
 
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN},video
