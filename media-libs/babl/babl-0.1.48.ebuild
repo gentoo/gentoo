@@ -7,7 +7,7 @@ inherit ltprune
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnome.org/babl"
+	EGIT_REPO_URI="git://gitlab.gnome.org/GNOME/babl"
 	SRC_URI=""
 else
 	inherit autotools
