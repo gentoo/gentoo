@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit gnome2 git-r3
 DESCRIPTION="GNOME MUD client"
 HOMEPAGE="https://wiki.gnome.org/Apps/GnomeMud"
 SRC_URI=""
-EGIT_REPO_URI="git://git.gnome.org/gnome-mud"
+EGIT_REPO_URI="git://gitlab.gnome.org/GNOME/gnome-mud"
 
 LICENSE="GPL-2+"
 SLOT="0"
