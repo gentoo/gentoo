@@ -18,19 +18,13 @@ else
 	KEYWORDS="~amd64 ~arm"
 fi
 
-IUSE=""
+IUSE="pam"
 LICENSE="Apache-2.0"
 RESTRICT="test strip"
 SLOT="0"
 
 DEPEND="app-arch/zip"
-RDEPEND=""
-
-src_prepare() {
-	default
-
-	sed -i -e 's/-j 3/-j 1/g' src/${EGO_PN%/*}/Makefile || die
-}
+RDEPEND="pam? ( sys-libs/pam )"
 
 src_compile() {
 	BUILDFLAGS="" GOPATH="${S}" emake -j1 -C src/${EGO_PN%/*} full
@@ -41,7 +35,7 @@ src_install() {
 	dobin src/${EGO_PN%/*}/build/{tsh,tctl,teleport}
 
 	insinto /etc/${PN}
-	doins "${FILESDIR}"/${PN}.yaml
+	newins "${FILESDIR}"/${PN}.yaml ${PN}.yaml
 
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf.d ${PN}
