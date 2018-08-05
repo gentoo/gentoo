@@ -274,12 +274,3 @@ pkg_preinst() {
 		chmod g+s,ug+rwx "${ED}"var/log/portage{,/elog}
 	fi
 }
-
-pkg_postinst() {
-	einfo ""
-	einfo "This release of portage NO LONGER contains the repoman code base."
-	einfo "Repoman has its own ebuild and release package."
-	einfo "For repoman functionality please emerge app-portage/repoman"
-	einfo "Please report any bugs you may encounter."
-	einfo ""
-}
