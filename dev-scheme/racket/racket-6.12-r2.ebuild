@@ -86,4 +86,8 @@ src_install() {
 
 		use X && pax-mark m "${D}/usr/$(get_libdir)/racket/gracket"
 	fi
+	# raco needs decompressed files for packages doc installation bug 662424
+	if use doc; then
+		docompress -x /usr/share/doc/${PF}
+	fi
 }
