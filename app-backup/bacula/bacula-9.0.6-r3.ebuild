@@ -169,7 +169,13 @@ src_prepare() {
 	chmod 755 src/qt-console/.libs/bat || die
 
 	# fix wrong handling of libressl version
-	eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-libressl.patch
+	# needs separate handling for <libressl-2.7 and >=libressl2.7
+	# (see bug #655520)
+	if has_version "<dev-libs/libressl-2.7"; then
+		eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-libressl26.patch
+	else
+		eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-libressl27.patch
+	fi
 
 	# fix bundled libtool (bug 466696)
 	# But first move directory with M4 macros out of the way.
