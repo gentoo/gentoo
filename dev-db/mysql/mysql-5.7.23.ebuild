@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180628-0201Z"
+MY_EXTRAS_VER="20180804-2323Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit eutils flag-o-matic prefix toolchain-funcs \
-	user cmake-utils multilib-build
+	user cmake-utils multilib-minimal
 
-SRC_URI="http://cdn.mysql.com/Downloads/MySQL-5.6/${P}.tar.gz
-	https://cdn.mysql.com/archives/mysql-5.6/${P}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-5.6/${P}.tar.gz"
+SRC_URI="http://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
+	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
+	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz"
 
 # Gentoo patches to MySQL
 if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]]; then
@@ -54,20 +54,16 @@ else
 fi
 
 PATCHES=(
-	"${MY_PATCH_DIR}"/01050_all_mysql_config_cleanup-5.6.patch
-	"${MY_PATCH_DIR}"/02040_all_embedded-library-shared-5.5.10.patch
-	"${MY_PATCH_DIR}"/20006_all_cmake_elib-mysql-5.6.35.patch
-	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.6.22.patch
-	"${MY_PATCH_DIR}"/20008_all_mysql-tzinfo-symlink-5.6.37.patch
-	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.25-without-clientlibs-tools.patch
-	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
-	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
-	"${MY_PATCH_DIR}"/20031_all_mysql-5.6-fix-monitor.test.patch
+	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.patch
+	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.7.patch
+#	"${MY_PATCH_DIR}"/20008_all_mysql-tzinfo-symlink-5.7.6.patch
+	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.7.10.patch
+	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.21-without-clientlibs-tools.patch
 )
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
+# MULTILIB_USEDEP only set for libraries used by the client library
 COMMON_DEPEND="
 	kernel_linux? (
 		sys-process/procps:0=
@@ -80,22 +76,32 @@ COMMON_DEPEND="
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	!yassl? (
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
+		client-libs? (
+			!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
+		)
+		!client-libs? (
+			!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
-	>=sys-libs/zlib-1.2.3:0=
+	client-libs? ( >=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?] )
+	!client-libs? ( >=sys-libs/zlib-1.2.3:0= )
 	sys-libs/ncurses:0=
 	server? (
+		>=app-arch/lz4-0_p131:=
+		>=dev-libs/boost-1.65.0:=
 		numa? ( sys-process/numactl )
 	)
 	!client-libs? ( dev-db/mysql-connector-c[${MULTILIB_USEDEP},static-libs?] )
 "
 DEPEND="virtual/yacc
+	dev-libs/protobuf
 	static? ( sys-libs/ncurses[static-libs] )
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
-	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
+	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
 	${COMMON_DEPEND}
@@ -164,6 +170,16 @@ pkg_postinst() {
 			einfo
 		fi
 	fi
+
+	# Note about configuration change
+	einfo
+	elog "This version of mysql reorganizes the configuration from a single my.cnf"
+	elog "to several files in /etc/mysql/${PN}.d."
+	elog "Please backup any changes you made to /etc/mysql/my.cnf"
+	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
+	elog "You may have as many files as needed and they are read alphabetically."
+	elog "Be sure the options have the appropitate section headers, i.e. [mysqld]."
+	einfo
 }
 
 src_unpack() {
@@ -175,14 +191,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	_disable_engine() {
-		echo > "${S%/}/storage/${1}/CMakeLists.txt" || die
-	}
-
-	_disable_plugin() {
-		echo > "${S%/}/plugin/${1}/CMakeLists.txt" || die
-	}
-
 	if use jemalloc ; then
 		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt" || die
 	fi
@@ -201,26 +209,6 @@ src_prepare() {
 
 	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
 
-	local plugin
-	local server_plugins=( semisync )
-	local test_plugins=( audit_null daemon_example fulltext )
-	if ! use server; then # These plugins are for the server
-		for plugin in "${server_plugins[@]}" ; do
-			_disable_plugin "${plugin}"
-		done
-	fi
-
-	if ! use test; then # These plugins are only used during testing
-		for plugin in "${test_plugins[@]}" ; do
-			_disable_plugin "${plugin}"
-		done
-	fi
-
-	# Don't build example
-	_disable_engine example
-	_disable_engine ndb
-	_disable_plugin innodb_memcached
-
 	cmake-utils_src_prepare
 }
 
@@ -234,6 +222,20 @@ src_configure(){
 
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
+
+	if use client-libs ; then
+		multilib-minimal_src_configure
+	else
+		multilib_src_configure
+	fi
+}
+
+multilib_src_configure() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if ! multilib_is_native_abi && ! use client-libs ; then
+		return
+	fi
 
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
 
@@ -270,15 +272,48 @@ src_configure(){
 		# The build forces this to be defined when cross-compiling.  We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
+		-DWITH_RAPID=OFF
 		-DWITH_LIBEVENT=NO
-		-DWITHOUT_CLIENTLIBS=YES
-		-DENABLE_DTRACE=$(usex systemtap)
-		-DWITH_SSL=$(usex yassl bundled system)
-		-DINSTALL_MYSQLTESTDIR=$(usex test 'share/mysql/mysql-test' '')
-		-DWITHOUT_VALIDATE_PASSWORD=1
+		-DWITH_CURL=system
+		-DWITH_BOOST="${S}/boost"
+		-DWITH_PROTOBUF=system
 	)
+	if use test ; then
+		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
+	else
+		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
+	fi
 
-	if use server ; then
+	if ! use yassl ; then
+		mycmakeargs+=( -DWITH_SSL=system )
+	else
+		mycmakeargs+=( -DWITH_SSL=bundled )
+	fi
+
+	if ! use client-libs ; then
+		mycmakeargs+=( -DWITHOUT_CLIENTLIBS=YES )
+	fi
+
+	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
+	# systemtap only works on native ABI  bug 530132
+	if multilib_is_native_abi; then
+		mycmakeargs+=(
+			-DENABLE_DTRACE=$(usex systemtap)
+		)
+	else
+		mycmakeargs+=(
+			-DWITHOUT_TOOLS=1
+			-DWITH_READLINE=1
+			-DENABLE_DTRACE=0
+		)
+	fi
+
+	if multilib_is_native_abi && use server ; then
+
+		mycmakeargs+=(
+			-DWITH_LZ4=system
+			-DWITH_NUMA=$(usex numa ON OFF)
+		)
 
 		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
 			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
@@ -302,7 +337,6 @@ src_configure(){
 			)
 		fi
 		mycmakeargs+=(
-			-DWITH_NUMA=$(usex numa ON OFF)
 			-DEXTRA_CHARSETS=all
 			-DDISABLE_SHARED=$(usex static YES NO)
 			-DWITH_DEBUG=$(usex debug)
@@ -316,6 +350,7 @@ src_configure(){
 
 		# Storage engines
 		mycmakeargs+=(
+			-DWITH_EXAMPLE_STORAGE_ENGINE=0
 			-DWITH_ARCHIVE_STORAGE_ENGINE=1
 			-DWITH_BLACKHOLE_STORAGE_ENGINE=1
 			-DWITH_CSV_STORAGE_ENGINE=1
@@ -339,14 +374,45 @@ src_configure(){
 }
 
 src_compile() {
+	if use client-libs ; then
+		multilib-minimal_src_compile
+	else
+		multilib_src_compile
+	fi
+}
+
+multilib_src_compile() {
 	cmake-utils_src_compile
 }
 
 src_install() {
+	local MULTILIB_WRAPPED_HEADERS
+	local MULTILIB_CHOST_TOOLS
+	if use client-libs ; then
+		# headers with ABI specific data
+		MULTILIB_WRAPPED_HEADERS=(
+			/usr/include/mysql/server/my_config.h
+			/usr/include/mysql/server/mysql_version.h )
+
+		# wrap the config scripts
+		MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
+		multilib-minimal_src_install
+	else
+		multilib_src_install
+		multilib_src_install_all
+	fi
+}
+
+# Intentionally override eclass function
+multilib_src_install() {
+
 	cmake-utils_src_install
 
 	# Kill old libmysqclient_r symlinks if they exist.  Time to fix what depends on them.
 	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
+}
+
+multilib_src_install_all() {
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
@@ -371,21 +437,32 @@ src_install() {
 	# Configuration stuff
 	einfo "Building default configuration ..."
 	insinto "${MY_SYSCONFDIR#${EPREFIX}}"
-	[[ -f "${S%/}/scripts/mysqlaccess.conf" ]] && doins "${S%/}"/scripts/mysqlaccess.conf
-	local mycnf_src="my.cnf-5.6"
-	sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
-		"${FILESDIR%/}/${mycnf_src}" \
-		> "${TMPDIR%/}/my.cnf.ok" || die
-	use prefix && sed -i -r -e '/^user[[:space:]]*=[[:space:]]*mysql$/d' "${TMPDIR%/}/my.cnf.ok"
-	if use latin1 ; then
-		sed -i \
-			-e "/character-set/s|utf8|latin1|g" \
-			"${TMPDIR%/}/my.cnf.ok" || die
-	fi
-	eprefixify "${TMPDIR%/}/my.cnf.ok"
-	newins "${TMPDIR}/my.cnf.ok" my.cnf
+	[[ -f "${S}/scripts/mysqlaccess.conf" ]] && doins "${S}"/scripts/mysqlaccess.conf
+	cp "${FILESDIR}/my.cnf-5.7" "${TMPDIR}/my.cnf" || die
+	eprefixify "${TMPDIR}/my.cnf"
+	doins "${TMPDIR}/my.cnf"
+	insinto "${MY_SYSCONFDIR#${EPREFIX}}/mysql.d"
+	cp "${FILESDIR}/my.cnf.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
+	eprefixify "${TMPDIR}/50-distro-client.cnf"
+	doins "${TMPDIR}/50-distro-client.cnf"
 
 	if use server ; then
+		mycnf_src="my.cnf.distro-server"
+		sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
+			"${FILESDIR}/${mycnf_src}" \
+			> "${TMPDIR}/my.cnf.ok" || die
+		if use prefix ; then
+			sed -i -r -e '/^user[[:space:]]*=[[:space:]]*mysql$/d' \
+				"${TMPDIR}/my.cnf.ok" || die
+		fi
+		if use latin1 ; then
+			sed -i \
+				-e "/character-set/s|utf8|latin1|g" \
+				"${TMPDIR}/my.cnf.ok" || die
+		fi
+		eprefixify "${TMPDIR}/my.cnf.ok"
+		newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
+
 		einfo "Including support files and sample configurations"
 		docinto "support-files"
 		local script
@@ -406,7 +483,7 @@ src_install() {
 }
 
 # Official test instructions:
-# USE='perl server static-libs' \
+# USE='perl server' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mysql-X.X.XX.ebuild \
 # digest clean package
