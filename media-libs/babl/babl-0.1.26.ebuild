@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnome.org/babl"
+	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/babl.git"
 	SRC_URI=""
 else
 	SRC_URI="http://ftp.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
