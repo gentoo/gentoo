@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -40,11 +40,11 @@ pkg_postinst() {
 	mkdir -p -m 0755 "${EROOT%/}"/var/cache
 	mkdir -p -m 0700 "${EROOT%/}"/var/cache/revdep-rebuild
 
-	einfo "Starting with version 0.4.0, ebump, ekeyword and imlate are now"
-	einfo "part of the gentoolkit package."
-	einfo "The gentoolkit-dev package is now deprecated in favor of a single"
-	einfo "gentoolkit package.   The remaining tools from gentoolkit-dev"
-	einfo "are now obsolete/unused with the git based tree."
+	elog "Starting with version 0.4.0, ebump, ekeyword and imlate are now"
+	elog "part of the gentoolkit package."
+	elog "The gentoolkit-dev package is now deprecated in favor of a single"
+	elog "gentoolkit package.   The remaining tools from gentoolkit-dev"
+	elog "are now obsolete/unused with the git based tree."
 
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
