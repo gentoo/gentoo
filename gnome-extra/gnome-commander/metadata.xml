@@ -14,8 +14,8 @@
     <email>u.scholz83@gmx.de</email>
     <name>Uwe Scholz</name>
   </maintainer>
-  <changelog>https://git.gnome.org/browse/gnome-commander/tree/NEWS?h=gcmd-1-4</changelog>
-  <bugs-to>https://bugzilla.gnome.org/browse.cgi?product=gnome-commander</bugs-to>
+  <changelog>https://gitlab.gnome.org/GNOME/gnome-commander/blob/gcmd-1-4/NEWS</changelog>
+  <bugs-to>https://gitlab.gnome.org/GNOME/gnome-commander/issues</bugs-to>
   <remote-id type="freecode">gnome-commander</remote-id>
 </upstream>
 <use>
