@@ -9,7 +9,7 @@ inherit virtualx autotools gnome2 multilib python-single-r1 ltprune git-r3
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-EGIT_REPO_URI="https://git.gnome.org/browse/gimp"
+EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
 SRC_URI=""
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
