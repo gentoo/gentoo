@@ -24,7 +24,7 @@ DEPEND="
 	test? ( >=dev-python/pytest-2.6.0[${PYTHON_USEDEP}] )"
 
 python_test() {
-	# We need to disable flaky plugin because test_custom_prefix test validates
-	# pytest output and output from flaky plugin would appear unexpectedly
-	PYTEST_ADDOPTS="-p no:flaky" pytest -vv || die "Tests failed under ${EPYTHON}"
+	# We need to disable some plugins because tests don't like unexpected
+	# output
+	PYTEST_ADDOPTS="-p no:flaky -p no:capturelog" pytest -vv || die "Tests failed under ${EPYTHON}"
 }
