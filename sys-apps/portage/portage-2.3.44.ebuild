@@ -261,21 +261,9 @@ pkg_preinst() {
 	if chown portage:portage "${ED}"var/log/portage{,/elog} 2>/dev/null ; then
 		chmod g+s,ug+rwx "${ED}"var/log/portage{,/elog}
 	fi
-
-	if has_version ">=${CATEGORY}/${PN}-2.3.1" && \
-		has_version "<${CATEGORY}/${PN}-2.3.3"; then
-		SYNC_DEPTH_UPGRADE=true
-	else
-		SYNC_DEPTH_UPGRADE=false
-	fi
 }
 
 pkg_postinst() {
-	if ${SYNC_DEPTH_UPGRADE}; then
-		ewarn "Please note that this release no longer respects sync-depth for"
-		ewarn "git repositories.  There have been too many problems and"
-		ewarn "performance issues.  See bugs 552814, 559008"
-	fi
 	einfo ""
 	einfo "This release of portage NO LONGER contains the repoman code base."
 	einfo "Repoman has its own ebuild and release package."
