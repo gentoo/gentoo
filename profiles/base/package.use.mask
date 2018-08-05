@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (05 Aug 2018)
+# Fails to build.
+# https://bugs.gentoo.org/661880
+>=www-client/chromium-69 system-icu
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (3 Aug 2018)
 # New and for Gentoo still quite experimental. You've been
 # warned. (Also, works only on x86_64 and with certain CPUs
