@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 MY_PN="${PN%-bin}"
 MY_P="${MY_PN}-${PV}"
@@ -10,10 +10,10 @@ DESCRIPTION="MySQL hot backup software. non-blocking backups for InnoDB/XtraDB d
 HOMEPAGE="https://www.percona.com/software/percona-xtrabackup"
 SRC_URI="
 	amd64? (
-		https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-x86_64.tar.gz
+		https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-x86_64.libgcrypt20.tar.gz
 	)
 	x86? (
-		https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-i686.tar.gz
+		https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/binary/tarball/${MY_P}-Linux-i686.libgcrypt20.tar.gz
 	)"
 
 LICENSE="GPL-2"
@@ -24,10 +24,13 @@ IUSE=""
 # NOTE: dev-perl/DBD-mysql still necessary, now for bin/xtrabackup?
 DEPEND=""
 RDEPEND="dev-libs/libaio
-	dev-libs/libgcrypt:11/11
+	dev-libs/libgcrypt:0/20
 	dev-libs/libgpg-error
 	dev-perl/DBD-mysql
-	sys-libs/zlib"
+	sys-libs/zlib
+	sys-process/numactl"
+
+QA_PREBUILT="usr/bin/*"
 
 src_unpack() {
 	default
