@@ -9814,7 +9814,6 @@ sys-apps/mcstrans 2.7 2.8: SELinux context translation to human readable names
 sys-apps/memtest86 4.3.7: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 4.20-r1 5.01-r2: Memory tester based on memtest86
 sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
-sys-apps/microcode-ctl 1.23 1.28-r2: Intel processor microcode update utility
 sys-apps/miller 4.2.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/miscfiles 1.5-r3: Miscellaneous files
 sys-apps/mlocate 0.26-r2: Merging locate is an utility to index and quickly search for files
