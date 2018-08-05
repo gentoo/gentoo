@@ -58,14 +58,14 @@ src_install() {
 	java-pkg_doso $(usex amd64 '*64.so' '*32.so')
 
 	local pre=$(prefixify_ro "${FILESDIR}"/launcher-pre.bash)
-	java-pkg_dolauncher ikvm --jar iKVM.jar -pre "${pre}"
-	java-pkg_dolauncher ikvmmicroblade --jar iKVMMicroBlade.jar -pre "${pre}"
 	java-pkg_dolauncher ipmiview --jar IPMIView20.jar -pre "${pre}"
-	java-pkg_dolauncher jviewerx9 --jar JViewerX9.jar -pre "${pre}"
+	java-pkg_dolauncher ipmiview-ikvm --jar iKVM.jar -pre "${pre}"
+	java-pkg_dolauncher ipmiview-ikvmmicroblade --jar iKVMMicroBlade.jar -pre "${pre}"
+	java-pkg_dolauncher ipmiview-jviewerx9 --jar JViewerX9.jar -pre "${pre}"
 	java-pkg_dolauncher trapreceiver --jar TrapView.jar -pre "${pre}"
 
 	exeinto ${DIR}/jre/bin
-	newexe $(prefixify_ro "${FILESDIR}"/fake-java.bash) java
+	newexe $(prefixify_ro "${FILESDIR}"/fake-java-r1.bash) java
 
 	insinto ${DIR}/lib/BMCSecurity
 	doins BMCSecurity/*.{crt,key,pem,txt}
