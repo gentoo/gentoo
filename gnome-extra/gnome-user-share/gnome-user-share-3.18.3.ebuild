@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2 multilib systemd
 
 DESCRIPTION="Personal file sharing for the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-user-share"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-user-share"
 
 LICENSE="GPL-2"
 SLOT="0"
