@@ -16,7 +16,7 @@ SRC_URI="https://dl2.cdn.filezilla-project.org/client/${MY_P}_src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc x86"
 IUSE="dbus nls test"
 
 # pugixml 1.7 minimal dependency is for c++11 proper configuration
