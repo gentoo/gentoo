@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${PN}-gcc-5.patch )
+
 src_prepare() {
 	default
 	append-cxxflags -std=c++11
