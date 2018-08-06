@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ GNOME_ORG_MODULE="gnome-themes-standard"
 inherit ltprune gnome.org multilib-minimal
 
 DESCRIPTION="Adwaita GTK+2 theme engine"
-HOMEPAGE="https://git.gnome.org/browse/gnome-themes-standard/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-themes-extra"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
