@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2 virtualx
 
 DESCRIPTION="Libraries for the gnome desktop that are not part of the UI"
-HOMEPAGE="https://git.gnome.org/browse/gnome-desktop"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop"
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="3/12" # subslot = libgnome-desktop-3 soname version
