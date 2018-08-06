@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome.org meson
 
 DESCRIPTION="GObject based library for handling and rendering epub documents"
-HOMEPAGE="https://git.gnome.org/browse/libgepub"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgepub"
 
 LICENSE="LGPL-2"
 SLOT="0"
