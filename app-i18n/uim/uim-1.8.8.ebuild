@@ -96,7 +96,7 @@ src_prepare() {
 	# fix build with >=dev-scheme/chicken-4, bug #656852
 	touch scm/json-parser-expanded.scm
 	# fix build with "-march=pentium4 -O2", bug #661806
-	is-flagq "-march=pentium4?" && append-cflags $(test-flags-CC -fno-inline-small-functions)
+	use x86 && append-cflags $(test-flags-CC -fno-inline-small-functions)
 
 	eautoreconf
 }
