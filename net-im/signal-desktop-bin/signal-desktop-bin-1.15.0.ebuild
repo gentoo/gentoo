@@ -6,6 +6,7 @@ EAPI=6
 MY_PN="${PN/-bin/}"
 
 inherit gnome2-utils pax-utils unpacker xdg-utils
+
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
 HOMEPAGE="https://signal.org/
 	https://github.com/WhisperSystems/Signal-Desktop"
@@ -32,6 +33,12 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/libffmpeg.so"
 
 S="${WORKDIR}"
+
+src_prepare(){
+	default
+	sed -e 's|\("/opt/Signal/signal-desktop"\)|\1 --start-in-tray|g' \
+		-i usr/share/applications/signal-desktop.desktop || die
+}
 
 src_install() {
 	insinto /
