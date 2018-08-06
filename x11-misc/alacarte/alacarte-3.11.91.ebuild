@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ PYTHON_REQ_USE="xml"
 inherit gnome2 python-r1
 
 DESCRIPTION="Simple GNOME menu editor"
-HOMEPAGE="https://git.gnome.org/browse/alacarte"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/alacarte"
 
 LICENSE="GPL-2+"
 SLOT="0"
