@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2
 
 DESCRIPTION="A nautilus extension for sending files to locations"
-HOMEPAGE="https://git.gnome.org/browse/nautilus-sendto/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/nautilus-sendto"
 
 LICENSE="GPL-2+"
 SLOT="0"
