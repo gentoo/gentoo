@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <upstream>
-    <bugs-to>https://bugs.gnome.org</bugs-to>
-    <changelog>https://git.gnome.org/browse/libgrss</changelog>
+    <bugs-to>https://gitlab.gnome.org/GNOME/libgrss/issues</bugs-to>
+    <changelog>https://gitlab.gnome.org/GNOME/libgrss/blob/master/NEWS</changelog>
   </upstream>
 <maintainer type="project">
     <email>gnome@gentoo.org</email>
