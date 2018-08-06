@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Lightweight HTML rendering/printing/editing engine"
-HOMEPAGE="https://git.gnome.org/browse/gtkhtml"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="4.0"
