@@ -19,8 +19,8 @@
 
 # Dirkjan Ochtman <rust@gentoo.org> (04 Aug 2018) 
 # rust-docs is available for amd64
->=dev-lang/rust-1.26.0 -doc
->=dev-lang/rust-bin-1.26.0 -doc
+>=dev-lang/rust-1.27.1 -doc
+>=dev-lang/rust-bin-1.27.1 -doc
 
 # Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
 # Dependency app-crypt/jitterentropy is keyworded for amd64

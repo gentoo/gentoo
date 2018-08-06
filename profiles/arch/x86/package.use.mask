@@ -5,8 +5,8 @@
 
 # Dirkjan Ochtman <rust@gentoo.org> (04 Aug 2018)
 # rust-docs is available for x86
->=dev-lang/rust-1.26.0 -doc
->=dev-lang/rust-bin-1.26.0 -doc
+>=dev-lang/rust-1.27.1 -doc
+>=dev-lang/rust-bin-1.27.1 -doc
 
 # Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
 # Catalyst has support for assembling bootloader on this arch
