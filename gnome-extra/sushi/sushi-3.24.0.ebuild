@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2
 
 DESCRIPTION="A quick previewer for Nautilus, the GNOME file manager"
-HOMEPAGE="https://git.gnome.org/browse/sushi"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/sushi"
 
 LICENSE="GPL-2+"
 SLOT="0"
