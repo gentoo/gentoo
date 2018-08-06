@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Symbolic icons for GNOME default icon theme"
-HOMEPAGE="https://git.gnome.org/browse/gnome-icon-theme-symbolic/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
