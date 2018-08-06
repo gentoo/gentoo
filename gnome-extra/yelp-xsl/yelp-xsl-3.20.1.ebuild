@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="XSL stylesheets for yelp"
-HOMEPAGE="https://git.gnome.org/browse/yelp-xsl"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/yelp-xsl"
 
 LICENSE="GPL-2+ LGPL-2.1+ MIT FDL-1.1+"
 SLOT="0"
