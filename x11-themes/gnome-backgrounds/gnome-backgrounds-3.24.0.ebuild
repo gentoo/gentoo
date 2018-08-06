@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="A set of backgrounds packaged with the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-backgrounds"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-backgrounds"
 
 LICENSE="GPL-2"
 SLOT="0"
