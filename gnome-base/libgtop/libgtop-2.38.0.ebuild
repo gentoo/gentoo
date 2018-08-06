@@ -5,7 +5,7 @@ EAPI=6
 inherit flag-o-matic gnome2
 
 DESCRIPTION="A library that provides top functionality to applications"
-HOMEPAGE="https://git.gnome.org/browse/libgtop"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgtop"
 
 LICENSE="GPL-2+"
 SLOT="2/11" # libgtop soname version
