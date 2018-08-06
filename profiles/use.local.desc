@@ -2513,6 +2513,7 @@ mail-client/neomutt:qdbm - Enable QDBM (Quicker Database Manager) database backe
 mail-client/neomutt:smime - Enable support for smime
 mail-client/neomutt:smime_classic - Build classic_smime backend to support S/MIME
 mail-client/neomutt:tokyocabinet - Enable Tokyo Cabinet database backend for header caching
+mail-client/roundcube:change-password - Allow users to change passwords through Roundcube
 mail-client/roundcube:enigma - Add dependencies to support server-side GnuPG signing and/or encryption through the enigma plugin
 mail-client/roundcube:ldap - Add dependencies to support connecting to an LDAP address book server
 mail-client/roundcube:managesieve - Add dependencies to support the sieverules plugin
