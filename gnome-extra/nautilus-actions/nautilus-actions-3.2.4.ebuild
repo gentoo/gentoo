@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="Configures programs to be launched when files are selected in Nautilus"
-HOMEPAGE="http://www.nautilus-actions.org/ https://git.gnome.org/browse/nautilus-actions/"
+HOMEPAGE="http://www.nautilus-actions.org/ https://gitlab.gnome.org/GNOME/nautilus-actions"
 
 LICENSE="GPL-2 FDL-1.3"
 SLOT="3"
