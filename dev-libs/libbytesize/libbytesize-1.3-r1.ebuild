@@ -45,7 +45,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--without-python3
+		--without-python3 #634840
 		$(use_with doc gtk-doc)
 	)
 	econf "${myeconfargs[@]}"
