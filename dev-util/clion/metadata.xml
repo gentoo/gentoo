@@ -12,4 +12,7 @@
 	<longdescription lang="en">
 		Fully Integrated C/C++ Development Environment.
 	</longdescription>
+	<use>
+		<flag name="custom-jdk">Install and use IntelliJ's custom JRE.</flag>
+	</use>
 </pkgmetadata>
