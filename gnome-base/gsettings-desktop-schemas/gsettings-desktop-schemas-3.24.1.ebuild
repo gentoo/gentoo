@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="Collection of GSettings schemas for GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gsettings-desktop-schemas"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
