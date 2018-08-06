@@ -19,6 +19,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/gdbm-1.17-fix-gdbmsync.patch )
+
 src_prepare() {
 	default
 	eautoreconf
