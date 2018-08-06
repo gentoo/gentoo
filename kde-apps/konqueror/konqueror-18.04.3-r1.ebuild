@@ -71,7 +71,7 @@ src_prepare() {
 
 	if ! use webengine; then
 		punt_bogus_dep Qt5 WebEngineWidgets
-		cmake_comment_add_subdirectory webenginepartexit
+		cmake_comment_add_subdirectory webenginepart
 	fi
 
 	kde5_src_prepare
