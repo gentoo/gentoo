@@ -6,7 +6,7 @@ GNOME2_EAUTORECONF="yes"
 inherit gnome2
 
 DESCRIPTION="Gnome session manager"
-HOMEPAGE="https://git.gnome.org/browse/gnome-session"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-session"
 SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~leio/distfiles/${P}-xorg-default-translations.patch.xz"
 
