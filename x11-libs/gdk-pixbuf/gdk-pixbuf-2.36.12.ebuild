@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 inherit flag-o-matic gnome2 multilib multilib-minimal
 
 DESCRIPTION="Image loading library for GTK+"
-HOMEPAGE="https://git.gnome.org/browse/gdk-pixbuf"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
 
 LICENSE="LGPL-2+"
 SLOT="2"
@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ~ppc ppc64 s390 ~sh sparc x86 ~
 IUSE="X debug +introspection jpeg jpeg2k tiff test"
 
 # Remove SRC_URI when gnome bug #795069 is fixed
-SRC_URI="${SRC_URI} test? ( https://git.gnome.org/browse/gdk-pixbuf/plain/tests/bug753605-atsize.jpg?h=2.36.12 -> ${PN}-2.36.12-bug753605-atsize.jpg )"
+SRC_URI="${SRC_URI} test? ( https://gitlab.gnome.org/GNOME/gdk-pixbuf/raw/2.36.12/tests/bug753605-atsize.jpg -> ${PN}-2.36.12-bug753605-atsize.jpg )"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.48.0:2[${MULTILIB_USEDEP}]

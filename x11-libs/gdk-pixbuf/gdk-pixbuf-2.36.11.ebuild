@@ -8,7 +8,7 @@ GNOME2_EAUTORECONF="yes"
 inherit flag-o-matic gnome2 multilib multilib-minimal
 
 DESCRIPTION="Image loading library for GTK+"
-HOMEPAGE="https://git.gnome.org/browse/gdk-pixbuf"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
 
 LICENSE="LGPL-2+"
 SLOT="2"
