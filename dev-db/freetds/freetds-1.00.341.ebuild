@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # This is from the "current" release series, because the "stable" series
 # is a little too stable for us (missing bug fixes, and so on).
@@ -13,25 +13,23 @@ SRC_URI="ftp://ftp.freetds.org/pub/${PN}/current/${MY_PN}.${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64
-		  ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos"
-IUSE="gnutls iconv kerberos libressl mssql iodbc odbc ssl"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos"
+IUSE="gnutls iconv kerberos libressl mssql iodbc odbc ssl static-libs"
 RESTRICT="test"
 
 # sed, grep, and awk are used by the build system and the osql script.
 COMMON_DEPEND="sys-apps/sed
 	sys-apps/grep
 	virtual/awk
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:= )
 	iconv? ( virtual/libiconv )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
 	odbc? ( dev-db/unixODBC )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
-
 DEPEND="${COMMON_DEPEND}"
 
 # bind-tools is needed because the osql script calls "host".
@@ -48,15 +46,23 @@ REQUIRED_USE="?? ( iodbc odbc )"
 S="${WORKDIR}/${MY_PN}.${PV}"
 
 src_configure() {
-	local myconf=( $(use_with iodbc) )
-	myconf+=( $(use_with odbc unixodbc "${EPREFIX}/usr") )
-	myconf+=( $(use_enable iconv libiconv) )
-	myconf+=( $(use_with iconv libiconv-prefix "${EPREFIX}/usr") )
-	myconf+=( $(use_enable kerberos krb5) )
-	myconf+=( $(use_enable mssql msdblib) )
-	myconf+=( $(use_with gnutls) )
-	myconf+=( $(use_with ssl openssl "${EPREFIX}/usr") )
-	myconf+=( --docdir="/usr/share/doc/${PF}" )
+	econf \
+		--enable-shared \
+		$(use_enable iconv libiconv) \
+		$(use_enable kerberos krb5) \
+		$(use_enable mssql msdblib) \
+		$(use_enable static-libs static) \
+		$(use_with iodbc) \
+		$(use_with odbc unixodbc "${EPREFIX}/usr") \
+		$(use_with iconv libiconv-prefix "${EPREFIX}/usr") \
+		$(use_with gnutls) \
+		$(use_with ssl openssl "${EPREFIX}/usr")
+}
 
-	econf "${myconf[@]}"
+src_install() {
+	default
+
+	if ! use static-libs; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }
