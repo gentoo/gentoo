@@ -5257,6 +5257,7 @@ dev-python/pycryptopp 0.6.0: Python wrappers for a few algorithms from the Crypt
 dev-python/pycups 1.9.72 1.9.73 1.9.73-r1: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0: python binding for curl/libcurl
 dev-python/pycxx 6.2.6: Set of facilities to extend Python with C++
+dev-python/pydecomp 0.3: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydns 2.3.6-r1 3.1.1: Python DNS (Domain Name System) library
 dev-python/pydot 1.0.28-r2 1.2.3: Python interface to Graphviz's Dot language
