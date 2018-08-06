@@ -121,7 +121,8 @@ RESTRICT="mirror"
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="libressl"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl )"
+RDEPEND="${DEPEND}"
