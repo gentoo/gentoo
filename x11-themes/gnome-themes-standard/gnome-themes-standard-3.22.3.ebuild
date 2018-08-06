@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools gnome.org
 
 DESCRIPTION="Standard Themes for GNOME Applications"
-HOMEPAGE="https://git.gnome.org/browse/gnome-themes-standard/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-themes-extra"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
