@@ -14,6 +14,9 @@
 		<remote-id type="github">roundcube/roundcubemail</remote-id>
 	</upstream>
 	<use>
+		<flag name="change-password">
+			Allow users to change passwords through Roundcube
+		</flag>
 		<flag name="enigma">
 			Add dependencies to support server-side GnuPG signing
 			and/or encryption through the enigma plugin
