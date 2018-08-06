@@ -1,0 +1,10 @@
+diff --git a/sentinel.conf b/sentinel.conf
+index 3703c73..964ffa3 100644
+--- a/sentinel.conf
++++ b/sentinel.conf
+@@ -222,3 +222,5 @@ sentinel deny-scripts-reconfig yes
+ # case, so writing "config guessme" is the same in the example above.
+ #
+ # SENTINEL SET can also be used in order to perform this configuration at runtime.
++
++logfile "/var/log/redis/sentinel.log"
