@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/basecamp/marcel"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/mimemagic-0.3.2:0"
