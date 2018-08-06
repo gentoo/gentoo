@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2
 
 DESCRIPTION="Common files for development of Gnome packages"
-HOMEPAGE="https://git.gnome.org/browse/gnome-common"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-common"
 
 LICENSE="GPL-3"
 SLOT="3"
