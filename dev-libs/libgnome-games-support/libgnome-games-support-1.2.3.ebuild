@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="Library for code common to Gnome games"
-HOMEPAGE="https://git.gnome.org/browse/libgnome-games-support/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgnome-games-support"
 
 LICENSE="LGPL-3+"
 SLOT="1/2"
