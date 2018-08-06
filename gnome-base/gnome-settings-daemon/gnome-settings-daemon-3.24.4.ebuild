@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-any-r1 systemd udev virtualx
 
 DESCRIPTION="Gnome Settings Daemon"
-HOMEPAGE="https://git.gnome.org/browse/gnome-settings-daemon"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
