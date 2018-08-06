@@ -5536,6 +5536,7 @@ dev-python/sip 4.19.8: Python extension module generator for C and C++ libraries
 dev-python/six 1.10.0 1.11.0: Python 2 and 3 compatibility library
 dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
+dev-python/snakeoil 0.7.5: misc common functionality and useful optimizations
 dev-python/snappy 0.5-r2: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.22: SOAP Services for Python
