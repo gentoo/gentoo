@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ GNOME_ORG_MODULE="gfbgraph"
 inherit gnome2
 
 DESCRIPTION="A GObject library for Facebook Graph API"
-HOMEPAGE="https://git.gnome.org/browse/libgfbgraph/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgfbgraph"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.2"
