@@ -14,18 +14,15 @@ SRC_URI="mirror://sourceforge.jp/${PN}4linux/56721/${MY_P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa gnome gnutls migemo"
+IUSE="alsa gnutls migemo"
 
 RDEPEND="dev-cpp/gtkmm:2.4
 	dev-libs/glib:2
 	sys-libs/zlib
+	x11-libs/libICE
+	x11-libs/libSM
 	x11-misc/xdg-utils
 	alsa? ( >=media-libs/alsa-lib-1 )
-	gnome? ( >=gnome-base/libgnomeui-2 )
-	!gnome? (
-		x11-libs/libSM
-		x11-libs/libICE
-	)
 	gnutls? ( net-libs/gnutls )
 	!gnutls? ( dev-libs/openssl:0 )
 	migemo? ( app-text/cmigemo )"
@@ -46,11 +43,10 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with alsa) \
-		$(use_with gnome sessionlib gnomeui) \
-		$(use_with !gnome sessionlib xsmp) \
 		$(use_with !gnutls openssl) \
 		$(use_with migemo) \
 		$(use_with migemo migemodict "${EREPFIX}"/usr/share/migemo/migemo-dict) \
+		--with-sessionlib=xsmp \
 		--with-xdgopen
 }
 
