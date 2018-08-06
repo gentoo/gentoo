@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2
 
 DESCRIPTION="GNOME docking library"
-HOMEPAGE="https://git.gnome.org/browse/gdl"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gdl"
 
 LICENSE="LGPL-2.1+"
 SLOT="3/5" # subslot = libgdl-3 soname version
