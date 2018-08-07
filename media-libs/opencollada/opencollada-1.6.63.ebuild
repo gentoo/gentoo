@@ -11,21 +11,25 @@ SRC_URI="https://github.com/KhronosGroup/OpenCOLLADA/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="static-libs"
 
-# bug 651756
-RDEPEND="<dev-libs/libpcre-8.42
+RDEPEND="dev-libs/libpcre
+	dev-libs/libxml2
 	dev-libs/zziplib
 	media-libs/lib3ds
 	sys-libs/zlib
-	dev-libs/libxml2"
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/OpenCOLLADA-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-cmake-fixes.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6.62-cmake-fixes.patch"
+	"${FILESDIR}/${P}-pcre-fix.patch"
+)
 
 src_prepare() {
 	edos2unix CMakeLists.txt
