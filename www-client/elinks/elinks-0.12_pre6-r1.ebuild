@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -167,17 +167,17 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "This ebuild provides a default config for ELinks."
-	einfo "Please check /etc/elinks/elinks.conf"
-	einfo
-	einfo "You may want to convert your html.cfg and links.cfg of"
-	einfo "Links or older ELinks versions to the new ELinks elinks.conf"
-	einfo "using /usr/share/doc/${PF}/contrib/conv/conf-links2elinks.pl"
-	einfo
-	einfo "Please have a look at /etc/elinks/keybind-full.sample and"
-	einfo "/etc/elinks/keybind.conf.sample for some bindings examples."
-	einfo
-	einfo "You will have to set your TERM variable to 'xterm-256color'"
-	einfo "to be able to use 256 colors in elinks."
+	elog "This ebuild provides a default config for ELinks."
+	elog "Please check /etc/elinks/elinks.conf"
+	elog
+	elog "You may want to convert your html.cfg and links.cfg of"
+	elog "Links or older ELinks versions to the new ELinks elinks.conf"
+	elog "using /usr/share/doc/${PF}/contrib/conv/conf-links2elinks.pl"
+	elog
+	elog "Please have a look at /etc/elinks/keybind-full.sample and"
+	elog "/etc/elinks/keybind.conf.sample for some bindings examples."
+	elog
+	elog "You will have to set your TERM variable to 'xterm-256color'"
+	elog "to be able to use 256 colors in elinks."
 	echo
 }
