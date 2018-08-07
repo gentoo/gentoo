@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-any-r1
@@ -30,12 +30,14 @@ RDEPEND="|| (
 		( >=app-crypt/gnupg-2.0
 			|| (
 				app-crypt/pinentry[gtk(-)]
-				app-crypt/pinentry[qt4(-)]
 				app-crypt/pinentry[qt5(-)]
 			)
 		)
 		=app-crypt/gnupg-1.4*
-	)"
+	)
+	!<mail-client/thunderbird-52.5.0
+	!<www-client/seamonkey-2.49.5.0_p0
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-arch/zip
