@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -20,14 +20,12 @@ KEYWORDS="~amd64 ~x86-macos"
 IUSE=""
 
 all_ruby_prepare() {
-	sed -i -e '1igem "rails", "<5"' spec/spec_helper.rb || die
-
 	# Remove tests for unpackaged ORMs
 	rm -f spec/finders/{sequel,mongoid,data_mapper}* || die
 }
 
 ruby_add_bdepend "
 	test? (
-		<dev-ruby/rails-5
+		dev-ruby/rails
 		dev-ruby/mocha
 	)"
