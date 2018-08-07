@@ -1,0 +1,17 @@
+Title: Migration required for OpenSSH with LDAP
+Author: Thomas Deutschmann <whissi@gentoo.org>
+Posted: 2018-08-07
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: net-misc/openssh
+
+If your sshd authenticates against LDAP, you have to migrate your
+current setup to a new one using sshd's "AuthorizedKeysCommand" option and
+a wrapper provided by packages like the new sys-auth/ssh-ldap-pubkey or
+sys-auth/sakcl because beginning with net-misc/openssh-7.7_p1, OpenSSH-LPK
+patch set is deprecated and no longer applies.
+
+We have created a short migration guide in the Wiki [1] for more details.
+
+
+[1] https://wiki.gentoo.org/wiki/SSH/LDAP_migration
