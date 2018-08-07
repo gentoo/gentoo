@@ -1,20 +1,19 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
-inherit distutils-r1 mercurial
+inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Pure python reader and writer of Excel OpenXML files"
 HOMEPAGE="https://openpyxl.readthedocs.io/en/stable/"
-SRC_URI=""
-EHG_REPO_URI="https://bitbucket.org/openpyxl/openpyxl"
+SRC_URI="https://bitbucket.org/${PN}/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
@@ -30,5 +29,5 @@ DEPEND="
 	)"
 
 python_test() {
-	pytest || die "Testing failed with ${EPYTHON}"
+	pytest -v || die "Testing failed with ${EPYTHON}"
 }
