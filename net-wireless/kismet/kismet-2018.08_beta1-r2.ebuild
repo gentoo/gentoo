@@ -92,6 +92,9 @@ src_install() {
 	emake DESTDIR="${D}" commoninstall
 	emake DESTDIR="${D}" forceconfigs
 
+	insinto /usr/share/${PN}
+	doins -r log_tools
+
 	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
 	dodoc CHANGELOG README*
 	newinitd "${FILESDIR}"/${PN}.initd kismet
