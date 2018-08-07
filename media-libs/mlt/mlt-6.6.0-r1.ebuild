@@ -173,6 +173,8 @@ src_configure() {
 		else
 			myconf+=( --enable-sdl --disable-sdl2 )
 		fi
+	else
+		myconf+=( --disable-sdl --disable-sdl2 )
 	fi
 
 	if use x86 || use amd64 ; then
