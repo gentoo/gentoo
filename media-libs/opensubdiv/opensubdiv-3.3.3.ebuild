@@ -2,16 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils toolchain-funcs versionator
 
-MY_PV="$(replace_all_version_separators '_')"
+inherit cmake-utils toolchain-funcs eapi7-ver
+
+MY_PV="$(ver_rs "1-3" '_')"
 DESCRIPTION="An Open-Source subdivision surface library"
 HOMEPAGE="http://graphics.pixar.com/opensubdiv/"
 SRC_URI="https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cuda doc opencl openmp ptex tbb"
 
 RDEPEND="media-libs/glew:=
@@ -21,18 +22,18 @@ RDEPEND="media-libs/glew:=
 	ptex? ( media-libs/ptex )"
 
 DEPEND="${RDEPEND}
-	tbb? ( dev-cpp/tbb )
 	doc? (
 		dev-python/docutils
 		app-doc/doxygen
-	)"
+	)
+	tbb? ( dev-cpp/tbb )"
 
 S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-quotes.patch"
-	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
-	"${FILESDIR}/${P}-add-CUDA9-compatibility.patch"
+	"${FILESDIR}/${PN}-3.3.0-fix-quotes.patch"
+	"${FILESDIR}/${PN}-3.3.0-use-gnuinstalldirs.patch"
+	"${FILESDIR}/${PN}-3.3.0-add-CUDA9-compatibility.patch"
 )
 
 pkg_pretend() {
@@ -57,7 +58,6 @@ src_configure() {
 		-DNO_TUTORIALS=1 # They install illegally. Need to find a better solution.
 		-DGLEW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
 		-DGLFW_LOCATION="${EPREFIX}/usr/$(get_libdir)"
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
 
 	cmake-utils_src_configure
