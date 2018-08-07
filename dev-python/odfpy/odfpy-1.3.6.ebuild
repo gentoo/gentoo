@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python API and tools to manipulate OpenDocument files"
 HOMEPAGE="https://github.com/eea/odfpy https://pypi.org/project/odfpy/"
-SRC_URI="https://github.com/eea/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
