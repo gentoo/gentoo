@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (07 Aug 2018)
+# Fails to build with emacs-26.1. Last release in 2003, last commit
+# to upstream CVS in 2010. Masked for removal in 30 days. Bug #663030.
+app-emacs/cmail
+
 # Thomas Deutschmann <whissi@gentoo.org> (05 Aug 2018)
 # Deprecated. Using recent microcodes with this package either won't work
 # or crash your system. Please change your setup and make use of kernel's
