@@ -698,9 +698,9 @@ showpkgdeps() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
-	einfo "Please read /usr/share/bash-completion/git for Git bash command completion"
-	einfo "Please read /usr/share/git/git-prompt.sh for Git bash prompt"
-	einfo "Note that the prompt bash code is now in that separate script"
+	elog "Please read /usr/share/bash-completion/git for Git bash command completion"
+	elog "Please read /usr/share/git/git-prompt.sh for Git bash prompt"
+	elog "Note that the prompt bash code is now in that separate script"
 	elog "These additional scripts need some dependencies:"
 	echo
 	showpkgdeps git-quiltimport "dev-util/quilt"
