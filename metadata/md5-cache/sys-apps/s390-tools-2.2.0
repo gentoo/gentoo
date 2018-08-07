@@ -9,5 +9,5 @@ LICENSE=GPL-2 MIT
 RDEPEND=fuse? ( sys-fs/fuse:= ) ncurses? ( sys-libs/ncurses:0= ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/ibm-s390-tools/s390-tools/archive/v2.2.0.tar.gz -> s390-tools-2.2.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	79c22815770535c8ae27f6f356559a88
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	udev	ddeaa82191950841a645e0929b0a8c13
 _md5_=cf37e0788bd5df69e9f31dfb9bfaafd0
