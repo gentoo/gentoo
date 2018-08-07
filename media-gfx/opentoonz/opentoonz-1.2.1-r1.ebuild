@@ -49,8 +49,6 @@ DEPEND="
 
 CMAKE_USE_DIR="${S}"/toonz/sources
 
-PATCHES=( "${FILESDIR}"/${P}-gcc6-no-throw-in-destructors.patch )
-
 src_configure()
 {
 	local mycmakeargs=(
