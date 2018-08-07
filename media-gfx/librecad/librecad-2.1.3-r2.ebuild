@@ -16,6 +16,7 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="3d debug doc tools"
 
 DEPEND="
+	app-arch/unzip
 	dev-cpp/muParser
 	dev-libs/boost:=
 	dev-qt/qtcore:5
