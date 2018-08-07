@@ -47,7 +47,6 @@ move app-admin/eselect-php app-eselect/eselect-php
 move app-admin/eselect-pinentry app-eselect/eselect-pinentry
 move app-admin/eselect-postgresql app-eselect/eselect-postgresql
 move app-admin/eselect-python app-eselect/eselect-python
-move app-admin/eselect-qtgraphicssystem app-eselect/eselect-qtgraphicssystem
 move app-admin/eselect-rails app-eselect/eselect-rails
 move app-admin/eselect-renpy app-eselect/eselect-renpy
 move app-admin/eselect-ruby app-eselect/eselect-ruby
