@@ -3,7 +3,8 @@
 
 EAPI=6
 
-inherit cmake-utils
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+inherit cmake-utils python-any-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -33,6 +34,7 @@ RDEPEND="
 	ssh? ( net-libs/libssh2 )
 "
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
 
