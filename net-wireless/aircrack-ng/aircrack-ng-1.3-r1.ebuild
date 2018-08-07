@@ -60,6 +60,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}/${P}-8812au.patch"
 	eapply_user
 	eautoreconf
 }
