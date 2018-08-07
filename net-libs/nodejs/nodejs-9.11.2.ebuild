@@ -19,6 +19,7 @@ IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap t
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	inspector? ( icu ssl )
+	npm? ( ssl )
 "
 
 RDEPEND="
