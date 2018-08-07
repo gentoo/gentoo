@@ -30,7 +30,7 @@ app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.5.6 2.6.1: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.34 2.4.27 2.4.33: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.34 2.4.27 2.4.33 2.4.34: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r6: Another Password Generator
 app-admin/augeas 1.8.1 1.10.1: A library for changing configuration files
@@ -746,7 +746,7 @@ app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library em
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libvirt 4.3.0: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
-app-emulation/lxc 2.1.1 3.0.1: LinuX Containers userspace utilities
+app-emulation/lxc 2.1.1 2.1.1-r1 3.0.1 3.0.1-r1: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.1: Old style template scripts for LXC
 app-emulation/lxd 2.21 3.2: Fast, dense and secure container management
 app-emulation/nemu 1.4.0: ncurses interface for QEMU
@@ -3067,7 +3067,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1 1.8.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.26.5: A linkable library for Git
+dev-libs/libgit2 0.26.5 0.26.6: A linkable library for Git
 dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29: Contains error handling functions used by GnuPG software
@@ -7298,7 +7298,7 @@ media-gfx/gphoto2 2.5.14 2.5.15: Free, redistributable digital camera software a
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
-media-gfx/graphicsmagick 1.3.27: Collection of tools and libraries for many image formats
+media-gfx/graphicsmagick 1.3.27 1.3.30: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.40.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
@@ -9093,7 +9093,7 @@ net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuris
 net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
 net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.5.14 1.6.11-r2 1.7.10 1.8.9: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.5.14 1.6.11-r2 1.7.10 1.8.9 1.8.13: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r7: Proxy cache for Gentoo packages
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
@@ -10537,7 +10537,7 @@ www-client/chromium 68.0.3440.75: Open-source version of Google Chrome web brows
 www-client/conkeror 1.0.4: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
-www-client/epiphany 3.24.5: GNOME webbrowser based on Webkit
+www-client/epiphany 3.24.5 3.26.7: GNOME webbrowser based on Webkit
 www-client/falkon 3.0.1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.6.0 52.8.0: Firefox Web Browser
@@ -10570,7 +10570,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r2: GNU Flash movie player that supports many SWF v7,8,9 features
-www-servers/apache 2.2.34 2.4.27-r1 2.4.33-r1: The Apache Web Server
+www-servers/apache 2.2.34 2.4.27-r1 2.4.33-r1 2.4.34-r1: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.45-r1: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
