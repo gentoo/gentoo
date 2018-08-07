@@ -606,7 +606,6 @@ app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/chess 2.0.4: A chess client and library for Emacs
 app-emacs/circe 1.3: A great IRC client for Emacs
 app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in echo area
-app-emacs/cmail 2.62-r1: A simple mail management system for Emacs
 app-emacs/color-theme 6.6.0-r1: Install color themes (includes many themes)
 app-emacs/crontab-mode 1.20: Mode for editing crontab files
 app-emacs/crypt++ 2.92: Handle all sorts of compressed and encrypted files
