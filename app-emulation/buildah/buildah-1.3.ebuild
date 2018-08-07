@@ -12,7 +12,7 @@ SLOT="0"
 IUSE="ostree selinux"
 EGO_PN="${HOMEPAGE#*//}"
 EGIT_COMMIT="v${PV}"
-GIT_COMMIT="fbf46d3"
+GIT_COMMIT="be87762"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RDEPEND="app-crypt/gpgme:=
 	app-emulation/skopeo
@@ -44,7 +44,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc CHANGELOG.md CONTRIBUTING.md README.md
+	dodoc CHANGELOG.md CONTRIBUTING.md README.md install.md troubleshooting.md
 	doman docs/*.1
 	dodoc -r docs/tutorials
 	dobin ${PN} imgtype
