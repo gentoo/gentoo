@@ -22,11 +22,11 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.21.0:=
+	>=dev-libs/libuv-1.22.0:=
 	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.29.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-61.1:= )
+	icu? ( >=dev-libs/icu-62.1:= )
 	ssl? ( >=dev-libs/openssl-1.1.0:0=[-bindist] )
 "
 DEPEND="
