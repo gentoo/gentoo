@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full Linux 4.16 kernel sources with the CONFIG_PREEMPT_RT patch
+EAPI=6
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://www.kernel.org/pub/linux/kernel/projects/rt/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
+IUSE=symlink build deblob
+KEYWORDS=~amd64
+LICENSE=GPL-2 !deblob? ( linux-firmware )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=4.16.18_p12
+SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.16.18.xz mirror://kernel/linux/kernel/v4.x/linux-4.16.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.16-gnu/deblob-4.16 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.16-gnu/deblob-check -> deblob-check-4.16 ) mirror://kernel/linux/kernel/projects/rt/4.16/patch-4.16.18-rt12.patch.xz mirror://kernel/linux/kernel/projects/rt/4.16/older/patch-4.16.18-rt12.patch.xz
+_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	estack	43ddf5aaffa7a8d0482df54d25a66a1f	kernel-2	a06444ab36072f336c630b44b641ba95	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	6faea633ae2f79f6d55dcfd431b79fbf	python-utils-r1	7db901256449fef43c3aaa4d486c1c63	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=ae042b057632e118c858d57c024d4fdf
