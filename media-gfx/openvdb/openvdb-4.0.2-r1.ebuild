@@ -33,14 +33,14 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		dev-python/numpy[${PYTHON_USEDEP}]
-	)
-"
+	)"
 
 DEPEND="${RDEPEND}
 	dev-cpp/tbb
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[latex] )
-"
+	doc? ( app-doc/doxygen[latex] )"
+
+RESTRICT="test"
 
 PATCHES=(
 	"${WORKDIR}/0001-Change-hardcoded-paths-to-GNUInstallDirs-variables.patch"
