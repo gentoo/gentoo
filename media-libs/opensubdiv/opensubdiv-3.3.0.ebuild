@@ -45,7 +45,6 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DNO_MAYA=1
 		-DNO_CLEW=1
 		-DNO_DOC=$(usex !doc)
 		-DNO_TBB=$(usex !tbb)
