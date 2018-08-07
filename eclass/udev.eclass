@@ -46,7 +46,8 @@ DEPEND="virtual/pkgconfig"
 # Get unprefixed udevdir.
 _udev_get_udevdir() {
 	if $($(tc-getPKG_CONFIG) --exists udev); then
-		echo "$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
+		local udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
+		echo "${udevdir#${EPREFIX%/}}"
 	else
 		echo /lib/udev
 	fi
