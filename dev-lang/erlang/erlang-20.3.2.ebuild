@@ -48,6 +48,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 		"${FILESDIR}/18.2.1-wx3.0.patch"
 		"${FILESDIR}/${PN}-20.3.2-dont-ignore-LDFLAGS.patch"
+		"${FILESDIR}/${PN}-add-epmd-pid-file-creation-for-openrc.patch"
 	)
 
 SITEFILE=50"${PN}"-gentoo.el

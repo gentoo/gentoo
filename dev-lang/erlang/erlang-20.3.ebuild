@@ -48,7 +48,8 @@ SITEFILE=50${PN}-gentoo.el
 src_prepare() {
 	default
 
-	eapply "${FILESDIR}"/18.2.1-wx3.0.patch
+	eapply "${FILESDIR}"/18.2.1-wx3.0.patch \
+		"${FILESDIR}"/${PN}-add-epmd-pid-file-creation-for-openrc.patch
 
 	if ! use odbc; then
 		sed -i 's: odbc : :' lib/Makefile || die
