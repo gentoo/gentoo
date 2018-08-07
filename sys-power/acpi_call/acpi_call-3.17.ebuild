@@ -26,6 +26,11 @@ CONFIG_CHECK="ACPI"
 MODULE_NAMES="acpi_call(misc:${S})"
 BUILD_TARGETS="default"
 
+PATCHES=(
+	"${FILESDIR}/${P}-linux-4.12.patch"
+	"${FILESDIR}/${P}-linux-4.14.patch"
+)
+
 src_compile(){
 	BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}"
 	linux-mod_src_compile
