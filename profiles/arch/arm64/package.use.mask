@@ -193,7 +193,7 @@ dev-python/python-glanceclient test
 dev-python/python-neutronclient test
 
 # NeddySeagoon <neddysegoon@gentoo.org> 24 Aug 2017
-# Support for g15daemon  still needs -9999 packages on all arches 
+# Support for g15daemon still needs -9999 packages on all arches
 media-sound/mumble g15
 
 # NeddySeagoon <neddysegoon@gentoo.org> (21 Aug 2107)

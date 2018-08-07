@@ -64,7 +64,7 @@ src_compile() {
 }
 
 src_install() {
-	newbin pscan psad-pscan
+	newbin misc/pscan psad-pscan
 
 	insinto /usr
 	dosbin kmsgsd psad psadwatchd
@@ -77,10 +77,10 @@ src_install() {
 
 	newinitd init-scripts/psad-init.gentoo psad
 
-	doman *.8
+	doman doc/*.8
 
-	dodoc BENCHMARK CREDITS Change* FW_EXAMPLE_RULES FW_HELP README \
-		README.SYSLOG SCAN_LOG
+	dodoc doc/BENCHMARK CREDITS Change* doc/FW_EXAMPLE_RULES README \
+		doc/README.SYSLOG doc/SCAN_LOG
 
 	insinto /etc/psad/snort_rules
 	doins deps/snort_rules/*

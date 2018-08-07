@@ -204,32 +204,6 @@ app-crypt/gkeys-gen
 =dev-qt/qtxmlpatterns-4.8.7
 app-eselect/eselect-qtgraphicssystem
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Bugs #644360, #644374, #656826, #655382
-<media-sound/mumble-1.3
-<media-sound/murmur-1.3
-<net-analyzer/ostinato-0.9_p20180522
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal. Bugs #644364, #644368, #644362
-dev-python/pivy
-media-libs/emfengine
-media-libs/quarter
-media-libs/SoQt
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal.
-dev-python/pyqwt
-dev-python/PyQt4
-dev-python/pyside:0
-dev-python/shiboken:0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal in 30 days, bug #644728
-app-i18n/ibus-qt
-app-i18n/qimhangul
-=app-i18n/tagainijisho-1.0*
-
 # Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
@@ -379,10 +353,6 @@ virtual/jre:9
 # Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
 # (<0.6) that have been punted from the tree.
 net-misc/cocaine-core
-
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
-# Depends on dead Qt4. Last-rites on hold for chance of Qt5-port. Bug #620702
-<media-gfx/freecad-0.17
 
 # Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
 # Missing dependencies.
