@@ -1,0 +1,49 @@
+diff -r -U3 spyder-3.3.0.orig/setup.py spyder-3.3.0/setup.py
+--- spyder-3.3.0.orig/setup.py	2018-06-27 11:28:24.000000000 +0700
++++ spyder-3.3.0/setup.py	2018-08-07 23:26:17.609046673 +0700
+@@ -75,12 +75,7 @@
+ def get_data_files():
+     """Return data_files in a platform dependent manner"""
+     if sys.platform.startswith('linux'):
+-        if PY3:
+-            data_files = [('share/applications', ['scripts/spyder3.desktop']),
+-                          ('share/icons', ['img_src/spyder3.png']),
+-                          ('share/metainfo', ['scripts/spyder3.appdata.xml'])]
+-        else:
+-            data_files = [('share/applications', ['scripts/spyder.desktop']),
++        data_files = [('share/applications', ['scripts/spyder.desktop']),
+                           ('share/icons', ['img_src/spyder.png'])]
+     elif os.name == 'nt':
+         data_files = [('scripts', ['img_src/spyder.ico',
+@@ -104,21 +99,6 @@
+ 
+ 
+ #==============================================================================
+-# Make Linux detect Spyder desktop file
+-#==============================================================================
+-class MyInstallData(install_data):
+-    def run(self):
+-        install_data.run(self)
+-        if sys.platform.startswith('linux'):
+-            try:
+-                subprocess.call(['update-desktop-database'])
+-            except:
+-                print("ERROR: unable to update desktop database",
+-                      file=sys.stderr)
+-CMDCLASS = {'install_data': MyInstallData}
+-
+-
+-#==============================================================================
+ # Main scripts
+ #==============================================================================
+ # NOTE: the '[...]_win_post_install.py' script is installed even on non-Windows
+@@ -178,8 +158,7 @@
+                    'Programming Language :: Python :: 3',
+                    'Development Status :: 5 - Production/Stable',
+                    'Topic :: Scientific/Engineering',
+-                   'Topic :: Software Development :: Widget Sets'],
+-      cmdclass=CMDCLASS)
++                   'Topic :: Software Development :: Widget Sets'])
+ 
+ 
+ #==============================================================================
