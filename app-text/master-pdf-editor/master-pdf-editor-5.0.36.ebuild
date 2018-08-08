@@ -5,7 +5,7 @@ EAPI=6
 
 inherit xdg-utils desktop
 
-DESCRIPTION="Master PDF Editor is a complete solution for viewing and editing PDF files"
+DESCRIPTION="A complete solution for viewing and editing PDF files"
 HOMEPAGE="https://code-industry.net/free-pdf-editor/"
 SRC_URI="http://code-industry.net/public/${P}_qt5.amd64.tar.gz"
 
