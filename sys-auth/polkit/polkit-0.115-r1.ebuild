@@ -52,6 +52,8 @@ PDEPEND="
 
 DOCS=( docs/TODO HACKING NEWS README )
 
+PATCHES=( "${FILESDIR}"/${P}-elogind.patch ) # bug 660880
+
 QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkit-agent-helper-1
 	usr/lib/polkit-1/polkitd"
