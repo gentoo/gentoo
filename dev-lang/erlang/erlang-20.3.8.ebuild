@@ -171,7 +171,7 @@ src_install() {
 	[[ -z "${ERL_ERTS_VER}" ]] && die "Couldn't determine erts version"
 	[[ -z "${ERL_INTERFACE_VER}" ]] && die "Couldn't determine interface version"
 
-	emake INSTALL_PREFIX="${ED}" install
+	emake INSTALL_PREFIX="${D}" install
 
 	if use doc ; then
 		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc/. "${WORKDIR}"/lib/. "${WORKDIR}"/erts-* )
