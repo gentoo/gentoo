@@ -3,8 +3,7 @@
 
 EAPI="5"
 
-PATCH_GCC_VER="8.1.0"
-PATCH_VER="1.3"
+PATCH_VER="1.0"
 #UCLIBC_VER="1.0"
 
 inherit toolchain
@@ -20,10 +19,3 @@ DEPEND="${RDEPEND}
 if [[ ${CATEGORY} != cross-* ]] ; then
 	PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
 fi
-
-src_prepare() {
-	# upstreamed patches since 8.1.0
-	EPATCH_EXCLUDE+=" 93_all_arm-arch.patch 96_all_lto-O2-PR85655.patch"
-
-	toolchain_src_prepare
-}
