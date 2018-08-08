@@ -525,27 +525,24 @@
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-      <role>Member (stable amd64/x86 liaison)</role>
-    </member>
-    <member>
-      <email>floppym@gentoo.org</email>
-      <name>Mike Gilbert</name>
-      <role>Member</role>
+      <role>stable amd64/x86 liaison</role>
     </member>
     <member is-lead="1">
+      <email>floppym@gentoo.org</email>
+      <name>Mike Gilbert</name>
+    </member>
+    <member>
       <email>phajdan.jr@gentoo.org</email>
       <name>Paweł Hajdan, Jr.</name>
-      <role>Lead</role>
     </member>
     <member>
       <email>rich0@gentoo.org</email>
       <name>Richard Freeman</name>
-      <role>Member (stable amd64 liaison)</role>
+      <role>stable amd64 liaison</role>
     </member>
     <member>
       <email>voyageur@gentoo.org</email>
       <name>Bernard Cafarelli</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
