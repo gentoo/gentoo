@@ -1,12 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
+PYTHON_COMPAT=( python2_7 )
 
-inherit scons-utils toolchain-funcs
+inherit python-any-r1 scons-utils toolchain-funcs
 
-DESCRIPTION="SunPinyin is a SLM (Statistical Language Model) based IME"
-HOMEPAGE="https://sunpinyin.googlecode.com"
+DESCRIPTION="A Statistical Language Model based Chinese input method library"
+HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="${HOMEPAGE}/files/${P}.tar.gz
 		https://open-gram.googlecode.com/files/dict.utf8.tar.bz2
 		https://open-gram.googlecode.com/files/lm_sc.t3g.arpa.tar.bz2"
@@ -18,35 +19,34 @@ IUSE=""
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
-		virtual/pkgconfig"
+	${PYTHON_DEPS}
+	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-force-switch.patch
+	"${FILESDIR}"/${P}-gcc-4.7.patch
+)
 
 src_unpack() {
-	unpack "${P}.tar.gz"
-	ln -s "${DISTDIR}/dict.utf8.tar.bz2" "${S}/raw/" || die "dict file not found"
-	ln -s "${DISTDIR}/lm_sc.t3g.arpa.tar.bz2" "${S}/raw/" || die "dict file not found"
+	unpack ${P}.tar.gz
+	ln -s "${DISTDIR}"/dict.utf8.tar.bz2 "${S}"/raw/ || die "dict file not found"
+	ln -s "${DISTDIR}"/lm_sc.t3g.arpa.tar.bz2 "${S}"/raw/ || die "dict file not found"
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-force-switch.patch"
-	eapply "${FILESDIR}/${P}-gcc-4.7.patch"
 	default
-}
-
-src_configure() {
 	tc-export CXX
-	myesconsargs=(
-		--prefix="${EPREFIX}"/usr
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--libdatadir="${EPREFIX}"/usr/lib
-	)
 }
 
 src_compile() {
-	escons || die
+	escons \
+		--prefix="${EPREFIX}"/usr \
+		--libdir="${EPREFIX}"/usr/$(get_libdir) \
+		--libdatadir="${EPREFIX}"/usr/lib
 }
 
 src_install() {
-	escons --install-sandbox="${ED}" install || die
+	escons --install-sandbox="${D}" install
 }
 
 pkg_postinst() {
