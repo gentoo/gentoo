@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 PYTHON_COMPAT=( python2_7 )
-inherit eutils multilib python-any-r1 scons-utils toolchain-funcs
+
+inherit python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="A Statistical Language Model based Chinese input method library"
 HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
@@ -20,28 +21,26 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
-PDEPEND="app-i18n/sunpinyin-data"
+PDEPEND="<=app-i18n/sunpinyin-data-20130220"
+
+PATCHES=(
+	"${FILESDIR}"/${P/_pre*}-gcc-6.patch
+	"${FILESDIR}"/${P/_pre*}-pod2man.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.0.4-pod2man.patch
-	epatch "${FILESDIR}"/${P}-gcc6-use-float.patch
-	epatch_user
-}
+	sed -i "/^docdir/s/${PN}/${PF}/" SConstruct
 
-src_configure() {
+	default
 	tc-export CXX
-	myesconsargs=(
-		--prefix="${EPREFIX}"/usr
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-	)
 }
 
 src_compile() {
-	escons
+	escons \
+		--prefix="${EPREFIX}"/usr \
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
 }
 
 src_install() {
 	escons --install-sandbox="${D}" install
-	rm -rf "${D}"/usr/share/doc/${PN} || die
-	dodoc doc/{README,SLM-inst.mk,SLM-train.mk}
 }
