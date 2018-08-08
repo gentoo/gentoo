@@ -58,7 +58,8 @@ DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	dev-perl/ExtUtils-LibBuilder
 	test? ( dev-perl/File-Which
-			dev-perl/Test-Differences )"
+			dev-perl/Test-Differences
+			~virtual/perl-Unicode-Collate-1.190.0 )"
 
 PATCHES=( "${FILESDIR}/${PN}-2.7-drop-mozilla-ca.patch" )
 
