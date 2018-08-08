@@ -157,7 +157,9 @@ setup_bazelrc() {
 	mkdir -p "${T}/bazel-cache" || die
 	mkdir -p "${T}/bazel-distdir" || die
 
-	cat > "${T}/bazelrc" <<-EOF
+	cat > "${T}/bazelrc" <<-EOF || die
+	startup --batch
+
 	# dont strip HOME, portage sets a temp per-package dir
 	build --action_env HOME
 
@@ -188,8 +190,6 @@ ebazel() {
 
 	einfo Running: bazel --output_base="${output_base}" "$@"
 	bazel --output_base="${output_base}" $@ || die
-
-	bazel shutdown
 }
 
 load_distfiles() {
