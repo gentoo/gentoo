@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="stubby +getdns_query +getdns_server_mon libressl +idn +unbound libevent libev libuv +threads static-libs"
 
+# https://bugs.gentoo.org/661760
+# https://github.com/getdnsapi/getdns/issues/407
+RESTRICT="test"
+
 DEPEND="
 	dev-libs/libbsd:=
 	dev-libs/libyaml:=
