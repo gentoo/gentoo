@@ -914,7 +914,7 @@ app-i18n/tomoe 0.6.0-r3: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.10 0.12.4: A command line interface for Transifex
 app-i18n/uchardet 0.0.6-r2: An encoding detector library
-app-i18n/uim 1.8.6-r1: A multilingual input method framework
+app-i18n/uim 1.8.6-r1 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 31.0.1: Unicode Common Locale Data Repository
 app-i18n/unicode-data 9.0.0 10.0.0: Unicode data from unicode.org
@@ -10096,7 +10096,7 @@ sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compres
 sys-fs/cryfs 0.9.7: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptsetup 1.7.5-r1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
-sys-fs/dd-rescue 1.46: Similar to dd but can copy from source with errors
+sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.21-r1: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
