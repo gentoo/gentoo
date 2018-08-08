@@ -15,6 +15,7 @@ SRC_URI="amd64? ( https://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux
 		https://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabihf.tar.xz
 		https://static.rust-lang.org/dist/${MY_P}-armv7-unknown-linux-gnueabihf.tar.xz
 		)
+	arm64? ( https://static.rust-lang.org/dist/${MY_P}-aarch64-unknown-linux-gnu.tar.xz )
 	x86? ( https://static.rust-lang.org/dist/${MY_P}-i686-unknown-linux-gnu.tar.xz )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
@@ -59,6 +60,7 @@ src_unpack() {
 		postfix=armv7-unknown-linux-gnueabihf
 	fi
 
+	use arm64 && postfix=aarch64-unknown-linux-gnu
 	use x86 && postfix=i686-unknown-linux-gnu
 	mv "${WORKDIR}/${MY_P}-${postfix}" "${S}" || die
 }
