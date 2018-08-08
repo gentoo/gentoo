@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst postrm
-DESCRIPTION=Master PDF Editor is a complete solution for viewing and editing PDF files
+DESCRIPTION=A complete solution for viewing and editing PDF files
 EAPI=6
 HOMEPAGE=https://code-industry.net/free-pdf-editor/
 KEYWORDS=~amd64
@@ -9,4 +9,4 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=http://get.code-industry.net/public/master-pdf-editor-4.3.82_qt5.amd64.tar.gz
 _eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=0491a6959b432ce7072f5c2d60b53d38
+_md5_=bec57aff877ff6b42c1fe17e3bffb810
