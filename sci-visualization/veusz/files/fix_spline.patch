@@ -1,0 +1,16 @@
+# Upstream patch that fixes spline interpolation:
+# https://github.com/veusz/veusz/commit/b4223800744034880fd1ca1165853636b31e576c
+diff -Naur old/veusz/helpers/src/qtloops/beziers.cpp new/veusz/helpers/src/qtloops/beziers.cpp
+--- old/veusz/helpers/src/qtloops/beziers.cpp	2017-09-23 11:10:46.000000000 +0300
++++ new/veusz/helpers/src/qtloops/beziers.cpp	2018-08-04 21:27:01.000000000 +0300
+@@ -1013,8 +1013,8 @@
+     return 0;
+   }
+ 
+-  // factor of 0.1 introduced by JSS to stop more hooks
+-  double const allowed = L2(b - a)*0.1 + tolerance;
++  // factor of 0.2 introduced by JSS to stop more hooks
++  double const allowed = L2(b - a)*0.2 + tolerance;
+   return dist / allowed;
+   /** \todo 
+    * effic: Hooks are very rare.  We could start by comparing 

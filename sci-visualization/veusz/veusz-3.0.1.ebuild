@@ -29,6 +29,8 @@ DEPEND="${CDEPEND}
 	dev-python/sip[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
+PATCHES=("${FILESDIR}/fix_spline.patch")
+
 python_test() {
 	distutils_install_for_testing
 	cd tests || die
