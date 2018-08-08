@@ -7,7 +7,7 @@ WANT_AUTOMAKE=1.9
 
 inherit autotools fdo-mime gnome2-utils
 
-rev=249
+rev="r249"
 
 DESCRIPTION="Analog waveform viewer for SPICE-like simulations"
 LICENSE="GPL-2"
