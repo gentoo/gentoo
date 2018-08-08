@@ -44,13 +44,6 @@ src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
-src_configure() {
-	local econfargs=(
-		--disable-selective-werror
-	)
-	econf "${econfargs[@]}"
-}
-
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
