@@ -1,41 +1,28 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=5
 
-inherit linux-info
+XORG_DRI=always
+inherit linux-info xorg-2
+
+if [[ ${PV} == 9999* ]]; then
+	SRC_URI=""
+else
+	KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+fi
 
 DESCRIPTION="ATI video driver"
 HOMEPAGE="https://www.x.org/wiki/ati/"
 
-if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/driver/${PN}"
-	inherit autotools git-r3
-	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
-else
-	SRC_URI="mirror://xorg/driver/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
-fi
-
-LICENSE="MIT"
-SLOT="0"
 IUSE="+glamor udev"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-RDEPEND="
-	>=x11-libs/libdrm-2.4.78[video_cards_radeon]
+RDEPEND=">=x11-libs/libdrm-2.4.78[video_cards_radeon]
 	>=x11-libs/libpciaccess-0.8.0
-	x11-base/xorg-server:=
 	glamor? ( x11-base/xorg-server[glamor] )
-	udev? ( virtual/libudev:= )
-"
-DEPEND="
-	${LIVE_DEPEND}
-	${RDEPEND}
-	x11-base/xorg-proto
-"
+	udev? ( virtual/libudev:= )"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 pkg_pretend() {
 	if use kernel_linux ; then
@@ -48,21 +35,10 @@ pkg_pretend() {
 	check_extra_config
 }
 
-src_prepare() {
-	default
-	[[ ${PV} == 9999 ]] && eautoreconf
-}
-
 src_configure() {
-	local econfargs=(
-		--disable-selective-werror
+	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable glamor)
 		$(use_enable udev)
 	)
-	econf "${econfargs[@]}"
-}
-
-src_install() {
-	default
-	find "${D}" -name '*.la' -delete || die
+	xorg-2_src_configure
 }
