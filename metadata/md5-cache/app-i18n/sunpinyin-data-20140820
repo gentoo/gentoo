@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND==app-i18n/sunpinyin-3*
+DESCRIPTION=Data sets for Sunpinyin
+EAPI=6
+HOMEPAGE=https://github.com/sunpinyin/open-gram
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=mirror://sourceforge/open-gram/dict.utf8-20131214.tar.bz2 mirror://sourceforge/open-gram/lm_sc.3gm.arpa-20140820.tar.bz2
+_md5_=e87860e3422d8c4246a6c21176dd809c

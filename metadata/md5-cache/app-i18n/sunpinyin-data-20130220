@@ -1,11 +1,10 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=>=app-i18n/sunpinyin-2.0.4_pre20130108
+DEPEND==app-i18n/sunpinyin-2.0.4*
 DESCRIPTION=Data sets for Sunpinyin
-EAPI=5
-HOMEPAGE=https://open-gram.googlecode.com/
+EAPI=6
+HOMEPAGE=https://github.com/sunpinyin/open-gram
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=Apache-2.0
-RDEPEND=>=app-i18n/sunpinyin-2.0.4_pre20130108
 SLOT=0
-SRC_URI=https://open-gram.googlecode.com/files/dict.utf8-20130220.tar.bz2 https://open-gram.googlecode.com/files/lm_sc.t3g.arpa-20121025.tar.bz2
-_md5_=131352b6881617936496c5ac38045a95
+SRC_URI=mirror://sourceforge/open-gram/dict.utf8-20130220.tar.bz2 mirror://sourceforge/open-gram/lm_sc.t3g.arpa-20121025.tar.bz2
+_md5_=e26fe08952941c24c3854514f1bcae97
