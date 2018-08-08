@@ -9,9 +9,9 @@ if [[ ${PV} == 99999999* ]]; then
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
 else
-	GIT_COMMIT=""
+	GIT_COMMIT="7b5835fd37630d18ac0c755329172f6a17c1af29"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 fi
 
 DESCRIPTION="Linux firmware files"

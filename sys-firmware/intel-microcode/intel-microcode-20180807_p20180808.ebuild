@@ -8,9 +8,9 @@ inherit linux-info toolchain-funcs mount-boot
 # Find updates by searching and clicking the first link (hopefully it's the one):
 # https://www.intel.com/content/www/us/en/search.html?keyword=Processor+Microcode+Data+File
 
-COLLECTION_SNAPSHOT="20180804"
-INTEL_SNAPSHOT="20180703"
-NUM="27945"
+COLLECTION_SNAPSHOT="${PV##*_p}"
+INTEL_SNAPSHOT="${PV/_p*}"
+NUM="28039"
 DESCRIPTION="Intel IA32/IA64 microcode update data"
 HOMEPAGE="http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID=${NUM}"
 SRC_URI="https://downloadmirror.intel.com/${NUM}/eng/microcode-${INTEL_SNAPSHOT}.tgz
