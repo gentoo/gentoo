@@ -38,6 +38,11 @@ src_compile() {
 		golang-build_src_compile
 }
 
+src_test() {
+	EGO_PN="github.com/keybase/kbfs/kbfsfuse" \
+		golang-build_src_test
+}
+
 src_install() {
 	dobin "${T}/kbfsfuse"
 	dobin "${T}/git-remote-keybase"
