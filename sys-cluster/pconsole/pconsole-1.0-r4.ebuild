@@ -1,40 +1,32 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tool for managing multiple xterms simultaneously"
-HOMEPAGE="http://www.heiho.net/pconsole/"
+HOMEPAGE="https://github.com/walterdejong/pconsole"
 SRC_URI="http://www.xs4all.nl/~walterj/pconsole/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND="virtual/ssh"
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-exit-warn.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-exit-warn.patch )
 
 src_compile() {
 	emake LFLAGS="${LDFLAGS}" CFLAGS="${CFLAGS}" \
-		CC="$(tc-getCC)" || die
+		CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin pconsole || die
-	fperms 4110 /usr/bin/pconsole || die
-	dodoc ChangeLog README.pconsole || die
-	dohtml public_html/pconsole.html || die
+	dobin pconsole
+	fperms 4110 /usr/bin/pconsole
+	dodoc ChangeLog README.pconsole public_html/pconsole.html
 }
 
 pkg_postinst() {
-	echo
 	ewarn "Warning:"
 	ewarn "pconsole installed with suid root!"
-	echo
 }
