@@ -37,7 +37,6 @@ src_prepare() {
 	default
 	append-cxxflags -std=c++11
 
-	mv configure.{in,ac} || die
 	eautoreconf
 }
 
