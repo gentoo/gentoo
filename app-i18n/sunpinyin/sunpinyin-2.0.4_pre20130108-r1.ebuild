@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,8 +23,8 @@ DEPEND="${RDEPEND}
 PDEPEND="app-i18n/sunpinyin-data"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.0.4-pod2man.patch
-	epatch "${FILESDIR}"/${P}-gcc6-use-float.patch
+	epatch "${FILESDIR}"/${P/_pre*}-pod2man.patch
+	epatch "${FILESDIR}"/${P/_pre*}-gcc-6.patch
 	epatch_user
 }
 
