@@ -16,7 +16,7 @@ SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 SLOT="0/2.3"
 LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls"
+IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
 
 COMMON_DEPEND="
 	dev-libs/expat
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	ogdi? ( sci-libs/ogdi )
 	opencl? ( virtual/opencl )
 	oracle? ( dev-db/oracle-instantclient:= )
-	pdf? ( >=app-text/poppler-0.24.3:= )
+	pdf? ( app-text/poppler:= )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
 	postgres? ( >=dev-db/postgresql-8.4:= )
@@ -57,7 +57,8 @@ COMMON_DEPEND="
 	spatialite? ( dev-db/spatialite )
 	sqlite? ( dev-db/sqlite:3 )
 	webp? ( media-libs/libwebp:= )
-	xls? ( dev-libs/freexl )"
+	xls? ( dev-libs/freexl )
+	zstd? ( app-arch/zstd:= )"
 
 RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.7:* )"
@@ -80,7 +81,6 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
 	"${FILESDIR}/${PN}-2.2.3-bashcomp-path.patch" # bug 641866
-	"${FILESDIR}/${PN}-2.2.3-goocast.patch" # bug 656252
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 )
 
@@ -126,6 +126,7 @@ src_configure() {
 	append-cxxflags -std=c++14
 
 	local myconf=(
+		# charls - not packaged in Gentoo ebuild repository
 		# kakadu, mrsid jp2mrsid - another jpeg2k stuff, ignore
 		# bsb - legal issues
 		# ingres - same story as oracle oci
@@ -147,6 +148,7 @@ src_configure() {
 		--with-libz="${EPREFIX}/usr/"
 		--with-gnm
 		--without-bsb
+		--without-charls
 		--without-dods-root
 		--without-ecw
 		--without-epsilon
@@ -209,6 +211,7 @@ src_configure() {
 		$(use_with threads)
 		$(use_with webp)
 		$(use_with xls freexl) )
+		$(use_with zstd)
 
 	tc-export AR RANLIB
 
