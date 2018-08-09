@@ -601,6 +601,8 @@ if [[ ${ETYPE} == sources ]]; then
 	RDEPEND="!build? (
 		dev-lang/perl
 		sys-devel/bc
+		sys-devel/bison
+		sys-devel/flex
 		sys-devel/make
 		>=sys-libs/ncurses-5.2
 		virtual/libelf
