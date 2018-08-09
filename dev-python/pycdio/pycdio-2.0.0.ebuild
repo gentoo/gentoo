@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-RDEPEND=">=dev-libs/libcdio-0.90"
+RDEPEND=">=dev-libs/libcdio-2.0.0"
 
 DEPEND="
 	${RDEPEND}
