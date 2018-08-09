@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="The SunPinYin IMEngine for IBus Framework"
-HOMEPAGE="https://sunpinyin.googlecode.com/"
+HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/sunpinyin-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
