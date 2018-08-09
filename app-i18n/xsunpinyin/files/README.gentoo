@@ -1,5 +1,0 @@
-To use sunpinyin with XIM, you should use the following in your user startup
-scripts such as .xinitrc or .xprofile:
-
-XMODIFIERS=@im=xsunpinyin ; export XMODIFIERS
-
