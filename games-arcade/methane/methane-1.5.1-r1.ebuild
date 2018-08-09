@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-#inherit eutils flag-o-matic games
 inherit desktop
 
 DESCRIPTION="Port from an old amiga game"
@@ -34,7 +33,6 @@ src_prepare() {
 
 	# fix weird parallel make issue wrt #450422
 	mkdir build || die
-	#append-cxxflags -Wno-narrowing # build with gcc5 (bug #573788)
 }
 
 src_install() {
