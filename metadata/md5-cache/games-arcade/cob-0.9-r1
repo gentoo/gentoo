@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[joystick,sound,video]
 SLOT=0
 SRC_URI=http://www.autismuk.freeserve.co.uk/cob-0.9.tar.gz
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
 _md5_=727ed4585e15cd0f86f580fc9ae34047

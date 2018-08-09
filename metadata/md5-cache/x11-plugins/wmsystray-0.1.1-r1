@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXpm
 SLOT=0
 SRC_URI=https://github.com/bbidulock/wmsystray/releases/download/0.1.1/wmsystray-0.1.1.tar.bz2
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
 _md5_=40f13e4ebfe53eaefc6705ef53d67baf

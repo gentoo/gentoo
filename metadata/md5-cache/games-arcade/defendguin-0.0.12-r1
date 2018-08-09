@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/sdl-mixer[mod] media-libs/libsdl[video]
 SLOT=0
 SRC_URI=ftp://ftp.tuxpaint.org/unix/x/defendguin/src/defendguin-0.0.12.tar.gz
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
 _md5_=ba0255517a1b528dfd7bc089f6d16c07

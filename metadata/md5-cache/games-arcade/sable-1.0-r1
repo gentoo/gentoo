@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/opengl media-libs/libsdl[joystick,opengl,sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer
 SLOT=0
 SRC_URI=mirror://gentoo/sable-1.0-src.tgz mirror://gentoo/sable.png
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
 _md5_=d2f1b08ba5c8870ebd67a8afa84537b1

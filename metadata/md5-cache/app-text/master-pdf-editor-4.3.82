@@ -8,5 +8,5 @@ RDEPEND=app-arch/bzip2 dev-libs/double-conversion dev-libs/glib dev-libs/icu dev
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://get.code-industry.net/public/master-pdf-editor-4.3.82_qt5.amd64.tar.gz
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
 _md5_=bec57aff877ff6b42c1fe17e3bffb810

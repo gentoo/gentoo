@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,joystick,video] media-libs/sdl-mixer[mod] media-libs/sdl-image[jpeg,png]
 SLOT=0
 SRC_URI=mirror://sourceforge/penguin-command/penguin-command-1.6.11.tar.gz
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
 _md5_=3b9f5d11349f991ded77149310c5c9df

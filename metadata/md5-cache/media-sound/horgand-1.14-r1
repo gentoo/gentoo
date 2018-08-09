@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/fltk:1 x11-libs/libXpm media-libs/libsndfile media-libs/alsa-lib media-sound/alsa-utils media-sound/jack-audio-connection-kit
 SLOT=0
 SRC_URI=mirror://gentoo/horgand-1.14.tar.gz
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=ba665ecd3238020f27f016ab64f6350a

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[X,video] x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://gentoo/digger-20140423.tar.gz
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
 _md5_=db4f020b11bb4ba4ac264dfab19c9425

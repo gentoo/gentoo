@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-games/clanlib:2.3[opengl,mikmod]
 SLOT=0
 SRC_URI=mirror://sourceforge/methane/methane-1.5.1.tgz
-_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
 _md5_=c2a287d2448cbb4246722267d082a5e3
