@@ -196,6 +196,27 @@ tc-is-cross-compiler() {
 	[[ ${CBUILD:-${CHOST}} != ${CHOST} ]]
 }
 
+# @FUNCTION: tc-cpp-is-true
+# @USAGE: <condition> [cpp flags]
+# @RETURN: Shell true if the condition is true, shell false otherwise.
+# @DESCRIPTION:
+# Evaluate the given condition using the C preprocessor for CTARGET, if
+# defined, or CHOST. Additional arguments are passed through to the cpp
+# command. A typical condition would be in the form defined(__FOO__).
+tc-cpp-is-true() {
+	local CONDITION=${1}
+	shift
+
+	local RESULT=$($(tc-getTARGET_CPP) "${@}" -P - <<-EOF 2>/dev/null
+			#if ${CONDITION}
+			true
+			#endif
+		EOF
+	)
+
+	[[ ${RESULT} == true ]]
+}
+
 # @FUNCTION: tc-is-softfloat
 # @DESCRIPTION:
 # See if this toolchain is a softfloat based one.
@@ -837,13 +858,7 @@ gcc-specs-stack-check() {
 # Return truth if the current compiler generates position-independent code (PIC)
 # which can be linked into executables.
 tc-enables-pie() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__PIE__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__PIE__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp
@@ -855,13 +870,7 @@ tc-enables-pie() {
 #  -fstack-protector-strong
 #  -fstack-protector-all
 tc-enables-ssp() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp-strong
@@ -872,13 +881,7 @@ tc-enables-ssp() {
 #  -fstack-protector-strong
 #  -fstack-protector-all
 tc-enables-ssp-strong() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__SSP_STRONG__) || defined(__SSP_ALL__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp-all
@@ -888,13 +891,7 @@ tc-enables-ssp-strong() {
 # on level corresponding to any of the following options:
 #  -fstack-protector-all
 tc-enables-ssp-all() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__SSP_ALL__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 
