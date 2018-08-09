@@ -2544,7 +2544,6 @@ mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DN
 mail-filter/opendmarc:reports - Install the reports binaries: expire, import, reports, params
 mail-filter/opendmarc:spf - Use the mail-filter/libspf2 for Sender Policy Framework checking
 mail-filter/postgrey:targrey - Enables the targrey patch
-mail-filter/spamassassin:bayes - Require a database (MySQL, SQLite, Postgres, or BerkDB) backend to enable the Bayesian filtering database. If you use the Redis backend, you do not need to enable this flag (Redis support is enabled automatically, and has no external dependencies).
 mail-filter/spamassassin:cron - Install a cron job to update SpamAssassin's rules daily.
 mail-filter/spamassassin:qmail - Build qmail functionality and docs
 mail-filter/spamdyke:ssl - Enables TLS protocol for spamdyke
