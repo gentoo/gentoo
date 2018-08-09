@@ -4,11 +4,13 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 scons-utils toolchain-funcs
+inherit python-any-r1 scons-utils toolchain-funcs vcs-snapshot
+
+MY_P="${P:1}"
 
 DESCRIPTION="A standalone XIM server for SunPinyin"
 HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-${PV}.tar.xz"
+SRC_URI="https://github.com/${PN#*-}/${PN#*-}/archive/v${PV/_rc/-rc}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0"
@@ -20,7 +22,7 @@ RDEPEND="~app-i18n/sunpinyin-${PV}:=
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-S="${WORKDIR}/${P:1}"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
