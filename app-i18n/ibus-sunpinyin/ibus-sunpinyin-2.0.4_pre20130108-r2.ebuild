@@ -1,11 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
+PLOCALES="zh_CN"
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 scons-utils toolchain-funcs
 
-DESCRIPTION="The SunPinYin IMEngine for IBus Framework"
+inherit l10n python-single-r1 scons-utils toolchain-funcs
+
+DESCRIPTION="SunPinyin engine for IBus"
 HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/sunpinyin-${PV}.tar.xz"
 
@@ -13,6 +15,7 @@ LICENSE="LGPL-2.1 CDDL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+nls"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	app-i18n/ibus[python,${PYTHON_USEDEP}]
@@ -21,29 +24,24 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
-
-src_unpack() {
-	default
-	mv "${WORKDIR}/sunpinyin-${PV}" "${S}" || die
-}
+S="${WORKDIR}/${P#*-}"
 
 src_prepare() {
-	sed -i -e "s/python/${EPYTHON}/" wrapper/ibus/setup/ibus-setup-sunpinyin.in || die
-}
+	sed -i "/^locales/s/'.*'/$(l10n_get_locales | sed "s/\([^[:space:]]\+\)/\'\1\',/g")/" wrapper/ibus/SConstruct
+	sed -i "s/python/${EPYTHON}/" wrapper/ibus/setup/${PN/-/-setup-}.in
 
-src_configure() {
+	default
 	tc-export CXX
-	myesconsargs=(
-		--prefix="${EPREFIX}"/usr
-		--libexecdir="${EPREFIX}"/usr/libexec
-	)
 }
 
 src_compile() {
-	escons -C wrapper/ibus
+	escons -C wrapper/ibus \
+		--prefix="${EPREFIX}"/usr \
+		--libdir="${EPREFIX}"/usr/$(get_libdir) \
+		--libexecdir="${EPREFIX}"/usr/libexec
 }
 
 src_install() {
-	escons -C wrapper/ibus --install-sandbox="${ED}" install
+	escons -C wrapper/ibus --install-sandbox="${D}" install
+	dodoc wrapper/ibus/README
 }
