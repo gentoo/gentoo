@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit readme.gentoo scons-utils toolchain-funcs
 
 DESCRIPTION="The SunPinyin IMEngine Wrapper for XIM Framework"
-HOMEPAGE="https://sunpinyin.googlecode.com/"
+HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
