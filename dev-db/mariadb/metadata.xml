@@ -8,8 +8,6 @@
 <use>
   <flag name="backup">Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption</flag>
   <flag name="client-libs">Build the client libraries from the server package instead of the C Connector packages</flag>
-  <flag name="cluster">Add support for NDB clustering (deprecated)</flag>
-  <flag name="community">Enables the community features from upstream.</flag>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
   <flag name="extraengine">Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="galera">Enables galera replication</flag>
@@ -20,8 +18,6 @@
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
   <flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
   <flag name="libressl">Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
-  <flag name="max-idx-128">Raise the max index per table limit from 64 to 128</flag>
-  <flag name="minimal">Install client programs only, no server</flag>
   <flag name="mroonga">Add support for the Mroonga engine for interfacing with the Groonga text search</flag>
   <flag name="numa">Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)</flag>
   <flag name="openssl">Enable SSL connections and crypto functions using <pkg>dev-libs/openssl</pkg></flag>
