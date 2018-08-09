@@ -1,8 +1,6 @@
-diff --git a/wrapper/scim/SConstruct b/wrapper/scim/SConstruct
-index 7739300..ef7c69b 100644
---- a/wrapper/scim/SConstruct
-+++ b/wrapper/scim/SConstruct
-@@ -3,7 +3,7 @@ import SCons.Tool.textfile
+--- a/SConstruct
++++ b/SConstruct
+@@ -3,7 +3,7 @@
  
  locales = []
  
@@ -11,7 +9,7 @@ index 7739300..ef7c69b 100644
  version = '2.0.3'
  
  AddOption('--prefix', dest='prefix', metavar='DIR',
-@@ -51,9 +51,6 @@ if GetOption('datadir') is not None:
+@@ -51,9 +51,6 @@
  
  opts.Save('configure.conf', env)
  
@@ -21,7 +19,7 @@ index 7739300..ef7c69b 100644
  envvar = [('CC', 'CC'),
            ('CXX', 'CXX'),
            ('CFLAGS', 'CFLAGS'),
-@@ -75,6 +72,10 @@ extra_cflags += ' -Isrc'
+@@ -75,6 +72,10 @@
  env.Append(CFLAGS=extra_cflags)
  env.Append(CXXFLAGS=extra_cflags)
  env.Replace(SHLIBPREFIX = '')
