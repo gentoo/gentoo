@@ -6,10 +6,10 @@ EAPI=6
 inherit systemd toolchain-funcs
 
 DESCRIPTION="A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon"
-HOMEPAGE="http://www.xelerance.com/services/software/xl2tpd/"
+HOMEPAGE="https://github.com/xelerance/xl2tpd"
 SRC_URI="https://github.com/xelerance/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 
