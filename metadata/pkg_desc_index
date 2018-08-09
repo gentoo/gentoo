@@ -1841,7 +1841,7 @@ dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/couchdb 1.7.1 1.7.2: Distributed, fault-tolerant and schema-free document-oriented database
+dev-db/couchdb 1.7.2: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/freetds 1.00.41: Tabular Datastream Library
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
@@ -10548,7 +10548,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/pybugz 0.12.1 0.13: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.2.5: A cross-platform web browser using QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.49.7.0_p0: Seamonkey Web Browser
+www-client/seamonkey 2.49.9.1_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
