@@ -599,10 +599,10 @@ if [[ ${ETYPE} == sources ]]; then
 		>=sys-devel/binutils-2.11.90.0.31
 	)"
 	RDEPEND="!build? (
-		>=sys-libs/ncurses-5.2
-		sys-devel/make
 		dev-lang/perl
 		sys-devel/bc
+		sys-devel/make
+		>=sys-libs/ncurses-5.2
 		virtual/libelf
 	)"
 
