@@ -1,0 +1,23 @@
+--- a/spec/std/http/server/server_spec.cr
++++ b/spec/std/http/server/server_spec.cr
+@@ -381,7 +381,9 @@ module HTTP
+     end
+ 
+     describe "#bind_ssl" do
+-      it "binds SSL server context" do
++      # gentoo's FEATURES=network-sandbox blocks external network:
++      #   connect: Connection timed out (Errno)
++      pending "binds SSL server context" do
+         server = Server.new do |context|
+           context.response.puts "Test Server (#{context.request.headers["Host"]?})"
+           context.response.close
+--- a/spec/std/http/web_socket_spec.cr
++++ b/spec/std/http/web_socket_spec.cr
+@@ -335,4 +335,6 @@ describe HTTP::WebSocket do
+   end
+ 
+-  it "negotiates over HTTPS correctly" do
++  # gentoo's FEATURES=network-sandbox blocks external network:
++  #   connect: Connection timed out (Errno)
++  pending "negotiates over HTTPS correctly" do
+     address_chan = Channel(Socket::IPAddress).new
