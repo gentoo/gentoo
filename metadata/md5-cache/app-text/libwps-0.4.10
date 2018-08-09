@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen )
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/librevenge
+DESCRIPTION=Microsoft Works file word processor format import filter library
+EAPI=7
+HOMEPAGE=https://sourceforge.net/p/libwps/wiki/Home/
+IUSE=doc debug static-libs tools
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~x86
+LICENSE=|| ( LGPL-2.1 MPL-2.0 )
+RDEPEND=dev-libs/librevenge
+SLOT=0
+SRC_URI=mirror://sourceforge/libwps/libwps-0.4.10.tar.xz
+_md5_=eaa19a85fa0c6d814039fabe146a8096
