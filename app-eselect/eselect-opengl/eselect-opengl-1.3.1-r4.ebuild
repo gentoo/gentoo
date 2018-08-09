@@ -49,11 +49,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if path_exists "${EROOT}"/usr/lib*/opengl; then
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local opengl_dirs=( "${EROOT}"/usr/lib*/opengl )
+	${shopt_save}
+	if [[ -n ${opengl_dirs[@]} ]]; then
 		# delete broken symlinks
-		find "${EROOT}"/usr/lib*/opengl -xtype l -delete
+		find "${opengl_dirs[@]}" -xtype l -delete
 		# delete empty leftover directories (they confuse eselect)
-		find "${EROOT}"/usr/lib*/opengl -depth -type d -empty -exec rmdir -v {} +
+		find "${opengl_dirs[@]}" -depth -type d -empty -exec rmdir -v {} +
 	fi
 
 	if [[ -n "${OLD_IMPL}" && "${OLD_IMPL}" != '(none)' ]] ; then
