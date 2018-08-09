@@ -233,8 +233,12 @@ src_configure() {
 
 python_compile() {
 	local CMAKE_USE_DIR="${S}"
+	ceph_src_configure
+
+	rm -r "${BUILD_DIR}/lib/cython_modules" || die
 
 	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
+	emake VERBOSE=1 clean
 	emake VERBOSE=1 all
 
 	# python modules are only compiled with "make install" so we need to do this to
@@ -273,7 +277,7 @@ src_compile() {
 		) || die "failed to build node modules for mgr-frontend"
 	fi
 
-	cmake-utils_src_make all
+	cmake-utils_src_make VERBOSE=1 all
 
 	# we have to do this here to prevent from building everything multiple times
 	BUILD_DIR="${CMAKE_BUILD_DIR}" python_copy_sources
