@@ -5,11 +5,13 @@ EAPI="6"
 PLOCALES="zh_CN"
 PYTHON_COMPAT=( python2_7 )
 
-inherit l10n python-single-r1 scons-utils toolchain-funcs
+inherit l10n python-single-r1 scons-utils toolchain-funcs vcs-snapshot
+
+MY_P="${P#*-}"
 
 DESCRIPTION="SunPinyin engine for IBus"
 HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
-SRC_URI="https://dev.gentoo.org/~jstein/dist/sunpinyin-${PV}.tar.xz"
+SRC_URI="https://github.com/${PN#*-}/${PN#*-}/archive/v${PV/_rc/-rc}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0"
@@ -24,7 +26,9 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
-S="${WORKDIR}/${P#*-}"
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}"/${PN}-python3.patch )
 
 src_prepare() {
 	sed -i "/^locales/s/'.*'/$(l10n_get_locales | sed "s/\([^[:space:]]\+\)/\'\1\',/g")/" wrapper/ibus/SConstruct
