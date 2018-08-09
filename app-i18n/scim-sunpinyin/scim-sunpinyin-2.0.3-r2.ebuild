@@ -1,10 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils scons-utils
+EAPI="6"
+PYTHON_COMPAT=( python2_7 )
 
-DESCRIPTION="The SunPinyin IMEngine for Smart Common Input Method (SCIM)"
+inherit python-any-r1 scons-utils toolchain-funcs
+
+DESCRIPTION="SunPinyin IMEngine for SCIM"
 HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN#*-}/${P}.tar.gz"
 
@@ -13,19 +15,27 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="app-i18n/scim
-	~app-i18n/sunpinyin-2.0.3
-	x11-libs/gtk+:2 "
-RDEPEND="${DEPEND}"
+RDEPEND="app-i18n/scim
+	~app-i18n/sunpinyin-${PV}:=
+	x11-libs/gtk+:2"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-force-switch.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-force-switch.patch"
+	default
+	tc-export CXX
 }
 
 src_compile() {
-	escons --prefix="/usr"
+	escons \
+		--prefix="${EPREFIX}"/usr \
+		--libdir="${EPREFIX}"/usr/$(get_libdir) \
+		--libexecdir="${EPREFIX}"/usr/libexec
 }
 
 src_install() {
-	escons --prefix="/usr" --install-sandbox="${D}" install
+	escons --install-sandbox="${D}" install
+	einstalldocs
 }
