@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/coreos/fleet
 IUSE=doc examples test
 LICENSE=Apache-2.0
 SLOT=0
-_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	04e50685fbf3d89e5c67ac6a385dd595	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	b1b1a2f04ac3554b363272ae6fa51f8a	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=cb4dc1f9e22f693eb1aea9724150bd3a
