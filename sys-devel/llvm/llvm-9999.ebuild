@@ -89,6 +89,18 @@ src_prepare() {
 	cmake-utils_src_prepare
 }
 
+# Is LLVM being linked against libc++?
+is_libcxx_linked() {
+	local code='#include <ciso646>
+#if defined(_LIBCPP_VERSION)
+	HAVE_LIBCXX
+#endif
+'
+	local out=$($(tc-getCXX) ${CXXFLAGS} ${CPPFLAGS} -x c++ -E -P - <<<"${code}") || return 1
+
+	[[ ${out} == *HAVE_LIBCXX* ]]
+}
+
 multilib_src_configure() {
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
@@ -131,6 +143,15 @@ multilib_src_configure() {
 		# disable OCaml bindings (now in dev-ml/llvm-ocaml)
 		-DOCAMLFIND=NO
 	)
+
+	if is_libcxx_linked; then
+		# Smart hack: alter version suffix -> SOVERSION when linking
+		# against libc++. This way we won't end up mixing LLVM libc++
+		# libraries with libstdc++ clang, and the other way around.
+		mycmakeargs+=(
+			-DLLVM_VERSION_SUFFIX="libcxx"
+		)
+	fi
 
 #	Note: go bindings have no CMake rules at the moment
 #	but let's kill the check in case they are introduced
