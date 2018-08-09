@@ -26,11 +26,15 @@
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "${ECLASS}.eclass API in EAPI ${EAPI} not yet established."
 esac
 
-DEPEND="virtual/pkgconfig"
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	DEPEND="virtual/pkgconfig"
+else
+	BDEPEND="virtual/pkgconfig"
+fi
 
 # @FUNCTION: _systemd_get_dir
 # @USAGE: <variable-name> <fallback-directory>
