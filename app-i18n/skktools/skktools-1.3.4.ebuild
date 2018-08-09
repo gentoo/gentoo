@@ -1,19 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit elisp-common vcs-snapshot
 
-EGIT_COMMIT="28e36bac97dc8ed089bac409bef15f1831b6adde"
-
 DESCRIPTION="SKK utilities to manage dictionaries"
 HOMEPAGE="http://openlab.jp/skk/"
-SRC_URI="https://github.com/skk-dev/skktools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/skk-dev/skktools/archive/${P//./_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="emacs"
 
 RDEPEND="dev-libs/glib:2
@@ -22,7 +20,6 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS=( ChangeLog README.md )
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
@@ -48,7 +45,7 @@ src_install() {
 	done
 
 	insinto /usr/share/${PN}
-	doins *.awk *.scm
+	doins *.{awk,scm}
 	rm -rf convert2skk/obsolete
 	doins -r convert2skk filters
 
