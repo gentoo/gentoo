@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-games/clanlib:2.3[opengl,mikmod] virtual/pkgconfig
+DESCRIPTION=Port from an old amiga game
+EAPI=7
+HOMEPAGE=http://methane.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-games/clanlib:2.3[opengl,mikmod]
+SLOT=0
+SRC_URI=mirror://sourceforge/methane/methane-1.5.1.tgz
+_eclasses_=desktop	1b286a7e7143d8c4ec89cd0d2743a097
+_md5_=c2a287d2448cbb4246722267d082a5e3
