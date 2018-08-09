@@ -120,11 +120,6 @@ pkg_postinst() {
 	enewgroup openvpn
 	enewuser openvpn "" "" "" openvpn
 
-	if path_exists -o "${EROOT%/}"/etc/openvpn/*/local.conf ; then
-		ewarn "WARNING: The openvpn init script has changed"
-		ewarn ""
-	fi
-
 	elog "The openvpn init script expects to find the configuration file"
 	elog "openvpn.conf in /etc/openvpn along with any extra files it may need."
 	elog ""

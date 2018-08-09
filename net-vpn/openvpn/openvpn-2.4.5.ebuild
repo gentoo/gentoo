@@ -124,11 +124,6 @@ pkg_postinst() {
 	enewgroup openvpn
 	enewuser openvpn "" "" "" openvpn
 
-	if path_exists -o "${EROOT%/}"/etc/openvpn/*/local.conf ; then
-		ewarn "WARNING: The openvpn init script has changed"
-		ewarn ""
-	fi
-
 	if use x64-macos; then
 		elog "You might want to install tuntaposx for TAP interface support:"
 		elog "http://tuntaposx.sourceforge.net"
