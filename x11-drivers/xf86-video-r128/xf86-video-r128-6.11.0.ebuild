@@ -14,8 +14,6 @@ IUSE="dri"
 RDEPEND=">=x11-base/xorg-server-1.2"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-fix-stdint_h.patch )
-
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable dri)
