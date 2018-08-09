@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="Extremely fast non-cryptographic hash algorithm"
 HOMEPAGE="http://www.xxhash.com"
 SRC_URI="https://github.com/Cyan4973/xxHash/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -16,8 +18,16 @@ DEPEND=""
 
 S="${WORKDIR}/xxHash-${PV}"
 
+src_compile() {
+	emake AR="$(tc-getAR)" CC="$(tc-getCC)"
+}
+
 src_install() {
-	PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" emake DESTDIR="${D}" install
+	PREFIX="${EPREFIX}/usr" \
+	LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+	MANDIR="${EPREFIX}/usr/share/man/man1" \
+	emake DESTDIR="${D}" install
+
 	if ! use static-libs ; then
 		rm "${ED}"/usr/$(get_libdir)/libxxhash.a || die
 	fi
