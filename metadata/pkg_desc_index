@@ -3203,7 +3203,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0: Libraries and applications to access smartcards
 dev-libs/openssl 0.9.8z_p8 0.9.8z_p8-r1 1.0.2o-r3: full-strength general purpose cryptography library (including SSL and TLS)
-dev-libs/ossp-uuid 1.6.2-r4 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
+dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
 dev-libs/pkcs11-helper 1.21-r1: PKCS#11 helper library
@@ -9888,7 +9888,7 @@ sys-apps/xinetd 2.3.15-r2 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/bioapi 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
-sys-auth/elogind 235.2-r2: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 235.2-r2 238.1: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.1 13.0.1: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2 0.6.0-r2: library to add support for consumer fingerprint readers
