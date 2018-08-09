@@ -402,7 +402,6 @@ src_configure() {
 		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
-		--with-alloc=system
 		--with-build-version="Gentoo official package"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
