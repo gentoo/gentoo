@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic games
+EAPI=7
+inherit desktop
 
 DESCRIPTION="Port from an old amiga game"
 HOMEPAGE="http://methane.sourceforge.net/"
@@ -15,29 +15,31 @@ IUSE=""
 
 RDEPEND="dev-games/clanlib:2.3[opengl,mikmod]"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
+
+	eapply "${FILESDIR}"/${P}-gentoo.patch
+
+	# From Fedora
+	eapply "${FILESDIR}"/${P}-gcc5.patch
+	eapply "${FILESDIR}"/${P}-fullscreen.patch
+
 	sed -i \
-		-e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}:" \
+		-e "s:@GENTOO_DATADIR@:/usr/share:" \
 		sources/target.cpp || die
 
 	# fix weird parallel make issue wrt #450422
 	mkdir build || die
-	append-cxxflags -Wno-narrowing # build with gcc5 (bug #573788)
 }
 
 src_install() {
-	dogamesbin methane
-	insinto "${GAMES_DATADIR}"/${PN}
+	dobin methane
+	insinto /usr/share/${PN}
 	doins resources/*
-	dodir "${GAMES_STATEDIR}"
-	touch "${D}/${GAMES_STATEDIR}"/methanescores
-	fperms g+w "${GAMES_STATEDIR}"/methanescores
 	newicon docs/puff.gif ${PN}.gif
 	make_desktop_entry ${PN} "Super Methane Brothers" /usr/share/pixmaps/${PN}.gif
-	dodoc authors.txt history.txt readme.txt
-	dohtml docs/*
-	prepgamesdirs
+	HTML_DOCS="docs/*" dodoc authors.txt history.txt readme.txt
 }
