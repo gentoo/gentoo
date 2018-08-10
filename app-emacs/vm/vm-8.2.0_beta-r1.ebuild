@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="bbdb ssl"
 
-DEPEND="bbdb? ( <app-emacs/bbdb-3 )"
+DEPEND="bbdb? ( app-emacs/bbdb )"
 RDEPEND="${DEPEND}
 	ssl? ( net-misc/stunnel )"
 BDEPEND="sys-apps/texinfo"
