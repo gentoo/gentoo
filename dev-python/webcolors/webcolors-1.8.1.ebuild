@@ -16,7 +16,8 @@ LICENSE="BSD"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="test"
 
-DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
 	nosetests --verbose || die
