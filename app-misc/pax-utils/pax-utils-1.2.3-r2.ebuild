@@ -38,6 +38,12 @@ _emake() {
 		"$@"
 }
 
+pkg_setup() {
+	if use python; then
+		python-single-r1_pkg_setup
+	fi
+}
+
 src_configure() {
 	# Avoid slow configure+gnulib+make if on an up-to-date Linux system
 	if use prefix || ! use kernel_linux ||
