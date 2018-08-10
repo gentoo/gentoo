@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit java-pkg-2
 
@@ -14,8 +14,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=virtual/jdk-1.7"
-RDEPEND=">=virtual/jre-1.7"
+DEPEND=">=virtual/jdk-1.8"
+RDEPEND=">=virtual/jre-1.8"
 
 S="${WORKDIR}/hawtjni-${MY_P}/${PN}"
 
