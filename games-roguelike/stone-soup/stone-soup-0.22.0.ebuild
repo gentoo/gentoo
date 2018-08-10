@@ -6,13 +6,13 @@
 
 EAPI=6
 VIRTUALX_REQUIRED="manual"
-inherit eutils gnome2-utils toolchain-funcs versionator
+inherit eutils gnome2-utils toolchain-funcs eapi7-ver
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="http://crawl.develz.org/wordpress/"
 SRC_URI="
-	https://crawl.develz.org/release/$(get_version_component_range 1-2)/${PN/-/_}-${PV}.tar.xz
+	https://crawl.develz.org/release/$(ver_cut 1-2)/${PN/-/_}-${PV}.tar.xz
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.svg
 "
@@ -23,7 +23,7 @@ SRC_URI="
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug luajit ncurses test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121
