@@ -6,9 +6,9 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<changelog>http://megaglest.svn.sourceforge.net/viewvc/megaglest/trunk/docs/CHANGELOG.txt?revision=3397</changelog>
+		<changelog>https://github.com/MegaGlest/megaglest-source/blob/develop/docs/CHANGELOG.txt</changelog>
 		<doc lang="en">http://glest.wikia.com/wiki/MG</doc>
-		<bugs-to>https://sourceforge.net/tracker/?group_id=300350&amp;atid=1266776</bugs-to>
+		<bugs-to>https://github.com/MegaGlest/megaglest-source/issues</bugs-to>
 		<remote-id type="github">MegaGlest/megaglest-source</remote-id>
 	</upstream>
 	<use>
