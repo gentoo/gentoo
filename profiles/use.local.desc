@@ -4175,8 +4175,9 @@ net-libs/libsrtp:aesicm - Use AES ICM cryptographic algorithm
 net-libs/libsrtp:console - Use /dev/console instead of stdout for error messages
 net-libs/libsrtp:openssl - Use OpenSSL crypto primitives
 net-libs/libsrtp:syslog - Use syslog for error messages
-net-libs/libssh:gcrypt - Prefer dev-libs/libgcrypt over dev-libs/openssl for encryption
+net-libs/libssh:gcrypt - Use dev-libs/libgcrypt as TLS provider
 net-libs/libssh:gssapi - Enable gssapi support
+net-libs/libssh:mbedtls - Use net-libs/mbedtls as TLS provider
 net-libs/libssh:pcap - Build with PCAP output support
 net-libs/libssh:server - Build with SSH server support
 net-libs/libssh:sftp - Build with SFTP support
