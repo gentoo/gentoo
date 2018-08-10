@@ -9,8 +9,8 @@ EAPI=6
 inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
-HOMEPAGE="http://www.bzip.org/"
-SRC_URI="http://www.bzip.org/${PV}/${P}.tar.gz"
+HOMEPAGE="https://sourceware.org/bzip2/"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
