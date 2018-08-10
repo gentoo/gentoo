@@ -12,7 +12,7 @@ SRC_URI="http://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc dolphin nautilus samba +sftp shibboleth test"
+IUSE="doc dolphin nautilus shibboleth test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-libs/qtkeychain[qt5(+)]
@@ -30,8 +30,6 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 		kde-frameworks/kio:5
 	)
 	nautilus? ( dev-python/nautilus-python )
-	samba? ( >=net-fs/samba-3.5 )
-	sftp? ( >=net-libs/libssh-0.5 )
 	shibboleth? ( dev-qt/qtwebkit:5 )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -71,10 +69,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DSYSCONF_INSTALL_DIR="${EPREFIX}"/etc
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
-		-DWITH_DOC=$(usex doc)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx=$(usex !doc)
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5=$(usex !dolphin)
-		-DCMAKE_DISABLE_FIND_PACKAGE_Libsmbclient=$(usex !samba)
-		-DCMAKE_DISABLE_FIND_PACKAGE_LibSSH=$(usex !sftp)
 		-DNO_SHIBBOLETH=$(usex !shibboleth)
 		-DUNIT_TESTING=$(usex test)
 	)
