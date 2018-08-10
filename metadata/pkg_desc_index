@@ -8687,7 +8687,7 @@ net-libs/libsrtp 1.6.0 2.2.0: Open-source implementation of the Secure Real-time
 net-libs/libssh 0.7.4: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 1.8.0-r1: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
-net-libs/libtorrent 0.13.6 0.13.6-r1 0.13.7-r1: BitTorrent library written in C++ for *nix
+net-libs/libtorrent 0.13.7-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.5-r1: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
@@ -9055,7 +9055,7 @@ net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with 
 net-p2p/ncdc 1.19.1: ncurses directconnect client
 net-p2p/qbittorrent 4.0.4 4.1.1: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.3-r1: P2P private sharing application
-net-p2p/rtorrent 0.9.6 0.9.6-r1 0.9.7-r1: BitTorrent Client using libtorrent
+net-p2p/rtorrent 0.9.7-r1: BitTorrent Client using libtorrent
 net-p2p/syncthing 0.14.38: Open Source Continuous File Synchronization
 net-p2p/torrentinfo 1.8.6-r1: A torrent file parser
 net-p2p/transmission 2.93 2.94: A Fast, Easy and Free BitTorrent client
