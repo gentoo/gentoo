@@ -14,7 +14,7 @@ https://github.com/albertlauncher/plugins/archive/${PLUGINS_HASH}.tar.gz -> ${P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="debug"
 
 RDEPEND="
