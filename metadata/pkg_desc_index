@@ -5118,7 +5118,7 @@ dev-python/oauthlib 2.0.2 2.0.6: Spec-compliant and thorough implementation of t
 dev-python/oct2py 3.6.0: Python to GNU Octave bridge
 dev-python/odo 0.5.0 0.5.0-r1: Data migration in python
 dev-python/olefile 0.44: Python package to parse, read and write Microsoft OLE2 files
-dev-python/openpyxl 2.3.0 2.4.11: Pure python reader and writer of Excel OpenXML files
+dev-python/openpyxl 2.4.11: Pure python reader and writer of Excel OpenXML files
 dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output for nosetests
 dev-python/openstackdocstheme 1.16.1 1.18.1: Theme and extension support for Sphinx documentation
 dev-python/openstacksdk 0.9.17 0.11.3: A collection of libraries for building applications to work with OpenStack.
