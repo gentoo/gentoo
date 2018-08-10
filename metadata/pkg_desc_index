@@ -8412,7 +8412,7 @@ net-analyzer/tcpreplay 4.1.2-r1: utilities for editing and replaying previously 
 net-analyzer/tcpstat 1.5 1.5-r1: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
-net-analyzer/testssl 2.9.5: Tool to check TLS/SSL cipher support
+net-analyzer/testssl 2.9.5_p5: Tool to check TLS/SSL cipher support
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
 net-analyzer/tleds 1.05_beta11-r2: Blinks keyboard LEDs indicating outgoing and incoming network packets on selected network interface
@@ -9889,7 +9889,7 @@ sys-apps/xinetd 2.3.15-r2 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/bioapi 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
-sys-auth/elogind 235.2-r2 238.1: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 238.1: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.1 13.0.1: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0-r1 0.5.0-r2 0.6.0-r2: library to add support for consumer fingerprint readers
@@ -10825,7 +10825,7 @@ x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0-r1: OpenGL-based 3D File Manager
 x11-misc/alacarte 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.14.15: Desktop agnostic launcher
+x11-misc/albert 0.14.21: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
 x11-misc/arandr 0.1.9: Another XRandR GUI
