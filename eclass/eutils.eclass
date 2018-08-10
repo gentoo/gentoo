@@ -25,19 +25,6 @@ case ${EAPI:-0} in
 	;;
 esac
 
-# @FUNCTION: eqawarn
-# @USAGE: [message]
-# @DESCRIPTION:
-# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
-# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
-# profile.
-if ! declare -F eqawarn >/dev/null ; then
-	eqawarn() {
-		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
-		:
-	}
-fi
-
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
 # @DESCRIPTION:
@@ -411,6 +398,25 @@ in_iuse() {
 
 	has "${flag}" "${liuse[@]#[+-]}"
 }
+
+;;
+esac
+
+case ${EAPI:-0} in
+0|1|2|3|4|5|6)
+
+# @FUNCTION: eqawarn
+# @USAGE: [message]
+# @DESCRIPTION:
+# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
+# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
+# profile.
+if ! declare -F eqawarn >/dev/null ; then
+	eqawarn() {
+		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
+		:
+	}
+fi
 
 ;;
 esac
