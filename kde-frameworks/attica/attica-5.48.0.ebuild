@@ -14,3 +14,12 @@ RDEPEND="
 	$(add_qt_dep qtnetwork)
 "
 DEPEND="${RDEPEND}"
+
+src_test() {
+	# requires network access, bug #661230
+	local myctestargs=(
+		-E "(providertest)"
+	)
+
+	kde5_src_test
+}
