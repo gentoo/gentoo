@@ -24,10 +24,10 @@ RDEPEND="${DEPEND}
 PATCHES=( "${FILESDIR}/${PN}-5.0.0_pre20170128-tests-optional.patch" )
 
 src_test() {
-	# bug 646808
+	# bug 646808, 662592
 	local myctestargs=(
 		-j1
-		-E "(libmediawiki-logintest|libmediawiki-queryimageinfotest)"
+		-E "(libmediawiki-logintest|libmediawiki-logouttest|libmediawiki-queryimageinfotest|libmediawiki-queryimagestest|libmediawiki-queryinfotest|libmediawiki-querysiteinfousergroupstest)"
 	)
 	kde5_src_test
 }
