@@ -1,16 +1,14 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit versionator
+EAPI=7
 
 DOWNLOAD_URL="http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html"
 
-[[ "$(get_version_component_range 4)" == 0 ]] \
-	|| MY_PV_EXT="u$(get_version_component_range 4)"
+[[ "$(ver_cut 4)" == 0 ]] \
+	|| MY_PV_EXT="u$(ver_cut 4)"
 
-MY_PV="$(get_version_component_range 2)${MY_PV_EXT}"
+MY_PV="$(ver_cut 2)${MY_PV_EXT}"
 
 DESCRIPTION="Oracle's documentation bundle (including API) for Java SE"
 HOMEPAGE="http://download.oracle.com/javase/8/docs/"
