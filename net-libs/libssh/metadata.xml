@@ -6,9 +6,9 @@
   <name>Gentoo KDE Project</name>
 </maintainer>
 <use>
-  <flag name="gcrypt">Prefer <pkg>dev-libs/libgcrypt</pkg> over
-    <pkg>dev-libs/openssl</pkg> for encryption</flag>
+  <flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> as TLS provider</flag>
   <flag name="gssapi">Enable gssapi support</flag>
+  <flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
   <flag name="pcap">Build with PCAP output support</flag>
   <flag name="sftp">Build with SFTP support</flag>
   <flag name="ssh1">Build with SSH1 support</flag>
