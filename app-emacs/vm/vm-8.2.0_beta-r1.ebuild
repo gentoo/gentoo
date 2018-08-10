@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit elisp eutils
+inherit elisp
 
 MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
@@ -16,23 +16,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="bbdb ssl"
 
-DEPEND="bbdb? ( app-emacs/bbdb )"
-RDEPEND="!app-emacs/u-vm-color
-	${DEPEND}
+DEPEND="bbdb? ( <app-emacs/bbdb-3 )"
+RDEPEND="${DEPEND}
 	ssl? ( net-misc/stunnel )"
-DEPEND="${DEPEND}
-	sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo"
 
 S="${WORKDIR}/${MY_P}"
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-datadir.patch"
-	epatch "${FILESDIR}/${P}-texinfo-5.patch"
+	eapply "${FILESDIR}/${P}-datadir.patch"
+	eapply "${FILESDIR}/${P}-texinfo-5.patch"
+	eapply "${FILESDIR}/${P}-optional-args.patch"
+	eapply_user
 
 	if ! use bbdb; then
 		elog "Excluding vm-pcrisis.el since the \"bbdb\" USE flag is not set."
-		epatch "${FILESDIR}/${PN}-8.0-no-pcrisis.patch"
+		eapply "${FILESDIR}/${PN}-8.0-no-pcrisis.patch"
 	fi
 }
 
