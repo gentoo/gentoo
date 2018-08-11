@@ -10,10 +10,10 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/bus1/dbus-broker.git"
 else
 	dvar=f0a525477142f64c45b0be9393cc3b5dc3a6d6f9
-	list=05bada3508c21027dbbbf1319f27ed65c7c03bc0
+	list=071841c28d96e9104761af815a7ea367390c3174
 	rbtree=ba0527e9157316cdb60522f23fb884ea196b1346
 	sundry=50c8ccf01b39b3f11e59c69d1cafea5bef5a9769
-	utf8=cc67174f455c9196ebffc37b4d4f249da3dbc66f
+	utf8=a77769a6c5b40c4a2e900cb4d1b59535696ef7e8
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}/${P}.tar.gz
 		https://github.com/c-util/c-dvar/archive/${dvar}/c-dvar-${dvar}.tar.gz
 		https://github.com/c-util/c-list/archive/${list}/c-list-${list}.tar.gz
@@ -29,11 +29,16 @@ HOMEPAGE="https://github.com/bus1/dbus-broker/wiki"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="audit +launcher selinux"
+IUSE="audit doc +launcher selinux"
 
 RDEPEND="
-	audit? ( sys-process/audit )
+	audit? (
+		>=sys-process/audit-2.7
+		>=sys-libs/libcap-ng-0.6
+	)
+	doc? ( dev-python/docutils )
 	launcher? (
+		>=sys-apps/dbus-1.10
 		>=dev-libs/expat-2.2
 		>=dev-libs/glib-2.50:2
 		>=sys-apps/systemd-230
@@ -59,9 +64,10 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-D audit=$(usex audit true false)
-		-D launcher=$(usex launcher true false)
-		-D selinux=$(usex selinux true false)
+		-Daudit=$(usex audit true false)
+		-Ddocs=$(usex doc true false)
+		-Dlauncher=$(usex launcher true false)
+		-Dselinux=$(usex selinux true false)
 	)
 	meson_src_configure
 }
