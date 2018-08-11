@@ -24,3 +24,8 @@ DEPEND="${RDEPEND}
 RESTRICT+=" test"
 
 DOCS=( DESIGN docs/DESIGN.kconfig docs/options.md )
+
+src_prepare() {
+	kde5_src_prepare
+	cmake_comment_add_subdirectory autotests # bug 663372
+}
