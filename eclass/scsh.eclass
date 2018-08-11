@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
+# @DEAD
+# Joonas Niilola <juippis@gmail.com> (08 Aug 2018)
+# Unused, judging from history unmaintained and lacks documentation.
+# bugs #658284, #637876. Removal in ~30 days.
+
 inherit eutils multilib
 
 SLOT="0"
