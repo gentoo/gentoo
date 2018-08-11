@@ -1966,6 +1966,11 @@
       <name>Jimi Huotari</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>dracwyrm@gentoo.org</email>
+      <name>Jonathan Scruggs</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>layman@gentoo.org</email>
