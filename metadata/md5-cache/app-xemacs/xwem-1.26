@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=X Emacs Window Manager
+EAPI=6
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=app-xemacs/xemacs-base app-xemacs/xlib app-xemacs/strokes app-xemacs/edit-utils app-xemacs/text-modes app-xemacs/time app-xemacs/slider app-xemacs/elib app-xemacs/ilisp app-xemacs/mail-lib app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/xwem-1.26-pkg.tar.gz
+_eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
+_md5_=644903c34bff838658931f36386c7aee
