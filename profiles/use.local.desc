@@ -3580,6 +3580,7 @@ media-video/vdr:yaepg - Enables support for the vdr-yaepg plugin
 media-video/vlc:X - Enable support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface
 media-video/vlc:aom - Enable experimental support for AV1 codec
 media-video/vlc:archive - Enable support for libarchive stream extractor
+media-video/vlc:aribsub - Enable support for decoding ARIB STD-B24 subtitles
 media-video/vlc:atmo - Enable support for AtmoLight (homebrew Ambient Lighting Technology)
 media-video/vlc:audioqueue - Enable AudioQueue audio module for Mac OS X
 media-video/vlc:avcodec - Enable libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg
@@ -3602,6 +3603,7 @@ media-video/vlc:growl - Enable growl notification support (over UDP for remote a
 media-video/vlc:gstreamer - Enable GStreamer based decoding support (currently supports only video decoding)
 media-video/vlc:httpd - Enable a web based interface for vlc
 media-video/vlc:kate - Adds support for Ogg Kate subtitles via libkate
+media-video/vlc:kms - Enable kernel mode setting video output plugin via x11-libs/libdrm
 media-video/vlc:libtar - Uses libtar instead of the built-in tar reader for reading custom skins
 media-video/vlc:libtiger - Enable Ogg Kate subtitles rendering using libtiger
 media-video/vlc:linsys - Enable support for Linux Linear Systems Ltd. SDI and HD-SDI input cards
