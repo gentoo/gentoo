@@ -465,12 +465,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
-		"/usr/$(get_libdir)/vlc/vlc-cache-gen" "/usr/$(get_libdir)/vlc/plugins/"
+	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/libexec/vlc/vlc-cache-gen" ]] ; then
+		einfo "Running /usr/libexec/vlc/vlc-cache-gen on /usr/libexec/vlc/plugins/"
+		"/usr/libexec/vlc/vlc-cache-gen" "/usr/libexec/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
-		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
+		ewarn "Please run /usr/libexec/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
@@ -480,8 +480,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e /usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
-		rm /usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e /usr/libexec/vlc/plugins/plugins.dat ]]; then
+		rm /usr/libexec/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	gnome2_icon_cache_update
