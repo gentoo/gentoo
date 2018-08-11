@@ -8,6 +8,7 @@
 	<use>
 		<flag name="aom">Enable experimental support for AV1 codec</flag>
 		<flag name="archive">Enable support for libarchive stream extractor</flag>
+		<flag name="aribsub">Enable support for decoding ARIB STD-B24 subtitles</flag>
 		<flag name="atmo">Enable support for AtmoLight (homebrew Ambient Lighting Technology)</flag>
 		<flag name="audioqueue">Enable AudioQueue audio module for Mac OS X</flag>
 		<flag name="avcodec">Enable libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg</flag>
