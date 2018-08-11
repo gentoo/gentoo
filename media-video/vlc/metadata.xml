@@ -13,7 +13,7 @@
 		<flag name="chromaprint">Enable libchromaprint for Chromaprint based audio fingerprinter support</flag>
 		<flag name="chromecast">Enable experimental support for Google Chromecast</flag>
 		<flag name="dc1394">Enable IIDC cameras support</flag>
-		<flag name="directx">Enable Win32 DirectX support</flag>
+		<flag name="directx">Enable Win32 DirectX, D3D11va and DxVA2 support</flag>
 		<flag name="dvbpsi">Enable support for Mpeg-TS files (.ts, .m2ts, .mts) via <pkg>media-libs/libdvbpsi</pkg></flag>
 		<flag name="encode">Enable streaming-output support and videolan manager to control multiple streams from within one instance</flag>
 		<flag name="faad">Enable AAC audio decoding library support via media-libs/faad2</flag>
@@ -55,7 +55,7 @@
 		<flag name="upnp">Enable support for the Intel SDK stack based UPnP discovery module instead of CyberLink</flag>
 		<flag name="vpx">Enable the decoder(s) from the WebM VP8 / VP9 Codec SDK</flag>
 		<flag name="wma-fixed">Enable fixed point WMA decoder</flag>
-		<flag name="X">Enable support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface</flag>
+		<flag name="X">Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface</flag>
 		<flag name="x265">Support X265 Encoder</flag>
 		<flag name="zeroconf">Enable support for zero-configuration networking via avahi</flag>
 		<flag name="zvbi">Enable support for teletext subtitles via the zvbi library</flag>
