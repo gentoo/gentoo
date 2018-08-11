@@ -3220,7 +3220,7 @@ dev-libs/qoauth 2.0.1_pre20160315-r3: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qtkeychain 0.8.0: Qt API for storing passwords securely
-dev-libs/quazip 0.7.3-r1 0.7.6: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
+dev-libs/quazip 0.7.6: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2016.05.01: An efficent, principled regular expression library
 dev-libs/redland 1.0.15 1.0.16: High-level interface for the Resource Description Framework
@@ -7714,7 +7714,7 @@ media-libs/skstream 0.3.9: FreeSockets - Portable C++ classes for IP (sockets) a
 media-libs/slv2 0.6.6-r2: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
-media-libs/soxr 0.1.2 0.1.3-r1: SoX Resampler library
+media-libs/soxr 0.1.3-r1: SoX Resampler library
 media-libs/spandsp 0.0.6: SpanDSP is a library of DSP functions for telephony
 media-libs/speex 1.2.0-r1: Audio compression format designed for speech
 media-libs/speexdsp 1.2_rc3-r2: Audio compression format designed for speech -- DSP
