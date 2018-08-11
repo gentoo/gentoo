@@ -184,10 +184,6 @@ media-sound/pulseaudio equalizer -oss
 # media-sound/lilypond has problems running mpost (bug #416961)
 app-text/asciidoc test
 
-# Jeroen Roovers <jer@gentoo.org> (26 Apr 2012)
-# Untested dependency on net-misc/connman
-dev-qt/qtbearer connman
-
 # Jeroen Roovers <jer@gentoo.org> (19 Apr 2012)
 # Requires sys-power/upower or sys-power/upower-pm-utils which are
 # not much use on HPPA
