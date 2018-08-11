@@ -135,11 +135,6 @@ sys-apps/systemd -gnuefi
 dev-java/oracle-jdk-bin -javafx -nsplugin
 dev-java/oracle-jre-bin -javafx -nsplugin
 
-# Michael Sterrett <mr_bones_@gentoo.org> (21 Apr 2015)
-# None of the fusionsound deps support multilib currently, maybe later.
-# Hiding the use flag fixes bug #545662 for now.
-media-libs/libsdl2 fusionsound
-
 # Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus
