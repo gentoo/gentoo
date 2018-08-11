@@ -2899,7 +2899,6 @@ media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
 media-libs/libsdl:sound - Control audio support (disable at your own risk)
 media-libs/libsdl:tslib - Build with tslib support for touchscreen devices
 media-libs/libsdl:video - Control video support (disable at your own risk)
-media-libs/libsdl2:fusionsound - use FusionSound audio driver
 media-libs/libsdl2:gles - include OpenGL ES support
 media-libs/libsdl2:haptic - Enable the haptic (force feedback) subsystem
 media-libs/libsdl2:joystick - Control joystick support (disable at your own risk)
