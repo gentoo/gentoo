@@ -1,0 +1,49 @@
+From: Elena Grandi <elena.valhalla@gmail.com>
+Date: Thu, 8 Oct 2015 12:11:21 -0700
+Subject: Skip tests that require internet access
+
+Forwarded: not-needed
+Patch-Name: skip_network_needing_test.patch
+---
+ gnupg.py      | 8 ++++----
+ test_gnupg.py | 1 +
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/gnupg.py b/gnupg.py
+index cd662d4..bf6dc64 100644
+--- a/gnupg.py
++++ b/gnupg.py
+@@ -1117,8 +1117,8 @@ class GPG(object):
+         >>> GPGBINARY = os.environ.get('GPGBINARY', 'gpg')
+         >>> gpg = GPG(gpgbinary=GPGBINARY, gnupghome="keys")
+         >>> os.chmod('keys', 0x1C0)
+-        >>> result = gpg.recv_keys('pgp.mit.edu', '92905378')
+-        >>> assert result
++        >>> result = gpg.recv_keys('pgp.mit.edu', '92905378')  # doctest: +SKIP
++        >>> assert result  # doctest: +SKIP
+ 
+         """
+         result = self.result_map['import'](self)
+@@ -1320,8 +1320,8 @@ class GPG(object):
+         >>> GPGBINARY = os.environ.get('GPGBINARY', 'gpg')
+         >>> gpg = GPG(gpgbinary=GPGBINARY, gnupghome='keys')
+         >>> os.chmod('keys', 0x1C0)
+-        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>')
+-        >>> assert result, 'Failed using default keyserver'
++        >>> result = gpg.search_keys('<vinay_sajip@hotmail.com>')  # doctest: +SKIP
++        >>> assert result, 'Failed using default keyserver'  # doctest: +SKIP
+         >>> #keyserver = 'keyserver.ubuntu.com'
+         >>> #result = gpg.search_keys('<vinay_sajip@hotmail.com>', keyserver)
+         >>> #assert result, 'Failed using keyserver.ubuntu.com'
+diff --git a/test_gnupg.py b/test_gnupg.py
+index 7a5b705..25817da 100644
+--- a/test_gnupg.py
++++ b/test_gnupg.py
+@@ -834,6 +834,7 @@ class GPGTestCase(unittest.TestCase):
+         logger.debug("test_filename_with_spaces ends")
+ 
+     #@skipIf(os.name == 'nt', 'Test not suitable for Windows')
++    @unittest.skip('requires network')
+     def test_search_keys(self):
+         "Test that searching for keys works"
+         r = self.gpg.search_keys('<vinay_sajip@hotmail.com>')
