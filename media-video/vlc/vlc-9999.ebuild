@@ -34,7 +34,7 @@ IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus 
 	+gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav libcaca
 	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
-	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp
+	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp
 	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl svg
 	taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
 	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
@@ -350,7 +350,6 @@ src_configure() {
 		$(use_enable pulseaudio pulse)
 		$(use_enable qt5 qt)
 		$(use_enable rdp freerdp)
-		$(use_enable rtsp realrtsp)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)
 		$(use_enable schroedinger)
