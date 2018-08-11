@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DESCRIPTION=CLI interface to the X-10 Firecracker Kit
+EAPI=7
+HOMEPAGE=http://www.linuxha.com/bottlerocket/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=http://www.linuxha.com/bottlerocket/bottlerocket-0.04c.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=c85147544dc3548eb31c497579c679fd

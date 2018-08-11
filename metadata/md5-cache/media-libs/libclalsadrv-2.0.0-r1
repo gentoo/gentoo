@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/alsa-lib
+DESCRIPTION=ALSA driver C++ access library
+EAPI=7
+HOMEPAGE=http://packages.debian.org/libclalsadrv
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/alsa-lib
+SLOT=0
+SRC_URI=mirror://gentoo/clalsadrv-2.0.0.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a81ce046efe61fdd173d2ea4f4e7b585

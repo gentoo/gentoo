@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=virtual/libusb:0 doc? ( >=app-doc/doxygen-1.3.7 )
+DESCRIPTION=A general-purpose library for iRiver's iFP portable audio players
+EAPI=7
+HOMEPAGE=http://ifp-driver.sourceforge.net/libifp/
+IUSE=doc examples static-libs
+KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0
+SLOT=0
+SRC_URI=mirror://sourceforge/ifp-driver/libifp-1.0.0.2.tar.gz
+_md5_=3385649d7c4659a9be2ebb04f55d829d
