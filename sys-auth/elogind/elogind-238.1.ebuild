@@ -113,8 +113,17 @@ pkg_postinst() {
 		ewarn "# rc-update del elogind default"
 		ewarn "# rc-update add elogind boot"
 	else
-		ewarn "elogind is currently not started from any runlevel."
-		ewarn "You may add it to the boot runlevel by:"
-		ewarn "# rc-update add elogind boot"
+		elog "elogind is currently not started from any runlevel."
+		elog "You may add it to the boot runlevel by:"
+		elog "# rc-update add elogind boot"
+		elog
+		elog "Alternatively, you can leave elogind out of any"
+		elog "runlevel. It will then be started automatically"
+		if use pam; then
+			elog "when the first service calls it via dbus, or"
+			elog "the first user logs into the system."
+		else
+			elog "when the first service calls it via dbus."
+		fi
 	fi
 }

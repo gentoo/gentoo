@@ -21,7 +21,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
-inherit autotools flag-o-matic gnome2-utils toolchain-funcs versionator virtualx xdg-utils ${SCM}
+inherit autotools flag-o-matic gnome2-utils toolchain-funcs virtualx xdg-utils ${SCM}
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -29,14 +29,14 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
-	debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth fontconfig
-	+gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav libcaca
-	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
-	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
-	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp rtsp
-	run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl svg
-	taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
+IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast dbus
+	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
+	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate kms libass
+	libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
+	macosx-notifications macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses
+	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
+	rdp run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl
+	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
 	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -61,6 +61,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib:0 )
 	aom? ( media-libs/libaom:= )
 	archive? ( app-arch/libarchive:= )
+	aribsub? ( media-libs/aribb24 )
 	bidi? (
 		dev-libs/fribidi:0
 		media-libs/freetype:2[harfbuzz]
@@ -111,6 +112,7 @@ RDEPEND="
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	kate? ( media-libs/libkate:0 )
+	kms? ( x11-libs/libdrm )
 	libass? (
 		media-libs/fontconfig:1.0
 		media-libs/libass:0=
@@ -206,8 +208,9 @@ RDEPEND="
 	)
 	X? (
 		x11-libs/libX11
-		x11-libs/libxcb
+		x11-libs/libxcb[xkb]
 		x11-libs/libXcursor
+		x11-libs/libxkbcommon[X]
 		x11-libs/xcb-util
 		x11-libs/xcb-util-keysyms
 	)
@@ -281,6 +284,7 @@ src_configure() {
 		$(use_enable altivec)
 		$(use_enable aom)
 		$(use_enable archive)
+		$(use_enable aribsub)
 		$(use_enable bidi fribidi)
 		$(use_enable bidi harfbuzz)
 		$(use_enable bluray)
@@ -319,6 +323,7 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable jpeg)
 		$(use_enable kate)
+		$(use_enable kms)
 		$(use_enable libass)
 		$(use_enable libcaca caca)
 		$(use_enable libnotify notify)
@@ -350,7 +355,6 @@ src_configure() {
 		$(use_enable pulseaudio pulse)
 		$(use_enable qt5 qt)
 		$(use_enable rdp freerdp)
-		$(use_enable rtsp realrtsp)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)
 		$(use_enable schroedinger)
@@ -381,7 +385,6 @@ src_configure() {
 		$(use_enable wma-fixed)
 		$(use_with X x)
 		$(use_enable X xcb)
-		$(use_enable X xvideo)
 		$(use_enable x264)
 		$(use_enable x265)
 		$(use_enable xml libxml2)
@@ -465,12 +468,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
-		"/usr/$(get_libdir)/vlc/vlc-cache-gen" "/usr/$(get_libdir)/vlc/plugins/"
+	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/libexec/vlc/vlc-cache-gen" ]] ; then
+		einfo "Running /usr/libexec/vlc/vlc-cache-gen on /usr/libexec/vlc/plugins/"
+		"/usr/libexec/vlc/vlc-cache-gen" "/usr/libexec/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
-		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
+		ewarn "Please run /usr/libexec/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
@@ -480,8 +483,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e /usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
-		rm /usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e /usr/libexec/vlc/plugins/plugins.dat ]]; then
+		rm /usr/libexec/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	gnome2_icon_cache_update

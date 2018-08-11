@@ -230,6 +230,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${PN}-3.0.1-qt-5.11.patch # TODO upstream
 	"${FILESDIR}"/${P}-fix-disable-vlm.patch # bug 649798
+	"${FILESDIR}"/${P}-fribidi-1.patch # bug 662662
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
