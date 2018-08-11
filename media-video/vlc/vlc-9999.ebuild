@@ -31,7 +31,7 @@ SLOT="0/5-9" # vlc - vlccore
 
 IUSE="a52 alsa altivec aom archive bidi bluray cddb chromaprint chromecast dbus dc1394
 	debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth fontconfig
-	+gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libav libcaca
+	+gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate kms libass libav libcaca
 	libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications
 	macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses neon nfs ogg
 	omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp
@@ -111,6 +111,7 @@ RDEPEND="
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	kate? ( media-libs/libkate:0 )
+	kms? ( x11-libs/libdrm )
 	libass? (
 		media-libs/fontconfig:1.0
 		media-libs/libass:0=
@@ -319,6 +320,7 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable jpeg)
 		$(use_enable kate)
+		$(use_enable kms)
 		$(use_enable libass)
 		$(use_enable libcaca caca)
 		$(use_enable libnotify notify)
