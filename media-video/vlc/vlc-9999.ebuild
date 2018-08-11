@@ -207,8 +207,9 @@ RDEPEND="
 	)
 	X? (
 		x11-libs/libX11
-		x11-libs/libxcb
+		x11-libs/libxcb[xkb]
 		x11-libs/libXcursor
+		x11-libs/libxkbcommon[X]
 		x11-libs/xcb-util
 		x11-libs/xcb-util-keysyms
 	)
@@ -382,7 +383,6 @@ src_configure() {
 		$(use_enable wma-fixed)
 		$(use_with X x)
 		$(use_enable X xcb)
-		$(use_enable X xvideo)
 		$(use_enable x264)
 		$(use_enable x265)
 		$(use_enable xml libxml2)
