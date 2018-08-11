@@ -35,7 +35,6 @@ sci-libs/ViSP qt4
 # Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
 # dev-python/PyQt4 and dev-python/pyside are dead and going away.
 dev-python/pandas X
-media-sound/pulseaudio qt4
 media-video/syncplay gui
 net-wireless/gnuradio qt4
 
