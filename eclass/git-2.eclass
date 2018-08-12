@@ -4,6 +4,7 @@
 # @ECLASS: git-2.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Eclass for easing maintenance of live ebuilds using git as remote repository.
