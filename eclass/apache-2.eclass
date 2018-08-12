@@ -4,6 +4,7 @@
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
 # polynomial-c@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides a common set of functions for apache-2.x ebuilds
 # @DESCRIPTION:
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
