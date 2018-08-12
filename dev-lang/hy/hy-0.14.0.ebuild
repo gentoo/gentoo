@@ -23,10 +23,9 @@ RDEPEND="dev-python/flake8[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/tox[${PYTHON_USEDEP}]
+	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
 	)"
 src_prepare() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
