@@ -8,6 +8,7 @@
 #	- Robin H. Johnson <robbat2@gentoo.org>
 #	- Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
 #	- Brian Evans <grknight@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: This eclass provides most of the functions for mysql ebuilds
 # @DESCRIPTION:
 # The mysql-v2.eclass is the base eclass to build the mysql and
