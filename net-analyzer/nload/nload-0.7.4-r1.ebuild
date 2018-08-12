@@ -19,6 +19,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${P}-Eliminate-flicker-on-some-terminals.patch
 )
 
 src_prepare() {
