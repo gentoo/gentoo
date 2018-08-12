@@ -11,6 +11,7 @@
 # @ECLASS: gtk-sharp-module.eclass
 # @MAINTAINER:
 # dotnet@gentoo.org
+# @SUPPORTED_EAPIS: 2 3 4 5
 # @BLURB: Manages the modules of the gtk-, gnome-, and gnome-desktop-sharp tarballs
 # @DESCRIPTION:
 # This eclass provides phase functions and helper functions for the modules
