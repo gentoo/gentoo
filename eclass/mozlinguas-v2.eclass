@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Nirbheek Chauhan <nirbheek@gentoo.org>
 # Ian Stakenvicius <axs@gentoo.org>
+# @SUPPORTED_EAPIS: 2 3 4 5 6
 # @BLURB: Handle language packs for mozilla products
 # @DESCRIPTION:
 # Sets IUSE according to MOZ_LANGS (language packs available). Also exports
