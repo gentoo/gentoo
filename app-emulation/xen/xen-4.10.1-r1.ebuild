@@ -100,6 +100,7 @@ src_prepare() {
 	[[ -n ${GENTOO_VER} ]] && eapply "${WORKDIR}"/patches-gentoo
 
 	eapply "${FILESDIR}"/${PN}-4.6-efi.patch
+	eapply "${FILESDIR}"/${PN}-4.10-efi-fix-ambiguous-format.patch #602052
 
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
