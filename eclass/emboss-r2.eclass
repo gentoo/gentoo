@@ -10,6 +10,7 @@
 # Original author: Author Olivier Fisette <ofisette@gmail.com>
 # Next gen author: Justin Lecher <jlec@gentoo.org>
 # Next gen author: Ted Tanberry <ted.tanberry@gmail.com>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Use this to easy install EMBOSS and EMBASSY programs (EMBOSS add-ons).
 # @DESCRIPTION:
 # The inheriting ebuild must set at least EAPI=6 and provide EBO_DESCRIPTION before the inherit line.
