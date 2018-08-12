@@ -4755,7 +4755,6 @@ dev-python/django-ldapdb 0.3.2: An LDAP database backend for Django
 dev-python/django-nose 1.4.4: Django test runner that uses nose
 dev-python/django-openid-auth 0.5: A library that can be used to add OpenID support to Django applications
 dev-python/django-picklefield 0.3.2: Implementation of a pickled object field for django
-dev-python/django-pipeline 1.6.0: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1: A mini-framework for Django for creating RESTful APIs
 dev-python/django-recaptcha 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 1.0: An extensible user-registration application for Django
