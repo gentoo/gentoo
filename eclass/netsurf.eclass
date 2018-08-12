@@ -4,6 +4,7 @@
 # @ECLASS: netsurf.eclass
 # @MAINTAINER:
 # Michael Weber <xmw@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Handle buildsystem of www.netsurf-browser.org components
 # @DESCRIPTION:
 # Handle unpacking and usage of separate buildsystem tarball and manage
