@@ -82,6 +82,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-bashcomp-path.patch" # bug 641866
 	"${FILESDIR}/${PN}-2.2.3-goocast.patch" # bug 656252
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
+	# Security bugs
+	"${FILESDIR}/${P}-libtiff.patch" # bug 621712
+	"${FILESDIR}/${P}-frmts-nitf38234.patch" # bug 621720
+	"${FILESDIR}/${P}-changeset_38658.patch" # bug 623028
 )
 
 src_prepare() {
@@ -305,6 +309,7 @@ src_install() {
 	fi
 
 	doman "${S}"/man/man*/*
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
