@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Utility functions for packages with Python parts.
 # @DESCRIPTION:
 # A utility eclass providing functions to query Python implementations,
