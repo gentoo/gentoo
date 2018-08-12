@@ -87,7 +87,7 @@ python_install_all() {
 	insinto /usr/share/zsh/site-functions
 	newins youtube-dl.zsh _youtube-dl
 
-	insinto /usr/share/fish/completions/vendor_completions.d
+	insinto /usr/share/fish/vendor_completions.d
 	doins youtube-dl.fish
 
 	distutils-r1_python_install_all

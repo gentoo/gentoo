@@ -86,7 +86,7 @@ python_install_all() {
 	insinto /usr/share/zsh/site-functions
 	newins ${PN}.zsh _${PN}
 
-	insinto /usr/share/fish/completions/vendor_completions.d
+	insinto /usr/share/fish/vendor_completions.d
 	doins ${PN}.fish
 
 	distutils-r1_python_install_all
