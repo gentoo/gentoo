@@ -9,6 +9,7 @@
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 # Christian Ruppert <idl0r@gentoo.org>
 # (undisclosed contributors)
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: common vdr plugin ebuild functions
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
