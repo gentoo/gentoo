@@ -4,6 +4,7 @@
 # @ECLASS: obs-service.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: Reduces code duplication in the Open Build Service services.
 # @DESCRIPTION:
 # This eclass makes it easier to package Open Build Service services. Based on
