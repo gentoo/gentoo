@@ -46,6 +46,8 @@ RDEPEND="${CDEPEND}
 
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
+PATCHES=( "${FILESDIR}/${P}-libssh_threads.patch" )
+
 S="${WORKDIR}/${P^}"
 
 src_configure() {
