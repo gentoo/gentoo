@@ -4,6 +4,7 @@
 # @ECLASS: udev.eclass
 # @MAINTAINER:
 # udev-bugs@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Default eclass for determining udev directories.
 # @DESCRIPTION:
 # Default eclass for determining udev directories.
