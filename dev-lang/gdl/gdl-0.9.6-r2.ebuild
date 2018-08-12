@@ -77,7 +77,7 @@ src_prepare() {
 	use hdf5 && has_version sci-libs/hdf5[mpi] && export CXX=mpicxx
 
 	# make sure antlr includes are from system and rebuild the sources with it
-	# https://sourceforge.net/tracker/?func=detail&atid=618685&aid=3465878&group_id=97659
+	# https://sourceforge.net/p/gnudatalanguage/patches/39/
 	rm -r src/antlr || die
 	einfo "Regenerating grammar"
 	pushd src >/dev/null || die
