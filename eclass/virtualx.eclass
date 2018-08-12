@@ -6,6 +6,7 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Original author: Martin Schlemmer <azarah@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: This eclass can be used for packages that needs a working X environment to build.
 
 if [[ ! ${_VIRTUAL_X} ]]; then
