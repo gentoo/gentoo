@@ -6,6 +6,7 @@ inherit flag-o-matic toolchain-funcs versionator
 # @ECLASS: cuda.eclass
 # @MAINTAINER:
 # Justin Lecher <jlec@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Common functions for cuda packages
 # @DESCRIPTION:
 # This eclass contains functions to be used with cuda package. Currently it is
