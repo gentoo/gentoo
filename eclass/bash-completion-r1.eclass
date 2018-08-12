@@ -4,6 +4,7 @@
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: A few quick functions to install bash-completion files
 # @EXAMPLE:
 #
