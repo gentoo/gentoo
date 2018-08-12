@@ -22,6 +22,7 @@
 # QA Team <qa@gentoo.org>
 # @AUTHOR:
 # Original author: Dan Armak <danarmak@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5
 # @BLURB: The base eclass defines some default functions and variables.
 # @DESCRIPTION:
 # The base eclass defines some default functions and variables.
