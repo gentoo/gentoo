@@ -6,6 +6,7 @@
 # Gentoo ML Project <ml@gentoo.org>
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides functions for installing opam packages.
 # @DESCRIPTION:
 # Provides dependencies on opam and ocaml, opam-install and a default
