@@ -4,6 +4,7 @@
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: support eclass for unpacking VCS snapshot tarballs for
 # software written in the Go programming language
 # @DESCRIPTION:
