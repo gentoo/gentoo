@@ -167,6 +167,17 @@ tc-getBUILD_OBJCOPY() { tc-getBUILD_PROG OBJCOPY objcopy "$@"; }
 # @RETURN: name of the pkg-config tool for building binaries to run on the build machine
 tc-getBUILD_PKG_CONFIG() { tc-getBUILD_PROG PKG_CONFIG pkg-config "$@"; }
 
+# @FUNCTION: tc-getTARGET_CPP
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the C preprocessor for the toolchain being built (or used)
+tc-getTARGET_CPP() {
+	if [[ -n ${CTARGET} ]]; then
+		_tc-getPROG CTARGET TARGET_CPP "gcc -E" "$@"
+	else
+		tc-getCPP "$@"
+	fi
+}
+
 # @FUNCTION: tc-export
 # @USAGE: <list of toolchain variables>
 # @DESCRIPTION:
