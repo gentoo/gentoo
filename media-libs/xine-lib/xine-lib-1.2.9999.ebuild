@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic libtool multilib
+inherit flag-o-matic libtool
 
 if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="http://hg.debian.org/hg/xine-lib/xine-lib-1.2"
