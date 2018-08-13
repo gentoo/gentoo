@@ -1,21 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="https://github.com/openSUSE/snapper.git"
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-inherit eutils autotools-utils git-r3
+inherit systemd
 
-DESCRIPTION="Command-line program for btrfs and ext4 snapshot management"
+DESCRIPTION="Command-line program for btrfs and lvm snapshot management"
 HOMEPAGE="http://snapper.io/"
-SRC_URI=""
+SRC_URI="ftp://ftp.suse.com/pub/projects/snapper/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="+btrfs ext4 lvm pam xattr"
+KEYWORDS="~amd64 ~x86"
+IUSE="lvm pam xattr"
 
 RDEPEND="dev-libs/boost:=[threads]
 	dev-libs/libxml2
@@ -23,10 +20,9 @@ RDEPEND="dev-libs/boost:=[threads]
 	sys-apps/acl
 	sys-apps/dbus
 	sys-apps/util-linux
+	>=sys-fs/btrfs-progs-3.17.1
 	sys-libs/zlib
 	virtual/libintl
-	btrfs? ( >=sys-fs/btrfs-progs-3.17.1 )
-	ext4? ( sys-fs/e2fsprogs )
 	lvm? ( sys-fs/lvm2 )
 	pam? ( sys-libs/pam )
 	xattr? ( sys-apps/attr )"
@@ -35,31 +31,41 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-REQUIRED_USE="|| ( btrfs ext4 lvm )"
+PATCHES=(
+	"${FILESDIR}"/cron-confd.patch
+)
 
-DOCS=( AUTHORS package/snapper.changes )
+src_prepare() {
+	default
 
-PATCHES=( "${FILESDIR}"/cron-confd.patch )
+	sed -e "s,/usr/lib/systemd/system,$(systemd_get_systemunitdir),g" \
+		-i data/Makefile.* \
+		|| die "Failed to fix systemd services and timers installation path"
+}
 
 src_configure() {
+	# ext4 code does not work anymore
+	# snapper does not build without btrfs
 	local myeconfargs=(
 		--with-conf="/etc/conf.d"
 		--docdir="/usr/share/doc/${PF}"
 		--disable-zypp
 		--enable-rollback
-		$(use_enable btrfs)
-		$(use_enable ext4)
+		--disable-ext4
+		--enable-btrfs
 		$(use_enable lvm)
 		$(use_enable pam)
 		$(use_enable xattr xattrs)
 	)
-	autotools-utils_src_configure
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 	# Existing configuration file required to function
 	newconfd data/sysconfig.snapper snapper
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
