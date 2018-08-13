@@ -16,6 +16,6 @@
 		The server software allows users to connect and join chat channels.
 	</longdescription>
 	<use>
-		<flag name="tsdns">Install TeamSpeaks own DNS service.</flag>
+		<flag name="tsdns">Install TeamSpeaks own DNS service for handling multiple virtual servers.</flag>
 	</use>
 </pkgmetadata>
