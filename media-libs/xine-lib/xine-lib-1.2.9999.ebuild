@@ -217,5 +217,5 @@ src_compile() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
-	rm -f "${ED}"usr/share/doc/${PF}/COPYING
+	rm -f "${ED}"usr/share/doc/${PF}/COPYING || die
 }
