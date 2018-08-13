@@ -48,7 +48,7 @@ RDEPEND="${NLS_RDEPEND}
 	libav? (
 		media-libs/libpostproc:0=
 		media-video/libav:0=
-		)
+	)
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng:= )
@@ -57,60 +57,64 @@ RDEPEND="${NLS_RDEPEND}
 	opengl? (
 		virtual/glu
 		virtual/opengl
-		)
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl )
 	speex? (
 		media-libs/libogg
 		media-libs/speex
-		)
+	)
 	theora? (
 		media-libs/libogg
 		media-libs/libtheora
-		)
+	)
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype:2
-		)
+	)
 	v4l? ( media-libs/libv4l )
 	vaapi? ( x11-libs/libva:0=[X,opengl] )
 	vcd? (
 		>=media-video/vcdimager-0.7.23
 		dev-libs/libcdio:0=[-minimal]
-		)
+	)
 	vdpau? ( x11-libs/libvdpau )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
-		)
+	)
 	vpx? ( media-libs/libvpx:0= )
 	wavpack? ( media-sound/wavpack )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
-		)
+	)
 	xcb? ( x11-libs/libxcb )
 	xinerama? ( x11-libs/libXinerama )
 	xv? ( x11-libs/libXv )
-	xvmc? ( x11-libs/libXvMC )"
+	xvmc? ( x11-libs/libXvMC )
+"
 DEPEND="${RDEPEND}
 	${NLS_DEPEND}
 	app-arch/xz-utils
-	virtual/pkgconfig
 	>=sys-devel/libtool-2.2.6b
+	virtual/pkgconfig
 	oss? ( virtual/os-headers )
 	v4l? ( virtual/os-headers )
 	X? (
 		x11-base/xorg-proto
 		x11-libs/libXt
-		)
+	)
 	xv? ( x11-base/xorg-proto )
 	xvmc? ( x11-base/xorg-proto )
-	xinerama? ( x11-base/xorg-proto )"
-REQUIRED_USE="vidix? ( || ( X fbcon ) )
+	xinerama? ( x11-base/xorg-proto )
+"
+REQUIRED_USE="
+	vidix? ( || ( X fbcon ) )
 	xv? ( X )
-	xinerama? ( X )"
+	xinerama? ( X )
+"
 
 src_prepare() {
 	default
