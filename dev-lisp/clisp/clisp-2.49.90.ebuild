@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils flag-o-matic multilib toolchain-funcs xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
-HOMEPAGE="http://clisp.sourceforge.net/"
+HOMEPAGE="https://clisp.sourceforge.io/"
 SRC_URI="https://haible.de/bruno/gnu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
