@@ -19,7 +19,8 @@ DEPEND="
 	sys-devel/bc
 "
 RDEPEND="
-	rtas? ( >=sys-libs/librtas-1.3.5 )
+	!sys-apps/powerpc-utils
+	rtas? ( >=sys-libs/librtas-2.0.2 )
 	${DEPEND}
 "
 

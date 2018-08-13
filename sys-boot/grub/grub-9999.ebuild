@@ -30,7 +30,7 @@ if [[ ${PV} != 9999 ]]; then
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
@@ -76,8 +76,8 @@ COMMON_DEPEND="
 	libzfs? ( sys-fs/zfs )
 	mount? ( sys-fs/fuse:0 )
 	truetype? ( media-libs/freetype:2= )
-	ppc? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
-	ppc64? ( sys-apps/ibm-powerpc-utils sys-apps/powerpc-utils )
+	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
+	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
