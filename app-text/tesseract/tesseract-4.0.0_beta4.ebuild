@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_PN="tesseract-ocr"
+MY_PV=${PV/_beta/-beta.}
 LANGPACKV="4.00"
 URI_PREFIX="https://github.com/${MY_PN}/tessdata/raw/${LANGPACKV}/"
 JAVA_PKG_OPT_USE="scrollview"
@@ -12,7 +13,7 @@ inherit autotools java-pkg-opt-2 toolchain-funcs
 
 DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
-SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
 	${URI_PREFIX}eng.traineddata -> eng.traineddata-${LANGPACKV}
 	math? ( ${URI_PREFIX}equ.traineddata -> equ.traineddata-${LANGPACKV} )
 	osd? ( ${URI_PREFIX}osd.traineddata -> osd.traineddata-${LANGPACKV} )"
@@ -75,13 +76,10 @@ RDEPEND="${CDEPEND}
 DOCS=( AUTHORS ChangeLog NEWS README.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.04.01-use-system-piccolo2d.patch"
-	"${FILESDIR}/${P}-isnan.patch"
-	"${FILESDIR}/${P}-openmp.patch"
-	"${FILESDIR}/${P}-no_graphics.patch"
+	"${FILESDIR}/${PN}-4.00.00-use-system-piccolo2d.patch"
 )
 
-S=${WORKDIR}/${P/_}
+S=${WORKDIR}/${PN}-${MY_PV}
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
