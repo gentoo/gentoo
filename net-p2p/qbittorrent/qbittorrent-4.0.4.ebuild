@@ -6,7 +6,8 @@ EAPI=6
 inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
-HOMEPAGE="https://www.qbittorrent.org/"
+HOMEPAGE="https://www.qbittorrent.org
+	  https://github.com/qbittorrent"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
