@@ -5,8 +5,8 @@ EAPI=0
 
 DESCRIPTION="simple yet effective CD indexing program"
 # original src went away: SRC_URI="http://littledragon.home.ro/unix/${P}.tar.gz"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
-HOMEPAGE="https://dev.gentoo.org/~centic/cdcat/"
+SRC_URI="mirror://sourceforge/cdcatalog/${P}.tar.gz"
+HOMEPAGE="http://cdcatalog.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
