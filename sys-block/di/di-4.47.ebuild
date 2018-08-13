@@ -19,7 +19,7 @@ DEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.33-build.patch
-	"${FILESDIR}"/${PN}-4.45-no_echo-n.patch
+	"${FILESDIR}"/${PN}-4.47-no_echo-n.patch
 )
 
 src_configure() {
