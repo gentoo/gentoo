@@ -35,7 +35,6 @@ net-wireless/gnuradio qt4
 
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # dev-libs/DirectFB is being removed (#606194)
-media-libs/xine-lib fusionsound
 www-plugins/gnash directfb
 
 # Michał Górny <mgorny@gentoo.org> (13 Jun 2018)
