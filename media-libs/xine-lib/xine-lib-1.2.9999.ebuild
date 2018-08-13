@@ -29,7 +29,7 @@ IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagem
 RDEPEND="${NLS_RDEPEND}
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
-	sys-libs/zlib
+	sys-libs/zlib:=
 	virtual/libiconv
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faad2 )
