@@ -24,7 +24,7 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac fusionsound gtk imagemagick ipv6 jack jpeg libav libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X +xcb xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libav libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X +xcb xinerama +xv xvmc ${NLS_IUSE}"
 
 RDEPEND="${NLS_RDEPEND}
 	dev-libs/libxdg-basedir
@@ -40,7 +40,6 @@ RDEPEND="${NLS_RDEPEND}
 	dts? ( media-libs/libdca )
 	dxr3? ( media-libs/libfame )
 	flac? ( media-libs/flac )
-	fusionsound? ( >=dev-libs/DirectFB-1.7.1[fusionsound] )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
@@ -156,6 +155,7 @@ src_configure() {
 		--with-w32-path=${win32dir}
 		--with-xv-path=/usr/$(get_libdir)
 		--without-esound
+		--without-fusionsound
 		$(use_enable a52 a52dec)
 		$(use_enable aac faad)
 		$(use_enable aalib)
@@ -190,7 +190,6 @@ src_configure() {
 		$(use_enable vpx)
 		$(use_with alsa)
 		$(use_with flac libflac)
-		$(use_with fusionsound)
 		$(use_with imagemagick)
 		$(use_with jack)
 		$(use_with libcaca caca)
