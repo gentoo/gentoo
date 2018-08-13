@@ -6,6 +6,6 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="X.Org driver for ASpeedTech cards"
-KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd ~ppc64 ~ppc"
+KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd ppc64 ppc"
 LICENSE="MIT"
 IUSE=""
