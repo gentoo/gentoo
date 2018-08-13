@@ -1,30 +1,14 @@
 # HG changeset patch
-# User Michał Górny <mgorny@gentoo.org>
-# Date 1533916222 -7200
-# Node ID 2c8991b1c9080adc61e63d00fe9415b88f3e6208
-# Parent  9cb2a856677237b528ead6fff68de7d488dbfeec
-Use private temporary GPG-homes for tests to fix race conditions.
-
-Create unique temporary directories to use as GPG home in each test
-instead of reusing a single hardcoded 'keys' directory.  This is
-necessary to fix race conditions between directory operations
-and gpg-agent in GnuPG 2.0+.
-
-GnuPG 2.0 started using gpg-agent for all operations.  It is
-automatically spawned when GPG is called to do something, and it stops
-automatically when its homedir is removed (e.g. as part of rmtree()
-call).  However, with the homedir being instantly recreated and next
-test being run, it seems that gpg-agent sometimes failed to stop fully
-before being started again and causes one of the tests to fail with
-gpg-agent connection errors.
-
-With this change, I am finally able to successfully run all tests
-in a single batch.
+# User Vinay Sajip <vinay_sajip@yahoo.co.uk>
+# Date 1534104706 -3600
+# Node ID aeb916c839c0f556dae96bb1136be760ccc19cfe
+# Parent  1a5795e58fe216c1227a11d169dbe4c09c625d15
+Fixed problem with a fixed 'keys' homedir on slow/busy systems (see PR #24).
 
 diff --git a/test_gnupg.py b/test_gnupg.py
 --- a/test_gnupg.py
 +++ b/test_gnupg.py
-@@ -173,11 +173,7 @@
+@@ -173,11 +173,14 @@
  
  class GPGTestCase(unittest.TestCase):
      def setUp(self):
@@ -33,21 +17,29 @@ diff --git a/test_gnupg.py b/test_gnupg.py
 -            self.assertTrue(os.path.isdir(hd),
 -                            "Not a directory: %s" % hd)
 -            shutil.rmtree(hd, ignore_errors=True)
-+        hd = tempfile.mkdtemp()
++        if 'STATIC_TEST_HOMEDIR' not in os.environ:
++            hd = tempfile.mkdtemp(prefix='keys-')
++        else:
++            hd = os.path.join(os.getcwd(), 'keys')
++            if os.path.exists(hd):
++                self.assertTrue(os.path.isdir(hd),
++                                "Not a directory: %s" % hd)
++                shutil.rmtree(hd, ignore_errors=True)
          prepare_homedir(hd)
          self.homedir = hd
          self.gpg = gpg = gnupg.GPG(gnupghome=hd, gpgbinary=GPGBINARY)
-@@ -193,6 +189,9 @@
+@@ -193,6 +196,10 @@
              data_file.write(os.urandom(5120 * 1024))
              data_file.close()
  
 +    def tearDown(self):
-+        shutil.rmtree(self.homedir, ignore_errors=True)
++        if 'STATIC_TEST_HOMEDIR' not in os.environ:
++            shutil.rmtree(self.homedir, ignore_errors=True)
 +
      def test_environment(self):
          "Test the environment by ensuring that setup worked"
          hd = self.homedir
-@@ -373,7 +372,7 @@
+@@ -373,7 +380,7 @@
              # and the keyring file name has changed.
              pkn = 'pubring.kbx'
              skn = None
