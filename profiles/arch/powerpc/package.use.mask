@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Luca Barbato <lu_zero@gentoo.org> (12 Aug 2018)
+# grub pc is not supported on powerpc
+sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen
+
 # Pacho Ramos <pacho@gentoo.org> (27 May 2018)
 # kde-frameworks/kdelibs4support not keyworded on ppc
 # Michał Górny <mgorny@gentoo.org> (09 Jul 2018)
