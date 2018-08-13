@@ -25,5 +25,7 @@ PATCHES=(
 )
 
 python_test() {
-	"${PYTHON}" test_gnupg.py || die "Tests failed with ${EPYTHON}"
+	# NO_EXTERNAL_TESTS must be enabled,
+	# to disable all tests, which need internet access.
+	NO_EXTERNAL_TESTS=1 "${PYTHON}" test_gnupg.py || die "Tests failed with ${EPYTHON}"
 }
