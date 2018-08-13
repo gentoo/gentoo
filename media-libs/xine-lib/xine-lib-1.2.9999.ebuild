@@ -6,7 +6,7 @@ EAPI=6
 inherit flag-o-matic libtool
 
 if [[ ${PV} == *9999* ]]; then
-	EHG_REPO_URI="http://hg.debian.org/hg/xine-lib/xine-lib-1.2"
+	EHG_REPO_URI="http://hg.code.sf.net/p/xine/xine-lib-1.2"
 	inherit autotools mercurial
 	unset NLS_IUSE
 	NLS_DEPEND="sys-devel/gettext"
