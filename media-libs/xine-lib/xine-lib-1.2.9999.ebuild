@@ -43,7 +43,7 @@ RDEPEND="${NLS_RDEPEND}
 	fusionsound? ( >=dev-libs/DirectFB-1.7.1[fusionsound] )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( virtual/imagemagick-tools )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
+	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	!libav? ( media-video/ffmpeg:0= )
 	libav? (
