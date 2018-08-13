@@ -51,7 +51,7 @@ RDEPEND="${NLS_RDEPEND}
 		)
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
-	mng? ( media-libs/libmng )
+	mng? ( media-libs/libmng:= )
 	modplug? ( >=media-libs/libmodplug-0.8.8.1 )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opengl? (
