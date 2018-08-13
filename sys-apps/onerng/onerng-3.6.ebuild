@@ -3,13 +3,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+MY_P="${PN}_${PV}"
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 
 inherit python-r1 udev
 
 DESCRIPTION="Software for the Open Hardware Random Number Generator called OneRNG"
 HOMEPAGE="https://www.onerng.info/"
-SRC_URI="https://github.com/OneRNG/onerng.github.io/raw/master/sw/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OneRNG/onerng.github.io/raw/master/sw/${MY_P}.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
@@ -24,7 +25,7 @@ RDEPEND="app-crypt/gnupg
 DEPEND="virtual/pkgconfig
 	virtual/udev"
 
-S="${WORKDIR}/${PN}_${PV}"
+S="${WORKDIR}/${MY_P}"
 
 pkg_postinst() {
 	udev_reload
