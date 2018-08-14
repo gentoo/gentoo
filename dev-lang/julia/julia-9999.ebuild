@@ -18,8 +18,8 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
-	>=sys-devel/llvm-4.0.0:=
-	>=sys-devel/clang-4.0.0:="
+	sys-devel/llvm:6=
+	sys-devel/clang:6="
 
 RDEPEND+="
 	dev-libs/double-conversion:0=
@@ -29,6 +29,7 @@ RDEPEND+="
 	dev-libs/openspecfun
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
+	sci-libs/ccolamd:0=
 	sci-libs/cholmod:0=
 	sci-libs/fftw:3.0=[threads]
 	sci-libs/openlibm:0=
@@ -47,7 +48,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-fix_build_system.patch
+	"${FILESDIR}"/${PN}-0.7.0-fix_build_system.patch
 )
 
 src_prepare() {
@@ -96,29 +97,28 @@ src_configure() {
 
 	# USE_SYSTEM_LIBM=0 implies using external openlibm
 	cat <<-EOF > Make.user
-		USE_SYSTEM_DSFMT=0
-		USE_SYSTEM_LIBUV=0
-		USE_SYSTEM_PCRE=1
-		USE_SYSTEM_RMATH=0
-		USE_SYSTEM_UTF8PROC=0
-		USE_LLVM_SHLIB=1
-		USE_SYSTEM_ARPACK=1
-		USE_SYSTEM_BLAS=1
-		USE_SYSTEM_FFTW=1
-		USE_SYSTEM_GMP=1
-		USE_SYSTEM_GRISU=1
-		USE_SYSTEM_LAPACK=1
-		USE_SYSTEM_LIBGIT2=1
-		USE_SYSTEM_LIBM=0
-		USE_SYSTEM_LIBUNWIND=1
-		USE_SYSTEM_LLVM=1
-		USE_SYSTEM_MPFR=1
-		USE_SYSTEM_OPENLIBM=1
-		USE_SYSTEM_OPENSPECFUN=1
-		USE_SYSTEM_PATCHELF=1
-		USE_SYSTEM_READLINE=1
-		USE_SYSTEM_SUITESPARSE=1
-		USE_SYSTEM_ZLIB=1
+		USE_SYSTEM_LLVM:=1
+		USE_SYSTEM_LIBUNWIND:=1
+		USE_SYSTEM_PCRE:=1
+		USE_SYSTEM_LIBM:=0
+		USE_SYSTEM_OPENLIBM:=1
+		USE_SYSTEM_DSFMT:=0
+		USE_SYSTEM_BLAS:=1
+		USE_SYSTEM_LAPACK:=1
+		USE_SYSTEM_GMP:=1
+		USE_SYSTEM_MPFR:=1
+		USE_SYSTEM_SUITESPARSE:=1
+		USE_SYSTEM_LIBUV:=0
+		USE_SYSTEM_UTF8PROC:=0
+		USE_SYSTEM_MBEDTLS:=1
+		USE_SYSTEM_LIBSSH2:=1
+		USE_SYSTEM_CURL:=1
+		USE_SYSTEM_LIBGIT2:=1
+		USE_SYSTEM_PATCHELF:=1
+		USE_LLVM_SHLIB:=1
+		USE_SYSTEM_ARPACK:=1
+		USE_SYSTEM_GRISU:=1
+		USE_SYSTEM_ZLIB:=1
 		VERBOSE=1
 		libdir="${EROOT}/usr/$(get_libdir)"
 	EOF
@@ -131,7 +131,7 @@ src_compile() {
 	addpredict /proc/self/mem
 
 	emake cleanall
-	emake VERBOSE=1 julia-release \
+	emake julia-release \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	pax-mark m $(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')
@@ -155,7 +155,6 @@ src_install() {
 
 	mv "${ED}"/usr/etc/julia "${ED}"/etc || die
 	rmdir "${ED}"/usr/etc || die
-	mv "${ED}"/usr/share/doc/julia/{examples,html} \
-		"${ED}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/share/doc/julia/html "${ED}"/usr/share/doc/${PF} || die
 	rmdir "${ED}"/usr/share/doc/julia || die
 }
