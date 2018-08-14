@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
-inherit autotools flag-o-matic eutils toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Communication package providing the X, Y, and ZMODEM file transfer protocols"
 HOMEPAGE="https://www.ohse.de/uwe/software/lrzsz.html"
@@ -11,24 +11,27 @@ SRC_URI="https://www.ohse.de/uwe/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 DEPEND="nls? ( virtual/libintl )"
-RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-autotools.patch
+	"${FILESDIR}"/${PN}-implicit-decl.patch
+	"${FILESDIR}"/${P}-automake-1.12.patch
+	"${FILESDIR}"/${P}-automake-1.13.patch )
+
+DOCS=( AUTHORS COMPATABILITY ChangeLog NEWS \
+	README{,.cvs,.gettext,.isdn4linux,.tests} THANKS TODO )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-autotools.patch
-	epatch "${FILESDIR}"/${PN}-implicit-decl.patch
-	epatch "${FILESDIR}"/${P}-automake-1.12.patch
-	epatch "${FILESDIR}"/${P}-automake-1.13.patch
-
+	default
 	# automake is unhappy if this is missing
-	>> config.rpath
+	>> config.rpath || die
 	# This is too old.  Remove it so automake puts in a newer copy.
-	rm -f missing
+	rm -f missing || die
 	# Autoheader does not like seeing this file.
-	rm -f acconfig.h
+	rm -f acconfig.h || die
 
 	eautoreconf
 }
@@ -36,7 +39,7 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	append-flags -Wstrict-prototypes
-	econf $(use_enable nls) || die "econf failed"
+	econf $(use_enable nls)
 }
 
 src_test() {
@@ -46,9 +49,7 @@ src_test() {
 }
 
 src_install() {
-	emake \
-		DESTDIR="${D}" \
-		install || die "make install failed"
+	default
 
 	local x
 	for x in {r,s}{b,x,z} ; do
@@ -56,6 +57,4 @@ src_install() {
 		dosym l${x:0:1}z.1 /usr/share/man/man1/${x}.1
 		[ "${x:1:1}" = "z" ] || dosym l${x:0:1}z.1 /usr/share/man/man1/l${x}.1
 	done
-
-	dodoc AUTHORS COMPATABILITY ChangeLog NEWS README* THANKS TODO
 }
