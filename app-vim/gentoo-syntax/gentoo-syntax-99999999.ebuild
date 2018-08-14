@@ -3,19 +3,16 @@
 
 EAPI=6
 
-inherit vim-plugin
-
-if [[ ${PV} == 9999* ]] ; then
-	EGIT_REPO_URI="https://github.com/gentoo/gentoo-syntax.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/gentoo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-fi
+inherit git-r3 vim-plugin
 
 DESCRIPTION="vim plugin: Gentoo and Portage syntax highlighting"
 HOMEPAGE="https://github.com/gentoo/gentoo-syntax"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoo-syntax.git
+	https://github.com/gentoo/gentoo-syntax.git"
+
 LICENSE="vim"
+SLOT="0"
+KEYWORDS=""
 IUSE="ignore-glep31"
 
 VIM_PLUGIN_HELPFILES="gentoo-syntax"
