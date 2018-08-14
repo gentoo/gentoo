@@ -48,7 +48,6 @@ dev-python/pycurl test
 
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
 # More unkeyworded dependencies.
-media-libs/xine-lib fusionsound
 media-video/ffmpeg frei0r sofalizer
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
@@ -57,7 +56,7 @@ app-doc/doxygen clang
 dev-perl/GD fcgi
 media-libs/libcanberra gnome
 media-libs/mesa vaapi
-media-sound/pulseaudio equalizer qt4 qt5 realtime
+media-sound/pulseaudio equalizer qt5 realtime
 media-video/ffmpeg celt ebur128 kvazaar libilbc openh264
 media-video/ffmpeg rubberband sdl ssh x265 zeromq zimg
 net-libs/gnutls idn

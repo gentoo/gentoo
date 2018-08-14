@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+export IPFS_PATH=${IPFS_PATH:-/var/lib/ipfs/.ipfs}
+
+pidfile="/run/ipfs.pid"
+command="/usr/bin/ipfs"
+command_args="daemon --enable-gc --migrate"
+command_user="ipfs:ipfs"
+start_stop_daemon_args="--wait 1000 -b \
+                        -1 /var/log/ipfs/ipfs.log \
+                        -2 /var/log/ipfs/ipfs.log"
+
+depend() {
+	need net
+}

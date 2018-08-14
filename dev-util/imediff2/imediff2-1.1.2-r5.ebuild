@@ -6,9 +6,9 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 PYTHON_REQ_USE="ncurses"
 
-inherit python-single-r1 versionator
+inherit python-single-r1 eapi7-ver
 
-MY_P=${PN}_$(replace_version_separator 3 -)
+MY_P=${PN}_$(ver_rs 3 -)
 
 DESCRIPTION="An interactive, user friendly 2-way merge tool in text mode"
 HOMEPAGE="https://elonen.iki.fi/code/imediff/"

@@ -2,14 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 
 inherit autotools eutils linux-info python-any-r1 systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="https://www.rsyslog.com/"
-
-BRANCH="8-stable"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/rsyslog/${PN}.git"
@@ -18,39 +16,16 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	MY_PV=${PV%_rc*}
-	MY_FILENAME="${PN}-${PV}.tar.gz"
-	MY_FILENAME_DOCS="${PN}-docs-${PV}.tar.gz"
-	S="${WORKDIR}/${PN}-${MY_PV}"
-
-	# Upstream URL schema:
-	# RC:      https://www.rsyslog.com/files/download/rsyslog/rc/rsyslog-8.18.0.tar.gz
-	#          https://www.rsyslog.com/files/download/rsyslog/rc2/rsyslog-8.18.0.tar.gz
-	# Release: https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.18.0.tar.gz
-
-	MY_URL_PREFIX=
-	if [[ ${PV} = *_rc* ]]; then
-		_tmp_last_index=$(($(get_last_version_component_index ${PV})+1))
-		_tmp_suffix=$(get_version_component_range ${_tmp_last_index} ${PV})
-		if [[ ${_tmp_suffix} = *rc* ]]; then
-			MY_URL_PREFIX="${_tmp_suffix}/"
-		fi
-
-		# Cleaning up temporary variables
-		unset _tmp_last_index
-		unset _tmp_suffix
-	else
-		KEYWORDS="amd64 arm ~arm64 ~hppa x86"
-	fi
+	KEYWORDS="amd64 arm ~arm64 hppa x86"
 
 	SRC_URI="
-		https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
-		doc? ( https://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
+		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
+		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
 
 	PATCHES=(
-		"${FILESDIR}"/${BRANCH}/${PN}-8.35.0-fix-issue2719.patch
-		"${FILESDIR}"/${BRANCH}/${PN}-8.35.0-fix-issue2726.patch
+		"${FILESDIR}"/${PN}-8.35.0-fix-issue2719.patch
+		"${FILESDIR}"/${PN}-8.35.0-fix-issue2726.patch
 	)
 fi
 
@@ -151,7 +126,7 @@ src_unpack() {
 			cd "${S}" || die "Cannot change dir into '${S}'"
 			mkdir docs || die "Failed to create docs directory"
 			cd docs || die "Failed to change dir into '${S}/docs'"
-			unpack ${MY_FILENAME_DOCS}
+			unpack ${PN}-doc-${PV}.tar.gz
 		fi
 	fi
 }
@@ -183,7 +158,6 @@ src_configure() {
 		--disable-generate-man-pages
 		--without-valgrind-testbench
 		$(use_enable test testbench)
-		$(use_enable curl libcurl)
 		# Input Plugins without depedencies
 		--enable-imdiag
 		--enable-imfile
@@ -221,7 +195,6 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable debug diagtools)
 		$(use_enable debug memcheck)
-		$(use_enable debug rtinst)
 		$(use_enable debug valgrind)
 		# Misc
 		$(use_enable curl fmhttp)
@@ -298,15 +271,15 @@ src_install() {
 	local DOCS=(
 		AUTHORS
 		ChangeLog
-		"${FILESDIR}"/${BRANCH}/README.gentoo
+		"${FILESDIR}"/README.gentoo
 	)
 
 	use doc && local HTML_DOCS=( "${S}/docs/build/." )
 
 	default
 
-	newconfd "${FILESDIR}/${BRANCH}/${PN}.confd-r1" ${PN}
-	newinitd "${FILESDIR}/${BRANCH}/${PN}.initd-r1" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
 
 	keepdir /var/empty/dev
 	keepdir /var/spool/${PN}
@@ -314,13 +287,13 @@ src_install() {
 	keepdir /etc/${PN}.d
 
 	insinto /etc
-	newins "${FILESDIR}/${BRANCH}/${PN}.conf" ${PN}.conf
+	newins "${FILESDIR}/${PN}.conf" ${PN}.conf
 
 	insinto /etc/rsyslog.d/
-	newins "${FILESDIR}/${BRANCH}/50-default-r1.conf" 50-default.conf
+	newins "${FILESDIR}/50-default-r1.conf" 50-default.conf
 
 	insinto /etc/logrotate.d/
-	newins "${FILESDIR}/${BRANCH}/${PN}-r1.logrotate" ${PN}
+	newins "${FILESDIR}/${PN}-r1.logrotate" ${PN}
 
 	if use mysql; then
 		insinto /usr/share/doc/${PF}/scripts/mysql

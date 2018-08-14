@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,12 +33,12 @@ RDEPEND="${DEPEND}
 
 pkg_postinst() {
 	echo
-	einfo "This is experimental software."
-	einfo "The APIs it installs should be considered unstable"
-	einfo "and are subject to change."
+	elog "This is experimental software."
+	elog "The APIs it installs should be considered unstable"
+	elog "and are subject to change."
 	echo
-	einfo "Please file any enhancement requests, or bugs"
-	einfo "at https://github.com/dol-sen/ssl-fetch/issues"
-	einfo "I am also on IRC @ #gentoo-portage, #gentoo-keys,... of the freenode network"
+	elog "Please file any enhancement requests, or bugs"
+	elog "at https://github.com/dol-sen/ssl-fetch/issues"
+	elog "I am also on IRC @ #gentoo-portage, #gentoo-keys,... of the freenode network"
 	echo
 }

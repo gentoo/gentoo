@@ -23,6 +23,11 @@ DEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	# From upstream, can be removed in next release.
+	"${FILESDIR}/${PN}-6.7-fix-tests.patch"
+)
+
 pkg_setup() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
 }

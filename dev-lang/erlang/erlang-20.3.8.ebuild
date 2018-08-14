@@ -48,6 +48,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 		"${FILESDIR}/18.2.1-wx3.0.patch"
 		"${FILESDIR}/${PN}-20.3.2-dont-ignore-LDFLAGS.patch"
+		"${FILESDIR}/${PN}-add-epmd-pid-file-creation-for-openrc.patch"
 	)
 
 SITEFILE=50"${PN}"-gentoo.el
@@ -170,7 +171,7 @@ src_install() {
 	[[ -z "${ERL_ERTS_VER}" ]] && die "Couldn't determine erts version"
 	[[ -z "${ERL_INTERFACE_VER}" ]] && die "Couldn't determine interface version"
 
-	emake INSTALL_PREFIX="${ED}" install
+	emake INSTALL_PREFIX="${D}" install
 
 	if use doc ; then
 		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc/. "${WORKDIR}"/lib/. "${WORKDIR}"/erts-* )

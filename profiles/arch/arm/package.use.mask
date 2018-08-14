@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tomáš Mózes <hydrapolic@gmail.com> (10 Aug 2018)
+# Needs dev-libs/libmaxminddb which isn't keyworded
+app-admin/syslog-ng geoip2
+
 # Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
 # dev-libs/xxhash not keyworded for arm
 app-admin/rsyslog xxhash
@@ -244,10 +248,6 @@ app-portage/g-sorcery bson
 # Markos Chandras <hwoarang@gentoo.org> (18 Apr 2015)
 # samba-4 not keyworded on arm
 sys-auth/sssd samba
-
-# Markus Meier <maekke@gentoo.org> (03 Apr 2015)
-# Deps not yet stable or keyworded
-media-libs/libsdl2 fusionsound
 
 # Alexis Ballier <aballier@gentoo.org> (02 Apr 2015)
 # Needs ilmbase (openexr), which does not build and is masked on arm.

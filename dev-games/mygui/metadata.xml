@@ -11,7 +11,7 @@
 			<name>Evmenov Georgiy</name>
 		</maintainer>
 		<changelog>http://redmine.mygui.info/repositories/entry/mygui/tags/MyGUI3.2/ChangeLog.txt</changelog>
-		<bugs-to>https://sourceforge.net/tracker/?group_id=193706&amp;atid=946487</bugs-to>
+		<bugs-to>https://github.com/MyGUI/mygui/issues</bugs-to>
 		<remote-id type="github">MyGUI/mygui</remote-id>
 	</upstream>
 	<use>

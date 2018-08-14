@@ -27,7 +27,7 @@ COMMON_DEPEND=">=dev-libs/boost-1.62
 	dev-qt/qtx11extras:5
 	dev-qt/qtconcurrent:5
 	dev-qt/linguist-tools:5
-	qwt? ( x11-libs/qwt:6[qt5] )"
+	qwt? ( x11-libs/qwt:6 )"
 DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )"
 RDEPEND="${COMMON_DEPEND}

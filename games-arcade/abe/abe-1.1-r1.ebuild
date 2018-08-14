@@ -27,15 +27,15 @@ src_unpack() {
 PATCHES=(
 	# From Fedora:
 	# Enable changing the video settings.  Sent upstream 2 Apr 2006:
-	# https://sourceforge.net/tracker/?func=detail&aid=1463202&group_id=70141&atid=526743
+	# https://sourceforge.net/p/abe/bugs/1/
 	"${FILESDIR}"/${P}-settings.patch
 
 	# Fix a double free() bug.  Sent upstream 15 Mar 2011:
-	# https://sourceforge.net/tracker/?func=detail&aid=3214269&group_id=70141&atid=526745
+	# https://sourceforge.net/p/abe/patches/1/
 	"${FILESDIR}"/${P}-doublefree.patch
 
 	# Fix an incorrect printf format specifier.  Sent upstream 15 Mar 2011:
-	# https://sourceforge.net/tracker/?func=detail&aid=3214270&group_id=70141&atid=526745
+	# https://sourceforge.net/p/abe/patches/2/
 	"${FILESDIR}"/${P}-format.patch
 
 	# Fix build failure with -Werror=format-security

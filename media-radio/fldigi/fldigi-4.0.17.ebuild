@@ -11,6 +11,8 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="hamlib nls pulseaudio"
+IUSE_CPU_FLAGS=" sse sse2 sse3"
+IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
 
 RDEPEND="x11-libs/fltk:1[threads,xft]
 	media-libs/libsamplerate
@@ -18,7 +20,10 @@ RDEPEND="x11-libs/fltk:1[threads,xft]
 	x11-misc/xdg-utils
 	dev-perl/RPC-XML
 	dev-perl/Term-ReadLine-Perl
-	>=media-libs/portaudio-19_pre20071207
+	|| (
+		media-libs/portaudio[oss]
+		media-libs/portaudio[alsa]
+	)
 	hamlib? ( media-libs/hamlib )
 	pulseaudio? ( media-sound/pulseaudio )
 	>=media-libs/libsndfile-1.0.10"
@@ -35,5 +40,8 @@ src_configure() {
 		$(use_with hamlib) \
 		$(use_enable nls) \
 		$(use_with pulseaudio) \
+		$(use_enable cpu_flags_x86_sse optimizations sse) \
+		$(use_enable cpu_flags_x86_sse2 optimizations sse2) \
+		$(use_enable cpu_flags_x86_sse3 optimizations sse3) \
 		--without-asciidoc
 }

@@ -5,6 +5,9 @@
     <email>bircoph@gentoo.org</email>
     <name>Andrew Savchenko</name>
   </maintainer>
+  <use>
+    <flag name="pa-headers">Install PulseAudio headers</flag>
+  </use>
   <upstream>
     <remote-id type="github">i-rinat/apulse</remote-id>
   </upstream>

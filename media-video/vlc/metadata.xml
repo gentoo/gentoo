@@ -8,6 +8,7 @@
 	<use>
 		<flag name="aom">Enable experimental support for AV1 codec</flag>
 		<flag name="archive">Enable support for libarchive stream extractor</flag>
+		<flag name="aribsub">Enable support for decoding ARIB STD-B24 subtitles</flag>
 		<flag name="atmo">Enable support for AtmoLight (homebrew Ambient Lighting Technology)</flag>
 		<flag name="audioqueue">Enable AudioQueue audio module for Mac OS X</flag>
 		<flag name="avcodec">Enable libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg</flag>
@@ -30,6 +31,7 @@
 		<flag name="gstreamer">Enable GStreamer based decoding support (currently supports only video decoding)</flag>
 		<flag name="httpd">Enable a web based interface for vlc</flag>
 		<flag name="kate">Adds support for Ogg Kate subtitles via libkate</flag>
+		<flag name="kms">Enable kernel mode setting video output plugin via <pkg>x11-libs/libdrm</pkg></flag>
 		<flag name="libtar">Uses libtar instead of the built-in tar reader for reading custom skins</flag>
 		<flag name="libtiger">Enable Ogg Kate subtitles rendering using libtiger</flag>
 		<flag name="linsys">Enable support for Linux Linear Systems Ltd. SDI and HD-SDI input cards</flag>

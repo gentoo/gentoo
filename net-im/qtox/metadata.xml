@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="gtk">Adds support for GTK and Status Notifier tray backends</flag>
+		<flag name="notification">Adds support for GTK Status Notifier tray backends</flag>
 		<flag name="X">Adds support for X11</flag>
 	</use>
 	<upstream>

@@ -1,9 +1,8 @@
-From: Guo Yixuan <culu.gyx@gmail.com>
-Bug: https://code.google.com/archive/p/sunpinyin/issues/327
-Gentoo-Bug: 553796
+https://bugs.debian.org/790287
+https://code.google.com/p/sunpinyin/issues/detail?id=327
 
-diff --git a/man/SConscript b/man/SConscript
-index f3ebd03..e1551eb 100644
+Author: Guo Yixuan <culu.gyx@gmail.com>
+
 --- a/man/SConscript
 +++ b/man/SConscript
 @@ -1,7 +1,7 @@

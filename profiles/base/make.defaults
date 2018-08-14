@@ -135,10 +135,9 @@ PYTHON_SINGLE_TARGET="python3_6"
 # Michał Górny <mgorny@gentoo.org> (10 Aug 2013)
 # Moved from portage's make.globals.
 # 1) do not uninstall kernel modules and therefore allow replacing them,
-# 2) allow replacing unowned compiled Python modules (python-r1 migration),
-# 3) allow replacing unowned dropin.cache files (twisted-r1 migration).
+# 2,3) removed wrt bug #663170,
 # 4) protect /var/{run,lock} symlinks for bug 519620
-COLLISION_IGNORE="/lib/modules/* *.py[co] *\$py.class */dropin.cache"
+COLLISION_IGNORE="/lib/modules/*"
 UNINSTALL_IGNORE="/lib/modules/* /var/run /var/lock"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (23 Aug 2013)

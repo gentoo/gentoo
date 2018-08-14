@@ -144,10 +144,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	bluetooth? ( net-wireless/bluez )
+	bluetooth? (
+		dev-libs/glib:2
+		net-wireless/bluez
+	)
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
-	dbus? ( dev-libs/dbus-glib )
+	dbus? ( sys-apps/dbus )
 	eds? (
 		dev-libs/glib:2
 		gnome-base/dconf
@@ -402,7 +405,6 @@ src_configure() {
 		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
-		--with-alloc=system
 		--with-build-version="Gentoo official package"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"

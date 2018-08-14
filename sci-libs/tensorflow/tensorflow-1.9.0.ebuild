@@ -301,8 +301,8 @@ src_configure() {
 		export TF_CUDA_CLANG=0
 		export TF_NEED_TENSORRT=0
 		if use cuda; then
-			export CUDA_TOOLKIT_PATH="${EROOT%/}/opt/cuda"
-			export CUDNN_INSTALL_PATH="${EROOT%/}/opt/cuda"
+			export CUDA_TOOLKIT_PATH="${EPREFIX%/}/opt/cuda"
+			export CUDNN_INSTALL_PATH="${EPREFIX%/}/opt/cuda"
 			export GCC_HOST_COMPILER_PATH="$(cuda_gccdir)/$(tc-getCC)"
 			export TF_NCCL_VERSION="1"
 
@@ -371,7 +371,7 @@ src_install() {
 		# Symlink to the main .so file
 		python_export PYTHON_SITEDIR
 		rm -rf "${D}/${PYTHON_SITEDIR}/${PN}/lib${PN}_framework.so" || die
-		dosym "../../../lib${PN}_framework.so" "${PYTHON_SITEDIR}/${PN}/lib${PN}_framework.so" || die
+		dosym "../../../lib${PN}_framework.so" "${PYTHON_SITEDIR#${EPREFIX%/}}/${PN}/lib${PN}_framework.so" || die
 
 		python_optimize
 	}
@@ -379,12 +379,12 @@ src_install() {
 	if use python; then
 		python_foreach_impl run_in_build_dir do_install
 
-		rm -f "${D}"/usr/lib/python-exec/*/tensorboard || die "failed to remove tensorboard"
+		rm -f "${ED}"/usr/lib/python-exec/*/tensorboard || die "failed to remove tensorboard"
 
 		# Symlink to python-exec scripts
-		for i in "${D}"/usr/lib/python-exec/*/*; do
+		for i in "${ED}"/usr/lib/python-exec/*/*; do
 			n="${i##*/}"
-			[[ -e "${D}/usr/bin/${n}" ]] || dosym ../lib/python-exec/python-exec2 "/usr/bin/$n"
+			[[ -e "${ED}/usr/bin/${n}" ]] || dosym ../lib/python-exec/python-exec2 "/usr/bin/$n"
 		done
 
 		python_setup
@@ -413,7 +413,7 @@ src_install() {
 
 	einfo "Installing libs"
 	# Generate pkg-config file
-	${PN}/c/generate-pc.sh --prefix=/usr --libdir=$(get_libdir) --version=${MY_PV} || die
+	${PN}/c/generate-pc.sh --prefix="${EPREFIX}"/usr --libdir=$(get_libdir) --version=${MY_PV} || die
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc
 

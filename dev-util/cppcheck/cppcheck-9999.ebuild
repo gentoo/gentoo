@@ -7,17 +7,17 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs git-r3
 
-DESCRIPTION="static analyzer of C/C++ code"
+DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
 EGIT_REPO_URI="https://github.com/danmar/cppcheck.git"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
 IUSE="htmlreport pcre qt5"
 
 RDEPEND="
-	>=dev-libs/tinyxml2-2
+	dev-libs/tinyxml2:=
 	htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
 	pcre? ( dev-libs/libpcre )
 	qt5? (
@@ -48,7 +48,7 @@ src_prepare() {
 src_configure() {
 	if use pcre ; then
 		sed -e '/HAVE_RULES=/s:=no:=yes:' \
-			-i Makefile
+			-i Makefile || die
 	fi
 }
 
@@ -59,29 +59,29 @@ src_compile() {
 		DB2MAN="${EROOT}usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl"
 
 	if use qt5 ; then
-		pushd gui
+		pushd gui || die
 		eqmake5
 		emake
-		popd
+		popd || die
 	fi
 	if use htmlreport ; then
-		pushd htmlreport
+		pushd htmlreport || die
 		distutils-r1_src_compile
-		popd
+		popd || die
 	fi
 }
 
 src_test() {
 	# safe final version
-	mv -v ${PN}{,.final}
-	mv -v lib/library.o{,.final}
-	mv -v cli/cppcheckexecutor.o{,.final}
+	mv -v ${PN}{,.final} || die
+	mv -v lib/library.o{,.final} || die
+	mv -v cli/cppcheckexecutor.o{,.final} || die
 	#trigger recompile with CFGDIR inside ${S}
 	emake check CFGDIR="${S}/cfg"
 	# restore
-	mv -v ${PN}{.final,}
-	mv -v lib/library.o{.final,}
-	mv -v cli/cppcheckexecutor.o{.final,}
+	mv -v ${PN}{.final,} || die
+	mv -v lib/library.o{.final,} || die
+	mv -v cli/cppcheckexecutor.o{.final,} || die
 }
 
 src_install() {
@@ -95,9 +95,9 @@ src_install() {
 		dodoc gui/{projectfile.txt,gui.${PN}}
 	fi
 	if use htmlreport ; then
-		pushd htmlreport
+		pushd htmlreport || die
 		distutils-r1_src_install
-		popd
+		popd || die
 		find "${D}" -name "*.egg-info" -delete
 	else
 		rm "${ED}/usr/bin/cppcheck-htmlreport" || die

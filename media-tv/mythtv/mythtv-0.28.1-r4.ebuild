@@ -177,6 +177,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}/${P}-glibc225.patch"
 	eapply -p2 "${FILESDIR}/${PN}-29.2-freetype_pkgconfig.patch" #658534
+	eapply "${FILESDIR}/${P}-qt511.patch"
 }
 
 src_configure() {

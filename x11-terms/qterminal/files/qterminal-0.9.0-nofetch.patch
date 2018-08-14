@@ -1,0 +1,28 @@
+From 26907a1bffbd975529598a3dea2094448a43fe93 Mon Sep 17 00:00:00 2001
+From: Alf Gaida <agaida@siduction.org>
+Date: Tue, 5 Jun 2018 22:21:48 +0200
+Subject: [PATCH] Removed translation related git stuff from CMakeLists.txt
+
+---
+ CMakeLists.txt | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6e45aa1..f92aa79 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -125,14 +125,6 @@ lxqt_translate_ts(QTERM_QM
+         ${QTERM_UI_SRC}
+         ${QTERM_MOC_SRC}
+     TRANSLATION_DIR "src/translations"
+-    PULL_TRANSLATIONS
+-        ${PULL_TRANSLATIONS}
+-    CLEAN_TRANSLATIONS
+-        ${CLEAN_TRANSLATIONS}
+-    TRANSLATIONS_REPO
+-        ${TRANSLATIONS_REPO}
+-    TRANSLATIONS_REFSPEC
+-        ${TRANSLATIONS_REFSPEC}
+ )
+ 
+ include_directories(

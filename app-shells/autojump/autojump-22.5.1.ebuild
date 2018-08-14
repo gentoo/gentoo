@@ -20,7 +20,6 @@ REQUIRED_USE="ipython? ( ${PYTHON_REQUIRED_USE} )"
 # Not all tests pass. Need investigation.
 RESTRICT="test"
 RDEPEND="ipython? ( ${PYTHON_DEPS} )"
-DEPEND="test? ( dev-python/flake8 dev-python/tox )"
 
 src_prepare() {
 	eapply_user

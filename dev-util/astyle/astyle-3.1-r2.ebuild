@@ -54,7 +54,7 @@ src_install() {
 
 	local libastylename="lib${PN}.so.${PV}.0"
 	local libastylejname="lib${PN}j.so.${PV}.0"
-	local libdestdir="${EPREFIX}/usr/$(get_libdir)"
+	local libdestdir="/usr/$(get_libdir)"
 
 	dolib.so "${libastylename}"
 	dosym "${libastylename}" "${libdestdir}/lib${PN}.so.$(get_major_version)"

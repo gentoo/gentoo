@@ -89,10 +89,6 @@ x11-terms/gnome-terminal gnome-shell
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
 
-# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
-# masked rev deps
-media-libs/libsdl2 fusionsound
-
 # Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
 # Don't keyword redis
 dev-libs/hiredis test
@@ -358,10 +354,6 @@ net-analyzer/wireshark doc-pdf
 # Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
 # MKL not available on this arch
 media-gfx/povray mkl
-
-# Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
-# qtmultimedia is not keyworded, bug 293671
-dev-python/PyQt4 multimedia
 
 # Ben de Groot <yngwin@gentoo.org> (11 Nov 2009)
 # Requires qthelp, which requires qtwebkit, bug 292838

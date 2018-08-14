@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>naota@gentoo.org</email>
+    <email>bkohler@gentoo.org</email>
+    <name>Ben Kohler</name>
   </maintainer>
 </pkgmetadata>

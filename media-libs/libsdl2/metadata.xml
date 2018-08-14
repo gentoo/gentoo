@@ -24,7 +24,6 @@
 		Perl, PHP, Pike, Python, and Ruby.
 	</longdescription>
 	<use>
-		<flag name="fusionsound">use FusionSound audio driver</flag>
 		<flag name="gles">include OpenGL ES support</flag>
 		<flag name="haptic">Enable the haptic (force feedback) subsystem</flag>
 		<flag name="joystick">Control joystick support (disable at your own risk)</flag>

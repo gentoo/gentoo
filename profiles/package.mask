@@ -29,6 +29,59 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
+# Beta release with new features, masked for testing
+=app-text/tesseract-4.0.0_beta*
+
+# Virgil Dupras <vdupras@gentoo.org> (12 Aug 2018)
+# django-pipeline hasn't been maintained and has been broken for a while.
+# No revdep. Removal in 30 days. Bug #649838
+dev-python/django-pipeline
+
+# Ulrich Müller <ulm@gentoo.org> (07 Aug 2018)
+# Fails to build with emacs-26.1. Last release in 2003, last commit
+# to upstream CVS in 2010. Masked for removal in 30 days. Bug #663030.
+app-emacs/cmail
+
+# Thomas Deutschmann <whissi@gentoo.org> (05 Aug 2018)
+# Deprecated. Using recent microcodes with this package either won't work
+# or crash your system. Please change your setup and make use of kernel's
+# early microcode loading feature, see https://wiki.gentoo.org/wiki/Microcode
+# for more details. Removal in 30 days.
+sys-apps/microcode-ctl
+
+# Mike Gilbert <floppym@gentoo.org> (04 Aug 2018)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-70
+
+# Virgil Dupras <vdupras@gentoo.org> (02 Aug 2018)
+# Django 1.8 is unsupported and insecure. These packages haven't been updated
+# to work with up-to-date django. Removal in 30 days. Bug #662632
+<dev-python/django-1.11
+dev-python/django-compressor
+dev-python/django-openstack-auth
+dev-python/django-tastypie
+dev-python/jingo
+dev-python/Coffin
+dev-python/jsonfield
+
+# Michał Górny <mgorny@gentoo.org> (01 Aug 2018)
+# Multiprocessing versions of gemato.  They are known to hang on some
+# users, so let's keep them masked until somebody figures out what's
+# wrong.  Bug #647964.
+~app-portage/gemato-14.0m
+~app-portage/gemato-9999m
+
+# Joonas Niilola <juippis@gmail.com> (31 Jul 2018)
+# Old and obsolete. Merged into one EFL package since 1.18 release. 
+# Removal in ~30 days. Bug #662510
+=dev-libs/efl-1.17.0-r1
+media-libs/elementary
+media-plugins/emotion_generic_players
+media-plugins/evas_generic_loaders
+x11-themes/ethemes
+
 # Virgil Dupras <vdupras@gentoo.org> (22 Jul 2018)
 # Depends on an unsupported version of django (1.8, will be removed soon) and
 # is rendered obsolete by the direct inclusion of django support in
@@ -139,58 +192,6 @@ dev-python/jaraco-utils
 # for generating new keys and doing key maintenance. Removal in a month
 app-crypt/gkeys-gen
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Mask Qt4 for removal. Bug #631788
-=dev-qt/assistant-4.8.7
-=dev-qt/designer-4.8.7
-=dev-qt/linguist-4.8.7
-=dev-qt/pixeltool-4.8.7
-=dev-qt/qdbusviewer-4.8.7
-=dev-qt/qt3support-4.8.7
-=dev-qt/qtbearer-4.8.7
-=dev-qt/qtcore-4.8.7-r4
-=dev-qt/qtdbus-4.8.7
-=dev-qt/qtdeclarative-4.8.7
-=dev-qt/qtdemo-4.8.7
-=dev-qt/qtgui-4.8.7
-=dev-qt/qthelp-4.8.7
-=dev-qt/qt-meta-4.8.6-r1
-=dev-qt/qtmultimedia-4.8.7
-=dev-qt/qtopengl-4.8.7
-=dev-qt/qtscript-4.8.7
-=dev-qt/qtsql-4.8.7-r1
-=dev-qt/qtsvg-4.8.7
-=dev-qt/qttest-4.8.7
-=dev-qt/qttranslations-4.8.7
-=dev-qt/qtxmlpatterns-4.8.7
-app-eselect/eselect-qtgraphicssystem
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Bugs #644360, #644374, #656826, #655382
-<media-sound/mumble-1.3
-<media-sound/murmur-1.3
-<net-analyzer/ostinato-0.9_p20180522
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal. Bugs #644364, #644368, #644362
-dev-python/pivy
-media-libs/emfengine
-media-libs/quarter
-media-libs/SoQt
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal.
-dev-python/pyqwt
-dev-python/PyQt4
-dev-python/pyside:0
-dev-python/shiboken:0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Jun 2018)
-# Depends on dead Qt4. Masked for removal in 30 days, bug #644728
-app-i18n/ibus-qt
-app-i18n/qimhangul
-=app-i18n/tagainijisho-1.0*
-
 # Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
@@ -208,21 +209,12 @@ sys-apps/paludis
 # a month
 net-vpn/miredo
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Doesn't run, cannot bump it (#651146). Removal in a month.
-games-emulation/hatari
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
 # Please keep this package.mask entry until at least 16th Sep 2018 for
 # extra notification of the deprecation and replacement. Bug #658194
 media-plugins/gst-plugins-schroedinger
-
-# Mike Gilbert <floppym@gentoo.org> (15 Jun 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-69
 
 # Brian Evans <grknight@gentoo.org> (14 Jun 2018)
 # Mask new php pre-releases for initial testing
@@ -258,6 +250,7 @@ media-libs/libglvnd
 # Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
 # Masked for testing
 =dev-libs/libressl-2.7*
+=dev-libs/libressl-2.8*
 
 # Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
 # Package version depends on Qt-5.10 that was/is/will not be in tree.
@@ -346,10 +339,6 @@ virtual/jre:9
 # (<0.6) that have been punted from the tree.
 net-misc/cocaine-core
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Nov 2017)
-# Depends on dead Qt4. Last-rites on hold for chance of Qt5-port. Bug #620702
-<media-gfx/freecad-0.17
-
 # Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
 # Missing dependencies.
 >=dev-python/scrapy-1.4.0
@@ -423,14 +412,14 @@ sys-kernel/hardened-sources
 # Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
 # Masked ede and all its dependencies due to security reasons.
 # bug #398241
-app-xemacs/ede
-app-xemacs/semantic
-app-xemacs/jde
-app-xemacs/xslt-process
-app-xemacs/xetla
-app-xemacs/cogre
-app-xemacs/ecb
-app-xemacs/xemacs-packages-all
+<=app-xemacs/ede-1.03-r1
+<=app-xemacs/semantic-1.21
+<=app-xemacs/jde-1.52
+<=app-xemacs/xslt-process-1.12
+<=app-xemacs/xetla-1.02
+<=app-xemacs/cogre-1.02
+<=app-xemacs/ecb-1.22
+<=app-xemacs/xemacs-packages-all-2010.07.29
 
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
@@ -464,11 +453,6 @@ dev-util/mutrace
 www-client/phantomjs
 dev-ruby/poltergeist
 
-# Thomas Deutschmann <whissi@gentoo.org> (24 May 2017)
-# Broken runscript/changed behavior causing lvm2 to fail
-# on boot. Bug #617578
->=sys-fs/lvm2-2.02.171
-
 # Michał Górny <mgorny@gentoo.org> (22 May 2017)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
 # Any version above 5.100.138 breaks b43 driver in various ways.
@@ -499,14 +483,6 @@ dev-ruby/poltergeist
 <dev-util/nvidia-cuda-toolkit-8
 net-wireless/cpyrit-cuda
 
-# Bernard Cafarelli <voyageur@gentoo.org> (8 May 2017)
-# Coordinated conversion to wxGTK:3.0-gtk3
-# Drop mask after migration of existing wxGTK:3.0 users
-=net-ftp/filezilla-3.34.0-r300
-=net-ftp/filezilla-3.35.1-r300
-=dev-util/codeblocks-17.12-r300
-=dev-util/codeblocks-17.12-r301
-
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Old gstreamer 0.10 version, which is security vulnerable.
 # Use gstreamer:1.0 with media-plugins/gst-plugins-libav
@@ -527,10 +503,6 @@ media-plugins/gst-plugins-ffmpeg
 # Alon Bar-Lev <alonbl@gentoo.org> (06 Feb 2017)
 # Needs openssl-1.1
 >=dev-libs/opencryptoki-3.6
-
-# Bernard Cafarelli <voyageur@gentoo.org> (30 Jan 2017)
-# Alpha release with new features, masked for testing
-=app-text/tesseract-4.00.00_alpha*
 
 # Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
 # Use x11-drivers/nvidia-drivers[tools] instead.

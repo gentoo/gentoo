@@ -1,14 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 inherit savedconfig
 
 if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
-	KEYWORDS=""
 else
 	GIT_COMMIT=""
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
@@ -78,6 +77,7 @@ src_unpack() {
 
 src_prepare() {
 	default
+
 	echo "# Remove files that shall not be installed from this list." > ${PN}.conf
 	find * \( \! -type d -and \! -name ${PN}.conf \) >> ${PN}.conf
 

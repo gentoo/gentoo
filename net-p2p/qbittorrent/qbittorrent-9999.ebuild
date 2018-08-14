@@ -3,19 +3,19 @@
 
 EAPI=6
 
-inherit cmake-utils gnome2-utils xdg-utils
+inherit gnome2-utils xdg-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
-HOMEPAGE="https://www.qbittorrent.org/"
+HOMEPAGE="https://www.qbittorrent.org
+	  https://github.com/qbittorrent"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/qBittorrent.git"
 else
-	MY_P=${P/_}
-	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+	SRC_URI="https://github.com/qbittorrent/qBittorrent/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
-	S=${WORKDIR}/${MY_P}
+	S="${WORKDIR}/qBittorrent-release-${PV}"
 fi
 
 LICENSE="GPL-2"
@@ -33,6 +33,7 @@ RDEPEND="
 	sys-libs/zlib
 	dbus? ( dev-qt/qtdbus:5 )
 	X? (
+		dev-libs/geoip
 		dev-qt/qtgui:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
@@ -47,13 +48,16 @@ DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 # may be changed again.
 
 src_configure() {
-	local mycmakeargs=(
-		-DSYSTEM_QTSINGLEAPPLICATION=ON
-		-DDBUS=$(usex dbus)
-		-DGUI=$(usex X)
-		-DWEBUI=$(usex webui)
-	)
-	cmake-utils_src_configure
+	econf --with-qtsingleapplication=system \
+	$(use_enable dbus qt-dbus) \
+	$(use_enable debug) \
+	$(use_enable webui) \
+	$(use_enable X gui)
+}
+
+src_install() {
+	emake STRIP="/bin/false" INSTALL_ROOT="${D}" install
+	einstalldocs
 }
 
 pkg_postinst() {

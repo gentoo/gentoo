@@ -5,8 +5,11 @@ EAPI=6
 inherit autotools eutils git-r3 multilib-minimal
 
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
-HOMEPAGE="http://libevent.org/"
 EGIT_REPO_URI="https://github.com/libevent/libevent"
+HOMEPAGE="
+	http://libevent.org/
+	${EGIT_REPO_URI}
+"
 
 LICENSE="BSD"
 SLOT="0"

@@ -1,8 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Brian Evans <grknight@gentoo.org> (10 Aug 2018)
+# Mask PHP 7.3 target while in beta
+php_targets_php7-3
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
 # media-sound/mumble is masked/not keyworded at this point, bug #656826.
@@ -101,10 +105,6 @@ netlink
 # Enabling this you will get a fully unsupported Gnome setup that
 # could suffer unexpected problem, don't expect support for it then.
 openrc-force
-
-# Brian Evans <grknight@gentoo.org> (2 Dec 2015)
-# php 5.4 is end of life, masked for removal
-php_targets_php5-4
 
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # php 5.5 is end of life, masked for removal

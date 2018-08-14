@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
@@ -67,8 +67,10 @@ RDEPEND="
 	inputlirc? ( app-misc/inputlircd )
 "
 
+MAKEOPTS+=" -j1"
+
 pkg_setup() {
-	use uinput && CONFIG_CHECK="INPUT_UINPUT"
+	use uinput && CONFIG_CHECK="~INPUT_UINPUT"
 	python-single-r1_pkg_setup
 	linux-info_pkg_setup
 }

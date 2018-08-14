@@ -109,7 +109,6 @@ media-libs/xine-lib vaapi
 
 # media-libs/nas
 media-libs/libsdl nas
-dev-qt/qtgui nas
 app-editors/xemacs nas
 media-sound/mpg123 nas
 media-video/mplayer nas

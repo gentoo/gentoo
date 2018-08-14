@@ -6,6 +6,9 @@
         <name>PostgreSQL and Related Package Development</name>
     </maintainer>
     <use>
+        <flag name="llvm">
+	    Add support for llvm JIT engine
+        </flag>
         <flag name="pg_legacytimestamp">
             Use double precision floating-point numbers instead of 64-bit
             integers for timestamp storage.

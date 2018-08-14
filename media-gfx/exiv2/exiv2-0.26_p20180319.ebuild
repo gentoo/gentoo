@@ -48,9 +48,10 @@ DOCS=( README doc/ChangeLog doc/cmd.txt )
 S="${WORKDIR}/${PN^}-${PN}-${COMMIT:0:7}"
 
 PATCHES=(
-	# master, pending backports for 0.26
+	# 0.26 branch
 	"${FILESDIR}"/${P}-CVE-2018-4868.patch
 	"${FILESDIR}"/${P}-CVE-2017-18005.patch
+	"${FILESDIR}"/${P}-clang-fix.patch
 	# TODO: Take to upstream
 	"${FILESDIR}"/${PN}-0.26-fix-docs.patch
 	"${FILESDIR}"/${PN}-0.26-tools-optional.patch

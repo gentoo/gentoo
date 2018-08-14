@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180515-1334Z"
+MY_EXTRAS_VER="20180809-1700Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -260,7 +260,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	java-pkg-opt-2_src_prepare
 	if use tcmalloc; then
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
@@ -279,6 +278,7 @@ src_prepare() {
 	fi
 
 	cmake-utils_src_prepare
+	java-pkg-opt-2_src_prepare
 }
 
 src_configure(){
@@ -622,6 +622,10 @@ multilib_src_install_all() {
 		for script in "${S}"/scripts/mysql* ; do
 			[[ ( -f "$script" ) && ( "${script%.sh}" == "${script}" ) ]] && dodoc "${script}"
 		done
+		# Manually install supporting files that conflict with other packages
+		# but are needed for galera and initial installation
+		exeinto /usr/libexec/mariadb
+		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
 	fi
 
 	#Remove mytop if perl is not selected

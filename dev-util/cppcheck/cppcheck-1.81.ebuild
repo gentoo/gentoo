@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs
 
-DESCRIPTION="static analyzer of C/C++ code"
+DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
