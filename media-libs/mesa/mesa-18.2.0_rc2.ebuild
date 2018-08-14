@@ -47,6 +47,7 @@ REQUIRED_USE="
 	openmax? ( gallium )
 	gles1?  ( egl )
 	gles2?  ( egl )
+	lm_sensors? ( gallium )
 	vaapi? ( gallium )
 	vdpau? ( gallium )
 	vulkan? ( || ( video_cards_i965 video_cards_radeonsi )
@@ -222,6 +223,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	valgrind? ( dev-util/valgrind )
 	x11-base/xorg-proto
+	x11-libs/libXrandr
 	$(python_gen_any_dep ">=dev-python/mako-0.7.3[\${PYTHON_USEDEP}]")
 "
 

@@ -10,6 +10,7 @@ sys-devel/gcc -pie
 # that prevent the >=icu-59 dependency
 >=www-client/chromium-62.0.3202.9 -system-icu
 >=www-client/firefox-56.0 -system-icu
+>=mail-client/thunderbird-60.0 -system-icu
 
 # Mike Gilbert <floppym@gentoo.org> (05 Aug 2018)
 # Fails to build.
