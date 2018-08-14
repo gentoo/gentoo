@@ -311,11 +311,15 @@ multilib_src_configure() {
 		gallium_enable video_cards_vivante etnaviv
 		gallium_enable video_cards_vmware svga
 		gallium_enable video_cards_nouveau nouveau
-		gallium_enable video_cards_i915 i915
 		gallium_enable video_cards_imx imx
-		if ! use video_cards_i915 && \
-			! use video_cards_i965; then
-			gallium_enable video_cards_intel i915
+
+		# Only one i915 driver (classic vs gallium). Default to classic.
+		if ! use classic; then
+			gallium_enable video_cards_i915 i915
+			if ! use video_cards_i915 && \
+				! use video_cards_i965; then
+				gallium_enable video_cards_intel i915
+			fi
 		fi
 
 		gallium_enable video_cards_r300 r300
