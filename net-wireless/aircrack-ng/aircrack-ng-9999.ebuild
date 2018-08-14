@@ -19,7 +19,6 @@ else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="GPL-2"
@@ -45,34 +44,25 @@ PDEPEND="kernel_linux? (
 	sys-apps/hwids
 	airdrop-ng? ( net-wireless/lorcon[python,${PYTHON_USEDEP}] )"
 
-REQUIRED_USE="airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
-		airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
-
-pkg_setup() {
-	MAKE_COMMON=(
-		CC="$(tc-getCC)" \
-		CXX="$(tc-getCXX)" \
-		AR="$(tc-getAR)" \
-		LD="$(tc-getLD)" \
-		RANLIB="$(tc-getRANLIB)" \
-		DESTDIR="${ED}"
-	)
-}
+REQUIRED_USE="
+	airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
+	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )
+"
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		--disable-asan \
-		$(use_enable netlink libnl) \
-		$(use_with experimental) \
-		$(use_with sqlite sqlite3) \
 		--enable-shared \
 		--disable-static \
-		--without-opt
+		--without-opt \
+		$(use_enable netlink libnl) \
+		$(use_with experimental) \
+		$(use_with sqlite sqlite3)
 }
 
 src_compile() {
@@ -81,7 +71,7 @@ src_compile() {
 		filter-flags -frecord-gcc-switches
 	fi
 
-	emake "${MAKE_COMMON[@]}"
+	default
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"
@@ -91,15 +81,10 @@ src_compile() {
 		cd "${S}/scripts/airdrop-ng"
 		distutils-r1_src_compile
 	fi
-}
-
-src_test() {
-	emake "${MAKE_COMMON[@]}" check
 }
 
 src_install() {
-	einstalldocs
-	emake "${MAKE_COMMON[@]}" install
+	default
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"
@@ -110,7 +95,7 @@ src_install() {
 		distutils-r1_src_install
 	fi
 
-	#we don't need aircrack-ng's oui updater, we have our own
+	# we don't need aircrack-ng's oui updater, we have our own
 	rm "${ED}"/usr/sbin/airodump-ng-oui-update
 }
 
