@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils xdg-utils
+inherit desktop gnome2-utils xdg-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org
@@ -54,6 +54,7 @@ src_configure() {
 
 src_install() {
 	emake STRIP="/bin/false" INSTALL_ROOT="${D}" install
+	domenu dist/unix/qbittorrent.desktop
 	einstalldocs
 }
 
