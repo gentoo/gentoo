@@ -43,7 +43,7 @@ DESCRIPTION="Oracle's Java SE Development Kit"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javase/"
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
-IUSE="alsa commercial cups derby doc examples +fontconfig headless-awt javafx jce nsplugin selinux source visualvm"
+IUSE="alsa commercial cups doc examples +fontconfig headless-awt javafx jce nsplugin selinux source visualvm"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 RESTRICT="fetch preserve-libs strip"
 QA_PREBUILT="*"
@@ -215,10 +215,6 @@ src_install() {
 	dodoc COPYRIGHT
 	dodir "${dest}"
 	cp -pPR bin include jre lib man "${ddest}" || die
-
-	if use derby ; then
-		cp -pPR	db "${ddest}" || die
-	fi
 
 	if use examples && [[ ${A} = *-demos.* ]] ; then
 		cp -pPR demo sample "${ddest}" || die
