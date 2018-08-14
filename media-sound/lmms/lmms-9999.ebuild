@@ -19,7 +19,7 @@ fi
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
-IUSE="alsa debug fluidsynth jack libgig ogg portaudio pulseaudio sdl soundio stk vst"
+IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk vst"
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
@@ -33,6 +33,7 @@ COMMON_DEPEND="
 	fluidsynth? ( media-sound/fluidsynth )
 	jack? ( virtual/jack )
 	libgig? ( media-libs/libgig )
+	mp3? ( media-sound/lame )
 	ogg? (
 		media-libs/libogg
 		media-libs/libvorbis
@@ -75,6 +76,7 @@ src_configure() {
 		-DWANT_ALSA=$(usex alsa)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_GIG=$(usex libgig)
+		-DWANT_MP3LAME=$(usex mp3)
 		-DWANT_OGGVORBIS=$(usex ogg)
 		-DWANT_PORTAUDIO=$(usex portaudio)
 		-DWANT_PULSEAUDIO=$(usex pulseaudio)
