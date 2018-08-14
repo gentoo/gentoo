@@ -41,13 +41,6 @@ pkg_postinst() {
 			ewarn "You have chosen to disable the rules which ensure GLEP 31"
 			ewarn "compliance. When editing ebuilds, please make sure you get"
 			ewarn "the character set correct."
-		else
-			elog "Note for developers and anyone else who edits ebuilds:"
-			elog "    This release of gentoo-syntax now contains filetype rules to set"
-			elog "    fileencoding for ebuilds and ChangeLogs to utf-8 as per GLEP 31."
-			elog "    If you find this feature breaks things, please submit a bug and"
-			elog "    assign it to vim@gentoo.org. You can use the 'ignore-glep31' USE"
-			elog "    flag to remove these rules."
 		fi
 	fi
 }
