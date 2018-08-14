@@ -47,6 +47,7 @@ REQUIRED_USE="
 	openmax? ( gallium )
 	gles1?  ( egl )
 	gles2?  ( egl )
+	lm_sensors? ( gallium )
 	vaapi? ( gallium )
 	vdpau? ( gallium )
 	vulkan? ( || ( video_cards_i965 video_cards_radeonsi )
