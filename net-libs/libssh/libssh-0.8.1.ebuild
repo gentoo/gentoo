@@ -14,7 +14,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
 	inherit eapi7-ver
-	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz"
+	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 fi
 
@@ -97,7 +97,11 @@ multilib_src_install() {
 		dodoc -r doc/html/.
 	fi
 
-	use static-libs || rm -f "${D}"/usr/$(get_libdir)/libssh{,_threads}.a
+	use static-libs || rm -f "${D}"/usr/$(get_libdir)/libssh.a
+
+	# compatibility symlink until all consumers have been updated
+	# to no longer use libssh_threads.so
+	dosym libssh.so /usr/$(get_libdir)/libssh_threads.so
 }
 
 multilib_src_install_all() {
