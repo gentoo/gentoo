@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=app-emacs/apel-10.6 virtual/emacs-flim app-emacs/semi bbdb? ( app-emacs/bbdb ) >=virtual/emacs-23
+DESCRIPTION=Yet Another Message Interface on Emacsen
+EAPI=6
+HOMEPAGE=https://github.com/wanderlust/wanderlust
+IUSE=bbdb ssl l10n_ja
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2+
+RDEPEND=>=app-emacs/apel-10.6 virtual/emacs-flim app-emacs/semi bbdb? ( app-emacs/bbdb ) >=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/wanderlust/wanderlust/archive/395826e99b84051396d503392f52462b6cb683a5.tar.gz -> wanderlust-2.15.9_p20180814-git.tar.gz
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=f0873d1d7547264a80d6c6e5dc36593d
