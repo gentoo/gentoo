@@ -56,8 +56,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
-	"${FILESDIR}"/${P}-CVE-2018-0737.patch
-	"${FILESDIR}"/${P}-CVE-2018-0732.patch
 )
 
 src_prepare() {
