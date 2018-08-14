@@ -43,7 +43,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
-	"${FILESDIR}"/${PN}-4.14.1-configure-nomagic.patch # bug 643722
+	"${FILESDIR}"/${PN}-4.16.0-configure-nomagic.patch # bug 643722
 )
 
 src_prepare() {

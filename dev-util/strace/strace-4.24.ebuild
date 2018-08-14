@@ -18,9 +18,14 @@ HOMEPAGE="https://strace.io/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="aio perl static unwind"
+IUSE="aio perl static unwind elfutils"
 
-LIB_DEPEND="unwind? ( sys-libs/libunwind[static-libs(+)] )"
+REQUIRED_USE="?? ( unwind elfutils )"
+
+LIB_DEPEND="
+	unwind? ( sys-libs/libunwind[static-libs(+)] )
+	elfutils? ( dev-libs/elfutils[static-libs(+)] )
+"
 # strace only uses the header from libaio to decode structs
 DEPEND="
 	static? ( ${LIB_DEPEND} )
@@ -66,7 +71,8 @@ src_configure() {
 	# Don't require mpers support on non-multilib systems. #649560
 	econf \
 		--enable-mpers=check \
-		$(use_with unwind libunwind)
+		$(use_with unwind libunwind) \
+		$(use_with elfutils libdw)
 }
 
 src_test() {
