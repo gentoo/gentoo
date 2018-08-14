@@ -142,11 +142,13 @@ mozconfig_init() {
 		seamonkey)
 			# Must create the initial mozconfig to enable application
 			: >.mozconfig || die "initial mozconfig creation failed"
-			mozconfig_annotate "" --enable-application=suite ;;
+			# NOTE--this is not compatible with mozilla prior to v60
+			mozconfig_annotate "" --enable-application=comm/suite ;;
 		*thunderbird)
 			# Must create the initial mozconfig to enable application
 			: >.mozconfig || die "initial mozconfig creation failed"
-			mozconfig_annotate "" --enable-application=mail ;;
+			# NOTE--this is not compatible with mozilla prior to v60
+			mozconfig_annotate "" --enable-application=comm/mail ;;
 	esac
 
 	####################################
