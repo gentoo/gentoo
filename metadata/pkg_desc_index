@@ -5300,7 +5300,7 @@ dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pymad 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymetar 0.21: Downloads, decodes and provides access to the weather report for a given station ID
 dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
-dev-python/pymongo 2.7.2 3.4.0 3.5.1: Python driver for MongoDB
+dev-python/pymongo 3.4.0 3.5.1: Python driver for MongoDB
 dev-python/pymountboot 0.2.2: Python extension module to (re)mount /boot
 dev-python/pympler 0.5: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
