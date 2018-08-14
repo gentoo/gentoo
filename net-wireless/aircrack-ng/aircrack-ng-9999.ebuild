@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	MY_PV=${PV/_/-}
-	SRC_URI="http://download.${PN}.org/${PN}-${MY_PV}.tar.gz"
+	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
