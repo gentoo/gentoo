@@ -31,9 +31,8 @@ PATCHES=(
 
 src_configure() {
 	local emesonargs=(
-		-Dcurses=auto
+		-Dcurses=ncursesw
 		$(meson_use mouse)
-		-Dcolors=auto
 		$(meson_use nls multibyte)
 		$(meson_use nls locale)
 		$(meson_use nls)
@@ -54,7 +53,7 @@ src_configure() {
 	)
 	if use lyrics-screen; then
 		emesonargs+=(
-			-Dlyrics_plugin_dir=/usr/$(get_libdir)/ncmpc/lyrics
+			-Dlyrics_plugin_dir="${EPREFIX}"/usr/$(get_libdir)/ncmpc/lyrics
 		)
 	fi
 
