@@ -9,7 +9,7 @@ HOMEPAGE="https://www.vpn.net/"
 SRC_URI="x86?	( https://www.vpn.net/installers/${P}-x86.tgz )
 	amd64?	( https://www.vpn.net/installers/${P}-x64.tgz )"
 
-LICENSE="LogMeIn-2013"
+LICENSE="LogMeIn"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
