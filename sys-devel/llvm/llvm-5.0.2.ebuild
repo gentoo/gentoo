@@ -84,7 +84,7 @@ src_prepare() {
 	cp {"${WORKDIR}/llvm-5.0.1-patchset",.}/test/tools/llvm-symbolizer/Inputs/print_context.o || die
 
 	# Fix appending -Wl,-rpath-link on non-Linux (-> FreeBSD).
-	eapply "${FILESDIR}"/6.0.9999/0001-cmake-Append-Wl-rpath-link-conditionally-to-GNULD.patch
+	eapply "${FILESDIR}"/6.0.1/0001-cmake-Append-Wl-rpath-link-conditionally-to-GNULD.patch
 
 	# gcc-8 build failure
 	eapply "${FILESDIR}"/5.0.2/0001-Fix-return-type-in-ORC-readMem-client-interface.patch
