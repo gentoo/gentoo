@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Provides a uniform way of handling ebuild which have very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high

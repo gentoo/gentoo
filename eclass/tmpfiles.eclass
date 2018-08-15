@@ -8,6 +8,7 @@
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Functions related to tmpfiles.d files
 # @DESCRIPTION:
 # This eclass provides functionality related to installing and

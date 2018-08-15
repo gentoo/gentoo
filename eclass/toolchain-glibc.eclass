@@ -4,6 +4,7 @@
 # @ECLASS: toolchain-glibc.eclass
 # @MAINTAINER:
 # <toolchain@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Common code for sys-libs/glibc ebuilds
 # @DESCRIPTION:
 # This eclass contains the common phase functions migrated from

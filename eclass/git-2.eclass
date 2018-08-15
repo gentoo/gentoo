@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-2.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Eclass for easing maintenance of live ebuilds using git as remote repository.
@@ -11,9 +12,10 @@
 #
 # This eclass is DEPRECATED. Please use git-r3 instead.
 
-if [[ ${EAPI} == 6 ]]; then
-	die "${ECLASS}.eclass is banned in EAPI ${EAPI}"
-fi
+case ${EAPI:-0} in
+	0|1|2|3|4|5) ;;
+	*) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
+esac
 
 # This eclass support all EAPIs.
 EXPORT_FUNCTIONS src_unpack

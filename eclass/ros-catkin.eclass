@@ -6,6 +6,7 @@
 # ros@gentoo.org
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Template eclass for catkin based ROS packages.
 # @DESCRIPTION:
 # Provides function for building ROS packages on Gentoo.

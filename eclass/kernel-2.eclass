@@ -8,6 +8,7 @@
 # John Mylchreest <johnm@gentoo.org>
 # Mike Pagano <mpagano@gentoo.org>
 # <so many, many others, please add yourself>
+# @SUPPORTED_EAPIS: 2 3 4 5 6
 # @BLURB: Eclass for kernel packages
 # @DESCRIPTION:
 # This is the kernel.eclass rewrite for a clean base regarding the 2.6

@@ -90,7 +90,7 @@ pkg_postinst() {
 	elog "\tadmin:live"
 
 	if use ssl ; then
-		if path_exists -a "${ROOT}"/etc/vdr/plugins/live/live.pem; then
+		if [[ -f ${ROOT}/etc/vdr/plugins/live/live.pem ]]; then
 			einfo "found an existing SSL cert, to create a new SSL cert, run:\n"
 			einfo "emerge --config ${PN}"
 		else

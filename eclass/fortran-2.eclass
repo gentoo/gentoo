@@ -8,6 +8,7 @@
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.

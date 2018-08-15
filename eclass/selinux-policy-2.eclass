@@ -7,6 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules

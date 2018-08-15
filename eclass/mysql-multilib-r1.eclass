@@ -8,6 +8,7 @@
 #	- Robin H. Johnson <robbat2@gentoo.org>
 #	- Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
 #	- Brian Evans <grknight@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: This eclass provides common functions for mysql ebuilds
 # @DESCRIPTION:
 # The mysql-multilib-r1.eclass is the base eclass to build the mysql and

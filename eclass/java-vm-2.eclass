@@ -4,6 +4,7 @@
 # @ECLASS: java-vm-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Java Virtual Machine eclass
 # @DESCRIPTION:
 # This eclass provides functionality which assists with installing

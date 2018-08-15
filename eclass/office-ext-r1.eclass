@@ -6,6 +6,7 @@
 # The office team <openoffice@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Eclass for installing libreoffice/openoffice extensions
 # @DESCRIPTION:
 # Eclass for easing maintenance of libreoffice/openoffice extensions.

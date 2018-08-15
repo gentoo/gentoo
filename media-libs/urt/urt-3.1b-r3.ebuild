@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.iastate.edu/pub/utah-raster/${P}.tar.Z"
 LICENSE="URT gif? ( free-noncomm )"
 SLOT="0/3.1b-r2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
-IUSE="gif postscript static-libs tiff X"
+IUSE="gif postscript static-libs tiff tools X"
 
 RDEPEND="
 	X? ( x11-libs/libXext )
@@ -83,7 +83,8 @@ src_install() {
 	mkdir -p man-dest/man{1,3,5}
 	# this just installs it into some local dirs
 	make install || die
-	dobin bin/*
+
+	use tools && dobin bin/*
 
 	use static-libs && dolib.a lib/librle.a
 

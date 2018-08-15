@@ -289,7 +289,7 @@ pkg_postinst() {
 	fi
 
 	# Handle the conf.d/local.{start,stop} -> local.d transition
-	if path_exists -o "${EROOT}"etc/conf.d/local.{start,stop} ; then
+	if [[ -f ${EROOT}etc/conf.d/local.start || -f ${EROOT}etc/conf.d/local.stop ]] ; then
 		elog "Moving your ${EROOT}etc/conf.d/local.{start,stop}"
 		elog "files to ${EROOT}etc/local.d"
 		mv "${EROOT}"etc/conf.d/local.start "${EROOT}"etc/local.d/baselayout1.start
