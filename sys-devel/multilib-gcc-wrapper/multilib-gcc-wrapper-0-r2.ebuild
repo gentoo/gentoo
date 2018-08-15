@@ -46,12 +46,10 @@ src_install() {
 
 				einfo "	${newname}"
 
-				cat > "${T}"/wrapper <<-_EOF_
+				newbin - "${newname}" <<-_EOF_
 					#!${EPREFIX}/bin/sh
 					exec ${e} $(get_abi_CFLAGS) "\${@}"
 				_EOF_
-
-				newbin "${T}"/wrapper "${newname}"
 			done
 		done
 	done
