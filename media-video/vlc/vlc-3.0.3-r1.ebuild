@@ -201,7 +201,13 @@ RDEPEND="
 	vorbis? ( media-libs/libvorbis:0 )
 	vpx? ( media-libs/libvpx:0= )
 	wayland? (
-		dev-libs/wayland
+		|| (
+			>=dev-libs/wayland-1.15
+			(
+				<dev-libs/wayland-1.15
+				<media-libs/mesa-18.1.1-r1[egl]
+			)
+		)
 		dev-libs/wayland-protocols
 	)
 	X? (
