@@ -256,14 +256,13 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	local revord=$(( 9999 - ${SLOT} ))
-	cat <<-_EOF_ > "${T}/10llvm-${revord}" || die
+	newenvd - "10llvm-${revord}" <<-_EOF_
 		PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
 		# we need to duplicate it in ROOTPATH for Portage to respect...
 		ROOTPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
 		MANPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
-_EOF_
-	doenvd "${T}/10llvm-${revord}"
+	_EOF_
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }
