@@ -9,7 +9,7 @@ DESCRIPTION="A disk consumption analyzing tool"
 HOMEPAGE="http://treesize.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tbz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
