@@ -17,7 +17,11 @@ IUSE="headless libav +qt5 sdl +system-ffmpeg"
 REQUIRED_USE="!qt5? ( sdl )"
 
 RDEPEND="
+	app-arch/snappy:=
+	dev-libs/libzip:=
+	media-libs/glew:=
 	sys-libs/zlib:=
+	virtual/opengl
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
