@@ -156,4 +156,6 @@ clvm
 # Unmask systemd since it is keyworded here.
 -systemd
 
-
+# Robert Bridge <robert@robbieab.com> (13 Aug 2018)
+# This is needed, and works, for the Raptor TALOS computer.
+-video_cards_ast
