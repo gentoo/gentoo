@@ -168,33 +168,11 @@ make_wrapper() {
 	fi
 }
 
-# @FUNCTION: path_exists
-# @USAGE: [-a|-o] <paths>
-# @DESCRIPTION:
-# Check if the specified paths exist.  Works for all types of paths
-# (files/dirs/etc...).  The -a and -o flags control the requirements
-# of the paths.  They correspond to "and" and "or" logic.  So the -a
-# flag means all the paths must exist while the -o flag means at least
-# one of the paths must exist.  The default behavior is "and".  If no
-# paths are specified, then the return value is "false".
 path_exists() {
-	local opt=$1
-	[[ ${opt} == -[ao] ]] && shift || opt="-a"
-
-	# no paths -> return false
-	# same behavior as: [[ -e "" ]]
-	[[ $# -eq 0 ]] && return 1
-
-	local p r=0
-	for p in "$@" ; do
-		[[ -e ${p} ]]
-		: $(( r += $? ))
-	done
-
-	case ${opt} in
-		-a) return $(( r != 0 )) ;;
-		-o) return $(( r == $# )) ;;
-	esac
+	eerror "path_exists has been removed.  Please see the following post"
+	eerror "for a replacement snippet:"
+	eerror "https://blogs.gentoo.org/mgorny/2018/08/09/inlining-path_exists/"
+	die "path_exists is banned"
 }
 
 # @FUNCTION: use_if_iuse

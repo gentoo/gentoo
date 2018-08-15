@@ -63,7 +63,7 @@ pkg_postinst() {
 	einfo "Add a password to /etc/conf.d/vdr.vdrmanager"
 
 	if use ssl ; then
-		if path_exists -a "${ROOT}${VDRMANAGER_SSL_KEY_FILE}.pem"; then
+		if [[ -f ${ROOT}${VDRMANAGER_SSL_KEY_FILE}.pem ]]; then
 			einfo "found an existing SSL cert, to create a new SSL cert, run:\n"
 			einfo "emerge --config ${PN}"
 		else
