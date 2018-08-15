@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=PUEL extensions for VirtualBox
+EAPI=7
+HOMEPAGE=https://www.virtualbox.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=PUEL
+RDEPEND=~app-emulation/virtualbox-5.2.18
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=https://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18-124319.vbox-extpack -> Oracle_VM_VirtualBox_Extension_Pack-5.2.18-124319.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=af08d1c9280ee23cfbea5662b65d7675
