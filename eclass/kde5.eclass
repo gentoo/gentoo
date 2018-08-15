@@ -38,9 +38,7 @@ case ${EAPI} in
 esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
-	case ${KDE_SCM} in
-		git) inherit git-r3 ;;
-	esac
+	inherit git-r3
 fi
 
 if [[ -v KDE_GCC_MINIMAL ]]; then
@@ -394,40 +392,36 @@ _calculate_live_repo() {
 
 	SRC_URI=""
 
-	case ${KDE_SCM} in
-		git)
-			# @ECLASS-VARIABLE: EGIT_MIRROR
-			# @DESCRIPTION:
-			# This variable allows easy overriding of default kde mirror service
-			# (anongit) with anything else you might want to use.
-			EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
+	# @ECLASS-VARIABLE: EGIT_MIRROR
+	# @DESCRIPTION:
+	# This variable allows easy overriding of default kde mirror service
+	# (anongit) with anything else you might want to use.
+	EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
 
-			local _kmname
+	local _kmname
 
-			# @ECLASS-VARIABLE: EGIT_REPONAME
-			# @DESCRIPTION:
-			# This variable allows overriding of default repository
-			# name. Specify only if this differ from PN and KMNAME.
-			if [[ -n ${EGIT_REPONAME} ]]; then
-				# the repository and kmname different
-				_kmname=${EGIT_REPONAME}
-			elif [[ -n ${KMNAME} ]]; then
-				_kmname=${KMNAME}
-			else
-				_kmname=${PN}
-			fi
+	# @ECLASS-VARIABLE: EGIT_REPONAME
+	# @DESCRIPTION:
+	# This variable allows overriding of default repository
+	# name. Specify only if this differ from PN and KMNAME.
+	if [[ -n ${EGIT_REPONAME} ]]; then
+		# the repository and kmname different
+		_kmname=${EGIT_REPONAME}
+	elif [[ -n ${KMNAME} ]]; then
+		_kmname=${KMNAME}
+	else
+		_kmname=${PN}
+	fi
 
-			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-				EGIT_BRANCH="Applications/$(ver_cut 1-2)"
-			fi
+	if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
+		EGIT_BRANCH="Applications/$(ver_cut 1-2)"
+	fi
 
-			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
-				EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
-			fi
+	if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
+		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
+	fi
 
-			EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
-			;;
-	esac
+	EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
 }
 
 case ${KDE_BUILD_TYPE} in
@@ -493,11 +487,7 @@ kde5_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${KDE_BUILD_TYPE} = live ]]; then
-		case ${KDE_SCM} in
-			git)
-				git-r3_src_unpack
-				;;
-		esac
+		git-r3_src_unpack
 	else
 		default
 	fi
