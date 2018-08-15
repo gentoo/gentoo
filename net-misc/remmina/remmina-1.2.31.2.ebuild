@@ -7,7 +7,7 @@ inherit cmake-utils eutils gnome2-utils xdg-utils
 
 DESCRIPTION="A GTK+ RDP, SPICE, VNC, XDMCP and SSH client"
 HOMEPAGE="https://remmina.org/"
-SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${PV}.tar.gz -> ${P^}.tar.gz"
+SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/Remmina-v${PV}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
@@ -46,7 +46,7 @@ RDEPEND="${CDEPEND}
 
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
-S="${WORKDIR}/${P^}"
+S="${WORKDIR}/Remmina-v${PV}"
 
 src_configure() {
 	local mycmakeargs=(
