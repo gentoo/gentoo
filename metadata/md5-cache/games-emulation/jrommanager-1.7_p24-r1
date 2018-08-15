@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=A Mame and Retrogaming Rom Manager, Java alternative to ClrMamePro
+EAPI=7
+HOMEPAGE=https://github.com/optyfr/JRomManager
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-2-with-classpath-exception BSD-2 MIT Apache-2.0 LGPL-2.1 unRAR
+RDEPEND=>=virtual/jre-1.8
+SLOT=0
+SRC_URI=https://github.com/optyfr/JRomManager/releases/download/1.7b24/JRomManager-1.7b24.zip
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_md5_=d7a20244a87cb613543f5aa36a71b9d8
