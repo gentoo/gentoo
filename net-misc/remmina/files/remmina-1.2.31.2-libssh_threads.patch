@@ -1,0 +1,29 @@
+From 8d654eca784d5e1b2c6e853b7beb7ad3d8322290 Mon Sep 17 00:00:00 2001
+From: Giovanni Panozzo <giovanni@panozzo.it>
+Date: Sun, 12 Aug 2018 00:51:32 +0200
+Subject: [PATCH] cmake: include libssh_threads only when available
+
+---
+ cmake/FindLIBSSH.cmake | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/FindLIBSSH.cmake b/cmake/FindLIBSSH.cmake
+index f003e2d9c..d1bfe2319 100644
+--- a/cmake/FindLIBSSH.cmake
++++ b/cmake/FindLIBSSH.cmake
+@@ -51,7 +51,11 @@ include(FindPackageHandleStandardArgs)
+ 
+ find_package_handle_standard_args(LIBSSH DEFAULT_MSG LIBSSH_LIBRARY LIBSSH_INCLUDE_DIR)
+ 
+-set(LIBSSH_LIBRARIES ${LIBSSH_LIBRARY} ${LIBSSH_THREADS_LIBRARY})
++if (LIBSSH_THREADS_LIBRARY)
++	set(LIBSSH_LIBRARIES ${LIBSSH_LIBRARY} ${LIBSSH_THREADS_LIBRARY})
++else()
++	set(LIBSSH_LIBRARIES ${LIBSSH_LIBRARY})
++endif()
+ set(LIBSSH_INCLUDE_DIRS ${LIBSSH_INCLUDE_DIR})
+ 
+ mark_as_advanced(LIBSSH_INCLUDE_DIR LIBSSH_LIBRARY)
+-- 
+2.18.0
+
