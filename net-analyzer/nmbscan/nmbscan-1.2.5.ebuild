@@ -5,9 +5,9 @@ EAPI=2
 
 inherit eutils
 
-DESCRIPTION="netbios scanner"
-HOMEPAGE="http://nmbscan.gbarbier.org/"
-SRC_URI="http://nmbscan.gbarbier.org/down/${P}.tar.gz"
+DESCRIPTION="Scans the shares of a SMB/NetBIOS network"
+HOMEPAGE="http://nmbscan.g76r.eu/"
+SRC_URI="http://nmbscan.g76r.eu/down/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
