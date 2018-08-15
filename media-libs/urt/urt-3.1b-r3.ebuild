@@ -9,7 +9,7 @@ HOMEPAGE="http://www.cs.utah.edu/gdc/projects/urt/"
 SRC_URI="ftp://ftp.iastate.edu/pub/utah-raster/${P}.tar.Z"
 
 LICENSE="URT gif? ( free-noncomm )"
-SLOT="0/${PVR}"
+SLOT="0/3.1b-r2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="gif postscript static-libs tiff X"
 
@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-make.patch
 	"${FILESDIR}"/${P}-solaris.patch
 	"${FILESDIR}"/${P}-librle-toolchain.patch
+	"${FILESDIR}"/${P}-implicit-function-declarations.patch
 )
 
 src_prepare() {
