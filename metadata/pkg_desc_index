@@ -351,7 +351,7 @@ app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT K
 app-crypt/monkeysphere 0.37 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/openpgp-keys-gentoo-release 20180706: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
-app-crypt/p11-kit 0.23.2 0.23.9: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.2 0.23.9 0.23.12: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.4: OpenPGP key archiver
 app-crypt/pgpdump 0.30: A PGP packet visualizer
 app-crypt/pinentry 1.0.0-r2: Simple passphrase entry dialogs which utilize the Assuan protocol
