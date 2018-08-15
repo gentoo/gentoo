@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Aug 2018)
+# media-libs/libsidplay:2 appears to be broken, bug #660288
+media-video/vlc sid
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Jun 2018)
 # Requires not yet stable dev-qt/qtpositioning:5
 sci-astronomy/stellarium gps
