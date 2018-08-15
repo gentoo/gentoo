@@ -2974,7 +2974,12 @@ developers and volunteer mentors.</description>
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Facebook (admin), G+ (owner), Twitter, Events, Telegram (admin), Slack (admin)</role>
+      <role>Facebook (admin), G+ (owner), Twitter, Events, Telegram (admin), Slack (admin), Discord (admin)</role>
+    </member>
+    <member>
+      <email>cynede@gentoo.org</email>
+      <name>Mikhail Pukhlikov</name>
+      <role>Discord (admin)</role>
     </member>
     <member>
       <email>dabbott@gentoo.org</email>
