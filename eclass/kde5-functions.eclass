@@ -47,12 +47,6 @@ case ${CATEGORY} in
 			: ${QT_MINIMAL:=5.11.1}
 		fi
 		;;
-	kde-apps)
-		if [[ ${PV} = 17.12.3* ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.43.0}
-			: ${QT_MINIMAL:=5.9.1}
-		fi
-		;;
 esac
 
 # @ECLASS-VARIABLE: QT_MINIMAL
