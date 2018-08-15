@@ -11,11 +11,11 @@ MY_P="VirtualBox-${MY_PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.12-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.16-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
 RDEPEND="
@@ -57,10 +57,6 @@ pkg_setup() {
 
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
-	enewgroup vboxguest
-	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
-	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
-	enewgroup vboxsf
 }
 
 src_unpack() {
@@ -87,6 +83,7 @@ src_prepare() {
 	use X || echo "VBOX_WITH_X11_ADDITIONS :=" >> LocalConfig.kmk
 
 	# stupid new header references...
+	local vboxheader mdir
 	for vboxheader in {product,revision,version}-generated.h ; do
 		for mdir in vbox{guest,sf} ; do
 			ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
@@ -185,6 +182,13 @@ src_install() {
 	doins "${FILESDIR}"/xorg.conf.vbox
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_preinst() {
+	enewgroup vboxguest
+	enewuser vboxguest -1 /bin/sh /dev/null vboxguest
+	# automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
+	enewgroup vboxsf
 }
 
 pkg_postinst() {

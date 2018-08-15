@@ -13,12 +13,12 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.12-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.16-patches-02.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="alsa debug doc headless java libressl lvm pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+KEYWORDS="~amd64 ~x86"
+IUSE="alsa debug doc headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -50,6 +50,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
 	lvm? ( sys-fs/lvm2 )
+	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
@@ -210,6 +211,7 @@ src_configure() {
 		$(usex doc '' --disable-docs)
 		$(usex java '' --disable-java)
 		$(usex lvm '' --disable-devmapper)
+		$(usex opus --build-libopus '')
 		$(usex pulseaudio '' --disable-pulse)
 		$(usex python '' --disable-python)
 		$(usex vboxwebsrv --enable-webservice '')
