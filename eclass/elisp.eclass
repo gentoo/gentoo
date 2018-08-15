@@ -9,6 +9,7 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #

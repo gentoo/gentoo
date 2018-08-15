@@ -6,6 +6,7 @@
 # Pacho Ramos <pacho@gentoo.org>
 # @AUTHOR:
 # Author: Pacho Ramos <pacho@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: install a doc file shown via elog messages
 # @DESCRIPTION:
 # An eclass for installing a README.gentoo doc file recording tips

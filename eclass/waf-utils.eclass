@@ -8,6 +8,7 @@
 # Original Author: Gilles Dartiguelongue <eva@gentoo.org>
 # Various improvements based on cmake-utils.eclass: Tomáš Chvátal <scarabeus@gentoo.org>
 # Proper prefix support: Jonathan Callen <jcallen@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: common ebuild functions for waf-based packages
 # @DESCRIPTION:
 # The waf-utils eclass contains functions that make creating ebuild for

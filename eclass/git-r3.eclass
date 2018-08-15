@@ -4,6 +4,7 @@
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using

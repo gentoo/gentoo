@@ -4,6 +4,7 @@
 # @ECLASS: mozconfig-v6.52.eclass
 # @MAINTAINER:
 # mozilla team <mozilla@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: the new mozilla common configuration eclass for FF33 and newer, v6
 # @DESCRIPTION:
 # This eclass is used in mozilla ebuilds (firefox, thunderbird, seamonkey)

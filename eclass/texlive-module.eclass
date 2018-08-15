@@ -6,6 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 3 4 5 6 7
 # @BLURB: Provide generic install functions so that modular texlive's texmf ebuild will only have to inherit this eclass
 # @DESCRIPTION:
 # Purpose: Provide generic install functions so that modular texlive's texmf ebuilds will

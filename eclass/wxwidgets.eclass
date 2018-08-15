@@ -4,6 +4,7 @@
 # @ECLASS: wxwidgets.eclass
 # @MAINTAINER:
 # wxwidgets@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Manages build configuration for wxGTK-using packages.
 # @DESCRIPTION:
 #  This eclass sets up the proper environment for ebuilds using the wxGTK

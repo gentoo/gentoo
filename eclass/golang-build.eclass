@@ -4,6 +4,7 @@
 # @ECLASS: golang-build.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Eclass for compiling go packages.
 # @DESCRIPTION:
 # This eclass provides default  src_compile, src_test and src_install

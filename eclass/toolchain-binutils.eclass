@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5
 #
 # We install binutils into CTARGET-VERSION specific directories.  This lets
 # us easily merge multiple versions for multiple targets (if we wish) and

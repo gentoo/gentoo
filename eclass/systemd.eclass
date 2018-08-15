@@ -4,6 +4,7 @@
 # @ECLASS: systemd.eclass
 # @MAINTAINER:
 # systemd@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: helper functions to install systemd units
 # @DESCRIPTION:
 # This eclass provides a set of functions to install unit files for

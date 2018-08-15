@@ -4,6 +4,7 @@
 # @ECLASS: php-ext-source-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Compile and install standalone PHP extensions.
 # @DESCRIPTION:
 # A unified interface for compiling and installing standalone PHP
