@@ -648,6 +648,10 @@
       <name>Pacho Ramos</name>
     </member>
     <member>
+      <email>polynomial-c@gentoo.org</email>
+      <name>Lars Wendler</name>
+    </member>
+    <member is-lead="1">
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
     </member>
