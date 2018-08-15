@@ -4,18 +4,6 @@ http://bugs.gentoo.org/107428
 respect user LDFLAGS
 http://bugs.gentoo.org/126872
 
---- a/lib/makefile.src
-+++ b/lib/makefile.src
-@@ -181,8 +181,7 @@
- # Rebuild the library from all the .o files.
- buildlib: $(OBJS)
- 	-rm -f $(LIBNAME)
--	ar rc $(LIBNAME)
--	ar q $(LIBNAME) $(OBJS)
-+	ar rc $(LIBNAME) $(OBJS)
- #ifndef NO_RANLIB
- 	ranlib $(LIBNAME)
- #endif
 --- a/tools/clock/makefile.src
 +++ b/tools/clock/makefile.src
 @@ -6,7 +6,7 @@ install: rleClock
