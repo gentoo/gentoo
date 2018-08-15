@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Simple yet effective CD indexing program
+EAPI=7
+HOMEPAGE=http://cdcatalog.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/cdrtools !app-backup/cdbkup
+SLOT=0
+SRC_URI=mirror://sourceforge/cdcatalog/cdcat-0.3.tar.gz
+_md5_=8abc26bca2fd6ec20a418331a6d98337

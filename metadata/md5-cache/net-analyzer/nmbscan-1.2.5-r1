@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Scans the shares of a SMB/NetBIOS network
+EAPI=7
+HOMEPAGE=http://nmbscan.g76r.eu/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=net-dns/bind-tools net-fs/samba net-misc/iputils sys-apps/net-tools virtual/awk
+SLOT=0
+SRC_URI=http://nmbscan.g76r.eu/down/nmbscan-1.2.5.tar.gz
+_md5_=ac85c0f54826b901d439e6d73e3e1c60

@@ -569,7 +569,7 @@ app-editors/leo 5.6: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20171014 20180408: MicroGnuEmacs, a port from the BSDs
-app-editors/moe 1.6: A powerful and user-friendly console text editor
+app-editors/moe 1.6 1.9: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0-r1: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 2.8.7: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
@@ -8369,7 +8369,7 @@ net-analyzer/nfdump 1.6.14-r1: A set of tools to collect and process netflow dat
 net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
 net-analyzer/nmap 7.70: A utility for network discovery and security auditing
-net-analyzer/nmbscan 1.2.5: netbios scanner
+net-analyzer/nmbscan 1.2.5: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 2.15-r3: Nagios Remote Plugin Executor
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
