@@ -243,7 +243,7 @@ src_install() {
 	pax-mark m "${BUILD_OBJ_DIR}"/dist/bin/xpcshell
 
 	# Copy our preference before omnijar is created.
-	cp "${FILESDIR}"/thunderbird-gentoo-default-prefs-1.js-1 \
+	cp "${FILESDIR}"/thunderbird-gentoo-default-prefs.js-2 \
 		"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" \
 		|| die
 
