@@ -7,7 +7,7 @@ LIBRETRO_REPO_NAME="libretro/nestopia"
 LIBRETRO_COMMIT_SHA="9c335527c5dfa11dfa29bc22ee4ba6efa23c8890"
 KEYWORDS="~amd64 ~x86"
 inherit libretro-core
-S="${WORKDIR}/${P}/libretro"
+S="${WORKDIR}/nestopia-${LIBRETRO_COMMIT_SHA}/libretro"
 LIBRETRO_CORE_LIB_FILE="${S}/${LIBRETRO_CORE_NAME}_libretro.so"
 
 DESCRIPTION="Nestopia libretro port"
