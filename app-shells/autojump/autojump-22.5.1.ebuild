@@ -20,6 +20,7 @@ REQUIRED_USE="ipython? ( ${PYTHON_REQUIRED_USE} )"
 # Not all tests pass. Need investigation.
 RESTRICT="test"
 RDEPEND="ipython? ( ${PYTHON_DEPS} )"
+DEPEND="${PYTHON_DEPS}"
 
 src_prepare() {
 	eapply_user
