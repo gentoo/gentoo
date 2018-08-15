@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-firmware/intel-microcode-20090330[monolithic(+)] selinux? ( sec-policy/selinux-cpucontrol )
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/microcode_ctl/microcode_ctl-1.23.tar.xz
-_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=5270f41e37d93b38fb28b628ae6f6c61

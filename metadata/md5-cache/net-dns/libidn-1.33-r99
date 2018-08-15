@@ -9,5 +9,5 @@ LICENSE=GPL-2 GPL-3 LGPL-3
 RDEPEND=!<net-dns/libidn-1.35:0
 SLOT=1.33
 SRC_URI=mirror://gnu/libidn/libidn-1.33.tar.gz https://dev.gentoo.org/~polynomial-c/libidn-1.33-security_backports-01.tar.xz
-_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multibuild	35719a9cd25ec71ee49c966f6868454c	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	45f0e78dba7de5c77988265229b4402a	multilib-minimal	bfa1226d0f1fa0093d10b84acd029633	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=f533fc335e82e2d4ef4c50de2a122d66

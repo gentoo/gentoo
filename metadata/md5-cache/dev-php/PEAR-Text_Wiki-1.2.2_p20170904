@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://github.com/pear/Text_Wiki/archive/32fd5f483f34645f4efd96d385d8950ea26d4a2a.tar.gz -> Text_Wiki-1.2.2_p20170904.tar.gz
-_eclasses_=php-pear-r2	eb6928c33771db74564e814c5ca6c1b3	vcs-snapshot	3be1ab44131e8c0bbdaa75823008444b
+_eclasses_=php-pear-r2	b6753d24e4b080c2bec51eb2d844699f	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=adc191a0b325f7b85b6e5003e5ea76e9

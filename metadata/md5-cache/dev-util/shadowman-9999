@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/mgorny/shadowman
 LICENSE=GPL-2
 RDEPEND=app-admin/eselect
 SLOT=0
-_eclasses_=git-r3	8f6de46b0aa318aea0e8cac62ece098b
+_eclasses_=git-r3	918d6a744039c29af2cadc7317459765
 _md5_=c1e230bbbbb4ce15e2415e377f9e44b5

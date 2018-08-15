@@ -8,5 +8,5 @@ LICENSE=MIT BSD
 RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang
 SLOT=0
 SRC_URI=https://github.com/davisp/jiffy/archive/0.14.11.tar.gz -> jiffy-0.14.11.tar.gz
-_eclasses_=rebar	f135c419c43bc8841cd57d1d53ed1da8
+_eclasses_=rebar	2500a38e0c20a46f90fe5e172a2c4267
 _md5_=586010ad9b0a0dfca6a7c710a46e248f

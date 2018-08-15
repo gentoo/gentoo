@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( initramfs split-ucode )
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://downloadmirror.intel.com/28039/eng/microcode-20180807.tgz https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-20180808.tar.xz
-_eclasses_=eapi7-ver	d97a56a62c7df8614afddcb25f5ff00f	linux-info	915cae3d7d636732918d18827fb1c226	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	915cae3d7d636732918d18827fb1c226	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
 _md5_=51eefe659fca58e432e34a9360c3e17e

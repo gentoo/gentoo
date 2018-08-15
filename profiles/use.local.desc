@@ -3028,6 +3028,7 @@ media-libs/speex:utils - Enables speex commandline utilities (speexenc, speexdec
 media-libs/speex:vbr - Enable VBR support.
 media-libs/taglib:boost - Use dev-libs/boost instead of GCC built-ins
 media-libs/tremor:low-accuracy - enable 32bit only multiply operations
+media-libs/urt:tools - Install tools
 media-libs/vigra:valgrind - Enable valgrind in make check
 media-libs/waffle:egl - Enable EGL support
 media-libs/waffle:gbm - Enable support for the Generic Buffer Manager (gbm)

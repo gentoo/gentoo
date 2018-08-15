@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=app-crypt/gnupg
 SLOT=0
 SRC_URI=https://github.com/dannyvankooten/browserpass/archive/2.0.11.tar.gz -> browserpass-2.0.11.tar.gz
-_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
 _md5_=1ca4fed78c0dd5a3f20194308a0b0358

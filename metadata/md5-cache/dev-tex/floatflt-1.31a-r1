@@ -8,5 +8,5 @@ LICENSE=LPPL-1.2
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/floatflt-1.31a.zip
-_eclasses_=latex-package	773c51c2ef26eaff025998531e7c6731
+_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
 _md5_=960205806dfb6a41c56d60ffd6c265ae

@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=MIT
 SLOT=0/0_p20161121
 SRC_URI=https://github.com/rsc/qr/archive/48b2ede4844e13f1a2b7ce4d2529c9af7e359fc5.tar.gz -> qr-0_p20161121.tar.gz
-_eclasses_=golang-base	d4e3a3f895016e5c9d7afb1a33e7cf3c	golang-build	b66349c110e4ddd6203bbe8bf4ae05c1	golang-vcs-snapshot	913580335becddd3ebecefe852e47536
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
 _md5_=7b13fc2418419ea1d778f68343bba3a2
