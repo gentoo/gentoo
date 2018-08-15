@@ -100,6 +100,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.18.conf.patch
+	"${FILESDIR}"/${P}-libcdio-2.patch
 )
 
 pkg_setup() {

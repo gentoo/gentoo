@@ -105,7 +105,10 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mpd )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.18.conf.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.18.conf.patch
+	"${FILESDIR}"/${PN}-0.20.10-libcdio-2.patch
+)
 
 pkg_setup() {
 	use network || ewarn "Icecast and Shoutcast streaming needs networking."
