@@ -20,6 +20,10 @@ RDEPEND="virtual/pam
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 src_configure() {
 	econf --with-pamdir="$(getpam_mod_dir)"
 }
