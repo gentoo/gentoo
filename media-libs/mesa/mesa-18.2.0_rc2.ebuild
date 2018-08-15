@@ -50,7 +50,8 @@ REQUIRED_USE="
 	lm_sensors? ( gallium )
 	vaapi? ( gallium )
 	vdpau? ( gallium )
-	vulkan? ( || ( video_cards_i965 video_cards_radeonsi )
+	vulkan? ( dri3
+			  || ( video_cards_i965 video_cards_radeonsi )
 			  video_cards_radeonsi? ( llvm ) )
 	wayland? ( egl gbm )
 	xa?  ( gallium )
