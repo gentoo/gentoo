@@ -17,7 +17,6 @@
 	<use>
 		<flag name="gnome">Add support for <pkg>gnome-base/gnome-control-center</pkg></flag>
 		<flag name="libreoffice">Add support for <pkg>app-office/libreoffice</pkg> and <pkg>app-office/libreoffice-bin</pkg></flag>
-		<flag name="pidgin">Add support for setting the avatar in <pkg>net-im/pidgin</pkg> </flag>
 		<flag name="webcam">Add support for setting a profile photo in <pkg>media-video/cheese</pkg></flag>
 	</use>
 	<upstream>
