@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install prepare unpack
+DESCRIPTION=Snes9x libretro port
+EAPI=7
+HOMEPAGE=https://github.com/libretro/snes9x
+IUSE=debug
+LICENSE=Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP
+RESTRICT=bindist
+SLOT=0
+_eclasses_=eutils	b43d08fe0771faf2f5e7be19c2789d33	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	8f6de46b0aa318aea0e8cac62ece098b	libretro-core	a24db3f198650e3d23b1fb9d8114df40	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=f424f2ed2816132b3026851d20c8fb66
