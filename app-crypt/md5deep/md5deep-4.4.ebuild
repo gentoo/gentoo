@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Expanded md5sum program with recursive and comparison options"
 HOMEPAGE="http://md5deep.sourceforge.net/"
@@ -19,3 +18,8 @@ IUSE=""
 S=${WORKDIR}/hashdeep-release-${PV}
 
 DOCS=( AUTHORS ChangeLog FILEFORMAT NEWS README.md TODO )
+
+src_prepare() {
+	eapply_user
+	eautoreconf
+}
