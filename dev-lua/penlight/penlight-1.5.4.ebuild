@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
 DESCRIPTION="Lua utility libraries loosely based on the Python standard libraries"
-HOMEPAGE="http://stevedonovan.github.com/Penlight",
-SRC_URI="http://stevedonovan.github.io/files/${PN}-1.3.2-core.zip"
+HOMEPAGE="http://stevedonovan.github.io/Penlight"
+SRC_URI="https://github.com/stevedonovan/Penlight/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +21,10 @@ app-arch/unzip
 RDEPEND="${COMMON_DEPEND}
 	dev-lua/luafilesystem"
 
+S="${WORKDIR}/Penlight-${PV}"
+
 src_install() {
-	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)"
+	LUA_VERSION=$(readlink -e "${EROOT}"/usr/bin/lua | sed -ne 's:.*/usr/bin/lua\([\d.-]*\):\1:p')
+	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)/$LUA_VERSION"
 	doins -r lua/pl
 }

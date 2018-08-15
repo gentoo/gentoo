@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index ecce9ec..5a188ae 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,14 +17,14 @@ MAJVER=  2
+ MINVER=  0
+ RELVER=  5
+ VERSION= $(MAJVER).$(MINVER).$(RELVER)
+-ABIVER=  5.1
++ABIVER=  $(shell readlink -e "${EROOT}"/usr/bin/lua | sed -ne 's:.*/usr/bin/lua\([\d.-]*\):\1:p')
+ 
+ ##############################################################################
+ #
+ # Change the installation path as needed. This automatically adjusts
+ # the paths in src/luaconf.h, too. Note: PREFIX must be an absolute path!
+ #
+-export PREFIX= /usr/local
++export PREFIX= /usr
+ export MULTILIB= lib
+ ##############################################################################
+ 

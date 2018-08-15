@@ -15,7 +15,8 @@ IUSE=""
 RDEPEND="dev-lua/penlight"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.4.6-mkdir.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.4.6-mkdir.patch"
+"${FILESDIR}/${P}-lua_version.patch" )
 
 S="${WORKDIR}/LDoc-${PV}"
 RESTRICT="test"

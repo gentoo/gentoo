@@ -13,6 +13,7 @@ LICENSE="MIT openssl PHP-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libressl luajit"
+PATCHES="${FILESDIR}/${P}-Makefile.patch"
 
 RDEPEND="
 	luajit? ( dev-lang/luajit:* )
@@ -24,23 +25,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-Makefile.patch"
-	use luajit && LUAV=luajit || LUAV=lua
-}
-
-src_compile() {
-	local pkgconfig=$(tc-getPKG_CONFIG)
-	emake \
-		CC="$(tc-getCC) \$(CFLAGS) -Ideps" \
-		PKG_CONFIG="$pkgconfig" \
-		LUA_CFLAGS="$($pkgconfig --cflags $LUAV)" \
-		LUA_LIBS="$($pkgconfig --libs $LUAV)" \
-		LUA_LIBDIR="$($pkgconfig --variable INSTALL_CMOD $LUAV)"
-}
-
-src_install() {
-	emake \
-		LUA_LIBDIR="${D}$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD $LUAV)" \
-		install
-	einstalldocs
+        epatch "${FILESDIR}/${P}-Makefile.patch"
+        use luajit && LUAV=luajit || LUAV=lua
 }

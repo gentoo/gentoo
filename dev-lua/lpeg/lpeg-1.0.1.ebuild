@@ -15,8 +15,8 @@ KEYWORDS="amd64 arm arm64 hppa ~mips ppc ppc64 x86"
 IUSE="debug doc luajit"
 
 RDEPEND="
-	!luajit? ( >=dev-lang/lua-5.1:= )
-	luajit? ( dev-lang/luajit:2= )"
+	!luajit? ( >=dev-lang/lua-5.1:* )
+	luajit? ( dev-lang/luajit:* )"
 
 DEPEND="
 	${RDEPEND}

@@ -1,0 +1,16 @@
+diff --git a/lgi/Makefile b/lgi/Makefile
+index 08419bd..b93becf 100644
+--- a/lgi/Makefile
++++ b/lgi/Makefile
+@@ -5,9 +5,9 @@
+ # License: MIT
+ #
+ 
+-PREFIX = /usr/local
++PREFIX = /usr
+ HOST_OS = $(shell uname -s | tr A-Z a-z)
+-LUA_VERSION=5.1
++LUA_VERSION=$(shell readlink -e "${EROOT}"/usr/bin/lua | sed -ne 's:.*/usr/bin/lua\([\d.-]*\):\1:p')
+ LUA_LIBDIR = $(PREFIX)/lib/lua/$(LUA_VERSION)
+ LUA_SHAREDIR = $(PREFIX)/share/lua/$(LUA_VERSION)
+ 

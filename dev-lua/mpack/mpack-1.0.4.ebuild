@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE="luajit test"
 
 RDEPEND="
-	!luajit? ( >=dev-lang/lua-5.1:= )
+	!luajit? ( >=dev-lang/lua-5.1:* )
 	luajit? ( dev-lang/luajit:2= )"
 
 DEPEND="

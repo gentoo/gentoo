@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="libressl"
 
 RDEPEND="
-	>=dev-lang/lua-5.1:0[deprecated]
+	>=dev-lang/lua-5.1:*
 	dev-lua/luasocket
 	!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:= )"
 DEPEND="${RDEPEND}

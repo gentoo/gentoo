@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-COMMON_DEPEND=">=dev-lang/lua-5.1:="
+COMMON_DEPEND=">=dev-lang/lua-5.1:*"
 DEPEND="${COMMON_DEPEND}
 virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}"

@@ -1,0 +1,33 @@
+diff --git a/Makefile b/Makefile
+index e50d5a0..dfc1a8a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,8 +18,8 @@ test: lib
+ 	LUA_CPATH=./src/?.so lua tests/test.lua
+ 
+ install:
+-	mkdir -p $(LUA_LIBDIR)
+-	cp src/lfs.so $(LUA_LIBDIR)
++	mkdir -p $(DESTDIR)$(LUA_LIBDIR)
++	cp src/lfs.so $(DESTDIR)$(LUA_LIBDIR)
+ 
+ clean:
+ 	rm -f src/lfs.so $(OBJS)
+diff --git a/config b/config
+index cfd4c6a..915513b 100644
+--- a/config
++++ b/config
+@@ -1,10 +1,11 @@
+ # Installation directories
+ 
+ # Default installation prefix
+-PREFIX=/usr/local
++PREFIX=/usr
+ 
++LUA_VERSION=$(shell readlink -e "${EROOT}"/usr/bin/lua | sed -ne 's:.*/usr/bin/lua\([\d.-]*\):\1:p')
+ # System's libraries directory (where binary libraries are installed)
+-LUA_LIBDIR= $(PREFIX)/lib/lua/5.1
++LUA_LIBDIR= $(PREFIX)/lib/lua/$(LUA_VERSION)
+ 
+ # Lua includes directory
+ LUA_INC= $(PREFIX)/include

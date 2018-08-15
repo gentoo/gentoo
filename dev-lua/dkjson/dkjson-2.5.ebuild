@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE=""
 
-COMMON_DEPEND=">=dev-lang/lua-5.1:=
+COMMON_DEPEND=">=dev-lang/lua-5.1:*
 	!>=dev-lang/lua-5.4"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"

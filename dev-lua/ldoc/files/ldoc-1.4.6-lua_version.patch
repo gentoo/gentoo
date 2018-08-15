@@ -1,0 +1,14 @@
+diff --git a/makefile b/makefile
+index c85933b..a415963 100644
+--- a/makefile
++++ b/makefile
+@@ -1,7 +1,8 @@
+ LUA= $(shell echo `which lua`)
++LUA_VERSION=$(shell readlink -e "${EROOT}"/usr/bin/lua | sed -ne 's:.*/usr/bin/lua\([\d.-]*\):\1:p')
+ LUA_BINDIR= $(shell echo `dirname $(LUA)`)
+ LUA_PREFIX= $(shell echo `dirname $(LUA_BINDIR)`)
+-LUA_SHAREDIR=$(LUA_PREFIX)/share/lua/5.1
++LUA_SHAREDIR=$(LUA_PREFIX)/share/lua/$(LUA_VERSION)
+ 
+ ldoc:
+ 

@@ -14,8 +14,8 @@ SLOT="0"
 IUSE="dbus doc elibc_FreeBSD gnome luajit test"
 
 RDEPEND="
-	>=dev-lang/lua-5.1:0
-	luajit? ( dev-lang/luajit:2 )
+	>=dev-lang/lua-5.1:*
+	luajit? ( dev-lang/luajit:* )
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.8
@@ -38,7 +38,7 @@ RDEPEND="
 
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 DEPEND="${RDEPEND}
-	>=app-text/asciidoc-8.4.5
+	dev-ruby/asciidoctor
 	app-text/xmlto
 	dev-util/gperf
 	virtual/pkgconfig
