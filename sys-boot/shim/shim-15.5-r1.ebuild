@@ -16,7 +16,7 @@ SRC_URI="amd64? ( https://kojipkgs.fedoraproject.org//packages/shim/15/5/x86_64/
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 S="${WORKDIR}/boot/efi/EFI"
