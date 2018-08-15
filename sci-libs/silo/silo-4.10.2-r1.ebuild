@@ -11,7 +11,7 @@ SRC_URI="https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/${PN
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
-IUSE="hdf5 +silex static-libs qt5 test"
+IUSE="hdf5 +silex static-libs +qt5 test"
 
 REQUIRED_USE="silex? ( qt5 )"
 

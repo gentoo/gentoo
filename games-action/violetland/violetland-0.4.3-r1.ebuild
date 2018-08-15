@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils cmake-utils
+inherit cmake-utils desktop
 
 DESCRIPTION="Help a girl named Violet in the struggle with hordes of monsters"
 HOMEPAGE="https://violetland.github.io/"

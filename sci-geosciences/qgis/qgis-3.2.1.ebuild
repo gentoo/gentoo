@@ -100,6 +100,7 @@ RESTRICT="test"
 PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
+	"${FILESDIR}/${P}-qtwebkit-optional.patch" # bug 663394
 )
 
 pkg_setup() {

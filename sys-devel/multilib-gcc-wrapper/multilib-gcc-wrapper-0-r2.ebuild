@@ -18,17 +18,6 @@ RDEPEND="sys-devel/gcc:="
 
 S=${WORKDIR}
 
-mkwrap() {
-	einfo "	${2}"
-
-	cat > "${T}"/wrapper <<-_EOF_
-		#!${EPREFIX}/bin/sh
-		exec ${1} $(get_abi_CFLAGS) "\${@}"
-	_EOF_
-
-	newbin "${T}"/wrapper "${2}"
-}
-
 src_install() {
 	local host_prefix=${CHOST}
 	# stolen from sys-devel/gcc-config
@@ -57,12 +46,10 @@ src_install() {
 
 				einfo "	${newname}"
 
-				cat > "${T}"/wrapper <<-_EOF_
+				newbin - "${newname}" <<-_EOF_
 					#!${EPREFIX}/bin/sh
 					exec ${e} $(get_abi_CFLAGS) "\${@}"
 				_EOF_
-
-				newbin "${T}"/wrapper "${newname}"
 			done
 		done
 	done
