@@ -101,7 +101,9 @@ dev-python/django-celery
 # Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
 # Parallel-installable old versions with no remaining consumers
 # in main tree. Use applications ported to wxGTK:3.0 and
-# wxpython:3.0 instead. Bug #661284
+# wxpython:3.0 instead.
+# Please keep this package.mask entry until at least 16th Oct 2018
+# for extra notification of the unmerge need. Bug #661284
 x11-libs/wxGTK:2.8
 dev-python/wxpython:2.8
 
