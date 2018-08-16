@@ -24,8 +24,14 @@ RDEPEND="${DEPEND}"
 
 S="${DISTDIR}"
 
+src_unpack() {
+	true
+}
+
 src_install() {
 	insinto /usr/share/Nuand/bladeRF/
+	use xA4 && newins hostedxA4-${PV}.rbf hostedxA4.rbf
+	use xA9 && newins hostedxA9-${PV}.rbf hostedxA9.rbf
 	use x40 && newins hostedx40-${PV}.rbf hostedx40.rbf
 	use x115 && newins hostedx115-${PV}.rbf hostedx115.rbf
 }
