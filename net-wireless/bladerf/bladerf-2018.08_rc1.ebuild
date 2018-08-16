@@ -37,8 +37,8 @@ CDEPEND=">=dev-libs/libusb-1.0.16
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}"
-PDEPEND=">=net-wireless/bladerf-firmware-2.0.0
-	>=net-wireless/bladerf-fpga-0.6.0"
+PDEPEND=">=net-wireless/bladerf-firmware-2.2.0
+	>=net-wireless/bladerf-fpga-0.7.3"
 
 src_configure() {
 	mycmakeargs=(
