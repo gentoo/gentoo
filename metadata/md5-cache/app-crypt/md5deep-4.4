@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile configure install prepare test
+DEFINED_PHASES=prepare
 DEPEND=>=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Expanded md5sum program with recursive and comparison options
-EAPI=5
+EAPI=6
 HOMEPAGE=http://md5deep.sourceforge.net/
-KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 arm ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=public-domain GPL-2
 SLOT=0
 SRC_URI=https://github.com/jessek/hashdeep/archive/release-4.4.tar.gz -> md5deep-4.4.tar.gz
-_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	696393cddf6200db17a31641f597b403	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=7a01a4ce4841f3d408204e9918954965
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=5ca68aa8912be9a020925231b3561e8f
