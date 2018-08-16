@@ -9974,7 +9974,7 @@ sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partit
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-boot/woeusb 3.1.5: Creates windows installer on usb media from an iso image
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
-sys-cluster/ceph 10.2.3-r2 12.2.5: Ceph distributed filesystem
+sys-cluster/ceph 10.2.3-r2 12.2.5 12.2.7: Ceph distributed filesystem
 sys-cluster/cinder 11.1.1 12.0.3: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
