@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools elisp-common gnome2-utils
+inherit autotools elisp-common gnome2-utils qmake-utils
 
 DESCRIPTION="A multilingual input method framework"
 HOMEPAGE="https://github.com/uim/uim"
@@ -78,6 +78,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-qt.patch
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${PN}-zh-TW.patch
 )
@@ -144,6 +145,7 @@ src_configure() {
 		myconf+=( --disable-pref )
 	fi
 
+	export QT4DIR="$(qt4_get_libdir)"
 	econf "${myconf[@]}"
 }
 

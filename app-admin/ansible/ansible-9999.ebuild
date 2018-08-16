@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
@@ -64,6 +64,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/docsite/_build/html/. )
 	distutils-r1_python_install_all
 
-	doman docs/man/man1/*.1
 	dodoc -r examples
 }

@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="A session manager for the Xfce desktop environment"
 HOMEPAGE="https://docs.xfce.org/xfce/xfce4-session/start"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,7 +28,6 @@ RDEPEND="${COMMON_DEPEND}
 	nls? ( x11-misc/xdg-user-dirs )
 	xscreensaver? ( || (
 		>=x11-misc/xscreensaver-5.26
-		x11-misc/light-locker
 		>=x11-misc/xlockmore-5.43
 		x11-misc/slock
 		x11-misc/alock[pam]

@@ -1,0 +1,67 @@
+From 5af43b1ec2674e9f86090790bc61abdb96be14ff Mon Sep 17 00:00:00 2001
+From: hsbt <hsbt@b2dd03c8-39d4-4d8f-98ff-823fe69b080e>
+Date: Tue, 30 Jan 2018 05:43:42 +0000
+Subject: [PATCH] ia64: update ia64-specific code to use execution context
+
+This change follows commit 837fd5e494731d7d44786f29e7d6e8c27029806f
+in '#ifdef __ia64' branches.
+
+Noticed as a build failure by John Paul Adrian Glaubitz:
+
+```
+  cont.c:502:50: error: 'rb_thread_t {aka struct rb_thread_struct}'
+    has no member named 'machine'
+       size = cont->machine.register_stack_size =
+           th->machine.register_stack_end - th->machine.register_stack_start;
+               ^~
+```
+
+The change is trivial: update 'th->machine' usage to 'th->ec->machine'.
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@62106 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+---
+ cont.c   | 6 +++---
+ thread.c | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cont.c b/cont.c
+index f48fd2e52b..93a64f8fe6 100644
+--- a/cont.c
++++ b/cont.c
+@@ -475,7 +475,7 @@ cont_save_machine_stack(rb_thread_t *th, rb_context_t *cont)
+ 
+     SET_MACHINE_STACK_END(&th->ec->machine.stack_end);
+ #ifdef __ia64
+-    th->machine.register_stack_end = rb_ia64_bsp();
++    th->ec->machine.register_stack_end = rb_ia64_bsp();
+ #endif
+ 
+     if (th->ec->machine.stack_start > th->ec->machine.stack_end) {
+@@ -499,8 +499,8 @@ cont_save_machine_stack(rb_thread_t *th, rb_context_t *cont)
+ 
+ #ifdef __ia64
+     rb_ia64_flushrs();
+-    size = cont->machine.register_stack_size = th->machine.register_stack_end - th->machine.register_stack_start;
+-    cont->machine.register_stack_src = th->machine.register_stack_start;
++    size = cont->machine.register_stack_size = th->ec->machine.register_stack_end - th->ec->machine.register_stack_start;
++    cont->machine.register_stack_src = th->ec->machine.register_stack_start;
+     if (cont->machine.register_stack) {
+ 	REALLOC_N(cont->machine.register_stack, VALUE, size);
+     }
+diff --git a/thread.c b/thread.c
+index acb53354fd..23957eba09 100644
+--- a/thread.c
++++ b/thread.c
+@@ -133,7 +133,7 @@ static inline void blocking_region_end(rb_thread_t *th, struct rb_blocking_regio
+ 
+ #ifdef __ia64
+ #define RB_GC_SAVE_MACHINE_REGISTER_STACK(th)          \
+-    do{(th)->machine.register_stack_end = rb_ia64_bsp();}while(0)
++    do{(th)->ec->machine.register_stack_end = rb_ia64_bsp();}while(0)
+ #else
+ #define RB_GC_SAVE_MACHINE_REGISTER_STACK(th)
+ #endif
+-- 
+2.16.1
+

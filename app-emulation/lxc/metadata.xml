@@ -2,16 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>dev-zero@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
-    <email>hwoarang@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
-    <email>stasibear@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
-    <email>dlan@gentoo.org</email>
+    <email>vdupras@gentoo.org</email>
   </maintainer>
   <maintainer type="project">
     <email>virtualization@gentoo.org</email>
@@ -19,6 +10,7 @@
   </maintainer>
   <use>
     <flag name="cgmanager">Enable support for cgroup management using <pkg>app-admin/cgmanager</pkg></flag>
+    <flag name="templates">Install old style templates through <pkg>app-emulation/lxc-templates</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">lxc/lxc</remote-id>

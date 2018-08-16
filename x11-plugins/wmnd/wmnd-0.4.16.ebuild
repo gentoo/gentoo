@@ -4,8 +4,8 @@
 EAPI=4
 
 DESCRIPTION="WindowMaker Network Devices (dockapp)"
-HOMEPAGE="http://www.thregr.org/~wavexx/software/wmnd/"
-SRC_URI="http://www.thregr.org/~wavexx/software/wmnd/releases/${P}.tar.gz"
+HOMEPAGE="https://www.thregr.org/~wavexx/software/wmnd/"
+SRC_URI="https://www.thregr.org/~wavexx/software/wmnd/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

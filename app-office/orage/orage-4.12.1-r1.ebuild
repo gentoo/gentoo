@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="A time managing application (and panel plug-in) for the Xfce desktop environment"
 HOMEPAGE="https://git.xfce.org/apps/orage/"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

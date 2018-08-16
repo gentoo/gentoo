@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Produce ansi color output and colored highlighting and diffing"
-HOMEPAGE="https://github.com/numerodix/ansicolor"
+HOMEPAGE="https://github.com/numerodix/ansicolor https://pypi.org/project/ansicolor/"
 EGIT_REPO_URI="https://github.com/numerodix/ansicolor.git"
 
 LICENSE="Apache-2.0"

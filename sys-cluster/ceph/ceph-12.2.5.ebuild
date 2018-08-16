@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	app-arch/snappy:=[static-libs?]
 	app-arch/zstd:=[static-libs?]
 	app-misc/jq:=[static-libs?]
-	dev-libs/crypto++:=[static-libs?]
+	<dev-libs/crypto++-7.0:=[static-libs?]
 	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc?]
 	dev-libs/libaio:=[static-libs?]
 	dev-libs/libxml2:=[static-libs?]
@@ -128,6 +128,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-12.2.4-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-rocksdb-cflags.patch"
+	"${FILESDIR}/ceph-12.2.5-no-werror.patch"
 )
 
 check-reqs_export_vars() {
@@ -163,7 +164,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-12.2.4-boost-sonames.patch"
+		eapply "${FILESDIR}/ceph-12.2.5-boost-sonames.patch"
 	fi
 
 	# remove tests that need root access

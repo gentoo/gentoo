@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/anholt/libepoxy"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 	SRC_URI="https://github.com/anholt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
@@ -30,7 +30,6 @@ RDEPEND="media-libs/mesa[egl,${MULTILIB_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	${RDEPEND}
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
-	>=dev-util/meson-0.44.0
 	virtual/pkgconfig"
 
 src_unpack() {

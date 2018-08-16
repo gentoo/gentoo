@@ -5,17 +5,9 @@
   <email>ultrabug@gentoo.org</email>
   <name>Ultrabug</name>
 </maintainer>
-<maintainer type="person">
-  <email>julien@thebault.co</email>
-  <name>Lujeni</name>
-</maintainer>
 <maintainer type="project">
   <email>python@gentoo.org</email>
   <name>Python</name>
-</maintainer>
-<maintainer type="project">
-  <email>proxy-maint@gentoo.org</email>
-  <name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
   Websocket handler for the gevent pywsgi server

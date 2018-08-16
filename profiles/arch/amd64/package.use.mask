@@ -17,6 +17,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
+# Dependency app-crypt/jitterentropy is keyworded for amd64
+sys-apps/rng-tools -jitterentropy
+
+# Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
+# Catalyst has support for assembling bootloader on this arch
+dev-util/catalyst -system-bootloader
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (17 Jun 2018)
+# Vulkan support is only available on few selected arches atm.
+# Mask everywhere, unmask where appropriate.
+media-video/mpv -vulkan
+
+# Mikle Kolyada <zlogene@gentoo.org> (02 Jun 2018)
+# Too many untested ruby dependencies
+<dev-ruby/haml-5 test
+
 # Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
 # media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
 app-emulation/wine-any -vkd3d -vulkan
@@ -43,7 +60,7 @@ net-wireless/pyrit cuda
 
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # nexpose and openvas work on amd64
-net-analyzer/metasploit nexpose openvas
+net-analyzer/metasploit -nexpose -openvas
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is keyworded on amd64
@@ -117,11 +134,6 @@ sys-apps/systemd -gnuefi
 # JavaFX and the browser plugin are included on x64 Linux.
 dev-java/oracle-jdk-bin -javafx -nsplugin
 dev-java/oracle-jre-bin -javafx -nsplugin
-
-# Michael Sterrett <mr_bones_@gentoo.org> (21 Apr 2015)
-# None of the fusionsound deps support multilib currently, maybe later.
-# Hiding the use flag fixes bug #545662 for now.
-media-libs/libsdl2 fusionsound
 
 # Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag

@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>xmw@gentoo.org</email>
 		<name>Michael Weber</name>
-		<description>Upstream of the python3 port</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -12,5 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">python-ldap</remote-id>
+		<remote-id type="github">python-ldap/python-ldap</remote-id>
+		<bugs-to>https://github.com/python-ldap/python-ldap/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

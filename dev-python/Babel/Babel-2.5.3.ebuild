@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Collection of tools for internationalizing Python applications"
-HOMEPAGE="http://babel.edgewall.org/ https://pypi.org/project/Babel/"
+HOMEPAGE="http://babel.pocoo.org/ https://pypi.org/project/Babel/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

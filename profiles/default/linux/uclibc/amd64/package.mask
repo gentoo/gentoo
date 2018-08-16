@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # AMD64 Team <amd64@gentoo.org>
@@ -20,9 +20,6 @@ app-emulation/winetricks
 app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-lang/icc
-dev-lang/idb
-dev-lang/ifc
 dev-perl/Archive-Rar
 dev-util/android-sdk-update-manager
 dev-util/android-ndk
@@ -82,7 +79,6 @@ games-fps/sauerbraten
 games-fps/serious-sam-tfe
 games-fps/serious-sam-tse
 games-fps/soldieroffortune
-games-fps/soldieroffortune-demo
 games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
@@ -100,7 +96,6 @@ games-strategy/darwinia-demo
 games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz
@@ -118,7 +113,6 @@ sci-chemistry/cara-bin
 sci-chemistry/mars
 sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
 
 # AMD64 Team; <amd64@gentoo.org>
 # grub-1 is not available on no-multilib-profiles;

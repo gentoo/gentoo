@@ -1,0 +1,451 @@
+End User License Agreement
+
+  OUR EULA WAS UPDATED ON JULY 17, 2017
+
+   This End User License Agreement (this “EULA”) governs Your access and use
+   of the software (“Software”) that is embedded on any Ubiquiti Networks,
+   Inc. product (“Product”).
+
+   The term “You,” “Your,” “you” or “your” as used in this EULA, means any
+   person or entity who accesses or uses the Software and accepts the terms
+   of this EULA, including any individuals that You authorize to use or
+   access the Software, including Your independent contractors or employees
+   (“Authorized Users”). For the avoidance of doubt, where the term “You,”
+   “Your,” “you” or “your” is used in this EULA, it shall include any
+   Authorized User, regardless of whether “Authorized User” is specifically
+   stated.
+
+        FOR IMPORTANT DISCLAIMERS OF WARRANTY AND WARNINGS CONCERNING USAGE, SEE
+        SECTION V.
+
+   YOU MUST READ AND AGREE TO THE TERMS OF THIS EULA BEFORE USING,
+   DOWNLOADING OR INSTALLING ANY SOFTWARE. BY USING, DOWNLOADING OR
+   INSTALLING THE SOFTWARE, YOU ARE AGREEING TO BE BOUND BY THE TERMS AND
+   CONDITIONS OF THIS EULA. IF YOU DO NOT AGREE WITH THE TERMS AND CONDITIONS
+   OF THIS EULA, YOU MAY NOT USE, DOWNLOAD OR INSTALL THE SOFTWARE.
+
+   THE SOFTWARE MAY BE SUBJECT TO AUTOMATIC SOFTWARE UPDATES, AS DESCRIBED
+   FURTHER IN SECTION III, AND YOU ALSO HEREBY CONSENT TO SUCH UPDATES. If
+   You do not agree to such updates, You are not permitted to, and You must
+   not, download, install, access or use the Software.
+
+   Ubiquiti may, in its sole and absolute discretion, change the terms of
+   this EULA from time to time, as indicated by the date at the end of this
+   EULA. If You object to any such change, Your sole recourse will be to
+   cease using the Software. Continued use of the Software following any such
+   change will indicate Your acknowledgement of such change and agreement to
+   be bound by the new terms and conditions.
+
+    1. Overview, Eligibility
+
+          * This EULA is a binding agreement between You and Ubiquiti
+            Networks, Inc. (“Ubiquiti”).
+          * Your use of (1) websites located at [1]www.ubnt.com and ubnt.com
+            sub-domains and any other websites hosted by Ubiquiti or its
+            affiliates, (2) services accessible or downloadable through the
+            Sites, (3) software that may be downloaded to Your smartphone or
+            tablet to access services and (4) subscription services,
+            including services that can be accessed using the Web Apps and
+            Mobile Apps is governed by the [2]Terms of Service. Your
+            purchase of the Product (excluding the Software) is governed by
+            the [3]Limited Warranty. All additional guidelines, terms, or
+            rules on the Sites, including the [4]Privacy Policy, are
+            incorporated by reference into this EULA and You are agreeing to
+            accept and abide by them by using the Software.
+          * Subject to Section (I)(d), You may access and use the Software
+            only if You can form a binding contract with Ubiquiti and only if
+            You are in compliance with the terms of this EULA and all
+            applicable laws and regulations. If You are accepting the terms
+            of this EULA on behalf of an entity or individual, You represent
+            and warrant that You have full legal authority to bind such
+            entity or individual to this EULA. You are fully responsible for
+            any Authorized User’s compliance with this EULA.
+          * If You are an Authorized User, You represent and warrant that You
+            are over the age of 13 (or equivalent minimum age in the
+            jurisdiction where You reside or access or use the Software), and
+            in the event You are between the age of 13 (or equivalent minimum
+            age in the jurisdiction where you reside or access or use the
+            Software) and the age of majority in the jurisdiction where You
+            reside or access or use the Software, that You will only use the
+            Software under the supervision of a parent or legal guardian who
+            agrees to be bound by this EULA. Any use or access to the
+            Software by individuals under the age of 13 (or equivalent
+            minimum age in the jurisdiction where you reside or access or use
+            the Services) is strictly prohibited and a violation of this
+            EULA.
+
+    2. License.
+
+          * License Grant. Subject to Your compliance at all times with the
+            terms and restrictions set forth in this EULA, Ubiquiti grants
+            You, under its rights in and to the Software, a worldwide,
+            non-sublicensable, non-transferable, non-exclusive, revocable,
+            limited license to download and use the Software in object code
+            form only, solely in connection with the Product that You own or
+            control.
+          * Limitations on Use.
+
+               * The Software, its contents, features and functionality
+                 (including, without limitation, all user interfaces,
+                 information, software, code, text, graphics, images, video
+                 and audio, and the design, selection and arrangement
+                 thereof) (collectively, the “Content”) are protected by
+                 United States and international copyright, trademark,
+                 patent, trade secret and other intellectual property or
+                 proprietary rights laws.
+               * You shall not directly or indirectly do any of the
+                 following:
+
+                    * use the Software on any device other than a Product
+                      that is owned or controlled by You or Your business
+                      organization;
+                    * sell, offer for sale, lease, license, sublicense or
+                      distribute the Software or any Content in any form
+                      without the prior written consent of Ubiquiti;
+                    * copy, reproduce, broadcast, transmit, republish,
+                      distribute, modify, prepare derivative works of,
+                      perform, publicly perform or display the Software or
+                      any Content in any way without the prior written
+                      consent of Ubiquiti and its applicable licensors;
+                    * remove or alter any copyright, trademark or other
+                      proprietary rights notices from the Software or
+                      Content, or use them in contravention of any such
+                      applicable notices;
+                    * reverse engineer, decompile, translate, disassemble or
+                      otherwise attempt to (i) derive the source code or the
+                      underlying ideas, algorithms, structure or organization
+                      of any Software (except that the foregoing limitation
+                      does not apply to the extent that such activities may
+                      not be prohibited under applicable law); or (ii)
+                      defeat, avoid, bypass, remove, deactivate, or otherwise
+                      circumvent any software protection mechanisms in the
+                      Software, including, without limitation, any such
+                      mechanism used to restrict or control the functionality
+                      of the Software;
+                    * use the Software in violation of any third-party rights
+                      or any local, state, national or international law or
+                      regulation, including, without limitation, any local
+                      country regulations related to operation within legal
+                      frequency channels, output power and Dynamic Frequency
+                      Selection (DFS) requirements;
+                    * violate any accompanying user or technical manuals,
+                      training materials, specifications or other
+                      documentation pertaining to any Software, where in
+                      digital or printed format;
+                    * engage in any High Risk Activities (as defined in
+                      Section (V)(b)(ii));
+                    * release the results of any performance or functional
+                      evaluation of any of the Software to any third party
+                      without prior written approval of Ubiquiti for each
+                      such release; or
+                    * create a substantially similar software to the
+                      Software, or any component thereof.
+
+               * You are responsible for obtaining, properly installing and
+                 maintaining the Software and any other services or products
+                 needed for access to and use of the Software, and for paying
+                 all charges related thereto.
+
+          * Third Party Software.
+
+               * Certain software included in, distributed with or downloaded
+                 in connection with the Software may comprise third party
+                 proprietary software products that are subject to separate
+                 license terms (“Third Party Software”). All such Third Party
+                 Software may include software or software components that
+                 are derived, in whole or in part, from software that is
+                 distributed as free software, open source software or under
+                 similar licensing or distribution models (“Open Source
+                 Software,” together with Third Party Software, “External
+                 Software”).
+               * Your use of External Software is subject in all cases to the
+                 applicable licenses from the External Software provider,
+                 which shall take precedence over the rights and restrictions
+                 granted in this EULA solely with respect to such External
+                 Software. You shall comply with the terms of all applicable
+                 Third Party Software and Open Source Software licenses, if
+                 any. Copyrights to Open Source Software are held by their
+                 respective copyright holders indicated in the copyright
+                 notices in the corresponding source files. The Software may
+                 include software developed by the OpenSSL Project for use in
+                 the OpenSSL Toolkit ([5]http://www.openssl.org/).
+               * FOR THE AVOIDANCE OF DOUBT, UBIQUITI PROVIDES NO
+                 REPRESENTATION OR WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR
+                 STATUTORY, WITH RESPECT TO SUCH EXTERNAL SOFTWARE, INCLUDING
+                 WITH RESPECT TO FUNCTIONALITY OF SUCH EXTERNAL SOFTWARE.
+                 Ubiquiti does not provide any warranty, maintenance,
+                 technical or other support for any External Software.
+                 Accordingly, Ubiquiti is not responsible for Your use of any
+                 External Software or any personal injury, death, property
+                 damage (including, without limitation, to Your home), or
+                 other harm or losses arising from or relating to Your use of
+                 any External Software.
+
+          * Intellectual Property Ownership; Trade Secrets. All copyrights,
+            trade secrets, patents, trademarks, trade secrets and other
+            intellectual property and proprietary rights in any jurisdiction
+            worldwide (collectively, “Intellectual Property Rights”) in and
+            to the Software and the Content are the sole property of Ubiquiti
+            or its licensors. You do not have or receive any title or
+            interest in or to the Software, the Content, or the Intellectual
+            Property Rights contained therein through Your use of the
+            Software or otherwise. Except as expressly granted to You under
+            the limited license set forth in Section II(a) of this EULA,
+            Ubiquiti does not grant any express or implied right to You under
+            any of its Intellectual Property Rights. You further acknowledge
+            and agree that the Software contains the valuable trade secrets
+            and proprietary information of Ubiquiti and its affiliates. You
+            agree to hold such trade secrets and proprietary information in
+            confidence and You acknowledge that any actual or threatened
+            breach of this obligation will constitute immediate, irreparable
+            harm for which monetary damages would be an inadequate remedy,
+            and that injunctive relief is an appropriate remedy for such
+            breach.
+          * Trademarks. All trademarks, service marks, trade names and logos
+            and the goodwill associated therewith (“Marks”) included or
+            displayed in the Software or Content are the exclusive property
+            of Ubiquiti or their respective holders. You are not permitted to
+            use any of the Marks without the applicable prior written consent
+            of Ubiquiti or such respective holders.
+
+    3. Automatic Updates.
+
+          * Ubiquiti may, from time to time and at its sole option, provide
+            patches, bug fixes, corrections, updates, upgrades, support and
+            maintenance releases or other modifications to the Software,
+            including certain External Software, which items shall be deemed
+            part of the Software and External Software hereunder. YOU HEREBY
+            CONSENT TO ANY SUCH AUTOMATIC UPDATES. These may be automatically
+            installed without providing any additional notice to You or
+            receiving Your additional consent. If You do not consent, Your
+            remedy is to stop using the Software. Notwithstanding the
+            foregoing, Ubiquiti withholds the right to require You to install
+            any patches, bug fixes, corrections, updates, upgrades, support
+            and maintenance releases or other modifications in order to
+            access and use the Software.
+
+    4. Term and Termination. This EULA will remain in full force and effect
+       so long as You continue to access or use the Software, or until
+       terminated in accordance with this EULA. You may discontinue Your use
+       of and access to the Software at any time. Ubiquiti will automatically
+       terminate this EULA at any time without notice to you if you fail to
+       comply with any term of this EULA. You may terminate it at any time
+       upon written notice to Ubiquiti at legal@ubnt.com. Upon any such
+       termination, the licenses granted by this EULA will immediately
+       terminate and you agree to stop all access and use of the Product,
+       Software and documentation and destroy the Software and documentation,
+       together with all copies and merged portions in any form. The
+       provisions that by their nature continue and survive will survive any
+       termination of this EULA, including those set forth in this Sections
+       II(d), II(e) and Articles IV -IX.
+    5. WARRANTY DISCLAIMER
+
+          * Disclaimer of Warranties TO THE MAXIMUM EXTENT PERMITTED BY
+            APPLICABLE LAW, THE SOFTWARE IS LICENSED “AS-IS” AND “AS
+            AVAILABLE”, WITH ALL FAULTS. UBIQUITI DOES NOT MAKE ANY
+            WARRANTIES OR REPRESENTATIONS OF ANY KIND, WHETHER EXPRESS,
+            IMPLIED, STATUTORY OR OTHERWISE, WITH RESPECT TO ANY SOFTWARE,
+            INCLUDING, WITHOUT LIMITATION, WARRANTIES OF MERCHANTABILITY,
+            ACCURACY, QUALITY OF SERVICE OR RESULTS, AVAILABILITY,
+            SATISFACTORY QUALITY, LACK OF VIRUSES, TITLE, FITNESS FOR A
+            PARTICULAR USE OR NON-INFRINGEMENT, TO THE EXTENT AUTHORIZED BY
+            LAW. ANY STATEMENTS OR REPRESENTATIONS ABOUT THE SOFTWARE AND ITS
+            FEATURES OR FUNCTIONALITY AND ANY COMMUNICATION WITH YOU IS FOR
+            INFORMATION PURPOSES ONLY, AND DOES NOT CONSTITUTE A WARRANTY OR
+            REPRESENTATION. WITHOUT LIMITING THE FOREGOING, UBIQUITI
+            EXPRESSLY DOES NOT WARRANT THAT THE CONTENT, OPERATION, OUTPUT OR
+            IMPLEMENTATION OF THE SOFTWARE WILL: (I) MEET YOUR REQUIREMENTS;
+            (II) BE UNINTERRUPTED, ERROR-FREE, ACCURATE, RELIABLE OR
+            COMPLETE; (III) BE COMPATIBLE WITH YOUR HOME NETWORK, COMPUTER OR
+            MOBILE DEVICE; (IV) OR THAT UBIQUITI OR ANY THIRD PARTY WILL
+            RESOLVE ANY PARTICULAR SUPPORT REQUEST OR FIX ANY ERRORS OR THAT
+            SUCH RESOLUTION WILL MEET YOUR REQUIREMENTS OR EXPECTATIONS. YOU
+            SHALL BEAR THE ENTIRE RISK AS TO THE QUALITY AND THE PERFORMANCE
+            OF THE SOFTWARE.
+          * Emergency Response; High Risk Activities.
+
+               * YOU ACKNOWLEDGE AND AGREE THAT THE SOFTWARE, WHETHER
+                 STANDING ALONE OR WHEN INTERFACED WITH PRODUCTS OR
+                 THIRD-PARTY PRODUCTS OR SERVICES, ARE NOT CERTIFIED FOR
+                 EMERGENCY RESPONSE, AND ARE NOT A THIRD-PARTY MONITORED
+                 EMERGENCY NOTIFICATION SYSTEM. MOBILE OR OTHER NOTIFICATIONS
+                 REGARDING THE STATUS OF THE SOFTWARE ARE NOT A SUBSTITUTE
+                 FOR A THIRD-PARTY MONITORED EMERGENCY NOTIFICATION SYSTEM.
+                 YOU AGREE THAT YOU WILL NOT RELY ON THE SOFTWARE FOR
+                 EMERGENCY RESPONSE OR ANY OTHER LIFE SAFETY OR CRITICAL
+                 PURPOSES.
+               * NEITHER THE SOFTWARE NOR ANY PRODUCT IS DESIGNED,
+                 MANUFACTURED OR INTENDED FOR THE OPERATION OF NUCLEAR
+                 FACILITIES, AIR TRAFFIC CONTROL, EMERGENCY RESPONSE,
+                 EMERGENCY AND SAFETY SERVICES, HEALTHCARE FACILITIES,
+                 HOSPITALS, LIFE SUPPORT SYSTEMS OR ANY MISSION CRITICAL
+                 ENVIRONMENT, WHERE THE USE OR FAILURE OF THE SOFTWARE COULD
+                 LEAD TO DEATH, PERSONAL INJURY OR ENVIRONMENTAL DAMAGE
+                 (COLLECTIVELY, “HIGH RISK ACTIVITIES”). YOU AGREE THAT YOU
+                 WILL NOT USE THE SOFTWARE FOR ANY HIGH RISK ACTIVITIES.
+
+          * Data Storage. Ubiquiti is not responsible or liable for the
+            deletion of or failure to store or process any information or
+            other content provided by You or transmitted in the course of
+            using the Software. You are solely responsible for securing and
+            backing up such submissions.
+          * Versions. You acknowledge and agree that the Software provided to
+            You under this EULA may be in “beta” or test form, or otherwise
+            not intended or completed for commercial use and may therefore
+            contain errors, bugs or similar unstable characteristics not
+            typical of commercially released items. Such characteristics may
+            negatively affect the operation of previously installed software
+            or equipment. You are advised to safeguard important data, to use
+            caution and not to rely in any way on the correct functioning or
+            performance of the software and accompanying materials. You
+            acknowledge that the Software may be provided to You from time to
+            time as a program participant solely for the purpose of providing
+            Ubiquiti with feedback on the Software and the identification of
+            defects.
+
+    6. LIMITATION OF LIABILITY
+
+          * UNDER NO CIRCUMSTANCES WILL UBIQUITI OR ITS SUPPLIERS OR THEIR
+            RESPECTIVE AFFILIATES, OFFICERS, EMPLOYEES, DIRECTORS,
+            SHAREHOLDERS, AGENTS OR LICENSORS BE LIABLE UNDER ANY THEORY OF
+            LIABILITY (WHETHER IN CONTRACT, TORT, STATUTORY OR OTHERWISE) FOR
+            ANY DAMAGES WHATSOEVER, INCLUDING, WITHOUT LIMITATION, DIRECT,
+            INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY
+            DAMAGES, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF
+            MONEY, REVENUES, PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE
+            LOSSES (EVEN IF SUCH PARTIES WERE ADVISED OF, KNEW OF OR SHOULD
+            HAVE KNOWN OF THE POSSIBILITY OF SUCH DAMAGES), RESULTING FROM
+            THIS EULA OR THE INSTALLATION, MAINTENANCE, PERFORMANCE, FAILURE
+            OR INTERRUPTION OR USE OF SOFTWARE, HOWEVER CAUSED AND ON ANY
+            THEORY OF LIABILITY (INCLUDING, WITHOUT LIMITATION, NEGLIGENCE),
+            EVEN IF UBIQUITI HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+            DAMAGES. IF, NOTWITHSTANDING THESE TERMS, UBIQUITI OR ANY OF ITS
+            SUPPLIERS ARE FOUND TO BE LIABLE, THE LIABILITY OF UBIQUITI OR
+            ITS SUPPLIERS OR THEIR RESPECTIVE AFFILIATES, OFFICERS,
+            EMPLOYEES, DIRECTORS, SHAREHOLDERS, AGENTS OR LICENSORS TO YOU OR
+            TO ANY THIRD PARTY IS LIMITED TO ONE HUNDRED DOLLARS ($100). THIS
+            LIMITATION IS CUMULATIVE AND WILL NOT BE INCREASED BY THE
+            EXISTENCE OF MORE THAN ONE INCIDENT OR CLAIM.
+          * Exclusions and Limitations. Some jurisdictions do not allow the
+            exclusion of certain warranties or the limitation or exclusion of
+            liability for certain damages. Accordingly, some of the above
+            limitations and disclaimers may not apply to You. To the extent
+            that Ubiquiti may not, as a matter of applicable law, disclaim
+            any implied warranty or limit its liabilities, the scope and
+            duration of such warranty and the extent of Ubiquiti’s liability
+            will be the minimum permitted under such applicable law.
+
+    7. INDEMNIFICATION. YOU AGREE TO INDEMNIFY, DEFEND, AND HOLD HARMLESS
+       UBIQUITI AND ITS LICENSORS AND SUPPLIERS, AND THEIR RESPECTIVE
+       AFFILIATES, OFFICERS, EMPLOYEES, DIRECTORS, SHAREHOLDERS, AGENTS OR
+       LICENSORS FROM AND AGAINST ANY AND ALL CLAIMS, LIABILITIES, DAMAGES,
+       LOSSES, COSTS, EXPENSES AND FEES (INCLUDING REASONABLE ATTORNEYS’
+       FEES) THAT SUCH PARTIES MAY INCUR AS A RESULT OF OR ARISING FROM A
+       VIOLATION OF THIS EULA.
+    8. Export Restrictions.
+
+          * You acknowledge that the Software is of U.S. origin. You
+            represent and warrant that (i) You shall be solely responsible
+            for complying with all export laws and restrictions and
+            regulations, including United States export regulations, such as
+            restrictions of the Department of Commerce, the United States
+            Department of Treasury Office of Foreign Assets Control ("OFAC")
+            or other foreign agency or authority’s regulations ("Export
+            Laws"), and You shall not (ii) export, or allow the export or
+            re-export of, the Software in violation of any such restrictions,
+            laws or regulations, or available in any country in contravention
+            of any Export Laws, or any other law, nor (iii) make the Software
+            available in a country for which an export license or other
+            governmental approval is required without first obtaining all
+            necessary licenses or other approvals. You shall obtain and bear
+            all expenses relating to any necessary licenses and exemptions
+            with respect to the export from the U.S. of the Software to any
+            location.
+          * You acknowledge that the U.S. government maintains embargoes and
+            sanctions against certain countries, currently including the
+            Crimea region of Ukraine, Cuba, Iran, North Korea, Sudan and
+            Syria, which may be amended from time to time, including with
+            respect to listed countries; and that other countries may have
+            trade laws pertaining to import, use, export or distribution of
+            the Software. You acknowledge that, in each case, compliance with
+            the same is Your responsibility. You represent and warrant that
+            You are not a person or entity listed on any United States
+            Government list of prohibited or restricted parties.
+
+    9. Miscellaneous.
+
+          * Governing Law; Jurisdiction. This EULA shall not be governed by
+            the 1980 U.N. Convention on Contracts for the International Sale
+            of Goods; rather, this EULA shall be governed by the laws of the
+            State of New York, including its Uniform Commercial Code, without
+            reference to conflicts of laws principles. Any action or
+            proceeding relating to this EULA must be brought in a federal or
+            state court located in New York and each party irrevocably
+            submits to the jurisdiction and venue of any such court in any
+            such claim or dispute, except that Ubiquiti may seek injunctive
+            relief in any court having jurisdiction to protect its
+            confidential information or intellectual property.
+          * Government Purposes. The Software was developed solely at private
+            expense and is a “commercial item” consisting of “commercial
+            computer software” and “commercial computer software
+            documentation” within the meaning of the applicable civilian and
+            military Federal acquisition regulations and any supplements
+            thereto, as amended from time to time. If the user of the
+            Software is an agency, department, employee or other entity of
+            the United States Government, consistent with 48 C.F.R.
+            227.7202-1 through 227.702-4 (JUNE 1995), the use, duplication,
+            reproduction, release, modification, disclosure and transfer of
+            the Software, including technical data or manuals, is governed by
+            the terms and conditions contained in this EULA.
+          * Severability. If any of the provisions, either in part or in
+            full, of this EULA is held by a court or other tribunal of
+            competent jurisdiction to be unenforceable or invalid, such
+            provision shall be enforced to the maximum extent possible or
+            permissible and this EULA will be interpreted so as to give
+            maximum effect to the original intent of the parties with respect
+            to the unenforceable provision, and the remaining portions of
+            this EULA shall remain in full force and effect.
+          * Assignment. You may not assign any of Your rights or obligations
+            under this EULA without Ubiquiti’s express written consent.
+            Ubiquiti may assign this EULA without Your consent provided that
+            such assignment is to an affiliated company forming part of the
+            Ubiquiti group of companies.
+          * Waiver. The waiver by either party of any default by the other
+            party shall not waive subsequent defaults by such other party of
+            the same or different kind. The failure of either party to
+            enforce the provisions hereof, at any time or for any period of
+            time, or the failure of either party to exercise any option
+            herein, shall not be construed as a waiver of such provision or
+            option and shall in no way affect that party’s right to enforce
+            such provisions or exercise such option.
+          * Third Party Beneficiary. Licensors and suppliers of Ubiquiti and
+            its affiliates are third party beneficiaries of this EULA, and
+            thus this EULA is directly enforceable by such licensors and
+            suppliers and their affiliates.
+          * Statute of Limitations. You agree that regardless of any statute
+            or law to the contrary, any claim or cause of action You may have
+            arising out of or related to use of the Software or this EULA
+            must be filed within one (1) year after such claim or cause of
+            action arose or be forever barred.
+          * Interpretation. As used herein, unless the context requires
+            otherwise, the word “or” is not exclusive and the words “will,”
+            “will not,” “shall,” and “shall not” are expressions of command
+            and not merely expressions of future intent or expectation.
+            Whenever the words “include,” “includes” or “including” are used
+            in this EULA, they shall be deemed to be followed by the words
+            “without limitation.” The section headings in this EULA are for
+            convenience only and have no legal or contractual effect.
+
+References
+
+   Visible links
+   1. www.ubnt.com
+	https://www.ubnt.com/
+   2. Terms of Service
+	https://www.ubnt.com/legal/termsofservice/
+   3. Limited Warranty
+	https://www.ubnt.com/support/warranty/
+   4. Privacy Policy
+	https://www.ubnt.com/legal/privacypolicy/
+   5. www.openssl.org
+	http://www.openssl.org/

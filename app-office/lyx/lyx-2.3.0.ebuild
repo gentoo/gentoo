@@ -51,7 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-mathscience
 		dev-texlive/texlive-pictures
-		|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )
+		dev-texlive/texlive-plaingeneric
 		|| (
 			dev-tex/hevea
 			dev-tex/latex2html

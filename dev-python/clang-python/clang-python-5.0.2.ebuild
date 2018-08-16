@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,8 +34,12 @@ src_unpack() {
 	tar -xJf "${DISTDIR}/${MY_P}.tar.xz" "${MY_P}/bindings/python" || die
 }
 
+python_test() {
+	nosetests -v || die "Tests fail with ${EPYTHON}"
+}
+
 src_test() {
-	python_foreach_impl nosetests -v || die
+	python_foreach_impl python_test
 }
 
 src_install() {

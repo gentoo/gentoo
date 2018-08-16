@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -810,6 +811,7 @@ python_replicate_script() {
 		python_export PYTHON_SCRIPTDIR
 
 		(
+			exeopts -m 0755
 			exeinto "${PYTHON_SCRIPTDIR#${EPREFIX}}"
 			doexe "${files[@]}"
 		)

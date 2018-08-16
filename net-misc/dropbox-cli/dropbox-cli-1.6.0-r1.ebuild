@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1 bash-completion-r1
 
 DESCRIPTION="Cli interface for dropbox (python), part of nautilus-dropbox"
-HOMEPAGE="http://www.dropbox.com/"
+HOMEPAGE="https://www.dropbox.com/"
 SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.py.xz"
 
 LICENSE="GPL-3"

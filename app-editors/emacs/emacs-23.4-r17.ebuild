@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="alsa aqua athena dbus games gconf gif gpm gtk gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 REQUIRED_USE="?? ( aqua X )"
 
@@ -133,6 +133,9 @@ src_configure() {
 	else
 		replace-flags "-O[3-9]" -O2
 	fi
+
+	# Don't trigger a floating point exception for NaNs on alpha
+	use alpha && append-flags -mieee
 
 	local myconf
 

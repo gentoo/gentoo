@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools cron pam systemd user
+inherit autotools cron flag-o-matic pam systemd user
 
 DESCRIPTION="Cronie is a standard UNIX daemon cron based on the original vixie-cron"
 HOMEPAGE="https://github.com/cronie-crond/cronie"
@@ -14,7 +14,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="+anacron +inotify pam selinux"
 
 DEPEND="pam? ( virtual/pam )
-	anacron? ( !sys-process/anacron )"
+	anacron? ( !sys-process/anacron
+		elibc_musl? ( sys-libs/obstack-standalone )
+	)"
 RDEPEND="${DEPEND}
 	sys-apps/debianutils"
 
@@ -46,6 +48,10 @@ src_configure() {
 		--with-daemon_username=cron
 		--with-daemon_groupname=cron
 	)
+
+	if use anacron; then
+		use elibc_musl && append-cflags "-lobstack"
+	fi
 	SPOOL_DIR="/var/spool/cron/crontabs" \
 	ANACRON_SPOOL_DIR="/var/spool/anacron" \
 	econf "${myeconfargs[@]}"

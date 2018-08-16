@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Panel plug-in that displays information about earthquakes at regular intervals"
 HOMEPAGE="http://www.e-quake.org/"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

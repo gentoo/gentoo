@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1 mercurial
 
@@ -26,8 +26,9 @@ DEPEND="
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 	)"
 
 python_test() {
-	py.test || die "Testing failed with ${EPYTHON}"
+	pytest || die "Testing failed with ${EPYTHON}"
 }

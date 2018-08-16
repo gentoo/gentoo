@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
 inherit gnome2-utils linux-info python-single-r1 systemd
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="appindicator network nls policykit pulseaudio"
 
 COMMON_DEPEND="
-	dev-python/pygobject:3
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=net-wireless/bluez-5:=
 	${PYTHON_DEPS}"
 DEPEND="${COMMON_DEPEND}

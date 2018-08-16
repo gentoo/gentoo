@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -72,7 +72,7 @@ src_configure() {
 src_compile() {
 	# Build Mercury using base llds grade
 	emake \
-		PARALLEL=${MAKEOPTS} \
+		PARALLEL="'${MAKEOPTS}'" \
 		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
 			    EXTRA_CFLAGS='${CFLAGS}' \
 			    EXTRA_LDFLAGS='${LDFLAGS}'" \
@@ -93,7 +93,7 @@ src_compile() {
 
 	# Rebuild Mercury compiler using the just built mercury_compiler
 	emake \
-		PARALLEL=${MAKEOPTS} \
+		PARALLEL="'${MAKEOPTS}'" \
 		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
 			    EXTRA_CFLAGS='${CFLAGS}' \
 			    EXTRA_LDFLAGS='${LDFLAGS}'" \
@@ -104,7 +104,7 @@ src_compile() {
 	# compile the llds base grade. Since src_test() is run before
 	# src_install() we compile the default grade now
 	emake \
-		PARALLEL=${MAKEOPTS} \
+		PARALLEL="'${MAKEOPTS}'" \
 		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
 			    EXTRA_CFLAGS='${CFLAGS}' \
 			    EXTRA_LDFLAGS='${LDFLAGS}'" \
@@ -146,7 +146,7 @@ src_test() {
 
 src_install() {
 	emake \
-		PARALLEL=${MAKEOPTS} \
+		PARALLEL="'${MAKEOPTS}'" \
 		MMAKEFLAGS="EXTRA_MLFLAGS=--no-strip \
 			    EXTRA_CFLAGS='${CFLAGS}' \
 			    EXTRA_LDFLAGS='${LDFLAGS}'" \

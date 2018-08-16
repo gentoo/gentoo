@@ -1,5 +1,5 @@
---- src/generic_helpers.c
-+++ src/generic_helpers.c
+--- a/src/generic_helpers.c
++++ b/src/generic_helpers.c
 @@ -27,6 +27,7 @@
  
  #include <stdlib.h>
@@ -8,8 +8,8 @@
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>
---- src/terminal_helpers.c
-+++ src/terminal_helpers.c
+--- a/src/terminal_helpers.c
++++ b/src/terminal_helpers.c
 @@ -25,6 +25,7 @@
  
  #include <stdlib.h>

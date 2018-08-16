@@ -7,7 +7,7 @@ inherit xfconf multilib-minimal
 
 DESCRIPTION="A port of Xfce engine to GTK+ 2.x"
 HOMEPAGE="https://git.xfce.org/xfce/gtk-xfce-engine/"
-SRC_URI="mirror://xfce/src/xfce/${MY_PN}/${PV%.*}/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${MY_PN}/${PV%.*}/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

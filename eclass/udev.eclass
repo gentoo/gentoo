@@ -4,6 +4,7 @@
 # @ECLASS: udev.eclass
 # @MAINTAINER:
 # udev-bugs@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Default eclass for determining udev directories.
 # @DESCRIPTION:
 # Default eclass for determining udev directories.
@@ -46,7 +47,8 @@ DEPEND="virtual/pkgconfig"
 # Get unprefixed udevdir.
 _udev_get_udevdir() {
 	if $($(tc-getPKG_CONFIG) --exists udev); then
-		echo "$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
+		local udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
+		echo "${udevdir#${EPREFIX%/}}"
 	else
 		echo /lib/udev
 	fi
@@ -82,6 +84,7 @@ udev_dorules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_udev_get_udevdir)"/rules.d
 		doins "${@}"
 	)
@@ -96,6 +99,7 @@ udev_newrules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_udev_get_udevdir)"/rules.d
 		newins "${@}"
 	)

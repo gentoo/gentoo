@@ -10,5 +10,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">MechanicalSoup</remote-id>
+		<remote-id type="github">MechanicalSoup/MechanicalSoup</remote-id>
+		<bugs-to>https://github.com/MechanicalSoup/MechanicalSoup/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

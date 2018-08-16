@@ -29,10 +29,14 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	doc? ( $(add_qt_dep qthelp)
-	app-doc/doxygen )
-	test? ( $(add_qt_dep qttest)
-	$(add_qt_dep qtxmlpatterns) )
+	doc? (
+		$(add_qt_dep qthelp)
+		app-doc/doxygen
+	)
+	test? (
+		$(add_qt_dep qttest)
+		$(add_qt_dep qtxmlpatterns)
+	)
 	media-gfx/graphviz
 "
 

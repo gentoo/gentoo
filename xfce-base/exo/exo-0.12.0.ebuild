@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Extensions, widgets and framework library with session support for Xfce"
 HOMEPAGE="https://www.xfce.org/projects/"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

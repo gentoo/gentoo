@@ -6,13 +6,8 @@
 		<name>Matt Turner</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>bkohler@gmail.com</email>
+		<email>bkohler@gentoo.org</email>
 		<name>Ben Kohler</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		Starting with version 2.6.4, the Linux kernel for x86-64 no longer

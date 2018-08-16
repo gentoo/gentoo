@@ -53,7 +53,7 @@ RDEPEND="app-arch/bzip2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	!dedicated? (
-		x11-proto/xextproto
+		x11-base/xorg-proto
 		nls? ( sys-devel/gettext )
 	)"
 

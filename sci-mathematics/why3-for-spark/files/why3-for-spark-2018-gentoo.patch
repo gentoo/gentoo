@@ -1,0 +1,25 @@
+--- why3-for-spark-gpl-2017-src/src/gnat/gnat_config.ml.old	2017-10-18 09:07:03.118919785 +0200
++++ why3-for-spark-gpl-2017-src/src/gnat/gnat_config.ml	2017-10-18 09:07:45.198216939 +0200
+@@ -12,10 +12,7 @@
+   | Limit_Check of Gnat_expl.check
+   | Limit_Line of Gnat_loc.loc
+ 
+-let spark_prefix =
+-  (Filename.dirname
+-          (Filename.dirname (Filename.dirname
+-          (Filename.dirname Sys.executable_name))))
++let spark_prefix = "/usr"
+ 
+ let rec file_concat l =
+   match l with
+--- why3-for-spark-gpl-2017-src/src/coq-tactic/why3tac.ml4.old	2017-10-26 22:25:55.289094778 +0200
++++ why3-for-spark-gpl-2017-src/src/coq-tactic/why3tac.ml4	2017-10-26 22:26:10.719807270 +0200
+@@ -1352,7 +1352,7 @@
+     let limit =
+     { Call_provers.empty_limit with Call_provers.limit_time = timelimit } in
+     let call = Driver.prove_task ~command ~limit drv !task in
+-    wait_on_call call
++    wait_on_call (ServerCall call)
+   with
+     | NotFO ->
+         if debug then Printexc.print_backtrace stderr; flush stderr;

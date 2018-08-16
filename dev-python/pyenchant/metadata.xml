@@ -16,5 +16,6 @@
 	<upstream>
 		<remote-id type="pypi">pyenchant</remote-id>
 		<remote-id type="sourceforge">pyenchant</remote-id>
+		<remote-id type="github">rfk/pyenchant</remote-id>
 	</upstream>
 </pkgmetadata>

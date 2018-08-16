@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,7 +47,7 @@ src_prepare() {
 
 src_configure() {
 	# Disabled threads: see upstream bug
-	# https://sourceforge.net/tracker/?func=detail&aid=3237301&group_id=80013&atid=558446
+	# https://sourceforge.net/p/clucene/bugs/197/
 	local mycmakeargs=(
 		-DENABLE_ASCII_MODE=OFF
 		-DENABLE_PACKAGING=OFF

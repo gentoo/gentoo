@@ -7,7 +7,7 @@ inherit autotools xfconf
 
 DESCRIPTION="A quicklauncher plug-in for the Xfce panel"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-quicklauncher-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

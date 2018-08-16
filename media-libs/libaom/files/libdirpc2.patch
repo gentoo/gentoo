@@ -1,0 +1,48 @@
+Index: libaom-9999/CMakeLists.txt
+===================================================================
+--- libaom-9999.orig/CMakeLists.txt
++++ libaom-9999/CMakeLists.txt
+@@ -234,8 +234,9 @@ if(NOT MSVC)
+                              -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
+                              -DCMAKE_PROJECT_NAME=${CMAKE_PROJECT_NAME}
+                              -DCONFIG_MULTITHREAD=${CONFIG_MULTITHREAD}
+-                             -DHAVE_PTHREAD_H=${HAVE_PTHREAD_H} -P
+-                             "${AOM_ROOT}/build/cmake/pkg_config.cmake"
++                             -DHAVE_PTHREAD_H=${HAVE_PTHREAD_H}
++                             -DLIB_SUFFIX=${LIB_SUFFIX}
++                             -P "${AOM_ROOT}/build/cmake/pkg_config.cmake"
+                      COMMENT "Writing aom.pc" VERBATIM)
+   add_dependencies(aom_pc aom_version)
+ endif()
+Index: libaom-9999/build/cmake/pkg_config.cmake
+===================================================================
+--- libaom-9999.orig/build/cmake/pkg_config.cmake
++++ libaom-9999/build/cmake/pkg_config.cmake
+@@ -34,12 +34,13 @@ endif()
+ 
+ # Write pkg-config info.
+ set(prefix "${CMAKE_INSTALL_PREFIX}")
++set(libdir "lib${LIB_SUFFIX}")
+ set(pkgconfig_file "${AOM_CONFIG_DIR}/aom.pc")
+ string(TOLOWER ${CMAKE_PROJECT_NAME} pkg_name)
+ file(WRITE "${pkgconfig_file}" "# libaom pkg-config.\n")
+ file(APPEND "${pkgconfig_file}" "prefix=${prefix}\n")
+ file(APPEND "${pkgconfig_file}" "exec_prefix=\${prefix}/bin\n")
+-file(APPEND "${pkgconfig_file}" "libdir=\${prefix}/lib\n")
++file(APPEND "${pkgconfig_file}" "libdir=\${prefix}/${libdir}\n")
+ file(APPEND "${pkgconfig_file}" "includedir=\${prefix}/include\n\n")
+ file(APPEND "${pkgconfig_file}" "Name: ${pkg_name}\n")
+ file(APPEND "${pkgconfig_file}"
+@@ -49,10 +50,10 @@ file(APPEND "${pkgconfig_file}" "Require
+ file(APPEND "${pkgconfig_file}" "Conflicts:\n")
+ if(CONFIG_MULTITHREAD AND HAVE_PTHREAD_H)
+   file(APPEND "${pkgconfig_file}"
+-              "Libs: -L\${prefix}/lib -l${pkg_name} -lm -lpthread\n")
++              "Libs: -L\${prefix}/${libdir} -l${pkg_name} -lm -lpthread\n")
+   file(APPEND "${pkgconfig_file}" "Libs.private: -lm -lpthread\n")
+ else()
+-  file(APPEND "${pkgconfig_file}" "Libs: -L\${prefix}/lib -l${pkg_name} -lm\n")
++  file(APPEND "${pkgconfig_file}" "Libs: -L\${prefix}/${libdir} -l${pkg_name} -lm\n")
+   file(APPEND "${pkgconfig_file}" "Libs.private: -lm\n")
+ endif()
+ file(APPEND "${pkgconfig_file}" "Cflags: -I\${prefix}/include\n")

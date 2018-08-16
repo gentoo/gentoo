@@ -4,7 +4,7 @@
 EAPI=5
 
 RESTRICT="test" # needs some pointy sticks. Seriously.
-PYTHON_COMPAT=(python{2_7,3_4,3_5})
+PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
 
 inherit distutils-r1 eutils
 DESCRIPTION="A LISP dialect running in python"
@@ -23,10 +23,9 @@ RDEPEND="dev-python/flake8[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/tox[${PYTHON_USEDEP}]
+	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
 	)"
 src_prepare() {
 	use doc && HTML_DOCS=( docs/_build/html/. )

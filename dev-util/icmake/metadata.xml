@@ -6,7 +6,6 @@
 		<name>Tim Harder</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">icmake</remote-id>
-		<remote-id type="github">fbb-git/icmake</remote-id>
+		<remote-id type="gitlab">fbb-git/icmake</remote-id>
 	</upstream>
 </pkgmetadata>

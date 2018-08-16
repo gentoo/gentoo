@@ -30,4 +30,5 @@
   default behavior (available as the optional module muse-wiki.el).
   CamelCase words are no longer special by default.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

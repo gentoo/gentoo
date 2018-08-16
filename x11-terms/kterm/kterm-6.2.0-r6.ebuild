@@ -65,9 +65,8 @@ src_install(){
 
 	# install man pages
 	newman ${PN}.man ${PN}.1
-	insinto /usr/share/man/ja/man1
 	iconv -f ISO-2022-JP -t UTF-8 ${PN}.jman > ${PN}.ja.1
-	newins ${PN}.ja.1 ${PN}.1
+	doman ${PN}.ja.1
 
 	# Remove link to avoid collision
 	rm -f "${ED}"/usr/lib/X11/app-defaults

@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">twitter</remote-id>
+		<remote-id type="github">sixohsix/twitter</remote-id>
+		<bugs-to>https://github.com/sixohsix/twitter/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

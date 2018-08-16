@@ -8,6 +8,7 @@
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Functions related to tmpfiles.d files
 # @DESCRIPTION:
 # This eclass provides functionality related to installing and
@@ -76,6 +77,7 @@ dotmpfiles() {
 	done
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d
 		doins "$@"
 	)
@@ -93,6 +95,7 @@ newtmpfiles() {
 	fi
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d
 		newins "$@"
 	)

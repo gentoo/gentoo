@@ -21,7 +21,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -52,5 +52,5 @@ all_ruby_prepare() {
 		-e '/:job/,/end/ s:^:#:' \
 		-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
 	rm ../Gemfile.lock || die
-	sed -i -e '1igem "rack-test", "~>0.6.3"' test/abstract_unit.rb || die
+	sed -i -e '1igem "rack-test", "~>0.6.3"; gem "activemodel", "~>5.1.0"; gem "railties", "~>5.1.0"' test/abstract_unit.rb || die
 }

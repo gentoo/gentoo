@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit linux-info systemd toolchain-funcs multilib-minimal
+inherit linux-info systemd toolchain-funcs multilib-minimal versionator
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
 HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/groeck/lm-sensors"

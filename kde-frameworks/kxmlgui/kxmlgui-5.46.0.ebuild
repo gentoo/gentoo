@@ -7,7 +7,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Framework for managing menu and toolbar actions in an abstract way"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 LICENSE="LGPL-2+"
 IUSE="attica"
 
@@ -40,4 +40,14 @@ src_configure() {
 	)
 
 	kde5_src_configure
+}
+
+src_test() {
+	# Files are missing; whatever. Bug: 650290
+	local myctestargs=(
+		-j1
+		-E "(kxmlgui_unittest)"
+	)
+
+	kde5_src_test
 }

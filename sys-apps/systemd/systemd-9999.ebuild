@@ -11,7 +11,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_5,3_6} )
 
 inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
 
@@ -88,6 +88,7 @@ PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils:0
 	dev-util/gperf
+	>=dev-util/meson-0.46
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
 	>=sys-kernel/linux-headers-${MINKV}
@@ -312,9 +313,12 @@ multilib_src_install_all() {
 
 	if ! use sysv-utils; then
 		rm "${ED%/}${rootprefix}"/sbin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit} || die
-		rmdir "${ED%/}${rootprefix}"/sbin || die
 		rm "${ED%/}"/usr/share/man/man1/init.1 || die
 		rm "${ED%/}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 || die
+	fi
+
+	if ! use resolvconf && ! use sysv-utils; then
+		rmdir "${ED%/}${rootprefix}"/sbin || die
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008

@@ -56,7 +56,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package modemmanager ModemManager)
+		-DDISABLE_MODEMMANAGER_SUPPORT=$(usex !modemmanager)
 		$(cmake-utils_use_find_package modemmanager KF5ModemManagerQt)
 		$(cmake-utils_use_find_package openconnect OpenConnect)
 	)

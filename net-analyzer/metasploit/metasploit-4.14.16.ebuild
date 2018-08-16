@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -61,7 +61,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	>=dev-ruby/recog-2.0.14
 	dev-ruby/redcarpet
 	>=dev-ruby/rkelly-remix-0.0.6
-	=dev-ruby/rex-arch-0.1.4
+	dev-ruby/rex-arch
 	dev-ruby/rex-bin_tools
 	dev-ruby/rex-core
 	dev-ruby/rex-encoder

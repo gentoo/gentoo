@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,8 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
+	>=dev-python/pythonz-bd-1.11.2[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]
+	>=dev-python/shutilwhich-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-1.11.6[${PYTHON_USEDEP}]
-	>=dev-python/virtualenv-clone-0.2.5[${PYTHON_USEDEP}]
-	>=dev-python/pythonz-bd-1.11.2[${PYTHON_USEDEP}]"
+	>=dev-python/virtualenv-clone-0.2.5[${PYTHON_USEDEP}]"

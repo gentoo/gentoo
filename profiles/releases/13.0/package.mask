@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (10 Jul 2018)
+# requires >=nodejs-8.10 which is not available in 13.0 based profiles.
+# Please migrate to one of the 17.0 release profiles
+>=sys-cluster/ceph-13
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (29 Jan 2018)
 # Requires >=icu-60, which is not available in 13.0 based profiles.
 # Please migrate to one of the 17.0 release profiles.

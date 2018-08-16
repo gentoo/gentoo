@@ -60,13 +60,17 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package gles2 OpenGLES)
 		$(cmake-utils_use_find_package ieee1394 RAW1394)
-		$(cmake-utils_use_find_package opengl OpenGL)
 		$(cmake-utils_use_find_package pci PCIUTILS)
 		$(cmake-utils_use_find_package wayland EGL)
 		$(cmake-utils_use_find_package wayland KF5Wayland)
 	)
+
+	if has_version "dev-qt/qtgui[gles2]"; then
+		mycmakeargs+=( $(cmake-utils_use_find_package gles2 OpenGLES) )
+	else
+		mycmakeargs+=( $(cmake-utils_use_find_package opengl OpenGL) )
+	fi
 
 	kde5_src_configure
 }

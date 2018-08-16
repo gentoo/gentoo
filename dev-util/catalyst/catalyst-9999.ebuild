@@ -1,13 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} == *9999* ]]; then
-	SRC_ECLASS="git-2"
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/catalyst.git"
+	SRC_ECLASS="git-r3"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/catalyst.git"
 	EGIT_BRANCH="master"
-	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
 		https://dev.gentoo.org/~dolsen/releases/catalyst/${P}.tar.bz2
@@ -18,14 +17,14 @@ fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit distutils-r1 multilib ${SRC_ECLASS}
+inherit distutils-r1 ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ccache doc kernel_linux"
+IUSE="ccache doc kernel_linux system-bootloader"
 
 DEPEND="
 	app-text/asciidoc
@@ -44,6 +43,12 @@ RDEPEND="
 	ccache? ( dev-util/ccache )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
 "
+PDEPEND="system-bootloader? ( >=sys-apps/memtest86+-5.01-r4
+				sys-boot/grub:2
+				amd64? ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64] )
+				x86? ( sys-boot/grub[grub_platforms_efi-32] )
+				sys-boot/syslinux
+				sys-boot/shim )"
 
 python_prepare_all() {
 	python_setup

@@ -19,7 +19,7 @@ EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="7.0.0"
+SLOT="8.0.0"
 KEYWORDS=""
 IUSE="+clang test elibc_glibc"
 RESTRICT="!test? ( test ) !clang? ( test )"
@@ -80,7 +80,6 @@ src_prepare() {
 		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
 			rm test/lsan/TestCases/Linux/use_tls_dynamic.cc || die
 			rm test/msan/dtls_test.c || die
-			rm test/sanitizer_common/TestCases/Posix/sanitizer_set_death_callback_test.cc || die
 		fi
 	fi
 }

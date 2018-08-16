@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST="none"
-RUBY_FAKEGEM_TASK_DOC="none"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md"
 
@@ -71,6 +71,10 @@ all_ruby_prepare() {
 	sed -i -e '/be_highlighted/,/end/ s/32/33/' \
 		-e '/highlights core RSpec keyword-like methods/,/^      end/ s:^:#:' \
 		spec/rspec/core/formatters/syntax_highlighter_spec.rb || die
+
+	# Avoid a spec that depens on dev-ruby/rspec to lessen circular
+	# dependencies, bug 662328
+	sed -i -e '/loads mocks and expectations when the constants are referenced/askip "gentoo: bug 662328"' spec/rspec/core_spec.rb || die
 }
 
 each_ruby_prepare() {
@@ -82,12 +86,6 @@ each_ruby_prepare() {
 	# 		sed -i -e '/a library that issues no warnings when loaded/,/^  end/ s:^:#:' spec/rspec/core_spec.rb || die
 	# 		;;
 	# esac
-}
-
-all_ruby_compile() {
-	if use doc ; then
-		yardoc || die
-	fi
 }
 
 each_ruby_test() {

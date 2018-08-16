@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # Jonathan Callen <jcallen@gentoo.org>
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: functions which simplify manipulation of ${PV} and similar version strings
 # @DESCRIPTION:
 # This eclass provides functions which simplify manipulating $PV and similar

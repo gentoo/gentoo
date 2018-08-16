@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -72,7 +72,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	scrollview? ( >=virtual/jre-1.7 )"
 
-DOCS=( AUTHORS ChangeLog NEWS README.md )
+DOCS=( AUTHORS ChangeLog README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.00.00-use-system-piccolo2d.patch"

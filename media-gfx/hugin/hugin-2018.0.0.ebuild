@@ -4,7 +4,7 @@
 EAPI=6
 
 WX_GTK_VER="3.0"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit python-single-r1 wxwidgets versionator cmake-utils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2 SIFT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 LANGS=" ca ca-valencia cs da de en-GB es eu fi fr hu it ja nl pl pt-BR ro ru sk sv zh-CN zh-TW"
 IUSE="debug lapack python sift $(echo ${LANGS//\ /\ l10n_})"

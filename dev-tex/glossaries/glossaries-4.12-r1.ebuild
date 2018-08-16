@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE="doc examples"
 RDEPEND="dev-lang/perl
 	dev-texlive/texlive-latexrecommended
 	>=dev-texlive/texlive-latexextra-2012
-	|| ( dev-texlive/texlive-plaingeneric >=dev-texlive/texlive-genericextra-2014 )"
+	dev-texlive/texlive-plaingeneric"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 

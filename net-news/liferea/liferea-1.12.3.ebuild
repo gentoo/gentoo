@@ -4,7 +4,7 @@
 EAPI=6
 
 GNOME2_EAUTORECONF="yes"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit gnome2 pax-utils python-single-r1
 
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/lwindolf/${PN}/releases/download/v${PV/_/-}/${MY_P}.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

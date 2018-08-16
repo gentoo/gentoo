@@ -33,4 +33,5 @@
   and mpg321 support interactive seeking. Defining your own non-interactive
   backends is very simple.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

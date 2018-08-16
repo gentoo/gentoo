@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 inherit flag-o-matic linux-info linux-mod autotools-utils
@@ -56,7 +56,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 16 || die "Linux 4.16 is the latest supported version."; }
+		{ kernel_is le 4 17 || die "Linux 4.17 is the latest supported version."; }
 
 	check_extra_config
 }

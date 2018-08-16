@@ -6,7 +6,7 @@ EAPI=0
 inherit toolchain-funcs
 
 DESCRIPTION="a nifty little binary clock dockapp"
-HOMEPAGE="http://wmbinclock.sourceforge.net"
+HOMEPAGE="https://www.dockapps.net/wmbinclock"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

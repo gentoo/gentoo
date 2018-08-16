@@ -3,10 +3,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 libtool ltprune toolchain-funcs multilib-minimal
+inherit distutils-r1 libtool toolchain-funcs multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/glensc/file.git"
@@ -32,7 +32,7 @@ DEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )
-	seccomp? ( sys-libs/libseccomp )"
+	seccomp? ( sys-libs/libseccomp[${MULTILIB_USEDEP}] )"
 
 src_prepare() {
 	default
@@ -41,7 +41,8 @@ src_prepare() {
 	elibtoolize
 
 	# don't let python README kill main README #60043
-	mv python/README{,.python} || die
+	mv python/README.md python/README.python.md || die
+	sed 's@README.md@README.python.md@' -i python/setup.py || die #662090
 }
 
 multilib_src_configure() {
@@ -62,7 +63,7 @@ src_configure() {
 		mkdir -p "${WORKDIR}"/build || die
 		cd "${WORKDIR}"/build || die
 		tc-export_build_env BUILD_C{C,XX}
-		ECONF_SOURCE=${S} \
+		ECONF_SOURCE="${S}" \
 		ac_cv_header_zlib_h=no \
 		ac_cv_lib_z_gzopen=no \
 		CHOST=${CBUILD} \
@@ -113,9 +114,14 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc ChangeLog MAINT README
 
+	# Required for `file -C`
+	dodir /usr/share/misc/magic
+	insinto /usr/share/misc/magic
+	doins -r magic/Magdir/*
+
 	if use python ; then
 		cd python || die
 		distutils-r1_src_install
 	fi
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 }

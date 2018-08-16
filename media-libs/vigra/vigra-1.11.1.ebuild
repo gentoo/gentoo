@@ -15,7 +15,7 @@ SRC_URI="https://github.com/ukoethe/vigra/releases/download/Version-${MY_V}/${MY
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind"
 
 # runtime dependency on python:2.7 is required by the vigra-config script

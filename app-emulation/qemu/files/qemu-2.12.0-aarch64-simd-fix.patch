@@ -1,0 +1,36 @@
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Jason@zx2c4.com,
+	qemu-stable@nongnu.org
+Subject: [PATCH for-3.0] tcg/i386: Mark xmm registers call-clobbered
+Date: Sun, 22 Jul 2018 18:29:41 -0700
+Message-Id: <20180723012941.16920-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+
+When host vector registers and operations were introduced, I failed
+to mark the registers call clobbered as required by the ABI.
+
+Fixes: 770c2fc7bb7
+Cc: qemu-stable@nongnu.org
+Reported-by: Jason A. Donenfeld <Jason@zx2c4.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tcg/i386/tcg-target.inc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tcg/i386/tcg-target.inc.c b/tcg/i386/tcg-target.inc.c
+index e87b0d445e..a91e4f1313 100644
+--- a/tcg/i386/tcg-target.inc.c
++++ b/tcg/i386/tcg-target.inc.c
+@@ -3532,7 +3532,7 @@ static void tcg_target_init(TCGContext *s)
+         tcg_target_available_regs[TCG_TYPE_V256] = ALL_VECTOR_REGS;
+     }
+ 
+-    tcg_target_call_clobber_regs = 0;
++    tcg_target_call_clobber_regs = ALL_VECTOR_REGS;
+     tcg_regset_set_reg(tcg_target_call_clobber_regs, TCG_REG_EAX);
+     tcg_regset_set_reg(tcg_target_call_clobber_regs, TCG_REG_EDX);
+     tcg_regset_set_reg(tcg_target_call_clobber_regs, TCG_REG_ECX);
+-- 
+2.17.1
+

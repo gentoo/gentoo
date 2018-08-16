@@ -15,12 +15,21 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
 	eend $?
     done
 
-    # use sysroot of toolchain to get currect include and library at compile time
+    # use sysroot of toolchain to get correct include and library at compile time
     EXTRA_ECONF="${EXTRA_ECONF} --with-sysroot=${EPREFIX}"
 
     ebegin "remove --sysroot call on ld for native toolchain"
     sed -i 's/--sysroot=%R//' gcc/gcc.c
     eend $?
+elif [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]]; then
+    ebegin "Use ${EPREFIX} as default sysroot"
+    sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" "${S}"/CMakeLists.txt
+    eend $?
+    pushd "${S}/lib/Driver/ToolChains" >/dev/null
+    ebegin "Remove --sysroot call on ld for native toolchain"
+    sed -i -e "$(grep -n -B1 sysroot= Gnu.cpp | sed -ne '{1s/-.*//;1p}'),+1 d" Gnu.cpp
+    eend $?
+    popd >/dev/null
 elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying native library path"
     sed -i -r "/NATIVE_LIB_DIRS/s,((/usr(/local|)|)/lib),${EPREFIX}\1,g" \

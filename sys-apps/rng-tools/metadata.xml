@@ -10,6 +10,9 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
+	<flag name="jitterentropy">
+		Enable Jitter RNG entropy support
+	</flag>
 	<flag name="nistbeacon">
 		Enable NIST beacon entropy support
 	</flag>

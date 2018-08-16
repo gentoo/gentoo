@@ -31,3 +31,8 @@ ALSA_CARDS="ali5451 als4000 bt87x ca0106 cmipci emu10k1 ens1370 ens1371 es1938 e
 # Hans de Graaff <graaff@gentoo.org> (21 Jan 2018)
 # Temporary entry to support stable bug 639476
 RUBY_TARGETS="ruby22"
+
+# Tobias Klausmann <klausman@gentoo.org> (25 Jun 2018)
+# Enable USE=libtirpc by default, to ease dependency resolution during
+# the stabilization of glibc-2.26. Bug 657148
+USE="libtirpc"

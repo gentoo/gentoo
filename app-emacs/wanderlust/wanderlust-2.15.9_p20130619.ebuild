@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit elisp
 
@@ -22,6 +22,7 @@ DEPEND=">=app-emacs/apel-10.6
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
+ELISP_PATCHES="${P}-default-truncate-lines.patch"
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {

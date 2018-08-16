@@ -32,10 +32,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig:0[${MULTILIB_USEDEP}]
 "
 RDEPEND="${CDEPEND}
-	kde? ( || (
-		kde-frameworks/kconfig:5
-		kde-apps/kreadconfig:4
-	) )
+	kde? ( kde-frameworks/kconfig:5 )
 "
 # avoid dependency loop, bug #467696
 PDEPEND="networkmanager? ( net-misc/networkmanager )"

@@ -4,6 +4,7 @@
 # @ECLASS: toolchain-autoconf.eclass
 # @MAINTAINER:
 # <base-system@gentoo.org>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Common code for sys-devel/autoconf ebuilds
 # @DESCRIPTION:
 # This eclass contains the common phase functions migrated from

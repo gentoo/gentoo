@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
@@ -30,6 +30,7 @@ LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="26"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
+RESTRICT="test"
 
 RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
@@ -112,9 +113,10 @@ RDEPEND="sys-libs/ncurses:0=
 	)"
 
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	gzip-el? ( app-arch/gzip )
 	X? ( x11-base/xorg-proto )"
+
+BDEPEND="virtual/pkgconfig
+	gzip-el? ( app-arch/gzip )"
 #	pax_kernel? ( sys-apps/attr )
 
 if [[ ${PV##*.} = 9999 ]]; then

@@ -1,6 +1,18 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (25 Jul 2018)
+# USE=server does not compile and needs upstream fix: bug #662040
+>=sys-devel/gdb-8.1 server
+
+# Joonas Niilola <juippis@gmail.com> (17 Jun 2018)
+# Optional dependency not available for this arch
+dev-libs/efl vlc
+
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded deps.
 net-misc/curl curl_ssl_axtls
@@ -243,10 +255,6 @@ dev-util/dbus-test-runner test
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
 
-# Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
-# no keyword for media-libs/tremor
->=dev-libs/DirectFB-1.7.1 tremor
-
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial
@@ -332,10 +340,6 @@ www-client/elinks javascript
 mail-client/thunderbird custom-optimization
 www-client/firefox custom-optimization
 www-client/seamonkey custom-optimization
-
-# Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
-# qtmultimedia is not keyworded, bug 293671
-dev-python/PyQt4 multimedia
 
 # Raúl Porcel <armin76@gentoo.org>
 # Keep deps minimal

@@ -6,7 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="bundled-libs">Use bundled libraries.</flag>
-		<flag name="launcher">Install gtk+ launcher</flag>
+		<flag name="launcher">Install GTK+ launcher</flag>
 	</use>
 </pkgmetadata>

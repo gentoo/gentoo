@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.mpich.org/"
 SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="mpich"
+LICENSE="mpich2"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx doc fortran mpi-threads romio threads"
 

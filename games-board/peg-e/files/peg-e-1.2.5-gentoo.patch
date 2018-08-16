@@ -1,0 +1,11 @@
+--- a/peg-e.pro	2018-05-29 13:01:32.000000000 +0200
++++ b/peg-e.pro	2018-07-11 20:15:46.151082792 +0200
+@@ -75,7 +75,7 @@
+ 	RESOURCES = icons/icon.qrc
+ 
+ 	isEmpty(PREFIX) {
+-		PREFIX = /usr/local
++		PREFIX = /usr
+ 	}
+ 	isEmpty(BINDIR) {
+ 		BINDIR = bin

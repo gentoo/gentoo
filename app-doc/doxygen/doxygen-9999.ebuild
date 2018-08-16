@@ -32,7 +32,7 @@ RDEPEND="app-text/ghostscript-gpl
 		media-gfx/graphviz
 		media-libs/freetype
 	)
-	doxysearch? ( =dev-libs/xapian-1.2* )
+	doxysearch? ( dev-libs/xapian )
 	latex? (
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
@@ -97,12 +97,14 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DDOC_INSTALL_DIR="share/doc/${P}"
 		-Duse_libclang=$(usex clang)
 		-Dbuild_doc=$(usex doc)
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
+		)
+	use doc && mycmakeargs+=(
+		-DDOC_INSTALL_DIR="share/doc/${P}"
 		)
 
 	cmake-utils_src_configure

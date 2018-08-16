@@ -1,0 +1,96 @@
+Fix implicit declaration of functions
+
+--- a/cnv/rletoabA62/rletoabA62.c
++++ b/cnv/rletoabA62/rletoabA62.c
+@@ -42,6 +42,10 @@
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ 
+ #ifndef TRUE
+ #define TRUE 1
+--- a/tools/mallocNd.c
++++ b/tools/mallocNd.c
+@@ -67,6 +67,7 @@
+ 
+ /* Imports */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ /* Forward declarations */
+--- a/get/getx11/getx11.h
++++ b/get/getx11/getx11.h
+@@ -29,6 +29,8 @@
+ #include <stdio.h>
+ #include <math.h>
+ #include <ctype.h>
++#include <unistd.h>
++#include <X11/Xlibint.h>
+ #include <X11/X.h>
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+--- a/tools/into.c
++++ b/tools/into.c
+@@ -27,6 +27,7 @@
+ 
+ #include "rle_config.h"
+ #include <stdio.h>
++#include <unistd.h>
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <sys/param.h>			/* for MAXPATHLEN */
+--- a/tools/rlecat.c
++++ b/tools/rlecat.c
+@@ -15,6 +15,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ #include "rle.h"
+ #include "rle_raw.h"
+ 
+--- a/tools/rleaddcom.c
++++ b/tools/rleaddcom.c
+@@ -26,6 +26,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ #include "rle.h"
+ #include <sys/types.h>
+ #include <sys/param.h>			/* for MAXPATHLEN */
+--- a/tools/rlenoise.c
++++ b/tools/rlenoise.c
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <time.h>
+ #include "rle.h"
+ 
+ /* Change this according the value on your system.  This is a crock. */
+--- a/cnv/rletorla.c
++++ b/cnv/rletorla.c
+@@ -29,6 +29,7 @@
+  * System includes.
+  */
+ #include <stdio.h>
++#include <unistd.h>
+ #include "rlb_header.h"
+ #include "rle.h"
+ 
+--- a/cnv/giftorle.c
++++ b/cnv/giftorle.c
+@@ -22,6 +22,7 @@
+ /* +------------------------------------------------------------------+ */
+ 
+ #include	<stdio.h>
++#include	<unistd.h>
+ #include	"rle.h"
+ 
+ #ifndef lint

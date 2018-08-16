@@ -15,7 +15,8 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE="static-libs"
 
 DEPEND=">=dev-libs/gmp-4.3.2[${MULTILIB_USEDEP},static-libs?]
-	>=dev-libs/mpfr-2.4.2[${MULTILIB_USEDEP},static-libs?]"
+	>=dev-libs/mpfr-2.4.2[${MULTILIB_USEDEP},static-libs?]
+	<dev-libs/mpfr-4.0.0"
 RDEPEND="${DEPEND}"
 
 src_prepare() {

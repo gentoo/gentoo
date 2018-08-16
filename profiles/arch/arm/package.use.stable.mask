@@ -1,13 +1,22 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
+# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
+# stable (yet?), bug #663248
+app-editors/emacs mailutils xwidgets
+
+# Mikle Kolyada <zlogene@gentoo.org> (16 Jul 2018)
+# No stable qtnetwork
+net-irc/znc test
+
+# Akinori Hattori <hattya@gentoo.org> (23 Jun 2018)
+# No stable Java
+dev-db/qdbm java
+
 # Pacho Ramos <pacho@gentoo.org> (28 May 2018)
 # Don't rely on stable inkscape
 app-text/dblatex inkscape
-
-# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
-# Requires unstable dev-python/PyQt4
-media-sound/pulseaudio qt4
 
 # Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
 # Requires not stabilised dev-python/restkit

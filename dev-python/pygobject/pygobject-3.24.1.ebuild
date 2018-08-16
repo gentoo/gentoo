@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/PyGObject"
 
 LICENSE="LGPL-2.1+"
 SLOT="3"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="+cairo examples test +threads"
 
 REQUIRED_USE="
@@ -90,17 +90,15 @@ src_compile() {
 }
 
 src_test() {
-	export GIO_USE_VFS="local" # prevents odd issues with deleting ${T}/.gvfs
-	export GIO_USE_VOLUME_MONITOR="unix" # prevent udisks-related failures in chroots, bug #449484
-	export SKIP_PEP8="yes"
+	local -x GIO_USE_VFS="local" # prevents odd issues with deleting ${T}/.gvfs
+	local -x GIO_USE_VOLUME_MONITOR="unix" # prevent udisks-related failures in chroots, bug #449484
+	local -x SKIP_PEP8="yes"
 
 	testing() {
-		export XDG_CACHE_HOME="${T}/${EPYTHON}"
-		run_in_build_dir virtx emake check
-		unset XDG_CACHE_HOME
+		local -x XDG_CACHE_HOME="${T}/${EPYTHON}"
+		emake -C "${BUILD_DIR}" check
 	}
-	python_foreach_impl testing
-	unset GIO_USE_VFS
+	virtx python_foreach_impl testing
 }
 
 src_install() {

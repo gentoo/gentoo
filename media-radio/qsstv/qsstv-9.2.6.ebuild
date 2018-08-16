@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils qmake-utils
+inherit qmake-utils
 
 MY_P=${P/-/_}
 

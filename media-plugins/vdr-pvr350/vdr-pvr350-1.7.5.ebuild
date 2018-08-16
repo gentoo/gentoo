@@ -1,14 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit vdr-plugin-2
 
 VERSION="1657" # every bump, new version
 
 DESCRIPTION="VDR plugin: use a PVR350 as output device"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-pvr350"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-pvr350"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 LICENSE="GPL-2"

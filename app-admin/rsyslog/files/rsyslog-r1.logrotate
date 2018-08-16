@@ -1,0 +1,45 @@
+# Uncomment the following directive if you have re-enabled
+# "/var/log/syslog" in "/etc/rsyslog.d/50-default.conf"
+#/var/log/syslog
+#{
+#	rotate 7
+#	daily
+#	missingok
+#	notifempty
+#	delaycompress
+#	compress
+#	postrotate
+#		if type -p systemctl 2>&1 1>/dev/null && systemctl is-system-running 2>&1 1>/dev/null ; then
+#			systemctl kill -s HUP rsyslog.service
+#		else
+#			test -r /run/rsyslogd.pid && kill -HUP $(cat /run/rsyslogd.pid) 2>&1 1>/dev/null
+#		fi
+#	endscript
+#}
+
+/var/log/auth.log
+/var/log/cron.log
+/var/log/daemon.log
+/var/log/kern.log
+/var/log/lpr.log
+/var/log/mail.log
+/var/log/news.log
+/var/log/user.log
+/var/log/debug.log
+/var/log/messages
+{
+	rotate 4
+	weekly
+	missingok
+	notifempty
+	compress
+	delaycompress
+	sharedscripts
+	postrotate
+		if type -p systemctl 2>&1 1>/dev/null && systemctl is-system-running 2>&1 1>/dev/null ; then
+			systemctl kill -s HUP rsyslog.service
+		else
+			test -r /run/rsyslogd.pid && kill -HUP $(cat /run/rsyslogd.pid) 2>&1 1>/dev/null
+		fi
+	endscript
+}

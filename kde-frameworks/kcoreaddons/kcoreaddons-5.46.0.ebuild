@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Framework for solving common problems such as caching, randomisation, and more"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="fam nls"
 
 RDEPEND="
@@ -18,6 +18,14 @@ DEPEND="${RDEPEND}
 	x11-misc/shared-mime-info
 	nls? ( $(add_qt_dep linguist-tools) )
 "
+
+src_prepare() {
+	# bug 650280
+	has_version '<dev-qt/qtcore-5.10.0:5' && \
+		eapply "${FILESDIR}/${P}-kformattest.patch"
+
+	kde5_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

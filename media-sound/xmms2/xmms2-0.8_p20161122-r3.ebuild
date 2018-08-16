@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
 

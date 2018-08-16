@@ -3,9 +3,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools eutils linux-info linux-mod python-r1 systemd
+inherit autotools eutils linux-info linux-mod python-r1 systemd versionator
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"

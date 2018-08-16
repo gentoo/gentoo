@@ -13,6 +13,7 @@
   protocols, though currently Obby (for use with the Gobby editor) is
   the only fully-functional one.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="sourceforge">rudel</remote-id>
 </upstream>

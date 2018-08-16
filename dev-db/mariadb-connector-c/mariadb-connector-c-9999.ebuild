@@ -25,7 +25,7 @@ MULTILIB_WRAPPED_HEADERS+=(
 )
 
 DESCRIPTION="C client library for MariaDB/MySQL"
-HOMEPAGE="http://mariadb.org/"
+HOMEPAGE="https://mariadb.org/"
 LICENSE="LGPL-2.1"
 
 SLOT="0/3"
@@ -75,6 +75,10 @@ multilib_src_configure() {
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 	)
 	cmake-utils_src_configure
+}
+
+multilib_src_compile() {
+	cmake-utils_src_compile
 }
 
 multilib_src_install() {

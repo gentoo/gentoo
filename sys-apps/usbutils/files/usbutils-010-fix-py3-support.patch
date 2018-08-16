@@ -1,0 +1,145 @@
+From a7c25eadbc998bf359e5b7dac03aaea8c30d2932 Mon Sep 17 00:00:00 2001
+From: Georg Brandl <georg@python.org>
+Date: Thu, 17 May 2018 08:51:27 +0200
+Subject: [PATCH] lsusb.py: fix up Python 3 conversion
+
+- Use open() and ignore encoding errors
+- Replace removed __cmp__ by rich comparison methods
+- Convert commented-out print statements, remove unused future import
+
+Fixes #68
+---
+ lsusb.py.in | 50 ++++++++++++++++++++++----------------------------
+ 1 file changed, 22 insertions(+), 28 deletions(-)
+
+diff --git a/lsusb.py.in b/lsusb.py.in
+index 0f4d318..083b512 100644
+--- a/lsusb.py.in
++++ b/lsusb.py.in
+@@ -12,8 +12,6 @@
+ 
+ import os, sys, re, getopt
+ 
+-# from __future__ import print_function
+-
+ # Global options
+ showint = False
+ showhubint = False
+@@ -53,15 +51,12 @@ class UsbClass:
+ 		self.desc = str
+ 	def __repr__(self):
+ 		return self.desc
+-	def __cmp__(self, oth):
+-		# Works only on 64bit systems:
+-		#return self.pclass*0x10000+self.subclass*0x100+self.proto \
+-		#	- oth.pclass*0x10000-oth.subclass*0x100-oth.proto
+-		if self.pclass != oth.pclass:
+-			return self.pclass - oth.pclass
+-		if self.subclass != oth.subclass:
+-			return self.subclass - oth.subclass
+-		return self.proto - oth.proto
++	def __lt__(self, oth):
++		return (self.pclass, self.subclass, self.proto) < \
++				(oth.pclass, oth.subclass, oth.proto)
++	def __eq__(self, oth):
++		return (self.pclass, self.subclass, self.proto) == \
++				(oth.pclass, oth.subclass, oth.proto)
+ 
+ class UsbVendor:
+ 	"Container for USB Vendors"
+@@ -70,8 +65,10 @@ class UsbVendor:
+ 		self.vname = vname
+ 	def __repr__(self):
+ 		return self.vname
+-	def __cmp__(self, oth):
+-		return self.vid - oth.vid
++	def __lt__(self, oth):
++		return self.vid < oth.vid
++	def __eq__(self, oth):
++		return self.vid == oth.vid
+ 
+ class UsbProduct:
+ 	"Container for USB VID:PID devices"
+@@ -81,13 +78,10 @@ class UsbProduct:
+ 		self.pname = pname
+ 	def __repr__(self):
+ 		return self.pname
+-	def __cmp__(self, oth):
+-		# Works only on 64bit systems:
+-		# return self.vid*0x10000 + self.pid \
+-		#	- oth.vid*0x10000 - oth.pid
+-		if self.vid != oth.vid:
+-			return self.vid - oth.vid
+-		return self.pid - oth.pid
++	def __lt__(self, oth):
++		return (self.vid, self.pid) < (oth.vid, oth.pid)
++	def __eq__(self, oth):
++		return (self.vid, self.pid) == (oth.vid, oth.pid)
+ 
+ usbvendors = []
+ usbproducts = []
+@@ -107,7 +101,7 @@ def parse_usb_ids():
+ 	mode = 0
+ 	strg = ""
+ 	cstrg = ""
+-	for ln in file(usbids, "r").readlines():
++	for ln in open(usbids, "r", errors="ignore"):
+ 		if ln[0] == '#':
+ 			continue
+ 		ln = ln.rstrip('\n')
+@@ -146,7 +140,7 @@ def parse_usb_ids():
+ 
+ def bin_search(first, last, item, list):
+ 	"binary search on list, returns -1 on fail, match idx otherwise, recursive"
+-	#print "bin_search(%i,%i)" % (first, last)
++	#print("bin_search(%i,%i)" % (first, last))
+ 	if first == last:
+ 		return -1
+ 	if first == last-1:
+@@ -233,7 +227,7 @@ def find_dev(driver, usbname):
+ 	for nm in devlst:
+ 		dir = prefix + usbname
+ 		prep = ""
+-		#print nm
++		#print(nm)
+ 		idx = nm.find('/')
+ 		if idx != -1:
+ 			prep = nm[:idx+1]
+@@ -404,8 +398,8 @@ class UsbDevice:
+ 		try:
+ 			self.nointerfaces = int(readattr(fname, "bNumInterfaces"))
+ 		except:
+-			#print "ERROR: %s/bNumInterfaces = %s" % (fname,
+-			#		readattr(fname, "bNumInterfaces"))a
++			#print("ERROR: %s/bNumInterfaces = %s" % (fname,
++			#		readattr(fname, "bNumInterfaces")))
+ 			self.nointerfaces = 0
+ 		try:
+ 			self.driver = readlink(fname, "driver")
+@@ -421,7 +415,7 @@ class UsbDevice:
+ 		for dirent in os.listdir(prefix + self.fname):
+ 			if not dirent[0:1].isdigit():
+ 				continue
+-			#print dirent
++			#print(dirent)
+ 			if os.access(prefix + dirent + "/bInterfaceClass", os.R_OK):
+ 				iface = UsbInterface(self, self.level+1)
+ 				iface.read(dirent)
+@@ -532,7 +526,7 @@ def usage():
+ def read_usb():
+ 	"Read toplevel USB entries and print"
+ 	for dirent in os.listdir(prefix):
+-		#print dirent,
++		#print(dirent)
+ 		if not dirent[0:3] == "usb":
+ 			continue
+ 		usbdev = UsbDevice(None, 0)
+@@ -590,7 +584,7 @@ def main(argv):
+ 		fix_usbclass()
+ 	except:
+ 		print(" WARNING: Failure to read usb.ids", file=sys.stderr)
+-		#print >>sys.stderr, sys.exc_info()
++		#print(sys.exc_info(), file=sys.stderr)
+ 	read_usb()
+ 
+ # Entry point

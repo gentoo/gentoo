@@ -1,0 +1,38 @@
+From 83346e5ec77dc3474c01acd27d4a3e03690170b5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 24 Jun 2018 14:38:44 +0200
+Subject: [PATCH] Fix WITH_GRASS7 build with Qt-5.11.0 (missing headers)
+
+---
+ src/plugins/grass/qgsgrassmoduleinput.cpp | 1 +
+ src/plugins/grass/qgsgrassregion.cpp      | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/plugins/grass/qgsgrassmoduleinput.cpp b/src/plugins/grass/qgsgrassmoduleinput.cpp
+index ebb8efd493..6968a34d8c 100644
+--- a/src/plugins/grass/qgsgrassmoduleinput.cpp
++++ b/src/plugins/grass/qgsgrassmoduleinput.cpp
+@@ -17,6 +17,7 @@
+ #include <QCompleter>
+ #include <QFileDialog>
+ #include <QFileInfo>
++#include <QHeaderView>
+ #include <QHBoxLayout>
+ #include <QIcon>
+ #include <QLatin1String>
+diff --git a/src/plugins/grass/qgsgrassregion.cpp b/src/plugins/grass/qgsgrassregion.cpp
+index 00928da4a7..b31f1b9ae9 100644
+--- a/src/plugins/grass/qgsgrassregion.cpp
++++ b/src/plugins/grass/qgsgrassregion.cpp
+@@ -27,6 +27,8 @@
+ 
+ #include <QButtonGroup>
+ #include <QColorDialog>
++#include <QDoubleValidator>
++#include <QIntValidator>
+ #include <QMessageBox>
+ #include <QMouseEvent>
+ #include <QRubberBand>
+-- 
+2.18.0
+

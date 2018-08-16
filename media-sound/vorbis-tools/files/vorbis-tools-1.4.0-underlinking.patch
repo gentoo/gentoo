@@ -23,8 +23,8 @@ using functions from the mathlib.
 
 Therefore, always link to mathlib:
 
---- ogg123/Makefile.am
-+++ ogg123/Makefile.am
+--- a/ogg123/Makefile.am
++++ b/ogg123/Makefile.am
 @@ -30,7 +30,7 @@
  ogg123_LDADD = @SHARE_LIBS@ \
  	       @VORBISFILE_LIBS@ @VORBIS_LIBS@ @OGG_LIBS@ @AO_LIBS@ \
@@ -34,8 +34,8 @@ Therefore, always link to mathlib:
  
  ogg123_DEPENDENCIES = @SHARE_LIBS@
  ogg123_SOURCES = audio.c buffer.c callbacks.c \
---- oggenc/Makefile.am
-+++ oggenc/Makefile.am
+--- a/oggenc/Makefile.am
++++ b/oggenc/Makefile.am
 @@ -23,7 +23,7 @@
  
  oggenc_LDADD = @SHARE_LIBS@ \

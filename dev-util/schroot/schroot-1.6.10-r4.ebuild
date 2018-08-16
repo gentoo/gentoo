@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit cmake-utils eutils pam versionator bash-completion-r1
 
@@ -9,13 +9,13 @@ MY_P=${PN}_${PV}
 DEB_REL=2
 
 DESCRIPTION="Utility to execute commands in a chroot environment"
-HOMEPAGE="http://packages.debian.org/source/sid/schroot"
+HOMEPAGE="https://packages.debian.org/source/sid/schroot"
 SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${MY_P}.orig.tar.xz
 	mirror://debian/pool/main/${PN::1}/${PN}/${MY_P}-${DEB_REL}.debian.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="btrfs +dchroot debug doc lvm nls pam test"
 
 COMMON_DEPEND="

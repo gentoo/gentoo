@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_EXTRADOC="ChangeLog FAQ NOTES README TODO"
 
 DESCRIPTION="A Ruby interface to some LDAP libraries"
-HOMEPAGE="http://ruby-ldap.sourceforge.net/"
+HOMEPAGE="https://github.com/bearded/ruby-ldap"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~hppa ia64 ppc ~ppc64 ~sparc x86 ~x86-macos"

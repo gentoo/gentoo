@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/wxglade/${MY_P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -23,6 +23,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+RESTRICT="test" #656934
 
 S="${WORKDIR}/${MY_P}"
 

@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="portaudio"
+IUSE=""
 
 CDEPEND="${PYTHON_DEPS}"
 DEPEND="${CDEPEND}
@@ -24,9 +24,9 @@ RDEPEND="${CDEPEND}
 	dev-python/Babel[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
-	portaudio? ( dev-python/pyaudio[${PYTHON_USEDEP}] )
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/python-xlib[${PYTHON_USEDEP}]
+	media-sound/alsa-utils
 	x11-apps/xprop
 	x11-misc/xprintidle
 	"

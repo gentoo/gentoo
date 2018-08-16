@@ -1,6 +1,26 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tomáš Mózes <hydrapolic@gmail.com> (10 Aug 2018)
+# Needs dev-libs/libmaxminddb which isn't keyworded
+app-admin/syslog-ng geoip2
+
+# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
+# dev-libs/xxhash not keyworded for arm
+app-admin/rsyslog xxhash
+
+# Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
+# Needs dev-libs/libmaxminddb which isn't keyworded
+www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
+
+# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Needs sys-apps/fakechroot which isn't keyworded
+app-arch/rpm test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Jun 2018)
+# net-wireless/soapysdr not keyworded
+net-wireless/gr-osmosdr soapy
+
 # Markus Meier <maekke@gentoo.org> (30 May 2018)
 # unkeyworded deps for bug #621434
 net-analyzer/zmap mongo
@@ -229,10 +249,6 @@ app-portage/g-sorcery bson
 # samba-4 not keyworded on arm
 sys-auth/sssd samba
 
-# Markus Meier <maekke@gentoo.org> (03 Apr 2015)
-# Deps not yet stable or keyworded
-media-libs/libsdl2 fusionsound
-
 # Alexis Ballier <aballier@gentoo.org> (02 Apr 2015)
 # Needs ilmbase (openexr), which does not build and is masked on arm.
 media-libs/freeimage tiff
@@ -273,10 +289,6 @@ media-libs/clutter-gtk wayland
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
 dev-python/oct2py doc
-
-# Patrick Lauer <patrick@gentoo.org> (19 Nov 2014)
-# Missing keywords #529820
-app-office/libreoffice collada
 
 # Michael Weber <xmw@gentoo.org> (15 Nov 2014)
 # missing keywords on media-libs/libharu
@@ -339,10 +351,6 @@ net-im/prosody jit
 # Rick Farina <zerochaos@gentoo.org> (09 Jan 2014)
 # rjb doesn't work on arm, so no java hacks for metasploit
 net-analyzer/metasploit java
-
-# Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
-# no keyword for media-libs/swfdec and media-libs/libtimidity
->=dev-libs/DirectFB-1.7.1 timidity swfdec
 
 # Markus Meier <maekke@gentoo.org> (26 Dec 2013)
 # Unkeyworded deps, bug #488724
@@ -457,7 +465,7 @@ sci-astronomy/kstars indi
 
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
-app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher coinmp gltf
+app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher coinmp
 
 # Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
 # No java on ARM
@@ -500,11 +508,11 @@ sys-auth/polkit kde
 app-text/asciidoc test
 
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-frameworks/kdelibs is not stable for arm
+# kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet and kde-frameworks/kdelibs stable
+# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
 dev-vcs/subversion kwallet
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)

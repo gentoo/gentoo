@@ -1,0 +1,26 @@
+Disable PIE-compatible code generation via -fno-pie.
+
+Before upstream fix:
+https://github.com/dolphin-emu/dolphin/commit/daa03cd1060cc826aca93a1dffc6e94bc6af6d5f
+dolphin assumed executable image to be in low addresses (<2GB)
+and hardcoded 32-bit absolute addresses during JIT phase.
+
+PIE-compatible code does not have this restriction and
+allows mapping binaries above 2GB area (and breaks dolphin's JIT).
+
+Strictly speaking -no-pie (link-time flag) does not or guarantee
+or require low address mapping for binary if it was already built
+as PIC/PIE.
+
+But -fno-pie imposes additional restrictions on generated code by GCC
+and makes -no-pie to take effect.
+Bug: https://bugs.gentoo.org/640124
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -189,4 +189,4 @@ if(NOT ENABLE_GENERIC)
+ 			set(_M_X86_64 1)
+-			add_definitions(-D_M_X86=1 -D_M_X86_64=1 -msse2)
+-			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fno-pie")
++			add_definitions(-D_M_X86=1 -D_M_X86_64=1 -msse2 -fno-pie)
++			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fno-pie -no-pie")
+ 		else()

@@ -5,7 +5,6 @@ Name=xmonad
 Comment=A lightweight window manager
 Exec=/etc/X11/Sessions/xmonad
 TryExec=xmonad
-NoDisplay=true
 Icon=
 X-GNOME-WMName=Xmonad
 X-GNOME-Autostart-Phase=WindowManager

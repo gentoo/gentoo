@@ -95,6 +95,7 @@ src_configure() {
 		$(use_enable convert)
 		$(use_enable elibc_glibc backtrace)
 		$(use_enable python)
+		$(use_enable static-libs static)
 		$(use_enable zstd)
 		--with-convert=ext2$(usex reiserfs ',reiserfs' '')
 	)
@@ -108,7 +109,6 @@ src_compile() {
 src_install() {
 	local makeargs=(
 		$(usex python install_python '')
-		$(usex static-libs '' 'libs_static=')
 		$(usex static install-static '')
 	)
 	emake V=1 DESTDIR="${D}" install "${makeargs[@]}"

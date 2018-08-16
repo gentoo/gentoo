@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="alpha amd64 ppc x86"
 IUSE="alsa ncurses pulseaudio suid test qt5"
 
-REQUIRED_USE="test? ( || ( alsa pulseaudio ) )"
-
 RDEPEND="ncurses? ( sys-libs/ncurses:= )
 	qt5? ( dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -30,7 +28,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	append-cflags -std=gnu11
 	append-cxxflags -std=gnu++11
-	epatch "${FILESDIR}"/$PN-3.5-tinfo.patch
+	epatch "${FILESDIR}"/$PN-3.5-tinfo.patch \
+	    "${FILESDIR}"/$PN-tests.patch
 	eautoreconf
 }
 

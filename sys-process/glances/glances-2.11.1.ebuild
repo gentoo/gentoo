@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1 eutils linux-info
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/G/${PN^}/${P^}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux"
-IUSE="+doc"
+IUSE="doc"
 
 DEPEND="
 	doc? (
@@ -23,7 +23,7 @@ DEPEND="
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-# There is another optional extra batinfo, absent from portage
+
 RDEPEND="${DEPEND}
 	>=dev-python/psutil-2.0.0[${PYTHON_USEDEP}]"
 

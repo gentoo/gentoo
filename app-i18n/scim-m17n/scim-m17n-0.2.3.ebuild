@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=6
 
 DESCRIPTION="An input module for Smart Common Input Method (SCIM) which uses m17n as backend"
 HOMEPAGE="http://www.scim-im.org/projects/imengines"
@@ -16,12 +16,6 @@ RDEPEND=">=app-i18n/scim-1.4
 	>=dev-libs/m17n-lib-1.2.0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-
-	dodoc AUTHORS ChangeLog THANKS README
-}
 
 pkg_postinst() {
 	elog

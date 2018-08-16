@@ -21,7 +21,8 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:0= )
 	doc? ( app-text/linuxdoc-tools )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-desktop.patch"

@@ -21,6 +21,9 @@
     <remote-id type="github">networkx/networkx</remote-id>
   </upstream>
   <use>
+    <flag name="extras">Provide graph drawing and graph layout algorithms along with shapefile format reading and writing</flag>
+    <flag name="pandas">Provides a DataFrame, which is a tabular data structure with labeled axes</flag>
     <flag name="scipy">Enables scipy backend</flag>
+    <flag name="yaml">Provides YAML format reading and writing</flag>
   </use>
 </pkgmetadata>

@@ -367,6 +367,7 @@ setup_flags() {
 	append-flags -O2 -fno-strict-aliasing
 
 	filter-flags '-fstack-protector*'
+	append-flags '-fno-stack-protector'
 
 	# Starting with gcc-6 (and fully upstreamed pie patches) we control
 	# default enabled/disabled pie via use flags. So nothing to do
@@ -1250,7 +1251,6 @@ glibc_do_src_install() {
 	for d in BUGS ChangeLog CONFORMANCE FAQ NEWS NOTES PROJECTS README* ; do
 		[[ -s ${d} ]] && dodoc ${d}
 	done
-	dodoc -r ChangeLog.old
 
 	# Prevent overwriting of the /etc/localtime symlink.  We'll handle the
 	# creation of the "factory" symlink in pkg_postinst().

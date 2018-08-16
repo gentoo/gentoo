@@ -10,7 +10,7 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
-		<flag name="libmpeg2">Support for libmpeg2 library</flag>
+		<flag name="libmpeg2">Build support for mpeg2 over media-libs/libmpeg2 rather than using ffmpeg</flag>
 	</use>
 	<longdescription lang="en">
 		Mark commercial Breaks in VDR records. 

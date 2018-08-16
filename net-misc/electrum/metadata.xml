@@ -17,6 +17,7 @@
 		<flag name="email">Enable plugin to support emailing invoices</flag>
 		<flag name="greenaddress_it">Enable plugin to verify GreenAddress.it instant transactions</flag>
 		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
+		<flag name="revealer">Enable revealer plugin for extra security. https://revealer.cc/</flag>
 		<flag name="sync">Enable plugin to sync wallet metadata across multiple Electrum clients</flag>
 		<flag name="trustedcoin_com">Enable plugin to use two-factor service by TrustedCoin.com</flag>
 		<flag name="vkb">Enable plugin for virtual keyboard</flag>

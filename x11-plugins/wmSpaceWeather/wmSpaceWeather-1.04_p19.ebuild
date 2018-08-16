@@ -12,7 +12,7 @@ MY_P_ORIG="${MY_PN}_${MY_PV_ORIG}.orig"
 MY_P_PATCH="${MY_PN}_${MY_PV_PATCH}.diff"
 
 DESCRIPTION="dockapp showing weather at geosynchronous orbit"
-HOMEPAGE="http://packages.debian.org/sid/wmspaceweather"
+HOMEPAGE="https://www.dockapps.net/wmspaceweather"
 SRC_URI="mirror://debian/pool/main/w/${MY_PN}/${MY_P_ORIG}.tar.gz
 	    mirror://debian/pool/main/w/${MY_PN}/${MY_P_PATCH}.gz"
 

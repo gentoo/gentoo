@@ -22,7 +22,7 @@
   <flag name="krl">Build BRL emulation and KRL</flag>
   <flag name="sax">Assume SAX2 is available with <pkg>dev-java/sax</pkg></flag>
   <flag name="servlets">Build support for generating servlets with
-    <pkg>dev-java/servletapi</pkg></flag>
+    Java servletapi</flag>
   <flag name="swing">Assume Swing is available</flag>
   <flag name="xqtests">Support XQuery Test Suite</flag>
 </use>

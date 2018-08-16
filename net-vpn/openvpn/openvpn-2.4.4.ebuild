@@ -6,9 +6,9 @@ EAPI=6
 inherit autotools flag-o-matic user systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-SRC_URI="http://swupdate.openvpn.net/community/releases/${P}.tar.gz
+SRC_URI="https://swupdate.openvpn.net/community/releases/${P}.tar.gz
 	test? ( https://raw.githubusercontent.com/OpenVPN/${PN}/v${PV}/tests/unit_tests/${PN}/mock_msg.h )"
-HOMEPAGE="http://openvpn.net/"
+HOMEPAGE="https://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -122,11 +122,6 @@ pkg_postinst() {
 	# dns information and other such things.
 	enewgroup openvpn
 	enewuser openvpn "" "" "" openvpn
-
-	if path_exists -o "${EROOT%/}"/etc/openvpn/*/local.conf ; then
-		ewarn "WARNING: The openvpn init script has changed"
-		ewarn ""
-	fi
 
 	if use x64-macos; then
 		elog "You might want to install tuntaposx for TAP interface support:"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,10 +28,10 @@ DEPEND="
 RDEPEND="
 	!sci-chemistry/surf
 	${COMMON_DEPEND}
-	x11-apps/xprop
-	x11-misc/dmenu
 	!savedconfig? (
 		net-misc/curl
+		x11-apps/xprop
+		x11-misc/dmenu
 		x11-terms/st
 	)
 "

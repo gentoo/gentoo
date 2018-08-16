@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} pypy )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
 inherit distutils-r1 git-r3
@@ -106,7 +106,7 @@ python_prepare_all() {
 	if ! use ipc ; then
 		einfo "Disabling ipc..."
 		sed -e "s:_enable_ipc_daemon = True:_enable_ipc_daemon = False:" \
-			-i pym/_emerge/AbstractEbuildProcess.py ||
+			-i lib/_emerge/AbstractEbuildProcess.py ||
 			die "failed to patch AbstractEbuildProcess.py"
 	fi
 
@@ -124,7 +124,7 @@ python_prepare_all() {
 			-e "s|^\(MOVE_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/mv\"\)|\\1${EPREFIX}\\2|" \
 			-e "s|^\(PRELINK_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/sbin/prelink\"\)|\\1${EPREFIX}\\2|" \
 			-e "s|^\(EPREFIX[[:space:]]*=[[:space:]]*\"\).*|\\1${EPREFIX}\"|" \
-			-i pym/portage/const.py ||
+			-i lib/portage/const.py ||
 			die "Failed to patch portage.const.EPREFIX"
 
 		einfo "Prefixing shebangs ..."

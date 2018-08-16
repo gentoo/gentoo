@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit autotools python-r1
 
@@ -20,7 +20,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 
 SLOT="0/6" # based on SONAME of libimobiledevice.so
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="gnutls libressl python static-libs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

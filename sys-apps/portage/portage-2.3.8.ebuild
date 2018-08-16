@@ -241,10 +241,4 @@ pkg_postinst() {
 		ewarn "git repositories.  There have been too many problems and"
 		ewarn "performance issues.  See bugs 552814, 559008"
 	fi
-	einfo ""
-	einfo "This release of portage NO LONGER contains the repoman code base."
-	einfo "Repoman has its own ebuild and release package."
-	einfo "For repoman functionality please emerge app-portage/repoman"
-	einfo "Please report any bugs you may encounter."
-	einfo ""
 }

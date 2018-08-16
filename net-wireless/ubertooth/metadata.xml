@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="bluez">use bluez to support clock following and scanning</flag>
-		<flag name="specan">Enable the ubertooth spectrum analyzer</flag>
 		<flag name="ubertooth1-firmware">Build/install ubertooth1-firmware</flag>
 	</use>
 	<upstream>

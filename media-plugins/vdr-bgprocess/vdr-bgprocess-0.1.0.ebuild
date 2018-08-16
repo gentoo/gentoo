@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=6
 
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: Collect information about background process status"
-HOMEPAGE="http://linuxtv.org/pipermail/vdr/2008-July/017245.html"
+HOMEPAGE="https://linuxtv.org/pipermail/vdr/2008-July/017245.html"
 SRC_URI="http://www.reelbox.org/software/vdr/${P}.tgz"
 
 LICENSE="GPL-2"

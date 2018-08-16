@@ -1,0 +1,7 @@
+/var/log/crio/crio.log {
+	missingok
+	size 5M
+	rotate 3
+	compress
+	copytruncate
+}

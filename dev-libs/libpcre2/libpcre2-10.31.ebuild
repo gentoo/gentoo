@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	userland_GNU? ( >=sys-apps/findutils-4.4.0 )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cygwin.patch #633612
+)
+
 S="${WORKDIR}/${MY_P}"
 
 MULTILIB_CHOST_TOOLS=(

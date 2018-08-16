@@ -1,0 +1,388 @@
+--- a/doc/man/de/Makefile
++++ b/doc/man/de/Makefile
+@@ -9,10 +9,10 @@
+ 
+ install-man: tornado.6
+ 	@echo "Installing german manpage ..."
+-	if [ ! -d "$(PREFIX)/man/de/man6" ]; then \
+-	  mkdir -p $(PREFIX)/man/de/man6; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/share/man/de/man6" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/share/man/de/man6; \
+ 	fi
+-	install -m 0644 tornado.6 $(PREFIX)/man/de/man6
++	install -m 0644 tornado.6 $(DESTDIR)/$(PREFIX)/share/man/de/man6
+ 
+ clean:
+ 	rm -f tornado.6
+--- a/doc/man/fr/Makefile
++++ b/doc/man/fr/Makefile
+@@ -9,10 +9,10 @@
+ 
+ install-man: tornado.6
+ 	@echo "Installing French manpage ..."
+-	if [ ! -d "$(PREFIX)/man/fr/man6" ]; then \
+-	  mkdir -p $(PREFIX)/man/fr/man6; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/share/man/fr/man6" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/share/man/fr/man6; \
+ 	fi
+-	install -m 0644 tornado.6 $(PREFIX)/man/fr/man6
++	install -m 0644 tornado.6 $(DESTDIR)/$(PREFIX)/share/man/fr/man6
+ 
+ clean:
+ 	rm -f tornado.6
+--- a/doc/man/it/Makefile
++++ b/doc/man/it/Makefile
+@@ -9,10 +9,10 @@
+ 
+ install-man: tornado.6
+ 	@echo "Installing Italian manpage ..."
+-	if [ ! -d "$(PREFIX)/man/it/man6" ]; then \
+-	  mkdir -p $(PREFIX)/man/it/man6; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/share/man/it/man6" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/share/man/it/man6; \
+ 	fi
+-	install -m 0644 tornado.6 $(PREFIX)/man/it/man6
++	install -m 0644 tornado.6 $(DESTDIR)/$(PREFIX)/share/man/it/man6
+ 
+ clean:
+ 	rm -f tornado.6
+--- a/doc/man/Makefile
++++ b/doc/man/Makefile
+@@ -15,10 +15,10 @@
+ 
+ install-man: tornado.6
+ 	@echo "Installing manpage ..."
+-	if [ ! -d "$(PREFIX)/man/man6" ]; then \
+-	  mkdir -p $(PREFIX)/man/man6; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/share/man/man6" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/share/man/man6; \
+ 	fi
+-	install -m 0644 tornado.6 $(PREFIX)/man/man6
++	install -m 0644 tornado.6 $(DESTDIR)/$(PREFIX)/share/man/man6
+ 	$(MAKE) -C de install-man
+ 	$(MAKE) -C fr install-man
+ 	$(MAKE) -C it install-man
+--- a/doc/man/nl/Makefile
++++ b/doc/man/nl/Makefile
+@@ -9,10 +9,10 @@
+ 
+ install-man: tornado.6
+ 	@echo "Installing Dutch manpage ..."
+-	if [ ! -d "$(PREFIX)/man/nl/man6" ]; then \
+-	  mkdir -p $(PREFIX)/man/nl/man6; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/share/man/nl/man6" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/share/man/nl/man6; \
+ 	fi
+-	install -m 0644 tornado.6 $(PREFIX)/man/nl/man6
++	install -m 0644 tornado.6 $(DESTDIR)/$(PREFIX)/share/man/nl/man6
+ 
+ clean:
+ 	rm -f tornado.6
+--- a/doc/man/no/Makefile
++++ b/doc/man/no/Makefile
+@@ -9,10 +9,10 @@
+ 
+ install-man: tornado.6
+ 	@echo "Installing Norwegian manpage ..."
+-	if [ ! -d "$(PREFIX)/man/no/man6" ]; then \
+-	  mkdir -p $(PREFIX)/man/no/man6; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/share/man/no/man6" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/share/man/no/man6; \
+ 	fi
+-	install -m 0644 tornado.6 $(PREFIX)/man/no/man6
++	install -m 0644 tornado.6 $(DESTDIR)/$(PREFIX)/share/man/no/man6
+ 
+ clean:
+ 	rm -f tornado.6
+--- a/doc/man/ru/Makefile
++++ b/doc/man/ru/Makefile
+@@ -9,10 +9,10 @@
+ 
+ install-man: tornado.6
+ 	@echo "Installing Russian manpage ..."
+-	if [ ! -d "$(PREFIX)/man/ru/man6" ]; then \
+-	  mkdir -p $(PREFIX)/man/ru/man6; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/share/man/ru/man6" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/share/man/ru/man6; \
+ 	fi
+-	install -m 0644 tornado.6 $(PREFIX)/man/ru/man6
++	install -m 0644 tornado.6 $(DESTDIR)/$(PREFIX)/share/man/ru/man6
+ 
+ clean:
+ 	rm -f tornado.6
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,9 @@
+-CC = gcc
+ MAKE = make
+-LDFLAGS = -lncurses
++LDLIBS = $(shell $(PKG_CONFIG) --libs ncurses)
+ OBJFILES = main.o draw.o erwin.o network.o scores.o
+-PREFIX = /usr/local
+-LOCALEPATH = /usr/local/share/locale
+-CFLAGS = -Wall -O2 -DPREFIX="\"$(PREFIX)\"" 
++PREFIX = /usr
++LOCALEPATH = /usr/share/locale
++CFLAGS += -DPREFIX="\"$(PREFIX)\"" -DLOCALEPATH="\"$(LOCALEPATH)\""
+ VERSION = `grep " VERSION" version.h | sed s/\"//g | sed s/\#define\ VERSION\ //`
+ LOCALES = de
+ MAN = doc/man
+@@ -25,7 +24,7 @@
+ 	$(MAKE) -C $(MAN) all
+ 
+ tornado: $(OBJFILES)
+-	$(CC) $(LDFLAGS) $(OBJFILES) -o tornado
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJFILES) $(LDLIBS) -o tornado
+ 
+ debug: tornado.6 locales
+ 	gcc -g -ggdb -Wall -ansi -pedantic -o tornado draw.c main.c erwin.c network.c scores.c -lncurses -DPREFIX="\"$(PREFIX)\"" -DLOCALEPATH="\"$(LOCALEPATH)\"" 
+@@ -43,25 +42,24 @@
+ 
+ install: tornado tornado.6 install-locale-data
+ 	@echo "Installing tornado binary in $(PREFIX)/bin..."
+-	if [ ! -d "$(PREFIX)/bin" ]; then \
+-	  mkdir -p $(PREFIX)/bin; \
++	if [ ! -d "$(DESTDIR)/$(PREFIX)/bin" ]; then \
++	  mkdir -p $(DESTDIR)/$(PREFIX)/bin; \
+ 	fi
+-	install -s tornado $(PREFIX)/bin
++	install tornado $(DESTDIR)/$(PREFIX)/bin
+ 
+ 	$(MAKE) -C $(MAN) install-man
+ 
++	if [ ! -d "$(DESTDIR)/var/games" ]; then \
++	  mkdir -p $(DESTDIR)/var/games; \
++	fi; \
+ 	if [ -f "/var/games/tornado.scores" ]; then \
+ 	  echo "Skipping install of the highscores file. File exists."; \
+ 	  cat /var/games/tornado.scores | ./convert-highscorefile > score.tmp; \
+-	  mv -f score.tmp /var/games/tornado.scores; \
+-	  chmod a+rw-x "/var/games/tornado.scores"; \
+-	else \
+-	  if [ ! -d "/var/games" ]; then \
+-	    mkdir /var/games; \
+-	  fi; \
+-	  install tornado.scores /var/games; \
+-	  chmod a+w-x "/var/games/tornado.scores"; \
+-	fi
++	  mv -f score.tmp $(DESTDIR)/var/games/tornado.scores; \
++    else \
++      install tornado.scores $(DESTDIR)/var/games; \
++	fi; \
++	chmod a+w-x "$(DESTDIR)/var/games/tornado.scores";
+ 
+ install-locale-data:
+ 	$(MAKE) -C po install-locale-data
+--- a/Makefile.inc
++++ b/Makefile.inc
+@@ -1,9 +1,3 @@
+-CC = gcc
+-MAKE = make
+-LDFLAGS = -lncurses
+-OBJFILES = main.o draw.o erwin.o network.o scores.o
+-PREFIX = /usr/local
+-LOCALEPATH = /usr/local/share/locale
+-CFLAGS = -Wall -O2 -DPREFIX="\"$(PREFIX)\"" -DLOCALEPATH="\"$(LOCALEPATH)\""
+-LOCALES = de
++PREFIX = /usr
++LOCALEPATH = /usr/share/locale
+ MAN = doc/man
+--- a/po/Makefile
++++ b/po/Makefile
+@@ -14,38 +14,38 @@
+ 	msgfmt no.po -o no.mo
+ 
+ install-locale-data: de.mo fr.mo pt.mo es.mo it.mo ru.mo nl.mo no.po
+-	if [ ! -d "$(LOCALEPATH)/de/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/de/LC_MESSAGES/; \
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/de/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/de/LC_MESSAGES/; \
+ 	fi
+-	install -m 0644 de.mo $(LOCALEPATH)/de/LC_MESSAGES/tornado.mo
+-	if [ ! -d "$(LOCALEPATH)/fr/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/fr/LC_MESSAGES/; \
+-	fi
+-	install -m 0644 fr.mo $(LOCALEPATH)/fr/LC_MESSAGES/tornado.mo
+-	if [ ! -d "$(LOCALEPATH)/pt/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/pt/LC_MESSAGES/; \
+-	fi
+-	install -m 0644 pt.mo $(LOCALEPATH)/pt/LC_MESSAGES/tornado.mo
+-	if [ ! -d "$(LOCALEPATH)/es/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/es/LC_MESSAGES/; \
+-	fi
+-	install -m 0644 es.mo $(LOCALEPATH)/es/LC_MESSAGES/tornado.mo
+-	if [ ! -d "$(LOCALEPATH)/it/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/it/LC_MESSAGES/; \
+-	fi
+-	install -m 0644 it.mo $(LOCALEPATH)/it/LC_MESSAGES/tornado.mo
+-	if [ ! -d "$(LOCALEPATH)/ru/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/ru/LC_MESSAGES/; \
+-	fi
+-	install -m 0644 ru.mo $(LOCALEPATH)/ru/LC_MESSAGES/tornado.mo
+-	if [ ! -d "$(LOCALEPATH)/nl/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/nl/LC_MESSAGES/; \
+-	fi
+-	install -m 0644 nl.mo $(LOCALEPATH)/nl/LC_MESSAGES/tornado.mo
+-	if [ ! -d "$(LOCALEPATH)/no/LC_MESSAGES/" ]; then \
+-	  mkdir -p $(LOCALEPATH)/no/LC_MESSAGES/; \
++	install -m 0644 de.mo $(DESTDIR)$(LOCALEPATH)/de/LC_MESSAGES/tornado.mo
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/fr/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/fr/LC_MESSAGES/; \
++	fi
++	install -m 0644 fr.mo $(DESTDIR)$(LOCALEPATH)/fr/LC_MESSAGES/tornado.mo
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/pt/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/pt/LC_MESSAGES/; \
++	fi
++	install -m 0644 pt.mo $(DESTDIR)$(LOCALEPATH)/pt/LC_MESSAGES/tornado.mo
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/es/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/es/LC_MESSAGES/; \
++	fi
++	install -m 0644 es.mo $(DESTDIR)$(LOCALEPATH)/es/LC_MESSAGES/tornado.mo
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/it/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/it/LC_MESSAGES/; \
++	fi
++	install -m 0644 it.mo $(DESTDIR)$(LOCALEPATH)/it/LC_MESSAGES/tornado.mo
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/ru/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/ru/LC_MESSAGES/; \
++	fi
++	install -m 0644 ru.mo $(DESTDIR)$(LOCALEPATH)/ru/LC_MESSAGES/tornado.mo
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/nl/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/nl/LC_MESSAGES/; \
++	fi
++	install -m 0644 nl.mo $(DESTDIR)$(LOCALEPATH)/nl/LC_MESSAGES/tornado.mo
++	if [ ! -d "$(DESTDIR)$(LOCALEPATH)/no/LC_MESSAGES/" ]; then \
++	  mkdir -p $(DESTDIR)$(LOCALEPATH)/no/LC_MESSAGES/; \
+ 	fi
+-	install -m 0644 no.mo $(LOCALEPATH)/no/LC_MESSAGES/tornado.mo
++	install -m 0644 no.mo $(DESTDIR)$(LOCALEPATH)/no/LC_MESSAGES/tornado.mo
+ 
+ clean:
+ 	rm -f *.mo
+--- a/doc/man/de/tornado.6.de.in
++++ b/doc/man/de/tornado.6.de.in
+@@ -90,13 +90,13 @@
+ .SH FILES
+ PREFIX/bin/tornado
+ .P
+-PREFIX/man/man6/tornado.6
++/usr/share/man/man6/tornado.6
+ .P
+ /var/games/tornado.scores
+ .P
+-/usr/local/share/locale/de/LC_MESSAGES/tornado.mo
++/usr/share/locale/de/LC_MESSAGES/tornado.mo
+ .P
+-/usr/local/share/locale/fr/LC_MESSAGES/tornado.mo
++/usr/share/locale/fr/LC_MESSAGES/tornado.mo
+ .SH NOTES
+ Wenn das Spiel im Netzwerkmodus läuft sollte auf beiden Seiten die selbe
+ Version laufen. Versionen vor 1.0pre4 funktionieren damit überhaupt nicht,
+--- a/doc/man/fr/tornado.6.fr.in
++++ b/doc/man/fr/tornado.6.fr.in
+@@ -72,13 +72,13 @@
+ .SH FICHIERS
+ PREFIX/bin/tornado
+ .P
+-PREFIX/man/man6/tornado.6
++/usr/share/man/man6/tornado.6
+ .P
+ /var/games/tornado.scores
+ .P
+-/usr/local/share/locale/de/LC_MESSAGES/tornado.mo
++/usr/share/locale/de/LC_MESSAGES/tornado.mo
+ .P
+-/usr/local/share/locale/fr/LC_MESSAGES/tornado.mo
++/usr/share/locale/fr/LC_MESSAGES/tornado.mo
+ .SH NOTES
+ Pour jouer en mode réseau, le client et le serveur doivent avoir le même numéro de version. Les versions antérieures à la 1.0pre4 ne sont pas prévues pour jouer en réseau. Le jeu en réseau entre deux versions différentes du programme acceptera de démarrer, mais sera susceptible de crasher à tout moment.
+ .P
+--- a/doc/man/it/tornado.6.it.in
++++ b/doc/man/it/tornado.6.it.in
+@@ -74,13 +74,13 @@
+ .SH FILE
+ PREFIX/bin/tornado
+ .P
+-PREFIX/man/man6/tornado.6
++/usr/share/man/man6/tornado.6
+ .P
+ /var/games/tornado.scores
+ .P
+-/usr/local/share/locale/de/LC_MESSAGES/tornado.mo
++/usr/share/locale/de/LC_MESSAGES/tornado.mo
+ .P
+-/usr/local/share/locale/fr/LC_MESSAGES/tornado.mo
++/usr/share/locale/fr/LC_MESSAGES/tornado.mo
+ .SH NOTE
+ Avviando il gioco in modalità network, dovreste avere la stessa versione del gioco dal lato server e client. Le versioni precedenti alla 1.0pre4 non funzioneranno per nulla, a causa della mancanza delle funzionalità di rete. Con versioni diverse ai due lati, il gioco si avvierà ugualmente, ma potrebbe andare in crash ad ogni momento, se c'é troppa differenza tra le due versioni.
+ .P
+--- a/doc/man/nl/tornado.6.nl.in
++++ b/doc/man/nl/tornado.6.nl.in
+@@ -71,15 +71,15 @@
+ .B \-\-version,
+ Toont de het versienummer en beeindigt.
+ .SH "FILES"
+-/usr/local/bin/tornado
++/usr/bin/tornado
+ .P
+-/usr/local/man/man6/tornado.6
++/usr/man/man6/tornado.6
+ .P
+ /var/games/tornado.scores
+ .P
+-/usr/local/share/locale/de/LC_MESSAGES/tornado.mo
++/usr/share/locale/de/LC_MESSAGES/tornado.mo
+ .P
+-/usr/local/share/locale/fr/LC_MESSAGES/tornado.mo
++/usr/share/locale/fr/LC_MESSAGES/tornado.mo
+ .SH "NOTES"
+ Als u het spel in netwerk modus draait moeten de client en de server dezelfde versie draaien. Versies voor 1.0pre4 werken helemaal niet,
+ omdat die geen netwerk functionaliteit hebben. Het spel zal wel starten met verschillende versies, mar het zal waarschijnlijk later crashen, als er te veel verschillen zijn.
+--- a/doc/man/no/tornado.6.no.in
++++ b/doc/man/no/tornado.6.no.in
+@@ -86,13 +86,13 @@
+ .SH FILES
+ PREFIX/bin/tornado
+ .P
+-PREFIX/man/man6/tornado.6
++/usr/share/man/man6/tornado.6
+ .P
+ /var/games/tornado.scores
+ .P
+-/usr/local/share/locale/de/LC_MESSAGES/tornado.mo
++/usr/share/locale/de/LC_MESSAGES/tornado.mo
+ .P
+-/usr/local/share/locale/fr/LC_MESSAGES/tornado.mo
++/usr/share/locale/fr/LC_MESSAGES/tornado.mo
+ .SH NOTES
+ Når du starter spillet i nettverksmodus bør du ha samme versjon på klient
+ og tjener. Versjoner før 1.0pre4 vil ikke virke i det heletatt på grunn
+--- a/doc/man/ru/tornado.6.ru.in
++++ b/doc/man/ru/tornado.6.ru.in
+@@ -92,7 +92,7 @@
+ .SH æáêìù
+ .nf
+ PREFIX/bin/tornado
+-PREFIX/man/man6/tornado.6
++/usr/share/man/man6/tornado.6
+ /var/games/tornado.scores
+ .fi
+ .SH ðòéíåþáîéå
+--- a/doc/man/tornado.6.in
++++ b/doc/man/tornado.6.in
+@@ -88,13 +88,13 @@
+ .SH FILES
+ PREFIX/bin/tornado
+ .P
+-PREFIX/man/man6/tornado.6
++/usr/share/man/man6/tornado.6
+ .P
+ /var/games/tornado.scores
+ .P
+-/usr/local/share/locale/de/LC_MESSAGES/tornado.mo
++/usr/share/locale/de/LC_MESSAGES/tornado.mo
+ .P
+-/usr/local/share/locale/fr/LC_MESSAGES/tornado.mo
++/usr/share/locale/fr/LC_MESSAGES/tornado.mo
+ .SH NOTES
+ When you run the game in network mode you should have the same game versions
+ on client and server side. Versions prior 1.0pre4 won't work at all due to

@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+
+inherit desktop
 
 MY_P=${P/lives}
 
@@ -39,7 +40,7 @@ src_install() {
 
 	local x
 	for x in diff draw draw2 dump; do
-		mv -vf "${D}/etc"/map${x} "${D}/etc"/kq-map${x}
+		mv -vf "${D}/etc"/map${x} "${D}/etc"/kq-map${x} || die
 	done
 
 	doicon "${FILESDIR}"/${PN}.xpm

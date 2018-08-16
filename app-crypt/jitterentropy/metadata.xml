@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>gokturk@gentoo.org</email>
+	<name>Göktürk Yüksek</name>
+</maintainer>
+<longdescription>
+	The Jitter RNG provides a noise source using the CPU execution
+	timing jitter. It does not depend on any system resource other
+	than a high-resolution time stamp. It is a small-scale, yet
+	fast entropy source that is viable in almost all environments
+	and on a lot of CPU architectures.
+</longdescription>
+<upstream>
+	<remote-id type="github">smuellerDD/jitterentropy-library</remote-id>
+</upstream>
+</pkgmetadata>

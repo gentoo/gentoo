@@ -48,10 +48,9 @@ src_install() {
 	default
 
 	# Prepare and own the template
-	sed -n -e '/^#/p' config/python-exec.conf.example \
-		> "${T}"/python-exec.conf || die
 	insinto /etc/python-exec
-	doins "${T}"/python-exec.conf
+	newins - python-exec.conf \
+		< <(sed -n -e '/^#/p' config/python-exec.conf.example)
 
 	local f
 	for f in python{,2,3}; do

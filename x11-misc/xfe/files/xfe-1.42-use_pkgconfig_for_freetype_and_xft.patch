@@ -1,5 +1,5 @@
---- xfe-1.42/configure.ac
-+++ xfe-1.42/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -29,6 +29,7 @@
  AC_PROG_INSTALL
  AC_PROG_LN_S

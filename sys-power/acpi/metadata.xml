@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>axelgenus@gmail.com</email>
-		<name>Alessandro Calorì</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">acpiclient</remote-id>
 	</upstream>
@@ -18,3 +11,4 @@
 		support ACPI suspending, only displays information about ACPI devices.
 	</longdescription>
 </pkgmetadata>
+

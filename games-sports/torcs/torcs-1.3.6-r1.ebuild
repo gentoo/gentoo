@@ -25,7 +25,7 @@ RDEPEND="media-libs/freealut
 	x11-libs/libX11
 	x11-libs/libXrandr"
 DEPEND="${RDEPEND}
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-no-automake.patch

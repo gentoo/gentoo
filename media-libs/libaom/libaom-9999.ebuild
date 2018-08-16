@@ -7,10 +7,16 @@ inherit cmake-multilib
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://aomedia.googlesource.com/aom"
-elif [[ ${PV} == *pre* ]]; then
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
-	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}"
+else
+	if [[ ${PV} == *pre* ]]; then
+		SRC_URI="mirror://gentoo/${P}.tar.xz"
+		S="${WORKDIR}/${PN}"
+	else
+		# SRC_URI="https://aomedia.googlesource.com/aom/+archive/v${PV}.tar.gz -> ${P}.tar.gz"
+		SRC_URI="mirror://gentoo/${P}.tar.gz"
+		S="${WORKDIR}"
+	fi
+	KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
@@ -36,7 +42,7 @@ REQUIRED_USE="
 	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
 "
 
-PATCHES=( "${FILESDIR}/libdirpc.patch" "${FILESDIR}/pthread_lib.patch" )
+PATCHES=( "${FILESDIR}/libdirpc2.patch" "${FILESDIR}/pthread_lib2.patch" )
 
 src_prepare() {
 	sed -e 's/lib"/lib${LIB_SUFFIX}"/' -i CMakeLists.txt || die

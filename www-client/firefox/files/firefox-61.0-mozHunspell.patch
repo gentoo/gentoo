@@ -1,0 +1,25 @@
+From 5bdc1dc7a4541338b13096ae52627ceecd0cca9e Mon Sep 17 00:00:00 2001
+From: nvinson234@gmail.com
+Date: Sun, 8 Jul 2018 16:52:04 -0500
+Subject: [PATCH] Add missing include of nsCOMPtr.h, bug #660726
+
+Signed-off-by: nvinson234@gmail.com
+---
+ extensions/spellcheck/hunspell/glue/mozHunspellFileMgr.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/extensions/spellcheck/hunspell/glue/mozHunspellFileMgr.h b/extensions/spellcheck/hunspell/glue/mozHunspellFileMgr.h
+index dc33fdfb3..415e00973 100644
+--- a/extensions/spellcheck/hunspell/glue/mozHunspellFileMgr.h
++++ b/extensions/spellcheck/hunspell/glue/mozHunspellFileMgr.h
+@@ -13,6 +13,7 @@
+ #include "mozilla/ResultExtensions.h"
+ #include "nsIInputStream.h"
+ #include "nsReadLine.h"
++#include "nsCOMPtr.h"
+ 
+ // Note: This class name and lack of namespacing terrible, but are necessary
+ // for Hunspell compatibility.
+-- 
+2.18.0
+

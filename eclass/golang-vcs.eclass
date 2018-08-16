@@ -4,6 +4,7 @@
 # @ECLASS: golang-vcs.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Eclass for fetching and unpacking go repositories.
 # @DESCRIPTION:
 # This eclass is written to ease the maintenance of live ebuilds

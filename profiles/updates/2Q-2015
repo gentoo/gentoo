@@ -137,7 +137,6 @@ move kde-base/libksane kde-apps/libksane
 move kde-base/lokalize kde-apps/lokalize
 move kde-base/lskat kde-apps/lskat
 move kde-base/marble kde-apps/marble
-move kde-base/okteta kde-apps/okteta
 move kde-base/okular kde-apps/okular
 move kde-base/oxygen-icons kde-frameworks/oxygen-icons
 move kde-base/palapeli kde-apps/palapeli

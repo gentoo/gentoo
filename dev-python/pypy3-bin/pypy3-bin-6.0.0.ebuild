@@ -131,11 +131,11 @@ src_compile() {
 
 src_test() {
 	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE
+	local -x PYTHONDONTWRITEBYTECODE=
 
 	# Test runner requires Python 2 too. However, it spawns PyPy3
 	# internally so that we end up testing the correct interpreter.
-	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c -vv lib-python || die
 }
 
 src_install() {

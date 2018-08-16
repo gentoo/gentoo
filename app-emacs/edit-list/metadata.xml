@@ -11,4 +11,5 @@
   changes and hit either `C-x C-s' or `C-c C-c' when done. Or just kill the
   buffer if you change your mind.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

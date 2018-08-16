@@ -7,5 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">mako</remote-id>
+    <remote-id type="bitbucket">zzzeek/mako</remote-id>
+    <bugs-to>https://bitbucket.org/zzzeek/mako/issues</bugs-to>
   </upstream>
 </pkgmetadata>

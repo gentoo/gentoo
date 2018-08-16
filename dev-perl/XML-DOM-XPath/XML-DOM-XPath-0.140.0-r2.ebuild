@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension to add XPath support to XML::DOM, using XML::XPath engine"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="dev-perl/XML-DOM

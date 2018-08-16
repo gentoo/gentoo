@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/mesa/mesa.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 if [[ ${PV} = 9999 ]]; then
 	GIT_ECLASS="git-r3"
@@ -25,7 +25,7 @@ if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -46,7 +46,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 REQUIRED_USE="
 	d3d9?   ( dri3 gallium )
 	llvm?   ( gallium )
-	opencl? ( gallium llvm )
+	opencl? ( gallium llvm || ( video_cards_r600 video_cards_radeonsi ) )
 	openmax? ( gallium )
 	gles1?  ( egl )
 	gles2?  ( egl )

@@ -4,16 +4,17 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
-inherit kde5 versionator
+VIRTUALX_REQUIRED="test"
+inherit kde5 eapi7-ver
 
 DESCRIPTION="Small utility which bothers you at certain intervals"
 HOMEPAGE="https://userbase.kde.org/RSIBreak"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/$(get_version_component_range 1-2)/${P}.tar.xz"
+	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
 fi
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="

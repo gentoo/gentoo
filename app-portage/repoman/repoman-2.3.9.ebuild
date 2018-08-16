@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	S="${WORKDIR}/${P}/repoman"
 else
 	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"
@@ -55,13 +55,15 @@ python_install() {
 }
 
 pkg_postinst() {
-	einfo ""
-	einfo "This release of repoman is from the new portage/repoman split"
-	einfo "release code base."
-	einfo "This new repoman code base is still being developed.  So its API's"
-	einfo "are not to be considered stable and are subject to change."
-	einfo "The code released has been tested and considered ready for use."
-	einfo "This however does not guarantee it to be completely bug free."
-	einfo "Please report any bugs you may encounter."
-	einfo ""
+	if [[ -z {REPLACING_VERSIONS} ]]; then
+		elog ""
+		elog "This release of repoman is from the new portage/repoman split"
+		elog "release code base."
+		elog "This new repoman code base is still being developed.  So its API's"
+		elog "are not to be considered stable and are subject to change."
+		elog "The code released has been tested and considered ready for use."
+		elog "This however does not guarantee it to be completely bug free."
+		elog "Please report any bugs you may encounter."
+		elog ""
+	fi
 }

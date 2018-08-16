@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2-utils multilib python-single-r1 qmake-utils xdg
 
 DESCRIPTION="A general purpose tile map editor"
-HOMEPAGE="http://www.mapeditor.org/"
+HOMEPAGE="https://www.mapeditor.org/"
 SRC_URI="https://github.com/bjorn/tiled/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+"

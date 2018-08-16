@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="a dockapp showing fortune-mod messages"
-HOMEPAGE="http://www.dockapps.net/wmfortune"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmfortune"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

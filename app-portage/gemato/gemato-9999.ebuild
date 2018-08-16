@@ -4,7 +4,7 @@
 EAPI=6
 
 # pyblake2 & pysha3 are broken with pypy3
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} pypy )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 git-r3
 
@@ -27,7 +27,7 @@ MODULE_RDEPEND="
 
 RDEPEND="${MODULE_RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND=">=dev-python/setuptools-34[${PYTHON_USEDEP}]
 	test? ( ${MODULE_RDEPEND} )"
 
 python_test() {
@@ -38,7 +38,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	if use tools; then
-		insinto /usr/share/gemato
-		doins utils/*.{bash,py}
+		exeinto /usr/share/gemato
+		doexe utils/*.{bash,py}
 	fi
 }

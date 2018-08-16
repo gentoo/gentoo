@@ -5,9 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2-utils flag-o-matic linux-info xdg-utils \
-	multilib multilib-minimal pam python-single-r1 user versionator \
-	systemd toolchain-funcs
+inherit autotools eapi7-ver gnome2-utils flag-o-matic linux-info xdg-utils multilib multilib-minimal pam user systemd toolchain-funcs
 
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
@@ -32,7 +30,7 @@ HOMEPAGE="https://www.cups.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug kerberos lprng-compat pam python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
+IUSE="acl dbus debug kerberos lprng-compat pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
 CDEPEND="
 	app-text/libpaper
@@ -47,10 +45,7 @@ CDEPEND="
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
 	pam? ( virtual/pam )
-	python? ( ${PYTHON_DEPS} )
-	ssl? (
-		>=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}]
-	)
+	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
 	X? ( x11-misc/xdg-utils )
@@ -69,7 +64,6 @@ RDEPEND="${CDEPEND}
 PDEPEND=">=net-print/cups-filters-1.0.43"
 
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
 	usb? ( threads )
 "
 
@@ -95,8 +89,6 @@ pkg_setup() {
 	enewgroup lp
 	enewuser lp -1 -1 -1 lp
 	enewgroup lpadmin 106
-
-	use python && python-single-r1_pkg_setup
 
 	if use kernel_linux; then
 		linux-info_pkg_setup
@@ -176,7 +168,6 @@ multilib_src_configure() {
 		$(use_enable debug debug-printfs)
 		$(use_enable kerberos gssapi)
 		$(multilib_native_use_enable pam)
-		$(multilib_native_use_with python python "${PYTHON}")
 		$(use_enable static-libs static)
 		$(use_enable threads)
 		$(use_enable ssl gnutls)
@@ -314,7 +305,7 @@ pkg_postinst() {
 	local v
 
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.2.2-r2 ${v}; then
+		if ! ver_test ${v} -ge 2.2.2-r2 ; then
 			echo
 			ewarn "The cupsd init script switched to using pidfiles. Shutting down"
 			ewarn "cupsd will fail the next time. To fix this, please run once as root"

@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
@@ -59,7 +60,7 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.40.0
+MESON_DEPEND=">=dev-util/meson-0.45.1
 	>=dev-util/ninja-1.7.2"
 
 # @ECLASS-VARIABLE: MESON_AUTO_DEPEND

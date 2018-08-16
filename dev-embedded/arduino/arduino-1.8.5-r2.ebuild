@@ -57,7 +57,9 @@ KEYWORDS="~amd64 ~x86"
 # scanelf bark. It's also why we need a separate package for arduino-listserialportsc because if
 # we install it in the context of this package, we will get QA notices telling us we're doing a
 # bad thing.
-RESTRICT="strip binchecks"
+RESTRICT="strip"
+QA_PREBUILT="usr/share/arduino/hardware/arduino/avr/firmwares/*
+	usr/share/arduino/libraries/WiFi/extras/*"
 IUSE="doc"
 
 CDEPEND="dev-embedded/arduino-builder"

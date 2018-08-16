@@ -68,8 +68,10 @@ REQUIRED_USE="
 	|| ( client server )
 "
 
-RDEPEND="server? ( !dev-util/gdbserver )
+RDEPEND="
+	server? ( !dev-util/gdbserver )
 	client? (
+		dev-libs/mpfr:0=
 		>=sys-libs/ncurses-5.2-r2:0=
 		sys-libs/readline:0=
 		lzma? ( app-arch/xz-utils )
@@ -167,6 +169,11 @@ src_configure() {
 			$(use_with python python "${EPYTHON}")
 		)
 	fi
+	if use sparc-solaris || use x86-solaris ; then
+		# disable largefile support
+		# https://sourceware.org/ml/gdb-patches/2014-12/msg00058.html
+		myconf+=( --disable-largefile )
+	fi
 
 	econf "${myconf[@]}"
 }
@@ -176,22 +183,26 @@ src_test() {
 }
 
 src_install() {
-	use server && ! use client && cd gdb/gdbserver
+	if use server && ! use client; then
+		cd gdb/gdbserver || die
+	fi
 	default
-	use client && find "${ED}"/usr -name libiberty.a -delete
-	cd "${S}"
+	if use client; then
+		find "${ED}"/usr -name libiberty.a -delete || die
+	fi
+	cd "${S}" || die
 
 	# Delete translations that conflict with binutils-libs. #528088
 	# Note: Should figure out how to store these in an internal gdb dir.
 	if use nls ; then
 		find "${ED}" \
 			-regextype posix-extended -regex '.*/(bfd|opcodes)[.]g?mo$' \
-			-delete
+			-delete || die
 	fi
 
 	# Don't install docs when building a cross-gdb
 	if [[ ${CTARGET} != ${CHOST} ]] ; then
-		rm -r "${ED}"/usr/share/{doc,info,locale}
+		rm -rf "${ED}"/usr/share/{doc,info,locale} || die
 		local f
 		for f in "${ED}"/usr/share/man/*/* ; do
 			if [[ ${f##*/} != ${CTARGET}-* ]] ; then

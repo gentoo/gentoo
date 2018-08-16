@@ -1,3 +1,6 @@
+# Matthew Thode <prometheanfire@gentoo.org> (30 Jul 2018)
+# sys-apps/bolt links against systemd, which gentoo SELinux does not support
+sys-apps/bolt
 
 # Göktürk Yüksek <gokturk@gentoo.org> (09 Nov 2016)
 # On behalf of proxy-maint
@@ -25,6 +28,7 @@ gnome-extra/gnome-logs
 gnome-extra/gnome-shell-extensions
 gnome-extra/gnome-shell-frippery
 gnome-extra/gnome-shell-extensions-topicons-plus
+gnome-extra/gnome-shell-extension-gsconnect
 gnome-extra/gnome-tweak-tool
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
@@ -39,4 +43,5 @@ sys-apps/dbus-broker
 # Gilles Dartiguelongue <eva@gentoo.org> (24 May 2018)
 # Packages use systemd unconditionally for now
 >=app-admin/abrt-2.10
+app-admin/gnome-abrt
 >=dev-libs/libreport-2.9

@@ -26,6 +26,18 @@
 -neon
 -armvfp
 
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
+# Michał Górny <mgorny@gentoo.org> (09 Jul 2018)
+# No OpenCL provider is available on arm64.
+opencl
+
 # Michał Górny <mgorny@gentoo.org> (03 Feb 2018)
 # dev-lang/luajit not tested here.
 luajit
@@ -49,10 +61,6 @@ gps
 # Mart Raudsepp <leio@gentoo.org> (17 Feb 2017)
 # x11-misc/colord not tested on arm64 yet
 colord
-
-# Mart Raudsepp <leio@gentoo.org> (05 Feb 2017)
-# dev-libs/DirectFB not tested on arm64 (and we probably don't want it)
-directfb
 
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # net-fs/samba not tested on arm64 yet
@@ -130,13 +138,11 @@ mssql
 # havent tested yet
 ruby
 ctypes-python
-sasl
 libproxy
 pkcs11
 bazaar
 darcs
 mercurial
-kerberos
 gpg
 emacs
 gphoto2
@@ -148,14 +154,12 @@ xemacs
 rpm
 scanner
 zvbi
-ldap
 mysql
 fluidsynth
 sid
 mms
 mtp
 ieee1394
-sctp
 pm-utils
 darcs
 bs2b

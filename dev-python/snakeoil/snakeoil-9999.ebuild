@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
@@ -22,13 +22,11 @@ SLOT="0"
 IUSE="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
-[[ ${PV} == 9999 ]] && DEPEND+=" $(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]' 'python3*')"
-
-python_configure_all() {
-	# disable snakeoil 2to3 caching
-	unset PY2TO3_CACHEDIR
-}
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+	)"
+[[ ${PV} == 9999 ]] && DEPEND+=" dev-python/cython[${PYTHON_USEDEP}]"
 
 python_test() {
 	esetup.py test

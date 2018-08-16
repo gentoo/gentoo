@@ -60,6 +60,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-perl/File-Which
 			dev-perl/Test-Differences )"
 
-PATCHES=( "${FILESDIR}/${PN}-2.7-drop-mozilla-ca.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.7-drop-mozilla-ca.patch"
+	"${FILESDIR}/${PN}-2.5-unescaped-left-brace-in-regex.patch"
+	)
 
 mydoc="doc/biber.tex"

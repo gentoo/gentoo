@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 
-inherit cmake-utils eutils flag-o-matic gnome2 python-single-r1 subversion xdg-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils python-single-r1 subversion xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
@@ -49,8 +49,7 @@ REQUIRED_USE="
 
 # osg
 # couple of third_party libs bundled
-COMMON_DEPEND="
-	${PYTHON_DEPS}
+COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/libmspub
 	app-text/poppler:=
 	dev-libs/hyphen
@@ -88,10 +87,12 @@ COMMON_DEPEND="
 	tk? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
 "
 RDEPEND="${COMMON_DEPEND}
-	app-text/ghostscript-gpl"
+	app-text/ghostscript-gpl
+"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-docdir.patch
@@ -117,8 +118,6 @@ src_prepare() {
 	sed \
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
-
-	edos2unix scribus/ui/propertiespalette_utils.cpp
 
 	cmake-utils_src_prepare
 }
@@ -158,22 +157,17 @@ src_configure() {
 		-DWANT_DISTROBUILD=ON
 		-DDOCDIR="${EPREFIX%/}/usr/share/doc/${PF}/"
 		-DWANT_GUI_LANG="${langs#;};en"
-		-DWANT_CPP11=ON
 		-DWITH_PODOFO="$(usex pdf)"
 		-DWITH_BOOST="$(usex boost)"
 		-DWANT_GRAPHICSMAGICK="$(usex graphicsmagick)"
 		-DWANT_NOOSG="$(usex !osg)"
 		-DWANT_DEBUG="$(usex debug)"
-		-DWANT_NOHEADERINSTALL="$(usex minimal)"
+		-DWANT_HEADERINSTALL="$(usex !minimal)"
 		-DWANT_HUNSPELL="$(usex hunspell)"
 		-DWANT_NOEXAMPLES="$(usex !examples)"
 		-DWANT_NOTEMPLATES="$(usex !templates)"
-		)
+	)
 	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
 }
 
 src_install() {
@@ -213,10 +207,6 @@ src_install() {
 	newicon -s 64 resources/iconsets/artwork/icon_32x32@2x.png scribus.png
 	doicon resources/iconsets/*/scribus.png
 	domenu scribus.desktop
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

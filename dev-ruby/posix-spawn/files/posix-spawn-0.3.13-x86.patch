@@ -1,0 +1,23 @@
+From 5201e921a788fbb97f14ea0c617a2213dc3da1ca Mon Sep 17 00:00:00 2001
+From: Pascal Terjan <pterjan@google.com>
+Date: Sun, 20 Aug 2017 12:13:15 +0100
+Subject: [PATCH] Fix build when SIZEOF_INT == SIZEOF_LONG
+
+Signed-off-by: Aman Gupta <aman@tmm1.net>
+---
+ ext/posix-spawn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ext/posix-spawn.c b/ext/posix-spawn.c
+index 1659bed..2e4c4de 100644
+--- a/ext/posix-spawn.c
++++ b/ext/posix-spawn.c
+@@ -61,7 +61,7 @@ posixspawn_obj_to_fd(VALUE obj)
+ 			 * rb_fix2int takes care of raising if the provided object is a
+ 			 * Bignum and is out of range of an int
+ 			 */
+-			fd = (int)rb_fix2int(obj);
++			fd = FIX2INT(obj);
+ 			break;
+ 
+ 		case T_SYMBOL:

@@ -24,6 +24,7 @@ inherit estack toolchain-funcs
 # Echoes the directory where Qt4 binaries are installed.
 # EPREFIX is already prepended to the returned path.
 qt4_get_bindir() {
+	[[ ${EAPI:-0} == [0123456] ]] || die "${FUNCNAME[1]} is banned in EAPI 7 and later"
 	has "${EAPI:-0}" 0 1 2 && use !prefix && EPREFIX=
 
 	local qtbindir=${EPREFIX}$(qt4_get_libdir)/bin
@@ -38,6 +39,7 @@ qt4_get_bindir() {
 # @DESCRIPTION:
 # Echoes the directory where Qt4 headers are installed.
 qt4_get_headerdir() {
+	[[ ${EAPI:-0} == [0123456] ]] || die "${FUNCNAME[1]} is banned in EAPI 7 and later"
 	echo /usr/include/qt4
 }
 
@@ -45,6 +47,7 @@ qt4_get_headerdir() {
 # @DESCRIPTION:
 # Echoes the directory where Qt4 libraries are installed.
 qt4_get_libdir() {
+	[[ ${EAPI:-0} == [0123456] ]] || die "${FUNCNAME[1]} is banned in EAPI 7 and later"
 	echo /usr/$(get_libdir)/qt4
 }
 
@@ -52,6 +55,7 @@ qt4_get_libdir() {
 # @DESCRIPTION:
 # Echoes the directory where Qt4 mkspecs are installed.
 qt4_get_mkspecsdir() {
+	[[ ${EAPI:-0} == [0123456] ]] || die "${FUNCNAME[1]} is banned in EAPI 7 and later"
 	echo /usr/share/qt4/mkspecs
 }
 
@@ -59,6 +63,7 @@ qt4_get_mkspecsdir() {
 # @DESCRIPTION:
 # Echoes the directory where Qt4 plugins are installed.
 qt4_get_plugindir() {
+	[[ ${EAPI:-0} == [0123456] ]] || die "${FUNCNAME[1]} is banned in EAPI 7 and later"
 	echo $(qt4_get_libdir)/plugins
 }
 
@@ -161,6 +166,7 @@ qmake-utils_find_pro_file() {
 eqmake4() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ ${EAPI:-0} == [0123456] ]] || die "${FUNCNAME[1]} is banned in EAPI 7 and later"
 	has "${EAPI:-0}" 0 1 2 && use !prefix && EPREFIX=
 
 	ebegin "Running qmake"

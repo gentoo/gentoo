@@ -18,7 +18,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
@@ -94,16 +94,12 @@ multilib_src_configure() {
 		# if we're using libunwind and clang with compiler-rt, we want
 		# to link to compiler-rt instead of -lgcc_s
 		if tc-is-clang; then
-			# get the full library list out of 'pretend mode'
-			# and grep it for libclang_rt references
-			local args=( $($(tc-getCC) -### -x c - 2>&1 | tail -n 1) )
-			local i
-			for i in "${args[@]}"; do
-				if [[ ${i} == *libclang_rt* ]]; then
-					want_gcc_s=OFF
-					extra_libs+=( "${i}" )
-				fi
-			done
+			local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+			   ${LDFLAGS} -print-libgcc-file-name)
+			if [[ ${compiler_rt} == *libclang_rt* ]]; then
+				want_gcc_s=OFF
+				extra_libs+=( "${compiler_rt}" )
+			fi
 		fi
 	fi
 

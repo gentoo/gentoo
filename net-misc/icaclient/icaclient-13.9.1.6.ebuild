@@ -7,7 +7,7 @@ EAPI=6
 inherit desktop eutils multilib versionator xdg-utils
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
-HOMEPAGE="http://www.citrix.com/"
+HOMEPAGE="https://www.citrix.com/"
 SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 	x86? ( linuxx86-${PV}.tar.gz )"
 
@@ -39,7 +39,7 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libvorbis
 	media-libs/speex
-	net-dns/libidn
+	net-dns/libidn:1.33
 	net-libs/libsoup:2.4
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib

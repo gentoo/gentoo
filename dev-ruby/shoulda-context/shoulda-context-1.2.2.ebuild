@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CONTRIBUTING.md README.md"
@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/thoughtbot/shoulda-context"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 hppa ~ppc ~ppc64"
 IUSE="doc test"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2

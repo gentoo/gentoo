@@ -5,13 +5,13 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
-<maintainer type="person">
-<email>jer@gentoo.org</email>
-</maintainer>
+	<maintainer type="person">
+		<email>jer@gentoo.org</email>
+	</maintainer>
 	<use>
-	<flag name="inspector">Enable V8 inspector</flag>
-	<flag name="npm">Enable NPM package manager</flag>
-	<flag name="snapshot">Enable snapshot creation for faster startup</flag>
-	<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="inspector">Enable V8 inspector</flag>
+		<flag name="npm">Enable NPM package manager</flag>
+		<flag name="snapshot">Enable snapshot creation for faster startup</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 	</use>
 </pkgmetadata>

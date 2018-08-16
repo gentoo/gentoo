@@ -4,6 +4,7 @@
 # @ECLASS: xfconf.eclass
 # @MAINTAINER:
 # XFCE maintainers <xfce@gentoo.org>
+# @SUPPORTED_EAPIS: 5
 # @BLURB: Default XFCE ebuild layout
 # @DESCRIPTION:
 # Default XFCE ebuild layout

@@ -7,18 +7,18 @@ inherit autotools eutils user linux-info systemd readme.gentoo-r1 bash-completio
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
 else
 	# Versions with 4 numbers are stable updates:
 	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.xz"
+		SRC_URI="https://libvirt.org/sources/stable_updates/${P}.tar.xz"
 	else
-		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
+		SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	SLOT="0/${PV}"
 fi
 

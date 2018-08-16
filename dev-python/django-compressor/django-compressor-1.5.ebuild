@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
-	dev-python/django[${PYTHON_USEDEP}]
+	<dev-python/django-1.9[${PYTHON_USEDEP}]
 	>=dev-python/django-appconf-0.4[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

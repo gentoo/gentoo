@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 cmake-utils git-2
+inherit python-single-r1 cmake-utils git-r3
 
 DESCRIPTION="This module implements a complete Mode S and ADS-B receiver for Gnuradio"
 HOMEPAGE="https://www.cgran.org/wiki/gr-air-modes"

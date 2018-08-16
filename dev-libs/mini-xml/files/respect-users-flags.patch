@@ -1,0 +1,30 @@
+--- a/configure.ac	2017-10-28 18:23:11.000000000 +0200
++++ b/configure.ac	2018-07-13 23:29:39.710622168 +0200
+@@ -255,7 +255,7 @@
+ 	CFLAGS="-Wall -D_GNU_SOURCE $CFLAGS"
+ 
+ 	if test "x$OPTIM" = x; then
+-		OPTIM="-Os -g"
++		OPTIM=""
+ 	fi
+ 
+ 	if test "x$use_ansi" = xyes; then
+--- a/Makefile.in	2017-10-28 18:23:11.000000000 +0200
++++ b/Makefile.in	2018-07-13 23:27:51.101622582 +0200
+@@ -67,7 +67,6 @@
+ # Rules...
+ #
+ 
+-.SILENT:
+ .SUFFIXES:	.c .man .o
+ .c.o:
+ 	echo Compiling $<
+@@ -271,7 +270,7 @@
+ 
+ libmxml.so.1.6:	$(LIBOBJS)
+ 	echo Creating $@...
+-	$(DSO) $(DSOFLAGS) -o libmxml.so.1.6 $(LIBOBJS)
++	$(DSO) $(DSOFLAGS) $(LDFLAGS) -o libmxml.so.1.6 $(LIBOBJS)
+ 	$(RM) libmxml.so libmxml.so.1
+ 	$(LN) libmxml.so.1.6 libmxml.so
+ 	$(LN) libmxml.so.1.6 libmxml.so.1

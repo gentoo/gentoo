@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ EAPI=4
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Provides an alternate implementation for open, link, rename, and unlink"
-HOMEPAGE="http://untroubled.org/syncdir"
-SRC_URI="http://untroubled.org/syncdir/${P}.tar.gz"
+HOMEPAGE="https://untroubled.org/syncdir"
+SRC_URI="https://untroubled.org/syncdir/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

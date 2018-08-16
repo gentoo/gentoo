@@ -30,7 +30,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 
@@ -107,15 +107,15 @@ src_unpack() {
 
 src_prepare() {
 	# fix finding compiler-rt libs
-	eapply "${FILESDIR}"/5.0.1/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
+	eapply "${FILESDIR}"/5.0.2/0001-Driver-Use-arch-type-to-find-compiler-rt-libraries-o.patch
 	# fix setting LD_LIBRARY_PATH for tests on *BSD
-	eapply "${FILESDIR}"/5.0.1/0002-test-Fix-clang-test-for-FreeBSD-and-NetBSD.patch
+	eapply "${FILESDIR}"/5.0.2/0002-test-Fix-clang-test-for-FreeBSD-and-NetBSD.patch
 	# add Prefix include paths for Darwin
-	eapply "${FILESDIR}"/5.0.1/darwin_prefix-include-paths.patch
+	eapply "${FILESDIR}"/6.0.1/darwin_prefix-include-paths.patch
 
 	cd tools/extra || die
 	# fix setting LD_LIBRARY_PATH for tests on *BSD (extra part)
-	eapply "${FILESDIR}"/5.0.1/extra/0001-Assume-the-shared-library-path-variable-is-LD_LIBRAR.patch
+	eapply "${FILESDIR}"/5.0.2/extra/0001-Assume-the-shared-library-path-variable-is-LD_LIBRAR.patch
 	cd ../.. || die
 
 	cmake-utils_src_prepare

@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6} pypy)
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="
 	|| (
@@ -39,16 +39,24 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
+pkg_preinst() {
+	if has_version "<${CATEGORY}/${PN}-0.4.0"; then
+		SHOW_GENTOOKIT_DEV_DEPRECATED_MSG=1
+	fi
+}
+
 pkg_postinst() {
 	# Create cache directory for revdep-rebuild
 	mkdir -p -m 0755 "${EROOT%/}"/var/cache
 	mkdir -p -m 0700 "${EROOT%/}"/var/cache/revdep-rebuild
 
-	einfo "Starting with version 0.4.0, ebump, ekeyword and imlate are now"
-	einfo "part of the gentoolkit package."
-	einfo "The gentoolkit-dev package is now deprecated in favor of a single"
-	einfo "gentoolkit package.   The remaining tools from gentoolkit-dev"
-	einfo "are now obsolete/unused with the git based tree."
+	if [[ ${SHOW_GENTOOKIT_DEV_DEPRECATED_MSG} ]]; then
+		elog "Starting with version 0.4.0, ebump, ekeyword and imlate are now"
+		elog "part of the gentoolkit package."
+		elog "The gentoolkit-dev package is now deprecated in favor of a single"
+		elog "gentoolkit package.   The remaining tools from gentoolkit-dev"
+		elog "are now obsolete/unused with the git based tree."
+	fi
 
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then

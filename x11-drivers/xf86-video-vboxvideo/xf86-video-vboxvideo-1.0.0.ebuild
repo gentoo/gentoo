@@ -8,7 +8,7 @@ inherit xorg-2
 DESCRIPTION="VirtualBox guest video driver"
 HOMEPAGE="https://cgit.freedesktop.org/xorg/driver/xf86-video-vbox/"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

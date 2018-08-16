@@ -1,0 +1,36 @@
+--- a/preludecorrelator/config.py
++++ b/preludecorrelator/config.py
+@@ -19,7 +19,11 @@
+ 
+ import os
+ import glob
+-import StringIO
++import sys
++if sys.version_info >= (3, 0):
++    from io import StringIO
++else:
++    import StringIO
+ try:
+     import configparser
+ except:
+@@ -77,5 +81,8 @@
+                 f = open(fname, 'r')
+             except IOError:
+                 continue
+-            self.readfp(StringIO.StringIO('[prelude]\n' + f.read()))
++            if sys.version_info >= (3, 0):
++                self.readfp(StringIO('[prelude]\n' + f.read()))
++            else:
++                self.readfp(StringIO.StringIO('[prelude]\n' + f.read()))
+             f.close()
+--- a/preludecorrelator/context.py
++++ b/preludecorrelator/context.py
+@@ -362,7 +362,7 @@
+ 
+         try:
+             _CONTEXT_TABLE.update(ContextUnpickler(fd).load())
+-        except EOFError:
++        except:
+             return
+ 
+         logger.debug("[load]: %d context loaded", len(_CONTEXT_TABLE))

@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit cmake-utils flag-o-matic
 
 MY_P="SuperTux-v${PV}-Source"
@@ -32,35 +34,28 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.0-{desktop,license,icon}.patch
 	"${FILESDIR}"/${PN}-0.5.0-{obstack,tinygettext}.patch
+	"${FILESDIR}"/${PN}-0.5.1-ninja.patch
 )
 
 src_prepare() {
 	cmake-utils_src_prepare
 
 	# This is not a developer release so switch the logo to the non-dev one.
-	sed 's@logo_dev@logo@' \
+	sed -e 's@logo_dev@logo@' \
 		-i data/images/objects/logo/logo.sprite || die
 }
 
 src_configure() {
 	append-cxxflags -std=c++11
+
 	local mycmakeargs=(
 		-DWERROR=OFF
 		-DINSTALL_SUBDIR_BIN=bin
 		-DINSTALL_SUBDIR_DOC=share/doc/${PF}
 		-DINSTALL_SUBDIR_SHARE=share/${PN}2
 		-DENABLE_SQDBG="$(usex debug)"
-		-DUSE_DEBUG="$(usex debug)"
 		-DENABLE_BOOST_STATIC_LIBS=OFF # bug! Please check if this is still required.
+		-DUSE_SYSTEM_PHYSFS=ON
 	)
-
 	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
-}
-
-src_install() {
-	cmake-utils_src_install
 }

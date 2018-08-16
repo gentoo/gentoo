@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/$
 LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" = *_* ]] || \
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="nls test"
 
 RDEPEND="
@@ -26,6 +26,8 @@ DEPEND="
 	nls? ( sys-devel/gettext )
 	test? ( dev-tcltk/expect )
 "
+
+PATCHES=( "${FILESDIR}/${P}-fix-printf-o-handling-on-ppc.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
@@ -48,7 +50,11 @@ src_install() {
 }
 
 src_test() {
-	emake V=1 test
+	if has_version ~${CATEGORY}/${P} ; then
+		emake -j1 V=1 SHOW_INTERACTIVE_LOG=1 test
+	else
+		ewarn "Some tests only work when the package is already installed"
+	fi
 }
 
 pkg_postinst() {

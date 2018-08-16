@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="xtermcontrol enables dynamic control of XFree86 xterm properties"
-HOMEPAGE="http://www.thrysoee.dk/xtermcontrol/"
-SRC_URI="http://www.thrysoee.dk/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.thrysoee.dk/xtermcontrol/"
+SRC_URI="https://www.thrysoee.dk/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

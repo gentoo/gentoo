@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5
 #
 # We install binutils into CTARGET-VERSION specific directories.  This lets
 # us easily merge multiple versions for multiple targets (if we wish) and
@@ -15,7 +16,6 @@ if [[ -n ${BINUTILS_TYPE} ]] ; then
 	BTYPE=${BINUTILS_TYPE}
 else
 	case ${PV} in
-	9999)      BTYPE="git";;
 	9999_pre*) BTYPE="snap";;
 	*.*.90)    BTYPE="snap";;
 	*.*.*.*.*) BTYPE="hjlu";;
@@ -24,11 +24,6 @@ else
 fi
 
 case ${BTYPE} in
-git)
-	BVER="git"
-	EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
-	inherit git-2
-	;;
 snap)
 	BVER=${PV/9999_pre}
 	;;
@@ -58,7 +53,6 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 case ${BTYPE} in
-	git) SRC_URI="" ;;
 	snap)
 		SRC_URI="ftp://gcc.gnu.org/pub/binutils/snapshots/binutils-${BVER}.tar.bz2
 			ftp://sourceware.org/pub/binutils/snapshots/binutils-${BVER}.tar.bz2" ;;
@@ -112,11 +106,7 @@ if is_cross ; then
 	DEPEND+=" >=sys-libs/binutils-libs-${PV}"
 fi
 
-S=${WORKDIR}/binutils
-case ${BVER} in
-git) ;;
-*) S=${S}-${BVER} ;;
-esac
+S=${WORKDIR}/binutils-${BVER}
 
 LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${BVER}
 INCPATH=${LIBPATH}/include
@@ -129,10 +119,7 @@ else
 fi
 
 tc-binutils_unpack() {
-	case ${BTYPE} in
-	git) git-2_src_unpack ;;
-	*)   unpacker ${A} ;;
-	esac
+	unpacker ${A}
 	mkdir -p "${MY_BUILDDIR}"
 	[[ -d ${WORKDIR}/patch ]] && mkdir "${WORKDIR}"/patch/skip
 }

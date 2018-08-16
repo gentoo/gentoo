@@ -1,0 +1,12 @@
+--- a/usr/sbin/unifi-video
++++ b/usr/sbin/unifi-video
+@@ -271,7 +271,7 @@
+ JSVC_OPTS="${JSVC_OPTS} \
+  -user ${PKGUSER} \
+  -home ${JAVA_HOME} \
+- -cp /usr/share/java/commons-daemon.jar:${MAINJAR} \
++ -cp /usr/share/commons-daemon/lib/commons-daemon.jar:${MAINJAR} \
+  -pidfile ${PIDFILE} \
+  -procname ${NAME} \
+  ${JSVC_EXTRA_OPTS} \
+

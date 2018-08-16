@@ -1,0 +1,34 @@
+Index: scourge/configure.in
+===================================================================
+--- scourge/configure.in	(revision 3411)
++++ scourge/configure.in	(working copy)
+@@ -56,6 +56,7 @@
+ # Set up binreloc (for a relocatable autopackage file)
+ AM_BINRELOC
+ 
++PKG_PROG_PKG_CONFIG
+ dnl --------------------------------------------------------------------------
+ dnl General options
+ dnl --------------------------------------------------------------------------
+@@ -413,19 +414,9 @@
+   FREETYPE_LIBS=`/sw/lib/freetype2/bin/freetype-config --libs`
+   have_FREETYPE=yes
+ else
+-AC_MSG_CHECKING([for freetype-config library])
+-
+-AC_PATH_PROG(FREETYPE, freetype-config, no)
+-
+-if test "$FREETYPE" = "no"; then
+-  AC_MSG_ERROR(Cannot find freetype2: Is freetype-config in path?)
+-  have_FREETYPE=no
+-else
+-  FREETYPE_CFLAGS=`freetype-config --cflags`
+-  FREETYPE_LIBS=`freetype-config --libs`
+-  have_FREETYPE=yes
++  PKG_CHECK_MODULES(FREETYPE, freetype2, have_FREETYPE=yes, 
++    AC_MSG_ERROR(Cannot find freetype2))
+ fi
+-fi
+ 
+ LIBS="$saved_LIBS"
+ TR_LIBS="$TR_LIBS $FREETYPE_LIBS"

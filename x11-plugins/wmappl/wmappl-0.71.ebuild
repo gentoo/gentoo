@@ -6,7 +6,7 @@ EAPI=0
 IUSE=""
 DESCRIPTION="Simple application launcher for the Window Maker dock"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-HOMEPAGE="http://wmappl.sourceforge.net/"
+HOMEPAGE="https://www.dockapps.net/wmappl"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext

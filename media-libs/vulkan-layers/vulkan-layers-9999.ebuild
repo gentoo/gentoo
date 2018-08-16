@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="6a354a5200df761a7a7fabc338e9c1b81961919b"
+	EGIT_COMMIT="0ec7ce985fba34d5303f84f09fab79cd2b9874a8"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-ValidationLayers-${EGIT_COMMIT}"
@@ -29,7 +29,7 @@ RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
 		dev-util/glslang:=[${MULTILIB_USEDEP}]
 		>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
-		dev-util/vulkan-headers
+		>=dev-util/vulkan-headers-1.1.77.0-r1
 		wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 		X? (
 		   x11-libs/libX11:=[${MULTILIB_USEDEP}]
@@ -37,7 +37,6 @@ DEPEND="${PYTHON_DEPS}
 		   )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-Use-usr-for-vulkan-headers.patch"
 	"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
 	 )
 
@@ -50,6 +49,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DBUILD_TESTS=False
 		-DGLSLANG_INSTALL_DIR="/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
 	)
 	cmake-utils_src_configure
 }

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 git-r3 multiprocessing
 
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"

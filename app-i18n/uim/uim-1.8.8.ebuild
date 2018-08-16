@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools elisp-common gnome2-utils
+inherit autotools elisp-common flag-o-matic gnome2-utils
 
 DESCRIPTION="A multilingual input method framework"
 HOMEPAGE="https://github.com/uim/uim"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 x86"
 IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk2 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify libressl m17n-lib ncurses nls qt5 skk sqlite ssl static-libs xft"
 RESTRICT="test"
 REQUIRED_USE="gtk? ( X )
@@ -82,6 +82,7 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-tinfo.patch
+	"${FILESDIR}"/${PN}-xkb.patch
 	"${FILESDIR}"/${PN}-zh-TW.patch
 )
 DOCS=( AUTHORS NEWS README RELNOTE doc )
@@ -92,6 +93,10 @@ SITEFILE="50${PN}-gentoo.el"
 src_prepare() {
 	default
 	sed -i "s:\$libedit_path/lib:/$(get_libdir):g" configure.ac
+	# fix build with >=dev-scheme/chicken-4, bug #656852
+	touch scm/json-parser-expanded.scm
+	# fix build with "-march=pentium4 -O2", bug #661806
+	use x86 && append-cflags $(test-flags-CC -fno-inline-small-functions)
 
 	eautoreconf
 }

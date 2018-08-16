@@ -1,0 +1,25 @@
+From 27c13f3e622b8a3eaaa05bb62b0149604bdcc9e8 Mon Sep 17 00:00:00 2001
+From: Tommy Jerry Mairo <tommy.mairo@gmail.com>
+Date: Wed, 21 Mar 2018 19:56:28 +0100
+Subject: [PATCH] Bugfix: API mismatch with crypto++ 6.0.0
+
+---
+ src/ClientCreditsList.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ClientCreditsList.cpp b/src/ClientCreditsList.cpp
+index 3bea9fe2d..69e881fd8 100644
+--- a/src/ClientCreditsList.cpp
++++ b/src/ClientCreditsList.cpp
+@@ -312,7 +312,7 @@ void CClientCreditsList::InitalizeCrypting()
+ 		// calculate and store public key
+ 		CryptoPP::RSASSA_PKCS1v15_SHA_Verifier pubkey(*static_cast<CryptoPP::RSASSA_PKCS1v15_SHA_Signer *>(m_pSignkey));
+ 		CryptoPP::ArraySink asink(m_abyMyPublicKey, 80);
+-		pubkey.DEREncode(asink);
++		pubkey.GetMaterial().Save(asink);
+ 		m_nMyPublicKeyLen = asink.TotalPutLength();
+ 		asink.MessageEnd();
+ 	} catch (const CryptoPP::Exception& e) {
+-- 
+2.16.4
+

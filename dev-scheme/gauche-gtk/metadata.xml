@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
 	</maintainer>
 	<longdescription>
 		Gauche extension module to use GTK.
