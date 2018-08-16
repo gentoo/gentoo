@@ -1,38 +1,56 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit toolchain-funcs python-r1 java-pkg-opt-2 java-ant-2 cmake-multilib
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+inherit java-pkg-opt-2 java-ant-2 python-r1 toolchain-funcs cmake-multilib
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
-
+TINY_DNN_PV="1.0.0a3"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~amynka/snap/imgcodecs-${P}.tar.gz
-	contrib? ( https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
-		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz  ) ) "
-LICENSE="BSD"
-SLOT="0/3.3" # subslot = libopencv* soname version
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="contrib cuda debug +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 ipp jpeg jpeg2k lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine contrib_cvv contrib_hdf contrib_sfm contrib_xfeatures2d"
+	dnn_samples? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-res10_300x300-caffeemodel.tar.gz )
+	contrib? (
+		https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
+		contrib_dnn? ( https://github.com/tiny-dnn/tiny-dnn/archive/v${TINY_DNN_PV}.tar.gz -> tiny-dnn-${TINY_DNN_PV}.tar.gz
+			       https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-face_landmark_model.tar.gz
+		)
+		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz )
+	)"
 
+LICENSE="BSD"
+SLOT="0/3.4.1" # subslot = libopencv* soname version
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+IUSE="contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnn_samples +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
-# will silently disable it without the user knowing, which defeats the
+# will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
 REQUIRED_USE="
 	cuda? ( tesseract? ( opencl ) )
+	dnn_samples? ( examples )
 	gflags? ( contrib )
 	glog? ( contrib )
 	contrib_cvv? ( contrib qt5 )
+	contrib_dnn? ( contrib )
 	contrib_hdf? ( contrib )
 	contrib_sfm? ( contrib eigen gflags glog )
 	contrib_xfeatures2d? ( contrib cuda )
 	java? ( python )
 	opengl? ( || ( gtk qt5 ) )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	tesseract? ( contrib )"
+	tesseract? ( contrib )
+	cpu_flags_x86_avx2? ( cpu_flags_x86_avx cpu_flags_x86_fma3 )
+	cpu_flags_x86_fma3? ( cpu_flags_x86_avx2 )
+	cpu_flags_x86_avx? ( cpu_flags_x86_sse4_2 )
+	cpu_flags_x86_sse4_2? ( cpu_flags_x86_sse4_1 cpu_flags_x86_popcnt )
+	cpu_flags_x86_popcnt? ( cpu_flags_x86_sse4_1 )
+	cpu_flags_x86_sse4_1? ( cpu_flags_x86_sse3 cpu_flags_x86_ssse3 )
+	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse3 )
+	cpu_flags_x86_sse3? ( cpu_flags_x86_sse2 )
+	cpu_flags_x86_sse2? ( cpu_flags_x86_sse )"
 
 # The following logic is intrinsic in the build system, but we do not enforce
 # it on the useflags since this just blocks emerging pointlessly:
@@ -66,7 +84,6 @@ RDEPEND="
 		media-libs/libdc1394[${MULTILIB_USEDEP}]
 		sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	)
-	ipp? ( sci-libs/ipp )
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/jasper:=[${MULTILIB_USEDEP}] )
@@ -95,6 +112,7 @@ RDEPEND="
 	xine? ( media-libs/xine-lib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	contrib_dnn? ( dev-libs/cereal )
 	eigen? ( dev-cpp/eigen:3 )
 	java?  ( >=virtual/jdk-1.6 )"
 
@@ -217,9 +235,10 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0-gles.patch"
-	"${FILESDIR}/${PN}-3.1.0-java-magic.patch"
-	"${FILESDIR}/${PN}-3.1.0-find-libraries-fix.patch"
-	"${WORKDIR}/${P}-imgcodecs-gcc.patch" # bug 627958 and https://github.com/opencv/opencv/pull/9376
+	"${FILESDIR}/${PN}-3.4.0-disable-download.patch"
+	"${FILESDIR}/${P}-compilation-C-mode.patch" # https://bugs.gentoo.org/656530
+	"${FILESDIR}/${P}-python-lib-suffix-hack.patch"
+	"${FILESDIR}/${P}-cuda-add-relaxed-constexpr.patch"
 )
 
 pkg_pretend() {
@@ -239,10 +258,17 @@ src_prepare() {
 	sed -e '/add_subdirectory(.*3rdparty.*)/ d' \
 		-i CMakeLists.txt cmake/*cmake || die
 
-	if use contrib && use contrib_xfeatures2d; then
+	if use dnn_samples; then
+		mv  "${WORKDIR}/res10_300x300_ssd_iter_140000.caffemodel" "${WORKDIR}/${P}/samples/dnn/" || die
+	fi
+
+	if use contrib; then
 		cd  "${WORKDIR}/${PN}_contrib-${PV}" || die
-		eapply "${FILESDIR}/${P}-contrib-xfeatures2d.patch"
-		mv "${WORKDIR}"/*.i "${WORKDIR}/${PN}_contrib-${PV}"/modules/xfeatures2d/src/ || die
+		eapply "${FILESDIR}/${PN}-3.3.0-remove-tiny-dnn-autodownload.patch"
+
+		if use contrib_xfeatures2d; then
+			mv "${WORKDIR}"/*.i "${WORKDIR}/${PN}_contrib-${PV}"/modules/xfeatures2d/src/ || die
+		fi
 	fi
 
 	java-pkg-opt-2_src_prepare
@@ -259,6 +285,7 @@ multilib_src_configure() {
 	GLOBALCMAKEARGS=(
 	# Optional 3rd party components
 	# ===================================================
+		-DENABLE_DOWNLOAD=OFF
 		-DWITH_1394=$(usex ieee1394)
 	#	-DWITH_AVFOUNDATION=OFF # IOS
 		-DWITH_VTK=$(multilib_native_usex vtk)
@@ -269,7 +296,7 @@ multilib_src_configure() {
 		-DWITH_GSTREAMER_0_10=OFF	# Don't want this
 		-DWITH_GTK=$(usex gtk)
 		-DWITH_GTK_2_X=$(usex gtk)
-		-DWITH_IPP=$(multilib_native_usex ipp)
+		-DWITH_IPP=OFF
 		-DWITH_JASPER=$(usex jpeg2k)
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_WEBP=$(usex webp)
@@ -306,7 +333,6 @@ multilib_src_configure() {
 		-DWITH_OPENCLAMDBLAS=$(usex opencl)
 		-DWITH_DIRECTX=OFF
 		-DWITH_INTELPERC=OFF
-		-DWITH_JAVA=$(multilib_native_usex java) # Ant needed, no compile flag
 		-DWITH_IPP_A=OFF
 		-DWITH_MATLAB=OFF
 		-DWITH_VA=$(usex vaapi)
@@ -328,6 +354,7 @@ multilib_src_configure() {
 	# OpenCV build components
 	# ===================================================
 		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_JAVA=$(multilib_native_usex java) # Ant needed, no compile flag
 		-DBUILD_ANDROID_EXAMPLES=OFF
 		-BUILD_opencv_apps=
 		-DBUILD_DOCS=OFF # Doesn't install anyways.
@@ -350,6 +377,9 @@ multilib_src_configure() {
 		-DINSTALL_PYTHON_EXAMPLES=$(multilib_native_usex examples)
 	#	-DINSTALL_ANDROID_EXAMPLES=OFF
 		-DINSTALL_TO_MANGLED_PATHS=OFF
+		# opencv uses both ${CMAKE_INSTALL_LIBDIR} and ${LIB_SUFFIX}
+		# to set its destination libdir
+		-DLIB_SUFFIX=
 	# ===================================================
 	# OpenCV build options
 	# ===================================================
@@ -380,6 +410,20 @@ multilib_src_configure() {
 	# ===================================================
 		-DCMAKE_SKIP_RPATH=ON
 		-DOPENCV_DOC_INSTALL_PATH=
+	# ==================================================
+	# cpu flags, should solve 633900
+	#===================================================
+		-DCPU_DISPATCH=
+		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
+		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
+		-DENABLE_SSE3=$(usex cpu_flags_x86_sse3)
+		-DENABLE_SSSE3=$(usex cpu_flags_x86_ssse3)
+		-DENABLE_SSE41=$(usex cpu_flags_x86_sse4_1)
+		-DENABLE_SSE42=$(usex cpu_flags_x86_sse4_2)
+		-DENABLE_POPCNT=$(usex cpu_flags_x86_popcnt)
+		-DENABLE_AVX=$(usex cpu_flags_x86_avx)
+		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
+		-DENABLE_FMA3=$(usex cpu_flags_x86_fma3)
 	)
 
 	# ===================================================
@@ -387,7 +431,8 @@ multilib_src_configure() {
 	# ===================================================
 	if use contrib; then
 		GLOBALCMAKEARGS+=(
-			-DBUILD_opencv_dnn=OFF
+			-DBUILD_opencv_dnn=$(usex contrib_dnn ON OFF)
+			-DTINYDNN_ROOT="${WORKDIR}/tiny-dnn-${TINY_DNN_PV}"
 			-DBUILD_opencv_dnns_easily_fooled=OFF
 			-DBUILD_opencv_xfeatures2d=$(usex contrib_xfeatures2d ON OFF)
 			-DBUILD_opencv_cvv=$(usex contrib_cvv ON OFF)
@@ -415,6 +460,14 @@ multilib_src_configure() {
 	)
 
 	cmake-utils_src_configure
+
+	# Copy face_land_model to ${CMAKE_BINARY_DIR}/${OPENCV_TEST_DATA_INSTALL_PATH}
+	# TODO patch ocv_download to copy files into destination dirs
+	if use contrib_dnn; then
+		mkdir -p "${BUILD_DIR}"/share/OpenCV/testdata/cv/face/ || die
+		cp "${WORKDIR}"/face_landmark_model.dat "${BUILD_DIR}"/share/OpenCV/testdata/cv/face/ || die
+	fi
+
 }
 
 python_module_compile() {
@@ -428,6 +481,7 @@ python_module_compile() {
 		-DPYTHON2_EXECUTABLE=$(type -P python2)
 		-DPYTHON3_EXECUTABLE=$(type -P python3)
 		-DINSTALL_PYTHON_EXAMPLES=$(usex examples)
+		-DLIBPY_SUFFIX=64
 	)
 
 	# Regenerate cache file. Can't use rebuild_cache as it won't

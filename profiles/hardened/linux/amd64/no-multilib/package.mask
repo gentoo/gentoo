@@ -135,6 +135,5 @@ sci-electronics/eagle
 sci-chemistry/cara-bin
 sci-chemistry/mars
 sci-chemistry/xdsstat-bin
-sci-libs/ipp
 sys-libs/lib-compat-loki
 <sys-boot/grub-1.99

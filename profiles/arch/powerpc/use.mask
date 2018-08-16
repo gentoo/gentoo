@@ -120,9 +120,6 @@ lcd_devices_stv5730
 # Both
 lcd_devices_t6963
 
-# Intel Integrated Primitive (sci-libs/ipp) support
-ipp
-
 # dev-lang/orc doesn't play nice
 schroedinger
 

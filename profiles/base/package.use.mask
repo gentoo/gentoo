@@ -608,10 +608,6 @@ net-analyzer/net-snmp pci
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp prevent-removal
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (25 Mai 2012)
-# Requires icc which does not emerge (distfile unavailable)
-media-libs/opencv ipp
-
 # Samuli Suominen <ssuominen@gentoo.org> (20 Mar 2012)
 # This is for udev-acl. Unmasked in default/linux/package.use.mask.
 sys-auth/consolekit acl

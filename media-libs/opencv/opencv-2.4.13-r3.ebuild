@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Itseez/opencv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/2.4"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
+IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -48,7 +48,6 @@ RDEPEND="
 		media-libs/libdc1394
 		sys-libs/libraw1394
 	)
-	ipp? ( sci-libs/ipp )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr )
 	opengl? ( virtual/opengl virtual/glu )
@@ -122,7 +121,7 @@ src_configure() {
 		-DWITH_GSTREAMER_0_10=OFF
 		-DWITH_GTK=$(usex gtk)
 		-DWITH_IMAGEIO=OFF
-		-DWITH_IPP=$(usex ipp)
+		-DWITH_IPP=OFF
 		-DWITH_JASPER=$(usex jpeg2k)
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_OPENEXR=$(usex openexr)
