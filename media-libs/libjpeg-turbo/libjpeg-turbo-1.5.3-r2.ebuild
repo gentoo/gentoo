@@ -36,6 +36,7 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.0-x32.patch #420239
 	"${FILESDIR}"/${P}-divzero_fix.patch #658624
+	"${FILESDIR}"/${P}-cve-2018-11813.patch
 )
 
 src_prepare() {
