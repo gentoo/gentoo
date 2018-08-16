@@ -3,16 +3,18 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg"
 HOMEPAGE="https://github.com/eteran/edb-debugger"
-EGIT_REPO_URI="https://github.com/eteran/edb-debugger.git"
+SRC_URI="https://github.com/eteran/edb-debugger/releases/download/${PV}/edb-debugger-${PV}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="graphviz"
+
+S="${WORKDIR}/${P}"
 
 RDEPEND="
 	dev-libs/capstone
@@ -33,8 +35,13 @@ DEPEND="
 "
 
 src_prepare(){
+	#Make the desktop's entries somewhat better
+	sed -i -e 's/GenericName=edb debugger/GenericName=Evan\x27s Debugger/' edb.desktop || die
+	sed -i -e 's/Comment=edb debugger/Comment=edb is a cross platform x86\/x86-64 debugger/' edb.desktop || die
+
 	if ! use graphviz ; then
 		sed -i -e '/pkg_check_modules(GRAPHVIZ/d' CMakeLists.txt || die
 	fi
+
 	cmake-utils_src_prepare
 }
