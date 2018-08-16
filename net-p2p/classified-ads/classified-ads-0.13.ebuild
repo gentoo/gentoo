@@ -2,41 +2,38 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PLOCALES="en fi sv da uk es"
-PLOCALE_BACKUP="en"
-inherit qmake-utils virtualx l10n
+inherit qmake-utils virtualx
 
 DESCRIPTION="Program for displaying classified advertisement items"
 HOMEPAGE="http://katiska.org/classified-ads/"
-SRC_URI="https://github.com/operatornormal/classified-ads/archive/${PV}.tar.gz \
-		-> classified-ads-${PV}.tar.gz \
-	https://github.com/operatornormal/classified-ads/blob/graphics/preprocessed.tar.gz?raw=true \
-		-> classified-ads-graphics-${PV}.tar.gz"
+SRC_URI="https://github.com/operatornormal/classified-ads/archive/${PV}.tar.gz
+	-> classified-ads-${PV}.tar.gz
+	https://github.com/operatornormal/classified-ads/blob/graphics/preprocessed.tar.gz?raw=true
+	-> classified-ads-graphics-${PV}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="doc test"
 
-RDEPEND="dev-libs/openssl:0
-		>=net-libs/libnatpmp-20130911
-		<=net-libs/libnatpmp-20140401-r1
-		>=net-libs/miniupnpc-1.8
-		sys-apps/file
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5[ssl]
-		dev-qt/qtwidgets:5
-		dev-qt/qtsql:5[sqlite]
-		dev-qt/qtmultimedia:5[widgets]
-		dev-qt/qtprintsupport:5
-		media-libs/opus
-		virtual/libintl
-		dev-lang/tcl:=
-		dev-lang/tk:=
-		sys-libs/zlib
-		app-arch/bzip2"
+RDEPEND="app-arch/bzip2
+	dev-lang/tcl:=
+	dev-lang/tk:=
+	dev-libs/openssl:0
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5[widgets]
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtwidgets:5
+	media-libs/opus
+	net-libs/libnatpmp
+	net-libs/miniupnpc
+	sys-apps/file
+	sys-libs/zlib
+	virtual/libintl"
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -69,9 +66,7 @@ src_compile() {
 		popd > /dev/null || die
 	fi
 	if use test; then
-		pushd testca > /dev/null || die
-		emake
-		popd > /dev/null || die
+		emake -C testca
 	fi
 }
 
