@@ -88,6 +88,8 @@ pkg_postinst() {
 	# Only display this for new installs
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "You need to configure ${PN} to run with a WSGI server of your choice."
+		elog "For example using Apache, you can use www-apache/mod_wsgi,"
+		elog "            using Nginx, you can use www-servers/uwsgi."
 		elog "Don't forget to edit local_settings.py in ${EPREFIX}/etc/${PN}"
 		elog "See https://graphite.readthedocs.org/en/latest/config-local-settings.html"
 		elog "Run emerge --config =${PN}-${PVR} if this is a fresh install."
