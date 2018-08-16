@@ -53,6 +53,7 @@ src_prepare() {
 	if use !pulseaudio; then
 		sed -i 's/AUDIO_BACKEND = pulse/#AUDIO_BACKEND = pulse/' gqrx.pro || die
 	fi
+	cmake-utils_src_prepare
 	eapply_user
 }
 
