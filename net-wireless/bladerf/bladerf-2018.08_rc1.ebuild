@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils udev
 
@@ -37,14 +37,14 @@ CDEPEND=">=dev-libs/libusb-1.0.16
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}"
-PDEPEND=">=net-wireless/bladerf-firmware-2.0.0
-	>=net-wireless/bladerf-fpga-0.6.0"
+PDEPEND=">=net-wireless/bladerf-firmware-2.2.0
+	>=net-wireless/bladerf-fpga-0.7.3"
 
 src_configure() {
 	mycmakeargs=(
 		-DVERSION_INFO_OVERRIDE:STRING="${PV}"
-		$(cmake-utils_use_enable doc BUILD_DOCUMENTATION)
-		$(cmake-utils_use_enable tecla LIBTECLA)
+		-DBUILD_DOCUMENTATION="$(usex doc)"
+		-DENABLE_LIBTECLA="$(usex tecla)"
 		-DTREAT_WARNINGS_AS_ERRORS=OFF
 		-DUDEV_RULES_PATH="$(get_udevdir)"/rules.d
 	)

@@ -29,7 +29,7 @@ IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr soapy uhd"
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_USEDEP}]
-	bladerf? ( net-wireless/bladerf:= )
+	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )
 	mirisdr? ( net-libs/libmirisdr:= )
