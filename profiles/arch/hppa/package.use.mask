@@ -207,10 +207,6 @@ app-text/texlive pdfannotextractor
 # Mask doc-pdf because of Java dependencies (bug #347259)
 net-analyzer/wireshark doc-pdf
 
-# Jeroen Roovers <jer@gentoo.org> (25 Nov 2010)
-# No support for sci-libs/ipp on HPPA (bug #340269)
-media-libs/opencv ipp
-
 # Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
 # MKL not available on this arch
 media-gfx/povray mkl

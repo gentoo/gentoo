@@ -111,7 +111,6 @@ sci-biology/foldingathome
 sci-electronics/eagle
 sci-chemistry/cara-bin
 sci-chemistry/mars
-sci-libs/ipp
 sys-libs/lib-compat-loki
 
 # AMD64 Team; <amd64@gentoo.org>

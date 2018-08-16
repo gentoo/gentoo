@@ -17,9 +17,6 @@ app-emulation/wine-any test
 # Requires sys-boot/grub:0 which is masked here.
 sys-apps/memtest86+ floppy
 
-# Intel Integrated Primitive (sci-libs/ipp) support
-media-libs/opencv ipp
-
 # Alexis Ballier <aballier@gentoo.org> (13 Aug 2009)
 # Requires wine
 media-sound/lmms vst
