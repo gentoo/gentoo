@@ -21,6 +21,10 @@ RDEPEND="${DEPEND}"
 
 S="${DISTDIR}"
 
+src_unpack() {
+	true
+}
+
 src_install() {
 	insinto /usr/share/Nuand/bladeRF/
 	doins bladeRF_fw_v${PV}.img
