@@ -19,7 +19,7 @@ IUSE="bladerf"
 
 RDEPEND="sys-libs/libcap
 		dev-libs/openssl:0=
-		bladerf? ( net-wireless/bladerf )
+		bladerf? ( net-wireless/bladerf:= )
 		net-wireless/rtl-sdr"
 DEPEND="${RDEPEND}
 		virtual/pkgconfig"
