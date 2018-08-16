@@ -102,7 +102,6 @@ dev-python/django-celery
 # Obsolete early GNOME 2 era print libraries. Applications
 # use printing support found directly in x11-libs/gtk+ now.
 # Removal in 30 days. Bug #352952
-gnome-base/libgnomeprintui
 gnome-base/libgnomeprint
 
 # Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
