@@ -21,7 +21,6 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag name="gdal">Enable support for sci-libs/gdal library</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="gflags">Use Google's C++ argument parsing library</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="glog">Use Google's C++ loggin library</flag>
-		<flag name="ipp">Enable Intel Integrated Primitive support</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_xfeatures2d">Enables xfeatures2d and autodownload of samples in contrib</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_cvv">CVV module requires Qt5</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.3.0" name="contrib_dnn">DNN module contrib requires tiny dnn</flag>
