@@ -30,3 +30,37 @@ index e2af52b9..a609f612 100644
 -- 
 2.16.1
 
+From a6b4605b863d45978ebd681c4bbaa3aaf0ab90e7 Mon Sep 17 00:00:00 2001
+From: Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
+Date: Tue, 10 Jul 2018 14:49:42 +0200
+Subject: [PATCH] card-piv.c: initialize variable to fix a ppc64el build
+ failure
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes a build failure with optimized ppc64el and new gcc builds
+card-piv.c: In function ‘piv_validate_general_authentication.isra.3’:
+card-piv.c:2390:9: error: ‘rbuflen’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+    body = sc_asn1_find_tag(card->ctx, rbuf, rbuflen, 0x7c, &bodylen);
+    ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---
+ src/libopensc/card-piv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libopensc/card-piv.c b/src/libopensc/card-piv.c
+index e85dfc45..13b0cc21 100644
+--- a/src/libopensc/card-piv.c
++++ b/src/libopensc/card-piv.c
+@@ -2334,7 +2334,7 @@ static int piv_validate_general_authentication(sc_card_t *card,
+ 
+ 	u8 sbuf[4096]; /* needs work. for 3072 keys, needs 384+10 or so */
+ 	u8 *rbuf = NULL;
+-	size_t rbuflen;
++	size_t rbuflen = 0;
+ 
+ 	SC_FUNC_CALLED(card->ctx, SC_LOG_DEBUG_VERBOSE);
+ 
+-- 
+2.16.4
+
