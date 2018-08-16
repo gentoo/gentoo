@@ -210,8 +210,9 @@ src_configure() {
 		$(use_with sqlite sqlite3 "${EPREFIX}"/usr)
 		$(use_with threads)
 		$(use_with webp)
-		$(use_with xls freexl) )
+		$(use_with xls freexl)
 		$(use_with zstd)
+	)
 
 	tc-export AR RANLIB
 
