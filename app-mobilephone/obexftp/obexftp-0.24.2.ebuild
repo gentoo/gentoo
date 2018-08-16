@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/openobex/${P}-Source.tar.gz"
 SLOT="0"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 
 # bluetooth support is not really optional, bug #529068
 IUSE="perl python ruby tcl"
