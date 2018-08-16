@@ -117,6 +117,7 @@ COMMONDEPEND="
 	)
 "
 RDEPEND="${COMMONDEPEND}
+	!kde-apps/kde4-l10n
 	latex? (
 		|| (
 			media-gfx/imagemagick
