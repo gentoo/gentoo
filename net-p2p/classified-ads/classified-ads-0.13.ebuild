@@ -78,5 +78,5 @@ src_test() {
 src_install() {
 	docompress -x /usr/share/doc/
 	emake install INSTALL_ROOT="${D}" DESTDIR="${D}"
-	use doc && dodoc -r doc/doxygen.generated/html/
+	use doc && dodoc -r doc/doxygen.generated/html/.
 }
