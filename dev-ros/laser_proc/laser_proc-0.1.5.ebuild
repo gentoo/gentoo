@@ -22,4 +22,3 @@ RDEPEND="
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/pluginlib.patch" )
