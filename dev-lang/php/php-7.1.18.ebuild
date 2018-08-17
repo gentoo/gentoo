@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic versionator systemd
+inherit flag-o-matic eapi7-ver systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
@@ -17,7 +17,7 @@ LICENSE="PHP-3.01
 	gd? ( gd )
 	unicode? ( BSD-2 LGPL-2.1 )"
 
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # We can build the following SAPIs in the given order
@@ -151,7 +151,7 @@ PATCHES=(
 	"${FILESDIR}/php-freetype-2.9.1.patch"
 )
 
-PHP_MV="$(get_major_version)"
+PHP_MV="$(ver_cut 1)"
 
 php_install_ini() {
 	local phpsapi="${1}"
