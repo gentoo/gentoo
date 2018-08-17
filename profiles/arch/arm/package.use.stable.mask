@@ -42,14 +42,9 @@ net-mail/dovecot textcat
 dev-db/mariadb galera
 
 # Alexis Ballier <aballier@gentoo.org> (30 May 2017)
-# No stable libtar yet
-<media-video/vlc-2.3 libtar
-
-# Alexis Ballier <aballier@gentoo.org> (30 May 2017)
 # No stable fluidsynth yet
 media-libs/sdl-mixer fluidsynth
 media-sound/mpd fluidsynth
-<media-video/vlc-2.3 fluidsynth
 
 # Alexis Ballier <aballier@gentoo.org> (29 May 2017)
 # frei0r-plugins is not stable yet, mask it on stable versions
@@ -58,7 +53,6 @@ media-sound/mpd fluidsynth
 
 # Alexis Ballier <aballier@gentoo.org> (26 May 2017)
 # No musepack-tools stable yet
-media-video/vlc musepack
 media-plugins/gst-plugins-meta:0.10 musepack
 media-sound/mpd musepack
 
