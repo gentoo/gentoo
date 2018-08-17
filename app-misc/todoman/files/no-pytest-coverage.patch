@@ -1,0 +1,12 @@
+diff --git a/setup.cfg b/setup.cfg
+index 0550bcc08302..74f4a80a673f 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -3,7 +3,6 @@ test = pytest
+ 
+ [tool:pytest]
+ testpaths = tests
+-addopts = --cov=todoman --cov-report=term-missing
+ 
+ [yapf]
+ coalesce_brackets = true
