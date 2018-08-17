@@ -48,7 +48,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.5.0-qtsingleapplication-unbundle.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5.0-qtsingleapplication-unbundle.patch"
+	"${FILESDIR}/${PN}-1.5.0-qt-5.11.patch"
+)
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
