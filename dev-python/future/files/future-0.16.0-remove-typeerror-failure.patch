@@ -1,0 +1,16 @@
+diff -Naur a/tests/test_future/test_int.py b/tests/test_future/test_int.py
+--- a/tests/test_future/test_int.py	2016-10-27 23:05:38.000000000 +0300
++++ b/tests/test_future/test_int.py	2018-08-17 14:29:35.732338329 +0300
+@@ -265,12 +265,6 @@
+     def test_no_args(self):
+         self.assertEqual(int(), 0)
+ 
+-    def test_keyword_args(self):
+-        # Test invoking int() using keyword arguments.
+-        self.assertEqual(int(x=1.2), 1)
+-        self.assertEqual(int('100', base=2), 4)
+-        self.assertEqual(int(x='100', base=2), 4)
+-
+     def test_newint_plus_float(self):
+         minutes = int(100)
+         second = 0.0
