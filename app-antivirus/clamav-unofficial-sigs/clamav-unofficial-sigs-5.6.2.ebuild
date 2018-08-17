@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit user
 
 DESCRIPTION="Download and install third-party clamav signatures"
 HOMEPAGE="https://github.com/extremeshok/${PN}"
@@ -11,9 +13,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-# We need its user/group.
-DEPEND="app-antivirus/clamav"
 
 # The script relies on either net-misc/socat, or Perl's
 # IO::Socket::UNIX. We already depend on Perl, and Gentoo's Perl ships
@@ -28,9 +27,10 @@ src_install() {
 	dosbin "${PN}.sh"
 
 	# The script's working directory (set in the conf file). By default,
-	# it runs as clamav/clamav.
-	diropts -m 0755 -o clamav -g clamav
-	dodir "/var/lib/${PN}"
+	# it runs as clamav/clamav. We set the owner/group later, in
+	# pkg_preinst, after the user/group is sure to exist (because we
+	# create them otherwise).
+	keepdir "/var/lib/${PN}"
 
 	insinto /etc/logrotate.d
 	doins "${FILESDIR}/${PN}.logrotate"
@@ -43,6 +43,15 @@ src_install() {
 	dodoc README.md
 }
 
+pkg_preinst() {
+	# Should agree with app-antivirus/clamav. We don't actually need
+	# clamav to function, so it isn't one of our dependencies, and
+	# that's why we might need to create its user ourselves.
+	enewgroup clamav
+	enewuser clamav -1 -1 /dev/null clamav
+	fowners clamav:clamav "/var/lib/${PN}"
+}
+
 pkg_postinst() {
 	elog ''
 	elog "You will need to select databases in /etc/${PN}/master.conf."
@@ -53,8 +62,4 @@ pkg_postinst() {
 	elog ''
 	elog '  http://sanesecurity.com/usage/signatures/'
 	elog ''
-	ewarn 'The configuration file has moved in the 5.x version!'
-	ewarn "You should migrate your config from /etc/${PN}.conf to"
-	ewarn "/etc/${PN}/master.conf"
-	ewarn ''
 }
