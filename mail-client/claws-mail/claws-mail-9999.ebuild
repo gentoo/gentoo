@@ -20,7 +20,7 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -29,6 +29,7 @@ REQUIRED_USE="libcanberra? ( notification )
 	smime? ( pgp )"
 
 COMMONDEPEND="
+	dev-libs/nettle
 	net-mail/ytnef
 	archive? (
 		app-arch/libarchive
@@ -41,6 +42,7 @@ COMMONDEPEND="
 	)
 	dbus? ( >=dev-libs/dbus-glib-0.60 )
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
+	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( >=x11-libs/gtk+-2.24:2 )
@@ -123,6 +125,7 @@ src_configure() {
 		$(use_enable clamav clamd-plugin)
 		$(use_enable dbus)
 		$(use_enable debug crash-dialog)
+		$(use_enable dillo dillo-plugin)
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
@@ -199,7 +202,7 @@ pkg_postinst() {
 	ewarn "When upgrading from version 3.9.0 or below some changes have happened:"
 	ewarn "- There are no individual plugins in mail-client/claws-mail-* anymore, but they are integrated mostly controlled through USE flags"
 	ewarn "- Plugins with no special dependencies are just built and can be loaded through the interface"
-	ewarn "- The gtkhtml2, dillo and trayicon plugins have been dropped entirely"
+	ewarn "- The gtkhtml2 and trayicon plugins have been dropped entirely"
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
