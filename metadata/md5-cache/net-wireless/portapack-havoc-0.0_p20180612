@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install
+DESCRIPTION=Custom firmware for the HackRF SDR + PortaPack H1 addon
+EAPI=6
+HOMEPAGE=https://github.com/furrtek/portapack-havoc/wiki
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=>=net-wireless/hackrf-tools-2015.07.2-r1 >=app-mobilephone/dfu-util-0.7
+SLOT=0
+SRC_URI=https://github.com/furrtek/portapack-havoc/archive/609235b19f55d0bf278c0e7c4b9f9b6b15136247.tar.gz -> portapack-havoc-0.0_p20180612.tar.gz
+_md5_=f40cc78efac52a036d5403de2d797b36
