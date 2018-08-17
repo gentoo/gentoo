@@ -667,7 +667,7 @@ media-sound/pulseaudio system-wide
 net-proxy/squid ipf-transparent pf-transparent
 
 # Alexis Ballier <aballier@gentoo.org> <16 Feb 2011>
-# Win32 specific useflags for vlc. Can be used for cross-compiling.
-media-video/vlc directx dxva2
+# Win32 specific useflag for vlc. Can be used for cross-compiling.
+media-video/vlc directx
 # Mac OSX / iPhone OS specific useflags
-media-video/vlc audioqueue macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
+media-video/vlc macosx-qtkit
