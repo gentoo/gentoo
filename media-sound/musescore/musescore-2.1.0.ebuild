@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,9 +41,12 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	"
+
 PATCHES=(
 	"${WORKDIR}/${PN}-2.1.0-fix-buildsystem.patch"
+	"${FILESDIR}/${PN}-2.1.0-qt-5.11.patch"
 )
+
 S="${WORKDIR}/MuseScore-${PV}"
 
 src_configure() {
