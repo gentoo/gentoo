@@ -3,11 +3,12 @@
 
 EAPI=6
 
-inherit flag-o-matic versionator systemd
+inherit flag-o-matic eapi7-ver systemd
 
+MY_PV=${PV/_/}
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
-SRC_URI="https://secure.php.net/distributions/${P}.tar.xz"
+SRC_URI="https://downloads.php.net/~cmb/${PN}-${MY_PV}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
@@ -17,8 +18,10 @@ LICENSE="PHP-3.01
 	gd? ( gd )
 	unicode? ( BSD-2 LGPL-2.1 )"
 
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
@@ -45,7 +48,7 @@ IUSE="${IUSE} acl argon2 bcmath berkdb bzip2 calendar cdb cjk
 # the ones that can be detected to avoid a repeat of bug #564824.
 COMMON_DEPEND="
 	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
-	>=dev-libs/libpcre-8.32[unicode]
+	>=dev-libs/libpcre2-10.30[unicode]
 	fpm? ( acl? ( sys-apps/acl ) )
 	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
 		<www-servers/apache-2.4[threads=] ) )
@@ -62,7 +65,7 @@ COMMON_DEPEND="
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( app-text/enchant )
 	firebird? ( dev-db/firebird )
-	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
+	gd? ( virtual/jpeg:0 media-libs/libpng:0= >=sys-libs/zlib-1.2.0.4 )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
@@ -90,7 +93,7 @@ COMMON_DEPEND="
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
+		!libressl? ( >=dev-libs/openssl-1.0.1:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
@@ -105,9 +108,9 @@ COMMON_DEPEND="
 	xmlwriter? ( >=dev-libs/libxml2-2.6.8 )
 	xpm? ( x11-libs/libXpm )
 	xslt? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
-	zip? ( sys-libs/zlib:0= )
+	zip? ( >=sys-libs/zlib-1.2.0.4:0= )
 	zip-encryption? ( >=dev-libs/libzip-1.2.0:= )
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( >=sys-libs/zlib-1.2.0.4:0= )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -153,7 +156,7 @@ PATCHES=(
 	"${FILESDIR}/php-freetype-2.9.1.patch"
 )
 
-PHP_MV="$(get_major_version)"
+PHP_MV="$(ver_cut 1)"
 
 php_install_ini() {
 	local phpsapi="${1}"
