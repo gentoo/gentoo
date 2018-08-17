@@ -73,8 +73,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-libressl.patch
-	"${FILESDIR}"/${P}-openssl11.patch
+	"${FILESDIR}"/${PN}-0.34-openssl11.patch
 )
 
 src_prepare() {
