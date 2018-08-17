@@ -369,7 +369,7 @@ app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authenticatio
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
 app-crypt/tinyca 2.0.7.5-r3: Simple Perl/Tk GUI to manage a small certification authority
-app-crypt/tpm-tools 1.3.9: TrouSerS' support tools for the Trusted Platform Modules
+app-crypt/tpm-tools 1.3.9 1.3.9.1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.14-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/veracrypt 1.22: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 1.4.1: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
@@ -3201,12 +3201,12 @@ dev-libs/ocl-icd 2.2.11: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 6.7.1 6.8.2: Regular expression library for different character encodings
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.1 1.7.2: Implementation of the OBEX protocol used for transferring data to mobile devices
-dev-libs/opensc 0.16.0: Libraries and applications to access smartcards
+dev-libs/opensc 0.16.0 0.18.0: Libraries and applications to access smartcards
 dev-libs/openssl 0.9.8z_p8 0.9.8z_p8-r1 1.0.2o-r3: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
-dev-libs/pkcs11-helper 1.21-r1: PKCS#11 helper library
+dev-libs/pkcs11-helper 1.21-r1 1.25.1: PKCS#11 helper library
 dev-libs/poco 1.4.6_p4: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
@@ -6438,7 +6438,7 @@ games-util/wit 2.40a: command line tools to manipulate Wii/GameCube ISO images a
 gnome-base/dconf 0.26.1: Simple low-level configuration system
 gnome-base/dconf-editor 3.24.3: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
-gnome-base/gdm 3.24.3 3.24.3-r1: GNOME Display Manager for managing graphical display servers and user logins
+gnome-base/gdm 3.24.3-r1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.20.0 3.24.2: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.24.4: GNOME's main interface to configure various aspects of the desktop
@@ -9833,7 +9833,7 @@ sys-apps/osinfo-db-tools 1.1.0: Tools for managing the osinfo database
 sys-apps/paxctl 0.7-r2 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/pciutils 3.4.1 3.5.6: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.22: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.22 1.8.23: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7 2.8: SELinux core utilities
 sys-apps/portage 2.3.8 2.3.13-r1 2.3.19-r1 2.3.24-r1 2.3.40-r1: Portage is the package management and distribution system for Gentoo
