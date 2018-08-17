@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst preinst
+DESCRIPTION=Download and install third-party clamav signatures
+EAPI=7
+HOMEPAGE=https://github.com/extremeshok/clamav-unofficial-sigs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-crypt/gnupg dev-lang/perl net-dns/bind-tools || ( net-misc/wget net-misc/curl )
+SLOT=0
+SRC_URI=https://github.com/extremeshok/clamav-unofficial-sigs/archive/5.6.2.tar.gz -> clamav-unofficial-sigs-5.6.2.tar.gz
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=d41c720dd3c588a0d786408b6d9a6d7f
