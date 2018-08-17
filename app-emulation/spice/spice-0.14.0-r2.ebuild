@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,13 +12,13 @@ SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
+	dev-lang/orc[static-libs(+)?]
 	>=dev-libs/glib-2.22:2[static-libs(+)?]
-	>=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?]
 	media-libs/opus[static-libs(+)?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/jpeg:0=[static-libs(+)?]
@@ -34,7 +34,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	>=app-emulation/spice-protocol-0.12.12
+	>=app-emulation/spice-protocol-0.12.13
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
@@ -43,10 +43,9 @@ DEPEND="${RDEPEND}
 	smartcard? ( app-emulation/qemu[smartcard] )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.13.3-skip_faulty_lz4_check.patch
-	"${FILESDIR}"/${PN}-0.13.3-reds-Disconnect-when-receiving-overly-big-ClientMoni.patch
-	"${FILESDIR}"/${PN}-0.13.3-reds-Avoid-integer-overflows-handling-monitor-config.patch
-	"${FILESDIR}"/${PN}-0.13.3-reds-Avoid-buffer-overflows-handling-monitor-configu.patch
+	"${FILESDIR}"/${P}-libressl_fix.patch
+	"${FILESDIR}"/${P}-openssl1.1_fix.patch
+	"${FILESDIR}"/${P}-fix-flexible-array-buffer-overflow.patch
 )
 
 python_check_deps() {
@@ -78,8 +77,7 @@ src_configure() {
 		$(use_with sasl)
 		$(use_enable smartcard)
 		--enable-gstreamer=$(usex gstreamer "1.0" "no")
-		--enable-celt051
-		--disable-gui
+		--disable-celt051
 		"
 	econf ${myconf}
 }
