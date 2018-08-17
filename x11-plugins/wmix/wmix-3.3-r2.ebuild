@@ -16,6 +16,7 @@ IUSE=""
 RDEPEND="media-libs/alsa-lib
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/libXpm"
+	x11-libs/libXpm
+	x11-libs/libXrandr"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
