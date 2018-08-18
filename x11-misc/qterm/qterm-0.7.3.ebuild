@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl"
 
 RDEPEND="dev-qt/qtcore:5
@@ -30,11 +30,8 @@ DEPEND="${RDEPEND}
 	dev-qt/qthelp:5
 	x11-base/xorg-proto"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-libressl.patch
-	"${FILESDIR}"/${P}-headers.patch
-)
-DOCS=( README.rst RELEASE_NOTES TODO )
+PATCHES=( "${FILESDIR}"/${PN}-libressl.patch )
+DOCS=( README.rst RELEASE_NOTES TODO doc/script.txt )
 
 src_prepare() {
 	# file collision with sys-cluster/torque, bug #176533
