@@ -41,19 +41,13 @@ IUSE="${IUSE_VIDEO_CARDS}
 	vulkan wayland xa xvmc"
 
 REQUIRED_USE="
-	d3d9?   ( dri3 gallium )
-	llvm?   ( gallium )
-	opencl? ( gallium llvm || ( video_cards_r600 video_cards_radeonsi ) )
+	d3d9?   ( dri3 )
 	gles1?  ( egl )
 	gles2?  ( egl )
-	lm_sensors? ( gallium )
-	vaapi? ( gallium )
-	vdpau? ( gallium )
 	vulkan? ( dri3
 			  || ( video_cards_i965 video_cards_radeonsi )
 			  video_cards_radeonsi? ( llvm ) )
 	wayland? ( egl gbm )
-	xa?  ( gallium )
 	video_cards_freedreno?  ( gallium )
 	video_cards_intel?  ( classic )
 	video_cards_i915?   ( || ( classic gallium ) )
@@ -250,6 +244,72 @@ llvm_check_deps() {
 	has_version "sys-devel/llvm[${flags}]"
 }
 
+pkg_pretend() {
+	if use d3d9; then
+		if ! use video_cards_r300 &&
+		   ! use video_cards_r600 &&
+		   ! use video_cards_radeonsi &&
+		   ! use video_cards_nouveau &&
+		   ! use video_cards_vmware; then
+			ewarn "Ignoring USE=d3d9       since VIDEO_CARDS does not contain r300, r600, radeonsi, nouveau, or vmware"
+		fi
+	fi
+
+	if use opencl; then
+		if ! use video_cards_r600 &&
+		   ! use video_cards_radeonsi; then
+			ewarn "Ignoring USE=opencl     since VIDEO_CARDS does not contain r600 or radeonsi"
+		fi
+	fi
+
+	if use vaapi; then
+		if ! use video_cards_r600 &&
+		   ! use video_cards_radeonsi &&
+		   ! use video_cards_nouveau; then
+			ewarn "Ignoring USE=vaapi      since VIDEO_CARDS does not contain r600, radeonsi, or nouveau"
+		fi
+	fi
+
+	if use vdpau; then
+		if ! use video_cards_r300 &&
+		   ! use video_cards_r600 &&
+		   ! use video_cards_radeonsi &&
+		   ! use video_cards_nouveau; then
+			ewarn "Ignoring USE=vdpau      since VIDEO_CARDS does not contain r300, r600, radeonsi, or nouveau"
+		fi
+	fi
+
+	if use xa; then
+		if ! use video_cards_freedreno &&
+		   ! use video_cards_nouveau; then
+			ewarn "Ignoring USE=xa         since VIDEO_CARDS does not contain freedreno or nouveau"
+		fi
+	fi
+
+	if use xvmc; then
+		if ! use video_cards_r600 &&
+		   ! use video_cards_nouveau; then
+			ewarn "Ignoring USE=xvmc       since VIDEO_CARDS does not contain r600 or nouveau"
+		fi
+	fi
+
+	if ! use gallium; then
+		use d3d9       && ewarn "Ignoring USE=d3d9       since USE does not contain gallium"
+		use lm_sensors && ewarn "Ignoring USE=lm_sensors since USE does not contain gallium"
+		use llvm       && ewarn "Ignoring USE=llvm       since USE does not contain gallium"
+		use opencl     && ewarn "Ignoring USE=opencl     since USE does not contain gallium"
+		use vaapi      && ewarn "Ignoring USE=vaapi      since USE does not contain gallium"
+		use vdpau      && ewarn "Ignoring USE=vdpau      since USE does not contain gallium"
+		use unwind     && ewarn "Ignoring USE=unwind     since USE does not contain gallium"
+		use xa         && ewarn "Ignoring USE=xa         since USE does not contain gallium"
+		use xvmc       && ewarn "Ignoring USE=xvmc       since USE does not contain gallium"
+	fi
+
+	if ! use llvm; then
+		use opencl     && ewarn "Ignoring USE=opencl     since USE does not contain llvm"
+	fi
+}
+
 pkg_setup() {
 	# warning message for bug 459306
 	if use llvm && has_version sys-devel/llvm[!debug=]; then
@@ -293,14 +353,52 @@ multilib_src_configure() {
 
 	if use gallium; then
 		emesonargs+=(
-			$(meson_use d3d9 gallium-nine)
 			$(meson_use llvm)
-			$(meson_use vaapi gallium-va)
-			$(meson_use vdpau gallium-vdpau)
-			$(meson_use xa gallium-xa)
-			$(meson_use xvmc gallium-xvmc)
+			$(meson_use lm_sensors lmsensors)
+			$(meson_use unwind libunwind)
 		)
-		use vaapi && emesonargs+=( -Dva-libs-path=/usr/$(get_libdir)/va/drivers )
+
+		if use video_cards_r300 ||
+		   use video_cards_r600 ||
+		   use video_cards_radeonsi ||
+		   use video_cards_nouveau ||
+		   use video_cards_vmware; then
+			emesonargs+=($(meson_use d3d9 gallium-nine))
+		else
+			emesonargs+=(-Dgallium-nine=false)
+		fi
+
+		if use video_cards_r600 ||
+		   use video_cards_radeonsi ||
+		   use video_cards_nouveau; then
+			emesonargs+=($(meson_use vaapi gallium-va))
+			use vaapi && emesonargs+=( -Dva-libs-path=/usr/$(get_libdir)/va/drivers )
+		else
+			emesonargs+=(-Dgallium-va=false)
+		fi
+
+		if use video_cards_r300 ||
+		   use video_cards_r600 ||
+		   use video_cards_radeonsi ||
+		   use video_cards_nouveau; then
+			emesonargs+=($(meson_use vdpau gallium-vdpau))
+		else
+			emesonargs+=(-Dgallium-vdpau=false)
+		fi
+
+		if use video_cards_freedreno ||
+		   use video_cards_nouveau; then
+			emesonargs+=($(meson_use xa gallium-xa))
+		else
+			emesonargs+=(-Dgallium-xa=false)
+		fi
+
+		if use video_cards_r600 ||
+		   use video_cards_nouveau; then
+			emesonargs+=($(meson_use xvmc gallium-xvmc))
+		else
+			emesonargs+=(-Dgallium-xvmc=false)
+		fi
 
 		gallium_enable video_cards_vc4 vc4
 		gallium_enable video_cards_vivante etnaviv
@@ -374,8 +472,6 @@ multilib_src_configure() {
 		$(meson_use gles1)
 		$(meson_use gles2)
 		$(meson_use selinux)
-		$(meson_use unwind libunwind)
-		$(meson_use lm_sensors lmsensors)
 		-Dvalgrind=$(usex valgrind auto false)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
