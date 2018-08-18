@@ -7539,7 +7539,7 @@ media-libs/libexif 0.6.21 0.6.21-r1: Library for parsing, editing, and saving EX
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.6: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
-media-libs/libfishsound 1.0.0: Simple programming interface for decoding and encoding audio data using vorbis or speex
+media-libs/libfishsound 1.0.0: Simple programming interface to decode and encode audio with vorbis or speex
 media-libs/libfpx 1.3.1_p6 1.3.1_p10: A library for manipulating FlashPIX images
 media-libs/libfreehand 0.1.2: Library for import of FreeHand drawings
 media-libs/libggi 2.2.2: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
