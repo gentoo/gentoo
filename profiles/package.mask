@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (18 Aug 2018)
+# Unmaintained in Gentoo. Removal in 30 days.
+# Bug 663998
+dev-libs/weston
+
 # Michael Orlitzky <mjo@gentoo.org> (16 Aug 2018)
 # Obsolete! Use net-analyzer/nagios-icinga-openvpn instead.
 # Will be removed in 30 days (bug 663774).
