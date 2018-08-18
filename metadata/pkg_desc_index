@@ -1390,7 +1390,7 @@ app-text/libwpd 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.8: Microsoft Works file word processor format import filter library
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 26b 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r3: Powerful Multilingual File Viewer
 app-text/manpager 1: Enable colorization of man pages
@@ -1499,7 +1499,7 @@ app-text/zathura 0.3.7 0.3.8: A highly customizable and functional document view
 app-text/zathura-cb 0.1.6 0.1.7: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.6 0.2.7: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
-app-text/zathura-pdf-mupdf 0.3.1 0.3.2: PDF plug-in for zathura
+app-text/zathura-pdf-mupdf 0.3.2: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.7 0.2.8: PDF plug-in for zathura
 app-text/zathura-ps 0.2.4 0.2.5: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
