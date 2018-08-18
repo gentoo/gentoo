@@ -30,6 +30,6 @@ pkg_postinst() {
 	kde5_pkg_postinst
 
 	if ! has_version "app-misc/media-player-info" ; then
-		einfo "For media player support, install app-misc/media-player-info"
+		elog "For media player support, install app-misc/media-player-info"
 	fi
 }
