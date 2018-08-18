@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-missing_nullpointer_check.patch
 	"${FILESDIR}"/${P}-security.patch
 	"${FILESDIR}"/${P}-vbr-stack-smashing.patch # bug 638044
+	"${FILESDIR}"/${P}-read-id3v24-tags.patch # bug 427188
 )
 
 src_prepare() {

@@ -1,0 +1,27 @@
+From 201533afddcd09d72df322232827d2b34db8f8dd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 19 Jul 2012 11:47:31 +0200
+Subject: [PATCH] Set latest version of ID3 to v2.4.
+
+For some reason, the ID3V2_LATEST was set to v2.3, effectively disabling
+the library from parsing v2.4 tags. As the code is v2.4-aware, I believe
+the ID3V2_LATEST value should be bumped as well.
+---
+ include/id3/globals.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/id3/globals.h b/include/id3/globals.h
+index 5d8fa20..8a978e0 100644
+--- a/include/id3/globals.h
++++ b/include/id3/globals.h
+@@ -166,7 +166,7 @@ ID3_ENUM(ID3_V2Spec)
+   ID3V2_3_0,
+   ID3V2_4_0,
+   ID3V2_EARLIEST = ID3V2_2_0,
+-  ID3V2_LATEST = ID3V2_3_0
++  ID3V2_LATEST = ID3V2_4_0
+ };
+ 
+ /** The various types of tags that id3lib can handle
+-- 
+1.7.11.1
