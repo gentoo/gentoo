@@ -41,16 +41,7 @@ REQUIRED_USE="
 	java? ( python )
 	opengl? ( || ( gtk qt5 ) )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	tesseract? ( contrib )
-	cpu_flags_x86_avx2? ( cpu_flags_x86_avx cpu_flags_x86_fma3 )
-	cpu_flags_x86_fma3? ( cpu_flags_x86_avx2 )
-	cpu_flags_x86_avx? ( cpu_flags_x86_sse4_2 )
-	cpu_flags_x86_sse4_2? ( cpu_flags_x86_sse4_1 cpu_flags_x86_popcnt )
-	cpu_flags_x86_popcnt? ( cpu_flags_x86_sse4_1 )
-	cpu_flags_x86_sse4_1? ( cpu_flags_x86_sse3 cpu_flags_x86_ssse3 )
-	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse3 )
-	cpu_flags_x86_sse3? ( cpu_flags_x86_sse2 )
-	cpu_flags_x86_sse2? ( cpu_flags_x86_sse )"
+	tesseract? ( contrib )"
 
 # The following logic is intrinsic in the build system, but we do not enforce
 # it on the useflags since this just blocks emerging pointlessly:
@@ -413,6 +404,7 @@ multilib_src_configure() {
 	# ==================================================
 	# cpu flags, should solve 633900
 	#===================================================
+		-DOPENCV_CPU_OPT_IMPLIES_IGNORE=ON
 		-DCPU_DISPATCH=
 		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
 		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
