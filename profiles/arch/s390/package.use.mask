@@ -17,6 +17,8 @@ dev-util/ninja zsh-completion
 net-analyzer/nmap zenmap
 # no lua support for vim
 app-editors/vim luajit lua
+# not keyworded yet
+media-gfx/imagemagick raw
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
