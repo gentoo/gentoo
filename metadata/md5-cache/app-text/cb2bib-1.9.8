@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 lzo? ( dev-libs/lzo:2 ) webengine? ( dev-qt/qtwebengine:5[widgets] ) webkit? ( dev-qt/qtwebkit:5 )
+DESCRIPTION=Tool for extracting unformatted bibliographic references
+EAPI=7
+HOMEPAGE=https://www.molspaces.com/cb2bib/
+IUSE=+lzo webengine +webkit
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 lzo? ( dev-libs/lzo:2 ) webengine? ( dev-qt/qtwebengine:5[widgets] ) webkit? ( dev-qt/qtwebkit:5 )
+REQUIRED_USE=?? ( webkit webengine )
+SLOT=0
+SRC_URI=https://www.molspaces.com/dl/progs/cb2bib-1.9.8.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=a76bf77e9c08a79086db9b65487e32e5
