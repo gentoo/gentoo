@@ -3038,7 +3038,7 @@ dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.12-r1: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libdaemon 0.14-r1 0.14-r2 0.14-r3: Simple library for creating daemon processes in C
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
-dev-libs/libdbusmenu 12.10.2-r2: Library to pass menu structure across DBus
+dev-libs/libdbusmenu 12.10.2-r2 16.04.0: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
@@ -6210,7 +6210,7 @@ dev-util/cucumber-wire 0.0.1: Executable feature scenarios
 dev-util/cunit 2.1_p2-r1: CUnit - C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/d-feet 0.3.12: D-Feet is a powerful D-Bus debugger
-dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
+dev-util/dbus-test-runner 12.10.1 15.04.0_p100: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.89: Debian/Ubuntu bootstrap scripts
@@ -6518,7 +6518,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.5: A nautilus extension for sending files to locations
 gnome-extra/nautilus-tracker-tags 1.12.4: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 3.6.4: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.10-r1: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.8.10-r1 1.8.14: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
@@ -7587,7 +7587,7 @@ media-libs/libmpdclient 2.9 2.10: A library for interfacing Music Player Daemon 
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.14: An implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.14 1.1.15: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnut 661: Library and tools to create NUT multimedia files
@@ -8166,7 +8166,7 @@ media-sound/wildmidi 0.2.3.5: Midi processing library and a midi player using th
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.2.3-r1: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8_p20161122: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8_p20161122 0.8_p20161122-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
 media-sound/zynaddsubfx 3.0.3: ZynAddSubFX is an opensource software synthesizer
@@ -9721,7 +9721,7 @@ sys-apps/baselayout 2.4.1-r2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/bleachbit 2.0: Clean junk to free disk space and to maintain privacy
-sys-apps/busybox 1.28.0: Utilities for rescue and embedded systems
+sys-apps/busybox 1.28.0 1.29.0: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/checkpolicy 2.7 2.8: SELinux policy compiler
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
@@ -10555,7 +10555,7 @@ www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 2.2.0: Download manager using gtk+ and libcurl
 www-client/w3m 0.5.3_p20180125: Text based WWW browser, supports tables and frames
-www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
+www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r10: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
 www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
