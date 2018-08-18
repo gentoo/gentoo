@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,7 +57,6 @@ src_prepare() {
 	fi
 
 	# Fix bug #169590
-	# https://sourceforge.net/tracker/?func=detail&aid=3304495&group_id=14103&atid=314103
 	sed -i \
 		-e '/\$(LIBQUICKTIME_LIBS) \\/d' \
 		-e '/^[[:space:]]*\$(SRC_LIBS)/ a\
@@ -65,7 +64,6 @@ src_prepare() {
 		src/Makefile.in || die
 
 	# Fix test failure discovered in bug #193947
-	# https://sourceforge.net/tracker/?func=detail&aid=3304499&group_id=14103&atid=314103
 	sed -i -e '$a\
 \
 ffmpeg/libavcodec/ps2/idct_mmi.c\
