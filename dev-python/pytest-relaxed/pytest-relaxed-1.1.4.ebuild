@@ -18,9 +18,14 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/pytest-3[${PYTHON_USEDEP}]
+	<dev-python/pytest-3.3
 	>=dev-python/six-1[${PYTHON_USEDEP}]
 	>=dev-python/decorator-4[${PYTHON_USEDEP}]
 "
+
+# This package is a broken mess upstream. Tests don't work. Fortunately, it's
+# not actually used by many packages.
+RESTRICT="test"
 
 PATCHES=(
 	# We strip pytest-relaxed's entry point to stop it from autoloading on all
