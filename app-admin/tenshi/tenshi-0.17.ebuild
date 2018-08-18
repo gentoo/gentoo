@@ -5,7 +5,7 @@ EAPI=6
 inherit user
 
 DESCRIPTION="Log parsing and notification program"
-HOMEPAGE="http://dev.inversepath.com/trac/tenshi"
+HOMEPAGE="https://inversepath.com/tenshi.html https://github.com/inversepath/tenshi"
 SRC_URI="https://github.com/inversepath/${PN}/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
