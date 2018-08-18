@@ -4,10 +4,10 @@ DESCRIPTION=Perl extension for getting video info
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Video-Info/
 IUSE=test
-KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc x86
 LICENSE=Aladdin
 RDEPEND=dev-perl/Class-MakeMethods dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AL/ALLENDAY/Video-Info-0.993.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
-_md5_=76aa1cfce66f0d03c08c39f5d18d8702
+_md5_=d8cea2a0d6aa019407712dbfd8d5e825

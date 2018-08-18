@@ -4,10 +4,10 @@ DESCRIPTION=Testing-specific WWW::Mechanize subclass
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Test-WWW-Mechanize/
 IUSE=test
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=Artistic-2
 RDEPEND=dev-perl/Carp-Assert-More dev-perl/HTML-Parser >=dev-perl/libwww-perl-6.200.0 >=dev-perl/Test-LongString-0.150.0 >=virtual/perl-Test-Simple-0.960.0 dev-perl/URI >=dev-perl/WWW-Mechanize-1.680.0 virtual/perl-parent dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PE/PETDANCE/Test-WWW-Mechanize-1.48.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
-_md5_=f1d67cbd275e3a19f0e7cf5ef6d2c7a4
+_md5_=0af3500356b5ea3bdf6c639684b18459
