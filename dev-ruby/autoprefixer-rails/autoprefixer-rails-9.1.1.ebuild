@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -11,14 +11,14 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_EXTRAINSTALL="vendor"
 
-inherit ruby-fakegem
+inherit ruby-fakegem eapi7-ver
 
 DESCRIPTION="Add vendor prefixes to CSS rules using values from the Can I Use website"
 HOMEPAGE="https://github.com/ai/autoprefixer-rails"
 LICENSE="MIT"
 
 KEYWORDS="~amd64"
-SLOT="8"
+SLOT="$(ver_cut 1)"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/execjs:*"

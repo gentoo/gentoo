@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/p-f-m/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 s390 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-lang/perl-5.8
 	>=dev-perl/File-Stat-Bits-1.10.0
