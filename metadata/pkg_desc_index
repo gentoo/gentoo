@@ -1399,7 +1399,7 @@ app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1: Tail with multiple windows
-app-text/mupdf 1.11-r1 1.12.0-r2 1.13.0: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.13.0: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21: Namazu is a full-text search engine
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
