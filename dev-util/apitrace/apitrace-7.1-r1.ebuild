@@ -18,11 +18,9 @@ IUSE="+cli egl qt5 system-snappy"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=sys-devel/gcc-4.7:*
-	system-snappy? ( >=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}] )
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-	>=media-libs/mesa-9.1.6[egl?,${MULTILIB_USEDEP}]
 	media-libs/libpng:0=
+	media-libs/mesa[egl?,${MULTILIB_USEDEP}]
+	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	sys-process/procps
 	x11-libs/libX11
 	egl? (
@@ -35,7 +33,9 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtnetwork:5
 		dev-qt/qtwebkit:5
 		dev-qt/qtwidgets:5[-gles2]
-	)"
+	)
+	system-snappy? ( >=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}] )
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
