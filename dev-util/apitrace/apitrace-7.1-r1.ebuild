@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
+inherit cmake-multilib python-single-r1
 
-inherit cmake-multilib eutils python-single-r1
-
-DESCRIPTION="A tool for tracing, analyzing, and debugging graphics APIs"
+DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
 HOMEPAGE="https://github.com/apitrace/apitrace"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -18,11 +18,9 @@ IUSE="+cli egl qt5 system-snappy"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=sys-devel/gcc-4.7:*
-	system-snappy? ( >=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}] )
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-	>=media-libs/mesa-9.1.6[egl?,${MULTILIB_USEDEP}]
 	media-libs/libpng:0=
+	media-libs/mesa[egl?,${MULTILIB_USEDEP}]
+	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	sys-process/procps
 	x11-libs/libX11
 	egl? (
@@ -31,11 +29,13 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	qt5? (
 		dev-qt/qtcore:5
-		dev-qt/qtgui:5
+		dev-qt/qtgui:5[-gles2]
 		dev-qt/qtnetwork:5
 		dev-qt/qtwebkit:5
-		dev-qt/qtwidgets:5
-	)"
+		dev-qt/qtwidgets:5[-gles2]
+	)
+	system-snappy? ( >=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}] )
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -59,15 +59,14 @@ src_prepare() {
 
 src_configure() {
 	my_configure() {
-		mycmakeargs=(
-			-DARCH_SUBDIR=
-			$(cmake-utils_use_enable egl EGL)
-			$(cmake-utils_use_enable !system-snappy STATIC_SNAPPY)
+		local mycmakeargs=(
+			-DENABLE_EGL=$(usex egl)
+			-DENABLE_STATIC_SNAPPY=$(usex !system-snappy)
 		)
 		if multilib_is_native_abi ; then
 			mycmakeargs+=(
-				$(cmake-utils_use_enable cli CLI)
-				$(cmake-utils_use_enable qt5 GUI)
+				-DENABLE_CLI=$(usex cli)
+				-DENABLE_GUI=$(usex qt5)
 			)
 		else
 			mycmakeargs+=(
@@ -89,7 +88,7 @@ src_install() {
 	dosym glxtrace.so /usr/$(get_libdir)/${PN}/wrappers/libGL.so.1
 	dosym glxtrace.so /usr/$(get_libdir)/${PN}/wrappers/libGL.so.1.2
 
-	rm docs/INSTALL.markdown
+	rm docs/INSTALL.markdown || die
 	dodoc docs/* README.markdown
 
 	exeinto /usr/$(get_libdir)/${PN}/scripts
