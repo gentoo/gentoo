@@ -1,7 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -13,12 +13,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
+
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
+	default
 	#fix Makefile ( bug #298535 and bug #318353)
-	sed -i 's/\$(MAKEFLAGS)//g' Makefile \
-		|| die "failed to fixe Makefile"
+	sed -i 's/\$(MAKEFLAGS)//g' Makefile || die "failed to fix Makefile"
 }
 
 src_compile() {
@@ -30,6 +31,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin {${PN},streams} || die "dobin failed"
-	dodoc README ChangeLog || die "dodoc failed"
+	dobin {${PN},streams}
+	dodoc README ChangeLog
 }
