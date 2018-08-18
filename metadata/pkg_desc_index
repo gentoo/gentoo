@@ -4201,7 +4201,7 @@ dev-perl/Test-CheckDeps 0.10.0: Check for presence of dependencies
 dev-perl/Test-Class 0.500.0: Easily create test classes in an xUnit/JUnit style
 dev-perl/Test-ClassAPI 1.60.0-r2: Provides basic first-pass API testing for large class trees
 dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
-dev-perl/Test-Command 0.80.0-r1 0.110.0: Test routines for external commands
+dev-perl/Test-Command 0.110.0: Test routines for external commands
 dev-perl/Test-Deep 1.126.0: Extremely flexible deep comparison testing
 dev-perl/Test-Differences 0.640.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.14.0: Author test that validates a package MANIFEST
