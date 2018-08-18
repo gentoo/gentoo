@@ -54,7 +54,7 @@ pkg_setup () {
 		die "Kernel versions older than 2.6.8 are not supported."
 	fi
 
-	# https://sourceforge.net/tracker/?func=detail&aid=3285657&group_id=42378&atid=432940
+	# https://sourceforge.net/p/linux-gpib/bugs/43/
 	if use pcmcia && kernel_is -ge 2 6 38; then
 		die "pcmcia support is broken on kernels newer 2.6.38"
 	fi
