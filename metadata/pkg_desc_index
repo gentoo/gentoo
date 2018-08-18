@@ -4304,7 +4304,7 @@ dev-perl/Try-Tiny 0.240.0 0.300.0: Minimal try/catch with proper localization of
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0-r1: simple data types for common serialisation formats
-dev-perl/UNIVERSAL-can 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
+dev-perl/UNIVERSAL-can 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
 dev-perl/UNIVERSAL-isa 1.201.506.140 1.201.710.120: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.180.0: UNIVERSAL::require - require() modules from a variable
