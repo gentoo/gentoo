@@ -1,0 +1,13 @@
+BDEPEND=python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=test? ( dev-python/aiodns[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/pyasn1-modules[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/pyasn1[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/slixmpp[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/potr dev-python/pyinotify )
+DESCRIPTION=Console XMPP client that looks like most famous IRC clients
+EAPI=7
+HOMEPAGE=https://poez.io/
+IUSE=test python_targets_python3_5 python_targets_python3_6
+LICENSE=ZLIB
+RDEPEND=dev-python/aiodns[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/pyasn1-modules[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/pyasn1[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] dev-python/slixmpp[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_5 python_targets_python3_6 )
+SLOT=0
+_eclasses_=distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	git-r3	918d6a744039c29af2cadc7317459765	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=3592bdb930687c001b135797840820b1
