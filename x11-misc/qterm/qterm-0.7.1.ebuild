@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 	dev-qt/qthelp:5
 	x11-base/xorg-proto"
 
+PATCHES=( "${FILESDIR}"/${P}-headers.patch )
 DOCS=( README.rst RELEASE_NOTES TODO )
 
 src_prepare() {
