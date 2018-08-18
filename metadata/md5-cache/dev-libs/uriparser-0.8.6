@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig doc? ( >=app-doc/doxygen-1.5.8 qt5? ( dev-qt/qthelp:5 ) ) test? ( >=dev-util/cpptest-1.1.1 )
+DESCRIPTION=Uriparser is a strictly RFC 3986 compliant URI parsing library in C
+EAPI=6
+HOMEPAGE=https://uriparser.github.io/
+IUSE=doc qt5 test unicode
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=BSD
+REQUIRED_USE=test? ( unicode )
+SLOT=0
+SRC_URI=https://github.com/uriparser/uriparser/releases/download/uriparser-0.8.6/uriparser-0.8.6.tar.bz2
+_md5_=0094808e39f65ba020fffa3d5a977654
