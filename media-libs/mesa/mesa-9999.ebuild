@@ -37,14 +37,13 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm lm_sensors
-	opencl osmesa openmax pax_kernel pic selinux test unwind vaapi valgrind
-	vdpau vulkan wayland xa xvmc"
+	opencl osmesa pax_kernel pic selinux test unwind vaapi valgrind vdpau
+	vulkan wayland xa xvmc"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 gallium )
 	llvm?   ( gallium )
 	opencl? ( gallium llvm || ( video_cards_r600 video_cards_radeonsi ) )
-	openmax? ( gallium )
 	gles1?  ( egl )
 	gles2?  ( egl )
 	lm_sensors? ( gallium )
@@ -106,10 +105,6 @@ RDEPEND="
 					dev-libs/libclc
 					virtual/libelf:0=[${MULTILIB_USEDEP}]
 				)
-		openmax? (
-			>=media-libs/libomxil-bellagio-0.9.3:=[${MULTILIB_USEDEP}]
-			x11-misc/xdg-utils
-		)
 		vaapi? (
 			>=x11-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 			video_cards_nouveau? ( !<=x11-libs/libva-vdpau-driver-0.7.4-r3 )
@@ -300,7 +295,6 @@ multilib_src_configure() {
 		emesonargs+=(
 			$(meson_use d3d9 gallium-nine)
 			$(meson_use llvm)
-			-Dgallium-omx=$(usex openmax bellagio disabled)
 			$(meson_use vaapi gallium-va)
 			$(meson_use vdpau gallium-vdpau)
 			$(meson_use xa gallium-xa)
@@ -412,12 +406,6 @@ multilib_src_install() {
 		fi
 		eend $?
 	fi
-
-	if use openmax; then
-		echo "XDG_DATA_DIRS=\"${EPREFIX}/usr/share/mesa/xdg\"" > "${T}/99mesaxdgomx"
-		doenvd "${T}"/99mesaxdgomx
-		keepdir /usr/share/mesa/xdg
-	fi
 }
 
 multilib_src_install_all() {
@@ -436,21 +424,6 @@ pkg_postinst() {
 	# Switch to mesa opencl
 	if use opencl; then
 		eselect opencl set --use-old ${PN}
-	fi
-
-	# run omxregister-bellagio to make the OpenMAX drivers known system-wide
-	if use openmax; then
-		ebegin "Registering OpenMAX drivers"
-		BELLAGIO_SEARCH_PATH="${EPREFIX}/usr/$(get_libdir)/libomxil-bellagio0" \
-			OMX_BELLAGIO_REGISTRY=${EPREFIX}/usr/share/mesa/xdg/.omxregister \
-			omxregister-bellagio
-		eend $?
-	fi
-}
-
-pkg_prerm() {
-	if use openmax; then
-		rm "${EPREFIX}"/usr/share/mesa/xdg/.omxregister
 	fi
 }
 
