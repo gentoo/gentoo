@@ -1,12 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-multilib eutils python-single-r1
+inherit cmake-multilib python-single-r1
 
-DESCRIPTION="A tool for tracing, analyzing, and debugging graphics APIs"
+DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
 HOMEPAGE="https://github.com/apitrace/apitrace"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -59,15 +59,15 @@ src_prepare() {
 
 src_configure() {
 	my_configure() {
-		mycmakeargs=(
+		local mycmakeargs=(
 			-DARCH_SUBDIR=
-			$(cmake-utils_use_enable egl EGL)
-			$(cmake-utils_use_enable !system-snappy STATIC_SNAPPY)
+			-DENABLE_EGL=$(usex egl)
+			-DENABLE_STATIC_SNAPPY=$(usex !system-snappy)
 		)
 		if multilib_is_native_abi ; then
 			mycmakeargs+=(
-				$(cmake-utils_use_enable cli CLI)
-				$(cmake-utils_use_enable qt5 GUI)
+				-DENABLE_CLI=$(usex cli)
+				-DENABLE_GUI=$(usex qt5)
 			)
 		else
 			mycmakeargs+=(
@@ -89,7 +89,7 @@ src_install() {
 	dosym glxtrace.so /usr/$(get_libdir)/${PN}/wrappers/libGL.so.1
 	dosym glxtrace.so /usr/$(get_libdir)/${PN}/wrappers/libGL.so.1.2
 
-	rm docs/INSTALL.markdown
+	rm docs/INSTALL.markdown || die
 	dodoc docs/* README.markdown
 
 	exeinto /usr/$(get_libdir)/${PN}/scripts
