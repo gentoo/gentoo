@@ -60,7 +60,6 @@ src_prepare() {
 src_configure() {
 	my_configure() {
 		local mycmakeargs=(
-			-DARCH_SUBDIR=
 			-DENABLE_EGL=$(usex egl)
 			-DENABLE_STATIC_SNAPPY=$(usex !system-snappy)
 		)
