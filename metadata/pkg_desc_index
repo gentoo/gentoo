@@ -3895,7 +3895,7 @@ dev-perl/Log-Log4perl 1.490.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
 dev-perl/MIME-Charset 1.12.2: Charset Informations for MIME
-dev-perl/MIME-EncWords 1.12.6-r1 1.14.3: Deal with RFC 2047 encoded words (improved)
+dev-perl/MIME-EncWords 1.14.3: Deal with RFC 2047 encoded words (improved)
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
 dev-perl/MIME-Types 2.120.0 2.130.0: Definition of MIME types
 dev-perl/MIME-tools 5.509.0: A Perl module for parsing and creating MIME entities
@@ -3905,7 +3905,7 @@ dev-perl/MP3-Info 1.240.0-r1 1.260.0: A Perl module to manipulate/fetch info fro
 dev-perl/MP3-Tag 1.140.0: Module for reading tags of MP3 Audio files
 dev-perl/MRO-Compat 0.130.0: Lets you build groups of accessors
 dev-perl/Mail-Audit 2.228.0-r1: Mail sorting/delivery module for Perl
-dev-perl/Mail-Box 2.118.0 3.3.0: Mail folder manager and MUA backend
+dev-perl/Mail-Box 3.3.0: Mail folder manager and MUA backend
 dev-perl/Mail-Box-IMAP4 3.2.0: Mail::Box connector via IMAP4
 dev-perl/Mail-Box-POP3 3.3.0: Mail::Box connector via POP3
 dev-perl/Mail-DKIM 0.400.0 0.440.0: Signs/verifies Internet mail using DKIM message signatures
@@ -3918,28 +3918,28 @@ dev-perl/Mail-POP3Client 2.190.0: POP3 client module for Perl
 dev-perl/Mail-Procmail 1.80.0-r1: Mail sorting/delivery module for Perl
 dev-perl/Mail-SPF 2.9.0-r1 2.9.0-r2: An object-oriented implementation of Sender Policy Framework
 dev-perl/Mail-SRS 0.310.0-r2: Interface to Sender Rewriting Scheme
-dev-perl/Mail-Sender 0.8.23 0.903.0: Module for sending mails with attachments through an SMTP server
+dev-perl/Mail-Sender 0.903.0: Module for sending mails with attachments through an SMTP server
 dev-perl/Mail-Sendmail 0.790.0-r1 0.800.0: Simple platform independent mailer
 dev-perl/Mail-Transport 3.0.0: Base class for Email Message Exchange
 dev-perl/MailTools 2.140.0 2.190.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
 dev-perl/Math-BigInt-GMP 1.380.0 1.490.0: Use the GMP library for Math::BigInt routines
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
-dev-perl/Math-Derivative 0.40.0 1.10.0: 1st and 2nd order differentiation of data
+dev-perl/Math-Derivative 1.10.0: 1st and 2nd order differentiation of data
 dev-perl/Math-GMP 2.60.0-r1 2.150.0: High speed arbitrary size integer math
 dev-perl/Math-Pari 2.10.809.0-r1: Perl interface to PARI
 dev-perl/Math-Random 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
 dev-perl/Math-Random-ISAAC-XS 1.4.0-r1: C implementation of the ISAAC PRNG algorithm
-dev-perl/Math-Random-Secure 0.60.0-r1 0.80.1: Cryptographically-secure, cross-platform replacement for rand()
+dev-perl/Math-Random-Secure 0.80.1: Cryptographically-secure, cross-platform replacement for rand()
 dev-perl/Math-Spline 0.20.0: Cubic Spline Interpolation of data
 dev-perl/Math-Utils 1.110.0: Useful mathematical functions not in Perl
 dev-perl/Math-Vec 1.10.0-r1: Vectors for perl
 dev-perl/Math-VecStat 0.80.0-r1: Some basic numeric stats on vectors
 dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
-dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
+dev-perl/Mo 0.400.0: Perl Micro Object framework
 dev-perl/Mock-Config 0.30.0: Temporarily set Config or XSConfig values
-dev-perl/Modem-Vgetty 0.30.0-r1 0.30.0-r2: Interface to voice modems using vgetty
+dev-perl/Modem-Vgetty 0.30.0-r2: Interface to voice modems using vgetty
 dev-perl/Module-Build 0.421.600 0.422.400: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-XSUtil 0.160.0 0.180.0: A Module::Build class for building XS modules
@@ -3948,7 +3948,7 @@ dev-perl/Module-Find 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.90.0: Loads one of several alternate underlying implementations for a module
 dev-perl/Module-Info 0.370.0-r1: Information about Perl modules
 dev-perl/Module-Install 1.180.0: Standalone, extensible Perl module installer
-dev-perl/Module-Install-AuthorTests 0.2.0 0.2.0-r1: Designate tests only run by module authors
+dev-perl/Module-Install-AuthorTests 0.2.0-r1: Designate tests only run by module authors
 dev-perl/Module-Locate 1.800.0: Locate modules in the same fashion as require and use
 dev-perl/Module-Manifest 1.80.0-r1: Parse and examine a Perl distribution MANIFEST file
 dev-perl/Module-Pluggable 5.200.0: Automatically give your module the ability to have plugins
@@ -3956,8 +3956,8 @@ dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.16.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0 0.3.0: Provide information on conflicts for Module::Runtime
 dev-perl/Module-ScanDeps 1.230.0 1.240.0: Recursively scan Perl code for dependencies
-dev-perl/Module-Signature 0.790.0 0.810.0: Module signature file manipulation
-dev-perl/Module-Starter 1.710.0 1.730.0: A simple starter kit for any module
+dev-perl/Module-Signature 0.810.0: Module signature file manipulation
+dev-perl/Module-Starter 1.730.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
 dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in memory
 dev-perl/Mojolicious 7.300.0 7.570.0: Real-time web framework
@@ -4186,7 +4186,7 @@ dev-perl/Template-Toolkit 2.270.0-r1: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-ProgressBar 2.170.0: Perl module for Term-ProgressBar
-dev-perl/Term-ProgressBar-Quiet 0.310.0: Provide a progress meter if run interactively
+dev-perl/Term-ProgressBar-Quiet 0.310.0-r1: Provide a progress meter if run interactively
 dev-perl/Term-ProgressBar-Simple 0.30.0: Simple progess bars
 dev-perl/Term-ReadLine-Gnu 1.310.0: GNU Readline XS library wrapper
 dev-perl/Term-ReadLine-Perl 1.30.300-r1: Quick implementation of readline utilities
