@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,11 +16,11 @@ IUSE="test"
 RDEPEND="
 	dev-perl/IO-Interactive
 	dev-perl/Term-ProgressBar
+	dev-perl/Test-MockObject
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		dev-perl/Test-MockObject
 		virtual/perl-Test-Simple
 	)
 "
