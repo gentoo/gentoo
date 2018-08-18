@@ -49,7 +49,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	)
 	glamor? (
 		media-libs/libepoxy[X]
-		>=media-libs/mesa-10.3.4-r1[egl,gbm]
+		>=media-libs/mesa-18[egl,gbm]
 		!x11-libs/glamor
 	)
 	kdrive? (
@@ -67,7 +67,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
-		>=media-libs/mesa-10.3.4-r1
+		>=media-libs/mesa-18
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
