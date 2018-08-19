@@ -3,12 +3,12 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
-FIRMWARE_ABI_VERSION="2.9.0-r52"
+FIRMWARE_ABI_VERSION="2.11.1-r50"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n versionator
@@ -19,10 +19,10 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
-	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
+	#SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -30,20 +30,21 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt
-	glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
+IUSE="accessibility +aio alsa bluetooth bzip2 capstone +caps +curl debug
+	+fdt glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl sdl2 selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
 
-COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel
-	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc
-	sparc64 x86_64"
+COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
+	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
+	sh4 sh4eb sparc sparc64 x86_64 xtensa xtensaeb"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS}
-	lm32 moxie ppcemb tricore unicore32 xtensa xtensaeb"
+	lm32 moxie ppcemb tricore unicore32"
 IUSE_USER_TARGETS="${COMMON_TARGETS}
-	armeb hppa mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
+	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus
+	tilegx"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
@@ -70,7 +71,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
-# when available rather than always using the extranl library.
+# when available rather than always using the external library.
 ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
@@ -81,6 +82,8 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
+	dev-libs/libxml2[static-libs(+)]
+	x11-libs/libxkbcommon[static-libs(+)]
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
@@ -90,6 +93,7 @@ SOFTMMU_TOOLS_DEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	bluetooth? ( net-wireless/bluez )
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
+	capstone? ( dev-libs/capstone )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
@@ -108,7 +112,11 @@ SOFTMMU_TOOLS_DEPEND="
 			vte? ( x11-libs/vte:2.91 )
 		)
 	)
-	infiniband? ( sys-fabric/librdmacm:=[static-libs(+)] )
+	infiniband? (
+		sys-fabric/libibumad:=[static-libs(+)]
+		sys-fabric/libibverbs:=[static-libs(+)]
+		sys-fabric/librdmacm:=[static-libs(+)]
+	)
 	iscsi? ( net-libs/libiscsi )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
@@ -156,10 +164,10 @@ SOFTMMU_TOOLS_DEPEND="
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
-		~sys-firmware/ipxe-1.0.0_p20160620
-		~sys-firmware/seabios-1.10.2[binary,seavgabios]
-		~sys-firmware/sgabios-0.1_pre8
+		~sys-firmware/edk2-ovmf-2017_p20180211[binary]
+		~sys-firmware/ipxe-1.0.0_p20180211[binary]
+		~sys-firmware/seabios-1.11.0[binary,seavgabios]
+		~sys-firmware/sgabios-0.1_pre8[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/edk2-ovmf
@@ -169,7 +177,7 @@ X86_FIRMWARE_DEPEND="
 	)"
 PPC64_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.10.2[binary,seavgabios]
+		~sys-firmware/seabios-1.11.0[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
 		>=sys-firmware/seabios-1.10.2[seavgabios]
@@ -186,6 +194,7 @@ CDEPEND="
 	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
 "
 DEPEND="${CDEPEND}
+	${PYTHON_DEPS}
 	dev-lang/perl
 	=dev-lang/python-2*
 	sys-apps/texinfo
@@ -207,13 +216,14 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
-	"${FILESDIR}"/${PN}-2.11.0-glibc-2.27.patch
-	"${WORKDIR}"/patches
+	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	#"${WORKDIR}"/patches
 )
 
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
 
 QA_PREBUILT="
+	usr/share/qemu/hppa-firmware.img
 	usr/share/qemu/openbios-ppc
 	usr/share/qemu/openbios-sparc64
 	usr/share/qemu/openbios-sparc32
@@ -435,6 +445,7 @@ qemu_src_configure() {
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
 		$(conf_notuser bluetooth bluez)
+		$(conf_notuser capstone)
 		$(conf_notuser caps cap-ng)
 		$(conf_notuser curl)
 		$(conf_notuser fdt)
@@ -472,6 +483,12 @@ qemu_src_configure() {
 		$(conf_notuser xen xen-pci-passthrough)
 		$(conf_notuser xfs xfsctl)
 	)
+
+	if [[ ${buildtype} == "user" ]] ; then
+		conf_opts+=( --disable-libxml2 )
+	else
+		conf_opts+=( --enable-libxml2 )
+	fi
 
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
@@ -529,9 +546,6 @@ qemu_src_configure() {
 	else
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
-
-	#bug #647570
-	conf_opts+=( --disable-capstone )
 
 	echo "../configure ${conf_opts[*]}"
 	cd "${builddir}"
