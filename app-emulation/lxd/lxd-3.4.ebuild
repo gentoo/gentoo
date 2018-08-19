@@ -8,15 +8,16 @@ HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
-IUSE="+daemon +ipv6 +dnsmasq nls test"
+IUSE="+daemon +ipv6 +dnsmasq nls test tools"
 
-inherit bash-completion-r1 linux-info systemd user
+inherit autotools bash-completion-r1 linux-info systemd user
 
 SRC_URI="https://linuxcontainers.org/downloads/${PN}/${P}.tar.gz"
 
 DEPEND="
+	dev-lang/tcl
 	>=dev-lang/go-1.9.4
 	dev-libs/protobuf
 	nls? ( sys-devel/gettext )
@@ -31,11 +32,18 @@ RDEPEND="
 	daemon? (
 		app-arch/xz-utils
 		>=app-emulation/lxc-2.0.7[seccomp]
+		dev-libs/lzo
+		dev-util/xdelta:3
 		dnsmasq? (
 			net-dns/dnsmasq[dhcp,ipv6?]
 		)
+		net-firewall/ebtables
+		net-firewall/iptables[ipv6?]
+		net-libs/libnfnetlink
 		net-misc/rsync[xattr]
 		sys-apps/iproute2[ipv6?]
+		sys-fs/fuse
+		sys-fs/lxcfs
 		sys-fs/squashfs-tools
 		virtual/acl
 	)
@@ -77,32 +85,53 @@ ERROR_VXLAN="VXLAN: needed for network commands"
 
 EGO_PN="github.com/lxc/lxd"
 
-PATCHES=(
-	"${FILESDIR}/ja-translation-newline.patch"  # https://github.com/lxc/lxd/pull/4572
-	"${FILESDIR}/de-translation-newline.patch"
-)
+src_prepare() {
+	eapply_user
+	eapply "${FILESDIR}/de-translation-newline.patch"
 
-# LXD tarball is packaged with a nice "dist" folder containing all dependencies
-# that were vendored by upstream at release time. That saves us the trouble of
-# vendoring the dependencies ourselves. This is why there was this drastic drop
-# in ebuild complexity compared to pre 3.0.0-r2 ebuilds.
+	cd "${S}/dist/dqlite" || die "Can't cd to dqlite dir"
+	eautoreconf
+}
+
+src_configure() {
+	export GOPATH="${S}/dist"
+	cd "${GOPATH}/sqlite" || die "Can't cd to sqlite dir"
+	econf --enable-replication --disable-amalgamation --disable-tcl --libdir=/usr/lib/lxd
+
+	cd "${GOPATH}/dqlite" || die "Can't cd to dqlite dir"
+	PKG_CONFIG_PATH="${GOPATH}/sqlite/" econf --libdir=/usr/lib/lxd
+}
+
 src_compile() {
 	export GOPATH="${S}/dist"
+
+	cd "${GOPATH}/sqlite" || die "Can't cd to sqlite dir"
+	emake
+
+	cd "${GOPATH}/dqlite" || die "Can't cd to dqlite dir"
+	emake CFLAGS="-I${GOPATH}/sqlite"
 
 	# We don't use the Makefile here because it builds targets with the
 	# assumption that `pwd` is in a deep gopath namespace, which we're not.
 	# It's simpler to manually call "go install" than patching the Makefile.
-	#
-	# ABOUT "-tags libsqlite3": we used to link to the system's sqlite3 library
-	# but since v3.0.0, LXD depends on github.com/CanonicalLtd/dqlite which
-	# at the time of this writing, depends on patched version of sqlite with
-	# replication capabilities added. We don't have that patch in dev-db/sqlite.
-	# Therefore, we let LXD use its own private copy of sqlite.
+	cd "${S}"
 	go install -v -x ${EGO_PN}/lxc || die "Failed to build the client"
 
 	if use daemon; then
+
+		# LXD depends on a patched, bundled sqlite with replication
+		# capabilities.
+		export CGO_CFLAGS="-I${GOPATH}/sqlite/ -I${GOPATH}/dqlite/include/"
+		export CGO_LDFLAGS="-L${GOPATH}/sqlite/.libs/ -L${GOPATH}/dqlite/.libs/"
+		export LD_LIBRARY_PATH="${GOPATH}/sqlite/.libs/:${GOPATH}/dqlite/.libs/"
+
+		go install -v -x -tags libsqlite3 ${EGO_PN}/lxd || die "Failed to build the daemon"
+	fi
+
+	if use tools; then
 		go install -v -x ${EGO_PN}/fuidshift || die "Failed to build fuidshift"
-		go install -v -x ${EGO_PN}/lxd || die "Failed to build the daemon"
+		go install -v -x ${EGO_PN}/lxc-to-lxd || die "Failed to build lxc-to-lxd"
+		go install -v -x ${EGO_PN}/lxd-benchmark || die "Failed to build lxd-benchmark"
 	fi
 
 	use nls && emake build-mo
@@ -129,8 +158,26 @@ src_install() {
 	local bindir="dist/bin"
 	dobin ${bindir}/lxc
 	if use daemon; then
+
+		export GOPATH="${S}/dist"
+		cd "${GOPATH}/sqlite" || die "Can't cd to sqlite dir"
+		emake DESTDIR="${D}" install
+
+		cd "${GOPATH}/dqlite" || die "Can't cd to dqlite dir"
+		emake DESTDIR="${D}" install
+
+		# Must only install libs
+		rm "${D}/usr/bin/sqlite3" || die "Can't remove custom sqlite3 binary"
+		rm -r "${D}/usr/include" || die "Can't remove include directory"
+
+		cd "${S}" || die "Can't cd to \${S}"
 		dosbin ${bindir}/lxd
+	fi
+
+	if use tools; then
 		dobin ${bindir}/fuidshift
+		dobin ${bindir}/lxc-to-lxd
+		dobin ${bindir}/lxd-benchmark
 	fi
 
 	if use nls; then
@@ -138,21 +185,21 @@ src_install() {
 	fi
 
 	if use daemon; then
-		newinitd "${FILESDIR}"/${PN}.initd lxd
-		newconfd "${FILESDIR}"/${PN}.confd.1 lxd
+		newinitd "${FILESDIR}"/${PN}.initd.1 lxd
+		newconfd "${FILESDIR}"/${PN}.confd lxd
 
 		systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 	fi
 
 	newbashcomp scripts/bash/lxd-client lxc
 
-	dodoc AUTHORS README.md doc/*
+	dodoc AUTHORS doc/*
 }
 
 pkg_postinst() {
-	einfo
-	einfo "Consult https://wiki.gentoo.org/wiki/LXD for more information,"
-	einfo "including a Quick Start."
+	elog
+	elog "Consult https://wiki.gentoo.org/wiki/LXD for more information,"
+	elog "including a Quick Start."
 
 	# The messaging below only applies to daemon installs
 	use daemon || return 0
@@ -163,19 +210,23 @@ pkg_postinst() {
 	# Ubuntu also defines an lxd user but it appears unused (the daemon
 	# must run as root)
 
-	einfo
-	einfo "Though not strictly required, some features are enabled at run-time"
-	einfo "when the relevant helper programs are detected:"
-	einfo "- sys-apps/apparmor"
-	einfo "- sys-fs/btrfs-progs"
-	einfo "- sys-fs/lvm2"
-	einfo "- sys-fs/lxcfs"
-	einfo "- sys-fs/zfs"
-	einfo "- sys-process/criu"
-	einfo
-	einfo "Since these features can't be disabled at build-time they are"
-	einfo "not USE-conditional."
-	einfo
-	einfo "Networks with bridge.mode=fan are unsupported due to requiring"
-	einfo "a patched kernel and iproute2."
+	elog
+	elog "Though not strictly required, some features are enabled at run-time"
+	elog "when the relevant helper programs are detected:"
+	elog "- sys-apps/apparmor"
+	elog "- sys-fs/btrfs-progs"
+	elog "- sys-fs/lvm2"
+	elog "- sys-fs/zfs"
+	elog "- sys-process/criu"
+	elog
+	elog "Since these features can't be disabled at build-time they are"
+	elog "not USE-conditional."
+	elog
+	elog "Be sure to add your local user to the lxd group."
+	elog
+	elog "Networks with bridge.mode=fan are unsupported due to requiring"
+	elog "a patched kernel and iproute2."
 }
+
+# TODO:
+# - man page, I don't see cobra generating it

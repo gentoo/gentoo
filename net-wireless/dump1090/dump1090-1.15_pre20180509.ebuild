@@ -35,7 +35,7 @@ src_compile() {
 		UNAME="Linux" \
 		DUMP1090_VERSION=${PV} \
 		CFLAGS="$($(tc-getPKG_CONFIG) --cflags librtlsdr) ${CFLAGS}" \
-		EXTRACFLAGS="-DHTMLPATH=\\\"/usr/share/dump1090/html\\\""\
+		EXTRACFLAGS="-DHTMLPATH=\\\"/usr/share/dump1090/html\\\"" \
 		LIBS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs librtlsdr) -lm -lpthread"
 }
 
@@ -50,8 +50,6 @@ src_install() {
 	insinto /usr/share/${PN}/tools
 	doins -r tools/*
 
-	#insinto /etc/lighttpd/conf-available
-	#doins -r debian/lighttpd/*
-	#insinto /etc/nginx/sites-available
-	#doins -r debian/nginx/*
+	newdoc debian/lighttpd/89-dump1090.conf lighttpd.conf
+	newdoc debian/nginx/dump1090-mutability nginx.conf
 }
