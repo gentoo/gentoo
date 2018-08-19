@@ -190,7 +190,6 @@ www-apps/guacamole
 # and dev-python/jaraco-* + dev-python/tempora.
 # Removal in a month. See https://bugs.gentoo.org/582728
 dev-python/hgtools
-dev-python/jaraco-utils
 
 # Brian Dolbec <dolsen@gentoo.org> (4 July 2018)
 # No longer needed, newer gpg-2 versions have simple cli options
