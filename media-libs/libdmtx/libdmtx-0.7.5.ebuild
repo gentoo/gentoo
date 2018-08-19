@@ -15,6 +15,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="static-libs"
 
 src_prepare() {
+	#bug 663346
+	sed -i -e "s/-ansi//" test/*/Makefile.am || die
+
 	default
 	eautoreconf
 }
