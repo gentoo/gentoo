@@ -52,6 +52,8 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( ChangeLog README )
 
+PATCHES=( "${FILESDIR}/${P}-gcc8.patch" )
+
 src_configure() {
 	append-ldflags -fuse-ld=gold #bug #623566
 
