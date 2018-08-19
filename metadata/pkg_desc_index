@@ -10293,7 +10293,7 @@ sys-process/tiptop 2.2: top for performance counters
 sys-process/vixie-cron 4.1-r14 4.1-r15: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r2: Watches a process for termination
-sys-process/xjobs 20151016: Reads commands line by line and executes them in parallel
+sys-process/xjobs 20151016 20170829: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
