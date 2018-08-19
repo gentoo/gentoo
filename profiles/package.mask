@@ -116,18 +116,6 @@ dev-python/wxpython:2.8
 # Pulseeffects depends on atoms only found in gnome overlay
 >=media-sound/pulseeffects-4.0.0
 
-# Michał Górny <mgorny@gentoo.org> (12 Jul 2018)
-# Abandoned upstream, no reverse dependencies.  Collides with
-# dev-python/promises (that has revdeps).
-# Removal in 30 days.  Bug #651156.
-dev-python/promise
-
-# Jonas Stein <jstein@gentoo.org> (10 Jul 2018)
-# Package is not maintained, has a broken SRC_URI and 
-# we may not mirror the files.
-# Removal on (10 Aug 2018) Bug #660750
-media-sound/neroaac
-
 # Kent Fredric <kentnl@gentoo.org> (10 Jul 2018)
 # Perl 5.28 Staging block
 =dev-lang/perl-5.28.0
@@ -178,19 +166,6 @@ media-sound/neroaac
 =virtual/perl-threads-shared-1.580.0
 =virtual/perl-threads-2.220.0
 =virtual/perl-version-0.992.300
-
-# Andreas Schuerch <nativemad@gentoo.org> (10 Jul 2018)
-# Packages have open bugs and mayor component is not working since years
-# Removal in 30 days. Bug 608540
-net-misc/guacamole-server
-www-apps/guacamole
-
-# Louis Sautier <sbraz@gentoo.org> (8 July 2018)
-# Superseded, respectively by dev-python/setuptools_scm
-# and dev-python/jaraco-* + dev-python/tempora.
-# Removal in a month. See https://bugs.gentoo.org/582728
-dev-python/hgtools
-dev-python/jaraco-utils
 
 # Brian Dolbec <dolsen@gentoo.org> (4 July 2018)
 # No longer needed, newer gpg-2 versions have simple cli options

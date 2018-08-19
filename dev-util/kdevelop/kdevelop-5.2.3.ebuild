@@ -107,11 +107,13 @@ src_configure() {
 		$(cmake-utils_use_find_package plasma KF5Plasma)
 		$(cmake-utils_use_find_package hex OktetaKastenControllers)
 		$(cmake-utils_use_find_package qmake KDevelop-PG-Qt)
-		$(cmake-utils_use_find_package reviewboard KDEExperimentalPurpose)
+		$(cmake-utils_use_find_package reviewboard KF5Purpose)
 		$(cmake-utils_use_find_package subversion SubversionLibrary)
 		$(cmake-utils_use_find_package !webkit Qt5WebEngineWidgets)
 		$(cmake-utils_use_find_package welcomepage Qt5QuickWidgets)
 	)
+
+	use reviewboard || mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KDEExperimentalPurpose=ON )
 
 	kde5_src_configure
 }
