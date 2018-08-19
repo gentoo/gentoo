@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>ahippo@yandex.ru</email>
+        <name>Andrey Mazo</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription>
+        mergerfs is a union filesystem (FUSE) geared towards simplifying storage and management of files across numerous commodity storage devices.
+        It is similar to mhddfs, unionfs, and aufs.
+        mergerfs behavior is widely configurable (which drive to choose for new files, how to combine directories, etc.).
+    </longdescription>
+    <upstream>
+        <remote-id type="github">trapexit/mergerfs</remote-id>
+        <bugs-to>https://github.com/trapexit/mergerfs/issues</bugs-to>
+    </upstream>
+</pkgmetadata>

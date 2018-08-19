@@ -1,0 +1,51 @@
+From e987ff46c21d395c3d790da746a8e912e4a85c8c Mon Sep 17 00:00:00 2001
+From: Andrey Mazo <ahippo@yandex.com>
+Date: Sun, 12 Aug 2018 07:24:39 +0300
+Subject: [PATCH 1/1] Makefile: don't touch LDFLAGS
+
+These are more like LIBS rather than LDFLAGS.
+They are used just in one place,
+so simply put them inline.
+
+Also, use LDFLAGS provided by the user during actual link.
+
+This helps users pass their own LDFLAGS.
+For example, this is important on Gentoo,
+where LDFLAGS='-Wl,-O1 -Wl,--as-needed' is passed by default.
+---
+ Makefile | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0137632..7d4c1f2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -58,7 +58,6 @@ CFLAGS      = -g -Wall \
+               -DFUSE_USE_VERSION=29 \
+               -MMD \
+ 	      -DUGID_USE_RWLOCK=$(UGID_USE_RWLOCK)
+-LDFLAGS       = -pthread -lrt
+ 
+ PREFIX        = /usr/local
+ EXEC_PREFIX   = $(PREFIX)
+@@ -86,7 +85,7 @@ help:
+ 
+ $(TARGET): version obj/obj-stamp libfuse/lib/.libs/libfuse.a $(OBJ)
+ 	cd libfuse && make
+-	$(CXX) $(CFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a -ldl $(LDFLAGS)
++	$(CXX) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $@ libfuse/lib/.libs/libfuse.a -ldl -pthread -lrt
+ 
+ mount.mergerfs: $(TARGET)
+ 	$(LN) -fs "$<" "$@"
+@@ -208,7 +207,7 @@ else ifeq ($(shell test -e /usr/bin/yum; echo $$?),0)
+ 	yum -y install git rpm-build libattr-devel gcc-c++ make which python automake libtool gettext-devel
+ endif
+ 
+-unexport CFLAGS LDFLAGS
++unexport CFLAGS
+ .PHONY: libfuse_Makefile
+ libfuse_Makefile:
+ ifeq ($(shell test -e libfuse/Makefile; echo $$?),1)
+-- 
+2.16.4
+
