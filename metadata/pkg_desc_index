@@ -9709,7 +9709,7 @@ sec-policy/selinux-xprint 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux pol
 sec-policy/selinux-xscreensaver 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for xscreensaver
 sec-policy/selinux-xserver 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for zabbix
-sys-apps/accountsservice 0.6.45: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.45 0.6.50: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 2.18-r1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
