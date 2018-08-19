@@ -194,6 +194,7 @@ CDEPEND="
 	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
 "
 DEPEND="${CDEPEND}
+	${PYTHON_DEPS}
 	dev-lang/perl
 	=dev-lang/python-2*
 	sys-apps/texinfo
