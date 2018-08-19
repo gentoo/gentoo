@@ -32,9 +32,10 @@ DEPEND="${RDEPEND}"
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
-		UNAME="Linux"
+		UNAME="Linux" \
+		DUMP1090_VERSION=${PV} \
 		CFLAGS="$($(tc-getPKG_CONFIG) --cflags librtlsdr) ${CFLAGS}" \
-		EXTRACFLAGS="-DHTMLPATH='/usr/share/dump1090/html'" \
+		EXTRACFLAGS="-DHTMLPATH=\\\"/usr/share/dump1090/html\\\""\
 		LIBS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs librtlsdr) -lm -lpthread"
 }
 
