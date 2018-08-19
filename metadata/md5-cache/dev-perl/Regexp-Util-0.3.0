@@ -4,10 +4,10 @@ DESCRIPTION=General purpose utilities for working with Regular Expressions
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Regexp-Util/
 IUSE=test
-KEYWORDS=~amd64 ~hppa ~ppc x86
+KEYWORDS=~amd64 ~hppa ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOBYINK/Regexp-Util-0.003.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
-_md5_=491e54c0440f695cb600369a6c5578ec
+_md5_=555a1f3530e9163883f42bc8b95a0f9c
