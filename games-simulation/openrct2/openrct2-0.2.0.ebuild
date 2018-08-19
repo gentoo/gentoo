@@ -14,12 +14,18 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/OpenRCT2/OpenRCT2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/OpenRCT2/OpenRCT2/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
 	S="${WORKDIR}/OpenRCT2-${PV}"
 fi
 
-TSV="${PV}"
-SRC_URI+=" https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip -> ${PN}-title-sequence-v${TSV}.zip "
+TSV="0.1.2"
+OBJV="1.0.2"
+SRC_URI+="
+	https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip
+		-> ${PN}-title-sequence-v${TSV}.zip
+	https://github.com/OpenRCT2/objects/releases/download/v${OBJV}/objects.zip
+		-> ${PN}-objects-v${OBJV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -47,6 +53,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.2.0-disable-tests-with-assets.patch"
+)
+
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
@@ -57,6 +67,11 @@ src_unpack() {
 	mkdir -p "${S}/data/title" || die
 	pushd "${S}/data/title" || die
 	unpack ${PN}-title-sequence-v${TSV}.zip
+	popd || die
+
+	mkdir -p "${S}/data/object" || die
+	pushd "${S}/data/object" || die
+	unpack ${PN}-objects-v${OBJV}.zip
 	popd || die
 }
 
@@ -74,10 +89,15 @@ src_configure() {
 		-DDISABLE_TTF="$(usex !truetype)"
 		-DWITH_TESTS="$(usex test)"
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
-		-DDISABLE_RCT2_TESTS=ON
-		-DSYSTEM_GTEST=ON
+		-DDOWNLOAD_OBJECTS=OFF
 		-DBUILD_SHARED_LIBS=ON
 	)
+	if use test ; then
+		mycmakeargs+=(
+			-DSYSTEM_GTEST=ON
+			-DDISABLE_RCT2_TESTS=ON
+		)
+	fi
 
 	cmake-utils_src_configure
 }
