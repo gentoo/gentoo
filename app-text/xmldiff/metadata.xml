@@ -12,4 +12,7 @@
 		used as a library or as a command line tool. It can work either with XML
 		files or DOM trees.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">Shoobx/xmldiff</remote-id>
+	</upstream>
 </pkgmetadata>
