@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit distutils-r1 eapi7-ver gnome2-utils
 
@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome libreoffice pidgin webcam"
+IUSE="gnome libreoffice webcam"
 
 RDEPEND="dev-libs/gobject-introspection
 	dev-python/dbus-python[${PYTHON_USEDEP}]
@@ -25,7 +25,6 @@ RDEPEND="dev-libs/gobject-introspection
 	x11-libs/gtk+:3
 	gnome? ( gnome-base/gnome-control-center )
 	libreoffice? ( || ( app-office/libreoffice-bin app-office/libreoffice ) )
-	pidgin? ( net-im/pidgin[${PYTHON_USEDEP}] )
 	webcam? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-good:1.0
 		gnome? ( media-libs/clutter-gtk[introspection]
@@ -36,11 +35,10 @@ DEPEND="dev-python/python-distutils-extra[${PYTHON_USEDEP}]
 	${RDEPEND}"
 
 PATCHES=(
-	# https://bugs.launchpad.net/ubuntu/+source/mugshot/+bug/1443283
-	"${FILESDIR}/fix_env_spawn_args.patch"
 	# Both patches are taken from Arch Linux
-	"${FILESDIR}/missing_default_face.patch"
-	"${FILESDIR}/use_office_phone.patch"
+	# and adapted to newest version
+	"${FILESDIR}"/${P}-missing_default_face.patch
+	"${FILESDIR}"/${P}-use_office_phone.patch
 )
 
 pkg_postinst() {
