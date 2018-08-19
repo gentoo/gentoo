@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
+<maintainer type="person">
+	<email>chewi@gentoo.org</email>
+	<name>James Le Cuirot</name>
 </maintainer>
 <use>
 	<flag name="colord">Allow setting color managment</flag>
