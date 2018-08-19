@@ -20,7 +20,7 @@ else
 	else
 		SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -91,7 +91,7 @@ RDEPEND="
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
 		>=app-emulation/qemu-0.13.0
-		dev-libs/yajl
+		dev-libs/jansson
 	)
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl )
@@ -125,10 +125,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.2.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-4.5.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
-	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch # bug #609488
 )
 
 pkg_setup() {
@@ -267,7 +266,7 @@ src_configure() {
 		$(use_with phyp)
 		$(use_with policykit polkit)
 		$(use_with qemu)
-		$(use_with qemu yajl)
+		$(use_with qemu jansson)
 		$(use_with rbd storage-rbd)
 		$(use_with sasl)
 		$(use_with selinux)
@@ -276,8 +275,6 @@ src_configure() {
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen)
-		$(use_with xen xen-inotify)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
