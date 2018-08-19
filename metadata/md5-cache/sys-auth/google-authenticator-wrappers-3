@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install preinst prepare pretend test
+DEPEND=sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Set of scripts to manage google-auth setup on Gentoo Infra
+EAPI=6
+HOMEPAGE=https://github.com/mgorny/google-authenticator-wrappers
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-auth/google-authenticator
+SLOT=0
+SRC_URI=https://github.com/mgorny/google-authenticator-wrappers/archive/v3.tar.gz -> google-authenticator-wrappers-3.tar.gz
+_eclasses_=cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=a46811733c26aac5496b7c2ca7f2ad17
