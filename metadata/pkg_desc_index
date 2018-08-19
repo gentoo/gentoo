@@ -4325,9 +4325,9 @@ dev-perl/Unix-Syslog 1.100.0-r1: A Perl module which provides access to the syst
 dev-perl/User-Identity 0.940.0: Maintains info about a physical person
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
 dev-perl/Variable-Magic 0.610.0 0.620.0: Associate user-defined magic to variables from Perl
-dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
-dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
-dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
+dev-perl/Video-Frequencies 0.03-r1 0.03-r2: Video Frequencies perl module, for use with ivtv-ptune
+dev-perl/Video-Info 0.993.0-r1 0.993.0-r2: Perl extension for getting video info
+dev-perl/Video-ivtv 0.13-r1 0.13-r2: Video::ivtv perl module, for use with ivtv-ptune
 dev-perl/WWW-Curl 4.170.0: Perl extension interface for libcurl
 dev-perl/WWW-Form-UrlEncoded 0.240.0: parser and builder for application/x-www-form-urlencoded
 dev-perl/WWW-Form-UrlEncoded-XS 0.240.0: XS parsing/building of application/x-www-form-urlencoded
