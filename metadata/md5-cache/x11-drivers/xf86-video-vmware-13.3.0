@@ -4,10 +4,10 @@ DESCRIPTION=VMware SVGA video driver
 EAPI=5
 HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
 IUSE=kernel_linux
-KEYWORDS=~amd64 ~x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=amd64 ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=MIT
 RDEPEND=kernel_linux? ( x11-libs/libdrm[libkms,video_cards_vmware] media-libs/mesa[xa] ) x11-base/xorg-server:= x11-base/xorg-server[-minimal] x11-libs/libdrm x11-base/xorg-server[xorg] x11-libs/libpciaccess
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/driver/xf86-video-vmware-13.3.0.tar.bz2
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	696393cddf6200db17a31641f597b403	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xorg-2	3177e7a1a6d7ed77cd228f01de48336b
-_md5_=e1f17251ba71696c1b42fe76a8ba7b2e
+_md5_=cfed22d4a7c4dc919de6f0741858a3e8
