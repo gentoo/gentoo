@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=>=dev-qt/qtcore-5.9.1:5 >=dev-qt/qtgui-5.9.1:5 >=dev-qt/qtsvg-5.9.1:5 >=dev-qt/qtwidgets-5.9.1:5 >=dev-util/radare2-2.7.0 jupyter? ( dev-python/jupyter ) webengine? ( >=dev-qt/qtwebengine-5.9.1:5[widgets] ) >=sys-apps/sed-4
+DESCRIPTION=A Qt and C++ GUI for radare2 reverse engineering framework
+EAPI=6
+HOMEPAGE=https://www.radare.org
+IUSE=jupyter webengine
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-qt/qtcore-5.9.1:5 >=dev-qt/qtgui-5.9.1:5 >=dev-qt/qtsvg-5.9.1:5 >=dev-qt/qtwidgets-5.9.1:5 >=dev-util/radare2-2.7.0 jupyter? ( dev-python/jupyter ) webengine? ( >=dev-qt/qtwebengine-5.9.1:5[widgets] )
+REQUIRED_USE=webengine? ( jupyter )
+SLOT=0
+SRC_URI=https://github.com/radareorg/cutter/archive/v1.7.tar.gz -> cutter-1.7.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=7a520c9e0ab45ed0c2948e708af2646a
