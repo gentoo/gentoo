@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,8 +17,9 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
-	S="${WORKDIR}/${PN}"
+	COMMIT="fb5942dba6505a21cbafc7905a5a7c513b214dc9"
+	SRC_URI="https://github.com/mutability/dump1090/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="BSD"
@@ -31,9 +32,10 @@ DEPEND="${RDEPEND}"
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
-		UNAME="Linux"
+		UNAME="Linux" \
+		DUMP1090_VERSION=${PV} \
 		CFLAGS="$($(tc-getPKG_CONFIG) --cflags librtlsdr) ${CFLAGS}" \
-		EXTRACFLAGS="-DHTMLPATH='/usr/share/dump1090/html'" \
+		EXTRACFLAGS="-DHTMLPATH=\\\"/usr/share/dump1090/html\\\"" \
 		LIBS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs librtlsdr) -lm -lpthread"
 }
 
@@ -47,4 +49,7 @@ src_install() {
 
 	insinto /usr/share/${PN}/tools
 	doins -r tools/*
+
+	newdoc debian/lighttpd/89-dump1090.conf lighttpd.conf
+	newdoc debian/nginx/dump1090-mutability nginx.conf
 }
