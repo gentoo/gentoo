@@ -100,6 +100,7 @@ app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archi
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit-base 1.1.7-r1: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-qt 1.0.0 1.0.1: Qt PackageKit backend library
+app-admin/pass 1.7.3: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/perl-cleaner 2.20 2.25: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
@@ -633,6 +634,7 @@ app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.12: Emacs major mode for editing eselect files
 app-emacs/ess 15.09.2: Emacs Speaks Statistics
 app-emacs/evil 1.0.8: Extensible vi layer for Emacs
+app-emacs/f 0.20.0: Modern API for working with files and directories in Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill functions
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
@@ -693,6 +695,7 @@ app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code
 app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 8.0.0 9.0.0: A redesign of Liece IRC client
 app-emacs/ruby-mode 2.3.0: Emacs major mode for editing Ruby code
+app-emacs/s 1.12.0: The long lost Emacs string manipulation library
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completion for Emacs
 app-emacs/semi 1.14.6-r2: A library to provide MIME feature for GNU Emacs

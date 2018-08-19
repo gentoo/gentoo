@@ -77,6 +77,11 @@ app-admin/packagekit-base:command-not-found - Enable packagekit support on shell
 app-admin/packagekit-base:cron - Install cron script for auto-update
 app-admin/packagekit-base:elogind - Enable elogind support to get user session
 app-admin/packagekit-base:entropy - Enable Entropy backend
+app-admin/pass:X - Use x11-misc/xclip to copy passwords to the clipboard.
+app-admin/pass:dmenu - Add support for x11-misc/dmenu with the 'passmenu' program.
+app-admin/pass:fish-completion - Enable fish completion support.
+app-admin/pass:git - Use dev-vcs/git for password revisions.
+app-admin/pass:importers - Allow importing passwords from other password managers using various contributed scripts.
 app-admin/puppet:augeas - Enable augeas support
 app-admin/puppet:diff - Enable diff support
 app-admin/puppet:experimental - Add patches for things in testing
