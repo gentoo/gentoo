@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit autotools eutils user linux-info systemd readme.gentoo-r1 bash-completion-r1
+PYTHON_COMPAT=( python3_{4,5,6} )
+
+inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd user
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -115,6 +117,7 @@ RDEPEND="
 	zfs? ( sys-fs/zfs )"
 
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	app-text/xhtml1
 	dev-lang/perl
 	dev-libs/libxslt
