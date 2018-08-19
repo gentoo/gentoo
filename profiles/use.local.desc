@@ -1661,6 +1661,21 @@ dev-libs/tvision:gpm - Support text mode mouse through sys-libs/gpm
 dev-libs/ucommon:socks - Build with socks proxy support
 dev-libs/userspace-rcu:regression-test - Run regression tests (requires FEATURES=test)
 dev-libs/ustr:ustr-import - Install ustr-import developer program and source code for bundling.
+dev-libs/weston:colord - Allow setting color managment
+dev-libs/weston:drm - Enable drm compositor support
+dev-libs/weston:editor - Install wayland-editor example application
+dev-libs/weston:fbdev - Enable fbdev compositor support
+dev-libs/weston:gles2 - Use GLESv2 cairo instead of full GL
+dev-libs/weston:headless - Headless backend and a noop renderer, mainly for testing purposes
+dev-libs/weston:ivi - Enable the IVI shell
+dev-libs/weston:launch - Install weston-launch utility
+dev-libs/weston:rdp - Enable Remote Desktop Protocol compositor support
+dev-libs/weston:resize-optimization - Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi
+dev-libs/weston:screen-sharing - Enable screen-sharing through RDP
+dev-libs/weston:unwind - Enable libunwind usage for backtraces
+dev-libs/weston:wayland-compositor - Enable Wayland compositor support
+dev-libs/weston:webp - Add support for the WebP image format
+dev-libs/weston:xwayland - Enable ability support native X11 applications
 dev-libs/xapian:brass - Enabled brass backend db support
 dev-libs/xapian:chert - Enabled chert backend db support
 dev-libs/xapian:glass - Enabled glass backend db support

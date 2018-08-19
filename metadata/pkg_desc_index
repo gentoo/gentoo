@@ -3263,6 +3263,7 @@ dev-libs/vc 0.7.4 1.3.0: SIMD Vector Class Library for C++
 dev-libs/volume_key 0.3.9: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.14.0 1.15.0: Wayland protocol libraries
 dev-libs/wayland-protocols 1.13: Wayland protocol files
+dev-libs/weston 3.0.0: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.24 1.4.4 1.4.5: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.24 1.4.4 1.4.5: SWIG and JNI bindings for Xapian
@@ -9836,7 +9837,7 @@ sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.22 1.8.23: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7 2.8: SELinux core utilities
-sys-apps/portage 2.3.8 2.3.13-r1 2.3.19-r1 2.3.24-r1 2.3.40-r1: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.8 2.3.13-r1 2.3.24-r1 2.3.40-r1: Portage is the package management and distribution system for Gentoo
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
