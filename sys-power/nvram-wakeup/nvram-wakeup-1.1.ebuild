@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -35,7 +35,7 @@ src_prepare() {
 	use nls || epatch "${FILESDIR}"/${PN}-0.97-nonls.patch
 	# Need to be careful with CFLAGS since this could eat your bios
 	strip-flags
-	# GTTXT mode fix: https://sourceforge.net/tracker/?func=detail&aid=3599718&group_id=35022&atid=412757
+	# GTTXT mode fix
 	sed -i \
 		-e '/^CFLAGS/s:= -O2 :+= $(CPPFLAGS) :' \
 		-e '/GTTXT/s:755:644:' \
