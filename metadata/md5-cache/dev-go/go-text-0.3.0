@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-go/go-tools-0_pre20180817 >=dev-lang/go-1.9
+DESCRIPTION=Go text processing support
+EAPI=6
+HOMEPAGE=https://godoc.org/golang.org/x/text
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+SLOT=0/0.3.0
+SRC_URI=https://github.com/golang/text/archive/v0.3.0.tar.gz -> go-text-0.3.0.tar.gz
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_md5_=d0ad933387b4fac7314214a59a71cb60
