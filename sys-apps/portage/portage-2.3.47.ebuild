@@ -45,8 +45,8 @@ RDEPEND="
 		$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' \
 			python{2_7,3_4,3_5} pypy)
 		rsync-verify? (
-			>=app-portage/gemato-12.1[${PYTHON_USEDEP}]
-			app-crypt/openpgp-keys-gentoo-release
+			>=app-portage/gemato-14[${PYTHON_USEDEP}]
+			>=app-crypt/openpgp-keys-gentoo-release-20180706
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
 		)
 	)
