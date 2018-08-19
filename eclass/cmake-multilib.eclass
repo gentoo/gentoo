@@ -20,10 +20,6 @@
 # phase rather than 'default'.
 
 # EAPI=5 is required for meaningful MULTILIB_USEDEP.
-case ${EAPI:-0} in
-	5|6) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
-esac
 
 if [[ ${CMAKE_IN_SOURCE_BUILD} ]]; then
 	die "${ECLASS}: multilib support requires out-of-source builds."
