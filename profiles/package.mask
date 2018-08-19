@@ -170,7 +170,6 @@ dev-python/wxpython:2.8
 # Andreas Schuerch <nativemad@gentoo.org> (10 Jul 2018)
 # Packages have open bugs and mayor component is not working since years
 # Removal in 30 days. Bug 608540
-net-misc/guacamole-server
 www-apps/guacamole
 
 # Brian Dolbec <dolsen@gentoo.org> (4 July 2018)
