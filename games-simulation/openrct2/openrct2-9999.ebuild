@@ -14,15 +14,18 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/OpenRCT2/OpenRCT2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/OpenRCT2/OpenRCT2/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
 	S="${WORKDIR}/OpenRCT2-${PV}"
 fi
 
 TSV="0.1.2"
-SRC_URI+=" https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip -> ${PN}-title-sequence-v${TSV}.zip "
-
-OBJV="1.0"
-SRC_URI+=" https://github.com/OpenRCT2/objects/releases/download/v${OBJV}/objects.zip -> ${PN}-objects-v${OBJV}.zip"
+OBJV="1.0.3"
+SRC_URI+="
+	https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip
+		-> ${PN}-title-sequence-v${TSV}.zip
+	https://github.com/OpenRCT2/objects/releases/download/v${OBJV}/objects.zip
+		-> ${PN}-objects-v${OBJV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -83,9 +86,9 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
 		-DDOWNLOAD_OBJECTS=OFF
-		-DSYSTEM_GTEST=ON
 		-DBUILD_SHARED_LIBS=ON
 	)
+	use test && mycmakeargs+=( -DSYSTEM_GTEST=ON )
 
 	cmake-utils_src_configure
 }
