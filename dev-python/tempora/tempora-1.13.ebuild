@@ -19,7 +19,6 @@ IUSE="doc test"
 
 # The calc-prorate binary used to be part of jaraco.utils
 RDEPEND="
-	!<=dev-python/jaraco-utils-10.0.2
 	>=dev-python/jaraco-functools-1.20[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]

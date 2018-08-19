@@ -23,7 +23,6 @@ RDEPEND="
 "
 # The calc-prorate binary used to be part of jaraco.utils
 DEPEND="
-	!<=dev-python/jaraco-utils-10.0.2
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (

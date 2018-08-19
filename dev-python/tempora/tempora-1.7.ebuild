@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,6 @@ RDEPEND="
 # The calc-prorate binary used to be part of jaraco.utils
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	!<=dev-python/jaraco-utils-10.0.2
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
