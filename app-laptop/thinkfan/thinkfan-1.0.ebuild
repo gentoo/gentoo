@@ -7,7 +7,7 @@ inherit cmake-utils readme.gentoo-r1
 
 DESCRIPTION="simple fan control program for thinkpads"
 HOMEPAGE="http://thinkfan.sourceforge.net"
-SRC_URI="https://github.com/vmatare/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/vmatare/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,7 +23,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	sed -e "s:share/doc/${PN}:share/doc/${PF}:" \
-		-i CMakeLists.txt
+		-i CMakeLists.txt || die "sed failed"
 }
 
 src_configure() {
