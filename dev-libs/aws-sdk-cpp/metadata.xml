@@ -121,7 +121,6 @@
 		<flag name="aws_targets_pi">SDK Support for AWS pi</flag>
 		<flag name="aws_targets_pinpoint">SDK Support for AWS pinpoint</flag>
 		<flag name="aws_targets_polly">SDK Support for AWS polly</flag>
-		<flag name="aws_targets_polly-sample">SDK Support for AWS polly-sample</flag>
 		<flag name="aws_targets_pricing">SDK Support for AWS pricing</flag>
 		<flag name="aws_targets_queues">SDK Support for AWS queues</flag>
 		<flag name="aws_targets_rds">SDK Support for AWS rds</flag>
