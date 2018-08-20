@@ -107,10 +107,6 @@ dev-python/django-celery
 x11-libs/wxGTK:2.8
 dev-python/wxpython:2.8
 
-# Corentin Pazdera <nado@troglodyte.be> (12 Jul 2018)
-# Pulseeffects depends on atoms only found in gnome overlay
->=media-sound/pulseeffects-4.0.0
-
 # Kent Fredric <kentnl@gentoo.org> (10 Jul 2018)
 # Perl 5.28 Staging block
 =dev-lang/perl-5.28.0
