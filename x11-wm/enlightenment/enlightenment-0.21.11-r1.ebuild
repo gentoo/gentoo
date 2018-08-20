@@ -50,12 +50,12 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 	acpi? ( sys-power/acpid )
 	connman? ( net-misc/connman )
-	egl? ( >=dev-libs/efl-1.20.0[egl,wayland] )
+	egl? ( =dev-libs/efl-1.20*[egl,wayland] )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd )
 	udisks? ( sys-fs/udisks:2 )
 	wayland? (
-		>=dev-libs/efl-1.20.0[drm,wayland]
+		=dev-libs/efl-1.20*[drm,wayland]
 		>=dev-libs/wayland-1.11.0
 		x11-libs/libxkbcommon
 		x11-libs/pixman
