@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test
+DEPEND=pv? ( sys-apps/pv ) doc? ( dev-python/sphinx dev-python/sphinx_rtd_theme net-misc/rsync ) test? ( app-arch/pigz )
+DESCRIPTION=Lightweight user-defined software stacks for high-performance computing
+EAPI=7
+HOMEPAGE=https://hpc.github.io/charliecloud/
+IUSE=doc examples +pv test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/hpc/charliecloud/archive/v0.9.1.tar.gz -> charliecloud-0.9.1.tar.gz
+_md5_=bd1ed0af4a1667156e50f4ffcf22d2fb
