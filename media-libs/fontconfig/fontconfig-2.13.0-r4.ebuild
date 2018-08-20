@@ -24,6 +24,7 @@ RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	>=sys-devel/gettext-0.19.8
 	doc? ( =app-text/docbook-sgml-dtd-3.1*
 		app-text/docbook-sgml-utils[jadetex] )"
 PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
