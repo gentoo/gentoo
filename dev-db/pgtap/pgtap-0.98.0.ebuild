@@ -17,6 +17,7 @@ KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="${POSTGRES_DEP}
+		app-arch/unzip
 		dev-perl/TAP-Parser-SourceHandler-pgTAP
 "
 RDEPEND="${DEPEND}"
