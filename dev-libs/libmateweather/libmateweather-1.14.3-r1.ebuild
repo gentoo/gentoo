@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	"
 
-COMMON_DEPEND=">=dev-libs/glib-2.36:2[${PYTHON_USEDEP}]
+COMMON_DEPEND=">=dev-libs/glib-2.36:2
 	>=dev-libs/libxml2-2.6:2
 	>=net-libs/libsoup-2.34:2.4
 	>=sys-libs/timezone-data-2010k:0
