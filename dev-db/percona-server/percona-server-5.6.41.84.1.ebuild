@@ -35,7 +35,8 @@ IUSE="-client-libs cracklib debug jemalloc latin1 libressl numa pam +perl profil
 	+server static static-libs systemtap tcmalloc test test-suite tokudb tokudb-backup-plugin yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="libressl? ( test )"
+RESTRICT="libressl? ( test )
+	!test? ( test )"
 
 REQUIRED_USE="tokudb-backup-plugin? ( tokudb ) tokudb? ( jemalloc !tcmalloc ) ?? ( tcmalloc jemalloc ) static? ( yassl )"
 
@@ -208,17 +209,6 @@ pkg_setup() {
 			eerror "${PN} needs to be built with gcc-4.7 or later."
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
 			die "Unsupported GCC version"
-		fi
-
-		if has test ${FEATURES} && \
-			use server && ! has userpriv ${FEATURES} ; then
-				eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
-				die "FEATURES=test with FEATURES=-userpriv is not supported"
-		fi
-
-		if has test ${FEATURES} && ! use test ; then
-			eerror "FEATURES=test requires USE=test."
-			die "FEATURES=test set but not USE=test"
 		fi
 
 		use test && python-any-r1_pkg_setup
