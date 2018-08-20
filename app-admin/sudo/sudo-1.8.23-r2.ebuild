@@ -3,7 +3,11 @@
 
 EAPI=6
 
-inherit eutils pam multilib libtool
+inherit eutils pam multilib libtool tmpfiles
+if [[ ${PV} == "9999" ]] ; then
+	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
+	inherit mercurial
+fi
 
 MY_P=${P/_/}
 MY_P=${MY_P/beta/b}
@@ -15,37 +19,39 @@ esac
 
 DESCRIPTION="Allows users or groups to run commands as other users"
 HOMEPAGE="https://www.sudo.ws/"
-SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
-	ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
+if [[ ${PV} != "9999" ]] ; then
+	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
+		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
+	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
+	fi
+fi
 
 # Basic license is ISC-style as-is, some files are released under
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
-fi
-IUSE="gcrypt ldap nls pam offensive openssl sasl selinux +sendmail skey"
+IUSE="gcrypt ldap nls offensive openssl pam sasl selinux +sendmail skey"
 
 CDEPEND="
+	sys-libs/zlib:=
 	gcrypt? ( dev-libs/libgcrypt:= )
-	openssl? ( dev-libs/openssl:0= )
-	pam? ( virtual/pam )
-	sasl? ( dev-libs/cyrus-sasl )
-	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
 		dev-libs/cyrus-sasl
 	)
-	sys-libs/zlib
+	openssl? ( dev-libs/openssl:0= )
+	pam? ( virtual/pam )
+	sasl? ( dev-libs/cyrus-sasl )
+	skey? ( >=sys-auth/skey-1.1.5-r1 )
 "
 RDEPEND="
 	${CDEPEND}
-	selinux? ( sec-policy/selinux-sudo )
-	ldap? ( dev-lang/perl )
-	pam? ( sys-auth/pambase )
 	>=app-misc/editor-wrapper-3
 	virtual/editor
+	ldap? ( dev-lang/perl )
+	pam? ( sys-auth/pambase )
+	selinux? ( sec-policy/selinux-sudo )
 	sendmail? ( virtual/mta )
 "
 DEPEND="
@@ -126,10 +132,11 @@ src_configure() {
 	# basing off other values.
 	myeconfargs=(
 		--enable-zlib=system
+		--enable-tmpfiles.d="${EPREFIX}"/usr/lib/tmpfiles.d
 		--with-editor="${EPREFIX}"/usr/libexec/editor
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
-		--with-rundir="${EPREFIX}"/var/run/sudo
+		--with-rundir="${EPREFIX}"/run/sudo
 		--with-secure-path="${SECURE_PATH}"
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
@@ -179,12 +186,14 @@ src_install() {
 	fperms 0700 /var/db/sudo/lectured
 	fperms 0711 /var/db/sudo #652958
 
-	# Don't install into /var/run as that is a tmpfs most of the time
+	# Don't install into /run as that is a tmpfs most of the time
 	# (bug #504854)
-	rm -rf "${ED}"/var/run
+	rm -rf "${ED%/}"/run
 }
 
 pkg_postinst() {
+	tmpfiles_process sudo.conf
+
 	#652958
 	local sudo_db="${EROOT}/var/db/sudo"
 	if [[ "$(stat -c %a "${sudo_db}")" -ne 711 ]] ; then
