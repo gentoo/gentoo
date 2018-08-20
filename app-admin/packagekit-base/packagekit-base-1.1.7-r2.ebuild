@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=app-shells/bash-completion-2
 	dev-db/sqlite:3
 	>=dev-libs/dbus-glib-0.74
-	>=dev-libs/glib-2.46.0:2[${PYTHON_USEDEP}]
+	>=dev-libs/glib-2.46.0:2
 	>=sys-auth/polkit-0.98
 	>=sys-apps/dbus-1.3.0
 	${PYTHON_DEPS}
