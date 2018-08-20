@@ -2265,7 +2265,7 @@ developers and volunteer mentors.</description>
     <name>MySQL</name>
     <url>https://wiki.gentoo.org/wiki/Project:MySQL</url>
     <description>This project maintains MySQL and its derivatives</description>
-    <member is-lead="1">
+    <member>
       <email>grknight@gentoo.org</email>
       <name>Brian Evans</name>
     </member>
