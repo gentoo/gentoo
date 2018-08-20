@@ -19,6 +19,8 @@ net-analyzer/nmap zenmap
 app-editors/vim luajit lua
 # not keyworded yet
 media-gfx/imagemagick raw
+# ipython is not really tested
+dev-python/restkit cli
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
