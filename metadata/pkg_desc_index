@@ -5441,7 +5441,7 @@ dev-python/python-swiftclient 3.0.0 3.1.0 3.3.0 3.4.0 3.5.0: Python bindings to 
 dev-python/python-systemd 233: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
 dev-python/python-troveclient 2.5.0: A client for the OpenStack Trove API, a scalable relational database service
-dev-python/python-virtkey 0.60.0-r1: Python module to simulate keypresses and get current keyboard layout
+dev-python/python-virtkey 0.60.0-r2: Python module to simulate keypresses and get current keyboard layout
 dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hostapd control interface access
 dev-python/python-xlib 0.15_rc1-r2: A fully functional X client library for Python, written in Python
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API

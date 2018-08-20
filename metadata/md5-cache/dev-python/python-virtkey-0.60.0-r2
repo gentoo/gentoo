@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-libs/glib:2 x11-libs/libX11 x11-libs/libXtst x11-libs/gtk+:2 virtual/pkgconfig python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+DESCRIPTION=Python module to simulate keypresses and get current keyboard layout
+EAPI=5
+HOMEPAGE=https://launchpad.net/virtkey
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/libX11 x11-libs/libXtst x11-libs/gtk+:2 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://launchpad.net/python-virtkey/0.60/0.60.0/+download/python-virtkey-0.60.0.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=a708ac39fb123539624d2c032b69cb25
