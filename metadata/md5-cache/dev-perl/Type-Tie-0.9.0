@@ -4,10 +4,10 @@ DESCRIPTION=Tie a variable to a type constraint
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Type-Tie/
 IUSE=test minimal
-KEYWORDS=~amd64 ~hppa ppc x86
+KEYWORDS=amd64 ~hppa ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/Hash-FieldHash ) >=dev-perl/Exporter-Tiny-0.26.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOBYINK/Type-Tie-0.009.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
-_md5_=b326b2dc75a92be6c2c0f2fdf82c5af8
+_md5_=c85603402e4302a39ec0b2430cbf6bb8
