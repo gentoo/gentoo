@@ -21,7 +21,7 @@ SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc examples jpeg math opencl openmp osd png scrollview static-libs tiff training webp"
+IUSE="doc jpeg math opencl openmp osd png scrollview static-libs tiff training webp"
 
 # List of supported Gentoo linguas and their upstream mapping
 # https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
@@ -131,11 +131,6 @@ src_install() {
 
 	if use training; then
 		emake DESTDIR="${D}" training-install
-	fi
-
-	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins testing/eurotext.tif testing/phototest.tif
 	fi
 
 	insinto /usr/share/tessdata
