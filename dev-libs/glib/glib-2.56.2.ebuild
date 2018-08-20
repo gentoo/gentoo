@@ -38,7 +38,6 @@ RDEPEND="
 	selinux? ( >=sys-libs/libselinux-2.2.2-r5[${MULTILIB_USEDEP}] )
 	xattr? ( >=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}] )
 	fam? ( >=virtual/fam-0-r1[${MULTILIB_USEDEP}] )
-	${PYTHON_DEPS}
 	utils? (
 		>=dev-util/gdbus-codegen-${PV}
 		virtual/libelf:0=
