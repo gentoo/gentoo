@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Trap exit codes, exceptions, output, etc"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
