@@ -11,7 +11,7 @@ SRC_URI="https://github.com/plk/biber/archive/v${PV}.tar.gz  -> ${P}.tar.gz"
 
 LICENSE="|| ( Artistic-2 GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc test"
 
 RDEPEND=">=dev-lang/perl-5.16
