@@ -101,7 +101,7 @@ EGO_VENDOR=(
 
 inherit golang-build golang-vcs-snapshot bash-completion-r1
 
-GIT_COMMIT="56154102a2f25ebf679c791907fd355bb0377f05"
+GIT_COMMIT="9ad53aac42165a5fadc6c87be0dea6b115f93090"
 
 ARCHIVE_URI="https://github.com/kubernetes/helm/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
