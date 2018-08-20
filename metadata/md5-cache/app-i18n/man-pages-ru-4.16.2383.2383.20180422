@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=A collection of Russian translations of Linux manual pages
+EAPI=6
+HOMEPAGE=http://man-pages-ru.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=FDL-1.3
+RDEPEND=virtual/man
+SLOT=0
+SRC_URI=mirror://sourceforge/man-pages-ru/man-pages-ru_4.16-2383-2383-20180422.tar.bz2
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=ae4fe9a27d20e35e39ebaa818627544c

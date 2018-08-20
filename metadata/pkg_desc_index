@@ -2926,7 +2926,7 @@ dev-libs/atk 2.22.0 2.24.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
 dev-libs/beignet 1.3.2: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
-dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
+dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
 dev-libs/botan 1.10.17 2.6.0 2.7.0: A C++ crypto library
@@ -9012,7 +9012,7 @@ net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directorie
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.1.0: The X2Go Qt client
 net-misc/x2goserver 4.0.1.22: The X2Go server
-net-misc/yandex-disk 0.1.5.940_p1: CLI to access Yandex Disk file storage service
+net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2017.11.15: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3: A command line utility for viewing youtube-videos in Mplayer
