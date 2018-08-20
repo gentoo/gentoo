@@ -11,13 +11,13 @@ SRC_URI="https://github.com/vmatare/${PN}/archive/${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="atasmart nvidia +yaml"
 
 DEPEND="atasmart? ( dev-libs/libatasmart )
-		yaml? ( dev-cpp/yaml-cpp )"
+	yaml? ( dev-cpp/yaml-cpp )"
 RDEPEND="${DEPEND}
-		nvidia? ( x11-drivers/nvidia-drivers )"
+	nvidia? ( x11-drivers/nvidia-drivers )"
 
 src_prepare() {
 	cmake-utils_src_prepare
