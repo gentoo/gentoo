@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install test unpack
 DEPEND=dev-go/go-tools:= >=dev-lang/go-1.9
 DESCRIPTION=A Tour of Go
-EAPI=5
+EAPI=6
 HOMEPAGE=https://tour.golang.org
 KEYWORDS=~amd64
 LICENSE=BSD
 SLOT=0
-SRC_URI=https://github.com/golang/tour/archive/6b2e5b35ce8ed092eaedc3d2a2294373a639f122.tar.gz -> go-tour-0_p20160209.tar.gz
+SRC_URI=https://github.com/golang/tour/archive/d642b9371986f5bb2152547a0d525a57f634c3ef.tar.gz -> go-tour-0_p20180810.tar.gz
 _eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
-_md5_=dfc09b5c76105027506c0f8f35cb2e96
+_md5_=e7bd6367543d67c8ca0883c739ccf102
