@@ -1,7 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit eutils
 
 DESCRIPTION="Provide a faked chroot environment without requiring root privileges"
@@ -20,7 +21,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc NEWS.md README.md
+	default
 	find "${D}" -name '*.la' -exec rm -f '{}' +
 }
