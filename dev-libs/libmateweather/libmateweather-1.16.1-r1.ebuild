@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-r1 mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 DESCRIPTION="MATE library to access weather information from online services"
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	"
 
-RDEPEND=">=dev-libs/glib-2.36:2[${PYTHON_USEDEP}]
+COMMON_DEPEND=">=dev-libs/glib-2.36:2
 	>=dev-libs/libxml2-2.6:2
 	>=net-libs/libsoup-2.34:2.4
 	>=sys-libs/timezone-data-2010k:0
@@ -37,7 +37,9 @@ RDEPEND=">=dev-libs/glib-2.36:2[${PYTHON_USEDEP}]
 		>=dev-python/pygtk-2:2[${PYTHON_USEDEP}]
 	)"
 
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}"
+
+DEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1:*
