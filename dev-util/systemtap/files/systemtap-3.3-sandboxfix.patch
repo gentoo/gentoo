@@ -1,0 +1,57 @@
+diff --git a/stapbpf/Makefile.am b/stapbpf/Makefile.am
+index fa2035dab..708d62670 100644
+--- a/stapbpf/Makefile.am
++++ b/stapbpf/Makefile.am
+@@ -43,9 +43,7 @@ git_version.stamp ../git_version.h:
+ # make install, and have "sudo stap ...." or "sudo stapbpf ...." work later.
+ install-exec-hook:
+ 	if [ `id -u` -eq 0 ]; then \
+-		getent group stapusr >/dev/null || groupadd -g 156 -r stapusr 2>/dev/null || groupadd -r stapusr; \
+-		getent group stapusr >/dev/null \
+-		&& chgrp stapusr "$(DESTDIR)$(bindir)/stapbpf" \
++		chgrp 156 "$(DESTDIR)$(bindir)/stapbpf" \
+ 		&& chmod 04110 "$(DESTDIR)$(bindir)/stapbpf"; \
+ 	fi
+ endif
+diff --git a/stapbpf/Makefile.in b/stapbpf/Makefile.in
+index 68712ac55..fcc26d417 100644
+--- a/stapbpf/Makefile.in
++++ b/stapbpf/Makefile.in
+@@ -843,9 +843,7 @@ uninstall-man: uninstall-man8
+ # make install, and have "sudo stap ...." or "sudo stapbpf ...." work later.
+ @HAVE_BPF_DECLS_TRUE@install-exec-hook:
+ @HAVE_BPF_DECLS_TRUE@	if [ `id -u` -eq 0 ]; then \
+-@HAVE_BPF_DECLS_TRUE@		getent group stapusr >/dev/null || groupadd -g 156 -r stapusr 2>/dev/null || groupadd -r stapusr; \
+-@HAVE_BPF_DECLS_TRUE@		getent group stapusr >/dev/null \
+-@HAVE_BPF_DECLS_TRUE@		&& chgrp stapusr "$(DESTDIR)$(bindir)/stapbpf" \
++@HAVE_BPF_DECLS_TRUE@		&& chgrp 156 "$(DESTDIR)$(bindir)/stapbpf" \
+ @HAVE_BPF_DECLS_TRUE@		&& chmod 04110 "$(DESTDIR)$(bindir)/stapbpf"; \
+ @HAVE_BPF_DECLS_TRUE@	fi
+ 
+diff --git a/staprun/Makefile.am b/staprun/Makefile.am
+index 73ddc41ff..16003dbbf 100644
+--- a/staprun/Makefile.am
++++ b/staprun/Makefile.am
+@@ -78,7 +78,6 @@ git_version.stamp ../git_version.h:
+ # make install, and have "sudo stap ...." or "sudo staprun ...." work later.
+ install-exec-hook:
+ 	if [ `id -u` -eq 0 ]; then \
+-		getent group stapusr >/dev/null || groupadd -g 156 -r stapusr 2>/dev/null || groupadd -r stapusr; \
+-		getent group stapusr >/dev/null && chgrp stapusr "$(DESTDIR)$(bindir)/staprun"; \
++		chgrp 156 "$(DESTDIR)$(bindir)/staprun"; \
+ 		chmod 04110 "$(DESTDIR)$(bindir)/staprun"; \
+ 	fi
+diff --git a/staprun/Makefile.in b/staprun/Makefile.in
+index 753824248..9a1e8c6f7 100644
+--- a/staprun/Makefile.in
++++ b/staprun/Makefile.in
+@@ -1116,8 +1116,7 @@ git_version.stamp ../git_version.h:
+ # make install, and have "sudo stap ...." or "sudo staprun ...." work later.
+ install-exec-hook:
+ 	if [ `id -u` -eq 0 ]; then \
+-		getent group stapusr >/dev/null || groupadd -g 156 -r stapusr 2>/dev/null || groupadd -r stapusr; \
+-		getent group stapusr >/dev/null && chgrp stapusr "$(DESTDIR)$(bindir)/staprun"; \
++		chgrp 156 "$(DESTDIR)$(bindir)/staprun"; \
+ 		chmod 04110 "$(DESTDIR)$(bindir)/staprun"; \
+ 	fi
+ 
