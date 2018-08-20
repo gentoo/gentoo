@@ -1,9 +1,9 @@
 DEFINED_PHASES=compile install prepare test unpack
-DEPEND=dev-go/go-crypto:= dev-go/go-text:= >=dev-lang/go-1.9
+DEPEND=>=dev-go/go-crypto-0_pre20180816:= >=dev-go/go-sys-0_pre20180816:= >=dev-go/go-text-0.3.0:= >=dev-lang/go-1.9
 DESCRIPTION=Go supplementary network libraries
-EAPI=5
+EAPI=6
 HOMEPAGE=https://godoc.org/golang.org/x/net
 LICENSE=BSD
 SLOT=0/9999
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs	2e6aa7a0bfd0d17fb4da52dedfb96376	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=c680e8690bbf2b614d024418fe90f326
+_md5_=923125b05d333309b3fddb8c7761798f
