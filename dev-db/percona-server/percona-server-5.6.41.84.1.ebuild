@@ -209,24 +209,24 @@ pkg_setup() {
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
 			die "Unsupported GCC version"
 		fi
-	fi
 
-	if has test ${FEATURES} && \
-		use server && ! has userpriv ${FEATURES} ; then
-			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
-			die "FEATURES=test with FEATURES=-userpriv is not supported"
-	fi
+		if has test ${FEATURES} && \
+			use server && ! has userpriv ${FEATURES} ; then
+				eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
+				die "FEATURES=test with FEATURES=-userpriv is not supported"
+		fi
 
-	if has test ${FEATURES} && ! use test ; then
-		eerror "FEATURES=test requires USE=test."
-		die "FEATURES=test set but not USE=test"
+		if has test ${FEATURES} && ! use test ; then
+			eerror "FEATURES=test requires USE=test."
+			die "FEATURES=test set but not USE=test"
+		fi
+
+		use test && python-any-r1_pkg_setup
 	fi
 
 	# This should come after all of the die statements
 	enewgroup mysql 60 || die "problem adding 'mysql' group"
 	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
-
-	use test && python-any-r1_pkg_setup
 }
 
 src_unpack() {
