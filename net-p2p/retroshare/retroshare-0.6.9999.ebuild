@@ -4,7 +4,7 @@
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/RetroShare/RetroShare.git"
-inherit eutils git-r3 gnome2-utils qmake-utils versionator
+inherit desktop git-r3 gnome2-utils qmake-utils versionator
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.net"

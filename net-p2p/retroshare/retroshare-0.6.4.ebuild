@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils qmake-utils versionator
+inherit desktop gnome2-utils qmake-utils versionator
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.net"
