@@ -3,16 +3,16 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
-EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}-fix-buildsystem.patch.bz2"
+SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-fix-buildsystem.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio"
 REQUIRED_USE="portmidi? ( portaudio )"
 
@@ -45,12 +45,11 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${WORKDIR}/${P}-fix-buildsystem.patch"
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-qtsingleapplication.patch"
 )
 
-src_unpack() {
-	git-r3_src_unpack
-	default_src_unpack
-}
+S="${WORKDIR}/MuseScore-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
