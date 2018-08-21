@@ -59,7 +59,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/RetroShare-${PV}"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+
 src_prepare() {
+	default
+
 	local dir
 
 	sed -i \
@@ -81,8 +85,6 @@ src_prepare() {
 
 	# Avoid openpgpsdk false dependency on qtgui
 	sed -i '2iQT -= gui' openpgpsdk/src/openpgpsdk.pro || die
-
-	eapply_user
 }
 
 src_configure() {
