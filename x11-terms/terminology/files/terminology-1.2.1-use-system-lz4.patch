@@ -1,0 +1,23 @@
+diff -Naur a/src/bin/meson.build b/src/bin/meson.build
+--- a/src/bin/meson.build	2018-05-14 23:20:41.000000000 +0300
++++ b/src/bin/meson.build	2018-08-14 15:45:56.349694832 +0300
+@@ -31,7 +31,6 @@
+                        'termptygfx.c', 'termptygfx.h',
+                        'termptyext.c', 'termptyext.h',
+                        'termptysave.c', 'termptysave.h',
+-                       'lz4/lz4.c', 'lz4/lz4.h',
+                        'md5/md5.c', 'md5/md5.h',
+                        'utf8.c', 'utf8.h',
+                        'win.c', 'win.h',
+diff -Naur a/src/bin/termptysave.c b/src/bin/termptysave.c
+--- a/src/bin/termptysave.c	2018-05-14 23:20:41.000000000 +0300
++++ b/src/bin/termptysave.c	2018-08-14 16:08:59.050328377 +0300
+@@ -2,7 +2,7 @@
+ #include <Elementary.h>
+ #include "termpty.h"
+ #include "termptysave.h"
+-#include "lz4/lz4.h"
++#include <lz4.h>
+ #include <sys/mman.h>
+ 
+ #if defined (__MacOSX__) || (defined (__MACH__) && defined (__APPLE__))
