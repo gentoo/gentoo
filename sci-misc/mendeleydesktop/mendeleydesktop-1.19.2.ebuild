@@ -110,6 +110,10 @@ src_install() {
 	# install libraries
 	dolib.so lib/lib*.so*
 
+	# remove qtconf and qt-5.10 workaround
+	rm lib/mendeleydesktop/libexec/qt.conf
+	rm "lib/mendeleydesktop/libexec/QtWebEngineProcess --type=zygote --lang=en-US"
+
 	# install programs
 	exeinto /opt/mendeleydesktop/$(get_libdir)/mendeleydesktop/libexec
 	doexe lib/mendeleydesktop/libexec/*
