@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}-fix-buildsystem.patch.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio webengine"
+IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio vorbis webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
 RDEPEND="
@@ -38,6 +38,7 @@ RDEPEND="
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
+	vorbis? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 DEPEND="${RDEPEND}
@@ -65,6 +66,7 @@ src_configure() {
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
+		-DBUILD_SOUNDFONT3="$(usex vorbis)"
 		-DBUILD_WEBEBENGINE="$(usex webengine)"
 	)
 	cmake-utils_src_configure
