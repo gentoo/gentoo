@@ -1,24 +1,25 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 WANT_AUTOMAKE=1.9
 
-inherit autotools fdo-mime gnome2-utils
+inherit autotools desktop gnome2-utils xdg-utils
 
 rev="r249"
 
 DESCRIPTION="Analog waveform viewer for SPICE-like simulations"
-LICENSE="GPL-2"
 HOMEPAGE="http://gwave.sourceforge.net"
 SRC_URI="https://sourceforge.net/code-snapshots/svn/g/gw/gwave/code/gwave-code-${rev}-trunk.zip"
 
+LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnuplot plotutils"
 SLOT="0"
 
-DEPEND=">=dev-scheme/guile-2[deprecated,networking]
+DEPEND="app-arch/unzip
+	>=dev-scheme/guile-2[deprecated,networking]
 	<dev-scheme/guile-2.2
 	dev-scheme/guile-gnome-platform
 	x11-libs/guile-gtk"
@@ -45,14 +46,12 @@ PATCHES=(
 
 src_prepare() {
 	sed 's/AM_INIT_AUTOMAKE(gwave, [0-9]*)/AM_INIT_AUTOMAKE(gwave, ${PV})/' -i configure.ac || die
-	epatch "${PATCHES[@]}"
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS NEWS README TODO
+	default
 	newicon icons/wave-drag-ok.xpm gwave.xpm
 	make_desktop_entry gwave "Gwave" gwave "Electronics"
 }
@@ -62,13 +61,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
