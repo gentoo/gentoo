@@ -50,6 +50,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	x11-base/xorg-proto
 "
