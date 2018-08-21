@@ -56,6 +56,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
 		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
+		-DUSE_SYSTEM_FREETYPE=ON
 		-DBUILD_ALSA="$(usex alsa)"
 		-DBUILD_JACK="$(usex jack)"
 		-DBUILD_LAME="$(usex mp3)"
