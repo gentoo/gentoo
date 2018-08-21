@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
-HOMEPAGE="http://musescore.org/"
+HOMEPAGE="https://musescore.org/"
 SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~mgorny/dist/${P}-fix-buildsystem.patch.bz2"
 
