@@ -21,7 +21,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
+	)"
 
 S="${WORKDIR}/${MY_P}"
 
