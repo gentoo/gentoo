@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 COMMON_DEPEND="dev-libs/glib:2
-	dev-libs/openssl:0
+	dev-libs/openssl:0=
 	net-misc/curl
 "
 RDEPEND="${COMMON_DEPEND}
