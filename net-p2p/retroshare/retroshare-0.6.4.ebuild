@@ -144,7 +144,6 @@ pkg_preinst() {
 			break
 		fi
 	done
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
