@@ -50,6 +50,7 @@ PATCHES=(
 	"${WORKDIR}/${P}-fix-buildsystem.patch"
 	"${FILESDIR}/${P}-qt-5.11.patch"
 	"${FILESDIR}/${P}-qtsingleapplication.patch"
+	"${FILESDIR}/${P}-pch.patch"
 )
 
 S="${WORKDIR}/MuseScore-${PV}"
