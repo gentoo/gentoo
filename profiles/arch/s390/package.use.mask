@@ -19,6 +19,7 @@ net-analyzer/nmap zenmap
 app-editors/vim luajit lua
 # not keyworded yet
 media-gfx/imagemagick raw
+dev-db/mariadb numa
 # ipython is not really tested
 dev-python/restkit cli
 # not tested yet
