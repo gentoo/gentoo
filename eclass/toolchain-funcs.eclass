@@ -167,6 +167,17 @@ tc-getBUILD_OBJCOPY() { tc-getBUILD_PROG OBJCOPY objcopy "$@"; }
 # @RETURN: name of the pkg-config tool for building binaries to run on the build machine
 tc-getBUILD_PKG_CONFIG() { tc-getBUILD_PROG PKG_CONFIG pkg-config "$@"; }
 
+# @FUNCTION: tc-getTARGET_CPP
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the C preprocessor for the toolchain being built (or used)
+tc-getTARGET_CPP() {
+	if [[ -n ${CTARGET} ]]; then
+		_tc-getPROG CTARGET TARGET_CPP "gcc -E" "$@"
+	else
+		tc-getCPP "$@"
+	fi
+}
+
 # @FUNCTION: tc-export
 # @USAGE: <list of toolchain variables>
 # @DESCRIPTION:
@@ -185,6 +196,86 @@ tc-is-cross-compiler() {
 	[[ ${CBUILD:-${CHOST}} != ${CHOST} ]]
 }
 
+# @FUNCTION: tc-cpp-is-true
+# @USAGE: <condition> [cpp flags]
+# @RETURN: Shell true if the condition is true, shell false otherwise.
+# @DESCRIPTION:
+# Evaluate the given condition using the C preprocessor for CTARGET, if
+# defined, or CHOST. Additional arguments are passed through to the cpp
+# command. A typical condition would be in the form defined(__FOO__).
+tc-cpp-is-true() {
+	local CONDITION=${1}
+	shift
+
+	local RESULT=$($(tc-getTARGET_CPP) "${@}" -P - <<-EOF 2>/dev/null
+			#if ${CONDITION}
+			true
+			#endif
+		EOF
+	)
+
+	[[ ${RESULT} == true ]]
+}
+
+# @FUNCTION: tc-detect-is-softfloat
+# @RETURN:
+# Shell true if (positive or negative) detection was possible, shell
+# false otherwise. Also outputs a string when detection succeeds, see
+# tc-is-softfloat for the possible values.
+# @DESCRIPTION:
+# Detect whether the CTARGET (or CHOST) toolchain is a softfloat based
+# one by examining the toolchain's output, if possible.
+tc-detect-is-softfloat() {
+	# If fetching CPP falls back to the default (gcc -E) then fail
+	# detection as this may not be the correct toolchain.
+	[[ $(tc-getTARGET_CPP) == "gcc -E" ]] && return 1
+
+	case ${CTARGET:-${CHOST}} in
+		# arm-unknown-linux-gnueabi is ambiguous. We used to treat it as
+		# hardfloat but we now treat it as softfloat like most everyone
+		# else. Check existing toolchains to respect existing systems.
+		arm*)
+			if tc-cpp-is-true "defined(__ARM_PCS_VFP)"; then
+				echo "no"
+			else
+				# Confusingly __SOFTFP__ is defined only when
+				# -mfloat-abi is soft, not softfp.
+				if tc-cpp-is-true "defined(__SOFTFP__)"; then
+					echo "yes"
+				else
+					echo "softfp"
+				fi
+			fi
+
+			return 0 ;;
+		*)
+			return 1 ;;
+	esac
+}
+
+# @FUNCTION: tc-tuple-is-softfloat
+# @RETURN: See tc-is-softfloat for the possible values.
+# @DESCRIPTION:
+# Determine whether the CTARGET (or CHOST) toolchain is a softfloat
+# based one solely from the tuple.
+tc-tuple-is-softfloat() {
+	local CTARGET=${CTARGET:-${CHOST}}
+	case ${CTARGET//_/-} in
+		bfin*|h8300*)
+			echo "only" ;;
+		*-softfloat-*)
+			echo "yes" ;;
+		*-softfp-*)
+			echo "softfp" ;;
+		arm*-hardfloat-*|arm*eabihf)
+			echo "no" ;;
+		arm*)
+			echo "yes" ;;
+		*)
+			echo "no" ;;
+	esac
+}
+
 # @FUNCTION: tc-is-softfloat
 # @DESCRIPTION:
 # See if this toolchain is a softfloat based one.
@@ -199,20 +290,7 @@ tc-is-cross-compiler() {
 # softfloat flags in the case where support is optional, but
 # rejects softfloat flags where the target always lacks an fpu.
 tc-is-softfloat() {
-	local CTARGET=${CTARGET:-${CHOST}}
-	case ${CTARGET} in
-		bfin*|h8300*)
-			echo "only" ;;
-		*)
-			if [[ ${CTARGET//_/-} == *-softfloat-* ]] ; then
-				echo "yes"
-			elif [[ ${CTARGET//_/-} == *-softfp-* ]] ; then
-				echo "softfp"
-			else
-				echo "no"
-			fi
-			;;
-	esac
+	tc-detect-is-softfloat || tc-tuple-is-softfloat
 }
 
 # @FUNCTION: tc-is-static-only
@@ -826,13 +904,7 @@ gcc-specs-stack-check() {
 # Return truth if the current compiler generates position-independent code (PIC)
 # which can be linked into executables.
 tc-enables-pie() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__PIE__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__PIE__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp
@@ -844,13 +916,7 @@ tc-enables-pie() {
 #  -fstack-protector-strong
 #  -fstack-protector-all
 tc-enables-ssp() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp-strong
@@ -861,13 +927,7 @@ tc-enables-ssp() {
 #  -fstack-protector-strong
 #  -fstack-protector-all
 tc-enables-ssp-strong() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__SSP_STRONG__) || defined(__SSP_ALL__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp-all
@@ -877,13 +937,7 @@ tc-enables-ssp-strong() {
 # on level corresponding to any of the following options:
 #  -fstack-protector-all
 tc-enables-ssp-all() {
-	local ret="$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P - <<-EOF 2> /dev/null | grep '^true$'
-		#if defined(__SSP_ALL__)
-		true
-		#endif
-		EOF
-	)"
-	[[ ${ret} == true ]]
+	tc-cpp-is-true "defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
 }
 
 

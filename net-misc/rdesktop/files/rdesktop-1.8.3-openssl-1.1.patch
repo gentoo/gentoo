@@ -94,7 +94,7 @@ index 48751255..032e9b9e 100644
 +	BIGNUM *e = NULL;
 +	BIGNUM *n = NULL;
 +
-+#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER))
 +	e = rkey->e;
 +	n = rkey->n;
 +#else

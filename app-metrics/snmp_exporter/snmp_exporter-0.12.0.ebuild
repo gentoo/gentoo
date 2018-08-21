@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/snmp_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-SNMP_EXPORTER_COMMIT="5c997da"
+SNMP_EXPORTER_COMMIT="26b3c85"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -33,13 +33,15 @@ src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
 	GOPATH="${S}" promu build -v --prefix bin || die
+	pushd generator || die
+	GOPATH="${S}" go build -o ../bin/generator . || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin bin/snmp_exporter
-	dodoc {README,CONTRIBUTING}.md
+	dobin bin/*
+	dodoc {README,CONTRIBUTING}.md generator/{FORMAT,README}.md generator/generator.yml
 	insinto /etc/snmp_exporter
 	newins snmp.yml snmp.yml.example
 	popd || die
