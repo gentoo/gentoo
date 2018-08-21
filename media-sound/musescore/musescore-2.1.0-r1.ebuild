@@ -23,10 +23,12 @@ RDEPEND="
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qthelp:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	>=dev-qt/qtsingleapplication-2.6.1_p20171024
 	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
+	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
 	>=media-libs/freetype-2.5.2
 	media-libs/libsndfile
