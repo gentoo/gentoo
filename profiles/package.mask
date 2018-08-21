@@ -221,10 +221,6 @@ media-libs/libglvnd
 =dev-libs/libressl-2.7*
 =dev-libs/libressl-2.8*
 
-# Andreas Sturmlechner <asturm@gentoo.org> (26 Apr 2018)
-# Package version depends on Qt-5.10 that was/is/will not be in tree.
->=sci-misc/mendeleydesktop-1.18
-
 # Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
 # Needs porting of revdeps
 # See: https://bugs.gentoo.org/653678
