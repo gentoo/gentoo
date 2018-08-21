@@ -66,7 +66,7 @@ src_configure() {
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
-		-DBUILD_SOUNDFONT3="$(usex vorbis)"
+		-DSOUNDFONT3="$(usex vorbis)"
 		-DBUILD_WEBEBENGINE="$(usex webengine)"
 	)
 	cmake-utils_src_configure
