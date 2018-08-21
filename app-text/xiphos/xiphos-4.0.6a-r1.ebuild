@@ -5,21 +5,23 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit flag-o-matic gnome2-utils python-single-r1 toolchain-funcs
 
+MY_PV="${PV}-20170820"
+MY_P="${PN}-${MY_PV}"
 DESCRIPTION="A bible study frontend for Sword (formerly known as GnomeSword)"
 HOMEPAGE="http://xiphos.org/"
-SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2 MIT MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="dbus debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=app-text/sword-1.8.0
-	>=dev-libs/glib-2[${PYTHON_USEDEP}]
-	dev-libs/libxml2[${PYTHON_USEDEP}]
+	>=app-text/sword-1.7.4
+	dev-libs/glib:2
+	dev-libs/libxml2:2[${PYTHON_USEDEP}]
 	gnome-base/gconf[${PYTHON_USEDEP}]
 	gnome-extra/gtkhtml:4.0
 	>=gnome-extra/libgsf-1.14
