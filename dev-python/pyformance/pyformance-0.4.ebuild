@@ -23,7 +23,7 @@ DEPEND="
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 python_prepare() {
-	sed -i -e "s/find_packages()/find_packages(exclude=['tests'])/"
+	sed -i -e "s/find_packages()/find_packages(exclude=['tests'])/" setup.py || die
 }
 
 python_test() {
