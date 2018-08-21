@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND=">=x11-libs/libdockapp-0.7:="
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
