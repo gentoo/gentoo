@@ -61,6 +61,7 @@ src_configure() {
 		-DWANT_VORBIS=$(usex vorbis)
 		-DWANT_NATIVE_DIALOG=$(usex gtk)
 		-DWANT_OPENGL=$(usex X)
+		-DWANT_X11=$(usex X)
 		-DWANT_X11_XINERAMA=$(usex xinerama)
 	)
 
