@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="AWS SDK for C++"
 HOMEPAGE="https://aws.amazon.com/sdk-for-cpp/"
-SRC_URI="https://github.com/aws/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/aws/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
