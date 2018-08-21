@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils qmake-utils versionator
+inherit desktop gnome2-utils qmake-utils versionator
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.net"
@@ -59,7 +59,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/RetroShare-${PV}"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+
 src_prepare() {
+	default
+
 	local dir
 
 	sed -i \
@@ -81,8 +85,6 @@ src_prepare() {
 
 	# Avoid openpgpsdk false dependency on qtgui
 	sed -i '2iQT -= gui' openpgpsdk/src/openpgpsdk.pro || die
-
-	eapply_user
 }
 
 src_configure() {
@@ -142,7 +144,6 @@ pkg_preinst() {
 			break
 		fi
 	done
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
