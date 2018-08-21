@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -18,11 +18,15 @@ IUSE="test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/ipaddress[${PYTHON_USEDEP}]
+	)
 "
 
+# Many tests fail, even on a regular tox run on a upstream clone
 RESTRICT="test"
 
 python_test() {
-	${PYTHON} psutil/tests/runner.py || die
+	${PYTHON} psutil/tests/__main__.py || die
 }
