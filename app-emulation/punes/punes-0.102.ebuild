@@ -28,6 +28,8 @@ DEPEND="
 
 S="${WORKDIR}/puNES-${PV}"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11-fix.patch" )
+
 src_prepare() {
 	default
 
