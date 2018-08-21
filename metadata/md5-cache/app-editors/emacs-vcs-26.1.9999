@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses:0= >=app-eselect/eselect-emacs-1.16 >=app-emacs/emacs-c
 REQUIRED_USE=?? ( aqua X )
 RESTRICT=test
 SLOT=26
-_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	918d6a744039c29af2cadc7317459765	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	git-r3	918d6a744039c29af2cadc7317459765	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=eb3925265a536e7b0d2733bcd74fefeb
