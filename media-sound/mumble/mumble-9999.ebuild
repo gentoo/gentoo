@@ -80,11 +80,7 @@ src_configure() {
 		$(usex zeroconf '' no-bonjour)
 	)
 
-	if has_version '<=sys-devel/gcc-4.2'; then
-		conf_add+=( no-pch )
-	else
-		use pch || conf_add+=( no-pch )
-	fi
+	use pch || conf_add+=( no-pch )
 
 	eqmake5 "${S}/main.pro" -recursive \
 		CONFIG+="${conf_add[*]}" \
