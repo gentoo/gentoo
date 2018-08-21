@@ -1,0 +1,21 @@
+From 46620c32ff37a7968c977e4b3cde8d601807702c Mon Sep 17 00:00:00 2001
+From: fhorse <punes.development@gmail.com>
+Date: Sun, 15 Jul 2018 13:30:15 +0200
+Subject: [PATCH] Corretto errore di compilazione con le Qt5.
+
+---
+ src/gui/dlgCheats.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gui/dlgCheats.cpp b/src/gui/dlgCheats.cpp
+index 9ff904d2..b7c6c52a 100644
+--- a/src/gui/dlgCheats.cpp
++++ b/src/gui/dlgCheats.cpp
+@@ -25,6 +25,7 @@
+ #include <QtWidgets/QMessageBox>
+ #include <QtWidgets/QCheckBox>
+ #include <QtWidgets/QFileDialog>
++#include <QtWidgets/QButtonGroup>
+ #endif
+ #include "dlgCheats.moc"
+ #include "mainWindow.hpp"
