@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib desktop qmake-utils xdg-utils
+inherit desktop gnome2-utils qmake-utils xdg-utils
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -117,6 +117,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 	echo
 	elog "Visit http://mumble.sourceforge.net/ for futher configuration instructions."
@@ -125,5 +126,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
