@@ -96,12 +96,6 @@ media-plugins/emotion_generic_players
 media-plugins/evas_generic_loaders
 x11-themes/ethemes
 
-# Virgil Dupras <vdupras@gentoo.org> (22 Jul 2018)
-# Depends on an unsupported version of django (1.8, will be removed soon) and
-# is rendered obsolete by the direct inclusion of django support in
-# >=dev-python/celery-4.0. Removal in 30 days. Bug #661804
-dev-python/django-celery
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
 # Parallel-installable old versions with no remaining consumers
 # in main tree. Use applications ported to wxGTK:3.0 and
