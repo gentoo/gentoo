@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 >=dev-qt/qtsingleapplication-2.6.1_p20171024 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 >=media-libs/freetype-2.5.2 media-libs/libsndfile sys-libs/zlib:= alsa? ( >=media-libs/alsa-lib-1.0.0 ) jack? ( virtual/jack ) mp3? ( media-sound/lame ) portaudio? ( media-libs/portaudio ) portmidi? ( media-libs/portmidi ) pulseaudio? ( media-sound/pulseaudio ) vorbis? ( media-libs/libvorbis ) dev-qt/linguist-tools:5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=WYSIWYG Music Score Typesetter
+EAPI=6
+HOMEPAGE=https://musescore.org/
+IUSE=alsa debug jack mp3 portaudio portmidi pulseaudio vorbis
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 >=dev-qt/qtsingleapplication-2.6.1_p20171024 dev-qt/qtsvg:5 dev-qt/qtwebkit:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 >=media-libs/freetype-2.5.2 media-libs/libsndfile sys-libs/zlib:= alsa? ( >=media-libs/alsa-lib-1.0.0 ) jack? ( virtual/jack ) mp3? ( media-sound/lame ) portaudio? ( media-libs/portaudio ) portmidi? ( media-libs/portmidi ) pulseaudio? ( media-sound/pulseaudio ) vorbis? ( media-libs/libvorbis )
+REQUIRED_USE=portmidi? ( portaudio )
+SLOT=0
+SRC_URI=https://github.com/musescore/MuseScore/archive/v2.1.0.tar.gz -> musescore-2.1.0.tar.gz https://dev.gentoo.org/~mgorny/dist/musescore-2.1.0-fix-buildsystem.patch.bz2
+_eclasses_=cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=feb097c8153d882b6cf6448e733fcef7
