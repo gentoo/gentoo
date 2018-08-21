@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=app-arch/unzip >=dev-scheme/guile-2[deprecated,networking] <dev-scheme/guile-2.2 dev-scheme/guile-gnome-platform x11-libs/guile-gtk app-text/docbook-sgml-utils >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.9* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=Analog waveform viewer for SPICE-like simulations
+EAPI=6
+HOMEPAGE=http://gwave.sourceforge.net
+IUSE=gnuplot plotutils
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/unzip >=dev-scheme/guile-2[deprecated,networking] <dev-scheme/guile-2.2 dev-scheme/guile-gnome-platform x11-libs/guile-gtk sci-electronics/electronics-menu gnuplot? ( sci-visualization/gnuplot ) plotutils? ( media-libs/plotutils )
+SLOT=0
+SRC_URI=https://sourceforge.net/code-snapshots/svn/g/gw/gwave/code/gwave-code-r249-trunk.zip
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=4d377a2aa5488b9e7d2eebdcfa91524b
