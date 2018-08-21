@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=app-eselect/eselect-chuck media-libs/libsndfile alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) sys-devel/bison sys-devel/flex
+DESCRIPTION=Strongly-timed, concurrent, and on-the-fly audio programming language
+EAPI=7
+HOMEPAGE=http://chuck.cs.princeton.edu/
+IUSE=+alsa jack examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-eselect/eselect-chuck media-libs/libsndfile alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit )
+REQUIRED_USE=|| ( alsa jack )
+SLOT=0
+SRC_URI=http://chuck.cs.princeton.edu/release/files/chuck-1.4.0.0.tgz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607
+_md5_=def3448a39657d1069a06bf1cf8a623c

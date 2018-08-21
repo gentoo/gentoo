@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-libs/efl-1.20.0[eet,fontconfig,opengl,X] virtual/pkgconfig nls? ( sys-devel/gettext ) >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2
+DEPEND=|| ( dev-libs/efl[egl] dev-libs/efl[opengl] ) || ( dev-libs/efl[X] dev-libs/efl[wayland] ) app-arch/lz4 >=dev-libs/efl-1.20.0[eet,fontconfig] virtual/pkgconfig nls? ( sys-devel/gettext ) >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2
 DESCRIPTION=Feature rich terminal emulator using the Enlightenment Foundation Libraries
 EAPI=6
 HOMEPAGE=https://www.enlightenment.org/about-terminology
 IUSE=nls
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=BSD-2
-RDEPEND=>=dev-libs/efl-1.20.0[eet,fontconfig,opengl,X]
+RDEPEND=|| ( dev-libs/efl[egl] dev-libs/efl[opengl] ) || ( dev-libs/efl[X] dev-libs/efl[wayland] ) app-arch/lz4 >=dev-libs/efl-1.20.0[eet,fontconfig]
 SLOT=0
 SRC_URI=https://download.enlightenment.org/rel/apps/terminology/terminology-1.2.1.tar.xz
 _eclasses_=meson	b953e9f7b0c7db44d8b115086b11ba16	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	1e35303c63cd707f6c3422b4493d5607	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
-_md5_=20525ce6391d5bd9df90831bb99ddbb1
+_md5_=0c7676055bc97b70614f48cea3a59dfe
