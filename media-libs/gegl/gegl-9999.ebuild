@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ inherit versionator gnome2-utils eutils autotools python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnome.org/gegl"
+	EGIT_REPO_URI="git://gitlab.gnome.org/GNOME/gegl"
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
